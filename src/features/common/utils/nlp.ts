@@ -34,6 +34,30 @@ function removeMarkdownImageAndLinks(markdownText: string): string {
   return chunks.join('\n')
 }
 
+// 优先使用的语言
+const top20Languages = [
+  'eng', // 英语
+  'cmn', // 汉语（官话方言）
+  'hin', // 印地语
+  'spa', // 西班牙语
+  // 'fra', // 法语
+  'ara', // 阿拉伯语
+  'ben', // 孟加拉语
+  'rus', // 俄语
+  'por', // 葡萄牙语
+  'ind', // 印尼语
+  'urd', // 乌尔都语
+  'deu', // 德语
+  'jpn', // 日语
+  'swa', // 斯瓦希里语
+  'mar', // 马拉地语
+  'tel', // 泰卢固语
+  'yue', // 粤语
+  'ita', // 意大利语
+  'kor', // 韩语
+  'pol', // 波兰语
+]
+
 /**
  * 获取文本的语言名称
  * @param text
@@ -49,7 +73,6 @@ export const textGetLanguageName = (
   // 截取的内容
   let sliceOfText = ''
   // 截取的内容的isoCode
-  let fullSliceOfTextIsoCode = ''
   if (text.length > sliceLength) {
     // 从中间截取0-1000个字符
     const start = Math.floor((text.length - sliceLength) / 2)
@@ -102,35 +125,20 @@ export const textGetLanguageName = (
     )
     // 如果有值, 则返回出现次数最多的
     if (Object.keys(isoCodeCount).length > 0) {
-      // 优先使用的语言
-      const top20Languages = [
-        'eng', // 英语
-        'cmn', // 汉语（官话方言）
-        'hin', // 印地语
-        'spa', // 西班牙语
-        'fra', // 法语
-        'ara', // 阿拉伯语
-        'ben', // 孟加拉语
-        'rus', // 俄语
-        'por', // 葡萄牙语
-        'ind', // 印尼语
-        'urd', // 乌尔都语
-        'deu', // 德语
-        'jpn', // 日语
-        'swa', // 斯瓦希里语
-        'mar', // 马拉地语
-        'tel', // 泰卢固语
-        'yue', // 粤语
-        'ita', // 意大利语
-        'kor', // 韩语
-        'pol', // 波兰语
-      ]
       // 使用countBy函数计算每个值的出现次数
       const maxIsoCode = maxBy(
         Object.keys(isoCodeCount),
         (isoCode) => isoCodeCount[isoCode],
       )
       if (maxIsoCode) {
+        if (top20Languages.includes(maxIsoCode)) {
+          console.log(
+            `textGetLanguageName: [success] [top20] [max] [${maxIsoCode}] ${
+              Date.now() - startTime
+            }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
+          )
+          return iso6393.find((item) => item.iso6393 === maxIsoCode)?.name
+        }
         // 如果不是top20的语言, 则看看第二多的是不是top20的语言
         if (!top20Languages.includes(maxIsoCode)) {
           // 找出第二多的isoCode
@@ -145,7 +153,7 @@ export const textGetLanguageName = (
               isoCodeCount[maxIsoCode] - isoCodeCount[secondMaxIsoCode] <= 2
             ) {
               console.log(
-                `textGetLanguageName: [success] [top20] [${secondMaxIsoCode}] ${
+                `textGetLanguageName: [success] [top20] [second] [${secondMaxIsoCode}] ${
                   Date.now() - startTime
                 }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
               )
@@ -154,47 +162,18 @@ export const textGetLanguageName = (
             }
           }
         }
-        const languageName = iso6393.find((item) => item.iso6393 === maxIsoCode)
-          ?.name
-        if (maxIsoCode === 'fra') {
-          if (sliceOfText.length < 20) {
-            // 字数太短的话, franc可能判断不了, 重复多几次
-            sliceOfText = new Array(5).fill(sliceOfText).join(' ')
-          }
-          // 如果是法语, 再次判断, 避免franc判断错误
-          const fullTextIsoCode = franc(sliceOfText)
-          if (fullTextIsoCode === 'fra') {
-            console.log(
-              `textGetLanguageName: [success] [${languageName}] ${
-                Date.now() - startTime
-              }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
-            )
-            return languageName || fallbackLanguageName
-          }
-          // 如果不是法语, 则返回其他语言
-          console.log(`textGetLanguageName retry cause [${maxIsoCode}]`)
-        } else {
-          // 其他语言, 直接返回
-          console.log(
-            `textGetLanguageName: [success] [${languageName}] ${
-              Date.now() - startTime
-            }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
-          )
-          return languageName || fallbackLanguageName
-        }
       }
     }
   }
-  // 如果前面没有找到, 则再次判断全文
-  if (!fullSliceOfTextIsoCode) {
-    if (sliceOfText.length < 20) {
-      // 字数太短的话, franc可能判断不了, 重复多几次
-      sliceOfText = new Array(5).fill(sliceOfText).join(' ')
-    }
-    // 如果没有找到, 匹配全文
-    fullSliceOfTextIsoCode = franc(sliceOfText)
+  // 如果前面没有找到, 则判断全文
+  if (sliceOfText.length < 20) {
+    // 字数太短的话, franc可能判断不了, 重复多几次
+    sliceOfText = new Array(5).fill(sliceOfText).join(' ')
   }
-  if (fullSliceOfTextIsoCode !== 'und') {
+  // 如果没有找到, 匹配全文
+  const fullSliceOfTextIsoCode = franc(sliceOfText)
+  // 如果是top20的语言, 则直接返回
+  if (top20Languages.includes(fullSliceOfTextIsoCode)) {
     const languageName = iso6393.find(
       (item) => item.iso6393 === fullSliceOfTextIsoCode,
     )?.name

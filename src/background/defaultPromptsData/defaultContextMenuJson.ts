@@ -2240,7 +2240,9 @@ Now, write a concise reply to the post/comment above by *writing a better versio
         },
         {
           type: 'ASK_CHATGPT',
-          parameters: {},
+          parameters: {
+            AskChatGPTWithAIResponseLanguage: false,
+          },
         },
       ],
       icon: 'PlayArrow',

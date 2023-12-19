@@ -199,7 +199,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           variant="normalOutlined"
           loading={loading}
           sx={{
-            height: 40,
+            py: 1,
             borderRadius: 2,
             flex: 1,
           }}

@@ -1,6 +1,6 @@
 {
-  "description": "Najbrži način korištenja ChatGPT, Claude, Bard, Bing bilo gdje online. Jedino proširenje s generativnom AI snagom koje vam treba.",
-  "name": "MaxAI.me: Koristite 1-klik ChatGPT AI bilo gdje",
+  "description": "Najbrži način korištenja AI-a pokretanog od strane ChatGPT, Claude, Bard, Bing AI bilo gdje online. Jedino producirajuće AI proširenje koje vam treba.",
+  "name": "MaxAI.me: Koristite 1-klik AI bilo gdje",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odjava",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumijevanja slika, uz sve ostale mogućnosti GPT-4 Turbo. Vraća maksimalno 4,096 izlaznih tokena. Ovo je verzija preglednog modela koja još nije prikladna za produkcijski promet.",
     "activity__black_friday_2023__title": "Ograničeni vremenski Black Friday popusti - do 50% popusta!",
     "sidebar__speed_dial__chat_history__button": "Povijest razgovora",
-    "activity__christmas_2023__title": "BOŽIĆNI POKLONI! - Do 50% POPUSTA!"
+    "activity__christmas_2023__title": "BOŽIĆNI POKLONI! - Do 50% POPUSTA!",
+    "sidebar__input__tokens_limited__title": "maksimalni tokeni"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

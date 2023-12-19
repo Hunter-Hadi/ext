@@ -585,6 +585,8 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
+    'name',
+    'description'
   ]
   const retryLanguageCodes = [
   ]

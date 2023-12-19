@@ -1,6 +1,6 @@
 {
-  "description": "Det snabbaste sättet att använda ChatGPT, Claude, Bard, Bing var som helst online. Den enda generativa AI-drivna tillägg du behöver.",
-  "name": "MaxAI.me: Använd 1-klicks ChatGPT AI var som helst",
+  "description": "Det snabbaste sättet att använda AI drivet av ChatGPT, Claude, Bard, Bing AI var som helst online. Den enda generativa AI-tillägget du behöver.",
+  "name": "MaxAI.me: Använd AI med 1 klick var som helst",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logga ut",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Möjlighet att förstå bilder, utöver alla andra GPT-4 Turbo-funktioner. Returnerar maximalt 4 096 utdatatokens. Detta är en förhandsgranskningsmodellversion och är ännu inte lämplig för produktionstrafik.",
     "activity__black_friday_2023__title": "Begränsade Black Friday-erbjudanden – Upp till 50% rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chathistorik",
-    "activity__christmas_2023__title": "JULGÅVOR! - Upp till 50% RABATT!"
+    "activity__christmas_2023__title": "JULGÅVOR! - Upp till 50% RABATT!",
+    "sidebar__input__tokens_limited__title": "max antal tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

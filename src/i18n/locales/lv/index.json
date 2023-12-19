@@ -1,6 +1,6 @@
 {
-  "description": "Ātrākais veids, kā izmantot ChatGPT, Claude, Bard, Bing jebkurā vietnē tiešsaistē. Vienīgā generatīvā inteliģences paplašinājums, kas tev nepieciešams.",
-  "name": "MaxAI.me: Izmantojiet 1-Click ChatGPT AI jebkur",
+  "description": "Ātrākais veids, kā izmantot AI, kas darbojas ar ChatGPT, Claude, Bard, Bing AI jebkur tiešsaistē. Vienīgais generatīvās AI paplašinājums, kas jums nepieciešams.",
+  "name": "MaxAI.me: Izmantojiet 1-Click AI jebkur",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Izrakstīties",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Spēja saprast attēlus, kā arī visus citus GPT-4 Turbo iespējamos. Atgriež maksimāli 4 096 izvades žetonus. Šis ir priekšskatījuma modeļa versija un vēl nav piemērota ražošanas datplūsmai.",
     "activity__black_friday_2023__title": "Ierobežots laiks Melnā Piektdiena piedāvājumi – Līdz 50% atlaidēm!",
     "sidebar__speed_dial__chat_history__button": "Čata vēsture",
-    "activity__christmas_2023__title": "ZIEMASSVĒTKU DĀVANAS! - Līdz pat 50% ATLAIDE!"
+    "activity__christmas_2023__title": "ZIEMASSVĒTKU DĀVANAS! - Līdz pat 50% ATLAIDE!",
+    "sidebar__input__tokens_limited__title": "maksimālais skaits"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

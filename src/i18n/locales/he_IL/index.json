@@ -1,6 +1,6 @@
 {
-  "description": "הדרך המהירה ביותר להשתמש ב-ChatGPT, Claude, Bard, Bing בכל מקום באינטרנט. התוסף היחיד שאתה צריך עם הכוח של AI.",
-  "name": "MaxAI.me: השתמש ב-1-לחיצה על ChatGPT AI בכל מקום",
+  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה מופעלת על ידי ChatGPT, Claude, Bard, Bing AI בכל מקום באינטרנט. התוסף היחיד שאתה צריך.",
+  "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "יכולת להבין תמונות, בנוסף לכל היכולות של GPT-4 Turbo האחרות. מחזיר מקסימום 4,096 אסימונים פלט. זהו גרסת תצוגה מקדימה ואינה מתאימה עדיין לתעבורת ייצור.",
     "activity__black_friday_2023__title": "דילים בלעדיים ליום שישי השחור – עד 50% הנחה!",
     "sidebar__speed_dial__chat_history__button": "היסטוריית צ'אט",
-    "activity__christmas_2023__title": "מתנות לחג המולד! - עד 50% הנחה!"
+    "activity__christmas_2023__title": "מתנות לחג המולד! - עד 50% הנחה!",
+    "sidebar__input__tokens_limited__title": "מקסימום טוקנים"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

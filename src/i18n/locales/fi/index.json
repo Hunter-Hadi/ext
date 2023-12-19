@@ -1,6 +1,6 @@
 {
-  "description": "Nopein tapa käyttää ChatGPT, Claude, Bard, Bing missä tahansa verkossa. Ainoa generatiivinen tekoälyllä varustettu laajennus, jota tarvitset.",
-  "name": "MaxAI.me: Käytä 1-Click ChatGPT AI:ta missä tahansa",
+  "description": "Nopein tapa käyttää ChatGPT:n, Clauden, Bardin ja Bing AI:n voimaa missä tahansa verkossa. Ainoa generatiivinen AI-laajennus, jota tarvitset.",
+  "name": "MaxAI.me: Käytä 1-Click AI missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kirjaudu ulos",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen.",
     "activity__black_friday_2023__title": "Rajoitetun ajan Black Friday -tarjoukset – Jopa 50% alennusta!",
     "sidebar__speed_dial__chat_history__button": "Keskusteluhistoria",
-    "activity__christmas_2023__title": "JOULUARVONNAT! - Jopa 50% ALENNUS!"
+    "activity__christmas_2023__title": "JOULUARVONNAT! - Jopa 50% ALENNUS!",
+    "sidebar__input__tokens_limited__title": "enintään merkit"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

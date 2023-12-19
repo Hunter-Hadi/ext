@@ -1,6 +1,6 @@
 {
-  "description": "Kiireim viis ChatGPT, Claude, Bard, Bing kasutamiseks veebis. Ainuke generatiivse tehisintellektiga laiendus, mida vajate.",
-  "name": "MaxAI.me: Kasuta 1-klõpsuga ChatGPT AI-d kõikjal",
+  "description": "Kõige kiirem viis kasutada ChatGPT, Claude, Bard, Bing AI-d kõikjal veebis. Ainuke generatiivne AI laiendus, mida vajate.",
+  "name": "MaxAI.me: Kasuta 1-klõpsuga AI-d kõikjal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Võime mõista pilte koos kõigi teiste GPT-4 Turbo võimalustega. Tagastab maksimaalselt 4 096 väljunditokenit. See on eelvaate mudeli versioon ja pole veel sobilik tootmisliikluseks.",
     "activity__black_friday_2023__title": "Piiratud aja pakkumised musta reede ajal – kuni 50% soodsamalt!",
     "sidebar__speed_dial__chat_history__button": "Vestluse ajalugu",
-    "activity__christmas_2023__title": "JÕULU KINKIDE JAGAMINE! - Kuni 50% ALLAHINDLUST!"
+    "activity__christmas_2023__title": "JÕULU KINKIDE JAGAMINE! - Kuni 50% ALLAHINDLUST!",
+    "sidebar__input__tokens_limited__title": "maksimaalsed märgid"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

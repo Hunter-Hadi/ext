@@ -14,10 +14,8 @@ import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
-import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
-import { numberWithCommas } from '@/utils'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
@@ -25,9 +23,6 @@ const SidebarChatBoxInputActions: FC<{
   const { onSendMessage } = props
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
-  const { currentMaxInputLength, isError } = useChatInputMaxTokens(
-    'chatBoxInputMediator',
-  )
   const [inputValue, setInputValue] = useState('')
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const ref = React.useRef<HTMLElement>(null)
@@ -66,13 +61,13 @@ const SidebarChatBoxInputActions: FC<{
     >
       <Typography
         component={'span'}
-        color={isError ? 'rgb(239, 83, 80)' : 'text.secondary'}
+        color={'text.secondary'}
         fontSize={12}
         // 用等宽字体，不然会左右闪烁宽度
         fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}
       >
-        {smoothConversationLoading ? 0 : numberWithCommas(inputValue.length, 0)}
-        /{numberWithCommas(currentMaxInputLength, 0)}
+        {'128k '}
+        {t('client:sidebar__input__tokens_limited__title')}
       </Typography>
       <Box
         component={'div'}

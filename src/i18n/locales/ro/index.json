@@ -1,6 +1,6 @@
 {
-  "description": "Cel mai rapid mod de a utiliza ChatGPT, Claude, Bard, Bing oriunde online. Singura extensie cu inteligență artificială generativă de care ai nevoie.",
-  "name": "MaxAI.me: Utilizați AI ChatGPT cu un singur clic oriunde",
+  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Bard, Bing AI oriunde online. Singura extensie AI generativă de care aveți nevoie.",
+  "name": "MaxAI.me: Utilizați AI cu un singur clic oriunde",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Deconectare",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitatea de a înțelege imagini, în plus față de toate celelalte capabilități ale lui GPT-4 Turbo. Returnează un maxim de 4.096 de token-uri de ieșire. Aceasta este o versiune de previzualizare a modelului și nu este încă potrivită pentru traficul de producție.",
     "activity__black_friday_2023__title": "Oferte de Black Friday cu timp limitat - Până la 50% reducere!",
     "sidebar__speed_dial__chat_history__button": "Istoric chat",
-    "activity__christmas_2023__title": "OFERTE DE CRĂCIUN! - Până la 50% REDUCERE!"
+    "activity__christmas_2023__title": "OFERTE DE CRĂCIUN! - Până la 50% REDUCERE!",
+    "sidebar__input__tokens_limited__title": "maxim de tokeni"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

@@ -1,6 +1,6 @@
 {
-  "description": "Greičiausias būdas naudoti ChatGPT, Claude, Bard, Bing bet kur internete. Vienintelis generatyvinės dirbtinio intelekto pagrindimas, kurio jums reikia.",
-  "name": "MaxAI.me: Naudokite 1 paspaudimą ChatGPT dirbtinio intelekto bet kur",
+  "description": "Greičiausias būdas naudoti AI, kurį varo ChatGPT, Claude, Bard, Bing AI bet kurioje interneto svetainėje. Vienintelis generatyvinis AI plėtinys, kurio jums reikia.",
+  "name": "MaxAI.me: Naudokite 1 paspaudimą AI bet kur",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Atsijungti",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Galimybė suprasti vaizdus, be visų kitų GPT-4 Turbo galimybių. Grąžina maksimaliai 4 096 išvesties ženklus. Tai yra peržiūros modelio versija ir dar nėra tinkama naudoti produkcijos srautui.",
     "activity__black_friday_2023__title": "Riboto laiko Juodųjų Penktadienių pasiūlymai – Iki 50% nuolaida!",
     "sidebar__speed_dial__chat_history__button": "Pokalbių istorija",
-    "activity__christmas_2023__title": "KALĖDŲ DOVANOS! - Iki 50% NUOLAIDA!"
+    "activity__christmas_2023__title": "KALĖDŲ DOVANOS! - Iki 50% NUOLAIDA!",
+    "sidebar__input__tokens_limited__title": "maksimalus žetonai"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

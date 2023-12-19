@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Bard, Bing'i çevrimiçi herhangi bir yerde kullanmanın en hızlı yolu. İhtiyacınız olan tek üretken yapay zeka destekli uzantı.",
-  "name": "MaxAI.me: Her Yerde 1 Tıkla ChatGPT AI Kullanın",
+  "description": "ChatGPT, Claude, Bard, Bing AI tarafından desteklenen AI'ı çevrimiçi her yerde kullanmanın en hızlı yolu. İhtiyacınız olan tek üretken AI uzantısı.",
+  "name": "MaxAI.me: Her Yerde 1 Tıkla AI Kullanın",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Çıkış yap",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Diğer tüm GPT-4 Turbo yeteneklerine ek olarak görüntüleri anlama yeteneği. En fazla 4,096 çıktı belirteci döndürür. Bu bir önizleme model sürümüdür ve henüz üretim trafiği için uygun değildir.",
     "activity__black_friday_2023__title": "Sınırlı Süreli Black Friday İndirimleri - %50'ye Kadar İndirim!",
     "sidebar__speed_dial__chat_history__button": "Sohbet geçmişi",
-    "activity__christmas_2023__title": "NOEL HEDİYELERİ! - %50'ye kadar İNDİRİM!"
+    "activity__christmas_2023__title": "NOEL HEDİYELERİ! - %50'ye kadar İNDİRİM!",
+    "sidebar__input__tokens_limited__title": "maksimum jetonlar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

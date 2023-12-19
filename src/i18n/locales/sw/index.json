@@ -1,6 +1,6 @@
 {
-  "description": "Njia ya haraka zaidi ya kutumia ChatGPT, Claude, Bard, Bing popote mtandaoni. Kifaa pekee cha kuongeza nguvu ya AI inayozalisha unayohitaji.",
-  "name": "MaxAI.me: Tumia AI ya ChatGPT kwa Bofya 1 Mahali Popote",
+  "description": "Njia ya haraka zaidi ya kutumia AI inayotumiwa na ChatGPT, Claude, Bard, Bing AI popote mtandaoni. Kifaa pekee cha AI kinachohitajika.",
+  "name": "MaxAI.me: Tumia AI kwa Bofya Moja Popote",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Toka",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Uwezo wa kuelewa picha, pamoja na uwezo wote wa GPT-4 Turbo. Inarudisha kiwango cha juu cha maneno 4,096. Hii ni toleo la hakiki la mfano na bado halifai kwa trafiki ya uzalishaji.",
     "activity__black_friday_2023__title": "Ofa za Black Friday kwa Muda Mchache - Hadi 50% Punguzo!",
     "sidebar__speed_dial__chat_history__button": "Historia ya mazungumzo",
-    "activity__christmas_2023__title": "ZAWADI ZA KRISMASI! - Hadi 50% PUNGUZO!"
+    "activity__christmas_2023__title": "ZAWADI ZA KRISMASI! - Hadi 50% PUNGUZO!",
+    "sidebar__input__tokens_limited__title": "kiwango cha juu cha alama"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

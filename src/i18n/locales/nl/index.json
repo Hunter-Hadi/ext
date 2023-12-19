@@ -1,6 +1,6 @@
 {
-  "description": "De snelste manier om ChatGPT, Claude, Bard, Bing overal online te gebruiken. De enige generatieve AI-aangedreven extensie die je nodig hebt.",
-  "name": "MaxAI.me: Gebruik 1-Click ChatGPT AI Overal",
+  "description": "De snelste manier om AI te gebruiken, aangedreven door ChatGPT, Claude, Bard, Bing AI, overal online. De enige generatieve AI-extensie die je nodig hebt.",
+  "name": "MaxAI.me: Gebruik AI met 1 klik overal",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Uitloggen",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogelijkheid om afbeeldingen te begrijpen, naast alle andere mogelijkheden van GPT-4 Turbo. Geeft maximaal 4.096 uitvoertokens terug. Dit is een voorbeeldmodelversie en nog niet geschikt voor productieverkeer.",
     "activity__black_friday_2023__title": "Beperkte Black Friday-aanbiedingen - Tot 50% korting!",
     "sidebar__speed_dial__chat_history__button": "Chatgeschiedenis",
-    "activity__christmas_2023__title": "KERSTACTIES! - Tot 50% KORTING!"
+    "activity__christmas_2023__title": "KERSTACTIES! - Tot 50% KORTING!",
+    "sidebar__input__tokens_limited__title": "max tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

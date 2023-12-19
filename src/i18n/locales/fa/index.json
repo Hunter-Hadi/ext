@@ -1,6 +1,6 @@
 {
-  "description": "سریعترین راه برای استفاده از ChatGPT، Claude، Bard، Bing در هر جایی آنلاین. تنها افزونه قدرتمند AI تولیدی که نیاز دارید.",
-  "name": "MaxAI.me: استفاده از چت‌بات AI با یک کلیک در هر جایی",
+  "description": "سریعترین راه برای استفاده از هوش مصنوعی قدرتمند توسط ChatGPT، Claude، Bard، Bing AI در هر جایی آنلاین. تنها افزونه هوش مصنوعی تولیدی که نیاز دارید.",
+  "name": "MaxAI.me: استفاده از هوش مصنوعی با 1 کلیک در هر جایی",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "خروج",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "قابلیت درک تصاویر، علاوه بر تمام قابلیت های دیگر GPT-4 Turbo. حداکثر 4,096 توکن خروجی را برمیگرداند. این نسخه مدل پیش نمایش است و هنوز مناسب برای ترافیک تولید نیست.",
     "activity__black_friday_2023__title": "پیشنهادات ویژه جمعه سیاه محدود - تا 50% تخفیف!",
     "sidebar__speed_dial__chat_history__button": "تاریخچه چت",
-    "activity__christmas_2023__title": "تخفیفات کریسمس! - تا 50% تخفیف!"
+    "activity__christmas_2023__title": "تخفیفات کریسمس! - تا 50% تخفیف!",
+    "sidebar__input__tokens_limited__title": "حداکثر توکن‌ها"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

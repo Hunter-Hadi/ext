@@ -1,6 +1,6 @@
 {
-  "description": "Cara terpantas untuk menggunakan ChatGPT, Claude, Bard, Bing di mana-mana dalam talian. Satu-satunya sambungan AI generatif yang anda perlukan.",
-  "name": "MaxAI.me: Gunakan AI ChatGPT 1-Klik di Mana-mana",
+  "description": "Cara terpantas untuk menggunakan AI yang dikuasakan oleh ChatGPT, Claude, Bard, Bing AI di mana-mana dalam talian. Satu-satunya sambungan AI generatif yang anda perlukan.",
+  "name": "MaxAI.me: Gunakan AI 1-Klik Di Mana-mana",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log keluar",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami imej, selain daripada semua keupayaan GPT-4 Turbo yang lain. Mengembalikan maksimum 4,096 token output. Ini adalah versi model pra-tonton dan belum sesuai untuk trafik pengeluaran.",
     "activity__black_friday_2023__title": "Tawaran Terhad Black Friday – Sehingga 50% Off!",
     "sidebar__speed_dial__chat_history__button": "Sejarah Chat",
-    "activity__christmas_2023__title": "PERCUMA NATAL! - Sehingga 50% DISKAUN!"
+    "activity__christmas_2023__title": "PERCUMA NATAL! - Sehingga 50% DISKAUN!",
+    "sidebar__input__tokens_limited__title": "maksimum token"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -1,6 +1,6 @@
 {
-  "description": "أسرع طريقة لاستخدام ChatGPT، Claude، Bard، Bing في أي مكان عبر الإنترنت. الامتداد الوحيد المدعوم بالذكاء الاصطناعي الذي تحتاجه.",
-  "name": "MaxAI.me: استخدم ChatGPT AI بنقرة واحدة في أي مكان",
+  "description": "أسرع طريقة لاستخدام الذكاء الاصطناعي المدعوم بـ ChatGPT و Claude و Bard و Bing AI في أي مكان عبر الإنترنت. الامتداد الوحيد للذكاء الاصطناعي التوليدي الذي تحتاجه.",
+  "name": "MaxAI.me: استخدم الذكاء الاصطناعي بنقرة واحدة في أي مكان",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "تسجيل الخروج",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "القدرة على فهم الصور، بالإضافة إلى جميع قدرات GPT-4 Turbo الأخرى. يُرجع حد أقصى من 4,096 رمز إخراج. هذا إصدار نموذج معاينة وغير مناسب بعد لحركة المرور الإنتاجية.",
     "activity__black_friday_2023__title": "صفقات الجمعة السوداء لفترة محدودة - تصل إلى 50% خصم!",
     "sidebar__speed_dial__chat_history__button": "سجل الدردشة",
-    "activity__christmas_2023__title": "هدايا عيد الميلاد! - خصم يصل إلى 50%!"
+    "activity__christmas_2023__title": "هدايا عيد الميلاد! - خصم يصل إلى 50%!",
+    "sidebar__input__tokens_limited__title": "الحد الأقصى للرموز"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -1,6 +1,6 @@
 {
-  "description": "Cách nhanh nhất để sử dụng ChatGPT, Claude, Bard, Bing bất cứ nơi nào trên mạng. Chỉ cần một tiện ích mở rộng được trang bị trí tuệ nhân tạo sinh sản duy nhất bạn cần.",
-  "name": "MaxAI.me: Sử dụng ChatGPT AI bằng 1-Click Mọi Nơi",
+  "description": "Cách nhanh nhất để sử dụng Trí tuệ Nhân tạo được cung cấp bởi ChatGPT, Claude, Bard, Bing AI mọi nơi trực tuyến. Phần mở rộng Trí tuệ Nhân tạo duy nhất bạn cần.",
+  "name": "MaxAI.me: Sử dụng Trí tuệ Nhân tạo bằng 1-Click Mọi nơi",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Đăng xuất",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Khả năng hiểu hình ảnh, bên cạnh tất cả các khả năng GPT-4 Turbo khác. Trả về tối đa 4.096 mã thông báo đầu ra. Đây là phiên bản mô hình xem trước và chưa phù hợp cho lưu lượng sản xuất.",
     "activity__black_friday_2023__title": "Ưu đãi Black Friday giới hạn thời gian - Giảm giá lên đến 50%!",
     "sidebar__speed_dial__chat_history__button": "Lịch sử trò chuyện",
-    "activity__christmas_2023__title": "QUÀ TẶNG GIÁNG SINH! - Giảm giá lên đến 50%!"
+    "activity__christmas_2023__title": "QUÀ TẶNG GIÁNG SINH! - Giảm giá lên đến 50%!",
+    "sidebar__input__tokens_limited__title": "số lượng tối đa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

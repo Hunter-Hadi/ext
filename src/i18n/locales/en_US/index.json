@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use ChatGPT, Claude, Bard, Bing anywhere online. The only generative AI-powered extension you need.",
-  "name": "MaxAI.me: Use 1-Click ChatGPT AI Anywhere",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Bard, Bing AI anywhere online. The only generative AI extension you need.",
+  "name": "MaxAI.me: Use 1-Click AI Anywhere",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log out",
@@ -252,6 +252,7 @@
     "sidebar__refresh_page__description": "Refresh this page to activate the extension on this page.",
     "sidebar__refresh_page__button": "Refresh this page",
     "sidebar__input__placeholder": "Ask AI...",
+    "sidebar__input__tokens_limited__title": "tokens max",
     "floating_menu__button__cta__tooltip": "Ask AI to edit, summarize, explain, or generate text",
     "floating_menu__button__hide_menu": "Hide menu",
     "floating_menu__button__hide_menu__until_next_visit": "Hide menu until next visit",

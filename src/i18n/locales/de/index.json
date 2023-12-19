@@ -1,6 +1,6 @@
 {
-  "description": "Der schnellste Weg, ChatGPT, Claude, Bard, Bing überall online zu nutzen. Die einzige generative KI-gesteuerte Erweiterung, die Sie benötigen.",
-  "name": "MaxAI.me: Verwenden Sie 1-Klick ChatGPT KI überall",
+  "description": "Der schnellste Weg, KI zu nutzen, die von ChatGPT, Claude, Bard und Bing AI angetrieben wird - überall online. Die einzige generative KI-Erweiterung, die Sie benötigen.",
+  "name": "MaxAI.me: Verwenden Sie KI mit nur einem Klick überall",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Abmelden",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Fähigkeit, Bilder zu verstehen, zusätzlich zu allen anderen GPT-4 Turbo-Funktionen. Gibt maximal 4.096 Ausgabetoken zurück. Dies ist eine Vorschauversion des Modells und noch nicht für den Produktionsverkehr geeignet.",
     "activity__black_friday_2023__title": "Begrenzte Black Friday Angebote – Bis zu 50% Rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatverlauf",
-    "activity__christmas_2023__title": "WEIHNACHTSVERLOSUNG! - Bis zu 50% RABATT!"
+    "activity__christmas_2023__title": "WEIHNACHTSVERLOSUNG! - Bis zu 50% RABATT!",
+    "sidebar__input__tokens_limited__title": "max. Tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

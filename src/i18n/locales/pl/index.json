@@ -1,6 +1,6 @@
 {
-  "description": "Najszybszy sposób na korzystanie z ChatGPT, Claude, Bard, Bing w dowolnym miejscu online. Jedyny rozszerzenie z generatywnym AI, którego potrzebujesz.",
-  "name": "MaxAI.me: Użyj sztucznej inteligencji ChatGPT w jednym kliknięciu gdziekolwiek",
+  "description": "Najszybszy sposób na korzystanie z AI opartego na ChatGPT, Claude, Bard, Bing AI w dowolnym miejscu online. Jedyny rozszerzenie generatywne AI, którego potrzebujesz.",
+  "name": "MaxAI.me: Użyj sztucznej inteligencji w jednym kliknięciu wszędzie",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Wyloguj",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Możliwość rozumienia obrazów, oprócz wszystkich innych możliwości GPT-4 Turbo. Zwraca maksymalnie 4 096 tokenów wyjściowych. To wersja podglądowa modelu i jeszcze nie nadaje się do ruchu produkcyjnego.",
     "activity__black_friday_2023__title": "Ograniczone Czasowo Oferty Black Friday – Do 50% Zniżki!",
     "sidebar__speed_dial__chat_history__button": "Historia czatu",
-    "activity__christmas_2023__title": "ROZDANIE NA ŚWIĘTA! - Do 50% ZNIŻKI!"
+    "activity__christmas_2023__title": "ROZDANIE NA ŚWIĘTA! - Do 50% ZNIŻKI!",
+    "sidebar__input__tokens_limited__title": "maks. tokenów"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

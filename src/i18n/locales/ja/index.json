@@ -1,6 +1,6 @@
 {
-  "description": "オンラインでどこでもChatGPT、Claude、Bard、Bingを使用する最速の方法。必要な唯一の生成AIパワード拡張機能。",
-  "name": "MaxAI.me：どこでも1クリックでChatGPT AIを使用",
+  "description": "ChatGPT、Claude、Bard、Bing AIによって強化されたAIをオンラインのどこでも最速で利用する方法。必要なのはこの生成型AI拡張機能だけです。",
+  "name": "MaxAI.me：どこでも1クリックでAIを利用",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ログアウト",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "他のすべてのGPT-4 Turboの機能に加えて、画像を理解する能力を持っています。最大4,096の出力トークンを返します。これはプレビューモデルバージョンであり、まだ本番トラフィックには適していません。",
     "activity__black_friday_2023__title": "期間限定のブラックフライデーセール！最大50％オフ！",
     "sidebar__speed_dial__chat_history__button": "チャット履歴",
-    "activity__christmas_2023__title": "クリスマスプレゼント！ - 最大50%オフ！"
+    "activity__christmas_2023__title": "クリスマスプレゼント！ - 最大50%オフ！",
+    "sidebar__input__tokens_limited__title": "最大トークン数"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

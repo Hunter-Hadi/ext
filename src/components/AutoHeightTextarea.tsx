@@ -21,7 +21,6 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import useChatInputMaxTokens from '@/features/sidebar/hooks/useChatInputMaxTokens'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -180,11 +179,6 @@ const AutoHeightTextarea: FC<{
     expandNode,
     sx,
   } = props
-  const { isError } = useChatInputMaxTokens(
-    MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID === InputId
-      ? 'floatingMenuInputMediator'
-      : 'chatBoxInputMediator',
-  )
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const onCompositionRef = useRef(false)
   const nextMessageIsActionRef = useRef(false)
@@ -372,9 +366,7 @@ const AutoHeightTextarea: FC<{
       className={loading ? 'chat-box__input--loading' : ''}
       borderRadius={'8px'}
       border={`1px solid`}
-      borderColor={`${
-        isError || error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'
-      }`}
+      borderColor={`${error ? 'rgb(239, 83, 80)' : 'customColor.borderColor'}`}
       width={'100%'}
       minHeight={34}
       sx={{

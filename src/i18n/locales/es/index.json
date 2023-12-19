@@ -1,6 +1,6 @@
 {
-  "description": "La forma más rápida de usar ChatGPT, Claude, Bard, Bing en cualquier lugar en línea. La única extensión impulsada por IA generativa que necesitas.",
-  "name": "MaxAI.me: Utiliza ChatGPT AI con un solo clic en cualquier lugar",
+  "description": "La forma más rápida de usar IA impulsada por ChatGPT, Claude, Bard, Bing AI en cualquier lugar en línea. La única extensión de IA generativa que necesitas.",
+  "name": "MaxAI.me: Usa IA en cualquier lugar con un solo clic",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Cerrar sesión",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidad para comprender imágenes, además de todas las demás capacidades de GPT-4 Turbo. Devuelve un máximo de 4.096 tokens de salida. Esta es una versión de modelo de vista previa y aún no es adecuada para el tráfico de producción.",
     "activity__black_friday_2023__title": "¡Ofertas de Viernes Negro por Tiempo Limitado - ¡Hasta un 50% de Descuento!",
     "sidebar__speed_dial__chat_history__button": "Historial de chat",
-    "activity__christmas_2023__title": "¡REGALOS DE NAVIDAD! - ¡Hasta un 50% DE DESCUENTO!"
+    "activity__christmas_2023__title": "¡REGALOS DE NAVIDAD! - ¡Hasta un 50% DE DESCUENTO!",
+    "sidebar__input__tokens_limited__title": "máximo de tokens"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

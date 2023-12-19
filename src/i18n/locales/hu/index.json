@@ -1,6 +1,6 @@
 {
-  "description": "A ChatGPT, Claude, Bard, Bing leggyorsabb módja bárhol az interneten. Az egyetlen generatív AI-alapú kiterjesztés, amire szükséged van.",
-  "name": "MaxAI.me: Használja a 1 kattintásos ChatGPT mesterséges intelligenciát bárhol",
+  "description": "A leggyorsabb módja annak, hogy ChatGPT, Claude, Bard, Bing AI által támogatott mesterséges intelligenciát használjon bárhol az interneten. Az egyetlen generatív AI kiegészítő, amire szüksége van.",
+  "name": "MaxAI.me: Használja az AI-t egyetlen kattintással bárhol",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kijelentkezés",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Képek értelmezésének képessége, az összes többi GPT-4 Turbo képesség mellett. Legfeljebb 4 096 kimeneti token-t ad vissza. Ez egy előzetes modell verzió, amely még nem alkalmas a termelési forgalomra.",
     "activity__black_friday_2023__title": "Korlátozott idejű Fekete Pénteki Akciók – Akár 50% kedvezmény!",
     "sidebar__speed_dial__chat_history__button": "Chat előzmények",
-    "activity__christmas_2023__title": "KARÁCSONYI AJÁNDÉKOK! - Akár 50% KEDVEZMÉNY!"
+    "activity__christmas_2023__title": "KARÁCSONYI AJÁNDÉKOK! - Akár 50% KEDVEZMÉNY!",
+    "sidebar__input__tokens_limited__title": "maximális tokenek"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

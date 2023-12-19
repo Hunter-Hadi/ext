@@ -1,6 +1,6 @@
 {
-  "description": "Nejrychlejší způsob, jak používat ChatGPT, Claude, Bard, Bing kdekoli online. Jediné rozšíření poháněné generativní umělou inteligencí, které potřebujete.",
-  "name": "MaxAI.me: Použijte 1-Click ChatGPT AI kdekoli",
+  "description": "Nejrychlejší způsob, jak používat umělou inteligenci poháněnou ChatGPT, Claudem, Bardem a Bing AI kdekoli online. Jediné rozšíření generativní umělé inteligence, které potřebujete.",
+  "name": "MaxAI.me: Použijte 1-Kliknutí AI Kdekoli",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odhlásit se",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Schopnost porozumět obrázkům, kromě všech ostatních schopností modelu GPT-4 Turbo. Vrací maximálně 4 096 výstupních tokenů. Toto je ukázková verze modelu a zatím není vhodná pro produkční provoz.",
     "activity__black_friday_2023__title": "Omezená nabídka Black Friday slev – Až 50% sleva!",
     "sidebar__speed_dial__chat_history__button": "Historie chatu",
-    "activity__christmas_2023__title": "VÁNOČNÍ DÁRKY! - Až 50% SLEVA!"
+    "activity__christmas_2023__title": "VÁNOČNÍ DÁRKY! - Až 50% SLEVA!",
+    "sidebar__input__tokens_limited__title": "maximální počet tokenů"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -1,6 +1,6 @@
 {
-  "description": "በየትኛውም የቻትGPT, Claude, Bard, Bing በመጠቀም የተሳተፉ ኢንቴርንት እናደርጋለን። የሚከተለውን የተለያዩ AI-ተጠቃሚ እንዴት እንደሚሆን እንዲሁም የሚያስተምሩ ነው።",
-  "name": "MaxAI.me: የ1-ጁንት ChatGPT AI በመጠቀም ያግኙ",
+  "description": "AI አጠቃላይ በማንኛውም አይነት በ ChatGPT, Claude, Bard, Bing AI በመጠቀም የተሻለ የሚሆን አጠቃላይ አይነት አገልግሎት ነው።",
+  "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም አይነት እንዴት ለመጠቀም 1-Click",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ውጣ",
@@ -474,7 +474,8 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "የምስልን ስፍራ ያለውን የGPT-4 Turbo እናትን እና ሁለት ሌሎች GPT-4 በማስተላለፊያ የሚገኙት የማስታወቂያ እናትን እና JSON ሞዴ, የማስተላለፊያ ዝርዝርዎን የሚያስቀምጡ, የማስተላለፊያ የማስታወቂያ ውሂብ ሰውነታችንን እና ተጨማሪ እርምጃዎችን ይመልከቱ። ይህ ማስተላለፊያ ሞዴ እናይሆን ለባለቤት አይደለም።",
     "activity__black_friday_2023__title": "የተጠቀሱ እናደርሳለን - በአንድ ሰዓት የሚሰራ የቅንጅት 50% በቀላል!",
     "sidebar__speed_dial__chat_history__button": "የውጤት ማሰሻ",
-    "activity__christmas_2023__title": "ገንዘብ ማስታወቂያዎች! - በከፍተኛ 50% ይጠቀሙ!"
+    "activity__christmas_2023__title": "ገንዘብ ማስታወቂያዎች! - በከፍተኛ 50% ይጠቀሙ!",
+    "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

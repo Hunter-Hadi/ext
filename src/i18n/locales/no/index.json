@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til å forstå bilder, i tillegg til alle andre GPT-4 Turbo-funksjoner. Returnerer maksimalt 4 096 utdatatokens. Dette er en forhåndsvisningsmodellversjon og er ennå ikke egnet for produksjonstrafikk.",
     "activity__black_friday_2023__title": "Begrensede Black Friday-tilbud – Opptil 50% rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatlogg",
-    "activity__christmas_2023__title": "JULEGAVE! - Opptil 50% AVSLAG!"
+    "activity__christmas_2023__title": "JULEGAVE! - Opptil 50% AVSLAG!",
+    "provider__label__third_part": "Tredjepart",
+    "provider__confirm_dialog__title": "Du bytter nå til tredjeparts AI-leverandør: {{label}}",
+    "provider__confirm_dialog__sub_title": "Vi har inkludert denne leverandøren for å tilby deg et bredere utvalg av AI-alternativer.",
+    "provider__confirm_dialog__important_reminder": "Viktig påminnelse",
+    "provider__confirm_dialog__important_reminder__desc": "Vær oppmerksom på at du kan oppleve feil eller tregere svar fra denne tredjepartsleverandøren, som er utenfor MaxAI's kontroll. Vi jobber aktivt med å minimere disse problemene og setter pris på din forståelse.",
+    "provider__confirm_dialog__for_enhanced_stability": "For bedre stabilitet",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Vurder våre premium GPT- og Claude AI-leverandører for pålitelig og høykvalitets AI-ytelse, designet for å forbedre opplevelsen din.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Du kan bytte til:",
+    "provider__confirm_dialog__your_feedback_matters": "Din tilbakemelding betyr noe",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Hvis du har noen problemer eller ideer, vennligst gi oss beskjed. Din tilbakemelding er essensiell for oss for å forbedre våre tjenester. Takk for ditt verdifulle bidrag til vårt fellesskap!",
+    "provider__confirm_dialog__continue_with": "Fortsett med {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Detektert integrasjonsproblem",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} opplever for øyeblikket tilkoblingsproblemer med MaxAI på grunn av nylige oppdateringer. Vårt team jobber aktivt med å løse dette, og vi setter pris på din forståelse. I mellomtiden kan du vurdere å bruke en alternativ leverandør og sjekke tilbake senere.",
+    "provider__label__hide": "Skjul",
+    "provider__label__view_solutions": "Vis løsninger"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

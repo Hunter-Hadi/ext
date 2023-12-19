@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami gambar, selain semua kemampuan GPT-4 Turbo lainnya. Mengembalikan maksimal 4.096 token output. Ini adalah versi model pratinjau dan belum cocok untuk lalu lintas produksi.",
     "activity__black_friday_2023__title": "Penawaran Terbatas Black Friday – Diskon Hingga 50%!",
     "sidebar__speed_dial__chat_history__button": "Riwayat Chat",
-    "activity__christmas_2023__title": "HADIAH NATAL! - Diskon hingga 50%!"
+    "activity__christmas_2023__title": "HADIAH NATAL! - Diskon hingga 50%!",
+    "provider__label__third_part": "Pihak ketiga",
+    "provider__confirm_dialog__title": "Anda sekarang beralih ke penyedia AI pihak ketiga: {{label}}",
+    "provider__confirm_dialog__sub_title": "Kami telah menyertakan penyedia ini untuk menawarkan Anda berbagai pilihan AI yang lebih luas.",
+    "provider__confirm_dialog__important_reminder": "Pengingat penting",
+    "provider__confirm_dialog__important_reminder__desc": "Harap diketahui bahwa saat penyedia pihak ketiga ini berkembang, Anda mungkin kadang-kadang mengalami bug atau respons yang lambat, yang berada di luar kendali MaxAI. Kami sedang aktif bekerja untuk meminimalkan masalah ini dan menghargai pemahaman Anda.",
+    "provider__confirm_dialog__for_enhanced_stability": "Untuk stabilitas yang lebih baik",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Pertimbangkan penyedia GPT premium dan Claude kami untuk performa AI yang andal dan berkualitas tinggi, yang dirancang untuk meningkatkan pengalaman Anda.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Anda dapat beralih ke:",
+    "provider__confirm_dialog__your_feedback_matters": "Masukan Anda penting",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Jika Anda memiliki masalah atau ide, beri tahu kami. Masukan Anda sangat penting bagi kami untuk meningkatkan layanan kami. Terima kasih atas kontribusi berharga Anda kepada komunitas kami!",
+    "provider__confirm_dialog__continue_with": "Lanjutkan dengan {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Masalah integrasi terdeteksi",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} saat ini mengalami masalah koneksi dengan MaxAI karena pembaruan terbaru. Tim kami sedang aktif bekerja untuk menyelesaikan masalah ini, dan kami menghargai pemahaman Anda. Sementara itu, pertimbangkan menggunakan penyedia alternatif dan cek kembali dengan kami nanti.",
+    "provider__label__hide": "Sembunyikan",
+    "provider__label__view_solutions": "Lihat solusi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

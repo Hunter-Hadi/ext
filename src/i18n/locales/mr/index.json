@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "सर्व इतर GPT-4 Turbo क्षमतांच्या वापरासाठी छायाचित्रे समजण्याची क्षमता. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते. हा प्रीव्ह्यू मॉडेल अद्याप संचालनिक ट्रॅफिकसाठी उपयुक्त नाही.",
     "activity__black_friday_2023__title": "सीमित कालावधीचे ब्लॅक शुक्रवार ऑफर - 50% पर्यंत कमी!",
     "sidebar__speed_dial__chat_history__button": "चॅट इतिहास",
-    "activity__christmas_2023__title": "क्रिसमस गिवअवेज! - 50% सुवर्णात्मक!"
+    "activity__christmas_2023__title": "क्रिसमस गिवअवेज! - 50% सुवर्णात्मक!",
+    "provider__label__third_part": "तिसरा पक्ष",
+    "provider__confirm_dialog__title": "तुम्ही आता तिसर्या पक्षाच्या AI प्रदात्यावर स्विच करत आहात: {{label}}",
+    "provider__confirm_dialog__sub_title": "आपल्याला AI पर्यायांची एक विस्तृत श्रेणी पुरविण्यासाठी आम्ही हे प्रदाता समाविष्ट केले आहे.",
+    "provider__confirm_dialog__important_reminder": "महत्वाचे आवृत्ती",
+    "provider__confirm_dialog__important_reminder__desc": "कृपया लक्षात घ्या की, हे थर्ड-पार्टी प्रदाता विकसित होत असताना, आपण काहीतरी बग्स किंवा मंद उत्पन्न करू शकता, ज्यामुळे MaxAI च्या वशात नाहीत. आम्ही या समस्यांची किंमत कमी करण्यासाठी सक्रियपणे कार्यरत आहोत आणि आपल्या समजावणीची मूल्यवान आपली मूल्यमापने करतो.",
+    "provider__confirm_dialog__for_enhanced_stability": "सुधारित स्थिरतेसाठी",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "आपल्या अनुभवाची सुधारित करण्यासाठी, विश्वसनीय आणि उच्च-गुणवत्तेच्या AI प्रदात्यांसाठी आमच्या प्रीमियम GPT आणि Claude AI प्रदात्यांचा विचार करा.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "तुम्ही स्विच करू शकता:",
+    "provider__confirm_dialog__your_feedback_matters": "तुमचा अभिप्राय महत्वाचा आहे",
+    "provider__confirm_dialog__your_feedback_matters__desc": "आपल्याकडे कोणतीही समस्या किंवा विचारे असल्यास, कृपया आम्हाला सांगा. आपला अभिप्राय आमच्या सेवांची सुधारणा करण्यासाठी महत्वाचा आहे. आमच्या समुदायातील आपल्या मौल्यवान योगदानासाठी आपल्या मूल्यवान योगदानाबद्दल धन्यवाद!",
+    "provider__confirm_dialog__continue_with": "{{label}} सोबत सुरू ठेवा",
+    "provider__confirm_dialog__integration_issue_detected": "संयोजन समस्या ओळखली",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} ही MaxAI सोडवण्यासाठी अद्यतनांकरिता कनेक्शन समस्या आढळली आहे. आमची टीम या प्रश्नांचे निराकरण करण्यासाठी सक्रियपणे कार्यरत आहे आणि आम्ही आपल्या समजावणीचे मूल्यमापन करतो. तब्बल, कृपया एक वैकल्पिक प्रदात्याचा वापर करण्याची विचार करा आणि नंतर आपल्याशी पुन्हा तपासा.",
+    "provider__label__hide": "लपवा",
+    "provider__label__view_solutions": "समाधान पहा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -24,6 +24,7 @@ import Typography from '@mui/material/Typography'
 import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined'
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined'
 import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
+import { useTranslation } from 'react-i18next'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 const getMessageRenderText = (message: IChatMessage) => {
@@ -62,6 +63,7 @@ const SidebarChatBoxMessageItem: FC<{
     onRetry,
     className,
   } = props
+  const { t } = useTranslation(['client'])
   const { isDarkMode } = useCustomTheme()
   const [defaultText, setDefaultText] = useState(() =>
     getMessageRenderText(message),
@@ -307,8 +309,14 @@ const SidebarChatBoxMessageItem: FC<{
                       }}
                       onClick={() => setSolutionsShow((pre) => !pre)}
                     >
-                      <Typography fontSize={16} lineHeight={1.5}>
-                        {solutionsShow ? 'Hide' : 'View solutions'}
+                      <Typography
+                        fontSize={16}
+                        lineHeight={1.5}
+                        color="text.primary"
+                      >
+                        {solutionsShow
+                          ? t('client:provider__label__hide')
+                          : t('client:provider__label__view_solutions')}
                       </Typography>
                       {solutionsShow ? (
                         <KeyboardArrowUpOutlinedIcon />

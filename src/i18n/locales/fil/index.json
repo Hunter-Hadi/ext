@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kakayahang maunawaan ang mga imahe, bukod sa lahat ng iba pang kakayahan ng GPT-4 Turbo. Nagbabalik ng maximum na 4,096 output tokens. Ito ay isang preview model version at hindi pa angkop para sa production traffic.",
     "activity__black_friday_2023__title": "Mga Limitadong Oras na Black Friday Deals - Hanggang 50% Off!",
     "sidebar__speed_dial__chat_history__button": "Kasaysayan ng Chat",
-    "activity__christmas_2023__title": "CHRISTMAS GIVEAWAYS! - Hanggang 50% OFF!"
+    "activity__christmas_2023__title": "CHRISTMAS GIVEAWAYS! - Hanggang 50% OFF!",
+    "provider__label__third_part": "Ikatlong Partido",
+    "provider__confirm_dialog__title": "Ikaw ay lumilipat na sa Ikatlong Partidong AI provider: {{label}}",
+    "provider__confirm_dialog__sub_title": "Kami ay nagdagdag ng provider na ito upang mag-alok sa iyo ng mas malawak na mga pagpipilian sa AI.",
+    "provider__confirm_dialog__important_reminder": "Mahalagang paalala",
+    "provider__confirm_dialog__important_reminder__desc": "Mangyaring tandaan na habang ang ikatlong partido na ito ay nagbabago, maaaring minsan ay magkaroon ka ng mga bug o mas mabagal na mga tugon, na labas sa kontrol ng MaxAI. Kami ay aktibong gumagawa upang bawasan ang mga isyung ito at pinahahalagahan ang iyong pang-unawa.",
+    "provider__confirm_dialog__for_enhanced_stability": "Para sa pinabuting katatagan",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Isaalang-alang ang aming premium GPT at Claude AI providers para sa maaasahang at mataas na kalidad na pagganap ng AI, na idinisenyo upang mapabuti ang iyong karanasan.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Maaari kang lumipat sa:",
+    "provider__confirm_dialog__your_feedback_matters": "Mahalaga ang iyong feedback",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Kung mayroon kang anumang isyu o ideya, ipaalam sa amin. Ang iyong feedback ay mahalaga para sa amin upang mapabuti ang aming mga serbisyo. Salamat sa iyong mahalagang kontribusyon sa aming komunidad!",
+    "provider__confirm_dialog__continue_with": "Magpatuloy gamit ang {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Natuklasan ang isyung pang-integrasyon",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Ang {{label}} ay kasalukuyang may mga problema sa koneksyon sa MaxAI dahil sa mga kamakailang update nito. Kami ay aktibong gumagawa upang malutas ang problemang ito, at pinahahalagahan namin ang iyong pang-unawa. Samantala, mangyaring isaalang-alang ang paggamit ng ibang provider at bumalik sa amin mamaya.",
+    "provider__label__hide": "Itago",
+    "provider__label__view_solutions": "Tingnan ang mga solusyon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

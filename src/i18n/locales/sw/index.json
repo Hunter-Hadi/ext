@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Uwezo wa kuelewa picha, pamoja na uwezo wote wa GPT-4 Turbo. Inarudisha kiwango cha juu cha maneno 4,096. Hii ni toleo la hakiki la mfano na bado halifai kwa trafiki ya uzalishaji.",
     "activity__black_friday_2023__title": "Ofa za Black Friday kwa Muda Mchache - Hadi 50% Punguzo!",
     "sidebar__speed_dial__chat_history__button": "Historia ya mazungumzo",
-    "activity__christmas_2023__title": "ZAWADI ZA KRISMASI! - Hadi 50% PUNGUZO!"
+    "activity__christmas_2023__title": "ZAWADI ZA KRISMASI! - Hadi 50% PUNGUZO!",
+    "provider__label__third_part": "3rd-party",
+    "provider__confirm_dialog__title": "Sasa unabadilisha kwa mtoa huduma wa AI wa tatu: {{label}}",
+    "provider__confirm_dialog__sub_title": "Tumeweka mtoa huduma huyu ili kukupa chaguzi mbalimbali za AI.",
+    "provider__confirm_dialog__important_reminder": "Kumbusho muhimu",
+    "provider__confirm_dialog__important_reminder__desc": "Tafadhali fahamu kwamba wakati mtoa huduma huyu wa tatu anavyoendelea, huenda ukakutana na matatizo ya programu au majibu polepole, ambayo yapo nje ya udhibiti wa MaxAI. Tunafanya kazi kwa bidii kupunguza matatizo haya na tunathamini uelewa wako.",
+    "provider__confirm_dialog__for_enhanced_stability": "Kwa utulivu bora",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Tumia watoa huduma wetu wa GPT na Claude wa kiwango cha juu kwa utendaji thabiti na wa hali ya juu wa AI, ulioundwa kuimarisha uzoefu wako.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Unaweza kubadili kwa:",
+    "provider__confirm_dialog__your_feedback_matters": "Maoni yako ni muhimu",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Ikiwa una shida au mawazo yoyote, tafadhali tuambie. Maoni yako ni muhimu kwetu kuimarisha huduma zetu. Asante kwa mchango wako muhimu kwa jamii yetu!",
+    "provider__confirm_dialog__continue_with": "Endelea na {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Tatizo la ushirikiano limegunduliwa",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kwa sasa inakabiliwa na matatizo ya uunganisho na MaxAI kutokana na sasisho zake za hivi karibuni. Timu yetu inafanya kazi kwa bidii kutatua suala hili, na tunathamini uelewa wako. Kwa sasa, tafadhali fikiria kutumia mtoa huduma mbadala na rudisha tena baadaye.",
+    "provider__label__hide": "Ficha",
+    "provider__label__view_solutions": "Angalia suluhisho"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Spēja saprast attēlus, kā arī visus citus GPT-4 Turbo iespējamos. Atgriež maksimāli 4 096 izvades žetonus. Šis ir priekšskatījuma modeļa versija un vēl nav piemērota ražošanas datplūsmai.",
     "activity__black_friday_2023__title": "Ierobežots laiks Melnā Piektdiena piedāvājumi – Līdz 50% atlaidēm!",
     "sidebar__speed_dial__chat_history__button": "Čata vēsture",
-    "activity__christmas_2023__title": "ZIEMASSVĒTKU DĀVANAS! - Līdz pat 50% ATLAIDE!"
+    "activity__christmas_2023__title": "ZIEMASSVĒTKU DĀVANAS! - Līdz pat 50% ATLAIDE!",
+    "provider__label__third_part": "3. puse",
+    "provider__confirm_dialog__title": "Tagad jūs pārslēdzaties uz 3. puses AI pakalpojumu sniedzēju: {{label}}",
+    "provider__confirm_dialog__sub_title": "Mēs esam iekļāvuši šo pakalpojumu sniedzēju, lai piedāvātu jums plašāku AI iespēju klāstu.",
+    "provider__confirm_dialog__important_reminder": "Svarīgs atgādinājums",
+    "provider__confirm_dialog__important_reminder__desc": "Lūdzu, ņemiet vērā, ka, jo šis trešās puses pakalpojumu sniedzējs attīstās, jums var gadīties kļūdas vai lēnākas reakcijas, kas ir ārpus MaxAI kontroles. Mēs aktīvi strādājam, lai minimizētu šīs problēmas un novērtējam jūsu sapratni.",
+    "provider__confirm_dialog__for_enhanced_stability": "Palielinātai stabilitātei",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Izmantojiet mūsu premium GPT un Claude AI pakalpojumu sniedzējus, lai nodrošinātu uzticamu un augstas kvalitātes AI veiktspēju, kas paredzēta jūsu pieredzes uzlabošanai.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Jūs varat pārslēgties uz:",
+    "provider__confirm_dialog__your_feedback_matters": "Jūsu atsauksmes ir svarīgas",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Ja jums ir kādas problēmas vai idejas, lūdzu, informējiet mūs. Jūsu atsauksmes ir būtiskas, lai mēs varētu uzlabot savus pakalpojumus. Paldies par jūsu vērtīgo ieguldījumu mūsu kopienā!",
+    "provider__confirm_dialog__continue_with": "Turpināt ar {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Konfigurācijas problēma konstatēta",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} pašlaik piedzīvo savienojuma problēmas ar MaxAI sakarā ar tās nesenajiem atjauninājumiem. Mūsu komanda aktīvi strādā, lai atrisinātu šo jautājumu, un novērtējam jūsu sapratni. Tā starpā, lūdzu, izvēlieties alternatīvu pakalpojumu sniedzēju un vēlāk atgriezieties pie mums.",
+    "provider__label__hide": "Paslēpt",
+    "provider__label__view_solutions": "Skatīt risinājumus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

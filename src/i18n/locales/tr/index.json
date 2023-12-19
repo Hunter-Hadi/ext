@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Diğer tüm GPT-4 Turbo yeteneklerine ek olarak görüntüleri anlama yeteneği. En fazla 4,096 çıktı belirteci döndürür. Bu bir önizleme model sürümüdür ve henüz üretim trafiği için uygun değildir.",
     "activity__black_friday_2023__title": "Sınırlı Süreli Black Friday İndirimleri - %50'ye Kadar İndirim!",
     "sidebar__speed_dial__chat_history__button": "Sohbet geçmişi",
-    "activity__christmas_2023__title": "NOEL HEDİYELERİ! - %50'ye kadar İNDİRİM!"
+    "activity__christmas_2023__title": "NOEL HEDİYELERİ! - %50'ye kadar İNDİRİM!",
+    "provider__label__third_part": "3. taraf",
+    "provider__confirm_dialog__title": "Şu anda 3. taraf AI sağlayıcısına geçiyorsunuz: {{label}}",
+    "provider__confirm_dialog__sub_title": "Size daha geniş bir AI seçeneği sunmak için bu sağlayıcıyı dahil ettik.",
+    "provider__confirm_dialog__important_reminder": "Önemli hatırlatma",
+    "provider__confirm_dialog__important_reminder__desc": "Lütfen bu üçüncü taraf sağlayıcının gelişimiyle ilgili olarak zaman zaman MaxAI'nın kontrolü dışında olan hatalar veya daha yavaş yanıtlarla karşılaşabileceğinizi unutmayın. Bu sorunları en aza indirmek için aktif olarak çalışıyoruz ve anlayışınızı takdir ediyoruz.",
+    "provider__confirm_dialog__for_enhanced_stability": "Daha güvenli bir deneyim için",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Deneyiminizi artırmak için güvenilir ve yüksek kaliteli AI performansı sunan premium GPT ve Claude AI sağlayıcılarımızı düşünün.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Geçebileceğiniz sağlayıcılar:",
+    "provider__confirm_dialog__your_feedback_matters": "Geri bildirimleriniz önemlidir",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Herhangi bir sorununuz veya fikriniz varsa lütfen bize bildirin. Geri bildirimleriniz, hizmetlerimizi geliştirmek için bizim için önemlidir. Topluluğumuza değerli katkılarınız için teşekkür ederiz!",
+    "provider__confirm_dialog__continue_with": "{{label}} ile devam et",
+    "provider__confirm_dialog__integration_issue_detected": "Entegrasyon sorunu tespit edildi",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}}, son güncellemeleri nedeniyle MaxAI ile bağlantı sorunları yaşıyor. Ekibimiz bu konuyu çözmek için aktif olarak çalışıyor ve anlayışınızı takdir ediyoruz. Bu arada, alternatif bir sağlayıcı kullanmayı düşünebilir ve daha sonra tekrar kontrol edebilirsiniz.",
+    "provider__label__hide": "Gizle",
+    "provider__label__view_solutions": "Çözümleri görüntüle"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

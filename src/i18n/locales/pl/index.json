@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Możliwość rozumienia obrazów, oprócz wszystkich innych możliwości GPT-4 Turbo. Zwraca maksymalnie 4 096 tokenów wyjściowych. To wersja podglądowa modelu i jeszcze nie nadaje się do ruchu produkcyjnego.",
     "activity__black_friday_2023__title": "Ograniczone Czasowo Oferty Black Friday – Do 50% Zniżki!",
     "sidebar__speed_dial__chat_history__button": "Historia czatu",
-    "activity__christmas_2023__title": "ROZDANIE NA ŚWIĘTA! - Do 50% ZNIŻKI!"
+    "activity__christmas_2023__title": "ROZDANIE NA ŚWIĘTA! - Do 50% ZNIŻKI!",
+    "provider__label__third_part": "Zewnętrzny dostawca",
+    "provider__confirm_dialog__title": "Przełączasz się teraz na zewnętrznego dostawcę sztucznej inteligencji: {{label}}",
+    "provider__confirm_dialog__sub_title": "Dodaliśmy tego dostawcę, aby zapewnić Ci szerszy wybór opcji sztucznej inteligencji.",
+    "provider__confirm_dialog__important_reminder": "Ważne przypomnienie",
+    "provider__confirm_dialog__important_reminder__desc": "Prosimy pamiętać, że w miarę rozwoju tego dostawcy zewnętrznego mogą występować okazjonalne błędy lub wolniejsze odpowiedzi, które są poza kontrolą MaxAI. Aktywnie pracujemy nad minimalizacją tych problemów i doceniamy Twoje zrozumienie.",
+    "provider__confirm_dialog__for_enhanced_stability": "Dla większej stabilności",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Rozważ skorzystanie z naszych usług premium GPT i Claude AI, które zapewniają niezawodność i wysoką jakość działania sztucznej inteligencji, mające na celu poprawę Twojego doświadczenia.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Możesz przełączyć się na:",
+    "provider__confirm_dialog__your_feedback_matters": "Twoja opinia jest ważna",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Jeśli masz jakiekolwiek problemy lub pomysły, daj nam znać. Twoja opinia jest niezbędna do rozwoju naszych usług. Dziękujemy za cenny wkład w naszą społeczność!",
+    "provider__confirm_dialog__continue_with": "Kontynuuj z {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Wykryto problem z integracją",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} obecnie ma problemy z połączeniem z MaxAI ze względu na ostatnie aktualizacje. Nasz zespół aktywnie pracuje nad rozwiązaniem tego problemu i doceniamy Twoje zrozumienie. W międzyczasie rozważ skorzystanie z alternatywnego dostawcy i sprawdź ponownie później.",
+    "provider__label__hide": "Ukryj",
+    "provider__label__view_solutions": "Zobacz rozwiązania"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

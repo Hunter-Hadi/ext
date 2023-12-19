@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumevanja slika, pored svih ostalih mogućnosti GPT-4 Turbo. Vraća maksimalno 4.096 izlaznih tokena. Ovo je verzija modela u pregledu i još uvek nije pogodna za proizvodni saobraćaj.",
     "activity__black_friday_2023__title": "Ograničeni vremenski ponude za Crni petak - Do 50% popusta!",
     "sidebar__speed_dial__chat_history__button": "Istorija čata",
-    "activity__christmas_2023__title": "BOŽIĆNI POKLONI! - Do 50% POPUSTA!"
+    "activity__christmas_2023__title": "BOŽIĆNI POKLONI! - Do 50% POPUSTA!",
+    "provider__label__third_part": "Treća strana",
+    "provider__confirm_dialog__title": "Sada prelazite na AI provajdera treće strane: {{label}}",
+    "provider__confirm_dialog__sub_title": "Uključili smo ovog provajdera kako bismo vam ponudili širi izbor AI opcija.",
+    "provider__confirm_dialog__important_reminder": "Važno podsećanje",
+    "provider__confirm_dialog__important_reminder__desc": "Molimo vas da budete svesni da se, kako se ovaj provajder treće strane razvija, povremeno mogu javiti greške ili sporiji odgovori, što je van kontrole MaxAI-ja. Aktivno radimo na minimiziranju ovih problema i cenimo vaše razumevanje.",
+    "provider__confirm_dialog__for_enhanced_stability": "Za poboljšanu stabilnost",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Razmislite o našim premium GPT i Claude AI provajderima za pouzdanu i visokokvalitetnu AI performansu, dizajniranu da unapredi vaše iskustvo.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Možete preći na:",
+    "provider__confirm_dialog__your_feedback_matters": "Vaše mišljenje je važno",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Ako imate bilo kakve probleme ili ideje, molimo vas da nam javite. Vaše mišljenje je ključno za unapređenje naših usluga. Hvala vam na dragocenom doprinosu našoj zajednici!",
+    "provider__confirm_dialog__continue_with": "Nastavi sa {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Otkriven problem sa integracijom",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} trenutno ima problema sa konekcijom sa MaxAI-jem zbog njegovih nedavnih ažuriranja. Naš tim aktivno radi na rešavanju ovog problema i cenimo vaše razumevanje. U međuvremenu, molimo vas da razmislite o korišćenju alternativnog provajdera i ponovo nas posetite kasnije.",
+    "provider__label__hide": "Sakrij",
+    "provider__label__view_solutions": "Pogledaj rešenja"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

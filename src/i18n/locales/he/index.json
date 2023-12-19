@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "יכולת להבין תמונות, בנוסף לכל היכולות של GPT-4 Turbo האחרות. מחזיר מקסימום 4,096 אסימונים פלט. זהו גרסת תצוגה מקדימה ואינה מתאימה עדיין לתעבורת ייצור.",
     "activity__black_friday_2023__title": "דילים ליום שישי השחור בזמן מוגבל - עד 50% הנחה!",
     "sidebar__speed_dial__chat_history__button": "היסטוריית צ'אט",
-    "activity__christmas_2023__title": "מתנות לחג המולד! - עד 50% הנחה!"
+    "activity__christmas_2023__title": "מתנות לחג המולד! - עד 50% הנחה!",
+    "provider__label__third_part": "צד שלישי",
+    "provider__confirm_dialog__title": "אתה מחליף כעת לספק AI מצד שלישי: {{label}}",
+    "provider__confirm_dialog__sub_title": "כלולנו את הספק הזה כדי להציע לך מגוון רחב יותר של אפשרויות AI.",
+    "provider__confirm_dialog__important_reminder": "תזכורת חשובה",
+    "provider__confirm_dialog__important_reminder__desc": "יש לך לקחת בחשבון שככל שהספק מצד שלישי מתקדם, ייתכן ותחוו מעין באגים או תגובות איטיות מעט, שאלו נמצאים מחוץ לשליטת MaxAI. אנחנו פועלים כרגע כדי למזער את הבעיות האלו ומעריכים את ההבנה שלך.",
+    "provider__confirm_dialog__for_enhanced_stability": "ליציבות משופרת",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "שקול להשתמש בספקי ה-GPT וה-Claude שלנו לביצוע AI אמין ואיכותי, שמיועד לשפר את החוויה שלך.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "תוכל לעבור ל:",
+    "provider__confirm_dialog__your_feedback_matters": "המשוב שלך חשוב לנו",
+    "provider__confirm_dialog__your_feedback_matters__desc": "אם יש לך בעיות או רעיונות, אנא דבר איתנו. המשוב שלך חשוב מאוד כדי שנוכל לשפר את השירותים שלנו. תודה על תרומתך היקרה לקהילתנו!",
+    "provider__confirm_dialog__continue_with": "המשך עם {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "זוהתה בעיה בשילוב",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} כרגע חווים בעיות חיבור עם MaxAI עקב עדכונים אחרונים. הצוות שלנו פועל כרגע לפתור את הבעיה הזו ואנחנו מעריכים את ההבנה שלך. בינתיים, שקול להשתמש בספק אחר ולבדוק שוב איתנו מאוחר יותר.",
+    "provider__label__hide": "הסתר",
+    "provider__label__view_solutions": "צפה בפתרונות"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

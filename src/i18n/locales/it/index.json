@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacità di comprendere le immagini, oltre a tutte le altre capacità di GPT-4 Turbo. Restituisce un massimo di 4.096 token di output. Questa è una versione di anteprima del modello e non è ancora adatta al traffico di produzione.",
     "activity__black_friday_2023__title": "Offerte Black Friday a tempo limitato - Fino al 50% di sconto!",
     "sidebar__speed_dial__chat_history__button": "Cronologia chat",
-    "activity__christmas_2023__title": "REGALI DI NATALE! - Fino al 50% DI SCONTO!"
+    "activity__christmas_2023__title": "REGALI DI NATALE! - Fino al 50% DI SCONTO!",
+    "provider__label__third_part": "Terza parte",
+    "provider__confirm_dialog__title": "Stai passando a un fornitore di IA di terze parti: {{label}}",
+    "provider__confirm_dialog__sub_title": "Abbiamo incluso questo fornitore per offrirti una gamma più ampia di opzioni di IA.",
+    "provider__confirm_dialog__important_reminder": "Promemoria importante",
+    "provider__confirm_dialog__important_reminder__desc": "Tieni presente che, poiché questo fornitore di terze parti evolve, potresti occasionalmente riscontrare bug o risposte più lente, che sono al di là del controllo di MaxAI. Stiamo lavorando attivamente per ridurre al minimo questi problemi e apprezziamo la tua comprensione.",
+    "provider__confirm_dialog__for_enhanced_stability": "Per una maggiore stabilità",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Considera i nostri fornitori premium GPT e Claude per prestazioni di IA affidabili e di alta qualità, progettate per migliorare la tua esperienza.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Puoi passare a:",
+    "provider__confirm_dialog__your_feedback_matters": "Il tuo feedback è importante",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Se hai problemi o idee, faccelo sapere. Il tuo feedback è essenziale per noi per migliorare i nostri servizi. Grazie per il tuo prezioso contributo alla nostra comunità!",
+    "provider__confirm_dialog__continue_with": "Continua con {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Rilevato problema di integrazione",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} sta attualmente riscontrando problemi di connessione con MaxAI a causa dei suoi aggiornamenti recenti. Il nostro team sta lavorando attivamente per risolvere questa questione e apprezziamo la tua comprensione. Nel frattempo, considera l'uso di un fornitore alternativo e controlla nuovamente con noi più tardi.",
+    "provider__label__hide": "Nascondi",
+    "provider__label__view_solutions": "Visualizza soluzioni"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

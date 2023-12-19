@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Galimybė suprasti vaizdus, be visų kitų GPT-4 Turbo galimybių. Grąžina maksimaliai 4 096 išvesties ženklus. Tai yra peržiūros modelio versija ir dar nėra tinkama naudoti produkcijos srautui.",
     "activity__black_friday_2023__title": "Riboto laiko Juodųjų Penktadienių pasiūlymai – Iki 50% nuolaida!",
     "sidebar__speed_dial__chat_history__button": "Pokalbių istorija",
-    "activity__christmas_2023__title": "KALĖDŲ DOVANOS! - Iki 50% NUOLAIDA!"
+    "activity__christmas_2023__title": "KALĖDŲ DOVANOS! - Iki 50% NUOLAIDA!",
+    "provider__label__third_part": "3-osios šalies",
+    "provider__confirm_dialog__title": "Dabar persijungiate į 3-osios šalies dirbtinio intelekto tiekėją: {{label}}",
+    "provider__confirm_dialog__sub_title": "Mes įtraukėme šį tiekėją, kad galėtume pasiūlyti jums platesnį dirbtinio intelekto pasirinkimą.",
+    "provider__confirm_dialog__important_reminder": "Svarbus priminimas",
+    "provider__confirm_dialog__important_reminder__desc": "Būkite informuoti, kad šioje trečiosios šalies tiekėjo plėtojimo stadijoje gali kilti klaidų arba lėtesnių atsakymų, kurie yra už MaxAI kontrolę. Mes aktyviai siekiame sumažinti šias problemas ir vertiname jūsų supratimą.",
+    "provider__confirm_dialog__for_enhanced_stability": "Dėl patobulintos stabilumo",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Svarstykite apie mūsų premium GPT ir Claude AI tiekėjus, kurie užtikrina patikimą ir aukštos kokybės dirbtinio intelekto veikimą, skirtą pagerinti jūsų patirtį.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Galite persijungti į:",
+    "provider__confirm_dialog__your_feedback_matters": "Jūsų atsiliepimai yra svarbūs",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Jei turite kokių nors problemų ar idėjų, prašome mus informuoti. Jūsų atsiliepimai yra būtini mūsų paslaugų tobulinimui. Dėkojame už jūsų vertingą indėlį į mūsų bendruomenę!",
+    "provider__confirm_dialog__continue_with": "Tęsti su {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Nustatyta integracijos problema",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} šiuo metu patiria ryšio problemas su MaxAI dėl naujausių atnaujinimų. Mūsų komanda aktyviai dirba siekdama išspręsti šią situaciją ir vertiname jūsų supratimą. Tuo tarpu, apsvarstykite alternatyvų tiekėją ir vėliau susisiekite su mumis.",
+    "provider__label__hide": "Slėpti",
+    "provider__label__view_solutions": "Peržiūrėti sprendimus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

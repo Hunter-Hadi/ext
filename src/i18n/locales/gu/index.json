@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "છબિઓને સમજવાની ક્ષમતા, બીજા બધા GPT-4 ટર્બો ક્ષમતાઓ સાથે જોડાયેલી. 4,096 આઉટપુટ ટોકન્સ મહત્તમ પ્રદાન કરે છે. આ એક પ્રિવ્યૂ મોડલ આવતી ઉત્પાદન ટ્રેફિક માટે હજી પણ યોગ્ય નથી.",
     "activity__black_friday_2023__title": "સીમિત સમયમાં કાળજી વાળી બ્લેક ફ્રાઈડે ડીલ્સ - 50% સુધી છૂટ!",
     "sidebar__speed_dial__chat_history__button": "ચેટ ઇતિહાસ",
-    "activity__christmas_2023__title": "ક્રિસમસ ગિવઅવેઝ! - 50% સુધી છૂટ!"
+    "activity__christmas_2023__title": "ક્રિસમસ ગિવઅવેઝ! - 50% સુધી છૂટ!",
+    "provider__label__third_part": "ત્રીજી પાર્ટી",
+    "provider__confirm_dialog__title": "હવે તમે ત્રીજી પાર્ટી AI પ્રોવાઇડરમાં સ્વિચ કરી રહ્યા છો: {{label}}",
+    "provider__confirm_dialog__sub_title": "અમે આ પ્રોવાઇડરને તમને વધુ AI વિકલ્પો પૂરી પાડવા માટે સમાવેશ કર્યું છે.",
+    "provider__confirm_dialog__important_reminder": "મહત્વપૂર્ણ અનુસ્મરણ",
+    "provider__confirm_dialog__important_reminder__desc": "કૃપા કરીને ધ્યાન આપો કે જ્યારે આ ત્રીજી પાર્ટી પ્રોવાઇડર વિકસે છે, ત્યારે કેટલાક સમયગાળામાં તમે બગો અથવા ધીમી પ્રતિસાદો અનુભવ કરી શકો છો, જે મેક્સએઆઈની કંટ્રોલ બહાર છે. અમે આ સમસ્યાઓને ઘટાડવા અને તમારી સમજ માટે મૂળ્યાંકન આપવા માટે સક્રિય રીતે કામ કરી રહ્યા છીએ.",
+    "provider__confirm_dialog__for_enhanced_stability": "વધેલી સ્થિરતા માટે",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "તમારી અનુભવને વધારવા માટે, ખરેખર GPT અને Claude AI પ્રોવાઇડરને વિચારો જોઈએ જે આપને સારાંશાત્મક અને ઉચ્ચ ગુણવત્તાવાળી AI પ્રદર્શન આપે છે.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "તમે સ્વિચ કરી શકો છો:",
+    "provider__confirm_dialog__your_feedback_matters": "તમારી પ્રતિસાદ મહત્વપૂર્ણ છે",
+    "provider__confirm_dialog__your_feedback_matters__desc": "જો તમારી કોઈ સમસ્યાઓ અથવા વિચારો હોય, તો કૃપા કરીને અમને જણાવો. તમારી પ્રતિસાદ આપને અમારી સેવાઓને વધારવા માટે આવશ્યક છે. અમારી સમુદાયમાં તમારા મૂલ્યાંકનને મહત્વ આપવા માટે તમારો મૂલ્યાંકન આભાર!",
+    "provider__confirm_dialog__continue_with": "{{label}} સાથે ચાલુ રાખો",
+    "provider__confirm_dialog__integration_issue_detected": "એકત્રીકરણ સમસ્યા શોધી",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} હાલમાં મેક્સએઆઈ સાથે જોડાણ સમસ્યાઓ અનુભવી રહ્યો છે તેથી અમારી ટીમ આ મુદ્દેને સુધારવા માટે સક્રિય રીતે કામ કરી રહી છે અને અમારી સમજ આપનો આભાર જણાવે છે. તાંતિયામાં, કૃપા કરીને એક વૈકલ્પિક પ્રોવાઇડરનો ઉપયોગ કરવા અને પછી અમારી સાથે ચેક કરવા વિચારો.",
+    "provider__label__hide": "છુપાવો",
+    "provider__label__view_solutions": "સમાધાનો જુઓ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

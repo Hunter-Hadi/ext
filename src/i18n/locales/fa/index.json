@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "قابلیت درک تصاویر، علاوه بر تمام قابلیت های دیگر GPT-4 Turbo. حداکثر 4,096 توکن خروجی را برمیگرداند. این نسخه مدل پیش نمایش است و هنوز مناسب برای ترافیک تولید نیست.",
     "activity__black_friday_2023__title": "پیشنهادات ویژه جمعه سیاه محدود - تا 50% تخفیف!",
     "sidebar__speed_dial__chat_history__button": "تاریخچه چت",
-    "activity__christmas_2023__title": "تخفیفات کریسمس! - تا 50% تخفیف!"
+    "activity__christmas_2023__title": "تخفیفات کریسمس! - تا 50% تخفیف!",
+    "provider__label__third_part": "شخص ثالث",
+    "provider__confirm_dialog__title": "شما در حال تغییر به ارائه دهنده هوش مصنوعی شخص ثالث هستید: {{label}}",
+    "provider__confirm_dialog__sub_title": "ما این ارائه دهنده را برای ارائه گزینه های گسترده تری از هوش مصنوعی به شما اضافه کرده ایم.",
+    "provider__confirm_dialog__important_reminder": "یادآوری مهم",
+    "provider__confirm_dialog__important_reminder__desc": "لطفاً به این نکته توجه داشته باشید که هنگامی که این ارائه دهنده شخص ثالث تکامل می کند، ممکن است گاهی اوقات باگ ها یا پاسخ های کندتری را تجربه کنید که خارج از کنترل MaxAI است. ما در حال فعالیت برای کمینه کردن این مشکلات هستیم و ارزش قدردانی شما را داریم.",
+    "provider__confirm_dialog__for_enhanced_stability": "برای استحکام بهتر",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "برای عملکرد قابل اعتماد و با کیفیت بالا در هوش مصنوعی، از ارائه دهنده های پریمیوم GPT و Claude ما استفاده کنید که طراحی شده اند تا تجربه شما را بهبود بخشند.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "شما می توانید به این ارائه دهنده ها تغییر دهید:",
+    "provider__confirm_dialog__your_feedback_matters": "نظر شما مهم است",
+    "provider__confirm_dialog__your_feedback_matters__desc": "اگر هر گونه مشکل یا ایده ای دارید، لطفاً به ما اطلاع دهید. نظر شما برای بهبود خدمات ما ضروری است. از مشارکت ارزشمند شما در جامعه ما سپاسگزاریم!",
+    "provider__confirm_dialog__continue_with": "ادامه با {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "مشکل ادغام تشخیص داده شد",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} در حال حاضر با مشکلات اتصال به MaxAI در نتیجه به روزرسانی های اخیر خود روبرو است. تیم ما در حال فعالیت برای حل این مسئله است و قدردانی می کنیم. در این مدت، لطفاً در نظر داشته باشید که از یک ارائه دهنده جایگزین استفاده کنید و بعداً با ما تماس بگیرید.",
+    "provider__label__hide": "مخفی کردن",
+    "provider__label__view_solutions": "مشاهده راه حل‌ها"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "他のすべてのGPT-4 Turboの機能に加えて、画像を理解する能力を持っています。最大4,096の出力トークンを返します。これはプレビューモデルバージョンであり、まだ本番トラフィックには適していません。",
     "activity__black_friday_2023__title": "期間限定のブラックフライデーセール！最大50％オフ！",
     "sidebar__speed_dial__chat_history__button": "チャット履歴",
-    "activity__christmas_2023__title": "クリスマスプレゼント！ - 最大50%オフ！"
+    "activity__christmas_2023__title": "クリスマスプレゼント！ - 最大50%オフ！",
+    "provider__label__third_part": "サードパーティ",
+    "provider__confirm_dialog__title": "現在、サードパーティのAIプロバイダに切り替えています: {{label}}",
+    "provider__confirm_dialog__sub_title": "より幅広いAIオプションを提供するために、このプロバイダを含めました。",
+    "provider__confirm_dialog__important_reminder": "重要なお知らせ",
+    "provider__confirm_dialog__important_reminder__desc": "このサードパーティのプロバイダは進化しているため、時折バグや応答の遅さが発生することがあります。これらはMaxAIの制御範囲外ですが、問題を最小限に抑えるために積極的に取り組んでいます。ご理解いただけると幸いです。",
+    "provider__confirm_dialog__for_enhanced_stability": "安定性向上のために",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "信頼性と高品質のAIパフォーマンスを提供する当社のプレミアムGPTおよびClaude AIプロバイダをご検討ください。これらはあなたの体験を向上させるために設計されています。",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "以下に切り替えることができます:",
+    "provider__confirm_dialog__your_feedback_matters": "ご意見をお聞かせください",
+    "provider__confirm_dialog__your_feedback_matters__desc": "問題やアイデアがある場合は、ぜひお知らせください。あなたのフィードバックは私たちのサービスを向上させるために不可欠です。貴重な貢献に感謝します！",
+    "provider__confirm_dialog__continue_with": "{{label}}で続行する",
+    "provider__confirm_dialog__integration_issue_detected": "統合の問題が検出されました",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}}は最近の更新によりMaxAIとの接続に問題が発生しています。私たちのチームはこの問題の解決に取り組んでおり、ご理解いただけると幸いです。その間、代替プロバイダを使用し、後で再度確認してください。",
+    "provider__label__hide": "非表示",
+    "provider__label__view_solutions": "ソリューションを表示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Возможность понимать изображения, в дополнение ко всем остальным возможностям GPT-4 Turbo. Возвращает максимум 4 096 токенов вывода. Это предварительная версия модели и еще не подходит для производственного трафика.",
     "activity__black_friday_2023__title": "Ограниченное время Черная пятница Скидки – до 50%!",
     "sidebar__speed_dial__chat_history__button": "История чата",
-    "activity__christmas_2023__title": "РОЖДЕСТВЕНСКИЕ ПОДАРКИ! - До 50% СКИДКИ!"
+    "activity__christmas_2023__title": "РОЖДЕСТВЕНСКИЕ ПОДАРКИ! - До 50% СКИДКИ!",
+    "provider__label__third_part": "3-я сторона",
+    "provider__confirm_dialog__title": "Вы сейчас переключаетесь на стороннего поставщика искусственного интеллекта: {{label}}",
+    "provider__confirm_dialog__sub_title": "Мы включили этого поставщика, чтобы предложить вам более широкий выбор вариантов искусственного интеллекта.",
+    "provider__confirm_dialog__important_reminder": "Важное напоминание",
+    "provider__confirm_dialog__important_reminder__desc": "Пожалуйста, имейте в виду, что по мере развития этого стороннего поставщика вы можете время от времени столкнуться с ошибками или медленными ответами, которые не зависят от MaxAI. Мы активно работаем над минимизацией этих проблем и ценим ваше понимание.",
+    "provider__confirm_dialog__for_enhanced_stability": "Для повышения стабильности",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Рассмотрите использование наших премиальных поставщиков GPT и Claude для надежной и качественной работы искусственного интеллекта, созданных для улучшения вашего опыта.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Вы можете переключиться на:",
+    "provider__confirm_dialog__your_feedback_matters": "Ваш отзыв важен",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Если у вас есть какие-либо проблемы или идеи, пожалуйста, сообщите нам. Ваш отзыв очень важен для нас, чтобы улучшить наши услуги. Благодарим вас за ценный вклад в наше сообщество!",
+    "provider__confirm_dialog__continue_with": "Продолжить с {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "Обнаружена проблема интеграции",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} в настоящее время испытывает проблемы соединения с MaxAI из-за своих последних обновлений. Наша команда активно работает над решением этой проблемы, и мы благодарим вас за понимание. В то же время, рассмотрите возможность использования альтернативного поставщика и проверьте обратно позже.",
+    "provider__label__hide": "Скрыть",
+    "provider__label__view_solutions": "Просмотреть решения"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "ছবি বুঝতে সক্ষমতা, অন্যান্য GPT-4 টার্বো সুবিধাগুলির পাশাপাশি। সর্বাধিক 4,096 আউটপুট টোকেন প্রদান করে। এটি প্রিভিউ মডেল সংস্করণ এবং এখনও প্রোডাকশন ট্রাফিকের জন্য উপযুক্ত নয়।",
     "activity__black_friday_2023__title": "সীমিত সময়ের কালো শুক্রবার অফার - ৫০% পর্যন্ত ছাড়!",
     "sidebar__speed_dial__chat_history__button": "চ্যাট ইতিহাস",
-    "activity__christmas_2023__title": "বড়দিনের উপহার! - ৫০% ছাড়!"
+    "activity__christmas_2023__title": "বড়দিনের উপহার! - ৫০% ছাড়!",
+    "provider__label__third_part": "তৃতীয়-পক্ষ",
+    "provider__confirm_dialog__title": "আপনি এখন 3rd-party AI প্রদানকারীতে স্থানান্তরিত হচ্ছেন: {{label}}",
+    "provider__confirm_dialog__sub_title": "আমরা আপনাকে আরও বিস্তৃত AI অপশন প্রদানের জন্য এই প্রদানকারীকে সংযুক্ত করেছি।",
+    "provider__confirm_dialog__important_reminder": "গুরুত্বপূর্ণ অনুস্মারক",
+    "provider__confirm_dialog__important_reminder__desc": "দয়া করে মনে রাখবেন যে, এই তৃতীয়-পক্ষ প্রদানকারী উন্নত হলে আপনি কিছুটা বাগ বা ধীর প্রতিক্রিয়া অনুভব করতে পারেন, যা MaxAI-এর নিয়ন্ত্রণের বাইরে। আমরা এই সমস্যাগুলি কম করতে প্রতিষ্ঠান করছি এবং আপনার বোঝার মান দানের জন্য আপনার সহযোগিতা মূল্যবান।",
+    "provider__confirm_dialog__for_enhanced_stability": "উন্নত স্থিতিতে",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "আপনার অভিজ্ঞতা উন্নত করার জন্য নির্ভরযোগ্য এবং উচ্চ মানের AI পারফরম্যান্সের জন্য আমাদের প্রিমিয়াম GPT এবং Claude AI প্রদানকারীগুলি বিবেচনা করুন।",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "আপনি স্থানান্তরিত করতে পারেন:",
+    "provider__confirm_dialog__your_feedback_matters": "আপনার মতামত গুরুত্বপূর্ণ",
+    "provider__confirm_dialog__your_feedback_matters__desc": "যদি আপনার কোনও সমস্যা বা ধারণা থাকে, তবে আমাদের জানান। আপনার মতামত আমাদের পরিষেবাগুলি উন্নত করার জন্য অত্যন্ত গুরুত্বপূর্ণ। আমাদের সম্প্রদায়ে আপনার মূল্যবান অবদানের জন্য আপনাকে ধন্যবাদ!",
+    "provider__confirm_dialog__continue_with": "{{label}} সঙ্গে চালিয়ে যান",
+    "provider__confirm_dialog__integration_issue_detected": "সংযোগ সমস্যা চেষ্টা পাওয়া গেছে",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} বর্তমানে MaxAI-র সাথে সংযোগ সমস্যা অনুভব করছে তার সাম্প্রতিক আপডেটের কারণে। আমাদের দল এই সমস্যাটি সমাধান করতে কাজ করছে এবং আমরা আপনার বোঝার মান দানের জন্য আপনার সহযোগিতা মূল্যবান। এই সময়ে, একটি বিকল্প প্রদানকারী ব্যবহার করার বিবেচনা করুন এবং পরে আমাদের সাথে ফিরে চেক করুন।",
+    "provider__label__hide": "লুকান",
+    "provider__label__view_solutions": "সমাধান দেখুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

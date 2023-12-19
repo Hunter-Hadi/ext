@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "สามารถเข้าใจภาพเพิ่มเติมได้ นอกเหนือจากความสามารถ GPT-4 Turbo ทั้งหมดอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์ นี่เป็นรุ่นตัวอย่างของโมเดลและยังไม่เหมาะสำหรับการใช้งานจริง",
     "activity__black_friday_2023__title": "ดีลวันศุกร์ดำจำกัดเวลา - สูงสุด 50% ลด!",
     "sidebar__speed_dial__chat_history__button": "ประวัติการแชท",
-    "activity__christmas_2023__title": "ของขวัญคริสต์มาส! - ลดราคาสูงสุด 50%!"
+    "activity__christmas_2023__title": "ของขวัญคริสต์มาส! - ลดราคาสูงสุด 50%!",
+    "provider__label__third_part": "บุคคลที่สาม",
+    "provider__confirm_dialog__title": "คุณกำลังเปลี่ยนไปใช้ผู้ให้บริการ AI จากบุคคลที่สาม: {{label}}",
+    "provider__confirm_dialog__sub_title": "เราได้รวมผู้ให้บริการนี้เพื่อให้คุณได้เลือกใช้ AI ที่หลากหลายมากขึ้น",
+    "provider__confirm_dialog__important_reminder": "การแจ้งเตือนสำคัญ",
+    "provider__confirm_dialog__important_reminder__desc": "โปรดทราบว่าเนื่องจากผู้ให้บริการบุคคลที่สามนี้กำลังพัฒนาอยู่ คุณอาจพบปัญหาหรือความล่าช้าบ้างครั้ง ซึ่งอยู่นอกเหนือจากการควบคุมของ MaxAI เรากำลังทำงานอย่างหนักเพื่อลดปัญหาเหล่านี้และคาดหวังความกรุณาในการรับทราบของคุณ",
+    "provider__confirm_dialog__for_enhanced_stability": "เพื่อความเสถียรภาพที่ดีขึ้น",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "พิจารณาใช้ผู้ให้บริการ GPT และ Claude AI ระดับพรีเมียมของเราสำหรับประสิทธิภาพ AI ที่เชื่อถือได้และคุณภาพสูง ออกแบบมาเพื่อเพิ่มประสบการณ์ของคุณ",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "คุณสามารถเปลี่ยนไปใช้:",
+    "provider__confirm_dialog__your_feedback_matters": "ความคิดเห็นของคุณมีความสำคัญ",
+    "provider__confirm_dialog__your_feedback_matters__desc": "หากคุณมีปัญหาหรือความคิดเห็น โปรดแจ้งเราทราบ ความคิดเห็นของคุณเป็นสิ่งสำคัญสำหรับเราในการพัฒนาบริการของเรา ขอบคุณสำหรับการมีส่วนร่วมที่มีค่าของคุณในชุมชนของเรา!",
+    "provider__confirm_dialog__continue_with": "ดำเนินการต่อกับ {{label}}",
+    "provider__confirm_dialog__integration_issue_detected": "ตรวจพบปัญหาการผสานรวม",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} กำลังประสบปัญหาการเชื่อมต่อกับ MaxAI เนื่องจากการอัปเดตล่าสุด ทีมของเรากำลังทำงานอย่างหนักเพื่อแก้ไขปัญหานี้และเราขอขอบคุณสำหรับความกรุณาของคุณ ในระหว่างนี้โปรดพิจารณาใช้ผู้ให้บริการทางเลือกและตรวจสอบกลับมาใหม่ในภายหลัง",
+    "provider__label__hide": "ซ่อน",
+    "provider__label__view_solutions": "ดูวิธีแก้ปัญหา"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

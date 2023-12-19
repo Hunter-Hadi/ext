@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "सभी अन्य GPT-4 टर्बो क्षमताओं के अतिरिक्त छवियों को समझने की क्षमता। अधिकतम 4,096 आउटपुट टोकन वापस करता है। यह एक पूर्वावलोकन मॉडल संस्करण है और अभी तक उत्पादन यात्रा के लिए उपयुक्त नहीं है।",
     "activity__black_friday_2023__title": "सीमित समय के लिए ब्लैक फ्राइडे डील्स - 50% तक की छूट!",
     "sidebar__speed_dial__chat_history__button": "चैट इतिहास",
-    "activity__christmas_2023__title": "क्रिसमस गिफ्ट! - 50% तक की छूट!"
+    "activity__christmas_2023__title": "क्रिसमस गिफ्ट! - 50% तक की छूट!",
+    "provider__label__third_part": "तृतीय-पक्ष",
+    "provider__confirm_dialog__title": "आप अब तृतीय-पक्ष AI प्रदाता में स्विच कर रहे हैं: {{label}}",
+    "provider__confirm_dialog__sub_title": "हमने इस प्रदाता को शामिल किया है ताकि आपको एक विस्तारित AI विकल्प की पेशकश की जा सके।",
+    "provider__confirm_dialog__important_reminder": "महत्वपूर्ण याद दिलाना",
+    "provider__confirm_dialog__important_reminder__desc": "कृपया ध्यान दें कि जैसे ही यह तृतीय-पक्ष प्रदाता विकसित होता है, आपको कभी-कभी बग्स या धीमी प्रतिक्रियाएं महसूस हो सकती हैं, जो MaxAI के अधीन होती हैं। हम इन समस्याओं को कम करने के लिए सक्रिय रूप से काम कर रहे हैं और आपकी समझ की कद्र करते हैं।",
+    "provider__confirm_dialog__for_enhanced_stability": "बेहतर स्थिरता के लिए",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "अपने अनुभव को बढ़ाने के लिए, विश्वसनीय और उच्च-गुणवत्ता वाले AI प्रदाताओं में हमारे प्रीमियम GPT और Claude AI प्रदाताओं को विचार करें।",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "आप इस पर स्विच कर सकते हैं:",
+    "provider__confirm_dialog__your_feedback_matters": "आपकी प्रतिक्रिया मायने रखती है",
+    "provider__confirm_dialog__your_feedback_matters__desc": "यदि आपके पास कोई समस्या या विचार हैं, कृपया हमें बताएं। आपकी प्रतिक्रिया हमारे सेवाओं को बेहतर बनाने के लिए महत्वपूर्ण है। हमारे समुदाय में आपके मूल्यवान योगदान के लिए धन्यवाद!",
+    "provider__confirm_dialog__continue_with": "{{label}} के साथ जारी रखें",
+    "provider__confirm_dialog__integration_issue_detected": "संयोजन समस्या का पता चला",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} वर्तमान में MaxAI के साथ कनेक्शन समस्याएं अनुभव कर रहा है इसके हाल के अपडेट के कारण। हमारी टीम सक्रिय रूप से इस मामले को हल करने के लिए काम कर रही है, और हम आपकी समझ की कद्र करते हैं। इस बीच, कृपया एक वैकल्पिक प्रदाता का उपयोग करने और हमारे साथ बाद में जांच करने का विचार करें।",
+    "provider__label__hide": "छिपाएँ",
+    "provider__label__view_solutions": "समाधान देखें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

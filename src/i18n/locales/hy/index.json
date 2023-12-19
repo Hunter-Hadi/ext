@@ -471,7 +471,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Արտահայտում է պատկերների հասկացումը, բացառությամբ բոլոր GPT-4 Turbo հնարավորություններին: Վերադարձնում է 4,096 արտադրանքի թոքենների առավելագույն քանակ: Այս նախադասությունը նախադասության տարբերակ է և դեռ չի համատեղելի արտադրանքի համարում:",
     "activity__black_friday_2023__title": "Խաղարկումների Սեփական Ուրբաթ - Մինչև 50% Զեղչ!",
     "sidebar__speed_dial__chat_history__button": "Համանավարություն",
-    "activity__christmas_2023__title": "Սուրբ Ծնունդյան Նվերներ! - Մինչև 50% Զեղչ!"
+    "activity__christmas_2023__title": "Սուրբ Ծնունդյան Նվերներ! - Մինչև 50% Զեղչ!",
+    "provider__label__third_part": "3րդ անձնակազմ",
+    "provider__confirm_dialog__title": "Դուք հիմա անցնում եք 3րդ անձնակազմի AI մատակարարին: {{label}}",
+    "provider__confirm_dialog__sub_title": "Մենք այս մատակարարը ավելացրել ենք, որպեսզի առավել լավագույն AI տարբերակները առաջարկենք ձեզ:",
+    "provider__confirm_dialog__important_reminder": "Գուշակություն",
+    "provider__confirm_dialog__important_reminder__desc": "Խնդրում ենք հիշել, որ այս երրորդ անձնակազմը զարգացումը կարող է հանդիպել խնդիրներ կամ ավելի դանդաղ պատասխաններ, որոնք չեն կարող լինել MaxAI-ի կառավարման տարբերակից: Մենք ակտիվացնում ենք այս խնդիրների նվազագույնացումը և հարմարավետությունը ձեր համար:",
+    "provider__confirm_dialog__for_enhanced_stability": "Բարելավված հաճախորդության համար",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Սահմանափակված և բարելավված GPT և Claude AI մատակարարները ապահովում են վստահելի և բարելաված AI արդյունքներ, որոնք նախատեսված են ձեր համարի բարելավմանը:",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Դուք կարող եք անդամակցել",
+    "provider__confirm_dialog__your_feedback_matters": "Ձեր կարծիքները հենց հիմա են",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Եթե ունեք որևէ խնդիրներ կամ գաղտնաբառեր, խնդրում ենք մեզ տեղեկացնել: Ձեր կարծիքները հնարավորինս կարևոր են մեզ համար, որպեսզի բարելավենք մեր ծառայությունները: Շնորհակալություն ձեր արժանապատվության համար!",
+    "provider__confirm_dialog__continue_with": "Շարունակել {{label}}-ով",
+    "provider__confirm_dialog__integration_issue_detected": "Բաժանորդագրման խնդիրը հայտնվել է",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}}-ը հիմա արդեն չի կարողանում կապակցվել MaxAI-ի հետ իր վերջին թարմացումների պատճառով: Մեր թիմը ակտիվացնում է այս խնդիրը լուծելու համար, և մենք հնարավորինս գնալու ենք ձեզ համար: Նախքան այդ, խնդրում ենք հաստատել այլ մատակարարի օգտագործելը և վերադառնալ մեզ հետ:",
+    "provider__label__hide": "Թաքցնել",
+    "provider__label__view_solutions": "Տեսնել լուծումները"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

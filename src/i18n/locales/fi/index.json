@@ -474,7 +474,22 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen.",
     "activity__black_friday_2023__title": "Rajoitetun ajan Black Friday -tarjoukset – Jopa 50% alennusta!",
     "sidebar__speed_dial__chat_history__button": "Keskusteluhistoria",
-    "activity__christmas_2023__title": "JOULUARVONNAT! - Jopa 50% ALENNUS!"
+    "activity__christmas_2023__title": "JOULUARVONNAT! - Jopa 50% ALENNUS!",
+    "provider__label__third_part": "Kolmannen osapuolen",
+    "provider__confirm_dialog__title": "Siirryt nyt kolmannen osapuolen tekoälytarjoajaan: {{label}}",
+    "provider__confirm_dialog__sub_title": "Olemme sisällyttäneet tämän tarjoajan tarjotaksemme sinulle laajemman valikoiman tekoälyvaihtoehtoja.",
+    "provider__confirm_dialog__important_reminder": "Tärkeä muistutus",
+    "provider__confirm_dialog__important_reminder__desc": "Huomioithan, että tämän kolmannen osapuolen tarjoajan kehittyessä saatat ajoittain kohdata bugeja tai hitaampia vastauksia, jotka ovat MaxAI:n hallinnan ulkopuolella. Työskentelemme aktiivisesti näiden ongelmien minimoimiseksi ja arvostamme ymmärrystäsi.",
+    "provider__confirm_dialog__for_enhanced_stability": "Parannetun vakauden vuoksi",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Harkitse premium GPT- ja Claude-tekoälytarjoajiamme luotettavan ja korkealaatuisen tekoälysuorituskyvyn saavuttamiseksi, joka on suunniteltu parantamaan kokemustasi.",
+    "provider__confirm_dialog__for_enhanced_stability__switch_to": "Voit vaihtaa seuraaviin:",
+    "provider__confirm_dialog__your_feedback_matters": "Palaute on tärkeää",
+    "provider__confirm_dialog__your_feedback_matters__desc": "Jos sinulla on ongelmia tai ideoita, kerro meille. Palautesi on meille olennaista palveluidemme parantamiseksi. Kiitos arvokkaasta panoksestasi yhteisöömme!",
+    "provider__confirm_dialog__continue_with": "Jatka {{label}}:lla",
+    "provider__confirm_dialog__integration_issue_detected": "Integraatio-ongelma havaittu",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kokee tällä hetkellä yhteyden ongelmia MaxAI:n kanssa sen viimeaikaisten päivitysten vuoksi. Tiimimme työskentelee aktiivisesti tämän asian ratkaisemiseksi ja arvostamme ymmärrystäsi. Sillä välin harkitse vaihtoehtoisen tarjoajan käyttämistä ja tarkista myöhemmin uudelleen.",
+    "provider__label__hide": "Piilota",
+    "provider__label__view_solutions": "Näytä ratkaisut"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

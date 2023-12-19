@@ -1,22 +1,20 @@
-import React, { FC, useEffect, useState } from 'react'
-import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
-import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { AI_PROVIDER_MAP } from '@/constants'
 import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-import { chromeExtensionClientOpenPage } from '@/utils'
 import Stack from '@mui/material/Stack'
-import TooltipButton from '@/components/TooltipButton'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import {
-  ChatGPTClientState,
-  ThirdPartAIProviderConfirmDialogState,
-} from '@/features/chatgpt/store'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import Typography from '@mui/material/Typography'
+import React, { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
+
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import TooltipButton from '@/components/TooltipButton'
+import { AI_PROVIDER_MAP } from '@/constants'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
+import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 const port = new ContentScriptConnectionV2()
 
@@ -28,10 +26,6 @@ const AIProviderAuthCard: FC<{
   const chatGPTClientState = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
 
-  const setDialogState = useSetRecoilState(
-    ThirdPartAIProviderConfirmDialogState,
-  )
-
   const handleAuthProvider = async (aiProviderOption: AIProviderOptionType) => {
     const authProvider = async () => {
       await port.postMessage({
@@ -41,16 +35,6 @@ const AIProviderAuthCard: FC<{
         },
       })
     }
-
-    // if (aiProviderOption.isThirdParty) {
-    //   // 如果是第三方需要弹出 confirm dialog
-    //   setDialogState({
-    //     open: true,
-    //     confirmProviderValue: aiProviderOption.value,
-    //   })
-    //   return
-    // }
-
     await authProvider()
   }
 

@@ -1,18 +1,22 @@
-import { useTranslation } from 'react-i18next'
+import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import NotificationImportantOutlinedIcon from '@mui/icons-material/NotificationImportantOutlined'
+import LoadingButton from '@mui/lab/LoadingButton'
+import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import Stack from '@mui/material/Stack'
 import React, { FC, useMemo } from 'react'
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
-import AIProviderOptions, { AIProviderOptionType } from '../AIProviderOptions'
-import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
-import LoadingButton from '@mui/lab/LoadingButton'
+
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartAIProviderConfirmDialogState } from '@/features/chatgpt/store'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+import AIProviderOptions, { AIProviderOptionType } from '../AIProviderOptions'
 import ThirdPartAIProviderForEnhancedStability from './ThirdPartAIProviderForEnhancedStability'
 
 interface ThirdPartAIProviderConfirmDialogProps {
@@ -28,7 +32,17 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
   )
   const [loading, setLoading] = React.useState(false)
 
-  const { open, confirmProviderValue, confirmFn } = dialogState
+  const { open, confirmProviderValue } = dialogState
+
+  const {
+    updateSidebarSettings,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
+  const {
+    cleanConversation,
+    createConversation,
+    switchBackgroundChatSystemAIProvider,
+  } = useClientConversation()
 
   const confirmProviderOption = useMemo(() => {
     return AIProviderOptions.find(
@@ -40,7 +54,6 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
     setDialogState({
       open: false,
       confirmProviderValue: '',
-      confirmFn: undefined,
     })
   }
 
@@ -50,9 +63,17 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
     try {
       setLoading(true)
 
-      if (confirmFn) {
-        await confirmFn(providerOption)
+      await updateSidebarSettings({
+        common: {
+          currentAIProvider: providerOption.value,
+        },
+      })
+      await switchBackgroundChatSystemAIProvider(providerOption.value)
+      if (currentSidebarConversationType === 'Chat') {
+        await cleanConversation(true)
+        await createConversation('Chat')
       }
+
       handleClose()
     } catch (error) {
       console.error('handleConfirmProvider error', error)

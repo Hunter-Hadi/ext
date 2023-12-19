@@ -1,11 +1,13 @@
-import React from 'react'
-import Stack from '@mui/material/Stack'
-import Divider from '@mui/material/Divider'
-import Typography from '@mui/material/Typography'
 import WarningAmberOutlinedIcon from '@mui/icons-material/WarningAmberOutlined'
+import Divider from '@mui/material/Divider'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
-import ThirdPartAIProviderForEnhancedStability from './ThirdPartAIProviderForEnhancedStability'
+
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+
+import ThirdPartAIProviderForEnhancedStability from './ThirdPartAIProviderForEnhancedStability'
 
 const ThirdPartAIProviderErrorSolution = () => {
   const { t } = useTranslation(['client'])

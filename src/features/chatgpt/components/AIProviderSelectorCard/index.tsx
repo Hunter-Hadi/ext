@@ -13,9 +13,7 @@ import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelector
 import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderMainPartIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderMainPartIcon'
-import AIProviderOptions, {
-  AIProviderOptionType,
-} from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   ChatGPTClientState,
@@ -126,34 +124,27 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     return
                   }
 
-                  const changeProviderFn = async (
-                    providerOption: AIProviderOptionType,
-                  ) => {
-                    await updateSidebarSettings({
-                      common: {
-                        currentAIProvider: providerOption.value,
-                      },
-                    })
-                    await switchBackgroundChatSystemAIProvider(
-                      providerOption.value,
-                    )
-                    if (currentSidebarConversationType === 'Chat') {
-                      await cleanConversation(true)
-                      await createConversation('Chat')
-                    }
-                  }
-
                   if (providerOption.isThirdParty) {
                     // 如果是第三方需要弹出 confirm dialog
                     setProviderConfirmDialogState({
                       open: true,
                       confirmProviderValue: providerOption.value,
-                      confirmFn: changeProviderFn,
                     })
                     return
                   }
 
-                  changeProviderFn(providerOption)
+                  await updateSidebarSettings({
+                    common: {
+                      currentAIProvider: providerOption.value,
+                    },
+                  })
+                  await switchBackgroundChatSystemAIProvider(
+                    providerOption.value,
+                  )
+                  if (currentSidebarConversationType === 'Chat') {
+                    await cleanConversation(true)
+                    await createConversation('Chat')
+                  }
                 }}
                 selected={providerOption.value === currentSidebarAIProvider}
                 disabled={isLoadingMemo}

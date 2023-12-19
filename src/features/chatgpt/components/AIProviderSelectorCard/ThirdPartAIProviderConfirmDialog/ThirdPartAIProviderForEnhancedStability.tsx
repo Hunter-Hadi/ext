@@ -1,17 +1,19 @@
-import { useTranslation } from 'react-i18next'
-import Typography from '@mui/material/Typography'
+import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
+
 import { AIChipIcon } from '@/components/CustomIcon'
-import AIProviderOptions, { AIProviderOptionType } from '../AIProviderOptions'
-import AIProviderIcon from '../AIProviderIcon'
-import AIProviderMainPartIcon from '../AIProviderMainPartIcon'
-import LoadingButton from '@mui/lab/LoadingButton'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartAIProviderConfirmDialogState } from '@/features/chatgpt/store'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+import AIProviderIcon from '../AIProviderIcon'
+import AIProviderMainPartIcon from '../AIProviderMainPartIcon'
+import AIProviderOptions, { AIProviderOptionType } from '../AIProviderOptions'
 
 const ThirdPartAIProviderForEnhancedStability: FC = () => {
   const { t } = useTranslation(['client'])
@@ -39,7 +41,6 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
     setDialogState({
       open: false,
       confirmProviderValue: '',
-      confirmFn: undefined,
     })
   }
   const handleConfirmProvider = async (

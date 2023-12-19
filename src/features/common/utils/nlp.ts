@@ -140,27 +140,22 @@ export const textGetLanguageName = (
           return iso6393.find((item) => item.iso6393 === maxIsoCode)?.name
         }
         // 如果不是top20的语言, 则看看第二多的是不是top20的语言
-        if (!top20Languages.includes(maxIsoCode)) {
-          // 找出第二多的isoCode
-          const secondMaxIsoCode = maxBy(
-            Object.keys(isoCodeCount),
-            (isoCode) => isoCodeCount[isoCode] !== isoCodeCount[maxIsoCode],
+        const secondMaxIsoCode = maxBy(
+          Object.keys(isoCodeCount),
+          (isoCode) => isoCodeCount[isoCode] !== isoCodeCount[maxIsoCode],
+        )
+        // 如果第二多的是top20的语言，并且差距第一不到2, 则使用第二多的
+        if (
+          secondMaxIsoCode &&
+          top20Languages.includes(secondMaxIsoCode) &&
+          isoCodeCount[maxIsoCode] - isoCodeCount[secondMaxIsoCode] <= 2
+        ) {
+          console.log(
+            `textGetLanguageName: [success] [top20] [second] [${secondMaxIsoCode}] ${
+              Date.now() - startTime
+            }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
           )
-          if (secondMaxIsoCode) {
-            // 如果第二多的是top20的语言，并且差距第一不到2, 则使用第二多的
-            if (
-              top20Languages.includes(secondMaxIsoCode) &&
-              isoCodeCount[maxIsoCode] - isoCodeCount[secondMaxIsoCode] <= 2
-            ) {
-              console.log(
-                `textGetLanguageName: [success] [top20] [second] [${secondMaxIsoCode}] ${
-                  Date.now() - startTime
-                }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
-              )
-              return iso6393.find((item) => item.iso6393 === secondMaxIsoCode)
-                ?.name
-            }
-          }
+          return iso6393.find((item) => item.iso6393 === secondMaxIsoCode)?.name
         }
       }
     }
@@ -187,7 +182,9 @@ export const textGetLanguageName = (
   console.log(
     `textGetLanguageName: [error] [${fallbackLanguageName}] ${
       Date.now() - startTime
-    }ms, text: ${sliceOfText}, ${sliceOfText.length} characters`,
+    }ms, text: ${sliceOfText}, ${
+      sliceOfText.length
+    } characters, fullSliceOfTextIsoCode: ${fullSliceOfTextIsoCode}`,
   )
   return fallbackLanguageName
 }

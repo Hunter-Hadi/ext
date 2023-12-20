@@ -1,7 +1,7 @@
-import { AI_PROVIDER_MAP } from '@/constants'
-import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IAIProviderType } from '@/background/provider/chat'
+import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
+import { AI_PROVIDER_MAP } from '@/constants'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 
 export type IChromeExtensionButtonSettingKey =
@@ -144,6 +144,10 @@ export type IThirdProviderSettings = {
     model?: string
   }
   [AI_PROVIDER_MAP.MAXAI_CLAUDE]: {
+    model?: string
+    temperature?: number
+  }
+  [AI_PROVIDER_MAP.MAXAI_GEMINI]: {
     model?: string
     temperature?: number
   }

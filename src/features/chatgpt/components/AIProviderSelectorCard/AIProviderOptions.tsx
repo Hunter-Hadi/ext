@@ -1,9 +1,10 @@
-import { AI_PROVIDER_MAP } from '@/constants'
-import { IAIProviderType } from '@/background/provider/chat'
 import Link from '@mui/material/Link'
-import React from 'react'
-import { I18nextKeysType } from '@/i18next'
 import { TFunction } from 'i18next'
+import React from 'react'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { AI_PROVIDER_MAP } from '@/constants'
+import { I18nextKeysType } from '@/i18next'
 
 export type AIProviderOptionType = {
   beta: boolean
@@ -112,6 +113,16 @@ const AIProviderOptions: AIProviderOptionType[] = [
     authButtonText: `client:provider__openai_api__auth_button_text`,
     authOpenInNew: true,
     isThirdParty: true,
+  },
+  {
+    beta: true,
+    label: 'client:provider__gemini__title',
+    value: AI_PROVIDER_MAP.MAXAI_GEMINI,
+    description: '',
+    authDescription: `client:provider__gemini__auth_description`,
+    shortDescription: (t) => t(`client:provider__gemini__short_description`),
+    authButtonText: `client:provider__gemini__auth_button_text`,
+    authOpenInNew: false,
   },
   {
     beta: false,

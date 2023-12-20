@@ -1,14 +1,15 @@
-import React, { FC } from 'react'
-import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import Box from '@mui/material/Box'
+import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { IAIProviderType } from '@/background/provider/chat'
-import Box from '@mui/material/Box'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 
 const AIProviderInfoCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -30,6 +31,7 @@ const AIProviderInfoCard: FC<{
     POE: 'poe',
     CLAUDE: 'claude_web_app',
     MAXAI_CLAUDE: 'claude',
+    MAXAI_GEMINI: 'gemini',
   }
   return (
     <Stack

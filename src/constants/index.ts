@@ -51,6 +51,7 @@ export const AI_PROVIDER_MAP = {
   CLAUDE: 'CLAUDE',
   POE: 'POE',
   MAXAI_CLAUDE: 'MAXAI_CLAUDE',
+  MAXAI_GEMINI: 'MAXAI_GEMINI',
 } as const
 
 // app.maxai.me

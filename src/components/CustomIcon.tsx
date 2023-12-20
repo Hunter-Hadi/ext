@@ -517,6 +517,78 @@ const ClaudeWebappIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+const GeminiIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 4C0 1.79086 1.79086 0 4 0H20C22.2091 0 24 1.79086 24 4V20C24 22.2091 22.2091 24 20 24H4C1.79086 24 0 22.2091 0 20V4Z"
+          fill="#040404"
+        />
+        <path
+          d="M12.0002 1.91113C12.0002 7.48016 7.48786 11.9953 1.91992 11.9999C7.48786 12.0045 12.0002 16.5196 12.0002 22.0887C12.0002 16.5196 16.5125 12.0045 22.0804 11.9999C16.5125 11.9953 12.0002 7.48016 12.0002 1.91113Z"
+          fill="white"
+        />
+        <path
+          d="M12.0002 1.91113C12.0002 7.48016 7.48786 11.9953 1.91992 11.9999C7.48786 12.0045 12.0002 16.5196 12.0002 22.0887C12.0002 16.5196 16.5125 12.0045 22.0804 11.9999C16.5125 11.9953 12.0002 7.48016 12.0002 1.91113Z"
+          fill="url(#paint0_linear_5953_58717)"
+          fillOpacity="0.7"
+        />
+        <path
+          d="M12.0002 1.91113C12.0002 7.48016 7.48786 11.9953 1.91992 11.9999C7.48786 12.0045 12.0002 16.5196 12.0002 22.0887C12.0002 16.5196 16.5125 12.0045 22.0804 11.9999C16.5125 11.9953 12.0002 7.48016 12.0002 1.91113Z"
+          fill="url(#paint1_linear_5953_58717)"
+          fillOpacity="0.7"
+        />
+        <path
+          d="M12.0002 1.91113C12.0002 7.48016 7.48786 11.9953 1.91992 11.9999C7.48786 12.0045 12.0002 16.5196 12.0002 22.0887C12.0002 16.5196 16.5125 12.0045 22.0804 11.9999C16.5125 11.9953 12.0002 7.48016 12.0002 1.91113Z"
+          fill="url(#paint2_linear_5953_58717)"
+          fillOpacity="0.2"
+        />
+        <defs>
+          <linearGradient
+            id="paint0_linear_5953_58717"
+            x1="22.0804"
+            y1="11.9999"
+            x2="2.45594"
+            y2="11.9999"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.218303" stopColor="#EAEAEA" />
+            <stop offset="0.739459" stopColor="#126EEF" />
+          </linearGradient>
+          <linearGradient
+            id="paint1_linear_5953_58717"
+            x1="12.0002"
+            y1="1.91113"
+            x2="12.0002"
+            y2="22.0887"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop offset="0.3125" stopColor="#D8D4D3" />
+            <stop offset="0.656495" stopColor="#1170FB" />
+          </linearGradient>
+          <linearGradient
+            id="paint2_linear_5953_58717"
+            x1="15.0598"
+            y1="9.1668"
+            x2="12.456"
+            y2="12.2584"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stopColor="#E7D6CA" />
+            <stop offset="1" stopColor="#8DB9EA" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </SvgIcon>
+  )
+}
 const GoogleIcon: FC<SvgIconProps> = (props) => {
   return (
     <SvgIcon {...props}>
@@ -666,22 +738,23 @@ const AIChipIcon: FC<SvgIconProps> = (props) => {
 }
 
 export {
+  AIChipIcon,
   BardIcon,
-  GoogleIcon,
-  EzMailAIIcon,
-  ChatGPTIcon,
-  ChatGPTBlackIcon,
-  UseChatGptIcon,
-  CleanChatBoxIcon,
-  ClaudeWebappIcon,
-  GiftIcon,
-  OpenAIIcon,
-  ClaudeIcon,
   BingIcon,
   BrowserIcon,
-  SidePanelIcon,
+  ChatGPTBlackIcon,
+  ChatGPTIcon,
+  ClaudeIcon,
+  ClaudeWebappIcon,
+  CleanChatBoxIcon,
   ColorGiftIcon,
+  EzMailAIIcon,
+  GeminiIcon,
+  GiftIcon,
+  GoogleIcon,
   MagicBookIcon,
+  OpenAIIcon,
   PoeIcon,
-  AIChipIcon,
+  SidePanelIcon,
+  UseChatGptIcon,
 }

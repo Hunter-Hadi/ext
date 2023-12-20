@@ -20,12 +20,14 @@ import {
   PoeChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
+import { MaxAIGeminiChatProvider } from '@/background/provider/chat/MaxAIGeminiChatProvider'
 import {
   BardChat,
   BingChat,
   ChatSystem,
   ClaudeWebappChat,
   MaxAIClaudeChat,
+  MaxAIGeminiChat,
   OpenAiApiChat,
   OpenAIChat,
   PoeChat,
@@ -312,6 +314,9 @@ const initChromeExtensionMessage = () => {
   const maxAIClaudeAdapter = new ChatAdapter(
     new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
   )
+  const maxAIGeminiAdapter = new ChatAdapter(
+    new MaxAIGeminiChatProvider(new MaxAIGeminiChat()),
+  )
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
   chatSystem.addAdapter(
@@ -323,8 +328,8 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
-
-  // search with ai
+  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
+  // search with AI
   SearchWithAIMessageInit()
 }
 

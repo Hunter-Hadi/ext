@@ -1,14 +1,16 @@
-import { ClaudeAttachment, ClaudeConversation, ClaudeMessage } from './types'
+import cloneDeep from 'lodash-es/cloneDeep'
+import { v4 as uuidV4 } from 'uuid'
+
+import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
+
 import {
   createClaudeConversation,
   deleteClaudeConversation,
   getClaudeOrganizationId,
   uploadClaudeAttachment,
 } from './api'
-import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { v4 as uuidV4 } from 'uuid'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { ClaudeAttachment, ClaudeConversation, ClaudeMessage } from './types'
 
 export class Claude {
   private conversation: ClaudeConversation | undefined

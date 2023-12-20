@@ -1,3 +1,16 @@
+import Browser from 'webextension-polyfill'
+
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import {
+  BING_MODELS,
+  BingConversationStyle,
+} from '@/background/src/chat/BingChat/bing/types'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import {
   IChromeExtensionLocalStorage,
   IChromeExtensionLocalStorageUpdateFunction,
@@ -7,17 +20,6 @@ import {
   CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY,
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
 } from '@/constants'
-import {
-  BING_MODELS,
-  BingConversationStyle,
-} from '@/background/src/chat/BingChat/bing/types'
-import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
-import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
-import Browser from 'webextension-polyfill'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {
@@ -75,6 +77,10 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       },
       [AI_PROVIDER_MAP.MAXAI_CLAUDE]: {
         model: MAXAI_CLAUDE_MODELS[0].value,
+        temperature: 1,
+      },
+      [AI_PROVIDER_MAP.MAXAI_GEMINI]: {
+        model: MAXAI_GENMINI_MODELS[0].value,
         temperature: 1,
       },
     },

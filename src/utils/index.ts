@@ -53,6 +53,12 @@ export const getAppMinimizeContainerElement = (): HTMLDivElement | null => {
     ?.shadowRoot?.querySelector('div') as HTMLDivElement
 }
 
+// 保存 由于网站本身设置 overflow: hidden，导致我们的 context menu 无法渲染的 网站host
+const BY_OVERFLOW_FLOW_BREAK_UI_HOST_LIST = [
+  'greylock.com',
+  'notion.so',
+  'teams.live.com',
+]
 /**
  * 对于一些特殊的网站, 在聊天框显示的时候, 需要修改一些样式
  */
@@ -99,17 +105,17 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
     if (host === 'mail.qq.com') {
       htmlElement.style.width = '100%'
     }
+
+    if (host === 'gatesnotes.com') {
+      htmlElement.style.height = '100%'
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
     document.body.style.height = '100vh'
   }
 
-  if (
-    host === 'greylock.com' ||
-    host === 'notion.so' ||
-    host === 'teams.live.com'
-  ) {
+  if (BY_OVERFLOW_FLOW_BREAK_UI_HOST_LIST.includes(host)) {
     // 打开 chat box 的时候，设置为 hidden
     // 为了解决 context menu 渲染在 body 宽度以外的地方时，样式错误的问题
     document.body.style.overflow = 'unset'
@@ -153,17 +159,21 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
       ) as HTMLDivElement
       youTubeStudioContainer.style.width = `100%`
     }
+
+    if (host === 'mail.qq.com') {
+      htmlElement.style.width = ''
+    }
+
+    if (host === 'gatesnotes.com') {
+      htmlElement.style.height = ''
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
     document.body.style.height = ''
   }
 
-  if (
-    host === 'greylock.com' ||
-    host === 'notion.so' ||
-    host === 'teams.live.com'
-  ) {
+  if (BY_OVERFLOW_FLOW_BREAK_UI_HOST_LIST.includes(host)) {
     // 关闭 chat box 的时候 清楚设定的值
     document.body.style.overflow = ''
   }

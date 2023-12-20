@@ -332,6 +332,7 @@ const ChatGPTStatusWrapper: FC = () => {
           display: 'flex',
           flexDirection: 'column',
           filter: `blur(${providerConfirmDialogOpen ? 5 : 0}px)`,
+          pointerEvents: providerConfirmDialogOpen ? 'none' : 'auto',
         }}
       >
         <AIProviderSelector />

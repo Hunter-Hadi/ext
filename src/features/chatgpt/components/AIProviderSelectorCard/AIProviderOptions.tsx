@@ -123,6 +123,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__gemini__short_description`),
     authButtonText: `client:provider__gemini__auth_button_text`,
     authOpenInNew: false,
+    isThirdParty: false,
   },
   {
     beta: false,

@@ -66,6 +66,17 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
       options.includeHistory = false
       options.maxHistoryMessageCnt = 0
     }
+    // NOTE: gemini的理解能力不行，需要把Human的回答过滤掉掉连续的
+    if (chat_history.length > 0) {
+      // 从后往前过滤连续的human
+      for (let i = chat_history.length - 1; i >= 0; i--) {
+        if (chat_history[i].type === 'human') {
+          if (chat_history[i - 1]?.type === 'human') {
+            chat_history.splice(i, 1)
+          }
+        }
+      }
+    }
     await this.maxAIGeminiChat.askChatGPT(
       question.question,
       {

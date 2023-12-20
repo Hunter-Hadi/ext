@@ -738,6 +738,7 @@ const AIChipIcon: FC<SvgIconProps> = (props) => {
 }
 
 export {
+  AIChipIcon,
   BardIcon,
   BingIcon,
   BrowserIcon,
@@ -756,5 +757,4 @@ export {
   PoeIcon,
   SidePanelIcon,
   UseChatGptIcon,
-  AIChipIcon,
 }

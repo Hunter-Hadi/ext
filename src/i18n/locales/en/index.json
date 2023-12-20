@@ -369,6 +369,7 @@
     "provider__gemini__auth_button_text": "Continue with Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini Suite, designed to offer scalability and versatile use cases, supporting 38 languages and a wide range of use cases.",
     "provider__label__third_part": "3rd-party",
+    "provider__label__beta": "beta",
     "provider__label__hide": "Hide",
     "provider__label__view_solutions": "View solutions",
     "provider__confirm_dialog__title": "You are now switching to 3rd-party AI provider: {{label}}",

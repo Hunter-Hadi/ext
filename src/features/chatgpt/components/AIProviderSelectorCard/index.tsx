@@ -187,7 +187,33 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                       }
                       whiteSpace={'nowrap'}
                     >
-                      {t('client:provider__label__third_part' as any)}
+                      {t('client:provider__label__third_part')}
+                    </Typography>
+                  ) : providerOption.beta ? (
+                    <Typography
+                      component={'span'}
+                      fontSize={'8px'}
+                      fontWeight={500}
+                      textAlign={'left'}
+                      letterSpacing={'-0.16px'}
+                      px={0.25}
+                      borderRadius={1}
+                      lineHeight={1.4}
+                      ml={'4px !important'}
+                      bgcolor={(t) =>
+                        t.palette.mode === 'dark'
+                          ? 'rgba(255, 255, 255, 0.08)'
+                          : 'rgba(0, 0, 0, 0.08)'
+                      }
+                      whiteSpace={'nowrap'}
+                      sx={{
+                        borderRadius: '4px',
+                        border: '1px solid',
+                        borderColor: 'primary.main',
+                        color: 'primary.main',
+                      }}
+                    >
+                      {t('client:provider__label__beta')}
                     </Typography>
                   ) : (
                     <AIProviderMainPartIcon />

@@ -144,7 +144,7 @@ export const textGetLanguageName = (
           Object.keys(isoCodeCount),
           (isoCode) => isoCodeCount[isoCode] !== isoCodeCount[maxIsoCode],
         )
-        // 如果第二多的是top20的语言，并且差距第一不到2, 则使用第二多的
+        //  如果第二多的是top20的语言，并且差距第一不到2, 则使用第二多的
         if (
           secondMaxIsoCode &&
           top20Languages.includes(secondMaxIsoCode) &&

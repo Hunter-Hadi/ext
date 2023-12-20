@@ -1,9 +1,24 @@
+import { default as lodashGet } from 'lodash-es/get'
+import isNumber from 'lodash-es/isNumber'
+import { default as lodashSet } from 'lodash-es/set'
+import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { IAskChatGPTQuestionType } from '@/background/provider/chat/ChatAdapter'
+import ConversationManager, {
+  IChatConversation,
+} from '@/background/src/chatConversations'
 import {
   createClientMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import {
+  getChromeExtensionLocalStorage,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
+import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessage,
@@ -11,24 +26,9 @@ import {
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { CHROME_EXTENSION_LOCAL_WINDOWS_ID_OF_CHATGPT_TAB } from '@/constants'
-import { IAIProviderType } from '@/background/provider/chat'
-
-import { default as lodashSet } from 'lodash-es/set'
-import { default as lodashGet } from 'lodash-es/get'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { IAskChatGPTQuestionType } from '@/background/provider/chat/ChatAdapter'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
-import { v4 as uuidV4 } from 'uuid'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
-import isNumber from 'lodash-es/isNumber'
-import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
-import {
-  getChromeExtensionLocalStorage,
-  setChromeExtensionLocalStorage,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 // let lastBrowserWindowId: number | undefined = undefined
 /**

@@ -1,4 +1,6 @@
+import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
+
 import { IAIProviderType } from '@/background/provider/chat'
 import {
   BardIcon,
@@ -7,10 +9,10 @@ import {
   ChatGPTIcon,
   ClaudeIcon,
   ClaudeWebappIcon,
+  GeminiIcon,
   OpenAIIcon,
   PoeIcon,
 } from '@/components/CustomIcon'
-import { SxProps } from '@mui/material/styles'
 
 export interface AIProviderIconProps {
   aiProviderType: IAIProviderType
@@ -88,6 +90,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
             fontSize: size,
           }}
         />
+      )}
+      {aiProviderType === 'MAXAI_GEMINI' && (
+        <GeminiIcon sx={{ ...sx, fontSize: size }} />
       )}
     </>
   )

@@ -1,10 +1,11 @@
-import { AI_PROVIDER_MAP } from '@/constants'
 import Browser from 'webextension-polyfill'
+
+import { IChatConversation } from '@/background/src/chatConversations'
+import { AI_PROVIDER_MAP } from '@/constants'
 import {
   IChatUploadFile,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 
 /**
  * needAuth: 需要授权
@@ -32,8 +33,7 @@ export type IAskChatGPTAnswerType = {
   text: string
 }
 
-export type IAIProviderType =
-  (typeof AI_PROVIDER_MAP)[keyof typeof AI_PROVIDER_MAP]
+export type IAIProviderType = typeof AI_PROVIDER_MAP[keyof typeof AI_PROVIDER_MAP]
 
 export type IChatGPTAskQuestionFunctionType = (
   taskId: string,

@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Jei turite kokių nors problemų ar idėjų, prašome mus informuoti. Jūsų atsiliepimai yra būtini mūsų paslaugų tobulinimui. Dėkojame už jūsų vertingą indėlį į mūsų bendruomenę!",
     "provider__confirm_dialog__continue_with": "Tęsti su {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Nustatyta integracijos problema",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} šiuo metu patiria ryšio problemas su MaxAI dėl naujausių atnaujinimų. Mūsų komanda aktyviai dirba siekdama išspręsti šią situaciją ir vertiname jūsų supratimą. Tuo tarpu, apsvarstykite alternatyvų tiekėją ir vėliau susisiekite su mumis.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Šiuo metu {{label}} gali patirti ryšio problemas su MaxAI dėl naujausių atnaujinimų. Mūsų komanda aktyviai dirba siekdama išspręsti šią problemą, ir mes dėkojame už jūsų supratimą. Tuo tarpu, prašome apsvarstyti alternatyvų tiekėją ir vėliau vėl pasitikrinkite su mumis.",
     "provider__label__hide": "Slėpti",
     "provider__label__view_solutions": "Peržiūrėti sprendimus",
     "sidebar__input__tokens_limited__title": "maksimalus žetonai"

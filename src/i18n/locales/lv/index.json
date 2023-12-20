@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Ja jums ir kādas problēmas vai idejas, lūdzu, informējiet mūs. Jūsu atsauksmes ir būtiskas, lai mēs varētu uzlabot savus pakalpojumus. Paldies par jūsu vērtīgo ieguldījumu mūsu kopienā!",
     "provider__confirm_dialog__continue_with": "Turpināt ar {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Konfigurācijas problēma konstatēta",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} pašlaik piedzīvo savienojuma problēmas ar MaxAI sakarā ar tās nesenajiem atjauninājumiem. Mūsu komanda aktīvi strādā, lai atrisinātu šo jautājumu, un novērtējam jūsu sapratni. Tā starpā, lūdzu, izvēlieties alternatīvu pakalpojumu sniedzēju un vēlāk atgriezieties pie mums.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} pašlaik varētu saskarties ar savienojuma problēmām ar MaxAI sakarā ar nesenajiem atjauninājumiem. Mūsu komanda aktīvi strādā, lai atrisinātu šo jautājumu, un mēs pateicamies par sapratni. Pagaidām, lūdzu, izvērtējiet alternatīvu pakalpojumu sniedzēju un vēlāk atgriezieties pie mums.",
     "provider__label__hide": "Paslēpt",
     "provider__label__view_solutions": "Skatīt risinājumus",
     "sidebar__input__tokens_limited__title": "maksimālais skaits"

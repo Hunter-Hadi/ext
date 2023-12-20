@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Kung mayroon kang anumang isyu o ideya, ipaalam sa amin. Ang iyong feedback ay mahalaga para sa amin upang mapabuti ang aming mga serbisyo. Salamat sa iyong mahalagang kontribusyon sa aming komunidad!",
     "provider__confirm_dialog__continue_with": "Magpatuloy gamit ang {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Natuklasan ang isyung pang-integrasyon",
-    "provider__confirm_dialog__integration_issue_detected__desc": "Ang {{label}} ay kasalukuyang may mga problema sa koneksyon sa MaxAI dahil sa mga kamakailang update nito. Kami ay aktibong gumagawa upang malutas ang problemang ito, at pinahahalagahan namin ang iyong pang-unawa. Samantala, mangyaring isaalang-alang ang paggamit ng ibang provider at bumalik sa amin mamaya.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Ang {{label}} ay maaaring may problema sa koneksyon sa MaxAI dahil sa mga kamakailang update. Ang aming team ay aktibong gumagawa upang malutas ang isyung ito, at kami ay nagpapasalamat sa inyong pang-unawa. Samantala, mangyaring isaalang-alang ang paggamit ng ibang provider at bumalik sa amin mamaya.",
     "provider__label__hide": "Itago",
     "provider__label__view_solutions": "Tingnan ang mga solusyon",
     "sidebar__input__tokens_limited__title": "maksimum na mga token"

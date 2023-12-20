@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "እርስዎ ለማንኛውም ተጠቃሚ ወይም አስተዳደር ከሆነው ማስታወቂያዎች ይህንን ማስታወቂያ እናደርጋለን. የምስል ማስታወቂያዎችዎን ለማስተላለፍ እናመሰግናለን. የምስል ማስታወቂያዎችዎን የሚያስችል እናደርጋለን!",
     "provider__confirm_dialog__continue_with": "{{label}} እርስዎን ይቀመጣል",
     "provider__confirm_dialog__integration_issue_detected": "የማስተላለፉት ውስጥ የሚያስቀምጡ ደንቆሮ ተጠቃሚ ነው",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} በመሆኑ የMaxAI እናት በሚያስቀምጡ ውስጥ የሚያስተላልፉት ውጤት ይገኛል. እኛን የሚያስተላልፉትን የሚያስችል እናደርጋለን. በዚህ ጊዜ እናመሰግናለን እናመሰግናለን.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "የ{{label}} በአሁኑ ጊዜ መቀጠል ላይ MaxAI እየሰራን ነው። በቅርብ ጊዜ የሚጠቀሙትን የማይታወቅ ድጋፍ እናስተማሩን ለማድረግ የሚያስችል ነው። በመስመር ጋር ሌሎች የሚጠቀሙትን ድጋፍ እና በአጠቃላይ ወይም በአጠቃላይ የሚያስችል ድጋፍ ይጠቀሙት።",
     "provider__label__hide": "ደብቅ",
     "provider__label__view_solutions": "ማሳያያት ይመልከቱ",
     "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ"

@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "మీకు ఏమైనా సమస్యలు లేదా ఆలోచనలు ఉన్నాయా? దయచేసి మాకు తెలియజేయండి. మీ అభిప్రాయం మా సేవలను మెరుగుపరచడం కోసం ముఖ్యం. మా కమ్యూనిటీకి మీ మౌల్యమైన సంభావనకు ధన్యవాదాలు!",
     "provider__confirm_dialog__continue_with": "{{label}}తో కొనసాగండి",
     "provider__confirm_dialog__integration_issue_detected": "ఇంటిగ్రేషన్ సమస్య గుర్తుబాటులోంది",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} ప్రస్తుతం మాక్స్‌ఐతో కనెక్షన్ సమస్యలు ఉన్నాయి మరియు మా టీమ్ ఈ సమస్యను పరిష్కరించడానికి ప్రయత్నిస్తోంది. మీరు అల్టర్నేటివ్ ప్రొవైడర్‌ని ఉపయోగించి, మరియు మాకు తిరిగి తనిఖీ చేయండి.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "మీరు ఇప్పటికే మాక్స్‌ఎయితో కనెక్షన్ సమస్యలు ఉంచిన {{label}} కొరకు ఈ విషయంలో మా టీమ్ పని చేస్తోంది. మీ అర్ధం చేసుకోడానికి మీరు వినండి. ఇప్పుడు, దయచేసి మరొక ప్రొవైడర్‌ను ఉపయోగించండి మరియు తరువాత మళ్ళీ మాకు తిరిగి తెరవండి.",
     "provider__label__hide": "దాచు",
     "provider__label__view_solutions": "పరిష్కరణలను చూడండి",
     "sidebar__input__tokens_limited__title": "టోకెన్ల గరిష్ఠం"

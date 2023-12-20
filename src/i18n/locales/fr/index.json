@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Si vous rencontrez des problèmes ou avez des idées, veuillez nous en informer. Votre avis est essentiel pour nous permettre d'améliorer nos services. Merci pour votre précieuse contribution à notre communauté !",
     "provider__confirm_dialog__continue_with": "Continuer avec {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Problème d'intégration détecté",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} rencontre actuellement des problèmes de connexion avec MaxAI en raison de ses mises à jour récentes. Notre équipe travaille activement à résoudre ce problème et nous vous remercions de votre compréhension. En attendant, veuillez envisager d'utiliser un fournisseur alternatif et revenir vers nous ultérieurement.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Le {{label}} pourrait actuellement rencontrer des problèmes de connexion avec MaxAI en raison de ses mises à jour récentes. Notre équipe travaille activement pour résoudre ce problème et nous vous remercions de votre compréhension. En attendant, veuillez envisager d'utiliser un fournisseur alternatif et revenir vers nous ultérieurement.",
     "provider__label__hide": "Cacher",
     "provider__label__view_solutions": "Voir les solutions",
     "sidebar__input__tokens_limited__title": "maximum de jetons"

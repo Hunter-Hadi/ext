@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Nếu bạn gặp bất kỳ vấn đề hoặc ý tưởng nào, hãy cho chúng tôi biết. Ý kiến phản hồi của bạn là rất quan trọng để chúng tôi cải thiện dịch vụ của mình. Cảm ơn sự đóng góp quý giá của bạn cho cộng đồng của chúng tôi!",
     "provider__confirm_dialog__continue_with": "Tiếp tục với {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Phát hiện vấn đề tích hợp",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} hiện đang gặp vấn đề kết nối với MaxAI do các cập nhật gần đây. Nhóm của chúng tôi đang tích cực làm việc để giải quyết vấn đề này và chúng tôi đánh giá cao sự thông cảm của bạn. Trong thời gian chờ đợi, hãy xem xét sử dụng một nhà cung cấp thay thế và kiểm tra lại với chúng tôi sau.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Hiện tại {{label}} có thể đang gặp vấn đề kết nối với MaxAI do các cập nhật gần đây. Nhóm của chúng tôi đang tích cực làm việc để giải quyết vấn đề này và chúng tôi rất trân trọng sự thông cảm của bạn. Trong thời gian chờ đợi, xin vui lòng xem xét sử dụng một nhà cung cấp khác và kiểm tra lại sau.",
     "provider__label__hide": "Ẩn",
     "provider__label__view_solutions": "Xem giải pháp",
     "sidebar__input__tokens_limited__title": "số lượng tối đa"

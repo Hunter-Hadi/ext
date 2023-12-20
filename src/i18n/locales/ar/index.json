@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "إذا كان لديك أي مشاكل أو أفكار، يرجى إعلامنا. تعليقاتك أساسية بالنسبة لنا لتحسين خدماتنا. شكرًا لمساهمتك القيمة في مجتمعنا!",
     "provider__confirm_dialog__continue_with": "الاستمرار مع {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "تم اكتشاف مشكلة في التكامل",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} يواجه حاليًا مشكلات اتصال مع MaxAI بسبب تحديثاته الأخيرة. فريقنا يعمل بنشاط لحل هذه المسألة، ونقدر تفهمك. في هذه الأثناء، يُرجى النظر في استخدام مزود بديل والتحقق مرة أخرى لاحقًا.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "قد يواجه {{label}} حاليًا مشكلات في الاتصال مع MaxAI بسبب التحديثات الأخيرة. فريقنا يعمل بنشاط لحل هذه المسألة، ونقدر تفهمك. في الوقت الحالي، يُرجى النظر في استخدام مزود بديل والعودة إلينا لاحقًا.",
     "provider__label__hide": "إخفاء",
     "provider__label__view_solutions": "عرض الحلول",
     "sidebar__input__tokens_limited__title": "الحد الأقصى للرموز"

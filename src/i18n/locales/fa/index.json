@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "اگر هر گونه مشکل یا ایده ای دارید، لطفاً به ما اطلاع دهید. نظر شما برای بهبود خدمات ما ضروری است. از مشارکت ارزشمند شما در جامعه ما سپاسگزاریم!",
     "provider__confirm_dialog__continue_with": "ادامه با {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "مشکل ادغام تشخیص داده شد",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} در حال حاضر با مشکلات اتصال به MaxAI در نتیجه به روزرسانی های اخیر خود روبرو است. تیم ما در حال فعالیت برای حل این مسئله است و قدردانی می کنیم. در این مدت، لطفاً در نظر داشته باشید که از یک ارائه دهنده جایگزین استفاده کنید و بعداً با ما تماس بگیرید.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "در حال حاضر {{label}} ممکن است به دلیل به‌روزرسانی‌های اخیر با MaxAI مشکلات اتصال داشته باشد. تیم ما در حال حاضر برای حل این موضوع فعالیت می‌کند و از صبر و شکیبایی شما سپاسگزاریم. در این مدت، لطفاً در نظر داشته باشید که از یک سرویس دهنده جایگزین استفاده کنید و بعداً مجدداً با ما تماس بگیرید.",
     "provider__label__hide": "مخفی کردن",
     "provider__label__view_solutions": "مشاهده راه حل‌ها",
     "sidebar__input__tokens_limited__title": "حداکثر توکن‌ها"

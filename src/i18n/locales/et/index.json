@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Kui teil on probleeme või ideid, andke meile teada. Teie tagasiside on meie teenuste täiustamiseks oluline. Täname teid väärtusliku panuse eest meie kogukonda!",
     "provider__confirm_dialog__continue_with": "Jätka {{label}}-ga",
     "provider__confirm_dialog__integration_issue_detected": "Avastati integreerimisprobleem",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kogeb praegu ühendusprobleeme MaxAI-ga seoses hiljutiste uuendustega. Meie meeskond töötab aktiivselt selle probleemi lahendamise nimel ja hindame teie mõistvat suhtumist. Seniks kaaluge alternatiivse pakkujaga töötamist ja kontrollige hiljem uuesti.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} võib hetkel kogeda ühendusprobleeme MaxAI-ga seoses hiljutiste uuendustega. Meie meeskond tegeleb aktiivselt selle probleemi lahendamisega ja hindame teie mõistvat suhtumist. Seniks kaaluge alternatiivse teenusepakkuja kasutamist ja kontrollige hiljem uuesti.",
     "provider__label__hide": "Peida",
     "provider__label__view_solutions": "Vaata lahendusi",
     "sidebar__input__tokens_limited__title": "maksimaalsed märgid"

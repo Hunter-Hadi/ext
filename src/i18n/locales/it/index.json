@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Se hai problemi o idee, faccelo sapere. Il tuo feedback è essenziale per noi per migliorare i nostri servizi. Grazie per il tuo prezioso contributo alla nostra comunità!",
     "provider__confirm_dialog__continue_with": "Continua con {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Rilevato problema di integrazione",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} sta attualmente riscontrando problemi di connessione con MaxAI a causa dei suoi aggiornamenti recenti. Il nostro team sta lavorando attivamente per risolvere questa questione e apprezziamo la tua comprensione. Nel frattempo, considera l'uso di un fornitore alternativo e controlla nuovamente con noi più tardi.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Attualmente il {{label}} potrebbe avere problemi di connessione con MaxAI a causa dei suoi aggiornamenti recenti. Il nostro team sta lavorando attivamente per risolvere questa situazione e apprezziamo la tua comprensione. Nel frattempo, ti invitiamo a considerare l'utilizzo di un provider alternativo e a controllare nuovamente più tardi.",
     "provider__label__hide": "Nascondi",
     "provider__label__view_solutions": "Visualizza soluzioni",
     "sidebar__input__tokens_limited__title": "massimo token"

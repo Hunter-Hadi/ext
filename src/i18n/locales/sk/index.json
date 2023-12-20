@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Ak máte nejaké problémy alebo nápady, dajte nám prosím vedieť. Vaše pripomienky sú pre nás dôležité na zlepšenie našich služieb. Ďakujeme za váš cenný príspevok do našej komunity!",
     "provider__confirm_dialog__continue_with": "Pokračovať s {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Zistený problém s integráciou",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} momentálne má problémy s pripojením k MaxAI kvôli svojim nedávnym aktualizáciám. Náš tím aktívne pracuje na vyriešení tejto záležitosti a vážime si vaše pochopenie. Medzitým zvážte použitie alternatívneho poskytovateľa a skontrolujte neskôr.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Poskytovateľ {{label}} momentálne môže mať problémy s pripojením k MaxAI kvôli nedávnym aktualizáciám. Náš tím aktívne pracuje na vyriešení tejto záležitosti a vážime si vaše pochopenie. V tomto čase zvážte použitie alternatívneho poskytovateľa a skontrolujte neskôr.",
     "provider__label__hide": "Skryť",
     "provider__label__view_solutions": "Zobraziť riešenia",
     "sidebar__input__tokens_limited__title": "maximálne tokeny"

@@ -377,7 +377,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "If you have any issues or ideas, please let us know. Your feedback is essential for us to enhance our services. Thanks for your valuable contribution to our community!",
     "provider__confirm_dialog__continue_with": "Continue with {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Integration issue detected",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} is currently experiencing connection issues with MaxAI due to its recent updates. Our team is actively working to resolve this matter, and we appreciate your understanding. In the meantime, please consider using an alternative provider and check back with us later.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "The {{label}} may currently be facing connection issues with MaxAI due to its recent updates. Our team is actively working to resolve this matter, and we appreciate your understanding. In the meantime, please consider using an alternative provider and check back with us later.",
     "popup__title": "Welcome to MaxAI.me!",
     "popup__special_page__title": "For security reasons, the extension only works on actual websites and PDF files, excluding ChatGPT's webpage. So it won't work on",
     "popup__special_page__item1": "New tabs without loaded websites",

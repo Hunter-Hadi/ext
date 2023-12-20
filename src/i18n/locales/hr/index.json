@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Ako imate bilo kakvih problema ili ideja, javite nam. Vaše povratne informacije su ključne za poboljšanje naših usluga. Hvala vam na važnom doprinosu našoj zajednici!",
     "provider__confirm_dialog__continue_with": "Nastavi s {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Otkriven je problem s integracijom",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} trenutno ima problema s povezivanjem s MaxAI-om zbog svojih nedavnih ažuriranja. Naš tim aktivno radi na rješavanju ovog problema i cijenimo vaše razumijevanje. U međuvremenu, razmislite o korištenju alternativnog pružatelja i provjerite ponovno kasnije.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} trenutno može imati problema s povezivanjem s MaxAI zbog nedavnih ažuriranja. Naš tim aktivno radi na rješavanju ovog problema i zahvaljujemo vam na razumijevanju. U međuvremenu, molimo vas da razmislite o korištenju alternativnog pružatelja usluga i kasnije se ponovno javite.",
     "provider__label__hide": "Sakrij",
     "provider__label__view_solutions": "Pregledaj rješenja",
     "sidebar__input__tokens_limited__title": "maksimalni tokeni"

@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Si tens algun problema o idea, si us plau, comunica'ns-ho. La teva opinió és essencial per millorar els nostres serveis. Gràcies per la teva valuosa contribució a la nostra comunitat!",
     "provider__confirm_dialog__continue_with": "Continua amb {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "S'ha detectat un problema d'integració",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} està experimentant actualment problemes de connexió amb MaxAI a causa de les seves actualitzacions recents. El nostre equip està treballant activament per resoldre aquesta qüestió i agraïm la teva comprensió. Mentrestant, si us plau, considera utilitzar un proveïdor alternatiu i torna a consultar-nos més tard.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Actualment, {{label}} pot estar experimentant problemes de connexió amb MaxAI a causa de les seves actualitzacions recents. El nostre equip està treballant activament per resoldre aquesta qüestió i us agraïm la vostra comprensió. Mentrestant, si us plau, considereu utilitzar un proveïdor alternatiu i torneu més tard.",
     "provider__label__hide": "Amaga",
     "provider__label__view_solutions": "Veure solucions",
     "sidebar__input__tokens_limited__title": "màxim de tokens"

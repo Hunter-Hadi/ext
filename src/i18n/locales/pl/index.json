@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Jeśli masz jakiekolwiek problemy lub pomysły, daj nam znać. Twoja opinia jest niezbędna do rozwoju naszych usług. Dziękujemy za cenny wkład w naszą społeczność!",
     "provider__confirm_dialog__continue_with": "Kontynuuj z {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Wykryto problem z integracją",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} obecnie ma problemy z połączeniem z MaxAI ze względu na ostatnie aktualizacje. Nasz zespół aktywnie pracuje nad rozwiązaniem tego problemu i doceniamy Twoje zrozumienie. W międzyczasie rozważ skorzystanie z alternatywnego dostawcy i sprawdź ponownie później.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Obecnie {{label}} może mieć problemy z połączeniem z MaxAI ze względu na ostatnie aktualizacje. Nasz zespół aktywnie pracuje nad rozwiązaniem tego problemu i doceniamy Twoje zrozumienie. W międzyczasie rozważ skorzystanie z alternatywnego dostawcy i sprawdź później.",
     "provider__label__hide": "Ukryj",
     "provider__label__view_solutions": "Zobacz rozwiązania",
     "sidebar__input__tokens_limited__title": "maks. tokenów"

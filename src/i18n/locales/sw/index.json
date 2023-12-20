@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Ikiwa una shida au mawazo yoyote, tafadhali tuambie. Maoni yako ni muhimu kwetu kuimarisha huduma zetu. Asante kwa mchango wako muhimu kwa jamii yetu!",
     "provider__confirm_dialog__continue_with": "Endelea na {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "Tatizo la ushirikiano limegunduliwa",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} kwa sasa inakabiliwa na matatizo ya uunganisho na MaxAI kutokana na sasisho zake za hivi karibuni. Timu yetu inafanya kazi kwa bidii kutatua suala hili, na tunathamini uelewa wako. Kwa sasa, tafadhali fikiria kutumia mtoa huduma mbadala na rudisha tena baadaye.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "Kwa sasa, {{label}} inaweza kukabili matatizo ya uunganisho na MaxAI kutokana na sasisho zake za hivi karibuni. Timu yetu inafanya kazi kwa bidii kutatua suala hili, na tunathamini uelewa wako. Wakati huo huo, tafadhali fikiria kutumia mtoa huduma mbadala na rudisha tena baadaye.",
     "provider__label__hide": "Ficha",
     "provider__label__view_solutions": "Angalia suluhisho",
     "sidebar__input__tokens_limited__title": "kiwango cha juu cha alama"

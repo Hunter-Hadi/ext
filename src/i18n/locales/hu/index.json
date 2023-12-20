@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "Ha bármilyen problémád vagy ötleted van, kérlek jelezd nekünk. A visszajelzésed elengedhetetlen számunkra a szolgáltatásaink fejlesztéséhez. Köszönjük értékes hozzájárulásodat a közösségünknek!",
     "provider__confirm_dialog__continue_with": "Folytatás {{label}}-vel",
     "provider__confirm_dialog__integration_issue_detected": "Integrációs probléma észlelve",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} jelenleg kapcsolati problémákkal küzd a MaxAI-val a legutóbbi frissítései miatt. Csapatunk aktívan dolgozik az ügy megoldásán, és értékeljük megértésedet. Addig is fontold meg egy alternatív szolgáltató használatát, és később térj vissza hozzánk.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "A(z) {{label}} jelenleg kapcsolati problémákkal küzdhet a MaxAI-val a legutóbbi frissítések miatt. Csapatunk aktívan dolgozik az ügy megoldásán, és köszönjük a megértését. Addig is, kérjük, fontolja meg egy alternatív szolgáltató használatát, és később térjen vissza hozzánk.",
     "provider__label__hide": "Elrejtés",
     "provider__label__view_solutions": "Megoldások megtekintése",
     "sidebar__input__tokens_limited__title": "maximális tokenek"

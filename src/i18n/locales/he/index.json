@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "אם יש לך בעיות או רעיונות, אנא דבר איתנו. המשוב שלך חשוב מאוד כדי שנוכל לשפר את השירותים שלנו. תודה על תרומתך היקרה לקהילתנו!",
     "provider__confirm_dialog__continue_with": "המשך עם {{label}}",
     "provider__confirm_dialog__integration_issue_detected": "זוהתה בעיה בשילוב",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} כרגע חווים בעיות חיבור עם MaxAI עקב עדכונים אחרונים. הצוות שלנו פועל כרגע לפתור את הבעיה הזו ואנחנו מעריכים את ההבנה שלך. בינתיים, שקול להשתמש בספק אחר ולבדוק שוב איתנו מאוחר יותר.",
+    "provider__confirm_dialog__integration_issue_detected__desc": "יתכן כי {{label}} נתקל כרגע בבעיות חיבור עם MaxAI עקב העדכונים האחרונים שלו. הצוות שלנו פועל כרגע לפתור את הבעיה ואנו מעריכים את ההבנה שלך. בינתיים, אנא שקול להשתמש בספק אחר וחזור אלינו מאוחר יותר.",
     "provider__label__hide": "הסתר",
     "provider__label__view_solutions": "צפה בפתרונות",
     "sidebar__input__tokens_limited__title": "מקסימום טוקנים"

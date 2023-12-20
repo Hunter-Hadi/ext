@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "如果您有任何问题或想法，请告诉我们。您的反馈对我们改进服务至关重要。感谢您对我们社区的宝贵贡献！",
     "provider__confirm_dialog__continue_with": "继续使用{{label}}",
     "provider__confirm_dialog__integration_issue_detected": "检测到集成问题",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} 目前与MaxAI存在连接问题，这是由于其最近的更新引起的。我们的团队正在积极解决此问题，并感谢您的理解。同时，请考虑使用其他提供商，并稍后再来查看。",
+    "provider__confirm_dialog__integration_issue_detected__desc": "由于最近的更新，{{label}} 目前可能与 MaxAI 面临连接问题。我们的团队正在积极解决此问题，感谢您的理解。同时，请考虑使用其他供应商，并稍后再回来查看。",
     "provider__label__hide": "隐藏",
     "provider__label__view_solutions": "查看解决方案",
     "sidebar__input__tokens_limited__title": "最多令牌"

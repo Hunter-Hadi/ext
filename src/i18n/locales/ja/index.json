@@ -487,7 +487,7 @@
     "provider__confirm_dialog__your_feedback_matters__desc": "問題やアイデアがある場合は、ぜひお知らせください。あなたのフィードバックは私たちのサービスを向上させるために不可欠です。貴重な貢献に感謝します！",
     "provider__confirm_dialog__continue_with": "{{label}}で続行する",
     "provider__confirm_dialog__integration_issue_detected": "統合の問題が検出されました",
-    "provider__confirm_dialog__integration_issue_detected__desc": "{{label}}は最近の更新によりMaxAIとの接続に問題が発生しています。私たちのチームはこの問題の解決に取り組んでおり、ご理解いただけると幸いです。その間、代替プロバイダを使用し、後で再度確認してください。",
+    "provider__confirm_dialog__integration_issue_detected__desc": "最近の更新により、{{label}}は現在MaxAIとの接続に問題が発生している可能性があります。弊社チームはこの問題を解決するために積極的に取り組んでおり、ご理解いただけると幸いです。その間、代替プロバイダをご検討いただき、後ほど再度ご確認ください。",
     "provider__label__hide": "非表示",
     "provider__label__view_solutions": "ソリューションを表示",
     "sidebar__input__tokens_limited__title": "最大トークン数"

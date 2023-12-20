@@ -1,10 +1,13 @@
-import Alert from '@mui/material/Alert'
+import Alert, { alertClasses } from '@mui/material/Alert'
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevContent from '@/components/DevContent'
+import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
 import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import {
   IAIResponseMessage,
@@ -58,6 +61,7 @@ const SidebarChatBoxMessageItem: FC<{
     onRetry,
     className,
   } = props
+  const { t } = useTranslation(['client'])
   const { isDarkMode } = useCustomTheme()
   const [defaultText, setDefaultText] = useState(() =>
     getMessageRenderText(message),
@@ -153,6 +157,7 @@ const SidebarChatBoxMessageItem: FC<{
       }
     }
   }, [message.type, isHover, isDarkMode])
+
   useEffect(() => {
     setDefaultText(getMessageRenderText(message))
   }, [message.text])
@@ -166,6 +171,9 @@ const SidebarChatBoxMessageItem: FC<{
     }
     return []
   }, [message])
+
+  const [solutionsShow, setSolutionsShow] = useState(false)
+
   return (
     <Stack
       className={className}
@@ -249,8 +257,9 @@ const SidebarChatBoxMessageItem: FC<{
               severity={message?.extra?.status || 'info'}
               sx={{
                 p: 1,
-                '& .MuiAlert-message': {
+                [`& .${alertClasses.message}`]: {
                   p: 0,
+                  width: '100%',
                 },
                 '& > div:first-child': {
                   display: 'none',
@@ -263,15 +272,26 @@ const SidebarChatBoxMessageItem: FC<{
               }}
               icon={<></>}
             >
-              <div
-                className={`markdown-body ${
-                  isDarkMode ? 'markdown-body-dark' : ''
-                }`}
-              >
-                <CustomMarkdown>
-                  {defaultText.replace(/^\s+/, '')}
-                </CustomMarkdown>
-              </div>
+              <Box>
+                <Stack
+                  direction={'row'}
+                  alignItems="flex-start"
+                  spacing={1.5}
+                  mb={2}
+                >
+                  <div
+                    className={`markdown-body ${
+                      isDarkMode ? 'markdown-body-dark' : ''
+                    }`}
+                  >
+                    <CustomMarkdown>
+                      {defaultText.replace(/^\s+/, '')}
+                    </CustomMarkdown>
+                  </div>
+                </Stack>
+
+                {solutionsShow && <ThirdPartAIProviderErrorSolution />}
+              </Box>
             </Alert>
           ) : (
             <Stack
@@ -346,6 +366,10 @@ const SidebarChatBoxMessageItem: FC<{
               if (message.parentMessageId) {
                 onRetry && onRetry(message.parentMessageId)
               }
+            }}
+            solutionsShow={solutionsShow}
+            onSolutionToggle={() => {
+              setSolutionsShow((pre) => !pre)
             }}
             message={message as ISystemChatMessage}
           />

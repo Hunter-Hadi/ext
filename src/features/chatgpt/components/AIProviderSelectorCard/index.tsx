@@ -123,7 +123,6 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                   if (currentSidebarAIProvider === providerOption.value) {
                     return
                   }
-
                   if (providerOption.isThirdParty) {
                     // 如果是第三方需要弹出 confirm dialog
                     setProviderConfirmDialogState({
@@ -132,7 +131,6 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     })
                     return
                   }
-
                   await updateSidebarSettings({
                     common: {
                       currentAIProvider: providerOption.value,

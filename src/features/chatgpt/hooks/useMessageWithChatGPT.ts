@@ -1,14 +1,22 @@
-import { useRecoilState } from 'recoil'
+import dayjs from 'dayjs'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import cloneDeep from 'lodash-es/cloneDeep'
 import { useCallback, useEffect, useRef } from 'react'
+import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import {
-  ContentScriptConnectionV2,
-  getAIProviderSampleFiles,
-} from '@/features/chatgpt/utils'
-import Log from '@/utils/Log'
+import Browser from 'webextension-polyfill'
+
 import { askChatGPTQuestion } from '@/background/src/chat/util'
-import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
+import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
+import {
+  getPermissionCardMessageByPermissionCardSettings,
+  isPermissionCardSceneType,
+  PermissionWrapperCardSceneType,
+  PermissionWrapperCardType,
+} from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   IAIResponseMessage,
@@ -17,25 +25,18 @@ import {
   IUserChatMessage,
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
-import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
+import {
+  ContentScriptConnectionV2,
+  getAIProviderSampleFiles,
+} from '@/features/chatgpt/utils'
+import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { showChatBox } from '@/utils'
-import dayjs from 'dayjs'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import Browser from 'webextension-polyfill'
-import {
-  getPermissionCardMessageByPermissionCardSettings,
-  isPermissionCardSceneType,
-  PermissionWrapperCardSceneType,
-  PermissionWrapperCardType,
-} from '@/features/auth/components/PermissionWrapper/types'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import cloneDeep from 'lodash-es/cloneDeep'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import Log from '@/utils/Log'
 dayjs.extend(relativeTime)
 const port = new ContentScriptConnectionV2({
   runtime: 'client',

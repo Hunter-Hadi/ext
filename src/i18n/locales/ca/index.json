@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "Actualment, {{label}} pot estar experimentant problemes de connexió amb MaxAI a causa de les seves actualitzacions recents. El nostre equip està treballant activament per resoldre aquesta qüestió i us agraïm la vostra comprensió. Mentrestant, si us plau, considereu utilitzar un proveïdor alternatiu i torneu més tard.",
     "provider__label__hide": "Amaga",
     "provider__label__view_solutions": "Veure solucions",
-    "sidebar__input__tokens_limited__title": "màxim de tokens"
+    "sidebar__input__tokens_limited__title": "màxim de tokens",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Família Gemini de Google, dissenyada per escalabilitat i versatilitat, suportant 38 idiomes i una finestra de context de 32k tokens.",
+    "provider__gemini__auth_description": "Utilitza Gemini per alimentar l'extensió.",
+    "provider__gemini__auth_button_text": "Continua amb Gemini",
+    "provider__gemini__model__gemini_pro__description": "Família Gemini de Google, dissenyada per oferir escalabilitat i exhibeix fortes capacitats generalistes, suportant 38 idiomes i una finestra de context de 32k tokens.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Millora a Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Millora per accedir a gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "El model més capaç i general de Google. Construït des de zero per a multimodalitat. Gemini en MaxAI està actualment en fase beta, suportant només text i codi, i aviat afegirà suport per a imatges, vídeos i àudio."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

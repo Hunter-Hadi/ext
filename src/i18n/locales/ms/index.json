@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} mungkin sedang menghadapi masalah sambungan dengan MaxAI disebabkan oleh kemas kini terkini. Pasukan kami sedang berusaha untuk menyelesaikan masalah ini, dan kami menghargai kerjasama anda. Sementara itu, sila pertimbangkan untuk menggunakan penyedia alternatif dan semak semula dengan kami kemudian.",
     "provider__label__hide": "Sembunyikan",
     "provider__label__view_solutions": "Lihat penyelesaian",
-    "sidebar__input__tokens_limited__title": "maksimum token"
+    "sidebar__input__tokens_limited__title": "maksimum token",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Keluarga Gemini Google, direka untuk skalabiliti dan kepelbagaian, menyokong 38 bahasa dan tetingkap konteks sebanyak 32k token.",
+    "provider__gemini__auth_description": "Gunakan Gemini untuk memacu sambungan.",
+    "provider__gemini__auth_button_text": "Teruskan dengan Gemini",
+    "provider__gemini__model__gemini_pro__description": "Keluarga Gemini Google, direka untuk menawarkan skalabiliti dan kemampuan am yang kuat, menyokong 38 bahasa dan tetingkap konteks sebanyak 32k token.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Naik taraf kepada Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Naik taraf untuk mengakses gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Model paling cekap dan umum Google. Dibina dari bawah ke atas untuk multimodaliti. Gemini di MaxAI kini dalam fasa beta, hanya menyokong teks dan kod, dan akan segera menambah sokongan untuk imej, video, dan audio."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

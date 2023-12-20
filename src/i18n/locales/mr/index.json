@@ -1,5 +1,5 @@
 {
-  "description": "चॅटजीपीटी, क्लोड, बार्ड, बिंग ए.आय. वापरण्यासाठी ऑनलाइन कुठेही ए.आय. प्रदान करणारा सर्वात वेगवेगळा ए.आय. विस्तार आहे.",
+  "description": "चॅटजीपीटी, क्लोड, बार्ड, बिंग ए.आय. द्वारे संचालित ए.आय. ऑनलाइन कुठेही वापरण्याचा जलदतरीन मार्ग. तुम्हाला आवश्यक असलेला एकमेवा उत्पादकारी ए.आय. विस्तार.",
   "name": "MaxAI.me: आव्हाने 1-क्लिक ए.आय. कुठेही वापरा",
   "shortName": "MaxAI.me",
   "common": {
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "आपल्या {{label}} वर्तमानपत्रित MaxAI संबंधित अद्यतनांमुळे कनेक्शन समस्या असू शकते. आमची टीम या प्रश्नांचे समाधान करण्यासाठी सक्रियपणे कार्यरत आहे, आणि आपल्या समजावणींची आम्ही मूळव्यापारीत घेऊन आहोत. तब्बल, कृपया एक वैकल्पिक प्रदात्ता वापरा आणि आपल्याला नंतर परत बघा.",
     "provider__label__hide": "लपवा",
     "provider__label__view_solutions": "समाधान पहा",
-    "sidebar__input__tokens_limited__title": "टोकन्स महाप्रमाण"
+    "sidebar__input__tokens_limited__title": "टोकन्स महाप्रमाण",
+    "provider__gemini__title": "जेमिनी",
+    "provider__gemini__short_description": "Googleचा Gemini कुटुंब, स्केलिंग आणि विविधतेसाठी डिझाइन केलेला, 38 भाषांचे समर्थन करतो आणि 32k टोकनचे संदर्भ विंडो दर्शवतो.",
+    "provider__gemini__auth_description": "एक्सटेंशनची शक्ती देण्यासाठी जेमिनीचा वापर करा.",
+    "provider__gemini__auth_button_text": "जेमिनीसह सुरू रहा",
+    "provider__gemini__model__gemini_pro__description": "Googleचा Gemini कुटुंब, स्केलिंग देण्यासाठी डिझाइन केलेला आहे आणि मजबूत सामान्यक्षमता दर्शवतो, 38 भाषांचे समर्थन करतो आणि 32k टोकनचे संदर्भ विंडो दर्शवतो.",
+    "provider__label__beta": "बीटा",
+    "permission__pricing_hook__button__upgrade_to_elite": "एलिटमध्ये अपग्रेड करा",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "जेमिनी-प्रो प्रवेशासाठी अपग्रेड करा",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googleचा सर्वात अधिक क्षमतेसंपन्न आणि सामान्य मॉडेल. बहुसंवादात्मकतेसाठी जमिनीवरून तयार केलेला आहे. MaxAI वर Gemini ही बेटा चरणात आहे, ज्यामुळे केवळ मजकूर आणि कोडचा समर्थन करते आणि लवकरच प्रतिमा, व्हिडिओ आणि ऑडिओचा समर्थन जोडण्यात येईल."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

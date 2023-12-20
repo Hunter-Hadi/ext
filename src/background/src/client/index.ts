@@ -8,6 +8,7 @@ import {
 } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
+import { openPDFViewer } from '@/background/src/pdf'
 import {
   backgroundRestartChromeExtension,
   chromeExtensionLogout,
@@ -149,7 +150,9 @@ export const ClientMessageInit = () => {
               }
             } else if (key) {
               let tabId: number | undefined = undefined
-              if (key === 'current_page') {
+              if (key === 'pdf_viewer' && sender.tab?.id && sender.tab.url) {
+                await openPDFViewer(sender.tab.id, sender.tab.url)
+              } else if (key === 'current_page') {
                 if (sender.tab?.id) {
                   await Browser.tabs.update(sender.tab.id, {
                     active,

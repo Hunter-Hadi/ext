@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "ปัจจุบัน {{label}} อาจพบปัญหาการเชื่อมต่อกับ MaxAI เนื่องจากการอัปเดตล่าสุดของมัน ทีมของเรากำลังทำงานอย่างเต็มที่เพื่อแก้ไขปัญหานี้ และเราขอขอบคุณสำหรับความเข้าใจของคุณ ในระหว่างนี้โปรดพิจารณาใช้ผู้ให้บริการทางเลือกและตรวจสอบกลับมาใหม่ในภายหลัง",
     "provider__label__hide": "ซ่อน",
     "provider__label__view_solutions": "ดูวิธีแก้ปัญหา",
-    "sidebar__input__tokens_limited__title": "จำนวนสูงสุดของโทเค็น"
+    "sidebar__input__tokens_limited__title": "จำนวนสูงสุดของโทเค็น",
+    "provider__gemini__title": "จีมินาย",
+    "provider__gemini__short_description": "รองรับภาษา 38 ภาษาและหน้าต่างบริบท 32k โทเค็น รองรับการขยายของ Gemini จาก Google ที่ออกแบบมาเพื่อให้สามารถปรับขนาดได้และมีความหลากหลาย",
+    "provider__gemini__auth_description": "ใช้ Gemini เพื่อให้พลังงานให้กับส่วนขยาย",
+    "provider__gemini__auth_button_text": "ดำเนินการต่อด้วย Gemini",
+    "provider__gemini__model__gemini_pro__description": "ครอบคลุมภาษา 38 ภาษาและหน้าต่างบริบท 32k โทเค็น รองรับการขยายของ Gemini จาก Google ที่ออกแบบมาเพื่อให้สามารถปรับขนาดได้และมีความสามารถทั่วไปที่แข็งแกร่ง",
+    "provider__label__beta": "เบต้า",
+    "permission__pricing_hook__button__upgrade_to_elite": "อัพเกรดเป็นเอลิต",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "อัพเกรดเพื่อเข้าถึง gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "รุ่นที่สามารถทำหลายอย่างได้มากที่สุดและมีความสามารถทั่วไป สร้างขึ้นมาเพื่อใช้งานแบบมัลติโมดัลิตี้  Gemini บน MaxAI อยู่ในช่วงเบต้าเท่านั้น รองรับเฉพาะข้อความและโค้ด และเร็ว ๆ นี้จะเพิ่มการสนับสนุนสำหรับภาพถ่าย วิดีโอ และเสียง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

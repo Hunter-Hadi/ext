@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "В момента {{label}} може да среща проблеми с връзката с MaxAI поради последните си актуализации. Нашият екип работи активно по решаването на този проблем и благодарим за разбирането. Докато това се случва, моля, разгледайте алтернативен доставчик и проверете отново по-късно.",
     "provider__label__hide": "Скрий",
     "provider__label__view_solutions": "Вижте решенията",
-    "sidebar__input__tokens_limited__title": "максимални токени"
+    "sidebar__input__tokens_limited__title": "максимални токени",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Семейството Gemini на Google, проектирано за мащабируемост и универсалност, поддържащо 38 езика и контекстно прозорец от 32k токена.",
+    "provider__gemini__auth_description": "Използвайте Gemini за захранване на разширението.",
+    "provider__gemini__auth_button_text": "Продължете с Gemini",
+    "provider__gemini__model__gemini_pro__description": "Семейството Gemini на Google, проектирано да предлага мащабируемост и силни общи възможности, поддържащо 38 езика и контекстно прозорец от 32k токена.",
+    "provider__label__beta": "бета",
+    "permission__pricing_hook__button__upgrade_to_elite": "Надстройте до Елит",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Надстройте, за да получите достъп до gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Най-способният и общ модел на Google. Изграден от самото начало за мултимодалност. Gemini в MaxAI в момента е в бета фаза и поддържа само текст и код, а скоро ще добави поддръжка за изображения, видео и аудио."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

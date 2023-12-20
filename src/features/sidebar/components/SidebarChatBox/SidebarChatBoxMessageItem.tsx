@@ -4,7 +4,6 @@ import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevContent from '@/components/DevContent'
@@ -62,7 +61,6 @@ const SidebarChatBoxMessageItem: FC<{
     onRetry,
     className,
   } = props
-  const { t } = useTranslation(['client'])
   const { isDarkMode } = useCustomTheme()
   const [defaultText, setDefaultText] = useState(() =>
     getMessageRenderText(message),

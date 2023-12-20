@@ -1,6 +1,7 @@
 import Browser from 'webextension-polyfill'
-import Log from '@/utils/Log'
+
 import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import Log from '@/utils/Log'
 // NOTE: 2023-05-15
 /**
  * NOTE: 2023-05-15
@@ -32,20 +33,20 @@ import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionS
 //   console.log('pdfSnifferStartListener success', result, rules)
 // }
 const log = new Log('PDF')
+export const openPDFViewer = async (tabId: number, url: string) => {
+  const settings = await getLiteChromeExtensionDBStorage()
+  if (settings.userSettings?.pdf?.enabled) {
+    const redirectUrl = Browser.runtime.getURL(
+      `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
+    )
+    log.info('pdfSnifferStartListener success', url, redirectUrl)
+    await Browser.tabs.update(tabId, {
+      url: redirectUrl,
+    })
+  }
+}
 export const pdfSnifferStartListener = async () => {
   const fetchingMap = new Map<string, 'fetching' | 'validPDF' | 'invalidPDF'>()
-  const openPDFViewer = async (tabId: number, url: string) => {
-    const settings = await getLiteChromeExtensionDBStorage()
-    if (settings.userSettings?.pdf?.enabled) {
-      const redirectUrl = Browser.runtime.getURL(
-        `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
-      )
-      log.info('pdfSnifferStartListener success', url, redirectUrl)
-      await Browser.tabs.update(tabId, {
-        url: redirectUrl,
-      })
-    }
-  }
   Browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
     if (tab.active) {
       const url = tab.url || tab.pendingUrl

@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "最近の更新により、{{label}}は現在MaxAIとの接続に問題が発生している可能性があります。弊社チームはこの問題を解決するために積極的に取り組んでおり、ご理解いただけると幸いです。その間、代替プロバイダをご検討いただき、後ほど再度ご確認ください。",
     "provider__label__hide": "非表示",
     "provider__label__view_solutions": "ソリューションを表示",
-    "sidebar__input__tokens_limited__title": "最大トークン数"
+    "sidebar__input__tokens_limited__title": "最大トークン数",
+    "provider__gemini__title": "ジェミニ",
+    "provider__gemini__short_description": "Googleのジェミニファミリーは、スケーラビリティと多様性を備えており、38言語と32kトークンのコンテキストウィンドウをサポートしています。",
+    "provider__gemini__auth_description": "エクステンションのパワーにジェミニを使用します。",
+    "provider__gemini__auth_button_text": "ジェミニで続行",
+    "provider__gemini__model__gemini_pro__description": "Googleのジェミニファミリーは、スケーラビリティを提供し、強力な汎用機能を備えており、38言語と32kトークンのコンテキストウィンドウをサポートしています。",
+    "provider__label__beta": "ベータ版",
+    "permission__pricing_hook__button__upgrade_to_elite": "エリートにアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ジェミニプロにアクセスするためにアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googleの最も能力のある汎用モデルです。マルチモダリティに特化して開発されました。MaxAI上のジェミニは現在ベータフェーズであり、テキストとコードのみをサポートしており、近々画像、動画、音声のサポートが追加されます。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -263,6 +263,7 @@ export const CLIENT_OPEN_PAGE_KEYS = [
   'current_page',
   'chatgpt',
   'manage_extension',
+  'pdf_viewer',
 ] as const
 
 export const chromeExtensionClientOpenPage = async (params: {

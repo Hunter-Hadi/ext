@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "در حال حاضر {{label}} ممکن است به دلیل به‌روزرسانی‌های اخیر با MaxAI مشکلات اتصال داشته باشد. تیم ما در حال حاضر برای حل این موضوع فعالیت می‌کند و از صبر و شکیبایی شما سپاسگزاریم. در این مدت، لطفاً در نظر داشته باشید که از یک سرویس دهنده جایگزین استفاده کنید و بعداً مجدداً با ما تماس بگیرید.",
     "provider__label__hide": "مخفی کردن",
     "provider__label__view_solutions": "مشاهده راه حل‌ها",
-    "sidebar__input__tokens_limited__title": "حداکثر توکن‌ها"
+    "sidebar__input__tokens_limited__title": "حداکثر توکن‌ها",
+    "provider__gemini__title": "جوزا",
+    "provider__gemini__short_description": "خانواده جمینی گوگل، طراحی شده برای قابلیت مقیاس‌پذیری و چندکاربردی بوده و از ۳۸ زبان و پنجره متنی با ۳۲ هزار توکن پشتیبانی می‌کند.",
+    "provider__gemini__auth_description": "از جوزا برای قدرت بخشیدن به افزونه استفاده کنید.",
+    "provider__gemini__auth_button_text": "ادامه با جوزا",
+    "provider__gemini__model__gemini_pro__description": "خانواده جمینی گوگل، طراحی شده برای قابلیت مقیاس‌پذیری و دارای قابلیت‌های عمومی قوی است که از ۳۸ زبان و پنجره متنی با ۳۲ هزار توکن پشتیبانی می‌کند.",
+    "provider__label__beta": "بتا",
+    "permission__pricing_hook__button__upgrade_to_elite": "ارتقا به الیت",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ارتقا برای دسترسی به جوزا پرو",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "قدرتمندترین و کلیت‌دارترین مدل گوگل. از پایه برای چندحالتی ساخته شده است. جمینی در MaxAI در حال حاضر در فاز بتا است و فقط پشتیبانی از متن و کد را دارد و به زودی پشتیبانی از تصاویر، ویدیوها و صدا را اضافه خواهد کرد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

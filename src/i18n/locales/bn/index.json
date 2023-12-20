@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "সর্বশেষ আপডেট এর কারণে {{label}} এখন ম্যাক্স এআই সঙ্গে সংযোগ সমস্যা সম্ভব। আমাদের দল এই সমস্যার সমাধানে সক্রিয়ভাবে কাজ করছে, এবং আমরা আপনার বুদ্ধিমত্তা সম্মান করি। এই অবস্থায়, দয়া করে একটি বিকল্প প্রদানকারী প্রদাতার ব্যবহার করতে চিন্তা করুন এবং পরে আবার আমাদের সাথে যাচাই করুন।",
     "provider__label__hide": "লুকান",
     "provider__label__view_solutions": "সমাধান দেখুন",
-    "sidebar__input__tokens_limited__title": "সর্বাধিক টোকেন"
+    "sidebar__input__tokens_limited__title": "সর্বাধিক টোকেন",
+    "provider__gemini__title": "জেমিনি",
+    "provider__gemini__short_description": "গুগলের জেমিনি পরিবার, স্কেলাবিলিটি এবং বহুমুখী সমর্থন দেওয়ার জন্য ডিজাইন করা, ৩৮টি ভাষা এবং ৩২কে টোকেন এর কনটেক্সট উপস্থাপন করে।",
+    "provider__gemini__auth_description": "এক্সটেনশন চালাতে জেমিনি ব্যবহার করুন।",
+    "provider__gemini__auth_button_text": "জেমিনি দিয়ে চালিয়ে যান",
+    "provider__gemini__model__gemini_pro__description": "গুগলের জেমিনি পরিবার, স্কেলাবিলিটি এবং শক্তিশালী জেনারালিস্ট ক্ষমতা দেখানোর জন্য ডিজাইন করা, ৩৮টি ভাষা এবং ৩২কে টোকেন এর কনটেক্সট উপস্থাপন করে।",
+    "provider__label__beta": "বেটা",
+    "permission__pricing_hook__button__upgrade_to_elite": "ইলিটে আপগ্রেড করুন",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "জেমিনি-প্রো অ্যাক্সেস করতে আপগ্রেড করুন",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "গুগলের সবচেয়ে ক্ষমতাশালী এবং সাধারণ মডেল। বহুমুখীতা জন্য মৌলিকভাবে তৈরি করা। ম্যাক্সএআই উপর জেমিনি বর্তমানে বেটা পর্যায়ে আছে, কেবলমাত্র টেক্সট এবং কোড সমর্থন করে, এবং শীঘ্রই চিত্র, ভিডিও এবং অডিও সমর্থন যোগ করবে।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

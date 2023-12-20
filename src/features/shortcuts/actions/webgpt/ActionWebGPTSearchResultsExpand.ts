@@ -1,6 +1,7 @@
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { ActionAskChatGPT } from '@/features/shortcuts/actions'
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import {
   pushOutputToChat,
@@ -79,15 +80,26 @@ export class ActionWebGPTSearchResultsExpand extends Action {
           searchResults.map(async (searchResult) => {
             try {
               // 1. 根据 url 获取页面内容
-              const response = await backgroundConversation.postMessage({
-                event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
-                data: {
-                  URL: searchResult.url,
-                  timeOut: 20 * 1000, // 20s
-                  // 暂时不使用 google snapshot
-                  // withSnapshot: true,
-                },
-              })
+              let response: any = undefined
+              // 判断是不是youtube
+              const youtubeVideoId = YoutubeTranscript.retrieveVideoId(
+                searchResult.url,
+              )
+              if (youtubeVideoId) {
+                response = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
+                  youtubeVideoId,
+                )
+              } else {
+                response = await backgroundConversation.postMessage({
+                  event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
+                  data: {
+                    URL: searchResult.url,
+                    timeOut: 20 * 1000, // 20s
+                    // 暂时不使用 google snapshot
+                    // withSnapshot: true,
+                  },
+                })
+              }
               // 2. 获取页面内容成功时，用页面内容替换 body、title
               if (response.data.success) {
                 searchResult.body = response.data.body || searchResult.body

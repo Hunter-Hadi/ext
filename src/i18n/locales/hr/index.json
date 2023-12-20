@@ -1,5 +1,5 @@
 {
-  "description": "Najbrži način korištenja AI-a pokretanog od strane ChatGPT, Claude, Bard, Bing AI bilo gdje online. Jedino producirajuće AI proširenje koje vam treba.",
+  "description": "Najbrži način korištenja AI-a pokretanog od strane ChatGPT, Claude, Bard, Bing AI bilo gdje online. Jedino proširenje generativne AI koje vam treba.",
   "name": "MaxAI.me: Koristite 1-klik AI bilo gdje",
   "shortName": "MaxAI.me",
   "common": {
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} trenutno može imati problema s povezivanjem s MaxAI zbog nedavnih ažuriranja. Naš tim aktivno radi na rješavanju ovog problema i zahvaljujemo vam na razumijevanju. U međuvremenu, molimo vas da razmislite o korištenju alternativnog pružatelja usluga i kasnije se ponovno javite.",
     "provider__label__hide": "Sakrij",
     "provider__label__view_solutions": "Pregledaj rješenja",
-    "sidebar__input__tokens_limited__title": "maksimalni tokeni"
+    "sidebar__input__tokens_limited__title": "maksimalni tokeni",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Gemini obitelj tvrtke Google, dizajnirana za skalabilnost i svestranost, podržava 38 jezika i kontekstni prozor od 32k tokena.",
+    "provider__gemini__auth_description": "Koristite Gemini za napajanje proširenja.",
+    "provider__gemini__auth_button_text": "Nastavi s Gemini",
+    "provider__gemini__model__gemini_pro__description": "Gemini obitelj tvrtke Google, dizajnirana za skalabilnost i snažne opće sposobnosti, podržava 38 jezika i kontekstni prozor od 32k tokena.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Nadogradite na Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nadogradite za pristup gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najnapredniji i najopćenitiji model tvrtke Google. Izgrađen od nule za multimodalnost. Gemini na MaxAI trenutno je u beta fazi i podržava samo tekst i kod, a uskoro će dodati podršku za slike, videozapise i zvuk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

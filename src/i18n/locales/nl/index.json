@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "De {{label}} ondervindt mogelijk momenteel verbindingsproblemen met MaxAI als gevolg van recente updates. Ons team werkt actief aan het oplossen van dit probleem en we waarderen uw begrip. In de tussentijd kunt u overwegen om een alternatieve provider te gebruiken en later weer bij ons terug te komen.",
     "provider__label__hide": "Verbergen",
     "provider__label__view_solutions": "Bekijk oplossingen",
-    "sidebar__input__tokens_limited__title": "max tokens"
+    "sidebar__input__tokens_limited__title": "max tokens",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Google's Gemini-familie, ontworpen voor schaalbaarheid en veelzijdigheid, ondersteunt 38 talen en een contextvenster van 32k tokens.",
+    "provider__gemini__auth_description": "Gebruik Gemini om de extensie te activeren.",
+    "provider__gemini__auth_button_text": "Doorgaan met Gemini",
+    "provider__gemini__model__gemini_pro__description": "Google's Gemini-familie, ontworpen om schaalbaarheid te bieden en sterke generalistische mogelijkheden te tonen, ondersteunt 38 talen en een contextvenster van 32k tokens.",
+    "provider__label__beta": "bèta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Upgrade naar Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade om toegang te krijgen tot gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's meest capabele en algemene model. Vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI bevindt zich momenteel in de bètafase en ondersteunt alleen tekst en code, en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

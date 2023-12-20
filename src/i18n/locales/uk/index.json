@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "موجودہ تازہ ترین اپ ڈیٹس کی وجہ سے ممکن ہے کہ {{label}} مومکن ہو کہ میکس اے آئی کے ساتھ رابطہ کے مسائل کا سامنا کر رہا ہو۔ ہماری ٹیم فوری طور پر اس مسئلے کو حل کرنے کے لئے مصروف ہے اور ہم آپ کی تفہیم کا قدردانی کرتے ہیں۔ اس دوران، براہ کرم کسی دوسرے فراہم کنندہ کا استعمال کرنے کو درست سمجھیں اور بعد میں ہمارے ساتھ دوبارہ چیک کریں۔",
     "provider__label__hide": "چھپائیں",
     "provider__label__view_solutions": "حل دیکھیں",
-    "sidebar__input__tokens_limited__title": "زیادہ سے زیادہ ٹوکن"
+    "sidebar__input__tokens_limited__title": "زیادہ سے زیادہ ٹوکن",
+    "provider__gemini__title": "جمنی",
+    "provider__gemini__short_description": "گوگل کی جمینی فیملی، توسعہ پذیری اور متعدد استعمال کیلئے تشکیل دی گئی ہے، جو 38 زبانوں کی حمایت اور 32k ٹوکنز کے ساتھ کنٹیکسٹ ونڈو کی پشتی کرتی ہے۔",
+    "provider__gemini__auth_description": "ایکسٹینشن کو چلانے کے لئے جمنی کا استعمال کریں۔",
+    "provider__gemini__auth_button_text": "جمنی کے ساتھ جاری رہیں",
+    "provider__gemini__model__gemini_pro__description": "گوگل کی جمینی فیملی، توسعہ پذیری اور عمومی صلاحیتوں کا مظہر ہے، جو 38 زبانوں کی حمایت اور 32k ٹوکنز کے ساتھ کنٹیکسٹ ونڈو کی پیشکش کرتی ہے۔",
+    "provider__label__beta": "بیٹا",
+    "permission__pricing_hook__button__upgrade_to_elite": "ایلائٹ پر اپگریڈ کریں",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "جمنی پرو تک رسائی حاصل کرنے کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "گوگل کا سب سے قابلیت رکھنے والا اور عمومی ماڈل۔ بہت زیادہ صلاحیتوں کے لئے زمین سے بنایا گیا ہے۔ مکس اے آئی پر جمینی فیملی بیٹا فیز میں ہے، صرف ٹیکسٹ اور کوڈ کی حمایت دیتا ہے، اور جلد ہی تصاویر، ویڈیوز اور آڈیو کی حمایت شامل کرے گا۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

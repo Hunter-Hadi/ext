@@ -1,6 +1,6 @@
 {
-  "description": "AI አጠቃላይ በማንኛውም አይነት በ ChatGPT, Claude, Bard, Bing AI በመጠቀም የተሻለ የሚሆን አጠቃላይ አይነት አገልግሎት ነው።",
-  "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም አይነት እንዴት ለመጠቀም 1-Click",
+  "description": "AI አጠቃላይ በChatGPT, Claude, Bard, Bing AI በመጠቀም የሚቆጠሩት በመጠቀም የሚታይወይም በመጠቀም የሚሰራ የተለያዩ AI አንድን የሚያስፈልጋቸው አጠቃላይ ትርጉም.",
+  "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም የእርስዎ በመጠቀም 1-Click",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ውጣ",
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "የ{{label}} በአሁኑ ጊዜ መቀጠል ላይ MaxAI እየሰራን ነው። በቅርብ ጊዜ የሚጠቀሙትን የማይታወቅ ድጋፍ እናስተማሩን ለማድረግ የሚያስችል ነው። በመስመር ጋር ሌሎች የሚጠቀሙትን ድጋፍ እና በአጠቃላይ ወይም በአጠቃላይ የሚያስችል ድጋፍ ይጠቀሙት።",
     "provider__label__hide": "ደብቅ",
     "provider__label__view_solutions": "ማሳያያት ይመልከቱ",
-    "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ"
+    "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ",
+    "provider__gemini__title": "ጊሚኒ",
+    "provider__gemini__short_description": "ጎጂል ጋሚኒ ቡድን, ለማስተላለፍና ለማስታወቂያ የተሰጠው የግንባታ ቡድን ነው። የ38 ቋንቋዎችን የ32k ቶክን የመቀጠል እና የማስተላለፍ እይታ ያለው።",
+    "provider__gemini__auth_description": "ጊሚኒን በማስተላለፍ ይግቡ።",
+    "provider__gemini__auth_button_text": "ጊሚኒን በመግባት ይሞክሩ",
+    "provider__gemini__model__gemini_pro__description": "ጎጂል ጋሚኒ ቡድን, ለማስተላለፍና ለማስታወቂያ የተሰጠው የግንባታ ቡድን ነው። የ38 ቋንቋዎችን የ32k ቶክን የመቀጠል እና የማስተላለፍ እይታ ያለው።",
+    "provider__label__beta": "ቤተሰብ",
+    "permission__pricing_hook__button__upgrade_to_elite": "ወደ ኢሊት ይግዙ",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ወደ gemini-pro ይሂዱ",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ጎጂል የተሰጠው እና የግንባታ ቡድን ነው። የሚከተለውን ለማስተላለፍ የግንባታ ቡድን ነው። ግንባታ ቡድን በMaxAI ላይ ከሚገኙ የጽሁፍ እና የኮድ ወይም የድምፅ ማስተላለፍ የሚሰጥ የተሰጠው ሞዴል ነው።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

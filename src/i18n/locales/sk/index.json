@@ -1,5 +1,5 @@
 {
-  "description": "Najrýchlejší spôsob, ako používať AI poháňanú ChatGPT, Claude, Bard, Bing AI kdekoľvek online. Jedinečné rozšírenie generatívnej AI, ktoré potrebujete.",
+  "description": "Najrýchlejší spôsob, ako používať AI poháňané ChatGPT, Claude, Bard, Bing AI kdekoľvek online. Jedinečné rozšírenie generatívnej AI, ktoré potrebujete.",
   "name": "MaxAI.me: Použite 1-klikovú AI kdekoľvek",
   "shortName": "MaxAI.me",
   "common": {
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "Poskytovateľ {{label}} momentálne môže mať problémy s pripojením k MaxAI kvôli nedávnym aktualizáciám. Náš tím aktívne pracuje na vyriešení tejto záležitosti a vážime si vaše pochopenie. V tomto čase zvážte použitie alternatívneho poskytovateľa a skontrolujte neskôr.",
     "provider__label__hide": "Skryť",
     "provider__label__view_solutions": "Zobraziť riešenia",
-    "sidebar__input__tokens_limited__title": "maximálne tokeny"
+    "sidebar__input__tokens_limited__title": "maximálne tokeny",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Gemini rodina od Googlu, navrhnutá pre škálovateľnosť a všestrannosť, podporuje 38 jazykov a kontextové okno s 32k tokenmi.",
+    "provider__gemini__auth_description": "Použite Gemini na napájanie rozšírenia.",
+    "provider__gemini__auth_button_text": "Pokračovať s Gemini",
+    "provider__gemini__model__gemini_pro__description": "Gemini rodiny od Googlu, navrhnutá pre škálovateľnosť a prejavuje silné všeobecné schopnosti, podporuje 38 jazykov a kontextové okno s 32k tokenmi.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Vylepšiť na Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Vylepšiť pre prístup k gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najschopnejší a všeobecný model od Googlu. Postavený od základov pre multimodalitu. Gemini na MaxAI je momentálne v beta fáze, podporuje iba text a kód a čoskoro pridá podporu pre obrázky, videá a zvuk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

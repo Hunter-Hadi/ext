@@ -1,4 +1,7 @@
 import { clientFetchAPI } from '@/features/shortcuts/utils'
+import SocialMediaPostContext, {
+  ISocialMediaPostContextData,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 
 const RE_YOUTUBE = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i
@@ -16,25 +19,30 @@ export class YoutubeTranscript {
   /**
    * Fetch transcript from YTB Video
    * @param videoId Video url or video identifier
+   * @param defaultPageHTML Default page html
    */
   public static async fetchTranscript(
     videoId: string,
+    defaultPageHTML?: string,
   ): Promise<TranscriptResponse[]> {
     try {
-      const identifier = this.retrieveVideoId(videoId)
-      if (!identifier) {
-        return []
+      let pageHTML: string = defaultPageHTML || ''
+      if (!defaultPageHTML) {
+        const identifier = this.retrieveVideoId(videoId)
+        if (!identifier) {
+          return []
+        }
+        const pageHTMLResult = await clientFetchAPI(
+          'https://www.youtube.com/watch?v=' + identifier,
+          {
+            parse: 'text',
+          },
+        )
+        if (!pageHTMLResult.success) {
+          return []
+        }
+        pageHTML = (pageHTMLResult.data as string) || ''
       }
-      const pageHTMLResult = await clientFetchAPI(
-        'https://www.youtube.com/watch?v=' + identifier,
-        {
-          parse: 'text',
-        },
-      )
-      if (!pageHTMLResult.success) {
-        return []
-      }
-      const pageHTML = pageHTMLResult.data
       const transcriptHtmlText = pageHTML.split('"captions":')
       if (transcriptHtmlText.length < 2) {
         return []
@@ -90,6 +98,70 @@ export class YoutubeTranscript {
       return []
     } catch (e) {
       return []
+    }
+  }
+  /**
+   * Fetch transcript from YTB Video
+   * @param videoId Video url or video identifier
+   */
+  public static async fetchYoutubePageContentWithoutDocument(
+    videoId: string,
+  ): Promise<ISocialMediaPostContextData> {
+    try {
+      const pageContent = await clientFetchAPI(
+        'https://www.youtube.com/watch?v=' + videoId,
+        {
+          parse: 'text',
+        },
+      )
+      if (pageContent.success) {
+        const doc = new DOMParser().parseFromString(
+          pageContent.data,
+          'text/html',
+        )
+        // youTube transcript
+        const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
+          await YoutubeTranscript.fetchTranscript(videoId, pageContent.data),
+          2048,
+        )
+        const youTubeVideoMetaData = doc.querySelector('ytd-watch-metadata')
+        const title =
+          (youTubeVideoMetaData?.querySelector(
+            '#title > h1',
+          ) as HTMLHeadingElement)?.innerText || doc.title
+        const authorElement = doc.querySelector('ytd-video-owner-renderer')
+        const userName = authorElement?.querySelector('yt-formatted-string')
+          ?.textContent
+        const account =
+          authorElement
+            ?.querySelector('a')
+            ?.getAttribute('href')
+            ?.includes('@') &&
+          authorElement?.querySelector('a')?.getAttribute('href')?.split('/')[1]
+        const date =
+          (youTubeVideoMetaData?.querySelector(
+            '#description #info-container yt-formatted-string > span:nth-child(3)',
+          ) as HTMLSpanElement)?.innerText || ''
+        const content = ''
+        const youtubePostContent = new SocialMediaPostContext(
+          {
+            title,
+            author: `${userName}(${account})`,
+            date,
+            content,
+          },
+          {
+            postTitle: 'Video post',
+            meta: {
+              'Post video transcript': youTubeTranscriptText,
+            },
+          },
+        )
+        return youtubePostContent.data
+      }
+      return SocialMediaPostContext.emptyData
+    } catch (e) {
+      return SocialMediaPostContext.emptyData
     }
   }
 

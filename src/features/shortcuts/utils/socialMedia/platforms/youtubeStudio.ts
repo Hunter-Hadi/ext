@@ -1,17 +1,18 @@
+import { HTMLDivElement } from 'linkedom'
+
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import SocialMediaPostContext, {
-  ICommentData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
 import {
   delayAndScrollToInputAssistantButton,
   findParentEqualSelector,
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
-import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { HTMLDivElement } from 'linkedom'
+import SocialMediaPostContext, {
+  ICommentData,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 const getYouTubeStudioCommentContent = async (
   ytcpCommentBox: HTMLElement,

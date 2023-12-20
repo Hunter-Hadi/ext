@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "Son güncellemelerinden dolayı {{label}} şu anda MaxAI ile bağlantı sorunları yaşıyor olabilir. Ekibimiz bu konuyu çözmek için aktif olarak çalışıyor ve anlayışınızı takdir ediyoruz. Bu arada, lütfen alternatif bir sağlayıcı kullanmayı düşünün ve daha sonra tekrar kontrol edin.",
     "provider__label__hide": "Gizle",
     "provider__label__view_solutions": "Çözümleri görüntüle",
-    "sidebar__input__tokens_limited__title": "maksimum jetonlar"
+    "sidebar__input__tokens_limited__title": "maksimum jetonlar",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Google'ın Gemini ailesi, ölçeklenebilirlik ve çok yönlülük için tasarlanmıştır. 38 dil ve 32k token'lık bir bağlam penceresini destekler.",
+    "provider__gemini__auth_description": "Uzantıyı çalıştırmak için Gemini'yi kullanın.",
+    "provider__gemini__auth_button_text": "Gemini ile Devam Et",
+    "provider__gemini__model__gemini_pro__description": "Google'un Gemini ailesi, ölçeklenebilirlik sunan ve güçlü genel yeteneklere sahip olan bir modeldir. 38 dil ve 32k token'lık bir bağlam penceresini destekler.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Elite'e Yükselt",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "gemini-pro'ya erişim için yükseltme yapın",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'ın en yetenekli ve genel modelidir. Çoklu modellik için temelden oluşturulmuştur. MaxAI üzerindeki Gemini şu anda beta aşamasındadır ve yalnızca metin ve kod desteği sunmaktadır. Yakında resim, video ve ses desteği de ekleyecektir."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

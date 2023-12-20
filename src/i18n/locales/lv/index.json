@@ -1,5 +1,5 @@
 {
-  "description": "Ātrākais veids, kā izmantot AI, kas darbojas ar ChatGPT, Claude, Bard, Bing AI jebkur tiešsaistē. Vienīgais generatīvās AI paplašinājums, kas jums nepieciešams.",
+  "description": "Ātrākais veids, kā izmantot AI, kas darbojas ar ChatGPT, Claude, Bard, Bing AI jebkur tiešsaistē. Vienīgais generatīvais AI paplašinājums, kas jums nepieciešams.",
   "name": "MaxAI.me: Izmantojiet 1-Click AI jebkur",
   "shortName": "MaxAI.me",
   "common": {
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} pašlaik varētu saskarties ar savienojuma problēmām ar MaxAI sakarā ar nesenajiem atjauninājumiem. Mūsu komanda aktīvi strādā, lai atrisinātu šo jautājumu, un mēs pateicamies par sapratni. Pagaidām, lūdzu, izvērtējiet alternatīvu pakalpojumu sniedzēju un vēlāk atgriezieties pie mums.",
     "provider__label__hide": "Paslēpt",
     "provider__label__view_solutions": "Skatīt risinājumus",
-    "sidebar__input__tokens_limited__title": "maksimālais skaits"
+    "sidebar__input__tokens_limited__title": "maksimālais skaits",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Google Gemini ģimene, kas ir izstrādāta mērogojamībai un daudzpusībai, atbalsta 38 valodas un konteksta logu ar 32k simboliem.",
+    "provider__gemini__auth_description": "Izmantojiet Gemini, lai nodrošinātu paplašinājumu.",
+    "provider__gemini__auth_button_text": "Turpināt ar Gemini",
+    "provider__gemini__model__gemini_pro__description": "Google Gemini ģimene, kas ir izstrādāta, lai nodrošinātu mērogojamību un spēcīgas vispārējas spējas, atbalsta 38 valodas un konteksta logu ar 32k simboliem.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Jaunināt līdz Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Jaunināt, lai piekļūtu gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google visspēcīgākais un vispārīgākais modelis. Izveidots no nulles multimodalitātei. Gemini MaxAI pašlaik ir beta fāzē, atbalstot tikai tekstu un kodu, drīzumā tiks pievienota atbalsts attēliem, video un audio."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

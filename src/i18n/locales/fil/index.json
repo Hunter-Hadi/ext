@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "Ang {{label}} ay maaaring may problema sa koneksyon sa MaxAI dahil sa mga kamakailang update. Ang aming team ay aktibong gumagawa upang malutas ang isyung ito, at kami ay nagpapasalamat sa inyong pang-unawa. Samantala, mangyaring isaalang-alang ang paggamit ng ibang provider at bumalik sa amin mamaya.",
     "provider__label__hide": "Itago",
     "provider__label__view_solutions": "Tingnan ang mga solusyon",
-    "sidebar__input__tokens_limited__title": "maksimum na mga token"
+    "sidebar__input__tokens_limited__title": "maksimum na mga token",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Ang pamilya ng Gemini ng Google, na dinisenyo para sa pagkalaki-laki at kahusayan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",
+    "provider__gemini__auth_description": "Gamitin ang Gemini upang palakasin ang extension.",
+    "provider__gemini__auth_button_text": "Magpatuloy gamit ang Gemini",
+    "provider__gemini__model__gemini_pro__description": "Ang pamilya ng Gemini ng Google, na dinisenyo upang mag-alok ng kakayahan sa pagkalaki-laki at nagpapakita ng malalim na pangkalahatang kakayahan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Mag-upgrade sa Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Mag-upgrade upang ma-access ang gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Ang pinakamahusay at pangkalahatang modelo ng Google. Binuo mula sa simula para sa multimodality. Ang Gemini sa MaxAI ay kasalukuyang nasa beta phase, suportado lamang ang teksto at code, at madaragdagan ng suporta para sa mga imahe, bidyo, at audio sa lalong madaling panahon."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

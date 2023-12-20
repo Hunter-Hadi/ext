@@ -1,6 +1,6 @@
 {
-  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה מופעלת על ידי ChatGPT, Claude, Bard, Bing AI בכל מקום באינטרנט. התוסף היחיד שאתה צריך.",
-  "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת",
+  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה המופעלת על ידי ChatGPT, Claude, Bard, Bing AI בכל מקום באינטרנט. התוסף היחיד שאתה צריך.",
+  "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת בכל מקום",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "יתכן כי {{label}} נתקל כרגע בבעיות חיבור עם MaxAI עקב העדכונים האחרונים שלו. הצוות שלנו פועל כרגע לפתור את הבעיה ואנו מעריכים את ההבנה שלך. בינתיים, אנא שקול להשתמש בספק אחר וחזור אלינו מאוחר יותר.",
     "provider__label__hide": "הסתר",
     "provider__label__view_solutions": "צפה בפתרונות",
-    "sidebar__input__tokens_limited__title": "מקסימום טוקנים"
+    "sidebar__input__tokens_limited__title": "מקסימום טוקנים",
+    "provider__gemini__title": "ג'מיני",
+    "provider__gemini__short_description": "משפחת Gemini של Google, מעוצבת להתרחבות וגמישות, תומכת ב-38 שפות וחלון הקשר של 32k טוקנים.",
+    "provider__gemini__auth_description": "השתמש בג'מיני כדי להפעיל את התוסף.",
+    "provider__gemini__auth_button_text": "המשך עם ג'מיני",
+    "provider__gemini__model__gemini_pro__description": "משפחת Gemini של Google, מעוצבת להציע יכולת התרחבות ויכולות כלליות חזקות, תומכת ב-38 שפות וחלון הקשר של 32k טוקנים.",
+    "provider__label__beta": "בטא",
+    "permission__pricing_hook__button__upgrade_to_elite": "שדרג לאליט",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "שדרג כדי לקבל ג'מיני-פרו",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "הדגם הכי מוכשר וכללי של Google. מבנה מודלי Gemini על MaxAI נמצא כרגע בשלב הבטא ותומך רק בטקסט ובקוד, ובקרוב יתווסף תמיכה בתמונות, סרטונים ושמע."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "Šiuo metu {{label}} gali patirti ryšio problemas su MaxAI dėl naujausių atnaujinimų. Mūsų komanda aktyviai dirba siekdama išspręsti šią problemą, ir mes dėkojame už jūsų supratimą. Tuo tarpu, prašome apsvarstyti alternatyvų tiekėją ir vėliau vėl pasitikrinkite su mumis.",
     "provider__label__hide": "Slėpti",
     "provider__label__view_solutions": "Peržiūrėti sprendimus",
-    "sidebar__input__tokens_limited__title": "maksimalus žetonai"
+    "sidebar__input__tokens_limited__title": "maksimalus žetonai",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Google Gemini šeima, sukurta mastui ir universalumui, palaikanti 38 kalbas ir konteksto langą iki 32 tūkst. ženklų.",
+    "provider__gemini__auth_description": "Naudokite „Gemini“, kad galėtumėte įjungti plėtinį.",
+    "provider__gemini__auth_button_text": "Tęsti su Gemini",
+    "provider__gemini__model__gemini_pro__description": "Google Gemini šeima, sukurta siekiant pasiūlyti mastą ir pasižymi stipriomis universalumo savybėmis, palaikanti 38 kalbas ir konteksto langą iki 32 tūkst. ženklų.",
+    "provider__label__beta": "beta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Atnaujinti iki Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Atnaujinkite, kad gautumėte prieigą prie gemini-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google galingiausias ir universalus modelis. Sukurtas nuo pat pradžių daugiamodalumui. Gemini MaxAI yra beta fazėje ir kol kas palaiko tik tekstą ir kodą, o netrukus bus pridėta palaikymas vaizdams, vaizdo įrašams ir garso įrašams."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

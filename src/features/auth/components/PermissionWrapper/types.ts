@@ -1,10 +1,11 @@
-import React from 'react'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { TFunction } from 'i18next'
 import dayjs from 'dayjs'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
-import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
+import { TFunction } from 'i18next'
+import React from 'react'
 import { v4 as uuidV4 } from 'uuid'
+
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'TOTAL_CHAT_DAILY_LIMIT',
@@ -16,14 +17,15 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'AI_RESPONSE_LANGUAGE',
   'PDF_AI_VIEWER',
   'PREFERRED_LANGUAGE',
+  'PAGE_SUMMARY',
   'CHATGPT_STABLE_MODE',
   'MAXAI_CHATGPT_TEMPERATURE',
   'MAXAI_PAID_MODEL_GPT3_5',
   'MAXAI_PAID_MODEL_GPT3_5_16K',
   'MAXAI_PAID_MODEL_GPT4',
-  'PAGE_SUMMARY',
   'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
   'MAXAI_PAID_MODEL_CLAUDE_V2',
+  'MAXAI_PAID_MODEL_GEMINI_PRO',
   'OUTLOOK_COMPOSE_NEW_BUTTON',
   'OUTLOOK_COMPOSE_REPLY_BUTTON',
   'OUTLOOK_REFINE_DRAFT_BUTTON',
@@ -371,6 +373,21 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  MAXAI_PAID_MODEL_GEMINI_PRO: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gemini-pro.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gemini_pro__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gemini_pro__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_elite'),
   },
   // Outlook cta button - compose new
   OUTLOOK_COMPOSE_NEW_BUTTON: {

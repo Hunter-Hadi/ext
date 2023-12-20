@@ -1,9 +1,10 @@
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -21,7 +22,17 @@ const SidebarChatBoxSystemTools: FC<{
   const { currentUserPlan, userInfo } = useUserInfo()
   const chatMessageType = message.extra.systemMessageType || 'normal'
   const chatMessageStatus = message.extra.status || 'success'
+  const permissionCardMap = usePermissionCardMap()
   const { currentAIProviderDetail } = useAIProviderModels()
+  const upgradeCardText = useMemo(() => {
+    if (
+      message.extra.permissionSceneType &&
+      permissionCardMap[message.extra.permissionSceneType]
+    ) {
+      return permissionCardMap[message.extra!.permissionSceneType].ctaButtonText
+    }
+    return t('client:sidebar__button__upgrade_to_pro')
+  }, [permissionCardMap, message.extra.permissionSceneType, t])
   useEffect(() => {
     if (
       chatMessageType === 'needUpgrade' &&
@@ -66,10 +77,9 @@ const SidebarChatBoxSystemTools: FC<{
             }
           }}
         >
-          {t('client:sidebar__button__upgrade_to_pro')}
+          {upgradeCardText}
         </Button>
       )}
-
       {chatMessageStatus === 'error' &&
         message.parentMessageId &&
         currentAIProviderDetail?.isThirdParty && (

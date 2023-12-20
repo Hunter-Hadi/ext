@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "قد يواجه {{label}} حاليًا مشكلات في الاتصال مع MaxAI بسبب التحديثات الأخيرة. فريقنا يعمل بنشاط لحل هذه المسألة، ونقدر تفهمك. في الوقت الحالي، يُرجى النظر في استخدام مزود بديل والعودة إلينا لاحقًا.",
     "provider__label__hide": "إخفاء",
     "provider__label__view_solutions": "عرض الحلول",
-    "sidebar__input__tokens_limited__title": "الحد الأقصى للرموز"
+    "sidebar__input__tokens_limited__title": "الحد الأقصى للرموز",
+    "provider__gemini__title": "جيميني",
+    "provider__gemini__short_description": "عائلة جيميني من Google، مصممة للتوسع والتنوع، تدعم 38 لغة ونافذة سياق تحتوي على 32 ألف رمز.",
+    "provider__gemini__auth_description": "استخدم جيميني لتشغيل الامتداد.",
+    "provider__gemini__auth_button_text": "المتابعة مع جيميني",
+    "provider__gemini__model__gemini_pro__description": "عائلة جيميني من Google، مصممة لتوفير قابلية التوسع وتظهر قدرات عامة قوية، تدعم 38 لغة ونافذة سياق تحتوي على 32 ألف رمز.",
+    "provider__label__beta": "بيتا",
+    "permission__pricing_hook__button__upgrade_to_elite": "الترقية إلى إليت",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "الترقية للوصول إلى جيميني-برو",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "أقوى وأكثر نموذج عام من Google. تم بناؤه من الألف إلى الياء للتعددية. يدعم Gemini على MaxAI حاليًا فقط النصوص والشفرات، وسيتم قريبًا دعم الصور ومقاطع الفيديو والصوت."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "{{label}} võib hetkel kogeda ühendusprobleeme MaxAI-ga seoses hiljutiste uuendustega. Meie meeskond tegeleb aktiivselt selle probleemi lahendamisega ja hindame teie mõistvat suhtumist. Seniks kaaluge alternatiivse teenusepakkuja kasutamist ja kontrollige hiljem uuesti.",
     "provider__label__hide": "Peida",
     "provider__label__view_solutions": "Vaata lahendusi",
-    "sidebar__input__tokens_limited__title": "maksimaalsed märgid"
+    "sidebar__input__tokens_limited__title": "maksimaalsed märgid",
+    "provider__gemini__title": "Gemini",
+    "provider__gemini__short_description": "Google'i Gemini perekond, mille eesmärk on skaleeritavus ja mitmekülgsus, toetades 38 keelt ja kontekstakna suurust 32k sõnani.",
+    "provider__gemini__auth_description": "Kasuta Gemini laienduse toitmiseks.",
+    "provider__gemini__auth_button_text": "Jätka koos Gemini'ga",
+    "provider__gemini__model__gemini_pro__description": "Google'i Gemini perekond, mille eesmärk on pakkuda skaleeritavust ja näidata tugevaid üldistusvõimeid, toetades 38 keelt ja kontekstakna suurust 32k sõnani.",
+    "provider__label__beta": "beeta",
+    "permission__pricing_hook__button__upgrade_to_elite": "Tõsta Elite tasemele",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Uuenda juurdepääsuks gemini-pro-le",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'i võimekaim ja üldine mudel. Ehitatud multimodaalsuseks algusest peale. Gemini MaxAI-s on praegu beetaversioon, toetades ainult teksti ja koodi ning lisab peagi toe piltidele, videotele ja helile."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

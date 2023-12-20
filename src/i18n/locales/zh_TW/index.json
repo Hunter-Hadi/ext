@@ -1,5 +1,5 @@
 {
-  "description": "在線上的任何地方，使用由ChatGPT、Claude、Bard和Bing AI提供支援的AI，這是最快的方式。這是您唯一需要的生成式AI擴展。",
+  "description": "在線上的任何地方，使用由ChatGPT、Claude、Bard和Bing AI提供支援的AI，最快速的方式。您唯一需要的生成式AI擴展。",
   "name": "MaxAI.me：隨處使用1-Click AI",
   "shortName": "MaxAI.me",
   "common": {
@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "由於最近的更新，{{label}} 目前可能與 MaxAI 面臨連接問題。我們的團隊正在積極解決此問題，並感謝您的理解。在此期間，請考慮使用其他供應商，稍後再回來查看。",
     "provider__label__hide": "隱藏",
     "provider__label__view_solutions": "查看解決方案",
-    "sidebar__input__tokens_limited__title": "最多令牌"
+    "sidebar__input__tokens_limited__title": "最多令牌",
+    "provider__gemini__title": "雙子座",
+    "provider__gemini__short_description": "Google的Gemini系列，設計用於可擴展性和多功能性，支援38種語言和32k個token的上下文視窗。",
+    "provider__gemini__auth_description": "使用雙子座來驅動擴展功能。",
+    "provider__gemini__auth_button_text": "繼續使用雙子座",
+    "provider__gemini__model__gemini_pro__description": "Google的Gemini系列，旨在提供可擴展性並展現強大的通用能力，支援38種語言和32k個token的上下文視窗。",
+    "provider__label__beta": "測試版",
+    "permission__pricing_hook__button__upgrade_to_elite": "升級至精英版",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "升級以訪問雙子座Pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google最強大且通用的模型。從頭開始為多模態建立。MaxAI上的Gemini目前處於測試階段，僅支援文本和代碼，將很快添加對圖像、視頻和音頻的支援。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

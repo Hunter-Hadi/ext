@@ -393,6 +393,14 @@ const AppInit = () => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()
     }
+    // 判断是不是chrome自带的pdf viewer
+    if (
+      document.querySelector('embed[name][type="application/pdf"][internalid]')
+    ) {
+      chromeExtensionClientOpenPage({
+        key: 'pdf_viewer',
+      })
+    }
     renderGlobalSnackbar()
     ShortcutMessageClientInit()
     clientGetBrowserInfo().then().catch()

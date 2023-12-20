@@ -1,4 +1,5 @@
 import isNumber from 'lodash-es/isNumber'
+import uniqBy from 'lodash-es/uniqBy'
 
 import Action from '@/features/shortcuts/core/Action'
 import {
@@ -116,7 +117,10 @@ export class ActionGetContentsOfSearchEngine extends Action {
           // 有错误，不需要继续执行
           return
         }
-        const mergedSearchResult = interleaveMerge(...searchResultArr)
+        const mergedSearchResult = uniqBy(
+          interleaveMerge(...searchResultArr),
+          'url',
+        )
         const slicedSearchResult = mergedSearchResult.slice(0, limit)
         if (slicedSearchResult.length <= 0) {
           // 根据搜索结果爬取不到 内容

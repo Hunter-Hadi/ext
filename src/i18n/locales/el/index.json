@@ -490,7 +490,16 @@
     "provider__confirm_dialog__integration_issue_detected__desc": "Ο {{label}} μπορεί να αντιμετωπίζει προβλήματα σύνδεσης με το MaxAI λόγω των πρόσφατων ενημερώσεών του. Η ομάδα μας εργάζεται ενεργά για την επίλυση αυτού του θέματος και εκτιμούμε την κατανόησή σας. Παρακαλούμε, σκεφτείτε να χρησιμοποιήσετε έναν εναλλακτικό πάροχο και ελέγξτε ξανά αργότερα.",
     "provider__label__hide": "Απόκρυψη",
     "provider__label__view_solutions": "Προβολή λύσεων",
-    "sidebar__input__tokens_limited__title": "μέγιστα tokens"
+    "sidebar__input__tokens_limited__title": "μέγιστα tokens",
+    "provider__gemini__title": "Δίδυμος",
+    "provider__gemini__short_description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και ευελιξία, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",
+    "provider__gemini__auth_description": "Χρησιμοποιήστε το Δίδυμο για να ενεργοποιήσετε την επέκταση.",
+    "provider__gemini__auth_button_text": "Συνέχεια με το Δίδυμο",
+    "provider__gemini__model__gemini_pro__description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και επιδεικνύει ισχυρές γενικές δυνατότητες, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",
+    "provider__label__beta": "βήτα",
+    "permission__pricing_hook__button__upgrade_to_elite": "Αναβάθμιση σε Elite",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Αναβαθμίστε για πρόσβαση στο Δίδυμο Pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Το πιο ικανό και γενικό μοντέλο της Google. Κατασκευασμένο από το μηδέν για πολυτροπικότητα. Το Gemini στο MaxAI βρίσκεται αυτή τη στιγμή στη φάση της beta, υποστηρίζοντας μόνο κείμενο και κώδικα, και σύντομα θα προσθέσει υποστήριξη για εικόνες, βίντεο και ήχο."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

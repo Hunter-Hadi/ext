@@ -1,5 +1,6 @@
 import Alert, { alertClasses } from '@mui/material/Alert'
 import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
@@ -290,7 +291,9 @@ const SidebarChatBoxMessageItem: FC<{
                   </div>
                 </Stack>
 
-                {solutionsShow && <ThirdPartAIProviderErrorSolution />}
+                <Collapse in={solutionsShow}>
+                  <ThirdPartAIProviderErrorSolution />
+                </Collapse>
               </Box>
             </Alert>
           ) : (

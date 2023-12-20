@@ -1,10 +1,7 @@
-import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined'
-import KeyboardArrowUpOutlinedIcon from '@mui/icons-material/KeyboardArrowUpOutlined'
 import Alert, { alertClasses } from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -12,7 +9,6 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import DevContent from '@/components/DevContent'
 import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
 import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import {
   IAIResponseMessage,
   IChatMessage,
@@ -162,8 +158,6 @@ const SidebarChatBoxMessageItem: FC<{
     }
   }, [message.type, isHover, isDarkMode])
 
-  const { currentAIProviderDetail } = useAIProviderModels()
-
   useEffect(() => {
     setDefaultText(getMessageRenderText(message))
   }, [message.text])
@@ -294,36 +288,6 @@ const SidebarChatBoxMessageItem: FC<{
                       {defaultText.replace(/^\s+/, '')}
                     </CustomMarkdown>
                   </div>
-
-                  {currentAIProviderDetail?.isThirdParty && (
-                    <Stack
-                      direction={'row'}
-                      alignItems="center"
-                      spacing={0.5}
-                      sx={{
-                        ml: 'auto',
-                        mb: '0.22em',
-                        cursor: 'pointer',
-                        flexShrink: 0,
-                      }}
-                      onClick={() => setSolutionsShow((pre) => !pre)}
-                    >
-                      <Typography
-                        fontSize={16}
-                        lineHeight={1.5}
-                        color="text.primary"
-                      >
-                        {solutionsShow
-                          ? t('client:provider__label__hide')
-                          : t('client:provider__label__view_solutions')}
-                      </Typography>
-                      {solutionsShow ? (
-                        <KeyboardArrowUpOutlinedIcon />
-                      ) : (
-                        <KeyboardArrowDownOutlinedIcon />
-                      )}
-                    </Stack>
-                  )}
                 </Stack>
 
                 {solutionsShow && <ThirdPartAIProviderErrorSolution />}
@@ -402,6 +366,10 @@ const SidebarChatBoxMessageItem: FC<{
               if (message.parentMessageId) {
                 onRetry && onRetry(message.parentMessageId)
               }
+            }}
+            solutionsShow={solutionsShow}
+            onSolutionToggle={() => {
+              setSolutionsShow((pre) => !pre)
             }}
             message={message as ISystemChatMessage}
           />

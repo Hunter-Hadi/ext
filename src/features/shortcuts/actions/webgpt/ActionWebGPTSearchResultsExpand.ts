@@ -86,9 +86,17 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 searchResult.url,
               )
               if (youtubeVideoId) {
-                response = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
+                const postContextData = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
                   youtubeVideoId,
                 )
+                if (postContextData.SOCIAL_MEDIA_PAGE_CONTENT) {
+                  response = {
+                    data: {
+                      body: postContextData.SOCIAL_MEDIA_PAGE_CONTENT,
+                      title: postContextData.post?.title,
+                    },
+                  }
+                }
               } else {
                 response = await backgroundConversation.postMessage({
                   event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,

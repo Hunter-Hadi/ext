@@ -1,9 +1,9 @@
+import { IChatConversation } from '@/background/src/chatConversations'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import {
   ISystemMessage,
   IThirdMessage,
 } from '@/features/searchWithAI/chatCore/chatgpt/types'
-import { IChatConversation } from '@/background/src/chatConversations'
 
 /**
  * 格式化AI消息的内容
@@ -90,9 +90,15 @@ export const formatMessagesToLiteHistory = async (
 ): Promise<string> => {
   const title = conversation.title
   const messages = conversation.messages || []
+  const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {
     if (message.type === 'ai') {
+      const originalQuestion = (message as IAIResponseMessage).originalMessage
+        ?.metadata?.title?.title
+      if (originalQuestion && conversationType === 'Search') {
+        liteHistory.push(originalQuestion)
+      }
       liteHistory.push(
         'AI: ' + formatAIMessageContent(message as IAIResponseMessage),
       )

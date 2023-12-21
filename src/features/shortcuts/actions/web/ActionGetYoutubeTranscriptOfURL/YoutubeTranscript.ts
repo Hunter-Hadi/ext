@@ -115,45 +115,74 @@ export class YoutubeTranscript {
         },
       )
       if (pageContent.success) {
-        const doc = new DOMParser().parseFromString(
-          pageContent.data,
-          'text/html',
-        )
+        debugger
         // youTube transcript
         const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
           await YoutubeTranscript.fetchTranscript(videoId, pageContent.data),
           2048,
         )
-        const youTubeVideoMetaData = doc.querySelector('ytd-watch-metadata')
-        const title =
-          (youTubeVideoMetaData?.querySelector(
-            '#title > h1',
-          ) as HTMLHeadingElement)?.innerText || doc.title
-        const authorElement = doc.querySelector('ytd-video-owner-renderer')
-        const userName = authorElement?.querySelector('yt-formatted-string')
-          ?.textContent
+        const doc = new DOMParser().parseFromString(
+          pageContent.data,
+          'text/html',
+        )
+        let title =
+          doc.querySelector('meta[itemprop="name"]')?.getAttribute('content') ||
+          ''
+        const author =
+          doc
+            .querySelector('span[itemprop="author"] link[itemprop="name"]')
+            ?.getAttribute('content') || ''
         const account =
-          authorElement
-            ?.querySelector('a')
+          doc
+            .querySelector('span[itemprop="author"] link[itemprop="url"]')
             ?.getAttribute('href')
-            ?.includes('@') &&
-          authorElement?.querySelector('a')?.getAttribute('href')?.split('/')[1]
+            ?.split('@')?.[1] || ''
         const date =
-          (youTubeVideoMetaData?.querySelector(
-            '#description #info-container yt-formatted-string > span:nth-child(3)',
-          ) as HTMLSpanElement)?.innerText || ''
-        const content = ''
+          doc
+            .querySelector('meta[itemprop="datePublished"]')
+            ?.getAttribute('content') || ''
+        let content =
+          doc
+            .querySelector('meta[itemprop="description"]')
+            ?.getAttribute('content') || ''
+
+        try {
+          if (doc.body.innerHTML) {
+            const json = doc.body.innerHTML
+              .split('"videoDetails":')?.[1]
+              ?.split(',"thumbnail":')?.[0]
+            if (json) {
+              // channelId
+              // isCrawlable
+              // isOwnerViewing
+              // keywords
+              // lengthSeconds
+              // shortDescription
+              // title
+              // videoId
+              const videoDetail = JSON.parse(json + '}')
+              if (videoDetail.title) {
+                title = videoDetail.title
+              }
+              if (videoDetail.shortDescription) {
+                content = videoDetail.shortDescription
+              }
+            }
+          }
+        } catch (e) {
+          console.log(e)
+        }
         const youtubePostContent = new SocialMediaPostContext(
           {
             title,
-            author: `${userName}(${account})`,
+            author: `${author}(@${account})`,
             date,
             content,
           },
           {
             postTitle: 'Video post',
             meta: {
-              'Post video transcript': youTubeTranscriptText,
+              'Video transcript': youTubeTranscriptText,
             },
           },
         )

@@ -36,7 +36,7 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     ],
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
-      roles: ['pro', 'elite'],
+      roles: ['elite'],
     },
   },
 ]

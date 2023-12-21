@@ -92,6 +92,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 if (postContextData.SOCIAL_MEDIA_PAGE_CONTENT) {
                   response = {
                     data: {
+                      success: true,
                       body: postContextData.SOCIAL_MEDIA_PAGE_CONTENT,
                       title: postContextData.post?.title,
                     },

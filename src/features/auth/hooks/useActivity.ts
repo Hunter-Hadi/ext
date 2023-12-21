@@ -1,14 +1,15 @@
 /**
  * 插件活动的hook
  */
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { useAuthLogin } from '@/features/auth'
+import dayjs from 'dayjs'
 import { useEffect, useMemo, useRef, useState } from 'react'
+
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import dayjs from 'dayjs'
+import { useAuthLogin } from '@/features/auth'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 
 const useActivity = () => {
   const { isLogin } = useAuthLogin()
@@ -36,7 +37,7 @@ const useActivity = () => {
    * 是否可以关闭活动的banner
    */
   const isAbleToCloseActivityBanner = useMemo(() => {
-    return dayjs().utc().diff(dayjs('2023-12-31').utc()) > 0
+    return dayjs().utc().diff(dayjs('2023-12-21').utc()) > 0
   }, [])
   /**
    * 关闭活动的banner

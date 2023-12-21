@@ -1,13 +1,15 @@
+import { v4 as uuidV4 } from 'uuid'
+
+import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   parametersParserDecorator,
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
-import { v4 as uuidV4 } from 'uuid'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 export class ActionGetContentsOfURL extends Action {
   static type: ActionIdentifier = 'GET_CONTENTS_OF_URL'
@@ -43,6 +45,17 @@ export class ActionGetContentsOfURL extends Action {
           },
           engine,
         )
+        const youtubeVideoId = YoutubeTranscript.retrieveVideoId(currentUrl)
+        // NOTE: 如果是youtube的视频，直接获取transcript和页面信息
+        if (youtubeVideoId) {
+          const postContextData = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
+            youtubeVideoId,
+          )
+          if (postContextData.post?.content) {
+            this.output = postContextData.SOCIAL_MEDIA_PAGE_CONTENT
+            return
+          }
+        }
         const response = await backgroundConversation.postMessage({
           event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
           data: {

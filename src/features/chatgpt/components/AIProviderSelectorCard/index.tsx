@@ -187,7 +187,10 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     >
                       {t('client:provider__label__third_part')}
                     </Typography>
-                  ) : providerOption.beta ? (
+                  ) : (
+                    <AIProviderMainPartIcon />
+                  )}
+                  {providerOption.beta && (
                     <Typography
                       component={'span'}
                       fontSize={'8px'}
@@ -213,8 +216,6 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     >
                       {t('client:provider__label__beta')}
                     </Typography>
-                  ) : (
-                    <AIProviderMainPartIcon />
                   )}
                 </Stack>
               </ListItemButton>

@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 
 import { AIChipIcon } from '@/components/CustomIcon'
+import { AI_PROVIDER_MAP } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -33,9 +34,17 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
     switchBackgroundChatSystemAIProvider,
   } = useClientConversation()
 
+  const sortOrder: any = {
+    [AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: 0,
+    [AI_PROVIDER_MAP.MAXAI_CLAUDE]: 1,
+    [AI_PROVIDER_MAP.MAXAI_GEMINI]: 2,
+  }
+
   const mainPartProviders = AIProviderOptions.filter(
     (provider) => !provider.isThirdParty,
-  )
+  ).sort((a, b) => {
+    return sortOrder[a.value] - sortOrder[b.value]
+  })
 
   const handleClose = () => {
     setDialogState({
@@ -104,8 +113,9 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
       <Stack
         direction={'row'}
         alignItems="center"
-        spacing={1}
         mt={'12px !important'}
+        flexWrap={'wrap'}
+        gap={1}
       >
         {mainPartProviders.map((providerOption) => (
           <LoadingButton
@@ -117,8 +127,8 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
             }
             endIcon={<AIProviderMainPartIcon color="white" />}
             sx={{
+              flexShrink: 0,
               borderRadius: 2,
-              flex: 1,
             }}
             onClick={() => handleConfirmProvider(providerOption)}
           >

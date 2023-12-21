@@ -8,7 +8,7 @@ import { I18nextKeysType } from '@/i18next'
 
 export type AIProviderOptionType = {
   beta: boolean
-  label: I18nextKeysType
+  label: string
   value: IAIProviderType
   shortDescription: (t: TFunction<['common', 'client']>) => React.ReactNode
   description: string
@@ -30,7 +30,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   // },
   {
     beta: false,
-    label: 'client:provider__bing_web_app__title',
+    label: 'Bing web app',
     description: '',
     value: AI_PROVIDER_MAP.BING,
     authDescription: 'client:provider__bing_web_app__auth_description',
@@ -42,7 +42,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: false,
-    label: 'client:provider__bard_web_app__title',
+    label: 'Bard web app',
     description: '',
     value: AI_PROVIDER_MAP.BARD,
     authDescription: `client:provider__bard_web_app__auth_description`,
@@ -54,7 +54,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: false,
-    label: 'client:provider__claude_web_app__title',
+    label: 'Claude web app',
     value: AI_PROVIDER_MAP.CLAUDE,
     description: '',
     authDescription: `client:provider__claude_web_app__auth_description`,
@@ -66,7 +66,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: false,
-    label: 'client:provider__chatgpt_web_app__title',
+    label: 'ChatGPT web app',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI,
     authDescription: `client:provider__chatgpt_web_app__auth_description`,
@@ -78,7 +78,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: false,
-    label: 'client:provider__openai_api__title',
+    label: 'OpenAI API',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI_API,
     authDescription: `client:provider__openai_api__auth_description`,
@@ -116,7 +116,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: true,
-    label: 'client:provider__gemini__title',
+    label: 'Gemini',
     value: AI_PROVIDER_MAP.MAXAI_GEMINI,
     description: '',
     authDescription: `client:provider__gemini__auth_description`,
@@ -127,7 +127,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   },
   {
     beta: false,
-    label: 'client:provider__claude__title',
+    label: 'Claude',
     value: AI_PROVIDER_MAP.MAXAI_CLAUDE,
     description: '',
     authDescription: `client:provider__claude__auth_description`,
@@ -139,7 +139,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
   {
     beta: false,
     description: '',
-    label: 'client:provider__chatgpt__title',
+    label: 'ChatGPT',
     authDescription: `client:provider__chatgpt__auth_description`,
     value: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
     shortDescription: (t) => t(`client:provider__chatgpt__short_description`),

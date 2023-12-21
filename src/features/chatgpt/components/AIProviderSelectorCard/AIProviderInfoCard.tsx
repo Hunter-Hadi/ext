@@ -54,7 +54,7 @@ const AIProviderInfoCard: FC<{
         <Stack direction={'row'} spacing={1}>
           <AIProviderIcon aiProviderType={aiProviderOption.value} size={24} />
           <Typography fontSize={'16px'} fontWeight={600} color={'text.primary'}>
-            {t(aiProviderOption.label as any)}
+            {aiProviderOption.label}
           </Typography>
         </Stack>
         {authMode && (

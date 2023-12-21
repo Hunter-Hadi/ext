@@ -122,7 +122,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           pr={4}
         >
           {t('client:provider__confirm_dialog__title', {
-            label: t(confirmProviderOption.label as any),
+            label: confirmProviderOption.label,
           })}
         </Typography>
 

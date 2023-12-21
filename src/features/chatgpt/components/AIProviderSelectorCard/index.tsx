@@ -164,7 +164,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
                     color={'text.primary'}
                     textAlign={'left'}
                   >
-                    {t(providerOption.label as any)}
+                    {providerOption.label}
                   </Typography>
                   {providerOption.isThirdParty ? (
                     <Typography

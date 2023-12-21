@@ -122,7 +122,7 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
             }}
             onClick={() => handleConfirmProvider(providerOption)}
           >
-            {t(providerOption.label as any)}
+            {providerOption.label}
           </LoadingButton>
         ))}
       </Stack>

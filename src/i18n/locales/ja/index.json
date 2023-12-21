@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT、Claude、Bard、Bing AIによって強化されたAIをオンラインのどこでも最速で利用する方法。必要なのはこの生成型AI拡張機能だけです。",
+  "description": "ChatGPT、Claude、Gemini、Bard、Bingによって提供されるAIをどこでも最速で利用する方法。必要なのはこの生成型AI拡張機能だけです。",
   "name": "MaxAI.me：どこでも1クリックでAIを利用",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "重要なお知らせ",
     "provider__confirm_dialog__important_reminder__desc": "このサードパーティのプロバイダは進化しているため、時折バグや応答の遅さが発生することがあります。これらはMaxAIの制御範囲外ですが、問題を最小限に抑えるために積極的に取り組んでいます。ご理解いただけると幸いです。",
     "provider__confirm_dialog__for_enhanced_stability": "安定性向上のために",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "信頼性と高品質のAIパフォーマンスを提供する当社のプレミアムGPTおよびClaude AIプロバイダをご検討ください。これらはあなたの体験を向上させるために設計されています。",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "信頼性と高品質のAIパフォーマンスを向上させるために、当社のプレミアムAIプロバイダーをご検討ください。あなたの体験を向上させるために設計されています。",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "以下に切り替えることができます:",
     "provider__confirm_dialog__your_feedback_matters": "ご意見をお聞かせください",
     "provider__confirm_dialog__your_feedback_matters__desc": "問題やアイデアがある場合は、ぜひお知らせください。あなたのフィードバックは私たちのサービスを向上させるために不可欠です。貴重な貢献に感謝します！",

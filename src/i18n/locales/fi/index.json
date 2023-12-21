@@ -1,5 +1,5 @@
 {
-  "description": "Nopein tapa käyttää ChatGPT:n, Clauden, Bardin ja Bing AI:n voimaa missä tahansa verkossa. Ainoa generatiivinen AI-laajennus, jota tarvitset.",
+  "description": "Nopein tapa käyttää ChatGPT:n, Clauden, Geminin, Bardin ja Bingin voimaa missä tahansa. Ainoa generatiivinen tekoälylaajennus, jota tarvitset.",
   "name": "MaxAI.me: Käytä 1-Click AI missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Tärkeä muistutus",
     "provider__confirm_dialog__important_reminder__desc": "Huomioithan, että tämän kolmannen osapuolen tarjoajan kehittyessä saatat ajoittain kohdata bugeja tai hitaampia vastauksia, jotka ovat MaxAI:n hallinnan ulkopuolella. Työskentelemme aktiivisesti näiden ongelmien minimoimiseksi ja arvostamme ymmärrystäsi.",
     "provider__confirm_dialog__for_enhanced_stability": "Parannetun vakauden vuoksi",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Harkitse premium GPT- ja Claude-tekoälytarjoajiamme luotettavan ja korkealaatuisen tekoälysuorituskyvyn saavuttamiseksi, joka on suunniteltu parantamaan kokemustasi.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Harkitse luotettavien ja korkealaatuisten tekoälytarjoajiemme käyttämistä parantaaksesi kokemustasi.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Voit vaihtaa seuraaviin:",
     "provider__confirm_dialog__your_feedback_matters": "Palaute on tärkeää",
     "provider__confirm_dialog__your_feedback_matters__desc": "Jos sinulla on ongelmia tai ideoita, kerro meille. Palautesi on meille olennaista palveluidemme parantamiseksi. Kiitos arvokkaasta panoksestasi yhteisöömme!",

@@ -1,5 +1,5 @@
 {
-  "description": "Den hurtigste måde at bruge AI, der er drevet af ChatGPT, Claude, Bard, Bing AI hvor som helst online. Den eneste generative AI-udvidelse, du har brug for.",
+  "description": "Den hurtigste måde at bruge AI drevet af ChatGPT, Claude, Gemini, Bard, Bing hvor som helst. Den eneste generative AI-udvidelse, du har brug for.",
   "name": "MaxAI.me: Brug 1-klik AI Overalt",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Vigtig påmindelse",
     "provider__confirm_dialog__important_reminder__desc": "Vær opmærksom på, at du som denne tredjepartsudbyder udvikler sig, kan opleve fejl eller langsommere svar, som er uden for MaxAI's kontrol. Vi arbejder aktivt på at minimere disse problemer og værdsætter din forståelse.",
     "provider__confirm_dialog__for_enhanced_stability": "Forbedret stabilitet",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Overvej vores premium GPT- og Claude AI-udbydere for pålidelig og høj kvalitet AI-ydelse, designet til at forbedre din oplevelse.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Overvej vores premium AI-udbydere til pålidelig og høj kvalitet AI-ydelse, designet til at forbedre din oplevelse.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Du kan skifte til:",
     "provider__confirm_dialog__your_feedback_matters": "Din feedback betyder noget",
     "provider__confirm_dialog__your_feedback_matters__desc": "Hvis du har nogen problemer eller idéer, så lad os det vide. Din feedback er afgørende for os for at forbedre vores tjenester. Tak for dit værdifulde bidrag til vores fællesskab!",

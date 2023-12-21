@@ -1,5 +1,5 @@
 {
-  "description": "Nejrychlejší způsob, jak používat umělou inteligenci poháněnou ChatGPT, Claudem, Bardem a Bing AI kdekoli online. Jediné rozšíření generativní umělé inteligence, které potřebujete.",
+  "description": "Nejrychlejší způsob, jak používat umělou inteligenci poháněnou ChatGPT, Claude, Gemini, Bard, Bing kdekoli. Jediné rozšíření generativní umělé inteligence, které potřebujete.",
   "name": "MaxAI.me: Použijte umělou inteligenci kdekoli jedním kliknutím",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Důležité upozornění",
     "provider__confirm_dialog__important_reminder__desc": "Buďte si prosím vědomi, že s rozvojem tohoto poskytovatele třetí strany se můžete občas setkat s chybami nebo pomalejšími odpověďmi, které jsou mimo kontrolu MaxAI. Aktivně pracujeme na minimalizaci těchto problémů a oceňujeme vaše pochopení.",
     "provider__confirm_dialog__for_enhanced_stability": "Pro zvýšenou stabilitu",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Zvažte naše prémiové poskytovatele GPT a Claude AI pro spolehlivý a kvalitní výkon umělé inteligence, který je navržen tak, aby zlepšil váš zážitek.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Zvažte naše prémiové poskytovatele umělé inteligence pro spolehlivý a vysoce kvalitní výkon umělé inteligence, navržený k vylepšení vašeho zážitku.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Můžete přepnout na:",
     "provider__confirm_dialog__your_feedback_matters": "Vaše zpětná vazba je důležitá",
     "provider__confirm_dialog__your_feedback_matters__desc": "Pokud máte nějaké problémy nebo nápady, dejte nám prosím vědět. Vaše zpětná vazba je pro nás klíčová pro zlepšení našich služeb. Děkujeme za váš cenný příspěvek do naší komunity!",

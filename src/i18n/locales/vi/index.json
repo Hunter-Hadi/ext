@@ -1,5 +1,5 @@
 {
-  "description": "Cách nhanh nhất để sử dụng Trí tuệ Nhân tạo được cung cấp bởi ChatGPT, Claude, Bard, Bing AI mọi nơi trực tuyến. Phần mở rộng Trí tuệ Nhân tạo duy nhất bạn cần.",
+  "description": "Cách nhanh nhất để sử dụng trí tuệ nhân tạo được cung cấp bởi ChatGPT, Claude, Gemini, Bard, Bing ở bất kỳ đâu. Đây là tiện ích duy nhất về trí tuệ nhân tạo mà bạn cần.",
   "name": "MaxAI.me: Sử dụng Trí tuệ Nhân tạo bằng 1-Click Mọi nơi",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Lưu ý quan trọng",
     "provider__confirm_dialog__important_reminder__desc": "Vui lòng lưu ý rằng khi nhà cung cấp bên thứ ba này phát triển, bạn có thể gặp phải lỗi hoặc thời gian phản hồi chậm đôi khi, điều này nằm ngoài khả năng kiểm soát của MaxAI. Chúng tôi đang tích cực làm việc để giảm thiểu các vấn đề này và đánh giá cao sự thông cảm của bạn.",
     "provider__confirm_dialog__for_enhanced_stability": "Để tăng cường sự ổn định",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Hãy xem xét việc sử dụng nhà cung cấp GPT và Claude cao cấp của chúng tôi để đảm bảo hiệu suất trí tuệ nhân tạo đáng tin cậy và chất lượng cao, được thiết kế để nâng cao trải nghiệm của bạn.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Hãy xem xét các nhà cung cấp trí tuệ nhân tạo cao cấp của chúng tôi để có hiệu suất AI đáng tin cậy và chất lượng cao, được thiết kế để nâng cao trải nghiệm của bạn.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Bạn có thể chuyển sang:",
     "provider__confirm_dialog__your_feedback_matters": "Ý kiến phản hồi của bạn quan trọng",
     "provider__confirm_dialog__your_feedback_matters__desc": "Nếu bạn gặp bất kỳ vấn đề hoặc ý tưởng nào, hãy cho chúng tôi biết. Ý kiến phản hồi của bạn là rất quan trọng để chúng tôi cải thiện dịch vụ của mình. Cảm ơn sự đóng góp quý giá của bạn cho cộng đồng của chúng tôi!",

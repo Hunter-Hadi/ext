@@ -1,5 +1,5 @@
 {
-  "description": "Kõige kiirem viis kasutada ChatGPT, Claude, Bard, Bing AI-d kõikjal veebis. Ainuke generatiivne AI laiendus, mida vajate.",
+  "description": "Kõige kiirem viis kasutada ChatGPT, Claude, Gemini, Bard, Bing poolt toetatud AI-d igal pool. Ainuke generatiivne AI laiendus, mida vajate.",
   "name": "MaxAI.me: Kasuta 1-klõpsuga AI-d kõikjal",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Oluline meeldetuletus",
     "provider__confirm_dialog__important_reminder__desc": "Palun olge teadlik, et kuna see kolmanda osapoole pakkuja areneb, võite aeg-ajalt kogeda vigu või aeglaseid vastuseid, mis jäävad MaxAI kontrolli alt välja. Me töötame aktiivselt selleks, et neid probleeme minimeerida ja hindame teie mõistvat suhtumist.",
     "provider__confirm_dialog__for_enhanced_stability": "Suurema stabiilsuse tagamiseks",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Kaaluge meie tasuliste GPT ja Claude AI pakkujate kasutamist usaldusväärse ja kvaliteetse AI jõudluse saavutamiseks, mis on loodud teie kogemuse täiustamiseks.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Kaaluge meie tasulisi AI pakkujaid usaldusväärse ja kvaliteetse AI jõudluse saamiseks, mis on loodud teie kogemuse täiustamiseks.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Saate ümber lülituda:",
     "provider__confirm_dialog__your_feedback_matters": "Teie tagasiside on oluline",
     "provider__confirm_dialog__your_feedback_matters__desc": "Kui teil on probleeme või ideid, andke meile teada. Teie tagasiside on meie teenuste täiustamiseks oluline. Täname teid väärtusliku panuse eest meie kogukonda!",

@@ -1,5 +1,5 @@
 {
-  "description": "آن لائن کسی بھی جگہ ChatGPT، Claude، Bard، Bing AI کی طاقتور ترین طریقہ استعمال کرنے کا سب سے تیز طریقہ. صرف ایک generative AI توسیع جو آپ کو چاہیے.",
+  "description": "ChatGPT، Claude، Gemini، Bard، Bing کی طاقتور ترین AI استعمال کرنے کا سب سے تیز طریقہ. آپ کی ضرورت کا صرف ایک تولیدی AI توسیع.",
   "name": "MaxAI.me: کہیں بھی 1-کلک AI استعمال کریں",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "اہم یاد دہانی",
     "provider__confirm_dialog__important_reminder__desc": "براہ کرم یہ جان لیں کہ جبکہ یہ تیسری طرف کا فراہم کنندہ ترقی کرتا ہے، آپ کو کبھی کبھی خرابیوں یا سستے جوابات کا سامنا ہوسکتا ہے جو MaxAI کے اختیار سے باہر ہوتے ہیں۔ ہم مناسب قدم اٹھانے کے لئے مصروفیت کم کرنے کی کوشش کر رہے ہیں اور آپ کی تفہیم کی قدر کرتے ہیں۔",
     "provider__confirm_dialog__for_enhanced_stability": "بہتر استحکام کے لئے",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "اپنی تجربے کو بہتر بنانے کے لئے، اعتماد کے قابل اور بالائی کی AI فراہم کنندہ گی پی ٹی اور کلوڈ AI فراہم کنندہ کو دیکھیں۔",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "اپنی تجربے کو بہتر بنانے کے لئے، قابل اعتماد اور بلند معیار کی AI پروائیڈرز کو غور سے دیکھیں جو آپ کی خدمت میں پیش کی گئی ہیں.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "آپ سوئچ کرسکتے ہیں:",
     "provider__confirm_dialog__your_feedback_matters": "آپ کی رائے اہم ہے",
     "provider__confirm_dialog__your_feedback_matters__desc": "اگر آپ کوئی مسئلہ یا تجاویز رکھتے ہیں تو براہ کرم ہمیں بتائیں۔ آپ کی رائے ہماری خدمات کو بہتر بنانے کے لئے ضروری ہے۔ ہماری کمیونٹی میں آپ کے قیمتی تعاون کے لئے شکریہ!",

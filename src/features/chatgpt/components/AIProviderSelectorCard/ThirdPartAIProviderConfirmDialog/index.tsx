@@ -5,6 +5,7 @@ import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -12,6 +13,7 @@ import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
+import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -26,7 +28,7 @@ interface ThirdPartAIProviderConfirmDialogProps {
 const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps> = ({
   sx,
 }) => {
-  const { t } = useTranslation(['client'])
+  const { t } = useTranslation(['client', 'common'])
   const [dialogState, setDialogState] = useRecoilState(
     ThirdPartAIProviderConfirmDialogState,
   )
@@ -191,6 +193,17 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           mt={'4px !important'}
         >
           {t('client:provider__confirm_dialog__your_feedback_matters__desc')}
+        </Typography>
+        <Typography sx={{ flexShrink: 0 }} mt={'8px !important'} fontSize={12}>
+          <Link
+            color={'text.primary'}
+            sx={{ cursor: 'pointer' }}
+            underline={'always'}
+            target={'_blank'}
+            href={CHROME_EXTENSION_MAIL_TO}
+          >
+            {t('common:contact_us')}
+          </Link>
         </Typography>
       </Stack>
 

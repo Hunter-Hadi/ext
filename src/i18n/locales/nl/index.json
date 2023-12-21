@@ -1,5 +1,5 @@
 {
-  "description": "De snelste manier om AI te gebruiken, aangedreven door ChatGPT, Claude, Bard, Bing AI, overal online. De enige generatieve AI-extensie die je nodig hebt.",
+  "description": "De snelste manier om overal AI te gebruiken die wordt aangedreven door ChatGPT, Claude, Gemini, Bard, Bing. De enige generatieve AI-extensie die je nodig hebt.",
   "name": "MaxAI.me: Gebruik AI met 1 klik overal",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Belangrijke herinnering",
     "provider__confirm_dialog__important_reminder__desc": "Houd er rekening mee dat u mogelijk af en toe bugs of langzamere reacties ervaart naarmate deze externe provider evolueert, wat buiten de controle van MaxAI ligt. We werken actief aan het minimaliseren van deze problemen en waarderen uw begrip.",
     "provider__confirm_dialog__for_enhanced_stability": "Voor verbeterde stabiliteit",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Overweeg onze premium GPT- en Claude AI-providers voor betrouwbare en hoogwaardige AI-prestaties, ontworpen om uw ervaring te verbeteren.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Overweeg onze premium AI-providers voor betrouwbare en hoogwaardige AI-prestaties, ontworpen om uw ervaring te verbeteren.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "U kunt overschakelen naar:",
     "provider__confirm_dialog__your_feedback_matters": "Uw feedback is belangrijk",
     "provider__confirm_dialog__your_feedback_matters__desc": "Als u problemen of ideeën heeft, laat het ons dan weten. Uw feedback is essentieel voor ons om onze diensten te verbeteren. Bedankt voor uw waardevolle bijdrage aan onze community!",

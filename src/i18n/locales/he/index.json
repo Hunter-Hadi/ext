@@ -1,5 +1,5 @@
 {
-  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה המופעלת על ידי ChatGPT, Claude, Bard, Bing AI בכל מקום באינטרנט. התוסף היחיד שאתה צריך.",
+  "description": "הדרך המהירה ביותר להשתמש ב-AI המופעל על ידי ChatGPT, Claude, Gemini, Bard, Bing בכל מקום. התוסף היחיד שאתה צריך ליצירת AI יוצרת.",
   "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת בכל מקום",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "תזכורת חשובה",
     "provider__confirm_dialog__important_reminder__desc": "יש לך לקחת בחשבון שככל שהספק מצד שלישי מתקדם, ייתכן ותחוו מעין באגים או תגובות איטיות מעט, שאלו נמצאים מחוץ לשליטת MaxAI. אנחנו פועלים כרגע כדי למזער את הבעיות האלו ומעריכים את ההבנה שלך.",
     "provider__confirm_dialog__for_enhanced_stability": "ליציבות משופרת",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "שקול להשתמש בספקי ה-GPT וה-Claude שלנו לביצוע AI אמין ואיכותי, שמיועד לשפר את החוויה שלך.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "שקול את ספקי האינטיליגנציה המתקדמים שלנו לביצוע AI אמין ואיכותי ברמה גבוהה, מעוצבים לשדרג את החוויה שלך.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "תוכל לעבור ל:",
     "provider__confirm_dialog__your_feedback_matters": "המשוב שלך חשוב לנו",
     "provider__confirm_dialog__your_feedback_matters__desc": "אם יש לך בעיות או רעיונות, אנא דבר איתנו. המשוב שלך חשוב מאוד כדי שנוכל לשפר את השירותים שלנו. תודה על תרומתך היקרה לקהילתנו!",

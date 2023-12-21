@@ -1,5 +1,5 @@
 {
-  "description": "A leggyorsabb módja annak, hogy ChatGPT, Claude, Bard, Bing AI által támogatott mesterséges intelligenciát használjon bárhol az interneten. Az egyetlen generatív AI kiegészítő, amire szüksége van.",
+  "description": "A ChatGPT, Claude, Gemini, Bard, Bing által hajtott AI leggyorsabb módja bárhol. Az egyetlen generatív AI kiegészítő, amire szükséged van.",
   "name": "MaxAI.me: Használja az AI-t egyetlen kattintással bárhol",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Fontos emlékeztető",
     "provider__confirm_dialog__important_reminder__desc": "Kérjük vedd figyelembe, hogy ahogy ez a harmadik fél szolgáltató fejlődik, időnként tapasztalhatsz hibákat vagy lassabb válaszidőt, amelyek az MaxAI hatáskörén kívül esnek. Aktívan dolgozunk azon, hogy minimalizáljuk ezeket a problémákat és értékeljük megértésedet.",
     "provider__confirm_dialog__for_enhanced_stability": "Jobb stabilitás érdekében",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Tekintsd meg prémium GPT és Claude AI szolgáltatóinkat megbízható és magas minőségű AI teljesítményért, amelyeket az élményed fokozására terveztünk.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Fontold meg megbízható és magas minőségű AI szolgáltatóinkat, amelyek tervezésük során az élményedet kívánják fokozni.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Átválthatsz erre:",
     "provider__confirm_dialog__your_feedback_matters": "A visszajelzésed számít",
     "provider__confirm_dialog__your_feedback_matters__desc": "Ha bármilyen problémád vagy ötleted van, kérlek jelezd nekünk. A visszajelzésed elengedhetetlen számunkra a szolgáltatásaink fejlesztéséhez. Köszönjük értékes hozzájárulásodat a közösségünknek!",

@@ -1,5 +1,5 @@
 {
-  "description": "Ātrākais veids, kā izmantot AI, kas darbojas ar ChatGPT, Claude, Bard, Bing AI jebkur tiešsaistē. Vienīgais generatīvais AI paplašinājums, kas jums nepieciešams.",
+  "description": "Ātrākais veids, kā izmantot AI, kas darbojas ar ChatGPT, Claude, Gemini, Bard, Bing jebkur. Vienīgais generatīvās AI paplašinājums, kas jums nepieciešams.",
   "name": "MaxAI.me: Izmantojiet 1-Click AI jebkur",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Svarīgs atgādinājums",
     "provider__confirm_dialog__important_reminder__desc": "Lūdzu, ņemiet vērā, ka, jo šis trešās puses pakalpojumu sniedzējs attīstās, jums var gadīties kļūdas vai lēnākas reakcijas, kas ir ārpus MaxAI kontroles. Mēs aktīvi strādājam, lai minimizētu šīs problēmas un novērtējam jūsu sapratni.",
     "provider__confirm_dialog__for_enhanced_stability": "Palielinātai stabilitātei",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Izmantojiet mūsu premium GPT un Claude AI pakalpojumu sniedzējus, lai nodrošinātu uzticamu un augstas kvalitātes AI veiktspēju, kas paredzēta jūsu pieredzes uzlabošanai.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Izmantojiet mūsu augstas kvalitātes AI pakalpojumu sniedzējus, lai nodrošinātu uzticamu un augstas kvalitātes AI veiktspēju, kas ir izstrādāta, lai uzlabotu jūsu pieredzi.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Jūs varat pārslēgties uz:",
     "provider__confirm_dialog__your_feedback_matters": "Jūsu atsauksmes ir svarīgas",
     "provider__confirm_dialog__your_feedback_matters__desc": "Ja jums ir kādas problēmas vai idejas, lūdzu, informējiet mūs. Jūsu atsauksmes ir būtiskas, lai mēs varētu uzlabot savus pakalpojumus. Paldies par jūsu vērtīgo ieguldījumu mūsu kopienā!",

@@ -1,5 +1,5 @@
 {
-  "description": "在線上的任何地方，使用由ChatGPT、Claude、Bard和Bing AI提供支援的AI，最快速的方式。您唯一需要的生成式AI擴展。",
+  "description": "使用ChatGPT、Claude、Gemini、Bard、Bing提供的AI，無論何時何地都是最快的方式。您唯一需要的生成式AI擴展。",
   "name": "MaxAI.me：隨處使用1-Click AI",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "重要提醒",
     "provider__confirm_dialog__important_reminder__desc": "請注意，由於這個第三方提供者不斷演進，您可能偶爾會遇到 MaxAI 無法控制的錯誤或反應較慢的情況。我們正在積極努力減少這些問題，並感謝您的理解。",
     "provider__confirm_dialog__for_enhanced_stability": "為了增強穩定性",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "考慮使用我們的高級 GPT 和 Claude AI 提供者，以獲得可靠和高質量的 AI 性能，旨在提升您的體驗。",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "考慮使用我們的高級AI提供者，以獲得可靠且高質量的AI性能，旨在增強您的體驗。",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "您可以切換到：",
     "provider__confirm_dialog__your_feedback_matters": "您的意見很重要",
     "provider__confirm_dialog__your_feedback_matters__desc": "如果您有任何問題或想法，請告訴我們。您的反饋對於我們改進服務至關重要。感謝您對我們社區的寶貴貢獻！",

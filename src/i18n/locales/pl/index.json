@@ -1,5 +1,5 @@
 {
-  "description": "Najszybszy sposób na korzystanie z AI opartego na ChatGPT, Claude, Bard, Bing AI w dowolnym miejscu online. Jedyny potrzebny dodatek do generatywnej sztucznej inteligencji.",
+  "description": "Najszybszy sposób na korzystanie z AI opartej na ChatGPT, Claude, Gemini, Bard, Bing w dowolnym miejscu. Jedyny rozszerzenie generatywne AI, którego potrzebujesz.",
   "name": "MaxAI.me: Użyj sztucznej inteligencji w jednym kliknięciu wszędzie",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Ważne przypomnienie",
     "provider__confirm_dialog__important_reminder__desc": "Prosimy pamiętać, że w miarę rozwoju tego dostawcy zewnętrznego mogą występować okazjonalne błędy lub wolniejsze odpowiedzi, które są poza kontrolą MaxAI. Aktywnie pracujemy nad minimalizacją tych problemów i doceniamy Twoje zrozumienie.",
     "provider__confirm_dialog__for_enhanced_stability": "Dla większej stabilności",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Rozważ skorzystanie z naszych usług premium GPT i Claude AI, które zapewniają niezawodność i wysoką jakość działania sztucznej inteligencji, mające na celu poprawę Twojego doświadczenia.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Rozważ naszych dostawców premium sztucznej inteligencji, aby uzyskać niezawodne i wysokiej jakości osiągi AI, zaprojektowane w celu ulepszenia Twojego doświadczenia.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Możesz przełączyć się na:",
     "provider__confirm_dialog__your_feedback_matters": "Twoja opinia jest ważna",
     "provider__confirm_dialog__your_feedback_matters__desc": "Jeśli masz jakiekolwiek problemy lub pomysły, daj nam znać. Twoja opinia jest niezbędna do rozwoju naszych usług. Dziękujemy za cenny wkład w naszą społeczność!",

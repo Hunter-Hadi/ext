@@ -1,5 +1,5 @@
 {
-  "description": "Najhitrejši način uporabe umetne inteligence, ki jo poganjajo ChatGPT, Claude, Bard, Bing AI kjerkoli na spletu. Edina razširitev generativne umetne inteligence, ki jo potrebujete.",
+  "description": "Najhitrejši način uporabe AI, ki ga poganjajo ChatGPT, Claude, Gemini, Bard, Bing kjerkoli. Edina razširitev generativne AI, ki jo potrebujete.",
   "name": "MaxAI.me: Uporabite umetno inteligenco s samo enim klikom kjerkoli",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Pomembno opozorilo",
     "provider__confirm_dialog__important_reminder__desc": "Bodite pozorni, da se lahko občasno pojavijo napake ali počasnejši odzivi, ki so zunaj nadzora MaxAI, saj se ta zunanji ponudnik razvija. Aktivno delamo na zmanjšanju teh težav in cenimo vaše razumevanje.",
     "provider__confirm_dialog__for_enhanced_stability": "Za izboljšano stabilnost",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Razmislite o naših premium GPT in Claude AI ponudnikih za zanesljivo in visokokakovostno delovanje umetne inteligence, zasnovano za izboljšanje vaše izkušnje.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Razmislite o naših premium AI ponudnikih za zanesljivo in visokokakovostno delovanje AI, zasnovano za izboljšanje vaše izkušnje.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Lahko preklopite na:",
     "provider__confirm_dialog__your_feedback_matters": "Vaše mnenje je pomembno",
     "provider__confirm_dialog__your_feedback_matters__desc": "Če imate kakršne koli težave ali ideje, nam sporočite. Vaše povratne informacije so ključnega pomena za izboljšanje naših storitev. Hvala za vaš dragocen prispevek k naši skupnosti!",

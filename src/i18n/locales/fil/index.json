@@ -1,5 +1,5 @@
 {
-  "description": "Ang pinakamabilis na paraan upang gamitin ang AI na pinapagana ng ChatGPT, Claude, Bard, Bing AI kahit saan online. Ang tanging generative AI extension na kailangan mo.",
+  "description": "Ang pinakamabilis na paraan upang gamitin ang AI na pinapagana ng ChatGPT, Claude, Gemini, Bard, Bing kahit saan. Ang tanging generative AI extension na kailangan mo.",
   "name": "MaxAI.me: Gamitin ang AI sa Isang Click Kahit Saan",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Mahalagang paalala",
     "provider__confirm_dialog__important_reminder__desc": "Mangyaring tandaan na habang ang ikatlong partido na ito ay nagbabago, maaaring minsan ay magkaroon ka ng mga bug o mas mabagal na mga tugon, na labas sa kontrol ng MaxAI. Kami ay aktibong gumagawa upang bawasan ang mga isyung ito at pinahahalagahan ang iyong pang-unawa.",
     "provider__confirm_dialog__for_enhanced_stability": "Para sa pinabuting katatagan",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Isaalang-alang ang aming premium GPT at Claude AI providers para sa maaasahang at mataas na kalidad na pagganap ng AI, na idinisenyo upang mapabuti ang iyong karanasan.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Tingnan ang aming premium na mga tagapagbigay ng AI para sa maaasahang at mataas na kalidad na pagganap ng AI, na dinisenyo upang mapabuti ang iyong karanasan.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Maaari kang lumipat sa:",
     "provider__confirm_dialog__your_feedback_matters": "Mahalaga ang iyong feedback",
     "provider__confirm_dialog__your_feedback_matters__desc": "Kung mayroon kang anumang isyu o ideya, ipaalam sa amin. Ang iyong feedback ay mahalaga para sa amin upang mapabuti ang aming mga serbisyo. Salamat sa iyong mahalagang kontribusyon sa aming komunidad!",

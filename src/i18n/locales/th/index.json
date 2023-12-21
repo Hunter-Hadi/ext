@@ -1,5 +1,5 @@
 {
-  "description": "วิธีที่รวดเร็วที่สุดในการใช้งาน AI ที่มีพลังจาก ChatGPT, Claude, Bard, Bing AI ทุกที่ออนไลน์ เป็นส่วนขยาย AI ที่คุณต้องการเท่านั้น",
+  "description": "วิธีที่เร็วที่สุดในการใช้ AI ที่มีพลังจาก ChatGPT, Claude, Gemini, Bard, Bing ทุกที่ ส่วนขยาย AI ที่คุณต้องการเท่านั้น",
   "name": "MaxAI.me: ใช้ AI ด้วยคลิกเดียวทุกที่",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "การแจ้งเตือนสำคัญ",
     "provider__confirm_dialog__important_reminder__desc": "โปรดทราบว่าเนื่องจากผู้ให้บริการบุคคลที่สามนี้กำลังพัฒนาอยู่ คุณอาจพบปัญหาหรือความล่าช้าบ้างครั้ง ซึ่งอยู่นอกเหนือจากการควบคุมของ MaxAI เรากำลังทำงานอย่างหนักเพื่อลดปัญหาเหล่านี้และคาดหวังความกรุณาในการรับทราบของคุณ",
     "provider__confirm_dialog__for_enhanced_stability": "เพื่อความเสถียรภาพที่ดีขึ้น",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "พิจารณาใช้ผู้ให้บริการ GPT และ Claude AI ระดับพรีเมียมของเราสำหรับประสิทธิภาพ AI ที่เชื่อถือได้และคุณภาพสูง ออกแบบมาเพื่อเพิ่มประสบการณ์ของคุณ",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "พิจารณาใช้ผู้ให้บริการ AI พรีเมียมของเราสำหรับประสิทธิภาพ AI ที่เชื่อถือได้และมีคุณภาพสูง ออกแบบเพื่อเพิ่มประสบการณ์ของคุณ",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "คุณสามารถเปลี่ยนไปใช้:",
     "provider__confirm_dialog__your_feedback_matters": "ความคิดเห็นของคุณมีความสำคัญ",
     "provider__confirm_dialog__your_feedback_matters__desc": "หากคุณมีปัญหาหรือความคิดเห็น โปรดแจ้งเราทราบ ความคิดเห็นของคุณเป็นสิ่งสำคัญสำหรับเราในการพัฒนาบริการของเรา ขอบคุณสำหรับการมีส่วนร่วมที่มีค่าของคุณในชุมชนของเรา!",

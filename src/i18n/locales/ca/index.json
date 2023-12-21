@@ -1,5 +1,5 @@
 {
-  "description": "La manera més ràpida d'utilitzar l'IA impulsada per ChatGPT, Claude, Bard, Bing AI en línia. L'única extensió d'IA generativa que necessites.",
+  "description": "La manera més ràpida d'utilitzar l'IA impulsada per ChatGPT, Claude, Gemini, Bard, Bing en qualsevol lloc. L'única extensió d'IA generativa que necessites.",
   "name": "MaxAI.me: Utilitza l'IA amb un sol clic en qualsevol lloc",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Recordatori important",
     "provider__confirm_dialog__important_reminder__desc": "Si us plau, tingues en compte que a mesura que aquest proveïdor de tercers evolucioni, de tant en tant pots experimentar errors o respostes més lentes, que estan fora del control de MaxAI. Estem treballant activament per minimitzar aquests problemes i valorem la teva comprensió.",
     "provider__confirm_dialog__for_enhanced_stability": "Per a una major estabilitat",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Considera els nostres proveïdors premium GPT i Claude per obtenir un rendiment d'IA fiable i de alta qualitat, dissenyats per millorar la teva experiència.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Considera els nostres proveïdors d'IA premium per a un rendiment d'IA fiable i de alta qualitat, dissenyats per millorar la teva experiència.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Pots canviar a:",
     "provider__confirm_dialog__your_feedback_matters": "La teva opinió és important",
     "provider__confirm_dialog__your_feedback_matters__desc": "Si tens algun problema o idea, si us plau, comunica'ns-ho. La teva opinió és essencial per millorar els nostres serveis. Gràcies per la teva valuosa contribució a la nostra comunitat!",

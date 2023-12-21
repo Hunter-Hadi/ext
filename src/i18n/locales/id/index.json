@@ -1,5 +1,5 @@
 {
-  "description": "Cara tercepat untuk menggunakan AI yang didukung oleh ChatGPT, Claude, Bard, Bing AI di mana saja secara online. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
+  "description": "Cara tercepat untuk menggunakan AI yang didukung oleh ChatGPT, Claude, Gemini, Bard, Bing di mana saja. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
   "name": "MaxAI.me: Gunakan AI 1-Klik di Mana Saja",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Pengingat penting",
     "provider__confirm_dialog__important_reminder__desc": "Harap diketahui bahwa saat penyedia pihak ketiga ini berkembang, Anda mungkin kadang-kadang mengalami bug atau respons yang lambat, yang berada di luar kendali MaxAI. Kami sedang aktif bekerja untuk meminimalkan masalah ini dan menghargai pemahaman Anda.",
     "provider__confirm_dialog__for_enhanced_stability": "Untuk stabilitas yang lebih baik",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Pertimbangkan penyedia GPT premium dan Claude kami untuk performa AI yang andal dan berkualitas tinggi, yang dirancang untuk meningkatkan pengalaman Anda.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Pertimbangkan penyedia AI premium kami untuk performa AI yang andal dan berkualitas tinggi, dirancang untuk meningkatkan pengalaman Anda.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Anda dapat beralih ke:",
     "provider__confirm_dialog__your_feedback_matters": "Masukan Anda penting",
     "provider__confirm_dialog__your_feedback_matters__desc": "Jika Anda memiliki masalah atau ide, beri tahu kami. Masukan Anda sangat penting bagi kami untuk meningkatkan layanan kami. Terima kasih atas kontribusi berharga Anda kepada komunitas kami!",

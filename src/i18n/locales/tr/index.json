@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Bard, Bing AI tarafından desteklenen AI'ı çevrimiçi her yerde kullanmanın en hızlı yolu. İhtiyacınız olan tek üretken AI uzantısı.",
+  "description": "ChatGPT, Claude, Gemini, Bard, Bing tarafından desteklenen AI'ı her yerde kullanmanın en hızlı yolu. İhtiyacınız olan tek generatif AI uzantısı.",
   "name": "MaxAI.me: Her Yerde 1 Tıkla AI Kullanın",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Önemli hatırlatma",
     "provider__confirm_dialog__important_reminder__desc": "Lütfen bu üçüncü taraf sağlayıcının gelişimiyle ilgili olarak zaman zaman MaxAI'nın kontrolü dışında olan hatalar veya daha yavaş yanıtlarla karşılaşabileceğinizi unutmayın. Bu sorunları en aza indirmek için aktif olarak çalışıyoruz ve anlayışınızı takdir ediyoruz.",
     "provider__confirm_dialog__for_enhanced_stability": "Daha güvenli bir deneyim için",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Deneyiminizi artırmak için güvenilir ve yüksek kaliteli AI performansı sunan premium GPT ve Claude AI sağlayıcılarımızı düşünün.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Deneyiminizi geliştirmek için tasarlanmış güvenilir ve yüksek kaliteli AI performansı için premium AI sağlayıcılarımızı düşünün.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Geçebileceğiniz sağlayıcılar:",
     "provider__confirm_dialog__your_feedback_matters": "Geri bildirimleriniz önemlidir",
     "provider__confirm_dialog__your_feedback_matters__desc": "Herhangi bir sorununuz veya fikriniz varsa lütfen bize bildirin. Geri bildirimleriniz, hizmetlerimizi geliştirmek için bizim için önemlidir. Topluluğumuza değerli katkılarınız için teşekkür ederiz!",

@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Bard, Bing AI ద్వారా ప్రాధాన్యత కలుగుతున్న AI ఎక్స్టెన్షన్. మీరు అవసరం ఉన్న ఒక్కటి.",
+  "description": "ChatGPT, Claude, Gemini, Bard, Bing ద్వారా ప్రాధాన్యత కలుగుతున్న AI ఉపయోగించడానికి అత్యంత వేగవంతమైన మార్గం. మీకు అవసరమైన జనరేటివ్ AI పొడవుగానే మీకు కావలసినది.",
   "name": "MaxAI.me: యాక్సెస్ చేయడం కోసం 1-క్లిక్ AI",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "ముఖ్యమైన గుర్తు",
     "provider__confirm_dialog__important_reminder__desc": "దయచేసి గమనించండి, ఈ మూడవ పార్టీ ప్రొవైడర్ అభివృద్ధి జరుగుతోంది, మీరు కొనసాగిపోవడానికి కొంతవరకు బగ్గా లేదా నివాళికలు అనుభవించవచ్చు. ఇవి మాక్స్‌ఐ నియంత్రించడం కన్టే ఎక్కువ ఉంటాయి. మేము ఈ సమస్యలను తక్కువ చేయాలని ప్రయత్నిస్తున్నాము మరియు మీ అర్థంగాన్ని మానవీయంగా అందిస్తున్నాము.",
     "provider__confirm_dialog__for_enhanced_stability": "పెరుగుతున్న స్థిరతకు",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "మీ అనుభవాన్ని పెంచడానికి రియలైబిలిటీ మరియు ఉన్నత-గుణమైన AI పనిచేయడానికి మా ప్రీమియం GPT మరియు క్లోడ్ AI ప్రొవైడర్‌లను పరిశీలించండి.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "మీ అనుభవాన్ని పెంచడానికి డిజైన్ చేసిన గురుతులతో నమోదు చేయబడిన ప్రీమియం AI ప్రొవైడర్లను పరిశీలించండి, విశ్వసనీయంగా మరియు ఉన్నత-గుణములు కలిగి ఉంటుంది.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "మీరు మార్చిపోవడానికి స్విచ్ చేయవచ్చు:",
     "provider__confirm_dialog__your_feedback_matters": "మీ అభిప్రాయం ముఖ్యం",
     "provider__confirm_dialog__your_feedback_matters__desc": "మీకు ఏమైనా సమస్యలు లేదా ఆలోచనలు ఉన్నాయా? దయచేసి మాకు తెలియజేయండి. మీ అభిప్రాయం మా సేవలను మెరుగుపరచడం కోసం ముఖ్యం. మా కమ్యూనిటీకి మీ మౌల్యమైన సంభావనకు ధన్యవాదాలు!",

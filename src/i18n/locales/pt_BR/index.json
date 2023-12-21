@@ -1,5 +1,5 @@
 {
-  "description": "A maneira mais rápida de usar IA alimentada por ChatGPT, Claude, Bard, Bing AI em qualquer lugar online. A única extensão de IA generativa que você precisa.",
+  "description": "A maneira mais rápida de usar IA alimentada por ChatGPT, Claude, Gemini, Bard, Bing em qualquer lugar. A única extensão de IA generativa que você precisa.",
   "name": "MaxAI.me: Use IA em 1 Clique em Qualquer Lugar",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Lembrete importante",
     "provider__confirm_dialog__important_reminder__desc": "Esteja ciente de que, à medida que esse provedor de terceiros evolui, você pode ocasionalmente encontrar bugs ou respostas mais lentas, que estão além do controle da MaxAI. Estamos trabalhando ativamente para minimizar esses problemas e valorizamos sua compreensão.",
     "provider__confirm_dialog__for_enhanced_stability": "Para maior estabilidade",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Considere nossos provedores premium GPT e Claude AI para um desempenho confiável e de alta qualidade em IA, projetados para aprimorar sua experiência.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Considere nossos provedores de IA premium para um desempenho confiável e de alta qualidade, projetados para aprimorar sua experiência.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Você pode alternar para:",
     "provider__confirm_dialog__your_feedback_matters": "Sua opinião é importante",
     "provider__confirm_dialog__your_feedback_matters__desc": "Se você tiver algum problema ou ideia, por favor nos informe. Sua opinião é essencial para aprimorarmos nossos serviços. Obrigado por sua valiosa contribuição para nossa comunidade!",

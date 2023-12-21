@@ -1,5 +1,5 @@
 {
-  "description": "AI አጠቃላይ በChatGPT, Claude, Bard, Bing AI በመጠቀም የሚቆጠሩት በመጠቀም የሚታይወይም በመጠቀም የሚሰራ የተለያዩ AI አንድን የሚያስፈልጋቸው አጠቃላይ ትርጉም.",
+  "description": "በቻትግራም, ክላይድ, ጊሚኒ, ባርድ, ቢንግ የሚሸጥ AI የሚገኘውን አገልግሎት በመጠቀም የሚታይ የAI ውሂብ ተጠቃሚ ነው።",
   "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም የእርስዎ በመጠቀም 1-Click",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "አጠቃላይ ማስታወቂያ",
     "provider__confirm_dialog__important_reminder__desc": "እኛን የሚያስተላልፉት የስራ ማስታወቂያ እና የምትጠቀሙት የስራ መስሪያ አልተሳካም፣ እኛን የMaxAI ተጠቃሚ አስተዳደር ነው. እኛ በተጨማሪ ስራዎችን የሚያስተላልፉትን የሚያስችል እናደርጋለን.",
     "provider__confirm_dialog__for_enhanced_stability": "ለተለያዩ አስተሳሰብ",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "የሚያስተላልፉትን እና የማስታወቂያ የAI ስሪያዎችን ለማስተላለፍ ከእኛ ጋር የተሳሰበው GPT እና Claude AI ድርጅቶችን ይዘትን፣ የሚያስችል እና የማስታወቂያ የAI ስሪያዎችን ለማስተላለፍ የሚያስችል እናደርጋለን.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "የሚጠቀሙት አስተዳደር የሚሆኑትን ፕሪሚየም AI የሚገኙትን እና የማይረጋገጡትን AI አጠቃላይ አገልግሎትን ለመስጠት የሚያስችል ነው።",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "እርስዎ ይለያዩን ይመልከቱ:",
     "provider__confirm_dialog__your_feedback_matters": "የምስል ማስታወቂያዎችዎ አለመግባባት",
     "provider__confirm_dialog__your_feedback_matters__desc": "እርስዎ ለማንኛውም ተጠቃሚ ወይም አስተዳደር ከሆነው ማስታወቂያዎች ይህንን ማስታወቂያ እናደርጋለን. የምስል ማስታወቂያዎችዎን ለማስተላለፍ እናመሰግናለን. የምስል ማስታወቂያዎችዎን የሚያስችል እናደርጋለን!",

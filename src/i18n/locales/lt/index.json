@@ -1,5 +1,5 @@
 {
-  "description": "Greičiausias būdas naudoti AI, kurį varo ChatGPT, Claude, Bard, Bing AI bet kurioje interneto svetainėje. Vienintelis generatyvinis AI plėtinys, kurio jums reikia.",
+  "description": "Greičiausias būdas naudoti ChatGPT, Claude, Gemini, Bard, Bing pagrindu veikiančią dirbtinį intelektą bet kur. Vienintelis generatyvinio dirbtinio intelekto plėtinys, kurio jums reikia.",
   "name": "MaxAI.me: Naudokite 1 paspaudimą AI bet kur",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Svarbus priminimas",
     "provider__confirm_dialog__important_reminder__desc": "Būkite informuoti, kad šioje trečiosios šalies tiekėjo plėtojimo stadijoje gali kilti klaidų arba lėtesnių atsakymų, kurie yra už MaxAI kontrolę. Mes aktyviai siekiame sumažinti šias problemas ir vertiname jūsų supratimą.",
     "provider__confirm_dialog__for_enhanced_stability": "Dėl patobulintos stabilumo",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Svarstykite apie mūsų premium GPT ir Claude AI tiekėjus, kurie užtikrina patikimą ir aukštos kokybės dirbtinio intelekto veikimą, skirtą pagerinti jūsų patirtį.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Svarstykite mūsų premium dirbtinio intelekto tiekėjus patikimam ir aukštos kokybės dirbtinio intelekto veikimui, skirtam pagerinti jūsų patirtį.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Galite persijungti į:",
     "provider__confirm_dialog__your_feedback_matters": "Jūsų atsiliepimai yra svarbūs",
     "provider__confirm_dialog__your_feedback_matters__desc": "Jei turite kokių nors problemų ar idėjų, prašome mus informuoti. Jūsų atsiliepimai yra būtini mūsų paslaugų tobulinimui. Dėkojame už jūsų vertingą indėlį į mūsų bendruomenę!",

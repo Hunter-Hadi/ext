@@ -1,5 +1,5 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Bard, Bing AI anywhere online. The only generative AI extension you need.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini, Bard, Bing anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Use 1-Click AI Anywhere",
   "shortName": "MaxAI.me",
   "common": {
@@ -377,7 +377,7 @@
     "provider__confirm_dialog__important_reminder": "Important reminder",
     "provider__confirm_dialog__important_reminder__desc": "Please be aware that as this third-party provider evolves, you may occasionally experience bugs or slower responses, which are beyond MaxAI's control. We're actively working to minimize these issues and value your understanding.",
     "provider__confirm_dialog__for_enhanced_stability": "For enhanced stability",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Consider our premium GPT and Claude AI providers for reliable and high-quality AI performance, designed to enhance your experience.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Consider our premium AI providers for reliable and high-quality AI performance, designed to enhance your experience.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "You can switch to:",
     "provider__confirm_dialog__your_feedback_matters": "Your feedback matters",
     "provider__confirm_dialog__your_feedback_matters__desc": "If you have any issues or ideas, please let us know. Your feedback is essential for us to enhance our services. Thanks for your valuable contribution to our community!",

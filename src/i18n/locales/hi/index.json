@@ -1,5 +1,5 @@
 {
-  "description": "चैटजीपीटी, क्लोड, बार्ड, बिंग AI द्वारा संचालित AI का सबसे तेज़ तरीका, ऑनलाइन कहीं भी। आपकी आवश्यकता के लिए एकमात्र प्रजनक AI एक्सटेंशन।",
+  "description": "ChatGPT, Claude, Gemini, Bard, Bing द्वारा संचालित AI का सबसे तेज़ तरीका। आपको जरूरत है केवल एक जनरेटिव AI एक्सटेंशन।",
   "name": "MaxAI.me: कहीं भी 1-क्लिक AI का उपयोग करें",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "महत्वपूर्ण याद दिलाना",
     "provider__confirm_dialog__important_reminder__desc": "कृपया ध्यान दें कि जैसे ही यह तृतीय-पक्ष प्रदाता विकसित होता है, आपको कभी-कभी बग्स या धीमी प्रतिक्रियाएं महसूस हो सकती हैं, जो MaxAI के अधीन होती हैं। हम इन समस्याओं को कम करने के लिए सक्रिय रूप से काम कर रहे हैं और आपकी समझ की कद्र करते हैं।",
     "provider__confirm_dialog__for_enhanced_stability": "बेहतर स्थिरता के लिए",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "अपने अनुभव को बढ़ाने के लिए, विश्वसनीय और उच्च-गुणवत्ता वाले AI प्रदाताओं में हमारे प्रीमियम GPT और Claude AI प्रदाताओं को विचार करें।",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "अपने अनुभव को बढ़ाने के लिए डिज़ाइन की गई विश्वसनीय और उच्च गुणवत्ता वाले AI प्रदाताओं के लिए हमारे प्रीमियम AI प्रदाताओं को विचार करें।",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "आप इस पर स्विच कर सकते हैं:",
     "provider__confirm_dialog__your_feedback_matters": "आपकी प्रतिक्रिया मायने रखती है",
     "provider__confirm_dialog__your_feedback_matters__desc": "यदि आपके पास कोई समस्या या विचार हैं, कृपया हमें बताएं। आपकी प्रतिक्रिया हमारे सेवाओं को बेहतर बनाने के लिए महत्वपूर्ण है। हमारे समुदाय में आपके मूल्यवान योगदान के लिए धन्यवाद!",

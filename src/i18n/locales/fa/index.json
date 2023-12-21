@@ -1,5 +1,5 @@
 {
-  "description": "سریعترین راه برای استفاده از هوش مصنوعی قدرتمند توسط ChatGPT، Claude، Bard، Bing AI در هر جایی آنلاین. تنها افزونه هوش مصنوعی تولیدی که نیاز دارید.",
+  "description": "سریعترین راه برای استفاده از هوش مصنوعی قدرت گرفته از ChatGPT، Claude، Gemini، Bard، Bing در هر جایی. تنها افزونه هوش مصنوعی تولیدی که نیاز دارید.",
   "name": "MaxAI.me: استفاده از هوش مصنوعی با 1 کلیک در هر جایی",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "یادآوری مهم",
     "provider__confirm_dialog__important_reminder__desc": "لطفاً به این نکته توجه داشته باشید که هنگامی که این ارائه دهنده شخص ثالث تکامل می کند، ممکن است گاهی اوقات باگ ها یا پاسخ های کندتری را تجربه کنید که خارج از کنترل MaxAI است. ما در حال فعالیت برای کمینه کردن این مشکلات هستیم و ارزش قدردانی شما را داریم.",
     "provider__confirm_dialog__for_enhanced_stability": "برای استحکام بهتر",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "برای عملکرد قابل اعتماد و با کیفیت بالا در هوش مصنوعی، از ارائه دهنده های پریمیوم GPT و Claude ما استفاده کنید که طراحی شده اند تا تجربه شما را بهبود بخشند.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "برای بهبود پایداری و عملکرد با کیفیت بالا هوش مصنوعی، از ارائه دهنده‌های پیشرفته AI پریمیوم ما استفاده کنید که طراحی شده‌اند تا تجربه شما را بهبود بخشند.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "شما می توانید به این ارائه دهنده ها تغییر دهید:",
     "provider__confirm_dialog__your_feedback_matters": "نظر شما مهم است",
     "provider__confirm_dialog__your_feedback_matters__desc": "اگر هر گونه مشکل یا ایده ای دارید، لطفاً به ما اطلاع دهید. نظر شما برای بهبود خدمات ما ضروری است. از مشارکت ارزشمند شما در جامعه ما سپاسگزاریم!",

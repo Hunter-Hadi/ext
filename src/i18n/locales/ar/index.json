@@ -1,5 +1,5 @@
 {
-  "description": "أسرع طريقة لاستخدام الذكاء الاصطناعي المدعوم بـ ChatGPT و Claude و Bard و Bing AI في أي مكان عبر الإنترنت. الامتداد الوحيد للذكاء الاصطناعي التوليدي الذي تحتاجه.",
+  "description": "أسرع طريقة لاستخدام الذكاء الاصطناعي المدعوم بـ ChatGPT و Claude و Gemini و Bard و Bing في أي مكان. الامتداد الوحيد للذكاء الاصطناعي التوليدي الذي تحتاجه.",
   "name": "MaxAI.me: استخدم الذكاء الاصطناعي بنقرة واحدة في أي مكان",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "تذكير مهم",
     "provider__confirm_dialog__important_reminder__desc": "يرجى أن تكون على علم بأنه مع تطور هذه الجهة الخارجية، قد تواجه في بعض الأحيان مشاكل أو استجابة بطيئة، وهذا يتجاوز سيطرة MaxAI. نحن نعمل بنشاط للحد من هذه المشاكل ونقدر تفهمك.",
     "provider__confirm_dialog__for_enhanced_stability": "للحصول على استقرار محسّن",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "افتح الباب أمام مزودي GPT و Claude AI الرائدين للحصول على أداء ذكاء اصطناعي موثوق وعالي الجودة، مصمم لتعزيز تجربتك.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "اعتبر مزودي الذكاء الاصطناعي الممتازين للحصول على أداء ذكاء اصطناعي موثوق وعالي الجودة، مصمم لتعزيز تجربتك.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "يمكنك التبديل إلى:",
     "provider__confirm_dialog__your_feedback_matters": "تعليقاتك مهمة",
     "provider__confirm_dialog__your_feedback_matters__desc": "إذا كان لديك أي مشاكل أو أفكار، يرجى إعلامنا. تعليقاتك أساسية بالنسبة لنا لتحسين خدماتنا. شكرًا لمساهمتك القيمة في مجتمعنا!",

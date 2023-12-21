@@ -1,5 +1,5 @@
 {
-  "description": "Der schnellste Weg, KI zu nutzen, die von ChatGPT, Claude, Bard und Bing AI angetrieben wird - überall online. Die einzige generative KI-Erweiterung, die Sie benötigen.",
+  "description": "Der schnellste Weg, KI zu nutzen, die von ChatGPT, Claude, Gemini, Bard, Bing unterstützt wird. Die einzige generative KI-Erweiterung, die Sie benötigen.",
   "name": "MaxAI.me: Verwenden Sie KI mit nur einem Klick überall",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Wichtige Erinnerung",
     "provider__confirm_dialog__important_reminder__desc": "Bitte beachten Sie, dass Sie gelegentlich auf Fehler oder langsamere Reaktionen stoßen können, die außerhalb der Kontrolle von MaxAI liegen, da sich dieser Drittanbieter weiterentwickelt. Wir arbeiten aktiv daran, diese Probleme zu minimieren, und schätzen Ihr Verständnis.",
     "provider__confirm_dialog__for_enhanced_stability": "Für verbesserte Stabilität",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Betrachten Sie unsere Premium-GPT- und Claude-KI-Anbieter für zuverlässige und qualitativ hochwertige KI-Leistung, die darauf ausgelegt ist, Ihr Erlebnis zu verbessern.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Betrachten Sie unsere Premium-KI-Anbieter für zuverlässige und hochwertige KI-Leistung, die entwickelt wurde, um Ihre Erfahrung zu verbessern.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Sie können wechseln zu:",
     "provider__confirm_dialog__your_feedback_matters": "Ihr Feedback ist wichtig",
     "provider__confirm_dialog__your_feedback_matters__desc": "Wenn Sie Probleme oder Ideen haben, lassen Sie es uns bitte wissen. Ihr Feedback ist für uns unerlässlich, um unsere Dienstleistungen zu verbessern. Vielen Dank für Ihren wertvollen Beitrag zu unserer Community!",

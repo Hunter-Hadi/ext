@@ -1,5 +1,5 @@
 {
-  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Bard, Bing AI oriunde online. Singura extensie AI generativă de care aveți nevoie.",
+  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Gemini, Bard, Bing oriunde. Singura extensie AI generativă de care aveți nevoie.",
   "name": "MaxAI.me: Utilizați AI cu un singur clic oriunde",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Rememorare importantă",
     "provider__confirm_dialog__important_reminder__desc": "Vă rugăm să fiți conștient că, pe măsură ce acest furnizor terță parte evoluează, este posibil să întâmpinați uneori erori sau răspunsuri mai lente, care sunt dincolo de controlul MaxAI. Lucrăm activ pentru a minimiza aceste probleme și apreciem înțelegerea dumneavoastră.",
     "provider__confirm_dialog__for_enhanced_stability": "Pentru stabilitate sporită",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Luați în considerare furnizorii noștri premium GPT și Claude AI pentru performanță AI fiabilă și de înaltă calitate, concepuți pentru a vă îmbunătăți experiența.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Luați în considerare furnizorii noștri premium de AI pentru performanță AI fiabilă și de înaltă calitate, concepuți pentru a vă îmbunătăți experiența.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Puteți trece la:",
     "provider__confirm_dialog__your_feedback_matters": "Feedback-ul dumneavoastră contează",
     "provider__confirm_dialog__your_feedback_matters__desc": "Dacă aveți probleme sau idei, vă rugăm să ne anunțați. Feedback-ul dumneavoastră este esențial pentru noi pentru a îmbunătăți serviciile noastre. Vă mulțumim pentru contribuția valoroasă la comunitatea noastră!",

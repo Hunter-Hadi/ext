@@ -1,5 +1,5 @@
 {
-  "description": "通过ChatGPT、Claude、Bard、Bing AI提供的AI技术，这是在线使用AI的最快方式。这是您唯一需要的生成式AI扩展。",
+  "description": "使用由ChatGPT、Claude、Gemini、Bard和Bing提供支持的AI的最快方式。您所需的唯一生成式AI扩展。",
   "name": "MaxAI.me：随时随地使用1-Click AI",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "重要提醒",
     "provider__confirm_dialog__important_reminder__desc": "请注意，由于第三方提供商的发展，您可能偶尔会遇到超出MaxAI控制范围的错误或响应速度较慢的情况。我们正在积极努力减少这些问题，并感谢您的理解。",
     "provider__confirm_dialog__for_enhanced_stability": "为了增强稳定性",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "考虑使用我们的高级GPT和Claude AI提供商，以获得可靠和高质量的AI性能，旨在提升您的体验。",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "考虑使用我们的高级AI提供商，以获得可靠且高质量的AI性能，旨在提升您的体验。",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "您可以切换到：",
     "provider__confirm_dialog__your_feedback_matters": "您的反馈很重要",
     "provider__confirm_dialog__your_feedback_matters__desc": "如果您有任何问题或想法，请告诉我们。您的反馈对我们改进服务至关重要。感谢您对我们社区的宝贵贡献！",

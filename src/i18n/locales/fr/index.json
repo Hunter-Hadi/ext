@@ -1,5 +1,5 @@
 {
-  "description": "La façon la plus rapide d'utiliser l'IA alimentée par ChatGPT, Claude, Bard, Bing AI n'importe où en ligne. La seule extension d'IA générative dont vous avez besoin.",
+  "description": "Le moyen le plus rapide d'utiliser l'IA alimentée par ChatGPT, Claude, Gemini, Bard, Bing n'importe où. La seule extension d'IA générative dont vous avez besoin.",
   "name": "MaxAI.me: Utilisez l'IA en un clic partout",
   "shortName": "MaxAI.me",
   "common": {
@@ -481,7 +481,7 @@
     "provider__confirm_dialog__important_reminder": "Rappel important",
     "provider__confirm_dialog__important_reminder__desc": "Veuillez noter que, à mesure que ce fournisseur tiers évolue, il se peut que vous rencontriez occasionnellement des bugs ou des réponses plus lentes, qui échappent au contrôle de MaxAI. Nous travaillons activement à minimiser ces problèmes et apprécions votre compréhension.",
     "provider__confirm_dialog__for_enhanced_stability": "Pour une stabilité accrue",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "Optez pour nos fournisseurs premium GPT et Claude pour des performances d'IA fiables et de haute qualité, conçues pour améliorer votre expérience.",
+    "provider__confirm_dialog__for_enhanced_stability__desc": "Considérez nos fournisseurs d'IA premium pour des performances IA fiables et de haute qualité, conçues pour améliorer votre expérience.",
     "provider__confirm_dialog__for_enhanced_stability__switch_to": "Vous pouvez passer à :",
     "provider__confirm_dialog__your_feedback_matters": "Votre avis compte",
     "provider__confirm_dialog__your_feedback_matters__desc": "Si vous rencontrez des problèmes ou avez des idées, veuillez nous en informer. Votre avis est essentiel pour nous permettre d'améliorer nos services. Merci pour votre précieuse contribution à notre communauté !",

@@ -160,39 +160,39 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       roles: ['pro', 'elite'],
     },
   },
-  {
-    title: 'gpt-4-32k',
-    titleTag: '',
-    value: 'gpt-4-32k',
-    tags: [],
-    descriptions: [
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__max_token'),
-        value: (t) =>
-          `${numberWithCommas(32768, 0)} ${t(
-            'client:provider__model__tooltip_card__label__max_token__suffix',
-          )}`,
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__description'),
-        value: (t) =>
-          t('client:provider__openai_api__model__gpt_4_32k__description'),
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__training_date'),
-        value: (t) =>
-          `${t(
-            'client:provider__model__tooltip_card__label__training_date__prefix',
-          )} ${dayjs('2021-09-01').format('MMM YYYY')}`,
-      },
-    ],
-    maxTokens: 32768,
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4',
-      roles: ['pro', 'elite'],
-    },
-  },
+  // {
+  //   title: 'gpt-4-32k',
+  //   titleTag: '',
+  //   value: 'gpt-4-32k',
+  //   tags: [],
+  //   descriptions: [
+  //     {
+  //       label: (t) =>
+  //         t('client:provider__model__tooltip_card__label__max_token'),
+  //       value: (t) =>
+  //         `${numberWithCommas(32768, 0)} ${t(
+  //           'client:provider__model__tooltip_card__label__max_token__suffix',
+  //         )}`,
+  //     },
+  //     {
+  //       label: (t) =>
+  //         t('client:provider__model__tooltip_card__label__description'),
+  //       value: (t) =>
+  //         t('client:provider__openai_api__model__gpt_4_32k__description'),
+  //     },
+  //     {
+  //       label: (t) =>
+  //         t('client:provider__model__tooltip_card__label__training_date'),
+  //       value: (t) =>
+  //         `${t(
+  //           'client:provider__model__tooltip_card__label__training_date__prefix',
+  //         )} ${dayjs('2021-09-01').format('MMM YYYY')}`,
+  //     },
+  //   ],
+  //   maxTokens: 32768,
+  //   permission: {
+  //     sceneType: 'MAXAI_PAID_MODEL_GPT4',
+  //     roles: ['pro', 'elite'],
+  //   },
+  // },
 ]

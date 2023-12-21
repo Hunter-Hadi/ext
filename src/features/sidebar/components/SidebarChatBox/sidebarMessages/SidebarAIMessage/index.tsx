@@ -1,19 +1,20 @@
-import React, { ComponentType, FC, useMemo, Component } from 'react'
+import { CircularProgress, Skeleton } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
+import React, { Component, ComponentType, FC, useMemo } from 'react'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import CustomMarkdown from '@/components/CustomMarkdown'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
 } from '@/features/chatgpt/types'
-import CustomMarkdown from '@/components/CustomMarkdown'
-import { textHandler } from '@/features/shortcuts/utils/textHelper'
-import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
-import { CircularProgress, Skeleton } from '@mui/material'
 import {
   CaptivePortalIcon,
   ReadIcon,
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { SxProps } from '@mui/material/styles'
+import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 
@@ -92,30 +93,45 @@ export const SidebarAIMessage: FC<{
   const { message, isDarkMode, liteMode = false } = props
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
   const renderData = useMemo(() => {
-    const currentRenderData = {
-      title: message.originalMessage?.metadata?.title,
-      copilot: message.originalMessage?.metadata?.copilot,
-      sources: message.originalMessage?.metadata?.sources,
-      sourcesLoading:
-        message.originalMessage?.metadata?.sources?.status === 'loading',
-      sourcesHasContent: false,
-      answer: message.text,
-      content: message.originalMessage?.content,
-      messageIsComplete: message.originalMessage?.metadata?.isComplete,
-      deepDive: message.originalMessage?.metadata?.deepDive,
+    try {
+      const currentRenderData = {
+        title: message.originalMessage?.metadata?.title,
+        copilot: message.originalMessage?.metadata?.copilot,
+        sources: message.originalMessage?.metadata?.sources,
+        sourcesLoading:
+          message.originalMessage?.metadata?.sources?.status === 'loading',
+        sourcesHasContent: false,
+        answer: message.text,
+        content: message.originalMessage?.content,
+        messageIsComplete: message.originalMessage?.metadata?.isComplete,
+        deepDive: message.originalMessage?.metadata?.deepDive,
+      }
+      if (Object.keys(currentRenderData?.sources || {}).length > 1) {
+        currentRenderData.sourcesHasContent = true
+      }
+      if (message.originalMessage?.content?.text) {
+        currentRenderData.answer =
+          textHandler(message.originalMessage.content.text, {
+            noResponseTag: true,
+            noSummaryTag: true,
+          }) || message.text
+      }
+      currentRenderData.answer = currentRenderData.answer.replace(/^\s+/, '')
+      return currentRenderData
+    } catch (e) {
+      debugger
+      return {
+        title: undefined,
+        copilot: undefined,
+        sources: undefined,
+        sourcesLoading: false,
+        sourcesHasContent: false,
+        answer: message.text,
+        content: undefined,
+        messageIsComplete: false,
+        deepDive: undefined,
+      }
     }
-    if (Object.keys(currentRenderData?.sources || {}).length > 1) {
-      currentRenderData.sourcesHasContent = true
-    }
-    if (message.originalMessage?.content?.text) {
-      currentRenderData.answer =
-        textHandler(message.originalMessage.content.text, {
-          noResponseTag: true,
-          noSummaryTag: true,
-        }) || message.text
-    }
-    currentRenderData.answer = currentRenderData.answer.replace(/^\s+/, '')
-    return currentRenderData
   }, [message])
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer

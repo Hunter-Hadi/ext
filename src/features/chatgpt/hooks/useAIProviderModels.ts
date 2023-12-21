@@ -48,6 +48,7 @@ const useAIProviderModels = () => {
       OPENAI: (
         appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions || []
       )
+        .filter((item) => !item.tags?.includes('hidden'))
         .map((item) => {
           let uploadFileConfig: IAIProviderModel['uploadFileConfig'] = undefined
           if (item.slug === 'gpt-4-code-interpreter') {

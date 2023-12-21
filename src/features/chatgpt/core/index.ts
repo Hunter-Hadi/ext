@@ -1,10 +1,12 @@
 import { v4 as uuidV4 } from 'uuid'
-import { fetchSSE } from './fetch-sse'
-import { mappingToMessages } from '@/features/chatgpt/core/util'
-import { AI_PROVIDER_MAP } from '@/constants'
+
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
+import { AI_PROVIDER_MAP } from '@/constants'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import { mappingToMessages } from '@/features/chatgpt/core/util'
+
+import { fetchSSE } from './fetch-sse'
 
 export interface IChatGPTAnswer {
   text: string
@@ -481,6 +483,8 @@ export class ChatGPTConversation {
     }
     // chatgpt特殊的图片渲染格式 => <<ImageDisplayed>>
     // {"message": {"id": "6c7a3d32-0e43-4f51-ad89-b2bf0e7922af", "author": {"role": "tool", "name": "python", "metadata": {}}, "create_time": 1689588774.3638568, "update_time": 1689588775.6521173, "content": {"content_type": "execution_output", "text": "\n<<ImageDisplayed>>"}, "status": "finished_successfully", "end_turn": null, "weight": 1.0, "metadata": {"aggregate_result": {"status": "success", "run_id": "48a329c7-017b-4370-898b-f311a08aa7a9", "start_time": 1689588774.3525271, "update_time": 1689588775.6513627, "code": "import qrcode\nimport matplotlib.pyplot as plt\n\n# Create qr code instance\nqr = qrcode.QRCode(\n    version = 1,\n    error_correction = qrcode.constants.ERROR_CORRECT_H,\n    box_size = 10,\n    border = 4,\n)\n\n# The data that you want to store\ndata = \"MaxAI.me\"\n\n# Add data\nqr.add_data(data)\nqr.make(fit=True)\n\n# Create an image from the QR Code instance\nimg = qr.make_image()\n\n# Display the generated image\nplt.imshow(img, cmap='gray')\nplt.axis('off')\nplt.show()", "end_time": 1689588775.6513627, "final_expression_output": null, "in_kernel_exception": null, "system_exception": null, "messages": [{"message_type": "image", "time": 1689588775.618626, "sender": "server", "image_payload": null, "image_url": "file-service://2073c3f9-f30e-4225-9728-6a3d2d7a41bd"}], "jupyter_messages": [{"msg_type": "status", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"execution_state": "busy"}}, {"msg_type": "execute_input", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}}, {"msg_type": "display_data", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"data": {"text/plain": "<Figure size 2000x1200 with 1 Axes>", "image/vnd.openai.fileservice.png": "file-service://2073c3f9-f30e-4225-9728-6a3d2d7a41bd"}}}, {"msg_type": "status", "parent_header": {"msg_id": "33e69522-f80020023c0d6f70dbdf5e65_2_1", "version": "5.3"}, "content": {"execution_state": "idle"}}], "timeout_triggered": null}, "is_complete": true, "message_type": "next", "model_slug": "gpt-4-code-interpreter"}, "recipient": "all"}, "conversation_id": "4e7a2dec-0b48-4d4c-b091-6cbf425b27ca", "error": null}
+    // chatgpt 返回的图片渲染 =>
+    // {"message": {"id": "a5e2dd9f-1a7e-4205-a87d-59ea449d14d6", "author": {"role": "tool", "name": "dalle.text2im", "metadata": {}}, "create_time": null, "update_time": null, "content": {"content_type": "multimodal_text", "parts": [{"content_type": "image_asset_pointer", "asset_pointer": "file-service://file-3lZoyavh3UZ9QJT5k1dJjk4J", "size_bytes": 295596, "width": 1024, "height": 1024, "fovea": 512, "metadata": {"dalle": {"gen_id": "IhqIYwGXKd1cDQxE", "prompt": "A serene, luminous full moon in a starlit night sky, with a whimsical twist: a classic ping pong ball gently resting on its surface. The moon's craters and texture are detailed, reflecting soft moonlight. The ping pong ball, with its matte white surface and subtle shadows, contrasts with the moon's rugged terrain. The surrounding space is filled with twinkling stars, adding to the tranquil and surreal atmosphere.", "seed": 4286421595, "serialization_title": "DALL-E generation metadata"}}}]}, "status": "finished_successfully", "end_turn": null, "weight": 1.0, "metadata": {"message_type": "next", "model_slug": "gpt-4", "parent_id": "16d78db9-9f94-418a-a8b8-ae671d95b291"}, "recipient": "all"}, "conversation_id": "9c00faab-8c70-4ae3-a55a-002264bd816b", "error": null}
     const displayImageIds: string[] = []
     await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
       provider: AI_PROVIDER_MAP.OPENAI,
@@ -591,17 +595,36 @@ export class ChatGPTConversation {
         }
         // web browsing object
         // {"message": {"id": "a1bad9ad-29b0-4ab3-8603-a9f6b4399fbb", "author": {"role": "assistant", "name": null, "metadata": {}}, "create_time": 1684210390.537254, "update_time": null, "content": {"content_type": "code", "language": "unknown", "text": "# To find out today's news, I'll perform a search.\nsearch(\"2023\u5e745\u670816\u65e5"}, "status": "in_progress", "end_turn": null, "weight": 1.0, "metadata": {"message_type": "next", "model_slug": "gpt-4-browsing"}, "recipient": "browser"}, "conversation_id": "3eade3ec-a3b7-4d04-941b-52347d533c80", "error": null}
-        const text =
+        let text =
           data.message?.content?.parts?.[0] || data.message?.content?.text || ''
-        if (text.includes(`<<ImageDisplayed>>`)) {
+        if (typeof text === 'string' && text.includes(`<<ImageDisplayed>>`)) {
           const imageFileUrl =
             data.message?.metadata?.aggregate_result?.messages?.[0]?.image_url
           // "file-service://9fb16358-e2b8-4ab5-9e38-c47c6d3a8c2b"
-          const imageFileId = imageFileUrl.split('//')[1]
+          const imageFileId = imageFileUrl.split('//')?.[1] || ''
           if (displayImageIds.find((item) => item === imageFileId)) {
             return
           }
           displayImageIds.push(imageFileId)
+        }
+        if (data.message?.content?.content_type === 'multimodal_text') {
+          // 判断是不是gpt-4 dalle的图片
+          if (
+            data.message.content.parts?.[0]?.content_type ===
+            'image_asset_pointer'
+          ) {
+            text = 'Creating image'
+            const assetPointer =
+              data.message.content.parts?.[0]?.asset_pointer?.split(
+                '//',
+              )?.[1] || ''
+            if (assetPointer) {
+              if (displayImageIds.find((item) => item === assetPointer)) {
+                return
+              }
+              displayImageIds.push(assetPointer)
+            }
+          }
         }
         // console.log(
         //   'generateAnswer on content',

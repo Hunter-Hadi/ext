@@ -9,7 +9,7 @@ import {
   ChatGPTIcon,
   ClaudeIcon,
   ClaudeWebappIcon,
-  GeminiIcon,
+  GeminiBetaIcon,
   OpenAIIcon,
   PoeIcon,
 } from '@/components/CustomIcon'
@@ -92,7 +92,7 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
         />
       )}
       {aiProviderType === 'MAXAI_GEMINI' && (
-        <GeminiIcon sx={{ ...sx, fontSize: size }} />
+        <GeminiBetaIcon sx={{ ...sx, fontSize: size }} />
       )}
     </>
   )

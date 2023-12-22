@@ -214,11 +214,6 @@ const initChromeExtensionUpdated = async () => {
    * @description 2023圣诞节
    */
   const executeChristmasPromotion = async () => {
-    const onBoardingData = await getChromeExtensionOnBoardingData()
-    // 如果已经弹窗过了，就不再弹窗
-    if (onBoardingData.ON_BOARDING_CHRISTMAS_2023_OPEN_LINK) {
-      return
-    }
     const result = await getChromeExtensionUserInfo(true)
     await setChromeExtensionOnBoardingData(
       'ON_BOARDING_CHRISTMAS_2023_OPEN_LINK',

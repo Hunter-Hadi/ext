@@ -21,6 +21,22 @@
  //   total?: number
  // })
 ```
+### 2. 配置CheckInstall的方法, 例如www.maxai.me在没安装插件的时候会有个弹窗
+
+```typescript jsx
+  const {
+  checkMaxAIChromeExtensionInstall,
+  setMaxAIChromeExtensionInstallHandler,
+} = usePromptLibraryAuth();
+  const { checkIsInstalled } = useRecoilValue(ChromeExtensionDetectorState);
+  useEffect(() => {
+    setMaxAIChromeExtensionInstallHandler(async () => {
+      return checkIsInstalled();
+    });
+  }, [checkIsInstalled]);
+```
+
+
 ### 2. 删除prompt library的 `<PromptLibraryCardEditForm />`
 
 > features/prompt_library/components/PromptLibrary/index.tsx

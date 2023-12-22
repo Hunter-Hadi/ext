@@ -231,10 +231,7 @@ const initChromeExtensionUpdated = async () => {
           name: 'free',
         }
       ).name
-      const planName = result.subscription_plan_name
-      if (role === 'elite' && planName === 'ELITE_YEARLY') {
-        // 不弹窗
-      } else {
+      if (role === 'free') {
         // 弹窗
         // 跳转去https://app.maxai.me/holiday2023
         await Browser.tabs.create({

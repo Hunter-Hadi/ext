@@ -109,6 +109,11 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
     if (host === 'gatesnotes.com') {
       htmlElement.style.height = '100%'
     }
+
+    // google map
+    if (host === 'google.com' && location.pathname.startsWith('/maps')) {
+      htmlElement.style.height = '100%'
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
@@ -165,6 +170,11 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
     }
 
     if (host === 'gatesnotes.com') {
+      htmlElement.style.height = ''
+    }
+
+    // google map
+    if (host === 'google.com' && location.pathname.startsWith('/maps')) {
       htmlElement.style.height = ''
     }
   }

@@ -101,13 +101,15 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
         alignItems: 'stretch',
         justifyContent: 'center',
         flexDirection: 'column',
+        height: 'calc(100vh - 200px)',
+        maxHeight: '720px',
         ...sx,
       }}
     >
       {/* close button */}
       <IconButton
         sx={{
-          position: 'absolute',
+          position: 'fixed',
           top: 2,
           right: 2,
         }}
@@ -115,7 +117,13 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
       >
         <CloseOutlinedIcon />
       </IconButton>
-      <Stack p={2} spacing={2}>
+      <Stack
+        p={2}
+        spacing={2}
+        sx={{
+          flexShrink: 0,
+        }}
+      >
         <Typography
           fontSize={20}
           fontWeight={700}
@@ -137,6 +145,33 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           {t('client:provider__confirm_dialog__sub_title')}
         </Typography>
 
+        <LoadingButton
+          variant="outlined"
+          loading={loading}
+          sx={{
+            py: 1,
+            borderRadius: 1,
+            flex: 1,
+            border: '1px solid rgba(118, 1, 211, 0.16)',
+            background: 'rgba(118, 1, 211, 0.08)',
+            boxShadow: '0px 0px 16px 0px rgba(255, 255, 255, 0.08) inset',
+          }}
+          onClick={() => handleConfirmProvider(confirmProviderOption)}
+        >
+          {t('client:provider__confirm_dialog__continue_with', {
+            label: t(confirmProviderOption.label as any),
+          })}
+        </LoadingButton>
+      </Stack>
+      <Stack
+        p={2}
+        spacing={2}
+        sx={{
+          flex: 1,
+          height: 0,
+          overflowY: 'auto',
+        }}
+      >
         <Divider />
 
         <Stack direction={'row'} spacing={1} alignItems="center">
@@ -205,23 +240,6 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
             {t('common:contact_us')}
           </Link>
         </Typography>
-      </Stack>
-
-      <Stack p={2}>
-        <LoadingButton
-          variant="normalOutlined"
-          loading={loading}
-          sx={{
-            py: 1,
-            borderRadius: 2,
-            flex: 1,
-          }}
-          onClick={() => handleConfirmProvider(confirmProviderOption)}
-        >
-          {t('client:provider__confirm_dialog__continue_with', {
-            label: t(confirmProviderOption.label as any),
-          })}
-        </LoadingButton>
       </Stack>
     </Box>
   )

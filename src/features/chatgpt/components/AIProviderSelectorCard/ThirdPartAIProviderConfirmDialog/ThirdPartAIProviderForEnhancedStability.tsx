@@ -120,7 +120,7 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
         {mainPartProviders.map((providerOption) => (
           <LoadingButton
             loading={loading}
-            variant="contained"
+            variant="outlined"
             key={providerOption.value}
             startIcon={
               <AIProviderIcon aiProviderType={providerOption.value} size={24} />

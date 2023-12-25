@@ -43,6 +43,13 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
           break
         case 'search':
           {
+            // 添加Answer:\n
+            formatText = `Answer:\n${formatText}`
+            // 添加标题
+            if (originalMessage.metadata?.title?.title) {
+              const title = originalMessage.metadata.title.title
+              formatText = `Question:\n${title}\n\n${formatText}`
+            }
             if (originalMessage?.metadata?.sources?.links) {
               // 把长的引用链接变成短的: [[a](link)] => [a]
               formatText = formatText.replace(/\[\[(\d+)\]\([^)]+\)\]/g, '[$1]')
@@ -118,11 +125,18 @@ export const formatAIMessageContentForClipboard = (
         break
       case 'search':
         {
+          // 添加Answer标题
+          const answerTitleElement = doc.createElement('h2')
+          answerTitleElement.innerText = 'Answer:'
+          doc.body.prepend(answerTitleElement)
           // 添加标题
           if (originalMessage.metadata?.title?.title) {
             const title = originalMessage.metadata.title.title
-            const titleElement = doc.createElement('h1')
-            titleElement.innerText = `Question: ${title}`
+            const titleElement = doc.createElement('h2')
+            titleElement.innerText = `Question:`
+            const titleContentElement = doc.createElement('p')
+            titleContentElement.innerText = title
+            doc.body.prepend(titleContentElement)
             doc.body.prepend(titleElement)
           }
           // 添加引用

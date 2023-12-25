@@ -9,7 +9,7 @@ import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
@@ -84,6 +84,21 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
     }
   }
 
+  useEffect(() => {
+    // 如果 dialog 已经打开， 则监听 Esc 按键，关闭 dialog
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        handleClose()
+      }
+    }
+    if (open) {
+      document.addEventListener('keydown', handleEsc)
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEsc)
+    }
+  }, [open])
+
   if (!confirmProviderOption || !open) {
     return null
   }
@@ -115,7 +130,11 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
         }}
         onClick={handleClose}
       >
-        <CloseOutlinedIcon />
+        <CloseOutlinedIcon
+          sx={{
+            fontSize: 24,
+          }}
+        />
       </IconButton>
       <Stack
         p={2}
@@ -130,6 +149,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           color={'text.primary'}
           lineHeight={1.4}
           pr={4}
+          textAlign={'left'}
         >
           {t('client:provider__confirm_dialog__title', {
             label: confirmProviderOption.label,
@@ -141,6 +161,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           fontWeight={400}
           color={'text.primary'}
           lineHeight={1.5}
+          textAlign={'left'}
         >
           {t('client:provider__confirm_dialog__sub_title')}
         </Typography>
@@ -178,6 +199,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           <NotificationImportantOutlinedIcon
             sx={{
               color: 'rgba(219, 68, 55, 1)',
+              fontSize: 24,
             }}
           />
 
@@ -197,6 +219,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           color={'text.secondary'}
           lineHeight={1.5}
           mt={'4px !important'}
+          textAlign={'left'}
         >
           {t('client:provider__confirm_dialog__important_reminder__desc')}
         </Typography>
@@ -207,6 +230,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           <ChatOutlinedIcon
             sx={{
               color: 'rgba(66, 133, 244, 1)',
+              fontSize: 24,
             }}
           />
 
@@ -226,10 +250,16 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           color={'text.secondary'}
           lineHeight={1.5}
           mt={'4px !important'}
+          textAlign={'left'}
         >
           {t('client:provider__confirm_dialog__your_feedback_matters__desc')}
         </Typography>
-        <Typography sx={{ flexShrink: 0 }} mt={'8px !important'} fontSize={12}>
+        <Typography
+          sx={{ flexShrink: 0 }}
+          mt={'8px !important'}
+          fontSize={12}
+          textAlign={'left'}
+        >
           <Link
             color={'text.primary'}
             sx={{ cursor: 'pointer' }}

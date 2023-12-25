@@ -38,7 +38,8 @@
     "loading": "로딩 중...",
     "no_options": "옵션이 없음",
     "auto": "자동",
-    "confirm": "확인"
+    "confirm": "확인",
+    "copy_as_plain_text": "일반 텍스트로 복사"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",

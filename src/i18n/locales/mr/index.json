@@ -38,7 +38,8 @@
     "loading": "लोड होत आहे...",
     "no_options": "पर्याय नाहीत",
     "auto": "स्वयंप्रेरित",
-    "confirm": "पुष्टी करा"
+    "confirm": "पुष्टी करा",
+    "copy_as_plain_text": "सामान्य मजकूर चोरी करा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",

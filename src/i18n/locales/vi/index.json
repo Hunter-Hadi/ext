@@ -38,7 +38,8 @@
     "loading": "Đang tải...",
     "no_options": "Không có tùy chọn",
     "auto": "Tự động",
-    "confirm": "Xác nhận"
+    "confirm": "Xác nhận",
+    "copy_as_plain_text": "Sao chép dưới dạng văn bản thuần"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",

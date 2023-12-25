@@ -38,7 +38,8 @@
     "loading": "Indlæser...",
     "no_options": "Ingen muligheder",
     "auto": "Bil",
-    "confirm": "Bekræft"
+    "confirm": "Bekræft",
+    "copy_as_plain_text": "Kopier som ren tekst"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",

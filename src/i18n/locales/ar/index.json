@@ -38,7 +38,8 @@
     "loading": "جار التحميل...",
     "no_options": "لا توجد خيارات",
     "auto": "تلقائي",
-    "confirm": "تأكيد"
+    "confirm": "تأكيد",
+    "copy_as_plain_text": "نسخ كنص عادي"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",

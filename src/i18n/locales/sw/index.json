@@ -38,7 +38,8 @@
     "loading": "Inapakia...",
     "no_options": "Hakuna chaguo",
     "auto": "Gari",
-    "confirm": "Thibitisha"
+    "confirm": "Thibitisha",
+    "copy_as_plain_text": "Nakili kama maandishi ya kawaida"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",

@@ -38,7 +38,8 @@
     "loading": "טוען...",
     "no_options": "אין אפשרויות",
     "auto": "אוטומטי",
-    "confirm": "אישור"
+    "confirm": "אישור",
+    "copy_as_plain_text": "העתק כטקסט פשוט"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",

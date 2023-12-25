@@ -38,7 +38,8 @@
     "loading": "กำลังโหลด...",
     "no_options": "ไม่มีตัวเลือก",
     "auto": "อัตโนมัติ",
-    "confirm": "ยืนยัน"
+    "confirm": "ยืนยัน",
+    "copy_as_plain_text": "คัดลอกเป็นข้อความธรรมดา"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",

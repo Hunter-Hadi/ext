@@ -38,7 +38,8 @@
     "loading": "Загрузка...",
     "no_options": "Нет вариантов",
     "auto": "Авто",
-    "confirm": "Подтвердить"
+    "confirm": "Подтвердить",
+    "copy_as_plain_text": "Копировать как обычный текст"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",

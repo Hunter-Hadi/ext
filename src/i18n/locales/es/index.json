@@ -38,7 +38,8 @@
     "loading": "Cargando...",
     "no_options": "Sin opciones",
     "auto": "Automático",
-    "confirm": "Confirmar"
+    "confirm": "Confirmar",
+    "copy_as_plain_text": "Copiar como texto sin formato"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",

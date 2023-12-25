@@ -38,7 +38,8 @@
     "loading": "Laddar...",
     "no_options": "Inga alternativ",
     "auto": "Automatisk",
-    "confirm": "Bekräfta"
+    "confirm": "Bekräfta",
+    "copy_as_plain_text": "Kopiera som ren text"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",

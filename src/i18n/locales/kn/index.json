@@ -38,7 +38,8 @@
     "loading": "ಲೋಡ್ ಆಗುತ್ತಿದೆ...",
     "no_options": "ಯಾವುದೇ ಆಯ್ಕೆಗಳಿಲ್ಲ",
     "auto": "ಸ್ವಯಂಚಾಲಿತ",
-    "confirm": "ದೃಢೀಕರಿಸಿ"
+    "confirm": "ದೃಢೀಕರಿಸಿ",
+    "copy_as_plain_text": "ಸರಳ ಪಠ್ಯವನ್ನು ನಕಲಿಸಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",

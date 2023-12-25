@@ -38,7 +38,8 @@
     "loading": "లోడు అవుతోంది...",
     "no_options": "ఎంచుకోలేదు",
     "auto": "ఆటో",
-    "confirm": "నిర్ధారించండి"
+    "confirm": "నిర్ధారించండి",
+    "copy_as_plain_text": "సరళ వచనంగా కాపీ చేయండి"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",

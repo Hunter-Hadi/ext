@@ -38,7 +38,8 @@
     "loading": "Laster...",
     "no_options": "Ingen alternativer",
     "auto": "Automatisk",
-    "confirm": "Bekreft"
+    "confirm": "Bekreft",
+    "copy_as_plain_text": "Kopier som ren tekst"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",

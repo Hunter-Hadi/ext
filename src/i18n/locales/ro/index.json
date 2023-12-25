@@ -38,7 +38,8 @@
     "loading": "Se încarcă...",
     "no_options": "Nicio opțiune",
     "auto": "Automat",
-    "confirm": "Confirmă"
+    "confirm": "Confirmă",
+    "copy_as_plain_text": "Copiați ca text simplu"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",

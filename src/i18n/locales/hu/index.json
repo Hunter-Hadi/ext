@@ -38,7 +38,8 @@
     "loading": "Betöltés...",
     "no_options": "Nincsenek lehetőségek",
     "auto": "Autó",
-    "confirm": "Megerősítés"
+    "confirm": "Megerősítés",
+    "copy_as_plain_text": "Másolás egyszerű szövegként"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",

@@ -38,7 +38,8 @@
     "loading": "Ielādē...",
     "no_options": "Nav variantu",
     "auto": "Automobilis",
-    "confirm": "Apstiprināt"
+    "confirm": "Apstiprināt",
+    "copy_as_plain_text": "Kopēt kā vienkāršu tekstu"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",

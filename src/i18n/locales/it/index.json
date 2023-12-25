@@ -38,7 +38,8 @@
     "loading": "Caricamento...",
     "no_options": "Nessuna opzione",
     "auto": "Automobile",
-    "confirm": "Conferma"
+    "confirm": "Conferma",
+    "copy_as_plain_text": "Copia come testo normale"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",

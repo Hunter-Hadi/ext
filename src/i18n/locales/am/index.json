@@ -38,7 +38,8 @@
     "loading": "በመጫን ላይ...",
     "no_options": "ምንም አማራጭ የለም",
     "auto": "ራስዎ",
-    "confirm": "አረጋግጥ"
+    "confirm": "አረጋግጥ",
+    "copy_as_plain_text": "በስም ብቻ ይግቡ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",

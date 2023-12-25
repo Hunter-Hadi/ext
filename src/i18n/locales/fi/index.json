@@ -38,7 +38,8 @@
     "loading": "Ladataan...",
     "no_options": "Ei vaihtoehtoja",
     "auto": "Automaattinen",
-    "confirm": "Vahvista"
+    "confirm": "Vahvista",
+    "copy_as_plain_text": "Kopioi pelkkänä tekstinä"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",

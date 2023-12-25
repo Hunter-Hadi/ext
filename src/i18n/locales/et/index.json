@@ -38,7 +38,8 @@
     "loading": "Laadimine...",
     "no_options": "Valikuid pole",
     "auto": "Auto",
-    "confirm": "Kinnita"
+    "confirm": "Kinnita",
+    "copy_as_plain_text": "Kopeeri tavalise tekstina"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",

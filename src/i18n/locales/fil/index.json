@@ -38,7 +38,8 @@
     "loading": "Naglo-load...",
     "no_options": "Walang mga opsyon",
     "auto": "Awto",
-    "confirm": "Kumpirmahin"
+    "confirm": "Kumpirmahin",
+    "copy_as_plain_text": "Kopyahin bilang simpleng teksto"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",

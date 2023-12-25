@@ -38,7 +38,8 @@
     "loading": "Yükleniyor...",
     "no_options": "Seçenek yok",
     "auto": "Otomatik",
-    "confirm": "Onayla"
+    "confirm": "Onayla",
+    "copy_as_plain_text": "Düz metin olarak kopyala"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",

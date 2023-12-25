@@ -23,7 +23,7 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
           break
         case 'summary':
           {
-            // 添加标题和结尾
+            // 添加标题
             if (
               originalMessage.metadata?.sourceWebpage?.title &&
               originalMessage.metadata.sourceWebpage.url
@@ -31,6 +31,9 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
               formatText =
                 `${originalMessage.metadata.sourceWebpage.title}\n\n` +
                 formatText
+            }
+            // 添加Sources
+            if (originalMessage.metadata?.sourceWebpage?.url) {
               formatText = `${formatText}\n\nSource:\n${originalMessage.metadata.sourceWebpage.url}`
             }
             // 替换 ####Title => Title:
@@ -88,32 +91,40 @@ export const formatAIMessageContentForClipboard = (
         break
       case 'summary':
         {
-          // 添加标题和结尾
-          if (
-            originalMessage.metadata?.sourceWebpage?.title &&
-            originalMessage.metadata.sourceWebpage.url
-          ) {
+          // 添加标题
+          if (originalMessage.metadata?.sourceWebpage?.title) {
             const title = originalMessage.metadata.sourceWebpage.title
-            const breakLine = doc.createElement('br')
-            const url = originalMessage.metadata.sourceWebpage.url
             const titleElement = doc.createElement('h1')
             titleElement.innerText = title
-            const urlElement = doc.createElement('p')
-            urlElement.innerText = `Source:\n${url}`
-            doc.body.prepend(urlElement)
-            doc.body.prepend(breakLine)
             doc.body.prepend(titleElement)
           }
+          // 添加标题Sources
+          if (originalMessage.metadata?.sourceWebpage?.url) {
+            const url = originalMessage.metadata.sourceWebpage.url
+            const sourceElement = doc.createElement('h4')
+            sourceElement.innerText = `Source:`
+            const sourceUrlElement = doc.createElement('a')
+            sourceUrlElement.href = url
+            sourceUrlElement.target = '_blank'
+            sourceUrlElement.innerText = url
+            doc.body.appendChild(sourceElement)
+            doc.body.appendChild(sourceUrlElement)
+          }
           // 添加结尾
-          const breakLine = doc.createElement('br')
           const poweredByElement = doc.createElement('p')
           poweredByElement.innerText = 'Powered by MaxAI.me'
-          doc.body.appendChild(breakLine)
           doc.body.appendChild(poweredByElement)
         }
         break
       case 'search':
         {
+          // 添加标题
+          if (originalMessage.metadata?.title?.title) {
+            const title = originalMessage.metadata.title.title
+            const titleElement = doc.createElement('h1')
+            titleElement.innerText = `Question: ${title}`
+            doc.body.prepend(titleElement)
+          }
           // 添加引用
           const linksElements: HTMLElement[] = []
           if (originalMessage?.metadata?.sources?.links) {
@@ -132,18 +143,16 @@ export const formatAIMessageContentForClipboard = (
                 linksElements.push(linkElement)
               })
             }
-            const citationsElement = doc.createElement('p')
-            citationsElement.innerText = `\n\nCitations:`
+            const citationsElement = doc.createElement('h4')
+            citationsElement.innerText = `Citations:`
             doc.body.appendChild(citationsElement)
             linksElements.forEach((linkElement) => {
               doc.body.appendChild(linkElement)
             })
           }
           // 添加结尾
-          const breakLine = doc.createElement('br')
           const poweredByElement = doc.createElement('p')
           poweredByElement.innerText = 'Powered by MaxAI.me'
-          doc.body.appendChild(breakLine)
           doc.body.appendChild(poweredByElement)
         }
         break

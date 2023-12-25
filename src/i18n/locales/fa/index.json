@@ -38,7 +38,8 @@
     "loading": "در حال بارگذاری...",
     "no_options": "گزینه‌ای وجود ندارد",
     "auto": "خودکار",
-    "confirm": "تأیید"
+    "confirm": "تأیید",
+    "copy_as_plain_text": "کپی به عنوان متن ساده"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",

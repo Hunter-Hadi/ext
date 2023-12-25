@@ -34,6 +34,7 @@
     "stop": "Stop",
     "copy": "Copy",
     "copy_to_clipboard": "Copy to clipboard",
+    "copy_as_plain_text": "Copy as plain text",
     "copied": "Copied",
     "paste": "Paste",
     "loading": "Loading...",

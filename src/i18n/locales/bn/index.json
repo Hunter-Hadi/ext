@@ -38,7 +38,8 @@
     "loading": "লোড হচ্ছে...",
     "no_options": "কোন অপশন নেই",
     "auto": "স্বয়ংক্রিয়",
-    "confirm": "নিশ্চিত করুন"
+    "confirm": "নিশ্চিত করুন",
+    "copy_as_plain_text": "সাধারণ টেক্সট হিসাবে কপি করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",

@@ -183,7 +183,9 @@ const SidebarCopyButton: FC<{
                     icon={'CopyTextOnly'}
                     sx={{ fontSize: '16px' }}
                   />
-                  <Typography fontSize={'16px'}>{'Copy Text Only'}</Typography>
+                  <Typography fontSize={'16px'}>
+                    {t('common:copy_as_plain_text')}
+                  </Typography>
                 </Stack>
               </TooltipIconButton>
             </CopyToClipboard>
@@ -219,7 +221,7 @@ const SidebarCopyButton: FC<{
                 }}
               >
                 <ContextMenuIcon icon={'Copy'} sx={{ fontSize: '16px' }} />
-                <Typography fontSize={'16px'}>{'Copy'}</Typography>
+                <Typography fontSize={'16px'}>{t('common:copy')}</Typography>
               </Stack>
             </TooltipIconButton>
           </ListItem>

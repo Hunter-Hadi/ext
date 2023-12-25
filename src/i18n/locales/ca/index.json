@@ -38,7 +38,8 @@
     "loading": "Carregant...",
     "no_options": "Sense opcions",
     "auto": "Automàtic",
-    "confirm": "Confirma"
+    "confirm": "Confirma",
+    "copy_as_plain_text": "Copia com a text pla"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",

@@ -38,7 +38,8 @@
     "loading": "Φόρτωση...",
     "no_options": "Χωρίς επιλογές",
     "auto": "Αυτόματο",
-    "confirm": "Επιβεβαίωση"
+    "confirm": "Επιβεβαίωση",
+    "copy_as_plain_text": "Αντιγραφή ως απλό κείμενο"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",

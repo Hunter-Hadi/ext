@@ -38,7 +38,8 @@
     "loading": "Memuat...",
     "no_options": "Tidak ada pilihan",
     "auto": "Otomatis",
-    "confirm": "Konfirmasi"
+    "confirm": "Konfirmasi",
+    "copy_as_plain_text": "Salin sebagai teks biasa"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",

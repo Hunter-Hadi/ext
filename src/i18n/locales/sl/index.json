@@ -38,7 +38,8 @@
     "loading": "Nalaganje...",
     "no_options": "Ni možnosti",
     "auto": "Avtomatsko",
-    "confirm": "Potrdi"
+    "confirm": "Potrdi",
+    "copy_as_plain_text": "Kopiraj kot navadno besedilo"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",

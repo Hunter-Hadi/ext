@@ -38,7 +38,8 @@
     "loading": "Įkeliama...",
     "no_options": "Nėra pasirinkimų",
     "auto": "Automobilis",
-    "confirm": "Patvirtinti"
+    "confirm": "Patvirtinti",
+    "copy_as_plain_text": "Kopijuoti kaip paprastą tekstą"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",

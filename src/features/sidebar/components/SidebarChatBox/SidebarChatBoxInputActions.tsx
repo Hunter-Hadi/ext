@@ -84,8 +84,15 @@ const SidebarChatBoxInputActions: FC<{
         {/*<DevContent>*/}
         {/*  <TestAllActionsButton />*/}
         {/*</DevContent>*/}
-        {currentSidebarConversationType === 'Chat' &&
-          !smoothConversationLoading && <PromptLibraryIconButton />}
+        <PromptLibraryIconButton
+          sx={{
+            visibility:
+              currentSidebarConversationType === 'Chat' &&
+              !smoothConversationLoading
+                ? 'visible'
+                : 'hidden',
+          }}
+        />
         {currentSidebarConversationType === 'Chat' &&
           !smoothConversationLoading && (
             <FloatingInputButton

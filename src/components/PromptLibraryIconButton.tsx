@@ -3,6 +3,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
 import Popper from '@mui/material/Popper'
+import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,15 +12,20 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
+import { IPromptListType } from '@/features/prompt_library/types'
 import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { promptLibraryCardDetailDataToActions } from '@/features/shortcuts/utils/promptInterpreter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-const PromptLibraryIconButton: FC = () => {
+const PromptLibraryIconButton: FC<{
+  sx?: SxProps
+}> = (props) => {
+  const { sx } = props
   const {
     setShortCuts,
     runShortCuts,
@@ -88,8 +94,40 @@ const PromptLibraryIconButton: FC = () => {
     openPromptLibrary()
     setPlacement(newPlacement)
   }
+  const initPromptLibraryRef = useRef(false)
   useEffectOnce(() => {
-    initPromptLibrary({})
+    if (initPromptLibraryRef.current) {
+      return
+    }
+    initPromptLibraryRef.current = true
+    let activeTab: IPromptListType = 'Public'
+    if (isImmersiveChatPage) {
+      const url = new URL(window.location.href)
+      const queryActiveTab = url.searchParams.get('activeTab')
+      if (queryActiveTab) {
+        activeTab = queryActiveTab as IPromptListType
+        // remove query
+        url.searchParams.delete('activeTab')
+        window.history.replaceState({}, '', url.toString())
+      }
+    }
+    debugger
+    initPromptLibrary({
+      activeTab,
+    })
+    if (activeTab !== 'Public') {
+      const sidebarElement = getMaxAISidebarRootElement()
+      if (sidebarElement) {
+        intervalFindHtmlElement(
+          sidebarElement,
+          `#${MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID}`,
+          100,
+          5000,
+        ).then((oneClickPromptsButton) => {
+          oneClickPromptsButton?.click()
+        })
+      }
+    }
   })
   useEffect(() => {
     if (selectedPromptLibraryCard) {
@@ -125,6 +163,7 @@ const PromptLibraryIconButton: FC = () => {
           sx={{
             p: '5px',
             minWidth: 'unset',
+            ...sx,
           }}
           variant={promptLibraryOpen ? 'contained' : 'outlined'}
         >

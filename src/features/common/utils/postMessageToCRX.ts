@@ -1,6 +1,6 @@
 import { MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID } from '@/features/common/constants'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { getMaxAISidebarRootElement } from '@/features/common/utils/index'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export type MaxAIPostMessageWithWebPageType =
   | 'PING'
@@ -43,13 +43,13 @@ const postMessageToCRX = async <T>(
   })
 }
 
-export const webPageOpenMaxAIImmersiveChat = () => {
+export const webPageOpenMaxAIImmersiveChat = (query: string = '') => {
   return postMessageToCRX(
     window,
     'OPEN_URL',
     {
       key: 'immersive_chat',
-      query: '',
+      query,
       active: true,
     },
     '*',

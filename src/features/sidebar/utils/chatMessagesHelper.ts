@@ -70,8 +70,7 @@ export const formatAIMessageContentForClipboard = (
   message: IAIResponseMessage,
   element: HTMLElement,
 ) => {
-  const originalMessage = message?.originalMessage
-  if (!originalMessage || !element?.outerHTML) {
+  if (!element?.outerHTML) {
     return
   }
   const domParser = new DOMParser()
@@ -81,77 +80,95 @@ export const formatAIMessageContentForClipboard = (
     } as sanitize.IOptions),
     'text/html',
   )
-  const shareType = originalMessage?.metadata?.shareType || 'normal'
-  switch (shareType) {
-    case 'normal':
-      break
-    case 'summary':
-      {
-        // 添加标题和结尾
-        if (
-          originalMessage.metadata?.sourceWebpage?.title &&
-          originalMessage.metadata.sourceWebpage.url
-        ) {
-          const title = originalMessage.metadata.sourceWebpage.title
+  const originalMessage = message?.originalMessage
+  if (originalMessage) {
+    const shareType = originalMessage?.metadata?.shareType || 'normal'
+    switch (shareType) {
+      case 'normal':
+        break
+      case 'summary':
+        {
+          // 添加标题和结尾
+          if (
+            originalMessage.metadata?.sourceWebpage?.title &&
+            originalMessage.metadata.sourceWebpage.url
+          ) {
+            const title = originalMessage.metadata.sourceWebpage.title
+            const breakLine = doc.createElement('br')
+            const url = originalMessage.metadata.sourceWebpage.url
+            const titleElement = doc.createElement('h1')
+            titleElement.innerText = title
+            const urlElement = doc.createElement('p')
+            urlElement.innerText = `Source:\n${url}`
+            doc.body.prepend(urlElement)
+            doc.body.prepend(breakLine)
+            doc.body.prepend(titleElement)
+          }
+          // 添加结尾
           const breakLine = doc.createElement('br')
-          const url = originalMessage.metadata.sourceWebpage.url
-          const titleElement = doc.createElement('h1')
-          titleElement.innerText = title
-          const urlElement = doc.createElement('p')
-          urlElement.innerText = `Source:\n${url}`
-          doc.body.prepend(urlElement)
-          doc.body.prepend(breakLine)
-          doc.body.prepend(titleElement)
+          const poweredByElement = doc.createElement('p')
+          poweredByElement.innerText = 'Powered by MaxAI.me'
+          doc.body.appendChild(breakLine)
+          doc.body.appendChild(poweredByElement)
         }
-        // 添加结尾
-        const breakLine = doc.createElement('br')
-        const poweredByElement = doc.createElement('p')
-        poweredByElement.innerText = 'Powered by MaxAI.me'
-        doc.body.appendChild(breakLine)
-        doc.body.appendChild(poweredByElement)
-      }
-      break
-    case 'search':
-      {
-        // 添加引用
-        const linksElements: HTMLElement[] = []
-        if (originalMessage?.metadata?.sources?.links) {
-          const links = originalMessage.metadata.sources.links
-          if (links.length > 0) {
-            links.forEach((link, index) => {
-              const linkElement = doc.createElement('div')
-              const linkIndexElement = doc.createElement('span')
-              linkIndexElement.innerText = `[${index + 1}] `
-              linkElement.appendChild(linkIndexElement)
-              const linkUrlElement = doc.createElement('a')
-              linkUrlElement.href = link.url
-              linkUrlElement.target = '_blank'
-              linkUrlElement.innerText = link.url
-              linkElement.appendChild(linkUrlElement)
-              linksElements.push(linkElement)
+        break
+      case 'search':
+        {
+          // 添加引用
+          const linksElements: HTMLElement[] = []
+          if (originalMessage?.metadata?.sources?.links) {
+            const links = originalMessage.metadata.sources.links
+            if (links.length > 0) {
+              links.forEach((link, index) => {
+                const linkElement = doc.createElement('div')
+                const linkIndexElement = doc.createElement('span')
+                linkIndexElement.innerText = `[${index + 1}] `
+                linkElement.appendChild(linkIndexElement)
+                const linkUrlElement = doc.createElement('a')
+                linkUrlElement.href = link.url
+                linkUrlElement.target = '_blank'
+                linkUrlElement.innerText = link.url
+                linkElement.appendChild(linkUrlElement)
+                linksElements.push(linkElement)
+              })
+            }
+            const citationsElement = doc.createElement('p')
+            citationsElement.innerText = `\n\nCitations:`
+            doc.body.appendChild(citationsElement)
+            linksElements.forEach((linkElement) => {
+              doc.body.appendChild(linkElement)
             })
           }
-          const citationsElement = doc.createElement('p')
-          citationsElement.innerText = `\n\nCitations:`
-          doc.body.appendChild(citationsElement)
-          linksElements.forEach((linkElement) => {
-            doc.body.appendChild(linkElement)
-          })
+          // 添加结尾
+          const breakLine = doc.createElement('br')
+          const poweredByElement = doc.createElement('p')
+          poweredByElement.innerText = 'Powered by MaxAI.me'
+          doc.body.appendChild(breakLine)
+          doc.body.appendChild(poweredByElement)
         }
-        // 添加结尾
-        const breakLine = doc.createElement('br')
-        const poweredByElement = doc.createElement('p')
-        poweredByElement.innerText = 'Powered by MaxAI.me'
-        doc.body.appendChild(breakLine)
-        doc.body.appendChild(poweredByElement)
-      }
-      break
-    default:
-      break
+        break
+      default:
+        break
+    }
   }
   const html = doc.documentElement.outerHTML
   const htmlBlob = new Blob([html], { type: 'text/html' })
-  const text = element.textContent ?? ''
+  // inject to body
+  const root = document.createElement('div')
+  root.style.position = 'absolute'
+  root.style.top = '-9999px'
+  root.style.left = '-9999px'
+  root.style.zIndex = '-9999'
+  root.style.width = '1px'
+  root.style.height = '1px'
+  root.style.overflow = 'hidden'
+  root.innerHTML = html
+  document.body.appendChild(root)
+  const text = ((root.innerText || root.textContent) ?? '').replace(
+    /\n{2,}/g,
+    '\n\n',
+  )
+  document.body.removeChild(root)
   const textBlob = new Blob([text], { type: 'text/plain' })
   const clipboardItem = new ClipboardItem({
     [htmlBlob.type]: htmlBlob,

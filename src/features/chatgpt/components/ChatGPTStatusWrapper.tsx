@@ -14,7 +14,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { GoogleIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { AuthState } from '@/features/auth/store'
-import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard'
+import AIProviderSelectorCard from '@/features/chatgpt/components/AIProviderSelectorCard'
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
@@ -335,7 +335,7 @@ const ChatGPTStatusWrapper: FC = () => {
           pointerEvents: providerConfirmDialogOpen ? 'none' : 'auto',
         }}
       >
-        <AIProviderSelector />
+        <AIProviderSelectorCard />
       </Paper>
 
       <Paper

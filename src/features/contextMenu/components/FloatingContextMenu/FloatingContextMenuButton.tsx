@@ -24,7 +24,7 @@ const CurrentFloatingContextMenuButtonState = atom({
   },
 })
 
-const NO_SUPPORT_HOST = []
+const NO_SUPPORT_HOST: string[] = []
 
 /**
  * @description 空的contextMenuList 用于loading, 初次渲染的时候不占用太多资源

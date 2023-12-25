@@ -1,11 +1,10 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
-import { Fade, ListItem, Typography } from '@mui/material'
+import { ListItem, Typography } from '@mui/material'
 import Button from '@mui/material/Button'
 import List from '@mui/material/List'
-import Paper from '@mui/material/Paper'
-import Popper from '@mui/material/Popper'
+import Popover from '@mui/material/Popover'
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -34,15 +33,20 @@ const SidebarCopyButton: FC<{
   const copyButtonRef = useRef<HTMLButtonElement>(null)
   const [disableTooltip, setDisableTooltip] = useState(false)
   const [isHover, setIsHover] = useState(false)
+  const [delayIsHover, setDelayIsHover] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
   // 复制成功的提示
   const copyTooltipTitle = useMemo(() => {
-    if (isCopied) {
-      return t('common:copied')
+    // 防止tooltip错位
+    if (delayIsHover) {
+      if (isCopied) {
+        return t('common:copied')
+      }
+      return t('common:copy_to_clipboard')
     }
-    return t('common:copy_to_clipboard')
-  }, [t, isCopied])
+    return ''
+  }, [t, isCopied, delayIsHover])
   // 复制文本
   const copyTextWithStyles = async (): Promise<void> => {
     const button = copyButtonRef.current as HTMLButtonElement
@@ -58,8 +62,22 @@ const SidebarCopyButton: FC<{
     formatAIMessageContentForClipboard(message, rootElement)
     setTimeout(() => {
       setDisableTooltip(false)
-    }, 1000)
+    }, 300)
   }
+  useEffect(() => {
+    if (isHover) {
+      // delay 250ms
+      const timer = setTimeout(() => {
+        setDelayIsHover(isHover)
+      }, 250)
+      return () => {
+        clearTimeout(timer)
+      }
+    } else {
+      setDelayIsHover(false)
+      return () => {}
+    }
+  }, [isHover])
 
   return (
     <React.Fragment>
@@ -71,11 +89,10 @@ const SidebarCopyButton: FC<{
           color: 'text.secondary',
         }}
         onMouseEnter={(event) => {
-          setIsHover(true)
-          setAnchorEl(event.currentTarget)
-        }}
-        onMouseLeave={() => {
-          setIsHover(false)
+          if (!disableTooltip) {
+            setIsHover(true)
+            setAnchorEl(event.currentTarget)
+          }
         }}
         onClick={copyTextWithStyles}
       >
@@ -91,130 +108,123 @@ const SidebarCopyButton: FC<{
           />
         </Stack>
       </Button>
-      <Popper
+      <Popover
+        disableScrollLock
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
+        transformOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left',
+        }}
         className="popper"
         // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
         open={isHover && !disableTooltip}
         anchorEl={anchorEl}
-        placement={'top-start'}
-        transition
-        onMouseEnter={() => {
-          setIsHover(true)
-        }}
-        onMouseLeave={() => {
-          setIsHover(false)
-        }}
         sx={{
           zIndex: 1200,
         }}
+        PaperProps={{
+          onMouseLeave: () => {
+            setIsHover(false)
+          },
+        }}
       >
-        {({ TransitionProps }) => (
-          <Fade {...TransitionProps} timeout={200}>
-            <Paper>
-              <List>
-                <ListItem
-                  disablePadding
+        <List>
+          <ListItem
+            disablePadding
+            sx={{
+              '& > div': {
+                width: '100%',
+              },
+            }}
+          >
+            <CopyToClipboard
+              text={memoCopyText}
+              options={{
+                message: 'Copied!',
+                format: 'text/plain',
+              }}
+              onCopy={() => {
+                if (AFTER_COPIED_CLOSE_HOSTS.includes(window.location.host)) {
+                  setTimeout(hideChatBox, 1)
+                }
+                onCopy?.()
+                setIsHover(false)
+                setIsCopied(true)
+                setTimeout(() => {
+                  setIsCopied(false)
+                }, 1000)
+              }}
+            >
+              <TooltipIconButton
+                TooltipProps={{
+                  placement: 'top',
+                  arrow: true,
+                  disableInteractive: true,
+                }}
+                title={copyTooltipTitle}
+                sx={{
+                  width: '100%',
+                  color: 'text.primary',
+                  borderRadius: '4px',
+                }}
+              >
+                <Stack
+                  direction={'row'}
+                  alignItems={'center'}
+                  gap={1}
                   sx={{
-                    '& > div': {
-                      width: '100%',
-                    },
+                    width: '100%',
                   }}
                 >
-                  <CopyToClipboard
-                    text={memoCopyText}
-                    options={{
-                      message: 'Copied!',
-                      format: 'text/plain',
-                    }}
-                    onCopy={() => {
-                      if (
-                        AFTER_COPIED_CLOSE_HOSTS.includes(window.location.host)
-                      ) {
-                        setTimeout(hideChatBox, 1)
-                      }
-                      onCopy?.()
-                      setIsHover(false)
-                      setIsCopied(true)
-                      setTimeout(() => {
-                        setIsCopied(false)
-                      }, 1000)
-                    }}
-                  >
-                    <TooltipIconButton
-                      TooltipProps={{
-                        placement: 'top',
-                        arrow: true,
-                        disableInteractive: true,
-                      }}
-                      title={copyTooltipTitle}
-                      sx={{
-                        width: '100%',
-                        color: 'text.primary',
-                        borderRadius: '4px',
-                      }}
-                    >
-                      <Stack
-                        direction={'row'}
-                        alignItems={'center'}
-                        gap={1}
-                        sx={{
-                          width: '100%',
-                        }}
-                      >
-                        <ContextMenuIcon
-                          icon={'CopyTextOnly'}
-                          sx={{ fontSize: '16px' }}
-                        />
-                        <Typography fontSize={'16px'}>
-                          {'Copy Text Only'}
-                        </Typography>
-                      </Stack>
-                    </TooltipIconButton>
-                  </CopyToClipboard>
-                </ListItem>
-                <ListItem
-                  disablePadding
-                  sx={{
-                    '& > div': {
-                      width: '100%',
-                    },
-                  }}
-                >
-                  <TooltipIconButton
-                    onClick={copyTextWithStyles}
-                    TooltipProps={{
-                      placement: 'top',
-                      disableInteractive: true,
-                      arrow: true,
-                    }}
-                    title={copyTooltipTitle}
-                    sx={{
-                      width: '100%',
-                      color: 'text.primary',
-                      borderRadius: '4px',
-                    }}
-                  >
-                    <Stack
-                      direction={'row'}
-                      alignItems={'center'}
-                      gap={1}
-                      sx={{
-                        width: '100%',
-                      }}
-                    >
-                      <ContextMenuIcon
-                        icon={'Copy'}
-                        sx={{ fontSize: '16px' }}
-                      />
-                      <Typography fontSize={'16px'}>{'Copy'}</Typography>
-                    </Stack>
-                  </TooltipIconButton>
-                </ListItem>
-              </List>
-            </Paper>
-          </Fade>
-        )}
-      </Popper>
+                  <ContextMenuIcon
+                    icon={'CopyTextOnly'}
+                    sx={{ fontSize: '16px' }}
+                  />
+                  <Typography fontSize={'16px'}>{'Copy Text Only'}</Typography>
+                </Stack>
+              </TooltipIconButton>
+            </CopyToClipboard>
+          </ListItem>
+          <ListItem
+            disablePadding
+            sx={{
+              '& > div': {
+                width: '100%',
+              },
+            }}
+          >
+            <TooltipIconButton
+              onClick={copyTextWithStyles}
+              TooltipProps={{
+                placement: 'top',
+                disableInteractive: true,
+                arrow: true,
+              }}
+              title={copyTooltipTitle}
+              sx={{
+                width: '100%',
+                color: 'text.primary',
+                borderRadius: '4px',
+              }}
+            >
+              <Stack
+                direction={'row'}
+                alignItems={'center'}
+                gap={1}
+                sx={{
+                  width: '100%',
+                }}
+              >
+                <ContextMenuIcon icon={'Copy'} sx={{ fontSize: '16px' }} />
+                <Typography fontSize={'16px'}>{'Copy'}</Typography>
+              </Stack>
+            </TooltipIconButton>
+          </ListItem>
+        </List>
+      </Popover>
     </React.Fragment>
   )
 }

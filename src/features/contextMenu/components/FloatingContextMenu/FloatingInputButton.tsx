@@ -8,7 +8,7 @@ import TooltipButton from '@/components/TooltipButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-const NO_SUPPORT_HOST = []
+const NO_SUPPORT_HOST: string[] = []
 
 /**
  * 输入框呼出按钮

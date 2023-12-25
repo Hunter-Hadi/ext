@@ -9,6 +9,7 @@ import React, { FC, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { webPageOpenMaxAIImmersiveChat } from '@/features/common/utils/postMessageToCRX'
+import usePromptLibraryAuth from '@/features/prompt_library/hooks/usePromptLibraryAuth'
 import usePromptLibraryParameters from '@/features/prompt_library/hooks/usePromptLibraryParameters'
 import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
 
@@ -49,16 +50,19 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
 const PromptLibraryTabs: FC = () => {
   const { t } = useTranslation(['prompt_library'])
   const { activeTab, updateActiveTab } = usePromptLibraryParameters()
+  const { checkMaxAIChromeExtensionInstall } = usePromptLibraryAuth()
   const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
   return (
     <Box flex={1} flexBasis={'100%'}>
       <CustomTabs
         value={activeTab}
         variant="fullWidth"
-        onChange={(event, newValue) => {
+        onChange={async (event, newValue) => {
           if (newValue !== 'Public' && promptLibraryRuntime === 'WebPage') {
-            // 跳转去ImmersiveChat
-            webPageOpenMaxAIImmersiveChat()
+            if (await checkMaxAIChromeExtensionInstall()) {
+              // 跳转去ImmersiveChat
+              webPageOpenMaxAIImmersiveChat()
+            }
             return
           }
           updateActiveTab(newValue)

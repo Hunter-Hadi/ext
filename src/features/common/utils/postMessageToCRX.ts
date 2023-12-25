@@ -1,5 +1,6 @@
 import { MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID } from '@/features/common/constants'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { getMaxAISidebarRootElement } from '@/features/common/utils/index'
 
 export type MaxAIPostMessageWithWebPageType =
   | 'PING'
@@ -67,5 +68,11 @@ export const webPageRunMaxAIShortcuts = (actions: ISetActionsType) => {
 }
 
 export const webPageCloseSidebar = () => {
+  const modalButton = getMaxAISidebarRootElement()?.querySelector(
+    '.max-ai__action__set_variables_modal button[data-test-id="close-modal-button"]',
+  ) as HTMLButtonElement
+  if (modalButton) {
+    modalButton.click()
+  }
   return postMessageToCRX(window, 'CLOSE_SIDEBAR', {}, '*')
 }

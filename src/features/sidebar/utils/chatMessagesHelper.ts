@@ -114,17 +114,29 @@ export const formatAIMessageContentForClipboard = (
     case 'search':
       {
         // 添加引用
+        const linksElements: HTMLElement[] = []
         if (originalMessage?.metadata?.sources?.links) {
           const links = originalMessage.metadata.sources.links
-          let citations = `\n\nCitations:`
           if (links.length > 0) {
             links.forEach((link, index) => {
-              citations += `\n[${index + 1}] ${link.url}`
+              const linkElement = doc.createElement('div')
+              const linkIndexElement = doc.createElement('span')
+              linkIndexElement.innerText = `[${index + 1}] `
+              linkElement.appendChild(linkIndexElement)
+              const linkUrlElement = doc.createElement('a')
+              linkUrlElement.href = link.url
+              linkUrlElement.target = '_blank'
+              linkUrlElement.innerText = link.url
+              linkElement.appendChild(linkUrlElement)
+              linksElements.push(linkElement)
             })
           }
           const citationsElement = doc.createElement('p')
-          citationsElement.innerText = citations
+          citationsElement.innerText = `\n\nCitations:`
           doc.body.appendChild(citationsElement)
+          linksElements.forEach((linkElement) => {
+            doc.body.appendChild(linkElement)
+          })
         }
         // 添加结尾
         const breakLine = doc.createElement('br')

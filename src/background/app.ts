@@ -252,7 +252,7 @@ const initChromeExtensionUpdated = async () => {
                 )
                   .then()
                   .catch()
-              }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
+              }, (1 + Math.floor(Math.random() * 9)) * 1000) // 延迟1-10s发送,降低发送频率
             }
           })
           .catch()

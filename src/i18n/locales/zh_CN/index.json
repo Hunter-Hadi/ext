@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "除了所有其他GPT-4 Turbo功能外，还能理解图像。返回最多4,096个输出标记。这是一个预览模型版本，尚不适用于生产流量。",
     "activity__black_friday_2023__title": "限时黑色星期五特惠 - 高达50%折扣！",
     "sidebar__speed_dial__chat_history__button": "聊天记录",
-    "activity__christmas_2023__title": "圣诞节赠品！- 高达50%折扣！",
+    "activity__christmas_2023__title": "圣诞节和新年赠品",
     "provider__label__third_part": "第三方",
     "provider__confirm_dialog__title": "您现在正在切换到第三方AI提供商：{{label}}",
     "provider__confirm_dialog__sub_title": "我们已经包含了这个提供商，为您提供更多的AI选项。",

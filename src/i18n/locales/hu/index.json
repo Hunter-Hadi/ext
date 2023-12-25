@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Képek értelmezésének képessége, az összes többi GPT-4 Turbo képesség mellett. Legfeljebb 4 096 kimeneti token-t ad vissza. Ez egy előzetes modell verzió, amely még nem alkalmas a termelési forgalomra.",
     "activity__black_friday_2023__title": "Korlátozott idejű Fekete Pénteki Akciók – Akár 50% kedvezmény!",
     "sidebar__speed_dial__chat_history__button": "Chat előzmények",
-    "activity__christmas_2023__title": "KARÁCSONYI AJÁNDÉKOK! - Akár 50% KEDVEZMÉNY!",
+    "activity__christmas_2023__title": "KARÁCSONY & ÚJÉVI AJÁNDÉKOK",
     "provider__label__third_part": "3. féltől származó",
     "provider__confirm_dialog__title": "Most átváltasz a(z) 3. féltől származó AI szolgáltatóra: {{label}}",
     "provider__confirm_dialog__sub_title": "Ezt a szolgáltatót beépítettük, hogy szélesebb körű AI lehetőségeket kínáljunk neked.",

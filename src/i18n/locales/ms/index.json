@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kemampuan untuk memahami imej, selain daripada semua keupayaan GPT-4 Turbo yang lain. Mengembalikan maksimum 4,096 token output. Ini adalah versi model pra-tonton dan belum sesuai untuk trafik pengeluaran.",
     "activity__black_friday_2023__title": "Tawaran Terhad Black Friday – Sehingga 50% Off!",
     "sidebar__speed_dial__chat_history__button": "Sejarah Chat",
-    "activity__christmas_2023__title": "PERCUMA NATAL! - Sehingga 50% DISKAUN!",
+    "activity__christmas_2023__title": "PERADUAN KRISMAS & TAHUN BARU",
     "provider__label__third_part": "Pihak ketiga",
     "provider__confirm_dialog__title": "Anda kini sedang menukar kepada penyedia AI pihak ketiga: {{label}}",
     "provider__confirm_dialog__sub_title": "Kami telah menyertakan penyedia ini untuk menawarkan anda pelbagai pilihan AI.",

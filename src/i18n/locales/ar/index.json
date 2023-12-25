@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "القدرة على فهم الصور، بالإضافة إلى جميع قدرات GPT-4 Turbo الأخرى. يُرجع حد أقصى من 4,096 رمز إخراج. هذا إصدار نموذج معاينة وغير مناسب بعد لحركة المرور الإنتاجية.",
     "activity__black_friday_2023__title": "صفقات الجمعة السوداء لفترة محدودة - تصل إلى 50% خصم!",
     "sidebar__speed_dial__chat_history__button": "سجل الدردشة",
-    "activity__christmas_2023__title": "هدايا عيد الميلاد! - خصم يصل إلى 50%!",
+    "activity__christmas_2023__title": "هدايا عيد الميلاد ورأس السنة",
     "provider__label__third_part": "جهة خارجية",
     "provider__confirm_dialog__title": "أنت الآن تقوم بالتبديل إلى جهة خارجية لتوفير الذكاء الاصطناعي: {{label}}",
     "provider__confirm_dialog__sub_title": "لقد قمنا بتضمين هذه الجهة لنقدم لك مجموعة أوسع من خيارات الذكاء الاصطناعي.",

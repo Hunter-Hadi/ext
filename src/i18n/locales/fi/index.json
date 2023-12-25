@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Kyky ymmärtää kuvia muiden GPT-4 Turbo -ominaisuuksien lisäksi. Palauttaa enintään 4 096 tulostetunnusta. Tämä on esikatselmamallin versio eikä vielä sovellu tuotantoliikenteeseen.",
     "activity__black_friday_2023__title": "Rajoitetun ajan Black Friday -tarjoukset – Jopa 50% alennusta!",
     "sidebar__speed_dial__chat_history__button": "Keskusteluhistoria",
-    "activity__christmas_2023__title": "JOULUARVONNAT! - Jopa 50% ALENNUS!",
+    "activity__christmas_2023__title": "JOULU & UUDEN VUODEN ARVONNAT",
     "provider__label__third_part": "Kolmannen osapuolen",
     "provider__confirm_dialog__title": "Siirryt nyt kolmannen osapuolen tekoälytarjoajaan: {{label}}",
     "provider__confirm_dialog__sub_title": "Olemme sisällyttäneet tämän tarjoajan tarjotaksemme sinulle laajemman valikoiman tekoälyvaihtoehtoja.",

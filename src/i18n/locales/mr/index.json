@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "सर्व इतर GPT-4 Turbo क्षमतांच्या वापरासाठी छायाचित्रे समजण्याची क्षमता. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते. हा प्रीव्ह्यू मॉडेल अद्याप संचालनिक ट्रॅफिकसाठी उपयुक्त नाही.",
     "activity__black_friday_2023__title": "सीमित कालावधीचे ब्लॅक शुक्रवार ऑफर - 50% पर्यंत कमी!",
     "sidebar__speed_dial__chat_history__button": "चॅट इतिहास",
-    "activity__christmas_2023__title": "क्रिसमस गिवअवेज! - 50% सुवर्णात्मक!",
+    "activity__christmas_2023__title": "क्रिसमस आणि नवीन वर्षाचे उपहार",
     "provider__label__third_part": "तिसरा पक्ष",
     "provider__confirm_dialog__title": "तुम्ही आता तिसर्या पक्षाच्या AI प्रदात्यावर स्विच करत आहात: {{label}}",
     "provider__confirm_dialog__sub_title": "आपल्याला AI पर्यायांची एक विस्तृत श्रेणी पुरविण्यासाठी आम्ही हे प्रदाता समाविष्ट केले आहे.",

@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "എല്ലാ മറ്റും GPT-4 ടർബോ കഴിവുകൾക്കും ചിത്രങ്ങൾ പഠിക്കാനാകുന്ന കഴിവ്. 4,096 ഔട്ട്പുട്ട് ടോക്കനുകൾ മാത്രം പിന്തുണയ്ക്കുന്നു. ഈ പ്രിവ്യൂ മോഡൽ പതിപ്പ് ആണ് ഇതിനാൽ പ്രോഡക്ഷൻ ട്രാഫിക്കിനായി പുഴയുന്നില്ല.",
     "activity__black_friday_2023__title": "കുറഞ്ഞ സമയംകൊണ്ട് ബ്ലാക്ക് ഫ്രൈഡേ ഡീലുകൾ - 50% വരെ ഇളക്കുന്നു!",
     "sidebar__speed_dial__chat_history__button": "ചാറ്റ് ചരിത്രം",
-    "activity__christmas_2023__title": "ക്രിസ്തുമസ് ഗിവ്‌അവേസ്! - 50% വരെ ഡിസ്കൗണ്ട്!",
+    "activity__christmas_2023__title": "ക്രിസ്തുമസ് ആശംസകൾ & പുതുവത്സര പരിപാടികൾ",
     "provider__label__third_part": "3rd-party",
     "provider__confirm_dialog__title": "നിങ്ങൾ ഇപ്പോൾ 3-ാം പാർട്ടി AI പ്രൊവൈഡർക്ക് മാറുന്നു: {{label}}",
     "provider__confirm_dialog__sub_title": "ഞങ്ങൾ നിങ്ങൾക്ക് വിവിധതരത്തിലുള്ള AI ഓപ്ഷനുകൾ നൽകാൻ ഈ പ്രൊവൈഡർ ചേർത്തു.",

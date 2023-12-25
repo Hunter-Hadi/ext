@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Δυνατότητα κατανόησης εικόνων, εκτός από όλες τις άλλες δυνατότητες του GPT-4 Turbo. Επιστρέφει ένα μέγιστο αριθμό 4.096 διατάξεων εξόδου. Αυτή είναι μια προεπισκόπησης έκδοση μοντέλου και δεν είναι ακόμα κατάλληλη για παραγωγική κίνηση.",
     "activity__black_friday_2023__title": "Περιορισμένες Προσφορές Black Friday - Έως και 50% Έκπτωση!",
     "sidebar__speed_dial__chat_history__button": "Ιστορικό συνομιλίας",
-    "activity__christmas_2023__title": "ΧΡΙΣΤΟΥΓΕΝΝΙΑΤΙΚΑ ΔΩΡΑ! - Έως και 50% ΕΚΠΤΩΣΗ!",
+    "activity__christmas_2023__title": "ΔΩΡΕΑΝ ΔΩΡΑ ΧΡΙΣΤΟΥΓΕΝΝΩΝ & ΠΡΩΤΟΧΡΟΝΙΑΣ",
     "provider__label__third_part": "3ης-Συμβαλλόμενου",
     "provider__confirm_dialog__title": "Αλλάζετε τώρα σε πάροχο τρίτου μέρους AI: {{label}}",
     "provider__confirm_dialog__sub_title": "Έχουμε συμπεριλάβει αυτόν τον πάροχο για να σας προσφέρουμε μια ευρύτερη γκάμα επιλογών AI.",

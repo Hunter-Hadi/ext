@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til at forstå billeder udover alle andre GPT-4 Turbo-funktioner. Returnerer maksimalt 4.096 output tokens. Dette er en preview-modelversion og er endnu ikke egnet til produktionstrafik.",
     "activity__black_friday_2023__title": "Begrænsede Black Friday-tilbud – Op til 50% rabat!",
     "sidebar__speed_dial__chat_history__button": "Chat historik",
-    "activity__christmas_2023__title": "JULEGAVE! - Op til 50% RABAT!",
+    "activity__christmas_2023__title": "JULE- OG NYTÅRSGAVER",
     "provider__label__third_part": "3. parts",
     "provider__confirm_dialog__title": "Du skifter nu til en 3. parts AI-udbyder: {{label}}",
     "provider__confirm_dialog__sub_title": "Vi har inkluderet denne udbyder for at tilbyde dig et bredere udvalg af AI-muligheder.",

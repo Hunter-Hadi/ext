@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "모든 다른 GPT-4 Turbo 기능과 함께 이미지를 이해하는 능력을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다. 이는 미리보기 모델 버전으로 아직 제품 트래픽에 적합하지 않습니다.",
     "activity__black_friday_2023__title": "제한 시간 동안 블랙 프라이데이 할인 - 최대 50% 할인!",
     "sidebar__speed_dial__chat_history__button": "채팅 기록",
-    "activity__christmas_2023__title": "크리스마스 선물! - 최대 50% 할인!",
+    "activity__christmas_2023__title": "크리스마스 & 신년 선물 이벤트",
     "provider__label__third_part": "3rd-party",
     "provider__confirm_dialog__title": "지금은 3rd-party AI 공급자로 전환 중입니다: {{label}}",
     "provider__confirm_dialog__sub_title": "더 다양한 AI 옵션을 제공하기 위해 이 공급자를 포함시켰습니다.",

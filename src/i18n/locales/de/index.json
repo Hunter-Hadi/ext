@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Fähigkeit, Bilder zu verstehen, zusätzlich zu allen anderen GPT-4 Turbo-Funktionen. Gibt maximal 4.096 Ausgabetoken zurück. Dies ist eine Vorschauversion des Modells und noch nicht für den Produktionsverkehr geeignet.",
     "activity__black_friday_2023__title": "Begrenzte Black Friday Angebote – Bis zu 50% Rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatverlauf",
-    "activity__christmas_2023__title": "WEIHNACHTSVERLOSUNG! - Bis zu 50% RABATT!",
+    "activity__christmas_2023__title": "WEIHNACHTS- UND NEUJAHRSVERLOSUNGEN",
     "provider__label__third_part": "Drittanbieter",
     "provider__confirm_dialog__title": "Sie wechseln jetzt zu einem Drittanbieter-KI-Provider: {{label}}",
     "provider__confirm_dialog__sub_title": "Wir haben diesen Anbieter hinzugefügt, um Ihnen eine größere Auswahl an KI-Optionen anzubieten.",

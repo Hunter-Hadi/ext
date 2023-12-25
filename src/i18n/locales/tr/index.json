@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Diğer tüm GPT-4 Turbo yeteneklerine ek olarak görüntüleri anlama yeteneği. En fazla 4,096 çıktı belirteci döndürür. Bu bir önizleme model sürümüdür ve henüz üretim trafiği için uygun değildir.",
     "activity__black_friday_2023__title": "Sınırlı Süreli Black Friday İndirimleri - %50'ye Kadar İndirim!",
     "sidebar__speed_dial__chat_history__button": "Sohbet geçmişi",
-    "activity__christmas_2023__title": "NOEL HEDİYELERİ! - %50'ye kadar İNDİRİM!",
+    "activity__christmas_2023__title": "NOEL & YENİ YIL HEDİYELERİ",
     "provider__label__third_part": "3. taraf",
     "provider__confirm_dialog__title": "Şu anda 3. taraf AI sağlayıcısına geçiyorsunuz: {{label}}",
     "provider__confirm_dialog__sub_title": "Size daha geniş bir AI seçeneği sunmak için bu sağlayıcıyı dahil ettik.",

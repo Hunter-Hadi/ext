@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacité à comprendre les images, en plus de toutes les autres fonctionnalités de GPT-4 Turbo. Renvoie un maximum de 4 096 jetons de sortie. Il s'agit d'une version de modèle de prévisualisation qui n'est pas encore adaptée au trafic de production.",
     "activity__black_friday_2023__title": "Offres du Black Friday à durée limitée - Jusqu'à 50% de réduction !",
     "sidebar__speed_dial__chat_history__button": "Historique du chat",
-    "activity__christmas_2023__title": "CADEAUX DE NOËL ! - Jusqu'à 50% de réduction !",
+    "activity__christmas_2023__title": "CADEAUX DE NOËL ET DU NOUVEL AN",
     "provider__label__third_part": "Tierce partie",
     "provider__confirm_dialog__title": "Vous passez maintenant à un fournisseur d'IA tiers : {{label}}",
     "provider__confirm_dialog__sub_title": "Nous avons inclus ce fournisseur pour vous offrir une plus large gamme d'options d'IA.",

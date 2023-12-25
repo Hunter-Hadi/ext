@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacitatea de a înțelege imagini, în plus față de toate celelalte capabilități ale lui GPT-4 Turbo. Returnează un maxim de 4.096 de token-uri de ieșire. Aceasta este o versiune de previzualizare a modelului și nu este încă potrivită pentru traficul de producție.",
     "activity__black_friday_2023__title": "Oferte de Black Friday cu timp limitat - Până la 50% reducere!",
     "sidebar__speed_dial__chat_history__button": "Istoric chat",
-    "activity__christmas_2023__title": "OFERTE DE CRĂCIUN! - Până la 50% REDUCERE!",
+    "activity__christmas_2023__title": "CADOURI DE CRĂCIUN ȘI ANUL NOU",
     "provider__label__third_part": "Terță parte",
     "provider__confirm_dialog__title": "Acum treceți la furnizorul de AI terță parte: {{label}}",
     "provider__confirm_dialog__sub_title": "Am inclus acest furnizor pentru a vă oferi o gamă mai largă de opțiuni AI.",

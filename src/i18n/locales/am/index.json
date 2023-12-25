@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "የምስልን ስፍራ ያለውን የGPT-4 Turbo እናትን እና ሁለት ሌሎች GPT-4 በማስተላለፊያ የሚገኙት የማስታወቂያ እናትን እና JSON ሞዴ, የማስተላለፊያ ዝርዝርዎን የሚያስቀምጡ, የማስተላለፊያ የማስታወቂያ ውሂብ ሰውነታችንን እና ተጨማሪ እርምጃዎችን ይመልከቱ። ይህ ማስተላለፊያ ሞዴ እናይሆን ለባለቤት አይደለም።",
     "activity__black_friday_2023__title": "የተጠቀሱ እናደርሳለን - በአንድ ሰዓት የሚሰራ የቅንጅት 50% በቀላል!",
     "sidebar__speed_dial__chat_history__button": "የውጤት ማሰሻ",
-    "activity__christmas_2023__title": "ገንዘብ ማስታወቂያዎች! - በከፍተኛ 50% ይጠቀሙ!",
+    "activity__christmas_2023__title": "ገንዘብ እና አዲስ ዓመት ማስታወቂያዎች",
     "provider__label__third_part": "የ3ኛ ግብር",
     "provider__confirm_dialog__title": "እርስዎ አሁን የ3ኛ ግብር AI ድርጅትን በመቀየር ላይ ነው: {{label}}",
     "provider__confirm_dialog__sub_title": "እኛ የሚያስተዳድር ስራዎችን በተለያዩ AI አካል ለማስተላለፍ የሚያስችል እናደርጋለን.",

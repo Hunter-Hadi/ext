@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Schopnosť rozumieť obrázkom, okrem všetkých ostatných schopností modelu GPT-4 Turbo. Vráti maximálne 4 096 výstupných tokenov. Toto je ukážková verzia modelu a zatiaľ nie je vhodná pre produkčnú prevádzku.",
     "activity__black_friday_2023__title": "Obmedzený čas - Black Friday zľavy až do 50%!",
     "sidebar__speed_dial__chat_history__button": "História chatu",
-    "activity__christmas_2023__title": "VIANOČNÉ DARČEKY! - Až 50% ZĽAVA!",
+    "activity__christmas_2023__title": "VIANOČNÉ A NOVOROČNÉ DARČEKY",
     "provider__label__third_part": "3. strana",
     "provider__confirm_dialog__title": "Teraz prechádzate na 3. stranu poskytovateľa AI: {{label}}",
     "provider__confirm_dialog__sub_title": "Zahrnuli sme tohto poskytovateľa, aby sme vám ponúkli širší výber možností AI.",

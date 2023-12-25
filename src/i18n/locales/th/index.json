@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "สามารถเข้าใจภาพเพิ่มเติมได้ นอกเหนือจากความสามารถ GPT-4 Turbo ทั้งหมดอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์ นี่เป็นรุ่นตัวอย่างของโมเดลและยังไม่เหมาะสำหรับการใช้งานจริง",
     "activity__black_friday_2023__title": "ดีลวันศุกร์ดำจำกัดเวลา - สูงสุด 50% ลด!",
     "sidebar__speed_dial__chat_history__button": "ประวัติการแชท",
-    "activity__christmas_2023__title": "ของขวัญคริสต์มาส! - ลดราคาสูงสุด 50%!",
+    "activity__christmas_2023__title": "กิจกรรมคริสต์มาสและปีใหม่ รับของขวัญ",
     "provider__label__third_part": "บุคคลที่สาม",
     "provider__confirm_dialog__title": "คุณกำลังเปลี่ยนไปใช้ผู้ให้บริการ AI จากบุคคลที่สาม: {{label}}",
     "provider__confirm_dialog__sub_title": "เราได้รวมผู้ให้บริการนี้เพื่อให้คุณได้เลือกใช้ AI ที่หลากหลายมากขึ้น",

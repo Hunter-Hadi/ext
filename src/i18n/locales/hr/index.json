@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogućnost razumijevanja slika, uz sve ostale mogućnosti GPT-4 Turbo. Vraća maksimalno 4,096 izlaznih tokena. Ovo je verzija preglednog modela koja još nije prikladna za produkcijski promet.",
     "activity__black_friday_2023__title": "Ograničeni vremenski Black Friday popusti - do 50% popusta!",
     "sidebar__speed_dial__chat_history__button": "Povijest razgovora",
-    "activity__christmas_2023__title": "BOŽIĆNI POKLONI! - Do 50% POPUSTA!",
+    "activity__christmas_2023__title": "BOŽIĆ I NOVOGODIŠNJI POKLONI",
     "provider__label__third_part": "3. strana",
     "provider__confirm_dialog__title": "Sada prelazite na 3. stranog AI pružatelja: {{label}}",
     "provider__confirm_dialog__sub_title": "Uključili smo ovog pružatelja kako bismo vam ponudili širi raspon AI opcija.",

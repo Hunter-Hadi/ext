@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Evnen til å forstå bilder, i tillegg til alle andre GPT-4 Turbo-funksjoner. Returnerer maksimalt 4 096 utdatatokens. Dette er en forhåndsvisningsmodellversjon og er ennå ikke egnet for produksjonstrafikk.",
     "activity__black_friday_2023__title": "Begrensede Black Friday-tilbud – Opptil 50% rabatt!",
     "sidebar__speed_dial__chat_history__button": "Chatlogg",
-    "activity__christmas_2023__title": "JULEGAVE! - Opptil 50% AVSLAG!",
+    "activity__christmas_2023__title": "JULE- OG NYTTÅRSUTDELINGER",
     "provider__label__third_part": "Tredjepart",
     "provider__confirm_dialog__title": "Du bytter nå til tredjeparts AI-leverandør: {{label}}",
     "provider__confirm_dialog__sub_title": "Vi har inkludert denne leverandøren for å tilby deg et bredere utvalg av AI-alternativer.",

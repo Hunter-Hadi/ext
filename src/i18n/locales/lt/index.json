@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Galimybė suprasti vaizdus, be visų kitų GPT-4 Turbo galimybių. Grąžina maksimaliai 4 096 išvesties ženklus. Tai yra peržiūros modelio versija ir dar nėra tinkama naudoti produkcijos srautui.",
     "activity__black_friday_2023__title": "Riboto laiko Juodųjų Penktadienių pasiūlymai – Iki 50% nuolaida!",
     "sidebar__speed_dial__chat_history__button": "Pokalbių istorija",
-    "activity__christmas_2023__title": "KALĖDŲ DOVANOS! - Iki 50% NUOLAIDA!",
+    "activity__christmas_2023__title": "KALĖDŲ IR NAUJŲJŲ METŲ DOVANOS",
     "provider__label__third_part": "3-osios šalies",
     "provider__confirm_dialog__title": "Dabar persijungiate į 3-osios šalies dirbtinio intelekto tiekėją: {{label}}",
     "provider__confirm_dialog__sub_title": "Mes įtraukėme šį tiekėją, kad galėtume pasiūlyti jums platesnį dirbtinio intelekto pasirinkimą.",

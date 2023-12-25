@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Можливість розуміння зображень, на додаток до всіх інших можливостей GPT-4 Turbo. Повертає максимум 4 096 токенів виводу. Це прев'ю-версія моделі, яка ще не придатна для продуктивного трафіку.",
     "activity__black_friday_2023__title": "Обмежений час Чорної п'ятниці – Знижки до 50%!",
     "sidebar__speed_dial__chat_history__button": "Історія чату",
-    "activity__christmas_2023__title": "РОЗДАЧІ НА РІЗДВО! - До 50% ЗНИЖКИ!",
+    "activity__christmas_2023__title": "РОЗДАЧІ НА РІЗДВО ТА НОВИЙ РІК",
     "provider__label__third_part": "сторонній",
     "provider__confirm_dialog__title": "Ви зараз переходите до стороннього постачальника штучного інтелекту: {{label}}",
     "provider__confirm_dialog__sub_title": "Ми включили цього постачальника, щоб запропонувати вам більший вибір опцій штучного інтелекту.",

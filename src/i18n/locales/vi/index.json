@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Khả năng hiểu hình ảnh, bên cạnh tất cả các khả năng GPT-4 Turbo khác. Trả về tối đa 4.096 mã thông báo đầu ra. Đây là phiên bản mô hình xem trước và chưa phù hợp cho lưu lượng sản xuất.",
     "activity__black_friday_2023__title": "Ưu đãi Black Friday giới hạn thời gian - Giảm giá lên đến 50%!",
     "sidebar__speed_dial__chat_history__button": "Lịch sử trò chuyện",
-    "activity__christmas_2023__title": "QUÀ TẶNG GIÁNG SINH! - Giảm giá lên đến 50%!",
+    "activity__christmas_2023__title": "QUÀ TẶNG GIÁNG SINH & NĂM MỚI",
     "provider__label__third_part": "Bên thứ ba",
     "provider__confirm_dialog__title": "Bạn đang chuyển sang nhà cung cấp trí tuệ nhân tạo bên thứ ba: {{label}}",
     "provider__confirm_dialog__sub_title": "Chúng tôi đã bao gồm nhà cung cấp này để cung cấp cho bạn một loạt các lựa chọn trí tuệ nhân tạo rộng hơn.",

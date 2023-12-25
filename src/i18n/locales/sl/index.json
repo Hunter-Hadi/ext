@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Zmožnost razumevanja slik poleg vseh drugih zmogljivosti modela GPT-4 Turbo. Vrne največ 4.096 izhodnih žetonov. To je predogledna različica modela in še ni primerna za promet v proizvodnji.",
     "activity__black_friday_2023__title": "Omejeni čas - Črni petek ponudbe do 50% popusta!",
     "sidebar__speed_dial__chat_history__button": "Zgodovina klepetov",
-    "activity__christmas_2023__title": "BOŽIČNI NAGRADNI IZDELKI! - Do 50% POPUSTA!",
+    "activity__christmas_2023__title": "BOŽIČ IN NOVOLETNE NAGRADNE IGRE",
     "provider__label__third_part": "3. oseba",
     "provider__confirm_dialog__title": "Sedaj preklapljate na 3. osebni AI ponudnik: {{label}}",
     "provider__confirm_dialog__sub_title": "Vključili smo tega ponudnika, da vam ponudimo širšo paleto možnosti umetne inteligence.",

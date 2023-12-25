@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Võime mõista pilte koos kõigi teiste GPT-4 Turbo võimalustega. Tagastab maksimaalselt 4 096 väljunditokenit. See on eelvaate mudeli versioon ja pole veel sobilik tootmisliikluseks.",
     "activity__black_friday_2023__title": "Piiratud aja pakkumised musta reede ajal – kuni 50% soodsamalt!",
     "sidebar__speed_dial__chat_history__button": "Vestluse ajalugu",
-    "activity__christmas_2023__title": "JÕULU KINKIDE JAGAMINE! - Kuni 50% ALLAHINDLUST!",
+    "activity__christmas_2023__title": "JÕULU- JA AASTAVAHETUSE KINGITUSED",
     "provider__label__third_part": "Kolmanda osapoole",
     "provider__confirm_dialog__title": "Te lülitute nüüd ümber kolmanda osapoole AI pakkujale: {{label}}",
     "provider__confirm_dialog__sub_title": "Oleme selle pakkujaga laiendanud teie valikuvõimalusi AI osas.",

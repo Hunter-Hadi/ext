@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "ছবি বুঝতে সক্ষমতা, অন্যান্য GPT-4 টার্বো সুবিধাগুলির পাশাপাশি। সর্বাধিক 4,096 আউটপুট টোকেন প্রদান করে। এটি প্রিভিউ মডেল সংস্করণ এবং এখনও প্রোডাকশন ট্রাফিকের জন্য উপযুক্ত নয়।",
     "activity__black_friday_2023__title": "সীমিত সময়ের কালো শুক্রবার অফার - ৫০% পর্যন্ত ছাড়!",
     "sidebar__speed_dial__chat_history__button": "চ্যাট ইতিহাস",
-    "activity__christmas_2023__title": "বড়দিনের উপহার! - ৫০% ছাড়!",
+    "activity__christmas_2023__title": "বড়দিন এবং নতুন বছরের উপহার",
     "provider__label__third_part": "তৃতীয়-পক্ষ",
     "provider__confirm_dialog__title": "আপনি এখন 3rd-party AI প্রদানকারীতে স্থানান্তরিত হচ্ছেন: {{label}}",
     "provider__confirm_dialog__sub_title": "আমরা আপনাকে আরও বিস্তৃত AI অপশন প্রদানের জন্য এই প্রদানকারীকে সংযুক্ত করেছি।",

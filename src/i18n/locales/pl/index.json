@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Możliwość rozumienia obrazów, oprócz wszystkich innych możliwości GPT-4 Turbo. Zwraca maksymalnie 4 096 tokenów wyjściowych. To wersja podglądowa modelu i jeszcze nie nadaje się do ruchu produkcyjnego.",
     "activity__black_friday_2023__title": "Ograniczone Czasowo Oferty Black Friday – Do 50% Zniżki!",
     "sidebar__speed_dial__chat_history__button": "Historia czatu",
-    "activity__christmas_2023__title": "ROZDANIE NA ŚWIĘTA! - Do 50% ZNIŻKI!",
+    "activity__christmas_2023__title": "ROZDANIA NA ŚWIĘTA I NOWY ROK",
     "provider__label__third_part": "Zewnętrzny dostawca",
     "provider__confirm_dialog__title": "Przełączasz się teraz na zewnętrznego dostawcę sztucznej inteligencji: {{label}}",
     "provider__confirm_dialog__sub_title": "Dodaliśmy tego dostawcę, aby zapewnić Ci szerszy wybór opcji sztucznej inteligencji.",

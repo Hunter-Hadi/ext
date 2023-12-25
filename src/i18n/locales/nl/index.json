@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Mogelijkheid om afbeeldingen te begrijpen, naast alle andere mogelijkheden van GPT-4 Turbo. Geeft maximaal 4.096 uitvoertokens terug. Dit is een voorbeeldmodelversie en nog niet geschikt voor productieverkeer.",
     "activity__black_friday_2023__title": "Beperkte Black Friday-aanbiedingen - Tot 50% korting!",
     "sidebar__speed_dial__chat_history__button": "Chatgeschiedenis",
-    "activity__christmas_2023__title": "KERSTACTIES! - Tot 50% KORTING!",
+    "activity__christmas_2023__title": "KERST- & NIEUWJAARSGESCHENKEN",
     "provider__label__third_part": "3rd-party",
     "provider__confirm_dialog__title": "U schakelt nu over naar een externe AI-provider: {{label}}",
     "provider__confirm_dialog__sub_title": "We hebben deze provider toegevoegd om u een breder scala aan AI-opties te bieden.",

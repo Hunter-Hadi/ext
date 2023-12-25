@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "他のすべてのGPT-4 Turboの機能に加えて、画像を理解する能力を持っています。最大4,096の出力トークンを返します。これはプレビューモデルバージョンであり、まだ本番トラフィックには適していません。",
     "activity__black_friday_2023__title": "期間限定のブラックフライデーセール！最大50％オフ！",
     "sidebar__speed_dial__chat_history__button": "チャット履歴",
-    "activity__christmas_2023__title": "クリスマスプレゼント！ - 最大50%オフ！",
+    "activity__christmas_2023__title": "クリスマス＆新年プレゼント",
     "provider__label__third_part": "サードパーティ",
     "provider__confirm_dialog__title": "現在、サードパーティのAIプロバイダに切り替えています: {{label}}",
     "provider__confirm_dialog__sub_title": "より幅広いAIオプションを提供するために、このプロバイダを含めました。",

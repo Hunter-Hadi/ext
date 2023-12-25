@@ -475,7 +475,7 @@
     "provider__openai_api__model__gpt_4_vision_preview__description": "Capacidad para comprender imágenes, además de todas las demás capacidades de GPT-4 Turbo. Devuelve un máximo de 4.096 tokens de salida. Esta es una versión de modelo de vista previa y aún no es adecuada para el tráfico de producción.",
     "activity__black_friday_2023__title": "¡Ofertas de Viernes Negro por Tiempo Limitado - ¡Hasta un 50% de Descuento!",
     "sidebar__speed_dial__chat_history__button": "Historial de chat",
-    "activity__christmas_2023__title": "¡REGALOS DE NAVIDAD! - ¡Hasta un 50% DE DESCUENTO!",
+    "activity__christmas_2023__title": "REGALOS DE NAVIDAD Y AÑO NUEVO",
     "provider__label__third_part": "Terceros",
     "provider__confirm_dialog__title": "Ahora estás cambiando a un proveedor de IA de terceros: {{label}}",
     "provider__confirm_dialog__sub_title": "Hemos incluido este proveedor para ofrecerte una mayor variedad de opciones de IA.",

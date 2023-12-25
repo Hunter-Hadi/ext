@@ -29,7 +29,11 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getPageContentWithMozillaReadability())
-      this.output = result
+      if (result.length < 100 && typeof document !== 'undefined') {
+        this.output = document.body.innerText
+      } else {
+        this.output = result
+      }
     } catch (e) {
       this.error = (e as any).toString()
     }

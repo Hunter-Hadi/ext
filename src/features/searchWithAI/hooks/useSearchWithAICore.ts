@@ -190,20 +190,20 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         PAGE_CONTENT: expandContent,
         AI_RESPONSE_LANGUAGE: userSelectedLanguage,
       })
-      if (additionalText.addPosition === 'end') {
-        template += additionalText.data + '\n\n'
-      } else {
+      if (additionalText.addPosition === 'start') {
         template = additionalText.data + '\n\n' + template
+      } else {
+        template += '\n\n' + additionalText.data
       }
     } else {
       const additionalText = await ActionAskChatGPT.generateAdditionalText({
         PAGE_CONTENT: question,
         AI_RESPONSE_LANGUAGE: userSelectedLanguage,
       })
-      if (additionalText.addPosition === 'end') {
-        template += additionalText.data + '\n\n'
-      } else {
+      if (additionalText.addPosition === 'start') {
         template = additionalText.data + '\n\n' + template
+      } else {
+        template += '\n\n' + additionalText.data
       }
     }
 

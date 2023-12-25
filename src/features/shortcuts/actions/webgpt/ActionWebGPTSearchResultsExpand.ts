@@ -190,10 +190,10 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       PAGE_CONTENT: pageContent.body,
       AI_RESPONSE_LANGUAGE: aiResponseLanguage,
     })
-    if (additionalText.addPosition === 'end') {
-      messageContent += additionalText.data + '\n\n'
-    } else {
+    if (additionalText.addPosition === 'start') {
       messageContent = additionalText.data + '\n\n' + messageContent
+    } else {
+      messageContent += '\n\n' + additionalText.data
     }
     return await clientAskMaxAIChatProvider(
       'USE_CHAT_GPT_PLUS',

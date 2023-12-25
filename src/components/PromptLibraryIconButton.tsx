@@ -103,15 +103,14 @@ const PromptLibraryIconButton: FC<{
     let activeTab: IPromptListType = 'Public'
     if (isImmersiveChatPage) {
       const url = new URL(window.location.href)
-      const queryActiveTab = url.searchParams.get('activeTab')
+      const queryActiveTab = url.searchParams.get('promptLibraryActiveTab')
       if (queryActiveTab) {
         activeTab = queryActiveTab as IPromptListType
         // remove query
-        url.searchParams.delete('activeTab')
+        url.searchParams.delete('promptLibraryActiveTab')
         window.history.replaceState({}, '', url.toString())
       }
     }
-    debugger
     initPromptLibrary({
       activeTab,
     })

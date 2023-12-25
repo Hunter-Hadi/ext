@@ -61,7 +61,9 @@ const PromptLibraryTabs: FC = () => {
           if (newValue !== 'Public' && promptLibraryRuntime === 'WebPage') {
             if (await checkMaxAIChromeExtensionInstall()) {
               // 跳转去ImmersiveChat
-              webPageOpenMaxAIImmersiveChat(`?activeTab=${newValue}`)
+              webPageOpenMaxAIImmersiveChat(
+                `?promptLibraryActiveTab=${newValue}`,
+              )
             }
             return
           }

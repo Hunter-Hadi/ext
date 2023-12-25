@@ -11,14 +11,23 @@ export type IMaxAIChatGPTBackendAPIType =
   | 'get_chatgpt_response'
   | 'get_summarize_response'
 
-export type IMaxAIChatGPTMessageType = {
-  type: 'human' | 'ai' | 'generic' | 'system' | 'function'
-  data: {
-    content: string
-    additional_kwargs: {
-      [key: string]: any
-    }
-  }
+export type IMaxAIChatMessageContentType = 'text'
+
+export interface IMaxAIChatMessageContent {
+  type: IMaxAIChatMessageContentType
+  text?: string
+}
+
+/**
+ * @description 发送给后端的消息格式
+ *
+ * @version 2.0 - 2023-12-25
+ * @description 2.0 版本的消息格式，将会支持多种类型的消息，例如：图片、视频、音频等
+ */
+
+export interface IMaxAIChatMessage {
+  role: 'human' | 'ai' | 'generic' | 'system' | 'function'
+  content: IMaxAIChatMessageContent[]
 }
 
 export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [

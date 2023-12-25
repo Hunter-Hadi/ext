@@ -2,10 +2,8 @@ import Browser from 'webextension-polyfill'
 
 import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
-import {
-  IMaxAIGeminiMessageType,
-  MAXAI_GENMINI_MODELS,
-} from '@/background/src/chat/MaxAIGeminiChat/types'
+import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
+import { IMaxAIChatMessage } from '@/background/src/chat/UseChatGPTChat/types'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
@@ -81,7 +79,7 @@ class MaxAIGeminiChat extends BaseChat {
       taskId: string
       regenerate?: boolean
       streaming?: boolean
-      chat_history?: IMaxAIGeminiMessageType[]
+      chat_history?: IMaxAIChatMessage[]
       meta?: Record<string, any>
     },
     onMessage?: (message: {

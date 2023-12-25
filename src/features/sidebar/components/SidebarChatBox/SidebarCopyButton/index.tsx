@@ -36,6 +36,8 @@ const SidebarCopyButton: FC<{
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+  // 防止误触
+  const mouseHoverTimer = useRef<ReturnType<typeof setTimeout>>()
   // 复制成功的提示
   const copyTooltipTitle = useMemo(() => {
     // 防止tooltip错位
@@ -78,7 +80,6 @@ const SidebarCopyButton: FC<{
       return () => {}
     }
   }, [isHover])
-
   return (
     <React.Fragment>
       <Button
@@ -89,10 +90,15 @@ const SidebarCopyButton: FC<{
           color: 'text.secondary',
         }}
         onMouseEnter={(event) => {
-          if (!disableTooltip) {
-            setIsHover(true)
-            setAnchorEl(event.currentTarget)
-          }
+          setAnchorEl(event.currentTarget)
+          mouseHoverTimer.current = setTimeout(() => {
+            if (!disableTooltip) {
+              setIsHover(true)
+            }
+          }, 100)
+        }}
+        onMouseLeave={() => {
+          clearTimeout(mouseHoverTimer.current)
         }}
         onClick={copyTextWithStyles}
       >

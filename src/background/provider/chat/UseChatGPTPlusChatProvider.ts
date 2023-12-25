@@ -8,7 +8,7 @@ import {
 import { UseChatGPTPlusChat } from '@/background/src/chat'
 import {
   IMaxAIChatGPTBackendAPIType,
-  IMaxAIChatGPTMessageType,
+  IMaxAIChatMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import ConversationManager, {
   IChatConversation,
@@ -51,7 +51,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     options,
   ) => {
     const messageId = uuidV4()
-    const chat_history: IMaxAIChatGPTMessageType[] = []
+    const chat_history: IMaxAIChatMessage[] = []
     const conversationDetail = await ConversationManager.conversationDB.getConversationById(
       question.conversationId,
     )
@@ -84,23 +84,27 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         conversationDetail.meta.systemPrompt
       ) {
         chat_history.push({
-          type: 'system',
-          data: {
-            content: conversationDetail.meta.systemPrompt,
-            additional_kwargs: {},
-          },
+          role: 'system',
+          content: [
+            {
+              type: 'text',
+              text: conversationDetail.meta.systemPrompt,
+            },
+          ],
         })
       }
       options.historyMessages?.forEach((message) => {
         chat_history.push({
-          type: message.type === 'ai' ? 'ai' : 'human',
-          data: {
-            content: message.text,
-            additional_kwargs: {},
-          },
+          role: message.type === 'ai' ? 'ai' : 'human',
+          content: [
+            {
+              type: 'text',
+              text: message.text,
+            },
+          ],
         })
       })
-      if (docId && chat_history?.[0]?.type === 'ai') {
+      if (docId && chat_history?.[0]?.role === 'ai') {
         // summary里面的chat history不包括页面的自动summary对话
         // 这个自动总结的对话会影响后续用户真正问的问题，我们在chat_with_document传chat hisotry的时候把这两条去掉吧
         // 2023-09-21 @xiang.xu

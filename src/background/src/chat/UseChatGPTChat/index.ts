@@ -1,30 +1,31 @@
-import { ChatStatus } from '@/background/provider/chat'
-import Log from '@/utils/Log'
+import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
+
+import { ChatStatus } from '@/background/provider/chat'
+import BaseChat from '@/background/src/chat/BaseChat'
 import {
-  APP_USE_CHAT_GPT_API_HOST,
-  APP_USE_CHAT_GPT_HOST,
-  AI_PROVIDER_MAP,
-  BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
-  APP_VERSION,
-} from '@/constants'
+  IMaxAIChatGPTBackendAPIType,
+  IMaxAIChatMessage,
+  USE_CHAT_GPT_PLUS_MODELS,
+} from '@/background/src/chat/UseChatGPTChat/types'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
 } from '@/background/utils'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
-import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { getChromeExtensionAccessToken } from '@/features/auth/utils'
-import BaseChat from '@/background/src/chat/BaseChat'
 import {
-  IMaxAIChatGPTBackendAPIType,
-  IMaxAIChatGPTMessageType,
-  USE_CHAT_GPT_PLUS_MODELS,
-} from '@/background/src/chat/UseChatGPTChat/types'
-import isNumber from 'lodash-es/isNumber'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+  AI_PROVIDER_MAP,
+  APP_USE_CHAT_GPT_API_HOST,
+  APP_USE_CHAT_GPT_HOST,
+  APP_VERSION,
+  BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
+} from '@/constants'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
+import { sendLarkBotMessage } from '@/utils/larkBot'
+import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
@@ -85,7 +86,7 @@ class UseChatGPTPlusChat extends BaseChat {
       taskId: string
       doc_id?: string
       streaming?: boolean
-      chat_history?: IMaxAIChatGPTMessageType[]
+      chat_history?: IMaxAIChatMessage[]
       backendAPI?: IMaxAIChatGPTBackendAPIType
       meta?: IChatMessageExtraMetaType
     },

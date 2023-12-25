@@ -6,7 +6,7 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { MaxAIClaudeChat } from '@/background/src/chat'
-import { IMaxAIClaudeMessageType } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { IMaxAIChatMessage } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
@@ -43,24 +43,28 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
     options,
   ) => {
     const messageId = uuidV4()
-    const chat_history: IMaxAIClaudeMessageType[] = []
+    const chat_history: IMaxAIChatMessage[] = []
     if (this.maxAIClaudeChat.conversation) {
       if (this.maxAIClaudeChat.conversation.meta.systemPrompt) {
         chat_history.push({
-          type: 'system',
-          data: {
-            content: this.maxAIClaudeChat.conversation.meta.systemPrompt,
-            additional_kwargs: {},
-          },
+          role: 'system',
+          content: [
+            {
+              type: 'text',
+              text: this.maxAIClaudeChat.conversation.meta.systemPrompt,
+            },
+          ],
         })
       }
       options.historyMessages?.forEach((message) => {
         chat_history.push({
-          type: message.type === 'ai' ? 'ai' : 'human',
-          data: {
-            content: message.text,
-            additional_kwargs: {},
-          },
+          role: message.type === 'ai' ? 'ai' : 'human',
+          content: [
+            {
+              type: 'text',
+              text: message.text,
+            },
+          ],
         })
       })
       options.includeHistory = false

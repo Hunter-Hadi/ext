@@ -6,7 +6,7 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { MaxAIGeminiChat } from '@/background/src/chat'
-import { IMaxAIGeminiMessageType } from '@/background/src/chat/MaxAIGeminiChat/types'
+import { IMaxAIChatMessage } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
@@ -43,24 +43,28 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
     options,
   ) => {
     const messageId = uuidV4()
-    const chat_history: IMaxAIGeminiMessageType[] = []
+    const chat_history: IMaxAIChatMessage[] = []
     if (this.maxAIGeminiChat.conversation) {
       if (this.maxAIGeminiChat.conversation.meta.systemPrompt) {
         chat_history.push({
-          type: 'system',
-          data: {
-            content: this.maxAIGeminiChat.conversation.meta.systemPrompt,
-            additional_kwargs: {},
-          },
+          role: 'system',
+          content: [
+            {
+              type: 'text',
+              text: this.maxAIGeminiChat.conversation.meta.systemPrompt,
+            },
+          ],
         })
       }
       options.historyMessages?.forEach((message) => {
         chat_history.push({
-          type: message.type === 'ai' ? 'ai' : 'human',
-          data: {
-            content: message.text,
-            additional_kwargs: {},
-          },
+          role: message.type === 'ai' ? 'ai' : 'human',
+          content: [
+            {
+              type: 'text',
+              text: message.text,
+            },
+          ],
         })
       })
       options.includeHistory = false
@@ -70,8 +74,8 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
     if (chat_history.length > 0) {
       // 从后往前过滤连续的human
       for (let i = chat_history.length - 1; i >= 0; i--) {
-        if (chat_history[i].type === 'human') {
-          if (chat_history[i - 1]?.type === 'human') {
+        if (chat_history[i].role === 'human') {
+          if (chat_history[i - 1]?.role === 'human') {
             chat_history.splice(i, 1)
           }
         }

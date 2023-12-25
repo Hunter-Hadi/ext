@@ -1,16 +1,6 @@
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
-export type IMaxAIGeminiMessageType = {
-  type: 'human' | 'ai' | 'generic' | 'system' | 'function'
-  data: {
-    content: string
-    additional_kwargs: {
-      [key: string]: any
-    }
-  }
-}
-
 export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
   {
     title: 'gemini-pro',

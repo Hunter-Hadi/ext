@@ -125,7 +125,7 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
             startIcon={
               <AIProviderIcon aiProviderType={providerOption.value} size={24} />
             }
-            endIcon={<AIProviderMainPartIcon color="white" />}
+            endIcon={<AIProviderMainPartIcon />}
             sx={{
               flexShrink: 0,
               borderRadius: 2,

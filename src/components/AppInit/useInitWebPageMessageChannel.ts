@@ -61,7 +61,7 @@ const useInitWebPageMessageChannel = () => {
     ) {
       isRunningActionsRef.current = true
       setShortCuts(waitRunActionsConfig.actions)
-      runShortCuts()
+      runShortCuts(true)
         .then((result) => {
           console.log(shortCutsEngineRef)
           responseDataToPage(

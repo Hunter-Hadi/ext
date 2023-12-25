@@ -1,12 +1,13 @@
-import { IconButtonProps } from '@mui/material/IconButton'
-import React, { FC, useMemo, useState } from 'react'
-import TooltipIconButton from '@/components/TooltipIconButton'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { IconButtonProps } from '@mui/material/IconButton'
+import { SxProps } from '@mui/material/styles'
+import React, { FC, useMemo, useState } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { SxProps } from '@mui/material/styles'
 import { useTranslation } from 'react-i18next'
+
+import TooltipIconButton from '@/components/TooltipIconButton'
 
 interface ITooltipIconButton extends IconButtonProps {
   copyText: string

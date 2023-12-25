@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import TooltipIconButton from '@/components/TooltipIconButton'
+import TooltipButton from '@/components/TooltipButton'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -56,7 +56,12 @@ const FloatingInputButton: FC<{
   }
   if (iconButton) {
     return (
-      <TooltipIconButton
+      <TooltipButton
+        sx={{
+          minWidth: 'unset',
+          p: '5px',
+          color: 'text.secondary',
+        }}
         className={className}
         title={t('client:sidebar__button__use_prompt')}
         onClick={handleClick}
@@ -67,7 +72,7 @@ const FloatingInputButton: FC<{
             color: 'inherit',
           }}
         />
-      </TooltipIconButton>
+      </TooltipButton>
     )
   }
   return (

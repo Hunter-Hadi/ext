@@ -1,3 +1,6 @@
+import sanitizeHtml from 'sanitize-html'
+import sanitize from 'sanitize-html'
+
 import { IChatConversation } from '@/background/src/chatConversations'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
 import {
@@ -13,8 +16,8 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
   try {
     const originalMessage = message.originalMessage
     if (originalMessage) {
-      const shareType = originalMessage.metadata?.shareType || 'normal'
-      let formatText = message.originalMessage?.content?.text || message.text
+      const shareType = originalMessage?.metadata?.shareType || 'normal'
+      let formatText = originalMessage?.content?.text || message.text
       switch (shareType) {
         case 'normal':
           break
@@ -62,6 +65,87 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
   } catch (e) {
     return message.text
   }
+}
+export const formatAIMessageContentForClipboard = (
+  message: IAIResponseMessage,
+  element: HTMLElement,
+) => {
+  const originalMessage = message?.originalMessage
+  if (!originalMessage || !element?.outerHTML) {
+    return
+  }
+  const domParser = new DOMParser()
+  const doc = domParser.parseFromString(
+    sanitizeHtml(element.outerHTML, {
+      disallowedTagsMode: 'recursiveEscape',
+    } as sanitize.IOptions),
+    'text/html',
+  )
+  const shareType = originalMessage?.metadata?.shareType || 'normal'
+  switch (shareType) {
+    case 'normal':
+      break
+    case 'summary':
+      {
+        // 添加标题和结尾
+        if (
+          originalMessage.metadata?.sourceWebpage?.title &&
+          originalMessage.metadata.sourceWebpage.url
+        ) {
+          const title = originalMessage.metadata.sourceWebpage.title
+          const breakLine = doc.createElement('br')
+          const url = originalMessage.metadata.sourceWebpage.url
+          const titleElement = doc.createElement('h1')
+          titleElement.innerText = title
+          const urlElement = doc.createElement('p')
+          urlElement.innerText = `Source:\n${url}`
+          doc.body.prepend(urlElement)
+          doc.body.prepend(breakLine)
+          doc.body.prepend(titleElement)
+        }
+        // 添加结尾
+        const breakLine = doc.createElement('br')
+        const poweredByElement = doc.createElement('p')
+        poweredByElement.innerText = 'Powered by MaxAI.me'
+        doc.body.appendChild(breakLine)
+        doc.body.appendChild(poweredByElement)
+      }
+      break
+    case 'search':
+      {
+        // 添加引用
+        if (originalMessage?.metadata?.sources?.links) {
+          const links = originalMessage.metadata.sources.links
+          let citations = `\n\nCitations:`
+          if (links.length > 0) {
+            links.forEach((link, index) => {
+              citations += `\n[${index + 1}] ${link.url}`
+            })
+          }
+          const citationsElement = doc.createElement('p')
+          citationsElement.innerText = citations
+          doc.body.appendChild(citationsElement)
+        }
+        // 添加结尾
+        const breakLine = doc.createElement('br')
+        const poweredByElement = doc.createElement('p')
+        poweredByElement.innerText = 'Powered by MaxAI.me'
+        doc.body.appendChild(breakLine)
+        doc.body.appendChild(poweredByElement)
+      }
+      break
+    default:
+      break
+  }
+  const html = doc.documentElement.outerHTML
+  const htmlBlob = new Blob([html], { type: 'text/html' })
+  const text = element.textContent ?? ''
+  const textBlob = new Blob([text], { type: 'text/plain' })
+  const clipboardItem = new ClipboardItem({
+    [htmlBlob.type]: htmlBlob,
+    [textBlob.type]: textBlob,
+  })
+  navigator.clipboard.write([clipboardItem])
 }
 /**
  * 格式化用户消息的内容

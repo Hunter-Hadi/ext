@@ -1,15 +1,13 @@
-import React, { FC, useMemo } from 'react'
+import ReplyIcon from '@mui/icons-material/Reply'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import ReplyIcon from '@mui/icons-material/Reply'
-import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
-import { hideChatBox } from '@/utils'
+import React, { FC, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
-import { useTranslation } from 'react-i18next'
+import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
-
-const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 
 const SidebarChatBoxAiTools: FC<{
   insertAble?: boolean
@@ -19,7 +17,7 @@ const SidebarChatBoxAiTools: FC<{
   onCopy?: () => void
 }> = (props) => {
   const { t } = useTranslation(['common', 'client'])
-  const { message, insertAble } = props
+  const { message, insertAble, onCopy } = props
   const insertAbleMemo = useMemo(() => {
     return insertAble
   }, [insertAble])
@@ -27,6 +25,7 @@ const SidebarChatBoxAiTools: FC<{
   const memoCopyText = useMemo(() => {
     return formatAIMessageContent(message)
   }, [message])
+
   return (
     <Stack
       direction={'row'}
@@ -48,16 +47,7 @@ const SidebarChatBoxAiTools: FC<{
           {t('client:sidebar__button__insert')}
         </Button>
       )}
-      <CopyTooltipIconButton
-        className={'max-ai__actions__button--copy'}
-        copyText={memoCopyText}
-        onCopy={() => {
-          props.onCopy?.()
-          if (TEMP_CLOSE_HOSTS.includes(window.location.host)) {
-            setTimeout(hideChatBox, 1)
-          }
-        }}
-      />
+      <SidebarCopyButton message={message} onCopy={onCopy} />
       {props.useChatGPTAble && (
         <FloatingInputButton
           className={'max-ai__actions__button--use-max-ai'}

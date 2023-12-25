@@ -1,8 +1,10 @@
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import React, { FC } from 'react'
+
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
+
 interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
   title: React.ReactNode | string
   placement?: TextOnlyTooltipProps['placement']

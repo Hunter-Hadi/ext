@@ -1,78 +1,79 @@
-import React, { FC, useMemo } from 'react'
-import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined'
-import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
-import DoneIcon from '@mui/icons-material/Done'
+import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
-import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined'
+import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined'
+import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined'
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
+import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
+import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
+import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
+import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
+import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
+import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
+import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import DoneIcon from '@mui/icons-material/Done'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
+import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined'
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined'
+import ExtensionOutlinedIcon from '@mui/icons-material/ExtensionOutlined'
+import FastForwardOutlinedIcon from '@mui/icons-material/FastForwardOutlined'
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
+import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
 // import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import FilterAltOutlinedIcon from '@mui/icons-material/FilterAltOutlined'
+import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutlined'
+import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
+import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined'
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
+import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined'
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
+import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
+import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined'
+import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
+import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
+import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
+import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
+import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
+import OutletOutlinedIcon from '@mui/icons-material/OutletOutlined'
+import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined'
+import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined'
+import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
+import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined'
+import ReplyIcon from '@mui/icons-material/Reply'
+import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined'
+import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
+import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined'
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
+import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import ShortTextIcon from '@mui/icons-material/ShortText'
+import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
+import StarBorderIcon from '@mui/icons-material/StarBorder'
 import SubjectIcon from '@mui/icons-material/Subject'
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined'
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
-import QuestionMarkOutlinedIcon from '@mui/icons-material/QuestionMarkOutlined'
-import FormatListBulletedOutlinedIcon from '@mui/icons-material/FormatListBulletedOutlined'
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
-import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
-import StarBorderIcon from '@mui/icons-material/StarBorder'
-import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined'
-import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
-import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
-import SchoolOutlinedIcon from '@mui/icons-material/SchoolOutlined'
-import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
-import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
-import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined'
 import SupportOutlinedIcon from '@mui/icons-material/SupportOutlined'
-import OutletOutlinedIcon from '@mui/icons-material/OutletOutlined'
-import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined'
-import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
-import ExtensionOutlinedIcon from '@mui/icons-material/ExtensionOutlined'
-import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined'
-import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
-import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
-import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
-import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined'
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
-import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
-import ReplyIcon from '@mui/icons-material/Reply'
-import ModeEditOutlinedIcon from '@mui/icons-material/ModeEditOutlined'
-import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
-import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined'
-import FastForwardOutlinedIcon from '@mui/icons-material/FastForwardOutlined'
-import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
-import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined'
-import FormatAlignLeftOutlinedIcon from '@mui/icons-material/FormatAlignLeftOutlined'
-import RestartAltOutlinedIcon from '@mui/icons-material/RestartAltOutlined'
-import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
-import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
-import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
-import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined'
-import ExpandLessOutlinedIcon from '@mui/icons-material/ExpandLessOutlined'
-import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined'
-import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined'
-import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined'
-import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
-import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
-import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
+import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined'
+import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined'
+import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined'
 import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined'
-import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
-import ScreenSearchDesktopOutlinedIcon from '@mui/icons-material/ScreenSearchDesktopOutlined'
+import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
-import FileUploadOutlinedIcon from '@mui/icons-material/FileUploadOutlined'
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined'
-import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined'
-import { SxProps } from '@mui/material/styles'
-import { EzMailAIIcon } from '@/components/CustomIcon'
-import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
+import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
 import Box from '@mui/material/Box'
+import { SxProps } from '@mui/material/styles'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
+import React, { FC, useMemo } from 'react'
+
+import { EzMailAIIcon } from '@/components/CustomIcon'
 export const CONTEXT_MENU_ICONS = [
   'AutoFix',
   'Done',
@@ -120,6 +121,7 @@ export const CONTEXT_MENU_ICONS = [
   'FastForward',
   'Delete',
   'Copy',
+  'CopyTextOnly',
   'Replay',
   'FormatAlignLeft',
   'NoteUp',
@@ -291,6 +293,37 @@ const ContextMenuIcon: FC<{
       return <DeleteOutlineOutlinedIcon sx={sxMemo} />
     case 'Copy':
       return <ContentCopyOutlinedIcon sx={sxMemo} />
+    case 'CopyTextOnly':
+      return (
+        <SvgIcon sx={sxMemo}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g mask="url(#mask0_6092_33772)">
+              <path
+                d="M4.69315 0.90625C4.11904 0.90625 3.62756 1.11067 3.21872 1.51951C2.80989 1.92835 2.60547 2.41982 2.60547 2.99393V17.6077H4.62234V2.99393L16.1754 2.91406V0.90625H4.69315Z"
+                fill="black"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M14.9572 9.59569L18.0168 18.5947H16.3421L15.7183 16.6974H12.4692L11.8455 18.5947H10.1708L13.2303 9.59569H14.9572ZM14.0926 11.783L15.2401 15.2451H12.9474L14.0926 11.783Z"
+                fill="black"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M7.39408 5.82767C7.80292 5.41883 8.29439 5.21442 8.8685 5.21442H19.3069C19.881 5.21442 20.3725 5.41883 20.7813 5.82767C21.1902 6.23652 21.3946 6.72799 21.3946 7.3021V20.8721C21.3946 21.4462 21.1902 21.9376 20.7813 22.3465C20.3725 22.7553 19.881 22.9597 19.3069 22.9597H8.8685C8.29439 22.9597 7.80292 22.7553 7.39408 22.3465C6.98525 21.9376 6.78083 21.4462 6.78083 20.8721V7.3021C6.78083 6.72799 6.98525 6.23652 7.39408 5.82767ZM19.3826 7.23739H8.75628V20.9531H19.3826V7.23739Z"
+                fill="black"
+              />
+            </g>
+          </svg>
+        </SvgIcon>
+      )
     case 'Replay':
       return <ReplayOutlinedIcon sx={sxMemo} />
     case 'FormatAlignLeft':

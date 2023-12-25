@@ -138,7 +138,7 @@ const AIProviderAuthCard: FC<{
                   height: '40px',
                 }}
               >
-                <Typography fontSize={'18px'} fontWeight={700}>
+                <Typography fontSize={'16px'} fontWeight={700}>
                   {t('client:provider__chatgpt_web_app__connecting')}
                 </Typography>
               </Stack>

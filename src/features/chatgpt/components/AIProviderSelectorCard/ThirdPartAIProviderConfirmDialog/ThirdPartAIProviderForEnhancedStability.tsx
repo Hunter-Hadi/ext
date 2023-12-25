@@ -83,6 +83,7 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
         <AIChipIcon
           sx={{
             color: 'rgba(219, 68, 55, 1)',
+            fontSize: 24,
           }}
         />
 
@@ -101,6 +102,7 @@ const ThirdPartAIProviderForEnhancedStability: FC = () => {
         color={'text.secondary'}
         lineHeight={1.5}
         mt={'4px !important'}
+        textAlign={'left'}
       >
         {t('client:provider__confirm_dialog__for_enhanced_stability__desc')}
         <Box component={'span'} fontWeight={500} color="text.primary">

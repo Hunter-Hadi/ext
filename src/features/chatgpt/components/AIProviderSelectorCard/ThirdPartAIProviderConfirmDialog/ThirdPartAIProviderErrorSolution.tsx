@@ -21,6 +21,7 @@ const ThirdPartAIProviderErrorSolution = () => {
         <WarningAmberOutlinedIcon
           sx={{
             color: 'rgba(219, 68, 55, 1)',
+            fontSize: 24,
           }}
         />
 

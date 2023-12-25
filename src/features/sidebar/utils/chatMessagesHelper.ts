@@ -136,8 +136,6 @@ export const formatAIMessageContentForClipboard = (
             titleElement.innerText = `Question:`
             const titleContentElement = doc.createElement('p')
             titleContentElement.innerText = title
-            const breakLine = doc.createElement('br')
-            doc.body.prepend(breakLine)
             doc.body.prepend(titleContentElement)
             doc.body.prepend(titleElement)
           }

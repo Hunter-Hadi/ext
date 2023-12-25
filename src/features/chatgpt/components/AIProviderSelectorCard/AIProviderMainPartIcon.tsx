@@ -3,17 +3,17 @@ import React, { FC } from 'react'
 
 interface IProps {
   iconSize?: number
-  color?: string
 }
 
-const ProviderMainPartIcon: FC<IProps> = ({
-  iconSize = 16,
-  color = 'primary.main',
-}) => (
+const AIProviderMainPartIcon: FC<IProps> = ({ iconSize = 16 }) => (
   <SvgIcon
     sx={{
       fontSize: iconSize,
-      color,
+      color: (t) => {
+        const isDarkMode = t.palette.mode === 'dark'
+
+        return isDarkMode ? 'white' : 'primary.main'
+      },
     }}
   >
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
@@ -25,4 +25,4 @@ const ProviderMainPartIcon: FC<IProps> = ({
   </SvgIcon>
 )
 
-export default ProviderMainPartIcon
+export default AIProviderMainPartIcon

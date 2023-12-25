@@ -109,7 +109,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
       {/* close button */}
       <IconButton
         sx={{
-          position: 'fixed',
+          position: 'absolute',
           top: 2,
           right: 2,
         }}

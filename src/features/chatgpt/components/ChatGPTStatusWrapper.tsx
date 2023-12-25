@@ -342,8 +342,7 @@ const ChatGPTStatusWrapper: FC = () => {
         sx={{
           position: 'absolute',
           right: 8,
-          top: '50%',
-          transform: 'translateY(-50%)',
+          bottom: '10%',
           bgcolor: 'background.paper',
           display: 'flex',
           flexDirection: 'column',

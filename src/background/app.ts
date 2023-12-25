@@ -63,7 +63,9 @@ import {
 } from '@/features/common/constants'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
+import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 /**
  * background.js 入口
@@ -115,34 +117,6 @@ const initChromeExtensionInstalled = () => {
       //   await Browser.tabs.create({
       //     url: 'https://app.maxai.me/celebrationV2',
       //   })
-      // }
-      // NOTE: 更新的时候统计一下当前占用的内存
-      // if (APP_VERSION === '2.2.6') {
-      //   WebsiteContextManager.computeWebsiteContextStorageSize()
-      //     .then((size) => {
-      //       if (size > 0) {
-      //         setTimeout(() => {
-      //           // 发送到larkbot
-      //           sendLarkBotMessage(
-      //             '[Memory] storage size',
-      //             JSON.stringify(
-      //               {
-      //                 size,
-      //                 version: APP_VERSION,
-      //               },
-      //               null,
-      //               4,
-      //             ),
-      //             {
-      //               uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
-      //             },
-      //           )
-      //             .then()
-      //             .catch()
-      //         }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
-      //       }
-      //     })
-      //     .catch()
       // }
       await initChromeExtensionUpdated()
       // 保存本地快照
@@ -240,6 +214,51 @@ const initChromeExtensionUpdated = async () => {
       })
     }
   }
+  /**
+   * @since 2023-12-25
+   * @description 分析一下indexDB的内存占用
+   */
+  const analyzeIndexDBMemory = async () => {
+    const result = await getChromeExtensionUserInfo(false)
+    if (result?.roles && result?.subscription_plan_name) {
+      const role = (
+        result.roles.find((role) => role.name === 'elite') ||
+        result.roles.find((role) => role.name === 'pro') || {
+          name: 'free',
+        }
+      ).name
+      /**
+       * 只收集pro和elite的用户
+       */
+      if (role === 'pro' || role === 'elite') {
+        WebsiteContextManager.computeWebsiteContextStorageSize()
+          .then((size) => {
+            if (size > 0) {
+              setTimeout(() => {
+                // 发送到larkbot
+                sendLarkBotMessage(
+                  '[Memory] storage size',
+                  JSON.stringify(
+                    {
+                      size,
+                      version: APP_VERSION,
+                    },
+                    null,
+                    4,
+                  ),
+                  {
+                    uuid: '247cb207-4b00-4cd3-be74-bdb9ade6f8f4',
+                  },
+                )
+                  .then()
+                  .catch()
+              }, (Math.random() * 60 + 10) * 1000) // 延迟10-70s发送,降低发送频率
+            }
+          })
+          .catch()
+      }
+    }
+  }
   if (APP_VERSION === '2.4.3') {
     setTimeout(
       executeBlackFridayPromotion,
@@ -251,6 +270,10 @@ const initChromeExtensionUpdated = async () => {
       executeChristmasPromotion,
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
+  }
+  // NOTE: 更新的时候统计一下当前占用的内存
+  if (APP_VERSION === '2.4.8') {
+    analyzeIndexDBMemory()
   }
   // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
   await ConversationManager.getAllConversation()

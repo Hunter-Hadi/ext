@@ -65,12 +65,12 @@ const ChatGPTStatusWrapper: FC = () => {
   })
   const memoMaskSx = useMemo(() => {
     return {
-      position: isMaxAIImmersiveChatPage() ? 'fixed' : 'absolute',
+      position: 'absolute',
       top: 0,
       left: 0,
       right: 0,
       bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.5)',
+      backgroundColor: isMaxAIImmersiveChatPage() ? 'unset' : 'rgba(0,0,0,0.5)',
       zIndex: 2147483631,
       display: 'flex',
       justifyContent: 'center',
@@ -80,6 +80,20 @@ const ChatGPTStatusWrapper: FC = () => {
       },
     }
   }, [])
+  const memoImmersiveChatMask = useMemo(() => {
+    if (isMaxAIImmersiveChatPage()) {
+      return (
+        <Box
+          sx={{
+            ...memoMaskSx,
+            position: 'fixed',
+            zIndex: -1,
+          }}
+        />
+      )
+    }
+    return null
+  }, [memoMaskSx])
 
   if (status === 'needReload') {
     return (
@@ -96,6 +110,7 @@ const ChatGPTStatusWrapper: FC = () => {
             <ChatGPTRefreshPageTips />
           </Paper>
         </Stack>
+        {memoImmersiveChatMask}
       </Box>
     )
   }
@@ -283,6 +298,7 @@ const ChatGPTStatusWrapper: FC = () => {
             </Stack>
           </Paper>
         </Stack>
+        {memoImmersiveChatMask}
       </Box>
     )
   }
@@ -322,6 +338,7 @@ const ChatGPTStatusWrapper: FC = () => {
       >
         <ThirdPartAIProviderConfirmDialog />
       </Paper>
+      {memoImmersiveChatMask}
     </Box>
   )
 }

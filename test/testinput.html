@@ -1,64 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang='en'>
 <head>
   <meta charset='UTF-8'>
-  <title>Title</title>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
 </head>
 <body>
-<textarea id='qq'></textarea>
-<br>
-<button id='btn'>click</button>
 </body>
-<script>
-  window.onload = function() {
-    const button = document.querySelector('#btn')
-    const textarea = document.querySelector('#qq')
-    button.addEventListener('click', () => {
-      // mock composition event
-      textarea.focus()
-      // 触发keydown和keypress事件，将keyCode设置为229，以便呼出拼音输入法
-      const keydownEvent = new KeyboardEvent('keydown', { keyCode: 229 });
-      textarea.dispatchEvent(keydownEvent)
-      const event = new CompositionEvent('compositionstart')
-      textarea.dispatchEvent(event)
-      // mock insertCompositionText
-      const event2 = new InputEvent('input', {
-        inputType: 'insertCompositionText',
-        data: 'h',
-        dataTransfer: null,
-        isComposing: true,
-        bubbles: true,
-        cancelable: true,
-        composed: true,
-        detail: 0,
-        view: window
-      })
-      textarea.dispatchEvent(event2)
-      // mock keyup
-      const keyupEvent = new KeyboardEvent('keyup', { keyCode: 74 });
-      textarea.dispatchEvent(keyupEvent)
-    })
-    textarea.addEventListener('composition', (ev) => {
-      console.log('网页 composition', ev)
-    })
-    textarea.addEventListener('compositionstart', (ev) => {
-      console.log('网页 compositionstart', ev)
-    })
-    textarea.addEventListener('compositionend', (ev) => {
-      console.log('网页 compositionend', ev)
-    })
-    textarea.addEventListener('input', (ev) => {
-      console.log('网页 input', ev)
-    })
-    textarea.addEventListener('change', (ev) => {
-      console.log('网页 change', ev)
-    })
-    textarea.addEventListener('keydown', (ev) => {
-      console.log('网页 keydown', ev.keyCode)
-    })
-    textarea.addEventListener('keyup', (ev) => {
-      console.log('网页 keyup', ev.keyCode)
-    })
-  }
-</script>
 </html>

@@ -3,6 +3,7 @@ import sanitize from 'sanitize-html'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   ISystemMessage,
   IThirdMessage,
@@ -175,29 +176,48 @@ export const formatAIMessageContentForClipboard = (
     }
   }
   const html = doc.documentElement.outerHTML
-  const htmlBlob = new Blob([html], { type: 'text/html' })
   // inject to body
   const root = document.createElement('div')
-  root.style.position = 'absolute'
-  root.style.top = '-9999px'
-  root.style.left = '-9999px'
-  root.style.zIndex = '-9999'
-  root.style.width = '1px'
-  root.style.height = '1px'
-  root.style.overflow = 'hidden'
+  root.style.all = 'unset!important'
+  root.style.position = 'absolute!important'
+  root.style.top = '-9999px!important'
+  root.style.left = '-9999px!important'
+  root.style.zIndex = '-9999!important'
+  root.style.width = '1px!important'
+  root.style.height = '1px!important'
+  root.style.overflow = 'hidden!important'
+  root.style.userSelect = 'auto!important'
   root.innerHTML = html
-  document.body.appendChild(root)
+
+  const container =
+    getMaxAISidebarRootElement()?.querySelector('div') || document.body
+  container.appendChild(root)
+  // select
+  const range = document.createRange()
+  range.selectNode(root)
+  const selection = window.getSelection()
+  selection?.removeAllRanges()
+  selection?.addRange(range)
   const text = ((root.innerText || root.textContent) ?? '').replace(
     /\n{2,}/g,
     '\n\n',
   )
-  document.body.removeChild(root)
-  const textBlob = new Blob([text], { type: 'text/plain' })
-  const clipboardItem = new ClipboardItem({
-    [htmlBlob.type]: htmlBlob,
-    [textBlob.type]: textBlob,
-  })
-  navigator.clipboard.write([clipboardItem])
+  root.addEventListener(
+    'copy',
+    (e) => {
+      const clipdata = e.clipboardData || (window as any).clipboardData
+      clipdata.setData('text/plain', text)
+      clipdata.setData('text/html', html)
+      e.preventDefault()
+      container.removeChild(root)
+    },
+    {
+      capture: true,
+      once: true,
+    },
+  )
+  // copy
+  document.execCommand('copy')
 }
 /**
  * 格式化用户消息的内容

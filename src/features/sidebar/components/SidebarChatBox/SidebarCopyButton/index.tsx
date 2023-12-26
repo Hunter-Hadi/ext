@@ -137,7 +137,11 @@ const SidebarCopyButton: FC<{
           },
         }}
       >
-        <List>
+        <List
+          sx={{
+            py: 0,
+          }}
+        >
           <ListItem
             disablePadding
             sx={{

@@ -145,6 +145,7 @@ const PromptLibraryCard: FC<{
     >
       <Stack direction="row" spacing={1.5} justifyContent="space-between">
         <EllipsisTextWithTooltip
+          resizeListener
           tip={prompt.prompt_title}
           color={'text.secondary'}
           sx={{
@@ -214,6 +215,7 @@ const PromptLibraryCard: FC<{
         )}
       </Stack>
       <EllipsisTextWithTooltip
+        resizeListener
         variant={'custom'}
         tip={prompt.teaser}
         color={'text.secondary'}

@@ -5,7 +5,7 @@ import Link from '@mui/material/Link'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { FC, useEffect, useState } from 'react'
+import { FC, useEffect, useMemo, useState } from 'react'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -25,6 +25,7 @@ import {
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import { AppDBStorageState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
@@ -62,26 +63,27 @@ const ChatGPTStatusWrapper: FC = () => {
       }
     })
   })
+  const memoMaskSx = useMemo(() => {
+    return {
+      position: isMaxAIImmersiveChatPage() ? 'fixed' : 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.5)',
+      zIndex: 2147483631,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      '& + *': {
+        filter: 'blur(5px)',
+      },
+    }
+  }, [])
 
   if (status === 'needReload') {
     return (
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 2147483631,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          '& + *': {
-            filter: 'blur(5px)',
-          },
-        }}
-      >
+      <Box sx={memoMaskSx}>
         <Stack spacing={2} width={'calc(100% - 16px)'}>
           <Paper
             sx={{
@@ -100,23 +102,7 @@ const ChatGPTStatusWrapper: FC = () => {
 
   if (!authLogin.isLogin) {
     return (
-      <Box
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0,0,0,0.5)',
-          zIndex: 2147483631,
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          '& + *': {
-            filter: 'blur(5px)',
-          },
-        }}
-      >
+      <Box sx={memoMaskSx}>
         <Stack width={'calc(100% - 16px)'}>
           <Stack
             spacing={1.5}
@@ -307,22 +293,7 @@ const ChatGPTStatusWrapper: FC = () => {
   }
 
   return (
-    <Box
-      sx={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        zIndex: 2147483631,
-        display: 'flex',
-        justifyContent: 'center',
-        '& + *': {
-          filter: 'blur(5px)',
-        },
-      }}
-    >
+    <Box sx={memoMaskSx}>
       <Paper
         sx={{
           position: 'absolute',

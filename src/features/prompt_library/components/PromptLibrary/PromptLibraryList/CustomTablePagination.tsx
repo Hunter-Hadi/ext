@@ -4,9 +4,10 @@ import TablePagination, {
   tablePaginationClasses,
   TablePaginationProps,
 } from '@mui/material/TablePagination'
-import React, { FC } from 'react'
+import React, { FC, useContext } from 'react'
 
-import { getPromptLibraryPortalContainerRoot } from '@/features/prompt_library/utils'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
 
 interface ICustomTablePaginationProps {
   /**
@@ -44,6 +45,7 @@ const CustomTablePagination: FC<ICustomTablePaginationProps> = ({
   onChange,
   onPageSizeChange,
 }) => {
+  const { promptLibraryRuntime } = useContext(PromptLibraryRuntimeContext)!
   if (!total || (!current && current !== 0) || !pageSize) {
     return null
   }
@@ -109,7 +111,10 @@ const CustomTablePagination: FC<ICustomTablePaginationProps> = ({
             onRowsPerPageChange={handleChangeRowsPerPage}
             SelectProps={{
               MenuProps: {
-                container: getPromptLibraryPortalContainerRoot(),
+                container:
+                  promptLibraryRuntime === 'WebPage'
+                    ? document.body
+                    : getMaxAISidebarRootElement(),
                 // disablePortal: true,
               },
             }}

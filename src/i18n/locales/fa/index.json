@@ -756,6 +756,11 @@
     "delete_prompt__title": "آیا از حذف این الگوی پیام مطمئن هستید؟",
     "delete_prompt__action__confirm__title": "حذف",
     "delete_prompt__cancel__confirm__title": "لغو",
-    "use_prompt_library__title__tooltip": "پیشنهادهای 1 کلیک"
+    "use_prompt_library__title__tooltip": "پیشنهادهای 1 کلیک",
+    "add_favorite__tooltip": "افزودن به علاقه‌مندی‌ها",
+    "remove_favorite__tooltip": "حذف از علاقه‌مندی‌ها",
+    "view_details__tooltip": "مشاهده جزئیات پیام",
+    "delete_prompt__tooltip": "حذف پیام",
+    "edit_prompt__tooltip": "ویرایش پیام"
   }
 }

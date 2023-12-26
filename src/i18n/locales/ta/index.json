@@ -756,6 +756,11 @@
     "delete_prompt__title": "இந்த புரம்பு வார்ப்புருவை நீக்க உறுதியாக விரும்புகிறீர்களா?",
     "delete_prompt__action__confirm__title": "நீக்கு",
     "delete_prompt__cancel__confirm__title": "ரத்துசெய்",
-    "use_prompt_library__title__tooltip": "1-கிளிக் புரட்சிகள்"
+    "use_prompt_library__title__tooltip": "1-கிளிக் புரட்சிகள்",
+    "add_favorite__tooltip": "பிடித்தமானதுக்கு சேர்க்கவும்",
+    "remove_favorite__tooltip": "பிடித்தமானதிலிருந்து அகற்றுக",
+    "view_details__tooltip": "உரை விவரங்களைக் காண்க",
+    "delete_prompt__tooltip": "உரையை நீக்கு",
+    "edit_prompt__tooltip": "உரையைத் திருத்து"
   }
 }

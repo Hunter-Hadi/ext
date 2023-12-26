@@ -756,6 +756,11 @@
     "delete_prompt__title": "ഈ പ്രോംപ്റ്റ് ടെംപ്ലേറ്റ് ഇല്ലാതാക്കാൻ നിങ്ങൾ ഉറപ്പാണോ?",
     "delete_prompt__action__confirm__title": "ഇല്ലാതാക്കുക",
     "delete_prompt__cancel__confirm__title": "റദ്ദാക്കുക",
-    "use_prompt_library__title__tooltip": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റ്"
+    "use_prompt_library__title__tooltip": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റ്",
+    "add_favorite__tooltip": "പ്രിയപ്പെട്ടതാക്കുക",
+    "remove_favorite__tooltip": "പ്രിയപ്പെട്ടതിന് നീക്കം ചെയ്യുക",
+    "view_details__tooltip": "പ്രോംപ്റ്റ് വിശദാംശങ്ങൾ കാണുക",
+    "delete_prompt__tooltip": "പ്രോംപ്റ്റ് ഇല്ലാതാക്കുക",
+    "edit_prompt__tooltip": "പ്രോംപ്റ്റ് എഡിറ്റുചെയ്യുക"
   }
 }

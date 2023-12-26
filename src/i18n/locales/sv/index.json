@@ -756,6 +756,11 @@
     "delete_prompt__title": "Är du säker på att du vill ta bort denna promptmall?",
     "delete_prompt__action__confirm__title": "Ta bort",
     "delete_prompt__cancel__confirm__title": "Avbryt",
-    "use_prompt_library__title__tooltip": "1-klicka på uppmaningar"
+    "use_prompt_library__title__tooltip": "1-klicka på uppmaningar",
+    "add_favorite__tooltip": "Lägg till i favoriter",
+    "remove_favorite__tooltip": "Ta bort från favoriter",
+    "view_details__tooltip": "Visa detaljer för prompt",
+    "delete_prompt__tooltip": "Radera prompt",
+    "edit_prompt__tooltip": "Redigera prompt"
   }
 }

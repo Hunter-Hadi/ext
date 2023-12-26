@@ -756,6 +756,11 @@
     "delete_prompt__title": "このプロンプトテンプレートを削除してもよろしいですか？",
     "delete_prompt__action__confirm__title": "削除",
     "delete_prompt__cancel__confirm__title": "キャンセル",
-    "use_prompt_library__title__tooltip": "1クリックのプロンプト"
+    "use_prompt_library__title__tooltip": "1クリックのプロンプト",
+    "add_favorite__tooltip": "お気に入りに追加",
+    "remove_favorite__tooltip": "お気に入りから削除",
+    "view_details__tooltip": "プロンプトの詳細を表示",
+    "delete_prompt__tooltip": "プロンプトを削除",
+    "edit_prompt__tooltip": "プロンプトを編集"
   }
 }

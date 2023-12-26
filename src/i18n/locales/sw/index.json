@@ -756,6 +756,11 @@
     "delete_prompt__title": "Je, una uhakika unataka kufuta kigezo hiki cha onyo?",
     "delete_prompt__action__confirm__title": "Futa",
     "delete_prompt__cancel__confirm__title": "Ghairi",
-    "use_prompt_library__title__tooltip": "Vidokezo vya 1-click"
+    "use_prompt_library__title__tooltip": "Vidokezo vya 1-click",
+    "add_favorite__tooltip": "Ongeza kwenye Pendwa",
+    "remove_favorite__tooltip": "Ondoa kutoka Pendwa",
+    "view_details__tooltip": "Angalia maelezo ya prompt",
+    "delete_prompt__tooltip": "Futa prompt",
+    "edit_prompt__tooltip": "Hariri prompt"
   }
 }

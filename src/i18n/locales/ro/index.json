@@ -756,6 +756,11 @@
     "delete_prompt__title": "Sunteți sigur că doriți să ștergeți acest șablon de prompt?",
     "delete_prompt__action__confirm__title": "Șterge",
     "delete_prompt__cancel__confirm__title": "Anulează",
-    "use_prompt_library__title__tooltip": "Prompturi cu un singur clic"
+    "use_prompt_library__title__tooltip": "Prompturi cu un singur clic",
+    "add_favorite__tooltip": "Adaugă la Favorite",
+    "remove_favorite__tooltip": "Elimină din Favorite",
+    "view_details__tooltip": "Vezi detalii prompt",
+    "delete_prompt__tooltip": "Șterge prompt",
+    "edit_prompt__tooltip": "Editează prompt"
   }
 }

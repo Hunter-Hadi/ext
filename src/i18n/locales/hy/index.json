@@ -756,6 +756,11 @@
     "delete_prompt__title": "Արդյունքները ջնջելուց համոզվա՞ծ եք, որ ցանկանում եք ջնջել այս խորհուրդի ձևաչափը:",
     "delete_prompt__action__confirm__title": "Ջնջել",
     "delete_prompt__cancel__confirm__title": "Չեղարկել",
-    "use_prompt_library__title__tooltip": "1-կտավորիչ հարցեր"
+    "use_prompt_library__title__tooltip": "1-կտավորիչ հարցեր",
+    "add_favorite__tooltip": "Ավելացնել հավատարմագրություններին",
+    "remove_favorite__tooltip": "Հեռացնել հավատարմագրություններից",
+    "view_details__tooltip": "Դիտել հավատարմագրության մանրամասները",
+    "delete_prompt__tooltip": "Ջնջել հավատարմագրությունը",
+    "edit_prompt__tooltip": "Խմբագրել հավատարմագրությունը"
   }
 }

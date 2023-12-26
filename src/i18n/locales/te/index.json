@@ -756,6 +756,11 @@
     "delete_prompt__title": "ఈ ప్రాంప్ట్ టెంప్లేట్‌ను తొలగించాలని మీరు ఖచ్చితంగా ఉందా?",
     "delete_prompt__action__confirm__title": "తొలగించు",
     "delete_prompt__cancel__confirm__title": "రద్దు చేయండి",
-    "use_prompt_library__title__tooltip": "1-క్లిక్ ప్రాంప్టులు"
+    "use_prompt_library__title__tooltip": "1-క్లిక్ ప్రాంప్టులు",
+    "add_favorite__tooltip": "ప్రియమైనదిగా జోడించండి",
+    "remove_favorite__tooltip": "ప్రియమైనదిని తొలగించండి",
+    "view_details__tooltip": "ప్రాంతం వివరాలను చూడండి",
+    "delete_prompt__tooltip": "ప్రాంతంని తొలగించండి",
+    "edit_prompt__tooltip": "ప్రాంతంని సవరించండి"
   }
 }

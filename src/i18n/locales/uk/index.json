@@ -756,6 +756,11 @@
     "delete_prompt__title": "کیا آپ واقعی اس پرامپ ٹیمپلیٹ کو حذف کرنا چاہتے ہیں؟",
     "delete_prompt__action__confirm__title": "حذف کریں",
     "delete_prompt__cancel__confirm__title": "منسوخ کریں",
-    "use_prompt_library__title__tooltip": "1-کلک پرامپٹس"
+    "use_prompt_library__title__tooltip": "1-کلک پرامپٹس",
+    "add_favorite__tooltip": "پسندیدہ میں شامل کریں",
+    "remove_favorite__tooltip": "پسندیدہ سے ہٹائیں",
+    "view_details__tooltip": "پرومپٹ کی تفصیلات دیکھیں",
+    "delete_prompt__tooltip": "پرومپٹ حذف کریں",
+    "edit_prompt__tooltip": "پرومپٹ میں ترمیم کریں"
   }
 }

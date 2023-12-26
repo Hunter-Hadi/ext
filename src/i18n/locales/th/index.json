@@ -756,6 +756,11 @@
     "delete_prompt__title": "คุณแน่ใจหรือว่าต้องการลบเทมเพลตโปรโมตนี้?",
     "delete_prompt__action__confirm__title": "ลบ",
     "delete_prompt__cancel__confirm__title": "ยกเลิก",
-    "use_prompt_library__title__tooltip": "คำใบ้ด้วยการคลิก 1 ครั้ง"
+    "use_prompt_library__title__tooltip": "คำใบ้ด้วยการคลิก 1 ครั้ง",
+    "add_favorite__tooltip": "เพิ่มในรายการโปรด",
+    "remove_favorite__tooltip": "ลบออกจากรายการโปรด",
+    "view_details__tooltip": "ดูรายละเอียดของคำสั่ง",
+    "delete_prompt__tooltip": "ลบคำสั่ง",
+    "edit_prompt__tooltip": "แก้ไขคำสั่ง"
   }
 }

@@ -756,6 +756,11 @@
     "delete_prompt__title": "Jste si jisti, že chcete smazat tento šablonu dotazu?",
     "delete_prompt__action__confirm__title": "Smazat",
     "delete_prompt__cancel__confirm__title": "Zrušit",
-    "use_prompt_library__title__tooltip": "1-kliknutí na podněty"
+    "use_prompt_library__title__tooltip": "1-kliknutí na podněty",
+    "add_favorite__tooltip": "Přidat do oblíbených",
+    "remove_favorite__tooltip": "Odebrat z oblíbených",
+    "view_details__tooltip": "Zobrazit podrobnosti o promptu",
+    "delete_prompt__tooltip": "Smazat prompt",
+    "edit_prompt__tooltip": "Upravit prompt"
   }
 }

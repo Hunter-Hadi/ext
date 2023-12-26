@@ -756,6 +756,11 @@
     "delete_prompt__title": "¿Estás seguro de que quieres eliminar esta plantilla de indicaciones?",
     "delete_prompt__action__confirm__title": "Eliminar",
     "delete_prompt__cancel__confirm__title": "Cancelar",
-    "use_prompt_library__title__tooltip": "Prompts de 1 clic"
+    "use_prompt_library__title__tooltip": "Prompts de 1 clic",
+    "add_favorite__tooltip": "Agregar a Favoritos",
+    "remove_favorite__tooltip": "Eliminar de Favoritos",
+    "view_details__tooltip": "Ver detalles de la sugerencia",
+    "delete_prompt__tooltip": "Eliminar sugerencia",
+    "edit_prompt__tooltip": "Editar sugerencia"
   }
 }

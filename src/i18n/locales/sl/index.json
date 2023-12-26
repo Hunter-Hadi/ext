@@ -756,6 +756,11 @@
     "delete_prompt__title": "Ste prepričani, da želite izbrisati to predlogo za spodbudo?",
     "delete_prompt__action__confirm__title": "Izbriši",
     "delete_prompt__cancel__confirm__title": "Prekliči",
-    "use_prompt_library__title__tooltip": "1-klik vprašanja"
+    "use_prompt_library__title__tooltip": "1-klik vprašanja",
+    "add_favorite__tooltip": "Dodaj v Priljubljene",
+    "remove_favorite__tooltip": "Odstrani iz Priljubljenih",
+    "view_details__tooltip": "Poglej podrobnosti o nalogi",
+    "delete_prompt__tooltip": "Izbriši nalogo",
+    "edit_prompt__tooltip": "Uredi nalogo"
   }
 }

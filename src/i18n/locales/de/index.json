@@ -756,6 +756,11 @@
     "delete_prompt__title": "Sind Sie sicher, dass Sie diese Vorlagen-Prompts löschen möchten?",
     "delete_prompt__action__confirm__title": "Löschen",
     "delete_prompt__cancel__confirm__title": "Abbrechen",
-    "use_prompt_library__title__tooltip": "1-Klick-Prompts"
+    "use_prompt_library__title__tooltip": "1-Klick-Prompts",
+    "add_favorite__tooltip": "Zu Favoriten hinzufügen",
+    "remove_favorite__tooltip": "Aus Favoriten entfernen",
+    "view_details__tooltip": "Prompt-Details anzeigen",
+    "delete_prompt__tooltip": "Prompt löschen",
+    "edit_prompt__tooltip": "Prompt bearbeiten"
   }
 }

@@ -1,7 +1,9 @@
 import IconButton from '@mui/material/IconButton'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
-import Tooltip from '@mui/material/Tooltip'
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import PromptLibraryTooltip from '@/features/prompt_library/components/PromptLibrary/PromptLibraryTooltip'
 
 const EditIcon: FC<SvgIconProps> = (props) => {
   return (
@@ -16,21 +18,24 @@ const EditIcon: FC<SvgIconProps> = (props) => {
   )
 }
 
-export const EditIconButton: FC<{ onClick: () => void }> = ({ onClick }) => (
-  <Tooltip title="Edit Prompt">
-    <IconButton
-      size="small"
-      onClick={(event) => {
-        event.stopPropagation()
-        onClick && onClick()
-      }}
-    >
-      <EditIcon
-        sx={{
-          // color: 'rgba(0, 0, 0, 0.54)',
-          fontSize: 16,
+export const EditIconButton: FC<{ onClick: () => void }> = ({ onClick }) => {
+  const { t } = useTranslation(['prompt_library'])
+  return (
+    <PromptLibraryTooltip title={t('prompt_library:edit_prompt__tooltip')}>
+      <IconButton
+        size="small"
+        onClick={(event) => {
+          event.stopPropagation()
+          onClick && onClick()
         }}
-      />
-    </IconButton>
-  </Tooltip>
-)
+      >
+        <EditIcon
+          sx={{
+            // color: 'rgba(0, 0, 0, 0.54)',
+            fontSize: 16,
+          }}
+        />
+      </IconButton>
+    </PromptLibraryTooltip>
+  )
+}

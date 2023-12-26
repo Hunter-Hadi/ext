@@ -756,6 +756,11 @@
     "delete_prompt__title": "您確定要刪除此提示範本嗎？",
     "delete_prompt__action__confirm__title": "刪除",
     "delete_prompt__cancel__confirm__title": "取消",
-    "use_prompt_library__title__tooltip": "1-點提示"
+    "use_prompt_library__title__tooltip": "1-點提示",
+    "add_favorite__tooltip": "加入收藏",
+    "remove_favorite__tooltip": "從收藏中移除",
+    "view_details__tooltip": "查看提示詳情",
+    "delete_prompt__tooltip": "刪除提示",
+    "edit_prompt__tooltip": "編輯提示"
   }
 }

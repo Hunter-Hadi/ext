@@ -756,6 +756,11 @@
     "delete_prompt__title": "আপনি কি নিশ্চিত যে আপনি এই প্রম্পট টেমপ্লেটটি মুছে ফেলতে চান?",
     "delete_prompt__action__confirm__title": "মুছে ফেলুন",
     "delete_prompt__cancel__confirm__title": "বাতিল করুন",
-    "use_prompt_library__title__tooltip": "এক ক্লিকে প্রম্পট"
+    "use_prompt_library__title__tooltip": "এক ক্লিকে প্রম্পট",
+    "add_favorite__tooltip": "পছন্দে যোগ করুন",
+    "remove_favorite__tooltip": "পছন্দ থেকে সরান",
+    "view_details__tooltip": "প্রম্পটের বিশদ দেখুন",
+    "delete_prompt__tooltip": "প্রম্পট মুছুন",
+    "edit_prompt__tooltip": "প্রম্পট সম্পাদনা করুন"
   }
 }

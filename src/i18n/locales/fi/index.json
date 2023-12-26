@@ -756,6 +756,11 @@
     "delete_prompt__title": "Haluatko varmasti poistaa tämän ohjepohjan?",
     "delete_prompt__action__confirm__title": "Poista",
     "delete_prompt__cancel__confirm__title": "Peruuta",
-    "use_prompt_library__title__tooltip": "1-napin vihjeet"
+    "use_prompt_library__title__tooltip": "1-napin vihjeet",
+    "add_favorite__tooltip": "Lisää suosikkeihin",
+    "remove_favorite__tooltip": "Poista suosikeista",
+    "view_details__tooltip": "Näytä kysymyksen tiedot",
+    "delete_prompt__tooltip": "Poista kysymys",
+    "edit_prompt__tooltip": "Muokkaa kysymystä"
   }
 }

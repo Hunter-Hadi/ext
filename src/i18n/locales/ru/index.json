@@ -756,6 +756,11 @@
     "delete_prompt__title": "Вы уверены, что хотите удалить этот шаблон подсказки?",
     "delete_prompt__action__confirm__title": "Удалить",
     "delete_prompt__cancel__confirm__title": "Отмена",
-    "use_prompt_library__title__tooltip": "Подсказки в один клик"
+    "use_prompt_library__title__tooltip": "Подсказки в один клик",
+    "add_favorite__tooltip": "Добавить в Избранное",
+    "remove_favorite__tooltip": "Удалить из Избранного",
+    "view_details__tooltip": "Просмотреть детали подсказки",
+    "delete_prompt__tooltip": "Удалить подсказку",
+    "edit_prompt__tooltip": "Редактировать подсказку"
   }
 }

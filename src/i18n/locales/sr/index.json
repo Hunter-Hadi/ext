@@ -756,6 +756,11 @@
     "delete_prompt__title": "Da li ste sigurni da želite da obrišete ovaj šablon upita?",
     "delete_prompt__action__confirm__title": "Obriši",
     "delete_prompt__cancel__confirm__title": "Otkaži",
-    "use_prompt_library__title__tooltip": "1-klik upitnici"
+    "use_prompt_library__title__tooltip": "1-klik upitnici",
+    "add_favorite__tooltip": "Dodaj u omiljene",
+    "remove_favorite__tooltip": "Ukloni iz omiljenih",
+    "view_details__tooltip": "Pogledaj detalje",
+    "delete_prompt__tooltip": "Obriši prompt",
+    "edit_prompt__tooltip": "Uredi prompt"
   }
 }

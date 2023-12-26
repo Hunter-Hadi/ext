@@ -1,10 +1,11 @@
 import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
-import Tooltip from '@mui/material/Tooltip'
 import React, { FC, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import DeletePromptConfirm from '@/features/prompt_library/components/PromptLibrary/PromptLibraryCard/DeletePromptConfirm'
+import PromptLibraryTooltip from '@/features/prompt_library/components/PromptLibrary/PromptLibraryTooltip'
 import useFavoritePrompts from '@/features/prompt_library/hooks/useFavoritePrompts'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 
@@ -29,6 +30,7 @@ export const DeleteIconButton: FC<{
     deletePromptLibraryCardMutation,
     removeFavoritePromptMutation,
   } = usePromptActions()
+  const { t } = useTranslation(['prompt_library'])
   const [deleteConfirmShow, setDeleteConfirmShow] = useState(false)
   const { data } = useFavoritePrompts()
   const favouritePromptIds = useMemo(() => {
@@ -48,7 +50,7 @@ export const DeleteIconButton: FC<{
   }
   return (
     <>
-      <Tooltip title="Delete Prompt">
+      <PromptLibraryTooltip title={t('prompt_library:delete_prompt__tooltip')}>
         <IconButton
           size="small"
           onClick={(event) => {
@@ -68,7 +70,7 @@ export const DeleteIconButton: FC<{
             />
           )}
         </IconButton>
-      </Tooltip>
+      </PromptLibraryTooltip>
       <DeletePromptConfirm
         promptTitle={promptTitle}
         loading={deletePromptLibraryCardMutation.isPending}

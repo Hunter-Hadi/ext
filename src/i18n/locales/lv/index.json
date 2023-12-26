@@ -756,6 +756,11 @@
     "delete_prompt__title": "Vai tiešām vēlaties dzēst šo veidņu?",
     "delete_prompt__action__confirm__title": "Dzēst",
     "delete_prompt__cancel__confirm__title": "Atcelt",
-    "use_prompt_library__title__tooltip": "1-klikšķa pamudinājumi"
+    "use_prompt_library__title__tooltip": "1-klikšķa pamudinājumi",
+    "add_favorite__tooltip": "Pievienot izlasei",
+    "remove_favorite__tooltip": "Noņemt no izlases",
+    "view_details__tooltip": "Skatīt uzdevuma detaļas",
+    "delete_prompt__tooltip": "Dzēst uzdevumu",
+    "edit_prompt__tooltip": "Rediģēt uzdevumu"
   }
 }

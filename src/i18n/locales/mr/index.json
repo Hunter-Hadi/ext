@@ -756,6 +756,11 @@
     "delete_prompt__title": "तुम्हाला खात्री आहे की तुम्ही हे प्रॉम्प्ट टेम्पलेट हटवायला इच्छिता?",
     "delete_prompt__action__confirm__title": "हटवा",
     "delete_prompt__cancel__confirm__title": "रद्द करा",
-    "use_prompt_library__title__tooltip": "1-क्लिक प्रॉम्प्ट्स"
+    "use_prompt_library__title__tooltip": "1-क्लिक प्रॉम्प्ट्स",
+    "add_favorite__tooltip": "फेवरिट्समध्ये जोडा",
+    "remove_favorite__tooltip": "फेवरिट्समधून काढा",
+    "view_details__tooltip": "प्रॉम्प्टची माहिती पहा",
+    "delete_prompt__tooltip": "प्रॉम्प्ट काढा",
+    "edit_prompt__tooltip": "प्रॉम्प्ट संपादित करा"
   }
 }

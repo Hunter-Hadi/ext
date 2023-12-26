@@ -756,6 +756,11 @@
     "delete_prompt__title": "Sigurado ka bang gusto mong tanggalin ang template ng prompt na ito?",
     "delete_prompt__action__confirm__title": "Tanggalin",
     "delete_prompt__cancel__confirm__title": "Kanselahin",
-    "use_prompt_library__title__tooltip": "Mga prompt sa 1-click"
+    "use_prompt_library__title__tooltip": "Mga prompt sa 1-click",
+    "add_favorite__tooltip": "Idagdag sa Mga Paborito",
+    "remove_favorite__tooltip": "Tanggalin sa Mga Paborito",
+    "view_details__tooltip": "Tingnan ang mga Detalye ng Prompt",
+    "delete_prompt__tooltip": "Burahin ang Prompt",
+    "edit_prompt__tooltip": "I-edit ang Prompt"
   }
 }

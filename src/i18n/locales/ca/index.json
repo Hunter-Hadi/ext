@@ -756,6 +756,11 @@
     "delete_prompt__title": "Esteu segur que voleu eliminar aquesta plantilla de prompt?",
     "delete_prompt__action__confirm__title": "Eliminar",
     "delete_prompt__cancel__confirm__title": "Cancel·lar",
-    "use_prompt_library__title__tooltip": "Prompts de 1 clic"
+    "use_prompt_library__title__tooltip": "Prompts de 1 clic",
+    "add_favorite__tooltip": "Afegir als preferits",
+    "remove_favorite__tooltip": "Eliminar dels preferits",
+    "view_details__tooltip": "Veure detalls de la indicació",
+    "delete_prompt__tooltip": "Eliminar indicació",
+    "edit_prompt__tooltip": "Editar indicació"
   }
 }

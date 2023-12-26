@@ -756,6 +756,11 @@
     "delete_prompt__title": "האם אתה בטוח שברצונך למחוק תבנית ההוראות הזו?",
     "delete_prompt__action__confirm__title": "מחק",
     "delete_prompt__cancel__confirm__title": "ביטול",
-    "use_prompt_library__title__tooltip": "קליק אחד להצעות"
+    "use_prompt_library__title__tooltip": "קליק אחד להצעות",
+    "add_favorite__tooltip": "הוסף למועדפים",
+    "remove_favorite__tooltip": "הסר מהמועדפים",
+    "view_details__tooltip": "צפה בפרטי התרגיל",
+    "delete_prompt__tooltip": "מחק תרגיל",
+    "edit_prompt__tooltip": "ערוך תרגיל"
   }
 }

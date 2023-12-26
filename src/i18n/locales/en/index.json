@@ -576,7 +576,12 @@
     "edit_prompt__template__placeholder": "The prompt template for ChatGPT.\nThe template can include any number of the following variables:\n{{SELECTED_TEXT}}\n{{CURRENT_WEBSITE_DOMAIN}}\n{{SYSTEM_CURRENT_DATE}}",
     "delete_prompt__title": "Are you sure you want to delete this prompt template?",
     "delete_prompt__action__confirm__title": "Delete",
-    "delete_prompt__cancel__confirm__title": "Cancel"
+    "delete_prompt__cancel__confirm__title": "Cancel",
+    "add_favorite__tooltip": "Add to Favorites",
+    "remove_favorite__tooltip": "Remove from Favorites",
+    "view_details__tooltip": "View prompt details",
+    "delete_prompt__tooltip": "Delete prompt",
+    "edit_prompt__tooltip": "Edit prompt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

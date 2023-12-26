@@ -756,6 +756,11 @@
     "delete_prompt__title": "Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το πρότυπο προτροπής;",
     "delete_prompt__action__confirm__title": "Διαγραφή",
     "delete_prompt__cancel__confirm__title": "Ακύρωση",
-    "use_prompt_library__title__tooltip": "1-κλικ προτροπές"
+    "use_prompt_library__title__tooltip": "1-κλικ προτροπές",
+    "add_favorite__tooltip": "Προσθήκη στα Αγαπημένα",
+    "remove_favorite__tooltip": "Αφαίρεση από τα Αγαπημένα",
+    "view_details__tooltip": "Προβολή λεπτομερειών προτροπής",
+    "delete_prompt__tooltip": "Διαγραφή προτροπής",
+    "edit_prompt__tooltip": "Επεξεργασία προτροπής"
   }
 }

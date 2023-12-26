@@ -756,6 +756,11 @@
     "delete_prompt__title": "Ви впевнені, що хочете видалити цей шаблон промпта?",
     "delete_prompt__action__confirm__title": "Видалити",
     "delete_prompt__cancel__confirm__title": "Скасувати",
-    "use_prompt_library__title__tooltip": "1-клік промпти"
+    "use_prompt_library__title__tooltip": "1-клік промпти",
+    "add_favorite__tooltip": "Додати до обраного",
+    "remove_favorite__tooltip": "Видалити з обраного",
+    "view_details__tooltip": "Переглянути деталі промпта",
+    "delete_prompt__tooltip": "Видалити промпт",
+    "edit_prompt__tooltip": "Редагувати промпт"
   }
 }

@@ -756,6 +756,11 @@
     "delete_prompt__title": "Er du sikker på at du vil slette denne promptmalen?",
     "delete_prompt__action__confirm__title": "Slett",
     "delete_prompt__cancel__confirm__title": "Avbryt",
-    "use_prompt_library__title__tooltip": "1-klikk-prompter"
+    "use_prompt_library__title__tooltip": "1-klikk-prompter",
+    "add_favorite__tooltip": "Legg til i Favoritter",
+    "remove_favorite__tooltip": "Fjern fra Favoritter",
+    "view_details__tooltip": "Vis detaljer for prompt",
+    "delete_prompt__tooltip": "Slett prompt",
+    "edit_prompt__tooltip": "Rediger prompt"
   }
 }

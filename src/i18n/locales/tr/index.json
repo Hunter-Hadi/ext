@@ -756,6 +756,11 @@
     "delete_prompt__title": "Bu ipucu şablonunu silmek istediğinizden emin misiniz?",
     "delete_prompt__action__confirm__title": "Sil",
     "delete_prompt__cancel__confirm__title": "İptal",
-    "use_prompt_library__title__tooltip": "1 tıklama ile ipuçları"
+    "use_prompt_library__title__tooltip": "1 tıklama ile ipuçları",
+    "add_favorite__tooltip": "Favorilere Ekle",
+    "remove_favorite__tooltip": "Favorilerden Kaldır",
+    "view_details__tooltip": "Prompt Detaylarını Görüntüle",
+    "delete_prompt__tooltip": "Prompt'u Sil",
+    "edit_prompt__tooltip": "Prompt'u Düzenle"
   }
 }

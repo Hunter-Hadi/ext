@@ -756,6 +756,11 @@
     "delete_prompt__title": "이 프롬프트 템플릿을 삭제하시겠습니까?",
     "delete_prompt__action__confirm__title": "삭제",
     "delete_prompt__cancel__confirm__title": "취소",
-    "use_prompt_library__title__tooltip": "1-클릭 프롬프트"
+    "use_prompt_library__title__tooltip": "1-클릭 프롬프트",
+    "add_favorite__tooltip": "즐겨찾기에 추가",
+    "remove_favorite__tooltip": "즐겨찾기에서 제거",
+    "view_details__tooltip": "프롬프트 세부 정보 보기",
+    "delete_prompt__tooltip": "프롬프트 삭제",
+    "edit_prompt__tooltip": "프롬프트 편집"
   }
 }

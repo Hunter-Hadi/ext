@@ -756,6 +756,11 @@
     "delete_prompt__title": "Jeste li sigurni da želite izbrisati ovaj predložak upita?",
     "delete_prompt__action__confirm__title": "Izbriši",
     "delete_prompt__cancel__confirm__title": "Odustani",
-    "use_prompt_library__title__tooltip": "1-klik upute"
+    "use_prompt_library__title__tooltip": "1-klik upute",
+    "add_favorite__tooltip": "Dodaj u favorite",
+    "remove_favorite__tooltip": "Ukloni iz favorita",
+    "view_details__tooltip": "Pogledaj detalje",
+    "delete_prompt__tooltip": "Izbriši zadatak",
+    "edit_prompt__tooltip": "Uredi zadatak"
   }
 }

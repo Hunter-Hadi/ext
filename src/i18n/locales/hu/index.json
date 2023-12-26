@@ -756,6 +756,11 @@
     "delete_prompt__title": "Biztosan törölni szeretné ezt a prompt sablont?",
     "delete_prompt__action__confirm__title": "Törlés",
     "delete_prompt__cancel__confirm__title": "Mégse",
-    "use_prompt_library__title__tooltip": "1 kattintásos segédletek"
+    "use_prompt_library__title__tooltip": "1 kattintásos segédletek",
+    "add_favorite__tooltip": "Hozzáadás a Kedvencekhez",
+    "remove_favorite__tooltip": "Eltávolítás a Kedvencekből",
+    "view_details__tooltip": "Feladat részleteinek megtekintése",
+    "delete_prompt__tooltip": "Feladat törlése",
+    "edit_prompt__tooltip": "Feladat szerkesztése"
   }
 }

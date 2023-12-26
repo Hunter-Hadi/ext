@@ -756,6 +756,11 @@
     "delete_prompt__title": "Czy na pewno chcesz usunąć ten szablon promptu?",
     "delete_prompt__action__confirm__title": "Usuń",
     "delete_prompt__cancel__confirm__title": "Anuluj",
-    "use_prompt_library__title__tooltip": "Podpowiedzi w jednym kliknięciu"
+    "use_prompt_library__title__tooltip": "Podpowiedzi w jednym kliknięciu",
+    "add_favorite__tooltip": "Dodaj do ulubionych",
+    "remove_favorite__tooltip": "Usuń z ulubionych",
+    "view_details__tooltip": "Wyświetl szczegóły promptu",
+    "delete_prompt__tooltip": "Usuń prompt",
+    "edit_prompt__tooltip": "Edytuj prompt"
   }
 }

@@ -756,6 +756,11 @@
     "delete_prompt__title": "Êtes-vous sûr de vouloir supprimer ce modèle de prompt ?",
     "delete_prompt__action__confirm__title": "Supprimer",
     "delete_prompt__cancel__confirm__title": "Annuler",
-    "use_prompt_library__title__tooltip": "Prompts en 1 clic"
+    "use_prompt_library__title__tooltip": "Prompts en 1 clic",
+    "add_favorite__tooltip": "Ajouter aux favoris",
+    "remove_favorite__tooltip": "Supprimer des favoris",
+    "view_details__tooltip": "Voir les détails de la suggestion",
+    "delete_prompt__tooltip": "Supprimer la suggestion",
+    "edit_prompt__tooltip": "Modifier la suggestion"
   }
 }

@@ -1,5 +1,7 @@
-import { Autocomplete, TextField } from '@mui/material'
+import Autocomplete from '@mui/material/Autocomplete'
+import TextField from '@mui/material/TextField'
 import React, { FC } from 'react'
+
 import { SystemVariableSelectProps } from '@/features/shortcuts/components/SystemVariableSelect/types'
 
 const WRITING_STYLES_OPTIONS = [

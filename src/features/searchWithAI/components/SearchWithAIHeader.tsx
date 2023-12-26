@@ -1,19 +1,19 @@
-import {
-  Box,
-  Button,
-  IconButton,
-  Stack,
-  Tooltip,
-  Typography,
-} from '@mui/material'
-import { FC, useMemo } from 'react'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import CloseIcon from '@mui/icons-material/Close'
-import { chromeExtensionClientOpenPage } from '@/utils'
-import SearchWithAIWebAccessToggle from './SearchWithAIWebAccessToggle'
-import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import { FC, useMemo } from 'react'
 import React from 'react'
+
+import { chromeExtensionClientOpenPage } from '@/utils'
+
+import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
 import SearchWithAILogo from './SearchWithAILogo'
+import SearchWithAIWebAccessToggle from './SearchWithAIWebAccessToggle'
 interface IProps {
   status: IAIForSearchStatus
   isAnswering: boolean

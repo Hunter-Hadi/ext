@@ -1,13 +1,12 @@
-import {
-  Box,
-  Card,
-  Grid,
-  Link,
-  Skeleton,
-  Stack,
-  Typography,
-} from '@mui/material'
+import Box from '@mui/material/Box'
+import Card from '@mui/material/Card'
+import Grid from '@mui/material/Grid'
+import Link from '@mui/material/Link'
+import Skeleton from '@mui/material/Skeleton'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { useMemo } from 'react'
+
 import { SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT } from '../constants'
 import useSearchWithAISources from '../hooks/useSearchWithAISources'
 import { CaptivePortalIcon } from './SearchWithAIIcons'

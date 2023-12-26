@@ -1,6 +1,8 @@
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import { Box, SxProps } from '@mui/material'
+import Box from '@mui/material/Box'
+import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useState } from 'react'
+
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 interface IProps {

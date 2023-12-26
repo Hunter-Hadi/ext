@@ -1,12 +1,10 @@
-import {
-  Button,
-  FormControl,
-  FormLabel,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material'
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
+import Grid from '@mui/material/Grid'
+import Stack from '@mui/material/Stack'
+import TextField from '@mui/material/TextField'
+import Typography from '@mui/material/Typography'
 import React, { FC, useCallback, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'

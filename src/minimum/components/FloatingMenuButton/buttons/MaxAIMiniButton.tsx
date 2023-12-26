@@ -1,11 +1,12 @@
-import React, { FC, useRef, useState } from 'react'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import Button from '@mui/material/Button'
-import useCommands from '@/hooks/useCommands'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import Stack from '@mui/material/Stack'
-import { Fade } from '@mui/material'
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
+import Button from '@mui/material/Button'
+import Fade from '@mui/material/Fade'
+import Stack from '@mui/material/Stack'
+import React, { FC, useRef, useState } from 'react'
+
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useCommands from '@/hooks/useCommands'
 
 const MaxAIMiniButton: FC<{
   isDragging?: boolean

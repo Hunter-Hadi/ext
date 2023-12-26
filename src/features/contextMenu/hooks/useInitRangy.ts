@@ -39,6 +39,8 @@ import {
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
 import { listenIframeMessage } from '@/iframe'
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 import rangyLib from '@/lib/rangy/rangy-core'
 import initRangyPosition from '@/lib/rangy/rangy-position'
 import initRangySaveRestore from '@/lib/rangy/rangy-saverestore'

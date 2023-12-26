@@ -1,5 +1,5 @@
-import { FormControlLabel } from '@mui/material'
 import Box from '@mui/material/Box'
+import FormControlLabel from '@mui/material/FormControlLabel'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'

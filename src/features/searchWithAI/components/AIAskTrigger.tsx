@@ -1,12 +1,16 @@
-import { Button, Divider, Stack, Typography } from '@mui/material'
-import { FC, useEffect } from 'react'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
-import { endsWithQuestionMark } from '../utils'
+import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import { FC, useEffect } from 'react'
 import React from 'react'
-import { ISearchWithAISettings } from '../utils/searchWithAISettings'
-import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
 import { useRecoilState } from 'recoil'
+
+import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
 import { AutoTriggerAskEnableAtom } from '../store'
+import { endsWithQuestionMark } from '../utils'
+import { ISearchWithAISettings } from '../utils/searchWithAISettings'
 
 interface IProps {
   status: IAIForSearchStatus

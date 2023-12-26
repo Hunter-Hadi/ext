@@ -1,4 +1,4 @@
-import { SvgIcon, SvgIconProps } from '@mui/material'
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
 import React, { FC } from 'react'
 
 const ReadIcon: FC<SvgIconProps> = (props) => {
@@ -33,4 +33,4 @@ const CaptivePortalIcon: FC<SvgIconProps> = (props) => {
   )
 }
 
-export { ReadIcon, CaptivePortalIcon }
+export { CaptivePortalIcon, ReadIcon }

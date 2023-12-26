@@ -1,4 +1,5 @@
-import { Stack, SxProps } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import { svgIconClasses } from '@mui/material/SvgIcon'
 import TablePagination, {
   tablePaginationClasses,

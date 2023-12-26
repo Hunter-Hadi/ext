@@ -1,5 +1,9 @@
-import { Stack, SvgIcon, SxProps, Typography } from '@mui/material'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import SvgIcon from '@mui/material/SvgIcon'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
+
 import { SEARCH_WITH_AI_APP_NAME, SEARCH_WITH_AI_LOGO_ID } from '../constants'
 
 const SearchWithAILogo = () => {

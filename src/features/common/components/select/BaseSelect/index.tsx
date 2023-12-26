@@ -1,12 +1,9 @@
-import {
-  FormControl,
-  InputLabel,
-  ListItemText,
-  MenuItem,
-  Select,
-  SelectProps,
-  SxProps,
-} from '@mui/material'
+import FormControl from '@mui/material/FormControl'
+import InputLabel from '@mui/material/InputLabel'
+import ListItemText from '@mui/material/ListItemText'
+import MenuItem from '@mui/material/MenuItem'
+import Select, { SelectProps } from '@mui/material/Select'
+import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'

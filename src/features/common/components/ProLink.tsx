@@ -1,6 +1,5 @@
-import { Link as MuiLink, LinkProps } from '@mui/material'
+import MuiLink, { LinkProps } from '@mui/material/Link'
 import React, { FC, useRef } from 'react'
-
 interface IProLinkProps extends LinkProps {
   href?: string
   underline?: LinkProps['underline']

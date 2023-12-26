@@ -1,4 +1,4 @@
-import { SxProps } from '@mui/material'
+import { SxProps } from '@mui/material/styles'
 
 export type ISystemVariableSelectKey =
   | 'AI_RESPONSE_LANGUAGE'

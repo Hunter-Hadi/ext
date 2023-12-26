@@ -1,10 +1,12 @@
-import SearchIcon from '@mui/icons-material/Search';
-import { Stack, SxProps, Typography } from '@mui/material';
-import React, { FC } from 'react';
+import SearchIcon from '@mui/icons-material/Search'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
 
 const EmptyContent: FC<{
-  emptyText?: string;
-  sx?: SxProps;
+  emptyText?: string
+  sx?: SxProps
 }> = ({ emptyText = 'No Results Found', sx }) => {
   return (
     <Stack alignItems={'center'} sx={sx}>
@@ -25,6 +27,6 @@ const EmptyContent: FC<{
       </Stack>
       <Typography variant={'body1'}>{emptyText}</Typography>
     </Stack>
-  );
-};
-export default EmptyContent;
+  )
+}
+export default EmptyContent

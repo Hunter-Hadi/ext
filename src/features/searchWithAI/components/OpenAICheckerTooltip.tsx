@@ -1,9 +1,13 @@
-import { Button, Stack, Typography } from '@mui/material'
-import React from 'react'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import SearchWIthAIProviderIcon from '../components/SearchWIthAIProviderIcon'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+
+import SearchWIthAIProviderIcon from '../components/SearchWIthAIProviderIcon'
 import { SEARCH_WITH_AI_PROVIDER_MAP } from '../constants'
 
 const port = new ContentScriptConnectionV2()

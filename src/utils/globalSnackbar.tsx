@@ -1,7 +1,7 @@
-import { createShadowRoot } from '@/utils/elementHelper'
 import createCache from '@emotion/cache'
 import { CacheProvider, ThemeProvider } from '@emotion/react'
-import { IconButton } from '@mui/material'
+import CloseIcon from '@mui/icons-material/Close'
+import IconButton from '@mui/material/IconButton'
 import {
   OptionsObject,
   ProviderContext as SnackbarProviderContext,
@@ -12,9 +12,10 @@ import {
 } from 'notistack'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import CloseIcon from '@mui/icons-material/Close'
 import { RecoilRoot } from 'recoil'
+
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { createShadowRoot } from '@/utils/elementHelper'
 
 export const MAXAI_SNACKBAR_SHADOW_ROOT_ID = 'MAXAI_SNACKBAR_ROOT'
 

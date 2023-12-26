@@ -1,7 +1,7 @@
 /**
- * 渲染到页面中 右侧的 butonn
+ * 渲染到页面中 右侧的 button
  */
-import { Box } from '@mui/material'
+import Box from '@mui/material/Box'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import Browser from 'webextension-polyfill'

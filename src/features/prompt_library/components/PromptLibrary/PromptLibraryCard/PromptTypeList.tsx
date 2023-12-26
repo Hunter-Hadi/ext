@@ -1,4 +1,5 @@
-import { Theme, Typography } from '@mui/material'
+import { Theme } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 
 import {

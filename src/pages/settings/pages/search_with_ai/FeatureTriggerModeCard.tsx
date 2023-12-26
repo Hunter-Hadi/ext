@@ -1,15 +1,14 @@
+import FormControlLabel from '@mui/material/FormControlLabel'
+import Radio from '@mui/material/Radio'
+import RadioGroup from '@mui/material/RadioGroup'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import {
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-  Stack,
-  Typography,
-} from '@mui/material'
+
 import useSearchWithAISettings from '@/features/searchWithAI/hooks/useSearchWithAISettings'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { ISearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 
 const TRIGGER_MODE_OPTIONS = [
   {

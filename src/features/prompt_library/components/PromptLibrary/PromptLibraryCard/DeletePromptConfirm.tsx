@@ -1,6 +1,8 @@
-import { LoadingButton } from '@mui/lab'
-import { Button, Stack, Typography } from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton'
+import Button from '@mui/material/Button'
 import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 

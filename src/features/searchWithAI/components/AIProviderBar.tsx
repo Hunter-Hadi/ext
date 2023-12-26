@@ -1,17 +1,16 @@
+import Box from '@mui/material/Box'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
+import IconButton from '@mui/material/IconButton'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import React, { useCallback, useState } from 'react'
+import { FC } from 'react'
+
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 
-import {
-  Box,
-  ClickAwayListener,
-  IconButton,
-  Stack,
-  SxProps,
-  Tooltip,
-  Typography,
-} from '@mui/material'
-import React, { useCallback, useState } from 'react'
-import { FC } from 'react'
 import { ISearchWithAIProviderType } from '../constants'
 import SearchWithAIProviderOptions, {
   ISearchWithAIProviderOptionsType,

@@ -1,5 +1,8 @@
+import Box from '@mui/material/Box'
+import { SxProps } from '@mui/material/styles'
+import SvgIcon from '@mui/material/SvgIcon'
 import React, { FC } from 'react'
-import { Box, SvgIcon, SxProps } from '@mui/material'
+
 import { ISearchWithAIProviderType } from '../constants'
 
 export interface ISearchWIthAIProviderIconProps {

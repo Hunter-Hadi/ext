@@ -1,5 +1,9 @@
-import { FormControlLabel, Switch, SxProps, Typography } from '@mui/material'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import { SxProps } from '@mui/material/styles'
+import Switch from '@mui/material/Switch'
+import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
+
 import useSearchWithAISettings from '../hooks/useSearchWithAISettings'
 
 interface IProps {
@@ -8,8 +12,10 @@ interface IProps {
 }
 
 const SearchWithAIWebAccessToggle: FC<IProps> = ({ sx, onChange }) => {
-  const { searchWithAISettings, setSearchWithAISettings } =
-    useSearchWithAISettings()
+  const {
+    searchWithAISettings,
+    setSearchWithAISettings,
+  } = useSearchWithAISettings()
 
   const webAccessPrompt = searchWithAISettings.webAccessPrompt
 

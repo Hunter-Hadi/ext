@@ -1,14 +1,16 @@
-import {
-  Button,
-  CircularProgress,
-  Divider,
-  Paper,
-  Stack,
-  Typography,
-} from '@mui/material'
+import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import Divider from '@mui/material/Divider'
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { useMemo } from 'react'
 import { FC, useCallback, useState } from 'react'
-import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
+import { v4 as uuidV4 } from 'uuid'
+
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import useSearchWithAISources from '@/features/searchWithAI/hooks/useSearchWithAISources'
 
 import useSearchWithAICore from '../hooks/useSearchWithAICore'
 import useSearchWithAISettings from '../hooks/useSearchWithAISettings'
@@ -23,9 +25,6 @@ import AISearchSources from './AISearchSources'
 import SearchWithAIFooter from './SearchWithAIFooter'
 import SearchWithAIHeader from './SearchWithAIHeader'
 import { ReadIcon } from './SearchWithAIIcons'
-import useSearchWithAISources from '@/features/searchWithAI/hooks/useSearchWithAISources'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { v4 as uuidV4 } from 'uuid'
 
 interface IProps {
   question: string

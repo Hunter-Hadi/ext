@@ -86,6 +86,7 @@ const ChatGPTStatusWrapper: FC = () => {
         <Box
           sx={{
             ...memoMaskSx,
+            backgroundColor: 'rgba(0,0,0,0.5)',
             position: 'fixed',
             zIndex: -1,
           }}

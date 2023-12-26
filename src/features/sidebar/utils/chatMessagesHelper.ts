@@ -3,7 +3,6 @@ import sanitize from 'sanitize-html'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   ISystemMessage,
   IThirdMessage,
@@ -188,9 +187,7 @@ export const formatAIMessageContentForClipboard = (
   root.style.overflow = 'hidden!important'
   root.style.userSelect = 'auto!important'
   root.innerHTML = html
-
-  const container =
-    getMaxAISidebarRootElement()?.querySelector('div') || document.body
+  const container = document.body
   container.appendChild(root)
   // select
   const range = document.createRange()
@@ -209,15 +206,29 @@ export const formatAIMessageContentForClipboard = (
       clipdata.setData('text/plain', text)
       clipdata.setData('text/html', html)
       e.preventDefault()
-      container.removeChild(root)
+      root.remove()
     },
     {
       capture: true,
       once: true,
     },
   )
+  root.addEventListener(
+    'copy',
+    (e) => {
+      const clipdata = e.clipboardData || (window as any).clipboardData
+      clipdata.setData('text/plain', text)
+      clipdata.setData('text/html', html)
+      e.preventDefault()
+      root.remove()
+    },
+    {
+      once: true,
+    },
+  )
   // copy
   document.execCommand('copy')
+  // remove
 }
 /**
  * 格式化用户消息的内容

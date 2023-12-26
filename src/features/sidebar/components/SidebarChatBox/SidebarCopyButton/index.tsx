@@ -31,7 +31,6 @@ const SidebarCopyButton: FC<{
     return formatAIMessageContent(message)
   }, [message])
   const copyButtonRef = useRef<HTMLButtonElement>(null)
-  const [disableTooltip, setDisableTooltip] = useState(false)
   const [isHover, setIsHover] = useState(false)
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
@@ -59,12 +58,18 @@ const SidebarCopyButton: FC<{
     if (!rootElement) {
       return
     }
-    setDisableTooltip(true)
-    setIsHover(false)
     formatAIMessageContentForClipboard(message, rootElement)
+    handleAfterCopy()
+  }
+  const handleAfterCopy = () => {
+    if (AFTER_COPIED_CLOSE_HOSTS.includes(window.location.host)) {
+      setTimeout(hideChatBox, 1)
+    }
+    onCopy?.()
+    setIsCopied(true)
     setTimeout(() => {
-      setDisableTooltip(false)
-    }, 300)
+      setIsCopied(false)
+    }, 1000)
   }
   useEffect(() => {
     if (isHover) {
@@ -92,9 +97,7 @@ const SidebarCopyButton: FC<{
         onMouseEnter={(event) => {
           setAnchorEl(event.currentTarget)
           mouseHoverTimer.current = setTimeout(() => {
-            if (!disableTooltip) {
-              setIsHover(true)
-            }
+            setIsHover(true)
           }, 100)
         }}
         onMouseLeave={() => {
@@ -126,7 +129,7 @@ const SidebarCopyButton: FC<{
         }}
         className="popper"
         // Note: The following zIndex style is specifically for documentation purposes and may not be necessary in your application.
-        open={isHover && !disableTooltip}
+        open={isHover}
         anchorEl={anchorEl}
         sx={{
           zIndex: 1200,
@@ -157,20 +160,12 @@ const SidebarCopyButton: FC<{
                 format: 'text/plain',
               }}
               onCopy={() => {
-                if (AFTER_COPIED_CLOSE_HOSTS.includes(window.location.host)) {
-                  setTimeout(hideChatBox, 1)
-                }
-                onCopy?.()
-                setIsHover(false)
-                setIsCopied(true)
-                setTimeout(() => {
-                  setIsCopied(false)
-                }, 1000)
+                handleAfterCopy()
               }}
             >
               <TooltipIconButton
                 TooltipProps={{
-                  placement: 'top',
+                  placement: 'right',
                   arrow: true,
                   disableInteractive: true,
                 }}
@@ -190,7 +185,7 @@ const SidebarCopyButton: FC<{
                   }}
                 >
                   <ContextMenuIcon
-                    icon={'CopyTextOnly'}
+                    icon={isCopied ? 'Done' : 'CopyTextOnly'}
                     sx={{ fontSize: '16px' }}
                   />
                   <Typography fontSize={'16px'}>
@@ -211,7 +206,7 @@ const SidebarCopyButton: FC<{
             <TooltipIconButton
               onClick={copyTextWithStyles}
               TooltipProps={{
-                placement: 'top',
+                placement: 'right',
                 disableInteractive: true,
                 arrow: true,
               }}
@@ -230,7 +225,10 @@ const SidebarCopyButton: FC<{
                   width: '100%',
                 }}
               >
-                <ContextMenuIcon icon={'Copy'} sx={{ fontSize: '16px' }} />
+                <ContextMenuIcon
+                  icon={isCopied ? 'Done' : 'Copy'}
+                  sx={{ fontSize: '16px' }}
+                />
                 <Typography fontSize={'16px'}>{t('common:copy')}</Typography>
               </Stack>
             </TooltipIconButton>

@@ -112,7 +112,12 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       }
     }
     await this.useChatGPTPlusChat.askChatGPT(
-      question.question,
+      [
+        {
+          type: 'text',
+          text: question.question,
+        },
+      ],
       {
         doc_id: docId,
         backendAPI,

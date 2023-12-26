@@ -71,7 +71,12 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
       options.maxHistoryMessageCnt = 0
     }
     await this.maxAIClaudeChat.askChatGPT(
-      question.question,
+      [
+        {
+          type: 'text',
+          text: question.question,
+        },
+      ],
       {
         taskId: question.messageId,
         regenerate: options.regenerate,

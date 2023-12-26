@@ -82,7 +82,12 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
       }
     }
     await this.maxAIGeminiChat.askChatGPT(
-      question.question,
+      [
+        {
+          type: 'text',
+          text: question.question,
+        },
+      ],
       {
         taskId: question.messageId,
         regenerate: options.regenerate,

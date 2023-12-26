@@ -6,6 +6,7 @@ import BaseChat from '@/background/src/chat/BaseChat'
 import {
   IMaxAIChatGPTBackendAPIType,
   IMaxAIChatMessage,
+  IMaxAIChatMessageContent,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
@@ -71,7 +72,7 @@ class UseChatGPTPlusChat extends BaseChat {
 
   /**
    * 获取回答
-   * @param question 问题
+   * @param message_content 问题
    * @param options
    * @param onMessage 回调
    * @param options.doc_id 大文件聊天之前上传的上下文的documentId
@@ -81,7 +82,7 @@ class UseChatGPTPlusChat extends BaseChat {
    * @param options.taskId 任务id
    */
   async askChatGPT(
-    question: string,
+    message_content: IMaxAIChatMessageContent[],
     options?: {
       taskId: string
       doc_id?: string
@@ -135,7 +136,7 @@ class UseChatGPTPlusChat extends BaseChat {
       {
         chat_history,
         streaming,
-        message_content: question,
+        message_content,
         chrome_extension_version: APP_VERSION,
         model_name:
           this.conversation?.meta.AIModel ||

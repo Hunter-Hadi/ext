@@ -199,7 +199,12 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       'USE_CHAT_GPT_PLUS',
       'gpt-3.5-turbo-16k',
       {
-        message_content: messageContent,
+        message_content: [
+          {
+            type: 'text',
+            text: messageContent,
+          },
+        ],
         prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',
         prompt_name: '[Search] smart page',
       },

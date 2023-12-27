@@ -39,7 +39,8 @@
     "no_options": "Ni možnosti",
     "auto": "Avtomatsko",
     "confirm": "Potrdi",
-    "copy_as_plain_text": "Kopiraj kot navadno besedilo"
+    "copy_as_plain_text": "Kopiraj kot navadno besedilo",
+    "copy_with_formatting": "Kopiraj s formatiranjem"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",

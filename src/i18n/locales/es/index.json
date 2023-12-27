@@ -39,7 +39,8 @@
     "no_options": "Sin opciones",
     "auto": "Automático",
     "confirm": "Confirmar",
-    "copy_as_plain_text": "Copiar como texto sin formato"
+    "copy_as_plain_text": "Copiar como texto sin formato",
+    "copy_with_formatting": "Copiar con formato"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",

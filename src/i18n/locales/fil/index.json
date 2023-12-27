@@ -39,7 +39,8 @@
     "no_options": "Walang mga opsyon",
     "auto": "Awto",
     "confirm": "Kumpirmahin",
-    "copy_as_plain_text": "Kopyahin bilang simpleng teksto"
+    "copy_as_plain_text": "Kopyahin bilang simpleng teksto",
+    "copy_with_formatting": "Kopyahin na may pormat"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",

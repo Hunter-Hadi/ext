@@ -39,7 +39,8 @@
     "no_options": "Keine Optionen",
     "auto": "Auto",
     "confirm": "Bestätigen",
-    "copy_as_plain_text": "Als Klartext kopieren"
+    "copy_as_plain_text": "Als Klartext kopieren",
+    "copy_with_formatting": "Kopieren mit Formatierung"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",

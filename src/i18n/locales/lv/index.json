@@ -39,7 +39,8 @@
     "no_options": "Nav variantu",
     "auto": "Automobilis",
     "confirm": "Apstiprināt",
-    "copy_as_plain_text": "Kopēt kā vienkāršu tekstu"
+    "copy_as_plain_text": "Kopēt kā vienkāršu tekstu",
+    "copy_with_formatting": "Kopēt ar formatēšanu"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",

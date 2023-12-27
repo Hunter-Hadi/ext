@@ -39,7 +39,8 @@
     "no_options": "ഓപ്ഷനുകൾ ഇല്ല",
     "auto": "ഓട്ടോ",
     "confirm": "സ്ഥിരീകരിക്കുക",
-    "copy_as_plain_text": "സാധാരണ ടെക്സ്റ്റ് പകർത്തുക"
+    "copy_as_plain_text": "സാധാരണ ടെക്സ്റ്റ് പകർത്തുക",
+    "copy_with_formatting": "ഫോർമാറ്റിംഗ് ഉപയോഗിച്ച് പകർത്തുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",

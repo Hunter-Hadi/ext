@@ -39,7 +39,8 @@
     "no_options": "कोई विकल्प नहीं",
     "auto": "ऑटो",
     "confirm": "पुष्टि करें",
-    "copy_as_plain_text": "सादा पाठ के रूप में कॉपी करें"
+    "copy_as_plain_text": "सादा पाठ के रूप में कॉपी करें",
+    "copy_with_formatting": "स्वरूपण के साथ प्रतिलिपि"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",

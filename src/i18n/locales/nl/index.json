@@ -39,7 +39,8 @@
     "no_options": "Geen opties",
     "auto": "Auto",
     "confirm": "Bevestigen",
-    "copy_as_plain_text": "Kopiëren als platte tekst"
+    "copy_as_plain_text": "Kopiëren als platte tekst",
+    "copy_with_formatting": "Kopiëren met opmaak"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",

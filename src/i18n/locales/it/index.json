@@ -39,7 +39,8 @@
     "no_options": "Nessuna opzione",
     "auto": "Automobile",
     "confirm": "Conferma",
-    "copy_as_plain_text": "Copia come testo normale"
+    "copy_as_plain_text": "Copia come testo normale",
+    "copy_with_formatting": "Copia con formattazione"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",

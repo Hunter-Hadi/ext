@@ -39,7 +39,8 @@
     "no_options": "ไม่มีตัวเลือก",
     "auto": "อัตโนมัติ",
     "confirm": "ยืนยัน",
-    "copy_as_plain_text": "คัดลอกเป็นข้อความธรรมดา"
+    "copy_as_plain_text": "คัดลอกเป็นข้อความธรรมดา",
+    "copy_with_formatting": "คัดลอกพร้อมการจัดรูปแบบ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",

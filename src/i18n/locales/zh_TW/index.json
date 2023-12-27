@@ -39,7 +39,8 @@
     "no_options": "無選項",
     "auto": "自動",
     "confirm": "確認",
-    "copy_as_plain_text": "複製為純文字"
+    "copy_as_plain_text": "複製為純文字",
+    "copy_with_formatting": "帶格式的複製"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",

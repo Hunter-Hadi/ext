@@ -39,7 +39,8 @@
     "no_options": "Inga alternativ",
     "auto": "Automatisk",
     "confirm": "Bekräfta",
-    "copy_as_plain_text": "Kopiera som ren text"
+    "copy_as_plain_text": "Kopiera som ren text",
+    "copy_with_formatting": "Kopiera med formatering"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",

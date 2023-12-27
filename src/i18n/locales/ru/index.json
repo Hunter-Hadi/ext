@@ -39,7 +39,8 @@
     "no_options": "Нет вариантов",
     "auto": "Авто",
     "confirm": "Подтвердить",
-    "copy_as_plain_text": "Копировать как обычный текст"
+    "copy_as_plain_text": "Копировать как обычный текст",
+    "copy_with_formatting": "Копировать с форматированием"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",

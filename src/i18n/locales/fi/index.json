@@ -39,7 +39,8 @@
     "no_options": "Ei vaihtoehtoja",
     "auto": "Automaattinen",
     "confirm": "Vahvista",
-    "copy_as_plain_text": "Kopioi pelkkänä tekstinä"
+    "copy_as_plain_text": "Kopioi pelkkänä tekstinä",
+    "copy_with_formatting": "Kopioi muotoilulla"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",

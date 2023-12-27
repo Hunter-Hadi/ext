@@ -39,7 +39,8 @@
     "no_options": "Žádné možnosti",
     "auto": "Auto",
     "confirm": "Potvrdit",
-    "copy_as_plain_text": "Kopírovat jako prostý text"
+    "copy_as_plain_text": "Kopírovat jako prostý text",
+    "copy_with_formatting": "Kopírovat s formátováním"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",

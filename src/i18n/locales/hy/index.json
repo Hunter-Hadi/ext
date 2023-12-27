@@ -36,7 +36,8 @@
     "loading": "Բեռնվում է...",
     "no_options": "Ոչ մի տարբերակ",
     "confirm": "Հաստատել",
-    "copy_as_plain_text": "Պատճենել որպես միայն տեքստ"
+    "copy_as_plain_text": "Պատճենել որպես միայն տեքստ",
+    "copy_with_formatting": "Պատճենեք ձեր տեքստը ձևաչափված"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",

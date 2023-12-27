@@ -39,7 +39,8 @@
     "no_options": "אין אפשרויות",
     "auto": "אוטומטי",
     "confirm": "אישור",
-    "copy_as_plain_text": "העתק כטקסט פשוט"
+    "copy_as_plain_text": "העתק כטקסט פשוט",
+    "copy_with_formatting": "העתק עם עיצוב"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",

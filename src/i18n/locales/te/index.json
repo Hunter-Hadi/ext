@@ -39,7 +39,8 @@
     "no_options": "ఎంచుకోలేదు",
     "auto": "ఆటో",
     "confirm": "నిర్ధారించండి",
-    "copy_as_plain_text": "సరళ వచనంగా కాపీ చేయండి"
+    "copy_as_plain_text": "సరళ వచనంగా కాపీ చేయండి",
+    "copy_with_formatting": "ఫార్మాటింగ్ తో కాపీ"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",

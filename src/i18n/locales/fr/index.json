@@ -39,7 +39,8 @@
     "no_options": "Aucune option",
     "auto": "Automatique",
     "confirm": "Confirmer",
-    "copy_as_plain_text": "Copier en tant que texte brut"
+    "copy_as_plain_text": "Copier en tant que texte brut",
+    "copy_with_formatting": "Copier avec mise en forme"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",

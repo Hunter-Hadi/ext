@@ -39,7 +39,8 @@
     "no_options": "Ingen muligheder",
     "auto": "Bil",
     "confirm": "Bekræft",
-    "copy_as_plain_text": "Kopier som ren tekst"
+    "copy_as_plain_text": "Kopier som ren tekst",
+    "copy_with_formatting": "Kopiér med formatering"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",

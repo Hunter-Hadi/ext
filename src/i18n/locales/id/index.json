@@ -39,7 +39,8 @@
     "no_options": "Tidak ada pilihan",
     "auto": "Otomatis",
     "confirm": "Konfirmasi",
-    "copy_as_plain_text": "Salin sebagai teks biasa"
+    "copy_as_plain_text": "Salin sebagai teks biasa",
+    "copy_with_formatting": "Salin dengan pemformatan"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",

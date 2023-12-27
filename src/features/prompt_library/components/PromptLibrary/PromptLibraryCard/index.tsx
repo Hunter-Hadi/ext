@@ -147,7 +147,7 @@ const PromptLibraryCard: FC<{
         <EllipsisTextWithTooltip
           resizeListener
           tip={prompt.prompt_title}
-          color={'text.secondary'}
+          color={'text.primary'}
           sx={{
             fontSize: '20px',
             lineHeight: '24px',
@@ -218,7 +218,7 @@ const PromptLibraryCard: FC<{
         resizeListener
         variant={'custom'}
         tip={prompt.teaser}
-        color={'text.secondary'}
+        color={'text.primary'}
         sx={{
           fontSize: '16px',
           lineHeight: '20px',

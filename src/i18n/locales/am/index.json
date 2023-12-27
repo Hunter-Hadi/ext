@@ -39,7 +39,8 @@
     "no_options": "ምንም አማራጭ የለም",
     "auto": "ራስዎ",
     "confirm": "አረጋግጥ",
-    "copy_as_plain_text": "በስም ብቻ ይግቡ"
+    "copy_as_plain_text": "በስም ብቻ ይግቡ",
+    "copy_with_formatting": "በፎርማቲንግ የተጻፈው ኮፒ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",

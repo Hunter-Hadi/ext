@@ -31,7 +31,7 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
       },
       [`.${tabClasses.root}.Mui-selected`]: {
         background: isDark ? '#3E3F4C' : 'rgba(0, 0, 0, 0.08)',
-        color: isDark ? '#fff' : 'rgba(0, 0, 0, 0.6)',
+        color: isDark ? '#fff' : 'rgba(0, 0, 0, 0.87)',
       },
       [`.${tabsClasses.indicator}`]: {
         backgroundColor: '#d8d8d8',

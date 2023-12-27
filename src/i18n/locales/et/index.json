@@ -39,7 +39,8 @@
     "no_options": "Valikuid pole",
     "auto": "Auto",
     "confirm": "Kinnita",
-    "copy_as_plain_text": "Kopeeri tavalise tekstina"
+    "copy_as_plain_text": "Kopeeri tavalise tekstina",
+    "copy_with_formatting": "Kopeeri vormindamisega"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",

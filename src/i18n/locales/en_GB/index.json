@@ -33,6 +33,7 @@
     "try_again": "Try again",
     "stop": "Stop",
     "copy": "Copy",
+    "copy_with_formatting": "Copy with formatting",
     "copy_to_clipboard": "Copy to clipboard",
     "copy_as_plain_text": "Copy as plain text",
     "copied": "Copied",

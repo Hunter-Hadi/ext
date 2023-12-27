@@ -39,7 +39,8 @@
     "no_options": "Hakuna chaguo",
     "auto": "Gari",
     "confirm": "Thibitisha",
-    "copy_as_plain_text": "Nakili kama maandishi ya kawaida"
+    "copy_as_plain_text": "Nakili kama maandishi ya kawaida",
+    "copy_with_formatting": "Nakili na muundo"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",

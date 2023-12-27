@@ -39,7 +39,8 @@
     "no_options": "Χωρίς επιλογές",
     "auto": "Αυτόματο",
     "confirm": "Επιβεβαίωση",
-    "copy_as_plain_text": "Αντιγραφή ως απλό κείμενο"
+    "copy_as_plain_text": "Αντιγραφή ως απλό κείμενο",
+    "copy_with_formatting": "Αντιγραφή με μορφοποίηση"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",

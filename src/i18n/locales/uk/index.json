@@ -39,7 +39,8 @@
     "no_options": "کوئی اختیارات نہیں",
     "auto": "خودکار",
     "confirm": "تصدیق کریں",
-    "copy_as_plain_text": "سادہ متن کی طرح کاپی کریں"
+    "copy_as_plain_text": "سادہ متن کی طرح کاپی کریں",
+    "copy_with_formatting": "فارمیٹنگ کے ساتھ کاپی"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",

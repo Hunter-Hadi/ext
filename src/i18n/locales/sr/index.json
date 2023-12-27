@@ -39,7 +39,8 @@
     "no_options": "Nema opcija",
     "auto": "Automobil",
     "confirm": "Potvrdi",
-    "copy_as_plain_text": "Kopiraj kao običan tekst"
+    "copy_as_plain_text": "Kopiraj kao običan tekst",
+    "copy_with_formatting": "Kopiraj sa formatiranjem"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",

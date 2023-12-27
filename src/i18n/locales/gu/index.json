@@ -39,7 +39,8 @@
     "no_options": "કોઈ વિકલ્પો નથી",
     "auto": "આપો",
     "confirm": "પુષ્ટિ કરો",
-    "copy_as_plain_text": "સાદા ટેક્સ્ટ તરીકે કૉપિ કરો"
+    "copy_as_plain_text": "સાદા ટેક્સ્ટ તરીકે કૉપિ કરો",
+    "copy_with_formatting": "ફોર્મેટિંગ સાથે કૉપી"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",

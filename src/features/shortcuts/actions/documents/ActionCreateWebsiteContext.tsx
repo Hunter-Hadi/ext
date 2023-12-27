@@ -1,9 +1,10 @@
+import lodashSet from 'lodash-es/set'
+
+import { templateParserDecorator } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { templateParserDecorator } from '@/features/shortcuts'
 import { IWebsiteContext } from '@/features/websiteContext/background'
-import lodashSet from 'lodash-es/set'
 import {
   clientCreateWebsiteContext,
   clientUpdateWebsiteContext,
@@ -60,20 +61,30 @@ export class ActionCreateWebsiteContext extends Action {
         createdWebsiteContext?.id &&
         !createdWebsiteContext.meta?.screenshot
       ) {
-        clientRunBackgroundGetScreenshot().then((screenshot) => {
-          if (screenshot) {
-            clientUpdateWebsiteContext(
-              {
-                id: createdWebsiteContext.id,
-              },
-              {
-                meta: {
-                  screenshot,
+        const getScreenshotFn = () => {
+          clientRunBackgroundGetScreenshot().then((screenshot) => {
+            if (screenshot) {
+              clientUpdateWebsiteContext(
+                {
+                  id: createdWebsiteContext.id,
                 },
-              },
-            )
-          }
-        })
+                {
+                  meta: {
+                    screenshot,
+                  },
+                },
+              )
+            }
+          })
+
+          window.removeEventListener('focus', getScreenshotFn)
+        }
+
+        if (document.hasFocus()) {
+          getScreenshotFn()
+        } else {
+          window.addEventListener('focus', getScreenshotFn)
+        }
       }
       this.output = websiteContext.id
     } catch (e) {

@@ -1,11 +1,12 @@
-import { createClientMessageListener } from '@/background/utils'
 import WebSocketAsPromised from 'websocket-as-promised'
+
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import { websocketUtils } from '@/background/src/chat/BingChat/bing/utils'
+import { createClientMessageListener } from '@/background/utils'
 import {
   ClientProxyWebSocketActionType,
   ClientProxyWebSocketSceneType,
 } from '@/background/utils/clientProxyWebsocket/background'
-import { websocketUtils } from '@/background/src/chat/BingChat/bing/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 const initClientProxyWebsocket = () => {

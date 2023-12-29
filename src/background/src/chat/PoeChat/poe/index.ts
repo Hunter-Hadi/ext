@@ -1,19 +1,20 @@
-import WebSocketAsPromised from 'websocket-as-promised'
 import Browser from 'webextension-polyfill'
+import WebSocketAsPromised from 'websocket-as-promised'
 export async function requestHostPermission(host: string) {
   return Browser.permissions.request({ origins: [host] })
 }
 
-import {
-  GRAPHQL_QUERIES,
-  PoeSettings,
-  getChatId,
-  getPoeSettings,
-  gqlRequest,
-} from './api'
 import { SendMessageParams } from '@/background/src/chat/BingChat/bing/types'
 import { PoeModel } from '@/background/src/chat/PoeChat/type'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+
+import {
+  getChatId,
+  getPoeSettings,
+  gqlRequest,
+  GRAPHQL_QUERIES,
+  PoeSettings,
+} from './api'
 
 interface ChatMessage {
   id: string

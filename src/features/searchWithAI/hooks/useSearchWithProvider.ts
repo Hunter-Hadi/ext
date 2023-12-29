@@ -1,6 +1,8 @@
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useCallback, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
+
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+
 import { ISearchWithAIProviderType } from '../constants'
 import { SearchWithAIProviderLoadingAtom } from '../store'
 import useSearchWithAISettings from './useSearchWithAISettings'

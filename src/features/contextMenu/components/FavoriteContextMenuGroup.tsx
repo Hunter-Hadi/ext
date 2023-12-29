@@ -1,15 +1,16 @@
-import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
+import { TooltipProps } from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TooltipButton from '@/components/TooltipButton'
 import useFavoriteContextMenuList, {
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { TooltipProps } from '@mui/material/Tooltip'
-import Typography from '@mui/material/Typography'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import TooltipButton from '@/components/TooltipButton'
-import { useTranslation } from 'react-i18next'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 const FavoriteContextMenuGroup: FC<{
   buttonSettingKey: IChromeExtensionButtonSettingKey

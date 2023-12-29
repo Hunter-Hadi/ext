@@ -1,4 +1,5 @@
 import { atom } from 'recoil'
+
 import { IUseChatGPTUserInfo } from '@/features/auth/types'
 
 export const AuthState = atom<{

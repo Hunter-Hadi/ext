@@ -1,7 +1,7 @@
+import { clientGetContextMenuRunActions } from '@/features/contextMenu/utils/clientButtonSettings'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { clientGetContextMenuRunActions } from '@/features/contextMenu/utils/clientButtonSettings'
 export class ActionFetchActions extends Action {
   static type: ActionIdentifier = 'FETCH_ACTIONS'
   constructor(

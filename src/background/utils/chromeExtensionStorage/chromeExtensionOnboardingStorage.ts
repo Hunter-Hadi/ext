@@ -1,9 +1,10 @@
+import Browser from 'webextension-polyfill'
+
+import { IAIProviderType } from '@/background/provider/chat'
 import {
   AI_PROVIDER_MAP,
   CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
 } from '@/constants'
-import Browser from 'webextension-polyfill'
-import { IAIProviderType } from '@/background/provider/chat'
 import {
   InputAssistantButtonGroupConfigHostKeys,
   InputAssistantButtonGroupConfigHostType,

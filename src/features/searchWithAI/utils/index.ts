@@ -1,6 +1,7 @@
 import { createClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+
 import {
   SEARCH_WITH_AI_ROOT_ID,
   SEARCH_WITH_AI_SHADOW_CONTAINER_ID,

@@ -1,11 +1,12 @@
-import React, { FC } from 'react'
-import { BaseSelect } from '@/components/select'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
-import { useTranslation } from 'react-i18next'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import Typography from '@mui/material/Typography'
 import isNumber from 'lodash-es/isNumber'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { BaseSelect } from '@/components/select'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export const SEARCH_RESULTS_OPTIONS: Array<{
   label: string

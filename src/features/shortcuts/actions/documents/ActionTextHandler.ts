@@ -1,7 +1,7 @@
 import Action from '@/features/shortcuts/core/Action'
+import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 
 export class ActionTextHandler extends Action {

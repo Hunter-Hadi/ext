@@ -1,8 +1,8 @@
-import React, { FC } from 'react'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
-import Typography, { TypographyProps } from '@mui/material/Typography'
 import { SxProps } from '@mui/material/styles'
+import Typography, { TypographyProps } from '@mui/material/Typography'
+import React, { FC } from 'react'
 
 const BulletList: FC<{
   textProps?: TypographyProps

@@ -1,6 +1,6 @@
-import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
 export const clientGetChromeExtensionButtonSettings = async (
   buttonKey: IChromeExtensionButtonSettingKey,

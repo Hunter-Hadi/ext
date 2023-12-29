@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
-import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+
+import APITemperatureSlider from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/APITemperatureSlider'
+import BingConversationStyleSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/BingConversationStyleSelector'
+import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/ChatGPTPluginsSelector'
 import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import AIProviderModelSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderModelSelector'
-import APITemperatureSlider from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/APITemperatureSlider'
-import { ChatGPTPluginsSelector } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/ChatGPTPluginsSelector'
-import BingConversationStyleSelector from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard/components/BingConversationStyleSelector'
+import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 
 const AIProviderCard: FC<{
   aiProviderOption: AIProviderOptionType

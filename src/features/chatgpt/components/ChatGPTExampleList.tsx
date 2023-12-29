@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
-import Typography from '@mui/material/Typography'
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import ArrowRightIcon from '@mui/icons-material/ArrowRight'
 import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
-import ArrowRightIcon from '@mui/icons-material/ArrowRight'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import Typography from '@mui/material/Typography'
+import React, { useState } from 'react'
 interface TextListProps {
   title: string
   children?: React.ReactNode
@@ -150,8 +150,8 @@ const ChatGPTDefaultExampleList: React.FC = () => {
 }
 
 export {
-  ChatGPTExpandList,
-  ChatGPTSendEmailExampleList,
-  ChatGPTReplyEmailExampleList,
   ChatGPTDefaultExampleList,
+  ChatGPTExpandList,
+  ChatGPTReplyEmailExampleList,
+  ChatGPTSendEmailExampleList,
 }

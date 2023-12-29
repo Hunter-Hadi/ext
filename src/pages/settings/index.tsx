@@ -1,14 +1,16 @@
-import React from 'react'
-import CssBaseline from '@mui/material/CssBaseline'
-import { createRoot } from 'react-dom/client'
-import AppThemeProvider from '@/components/AppTheme'
-import { RecoilRoot } from 'recoil'
-import OptionPagesInit from '@/utils/OptionPagesInit'
-import SettingsApp from '@/pages/settings/pages/SettingsApp'
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { SnackbarProvider } from 'notistack'
 // init i18n
 import '@/i18n'
+
+import CssBaseline from '@mui/material/CssBaseline'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { SnackbarProvider } from 'notistack'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import { RecoilRoot } from 'recoil'
+
+import AppThemeProvider from '@/components/AppTheme'
+import SettingsApp from '@/pages/settings/pages/SettingsApp'
+import OptionPagesInit from '@/utils/OptionPagesInit'
 
 const rootElement = document.getElementById('root')
 

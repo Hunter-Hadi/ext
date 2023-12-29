@@ -20,6 +20,7 @@ import {
   getCurrentDomainHost,
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
+
 import SPARootProtector from './utils/SPARootProtector'
 // import createCache from '@emotion/cache'
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)

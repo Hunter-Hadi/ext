@@ -1,5 +1,7 @@
-import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { atom } from 'recoil'
+
+import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
+
 import {
   DEFAULT_SEARCH_WITH_AI_SETTING,
   ISearchWithAISettings,

@@ -1,22 +1,23 @@
-import { useRecoilState, useRecoilValue } from 'recoil'
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import debounce from 'lodash-es/debounce'
+import isEmpty from 'lodash-es/isEmpty'
+import throttle from 'lodash-es/throttle'
 import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilState, useRecoilValue } from 'recoil'
+
 import CustomMarkdown from '@/components/CustomMarkdown'
+import { useRangy } from '@/features/contextMenu'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
   FloatingContextMenuDraftState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
-import { useRangy } from '@/features/contextMenu'
-import Typography from '@mui/material/Typography'
-import isEmpty from 'lodash-es/isEmpty'
-import { useTranslation } from 'react-i18next'
-import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
-import throttle from 'lodash-es/throttle'
-import debounce from 'lodash-es/debounce'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
-import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void

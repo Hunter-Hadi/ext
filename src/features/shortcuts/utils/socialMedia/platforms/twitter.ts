@@ -1,15 +1,16 @@
+import uniq from 'lodash-es/uniq'
+
 import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import SocialMediaPostContext, {
-  ISocialMediaPost,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
-import uniq from 'lodash-es/uniq'
 import {
   findParentEqualSelector,
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import SocialMediaPostContext, {
+  ISocialMediaPost,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 /**
  * 获取Twitter消息详情

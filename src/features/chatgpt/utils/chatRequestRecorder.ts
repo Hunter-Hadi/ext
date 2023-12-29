@@ -1,16 +1,17 @@
-import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { getFingerPrint } from '@/utils/fingerPrint'
 import dayjs from 'dayjs'
-import Browser from 'webextension-polyfill'
-import omit from 'lodash-es/omit'
-import { getAccessToken } from '@/utils/request'
 import debounce from 'lodash-es/debounce'
+import omit from 'lodash-es/omit'
+import Browser from 'webextension-polyfill'
+
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import { aesJsonEncrypt } from '@/utils/encryptionHelper'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
+import { aesJsonEncrypt } from '@/utils/encryptionHelper'
+import { getFingerPrint } from '@/utils/fingerPrint'
+import { getAccessToken } from '@/utils/request'
 
 interface IChatRequestCountRecordType {
   // 记录用户发送chat的次数情况

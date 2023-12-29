@@ -1,7 +1,7 @@
 import Action from '@/features/shortcuts/core/Action'
+import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
 
 export class ActionSetVariable extends Action {
   static type: ActionIdentifier = 'SET_VARIABLE'

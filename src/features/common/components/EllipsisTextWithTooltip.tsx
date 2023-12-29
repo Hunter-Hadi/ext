@@ -1,5 +1,6 @@
-import Typography, { TypographyProps } from '@mui/material/Typography'
+import { SxProps } from '@mui/material/styles'
 import Tooltip from '@mui/material/Tooltip'
+import Typography, { TypographyProps } from '@mui/material/Typography'
 import React, {
   FC,
   useCallback,
@@ -8,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { SxProps } from '@mui/material/styles'
 
 interface IProps extends TypographyProps {
   children: React.ReactNode

@@ -1,12 +1,13 @@
-import React, { FC, useMemo, useState } from 'react'
-import Stack from '@mui/material/Stack'
-import TooltipIconButton from '@/components/TooltipIconButton'
-import EditIcon from '@mui/icons-material/Edit'
 import DoneIcon from '@mui/icons-material/Done'
-import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
-import { hideChatBox } from '@/utils'
-import { IUserChatMessage } from '@/features/chatgpt/types'
+import EditIcon from '@mui/icons-material/Edit'
+import Stack from '@mui/material/Stack'
+import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
+import TooltipIconButton from '@/components/TooltipIconButton'
+import { IUserChatMessage } from '@/features/chatgpt/types'
+import { hideChatBox } from '@/utils'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 

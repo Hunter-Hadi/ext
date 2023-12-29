@@ -1,5 +1,5 @@
-import Log from '@/utils/Log'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import Log from '@/utils/Log'
 const log = new Log('ContentScript/CheckIsLogin')
 
 const port = new ContentScriptConnectionV2({

@@ -1,8 +1,9 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import Action from '@/features/shortcuts/core/Action'
 import { parametersParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { v4 as uuidV4 } from 'uuid'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export class ActionChatMessage extends Action {

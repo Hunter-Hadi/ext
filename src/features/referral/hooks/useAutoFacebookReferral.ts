@@ -1,11 +1,12 @@
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useCallback } from 'react'
+
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ReferralConfig from '@/features/referral/config'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const useAutoFacebookReferral = () => {
   const { userInfo } = useUserInfo()

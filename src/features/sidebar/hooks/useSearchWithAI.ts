@@ -1,25 +1,25 @@
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { useSetRecoilState } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { useSetRecoilState } from 'recoil'
+
 import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { isShowChatBox, showChatBox } from '@/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
+import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
+import { isShowChatBox, showChatBox } from '@/utils'
 
 const useSearchWithAI = () => {
   const {

@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
-import CloseAlert from '@/components/CloseAlert'
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import CloseAlert from '@/components/CloseAlert'
 
 const HowToFindSettings: FC<{
   liteMode?: boolean

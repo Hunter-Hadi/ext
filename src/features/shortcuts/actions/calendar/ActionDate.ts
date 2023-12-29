@@ -1,8 +1,9 @@
+import dayjs from 'dayjs'
+
 import Action from '@/features/shortcuts/core/Action'
+import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
-import dayjs from 'dayjs'
 
 export class ActionDate extends Action {
   static type: ActionIdentifier = 'DATE'

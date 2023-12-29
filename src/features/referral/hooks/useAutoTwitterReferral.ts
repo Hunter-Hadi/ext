@@ -1,11 +1,12 @@
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { useCallback } from 'react'
-import { IShortcutEngineListenerType } from '@/features/shortcuts'
-import Action from '@/features/shortcuts/core/Action'
+
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ReferralConfig from '@/features/referral/config'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { IShortcutEngineListenerType } from '@/features/shortcuts'
+import Action from '@/features/shortcuts/core/Action'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
+import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const useAutoTwitterReferral = () => {
   const { userInfo } = useUserInfo()

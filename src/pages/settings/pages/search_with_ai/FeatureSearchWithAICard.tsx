@@ -1,9 +1,10 @@
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
+
 import useSearchWithAISettings from '@/features/searchWithAI/hooks/useSearchWithAISettings'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const FeatureSearchWithAICard: FC = () => {
   const { t } = useTranslation(['settings', 'common'])

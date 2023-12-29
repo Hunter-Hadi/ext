@@ -1,12 +1,12 @@
+import { IChatConversation } from '@/background/src/chatConversations'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { IChatMessage } from '@/features/chatgpt/types'
+import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
+import { shortcutsRenderTemplate } from '@/features/shortcuts'
+import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { IAction } from '@/features/shortcuts/types/Action'
-import { IChatMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
-import { IChatConversation } from '@/background/src/chatConversations'
 import Log from '@/utils/Log'
-import { shortcutsRenderTemplate } from '@/features/shortcuts'
 
 class Action implements IAction {
   id: string

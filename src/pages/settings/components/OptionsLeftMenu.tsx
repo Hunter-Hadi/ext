@@ -1,14 +1,15 @@
-import React, { FC, useContext } from 'react'
-import { SxProps } from '@mui/material/styles'
+import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
+import { SxProps } from '@mui/material/styles'
+import React, { FC, useContext } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import {
   SettingsPageRouteContext,
   settingsPageRouterList,
 } from '@/pages/settings/context'
-import Divider from '@mui/material/Divider'
-import { useTranslation } from 'react-i18next'
 
 const OptionsLeftMenu: FC<{
   sx?: SxProps

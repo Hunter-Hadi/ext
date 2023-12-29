@@ -1,14 +1,15 @@
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import { GoogleIcon } from '@/components/CustomIcon'
 // import { UseChatGptIcon } from '@/components/CustomIcon'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { GoogleIcon } from '@/components/CustomIcon'
-import Divider from '@mui/material/Divider'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { useTranslation } from 'react-i18next'
 const SettingsLoginPage: FC = () => {
   const { t } = useTranslation(['settings', 'common'])
   return (

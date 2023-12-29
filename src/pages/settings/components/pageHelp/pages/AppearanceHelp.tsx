@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
-import PageHelpCard from '@/pages/settings/components/pageHelp/PageHelpCard'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import PageHelpCard from '@/pages/settings/components/pageHelp/PageHelpCard'
 
 const AppearanceHelp: FC<{
   defaultOpen?: boolean

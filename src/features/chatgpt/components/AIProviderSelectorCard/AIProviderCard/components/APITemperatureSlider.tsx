@@ -1,15 +1,16 @@
-import React, { FC, useEffect } from 'react'
-import Slider from '@mui/material/Slider'
-import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
-import Select from '@mui/material/Select'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
+import Select from '@mui/material/Select'
+import Slider from '@mui/material/Slider'
 import debounce from 'lodash-es/debounce'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { IAIProviderType } from '@/background/provider/chat'
-import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { getThirdProviderSettings } from '@/background/src/chat/util'
+import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 
 const APITemperatureSlider: FC<{
   authSceneType?: PermissionWrapperCardSceneType

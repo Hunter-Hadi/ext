@@ -1,7 +1,8 @@
 import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { useTranslation } from 'react-i18next'
+
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import ChatGPTApiSettings from '@/pages/settings/pages/openai_api_key/ChatGPTApiSettings'
 
 const SettingsOpenaiApiKeyPage: FC = () => {

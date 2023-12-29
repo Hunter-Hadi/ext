@@ -2,10 +2,10 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
+import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ICommentData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 // 获取Reddit评论的作者，日期，内容
 const getRedditCommentDetail = async (

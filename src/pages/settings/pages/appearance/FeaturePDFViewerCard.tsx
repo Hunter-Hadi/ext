@@ -1,10 +1,11 @@
 import React, { FC } from 'react'
-import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 import { useTranslation } from 'react-i18next'
+
+import RadioCardGroup from '@/pages/settings/components/RadioCardGroup'
 import { PDFTooltip } from '@/pages/settings/components/tooltipCollection'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const FeaturePDFViewerCard: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()

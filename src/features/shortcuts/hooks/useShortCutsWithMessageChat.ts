@@ -1,22 +1,24 @@
+import { useCallback, useRef } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
+
+import { useAuthLogin } from '@/features/auth'
 import {
   ContentScriptConnectionV2,
   pingUntilLogin,
   useMessageWithChatGPT,
 } from '@/features/chatgpt'
-import { useCallback, useRef } from 'react'
 import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
-import { useRecoilState, useRecoilValue } from 'recoil'
 import { ShortCutsState } from '@/features/shortcuts/store'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { useAuthLogin } from '@/features/auth'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { isShowChatBox, showChatBox } from '@/utils'
 
 const shortCutsEngine = new ShortCutsEngine()
 const port = new ContentScriptConnectionV2({
   runtime: 'shortcut',
 })
+
 const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
   const { isLogin } = useAuthLogin()
   const getParams = useShortCutsParameters()

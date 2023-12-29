@@ -1,5 +1,5 @@
-import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
+import React, { FC } from 'react'
 
 const SidebarHeader: FC = () => {
   return (

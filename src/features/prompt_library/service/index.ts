@@ -1,14 +1,15 @@
-import { get, post } from '@/utils/request'
+import uniq from 'lodash-es/uniq'
+
 import {
-  IPromptLibraryCardData,
-  IPromptCategoryApiData,
-  IPromptLibraryListParametersState,
   IFavoritePromptListResponse,
   IOwnPromptListResponse,
+  IPromptCategoryApiData,
+  IPromptLibraryCardData,
   IPromptLibraryCardDetailData,
+  IPromptLibraryListParametersState,
 } from '@/features/prompt_library/types'
-import uniq from 'lodash-es/uniq'
 import { objectFilterEmpty } from '@/utils/dataHelper/objectHelper'
+import { get, post } from '@/utils/request'
 
 export const PROMPT_LIBRARY_API = {
   GET_FAVOURITE_PROMPTS: '/prompt/get_favourite_prompts',

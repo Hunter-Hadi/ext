@@ -1,15 +1,16 @@
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
+import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useState } from 'react'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
-import { SxProps } from '@mui/material/styles'
-import Stack from '@mui/material/Stack'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Typography from '@mui/material/Typography'
-import CircularProgress from '@mui/material/CircularProgress'
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 export interface ChatIconFileListProps {
   files: IChatUploadFile[]

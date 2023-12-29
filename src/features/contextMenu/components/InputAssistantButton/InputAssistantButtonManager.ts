@@ -1,14 +1,15 @@
+import isNumber from 'lodash-es/isNumber'
+import { v4 as uuidV4 } from 'uuid'
+
 import inputAssistantButtonBaseConfig, {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
   InputAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
-import Log from '@/utils/Log'
-import isNumber from 'lodash-es/isNumber'
-import { v4 as uuidV4 } from 'uuid'
 import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { mergeElementCssText } from '@/features/contextMenu/utils'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/InputAssistantButtonManager')
 

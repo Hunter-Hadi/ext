@@ -1,15 +1,16 @@
+import { orderBy } from 'lodash-es'
+import Browser from 'webextension-polyfill'
+
 import {
   getPreviousVersion,
   IChromeExtensionDBStorage,
 } from '@/background/utils'
-import Browser from 'webextension-polyfill'
-import { orderBy } from 'lodash-es'
-import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import {
-  getChromeExtensionDBStorage,
   defaultChromeExtensionDBStorage,
+  getChromeExtensionDBStorage,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 
 export interface ChromeExtensionDBStorageSnapshot {
   isDefault: boolean

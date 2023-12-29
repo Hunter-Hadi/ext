@@ -1,20 +1,21 @@
-import { ofetch } from 'ofetch'
 import md5 from 'md5'
+import { ofetch } from 'ofetch'
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+import AddMessageBreakMutation from './graphql/AddMessageBreakMutation.graphql'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ChatViewQuery from './graphql/ChatViewQuery.graphql'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import AddMessageBreakMutation from './graphql/AddMessageBreakMutation.graphql'
+import MessageAddedSubscription from './graphql/MessageAddedSubscription.graphql'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import SendMessageMutation from './graphql/SendMessageMutation.graphql'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import SubscriptionsMutation from './graphql/SubscriptionsMutation.graphql'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import MessageAddedSubscription from './graphql/MessageAddedSubscription.graphql'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import ViewerStateUpdatedSubscription from './graphql/ViewerStateUpdatedSubscription.graphql'

@@ -1,6 +1,8 @@
+import React from 'react'
+
 import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { PermissionWrapperProps } from '@/features/auth/components/PermissionWrapper'
-import React from 'react'
+
 import OpenAICheckerTooltip from '../components/OpenAICheckerTooltip'
 import { ISearchWithAIProviderType, SEARCH_WITH_AI_PROVIDER_MAP } from './index'
 

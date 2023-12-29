@@ -1,11 +1,12 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { fakeLangChainSummarization } from '@/features/shortcuts/langchain/chains/sumarization'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
-import { v4 as uuidV4 } from 'uuid'
 import { getSliceEnd } from '@/features/shortcuts/utils/tokenizer'
 export const SUMMARIZE_MAX_CHARACTERS = 6000
 

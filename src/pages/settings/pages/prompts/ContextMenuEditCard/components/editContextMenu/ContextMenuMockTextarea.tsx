@@ -1,9 +1,10 @@
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
-import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
-import React, { FC, useMemo, useState } from 'react'
 import useTheme from '@mui/material/styles/useTheme'
+import React, { FC, useMemo, useState } from 'react'
+
 import { UseChatGptIcon } from '@/components/CustomIcon'
 
 const ContextMenuMockTextarea: FC<{

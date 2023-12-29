@@ -1,6 +1,6 @@
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 import { IChromeExtensionDBStorage } from '@/background/utils'
+import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 
 const clientGetLiteChromeExtensionDBStorage = async () => {
   try {

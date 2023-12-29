@@ -1,11 +1,11 @@
-import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import Action from '@/features/shortcuts/core/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 export class ActionGetPDFContentsOfCRX extends Action {
   static type: ActionIdentifier = 'GET_PDF_CONTENTS_OF_CRX'
   constructor(

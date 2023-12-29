@@ -1,7 +1,7 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { getAccessToken } from '@/utils/request'
 import { getFingerPrint } from '@/utils/fingerPrint'
+import { getAccessToken } from '@/utils/request'
 
 export const templateWordToExamples = (
   word: string,

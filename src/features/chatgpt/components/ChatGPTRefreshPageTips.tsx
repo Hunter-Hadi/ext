@@ -1,13 +1,14 @@
-import React, { FC } from 'react'
-import Stack from '@mui/material/Stack'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
-import Button from '@mui/material/Button'
 import RefreshIcon from '@mui/icons-material/Refresh'
 import Alert from '@mui/material/Alert'
+import Button from '@mui/material/Button'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 // import { backgroundSendClientMessage } from '@/background/utils'
 
 const ChatGPTRefreshPageTips: FC = () => {

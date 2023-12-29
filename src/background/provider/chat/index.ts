@@ -1,16 +1,15 @@
-export { OpenAIChatProvider } from './OpenAIChatProvider'
-export { ChatAdapter } from './ChatAdapter'
-export { OpenAIApiChatProvider } from './OpenAIApiChatProvider'
-export { UseChatGPTPlusChatProvider } from './UseChatGPTPlusChatProvider'
 export { BardChatProvider } from './BardChatProvider'
 export { BingChatProvider } from './BingChatProvider'
-export { PoeChatProvider } from './PoeChatProvider'
+export type {
+  ChatAdapterInterface,
+  ChatStatus,
+  ChatSystemInterface,
+  IAIProviderType,
+} from './ChatAdapter'
+export { ChatAdapter } from './ChatAdapter'
 export { ClaudeChatProvider } from './ClaudeChatProvider'
 export { MaxAIClaudeChatProvider } from './MaxAIClaudeChatProvider'
-
-export type {
-  ChatStatus,
-  IAIProviderType,
-  ChatAdapterInterface,
-  ChatSystemInterface,
-} from './ChatAdapter'
+export { OpenAIApiChatProvider } from './OpenAIApiChatProvider'
+export { OpenAIChatProvider } from './OpenAIChatProvider'
+export { PoeChatProvider } from './PoeChatProvider'
+export { UseChatGPTPlusChatProvider } from './UseChatGPTPlusChatProvider'

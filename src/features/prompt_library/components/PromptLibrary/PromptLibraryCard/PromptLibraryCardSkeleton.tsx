@@ -1,7 +1,8 @@
-import React, { FC } from 'react'
-import Stack from '@mui/material/Stack'
-import { IPromptActionKey } from '@/features/prompt_library/types'
 import Skeleton from '@mui/material/Skeleton'
+import Stack from '@mui/material/Stack'
+import React, { FC } from 'react'
+
+import { IPromptActionKey } from '@/features/prompt_library/types'
 
 const PromptLibraryCardSkeleton: FC<{
   actionKeys: IPromptActionKey[]

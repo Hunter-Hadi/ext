@@ -5,6 +5,7 @@
  *
  */
 import Browser from 'webextension-polyfill'
+
 import { ISearchWithAIProviderType } from '../constants'
 import { ISearchPageKey } from '../utils'
 

@@ -1,10 +1,10 @@
-import { OpenAIChat } from '@/background/src/chat'
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { OpenAIChat } from '@/background/src/chat'
 import { IChatConversation } from '@/background/src/chatConversations'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat

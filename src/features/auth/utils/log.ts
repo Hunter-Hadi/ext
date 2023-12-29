@@ -1,6 +1,7 @@
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import debounce from 'lodash-es/debounce'
+
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export const authEmitPricingHooksLog = debounce(

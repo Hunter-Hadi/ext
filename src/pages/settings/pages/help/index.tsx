@@ -1,10 +1,11 @@
-import { useTranslation } from 'react-i18next'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-import React, { FC } from 'react'
-import YoutubePlayerBox from '@/components/YoutubePlayerBox'
-import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
 import { OpenInNewOutlined } from '@mui/icons-material'
+import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 
 const SettingsHelpPage: FC = () => {
   const { t } = useTranslation(['settings', 'common'])

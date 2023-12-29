@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
+import IconButton from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import Link from '@mui/material/Link'
-import IconButton from '@mui/material/IconButton'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useActivity from '@/features/auth/hooks/useActivity'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 

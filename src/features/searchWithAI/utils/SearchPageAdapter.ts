@@ -312,9 +312,9 @@ function createMindGoogleSidebar() {
 }
 
 export {
-  ISearchPageKey,
-  ISearchPageAdapter,
-  SearchPageAdapter,
-  matchSearchPageConfig,
   createMindGoogleSidebar,
+  ISearchPageAdapter,
+  ISearchPageKey,
+  matchSearchPageConfig,
+  SearchPageAdapter,
 }

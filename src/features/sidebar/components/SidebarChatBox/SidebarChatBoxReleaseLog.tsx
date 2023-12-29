@@ -1,8 +1,9 @@
-import React, { FC } from 'react'
-import Typography from '@mui/material/Typography'
-import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 // import Link from '@mui/material/Link'
 import Link from '@mui/material/Link'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
+
+import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 
 const SidebarChatBoxReleaseLog: FC = () => {
   const ReleaseLogText = `Access your chat history in immersive chat.`

@@ -1,6 +1,15 @@
+import {
+  getBackendOptions,
+  MultiBackend,
+  Tree,
+} from '@minoru/react-dnd-treeview'
+import AddIcon from '@mui/icons-material/Add'
+import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
+import cloneDeep from 'lodash-es/cloneDeep'
+import groupBy from 'lodash-es/groupBy'
 import React, {
   FC,
   useCallback,
@@ -9,40 +18,32 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import {
-  Tree,
-  getBackendOptions,
-  MultiBackend,
-} from '@minoru/react-dnd-treeview'
 import { DndProvider } from 'react-dnd'
-import ContextMenuItem from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuItem'
-import { v4 } from 'uuid'
-// import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
-import ContextMenuPlaceholder from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuPlaceholder'
-import ContextMenuViewSource from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuViewSource'
-import ContextMenuActionConfirmModal, {
-  IConfirmActionType,
-} from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuActionConfirmModal'
-import ContextMenuMockTextarea from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuMockTextarea'
-import DevContent from '@/components/DevContent'
-import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
-import AddIcon from '@mui/icons-material/Add'
-import RestartAltIcon from '@mui/icons-material/RestartAlt'
-import groupBy from 'lodash-es/groupBy'
-import cloneDeep from 'lodash-es/cloneDeep'
-import ContextMenuEditFormModal from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuEditFormModal'
-import {
-  IContextMenuItem,
-  IContextMenuItemWithChildren,
-} from '@/features/contextMenu/types'
 import { useTranslation } from 'react-i18next'
-import ContextMenuRestoreDialog from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuRestoreDialog'
-import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import { v4 } from 'uuid'
+
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import {
   getChromeExtensionDBStorageButtonContextMenu,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import DevContent from '@/components/DevContent'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
+import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
+import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import ContextMenuActionConfirmModal, {
+  IConfirmActionType,
+} from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuActionConfirmModal'
+import ContextMenuEditFormModal from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuEditFormModal'
+import ContextMenuItem from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuItem'
+import ContextMenuMockTextarea from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuMockTextarea'
+// import ContextMenuViewSource from '@/pages/settings/components/ContextMenuViewSource'
+import ContextMenuPlaceholder from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuPlaceholder'
+import ContextMenuRestoreDialog from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuRestoreDialog'
+import ContextMenuViewSource from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuViewSource'
 
 const rootId = 'root'
 

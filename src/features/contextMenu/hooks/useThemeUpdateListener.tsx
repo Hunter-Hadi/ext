@@ -2,6 +2,7 @@
  * 初始化在gmail的chatGPT客户端
  */
 import { useEffect } from 'react'
+
 // import { setChromeExtensionSettings } from '@/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 

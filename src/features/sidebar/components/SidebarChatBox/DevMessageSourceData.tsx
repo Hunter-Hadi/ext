@@ -1,11 +1,12 @@
+import CodeIcon from '@mui/icons-material/Code'
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import Tooltip from '@mui/material/Tooltip'
 import React, { FC, useMemo } from 'react'
+
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import DevContent from '@/components/DevContent'
 import { IChatMessage } from '@/features/chatgpt/types'
-import Box from '@mui/material/Box'
-import Tooltip from '@mui/material/Tooltip'
-import CodeIcon from '@mui/icons-material/Code'
-import Stack from '@mui/material/Stack'
-import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 const DevMessageSourceData: FC<{
   message: IChatMessage
 }> = ({ message }) => {

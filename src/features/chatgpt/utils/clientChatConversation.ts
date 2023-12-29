@@ -1,11 +1,11 @@
+import { IChatConversation } from '@/background/src/chatConversations'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { IChatConversation } from '@/background/src/chatConversations'
 
 export const clientChatConversationModifyChatMessages = async (
   action: 'add' | 'delete' | 'clear' | 'update',

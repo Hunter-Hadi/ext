@@ -1,8 +1,9 @@
+import { v4 as uuidV4 } from 'uuid'
+
+import { ISystemChatMessage } from '@/features/chatgpt/types'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
-import { v4 as uuidV4 } from 'uuid'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { IExecuteOperationResult } from '@/features/shortcuts/utils/OperationElementHelper'
 export class ActionOperationElement extends Action {

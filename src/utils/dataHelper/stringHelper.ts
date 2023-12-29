@@ -11,6 +11,7 @@ export const domain2HttpsDomain = (domain: string, filterExtension = false) => {
   return domain
 }
 export const string2CapitalizeFirstLetter = (
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   [first, ...rest]: string,
   locale = 'en',
@@ -132,8 +133,7 @@ export const httpLink2Hostname = (httpLink: string) => {
     return ''
   }
   try {
-    const regExp =
-      /^(?:https?:\/\/)?(?:www\.)?((?:(?!www\.|\.).)+\.[-a-zA-Z0-9.]+)/gm
+    const regExp = /^(?:https?:\/\/)?(?:www\.)?((?:(?!www\.|\.).)+\.[-a-zA-Z0-9.]+)/gm
     const host = httpLink.match(regExp)
     return (host ? host[0] : '').toLowerCase()
   } catch (e) {

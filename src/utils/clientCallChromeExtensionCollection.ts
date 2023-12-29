@@ -1,9 +1,10 @@
-import { clientRunBackgroundFunction } from '@/utils/index'
+import imageCompression from 'browser-image-compression'
+
 import {
   base642file,
   file2base64,
 } from '@/background/utils/uplpadFileProcessHelper'
-import imageCompression from 'browser-image-compression'
+import { clientRunBackgroundFunction } from '@/utils/index'
 
 /**
  * 这个文件是客户端专门用来调用chrome extension 方法的集合，例如chrome.tabs.query()

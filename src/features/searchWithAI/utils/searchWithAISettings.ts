@@ -1,4 +1,5 @@
 import Browser from 'webextension-polyfill'
+
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_PROVIDER_MAP,

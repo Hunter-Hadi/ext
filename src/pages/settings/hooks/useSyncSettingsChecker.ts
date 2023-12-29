@@ -1,15 +1,16 @@
-import { useCallback, useRef, useState } from 'react'
-import { useSnackbar } from 'notistack'
 import debounce from 'lodash-es/debounce'
+import { useSnackbar } from 'notistack'
+import { useCallback, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { IChromeExtensionDBStorage } from '@/background/utils'
+import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
   syncLocalSettingsToServerSettings,
   syncServerSettingsToLocalSettings,
 } from '@/background/utils/syncSettings'
-import { useTranslation } from 'react-i18next'
-import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { IChromeExtensionDBStorage } from '@/background/utils'
 const useSyncSettingsChecker = () => {
   // Syncing your settings...
   // Sync successful!

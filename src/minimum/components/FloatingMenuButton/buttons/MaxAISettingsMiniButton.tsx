@@ -1,10 +1,11 @@
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import Stack from '@mui/material/Stack'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Stack from '@mui/material/Stack'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 const MaxAISettingsMiniButton = () => {
   const { t } = useTranslation(['common', 'client'])

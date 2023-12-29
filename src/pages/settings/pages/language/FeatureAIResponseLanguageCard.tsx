@@ -1,11 +1,12 @@
-import React, { FC } from 'react'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-import { useTranslation } from 'react-i18next'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import LanguageSelect from '@/components/select/LanguageSelect'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 
 const FeatureAIResponseLanguageCard: FC = () => {
   const { userSettings, setUserSettings } = useUserSettings()

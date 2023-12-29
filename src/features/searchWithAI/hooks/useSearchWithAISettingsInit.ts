@@ -1,7 +1,9 @@
-import { getChromeExtensionAccessToken } from '@/features/auth/utils'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
+
+import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_PROVIDER_MAP,

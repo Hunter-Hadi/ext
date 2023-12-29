@@ -1,3 +1,8 @@
+import { v4 as uuidV4 } from 'uuid'
+
+import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { ClientProxyWebSocket } from '@/background/utils/clientProxyWebsocket/background'
+
 import { createConversation } from './api'
 import {
   BingConversationStyle,
@@ -7,9 +12,6 @@ import {
   SendMessageParams,
 } from './types'
 import { convertMessageToMarkdown } from './utils'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
-import { v4 as uuidV4 } from 'uuid'
-import { ClientProxyWebSocket } from '@/background/utils/clientProxyWebsocket/background'
 
 const OPTIONS_SETS = [
   'nlu_direct_response_filter',

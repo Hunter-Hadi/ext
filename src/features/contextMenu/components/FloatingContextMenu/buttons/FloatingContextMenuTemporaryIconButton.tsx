@@ -1,15 +1,16 @@
-import React, { FC } from 'react'
 import Button, { ButtonProps } from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
+import { TooltipProps } from '@mui/material/Tooltip'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import {
   ContextMenuSettingsState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { TooltipProps } from '@mui/material/Tooltip'
-import { useTranslation } from 'react-i18next'
 
 const FloatingContextMenuTemporaryIconButton: FC<{
   sx?: SxProps

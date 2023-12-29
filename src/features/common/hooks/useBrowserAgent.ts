@@ -30,7 +30,9 @@ const useBrowserAgent = () => {
 
       // default Chrome
       setBrowserAgent('Chrome')
-    } catch (error) {}
+    } catch (error) {
+      console.error(error)
+    }
   })
 
   return {

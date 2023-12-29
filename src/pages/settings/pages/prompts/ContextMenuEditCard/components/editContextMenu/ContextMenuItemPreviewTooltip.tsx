@@ -1,10 +1,11 @@
-import React, { FC, useMemo } from 'react'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import { styled } from '@mui/material/styles'
+import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 // import Button from '@mui/material/Button'
 

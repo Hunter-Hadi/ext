@@ -1,8 +1,9 @@
 import { SxProps } from '@mui/material/styles'
+
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
 import { I18nextKeysType } from '@/i18next'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 export interface IInputAssistantButton {
   tooltip: I18nextKeysType

@@ -1,48 +1,49 @@
+import { v4 } from 'uuid'
+
+import { shortcutsRenderTemplate } from '@/features/shortcuts'
 import {
-  IShortcutEngineVariableType,
+  ActionAnalyzeChatFile,
+  ActionAskChatGPT,
+  ActionChatMessage,
+  ActionCloseURLS,
+  ActionConditional,
+  ActionCreateWebsiteContext,
+  ActionDate,
+  ActionDateFormat,
+  ActionFetchActions,
+  ActionGetContentsOfSearchEngine,
+  ActionGetContentsOfURL,
+  ActionGetContentsOfWebPage,
+  ActionGetEmailContentsOfWebPage,
+  ActionGetEmailDraftOfWebPage,
+  ActionGetPDFContentsOfCRX,
+  ActionGetReadabilityContentsOfWebPage,
+  ActionGetSocialMediaPostContentOfWebPage,
+  ActionGetSocialMediaPostDraftOfWebPage,
+  ActionGetYoutubeTranscriptOfURL,
+  ActionInsertUserInput,
+  ActionOpenURLs,
+  ActionOperationElement,
+  ActionRenderChatGPTPrompt,
+  ActionRenderTemplate,
+  ActionSetVariable,
+  ActionSetVariableMap,
+  ActionSetVariablesModal,
+  ActionSliceOfText,
+  ActionSummarizeOfText,
+  ActionTextHandler,
+  ActionURL,
+  ActionWebGPTSearchResultsExpand,
+} from '@/features/shortcuts/actions'
+import {
   IShortcutEngine,
   IShortcutEngineListenerEventType,
   IShortcutEngineListenerType,
+  IShortcutEngineVariableType,
 } from '@/features/shortcuts/types'
-import {
-  ActionAskChatGPT,
-  ActionRenderChatGPTPrompt,
-  ActionInsertUserInput,
-  ActionGetContentsOfWebPage,
-  ActionSetVariable,
-  ActionURL,
-  ActionGetContentsOfURL,
-  ActionGetContentsOfSearchEngine,
-  ActionWebGPTSearchResultsExpand,
-  ActionDate,
-  ActionDateFormat,
-  ActionSummarizeOfText,
-  ActionSliceOfText,
-  ActionFetchActions,
-  ActionGetYoutubeTranscriptOfURL,
-  ActionGetPDFContentsOfCRX,
-  ActionOpenURLs,
-  ActionOperationElement,
-  ActionCloseURLS,
-  ActionConditional,
-  ActionAnalyzeChatFile,
-  ActionGetEmailContentsOfWebPage,
-  ActionGetReadabilityContentsOfWebPage,
-  ActionRenderTemplate,
-  ActionSetVariableMap,
-  ActionSetVariablesModal,
-  ActionGetEmailDraftOfWebPage,
-  ActionGetSocialMediaPostDraftOfWebPage,
-  ActionGetSocialMediaPostContentOfWebPage,
-  ActionCreateWebsiteContext,
-  ActionTextHandler,
-  ActionChatMessage,
-} from '@/features/shortcuts/actions'
-import { v4 } from 'uuid'
+import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { IAction } from '@/features/shortcuts/types/Action'
-import { shortcutsRenderTemplate } from '@/features/shortcuts'
 
 const ActionClassMap = {
   // 废弃

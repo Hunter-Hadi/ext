@@ -1,20 +1,21 @@
-import React, { FC, useEffect, useMemo } from 'react'
 import Stack from '@mui/material/Stack'
-import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
+import Typography from '@mui/material/Typography'
+import React, { FC, useEffect, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
+
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   ChatGPTConversationState,
   ISidebarConversationType,
 } from '@/features/sidebar/store'
-import { useRecoilValue } from 'recoil'
-import { I18nextKeysType } from '@/i18next'
-import { useTranslation } from 'react-i18next'
-import Typography from '@mui/material/Typography'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { I18nextKeysType } from '@/i18next'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType

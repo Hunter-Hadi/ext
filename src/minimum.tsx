@@ -3,14 +3,15 @@ import { CacheProvider } from '@emotion/react'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
-import AppThemeProvider from '@/components/AppTheme'
-import SPARootProtector from './utils/SPARootProtector'
 
+import AppThemeProvider from '@/components/AppTheme'
 import { APP_VERSION } from '@/constants'
 import {
   MAXAI_CHROME_EXTENSION_ID,
   MAXAI_MINIMIZE_CONTAINER_ID,
 } from '@/features/common/constants'
+
+import SPARootProtector from './utils/SPARootProtector'
 
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()

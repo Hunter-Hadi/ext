@@ -1,11 +1,12 @@
 import { v4 as uuidV4 } from 'uuid'
-import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
+
 import { IAIProviderType } from '@/background/provider/chat'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { ISidebarConversationType } from '@/features/sidebar/store'
-import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { getChromeExtensionUserId } from '@/features/auth/utils'
+import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
+import { ISidebarConversationType } from '@/features/sidebar/store'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export interface IChatConversation {
   authorId: string // 作者ID

@@ -1,6 +1,7 @@
-import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { UAParser } from 'ua-parser-js'
 import Browser from 'webextension-polyfill'
+
+import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
 export type botUuid =

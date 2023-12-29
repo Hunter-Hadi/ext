@@ -1,4 +1,5 @@
 import cheerio from 'cheerio'
+
 import { IWebsiteContextMeta } from '@/features/websiteContext/background/index'
 
 export const analyzeWebsiteContextMetaData = async (

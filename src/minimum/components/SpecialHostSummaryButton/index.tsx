@@ -1,14 +1,15 @@
 import React, { FC, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+
 import GmailSummaryButton from '@/minimum/components/SpecialHostSummaryButton/GmailSummaryButton'
+import OutlookSummaryButton from '@/minimum/components/SpecialHostSummaryButton/OutlookSummaryButton'
+import PDFSummaryButton from '@/minimum/components/SpecialHostSummaryButton/PDFSummaryButton'
 import YouTubeSummaryButton from '@/minimum/components/SpecialHostSummaryButton/YouTubeSummaryButton'
+import { AppDBStorageState } from '@/store'
 import {
   getCurrentDomainHost,
   isMaxAIPDFPage,
 } from '@/utils/dataHelper/websiteHelper'
-import PDFSummaryButton from '@/minimum/components/SpecialHostSummaryButton/PDFSummaryButton'
-import OutlookSummaryButton from '@/minimum/components/SpecialHostSummaryButton/OutlookSummaryButton'
-import { useRecoilValue } from 'recoil'
-import { AppDBStorageState } from '@/store'
 
 const SpecialHostSummaryButton: FC = () => {
   const { userSettings } = useRecoilValue(AppDBStorageState)

@@ -1,3 +1,6 @@
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { getSystemContextMenuWithButtonSettingKey } from '@/background/utils/buttonSettings'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import {
   ContextMenuSearchTextStore,
   removeContextMenuSearchTextStore,
@@ -5,9 +8,6 @@ import {
 } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import i18n from '@/i18n'
 import { loadI18nResources } from '@/i18n/hooks'
-import { getSystemContextMenuWithButtonSettingKey } from '@/background/utils/buttonSettings'
-import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 export const updateContextMenuSearchTextStore = async (
   buttonSettingKey: IChromeExtensionButtonSettingKey,

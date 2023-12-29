@@ -1,6 +1,7 @@
 // web worker
-import { WebWorkerEventType } from '@/utils/webWorkerClient'
 import cl100k_base from 'gpt-tokenizer/esm/encoding/cl100k_base'
+
+import { WebWorkerEventType } from '@/utils/webWorkerClient'
 
 const getTextTokens = (text: string) => {
   try {

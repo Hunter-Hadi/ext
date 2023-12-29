@@ -1,9 +1,9 @@
 import SearchIcon from '@mui/icons-material/Search'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import { SxProps } from '@mui/material/styles'
 
 const EmptyContent: FC<{
   emptyText?: string

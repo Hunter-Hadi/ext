@@ -1,11 +1,12 @@
-import React, { FC, useState } from 'react'
+import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
+import ListItemButton from '@mui/material/ListItemButton'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import Collapse from '@mui/material/Collapse'
-import Box from '@mui/material/Box'
+import React, { FC, useState } from 'react'
+
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import ListItemButton from '@mui/material/ListItemButton'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 
 const PageHelpCard: FC<{

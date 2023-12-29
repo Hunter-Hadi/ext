@@ -1,6 +1,6 @@
 import BaseChat from '@/background/src/chat/BaseChat'
-import { PoeWebBot } from '@/background/src/chat/PoeChat/poe'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
+import { PoeWebBot } from '@/background/src/chat/PoeChat/poe'
 import { getChromeExtensionOnBoardingData } from '@/background/utils'
 
 /**

@@ -1,5 +1,5 @@
-import { IWebsiteContext } from '@/features/websiteContext/background'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { IWebsiteContext } from '@/features/websiteContext/background'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const port = new ContentScriptConnectionV2()

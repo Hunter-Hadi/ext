@@ -1,16 +1,17 @@
+import { sortBy } from 'lodash-es'
+import cloneDeep from 'lodash-es/cloneDeep'
+import uniqBy from 'lodash-es/uniqBy'
 import { useMemo, useRef } from 'react'
+
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
+import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 import {
   fuzzySearchContextMenuList,
   groupByContextMenuItem,
 } from '@/features/contextMenu/utils'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
-import useFavoriteContextMenuList from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
-import uniqBy from 'lodash-es/uniqBy'
-import { sortBy } from 'lodash-es'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 
 const useContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,

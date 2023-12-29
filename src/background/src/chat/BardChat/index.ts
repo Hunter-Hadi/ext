@@ -1,14 +1,15 @@
-import BaseChat from '@/background/src/chat/BaseChat'
+import { ofetch } from 'ofetch'
+import Browser from 'webextension-polyfill'
+
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import {
   fetchBardRequestParams,
   parseBardResponse,
 } from '@/background/src/chat/BardChat/utils'
-import { ofetch } from 'ofetch'
-import Browser from 'webextension-polyfill'
+import BaseChat from '@/background/src/chat/BaseChat'
 import { getChromeExtensionOnBoardingData } from '@/background/utils'
-import { IChatUploadFile } from '@/features/chatgpt/types'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 function generateReqId() {
   return Math.floor(Math.random() * 900000) + 100000

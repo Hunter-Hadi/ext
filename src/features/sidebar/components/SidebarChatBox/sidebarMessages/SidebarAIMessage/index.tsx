@@ -120,7 +120,6 @@ export const SidebarAIMessage: FC<{
       currentRenderData.answer = currentRenderData.answer.replace(/^\s+/, '')
       return currentRenderData
     } catch (e) {
-      debugger
       return {
         title: undefined,
         copilot: undefined,

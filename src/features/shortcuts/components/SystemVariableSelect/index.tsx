@@ -1,11 +1,12 @@
 import React, { FC } from 'react'
+
+import { SystemVariableLanguageSelect } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableLanguageSelect'
+import { SystemVariableToneSelect } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableToneSelect'
+import { SystemVariableWritingStyleSelect } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableWritingStyleSelect'
 import {
   ISystemVariableSelectKey,
   SystemVariableSelectProps,
 } from '@/features/shortcuts/components/SystemVariableSelect/types'
-import { SystemVariableWritingStyleSelect } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableWritingStyleSelect'
-import { SystemVariableLanguageSelect } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableLanguageSelect'
-import { SystemVariableToneSelect } from '@/features/shortcuts/components/SystemVariableSelect/SystemVariableToneSelect'
 
 const SystemVariableSelect: FC<
   SystemVariableSelectProps & {

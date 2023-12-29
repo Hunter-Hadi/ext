@@ -1,9 +1,10 @@
-import { useTranslation } from 'react-i18next'
 import { useEffect } from 'react'
-import Browser from 'webextension-polyfill'
-import Log from '@/utils/Log'
+import { useTranslation } from 'react-i18next'
 import { useRecoilValue } from 'recoil'
+import Browser from 'webextension-polyfill'
+
 import { AppDBStorageState } from '@/store'
+import Log from '@/utils/Log'
 
 const log = new Log('i18n')
 

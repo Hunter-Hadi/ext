@@ -1,12 +1,13 @@
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
+import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
 import Stack from '@mui/material/Stack'
-import Box from '@mui/material/Box'
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline'
-import React, { useState } from 'react'
 import Typography from '@mui/material/Typography'
-import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
 
 const PDFTooltip = () => {
   const { t } = useTranslation(['common', 'settings'])

@@ -1,10 +1,10 @@
-import React, { FC, useState } from 'react'
-
 import Drawer from '@mui/material/Drawer'
-import ConversationList from '@/features/chatgpt/components/ConversationList/index'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
+import React, { FC, useState } from 'react'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import ConversationList from '@/features/chatgpt/components/ConversationList/index'
 
 const ConversationListDrawerButton: FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false)

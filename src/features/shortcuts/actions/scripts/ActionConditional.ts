@@ -1,7 +1,8 @@
+import { isEqual, isObject } from 'lodash-es'
+
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { isEqual, isObject } from 'lodash-es'
 
 export class ActionConditional extends Action {
   static type: ActionIdentifier = 'SCRIPTS_CONDITIONAL'

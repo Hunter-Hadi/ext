@@ -15,9 +15,9 @@ import {
   OpenAiApiChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
+
 import { SEARCH_WITH_AI_PROVIDER_MAP } from '../../constants'
 import { OpenAIChat } from '../chat/OpenAiChat'
-
 import { OpenAIChatProvider } from '../provider/OpenAIChatProvider'
 
 export const initProviderChatAdapters = () => {

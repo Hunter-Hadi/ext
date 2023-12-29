@@ -1,14 +1,15 @@
-import React, { FC } from 'react'
 import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import IconButton from '@mui/material/IconButton'
+import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import Modal from '@mui/material/Modal'
-import Container from '@mui/material/Container'
-import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import IconButton from '@mui/material/IconButton'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 
 const ClearChatButton: FC<{
   conversationId: string

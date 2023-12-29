@@ -1,10 +1,11 @@
-import { getAccessToken } from '@/utils/request'
 import AES from 'crypto-js/aes'
-import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
-import { getFingerPrint } from '@/utils/fingerPrint'
-import Browser from 'webextension-polyfill'
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import Browser from 'webextension-polyfill'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import {
   fetchUserSubscriptionInfo,
   getChromeExtensionUserInfo,
@@ -13,9 +14,9 @@ import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
+import { getFingerPrint } from '@/utils/fingerPrint'
 import { getBrowserInfo, sendLarkBotMessage } from '@/utils/larkBot'
-import { IAIProviderType } from '@/background/provider/chat'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { getAccessToken } from '@/utils/request'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =

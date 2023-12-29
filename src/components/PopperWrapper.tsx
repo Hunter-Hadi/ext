@@ -1,8 +1,9 @@
-import React, { FC, useRef } from 'react'
-import { SxProps } from '@mui/material/styles'
-import Popper, { PopperProps } from '@mui/material/Popper'
 import Box from '@mui/material/Box'
+import Popper, { PopperProps } from '@mui/material/Popper'
+import { SxProps } from '@mui/material/styles'
+import React, { FC, useRef } from 'react'
 import { v4 } from 'uuid'
+
 import { getAppContextMenuRootElement } from '@/utils'
 
 const PopperWrapper: FC<{

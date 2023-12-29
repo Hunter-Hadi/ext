@@ -1,26 +1,27 @@
+import cloneDeep from 'lodash-es/cloneDeep'
+import merge from 'lodash-es/merge'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { IChatConversation } from '@/background/src/chatConversations'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { IAIProviderModel } from '@/features/chatgpt/types'
+import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
+import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   ChatGPTConversationState,
   ISidebarConversationType,
 } from '@/features/sidebar/store'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { IChatConversation } from '@/background/src/chatConversations'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
-import { IAIProviderType } from '@/background/provider/chat'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
-import cloneDeep from 'lodash-es/cloneDeep'
-import merge from 'lodash-es/merge'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import { IAIProviderModel } from '@/features/chatgpt/types'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',

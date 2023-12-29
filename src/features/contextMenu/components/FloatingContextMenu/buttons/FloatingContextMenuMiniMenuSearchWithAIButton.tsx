@@ -1,11 +1,10 @@
-import React, { FC } from 'react'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import { TooltipProps } from '@mui/material/Tooltip'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-
-import { TooltipProps } from '@mui/material/Tooltip'
-import { useTranslation } from 'react-i18next'
-import Stack from '@mui/material/Stack'
 import TooltipButton from '@/components/TooltipButton'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 

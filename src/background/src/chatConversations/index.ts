@@ -418,7 +418,7 @@ export default class ConversationManager {
         // 因为要发给客户端，所以需要瘦身
         if (message.type === 'user') {
           const userMessage = message as IUserChatMessage
-          if (userMessage.extra.meta?.contextMenu) {
+          if (userMessage?.extra?.meta?.contextMenu) {
             userMessage.text = String(
               userMessage.extra.meta.contextMenu.text || userMessage.text,
             ).replace(ContextMenuNamePrefixRegex, '')

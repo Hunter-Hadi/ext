@@ -22,7 +22,7 @@ const SidebarChatBoxUserTools: FC<{
   const { t } = useTranslation(['common', 'client'])
   const [mode, setMode] = useState('done')
   const currentMessage = useMemo(() => {
-    return message.extra.meta?.messageVisibleText || message.text
+    return message.extra?.meta?.messageVisibleText || message.text
   }, [message])
   return (
     <Stack

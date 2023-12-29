@@ -237,11 +237,13 @@ const SidebarCopyButton: FC<{
                     }}
                   >
                     <ContextMenuIcon
-                      icon={copyButtonKey === 'copy_as_plain_text' ? 'Done' : 'Copy'}
+                      icon={
+                        copyButtonKey === 'copy_as_plain_text' ? 'Done' : 'Copy'
+                      }
                       sx={{ fontSize: '16px' }}
                     />
                     <Typography fontSize={'16px'}>
-                      {t('common:copy')}
+                      {t('common:copy_as_plain_text')}
                     </Typography>
                   </Stack>
                 </TooltipIconButton>
@@ -264,7 +266,9 @@ const SidebarCopyButton: FC<{
                   }}
                 >
                   <ContextMenuIcon icon={'Copy'} sx={{ fontSize: '16px' }} />
-                  <Typography fontSize={'16px'}>{t('common:copy')}</Typography>
+                  <Typography fontSize={'16px'}>
+                    {t('common:copy_as_plain_text')}
+                  </Typography>
                 </Stack>
               </Button>
             )}

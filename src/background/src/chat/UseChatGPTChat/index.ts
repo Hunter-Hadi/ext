@@ -373,6 +373,7 @@ class UseChatGPTPlusChat extends BaseChat {
     }
   }
   async abortTask(taskId: string) {
+    debugger
     if (this.taskList[taskId]) {
       this.taskList[taskId]()
       delete this.taskList[taskId]

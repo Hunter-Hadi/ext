@@ -54,7 +54,6 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
     const history: IOpenAIApiChatMessage[] = [
@@ -65,6 +64,7 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
           OPENAI_API_SYSTEM_MESSAGE,
       },
     ]
+    const options = question.meta || {}
     options.historyMessages?.forEach((message) => {
       history.push({
         role: message.type === 'ai' ? 'assistant' : 'user',
@@ -73,14 +73,14 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
     })
     // 要删掉头部2个history，因为没计算system prompt和question
     await this.openAiApiChat.askChatGPT(
-      question.question,
+      question.text,
       {
         taskId: question.messageId,
         regenerate: options.regenerate,
         include_history: options.includeHistory,
         max_history_message_cnt: options.maxHistoryMessageCnt,
         history,
-        meta: options.meta,
+        meta: options,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

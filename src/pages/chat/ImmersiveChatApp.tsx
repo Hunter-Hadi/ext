@@ -14,7 +14,7 @@ import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
-const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
+const NormalChatPage = React.lazy(() => import('@/pages/sidebar'))
 const App: FC = () => {
   const { isShowActivityBanner } = useActivity()
   return (

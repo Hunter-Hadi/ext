@@ -1,4 +1,5 @@
 import {
+  IShortcutEngineExternalEngine,
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
@@ -23,7 +24,10 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href

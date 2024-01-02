@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import {
   pushOutputToChat,
@@ -22,7 +23,10 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     const OperationElementElementSelector =
       this.parameters.OperationElementElementSelector ||
       params.OperationElementElementSelector ||
@@ -31,9 +35,8 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       const result = await getSocialMediaPostContent(
         OperationElementElementSelector,
       )
-      const shortcutsEngine = engine.getShortCutsEngine()
-      if (shortcutsEngine) {
-        shortcutsEngine.pushActions(
+      if (engine.shortcutsEngine) {
+        engine.shortcutsEngine.pushActions(
           [
             {
               type: 'SET_VARIABLE_MAP',

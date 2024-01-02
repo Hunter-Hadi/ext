@@ -28,7 +28,7 @@ import {
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { APP_VERSION } from '@/constants'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
 import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
 import Log from '@/utils/Log'
 
@@ -156,9 +156,8 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_askChatGPTQuestion':
             {
               const taskId = data.taskId
-              let question = data.question
-              let options = data.options
-              console.log('新版Conversation 提问', question, options)
+              const question = data.question as IUserChatMessage
+              console.log('新版Conversation 提问', question)
               if (question.conversationId) {
                 const conversation = await ConversationManager.conversationDB.getConversationById(
                   question.conversationId,
@@ -175,18 +174,12 @@ class ChatSystem implements ChatSystemInterface {
                     await this.currentAdapter?.createConversation(conversation)
                   }
                   // 处理AIProvider的参数
-                  const processedData = await processAskAIParameters(
-                    conversation,
-                    question,
-                    options,
-                  )
-                  question = processedData.question
-                  options = processedData.options
+                  await processAskAIParameters(conversation, question)
                   // 更新客户端的聊天记录
                   await this.updateClientConversationMessages(conversation.id)
                 }
               }
-              await this.sendQuestion(taskId, sender, question, options)
+              await this.sendQuestion(taskId, sender, question)
               this.updateClientFiles()
             }
             break
@@ -392,15 +385,15 @@ class ChatSystem implements ChatSystemInterface {
   sendQuestion: IChatGPTAskQuestionFunctionType = (
     taskId,
     sender,
-    data,
-    options,
+    question,
   ) => {
     return (
-      this.currentAdapter?.sendQuestion(taskId, sender, data, options) ||
+      this.currentAdapter?.sendQuestion(taskId, sender, question) ||
       Promise.resolve()
     )
   }
   async abortAskQuestion(messageId: string) {
+    debugger
     if (this.currentAdapter) {
       return await this.currentAdapter.abortAskQuestion(messageId)
     }

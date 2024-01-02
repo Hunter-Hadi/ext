@@ -115,7 +115,6 @@ export class YoutubeTranscript {
         },
       )
       if (pageContent.success) {
-        debugger
         // youTube transcript
         const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
           await YoutubeTranscript.fetchTranscript(videoId, pageContent.data),

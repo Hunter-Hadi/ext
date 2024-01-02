@@ -1,3 +1,6 @@
+import createCache, { EmotionCache } from '@emotion/cache'
+import { CacheProvider } from '@emotion/react'
+import cloneDeep from 'lodash-es/cloneDeep'
 import React, {
   FC,
   useCallback,
@@ -6,32 +9,30 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
-import { useContextMenuList } from '@/features/contextMenu'
 import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import cloneDeep from 'lodash-es/cloneDeep'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import {
-  getPermissionCardMessageByPermissionCardSettings,
-  PermissionWrapperCardSceneType,
-} from '@/features/auth/components/PermissionWrapper/types'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { showChatBox } from '@/utils'
-import createCache, { EmotionCache } from '@emotion/cache'
-import { CacheProvider } from '@emotion/react'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+
 import {
   getChromeExtensionOnBoardingData,
   IChromeExtensionButtonSettingKey,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
+import {
+  permissionCardToChatMessage,
+  PermissionWrapperCardSceneType,
+} from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useContextMenuList } from '@/features/contextMenu'
+import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { showChatBox } from '@/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
@@ -97,7 +98,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
               conversationId,
               0,
               [
-                getPermissionCardMessageByPermissionCardSettings(
+                permissionCardToChatMessage(
                   permissionCardMap[permissionWrapperCardSceneType],
                 ),
               ],

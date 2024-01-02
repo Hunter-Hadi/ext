@@ -87,7 +87,9 @@ export const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
   return `${hours} hours and ${minutes} minutes`
 }
 
-export const isPermissionCardSceneType = (sceneType: string) => {
+export const isPermissionCardSceneType = (
+  sceneType: string,
+): sceneType is PermissionWrapperCardSceneType => {
   return Object.keys(PERMISSION_CARD_SETTINGS_TEMPLATE).includes(sceneType)
 }
 export const getPermissionCardSettingsBySceneType = (
@@ -98,7 +100,7 @@ export const getPermissionCardSettingsBySceneType = (
     ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
   }
 }
-export const getPermissionCardMessageByPermissionCardSettings = (
+export const permissionCardToChatMessage = (
   cardSettings: PermissionWrapperCardType,
 ): IChatMessage => {
   const needUpgradeMessage: ISystemChatMessage = {

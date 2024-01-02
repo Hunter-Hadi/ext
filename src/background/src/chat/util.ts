@@ -1,14 +1,10 @@
 import { default as lodashGet } from 'lodash-es/get'
 import isNumber from 'lodash-es/isNumber'
 import { default as lodashSet } from 'lodash-es/set'
-import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { IAskChatGPTQuestionType } from '@/background/provider/chat/ChatAdapter'
-import ConversationManager, {
-  IChatConversation,
-} from '@/background/src/chatConversations'
+import { IChatConversation } from '@/background/src/chatConversations'
 import {
   createClientMessageListener,
   safeGetBrowserTab,
@@ -24,7 +20,6 @@ import {
   IAIResponseOriginalMessage,
   IChatMessage,
   IUserChatMessage,
-  IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
@@ -129,14 +124,8 @@ export const checkChatGPTProxyInstance = async (
   return true
 }
 
-export const askChatGPTQuestion = async (
-  question: {
-    messageId: string
-    parentMessageId: string
-    conversationId: string
-    question: string
-  },
-  options: IUserChatMessageExtraType,
+export const clientAskAIQuestion = async (
+  question: IUserChatMessage,
   {
     onMessage,
     onError,
@@ -188,7 +177,6 @@ export const askChatGPTQuestion = async (
       data: {
         taskId,
         question,
-        options,
       },
     })
   })
@@ -263,72 +251,13 @@ export const setThirdProviderSettings = async <T extends IAIProviderType>(
  */
 export const processAskAIParameters = async (
   conversation: IChatConversation,
-  question: IAskChatGPTQuestionType,
-  options: IUserChatMessageExtraType,
+  question: IUserChatMessage,
 ) => {
-  const { regenerate, retry } = options as IUserChatMessageExtraType
-  // 如果是重试或者重新生成，需要从原始会话中获取问题
-  const conversationId = question.conversationId
-  if ((retry || regenerate) && conversationId) {
-    const originalConversation = await ConversationManager.conversationDB.getConversationById(
-      conversationId,
-    )
-    if (originalConversation) {
-      const originalMessages = originalConversation.messages
-      if (regenerate) {
-        // 重新生成，需要删除原始会话中的问题
-        const originalMessageIndex = originalMessages.findIndex(
-          (message) => message.messageId === question.messageId,
-        )
-        const originalMessage = originalMessages[originalMessageIndex]
-        const needDeleteCount =
-          originalMessages.length - 1 - originalMessageIndex
-        await ConversationManager.deleteMessages(
-          conversationId,
-          needDeleteCount,
-        )
-        // 重新生成问题
-        if (originalMessage) {
-          question.question = originalMessage.text
-          question.messageId = originalMessage.messageId
-          question.parentMessageId = originalMessage.parentMessageId || ''
-        }
-        conversation = (await ConversationManager.conversationDB.getConversationById(
-          conversationId,
-        )) as IChatConversation
-      } else if (retry) {
-        // 重试，到这一步sidebar里面有[问题，答案，新问题]，要删到[问题]
-        const originalMessageIndex = originalMessages.findIndex(
-          (message) => message.messageId === question.parentMessageId,
-        )
-        // 所以这里还要-1
-        const originalMessage = originalMessages[originalMessageIndex]
-        const needDeleteCount = Math.max(
-          originalMessages.length - originalMessageIndex - 1,
-          0,
-        )
-        await ConversationManager.deleteMessages(
-          conversationId,
-          needDeleteCount,
-        )
-        // 重新生成问题
-        if (originalMessage) {
-          question.question = originalMessage.text
-          question.messageId = uuidV4()
-          question.parentMessageId = originalMessage.parentMessageId || ''
-        }
-        conversation = (await ConversationManager.conversationDB.getConversationById(
-          conversationId,
-        )) as IChatConversation
-      }
-    }
-  }
+  const { includeHistory } = question.meta || {}
+  debugger
   // 聊天记录生成
-  // 如果有includeHistory，并且没有主动传入historyMessages那么需要生成聊天记录
-  if (
-    options.includeHistory &&
-    (!options.historyMessages || options.historyMessages?.length === 0)
-  ) {
+  // 如果有includeHistory，那么需要生成聊天记录
+  if (includeHistory) {
     // system prompt占用的tokens
     let systemPromptTokens = (
       await getTextTokens(conversation.meta.systemPrompt || '')
@@ -338,17 +267,13 @@ export const processAskAIParameters = async (
       systemPromptTokens = 0
     }
     // question prompt占用的tokens
-    const questionPromptTokens = (await getTextTokens(question.question)).length
+    const questionPromptTokens = (await getTextTokens(question.text)).length
     // api question 会用到1次message, maxHistoryCount - 1
     // NOTE: 因为有middle out, 设置默认的maxHistoryCount上限为100
     let maxHistoryCount = (conversation.meta.maxHistoryCount || 100) - 1
     // 如果有systemPrompt, maxHistoryCount - 1
     if (systemPromptTokens > 0) {
       maxHistoryCount -= 1
-    }
-    // 如果传入了maxHistoryMessageCnt，那么取最小值
-    if (isNumber(options.maxHistoryMessageCnt)) {
-      maxHistoryCount = Math.min(maxHistoryCount, options.maxHistoryMessageCnt)
     }
     /**
      * 最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
@@ -380,7 +305,7 @@ export const processAskAIParameters = async (
       }
       // 如果是用户消息，从非includeHistory的消息开始
       if (message.type === 'user' && message.text && startIndex === null) {
-        if ((message as IUserChatMessage).extra.includeHistory === false) {
+        if ((message as IUserChatMessage)?.meta?.includeHistory === false) {
           startIndex = i
         }
       }
@@ -453,10 +378,8 @@ export const processAskAIParameters = async (
       historyMessages,
       historyTokensUsed + systemPromptTokens,
     )
-    options.historyMessages = historyMessages
-  }
-  return {
-    question,
-    options,
+    if (question.meta) {
+      question.meta.historyMessages = historyMessages
+    }
   }
 }

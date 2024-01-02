@@ -1,8 +1,10 @@
+import { v4 as uuidV4 } from 'uuid'
+
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { parametersParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { v4 as uuidV4 } from 'uuid'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export class ActionChatMessage extends Action {
@@ -17,7 +19,10 @@ export class ActionChatMessage extends Action {
   }
 
   @parametersParserDecorator()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const messageType = this.parameters.ActionChatMessageType || 'system'
       const operationType =

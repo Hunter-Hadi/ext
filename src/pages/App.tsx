@@ -20,7 +20,7 @@ import { AppState } from '@/store'
 import { isShowChatBox } from '@/utils'
 import { getEnv } from '@/utils/AppEnv'
 
-const NormalChatPage = React.lazy(() => import('@/pages/normal/NormalChatPage'))
+const SidebarPage = React.lazy(() => import('@/pages/sidebar'))
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
   const {
@@ -128,7 +128,7 @@ const App: FC = () => {
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>
                 <Stack flex={1} height={0}>
-                  {isOpened && <NormalChatPage />}
+                  {isOpened && <SidebarPage />}
                   {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}
                   {!isOpened && (
                     <ActionSetVariablesModal modelKey={'Sidebar'} />

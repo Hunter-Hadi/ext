@@ -1,6 +1,9 @@
 import lodashSet from 'lodash-es/set'
 
-import { templateParserDecorator } from '@/features/shortcuts'
+import {
+  IShortcutEngineExternalEngine,
+  templateParserDecorator,
+} from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -23,7 +26,10 @@ export class ActionCreateWebsiteContext extends Action {
   }
 
   @templateParserDecorator()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const CreateWebsiteContextConfig = (this.parameters
         .CreateWebsiteContextConfig || {}) as any
@@ -37,7 +43,7 @@ export class ActionCreateWebsiteContext extends Action {
             lodashSet(
               websiteContext,
               key,
-              engine.getShortCutsEngine()?.parseTemplate(variableName) ||
+              this.parseTemplate(variableName, params) ||
                 CreateWebsiteContextConfig[key],
             )
           } else if (typeof CreateWebsiteContextConfig[key] === 'object') {
@@ -46,7 +52,7 @@ export class ActionCreateWebsiteContext extends Action {
               lodashSet(
                 websiteContext,
                 `${key}.${subKey}`,
-                engine.getShortCutsEngine()?.parseTemplate(subVariableName) ||
+                this.parseTemplate(subVariableName, params) ||
                   CreateWebsiteContextConfig[key][subKey],
               )
             })

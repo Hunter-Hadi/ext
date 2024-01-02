@@ -1,7 +1,8 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
+import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
 
 export class ActionSetVariable extends Action {
   static type: ActionIdentifier = 'SET_VARIABLE'
@@ -16,7 +17,10 @@ export class ActionSetVariable extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const VariableName =
         this.parameters.VariableName || this.parameters.Variable || ''
@@ -24,10 +28,9 @@ export class ActionSetVariable extends Action {
         this.error = 'Action no variable name!'
         return
       }
-      const shortCutsEngine = engine.getShortCutsEngine()
-      if (shortCutsEngine && shortCutsEngine.setVariable) {
-        shortCutsEngine.setVariable(
-          VariableName,
+      if (engine.shortcutsEngine?.setVariable) {
+        engine.shortcutsEngine.setVariable(
+          VariableName as string,
           this.parameters?.WFFormValues?.Value ||
             params.LAST_ACTION_OUTPUT ||
             '',

@@ -1,6 +1,7 @@
 import isNumber from 'lodash-es/isNumber'
 import uniqBy from 'lodash-es/uniqBy'
 
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import {
   parametersParserDecorator,
@@ -44,7 +45,10 @@ export class ActionGetContentsOfSearchEngine extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       let query =
         params.compliedTemplate ||
@@ -52,8 +56,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
         this.parameters?.URLSearchEngineParams?.query ||
         params.LAST_ACTION_OUTPUT ||
         ''
-      const backgroundConversation = engine.getBackgroundConversation()
-      if (query && backgroundConversation) {
+      if (query) {
         // await this.pushMessageToChat(
         //   {
         //     messageId: uuidV4(),

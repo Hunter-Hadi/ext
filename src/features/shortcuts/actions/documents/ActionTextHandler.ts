@@ -1,7 +1,8 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
+import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 
 export class ActionTextHandler extends Action {
@@ -18,7 +19,10 @@ export class ActionTextHandler extends Action {
   // @pushOutputToChat({
   //   onlyError: true,
   // })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const text = params.LAST_ACTION_OUTPUT || this.parameters.template || ''
       if (text) {

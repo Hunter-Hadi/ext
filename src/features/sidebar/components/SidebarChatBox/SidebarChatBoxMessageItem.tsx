@@ -30,7 +30,7 @@ const getMessageRenderText = (message: IChatMessage) => {
     return message.text
   }
   return (
-    (message as IUserChatMessage)?.extra?.meta?.messageVisibleText ||
+    (message as IUserChatMessage)?.meta?.messageVisibleText ||
     message.text ||
     ''
   )
@@ -162,8 +162,7 @@ const SidebarChatBoxMessageItem: FC<{
   }, [message.text])
   const attachments = useMemo(() => {
     if (message.type === 'user') {
-      const attachments = (message as IUserChatMessage)?.extra?.meta
-        ?.attachments
+      const attachments = (message as IUserChatMessage)?.meta?.attachments
       if (attachments && attachments.length) {
         return attachments.filter((item) => item.uploadStatus === 'success')
       }

@@ -10,7 +10,7 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import { getPermissionCardMessageByPermissionCardSettings } from '@/features/auth/components/PermissionWrapper/types'
+import { permissionCardToChatMessage } from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
@@ -136,11 +136,7 @@ const usePageSummary = () => {
               'add',
               pageSummaryConversationId,
               0,
-              [
-                getPermissionCardMessageByPermissionCardSettings(
-                  permissionCardMap['PAGE_SUMMARY'],
-                ),
-              ],
+              [permissionCardToChatMessage(permissionCardMap['PAGE_SUMMARY'])],
             )
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
             return

@@ -1,12 +1,15 @@
+import { IChatConversation } from '@/background/src/chatConversations'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { IChatMessage } from '@/features/chatgpt/types'
+import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
+import {
+  IShortcutEngineExternalEngine,
+  shortcutsRenderTemplate,
+} from '@/features/shortcuts'
+import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { IAction } from '@/features/shortcuts/types/Action'
-import { IChatMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
-import { IChatConversation } from '@/background/src/chatConversations'
 import Log from '@/utils/Log'
-import { shortcutsRenderTemplate } from '@/features/shortcuts'
 
 class Action implements IAction {
   id: string
@@ -31,7 +34,10 @@ class Action implements IAction {
     this.log = new Log(`Action/${type}`)
   }
 
-  async execute(params: any, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     this.status = 'running'
     this.error = ''
     this.output = ''
@@ -49,11 +55,7 @@ class Action implements IAction {
       await engine.getChartGPT()?.deleteMessage(count, conversationId)
     }
   }
-  reset() {
-    this.status = 'idle'
-    this.error = ''
-    this.output = ''
-  }
+
   getCurrentConversationId(engine: any) {
     const conversationId =
       engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
@@ -90,6 +92,15 @@ class Action implements IAction {
   }
   async parseTemplate(template: string, params: ActionParameters) {
     return shortcutsRenderTemplate(template, params)
+  }
+  async stop() {
+    this.reset()
+    return false
+  }
+  reset() {
+    this.status = 'idle'
+    this.error = ''
+    this.output = ''
   }
 }
 export default Action

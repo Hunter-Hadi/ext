@@ -6,11 +6,11 @@ import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
-import { askChatGPTQuestion } from '@/background/src/chat/util'
+import { clientAskAIQuestion } from '@/background/src/chat/util'
 import { CHAT_GPT_PROMPT_PREFIX } from '@/constants'
 import {
-  getPermissionCardMessageByPermissionCardSettings,
   isPermissionCardSceneType,
+  permissionCardToChatMessage,
   PermissionWrapperCardSceneType,
   PermissionWrapperCardType,
 } from '@/features/auth/components/PermissionWrapper/types'
@@ -109,7 +109,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
           conversationId,
           0,
           [
-            getPermissionCardMessageByPermissionCardSettings(
+            permissionCardToChatMessage(
               permissionCardMap[abortAskAIShowUpgradeCard.sceneType],
             ),
           ],
@@ -191,7 +191,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       let historyCnt = 0
       for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
         const msg = currentSidebarConversationMessages[i] as IUserChatMessage
-        if (msg.type === 'user' && msg.extra?.includeHistory === false) {
+        if (msg.type === 'user' && msg.meta?.includeHistory === false) {
           historyCnt++
           break
         }
@@ -211,7 +211,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       messageId: currentMessageId,
       parentMessageId: currentParentMessageId,
       text: question,
-      extra: {
+      meta: {
         includeHistory,
         regenerate,
         maxHistoryMessageCnt: currentMaxHistoryMessageCnt,
@@ -261,7 +261,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       // ai 正在输出的消息
       let aiRespondingMessage: any = null
       let AIConversationId = ''
-      await askChatGPTQuestion(
+      await clientAskAIQuestion(
         {
           conversationId: postConversationId,
           question: includeHistory
@@ -490,12 +490,12 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
         {
           regenerate: true,
           includeHistory: Object.prototype.hasOwnProperty.call(
-            lastUserMessage.extra,
+            lastUserMessage.meta,
             'includeHistory',
           )
-            ? lastUserMessage.extra.includeHistory
+            ? lastUserMessage.meta.includeHistory
             : true,
-          meta: lastUserMessage.extra.meta,
+          meta: lastUserMessage.meta.meta,
         },
       )
     }

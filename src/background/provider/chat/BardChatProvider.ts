@@ -48,16 +48,15 @@ class BardChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
     await this.bardChat.askChatGPT(
-      question.question,
+      question.text,
       {
         taskId: question.messageId,
-        regenerate: options.regenerate,
-        include_history: options.includeHistory,
-        max_history_message_cnt: options.maxHistoryMessageCnt,
+        regenerate: question.meta?.regenerate,
+        include_history: question.meta?.includeHistory,
+        max_history_message_cnt: question.meta?.maxHistoryMessageCnt,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

@@ -1,10 +1,10 @@
-import { OpenAIChat } from '@/background/src/chat'
 import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import { OpenAIChat } from '@/background/src/chat'
 import { IChatConversation } from '@/background/src/chatConversations'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class OpenAIChatProvider implements ChatAdapterInterface {
   private openAIChat: OpenAIChat
@@ -27,9 +27,8 @@ class OpenAIChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
-    return this.openAIChat.sendQuestion(taskId, sender, question, options)
+    return this.openAIChat.sendQuestion(taskId, sender, question)
   }
   async abortAskQuestion(messageId: string) {
     return await this.openAIChat.abortAskQuestion(messageId)

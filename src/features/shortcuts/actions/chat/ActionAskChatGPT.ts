@@ -3,6 +3,8 @@ import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { textGetLanguageName } from '@/features/common/utils/nlp'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
@@ -16,7 +18,10 @@ import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
-export class ActionAskChatGPT extends Action {
+/**
+ * @deprecated
+ */
+class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
   constructor(
     id: string,
@@ -36,23 +41,18 @@ export class ActionAskChatGPT extends Action {
   @parametersParserDecorator()
   @templateParserDecorator()
   @clearUserInput(false)
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       const isOpenAIResponseLanguage =
         this.parameters.AskChatGPTWithAIResponseLanguage !== false
-      const askChatGPTProvider = this.parameters.AskChatGPTProvider
       const includeHistory = this.parameters.AskChatGPTWithHistory || false
       // 用于像search with ai持续更新的message
       const insertMessageId = this.parameters.AskChatGPTInsertMessageId || ''
-      if (askChatGPTProvider) {
-        // 设置了单独的Provider和model，实例化一个chatSystem
-        // const chatSystemInstance = this.createChatSystemInstance(
-        //   askChatGPTProvider.provider,
-        // )
-        // TODO
-      }
       const conversationId = this.getCurrentConversationId(engine)
       this.question =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT
@@ -63,7 +63,7 @@ export class ActionAskChatGPT extends Action {
         const {
           data: additionalText,
           addPosition,
-        } = await ActionAskChatGPT.generateAdditionalText(params)
+        } = await generatePromptAdditionalText(params)
         if (additionalText) {
           if (
             this.question?.startsWith('Ignore all previous instructions. ') &&

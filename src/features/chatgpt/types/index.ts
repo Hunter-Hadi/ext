@@ -11,8 +11,6 @@ export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   text: string
   messageId: string
-  // 本条消息是否展示
-  messageVisible?: boolean
   parentMessageId?: string
   // 不同的message存放数据的地方
   extra?: {
@@ -26,20 +24,25 @@ export interface IUserChatMessage extends IChatMessage {
   text: string
   messageId: string
   parentMessageId?: string
-  extra: {
-    // 告诉Use ChatGPT API是否包含历史消息
-    includeHistory?: boolean
-    // 告诉Provider是否需要重试
-    retry?: boolean
-    // 告诉Provider是否需要重新生成
-    regenerate?: boolean
-    // 告诉Provider最大的历史消息数量
-    maxHistoryMessageCnt?: number
-    // 额外数据
-    meta?: IChatMessageExtraMetaType
-    // 聊天记录
-    historyMessages?: Array<IAIResponseMessage | IUserChatMessage>
-  }
+  conversationId: string
+  meta?: IChatMessageExtraMetaType
+  /**
+   * @deprecated
+   **/
+  // meta: {
+  //   // 告诉Use ChatGPT API是否包含历史消息
+  //   includeHistory?: boolean
+  //   // 告诉Provider是否需要重试
+  //   retry?: boolean
+  //   // 告诉Provider是否需要重新生成
+  //   regenerate?: boolean
+  //   // 告诉Provider最大的历史消息数量
+  //   maxHistoryMessageCnt?: number
+  //   // 额外数据
+  //   meta?: IChatMessageExtraMetaType
+  //   // 聊天记录
+  //   historyMessages?: Array<IAIResponseMessage | IUserChatMessage>
+  // }
 }
 
 export type IChatMessageExtraMetaType = {
@@ -52,10 +55,18 @@ export type IChatMessageExtraMetaType = {
   messageVisibleText?: string
   // 搜索的消息源Json
   searchSources?: string
+  // 是否包含历史消息
+  includeHistory?: boolean
+  // 聊天记录
+  historyMessages?: Array<IAIResponseMessage | IUserChatMessage>
+  // 输出的消息ID, 例如summary, search with AI
+  outputMessageId?: string
+  // 告诉Provider是否需要重新生成
+  regenerate?: boolean
   [key: string]: any
 }
 
-export type IUserChatMessageExtraType = IUserChatMessage['extra']
+export type IUserChatMessageExtraType = IUserChatMessage['meta']
 
 export type IAIResponseOriginalMessageCopilotStep = {
   status: 'loading' | 'complete'

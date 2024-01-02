@@ -1,5 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import {
@@ -26,14 +27,16 @@ export class ActionGetContentsOfURL extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const currentUrl =
         this.parameters.URLActionURL ||
         params.URLActionURL ||
         params.LAST_ACTION_OUTPUT
-      const backgroundConversation = engine.getBackgroundConversation()
-      if (currentUrl && backgroundConversation) {
+      if (currentUrl && engine.shortcutsMessageChannelEngine) {
         await this.pushMessageToChat(
           {
             type: 'system',
@@ -56,12 +59,14 @@ export class ActionGetContentsOfURL extends Action {
             return
           }
         }
-        const response = await backgroundConversation.postMessage({
-          event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
-          data: {
-            URL: currentUrl,
+        const response = await engine.shortcutsMessageChannelEngine.postMessage(
+          {
+            event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
+            data: {
+              URL: currentUrl,
+            },
           },
-        })
+        )
         // NOTE: webgpt的代码是错误和成功都会返回data，所以这里也要这样写
         if (response.success) {
           this.output = response?.data?.body || ''

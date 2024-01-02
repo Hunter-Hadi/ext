@@ -277,18 +277,18 @@ const useDaemonProcess = () => {
                 break
               case 'OpenAIDaemonProcess_askChatGPTQuestion':
                 {
-                  const { taskId, question, options } = data
+                  const { taskId, question, meta } = data
                   log.info(
                     'OpenAIDaemonProcess_askChatGPTQuestion',
                     taskId,
                     question,
-                    options,
+                    meta,
                   )
                   const {
                     conversationId,
                     messageId,
                     parentMessageId,
-                    question: questionText,
+                    text: questionText,
                   } = question
                   let conversation = chatGptInstanceRef.current?.getConversation(
                     conversationId,
@@ -311,7 +311,7 @@ const useDaemonProcess = () => {
                     )
                     await conversation.generateAnswer(
                       {
-                        meta: options.meta,
+                        meta,
                         messageId,
                         parentMessageId,
                         prompt: questionText,
@@ -364,7 +364,7 @@ const useDaemonProcess = () => {
                           log.info(event.data)
                         },
                       },
-                      options.regenerate === true,
+                      meta.regenerate === true,
                     )
                   }
                 }

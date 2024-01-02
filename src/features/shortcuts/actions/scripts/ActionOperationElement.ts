@@ -1,8 +1,10 @@
+import { v4 as uuidV4 } from 'uuid'
+
+import { ISystemChatMessage } from '@/features/chatgpt/types'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { ISystemChatMessage } from '@/features/chatgpt/types'
-import { v4 as uuidV4 } from 'uuid'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { IExecuteOperationResult } from '@/features/shortcuts/utils/OperationElementHelper'
 export class ActionOperationElement extends Action {
@@ -15,12 +17,14 @@ export class ActionOperationElement extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
-      const port = engine.getBackgroundConversation()
       const OperationElementConfig: OperationElementConfigType | undefined =
         this.parameters.OperationElementConfig || params.OperationElementConfig
-      if (!port || !OperationElementConfig) {
+      if (!engine.shortcutsMessageChannelEngine || !OperationElementConfig) {
         this.error = 'Action cannot execute!'
         return
       }
@@ -30,7 +34,7 @@ export class ActionOperationElement extends Action {
         success: boolean
         data: IExecuteOperationResult | null
         message: string
-      } = await port.postMessage({
+      } = await engine.shortcutsMessageChannelEngine.postMessage({
         event: 'ShortCuts_OperationPageElement',
         data: {
           OperationElementConfig,

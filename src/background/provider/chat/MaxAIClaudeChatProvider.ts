@@ -40,7 +40,6 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatMessage[] = []
@@ -56,32 +55,34 @@ class MaxAIClaudeChatProvider implements ChatAdapterInterface {
           ],
         })
       }
-      options.historyMessages?.forEach((message) => {
-        chat_history.push({
-          role: message.type === 'ai' ? 'ai' : 'human',
-          content: [
-            {
-              type: 'text',
-              text: message.text,
-            },
-          ],
+      if (question.meta) {
+        question.meta.historyMessages?.forEach((message) => {
+          chat_history.push({
+            role: message.type === 'ai' ? 'ai' : 'human',
+            content: [
+              {
+                type: 'text',
+                text: message.text,
+              },
+            ],
+          })
         })
-      })
-      options.includeHistory = false
-      options.maxHistoryMessageCnt = 0
+        question.meta.includeHistory = false
+        question.meta.maxHistoryMessageCnt = 0
+      }
     }
     await this.maxAIClaudeChat.askChatGPT(
       [
         {
           type: 'text',
-          text: question.question,
+          text: question.text,
         },
       ],
       {
         taskId: question.messageId,
-        regenerate: options.regenerate,
+        regenerate: question?.meta?.regenerate,
         chat_history,
-        meta: options.meta,
+        meta: question.meta,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

@@ -1,7 +1,8 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
+import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
 
 export class ActionSetVariableMap extends Action {
   static type: ActionIdentifier = 'SET_VARIABLE_MAP'
@@ -16,14 +17,16 @@ export class ActionSetVariableMap extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const VariableMap = this.parameters.VariableMap || {}
-      const shortCutsEngine = engine.getShortCutsEngine()
-      if (shortCutsEngine && shortCutsEngine.setVariable) {
+      if (engine.shortcutsEngine?.setVariable) {
         Object.keys(VariableMap).forEach((VariableName) => {
           if (VariableMap[VariableName] !== undefined) {
-            shortCutsEngine?.setVariable(
+            engine.shortcutsEngine!.setVariable(
               VariableName,
               VariableMap[VariableName],
               true,

@@ -1,7 +1,7 @@
-import { IAIProviderType } from '@/background/provider/chat'
 import {
   IChatMessage,
   IChatMessageExtraMetaType,
+  IUserChatMessage,
 } from '@/features/chatgpt/types'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -183,14 +183,11 @@ interface ActionParameters {
   SliceTextActionTokens?: number
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
+  AskChatGPTActionQuestion?: IUserChatMessage
   AskChatGPTActionMeta?: IChatMessageExtraMetaType
   // 需要把writingMessage注入的消息id
   AskChatGPTInsertMessageId?: string
   AskChatGPTWithHistory?: boolean
-  AskChatGPTProvider?: {
-    provider: IAIProviderType
-    model: string
-  }
   // 是否受到用户设置的AI response language的影响
   AskChatGPTWithAIResponseLanguage?: boolean
   // Operation Element

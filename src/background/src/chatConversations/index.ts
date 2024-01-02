@@ -1,11 +1,14 @@
 import { v4 as uuidV4 } from 'uuid'
-import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
+
 import { IAIProviderType } from '@/background/provider/chat'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { ISidebarConversationType } from '@/features/sidebar/store'
-import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { getChromeExtensionUserId } from '@/features/auth/utils'
+import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
+import { ISidebarConversationType } from '@/features/sidebar/store'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export interface IChatConversation {
   authorId: string // 作者ID
@@ -33,6 +36,9 @@ export interface IChatConversationMeta {
   frequencyPenalty?: number // frequencyPenalty
   bestOf?: number // bestOf
   docId?: string // 聊天文档id
+  lastRunActions?: ISetActionsType // 最后运行的shortcuts
+  lastRunActionsParams?: IShortCutsParameter[] // 最后运行的shortcuts的params, 在regenerate/retry时用到
+  lastRunActionsMessageId?: string // 最后运行的shortcuts的messageID, 在regenerate/retry时用到
   [key: string]: any
 }
 export interface PaginationConversation {
@@ -417,11 +423,11 @@ export default class ConversationManager {
         // 因为要发给客户端，所以需要瘦身
         if (message.type === 'user') {
           const userMessage = message as IUserChatMessage
-          if (userMessage.extra.meta?.contextMenu) {
+          if (userMessage.meta?.contextMenu) {
             userMessage.text = String(
-              userMessage.extra.meta.contextMenu.text || userMessage.text,
+              userMessage.meta.contextMenu.text || userMessage.text,
             ).replace(ContextMenuNamePrefixRegex, '')
-            userMessage.extra.meta.contextMenu.data = undefined as any
+            userMessage.meta.contextMenu.data = undefined as any
           }
           return userMessage
         }

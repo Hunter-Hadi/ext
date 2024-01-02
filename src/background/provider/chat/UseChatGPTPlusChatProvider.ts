@@ -48,7 +48,6 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatMessage[] = []
@@ -93,7 +92,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
           ],
         })
       }
-      options.historyMessages?.forEach((message) => {
+      question.meta?.historyMessages?.forEach((message) => {
         chat_history.push({
           role: message.type === 'ai' ? 'ai' : 'human',
           content: [
@@ -115,7 +114,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       [
         {
           type: 'text',
-          text: question.question,
+          text: question.text,
         },
       ],
       {
@@ -123,7 +122,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         backendAPI,
         taskId: question.messageId,
         chat_history,
-        meta: options.meta,
+        meta: question.meta,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

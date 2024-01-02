@@ -1,4 +1,5 @@
 import { atom } from 'recoil'
+
 import { IChatMessage } from '@/features/chatgpt/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 

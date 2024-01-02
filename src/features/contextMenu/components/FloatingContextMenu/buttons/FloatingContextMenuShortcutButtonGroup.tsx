@@ -1,14 +1,15 @@
-import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
-import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+
 // import { AppState } from '@/store'
 // import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
-import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
-import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { FloatingContextMenuOpenSidebarButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuOpenSidebarButton'
+import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 
@@ -25,26 +26,27 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
     }
     return false
   }, [chatGPTConversation.loading, chatGPTConversation.writingMessage])
-  const { stopGenerateMessage, reGenerate } = useMessageWithChatGPT()
+  const { stopGenerate, regenerate } = useClientChat()
   const handleShortCut = useCallback(
     async (key: FloatingContextMenuShortcutKey) => {
       // console.log('handleShortCut', key)
       if (key === 's') {
         needRegenerateRef.current = false
-        await stopGenerateMessage()
+        await stopGenerate()
       }
       if (key === 'r') {
         needRegenerateRef.current = true
         console.log('handleShortCut regenerate: \t [startRegenerate: true]')
-        await stopGenerateMessage()
+        await stopGenerate()
+        await reGenerateRef.current()
       }
     },
-    [stopGenerateMessage],
+    [stopGenerate],
   )
-  const reGenerateRef = useRef(reGenerate)
+  const reGenerateRef = useRef(regenerate)
   useEffect(() => {
-    reGenerateRef.current = reGenerate
-  }, [reGenerate])
+    reGenerateRef.current = regenerate
+  }, [regenerate])
   useEffect(() => {
     if (!isGenerating) {
       return

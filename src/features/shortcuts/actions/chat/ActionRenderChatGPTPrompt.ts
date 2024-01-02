@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -21,7 +22,10 @@ export class ActionRenderChatGPTPrompt extends Action {
     super(id, 'RENDER_CHATGPT_PROMPT', parameters, autoExecute)
   }
   @templateParserDecorator()
-  async execute(params: any, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     this.output = this.parameters?.compliedTemplate || ''
   }
 }

@@ -333,6 +333,16 @@ export const getContextMenuActions = async (contextMenuId: string) => {
             const originData = cloneDeep(contextMenu) as IContextMenuItem
             delete originData.data.actions
             action.parameters.AskChatGPTActionMeta.contextMenu = originData
+            action.parameters.AskChatGPTActionQuestion = {
+              type: 'user',
+              messageId: '',
+              conversationId: '',
+              text: '',
+              meta: {
+                messageVisibleText: originData.text,
+                contextMenu: originData,
+              },
+            }
             return true
           }
           return false

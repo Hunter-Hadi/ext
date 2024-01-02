@@ -42,7 +42,7 @@ const SidebarChatBoxSystemTools: FC<{
         `[Pricing] Pro show pricing card`,
         JSON.stringify({
           message: message.text,
-          user: userInfo,
+          user: userInfo?.email,
           plan: currentUserPlan,
         }),
         {

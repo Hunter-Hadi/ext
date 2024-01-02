@@ -14,6 +14,12 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppDBStorageState, AppState } from '@/store'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
+export interface IShortCutsParameter {
+  key: string
+  value: any
+  overwrite: boolean
+}
+
 const useShortCutsParameters = () => {
   const appState = useRecoilValue(AppState)
   const { currentSelection } = useRangy()
@@ -73,11 +79,7 @@ const useShortCutsParameters = () => {
         typeof window !== 'undefined' ? document.title : '',
       POPUP_DRAFT: floatingContextMenuDraftText || '',
     }
-    const parameters: Array<{
-      key: string
-      value: any
-      overwrite: boolean
-    }> = []
+    const parameters: IShortCutsParameter[] = []
     Object.keys(builtInParameters).forEach((key) => {
       parameters.push({
         key,

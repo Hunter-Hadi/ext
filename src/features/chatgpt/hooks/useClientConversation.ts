@@ -1,38 +1,59 @@
+import cloneDeep from 'lodash-es/cloneDeep'
+import merge from 'lodash-es/merge'
+import { useEffect, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { IChatConversation } from '@/background/src/chatConversations'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  permissionCardToChatMessage,
+  PermissionWrapperCardSceneType,
+} from '@/features/auth/components/PermissionWrapper/types'
+import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
+import {
+  IAIProviderModel,
+  IAIResponseMessage,
+  IChatMessage,
+} from '@/features/chatgpt/types'
+import {
+  clientChatConversationModifyChatMessages,
+  clientChatConversationUpdate,
+} from '@/features/chatgpt/utils/clientChatConversation'
+import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   ChatGPTConversationState,
   ISidebarConversationType,
 } from '@/features/sidebar/store'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { IChatConversation } from '@/background/src/chatConversations'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
-import { IAIProviderType } from '@/background/provider/chat'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
-import cloneDeep from 'lodash-es/cloneDeep'
-import merge from 'lodash-es/merge'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import { IAIProviderModel } from '@/features/chatgpt/types'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useClientConversation = () => {
-  const [, setConversation] = useRecoilState(ChatGPTConversationState)
+  const [conversation, setConversation] = useRecoilState(
+    ChatGPTConversationState,
+  )
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
+  const permissionCardMap = usePermissionCardMap()
   const {
     currentSidebarConversationType,
     currentSidebarConversationId,
     updateSidebarSettings,
   } = useSidebarSettings()
+  const currentConversationIdRef = useRef(currentSidebarConversationId)
+  useEffect(() => {
+    currentConversationIdRef.current = currentSidebarConversationId
+  }, [currentSidebarConversationId])
   const { AI_PROVIDER_MODEL_MAP, updateAIProviderModel } = useAIProviderModels()
   const createConversation = async (
     overwriteConversationType?: ISidebarConversationType,
@@ -290,7 +311,7 @@ const useClientConversation = () => {
     }
     return result.success
   }
-  const changeConversation = async (conversationId: string) => {
+  const switchConversation = async (conversationId: string) => {
     if (conversationId && currentSidebarConversationId !== conversationId) {
       const port = new ContentScriptConnectionV2()
       // 复原background conversation
@@ -313,12 +334,115 @@ const useClientConversation = () => {
       conversation,
     )
   }
+  const pushMessage = async (
+    newMessage: IChatMessage,
+    conversationId?: string,
+  ) => {
+    if (conversationId || currentSidebarConversationId) {
+      await clientChatConversationModifyChatMessages(
+        'add',
+        conversationId || currentSidebarConversationId || '',
+        0,
+        [newMessage],
+      )
+    }
+  }
+  const updateMessage = async (
+    message: IChatMessage,
+    conversationId?: string,
+  ) => {
+    if (conversationId && message.messageId) {
+      await clientChatConversationModifyChatMessages(
+        'update',
+        conversationId,
+        0,
+        [message],
+      )
+    }
+  }
+  const deleteMessage = async (count: number, conversationId?: string) => {
+    if (conversationId || currentSidebarConversationId) {
+      await clientChatConversationModifyChatMessages(
+        'delete',
+        conversationId || currentSidebarConversationId || '',
+        count,
+        [],
+      )
+    }
+  }
+  const showConversationLoading = () => {
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        loading: true,
+      }
+    })
+  }
+  const hideConversationLoading = () => {
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        loading: false,
+      }
+    })
+  }
+  const pushPricingHookMessage = async (
+    pricingHookSceneType: PermissionWrapperCardSceneType,
+  ) => {
+    if (currentConversationIdRef.current) {
+      await clientChatConversationModifyChatMessages(
+        'add',
+        currentConversationIdRef.current,
+        0,
+        [permissionCardToChatMessage(permissionCardMap[pricingHookSceneType])],
+      )
+    }
+  }
+  /**
+   * 更新当前conversation的writingMessage
+   * @param message
+   */
+  const updateClientWritingMessage = (message: IAIResponseMessage | null) => {
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        writingMessage: message,
+      }
+    })
+  }
+  /**
+   * 更新当前conversation的lastMessageId
+   * @description - 用来stop和context menu的draft
+   * @param messageId
+   */
+  const updateClientConversationLastMessageId = (messageId: string) => {
+    setConversation((prevState) => {
+      return {
+        ...prevState,
+        lastMessageId: messageId,
+      }
+    })
+  }
   return {
+    conversation,
     cleanConversation,
     createConversation,
-    changeConversation,
+    switchConversation,
     updateConversation,
     switchBackgroundChatSystemAIProvider,
+    currentSidebarConversationType,
+    currentConversationId: currentConversationIdRef.current,
+    showConversationLoading,
+    hideConversationLoading,
+    pushMessage,
+    pushPricingHookMessage,
+    deleteMessage,
+    updateMessage,
+    updateClientWritingMessage,
+    updateClientConversationLastMessageId,
   }
 }
-export { useClientConversation }
+
+type IClientConversationEngine = ReturnType<typeof useClientConversation>
+
+export { IClientConversationEngine, useClientConversation }

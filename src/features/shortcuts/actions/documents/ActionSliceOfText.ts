@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -18,7 +19,10 @@ export class ActionSliceOfText extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const needSplitText = params.LAST_ACTION_OUTPUT || ''
       if (!needSplitText) {

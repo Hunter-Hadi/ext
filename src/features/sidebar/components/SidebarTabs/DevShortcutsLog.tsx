@@ -83,7 +83,9 @@ const DevShortcutsLog: FC = () => {
           color = 'success.main'
         }
         const isAskChatGPT = action.type === 'ASK_CHATGPT'
-        const AskChatGPTQuestion = isAskChatGPT ? (action as any).question : ''
+        const AskChatGPTQuestion = isAskChatGPT
+          ? (action as any)?.question?.text
+          : ''
         const isSuccess = action.status === 'complete'
         const output = isSuccess ? action.output : action.error
         return (

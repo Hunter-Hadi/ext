@@ -1,23 +1,25 @@
-import {
-  ContentScriptConnectionV2,
-  pingUntilLogin,
-  useMessageWithChatGPT,
-} from '@/features/chatgpt'
 import { useCallback, useRef } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
+
+import { useAuthLogin } from '@/features/auth'
+import { ContentScriptConnectionV2, pingUntilLogin } from '@/features/chatgpt'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ShortCutsState } from '@/features/shortcuts/store'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { useAuthLogin } from '@/features/auth'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { isShowChatBox, showChatBox } from '@/utils'
 
 const shortCutsEngine = new ShortCutsEngine()
-const port = new ContentScriptConnectionV2({
+const clientMessageChannelEngine = new ContentScriptConnectionV2({
+  runtime: 'client',
+})
+const shortcutsMessageChannelEngine = new ContentScriptConnectionV2({
   runtime: 'shortcut',
 })
-const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
+const useShortCutsWithMessageChat = () => {
   const { isLogin } = useAuthLogin()
   const getParams = useShortCutsParameters()
   const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
@@ -25,7 +27,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     ChatGPTConversationState,
   )
   const shortCutsEngineRef = useRef<ShortCutsEngine | null>(shortCutsEngine)
-  const messageWithChatGPT = useMessageWithChatGPT(defaultInputValue || '')
+  const clientConversationEngine = useClientConversation()
   const setShortCuts = (actions: ISetActionsType) => {
     if (!shortCutsEngineRef.current) {
       return false
@@ -34,7 +36,10 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
     return true
   }
   const runShortCuts = useCallback(
-    async (needShowChatBox = false) => {
+    async (
+      needShowChatBox = false,
+      overwriteParameters?: IShortCutsParameter[],
+    ) => {
       if (!shortCutsEngineRef.current) {
         return
       }
@@ -58,17 +63,12 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
             })
           }
           await shortCutsEngineRef.current.run({
-            parameters: getParams().shortCutsParameters,
+            parameters: overwriteParameters || getParams().shortCutsParameters,
             engine: {
-              getShortCutsEngine: (): ShortCutsEngine | null => {
-                return shortCutsEngineRef.current
-              },
-              getChartGPT: () => {
-                return messageWithChatGPT
-              },
-              getBackgroundConversation: () => {
-                return port
-              },
+              shortcutsEngine: shortCutsEngineRef.current,
+              clientConversationEngine,
+              clientMessageChannelEngine,
+              shortcutsMessageChannelEngine,
             },
           })
         }
@@ -80,7 +80,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
         })
       }
     },
-    [messageWithChatGPT, shortCutsEngineRef, getParams, isLogin],
+    [shortCutsEngineRef, getParams, isLogin],
   )
   const stopShortCuts = useCallback(() => {
     if (!shortCutsEngineRef.current) {
@@ -103,7 +103,7 @@ const useShortCutsWithMessageChat = (defaultInputValue?: string) => {
   }, [])
 
   return {
-    ...messageWithChatGPT,
+    getParams,
     shortCutsEngineRef,
     runShortCuts,
     setShortCuts,

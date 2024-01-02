@@ -1,13 +1,73 @@
+import { v4 as uuidV4 } from 'uuid'
+
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { fakeLangChainSummarization } from '@/features/shortcuts/langchain/chains/sumarization'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
-import { v4 as uuidV4 } from 'uuid'
 import { getSliceEnd } from '@/features/shortcuts/utils/tokenizer'
 export const SUMMARIZE_MAX_CHARACTERS = 6000
+
+export class ActionSummarizeOfText extends Action {
+  static type: ActionIdentifier = 'SUMMARIZE_OF_TEXT'
+  constructor(
+    id: string,
+    type: ActionIdentifier,
+    parameters: ActionParameters,
+    autoExecute: boolean,
+  ) {
+    super(id, type, parameters, autoExecute)
+  }
+  @pushOutputToChat({
+    onlyError: true,
+  })
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
+    try {
+      const needSummarizeText = params.LAST_ACTION_OUTPUT || ''
+      const summarizeType = this.parameters.SummarizeActionType || 'STUFF'
+      if (!needSummarizeText) {
+        this.error = 'No text to summarize'
+        return
+      }
+      const { actions } = await createSummarizeOfTextRunActions(
+        needSummarizeText,
+        summarizeType as SummarizeActionType,
+        this.parameters.SliceTextActionType === 'TOKENS'
+          ? await getSliceEnd(
+              needSummarizeText,
+              this.parameters.SliceTextActionTokens,
+            )
+          : this.parameters.SliceTextActionLength || SUMMARIZE_MAX_CHARACTERS,
+      )
+      if (engine.shortcutsEngine) {
+        engine.shortcutsEngine.pushActions(
+          actions.map((action) => {
+            return {
+              ...action,
+              parameters: {
+                ...action.parameters,
+                AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              },
+            }
+          }),
+          'after',
+        )
+      } else {
+        this.error = 'no shortCutsEngine'
+        return
+      }
+      this.output = ''
+    } catch (e) {
+      this.error = (e as any).toString()
+    }
+  }
+}
 
 export const createSummarizeOfTextRunActions = async (
   needSummarizeText: string,
@@ -107,60 +167,5 @@ ${partTemplate}
   return {
     variableName: `SUMMARIZE_TEXT_ID_${id}`,
     actions: addActions,
-  }
-}
-
-export class ActionSummarizeOfText extends Action {
-  static type: ActionIdentifier = 'SUMMARIZE_OF_TEXT'
-  constructor(
-    id: string,
-    type: ActionIdentifier,
-    parameters: ActionParameters,
-    autoExecute: boolean,
-  ) {
-    super(id, type, parameters, autoExecute)
-  }
-  @pushOutputToChat({
-    onlyError: true,
-  })
-  async execute(params: ActionParameters, engine: any) {
-    try {
-      const needSummarizeText = params.LAST_ACTION_OUTPUT || ''
-      const summarizeType = this.parameters.SummarizeActionType || 'STUFF'
-      if (!needSummarizeText) {
-        this.error = 'No text to summarize'
-        return
-      }
-      const { actions } = await createSummarizeOfTextRunActions(
-        needSummarizeText,
-        summarizeType as SummarizeActionType,
-        this.parameters.SliceTextActionType === 'TOKENS'
-          ? await getSliceEnd(
-              needSummarizeText,
-              this.parameters.SliceTextActionTokens,
-            )
-          : this.parameters.SliceTextActionLength || SUMMARIZE_MAX_CHARACTERS,
-      )
-      if (engine.getShortCutsEngine()) {
-        engine.getShortCutsEngine()?.pushActions(
-          actions.map((action) => {
-            return {
-              ...action,
-              parameters: {
-                ...action.parameters,
-                AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-              },
-            }
-          }),
-          'after',
-        )
-      } else {
-        this.error = 'no shortCutsEngine'
-        return
-      }
-      this.output = ''
-    } catch (e) {
-      this.error = (e as any).toString()
-    }
   }
 }

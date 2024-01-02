@@ -1,4 +1,5 @@
 import {
+  IShortcutEngineExternalEngine,
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
@@ -24,7 +25,10 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const result =
         (await getIframeOrSpecialHostPageContent()) ||

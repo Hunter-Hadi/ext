@@ -42,11 +42,11 @@ class PoeChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
+    const options = question.meta || {}
     await this.poeChat.askChatGPT(
-      question.question,
+      question.text,
       {
         taskId: question.messageId,
         regenerate: options.regenerate,

@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -13,7 +14,10 @@ export class ActionCloseURLS extends Action {
     super(id, type, parameters, autoExecute)
   }
 
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const tabId =
         params.OperationElementTabID || this.parameters.OperationElementTabID

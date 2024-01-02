@@ -3,6 +3,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
+  IShortcutEngineExternalEngine,
   shortcutsRenderTemplate,
   templateParserDecorator,
 } from '@/features/shortcuts'
@@ -31,7 +32,10 @@ export class ActionSetVariablesModal extends Action {
   //   onlyError: true,
   // })
   @templateParserDecorator()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const config = this.parameters.SetVariablesModalConfig
       if (!config) {
@@ -40,8 +44,7 @@ export class ActionSetVariablesModal extends Action {
       }
       // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
       let needUserInput = false
-      const shortCutsEngine = engine.getShortCutsEngine()
-      const shortCutsVariables = shortCutsEngine.getVariables()
+      const shortCutsVariables = engine.shortcutsEngine?.getVariables()
       const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
       cloneConfig.variables.map((variable) => {
         if (
@@ -110,7 +113,7 @@ export class ActionSetVariablesModal extends Action {
       if (result.success) {
         Object.keys(result.data).forEach((VariableName) => {
           if (result.data[VariableName] !== undefined) {
-            shortCutsEngine?.setVariable(
+            engine.shortcutsEngine?.setVariable(
               VariableName,
               result.data[VariableName],
               true,
@@ -119,7 +122,7 @@ export class ActionSetVariablesModal extends Action {
         })
       } else {
         this.error = 'User cancel!'
-        shortCutsEngine?.reset()
+        engine.shortcutsEngine?.reset()
       }
       this.output = JSON.stringify(result.data)
     } catch (e) {

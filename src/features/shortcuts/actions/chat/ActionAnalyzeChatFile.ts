@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
@@ -27,7 +28,10 @@ export class ActionAnalyzeChatFile extends Action {
     super(id, type, parameters, autoExecute)
   }
   @templateParserDecorator()
-  async execute(params: any, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const fileName =
         this.parameters.AnalyzeChatFileName ||
@@ -38,7 +42,7 @@ export class ActionAnalyzeChatFile extends Action {
         this.parameters.AnalyzeChatFileImmediateUpdateConversation ||
         params.AnalyzeChatFileImmediateUpdateConversation ||
         false
-      const text = params.LAST_ACTION_OUTPUT
+      const text = params.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
       const {
         isLimit,
         text: pageSummarySystemPrompt,

@@ -3,6 +3,7 @@ import lodashSet from 'lodash-es/set'
 import { v4 as uuidV4 } from 'uuid'
 
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 import { getAllPathsAndValues } from '@/utils/dataHelper/arrayHelper'
@@ -177,9 +178,9 @@ export function withLoadingDecorators() {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
       const [, engine] = args
-      engine.getChartGPT()?.showLoading()
+      ;(engine as IShortcutEngineExternalEngine)?.clientConversationEngine?.showConversationLoading()
       const value = await oldFunc.apply(this, args)
-      engine.getChartGPT()?.hideLoading()
+      ;(engine as IShortcutEngineExternalEngine)?.clientConversationEngine?.hideConversationLoading()
       return value
     }
   }

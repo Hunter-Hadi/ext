@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -11,7 +12,10 @@ export class ActionURL extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       this.output =
         this.parameters.URLActionURL || this.parameters.LAST_ACTION_OUTPUT

@@ -1,6 +1,7 @@
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
-import { ActionAskChatGPT } from '@/features/shortcuts/actions'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import {
@@ -37,11 +38,13 @@ export class ActionWebGPTSearchResultsExpand extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const searchResultJson = params.LAST_ACTION_OUTPUT
-      const backgroundConversation = engine.getBackgroundConversation()
-      if (!searchResultJson || !backgroundConversation) {
+      if (!searchResultJson || !engine.shortcutsMessageChannelEngine) {
         this.error = 'no search result'
         return
       }
@@ -99,15 +102,17 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                   }
                 }
               } else {
-                response = await backgroundConversation.postMessage({
-                  event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
-                  data: {
-                    URL: searchResult.url,
-                    timeOut: 20 * 1000, // 20s
-                    // 暂时不使用 google snapshot
-                    // withSnapshot: true,
+                response = await engine.shortcutsMessageChannelEngine!.postMessage(
+                  {
+                    event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
+                    data: {
+                      URL: searchResult.url,
+                      timeOut: 20 * 1000, // 20s
+                      // 暂时不使用 google snapshot
+                      // withSnapshot: true,
+                    },
                   },
-                })
+                )
               }
               // 2. 获取页面内容成功时，用页面内容替换 body、title
               if (response.data.success) {
@@ -162,8 +167,8 @@ export class ActionWebGPTSearchResultsExpand extends Action {
           template,
         },
       })
-      if (engine.getShortCutsEngine()) {
-        engine.getShortCutsEngine()?.pushActions(addActions, 'after')
+      if (engine.shortcutsEngine) {
+        engine.shortcutsEngine.pushActions(addActions, 'after')
       } else {
         this.error = 'no shortCutsEngine'
         return
@@ -186,7 +191,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       .replaceAll('{{NUMBER_OF_WORDS}}', `${maxTokens}`)
       .replaceAll('{{WEBPAGE_CONTENT}}', `${pageContent.body}`)
     // 基于AI的智能补充
-    const additionalText = await ActionAskChatGPT.generateAdditionalText({
+    const additionalText = await generatePromptAdditionalText({
       PAGE_CONTENT: pageContent.body,
       AI_RESPONSE_LANGUAGE: aiResponseLanguage,
     })

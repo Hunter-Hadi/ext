@@ -5,6 +5,7 @@ import {
 } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
@@ -27,7 +28,10 @@ export class ActionInsertUserInput extends Action {
   }
   @templateParserDecorator()
   @clearUserInput()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const inputValue =
         this.parameters?.compliedTemplate || params?.LAST_ACTION_OUTPUT || ''

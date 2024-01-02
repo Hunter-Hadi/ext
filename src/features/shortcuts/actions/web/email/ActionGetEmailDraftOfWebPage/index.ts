@@ -1,11 +1,12 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
-import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
-import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getEmailWebsitePageDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 export class ActionGetEmailDraftOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_DRAFT_OF_WEBPAGE'
@@ -22,7 +23,10 @@ export class ActionGetEmailDraftOfWebPage extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const OperationElementElementSelector =
         this.parameters.OperationElementElementSelector ||

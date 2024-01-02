@@ -293,8 +293,8 @@ class OpenAIChat extends BaseChat {
     taskId,
     sender,
     question,
-    options,
   ) => {
+    const meta = question.meta || {}
     if (!this.isAnswering) {
       // 获取model的白名单，因为要动态禁用一些model
       updateChatGPTWhiteListModelAsync().then().catch()
@@ -309,10 +309,7 @@ class OpenAIChat extends BaseChat {
           (file) => file.uploadStatus === 'success' && file.uploadedFileId,
         )
         if (successFiles.length > 0) {
-          if (!options.meta) {
-            options.meta = {}
-          }
-          options.meta.attachments = successFiles.map((successFile) => {
+          meta.attachments = successFiles.map((successFile) => {
             return {
               name: successFile.fileName,
               id: successFile.uploadedFileId,
@@ -331,7 +328,7 @@ class OpenAIChat extends BaseChat {
         {
           taskId,
           question,
-          options,
+          meta: meta,
         },
       )
     }

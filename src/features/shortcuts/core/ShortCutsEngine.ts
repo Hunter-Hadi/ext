@@ -1,48 +1,50 @@
+import { v4 } from 'uuid'
+
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import {
-  IShortcutEngineVariableType,
+  ActionAnalyzeChatFile,
+  ActionAskChatGPT,
+  ActionChatMessage,
+  ActionCloseURLS,
+  ActionConditional,
+  ActionCreateWebsiteContext,
+  ActionDate,
+  ActionDateFormat,
+  ActionFetchActions,
+  ActionGetContentsOfSearchEngine,
+  ActionGetContentsOfURL,
+  ActionGetContentsOfWebPage,
+  ActionGetEmailContentsOfWebPage,
+  ActionGetEmailDraftOfWebPage,
+  ActionGetPDFContentsOfCRX,
+  ActionGetReadabilityContentsOfWebPage,
+  ActionGetSocialMediaPostContentOfWebPage,
+  ActionGetSocialMediaPostDraftOfWebPage,
+  ActionGetYoutubeTranscriptOfURL,
+  ActionInsertUserInput,
+  ActionOpenURLs,
+  ActionOperationElement,
+  ActionRenderChatGPTPrompt,
+  ActionRenderTemplate,
+  ActionSetVariable,
+  ActionSetVariableMap,
+  ActionSetVariablesModal,
+  ActionSliceOfText,
+  ActionSummarizeOfText,
+  ActionTextHandler,
+  ActionURL,
+  ActionWebGPTSearchResultsExpand,
+} from '@/features/shortcuts/actions'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
+import {
   IShortcutEngine,
   IShortcutEngineListenerEventType,
   IShortcutEngineListenerType,
+  IShortcutEngineVariableType,
 } from '@/features/shortcuts/types'
-import {
-  ActionAskChatGPT,
-  ActionRenderChatGPTPrompt,
-  ActionInsertUserInput,
-  ActionGetContentsOfWebPage,
-  ActionSetVariable,
-  ActionURL,
-  ActionGetContentsOfURL,
-  ActionGetContentsOfSearchEngine,
-  ActionWebGPTSearchResultsExpand,
-  ActionDate,
-  ActionDateFormat,
-  ActionSummarizeOfText,
-  ActionSliceOfText,
-  ActionFetchActions,
-  ActionGetYoutubeTranscriptOfURL,
-  ActionGetPDFContentsOfCRX,
-  ActionOpenURLs,
-  ActionOperationElement,
-  ActionCloseURLS,
-  ActionConditional,
-  ActionAnalyzeChatFile,
-  ActionGetEmailContentsOfWebPage,
-  ActionGetReadabilityContentsOfWebPage,
-  ActionRenderTemplate,
-  ActionSetVariableMap,
-  ActionSetVariablesModal,
-  ActionGetEmailDraftOfWebPage,
-  ActionGetSocialMediaPostDraftOfWebPage,
-  ActionGetSocialMediaPostContentOfWebPage,
-  ActionCreateWebsiteContext,
-  ActionTextHandler,
-  ActionChatMessage,
-} from '@/features/shortcuts/actions'
-import { v4 } from 'uuid'
+import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { IAction } from '@/features/shortcuts/types/Action'
-import { shortcutsRenderTemplate } from '@/features/shortcuts'
 
 const ActionClassMap = {
   // 废弃
@@ -50,6 +52,7 @@ const ActionClassMap = {
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
   // chat
+  [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
   [ActionChatMessage.type]: ActionChatMessage,
@@ -91,7 +94,7 @@ const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
 
 class ShortCutsEngine implements IShortcutEngine {
   status: IShortcutEngine['status'] = 'idle'
-  variables = new Map<string, any>()
+  variables = new Map<string, IShortCutsParameter>()
   stepIndex = -1
   actions: IShortcutEngine['actions'] = []
   listeners: IShortcutEngine['listeners'] = []
@@ -176,9 +179,12 @@ class ShortCutsEngine implements IShortcutEngine {
       this.emit('action', action)
     }
   }
-  async run(params?: any) {
+  async run(params?: {
+    parameters: IShortCutsParameter[]
+    engine: IShortcutEngineExternalEngine
+  }) {
     try {
-      const { engine, parameters } = params
+      const { engine, parameters } = params || {}
       if (this.status === 'idle' || this.status === 'stop') {
         this.status = 'running'
         this.emit('status', this)
@@ -332,9 +338,6 @@ class ShortCutsEngine implements IShortcutEngine {
     this.listeners.forEach((listener) => {
       listener(event, data)
     })
-  }
-  parseTemplate(template: string) {
-    return shortcutsRenderTemplate(template, this.getVariables()).data
   }
 }
 export default ShortCutsEngine

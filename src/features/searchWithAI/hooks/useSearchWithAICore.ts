@@ -11,7 +11,7 @@ import {
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
-import { ActionAskChatGPT } from '@/features/shortcuts/actions'
+import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
 import {
   crawlingSearchResults,
   ICrawlingSearchResult,
@@ -186,7 +186,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       }
 
       template = await generatePromptTemplate(question, expandContent)
-      const additionalText = await ActionAskChatGPT.generateAdditionalText({
+      const additionalText = await generatePromptAdditionalText({
         PAGE_CONTENT: expandContent,
         AI_RESPONSE_LANGUAGE: userSelectedLanguage,
       })
@@ -196,7 +196,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         template += '\n\n' + additionalText.data
       }
     } else {
-      const additionalText = await ActionAskChatGPT.generateAdditionalText({
+      const additionalText = await generatePromptAdditionalText({
         PAGE_CONTENT: question,
         AI_RESPONSE_LANGUAGE: userSelectedLanguage,
       })

@@ -235,7 +235,7 @@ export const formatAIMessageContentForClipboard = (
  * @param message
  */
 export const formatUserMessageContent = (message: IUserChatMessage) => {
-  return message.extra.meta?.messageVisibleText || message.text
+  return message.meta?.messageVisibleText || message.text
 }
 /**
  * 格式化第三方消息的内容

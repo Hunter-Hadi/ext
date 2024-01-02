@@ -1,7 +1,9 @@
+import { isEqual, isObject } from 'lodash-es'
+
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { isEqual, isObject } from 'lodash-es'
 
 export class ActionConditional extends Action {
   static type: ActionIdentifier = 'SCRIPTS_CONDITIONAL'
@@ -13,7 +15,10 @@ export class ActionConditional extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       let isTrue = false
       const input =
@@ -62,10 +67,11 @@ export class ActionConditional extends Action {
         default:
           break
       }
-      if (engine.getShortCutsEngine()) {
-        engine
-          .getShortCutsEngine()
-          ?.pushActions(isTrue ? ifTrueActions : ifFalseActions, 'after')
+      if (engine.shortcutsEngine) {
+        engine.shortcutsEngine?.pushActions(
+          isTrue ? ifTrueActions : ifFalseActions,
+          'after',
+        )
       } else {
         this.error = 'no shortCutsEngine'
         return

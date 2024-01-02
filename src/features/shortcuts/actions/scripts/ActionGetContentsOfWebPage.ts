@@ -1,9 +1,11 @@
+import { parseHTML } from 'linkedom'
+
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
+import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { parseDocumentToReadabilityData } from '@/features/shortcuts/utils/webHelper'
-import { parseHTML } from 'linkedom'
 
 // NOTE: 这里本来以为是获取网页内容，其实是用script获取网页内容，并不使用url的方式，所以在script而不是web文件夹
 export class ActionGetContentsOfWebPage extends Action {
@@ -19,7 +21,10 @@ export class ActionGetContentsOfWebPage extends Action {
   @pushOutputToChat({
     onlyError: true,
   })
-  async execute(params: ActionParameters, engine: any) {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
       const doc = parseHTML(
         `<html>${document?.documentElement?.innerHTML}</html>`,

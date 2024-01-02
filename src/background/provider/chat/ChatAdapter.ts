@@ -2,10 +2,7 @@ import Browser from 'webextension-polyfill'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { AI_PROVIDER_MAP } from '@/constants'
-import {
-  IChatUploadFile,
-  IUserChatMessageExtraType,
-} from '@/features/chatgpt/types'
+import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
 
 /**
  * needAuth: 需要授权
@@ -20,26 +17,12 @@ export type ChatStatus =
   | 'success'
   | 'needReload'
 
-export type IAskChatGPTQuestionType = {
-  messageId: string
-  parentMessageId: string
-  conversationId: string
-  question: string
-}
-export type IAskChatGPTAnswerType = {
-  messageId: string
-  parentMessageId: string
-  conversationId: string
-  text: string
-}
-
 export type IAIProviderType = typeof AI_PROVIDER_MAP[keyof typeof AI_PROVIDER_MAP]
 
 export type IChatGPTAskQuestionFunctionType = (
   taskId: string,
   sender: Browser.Runtime.MessageSender,
-  question: IAskChatGPTQuestionType,
-  options: IUserChatMessageExtraType,
+  question: IUserChatMessage,
 ) => Promise<void>
 
 export interface ChatSystemInterface {
@@ -109,9 +92,8 @@ export class ChatAdapter implements ChatSystemInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
-    return this.chatAdapter.sendQuestion(taskId, sender, question, options)
+    return this.chatAdapter.sendQuestion(taskId, sender, question)
   }
   async abortAskQuestion(messageId: string) {
     return await this.chatAdapter.abortAskQuestion(messageId)

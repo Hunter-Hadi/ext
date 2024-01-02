@@ -1,3 +1,5 @@
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { IClientConversationEngine } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
@@ -19,8 +21,7 @@ export const SHORTCUT_ENGINE_BUILD_IN_VARIABLES = [
   'AI_OUTPUT_LANGUAGE',
   'AI_RESPONSE_LANGUAGE',
 ] as const
-export type IShortcutEngineBuiltInVariableType =
-  (typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES)[number]
+export type IShortcutEngineBuiltInVariableType = typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES[number]
 // OPTIMIZE: 这里的类型应该是ActionParameters，但是ActionParameters的类型太复杂了，所以先用any
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
@@ -71,6 +72,17 @@ export type IShortcutEngineListenerType = (
   data: any,
 ) => void
 
+export interface IShortcutEngineExternalEngine {
+  // background通信的Engine
+  shortcutsMessageChannelEngine?: ContentScriptConnectionV2
+  // background通信的Engine
+  clientMessageChannelEngine?: ContentScriptConnectionV2
+  // shortcuts的Engine
+  shortcutsEngine?: IShortcutEngine
+  // conversationEngine
+  clientConversationEngine?: IClientConversationEngine
+}
+
 // 定义捷径引擎接口
 export interface IShortcutEngine {
   // 基础
@@ -96,6 +108,7 @@ export interface IShortcutEngine {
   getVariable: (key: IShortcutEngineVariableType) => any
   getVariables: () => Record<string, any>
   setActions: (actions: ISetActionsType) => void
+  pushActions: (actions: ISetActionsType, position: 'after' | 'last') => void
   getCurrentAction: () => IAction
   getNextAction: () => IAction
   progress: number

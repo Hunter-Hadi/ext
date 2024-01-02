@@ -40,7 +40,6 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatMessage[] = []
@@ -56,19 +55,21 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
           ],
         })
       }
-      options.historyMessages?.forEach((message) => {
-        chat_history.push({
-          role: message.type === 'ai' ? 'ai' : 'human',
-          content: [
-            {
-              type: 'text',
-              text: message.text,
-            },
-          ],
+      if (question.meta) {
+        question.meta.historyMessages?.forEach((message) => {
+          chat_history.push({
+            role: message.type === 'ai' ? 'ai' : 'human',
+            content: [
+              {
+                type: 'text',
+                text: message.text,
+              },
+            ],
+          })
         })
-      })
-      options.includeHistory = false
-      options.maxHistoryMessageCnt = 0
+        question.meta.includeHistory = false
+        question.meta.maxHistoryMessageCnt = 0
+      }
     }
     // NOTE: gemini的理解能力不行，需要把Human的回答过滤掉掉连续的
     if (chat_history.length > 0) {
@@ -85,14 +86,13 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
       [
         {
           type: 'text',
-          text: question.question,
+          text: question.text,
         },
       ],
       {
         taskId: question.messageId,
-        regenerate: options.regenerate,
         chat_history,
-        meta: options.meta,
+        meta: question.meta,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

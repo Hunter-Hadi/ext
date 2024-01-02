@@ -32,6 +32,7 @@ import { useAuthLogin } from '@/features/auth'
 import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
@@ -93,6 +94,7 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
+  const { askAIWIthShortcuts, askAIQuestion } = useClientChat()
   const conversation = useRecoilValue(ChatGPTConversationState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const {
@@ -206,8 +208,6 @@ const FloatingContextMenu: FC<{
   // 记录最后选择的contextMenu并发送log
   const lastRecordContextMenuRef = useRef<IContextMenuItem | null>(null)
   const {
-    setShortCuts,
-    runShortCuts,
     loading,
     reGenerate,
     shortCutsEngineRef,
@@ -382,18 +382,10 @@ const FloatingContextMenu: FC<{
       if (!isContextMenuFromSidebar()) {
         updateSidebarConversationType('Chat')
       }
-      setActions([
-        {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template,
-          },
-        },
-        {
-          type: 'ASK_CHATGPT',
-          parameters: {},
-        },
-      ])
+      await askAIQuestion({
+        type: 'user',
+        text: template,
+      })
     }
   }
   const regenerateRef = useRef(reGenerate)
@@ -524,12 +516,6 @@ const FloatingContextMenu: FC<{
     chatGPTClient.status,
     isLogin,
   ])
-  useEffect(() => {
-    console.log(
-      '谁的问题: selectedContextMenuId',
-      floatingDropdownMenuSelectedItem.selectedContextMenuId,
-    )
-  }, [floatingDropdownMenuSelectedItem.selectedContextMenuId])
   const isRunningActionsRef = useRef(false)
   useEffect(() => {
     const runActions = cloneDeep(actions)
@@ -542,13 +528,12 @@ const FloatingContextMenu: FC<{
         return
       }
       isRunningActionsRef.current = true
+      setActions([])
       const lastRecordContextMenu = lastRecordContextMenuRef.current
       if (lastRecordContextMenu) {
         // 要在找到askChatGPT之后，才能清空，例如code或者enter prompt的场景
         lastRecordContextMenuRef.current = null
       }
-      setShortCuts(runActions)
-      setActions([])
       if (!lastRecordContextMenuRef.current) {
         // 如果没有lastRecordContextMenuRef， 说明本次运行了ask chatgpt，清空input
         getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -569,26 +554,29 @@ const FloatingContextMenu: FC<{
         showChatBox()
       }
       setInputValue('')
-      runShortCuts()
-        .then(() => {
-          // done
-          const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
-          if (error) {
-            console.log('[ContextMenu Module] error', error)
-            setFloatingDropdownMenu({
-              open: false,
-              rootRect: null,
-            })
-            // 如果出错了，则打开聊天框
-            showChatBox()
-          }
-        })
-        .catch()
-        .finally(() => {
-          isRunningActionsRef.current = false
-        })
+      if (lastRecordContextMenu) {
+        askAIWIthShortcuts(runActions)
+          .then(() => {
+            // done
+            const error =
+              shortCutsEngineRef.current?.getNextAction()?.error || ''
+            if (error) {
+              console.log('[ContextMenu Module] error', error)
+              setFloatingDropdownMenu({
+                open: false,
+                rootRect: null,
+              })
+              // 如果出错了，则打开聊天框
+              showChatBox()
+            }
+          })
+          .catch()
+          .finally(() => {
+            isRunningActionsRef.current = false
+          })
+      }
     }
-  }, [actions, isLogin, currentSidebarConversationType])
+  }, [actions, isLogin, currentSidebarConversationType, askAIWIthShortcuts])
   useEffect(() => {
     const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)

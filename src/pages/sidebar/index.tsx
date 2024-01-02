@@ -1,13 +1,15 @@
-import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import Stack from '@mui/material/Stack'
 import React, { useEffect } from 'react'
-import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
+
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
-import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
+import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -15,15 +17,13 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 //   )?.value
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
-const NormalChatPage = () => {
+const SidebarPage = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
+  const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
   const {
-    sendQuestion,
     conversation,
-    reGenerate,
     retryMessage,
-    stopGenerateMessage,
     resetConversation,
   } = useMessageWithChatGPT('')
   const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -41,17 +41,13 @@ const NormalChatPage = () => {
           if (currentSidebarConversationType === 'Search') {
             await createSearchWithAI(question, true)
           } else {
-            console.log('NormalChatPage onSendMessage', options)
-            await sendQuestion(
-              {
-                question,
-              },
-              {
+            await askAIQuestion({
+              type: 'user',
+              text: question,
+              meta: {
                 ...options,
-                regenerate: false,
-                includeHistory: options.includeHistory === true,
               },
-            )
+            })
           }
         }}
         writingMessage={conversation.writingMessage}
@@ -85,12 +81,12 @@ const NormalChatPage = () => {
             await regenerateSearchWithAI()
             return
           }
-          await reGenerate()
+          await regenerate()
         }}
-        onStopGenerate={stopGenerateMessage}
+        onStopGenerate={stopGenerate}
         onReset={resetConversation}
       />
     </Stack>
   )
 }
-export default NormalChatPage
+export default SidebarPage

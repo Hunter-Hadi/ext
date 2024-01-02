@@ -2,12 +2,17 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import { atom, useRecoilState } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 
+export const MaxAIMinimumHideState = atom({
+  key: 'MaxAIMinimumHideState',
+  default: false,
+})
 const MaxAISettingsMiniButton = () => {
+  const [, setMaxAIMinimumHide] = useRecoilState(MaxAIMinimumHideState)
   const { t } = useTranslation(['common', 'client'])
   return (
     <Stack
@@ -41,7 +46,7 @@ const MaxAISettingsMiniButton = () => {
             },
           }}
           onClick={(event) => {
-            document.getElementById(MAXAI_MINIMIZE_CONTAINER_ID)?.remove()
+            setMaxAIMinimumHide(true)
           }}
         >
           <ContextMenuIcon

@@ -10,9 +10,7 @@ import Browser from 'webextension-polyfill'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
-import MaxAIHideMiniButton, {
-  MaxAIMinimumHideState,
-} from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
+import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
@@ -143,7 +141,6 @@ const FloatingMenuButton: FC = () => {
                 })
               }}
               actions={[
-                <MaxAIHideMiniButton key={'MaxAIHideMiniButton'} />,
                 <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />,
                 <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />,
                 <MaxAISummarizeButton key={'MaxAISummarizeButton'} />,

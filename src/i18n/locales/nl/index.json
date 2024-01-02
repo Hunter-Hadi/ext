@@ -433,13 +433,13 @@
     "permission__pricing_hook__input_assistant_button__email__compose_new__description": "Laat AI gepersonaliseerde e-mailconcepten voor je genereren in enkele seconden.",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__title": "Upgrade voor 1-klik e-mailantwoorden",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__description": "Laat AI gepersonaliseerde e-mailantwoorden voor je genereren in enkele seconden.",
-    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Upgrade om je e-mails met één klik te perfectioneren",
+    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Upgrade om uw e-mails in 1 klik te perfectioneren",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__description": "Verbeter het schrijven, corrigeer spelling en grammatica, of verander direct de toon met behulp van AI.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "Upgrade voor 1-klik social media berichten",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "Laat AI gepersonaliseerde social media berichten voor je genereren in enkele seconden.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "Upgrade voor 1-klik social media antwoorden",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "Laat AI gepersonaliseerde social media reacties voor je genereren in enkele seconden.",
-    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Upgrade om je berichten en reacties met één klik te perfectioneren",
+    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Upgrade om uw berichten en antwoorden op social media in 1 klik te perfectioneren",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Verbeter het schrijven, corrigeer spelling en grammatica, of verander direct de toon met behulp van AI.",
     "input_assistant_button__compose_new__tooltip": "Snel opstellen",
     "input_assistant_button__compose_reply__tooltip": "Snel antwoorden",
@@ -501,7 +501,8 @@
     "provider__label__beta": "bèta",
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade naar Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade om toegang te krijgen tot gemini-pro",
-    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's meest capabele en algemene model. Vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI bevindt zich momenteel in de bètafase en ondersteunt alleen tekst en code, en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio."
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's meest capabele en algemene model. Vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI bevindt zich momenteel in de bètafase en ondersteunt alleen tekst en code, en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio.",
+    "quick_access__hide_button__title": "Verberg snelle toegang tot volgend bezoek"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -44,7 +44,6 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         (conversation?.meta?.maxTokens || 4000) - 1000,
         3000,
       )
-      debugger
       // 先计算TargetContext的Tokens占用，剩下的再给FullContext
       const {
         isLimit,

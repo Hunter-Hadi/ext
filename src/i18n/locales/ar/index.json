@@ -433,13 +433,13 @@
     "permission__pricing_hook__input_assistant_button__email__compose_new__description": "اسمح للذكاء الاصطناعي بإنشاء مسودات بريد إلكتروني شخصية لك في ثوانٍ.",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__title": "ترقية للرد على رسائل البريد الإلكتروني بنقرة واحدة",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__description": "اسمح للذكاء الاصطناعي بإنشاء ردود البريد الإلكتروني المخصصة لك في ثوانٍ.",
-    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "ترقية لتحسين رسائلك بنقرة واحدة",
+    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "ترقية لتحسين رسائلك البريدية بنقرة واحدة",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__description": "تحسين الكتابة، إصلاح الأخطاء الإملائية والنحوية، أو تغيير الأسلوب على الفور باستخدام الذكاء الاصطناعي.",
-    "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "ترقية لنشر منشورات وسائل التواصل الاجتماعي بنقرة واحدة",
+    "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "ترقية لنشر منشورات التواصل الاجتماعي بنقرة واحدة",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "اسمح للذكاء الاصطناعي بإنشاء منشورات وسائل التواصل الاجتماعي الشخصية لك في ثوانٍ.",
-    "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "ترقية للرد على منشورات وسائل التواصل الاجتماعي بنقرة واحدة",
+    "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "ترقية للرد على منشورات التواصل الاجتماعي بنقرة واحدة",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "اسمح للذكاء الاصطناعي بإنشاء ردود منشورات وسائل التواصل الاجتماعي المخصصة لك في ثوانٍ.",
-    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "ترقية لتحسين منشوراتك وردودك على وسائل التواصل الاجتماعي بنقرة واحدة",
+    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "ترقية لتحسين منشوراتك وردودك على منصات التواصل الاجتماعي بنقرة واحدة",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "تحسين الكتابة، إصلاح الأخطاء الإملائية والنحوية، أو تغيير الأسلوب على الفور باستخدام الذكاء الاصطناعي.",
     "input_assistant_button__compose_new__tooltip": "إنشاء سريع",
     "input_assistant_button__compose_reply__tooltip": "الرد السريع",
@@ -501,7 +501,8 @@
     "provider__label__beta": "بيتا",
     "permission__pricing_hook__button__upgrade_to_elite": "الترقية إلى إليت",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "الترقية للوصول إلى جيميني-برو",
-    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "أقوى وأكثر نموذج عام من Google. تم بناؤه من الألف إلى الياء للتعددية. يدعم Gemini على MaxAI حاليًا فقط النصوص والشفرات، وسيتم قريبًا دعم الصور ومقاطع الفيديو والصوت."
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "أقوى وأكثر نموذج عام من Google. تم بناؤه من الألف إلى الياء للتعددية. يدعم Gemini على MaxAI حاليًا فقط النصوص والشفرات، وسيتم قريبًا دعم الصور ومقاطع الفيديو والصوت.",
+    "quick_access__hide_button__title": "إخفاء الوصول السريع حتى الزيارة القادمة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

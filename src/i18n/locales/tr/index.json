@@ -433,13 +433,13 @@
     "permission__pricing_hook__input_assistant_button__email__compose_new__description": "Saniyeler içinde AI'nın kişiselleştirilmiş e-posta taslakları oluşturmasına izin verin.",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__title": "1 tıklamayla e-posta yanıtları için yükseltme",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__description": "Yapay zeka tarafından kişiselleştirilmiş e-posta yanıtları oluşturmasına izin verin.",
-    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "E-postalarınızı tek tıklamayla mükemmelleştirmek için yükseltme",
+    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "E-postalarınızı 1 tıklamayla mükemmelleştirmek için yükseltme",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__description": "Yazmayı iyileştirin, yazım ve dilbilgisi hatalarını düzeltin veya tonu anında değiştirin.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "1 tıklamayla sosyal medya gönderileri için yükseltme",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "Saniyeler içinde AI'nın kişiselleştirilmiş sosyal medya gönderileri oluşturmasına izin verin.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "1 tıklamayla sosyal medya yanıtları için yükseltme",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "Yapay zeka tarafından kişiselleştirilmiş sosyal medya yanıtları oluşturmasına izin verin.",
-    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Gönderilerinizi ve yanıtlarınızı tek tıklamayla mükemmelleştirmek için yükseltme",
+    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Gönderilerinizi ve yanıtlarınızı 1 tıklamayla mükemmelleştirmek için yükseltme",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Yazmayı iyileştirin, yazım ve dilbilgisi hatalarını düzeltin veya tonu anında değiştirin.",
     "input_assistant_button__compose_new__tooltip": "Hızlı oluştur",
     "input_assistant_button__compose_reply__tooltip": "Hızlı yanıt",
@@ -501,7 +501,8 @@
     "provider__label__beta": "beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Elite'e Yükselt",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "gemini-pro'ya erişim için yükseltme yapın",
-    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'ın en yetenekli ve genel modelidir. Çoklu modellik için temelden oluşturulmuştur. MaxAI üzerindeki Gemini şu anda beta aşamasındadır ve yalnızca metin ve kod desteği sunmaktadır. Yakında resim, video ve ses desteği de ekleyecektir."
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'ın en yetenekli ve genel modelidir. Çoklu modellik için temelden oluşturulmuştur. MaxAI üzerindeki Gemini şu anda beta aşamasındadır ve yalnızca metin ve kod desteği sunmaktadır. Yakında resim, video ve ses desteği de ekleyecektir.",
+    "quick_access__hide_button__title": "Sonraki ziyarete kadar hızlı erişimi gizle"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

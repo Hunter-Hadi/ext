@@ -433,13 +433,13 @@
     "permission__pricing_hook__input_assistant_button__email__compose_new__description": "Lassen Sie KI personalisierte E-Mail-Entwürfe in Sekundenschnelle generieren.",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__title": "Upgrade für 1-Klick-E-Mail-Antworten",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__description": "Lassen Sie KI personalisierte E-Mail-Antworten in Sekunden generieren.",
-    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Upgrade um Ihre E-Mails mit einem Klick zu perfektionieren",
+    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Upgrade, um Ihre E-Mails mit einem Klick zu perfektionieren",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__description": "Verbessern Sie das Schreiben, korrigieren Sie Rechtschreibung und Grammatik oder ändern Sie den Ton sofort mit KI.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "Upgrade für 1-Klick-Social-Media-Beiträge",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "Lassen Sie KI personalisierte Social-Media-Beiträge in Sekundenschnelle generieren.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "Upgrade für 1-Klick-Social-Media-Antworten",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "Lassen Sie KI personalisierte Social Media Antworten in Sekunden generieren.",
-    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Upgrade um Ihre Beiträge und Antworten in den sozialen Medien mit einem Klick zu perfektionieren",
+    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Upgrade, um Ihre Beiträge und Antworten mit einem Klick zu perfektionieren",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Verbessern Sie das Schreiben, korrigieren Sie Rechtschreibung und Grammatik oder ändern Sie den Ton sofort mit KI.",
     "input_assistant_button__compose_new__tooltip": "Schnell verfassen",
     "input_assistant_button__compose_reply__tooltip": "Schnell antworten",
@@ -501,7 +501,8 @@
     "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Auf Elite upgraden",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade, um auf gemini-pro zuzugreifen",
-    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Das leistungsfähigste und vielseitigste Modell von Google. Von Grund auf für Multimodalität entwickelt. Gemini auf MaxAI befindet sich derzeit in der Beta-Phase und unterstützt nur Text und Code. In Kürze wird auch Unterstützung für Bilder, Videos und Audio hinzugefügt."
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Das leistungsfähigste und vielseitigste Modell von Google. Von Grund auf für Multimodalität entwickelt. Gemini auf MaxAI befindet sich derzeit in der Beta-Phase und unterstützt nur Text und Code. In Kürze wird auch Unterstützung für Bilder, Videos und Audio hinzugefügt.",
+    "quick_access__hide_button__title": "Schnellzugriff ausblenden bis zum nächsten Besuch"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

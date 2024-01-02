@@ -102,7 +102,6 @@ export default class SocialMediaPostContext {
 
   get data(): ISocialMediaPostContextData {
     const { content, author, title } = this.post
-    debugger
     const commentsData = createCommentListData(this.commentList?.[0] || [])
     let postText = ''
     postText += `[${this.config.postTitle}]`

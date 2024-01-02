@@ -433,13 +433,13 @@
     "permission__pricing_hook__input_assistant_button__email__compose_new__description": "Deja que la IA genere borradores de correo electrónico personalizados para ti en segundos.",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__title": "Mejora para respuestas de correo electrónico con 1 clic",
     "permission__pricing_hook__input_assistant_button__email__compose_reply__description": "Permite que la IA genere respuestas de correo electrónico personalizadas en segundos.",
-    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Mejora para perfeccionar tus correos electrónicos con un clic",
+    "permission__pricing_hook__input_assistant_button__email__refine_draft__title": "Mejora para perfeccionar tus correos electrónicos con 1 clic",
     "permission__pricing_hook__input_assistant_button__email__refine_draft__description": "Mejora la escritura, corrige la ortografía y gramática o cambia el tono al instante con la IA.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__title": "Mejora para publicaciones en redes sociales con 1 clic",
     "permission__pricing_hook__input_assistant_button__social_media__compose_new__description": "Deja que la IA genere publicaciones en redes sociales personalizadas para ti en segundos.",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__title": "Mejora para respuestas en redes sociales con 1 clic",
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "Permite que la IA genere respuestas en redes sociales personalizadas en segundos.",
-    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Mejora para perfeccionar tus publicaciones y respuestas en redes sociales con un clic",
+    "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Mejora para perfeccionar tus publicaciones y respuestas con 1 clic",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Mejora la escritura, corrige la ortografía y gramática o cambia el tono al instante con la IA.",
     "input_assistant_button__compose_new__tooltip": "Composición rápida",
     "input_assistant_button__compose_reply__tooltip": "Respuesta rápida",
@@ -501,7 +501,8 @@
     "provider__label__beta": "beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Actualizar a Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Actualiza para acceder a gemini-pro",
-    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "El modelo más capaz y general de Google. Construido desde cero para multimodalidad. Gemini en MaxAI está actualmente en fase beta, solo admite texto y código, y pronto agregará soporte para imágenes, videos y audio."
+    "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "El modelo más capaz y general de Google. Construido desde cero para multimodalidad. Gemini en MaxAI está actualmente en fase beta, solo admite texto y código, y pronto agregará soporte para imágenes, videos y audio.",
+    "quick_access__hide_button__title": "Ocultar acceso rápido hasta la próxima visita"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

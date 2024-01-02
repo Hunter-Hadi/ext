@@ -211,6 +211,8 @@ export class ActionAskChatGPT extends Action {
       // summary的上下文
       READABILITY_CONTENTS?: string
       // quick reply的上下文
+      EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT?: string
+      EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT?: string
       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT?: string
       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT?: string
       EMAIL_DRAFT?: string
@@ -232,6 +234,8 @@ export class ActionAskChatGPT extends Action {
       params.PAGE_CONTENT || // 搜索的上下文
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT || // quick reply的上下文
       params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
+      params.EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT || // quick reply的上下文
+      params.EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT || // quick reply的上下文
       params.EMAIL_DRAFT || // quick reply的上下文
       params.POST_DRAFT || // quick reply的上下文
       params.SELECTED_TEXT || // 选中的内容

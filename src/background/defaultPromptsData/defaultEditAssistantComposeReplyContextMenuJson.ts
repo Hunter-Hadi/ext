@@ -1071,49 +1071,58 @@ const emailPrompts = [
           parameters: {},
         },
         {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'EMAIL_CONTEXT',
-          },
-        },
-        {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
             SetVariablesModalConfig: {
               contextMenuId: '47070ec6-8700-43fd-a519-20fe3841df38',
-              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
+              template: `Ignore all previous instructions. You are an expert in crafting email responses, proficient in addressing a wide range of email inquiries. Your objective is to compose a well-structured and contextually appropriate reply to an email. The content of the target email will be enclosed within a <target></target>. To ensure a comprehensive understanding, any previous emails in the same thread will be provided within a <context></context>. Your response should be concise, relevant, and tailored to the specific details and tone of the conversation.
 
-Text:
-\`\`\`
-{{EMAIL_CONTEXT}}
-\`\`\`
+The following is all previous emails in the same thread, delimited by <context></context>:
 
-Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.
+<context>
+{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}
+</context>
+
+Here's the target email for you to reply to, delimited by <target></target>:
+
+<target>
+{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}
+</target>
+
+Your task requires you to write a email reply that is concise, relevant, and tailored to the specific context details and tone of the conversation.
 
 Make the email reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email reply.
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the email reply is meant to do.
+Opt for straightforward language, steering clear of complex or obscure terms. Strive for authenticity in your writing, maintaining a tone that is neither overly informal nor excessively formal, but rather complementary to the purpose of your reply.
 
-Do not include email subject, just output the email reply message.
+Your output should exclusively be the email reply, devoid of the subject line or additional context. Provide the response as it would appear in an email, free from extraneous explanations or embellishments. Refrain from using any punctuation marks to enclose the email text.
 
-Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
+Now, write the email reply, mentioning these key points, delimited by <keypoints></keypoints>:
+
+<keypoints>
+{{KEY_POINTS}}
+</keypoints>
+`,
               title: 'Reply with key points',
               modelKey: 'Sidebar',
               variables: [
                 {
                   label: 'Email context',
-                  VariableName: 'EMAIL_CONTEXT',
+                  VariableName: 'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
                   valueType: 'Text',
                   placeholder: 'Enter email context',
-                  defaultValue: '{{EMAIL_CONTEXT}}',
+                  defaultValue:
+                    '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
+                },
+                {
+                  label: 'Target Email',
+                  VariableName:
+                    'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
+                  valueType: 'Text',
+                  placeholder: 'Enter email context',
+                  defaultValue:
+                    '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
                 },
                 {
                   label: 'Key points',

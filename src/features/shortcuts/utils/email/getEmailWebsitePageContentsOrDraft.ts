@@ -203,29 +203,39 @@ class EmailCorrespondence {
       return new Date(a.date).getTime() - new Date(b.date).getTime()
     })
   }
-  formatText() {
-    return (
-      this.emails
-        .map((email, index) => {
-          // ## Email #1
-          // **From:** Sender Name<sender@domain.com>
-          // **To:** Receiver Name<receiver@domain.com>
-          // **Date:** YYYY-MM-DD
-          // **Subject:** Email Subject
-          //
-          // Email content goes here.
-          //
-          // ---
-          return `## Email #${index + 1}\n**From:** ${email.from.name}<${
-            email.from.email
-          }>\n**To:** ${email.to.name}<${email.to.email}>\n**Date:** ${
-            email.date
-          }\n**Subject:** ${email.subject}\n\n${email.content}\n\n---\n`
-        })
-        .join('\n')
-        // 这里是为了防止出现多个空行
-        .replace(/\n{2,}/g, '\n\n')
-    )
+  get emailContext() {
+    let targetReplyEmailContext = ''
+    const emailContext = this.emails
+      .map((email, index) => {
+        // ## Email #1
+        // **From:** Sender Name<sender@domain.com>
+        // **To:** Receiver Name<receiver@domain.com>
+        // **Date:** YYYY-MM-DD
+        // **Subject:** Email Subject
+        //
+        // Email content goes here.
+        //
+        // ---
+        const emailContext = `## Email #${index + 1}\n**From:** ${
+          email.from.name
+        }<${email.from.email}>\n**To:** ${email.to.name}<${
+          email.to.email
+        }>\n**Date:** ${email.date}\n**Subject:** ${email.subject}\n\n${
+          email.content
+        }\n\n---\n`
+        if (index === this.emails.length - 1) {
+          // 这里是为了防止出现多个空行
+          targetReplyEmailContext = emailContext.replace(/\n{2,}/g, '\n\n')
+        }
+        return emailContext
+      })
+      .join('\n')
+      // 这里是为了防止出现多个空行
+      .replace(/\n{2,}/g, '\n\n')
+    return {
+      targetReplyEmailContext,
+      emailContext,
+    }
   }
 }
 
@@ -241,7 +251,7 @@ const fireClick = (node: any): void => {
 
 export const getEmailWebsitePageContentsOrDraft = async (
   inputAssistantButtonElementSelector?: string,
-) => {
+): Promise<{ targetReplyEmailContext: string; emailContext: string }> => {
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms))
   const host = getCurrentDomainHost()
@@ -355,7 +365,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
           }
         }
       })
-      return emailCorrespondence.formatText()
+      return emailCorrespondence.emailContext
     } else {
       emailContextSelector = 'div[role="list"]'
     }
@@ -528,7 +538,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
         emailCorrespondence.sortEmails()
         if (emailCorrespondence.emails.length > 0) {
-          return emailCorrespondence.formatText()
+          return emailCorrespondence.emailContext
         }
         emailContextSelector = 'div[data-app-section="ConversationContainer"]'
       }
@@ -591,7 +601,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
                 subject,
                 content,
               })
-              return emailCorrespondence.formatText()
+              return emailCorrespondence.emailContext
             }
           }
         }
@@ -691,8 +701,15 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }),
       )
     ).join('')
-    return pageContent
+    return {
+      targetReplyEmailContext: pageContent,
+      emailContext: pageContent,
+    }
   } catch (e) {
-    return await getPageContentWithMozillaReadability()
+    const pageContent = await getPageContentWithMozillaReadability()
+    return {
+      targetReplyEmailContext: pageContent,
+      emailContext: pageContent,
+    }
   }
 }

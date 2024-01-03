@@ -135,7 +135,7 @@ const AuthUserRoleIconDropdown: FC = () => {
               },
             }}
           >
-            <span>Upgrade</span>
+            <span>{t('client:sidebar__top_bar__upgrade__title')}</span>
           </Stack>
         </Link>
       )}

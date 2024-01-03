@@ -36,7 +36,7 @@ const OptionsToolbarLogo: FC = () => {
   }
   return (
     <React.Fragment>
-      <Stack direction={'row'} alignItems={'center'} spacing={1}>
+      <Stack direction={'row'} alignItems={'center'} spacing={0.5}>
         {!isDownMd ? (
           <Link
             sx={{

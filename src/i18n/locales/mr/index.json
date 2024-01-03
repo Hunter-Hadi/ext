@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "समाधान पहा",
     "sidebar__input__tokens_limited__title": "टोकन्स महाप्रमाण",
     "provider__gemini__title": "जेमिनी",
-    "provider__gemini__short_description": "Googleचा Gemini कुटुंब, स्केलिंग आणि विविधतेसाठी डिझाइन केलेला, 38 भाषांचे समर्थन करतो आणि 32k टोकनचे संदर्भ विंडो दर्शवतो.",
+    "provider__gemini__short_description": "गूगलचा सर्वात अधिक सक्षम आणि सामान्य मॉडेल, बहुसंवादासाठी जमिनीच्या आधारावरून तयार केलेला. MaxAI वर Gemini हे सध्या मजकूर आणि कोडचा समर्थन करते आणि लवकरच त्यांनी प्रतिमा, व्हिडिओ आणि ऑडिओचा समर्थन जोडणार आहे.",
     "provider__gemini__auth_description": "एक्सटेंशनची शक्ती देण्यासाठी जेमिनीचा वापर करा.",
     "provider__gemini__auth_button_text": "जेमिनीसह सुरू रहा",
     "provider__gemini__model__gemini_pro__description": "Googleचा Gemini कुटुंब, स्केलिंग देण्यासाठी डिझाइन केलेला आहे आणि मजबूत सामान्यक्षमता दर्शवतो, 38 भाषांचे समर्थन करतो आणि 32k टोकनचे संदर्भ विंडो दर्शवतो.",

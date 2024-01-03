@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "ማሳያያት ይመልከቱ",
     "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ",
     "provider__gemini__title": "ጊሚኒ",
-    "provider__gemini__short_description": "ጎጂል ጋሚኒ ቡድን, ለማስተላለፍና ለማስታወቂያ የተሰጠው የግንባታ ቡድን ነው። የ38 ቋንቋዎችን የ32k ቶክን የመቀጠል እና የማስተላለፍ እይታ ያለው።",
+    "provider__gemini__short_description": "ጉግል ከመጀመሪያ ጀምሮ ለማስተላለፍ የግል ሞዴል ምንጭ እና ጠቃሚዎች ለመስቀል የተሰጠ እና የተጠቀሰ ማዕከል ነው። Gemini on MaxAI በሳምንት የጽሁፍ እና የኮድ እና በተለያዩ ጊዜያዊ ማስተላለፊያዎችን ይጠቀሙ ይሆናል።",
     "provider__gemini__auth_description": "ጊሚኒን በማስተላለፍ ይግቡ።",
     "provider__gemini__auth_button_text": "ጊሚኒን በመግባት ይሞክሩ",
     "provider__gemini__model__gemini_pro__description": "ጎጂል ጋሚኒ ቡድን, ለማስተላለፍና ለማስታወቂያ የተሰጠው የግንባታ ቡድን ነው። የ38 ቋንቋዎችን የ32k ቶክን የመቀጠል እና የማስተላለፍ እይታ ያለው።",

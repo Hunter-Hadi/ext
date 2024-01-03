@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Megoldások megtekintése",
     "sidebar__input__tokens_limited__title": "maximális tokenek",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google Gemini családja, skálázhatóságra és sokoldalúságra tervezve, támogat 38 nyelvet és egy 32k tokenes kontextusablakot.",
+    "provider__gemini__short_description": "Google legképzettebb és általános modellje, amelyet multimodalitásra terveztek. A Gemini a MaxAI-n jelenleg szöveg- és kód támogatást nyújt, hamarosan pedig kép-, videó- és hangtámogatást is hozzáad.",
     "provider__gemini__auth_description": "Használd a Gemini-t az bővítmény működtetéséhez.",
     "provider__gemini__auth_button_text": "Folytatás a Gemini-vel",
     "provider__gemini__model__gemini_pro__description": "Google Gemini családja, skálázhatóságot kínál és erős általános képességeket mutat, támogat 38 nyelvet és egy 32k tokenes kontextusablakot.",

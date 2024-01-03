@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "צפה בפתרונות",
     "sidebar__input__tokens_limited__title": "מקסימום טוקנים",
     "provider__gemini__title": "ג'מיני",
-    "provider__gemini__short_description": "משפחת Gemini של Google, מעוצבת להתרחבות וגמישות, תומכת ב-38 שפות וחלון הקשר של 32k טוקנים.",
+    "provider__gemini__short_description": "הדגם המתקדם והכללי ביותר של Google, שנבנה מאפס עבור רב-מודליות. Gemini ב-MaxAI תומך כרגע בטקסט ובקוד ובקרוב יתמכו גם תמיכה בתמונות, סרטונים ושמע.",
     "provider__gemini__auth_description": "השתמש בג'מיני כדי להפעיל את התוסף.",
     "provider__gemini__auth_button_text": "המשך עם ג'מיני",
     "provider__gemini__model__gemini_pro__description": "משפחת Gemini של Google, מעוצבת להציע יכולת התרחבות ויכולות כלליות חזקות, תומכת ב-38 שפות וחלון הקשר של 32k טוקנים.",

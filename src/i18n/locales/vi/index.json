@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Xem giải pháp",
     "sidebar__input__tokens_limited__title": "số lượng tối đa",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Gia đình Gemini của Google, được thiết kế để mở rộng và linh hoạt, hỗ trợ 38 ngôn ngữ và cửa sổ ngữ cảnh 32k từ.",
+    "provider__gemini__short_description": "Mô hình phổ biến và linh hoạt nhất của Google, được xây dựng từ đầu cho đa chức năng. Gemini trên MaxAI hiện đang hỗ trợ văn bản và mã nguồn và sẽ sớm hỗ trợ hình ảnh, video và âm thanh.",
     "provider__gemini__auth_description": "Sử dụng Gemini để cung cấp sức mạnh cho tiện ích mở rộng.",
     "provider__gemini__auth_button_text": "Tiếp tục với Gemini",
     "provider__gemini__model__gemini_pro__description": "Gia đình Gemini của Google, được thiết kế để cung cấp khả năng mở rộng và có khả năng tổng quát mạnh mẽ, hỗ trợ 38 ngôn ngữ và cửa sổ ngữ cảnh 32k từ.",

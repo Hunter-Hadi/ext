@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "솔루션 보기",
     "sidebar__input__tokens_limited__title": "최대 토큰",
     "provider__gemini__title": "젬니",
-    "provider__gemini__short_description": "Google의 Gemini 패밀리로, 확장성과 다양성을 위해 설계되었으며, 38개 언어를 지원하며 32k 토큰의 컨텍스트 창을 제공합니다.",
+    "provider__gemini__short_description": "Google의 가장 능력있고 일반적인 모델로, 다중 기능을 위해 처음부터 구축되었습니다. MaxAI에서 지금은 텍스트와 코드를 지원하며 곧 이미지, 비디오 및 오디오를 지원할 예정입니다.",
     "provider__gemini__auth_description": "확장 기능을 제공하기 위해 젬니를 사용하세요.",
     "provider__gemini__auth_button_text": "젬니로 계속하기",
     "provider__gemini__model__gemini_pro__description": "Google의 Gemini 패밀리로, 확장성을 제공하며 강력한 일반적인 기능을 가지고 있으며, 38개 언어를 지원하며 32k 토큰의 컨텍스트 창을 제공합니다.",

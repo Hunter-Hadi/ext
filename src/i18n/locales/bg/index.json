@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Вижте решенията",
     "sidebar__input__tokens_limited__title": "максимални токени",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Семейството Gemini на Google, проектирано за мащабируемост и универсалност, поддържащо 38 езика и контекстно прозорец от 32k токена.",
+    "provider__gemini__short_description": "Най-способната и обща модел на Google, изграден от самото начало за мултимодалност. Gemini в MaxAI в момента поддържа текст и код и скоро ще добави поддръжка за изображения, видеа и аудио.",
     "provider__gemini__auth_description": "Използвайте Gemini за захранване на разширението.",
     "provider__gemini__auth_button_text": "Продължете с Gemini",
     "provider__gemini__model__gemini_pro__description": "Семейството Gemini на Google, проектирано да предлага мащабируемост и силни общи възможности, поддържащо 38 езика и контекстно прозорец от 32k токена.",

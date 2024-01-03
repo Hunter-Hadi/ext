@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Tingnan ang mga solusyon",
     "sidebar__input__tokens_limited__title": "maksimum na mga token",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Ang pamilya ng Gemini ng Google, na dinisenyo para sa pagkalaki-laki at kahusayan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",
+    "provider__gemini__short_description": "Pinakamahusay at pangkalahatang modelo ng Google, binuo mula sa simula para sa multimodality. Ang Gemini sa MaxAI ay kasalukuyang sumusuporta sa teksto at code at madaragdagan ng suporta para sa mga imahe, bidyo, at audio.",
     "provider__gemini__auth_description": "Gamitin ang Gemini upang palakasin ang extension.",
     "provider__gemini__auth_button_text": "Magpatuloy gamit ang Gemini",
     "provider__gemini__model__gemini_pro__description": "Ang pamilya ng Gemini ng Google, na dinisenyo upang mag-alok ng kakayahan sa pagkalaki-laki at nagpapakita ng malalim na pangkalahatang kakayahan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",

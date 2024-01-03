@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Peržiūrėti sprendimus",
     "sidebar__input__tokens_limited__title": "maksimalus žetonai",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google Gemini šeima, sukurta mastui ir universalumui, palaikanti 38 kalbas ir konteksto langą iki 32 tūkst. ženklų.",
+    "provider__gemini__short_description": "Google patikimiausias ir universalus modelis, nuo pat pradžių sukurtas daugiamodalumui. Gemini MaxAI šiuo metu palaiko tekstą ir kodą, o netrukus pridės palaikymą vaizdams, vaizdo įrašams ir garso įrašams.",
     "provider__gemini__auth_description": "Naudokite „Gemini“, kad galėtumėte įjungti plėtinį.",
     "provider__gemini__auth_button_text": "Tęsti su Gemini",
     "provider__gemini__model__gemini_pro__description": "Google Gemini šeima, sukurta siekiant pasiūlyti mastą ir pasižymi stipriomis universalumo savybėmis, palaikanti 38 kalbas ir konteksto langą iki 32 tūkst. ženklų.",

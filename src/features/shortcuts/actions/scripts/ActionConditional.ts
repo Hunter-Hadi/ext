@@ -1,5 +1,6 @@
 import { isEqual, isObject } from 'lodash-es'
 
+import { parametersParserDecorator } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -14,6 +15,10 @@ export class ActionConditional extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
+  @parametersParserDecorator([
+    'WFConditionalIfTrueActions',
+    'WFConditionalIfFalseActions',
+  ])
   async execute(params: ActionParameters, engine: any) {
     try {
       let isTrue = false
@@ -67,6 +72,7 @@ export class ActionConditional extends Action {
         engine
           .getShortCutsEngine()
           ?.pushActions(isTrue ? ifTrueActions : ifFalseActions, 'after')
+        this.output = isTrue ? 'true' : 'false'
       } else {
         this.error = 'no shortCutsEngine'
         return

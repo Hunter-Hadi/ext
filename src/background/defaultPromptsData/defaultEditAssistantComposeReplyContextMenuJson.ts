@@ -558,13 +558,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {},
         },
         {
-          type: 'SET_VARIABLES_MODAL',
+          type: 'RENDER_TEMPLATE',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
-              title: 'Reply with key points',
-              modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+            template: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFCondition: 'Equals',
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            WFConditionalIfTrueActions: [
+              {
+                type: 'SET_VARIABLES_MODAL',
+                parameters: {
+                  SetVariablesModalConfig: {
+                    contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+                    title: 'Reply with key points',
+                    modelKey: 'Sidebar',
+                    template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
@@ -593,50 +608,130 @@ Output the reply without additional context, explanation, or extra wording, just
 
 Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
 {{KEY_POINTS}}`,
-              variables: [
-                {
-                  label: 'Context',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter context',
-                  defaultValue:
-                    '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+                    variables: [
+                      {
+                        label: 'Target post/comment',
+                        VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+                        valueType: 'Text',
+                        placeholder: 'Enter target post/comment',
+                        defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                      },
+                      {
+                        label: 'Key points',
+                        VariableName: 'KEY_POINTS',
+                        valueType: 'Text',
+                        placeholder: 'Enter key points',
+                      },
+                    ],
+                    systemVariables: [
+                      {
+                        VariableName: 'AI_RESPONSE_LANGUAGE',
+                        defaultValue: 'English',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_TONE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                    ],
+                  },
                 },
-                {
-                  label: 'Target post/comment',
-                  VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-                  valueType: 'Text',
-                  placeholder: 'Enter target post/comment',
-                  defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'SET_VARIABLES_MODAL',
+                parameters: {
+                  SetVariablesModalConfig: {
+                    contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+                    title: 'Reply with key points',
+                    modelKey: 'Sidebar',
+                    template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+<context>
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+</context>
+
+
+Here's the text to reply to:
+\`\`\`
+{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+\`\`\`
+
+---
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+Do not use hashtags. Write the reply like a real person would. 
+
+Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
+{{KEY_POINTS}}`,
+                    variables: [
+                      {
+                        label: 'Context',
+                        VariableName:
+                          'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT',
+                        valueType: 'Text',
+                        placeholder: 'Enter context',
+                        defaultValue:
+                          '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+                      },
+                      {
+                        label: 'Target post/comment',
+                        VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+                        valueType: 'Text',
+                        placeholder: 'Enter target post/comment',
+                        defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                      },
+                      {
+                        label: 'Key points',
+                        VariableName: 'KEY_POINTS',
+                        valueType: 'Text',
+                        placeholder: 'Enter key points',
+                      },
+                    ],
+                    systemVariables: [
+                      {
+                        VariableName: 'AI_RESPONSE_LANGUAGE',
+                        defaultValue: 'English',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_TONE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                    ],
+                  },
                 },
-                {
-                  label: 'Key points',
-                  VariableName: 'KEY_POINTS',
-                  valueType: 'Text',
-                  placeholder: 'Enter key points',
-                },
-              ],
-              systemVariables: [
-                {
-                  VariableName: 'AI_RESPONSE_LANGUAGE',
-                  defaultValue: 'English',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  VariableName: 'AI_RESPONSE_TONE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-              ],
-            },
+              },
+            ],
           },
         },
       ],
@@ -1071,11 +1166,26 @@ const emailPrompts = [
           parameters: {},
         },
         {
-          type: 'SET_VARIABLES_MODAL',
+          type: 'RENDER_TEMPLATE',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: '47070ec6-8700-43fd-a519-20fe3841df38',
-              template: `Ignore all previous instructions. You are an expert in crafting email responses, proficient in addressing a wide range of email inquiries. Your objective is to compose a well-structured and contextually appropriate reply to an email. The content of the target email will be enclosed within a <target></target>. To ensure a comprehensive understanding, any previous emails in the same thread will be provided within a <context></context>. Your response should be concise, relevant, and tailored to the specific details and tone of the conversation.
+            template: '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFCondition: 'Equals',
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            WFConditionalIfTrueActions: [
+              {
+                type: 'SET_VARIABLES_MODAL',
+                parameters: {
+                  SetVariablesModalConfig: {
+                    contextMenuId: '47070ec6-8700-43fd-a519-20fe3841df38',
+                    template: `Ignore all previous instructions. You are an expert in crafting email responses, proficient in addressing a wide range of email inquiries. Your objective is to compose a well-structured and contextually appropriate reply to an email. The content of the target email will be enclosed within a <target></target>. To ensure a comprehensive understanding, any previous emails in the same thread will be provided within a <context></context>. Your response should be concise, relevant, and tailored to the specific details and tone of the conversation.
 
 The following is all previous emails in the same thread, delimited by <context></context>:
 
@@ -1104,54 +1214,136 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
 {{KEY_POINTS}}
 </keypoints>
 `,
-              title: 'Reply with key points',
-              modelKey: 'Sidebar',
-              variables: [
-                {
-                  label: 'Email context',
-                  VariableName: 'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter email context',
-                  defaultValue:
-                    '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
+                    title: 'Reply with key points',
+                    modelKey: 'Sidebar',
+                    variables: [
+                      {
+                        label: 'Target Email',
+                        VariableName:
+                          'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
+                        valueType: 'Text',
+                        placeholder: 'Enter email context',
+                        defaultValue:
+                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+                      },
+                      {
+                        label: 'Key points',
+                        VariableName: 'KEY_POINTS',
+                        valueType: 'Text',
+                        placeholder: 'Enter key points',
+                      },
+                    ],
+                    systemVariables: [
+                      {
+                        VariableName: 'AI_RESPONSE_LANGUAGE',
+                        defaultValue: 'English',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_TONE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                    ],
+                  },
                 },
-                {
-                  label: 'Target Email',
-                  VariableName:
-                    'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
-                  valueType: 'Text',
-                  placeholder: 'Enter email context',
-                  defaultValue:
-                    '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'SET_VARIABLES_MODAL',
+                parameters: {
+                  SetVariablesModalConfig: {
+                    contextMenuId: '47070ec6-8700-43fd-a519-20fe3841df38',
+                    template: `Ignore all previous instructions. You are an expert in crafting email responses, proficient in addressing a wide range of email inquiries. Your objective is to compose a well-structured and contextually appropriate reply to an email. The content of the target email will be enclosed within a <target></target>. To ensure a comprehensive understanding, any previous emails in the same thread will be provided within a <context></context>. Your response should be concise, relevant, and tailored to the specific details and tone of the conversation.
+
+The following is all previous emails in the same thread, delimited by <context></context>:
+
+<context>
+{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}
+</context>
+
+Here's the target email for you to reply to, delimited by <target></target>:
+
+<target>
+{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}
+</target>
+
+Your task requires you to write a email reply that is concise, relevant, and tailored to the specific context details and tone of the conversation.
+
+Make the email reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email reply.
+
+Opt for straightforward language, steering clear of complex or obscure terms. Strive for authenticity in your writing, maintaining a tone that is neither overly informal nor excessively formal, but rather complementary to the purpose of your reply.
+
+Your output should exclusively be the email reply, devoid of the subject line or additional context. Provide the response as it would appear in an email, free from extraneous explanations or embellishments. Refrain from using any punctuation marks to enclose the email text.
+
+
+Now, write the email reply, mentioning these key points, delimited by <keypoints></keypoints>:
+
+<keypoints>
+{{KEY_POINTS}}
+</keypoints>
+`,
+                    title: 'Reply with key points',
+                    modelKey: 'Sidebar',
+                    variables: [
+                      {
+                        label: 'Email context',
+                        VariableName:
+                          'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
+                        valueType: 'Text',
+                        placeholder: 'Enter email context',
+                        defaultValue:
+                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
+                      },
+                      {
+                        label: 'Target Email',
+                        VariableName:
+                          'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
+                        valueType: 'Text',
+                        placeholder: 'Enter email context',
+                        defaultValue:
+                          '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+                      },
+                      {
+                        label: 'Key points',
+                        VariableName: 'KEY_POINTS',
+                        valueType: 'Text',
+                        placeholder: 'Enter key points',
+                      },
+                    ],
+                    systemVariables: [
+                      {
+                        VariableName: 'AI_RESPONSE_LANGUAGE',
+                        defaultValue: 'English',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_TONE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                      },
+                    ],
+                  },
                 },
-                {
-                  label: 'Key points',
-                  VariableName: 'KEY_POINTS',
-                  valueType: 'Text',
-                  placeholder: 'Enter key points',
-                },
-              ],
-              systemVariables: [
-                {
-                  VariableName: 'AI_RESPONSE_LANGUAGE',
-                  defaultValue: 'English',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  VariableName: 'AI_RESPONSE_TONE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-                {
-                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
-                  defaultValue: 'Default',
-                  valueType: 'Select',
-                  systemVariable: true,
-                },
-              ],
-            },
+              },
+            ],
           },
         },
       ],

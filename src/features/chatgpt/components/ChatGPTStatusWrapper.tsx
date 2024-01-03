@@ -142,12 +142,12 @@ const ChatGPTStatusWrapper: FC = () => {
             >
               <UseChatGptIcon sx={{ fontSize: '24px' }} />
               <Typography
-                fontSize={'23px'}
+                fontSize={'24px'}
                 fontWeight={700}
                 color={'text.secondary'}
                 textAlign={'center'}
               >
-                Use 1-Click Anywhere Online
+                Use 1-Click AI Anywhere
               </Typography>
             </Stack>
             <Stack

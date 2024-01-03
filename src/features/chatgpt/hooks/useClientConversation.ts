@@ -12,6 +12,7 @@ import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
+import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   ChatGPTConversationState,
@@ -137,7 +138,7 @@ const useClientConversation = () => {
             meta: merge({
               AIProvider: 'USE_CHAT_GPT_PLUS',
               AIModel: 'gpt-3.5-turbo',
-              maxTokens: 16384, // gpt-3.5-16k
+              maxTokens: PAGE_SUMMARY_MAX_TOKENS,
               pageSummaryType,
               //               pageSummaryId: pageSummaryData.pageSummaryId,
               //               pageSummaryType: pageSummaryData.pageSummaryType,

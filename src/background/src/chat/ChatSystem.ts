@@ -63,19 +63,17 @@ class ChatSystem implements ChatSystemInterface {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'client') {
         switch (event) {
-          case 'Client_switchAIProvider':
-            {
-              const { provider } = data
-              await this.switchAdapter(provider)
-              return {
-                success: true,
-                data: {
-                  provider,
-                },
-                message: '',
-              }
+          case 'Client_switchAIProvider': {
+            const { provider } = data
+            await this.switchAdapter(provider)
+            return {
+              success: true,
+              data: {
+                provider,
+              },
+              message: '',
             }
-            break
+          }
           case 'Client_authChatGPTProvider': {
             const { provider } = data
             await this.switchAdapter(provider)
@@ -393,7 +391,6 @@ class ChatSystem implements ChatSystemInterface {
     )
   }
   async abortAskQuestion(messageId: string) {
-    debugger
     if (this.currentAdapter) {
       return await this.currentAdapter.abortAskQuestion(messageId)
     }

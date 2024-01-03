@@ -254,7 +254,6 @@ export const processAskAIParameters = async (
   question: IUserChatMessage,
 ) => {
   const { includeHistory } = question.meta || {}
-  debugger
   // 聊天记录生成
   // 如果有includeHistory，那么需要生成聊天记录
   if (includeHistory) {

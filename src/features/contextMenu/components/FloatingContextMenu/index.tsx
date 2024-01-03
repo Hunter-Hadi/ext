@@ -94,7 +94,7 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
-  const { askAIWIthShortcuts, askAIQuestion } = useClientChat()
+  const { askAIWIthShortcuts, askAIQuestion, regenerate } = useClientChat()
   const conversation = useRecoilValue(ChatGPTConversationState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const {
@@ -207,11 +207,7 @@ const FloatingContextMenu: FC<{
   const [inputValue, setInputValue] = useState('')
   // 记录最后选择的contextMenu并发送log
   const lastRecordContextMenuRef = useRef<IContextMenuItem | null>(null)
-  const {
-    loading,
-    reGenerate,
-    shortCutsEngineRef,
-  } = useShortCutsWithMessageChat('')
+  const { loading, shortCutsEngineRef } = useShortCutsWithMessageChat()
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,
@@ -388,10 +384,10 @@ const FloatingContextMenu: FC<{
       })
     }
   }
-  const regenerateRef = useRef(reGenerate)
+  const regenerateRef = useRef(regenerate)
   useEffect(() => {
-    regenerateRef.current = reGenerate
-  }, [reGenerate])
+    regenerateRef.current = regenerate
+  }, [regenerate])
   useEffect(() => {
     /**
      * @description - 运行快捷指令

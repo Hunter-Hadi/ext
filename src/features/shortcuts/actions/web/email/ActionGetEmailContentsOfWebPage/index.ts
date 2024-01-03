@@ -8,8 +8,8 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
-import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   constructor(
@@ -50,7 +50,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
       // 其实到这里就结束了，后面的逻辑是配合reply with key points使用的
       this.output = EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT
       // reply with keyPoints的逻辑
-      const shortcutsEngine = engine.getShortCutsEngine()
+      const shortcutsEngine = engine.shortcutsEngine
       const conversation = await this.getCurrentConversation(engine)
       // 预留1000个token给summary
       const totalTokens = Math.max(

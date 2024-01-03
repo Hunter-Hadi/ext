@@ -109,7 +109,6 @@ export class ActionAskChatGPT extends Action {
         // AI response的消息Id
         outputMessageId,
       } = this.question.meta
-      debugger
       // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏
       // 用于用户看到的信息
       let messageVisibleText = this.question.text
@@ -227,6 +226,7 @@ export class ActionAskChatGPT extends Action {
         try {
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
+              this.log.info('message', message)
               AIWritingMessage = {
                 messageId: (message.messageId as string) || uuidV4(),
                 parentMessageId:
@@ -271,18 +271,7 @@ export class ActionAskChatGPT extends Action {
               }
             },
             onError: async (error: any) => {
-              // 把未完成的消息设置为完成
-              if (AIWritingMessage) {
-                // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
-                if (!outputMessageId) {
-                  // 移除AI writing message
-                  clientConversationEngine.updateClientWritingMessage(null)
-                  await clientConversationEngine.pushMessage(
-                    AIWritingMessage,
-                    conversationId,
-                  )
-                }
-              }
+              this.log.error(`send question error`, error)
               errorMessage =
                 error?.message || error || 'Error detected. Please try again.'
               if (typeof errorMessage !== 'string') {
@@ -301,25 +290,10 @@ export class ActionAskChatGPT extends Action {
                   errorMessage = `Too many requests in 1 hour. Try again later, or use our new AI provider for free by selecting "MaxAI.me" from the AI Provider options at the top of the sidebar.
                 ![switch-provider](https://www.maxai.me/assets/chrome-extension/switch-provider.png)`
                 }
-                if (isPermissionCardSceneType(errorMessage)) {
-                  await clientConversationEngine.pushPricingHookMessage(
-                    errorMessage,
-                  )
-                } else {
-                  await clientConversationEngine.pushMessage({
-                    type: 'system',
-                    messageId: uuidV4(),
-                    parentMessageId: this.question?.messageId,
-                    text: errorMessage,
-                    extra: {
-                      status: 'error',
-                    },
-                  } as ISystemChatMessage)
-                }
               }
             },
           })
-          if (!errorMessage && AIWritingMessage) {
+          if (AIWritingMessage) {
             // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
             if (!outputMessageId) {
               // 移除AI writing message
@@ -329,6 +303,19 @@ export class ActionAskChatGPT extends Action {
                 conversationId,
               )
             }
+          }
+          if (isPermissionCardSceneType(errorMessage)) {
+            await clientConversationEngine.pushPricingHookMessage(errorMessage)
+          } else {
+            await clientConversationEngine.pushMessage({
+              type: 'system',
+              messageId: uuidV4(),
+              parentMessageId: this.question?.messageId,
+              text: errorMessage,
+              extra: {
+                status: 'error',
+              },
+            } as ISystemChatMessage)
           }
           // 如果第三方AI provider的conversationId
           if (AIConversationId) {

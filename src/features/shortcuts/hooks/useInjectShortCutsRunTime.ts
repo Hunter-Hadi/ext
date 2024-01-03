@@ -21,9 +21,7 @@ const useInjectShortCutsRunTime = () => {
     taskId: '',
     actions: [],
   })
-  const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat(
-    '',
-  )
+  const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat()
   const isRunningActionsRef = useRef(false)
   useEffect(() => {
     if (

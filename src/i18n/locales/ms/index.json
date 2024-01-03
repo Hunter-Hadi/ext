@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Naik taraf untuk mengakses gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Model yang paling cekap dari OpenAI, hebat untuk tugas yang memerlukan kreativiti dan penalaran lanjutan.",
     "prompt__group__suggested__title": "Cadangan",
-    "rewards__title": "Ganjaran",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sembunyikan pembantu Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Naik taraf untuk penggunaan ChatGPT tanpa had",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Anda telah mencapai had penggunaan harian semasa untuk ChatGPT.\nAnda boleh naik taraf ke Pro sekarang untuk penggunaan tanpa had, atau teruskan dengan Pembekal Al yang lain.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Naik taraf kepada Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Naik taraf untuk mengakses gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Model paling cekap dan umum Google. Dibina dari bawah ke atas untuk multimodaliti. Gemini di MaxAI kini dalam fasa beta, hanya menyokong teks dan kod, dan akan segera menambah sokongan untuk imej, video, dan audio.",
-    "quick_access__hide_button__title": "Sembunyikan akses cepat sehingga lawatan seterusnya"
+    "quick_access__hide_button__title": "Sembunyikan akses cepat sehingga lawatan seterusnya",
+    "sidebar__top_bar__rewards__title": "Ganjaran",
+    "sidebar__top_bar__upgrade__title": "Naik taraf"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

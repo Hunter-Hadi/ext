@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 ആക്സസ് ചെയ്യുന്നതിന് പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "സൃജിക്കാൻ സാധ്യതയുള്ള മികച്ച മോഡൽ, സൃഷ്ടിക്കാൻ അഭിനവമായിരിക്കുന്ന ടാസ്കുകളിലേക്ക് അവസാനം.",
     "prompt__group__suggested__title": "ശുപാർശിച്ചത്",
-    "rewards__title": "പുരസ്കാരങ്ങൾ",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail സഹായി മറയ്ക്കുക",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "അനവധി ChatGPT ഉപയോഗത്തിന് അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "നിലവിലെ ദിവസ ഉപയോഗ കാപ്പ് ChatGPT എത്തിയിരിക്കുന്നു.\nഅപ്‌ഗ്രേഡ് ചെയ്യാന്‍ നിങ്ങള്‍ക്ക് പ്രൊ നിലവില്‍ ഉപയോഗത്തിന് അനവധി അവസരം ലഭ്യമാണ്, അല്ലെങ്കില്‍ മറ്റ് AI പ്രൊവൈഡറുമായി തുടരുക.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "എലൈറ്റിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ജെമിനി-പ്രോ ആക്‌സസ് ലഭിക്കാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ഗൂഗിളിന്റെ ഏറ്റവും കഴിവുള്ള ഒരു സാധാരണ മോഡൽ. ബഹുമോദലിറ്റിയിൽ നിന്ന് നിർമിച്ചത്. MaxAI-യിൽ ജെമിനി മാത്രമേ ടെക്സ്റ്റ് ഒക്കെയും കോഡ് പിന്തുണയുള്ളതാണ്, ബീറ്റാ ഘട്ടത്തിൽ മാത്രമേ ചിത്രങ്ങൾ, വീഡിയോകൾ, ഓഡിയോകൾ പിന്തുണയും ചേർക്കുകയുള്ളൂ.",
-    "quick_access__hide_button__title": "അടുത്ത സന്ദർഭത്തിൽ വരെ വേഗത്തിൽ പ്രവർത്തിപ്പിക്കാൻ വേണ്ടി വേഗത്തിൽ പ്രവർത്തിപ്പിക്കാനുള്ള ബട്ടൺ മറയ്ക്കുക"
+    "quick_access__hide_button__title": "അടുത്ത സന്ദർഭത്തിൽ വരെ വേഗത്തിൽ പ്രവർത്തിപ്പിക്കാൻ വേണ്ടി വേഗത്തിൽ പ്രവർത്തിപ്പിക്കാനുള്ള ബട്ടൺ മറയ്ക്കുക",
+    "sidebar__top_bar__rewards__title": "പ്രതിഫലങ്ങൾ",
+    "sidebar__top_bar__upgrade__title": "അപ്‌ഗ്രേഡ്"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

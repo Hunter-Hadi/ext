@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "שדרג כדי לגשת ל-gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "הדגם המתקדם ביותר של OpenAI, מומלץ למשימות שדורשות יצירתיות והיגיון מתקדם.",
     "prompt__group__suggested__title": "מומלץ",
-    "rewards__title": "פרסים",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "הסתר את עוזר Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "שדרג לשימוש בלתי מוגבל של ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "הגעת למגבלת השימוש היומית הנוכחית עבור ChatGPT.\nתוכל לשדרג לגרסה Pro כעת לשימוש בלתי מוגבל, או להמשיך עם ספקי האינטיליגנציה המלאכותית האחרים.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "שדרג לאליט",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "שדרג כדי לקבל ג'מיני-פרו",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "הדגם הכי מוכשר וכללי של Google. מבנה רב-תכליתי מאוד. Gemini על MaxAI נמצאת כרגע בשלב הבטא ותומכת רק בטקסט ובקוד, ובקרוב תוסיף תמיכה בתמונות, סרטונים ושמע.",
-    "quick_access__hide_button__title": "הסתר גישה מהירה עד הביקור הבא"
+    "quick_access__hide_button__title": "הסתר גישה מהירה עד הביקור הבא",
+    "sidebar__top_bar__rewards__title": "פרסים",
+    "sidebar__top_bar__upgrade__title": "שדרוג"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 অ্যাক্সেস করতে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "ক্রিয়েটিভিটি এবং উন্নত যাচাইয়ের জন্য প্রয়োজন যার জন্য OpenAI-র সবচেয়ে সক্ষম মডেল।",
     "prompt__group__suggested__title": "প্রস্তাবিত",
-    "rewards__title": "পুরস্কার",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail সহায়ক লুকান",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "সীমাহীন ChatGPT ব্যবহারের জন্য আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "আপনি ChatGPT এর জন্য বর্তমান দৈনিক ব্যবহার সীমা অর্জন করেছেন।\nআপনি সীমাহীন ব্যবহারের জন্য এখনই Pro-তে আপগ্রেড করতে পারেন, অথবা অন্য এল প্রদানকারীর সাথে চালিয়ে যেতে পারেন।",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ইলিটে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "জেমিনি-প্রো অ্যাক্সেস করতে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "গুগলের সবচেয়ে ক্ষমতাশালী এবং সাধারণ মডেল। বহুমুখীতা জন্য মৌলিকভাবে তৈরি করা। ম্যাক্সএআই উপর জেমিনি বর্তমানে বেটা পর্যায়ে আছে, কেবলমাত্র টেক্সট এবং কোড সমর্থন করে, এবং শীঘ্রই চিত্র, ভিডিও এবং অডিও সমর্থন যোগ করবে।",
-    "quick_access__hide_button__title": "পরবর্তী দেখা পর্যন্ত দ্রুত অ্যাক্সেস লুকান"
+    "quick_access__hide_button__title": "পরবর্তী দেখা পর্যন্ত দ্রুত অ্যাক্সেস লুকান",
+    "sidebar__top_bar__rewards__title": "পুরস্কার",
+    "sidebar__top_bar__upgrade__title": "আপগ্রেড"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Uzlabojiet, lai piekļūtu gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI visvairāk spējīgais modelis, lielisks uzdevumiem, kas prasa radošumu un augstāku loģisko domāšanu.",
     "prompt__group__suggested__title": "Ieteikts",
-    "rewards__title": "Balvas",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Paslēpt Gmail asistentu",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Jauniniet, lai iegūtu neierobežotu ChatGPT lietošanu",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Jūs esat sasniedzis pašreizējo dienas lietošanas limitu ChatGPT.\nVarat jaunināt uz Pro tagad, lai iegūtu neierobežotu lietošanu vai turpināt ar citiem AI pakalpojumu sniedzējiem.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Jaunināt līdz Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Jaunināt, lai piekļūtu gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google visspēcīgākais un vispārīgākais modelis. Izveidots no nulles multimodalitātei. Gemini MaxAI pašlaik ir beta fāzē, atbalstot tikai tekstu un kodu, drīzumā tiks pievienota atbalsts attēliem, video un audio.",
-    "quick_access__hide_button__title": "Paslēpt ātro piekļuvi līdz nākamajai apmeklējumam"
+    "quick_access__hide_button__title": "Paslēpt ātro piekļuvi līdz nākamajai apmeklējumam",
+    "sidebar__top_bar__rewards__title": "Ieguvumi",
+    "sidebar__top_bar__upgrade__title": "Uzlabot"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

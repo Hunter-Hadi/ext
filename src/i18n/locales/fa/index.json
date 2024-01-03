@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "ارتقا برای دسترسی به gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "قدرتمندترین مدل OpenAI، مناسب برای وظایفی که نیاز به خلاقیت و استدلال پیشرفته دارند.",
     "prompt__group__suggested__title": "پیشنهاد شده",
-    "rewards__title": "جوایز",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "مخفی کردن دستیار Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ارتقا برای استفاده نامحدود از ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "شما به سقف استفاده روزانه فعلی برای ChatGPT رسیده‌اید.\nشما می‌توانید همین حالا به نسخه پرو ارتقا دهید و از استفاده نامحدود بهره‌مند شوید، یا با سایر ارائه دهندگان هوش مصنوعی ادامه دهید.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ارتقا به الیت",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ارتقا برای دسترسی به جوزا پرو",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "قدرتمندترین و کلیت‌دارترین مدل گوگل. از پایه برای چندحالتی ساخته شده است. جمینی در MaxAI در حال حاضر در فاز بتا است و فقط پشتیبانی از متن و کد را دارد و به زودی پشتیبانی از تصاویر، ویدیوها و صدا را اضافه خواهد کرد.",
-    "quick_access__hide_button__title": "مخفی کردن دسترسی سریع تا بازدید بعدی"
+    "quick_access__hide_button__title": "مخفی کردن دسترسی سریع تا بازدید بعدی",
+    "sidebar__top_bar__rewards__title": "پاداش‌ها",
+    "sidebar__top_bar__upgrade__title": "ارتقا"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

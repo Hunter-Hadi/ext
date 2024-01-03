@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 ಅನುಸ್ರವಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "ಕ್ರೀಯಾಶೀಲತೆ ಮತ್ತು ಮುಂದಿನ ಯೋಚನೆಗಳನ್ನು ಅಗತ್ಯಪಡಿಸುವ ಕೆಲಸಗಳಿಗೆ ಉತ್ತಮವಾದ ಮಾದರಿ, ಒಳ್ಳೆಯದು.",
     "prompt__group__suggested__title": "ಸೂಚಿಸಲಾದದ್ದು",
-    "rewards__title": "ಪ್ರತಿಫಲಗಳು",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail ಸಹಾಯಕನನ್ನು ಮರೆಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ಅಮಿತ ChatGPT ಬಳಕೆಗಾಗಿ ಮೆಚ್ಚುಗೆ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ನೀವು ChatGPT ಗೆ ದೈನಂದಿನ ಬಳಕೆ ಮಿತಿಯನ್ನು ಸೇರಿದ್ದೀರಿ.\nಅಮಿತ ಬಳಕೆಗಾಗಿ ಪ್ರೊ ಗೆ ಮೆಚ್ಚುಗೆ ಮಾಡಿಕೊಳ್ಳಲು ಅಥವಾ ಇತರ AI ಪ್ರೊವೈಡರ್‌ಗಳೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ಎಲೈಟ್‌ಗೆ ಮೇಜ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ಜೆಮಿನಿ-ಪ್ರೊ ಅನುವರ್ತನಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಮೇಜ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ಗೂಗಲ್ ಅತ್ಯುತ್ತಮ ಮತ್ತು ಸಾಮಾನ್ಯ ಮಾದರಿ. ಬಹುಮುಖತೆಗಾಗಿ ಮೊದಲಿನಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ. ಮೌಲ್ಯಮಾಪನದ ಹೂಡಿಕೆಯಲ್ಲಿ ಜೆಮಿನಿ ಮೊದಲಾಗಿ ಪಠ್ಯ ಮತ್ತು ಕೋಡ್ ಬೆಂಬಲಿಸುತ್ತದೆ, ಮುಂದೆ ಚಿತ್ರಗಳು, ವೀಡಿಯೊಗಳು ಮತ್ತು ಧ್ವನಿಗಳನ್ನು ಬೆಂಬಲಿಸುವ ಬೆಂಬಲಿಸುತ್ತದೆ.",
-    "quick_access__hide_button__title": "ಮುಂದಿನ ಭೇಟಿಗೆ ಹೋಗುವವರೆಗೆ ತ್ವರಿತ ಪ್ರವೇಶವನ್ನು ಮರೆಯಿರಿ"
+    "quick_access__hide_button__title": "ಮುಂದಿನ ಭೇಟಿಗೆ ಹೋಗುವವರೆಗೆ ತ್ವರಿತ ಪ್ರವೇಶವನ್ನು ಮರೆಯಿರಿ",
+    "sidebar__top_bar__rewards__title": "ಪ್ರತಿಫಲಗಳು",
+    "sidebar__top_bar__upgrade__title": "ಮೊದಲಿಸು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

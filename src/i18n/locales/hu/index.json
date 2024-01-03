@@ -402,7 +402,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Frissítés a gpt-4 eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Az OpenAI legképesebb modellje, kiválóan alkalmas olyan feladatokra, amelyek kreativitást és fejlett gondolkodást igényelnek.",
     "prompt__group__suggested__title": "Javasolt",
-    "rewards__title": "Jutalmak",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail segédlet elrejtése",
     "popup__set_shortcut__description4": "bármikor.",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Frissítés korlátlan ChatGPT használathoz",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Frissítés Elite-re",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Frissítés a gemini-pro eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google legképzettebb és általános modellje. Alapvetően multimodalitásra épül. A Gemini a MaxAI-n jelenleg béta fázisban van, csak szöveget és kódot támogat, hamarosan pedig képek, videók és hangok támogatását is hozzáadja.",
-    "quick_access__hide_button__title": "Gyors hozzáférés elrejtése a következő látogatásig"
+    "quick_access__hide_button__title": "Gyors hozzáférés elrejtése a következő látogatásig",
+    "sidebar__top_bar__rewards__title": "Jutalmak",
+    "sidebar__top_bar__upgrade__title": "Frissítés"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

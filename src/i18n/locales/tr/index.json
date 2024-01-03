@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4'e erişmek için yükseltin",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI'nin en yetenekli modeli, yaratıcılık ve gelişmiş akıl gerektiren görevler için harika.",
     "prompt__group__suggested__title": "Önerilen",
-    "rewards__title": "Ödüller",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail asistanını gizle",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sınırsız ChatGPT kullanımı için yükseltin",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT için mevcut günlük kullanım sınırına ulaştınız.\nSınırsız kullanım için şimdi Pro'ya yükseltebilir veya diğer AI Sağlayıcıları ile devam edebilirsiniz.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Elite'e Yükselt",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "gemini-pro'ya erişim için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'ın en yetenekli ve genel modelidir. Çoklu modellik için temelden oluşturulmuştur. MaxAI üzerindeki Gemini şu anda beta aşamasındadır ve yalnızca metin ve kod desteği sunmaktadır. Yakında resim, video ve ses desteği de ekleyecektir.",
-    "quick_access__hide_button__title": "Sonraki ziyarete kadar hızlı erişimi gizle"
+    "quick_access__hide_button__title": "Sonraki ziyarete kadar hızlı erişimi gizle",
+    "sidebar__top_bar__rewards__title": "Ödüller",
+    "sidebar__top_bar__upgrade__title": "Yükseltme"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

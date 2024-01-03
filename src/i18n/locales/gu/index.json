@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 એક્સેસ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIનું સૌથી સક્ષમ મોડેલ, જે રચનાત્મકતા અને ઉન્નત રીઝનિંગ જોઈએ તેવી કાર્યો માટે મહત્વપૂર્ણ છે.",
     "prompt__group__suggested__title": "સૂચવેલ",
-    "rewards__title": "પુરસ્કારો",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail સહાયક છુપાવો",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "અનલિમિટેડ ChatGPT વપરાશ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "તમે ChatGPT માટેની વર્તમાન દૈનિક વપરાશ કેપ પર પહોંચ્યા છે.\nતમે અનલિમિટેડ વપરાશ માટે હવે Pro માટે અપગ્રેડ કરી શકો છો, અથવા બીજાઓ એલ પ્રોવાઇડર્સ સાથે ચાલુ રાખો.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "એલિટ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "જેમિની-પ્રો એક્સેસ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ગૂગલનું સૌથી ક્ષમતાશાળી અને સામાન્ય મોડેલ. બહુમોડાલિટી માટે જમીની પર નિર્માણ કરવામાં આવ્યું છે. મેક્સએઆઈ પર જેમિની હાલમાં બીટા સ્થિતિમાં છે, જે ફક્ત ટેક્સ્ટ અને કોડની આધારપરિત આવરણ સપોર્ટ કરે છે અને તેમની બધી જલદીમાં ચિત્રો, વિડિઓ અને ઓડિયોની સપોર્ટ ઉમેરશે.",
-    "quick_access__hide_button__title": "આગામી મુલાકાત સુધી ઝડપી ઍક્સેસ છુપાવો"
+    "quick_access__hide_button__title": "આગામી મુલાકાત સુધી ઝડપી ઍક્સેસ છુપાવો",
+    "sidebar__top_bar__rewards__title": "પુરસ્કારો",
+    "sidebar__top_bar__upgrade__title": "અપગ્રેડ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Nadogradite da biste pristupili gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Najnapredniji OpenAI model, odličan za zadatke koji zahtevaju kreativnost i napredno zaključivanje.",
     "prompt__group__suggested__title": "Predloženo",
-    "rewards__title": "Nagrade",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sakrij Gmail asistenta",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Unapredite za neograničeno korišćenje ChatGPT-a",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dostigli ste trenutni dnevni limit za ChatGPT.\nMožete se sada unaprediti na Pro verziju za neograničeno korišćenje, ili nastaviti sa drugim AI provajderima.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Unapredi na Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Unapredi da bi pristupio gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najnapredniji i najopštiji model kompanije Google. Izgrađen od nule za multimodalnost. Gemini na MaxAI trenutno se nalazi u beta fazi, podržava samo tekst i kod, a uskoro će dodati podršku za slike, video zapise i audio.",
-    "quick_access__hide_button__title": "Sakrij brzi pristup do sledeće posete"
+    "quick_access__hide_button__title": "Sakrij brzi pristup do sledeće posete",
+    "sidebar__top_bar__rewards__title": "Nagrade",
+    "sidebar__top_bar__upgrade__title": "Unapredi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

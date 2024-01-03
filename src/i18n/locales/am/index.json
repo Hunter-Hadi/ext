@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "ወደ gpt-4 የተጠቀምነው የ AI ማሳወቂያ ይግዙ",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI የተጠቀምነው ምልክት, በርቀት እና የተሻለ ስህተት የሚሆን ስለሆነ የሚገኝ ምልክት ይጠቀምቃል.",
     "prompt__group__suggested__title": "የተጠቃሚ",
-    "rewards__title": "ደምቢዎች",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "የ Gmail አስማማሪውን ደብቅ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ለውጥ የChatGPT የተወሰነ ጠቅላላ ይጠቀሙ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ለChatGPT የቀንድ የጠቅላላ ውጤት ተወሰነች።\nየተወሰኑትን ለመውጣት አሁንም Pro ይጠቀሙ፣ ወደሌላ AI Providers ይሂዱ።",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ወደ ኢሊት ይግዙ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ወደ gemini-pro ይሂዱ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ጎጂል የተሰጠው እና የግንባታ ቡድን ነው። የሚከተለውን ለማስተላለፍ የግንባታ ቡድን ነው። ግንባታ ቡድን በMaxAI ላይ ከሚገኙ የጽሁፍ እና የኮድ ወይም የድምፅ ማስተላለፍ የሚሰጥ የተሰጠው ሞዴል ነው።",
-    "quick_access__hide_button__title": "በቀን ወደ ታይቷ እንዲመለስ ያስፈልጋል"
+    "quick_access__hide_button__title": "በቀን ወደ ታይቷ እንዲመለስ ያስፈልጋል",
+    "sidebar__top_bar__rewards__title": "ምርት",
+    "sidebar__top_bar__upgrade__title": "የተመደበች"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

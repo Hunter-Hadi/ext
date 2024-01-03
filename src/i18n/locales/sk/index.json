@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Vylepšite si účet a získajte prístup k modelu gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Najvýkonnejší model od OpenAI, ideálny pre úlohy vyžadujúce kreativitu a pokročilé uvažovanie.",
     "prompt__group__suggested__title": "Navrhnuté",
-    "rewards__title": "Odmeny",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Skryť asistenta Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Aktualizujte pre neobmedzené používanie ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosiahli ste denný limit pre ChatGPT.\nMôžete teraz aktualizovať na Pro verziu pre neobmedzené používanie alebo pokračovať s inými poskytovateľmi AI.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Vylepšiť na Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Vylepšiť pre prístup k gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najschopnejší a všeobecný model od Googlu. Postavený od základov pre multimodalitu. Gemini na MaxAI je momentálne v beta fáze, podporuje iba text a kód a čoskoro pridá podporu pre obrázky, videá a zvuk.",
-    "quick_access__hide_button__title": "Skryť rýchly prístup do ďalšej návštevy"
+    "quick_access__hide_button__title": "Skryť rýchly prístup do ďalšej návštevy",
+    "sidebar__top_bar__rewards__title": "Odmienky",
+    "sidebar__top_bar__upgrade__title": "Aktualizovať"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Upgrade, um auf gpt-4 zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIs leistungsfähigstes Modell, ideal für Aufgaben, die Kreativität und fortgeschrittenes Denken erfordern.",
     "prompt__group__suggested__title": "Vorgeschlagen",
-    "rewards__title": "Belohnungen",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail-Assistent ausblenden",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade für unbegrenzte ChatGPT-Nutzung",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Sie haben das aktuelle tägliche Nutzungslimit für ChatGPT erreicht.\nSie können jetzt auf Pro upgraden, um unbegrenzte Nutzung zu erhalten, oder mit den anderen KI-Anbietern fortfahren.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Auf Elite upgraden",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade, um auf gemini-pro zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Das leistungsfähigste und vielseitigste Modell von Google. Von Grund auf für Multimodalität entwickelt. Gemini auf MaxAI befindet sich derzeit in der Beta-Phase und unterstützt nur Text und Code. In Kürze wird auch Unterstützung für Bilder, Videos und Audio hinzugefügt.",
-    "quick_access__hide_button__title": "Schnellzugriff ausblenden bis zum nächsten Besuch"
+    "quick_access__hide_button__title": "Schnellzugriff ausblenden bis zum nächsten Besuch",
+    "sidebar__top_bar__rewards__title": "Belohnungen",
+    "sidebar__top_bar__upgrade__title": "Upgrade"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

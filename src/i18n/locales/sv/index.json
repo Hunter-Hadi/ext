@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Uppgradera för att få tillgång till gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIs mest kapabla modell, perfekt för uppgifter som kräver kreativitet och avancerad resonemang.",
     "prompt__group__suggested__title": "Föreslagna",
-    "rewards__title": "Belöningar",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Dölj Gmail-assistent",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Uppgradera för obegränsad ChatGPT-användning",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Du har nått den nuvarande dagliga användningsgränsen för ChatGPT.\nDu kan uppgradera till Pro nu för obegränsad användning, eller fortsätta med de andra AI-leverantörerna.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Uppgradera till Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Uppgradera för att få tillgång till gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googles mest kapabla och allmänna modell. Byggd från grunden för multimodalitet. Gemini på MaxAI är för närvarande i betafasen och stöder endast text och kod, och kommer snart att lägga till stöd för bilder, videor och ljud.",
-    "quick_access__hide_button__title": "Dölj snabbåtkomst tills nästa besök"
+    "quick_access__hide_button__title": "Dölj snabbåtkomst tills nästa besök",
+    "sidebar__top_bar__rewards__title": "Belöningar",
+    "sidebar__top_bar__upgrade__title": "Uppgradera"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

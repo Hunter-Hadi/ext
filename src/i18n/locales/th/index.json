@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "อัปเกรดเพื่อเข้าถึง gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "โมเดลที่มีความสามารถสูงสุดของ OpenAI เหมาะสำหรับงานที่ต้องการความคิดสร้างสรรค์และการคิดอย่างล้ำลึก",
     "prompt__group__suggested__title": "แนะนำ",
-    "rewards__title": "รางวัล",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "ซ่อนผู้ช่วย Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "อัปเกรดเพื่อการใช้งาน ChatGPT ไม่จำกัด",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "คุณได้ถึงขีดจำกัดการใช้งานรายวันปัจจุบันสำหรับ ChatGPT\nคุณสามารถอัปเกรดเป็น Pro เพื่อการใช้งานไม่จำกัด หรือดำเนินการต่อกับ Al Providers อื่นๆ",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "อัพเกรดเป็นเอลิต",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "อัพเกรดเพื่อเข้าถึง gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "รุ่นที่สามารถทำหลายอย่างได้มากที่สุดและมีความสามารถทั่วไป สร้างขึ้นมาเพื่อใช้งานแบบมัลติโมดัลิตี้  Gemini บน MaxAI อยู่ในช่วงเบต้าเท่านั้น รองรับเฉพาะข้อความและโค้ด และเร็ว ๆ นี้จะเพิ่มการสนับสนุนสำหรับภาพถ่าย วิดีโอ และเสียง",
-    "quick_access__hide_button__title": "ซ่อนการเข้าถึงด่วนจนกว่าครั้งถัดไป"
+    "quick_access__hide_button__title": "ซ่อนการเข้าถึงด่วนจนกว่าครั้งถัดไป",
+    "sidebar__top_bar__rewards__title": "รางวัล",
+    "sidebar__top_bar__upgrade__title": "อัพเกรด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

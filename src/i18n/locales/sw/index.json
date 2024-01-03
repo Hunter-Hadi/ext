@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Sasisha ili kupata gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Mfano wenye uwezo mkubwa zaidi wa OpenAI, mzuri kwa kazi zinazohitaji ubunifu na hoja za juu.",
     "prompt__group__suggested__title": "Inapendekezwa",
-    "rewards__title": "Tuzo",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ficha msaidizi wa Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sasisha kwa matumizi yasiyokuwa na kikomo ya ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Umefikia kiwango cha matumizi ya kila siku cha sasa kwa ChatGPT.\nUnaweza kusasisha kuwa Pro sasa kwa matumizi yasiyokuwa na kikomo, au endelea na Watoa Huduma wengine wa AI.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Nenda kwenye Mfumo Bora",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nenda kwenye gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Mfano wenye uwezo zaidi na wa kawaida wa Google. Imejengwa kutoka mwanzo kwa multimodality. Gemini kwenye MaxAI kwa sasa iko katika hatua ya beta, ikisaidia tu maandishi na nambari, na hivi karibuni itaongeza msaada kwa picha, video, na sauti.",
-    "quick_access__hide_button__title": "Ficha ufikivu wa haraka hadi ziara ijayo"
+    "quick_access__hide_button__title": "Ficha ufikivu wa haraka hadi ziara ijayo",
+    "sidebar__top_bar__rewards__title": "Tuzo",
+    "sidebar__top_bar__upgrade__title": "Kuboresha"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

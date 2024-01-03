@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "الترقية للوصول إلى gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "أقوى نموذج من OpenAI، مثالي للمهام التي تتطلب الإبداع والاستدلال المتقدم.",
     "prompt__group__suggested__title": "مقترح",
-    "rewards__title": "المكافآت",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "إخفاء مساعد Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ترقية للاستخدام غير المحدود لـ ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "لقد وصلت إلى الحد اليومي الحالي لـ ChatGPT.\nيمكنك الترقية إلى النسخة المحترفة الآن للاستخدام غير المحدود، أو استمر في استخدام مزودي الذكاء الاصطناعي الأخرى.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "الترقية إلى إليت",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "الترقية للوصول إلى جيميني-برو",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "أقوى وأكثر نموذج عام من Google. تم بناؤه من الألف إلى الياء للتعددية. يدعم Gemini على MaxAI حاليًا فقط النصوص والشفرات، وسيتم قريبًا دعم الصور ومقاطع الفيديو والصوت.",
-    "quick_access__hide_button__title": "إخفاء الوصول السريع حتى الزيارة القادمة"
+    "quick_access__hide_button__title": "إخفاء الوصول السريع حتى الزيارة القادمة",
+    "sidebar__top_bar__rewards__title": "المكافآت",
+    "sidebar__top_bar__upgrade__title": "الترقية"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

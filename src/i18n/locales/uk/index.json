@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 تک رسائی حاصل کرنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI کا سب سے قابلیت والا ماڈل، خلاقیت اور پیش رفتہ تجزیے کی ضرورت والے کاموں کے لئے عظیم ہے۔",
     "prompt__group__suggested__title": "تجویز شدہ",
-    "rewards__title": "انعامات",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail اسسٹنٹ چھپائیں",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "لامحدود ChatGPT استعمال کے لئے اپگریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "آپ نے ChatGPT کے لئے موجودہ روزانہ استعمال کی حد تک پہنچ گئی ہے۔\nآپ لامحدود استعمال کے لئے فوری طور پر پرو میں اپگریڈ کرسکتے ہیں، یا دوسرے AI پرووائیڈرز کے ساتھ جاری رہیں۔",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ایلائٹ پر اپگریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "جمنی پرو تک رسائی حاصل کرنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "گوگل کا سب سے قابلیت رکھنے والا اور عمومی ماڈل۔ بہت زیادہ صلاحیتوں کے لئے زمین سے بنایا گیا ہے۔ مکس اے آئی پر جمینی فیملی بیٹا فیز میں ہے، صرف ٹیکسٹ اور کوڈ کی حمایت دیتا ہے، اور جلد ہی تصاویر، ویڈیوز اور آڈیو کی حمایت شامل کرے گا۔",
-    "quick_access__hide_button__title": "اگلے دورے تک تیز رسائی چھپائیں"
+    "quick_access__hide_button__title": "اگلے دورے تک تیز رسائی چھپائیں",
+    "sidebar__top_bar__rewards__title": "انعامات",
+    "sidebar__top_bar__upgrade__title": "اپ گریڈ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

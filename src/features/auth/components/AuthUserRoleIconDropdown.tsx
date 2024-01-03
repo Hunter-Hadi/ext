@@ -1,6 +1,6 @@
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { GiftIcon } from '@/components/CustomIcon'
@@ -18,7 +18,6 @@ const AuthUserRoleIconDropdown: FC = () => {
     syncUserSubscriptionInfo,
   } = useUserInfo()
   const { t } = useTranslation(['common', 'client'])
-  const [isHover, setIsHover] = useState(false)
   useEffectOnce(() => {
     syncUserInfo().then()
     if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
@@ -45,8 +44,6 @@ const AuthUserRoleIconDropdown: FC = () => {
             underline={'none'}
           >
             <Stack
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
               direction={'row'}
               alignItems={'center'}
               component={'div'}
@@ -54,18 +51,18 @@ const AuthUserRoleIconDropdown: FC = () => {
                 borderRadius: '4px',
                 bgcolor: (t) =>
                   t.palette.mode === 'dark'
-                    ? 'rgba(178, 115, 255, 0.14)'
-                    : 'rgba(118, 1, 211, 0.16)',
+                    ? 'rgba(178, 115, 255, 0.16)'
+                    : 'rgba(118, 1, 211, 0.08)',
                 fontSize: '12px',
                 fontWeight: 700,
                 py: '2px',
                 px: '4px',
-                color: (t) => {
-                  if (t.palette.mode === 'dark') {
-                    return isHover ? '#c17ff5' : '#7601D3'
-                  } else {
-                    return isHover ? 'primary.main' : 'text.primary'
-                  }
+                color: 'text.primary',
+                '&:hover': {
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgba(178, 115, 255, 0.24)'
+                      : 'rgba(118, 1, 211, 0.12)',
                 },
               }}
             >
@@ -82,8 +79,6 @@ const AuthUserRoleIconDropdown: FC = () => {
             underline={'none'}
           >
             <Stack
-              onMouseEnter={() => setIsHover(true)}
-              onMouseLeave={() => setIsHover(false)}
               direction={'row'}
               alignItems={'center'}
               component={'div'}
@@ -91,18 +86,18 @@ const AuthUserRoleIconDropdown: FC = () => {
                 borderRadius: '4px',
                 bgcolor: (t) =>
                   t.palette.mode === 'dark'
-                    ? 'rgba(178, 115, 255, 0.14)'
-                    : 'rgba(118, 1, 211, 0.16)',
+                    ? 'rgba(178, 115, 255, 0.16)'
+                    : 'rgba(118, 1, 211, 0.08)',
                 fontSize: '12px',
                 fontWeight: 700,
                 py: '2px',
                 px: '4px',
-                color: (t) => {
-                  if (t.palette.mode === 'dark') {
-                    return isHover ? '#c17ff5' : '#7601D3'
-                  } else {
-                    return isHover ? 'primary.main' : 'text.primary'
-                  }
+                color: 'text.primary',
+                '&:hover': {
+                  bgcolor: (t) =>
+                    t.palette.mode === 'dark'
+                      ? 'rgba(178, 115, 255, 0.24)'
+                      : 'rgba(118, 1, 211, 0.12)',
                 },
               }}
             >
@@ -113,39 +108,69 @@ const AuthUserRoleIconDropdown: FC = () => {
       )}
       {userRole !== 'pro' && userRole !== 'elite' && (
         <Link
+          href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+          target={'_blank'}
+          underline={'none'}
+        >
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            component={'div'}
+            sx={{
+              borderRadius: '4px',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(178, 115, 255, 0.16)'
+                  : 'rgba(118, 1, 211, 0.08)',
+              fontSize: '12px',
+              fontWeight: 700,
+              py: '2px',
+              px: '4px',
+              color: 'text.primary',
+              '&:hover': {
+                bgcolor: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgba(178, 115, 255, 0.24)'
+                    : 'rgba(118, 1, 211, 0.12)',
+              },
+            }}
+          >
+            <span>Upgrade</span>
+          </Stack>
+        </Link>
+      )}
+      {userRole !== 'pro' && userRole !== 'elite' && (
+        <Link
           href={`${APP_USE_CHAT_GPT_HOST}/rewards`}
           target={'_blank'}
           underline={'none'}
         >
           <Stack
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
             direction={'row'}
             alignItems={'center'}
             component={'div'}
             sx={{
               cursor: 'pointer',
               borderRadius: '99px',
-              bgcolor: (t) =>
+              border: '1px solid',
+              borderColor: (t) =>
                 t.palette.mode === 'dark'
-                  ? 'rgba(178, 115, 255, 0.14)'
-                  : 'rgba(118, 1, 211, 0.16)',
+                  ? 'rgba(255, 255, 255, 0.2)'
+                  : 'rgba(178, 115, 255, 0.16)',
               fontSize: '12px',
               fontWeight: 600,
               py: '6px',
               px: '8px',
-              color: (t) => {
-                if (t.palette.mode === 'dark') {
-                  return isHover ? 'rgb(178,155,255)' : '#c7a5f1'
-                } else {
-                  return isHover ? 'primary.main' : 'text.primary'
-                }
-              },
+              color: 'text.primary',
               gap: '2px',
+              '&:hover': {
+                backgroundColor: 'rgba(178, 115, 255, 0.08)',
+                borderColor: '#B273FF',
+              },
             }}
           >
             <GiftIcon sx={{ fontSize: '14px' }} />
-            <span>{t('client:rewards__title')}</span>
+            <span>{t('client:sidebar__top_bar__rewards__title')}</span>
           </Stack>
         </Link>
       )}

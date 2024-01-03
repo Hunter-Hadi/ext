@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4에 액세스하기 위해 Pro로 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "창의성과 고급 추론을 필요로 하는 작업에 적합한 OpenAI의 가장 능력있는 모델입니다.",
     "prompt__group__suggested__title": "제안됨",
-    "rewards__title": "보상",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail 어시스턴트 숨기기",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "무제한 ChatGPT 사용을 위해 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPT의 현재 일일 사용량 한도에 도달했습니다.\n무제한 사용을 위해 지금 Pro로 업그레이드하거나 다른 AI 제공업체와 계속하세요.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "엘리트로 업그레이드",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "젬니-프로에 액세스하려면 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google의 가장 능력있고 일반적인 모델입니다. 멀티모달리티를 위해 처음부터 구축되었습니다. MaxAI에서의 Gemini는 현재 베타 단계로, 텍스트와 코드만 지원하며 곧 이미지, 비디오 및 오디오 지원이 추가될 예정입니다.",
-    "quick_access__hide_button__title": "다음 방문까지 빠른 액세스 숨기기"
+    "quick_access__hide_button__title": "다음 방문까지 빠른 액세스 숨기기",
+    "sidebar__top_bar__rewards__title": "보상",
+    "sidebar__top_bar__upgrade__title": "업그레이드"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

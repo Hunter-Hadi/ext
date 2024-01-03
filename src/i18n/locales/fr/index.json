@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Passer à la version Pro pour accéder à gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Le modèle le plus performant d'OpenAI, idéal pour les tâches nécessitant de la créativité et un raisonnement avancé.",
     "prompt__group__suggested__title": "Suggéré",
-    "rewards__title": "Récompenses",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Masquer l'assistant Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mise à niveau pour une utilisation illimitée de ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Vous avez atteint la limite quotidienne actuelle d'utilisation pour ChatGPT.\nVous pouvez passer à la version Pro dès maintenant pour une utilisation illimitée, ou continuer avec les autres fournisseurs d'IA.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Passer à Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Mettez à niveau pour accéder à gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Le modèle le plus performant et général de Google. Construit dès le départ pour la multimodalité. Gemini sur MaxAI est actuellement en phase bêta, prenant en charge uniquement le texte et le code, et ajoutera bientôt la prise en charge des images, des vidéos et de l'audio.",
-    "quick_access__hide_button__title": "Masquer l'accès rapide jusqu'à la prochaine visite"
+    "quick_access__hide_button__title": "Masquer l'accès rapide jusqu'à la prochaine visite",
+    "sidebar__top_bar__rewards__title": "Récompenses",
+    "sidebar__top_bar__upgrade__title": "Mise à niveau"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -31,11 +31,7 @@ import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import { useInitI18n } from '@/i18n/hooks'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
-import {
-  chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
-  showChatBox,
-} from '@/utils'
+import { chromeExtensionClientOpenPage, showChatBox } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
@@ -274,10 +270,11 @@ const useHandlePDFViewerError = () => {
  */
 export const DisabledPDFViewer: FC = () => {
   const { t } = useTranslation(['client', 'common'])
+  const [hide, setHide] = React.useState(false)
   const RenderDom = useMemo(() => {
     if (window.location.href.includes(Browser.runtime.id)) {
       if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
-        if (document.body.querySelector('#usechatgpt-disabled-pdf')) {
+        if (document.body?.querySelector('#usechatgpt-disabled-pdf')) {
           return null
         }
         if (
@@ -287,6 +284,9 @@ export const DisabledPDFViewer: FC = () => {
         }
         return (
           <Box
+            sx={{
+              visibility: hide ? 'hidden' : 'visible',
+            }}
             position={'fixed'}
             right={8}
             top={40}
@@ -360,9 +360,7 @@ export const DisabledPDFViewer: FC = () => {
                       'hide_usechatgptai_pdf_alert',
                       JSON.stringify(true),
                     )
-                    getAppContextMenuRootElement()
-                      ?.querySelector('#usechatgpt-disabled-pdf')
-                      ?.remove()
+                    setHide(true)
                   }}
                 >
                   {t('client:pdf__floating_card__button')}
@@ -373,9 +371,10 @@ export const DisabledPDFViewer: FC = () => {
         )
       }
     }
+
     return null
-  }, [t])
-  return RenderDom
+  }, [t, hide])
+  return <>{RenderDom}</>
 }
 
 const AppInit = () => {

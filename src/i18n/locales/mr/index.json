@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 ला प्रवेश करण्यासाठी अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI चा सर्वाधिक सक्षम मॉडेल, कल्पनाशक्ती आणि प्रगतीशील तर्कांसाठी आवश्यक असलेल्या कार्यांसाठी मोठं.",
     "prompt__group__suggested__title": "सुचवलेले",
-    "rewards__title": "पुरस्कार",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail सहाय्यक लपवा",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "असीमित ChatGPT वापरसाठी सुधारित करा",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "तुम्ही ChatGPT च्या सध्याच्या दैनंदिन वापराच्या मर्यादेत पोहोचला आहे.\nतुम्ही असीमित वापरसाठी आत्तापर्यंत प्रोच्या अपग्रेडसाठी प्रयत्न करू शकता, किंवा इतर AI प्रदात्यांसह सुरू ठेवा.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "एलिटमध्ये अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "जेमिनी-प्रो प्रवेशासाठी अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googleचा सर्वात अधिक क्षमतेसंपन्न आणि सामान्य मॉडेल. बहुसंवादात्मकतेसाठी जमिनीवरून तयार केलेला आहे. MaxAI वर Gemini ही बेटा चरणात आहे, ज्यामुळे केवळ मजकूर आणि कोडचा समर्थन करते आणि लवकरच प्रतिमा, व्हिडिओ आणि ऑडिओचा समर्थन जोडण्यात येईल.",
-    "quick_access__hide_button__title": "पुढील भेटीसाठी जल्दीप्राप्ती लपवा"
+    "quick_access__hide_button__title": "पुढील भेटीसाठी जल्दीप्राप्ती लपवा",
+    "sidebar__top_bar__rewards__title": "पुरस्कार",
+    "sidebar__top_bar__upgrade__title": "अपग्रेड"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

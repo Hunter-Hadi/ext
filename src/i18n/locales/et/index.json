@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Pääse ligi gpt-4-le, tõstes tasemele Pro",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI kõige võimekam mudel, suurepärane ülesannete jaoks, mis nõuavad loovust ja arenenud mõtlemist.",
     "prompt__group__suggested__title": "Soovitatud",
-    "rewards__title": "Tasud",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Peida Gmaili abiline",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Täiendage piiramatu ChatGPT kasutamise jaoks",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Olete jõudnud ChatGPT praeguse päevase kasutuspiiranguni.\nSaate nüüd täiendada Pro versioonile piiramatu kasutamise jaoks või jätkata teiste AI-pakkujatega.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Tõsta Elite tasemele",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Uuenda juurdepääsuks gemini-pro-le",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'i võimekaim ja üldine mudel. Ehitatud multimodaalsuseks algusest peale. Gemini MaxAI-s on praegu beetaversioon, toetades ainult teksti ja koodi ning lisab peagi toe piltidele, videotele ja helile.",
-    "quick_access__hide_button__title": "Peida kiirjuurdepääs järgmise külastuseni"
+    "quick_access__hide_button__title": "Peida kiirjuurdepääs järgmise külastuseni",
+    "sidebar__top_bar__rewards__title": "Tasud",
+    "sidebar__top_bar__upgrade__title": "Täiusta"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Millora per accedir a gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "El model més capaç d'OpenAI, ideal per a tasques que requereixen creativitat i raonament avançat.",
     "prompt__group__suggested__title": "Suggerits",
-    "rewards__title": "Recompenses",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Amaga l'assistent de Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Millora per a un ús il·limitat de ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Has arribat al límit diari actual per a ChatGPT.\nPots millorar a Pro ara mateix per a un ús il·limitat, o continuar amb els altres proveïdors d'IA.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Millora a Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Millora per accedir a gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "El model més capaç i general de Google. Construït des de zero per a multimodalitat. Gemini en MaxAI està actualment en fase beta, suportant només text i codi, i aviat afegirà suport per a imatges, vídeos i àudio.",
-    "quick_access__hide_button__title": "Amaga l'accés ràpid fins a la propera visita"
+    "quick_access__hide_button__title": "Amaga l'accés ràpid fins a la propera visita",
+    "sidebar__top_bar__rewards__title": "Recompenses",
+    "sidebar__top_bar__upgrade__title": "Millora"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

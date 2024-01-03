@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 యాక్సెస్ చేయడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI యొక్క అత్యంత సామర్థ్యం ఉన్న మోడల్, సృజనాత్మకత మరియు ఆధ్వితీయ యోచనలను అవసరం కలిగి ఉంచే కార్యాలకు అద్వితీయంగా ఉంటుంది.",
     "prompt__group__suggested__title": "సూచించబడింది",
-    "rewards__title": "పురస్కారాలు",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail అసిస్టెంట్‌ను దాచండి",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "అనివార్య ChatGPT ఉపయోగం కొరకు అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "మీరు ప్రస్తుత రోజువారీ ChatGPT ఉపయోగ పరిమితిని చేరుకున్నారు.\nమీరు అనివార్య ఉపయోగం కోసం ప్రొ కొనండి, లేదా మరొక AI ప్రొవైడర్లతో కొనియాగండి.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ఎలైట్‌కు అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "జెమిని-ప్రోకు ప్రవేశానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google యొక్క అత్యంత సామర్థ్యకరమైన మరియు సాధారణ మోడల్. బహుశాఖాత్మకత కోసం నుండి నిర్మించబడినది. MaxAI లో జెమిని ప్రస్తుతం బీటా దశలో ఉంది, మాత్రమే టెక్స్ట్ మరియు కోడ్ మద్దతును మాత్రమే మద్దతుగా అందిస్తుంది, ముందుగా చిత్రాలు, వీడియోలు మరియు ఆడియోకు మద్దతు జోడించబడుతుంది.",
-    "quick_access__hide_button__title": "త్వరల ప్రవేశం దాచుకోండి అంటే తరువాత సందర్శన"
+    "quick_access__hide_button__title": "త్వరల ప్రవేశం దాచుకోండి అంటే తరువాత సందర్శన",
+    "sidebar__top_bar__rewards__title": "పురస్కారాలు",
+    "sidebar__top_bar__upgrade__title": "అప్గ్రేడ్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

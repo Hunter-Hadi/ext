@@ -147,7 +147,7 @@ const ChatGPTStatusWrapper: FC = () => {
                 color={'text.secondary'}
                 textAlign={'center'}
               >
-                Use AI Anywhere Online
+                Use 1-Click Anywhere Online
               </Typography>
             </Stack>
             <Stack

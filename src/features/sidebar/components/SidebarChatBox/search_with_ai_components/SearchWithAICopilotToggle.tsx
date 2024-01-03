@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import Stack from '@mui/material/Stack'
 import Switch from '@mui/material/Switch'
 import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 /**
  * 搜索页的AI Copilot开关

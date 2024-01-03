@@ -1,9 +1,10 @@
-import React, { FC, useEffect } from 'react'
-import DevContent from '@/components/DevContent'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
+import React, { FC, useEffect } from 'react'
 import Browser from 'webextension-polyfill'
+
+import DevContent from '@/components/DevContent'
 import { BACKGROUND_SEND_TEXT_SPEED_SETTINGS } from '@/constants'
 
 const DevTextSendControl: FC = () => {

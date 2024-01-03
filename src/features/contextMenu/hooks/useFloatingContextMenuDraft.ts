@@ -1,9 +1,10 @@
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
+
 import { IChatMessage } from '@/features/chatgpt/types'
 import { FloatingContextMenuDraftState } from '@/features/contextMenu'
-import { useRecoilValue } from 'recoil'
-import { useMemo } from 'react'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 /**
  * AI持续生成的草稿
  */

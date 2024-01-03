@@ -1,5 +1,6 @@
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useEffect, useMemo, useState } from 'react'
+
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { getInputMediator, InputMediatorName } from '@/store/InputMediator'
 
 const useChatInputMaxTokens = (inputName: InputMediatorName) => {

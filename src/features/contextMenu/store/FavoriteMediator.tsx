@@ -1,10 +1,11 @@
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import Log from '@/utils/Log'
-import LFUCache from '@/utils/cache/LFUCache'
 import Browser from 'webextension-polyfill'
-import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
+
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { IContextMenuItem } from '@/features/contextMenu/types'
+import { clientGetChromeExtensionButtonSettings } from '@/features/contextMenu/utils/clientButtonSettings'
+import LFUCache from '@/utils/cache/LFUCache'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import Log from '@/utils/Log'
 
 const favoriteMediatorLog = new Log('Store/FavoriteMediator')
 

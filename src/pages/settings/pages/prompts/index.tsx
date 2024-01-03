@@ -1,13 +1,14 @@
-import React, { FC } from 'react'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-import { useTranslation } from 'react-i18next'
-import ContextMenuEditCard from '@/pages/settings/pages/prompts/ContextMenuEditCard'
-import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
-import Stack from '@mui/material/Stack'
 import FormControlLabel from '@mui/material/FormControlLabel'
+import Stack from '@mui/material/Stack'
 import Switch from '@mui/material/Switch'
-import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
+import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
+import ContextMenuEditCard from '@/pages/settings/pages/prompts/ContextMenuEditCard'
 
 const EditButtonKey: IChromeExtensionButtonSettingKey = 'textSelectPopupButton'
 const SettingsPromptsPage: FC = () => {

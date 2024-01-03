@@ -1,9 +1,10 @@
 import Browser from 'webextension-polyfill'
+
+import { chromeExtensionLogout } from '@/background/utils'
 import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
 } from '@/constants'
-import { chromeExtensionLogout } from '@/background/utils'
 
 export const getAccessToken = async () => {
   const cache = await Browser.storage.local.get(

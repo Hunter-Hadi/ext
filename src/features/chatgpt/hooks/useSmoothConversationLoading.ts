@@ -1,6 +1,7 @@
-import { useRecoilValue } from 'recoil'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { useEffect, useState } from 'react'
+import { useRecoilValue } from 'recoil'
+
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 /**
  * 因为action之间的loading切换比较频繁，可能导致ui闪烁，所以这里封装了一个平滑的loading状态

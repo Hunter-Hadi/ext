@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useMemo, useState } from 'react'
-
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import Box from '@mui/material/Box'
 import Checkbox from '@mui/material/Checkbox'
 import FormControl from '@mui/material/FormControl'
@@ -9,13 +9,12 @@ import Select from '@mui/material/Select'
 import Stack from '@mui/material/Stack'
 import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-
 import uniqBy from 'lodash-es/uniqBy'
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
-import { chromeExtensionClientOpenPage } from '@/utils'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+
 import { useSingleThirdProviderSettings } from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 const ArrowDropDownIconCustom = () => {
   return (

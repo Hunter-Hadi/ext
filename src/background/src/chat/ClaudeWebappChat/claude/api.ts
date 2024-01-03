@@ -1,5 +1,6 @@
-import { ClaudeAttachment, ClaudeConversation } from './types'
 import { v4 as uuidV4 } from 'uuid'
+
+import { ClaudeAttachment, ClaudeConversation } from './types'
 
 /**
  * claude.ai api都是基于organizationId的，所以需要先获取organizationId

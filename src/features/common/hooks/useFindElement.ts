@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { elementCheckVisibility } from '@/utils/dataHelper/elementHelper'
 
 const useFindElement = (

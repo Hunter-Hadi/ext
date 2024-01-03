@@ -1,9 +1,10 @@
+import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
+
 import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
 import { ISelection } from '@/features/contextMenu/types'
-import { useEffect, useRef } from 'react'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
+import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 
 const useRangy = () => {
   const [rangyCore, setRangyCore] = useRecoilState(RangyCoreState)

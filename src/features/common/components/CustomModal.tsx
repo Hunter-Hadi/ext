@@ -2,9 +2,9 @@ import CloseIcon from '@mui/icons-material/Close'
 import Box from '@mui/material/Box'
 import Fade from '@mui/material/Fade'
 import IconButton from '@mui/material/IconButton'
-import Paper from '@mui/material/Paper'
-import { SxProps, lighten } from '@mui/material/styles'
 import Modal, { ModalProps } from '@mui/material/Modal'
+import Paper from '@mui/material/Paper'
+import { lighten,SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
 interface IProps extends Omit<ModalProps, 'children' | 'onClose' | 'open'> {

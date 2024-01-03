@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
-import { AppSettingsInit } from '@/components/AppInit'
 import { useSetRecoilState } from 'recoil'
-import { AppDBStorageState, AppLocalStorageState } from '@/store'
-import { useInitI18n } from '@/i18n/hooks'
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { AppSettingsInit } from '@/components/AppInit'
+import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useInitI18n } from '@/i18n/hooks'
+import { AppDBStorageState, AppLocalStorageState } from '@/store'
 
 const OptionPagesInit = () => {
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)

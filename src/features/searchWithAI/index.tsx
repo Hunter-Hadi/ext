@@ -1,25 +1,27 @@
-import AppThemeProvider from '@/components/AppTheme'
-import { createShadowRoot } from '@/utils/elementHelper'
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import { RecoilRoot } from 'recoil'
 import Browser from 'webextension-polyfill'
+
+import AppThemeProvider from '@/components/AppTheme'
+import { createShadowRoot } from '@/utils/elementHelper'
+
 import SearchWithAIContainer from './components/SearchWithAIContainer'
 import {
   SEARCH_WITH_AI_ROOT_ID,
   SEARCH_WITH_AI_SHADOW_CONTAINER_ID,
 } from './constants'
 import {
-  ISearchPageAdapter,
-  matchSearchPageConfig,
-  ISearchPageKey,
-  searchWithAIStyleReset,
   createMindGoogleSidebar,
+  ISearchPageAdapter,
+  ISearchPageKey,
+  matchSearchPageConfig,
+  searchWithAIStyleReset,
 } from './utils'
-import { getSearchWithAISettings } from './utils/searchWithAISettings'
 import { preCheckCanRender, preInjectFlag } from './utils/preCheckRender'
+import { getSearchWithAISettings } from './utils/searchWithAISettings'
 
 const mount = async (
   question: string,

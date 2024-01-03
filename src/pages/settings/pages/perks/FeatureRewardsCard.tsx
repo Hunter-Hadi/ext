@@ -1,10 +1,11 @@
-import React, { FC } from 'react'
-import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-import { useTranslation } from 'react-i18next'
-import PerkCard from '@/pages/settings/pages/perks/PerkCard'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import Link from '@mui/material/Link'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
+import PerkCard from '@/pages/settings/pages/perks/PerkCard'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const FeatureRewardsCard: FC = () => {
   const { t } = useTranslation(['settings', 'common'])

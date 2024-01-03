@@ -1,10 +1,11 @@
-import { useRecoilValue } from 'recoil'
-import { RangyState } from '@/features/contextMenu/store'
 import { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
+
 import {
   CONTEXT_MENU_DRAFT_LIST,
   CONTEXT_MENU_DRAFT_TYPES,
 } from '@/features/contextMenu/constants'
+import { RangyState } from '@/features/contextMenu/store'
 
 const useDraftContextMenuList = () => {
   const { currentSelection } = useRecoilValue(RangyState)

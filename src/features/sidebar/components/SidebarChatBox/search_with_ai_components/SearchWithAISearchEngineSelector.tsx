@@ -1,11 +1,12 @@
-import React, { FC } from 'react'
-import { BaseSelect } from '@/components/select'
 import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
 import Tooltip from '@mui/material/Tooltip'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+import { BaseSelect } from '@/components/select'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export const SEARCH_ENGINE_OPTIONS: Array<{
   label: string

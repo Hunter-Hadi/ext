@@ -147,7 +147,7 @@ const ChatGPTStatusWrapper: FC = () => {
                 color={'text.secondary'}
                 textAlign={'center'}
               >
-                Use AI Anywhere Online
+                Use 1-Click Anywhere Online
               </Typography>
             </Stack>
             <Stack
@@ -182,23 +182,13 @@ const ChatGPTStatusWrapper: FC = () => {
                 </Typography>
               </Stack>
               <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                <AIProviderIcon aiProviderType={'BARD'} size={20} />
+                <AIProviderIcon aiProviderType={'MAXAI_GEMINI'} size={20} />
                 <Typography
                   component={'span'}
                   fontSize={'16px'}
                   color={'text.secondary'}
                 >
-                  Bard
-                </Typography>
-              </Stack>
-              <Stack direction={'row'} alignItems={'center'} spacing={1}>
-                <AIProviderIcon aiProviderType={'BING'} size={20} />
-                <Typography
-                  component={'span'}
-                  fontSize={'16px'}
-                  color={'text.secondary'}
-                >
-                  Bing
+                  Gemini
                 </Typography>
               </Stack>
             </Stack>

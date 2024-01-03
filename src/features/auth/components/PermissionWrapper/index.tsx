@@ -1,28 +1,28 @@
+import Box, { BoxProps } from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Link from '@mui/material/Link'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { v4 as uuidV4 } from 'uuid'
+
+import LazyLoadImage from '@/components/LazyLoadImage'
+import TextOnlyTooltip, {
+  TextOnlyTooltipProps,
+} from '@/components/TextOnlyTooltip'
+import YoutubePlayerBox from '@/components/YoutubePlayerBox'
+import { useAuthLogin, usePermissionCard } from '@/features/auth'
+import {
+  PermissionWrapperCardSceneType,
+  PermissionWrapperCardType,
+} from '@/features/auth/components/PermissionWrapper/types'
 import {
   IUserCurrentPlan,
   useUserInfo,
 } from '@/features/auth/hooks/useUserInfo'
 import { IUserRoleType } from '@/features/auth/types'
-import TextOnlyTooltip, {
-  TextOnlyTooltipProps,
-} from '@/components/TextOnlyTooltip'
-import Box, { BoxProps } from '@mui/material/Box'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
-import Stack from '@mui/material/Stack'
-import Typography from '@mui/material/Typography'
-import { v4 as uuidV4 } from 'uuid'
-import Button from '@mui/material/Button'
-import Link from '@mui/material/Link'
-import YoutubePlayerBox from '@/components/YoutubePlayerBox'
-import LazyLoadImage from '@/components/LazyLoadImage'
-
-import {
-  PermissionWrapperCardSceneType,
-  PermissionWrapperCardType,
-} from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { useAuthLogin, usePermissionCard } from '@/features/auth'
 import { showChatBox } from '@/utils'
 
 export interface PermissionWrapperProps {

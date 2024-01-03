@@ -1,13 +1,14 @@
-import uniqBy from 'lodash-es/uniqBy'
-import { IContextMenuItem } from '@/features/contextMenu/types'
-import lodashSet from 'lodash-es/set'
 import cloneDeep from 'lodash-es/cloneDeep'
+import lodashSet from 'lodash-es/set'
+import uniqBy from 'lodash-es/uniqBy'
+
 import getNeedRemovePromptIdsMap from '@/background/defaultPromptsData/getNeedRemovePromptIdsMap'
+import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import {
   getChromeExtensionDBStorageButtonContextMenu,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 /**
  * @version 2.0 - 移除所有不可编辑的system prompt

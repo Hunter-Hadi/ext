@@ -1,17 +1,17 @@
-import React, { FC, useMemo, useState } from 'react'
-import Stack from '@mui/material/Stack'
-import Button from '@mui/material/Button'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
-import { useRecoilState, useRecoilValue } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
-
-import { ChatGPTConversationState } from '@/features/sidebar/store'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 import cloneDeep from 'lodash-es/cloneDeep'
+import React, { FC, useMemo, useState } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
+
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 const DevConsole: FC = () => {
   const {

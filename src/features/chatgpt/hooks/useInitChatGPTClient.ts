@@ -1,18 +1,19 @@
 /**
  * 初始化chat客户端
  */
-import { useSetRecoilState } from 'recoil'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { useEffect, useRef } from 'react'
+import { useSetRecoilState } from 'recoil'
+
 import { IChromeExtensionClientListenEvent } from '@/background/app'
-import { AppDBStorageState, AppLocalStorageState } from '@/store'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { useCreateClientMessageListener } from '@/background/utils'
-import Log from '@/utils/Log'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
+import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import Log from '@/utils/Log'
 
 const log = new Log('InitChatGPT')
 

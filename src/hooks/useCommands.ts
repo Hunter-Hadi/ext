@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
-import { getChromeExtensionCommands } from '@/background/utils'
 import isArray from 'lodash-es/isArray'
+import { useEffect, useState } from 'react'
+
+import { getChromeExtensionCommands } from '@/background/utils'
 
 const useCommands = () => {
   const [loaded, setLoaded] = useState<boolean>(false)

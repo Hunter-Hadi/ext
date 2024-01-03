@@ -2,14 +2,14 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import SocialMediaPostContext, {
-  ICommentData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
 import {
   delayAndScrollToInputAssistantButton,
   findParentEqualSelector,
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import SocialMediaPostContext, {
+  ICommentData,
+} from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 // 获取Facebook评论的作者，日期，内容
 const getFacebookCommentDetail = async (

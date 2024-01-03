@@ -1,4 +1,5 @@
 import { atom, selector } from 'recoil'
+
 import { IRangyRect, ISelection } from '@/features/contextMenu/types'
 
 export const ContextMenuSettingsState = atom<{

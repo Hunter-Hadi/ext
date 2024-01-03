@@ -1,7 +1,8 @@
-import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
-import { IAIProviderModel } from '@/features/chatgpt/types'
 import dayjs from 'dayjs'
+
+import { IAIProviderModel } from '@/features/chatgpt/types'
 import { I18nextKeysType } from '@/i18next'
+import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export enum BingConversationStyle {
   Creative = 'creative',

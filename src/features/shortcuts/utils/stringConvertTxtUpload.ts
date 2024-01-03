@@ -1,7 +1,7 @@
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
-import { getAccessToken } from '@/utils/request'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+import { getAccessToken } from '@/utils/request'
 
 // export const MaxUploadTxtFileSize = 1024 * 1024 * 32 // 32MB
 export const MAX_UPLOAD_TEXT_FILE_TOKENS = 400 * 1000 // 400k

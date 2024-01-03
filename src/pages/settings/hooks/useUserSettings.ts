@@ -1,9 +1,10 @@
-import { useRecoilState } from 'recoil'
-import { AppDBStorageState } from '@/store'
-import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
-import { useCallback } from 'react'
 import debounce from 'lodash-es/debounce'
+import { useCallback } from 'react'
+import { useRecoilState } from 'recoil'
+
 import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
+import { AppDBStorageState } from '@/store'
 
 export const useUserSettings = () => {
   const { syncLocalToServer } = useSyncSettingsChecker()

@@ -1,8 +1,10 @@
 import { createParser } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
-import { streamAsyncIterable } from './stream-async-inerable'
+
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP } from '@/constants'
+
+import { streamAsyncIterable } from './stream-async-inerable'
 
 export const fetchSSE = async (
   resource: string,

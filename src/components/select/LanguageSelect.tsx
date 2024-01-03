@@ -1,12 +1,12 @@
-import React, { FC } from 'react'
 import Autocomplete from '@mui/material/Autocomplete'
-import TextField from '@mui/material/TextField'
 import { SxProps } from '@mui/material/styles'
-
-import { LANGUAGES_OPTIONS } from '@/utils/staticData'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
-import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
+import TextField from '@mui/material/TextField'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
+import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
+import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
 interface LanguageSelectProps {
   label?: string

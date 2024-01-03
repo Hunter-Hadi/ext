@@ -1,14 +1,16 @@
 import ThemeProvider from '@mui/material/styles/ThemeProvider'
 import { FC } from 'react'
-import { ISearchPageKey } from '../utils'
-import AISearchContentCard from './AISearchContentCard'
 // import useEffectOnce from '@/hooks/useEffectOnce'
 // import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 import React from 'react'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
-import useSearchWithAISettingsInit from '../hooks/useSearchWithAISettingsInit'
+
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { useInitI18n } from '@/i18n/hooks'
+
+import useSearchWithAISettingsInit from '../hooks/useSearchWithAISettingsInit'
+import { ISearchPageKey } from '../utils'
+import AISearchContentCard from './AISearchContentCard'
 
 interface IProps {
   question: string

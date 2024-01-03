@@ -1,9 +1,9 @@
-import React, { FC } from 'react'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 export type IConfirmActionType = 'restore' | 'delete' | 'deleteAll'

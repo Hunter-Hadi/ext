@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
+import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
-import { SxProps } from '@mui/material/styles'
 import { useTranslation } from 'react-i18next'
 const AppLoadingLayout: FC<{
   loading: boolean

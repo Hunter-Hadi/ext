@@ -1,3 +1,5 @@
+import { ofetch } from 'ofetch'
+
 import BaseChat from '@/background/src/chat/BaseChat'
 import { BingWebBot } from '@/background/src/chat/BingChat/bing'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
@@ -6,7 +8,6 @@ import {
   requestHostPermission,
 } from '@/background/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { ofetch } from 'ofetch'
 
 class BingChat extends BaseChat {
   private bingLib: BingWebBot

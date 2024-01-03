@@ -1,5 +1,6 @@
-import Browser from 'webextension-polyfill'
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
+
 import { promiseTimeout } from '@/utils/promiseUtils'
 export type WebWorkerEventType = 'WEB_WORKER_GET_TOKENS'
 

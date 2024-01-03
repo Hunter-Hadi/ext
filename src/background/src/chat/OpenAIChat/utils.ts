@@ -1,6 +1,7 @@
 import Browser from 'webextension-polyfill'
-import { getWebpageTitleAndText } from '@/features/shortcuts/utils/webHelper'
+
 import { backgroundGetUrlContent } from '@/background/utils'
+import { getWebpageTitleAndText } from '@/features/shortcuts/utils/webHelper'
 
 const timeKey = 'CHAT_GPT_WHITE_LIST_MODELS_TIME'
 const modelKey = 'CHAT_GPT_WHITE_LIST_MODELS'

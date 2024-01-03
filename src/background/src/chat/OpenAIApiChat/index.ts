@@ -1,17 +1,17 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import { ChatStatus } from '@/background/provider/chat'
-import Log from '@/utils/Log'
-import { AI_PROVIDER_MAP } from '@/constants'
+import BaseChat from '@/background/src/chat/BaseChat'
+import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAiApiChat/types'
+import { getThirdProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
   createChromeExtensionOptionsPage,
 } from '@/background/utils'
+import { AI_PROVIDER_MAP } from '@/constants'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { v4 as uuidV4 } from 'uuid'
-
-import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAiApiChat/types'
-import BaseChat from '@/background/src/chat/BaseChat'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
 import { hasData } from '@/utils'
+import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/OpenAiApiChat')
 

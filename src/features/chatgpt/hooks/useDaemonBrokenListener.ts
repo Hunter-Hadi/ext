@@ -1,5 +1,6 @@
-import { useCallback, useEffect, useRef } from 'react'
 import debounce from 'lodash-es/debounce'
+import { useCallback, useEffect, useRef } from 'react'
+
 import { ContentScriptConnectionV2 } from '../utils'
 
 // check session is expired

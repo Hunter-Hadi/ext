@@ -1,38 +1,38 @@
+import { flip, offset, shift, useFloating } from '@floating-ui/react'
+import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import { UseChatGptIcon } from '@/components/CustomIcon'
 import React, { FC, useCallback, useEffect, useMemo } from 'react'
-import { useRangy } from '@/features/contextMenu/hooks'
+import { useTranslation } from 'react-i18next'
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
-import { flip, offset, shift, useFloating } from '@floating-ui/react'
-import {
-  cloneRect,
-  computedRectPosition,
-  isRectangleCollidingWithBoundary,
-} from '@/features/contextMenu/utils'
+import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
+import { UseChatGptIcon } from '@/components/CustomIcon'
+import TooltipButton from '@/components/TooltipButton'
+import { isProduction } from '@/constants'
+import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
+import { FloatingContextMenuMiniMenuMoreButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import { FloatingContextMenuMiniMenuSearchWithAIButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuMiniMenuSearchWithAIButton'
+import { useRangy } from '@/features/contextMenu/hooks'
+import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
   ContextMenuSettingsState,
   FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
 } from '@/features/contextMenu/store'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
-import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
-import { FloatingContextMenuMiniMenuMoreButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
-import useCommands from '@/hooks/useCommands'
-import { isProduction } from '@/constants'
-import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/utils/buttonSettings'
 import { IRangyRect } from '@/features/contextMenu/types'
-import TooltipButton from '@/components/TooltipButton'
-import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
-import Box from '@mui/material/Box'
-import { useTranslation } from 'react-i18next'
+import {
+  cloneRect,
+  computedRectPosition,
+  isRectangleCollidingWithBoundary,
+} from '@/features/contextMenu/utils'
 import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { FloatingContextMenuMiniMenuSearchWithAIButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuMiniMenuSearchWithAIButton'
+import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void

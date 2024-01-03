@@ -1,10 +1,10 @@
-import Log from '@/utils/Log'
 import { ChatStatus } from '@/background/provider/chat'
-import { backgroundSendAllClientMessage } from '@/background/utils'
-import { IChatUploadFile } from '@/features/chatgpt/types'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
+import { backgroundSendAllClientMessage } from '@/background/utils'
+import { IChatUploadFile } from '@/features/chatgpt/types'
+import Log from '@/utils/Log'
 
 class BaseChat {
   conversation: IChatConversation | undefined

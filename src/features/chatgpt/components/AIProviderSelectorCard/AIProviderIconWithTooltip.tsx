@@ -1,15 +1,16 @@
+import Box from '@mui/material/Box'
 import React, { FC, useEffect, useState } from 'react'
-import AIProviderIcon, {
-  AIProviderIconProps,
-} from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+import { useTranslation } from 'react-i18next'
+
+import { IAIProviderType } from '@/background/provider/chat'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
+import AIProviderIcon, {
+  AIProviderIconProps,
+} from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import { UseChatGptIcon } from '@/components/CustomIcon'
-import Box from '@mui/material/Box'
-import { useTranslation } from 'react-i18next'
-import { IAIProviderType } from '@/background/provider/chat'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 interface AIProviderIconWithTooltipProps

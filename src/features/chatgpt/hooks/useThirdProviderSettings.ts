@@ -1,13 +1,14 @@
-import { useRecoilState } from 'recoil'
-import { AppLocalStorageState } from '@/store'
 import { useMemo } from 'react'
+import { useRecoilState } from 'recoil'
+
 import { IAIProviderType } from '@/background/provider/chat'
 import {
   getThirdProviderSettings,
   setThirdProviderSettings,
 } from '@/background/src/chat/util'
-import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
+import { AppLocalStorageState } from '@/store'
 
 const useThirdProviderSettings = () => {
   const [appLocalStorage, setAppLocalStorage] = useRecoilState(

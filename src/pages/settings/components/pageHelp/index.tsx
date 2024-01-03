@@ -1,18 +1,19 @@
-import { useTranslation } from 'react-i18next'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import React, { FC, useContext, useMemo, useState } from 'react'
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
-import { SettingsPageRouteContext } from '@/pages/settings/context'
-import PromptsHelp from '@/pages/settings/components/pageHelp/pages/PromptsHelp'
-import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Drawer from '@mui/material/Drawer'
-import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import OpenaiAPIKeyHelp from '@/pages/settings/components/pageHelp/pages/OpenaiAPIKeyHelp'
+import Typography from '@mui/material/Typography'
+import React, { FC, useContext, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AppearanceHelp from '@/pages/settings/components/pageHelp/pages/AppearanceHelp'
 import ChatGPTStableModeHelp from '@/pages/settings/components/pageHelp/pages/ChatGPTStableModeHelp'
+import OpenaiAPIKeyHelp from '@/pages/settings/components/pageHelp/pages/OpenaiAPIKeyHelp'
+import PromptsHelp from '@/pages/settings/components/pageHelp/pages/PromptsHelp'
+import { SettingsPageRouteContext } from '@/pages/settings/context'
+import { SETTINGS_PAGE_MENU_WIDTH } from '@/pages/settings/pages/SettingsApp'
 
 const PageHelp: FC<{
   drawerMode?: boolean

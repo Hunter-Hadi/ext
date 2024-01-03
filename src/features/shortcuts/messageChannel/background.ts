@@ -1,16 +1,17 @@
 // import Log from '@/utils/Log'
+import Browser from 'webextension-polyfill'
+
 import {
   createBackgroundMessageListener,
   safeGetBrowserTab,
 } from '@/background/utils'
+import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
+import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
+import { backgroundSendClientToExecuteOperationElement } from '@/features/shortcuts/utils/OperationElementHelper'
 import {
   getWebpageTitleAndText,
   getWebpageUrlContent,
 } from '@/features/shortcuts/utils/webHelper'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
-import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
-import Browser from 'webextension-polyfill'
-import { backgroundSendClientToExecuteOperationElement } from '@/features/shortcuts/utils/OperationElementHelper'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
 // const log = new Log('Background/ShortCut')

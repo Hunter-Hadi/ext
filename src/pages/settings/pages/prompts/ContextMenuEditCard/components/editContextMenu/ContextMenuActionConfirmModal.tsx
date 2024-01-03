@@ -1,11 +1,12 @@
-import React, { FC, useMemo } from 'react'
 import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import { IContextMenuItem } from '@/features/contextMenu/types'
+import Typography from '@mui/material/Typography'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
+
+import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export type IConfirmActionType = 'restore' | 'delete' | 'deleteAll'
 

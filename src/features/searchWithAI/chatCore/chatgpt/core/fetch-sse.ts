@@ -1,5 +1,6 @@
 import { createParser, ParseEvent } from 'eventsource-parser'
 import isEmpty from 'lodash-es/isEmpty'
+
 import { streamAsyncIterable } from './stream-async-inerable'
 
 export const fetchSSE = async (

@@ -260,7 +260,8 @@ export const sliceTextByTokens = async (
   // 最大token上限
   const maxTokenLimit = tokenLimit - bufferTokens
   let usage = 0
-  const results: string[] = []
+  const startResults: string[] = []
+  const endResults: string[] = []
   while (textChunks.length > 0) {
     const currentChunks = getChunksByThead()
     const currentTokens = await Promise.all(
@@ -276,7 +277,7 @@ export const sliceTextByTokens = async (
     for (let i = 0; i < currentTokens.length; i++) {
       console.log(
         `sliceTextByTokens process ${Number(
-          (results.length / totalChunks) * 100,
+          ([...startResults, ...endResults].length / totalChunks) * 100,
         ).toFixed(2)}%, usage [${usage}] / [${maxTokenLimit}]`,
       )
       const currentToken = currentTokens[i]
@@ -284,19 +285,21 @@ export const sliceTextByTokens = async (
         console.log(`sliceTextByTokens result usage [${usage}]`)
         return {
           isLimit: true,
-          text: results.join(''),
+          text: [...startResults, ...endResults].join(''),
           origin: text,
           tokens: usage,
         }
       }
       usage += currentToken.tokens
       if (currentToken.start) {
-        results.unshift(currentToken.text)
+        startResults.push(currentToken.text)
       } else {
-        results.push(currentToken.text)
+        endResults.unshift(currentToken.text)
       }
     }
   }
+
+  const results = [...startResults, ...endResults]
   console.log(
     `sliceTextByTokens result usage [${usage}]`,
     results.join('') === text,

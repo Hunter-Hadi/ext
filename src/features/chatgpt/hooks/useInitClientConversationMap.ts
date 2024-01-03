@@ -1,13 +1,14 @@
+import cloneDeep from 'lodash-es/cloneDeep'
+import { useEffect } from 'react'
 import { useRecoilState } from 'recoil'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
-import { useCreateClientMessageListener } from '@/background/utils'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+
 import {
   IChatConversation,
   PaginationConversation,
 } from '@/background/src/chatConversations'
-import { useEffect } from 'react'
-import cloneDeep from 'lodash-es/cloneDeep'
+import { useCreateClientMessageListener } from '@/background/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export const clientGetConversation = async (conversationId: string) => {

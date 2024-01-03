@@ -1,16 +1,17 @@
-import React, { FC } from 'react'
-import { isShowChatBox, showChatBox } from '@/utils'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
+import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
+
 import { SidePanelIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
-import useCommands from '@/hooks/useCommands'
 import { FloatingDropdownMenuState, useRangy } from '@/features/contextMenu'
-import { useRecoilState } from 'recoil'
 import { floatingContextMenuSaveDraftToChatBox } from '@/features/contextMenu/utils'
-import { useTranslation } from 'react-i18next'
+import useCommands from '@/hooks/useCommands'
+import { isShowChatBox, showChatBox } from '@/utils'
 
 const FloatingContextMenuOpenSidebarButton: FC<{
   sx?: SxProps

@@ -275,6 +275,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const currentTitle = title || config?.title || ''
     const selectTypeVariables: IActionSetVariable[] = []
     const textTypeVariables: IActionSetVariable[] = []
+    const formData = getValues()
     // 先添加系统预设的变量
     currentSystemVariables
       // 再添加用户自定义的变量
@@ -285,6 +286,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         }
         if (variable.valueType === 'Text' && !variable.hidden) {
           textTypeVariables.push(variable)
+          if (
+            Object.prototype.hasOwnProperty.call(
+              formData,
+              variable.VariableName,
+            )
+          ) {
+            setValue(variable.VariableName, variable.defaultValue)
+          }
         }
         const validates = variable.validates || []
         reactHookFormRegisterMap[variable.VariableName] = register(

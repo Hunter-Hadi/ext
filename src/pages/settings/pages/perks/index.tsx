@@ -1,5 +1,6 @@
-import React, { FC } from 'react'
 import Stack from '@mui/material/Stack'
+import React, { FC } from 'react'
+
 import FeatureOneClickPromptsCard from '@/pages/settings/pages/perks/FeatureOneClickPromptsCard'
 import FeatureRewardsCard from '@/pages/settings/pages/perks/FeatureRewardsCard'
 

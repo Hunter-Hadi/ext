@@ -1,4 +1,5 @@
 import Browser from 'webextension-polyfill'
+
 import { COUNTRIES_MAP } from '@/utils/staticData'
 
 export type ICountryIconSizeType =

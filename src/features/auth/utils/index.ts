@@ -1,13 +1,14 @@
+import dayjs from 'dayjs'
+import isArray from 'lodash-es/isArray'
+import Browser from 'webextension-polyfill'
+
 import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
 } from '@/constants'
-import Browser from 'webextension-polyfill'
 import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
-import isArray from 'lodash-es/isArray'
 import { sendLarkBotMessage } from '@/utils/larkBot'
-import dayjs from 'dayjs'
 
 export const getChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(

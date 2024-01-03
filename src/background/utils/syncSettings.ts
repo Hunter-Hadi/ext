@@ -1,13 +1,14 @@
-import { get, post } from '@/utils/request'
-import { IChromeExtensionDBStorage } from '@/background/utils/index'
-import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 import dayjs from 'dayjs'
 import cloneDeep from 'lodash-es/cloneDeep'
-import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+
 import {
   getChromeExtensionDBStorage,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { IChromeExtensionDBStorage } from '@/background/utils/index'
+import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import { get, post } from '@/utils/request'
 
 export const syncServerSettingsToLocalSettings = async () => {
   try {

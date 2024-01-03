@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 import useMediaQuery from '@mui/material/useMediaQuery'
+import React, { FC } from 'react'
+
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const PerkCard: FC<{
   title: string

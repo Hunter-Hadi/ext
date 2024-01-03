@@ -1,9 +1,10 @@
-import { useRecoilValue } from 'recoil'
-import { AuthUserInfoState } from '@/features/auth/store'
-import { useMemo } from 'react'
-import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { IUserPlanNameType, IUserRoleType } from '@/features/auth/types'
 import dayjs from 'dayjs'
+import { useMemo } from 'react'
+import { useRecoilValue } from 'recoil'
+
+import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { AuthUserInfoState } from '@/features/auth/store'
+import { IUserPlanNameType, IUserRoleType } from '@/features/auth/types'
 
 export type IUserCurrentPlan = {
   name: IUserRoleType

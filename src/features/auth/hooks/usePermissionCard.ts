@@ -1,10 +1,11 @@
+import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import {
   PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST,
   PermissionWrapperCardSceneType,
   PermissionWrapperCardType,
 } from '@/features/auth/components/PermissionWrapper/types'
-import { useTranslation } from 'react-i18next'
-import { useMemo } from 'react'
 import { getPermissionCardSettingsBySceneType } from '@/features/auth/components/PermissionWrapper/types'
 
 export const usePermissionCard = (

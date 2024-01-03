@@ -1,6 +1,6 @@
 import { IAIProviderType } from '@/background/provider/chat'
-import { IChatConversationMeta } from '@/background/src/chatConversations'
 import { OPENAI_API_SYSTEM_MESSAGE } from '@/background/src/chat/OpenAIApiChat/types'
+import { IChatConversationMeta } from '@/background/src/chatConversations'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 
 export const getAIProviderConversationMetaConfig = async (

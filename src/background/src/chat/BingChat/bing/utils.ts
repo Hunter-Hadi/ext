@@ -1,5 +1,6 @@
-import { ChatResponseMessage } from './types'
 import { file2base64 } from '@/background/utils/uplpadFileProcessHelper'
+
+import { ChatResponseMessage } from './types'
 
 export function convertMessageToMarkdown(message: ChatResponseMessage): string {
   if (message.messageType === 'InternalSearchQuery') {

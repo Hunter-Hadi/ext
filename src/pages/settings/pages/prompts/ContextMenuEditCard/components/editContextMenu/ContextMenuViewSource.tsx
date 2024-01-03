@@ -1,8 +1,9 @@
-import React, { FC, useMemo, useState } from 'react'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
+import React, { FC, useMemo, useState } from 'react'
+
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 

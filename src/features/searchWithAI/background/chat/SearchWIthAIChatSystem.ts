@@ -1,24 +1,23 @@
 import { ChatAdapterInterface } from '@/background/provider/chat'
-import { createBackgroundMessageListener } from '@/background/utils'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
-import { ISearchWithAISendEvent } from '../eventType'
-import {
-  getSearchWithAISettings,
-  setSearchWithAISettings,
-} from '../../utils/searchWithAISettings'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { createBackgroundMessageListener } from '@/background/utils'
 
+import { CHATGPT_3_5_MODEL_NAME } from '../../chatCore/chatgpt/constants'
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_PROVIDER_MAP,
 } from '../../constants'
-
-import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { CHATGPT_3_5_MODEL_NAME } from '../../chatCore/chatgpt/constants'
-import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
-import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
+import {
+  getSearchWithAISettings,
+  setSearchWithAISettings,
+} from '../../utils/searchWithAISettings'
+import { ISearchWithAISendEvent } from '../eventType'
 import { initProviderChatAdapters } from '../utils'
 
 class SearchWIthAIChatSystem {

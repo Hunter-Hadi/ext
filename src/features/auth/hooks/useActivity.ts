@@ -19,7 +19,11 @@ const useActivity = () => {
   const firstLoadingRef = useRef(false)
   // 是否展示活动的banner
   const isShowActivityBanner = useMemo(() => {
-    // 如果是登录状态，且当前用户不是elite年费用户，且没有展示过，就展示黑五活动的banner
+    // 活动结束banner
+    if (dayjs().utc().diff(dayjs('2024-01-01').utc()) > 0) {
+      return false
+    }
+    // 如果是登录状态，且当前用户不是elite年费用户，且没有展示过，就展示活动的banner
     if (isLogin && (!loading || firstLoadingRef.current)) {
       firstLoadingRef.current = true
       if (

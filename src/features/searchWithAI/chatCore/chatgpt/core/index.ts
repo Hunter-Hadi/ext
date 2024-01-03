@@ -1,12 +1,14 @@
-import { mappingToMessages } from '@/features/chatgpt/core/util'
 // import Log from '@/util/Log'
 import { v4 as uuidV4 } from 'uuid'
-import { CHATGPT_3_5_MODEL_NAME } from '../constants'
-import { fetchSSE } from './fetch-sse'
+
+import { mappingToMessages } from '@/features/chatgpt/core/util'
 import {
   getSearchWithAISettings,
   setSearchWithAISettings,
 } from '@/features/searchWithAI/utils/searchWithAISettings'
+
+import { CHATGPT_3_5_MODEL_NAME } from '../constants'
+import { fetchSSE } from './fetch-sse'
 
 export type IChatGPTModelType = {
   slug: string

@@ -1,21 +1,22 @@
-import React, { FC, useMemo, useRef } from 'react'
-import { IChatUploadFile } from '@/features/chatgpt/types'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import Button from '@mui/material/Button'
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import React, { FC, useMemo, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
+
 import {
   checkFileTypeIsImage,
   file2base64,
 } from '@/background/utils/uplpadFileProcessHelper'
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ChatIconFileList, {
   ChatIconFileListProps,
 } from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
-import { useRecoilValue } from 'recoil'
+import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { useTranslation } from 'react-i18next'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean

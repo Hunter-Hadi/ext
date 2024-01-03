@@ -1,11 +1,12 @@
 // import LoopOutlinedIcon from '@mui/icons-material/LoopOutlined'
+import OpenInNewOutlined from '@mui/icons-material/OpenInNewOutlined'
+import Button from '@mui/material/Button'
+import Stack from '@mui/material/Stack'
 import { FC } from 'react'
 import React from 'react'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import Stack from '@mui/material/Stack'
-import Button from '@mui/material/Button'
 import { useTranslation } from 'react-i18next'
-import OpenInNewOutlined from '@mui/icons-material/OpenInNewOutlined'
+
+import { IAIResponseMessage } from '@/features/chatgpt/types'
 
 interface IProps {
   handleAskQuestion: () => void

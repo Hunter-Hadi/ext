@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Näytä ratkaisut",
     "sidebar__input__tokens_limited__title": "enintään merkit",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Googlen Gemini-perhe, suunniteltu skaalautuvuutta ja monipuolisuutta varten. Tukee 38 kieltä ja 32k sanan kontekstiruutua.",
+    "provider__gemini__short_description": "Googlen kyvykkäin ja yleisin malli, joka on rakennettu alusta asti monimuotoisuutta varten. Gemini MaxAI:ssa tukee tällä hetkellä tekstiä ja koodia ja pian lisätään tuki kuvien, videoiden ja äänen käyttöön.",
     "provider__gemini__auth_description": "Käytä Geminiä laajennuksen voimanlähteenä.",
     "provider__gemini__auth_button_text": "Jatka Geminitä",
     "provider__gemini__model__gemini_pro__description": "Googlen Gemini-perhe, suunniteltu skaalautuvuutta varten ja tarjoaa vahvat yleisosaamisen ominaisuudet. Tukee 38 kieltä ja 32k sanan kontekstiruutua.",

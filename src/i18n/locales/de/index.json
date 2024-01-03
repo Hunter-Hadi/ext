@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Lösungen anzeigen",
     "sidebar__input__tokens_limited__title": "max. Tokens",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Die Gemini-Familie von Google, die für Skalierbarkeit und Vielseitigkeit entwickelt wurde. Unterstützt 38 Sprachen und ein Kontextfenster von 32k Tokens.",
+    "provider__gemini__short_description": "Googles leistungsfähigstes und vielseitigstes Modell, das von Grund auf für Multimodalität entwickelt wurde. Gemini auf MaxAI unterstützt derzeit Text und Code und wird bald Unterstützung für Bilder, Videos und Audio hinzufügen.",
     "provider__gemini__auth_description": "Verwenden Sie Gemini, um die Erweiterung zu aktivieren.",
     "provider__gemini__auth_button_text": "Mit Gemini fortfahren",
     "provider__gemini__model__gemini_pro__description": "Die Gemini-Familie von Google, die entwickelt wurde, um Skalierbarkeit zu bieten und starke Generalistenfähigkeiten aufweist. Unterstützt 38 Sprachen und ein Kontextfenster von 32k Tokens.",

@@ -366,7 +366,7 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarization, and comprehension.",
     "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google's Gemini family, designed for scalability and versatility, supporting 38 languages and a context window of 32k tokens.",
+    "provider__gemini__short_description": "Google's most capable and general model, built from the ground up for multimodality. Gemini on MaxAI currently supports text and code and will soon add support for images, videos, and audio.",
     "provider__gemini__auth_description": "Use Gemini to power the extension.",
     "provider__gemini__auth_button_text": "Continue with Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini family, designed to offer scalability and exhibits strong generalist capabilities, supporting 38 languages and a context window of 32k tokens.",

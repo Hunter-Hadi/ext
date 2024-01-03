@@ -494,7 +494,7 @@
     "provider__label__view_solutions": "Çözümleri görüntüle",
     "sidebar__input__tokens_limited__title": "maksimum jetonlar",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google'ın Gemini ailesi, ölçeklenebilirlik ve çok yönlülük için tasarlanmıştır. 38 dil ve 32k token'lık bir bağlam penceresini destekler.",
+    "provider__gemini__short_description": "Google'ın en yetenekli ve genel modeli, çoklu işlevsellik için baştan aşağıya inşa edildi. MaxAI üzerindeki Gemini şu anda metin ve kod desteği sunmakta olup yakında resimler, videolar ve sesler için de destek ekleyecektir.",
     "provider__gemini__auth_description": "Uzantıyı çalıştırmak için Gemini'yi kullanın.",
     "provider__gemini__auth_button_text": "Gemini ile Devam Et",
     "provider__gemini__model__gemini_pro__description": "Google'un Gemini ailesi, ölçeklenebilirlik sunan ve güçlü genel yeteneklere sahip olan bir modeldir. 38 dil ve 32k token'lık bir bağlam penceresini destekler.",

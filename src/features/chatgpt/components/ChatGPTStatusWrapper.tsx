@@ -142,7 +142,7 @@ const ChatGPTStatusWrapper: FC = () => {
             >
               <UseChatGptIcon sx={{ fontSize: '24px' }} />
               <Typography
-                fontSize={'24px'}
+                fontSize={'23px'}
                 fontWeight={700}
                 color={'text.secondary'}
                 textAlign={'center'}

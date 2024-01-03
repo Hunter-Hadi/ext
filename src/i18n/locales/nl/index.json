@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Bekijk oplossingen",
     "sidebar__input__tokens_limited__title": "max tokens",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google's Gemini-familie, ontworpen voor schaalbaarheid en veelzijdigheid, ondersteunt 38 talen en een contextvenster van 32k tokens.",
+    "provider__gemini__short_description": "Google's meest capabele en algemene model, vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI ondersteunt momenteel tekst en code en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio.",
     "provider__gemini__auth_description": "Gebruik Gemini om de extensie te activeren.",
     "provider__gemini__auth_button_text": "Doorgaan met Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini-familie, ontworpen om schaalbaarheid te bieden en sterke generalistische mogelijkheden te tonen, ondersteunt 38 talen en een contextvenster van 32k tokens.",

@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Zobraziť riešenia",
     "sidebar__input__tokens_limited__title": "maximálne tokeny",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Gemini rodina od Googlu, navrhnutá pre škálovateľnosť a všestrannosť, podporuje 38 jazykov a kontextové okno s 32k tokenmi.",
+    "provider__gemini__short_description": "Najschopnejší a všeobecný model od Googlu, postavený od základov pre multimodalitu. Gemini na MaxAI momentálne podporuje text a kód a čoskoro pridá podporu pre obrázky, videá a zvuk.",
     "provider__gemini__auth_description": "Použite Gemini na napájanie rozšírenia.",
     "provider__gemini__auth_button_text": "Pokračovať s Gemini",
     "provider__gemini__model__gemini_pro__description": "Gemini rodiny od Googlu, navrhnutá pre škálovateľnosť a prejavuje silné všeobecné schopnosti, podporuje 38 jazykov a kontextové okno s 32k tokenmi.",

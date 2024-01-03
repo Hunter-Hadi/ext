@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Poglej rešitve",
     "sidebar__input__tokens_limited__title": "maksimalno število žetonov",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Gemini družina Googla, zasnovana za skalabilnost in vsestranskost, podpira 38 jezikov in kontekstno okno s 32k žetoni.",
+    "provider__gemini__short_description": "Najbolj sposoben in splošen model Googla, zgrajen od začetka za multimodalnost. Gemini na MaxAI trenutno podpira besedilo in kodo ter kmalu dodaja podporo za slike, videoposnetke in zvok.",
     "provider__gemini__auth_description": "Uporabite Gemini za napajanje razširitve.",
     "provider__gemini__auth_button_text": "Nadaljujte z Gemini",
     "provider__gemini__model__gemini_pro__description": "Gemini družina Googla, zasnovana za skalabilnost in močne splošne sposobnosti, podpira 38 jezikov in kontekstno okno s 32k žetoni.",

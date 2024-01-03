@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Angalia suluhisho",
     "sidebar__input__tokens_limited__title": "kiwango cha juu cha alama",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Familia ya Gemini ya Google, iliyoundwa kwa ajili ya upanuzi na uwezo wa kubadilika, ikisaidia lugha 38 na dirisha la muktadha lenye herufi 32k.",
+    "provider__gemini__short_description": "Mfano mkuu na wa kawaida zaidi wa Google, uliojengwa kutoka mwanzo kwa ajili ya multimodality. Gemini kwenye MaxAI kwa sasa inasaidia maandishi na nambari na hivi karibuni itaongeza usaidizi kwa picha, video, na sauti.",
     "provider__gemini__auth_description": "Tumia Gemini kuwezesha upanuzi.",
     "provider__gemini__auth_button_text": "Endelea na Gemini",
     "provider__gemini__model__gemini_pro__description": "Familia ya Gemini ya Google, iliyoundwa kutoa uwezo wa kupanuka na kuonyesha uwezo mkubwa wa jumla, ikisaidia lugha 38 na dirisha la muktadha lenye herufi 32k.",

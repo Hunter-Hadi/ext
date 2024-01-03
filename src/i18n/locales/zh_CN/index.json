@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "查看解决方案",
     "sidebar__input__tokens_limited__title": "最多令牌",
     "provider__gemini__title": "双子座",
-    "provider__gemini__short_description": "谷歌的Gemini系列，旨在提供可扩展性和多功能性，支持38种语言和32k个标记的上下文窗口。",
+    "provider__gemini__short_description": "谷歌最强大且通用的模型，从头开始为多模态构建。MaxAI上的Gemini目前支持文本和代码，并将很快添加对图像、视频和音频的支持。",
     "provider__gemini__auth_description": "使用双子座来提供扩展功能。",
     "provider__gemini__auth_button_text": "继续使用双子座",
     "provider__gemini__model__gemini_pro__description": "谷歌的Gemini系列，旨在提供可扩展性和强大的通用能力，支持38种语言和32k个标记的上下文窗口。",

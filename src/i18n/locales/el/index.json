@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Προβολή λύσεων",
     "sidebar__input__tokens_limited__title": "μέγιστα tokens",
     "provider__gemini__title": "Δίδυμος",
-    "provider__gemini__short_description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και ευελιξία, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",
+    "provider__gemini__short_description": "Το πιο ικανό και γενικό μοντέλο της Google, χτισμένο από το μηδέν για πολυτροπικότητα. Το Gemini στο MaxAI υποστηρίζει αυτή τη στιγμή κείμενο και κώδικα και σύντομα θα προσθέσει υποστήριξη για εικόνες, βίντεο και ήχο.",
     "provider__gemini__auth_description": "Χρησιμοποιήστε το Δίδυμο για να ενεργοποιήσετε την επέκταση.",
     "provider__gemini__auth_button_text": "Συνέχεια με το Δίδυμο",
     "provider__gemini__model__gemini_pro__description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και επιδεικνύει ισχυρές γενικές δυνατότητες, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",

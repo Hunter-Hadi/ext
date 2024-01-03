@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Veure solucions",
     "sidebar__input__tokens_limited__title": "màxim de tokens",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Família Gemini de Google, dissenyada per escalabilitat i versatilitat, suportant 38 idiomes i una finestra de context de 32k tokens.",
+    "provider__gemini__short_description": "El model més capaç i general de Google, construït des de zero per a la multimodalitat. Gemini a MaxAI actualment suporta text i codi i aviat afegirà suport per a imatges, vídeos i àudio.",
     "provider__gemini__auth_description": "Utilitza Gemini per alimentar l'extensió.",
     "provider__gemini__auth_button_text": "Continua amb Gemini",
     "provider__gemini__model__gemini_pro__description": "Família Gemini de Google, dissenyada per oferir escalabilitat i exhibeix fortes capacitats generalistes, suportant 38 idiomes i una finestra de context de 32k tokens.",

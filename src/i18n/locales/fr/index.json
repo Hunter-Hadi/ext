@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Voir les solutions",
     "sidebar__input__tokens_limited__title": "maximum de jetons",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "La famille Gemini de Google, conçue pour l'évolutivité et la polyvalence, prenant en charge 38 langues et une fenêtre contextuelle de 32k tokens.",
+    "provider__gemini__short_description": "Le modèle le plus performant et général de Google, conçu spécialement pour la multimodalité. Gemini sur MaxAI prend actuellement en charge le texte et le code, et ajoutera bientôt la prise en charge des images, des vidéos et de l'audio.",
     "provider__gemini__auth_description": "Utilisez Gemini pour alimenter l'extension.",
     "provider__gemini__auth_button_text": "Continuer avec Gemini",
     "provider__gemini__model__gemini_pro__description": "La famille Gemini de Google, conçue pour offrir une évolutivité et des capacités généralistes solides, prenant en charge 38 langues et une fenêtre contextuelle de 32k tokens.",

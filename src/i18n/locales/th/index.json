@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "ดูวิธีแก้ปัญหา",
     "sidebar__input__tokens_limited__title": "จำนวนสูงสุดของโทเค็น",
     "provider__gemini__title": "จีมินาย",
-    "provider__gemini__short_description": "รองรับภาษา 38 ภาษาและหน้าต่างบริบท 32k โทเค็น รองรับการขยายของ Gemini จาก Google ที่ออกแบบมาเพื่อให้สามารถปรับขนาดได้และมีความหลากหลาย",
+    "provider__gemini__short_description": "โมเดลที่สามารถใช้งานได้มากที่สุดและหลากหลายของ Google ที่สร้างขึ้นมาเพื่อการใช้งานหลายรูปแบบ  Gemini on MaxAI สนับสนุนข้อความและโค้ดและเร็ว ๆ นี้จะเพิ่มการสนับสนุนสำหรับภาพ วิดีโอ และเสียง",
     "provider__gemini__auth_description": "ใช้ Gemini เพื่อให้พลังงานให้กับส่วนขยาย",
     "provider__gemini__auth_button_text": "ดำเนินการต่อด้วย Gemini",
     "provider__gemini__model__gemini_pro__description": "ครอบคลุมภาษา 38 ภาษาและหน้าต่างบริบท 32k โทเค็น รองรับการขยายของ Gemini จาก Google ที่ออกแบบมาเพื่อให้สามารถปรับขนาดได้และมีความสามารถทั่วไปที่แข็งแกร่ง",

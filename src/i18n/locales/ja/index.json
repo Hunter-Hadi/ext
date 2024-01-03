@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "ソリューションを表示",
     "sidebar__input__tokens_limited__title": "最大トークン数",
     "provider__gemini__title": "ジェミニ",
-    "provider__gemini__short_description": "Googleのジェミニファミリーは、スケーラビリティと多様性を備えており、38言語と32kトークンのコンテキストウィンドウをサポートしています。",
+    "provider__gemini__short_description": "Googleの最も能力があり、一般的なモデルであり、マルチモダリティに対応するために一から構築されました。MaxAI上のGeminiは現在、テキストとコードをサポートしており、近々画像、動画、音声のサポートも追加されます。",
     "provider__gemini__auth_description": "エクステンションのパワーにジェミニを使用します。",
     "provider__gemini__auth_button_text": "ジェミニで続行",
     "provider__gemini__model__gemini_pro__description": "Googleのジェミニファミリーは、スケーラビリティを提供し、強力な汎用機能を備えており、38言語と32kトークンのコンテキストウィンドウをサポートしています。",

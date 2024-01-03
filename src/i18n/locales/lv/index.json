@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Skatīt risinājumus",
     "sidebar__input__tokens_limited__title": "maksimālais skaits",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google Gemini ģimene, kas ir izstrādāta mērogojamībai un daudzpusībai, atbalsta 38 valodas un konteksta logu ar 32k simboliem.",
+    "provider__gemini__short_description": "Google visvairāk spējīgais un vispārīgākais modelis, kas izveidots no nulles multimodalitātei. Gemini uz MaxAI pašlaik atbalsta tekstu un kodu, drīzumā tiks pievienots atbalsts attēliem, video un audio.",
     "provider__gemini__auth_description": "Izmantojiet Gemini, lai nodrošinātu paplašinājumu.",
     "provider__gemini__auth_button_text": "Turpināt ar Gemini",
     "provider__gemini__model__gemini_pro__description": "Google Gemini ģimene, kas ir izstrādāta, lai nodrošinātu mērogojamību un spēcīgas vispārējas spējas, atbalsta 38 valodas un konteksta logu ar 32k simboliem.",

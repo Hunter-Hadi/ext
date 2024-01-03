@@ -493,7 +493,7 @@
     "provider__label__view_solutions": "Переглянути рішення",
     "sidebar__input__tokens_limited__title": "макс. токени",
     "provider__gemini__title": "Геміні",
-    "provider__gemini__short_description": "Сім'я Gemini від Google, розроблена для масштабованості та універсальності, підтримує 38 мов та контекстне вікно з 32 тис. токенів.",
+    "provider__gemini__short_description": "Найбільш потужна та універсальна модель від Google, створена з нуля для багатомодальності. Gemini на MaxAI наразі підтримує текст і код, а незабаром додаст підтримку для зображень, відео та аудіо.",
     "provider__gemini__auth_description": "Використовуйте Геміні для розширення функціональності.",
     "provider__gemini__auth_button_text": "Продовжити з Геміні",
     "provider__gemini__model__gemini_pro__description": "Сім'я Gemini від Google, розроблена для масштабованості та має сильні загальні можливості, підтримує 38 мов та контекстне вікно з 32 тис. токенів.",

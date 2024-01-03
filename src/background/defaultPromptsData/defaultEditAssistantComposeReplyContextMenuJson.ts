@@ -13,7 +13,9 @@ const socialMediaPrompts = [
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -79,7 +81,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -145,7 +149,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -211,7 +217,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -277,7 +285,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -343,7 +353,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SET_VARIABLE',
@@ -415,7 +427,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -482,7 +496,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SET_VARIABLE',
@@ -555,7 +571,9 @@ Output the answer without additional context, explanation, or extra wording, jus
       actions: [
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',
@@ -784,7 +802,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -838,7 +858,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -892,7 +914,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -946,7 +970,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -1000,7 +1026,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -1054,7 +1082,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -1108,7 +1138,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'SLICE_OF_TEXT',
@@ -1163,7 +1195,9 @@ const emailPrompts = [
       actions: [
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-          parameters: {},
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
         },
         {
           type: 'RENDER_TEMPLATE',

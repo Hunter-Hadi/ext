@@ -211,6 +211,8 @@ interface ActionParameters {
   ActionChatMessageType?: IChatMessage['type']
   ActionChatMessageOperationType?: 'add' | 'update' | 'delete'
   ActionChatMessageConfig?: IChatMessage
+  // 是否需要Action产生的变量进行MiddleOut:GET_EMAIL_CONTENTS_OF_WEBPAGE\GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE
+  isVariableMiddleOutEnabled?: boolean
 }
 
 export default ActionParameters

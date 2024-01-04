@@ -82,6 +82,10 @@ const useDaemonProcess = () => {
         return
       }
     }
+    if (document.body.querySelector('button[data-testid="send-button"]')) {
+      setPageSuccessLoaded(true)
+      return
+    }
     const textareaElements = document.body.querySelectorAll('textarea')
     for (let i = 0; i < textareaElements.length; i++) {
       if (textareaElements[i] instanceof HTMLTextAreaElement) {
@@ -190,6 +194,17 @@ const useDaemonProcess = () => {
                 }
                 setShowDaemonProcessBar(true)
                 Browser.runtime.onMessage.addListener(listener)
+              } else {
+                // models不可能为0
+                log.error('models is empty')
+                await clientPort.postMessage({
+                  event: 'Client_updateTabVisible',
+                  data: {
+                    visible: true,
+                    windowVisible: true,
+                    windowFocus: true,
+                  },
+                })
               }
             } catch (e) {
               await clientPort.postMessage({

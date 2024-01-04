@@ -203,14 +203,19 @@ const DevShortcutsLog: FC = () => {
             action.status === 'complete' && (
               <Stack direction={'row'} gap={1} mt={1}>
                 <Stack>
-                  <SouthIcon
-                    sx={{
-                      fontSize: '11px',
-                      mt: 0.5,
-                      transform: 'rotate(45deg)',
-                      marginLeft: 'auto',
-                    }}
-                  />
+                  {action.output === 'true' ? (
+                    <SouthIcon
+                      sx={{
+                        fontSize: '11px',
+                        mt: 0.5,
+                        transform: 'rotate(45deg)',
+                        marginLeft: 'auto',
+                      }}
+                    />
+                  ) : (
+                    <Stack height={16}></Stack>
+                  )}
+
                   <Stack
                     sx={{
                       p: 0.5,
@@ -228,23 +233,31 @@ const DevShortcutsLog: FC = () => {
                       deep + 1,
                     )}
                   </Stack>
-                  <SouthIcon
-                    sx={{
-                      fontSize: '11px',
-                      mt: 0.5,
-                      transform: 'rotate(-45deg)',
-                      marginLeft: 'auto',
-                    }}
-                  />
+                  {action.output === 'true' ? (
+                    <SouthIcon
+                      sx={{
+                        fontSize: '11px',
+                        mt: 0.5,
+                        transform: 'rotate(-45deg)',
+                        marginLeft: 'auto',
+                      }}
+                    />
+                  ) : (
+                    <Stack height={16}></Stack>
+                  )}
                 </Stack>
                 <Stack>
-                  <SouthIcon
-                    sx={{
-                      fontSize: '11px',
-                      mt: 0.5,
-                      transform: 'rotate(-45deg)',
-                    }}
-                  />
+                  {action.output === 'false' ? (
+                    <SouthIcon
+                      sx={{
+                        fontSize: '11px',
+                        mt: 0.5,
+                        transform: 'rotate(-45deg)',
+                      }}
+                    />
+                  ) : (
+                    <Stack height={16}></Stack>
+                  )}
                   <Stack
                     sx={{
                       p: 0.5,
@@ -262,13 +275,17 @@ const DevShortcutsLog: FC = () => {
                       deep + 1,
                     )}
                   </Stack>
-                  <SouthIcon
-                    sx={{
-                      fontSize: '11px',
-                      mt: 0.5,
-                      transform: 'rotate(45deg)',
-                    }}
-                  />
+                  {action.output === 'false' ? (
+                    <SouthIcon
+                      sx={{
+                        fontSize: '11px',
+                        mt: 0.5,
+                        transform: 'rotate(45deg)',
+                      }}
+                    />
+                  ) : (
+                    <Stack height={16}></Stack>
+                  )}
                 </Stack>
               </Stack>
             )}

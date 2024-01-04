@@ -85,9 +85,17 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
     const [postContent, ...comments] = replyMessageThread
     if (!postContent) {
       // 说明可能在Home或者其他页面
-      const homePostContent = instagramRootReplyBox.querySelector(
+      let homePostContent = instagramRootReplyBox.querySelector(
         'div:has( > span[dir] > span[dir])',
       ) as HTMLSpanElement
+      // 说明可能是在Home的纯图片Post,没有文字说明
+      if (!homePostContent) {
+        homePostContent = findParentEqualSelector(
+          'article',
+          instagramRootReplyBox,
+          10,
+        ) as HTMLElement
+      }
       if (homePostContent) {
         const homePagePostData = await getInstagramCommentDetail(
           homePostContent,
@@ -122,8 +130,13 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
           commandList.push(commentData)
           hasFound = true
         }
+        // @since 2023-10-12 - 1.0版本
+        // const subComments = Array.from(
+        //   comments[j + 1]?.querySelectorAll('ul > div'),
+        // ) as HTMLDivElement[]
+        // update 2024-01-04 - 2.0版本
         const subComments = Array.from(
-          comments[j + 1]?.querySelectorAll('ul > div'),
+          comments[j]?.querySelectorAll('ul > div'),
         ) as HTMLDivElement[]
         if (subComments.length > 0) {
           for (let k = 0; k < subComments.length; k++) {

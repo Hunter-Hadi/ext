@@ -6,6 +6,7 @@ import {
   delayAndScrollToInputAssistantButton,
   findParentEqualSelector,
   findSelectorParent,
+  findSelectorParentStrict,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ICommentData,
@@ -37,21 +38,21 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
     'form[role="presentation"]',
     inputAssistantButton,
   )
-  const facebookPostContentCard = findSelectorParent(
-    'div[data-ad-preview="message"]',
-    facebookReplyForm,
-    30,
-  )
-  const h3AuthorElement = findSelectorParent(
-    'span:has(h3 > span)',
-    facebookReplyForm,
-    30,
-  )
+  const facebookPostContentCard =
+    findSelectorParent(
+      'div > div:not(:first-child) > blockquote > span > div',
+      facebookReplyForm,
+      30,
+    ) ||
+    findSelectorParent('div[data-ad-preview="message"]', facebookReplyForm, 30)
+  const hTagAuthorElement =
+    findSelectorParent('span:has(h3 > span)', facebookReplyForm, 30) ||
+    findSelectorParent('span:has(h2 > span)', facebookReplyForm, 30)
   const facebookPostAuthorElement =
-    h3AuthorElement ||
+    hTagAuthorElement ||
     findSelectorParent('span:has(h4 > div)', facebookReplyForm, 30)
   const facebookPostAuthor = facebookPostAuthorElement?.innerText || ''
-  const facebookPostDate = h3AuthorElement
+  const facebookPostDate = hTagAuthorElement
     ? (facebookPostAuthorElement?.nextElementSibling?.querySelector(
         'a',
       ) as HTMLAnchorElement)?.innerText
@@ -120,17 +121,96 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       }
       break
     }
-    if (replyContent.replace('\n', '') && !facebookPostComments.length) {
-      const homePagePostCommentBox = findSelectorParent(
-        'div[role="article"]',
+    if (!facebookPostComments.length) {
+      // update - 2024-01-04 - 2.0版本
+      const inputValue = replyContent.replace('\n', '')
+      // 回复框所在的根级Comment，不一定是最顶层，有可能还是被嵌套的3、4级
+      const facebookReplyFormRootElement = findSelectorParent(
+        'div[class]:has( > div[class] > div[class] > div[class] > div[class] > div[class] > div[class] > div[class] form)',
         facebookReplyForm,
       )
-      const commentData = await getFacebookCommentDetail(
-        homePagePostCommentBox as HTMLElement,
-      )
-      if (replyContent.startsWith(commentData.author)) {
-        // 确定是主页的评论回复
-        facebookPostComments.push(commentData)
+      if (facebookReplyFormRootElement) {
+        // NOTE: Facebook的层级是这样:
+        // 1.先找到Form的Root
+        // 2.再找到对应的"Form的根级Comment"
+        // 3.再找是不是回复"Form的根级Comment"的子级的Comment
+        // 4.再找"Form的根级Comment"的父级Comment
+        const facebookReplyFormRootArticle = facebookReplyFormRootElement
+          ?.parentElement?.parentElement
+          ?.previousElementSibling as HTMLDivElement
+        if (facebookReplyFormRootArticle) {
+          const childComments = facebookReplyFormRootArticle.nextElementSibling
+            ? (Array.from(
+                facebookReplyFormRootArticle.nextElementSibling.querySelectorAll(
+                  'div[role="article"]',
+                ),
+              ) as HTMLDivElement[])
+            : []
+          if (childComments && inputValue) {
+            for (let i = 0; i < childComments.length; i++) {
+              const commentData = await getFacebookCommentDetail(
+                childComments[i],
+              )
+              if (inputValue.startsWith(commentData.author)) {
+                facebookPostComments.push(commentData)
+              }
+            }
+          }
+          facebookPostComments.unshift(
+            await getFacebookCommentDetail(facebookReplyFormRootArticle),
+          )
+          // 到这一步，回复框所在的父级comment和子级comment就处理完成了
+          // 还需要递归处理父级comment的父级comment
+          let parentComment = findSelectorParentStrict(
+            'div > div[class] > div[class]:has( > div[role="article"])',
+            facebookReplyFormRootArticle,
+          )
+          let prevComment: HTMLElement = facebookReplyFormRootArticle
+          while (parentComment) {
+            if (
+              prevComment?.parentElement?.parentElement?.parentElement?.isSameNode(
+                parentComment?.parentElement?.parentElement?.parentElement ||
+                  null,
+              )
+            ) {
+              break
+            }
+            const commentData = await getFacebookCommentDetail(parentComment)
+            if (facebookPostComments[0].content === commentData.content) {
+              // 说明重复了
+              break
+            }
+            facebookPostComments.unshift(commentData)
+            prevComment = parentComment
+            parentComment = findSelectorParentStrict(
+              'div > div[class] > div[class]:has( > div[role="article"])',
+              parentComment,
+            )
+          }
+        }
+      } else {
+        // since - 2023-09-26 - 1.0版本
+        // 更新了一下判断是回复人还是回复帖子
+        const homePagePostReplyFormRoot = findSelectorParent(
+          '& > div:has(div[role="article"]) + div:has(form)',
+          facebookReplyForm,
+          15,
+        )
+        if (homePagePostReplyFormRoot?.parentElement?.getAttribute('class')) {
+          // 说明是回复帖子
+          // 不做处理
+        } else {
+          // 在主页回复的comment的容器
+          const homePagePostReplyCommentRoot = homePagePostReplyFormRoot?.previousElementSibling?.querySelector(
+            'div[role="article"]',
+          ) as HTMLDivElement
+          if (homePagePostReplyCommentRoot) {
+            const commentData = await getFacebookCommentDetail(
+              homePagePostReplyCommentRoot,
+            )
+            facebookPostComments.push(commentData)
+          }
+        }
       }
     }
     facebookSocialMediaPostContext.addCommentList(facebookPostComments)

@@ -57,9 +57,6 @@ export const AI_PROVIDER_MAP = {
 // app.maxai.me
 export const APP_USE_CHAT_GPT_API_HOST = process.env.APP_USE_CHAT_GPT_API_HOST
 export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
-// AI 回答速度设置
-export const BACKGROUND_SEND_TEXT_SPEED_SETTINGS =
-  'BACKGROUND_SEND_TEXT_SPEED_SETTINGS'
 
 // openai
 export const OPENAI_IFRAME_ID = `${MAXAI_CHROME_EXTENSION_ID}_OPENAI_IFRAME_ID`

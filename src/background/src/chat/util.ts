@@ -151,6 +151,7 @@ export const askChatGPTQuestion = async (
     onError?: (error: string) => void
   },
 ) => {
+  const tasks: any = []
   return new Promise((resolve) => {
     const taskId = question.messageId
     const destroyListener = createClientMessageListener(async (event, data) => {
@@ -158,20 +159,7 @@ export const askChatGPTQuestion = async (
         event === 'Client_askChatGPTQuestionResponse' &&
         data.taskId === taskId
       ) {
-        if (data.error) {
-          onError?.(data.error)
-        } else if (data?.data?.text) {
-          onMessage?.(data.data)
-        }
-        if (data.done) {
-          resolve(true)
-          destroyListener()
-          return {
-            success: true,
-            message: 'ok',
-            data: {},
-          }
-        }
+        tasks.push(data)
         return {
           success: true,
           message: 'ok',
@@ -180,6 +168,30 @@ export const askChatGPTQuestion = async (
       }
       return undefined
     })
+    const runTask = () => {
+      window.requestIdleCallback(() => {
+        console.log(
+          '测试测测试测测试测测试测测试测, requestIdleCallback',
+          tasks,
+        )
+        if (tasks.length === 0) {
+          runTask()
+        }
+        const lastTaskData = tasks[tasks.length - 1]
+        if (lastTaskData.error) {
+          onError?.(lastTaskData.error)
+        } else if (lastTaskData?.data?.text) {
+          onMessage?.(lastTaskData.data)
+        }
+        if (lastTaskData.done) {
+          resolve(true)
+          destroyListener()
+        } else {
+          runTask()
+        }
+      })
+    }
+    runTask()
     const port = new ContentScriptConnectionV2({
       runtime: 'client',
     })

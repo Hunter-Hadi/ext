@@ -19,7 +19,6 @@ import {
   APP_USE_CHAT_GPT_API_HOST,
   APP_USE_CHAT_GPT_HOST,
   APP_VERSION,
-  BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
 } from '@/constants'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
@@ -175,88 +174,9 @@ class UseChatGPTPlusChat extends BaseChat {
     }
     log.info('streaming start', postBody)
     // 后端会每段每段的给前端返回数据
-    // 前端保持匀速输出内容
     let messageResult = ''
-    let isEnd = false
     let hasError = false
-    let sentTextLength = 0
     let conversationId = this.conversation?.id || ''
-    const sendTextSettings = await Browser.storage.local.get(
-      BACKGROUND_SEND_TEXT_SPEED_SETTINGS,
-    )
-    const settings = sendTextSettings[BACKGROUND_SEND_TEXT_SPEED_SETTINGS] || {}
-    const interval = settings.interval || 50 //每隔(interval)ms输出一次
-    const echoTextRate = settings.rate || 0.5 // 每秒输出待发送文本的(rate * 100)%
-    const delay = (t: number) =>
-      new Promise((resolve) => setTimeout(resolve, t))
-    const throttleEchoText = async () => {
-      if (hasError) {
-        return
-      }
-      if (isEnd && sentTextLength === messageResult.length) {
-        // 在没有错误的情况下真正结束发送文本
-        log.info('streaming end success')
-        onMessage &&
-          onMessage({
-            done: true,
-            type: 'message',
-            error: '',
-            data: { text: '', conversationId },
-          })
-        return
-      }
-      let currentSendTextTextLength = 0
-      // 剩余要发送的文本长度
-      const waitSendTextLength = Math.floor(
-        messageResult.length - sentTextLength,
-      )
-      // 如果没有结束的话
-      if (!isEnd) {
-        // 发送剩余未文本的30%
-        const needSendTextLength = Math.floor(waitSendTextLength * echoTextRate)
-        currentSendTextTextLength = messageResult.slice(
-          sentTextLength,
-          needSendTextLength + sentTextLength,
-        ).length
-      } else {
-        // 如果结束了的话, 1秒钟发完剩下的文本, 至少发送10个字符
-        const needSendTextLength = Math.max(
-          Math.floor(messageResult.length * 0.1),
-          10,
-        )
-        currentSendTextTextLength = messageResult.slice(
-          sentTextLength,
-          needSendTextLength + sentTextLength,
-        ).length
-      }
-      if (currentSendTextTextLength > 0) {
-        log.debug(
-          'streaming echo message',
-          isEnd
-            ? '一秒发送完剩下的文本'
-            : `每${interval}毫秒发送剩余文本的${(echoTextRate * 100).toFixed(
-                0,
-              )}%`,
-          sentTextLength,
-          currentSendTextTextLength,
-          messageResult.length,
-        )
-        sentTextLength += currentSendTextTextLength
-        onMessage &&
-          onMessage({
-            type: 'message',
-            done: false,
-            error: '',
-            data: {
-              text: messageResult.slice(0, sentTextLength),
-              conversationId: conversationId,
-            },
-          })
-      }
-      await delay(isEnd ? 100 : interval)
-      await throttleEchoText()
-    }
-    throttleEchoText()
     let isTokenExpired = false
     await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
@@ -274,8 +194,17 @@ class UseChatGPTPlusChat extends BaseChat {
             conversationId = messageData.conversation_id
           }
           if (messageData?.text) {
-            // 记录到结果里，前端分流输出
             messageResult += messageData.text
+            onMessage &&
+              onMessage({
+                type: 'message',
+                done: false,
+                error: '',
+                data: {
+                  text: messageResult,
+                  conversationId: conversationId,
+                },
+              })
           }
           log.debug('streaming on message', messageResult)
         } catch (e) {
@@ -286,8 +215,6 @@ class UseChatGPTPlusChat extends BaseChat {
       .then()
       .catch((err) => {
         log.info('streaming end error', err)
-        isEnd = true
-        hasError = true
         if (
           err?.message === 'BodyStreamBuffer was aborted' ||
           err?.message === 'The user aborted a request.'
@@ -301,6 +228,7 @@ class UseChatGPTPlusChat extends BaseChat {
             })
           return
         }
+        hasError = true
         try {
           const error = JSON.parse(err.message || err)
           // 判断是不是付费model触发上线
@@ -335,8 +263,8 @@ class UseChatGPTPlusChat extends BaseChat {
             })
         }
       })
-    if (!isEnd) {
-      log.info('streaming end success')
+    log.info('streaming end success')
+    if (hasError) {
       if (messageResult === '') {
         // HACK: 后端现在偶尔会返回空字符串，这里做个fallback
         sendLarkBotMessage(
@@ -361,9 +289,18 @@ class UseChatGPTPlusChat extends BaseChat {
               'Something went wrong, please try again. If this issue persists, contact us via email.',
             data: { text: '', conversationId },
           })
-      } else {
-        isEnd = true
       }
+    } else {
+      onMessage &&
+        onMessage({
+          done: true,
+          type: 'message',
+          error: '',
+          data: {
+            text: messageResult,
+            conversationId,
+          },
+        })
     }
     if (isTokenExpired) {
       log.info('user token expired')

@@ -82,7 +82,7 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
       : (Array.from(
           instagramRootReplyBox?.querySelectorAll('section + div > ul > *'),
         ) as HTMLDivElement[])
-    const [postContent, ...comments] = replyMessageThread
+    const [postContent, ...commentRootList] = replyMessageThread
     if (!postContent) {
       // 说明可能在Home或者其他页面
       let homePostContent = instagramRootReplyBox.querySelector(
@@ -122,6 +122,14 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
     // 说明是回复别人
     if (userInputDraft.startsWith('@')) {
       const userName = userInputDraft.split(' ')?.[0]
+      const comments: HTMLElement[] = []
+      commentRootList.map((commentRoot) => {
+        commentRoot
+          ?.querySelectorAll('div > div > div:has(> ul)')
+          ?.forEach((node) => {
+            comments.push(node as HTMLDivElement)
+          })
+      })
       const commandList: ICommentData[] = []
       for (let j = 0; j < comments.length; j++) {
         let hasFound = false
@@ -138,7 +146,7 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
         const subComments = Array.from(
           comments[j]?.querySelectorAll('ul > div'),
         ) as HTMLDivElement[]
-        if (subComments.length > 0) {
+        if (!hasFound && subComments.length > 0) {
           for (let k = 0; k < subComments.length; k++) {
             const subCommentData = await getInstagramCommentDetail(
               subComments[k],

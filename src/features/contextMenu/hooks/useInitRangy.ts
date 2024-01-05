@@ -184,6 +184,7 @@ const useInitRangy = () => {
             selectionElementRef.current = null
             return
           }
+          debugger
           selectionElementRef.current = createSelectionElement(activeElement, {
             target: activeElement,
             eventType: isMouseEvent ? 'mouseup' : 'keyup',

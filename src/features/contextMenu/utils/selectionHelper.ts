@@ -17,7 +17,6 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
-import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
@@ -169,19 +168,23 @@ export const computedSelectionString = (propDocument?: Document) => {
 
 /**
  * 创建选区标记
- * @param element
+ * @param editableElement
+ * @update - 2024-01-05 - 始终抓取光标之前的内容作为上下文 - @huangsong
+ *
  */
 export const createSelectionMarker = (
-  element: HTMLElement,
+  editableElement: HTMLElement,
 ): {
   startMarkerId: string
   endMarkerId: string
   selectionText: string
   editableElementSelectionText: string
 } => {
+  debugger
   try {
-    if (element) {
-      const doc = element.ownerDocument || (element as any).document
+    if (editableElement) {
+      const doc =
+        editableElement.ownerDocument || (editableElement as any).document
       const win = doc.defaultView || (doc as any).parentWindow
       let sel
       const startMarkerId = `usechatgpt-start-marker-${uuidV4()}`
@@ -196,23 +199,35 @@ export const createSelectionMarker = (
           removeAllSelectionMarker()
           const range = win.getSelection().getRangeAt(0).cloneRange()
           console.log('[ContextMenu][Rangy] range: \t', range)
-          if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
-            const inputElement = element as HTMLInputElement
+          if (
+            editableElement.tagName === 'INPUT' ||
+            editableElement.tagName === 'TEXTAREA'
+          ) {
+            const inputElement = editableElement as HTMLInputElement
             // input or textarea
             // get start offset
             // get end offset
             const { start, end } = getInputSelection(inputElement)
-            element.setAttribute(
+            editableElement.setAttribute(
               'data-usechatgpt-start-offset',
               start.toString(),
             )
-            element.setAttribute('data-usechatgpt-end-offset', end.toString())
-            element.setAttribute('data-usechatgpt-marker', 'usechatgpt-marker')
-            element.setAttribute(
+            editableElement.setAttribute(
+              'data-usechatgpt-end-offset',
+              end.toString(),
+            )
+            editableElement.setAttribute(
+              'data-usechatgpt-marker',
+              'usechatgpt-marker',
+            )
+            editableElement.setAttribute(
               'data-usechatgpt-marker-start-id',
               startMarkerId,
             )
-            element.setAttribute('data-usechatgpt-marker-end-id', endMarkerId)
+            editableElement.setAttribute(
+              'data-usechatgpt-marker-end-id',
+              endMarkerId,
+            )
             const selectionText = inputElement.value
               .substring(start, end)
               .trim()
@@ -220,13 +235,12 @@ export const createSelectionMarker = (
             /**
              * 上下文内容优先级
              * 1. 选区内容
-             * 2. 输入框的从[0 - 光标位置]的内容
-             * 3. 输入框的内容
+             * 2. 输入框的从[输入框的内容开头 - 光标位置]的内容
+             * 3. [废弃] 输入框的内容
              */
             const contextText = (
               selectionText ||
               inputElement.value.substring(0, start).trim() ||
-              inputElement.value.trim() ||
               ''
             ).replace(/\u200B/g, '')
             return {
@@ -239,25 +253,17 @@ export const createSelectionMarker = (
             /**
              * 上下文内容优先级
              * 1. 选区内容
-             * 2. 选区的innerText从[0 - 光标位置]的内容
-             * 3. 选区的innerText内容
+             * 2. [新] 从body到元素的光标位置
+             * 2. [废弃] 选区的innerText[可编辑元素开头 - 光标位置]的内容
+             * 3. [废弃] 选区的innerText内容
              */
-            const selectionText = (sel.toString() || range.toString())
-              .trim()
-              .replace(/\u200B/g, '')
-            // 计算元素从头到光标的位置
-            const partOfStartToCaret = range.cloneRange()
-            partOfStartToCaret.selectNodeContents(element)
-            partOfStartToCaret.setEnd(range.endContainer, range.endOffset)
-            const partOfStartToCaretText = partOfStartToCaret
-              .toString()
-              .trim()
-              .replace(/\u200B/g, '')
-
+            const {
+              selectionText,
+              partOfStartToCaretText,
+            } = getEditableElementSelectionText(editableElement)
             let contextText = (
               selectionText ||
               partOfStartToCaretText ||
-              element.innerText.trim() ||
               ''
             ).replace(/\u200B/g, '')
             if (
@@ -268,14 +274,12 @@ export const createSelectionMarker = (
               // ！！！！如果是body标签，选区内容,光标内容,元素内容都是无效的
               contextText = ''
             }
-            const host = getCurrentDomainHost()
             /**
              * 如果不在白名单中，就不创建span标记，缓存用户选区就行
              */
             if (!isDomainNeedCreateSelectionMarker()) {
               console.log(
                 'createSelectionMarker block host',
-                host,
                 partOfStartToCaretText,
               )
               setCacheSelectionRange(startMarkerId, range.cloneRange())
@@ -341,94 +345,41 @@ export const createSelectionMarker = (
 }
 
 /**
- * 特殊的host获取选中文本，在无法获取到selectionString的情况下使用
- * @param element
+ * 获取网页的可编辑元素的内容
+ * 1. 获取选中文本
+ * 2. 获取从头到光标位置的内容
+ * @param editableElement
  */
-export const getEditableElementSelectionTextOnSpecialHost = (
-  element: HTMLElement,
+export const getEditableElementSelectionText = (
+  editableElement: HTMLElement,
 ): {
-  editableElementSelectionText: string
+  partOfStartToCaretText: string
   selectionText: string
 } => {
+  // 获取当前的网站，看看是否需要做特殊处理
   const host = getCurrentDomainHost()
-  let editableElementSelectionText = ''
+  // 选中文本
   let selectionText = ''
+  // 从头到光标位置的内容
+  let partOfStartToCaretText = ''
   try {
-    if (element) {
-      const doc = element.ownerDocument || (element as any).document
+    if (editableElement) {
+      const doc =
+        editableElement.ownerDocument || (editableElement as any).document
       const win = doc.defaultView || (doc as any).parentWindow
       let sel
       if (typeof win.getSelection != 'undefined') {
         sel = win.getSelection()
         if (sel.rangeCount > 0) {
+          const range = sel.getRangeAt(0).cloneRange()
+          // 网页的内容容器，默认是body
           let pageContentRoot: HTMLElement | null = null
+          // 网页的特殊光标，默认是当前网页的selection的range的endContainer和endOffset
+          let hostSpecialCursor: HTMLElement | null = null
+          selectionText = (sel.toString() || range.toString())
+            .trim()
+            .replace(/\u200B/g, '')
           switch (host) {
-            case 'notion.so':
-              {
-                pageContentRoot =
-                  doc.querySelector('.notion-page-content') ||
-                  doc.querySelector('[data-content-editable-root="true"]')
-                const notionCursor = win.getSelection().focusNode
-                if (pageContentRoot && notionCursor) {
-                  // 当前所在的行
-                  // 计算元素从头到光标的位置
-                  const boundaryRange = document.createRange()
-                  boundaryRange.selectNode(pageContentRoot)
-                  const partOfStartToCaret = boundaryRange.cloneRange()
-                  partOfStartToCaret.setEndBefore(notionCursor)
-                  const partOfStartToCaretText = partOfStartToCaret
-                    .toString()
-                    .trim()
-                    .replace(/\u200B/g, '')
-                  if (partOfStartToCaretText) {
-                    return {
-                      editableElementSelectionText: notionCursor.innerText
-                        .toString()
-                        .trim()
-                        .replace(/\u200B/g, ''),
-                      selectionText: partOfStartToCaretText,
-                    }
-                  }
-                }
-              }
-              break
-            case 'larksuite.com':
-              {
-                pageContentRoot =
-                  doc.querySelector('.page-block-children') ||
-                  doc.querySelector('.page-block') ||
-                  doc.querySelector('.root-block')
-                const larkCursor = win.getSelection().focusNode
-                if (larkCursor && pageContentRoot) {
-                  const larkLineElement = findParentEqualSelector(
-                    '.ace-line',
-                    larkCursor?.parentElement as HTMLElement,
-                    5,
-                  )
-                  if (larkLineElement) {
-                    // 当前所在的行
-                    // 计算元素从头到光标的位置
-                    const boundaryRange = document.createRange()
-                    boundaryRange.selectNode(pageContentRoot)
-                    const partOfStartToCaret = boundaryRange.cloneRange()
-                    partOfStartToCaret.setEndBefore(larkLineElement)
-                    const partOfStartToCaretText = partOfStartToCaret
-                      .toString()
-                      .trim()
-                      .replace(/\u200B/g, '')
-                    if (partOfStartToCaretText) {
-                      return {
-                        editableElementSelectionText: larkLineElement.innerText
-                          .toString()
-                          .trim()
-                          .replace(/\u200B/g, ''),
-                        selectionText: partOfStartToCaretText,
-                      }
-                    }
-                  }
-                }
-              }
-              break
             case 'writer.zoho.com':
               {
                 pageContentRoot = document.querySelector('#editorpane')
@@ -461,84 +412,57 @@ export const getEditableElementSelectionTextOnSpecialHost = (
                       .trim()
                       .replace(/\u200B/g, '')
                     if (lineContentText) {
-                      editableElementSelectionText = lineContentText
-                    }
-                  } else {
-                    // 说明没有overlay，直接获取光标所在的内容
-                    const zohoCursor = pageContentRoot.querySelector('.cursor')
-                    if (zohoCursor) {
-                      // 计算元素从头到光标的位置
-                      const boundaryRange = document.createRange()
-                      boundaryRange.selectNode(pageContentRoot)
-                      const partOfStartToCaret = boundaryRange.cloneRange()
-                      partOfStartToCaret.setEndBefore(zohoCursor)
-                      win.getSelection()?.removeAllRanges()
-                      win.getSelection()?.addRange(partOfStartToCaret)
-                      const partOfStartToCaretText = win
-                        .getSelection()
-                        ?.toString()
-                        .trim()
-                        .replace(/\u200B/g, '')
-                      if (partOfStartToCaretText) {
-                        selectionText = partOfStartToCaretText
-                        return {
-                          editableElementSelectionText,
-                          selectionText,
-                        }
-                      }
+                      selectionText = lineContentText
                     }
                   }
+                  if (!selectionText) {
+                    hostSpecialCursor = pageContentRoot.querySelector(
+                      `div.cursor[id]`,
+                    )
+                  }
                 }
+              }
+              break
+            case 'notion.so':
+              {
+                pageContentRoot =
+                  doc.querySelector('.notion-page-content') ||
+                  doc.querySelector('[data-content-editable-root="true"]')
+              }
+              break
+            case 'larksuite.com':
+              {
+                pageContentRoot =
+                  doc.querySelector('.page-block-children') ||
+                  doc.querySelector('.page-block') ||
+                  doc.querySelector('.root-block')
               }
               break
             default:
-              {
-                let maxLoop = 3
-                let parentElement = element.parentElement
-                while (maxLoop > 0 && parentElement) {
-                  const result = getEditableElement(parentElement)
-                  if (result.isEditableElement && result.editableElement) {
-                    if (result.editableElement?.innerText) {
-                      pageContentRoot = result.editableElement
-                      break
-                    } else if (result.editableElement?.parentElement) {
-                      parentElement = result.editableElement.parentElement
-                      maxLoop--
-                    }
-                  } else {
-                    break
-                  }
-                }
-              }
               break
           }
-          if (pageContentRoot) {
-            const boundaryRange = document.createRange()
-            boundaryRange.selectNode(pageContentRoot)
-            selectionText =
-              win
-                .getSelection()
-                ?.toString()
-                .trim()
-                .replace(/\u200B/g, '') || pageContentRoot.innerText
-            console.log(
-              'getEditableElementSelectionTextOnSpecialHost : \t',
-              selectionText,
-            )
-            return {
-              selectionText,
-              editableElementSelectionText,
+          // 如果没有选中文本, 获取从头到光标位置的内容
+          if (!selectionText) {
+            // 设置选区的内容
+            const partOfStartToCaret = range.cloneRange()
+            const selectNodeContents = pageContentRoot || editableElement
+            partOfStartToCaret.selectNodeContents(selectNodeContents)
+            // 如果有特殊光标，就设置光标的位置
+            if (hostSpecialCursor) {
+              partOfStartToCaret.setEndBefore(hostSpecialCursor)
+            } else {
+              partOfStartToCaret.setEnd(range.endContainer, range.endOffset)
             }
-          } else {
-            // TODO - 如果返回报错内容，可能被用户的prompt影响，所以返回空字符串
-            console.log(
-              'getEditableElementSelectionTextOnSpecialHost no handle: \t',
-              host,
-            )
-            // return "Sorry, we're unable to correctly retrieve the context on this website. Please try again by selecting the text."
-            return {
-              selectionText,
-              editableElementSelectionText,
+            partOfStartToCaretText = partOfStartToCaret
+              .toString()
+              .trim()
+              .replace(/\u200B/g, '')
+            if (host === 'writer.zoho.com') {
+              // 编辑器的操作内容移除
+              partOfStartToCaretText = partOfStartToCaretText
+                .replaceAll('Header OptionsExitDouble click to edit header', '')
+                .replaceAll('Footer OptionsExitDouble click to edit footer', '')
+                .trim()
             }
           }
         }
@@ -547,9 +471,16 @@ export const getEditableElementSelectionTextOnSpecialHost = (
   } catch (e) {
     console.error('getEditableElementSelectionTextOnSpecialHost error: \t', e)
   }
+  console.log(
+    'getEditableElementSelectionText',
+    `[${host}]`,
+    editableElement,
+    selectionText,
+    partOfStartToCaretText,
+  )
   return {
     selectionText,
-    editableElementSelectionText,
+    partOfStartToCaretText,
   }
 }
 

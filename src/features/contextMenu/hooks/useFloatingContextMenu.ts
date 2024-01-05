@@ -11,10 +11,7 @@ import {
   floatingContextMenuSaveDraftToChatBox,
   isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
-import {
-  createSelectionMarker,
-  getEditableElementSelectionTextOnSpecialHost,
-} from '@/features/contextMenu/utils/selectionHelper'
+import { createSelectionMarker } from '@/features/contextMenu/utils/selectionHelper'
 import { AppState } from '@/store'
 import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import Log from '@/utils/Log'
@@ -79,24 +76,6 @@ const useFloatingContextMenu = () => {
           saveSelectionData.editableElementSelectionHTML =
             selectionMarkerData.editableElementSelectionText
           saveSelectionData.selectionText = selectionMarkerData.selectionText
-          // 如果没有选中的文本，则看看是不是特殊处理的host
-          if (
-            !saveSelectionData.editableElementSelectionText &&
-            !saveSelectionData.selectionText
-          ) {
-            const specialHostSelectionData = getEditableElementSelectionTextOnSpecialHost(
-              virtualSelectionElement.target,
-            )
-            selectionMarkerData.selectionText =
-              specialHostSelectionData.selectionText
-            selectionMarkerData.editableElementSelectionText =
-              specialHostSelectionData.editableElementSelectionText
-            log.info(
-              'Get special host selection text: \n',
-              specialHostSelectionData.editableElementSelectionText ||
-                specialHostSelectionData.selectionText,
-            )
-          }
           if (selectionMarkerData) {
             saveSelectionData.startMarkerId = selectionMarkerData.startMarkerId
             saveSelectionData.endMarkerId = selectionMarkerData.endMarkerId

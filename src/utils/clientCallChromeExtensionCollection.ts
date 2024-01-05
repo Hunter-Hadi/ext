@@ -1,9 +1,3 @@
-import imageCompression from 'browser-image-compression'
-
-import {
-  base642file,
-  file2base64,
-} from '@/background/utils/uplpadFileProcessHelper'
 import { clientRunBackgroundFunction } from '@/utils/index'
 
 /**
@@ -48,30 +42,7 @@ export const clientRunBackgroundGetScreenshot = async (
       ],
     )
     await new Promise((resolve) => setTimeout(resolve, 1000))
-    if (needCompress && screenshot) {
-      let start = new Date().getTime()
-      const file = base642file(screenshot, 'screenshot.png')
-      if (file) {
-        start = new Date().getTime()
-        const compressedFile = await imageCompression(file, {
-          useWebWorker: true,
-          maxWidthOrHeight: 1920,
-        })
-        const compressedFileBase64 = file2base64(compressedFile)
-        // using seconds
-        console.log(
-          'clientRunBackgroundGetScreenshot compress time',
-          (new Date().getTime() - start) / 1000,
-          '\n',
-          `originalFile size ${file.size / 1024 / 1024} MB`,
-          '\n',
-          `compressedFile size ${compressedFile.size / 1024 / 1024} MB`,
-          '\n',
-          `compress rate ${compressedFile.size / file.size}`,
-        )
-        return compressedFileBase64 || screenshot
-      }
-    }
+    // TODO: compress screenshot
     return screenshot
   }
   return null

@@ -154,12 +154,17 @@ export const askChatGPTQuestion = async (
   const tasks: any = []
   return new Promise((resolve) => {
     const taskId = question.messageId
+    let isRunningTask = false
     const destroyListener = createClientMessageListener(async (event, data) => {
       if (
         event === 'Client_askChatGPTQuestionResponse' &&
         data.taskId === taskId
       ) {
         tasks.push(data)
+        if (!isRunningTask) {
+          isRunningTask = true
+          runTask()
+        }
         return {
           success: true,
           message: 'ok',
@@ -168,16 +173,39 @@ export const askChatGPTQuestion = async (
       }
       return undefined
     })
+    const requestIdleCallbackPolyfill =
+      window.requestIdleCallback ||
+      function (cb) {
+        const start = Date.now()
+        return setTimeout(function () {
+          cb({
+            didTimeout: false,
+            timeRemaining: function () {
+              return Math.max(0, 50 - (Date.now() - start))
+            },
+          })
+        }, 1)
+      }
+    let prevTaskIndex = 0
     const runTask = () => {
-      window.requestIdleCallback(() => {
-        console.log(
-          '测试测测试测测试测测试测测试测, requestIdleCallback',
-          tasks,
-        )
+      requestIdleCallbackPolyfill(() => {
         if (tasks.length === 0) {
+          // 说明还没有任务
           runTask()
+          return
         }
-        const lastTaskData = tasks[tasks.length - 1]
+        const currentTaskIndex = tasks.length - 1
+        if (currentTaskIndex <= prevTaskIndex) {
+          // 说明没有新的任务
+          runTask()
+          return
+        }
+        prevTaskIndex = currentTaskIndex
+        const lastTaskData = tasks[currentTaskIndex]
+        console.log(
+          `测试requestIdleCallbackPolyfill [${tasks.length - 1}]`,
+          lastTaskData?.data?.text,
+        )
         if (lastTaskData.error) {
           onError?.(lastTaskData.error)
         } else if (lastTaskData?.data?.text) {
@@ -191,7 +219,6 @@ export const askChatGPTQuestion = async (
         }
       })
     }
-    runTask()
     const port = new ContentScriptConnectionV2({
       runtime: 'client',
     })

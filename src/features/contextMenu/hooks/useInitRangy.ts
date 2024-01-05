@@ -144,7 +144,7 @@ const useInitRangy = () => {
         const isMouseEvent = event instanceof MouseEvent
         const nativeSelectionElement = getSelectionBoundaryElement()
         const defaultSelectionText = (
-          rangy.getSelection().toString() ||
+          rangy?.getSelection()?.toString() ||
           document?.getSelection()?.toString() ||
           ''
         )

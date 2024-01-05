@@ -52,7 +52,7 @@ export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
         ?.innerHTML || ''
     const content =
       (postContainer.querySelector('.RichTextJSON-root') as HTMLDivElement)
-        .innerText || ''
+        ?.innerText || ''
     const socialMediaPostContext = new SocialMediaPostContext({
       author: author,
       content: content,

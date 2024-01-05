@@ -129,6 +129,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderStyle: 'solid',
         position: 'relative',
         padding,
+        iconSize,
         '&:hover': {
           color: hoverColor,
           backgroundColor: hoverBackgroundColor,
@@ -159,6 +160,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderWidth: borderWidth,
         borderStyle: 'solid',
         padding,
+        iconSize,
         '&:hover': {
           color: hoverColor,
           backgroundColor: hoverBackgroundColor,
@@ -274,7 +276,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     >
                       {loading ? (
                         <CircularProgress
-                          size={CTAButtonStyle?.iconSize || 20}
+                          size={
+                            (memoButtonSx.ctaButtonSx as any)?.iconSize || 16
+                          }
                           sx={{
                             fontSize: `inherit`,
                             color: '#fff',

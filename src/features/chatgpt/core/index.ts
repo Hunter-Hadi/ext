@@ -878,7 +878,16 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
   }
   async createConversation(conversationId?: string, selectedModel?: string) {
     if (this.conversations.length > 0) {
-      return this.conversations[0]
+      if (selectedModel) {
+        if (this.conversations[0].model === selectedModel) {
+          return this.conversations[0]
+        } else {
+          this.conversations.forEach((conversation) => conversation.close())
+          this.conversations = []
+        }
+      } else {
+        return this.conversations[0]
+      }
     }
     try {
       const token = this.token || (await getChatGPTAccessToken())

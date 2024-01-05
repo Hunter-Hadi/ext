@@ -292,12 +292,13 @@ const useDaemonProcess = () => {
                 break
               case 'OpenAIDaemonProcess_askChatGPTQuestion':
                 {
-                  const { taskId, question, options } = data
+                  const { taskId, question, options, openAIModel } = data
                   log.info(
                     'OpenAIDaemonProcess_askChatGPTQuestion',
                     taskId,
                     question,
                     options,
+                    openAIModel,
                   )
                   const {
                     conversationId,
@@ -309,9 +310,16 @@ const useDaemonProcess = () => {
                     conversationId,
                   )
                   if (!conversation) {
-                    conversation = await chatGptInstanceRef.current?.createConversation(
-                      conversationId,
-                    )
+                    if (openAIModel) {
+                      conversation = await chatGptInstanceRef.current?.createConversation(
+                        conversationId,
+                        openAIModel,
+                      )
+                    } else {
+                      conversation = await chatGptInstanceRef.current?.createConversation(
+                        conversationId,
+                      )
+                    }
                     conversation && (await conversation.fetchHistoryAndConfig())
                   }
                   if (conversation) {

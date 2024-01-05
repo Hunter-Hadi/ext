@@ -332,6 +332,7 @@ class OpenAIChat extends BaseChat {
           taskId,
           question,
           options,
+          openAIModel: this.conversation?.meta.AIModel,
         },
       )
     }

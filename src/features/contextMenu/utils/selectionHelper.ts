@@ -180,7 +180,6 @@ export const createSelectionMarker = (
   selectionText: string
   editableElementSelectionText: string
 } => {
-  debugger
   try {
     if (editableElement) {
       const doc =
@@ -243,6 +242,13 @@ export const createSelectionMarker = (
               inputElement.value.substring(0, start).trim() ||
               ''
             ).replace(/\u200B/g, '')
+            console.log(
+              'getEditableElementSelectionText',
+              `[${inputElement.tagName === 'INPUT' ? 'INPUT' : 'TEXTAREA'}]`,
+              editableElement,
+              selectionText,
+              inputElement.value.substring(0, start).trim(),
+            )
             return {
               startMarkerId,
               endMarkerId,

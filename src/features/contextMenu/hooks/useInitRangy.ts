@@ -164,7 +164,11 @@ const useInitRangy = () => {
             activeElement = targetElementRef.current
           }
           // 因为mouse up的target元素优先级特别低, 所以先尝试用nativeSelectionElement
-          if (nativeSelectionElement) {
+          if (
+            nativeSelectionElement &&
+            activeElement?.tagName !== 'INPUT' &&
+            activeElement?.tagName !== 'TEXTAREA'
+          ) {
             const nativeSelectionElementData = getEditableElement(
               nativeSelectionElement,
             )
@@ -184,7 +188,6 @@ const useInitRangy = () => {
             selectionElementRef.current = null
             return
           }
-          debugger
           selectionElementRef.current = createSelectionElement(activeElement, {
             target: activeElement,
             eventType: isMouseEvent ? 'mouseup' : 'keyup',

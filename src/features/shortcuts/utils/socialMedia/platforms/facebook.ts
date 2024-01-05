@@ -176,6 +176,9 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
               break
             }
             const commentData = await getFacebookCommentDetail(parentComment)
+            if (commentData.author === '') {
+              break
+            }
             if (facebookPostComments[0].content === commentData.content) {
               // 说明重复了
               break

@@ -178,17 +178,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -355,17 +355,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -528,17 +528,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -704,17 +704,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,

@@ -41,7 +41,6 @@ export const clientRunBackgroundGetScreenshot = async (
         },
       ],
     )
-    await new Promise((resolve) => setTimeout(resolve, 1000))
     // TODO: compress screenshot
     return screenshot
   }

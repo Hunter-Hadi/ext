@@ -1,9 +1,9 @@
 import { useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { clientGetCurrentClientAIProviderAndModel } from '@/features/chatgpt/utils/clientChatConversation'
 import { RangyCoreState, RangyState } from '@/features/contextMenu/store'
 import { ISelection } from '@/features/contextMenu/types'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 
 const useRangy = () => {
@@ -45,11 +45,20 @@ const useRangy = () => {
   }
 
   const saveCurrentSelection = async (selection: ISelection) => {
+    const { currentModel } = await clientGetCurrentClientAIProviderAndModel()
+
+    // 当前models最大可用tokens
+    const maxTokens = currentModel?.maxTokens || 4096
+    // 预留给output的tokens
+    const bufferTokens = maxTokens / 4
+    // 剩余可用tokens
+    const sliceTokens = maxTokens - bufferTokens
+    console.log(
+      `[ContextMenu Module]: saveCurrentSelection [${sliceTokens} tokens]`,
+      selection,
+    )
     selection.selectionText = (
-      await sliceTextByTokens(
-        selection.selectionText || '',
-        PAGE_SUMMARY_MAX_TOKENS,
-      )
+      await sliceTextByTokens(selection.selectionText || '', sliceTokens)
     ).text
     setRangy((prevState) => {
       return {

@@ -54,7 +54,7 @@ const useRangy = () => {
     // 剩余可用tokens
     const sliceTokens = maxTokens - bufferTokens
     console.log(
-      `[ContextMenu Module]: saveCurrentSelection [${sliceTokens} tokens]`,
+      `[ContextMenu Module]: saveCurrentSelection [${currentModel?.value}] [${sliceTokens} tokens]`,
       selection,
     )
     selection.selectionText = (

@@ -126,7 +126,7 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
       for (let j = 0; j < comments.length; j++) {
         let hasFound = false
         const commentData = await getInstagramCommentDetail(comments[j])
-        if (userName.startsWith(commentData.author)) {
+        if (commentData.author && userName.startsWith(commentData.author)) {
           commandList.push(commentData)
           hasFound = true
         }
@@ -143,7 +143,10 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
             const subCommentData = await getInstagramCommentDetail(
               subComments[k],
             )
-            if (userName.startsWith(subCommentData.author)) {
+            if (
+              commentData.author &&
+              userName.startsWith(subCommentData.author)
+            ) {
               commandList.push(commentData)
               commandList.push(subCommentData)
               hasFound = true

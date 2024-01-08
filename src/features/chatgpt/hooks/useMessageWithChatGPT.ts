@@ -33,8 +33,8 @@ import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatReques
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getInputMediator } from '@/store/InputMediator'
-import { showChatBox } from '@/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import Log from '@/utils/Log'
 dayjs.extend(relativeTime)

@@ -7,18 +7,13 @@ import {
   IBackgroundRunCommandFunctionReturn,
   IBackgroundRunCommandKey,
 } from '@/background/src/client/backgroundCommandHandler'
-import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
-import {
-  ContentScriptConnectionV2,
-  pingDaemonProcess,
-} from '@/features/chatgpt/utils'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import {
   MAXAI_CONTEXT_MENU_ID,
   MAXAI_CONTEXT_MENU_PORTAL_ID,
   MAXAI_MINIMIZE_CONTAINER_ID,
   MAXAI_SIDEBAR_ID,
 } from '@/features/common/constants'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
@@ -51,187 +46,6 @@ export const getAppMinimizeContainerElement = (): HTMLDivElement | null => {
   return document
     .querySelector(`#${MAXAI_MINIMIZE_CONTAINER_ID}`)
     ?.shadowRoot?.querySelector('div') as HTMLDivElement
-}
-
-// 保存 由于网站本身设置 overflow: hidden，导致我们的 context menu 无法渲染的 网站host
-const BY_OVERFLOW_FLOW_BREAK_UI_HOST_LIST = [
-  'greylock.com',
-  'notion.so',
-  'teams.live.com',
-]
-/**
- * 对于一些特殊的网站, 在聊天框显示的时候, 需要修改一些样式
- */
-const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
-  const htmlElement = document.body.parentElement
-  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
-  const host = getCurrentDomainHost()
-  if (htmlElement && chatBoxElement) {
-    const chatBoxElementWidth =
-      chatBoxElement.offsetWidth ||
-      CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
-    if (
-      host === 'outlook.live.com' ||
-      host === 'onedrive.live.com' ||
-      host === 'outlook.office.com' ||
-      host === 'outlook.office365.com'
-    ) {
-      htmlElement.style.minHeight = '100vh'
-    }
-    if (host === 'teams.live.com') {
-      document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
-        element.style.width = `calc(100% - ${chatBoxElementWidth}px)`
-        element.childNodes.forEach((child: any) => {
-          if (child.tagName === 'IFRAME') {
-            child.style.width = '100%'
-          }
-        })
-      })
-    }
-    if (host === 'studio.youtube.com') {
-      const youTubeStudioContainer = document.querySelector(
-        '#main-container',
-      ) as HTMLDivElement
-      youTubeStudioContainer.style.width = `calc(100% - ${chatBoxElementWidth}px)`
-    }
-    if (host === 'youtube.com') {
-      document
-        .querySelectorAll('.ytp-chrome-bottom')
-        .forEach((element: any) => {
-          element.style.maxWidth = '95%'
-        })
-    }
-
-    if (host === 'mail.qq.com') {
-      htmlElement.style.width = '100%'
-    }
-
-    if (host === 'gatesnotes.com') {
-      htmlElement.style.height = '100%'
-    }
-
-    // google map
-    if (host === 'google.com' && location.pathname.startsWith('/maps')) {
-      htmlElement.style.height = '100%'
-    }
-  }
-  // 浏览器自带的pdf文件阅读器
-  if (document.querySelector('embed[type="application/pdf"]')) {
-    document.body.style.height = '100vh'
-  }
-
-  if (BY_OVERFLOW_FLOW_BREAK_UI_HOST_LIST.includes(host)) {
-    // 打开 chat box 的时候，设置为 hidden
-    // 为了解决 context menu 渲染在 body 宽度以外的地方时，样式错误的问题
-    document.body.style.overflow = 'unset'
-  }
-}
-
-/**
- * 对于一些特殊的网站，当聊天框隐藏的时候，需要修改一些样式
- */
-const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
-  const htmlElement = document.body.parentElement
-  const host = getCurrentDomainHost()
-  if (htmlElement) {
-    if (
-      host === 'outlook.live.com' ||
-      host === 'onedrive.live.com' ||
-      host === 'outlook.office.com'
-    ) {
-      htmlElement.style.minHeight = ''
-    }
-    if (host === 'teams.live.com') {
-      document.querySelectorAll('.overlay-hybrid').forEach((element: any) => {
-        element.style.width = `100%`
-        element.childNodes.forEach((child: any) => {
-          if (child.tagName === 'IFRAME') {
-            child.style.width = '100vw'
-          }
-        })
-      })
-    }
-    if (host === 'youtube.com') {
-      document
-        .querySelectorAll('.ytp-chrome-bottom')
-        .forEach((element: any) => {
-          element.style.maxWidth = ''
-        })
-    }
-    if (host === 'studio.youtube.com') {
-      const youTubeStudioContainer = document.querySelector(
-        '#main-container',
-      ) as HTMLDivElement
-      youTubeStudioContainer.style.width = `100%`
-    }
-
-    if (host === 'mail.qq.com') {
-      htmlElement.style.width = ''
-    }
-
-    if (host === 'gatesnotes.com') {
-      htmlElement.style.height = ''
-    }
-
-    // google map
-    if (host === 'google.com' && location.pathname.startsWith('/maps')) {
-      htmlElement.style.height = ''
-    }
-  }
-  // 浏览器自带的pdf文件阅读器
-  if (document.querySelector('embed[type="application/pdf"]')) {
-    document.body.style.height = ''
-  }
-
-  if (BY_OVERFLOW_FLOW_BREAK_UI_HOST_LIST.includes(host)) {
-    // 关闭 chat box 的时候 清楚设定的值
-    document.body.style.overflow = ''
-  }
-}
-
-export const showChatBox = () => {
-  const htmlElement = document.body.parentElement
-  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
-  if (htmlElement && chatBoxElement) {
-    const chatBoxElementWidth =
-      chatBoxElement.offsetWidth ||
-      CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
-    htmlElement.style.transition = 'width .1s ease-inout'
-    htmlElement.style.width = `calc(100% - ${chatBoxElementWidth}px)`
-    htmlElement.style.position = 'relative'
-    modifyHTMLStyleForSpecialWebsiteOnChatBoxShow()
-    if (!chatBoxElement.classList.contains('open')) {
-      chatBoxElement.classList.remove('close')
-      chatBoxElement.classList.add('open')
-    }
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-    }, 300)
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-      pingDaemonProcess()
-    }, 1000)
-  }
-}
-
-export const hideChatBox = () => {
-  const htmlElement = document.body.parentElement
-  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
-  if (htmlElement && chatBoxElement) {
-    htmlElement.style.transition = 'width .1s ease-inout'
-    htmlElement.style.width = '100%'
-    htmlElement.style.position = ''
-    modifyHTMLStyleForSpecialWebsiteOnChatBoxHide()
-    chatBoxElement.classList.remove('open')
-    chatBoxElement.classList.add('close')
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'))
-    }, 300)
-  }
-}
-export const isShowChatBox = () => {
-  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
-  return chatBoxElement?.classList.contains('open') || false
 }
 
 export const useDebounceValue = <T>(

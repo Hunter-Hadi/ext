@@ -12,7 +12,10 @@ import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import { ShortCutsState } from '@/features/shortcuts/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
-import { isShowChatBox, showChatBox } from '@/utils'
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const shortCutsEngine = new ShortCutsEngine()
 const port = new ContentScriptConnectionV2({

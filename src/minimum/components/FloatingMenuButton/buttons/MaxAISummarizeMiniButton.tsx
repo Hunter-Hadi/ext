@@ -8,7 +8,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const tooltipKey = () => {
   const summaryType = getPageSummaryType()

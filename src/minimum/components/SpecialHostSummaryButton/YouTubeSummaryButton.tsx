@@ -7,7 +7,7 @@ import DynamicComponent from '@/components/DynamicComponent'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const MAXAI_YOUTUBE_SUMMARY_BUTTON = 'max-ai-youtube-summary-button'
 const YouTubeSummaryButton: FC = () => {

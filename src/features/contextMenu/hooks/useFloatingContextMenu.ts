@@ -12,8 +12,12 @@ import {
   isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
 import { createSelectionMarker } from '@/features/contextMenu/utils/selectionHelper'
+import {
+  hideChatBox,
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppState } from '@/store'
-import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/useFloatingContextMenu')

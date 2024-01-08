@@ -33,8 +33,10 @@ export const generateRandomColorWithTheme = (
  */
 export const escapeHtml = (html: string) => {
   return sanitizeHtml(html, {
-    allowedTags: [],
-    allowedAttributes: false,
+    allowedTags: ['span'],
+    allowedAttributes: {
+      span: ['contenteditable', 'style', 'data-variable-name'],
+    },
     nonBooleanAttributes: [],
     disallowedTagsMode: 'recursiveEscape',
   } as sanitize.IOptions)
@@ -57,7 +59,8 @@ export const generateVariableHtmlContent = (
 
 export const htmlToTemplate = (html: string) => {
   const div = document.createElement('div')
-  div.innerHTML = html
+  div.contentEditable = 'true'
+  div.innerHTML = escapeHtml(html)
   const nodes = Array.from(div.childNodes)
   nodes.forEach((node) => {
     // 还原变量
@@ -110,7 +113,11 @@ export const promptTemplateToHtml = (
       return match
     }
   })
-  return html
+  const escapeEl = document.createElement('textarea')
+  escapeEl.textContent = html
+  const escapeHTML = escapeEl.innerHTML
+  escapeEl.remove()
+  return escapeHTML
 }
 
 /**

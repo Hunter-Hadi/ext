@@ -45,6 +45,7 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       30,
     ) ||
     findSelectorParent('div[data-ad-preview="message"]', facebookReplyForm, 30)
+  debugger
   const hTagAuthorElement =
     findSelectorParent('span:has(h3 > span)', facebookReplyForm, 30) ||
     findSelectorParent('span:has(h2 > span)', facebookReplyForm, 30)
@@ -139,6 +140,12 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
           ?.parentElement?.parentElement
           ?.previousElementSibling as HTMLDivElement
         if (facebookReplyFormRootArticle) {
+          const facebookReplyFormRootArticleComment = await getFacebookCommentDetail(
+            facebookReplyFormRootArticle,
+          )
+          if (!facebookReplyFormRootArticleComment.author) {
+            return facebookSocialMediaPostContext.data
+          }
           const childComments = facebookReplyFormRootArticle.nextElementSibling
             ? (Array.from(
                 facebookReplyFormRootArticle.nextElementSibling.querySelectorAll(
@@ -151,14 +158,15 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
               const commentData = await getFacebookCommentDetail(
                 childComments[i],
               )
-              if (inputValue.startsWith(commentData.author)) {
+              if (
+                commentData.author &&
+                inputValue.startsWith(commentData.author)
+              ) {
                 facebookPostComments.push(commentData)
               }
             }
           }
-          facebookPostComments.unshift(
-            await getFacebookCommentDetail(facebookReplyFormRootArticle),
-          )
+          facebookPostComments.unshift(facebookReplyFormRootArticleComment)
           // 到这一步，回复框所在的父级comment和子级comment就处理完成了
           // 还需要递归处理父级comment的父级comment
           let parentComment = findSelectorParentStrict(

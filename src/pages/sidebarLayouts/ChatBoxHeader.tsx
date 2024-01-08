@@ -18,9 +18,10 @@ import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIco
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { chromeExtensionClientOpenPage, hideChatBox } from '@/utils'
+import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ChatBoxHeader: FC<{

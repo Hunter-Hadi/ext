@@ -115,9 +115,17 @@ const useShortcutEditorActions = () => {
     const template = htmlToTemplate(prevSaveHTML)
     setShortcutActionEditor((prev) => {
       const editHTML = promptTemplateToHtml(
-        escapeHtml(template),
+        template,
         variablesToVariableMap(prev.variables),
         isDarkMode,
+      )
+      console.log(
+        `test html template: \n`,
+        'template: \n',
+        template,
+        '\n',
+        'html:\n',
+        editHTML,
       )
       return {
         ...prev,
@@ -127,7 +135,7 @@ const useShortcutEditorActions = () => {
   }
   const generateActions = (title: string): ISetActionsType => {
     const { editHTML, variables } = shortcutActionEditor
-    const template = htmlToTemplate(editHTML)
+    const template = htmlToTemplate(escapeHtml(editHTML))
     // 过滤出prompt里真正用到的variables
     const usedVariables = variables.filter((variable) => {
       // 在html中用到了

@@ -19,7 +19,10 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
-import { isShowChatBox, showChatBox } from '@/utils'
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const useSearchWithAI = () => {
   const {

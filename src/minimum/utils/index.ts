@@ -17,7 +17,9 @@ export const isArticlePage = () => {
   }
   const url = typeof window !== 'undefined' ? window.location.href : ''
   // 检查 URL
-  const urlMatch = url.match(/\/(article|news|doc|blog)\//)
+  const urlMatch = url.match(
+    /\/(article|news|doc|blog|review|product|recipe|profile)\//,
+  )
   if (urlMatch) {
     return true
   }

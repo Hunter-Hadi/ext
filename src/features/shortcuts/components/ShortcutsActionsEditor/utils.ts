@@ -92,8 +92,12 @@ export const promptTemplateToHtml = (
   })
   // 正则表达式，用于匹配Handlebars变量
   const variableRegex = /\{\{([^{}]+?)\}\}/g
+  const escapeEl = document.createElement('textarea')
+  escapeEl.textContent = template
+  const escapeHTML = escapeEl.innerHTML
+  escapeEl.remove()
   // 使用replace()方法替换变量
-  const html = template.replace(variableRegex, (match, variable) => {
+  const html = escapeHTML.replace(variableRegex, (match, variable) => {
     // 检查变量是否在映射中存在
     const findVariable =
       labelMap.get(variable) ||
@@ -113,11 +117,7 @@ export const promptTemplateToHtml = (
       return match
     }
   })
-  const escapeEl = document.createElement('textarea')
-  escapeEl.textContent = html
-  const escapeHTML = escapeEl.innerHTML
-  escapeEl.remove()
-  return escapeHTML
+  return html
 }
 
 /**

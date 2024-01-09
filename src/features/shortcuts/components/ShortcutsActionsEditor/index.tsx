@@ -155,8 +155,6 @@ const ShortcutActionsEditor: FC<{
                     range.setStartAfter(br)
                     range.setEndAfter(br)
                   }
-                  // 保存光标位置
-                  lastSelectionRangeRef.current = range.cloneRange()
                   // 阻止默认的删除事件
                   event.preventDefault()
                 }

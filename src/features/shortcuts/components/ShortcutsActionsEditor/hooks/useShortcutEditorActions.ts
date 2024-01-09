@@ -9,7 +9,6 @@ import {
 import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutsActionsEditor/store'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import {
-  escapeHtml,
   htmlToTemplate,
   promptTemplateToHtml,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
@@ -96,7 +95,7 @@ const useShortcutEditorActions = () => {
     // 如果找到了template，就把template中的变量替换成html
     if (originalTemplate) {
       editHTML = promptTemplateToHtml(
-        escapeHtml(originalTemplate),
+        originalTemplate,
         variablesMap,
         isDarkMode,
       )
@@ -135,7 +134,7 @@ const useShortcutEditorActions = () => {
   }
   const generateActions = (title: string): ISetActionsType => {
     const { editHTML, variables } = shortcutActionEditor
-    const template = htmlToTemplate(escapeHtml(editHTML))
+    const template = htmlToTemplate(editHTML)
     // 过滤出prompt里真正用到的variables
     const usedVariables = variables.filter((variable) => {
       // 在html中用到了

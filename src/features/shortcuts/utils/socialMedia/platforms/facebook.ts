@@ -45,7 +45,6 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       30,
     ) ||
     findSelectorParent('div[data-ad-preview="message"]', facebookReplyForm, 30)
-  debugger
   const hTagAuthorElement =
     findSelectorParent('span:has(h3 > span)', facebookReplyForm, 30) ||
     findSelectorParent('span:has(h2 > span)', facebookReplyForm, 30)

@@ -1246,7 +1246,9 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
   }
   try {
     const selection = doc.getSelection()
+    const currentHost = getCurrentDomainHost()
     let pastedText = value
+
     // save rich text from clipboard
     const div = doc.createElement('div')
     div.id = MAXAI_CLIPBOARD_ID
@@ -1326,7 +1328,6 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       (originalRange.startContainer ||
         originalRange.endContainer) as HTMLElement,
     )
-    const currentHost = getCurrentDomainHost()
     if (finallySelection && originalRange) {
       if (['discord.com'].includes(getCurrentDomainHost())) {
         await navigator.clipboard.writeText(pastedText)
@@ -1352,6 +1353,8 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           'outlook.live.com',
           'outlook.office.com',
           'docs.google.com',
+          'canva.com',
+          'notion.so',
         ].includes(currentHost) ||
         // YouTube的shorts会粘贴富文本 会出问题
         window.location.href.startsWith('https://www.youtube.com/shorts')
@@ -1373,6 +1376,9 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           // 猜测的原因是 因为 evernote.com 的富文本编辑器是自己实现的，他们也会控制 光标、Selection、Range，大概率是跟我们的代码中冲突了
           //
           // do nothing
+        } else if (currentHost === 'notion.so') {
+          await delay(300)
+          doc.execCommand('paste', false, '')
         } else {
           doc.execCommand('insertText', false, pastedText)
         }

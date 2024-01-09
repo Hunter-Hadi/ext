@@ -16,16 +16,17 @@ export const isArticlePage = () => {
   const currentHost = getCurrentDomainHost()
   const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
   const hostWithPathname = `${currentHost}${pathname}`
+  // NOTE: 能尽量用字符串匹配的就用字符串匹配，不要用正则
   const textMatches = [
     'linkedin.com/feed/update',
     'stackoverflow.com/questions',
   ]
-  // NOTE: 能尽量用字符串匹配的就用字符串匹配，不要用正则
-  const regexMatches = [/github.com\/.+/, /reddit.com\/r\/.+/, /quora.com\/.+/]
   if (textMatches.find((match) => hostWithPathname.startsWith(match))) {
     return true
   }
-  if (regexMatches.find((match) => hostWithPathname.match(match))) {
+  const regexMatches = [/github.com\/.+/, /reddit.com\/r\/.+/, /quora.com\/.+/]
+  const regexHostWithPathname = `${currentHost}${pathname.slice(0, 5)}`
+  if (regexMatches.find((match) => regexHostWithPathname.match(match))) {
     return true
   }
 

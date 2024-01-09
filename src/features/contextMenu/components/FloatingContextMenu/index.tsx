@@ -83,6 +83,7 @@ import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import { getAppContextMenuRootElement } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
@@ -94,6 +95,7 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef } = useRangy()
+  const currentHostRef = useRef(getCurrentDomainHost())
   const conversation = useRecoilValue(ChatGPTConversationState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const {
@@ -623,6 +625,15 @@ const FloatingContextMenu: FC<{
         }}
         onKeyUp={(event) => {
           event.stopPropagation()
+        }}
+        onKeyDown={(event) => {
+          // TODO: 先测试在notion上有没有什么影响
+          if (
+            currentHostRef.current === 'notion.so' &&
+            event.key !== 'Escape'
+          ) {
+            event.stopPropagation()
+          }
         }}
         id={MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}
         aria-hidden={floatingDropdownMenu.open ? 'false' : 'true'}

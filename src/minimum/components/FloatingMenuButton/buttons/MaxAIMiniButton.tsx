@@ -1,8 +1,7 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import Button from '@mui/material/Button'
-import Fade from '@mui/material/Fade'
 import Stack from '@mui/material/Stack'
-import React, { FC, useRef, useState } from 'react'
+import React, { FC, useState } from 'react'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -11,32 +10,18 @@ import useCommands from '@/hooks/useCommands'
 const MaxAIMiniButton: FC<{
   isDragging?: boolean
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
-  actions?: React.ReactNode[]
+  children?: React.ReactNode
+  onMouseEnter?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void
+  onMouseLeave?: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void
 }> = (props) => {
-  const { isDragging, actions, onClick } = props
+  const { isDragging, children, onClick } = props
   const { chatBoxShortCutKey } = useCommands()
-  const [hover, setHover] = useState(false)
   const [buttonHover, setButtonHover] = useState(false)
-  const timerRef = useRef(0)
-  const clearTimer = () => {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current)
-    }
-  }
-  const waitAnimationOpen = () => {
-    clearTimer()
-    timerRef.current = setTimeout(() => {
-      setHover(true)
-      setButtonHover(true)
-    }, 100) as any
-  }
-  const waitAnimationClose = () => {
-    clearTimer()
-    setButtonHover(false)
-    setTimeout(() => {
-      setHover(false)
-    }, 100)
-  }
+
   return (
     <Stack
       direction={'row'}
@@ -45,7 +30,6 @@ const MaxAIMiniButton: FC<{
         height: 32,
         position: 'relative',
       }}
-      onMouseLeave={waitAnimationClose}
     >
       <TextOnlyTooltip
         open={buttonHover && !isDragging}
@@ -66,15 +50,15 @@ const MaxAIMiniButton: FC<{
               bgcolor: 'rgba(118, 1, 211, 0.08)',
             },
           }}
-          onMouseEnter={waitAnimationOpen}
-          onMouseLeave={() => {
+          onMouseEnter={(event) => {
+            setButtonHover(true)
+            props.onMouseEnter?.(event)
+          }}
+          onMouseLeave={(event) => {
             setButtonHover(false)
+            props.onMouseLeave?.(event)
           }}
           onMouseUp={(event) => {
-            if (!hover) {
-              event.stopPropagation()
-              event.preventDefault()
-            }
             onClick?.(event)
           }}
         >
@@ -115,14 +99,9 @@ const MaxAIMiniButton: FC<{
           left: 0,
           width: 42,
           bottom: 32,
-          visibility: hover && !isDragging ? 'visible' : 'hidden',
         }}
       >
-        <Fade in={hover && !isDragging} timeout={100}>
-          <Stack pb={'6px'} spacing={'6px'}>
-            {actions as any}
-          </Stack>
-        </Fade>
+        {children as any}
       </Stack>
     </Stack>
   )

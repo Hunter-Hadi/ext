@@ -4,23 +4,28 @@
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const isArticlePage = () => {
+  const url = typeof window !== 'undefined' ? window.location.href : ''
+  // 检查 URL
+  // article、news、doc、blog、review、product、recipe、profile、website
+  const urlMatch = url.match(
+    /\/(article|news|doc|blog|review|product|recipe|profile|website)\//,
+  )
+  if (urlMatch) {
+    return true
+  }
   const currentHost = getCurrentDomainHost()
   const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
   const hostWithPathname = `${currentHost}${pathname}`
-  const matches = [
+  const textMatches = [
     'linkedin.com/feed/update',
     'stackoverflow.com/questions',
-    'github.com',
   ]
-  if (matches.find((match) => hostWithPathname.startsWith(match))) {
+  // NOTE: 能尽量用字符串匹配的就用字符串匹配，不要用正则
+  const regexMatches = [/github.com\/.+/, /reddit.com\/r\/.+/, /quora.com\/.+/]
+  if (textMatches.find((match) => hostWithPathname.startsWith(match))) {
     return true
   }
-  const url = typeof window !== 'undefined' ? window.location.href : ''
-  // 检查 URL
-  const urlMatch = url.match(
-    /\/(article|news|doc|blog|review|product|recipe|profile)\//,
-  )
-  if (urlMatch) {
+  if (regexMatches.find((match) => hostWithPathname.match(match))) {
     return true
   }
 

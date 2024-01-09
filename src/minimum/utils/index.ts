@@ -1,7 +1,20 @@
 /**
  * 判断是否为文章页
  */
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+
 export const isArticlePage = () => {
+  const currentHost = getCurrentDomainHost()
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
+  const hostWithPathname = `${currentHost}${pathname}`
+  const matches = [
+    'linkedin.com/feed/update',
+    'stackoverflow.com/questions',
+    'github.com',
+  ]
+  if (matches.find((match) => hostWithPathname.startsWith(match))) {
+    return true
+  }
   const url = typeof window !== 'undefined' ? window.location.href : ''
   // 检查 URL
   const urlMatch = url.match(/\/(article|news|doc)\//)
@@ -37,7 +50,9 @@ export const isArticlePage = () => {
   const author =
     document.querySelector('meta[property="article:author"]') ||
     document.querySelector('meta[name="author"]')
-
+  if (author) {
+    return true
+  }
   if (
     ogType &&
     [
@@ -48,8 +63,7 @@ export const isArticlePage = () => {
       'product',
       'review',
       'recipe',
-    ].includes(ogType.getAttribute('content') || '') &&
-    author
+    ].includes(ogType.getAttribute('content') || '')
   ) {
     return true
   }

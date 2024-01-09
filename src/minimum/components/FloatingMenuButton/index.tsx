@@ -3,11 +3,13 @@
  */
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
+import debounce from 'lodash-es/debounce'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import { useRecoilState } from 'recoil'
 import Browser from 'webextension-polyfill'
 
+import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
@@ -65,8 +67,23 @@ const FloatingMenuButton: FC = () => {
     currentDragAxisYRef.current = dragAxisY
     saveBowserLocalStoreageFloatingButtonY(dragAxisY)
   }, [dragAxisY])
+  const checkIsKeepShow = debounce(() => {
+    console.log('checkIsKeepShow', isArticlePage())
+    setIsKeepShow(isArticlePage())
+  }, 1000)
   useEffectOnce(() => {
     setIsKeepShow(isArticlePage())
+  })
+  useCreateClientMessageListener(async (event) => {
+    if (event === 'Client_listenTabUrlUpdate') {
+      checkIsKeepShow()
+      return {
+        success: true,
+        message: 'ok',
+        data: {},
+      }
+    }
+    return undefined
   })
   if (!isLoaded || maxAIMinimumHide) {
     return null

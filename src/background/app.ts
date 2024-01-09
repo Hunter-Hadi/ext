@@ -560,6 +560,9 @@ const initChromeExtensionTabUrlChangeListener = () => {
       )
         .then()
         .catch()
+      backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
+        .then()
+        .catch()
     }
   })
 }

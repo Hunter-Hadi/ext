@@ -22,6 +22,7 @@ export type IChromeExtensionClientListenEvent =
   | 'Client_ListenProxyWebsocket'
   // 尝试更新客户端会受到sidebar影响的box的样式
   | 'Client_updateSidebarChatBoxStyle'
+  | 'Client_listenTabUrlUpdate'
   // iframe
   | 'Iframe_ListenGetPageContent'
 

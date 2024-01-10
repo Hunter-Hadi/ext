@@ -186,7 +186,7 @@ export const askChatGPTQuestion = async (
           })
         }, 1)
       }
-    let prevTaskIndex = 0
+    let prevTaskIndex = -1
     const runTask = () => {
       requestIdleCallbackPolyfill(() => {
         if (tasks.length === 0) {

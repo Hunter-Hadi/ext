@@ -4,18 +4,28 @@
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const isArticlePage = () => {
-  const url = typeof window !== 'undefined' ? window.location.href : ''
-  // 检查 URL
-  // article、news、doc、blog、review、product、recipe、profile、website
-  const urlMatch = url.match(
-    /\/(article|news|doc|blog|review|product|recipe|profile|website)\//,
+  const websiteHost = getCurrentDomainHost()
+  const websitePathname =
+    typeof window !== 'undefined' ? window.location.pathname : ''
+  // 检查 pathname是否包含以下keywords
+  const keywords = [
+    'article',
+    'news',
+    'doc',
+    'blog',
+    'review',
+    'product',
+    'recipe',
+    'profile',
+    'website',
+  ]
+  const hasKeyword = keywords.some((keyword) =>
+    websitePathname.includes(`/${keyword}/`),
   )
-  if (urlMatch) {
+  if (hasKeyword) {
     return true
   }
-  const currentHost = getCurrentDomainHost()
-  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
-  const hostWithPathname = `${currentHost}${pathname}`
+  const hostWithPathname = `${websiteHost}${websitePathname}`
   // NOTE: 能尽量用字符串匹配的就用字符串匹配，不要用正则
   const textMatches = [
     'linkedin.com/feed/update',
@@ -25,7 +35,7 @@ export const isArticlePage = () => {
     return true
   }
   const regexMatches = [/github.com\/.+/, /reddit.com\/r\/.+/, /quora.com\/.+/]
-  const regexHostWithPathname = `${currentHost}${pathname.slice(0, 5)}`
+  const regexHostWithPathname = `${websiteHost}${websitePathname.slice(0, 5)}`
   if (regexMatches.find((match) => regexHostWithPathname.match(match))) {
     return true
   }

@@ -33,7 +33,7 @@ export const generateRandomColorWithTheme = (
  */
 export const escapeHtml = (html: string) => {
   return sanitizeHtml(html, {
-    allowedTags: ['span'],
+    allowedTags: ['span', 'br'],
     allowedAttributes: {
       span: ['contenteditable', 'style', 'data-variable-name'],
     },

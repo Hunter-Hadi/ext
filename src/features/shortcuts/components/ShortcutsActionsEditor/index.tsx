@@ -18,6 +18,7 @@ import {
   promptEditorAddHtmlToFocusNode,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { getMaxAISidebarSelection } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
@@ -54,6 +55,7 @@ const ShortcutActionsEditor: FC<{
   const addTextVariableToHTML = useCallback(
     (variable: IActionSetVariable) => {
       if (inputRef.current) {
+        console.log('ContentEditable 什么情况啊!!!!!!!!!!!!!!')
         updateEditHTML(inputRef.current.innerHTML)
         setTimeout(() => {
           const addHtml = `${generateVariableHtmlContent(
@@ -135,14 +137,26 @@ const ShortcutActionsEditor: FC<{
             updateEditHTML(event.target.value)
           }}
           onMouseUp={(event) => {
-            console.log('onClick', event)
+            console.log(
+              'ContentEditable onClick',
+              event,
+              getMaxAISidebarSelection()?.getRangeAt(0)?.cloneRange(),
+            )
             // 保存光标位置
             lastSelectionRangeRef.current =
-              window.getSelection()?.getRangeAt(0)?.cloneRange() || null
+              getMaxAISidebarSelection()?.getRangeAt(0)?.cloneRange() || null
           }}
           onKeyDown={(event) => {
-            if (event.key === 'Backspace' || event.key === 'Enter') {
-              const selection = window.getSelection()
+            console.log(
+              'ContentEditable onKeyUp',
+              event,
+              getMaxAISidebarSelection()?.getRangeAt(0)?.cloneRange(),
+            )
+            if (
+              event.key === 'ContentEditable Backspace' ||
+              event.key === 'Enter'
+            ) {
+              const selection = getMaxAISidebarSelection()
               if (selection && selection.toString() && selection.focusNode) {
                 if (event.currentTarget.contains(selection.focusNode)) {
                   // 删除选中的内容
@@ -162,10 +176,14 @@ const ShortcutActionsEditor: FC<{
             }
           }}
           onKeyUp={(event) => {
-            console.log('onKeyUp', event)
+            console.log(
+              'ContentEditable onKeyUp',
+              event,
+              getMaxAISidebarSelection()?.getRangeAt(0)?.cloneRange(),
+            )
             // 保存光标位置
             lastSelectionRangeRef.current =
-              window.getSelection()?.getRangeAt(0)?.cloneRange() || null
+              getMaxAISidebarSelection()?.getRangeAt(0)?.cloneRange() || null
           }}
         />
       </Box>

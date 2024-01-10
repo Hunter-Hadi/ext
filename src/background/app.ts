@@ -39,6 +39,7 @@ import { pdfSnifferStartListener } from '@/background/src/pdf'
 import {
   backgroundRestartChromeExtension,
   backgroundSendClientMessage,
+  chromeExtensionOpenImmersiveChat,
   getChromeExtensionOnBoardingData,
   resetChromeExtensionOnBoardingData,
   safeGetBrowserTab,
@@ -393,6 +394,8 @@ const initChromeExtensionCommands = () => {
           },
         )
       }
+    } else if (command === 'open-immersive-chat') {
+      await chromeExtensionOpenImmersiveChat('', true)
     }
   })
 }

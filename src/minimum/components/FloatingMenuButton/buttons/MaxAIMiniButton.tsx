@@ -1,7 +1,7 @@
 import DragIndicatorIcon from '@mui/icons-material/DragIndicator'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -21,7 +21,22 @@ const MaxAIMiniButton: FC<{
   const { isDragging, children, onClick } = props
   const { chatBoxShortCutKey } = useCommands()
   const [buttonHover, setButtonHover] = useState(false)
-
+  const [delayHoverTooltip, setDelayHoverTooltip] = useState(false)
+  useEffect(() => {
+    let timer: ReturnType<typeof setTimeout> | null = null
+    if (buttonHover) {
+      timer = setTimeout(() => {
+        setDelayHoverTooltip(true)
+      }, 120)
+    } else {
+      setDelayHoverTooltip(false)
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [buttonHover])
   return (
     <Stack
       direction={'row'}
@@ -32,7 +47,7 @@ const MaxAIMiniButton: FC<{
       }}
     >
       <TextOnlyTooltip
-        open={buttonHover && !isDragging}
+        open={delayHoverTooltip && !isDragging}
         arrow
         minimumTooltip
         title={chatBoxShortCutKey}

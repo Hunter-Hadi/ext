@@ -93,6 +93,9 @@
         "mac": "Command+J"
       },
       "description": "Active MaxAI.me"
+    },
+    "open-immersive-chat": {
+      "description": "Open immersive chat"
     }
   },
   "web_accessible_resources": [

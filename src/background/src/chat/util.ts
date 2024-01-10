@@ -155,6 +155,64 @@ export const askChatGPTQuestion = async (
   return new Promise((resolve) => {
     const taskId = question.messageId
     let isRunningTask = false
+    const requestIdleCallbackPolyfill =
+      window.requestIdleCallback ||
+      function (cb) {
+        const start = Date.now()
+        return setTimeout(function () {
+          cb({
+            didTimeout: false,
+            timeRemaining: function () {
+              return Math.max(0, 50 - (Date.now() - start))
+            },
+          })
+        }, 1)
+      }
+    let prevTaskIndex = -1
+    const runTask = () => {
+      requestIdleCallbackPolyfill(
+        (deadline) => {
+          if (deadline?.didTimeout) {
+            console.log(
+              `测试requestIdleCallbackPolyfill timeout`,
+              deadline.didTimeout,
+              deadline.timeRemaining(),
+            )
+          }
+          if (tasks.length === 0) {
+            // 说明还没有任务
+            runTask()
+            return
+          }
+          const currentTaskIndex = tasks.length - 1
+          if (currentTaskIndex <= prevTaskIndex) {
+            // 说明没有新的任务
+            runTask()
+            return
+          }
+          prevTaskIndex = currentTaskIndex
+          const lastTaskData = tasks[currentTaskIndex]
+          console.log(
+            `测试requestIdleCallbackPolyfill [${tasks.length - 1}]`,
+            lastTaskData?.data?.text,
+          )
+          if (lastTaskData.error) {
+            onError?.(lastTaskData.error)
+          } else if (lastTaskData?.data?.text) {
+            onMessage?.(lastTaskData.data)
+          }
+          if (lastTaskData.done) {
+            resolve(true)
+            destroyListener()
+          } else {
+            runTask()
+          }
+        },
+        {
+          timeout: 200,
+        },
+      )
+    }
     const destroyListener = createClientMessageListener(async (event, data) => {
       if (
         event === 'Client_askChatGPTQuestionResponse' &&
@@ -173,52 +231,6 @@ export const askChatGPTQuestion = async (
       }
       return undefined
     })
-    const requestIdleCallbackPolyfill =
-      window.requestIdleCallback ||
-      function (cb) {
-        const start = Date.now()
-        return setTimeout(function () {
-          cb({
-            didTimeout: false,
-            timeRemaining: function () {
-              return Math.max(0, 50 - (Date.now() - start))
-            },
-          })
-        }, 1)
-      }
-    let prevTaskIndex = -1
-    const runTask = () => {
-      requestIdleCallbackPolyfill(() => {
-        if (tasks.length === 0) {
-          // 说明还没有任务
-          runTask()
-          return
-        }
-        const currentTaskIndex = tasks.length - 1
-        if (currentTaskIndex <= prevTaskIndex) {
-          // 说明没有新的任务
-          runTask()
-          return
-        }
-        prevTaskIndex = currentTaskIndex
-        const lastTaskData = tasks[currentTaskIndex]
-        console.log(
-          `测试requestIdleCallbackPolyfill [${tasks.length - 1}]`,
-          lastTaskData?.data?.text,
-        )
-        if (lastTaskData.error) {
-          onError?.(lastTaskData.error)
-        } else if (lastTaskData?.data?.text) {
-          onMessage?.(lastTaskData.data)
-        }
-        if (lastTaskData.done) {
-          resolve(true)
-          destroyListener()
-        } else {
-          runTask()
-        }
-      })
-    }
     const port = new ContentScriptConnectionV2({
       runtime: 'client',
     })

@@ -6,7 +6,6 @@ import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -53,27 +52,6 @@ const SidebarPage = () => {
         loading={smoothConversationLoading}
         onRetry={retryMessage}
         onReGenerate={async () => {
-          if (currentSidebarConversationType === 'Summary') {
-            // 查看最后一条消息是否为总结的那一条消息
-            for (
-              let i = currentSidebarConversationMessages.length - 1;
-              i >= 0;
-              i--
-            ) {
-              const message = currentSidebarConversationMessages[i]
-              // 查看最后一条AI消息是不是总结的那条消息
-              if (isAIMessage(message)) {
-                if (
-                  message.originalMessage?.metadata?.shareType === 'summary'
-                ) {
-                  await resetConversation()
-                  return
-                }
-                // 如果不是总结的那条消息，就不用再往前找了
-                break
-              }
-            }
-          }
           if (currentSidebarConversationType === 'Search') {
             await regenerateSearchWithAI()
             return

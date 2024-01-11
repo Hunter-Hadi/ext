@@ -169,7 +169,9 @@ Use the following format:
               messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
               text: '',
               originalMessage: {
+                status: 'complete',
                 metadata: {
+                  isComplete: true,
                   deepDive: {
                     title: {
                       title: 'Deep dive',
@@ -350,7 +352,9 @@ Use the following format:
               messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
               text: '',
               originalMessage: {
+                status: 'complete',
                 metadata: {
+                  isComplete: true,
                   deepDive: {
                     title: {
                       title: 'Deep dive',
@@ -527,7 +531,9 @@ Use the following format:
               messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
               text: '',
               originalMessage: {
+                status: 'complete',
                 metadata: {
+                  isComplete: true,
                   deepDive: {
                     title: {
                       title: 'Deep dive',
@@ -706,7 +712,9 @@ Use the following format:
               messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               text: '',
               originalMessage: {
+                status: 'complete',
                 metadata: {
+                  isComplete: true,
                   deepDive: {
                     title: {
                       title: 'Deep dive',

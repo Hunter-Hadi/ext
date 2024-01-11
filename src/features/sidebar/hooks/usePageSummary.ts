@@ -14,13 +14,13 @@ import { permissionCardToChatMessage } from '@/features/auth/components/Permissi
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
@@ -40,7 +40,7 @@ const usePageSummary = () => {
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
-  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
+  const { askAIWIthShortcuts } = useClientChat()
   const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation } = useClientConversation()
   const isFetchingRef = useRef(false)
@@ -168,48 +168,16 @@ const usePageSummary = () => {
       currentSidebarConversationId
     ) {
       isFetchingRef.current = true
-      if (setShortCuts(runActions)) {
-        setRunActions([])
-        runShortCuts()
-          .then()
-          .catch()
-          .finally(() => {
-            isFetchingRef.current = false
-            const conversationId = getPageSummaryConversationId()
-            if (conversationId && lastMessageIdRef.current) {
-              // 因为整个过程不一定是成功的
-              // 更新消息的isComplete/sources.status
-              clientChatConversationModifyChatMessages(
-                'update',
-                conversationId,
-                0,
-                [
-                  {
-                    messageId: lastMessageIdRef.current,
-                    originalMessage: {
-                      status: 'complete',
-                      metadata: {
-                        sources: {
-                          status: 'complete',
-                        },
-                        isComplete: true,
-                      },
-                    },
-                  } as IAIResponseMessage,
-                ],
-              )
-                .then()
-                .catch()
-            }
-          })
-      } else {
-        setRunActions([])
-        isFetchingRef.current = false
-      }
+      askAIWIthShortcuts(runActions)
+        .then()
+        .catch()
+        .finally(() => {
+          isFetchingRef.current = false
+        })
+      setRunActions([])
     }
   }, [
-    runShortCuts,
-    setRunActions,
+    askAIWIthShortcuts,
     currentSidebarConversationType,
     currentSidebarConversationId,
     runActions,

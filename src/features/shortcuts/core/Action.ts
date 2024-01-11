@@ -10,7 +10,7 @@ import Log from '@/utils/Log'
 class Action implements IAction {
   id: string
   type: ActionIdentifier
-  status: 'idle' | 'running' | 'complete'
+  status: 'idle' | 'running' | 'complete' | 'stop'
   error?: string
   output?: any
   parameters: ActionParameters

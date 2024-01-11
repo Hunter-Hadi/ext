@@ -11,7 +11,6 @@ import {
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import {
   IAIResponseMessage,
-  IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
@@ -40,7 +39,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
   private question?: IUserChatMessage
-  private message?: IChatMessage
+  private answer?: IAIResponseMessage
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -220,8 +219,6 @@ export class ActionAskChatGPT extends Action {
         engine.clientConversationEngine?.updateClientConversationLastMessageId(
           this.question.messageId,
         )
-        // ai 正在输出的消息
-        let AIWritingMessage: IAIResponseMessage | null = null
         // 第三方AI provider的conversationId
         let AIConversationId = ''
         let errorMessage = ''
@@ -229,7 +226,7 @@ export class ActionAskChatGPT extends Action {
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
               this.log.info('message', message)
-              AIWritingMessage = {
+              this.answer = {
                 messageId: (message.messageId as string) || uuidV4(),
                 parentMessageId:
                   (message.parentMessageId as string) || uuidV4(),
@@ -240,14 +237,14 @@ export class ActionAskChatGPT extends Action {
               if (message.conversationId) {
                 AIConversationId = message.conversationId
               }
-              this.output = AIWritingMessage.text
+              this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
-              if (outputMessageId) {
+              if (outputMessageId && this.status === 'running') {
                 await clientChatConversationModifyChatMessages(
                   'update',
                   conversationId,
                   0,
-                  isAIMessage(AIWritingMessage)
+                  isAIMessage(this.answer)
                     ? [
                         mergeWithObject([
                           message,
@@ -266,16 +263,15 @@ export class ActionAskChatGPT extends Action {
                       ]
                     : [message],
                 )
-              } else {
-                if (
-                  askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
-                  askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
-                ) {
-                  // 更新客户端的writing message
-                  await clientConversationEngine.updateClientWritingMessage(
-                    AIWritingMessage,
-                  )
-                }
+              } else if (
+                askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
+                askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER' &&
+                this.status === 'running'
+              ) {
+                // 更新客户端的writing message
+                await clientConversationEngine.updateClientWritingMessage(
+                  this.answer,
+                )
               }
             },
             onError: async (error: any) => {
@@ -301,7 +297,10 @@ export class ActionAskChatGPT extends Action {
               }
             },
           })
-          if (AIWritingMessage) {
+          if (this.status !== 'running') {
+            return
+          }
+          if (this.answer) {
             // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
             if (
               !outputMessageId &&
@@ -311,7 +310,7 @@ export class ActionAskChatGPT extends Action {
               // 移除AI writing message
               clientConversationEngine.updateClientWritingMessage(null)
               await clientConversationEngine.pushMessage(
-                AIWritingMessage,
+                this.answer,
                 conversationId,
               )
             }
@@ -365,14 +364,38 @@ export class ActionAskChatGPT extends Action {
         messageId: this.question?.messageId,
       },
     })
+    if (this.question?.conversationId && this.question.meta?.outputMessageId) {
+      // 因为整个过程不一定是成功的
+      // 更新消息的isComplete/sources.status
+      await clientChatConversationModifyChatMessages(
+        'update',
+        this.question?.conversationId,
+        0,
+        [
+          {
+            messageId: this.question.meta.outputMessageId,
+            originalMessage: {
+              status: 'complete',
+              metadata: {
+                sources: {
+                  status: 'complete',
+                },
+                isComplete: true,
+              },
+            },
+          } as IAIResponseMessage,
+        ],
+      )
+    }
+    this.status = 'stop'
     return true
   }
   reset() {
     console.log('reset')
     super.reset()
     this.question = undefined
-    this.message = undefined
+    this.answer = undefined
     console.log(this.question)
-    console.log(this.message)
+    console.log(this.answer)
   }
 }

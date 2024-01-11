@@ -11,7 +11,7 @@ export type ISetActionsType = Array<{
 // 定义动作接口
 export interface IAction {
   id: string
-  status: 'idle' | 'running' | 'error' | 'complete'
+  status: 'idle' | 'running' | 'error' | 'complete' | 'stop'
   //动作的类型，比如 "RENDER_TEMPLATE" 或 "ASK_CHATGPT"
   type: ActionIdentifier
   execute: (params: any, engine: any) => Promise<any>

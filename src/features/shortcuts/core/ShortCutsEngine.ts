@@ -166,6 +166,12 @@ class ShortCutsEngine implements IShortcutEngine {
       action.status = 'running'
       this.emit('action', action)
       await action.execute(this.getVariables(), engine)
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
+      if (action.status === 'stop') {
+        this.emit('action', action)
+        return
+      }
       if (action.error) {
         action.status = 'error'
         this.emit('action', action)
@@ -234,6 +240,11 @@ class ShortCutsEngine implements IShortcutEngine {
               this.emit('status', this)
               this.stepIndex = this.stepIndex - 1
               break
+            } else if (currentAction.status === 'stop') {
+              console.log('ShortCutEngine.run: stop')
+              this.status = 'stop'
+              this.emit('status', this)
+              break
             }
             const output = currentAction.output || ''
             this.setVariable('LAST_ACTION_OUTPUT', output, true)
@@ -259,9 +270,9 @@ class ShortCutsEngine implements IShortcutEngine {
   }
 
   async stop() {
+    this.status = 'stop'
     console.log('ShortCutEngine.stop')
     await this.getCurrentAction().stop()
-    this.status = 'stop'
   }
 
   reset() {

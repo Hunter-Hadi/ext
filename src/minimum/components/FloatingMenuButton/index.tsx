@@ -2,11 +2,14 @@
  * 渲染到页面中 右侧的 button
  */
 import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import debounce from 'lodash-es/debounce'
 import React, { FC, useEffect, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
 import { useRecoilState } from 'recoil'
 import Browser from 'webextension-polyfill'
 
+import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
@@ -15,6 +18,7 @@ import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/Max
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
 import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
+import { isArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const actionsCount = 4
@@ -33,9 +37,10 @@ const getBowserLocalStoreageFloatingButtonY = async () => {
 const FloatingMenuButton: FC = () => {
   const { height } = useWindowSize()
   const [maxAIMinimumHide] = useRecoilState(MaxAIMinimumHideState)
-
+  const [isKeepShow, setIsKeepShow] = useState(false)
   const [dragAxisY, setDragAxisY] = useState(() => DEFAULT_TOP)
   const [isHover, setIsHover] = useState(false)
+  const [isHoverButton, setIsHoverButton] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
   const currentDragAxisYRef = useRef(dragAxisY)
   const prevDragAxisYRef = useRef(dragAxisY)
@@ -62,6 +67,24 @@ const FloatingMenuButton: FC = () => {
     currentDragAxisYRef.current = dragAxisY
     saveBowserLocalStoreageFloatingButtonY(dragAxisY)
   }, [dragAxisY])
+  const checkIsKeepShow = debounce(() => {
+    console.log('checkIsKeepShow', isArticlePage())
+    setIsKeepShow(isArticlePage())
+  }, 1000)
+  useEffectOnce(() => {
+    setIsKeepShow(isArticlePage())
+  })
+  useCreateClientMessageListener(async (event) => {
+    if (event === 'Client_listenTabUrlUpdate') {
+      checkIsKeepShow()
+      return {
+        success: true,
+        message: 'ok',
+        data: {},
+      }
+    }
+    return undefined
+  })
   if (!isLoaded || maxAIMinimumHide) {
     return null
   }
@@ -77,17 +100,21 @@ const FloatingMenuButton: FC = () => {
       }}
     >
       <Draggable
-        disabled={!isHover}
+        disabled={!isHoverButton}
         bounds="parent"
         position={{ x: 0, y: dragAxisY }}
         axis="y"
         scale={1}
+        onStart={() => {}}
         onStop={(e, data) => {
-          setDragAxisY(data.y)
-          setIsHover(false)
-          setIsDragging(false)
+          if (isDragging) {
+            setDragAxisY(data.y)
+            setIsHover(false)
+            setIsDragging(false)
+          }
         }}
         onDrag={(e, data) => {
+          console.log('MaxAIMiniButton drag', isHoverButton)
           currentDragAxisYRef.current = data.y
           setIsDragging(true)
           setIsHover(true)
@@ -106,7 +133,8 @@ const FloatingMenuButton: FC = () => {
             sx={{
               width: 42,
               height: 32,
-              transform: isHover ? 'translateX(0)' : 'translateX(10px)',
+              transform:
+                isHover || isKeepShow ? 'translateX(0)' : 'translateX(10px)',
               transition: '0.1s all',
               borderRadius: '27px 0 0 27px',
               bgcolor: 'background.paper',
@@ -114,17 +142,24 @@ const FloatingMenuButton: FC = () => {
                 '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
               cursor: 'pointer',
             }}
-            onMouseEnter={() => {
-              setIsHover(true)
-            }}
             onMouseLeave={() => {
               setIsHover(false)
+              setIsHoverButton(false)
             }}
             onMouseDown={() => {
               prevDragAxisYRef.current = dragAxisY
             }}
           >
             <MaxAIMiniButton
+              onMouseEnter={() => {
+                setIsHover(true)
+                setIsHoverButton(true)
+                console.log('MaxAIMiniButton enter')
+              }}
+              onMouseLeave={() => {
+                setIsHoverButton(false)
+                console.log('MaxAIMiniButton onMouseLeave')
+              }}
               isDragging={isDragging}
               onClick={() => {
                 if (
@@ -140,12 +175,19 @@ const FloatingMenuButton: FC = () => {
                   data: {},
                 })
               }}
-              actions={[
-                <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />,
-                <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />,
-                <MaxAISummarizeButton key={'MaxAISummarizeButton'} />,
-              ]}
-            />
+            >
+              <Stack pb={'6px'} spacing={'6px'}>
+                {isHover && (
+                  <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />
+                )}
+                {isHover && (
+                  <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
+                )}
+                {(isHover || isKeepShow) && (
+                  <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
+                )}
+              </Stack>
+            </MaxAIMiniButton>
           </Box>
         </Box>
       </Draggable>

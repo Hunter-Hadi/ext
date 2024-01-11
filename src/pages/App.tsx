@@ -13,11 +13,11 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 import { AppState } from '@/store'
-import { isShowChatBox } from '@/utils'
 import { getEnv } from '@/utils/AppEnv'
 
 const SidebarPage = React.lazy(() => import('@/pages/sidebar'))

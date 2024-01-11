@@ -11,6 +11,10 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
+import {
+  debounceUpdateSidebarChatBoxStyle,
+  isShowChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import Log from '@/utils/Log'
@@ -23,11 +27,12 @@ const useInitChatGPTClient = () => {
   const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const showFloatingContextMenuRef = useRef(showFloatingContextMenu)
+  const isOpenChatBoxRef = useRef(false)
   useEffect(() => {
     showFloatingContextMenuRef.current = showFloatingContextMenu
   }, [showFloatingContextMenu])
   useCreateClientMessageListener(async (event, data, sender) => {
-    log.info('message', event, data)
+    // log.info('message', event, data)
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_ChatGPTStatusUpdate':
         {
@@ -94,6 +99,21 @@ const useInitChatGPTClient = () => {
           //   data: {},
           //   message: '',
           // }
+        }
+        break
+      case 'Client_updateSidebarChatBoxStyle':
+        {
+          if (isOpenChatBoxRef.current) {
+            debounceUpdateSidebarChatBoxStyle()
+          } else {
+            console.log(
+              'Client_updateSidebarChatBoxStyle 不操作，因为没打开过sidebarChatBox',
+            )
+            if (isShowChatBox()) {
+              isOpenChatBoxRef.current = true
+              debounceUpdateSidebarChatBoxStyle()
+            }
+          }
         }
         break
       case 'Client_updateAppSettings':

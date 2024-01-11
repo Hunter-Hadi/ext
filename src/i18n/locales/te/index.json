@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Gemini, Bard, Bing ద్వారా ప్రాధాన్యత కలుగుతున్న AI ఉపయోగించడానికి అత్యంత వేగవంతమైన మార్గం. మీకు అవసరమైన జనరేటివ్ AI పొడవుగానే మీకు కావలసినది.",
+  "description": "ChatGPT, Claude, Gemini ద్వారా ప్రాధాన్యత కలుగుతున్న AI ఉపయోగించడానికి అత్యంత వేగమైన మార్గం. మీరు కావలసిన ఏకైనా జనరేటివ్ AI పొడిగింపు విస్తరణ ఇది.",
   "name": "MaxAI.me: యాక్సెస్ చేయడం కోసం 1-క్లిక్ AI",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 యాక్సెస్ చేయడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI యొక్క అత్యంత సామర్థ్యం ఉన్న మోడల్, సృజనాత్మకత మరియు ఆధ్వితీయ యోచనలను అవసరం కలిగి ఉంచే కార్యాలకు అద్వితీయంగా ఉంటుంది.",
     "prompt__group__suggested__title": "సూచించబడింది",
-    "rewards__title": "పురస్కారాలు",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail అసిస్టెంట్‌ను దాచండి",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "అనివార్య ChatGPT ఉపయోగం కొరకు అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "మీరు ప్రస్తుత రోజువారీ ChatGPT ఉపయోగ పరిమితిని చేరుకున్నారు.\nమీరు అనివార్య ఉపయోగం కోసం ప్రొ కొనండి, లేదా మరొక AI ప్రొవైడర్లతో కొనియాగండి.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "పరిష్కరణలను చూడండి",
     "sidebar__input__tokens_limited__title": "టోకెన్ల గరిష్ఠం",
     "provider__gemini__title": "జెమిని",
-    "provider__gemini__short_description": "Google యొక్క జెమిని ఫ్యామిలీ, పెరుగుతూ ఉండటానికి మరియు బహువిధాతనంగా ఉండేందుకు డిజైన్ చేయబడింది, 38 భాషలను మరియు 32k టోకన్ల కంటెక్స్ట్ విండోను మద్దతిస్తుంది.",
+    "provider__gemini__short_description": "మల్టీమోడాలిటీ కోసం భూమిక నుంచి నిర్మించబడిన Google యొక్క అత్యంత సాధారణ మరియు ప్రాధాన్యత ఉన్న మోడల్. MaxAI లో Gemini ప్రస్తుతం వచ్చినప్పుడు పఠనం మరియు కోడ్ కోసం మాత్రమే మద్దతు అందిస్తుంది, తరువాత ఇమేజ్లు, వీడియోలు మరియు ఆడియోకు మద్దతు చేర్చబడుతుంది.",
     "provider__gemini__auth_description": "పొడి నింపుకు జెమినిని ఉపయోగించండి.",
     "provider__gemini__auth_button_text": "జెమినితో కొనసాగించండి",
     "provider__gemini__model__gemini_pro__description": "Google యొక్క జెమిని ఫ్యామిలీ, పెరుగుతూ ఉండటానికి మరియు బహుశాఖా సామర్ధ్యాన్ని ప్రదర్శించేందుకు డిజైన్ చేయబడింది, 38 భాషలను మరియు 32k టోకన్ల కంటెక్స్ట్ విండోను మద్దతిస్తుంది.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ఎలైట్‌కు అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "జెమిని-ప్రోకు ప్రవేశానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google యొక్క అత్యంత సామర్థ్యకరమైన మరియు సాధారణ మోడల్. బహుశాఖాత్మకత కోసం నుండి నిర్మించబడినది. MaxAI లో జెమిని ప్రస్తుతం బీటా దశలో ఉంది, మాత్రమే టెక్స్ట్ మరియు కోడ్ మద్దతును మాత్రమే మద్దతుగా అందిస్తుంది, ముందుగా చిత్రాలు, వీడియోలు మరియు ఆడియోకు మద్దతు జోడించబడుతుంది.",
-    "quick_access__hide_button__title": "త్వరల ప్రవేశం దాచుకోండి అంటే తరువాత సందర్శన"
+    "quick_access__hide_button__title": "త్వరల ప్రవేశం దాచుకోండి అంటే తరువాత సందర్శన",
+    "sidebar__top_bar__rewards__title": "పురస్కారాలు",
+    "sidebar__top_bar__upgrade__title": "అప్గ్రేడ్"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

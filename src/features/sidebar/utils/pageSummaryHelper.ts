@@ -178,17 +178,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -355,17 +355,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -528,17 +528,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -606,9 +606,9 @@ Use the following format:
           },
         },
         {
-          type: 'RENDER_TEMPLATE',
+          type: 'SET_VARIABLE',
           parameters: {
-            template: '{{SOCIAL_MEDIA_PAGE_CONTENT}}',
+            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -616,12 +616,6 @@ Use the following format:
           parameters: {
             AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
             AnalyzeChatFileImmediateUpdateConversation: false,
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'READABILITY_CONTENTS',
           },
         },
         {
@@ -710,17 +704,17 @@ Use the following format:
             } as IAIResponseMessage,
           },
         },
-        {
-          type: 'CREATE_WEBSITE_CONTEXT',
-          parameters: {
-            CreateWebsiteContextConfig: {
-              summary: '{{SUMMARY_CONTENTS}}',
-              meta: {
-                readability: '{{READABILITY_CONTENTS}}',
-              },
-            },
-          },
-        },
+        // {
+        //   type: 'CREATE_WEBSITE_CONTEXT',
+        //   parameters: {
+        //     CreateWebsiteContextConfig: {
+        //       summary: '{{SUMMARY_CONTENTS}}',
+        //       meta: {
+        //         readability: '{{READABILITY_CONTENTS}}',
+        //       },
+        //     },
+        //   },
+        // },
       ],
       visibility: {
         isWhitelistMode: false,

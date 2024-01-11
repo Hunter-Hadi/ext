@@ -1,5 +1,5 @@
 {
-  "description": "A maneira mais rápida de usar IA alimentada por ChatGPT, Claude, Gemini, Bard, Bing em qualquer lugar. A única extensão de IA generativa que você precisa.",
+  "description": "A maneira mais rápida de usar a IA alimentada por ChatGPT, Claude, Gemini em qualquer lugar. A única extensão de IA generativa que você precisa.",
   "name": "MaxAI.me: Use IA em 1 Clique em Qualquer Lugar",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Atualize para acessar gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "O modelo mais capaz da OpenAI, ótimo para tarefas que exigem criatividade e raciocínio avançado.",
     "prompt__group__suggested__title": "Sugerido",
-    "rewards__title": "Recompensas",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ocultar assistente do Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Atualize para uso ilimitado do ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Você atingiu o limite diário atual de uso para o ChatGPT.\nVocê pode atualizar para a versão Pro agora para uso ilimitado ou continuar com os outros Provedores de IA.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Ver soluções",
     "sidebar__input__tokens_limited__title": "máximo de tokens",
     "provider__gemini__title": "Gêmeos",
-    "provider__gemini__short_description": "Família Gemini do Google, projetada para escalabilidade e versatilidade, suportando 38 idiomas e uma janela de contexto de 32k tokens.",
+    "provider__gemini__short_description": "O modelo mais capaz e geral do Google, construído desde o início para multimodalidade. O Gemini no MaxAI atualmente suporta texto e código e em breve adicionará suporte para imagens, vídeos e áudio.",
     "provider__gemini__auth_description": "Use o Gemini para alimentar a extensão.",
     "provider__gemini__auth_button_text": "Continuar com o Gemini",
     "provider__gemini__model__gemini_pro__description": "Família Gemini do Google, projetada para oferecer escalabilidade e exibir capacidades generalistas fortes, suportando 38 idiomas e uma janela de contexto de 32k tokens.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Atualizar para Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Atualize para acessar gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "O modelo mais capaz e geral do Google. Construído do zero para multimodalidade. O Gemini no MaxAI está atualmente na fase beta, suportando apenas texto e código, e em breve adicionará suporte para imagens, vídeos e áudio.",
-    "quick_access__hide_button__title": "Ocultar acesso rápido até a próxima visita"
+    "quick_access__hide_button__title": "Ocultar acesso rápido até a próxima visita",
+    "sidebar__top_bar__rewards__title": "Recompensas",
+    "sidebar__top_bar__upgrade__title": "Atualizar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

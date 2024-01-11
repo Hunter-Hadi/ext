@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Gemini, Bard, Bing দ্বারা প্রযুক্তিগত AI ব্যবহার করার সবচেয়ে দ্রুত উপায়। আপনি যেই জেনারেটিভ AI এক্সটেনশনটি প্রয়োজন তাই সেটি।",
+  "description": "চ্যাটজিপিটি দ্বারা সক্ষম এআই ব্যবহারের সবচেয়ে দ্রুত উপায়, ক্লোড, জেমিনি। আপনি যেখানেই যান, শুধুমাত্র জেনারেটিভ এআই এক্সটেনশন আপনার প্রয়োজন।",
   "name": "MaxAI.me: কোথাও এখানে 1-ক্লিক এইআই ব্যবহার করুন",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 অ্যাক্সেস করতে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "ক্রিয়েটিভিটি এবং উন্নত যাচাইয়ের জন্য প্রয়োজন যার জন্য OpenAI-র সবচেয়ে সক্ষম মডেল।",
     "prompt__group__suggested__title": "প্রস্তাবিত",
-    "rewards__title": "পুরস্কার",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail সহায়ক লুকান",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "সীমাহীন ChatGPT ব্যবহারের জন্য আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "আপনি ChatGPT এর জন্য বর্তমান দৈনিক ব্যবহার সীমা অর্জন করেছেন।\nআপনি সীমাহীন ব্যবহারের জন্য এখনই Pro-তে আপগ্রেড করতে পারেন, অথবা অন্য এল প্রদানকারীর সাথে চালিয়ে যেতে পারেন।",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "সমাধান দেখুন",
     "sidebar__input__tokens_limited__title": "সর্বাধিক টোকেন",
     "provider__gemini__title": "জেমিনি",
-    "provider__gemini__short_description": "গুগলের জেমিনি পরিবার, স্কেলাবিলিটি এবং বহুমুখী সমর্থন দেওয়ার জন্য ডিজাইন করা, ৩৮টি ভাষা এবং ৩২কে টোকেন এর কনটেক্সট উপস্থাপন করে।",
+    "provider__gemini__short_description": "গুগলের সবচেয়ে ক্ষমতাশালী এবং সাধারণ মডেল, যা বহুমুখীয়তা জন্য মূলত তৈরি করা হয়েছে। ম্যাক্সএআইতে জেমিনি বর্তমানে পাঠ এবং কোড সমর্থন করে এবং শীঘ্রই চিত্র, ভিডিও এবং অডিও সমর্থন যোগ করবে।",
     "provider__gemini__auth_description": "এক্সটেনশন চালাতে জেমিনি ব্যবহার করুন।",
     "provider__gemini__auth_button_text": "জেমিনি দিয়ে চালিয়ে যান",
     "provider__gemini__model__gemini_pro__description": "গুগলের জেমিনি পরিবার, স্কেলাবিলিটি এবং শক্তিশালী জেনারালিস্ট ক্ষমতা দেখানোর জন্য ডিজাইন করা, ৩৮টি ভাষা এবং ৩২কে টোকেন এর কনটেক্সট উপস্থাপন করে।",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ইলিটে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "জেমিনি-প্রো অ্যাক্সেস করতে আপগ্রেড করুন",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "গুগলের সবচেয়ে ক্ষমতাশালী এবং সাধারণ মডেল। বহুমুখীতা জন্য মৌলিকভাবে তৈরি করা। ম্যাক্সএআই উপর জেমিনি বর্তমানে বেটা পর্যায়ে আছে, কেবলমাত্র টেক্সট এবং কোড সমর্থন করে, এবং শীঘ্রই চিত্র, ভিডিও এবং অডিও সমর্থন যোগ করবে।",
-    "quick_access__hide_button__title": "পরবর্তী দেখা পর্যন্ত দ্রুত অ্যাক্সেস লুকান"
+    "quick_access__hide_button__title": "পরবর্তী দেখা পর্যন্ত দ্রুত অ্যাক্সেস লুকান",
+    "sidebar__top_bar__rewards__title": "পুরস্কার",
+    "sidebar__top_bar__upgrade__title": "আপগ্রেড"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

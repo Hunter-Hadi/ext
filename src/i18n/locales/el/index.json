@@ -1,5 +1,5 @@
 {
-  "description": "Ο γρηγορότερος τρόπος για να χρησιμοποιήσετε την Τεχνητή Νοημοσύνη που λειτουργεί με τη βοήθεια των ChatGPT, Claude, Gemini, Bard, Bing οπουδήποτε. Η μόνη επέκταση γεννητικής Τεχνητής Νοημοσύνης που χρειάζεστε.",
+  "description": "Ο γρηγορότερος τρόπος να χρησιμοποιήσετε την τεχνητή νοημοσύνη που τροφοδοτείται από το ChatGPT, Claude, Gemini οπουδήποτε. Τη μόνη επέκταση γεννητικής AI που χρειάζεστε.",
   "name": "MaxAI.me: Χρησιμοποιήστε την τεχνητή νοημοσύνη με ένα κλικ οπουδήποτε",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Αναβάθμιση για πρόσβαση στο gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Το πιο ικανό μοντέλο της OpenAI, ιδανικό για εργασίες που απαιτούν δημιουργικότητα και προηγμένη σκέψη.",
     "prompt__group__suggested__title": "Προτεινόμενο",
-    "rewards__title": "Ανταμοιβές",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Απόκρυψη βοηθού Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Αναβαθμίστε για απεριόριστη χρήση του ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Έχετε φτάσει τον τρέχοντα ημερήσιο περιορισμό χρήσης για το ChatGPT.\nΜπορείτε να αναβαθμίσετε σε Pro τώρα για απεριόριστη χρήση, ή να συνεχίσετε με τους άλλους AI Providers.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Προβολή λύσεων",
     "sidebar__input__tokens_limited__title": "μέγιστα tokens",
     "provider__gemini__title": "Δίδυμος",
-    "provider__gemini__short_description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και ευελιξία, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",
+    "provider__gemini__short_description": "Το πιο ικανό και γενικό μοντέλο της Google, χτισμένο από το μηδέν για πολυτροπικότητα. Το Gemini στο MaxAI υποστηρίζει αυτή τη στιγμή κείμενο και κώδικα και σύντομα θα προσθέσει υποστήριξη για εικόνες, βίντεο και ήχο.",
     "provider__gemini__auth_description": "Χρησιμοποιήστε το Δίδυμο για να ενεργοποιήσετε την επέκταση.",
     "provider__gemini__auth_button_text": "Συνέχεια με το Δίδυμο",
     "provider__gemini__model__gemini_pro__description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και επιδεικνύει ισχυρές γενικές δυνατότητες, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Αναβάθμιση σε Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Αναβαθμίστε για πρόσβαση στο Δίδυμο Pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Το πιο ικανό και γενικό μοντέλο της Google. Κατασκευασμένο από το μηδέν για πολυτροπικότητα. Το Gemini στο MaxAI βρίσκεται αυτή τη στιγμή στη φάση της beta, υποστηρίζοντας μόνο κείμενο και κώδικα, και σύντομα θα προσθέσει υποστήριξη για εικόνες, βίντεο και ήχο.",
-    "quick_access__hide_button__title": "Απόκρυψη γρήγορης πρόσβασης μέχρι την επόμενη επίσκεψη"
+    "quick_access__hide_button__title": "Απόκρυψη γρήγορης πρόσβασης μέχρι την επόμενη επίσκεψη",
+    "sidebar__top_bar__rewards__title": "Ανταμοιβές",
+    "sidebar__top_bar__upgrade__title": "Αναβάθμιση"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

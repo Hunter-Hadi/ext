@@ -9,7 +9,6 @@ import {
 import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutsActionsEditor/store'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import {
-  escapeHtml,
   htmlToTemplate,
   promptTemplateToHtml,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
@@ -96,7 +95,7 @@ const useShortcutEditorActions = () => {
     // 如果找到了template，就把template中的变量替换成html
     if (originalTemplate) {
       editHTML = promptTemplateToHtml(
-        escapeHtml(originalTemplate),
+        originalTemplate,
         variablesMap,
         isDarkMode,
       )
@@ -115,9 +114,17 @@ const useShortcutEditorActions = () => {
     const template = htmlToTemplate(prevSaveHTML)
     setShortcutActionEditor((prev) => {
       const editHTML = promptTemplateToHtml(
-        escapeHtml(template),
+        template,
         variablesToVariableMap(prev.variables),
         isDarkMode,
+      )
+      console.log(
+        `test html template: \n`,
+        'template: \n',
+        template,
+        '\n',
+        'html:\n',
+        editHTML,
       )
       return {
         ...prev,

@@ -19,7 +19,7 @@ import {
   formatAIMessageContent,
   formatAIMessageContentForClipboard,
 } from '@/features/sidebar/utils/chatMessagesHelper'
-import { hideChatBox } from '@/utils'
+import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 const AFTER_COPIED_CLOSE_HOSTS = ['www.linkedin.com']
 
 const SidebarCopyButton: FC<{

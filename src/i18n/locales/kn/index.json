@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Gemini, Bard, Bing ದ್ವಾರಾ ಶಕ್ತಿಯುತವಾದ AI ಬಳಸುವ ಅತ್ಯಂತ ವೇಗವಾದ ಮಾರ್ಗ. ನೀವು ಬೇಕಾದ ಯಾವುದೇ ಜನರೇಟಿವ್ AI ವಿಸ್ತರಣವನ್ನು ಮಾತ್ರ ಬಳಸಬೇಕಾಗಿಲ್ಲ.",
+  "description": "ChatGPT, Claude, Gemini ದ್ವಾರಾ ಶಕ್ತಿಯುತವಾದ AI ಬಳಸುವ ಅತ್ಯಂತ ವೇಗವಾದ ಮಾರ್ಗ. ನೀವು ಬೇಕಾದ ಒಂದು ಜನರೇಟಿವ್ AI ವಿಸ್ತರಣ ಮಾತ್ರ ಹೊಂದಿರುವುದು.",
   "name": "MaxAI.me: ಯಾವುದೇ ಸ್ಥಳದಲ್ಲಿಯೂ AI ಬಳಸಲು 1-ಕ್ಲಿಕ್ ಆಯ್",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 ಅನುಸ್ರವಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "ಕ್ರೀಯಾಶೀಲತೆ ಮತ್ತು ಮುಂದಿನ ಯೋಚನೆಗಳನ್ನು ಅಗತ್ಯಪಡಿಸುವ ಕೆಲಸಗಳಿಗೆ ಉತ್ತಮವಾದ ಮಾದರಿ, ಒಳ್ಳೆಯದು.",
     "prompt__group__suggested__title": "ಸೂಚಿಸಲಾದದ್ದು",
-    "rewards__title": "ಪ್ರತಿಫಲಗಳು",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail ಸಹಾಯಕನನ್ನು ಮರೆಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ಅಮಿತ ChatGPT ಬಳಕೆಗಾಗಿ ಮೆಚ್ಚುಗೆ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ನೀವು ChatGPT ಗೆ ದೈನಂದಿನ ಬಳಕೆ ಮಿತಿಯನ್ನು ಸೇರಿದ್ದೀರಿ.\nಅಮಿತ ಬಳಕೆಗಾಗಿ ಪ್ರೊ ಗೆ ಮೆಚ್ಚುಗೆ ಮಾಡಿಕೊಳ್ಳಲು ಅಥವಾ ಇತರ AI ಪ್ರೊವೈಡರ್‌ಗಳೊಂದಿಗೆ ಮುಂದುವರಿಯಿರಿ.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "ಪರಿಹಾರಗಳನ್ನು ವೀಕ್ಷಿಸು",
     "sidebar__input__tokens_limited__title": "ಟೋಕನ್ಗಳ ಗರಿಷ್ಠ",
     "provider__gemini__title": "ಜೆಮಿನಿ",
-    "provider__gemini__short_description": "ಗೂಗಲ್ ಜೆಮಿನಿ ಕುಟುಂಬ, ವಿಸ್ತಾರವಾದ ಮತ್ತು ಬಹುಮುಖೀಯ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿರುವಂತೆ ರೂಪಿಸಲಾಗಿದೆ, 38 ಭಾಷೆಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ ಮತ್ತು 32k ಟೋಕನ್ಸ್ ಆಧಾರದ ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಹೊಂದಿದೆ.",
+    "provider__gemini__short_description": "ಬಹುಮುಖತೆಗಾಗಿ ನಿರ್ಮಿಸಲಾದ ಗೂಗಲ್‌ನ ಅತ್ಯುತ್ತಮ ಮತ್ತು ಸಾಮಾನ್ಯ ಮಾದರಿ. ಮೊದಲಿಗೆ ಪಠ್ಯ ಮತ್ತು ಕೋಡ್ ಮಾತ್ರ ಬೆಂಬಲವನ್ನು ನೀಡುತ್ತದೆ, ಮುಂದೆ ಚಿತ್ರಗಳು, ವೀಡಿಯೊಗಳು ಮತ್ತು ಆಡಿಯೊಗಳ ಬೆಂಬಲವನ್ನು ಸೇರಿಸಲಾಗುತ್ತದೆ.",
     "provider__gemini__auth_description": "ವಿಸ್ತರಣೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಲು ಜೆಮಿನಿಯನ್ನು ಬಳಸಿ.",
     "provider__gemini__auth_button_text": "ಜೆಮಿನಿಯನ್ನು ಉಪಯೋಗಿಸಿ ಮುಂದುವರಿಯಿರಿ",
     "provider__gemini__model__gemini_pro__description": "ಗೂಗಲ್ ಜೆಮಿನಿ ಕುಟುಂಬ, ವಿಸ್ತಾರವಾದ ಮತ್ತು ಸಾಮಾನ್ಯ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿರುವಂತೆ ರೂಪಿಸಲಾಗಿದೆ, 38 ಭಾಷೆಗಳನ್ನು ಬೆಂಬಲಿಸುತ್ತದೆ ಮತ್ತು 32k ಟೋಕನ್ಸ್ ಆಧಾರದ ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಹೊಂದಿದೆ.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ಎಲೈಟ್‌ಗೆ ಮೇಜ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ಜೆಮಿನಿ-ಪ್ರೊ ಅನುವರ್ತನಕ್ಕೆ ಪ್ರವೇಶವನ್ನು ಮೇಜ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ಗೂಗಲ್ ಅತ್ಯುತ್ತಮ ಮತ್ತು ಸಾಮಾನ್ಯ ಮಾದರಿ. ಬಹುಮುಖತೆಗಾಗಿ ಮೊದಲಿನಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ. ಮೌಲ್ಯಮಾಪನದ ಹೂಡಿಕೆಯಲ್ಲಿ ಜೆಮಿನಿ ಮೊದಲಾಗಿ ಪಠ್ಯ ಮತ್ತು ಕೋಡ್ ಬೆಂಬಲಿಸುತ್ತದೆ, ಮುಂದೆ ಚಿತ್ರಗಳು, ವೀಡಿಯೊಗಳು ಮತ್ತು ಧ್ವನಿಗಳನ್ನು ಬೆಂಬಲಿಸುವ ಬೆಂಬಲಿಸುತ್ತದೆ.",
-    "quick_access__hide_button__title": "ಮುಂದಿನ ಭೇಟಿಗೆ ಹೋಗುವವರೆಗೆ ತ್ವರಿತ ಪ್ರವೇಶವನ್ನು ಮರೆಯಿರಿ"
+    "quick_access__hide_button__title": "ಮುಂದಿನ ಭೇಟಿಗೆ ಹೋಗುವವರೆಗೆ ತ್ವರಿತ ಪ್ರವೇಶವನ್ನು ಮರೆಯಿರಿ",
+    "sidebar__top_bar__rewards__title": "ಪ್ರತಿಫಲಗಳು",
+    "sidebar__top_bar__upgrade__title": "ಮೊದಲಿಸು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

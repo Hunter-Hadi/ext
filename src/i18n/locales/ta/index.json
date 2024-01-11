@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Gemini, Bard, Bing ஆனது மூலம் ஐயம் பயன்படுத்துவதற்கான விரைவுப் பாதை. நீங்கள் தேவைப்படும் ஒரு உணர்வுக்கான உருவாக்கப்பட்ட ஐயம் மேலாளர் மீது இது தனிப்பட்ட ஆக்சன் ஆனது.",
+  "description": "ChatGPT, Claude, Gemini ஆன்மீக அறிவியல் பயன்பாட்டை எளிதாக பயன்படுத்துவதற்கான விரைவான வழி. நீங்கள் தேவைப்படும் ஒரு உருவாக்கப்பட்ட AI நீக்கியது.",
   "name": "MaxAI.me: எங்கிருந்து ஐயை 1-கிளிக் செய்யுங்கள்",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 ஐ அணுகவும் பிரோ-க்கு மேம்படுத்துக",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "கிரியேட்டிவியும் மேன்மையும் தேவைப்படும் பணிகளுக்கு அரிச்சுவடி ஆன OpenAI உள்ளிட்ட மிகச் சகாரமான மாதிரி.",
     "prompt__group__suggested__title": "பரிந்துரைக்கப்பட்டது",
-    "rewards__title": "வெகுமதி",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail உதவி மறைக்க",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "முழுமையான ChatGPT பயன்பாட்டு மேம்படுத்தல்",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "நீங்கள் ChatGPT தற்போதைய தினசரி பயன்பாட்டு வரம்பை அடைவது.\nமுடிவாக முடித்து முடிக்க முடியும் அல்லது மற்ற AI வழங்குநர்களுடன் தொடர்ந்து செல்ல முடியும்.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "தேடுங்கள் தேர்வுகளைக் காண்பி",
     "sidebar__input__tokens_limited__title": "முதன்மை டோக்கன்கள்",
     "provider__gemini__model__gemini_pro__description": "மிகுந்த அல்லது பொதுவான திறன்களை காட்டும் கூகிளின் ஜெமினி குடும்பம், 38 மொழிகளையும் 32k டோக்கன்களுக்குள் ஒரு சூழல் சாளரத்தை ஆதரிக்கின்றது.",
-    "provider__gemini__short_description": "மிகுந்த அல்லது பொதுவான திறன்களை காட்டும் கூகிளின் ஜெமினி குடும்பம், 38 மொழிகளையும் 32k டோக்கன்களுக்குள் ஒரு சூழல் சாளரத்தை ஆதரிக்கின்றது.",
+    "provider__gemini__short_description": "பல முறை திரும்பியினும் கூகிளின் அதிக முக்கியமான மாதிரி, பல வடிவங்களுக்கும் கட்டாயமாக உருவாக்கப்பட்டது. மேக்ஸ் ஏஐஐயில் ஜெமினி தற்போது உருவாக்கப்பட்ட உரையையும் குறியீட்டையும் ஆதரிக்கிறது, மின்னஞ்சல்கள், வீடியோக்கள் மற்றும் ஒலிகளுக்கு விரைவில் ஆதரிக்கப்படும்.",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "மிகுந்த அல்லது பொதுவான மாதிரியான மாதிரி. பல்வேறு முறைகளுக்கான ஆதரவுடன் அடிப்படையில் உருவாக்கப்பட்டது. மேலதிக மாதிரியான மாதிரி மாணவர்களுக்கான ஜெமினி மேல் ஐ மட்டுமே பல்வேறு உரையாடல்களை ஆதரிக்கின்றது, உடனடியாக படங்கள், வீடியோக்கள் மற்றும் ஒலிகளுக்கும் ஆதரவை சேர்க்கும்.",
     "provider__gemini__title": "ஜெமினி",
     "provider__gemini__auth_description": "நீங்கள் நீட்சியை அதிர்வீணப்படுத்த ஜெமினி பயன்படுத்துங்கள்.",
@@ -502,7 +501,9 @@
     "provider__label__beta": "பீட்டா",
     "permission__pricing_hook__button__upgrade_to_elite": "எலைட்டுக்கு மேம்படுத்தவும்",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ஜெமினி-ப்ரோ அணுகலைப் பயன்படுத்த மேம்படுத்தவும்",
-    "quick_access__hide_button__title": "அடுத்த வருகையில் விரைவான அணுகலை மறைக்கவும்"
+    "quick_access__hide_button__title": "அடுத்த வருகையில் விரைவான அணுகலை மறைக்கவும்",
+    "sidebar__top_bar__rewards__title": "வெகுமதி",
+    "sidebar__top_bar__upgrade__title": "மேம்படுத்து"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

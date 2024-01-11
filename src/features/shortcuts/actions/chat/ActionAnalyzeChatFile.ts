@@ -19,6 +19,8 @@ import { sendLarkBotMessage } from '@/utils/larkBot'
  */
 export class ActionAnalyzeChatFile extends Action {
   static type: ActionIdentifier = 'ANALYZE_CHAT_FILE'
+  // 后端最大上传文本上限
+  MAX_UPLOAD_TEXT_FILE_TOKENS = 400 * 1000 // 400k
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -42,11 +44,16 @@ export class ActionAnalyzeChatFile extends Action {
         this.parameters.AnalyzeChatFileImmediateUpdateConversation ||
         params.AnalyzeChatFileImmediateUpdateConversation ||
         false
+      const conversation = await this.getCurrentConversation(engine)
+      const systemPromptTokensLimit =
+        this.parameters.AnalyzeChatFileSystemPromptTokenLimit ||
+        conversation?.meta?.maxTokens ||
+        4096
       const text = params.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
       const {
         isLimit,
         text: pageSummarySystemPrompt,
-      } = await sliceTextByTokens(text, PAGE_SUMMARY_MAX_TOKENS, {
+      } = await sliceTextByTokens(text, systemPromptTokensLimit, {
         thread: 4,
         partOfTextLength: 80 * 1000,
       })
@@ -87,7 +94,7 @@ export class ActionAnalyzeChatFile extends Action {
             .then()
             .catch()
         } else {
-          sliceTextByTokens(text, MAX_UPLOAD_TEXT_FILE_TOKENS, {
+          sliceTextByTokens(text, this.MAX_UPLOAD_TEXT_FILE_TOKENS, {
             partOfTextLength: 80 * 1000,
           }).then((uploadData) => {
             // 异步通知LarkBot

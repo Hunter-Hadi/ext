@@ -122,6 +122,7 @@ interface ActionParameters {
   WFJavaScript?: WFSerialization | string
   WFJSONValues?: WFSerialization
   WFLabel?: WFSerialization | string
+  // 区分大小写
   WFMatchTextCaseSensitive?: boolean
   WFMatchTextPattern?: WFSerialization | string
   WFMathOperand?: number
@@ -196,6 +197,8 @@ interface ActionParameters {
   OperationElementConfig?: OperationElementConfigType
   AnalyzeChatFileName?: string
   AnalyzeChatFileImmediateUpdateConversation?: boolean
+  // 客户端systemPrompt的tokens上限, 如果超过这个阈值，就说明要上传到后端用docId来chat_with_document
+  AnalyzeChatFileSystemPromptTokenLimit?: number
   // set variable modal
   SetVariablesModalConfig?: ActionSetVariablesModalConfig
   CreateWebsiteContextConfig?: Partial<IWebsiteContext>
@@ -205,6 +208,8 @@ interface ActionParameters {
   ActionChatMessageType?: IChatMessage['type']
   ActionChatMessageOperationType?: 'add' | 'update' | 'delete'
   ActionChatMessageConfig?: IChatMessage
+  // 是否需要Action产生的变量进行MiddleOut:GET_EMAIL_CONTENTS_OF_WEBPAGE\GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE
+  isVariableMiddleOutEnabled?: boolean
 }
 
 export default ActionParameters

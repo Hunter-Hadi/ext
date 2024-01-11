@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT、Claude、Gemini、Bard、Bingによって提供されるAIをどこでも最速で利用する方法。必要なのはこの生成型AI拡張機能だけです。",
+  "description": "どこでも利用できるChatGPT、Claude、Geminiによって強化されたAIを使用する最速の方法。必要なのはこの生成型AI拡張機能だけです。",
   "name": "MaxAI.me：どこでも1クリックでAIを利用",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4にアクセスするためにアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "創造性と高度な推論が必要なタスクに最適なOpenAIの最も能力のあるモデルです。",
     "prompt__group__suggested__title": "提案された",
-    "rewards__title": "報酬",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmailアシスタントを非表示にする",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "無制限のChatGPT利用のためにアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ChatGPTの現在の日次使用制限に達しました。\n無制限利用のために今すぐProにアップグレードするか、他のAIプロバイダーを続けて利用してください。",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "ソリューションを表示",
     "sidebar__input__tokens_limited__title": "最大トークン数",
     "provider__gemini__title": "ジェミニ",
-    "provider__gemini__short_description": "Googleのジェミニファミリーは、スケーラビリティと多様性を備えており、38言語と32kトークンのコンテキストウィンドウをサポートしています。",
+    "provider__gemini__short_description": "Googleの最も能力があり、一般的なモデルであり、マルチモダリティに対応するために一から構築されました。MaxAI上のGeminiは現在、テキストとコードをサポートしており、近々画像、動画、音声のサポートも追加されます。",
     "provider__gemini__auth_description": "エクステンションのパワーにジェミニを使用します。",
     "provider__gemini__auth_button_text": "ジェミニで続行",
     "provider__gemini__model__gemini_pro__description": "Googleのジェミニファミリーは、スケーラビリティを提供し、強力な汎用機能を備えており、38言語と32kトークンのコンテキストウィンドウをサポートしています。",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "エリートにアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ジェミニプロにアクセスするためにアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googleの最も能力のある汎用モデルです。マルチモダリティに特化して開発されました。MaxAI上のジェミニは現在ベータフェーズであり、テキストとコードのみをサポートしており、近々画像、動画、音声のサポートが追加されます。",
-    "quick_access__hide_button__title": "次回訪問までクイックアクセスを非表示にする"
+    "quick_access__hide_button__title": "次回訪問までクイックアクセスを非表示にする",
+    "sidebar__top_bar__rewards__title": "報酬",
+    "sidebar__top_bar__upgrade__title": "アップグレード"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

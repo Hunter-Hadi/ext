@@ -1,5 +1,5 @@
 {
-  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Gemini, Bard, Bing oriunde. Singura extensie AI generativă de care aveți nevoie.",
+  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Gemini oriunde. Singura extensie AI generativă de care ai nevoie.",
   "name": "MaxAI.me: Utilizați AI cu un singur clic oriunde",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Upgrade pentru a accesa gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Cel mai capabil model OpenAI, ideal pentru sarcini care necesită creativitate și raționament avansat.",
     "prompt__group__suggested__title": "Sugerat",
-    "rewards__title": "Recompense",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ascunde asistentul Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade pentru utilizare nelimitată a ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Ați atins limita de utilizare zilnică curentă pentru ChatGPT.\nPuteți face upgrade la versiunea Pro acum pentru utilizare nelimitată sau continuați cu ceilalți furnizori AI.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Vezi soluții",
     "sidebar__input__tokens_limited__title": "maxim de tokeni",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Familia Gemini de la Google, proiectată pentru scalabilitate și versatilitate, susținând 38 de limbi și o fereastră de context de 32k de tokeni.",
+    "provider__gemini__short_description": "Cel mai capabil și general model al Google, construit de la zero pentru multimodalitate. Gemini pe MaxAI suportă în prezent text și cod și va adăuga în curând suport pentru imagini, videoclipuri și audio.",
     "provider__gemini__auth_description": "Utilizați Gemini pentru a alimenta extensia.",
     "provider__gemini__auth_button_text": "Continuați cu Gemini",
     "provider__gemini__model__gemini_pro__description": "Familia Gemini de la Google, proiectată pentru a oferi scalabilitate și capacități generaliste puternice, susținând 38 de limbi și o fereastră de context de 32k de tokeni.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade la Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade pentru a accesa gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Cel mai capabil și general model al Google. Construit de la zero pentru multimodalitate. Gemini pe MaxAI se află în prezent în faza beta, susținând doar text și cod, și va adăuga în curând suport pentru imagini, videoclipuri și audio.",
-    "quick_access__hide_button__title": "Ascunde acces rapid până la următoarea vizită"
+    "quick_access__hide_button__title": "Ascunde acces rapid până la următoarea vizită",
+    "sidebar__top_bar__rewards__title": "Recompense",
+    "sidebar__top_bar__upgrade__title": "Upgrade"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

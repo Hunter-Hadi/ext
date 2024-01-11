@@ -1,5 +1,5 @@
 {
-  "description": "Den raskeste måten å bruke AI drevet av ChatGPT, Claude, Gemini, Bard, Bing hvor som helst. Den eneste generative AI-utvidelsen du trenger.",
+  "description": "Den raskeste måten å bruke AI drevet av ChatGPT, Claude, Gemini hvor som helst. Den eneste generative AI-utvidelsen du trenger.",
   "name": "MaxAI.me: Bruk 1-klikks AI hvor som helst",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Oppgrader for å få tilgang til gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIs mest kapable modell, perfekt for oppgaver som krever kreativitet og avansert resonnement.",
     "prompt__group__suggested__title": "Forslag",
-    "rewards__title": "Belønninger",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Skjul Gmail-assistent",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Oppgrader for ubegrenset ChatGPT-bruk",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Du har nådd den gjeldende daglige bruksbegrensningen for ChatGPT.\nDu kan oppgradere til Pro nå for ubegrenset bruk, eller fortsette med de andre AI-leverandørene.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Vis løsninger",
     "sidebar__input__tokens_limited__title": "maksimalt antall tokens",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Googles Gemini-familie, designet for skalerbarhet og allsidighet, støtter 38 språk og et kontekstvindu på 32k tokens.",
+    "provider__gemini__short_description": "Googles mest kapable og generelle modell, bygget fra grunnen av for multimodalitet. Gemini på MaxAI støtter for øyeblikket tekst og kode, og vil snart legge til støtte for bilder, videoer og lyd.",
     "provider__gemini__auth_description": "Bruk Gemini til å drive utvidelsen.",
     "provider__gemini__auth_button_text": "Fortsett med Gemini",
     "provider__gemini__model__gemini_pro__description": "Googles Gemini-familie, designet for å tilby skalerbarhet og viser sterke allsidige evner, støtter 38 språk og et kontekstvindu på 32k tokens.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Oppgrader til Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Oppgrader for å få tilgang til gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googles mest kapable og generelle modell. Bygget fra grunnen av for multimodalitet. Gemini på MaxAI er for øyeblikket i betafasen, og støtter bare tekst og kode, og vil snart legge til støtte for bilder, videoer og lyd.",
-    "quick_access__hide_button__title": "Skjul rask tilgang til neste besøk"
+    "quick_access__hide_button__title": "Skjul rask tilgang til neste besøk",
+    "sidebar__top_bar__rewards__title": "Belønninger",
+    "sidebar__top_bar__upgrade__title": "Oppgrader"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

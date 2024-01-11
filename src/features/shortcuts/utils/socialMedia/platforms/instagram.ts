@@ -82,12 +82,20 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
       : (Array.from(
           instagramRootReplyBox?.querySelectorAll('section + div > ul > *'),
         ) as HTMLDivElement[])
-    const [postContent, ...comments] = replyMessageThread
+    const [postContent, ...commentRootList] = replyMessageThread
     if (!postContent) {
       // 说明可能在Home或者其他页面
-      const homePostContent = instagramRootReplyBox.querySelector(
+      let homePostContent = instagramRootReplyBox.querySelector(
         'div:has( > span[dir] > span[dir])',
       ) as HTMLSpanElement
+      // 说明可能是在Home的纯图片Post,没有文字说明
+      if (!homePostContent) {
+        homePostContent = findParentEqualSelector(
+          'article',
+          instagramRootReplyBox,
+          10,
+        ) as HTMLElement
+      }
       if (homePostContent) {
         const homePagePostData = await getInstagramCommentDetail(
           homePostContent,
@@ -114,32 +122,51 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
     // 说明是回复别人
     if (userInputDraft.startsWith('@')) {
       const userName = userInputDraft.split(' ')?.[0]
+      let comments: HTMLElement[] = []
+      // 主页获取comments的方式
+      commentRootList.map((commentRoot) => {
+        commentRoot
+          ?.querySelectorAll('& > div > div > div:has(> ul)')
+          ?.forEach((node) => {
+            comments.push(node as HTMLDivElement)
+          })
+      })
+      // 如果一个都没找到，说明是在帖子详情页
+      if (comments.length === 0) {
+        comments = commentRootList
+      }
       const commandList: ICommentData[] = []
+      // 遍历instagram的comment列表
       for (let j = 0; j < comments.length; j++) {
-        let hasFound = false
+        // 先看是不是第一层的comment
         const commentData = await getInstagramCommentDetail(comments[j])
-        if (userName.startsWith(commentData.author)) {
+        if (commentData.author && userName.startsWith(commentData.author)) {
           commandList.push(commentData)
-          hasFound = true
+          break
         }
+        // 因为主页和详情页的subComment的html有差异，所以要区分处理
         const subComments = Array.from(
-          comments[j + 1]?.querySelectorAll('ul > div'),
+          comments[j]?.querySelectorAll('ul > div'),
         ) as HTMLDivElement[]
         if (subComments.length > 0) {
+          let isFindSubComment = false
           for (let k = 0; k < subComments.length; k++) {
             const subCommentData = await getInstagramCommentDetail(
               subComments[k],
             )
-            if (userName.startsWith(subCommentData.author)) {
+            if (
+              commentData.author &&
+              userName.startsWith(subCommentData.author)
+            ) {
+              isFindSubComment = true
               commandList.push(commentData)
               commandList.push(subCommentData)
-              hasFound = true
               break
             }
           }
-        }
-        if (hasFound) {
-          break
+          if (isFindSubComment) {
+            break
+          }
         }
       }
       socialMediaPostContext.addCommentList(commandList)

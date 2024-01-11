@@ -3,6 +3,7 @@ import sanitize from 'sanitize-html'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import {
   ISystemMessage,
   IThirdMessage,
@@ -293,4 +294,20 @@ export const formatMessagesToLiteHistory = async (
   return `---------------------------------------------------------\n${title} powered by MaxAI.me\n---------------------------------------------------------\n\n${liteHistory.join(
     '\n\n',
   )}`
+}
+
+/**
+ * 获取MaxAI Sidebar的Selection
+ * @description - 因为MaxAI Sidebar是Shadow DOM, 所以需要通过这个方法获取Selection
+ */
+export const getMaxAISidebarSelection = () => {
+  if (typeof window !== 'undefined') {
+    const MaxAISidebarShadowRoot = document.querySelector(
+      `#${MAXAI_SIDEBAR_ID}`,
+    )?.shadowRoot
+    if (MaxAISidebarShadowRoot) {
+      return (MaxAISidebarShadowRoot as any).getSelection() as Selection
+    }
+  }
+  return null
 }

@@ -1,5 +1,5 @@
 {
-  "description": "سریعترین راه برای استفاده از هوش مصنوعی قدرت گرفته از ChatGPT، Claude، Gemini، Bard، Bing در هر جایی. تنها افزونه هوش مصنوعی تولیدی که نیاز دارید.",
+  "description": "سریعترین راه برای استفاده از هوش مصنوعی قدرت گرفته از ChatGPT، Claude، Gemini در هر جایی. تنها افزونه هوش مصنوعی تولیدی که نیاز دارید.",
   "name": "MaxAI.me: استفاده از هوش مصنوعی با 1 کلیک در هر جایی",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "ارتقا برای دسترسی به gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "قدرتمندترین مدل OpenAI، مناسب برای وظایفی که نیاز به خلاقیت و استدلال پیشرفته دارند.",
     "prompt__group__suggested__title": "پیشنهاد شده",
-    "rewards__title": "جوایز",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "مخفی کردن دستیار Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ارتقا برای استفاده نامحدود از ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "شما به سقف استفاده روزانه فعلی برای ChatGPT رسیده‌اید.\nشما می‌توانید همین حالا به نسخه پرو ارتقا دهید و از استفاده نامحدود بهره‌مند شوید، یا با سایر ارائه دهندگان هوش مصنوعی ادامه دهید.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "مشاهده راه حل‌ها",
     "sidebar__input__tokens_limited__title": "حداکثر توکن‌ها",
     "provider__gemini__title": "جوزا",
-    "provider__gemini__short_description": "خانواده جمینی گوگل، طراحی شده برای قابلیت مقیاس‌پذیری و چندکاربردی بوده و از ۳۸ زبان و پنجره متنی با ۳۲ هزار توکن پشتیبانی می‌کند.",
+    "provider__gemini__short_description": "قدرتمندترین و کامل‌ترین مدل گوگل، از پایه برای چندحالتی ساخته شده است. Gemini در MaxAI در حال حاضر از متن و کد پشتیبانی می‌کند و به زودی پشتیبانی از تصاویر، ویدئوها و صدا را نیز اضافه خواهد کرد.",
     "provider__gemini__auth_description": "از جوزا برای قدرت بخشیدن به افزونه استفاده کنید.",
     "provider__gemini__auth_button_text": "ادامه با جوزا",
     "provider__gemini__model__gemini_pro__description": "خانواده جمینی گوگل، طراحی شده برای قابلیت مقیاس‌پذیری و دارای قابلیت‌های عمومی قوی است که از ۳۸ زبان و پنجره متنی با ۳۲ هزار توکن پشتیبانی می‌کند.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ارتقا به الیت",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ارتقا برای دسترسی به جوزا پرو",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "قدرتمندترین و کلیت‌دارترین مدل گوگل. از پایه برای چندحالتی ساخته شده است. جمینی در MaxAI در حال حاضر در فاز بتا است و فقط پشتیبانی از متن و کد را دارد و به زودی پشتیبانی از تصاویر، ویدیوها و صدا را اضافه خواهد کرد.",
-    "quick_access__hide_button__title": "مخفی کردن دسترسی سریع تا بازدید بعدی"
+    "quick_access__hide_button__title": "مخفی کردن دسترسی سریع تا بازدید بعدی",
+    "sidebar__top_bar__rewards__title": "پاداش‌ها",
+    "sidebar__top_bar__upgrade__title": "ارتقا"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

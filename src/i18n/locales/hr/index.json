@@ -1,5 +1,5 @@
 {
-  "description": "Najbrži način korištenja AI-a pokretanog ChatGPT-om, Claudeom, Geminijem, Bardom, Bingom bilo gdje. Jedino proširenje generativne AI koje vam treba.",
+  "description": "Najbrži način korištenja AI-a pokretanog od strane ChatGPT, Claude, Gemini bilo gdje. Jedino proširenje generativne AI koje vam treba.",
   "name": "MaxAI.me: Koristite 1-klik AI bilo gdje",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Nadogradite za pristup gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Najnapredniji OpenAI model, idealan za zadatke koji zahtijevaju kreativnost i napredno zaključivanje.",
     "prompt__group__suggested__title": "Predloženo",
-    "rewards__title": "Nagrade",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sakrij Gmail pomoćnika",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Nadogradite za neograničeno korištenje ChatGPT-a",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Dosegli ste trenutno dnevno ograničenje korištenja za ChatGPT.\nMožete nadograditi na Pro verziju za neograničeno korištenje ili nastaviti s drugim AI pružateljima.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Pregledaj rješenja",
     "sidebar__input__tokens_limited__title": "maksimalni tokeni",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Gemini obitelj tvrtke Google, dizajnirana za skalabilnost i svestranost, podržava 38 jezika i kontekstni prozor od 32k tokena.",
+    "provider__gemini__short_description": "Najmoćniji i najopćenitiji model tvrtke Google, izgrađen od nule za multimodalnost. Gemini na MaxAI trenutno podržava tekst i kod, a uskoro će dodati podršku za slike, videozapise i zvuk.",
     "provider__gemini__auth_description": "Koristite Gemini za napajanje proširenja.",
     "provider__gemini__auth_button_text": "Nastavi s Gemini",
     "provider__gemini__model__gemini_pro__description": "Gemini obitelj tvrtke Google, dizajnirana za skalabilnost i snažne opće sposobnosti, podržava 38 jezika i kontekstni prozor od 32k tokena.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Nadogradite na Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nadogradite za pristup gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najnapredniji i najopćenitiji model tvrtke Google. Izgrađen od nule za multimodalnost. Gemini na MaxAI trenutno je u beta fazi i podržava samo tekst i kod, a uskoro će dodati podršku za slike, videozapise i zvuk.",
-    "quick_access__hide_button__title": "Sakrij brzi pristup do sljedećeg posjeta"
+    "quick_access__hide_button__title": "Sakrij brzi pristup do sljedećeg posjeta",
+    "sidebar__top_bar__rewards__title": "Nagrade",
+    "sidebar__top_bar__upgrade__title": "Nadogradnja"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

@@ -16,6 +16,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
@@ -35,6 +36,7 @@ const usePageSummary = () => {
     currentSidebarConversationId,
     currentSidebarConversationType,
   } = useSidebarSettings()
+  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
@@ -85,6 +87,12 @@ const usePageSummary = () => {
             return {
               ...prevState,
               loading: false,
+            }
+          })
+          updateConversationMap((prevState) => {
+            return {
+              ...prevState,
+              [pageSummaryConversation.id]: pageSummaryConversation,
             }
           })
           return

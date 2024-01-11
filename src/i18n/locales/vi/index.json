@@ -1,5 +1,5 @@
 {
-  "description": "Cách nhanh nhất để sử dụng trí tuệ nhân tạo được cung cấp bởi ChatGPT, Claude, Gemini, Bard, Bing ở bất kỳ đâu. Đây là tiện ích duy nhất về trí tuệ nhân tạo mà bạn cần.",
+  "description": "Cách nhanh nhất để sử dụng trí tuệ nhân tạo được cung cấp bởi ChatGPT, Claude, Gemini mọi nơi. Chỉ cần một tiện ích AI sinh sản duy nhất bạn cần.",
   "name": "MaxAI.me: Sử dụng Trí tuệ Nhân tạo bằng 1-Click Mọi nơi",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Nâng cấp để truy cập gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Mô hình mạnh nhất của OpenAI, tuyệt vời cho các nhiệm vụ yêu cầu sự sáng tạo và suy luận nâng cao.",
     "prompt__group__suggested__title": "Đề xuất",
-    "rewards__title": "Phần thưởng",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ẩn trợ lý Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Nâng cấp để sử dụng ChatGPT không giới hạn",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Bạn đã đạt đến giới hạn sử dụng hàng ngày hiện tại cho ChatGPT.\nBạn có thể nâng cấp lên phiên bản Pro ngay bây giờ để sử dụng không giới hạn, hoặc tiếp tục với các Nhà cung cấp AI khác.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Xem giải pháp",
     "sidebar__input__tokens_limited__title": "số lượng tối đa",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Gia đình Gemini của Google, được thiết kế để mở rộng và linh hoạt, hỗ trợ 38 ngôn ngữ và cửa sổ ngữ cảnh 32k từ.",
+    "provider__gemini__short_description": "Mô hình phổ biến và linh hoạt nhất của Google, được xây dựng từ đầu cho đa chức năng. Gemini trên MaxAI hiện đang hỗ trợ văn bản và mã nguồn và sẽ sớm hỗ trợ hình ảnh, video và âm thanh.",
     "provider__gemini__auth_description": "Sử dụng Gemini để cung cấp sức mạnh cho tiện ích mở rộng.",
     "provider__gemini__auth_button_text": "Tiếp tục với Gemini",
     "provider__gemini__model__gemini_pro__description": "Gia đình Gemini của Google, được thiết kế để cung cấp khả năng mở rộng và có khả năng tổng quát mạnh mẽ, hỗ trợ 38 ngôn ngữ và cửa sổ ngữ cảnh 32k từ.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Nâng cấp lên Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nâng cấp để truy cập gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Mô hình phổ biến và tổng quát nhất của Google. Xây dựng từ đầu cho đa chế độ. Gemini trên MaxAI hiện đang ở giai đoạn beta, chỉ hỗ trợ văn bản và mã, và sẽ sớm thêm hỗ trợ cho hình ảnh, video và âm thanh.",
-    "quick_access__hide_button__title": "Ẩn truy cập nhanh cho đến lần ghé thăm kế tiếp"
+    "quick_access__hide_button__title": "Ẩn truy cập nhanh cho đến lần ghé thăm kế tiếp",
+    "sidebar__top_bar__rewards__title": "Phần thưởng",
+    "sidebar__top_bar__upgrade__title": "Nâng cấp"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

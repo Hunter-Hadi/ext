@@ -8,7 +8,7 @@ import DynamicComponent from '@/components/DynamicComponent'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const PDFSummaryButton: FC = () => {
   const { t } = useTranslation(['client'])

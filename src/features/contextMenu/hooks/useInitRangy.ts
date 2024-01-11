@@ -144,7 +144,7 @@ const useInitRangy = () => {
         const isMouseEvent = event instanceof MouseEvent
         const nativeSelectionElement = getSelectionBoundaryElement()
         const defaultSelectionText = (
-          rangy.getSelection().toString() ||
+          rangy?.getSelection()?.toString() ||
           document?.getSelection()?.toString() ||
           ''
         )
@@ -164,7 +164,11 @@ const useInitRangy = () => {
             activeElement = targetElementRef.current
           }
           // 因为mouse up的target元素优先级特别低, 所以先尝试用nativeSelectionElement
-          if (nativeSelectionElement) {
+          if (
+            nativeSelectionElement &&
+            activeElement?.tagName !== 'INPUT' &&
+            activeElement?.tagName !== 'TEXTAREA'
+          ) {
             const nativeSelectionElementData = getEditableElement(
               nativeSelectionElement,
             )

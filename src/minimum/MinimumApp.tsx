@@ -36,15 +36,13 @@ const MinimumApp: FC = () => {
     }, 500)
   })
   return (
-    <>
+    <AppSuspenseLoadingLayout>
       <MinimumAppInit />
-      <AppSuspenseLoadingLayout>
-        {appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen && (
-          <FloatingMenuButton />
-        )}
-      </AppSuspenseLoadingLayout>
+      {appDBStorage.userSettings?.quickAccess?.enabled && !sidebarOpen && (
+        <FloatingMenuButton />
+      )}
       <SpecialHostSummaryButton />
-    </>
+    </AppSuspenseLoadingLayout>
   )
 }
 export default MinimumApp

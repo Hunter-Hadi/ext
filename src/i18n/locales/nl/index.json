@@ -1,5 +1,5 @@
 {
-  "description": "De snelste manier om overal AI te gebruiken die wordt aangedreven door ChatGPT, Claude, Gemini, Bard, Bing. De enige generatieve AI-extensie die je nodig hebt.",
+  "description": "De snelste manier om AI te gebruiken, aangedreven door ChatGPT, Claude, Gemini, overal. De enige generatieve AI-extensie die je nodig hebt.",
   "name": "MaxAI.me: Gebruik AI met 1 klik overal",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Upgrade om toegang te krijgen tot gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's meest capabele model, ideaal voor taken die creativiteit en geavanceerd redeneren vereisen.",
     "prompt__group__suggested__title": "Aanbevolen",
-    "rewards__title": "Beloningen",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail-assistent verbergen",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade voor onbeperkt ChatGPT-gebruik",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Je hebt de huidige dagelijkse gebruikslimiet bereikt voor ChatGPT.\nJe kunt nu upgraden naar Pro voor onbeperkt gebruik, of doorgaan met de andere AI-providers.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Bekijk oplossingen",
     "sidebar__input__tokens_limited__title": "max tokens",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google's Gemini-familie, ontworpen voor schaalbaarheid en veelzijdigheid, ondersteunt 38 talen en een contextvenster van 32k tokens.",
+    "provider__gemini__short_description": "Google's meest capabele en algemene model, vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI ondersteunt momenteel tekst en code en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio.",
     "provider__gemini__auth_description": "Gebruik Gemini om de extensie te activeren.",
     "provider__gemini__auth_button_text": "Doorgaan met Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini-familie, ontworpen om schaalbaarheid te bieden en sterke generalistische mogelijkheden te tonen, ondersteunt 38 talen en een contextvenster van 32k tokens.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade naar Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade om toegang te krijgen tot gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's meest capabele en algemene model. Vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI bevindt zich momenteel in de bètafase en ondersteunt alleen tekst en code, en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio.",
-    "quick_access__hide_button__title": "Verberg snelle toegang tot volgend bezoek"
+    "quick_access__hide_button__title": "Verberg snelle toegang tot volgend bezoek",
+    "sidebar__top_bar__rewards__title": "Beloningen",
+    "sidebar__top_bar__upgrade__title": "Upgrade"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

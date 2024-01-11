@@ -6,10 +6,12 @@ import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShort
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
-  chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
   hideChatBox,
   showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import {
+  chromeExtensionClientOpenPage,
+  getAppContextMenuRootElement,
 } from '@/utils'
 
 /**

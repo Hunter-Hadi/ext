@@ -1,5 +1,5 @@
 {
-  "description": "Njia ya haraka zaidi ya kutumia AI inayotumiwa na ChatGPT, Claude, Gemini, Bard, Bing popote. Uzalishaji pekee wa AI unahitaji.",
+  "description": "Njia ya haraka zaidi ya kutumia AI inayotumiwa na ChatGPT, Claude, Gemini popote. Kipengele pekee cha AI kinachohitajika.",
   "name": "MaxAI.me: Tumia AI kwa Bofya Moja Popote",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Sasisha ili kupata gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Mfano wenye uwezo mkubwa zaidi wa OpenAI, mzuri kwa kazi zinazohitaji ubunifu na hoja za juu.",
     "prompt__group__suggested__title": "Inapendekezwa",
-    "rewards__title": "Tuzo",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ficha msaidizi wa Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sasisha kwa matumizi yasiyokuwa na kikomo ya ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Umefikia kiwango cha matumizi ya kila siku cha sasa kwa ChatGPT.\nUnaweza kusasisha kuwa Pro sasa kwa matumizi yasiyokuwa na kikomo, au endelea na Watoa Huduma wengine wa AI.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Angalia suluhisho",
     "sidebar__input__tokens_limited__title": "kiwango cha juu cha alama",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Familia ya Gemini ya Google, iliyoundwa kwa ajili ya upanuzi na uwezo wa kubadilika, ikisaidia lugha 38 na dirisha la muktadha lenye herufi 32k.",
+    "provider__gemini__short_description": "Mfano mkuu na wa kawaida zaidi wa Google, uliojengwa kutoka mwanzo kwa ajili ya multimodality. Gemini kwenye MaxAI kwa sasa inasaidia maandishi na nambari na hivi karibuni itaongeza usaidizi kwa picha, video, na sauti.",
     "provider__gemini__auth_description": "Tumia Gemini kuwezesha upanuzi.",
     "provider__gemini__auth_button_text": "Endelea na Gemini",
     "provider__gemini__model__gemini_pro__description": "Familia ya Gemini ya Google, iliyoundwa kutoa uwezo wa kupanuka na kuonyesha uwezo mkubwa wa jumla, ikisaidia lugha 38 na dirisha la muktadha lenye herufi 32k.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Nenda kwenye Mfumo Bora",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nenda kwenye gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Mfano wenye uwezo zaidi na wa kawaida wa Google. Imejengwa kutoka mwanzo kwa multimodality. Gemini kwenye MaxAI kwa sasa iko katika hatua ya beta, ikisaidia tu maandishi na nambari, na hivi karibuni itaongeza msaada kwa picha, video, na sauti.",
-    "quick_access__hide_button__title": "Ficha ufikivu wa haraka hadi ziara ijayo"
+    "quick_access__hide_button__title": "Ficha ufikivu wa haraka hadi ziara ijayo",
+    "sidebar__top_bar__rewards__title": "Tuzo",
+    "sidebar__top_bar__upgrade__title": "Kuboresha"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -1,5 +1,5 @@
 {
-  "description": "Ang pinakamabilis na paraan upang gamitin ang AI na pinapagana ng ChatGPT, Claude, Gemini, Bard, Bing kahit saan. Ang tanging generative AI extension na kailangan mo.",
+  "description": "Ang pinakamabilis na paraan upang gamitin ang AI na pinapagana ng ChatGPT, Claude, Gemini kahit saan. Ang tanging generative AI extension na kailangan mo.",
   "name": "MaxAI.me: Gamitin ang AI sa Isang Click Kahit Saan",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Mag-upgrade upang mag-access sa gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Ang pinakamahusay na modelo ng OpenAI, mahusay para sa mga gawain na nangangailangan ng katalinuhan at advanced reasoning.",
     "prompt__group__suggested__title": "Mga Iminumungkahing",
-    "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Itago ang Gmail assistant",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mag-upgrade para sa walang limitasyong paggamit ng ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Narating mo na ang kasalukuyang limitasyon sa araw-araw na paggamit para sa ChatGPT.\nPwede kang mag-upgrade sa Pro ngayon para sa walang limitasyong paggamit, o magpatuloy sa ibang AI Providers.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Tingnan ang mga solusyon",
     "sidebar__input__tokens_limited__title": "maksimum na mga token",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Ang pamilya ng Gemini ng Google, na dinisenyo para sa pagkalaki-laki at kahusayan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",
+    "provider__gemini__short_description": "Pinakamahusay at pangkalahatang modelo ng Google, binuo mula sa simula para sa multimodality. Ang Gemini sa MaxAI ay kasalukuyang sumusuporta sa teksto at code at madaragdagan ng suporta para sa mga imahe, bidyo, at audio.",
     "provider__gemini__auth_description": "Gamitin ang Gemini upang palakasin ang extension.",
     "provider__gemini__auth_button_text": "Magpatuloy gamit ang Gemini",
     "provider__gemini__model__gemini_pro__description": "Ang pamilya ng Gemini ng Google, na dinisenyo upang mag-alok ng kakayahan sa pagkalaki-laki at nagpapakita ng malalim na pangkalahatang kakayahan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Mag-upgrade sa Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Mag-upgrade upang ma-access ang gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Ang pinakamahusay at pangkalahatang modelo ng Google. Binuo mula sa simula para sa multimodality. Ang Gemini sa MaxAI ay kasalukuyang nasa beta phase, suportado lamang ang teksto at code, at madaragdagan ng suporta para sa mga imahe, bidyo, at audio sa lalong madaling panahon.",
-    "quick_access__hide_button__title": "Itago ang mabilis na pag-access hanggang sa susunod na bisita"
+    "quick_access__hide_button__title": "Itago ang mabilis na pag-access hanggang sa susunod na bisita",
+    "sidebar__top_bar__rewards__title": "Mga Pabuya",
+    "sidebar__top_bar__upgrade__title": "Pag-upgrade"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

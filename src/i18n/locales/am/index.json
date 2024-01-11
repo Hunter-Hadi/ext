@@ -1,5 +1,5 @@
 {
-  "description": "በቻትግራም, ክላይድ, ጊሚኒ, ባርድ, ቢንግ የሚሸጥ AI የሚገኘውን አገልግሎት በመጠቀም የሚታይ የAI ውሂብ ተጠቃሚ ነው።",
+  "description": "በChatGPT, Claude, Gemini ተጠቃሚ በማንኛውም አስተካክል AI ተጠቂዎችን በቀላሉ በተጨማሪ መሳሪያ የሚጠቅሙት. በእርስዎ የተጠቃሚ አስተካክል AI ትርጉም እንዴት እንደሚታይ ይጠቀሙት.",
   "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም የእርስዎ በመጠቀም 1-Click",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "ወደ gpt-4 የተጠቀምነው የ AI ማሳወቂያ ይግዙ",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI የተጠቀምነው ምልክት, በርቀት እና የተሻለ ስህተት የሚሆን ስለሆነ የሚገኝ ምልክት ይጠቀምቃል.",
     "prompt__group__suggested__title": "የተጠቃሚ",
-    "rewards__title": "ደምቢዎች",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "የ Gmail አስማማሪውን ደብቅ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ለውጥ የChatGPT የተወሰነ ጠቅላላ ይጠቀሙ",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "ለChatGPT የቀንድ የጠቅላላ ውጤት ተወሰነች።\nየተወሰኑትን ለመውጣት አሁንም Pro ይጠቀሙ፣ ወደሌላ AI Providers ይሂዱ።",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "ማሳያያት ይመልከቱ",
     "sidebar__input__tokens_limited__title": "የቶኪንስ ብቻ",
     "provider__gemini__title": "ጊሚኒ",
-    "provider__gemini__short_description": "ጎጂል ጋሚኒ ቡድን, ለማስተላለፍና ለማስታወቂያ የተሰጠው የግንባታ ቡድን ነው። የ38 ቋንቋዎችን የ32k ቶክን የመቀጠል እና የማስተላለፍ እይታ ያለው።",
+    "provider__gemini__short_description": "ጉግል ከመጀመሪያ ጀምሮ ለማስተላለፍ የግል ሞዴል ምንጭ እና ጠቃሚዎች ለመስቀል የተሰጠ እና የተጠቀሰ ማዕከል ነው። Gemini on MaxAI በሳምንት የጽሁፍ እና የኮድ እና በተለያዩ ጊዜያዊ ማስተላለፊያዎችን ይጠቀሙ ይሆናል።",
     "provider__gemini__auth_description": "ጊሚኒን በማስተላለፍ ይግቡ።",
     "provider__gemini__auth_button_text": "ጊሚኒን በመግባት ይሞክሩ",
     "provider__gemini__model__gemini_pro__description": "ጎጂል ጋሚኒ ቡድን, ለማስተላለፍና ለማስታወቂያ የተሰጠው የግንባታ ቡድን ነው። የ38 ቋንቋዎችን የ32k ቶክን የመቀጠል እና የማስተላለፍ እይታ ያለው።",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "ወደ ኢሊት ይግዙ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ወደ gemini-pro ይሂዱ",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ጎጂል የተሰጠው እና የግንባታ ቡድን ነው። የሚከተለውን ለማስተላለፍ የግንባታ ቡድን ነው። ግንባታ ቡድን በMaxAI ላይ ከሚገኙ የጽሁፍ እና የኮድ ወይም የድምፅ ማስተላለፍ የሚሰጥ የተሰጠው ሞዴል ነው።",
-    "quick_access__hide_button__title": "በቀን ወደ ታይቷ እንዲመለስ ያስፈልጋል"
+    "quick_access__hide_button__title": "በቀን ወደ ታይቷ እንዲመለስ ያስፈልጋል",
+    "sidebar__top_bar__rewards__title": "ምርት",
+    "sidebar__top_bar__upgrade__title": "የተመደበች"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

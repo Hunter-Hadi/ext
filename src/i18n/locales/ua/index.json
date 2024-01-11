@@ -1,5 +1,5 @@
 {
-  "description": "Найшвидший спосіб використовувати ШІ, що працює на основі ChatGPT, Claude, Gemini, Bard, Bing будь-де. Єдине розширення генеративного ШІ, яке вам потрібно.",
+  "description": "Найшвидший спосіб використовувати штучний інтелект, підтриманий ChatGPT, Claude, Gemini будь-де. Єдине розширення генеративного штучного інтелекту, яке вам потрібно.",
   "name": "MaxAI.me: Використовуйте штучний інтелект з одним кліком будь-де",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Оновіть, щоб отримати доступ до gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Найпотужніша модель OpenAI, відмінна для завдань, які потребують творчості та високого рівня мислення.",
     "prompt__group__suggested__title": "Рекомендовані",
-    "rewards__title": "Винагороди",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Приховати помічника Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Оновіть для необмеженого використання ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Ви досягли поточного щоденного обмеження використання для ChatGPT.\nВи можете оновити до Про зараз для необмеженого використання або продовжити з іншими постачальниками ШІ.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Переглянути рішення",
     "sidebar__input__tokens_limited__title": "макс. токени",
     "provider__gemini__title": "Геміні",
-    "provider__gemini__short_description": "Сім'я Gemini від Google, розроблена для масштабованості та універсальності, підтримує 38 мов та контекстне вікно з 32 тис. токенів.",
+    "provider__gemini__short_description": "Найбільш потужна та універсальна модель від Google, створена з нуля для багатомодальності. Gemini на MaxAI наразі підтримує текст і код, а незабаром додаст підтримку для зображень, відео та аудіо.",
     "provider__gemini__auth_description": "Використовуйте Геміні для розширення функціональності.",
     "provider__gemini__auth_button_text": "Продовжити з Геміні",
     "provider__gemini__model__gemini_pro__description": "Сім'я Gemini від Google, розроблена для масштабованості та має сильні загальні можливості, підтримує 38 мов та контекстне вікно з 32 тис. токенів.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Оновити до Еліт",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Оновіть, щоб отримати доступ до gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Найбільш потужна та загальна модель від Google. Побудована з нуля для багатомодальності. Gemini на MaxAI наразі перебуває у бета-фазі, підтримує лише текст та код, а незабаром буде додана підтримка зображень, відео та аудіо.",
-    "quick_access__hide_button__title": "Приховати швидкий доступ до наступного відвідування"
+    "quick_access__hide_button__title": "Приховати швидкий доступ до наступного відвідування",
+    "sidebar__top_bar__rewards__title": "Винагороди",
+    "sidebar__top_bar__upgrade__title": "Оновлення"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

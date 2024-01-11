@@ -290,7 +290,11 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 />
               )
             })}
-            {writingMessage && (
+            {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
+            {writingMessage &&
+            !slicedMessageList.find(
+              (msg) => msg.messageId === writingMessage.messageId,
+            ) ? (
               <SidebarChatBoxMessageItem
                 className={'use-chat-gpt-ai__writing-message-item'}
                 replaceAble={false}
@@ -301,7 +305,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 editAble={false}
                 userAvatar={userAvatar}
               />
-            )}
+            ) : null}
           </AppSuspenseLoadingLayout>
         </Box>
       </Box>

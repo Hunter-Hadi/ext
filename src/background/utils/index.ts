@@ -391,6 +391,41 @@ export const requestHostPermission = async (host: string) => {
   }
   return Browser.permissions.request(permissions)
 }
+
+/**
+ * 插件打开immersive chat
+ * @param query
+ * @param active
+ */
+export const chromeExtensionOpenImmersiveChat = async (
+  query: string = '',
+  active = true,
+) => {
+  const allTabs = await Browser.tabs.query({
+    currentWindow: true,
+  })
+  // 如果有打开的immersive chat页面，就刷新
+  for (let i = 0; i < allTabs.length; i++) {
+    const tab = allTabs[i]
+    if (
+      tab.url &&
+      tab.url.startsWith(Browser.runtime.getURL(`/pages/chat/index.html`))
+    ) {
+      await Browser.tabs.update(tab.id, {
+        url: Browser.runtime.getURL(`/pages/chat/index.html`) + query,
+        active,
+      })
+      return tab
+    }
+  }
+  // 如果没有打开的immersive chat页面，就新建
+  const tab = await Browser.tabs.create({
+    url: Browser.runtime.getURL(`/pages/chat/index.html`) + query,
+    active,
+  })
+  return tab
+}
+
 export { IChromeExtensionDBStorageUpdateFunction } from '@/background/utils/chromeExtensionStorage/type'
 export { IChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/type'
 export { IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/type'

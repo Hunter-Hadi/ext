@@ -23,7 +23,7 @@ import {
 } from '@/features/auth/hooks/useUserInfo'
 import { IUserRoleType } from '@/features/auth/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 export interface PermissionWrapperProps {
   sceneType: PermissionWrapperCardSceneType

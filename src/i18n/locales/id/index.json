@@ -1,5 +1,5 @@
 {
-  "description": "Cara tercepat untuk menggunakan AI yang didukung oleh ChatGPT, Claude, Gemini, Bard, Bing di mana saja. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
+  "description": "Cara tercepat untuk menggunakan AI yang didukung oleh ChatGPT, Claude, Gemini di mana saja. Satu-satunya ekstensi AI generatif yang Anda butuhkan.",
   "name": "MaxAI.me: Gunakan AI 1-Klik di Mana Saja",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Tingkatkan untuk mengakses gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Model paling canggih dari OpenAI, bagus untuk tugas-tugas yang membutuhkan kreativitas dan penalaran tingkat lanjut.",
     "prompt__group__suggested__title": "Disarankan",
-    "rewards__title": "Hadiah",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sembunyikan asisten Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Tingkatkan untuk penggunaan ChatGPT tanpa batas",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Anda telah mencapai batas penggunaan harian saat ini untuk ChatGPT.\nAnda dapat meningkatkan ke Pro sekarang untuk penggunaan tanpa batas, atau lanjutkan dengan Penyedia AI lainnya.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Lihat solusi",
     "sidebar__input__tokens_limited__title": "maksimum token",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Keluarga Gemini dari Google, dirancang untuk skalabilitas dan fleksibilitas, mendukung 38 bahasa dan jendela konteks sebesar 32k token.",
+    "provider__gemini__short_description": "Model terbaik dan umum dari Google, dibangun dari awal untuk multimodalitas. Gemini di MaxAI saat ini mendukung teks dan kode, dan akan segera menambahkan dukungan untuk gambar, video, dan audio.",
     "provider__gemini__auth_description": "Gunakan Gemini untuk mengaktifkan ekstensi.",
     "provider__gemini__auth_button_text": "Lanjutkan dengan Gemini",
     "provider__gemini__model__gemini_pro__description": "Keluarga Gemini dari Google, dirancang untuk menawarkan skalabilitas dan kemampuan umum yang kuat, mendukung 38 bahasa dan jendela konteks sebesar 32k token.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Tingkatkan ke Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Tingkatkan akses ke gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Model paling canggih dan umum dari Google. Dibangun dari awal untuk multimodalitas. Gemini di MaxAI saat ini dalam fase beta, hanya mendukung teks dan kode, dan akan segera menambahkan dukungan untuk gambar, video, dan audio.",
-    "quick_access__hide_button__title": "Sembunyikan akses cepat hingga kunjungan berikutnya"
+    "quick_access__hide_button__title": "Sembunyikan akses cepat hingga kunjungan berikutnya",
+    "sidebar__top_bar__rewards__title": "Hadiah",
+    "sidebar__top_bar__upgrade__title": "Tingkatkan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -33,8 +33,10 @@ export const generateRandomColorWithTheme = (
  */
 export const escapeHtml = (html: string) => {
   return sanitizeHtml(html, {
-    allowedTags: [],
-    allowedAttributes: false,
+    allowedTags: ['span', 'br'],
+    allowedAttributes: {
+      span: ['contenteditable', 'style', 'data-variable-name'],
+    },
     nonBooleanAttributes: [],
     disallowedTagsMode: 'recursiveEscape',
   } as sanitize.IOptions)
@@ -57,7 +59,8 @@ export const generateVariableHtmlContent = (
 
 export const htmlToTemplate = (html: string) => {
   const div = document.createElement('div')
-  div.innerHTML = html
+  div.contentEditable = 'true'
+  div.innerHTML = escapeHtml(html)
   const nodes = Array.from(div.childNodes)
   nodes.forEach((node) => {
     // 还原变量
@@ -89,8 +92,12 @@ export const promptTemplateToHtml = (
   })
   // 正则表达式，用于匹配Handlebars变量
   const variableRegex = /\{\{([^{}]+?)\}\}/g
+  const escapeEl = document.createElement('textarea')
+  escapeEl.textContent = template
+  const escapeHTML = escapeEl.innerHTML
+  escapeEl.remove()
   // 使用replace()方法替换变量
-  const html = template.replace(variableRegex, (match, variable) => {
+  const html = escapeHTML.replace(variableRegex, (match, variable) => {
     // 检查变量是否在映射中存在
     const findVariable =
       labelMap.get(variable) ||

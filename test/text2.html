@@ -35,7 +35,10 @@
   <div>7</div>
   <!-- ... -->
 </div>
-
+<div contenteditable='true' id='qq'>123</div>
+<button onclick='add()'>add</button>
+<button onclick='add2()'>add2</button>
+<button onclick='add3()'>add3</button>
 <script>
   const container = document.getElementById("container");
   const children = container.children;
@@ -64,6 +67,15 @@
     if (width) {
       children[i].style.width = width;
     }
+  }
+  const add = function() {
+    document.querySelector('#qq').innerHTML = document.querySelector('#qq').innerText+'<d'
+  }
+  const add2 = function() {
+    document.querySelector('#qq').innerHTML = document.querySelector('#qq').innerHTML+'&lt;d'
+  }
+  const add3 = function() {
+    document.querySelector('#qq').innerHTML = document.querySelector('#qq').innerHTML+'1'
   }
 </script>
 

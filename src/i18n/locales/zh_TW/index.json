@@ -1,5 +1,5 @@
 {
-  "description": "使用ChatGPT、Claude、Gemini、Bard、Bing提供的AI，無論何時何地都是最快的方式。您唯一需要的生成式AI擴展。",
+  "description": "使用 ChatGPT、Claude 和 Gemini 提供的 AI 技術，隨時隨地體驗最快速的人工智慧。唯一需要的生成式 AI 擴充功能。",
   "name": "MaxAI.me：隨處使用1-Click AI",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "升級以使用gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI最強大的模型，非常適合需要創造力和高級推理的任務。",
     "prompt__group__suggested__title": "建議",
-    "rewards__title": "獎勵",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "隱藏Gmail助手",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "升級以獲得無限ChatGPT使用",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "您已達到ChatGPT的當前每日使用上限。\n您可以立即升級到專業版以獲得無限使用，或繼續使用其他AI提供者。",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "查看解決方案",
     "sidebar__input__tokens_limited__title": "最多令牌",
     "provider__gemini__title": "雙子座",
-    "provider__gemini__short_description": "Google的Gemini系列，設計用於可擴展性和多功能性，支援38種語言和32k個token的上下文視窗。",
+    "provider__gemini__short_description": "谷歌最強大且通用的模型，從頭開始為多模態而建。MaxAI上的Gemini目前支援文本和代碼，將很快添加對圖片、視頻和音頻的支援。",
     "provider__gemini__auth_description": "使用雙子座來驅動擴展功能。",
     "provider__gemini__auth_button_text": "繼續使用雙子座",
     "provider__gemini__model__gemini_pro__description": "Google的Gemini系列，旨在提供可擴展性並展現強大的通用能力，支援38種語言和32k個token的上下文視窗。",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "升級至精英版",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "升級以訪問雙子座Pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google最強大且通用的模型。從頭開始為多模態建立。MaxAI上的Gemini目前處於測試階段，僅支援文本和代碼，將很快添加對圖像、視頻和音頻的支援。",
-    "quick_access__hide_button__title": "隱藏快速存取直到下次訪問"
+    "quick_access__hide_button__title": "隱藏快速存取直到下次訪問",
+    "sidebar__top_bar__rewards__title": "獎勵",
+    "sidebar__top_bar__upgrade__title": "升級"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

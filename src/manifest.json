@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "2.4.9",
+  "version": "2.5.1",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -93,6 +93,9 @@
         "mac": "Command+J"
       },
       "description": "Active MaxAI.me"
+    },
+    "open-immersive-chat": {
+      "description": "Open immersive chat"
     }
   },
   "web_accessible_resources": [

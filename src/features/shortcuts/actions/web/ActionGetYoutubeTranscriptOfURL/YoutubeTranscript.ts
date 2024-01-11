@@ -118,7 +118,6 @@ export class YoutubeTranscript {
         // youTube transcript
         const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
           await YoutubeTranscript.fetchTranscript(videoId, pageContent.data),
-          2048,
         )
         const doc = new DOMParser().parseFromString(
           pageContent.data,
@@ -200,14 +199,18 @@ export class YoutubeTranscript {
    */
   public static async transcriptFormat(
     transcripts: TranscriptResponse[],
-    sliceTokens = 4096,
+    sliceTokens?: number,
   ) {
     const transcriptText = `${transcripts
       .map((transcript) => {
         return `${transcript.start} ${transcript.text}\n`
       })
       .join('')}`
-    return (await sliceTextByTokens(transcriptText, sliceTokens)).text
+    if (sliceTokens) {
+      return (await sliceTextByTokens(transcriptText, sliceTokens)).text
+    } else {
+      return transcriptText
+    }
   }
   /**
    * Retrieve video id from url or string

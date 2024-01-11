@@ -45,12 +45,23 @@ const isInIframe = () => {
     return true
   }
 }
+const isBlockUrlList = () => {
+  return [
+    // github的react-code-view的pdf reader会响应插件发送的message并认为是异常
+    'https://viewscreen.githubusercontent.com/view/pdf',
+  ].find((matchUrl) => window.location.href.startsWith(matchUrl))
+}
 const log = new Log('Iframe')
 
 const initIframe = async () => {
   if (!isInIframe()) {
     return
   }
+  if (isBlockUrlList()) {
+    log.info('block list', window.location.href)
+    return
+  }
+  log.info('Init iframe')
   iframePageContentHelper()
   let mouseDownElement: null | HTMLInputElement | HTMLTextAreaElement = null
   let positions: number[] = []

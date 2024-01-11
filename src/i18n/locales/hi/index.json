@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT, Claude, Gemini, Bard, Bing द्वारा संचालित AI का सबसे तेज़ तरीका। आपको जरूरत है केवल एक जनरेटिव AI एक्सटेंशन।",
+  "description": "ChatGPT, Claude, Gemini द्वारा संचालित AI का उपयोग करने का सबसे तेज़ तरीका। आपकी आवश्यकता के लिए केवल एक उत्पन्न AI एक्सटेंशन।",
   "name": "MaxAI.me: कहीं भी 1-क्लिक AI का उपयोग करें",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 तक पहुँच के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI का सबसे सक्षम मॉडल, जो रचनात्मकता और उन्नत तर्क की आवश्यकता वाले कार्यों के लिए महान है।",
     "prompt__group__suggested__title": "सुझाए गए",
-    "rewards__title": "पुरस्कार",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail सहायक छिपाएं",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "असीमित ChatGPT उपयोग के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "आपने ChatGPT के लिए मौजूदा दैनिक उपयोग सीमा तक पहुंच गए हैं।\nआप असीमित उपयोग के लिए अब प्रो में अपग्रेड कर सकते हैं, या अन्य AI प्रदाताओं के साथ जारी रखें।",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "समाधान देखें",
     "sidebar__input__tokens_limited__title": "अधिकतम टोकन",
     "provider__gemini__title": "जेमिनी",
-    "provider__gemini__short_description": "गूगल का जेमिनी परिवार, स्केलेबिलिटी और विविधता के लिए डिज़ाइन किया गया है, 38 भाषाओं का समर्थन करता है और 32k टोकन की संदर्भ विंडो है।",
+    "provider__gemini__short_description": "गूगल का सबसे सक्षम और सामान्य मॉडल, जो बहुमुद्रिता के लिए शुरू से बनाया गया है। MaxAI पर Gemini वर्तमान में पाठ और कोड का समर्थन करता है और जल्द ही छवियों, वीडियों और ऑडियो का समर्थन जोड़ेगा।",
     "provider__gemini__auth_description": "एक्सटेंशन को सक्षम करने के लिए जेमिनी का उपयोग करें।",
     "provider__gemini__auth_button_text": "जेमिनी के साथ जारी रखें",
     "provider__gemini__model__gemini_pro__description": "गूगल का जेमिनी परिवार, स्केलेबिलिटी प्रदान करने और मजबूत सामान्य क्षमताओं का प्रदर्शन करने के लिए डिज़ाइन किया गया है, 38 भाषाओं का समर्थन करता है और 32k टोकन की संदर्भ विंडो है।",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "एलीट में अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "जेमिनी-प्रो तक पहुंच के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "गूगल का सबसे सक्षम और सामान्य मॉडल। बहुमोदता के लिए शून्य से बनाया गया है। MaxAI पर जेमिनी वर्तमान में बीटा चरण में है, केवल पाठ और कोड का समर्थन करता है, और जल्द ही छवियों, वीडियो और ऑडियो का समर्थन जोड़ेंगे।",
-    "quick_access__hide_button__title": "अगले दौरे तक त्वरित पहुँच छिपाएँ"
+    "quick_access__hide_button__title": "अगले दौरे तक त्वरित पहुँच छिपाएँ",
+    "sidebar__top_bar__rewards__title": "पुरस्कार",
+    "sidebar__top_bar__upgrade__title": "अपग्रेड"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

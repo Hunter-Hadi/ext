@@ -10,8 +10,11 @@ import TextOnlyTooltip, {
 } from '@/components/TextOnlyTooltip'
 import { FloatingDropdownMenuState, useRangy } from '@/features/contextMenu'
 import { floatingContextMenuSaveDraftToChatBox } from '@/features/contextMenu/utils'
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
-import { isShowChatBox, showChatBox } from '@/utils'
 
 const FloatingContextMenuOpenSidebarButton: FC<{
   sx?: SxProps

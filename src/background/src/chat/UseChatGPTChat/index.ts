@@ -250,7 +250,10 @@ class UseChatGPTPlusChat extends BaseChat {
             onMessage({
               done: true,
               type: 'error',
-              error: error.message || error.detail || 'Network error.',
+              error:
+                error.message ||
+                error.detail ||
+                'Something went wrong, please try again. If this issue persists, contact us via email.',
               data: { text: '', conversationId },
             })
         } catch (e) {
@@ -258,7 +261,8 @@ class UseChatGPTPlusChat extends BaseChat {
             onMessage({
               done: true,
               type: 'error',
-              error: 'Network error.',
+              error:
+                'Something went wrong, please try again. If this issue persists, contact us via email.',
               data: { text: '', conversationId },
             })
         }
@@ -281,14 +285,6 @@ class UseChatGPTPlusChat extends BaseChat {
             uuid: '6f02f533-def6-4696-b14e-1b00c2d9a4df',
           },
         )
-        onMessage &&
-          onMessage({
-            done: true,
-            type: 'error',
-            error:
-              'Something went wrong, please try again. If this issue persists, contact us via email.',
-            data: { text: '', conversationId },
-          })
       }
     } else {
       onMessage &&
@@ -297,7 +293,7 @@ class UseChatGPTPlusChat extends BaseChat {
           type: 'message',
           error: '',
           data: {
-            text: '',
+            text: messageResult,
             conversationId,
           },
         })

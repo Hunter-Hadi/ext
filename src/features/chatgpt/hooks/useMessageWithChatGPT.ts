@@ -33,8 +33,8 @@ import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatReques
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getInputMediator } from '@/store/InputMediator'
-import { showChatBox } from '@/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import Log from '@/utils/Log'
 dayjs.extend(relativeTime)
@@ -404,14 +404,7 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
       }
       // 清空输入框
       updateChatInputValue('')
-      // 清空writingMessage
-      setConversation((prevState) => {
-        return {
-          ...prevState,
-          writingMessage: null,
-          loading: false,
-        }
-      })
+
       if (options?.aiMessageVisible !== false) {
         // 更新消息
         await clientChatConversationModifyChatMessages(
@@ -444,6 +437,15 @@ const useMessageWithChatGPT = (defaultInputValue?: string) => {
             }),
         )
       }
+
+      // push message 之后，清空writingMessage
+      setConversation((prevState) => {
+        return {
+          ...prevState,
+          writingMessage: null,
+          loading: false,
+        }
+      })
     }
   }
   const retryMessage = async (retryMessageId: string) => {

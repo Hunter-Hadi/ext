@@ -1,5 +1,5 @@
 {
-  "description": "Самый быстрый способ использовать ИИ, работающий на основе ChatGPT, Claude, Gemini, Bard, Bing в любом месте. Единственное расширение генеративного ИИ, которое вам нужно.",
+  "description": "Самый быстрый способ использования искусственного интеллекта, работающего на основе ChatGPT, Claude, Gemini в любом месте. Единственное расширение генеративного искусственного интеллекта, которое вам нужно.",
   "name": "MaxAI.me: Используйте искусственный интеллект в один клик где угодно",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Получите доступ к gpt-4, перейдя на Pro",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Самая мощная модель OpenAI, отлично подходит для задач, требующих креативности и продвинутого мышления.",
     "prompt__group__suggested__title": "Рекомендуется",
-    "rewards__title": "Награды",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Скрыть помощника Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Обновите для неограниченного использования ChatGPT",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Вы достигли текущего ежедневного лимита использования для ChatGPT.\nВы можете обновиться до Pro сейчас для неограниченного использования или продолжить с другими AI-провайдерами.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Просмотреть решения",
     "sidebar__input__tokens_limited__title": "макс. токены",
     "provider__gemini__title": "Близнецы",
-    "provider__gemini__short_description": "Семейство Gemini от Google, разработанное для масштабируемости и универсальности, поддерживает 38 языков и контекстное окно из 32 тысяч токенов.",
+    "provider__gemini__short_description": "Самая мощная и универсальная модель Google, созданная с нуля для мультимодальности. Gemini на MaxAI в настоящее время поддерживает текст и код, а вскоре добавит поддержку изображений, видео и аудио.",
     "provider__gemini__auth_description": "Используйте Gemini для работы с расширением.",
     "provider__gemini__auth_button_text": "Продолжить с Gemini",
     "provider__gemini__model__gemini_pro__description": "Семейство Gemini от Google, разработанное для обеспечения масштабируемости и обладающее сильными универсальными возможностями, поддерживает 38 языков и контекстное окно из 32 тысяч токенов.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Обновить до Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Обновите, чтобы получить доступ к gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Самая мощная и универсальная модель от Google. Создана с нуля для мультимодальности. Gemini на MaxAI в настоящее время находится в бета-фазе и поддерживает только текст и код, вскоре будет добавлена поддержка изображений, видео и аудио.",
-    "quick_access__hide_button__title": "Скрыть быстрый доступ до следующего посещения"
+    "quick_access__hide_button__title": "Скрыть быстрый доступ до следующего посещения",
+    "sidebar__top_bar__rewards__title": "Награды",
+    "sidebar__top_bar__upgrade__title": "Обновить"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

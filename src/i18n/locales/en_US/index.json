@@ -1,5 +1,5 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini, Bard, Bing anywhere. The only generative AI extension you need.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Use 1-Click AI Anywhere",
   "shortName": "MaxAI.me",
   "common": {
@@ -366,7 +366,7 @@
     "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarization, and comprehension.",
     "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Google's Gemini family, designed for scalability and versatility, supporting 38 languages and a context window of 32k tokens.",
+    "provider__gemini__short_description": "Google's most capable and general model, built from the ground up for multimodality. Gemini on MaxAI currently supports text and code and will soon add support for images, videos, and audio.",
     "provider__gemini__auth_description": "Use Gemini to power the extension.",
     "provider__gemini__auth_button_text": "Continue with Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini family, designed to offer scalability and exhibits strong generalist capabilities, supporting 38 languages and a context window of 32k tokens.",
@@ -466,8 +466,9 @@
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__title": "Upgrade to discover knowledge with AI-powered search",
     "permission__pricing_hook__max_ai_paid_model__search_with_ai__description": "The most powerful answer engine that helps you find facts faster and get your questions answered clearly.",
     "prompt__group__suggested__title": "Suggested",
-    "rewards__title": "Rewards",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Hide Gmail assistant",
+    "sidebar__top_bar__rewards__title": "Rewards",
+    "sidebar__top_bar__upgrade__title": "Upgrade",
     "sidebar__tabs__chat__title": "Chat",
     "sidebar__tabs__chat__tooltip": "Ask AI anything",
     "sidebar__tabs__chat__action_btn__title": "New chat",

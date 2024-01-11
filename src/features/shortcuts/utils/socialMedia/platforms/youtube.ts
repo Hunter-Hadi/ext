@@ -58,7 +58,6 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       // youTube transcript
       const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
         await YoutubeTranscript.fetchTranscript(window.location.href),
-        2048,
       )
       const youTubeVideoMetaData = document.querySelector('ytd-watch-metadata')
       const title =

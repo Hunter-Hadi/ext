@@ -94,7 +94,7 @@ export function parametersParserDecorator(filterPath?: string[]) {
       const [parameters] = args
       const actionInstance: Action = this as any
       getAllPathsAndValues(actionInstance.parameters, (path, value) => {
-        if (filterPath?.includes(path.join('.'))) {
+        if (filterPath?.includes(path[0])) {
           return
         }
         if (typeof value === 'string') {

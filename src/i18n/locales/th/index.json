@@ -1,5 +1,5 @@
 {
-  "description": "วิธีที่เร็วที่สุดในการใช้ AI ที่มีพลังจาก ChatGPT, Claude, Gemini, Bard, Bing ทุกที่ ส่วนขยาย AI ที่คุณต้องการเท่านั้น",
+  "description": "วิธีที่รวดเร็วที่สุดในการใช้งาน AI ที่มีพลังจาก ChatGPT, Claude, Gemini ทุกที่ ส่วนขยาย AI ที่คุณต้องการเท่านั้น",
   "name": "MaxAI.me: ใช้ AI ด้วยคลิกเดียวทุกที่",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "อัปเกรดเพื่อเข้าถึง gpt-4",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "โมเดลที่มีความสามารถสูงสุดของ OpenAI เหมาะสำหรับงานที่ต้องการความคิดสร้างสรรค์และการคิดอย่างล้ำลึก",
     "prompt__group__suggested__title": "แนะนำ",
-    "rewards__title": "รางวัล",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "ซ่อนผู้ช่วย Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "อัปเกรดเพื่อการใช้งาน ChatGPT ไม่จำกัด",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "คุณได้ถึงขีดจำกัดการใช้งานรายวันปัจจุบันสำหรับ ChatGPT\nคุณสามารถอัปเกรดเป็น Pro เพื่อการใช้งานไม่จำกัด หรือดำเนินการต่อกับ Al Providers อื่นๆ",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "ดูวิธีแก้ปัญหา",
     "sidebar__input__tokens_limited__title": "จำนวนสูงสุดของโทเค็น",
     "provider__gemini__title": "จีมินาย",
-    "provider__gemini__short_description": "รองรับภาษา 38 ภาษาและหน้าต่างบริบท 32k โทเค็น รองรับการขยายของ Gemini จาก Google ที่ออกแบบมาเพื่อให้สามารถปรับขนาดได้และมีความหลากหลาย",
+    "provider__gemini__short_description": "โมเดลที่สามารถใช้งานได้มากที่สุดและหลากหลายของ Google ที่สร้างขึ้นมาเพื่อการใช้งานหลายรูปแบบ  Gemini on MaxAI สนับสนุนข้อความและโค้ดและเร็ว ๆ นี้จะเพิ่มการสนับสนุนสำหรับภาพ วิดีโอ และเสียง",
     "provider__gemini__auth_description": "ใช้ Gemini เพื่อให้พลังงานให้กับส่วนขยาย",
     "provider__gemini__auth_button_text": "ดำเนินการต่อด้วย Gemini",
     "provider__gemini__model__gemini_pro__description": "ครอบคลุมภาษา 38 ภาษาและหน้าต่างบริบท 32k โทเค็น รองรับการขยายของ Gemini จาก Google ที่ออกแบบมาเพื่อให้สามารถปรับขนาดได้และมีความสามารถทั่วไปที่แข็งแกร่ง",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "อัพเกรดเป็นเอลิต",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "อัพเกรดเพื่อเข้าถึง gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "รุ่นที่สามารถทำหลายอย่างได้มากที่สุดและมีความสามารถทั่วไป สร้างขึ้นมาเพื่อใช้งานแบบมัลติโมดัลิตี้  Gemini บน MaxAI อยู่ในช่วงเบต้าเท่านั้น รองรับเฉพาะข้อความและโค้ด และเร็ว ๆ นี้จะเพิ่มการสนับสนุนสำหรับภาพถ่าย วิดีโอ และเสียง",
-    "quick_access__hide_button__title": "ซ่อนการเข้าถึงด่วนจนกว่าครั้งถัดไป"
+    "quick_access__hide_button__title": "ซ่อนการเข้าถึงด่วนจนกว่าครั้งถัดไป",
+    "sidebar__top_bar__rewards__title": "รางวัล",
+    "sidebar__top_bar__upgrade__title": "อัพเกรด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

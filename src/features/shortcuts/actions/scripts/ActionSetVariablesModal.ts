@@ -14,7 +14,7 @@ import {
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 // import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 

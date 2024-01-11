@@ -39,6 +39,7 @@ import { pdfSnifferStartListener } from '@/background/src/pdf'
 import {
   backgroundRestartChromeExtension,
   backgroundSendClientMessage,
+  chromeExtensionOpenImmersiveChat,
   getChromeExtensionOnBoardingData,
   resetChromeExtensionOnBoardingData,
   safeGetBrowserTab,
@@ -87,10 +88,9 @@ export const startChromeExtensionBackground = () => {
     initChromeExtensionContextMenu()
     initChromeExtensionDisabled()
     initChromeExtensionUninstalled()
+    initChromeExtensionTabUrlChangeListener()
     initExternalMessageListener()
     // feature
-    // pdf feature
-    pdfSnifferStartListener().then().catch()
     // hot reload
     developmentHotReload()
   } catch (e) {
@@ -394,6 +394,8 @@ const initChromeExtensionCommands = () => {
           },
         )
       }
+    } else if (command === 'open-immersive-chat') {
+      await chromeExtensionOpenImmersiveChat('', true)
     }
   })
 }
@@ -546,5 +548,24 @@ const initExternalMessageListener = () => {
       }
     }
     return undefined
+  })
+}
+
+const initChromeExtensionTabUrlChangeListener = () => {
+  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    pdfSnifferStartListener(tabId, changeInfo, tab)
+    // 页面的url变化后，要触发页面的特殊网页的element更新
+    if (tab.active && tab.id && tab.url) {
+      backgroundSendClientMessage(
+        tab.id,
+        'Client_updateSidebarChatBoxStyle',
+        {},
+      )
+        .then()
+        .catch()
+      backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
+        .then()
+        .catch()
+    }
   })
 }

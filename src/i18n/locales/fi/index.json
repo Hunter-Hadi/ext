@@ -1,5 +1,5 @@
 {
-  "description": "Nopein tapa käyttää ChatGPT:n, Clauden, Geminin, Bardin ja Bingin voimaa missä tahansa. Ainoa generatiivinen tekoälylaajennus, jota tarvitset.",
+  "description": "Nopein tapa käyttää ChatGPT:n, Clauden ja Geminin tehostamaa tekoälyä missä tahansa. Ainoa generatiivisen tekoälyn laajennus, jota tarvitset.",
   "name": "MaxAI.me: Käytä 1-Click AI missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
@@ -403,7 +403,6 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Päivitä päästäksesi käsiksi gpt-4 -malliin",
     "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI:n kyvykkäin malli, erinomainen tehtäviin, jotka vaativat luovuutta ja edistynyttä päättelyä.",
     "prompt__group__suggested__title": "Ehdotettu",
-    "rewards__title": "Palkinnot",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Piilota Gmail-assistentti",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Päivittääksesi rajattoman ChatGPT-käytön",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__description": "Olet saavuttanut nykyisen päivittäisen käyttörajan ChatGPT:lle.\nVoit päivittää Pro-tilaukseen rajattoman käytön tai jatkaa muiden AI-palveluntarjoajien kanssa.",
@@ -494,7 +493,7 @@
     "provider__label__view_solutions": "Näytä ratkaisut",
     "sidebar__input__tokens_limited__title": "enintään merkit",
     "provider__gemini__title": "Gemini",
-    "provider__gemini__short_description": "Googlen Gemini-perhe, suunniteltu skaalautuvuutta ja monipuolisuutta varten. Tukee 38 kieltä ja 32k sanan kontekstiruutua.",
+    "provider__gemini__short_description": "Googlen kyvykkäin ja yleisin malli, joka on rakennettu alusta asti monimuotoisuutta varten. Gemini MaxAI:ssa tukee tällä hetkellä tekstiä ja koodia ja pian lisätään tuki kuvien, videoiden ja äänen käyttöön.",
     "provider__gemini__auth_description": "Käytä Geminiä laajennuksen voimanlähteenä.",
     "provider__gemini__auth_button_text": "Jatka Geminitä",
     "provider__gemini__model__gemini_pro__description": "Googlen Gemini-perhe, suunniteltu skaalautuvuutta varten ja tarjoaa vahvat yleisosaamisen ominaisuudet. Tukee 38 kieltä ja 32k sanan kontekstiruutua.",
@@ -502,7 +501,9 @@
     "permission__pricing_hook__button__upgrade_to_elite": "Päivitä Eliteen",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Päivitä pääsy gemini-prohon",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googlen kyvykkäin ja yleinen malli. Rakennettu alusta asti multimodaalisuutta varten. Gemini MaxAI:ssa on tällä hetkellä beetavaihe, joka tukee vain tekstiä ja koodia, ja pian lisätään tuki kuville, videoille ja äänelle.",
-    "quick_access__hide_button__title": "Piilota pikakäyttö seuraavaan vierailuun asti"
+    "quick_access__hide_button__title": "Piilota pikakäyttö seuraavaan vierailuun asti",
+    "sidebar__top_bar__rewards__title": "Palkinnot",
+    "sidebar__top_bar__upgrade__title": "Päivitys"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

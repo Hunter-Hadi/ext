@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IUserChatMessage } from '@/features/chatgpt/types'
-import { hideChatBox } from '@/utils'
+import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const TEMP_CLOSE_HOSTS = ['www.linkedin.com']
 

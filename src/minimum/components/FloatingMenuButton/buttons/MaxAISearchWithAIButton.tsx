@@ -7,7 +7,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const MaxAISummarizeMiniButton = () => {
   const { t } = useTranslation(['common', 'client'])

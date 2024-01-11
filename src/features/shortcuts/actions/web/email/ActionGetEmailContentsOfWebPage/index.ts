@@ -51,11 +51,11 @@ export class ActionGetEmailContentsOfWebPage extends Action {
           result.targetReplyEmailContext
       }
       this.output = EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT
-      const shortcutsEngine = engine.getShortCutsEngine()
-      if (shortcutsEngine) {
+      const { clientConversationEngine, shortcutsEngine } = engine
+      if (clientConversationEngine && shortcutsEngine) {
         if (isVariableMiddleOutEnabled) {
           // reply with keyPoints的逻辑
-          const conversation = await this.getCurrentConversation(engine)
+          const conversation = await clientConversationEngine.getCurrentConversation()
           // 预留1000个token给summary
           const totalTokens = Math.max(
             (conversation?.meta?.maxTokens || 4000) - 1000,

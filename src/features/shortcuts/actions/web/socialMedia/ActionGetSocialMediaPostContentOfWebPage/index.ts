@@ -37,14 +37,14 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         OperationElementElementSelector,
       )
       this.output = result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT
-      const shortcutsEngine = engine.shortcutsEngine
-      if (shortcutsEngine) {
+      const { shortcutsEngine, clientConversationEngine } = engine
+      if (shortcutsEngine && clientConversationEngine) {
         let SOCIAL_MEDIA_TARGET_POST_OR_COMMENT =
           result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT
         let SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT =
           result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT
         // reply with keyPoints的逻辑
-        const conversation = await this.getCurrentConversation(engine)
+        const conversation = await clientConversationEngine.getCurrentConversation()
         // 预留1000个token给summary
         const totalTokens = Math.max(
           (conversation?.meta?.maxTokens || 4000) - 1000,

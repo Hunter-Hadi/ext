@@ -3,10 +3,9 @@ import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { Component, ComponentType, FC, useMemo } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import CustomMarkdown from '@/components/CustomMarkdown'
 import {
   IAIResponseMessage,
   IAIResponseOriginalMessageMetadataTitle,
@@ -16,77 +15,14 @@ import {
   ReadIcon,
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
+import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
+import SidebarChatBoxAiTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarChatBoxAiTools'
 
-interface ErrorBoundaryState {
-  hasError: boolean
-}
+const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
-const withErrorBoundary = <P extends object>(
-  WrappedComponent: ComponentType<P>,
-) => {
-  return class ErrorBoundary extends Component<P, ErrorBoundaryState> {
-    constructor(props: P) {
-      super(props)
-      this.state = { hasError: false }
-    }
-
-    componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-      // 处理错误，例如记录错误信息
-      console.error(error, errorInfo)
-      // 更新状态以渲染降级的 UI
-      this.setState({ hasError: true })
-    }
-
-    render() {
-      if (this.state.hasError) {
-        // 渲染降级的 UI
-        return <WrappedComponent {...this.props} liteMode />
-      }
-      return <WrappedComponent {...this.props} />
-    }
-  }
-}
-
-const MetadataTitleRender: FC<{
-  title: IAIResponseOriginalMessageMetadataTitle
-  fontSx?: SxProps
-}> = (props) => {
-  const { fontSx } = props
-  const { title, titleIcon, titleIconSize } = props.title
-  return (
-    <Stack direction={'row'} alignItems="center" spacing={1}>
-      {titleIcon && (
-        <Stack
-          alignItems={'center'}
-          justifyContent={'center'}
-          width={16}
-          height={16}
-        >
-          <ContextMenuIcon
-            sx={{
-              color: 'primary.main',
-              fontSize: titleIconSize || 18,
-            }}
-            icon={titleIcon}
-          />
-        </Stack>
-      )}
-      <Typography
-        sx={{
-          color: 'primary.main',
-          fontSize: 18,
-          ...fontSx,
-        }}
-      >
-        {title}
-      </Typography>
-    </Stack>
-  )
-}
-
-export const SidebarAIMessage: FC<{
+const BaseSidebarAIMessage: FC<{
   liteMode?: boolean
   message: IAIResponseMessage
   isDarkMode?: boolean
@@ -133,12 +69,29 @@ export const SidebarAIMessage: FC<{
       }
     }
   }, [message])
+  const memoSx = useMemo(() => {
+    return {
+      whiteSpace: 'pre-wrap',
+      width: '100%',
+      p: 1,
+      gap: 1,
+      wordBreak: 'break-word',
+      borderRadius: '8px',
+      borderBottomLeftRadius: 0,
+      color: isDarkMode ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
+      border: '1px solid',
+      borderColor: isDarkMode ? 'customColor.borderColor' : 'transparent',
+      bgcolor: isDarkMode
+        ? 'rgba(255, 255, 255, 0.04)'
+        : 'rgb(233,233,235)!important',
+    } as SxProps
+  }, [isDarkMode])
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer
   }, [renderData.answer])
 
   return (
-    <>
+    <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
       {isRichAIMessage ? (
         <Stack spacing={2}>
           {renderData.title && (
@@ -291,7 +244,44 @@ export const SidebarAIMessage: FC<{
           <CustomMarkdown>{renderData.answer}</CustomMarkdown>
         </div>
       )}
-    </>
+      <SidebarChatBoxAiTools message={message as IAIResponseMessage} />
+    </Stack>
   )
 }
-export default withErrorBoundary(SidebarAIMessage)
+const MetadataTitleRender: FC<{
+  title: IAIResponseOriginalMessageMetadataTitle
+  fontSx?: SxProps
+}> = (props) => {
+  const { fontSx } = props
+  const { title, titleIcon, titleIconSize } = props.title
+  return (
+    <Stack direction={'row'} alignItems="center" spacing={1}>
+      {titleIcon && (
+        <Stack
+          alignItems={'center'}
+          justifyContent={'center'}
+          width={16}
+          height={16}
+        >
+          <ContextMenuIcon
+            sx={{
+              color: 'primary.main',
+              fontSize: titleIconSize || 18,
+            }}
+            icon={titleIcon}
+          />
+        </Stack>
+      )}
+      <Typography
+        sx={{
+          color: 'primary.main',
+          fontSize: 18,
+          ...fontSx,
+        }}
+      >
+        {title}
+      </Typography>
+    </Stack>
+  )
+}
+export const SidebarAIMessage = messageWithErrorBoundary(BaseSidebarAIMessage)

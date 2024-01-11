@@ -4,7 +4,10 @@ import { v4 as uuidV4 } from 'uuid'
 import { clientAskAIQuestion } from '@/background/src/chat/util'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { getAIProviderSampleFiles } from '@/features/chatgpt'
+import {
+  ContentScriptConnectionV2,
+  getAIProviderSampleFiles,
+} from '@/features/chatgpt'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import {
   IAIResponseMessage,
@@ -30,7 +33,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
-import { showChatBox } from '@/utils'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -63,12 +66,11 @@ export class ActionAskChatGPT extends Action {
         this.parameters.AskChatGPTWithAIResponseLanguage !== false
       const conversationId =
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
-        engine.clientConversationEngine?.currentConversationId ||
+        engine.clientConversationEngine?.currentConversationIdRef?.current ||
         ''
       const text =
         this.parameters.AskChatGPTActionQuestion?.text ||
         this.parameters.compliedTemplate ||
-        params.compliedTemplate ||
         ''
       const messageId =
         this.parameters.AskChatGPTActionQuestion?.messageId || uuidV4()
@@ -250,6 +252,7 @@ export class ActionAskChatGPT extends Action {
                         mergeWithObject([
                           message,
                           {
+                            messageId: outputMessageId,
                             originalMessage: {
                               content: {
                                 contentType:
@@ -264,10 +267,15 @@ export class ActionAskChatGPT extends Action {
                     : [message],
                 )
               } else {
-                // 更新客户端的writing message
-                await clientConversationEngine.updateClientWritingMessage(
-                  AIWritingMessage,
-                )
+                if (
+                  askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
+                  askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
+                ) {
+                  // 更新客户端的writing message
+                  await clientConversationEngine.updateClientWritingMessage(
+                    AIWritingMessage,
+                  )
+                }
               }
             },
             onError: async (error: any) => {
@@ -295,7 +303,11 @@ export class ActionAskChatGPT extends Action {
           })
           if (AIWritingMessage) {
             // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
-            if (!outputMessageId) {
+            if (
+              !outputMessageId &&
+              askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
+              askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
+            ) {
               // 移除AI writing message
               clientConversationEngine.updateClientWritingMessage(null)
               await clientConversationEngine.pushMessage(
@@ -304,18 +316,22 @@ export class ActionAskChatGPT extends Action {
               )
             }
           }
-          if (isPermissionCardSceneType(errorMessage)) {
-            await clientConversationEngine.pushPricingHookMessage(errorMessage)
-          } else {
-            await clientConversationEngine.pushMessage({
-              type: 'system',
-              messageId: uuidV4(),
-              parentMessageId: this.question?.messageId,
-              text: errorMessage,
-              extra: {
-                status: 'error',
-              },
-            } as ISystemChatMessage)
+          if (errorMessage) {
+            if (isPermissionCardSceneType(errorMessage)) {
+              await clientConversationEngine.pushPricingHookMessage(
+                errorMessage,
+              )
+            } else {
+              await clientConversationEngine.pushMessage({
+                type: 'system',
+                messageId: uuidV4(),
+                parentMessageId: this.question?.messageId,
+                text: errorMessage,
+                extra: {
+                  status: 'error',
+                },
+              } as ISystemChatMessage)
+            }
           }
           // 如果第三方AI provider的conversationId
           if (AIConversationId) {
@@ -338,6 +354,18 @@ export class ActionAskChatGPT extends Action {
     } catch (e) {
       this.error = chatGPTCommonErrorInterceptor((e as any).toString())
     }
+  }
+  async stop() {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    await port.postMessage({
+      event: 'Client_abortAskChatGPTQuestion',
+      data: {
+        messageId: this.question?.messageId,
+      },
+    })
+    return true
   }
   reset() {
     console.log('reset')

@@ -9,16 +9,23 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const SidebarChatBoxSystemTools: FC<{
-  onRetry: () => void
   solutionsShow: boolean
   onSolutionToggle: () => void
   message: ISystemChatMessage
 }> = (props) => {
-  const { onRetry, message, onSolutionToggle, solutionsShow } = props
+  const { message, onSolutionToggle, solutionsShow } = props
   const { t } = useTranslation(['common', 'client'])
+  const { currentSidebarConversationMessages } = useSidebarSettings()
+  const lastMessage =
+    currentSidebarConversationMessages.length > 0
+      ? currentSidebarConversationMessages[
+          currentSidebarConversationMessages.length - 1
+        ]
+      : undefined
   const { currentUserPlan, userInfo } = useUserInfo()
   const chatMessageType = message.extra?.systemMessageType || 'normal'
   const chatMessageStatus = message.extra?.status || 'success'
@@ -80,39 +87,38 @@ const SidebarChatBoxSystemTools: FC<{
           {upgradeCardText}
         </Button>
       )}
-      {chatMessageStatus === 'error' &&
-        message.parentMessageId &&
-        currentAIProviderDetail?.isThirdParty && (
-          <Button
-            size={'small'}
-            variant={'outlined'}
-            color={'error'}
-            onClick={onSolutionToggle}
-            sx={{
-              border: '1px solid rgba(244, 67, 54, 0.5)',
-              color: '#f44336',
-            }}
-          >
-            {solutionsShow
-              ? t('client:provider__label__hide')
-              : t('client:provider__label__view_solutions')}
-          </Button>
-        )}
-
-      {chatMessageType === 'normal' && message.parentMessageId && (
+      {chatMessageStatus === 'error' && currentAIProviderDetail?.isThirdParty && (
         <Button
           size={'small'}
           variant={'outlined'}
           color={'error'}
-          onClick={onRetry}
+          onClick={onSolutionToggle}
           sx={{
             border: '1px solid rgba(244, 67, 54, 0.5)',
             color: '#f44336',
           }}
         >
-          {t('client:sidebar__button__retry')}
+          {solutionsShow
+            ? t('client:provider__label__hide')
+            : t('client:provider__label__view_solutions')}
         </Button>
       )}
+
+      {chatMessageType === 'normal' &&
+        lastMessage?.messageId === message.messageId &&
+        message.parentMessageId && (
+          <Button
+            size={'small'}
+            variant={'outlined'}
+            color={'error'}
+            sx={{
+              border: '1px solid rgba(244, 67, 54, 0.5)',
+              color: '#f44336',
+            }}
+          >
+            {t('client:sidebar__button__retry')}
+          </Button>
+        )}
     </Stack>
   )
 }

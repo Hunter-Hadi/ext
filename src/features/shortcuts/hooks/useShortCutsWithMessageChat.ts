@@ -85,11 +85,11 @@ const useShortCutsWithMessageChat = () => {
     },
     [shortCutsEngineRef, getParams, isLogin],
   )
-  const stopShortCuts = useCallback(() => {
+  const stopShortCuts = useCallback(async () => {
     if (!shortCutsEngineRef.current) {
       return
     }
-    shortCutsEngineRef.current.stop()
+    await shortCutsEngineRef.current.stop()
     setShortsCutsState({
       status: shortCutsEngine.status || 'idle',
     })

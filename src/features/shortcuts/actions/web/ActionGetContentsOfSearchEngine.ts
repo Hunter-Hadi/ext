@@ -51,23 +51,12 @@ export class ActionGetContentsOfSearchEngine extends Action {
   ) {
     try {
       let query =
-        params.compliedTemplate ||
+        this.parameters?.compliedTemplate ||
         this.parameters?.URLSearchEngineParams?.q ||
         this.parameters?.URLSearchEngineParams?.query ||
         params.LAST_ACTION_OUTPUT ||
         ''
       if (query) {
-        // await this.pushMessageToChat(
-        //   {
-        //     messageId: uuidV4(),
-        //     extra: {
-        //       status: 'info',
-        //     },
-        //     type: 'system',
-        //     text: `The extension is crawling this page: ${query}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
-        //   },
-        //   engine,
-        // )
         // remove head and tail space
         query = query.trim()
 

@@ -82,7 +82,7 @@ import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
-import { getAppContextMenuRootElement, showChatBox } from '@/utils'
+import { getAppContextMenuRootElement } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 

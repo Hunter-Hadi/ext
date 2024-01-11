@@ -308,11 +308,12 @@ const useDaemonProcess = () => {
                   let conversation = chatGptInstanceRef.current?.getConversation(
                     conversationId,
                   )
+                  const ChatGPTAIModel = meta.ChatGPTAIModel
                   if (!conversation) {
-                    if (openAIModel) {
+                    if (ChatGPTAIModel) {
                       conversation = await chatGptInstanceRef.current?.createConversation(
                         conversationId,
-                        openAIModel,
+                        ChatGPTAIModel,
                       )
                     } else {
                       conversation = await chatGptInstanceRef.current?.createConversation(

@@ -323,13 +323,13 @@ class OpenAIChat extends BaseChat {
           })
         }
       }
+      meta.ChatGPTAIModel = this.conversation?.meta?.AIModel
       await this.sendDaemonProcessTask(
         'OpenAIDaemonProcess_askChatGPTQuestion',
         {
           taskId,
           question,
           meta: meta,
-          openAIModel: this.conversation?.meta.AIModel,
         },
       )
     }

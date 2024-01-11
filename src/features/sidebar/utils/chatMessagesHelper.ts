@@ -2,7 +2,15 @@ import sanitizeHtml from 'sanitize-html'
 import sanitize from 'sanitize-html'
 
 import { IChatConversation } from '@/background/src/chatConversations'
-import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import {
+  IAIResponseMessage,
+  IChatMessage,
+  IUserChatMessage,
+} from '@/features/chatgpt/types'
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import {
   ISystemMessage,
@@ -236,7 +244,7 @@ export const formatAIMessageContentForClipboard = (
  * @param message
  */
 export const formatUserMessageContent = (message: IUserChatMessage) => {
-  return message?.meta?.messageVisibleText || message.text
+  return (message?.meta?.messageVisibleText || message?.text || '').trim()
 }
 /**
  * 格式化第三方消息的内容
@@ -245,7 +253,21 @@ export const formatUserMessageContent = (message: IUserChatMessage) => {
 export const formatThirdOrSystemMessageContent = (
   message: IThirdMessage | ISystemMessage,
 ) => {
-  return message.text
+  return message.text.trim()
+}
+
+/**
+ * 格式化Chat消息的内容
+ * @param message
+ */
+export const formatChatMessageContent = (message: IChatMessage) => {
+  if (isUserMessage(message)) {
+    return formatUserMessageContent(message)
+  } else if (isAIMessage(message)) {
+    return formatAIMessageContent(message)
+  } else {
+    return formatThirdOrSystemMessageContent(message as ISystemMessage)
+  }
 }
 /**
  * 格式化消息到文字版历史记录

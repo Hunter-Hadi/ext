@@ -28,10 +28,10 @@ export class ActionChatMessage extends Action {
       const operationType =
         this.parameters.ActionChatMessageOperationType || 'add'
       const messageConfig = this.parameters.ActionChatMessageConfig
-      const chatInstance = engine.getChartGPT()
-      const conversationId = engine.getChartGPT()?.getSidebarRef()
-        ?.currentConversationIdRef?.current
-      if (!messageConfig || !conversationId || !chatInstance) {
+      const conversationEngine = engine.clientConversationEngine
+      const conversationId =
+        conversationEngine?.currentConversationIdRef?.current
+      if (!messageConfig || !conversationId || !conversationEngine) {
         this.error = 'invalid parameters'
         return
       }
@@ -42,14 +42,14 @@ export class ActionChatMessage extends Action {
         if (!messageConfig.messageId) {
           messageConfig.messageId = uuidV4()
         }
-        await chatInstance.pushMessage(
+        await conversationEngine.pushMessage(
           mergeWithObject([messageConfig]),
           conversationId,
         )
       } else if (operationType === 'update') {
-        await chatInstance.updateMessage(messageConfig, conversationId)
+        await conversationEngine.updateMessage(messageConfig, conversationId)
       } else if (operationType === 'delete') {
-        await chatInstance.deleteMessage(1, conversationId)
+        await conversationEngine.deleteMessage(1, conversationId)
       }
       this.output = String(messageConfig.messageId)
     } catch (e) {

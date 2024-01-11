@@ -14,7 +14,7 @@ const TestAllActionsButton: FC = () => {
   const [loading, setLoading] = React.useState(false)
   const [allShortcuts, setAllShortcuts] = React.useState<IContextMenuItem[]>([])
   const isStopRef = React.useRef(false)
-  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
+  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
   useEffect(() => {
     getChromeExtensionDBStorageButtonContextMenu('textSelectPopupButton').then(
       (shortcuts) => {

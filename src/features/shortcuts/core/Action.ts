@@ -1,7 +1,3 @@
-import { IChatConversation } from '@/background/src/chatConversations'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { IChatMessage } from '@/features/chatgpt/types'
-import { clientChatConversationUpdate } from '@/features/chatgpt/utils/clientChatConversation'
 import {
   IShortcutEngineExternalEngine,
   shortcutsRenderTemplate,
@@ -33,7 +29,6 @@ class Action implements IAction {
     this.autoExecute = autoExecute
     this.log = new Log(`Action/${type}`)
   }
-
   async execute(
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
@@ -42,53 +37,6 @@ class Action implements IAction {
     this.error = ''
     this.output = ''
     this.status = 'complete'
-  }
-  async pushMessageToChat(message: IChatMessage, engine: any) {
-    if (engine && engine.getChartGPT()?.pushMessage) {
-      const conversationId = this.getCurrentConversationId(engine)
-      await engine.getChartGPT()?.pushMessage(message, conversationId)
-    }
-  }
-  async deleteMessageFromChat(count: number, engine: any) {
-    if (engine && engine.getChartGPT()?.deleteMessage) {
-      const conversationId = this.getCurrentConversationId(engine)
-      await engine.getChartGPT()?.deleteMessage(count, conversationId)
-    }
-  }
-
-  getCurrentConversationId(engine: any) {
-    const conversationId =
-      engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
-        ?.current || ''
-    return conversationId
-  }
-  getCurrentSidebarType(engine: any) {
-    const currentSidebarType =
-      engine.getChartGPT()?.getSidebarRef()?.currentSidebarSettingsRef?.current
-        ?.type || 'Chat'
-    return currentSidebarType
-  }
-  getNextAction(engine: any) {
-    return engine?.getShortCutsEngine()?.getNextAction() as IAction | null
-  }
-  getPrevAction(engine: any) {
-    return engine?.getShortCutsEngine()?.getPrevAction() as IAction | null
-  }
-  async getCurrentConversation(engine: any) {
-    const conversationId =
-      engine.getChartGPT()?.getSidebarRef()?.currentConversationIdRef
-        ?.current || ''
-    if (conversationId) {
-      return await clientGetConversation(conversationId)
-    }
-    return null
-  }
-  async updateConversation(
-    engine: any,
-    updateConversationData: Partial<IChatConversation>,
-  ) {
-    const conversationId = this.getCurrentConversationId(engine)
-    await clientChatConversationUpdate(conversationId, updateConversationData)
   }
   async parseTemplate(template: string, params: ActionParameters) {
     return shortcutsRenderTemplate(template, params)

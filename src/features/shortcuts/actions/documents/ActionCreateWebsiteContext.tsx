@@ -59,7 +59,9 @@ export class ActionCreateWebsiteContext extends Action {
           }
         })
       }
-      websiteContext.sidebarType = this.getCurrentSidebarType(engine)
+      websiteContext.sidebarType =
+        engine.clientConversationEngine?.currentConversationTypeRef.current ||
+        'Chat'
       const createdWebsiteContext = await clientCreateWebsiteContext(
         websiteContext,
       )

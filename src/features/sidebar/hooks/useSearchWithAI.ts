@@ -34,7 +34,7 @@ const useSearchWithAI = () => {
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
-  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat('')
+  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
   const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation } = useClientConversation()
   const isFetchingRef = useRef(false)

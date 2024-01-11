@@ -37,7 +37,7 @@ export class ActionSliceOfText extends Action {
       ) {
         let sliceTokens = this.parameters.SliceTextActionTokens
         if (!sliceTokens) {
-          const conversation = await this.getCurrentConversation(engine)
+          const conversation = await engine.clientConversationEngine?.getCurrentConversation()
           // 预留1000个token给summary
           sliceTokens = Math.max(
             (conversation?.meta?.maxTokens || 4000) - 1000,

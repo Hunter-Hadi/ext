@@ -52,9 +52,13 @@ const useClientConversation = () => {
     updateSidebarSettings,
   } = useSidebarSettings()
   const currentConversationIdRef = useRef(currentSidebarConversationId)
+  const currentConversationTypeRef = useRef(currentSidebarConversationType)
   useEffect(() => {
     currentConversationIdRef.current = currentSidebarConversationId
   }, [currentSidebarConversationId])
+  useEffect(() => {
+    currentConversationTypeRef.current = currentSidebarConversationType
+  }, [currentConversationTypeRef])
   const { AI_PROVIDER_MODEL_MAP, updateAIProviderModel } = useAIProviderModels()
   const createConversation = async (
     overwriteConversationType?: ISidebarConversationType,
@@ -221,16 +225,16 @@ const useClientConversation = () => {
     console.log(
       '新版Conversation 清除conversation',
       currentSidebarConversationType,
-      currentSidebarConversationId,
+      currentConversationIdRef.current,
     )
     // 让用户在切换回对应model的时候保留聊天记录
     if (
       currentSidebarConversationType === 'Chat' &&
-      currentSidebarConversationId
+      currentConversationIdRef.current
     ) {
       // 拿到当前conversation的AIProvider和AIModel
       const waitRemoveConversation = await clientGetConversation(
-        currentSidebarConversationId,
+        currentConversationIdRef.current,
       )
       const waitRemoveConversationAIProvider =
         waitRemoveConversation?.meta?.AIProvider
@@ -243,7 +247,7 @@ const useClientConversation = () => {
             cache: {
               chatConversationCache: {
                 [waitRemoveConversationAIProvider +
-                waitRemoveConversationAIModel]: currentSidebarConversationId,
+                waitRemoveConversationAIModel]: currentConversationIdRef.current,
               },
             },
           })
@@ -262,7 +266,7 @@ const useClientConversation = () => {
     await port.postMessage({
       event: 'Client_removeChatGPTConversation',
       data: {
-        conversationId: currentSidebarConversationId,
+        conversationId: currentConversationIdRef.current,
       },
     })
     if (currentSidebarConversationType === 'Chat') {
@@ -288,7 +292,7 @@ const useClientConversation = () => {
     }
     updateConversationMap((prev) => {
       const newConversationMap = cloneDeep(prev)
-      delete newConversationMap[currentSidebarConversationId || '']
+      delete newConversationMap[currentConversationIdRef.current || '']
       return newConversationMap
     })
     setConversation({
@@ -313,7 +317,7 @@ const useClientConversation = () => {
     return result.success
   }
   const switchConversation = async (conversationId: string) => {
-    if (conversationId && currentSidebarConversationId !== conversationId) {
+    if (conversationId && currentConversationIdRef.current !== conversationId) {
       const port = new ContentScriptConnectionV2()
       // 复原background conversation
       const result = await port.postMessage({
@@ -331,7 +335,7 @@ const useClientConversation = () => {
     conversationId: string,
   ) => {
     await clientChatConversationUpdate(
-      conversationId || currentSidebarConversationId || '',
+      conversationId || currentConversationIdRef.current || '',
       conversation,
     )
   }
@@ -339,10 +343,10 @@ const useClientConversation = () => {
     newMessage: IChatMessage,
     conversationId?: string,
   ) => {
-    if (conversationId || currentSidebarConversationId) {
+    if (conversationId || currentConversationIdRef.current) {
       await clientChatConversationModifyChatMessages(
         'add',
-        conversationId || currentSidebarConversationId || '',
+        conversationId || currentConversationIdRef.current || '',
         0,
         [newMessage],
       )
@@ -362,10 +366,10 @@ const useClientConversation = () => {
     }
   }
   const deleteMessage = async (count: number, conversationId?: string) => {
-    if (conversationId || currentSidebarConversationId) {
+    if (conversationId || currentConversationIdRef.current) {
       await clientChatConversationModifyChatMessages(
         'delete',
-        conversationId || currentSidebarConversationId || '',
+        conversationId || currentConversationIdRef.current || '',
         count,
         [],
       )
@@ -424,6 +428,16 @@ const useClientConversation = () => {
       }
     })
   }
+  /**
+   * 获取当前conversation
+   */
+  const getCurrentConversation = async () => {
+    const conversationId = currentConversationIdRef.current
+    if (conversationId) {
+      return (await clientGetConversation(conversationId)) || null
+    }
+    return null
+  }
   return {
     conversation,
     cleanConversation,
@@ -431,8 +445,10 @@ const useClientConversation = () => {
     switchConversation,
     updateConversation,
     switchBackgroundChatSystemAIProvider,
+    currentSidebarConversationId,
+    currentConversationIdRef,
     currentSidebarConversationType,
-    currentConversationId: currentConversationIdRef.current,
+    currentConversationTypeRef,
     showConversationLoading,
     hideConversationLoading,
     pushMessage,
@@ -441,6 +457,8 @@ const useClientConversation = () => {
     updateMessage,
     updateClientWritingMessage,
     updateClientConversationLastMessageId,
+    getConversation: clientGetConversation,
+    getCurrentConversation,
   }
 }
 

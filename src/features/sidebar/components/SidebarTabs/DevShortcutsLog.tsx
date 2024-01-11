@@ -62,15 +62,20 @@ const DevShortcutsLog: FC = () => {
         color = 'success.main'
       }
       const isAskChatGPT = action.type === 'ASK_CHATGPT'
-      const AskChatGPTQuestion = isAskChatGPT ? (action as any).question : ''
+      let AskChatGPTQuestion = isAskChatGPT ? (action as any).question : ''
       const isSuccess = action.status === 'complete'
       let output = isSuccess ? action.output : action.error
+      if (typeof AskChatGPTQuestion === 'object') {
+        AskChatGPTQuestion = JSON.stringify(AskChatGPTQuestion, null, 2)
+      }
       if (action.type === 'SET_VARIABLES_MODAL') {
         output = JSON.stringify(
           action.parameters.SetVariablesModalConfig,
           null,
           2,
         )
+      } else if (typeof output === 'object') {
+        output = JSON.stringify(output, null, 2)
       }
       return (
         <Stack

@@ -42,34 +42,29 @@ export class ActionOperationElement extends Action {
         },
       })
       const executeResponse = result.data
+      const conversationEngine = engine.clientConversationEngine
       if (!executeResponse?.success) {
         OperationElementConfig.errorMessage &&
-          (await this.pushMessageToChat(
-            {
-              type: 'system',
-              messageId: uuidV4(),
-              parentMessageId: '',
-              text: OperationElementConfig.errorMessage,
-              extra: {
-                status: 'error',
-              },
-            } as ISystemChatMessage,
-            engine,
-          ))
+          (await conversationEngine?.pushMessage({
+            type: 'system',
+            messageId: uuidV4(),
+            parentMessageId: '',
+            text: OperationElementConfig.errorMessage,
+            extra: {
+              status: 'error',
+            },
+          } as ISystemChatMessage))
       } else {
         OperationElementConfig.successMessage &&
-          (await this.pushMessageToChat(
-            {
-              type: 'system',
-              messageId: uuidV4(),
-              parentMessageId: '',
-              text: OperationElementConfig.successMessage,
-              extra: {
-                status: 'info',
-              },
-            } as ISystemChatMessage,
-            engine,
-          ))
+          (await conversationEngine?.pushMessage({
+            type: 'system',
+            messageId: uuidV4(),
+            parentMessageId: '',
+            text: OperationElementConfig.successMessage,
+            extra: {
+              status: 'info',
+            },
+          } as ISystemChatMessage))
         // 如果actionType === getText, output设置为获取到的innerText
         if (OperationElementConfig.actionType === 'getText') {
           this.output = executeResponse.elementsInnerText

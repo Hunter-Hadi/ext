@@ -1,13 +1,9 @@
 import CachedIcon from '@mui/icons-material/Cached'
-// import SendIcon from '@mui/icons-material/Send'
 import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-// import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-// import DevContent from '@/components/DevContent'
-// import { TestAllActionsButton } from '@/features/shortcuts'
 import throttle from 'lodash-es/throttle'
 import React, {
   FC,
@@ -23,9 +19,6 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
-// import { numberWithCommas } from '@/utils'
-// import { useRecoilValue } from 'recoil'
-// import { ChatGPTConversationState } from '@/features/sidebar/store'
 import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import {
@@ -47,24 +40,12 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { clientRestartChromeExtension } from '@/utils'
 
 import useSliceMessageList from '../../hooks/useSliceMessageList'
-// import { getMediator } from '@/store/mediator'
-
-// const MAX_NORMAL_INPUT_LENGTH = 10000
-// const MAX_GPT4_INPUT_LENGTH = 80000
 
 interface IGmailChatBoxProps {
   sx?: SxProps
-  title?: string
-  userAvatar?: string | React.ReactNode
-  aiAvatar?: string | React.ReactNode
-  editAble?: boolean
-  insertAble?: boolean
-  reGenerateAble?: boolean
-  onCopy?: () => void
   onReGenerate?: () => void
   onStopGenerate?: () => void
   onReset?: () => void
-  onQuestionUpdate?: (messageId: string, newQuestionText: string) => void
   messages: IChatMessage[]
   writingMessage: IChatMessage | null
   onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
@@ -85,20 +66,11 @@ const scrollContainerId = 'scroll-message-container'
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
     sx,
-    aiAvatar,
-    userAvatar,
-    onCopy,
-    onQuestionUpdate,
-    editAble = true,
-    insertAble = true,
-    reGenerateAble = true,
     onReGenerate,
     onStopGenerate,
     onSendMessage,
-    // title = 'Chat',
     writingMessage,
     messages,
-    onRetry,
     onReset,
     loading,
   } = props
@@ -270,23 +242,11 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             {slicedMessageList.map((message, index) => {
               return (
                 <SidebarChatBoxMessageItem
-                  className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-                  insertAble={insertAble}
-                  replaceAble={true}
-                  message={message}
-                  aiAvatar={aiAvatar}
-                  editAble={editAble}
-                  userAvatar={userAvatar}
-                  useChatGPTAble={true}
                   key={
                     message.messageId + '_sidebar_chat_message_' + String(index)
                   }
-                  onSave={(value) => {
-                    onQuestionUpdate &&
-                      onQuestionUpdate(message.messageId, value)
-                  }}
-                  onRetry={onRetry}
-                  onCopy={onCopy}
+                  className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
+                  message={message}
                 />
               )
             })}
@@ -297,13 +257,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             ) ? (
               <SidebarChatBoxMessageItem
                 className={'use-chat-gpt-ai__writing-message-item'}
-                replaceAble={false}
-                insertAble={false}
                 message={writingMessage}
-                useChatGPTAble={false}
-                aiAvatar={aiAvatar}
-                editAble={false}
-                userAvatar={userAvatar}
               />
             ) : null}
           </AppSuspenseLoadingLayout>
@@ -365,19 +319,17 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             />
             {!loading && slicedMessageList.length > 0 && tempIsShowRegenerate && (
               <>
-                {reGenerateAble && (
-                  <Button
-                    disableElevation
-                    startIcon={<CachedIcon />}
-                    variant={'outlined'}
-                    disabled={loading}
-                    onClick={() => {
-                      onReGenerate && onReGenerate()
-                    }}
-                  >
-                    {t('client:sidebar__button__regenerate')}
-                  </Button>
-                )}
+                <Button
+                  disableElevation
+                  startIcon={<CachedIcon />}
+                  variant={'outlined'}
+                  disabled={loading}
+                  onClick={() => {
+                    onReGenerate && onReGenerate()
+                  }}
+                >
+                  {t('client:sidebar__button__regenerate')}
+                </Button>
                 {isShowContinueButton &&
                   currentSidebarConversationType !== 'Search' && (
                     <Button

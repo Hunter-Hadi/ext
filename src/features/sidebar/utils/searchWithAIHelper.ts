@@ -374,25 +374,27 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
     {
       type: 'ASK_CHATGPT',
       parameters: {
-        AskChatGPTWithHistory: includeHistory,
-        AskChatGPTInsertMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-        AskChatGPTActionMeta: {
-          messageVisibleText: query,
-          searchSources: '{{SEARCH_SOURCES}}',
-          contextMenu: {
-            id: '73361add-2d6a-4bf3-b2a7-5097551653e7',
-            droppable: false,
-            parent: '',
-            text: '[Search] answer',
-            data: {
-              editable: false,
-              type: 'shortcuts',
-              actions: [],
-            },
-          } as IContextMenuItem,
+        AskChatGPTActionQuestion: {
+          text: await generatePromptTemplate(currentQuestion),
+          meta: {
+            messageVisibleText: query,
+            outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            searchSources: '{{SEARCH_SOURCES}}',
+            includeHistory,
+            contextMenu: {
+              id: '73361add-2d6a-4bf3-b2a7-5097551653e7',
+              droppable: false,
+              parent: '',
+              text: '[Search] answer',
+              data: {
+                editable: false,
+                type: 'shortcuts',
+                actions: [],
+              },
+            } as IContextMenuItem,
+          },
         },
-        template: await generatePromptTemplate(currentQuestion),
+        AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
       },
     },
   ]

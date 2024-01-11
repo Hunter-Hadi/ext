@@ -35,7 +35,7 @@ const useInitWebPageMessageChannel = () => {
     setShortCuts,
     runShortCuts,
     shortCutsEngineRef,
-  } = useShortCutsWithMessageChat('')
+  } = useShortCutsWithMessageChat()
   const isRunningActionsRef = useRef(false)
   const responseDataToPage = (
     taskId: string,

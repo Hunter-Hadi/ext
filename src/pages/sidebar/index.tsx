@@ -35,8 +35,6 @@ const SidebarPage = () => {
     <Stack flex={1} height={0} position={'relative'}>
       <ChatGPTStatusWrapper />
       <SidebarChatBox
-        editAble={false}
-        insertAble={false}
         onSendMessage={async (question, options) => {
           if (currentSidebarConversationType === 'Search') {
             await createSearchWithAI(question, true)
@@ -53,7 +51,6 @@ const SidebarPage = () => {
         writingMessage={conversation.writingMessage}
         messages={currentSidebarConversationMessages}
         loading={smoothConversationLoading}
-        title={'Chat Draft'}
         onRetry={retryMessage}
         onReGenerate={async () => {
           if (currentSidebarConversationType === 'Summary') {

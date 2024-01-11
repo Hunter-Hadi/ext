@@ -1,6 +1,5 @@
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { IUserChatMessage } from '@/features/chatgpt/types'
@@ -21,11 +20,11 @@ const useClientChat = () => {
   const {
     setShortCuts,
     runShortCuts,
+    stopShortCuts,
     getParams,
   } = useShortCutsWithMessageChat()
   const {
-    conversation,
-    currentConversationId,
+    currentConversationIdRef,
     createConversation,
     pushPricingHookMessage,
     hideConversationLoading,
@@ -52,7 +51,7 @@ const useClientChat = () => {
     params?: IShortCutsParameter[],
   ) => {
     // 1.在所有对话之前，确保先有conversationId
-    let conversationId = currentConversationId
+    let conversationId = currentConversationIdRef.current
     if (!conversationId) {
       conversationId = await createConversation()
     }
@@ -83,6 +82,7 @@ const useClientChat = () => {
   const regenerate = async () => {
     try {
       showConversationLoading()
+      const currentConversationId = currentConversationIdRef.current
       if (currentConversationId) {
         const {
           conversation,
@@ -124,7 +124,7 @@ const useClientChat = () => {
             waitRunActions,
             lastRunActionsParams,
           )
-          await runShortCuts()
+          await runShortCuts(false, lastRunActionsParams)
         } else {
           // 理论上不会进来, 兼容旧代码用的
           console.log('regenerate actions is empty')
@@ -136,11 +136,11 @@ const useClientChat = () => {
           let needDeleteCount = 0
           let lastUserMessage: IUserChatMessage | null = null
           for (let i = messages.length - 1; i >= 0; i--) {
+            needDeleteCount++
             if (messages[i].type === 'user') {
               lastUserMessage = messages[i] as IUserChatMessage
               break
             }
-            needDeleteCount++
           }
           if (lastUserMessage) {
             await clientChatConversationModifyChatMessages(
@@ -174,15 +174,7 @@ const useClientChat = () => {
   }
 
   const stopGenerate = async () => {
-    const port = new ContentScriptConnectionV2({
-      runtime: 'client',
-    })
-    await port.postMessage({
-      event: 'Client_abortAskChatGPTQuestion',
-      data: {
-        messageId: conversation.lastMessageId,
-      },
-    })
+    await stopShortCuts()
   }
   const continueChat = async (conversationId: string = '') => {
     await askAIQuestion({

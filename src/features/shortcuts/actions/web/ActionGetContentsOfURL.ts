@@ -36,18 +36,21 @@ export class ActionGetContentsOfURL extends Action {
         this.parameters.URLActionURL ||
         params.URLActionURL ||
         params.LAST_ACTION_OUTPUT
-      if (currentUrl && engine.shortcutsMessageChannelEngine) {
-        await this.pushMessageToChat(
-          {
-            type: 'system',
-            text: `MaxAI.me extension is crawling this page: ${currentUrl}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
-            messageId: uuidV4(),
-            extra: {
-              status: 'info',
-            },
+      const { shortcutsMessageChannelEngine, clientConversationEngine } = engine
+
+      if (
+        currentUrl &&
+        shortcutsMessageChannelEngine &&
+        clientConversationEngine
+      ) {
+        await clientConversationEngine.pushMessage({
+          type: 'system',
+          text: `MaxAI.me extension is crawling this page: ${currentUrl}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
+          messageId: uuidV4(),
+          extra: {
+            status: 'info',
           },
-          engine,
-        )
+        })
         const youtubeVideoId = YoutubeTranscript.retrieveVideoId(currentUrl)
         // NOTE: 如果是youtube的视频，直接获取transcript和页面信息
         if (youtubeVideoId) {
@@ -59,14 +62,12 @@ export class ActionGetContentsOfURL extends Action {
             return
           }
         }
-        const response = await engine.shortcutsMessageChannelEngine.postMessage(
-          {
-            event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
-            data: {
-              URL: currentUrl,
-            },
+        const response = await shortcutsMessageChannelEngine.postMessage({
+          event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
+          data: {
+            URL: currentUrl,
           },
-        )
+        })
         // NOTE: webgpt的代码是错误和成功都会返回data，所以这里也要这样写
         if (response.success) {
           this.output = response?.data?.body || ''

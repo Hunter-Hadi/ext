@@ -34,6 +34,12 @@ export const clientChatConversationModifyChatMessages = async (
   >,
 ) => {
   try {
+    console.log(
+      'clientChatConversationModifyChatMessages',
+      action,
+      conversationId,
+      newMessages,
+    )
     const port = new ContentScriptConnectionV2()
     const result = await port.postMessage({
       event: 'Client_modifyMessages',

@@ -18,13 +18,20 @@ export interface IChatMessage {
   }
 }
 
+export interface IAskChatGPTActionQuestionType
+  extends Omit<IUserChatMessage, 'type' | 'messageId' | 'conversationId'> {
+  type?: 'user'
+  messageId?: string
+  conversationId?: string
+}
+
 // 用户发送的消息
 export interface IUserChatMessage extends IChatMessage {
   type: 'user'
   text: string
   messageId: string
-  parentMessageId?: string
   conversationId: string
+  parentMessageId?: string
   meta?: IChatMessageExtraMetaType
   /**
    * @deprecated

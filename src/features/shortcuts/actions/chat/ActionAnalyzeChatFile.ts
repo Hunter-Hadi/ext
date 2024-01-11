@@ -1,5 +1,4 @@
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
-import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -44,12 +43,16 @@ export class ActionAnalyzeChatFile extends Action {
         this.parameters.AnalyzeChatFileImmediateUpdateConversation ||
         params.AnalyzeChatFileImmediateUpdateConversation ||
         false
-      const conversation = await this.getCurrentConversation(engine)
+      const conversationEngine = engine.clientConversationEngine
+      const conversationId =
+        conversationEngine?.currentConversationIdRef.current || ''
+      const conversation = await conversationEngine?.getCurrentConversation()
       const systemPromptTokensLimit =
         this.parameters.AnalyzeChatFileSystemPromptTokenLimit ||
         conversation?.meta?.maxTokens ||
         4096
-      const text = params.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
+      const text =
+        this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
       const {
         isLimit,
         text: pageSummarySystemPrompt,
@@ -69,11 +72,14 @@ export class ActionAnalyzeChatFile extends Action {
             },
           )
           const docId = await stringConvertTxtUpload(uploadData.text, fileName)
-          await this.updateConversation(engine, {
-            meta: {
-              docId,
+          await conversationEngine?.updateConversation(
+            {
+              meta: {
+                docId,
+              },
             },
-          })
+            conversationId,
+          )
           // 异步通知LarkBot
           sendLarkBotMessage(
             `[Summary] tokens has reached maximum limit.`,
@@ -118,21 +124,27 @@ export class ActionAnalyzeChatFile extends Action {
               .catch()
             stringConvertTxtUpload(uploadData.text, fileName).then(
               async (docId) => {
-                await this.updateConversation(engine, {
-                  meta: {
-                    docId,
+                await conversationEngine?.updateConversation(
+                  {
+                    meta: {
+                      docId,
+                    },
                   },
-                })
+                  conversationId,
+                )
               },
             )
           })
         }
       }
-      await this.updateConversation(engine, {
-        meta: {
-          systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
+      await conversationEngine?.updateConversation(
+        {
+          meta: {
+            systemPrompt: `The following text delimited by triple backticks is the context text:\n\`\`\`\n${pageSummarySystemPrompt}\n\`\`\``,
+          },
         },
-      })
+        conversationId,
+      )
       this.output = pageSummarySystemPrompt
     } catch (e) {
       this.error = (e as any).toString()

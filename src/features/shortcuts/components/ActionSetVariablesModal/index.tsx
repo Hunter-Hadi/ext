@@ -18,7 +18,6 @@ import TooltipButton from '@/components/TooltipButton'
 import { isProduction } from '@/constants'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { IContextMenuItem } from '@/features/contextMenu/types'
 import {
   getSetVariablesModalSelectCache,
   setVariablesModalSelectCache,
@@ -222,19 +221,22 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             AskChatGPTActionType: insertMessageId
               ? 'ASK_CHAT_GPT_HIDDEN'
               : 'ASK_CHAT_GPT_WITH_PREFIX',
-            AskChatGPTInsertMessageId: insertMessageId,
-            AskChatGPTActionMeta: {
-              contextMenu: {
-                id: config.contextMenuId || uuidV4(),
-                droppable: false,
-                parent: uuidV4(),
-                text: config.title,
-                data: {
-                  editable: false,
-                  type: 'shortcuts',
-                  actions: [],
+            AskChatGPTActionQuestion: {
+              text: '{{LAST_ACTION_OUTPUT}}',
+              meta: {
+                outputMessageId: insertMessageId,
+                contextMenu: {
+                  id: config.contextMenuId || uuidV4(),
+                  droppable: false,
+                  parent: uuidV4(),
+                  text: config.title,
+                  data: {
+                    editable: false,
+                    type: 'shortcuts',
+                    actions: [],
+                  },
                 },
-              } as IContextMenuItem,
+              },
             },
             ...currentParameters,
           },
@@ -243,11 +245,15 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         runActions.push({
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTInsertMessageId: insertMessageId,
             AskChatGPTActionType: insertMessageId
               ? 'ASK_CHAT_GPT_HIDDEN'
               : 'ASK_CHAT_GPT_WITH_PREFIX',
+            AskChatGPTActionQuestion: {
+              text: '{{LAST_ACTION_OUTPUT}}',
+              meta: {
+                outputMessageId: insertMessageId,
+              },
+            },
             ...currentParameters,
           },
         })

@@ -17,15 +17,10 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
-import {
-  permissionCardToChatMessage,
-  PermissionWrapperCardSceneType,
-} from '@/features/auth/components/PermissionWrapper/types'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { IContextMenuItem } from '@/features/contextMenu/types'
@@ -61,8 +56,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     updateSidebarConversationType,
   } = useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
-  const permissionCardMap = usePermissionCardMap()
-  const { createConversation } = useClientConversation()
+  const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { loading } = useRecoilValue(ChatGPTConversationState)
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
@@ -92,17 +86,8 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
-            const conversationId = await createConversation()
-            await clientChatConversationModifyChatMessages(
-              'add',
-              conversationId,
-              0,
-              [
-                permissionCardToChatMessage(
-                  permissionCardMap[permissionWrapperCardSceneType],
-                ),
-              ],
-            )
+            await createConversation()
+            await pushPricingHookMessage(permissionWrapperCardSceneType)
             return
           }
         }

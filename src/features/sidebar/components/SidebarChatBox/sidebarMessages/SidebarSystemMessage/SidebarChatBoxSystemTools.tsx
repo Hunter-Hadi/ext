@@ -27,19 +27,22 @@ const SidebarChatBoxSystemTools: FC<{
         ]
       : undefined
   const { currentUserPlan, userInfo } = useUserInfo()
-  const chatMessageType = message.extra?.systemMessageType || 'normal'
-  const chatMessageStatus = message.extra?.status || 'success'
+  const chatMessageType =
+    message.meta?.systemMessageType ||
+    message.extra?.systemMessageType ||
+    'normal'
+  const permissionSceneType =
+    message.meta?.permissionSceneType || message?.extra?.permissionSceneType
+  const chatMessageStatus =
+    message.meta?.status || message.extra?.status || 'success'
   const permissionCardMap = usePermissionCardMap()
   const { currentAIProviderDetail } = useAIProviderModels()
   const upgradeCardText = useMemo(() => {
-    if (
-      message.extra?.permissionSceneType &&
-      permissionCardMap[message.extra.permissionSceneType]
-    ) {
-      return permissionCardMap[message.extra!.permissionSceneType].ctaButtonText
+    if (permissionSceneType && permissionCardMap[permissionSceneType]) {
+      return permissionCardMap[permissionSceneType].ctaButtonText
     }
     return t('client:sidebar__button__upgrade_to_pro')
-  }, [permissionCardMap, message.extra?.permissionSceneType, t])
+  }, [permissionCardMap, permissionSceneType, t])
   useEffect(() => {
     if (
       chatMessageType === 'needUpgrade' &&
@@ -73,14 +76,8 @@ const SidebarChatBoxSystemTools: FC<{
           target={'_blank'}
           href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
           onClick={(event) => {
-            if (
-              message.extra?.systemMessageType === 'needUpgrade' &&
-              message.extra.permissionSceneType
-            ) {
-              authEmitPricingHooksLog(
-                'click',
-                message.extra.permissionSceneType,
-              )
+            if (chatMessageType === 'needUpgrade' && permissionSceneType) {
+              authEmitPricingHooksLog('click', permissionSceneType)
             }
           }}
         >

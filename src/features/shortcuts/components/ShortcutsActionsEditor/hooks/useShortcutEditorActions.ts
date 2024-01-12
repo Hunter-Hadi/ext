@@ -53,13 +53,13 @@ const useShortcutEditorActions = () => {
         }
         if (
           action.type === 'ASK_CHATGPT' &&
-          action.parameters.AskChatGPTWithAIResponseLanguage === false
+          action.parameters.isEnabledDetectAIResponseLanguage === false
         ) {
           enabledAIResponseLanguage = false
         } else if (
           action.type === 'SET_VARIABLES_MODAL' &&
           action.parameters.SetVariablesModalConfig?.askChatGPTActionParameters
-            ?.AskChatGPTWithAIResponseLanguage === false
+            ?.isEnabledDetectAIResponseLanguage === false
         ) {
           enabledAIResponseLanguage = false
         }
@@ -233,7 +233,7 @@ const useShortcutEditorActions = () => {
                     ],
                   },
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -369,7 +369,7 @@ const useShortcutEditorActions = () => {
               ? `{{AI_RESPONSE_MESSAGE_ID}}`
               : '',
             askChatGPTActionParameters: {
-              AskChatGPTWithAIResponseLanguage:
+              isEnabledDetectAIResponseLanguage:
                 shortcutActionEditor.enabledAIResponseLanguage,
             },
           },
@@ -382,7 +382,7 @@ const useShortcutEditorActions = () => {
         type: 'ASK_CHATGPT',
         parameters: {
           template,
-          AskChatGPTWithAIResponseLanguage:
+          isEnabledDetectAIResponseLanguage:
             shortcutActionEditor.enabledAIResponseLanguage,
         },
       })
@@ -396,7 +396,7 @@ const useShortcutEditorActions = () => {
         ...prev,
         actions: prev.actions.map((action) => {
           if (action.type === 'ASK_CHATGPT') {
-            action.parameters.AskChatGPTWithAIResponseLanguage = newValue
+            action.parameters.isEnabledDetectAIResponseLanguage = newValue
           }
           return action
         }),

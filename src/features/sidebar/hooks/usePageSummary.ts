@@ -10,8 +10,6 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
-import { permissionCardToChatMessage } from '@/features/auth/components/PermissionWrapper/types'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -38,11 +36,10 @@ const usePageSummary = () => {
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
-  const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const [runActions, setRunActions] = useState<ISetActionsType>([])
-  const { createConversation } = useClientConversation()
+  const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const createPageSummary = async () => {
@@ -140,12 +137,7 @@ const usePageSummary = () => {
               0,
               [],
             )
-            await clientChatConversationModifyChatMessages(
-              'add',
-              pageSummaryConversationId,
-              0,
-              [permissionCardToChatMessage(permissionCardMap['PAGE_SUMMARY'])],
-            )
+            await pushPricingHookMessage('PAGE_SUMMARY')
             authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
             return
           }

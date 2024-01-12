@@ -1,10 +1,8 @@
 import dayjs from 'dayjs'
 import { TFunction } from 'i18next'
 import React from 'react'
-import { v4 as uuidV4 } from 'uuid'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { IChatMessage, ISystemChatMessage } from '@/features/chatgpt/types'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
@@ -99,36 +97,6 @@ export const getPermissionCardSettingsBySceneType = (
     ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
     ...PERMISSION_CARD_SETTINGS_TEMPLATE[sceneType],
   }
-}
-export const permissionCardToChatMessage = (
-  cardSettings: PermissionWrapperCardType,
-): IChatMessage => {
-  const needUpgradeMessage: ISystemChatMessage = {
-    type: 'system',
-    text: '',
-    messageId: uuidV4(),
-    parentMessageId: '',
-    extra: {
-      status: 'error',
-      systemMessageType: 'needUpgrade',
-      permissionSceneType: cardSettings.sceneType,
-    },
-  }
-  const { title, description, imageUrl, videoUrl } = cardSettings
-  let markdownText = `**${title}**\n${description}\n\n`
-  if (videoUrl) {
-    markdownText = `![${JSON.stringify({
-      alt: title,
-      cover: imageUrl,
-    })}](${videoUrl})\n${markdownText}`
-  } else if (imageUrl) {
-    markdownText = `![${JSON.stringify({
-      alt: title,
-      cover: imageUrl,
-    })}](${imageUrl})\n${markdownText}`
-  }
-  needUpgradeMessage.text = markdownText
-  return needUpgradeMessage
 }
 
 export const PERMISSION_CARD_SETTINGS_TEMPLATE: {

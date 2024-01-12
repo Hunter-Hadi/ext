@@ -5,6 +5,8 @@ import { IChatConversation } from '@/background/src/chatConversations'
 import {
   IAIResponseMessage,
   IChatMessage,
+  ISystemChatMessage,
+  IThirdChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
 import {
@@ -12,10 +14,6 @@ import {
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
-import {
-  ISystemMessage,
-  IThirdMessage,
-} from '@/features/searchWithAI/chatCore/chatgpt/types'
 
 /**
  * 格式化AI消息的内容
@@ -251,7 +249,7 @@ export const formatUserMessageContent = (message: IUserChatMessage) => {
  * @param message
  */
 export const formatThirdOrSystemMessageContent = (
-  message: IThirdMessage | ISystemMessage,
+  message: IThirdChatMessage | ISystemChatMessage,
 ) => {
   return message.text.trim()
 }
@@ -266,7 +264,7 @@ export const formatChatMessageContent = (message: IChatMessage) => {
   } else if (isAIMessage(message)) {
     return formatAIMessageContent(message)
   } else {
-    return formatThirdOrSystemMessageContent(message as ISystemMessage)
+    return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
   }
 }
 /**
@@ -300,7 +298,7 @@ export const formatMessagesToLiteHistory = async (
       if (needSystemOrThirdMessage) {
         liteHistory.push(
           `${message.type === 'system' ? `System: ` : `Third: `}` +
-            formatThirdOrSystemMessageContent(message as IThirdMessage),
+            formatThirdOrSystemMessageContent(message as IThirdChatMessage),
         )
       }
     }

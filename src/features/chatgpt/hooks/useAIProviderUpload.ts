@@ -162,7 +162,7 @@ const useAIProviderUpload = () => {
                       errorItem.uploadErrorMessage ||
                       `File ${errorItem.fileName} upload error.`,
                     type: 'system',
-                    extra: {
+                    meta: {
                       status:
                         errorItem.uploadErrorMessage ===
                         `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
@@ -194,7 +194,7 @@ const useAIProviderUpload = () => {
                     errorItem.uploadErrorMessage ||
                     `File ${errorItem.fileName} upload error.`,
                   type: 'system',
-                  extra: {
+                  meta: {
                     status: 'error',
                   },
                 } as ISystemChatMessage,

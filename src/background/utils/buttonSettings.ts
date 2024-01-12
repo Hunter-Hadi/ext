@@ -327,12 +327,8 @@ export const getContextMenuActions = async (contextMenuId: string) => {
             action.type === 'INSERT_USER_INPUT' ||
             action.type === 'ASK_CHATGPT'
           ) {
-            if (!action.parameters.AskChatGPTActionMeta) {
-              action.parameters.AskChatGPTActionMeta = {}
-            }
             const originData = cloneDeep(contextMenu) as IContextMenuItem
             delete originData.data.actions
-            action.parameters.AskChatGPTActionMeta.contextMenu = originData
             action.parameters.AskChatGPTActionQuestion = {
               type: 'user',
               messageId: '',

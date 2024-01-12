@@ -62,7 +62,7 @@ export class ActionAskChatGPT extends Action {
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       // 是否启用了Response指定语言语言
       const isEnableAIResponseLanguage =
-        this.parameters.AskChatGPTWithAIResponseLanguage !== false
+        this.parameters.isEnabledDetectAIResponseLanguage !== false
       const conversationId =
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
         engine.clientConversationEngine?.currentConversationIdRef?.current ||
@@ -326,7 +326,7 @@ export class ActionAskChatGPT extends Action {
                 messageId: uuidV4(),
                 parentMessageId: this.question?.messageId,
                 text: errorMessage,
-                extra: {
+                meta: {
                   status: 'error',
                 },
               } as ISystemChatMessage)
@@ -373,21 +373,19 @@ export class ActionAskChatGPT extends Action {
         0,
         [
           {
+            type: 'ai',
             messageId: this.question.meta.outputMessageId,
             originalMessage: {
-              status: 'complete',
               metadata: {
                 sources: {
                   status: 'complete',
                 },
-                isComplete: true,
               },
             },
-          } as IAIResponseMessage,
+          } as any,
         ],
       )
     }
-    this.status = 'stop'
     return true
   }
   reset() {

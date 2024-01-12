@@ -35,7 +35,7 @@ export class ActionInsertUserInput extends Action {
     try {
       const inputValue =
         this.parameters?.compliedTemplate || params?.LAST_ACTION_OUTPUT || ''
-      const AskChatGPTMetaData = this.parameters.AskChatGPTActionMeta
+      const AskChatGPTMetaData = this.parameters.AskChatGPTActionQuestion?.meta
       const isInsertToFloatingMenuInput = isFloatingContextMenuVisible()
       const chatBoxInput = await promiseRetry<HTMLTextAreaElement>(
         () => {

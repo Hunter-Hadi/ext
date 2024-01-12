@@ -1281,7 +1281,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1319,7 +1319,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1352,7 +1352,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1395,7 +1395,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1433,7 +1433,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1471,7 +1471,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1509,7 +1509,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1547,7 +1547,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1585,7 +1585,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1623,7 +1623,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1661,7 +1661,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1694,7 +1694,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1737,7 +1737,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1775,7 +1775,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1808,7 +1808,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1846,7 +1846,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1884,7 +1884,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1927,7 +1927,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1960,7 +1960,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -1998,7 +1998,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -2041,7 +2041,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -2079,7 +2079,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           type: 'ASK_CHATGPT',
           parameters: {
             template: '{{LAST_ACTION_OUTPUT}}',
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],
@@ -2241,7 +2241,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            AskChatGPTWithAIResponseLanguage: false,
+            isEnabledDetectAIResponseLanguage: false,
           },
         },
       ],

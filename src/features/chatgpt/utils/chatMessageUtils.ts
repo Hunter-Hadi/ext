@@ -1,9 +1,9 @@
 import {
   IAIResponseMessage,
   IChatMessage,
+  ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
-import { ISystemMessage } from '@/features/searchWithAI/chatCore/chatgpt/types'
 
 /**
  * 消息是否是AI消息
@@ -29,6 +29,6 @@ export const isUserMessage = (
  */
 export const isSystemMessage = (
   message: IChatMessage,
-): message is ISystemMessage => {
+): message is ISystemChatMessage => {
   return message.type === 'system' || message.type === 'third'
 }

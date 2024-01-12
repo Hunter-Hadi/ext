@@ -158,7 +158,7 @@ const userInitUserInfo = (isInit = true) => {
             type: 'system',
             parentMessageId: undefined,
             text: upgradeTextRef.current,
-            extra: {
+            meta: {
               status: 'success',
             },
           } as ISystemChatMessage,

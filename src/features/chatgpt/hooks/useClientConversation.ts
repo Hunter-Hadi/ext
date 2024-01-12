@@ -2,15 +2,12 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import merge from 'lodash-es/merge'
 import { useEffect, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
+import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import {
-  permissionCardToChatMessage,
-  PermissionWrapperCardSceneType,
-} from '@/features/auth/components/PermissionWrapper/types'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
+import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
@@ -45,7 +42,6 @@ const useClientConversation = () => {
     ChatGPTConversationState,
   )
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const permissionCardMap = usePermissionCardMap()
   const {
     currentSidebarConversationType,
     currentSidebarConversationId,
@@ -392,14 +388,25 @@ const useClientConversation = () => {
     })
   }
   const pushPricingHookMessage = async (
-    pricingHookSceneType: PermissionWrapperCardSceneType,
+    permissionSceneType: PermissionWrapperCardSceneType,
   ) => {
     if (currentConversationIdRef.current) {
       await clientChatConversationModifyChatMessages(
         'add',
         currentConversationIdRef.current,
         0,
-        [permissionCardToChatMessage(permissionCardMap[pricingHookSceneType])],
+        [
+          {
+            type: 'system',
+            text: 'Upgrade to Pro',
+            messageId: uuidV4(),
+            parentMessageId: '',
+            meta: {
+              systemMessageType: 'needUpgrade',
+              permissionSceneType: permissionSceneType,
+            },
+          },
+        ],
       )
     }
   }

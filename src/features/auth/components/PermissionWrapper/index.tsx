@@ -50,7 +50,7 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
     TooltipProps,
     children,
   } = props
-  const permissionCard = usePermissionCard(sceneType)
+  const permissionCard = usePermissionCard(sceneType)!
   const [modifyPermissionCard, setModifyPermissionCard] = useState<
     PermissionWrapperCardType | undefined
   >(undefined)

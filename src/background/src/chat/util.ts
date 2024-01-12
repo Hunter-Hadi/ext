@@ -346,8 +346,8 @@ export const processAskAIParameters = async (
         // 如果已经有结束节点了，找到includeHistory为false的作为开始
         if (!startIndex) {
           if (
-            (message as IAIResponseMessage)?.originalMessage
-              ?.include_history === false
+            (message as IAIResponseMessage)?.originalMessage?.metadata
+              ?.includeHistory === false
           ) {
             startIndex = i
           }

@@ -2,8 +2,8 @@ import Stack from '@mui/material/Stack'
 import React, { useEffect } from 'react'
 
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
-import { useMessageWithChatGPT } from '@/features/chatgpt/hooks'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
@@ -20,11 +20,7 @@ const SidebarPage = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
-  const {
-    conversation,
-    retryMessage,
-    resetConversation,
-  } = useMessageWithChatGPT('')
+  const { conversation, cleanConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { currentSidebarConversationMessages } = useSidebarSettings()
   useEffect(() => {
@@ -50,7 +46,6 @@ const SidebarPage = () => {
         writingMessage={conversation.writingMessage}
         messages={currentSidebarConversationMessages}
         loading={smoothConversationLoading}
-        onRetry={retryMessage}
         onReGenerate={async () => {
           if (currentSidebarConversationType === 'Search') {
             await regenerateSearchWithAI()
@@ -59,7 +54,7 @@ const SidebarPage = () => {
           await regenerate()
         }}
         onStopGenerate={stopGenerate}
-        onReset={resetConversation}
+        onReset={cleanConversation}
       />
     </Stack>
   )

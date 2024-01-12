@@ -1,7 +1,6 @@
 import {
   IAskChatGPTActionQuestionType,
   IChatMessage,
-  IChatMessageExtraMetaType,
 } from '@/features/chatgpt/types'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -185,10 +184,8 @@ interface ActionParameters {
   SliceTextActionType?: SliceTextActionType | string
   AskChatGPTActionType?: AskChatGPTActionType
   AskChatGPTActionQuestion?: IAskChatGPTActionQuestionType
-  AskChatGPTActionMeta?: IChatMessageExtraMetaType
-  AskChatGPTWithHistory?: boolean
   // 是否受到用户设置的AI response language的影响
-  AskChatGPTWithAIResponseLanguage?: boolean
+  isEnabledDetectAIResponseLanguage?: boolean
   // Operation Element
   OperationElementElementSelector?: string
   OperationElementTabID?: number

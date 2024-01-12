@@ -126,7 +126,7 @@ export const promptLibraryCardDetailDataToActions = (
                   ],
                 },
               },
-              include_history: false,
+              includeHistory: false,
             },
           } as IAIResponseMessage,
         },

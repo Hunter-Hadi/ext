@@ -49,7 +49,7 @@
 //       const askChatGPTType =
 //         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
 //       const isOpenAIResponseLanguage =
-//         this.parameters.AskChatGPTWithAIResponseLanguage !== false
+//         this.parameters.isEnabledDetectAIResponseLanguage !== false
 //       const includeHistory = this.parameters.AskChatGPTWithHistory || false
 //       const conversationId =
 //         engine.clientConversationEngine?.currentConversationIdRef.current || ''

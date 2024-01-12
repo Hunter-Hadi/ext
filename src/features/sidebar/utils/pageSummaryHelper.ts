@@ -65,7 +65,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                     ],
                   },
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -121,7 +121,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                   text: '',
                   contentType: 'text',
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -244,7 +244,7 @@ Use the following format:
                     ],
                   },
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -300,7 +300,7 @@ Use the following format:
                   text: '',
                   contentType: 'text',
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -427,7 +427,7 @@ Use the following format:
                     ],
                   },
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -483,7 +483,7 @@ Use the following format:
                   text: '',
                   contentType: 'text',
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -606,7 +606,7 @@ Use the following format:
                     ],
                   },
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -664,7 +664,7 @@ Use the following format:
                   text: '',
                   contentType: 'text',
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -723,7 +723,7 @@ Use the following format:
                     value: 'Ask AI anything about the video...',
                   },
                 },
-                include_history: false,
+                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -758,9 +758,16 @@ export const getContextMenuActionsByPageSummaryType = (
     if (index === 0) {
       messageId = action.parameters.ActionChatMessageConfig?.messageId || ''
     }
-    if (action.type === 'ASK_CHATGPT') {
-      action.parameters.AskChatGPTActionMeta = {
-        contextMenu: cloneDeep(contextMenu),
+    if (
+      action.type === 'ASK_CHATGPT' &&
+      action.parameters.AskChatGPTActionQuestion
+    ) {
+      action.parameters.AskChatGPTActionQuestion = {
+        ...action.parameters.AskChatGPTActionQuestion,
+        meta: {
+          ...action.parameters.AskChatGPTActionQuestion.meta,
+          contextMenu: cloneDeep(contextMenu),
+        },
       }
     }
     return action

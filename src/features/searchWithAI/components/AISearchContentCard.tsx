@@ -66,7 +66,7 @@ const AISearchContentCard: FC<IProps> = ({
         text: question,
         type: 'ai',
         originalMessage: {
-          include_history: false,
+          includeHistory: false,
           id: messageId,
           create_time: new Date().toISOString(),
           content: {

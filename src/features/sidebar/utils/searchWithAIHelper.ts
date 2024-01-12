@@ -161,7 +161,7 @@ export const generateSearchWithAIActions = async (
                 ],
               },
             },
-            include_history: includeHistory,
+            includeHistory: includeHistory,
           },
         } as IAIResponseMessage,
       },
@@ -184,31 +184,33 @@ export const generateSearchWithAIActions = async (
     {
       type: 'ASK_CHATGPT',
       parameters: {
-        AskChatGPTWithHistory: includeHistory,
-        template: includeHistory
-          ? generateSmartSearchPromptWithPreviousQuestion(
-              prevQuestions.concat(currentQuestion),
-              copilot,
-            )
-          : generateSmartSearchPromptWithPreviousQuestion(
-              [currentQuestion],
-              copilot,
-            ),
         AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-        AskChatGPTActionMeta: {
-          temperature: 0,
-          messageVisibleText: query,
-          contextMenu: {
-            id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
-            droppable: false,
-            parent: '',
-            text: '[Search] smart query',
-            data: {
-              editable: false,
-              type: 'shortcuts',
-              actions: [],
-            },
-          } as IContextMenuItem,
+        AskChatGPTActionQuestion: {
+          text: includeHistory
+            ? generateSmartSearchPromptWithPreviousQuestion(
+                prevQuestions.concat(currentQuestion),
+                copilot,
+              )
+            : generateSmartSearchPromptWithPreviousQuestion(
+                [currentQuestion],
+                copilot,
+              ),
+          meta: {
+            includeHistory,
+            temperature: 0,
+            messageVisibleText: query,
+            contextMenu: {
+              id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
+              droppable: false,
+              parent: '',
+              text: '[Search] smart query',
+              data: {
+                editable: false,
+                type: 'shortcuts',
+                actions: [],
+              },
+            } as IContextMenuItem,
+          },
         },
       },
     },

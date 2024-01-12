@@ -47,7 +47,7 @@ export class ActionGetContentsOfURL extends Action {
           type: 'system',
           text: `MaxAI.me extension is crawling this page: ${currentUrl}. Note that if the crawled text is too long, it'll be trimmed to the first 7,000 characters to fit the context limit.`,
           messageId: uuidV4(),
-          extra: {
+          meta: {
             status: 'info',
           },
         })

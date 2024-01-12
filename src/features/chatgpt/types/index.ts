@@ -13,7 +13,7 @@ export interface IChatMessage {
   messageId: string
   parentMessageId?: string
   // 不同的message存放数据的地方
-  extra?: {
+  meta?: {
     [key: string]: any
   }
 }
@@ -33,26 +33,11 @@ export interface IUserChatMessage extends IChatMessage {
   conversationId: string
   parentMessageId?: string
   meta?: IChatMessageExtraMetaType
-  /**
-   * @deprecated
-   **/
-  // meta: {
-  //   // 告诉Use ChatGPT API是否包含历史消息
-  //   includeHistory?: boolean
-  //   // 告诉Provider是否需要重试
-  //   retry?: boolean
-  //   // 告诉Provider是否需要重新生成
-  //   regenerate?: boolean
-  //   // 告诉Provider最大的历史消息数量
-  //   maxHistoryMessageCnt?: number
-  //   // 额外数据
-  //   meta?: IChatMessageExtraMetaType
-  //   // 聊天记录
-  //   historyMessages?: Array<IAIResponseMessage | IUserChatMessage>
-  // }
 }
 
 export type IChatMessageExtraMetaType = {
+  // 是否自动判断AIResponseLanguage
+  isEnabledDetectAIResponseLanguage?: boolean
   contextMenu?: IContextMenuItem
   // 温度
   temperature?: number
@@ -114,11 +99,12 @@ export interface IAIResponseOriginalMessage {
     images?: string[]
   }
   metadata?: {
+    includeHistory?: boolean
+    isComplete?: boolean
     finish?: {
       type: string
       stopTokens?: number
     }
-    isComplete?: boolean
     title?: IAIResponseOriginalMessageMetadataTitle
     // 来源于哪个网站
     sourceWebpage?: {
@@ -144,8 +130,6 @@ export interface IAIResponseOriginalMessage {
     // TODO
     related?: string[]
   }
-  include_history?: boolean
-  status?: 'loading' | 'complete'
 }
 // AI返回的消息
 export interface IAIResponseMessage extends IChatMessage {
@@ -162,7 +146,16 @@ export interface ISystemChatMessage extends IChatMessage {
   text: string
   messageId: string
   parentMessageId?: string
-  extra: {
+  meta: {
+    status?: 'error' | 'success' | 'info'
+    systemMessageType?: 'needUpgrade' | 'normal'
+    permissionSceneType?: PermissionWrapperCardSceneType
+  }
+  /**
+   * @deprecated
+   * @description - 后面用meta字段
+   */
+  extra?: {
     status?: 'error' | 'success' | 'info'
     systemMessageType?: 'needUpgrade' | 'normal'
     permissionSceneType?: PermissionWrapperCardSceneType

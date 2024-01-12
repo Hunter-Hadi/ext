@@ -50,7 +50,7 @@ export class ActionOperationElement extends Action {
             messageId: uuidV4(),
             parentMessageId: '',
             text: OperationElementConfig.errorMessage,
-            extra: {
+            meta: {
               status: 'error',
             },
           } as ISystemChatMessage))
@@ -61,7 +61,7 @@ export class ActionOperationElement extends Action {
             messageId: uuidV4(),
             parentMessageId: '',
             text: OperationElementConfig.successMessage,
-            extra: {
+            meta: {
               status: 'info',
             },
           } as ISystemChatMessage))

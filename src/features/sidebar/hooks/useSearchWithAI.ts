@@ -6,8 +6,6 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { permissionCardToChatMessage } from '@/features/auth/components/PermissionWrapper/types'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -32,11 +30,10 @@ const useSearchWithAI = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
-  const permissionCardMap = usePermissionCardMap()
   const { currentUserPlan } = useUserInfo()
   const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
   const [runActions, setRunActions] = useState<ISetActionsType>([])
-  const { createConversation } = useClientConversation()
+  const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const memoPrevQuestions = useMemo(() => {
@@ -50,7 +47,7 @@ const useSearchWithAI = () => {
         message?.originalMessage?.metadata?.title?.title || message.text || '',
       )
       if (message.type === 'ai') {
-        if (message?.originalMessage?.include_history === false) {
+        if (message?.originalMessage?.metadata?.includeHistory === false) {
           break
         }
       }
@@ -82,7 +79,7 @@ const useSearchWithAI = () => {
     try {
       console.log('新版Conversation search with AI 开始创建')
       // 进入loading
-      const conversationId = await createConversation('Search')
+      await createConversation('Search')
       updateConversation((prevState) => {
         return {
           ...prevState,
@@ -104,16 +101,7 @@ const useSearchWithAI = () => {
             searchLifetimesQuota - 1,
           )
         } else {
-          await clientChatConversationModifyChatMessages(
-            'add',
-            conversationId,
-            0,
-            [
-              permissionCardToChatMessage(
-                permissionCardMap['SIDEBAR_SEARCH_WITH_AI'],
-              ),
-            ],
-          )
+          await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
           authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI')
           return
         }
@@ -197,7 +185,8 @@ const useSearchWithAI = () => {
           setTimeout(async () => {
             await createSearchWithAIRef.current(
               lastQuestion,
-              lastAIResponse?.originalMessage?.include_history || false,
+              lastAIResponse?.originalMessage?.metadata?.includeHistory ||
+                false,
             )
           }, 200)
         } else {
@@ -241,7 +230,6 @@ const useSearchWithAI = () => {
                   {
                     messageId: lastMessageIdRef.current,
                     originalMessage: {
-                      status: 'complete',
                       metadata: {
                         sources: {
                           status: 'complete',

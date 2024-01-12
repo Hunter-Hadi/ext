@@ -6,10 +6,7 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
 import { usePermissionCard } from '@/features/auth'
-import {
-  permissionCardToChatMessageText,
-  PermissionWrapperCardType,
-} from '@/features/auth/components/PermissionWrapper/types'
+import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper/types'
 import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'

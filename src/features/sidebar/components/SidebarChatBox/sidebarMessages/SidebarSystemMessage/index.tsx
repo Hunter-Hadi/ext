@@ -47,7 +47,7 @@ const BaseSidebarSystemMessage: FC<{
   const [solutionsShow, setSolutionsShow] = useState(false)
   const permissionSceneType =
     message?.extra?.permissionSceneType ||
-    message.meta.permissionSceneType ||
+    message?.meta?.permissionSceneType ||
     ''
   const permissionCard = usePermissionCard(permissionSceneType)
   const isPricingHooksCard =

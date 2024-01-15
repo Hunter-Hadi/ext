@@ -212,6 +212,7 @@ const useShortcutEditorActions = () => {
             ActionChatMessageConfig: {
               type: 'ai',
               text: '',
+              messageId: '',
               originalMessage: {
                 metadata: {
                   shareType: 'search',

@@ -55,6 +55,8 @@ export type IChatMessageExtraMetaType = {
   outputMessageId?: string
   // 告诉Provider是否需要重新生成
   regenerate?: boolean
+  // 是否使用了JsonMode
+  isEnabledJsonMode?: boolean
   [key: string]: any
 }
 

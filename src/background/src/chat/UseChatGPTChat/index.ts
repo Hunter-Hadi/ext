@@ -158,6 +158,9 @@ class UseChatGPTPlusChat extends BaseChat {
         temperature,
       },
       doc_id ? { doc_id } : {},
+      meta?.isEnabledJsonMode
+        ? { response_in_json: true, streaming: false }
+        : {},
     )
     // 当前只有大文件聊天用到这个model
     if (backendAPI === 'chat_with_document') {
@@ -204,46 +207,134 @@ class UseChatGPTPlusChat extends BaseChat {
     let hasError = false
     let conversationId = this.conversation?.id || ''
     let isTokenExpired = false
-    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
-      provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-      method: 'POST',
-      signal,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${this.token}`,
-      },
-      body: JSON.stringify(postBody),
-      onMessage: (message: string) => {
-        try {
-          const messageData = JSON.parse(message as string)
-          if (messageData?.conversation_id) {
-            conversationId = messageData.conversation_id
+    if (postBody.streaming) {
+      await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
+        provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+        method: 'POST',
+        signal,
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+        body: JSON.stringify(postBody),
+        onMessage: (message: string) => {
+          try {
+            const messageData = JSON.parse(message as string)
+            if (messageData?.conversation_id) {
+              conversationId = messageData.conversation_id
+            }
+            if (messageData?.text) {
+              messageResult += messageData.text
+              onMessage &&
+                onMessage({
+                  type: 'message',
+                  done: false,
+                  error: '',
+                  data: {
+                    text: messageResult,
+                    conversationId: conversationId,
+                  },
+                })
+            }
+            log.debug('streaming on message', messageResult)
+          } catch (e) {
+            log.error('parse message.data error: \t', e)
           }
-          if (messageData?.text) {
-            messageResult += messageData.text
+        },
+      })
+        .then()
+        .catch((err) => {
+          hasError = true
+          log.info('streaming end error', err)
+          if (
+            err?.message === 'BodyStreamBuffer was aborted' ||
+            err?.message === 'The user aborted a request.'
+          ) {
             onMessage &&
               onMessage({
-                type: 'message',
-                done: false,
-                error: '',
-                data: {
-                  text: messageResult,
-                  conversationId: conversationId,
-                },
+                type: 'error',
+                error: 'manual aborted request.',
+                done: true,
+                data: { text: '', conversationId },
+              })
+            return
+          }
+          try {
+            const error = JSON.parse(err.message || err)
+            // 判断是不是付费model触发上线
+            if (error.msg && isPermissionCardSceneType(error.msg)) {
+              onMessage &&
+                onMessage({
+                  type: 'error',
+                  error: error.msg,
+                  done: true,
+                  data: { text: '', conversationId },
+                })
+              return
+            }
+            if (error?.code === 401) {
+              isTokenExpired = true
+            }
+            log.error('sse error', err)
+            onMessage &&
+              onMessage({
+                done: true,
+                type: 'error',
+                error:
+                  error.message ||
+                  error.detail ||
+                  'Something went wrong, please try again. If this issue persists, contact us via email.',
+                data: { text: '', conversationId },
+              })
+          } catch (e) {
+            onMessage &&
+              onMessage({
+                done: true,
+                type: 'error',
+                error:
+                  'Something went wrong, please try again. If this issue persists, contact us via email.',
+                data: { text: '', conversationId },
               })
           }
-          log.debug('streaming on message', messageResult)
-        } catch (e) {
-          log.error('parse message.data error: \t', e)
+        })
+      log.info('streaming end success')
+    } else {
+      // 目前来说，能进到这里的一定是jsonMode
+      try {
+        postBody.model_name = 'qq'
+        const response = await fetch(
+          `${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`,
+          {
+            method: 'POST',
+            signal,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${this.token}`,
+            },
+            body: JSON.stringify(postBody),
+          },
+        )
+        const data = await response.json()
+        if (data.status === 'OK' && data.text) {
+          messageResult = data.text
+        } else {
+          hasError = true
+          onMessage &&
+            onMessage({
+              done: true,
+              type: 'error',
+              error:
+                data?.message ||
+                data?.detail ||
+                'Something went wrong, please try again. If this issue persists, contact us via email.',
+              data: { text: '', conversationId },
+            })
         }
-      },
-    })
-      .then()
-      .catch((err) => {
-        log.info('streaming end error', err)
+      } catch (error: any) {
+        hasError = true
         if (
-          err?.message === 'BodyStreamBuffer was aborted' ||
-          err?.message === 'The user aborted a request.'
+          error?.message === 'The user aborted a request.' ||
+          error?.message === 'BodyStreamBuffer was aborted'
         ) {
           onMessage &&
             onMessage({
@@ -254,46 +345,18 @@ class UseChatGPTPlusChat extends BaseChat {
             })
           return
         }
-        hasError = true
-        try {
-          const error = JSON.parse(err.message || err)
-          // 判断是不是付费model触发上线
-          if (error.msg && isPermissionCardSceneType(error.msg)) {
-            onMessage &&
-              onMessage({
-                type: 'error',
-                error: error.msg,
-                done: true,
-                data: { text: '', conversationId },
-              })
-            return
-          }
-          if (error?.code === 401) {
-            isTokenExpired = true
-          }
-          log.error('sse error', err)
-          onMessage &&
-            onMessage({
-              done: true,
-              type: 'error',
-              error:
-                error.message ||
-                error.detail ||
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              data: { text: '', conversationId },
-            })
-        } catch (e) {
-          onMessage &&
-            onMessage({
-              done: true,
-              type: 'error',
-              error:
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              data: { text: '', conversationId },
-            })
-        }
-      })
-    log.info('streaming end success')
+        onMessage &&
+          onMessage({
+            done: true,
+            type: 'error',
+            error:
+              error?.message ||
+              'Something went wrong, please try again. If this issue persists, contact us via email.',
+            data: { text: '', conversationId },
+          })
+        log.error('jsonMode error', error)
+      }
+    }
     if (hasError) {
       if (messageResult === '') {
         // HACK: 后端现在偶尔会返回空字符串，这里做个fallback

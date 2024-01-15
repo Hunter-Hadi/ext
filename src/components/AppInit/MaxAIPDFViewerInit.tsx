@@ -69,6 +69,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
       root.style.top = '120px'
       root.style.left = '50%'
       root.style.transform = 'translateX(-50%)'
+      root.style.zIndex = 'unset'
       console.log('PDFViewerError', delay)
       setDelay(null)
       setRootElement(root as HTMLElement)
@@ -99,7 +100,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
           justifyContent={'center'}
         >
           <UseChatGptIcon sx={{ fontSize: '24px' }} />
-          <Typography fontSize={'28px'} color={'text.primary'}>
+          <Typography fontSize={'28px'} color={'rgba(255,255,255,.87)'}>
             MaxAI.me
           </Typography>
         </Stack>
@@ -107,7 +108,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
           textAlign={'center'}
           fontSize={'40px'}
           fontWeight={700}
-          color={'text.primary'}
+          color={'rgba(255,255,255,.87)'}
         >
           {t('client:pdf_ai_viewer__file_picker__title')}
         </Typography>
@@ -115,7 +116,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
           textAlign={'center'}
           fontSize={'18px'}
           fontWeight={400}
-          color={'text.primary'}
+          color={'rgba(255,255,255,.87)'}
         >
           {t('client:pdf_ai_viewer__file_picker__description')}
         </Typography>
@@ -168,7 +169,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: 'text.primary',
+                color: 'rgba(255,255,255,.87)',
               }}
             >
               <NoteAddOutlinedIcon
@@ -247,6 +248,9 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
       <Stack direction={'row'} alignItems={'center'} gap={1}>
         <LightTooltip
           PopperProps={{
+            sx: {
+              zIndex: 99999999,
+            },
             container: rootElement,
             disablePortal: true,
           }}
@@ -262,7 +266,7 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
                   'client:pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1',
                 )}{' '}
                 <Link
-                  color={'rgba(255,255,255,1)'}
+                  color={'text.primary'}
                   href={'#'}
                   onClick={async (event) => {
                     event.preventDefault()
@@ -300,7 +304,7 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
             }}
             sx={{
               fontSize: '14px',
-              color: 'text.primary',
+              color: 'rgba(255,255,255,.87)',
               height: 32,
               display: 'flex',
               alignItems: 'center',
@@ -314,6 +318,9 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
         {!isAccessPermission && (
           <LightTooltip
             PopperProps={{
+              sx: {
+                zIndex: 99999999,
+              },
               container: rootElement,
               disablePortal: true,
             }}
@@ -329,7 +336,7 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
                     'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1',
                   )}{' '}
                   <Link
-                    color={'rgba(255,255,255,1)'}
+                    color={'text.primary'}
                     href={'#'}
                     onClick={async (event) => {
                       event.preventDefault()
@@ -363,7 +370,7 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
               }}
               sx={{
                 fontSize: '14px',
-                color: 'text.primary',
+                color: 'rgba(255,255,255,.87)',
                 height: 32,
                 display: 'flex',
                 alignItems: 'center',

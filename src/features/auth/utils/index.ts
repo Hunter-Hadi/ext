@@ -101,6 +101,7 @@ export const fetchUserSubscriptionInfo = async (): Promise<
         // roles:[]
         // usage:19
         if (result?.data?.roles && isArray(result.data.roles)) {
+          let is_one_times_pay_user = false
           await setDailyUsageLimitData({
             has_reached_limit: result.data.has_reached_limit,
             limit_value: result.data.limit_value,
@@ -120,6 +121,30 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             role = {
               name: 'free',
               exp_time: 0,
+            }
+          }
+          const { name } = role
+          // 如果角色不是free，判断是否为一次性付费用户
+          if (
+            name !== 'free' &&
+            result.data?.current_period_end &&
+            result.data?.subscription_type &&
+            result.data?.subscription_type !== 'SUBSCRIPTION'
+          ) {
+            // 一次性付费用户
+            is_one_times_pay_user = true
+            // 判断是否过期
+            const expireTime = dayjs(result.data.current_period_end)
+              .utc()
+              .valueOf()
+            const now = dayjs().utc().valueOf()
+            if (expireTime - now > 0) {
+              // 未过期
+              role.exp_time = expireTime
+            } else {
+              // 过期
+              role.exp_time = 0
+              role.name = 'free'
             }
           }
           if (role.name === 'pro' && result.data.has_reached_limit) {
@@ -168,6 +193,11 @@ export const fetchUserSubscriptionInfo = async (): Promise<
           return {
             name: role.name,
             exp_time: role.exp_time,
+            is_one_times_pay_user,
+            // 因为这是另一个接口的字段，所以套着拿
+            subscription_plan_name:
+              (await getChromeExtensionUserInfo(false))
+                ?.subscription_plan_name || 'UNKNOWN',
           }
         }
       }

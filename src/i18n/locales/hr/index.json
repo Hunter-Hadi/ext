@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najnapredniji i najopćenitiji model tvrtke Google. Izgrađen od nule za multimodalnost. Gemini na MaxAI trenutno je u beta fazi i podržava samo tekst i kod, a uskoro će dodati podršku za slike, videozapise i zvuk.",
     "quick_access__hide_button__title": "Sakrij brzi pristup do sljedećeg posjeta",
     "sidebar__top_bar__rewards__title": "Nagrade",
-    "sidebar__top_bar__upgrade__title": "Nadogradnja"
+    "sidebar__top_bar__upgrade__title": "Nadogradnja",
+    "activity__1st_anniversary_2024__title1": "Proslava prvog rođendana MaxAI-a",
+    "activity__1st_anniversary_2024__title2": "Do 50% POPUSTA!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

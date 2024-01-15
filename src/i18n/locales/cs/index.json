@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Nejvýkonnější a nejobecnější model od Googlu. Postavený od základu pro multimodalitu. Gemini na MaxAI je momentálně ve fázi beta verze, podporuje pouze text a kód a brzy přidá podporu pro obrázky, videa a zvuk.",
     "quick_access__hide_button__title": "Skrýt rychlý přístup do další návštěvy",
     "sidebar__top_bar__rewards__title": "Odměny",
-    "sidebar__top_bar__upgrade__title": "Vylepšit"
+    "sidebar__top_bar__upgrade__title": "Vylepšit",
+    "activity__1st_anniversary_2024__title1": "Oslava 1. výročí MaxAI",
+    "activity__1st_anniversary_2024__title2": "Až 50% SLEVA!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

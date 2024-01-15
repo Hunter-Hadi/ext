@@ -9,9 +9,14 @@ export type IUserPlanNameType =
   | 'ELITE_MONTHLY'
   | 'ELITE_YEARLY'
   | 'PRO_ONE_YEAR'
+  | 'UNKNOWN'
+// 这是手动算出来的数据结构，方便插件内用
 export type IUserRole = {
   name: IUserRoleType
   exp_time: number
+  // 是否为一次付费用户
+  is_one_times_pay_user: boolean
+  subscription_plan_name: IUserPlanNameType
 }
 
 export type IUseChatGPTUserInfo = {

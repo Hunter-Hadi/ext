@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "गूगल का सबसे सक्षम और सामान्य मॉडल। बहुमोदता के लिए शून्य से बनाया गया है। MaxAI पर जेमिनी वर्तमान में बीटा चरण में है, केवल पाठ और कोड का समर्थन करता है, और जल्द ही छवियों, वीडियो और ऑडियो का समर्थन जोड़ेंगे।",
     "quick_access__hide_button__title": "अगले दौरे तक त्वरित पहुँच छिपाएँ",
     "sidebar__top_bar__rewards__title": "पुरस्कार",
-    "sidebar__top_bar__upgrade__title": "अपग्रेड"
+    "sidebar__top_bar__upgrade__title": "अपग्रेड",
+    "activity__1st_anniversary_2024__title1": "मैक्सएआई का 1वां वर्षगांठ समारोह",
+    "activity__1st_anniversary_2024__title2": "50% तक की छूट!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

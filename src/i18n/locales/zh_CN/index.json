@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "谷歌最强大且通用的模型。从头开始构建以实现多模态性。MaxAI上的Gemini目前处于测试阶段，仅支持文本和代码，并将很快添加对图像、视频和音频的支持。",
     "quick_access__hide_button__title": "下次访问前隐藏快速访问",
     "sidebar__top_bar__rewards__title": "奖励",
-    "sidebar__top_bar__upgrade__title": "升级"
+    "sidebar__top_bar__upgrade__title": "升级",
+    "activity__1st_anniversary_2024__title1": "MaxAI的一周年庆典",
+    "activity__1st_anniversary_2024__title2": "高达50%折扣！"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

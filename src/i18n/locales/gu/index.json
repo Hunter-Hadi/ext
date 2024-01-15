@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ગૂગલનું સૌથી ક્ષમતાશાળી અને સામાન્ય મોડેલ. બહુમોડાલિટી માટે જમીની પર નિર્માણ કરવામાં આવ્યું છે. મેક્સએઆઈ પર જેમિની હાલમાં બીટા સ્થિતિમાં છે, જે ફક્ત ટેક્સ્ટ અને કોડની આધારપરિત આવરણ સપોર્ટ કરે છે અને તેમની બધી જલદીમાં ચિત્રો, વિડિઓ અને ઓડિયોની સપોર્ટ ઉમેરશે.",
     "quick_access__hide_button__title": "આગામી મુલાકાત સુધી ઝડપી ઍક્સેસ છુપાવો",
     "sidebar__top_bar__rewards__title": "પુરસ્કારો",
-    "sidebar__top_bar__upgrade__title": "અપગ્રેડ"
+    "sidebar__top_bar__upgrade__title": "અપગ્રેડ",
+    "activity__1st_anniversary_2024__title1": "MaxAIની 1મી વાર્ષિકોત્સવ ઉજવણી",
+    "activity__1st_anniversary_2024__title2": "સુધી 50% છૂટ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

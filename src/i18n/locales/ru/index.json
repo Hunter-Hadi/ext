@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Самая мощная и универсальная модель от Google. Создана с нуля для мультимодальности. Gemini на MaxAI в настоящее время находится в бета-фазе и поддерживает только текст и код, вскоре будет добавлена поддержка изображений, видео и аудио.",
     "quick_access__hide_button__title": "Скрыть быстрый доступ до следующего посещения",
     "sidebar__top_bar__rewards__title": "Награды",
-    "sidebar__top_bar__upgrade__title": "Обновить"
+    "sidebar__top_bar__upgrade__title": "Обновить",
+    "activity__1st_anniversary_2024__title1": "Празднование 1-й годовщины MaxAI",
+    "activity__1st_anniversary_2024__title2": "Скидка до 50%!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

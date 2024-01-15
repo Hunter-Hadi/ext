@@ -500,7 +500,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Գուգլիի ամենահզոր և հիմնական մոդելը: Գրված է միայն տեքստի և ծրագրավորման համար: Gemini-ն MaxAI-ում դեռևս բետա փորձարկման փուլում է, աջակցում է միայն տեքստի և ծրագրավորման համար, ինչպես նաև շուկայում շարժվող նկարների, տեսանյութերի և ձայնային աղբյուրների աջակցումը կատարվի շուտով:",
     "quick_access__hide_button__title": "Թաքցնել արագ մուտքը մինչև հաջորդ այցելուն",
     "sidebar__top_bar__rewards__title": "Վարձակալություններ",
-    "sidebar__top_bar__upgrade__title": "Թարմացում"
+    "sidebar__top_bar__upgrade__title": "Թարմացում",
+    "activity__1st_anniversary_2024__title1": "MaxAI-ի 1-րդ տարեվանյան առողջություն",
+    "activity__1st_anniversary_2024__title2": "Մինչև 50% ԶԱՆՈՐՈՒՄ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

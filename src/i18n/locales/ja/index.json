@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googleの最も能力のある汎用モデルです。マルチモダリティに特化して開発されました。MaxAI上のジェミニは現在ベータフェーズであり、テキストとコードのみをサポートしており、近々画像、動画、音声のサポートが追加されます。",
     "quick_access__hide_button__title": "次回訪問までクイックアクセスを非表示にする",
     "sidebar__top_bar__rewards__title": "報酬",
-    "sidebar__top_bar__upgrade__title": "アップグレード"
+    "sidebar__top_bar__upgrade__title": "アップグレード",
+    "activity__1st_anniversary_2024__title1": "MaxAIの1周年記念イベント",
+    "activity__1st_anniversary_2024__title2": "最大50%オフ！"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googlen kyvykkäin ja yleinen malli. Rakennettu alusta asti multimodaalisuutta varten. Gemini MaxAI:ssa on tällä hetkellä beetavaihe, joka tukee vain tekstiä ja koodia, ja pian lisätään tuki kuville, videoille ja äänelle.",
     "quick_access__hide_button__title": "Piilota pikakäyttö seuraavaan vierailuun asti",
     "sidebar__top_bar__rewards__title": "Palkinnot",
-    "sidebar__top_bar__upgrade__title": "Päivitys"
+    "sidebar__top_bar__upgrade__title": "Päivitys",
+    "activity__1st_anniversary_2024__title1": "MaxAI:n 1-vuotisjuhla",
+    "activity__1st_anniversary_2024__title2": "Jopa 50% ALE!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

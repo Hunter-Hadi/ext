@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "ஜெமினி-ப்ரோ அணுகலைப் பயன்படுத்த மேம்படுத்தவும்",
     "quick_access__hide_button__title": "அடுத்த வருகையில் விரைவான அணுகலை மறைக்கவும்",
     "sidebar__top_bar__rewards__title": "வெகுமதி",
-    "sidebar__top_bar__upgrade__title": "மேம்படுத்து"
+    "sidebar__top_bar__upgrade__title": "மேம்படுத்து",
+    "activity__1st_anniversary_2024__title1": "MaxAI இன் 1 ஆண்டு விழா",
+    "activity__1st_anniversary_2024__title2": "மேலும் 50% தள்ளுபடி!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

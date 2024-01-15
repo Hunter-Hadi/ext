@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najbardziej zaawansowany i ogólny model od Google. Zbudowany od podstaw dla multimodalności. Gemini na MaxAI jest obecnie w fazie beta, obsługując tylko tekst i kod, a wkrótce dodane zostaną obsługa obrazów, filmów i dźwięku.",
     "quick_access__hide_button__title": "Ukryj szybki dostęp do następnej wizyty",
     "sidebar__top_bar__rewards__title": "Nagrody",
-    "sidebar__top_bar__upgrade__title": "Aktualizacja"
+    "sidebar__top_bar__upgrade__title": "Aktualizacja",
+    "activity__1st_anniversary_2024__title1": "Uroczystość 1. rocznicy MaxAI",
+    "activity__1st_anniversary_2024__title2": "Nawet do 50% RABATU!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

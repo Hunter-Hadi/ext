@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "قدرتمندترین و کلیت‌دارترین مدل گوگل. از پایه برای چندحالتی ساخته شده است. جمینی در MaxAI در حال حاضر در فاز بتا است و فقط پشتیبانی از متن و کد را دارد و به زودی پشتیبانی از تصاویر، ویدیوها و صدا را اضافه خواهد کرد.",
     "quick_access__hide_button__title": "مخفی کردن دسترسی سریع تا بازدید بعدی",
     "sidebar__top_bar__rewards__title": "پاداش‌ها",
-    "sidebar__top_bar__upgrade__title": "ارتقا"
+    "sidebar__top_bar__upgrade__title": "ارتقا",
+    "activity__1st_anniversary_2024__title1": "جشن سالگرد اولین سالگرد MaxAI",
+    "activity__1st_anniversary_2024__title2": "تا 50٪ تخفیف!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

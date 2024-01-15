@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google galingiausias ir universalus modelis. Sukurtas nuo pat pradžių daugiamodalumui. Gemini MaxAI yra beta fazėje ir kol kas palaiko tik tekstą ir kodą, o netrukus bus pridėta palaikymas vaizdams, vaizdo įrašams ir garso įrašams.",
     "quick_access__hide_button__title": "Paslėpti greitąjį prieigą iki kito apsilankymo",
     "sidebar__top_bar__rewards__title": "Apdovanojimai",
-    "sidebar__top_bar__upgrade__title": "Atnaujinimas"
+    "sidebar__top_bar__upgrade__title": "Atnaujinimas",
+    "activity__1st_anniversary_2024__title1": "MaxAI pirmojo metinių šventė",
+    "activity__1st_anniversary_2024__title2": "Iki 50% NUOLAIDA!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Mô hình phổ biến và tổng quát nhất của Google. Xây dựng từ đầu cho đa chế độ. Gemini trên MaxAI hiện đang ở giai đoạn beta, chỉ hỗ trợ văn bản và mã, và sẽ sớm thêm hỗ trợ cho hình ảnh, video và âm thanh.",
     "quick_access__hide_button__title": "Ẩn truy cập nhanh cho đến lần ghé thăm kế tiếp",
     "sidebar__top_bar__rewards__title": "Phần thưởng",
-    "sidebar__top_bar__upgrade__title": "Nâng cấp"
+    "sidebar__top_bar__upgrade__title": "Nâng cấp",
+    "activity__1st_anniversary_2024__title1": "Lễ kỷ niệm 1 năm của MaxAI",
+    "activity__1st_anniversary_2024__title2": "Giảm giá lên đến 50%!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

@@ -111,13 +111,6 @@ const initChromeExtensionInstalled = () => {
         url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/get-started',
       })
     } else {
-      // @deprecated - 2023-11-20 应该不会再用了
-      // NOTE: 在2.2.3版本更新的时候，弹出https://app.maxai.me/celebrationV2 - 2023-10-24
-      // if (APP_VERSION === '2.2.3') {
-      //   await Browser.tabs.create({
-      //     url: 'https://app.maxai.me/celebrationV2',
-      //   })
-      // }
       await initChromeExtensionUpdated()
       // 保存本地快照
       await setChromeExtensionDBStorageSnapshot()
@@ -188,6 +181,11 @@ const initChromeExtensionUpdated = async () => {
    * @description 2023圣诞节
    */
   const executeChristmasPromotion = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    // 如果已经弹窗过了，就不再弹窗
+    if (onBoardingData.ON_BOARDING_CHRISTMAS_2023_OPEN_LINK) {
+      return
+    }
     const result = await getChromeExtensionUserInfo(true)
     await setChromeExtensionOnBoardingData(
       'ON_BOARDING_CHRISTMAS_2023_OPEN_LINK',
@@ -259,6 +257,42 @@ const initChromeExtensionUpdated = async () => {
       }
     }
   }
+  /**
+   * @since 2024-01-15
+   * @description 2024插件1周年
+   */
+  const executeMaxAIOneYearPromotion = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    // 如果已经弹窗过了，就不再弹窗
+    if (onBoardingData.ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK) {
+      return
+    }
+    const result = await getChromeExtensionUserInfo(true)
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK',
+      true,
+    )
+    if (result?.role) {
+      if (
+        result.role.is_one_times_pay_user ||
+        (result.role.name === 'elite' &&
+          result.role.subscription_plan_name === 'ELITE_YEARLY')
+      ) {
+        // nothing
+      } else {
+        // 弹窗
+        // 跳转去`https://app.maxai.me/anniversary2024`
+        await Browser.tabs.create({
+          url: `https://app.maxai.me/anniversary2024`,
+        })
+      }
+    } else {
+      // 没登录也跳转
+      await Browser.tabs.create({
+        url: `https://app.maxai.me/anniversary2024`,
+      })
+    }
+  }
   if (APP_VERSION === '2.4.3') {
     setTimeout(
       executeBlackFridayPromotion,
@@ -274,6 +308,12 @@ const initChromeExtensionUpdated = async () => {
   // NOTE: 更新的时候统计一下当前占用的内存
   if (APP_VERSION === '2.4.8') {
     analyzeIndexDBMemory()
+  }
+  if (APP_VERSION === '2.5.2') {
+    setTimeout(
+      executeMaxAIOneYearPromotion,
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
   }
   // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
   await ConversationManager.getAllConversation()

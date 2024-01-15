@@ -10,6 +10,7 @@ export type IUserCurrentPlan = {
   name: IUserRoleType
   isNewUser?: boolean
   planName?: IUserPlanNameType
+  isOneTimePayUser: boolean
 }
 
 const useUserInfo = () => {
@@ -50,17 +51,7 @@ const useUserInfo = () => {
   const currentUserPlan = useMemo<IUserCurrentPlan>(() => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
     const planName: IUserPlanNameType | undefined =
-      userInfo?.subscription_plan_name
-    if (userInfo?.roles?.length) {
-      const pro = userInfo.roles.find((item) => item.name === 'pro')
-      if (pro) {
-        name = 'pro'
-      }
-      const elite = userInfo.roles.find((item) => item.name === 'elite')
-      if (elite) {
-        name = 'elite'
-      }
-    }
+      userInfo?.role?.subscription_plan_name || userInfo?.subscription_plan_name
     let isNewUser = false
     if (userInfo?.chatgpt_expires_at) {
       // check is pro gift
@@ -88,6 +79,7 @@ const useUserInfo = () => {
       planName,
       name,
       isNewUser,
+      isOneTimePayUser: userInfo?.role?.is_one_times_pay_user || false,
     }
   }, [userInfo])
   return {

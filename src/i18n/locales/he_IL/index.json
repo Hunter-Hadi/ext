@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "הדגם הכי מוכשר וכללי של Google. מבנה מודלי Gemini על MaxAI נמצא כרגע בשלב הבטא ותומך רק בטקסט ובקוד, ובקרוב יתווסף תמיכה בתמונות, סרטונים ושמע.",
     "quick_access__hide_button__title": "הסתר גישה מהירה עד הביקור הבא",
     "sidebar__top_bar__rewards__title": "תגמולים",
-    "sidebar__top_bar__upgrade__title": "שדרוג"
+    "sidebar__top_bar__upgrade__title": "שדרוג",
+    "activity__1st_anniversary_2024__title1": "חגיגת השנה הראשונה של MaxAI",
+    "activity__1st_anniversary_2024__title2": "עד 50% הנחה!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

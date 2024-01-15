@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's meest capabele en algemene model. Vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI bevindt zich momenteel in de bètafase en ondersteunt alleen tekst en code, en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio.",
     "quick_access__hide_button__title": "Verberg snelle toegang tot volgend bezoek",
     "sidebar__top_bar__rewards__title": "Beloningen",
-    "sidebar__top_bar__upgrade__title": "Upgrade"
+    "sidebar__top_bar__upgrade__title": "Upgrade",
+    "activity__1st_anniversary_2024__title1": "MaxAI's 1-jarig jubileumviering",
+    "activity__1st_anniversary_2024__title2": "Tot 50% KORTING!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

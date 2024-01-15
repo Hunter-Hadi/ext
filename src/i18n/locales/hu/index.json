@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google legképzettebb és általános modellje. Alapvetően multimodalitásra épül. A Gemini a MaxAI-n jelenleg béta fázisban van, csak szöveget és kódot támogat, hamarosan pedig képek, videók és hangok támogatását is hozzáadja.",
     "quick_access__hide_button__title": "Gyors hozzáférés elrejtése a következő látogatásig",
     "sidebar__top_bar__rewards__title": "Jutalmak",
-    "sidebar__top_bar__upgrade__title": "Frissítés"
+    "sidebar__top_bar__upgrade__title": "Frissítés",
+    "activity__1st_anniversary_2024__title1": "MaxAI első évforduló ünneplése",
+    "activity__1st_anniversary_2024__title2": "Akár 50% kedvezmény!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

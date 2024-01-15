@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "El model més capaç i general de Google. Construït des de zero per a multimodalitat. Gemini en MaxAI està actualment en fase beta, suportant només text i codi, i aviat afegirà suport per a imatges, vídeos i àudio.",
     "quick_access__hide_button__title": "Amaga l'accés ràpid fins a la propera visita",
     "sidebar__top_bar__rewards__title": "Recompenses",
-    "sidebar__top_bar__upgrade__title": "Millora"
+    "sidebar__top_bar__upgrade__title": "Millora",
+    "activity__1st_anniversary_2024__title1": "Celebra el primer aniversari de MaxAI",
+    "activity__1st_anniversary_2024__title2": "Fins a un 50% DE DESCOMPTE!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

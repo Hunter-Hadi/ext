@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "ಗೂಗಲ್ ಅತ್ಯುತ್ತಮ ಮತ್ತು ಸಾಮಾನ್ಯ ಮಾದರಿ. ಬಹುಮುಖತೆಗಾಗಿ ಮೊದಲಿನಿಂದ ನಿರ್ಮಿಸಲಾಗಿದೆ. ಮೌಲ್ಯಮಾಪನದ ಹೂಡಿಕೆಯಲ್ಲಿ ಜೆಮಿನಿ ಮೊದಲಾಗಿ ಪಠ್ಯ ಮತ್ತು ಕೋಡ್ ಬೆಂಬಲಿಸುತ್ತದೆ, ಮುಂದೆ ಚಿತ್ರಗಳು, ವೀಡಿಯೊಗಳು ಮತ್ತು ಧ್ವನಿಗಳನ್ನು ಬೆಂಬಲಿಸುವ ಬೆಂಬಲಿಸುತ್ತದೆ.",
     "quick_access__hide_button__title": "ಮುಂದಿನ ಭೇಟಿಗೆ ಹೋಗುವವರೆಗೆ ತ್ವರಿತ ಪ್ರವೇಶವನ್ನು ಮರೆಯಿರಿ",
     "sidebar__top_bar__rewards__title": "ಪ್ರತಿಫಲಗಳು",
-    "sidebar__top_bar__upgrade__title": "ಮೊದಲಿಸು"
+    "sidebar__top_bar__upgrade__title": "ಮೊದಲಿಸು",
+    "activity__1st_anniversary_2024__title1": "MaxAI ಯ ಮೊದಲ ವಾರ್ಷಿಕೋತ್ಸವ",
+    "activity__1st_anniversary_2024__title2": "ಹೆಚ್ಚುವರಿ 50% ಛಾಪಿಸು!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

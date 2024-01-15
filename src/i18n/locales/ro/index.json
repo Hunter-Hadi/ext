@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Cel mai capabil și general model al Google. Construit de la zero pentru multimodalitate. Gemini pe MaxAI se află în prezent în faza beta, susținând doar text și cod, și va adăuga în curând suport pentru imagini, videoclipuri și audio.",
     "quick_access__hide_button__title": "Ascunde acces rapid până la următoarea vizită",
     "sidebar__top_bar__rewards__title": "Recompense",
-    "sidebar__top_bar__upgrade__title": "Upgrade"
+    "sidebar__top_bar__upgrade__title": "Upgrade",
+    "activity__1st_anniversary_2024__title1": "Aniversarea de 1 an a MaxAI",
+    "activity__1st_anniversary_2024__title2": "Reduceri de până la 50%!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

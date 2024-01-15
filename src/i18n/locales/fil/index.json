@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Ang pinakamahusay at pangkalahatang modelo ng Google. Binuo mula sa simula para sa multimodality. Ang Gemini sa MaxAI ay kasalukuyang nasa beta phase, suportado lamang ang teksto at code, at madaragdagan ng suporta para sa mga imahe, bidyo, at audio sa lalong madaling panahon.",
     "quick_access__hide_button__title": "Itago ang mabilis na pag-access hanggang sa susunod na bisita",
     "sidebar__top_bar__rewards__title": "Mga Pabuya",
-    "sidebar__top_bar__upgrade__title": "Pag-upgrade"
+    "sidebar__top_bar__upgrade__title": "Pag-upgrade",
+    "activity__1st_anniversary_2024__title1": "Pagsasaya sa ika-1 anibersaryo ng MaxAI",
+    "activity__1st_anniversary_2024__title2": "Hanggang 50% OFF!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

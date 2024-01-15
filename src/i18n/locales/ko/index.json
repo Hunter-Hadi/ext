@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google의 가장 능력있고 일반적인 모델입니다. 멀티모달리티를 위해 처음부터 구축되었습니다. MaxAI에서의 Gemini는 현재 베타 단계로, 텍스트와 코드만 지원하며 곧 이미지, 비디오 및 오디오 지원이 추가될 예정입니다.",
     "quick_access__hide_button__title": "다음 방문까지 빠른 액세스 숨기기",
     "sidebar__top_bar__rewards__title": "보상",
-    "sidebar__top_bar__upgrade__title": "업그레이드"
+    "sidebar__top_bar__upgrade__title": "업그레이드",
+    "activity__1st_anniversary_2024__title1": "MaxAI의 1주년 기념 행사",
+    "activity__1st_anniversary_2024__title2": "최대 50% 할인!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google యొక్క అత్యంత సామర్థ్యకరమైన మరియు సాధారణ మోడల్. బహుశాఖాత్మకత కోసం నుండి నిర్మించబడినది. MaxAI లో జెమిని ప్రస్తుతం బీటా దశలో ఉంది, మాత్రమే టెక్స్ట్ మరియు కోడ్ మద్దతును మాత్రమే మద్దతుగా అందిస్తుంది, ముందుగా చిత్రాలు, వీడియోలు మరియు ఆడియోకు మద్దతు జోడించబడుతుంది.",
     "quick_access__hide_button__title": "త్వరల ప్రవేశం దాచుకోండి అంటే తరువాత సందర్శన",
     "sidebar__top_bar__rewards__title": "పురస్కారాలు",
-    "sidebar__top_bar__upgrade__title": "అప్గ్రేడ్"
+    "sidebar__top_bar__upgrade__title": "అప్గ్రేడ్",
+    "activity__1st_anniversary_2024__title1": "MaxAI యొక్క 1వ వార్షికోత్సవ ఆచరణ",
+    "activity__1st_anniversary_2024__title2": "50% కూడా తగ్గింపు!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

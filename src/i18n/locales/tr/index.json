@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'ın en yetenekli ve genel modelidir. Çoklu modellik için temelden oluşturulmuştur. MaxAI üzerindeki Gemini şu anda beta aşamasındadır ve yalnızca metin ve kod desteği sunmaktadır. Yakında resim, video ve ses desteği de ekleyecektir.",
     "quick_access__hide_button__title": "Sonraki ziyarete kadar hızlı erişimi gizle",
     "sidebar__top_bar__rewards__title": "Ödüller",
-    "sidebar__top_bar__upgrade__title": "Yükseltme"
+    "sidebar__top_bar__upgrade__title": "Yükseltme",
+    "activity__1st_anniversary_2024__title1": "MaxAI'nin 1. yıl dönümü kutlaması",
+    "activity__1st_anniversary_2024__title2": "Tüm ürünlerde %50'ye varan İNDİRİM!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

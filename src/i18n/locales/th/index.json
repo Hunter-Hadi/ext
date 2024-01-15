@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "รุ่นที่สามารถทำหลายอย่างได้มากที่สุดและมีความสามารถทั่วไป สร้างขึ้นมาเพื่อใช้งานแบบมัลติโมดัลิตี้  Gemini บน MaxAI อยู่ในช่วงเบต้าเท่านั้น รองรับเฉพาะข้อความและโค้ด และเร็ว ๆ นี้จะเพิ่มการสนับสนุนสำหรับภาพถ่าย วิดีโอ และเสียง",
     "quick_access__hide_button__title": "ซ่อนการเข้าถึงด่วนจนกว่าครั้งถัดไป",
     "sidebar__top_bar__rewards__title": "รางวัล",
-    "sidebar__top_bar__upgrade__title": "อัพเกรด"
+    "sidebar__top_bar__upgrade__title": "อัพเกรด",
+    "activity__1st_anniversary_2024__title1": "การฉลองครบรอบปีที่ 1 ของ MaxAI",
+    "activity__1st_anniversary_2024__title2": "สูงสุดถึง 50% ลด!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

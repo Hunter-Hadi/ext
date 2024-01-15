@@ -503,7 +503,9 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Model paling canggih dan umum dari Google. Dibangun dari awal untuk multimodalitas. Gemini di MaxAI saat ini dalam fase beta, hanya mendukung teks dan kode, dan akan segera menambahkan dukungan untuk gambar, video, dan audio.",
     "quick_access__hide_button__title": "Sembunyikan akses cepat hingga kunjungan berikutnya",
     "sidebar__top_bar__rewards__title": "Hadiah",
-    "sidebar__top_bar__upgrade__title": "Tingkatkan"
+    "sidebar__top_bar__upgrade__title": "Tingkatkan",
+    "activity__1st_anniversary_2024__title1": "Perayaan ulang tahun MaxAI yang pertama",
+    "activity__1st_anniversary_2024__title2": "Diskon hingga 50%!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

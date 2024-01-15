@@ -113,6 +113,35 @@ const useHandlePDFViewerError = () => {
       initRef.current = true
       setDelay(null)
       const dataUrl = root.getAttribute('data-url')
+      const win = window as any
+      if (win.PDFViewerApplication) {
+        Browser.extension.isAllowedFileSchemeAccess().then((isAllowed) => {
+          if (isAllowed) {
+            const baseUrl = win.PDFViewerApplication.baseUrl
+            if (baseUrl) {
+              win.PDFViewerApplication.open({
+                url: baseUrl,
+              })
+                .then()
+                .catch((error: any) => {
+                  if (
+                    error.name === 'UnexpectedResponseException' ||
+                    error.name === 'MissingPDFException'
+                  ) {
+                    // 说明文件不存在
+                    win.PDFViewerApplication.open({
+                      url: encodeURIComponent(baseUrl),
+                    })
+                      .then()
+                      .catch((error: any) => {
+                        // TODO: 要更新UI了
+                      })
+                  }
+                })
+            }
+          }
+        })
+      }
       render(
         <Stack
           spacing={2}

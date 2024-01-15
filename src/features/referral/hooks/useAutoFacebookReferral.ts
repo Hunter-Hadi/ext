@@ -1,21 +1,55 @@
 import { useCallback } from 'react'
 
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import ReferralConfig from '@/features/referral/config'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 
 const useAutoFacebookReferral = () => {
   const { userInfo } = useUserInfo()
-  const { setShortCuts, runShortCuts, loading, shortCutsEngineRef } =
-    useShortCutsWithMessageChat()
+  const { askAIWIthShortcuts, shortCutsEngineRef, loading } = useClientChat()
   const autoFacebookReferral = useCallback(async () => {
     if (!loading) {
       const postText = ReferralConfig.inviteLink(userInfo?.referral_code || '')
-      setShortCuts([
+
+      const listener: IShortcutEngineListenerType = (event, data) => {
+        const action = data?.action as Action
+        if (
+          event === 'afterRunAction' &&
+          action?.type === 'SET_VARIABLE' &&
+          action.parameters?.VariableName === 'AutoTwitterReferralResult'
+        ) {
+          const isSuccess = action.parameters.WFFormValues?.Value === true
+          sendLarkBotMessage(
+            `[Referral] One-click button [Facebook] ${
+              isSuccess ? 'Success' : 'Fail'
+            }`,
+            JSON.stringify(
+              {
+                email: userInfo?.email || 'unknown',
+                success: isSuccess,
+              },
+              null,
+              4,
+            ),
+            {
+              uuid: '608156c7-e65d-4a69-a055-6c10a6ba7217',
+            },
+          )
+            .then()
+            .catch()
+          if (isSuccess) {
+            clientFetchMaxAIAPI('/user/complete_referral', {
+              referral_types: ['FACEBOOK_SHARE'],
+            }).then()
+          }
+        }
+      }
+      shortCutsEngineRef.current?.addListener(listener)
+      await askAIWIthShortcuts([
         {
           type: 'OPEN_URLS',
           parameters: {
@@ -128,46 +162,11 @@ const useAutoFacebookReferral = () => {
           },
         },
       ])
-      const listener: IShortcutEngineListenerType = (event, data) => {
-        const action = data?.action as Action
-        if (
-          event === 'afterRunAction' &&
-          action?.type === 'SET_VARIABLE' &&
-          action.parameters?.VariableName === 'AutoTwitterReferralResult'
-        ) {
-          const isSuccess = action.parameters.WFFormValues?.Value === true
-          sendLarkBotMessage(
-            `[Referral] One-click button [Facebook] ${
-              isSuccess ? 'Success' : 'Fail'
-            }`,
-            JSON.stringify(
-              {
-                email: userInfo?.email || 'unknown',
-                success: isSuccess,
-              },
-              null,
-              4,
-            ),
-            {
-              uuid: '608156c7-e65d-4a69-a055-6c10a6ba7217',
-            },
-          )
-            .then()
-            .catch()
-          if (isSuccess) {
-            clientFetchMaxAIAPI('/user/complete_referral', {
-              referral_types: ['FACEBOOK_SHARE'],
-            }).then()
-          }
-        }
-      }
-      shortCutsEngineRef.current?.addListener(listener)
-      await runShortCuts()
       shortCutsEngineRef.current?.removeListener(listener)
       return true
     }
     return false
-  }, [loading, runShortCuts, setShortCuts, userInfo?.referral_code])
+  }, [loading, askAIWIthShortcuts, userInfo?.referral_code])
   return {
     autoFacebookReferral,
     autoFacebookReferralLoading: loading,

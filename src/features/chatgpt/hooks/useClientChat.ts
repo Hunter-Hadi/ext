@@ -2,11 +2,13 @@ import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessage } from '@/features/chatgpt/types'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
 
 export interface IAskAIQuestion
@@ -17,12 +19,14 @@ export interface IAskAIQuestion
 
 const useClientChat = () => {
   const { currentUserPlan } = useUserInfo()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
+    shortCutsEngineRef,
     setShortCuts,
     runShortCuts,
     stopShortCuts,
     getParams,
-  } = useShortCutsWithMessageChat()
+  } = useShortCutsEngine()
   const {
     currentConversationIdRef,
     createConversation,
@@ -44,12 +48,24 @@ const useClientChat = () => {
   /**
    * 问AI问题
    * @param actions
-   * @param params
+   * @param options
    */
   const askAIWIthShortcuts = async (
     actions: ISetActionsType,
-    params?: IShortCutsParameter[],
+    options?: {
+      // 本次运行的shortcuts的参数
+      overwriteParameters?: IShortCutsParameter[]
+      // 是否需要保存最后一次运行的shortcuts
+      isSaveLastRunShortcuts?: boolean
+      // 是否需要打开ChatBox
+      isOpenSidebarChatBox?: boolean
+    },
   ) => {
+    const {
+      overwriteParameters = [],
+      isSaveLastRunShortcuts = true,
+      isOpenSidebarChatBox = false,
+    } = options || {}
     // 1.在所有对话之前，确保先有conversationId
     let conversationId = currentConversationIdRef.current
     if (!conversationId) {
@@ -70,11 +86,18 @@ const useClientChat = () => {
       await pushPricingHookMessage('PDF_AI_VIEWER')
       return
     }
-    // 3. 保存最后一次运行的shortcuts
-    await saveLastRunShortcuts(conversationId, actions, params)
+    // 判断是否有不保存最后运行的Shortcuts的Action存在
+    const isNeedSaveLastRunShortcuts = actions.find((action) => {
+      const notSaveActionType: ActionIdentifier[] = ['SET_VARIABLES_MODAL']
+      return notSaveActionType.includes(action.type)
+    })
+    if (isSaveLastRunShortcuts && !isNeedSaveLastRunShortcuts) {
+      // 3. 保存最后一次运行的shortcuts
+      await saveLastRunShortcuts(conversationId, actions, overwriteParameters)
+    }
     // 4. 运行shortcuts
     setShortCuts(actions)
-    await runShortCuts(false, params)
+    await runShortCuts(isOpenSidebarChatBox, overwriteParameters)
   }
   /**
    * 重新生成最后一次运行的shortcuts
@@ -118,13 +141,11 @@ const useClientChat = () => {
             }
             return action
           })
-          setShortCuts(waitRunActions)
-          await saveLastRunShortcuts(
-            currentConversationId,
-            waitRunActions,
-            lastRunActionsParams,
-          )
-          await runShortCuts(false, lastRunActionsParams)
+          await askAIWIthShortcuts(waitRunActions, {
+            overwriteParameters: lastRunActionsParams,
+            isSaveLastRunShortcuts: false,
+            isOpenSidebarChatBox: false,
+          })
         } else {
           // 理论上不会进来, 兼容旧代码用的
           console.log('regenerate actions is empty')
@@ -244,11 +265,13 @@ const useClientChat = () => {
   }
 
   return {
+    shortCutsEngineRef,
     askAIQuestion,
     askAIWIthShortcuts,
     regenerate,
     stopGenerate,
     continueChat,
+    loading: smoothConversationLoading,
   }
 }
 export default useClientChat

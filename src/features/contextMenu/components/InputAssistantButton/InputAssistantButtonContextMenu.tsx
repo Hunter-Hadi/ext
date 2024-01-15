@@ -20,11 +20,11 @@ import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chr
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -59,7 +59,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { loading } = useRecoilValue(ChatGPTConversationState)
-  const { setShortCuts, runShortCuts } = useShortCutsWithMessageChat()
+  const { askAIWIthShortcuts } = useClientChat()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
     if (permissionWrapperCardSceneType && currentUserPlan.name === 'free') {
@@ -100,13 +100,13 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
             },
           },
         })
-        await setShortCuts(actions)
-        await runShortCuts(true)
+        await askAIWIthShortcuts(actions, {
+          isOpenSidebarChatBox: true,
+        })
       }
     },
     [
-      setShortCuts,
-      runShortCuts,
+      askAIWIthShortcuts,
       loading,
       hasPermission,
       permissionWrapperCardSceneType,

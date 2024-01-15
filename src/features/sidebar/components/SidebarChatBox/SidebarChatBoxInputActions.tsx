@@ -81,9 +81,6 @@ const SidebarChatBoxInputActions: FC<{
       >
         {currentSidebarConversationType === 'Search' &&
           !smoothConversationLoading && <SearchWithAICopilotToggle />}
-        {/*<DevContent>*/}
-        {/*  <TestAllActionsButton />*/}
-        {/*</DevContent>*/}
         <PromptLibraryIconButton
           sx={{
             visibility:

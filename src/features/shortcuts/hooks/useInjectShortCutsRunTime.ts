@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
@@ -21,7 +21,7 @@ const useInjectShortCutsRunTime = () => {
     taskId: '',
     actions: [],
   })
-  const { setShortCuts, runShortCuts, loading } = useShortCutsWithMessageChat()
+  const { askAIWIthShortcuts, loading } = useClientChat()
   const isRunningActionsRef = useRef(false)
   useEffect(() => {
     if (
@@ -30,8 +30,7 @@ const useInjectShortCutsRunTime = () => {
       !isRunningActionsRef.current
     ) {
       isRunningActionsRef.current = true
-      setShortCuts(waitRunActionsConfig.actions)
-      runShortCuts()
+      askAIWIthShortcuts(waitRunActionsConfig.actions)
         .then(() => {
           window.postMessage(
             {
@@ -69,12 +68,7 @@ const useInjectShortCutsRunTime = () => {
           isRunningActionsRef.current = false
         })
     }
-  }, [
-    currentSidebarConversationType,
-    waitRunActionsConfig,
-    setShortCuts,
-    runShortCuts,
-  ])
+  }, [currentSidebarConversationType, waitRunActionsConfig, askAIWIthShortcuts])
 
   // listen post message from html
   useEffect(() => {
@@ -128,6 +122,6 @@ const useInjectShortCutsRunTime = () => {
     return () => {
       window.removeEventListener('message', listener)
     }
-  }, [loading, setShortCuts, runShortCuts])
+  }, [loading, askAIWIthShortcuts])
 }
 export default useInjectShortCutsRunTime

@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID } from '@/features/common/constants'
 import { MaxAIPostMessageWithWebPageType } from '@/features/common/utils/postMessageToCRX'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
@@ -31,11 +31,7 @@ const useInitWebPageMessageChannel = () => {
     taskId: '',
     actions: [],
   })
-  const {
-    setShortCuts,
-    runShortCuts,
-    shortCutsEngineRef,
-  } = useShortCutsWithMessageChat()
+  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
   const isRunningActionsRef = useRef(false)
   const responseDataToPage = (
     taskId: string,
@@ -62,8 +58,9 @@ const useInitWebPageMessageChannel = () => {
       !isRunningActionsRef.current
     ) {
       isRunningActionsRef.current = true
-      setShortCuts(waitRunActionsConfig.actions)
-      runShortCuts(true)
+      askAIWIthShortcuts(waitRunActionsConfig.actions, {
+        isOpenSidebarChatBox: true
+      })
         .then((result) => {
           console.log(shortCutsEngineRef)
           responseDataToPage(
@@ -96,12 +93,7 @@ const useInitWebPageMessageChannel = () => {
           isRunningActionsRef.current = false
         })
     }
-  }, [
-    currentSidebarConversationType,
-    waitRunActionsConfig,
-    setShortCuts,
-    runShortCuts,
-  ])
+  }, [currentSidebarConversationType, waitRunActionsConfig, askAIWIthShortcuts])
 
   useEffect(() => {
     const listener = async (event: MessageEvent) => {

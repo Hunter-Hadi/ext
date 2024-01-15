@@ -16,6 +16,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import TooltipButton from '@/components/TooltipButton'
 import { isProduction } from '@/constants'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
@@ -24,7 +25,6 @@ import {
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
@@ -77,12 +77,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     askChatGPTActionParameters,
   } = props
   const { createConversation } = useClientConversation()
-  const {
-    setShortCuts,
-    runShortCuts,
-    loading,
-    shortCutsEngineRef,
-  } = useShortCutsWithMessageChat()
+  const { askAIWIthShortcuts, loading, shortCutsEngineRef } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
@@ -258,8 +253,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           },
         })
       }
-      await setShortCuts(runActions)
-      runShortCuts()
+      await askAIWIthShortcuts(runActions)
         .then(() => {
           // done
           const error = shortCutsEngineRef.current?.getNextAction()?.error || ''

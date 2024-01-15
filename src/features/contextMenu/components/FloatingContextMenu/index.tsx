@@ -75,7 +75,6 @@ import {
   getDraftContextMenuTypeById,
   isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
@@ -210,7 +209,7 @@ const FloatingContextMenu: FC<{
   const [inputValue, setInputValue] = useState('')
   // 记录最后选择的contextMenu并发送log
   const lastRecordContextMenuRef = useRef<IContextMenuItem | null>(null)
-  const { loading, shortCutsEngineRef } = useShortCutsWithMessageChat()
+  const { loading, shortCutsEngineRef } = useClientChat()
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,

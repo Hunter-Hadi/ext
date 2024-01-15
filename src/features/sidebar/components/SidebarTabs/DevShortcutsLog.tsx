@@ -7,13 +7,13 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { IAction } from '@/features/shortcuts/types/Action'
 const DevShortcutsLog: FC = () => {
   const boxRef = useRef<HTMLDivElement>(null)
   const [runningActions, setRunningActions] = useState<IAction[]>([])
-  const { shortCutsEngineRef } = useShortCutsWithMessageChat()
+  const { shortCutsEngineRef } = useClientChat()
   const scrollToBottom = debounce(() => {
     if (boxRef.current) {
       const loadingAction = boxRef.current?.querySelector(

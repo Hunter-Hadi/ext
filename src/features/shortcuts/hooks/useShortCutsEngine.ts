@@ -22,7 +22,7 @@ const clientMessageChannelEngine = new ContentScriptConnectionV2({
 const shortcutsMessageChannelEngine = new ContentScriptConnectionV2({
   runtime: 'shortcut',
 })
-const useShortCutsWithMessageChat = () => {
+const useShortCutsEngine = () => {
   const { isLogin } = useAuthLogin()
   const getParams = useShortCutsParameters()
   const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
@@ -40,13 +40,13 @@ const useShortCutsWithMessageChat = () => {
   }
   const runShortCuts = useCallback(
     async (
-      needShowChatBox = false,
+      isOpenSidebarChatBox = false,
       overwriteParameters?: IShortCutsParameter[],
     ) => {
       if (!shortCutsEngineRef.current) {
         return
       }
-      if (!isLogin || (needShowChatBox && !isShowChatBox())) {
+      if (!isLogin || (isOpenSidebarChatBox && !isShowChatBox())) {
         showChatBox()
       }
       try {
@@ -116,4 +116,4 @@ const useShortCutsWithMessageChat = () => {
     resetShortCuts,
   }
 }
-export { useShortCutsWithMessageChat }
+export { useShortCutsEngine }

@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { MagicBookIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
@@ -18,7 +19,6 @@ import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import { IPromptListType } from '@/features/prompt_library/types'
-import { useShortCutsWithMessageChat } from '@/features/shortcuts/hooks/useShortCutsWithMessageChat'
 import { promptLibraryCardDetailDataToActions } from '@/features/shortcuts/utils/promptInterpreter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -27,11 +27,6 @@ const PromptLibraryIconButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
-  const {
-    setShortCuts,
-    runShortCuts,
-    shortCutsEngineRef,
-  } = useShortCutsWithMessageChat()
   const { t } = useTranslation(['prompt_library'])
   const {
     promptLibraryOpen,
@@ -41,6 +36,7 @@ const PromptLibraryIconButton: FC<{
     selectedPromptLibraryCard,
     cancelSelectPromptLibraryCard,
   } = usePromptLibrary()
+  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
   const { updateSidebarConversationType } = useSidebarSettings()
   const { isOpenPromptLibraryEditForm } = usePromptActions()
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
@@ -137,8 +133,7 @@ const PromptLibraryIconButton: FC<{
       if (actions && shortCutsEngineRef.current?.status === 'idle') {
         updateSidebarConversationType('Chat')
         cancelSelectPromptLibraryCard()
-        setShortCuts(actions)
-        runShortCuts().then().catch()
+        askAIWIthShortcuts(actions).then().catch()
       }
     }
   }, [selectedPromptLibraryCard])

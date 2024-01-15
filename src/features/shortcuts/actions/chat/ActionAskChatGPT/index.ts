@@ -287,6 +287,7 @@ export class ActionAskChatGPT extends Action {
                 errorMessage = `Log into ChatGPT web app and pass Cloudflare check. We recommend enabling our new [ChatGPT Stable Mode](key=options&query=#chatgpt-stable-mode) to avoid frequent interruptions and network errors.`
               }
               if (errorMessage === 'manual aborted request.') {
+                errorMessage = ''
                 // 手动取消的请求不计入错误
                 return
               } else {

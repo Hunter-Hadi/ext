@@ -1,6 +1,6 @@
+import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
@@ -8,7 +8,6 @@ import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useState } from 'react'
-import { render } from 'react-dom'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 import Browser from 'webextension-polyfill'
@@ -16,6 +15,7 @@ import Browser from 'webextension-polyfill'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
+import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import { useAuthLogin } from '@/features/auth'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
@@ -44,7 +44,6 @@ import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
 import Log from '@/utils/Log'
-
 const log = new Log('AppInit')
 
 const UseChatGPTWebPageJumpToShortCuts = () => {
@@ -97,179 +96,183 @@ export const AppSettingsInit = () => {
   return <></>
 }
 
-const useHandlePDFViewerError = () => {
+const MAXAIPDFAIViewerErrorAlert: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const [delay, setDelay] = React.useState<number | null>(null)
-  const initRef = React.useRef(false)
-  useEffectOnce(() => {
-    if (window.location.href.includes(Browser.runtime.id)) {
-      if (window.location.href.includes('/pages/pdf/web/viewer.html')) {
-        setDelay(100)
+  const [show, setShow] = useState(false)
+  const [delay, setDelay] = useState<number | null>(100)
+  const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
+  const [isDragOver, setIsDragOver] = useState(false)
+
+  const handleDragEnter = (event: any) => {
+    event.preventDefault()
+    setIsDragOver(true)
+  }
+
+  const handleDragOver = (event: any) => {
+    event.preventDefault()
+  }
+
+  const handleDragLeave = () => {
+    setIsDragOver(false)
+  }
+
+  const handleDrop = (event: any) => {
+    event.preventDefault()
+    setIsDragOver(false)
+
+    const files = event.dataTransfer.files as FileList
+    // 处理拖放的文件
+    console.log(files)
+    const dropPDFFile = Array.from(files).find((file) => {
+      return file.type === 'application/pdf' || file.name.endsWith('.pdf')
+    })
+    if (dropPDFFile) {
+      const pdfLib = (window as any).PDFViewerApplication
+      // open pdf file
+      if (pdfLib) {
+        pdfLib.open({
+          url: URL.createObjectURL(dropPDFFile),
+          originalUrl: dropPDFFile.name,
+        })
       }
     }
-  })
+  }
+
   useInterval(() => {
-    const root = document.body.querySelector('#usechatgptPDFViewerErrorAlert')
+    const root = document.body.querySelector(
+      '#usechatgptPDFViewerErrorAlert',
+    ) as HTMLElement
     if (root) {
-      if (initRef.current) {
-        return
-      }
-      console.log('PDFViewerError', delay, initRef.current)
-      initRef.current = true
+      root.style.top = '120px'
+      root.style.left = '50%'
+      root.style.transform = 'translateX(-50%)'
+      console.log('PDFViewerError', delay)
       setDelay(null)
-      const dataUrl = root.getAttribute('data-url')
-      render(
-        <Stack
-          spacing={2}
-          p={2}
-          maxWidth={'1088px'}
-          width={'100vw'}
-          sx={{
-            boxSizing: 'border-box',
-          }}
-        >
-          <Stack
-            direction={'row'}
-            alignItems={'center'}
-            justifyContent="center"
-            spacing={1.4}
-            color="#fff"
-          >
-            <img
-              style={{ flexShrink: 0, alignSelf: 'center' }}
-              height={48}
-              width={48}
-              src={'/assets/USE_CHAT_GPT_AI/icons/maxai_48_normal.png'}
-            />
-            {/* <UseChatGptIcon sx={{ fontSize: 48 }} /> */}
-            <Typography variant={'body1'} fontSize={18} fontWeight={700}>
-              {t('client:pdf__info_card__title')}
-            </Typography>
-          </Stack>
-          <Stack alignItems={'center'} spacing={0}>
-            <Typography
-              flex={1}
-              color={'rgba(255,255,255,0.85)'}
-              fontSize={'14px'}
-              sx={{
-                overflowWrap: 'break-word',
-              }}
-            >
-              {t('client:pdf__info_card__access_permission__description1')}
-              <Link
-                color={'rgba(255,255,255,1)'}
-                href={'#'}
-                onClick={async (event) => {
-                  event.preventDefault()
-                  await chromeExtensionClientOpenPage({
-                    key: 'manage_extension',
-                  })
-                  window.close()
-                }}
-              >
-                {`chrome://extensions`}
-              </Link>
-              {` ${t(
-                'client:pdf__info_card__access_permission__description2',
-              )} `}
-            </Typography>
-            <Typography
-              flex={1}
-              color={'rgba(255,255,255,0.85)'}
-              fontSize={'14px'}
-              sx={{
-                // overflowWrap: 'break-word',
-                width: '100%',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                mb: 2,
-              }}
-            >
-              {dataUrl}
-            </Typography>
-            <Box mb={2}>
-              <img
-                style={{ flexShrink: 0, alignSelf: 'center' }}
-                height={156}
-                width={468}
-                src={getChromeExtensionAssetsURL('/images/pdf/guide-1.gif')}
-              />
-            </Box>
-            <Button
-              disableElevation
-              size={'small'}
-              variant={'contained'}
-              onClick={async (event) => {
-                event.preventDefault()
-                await chromeExtensionClientOpenPage({
-                  key: 'manage_extension',
-                })
-                window.close()
-              }}
-              sx={{
-                height: '56px',
-                backgroundColor: '#7601D3',
-                color: '#fff',
-                fontSize: '18px',
-                textTransform: 'none',
-                px: 3,
-                '&:hover': {
-                  backgroundColor: '#7601D3',
-                  color: '#fff',
-                },
-              }}
-            >
-              {t('client:pdf__info_card__access_permission__button')}
-            </Button>
-          </Stack>
-          <Divider
-            sx={{
-              color: '#fff',
-            }}
-          >
-            {t('common:or')}
-          </Divider>
-          <Stack spacing={2}>
-            <Typography
-              flex={1}
-              color={'rgba(255,255,255,0.85)'}
-              fontSize={'14px'}
-              sx={{
-                overflowWrap: 'break-word',
-              }}
-            >
-              {t('client:pdf__info_card__disabled__description1')}
-              <Link
-                color={'rgba(255,255,255,1)'}
-                href={'#'}
-                onClick={async (event) => {
-                  event.preventDefault()
-                  event.stopPropagation()
-                  await chromeExtensionClientOpenPage({
-                    key: 'options',
-                    query: '?id=pdf-viewer#/appearance',
-                  })
-                  window.close()
-                }}
-              >
-                {t('client:pdf__info_card__disabled__description2')}
-              </Link>
-              {t('client:pdf__info_card__disabled__description3')}
-            </Typography>
-            <img
-              style={{ flexShrink: 0, alignSelf: 'center' }}
-              height={156}
-              width={468}
-              src={getChromeExtensionAssetsURL('/images/pdf/guide-2.gif')}
-            />
-          </Stack>
-        </Stack>,
-        root,
-      )
+      setRootElement(root as HTMLElement)
+      setShow(true)
       return
     }
   }, delay)
+  if (!show || !rootElement) {
+    return null
+  }
+  return (
+    <DynamicComponent
+      rootContainer={rootElement}
+      customElementName={'maxai-pdf-ai-viewer-error-alert'}
+    >
+      <Stack
+        gap={4}
+        width={'100%'}
+        sx={{
+          boxSizing: 'border-box',
+        }}
+      >
+        <Stack
+          direction={'row'}
+          alignItems={'center'}
+          gap={1}
+          justifyContent={'center'}
+        >
+          <UseChatGptIcon sx={{ fontSize: '24px' }} />
+          <Typography fontSize={'28px'} color={'text.primary'}>
+            MaxAI.me
+          </Typography>
+        </Stack>
+        <Typography
+          textAlign={'center'}
+          fontSize={'40px'}
+          fontWeight={700}
+          color={'text.primary'}
+        >
+          {t('client:pdf_ai_viewer__file_picker__title')}
+        </Typography>
+        <Typography
+          textAlign={'center'}
+          fontSize={'18px'}
+          fontWeight={400}
+          color={'text.primary'}
+        >
+          {t('client:pdf_ai_viewer__file_picker__description')}
+        </Typography>
+        <Stack
+          onDragEnter={handleDragEnter}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          width={'100%'}
+          height={300}
+          justifyContent={'center'}
+          alignItems={'center'}
+          gap={2}
+          sx={{
+            borderRadius: '8px',
+            padding: isDragOver ? '0' : '1px',
+            border: isDragOver ? '2px dashed' : '1px dashed',
+            borderColor: 'primary.main',
+            bgcolor: 'rgba(244,235,251,1)',
+            // background:
+            //   'linear-gradient(0deg, rgba(118, 1, 211, 0.08) 0%, rgba(118, 1, 211, 0.08) 100%), #FFF;',
+          }}
+        >
+          <img
+            width={64}
+            height={64}
+            src={getChromeExtensionAssetsURL('/images/pdf/pdf-icon.png')}
+            alt={'pdf-icon'}
+          />
+          <Box
+            sx={{
+              borderRadius: '8px',
+              bgcolor: 'background.paper',
+            }}
+          >
+            <Button
+              onClick={(event) => {
+                event.stopPropagation()
+                ;(document.querySelector(
+                  '#openFile',
+                ) as HTMLButtonElement)?.click()
+              }}
+              variant={'contained'}
+              sx={{
+                position: 'relative',
+                width: '320px',
+                gap: 1,
+                px: 4,
+                py: 2,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'text.primary',
+              }}
+            >
+              <NoteAddOutlinedIcon
+                sx={{
+                  fontSize: '24px',
+                  color: 'inherit',
+                }}
+              />
+              <Typography fontSize={'16px'} fontWeight={600}>
+                {t('client:pdf_ai_viewer__file_picker__button__title')}
+              </Typography>
+              <Typography
+                fontSize={'14px'}
+                fontWeight={400}
+                color={'rgba(0,0,0,.6)'}
+                sx={{
+                  position: 'absolute',
+                  bottom: -24,
+                }}
+              >
+                {t('client:pdf_ai_viewer__file_picker__button__description')}
+              </Typography>
+            </Button>
+          </Box>
+        </Stack>
+      </Stack>
+    </DynamicComponent>
+  )
 }
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -288,7 +291,7 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }))
 
-const PDFAIViewerTopBarButtonGroup: FC = () => {
+const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
@@ -315,7 +318,7 @@ const PDFAIViewerTopBarButtonGroup: FC = () => {
   return (
     <DynamicComponent
       rootContainer={rootElement}
-      customElementName={'maxai-pdf-viewer-top-bar-button-group'}
+      customElementName={'maxai-pdf-ai-viewer-top-bar-button-group'}
     >
       <Stack direction={'row'} alignItems={'center'} gap={1}>
         <LightTooltip
@@ -346,9 +349,13 @@ const PDFAIViewerTopBarButtonGroup: FC = () => {
                     })
                   }}
                 >
-                  {t('client:pdf__info_card__disabled__description2')}
+                  {t(
+                    'client:pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2',
+                  )}
                 </Link>
-                {t('client:pdf__info_card__disabled__description3')}
+                {t(
+                  'client:pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3',
+                )}
               </Typography>
               <img
                 style={{ flexShrink: 0, alignSelf: 'center' }}
@@ -458,7 +465,6 @@ const AppInit = () => {
   useInjectShortCutsRunTime()
   useInitWebPageMessageChannel()
   useInitClientConversationMap()
-  useHandlePDFViewerError()
   useInitSidebar()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
@@ -482,7 +488,8 @@ const AppInit = () => {
   useInitRangy()
   return (
     <>
-      <PDFAIViewerTopBarButtonGroup />
+      <MAXAIPDFAIViewerErrorAlert />
+      <MaxAIPDFAIViewerTopBarButtonGroup />
       <ContextMenuRoot />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />

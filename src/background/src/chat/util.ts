@@ -308,11 +308,15 @@ export const processAskAIParameters = async (
   // 聊天记录生成
   // 如果有includeHistory，那么需要生成聊天记录
   if (includeHistory) {
+    // 当前会话使用的Model的maxTokens
+    let conversationUsingModelMaxTokens = conversation.meta.maxTokens || 4096
     // system prompt占用的tokens
     let systemPromptTokens = (
       await getTextTokens(conversation.meta.systemPrompt || '')
     ).length
     if (conversation?.meta?.docId) {
+      // NOTE: 因为docId用的是chat_with_document，model写死是gpt-3.5-16k-turbo, 所以上限是12k
+      conversationUsingModelMaxTokens = 12000
       // 因为有docId不会带上systemPrompt，所以不用计算tokens
       systemPromptTokens = 0
     }
@@ -329,7 +333,7 @@ export const processAskAIParameters = async (
      * 最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
      */
     const maxHistoryTokens =
-      (conversation.meta.maxTokens || 4096) -
+      conversationUsingModelMaxTokens -
       systemPromptTokens -
       questionPromptTokens -
       1000 // 预留1000个token给ai生成的答案

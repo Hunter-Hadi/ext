@@ -618,7 +618,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               multiline
               placeholder={textTypeVariable.placeholder}
               minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 2)}
-              maxRows={currentModalConfig.maxTextareaMaxRows}
+              maxRows={Math.max(currentModalConfig.maxTextareaMaxRows, 2)}
             />
           )
         })}

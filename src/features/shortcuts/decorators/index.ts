@@ -148,7 +148,7 @@ export function pushOutputToChat(
               type: 'system',
               text: actionInstance.error,
               messageId: uuidV4(),
-              extra: {
+              meta: {
                 status: 'error',
               },
             },
@@ -160,7 +160,7 @@ export function pushOutputToChat(
               type: 'system',
               text: actionInstance.output,
               messageId: uuidV4(),
-              extra: {
+              meta: {
                 status: 'success',
               },
             },

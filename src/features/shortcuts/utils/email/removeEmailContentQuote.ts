@@ -30,7 +30,7 @@ export const removeEmailContentQuote = (
     )
     // remove gmail quote
     needRemoveElements.push(
-      ...Array.from(cloneElement.querySelectorAll('.gmail_quote')),
+      ...Array.from(cloneElement.querySelectorAll('div.gmail_quote')),
     )
     // remove origin email link
     // [メッセージの一部が表示されています]  メッセージ全体を表示
@@ -56,10 +56,6 @@ export const removeEmailContentQuote = (
       needRemoveElements.push(div)
       return
     }
-  })
-  // remove blockquote
-  cloneElement.querySelectorAll('blockquote').forEach((blockquote) => {
-    needRemoveElements.push(blockquote)
   })
   console.log('removeEmailContentQuote needRemoveElements', needRemoveElements)
   needRemoveElements.forEach((element) => {

@@ -6,7 +6,11 @@ import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
 } from '@/constants'
-import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
+import {
+  IUseChatGPTUserInfo,
+  IUserPlanNameType,
+  IUserRole,
+} from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 
@@ -190,14 +194,24 @@ export const fetchUserSubscriptionInfo = async (): Promise<
               },
             )
           }
+          let subscription_plan_name: IUserPlanNameType = 'UNKNOWN'
+          // 因为这是另一个接口的字段，所以套着拿
+          const cache = await Browser.storage.local.get(
+            CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+          )
+          if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+            const userData =
+              cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+                ?.userData
+            if (userData.subscription_plan_name) {
+              subscription_plan_name = userData.subscription_plan_name
+            }
+          }
           return {
             name: role.name,
             exp_time: role.exp_time,
             is_one_times_pay_user,
-            // 因为这是另一个接口的字段，所以套着拿
-            subscription_plan_name:
-              (await getChromeExtensionUserInfo(false))
-                ?.subscription_plan_name || 'UNKNOWN',
+            subscription_plan_name,
           }
         }
       }

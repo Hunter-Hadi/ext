@@ -67,10 +67,11 @@ export class ActionAskChatGPT extends Action {
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
         engine.clientConversationEngine?.currentConversationIdRef?.current ||
         ''
-      const text =
+      const text = String(
         this.parameters.AskChatGPTActionQuestion?.text ||
-        this.parameters.compliedTemplate ||
-        ''
+          this.parameters.compliedTemplate ||
+          '',
+      )
       const messageId =
         this.parameters.AskChatGPTActionQuestion?.messageId || uuidV4()
       this.question = {

@@ -380,11 +380,14 @@ export const processAskAIParameters = async (
     options.includeHistory &&
     (!options.historyMessages || options.historyMessages?.length === 0)
   ) {
+    // 当前会话使用的Model的maxTokens
+    let conversationUsingModelMaxTokens = conversation.meta.maxTokens || 4096
     // system prompt占用的tokens
     let systemPromptTokens = (
       await getTextTokens(conversation.meta.systemPrompt || '')
     ).length
     if (conversation?.meta?.docId) {
+      conversationUsingModelMaxTokens = 12000
       // 因为有docId不会带上systemPrompt，所以不用计算tokens
       systemPromptTokens = 0
     }
@@ -405,7 +408,7 @@ export const processAskAIParameters = async (
      * 最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
      */
     const maxHistoryTokens =
-      (conversation.meta.maxTokens || 4096) -
+      conversationUsingModelMaxTokens -
       systemPromptTokens -
       questionPromptTokens -
       1000 // 预留1000个token给ai生成的答案

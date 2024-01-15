@@ -191,6 +191,7 @@ const AutoHeightTextarea: FC<{
     () => throttle(autoSizeTextarea, 200),
     [],
   )
+  const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
   const computedChildrenHeight = (source: string) => {
     console.log(
       `修复高度${source}`,
@@ -335,7 +336,7 @@ const AutoHeightTextarea: FC<{
   // 侧边栏chat input
   useEffect(() => {
     if (
-      appState.open &&
+      (appState.open || isImmersiveChatRef.current) &&
       textareaRef.current &&
       InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&
       !isFloatingContextMenuVisible()
@@ -350,7 +351,7 @@ const AutoHeightTextarea: FC<{
   useEffectOnce(() => {
     if (
       InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&
-      isMaxAIImmersiveChatPage()
+      isImmersiveChatRef.current
     ) {
       setTimeout(() => {
         autoFocusWithAllWebsite(

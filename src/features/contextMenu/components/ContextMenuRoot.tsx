@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 
-import { DisabledPDFViewer } from '@/components/AppInit'
 import Portal from '@/components/Portal'
 import { MAXAI_CONTEXT_MENU_ID } from '@/features/common/constants'
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
@@ -13,7 +12,6 @@ const ContextMenuRoot: FC = () => {
       <Portal containerId={MAXAI_CONTEXT_MENU_ID}>
         <FloatingMiniMenu />
         <FloatingShortCutsTip />
-        <DisabledPDFViewer />
       </Portal>
       <InputAssistantButtonPortal />
     </>

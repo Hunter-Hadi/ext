@@ -112,6 +112,10 @@ const ConversationList: FC = () => {
       >
         {paginationConversations.map((conversation) => {
           const isSelected = conversation.id === currentSidebarConversationId
+          // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
+          if (typeof conversation.title !== 'string') {
+            conversation.title = JSON.stringify(conversation.title)
+          }
           return (
             <Stack
               direction={'row'}

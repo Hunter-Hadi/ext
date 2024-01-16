@@ -481,6 +481,8 @@
     "sidebar__tabs__summary__action_btn__title": "Refresh summary",
     "sidebar__tabs__search__title": "Search",
     "sidebar__tabs__search__tooltip": "AI-powered search",
+    "sidebar__tabs__art__title": "Art",
+    "sidebar__tabs__art__tooltip": "AI-powered art",
     "sidebar__search_with_ai__continue_chat__title": "Continue in AI-powered search",
     "sidebar__search_with_ai__advanced__title": "Advanced search options",
     "sidebar__search_with_ai__advanced__copilot__title": "Copilot",

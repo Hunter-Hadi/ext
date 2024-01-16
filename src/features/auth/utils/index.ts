@@ -104,7 +104,6 @@ export const fetchUserSubscriptionInfo = async (): Promise<
         // next_reset_timestamp:1688515200
         // roles:[]
         // usage:19
-        debugger
         if (result?.data?.roles && isArray(result.data.roles)) {
           let is_one_times_pay_user = false
           await setDailyUsageLimitData({

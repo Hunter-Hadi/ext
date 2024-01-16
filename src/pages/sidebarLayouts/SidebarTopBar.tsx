@@ -7,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useActivity from '@/features/auth/hooks/useActivity'
-import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])
@@ -77,7 +76,7 @@ const SidebarTopBar: FC = () => {
       )}
       {isShowActivityBanner && (
         <Link
-          href={`https://app.maxai.me/holiday2023`}
+          href={`https://app.maxai.me/anniversary2024`}
           target={'_blank'}
           underline={'none'}
         >
@@ -87,26 +86,45 @@ const SidebarTopBar: FC = () => {
             justifyContent={'center'}
             sx={{
               height: '48px',
-              bgcolor: '#000',
               position: 'relative',
-              backgroundColor: 'rgb(1, 82, 47)',
-              backgroundImage: `url(${getChromeExtensionAssetsURL(
-                '/images/activity/christmas-background.png',
-              )})`,
-              backgroundSize: 'cover',
-              backgroundRepeat: 'no-repeat',
+              backgroundColor: '#7601D3',
             }}
           >
-            <Typography
-              sx={{
-                fontSize: '16px',
-                color: '#fff',
-                fontWeight: 700,
-                lineHeight: '24px',
-              }}
-            >
-              {t('client:activity__christmas_2023__title')}
-            </Typography>
+            <Stack direction={'row'} alignItems={'center'} gap={0.5}>
+              <Typography
+                component={'span'}
+                sx={{
+                  fontSize: '16px',
+                  color: '#fff',
+                  fontWeight: 400,
+                  lineHeight: '16px',
+                }}
+              >
+                {t('client:activity__1st_anniversary_2024__title1')}
+              </Typography>
+              <Typography
+                component={'span'}
+                sx={{
+                  fontSize: '16px',
+                  color: '#fff',
+                  fontWeight: 400,
+                  lineHeight: '16px',
+                }}
+              >
+                {'–'}
+              </Typography>
+              <Typography
+                component={'span'}
+                sx={{
+                  fontSize: '16px',
+                  color: '#fff',
+                  fontWeight: 700,
+                  lineHeight: '16px',
+                }}
+              >
+                {t('client:activity__1st_anniversary_2024__title2')}
+              </Typography>
+            </Stack>
             {isAbleToCloseActivityBanner && (
               <IconButton
                 sx={{
@@ -125,6 +143,9 @@ const SidebarTopBar: FC = () => {
                   sx={{
                     color: '#FFFFFF99',
                     fontSize: '24px',
+                    '&:hover': {
+                      color: '#FFFFFF',
+                    },
                   }}
                 />
               </IconButton>

@@ -51,8 +51,7 @@ const SidebarChatBoxSystemTools: FC<{
       sendLarkBotMessage(
         `[Pricing] Pro show pricing card`,
         JSON.stringify({
-          message: message.text,
-          user: userInfo?.email,
+          user: userInfo,
           plan: currentUserPlan,
         }),
         {

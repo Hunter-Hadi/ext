@@ -6,7 +6,11 @@ import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
 } from '@/constants'
-import { IUseChatGPTUserInfo, IUserRole } from '@/features/auth/types'
+import {
+  IUseChatGPTUserInfo,
+  IUserPlanNameType,
+  IUserRole,
+} from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 
@@ -101,6 +105,7 @@ export const fetchUserSubscriptionInfo = async (): Promise<
         // roles:[]
         // usage:19
         if (result?.data?.roles && isArray(result.data.roles)) {
+          let is_one_times_pay_user = false
           await setDailyUsageLimitData({
             has_reached_limit: result.data.has_reached_limit,
             limit_value: result.data.limit_value,
@@ -120,6 +125,30 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             role = {
               name: 'free',
               exp_time: 0,
+            }
+          }
+          const { name } = role
+          // 如果角色不是free，判断是否为一次性付费用户
+          if (
+            name !== 'free' &&
+            result.data?.current_period_end &&
+            result.data?.subscription_type &&
+            result.data?.subscription_type !== 'SUBSCRIPTION'
+          ) {
+            // 一次性付费用户
+            is_one_times_pay_user = true
+            // 判断是否过期
+            const expireTime = dayjs(result.data.current_period_end)
+              .utc()
+              .valueOf()
+            const now = dayjs().utc().valueOf()
+            if (expireTime - now > 0) {
+              // 未过期
+              role.exp_time = expireTime
+            } else {
+              // 过期
+              role.exp_time = 0
+              role.name = 'free'
             }
           }
           if (role.name === 'pro' && result.data.has_reached_limit) {
@@ -165,9 +194,24 @@ export const fetchUserSubscriptionInfo = async (): Promise<
               },
             )
           }
+          let subscription_plan_name: IUserPlanNameType = 'UNKNOWN'
+          // 因为这是另一个接口的字段，所以套着拿
+          const cache = await Browser.storage.local.get(
+            CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+          )
+          if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+            const userData =
+              cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+                ?.userData
+            if (userData.subscription_plan_name) {
+              subscription_plan_name = userData.subscription_plan_name
+            }
+          }
           return {
             name: role.name,
             exp_time: role.exp_time,
+            is_one_times_pay_user,
+            subscription_plan_name,
           }
         }
       }

@@ -345,9 +345,11 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const boxSpacing = 16 * 3
     const textareaMaxHeight =
       maxHeight - titleHeight - selectHeight - textareaSpacing - boxSpacing
-    // NOTE: 24px是textarea的行高, -1是为了安全高度
-    const maxTextareaMaxRows =
-      Math.floor(textareaMaxHeight / 24 / textareaCount) - 1
+    // NOTE: 24px是textarea的行高, 在这个基础上-1是为了安全高度, 最小2行
+    const maxTextareaMaxRows = Math.max(
+      Math.floor(textareaMaxHeight / 24 / textareaCount) - 1,
+      2,
+    )
     getSetVariablesModalSelectCache().then((cache) => {
       const initialFormKeys = Object.keys(reactHookFormRegisterMap)
       if (initialFormKeys.length === 0) {
@@ -367,6 +369,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       selectTypeVariables,
       textTypeVariables,
       maxTextareaMaxRows,
+      minTextareaMaxRows: 2,
     }
   }, [variables, title, systemVariables, modelKey, config])
   useEffectOnce(() => {
@@ -582,6 +585,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
+          const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17
           return (
             <TextField
               sx={{ width }}
@@ -601,6 +605,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               InputProps={{
                 sx: {
                   fontSize: '16px',
+                  minHeight,
                 },
               }}
               error={!!errors[textTypeVariable.VariableName]}
@@ -611,8 +616,8 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               InputLabelProps={{ shrink: true, sx: { fontSize: '16px' } }}
               multiline
               placeholder={textTypeVariable.placeholder}
-              minRows={Math.min(currentModalConfig.maxTextareaMaxRows, 2)}
-              maxRows={Math.max(currentModalConfig.maxTextareaMaxRows, 2)}
+              minRows={currentModalConfig.minTextareaMaxRows}
+              maxRows={currentModalConfig.maxTextareaMaxRows}
             />
           )
         })}

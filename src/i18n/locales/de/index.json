@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "oder PDF hier ablegen",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF-KI-Viewer",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Zusammenfassen und chatten Sie mit PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF-KI-Viewer' ermöglicht es Ihnen, jedes PDF-Dokument zusammenzufassen und damit zu chatten und beliebigen Text in lokalen PDF-Dateien auszuwählen und KI-Aufforderungen darauf anzuwenden. Sie können es jederzeit auf der Erweiterungsseite",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI Viewer' ermöglicht es Ihnen, jedes PDF-Dokument zusammenzufassen und zu besprechen sowie beliebigen Text in lokalen PDF-Dateien auszuwählen und KI-Hinweise darauf anzuwenden. Sie können es jederzeit in der Erweiterung deaktivieren.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Einstellungen",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "ausschalten.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "PDF ziehen und ablegen",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisch öffnen",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF-KI-Viewer' automatisch öffnen",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivieren Sie die Option \"Zugriff auf Datei-URLs zulassen\" in den Browsereinstellungen, indem Sie zu",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "navigieren. Dadurch wird der 'PDF-KI-Viewer' automatisch geöffnet, wenn Sie PDF-Dateien in den Browser ziehen und ablegen."

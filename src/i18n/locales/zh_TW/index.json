@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "或將PDF拖放到此處",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI查看器",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "摘要和聊天與PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI查看器'可讓您摘要和聊天與任何PDF文檔，並在本地PDF文件中選擇任何文本並使用AI提示。您可以隨時在擴展的",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' 讓您可以摘要和聊天任何 PDF 文件，並選擇本地 PDF 文件中的任意文本並對其使用 AI 提示。您可以隨時在擴展程式的",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "設置頁面",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "關閉它。",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "拖放PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "自動開啟",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "自動打開'PDF AI查看器'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "通過訪問以下網址，在瀏覽器設置中啟用“允許訪問文件URL”選項",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "。這將使'PDF AI查看器'在您將PDF文件拖放到瀏覽器時自動打開。"

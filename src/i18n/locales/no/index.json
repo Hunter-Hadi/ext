@@ -503,7 +503,7 @@
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visning' lar deg oppsummere og chatte med hvilken som helst PDF-dokument, og velge hvilken som helst tekst i lokale PDF-filer og bruke AI-prompter på dem. Du kan slå det av når som helst på utvidelsens",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Innstillinger side",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Dra og slipp PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisk åpne",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Åpne 'PDF AI-visning' automatisk",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktiver alternativet \"Tillat tilgang til fil-URL-er\" i nettleserinnstillingene dine ved å navigere til",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Dette vil la 'PDF AI-visning' åpne automatisk når du drar og slipper PDF-filer i nettleseren."

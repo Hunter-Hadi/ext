@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "o arrossega el PDF aquí",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visor d'IA de PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Resumeix i xateja amb PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "El 'Visor d'IA de PDF' et permet resumir i xatejar amb qualsevol document PDF, i seleccionar qualsevol text en fitxers PDF locals i utilitzar suggeriments d'IA sobre ells. Pots desactivar-ho en qualsevol moment a la pàgina de configuració de l'extensió.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI visualitzador' et permet resumir i xatejar amb qualsevol document PDF, i seleccionar qualsevol text en fitxers PDF locals i utilitzar suggeriments d'IA en ells. Pots desactivar-ho en qualsevol moment a l'extensió",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Pàgina de configuració",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Arrossega i deixa anar el PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Obertura automàtica",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Obre automàticament el 'Visor d'IA de PDF'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Activa l'opció \"Permetre l'accés a les URL dels fitxers\" a la configuració del teu navegador navegant a",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Això permetrà que el 'Visor d'IA de PDF' s'obri automàticament quan arrosseguis i deixis anar fitxers PDF al navegador."

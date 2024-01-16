@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "atau seret PDF ke sini",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Penampil PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Ringkas & chat dengan PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'Penampil PDF AI' memungkinkan Anda merangkum dan mengobrol dengan dokumen PDF apa pun, serta memilih teks apa pun dalam file PDF lokal dan menggunakan prompt AI pada mereka. Anda dapat mematikannya kapan saja di halaman",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' memungkinkan Anda untuk merangkum dan mengobrol dengan dokumen PDF apa pun, serta memilih teks apa pun dalam file PDF lokal dan menggunakan petunjuk AI pada mereka. Anda dapat mematikannya kapan saja di ekstensi ini",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Pengaturan",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Seret & lepas PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Buka otomatis",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Buka 'Penampil PDF AI' secara otomatis",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktifkan opsi \"Izinkan akses ke URL file\" di pengaturan browser Anda dengan membuka",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ini akan memungkinkan 'Penampil PDF AI' terbuka secara otomatis ketika Anda menyeret dan melepaskan file PDF ke browser."

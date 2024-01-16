@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "lub upuść tutaj plik PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Przeglądarka PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Podsumuj i rozmawiaj z plikiem PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "Przeglądarka PDF AI pozwala na podsumowanie i rozmowę z dowolnym dokumentem PDF oraz wybieranie tekstu w lokalnych plikach PDF i korzystanie z promptów AI. Możesz ją wyłączyć w dowolnym momencie na stronie ustawień rozszerzenia.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' pozwala podsumować i rozmawiać z dowolnym dokumentem PDF oraz wybierać tekst w lokalnych plikach PDF i korzystać z podpowiedzi AI na nich. Możesz go wyłączyć w dowolnym momencie w rozszerzeniu",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Strona ustawień",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Przeciągnij i upuść plik PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatyczne otwieranie",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automatyczne otwieranie przeglądarki 'PDF AI viewer'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Włącz opcję \"Zezwalaj na dostęp do adresów URL plików\" w ustawieniach przeglądarki, przechodząc do",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Dzięki temu przeglądarka 'PDF AI viewer' automatycznie otworzy się po przeciągnięciu i upuszczeniu plików PDF do przeglądarki."

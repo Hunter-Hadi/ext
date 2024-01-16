@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "arba nutempti PDF čia",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI peržiūra",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Santrauka ir pokalbis su PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI peržiūra' leidžia jums santraukoti ir bendrauti su bet kuriuo PDF dokumentu, taip pat pasirinkti bet kurį tekstą vietiniuose PDF failuose ir naudoti AI užduotis. Ją galite išjungti bet kuriuo metu naršyklės plėtinio",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI peržiūros įrankis' leidžia jums suvesti ir bendrauti su bet kuriuo PDF dokumentu, taip pat pasirinkti bet kurį tekstą vietiniuose PDF failuose ir naudoti juos su AI užuominomis. Ją galite išjungti bet kuriuo metu plėtinių",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "nustatymų puslapyje",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Vilkite ir numeskite PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatinis atidarymas",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automatiškai atidaryti 'PDF AI peržiūrą'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Įjunkite „Leisti prieigą prie failų URL“ parinktį naršyklės nustatymuose, nueidami į",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tai leis 'PDF AI peržiūrai' automatiškai atsidaryti, kai vilkite ir numetate PDF failus į naršyklę."

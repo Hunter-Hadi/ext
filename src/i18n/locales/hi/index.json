@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "या यहां पीडीएफ छोड़ें",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "पीडीएफ एआई दर्शक",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "पीडीएफ को संक्षेपित करें और चैट करें",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'पीडीएफ एआई दर्शक' आपको किसी भी पीडीएफ दस्तावेज़ को संक्षेपित करने और चैट करने की अनुमति देता है, और स्थानीय पीडीएफ फ़ाइलों में किसी भी पाठ का चयन करें और उन पर एआई प्रॉम्प्ट का उपयोग करें। आप इसे किसी भी समय एक्सटेंशन की",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI दर्शक' आपको किसी भी पीडीएफ दस्तावेज़ का संक्षेप और चैट करने, स्थानीय पीडीएफ फ़ाइलों में किसी भी पाठ का चयन करने और उन पर एआई प्रॉम्प्ट का उपयोग करने की अनुमति देता है। आप इसे किसी भी समय एक्सटेंशन के",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "सेटिंग्स पृष्ठ पर",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "बंद कर सकते हैं।",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "पीडीएफ खींचें और छोड़ें",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ऑटो खोलें",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'पीडीएफ एआई दर्शक' को स्वचालित रूप से खोलें",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "अपने ब्राउज़र सेटिंग्स में \"फ़ाइल URL पर पहुँच की अनुमति दें\" विकल्प को सक्षम करें,",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "पर जाकर। यह आपको ब्राउज़र में पीडीएफ फ़ाइलें खींचकर छोड़ने पर 'पीडीएफ एआई दर्शक' को स्वचालित रूप से खोलने देगा।"

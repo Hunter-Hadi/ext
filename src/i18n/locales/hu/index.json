@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "vagy húzza ide a PDF-et",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI néző",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Összefoglalás és beszélgetés a PDF-fel",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "A 'PDF AI néző' lehetővé teszi bármely PDF-dokumentum összefoglalását és beszélgetését, valamint a helyi PDF-fájlokban történő szövegkijelölést és az AI promptok használatát. Bármikor kikapcsolhatja a bővítmény",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI néző' lehetővé teszi, hogy összefoglalja és beszélgetjen bármely PDF dokumentummal, és kiválassza a helyi PDF fájlokban található szöveget, majd AI segítséggel dolgozza fel. Bármikor kikapcsolhatja a bővítményen",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Beállítások oldalon",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "PDF húzása és ejtése",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatikus megnyitás",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automatikus 'PDF AI néző' megnyitása",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Engedélyezze a \"Fájl-URL-ek hozzáférésének engedélyezése\" lehetőséget a böngésző beállításaiban a következő címre navigálva:",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ez lehetővé teszi, hogy a 'PDF AI néző' automatikusan megnyíljon, amikor PDF-fájlokat húz és ejt a böngészőbe."

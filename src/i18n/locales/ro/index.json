@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "sau lasă PDF-ul aici",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Vizualizator PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Rezumă și discută cu PDF-uri",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'Vizualizatorul PDF AI' îți permite să rezumi și să discuți cu orice document PDF și să selectezi orice text din fișierele PDF locale și să folosești prompturile AI pe ele. Poți dezactiva această funcție în orice moment în pagina de",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' vă permite să rezumați și să discutați cu orice document PDF, și să selectați orice text în fișiere PDF locale și să utilizați prompt-uri AI pe acestea. Puteți dezactiva funcția în orice moment în extensia",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Setări",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "a extensiei.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Trage și plasează PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Deschidere automată",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Deschide automat 'Vizualizatorul PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Activează opțiunea „Permite accesul la adresele URL ale fișierelor” în setările browserului tău navigând la",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Acest lucru va permite deschiderea automată a 'Vizualizatorului PDF AI' atunci când tragi și plasezi fișiere PDF în browser."

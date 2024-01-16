@@ -377,7 +377,7 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
                 gap: 1,
               }}
             >
-              {'Drag & drop PDF'}
+              {t('client:pdf_ai_viewer__toggle_button__drag_drop_pdf__title')}
               <Switch checked={isAccessPermission} size={'small'} />
             </Button>
           </LightTooltip>

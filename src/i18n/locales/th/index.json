@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "หรือวาง PDF ที่นี่",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "ดู PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "สรุปและแชทกับ PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'ดู PDF AI' ช่วยให้คุณสรุปและแชทกับเอกสาร PDF ใด ๆ และเลือกข้อความใด ๆ ในไฟล์ PDF ในเครื่องและใช้คำพูด AI บนมัน คุณสามารถปิดได้ทุกเมื่อในหน้า",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' ช่วยให้คุณสรุปรายละเอียดและสนทนากับเอกสาร PDF ใดๆ และเลือกข้อความใดๆ ในไฟล์ PDF ท้องถิ่นและใช้การเรียกใช้ AI บนข้อความเหล่านั้น คุณสามารถปิดการใช้งานได้ตลอดเวลาในส่วนขยาย",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "การตั้งค่า",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ลากและวาง PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "เปิดอัตโนมัติ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "เปิด 'ดู PDF AI' โดยอัตโนมัติ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "เปิดใช้งานตัวเลือก \"อนุญาตให้เข้าถึง URL ไฟล์\" ในการตั้งค่าเบราว์เซอร์ของคุณโดยไปที่",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "นี้จะทำให้ 'ดู PDF AI' เปิดโดยอัตโนมัติเมื่อคุณลากและวางไฟล์ PDF เข้าสู่เบราว์เซอร์"

@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "eller slip PDF her",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI-visning",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Opsummer og chat med PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visning' giver dig mulighed for at opsummere og chatte med enhver PDF-dokument og vælge hvilken som helst tekst i lokale PDF-filer og bruge AI-prompts på dem. Du kan slå det fra når som helst på udvidelsens",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visning' giver dig mulighed for at opsummere og chatte med enhver PDF-dokument og vælge hvilken som helst tekst i lokale PDF-filer og bruge AI-prompts på dem. Du kan slå det fra når som helst i udvidelsens",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Indstillinger side",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Træk og slip PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisk åbning",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Åbn 'PDF AI-visning' automatisk",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivér indstillingen \"Tillad adgang til fil-URL'er\" i din browsers indstillinger ved at navigere til",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Dette vil lade 'PDF AI-visning' åbne automatisk, når du trækker og slipper PDF-filer i browseren."

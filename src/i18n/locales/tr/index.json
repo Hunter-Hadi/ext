@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "veya buraya PDF bırakın",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI görüntüleyici",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "PDF ile özetleme yapın ve sohbet edin",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI görüntüleyici', herhangi bir PDF belgesini özetlemenize ve sohbet etmenize olanak tanır. Ayrıca yerel PDF dosyalarındaki metni seçebilir ve üzerlerinde AI ipuçları kullanabilirsiniz. Dilediğiniz zaman uzantının",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI görüntüleyici', herhangi bir PDF belgesini özetlemenize ve sohbet etmenize, yerel PDF dosyalarındaki metni seçmenize ve üzerlerinde AI ipuçları kullanmanıza olanak tanır. Uzantının",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Ayarlar sayfasından",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "kapatabilirsiniz.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "PDF sürükleyip bırak",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Otomatik aç",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI görüntüleyici'yi otomatik olarak açın",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Tarayıcı ayarlarınıza giderek \"Dosya URL'lerine erişime izin ver\" seçeneğini etkinleştirin.",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Böylece PDF dosyalarını tarayıcıya sürükleyip bıraktığınızda 'PDF AI görüntüleyici' otomatik olarak açılacaktır."

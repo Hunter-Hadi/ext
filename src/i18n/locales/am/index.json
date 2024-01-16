@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "ወደ PDF ያስገቡ ወይም አስቀምጡ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI መረጃ ያግኙ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "ፕዲናውን ጥቅም እና ለማድረግ በ PDF ስልክ ላይ ያስተላልፉ",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' የሚፈጠሩት ከፕዲና መግለጫ መጠቀም እና ለማሳየት በሚያስችል ፕዲና ፎርማት በሚለው ተሞልቷል። ይህን በጣም የሚታይ ይመስላል",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' የሚጠቀሙት ነጥብ የሚጠቅሙትን እና የሚከተሉትን ፅሁፍ ለመጠቀም እና ለመከታተል ይችላሉ። ሌሎች PDF ፅሁፎችን ለመጠቀም እና ለመከታተል AI prompts ያስተካክሉት። ይህንን ማጣት ለመቀየር የሚችሉትን ጥቅም በመጠቀም ይችላሉ።",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "የተለያዩ ቦታዎች ጋር",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "።",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "PDF ወደ ማስገባት ያስገቡ",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "እንዴት ይጠቀሙ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI viewer' እንዴት በማስገባት ወይም በማስተላለፍ በሚከተለው ፕዲና ላይ እንዴት ይጠቀሙ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "የ\"የፋይል URL ወይም ፋይልዎችን ያስተላልፉ\" አማራጭ አስተዳዳሪነትን በቀላል ያስችሉትን ቦታዎች በመጠቀም የሚታይ ይሆናል",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "። ይህ በጣም የ'PDF AI viewer' በማስገባት ወይም በማስተላለፍ ፕዲና ፎርማትን በሚለው ቦታ እንዴት ይጠቀሙ"

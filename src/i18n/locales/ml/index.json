@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "അല്ലെങ്കിൽ PDF ഇവിടെ ഡ്രോപ്പുചെയ്യുക",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI കാണുക",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "PDF സാരം ചെയ്യുക & ചാറ്റ് ചെയ്യുക",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI കാണുക' നിങ്ങൾക്ക് ഏതെങ്കിലും PDF പ്രമേയത്തോടുള്ള സാരം ചെയ്യാൻ അനുവദിക്കുന്നു, ലോകൽ PDF ഫയലുകളിൽ നിന്ന് ഏതെങ്കിലും വാചകം തിരഞ്ഞെടുക്കാൻ ഉപയോഗിക്കാവുന്ന AI പ്രോംപ്റ്റുകൾ ഉപയോഗിക്കുക. നിങ്ങൾ എന്തുവേണമെന്ന് എന്നെന്റെ പരിധിയിൽ അത് ഓഫ് ചെയ്യാവുന്നു.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI കാണുന്നത്' നിങ്ങൾക്ക് ഏറ്റവും ലളിതമായി സംഗ്രഹിക്കാവുന്നതാണ് എന്ന് പറയാം. അതിനാൽ, പ്രാദേശിക PDF ഫയലുകളിൽ നിന്ന് ഏതെങ്കിലും ടെക്സ്റ്റ് തിരഞ്ഞെടുക്കാൻ ഉപയോഗിക്കുന്ന AI പ്രോംപ്റ്റുകൾ ഉപയോഗിച്ച് ചാറ്റുചെയ്യാവുന്നു. നിങ്ങൾ എന്ന് എന്നെ എന്നെ പ്രവർത്തിപ്പിക്കാൻ സാധിക്കും. അത് എക്സ്റ്റൻഷൻടിന്റെ ഏതെങ്കിലും സമയത്ത് ഓഫ് ചെയ്യാവുന്നു",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "ക്രമീകരണ പേജ്",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "ലോകത്തിലെ PDF ഫയലുകൾ ഡ്രാഗ് ചെയ്യുന്നതിനുള്ള സ്വയംഭരണ ബ്രൌസർനിൽ 'PDF AI കാണുക' ഓട്ടോമാറ്റിക്കാക്കുക",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "PDF ഇടയ്ക്കുക & ഡ്രോപ്പുചെയ്യുക",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ഓട്ടോ തുറക്കുക",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI കാണുക' സ്വയംഭരണം ആക്കുക",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "നിങ്ങളുടെ ബ്രൌസർ ക്രമീകരണങ്ങളിൽ 'ഫയൽ URL-ലേക്ക് പ്രവേശനം അനുവദിക്കുക' ഓപ്ഷൻ സജ്ജീകരിക്കുക, ഇത് നിങ്ങൾക്ക് ഡ്രാഗ് ചെയ്യുകയോ ഡ്രോപ്പ് ചെയ്യുകയോ ചെയ്യുമ്പോൾ 'PDF AI കാണുക' ഓട്ടോമാറ്റിക്കാക്കുന്നു.",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". നിങ്ങൾ PDF ഫയലുകൾ ബ്രൗസർനിൽ വലിച്ച് അടയ്ക്കുമ്പോൾ 'PDF AI കാഴ്ചക്കാരൻ' ഓട്ടോമാറ്റിക്കലും തുറക്കും."

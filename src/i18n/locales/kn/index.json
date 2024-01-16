@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "ಅಥವಾ ಪಿಡಿಎಫ್ ಇಲ್ಲಿ ಬಿಸಿಯಿರಿ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI ವೀಕ್ಷಕ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "ಪಿಡಿಎಫ್ ಸಂಗ್ರಹವನ್ನು ಸಂಗ್ರಹಿಸಿ ಮತ್ತು ಚಾಟ್ ಮಾಡಿ",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI ವೀಕ್ಷಕ' ನಿಮಗೆ ಯಾವುದೇ PDF ಆವರಣವನ್ನು ಸಂಗ್ರಹಿಸಿ ಮತ್ತು ಚಾಟ್ ಮಾಡಲು ಅನುಮತಿಸುತ್ತದೆ, ಮತ್ತು ಸ್ಥಳೀಯ PDF ಕಡತಗಳಲ್ಲಿ ಯಾವುದೇ ಪಠ್ಯವನ್ನು ಆಯ್ ಪ್ರಾಂಪ್ಟ್ ಗಳನ್ನು ಬಳಸಿ ಆಯ್ ಮಾಡಬಹುದು. ನೀವು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಅದನ್ನು ಆಫ್ ಮಾಡಬಹುದು ವಿಸ್ತರಣದ",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI ವೀಕ್ಷಕ' ನೀಡುವ ಸಂಗ್ರಹಿಸಲು ಮತ್ತು ಚಾಟ್ ಮಾಡಲು ಯಾವುದೇ PDF ಆವರಣವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ, ಸ್ಥಳೀಯ PDF ಕಡತಗಳಲ್ಲಿ ಯಾವುದೇ ಪಠ್ಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಿ ಅದರ ಮೇಲೆ AI ಪ್ರಾಂಪ್ಟ್‌ಗಳನ್ನು ಬಳಸಿ. ನೀವು ಅದನ್ನು ಯಾವುದೇ ಸಮಯದಲ್ಲಿ ಆಫ್ ಮಾಡಬಹುದು ಈ ವಿಸ್ತರಣೆಯ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "ಪುಟ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "ಮೇಲೆ.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ಪಿಡಿಎಫ್ ಹಾಕಿ ಬಿಸಿಯಿರಿ",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ಸ್ವಯಂ ತೆರೆದು ಹಾಕಿ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI ವೀಕ್ಷಕ' ಸ್ವಯಂಚಾಲಿತವಾಗಿ ತೆರೆಯಲು",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "ನಿಮ್ಮ ಬ್ರೌಸರ್ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ \"ಫೈಲ್ URL ಗೆ ಪ್ರವೇಶ ಅನುಮತಿಸು\" ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ ಈ ವಿಳಾಸಕ್ಕೆ ಹೋಗುವ ಮೂಲಕ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ಇದು ನೀವು ಪಿಡಿಎಫ್ ಕಡತಗಳನ್ನು ಬ್ರೌಸರ್ ಗೆ ಹಾಕಿ ಬಿಸಿಯಿರಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ 'PDF AI ವೀಕ್ಷಕ' ತೆರೆಯುವುದನ್ನು ಅನುಮತಿಸುತ್ತದೆ."

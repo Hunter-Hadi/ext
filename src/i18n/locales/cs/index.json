@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "nebo sem přetáhněte PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Prohlížeč PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Shrňte a chatujte s PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "Prohlížeč PDF AI vám umožní shrnout a chatovat s libovolným dokumentem PDF a vybrat libovolný text v místních souborech PDF a použít na něj AI podněty. Kdykoli jej můžete vypnout na stránce",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI prohlížeč' vám umožňuje shrnout a chatovat s libovolným PDF dokumentem a vybrat libovolný text v místních PDF souborech a použít na něj AI podněty. Můžete jej kdykoli vypnout v rozšíření",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Nastavení",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Přetáhněte a pusťte PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automaticky otevřít",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automaticky otevřít 'Prohlížeč PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Povolte možnost \"Povolit přístup k URL souborům\" v nastavení prohlížeče přejít na",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tím se automaticky otevře 'Prohlížeč PDF AI', když přetáhnete a pusťte soubory PDF do prohlížeče."

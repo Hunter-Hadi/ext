@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "või lohista PDF siia",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI vaatur",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Kokkuvõte ja vestlus PDF-iga",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI vaatur' võimaldab teil kokku võtta ja vestelda mis tahes PDF-dokumendiga ning valida kohalike PDF-failide teksti ja kasutada neil AI-prompte. Saate selle igal ajal välja lülitada laienduse",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI vaataja' võimaldab sul kokku võtta ja vestelda mis tahes PDF-dokumendiga ning valida kohalike PDF-failide teksti ja kasutada nende peal AI vihjeid. Saad selle igal ajal laienduse",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Seadete lehel",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Lohista ja kukuta PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automaatne avamine",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Ava 'PDF AI vaatur' automaatselt",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Lubage oma brauseri seadetes valik \"Luba juurdepääs faili URL-idele\", navigeerides aadressile",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". See võimaldab 'PDF AI vaaturil' avaneda automaatselt, kui lohistate PDF-faile brauserisse."

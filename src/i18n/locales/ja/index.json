@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "またはここにPDFをドロップ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AIビューア",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "PDFの要約とチャット",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AIビューア'では、任意のPDF文書の要約とチャットができます。また、ローカルのPDFファイル内のテキストを選択してAIプロンプトを使用することもできます。いつでも拡張機能の",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AIビューア'を使用すると、任意のPDFドキュメントを要約してチャットすることができます。また、ローカルのPDFファイル内のテキストを選択し、AIプロンプトを使用することもできます。いつでも拡張機能の設定でオフにすることができます。",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "設定ページでオフにすることができます。",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "。",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "PDFをドラッグ＆ドロップ",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "自動で開く",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AIビューア'を自動的に開く",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "ブラウザの設定で「ファイルURLへのアクセスを許可する」オプションを有効にしてください。以下に移動すると、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "。これにより、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。"

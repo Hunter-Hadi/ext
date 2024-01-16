@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "или перетащите PDF сюда",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Просмотр PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Суммирование и общение с PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'Просмотр PDF AI' позволяет вам суммировать и общаться с любым документом PDF, а также выбирать любой текст в локальных файлах PDF и использовать на них подсказки ИИ. Вы можете отключить его в любое время на странице настроек расширения.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI просмотрщик' позволяет вам делать сводки и общаться с любым PDF-документом, а также выделять текст в локальных PDF-файлах и использовать на них подсказки ИИ. Вы можете отключить его в любое время в расширении",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Страница настроек",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Перетащите PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Автоматическое открытие",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Автоматическое открытие 'Просмотра PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Включите опцию \"Разрешить доступ к URL-адресам файлов\" в настройках вашего браузера, перейдя по адресу",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Это позволит 'Просмотру PDF AI' автоматически открываться при перетаскивании файлов PDF в браузер."

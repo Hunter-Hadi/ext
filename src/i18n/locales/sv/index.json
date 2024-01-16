@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "eller släpp PDF här",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI-visare",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Sammanfatta och chatta med PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visaren' låter dig sammanfatta och chatta med vilken PDF-dokument som helst, och välja valfri text i lokala PDF-filer och använda AI-promptar på dem. Du kan stänga av det när som helst på tilläggets",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visare' låter dig sammanfatta och chatta med vilket PDF-dokument som helst, samt markera valfri text i lokala PDF-filer och använda AI-prompter på dem. Du kan stänga av det när som helst i tilläggets",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Inställningssida",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Dra och släpp PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisk öppning",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Öppna 'PDF AI-visaren' automatiskt",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivera alternativet \"Tillåt åtkomst till fil-URL:er\" i webbläsarens inställningar genom att navigera till",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Detta gör att 'PDF AI-visaren' öppnas automatiskt när du drar och släpper PDF-filer i webbläsaren."

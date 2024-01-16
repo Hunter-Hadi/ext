@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "ou solte o PDF aqui",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visualizador de IA em PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Resuma e converse com PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "O 'Visualizador de IA em PDF' permite que você resuma e converse com qualquer documento PDF, e selecione qualquer texto em arquivos PDF locais e use prompts de IA neles. Você pode desativá-lo a qualquer momento na página de",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' permite resumir e conversar com qualquer documento PDF, e selecionar qualquer texto em arquivos PDF locais e usar prompts de IA neles. Você pode desativá-lo a qualquer momento na extensão",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Configurações",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "da extensão.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Arraste e solte o PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Abrir automaticamente",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Abrir automaticamente o 'Visualizador de IA em PDF'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Ative a opção \"Permitir acesso a URLs de arquivo\" nas configurações do seu navegador navegando para",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Isso permitirá que o 'Visualizador de IA em PDF' seja aberto automaticamente quando você arrastar e soltar arquivos PDF no navegador."

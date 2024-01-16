@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "ou déposez le PDF ici",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visionneuse IA PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Résumez et discutez avec un PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "La visionneuse IA PDF vous permet de résumer et de discuter avec n'importe quel document PDF, et de sélectionner n'importe quel texte dans les fichiers PDF locaux et d'utiliser des invites d'IA sur eux. Vous pouvez le désactiver à tout moment sur la page des paramètres de l'extension.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' vous permet de résumer et de discuter avec n'importe quel document PDF, et de sélectionner n'importe quel texte dans les fichiers PDF locaux et d'utiliser des suggestions d'IA dessus. Vous pouvez le désactiver à tout moment sur l'extension",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Page des paramètres",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Glisser-déposer le PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Ouverture automatique",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Ouvrir automatiquement la 'Visionneuse IA PDF'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Activez l'option \"Autoriser l'accès aux URL de fichier\" dans les paramètres de votre navigateur en accédant à",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Cela permettra à la 'Visionneuse IA PDF' de s'ouvrir automatiquement lorsque vous faites glisser et déposez des fichiers PDF dans le navigateur."

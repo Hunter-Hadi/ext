@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "of plaats hier een PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI-viewer",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Samenvatten en chatten met PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-viewer' stelt u in staat om elke PDF te summariseren en erover te chatten, en tekst in lokale PDF-bestanden te selecteren en AI-aanwijzingen te gebruiken. U kunt het op elk moment uitschakelen op de pagina 'Instellingen' van de extensie.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-viewer' stelt u in staat om een samenvatting te maken en te chatten met elk PDF-document, en tekst te selecteren in lokale PDF-bestanden en er AI-aanwijzingen op toe te passen. U kunt het op elk moment uitschakelen in de extensie.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Instellingenpagina",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Sleep en plaats PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisch openen",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Open 'PDF AI-viewer' automatisch",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Schakel de optie \"Toegang verlenen tot bestands-URL's\" in uw browserinstellingen in door naar",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "te gaan. Hierdoor wordt de 'PDF AI-viewer' automatisch geopend wanneer u PDF-bestanden in de browser sleept en plaatst."

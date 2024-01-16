@@ -500,10 +500,10 @@
     "pdf_ai_viewer__file_picker__button__description": "ali spustite PDF tukaj",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI pregledovalnik",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Povzemite in klepetajte s PDF-jem",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI pregledovalnik' vam omogoča povzemanje in klepetanje s katerim koli dokumentom PDF ter izbiranje besedila v lokalnih datotekah PDF in uporabo AI namigov nanje. Kadarkoli ga lahko izklopite na strani z nastavitvami razširitve.",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI ogledovalnik' vam omogoča povzetek in klepet s katerim koli PDF dokumentom ter izbiro katerega koli besedila v lokalnih PDF datotekah in uporabo AI namigov nanje. Kadarkoli ga lahko izklopite na razširitvi.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Stran z nastavitvami",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Povlecite in spustite PDF",
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Samodejno odpiranje",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Samodejno odprite 'PDF AI pregledovalnik'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Omogočite možnost »Dovoli dostop do URL-jev datotek« v nastavitvah brskalnika tako, da se pomaknete na",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tako bo 'PDF AI pregledovalnik' samodejno odprt, ko boste PDF-datoteke povlekli in spustili v brskalnik."

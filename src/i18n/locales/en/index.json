@@ -508,7 +508,13 @@
     "activity__christmas_2023__title": "CHRISTMAS & NEW YEAR GIVEAWAYS",
     "activity__1st_anniversary_2024__title1": "MaxAI's 1st anniversary celebration",
     "activity__1st_anniversary_2024__title2": "Up to 50% OFF!",
-    "quick_access__hide_button__title": "Hide quick access until next visit"
+    "quick_access__hide_button__title": "Hide quick access until next visit",
+    "art__image_generate__aspect_ratio__square__title": "Square",
+    "art__image_generate__aspect_ratio__landscape__title": "Landscape",
+    "art__image_generate__aspect_ratio__portrait__title": "Portrait",
+    "art__image_generate__aspect_ratio__widescreen__title": "Widescreen",
+    "art__image_generate__content_type__photo__title": "Photo",
+    "art__image_generate__content_type__art__title": "Art"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

@@ -128,7 +128,7 @@ export interface IAIResponseOriginalMessage {
       value: string
     }
     // 分享的类型, 用作在copy和share的时候
-    shareType?: 'normal' | 'summary' | 'search'
+    shareType?: 'normal' | 'summary' | 'search' | 'art'
     // TODO
     related?: string[]
   }

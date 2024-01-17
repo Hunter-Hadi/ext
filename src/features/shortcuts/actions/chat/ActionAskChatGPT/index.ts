@@ -167,6 +167,7 @@ export class ActionAskChatGPT extends Action {
           Chat: 'chat',
           Summary: 'summary_chat',
           Search: 'search_chat',
+          Art: 'art',
         }[clientConversationEngine.currentSidebarConversationType]
         const {
           data: isDailyUsageLimit,

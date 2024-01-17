@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "自動で開く",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AIビューア'を自動的に開く",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "ブラウザの設定で「ファイルURLへのアクセスを許可する」オプションを有効にしてください。以下に移動すると、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "。これにより、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。"
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "。これにより、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。",
+    "sidebar__tabs__art__title": "アート",
+    "sidebar__tabs__art__tooltip": "AIによるアート"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

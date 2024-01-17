@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "অটো খোলো",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI ভিউয়ার' স্বয়ংক্রিয়ভাবে খুলুন",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "আপনার ব্রাউজার সেটিংসে যান এবং \"ফাইল URL-গুলির অ্যাক্সেসের অনুমতি দিন\" বিকল্পটি সক্ষম করুন। এটি আপনাকে ড্রপ করলে এবং পিডিএফ ফাইলগুলি ব্রাউজারে ড্রপ করলে 'PDF AI ভিউয়ার' স্বয়ংক্রিয়ভাবে খুলবে।",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". এটি আপনাকে অটোমেটিকভাবে 'PDF AI ভিউয়ার' খুলতে দেবে যখন আপনি ব্রাউজারে PDF ফাইলগুলি ড্র্যাগ এবং ড্রপ করবেন।"
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". এটি আপনাকে অটোমেটিকভাবে 'PDF AI ভিউয়ার' খুলতে দেবে যখন আপনি ব্রাউজারে PDF ফাইলগুলি ড্র্যাগ এবং ড্রপ করবেন।",
+    "sidebar__tabs__art__title": "শিল্প",
+    "sidebar__tabs__art__tooltip": "এইচআই-পাওয়ারড শিল্প"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

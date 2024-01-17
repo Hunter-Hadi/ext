@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Αυτόματο άνοιγμα",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Αυτόματο άνοιγμα 'Προβολέα PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Ενεργοποιήστε την επιλογή \"Να επιτρέπεται η πρόσβαση σε διευθύνσεις URL αρχείων\" στις ρυθμίσεις του προγράμματος περιήγησής σας μεταβαίνοντας στην",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Αυτό θα επιτρέψει στον 'Προβολέα PDF AI' να ανοίγει αυτόματα όταν σύρετε και αποθέτετε αρχεία PDF στον περιηγητή."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Αυτό θα επιτρέψει στον 'Προβολέα PDF AI' να ανοίγει αυτόματα όταν σύρετε και αποθέτετε αρχεία PDF στον περιηγητή.",
+    "sidebar__tabs__art__title": "Τέχνη",
+    "sidebar__tabs__art__tooltip": "Τέχνη με τεχνητή νοημοσύνη"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

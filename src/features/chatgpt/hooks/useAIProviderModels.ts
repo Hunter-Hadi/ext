@@ -12,6 +12,7 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
@@ -123,6 +124,7 @@ const useAIProviderModels = () => {
       POE: POE_MODELS,
       MAXAI_CLAUDE: reverse(cloneDeep(MAXAI_CLAUDE_MODELS)),
       MAXAI_GEMINI: reverse(cloneDeep(MAXAI_GENMINI_MODELS)),
+      MAXAI_ART: reverse(cloneDeep(MAXAI_IMAGE_GENERATE_MODELS)),
     }
   }, [
     whiteListModels,

@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Abrir automaticamente",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Abrir automaticamente o 'Visualizador de IA em PDF'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Ative a opção \"Permitir acesso a URLs de arquivo\" nas configurações do seu navegador navegando para",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Isso permitirá que o 'Visualizador de IA em PDF' seja aberto automaticamente quando você arrastar e soltar arquivos PDF no navegador."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Isso permitirá que o 'Visualizador de IA em PDF' seja aberto automaticamente quando você arrastar e soltar arquivos PDF no navegador.",
+    "sidebar__tabs__art__title": "Arte",
+    "sidebar__tabs__art__tooltip": "Arte com inteligência artificial"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

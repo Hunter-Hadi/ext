@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisk åbning",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Åbn 'PDF AI-visning' automatisk",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivér indstillingen \"Tillad adgang til fil-URL'er\" i din browsers indstillinger ved at navigere til",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Dette vil lade 'PDF AI-visning' åbne automatisk, når du trækker og slipper PDF-filer i browseren."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Dette vil lade 'PDF AI-visning' åbne automatisk, når du trækker og slipper PDF-filer i browseren.",
+    "sidebar__tabs__art__title": "Kunst",
+    "sidebar__tabs__art__tooltip": "AI-drevet kunst"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

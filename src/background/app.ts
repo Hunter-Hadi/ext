@@ -14,6 +14,7 @@ import {
   BingChatProvider,
   ChatAdapter,
   ClaudeChatProvider,
+  MaxAIArtChatProvider,
   MaxAIClaudeChatProvider,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
@@ -26,6 +27,7 @@ import {
   BingChat,
   ChatSystem,
   ClaudeWebappChat,
+  MaxAIArtChat,
   MaxAIClaudeChat,
   MaxAIGeminiChat,
   OpenAiApiChat,
@@ -372,6 +374,9 @@ const initChromeExtensionMessage = () => {
   const maxAIGeminiAdapter = new ChatAdapter(
     new MaxAIGeminiChatProvider(new MaxAIGeminiChat()),
   )
+  const maxAIArtAdapter = new ChatAdapter(
+    new MaxAIArtChatProvider(new MaxAIArtChat()),
+  )
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
   chatSystem.addAdapter(
@@ -384,6 +389,7 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_ART, maxAIArtAdapter)
   // search with AI
   SearchWithAIMessageInit()
 }

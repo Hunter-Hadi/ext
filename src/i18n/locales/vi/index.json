@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Mở tự động",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Tự động mở 'Trình xem PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Bật tùy chọn \"Cho phép truy cập vào URL tệp\" trong cài đặt trình duyệt của bạn bằng cách điều hướng đến",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Điều này sẽ cho phép 'Trình xem PDF AI' tự động mở khi bạn kéo và thả các tệp PDF vào trình duyệt."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Điều này sẽ cho phép 'Trình xem PDF AI' tự động mở khi bạn kéo và thả các tệp PDF vào trình duyệt.",
+    "sidebar__tabs__art__title": "Nghệ thuật",
+    "sidebar__tabs__art__tooltip": "Nghệ thuật được hỗ trợ bởi trí tuệ nhân tạo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

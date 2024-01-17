@@ -213,6 +213,44 @@ const useClientConversation = () => {
           },
         })
       }
+    } else if (conversationType === 'Art') {
+      const chatCacheConversationId = (await getChromeExtensionLocalStorage())
+        .sidebarSettings?.art?.conversationId
+      // 如果chat板块已经有conversationId了
+      if (
+        chatCacheConversationId &&
+        (await clientGetConversation(chatCacheConversationId))
+      ) {
+        console.log(
+          '新版Conversation chatCacheConversationId',
+          chatCacheConversationId,
+        )
+        // 如果已经存在了，并且有AI消息，那么就不用创建了
+        return chatCacheConversationId
+      }
+      // 创建一个新的conversation
+      const result = await port.postMessage({
+        event: 'Client_createChatGPTConversation',
+        data: {
+          initConversationData: {
+            type: 'Art',
+            title: 'AI-powered image generate',
+            meta: merge({
+              AIProvider: 'MAXAI_ART',
+              AIModel: 'dall-e-3',
+              maxTokens: 4096,
+            }),
+          } as Partial<IChatConversation>,
+        },
+      })
+      if (result.success) {
+        conversationId = result.data.conversationId
+        await updateSidebarSettings({
+          search: {
+            conversationId,
+          },
+        })
+      }
     }
     return conversationId
   }

@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatsko otvaranje",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automatsko otvaranje 'PDF AI preglednika'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Omogućite opciju \"Dopusti pristup URL-ovima datoteka\" u postavkama preglednika tako da idete na",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". To će omogućiti automatsko otvaranje 'PDF AI preglednika' kada povučete i ispustite PDF datoteke u preglednik."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". To će omogućiti automatsko otvaranje 'PDF AI preglednika' kada povučete i ispustite PDF datoteke u preglednik.",
+    "sidebar__tabs__art__title": "Umjetnost",
+    "sidebar__tabs__art__tooltip": "Umjetnost s umjetnom inteligencijom"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

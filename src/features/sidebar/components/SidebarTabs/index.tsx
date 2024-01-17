@@ -51,6 +51,11 @@ export const sidebarTabsData: Array<{
     tooltip: () => 'client:sidebar__tabs__search__tooltip',
     value: 'Search',
   },
+  {
+    label: 'client:sidebar__tabs__art__title',
+    tooltip: () => 'client:sidebar__tabs__art__tooltip',
+    value: 'Art',
+  },
 ]
 
 const SidebarTabs: FC = () => {

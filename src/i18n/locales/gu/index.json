@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "આપો ઓટો",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'પીડીએફ AI જોવાની સ્વિચ' આપોઆપ ખોલો",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "તમારા બ્રાઉઝર સેટિંગ્સમાં \"ફાઇલ URLને ઍક્સેસ આપવાની મંજૂરી આપો\" વિકલ્પને સક્ષમ કરો અને તેમાં જઈને",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "પર જવો. આ તમને અનુમતિ આપશે કે જ્યારે તમે પીડીએફ ફાઇલોને બ્રાઉઝરમાં ખેંચો અને છોડો ત્યારે 'પીડીએફ AI જોવાની સ્વિચ' આપોઆપ ખુલી જશે."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "પર જવો. આ તમને અનુમતિ આપશે કે જ્યારે તમે પીડીએફ ફાઇલોને બ્રાઉઝરમાં ખેંચો અને છોડો ત્યારે 'પીડીએફ AI જોવાની સ્વિચ' આપોઆપ ખુલી જશે.",
+    "sidebar__tabs__art__title": "કલા",
+    "sidebar__tabs__art__tooltip": "AI પર આધારિત કલા"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

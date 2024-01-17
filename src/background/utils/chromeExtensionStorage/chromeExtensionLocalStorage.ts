@@ -20,6 +20,7 @@ import {
   CHROME_EXTENSION_LOCAL_STORAGE_SAVE_KEY,
   CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
 } from '@/constants'
+import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {
@@ -36,6 +37,9 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
         copilot: false,
         searchEngine: 'google',
         maxResultsCount: 6,
+      },
+      art: {
+        conversationId: '',
       },
       common: {
         currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
@@ -82,6 +86,13 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       [AI_PROVIDER_MAP.MAXAI_GEMINI]: {
         model: MAXAI_GENMINI_MODELS[0].value,
         temperature: 1,
+      },
+      [AI_PROVIDER_MAP.MAXAI_ART]: {
+        model: MAXAI_IMAGE_GENERATE_MODELS[0].value,
+        contentType: 'vivid',
+        aspectRatio: '1:1',
+        resolution: [1024, 1024],
+        generateCount: 1,
       },
     },
   }

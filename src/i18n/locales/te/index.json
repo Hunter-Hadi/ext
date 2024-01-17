@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ఆటో తెరవండి",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'పిడిఎఫ్ ఎయి వీక్షకు' స్వయంచాలకంగా తెరవండి",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "మీ బ్రౌజర్ సెట్టింగ్లలో \"ఫైల్ URLలకు ప్రవేశాన్ని అనుమతించు\" ఎంపికను ప్రారంభించండి",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ఇది మీకు అనుమతిస్తుంది 'పిడిఎఫ్ ఎయి వీక్షకు' స్వయంచాలకంగా తెరవడానికి మీరు పిడిఎఫ్ ఫైళ్లను బ్రౌజర్‌లో డ్రాగ్ చేసి పెట్టగలరు."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ఇది మీకు అనుమతిస్తుంది 'పిడిఎఫ్ ఎయి వీక్షకు' స్వయంచాలకంగా తెరవడానికి మీరు పిడిఎఫ్ ఫైళ్లను బ్రౌజర్‌లో డ్రాగ్ చేసి పెట్టగలరు.",
+    "sidebar__tabs__art__title": "కళా",
+    "sidebar__tabs__art__tooltip": "AI పోవర్ కళా"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

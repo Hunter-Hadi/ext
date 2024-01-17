@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Fungua moja kwa moja",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Fungua 'Mwonekano wa PDF AI' kiotomatiki",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Washa chaguo la \"Ruhusu ufikiaji wa URL za faili\" katika mipangilio ya kivinjari chako kwa kwenda",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Hii itawezesha 'Mwonekano wa PDF AI' kufungua kiotomatiki unapoburuta na kuacha faili za PDF kwenye kivinjari."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Hii itawezesha 'Mwonekano wa PDF AI' kufungua kiotomatiki unapoburuta na kuacha faili za PDF kwenye kivinjari.",
+    "sidebar__tabs__art__title": "Sanaa",
+    "sidebar__tabs__art__tooltip": "Sanaa yenye nguvu ya AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

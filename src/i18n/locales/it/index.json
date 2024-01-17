@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Apertura automatica",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Apri automaticamente 'Visualizzatore PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Abilita l'opzione \"Consenti accesso agli URL dei file\" nelle impostazioni del tuo browser navigando su",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ciò consentirà all' 'Visualizzatore PDF AI' di aprirsi automaticamente quando trascini e rilasci file PDF nel browser."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ciò consentirà all' 'Visualizzatore PDF AI' di aprirsi automaticamente quando trascini e rilasci file PDF nel browser.",
+    "sidebar__tabs__art__title": "Arte",
+    "sidebar__tabs__art__tooltip": "Arte potenziata dall'IA"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

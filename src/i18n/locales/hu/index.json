@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatikus megnyitás",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automatikus 'PDF AI néző' megnyitása",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Engedélyezze a \"Fájl-URL-ek hozzáférésének engedélyezése\" lehetőséget a böngésző beállításaiban a következő címre navigálva:",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ez lehetővé teszi, hogy a 'PDF AI néző' automatikusan megnyíljon, amikor PDF-fájlokat húz és ejt a böngészőbe."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ez lehetővé teszi, hogy a 'PDF AI néző' automatikusan megnyíljon, amikor PDF-fájlokat húz és ejt a böngészőbe.",
+    "sidebar__tabs__art__title": "Művészet",
+    "sidebar__tabs__art__tooltip": "AI-alapú művészet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

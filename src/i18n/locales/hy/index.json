@@ -503,7 +503,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Ինքնաշխատ բացել",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Ավտոմատ բացեք 'PDF AI դիտում'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Թույլատրեք \"Թույլատրել մուտք ֆայլերի URL-երին\" ընտրանքը ձեր զննարկիչի կարգավորումներում, այսպես հասանելի կդառնա 'PDF AI դիտումը', երբ դրանք գցեք և դրանք դարձրեք զննարկիչում:",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ".",
+    "sidebar__tabs__art__title": "Արվեստ",
+    "sidebar__tabs__art__tooltip": "AI-ի արվեստ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

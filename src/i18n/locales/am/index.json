@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "እንዴት ይጠቀሙ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI viewer' እንዴት በማስገባት ወይም በማስተላለፍ በሚከተለው ፕዲና ላይ እንዴት ይጠቀሙ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "የ\"የፋይል URL ወይም ፋይልዎችን ያስተላልፉ\" አማራጭ አስተዳዳሪነትን በቀላል ያስችሉትን ቦታዎች በመጠቀም የሚታይ ይሆናል",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "። ይህ በጣም የ'PDF AI viewer' በማስገባት ወይም በማስተላለፍ ፕዲና ፎርማትን በሚለው ቦታ እንዴት ይጠቀሙ"
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "። ይህ በጣም የ'PDF AI viewer' በማስገባት ወይም በማስተላለፍ ፕዲና ፎርማትን በሚለው ቦታ እንዴት ይጠቀሙ",
+    "sidebar__tabs__art__title": "የእርስዎ ገፅ",
+    "sidebar__tabs__art__tooltip": "AI-የተሳሳተ ገፅ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

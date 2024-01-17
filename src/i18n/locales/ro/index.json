@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Deschidere automată",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Deschide automat 'Vizualizatorul PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Activează opțiunea „Permite accesul la adresele URL ale fișierelor” în setările browserului tău navigând la",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Acest lucru va permite deschiderea automată a 'Vizualizatorului PDF AI' atunci când tragi și plasezi fișiere PDF în browser."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Acest lucru va permite deschiderea automată a 'Vizualizatorului PDF AI' atunci când tragi și plasezi fișiere PDF în browser.",
+    "sidebar__tabs__art__title": "Artă",
+    "sidebar__tabs__art__tooltip": "Artă cu inteligență artificială"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "स्वयंप्रकट",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI दर्शक' स्वत:च्या प्रमाणे उघडा",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "आपल्या ब्राउझर सेटिंग्जमध्ये \"फाइल URLसाठी प्रवेश परवानगी द्या\" पर्याय सक्षम करा वर्तमानपत्र द्वारे",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". हे आपल्याला पर्यायीत PDF फाइल्स ब्राउझरमध्ये ड्रॅग आणि ड्रॉप केल्यास 'PDF AI दर्शक' स्वतःप्रमाणे उघडतो."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". हे आपल्याला पर्यायीत PDF फाइल्स ब्राउझरमध्ये ड्रॅग आणि ड्रॉप केल्यास 'PDF AI दर्शक' स्वतःप्रमाणे उघडतो.",
+    "sidebar__tabs__art__title": "कला",
+    "sidebar__tabs__art__tooltip": "AI-शक्तित कला"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -151,6 +151,14 @@ export type IThirdProviderSettings = {
     model?: string
     temperature?: number
   }
+  // Art provider
+  [AI_PROVIDER_MAP.MAXAI_ART]: {
+    model?: string
+    aspectRatio?: string
+    contentType?: string
+    resolution?: [number, number]
+    generateCount?: number
+  }
 }
 
 export interface IChromeExtensionLocalStorage {
@@ -166,6 +174,9 @@ export interface IChromeExtensionLocalStorage {
       copilot?: boolean
       maxResultsCount?: number
       searchEngine?: URLSearchEngine
+    }
+    art?: {
+      conversationId?: string
     }
     common?: {
       currentAIProvider?: IAIProviderType

@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Buka secara automatik",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Buka 'Papar PDF AI' secara automatik",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktifkan pilihan \"Benarkan akses kepada URL fail\" dalam tetapan pelayar anda dengan melayari ke",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ini akan membolehkan 'Papar PDF AI' terbuka secara automatik apabila anda menyeret dan menjatuhkan fail PDF ke dalam pelayar."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ini akan membolehkan 'Papar PDF AI' terbuka secara automatik apabila anda menyeret dan menjatuhkan fail PDF ke dalam pelayar.",
+    "sidebar__tabs__art__title": "Seni",
+    "sidebar__tabs__art__tooltip": "Seni bertenaga AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

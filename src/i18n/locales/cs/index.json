@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automaticky otevřít",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Automaticky otevřít 'Prohlížeč PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Povolte možnost \"Povolit přístup k URL souborům\" v nastavení prohlížeče přejít na",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tím se automaticky otevře 'Prohlížeč PDF AI', když přetáhnete a pusťte soubory PDF do prohlížeče."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tím se automaticky otevře 'Prohlížeč PDF AI', když přetáhnete a pusťte soubory PDF do prohlížeče.",
+    "sidebar__tabs__art__title": "Umění",
+    "sidebar__tabs__art__tooltip": "Umění s podporou umělé inteligence"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

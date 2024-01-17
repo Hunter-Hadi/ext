@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "เปิดอัตโนมัติ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "เปิด 'ดู PDF AI' โดยอัตโนมัติ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "เปิดใช้งานตัวเลือก \"อนุญาตให้เข้าถึง URL ไฟล์\" ในการตั้งค่าเบราว์เซอร์ของคุณโดยไปที่",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "นี้จะทำให้ 'ดู PDF AI' เปิดโดยอัตโนมัติเมื่อคุณลากและวางไฟล์ PDF เข้าสู่เบราว์เซอร์"
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "นี้จะทำให้ 'ดู PDF AI' เปิดโดยอัตโนมัติเมื่อคุณลากและวางไฟล์ PDF เข้าสู่เบราว์เซอร์",
+    "sidebar__tabs__art__title": "ศิลปะ",
+    "sidebar__tabs__art__tooltip": "ศิลปะที่มีพลังของ AI"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

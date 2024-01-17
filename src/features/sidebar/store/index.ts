@@ -45,4 +45,4 @@ export const SidebarPageState = atom<{
   },
 })
 
-export type ISidebarConversationType = 'Chat' | 'Summary' | 'Search'
+export type ISidebarConversationType = 'Chat' | 'Summary' | 'Search' | 'Art'

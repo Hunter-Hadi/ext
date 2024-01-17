@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Автоматическое открытие",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Автоматическое открытие 'Просмотра PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Включите опцию \"Разрешить доступ к URL-адресам файлов\" в настройках вашего браузера, перейдя по адресу",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Это позволит 'Просмотру PDF AI' автоматически открываться при перетаскивании файлов PDF в браузер."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Это позволит 'Просмотру PDF AI' автоматически открываться при перетаскивании файлов PDF в браузер.",
+    "sidebar__tabs__art__title": "Искусство",
+    "sidebar__tabs__art__tooltip": "Искусство, работающее на основе искусственного интеллекта"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

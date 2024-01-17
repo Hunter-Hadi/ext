@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Автоматично отваряне",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Автоматично отваряне на 'Преглед на PDF AI'",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Активирайте опцията \"Разрешаване на достъп до URL адреси на файлове\" в настройките на вашия браузър, като отидете на",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Това ще позволи на 'Преглед на PDF AI' да се отваря автоматично, когато влачете и пускате PDF файлове в браузъра."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Това ще позволи на 'Преглед на PDF AI' да се отваря автоматично, когато влачете и пускате PDF файлове в браузъра.",
+    "sidebar__tabs__art__title": "Изкуство",
+    "sidebar__tabs__art__tooltip": "Изкуство с изкуствен интелект"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

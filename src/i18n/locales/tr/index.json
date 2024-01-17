@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Otomatik aç",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI görüntüleyici'yi otomatik olarak açın",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Tarayıcı ayarlarınıza giderek \"Dosya URL'lerine erişime izin ver\" seçeneğini etkinleştirin.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Böylece PDF dosyalarını tarayıcıya sürükleyip bıraktığınızda 'PDF AI görüntüleyici' otomatik olarak açılacaktır."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Böylece PDF dosyalarını tarayıcıya sürükleyip bıraktığınızda 'PDF AI görüntüleyici' otomatik olarak açılacaktır.",
+    "sidebar__tabs__art__title": "Sanat",
+    "sidebar__tabs__art__tooltip": "Yapay zeka destekli sanat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

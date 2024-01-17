@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "தானியங்கி திறக்க",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'பிடிஎஃப் ஏஐ காட்சி' தானாகவே திறக்கப்படும்",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "உங்கள் உலாவியில் 'கோப்பு URL-க்கு அணுகல் அனுமதியை அனுமதிக்க' விரும்பினால் உங்கள் உலாவி அமைப்புகளில் \"URL-க்கு கோப்புகளுக்கு அணுகல் அனுமதியை அனுமதிக்க\" விரும்பினால் 'பிடிஎஃப் ஏஐ காட்சி' தானாகவே திறக்கப்படும்.",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ".",
+    "sidebar__tabs__art__title": "கலை",
+    "sidebar__tabs__art__tooltip": "மின்னணு மூலம் உருவாக்கப்பட்ட கலை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

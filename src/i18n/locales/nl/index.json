@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "Automatisch openen",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Open 'PDF AI-viewer' automatisch",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Schakel de optie \"Toegang verlenen tot bestands-URL's\" in uw browserinstellingen in door naar",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "te gaan. Hierdoor wordt de 'PDF AI-viewer' automatisch geopend wanneer u PDF-bestanden in de browser sleept en plaatst."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "te gaan. Hierdoor wordt de 'PDF AI-viewer' automatisch geopend wanneer u PDF-bestanden in de browser sleept en plaatst.",
+    "sidebar__tabs__art__title": "Kunst",
+    "sidebar__tabs__art__tooltip": "AI-aangedreven kunst"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

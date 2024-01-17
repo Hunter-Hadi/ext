@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "ಸ್ವಯಂ ತೆರೆದು ಹಾಕಿ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "'PDF AI ವೀಕ್ಷಕ' ಸ್ವಯಂಚಾಲಿತವಾಗಿ ತೆರೆಯಲು",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "ನಿಮ್ಮ ಬ್ರೌಸರ್ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ \"ಫೈಲ್ URL ಗೆ ಪ್ರವೇಶ ಅನುಮತಿಸು\" ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ ಈ ವಿಳಾಸಕ್ಕೆ ಹೋಗುವ ಮೂಲಕ",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ಇದು ನೀವು ಪಿಡಿಎಫ್ ಕಡತಗಳನ್ನು ಬ್ರೌಸರ್ ಗೆ ಹಾಕಿ ಬಿಸಿಯಿರಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ 'PDF AI ವೀಕ್ಷಕ' ತೆರೆಯುವುದನ್ನು ಅನುಮತಿಸುತ್ತದೆ."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ಇದು ನೀವು ಪಿಡಿಎಫ್ ಕಡತಗಳನ್ನು ಬ್ರೌಸರ್ ಗೆ ಹಾಕಿ ಬಿಸಿಯಿರಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ 'PDF AI ವೀಕ್ಷಕ' ತೆರೆಯುವುದನ್ನು ಅನುಮತಿಸುತ್ತದೆ.",
+    "sidebar__tabs__art__title": "ಕಲೆ",
+    "sidebar__tabs__art__tooltip": "AI ಶಕ್ತಿಯ ಕಲೆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

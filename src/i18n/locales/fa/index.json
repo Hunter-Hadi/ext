@@ -506,7 +506,9 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__title": "باز کردن خودکار",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "باز کردن 'نمایشگر هوش مصنوعی PDF' به صورت خودکار",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "گزینه \"اجازه دسترسی به URLهای فایل\" را در تنظیمات مرورگر خود فعال کنید با رفتن به",
-    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". این کار باعث می‌شود 'نمایشگر هوش مصنوعی PDF' به صورت خودکار با کشیدن و رها کردن فایل‌های PDF به مرورگر باز شود."
+    "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". این کار باعث می‌شود 'نمایشگر هوش مصنوعی PDF' به صورت خودکار با کشیدن و رها کردن فایل‌های PDF به مرورگر باز شود.",
+    "sidebar__tabs__art__title": "هنر",
+    "sidebar__tabs__art__tooltip": "هنر قدرت گرفته از هوش مصنوعی"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

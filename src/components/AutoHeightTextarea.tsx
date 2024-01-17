@@ -521,14 +521,19 @@ const AutoHeightTextarea: FC<{
             if (event.key === 'Enter' && event.shiftKey) {
               console.log('shift enter')
             } else if (event.key === 'Enter') {
+              event.preventDefault()
+              const value = event.currentTarget.value
+              if (!value || !value.trim()) {
+                // value 没有值或者都是空格时不触发 ask
+                return
+              }
               onEnter &&
-                onEnter(event.currentTarget.value, {
+                onEnter(value, {
                   includeHistory: !nextMessageIsActionRef.current,
                   meta: metaDataRef.current,
                 })
               nextMessageIsActionRef.current = false
               metaDataRef.current = {}
-              event.preventDefault()
             } else if (event.code === 'Space') {
               event.stopPropagation()
               return

@@ -41,6 +41,7 @@ const useClientChat = () => {
         type: 'ASK_CHATGPT',
         parameters: {
           AskChatGPTActionQuestion: question as IUserChatMessage,
+          isEnabledDetectAIResponseLanguage: false,
         },
       },
     ])

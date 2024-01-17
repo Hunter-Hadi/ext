@@ -14,8 +14,8 @@ import React, {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSetRecoilState } from 'recoil'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
@@ -33,13 +33,13 @@ import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/s
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
+import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { SidebarPageState } from '@/features/sidebar/store'
 import { clientRestartChromeExtension } from '@/utils'
-
-import useSliceMessageList from '../../hooks/useSliceMessageList'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
@@ -53,15 +53,8 @@ interface IGmailChatBoxProps {
   loading?: boolean
 }
 
-const SidebarChatBoxMessageItem = React.lazy(
-  () =>
-    import(
-      '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
-    ),
-)
-
-const messageListContainerId = 'message-list-container'
-const scrollContainerId = 'scroll-message-container'
+export const messageListContainerId = 'message-list-container'
+export const scrollContainerId = 'scroll-message-container'
 
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
@@ -81,20 +74,20 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   // const messageListContainerList = useRef<HTMLElement | null>(null)
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
   // console.log(`messageListContainerList`, messageListContainerList, messages)
-  const { slicedMessageList, changePageNumber } = useSliceMessageList(
-    scrollContainerId,
-    messageListContainerId,
-    messages,
-  )
   const { currentSidebarConversationType } = useSidebarSettings()
   const scrolledToBottomRef = useRef(true)
 
+  const setSidebarPageState = useSetRecoilState(SidebarPageState)
+
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
-      changePageNumber(1)
+      setSidebarPageState((preState) => ({
+        ...preState,
+        messageListPageNum: 1,
+      }))
       onSendMessage && onSendMessage(value, options)
     },
-    [onSendMessage, changePageNumber],
+    [onSendMessage],
   )
 
   useEffect(() => {
@@ -194,11 +187,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   // console.log('scrolledToBottomRef.current', scrolledToBottomRef.current)
   const tempIsShowRegenerate = useMemo(() => {
-    if (
-      currentSidebarConversationType === 'Chat' &&
-      slicedMessageList.length > 0
-    ) {
-      const lastMessage = slicedMessageList[messages.length - 1]
+    if (currentSidebarConversationType === 'Chat' && messages.length > 0) {
+      const lastMessage = messages[messages.length - 1]
       if (lastMessage && lastMessage.type === 'ai') {
         const AIMessage = lastMessage as IAIResponseMessage
         if (AIMessage?.originalMessage?.metadata?.shareType === 'search') {
@@ -207,7 +197,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       }
     }
     return true
-  }, [slicedMessageList, currentSidebarConversationType])
+  }, [messages, currentSidebarConversationType])
   return (
     <Stack
       id={'maxAISidebarChatBox'}
@@ -236,32 +226,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           <DevConsole />
         </DevContent>
         <SidebarHeader />
-        {/* 这个 Box 只能包含 message item */}
-        <Box id={messageListContainerId}>
-          <AppSuspenseLoadingLayout>
-            {slicedMessageList.map((message, index) => {
-              return (
-                <SidebarChatBoxMessageItem
-                  key={
-                    message.messageId + '_sidebar_chat_message_' + String(index)
-                  }
-                  className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-                  message={message}
-                />
-              )
-            })}
-            {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
-            {writingMessage &&
-            !slicedMessageList.find(
-              (msg) => msg.messageId === writingMessage.messageId,
-            ) ? (
-              <SidebarChatBoxMessageItem
-                className={'use-chat-gpt-ai__writing-message-item'}
-                message={writingMessage}
-              />
-            ) : null}
-          </AppSuspenseLoadingLayout>
-        </Box>
+        <SidebarChatBoxMessageListContainer
+          messages={messages}
+          writingMessage={writingMessage}
+        />
       </Box>
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}
@@ -317,7 +285,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 right: 0,
               }}
             />
-            {!loading && slicedMessageList.length > 0 && tempIsShowRegenerate && (
+            {!loading && messages.length > 0 && tempIsShowRegenerate && (
               <>
                 <Button
                   disableElevation

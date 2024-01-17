@@ -310,12 +310,12 @@ export class ActionAskChatGPT extends Action {
               askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
               askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
             ) {
-              // 移除AI writing message
-              clientConversationEngine.updateClientWritingMessage(null)
               await clientConversationEngine.pushMessage(
                 this.answer,
                 conversationId,
               )
+              // 移除AI writing message
+              clientConversationEngine.updateClientWritingMessage(null)
             }
           }
           if (errorMessage) {

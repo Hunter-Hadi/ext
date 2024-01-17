@@ -100,6 +100,13 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         scrolledToBottomRef.current &&
           containerElement.scrollTo(0, containerElement.scrollHeight)
 
+        // TODO
+        /**
+         * 待优化的点
+         * 现在只是用 setTimeout 来等待 SidebarChatBoxMessageItem Suspense 完成的延迟
+         * 正确的做法应该是在 SidebarChatBoxMessageItem Suspense 完成时触发一个 callback 来让 scrolledToBottomRef滚动至底部
+         * 不过还没找到正确方法
+         */
         setTimeout(() => {
           scrolledToBottomRef.current &&
             containerElement.scrollTo(0, containerElement.scrollHeight)

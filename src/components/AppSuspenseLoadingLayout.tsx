@@ -4,12 +4,19 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, Suspense } from 'react'
 
-const AppSuspenseLoadingLayout: FC<{
+interface IProps {
   loadingText?: string
   size?: number
   sx?: SxProps
   children?: React.ReactNode
-}> = ({ loadingText = 'Loading...', size = 16, sx, children }) => {
+}
+
+const AppSuspenseLoadingLayout: FC<IProps> = ({
+  loadingText = 'Loading...',
+  size = 16,
+  sx,
+  children,
+}) => {
   return (
     <Suspense
       fallback={
@@ -44,4 +51,5 @@ const AppSuspenseLoadingLayout: FC<{
     </Suspense>
   )
 }
+
 export default AppSuspenseLoadingLayout

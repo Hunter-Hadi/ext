@@ -23,8 +23,12 @@ const useMessageListPaginator = (
 ) => {
   const [loaded, setLoaded] = useState(false)
 
-  const { buffer = 0, scrollContainerId = '', pageSize = 10 } =
-    coverOptions || {}
+  const {
+    // 经过测试 buffer 为 0 时，滚动翻页的效果最好
+    buffer = 0,
+    scrollContainerId = '',
+    pageSize = 10,
+  } = coverOptions || {}
 
   const observer = useRef<IntersectionObserver | null>(null)
 

@@ -138,7 +138,8 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             // 一次性付费用户
             is_one_times_pay_user = true
             // 判断是否过期
-            const expireTime = dayjs(result.data.current_period_end)
+            // current_period_end是unix时间戳
+            const expireTime = dayjs(result.data.current_period_end * 1000)
               .utc()
               .valueOf()
             const now = dayjs().utc().valueOf()

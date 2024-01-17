@@ -66,7 +66,10 @@ const useShortCutsEngine = () => {
             })
           }
           await shortCutsEngineRef.current.run({
-            parameters: overwriteParameters || getParams().shortCutsParameters,
+            parameters:
+              overwriteParameters && overwriteParameters.length > 0
+                ? overwriteParameters
+                : getParams().shortCutsParameters,
             engine: {
               shortcutsEngine: shortCutsEngineRef.current,
               clientConversationEngine,

@@ -31,7 +31,6 @@ export class ActionChatMessage extends Action {
       const conversationEngine = engine.clientConversationEngine
       const conversationId =
         conversationEngine?.currentConversationIdRef?.current
-      debugger
       if (!messageConfig || !conversationId || !conversationEngine) {
         this.error = 'invalid parameters'
         return
@@ -55,7 +54,6 @@ export class ActionChatMessage extends Action {
       this.output = String(messageConfig.messageId)
     } catch (e) {
       this.error = (e as any).message
-      debugger
     }
   }
 }

@@ -81,8 +81,17 @@ const useClientConversation = () => {
       // 如果没有，那么就创建一个
       const appLocalStorage = await getChromeExtensionLocalStorage()
       // 获取当前AIProvider
-      const currentAIProvider = appLocalStorage.sidebarSettings?.common
+      let currentAIProvider = appLocalStorage.sidebarSettings?.common
         ?.currentAIProvider as IAIProviderType
+      // 如果是Art，切换回UseChatGPT
+      if (currentAIProvider === 'MAXAI_ART') {
+        await updateSidebarSettings({
+          common: {
+            currentAIProvider: 'USE_CHAT_GPT_PLUS',
+          },
+        })
+        currentAIProvider = 'USE_CHAT_GPT_PLUS'
+      }
       // 获取当前AIProvider的model
       const currentModel =
         appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model || ''
@@ -246,7 +255,7 @@ const useClientConversation = () => {
       if (result.success) {
         conversationId = result.data.conversationId
         await updateSidebarSettings({
-          search: {
+          art: {
             conversationId,
           },
         })
@@ -320,6 +329,13 @@ const useClientConversation = () => {
       // 清除search的conversationId
       await updateSidebarSettings({
         search: {
+          conversationId: '',
+        },
+      })
+    } else if (currentSidebarConversationType === 'Art') {
+      // 清除search的conversationId
+      await updateSidebarSettings({
+        art: {
           conversationId: '',
         },
       })

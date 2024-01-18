@@ -1,5 +1,4 @@
 import CircularProgress from '@mui/material/CircularProgress'
-import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
@@ -16,9 +15,11 @@ import {
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
+import SidebarAIMessageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent'
+import SidebarAIMessageSkeletonContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageSkeletonContent'
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
-import SidebarChatBoxAiTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarChatBoxAiTools'
+import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -162,7 +163,9 @@ const BaseSidebarAIMessage: FC<{
                       lineHeight: '20px',
                     }}
                   >
-                    Writing
+                    {renderData.content.contentType === 'text' && 'Writing'}
+                    {renderData.content.contentType === 'image' &&
+                      'Creating image'}
                   </Typography>
                 </Stack>
               ) : (
@@ -203,22 +206,11 @@ const BaseSidebarAIMessage: FC<{
                 </Stack>
               )}
               {isWaitFirstAIResponseText && !renderData.messageIsComplete ? (
-                <Stack>
-                  <Skeleton animation="wave" height={10} />
-                  <Skeleton animation="wave" height={10} />
-                  <Skeleton animation="wave" height={10} />
-                  <Skeleton animation="wave" height={10} />
-                  <Skeleton animation="wave" height={10} />
-                  <Skeleton animation="wave" height={10} />
-                </Stack>
+                <SidebarAIMessageSkeletonContent
+                  contentType={renderData.content.contentType}
+                />
               ) : (
-                <div
-                  className={`markdown-body ${
-                    isDarkMode ? 'markdown-body-dark' : ''
-                  }`}
-                >
-                  <CustomMarkdown>{renderData.answer}</CustomMarkdown>
-                </div>
+                <SidebarAIMessageContent AIMessage={message} />
               )}
             </Stack>
           )}
@@ -244,7 +236,7 @@ const BaseSidebarAIMessage: FC<{
           <CustomMarkdown>{renderData.answer}</CustomMarkdown>
         </div>
       )}
-      <SidebarChatBoxAiTools message={message as IAIResponseMessage} />
+      <SidebarAIMessageTools message={message as IAIResponseMessage} />
     </Stack>
   )
 }

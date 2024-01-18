@@ -86,7 +86,14 @@ const useShortCutsEngine = () => {
         })
       }
     },
-    [shortCutsEngineRef, getParams, isLogin],
+    [
+      shortCutsEngineRef,
+      clientConversationEngine,
+      clientMessageChannelEngine,
+      shortcutsMessageChannelEngine,
+      getParams,
+      isLogin,
+    ],
   )
   const stopShortCuts = useCallback(async () => {
     if (!shortCutsEngineRef.current) {

@@ -126,10 +126,23 @@ class ConversationDB {
           conversation.updated_at = new Date().toISOString()
         }
         objectStore.put(conversation)
+        console.log(
+          'clientChatConversationModifyChatMessages prev save',
+          conversation,
+        )
         transaction.oncomplete = () => {
+          console.log(
+            'clientChatConversationModifyChatMessages saved',
+            conversation,
+          )
           resolve() // 操作成功完成，解析 Promise
         }
         transaction.onerror = (event) => {
+          console.log(
+            'clientChatConversationModifyChatMessages saved error',
+            event,
+            conversation,
+          )
           reject((event.target as any)?.error || '') // 操作出错，拒绝 Promise 并传递错误信息
         }
       } catch (error) {
@@ -294,6 +307,19 @@ class ConversationDB {
       ),
     )
   }
+  public async removeEmptyMessagesConversations(): Promise<void> {
+    const allConversations = await this.getAllConversations()
+    const waitDeleteConversations: IChatConversation[] = allConversations.filter(
+      (conversation) => {
+        return conversation.messages.length === 0
+      },
+    )
+    await Promise.all(
+      waitDeleteConversations.map((conversation) =>
+        this.deleteConversation(conversation.id),
+      ),
+    )
+  }
 }
 
 export default class ConversationManager {
@@ -318,6 +344,8 @@ export default class ConversationManager {
       defaultConversation,
       newConversation,
     ])
+    // 清除无信息的会话
+    await this.conversationDB.removeEmptyMessagesConversations()
     await this.conversationDB.addOrUpdateConversation(saveConversation, false)
     // 异步清除无用的对话
     // this.conversationDB.removeUnnecessaryConversations().then().catch()

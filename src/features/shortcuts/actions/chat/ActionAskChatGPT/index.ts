@@ -254,9 +254,6 @@ export class ActionAskChatGPT extends Action {
                             messageId: outputMessageId,
                             originalMessage: {
                               content: {
-                                contentType:
-                                  message?.originalMessage?.content
-                                    ?.contentType || 'text',
                                 text: message.text,
                               },
                             },
@@ -303,20 +300,35 @@ export class ActionAskChatGPT extends Action {
           if (this.status !== 'running') {
             return
           }
-          if (this.answer) {
+          if (outputMessageId) {
+            await clientChatConversationModifyChatMessages(
+              'update',
+              conversationId,
+              0,
+              [
+                {
+                  messageId: outputMessageId,
+                  originalMessage: {
+                    metadata: {
+                      isComplete: true,
+                    },
+                  },
+                } as IAIResponseMessage,
+              ],
+            )
+          }
+          if (
+            this.answer &&
+            askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
+            askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
+          ) {
             // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
-            if (
-              !outputMessageId &&
-              askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
-              askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
-            ) {
-              // 移除AI writing message
-              clientConversationEngine.updateClientWritingMessage(null)
-              await clientConversationEngine.pushMessage(
-                this.answer,
-                conversationId,
-              )
-            }
+            // 移除AI writing message
+            clientConversationEngine.updateClientWritingMessage(null)
+            await clientConversationEngine.pushMessage(
+              this.answer,
+              conversationId,
+            )
           }
           if (errorMessage) {
             if (isPermissionCardSceneType(errorMessage)) {

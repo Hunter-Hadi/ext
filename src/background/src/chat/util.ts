@@ -136,8 +136,8 @@ export const clientAskAIQuestion = async (
       conversationId: string
       text: string
       originalMessage?: IAIResponseOriginalMessage
-    }) => void
-    onError?: (error: string) => void
+    }) => Promise<void>
+    onError?: (error: string) => Promise<void>
   },
 ) => {
   const tasks: any = []
@@ -185,15 +185,26 @@ export const clientAskAIQuestion = async (
             `测试requestIdleCallbackPolyfill [${tasks.length - 1}]`,
             lastTaskData?.data?.text,
           )
-          if (lastTaskData.error) {
-            onError?.(lastTaskData.error)
-          } else if (lastTaskData?.data?.text) {
-            onMessage?.(lastTaskData.data)
-          }
-          if (lastTaskData.done) {
-            resolve(true)
-            destroyListener()
+          const isDone = lastTaskData.done
+          // 因为在结束之后可能立刻要执行一些promise方法，必须等onMessage执行完后再去做操作
+          if (isDone) {
+            if (lastTaskData.error) {
+              onError?.(lastTaskData.error).finally(() => {
+                resolve(true)
+                destroyListener()
+              })
+            } else if (lastTaskData?.data?.text) {
+              onMessage?.(lastTaskData.data).finally(() => {
+                resolve(true)
+                destroyListener()
+              })
+            }
           } else {
+            if (lastTaskData.error) {
+              onError?.(lastTaskData.error)
+            } else if (lastTaskData?.data?.text) {
+              onMessage?.(lastTaskData.data)
+            }
             runTask()
           }
         },
@@ -304,10 +315,10 @@ export const processAskAIParameters = async (
   conversation: IChatConversation,
   question: IUserChatMessage,
 ) => {
-  const { includeHistory } = question.meta || {}
+  const { includeHistory, historyMessages } = question.meta || {}
   // 聊天记录生成
   // 如果有includeHistory，那么需要生成聊天记录
-  if (includeHistory) {
+  if (includeHistory && !historyMessages) {
     // 当前会话使用的Model的maxTokens
     let conversationUsingModelMaxTokens = conversation.meta.maxTokens || 4096
     // system prompt占用的tokens

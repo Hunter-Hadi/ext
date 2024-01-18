@@ -94,7 +94,12 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
       }
       question.meta?.historyMessages?.forEach((message) => {
         chat_history.push({
-          role: message.type === 'ai' ? 'ai' : 'human',
+          role:
+            message.type === 'ai'
+              ? 'ai'
+              : message.type === 'user'
+              ? 'human'
+              : 'system',
           content: [
             {
               type: 'text',

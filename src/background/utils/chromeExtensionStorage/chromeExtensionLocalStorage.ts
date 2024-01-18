@@ -40,6 +40,7 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       },
       art: {
         conversationId: '',
+        isEnabledConversationalMode: true,
       },
       common: {
         currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
@@ -93,6 +94,7 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
         aspectRatio: '1:1',
         resolution: [1024, 1024],
         generateCount: 1,
+        textToImagePrompt: '',
       },
     },
   }

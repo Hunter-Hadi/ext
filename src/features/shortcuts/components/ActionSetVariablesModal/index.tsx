@@ -505,7 +505,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           </Typography>
         </Box>
         <IconButton
-          data-test-id={`close-modal-button`}
+          data-testid={`close-modal-button`}
           onClick={async () => await closeModal(true)}
           sx={{
             flexShrink: 0,

@@ -37,6 +37,8 @@ const useSidebarSettings = () => {
         return appLocalStorage.sidebarSettings?.search?.conversationId
       case 'Summary':
         return appLocalStorage.sidebarSettings?.summary?.conversationId
+      case 'Art':
+        return appLocalStorage.sidebarSettings?.art?.conversationId
       default:
         return ''
     }
@@ -45,6 +47,7 @@ const useSidebarSettings = () => {
     appLocalStorage.sidebarSettings?.chat?.conversationId,
     appLocalStorage.sidebarSettings?.search?.conversationId,
     appLocalStorage.sidebarSettings?.summary?.conversationId,
+    appLocalStorage.sidebarSettings?.art?.conversationId,
   ])
   const sidebarConversationTypeMessageMap = useMemo(() => {
     return {
@@ -58,11 +61,16 @@ const useSidebarSettings = () => {
         ]?.messages || [],
       Summary:
         clientConversationMap[getPageSummaryConversationId()]?.messages || [],
+      Art:
+        clientConversationMap[
+          appLocalStorage.sidebarSettings?.art?.conversationId || ''
+        ]?.messages || [],
     } as {
       [key in ISidebarConversationType]: IChatMessage[]
     }
   }, [
     currentSidebarConversationId,
+    appLocalStorage.sidebarSettings?.art?.conversationId,
     appLocalStorage.sidebarSettings?.chat?.conversationId,
     appLocalStorage.sidebarSettings?.search?.conversationId,
     appLocalStorage.sidebarSettings?.summary?.conversationId,

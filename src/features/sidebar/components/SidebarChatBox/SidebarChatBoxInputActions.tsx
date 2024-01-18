@@ -13,6 +13,7 @@ import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
+import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
@@ -79,8 +80,6 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
-        {currentSidebarConversationType === 'Search' &&
-          !smoothConversationLoading && <SearchWithAICopilotToggle />}
         <PromptLibraryIconButton
           sx={{
             visibility:
@@ -90,6 +89,10 @@ const SidebarChatBoxInputActions: FC<{
                 : 'hidden',
           }}
         />
+        {currentSidebarConversationType === 'Search' &&
+          !smoothConversationLoading && <SearchWithAICopilotToggle />}
+        {currentSidebarConversationType === 'Art' &&
+          !smoothConversationLoading && <ArtConversationalModeToggle />}
         {currentSidebarConversationType === 'Chat' &&
           !smoothConversationLoading && (
             <FloatingInputButton

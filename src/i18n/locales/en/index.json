@@ -40,7 +40,8 @@
     "paste": "Paste",
     "loading": "Loading...",
     "no_options": "No options",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "download": "Download"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -509,12 +510,15 @@
     "activity__1st_anniversary_2024__title1": "MaxAI's 1st anniversary celebration",
     "activity__1st_anniversary_2024__title2": "Up to 50% OFF!",
     "quick_access__hide_button__title": "Hide quick access until next visit",
-    "art__image_generate__aspect_ratio__square__title": "Square",
-    "art__image_generate__aspect_ratio__landscape__title": "Landscape",
-    "art__image_generate__aspect_ratio__portrait__title": "Portrait",
-    "art__image_generate__aspect_ratio__widescreen__title": "Widescreen",
-    "art__image_generate__content_type__photo__title": "Photo",
-    "art__image_generate__content_type__art__title": "Art"
+    "art__text_to_image__aspect_ratio__square__title": "Square",
+    "art__text_to_image__aspect_ratio__landscape__title": "Landscape",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portrait",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Widescreen",
+    "art__text_to_image__content_type__photo__title": "Photo",
+    "art__text_to_image__content_type__art__title": "Art",
+    "art__text_to_image__advanced__title": "Advanced art options",
+    "art__text_to_image__advanced__aspect_ratio__title": "Aspect ratio",
+    "art__text_to_image__advanced__content_type__title": "Content type"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

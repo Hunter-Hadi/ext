@@ -24,7 +24,7 @@ const DevConsole: FC = () => {
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
   const renderConversation = useMemo(() => {
-    const clonedConversation = cloneDeep(
+    const clonedConversation: any = cloneDeep(
       currentSidebarConversation,
     ) as IChatConversation
     if (clonedConversation) {
@@ -119,7 +119,10 @@ const DevConsole: FC = () => {
           <p>
             currentSidebarConversationType: {currentSidebarConversationType}
           </p>
-          <p>currentSidebarAIProvider: {currentSidebarAIProvider}</p>
+          <p>
+            currentSidebarAIProvider: {currentSidebarAIProvider} - [
+            {currentSidebarConversation?.messages.length}]
+          </p>
           <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
           <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
           {/*<pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>*/}

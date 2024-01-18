@@ -247,7 +247,7 @@ const useClientConversation = () => {
             meta: merge({
               AIProvider: 'MAXAI_ART',
               AIModel: 'dall-e-3',
-              maxTokens: 4096,
+              maxTokens: 16384,
             }),
           } as Partial<IChatConversation>,
         },

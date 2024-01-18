@@ -4,18 +4,10 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import throttle from 'lodash-es/throttle'
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useSetRecoilState } from 'recoil'
 
-import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
@@ -34,13 +26,13 @@ import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/s
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
+import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { SidebarPageState } from '@/features/sidebar/store'
 import { clientRestartChromeExtension } from '@/utils'
-
-import useSliceMessageList from '../../hooks/useSliceMessageList'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
@@ -53,16 +45,6 @@ interface IGmailChatBoxProps {
   onRetry?: (messageId: string) => void
   loading?: boolean
 }
-
-const SidebarChatBoxMessageItem = React.lazy(
-  () =>
-    import(
-      '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
-    ),
-)
-
-const messageListContainerId = 'message-list-container'
-const scrollContainerId = 'scroll-message-container'
 
 const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const {
@@ -77,129 +59,14 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   } = props
   const [isSetVariables, setIsSetVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
-  // const conversation = useRecoilValue(ChatGPTConversationState)
-  const stackRef = useRef<HTMLElement | null>(null)
-  // const messageListContainerList = useRef<HTMLElement | null>(null)
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
-  // console.log(`messageListContainerList`, messageListContainerList, messages)
-  const { slicedMessageList, changePageNumber } = useSliceMessageList(
-    scrollContainerId,
-    messageListContainerId,
-    messages,
-  )
   const { currentSidebarConversationType } = useSidebarSettings()
-  const scrolledToBottomRef = useRef(true)
 
-  const handleSendMessage = useCallback(
-    (value: string, options: IUserChatMessageExtraType) => {
-      changePageNumber(1)
-      onSendMessage && onSendMessage(value, options)
-    },
-    [onSendMessage, changePageNumber],
-  )
+  const setSidebarPageState = useSetRecoilState(SidebarPageState)
 
-  useEffect(() => {
-    const list = stackRef.current
-    if (!list) {
-      return
-    }
-    const handleScroll = (event: any) => {
-      if (event.deltaY < 0) {
-        scrolledToBottomRef.current = false
-        return
-      }
-      const scrollTop = list.scrollTop
-      const scrollHeight = list.scrollHeight
-      const clientHeight = list.clientHeight
-      const isScrolledToButton = clientHeight + scrollTop >= scrollHeight
-      if (isScrolledToButton) {
-        scrolledToBottomRef.current = true
-      }
-    }
-
-    const throttleHandleScroll = throttle(handleScroll, 100)
-    list.addEventListener('wheel', throttleHandleScroll)
-    return () => list.removeEventListener('wheel', throttleHandleScroll)
-  }, [])
-
-  useEffect(() => {
-    const list = stackRef.current
-    if (scrolledToBottomRef.current && list) {
-      list.scrollTo(0, list.scrollHeight)
-    }
-  }, [writingMessage])
-
-  useEffect(() => {
-    if (loading) {
-      // 这里的 scrollToBottom 需要兼容 search / summary 的情况
-      // 当在 loading 时，如果最后一条消息是 search / summary
-      // 判断 scrolledToBottomRef.current 为 true 时滚动到底部
-      const lastMessage = messages[messages.length - 1]
-      if (lastMessage && lastMessage.type === 'ai') {
-        const lastMessageOriginalData = (lastMessage as IAIResponseMessage)
-          ?.originalMessage
-        if (
-          lastMessageOriginalData &&
-          (lastMessageOriginalData.metadata?.shareType === 'search' ||
-            lastMessageOriginalData.metadata?.shareType === 'summary')
-        ) {
-          const list = stackRef.current
-          if (scrolledToBottomRef.current && list) {
-            list.scrollTo(0, list.scrollHeight)
-          }
-        }
-      }
-    }
-  }, [loading, messages])
-
-  const lastScrollId = useRef('')
-  useEffect(() => {
-    if (messages.length > 0) {
-      setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
-      for (let i = messages.length - 1; i >= 0; i--) {
-        const message = messages[i]
-        if (message) {
-          // if (message.type === 'user' || message.type === 'system') {
-          const list = stackRef.current
-          if (
-            lastScrollId.current &&
-            lastScrollId.current !== message.messageId
-          ) {
-            scrolledToBottomRef.current = true
-            setTimeout(() => {
-              list && list.scrollTo(0, list.scrollHeight)
-            }, 0)
-          }
-          lastScrollId.current = message.messageId
-          break
-        }
-      }
-    }
-  }, [messages])
-
-  useEffect(() => {
-    const focusListener = () => {
-      const list = stackRef.current
-      if (list) {
-        scrolledToBottomRef.current && list.scrollTo(0, list.scrollHeight)
-        setTimeout(() => {
-          scrolledToBottomRef.current && list.scrollTo(0, list.scrollHeight)
-        }, 1000)
-      }
-    }
-
-    focusListener()
-    window.addEventListener('focus', focusListener)
-    return () => window.removeEventListener('focus', focusListener)
-  }, [])
-
-  // console.log('scrolledToBottomRef.current', scrolledToBottomRef.current)
   const tempIsShowRegenerate = useMemo(() => {
-    if (
-      currentSidebarConversationType === 'Chat' &&
-      slicedMessageList.length > 0
-    ) {
-      const lastMessage = slicedMessageList[messages.length - 1]
+    if (currentSidebarConversationType === 'Chat' && messages.length > 0) {
+      const lastMessage = messages[messages.length - 1]
       if (lastMessage && lastMessage.type === 'ai') {
         const AIMessage = lastMessage as IAIResponseMessage
         if (AIMessage?.originalMessage?.metadata?.shareType === 'search') {
@@ -208,7 +75,26 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       }
     }
     return true
-  }, [slicedMessageList, currentSidebarConversationType])
+  }, [messages, currentSidebarConversationType])
+
+  const handleSendMessage = useCallback(
+    (value: string, options: IUserChatMessageExtraType) => {
+      // 新的消息发送时，重置消息列表的页码
+      setSidebarPageState((preState) => ({
+        ...preState,
+        messageListPageNum: 1,
+      }))
+      onSendMessage && onSendMessage(value, options)
+    },
+    [onSendMessage],
+  )
+
+  useEffect(() => {
+    if (messages.length > 0) {
+      setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
+    }
+  }, [messages])
+
   return (
     <Stack
       id={'maxAISidebarChatBox'}
@@ -222,48 +108,19 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         ...sx,
       }}
     >
-      <Box
-        ref={stackRef}
-        flex={1}
-        height={0}
+      <DevContent>
+        <DevConsole />
+      </DevContent>
+      <SidebarTabs />
+      <SidebarHeader />
+      <SidebarChatBoxMessageListContainer
+        loading={loading}
+        messages={messages}
+        writingMessage={writingMessage}
         sx={{
           textAlign: 'left',
-          overflowY: 'auto',
         }}
-        id={scrollContainerId}
-      >
-        <SidebarTabs />
-        <DevContent>
-          <DevConsole />
-        </DevContent>
-        <SidebarHeader />
-        {/* 这个 Box 只能包含 message item */}
-        <Box id={messageListContainerId}>
-          <AppSuspenseLoadingLayout>
-            {slicedMessageList.map((message, index) => {
-              return (
-                <SidebarChatBoxMessageItem
-                  key={
-                    message.messageId + '_sidebar_chat_message_' + String(index)
-                  }
-                  className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
-                  message={message}
-                />
-              )
-            })}
-            {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
-            {writingMessage &&
-            !slicedMessageList.find(
-              (msg) => msg.messageId === writingMessage.messageId,
-            ) ? (
-              <SidebarChatBoxMessageItem
-                className={'use-chat-gpt-ai__writing-message-item'}
-                message={writingMessage}
-              />
-            ) : null}
-          </AppSuspenseLoadingLayout>
-        </Box>
-      </Box>
+      />
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}
         position={'relative'}
@@ -325,7 +182,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 right: 0,
               }}
             />
-            {!loading && slicedMessageList.length > 0 && tempIsShowRegenerate && (
+            {!loading && messages.length > 0 && tempIsShowRegenerate && (
               <>
                 <Button
                   disableElevation

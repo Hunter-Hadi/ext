@@ -323,12 +323,12 @@ export class ActionAskChatGPT extends Action {
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
           ) {
             // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
-            // 移除AI writing message
-            clientConversationEngine.updateClientWritingMessage(null)
             await clientConversationEngine.pushMessage(
               this.answer,
               conversationId,
             )
+            // 移除AI writing message
+            clientConversationEngine.updateClientWritingMessage(null)
           }
           if (errorMessage) {
             if (isPermissionCardSceneType(errorMessage)) {

@@ -38,10 +38,12 @@ if (urlParamConversationType && isMaxAIImmersiveChatPage()) {
  */
 export const SidebarPageState = atom<{
   sidebarConversationType: ISidebarConversationType
+  messageListPageNum: number
 }>({
   key: 'SidebarPageState',
   default: {
     sidebarConversationType: urlParamConversationType || 'Chat',
+    messageListPageNum: 1,
   },
 })
 

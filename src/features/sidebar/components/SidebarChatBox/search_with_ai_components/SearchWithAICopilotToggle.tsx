@@ -41,7 +41,7 @@ const SearchWithAICopilotToggle: FC = () => {
         alignItems={'center'}
         gap={0.5}
         sx={{
-          py: '6px',
+          py: 0.5,
           px: 1,
           cursor: 'pointer',
           '& .use-chat-gpt-ai--MuiSwitch-switchBase': {

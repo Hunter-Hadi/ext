@@ -26,6 +26,7 @@ import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarCh
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
+import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -85,6 +86,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     return true
   }, [messages, currentSidebarConversationType])
 
+  const isShowChatBoxHomeView = useMemo(() => {
+    return messages.length <= 0 && !writingMessage
+  }, [messages, writingMessage])
+
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
       // 新的消息发送时，重置消息列表的页码
@@ -120,6 +125,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         <DevConsole />
       </DevContent>
       <SidebarHeader />
+
+      {isShowChatBoxHomeView && <SidebarHomeView />}
+
       <SidebarChatBoxMessageListContainer
         loading={loading}
         messages={messages}
@@ -128,13 +136,14 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           textAlign: 'left',
         }}
       />
+
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}
         position={'relative'}
         mt={'auto'}
-        justifyContent={'center'}
+        justifyContent={'end'}
         alignItems={'center'}
-        minHeight={60}
+        minHeight={170}
         spacing={1}
         p={1}
         flexShrink={0}
@@ -221,10 +230,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
             {loading && (
               <Button
-                sx={{
-                  mb: 1,
-                  ...shortcutsActionBtnSxMemo,
-                }}
+                sx={shortcutsActionBtnSxMemo}
                 disableElevation
                 variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}

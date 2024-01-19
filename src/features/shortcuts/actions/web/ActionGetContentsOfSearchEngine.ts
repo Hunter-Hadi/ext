@@ -50,12 +50,13 @@ export class ActionGetContentsOfSearchEngine extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      let query =
+      let query = String(
         this.parameters?.compliedTemplate ||
-        this.parameters?.URLSearchEngineParams?.q ||
-        this.parameters?.URLSearchEngineParams?.query ||
-        params.LAST_ACTION_OUTPUT ||
-        ''
+          this.parameters?.URLSearchEngineParams?.q ||
+          this.parameters?.URLSearchEngineParams?.query ||
+          params.LAST_ACTION_OUTPUT ||
+          '',
+      )
       if (query) {
         // remove head and tail space
         query = query.trim()

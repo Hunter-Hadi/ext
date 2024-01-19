@@ -11,7 +11,6 @@ import { useSetRecoilState } from 'recoil'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
-import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import {
   IAIResponseMessage,
@@ -27,8 +26,8 @@ import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarCh
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
+import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
-import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageState } from '@/features/sidebar/store'
@@ -64,6 +63,16 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   const setSidebarPageState = useSetRecoilState(SidebarPageState)
 
+  const shortcutsActionBtnSxMemo = useMemo(() => {
+    return {
+      borderRadius: 2,
+      color: 'primary.main',
+      '&:hover': {
+        borderColor: 'primary.main',
+      },
+    }
+  }, [])
+
   const tempIsShowRegenerate = useMemo(() => {
     if (currentSidebarConversationType === 'Chat' && messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
@@ -76,6 +85,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     }
     return true
   }, [messages, currentSidebarConversationType])
+
+  const isShowChatBoxHomeView = useMemo(() => {
+    return messages.length <= 0 && !writingMessage
+  }, [messages, writingMessage])
 
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
@@ -111,8 +124,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       <DevContent>
         <DevConsole />
       </DevContent>
-      <SidebarTabs />
       <SidebarHeader />
+
+      {isShowChatBoxHomeView && <SidebarHomeView />}
+
       <SidebarChatBoxMessageListContainer
         loading={loading}
         messages={messages}
@@ -121,13 +136,14 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           textAlign: 'left',
         }}
       />
+
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}
         position={'relative'}
         mt={'auto'}
-        justifyContent={'center'}
+        justifyContent={'end'}
         alignItems={'center'}
-        minHeight={60}
+        minHeight={170}
         spacing={1}
         p={1}
         flexShrink={0}
@@ -161,13 +177,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 }
               }}
             />
-            <AIProviderSelectorFloatingButton
-              sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-              }}
-            />
+
             <SearchWithAIAdvanced
               sx={{
                 position: 'absolute',
@@ -187,11 +197,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 <Button
                   disableElevation
                   startIcon={<CachedIcon />}
-                  variant={'outlined'}
+                  variant={'normalOutlined'}
                   disabled={loading}
                   onClick={() => {
                     onReGenerate && onReGenerate()
                   }}
+                  sx={shortcutsActionBtnSxMemo}
                 >
                   {t('client:sidebar__button__regenerate')}
                 </Button>
@@ -201,7 +212,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                     <Button
                       disableElevation
                       startIcon={<ContextMenuIcon icon={'FastForward'} />}
-                      variant={'outlined'}
+                      variant={'normalOutlined'}
                       disabled={loading}
                       onClick={() => {
                         handleSendMessage &&
@@ -210,6 +221,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                             regenerate: false,
                           })
                       }}
+                      sx={shortcutsActionBtnSxMemo}
                     >
                       {t('client:sidebar__button__continue')}
                     </Button>
@@ -218,9 +230,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
             {loading && (
               <Button
-                sx={{ mb: 1 }}
+                sx={shortcutsActionBtnSxMemo}
                 disableElevation
-                variant={'outlined'}
+                variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
                 onClick={() => {
                   onStopGenerate && onStopGenerate()

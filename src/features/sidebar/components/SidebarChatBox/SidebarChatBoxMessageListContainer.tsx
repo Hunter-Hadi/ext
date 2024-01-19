@@ -16,9 +16,6 @@ const SidebarChatBoxMessageItem = React.lazy(
     ),
 )
 
-const SIDEBAR_CHAT_BOX_MESSAGE_ITEM_READY_FLAG_ID =
-  'sidebar-chat-box-message-item-ready-flag'
-
 interface IProps {
   messages: IChatMessage[]
   writingMessage: IChatMessage | null

@@ -1,31 +1,35 @@
+/**
+ * @deprecated
+ *
+ * 旧版本的 SidebarTabs，已弃用
+ */
 import Stack from '@mui/material/Stack'
+import Tab from '@mui/material/Tab'
+import Tabs from '@mui/material/Tabs'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilValue } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTabIcons'
+import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   ChatGPTConversationState,
   ISidebarConversationType,
 } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { I18nextKeysType } from '@/i18next'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export const sidebarTabsData: Array<{
   label: I18nextKeysType
   value: ISidebarConversationType
-  icon: string
   tooltip?: () => I18nextKeysType
 }> = [
   {
     label: 'client:sidebar__tabs__chat__title',
     tooltip: () => 'client:sidebar__tabs__chat__tooltip',
-    icon: 'Chat',
     value: 'Chat',
   },
   {
@@ -45,25 +49,21 @@ export const sidebarTabsData: Array<{
           return 'client:sidebar__tabs__summary__tooltip__page'
       }
     },
-    icon: 'Summary',
     value: 'Summary',
   },
   {
     label: 'client:sidebar__tabs__search__title',
     tooltip: () => 'client:sidebar__tabs__search__tooltip',
-    icon: 'Search',
     value: 'Search',
   },
   {
     label: 'client:sidebar__tabs__art__title',
     tooltip: () => 'client:sidebar__tabs__art__tooltip',
-    icon: 'Art',
     value: 'Art',
   },
 ]
 
 const SidebarTabs: FC = () => {
-  const { isDarkMode } = useCustomTheme()
   const { t } = useTranslation(['common', 'client'])
   const {
     currentSidebarConversationType,
@@ -83,82 +83,26 @@ const SidebarTabs: FC = () => {
     }
   })
   const memoSidebarTabsData = useMemo(() => {
-    return sidebarTabsData
-      .filter((tab) => {
-        if (tab.value === 'Summary') {
-          if (isMaxAIImmersiveChatPage()) {
-            return false
-          }
+    return sidebarTabsData.filter((tab) => {
+      if (tab.value === 'Summary') {
+        if (isMaxAIImmersiveChatPage()) {
+          return false
         }
-        return true
-      })
-      .reverse()
+      }
+      return true
+    })
   }, [])
   return (
     <>
       <Stack
+        direction={'row'}
+        height={36}
         alignItems={'center'}
         width={'100%'}
+        borderBottom={'1px solid'}
+        borderColor="customColor.borderColor"
         bgcolor={'background.paper'}
-        spacing={2}
-        sx={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-        }}
-      >
-        {memoSidebarTabsData.map((item) => {
-          const isActive = currentSidebarConversationType === item.value
-          const disabled = conversation.loading
-          const bgcolor = isActive
-            ? isDarkMode
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(118, 1, 211, 0.08)'
-            : 'transparent'
-
-          return (
-            <TextOnlyTooltip
-              key={item.value}
-              placement="left"
-              title={t(item.tooltip?.() as any)}
-            >
-              <Stack
-                spacing={0.5}
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  width: '100%',
-                  borderLeft: '2px solid',
-                  borderColor: isActive ? 'primary.main' : 'transparent',
-                  color: isActive ? 'primary.main' : 'text.secondary',
-                  cursor: disabled ? 'auto' : 'pointer',
-                  bgcolor: bgcolor,
-                  py: 1,
-                  position: 'relative',
-                  left: -1,
-                }}
-                onClick={() => {
-                  !disabled && updateSidebarConversationType(item.value)
-                }}
-              >
-                <SidebarTabIcons icon={item.icon} />
-                <Typography
-                  fontSize={12}
-                  color={'inherit'}
-                  data-testid={'max-ai__summary-tab'}
-                  lineHeight={1}
-                >
-                  {t(item.label as any)}
-                </Typography>
-              </Stack>
-            </TextOnlyTooltip>
-          )
-        })}
-      </Stack>
-      {/* <Stack
-        alignItems={'center'}
-        width={'100%'}
-        bgcolor={'background.paper'}
+        justifyContent={'space-between'}
         sx={{
           position: 'sticky',
           top: 0,
@@ -166,7 +110,6 @@ const SidebarTabs: FC = () => {
         }}
       >
         <Tabs
-          orientation="vertical"
           sx={{
             minHeight: '36px',
             '& .use-chat-gpt-ai--MuiButtonBase-root': {
@@ -201,7 +144,10 @@ const SidebarTabs: FC = () => {
             />
           ))}
         </Tabs>
-      </Stack> */}
+        <Stack direction={'row'} alignItems={'center'} pr={1}>
+          <HistoryShareButton />
+        </Stack>
+      </Stack>
     </>
   )
 }

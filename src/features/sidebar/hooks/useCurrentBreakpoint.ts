@@ -1,12 +1,15 @@
 import { useTheme } from '@mui/material/styles'
 import { useEffect, useMemo, useState } from 'react'
 
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 
-const useCurrentBreakpoint = (sidebarDefaultWidth = 450) => {
+const useCurrentBreakpoint = (
+  sidebarDefaultWidth = CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
+) => {
   const theme = useTheme()
   const [currentBreakpoint, setCurrentBreakpoint] = useState<Breakpoint>('xl')
   const [sidebarWidth, setSidebarWidth] = useState(sidebarDefaultWidth)
@@ -25,7 +28,9 @@ const useCurrentBreakpoint = (sidebarDefaultWidth = 450) => {
         breakpoint = 'lg'
       }
       setCurrentBreakpoint(breakpoint)
-      const sidebarWidth = getMaxAISidebarRootElement()?.offsetWidth || 450
+      const sidebarWidth =
+        getMaxAISidebarRootElement()?.offsetWidth ||
+        CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
       setSidebarWidth(sidebarWidth)
     }
     handleResize()
@@ -35,7 +40,7 @@ const useCurrentBreakpoint = (sidebarDefaultWidth = 450) => {
     }
   }, [theme.breakpoints.values])
   const sidebarBreakpoints = useMemo<Breakpoint>(() => {
-    if (sidebarWidth <= 450) {
+    if (sidebarWidth <= CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH) {
       return 'xs'
     } else if (sidebarWidth <= 600) {
       return 'sm'

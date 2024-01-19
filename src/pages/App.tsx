@@ -15,7 +15,6 @@ import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
-import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 import { AppState } from '@/store'
 import { getEnv } from '@/utils/AppEnv'
@@ -124,7 +123,6 @@ const App: FC = () => {
             <AppInit />
             <Announcement />
             <SidebarTopBar />
-            <ChatBoxHeader />
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>
                 <Stack flex={1} height={0}>

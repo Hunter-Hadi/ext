@@ -35,7 +35,7 @@ const SidebarChatBoxFooter: FC = () => {
     >
       <Typography sx={{ flexShrink: 0 }} fontSize={12}>
         <Link
-          color={'text.primary'}
+          color={'text.secondary'}
           sx={{ cursor: 'pointer' }}
           underline={'always'}
           target={'_blank'}

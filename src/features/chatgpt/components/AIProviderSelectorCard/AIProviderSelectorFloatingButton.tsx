@@ -80,6 +80,9 @@ const AIProviderSelectorFloatingButton: FC<{
           fontSize={14}
           lineHeight={1.4}
           color="text.secondary"
+          sx={{
+            userSelect: 'none',
+          }}
         >
           {aiProviderModel}
         </Typography>

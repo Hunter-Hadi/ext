@@ -1,4 +1,5 @@
 import Button from '@mui/material/Button'
+import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -23,6 +24,7 @@ const FloatingInputButton: FC<{
   buttonText?: string
   iconButton?: boolean
   templateText?: string
+  sx?: SxProps
   onBeforeShowContextMenu?: (
     preSendText: string,
     preTarget: HTMLElement,
@@ -36,6 +38,7 @@ const FloatingInputButton: FC<{
   onBeforeShowContextMenu,
   iconButton,
   className,
+  sx,
 }) => {
   const { t } = useTranslation(['common', 'client'])
   const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
@@ -61,6 +64,7 @@ const FloatingInputButton: FC<{
           minWidth: 'unset',
           p: '5px',
           color: 'text.secondary',
+          ...sx,
         }}
         className={className}
         title={t('client:sidebar__button__use_prompt')}
@@ -85,6 +89,7 @@ const FloatingInputButton: FC<{
         sx={{
           p: '7px',
           minWidth: 'unset',
+          ...sx,
         }}
         variant={'outlined'}
         onClick={handleClick}

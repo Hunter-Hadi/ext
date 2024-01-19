@@ -62,6 +62,16 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   const setSidebarPageState = useSetRecoilState(SidebarPageState)
 
+  const shortcutsActionBtnSxMemo = useMemo(() => {
+    return {
+      borderRadius: 2,
+      color: 'primary.main',
+      '&:hover': {
+        borderColor: 'primary.main',
+      },
+    }
+  }, [])
+
   const tempIsShowRegenerate = useMemo(() => {
     if (currentSidebarConversationType === 'Chat' && messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
@@ -178,11 +188,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 <Button
                   disableElevation
                   startIcon={<CachedIcon />}
-                  variant={'outlined'}
+                  variant={'normalOutlined'}
                   disabled={loading}
                   onClick={() => {
                     onReGenerate && onReGenerate()
                   }}
+                  sx={shortcutsActionBtnSxMemo}
                 >
                   {t('client:sidebar__button__regenerate')}
                 </Button>
@@ -192,7 +203,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                     <Button
                       disableElevation
                       startIcon={<ContextMenuIcon icon={'FastForward'} />}
-                      variant={'outlined'}
+                      variant={'normalOutlined'}
                       disabled={loading}
                       onClick={() => {
                         handleSendMessage &&
@@ -201,6 +212,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                             regenerate: false,
                           })
                       }}
+                      sx={shortcutsActionBtnSxMemo}
                     >
                       {t('client:sidebar__button__continue')}
                     </Button>
@@ -209,9 +221,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
             {loading && (
               <Button
-                sx={{ mb: 1 }}
+                sx={{
+                  mb: 1,
+                  ...shortcutsActionBtnSxMemo,
+                }}
                 disableElevation
-                variant={'outlined'}
+                variant={'normalOutlined'}
                 startIcon={<StopOutlinedIcon />}
                 onClick={() => {
                   onStopGenerate && onStopGenerate()

@@ -133,7 +133,7 @@ const SidebarTabs: FC = () => {
                   color: isActive ? 'primary.main' : 'text.secondary',
                   cursor: disabled ? 'auto' : 'pointer',
                   bgcolor: bgcolor,
-                  py: 0.5,
+                  py: 1,
                   position: 'relative',
                   left: -1,
                 }}

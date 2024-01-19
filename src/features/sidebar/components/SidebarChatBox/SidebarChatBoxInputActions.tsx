@@ -1,12 +1,17 @@
 import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
+import { SxProps, Theme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import Browser from 'webextension-polyfill'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
 import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
@@ -18,6 +23,7 @@ import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarCh
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
@@ -30,6 +36,23 @@ const SidebarChatBoxInputActions: FC<{
   const ref = React.useRef<HTMLElement>(null)
   const nextMessageIsActionRef = useRef(false)
   const metaDataRef = useRef<any>({})
+
+  const actionsBtnColorSxMemo = useMemo(() => {
+    return {
+      color: 'text.secondary',
+      borderColor: (t: Theme) => {
+        return t.palette.mode === 'dark'
+          ? 'rgba(255, 255, 255, 0.08)'
+          : 'rgba(0, 0, 0, 0.16)'
+      },
+
+      '&:hover': {
+        color: 'primary.main',
+        borderColor: 'primary.main',
+      },
+    } as SxProps
+  }, [])
+
   useEffect(() => {
     const handleInputUpdate = (newInputValue: string, metaData: any) => {
       console.log(metaData)
@@ -47,10 +70,12 @@ const SidebarChatBoxInputActions: FC<{
       getInputMediator('chatBoxInputMediator').unsubscribe(handleInputUpdate)
     }
   }, [])
+
   useEffect(() => {
     nextMessageIsActionRef.current = false
     metaDataRef.current = {}
   }, [smoothConversationLoading])
+
   return (
     <Stack
       ref={ref}
@@ -81,6 +106,7 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
+        {/* prompt library btn */}
         <PromptLibraryIconButton
           sx={{
             visibility:
@@ -88,15 +114,52 @@ const SidebarChatBoxInputActions: FC<{
               !smoothConversationLoading
                 ? 'visible'
                 : 'hidden',
+            ...actionsBtnColorSxMemo,
           }}
         />
+
+        {/* search copilot btn */}
         {currentSidebarConversationType === 'Search' &&
           !smoothConversationLoading && <SearchWithAICopilotToggle />}
+
+        {/* chat history btn */}
+        {currentSidebarConversationType !== 'Summary' && (
+          <TextOnlyTooltip
+            placement={'top'}
+            title={t('client:sidebar__speed_dial__chat_history__button')}
+          >
+            <Button
+              onClick={() => {
+                chromeExtensionClientOpenPage({
+                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                })
+              }}
+              sx={{
+                p: '5px',
+                minWidth: 'unset',
+                ...actionsBtnColorSxMemo,
+              }}
+              variant={'outlined'}
+            >
+              <ContextMenuIcon
+                icon={'History'}
+                sx={{
+                  fontSize: '20px',
+                }}
+              />
+            </Button>
+          </TextOnlyTooltip>
+        )}
+
+        {/* art */}
         {currentSidebarConversationType === 'Art' &&
           !smoothConversationLoading && <ArtConversationalModeToggle />}
+
+        {/* use prompt btn */}
         {currentSidebarConversationType === 'Chat' &&
           !smoothConversationLoading && (
             <FloatingInputButton
+              sx={actionsBtnColorSxMemo}
               onBeforeShowContextMenu={() => {
                 return {
                   template: inputValue || ' ',
@@ -108,6 +171,8 @@ const SidebarChatBoxInputActions: FC<{
               }}
             />
           )}
+
+        {/* send btn */}
         <TooltipButton
           title={t(`client:sidebar__button__send_to_ai`)}
           TooltipProps={{

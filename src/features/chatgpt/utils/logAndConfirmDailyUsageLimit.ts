@@ -50,7 +50,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         CLAUDE: 'claude_web_app',
         MAXAI_CLAUDE: 'claude',
         MAXAI_GEMINI: 'gemini',
-        MAXAI_ART: 'maxai_art',
+        MAXAI_DALLE: 'MAXAI_DALLE',
       }
       const info_object = {
         ai_provider:

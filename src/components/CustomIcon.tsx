@@ -822,6 +822,60 @@ const PoeIcon: FC<SvgIconProps> = (props) => {
     </SvgIcon>
   )
 }
+const DALLEIcon: FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon {...props}>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_6893_92977)">
+          <path
+            d="M0 4C0 1.79086 1.79086 0 4 0H20C22.2091 0 24 1.79086 24 4V20C24 22.2091 22.2091 24 20 24H4C1.79086 24 0 22.2091 0 20V4Z"
+            fill="black"
+          />
+          <rect x="3" y="10.2002" width="3.6" height="3.6" fill="#FEFF67" />
+          <rect
+            x="6.60156"
+            y="10.2002"
+            width="3.6"
+            height="3.6"
+            fill="#42FFFF"
+          />
+          <rect
+            x="10.1992"
+            y="10.2002"
+            width="3.6"
+            height="3.6"
+            fill="#52DB4C"
+          />
+          <rect
+            x="13.8008"
+            y="10.2002"
+            width="3.6"
+            height="3.6"
+            fill="#FF6F3E"
+          />
+          <rect
+            x="17.3984"
+            y="10.2002"
+            width="3.6"
+            height="3.6"
+            fill="#3C46FF"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_6893_92977">
+            <rect width="24" height="24" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
+    </SvgIcon>
+  )
+}
 const AIChipIcon: FC<SvgIconProps> = (props) => {
   return (
     <SvgIcon {...props}>
@@ -852,6 +906,7 @@ export {
   ClaudeWebappIcon,
   CleanChatBoxIcon,
   ColorGiftIcon,
+  DALLEIcon,
   EzMailAIIcon,
   GeminiBetaIcon,
   GeminiIcon,

@@ -1,6 +1,7 @@
 import { IAIProviderType } from '@/background/provider/chat'
 import { BingConversationStyle } from '@/background/src/chat/BingChat/bing/types'
 import { AI_PROVIDER_MAP } from '@/constants'
+import { IArtTextToImageMetadata } from '@/features/art/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 
@@ -152,13 +153,9 @@ export type IThirdProviderSettings = {
     temperature?: number
   }
   // Art provider
-  [AI_PROVIDER_MAP.MAXAI_ART]: {
+  [AI_PROVIDER_MAP.MAXAI_DALLE]: {
     model?: string
-    aspectRatio?: string
-    contentType?: string
-    resolution?: [number, number]
-    generateCount?: number
-  }
+  } & IArtTextToImageMetadata
 }
 
 export interface IChromeExtensionLocalStorage {
@@ -177,6 +174,7 @@ export interface IChromeExtensionLocalStorage {
     }
     art?: {
       conversationId?: string
+      isEnabledConversationalMode?: boolean
     }
     common?: {
       currentAIProvider?: IAIProviderType

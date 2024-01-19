@@ -1,7 +1,7 @@
 import Stack from '@mui/material/Stack'
 import React, { useEffect } from 'react'
 
-import useImageCreator from '@/features/art/hooks/useImageCreator'
+import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -26,7 +26,7 @@ const SidebarPage = () => {
   const { conversation, cleanConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { currentSidebarConversationMessages } = useSidebarSettings()
-  const { startTextToImage } = useImageCreator()
+  const { startTextToImage } = useArtTextToImage()
   useEffect(() => {
     pingDaemonProcess()
   }, [])
@@ -40,7 +40,7 @@ const SidebarPage = () => {
             if (currentSidebarConversationType === 'Search') {
               await createSearchWithAI(question, true)
             } else if (currentSidebarConversationType === 'Art') {
-              await startTextToImage(question, true)
+              await startTextToImage(question)
             } else {
               await askAIQuestion({
                 type: 'user',

@@ -40,7 +40,8 @@
     "auto": "אוטומטי",
     "confirm": "אישור",
     "copy_as_plain_text": "העתק כטקסט פשוט",
-    "copy_with_formatting": "העתק עם עיצוב"
+    "copy_with_formatting": "העתק עם עיצוב",
+    "download": "הורדה"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "אפשר את האפשרות \"אפשר גישה לכתובות URL של קבצים\" בהגדרות הדפדפן שלך על ידי ניווט אל",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". זה יאפשר למציג 'PDF AI' לפתוח אוטומטית כאשר אתה גורר ומשחרר קבצי PDF לתוך הדפדפן.",
     "sidebar__tabs__art__title": "אמנות",
-    "sidebar__tabs__art__tooltip": "אמנות מופעלת על ידי AI"
+    "sidebar__tabs__art__tooltip": "אמנות מופעלת על ידי AI",
+    "provider__claude__model__claude_2_1_200k__description": "אותן יכולות כמו במצב הבסיסי של claude-2-100k אך עם אורך טקסט מרובע. וגם הפחתה משמעותית בשיעורי ההוואות של המודל.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "שדרג כדי לקבל גישה ל-claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "המודל החזק ביותר של Anthropic, חלון טקסט באורך 200K, מתאים במיוחד למשימות הכוללות דיאלוג מורכב ויצירת תוכן יצירתי עד הוראות מפורטות. וגם הפחתה משמעותית בשיעורי ההוואות של המודל.",
+    "art__text_to_image__aspect_ratio__square__title": "ריבוע",
+    "art__text_to_image__aspect_ratio__landscape__title": "נוף",
+    "art__text_to_image__aspect_ratio__portrait__title": "פורטרט",
+    "art__text_to_image__aspect_ratio__widescreen__title": "מסך רחב",
+    "art__text_to_image__content_type__photo__title": "תמונה",
+    "art__text_to_image__content_type__art__title": "אמנות",
+    "art__text_to_image__advanced__title": "אפשרויות אמנות מתקדמות",
+    "art__text_to_image__advanced__aspect_ratio__title": "יחס תצוגה",
+    "art__text_to_image__advanced__content_type__title": "סוג תוכן"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

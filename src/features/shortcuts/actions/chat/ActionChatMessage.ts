@@ -54,7 +54,6 @@ export class ActionChatMessage extends Action {
       this.output = String(messageConfig.messageId)
     } catch (e) {
       this.error = (e as any).message
-      debugger
     }
   }
 }

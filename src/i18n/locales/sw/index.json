@@ -40,7 +40,8 @@
     "auto": "Gari",
     "confirm": "Thibitisha",
     "copy_as_plain_text": "Nakili kama maandishi ya kawaida",
-    "copy_with_formatting": "Nakili na muundo"
+    "copy_with_formatting": "Nakili na muundo",
+    "download": "Pakua"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Washa chaguo la \"Ruhusu ufikiaji wa URL za faili\" katika mipangilio ya kivinjari chako kwa kwenda",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Hii itawezesha 'Mwonekano wa PDF AI' kufungua kiotomatiki unapoburuta na kuacha faili za PDF kwenye kivinjari.",
     "sidebar__tabs__art__title": "Sanaa",
-    "sidebar__tabs__art__tooltip": "Sanaa yenye nguvu ya AI"
+    "sidebar__tabs__art__tooltip": "Sanaa yenye nguvu ya AI",
+    "provider__claude__model__claude_2_1_200k__description": "Uwezo sawa na mfano wa msingi wa claude-2-100k lakini na urefu wa muktadha mara mbili. Pamoja na kupunguzwa kwa kiwango kikubwa cha uhalisia wa mfano.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nunua ili kupata ufikiaji wa claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Mfano wenye nguvu zaidi wa Anthropic, dirisha la muktadha lenye urefu wa 200K, mzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa maudhui ya ubunifu hadi maelekezo ya kina. Pamoja na kupunguzwa kwa kiwango kikubwa cha uhalisia wa mfano.",
+    "art__text_to_image__aspect_ratio__square__title": "Mraba",
+    "art__text_to_image__aspect_ratio__landscape__title": "Mandhari",
+    "art__text_to_image__aspect_ratio__portrait__title": "Picha",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Skrini pana",
+    "art__text_to_image__content_type__photo__title": "Picha",
+    "art__text_to_image__content_type__art__title": "Sanaa",
+    "art__text_to_image__advanced__title": "Chaguzi za sanaa za juu",
+    "art__text_to_image__advanced__aspect_ratio__title": "Uwiano wa mzunguko",
+    "art__text_to_image__advanced__content_type__title": "Aina ya yaliyomo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

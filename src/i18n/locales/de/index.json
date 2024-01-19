@@ -40,7 +40,8 @@
     "auto": "Auto",
     "confirm": "Bestätigen",
     "copy_as_plain_text": "Als Klartext kopieren",
-    "copy_with_formatting": "Kopieren mit Formatierung"
+    "copy_with_formatting": "Kopieren mit Formatierung",
+    "download": "Herunterladen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivieren Sie die Option \"Zugriff auf Datei-URLs zulassen\" in den Browsereinstellungen, indem Sie zu",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "navigieren. Dadurch wird der 'PDF-KI-Viewer' automatisch geöffnet, wenn Sie PDF-Dateien in den Browser ziehen und ablegen.",
     "sidebar__tabs__art__title": "Kunst",
-    "sidebar__tabs__art__tooltip": "Künstliche Intelligenz-gesteuerte Kunst"
+    "sidebar__tabs__art__tooltip": "Künstliche Intelligenz-gesteuerte Kunst",
+    "provider__claude__model__claude_2_1_200k__description": "Gleiche Fähigkeiten wie das Basismodell claude-2-100k, jedoch mit doppelter Kontextlänge. Zusätzlich signifikante Reduzierung der Modell-Halluzinationsrate.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Upgrade für Zugriff auf claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropics leistungsstärkstes Modell, 200K Kontextfenster, ideal für Aufgaben von anspruchsvollem Dialog und kreativer Inhaltegenerierung bis hin zu detaillierten Anweisungen. Plus signifikante Reduzierung der Modell-Halluzinationsrate.",
+    "art__text_to_image__aspect_ratio__square__title": "Quadratisch",
+    "art__text_to_image__aspect_ratio__landscape__title": "Landschaft",
+    "art__text_to_image__aspect_ratio__portrait__title": "Porträt",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Breitbild",
+    "art__text_to_image__content_type__photo__title": "Foto",
+    "art__text_to_image__content_type__art__title": "Kunst",
+    "art__text_to_image__advanced__title": "Erweiterte Kunstoptionen",
+    "art__text_to_image__advanced__aspect_ratio__title": "Seitenverhältnis",
+    "art__text_to_image__advanced__content_type__title": "Inhaltstyp"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -40,7 +40,8 @@
     "paste": "Paste",
     "loading": "Loading...",
     "no_options": "No options",
-    "confirm": "Confirm"
+    "confirm": "Confirm",
+    "download": "Download"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -365,6 +366,7 @@
     "provider__claude__auth_button_text": "Continue with Claude",
     "provider__claude__model__claude_instant_100k__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarization, and comprehension.",
     "provider__claude__model__claude_2_100k__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
+    "provider__claude__model__claude_2_1_200k__description": "Same capabilities as the base claude-2-100k mode but with 2x the context length. Plus significant reduction in model hallucination rates.",
     "provider__gemini__title": "Gemini",
     "provider__gemini__short_description": "Google's most capable and general model, built from the ground up for multimodality. Gemini on MaxAI currently supports text and code and will soon add support for images, videos, and audio.",
     "provider__gemini__auth_description": "Use Gemini to power the extension.",
@@ -457,6 +459,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description": "Anthropic's fastest model, 100K context window, great for very long document and code analysis, summarization, and comprehension.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2__title": "Upgrade to access claude-2-100k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2__description": "Anthropic's most powerful model, 100K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Upgrade to access claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic's most powerful model, 200K context window, great for tasks ranging from sophisticated dialogue and creative content generation to detailed instruction. Plus significant reduction in model hallucination rates.",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade to access gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's most capable and general model. Built from the ground up for multimodality. Gemini on MaxAI is currently in the beta phase, supporting only text and code, and will soon add support for images, videos, and audio.",
     "permission__pricing_hook__search_with_ai_claude__title": "Upgrade to search with Claude",
@@ -509,12 +513,15 @@
     "activity__1st_anniversary_2024__title1": "MaxAI's 1st anniversary celebration",
     "activity__1st_anniversary_2024__title2": "Up to 50% OFF!",
     "quick_access__hide_button__title": "Hide quick access until next visit",
-    "art__image_generate__aspect_ratio__square__title": "Square",
-    "art__image_generate__aspect_ratio__landscape__title": "Landscape",
-    "art__image_generate__aspect_ratio__portrait__title": "Portrait",
-    "art__image_generate__aspect_ratio__widescreen__title": "Widescreen",
-    "art__image_generate__content_type__photo__title": "Photo",
-    "art__image_generate__content_type__art__title": "Art"
+    "art__text_to_image__aspect_ratio__square__title": "Square",
+    "art__text_to_image__aspect_ratio__landscape__title": "Landscape",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portrait",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Widescreen",
+    "art__text_to_image__content_type__photo__title": "Photo",
+    "art__text_to_image__content_type__art__title": "Art",
+    "art__text_to_image__advanced__title": "Advanced art options",
+    "art__text_to_image__advanced__aspect_ratio__title": "Aspect ratio",
+    "art__text_to_image__advanced__content_type__title": "Content type"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

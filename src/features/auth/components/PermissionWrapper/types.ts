@@ -48,6 +48,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SIDEBAR_SEARCH_WITH_AI',
+  'MAXAI_PAID_MODEL_CLAUDE_V2_1',
 ] as const
 
 export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
@@ -343,6 +344,22 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // MAX AI - paid model - calude - instant-v2-1
+  MAXAI_PAID_MODEL_CLAUDE_V2_1: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-2.1-200k.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_v2_1__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_v2_1__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_elite'),
   },
   MAXAI_PAID_MODEL_GEMINI_PRO: {
     imageUrl: `${getChromeExtensionAssetsURL(

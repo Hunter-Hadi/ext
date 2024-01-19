@@ -40,7 +40,8 @@
     "auto": "Auto",
     "confirm": "Kinnita",
     "copy_as_plain_text": "Kopeeri tavalise tekstina",
-    "copy_with_formatting": "Kopeeri vormindamisega"
+    "copy_with_formatting": "Kopeeri vormindamisega",
+    "download": "Laadi alla"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Lubage oma brauseri seadetes valik \"Luba juurdepääs faili URL-idele\", navigeerides aadressile",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". See võimaldab 'PDF AI vaaturil' avaneda automaatselt, kui lohistate PDF-faile brauserisse.",
     "sidebar__tabs__art__title": "Kunst",
-    "sidebar__tabs__art__tooltip": "AI-toega kunst"
+    "sidebar__tabs__art__tooltip": "AI-toega kunst",
+    "provider__claude__model__claude_2_1_200k__description": "Sama võimekus nagu baasclaude-2-100k režiimil, kuid kahekordse konteksti pikkusega. Lisaks oluline vähendamine mudeli hallutsinatsioonide määrades.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Uuenda juurdepääsuks claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropicu võimsaim mudel, 200K kontekstakna, suurepärane ülesannete jaoks alates keerukast dialoogist ja loovast sisu loomisest kuni üksikasjaliku juhendini. Lisaks oluline vähendamine mudeli hallutsinatsioonide määrades.",
+    "art__text_to_image__aspect_ratio__square__title": "Ruut",
+    "art__text_to_image__aspect_ratio__landscape__title": "Maastik",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portree",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Laiekraan",
+    "art__text_to_image__content_type__photo__title": "Foto",
+    "art__text_to_image__content_type__art__title": "Kunst",
+    "art__text_to_image__advanced__title": "Täpsemad kunstivalikud",
+    "art__text_to_image__advanced__aspect_ratio__title": "Külgede suhe",
+    "art__text_to_image__advanced__content_type__title": "Sisu tüüp"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

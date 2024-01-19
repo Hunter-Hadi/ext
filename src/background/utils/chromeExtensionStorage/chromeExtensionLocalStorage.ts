@@ -40,6 +40,7 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       },
       art: {
         conversationId: '',
+        isEnabledConversationalMode: true,
       },
       common: {
         currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
@@ -87,7 +88,7 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
         model: MAXAI_GENMINI_MODELS[0].value,
         temperature: 1,
       },
-      [AI_PROVIDER_MAP.MAXAI_ART]: {
+      [AI_PROVIDER_MAP.MAXAI_DALLE]: {
         model: MAXAI_IMAGE_GENERATE_MODELS[0].value,
         contentType: 'vivid',
         aspectRatio: '1:1',

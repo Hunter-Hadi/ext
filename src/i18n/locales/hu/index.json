@@ -40,7 +40,8 @@
     "auto": "Autó",
     "confirm": "Megerősítés",
     "copy_as_plain_text": "Másolás egyszerű szövegként",
-    "copy_with_formatting": "Másolat formázással"
+    "copy_with_formatting": "Másolat formázással",
+    "download": "Letöltés"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Engedélyezze a \"Fájl-URL-ek hozzáférésének engedélyezése\" lehetőséget a böngésző beállításaiban a következő címre navigálva:",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ez lehetővé teszi, hogy a 'PDF AI néző' automatikusan megnyíljon, amikor PDF-fájlokat húz és ejt a böngészőbe.",
     "sidebar__tabs__art__title": "Művészet",
-    "sidebar__tabs__art__tooltip": "AI-alapú művészet"
+    "sidebar__tabs__art__tooltip": "AI-alapú művészet",
+    "provider__claude__model__claude_2_1_200k__description": "Ugyanazokkal a képességekkel rendelkezik, mint az alap claude-2-100k mód, de kétszeres a kontextus hossza. Emellett jelentős csökkenést tapasztalhatunk a modell hallucinációs arányában.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Frissítés a claude-2.1-200k eléréséhez",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Az Anthropic legerősebb modellje, 200K kontextusablak, kiváló feladatokhoz, legyen szó bonyolult párbeszédről és kreatív tartalomgenerálásról vagy részletes utasításokról. Emellett jelentős csökkenést tapasztalhatunk a modell hallucinációs arányában.",
+    "art__text_to_image__aspect_ratio__square__title": "Négyzet",
+    "art__text_to_image__aspect_ratio__landscape__title": "Tájkép",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portré",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Szélesvásznú",
+    "art__text_to_image__content_type__photo__title": "Fotó",
+    "art__text_to_image__content_type__art__title": "Művészet",
+    "art__text_to_image__advanced__title": "Haladó művészeti beállítások",
+    "art__text_to_image__advanced__aspect_ratio__title": "Képarány",
+    "art__text_to_image__advanced__content_type__title": "Tartalomtípus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -40,7 +40,8 @@
     "auto": "Automobilis",
     "confirm": "Apstiprināt",
     "copy_as_plain_text": "Kopēt kā vienkāršu tekstu",
-    "copy_with_formatting": "Kopēt ar formatēšanu"
+    "copy_with_formatting": "Kopēt ar formatēšanu",
+    "download": "Lejupielādēt"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Iespējojiet \"Atļaut piekļuvi failu URL\" opciju pārlūka iestatījumos, dodoties uz",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tas ļaus 'PDF AI skatītājam' automātiski atvērties, kad velkat un nomest PDF failus pārlūkā.",
     "sidebar__tabs__art__title": "Māksla",
-    "sidebar__tabs__art__tooltip": "Māksla, kas darbojas ar mākslīgo intelektu"
+    "sidebar__tabs__art__tooltip": "Māksla, kas darbojas ar mākslīgo intelektu",
+    "provider__claude__model__claude_2_1_200k__description": "Tādas pašas iespējas kā pamata claude-2-100k režīmam, bet ar divkārt lielāku konteksta garumu. Papildus ievērojami samazināts modeļa halucināciju līmenis.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Jauniniet, lai piekļūtu claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic visvarenākais modelis ar 200K konteksta logu, lielisks uzdevumiem, sākot no sarežģītas dialoga un radošas saturveidošanas līdz detalizētiem norādījumiem. Papildus ievērojami samazināts modeļa halucināciju līmenis.",
+    "art__text_to_image__aspect_ratio__square__title": "Kvadrāts",
+    "art__text_to_image__aspect_ratio__landscape__title": "Ainava",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portrets",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Platā ekrāna",
+    "art__text_to_image__content_type__photo__title": "Foto",
+    "art__text_to_image__content_type__art__title": "Māksla",
+    "art__text_to_image__advanced__title": "Papildu mākslas opcijas",
+    "art__text_to_image__advanced__aspect_ratio__title": "Proporcijas",
+    "art__text_to_image__advanced__content_type__title": "Satura tips"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

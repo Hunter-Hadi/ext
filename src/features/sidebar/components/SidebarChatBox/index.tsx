@@ -20,6 +20,7 @@ import {
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import ArtTextToImageAdvanced from '@/features/sidebar/components/SidebarChatBox/art_components/ArtTextToImageAdvanced'
 import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
@@ -165,6 +166,13 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 right: 0,
               }}
             />
+            <ArtTextToImageAdvanced
+              sx={{
+                position: 'absolute',
+                bottom: 0,
+                right: 0,
+              }}
+            />
             {!loading && messages.length > 0 && tempIsShowRegenerate && (
               <>
                 <Button
@@ -179,7 +187,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   {t('client:sidebar__button__regenerate')}
                 </Button>
                 {isShowContinueButton &&
-                  currentSidebarConversationType !== 'Search' && (
+                  currentSidebarConversationType !== 'Search' &&
+                  currentSidebarConversationType !== 'Art' && (
                     <Button
                       disableElevation
                       startIcon={<ContextMenuIcon icon={'FastForward'} />}

@@ -33,7 +33,10 @@ const useInitSidebar = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const { switchBackgroundChatSystemAIProvider } = useClientConversation()
+  const {
+    switchBackgroundChatSystemAIProvider,
+    createConversation,
+  } = useClientConversation()
   const { continueInSearchWithAI } = useSearchWithAI()
   const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
   const sidebarSettingsRef = useRef(sidebarSettings)
@@ -52,7 +55,7 @@ const useInitSidebar = () => {
       switch (currentSidebarConversationType) {
         case 'Chat':
           {
-            // Chat的逻辑
+            createConversation('Chat').then().catch()
           }
           break
         case 'Summary':

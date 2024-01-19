@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -27,6 +29,10 @@ const useClientChat = () => {
     stopShortCuts,
     getParams,
   } = useShortCutsEngine()
+  const runShortCutsRef = useRef(runShortCuts)
+  useEffect(() => {
+    runShortCutsRef.current = runShortCuts
+  }, [runShortCuts])
   const {
     currentConversationIdRef,
     createConversation,
@@ -98,7 +104,7 @@ const useClientChat = () => {
     }
     // 4. 运行shortcuts
     setShortCuts(actions)
-    await runShortCuts(isOpenSidebarChatBox, overwriteParameters)
+    await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
   }
   /**
    * 重新生成最后一次运行的shortcuts

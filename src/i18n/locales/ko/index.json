@@ -40,7 +40,8 @@
     "auto": "자동",
     "confirm": "확인",
     "copy_as_plain_text": "일반 텍스트로 복사",
-    "copy_with_formatting": "서식이 있는 복사"
+    "copy_with_formatting": "서식이 있는 복사",
+    "download": "다운로드"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "브라우저 설정에서 \"파일 URL에 대한 액세스 허용\" 옵션을 활성화하세요.",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "로 이동합니다. 이렇게 하면 PDF 파일을 브라우저로 드래그하여 놓을 때 'PDF AI 뷰어'가 자동으로 열립니다.",
     "sidebar__tabs__art__title": "아트",
-    "sidebar__tabs__art__tooltip": "인공지능 기반 아트"
+    "sidebar__tabs__art__tooltip": "인공지능 기반 아트",
+    "provider__claude__model__claude_2_1_200k__description": "베이스 claude-2-100k 모드와 동일한 기능을 제공하지만 컨텍스트 길이가 2배로 늘어났습니다. 모델 환상율도 크게 감소했습니다.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "claude-2.1-200k에 액세스 업그레이드",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic의 가장 강력한 모델로, 200K 컨텍스트 창을 제공하여 정교한 대화 및 창의적인 콘텐츠 생성부터 상세한 지시사항까지 다양한 작업에 적합합니다. 모델 환상율도 크게 감소했습니다.",
+    "art__text_to_image__aspect_ratio__square__title": "정사각형",
+    "art__text_to_image__aspect_ratio__landscape__title": "랜드스케이프",
+    "art__text_to_image__aspect_ratio__portrait__title": "포트레이트",
+    "art__text_to_image__aspect_ratio__widescreen__title": "와이드스크린",
+    "art__text_to_image__content_type__photo__title": "사진",
+    "art__text_to_image__content_type__art__title": "아트",
+    "art__text_to_image__advanced__title": "고급 아트 옵션",
+    "art__text_to_image__advanced__aspect_ratio__title": "종횡비",
+    "art__text_to_image__advanced__content_type__title": "콘텐츠 유형"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

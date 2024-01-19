@@ -217,31 +217,6 @@ const useSearchWithAI = () => {
         .finally(async () => {
           isFetchingRef.current = false
           setRunActions([])
-          const conversationId = await getSearchWithAIConversationId()
-          if (conversationId && lastMessageIdRef.current) {
-            // 因为整个过程不一定是成功的
-            // 更新消息的isComplete/sources.status
-            clientChatConversationModifyChatMessages(
-              'update',
-              conversationId,
-              0,
-              [
-                {
-                  messageId: lastMessageIdRef.current,
-                  originalMessage: {
-                    metadata: {
-                      sources: {
-                        status: 'complete',
-                      },
-                      isComplete: true,
-                    },
-                  },
-                } as IAIResponseMessage,
-              ],
-            )
-              .then()
-              .catch()
-          }
         })
     }
   }, [

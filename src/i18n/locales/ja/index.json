@@ -40,7 +40,8 @@
     "auto": "自動",
     "confirm": "確認",
     "copy_as_plain_text": "プレーンテキストとしてコピー",
-    "copy_with_formatting": "書式付きコピー"
+    "copy_with_formatting": "書式付きコピー",
+    "download": "ダウンロード"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "ブラウザの設定で「ファイルURLへのアクセスを許可する」オプションを有効にしてください。以下に移動すると、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "。これにより、PDFファイルをブラウザにドラッグ＆ドロップすると、「PDF AIビューア」が自動的に開きます。",
     "sidebar__tabs__art__title": "アート",
-    "sidebar__tabs__art__tooltip": "AIによるアート"
+    "sidebar__tabs__art__tooltip": "AIによるアート",
+    "provider__claude__model__claude_2_1_200k__description": "ベースのclaude-2-100kモードと同じ機能を備えていますが、コンテキストの長さが2倍になっています。さらに、モデルの幻覚率が大幅に低減されています。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "claude-2.1-200kへのアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropicの最もパワフルなモデルで、200Kのコンテキストウィンドウを持ち、洗練された対話や創造的なコンテンツ生成から詳細な指示まで幅広いタスクに適しています。さらに、モデルの幻覚率が大幅に低減されています。",
+    "art__text_to_image__aspect_ratio__square__title": "正方形",
+    "art__text_to_image__aspect_ratio__landscape__title": "ランドスケープ",
+    "art__text_to_image__aspect_ratio__portrait__title": "ポートレート",
+    "art__text_to_image__aspect_ratio__widescreen__title": "ワイドスクリーン",
+    "art__text_to_image__content_type__photo__title": "写真",
+    "art__text_to_image__content_type__art__title": "アート",
+    "art__text_to_image__advanced__title": "高度なアートオプション",
+    "art__text_to_image__advanced__aspect_ratio__title": "アスペクト比",
+    "art__text_to_image__advanced__content_type__title": "コンテンツタイプ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

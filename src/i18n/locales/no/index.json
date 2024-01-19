@@ -40,7 +40,8 @@
     "auto": "Automatisk",
     "confirm": "Bekreft",
     "copy_as_plain_text": "Kopier som ren tekst",
-    "copy_with_formatting": "Kopier med formatering"
+    "copy_with_formatting": "Kopier med formatering",
+    "download": "Last ned"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktiver alternativet \"Tillat tilgang til fil-URL-er\" i nettleserinnstillingene dine ved å navigere til",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Dette vil la 'PDF AI-visning' åpne automatisk når du drar og slipper PDF-filer i nettleseren.",
     "sidebar__tabs__art__title": "Kunst",
-    "sidebar__tabs__art__tooltip": "AI-drevet kunst"
+    "sidebar__tabs__art__tooltip": "AI-drevet kunst",
+    "provider__claude__model__claude_2_1_200k__description": "Samme funksjonalitet som grunnleggende claude-2-100k-modus, men med dobbel kontekstlengde. Pluss betydelig reduksjon i modellhallusinasjonsrate.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Oppgrader for å få tilgang til claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropics kraftigste modell, 200K kontekstvindu, flott for oppgaver som spenner fra sofistikert dialog og kreativt innholdsgenerering til detaljerte instruksjoner. Pluss betydelig reduksjon i modellhallusinasjonsrate.",
+    "art__text_to_image__aspect_ratio__square__title": "Firkantet",
+    "art__text_to_image__aspect_ratio__landscape__title": "Landskap",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portrett",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Bredformat",
+    "art__text_to_image__content_type__photo__title": "Foto",
+    "art__text_to_image__content_type__art__title": "Kunst",
+    "art__text_to_image__advanced__title": "Avanserte kunstalternativer",
+    "art__text_to_image__advanced__aspect_ratio__title": "Sideforhold",
+    "art__text_to_image__advanced__content_type__title": "Innholdstype"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

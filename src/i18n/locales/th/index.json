@@ -40,7 +40,8 @@
     "auto": "อัตโนมัติ",
     "confirm": "ยืนยัน",
     "copy_as_plain_text": "คัดลอกเป็นข้อความธรรมดา",
-    "copy_with_formatting": "คัดลอกพร้อมการจัดรูปแบบ"
+    "copy_with_formatting": "คัดลอกพร้อมการจัดรูปแบบ",
+    "download": "ดาวน์โหลด"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "เปิดใช้งานตัวเลือก \"อนุญาตให้เข้าถึง URL ไฟล์\" ในการตั้งค่าเบราว์เซอร์ของคุณโดยไปที่",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "นี้จะทำให้ 'ดู PDF AI' เปิดโดยอัตโนมัติเมื่อคุณลากและวางไฟล์ PDF เข้าสู่เบราว์เซอร์",
     "sidebar__tabs__art__title": "ศิลปะ",
-    "sidebar__tabs__art__tooltip": "ศิลปะที่มีพลังของ AI"
+    "sidebar__tabs__art__tooltip": "ศิลปะที่มีพลังของ AI",
+    "provider__claude__model__claude_2_1_200k__description": "ความสามารถเดียวกับโหมด claude-2-100k แต่มีความยาวของบริบทเพิ่มขึ้น 2 เท่า พร้อมกับการลดอัตราการสร้างภาพจินตนาการของโมเดลอย่างมีนัยสำคัญ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "อัปเกรดเพื่อเข้าถึง claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "โมเดลที่มีกำลังการทำงานสูงที่สุดของ Anthropic มีหน้าต่างบริบท 200K ใช้งานได้ดีสำหรับงานที่หลากหลาย เช่น สนทนาที่ซับซ้อนและการสร้างเนื้อหาที่สร้างสรรค์ และคำสั่งที่ละเอียด พร้อมกับการลดอัตราการสร้างภาพจินตนาการของโมเดลอย่างมีนัยสำคัญ",
+    "art__text_to_image__aspect_ratio__square__title": "สี่เหลี่ยมจตุรัส",
+    "art__text_to_image__aspect_ratio__landscape__title": "แนวนอน",
+    "art__text_to_image__aspect_ratio__portrait__title": "แนวตั้ง",
+    "art__text_to_image__aspect_ratio__widescreen__title": "หน้าจอกว้าง",
+    "art__text_to_image__content_type__photo__title": "รูปถ่าย",
+    "art__text_to_image__content_type__art__title": "ศิลปะ",
+    "art__text_to_image__advanced__title": "ตัวเลือกศิลปะขั้นสูง",
+    "art__text_to_image__advanced__aspect_ratio__title": "อัตราส่วนของภาพ",
+    "art__text_to_image__advanced__content_type__title": "ประเภทเนื้อหา"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

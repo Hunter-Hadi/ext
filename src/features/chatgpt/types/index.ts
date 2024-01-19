@@ -3,6 +3,7 @@ import { TFunction } from 'i18next'
 import React from 'react'
 
 import { IContextMenuIconKey } from '@/components/ContextMenuIcon'
+import { IArtTextToImageMetadata } from '@/features/art/types'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
@@ -50,7 +51,7 @@ export type IChatMessageExtraMetaType = {
   // 是否包含历史消息
   includeHistory?: boolean
   // 聊天记录
-  historyMessages?: Array<IAIResponseMessage | IUserChatMessage>
+  historyMessages?: IChatMessage[]
   // 输出的消息ID, 例如summary, search with AI
   outputMessageId?: string
   // 告诉Provider是否需要重新生成
@@ -95,10 +96,9 @@ export interface IAIResponseOriginalMessage {
   }
   content?: {
     title?: IAIResponseOriginalMessageMetadataTitle
-    contentType: 'text'
+    contentType: 'text' | 'image'
     text: string
     language?: string
-    images?: string[]
   }
   metadata?: {
     includeHistory?: boolean
@@ -122,6 +122,8 @@ export interface IAIResponseOriginalMessage {
       title?: IAIResponseOriginalMessageMetadataTitle
       steps: IAIResponseOriginalMessageCopilotStep[]
     }
+    artTextToImageMetadata?: IArtTextToImageMetadata
+    artTextToImagePrompt?: string
     // summary底下的最后一句
     deepDive?: {
       title?: IAIResponseOriginalMessageMetadataTitle

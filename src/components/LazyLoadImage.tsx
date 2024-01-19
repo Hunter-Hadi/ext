@@ -1,4 +1,5 @@
 import Skeleton from '@mui/material/Skeleton'
+import { SxProps } from '@mui/material/styles'
 import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
@@ -10,9 +11,15 @@ interface LazyLoadImageProps {
   src: string
   alt: string
   height: number
+  sx?: SxProps
 }
 
-const LazyLoadImage: React.FC<LazyLoadImageProps> = ({ src, alt, height }) => {
+const LazyLoadImage: React.FC<LazyLoadImageProps> = ({
+  src,
+  alt,
+  height,
+  sx,
+}) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const lazyImageIdRef = useRef(uuidV4())
@@ -60,6 +67,9 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = ({ src, alt, height }) => {
           id={`lazy-image-${lazyImageIdRef.current}`}
           variant="rectangular"
           height={height}
+          sx={{
+            ...sx,
+          }}
         />
       ) : (
         <img src={imageSrc as string} alt={alt} height={height} />

@@ -1,21 +1,23 @@
 import Stack from '@mui/material/Stack'
 import React, { FC, useMemo } from 'react'
 
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 
-const SidebarChatBoxAiTools: FC<{
+const SidebarAIMessageTools: FC<{
   useChatGPTAble?: boolean
   message: IAIResponseMessage
 }> = (props) => {
   const { message } = props
+  const messageContentType =
+    message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
   const memoCopyText = useMemo(() => {
     return formatAIMessageContent(message)
   }, [message])
-
   return (
     <Stack
       direction={'row'}
@@ -23,19 +25,24 @@ const SidebarChatBoxAiTools: FC<{
       spacing={1}
       ref={gmailChatBoxAiToolsRef}
     >
-      <SidebarCopyButton message={message} />
-      <FloatingInputButton
-        className={'max-ai__actions__button--use-max-ai'}
-        iconButton
-        onBeforeShowContextMenu={() => {
-          return {
-            template: memoCopyText,
-            target: gmailChatBoxAiToolsRef.current
-              ?.parentElement as HTMLElement,
-          }
-        }}
-      />
+      {messageContentType === 'image' && (
+        <CopyTooltipIconButton copyText={memoCopyText} />
+      )}
+      {messageContentType === 'text' && <SidebarCopyButton message={message} />}
+      {messageContentType === 'text' && (
+        <FloatingInputButton
+          className={'max-ai__actions__button--use-max-ai'}
+          iconButton
+          onBeforeShowContextMenu={() => {
+            return {
+              template: memoCopyText,
+              target: gmailChatBoxAiToolsRef.current
+                ?.parentElement as HTMLElement,
+            }
+          }}
+        />
+      )}
     </Stack>
   )
 }
-export default SidebarChatBoxAiTools
+export default SidebarAIMessageTools

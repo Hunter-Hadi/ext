@@ -102,51 +102,125 @@ class MaxAIArtChat extends BaseChat {
         })
       return
     }
-    const { taskId, meta } = options || {}
-    const userConfig = await getThirdProviderSettings('MAXAI_ART')
-    const postBody = Object.assign({
-      prompt: message_content?.[0]?.text || '',
-      chrome_extension_version: APP_VERSION,
-      model_name:
-        this.conversation?.meta.AIModel ||
-        userConfig!.model ||
-        MAXAI_IMAGE_GENERATE_MODELS[0].value,
-      prompt_id: meta?.contextMenu?.id || 'chat',
-      prompt_name: meta?.contextMenu?.text || 'chat',
-      style: 'vivid',
-      size: '1024x1024',
-      n: 1,
-    })
+    const { taskId, meta, chat_history } = options || {}
+    const conversationId = this.conversation?.id || ''
+    const userConfig = await getThirdProviderSettings('MAXAI_DALLE')
     const controller = new AbortController()
     const signal = controller.signal
     if (taskId) {
       this.taskList[taskId] = () => controller.abort()
     }
-    log.info('streaming start', postBody)
-    // 后端会每段每段的给前端返回数据
-    // 前端保持匀速输出内容
-    const messageResult = ''
-    const hasError = false
-    const conversationId = this.conversation?.id || ''
-    const isTokenExpired = false
-    debugger
     try {
-      const result = await fetch(
-        `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_image_generate_response`,
-        {
-          method: 'POST',
-          signal,
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.token}`,
+      if (chat_history?.find((history) => history.role === 'system')) {
+        // 说明需要转换自然语言为prompt
+        const result = await fetch(
+          `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`,
+          {
+            method: 'POST',
+            signal,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${this.token}`,
+            },
+            body: JSON.stringify({
+              streaming: false,
+              chat_history,
+              message_content,
+              chrome_extension_version: APP_VERSION,
+              model_name: 'gpt-3.5-turbo',
+              prompt_id: meta?.contextMenu?.id || 'chat',
+              prompt_name: meta?.contextMenu?.text || 'chat',
+            }),
           },
-          body: JSON.stringify(postBody),
-        },
-      )
-      debugger
+        ).then((res) => res.json())
+        if (result.status === 'OK') {
+          onMessage?.({
+            done: true,
+            type: 'message',
+            error: '',
+            data: {
+              text: result.text || message_content?.[0]?.text || '',
+              conversationId,
+            },
+          })
+        } else {
+          onMessage &&
+            onMessage({
+              done: true,
+              type: 'error',
+              error:
+                'Something went wrong, please try again. If this issue persists, contact us via email.',
+              data: { text: '', conversationId },
+            })
+        }
+      } else {
+        const result = await fetch(
+          `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_image_generate_response`,
+          {
+            method: 'POST',
+            signal,
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${this.token}`,
+            },
+            body: JSON.stringify({
+              prompt: message_content?.[0]?.text || '',
+              chrome_extension_version: APP_VERSION,
+              model_name:
+                this.conversation?.meta.AIModel ||
+                userConfig!.model ||
+                MAXAI_IMAGE_GENERATE_MODELS[0].value,
+              prompt_id: meta?.contextMenu?.id || 'chat',
+              prompt_name: meta?.contextMenu?.text || 'chat',
+              style: userConfig?.contentType || 'vivid',
+              size:
+                userConfig?.resolution?.length === 2
+                  ? `${userConfig.resolution[0]}x${userConfig.resolution[1]}`
+                  : `1024x1024`,
+              n: userConfig?.generateCount || 1,
+            }),
+          },
+        ).then((res) => res.json())
+        if (result.status === 'OK' && result.data?.length) {
+          const resultJson = JSON.stringify(
+            result.data.map((imageData: { url: string }) => {
+              return {
+                ...userConfig,
+                ...imageData,
+              }
+            }),
+          )
+          onMessage?.({
+            done: true,
+            type: 'message',
+            error: '',
+            data: {
+              text: resultJson,
+              conversationId,
+            },
+          })
+        } else {
+          onMessage &&
+            onMessage({
+              done: true,
+              type: 'error',
+              error:
+                'Something went wrong, please try again. If this issue persists, contact us via email.',
+              data: { text: '', conversationId },
+            })
+        }
+      }
     } catch (e) {
-      debugger
+      onMessage &&
+        onMessage({
+          done: true,
+          type: 'error',
+          error:
+            'Something went wrong, please try again. If this issue persists, contact us via email.',
+          data: { text: '', conversationId },
+        })
     }
+    const isTokenExpired = false
     if (isTokenExpired) {
       log.info('user token expired')
       this.status = 'needAuth'

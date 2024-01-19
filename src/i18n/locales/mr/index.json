@@ -40,7 +40,8 @@
     "auto": "स्वयंप्रेरित",
     "confirm": "पुष्टी करा",
     "copy_as_plain_text": "सामान्य मजकूर चोरी करा",
-    "copy_with_formatting": "स्वरूपण सह कॉपी"
+    "copy_with_formatting": "स्वरूपण सह कॉपी",
+    "download": "डाउनलोड"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "आपल्या ब्राउझर सेटिंग्जमध्ये \"फाइल URLसाठी प्रवेश परवानगी द्या\" पर्याय सक्षम करा वर्तमानपत्र द्वारे",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". हे आपल्याला पर्यायीत PDF फाइल्स ब्राउझरमध्ये ड्रॅग आणि ड्रॉप केल्यास 'PDF AI दर्शक' स्वतःप्रमाणे उघडतो.",
     "sidebar__tabs__art__title": "कला",
-    "sidebar__tabs__art__tooltip": "AI-शक्तित कला"
+    "sidebar__tabs__art__tooltip": "AI-शक्तित कला",
+    "provider__claude__model__claude_2_1_200k__description": "आधार द्वारे claude-2-100k मोड की समान क्षमताएं, लेकिन 2x संदर्भ लंबाई के साथ। प्लस मॉडल हैलुसिनेशन दर में काफी कमी।",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "claude-2.1-200k तक पहुंच के लिए अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic का सबसे शक्तिशाली मॉडल, 200K संदर्भ विंडो, विस्तृत संवाद और रचनात्मक सामग्री उत्पन्न करने से लेकर विस्तृत निर्देश तक के कार्यों के लिए उत्कृष्ट है। प्लस मॉडल हैलुसिनेशन दर में काफी कमी।",
+    "art__text_to_image__aspect_ratio__square__title": "वर्गाकार",
+    "art__text_to_image__aspect_ratio__landscape__title": "लैंडस्केप",
+    "art__text_to_image__aspect_ratio__portrait__title": "पोर्ट्रेट",
+    "art__text_to_image__aspect_ratio__widescreen__title": "वाइडस्क्रीन",
+    "art__text_to_image__content_type__photo__title": "फोटो",
+    "art__text_to_image__content_type__art__title": "कला",
+    "art__text_to_image__advanced__title": "उन्नत कला विकल्प",
+    "art__text_to_image__advanced__aspect_ratio__title": "संप्रेषण अनुपात",
+    "art__text_to_image__advanced__content_type__title": "सामग्री प्रकार"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

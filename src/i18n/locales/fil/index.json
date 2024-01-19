@@ -40,7 +40,8 @@
     "auto": "Awto",
     "confirm": "Kumpirmahin",
     "copy_as_plain_text": "Kopyahin bilang simpleng teksto",
-    "copy_with_formatting": "Kopyahin na may pormat"
+    "copy_with_formatting": "Kopyahin na may pormat",
+    "download": "I-download"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Paganahin ang opsiyong \"Payagan ang access sa mga URL ng file\" sa iyong mga setting ng browser sa pamamagitan ng pag-navigate sa",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ito ay magpapahintulot na ang 'PDF AI viewer' ay awtomatikong magbukas kapag i-drag at i-drop mo ang mga file ng PDF sa browser.",
     "sidebar__tabs__art__title": "Sining",
-    "sidebar__tabs__art__tooltip": "Sining na pinagana ng AI"
+    "sidebar__tabs__art__tooltip": "Sining na pinagana ng AI",
+    "provider__claude__model__claude_2_1_200k__description": "May parehong kakayahan tulad ng base na claude-2-100k mode pero may dobleng haba ng konteksto. Kasama ang malaking pagbawas sa mga rate ng hallucination ng modelo.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Mag-upgrade para ma-access ang claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Ang pinakamalakas na modelo ng Anthropic, may 200K na window ng konteksto, mahusay para sa mga gawain mula sa sophisticated dialogue at creative content generation hanggang sa detalyadong instruction. Kasama ang malaking pagbawas sa mga rate ng hallucination ng modelo.",
+    "art__text_to_image__aspect_ratio__square__title": "Parisukat",
+    "art__text_to_image__aspect_ratio__landscape__title": "Landscape",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portrait",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Widescreen",
+    "art__text_to_image__content_type__photo__title": "Litratuhan",
+    "art__text_to_image__content_type__art__title": "Sining",
+    "art__text_to_image__advanced__title": "Advanced na mga opsyon sa sining",
+    "art__text_to_image__advanced__aspect_ratio__title": "Aspect ratio",
+    "art__text_to_image__advanced__content_type__title": "Uri ng nilalaman"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

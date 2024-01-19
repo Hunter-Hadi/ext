@@ -9,6 +9,7 @@ import {
   ChatGPTIcon,
   ClaudeIcon,
   ClaudeWebappIcon,
+  DALLEIcon,
   GeminiBetaIcon,
   OpenAIIcon,
   PoeIcon,
@@ -85,6 +86,14 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
       )}
       {aiProviderType === 'POE' && (
         <PoeIcon
+          sx={{
+            ...sx,
+            fontSize: size,
+          }}
+        />
+      )}
+      {aiProviderType === 'MAXAI_DALLE' && (
+        <DALLEIcon
           sx={{
             ...sx,
             fontSize: size,

@@ -24,11 +24,18 @@ const SidebarAIMessageTools: FC<{
     return formatAIMessageContent(message)
   }, [message])
   const downloadUrl = useMemo(() => {
-    const image = JSON.parse(
-      message?.originalMessage?.content?.text || '[]',
-    )?.find((image: any) => image.downloadUrl || image.url)
-    return image?.downloadUrl || image?.url
-  }, [message])
+    if (messageContentType !== 'image') {
+      return ''
+    }
+    try {
+      const image = JSON.parse(
+        message?.originalMessage?.content?.text || '[]',
+      )?.find((image: any) => image.downloadUrl || image.url)
+      return image?.downloadUrl || image?.url
+    } catch (e) {
+      return ''
+    }
+  }, [message, messageContentType])
   return (
     <Stack
       direction={'row'}

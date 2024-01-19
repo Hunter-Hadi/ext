@@ -40,7 +40,8 @@
     "auto": "Avtomatsko",
     "confirm": "Potrdi",
     "copy_as_plain_text": "Kopiraj kot navadno besedilo",
-    "copy_with_formatting": "Kopiraj s formatiranjem"
+    "copy_with_formatting": "Kopiraj s formatiranjem",
+    "download": "Prenesi"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Omogočite možnost »Dovoli dostop do URL-jev datotek« v nastavitvah brskalnika tako, da se pomaknete na",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tako bo 'PDF AI pregledovalnik' samodejno odprt, ko boste PDF-datoteke povlekli in spustili v brskalnik.",
     "sidebar__tabs__art__title": "Umetnost",
-    "sidebar__tabs__art__tooltip": "Umetnost z umetno inteligenco"
+    "sidebar__tabs__art__tooltip": "Umetnost z umetno inteligenco",
+    "provider__claude__model__claude_2_1_200k__description": "Enake zmogljivosti kot osnovni model claude-2-100k, vendar z dvojno dolžino konteksta. Poleg tega je opazno zmanjšanje halucinacij modela.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nadgradite za dostop do claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Najmočnejši model podjetja Anthropic, z oknom konteksta velikosti 200K, odličen za naloge, ki segajo od sofisticiranega dialoga in ustvarjanja vsebine do podrobnih navodil. Poleg tega je opazno zmanjšanje halucinacij modela.",
+    "art__text_to_image__aspect_ratio__square__title": "Kvadrat",
+    "art__text_to_image__aspect_ratio__landscape__title": "Pokrajina",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portret",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Široki zaslon",
+    "art__text_to_image__content_type__photo__title": "Fotografija",
+    "art__text_to_image__content_type__art__title": "Umetnost",
+    "art__text_to_image__advanced__title": "Napredne možnosti umetnosti",
+    "art__text_to_image__advanced__aspect_ratio__title": "Razmerje stranic",
+    "art__text_to_image__advanced__content_type__title": "Vrsta vsebine"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -72,6 +72,14 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
             formatText += `\n\nPowered by MaxAI.me`
           }
           break
+        case 'art':
+          {
+            formatText =
+              originalMessage.metadata?.artTextToImagePrompt ||
+              originalMessage.metadata?.title?.title ||
+              formatText
+          }
+          break
         default:
           break
       }

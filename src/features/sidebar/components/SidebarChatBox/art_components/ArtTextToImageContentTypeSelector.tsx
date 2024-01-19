@@ -13,7 +13,7 @@ const ArtTextToImageContentTypeSelector: FC = () => {
   const [
     maxAIArtProviderSettings,
     updateMaxAIArtProviderSettings,
-  ] = useSingleThirdProviderSettings('MAXAI_ART')
+  ] = useSingleThirdProviderSettings('MAXAI_DALLE')
   const { t } = useTranslation(['common', 'client'])
   const currentOptions = useMemo(() => {
     const currentModel = maxAIArtProviderSettings?.model

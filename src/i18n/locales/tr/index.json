@@ -40,7 +40,8 @@
     "auto": "Otomatik",
     "confirm": "Onayla",
     "copy_as_plain_text": "Düz metin olarak kopyala",
-    "copy_with_formatting": "Biçimlendirmeyle Kopyala"
+    "copy_with_formatting": "Biçimlendirmeyle Kopyala",
+    "download": "İndir"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Tarayıcı ayarlarınıza giderek \"Dosya URL'lerine erişime izin ver\" seçeneğini etkinleştirin.",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Böylece PDF dosyalarını tarayıcıya sürükleyip bıraktığınızda 'PDF AI görüntüleyici' otomatik olarak açılacaktır.",
     "sidebar__tabs__art__title": "Sanat",
-    "sidebar__tabs__art__tooltip": "Yapay zeka destekli sanat"
+    "sidebar__tabs__art__tooltip": "Yapay zeka destekli sanat",
+    "provider__claude__model__claude_2_1_200k__description": "Baz claude-2-100k modelinin aynı yetenekleri, ancak 2 kat daha uzun bağlam uzunluğu. Ayrıca model halüsinasyon oranında önemli bir azalma.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Claude-2.1-200k'ye erişim için yükseltme",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic'in en güçlü modeli, 200K bağlam penceresi, sofistike diyalog ve yaratıcı içerik oluşturmadan ayrıntılı talimatlara kadar geniş bir yelpazede görevler için ideal. Ayrıca model halüsinasyon oranında önemli bir azalma.",
+    "art__text_to_image__aspect_ratio__square__title": "Kare",
+    "art__text_to_image__aspect_ratio__landscape__title": "Manzara",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portre",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Geniş Ekran",
+    "art__text_to_image__content_type__photo__title": "Fotoğraf",
+    "art__text_to_image__content_type__art__title": "Sanat",
+    "art__text_to_image__advanced__title": "Gelişmiş sanat seçenekleri",
+    "art__text_to_image__advanced__aspect_ratio__title": "En-boy oranı",
+    "art__text_to_image__advanced__content_type__title": "İçerik türü"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

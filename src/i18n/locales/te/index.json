@@ -40,7 +40,8 @@
     "auto": "ఆటో",
     "confirm": "నిర్ధారించండి",
     "copy_as_plain_text": "సరళ వచనంగా కాపీ చేయండి",
-    "copy_with_formatting": "ఫార్మాటింగ్ తో కాపీ"
+    "copy_with_formatting": "ఫార్మాటింగ్ తో కాపీ",
+    "download": "డౌన్‌లోడ్"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "మీ బ్రౌజర్ సెట్టింగ్లలో \"ఫైల్ URLలకు ప్రవేశాన్ని అనుమతించు\" ఎంపికను ప్రారంభించండి",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ఇది మీకు అనుమతిస్తుంది 'పిడిఎఫ్ ఎయి వీక్షకు' స్వయంచాలకంగా తెరవడానికి మీరు పిడిఎఫ్ ఫైళ్లను బ్రౌజర్‌లో డ్రాగ్ చేసి పెట్టగలరు.",
     "sidebar__tabs__art__title": "కళా",
-    "sidebar__tabs__art__tooltip": "AI పోవర్ కళా"
+    "sidebar__tabs__art__tooltip": "AI పోవర్ కళా",
+    "provider__claude__model__claude_2_1_200k__description": "బేస్ క్లోడ్-2-100k మోడల్‌తో ఒకటి అదే సామర్థ్యం, కానీ కంటే 2x కంటెక్స్ట్ పొడవు. మోడల్ హాల్యూసినేషన్ రేట్లు తగ్గించిన ప్రముఖ తక్షణ తక్షణమే.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "claude-2.1-200k కి ప్రాధాన్యత పొందడానికి నవీకరించండి",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic యొక్క అత్యంత శక్తివంతమైన మోడల్, 200K కంటెక్స్ట్ విండో, సాధారణ సంభాషణ మరియు సృజనాత్మక కంటెంట్ జనరేషన్ నుండి వివరణాత్మక నిర్దేశాలకు చాలా మంచిది. మోడల్ హాల్యూసినేషన్ రేట్లు తగ్గించిన ప్రముఖ తక్షణ తక్షణమే.",
+    "art__text_to_image__aspect_ratio__square__title": "చదరపు",
+    "art__text_to_image__aspect_ratio__landscape__title": "ల్యాండ్‌స్కేప్",
+    "art__text_to_image__aspect_ratio__portrait__title": "పోర్ట్రెట్",
+    "art__text_to_image__aspect_ratio__widescreen__title": "వైడ్‌స్క్రీన్",
+    "art__text_to_image__content_type__photo__title": "ఫోటో",
+    "art__text_to_image__content_type__art__title": "కళా",
+    "art__text_to_image__advanced__title": "ఉన్నత కళా ఎంపికలు",
+    "art__text_to_image__advanced__aspect_ratio__title": "అంశాన్ని నిర్ధారించే విధానం",
+    "art__text_to_image__advanced__content_type__title": "కంటెంట్ రకం"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

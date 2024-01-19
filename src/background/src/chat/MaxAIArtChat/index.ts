@@ -104,7 +104,7 @@ class MaxAIArtChat extends BaseChat {
     }
     const { taskId, meta, chat_history } = options || {}
     const conversationId = this.conversation?.id || ''
-    const userConfig = await getThirdProviderSettings('MAXAI_ART')
+    const userConfig = await getThirdProviderSettings('MAXAI_DALLE')
     const controller = new AbortController()
     const signal = controller.signal
     if (taskId) {

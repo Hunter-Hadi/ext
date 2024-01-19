@@ -40,7 +40,8 @@
     "auto": "ಸ್ವಯಂಚಾಲಿತ",
     "confirm": "ದೃಢೀಕರಿಸಿ",
     "copy_as_plain_text": "ಸರಳ ಪಠ್ಯವನ್ನು ನಕಲಿಸಿ",
-    "copy_with_formatting": "ಸ್ವರೂಪಿತ ನಕಲಿ"
+    "copy_with_formatting": "ಸ್ವರೂಪಿತ ನಕಲಿ",
+    "download": "ಡೌನ್‌ಲೋಡ್"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "ನಿಮ್ಮ ಬ್ರೌಸರ್ ಸೆಟ್ಟಿಂಗ್ಗಳಲ್ಲಿ \"ಫೈಲ್ URL ಗೆ ಪ್ರವೇಶ ಅನುಮತಿಸು\" ಆಯ್ಕೆಯನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ ಈ ವಿಳಾಸಕ್ಕೆ ಹೋಗುವ ಮೂಲಕ",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". ಇದು ನೀವು ಪಿಡಿಎಫ್ ಕಡತಗಳನ್ನು ಬ್ರೌಸರ್ ಗೆ ಹಾಕಿ ಬಿಸಿಯಿರಿ ಸ್ವಯಂಚಾಲಿತವಾಗಿ 'PDF AI ವೀಕ್ಷಕ' ತೆರೆಯುವುದನ್ನು ಅನುಮತಿಸುತ್ತದೆ.",
     "sidebar__tabs__art__title": "ಕಲೆ",
-    "sidebar__tabs__art__tooltip": "AI ಶಕ್ತಿಯ ಕಲೆ"
+    "sidebar__tabs__art__tooltip": "AI ಶಕ್ತಿಯ ಕಲೆ",
+    "provider__claude__model__claude_2_1_200k__description": "ಬೇಸ್ ಕ್ಲೋಡ್-2-100k ಮೋಡ್ ಜೊತೆಗೆ 2 ಪಟ್ಟಿ ದೂರದ ಸಂದರ್ಭ ಉಳಿತಾಯವನ್ನು ಹೊಂದಿದೆ. ಮತ್ತು ಮೋಡೆಲ್ ಹುಚ್ಚೆ ಹಂಚನೆಯ ಹಂತಗಳಲ್ಲಿ ಸಂಖ್ಯೆಯನ್ನು ತಗ್ಗಿಸುವುದು.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Claude-2.1-200k ಅನುಸ್ಥಾನಕ್ಕೆ ಮೆಚ್ಚಿಗೆ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic ಯಾವುದೇ ಶ್ರೇಷ್ಠ ಮೋಡೆಲ್, 200K ಸಂದರ್ಭ ವಿಂಡೋ, ಸುಂದರ ಸಂಭಾಷಣೆ ಮತ್ತು ಸೃಜನಾತ್ಮಕ ವಿಷಯ ರಚನೆಗೆ ಉತ್ತಮ. ಮತ್ತು ಮೋಡೆಲ್ ಹುಚ್ಚೆ ಹಂಚನೆಯ ಹಂತಗಳಲ್ಲಿ ಸಂಖ್ಯೆಯನ್ನು ತಗ್ಗಿಸುವುದು.",
+    "art__text_to_image__aspect_ratio__square__title": "ಚೌಕಾಕಾರ",
+    "art__text_to_image__aspect_ratio__landscape__title": "ಲ್ಯಾಂಡ್‌ಸ್ಕೇಪ್",
+    "art__text_to_image__aspect_ratio__portrait__title": "ಪೋರ್ಟ್ರೆಟ್",
+    "art__text_to_image__aspect_ratio__widescreen__title": "ವೈಡ್‌ಸ್ಕ್ರೀನ್",
+    "art__text_to_image__content_type__photo__title": "ಫೋಟೋ",
+    "art__text_to_image__content_type__art__title": "ಕಲೆ",
+    "art__text_to_image__advanced__title": "ಮುಂದಿನ ಕಲೆ ಆಯ್ಕೆಗಳು",
+    "art__text_to_image__advanced__aspect_ratio__title": "ಅಂಶ ಅನುಪಾತ",
+    "art__text_to_image__advanced__content_type__title": "ವಿಷಯ ಪ್ರಕಾರ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -40,7 +40,8 @@
     "auto": "ஆட்டோ",
     "confirm": "உறுதிப்படுத்து",
     "copy_as_plain_text": "சாதாரண உரையாக நகலெடு",
-    "copy_with_formatting": "வடிவமைப்புடன் நகலெழுது"
+    "copy_with_formatting": "வடிவமைப்புடன் நகலெழுது",
+    "download": "பதிவிறக்கு"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "உங்கள் உலாவியில் 'கோப்பு URL-க்கு அணுகல் அனுமதியை அனுமதிக்க' விரும்பினால் உங்கள் உலாவி அமைப்புகளில் \"URL-க்கு கோப்புகளுக்கு அணுகல் அனுமதியை அனுமதிக்க\" விரும்பினால் 'பிடிஎஃப் ஏஐ காட்சி' தானாகவே திறக்கப்படும்.",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ".",
     "sidebar__tabs__art__title": "கலை",
-    "sidebar__tabs__art__tooltip": "மின்னணு மூலம் உருவாக்கப்பட்ட கலை"
+    "sidebar__tabs__art__tooltip": "மின்னணு மூலம் உருவாக்கப்பட்ட கலை",
+    "provider__claude__model__claude_2_1_200k__description": "அடிப்படை கிளோட்-2-100k முறையுடன் ஒரே முக்கியத்துவம், ஆனால் மீதமுள்ள நிலையில் 2 மடங்கு நீளம். மேலும் மாதிரி மாற்றம் மாதிரி மாற்றம் மிகுந்த மாதிரி மாற்றம்.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "claude-2.1-200k அணுகலைப் பெறுக",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic மிகப்பெரிய மாதிரி, 200K உள்ளடக்க சாளரம், மிகுந்த உரையாடல் மற்றும் உருவாக்கப்பட்ட உள்ளடக்கங்களுக்கு அரிசி. மேலும் மாதிரி மாற்றம் மாதிரி மாற்றம் மிகுந்த மாதிரி மாற்றம்.",
+    "art__text_to_image__aspect_ratio__square__title": "சதுர",
+    "art__text_to_image__aspect_ratio__landscape__title": "நிலையம்",
+    "art__text_to_image__aspect_ratio__portrait__title": "புகைப்படம்",
+    "art__text_to_image__aspect_ratio__widescreen__title": "விரிவான திரை",
+    "art__text_to_image__content_type__photo__title": "புகைப்படம்",
+    "art__text_to_image__content_type__art__title": "கலை",
+    "art__text_to_image__advanced__title": "மேம்படுத்தப்பட்ட கலை விருப்பங்கள்",
+    "art__text_to_image__advanced__aspect_ratio__title": "அமைப்பு வினாடி",
+    "art__text_to_image__advanced__content_type__title": "உள்ளடக்க வகை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

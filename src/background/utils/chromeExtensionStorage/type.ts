@@ -153,7 +153,7 @@ export type IThirdProviderSettings = {
     temperature?: number
   }
   // Art provider
-  [AI_PROVIDER_MAP.MAXAI_ART]: {
+  [AI_PROVIDER_MAP.MAXAI_DALLE]: {
     model?: string
   } & IArtTextToImageMetadata
 }

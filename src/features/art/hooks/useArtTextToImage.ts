@@ -17,7 +17,7 @@ const useArtTextToImage = () => {
   } = useSidebarSettings()
   const startTextToImage = async (text: string) => {
     const messageId = uuidV4()
-    const modelConfig = await getThirdProviderSettings('MAXAI_ART')
+    const modelConfig = await getThirdProviderSettings('MAXAI_DALLE')
     const isNeedTransform =
       sidebarSettings?.art?.isEnabledConversationalMode === true
     let actions: ISetActionsType = []

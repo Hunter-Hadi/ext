@@ -84,7 +84,7 @@ const useClientConversation = () => {
       let currentAIProvider = appLocalStorage.sidebarSettings?.common
         ?.currentAIProvider as IAIProviderType
       // 如果是Art，切换回UseChatGPT
-      if (currentAIProvider === 'MAXAI_ART') {
+      if (currentAIProvider === 'MAXAI_DALLE') {
         await updateSidebarSettings({
           common: {
             currentAIProvider: 'USE_CHAT_GPT_PLUS',
@@ -245,7 +245,7 @@ const useClientConversation = () => {
             type: 'Art',
             title: 'AI-powered image generate',
             meta: merge({
-              AIProvider: 'MAXAI_ART',
+              AIProvider: 'MAXAI_DALLE',
               AIModel: 'dall-e-3',
               maxTokens: 16384,
             }),

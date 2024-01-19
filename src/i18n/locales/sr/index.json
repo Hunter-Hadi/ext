@@ -40,7 +40,8 @@
     "auto": "Automobil",
     "confirm": "Potvrdi",
     "copy_as_plain_text": "Kopiraj kao običan tekst",
-    "copy_with_formatting": "Kopiraj sa formatiranjem"
+    "copy_with_formatting": "Kopiraj sa formatiranjem",
+    "download": "Preuzmi"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Omogućite opciju \"Dozvoli pristup URL-ovima fajlova\" u podešavanjima vašeg pretraživača tako što ćete otići na",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ovo će omogućiti da se 'PDF AI pregledač' automatski otvori kada prevučete i otpustite PDF fajlove u pretraživač.",
     "sidebar__tabs__art__title": "Umetnost",
-    "sidebar__tabs__art__tooltip": "Umetnost sa AI tehnologijom"
+    "sidebar__tabs__art__tooltip": "Umetnost sa AI tehnologijom",
+    "provider__claude__model__claude_2_1_200k__description": "Iste mogućnosti kao i osnovni claude-2-100k model, ali sa dvostrukom dužinom konteksta. Plus značajno smanjenje stope halucinacija modela.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nadogradite da biste pristupili claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Najmoćniji model kompanije Anthropic, prozor konteksta od 200K, odličan za zadatke koji se kreću od sofisticiranog dijaloga i generisanja kreativnog sadržaja do detaljnih instrukcija. Plus značajno smanjenje stope halucinacija modela.",
+    "art__text_to_image__aspect_ratio__square__title": "Kvadrat",
+    "art__text_to_image__aspect_ratio__landscape__title": "Pejzaž",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portret",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Široki ekran",
+    "art__text_to_image__content_type__photo__title": "Fotografija",
+    "art__text_to_image__content_type__art__title": "Umetnost",
+    "art__text_to_image__advanced__title": "Napredne opcije umetnosti",
+    "art__text_to_image__advanced__aspect_ratio__title": "Odnos stranica",
+    "art__text_to_image__advanced__content_type__title": "Tip sadržaja"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

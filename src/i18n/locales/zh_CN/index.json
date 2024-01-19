@@ -40,7 +40,8 @@
     "auto": "自动",
     "confirm": "确认",
     "copy_as_plain_text": "复制为纯文本",
-    "copy_with_formatting": "带格式的复制"
+    "copy_with_formatting": "带格式的复制",
+    "download": "下载"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "通过导航到",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "在浏览器设置中启用\"允许访问文件URL\"选项。这将使'PDF AI查看器'在您将PDF文件拖放到浏览器时自动打开。",
     "sidebar__tabs__art__title": "艺术",
-    "sidebar__tabs__art__tooltip": "AI 动力艺术"
+    "sidebar__tabs__art__tooltip": "AI 动力艺术",
+    "provider__claude__model__claude_2_1_200k__description": "与基础claude-2-100k模式具有相同的功能，但上下文长度增加了2倍。此外，模型产生幻觉的频率显著降低。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "升级以访问claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic最强大的模型，200K上下文窗口，非常适合从复杂对话和创造性内容生成到详细指导的任务。此外，模型产生幻觉的频率显著降低。",
+    "art__text_to_image__aspect_ratio__square__title": "方形",
+    "art__text_to_image__aspect_ratio__landscape__title": "横向",
+    "art__text_to_image__aspect_ratio__portrait__title": "纵向",
+    "art__text_to_image__aspect_ratio__widescreen__title": "宽屏",
+    "art__text_to_image__content_type__photo__title": "照片",
+    "art__text_to_image__content_type__art__title": "艺术",
+    "art__text_to_image__advanced__title": "高级艺术选项",
+    "art__text_to_image__advanced__aspect_ratio__title": "宽高比",
+    "art__text_to_image__advanced__content_type__title": "内容类型"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

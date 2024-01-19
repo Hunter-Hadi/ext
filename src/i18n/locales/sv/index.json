@@ -40,7 +40,8 @@
     "auto": "Automatisk",
     "confirm": "Bekräfta",
     "copy_as_plain_text": "Kopiera som ren text",
-    "copy_with_formatting": "Kopiera med formatering"
+    "copy_with_formatting": "Kopiera med formatering",
+    "download": "Ladda ner"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivera alternativet \"Tillåt åtkomst till fil-URL:er\" i webbläsarens inställningar genom att navigera till",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Detta gör att 'PDF AI-visaren' öppnas automatiskt när du drar och släpper PDF-filer i webbläsaren.",
     "sidebar__tabs__art__title": "Konst",
-    "sidebar__tabs__art__tooltip": "AI-drivna konstverk"
+    "sidebar__tabs__art__tooltip": "AI-drivna konstverk",
+    "provider__claude__model__claude_2_1_200k__description": "Samma kapabiliteter som grundläggande claude-2-100k-läge men med dubbelt så långt sammanhang. Dessutom en betydande minskning av modellens hallucinationsfrekvens.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Uppgradera för att få tillgång till claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropics mest kraftfulla modell, 200K kontextfönster, perfekt för uppgifter som sträcker sig från sofistikerad dialog och kreativt innehållsgenerering till detaljerade instruktioner. Dessutom en betydande minskning av modellens hallucinationsfrekvens.",
+    "art__text_to_image__aspect_ratio__square__title": "Fyrkantig",
+    "art__text_to_image__aspect_ratio__landscape__title": "Landskap",
+    "art__text_to_image__aspect_ratio__portrait__title": "Porträtt",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Bredbild",
+    "art__text_to_image__content_type__photo__title": "Foto",
+    "art__text_to_image__content_type__art__title": "Konst",
+    "art__text_to_image__advanced__title": "Avancerade konstalternativ",
+    "art__text_to_image__advanced__aspect_ratio__title": "Bildförhållande",
+    "art__text_to_image__advanced__content_type__title": "Innehållstyp"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

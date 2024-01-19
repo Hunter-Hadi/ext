@@ -389,7 +389,7 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_ART, maxAIArtAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_DALLE, maxAIArtAdapter)
   // search with AI
   SearchWithAIMessageInit()
 }

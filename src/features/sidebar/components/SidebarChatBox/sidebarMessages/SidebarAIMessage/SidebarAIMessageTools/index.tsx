@@ -1,10 +1,10 @@
 import Stack from '@mui/material/Stack'
 import React, { FC, useMemo } from 'react'
 
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
-import SidebarAIMessageDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools/SidebarAIMessageDownloadImageButton'
 import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 
 const SidebarAIMessageTools: FC<{
@@ -18,22 +18,6 @@ const SidebarAIMessageTools: FC<{
   const memoCopyText = useMemo(() => {
     return formatAIMessageContent(message)
   }, [message])
-  const downloadUrl = useMemo(() => {
-    try {
-      debugger
-      if (
-        message.originalMessage?.content?.text &&
-        message.originalMessage.content.contentType === 'image'
-      ) {
-        const images = JSON.parse(message.originalMessage.content.text)
-        debugger
-        return images?.[0]?.url || ''
-      }
-    } catch (e) {
-      debugger
-      return ''
-    }
-  }, [message])
   return (
     <Stack
       direction={'row'}
@@ -41,8 +25,8 @@ const SidebarAIMessageTools: FC<{
       spacing={1}
       ref={gmailChatBoxAiToolsRef}
     >
-      {messageContentType === 'image' && downloadUrl && (
-        <SidebarAIMessageDownloadButton downloadUrl={downloadUrl} />
+      {messageContentType === 'image' && (
+        <CopyTooltipIconButton copyText={memoCopyText} />
       )}
       {messageContentType === 'text' && <SidebarCopyButton message={message} />}
       {messageContentType === 'text' && (

@@ -40,7 +40,8 @@
     "auto": "Tự động",
     "confirm": "Xác nhận",
     "copy_as_plain_text": "Sao chép dưới dạng văn bản thuần",
-    "copy_with_formatting": "Sao chép với định dạng"
+    "copy_with_formatting": "Sao chép với định dạng",
+    "download": "Tải xuống"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Bật tùy chọn \"Cho phép truy cập vào URL tệp\" trong cài đặt trình duyệt của bạn bằng cách điều hướng đến",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Điều này sẽ cho phép 'Trình xem PDF AI' tự động mở khi bạn kéo và thả các tệp PDF vào trình duyệt.",
     "sidebar__tabs__art__title": "Nghệ thuật",
-    "sidebar__tabs__art__tooltip": "Nghệ thuật được hỗ trợ bởi trí tuệ nhân tạo"
+    "sidebar__tabs__art__tooltip": "Nghệ thuật được hỗ trợ bởi trí tuệ nhân tạo",
+    "provider__claude__model__claude_2_1_200k__description": "Cùng khả năng như mô hình claude-2-100k gốc nhưng với độ dài ngữ cảnh gấp đôi. Cùng với việc giảm đáng kể tỷ lệ tạo ra thông tin sai lệch của mô hình.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nâng cấp để truy cập claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 200K, phù hợp cho các nhiệm vụ từ cuộc trò chuyện phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết. Cùng với việc giảm đáng kể tỷ lệ tạo ra thông tin sai lệch của mô hình.",
+    "art__text_to_image__aspect_ratio__square__title": "Hình vuông",
+    "art__text_to_image__aspect_ratio__landscape__title": "Phong cảnh",
+    "art__text_to_image__aspect_ratio__portrait__title": "Chân dung",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Màn hình rộng",
+    "art__text_to_image__content_type__photo__title": "Ảnh",
+    "art__text_to_image__content_type__art__title": "Nghệ thuật",
+    "art__text_to_image__advanced__title": "Tùy chọn nghệ thuật nâng cao",
+    "art__text_to_image__advanced__aspect_ratio__title": "Tỷ lệ khung hình",
+    "art__text_to_image__advanced__content_type__title": "Loại nội dung"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

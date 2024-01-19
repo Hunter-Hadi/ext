@@ -124,7 +124,7 @@ const useAIProviderModels = () => {
       POE: POE_MODELS,
       MAXAI_CLAUDE: reverse(cloneDeep(MAXAI_CLAUDE_MODELS)),
       MAXAI_GEMINI: reverse(cloneDeep(MAXAI_GENMINI_MODELS)),
-      MAXAI_ART: reverse(cloneDeep(MAXAI_IMAGE_GENERATE_MODELS)),
+      MAXAI_DALLE: reverse(cloneDeep(MAXAI_IMAGE_GENERATE_MODELS)),
     }
   }, [
     whiteListModels,

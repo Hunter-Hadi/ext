@@ -40,7 +40,8 @@
     "auto": "Авто",
     "confirm": "Подтвердить",
     "copy_as_plain_text": "Копировать как обычный текст",
-    "copy_with_formatting": "Копировать с форматированием"
+    "copy_with_formatting": "Копировать с форматированием",
+    "download": "Скачать"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Включите опцию \"Разрешить доступ к URL-адресам файлов\" в настройках вашего браузера, перейдя по адресу",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Это позволит 'Просмотру PDF AI' автоматически открываться при перетаскивании файлов PDF в браузер.",
     "sidebar__tabs__art__title": "Искусство",
-    "sidebar__tabs__art__tooltip": "Искусство, работающее на основе искусственного интеллекта"
+    "sidebar__tabs__art__tooltip": "Искусство, работающее на основе искусственного интеллекта",
+    "provider__claude__model__claude_2_1_200k__description": "Те же возможности, что и у базовой модели claude-2-100k, но с удвоенной длиной контекста. Плюс значительное снижение частоты галлюцинаций модели.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Получите доступ к claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Самая мощная модель Anthropic, окно контекста 200K, отлично подходит для задач от сложного диалога и создания творческого контента до подробных инструкций. Плюс значительное снижение частоты галлюцинаций модели.",
+    "art__text_to_image__aspect_ratio__square__title": "Квадратный",
+    "art__text_to_image__aspect_ratio__landscape__title": "Альбомный",
+    "art__text_to_image__aspect_ratio__portrait__title": "Портретный",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Широкоэкранный",
+    "art__text_to_image__content_type__photo__title": "Фото",
+    "art__text_to_image__content_type__art__title": "Искусство",
+    "art__text_to_image__advanced__title": "Дополнительные параметры искусства",
+    "art__text_to_image__advanced__aspect_ratio__title": "Соотношение сторон",
+    "art__text_to_image__advanced__content_type__title": "Тип контента"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

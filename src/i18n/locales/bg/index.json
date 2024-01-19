@@ -40,7 +40,8 @@
     "auto": "Автоматично",
     "confirm": "Потвърди",
     "copy_as_plain_text": "Копиране като обикновен текст",
-    "copy_with_formatting": "Копиране със форматиране"
+    "copy_with_formatting": "Копиране със форматиране",
+    "download": "Изтегли"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Активирайте опцията \"Разрешаване на достъп до URL адреси на файлове\" в настройките на вашия браузър, като отидете на",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Това ще позволи на 'Преглед на PDF AI' да се отваря автоматично, когато влачете и пускате PDF файлове в браузъра.",
     "sidebar__tabs__art__title": "Изкуство",
-    "sidebar__tabs__art__tooltip": "Изкуство с изкуствен интелект"
+    "sidebar__tabs__art__tooltip": "Изкуство с изкуствен интелект",
+    "provider__claude__model__claude_2_1_200k__description": "Същите възможности като базовия модел claude-2-100k, но с два пъти по-дължина на контекста. Плюс значително намаление на честотата на халюцинации на модела.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Надстройка за достъп до claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Най-мощният модел на Anthropic, с контекстно прозорец от 200K, подходящ за задачи от сложен диалог и създаване на творческо съдържание до подробни инструкции. Плюс значително намаление на честотата на халюцинации на модела.",
+    "art__text_to_image__aspect_ratio__square__title": "Квадрат",
+    "art__text_to_image__aspect_ratio__landscape__title": "Пейзаж",
+    "art__text_to_image__aspect_ratio__portrait__title": "Портрет",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Широкоекранен",
+    "art__text_to_image__content_type__photo__title": "Снимка",
+    "art__text_to_image__content_type__art__title": "Изкуство",
+    "art__text_to_image__advanced__title": "Разширени опции за изкуство",
+    "art__text_to_image__advanced__aspect_ratio__title": "Съотношение на страните",
+    "art__text_to_image__advanced__content_type__title": "Тип на съдържанието"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

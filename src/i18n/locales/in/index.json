@@ -40,7 +40,8 @@
     "auto": "Otomatis",
     "confirm": "Konfirmasi",
     "copy_as_plain_text": "Salin sebagai teks biasa",
-    "copy_with_formatting": "Salin dengan pemformatan"
+    "copy_with_formatting": "Salin dengan pemformatan",
+    "download": "Unduh"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktifkan opsi \"Izinkan akses ke URL file\" di pengaturan browser Anda dengan membuka",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ini akan memungkinkan 'Penampil PDF AI' terbuka secara otomatis ketika Anda menyeret dan melepaskan file PDF ke browser.",
     "sidebar__tabs__art__title": "Seni",
-    "sidebar__tabs__art__tooltip": "Seni berbasis AI"
+    "sidebar__tabs__art__tooltip": "Seni berbasis AI",
+    "provider__claude__model__claude_2_1_200k__description": "Kemampuan yang sama dengan mode claude-2-100k dasar tetapi dengan panjang konteks 2x. Ditambah penurunan signifikan dalam tingkat halusinasi model.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Tingkatkan untuk mengakses claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Model terkuat dari Anthropic, jendela konteks 200K, sangat cocok untuk tugas-tugas mulai dari dialog canggih dan generasi konten kreatif hingga instruksi terperinci. Ditambah penurunan signifikan dalam tingkat halusinasi model.",
+    "art__text_to_image__aspect_ratio__square__title": "Persegi",
+    "art__text_to_image__aspect_ratio__landscape__title": "Lanskap",
+    "art__text_to_image__aspect_ratio__portrait__title": "Potret",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Layar lebar",
+    "art__text_to_image__content_type__photo__title": "Foto",
+    "art__text_to_image__content_type__art__title": "Seni",
+    "art__text_to_image__advanced__title": "Opsi seni lanjutan",
+    "art__text_to_image__advanced__aspect_ratio__title": "Rasio aspek",
+    "art__text_to_image__advanced__content_type__title": "Jenis konten"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

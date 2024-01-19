@@ -40,7 +40,8 @@
     "auto": "આપો",
     "confirm": "પુષ્ટિ કરો",
     "copy_as_plain_text": "સાદા ટેક્સ્ટ તરીકે કૉપિ કરો",
-    "copy_with_formatting": "ફોર્મેટિંગ સાથે કૉપી"
+    "copy_with_formatting": "ફોર્મેટિંગ સાથે કૉપી",
+    "download": "ડાઉનલોડ"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "તમારા બ્રાઉઝર સેટિંગ્સમાં \"ફાઇલ URLને ઍક્સેસ આપવાની મંજૂરી આપો\" વિકલ્પને સક્ષમ કરો અને તેમાં જઈને",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "પર જવો. આ તમને અનુમતિ આપશે કે જ્યારે તમે પીડીએફ ફાઇલોને બ્રાઉઝરમાં ખેંચો અને છોડો ત્યારે 'પીડીએફ AI જોવાની સ્વિચ' આપોઆપ ખુલી જશે.",
     "sidebar__tabs__art__title": "કલા",
-    "sidebar__tabs__art__tooltip": "AI પર આધારિત કલા"
+    "sidebar__tabs__art__tooltip": "AI પર આધારિત કલા",
+    "provider__claude__model__claude_2_1_200k__description": "બેઝ ક્લોડ-2-100k મોડની સમાન સક્ષમતા છે, પરંતુ સંદર્ભ લંબાઈની 2 ગુણાંકન છે. અને મોડલ હેલ્યુસિનેશન દરમિયાન વધારે કમી.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "પહોંચ મેળવવા માટે અપગ્રેડ કરો claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropicનું સૌથી શક્તિશાળી મોડલ, 200K સંદર્ભ વિંડો, સુસંગત સંવાદ અને રચના ઉત્પાદન થી વિસ્તૃત માર્ગદર્શિકા સુધીની કાર્યો માટે મહત્વપૂર્ણ છે. અને મોડલ હેલ્યુસિનેશન દરમિયાન વધારે કમી.",
+    "art__text_to_image__aspect_ratio__square__title": "ચોરસ",
+    "art__text_to_image__aspect_ratio__landscape__title": "લેન્ડસ્કેપ",
+    "art__text_to_image__aspect_ratio__portrait__title": "પોર્ટ્રેટ",
+    "art__text_to_image__aspect_ratio__widescreen__title": "વાઇડસ્ક્રીન",
+    "art__text_to_image__content_type__photo__title": "ફોટો",
+    "art__text_to_image__content_type__art__title": "કલા",
+    "art__text_to_image__advanced__title": "અગ્રણી કલા વિકલ્પો",
+    "art__text_to_image__advanced__aspect_ratio__title": "આંકડાકાર",
+    "art__text_to_image__advanced__content_type__title": "સામગ્રી પ્રકાર"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

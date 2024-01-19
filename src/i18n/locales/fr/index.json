@@ -40,7 +40,8 @@
     "auto": "Automatique",
     "confirm": "Confirmer",
     "copy_as_plain_text": "Copier en tant que texte brut",
-    "copy_with_formatting": "Copier avec mise en forme"
+    "copy_with_formatting": "Copier avec mise en forme",
+    "download": "Télécharger"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Activez l'option \"Autoriser l'accès aux URL de fichier\" dans les paramètres de votre navigateur en accédant à",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Cela permettra à la 'Visionneuse IA PDF' de s'ouvrir automatiquement lorsque vous faites glisser et déposez des fichiers PDF dans le navigateur.",
     "sidebar__tabs__art__title": "Art",
-    "sidebar__tabs__art__tooltip": "Art alimenté par l'IA"
+    "sidebar__tabs__art__tooltip": "Art alimenté par l'IA",
+    "provider__claude__model__claude_2_1_200k__description": "Mêmes capacités que le mode claude-2-100k de base mais avec une longueur de contexte doublée. En plus, réduction significative des taux d'hallucination du modèle.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Passer à claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Le modèle le plus puissant d'Anthropic, fenêtre de contexte de 200K, idéal pour des tâches allant du dialogue sophistiqué et de la génération de contenu créatif aux instructions détaillées. En plus, réduction significative des taux d'hallucination du modèle.",
+    "art__text_to_image__aspect_ratio__square__title": "Carré",
+    "art__text_to_image__aspect_ratio__landscape__title": "Paysage",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portrait",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Écran large",
+    "art__text_to_image__content_type__photo__title": "Photo",
+    "art__text_to_image__content_type__art__title": "Art",
+    "art__text_to_image__advanced__title": "Options avancées d'art",
+    "art__text_to_image__advanced__aspect_ratio__title": "Ratio d'aspect",
+    "art__text_to_image__advanced__content_type__title": "Type de contenu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

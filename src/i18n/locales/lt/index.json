@@ -40,7 +40,8 @@
     "auto": "Automobilis",
     "confirm": "Patvirtinti",
     "copy_as_plain_text": "Kopijuoti kaip paprastą tekstą",
-    "copy_with_formatting": "Kopijuoti su formatavimu"
+    "copy_with_formatting": "Kopijuoti su formatavimu",
+    "download": "Atsisiųsti"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Įjunkite „Leisti prieigą prie failų URL“ parinktį naršyklės nustatymuose, nueidami į",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tai leis 'PDF AI peržiūrai' automatiškai atsidaryti, kai vilkite ir numetate PDF failus į naršyklę.",
     "sidebar__tabs__art__title": "Menas",
-    "sidebar__tabs__art__tooltip": "Menas su dirbtine intelekta"
+    "sidebar__tabs__art__tooltip": "Menas su dirbtine intelekta",
+    "provider__claude__model__claude_2_1_200k__description": "Tokia pati galimybė kaip ir bazinėje claude-2-100k versijoje, bet su dvigubai ilgesniu konteksto ilgiu. Taip pat žymiai sumažintas modelio halucinacijų dažnis.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Atnaujinkite, kad gautumėte prieigą prie claude-2.1-200k",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic galingiausias modelis, 200K konteksto langas, puikus užduočių sprendimui nuo sudėtingo dialogo ir kūrybinio turinio generavimo iki išsamios instrukcijos. Taip pat žymiai sumažintas modelio halucinacijų dažnis.",
+    "art__text_to_image__aspect_ratio__square__title": "Kvadratas",
+    "art__text_to_image__aspect_ratio__landscape__title": "Peizažas",
+    "art__text_to_image__aspect_ratio__portrait__title": "Portretas",
+    "art__text_to_image__aspect_ratio__widescreen__title": "Platus ekranas",
+    "art__text_to_image__content_type__photo__title": "Nuotrauka",
+    "art__text_to_image__content_type__art__title": "Menas",
+    "art__text_to_image__advanced__title": "Išplėstiniai meno pasirinkimai",
+    "art__text_to_image__advanced__aspect_ratio__title": "Proporcijos",
+    "art__text_to_image__advanced__content_type__title": "Turinio tipas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

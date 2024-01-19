@@ -40,7 +40,8 @@
     "auto": "ഓട്ടോ",
     "confirm": "സ്ഥിരീകരിക്കുക",
     "copy_as_plain_text": "സാധാരണ ടെക്സ്റ്റ് പകർത്തുക",
-    "copy_with_formatting": "ഫോർമാറ്റിംഗ് ഉപയോഗിച്ച് പകർത്തുക"
+    "copy_with_formatting": "ഫോർമാറ്റിംഗ് ഉപയോഗിച്ച് പകർത്തുക",
+    "download": "ഡൗൺലോഡ്"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "നിങ്ങളുടെ ബ്രൌസർ ക്രമീകരണങ്ങളിൽ 'ഫയൽ URL-ലേക്ക് പ്രവേശനം അനുവദിക്കുക' ഓപ്ഷൻ സജ്ജീകരിക്കുക, ഇത് നിങ്ങൾക്ക് ഡ്രാഗ് ചെയ്യുകയോ ഡ്രോപ്പ് ചെയ്യുകയോ ചെയ്യുമ്പോൾ 'PDF AI കാണുക' ഓട്ടോമാറ്റിക്കാക്കുന്നു.",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". നിങ്ങൾ PDF ഫയലുകൾ ബ്രൗസർനിൽ വലിച്ച് അടയ്ക്കുമ്പോൾ 'PDF AI കാഴ്ചക്കാരൻ' ഓട്ടോമാറ്റിക്കലും തുറക്കും.",
     "sidebar__tabs__art__title": "കല",
-    "sidebar__tabs__art__tooltip": "AI പ്രവർത്തിച്ച കല"
+    "sidebar__tabs__art__tooltip": "AI പ്രവർത്തിച്ച കല",
+    "provider__claude__model__claude_2_1_200k__description": "ബേസ് ക്ലോഡ്-2-100k മോഡലിനും അപ്രത്യക്ഷത നിരക്കുകളുടെ രേഖകളുടെ രണ്ടിലേറെ ദൈർഘ്യം. അതിനുള്ളതായി മോഡൽ ഹാലൂസിനേഷൻ നിരക്കുകളുടെ വലുപ്പം കുറഞ്ഞത്.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "ക്ലോഡ്-2.1-200k ആക്സസ് ചെയ്യുക",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic-യുടെ ഏറ്റവും ശക്തമായ മോഡൽ, 200K സന്ദർഭ ജാലകം, സിനിമാറ്റിക് സംസാരങ്ങളും സൃഷ്ടികളും വിവിധ വിധത്തിലുള്ള ഉപകരണങ്ങളുമായി ബന്ധപ്പെട്ട കാര്യങ്ങളിലേക്ക് അതിനുള്ളതായി. അതിനുള്ളതായി മോഡൽ ഹാലൂസിനേഷൻ നിരക്കുകളുടെ വലുപ്പം കുറഞ്ഞത്.",
+    "art__text_to_image__aspect_ratio__square__title": "ചതുരം",
+    "art__text_to_image__aspect_ratio__landscape__title": "ലാൻഡ്സ്കേപ്",
+    "art__text_to_image__aspect_ratio__portrait__title": "പോർട്രെയ്റ്റ്",
+    "art__text_to_image__aspect_ratio__widescreen__title": "വൈഡ്‌സ്ക്രീൻ",
+    "art__text_to_image__content_type__photo__title": "ഫോട്ടോ",
+    "art__text_to_image__content_type__art__title": "കല",
+    "art__text_to_image__advanced__title": "ഉൽപാദനം കല ഓപ്ഷനുകൾ",
+    "art__text_to_image__advanced__aspect_ratio__title": "അവസ്ഥാന്തര അനുയോജ്യത",
+    "art__text_to_image__advanced__content_type__title": "ഉൽപാദന തരം"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

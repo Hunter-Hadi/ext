@@ -56,4 +56,31 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       roles: ['pro', 'elite'],
     },
   },
+  {
+    title: 'claude-2.1-200k',
+    titleTag: '',
+    value: 'claude-v2:1',
+    maxTokens: 200000,
+    tags: [],
+    descriptions: [
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(200000, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
+      },
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) =>
+          t(`client:provider__claude__model__claude_2_1_200k__description`),
+      },
+    ],
+    permission: {
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2_1',
+      roles: ['elite'],
+    },
+  },
 ]

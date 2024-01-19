@@ -56,7 +56,7 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
       `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${AI_PROVIDER}` as OnBoardingKeyType
     ] = false
   })
-  onBoardingMap['ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_MAXAI_ART'] = true
+  onBoardingMap['ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_MAXAI_DALLE'] = true
   /**
    * InputAssistantButton onBoarding Keys
    * @since 2023-10-09 - 为Help me write的各个button添加lifetime的5次free trial - @HuangSong

@@ -40,7 +40,8 @@
     "auto": "স্বয়ংক্রিয়",
     "confirm": "নিশ্চিত করুন",
     "copy_as_plain_text": "সাধারণ টেক্সট হিসাবে কপি করুন",
-    "copy_with_formatting": "ফরম্যাটিং সহ কপি"
+    "copy_with_formatting": "ফরম্যাটিং সহ কপি",
+    "download": "ডাউনলোড"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -508,7 +509,19 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "আপনার ব্রাউজার সেটিংসে যান এবং \"ফাইল URL-গুলির অ্যাক্সেসের অনুমতি দিন\" বিকল্পটি সক্ষম করুন। এটি আপনাকে ড্রপ করলে এবং পিডিএফ ফাইলগুলি ব্রাউজারে ড্রপ করলে 'PDF AI ভিউয়ার' স্বয়ংক্রিয়ভাবে খুলবে।",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". এটি আপনাকে অটোমেটিকভাবে 'PDF AI ভিউয়ার' খুলতে দেবে যখন আপনি ব্রাউজারে PDF ফাইলগুলি ড্র্যাগ এবং ড্রপ করবেন।",
     "sidebar__tabs__art__title": "শিল্প",
-    "sidebar__tabs__art__tooltip": "এইচআই-পাওয়ারড শিল্প"
+    "sidebar__tabs__art__tooltip": "এইচআই-পাওয়ারড শিল্প",
+    "provider__claude__model__claude_2_1_200k__description": "বেস ক্লোড-2-100k মোডের সাথে একই সুযোগ, তবে দ্বিগুণ সংকেত দৈর্ঘ্য। এছাড়াও মডেল হ্যালুসিনেশন হারে অনেক কম হয়েছে।",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "ক্লোড-2.1-200k এ প্রবেশ করুন",
+    "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic এর সবচেয়ে শক্তিশালী মডেল, 200K সংকেত উইন্ডো, সুসজ্জিত সংলাপ এবং সৃজনশীল সামগ্রী উৎপন্নের জন্য অত্যন্ত উপযুক্ত। এছাড়াও মডেল হ্যালুসিনেশন হারে অনেক কম হয়েছে।",
+    "art__text_to_image__aspect_ratio__square__title": "বর্গাকার",
+    "art__text_to_image__aspect_ratio__landscape__title": "ল্যান্ডস্কেপ",
+    "art__text_to_image__aspect_ratio__portrait__title": "পোর্ট্রেট",
+    "art__text_to_image__aspect_ratio__widescreen__title": "ওয়াইডস্ক্রিন",
+    "art__text_to_image__content_type__photo__title": "ফটো",
+    "art__text_to_image__content_type__art__title": "আর্ট",
+    "art__text_to_image__advanced__title": "উন্নত আর্ট বিকল্প",
+    "art__text_to_image__advanced__aspect_ratio__title": "আসপেক্ট অনুপাত",
+    "art__text_to_image__advanced__content_type__title": "সামগ্রীর ধরণ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

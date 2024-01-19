@@ -11,7 +11,6 @@ import { useSetRecoilState } from 'recoil'
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
-import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import {
   IAIResponseMessage,
@@ -27,7 +26,6 @@ import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/S
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
 import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
-import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageState } from '@/features/sidebar/store'
@@ -110,7 +108,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       <DevContent>
         <DevConsole />
       </DevContent>
-      <SidebarTabs />
       <SidebarHeader />
       <SidebarChatBoxMessageListContainer
         loading={loading}
@@ -160,13 +157,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 }
               }}
             />
-            <AIProviderSelectorFloatingButton
-              sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-              }}
-            />
+
             <SearchWithAIAdvanced
               sx={{
                 position: 'absolute',

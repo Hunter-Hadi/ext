@@ -8,8 +8,10 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
+import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -29,37 +31,42 @@ const SidebarPage = () => {
     pingDaemonProcess()
   }, [])
   return (
-    <Stack flex={1} height={0} position={'relative'}>
-      <ChatGPTStatusWrapper />
-      <SidebarChatBox
-        onSendMessage={async (question, options) => {
-          if (currentSidebarConversationType === 'Search') {
-            await createSearchWithAI(question, true)
-          } else if (currentSidebarConversationType === 'Art') {
-            await startTextToImage(question, true)
-          } else {
-            await askAIQuestion({
-              type: 'user',
-              text: question,
-              meta: {
-                ...options,
-              },
-            })
-          }
-        }}
-        writingMessage={conversation.writingMessage}
-        messages={currentSidebarConversationMessages}
-        loading={smoothConversationLoading}
-        onReGenerate={async () => {
-          if (currentSidebarConversationType === 'Search') {
-            await regenerateSearchWithAI()
-            return
-          }
-          await regenerate()
-        }}
-        onStopGenerate={stopGenerate}
-        onReset={cleanConversation}
-      />
+    <Stack flex={1} height={0} position={'relative'} direction="row">
+      <Stack flex={1} width={0}>
+        <ChatBoxHeader />
+        <ChatGPTStatusWrapper />
+        <SidebarChatBox
+          onSendMessage={async (question, options) => {
+            if (currentSidebarConversationType === 'Search') {
+              await createSearchWithAI(question, true)
+            } else if (currentSidebarConversationType === 'Art') {
+              await startTextToImage(question, true)
+            } else {
+              await askAIQuestion({
+                type: 'user',
+                text: question,
+                meta: {
+                  ...options,
+                },
+              })
+            }
+          }}
+          writingMessage={conversation.writingMessage}
+          messages={currentSidebarConversationMessages}
+          loading={smoothConversationLoading}
+          onReGenerate={async () => {
+            if (currentSidebarConversationType === 'Search') {
+              await regenerateSearchWithAI()
+              return
+            }
+            await regenerate()
+          }}
+          onStopGenerate={stopGenerate}
+          onReset={cleanConversation}
+        />
+      </Stack>
+
+      <SidebarNav />
     </Stack>
   )
 }

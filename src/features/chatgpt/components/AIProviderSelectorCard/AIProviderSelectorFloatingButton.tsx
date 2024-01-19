@@ -2,22 +2,24 @@ import Box from '@mui/material/Box'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Popover from '@mui/material/Popover'
 import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useRef } from 'react'
-import { useRecoilValue } from 'recoil'
 
 import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { AppLocalStorageState } from '@/store'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const AIProviderSelectorFloatingButton: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
   const { currentSidebarConversationType } = useSidebarSettings()
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
+  const {
+    aiProvider = 'USE_CHAT_GPT_PLUS',
+    aiProviderModel,
+  } = useAIProviderModels()
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
   // 用户打开之后，锁定关闭700ms
   const lockTimerRef = useRef<any>(null)
@@ -34,6 +36,7 @@ const AIProviderSelectorFloatingButton: FC<{
     setAnchorEl(null)
   }
   const open = Boolean(anchorEl)
+
   return useMemo(() => {
     if (currentSidebarConversationType !== 'Chat') {
       return null
@@ -42,20 +45,16 @@ const AIProviderSelectorFloatingButton: FC<{
       <Box
         id={'max-ai__ai-provider-floating-button'}
         sx={{
-          width: '44px',
-          height: '44px',
           position: 'relative',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          borderRadius: '50%',
-          border: '1px solid #EBEBEB',
+          borderRadius: 2,
           cursor: 'pointer',
-          borderColor: (t) =>
-            t.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.16)' : '#EBEBEB',
-          bgcolor: (t) => (t.palette.mode === 'dark' ? '#333' : '#fff'),
-          boxShadow:
-            '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09);',
+          bgcolor: (t) => (t.palette.mode === 'dark' ? '#3B3D3E' : '#E9E9EB'),
+          // boxShadow:
+          //   '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09);',
+          p: 0.5,
           ...sx,
         }}
         aria-owns={open ? 'mouse-over-popover' : undefined}
@@ -75,28 +74,31 @@ const AIProviderSelectorFloatingButton: FC<{
           waitResetRef.current = false
         }}
       >
-        <AIProviderIcon
-          aiProviderType={
-            appLocalStorage.sidebarSettings?.common?.currentAIProvider ||
-            'USE_CHAT_GPT_PLUS'
-          }
-        />
+        <AIProviderIcon aiProviderType={aiProvider} />
+        <Typography
+          ml={0.5}
+          fontSize={14}
+          lineHeight={1.4}
+          color="text.secondary"
+        >
+          {aiProviderModel}
+        </Typography>
         <Popover
           open={open}
           anchorEl={anchorEl}
           id="mouse-over-popover"
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'right',
+            horizontal: 'left',
           }}
           transformOrigin={{
             vertical: 'bottom',
-            horizontal: 'right',
+            horizontal: 'left',
           }}
           disableScrollLock
           PaperProps={{
             sx: {
-              ml: isMaxAIImmersiveChatPage() ? 0 : '8px',
+              ml: 0,
             },
           }}
         >
@@ -141,10 +143,6 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [
-    appLocalStorage.sidebarSettings?.common?.currentAIProvider,
-    open,
-    currentSidebarConversationType,
-  ])
+  }, [aiProvider, open, currentSidebarConversationType])
 }
 export default AIProviderSelectorFloatingButton

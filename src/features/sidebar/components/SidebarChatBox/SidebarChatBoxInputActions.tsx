@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TooltipButton from '@/components/TooltipButton'
+import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
@@ -59,6 +60,7 @@ const SidebarChatBoxInputActions: FC<{
       spacing={1}
       width={'100%'}
     >
+      <AIProviderSelectorFloatingButton />
       <Typography
         component={'span'}
         color={'text.secondary'}
@@ -66,7 +68,6 @@ const SidebarChatBoxInputActions: FC<{
         // 用等宽字体，不然会左右闪烁宽度
         fontFamily={'Roboto,RobotoDraft,Helvetica,Arial,sans-serif!important'}
       >
-        {/* TODO: AI provider迁移到这个地方选择*/}
         {/*{Math.floor(currentMaxInputLength / 1000) + 'k '}*/}
         {/*{t('client:sidebar__input__tokens_limited__title')}*/}
       </Typography>

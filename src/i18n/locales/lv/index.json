@@ -41,7 +41,9 @@
     "confirm": "Apstiprināt",
     "copy_as_plain_text": "Kopēt kā vienkāršu tekstu",
     "copy_with_formatting": "Kopēt ar formatēšanu",
-    "download": "Lejupielādēt"
+    "download": "Lejupielādēt",
+    "download_image": "Lejupielādēt attēlu",
+    "copy_image": "Kopēt attēlu"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Māksla",
     "art__text_to_image__advanced__title": "Papildu mākslas opcijas",
     "art__text_to_image__advanced__aspect_ratio__title": "Proporcijas",
-    "art__text_to_image__advanced__content_type__title": "Satura tips"
+    "art__text_to_image__advanced__content_type__title": "Satura tips",
+    "provider__chatgpt__model__gpt_4_vision__description": "Arī pazīstams kā GPT-4 ar redzi vai GPT-4V, tas ir OpenAI visvarenākais un jaunākais modelis, kas apvieno spēcīgas attēlu apstrādes spējas ar daudzpusīgo GPT-4 modeļa izmantošanu, ļaujot tam interpretēt un reaģēt uz vizuālajiem ievadiem kopā ar tekstu.",
+    "provider__chatgpt__upload__accept_tooltip": "Augšupielādēt failu .jpg, .jpeg, .png, .webp formātā",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Jauniniet, lai piekļūtu gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Jauna dimensija AI spējās ar GPT-4-Vision - revolucionārs solis AI tehnoloģijā, kas integrē attēlu apstrādi ar GPT-4 uzlaboto valodas sapratni.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Jauniniet, lai radītu AI mākslu un attēlus",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x palieliniet savu radošumu un produktivitāti ar visvarenākajiem AI mākslas modeļiem. Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

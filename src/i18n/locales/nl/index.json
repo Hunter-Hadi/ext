@@ -41,7 +41,9 @@
     "confirm": "Bevestigen",
     "copy_as_plain_text": "Kopiëren als platte tekst",
     "copy_with_formatting": "Kopiëren met opmaak",
-    "download": "Download"
+    "download": "Download",
+    "download_image": "Afbeelding downloaden",
+    "copy_image": "Afbeelding kopiëren"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Kunst",
     "art__text_to_image__advanced__title": "Geavanceerde kunstopties",
     "art__text_to_image__advanced__aspect_ratio__title": "Beeldverhouding",
-    "art__text_to_image__advanced__content_type__title": "Inhoudstype"
+    "art__text_to_image__advanced__content_type__title": "Inhoudstype",
+    "provider__chatgpt__model__gpt_4_vision__description": "Ook bekend als GPT-4 met Vision, of GPT-4V, vertegenwoordigt de meest geavanceerde iteratie van OpenAI tot nu toe. Het combineert robuuste beeldverwerkingsmogelijkheden met het veelzijdige GPT-4-model, waardoor het in staat is om visuele invoer te interpreteren en erop te reageren in combinatie met tekst.",
+    "provider__chatgpt__upload__accept_tooltip": "Bestand uploaden .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgrade om toegang te krijgen tot gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Een nieuwe dimensie van AI-mogelijkheden met GPT-4-Vision - een baanbrekende sprong in AI-technologie die beeldverwerking integreert met het geavanceerde taalbegrip van GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade om AI-kunst en afbeeldingen te maken",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Verhoog je creativiteit en productiviteit met 10x met de meest geavanceerde AI-kunstmodellen. Zet snel je visies om in verbluffende afbeeldingen. Simpel, krachtig, transformerend."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

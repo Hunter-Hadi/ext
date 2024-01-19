@@ -41,7 +41,9 @@
     "confirm": "নিশ্চিত করুন",
     "copy_as_plain_text": "সাধারণ টেক্সট হিসাবে কপি করুন",
     "copy_with_formatting": "ফরম্যাটিং সহ কপি",
-    "download": "ডাউনলোড"
+    "download": "ডাউনলোড",
+    "download_image": "ছবি ডাউনলোড করুন",
+    "copy_image": "ছবি অনুলিপি করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "আর্ট",
     "art__text_to_image__advanced__title": "উন্নত আর্ট বিকল্প",
     "art__text_to_image__advanced__aspect_ratio__title": "আসপেক্ট অনুপাত",
-    "art__text_to_image__advanced__content_type__title": "সামগ্রীর ধরণ"
+    "art__text_to_image__advanced__content_type__title": "সামগ্রীর ধরণ",
+    "provider__chatgpt__model__gpt_4_vision__description": "জিপিটি-৪ ভিশন হিসেবেও পরিচিত, অথবা জিপিটি-৪ভি, ওপেনএআই-এর সর্বাধিক উন্নত সংস্করণটি প্রতিষ্ঠিত করে, যা শক্তিশালী চিত্র প্রক্রিয়া সম্পন্ন করতে পারে এবং সাথে পাঠ্যের সাথে ভিজ্যুয়াল ইনপুট বোঝার এবং প্রতিক্রিয়া করার সুযোগ দেয়।",
+    "provider__chatgpt__upload__accept_tooltip": "ফাইল .jpg, .jpeg, .png, .webp আপলোড করুন",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision এ প্রবেশ করার জন্য আপগ্রেড করুন",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision সঙ্গে একটি নতুন AI সম্ভাবনা - GPT-4 এর উন্নত ভাষা বোঝার সাথে চিত্র প্রক্রিয়া সংযোজন করার একটি অদ্ভুত ধাঁধার লিপিটে।",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI শিল্প এবং চিত্র তৈরির জন্য আপগ্রেড করুন",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "সবচেয়ে উন্নত AI শিল্প মডেলগুলি সহ আপনার সৃজনশীলতা এবং উৎপাদনশীলতা 10 গুণ বাড়িয়ে নিন। আপনার ভাবনাগুলি দ্রুততার সাথে অবাকাশপ্রদ চিত্রে পরিণত করুন। সহজ, শক্তিশালী, পরিবর্তনশীল।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

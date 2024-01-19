@@ -41,7 +41,9 @@
     "confirm": "पुष्टि करें",
     "copy_as_plain_text": "सादा पाठ के रूप में कॉपी करें",
     "copy_with_formatting": "स्वरूपण के साथ प्रतिलिपि",
-    "download": "डाउनलोड"
+    "download": "डाउनलोड",
+    "download_image": "छवि डाउनलोड करें",
+    "copy_image": "छवि कॉपी करें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "कला",
     "art__text_to_image__advanced__title": "उन्नत कला विकल्प",
     "art__text_to_image__advanced__aspect_ratio__title": "संप्रेषण अनुपात",
-    "art__text_to_image__advanced__content_type__title": "सामग्री प्रकार"
+    "art__text_to_image__advanced__content_type__title": "सामग्री प्रकार",
+    "provider__chatgpt__model__gpt_4_vision__description": "जिसे GPT-4 विजन या GPT-4V के रूप में भी जाना जाता है, यह OpenAI का सबसे उन्नत संस्करण है, जो प्रभावी छवि प्रसंस्करण क्षमताओं को साथ में लेकर आता है और टेक्स्ट के साथ दृश्यात्मक इनपुट को व्याख्या और प्रतिक्रिया करने की क्षमता प्रदान करता है",
+    "provider__chatgpt__upload__accept_tooltip": ".jpg, .jpeg, .png, .webp फ़ाइल अपलोड करें",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision तक पहुँच के लिए अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision के साथ AI क्षमताओं का एक नया आयाम - AI प्रौद्योगिकी में एक उभरती हुई कदम जो GPT-4 की उन्नत भाषा समझ को छवि प्रसंस्करण के साथ एकीकृत करता है।",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI कला और छवियों को बनाने के लिए अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सबसे उन्नत AI कला मॉडल के साथ अपनी रचनात्मकता और उत्पादकता को 10 गुना बढ़ाएं। अपने दृश्यों को तेजी से शानदार छवियों में बदलें। सरल, शक्तिशाली, परिवर्तनकारी।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

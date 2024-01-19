@@ -41,7 +41,9 @@
     "confirm": "Потвърди",
     "copy_as_plain_text": "Копиране като обикновен текст",
     "copy_with_formatting": "Копиране със форматиране",
-    "download": "Изтегли"
+    "download": "Изтегли",
+    "download_image": "Изтегли изображение",
+    "copy_image": "Копирай изображение"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Изкуство",
     "art__text_to_image__advanced__title": "Разширени опции за изкуство",
     "art__text_to_image__advanced__aspect_ratio__title": "Съотношение на страните",
-    "art__text_to_image__advanced__content_type__title": "Тип на съдържанието"
+    "art__text_to_image__advanced__content_type__title": "Тип на съдържанието",
+    "provider__chatgpt__model__gpt_4_vision__description": "Познат още като GPT-4 с визия или GPT-4V, представлява най-развитата версия на OpenAI, комбинираща надеждни възможности за обработка на изображения с универсалната модел GPT-4, позволяваща му да интерпретира и отговаря на визуални входове заедно с текст",
+    "provider__chatgpt__upload__accept_tooltip": "Качете файл .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Надстройте, за да получите достъп до gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Ново измерение на AI възможностите с GPT-4-Vision - революционен скок в AI технологията, който интегрира обработката на изображения със напредналото разбиране на езика на GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Надстройте, за да създавате AI изкуство и изображения",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Увеличете с 10 пъти вашата креативност и продуктивност с най-развитите модели за AI изкуство. Бързо превръщайте вашите визии в изумителни изображения. Просто, мощно, трансформиращо."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

@@ -41,7 +41,9 @@
     "confirm": "ದೃಢೀಕರಿಸಿ",
     "copy_as_plain_text": "ಸರಳ ಪಠ್ಯವನ್ನು ನಕಲಿಸಿ",
     "copy_with_formatting": "ಸ್ವರೂಪಿತ ನಕಲಿ",
-    "download": "ಡೌನ್‌ಲೋಡ್"
+    "download": "ಡೌನ್‌ಲೋಡ್",
+    "download_image": "ಚಿತ್ರವನ್ನು ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+    "copy_image": "ಚಿತ್ರವನ್ನು ನಕಲಿಸಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "ಕಲೆ",
     "art__text_to_image__advanced__title": "ಮುಂದಿನ ಕಲೆ ಆಯ್ಕೆಗಳು",
     "art__text_to_image__advanced__aspect_ratio__title": "ಅಂಶ ಅನುಪಾತ",
-    "art__text_to_image__advanced__content_type__title": "ವಿಷಯ ಪ್ರಕಾರ"
+    "art__text_to_image__advanced__content_type__title": "ವಿಷಯ ಪ್ರಕಾರ",
+    "provider__chatgpt__model__gpt_4_vision__description": "ಗೊತ್ತಾಗಿದೆ GPT-4 ಜೊತೆಗೆ ವಿಜನ್ ಇರುವ ಅಥವಾ GPT-4V ಎಂದು, ಓಪನ್‌ಐಯ ಅತ್ಯಂತ ಮುಂದುವರಿದ ಆವೃತ್ತಿಯನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ. ಈ ಆವೃತ್ತಿಯಲ್ಲಿ ಬಲವಾದ ಚಿತ್ರ ಪ್ರಕ್ರಿಯಾ ಸಾಮರ್ಥ್ಯಗಳನ್ನು ವಿವಿಧ ಪಠ್ಯಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿ, ವಿಜ್ಞಾನವನ್ನು ಅರ್ಥೀಕರಿಸಲು ಮತ್ತು ಪ್ರತಿಕ್ರಿಯೆ ನೀಡಲು ಸಾಧ್ಯವಾಗುತ್ತದೆ",
+    "provider__chatgpt__upload__accept_tooltip": "ಫೈಲ್ .jpg, .jpeg, .png, .webp ಅನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "GPT-4-Vision ಅನ್ನು ಪ್ರವೇಶಿಸಲು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 ನ ಮುಂದಿನ ಹೆಜ್ಜೆಯಾಗಿರುವ GPT-4-Vision ಜೊತೆಗೆ ಹೊಸ ಆಯ್ಕೆಗಳ ಪ್ರಮುಖ ಲೀಪ್ ಆಗಿದೆ - ಚಿತ್ರ ಪ್ರಕ್ರಿಯೆಯನ್ನು GPT-4 ನ ಮುಂದಿನ ಭಾಷಾ ಅರಿವಿನೊಂದಿಗೆ ಒಡೆದುಹಾಕುವುದು.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "ಐಎನ್‌ನಿಂದ ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಲು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "ಅತ್ಯಂತ ಮುಂದುವರಿದ ಐಎನ್ ಕಲಾ ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸೃಜಿತವಾದ ಮತ್ತು ಉತ್ಪಾದಕತೆಯನ್ನು 10 ಪಟಗಳಷ್ಟು ಹೆಚ್ಚಿಸಿ. ನಿಮ್ಮ ಕನಸುಗಳನ್ನು ಅದ್ಭುತ ಚಿತ್ರಗಳಾಗಿ ಬದಲಾಯಿಸಿ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಪರಿವರ್ತನಾತ್ಮಕ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

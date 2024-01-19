@@ -41,7 +41,9 @@
     "confirm": "ยืนยัน",
     "copy_as_plain_text": "คัดลอกเป็นข้อความธรรมดา",
     "copy_with_formatting": "คัดลอกพร้อมการจัดรูปแบบ",
-    "download": "ดาวน์โหลด"
+    "download": "ดาวน์โหลด",
+    "download_image": "ดาวน์โหลดรูปภาพ",
+    "copy_image": "คัดลอกรูปภาพ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "ศิลปะ",
     "art__text_to_image__advanced__title": "ตัวเลือกศิลปะขั้นสูง",
     "art__text_to_image__advanced__aspect_ratio__title": "อัตราส่วนของภาพ",
-    "art__text_to_image__advanced__content_type__title": "ประเภทเนื้อหา"
+    "art__text_to_image__advanced__content_type__title": "ประเภทเนื้อหา",
+    "provider__chatgpt__model__gpt_4_vision__description": "เรียกว่า GPT-4 พร้อมภาพหรือ GPT-4V แทน มันเป็นการพัฒนาขั้นสูงที่สุดของ OpenAI ที่รวมความสามารถในการประมวลผลภาพที่แข็งแกร่งกับโมเดล GPT-4 ที่หลากหลาย ทำให้สามารถตีความและตอบสนองต่อข้อมูลทางภาพได้พร้อมกับข้อความ",
+    "provider__chatgpt__upload__accept_tooltip": "อัปโหลดไฟล์ .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "อัปเกรดเพื่อเข้าถึง gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "มิติใหม่ของความสามารถ AI ด้วย GPT-4-Vision - กระโดดข้ามที่น่าตื่นเต้นในเทคโนโลยี AI ที่รวมการประมวลผลภาพกับความเข้าใจภาษาขั้นสูงของ GPT-4",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "อัปเกรดเพื่อสร้างศิลปะและรูปภาพ AI",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "เพิ่มความคิดสร้างสรรค์และผลิตภัณฑ์ได้อย่างรวดเร็วด้วยโมเดลศิลปะและภาพ AI ที่ล้ำสมัยที่สุด แปลงความคิดของคุณให้เป็นภาพที่น่าตื่นตาตื่นใจ ง่าย มีประสิทธิภาพ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

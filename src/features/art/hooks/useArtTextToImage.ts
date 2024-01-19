@@ -1,21 +1,51 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { setChromeExtensionOnBoardingData } from '@/background/utils'
 import { ART_NATURAL_LANGUAGE_TO_DALL_E_3_PROMPT } from '@/features/art/constant'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const useArtTextToImage = () => {
   const { askAIWIthShortcuts } = useClientChat()
+  const { pushPricingHookMessage, createConversation } = useClientConversation()
   const {
     sidebarSettings,
+    currentSidebarConversationType,
+    updateSidebarConversationType,
     currentSidebarConversationMessages,
   } = useSidebarSettings()
+  const { currentUserPlan } = useUserInfo()
   const startTextToImage = async (text: string) => {
+    if (!isShowChatBox()) {
+      showChatBox()
+    }
+    if (currentSidebarConversationType !== 'Art') {
+      await updateSidebarConversationType('Art')
+    }
+    //切换至Art的时候把ChatGPT（MaxAI）的provider的onboarding check设置为true
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_USE_CHAT_GPT_PLUS',
+      true,
+    )
+    await createConversation('Art')
+    // 如果不是elite用户
+    if (currentUserPlan.name !== 'elite') {
+      await pushPricingHookMessage('SIDEBAR_ART_AND_IMAGES')
+      authEmitPricingHooksLog('show', 'SIDEBAR_ART_AND_IMAGES')
+      return
+    }
     const messageId = uuidV4()
     const modelConfig = await getThirdProviderSettings('MAXAI_DALLE')
     const isNeedTransform =

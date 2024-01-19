@@ -41,7 +41,9 @@
     "confirm": "Bekreft",
     "copy_as_plain_text": "Kopier som ren tekst",
     "copy_with_formatting": "Kopier med formatering",
-    "download": "Last ned"
+    "download": "Last ned",
+    "download_image": "Last ned bilde",
+    "copy_image": "Kopier bilde"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Kunst",
     "art__text_to_image__advanced__title": "Avanserte kunstalternativer",
     "art__text_to_image__advanced__aspect_ratio__title": "Sideforhold",
-    "art__text_to_image__advanced__content_type__title": "Innholdstype"
+    "art__text_to_image__advanced__content_type__title": "Innholdstype",
+    "provider__chatgpt__model__gpt_4_vision__description": "Også kjent som GPT-4 med visjon, eller GPT-4V, representerer OpenAI's mest avanserte iterasjon så langt, og kombinerer robuste bildebehandlingsfunksjoner med den allsidige GPT-4-modellen, slik at den kan tolke og svare på visuelle inndata i samarbeid med tekst.",
+    "provider__chatgpt__upload__accept_tooltip": "Last opp fil .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Oppgrader for å få tilgang til gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "En ny dimensjon av AI-funksjonalitet med GPT-4-Vision - et banebrytende sprang innen AI-teknologi som integrerer bildebehandling med den avanserte språkforståelsen til GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Oppgrader for å lage AI-kunst og bilder",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x din kreativitet og produktivitet med de mest avanserte AI-kunstmodellene. Gjør visjonene dine raskt om til fantastiske bilder. Enkelt, kraftig, transformerende."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

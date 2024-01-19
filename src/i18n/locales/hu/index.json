@@ -41,7 +41,9 @@
     "confirm": "Megerősítés",
     "copy_as_plain_text": "Másolás egyszerű szövegként",
     "copy_with_formatting": "Másolat formázással",
-    "download": "Letöltés"
+    "download": "Letöltés",
+    "download_image": "Kép letöltése",
+    "copy_image": "Kép másolása"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Művészet",
     "art__text_to_image__advanced__title": "Haladó művészeti beállítások",
     "art__text_to_image__advanced__aspect_ratio__title": "Képarány",
-    "art__text_to_image__advanced__content_type__title": "Tartalomtípus"
+    "art__text_to_image__advanced__content_type__title": "Tartalomtípus",
+    "provider__chatgpt__model__gpt_4_vision__description": "A GPT-4 Vision, vagy röviden GPT-4V, az OpenAI legfejlettebb változata, amely összekapcsolja a képfeldolgozási képességeket a sokoldalú GPT-4 modellrel, lehetővé téve a vizuális bemenetek értelmezését és válaszadását a szöveggel együtt.",
+    "provider__chatgpt__upload__accept_tooltip": "Fájl feltöltése .jpg, .jpeg, .png, .webp formátumban",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Frissítés a gpt-4-vision eléréséhez",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Az AI képességek új dimenziója a GPT-4-Vision-nel - egy forradalmi ugrás az AI technológiában, amely integrálja a képfeldolgozást a GPT-4 fejlett nyelvi megértésével.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Frissítés az AI művészet és képek létrehozásához",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10-szeresére növelheti kreativitását és produktivitását a legfejlettebb AI művészeti modellekkel. Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, transzformáló."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

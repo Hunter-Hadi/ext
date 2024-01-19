@@ -41,7 +41,9 @@
     "confirm": "પુષ્ટિ કરો",
     "copy_as_plain_text": "સાદા ટેક્સ્ટ તરીકે કૉપિ કરો",
     "copy_with_formatting": "ફોર્મેટિંગ સાથે કૉપી",
-    "download": "ડાઉનલોડ"
+    "download": "ડાઉનલોડ",
+    "download_image": "છબી ડાઉનલોડ કરો",
+    "copy_image": "છબી કૉપિ કરો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "કલા",
     "art__text_to_image__advanced__title": "અગ્રણી કલા વિકલ્પો",
     "art__text_to_image__advanced__aspect_ratio__title": "આંકડાકાર",
-    "art__text_to_image__advanced__content_type__title": "સામગ્રી પ્રકાર"
+    "art__text_to_image__advanced__content_type__title": "સામગ્રી પ્રકાર",
+    "provider__chatgpt__model__gpt_4_vision__description": "જે પણ GPT-4 સાથે વિઝન સાથે ઓપનએઆઈની સૌથી અગ્રગણ્ય આવૃત્તિ છે, તે જેમાં ચમત્કારી છબી પ્રક્રિયાઓને સાથે ટેક્સ્ટની સમજ અને પ્રતિસાદ આપવાની સામર્થ્ય ધરાવે છે",
+    "provider__chatgpt__upload__accept_tooltip": "ફાઇલ .jpg, .jpeg, .png, .webp અપલોડ કરો",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "પ્રવૃત્તિ કરો gpt-4-vision એક્સેસ મેળવવા માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 ની એડવાંસ ભાષા સમજણની સાથે છબી પ્રક્રિયાને સંયોજિત કરતી GPT-4-Vision સાથે AI ક્ષમતાઓનો એક નવો આયામ - એક આઈનો ચઢાવોનો ધમાકો.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "પ્રવૃત્તિ કરો AI આર્ટ અને છબીઓ બનાવવા માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "સૌથી અગ્રગણ્ય AI આર્ટ મોડલો સાથે 10x તમારી રચનાત્મકતા અને ઉત્પાદકતા. તમારા દૃષ્ટિને શાનદાર છબીઓમાં તરત ફેરવો. સરળ, શક્તિશાળી, પરિવર્તક."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

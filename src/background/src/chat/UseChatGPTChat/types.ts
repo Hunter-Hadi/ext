@@ -190,9 +190,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) =>
-          t(
-            'client:provider__openai_api__model__gpt_4_vision_preview__description',
-          ),
+          t('client:provider__chatgpt__model__gpt_4_vision__description'),
       },
       {
         label: (t) =>
@@ -205,7 +203,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     ],
     maxTokens: 128000,
     permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4',
+      sceneType: 'MAXAI_PAID_MODEL_GPT4_VISION',
       roles: ['elite'],
     },
     uploadFileConfig: {

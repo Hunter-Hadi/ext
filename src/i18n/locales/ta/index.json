@@ -41,7 +41,9 @@
     "confirm": "உறுதிப்படுத்து",
     "copy_as_plain_text": "சாதாரண உரையாக நகலெடு",
     "copy_with_formatting": "வடிவமைப்புடன் நகலெழுது",
-    "download": "பதிவிறக்கு"
+    "download": "பதிவிறக்கு",
+    "download_image": "படத்தை பதிவிறக்கு",
+    "copy_image": "படத்தை நகலெடு"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "கலை",
     "art__text_to_image__advanced__title": "மேம்படுத்தப்பட்ட கலை விருப்பங்கள்",
     "art__text_to_image__advanced__aspect_ratio__title": "அமைப்பு வினாடி",
-    "art__text_to_image__advanced__content_type__title": "உள்ளடக்க வகை"
+    "art__text_to_image__advanced__content_type__title": "உள்ளடக்க வகை",
+    "provider__chatgpt__model__gpt_4_vision__description": "மூலம் GPT-4 உருவாக்கப்பட்ட மேலும் முன்னோட்டமான GPT-4 மாதிரி மூலம் பட செயலாக்கத்தை ஒருங்கிணைக்கும் GPT-4V அல்லது GPT-4 with Vision என்றும் அழைக்கப்படுகிறது, அது உரையுடன் ஒருங்கிணைக்கப்பட்டு காண்பிக்கும் புகைப்பட உள்ளடக்கங்களுக்கு விளக்கமாக பதிலளிக்க முடியும்",
+    "provider__chatgpt__upload__accept_tooltip": "கோப்பை .jpg, .jpeg, .png, .webp வடிவத்தில் பதிவேற்று",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision அணுகலை மேம்படுத்துக",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision உடன் பட செயலாக்கத்தை மேம்படுத்தும் AI தொழில்நுட்பத்தின் புதிய அமைப்பு - GPT-4 மாதிரி மூலம் பட செயலாக்கத்தை மேம்படுத்தும் மேம்படுத்தும் மொழி புரிந்துகொள்ளும் மூலம் புதிய அமைப்பு.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI கலையை உருவாக்க gpt-4-vision அணுகலை மேம்படுத்துக",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "மிகவும் மேம்பட்ட AI கலை மாதிரிகளுடன் 10x உங்கள் உரிமையையும் உற்பத்தியையும் அதிகரிக்கவும். உங்கள் காட்சிகளை அழகாக மாற்றுவதை வேகமாக செய்யும். எளிதான, வல்லமையான, மாற்றுப்படுத்தும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

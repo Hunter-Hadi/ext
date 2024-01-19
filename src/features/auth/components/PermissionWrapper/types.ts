@@ -50,6 +50,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SIDEBAR_SEARCH_WITH_AI',
   'MAXAI_PAID_MODEL_CLAUDE_V2_1',
   'MAXAI_PAID_MODEL_GPT4_VISION',
+  'SIDEBAR_ART_AND_IMAGES',
 ] as const
 
 export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
@@ -285,13 +286,15 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // MAX AI - paid model - gpt4V
   MAXAI_PAID_MODEL_GPT4_VISION: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt4.png',
+      '/images/upgrade/max-ai-paid-model-gpt4-vision.png',
     )}`,
     title: (t) =>
-      t('client:permission__pricing_hook__max_ai_paid_model__gpt4__title'),
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gpt4_vision__title',
+      ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt4__description',
+        'client:permission__pricing_hook__max_ai_paid_model__gpt4_vision__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_elite'),
@@ -725,6 +728,19 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  SIDEBAR_ART_AND_IMAGES: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/maxai-art-and-images.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__maxai_art__title'),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_elite'),
   },
   // Reddit cta button - compose new
   REDDIT_COMPOSE_NEW_BUTTON: {

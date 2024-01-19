@@ -41,7 +41,9 @@
     "confirm": "אישור",
     "copy_as_plain_text": "העתק כטקסט פשוט",
     "copy_with_formatting": "העתק עם עיצוב",
-    "download": "הורדה"
+    "download": "הורדה",
+    "download_image": "הורד תמונה",
+    "copy_image": "העתק תמונה"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "אמנות",
     "art__text_to_image__advanced__title": "אפשרויות אמנות מתקדמות",
     "art__text_to_image__advanced__aspect_ratio__title": "יחס תצוגה",
-    "art__text_to_image__advanced__content_type__title": "סוג תוכן"
+    "art__text_to_image__advanced__content_type__title": "סוג תוכן",
+    "provider__chatgpt__model__gpt_4_vision__description": "ידוע גם בשם GPT-4 עם ראייה, או GPT-4V, מייצג את הגרסה המתקדמת ביותר של OpenAI, המשלבת יכולות עיבוד תמונה חזקות עם הדגם המתקדם GPT-4, מאפשרת לו לפרש ולהגיב לקלטים ויזואליים במקביל לטקסט",
+    "provider__chatgpt__upload__accept_tooltip": "העלה קובץ .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "שדרג כדי לקבל גישה ל-gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "ממד חדש של יכולות AI עם GPT-4-Vision - קפיצה מהפכנית בטכנולוגיית AI שמשלבת עיבוד תמונה עם הבנה מתקדמת של שפה של GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "שדרג כדי ליצור אמנות ותמונות AI",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "הכפילו את היצירתיות והיציבות שלכם בעזרת הדגמים המתקדמים ביותר של AI לאמנות. הפוך את החזון שלך לתמונות מרהיבות במהירות. פשוט, עוצמתי, מהפכני."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

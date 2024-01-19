@@ -41,7 +41,9 @@
     "confirm": "Επιβεβαίωση",
     "copy_as_plain_text": "Αντιγραφή ως απλό κείμενο",
     "copy_with_formatting": "Αντιγραφή με μορφοποίηση",
-    "download": "Λήψη"
+    "download": "Λήψη",
+    "download_image": "Λήψη εικόνας",
+    "copy_image": "Αντιγραφή εικόνας"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Τέχνη",
     "art__text_to_image__advanced__title": "Προηγμένες επιλογές τέχνης",
     "art__text_to_image__advanced__aspect_ratio__title": "Αναλογία πλευρών",
-    "art__text_to_image__advanced__content_type__title": "Τύπος περιεχομένου"
+    "art__text_to_image__advanced__content_type__title": "Τύπος περιεχομένου",
+    "provider__chatgpt__model__gpt_4_vision__description": "Επίσης γνωστό ως GPT-4 με Όραση, ή GPT-4V, αντιπροσωπεύει την πιο προηγμένη εκδοχή του OpenAI, συνδυάζοντας αξιόπιστες δυνατότητες επεξεργασίας εικόνας με το ευέλικτο μοντέλο GPT-4, επιτρέποντάς του να ερμηνεύει και να ανταποκρίνεται σε οπτικές εισόδους σε συνδυασμό με το κείμενο",
+    "provider__chatgpt__upload__accept_tooltip": "Μεταφόρτωση αρχείου .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Αναβαθμίστε για πρόσβαση στο gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Μια νέα διάσταση των δυνατοτήτων της AI με το GPT-4-Vision - ένα καινοτόμο άλμα στην τεχνολογία της AI που ενσωματώνει την επεξεργασία εικόνας με την προηγμένη γλωσσική κατανόηση του GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Αναβαθμίστε για να δημιουργήσετε AI art και εικόνες",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Αυξήστε κατά 10 φορές τη δημιουργικότητά σας και την παραγωγικότητά σας με τα πιο προηγμένα μοντέλα τέχνης AI. Μετατρέψτε γρήγορα τις εικόνες σας σε εκπληκτικά αποτελέσματα. Απλό, ισχυρό, μετασχηματιστικό."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

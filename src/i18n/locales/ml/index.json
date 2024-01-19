@@ -41,7 +41,9 @@
     "confirm": "സ്ഥിരീകരിക്കുക",
     "copy_as_plain_text": "സാധാരണ ടെക്സ്റ്റ് പകർത്തുക",
     "copy_with_formatting": "ഫോർമാറ്റിംഗ് ഉപയോഗിച്ച് പകർത്തുക",
-    "download": "ഡൗൺലോഡ്"
+    "download": "ഡൗൺലോഡ്",
+    "download_image": "ചിത്രം ഡൗൺലോഡ് ചെയ്യുക",
+    "copy_image": "ചിത്രം പകർത്തുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "കല",
     "art__text_to_image__advanced__title": "ഉൽപാദനം കല ഓപ്ഷനുകൾ",
     "art__text_to_image__advanced__aspect_ratio__title": "അവസ്ഥാന്തര അനുയോജ്യത",
-    "art__text_to_image__advanced__content_type__title": "ഉൽപാദന തരം"
+    "art__text_to_image__advanced__content_type__title": "ഉൽപാദന തരം",
+    "provider__chatgpt__model__gpt_4_vision__description": "GPT-4 എന്നറിയപ്പെടുന്ന GPT-4V അല്ലെങ്കിൽ ഗാന്ധര്‍വ്വമായിരിക്കുന്നു, ഓപ്പന്‍എയി അദ്വിതീയമായ ഇമേജ് പ്രോസസ്സിങ് കഴിവുകളും വിവിധിതരമായ GPT-4 മോഡലുമായ ഒരുപക്ഷേ ബന്ധപ്പെട്ട് വിഷ്വസ്തമായ വിഷയങ്ങള്‍ക്കും ടെക്സ്റ്റ് ഇന്പുട്ടുകള്‍ക്കും ഉത്തരം നൽകാന്‍ കഴിയുന്നു",
+    "provider__chatgpt__upload__accept_tooltip": "ഫയൽ .jpg, .jpeg, .png, .webp അപ്‌ലോഡ് ചെയ്യുക",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "GPT-4-Vision ആക്‌സസ് നേരിടുക",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 എന്നറിയപ്പെടുന്ന GPT-4-Vision എന്ന ഏറ്റവും പുതിയ AI സാധ്യതകളുടെ ഒരു പുതിയ ആയാമമാണ്, ഇമേജ് പ്രോസസ്സിങ് മറ്റും GPT-4 എന്ന അഗ്രഗണിത ഭാഷാ പഠനത്തെ ഒരുപക്ഷേ ലിങ്ക് ചെയ്യുന്ന AI ടെക്നോളജിയാണ്",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI കല മറ്റും ചിത്രങ്ങൾ സൃഷ്ടിക്കാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "ഏറ്റവും പുതിയ AI കല മോഡലുകളുമായി 10x നിങ്ങളുടെ സൃഷ്ടികളും ഉത്പാദനശീലതയും പ്രവർത്തിക്കുക. നിങ്ങളുടെ ദർശനങ്ങളെ മികച്ച ചിത്രങ്ങളായാക്കുക. ലളിതമായാണ്, ശക്തമായാണ്, മാറ്റപ്പെടുത്തുന്നത്."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

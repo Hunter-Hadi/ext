@@ -41,7 +41,9 @@
     "confirm": "تأكيد",
     "copy_as_plain_text": "نسخ كنص عادي",
     "copy_with_formatting": "نسخ مع التنسيق",
-    "download": "تحميل"
+    "download": "تحميل",
+    "download_image": "تحميل الصورة",
+    "copy_image": "نسخ الصورة"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "فن",
     "art__text_to_image__advanced__title": "خيارات فن متقدمة",
     "art__text_to_image__advanced__aspect_ratio__title": "نسبة العرض إلى الارتفاع",
-    "art__text_to_image__advanced__content_type__title": "نوع المحتوى"
+    "art__text_to_image__advanced__content_type__title": "نوع المحتوى",
+    "provider__chatgpt__model__gpt_4_vision__description": "المعروف أيضًا باسم GPT-4 مع الرؤية، أو GPT-4V، يمثل التطور الأكثر تقدمًا لدى OpenAI حتى الآن، حيث يجمع بين قدرات معالجة الصور القوية مع نموذج GPT-4 المتعدد الاستخدامات، مما يمكنه من تفسير والاستجابة للإدخالات البصرية جنبًا إلى جنب مع النص",
+    "provider__chatgpt__upload__accept_tooltip": "تحميل ملف .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "الترقية للوصول إلى gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "بعدًا جديدًا في قدرات الذكاء الاصطناعي مع GPT-4-Vision - قفزة ثورية في تكنولوجيا الذكاء الاصطناعي تدمج معالجة الصور مع فهم اللغة المتقدم لـ GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "الترقية لإنشاء فن وصور بواسطة الذكاء الاصطناعي",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "قم بتضاعف إبداعك وإنتاجيتك بفضل نماذج الذكاء الاصطناعي الأكثر تقدمًا. حوّل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

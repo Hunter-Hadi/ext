@@ -41,7 +41,9 @@
     "confirm": "Bestätigen",
     "copy_as_plain_text": "Als Klartext kopieren",
     "copy_with_formatting": "Kopieren mit Formatierung",
-    "download": "Herunterladen"
+    "download": "Herunterladen",
+    "download_image": "Bild herunterladen",
+    "copy_image": "Bild kopieren"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Kunst",
     "art__text_to_image__advanced__title": "Erweiterte Kunstoptionen",
     "art__text_to_image__advanced__aspect_ratio__title": "Seitenverhältnis",
-    "art__text_to_image__advanced__content_type__title": "Inhaltstyp"
+    "art__text_to_image__advanced__content_type__title": "Inhaltstyp",
+    "provider__chatgpt__model__gpt_4_vision__description": "Auch bekannt als GPT-4 mit Vision oder GPT-4V, repräsentiert dies die bisher fortschrittlichste Version von OpenAI. Es kombiniert robuste Bildverarbeitungsfunktionen mit dem vielseitigen GPT-4-Modell und ermöglicht es ihm, visuelle Eingaben in Verbindung mit Text zu interpretieren und darauf zu reagieren.",
+    "provider__chatgpt__upload__accept_tooltip": "Datei hochladen .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgrade, um auf gpt-4-vision zuzugreifen",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Eine neue Dimension der KI-Fähigkeiten mit GPT-4-Vision - ein bahnbrechender Fortschritt in der KI-Technologie, der Bildverarbeitung mit dem fortschrittlichen Sprachverständnis von GPT-4 integriert.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade, um KI-Kunst und Bilder zu erstellen",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Steigern Sie Ihre Kreativität und Produktivität um das 10-fache mit den fortschrittlichsten KI-Kunstmodellen. Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, transformierend."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

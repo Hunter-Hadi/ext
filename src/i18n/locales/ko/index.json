@@ -41,7 +41,9 @@
     "confirm": "확인",
     "copy_as_plain_text": "일반 텍스트로 복사",
     "copy_with_formatting": "서식이 있는 복사",
-    "download": "다운로드"
+    "download": "다운로드",
+    "download_image": "이미지 다운로드",
+    "copy_image": "이미지 복사"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "아트",
     "art__text_to_image__advanced__title": "고급 아트 옵션",
     "art__text_to_image__advanced__aspect_ratio__title": "종횡비",
-    "art__text_to_image__advanced__content_type__title": "콘텐츠 유형"
+    "art__text_to_image__advanced__content_type__title": "콘텐츠 유형",
+    "provider__chatgpt__model__gpt_4_vision__description": "GPT-4 Vision 또는 GPT-4V로도 알려진 것은 OpenAI의 가장 최신 버전으로, 강력한 이미지 처리 기능과 다재다능한 GPT-4 모델을 결합하여 텍스트와 함께 시각적 입력을 해석하고 응답할 수 있게 합니다.",
+    "provider__chatgpt__upload__accept_tooltip": ".jpg, .jpeg, .png, .webp 파일 업로드",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision에 액세스하려면 업그레이드하세요",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4의 고급 언어 이해력과 이미지 처리를 통합한 AI 기술의 혁신적인 도약인 GPT-4-Vision으로 AI 능력의 새로운 차원을 경험해보세요.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI 예술과 이미지 생성을 위해 업그레이드하세요",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "가장 고급스러운 AI 예술 모델로 창의성과 생산성을 10배로 높여보세요. 비전을 아름다운 이미지로 신속하게 변환하세요. 간단하고 강력하며 혁신적입니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

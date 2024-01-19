@@ -38,7 +38,9 @@
     "confirm": "Հաստատել",
     "copy_as_plain_text": "Պատճենել որպես միայն տեքստ",
     "copy_with_formatting": "Պատճենեք ձեր տեքստը ձևաչափված",
-    "download": "Ներբեռնել"
+    "download": "Ներբեռնել",
+    "download_image": "Ներբեռնել պատկերը",
+    "copy_image": "Պատճենել պատկերը"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -518,7 +520,13 @@
     "art__text_to_image__content_type__art__title": "Արվեստ",
     "art__text_to_image__advanced__title": "Ավելին՝ արվեստային ընտրանքներով",
     "art__text_to_image__advanced__aspect_ratio__title": "Ընտրանքների կողմնական տեսք",
-    "art__text_to_image__advanced__content_type__title": "Բովանդակության տեսք"
+    "art__text_to_image__advanced__content_type__title": "Բովանդակության տեսք",
+    "provider__chatgpt__model__gpt_4_vision__description": "Գիտելիքներով հայտնաբերելու համար GPT-4 մոդելը ՝ նախագծողության հետ միասին աշխատանքային ներկայացման համար, թույլատրելով այն տեքստային մոդելին ներկայացնել և պատկերագրումներին հետագայում պատասխանելու համար",
+    "provider__chatgpt__upload__accept_tooltip": "Վերբեռնեք .jpg, .jpeg, .png, .webp ֆայլը",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Թարմացնել gpt-4-vision-ին մասնակցելու համար",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "AI համարների նոր չափանիշ GPT-4-Vision-ը - AI տեխնոլոգիայի առաջնության նոր քայլ, որը միանգամայնում է պատկերագրմանը GPT-4-ի բարձր լեզվական հասանելության հետ",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Թարմացնել AI արվեստի և պատկերների ստեղծումը մասնակցելու համար",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Կատարեք ձեր սփյուռքները 10 անգամ արագությամբ և արտադրականությամբ առաջարկելով ամենանորագծային AI արվեստի մոդելները։ Արագությամբ վերադարձնեք ձեր տեսարժանակները հեռանալով զգալիորեն։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

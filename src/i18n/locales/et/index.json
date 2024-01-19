@@ -41,7 +41,9 @@
     "confirm": "Kinnita",
     "copy_as_plain_text": "Kopeeri tavalise tekstina",
     "copy_with_formatting": "Kopeeri vormindamisega",
-    "download": "Laadi alla"
+    "download": "Laadi alla",
+    "download_image": "Laadi pilt alla",
+    "copy_image": "Kopeeri pilt"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Kunst",
     "art__text_to_image__advanced__title": "Täpsemad kunstivalikud",
     "art__text_to_image__advanced__aspect_ratio__title": "Külgede suhe",
-    "art__text_to_image__advanced__content_type__title": "Sisu tüüp"
+    "art__text_to_image__advanced__content_type__title": "Sisu tüüp",
+    "provider__chatgpt__model__gpt_4_vision__description": "Tuntud ka kui GPT-4 koos nägemisega või GPT-4V, esindab OpenAI kõige arenenumat versiooni seni, ühendades tugevad pilditöötlusvõimalused mitmekülgse GPT-4 mudeliga, võimaldades tal tõlgendada ja reageerida visuaalsetele sisenditele koos tekstiga",
+    "provider__chatgpt__upload__accept_tooltip": "Laadige üles fail .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Uuenda gpt-4-visioni kasutamiseks",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "AI võimekuste uus dimensioon GPT-4-Visioniga - läbimurre AI tehnoloogias, mis integreerib pilditöötluse GPT-4 edasijõudnud keele mõistmisega.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Uuenda AI kunsti ja piltide loomiseks",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x oma loovust ja tootlikkust kõige arenenumate AI kunstimudelitega. Muutke oma visioonid kiiresti vapustavateks piltideks. Lihtne, võimas, muutev."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

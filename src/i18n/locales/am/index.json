@@ -41,7 +41,9 @@
     "confirm": "አረጋግጥ",
     "copy_as_plain_text": "በስም ብቻ ይግቡ",
     "copy_with_formatting": "በፎርማቲንግ የተጻፈው ኮፒ",
-    "download": "ለውጥ"
+    "download": "ለውጥ",
+    "download_image": "ምስል ያግኙ",
+    "copy_image": "ምስል ይይዛ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "አርት",
     "art__text_to_image__advanced__title": "በቀላሉ አርት አማራጭ አማራጭ",
     "art__text_to_image__advanced__aspect_ratio__title": "አማራጭ መጠን",
-    "art__text_to_image__advanced__content_type__title": "የአርት አማራጭ"
+    "art__text_to_image__advanced__content_type__title": "የአርት አማራጭ",
+    "provider__chatgpt__model__gpt_4_vision__description": "በስሜት GPT-4 እና ስሜት መሳሪያዎችን በሚያስተዳድር እየተሰማን፣ GPT-4V የOpenAI የተለመደው ማሳወቂያ ነው። ይህንን ስሜት በስሜት መሳሪያዎች እና ጽሁፍ መሳሪያዎች እንዲሁም በጽሁፍ መሳሪያዎች የሚያስተዳድር እይታዎች ላይ መጠቀም እንዲችል ይችላል",
+    "provider__chatgpt__upload__accept_tooltip": "ፋይል .jpg, .jpeg, .png, .webp ይጫኑ",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "የgpt-4-vision ይዘትን ይጠቀሙ",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision - የAI ባህሪ እና ስሜት መሳሪያዎችን የሚያስተዳድር የAI ነገሮችን የሚያስተዳድር ማሳወቂያ ነው።",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "የAI አርት እና ምስል የሚፈልጉትን ይዘት ይጠቀሙ",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "የሚፈልጉትን የAI አርት መሳሪያዎችን 10 አይነት የሚያስተዳድር የAI አርት መሳሪያዎችን የሚያስተዳድር ማሳወቂያ ነው። በትኩረት የሚያስተዳድርበት ምስልን በትኩረት የሚያስተዳድር ማሳወቂያ ነው።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

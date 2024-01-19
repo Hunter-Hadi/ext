@@ -41,7 +41,9 @@
     "confirm": "Подтвердить",
     "copy_as_plain_text": "Копировать как обычный текст",
     "copy_with_formatting": "Копировать с форматированием",
-    "download": "Скачать"
+    "download": "Скачать",
+    "download_image": "Скачать изображение",
+    "copy_image": "Копировать изображение"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Искусство",
     "art__text_to_image__advanced__title": "Дополнительные параметры искусства",
     "art__text_to_image__advanced__aspect_ratio__title": "Соотношение сторон",
-    "art__text_to_image__advanced__content_type__title": "Тип контента"
+    "art__text_to_image__advanced__content_type__title": "Тип контента",
+    "provider__chatgpt__model__gpt_4_vision__description": "Также известная как GPT-4 с видением или GPT-4V, представляет собой самую передовую версию OpenAI, объединяющую надежные возможности обработки изображений с универсальной моделью GPT-4, позволяя ей интерпретировать и реагировать на визуальные данные вместе с текстом",
+    "provider__chatgpt__upload__accept_tooltip": "Загрузите файл .jpg, .jpeg, .png, .webp",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Обновитесь, чтобы получить доступ к gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Новое измерение возможностей искусственного интеллекта с GPT-4-Vision - прорывным скачком в технологии искусственного интеллекта, объединяющим обработку изображений с продвинутым пониманием языка GPT-4.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Обновитесь, чтобы создавать искусство и изображения с помощью ИИ",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Увеличьте свою креативность и продуктивность в 10 раз с помощью самых передовых моделей искусственного интеллекта для создания произведений искусства. Быстро превращайте свои видения в потрясающие изображения. Просто, мощно, трансформационно."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

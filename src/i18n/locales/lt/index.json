@@ -41,7 +41,9 @@
     "confirm": "Patvirtinti",
     "copy_as_plain_text": "Kopijuoti kaip paprastą tekstą",
     "copy_with_formatting": "Kopijuoti su formatavimu",
-    "download": "Atsisiųsti"
+    "download": "Atsisiųsti",
+    "download_image": "Atsisiųsti paveikslėlį",
+    "copy_image": "Kopijuoti paveikslėlį"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -521,7 +523,13 @@
     "art__text_to_image__content_type__art__title": "Menas",
     "art__text_to_image__advanced__title": "Išplėstiniai meno pasirinkimai",
     "art__text_to_image__advanced__aspect_ratio__title": "Proporcijos",
-    "art__text_to_image__advanced__content_type__title": "Turinio tipas"
+    "art__text_to_image__advanced__content_type__title": "Turinio tipas",
+    "provider__chatgpt__model__gpt_4_vision__description": "Taip pat žinomas kaip GPT-4 su vizija arba GPT-4V, tai yra OpenAI pažangiausias modelis, derinantis galingas vaizdo apdorojimo galimybes su universalumu turinčiu GPT-4 modeliu, leidžiantis jam interpretuoti ir reaguoti į vizualinius įvesties duomenis kartu su tekstu.",
+    "provider__chatgpt__upload__accept_tooltip": "Įkelti .jpg, .jpeg, .png, .webp failą",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Atnaujinkite, kad gautumėte prieigą prie gpt-4-vision",
+    "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nauja AI galimybių dimensija su GPT-4-Vision - revoliucinis šuolis AI technologijoje, jungiantis vaizdo apdorojimą su pažangiu GPT-4 kalbos supratimu.",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Atnaujinkite, kad kurtumėte AI meną ir paveikslus",
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 kartų padidinkite savo kūrybiškumą ir produktyvumą su pažangiausiais AI meno modeliais. Greitai paverčkite savo vizijas į nuostabius paveikslėlius. Paprasta, galinga, transformuojanti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -127,6 +127,7 @@ const ConversationList: FC = () => {
                 if (smoothConversationLoading) {
                   return
                 }
+                debugger
                 if (conversation.type === 'Summary') {
                   // do nothing
                 } else if (conversation.type === 'Chat') {
@@ -139,6 +140,13 @@ const ConversationList: FC = () => {
                 } else if (conversation.type === 'Search') {
                   await updateSidebarSettings({
                     search: {
+                      conversationId: conversation.id,
+                    },
+                  })
+                  updateSidebarConversationType(conversation.type)
+                } else if (conversation.type === 'Art') {
+                  await updateSidebarSettings({
+                    art: {
                       conversationId: conversation.id,
                     },
                   })

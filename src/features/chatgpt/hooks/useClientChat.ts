@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
@@ -11,6 +12,7 @@ import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngin
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
 
 export interface IAskAIQuestion
@@ -42,6 +44,27 @@ const useClientChat = () => {
     updateConversation,
   } = useClientConversation()
   const askAIQuestion = async (question: IAskAIQuestion) => {
+    if (!question.meta?.attachments) {
+      // 获取attachments
+      const port = new ContentScriptConnectionV2({
+        runtime: 'client',
+      })
+      const attachments =
+        (
+          await port.postMessage({
+            event: 'Client_chatGetFiles',
+            data: {},
+          })
+        )?.data || []
+      question = mergeWithObject([
+        question,
+        {
+          meta: {
+            attachments,
+          },
+        },
+      ])
+    }
     await askAIWIthShortcuts([
       {
         type: 'ASK_CHATGPT',
@@ -123,6 +146,7 @@ const useClientChat = () => {
         let needDeleteCount = 0
         if (conversation && lastRunActions.length > 0) {
           // 删除消息
+          // 1. 找到最后一次运行的shortcuts的messageId
           const messages = conversation?.messages || []
           if (lastRunActionsMessageId) {
             for (let i = messages.length - 1; i >= 0; i--) {
@@ -132,6 +156,7 @@ const useClientChat = () => {
               needDeleteCount++
             }
           }
+          // 2. 删除消息
           await clientChatConversationModifyChatMessages(
             'delete',
             currentConversationId,

@@ -70,13 +70,13 @@ const useArtTextToImage = () => {
                   },
                   copilot: {
                     title: {
-                      title: 'Copilot',
+                      title: 'AI art',
                       titleIcon: 'Awesome',
                       titleIconSize: 24,
                     },
                     steps: [
                       {
-                        title: 'Understanding question',
+                        title: 'Optimizing art prompt',
                         status: 'loading',
                         icon: 'CheckCircle',
                       },
@@ -148,7 +148,7 @@ const useArtTextToImage = () => {
                   copilot: {
                     steps: [
                       {
-                        title: 'Understanding question',
+                        title: 'Optimizing art prompt',
                         status: 'complete',
                         icon: 'CheckCircle',
                         value: `{{IMAGE_PROMPT}}`,
@@ -160,7 +160,7 @@ const useArtTextToImage = () => {
                 },
                 content: {
                   title: {
-                    title: 'AI art',
+                    title: 'Image',
                     titleIcon: 'Image',
                   },
                   contentType: 'image',

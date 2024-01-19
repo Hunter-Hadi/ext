@@ -20,14 +20,14 @@ import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
 import Log from '@/utils/Log'
 
-const log = new Log('Background/Chat/MaxAIArtChat')
+const log = new Log('Background/Chat/MaxAIDALLEChat')
 
-class MaxAIArtChat extends BaseChat {
+class MaxAIDALLEChat extends BaseChat {
   status: ChatStatus = 'needAuth'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
-    super('MaxAIArtChat')
+    super('MaxAIDALLEChat')
     this.init()
   }
   private init() {
@@ -183,12 +183,16 @@ class MaxAIArtChat extends BaseChat {
         ).then((res) => res.json())
         if (result.status === 'OK' && result.data?.length) {
           const resultJson = JSON.stringify(
-            result.data.map((imageData: { url: string }) => {
-              return {
-                ...userConfig,
-                ...imageData,
-              }
-            }),
+            result.data.map(
+              (imageData: { webp_url: string; png_url: string }) => {
+                return {
+                  url: imageData.webp_url || imageData.png_url,
+                  downloadUrl: imageData.png_url || imageData.webp_url,
+                  ...userConfig,
+                  ...imageData,
+                }
+              },
+            ),
           )
           onMessage?.({
             done: true,
@@ -254,4 +258,4 @@ class MaxAIArtChat extends BaseChat {
     }
   }
 }
-export { MaxAIArtChat }
+export { MaxAIDALLEChat }

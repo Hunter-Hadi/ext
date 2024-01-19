@@ -49,6 +49,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SEARCH_WITH_AI_CHATGPT',
   'SIDEBAR_SEARCH_WITH_AI',
   'MAXAI_PAID_MODEL_CLAUDE_V2_1',
+  'MAXAI_PAID_MODEL_GPT4_VISION',
 ] as const
 
 export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
@@ -280,6 +281,20 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // MAX AI - paid model - gpt4V
+  MAXAI_PAID_MODEL_GPT4_VISION: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt4.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__gpt4__title'),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gpt4__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_elite'),
   },
   // MAX AI - paid model - gpt3.5
   MAXAI_PAID_MODEL_GPT3_5: {

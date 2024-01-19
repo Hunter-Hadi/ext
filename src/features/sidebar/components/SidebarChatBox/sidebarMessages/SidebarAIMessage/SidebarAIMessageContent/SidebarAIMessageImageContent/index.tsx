@@ -13,6 +13,7 @@ import SidebarAIMessageImageContentDownloadButton from '@/features/sidebar/compo
 
 type AIMessageImageData = {
   url: string
+  downloadUrl?: string
 } & IArtTextToImageMetadata
 type AIMessageImageRenderData = {
   imageBoxWidth: number
@@ -146,6 +147,7 @@ const SidebarAIMessageImageContent: FC<{
           <Box
             ref={boxRef}
             key={1}
+            className={'maxai-ai-message__image__content__box'}
             sx={{
               position: 'relative',
               zIndex: 0,
@@ -156,22 +158,9 @@ const SidebarAIMessageImageContent: FC<{
               height: 'auto',
               overflow: 'hidden',
               borderRadius: '4px',
-              '&:hover': {
-                '.maxai-ai-message__image__content__bottom-tool-bar': {
-                  opacity: 1,
-                },
-                '& > img': {
-                  border: `2px solid`,
-                  borderColor: (t) =>
-                    t.palette.mode === 'dark'
-                      ? '#ffffff'
-                      : t.palette.primary.main,
-                },
-              },
               '& > img': {
                 width: '100%',
                 height: '100%',
-                cursor: 'pointer',
                 border: '2px solid rgba(0,0,0,0)',
                 boxSizing: 'border-box',
                 borderRadius: '8px',
@@ -181,23 +170,6 @@ const SidebarAIMessageImageContent: FC<{
               },
             }}
           >
-            <Stack
-              direction={'row'}
-              className={'maxai-ai-message__image__content__bottom-tool-bar'}
-              sx={{
-                width: '100%',
-                position: 'absolute',
-                bottom: 0,
-                opacity: 0,
-                height: 54,
-                p: 1,
-                transition: 'opacity .3s cubic-bezier(0.22, 0.61, 0.36, 1)',
-              }}
-            >
-              <SidebarAIMessageImageContentDownloadButton
-                downloadUrl={renderData.image.url}
-              />
-            </Stack>
             <LazyLoadImage
               sx={{
                 width: '100%',
@@ -288,10 +260,22 @@ const SidebarAIMessageImageContent: FC<{
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                width: '100%',
-                height: '100%',
+                width: 'auto',
+                height: 'auto',
                 overflow: 'hidden',
                 borderRadius: '4px',
+                '&:hover': {
+                  '.maxai-ai-message__image__content__bottom-tool-bar': {
+                    opacity: 1,
+                  },
+                  '& > img': {
+                    border: `2px solid`,
+                    borderColor: (t) =>
+                      t.palette.mode === 'dark'
+                        ? '#ffffff'
+                        : t.palette.primary.main,
+                  },
+                },
                 '& > img': {
                   width: '100%',
                   height: '100%',
@@ -301,9 +285,35 @@ const SidebarAIMessageImageContent: FC<{
                   borderRadius: '8px',
                   transition: 'border .1s cubic-bezier(0.22, 0.61, 0.36, 1)',
                   userSelect: 'none',
+                  overflow: 'hidden',
                 },
               }}
             >
+              <Stack
+                direction={'row'}
+                className={'maxai-ai-message__image__content__bottom-tool-bar'}
+                sx={{
+                  width: '100%',
+                  position: 'absolute',
+                  bottom: 0,
+                  opacity: 0,
+                  height: 54,
+                  p: 1,
+                  transition: 'opacity .3s cubic-bezier(0.22, 0.61, 0.36, 1)',
+                }}
+              >
+                <SidebarAIMessageImageContentDownloadButton
+                  sx={{
+                    bgcolor: 'rgb(38,38,38)',
+                    '&:hover': {
+                      bgcolor: 'rgb(68,68,68)',
+                    },
+                  }}
+                  downloadUrl={
+                    renderData.image?.downloadUrl || renderData.image.url
+                  }
+                />
+              </Stack>
               <LazyLoadImage
                 height={415}
                 sx={{

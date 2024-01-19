@@ -15,6 +15,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
+import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
@@ -79,6 +80,38 @@ const useAIProviderUpload = () => {
                   }
                 }
                 return item
+              }),
+            )
+            await port.postMessage({
+              event: 'Client_chatUploadFiles',
+              data: {
+                files: newFiles,
+              },
+            })
+          }
+          break
+        case 'USE_CHAT_GPT_PLUS':
+          {
+            const newFiles = await Promise.all(
+              newUploadFiles.map(async (chatUploadFile) => {
+                if (!chatUploadFile.file) {
+                  return undefined
+                }
+                const result = await maxAIFileUpload(chatUploadFile.file, {
+                  useCase: 'multimodal',
+                })
+                chatUploadFile.uploadedFileId = result.file_id
+                chatUploadFile.uploadedUrl = result.file_url
+                chatUploadFile.uploadStatus = result.success
+                  ? 'success'
+                  : 'error'
+                chatUploadFile.uploadErrorMessage = result.error
+                chatUploadFile.uploadProgress = result.success ? 100 : 0
+                if (chatUploadFile.uploadedUrl) {
+                  // 释放内存
+                  chatUploadFile.base64Data = undefined
+                }
+                return chatUploadFile
               }),
             )
             await port.postMessage({

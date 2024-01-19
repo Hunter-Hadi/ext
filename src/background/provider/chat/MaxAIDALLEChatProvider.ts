@@ -5,35 +5,35 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { MaxAIArtChat } from '@/background/src/chat'
+import { MaxAIDALLEChat } from '@/background/src/chat'
 import { IMaxAIChatMessage } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
-class MaxAIArtChatProvider implements ChatAdapterInterface {
-  private maxAIArtChat: MaxAIArtChat
+class MaxAIDALLEChatProvider implements ChatAdapterInterface {
+  private maxAIDALLEChat: MaxAIDALLEChat
 
-  constructor(maxAIArtChat: MaxAIArtChat) {
-    this.maxAIArtChat = maxAIArtChat
+  constructor(maxAIArtChat: MaxAIDALLEChat) {
+    this.maxAIDALLEChat = maxAIArtChat
   }
   async auth(authTabId: number) {
-    await this.maxAIArtChat.auth(authTabId)
+    await this.maxAIDALLEChat.auth(authTabId)
   }
   async preAuth() {
-    await this.maxAIArtChat.preAuth()
+    await this.maxAIDALLEChat.preAuth()
   }
   get status() {
-    return this.maxAIArtChat.status
+    return this.maxAIDALLEChat.status
   }
   get conversation() {
-    return this.maxAIArtChat.conversation
+    return this.maxAIDALLEChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    return await this.maxAIArtChat.createConversation(initConversationData)
+    return await this.maxAIDALLEChat.createConversation(initConversationData)
   }
   async removeConversation(conversationId: string) {
-    await this.maxAIArtChat.removeConversationWithCache()
+    await this.maxAIDALLEChat.removeConversationWithCache()
     return Promise.resolve(true)
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = async (
@@ -43,14 +43,14 @@ class MaxAIArtChatProvider implements ChatAdapterInterface {
   ) => {
     const messageId = uuidV4()
     const chat_history: IMaxAIChatMessage[] = []
-    if (this.maxAIArtChat.conversation) {
-      if (this.maxAIArtChat.conversation.meta.systemPrompt) {
+    if (this.maxAIDALLEChat.conversation) {
+      if (this.maxAIDALLEChat.conversation.meta.systemPrompt) {
         chat_history.push({
           role: 'system',
           content: [
             {
               type: 'text',
-              text: this.maxAIArtChat.conversation.meta.systemPrompt,
+              text: this.maxAIDALLEChat.conversation.meta.systemPrompt,
             },
           ],
         })
@@ -76,7 +76,7 @@ class MaxAIArtChatProvider implements ChatAdapterInterface {
         question.meta.maxHistoryMessageCnt = 0
       }
     }
-    await this.maxAIArtChat.askChatGPT(
+    await this.maxAIDALLEChat.askChatGPT(
       [
         {
           type: 'text',
@@ -106,10 +106,10 @@ class MaxAIArtChatProvider implements ChatAdapterInterface {
     )
   }
   async abortAskQuestion(messageId: string) {
-    return await this.maxAIArtChat.abortTask(messageId)
+    return await this.maxAIDALLEChat.abortTask(messageId)
   }
   async destroy() {
-    await this.maxAIArtChat.destroy()
+    await this.maxAIDALLEChat.destroy()
   }
   private async sendResponseToClient(tabId: number, data: any) {
     await Browser.tabs.sendMessage(tabId, {
@@ -119,28 +119,28 @@ class MaxAIArtChatProvider implements ChatAdapterInterface {
     })
   }
   get chatFiles() {
-    return this.maxAIArtChat.chatFiles
+    return this.maxAIDALLEChat.chatFiles
   }
   async uploadFiles(files: IChatUploadFile[]) {
-    return await this.maxAIArtChat.uploadFiles(files)
+    return await this.maxAIDALLEChat.uploadFiles(files)
   }
   async updateFiles(files: IChatUploadFile[]) {
-    return await this.maxAIArtChat.updateFiles(files)
+    return await this.maxAIDALLEChat.updateFiles(files)
   }
   async getUploadFileToken() {
-    return await this.maxAIArtChat.getUploadFileToken()
+    return await this.maxAIDALLEChat.getUploadFileToken()
   }
   async removeFiles(fileIds: string[]) {
-    return await this.maxAIArtChat.removeFiles(fileIds)
+    return await this.maxAIDALLEChat.removeFiles(fileIds)
   }
   async getFiles() {
-    return await this.maxAIArtChat.getFiles()
+    return await this.maxAIDALLEChat.getFiles()
   }
   async abortUploadFiles(fileIds: string[]) {
-    return await this.maxAIArtChat.abortUploadFiles(fileIds)
+    return await this.maxAIDALLEChat.abortUploadFiles(fileIds)
   }
   async clearFiles() {
-    return await this.maxAIArtChat.clearFiles()
+    return await this.maxAIDALLEChat.clearFiles()
   }
 }
-export { MaxAIArtChatProvider }
+export { MaxAIDALLEChatProvider }

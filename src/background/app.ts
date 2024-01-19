@@ -14,8 +14,8 @@ import {
   BingChatProvider,
   ChatAdapter,
   ClaudeChatProvider,
-  MaxAIArtChatProvider,
   MaxAIClaudeChatProvider,
+  MaxAIDALLEChatProvider,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
   PoeChatProvider,
@@ -27,8 +27,8 @@ import {
   BingChat,
   ChatSystem,
   ClaudeWebappChat,
-  MaxAIArtChat,
   MaxAIClaudeChat,
+  MaxAIDALLEChat,
   MaxAIGeminiChat,
   OpenAiApiChat,
   OpenAIChat,
@@ -375,7 +375,7 @@ const initChromeExtensionMessage = () => {
     new MaxAIGeminiChatProvider(new MaxAIGeminiChat()),
   )
   const maxAIArtAdapter = new ChatAdapter(
-    new MaxAIArtChatProvider(new MaxAIArtChat()),
+    new MaxAIDALLEChatProvider(new MaxAIDALLEChat()),
   )
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)

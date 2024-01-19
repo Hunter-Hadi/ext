@@ -11,11 +11,14 @@ export type IMaxAIChatGPTBackendAPIType =
   | 'get_chatgpt_response'
   | 'get_summarize_response'
 
-export type IMaxAIChatMessageContentType = 'text'
+export type IMaxAIChatMessageContentType = 'text' | 'image_url'
 
 export interface IMaxAIChatMessageContent {
   type: IMaxAIChatMessageContentType
   text?: string
+  image_url?: {
+    url: string
+  }
 }
 
 /**
@@ -167,6 +170,50 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_GPT4',
       roles: ['pro', 'elite'],
+    },
+  },
+  {
+    title: 'gpt-4-vision',
+    value: 'gpt-4-vision-preview',
+    titleTag: 'New',
+    tags: ['New'],
+    descriptions: [
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__max_token'),
+        value: (t) =>
+          `${numberWithCommas(128000, 0)} ${t(
+            'client:provider__model__tooltip_card__label__max_token__suffix',
+          )}`,
+      },
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__description'),
+        value: (t) =>
+          t(
+            'client:provider__openai_api__model__gpt_4_vision_preview__description',
+          ),
+      },
+      {
+        label: (t) =>
+          t('client:provider__model__tooltip_card__label__training_date'),
+        value: (t) =>
+          `${t(
+            'client:provider__model__tooltip_card__label__training_date__prefix',
+          )} ${dayjs('2023-04-01').format('MMM YYYY')}`,
+      },
+    ],
+    maxTokens: 128000,
+    permission: {
+      sceneType: 'MAXAI_PAID_MODEL_GPT4',
+      roles: ['elite'],
+    },
+    uploadFileConfig: {
+      maxFileSize: 20 * 1024 * 1024, // 20
+      accept: '.jpg,.jpeg,.png,.webp',
+      acceptTooltip: (t) =>
+        t('client:provider__chatgpt__upload__accept_tooltip'),
+      maxCount: 5,
     },
   },
   // {

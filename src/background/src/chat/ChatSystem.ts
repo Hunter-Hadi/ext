@@ -173,6 +173,16 @@ class ChatSystem implements ChatSystemInterface {
                   }
                   // 处理AIProvider的参数
                   await processAskAIParameters(conversation, question)
+                  // 处理attachments
+                  if (this.currentAdapter) {
+                    if (
+                      this.currentAdapter.chatFiles.length === 0 &&
+                      question.meta?.regenerate &&
+                      question.meta.attachments?.length
+                    ) {
+                      this.currentAdapter.chatFiles = question.meta.attachments
+                    }
+                  }
                   // 更新客户端的聊天记录
                   await this.updateClientConversationMessages(conversation.id)
                 }

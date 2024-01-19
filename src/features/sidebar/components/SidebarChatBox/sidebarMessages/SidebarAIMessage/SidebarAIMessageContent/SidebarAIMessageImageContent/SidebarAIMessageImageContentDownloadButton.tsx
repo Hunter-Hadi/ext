@@ -14,13 +14,9 @@ const SidebarAIMessageImageContentDownloadButton: FC<{
   return (
     <TooltipIconButton
       sx={{
-        bgcolor: 'rgb(38,38,38)',
-        '&:hover': {
-          bgcolor: 'rgb(68,68,68)',
-        },
         ...sx,
       }}
-      title={t('common:download')}
+      title={t('common:download_image')}
       onClick={() => {
         const a = document.createElement('a')
         a.href = downloadUrl

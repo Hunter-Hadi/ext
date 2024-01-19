@@ -101,6 +101,7 @@ class UseChatGPTPlusChat extends BaseChat {
     }) => void,
   ) {
     await this.checkTokenAndUpdateStatus()
+
     if (this.status !== 'success') {
       onMessage &&
         onMessage({
@@ -124,6 +125,24 @@ class UseChatGPTPlusChat extends BaseChat {
       meta,
     } = options || {}
     const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
+    const currentModel =
+      this.conversation?.meta.AIModel ||
+      userConfig!.model ||
+      USE_CHAT_GPT_PLUS_MODELS[0].value
+    const uploadFiles = await this.getFiles()
+    if (uploadFiles.length > 0 && currentModel === 'gpt-4-vision-preview') {
+      uploadFiles.map((file) => {
+        if (file.uploadedUrl && file.uploadStatus === 'success') {
+          message_content.push({
+            type: 'image_url',
+            image_url: {
+              url: file.uploadedUrl,
+            },
+          })
+        }
+      })
+      await this.clearFiles()
+    }
     let temperature = isNumber(userConfig?.temperature)
       ? userConfig!.temperature
       : 1
@@ -137,10 +156,7 @@ class UseChatGPTPlusChat extends BaseChat {
         streaming,
         message_content,
         chrome_extension_version: APP_VERSION,
-        model_name:
-          this.conversation?.meta.AIModel ||
-          userConfig!.model ||
-          USE_CHAT_GPT_PLUS_MODELS[0].value,
+        model_name: currentModel,
         prompt_id: meta?.contextMenu?.id
           ? meta.contextMenu.id
           : backendAPI === 'chat_with_document'

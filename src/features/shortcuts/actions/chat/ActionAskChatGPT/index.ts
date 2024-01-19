@@ -99,11 +99,10 @@ export class ActionAskChatGPT extends Action {
       if (!this.question.meta) {
         this.question.meta = {}
       }
-      // 如果有attachments，则设置attachments
-      const attachments = await getAIProviderSampleFiles()
-      if (attachments) {
-        this.question.meta.attachments = attachments
-      }
+      // 设置attachments
+      this.question.meta.attachments = this.question.meta.attachments?.length
+        ? this.question.meta.attachments
+        : await getAIProviderSampleFiles()
       // Question的Meta信息
       const {
         // contextMenu的信息

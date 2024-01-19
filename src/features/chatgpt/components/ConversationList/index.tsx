@@ -127,7 +127,6 @@ const ConversationList: FC = () => {
                 if (smoothConversationLoading) {
                   return
                 }
-                debugger
                 if (conversation.type === 'Summary') {
                   // do nothing
                 } else if (conversation.type === 'Chat') {

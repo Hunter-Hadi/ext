@@ -16,6 +16,7 @@ import {
   ClaudeChatProvider,
   MaxAIClaudeChatProvider,
   MaxAIDALLEChatProvider,
+  MaxAIFreeChatProvider,
   OpenAIApiChatProvider,
   OpenAIChatProvider,
   PoeChatProvider,
@@ -29,6 +30,7 @@ import {
   ClaudeWebappChat,
   MaxAIClaudeChat,
   MaxAIDALLEChat,
+  MaxAIFreeChat,
   MaxAIGeminiChat,
   OpenAiApiChat,
   OpenAIChat,
@@ -377,6 +379,9 @@ const initChromeExtensionMessage = () => {
   const maxAIArtAdapter = new ChatAdapter(
     new MaxAIDALLEChatProvider(new MaxAIDALLEChat()),
   )
+  const maxAiFreeAdapter = new ChatAdapter(
+    new MaxAIFreeChatProvider(new MaxAIFreeChat()),
+  )
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
   chatSystem.addAdapter(
@@ -388,6 +393,7 @@ const initChromeExtensionMessage = () => {
   chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
+  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_FREE, maxAiFreeAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
   chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_DALLE, maxAIArtAdapter)
   // search with AI

@@ -147,5 +147,16 @@ const AIProviderOptions: AIProviderOptionType[] = [
     authOpenInNew: false,
     isThirdParty: false,
   },
+  {
+    beta: false,
+    description: '',
+    label: 'Free',
+    authDescription: `client:provider__chatgpt__auth_description`,
+    value: AI_PROVIDER_MAP.MAXAI_FREE,
+    shortDescription: (t) => t(`client:provider__chatgpt__short_description`),
+    authButtonText: `client:provider__chatgpt__auth_button_text`,
+    authOpenInNew: false,
+    isThirdParty: false,
+  },
 ]
 export default AIProviderOptions

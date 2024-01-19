@@ -32,7 +32,8 @@ const AIProviderInfoCard: FC<{
     CLAUDE: 'claude_web_app',
     MAXAI_CLAUDE: 'claude',
     MAXAI_GEMINI: 'gemini',
-    MAXAI_DALLE: 'MAXAI_DALLE',
+    MAXAI_DALLE: 'dalle',
+    MAXAI_FREE: 'free',
   }
   return (
     <Stack

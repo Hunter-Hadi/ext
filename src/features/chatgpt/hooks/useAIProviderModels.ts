@@ -7,6 +7,7 @@ import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
@@ -125,6 +126,7 @@ const useAIProviderModels = () => {
       MAXAI_CLAUDE: reverse(cloneDeep(MAXAI_CLAUDE_MODELS)),
       MAXAI_GEMINI: reverse(cloneDeep(MAXAI_GENMINI_MODELS)),
       MAXAI_DALLE: reverse(cloneDeep(MAXAI_IMAGE_GENERATE_MODELS)),
+      MAXAI_FREE: reverse(cloneDeep(MAXAI_FREE_MODELS)),
     }
   }, [
     whiteListModels,

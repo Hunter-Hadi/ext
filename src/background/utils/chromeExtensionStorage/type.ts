@@ -152,6 +152,9 @@ export type IThirdProviderSettings = {
     model?: string
     temperature?: number
   }
+  [AI_PROVIDER_MAP.MAXAI_FREE]: {
+    model?: string
+  }
   // Art provider
   [AI_PROVIDER_MAP.MAXAI_DALLE]: {
     model?: string

@@ -7,6 +7,7 @@ import {
 } from '@/background/src/chat/BingChat/bing/types'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
@@ -94,6 +95,9 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
         aspectRatio: '1:1',
         resolution: [1024, 1024],
         generateCount: 1,
+      },
+      [AI_PROVIDER_MAP.MAXAI_FREE]: {
+        model: MAXAI_FREE_MODELS[0].value,
       },
     },
   }

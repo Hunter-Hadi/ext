@@ -65,7 +65,7 @@ const useSearchWithAI = () => {
       await updateSidebarConversationType('Search')
     }
     console.log('新版Conversation 创建searchWithAI')
-    //切换至Search的时候把ChatGPT（MaxAI）的provider的onboarding check设置为true
+    //切换至Search的时候把ChatGPT（MaxAI）的provider的OnBoarding check设置为true
     await setChromeExtensionOnBoardingData(
       'ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_USE_CHAT_GPT_PLUS',
       true,

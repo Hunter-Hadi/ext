@@ -11,6 +11,7 @@ import {
   ClaudeWebappIcon,
   DALLEIcon,
   GeminiBetaIcon,
+  MaxAIFreeIcon,
   OpenAIIcon,
   PoeIcon,
 } from '@/components/CustomIcon'
@@ -102,6 +103,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
       )}
       {aiProviderType === 'MAXAI_GEMINI' && (
         <GeminiBetaIcon sx={{ ...sx, fontSize: size }} />
+      )}
+      {aiProviderType === 'MAXAI_FREE' && (
+        <MaxAIFreeIcon sx={{ ...sx, fontSize: size }} />
       )}
     </>
   )

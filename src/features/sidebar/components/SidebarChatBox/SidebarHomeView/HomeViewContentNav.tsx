@@ -28,7 +28,13 @@ const HomeViewContentNav = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
 
-  const HOME_VIEW_CONTENT_NAV = useMemo(() => {
+  const HOME_VIEW_CONTENT_NAV = useMemo<
+    {
+      show: boolean
+      title: string
+      desc: React.ReactNode
+    }[]
+  >(() => {
     return [
       {
         show: true,

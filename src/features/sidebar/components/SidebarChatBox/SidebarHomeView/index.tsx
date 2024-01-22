@@ -22,13 +22,8 @@ const SidebarHomeView = () => {
   }
 
   const handleDrop = (event: any) => {
-    event.preventDefault()
+    // event.preventDefault()
     setIsDragOver(false)
-
-    const files = event.dataTransfer.files as FileList
-    // 处理拖放的文件
-    console.log(files)
-    debugger
   }
 
   return (

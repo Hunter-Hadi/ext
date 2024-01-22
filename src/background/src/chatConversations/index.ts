@@ -20,6 +20,15 @@ export interface IChatConversation {
   type: ISidebarConversationType // 对话类型
   meta: IChatConversationMeta // 对话元数据
   isDelete: boolean // 软删除
+  lastMessageId?: string // 最后一条消息的ID
+  share?: IChatConversationShareConfig // 分享配置
+}
+
+// 分享配置
+export interface IChatConversationShareConfig {
+  enabled?: boolean
+  shareType?: 'public' | 'private'
+  shareId?: string
 }
 
 // 元数据
@@ -32,9 +41,6 @@ export interface IChatConversationMeta {
   maxHistoryCount?: number // 最大历史记录数
   temperature?: number // 温度
   topP?: number // topP
-  presencePenalty?: number // presencePenalty
-  frequencyPenalty?: number // frequencyPenalty
-  bestOf?: number // bestOf
   docId?: string // 聊天文档id
   lastRunActions?: ISetActionsType // 最后运行的shortcuts
   lastRunActionsParams?: IShortCutsParameter[] // 最后运行的shortcuts的params, 在regenerate/retry时用到

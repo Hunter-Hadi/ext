@@ -45,18 +45,18 @@ const HomeViewContentNav = () => {
         title: t('client:home_view_content_nav__summary__title'),
         value: 'summary',
       },
-      // {
-      //   show: true,
-      //   title: t('client:home_view_content_nav__chat_with_pdf_title'),
-      //   value: 'chat_with_pdf',
-      //   desc: (
-      //     <>
-      //       {t('client:home_view_content_nav__chat_with_pdf__desc1')}
-      //       {` `}
-      //       <u>{t('client:home_view_content_nav__upload')}</u>
-      //     </>
-      //   ),
-      // },
+      {
+        show: true,
+        title: t('client:home_view_content_nav__chat_with_pdf_title'),
+        value: 'chat_with_pdf',
+        desc: (
+          <>
+            {t('client:home_view_content_nav__chat_with_pdf__desc1')}
+            {` `}
+            <u>{t('client:home_view_content_nav__upload')}</u>
+          </>
+        ),
+      },
       {
         show: true,
         title: t('client:home_view_content_nav__ai_provider__title'),

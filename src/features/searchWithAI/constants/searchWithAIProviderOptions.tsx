@@ -25,6 +25,10 @@ export interface ISearchWithAIProviderOptionsType {
 
 const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
   {
+    label: 'Free AI',
+    value: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE,
+  },
+  {
     label: 'ChatGPT',
     value: SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
 

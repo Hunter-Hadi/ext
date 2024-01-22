@@ -376,6 +376,15 @@
     "provider__gemini__auth_description": "Use Gemini to power the extension.",
     "provider__gemini__auth_button_text": "Continue with Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini family, designed to offer scalability and exhibits strong generalist capabilities, supporting 38 languages and a context window of 32k tokens.",
+
+    "provider__free_ai__title": "Free AI",
+    "provider__free_ai__short_description": "Designed for basic usage, it offers key features but does not encompass the extensive versatility and advanced capabilities of our Pro/Elite models. Ideal for newcomers exploring MaxAI features or for casual applications.",
+    "provider__free_ai__auth_description": "FreeAI provides fundamental functionalities similar to other LLMs. ",
+    "provider__free_ai__auth_button_text": "Continue with Free AI",
+    "provider__free_ai__model__mistral_7b_instruct__description": "Mistral-7B-Instruct: Surpassing Llama 2 13B in efficiency, this 7.3B parameter model excels in all benchmarks, optimized for rapid response and extended context understanding.",
+    "provider__free_ai__model__openchat_7b__description": "This model integrates OpenChat's open-source language capabilities, refined with Conditioned Reinforcement Learning Fine-Tuning, and trained on diverse data sets for nuanced understanding.",
+    "provider__free_ai__model__mythomist_7b__description": "A Fusion of Excellence – Crafted by the creator of MythoMax, this model amalgamates Neural Chat 7B, Airoboros 7B, Toppy M 7B, Zepher 7B Beta, Nous Capybara 34B, OpenHeremes 2.5, and more, to enhance ChatGPT roleplaying by reducing word anticipation, ministrations, and other undesirable elements.",
+
     "provider__label__third_part": "3rd-party",
     "provider__label__beta": "beta",
     "provider__label__hide": "Hide",

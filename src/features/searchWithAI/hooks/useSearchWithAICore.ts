@@ -54,6 +54,7 @@ export type IAIForSearchStatus =
 
 // 不同 provider 的超时时间
 const PROVIDER_TIMEOUT_DURATION: Record<ISearchWithAIProviderType, number> = {
+  MAXAI_FREE: 10000,
   OPENAI: 10000,
   USE_CHAT_GPT_PLUS: 10000,
   MAXAI_CLAUDE: 10000,
@@ -271,12 +272,11 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
     await searchWithAIAskQuestion(
       {
+        type: 'user',
+        text: template,
         messageId,
-        parentMessageId: '',
         conversationId,
-        question: template,
       },
-      {},
       {
         onMessage: (msg) => {
           if (isTimeout) {

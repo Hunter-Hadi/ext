@@ -1,6 +1,6 @@
 import { createClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
+import { IUserChatMessage } from '@/features/chatgpt/types'
 
 import {
   SEARCH_WITH_AI_ROOT_ID,
@@ -57,13 +57,7 @@ export function searchWithAIStyleReset(
 }
 
 export const searchWithAIAskQuestion = async (
-  question: {
-    messageId: string
-    parentMessageId: string
-    conversationId: string
-    question: string
-  },
-  options: IUserChatMessageExtraType,
+  question: IUserChatMessage,
   {
     onMessage,
     onError,
@@ -114,7 +108,6 @@ export const searchWithAIAskQuestion = async (
       data: {
         taskId,
         question,
-        options,
       },
     })
   })

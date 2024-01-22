@@ -4,20 +4,18 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Stack from '@mui/material/Stack'
-import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
-interface IHomeViewAISearchInputProps {
-  sx?: SxProps
-}
+interface IHomeViewAISearchInputProps {}
 
-const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = ({ sx }) => {
+const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   const { createSearchWithAI } = useSearchWithAI()
 
-  const { cleanConversation } = useClientConversation()
+  // const { cleanConversation } = useClientConversation()
+
+  // const { updateSidebarConversationType } = useSidebarSettings()
 
   const [loading, setLoading] = React.useState(false)
 
@@ -28,7 +26,9 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = ({ sx }) => {
       return
     }
 
-    const formData = new FormData(e.target as HTMLFormElement)
+    const target = e.target as HTMLFormElement
+
+    const formData = new FormData(target)
 
     const question = formData.get('searchValue') as string
 
@@ -37,23 +37,38 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = ({ sx }) => {
     }
 
     setLoading(true)
-    await cleanConversation()
-    await createSearchWithAI(question, true)
+    await createSearchWithAI(question, false)
+
+    target.reset()
+
     setLoading(false)
   }
 
   return (
     <Stack
       direction="row"
-      sx={{
-        width: '100%',
-        bgcolor: 'rgba(233, 233, 235, 0.6)',
-        borderRadius: 2,
+      sx={(t) => {
+        const isDark = t.palette.mode === 'dark'
 
-        '& > form': {
+        return {
           width: '100%',
-        },
-        ...sx,
+          height: '100%',
+          bgcolor: isDark
+            ? 'rgba(59, 61, 62, 0.60)'
+            : 'rgba(233, 233, 235, 0.60)',
+
+          '&:hover': {
+            bgcolor: isDark
+              ? 'rgba(59, 61, 62, 0.80)'
+              : 'rgba(233, 233, 235, 0.80)',
+          },
+
+          borderRadius: 2,
+
+          '& > form': {
+            width: '100%',
+          },
+        }
       }}
     >
       <form onSubmit={handleSubmit}>
@@ -63,20 +78,30 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = ({ sx }) => {
           name="searchValue"
           disabled={loading}
           sx={{
-            p: 1,
-            pr: 2,
+            pr: 1,
+            pl: 0,
             width: '100%',
+            height: '100%',
+            fontSize: 14,
             '& > fieldset': {
               borderColor: 'transparent !important',
             },
+            '& > input::placeholder': {
+              color: 'inherit',
+              opacity: 1,
+            },
           }}
-          endAdornment={
-            <InputAdornment position="end">
+          startAdornment={
+            <InputAdornment position="end" sx={{ ml: '3px', mr: '3px' }}>
               <IconButton type="submit" size="small">
                 {loading ? (
                   <CircularProgress size={20} sx={{ m: '0 auto' }} />
                 ) : (
-                  <SearchOutlinedIcon />
+                  <SearchOutlinedIcon
+                    sx={{
+                      fontSize: 24,
+                    }}
+                  />
                 )}
               </IconButton>
             </InputAdornment>

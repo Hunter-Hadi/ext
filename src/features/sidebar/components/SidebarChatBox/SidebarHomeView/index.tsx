@@ -1,11 +1,15 @@
+import { SxProps } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 
-import HomeViewAISearchInput from './HomeViewAISearchInput'
 import HomeViewContentNav from './HomeViewContentNav'
 import HomeViewPdfDropBox from './HomeViewPdfDropBox'
 
-const SidebarHomeView = () => {
+interface ISidebarHomeViewProps {
+  sx?: SxProps
+}
+
+const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
   const [isDragOver, setIsDragOver] = useState(false)
 
   const handleDragEnter = (event: any) => {
@@ -38,18 +42,12 @@ const SidebarHomeView = () => {
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
+      sx={sx}
     >
       {isDragOver ? (
         <HomeViewPdfDropBox />
       ) : (
-        <Stack
-          spacing={3}
-          height="100%"
-          justifyContent="center"
-          alignItems="center"
-          maxWidth={480}
-        >
-          <HomeViewAISearchInput />
+        <Stack height="100%" alignItems="center" maxWidth={480}>
           <HomeViewContentNav />
         </Stack>
       )}

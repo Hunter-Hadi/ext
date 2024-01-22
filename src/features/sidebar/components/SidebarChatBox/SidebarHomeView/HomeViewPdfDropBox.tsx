@@ -13,19 +13,23 @@ const HomeViewPdfDropBox = () => {
       spacing={1}
       justifyContent="center"
       alignItems="center"
-      sx={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
+      sx={(t) => {
+        const isDark = t.palette.mode === 'dark'
 
-        border: '2px dashed',
-        borderColor: 'primary.main',
-        bgcolor: 'rgba(244,235,251,1)',
+        return {
+          position: 'absolute',
+          top: 8,
+          left: 8,
+          right: 8,
+          bottom: 8,
 
-        pointerEvents: 'none',
-        color: 'text.secondary',
+          border: '2px dashed',
+          borderColor: 'primary.main',
+          bgcolor: isDark ? 'rgba(255,255,255,0.3)' : 'rgba(244,235,251,0.8)',
+
+          pointerEvents: 'none',
+          color: 'text.secondary',
+        }
       }}
       // onDragEnter={handleDragEnter}
       // onDragOver={handleDragOver}

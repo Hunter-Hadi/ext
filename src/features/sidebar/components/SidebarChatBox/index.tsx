@@ -87,8 +87,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [messages, currentSidebarConversationType])
 
   const isShowChatBoxHomeView = useMemo(() => {
-    return messages.length <= 0 && !writingMessage
-  }, [messages, writingMessage])
+    return (
+      messages.length <= 0 &&
+      !writingMessage &&
+      currentSidebarConversationType === 'Chat'
+    )
+  }, [messages, writingMessage, currentSidebarConversationType])
 
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
@@ -126,7 +130,16 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       </DevContent>
       <SidebarHeader />
 
-      {isShowChatBoxHomeView && <SidebarHomeView />}
+      <SidebarHomeView
+        sx={
+          // 这么做条件渲染是为了，让点击事件在 isShowChatBoxHomeView 为 false 时，可以正常执行
+          !isShowChatBoxHomeView
+            ? {
+                display: 'none',
+              }
+            : null
+        }
+      />
 
       <SidebarChatBoxMessageListContainer
         loading={loading}

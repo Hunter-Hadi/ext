@@ -12,6 +12,7 @@ import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -66,7 +67,7 @@ const SidebarPage = () => {
         />
       </Stack>
 
-      <SidebarNav />
+      {!isMaxAIImmersiveChatPage() && <SidebarNav />}
     </Stack>
   )
 }

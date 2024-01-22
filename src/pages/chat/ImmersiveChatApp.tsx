@@ -11,6 +11,7 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
+import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
@@ -51,6 +52,7 @@ const App: FC = () => {
           <AppSuspenseLoadingLayout>
             <Stack flexDirection={'row'} flex={1} height={0}>
               <Stack
+                direction={'row'}
                 borderRight={'1px'}
                 borderBottom={0}
                 borderTop={0}
@@ -58,7 +60,7 @@ const App: FC = () => {
                 sx={{
                   left: 0,
                   position: 'fixed',
-                  width: 312,
+                  width: 392,
                   transform: {
                     xs: 'translateX(-100%)',
                     sm: 'translateX(0)',
@@ -68,8 +70,8 @@ const App: FC = () => {
                 }}
                 height={`calc(100vh - ${isShowActivityBanner ? 96 : 48}px)`}
                 borderColor={'customColor.borderColor'}
-                spacing={1}
               >
+                <SidebarNav />
                 <ConversationList />
               </Stack>
               <Stack

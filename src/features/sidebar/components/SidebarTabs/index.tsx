@@ -65,11 +65,17 @@ export const sidebarTabsData: Array<{
 const SidebarTabs: FC = () => {
   const { isDarkMode } = useCustomTheme()
   const { t } = useTranslation(['common', 'client'])
+
   const {
     currentSidebarConversationType,
     updateSidebarConversationType,
   } = useSidebarSettings()
+
   const conversation = useRecoilValue(ChatGPTConversationState)
+
+  // 在 immersive chat 页面, 有特殊的渲染逻辑
+  const isInImmersiveChatPage = useMemo(() => isMaxAIImmersiveChatPage(), [])
+
   useEffect(() => {
     const listener = (event: any) => {
       const type: ISidebarConversationType = event?.detail?.type
@@ -86,7 +92,7 @@ const SidebarTabs: FC = () => {
     return sidebarTabsData
       .filter((tab) => {
         if (tab.value === 'Summary') {
-          if (isMaxAIImmersiveChatPage()) {
+          if (isInImmersiveChatPage) {
             return false
           }
         }
@@ -95,114 +101,67 @@ const SidebarTabs: FC = () => {
       .reverse()
   }, [])
   return (
-    <>
-      <Stack
-        alignItems={'center'}
-        width={'100%'}
-        bgcolor={'background.paper'}
-        spacing={2}
-        sx={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-        }}
-      >
-        {memoSidebarTabsData.map((item) => {
-          const isActive = currentSidebarConversationType === item.value
-          const disabled = conversation.loading
-          const bgcolor = isActive
-            ? isDarkMode
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(118, 1, 211, 0.08)'
-            : 'transparent'
+    <Stack
+      alignItems={'center'}
+      width={'100%'}
+      bgcolor={'background.paper'}
+      spacing={2}
+      sx={{
+        position: 'sticky',
+        top: 0,
+        zIndex: 1,
+      }}
+    >
+      {memoSidebarTabsData.map((item) => {
+        const isActive = currentSidebarConversationType === item.value
+        const disabled = conversation.loading
+        const bgcolor = isActive
+          ? isDarkMode
+            ? 'rgba(255, 255, 255, 0.08)'
+            : 'rgba(118, 1, 211, 0.08)'
+          : 'transparent'
 
-          return (
-            <TextOnlyTooltip
-              key={item.value}
-              placement="left"
-              title={t(item.tooltip?.() as any)}
+        return (
+          <TextOnlyTooltip
+            key={item.value}
+            placement="left"
+            title={t(item.tooltip?.() as any)}
+          >
+            <Stack
+              spacing={0.5}
+              justifyContent="center"
+              alignItems="center"
+              sx={{
+                width: '100%',
+                [isInImmersiveChatPage
+                  ? 'borderRight'
+                  : 'borderLeft']: '2px solid',
+                borderColor: isActive ? 'primary.main' : 'transparent',
+                color: isActive ? 'primary.main' : 'text.secondary',
+                cursor: disabled ? 'auto' : 'pointer',
+                bgcolor: bgcolor,
+                py: 1,
+                position: 'relative',
+                [isInImmersiveChatPage ? 'right' : 'left']: -1,
+              }}
+              onClick={() => {
+                !disabled && updateSidebarConversationType(item.value)
+              }}
             >
-              <Stack
-                spacing={0.5}
-                justifyContent="center"
-                alignItems="center"
-                sx={{
-                  width: '100%',
-                  borderLeft: '2px solid',
-                  borderColor: isActive ? 'primary.main' : 'transparent',
-                  color: isActive ? 'primary.main' : 'text.secondary',
-                  cursor: disabled ? 'auto' : 'pointer',
-                  bgcolor: bgcolor,
-                  py: 1,
-                  position: 'relative',
-                  left: -1,
-                }}
-                onClick={() => {
-                  !disabled && updateSidebarConversationType(item.value)
-                }}
+              <SidebarTabIcons icon={item.icon} />
+              <Typography
+                fontSize={12}
+                color={'inherit'}
+                data-testid={'max-ai__summary-tab'}
+                lineHeight={1}
               >
-                <SidebarTabIcons icon={item.icon} />
-                <Typography
-                  fontSize={12}
-                  color={'inherit'}
-                  data-testid={'max-ai__summary-tab'}
-                  lineHeight={1}
-                >
-                  {t(item.label as any)}
-                </Typography>
-              </Stack>
-            </TextOnlyTooltip>
-          )
-        })}
-      </Stack>
-      {/* <Stack
-        alignItems={'center'}
-        width={'100%'}
-        bgcolor={'background.paper'}
-        sx={{
-          position: 'sticky',
-          top: 0,
-          zIndex: 1,
-        }}
-      >
-        <Tabs
-          orientation="vertical"
-          sx={{
-            minHeight: '36px',
-            '& .use-chat-gpt-ai--MuiButtonBase-root': {
-              height: '36px',
-              minHeight: '36px',
-              p: 1,
-            },
-          }}
-          value={currentSidebarConversationType}
-          onChange={async (event, value) => {
-            updateSidebarConversationType(value)
-          }}
-          textColor="inherit"
-          indicatorColor="primary"
-        >
-          {memoSidebarTabsData.map((item) => (
-            <Tab
-              disabled={conversation.loading}
-              key={item.value}
-              value={item.value}
-              label={
-                <TextOnlyTooltip title={t(item.tooltip?.() as any)}>
-                  <Typography
-                    fontSize={'14px'}
-                    color={'text.primary'}
-                    data-testid={'max-ai__summary-tab'}
-                  >
-                    {t(item.label as any)}
-                  </Typography>
-                </TextOnlyTooltip>
-              }
-            />
-          ))}
-        </Tabs>
-      </Stack> */}
-    </>
+                {t(item.label as any)}
+              </Typography>
+            </Stack>
+          </TextOnlyTooltip>
+        )
+      })}
+    </Stack>
   )
 }
 export default SidebarTabs

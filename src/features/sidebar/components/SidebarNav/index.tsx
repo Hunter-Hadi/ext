@@ -27,13 +27,16 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { chatBoxShortCutKey } = useCommands()
 
+  // 在 immersive chat 页面, 有特殊的渲染逻辑
+  const isInImmersiveChatPage = isMaxAIImmersiveChatPage()
+
   return (
     <Stack
       alignItems="center"
       spacing={2}
       sx={{
-        width: 60,
-        borderLeft: '1px solid',
+        width: isInImmersiveChatPage ? 80 : 60,
+        [isInImmersiveChatPage ? 'borderRight' : 'borderLeft']: '1px solid',
         borderColor: 'divider',
         pb: 4,
         pt: 1,
@@ -74,7 +77,14 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       </Stack>
 
       {/* divider */}
-      <Divider flexItem variant="middle" />
+      <Divider
+        flexItem
+        variant="middle"
+        sx={{
+          width: '80%',
+          mx: 'auto !important',
+        }}
+      />
 
       {/* nav options */}
       <Stack spacing={1}>

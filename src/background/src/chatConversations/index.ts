@@ -20,8 +20,8 @@ export interface IChatConversation {
   type: ISidebarConversationType // 对话类型
   meta: IChatConversationMeta // 对话元数据
   isDelete: boolean // 软删除
-  lastMessageId?: string // 最后一条消息的ID
   share?: IChatConversationShareConfig // 分享配置
+  version?: number // 版本号 - 2024-01-22后用2.0, 在此之前需要上传到后端
 }
 
 // 分享配置

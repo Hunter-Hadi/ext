@@ -184,6 +184,7 @@ export const clientAskAIQuestion = async (
           console.log(
             `测试requestIdleCallbackPolyfill [${tasks.length - 1}]`,
             lastTaskData?.data?.text,
+            lastTaskData,
           )
           const isDone = lastTaskData.done
           // 因为在结束之后可能立刻要执行一些promise方法，必须等onMessage执行完后再去做操作
@@ -194,10 +195,15 @@ export const clientAskAIQuestion = async (
                 destroyListener()
               })
             } else if (lastTaskData?.data?.text) {
+              // 如果有lastTaskData?.data?.text，那么执行onMessage
               onMessage?.(lastTaskData.data).finally(() => {
                 resolve(true)
                 destroyListener()
               })
+            } else {
+              // 像ChatGPt在onDone的时候是没有text的，所以直接resolve
+              resolve(true)
+              destroyListener()
             }
           } else {
             if (lastTaskData.error) {

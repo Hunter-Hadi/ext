@@ -546,4 +546,27 @@ export default class ConversationManager {
       return false
     }
   }
+
+  /**
+   * 根据 type 清除所有对话 - 软删除
+   */
+  static async clearConversationsByType(type: ISidebarConversationType) {
+    if (!type) {
+      return false
+    }
+    try {
+      const conversations = await this.conversationDB.getAllConversations()
+      await Promise.all(
+        conversations.map(async (conversation) => {
+          if (conversation.id && conversation.type === type) {
+            await this.softDeleteConversation(conversation.id)
+          }
+        }),
+      )
+      return true
+    } catch (e) {
+      console.error(e)
+      return false
+    }
+  }
 }

@@ -60,6 +60,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_getAllConversation'
   | 'Client_getAllPaginationConversation'
   | 'Client_removeAllConversation'
+  | 'Client_removeConversationByType'
   | 'Client_proxyFetchAPI'
   | 'Client_getIframePageContent'
   | 'Client_ListenProxyWebsocketResponse'

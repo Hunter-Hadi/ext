@@ -20,6 +20,7 @@ const ConversationList: FC = () => {
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
     currentSidebarConversationId,
+    currentSidebarConversationType,
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
@@ -32,6 +33,7 @@ const ConversationList: FC = () => {
       clientGetAllPaginationConversations()
         .then((conversations) => {
           const beautyConversations = conversations
+            // immersive chat 中不显示 Summary history
             .filter((conversation) => !(conversation.type === 'Summary'))
             .sort((prev, next) => {
               return (
@@ -82,6 +84,13 @@ const ConversationList: FC = () => {
     })
     return map
   }, [AI_PROVIDER_MODEL_MAP])
+
+  const filteredPaginationConversations = useMemo(() => {
+    return paginationConversations.filter(
+      (conversation) => conversation.type === currentSidebarConversationType,
+    )
+  }, [currentSidebarConversationType, paginationConversations])
+
   useEffect(() => {
     let destroy = false
     fetchPaginationConversations().then((conversations) => {
@@ -100,7 +109,7 @@ const ConversationList: FC = () => {
     })
   })
   return (
-    <Stack height={'100%'} spacing={1} p={1}>
+    <Stack width={0} flex={1} height={'100%'} spacing={1} p={1}>
       <Stack
         flex={1}
         height={0}
@@ -110,7 +119,7 @@ const ConversationList: FC = () => {
           overflowY: 'auto',
         }}
       >
-        {paginationConversations.map((conversation) => {
+        {filteredPaginationConversations.map((conversation) => {
           const isSelected = conversation.id === currentSidebarConversationId
           // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
           if (typeof conversation.title !== 'string') {
@@ -279,14 +288,9 @@ const ConversationList: FC = () => {
           onDelete={() => {
             fetchPaginationConversations().then((conversations) => {
               setPaginationConversations(conversations)
+              const needCleanConversationType = currentSidebarConversationType.toLowerCase()
               updateSidebarSettings({
-                chat: {
-                  conversationId: '',
-                },
-                search: {
-                  conversationId: '',
-                },
-                summary: {
+                [needCleanConversationType]: {
                   conversationId: '',
                 },
               }).then(() => {

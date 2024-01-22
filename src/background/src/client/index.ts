@@ -420,6 +420,16 @@ export const ClientMessageInit = () => {
             message: 'ok',
           }
         }
+        case 'Client_removeConversationByType': {
+          const result = await ConversationManager.clearConversationsByType(
+            data.type,
+          )
+          return {
+            success: result,
+            data: result,
+            message: 'ok',
+          }
+        }
         case 'Client_getContextMenuActions': {
           const { contextMenuId } = data
           const actions = await getContextMenuActions(contextMenuId)

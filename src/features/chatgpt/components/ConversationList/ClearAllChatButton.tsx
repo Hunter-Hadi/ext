@@ -7,7 +7,8 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { removeAllConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { removeConversationsByType } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ClearAllChatButton: FC<{
   onDelete?: () => void
@@ -15,6 +16,8 @@ const ClearAllChatButton: FC<{
   const { onDelete } = props
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
+  const { currentSidebarConversationType } = useSidebarSettings()
+
   return (
     <>
       <Button
@@ -88,7 +91,9 @@ const ClearAllChatButton: FC<{
                 color={'error'}
                 onClick={async () => {
                   try {
-                    await removeAllConversations()
+                    await removeConversationsByType(
+                      currentSidebarConversationType,
+                    )
                     onDelete?.()
                   } catch (e) {
                     console.error(e)

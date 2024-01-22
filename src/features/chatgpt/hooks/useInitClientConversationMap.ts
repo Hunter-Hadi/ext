@@ -10,6 +10,7 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {
@@ -78,6 +79,23 @@ export const removeAllConversations = async () => {
     const port = new ContentScriptConnectionV2()
     const result = await port.postMessage({
       event: 'Client_removeAllConversation',
+    })
+    return result.success
+  } catch (e) {
+    return false
+  }
+}
+
+export const removeConversationsByType = async (
+  type: ISidebarConversationType,
+) => {
+  try {
+    const port = new ContentScriptConnectionV2()
+    const result = await port.postMessage({
+      event: 'Client_removeConversationByType',
+      data: {
+        type,
+      },
     })
     return result.success
   } catch (e) {

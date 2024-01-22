@@ -67,9 +67,8 @@ class SearchWIthAIChatSystem {
             }
             const taskId = data.taskId
             const question = data.question
-            const options = data.options
             await this.createConversation(question.conversationId)
-            await this.sendQuestion(taskId, sender, question, options)
+            await this.sendQuestion(taskId, sender, question)
             break
           }
           case 'SWAI_abortAskChatGPTQuestion': {
@@ -108,11 +107,10 @@ class SearchWIthAIChatSystem {
   sendQuestion: IChatGPTAskQuestionFunctionType = (
     taskId,
     sender,
-    data,
-    options,
+    question,
   ) => {
     if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
-      options.meta = {
+      question.meta = {
         model: OPENAI_API_MODELS[0].value,
         temperature: 1,
       }
@@ -121,13 +119,13 @@ class SearchWIthAIChatSystem {
     if (
       this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS
     ) {
-      options.meta = {
+      question.meta = {
         temperature: 1,
       }
     }
 
     return (
-      this.currentAdapter?.sendQuestion(taskId, sender, data, options) ||
+      this.currentAdapter?.sendQuestion(taskId, sender, question) ||
       Promise.resolve()
     )
   }
@@ -188,7 +186,6 @@ class SearchWIthAIChatSystem {
   //   if (!this.currentAdapter || !conversationId) {
   //     return false
   //   }
-  //   debugger
   //   // return result
   // }
   async destroy() {

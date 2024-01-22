@@ -21,7 +21,9 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) =>
-          t(`client:provider__gemini__model__gemini_pro__description`),
+          t(
+            `client:provider__free_ai__model__mistral_7b_instruct__description`,
+          ),
       },
     ],
   },
@@ -44,7 +46,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) =>
-          t(`client:provider__gemini__model__gemini_pro__description`),
+          t(`client:provider__free_ai__model__openchat_7b__description`),
       },
     ],
   },
@@ -67,7 +69,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
         label: (t) =>
           t('client:provider__model__tooltip_card__label__description'),
         value: (t) =>
-          t(`client:provider__gemini__model__gemini_pro__description`),
+          t(`client:provider__free_ai__model__mythomist_7b__description`),
       },
     ],
   },

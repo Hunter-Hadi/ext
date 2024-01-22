@@ -30,19 +30,19 @@ class OpenAIChatProvider implements ChatAdapterInterface {
     taskId,
     sender,
     question,
-    options,
   ) => {
     const messageId = uuidV4()
-
     // await this.openAIChat.createConversation()
 
+    const meta = question.meta || {}
+
     await this.openAIChat.askChatGPT(
-      question.question,
+      question.text,
       {
         taskId: question.messageId,
-        regenerate: options.regenerate,
-        include_history: options.includeHistory,
-        max_history_message_cnt: options.maxHistoryMessageCnt,
+        regenerate: meta.regenerate,
+        include_history: meta.includeHistory,
+        max_history_message_cnt: meta.maxHistoryMessageCnt,
       },
       async ({ type, done, error, data }) => {
         if (sender.tab?.id) {

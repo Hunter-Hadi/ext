@@ -4,6 +4,7 @@ import {
   ChatAdapter,
   ClaudeChatProvider,
   MaxAIClaudeChatProvider,
+  MaxAIFreeChatProvider,
   OpenAIApiChatProvider,
   UseChatGPTPlusChatProvider,
 } from '@/background/provider/chat'
@@ -12,6 +13,7 @@ import {
   BingChat,
   ClaudeWebappChat,
   MaxAIClaudeChat,
+  MaxAIFreeChat,
   OpenAiApiChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
@@ -38,6 +40,11 @@ export const initProviderChatAdapters = () => {
   const maxAIClaudeAdapter = new ChatAdapter(
     new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
   )
+
+  const maxAIFreeAdapter = new ChatAdapter(
+    new MaxAIFreeChatProvider(new MaxAIFreeChat()),
+  )
+
   return {
     [SEARCH_WITH_AI_PROVIDER_MAP.OPENAI]: openAIChatAdapter,
     [SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS]: useChatGPTPlusAdapter,
@@ -46,5 +53,6 @@ export const initProviderChatAdapters = () => {
     [SEARCH_WITH_AI_PROVIDER_MAP.BING]: bingChatAdapter,
     [SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE]: claudeChatAdapter,
     [SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE]: maxAIClaudeAdapter,
+    [SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE]: maxAIFreeAdapter,
   }
 }

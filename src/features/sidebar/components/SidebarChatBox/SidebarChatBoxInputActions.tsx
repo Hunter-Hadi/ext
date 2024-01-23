@@ -21,6 +21,7 @@ import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
+import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
 import { chromeExtensionClientOpenPage } from '@/utils'
@@ -155,7 +156,11 @@ const SidebarChatBoxInputActions: FC<{
             </Button>
           </TextOnlyTooltip>
         ) : null}
-
+        <SidebarScreenshotButton
+          sx={{
+            ...actionsBtnColorSxMemo,
+          }}
+        />
         {/* art */}
         {currentSidebarConversationType === 'Art' &&
           !smoothConversationLoading && <ArtConversationalModeToggle />}

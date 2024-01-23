@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button'
-import React, { FC, useMemo, useRef } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
+import { atom, useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import {
@@ -23,6 +23,15 @@ interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   onUpload?: (files: IChatUploadFile[]) => void
   onDone?: (files: IChatUploadFile[]) => void
 }
+export const MaxAIChatFileHandleUploadState = atom<{
+  uploadFile: (file: File) => void
+}>({
+  key: 'MaxAIChatFileHandleUploadState',
+  default: {
+    uploadFile: () => {},
+  },
+})
+
 const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   const { disabled = false, TooltipProps, onUpload, onDone, ...rest } = props
   const { t } = useTranslation(['common', 'client'])
@@ -33,6 +42,9 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
   } = useAIProviderUpload()
+  const setMaxAIChatFileHandleUploadState = useSetRecoilState(
+    MaxAIChatFileHandleUploadState,
+  )
   const clientState = useRecoilValue(ChatGPTClientState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const inputRef = useRef<HTMLInputElement>(null)
@@ -41,6 +53,17 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   const isMaxFiles = useMemo(() => {
     return files.length >= (AIProviderConfig?.maxCount || 1)
   }, [files])
+  useEffect(() => {
+    setMaxAIChatFileHandleUploadState({
+      uploadFile: async (file) => {
+        await handleUpload({
+          target: {
+            files: [file],
+          },
+        } as any)
+      },
+    })
+  }, [])
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const existFilesCount = files?.length || 0
     const canUploadCount = maxFiles - existFilesCount

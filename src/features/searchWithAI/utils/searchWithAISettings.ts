@@ -16,7 +16,7 @@ export interface ISearchWithAISettings {
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
-  aiProvider: SEARCH_WITH_AI_PROVIDER_MAP.OPENAI,
+  aiProvider: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE,
   enable: true,
   triggerMode: 'always',
   webAccessPrompt: true,

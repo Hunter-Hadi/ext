@@ -143,6 +143,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
               sx={{
                 ...labelProp,
               }}
+              data-value={option.value}
               selected={option.value === props.value}
               disabled={option.origin.disabled}
               value={option.value}
@@ -169,6 +170,7 @@ const BaseSelect: FC<IBaseSelectProps> = ({
           sx={{
             ...labelProp,
           }}
+          data-value={option.value}
           key={index}
           disabled={option?.origin?.disabled}
           value={option.value}

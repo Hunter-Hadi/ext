@@ -30,10 +30,15 @@ import {
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
+export const LINE_HEIGHT = 24
+
+export const TEXTAREA_PADDING_Y = 8
+
 const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
 }
-const LINE_HEIGHT = 24
+
+export const MIN_LINE = 2
 
 const autoSizeTextarea = (
   textareaElement: HTMLTextAreaElement,
@@ -42,20 +47,24 @@ const autoSizeTextarea = (
 ) => {
   const boxElement = textareaElement?.parentElement?.parentElement
   if (textareaElement && boxElement) {
-    const style = window.getComputedStyle(textareaElement)
+    const textareaStyle = window.getComputedStyle(textareaElement)
     const paddingLength =
-      parseInt(style.paddingTop, 10) + parseInt(style.paddingBottom, 10)
+      parseInt(textareaStyle.paddingTop ?? TEXTAREA_PADDING_Y, 10) +
+      parseInt(textareaStyle.paddingBottom ?? TEXTAREA_PADDING_Y, 10)
     textareaElement.style.cssText = 'height:0px'
     const scrollHeight = textareaElement.value
       ? textareaElement.scrollHeight
-      : LINE_HEIGHT + paddingLength // 最小高度
+      : LINE_HEIGHT * MIN_LINE + paddingLength // 最小高度
     let textAreaHeight = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
     if (minHeight === 0) {
       minHeight =
         (textareaElement?.previousElementSibling as HTMLElement)
           ?.offsetHeight || 0
     }
-    const minTextAreaHeight = Math.max(LINE_HEIGHT, minHeight || 0)
+    const minTextAreaHeight = Math.max(
+      LINE_HEIGHT * MIN_LINE + paddingLength,
+      minHeight || 0,
+    )
     textAreaHeight = Math.max(minTextAreaHeight, textAreaHeight)
     textareaElement.style.cssText = `height: ${textAreaHeight}px`
     const boxHeight = textAreaHeight + childrenHeight
@@ -417,7 +426,7 @@ const AutoHeightTextarea: FC<{
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
             my: 1.5,
             fontSize: '16px',
-            minHeight: LINE_HEIGHT + 'px',
+            minHeight: LINE_HEIGHT * MIN_LINE + TEXTAREA_PADDING_Y * 2 + 'px',
             lineHeight: LINE_HEIGHT + 'px',
             background: 'transparent!important',
             borderColor: 'transparent!important',

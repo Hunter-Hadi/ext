@@ -115,7 +115,13 @@ const PermissionWrapper: FC<PermissionWrapperProps> = (props) => {
             setOpen(false)
           }}
         >
-          <Stack spacing={1} component="div" width={300}>
+          <Stack
+            spacing={1}
+            component="div"
+            width={300}
+            data-testid={'pricing-hooks-card'}
+            data-permission-scene-type={sceneType}
+          >
             {memoizedPermissionCard.videoUrl && (
               <YoutubePlayerBox
                 borderRadius={4}

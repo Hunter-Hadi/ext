@@ -55,6 +55,12 @@ const SidebarChatBoxInputActions: FC<{
     } as SxProps
   }, [])
 
+  const isPromptLibraryIconButtonShow = useMemo(() => {
+    return (
+      currentSidebarConversationType === 'Chat' && !smoothConversationLoading
+    )
+  }, [currentSidebarConversationType, smoothConversationLoading])
+
   useEffect(() => {
     const handleInputUpdate = (newInputValue: string, metaData: any) => {
       console.log(metaData)
@@ -108,25 +114,6 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
-        {/* prompt library btn */}
-        <PromptLibraryIconButton
-          sx={{
-            ...actionsBtnColorSxMemo,
-            visibility:
-              currentSidebarConversationType === 'Chat' &&
-              !smoothConversationLoading
-                ? 'visible'
-                : 'hidden',
-            [`&.${buttonClasses.contained}`]: {
-              color: 'white',
-            },
-          }}
-        />
-
-        {/* search copilot btn */}
-        {currentSidebarConversationType === 'Search' &&
-          !smoothConversationLoading && <SearchWithAICopilotToggle />}
-
         {/* chat history btn */}
         {currentSidebarConversationType !== 'Summary' &&
         !isMaxAIImmersiveChatPage() ? (
@@ -138,6 +125,7 @@ const SidebarChatBoxInputActions: FC<{
               onClick={() => {
                 chromeExtensionClientOpenPage({
                   url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                  query: `?conversationType=${currentSidebarConversationType}`,
                 })
               }}
               sx={{
@@ -161,6 +149,23 @@ const SidebarChatBoxInputActions: FC<{
             ...actionsBtnColorSxMemo,
           }}
         />
+
+        {/* prompt library btn */}
+        <PromptLibraryIconButton
+          sx={{
+            ...actionsBtnColorSxMemo,
+            visibility: isPromptLibraryIconButtonShow ? 'visible' : 'hidden',
+            position: isPromptLibraryIconButtonShow ? 'static' : 'absolute',
+            [`&.${buttonClasses.contained}`]: {
+              color: 'white',
+            },
+          }}
+        />
+
+        {/* search copilot btn */}
+        {currentSidebarConversationType === 'Search' &&
+          !smoothConversationLoading && <SearchWithAICopilotToggle />}
+
         {/* art */}
         {currentSidebarConversationType === 'Art' &&
           !smoothConversationLoading && <ArtConversationalModeToggle />}

@@ -8,16 +8,13 @@ import DialogTitle from '@mui/material/DialogTitle'
 import SpeedDial from '@mui/material/SpeedDial'
 import SpeedDialAction from '@mui/material/SpeedDialAction'
 import Stack from '@mui/material/Stack'
-import React, { FC, useState } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Browser from 'webextension-polyfill'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { CleanChatBoxIcon, MagicBookIcon } from '@/components/CustomIcon'
+import { CleanChatBoxIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { chromeExtensionClientOpenPage } from '@/utils'
 
 type ChatSpeedDialType = 'new' | 'restart' | 'focus'
 const SidebarChatBoxChatSpeedDial: FC<{
@@ -28,6 +25,23 @@ const SidebarChatBoxChatSpeedDial: FC<{
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [restartAppDialogVisible, setRestartAppDialogVisible] = useState(false)
+
+  const cleanBtnTooltipTitle = useMemo(() => {
+    if (currentSidebarConversationType === 'Summary') {
+      return t('client:sidebar__tabs__summary__action_btn__title')
+    }
+
+    if (currentSidebarConversationType === 'Search') {
+      return t('client:sidebar__tabs__search__action_btn__title')
+    }
+
+    if (currentSidebarConversationType === 'Art') {
+      return t('client:sidebar__tabs__art__action_btn__title')
+    }
+
+    return t('client:sidebar__tabs__chat__action_btn__title')
+  }, [currentSidebarConversationType, t])
+
   const handleCloseRestartAppDialog = () => {
     setRestartAppDialogVisible(false)
     setTimeout(() => {
@@ -76,14 +90,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
               onClick && onClick('new')
             }}
           >
-            <TextOnlyTooltip
-              placement={'left'}
-              title={
-                currentSidebarConversationType === 'Summary'
-                  ? t('client:sidebar__tabs__summary__action_btn__title')
-                  : t('client:sidebar__tabs__chat__action_btn__title')
-              }
-            >
+            <TextOnlyTooltip placement={'left'} title={cleanBtnTooltipTitle}>
               <Stack
                 p={1}
                 alignItems={'center'}
@@ -96,7 +103,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
           </Box>
         }
       >
-        {currentSidebarConversationType !== 'Summary' && (
+        {/* {currentSidebarConversationType !== 'Summary' && (
           <SpeedDialAction
             icon={
               <Box
@@ -127,8 +134,8 @@ const SidebarChatBoxChatSpeedDial: FC<{
             }
             tooltipTitle={''}
           />
-        )}
-        {currentSidebarConversationType === 'Chat' && (
+        )} */}
+        {/* {currentSidebarConversationType === 'Chat' && (
           <SpeedDialAction
             icon={
               <Box
@@ -165,7 +172,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
             }
             tooltipTitle={''}
           />
-        )}
+        )} */}
         <SpeedDialAction
           icon={
             <Box

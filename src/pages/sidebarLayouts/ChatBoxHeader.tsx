@@ -15,6 +15,7 @@ import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ChatBoxHeader: FC<{
@@ -101,6 +102,22 @@ const ChatBoxHeader: FC<{
         justifyContent={'end'}
         alignItems={'center'}
       >
+        {!chatBoxShortCutKey && (
+          <Typography fontSize={12}>
+            <Link
+              color={'text.primary'}
+              sx={{ cursor: 'pointer' }}
+              underline={'always'}
+              target={'_blank'}
+              href={'chrome://extensions/shortcuts'}
+              onClick={() => {
+                chromeExtensionClientOpenPage({ key: 'shortcuts' })
+              }}
+            >
+              {t('client:sidebar__button__set_up_shortcut')}
+            </Link>
+          </Typography>
+        )}
         <HistoryShareButton />
       </Stack>
     </Stack>

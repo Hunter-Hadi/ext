@@ -8,7 +8,11 @@ import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 
-import AutoHeightTextarea from '@/components/AutoHeightTextarea'
+import AutoHeightTextarea, {
+  LINE_HEIGHT,
+  MIN_LINE,
+  TEXTAREA_PADDING_Y,
+} from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
@@ -264,7 +268,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           />
           <AutoHeightTextarea
             sx={{
-              minHeight: isSetVariables ? 0 : 80,
+              // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
+              minHeight: isSetVariables
+                ? 0
+                : LINE_HEIGHT * MIN_LINE + TEXTAREA_PADDING_Y * 2 + 40,
               height: isSetVariables ? '0!important' : 'unset',
               visibility: isSetVariables ? 'hidden' : 'visible',
             }}

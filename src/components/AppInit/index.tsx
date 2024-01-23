@@ -35,22 +35,30 @@ const log = new Log('AppInit')
 
 const UseChatGPTWebPageJumpToShortCuts = () => {
   if (
-    window.location.host !== 'www.usechatgpt.ai' &&
-    window.location.host !== 'www.maxai.me'
+    window.location.host === 'www.usechatgpt.ai' ||
+    window.location.host === 'www.maxai.me' ||
+    window.location.host === 'app.maxai.me'
   ) {
-    return <></>
+    return (
+      <Button
+        onClick={() => {
+          chromeExtensionClientOpenPage({
+            key: 'shortcuts',
+          })
+        }}
+        id={'usechatgpt-www-to-shortcuts'}
+        sx={{
+          position: 'absolute',
+          width: 1,
+          height: 1,
+          zIndex: -1,
+          opacity: 0,
+        }}
+      />
+    )
   }
-  return (
-    <Button
-      onClick={() => {
-        chromeExtensionClientOpenPage({
-          key: 'shortcuts',
-        })
-      }}
-      id={'usechatgpt-www-to-shortcuts'}
-      sx={{ position: 'absolute', width: 1, height: 1, zIndex: -1, opacity: 0 }}
-    />
-  )
+
+  return <></>
 }
 
 export const AppSettingsInit = () => {

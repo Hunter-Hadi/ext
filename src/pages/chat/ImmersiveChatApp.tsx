@@ -80,7 +80,7 @@ const App: FC = () => {
                   flexShrink: 0,
                   width: {
                     xs: 0,
-                    sm: 312,
+                    sm: 392,
                   },
                 }}
               />

@@ -215,6 +215,7 @@ const AIProviderAuthCard: FC<{
             variant={'contained'}
             disableElevation
             fullWidth
+            data-testid="ai-provider-auth-button"
           >
             {t(aiProviderOption.authButtonText as any)}
             {aiProviderOption.authOpenInNew && (

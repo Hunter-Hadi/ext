@@ -90,6 +90,13 @@ function mainAppRender() {
   link.rel = 'stylesheet'
   link.href = Browser.runtime.getURL('content.css')
   document.head.appendChild(link)
+
+  const fontLink = document.createElement('link')
+  fontLink.rel = 'stylesheet'
+  fontLink.href =
+    'https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap'
+  document.head.appendChild(fontLink)
+
   console.log('init client')
   const contextMenu = document.createElement(
     isSupportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',

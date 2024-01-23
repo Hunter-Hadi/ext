@@ -8,7 +8,7 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
-import SidebarAIMessageImageContentDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageImageContentDownloadButton'
+import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 
 const SidebarAIMessageTools: FC<{
@@ -23,24 +23,11 @@ const SidebarAIMessageTools: FC<{
   const memoCopyText = useMemo(() => {
     return formatAIMessageContent(message)
   }, [message])
-  const downloadUrl = useMemo(() => {
-    if (messageContentType !== 'image') {
-      return ''
-    }
-    try {
-      const image = JSON.parse(
-        message?.originalMessage?.content?.text || '[]',
-      )?.find((image: any) => image.downloadUrl || image.url)
-      return image?.downloadUrl || image?.url
-    } catch (e) {
-      return ''
-    }
-  }, [message, messageContentType])
   return (
     <Stack
       direction={'row'}
       alignItems={'center'}
-      spacing={1}
+      spacing={0.5}
       ref={gmailChatBoxAiToolsRef}
     >
       {messageContentType === 'image' && (
@@ -87,8 +74,8 @@ const SidebarAIMessageTools: FC<{
           />
         </TooltipIconButton>
       )}
-      {messageContentType === 'image' && downloadUrl && (
-        <SidebarAIMessageImageContentDownloadButton downloadUrl={downloadUrl} />
+      {message && (
+        <SidebarAIMessageAttachmentsDownloadButton message={message} />
       )}
       {messageContentType === 'text' && <SidebarCopyButton message={message} />}
       {messageContentType === 'text' && (

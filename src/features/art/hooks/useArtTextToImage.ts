@@ -224,6 +224,26 @@ const useArtTextToImage = () => {
             },
           },
         },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              text: '',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              originalMessage: {
+                content: {
+                  text: '',
+                  contentType: 'image',
+                },
+                metadata: {
+                  attachments: `{{LAST_ACTION_OUTPUT}}` as any,
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
       ]
     }
     await askAIWIthShortcuts(actions)

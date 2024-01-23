@@ -102,7 +102,11 @@ export function parametersParserDecorator(filterPath?: string[]) {
           try {
             // 看看是不是json
             const data = JSON.parse(renderValue)
-            lodashSet(actionInstance.parameters, path, data)
+            if (data instanceof Array || data instanceof Object) {
+              lodashSet(actionInstance.parameters, path, data)
+            } else {
+              lodashSet(actionInstance.parameters, path, renderValue)
+            }
           } catch (e) {
             lodashSet(actionInstance.parameters, path, renderValue)
           }

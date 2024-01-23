@@ -18,6 +18,7 @@ import {
 } from '@/constants'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/MaxAIDALLEChat')
@@ -183,16 +184,30 @@ class MaxAIDALLEChat extends BaseChat {
         ).then((res) => res.json())
         if (result.status === 'OK' && result.data?.length) {
           const resultJson = JSON.stringify(
-            result.data.map(
-              (imageData: { webp_url: string; png_url: string }) => {
-                return {
-                  url: imageData.webp_url || imageData.png_url,
-                  downloadUrl: imageData.png_url || imageData.webp_url,
-                  ...userConfig,
-                  ...imageData,
+            result.data
+              .map((imageData: { webp_url: string; png_url: string }) => {
+                //maxaistorage.s3.amazonaws.com/dalle-generations/4d5a37a3-ed17-456e-a452-a52eeb88e280.webp?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4NYXT5H4KLMTHHPR%2F20240123%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20240123T061145Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=7c001032878a178bfeb27c698e7abbdc0e21fd5f4fbbe89de51a511a453856fa
+                //maxaistorage.s3.amazonaws.com/dalle-generations/4d5a37a3-ed17-456e-a452-a52eeb88e280.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIA4NYXT5H4KLMTHHPR%2F20240123%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20240123T061145Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=c7ab7b517430c38c41c6c997e46b4f647ffe8109187c41b4c57aff7067faf3c0
+                const fileId =
+                  imageData.webp_url.split('/').pop()?.split('?')?.[0] ||
+                  imageData.png_url.split('/').pop()?.split('?')?.[0]
+                if (!fileId) {
+                  return null
                 }
-              },
-            ),
+                const file: IChatUploadFile = {
+                  id: fileId,
+                  fileName: `${fileId}.webp`,
+                  fileType: 'image/webp',
+                  fileSize: 0,
+                  uploadedFileId: fileId,
+                  uploadedUrl: imageData.webp_url || imageData.png_url || '',
+                  uploadStatus: 'success',
+                  uploadProgress: 100,
+                  meta: userConfig,
+                }
+                return file
+              })
+              .filter((file: IChatUploadFile | null) => file),
           )
           onMessage?.({
             done: true,

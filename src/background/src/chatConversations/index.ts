@@ -2,7 +2,11 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionUserId } from '@/features/auth/utils'
-import { IChatMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import {
+  IChatMessage,
+  IChatUploadFile,
+  IUserChatMessage,
+} from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -45,6 +49,7 @@ export interface IChatConversationMeta {
   lastRunActions?: ISetActionsType // 最后运行的shortcuts
   lastRunActionsParams?: IShortCutsParameter[] // 最后运行的shortcuts的params, 在regenerate/retry时用到
   lastRunActionsMessageId?: string // 最后运行的shortcuts的messageID, 在regenerate/retry时用到
+  attachments?: IChatUploadFile[] // 附件
   [key: string]: any
 }
 export interface PaginationConversation {
@@ -410,6 +415,10 @@ export default class ConversationManager {
       .map((conversation) => {
         let lastMessage: any = undefined
         for (let i = conversation.messages.length - 1; i >= 0; i--) {
+          if (isAIMessage(conversation.messages[i])) {
+            lastMessage = conversation.messages[i]
+            break
+          }
           if (
             conversation.messages[i]?.text &&
             conversation['messages'][i]?.type !== 'system'

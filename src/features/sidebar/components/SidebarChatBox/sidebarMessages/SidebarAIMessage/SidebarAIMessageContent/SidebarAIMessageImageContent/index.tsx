@@ -8,19 +8,19 @@ import DevContent from '@/components/DevContent'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import { IArtTextToImageMetadata } from '@/features/art/types'
 import { artTextToAspectRatio } from '@/features/art/utils'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import SidebarAIMessageImageContentDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageImageContentDownloadButton'
+import { IAIResponseMessage, IChatUploadFile } from '@/features/chatgpt/types'
+import SidebarAIMessageImageContentDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 
-type AIMessageImageData = {
-  url: string
-  downloadUrl?: string
-} & IArtTextToImageMetadata
+interface IAIMessageImageData extends IChatUploadFile {
+  meta?: IArtTextToImageMetadata
+}
+
 type AIMessageImageRenderData = {
   imageBoxWidth: number
   imageBoxHeight: number
   imageBoxTop: number
   imageBoxLeft: number
-  image: AIMessageImageData
+  image: IAIMessageImageData
 }
 
 const SidebarAIMessageImageContent: FC<{
@@ -33,12 +33,9 @@ const SidebarAIMessageImageContent: FC<{
   const [b, setB] = useState('1:1')
   const renderDataList = useMemo<Array<AIMessageImageRenderData>>(() => {
     try {
-      let images =
-        JSON.parse(AIMessage.originalMessage?.content?.text || '[]') || []
+      const images = AIMessage.originalMessage?.metadata?.attachments || []
       const boxWidth = boxRect[0]
       const boxHeight = boxRect[1]
-      const sampleImage = images[0]
-      images = new Array(count).fill(sampleImage)
       if (images.length > 0 && boxWidth && boxHeight) {
         const padding = 6
         // 每行展示的图片数量
@@ -71,8 +68,8 @@ const SidebarAIMessageImageContent: FC<{
         // const computedLeftPerImageBox = imageBoxWidth - computedWidth
         // const computedTopPerImageBox = imageBoxHeight - computedWidth
         // 通过box的长宽和图片的长宽比，计算最终可渲染的box大小和绝对定位的位置
-        return images.map((image: AIMessageImageData, index: number) => {
-          const aspectRatio = b || image.aspectRatio || '1:1'
+        return images.map((image, index: number) => {
+          const aspectRatio = b || image?.meta?.aspectRatio || '1:1'
           const [aspectRatioWidth, aspectRatioHeight] = aspectRatio
             .split(':')
             .map(Number)
@@ -104,7 +101,7 @@ const SidebarAIMessageImageContent: FC<{
     } catch (e) {
       return []
     }
-  }, [AIMessage.originalMessage?.content?.text, boxRect, count, b])
+  }, [AIMessage.originalMessage?.metadata?.attachments, boxRect, count, b])
   const debounceUpdateBoxRect = useMemo(
     () =>
       debounce(() => {
@@ -142,7 +139,7 @@ const SidebarAIMessageImageContent: FC<{
       {renderDataList.map((renderData, index) => {
         const width = boxRef.current?.getBoundingClientRect().width || 415
         const height =
-          width / artTextToAspectRatio(renderData?.image?.aspectRatio)
+          width / artTextToAspectRatio(renderData?.image?.meta?.aspectRatio)
         return (
           <Box
             ref={boxRef}
@@ -175,7 +172,7 @@ const SidebarAIMessageImageContent: FC<{
                 width: '100%',
               }}
               height={height}
-              src={renderData.image?.url}
+              src={renderData.image?.uploadedUrl || ''}
               alt={`Variation 1 of ${renderDataList.length}`}
             />
           </Box>
@@ -309,9 +306,7 @@ const SidebarAIMessageImageContent: FC<{
                       bgcolor: 'rgb(68,68,68)',
                     },
                   }}
-                  downloadUrl={
-                    renderData.image?.downloadUrl || renderData.image.url
-                  }
+                  message={AIMessage}
                 />
               </Stack>
               <LazyLoadImage
@@ -319,7 +314,7 @@ const SidebarAIMessageImageContent: FC<{
                 sx={{
                   width: '100%',
                 }}
-                src={renderData.image?.url}
+                src={renderData.image?.uploadedUrl || ''}
                 alt={`Variation ${index + 1} of ${renderDataList.length}`}
               />
             </Box>

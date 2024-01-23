@@ -135,7 +135,7 @@ const ChatIconFileList: FC<ChatIconFileListProps> = (props) => {
                         // objectFit: 'cover',
                       }
                     }
-                    src={file.base64Data || file.blobUrl || file.uploadedUrl}
+                    src={file.uploadedUrl || file.base64Data || file.blobUrl}
                   />
                 )}
               </Stack>

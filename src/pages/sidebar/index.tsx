@@ -34,7 +34,7 @@ const SidebarPage = () => {
   return (
     <Stack flex={1} height={0} position={'relative'} direction="row">
       <Stack flex={1} width={0}>
-        <ChatBoxHeader />
+        {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
         <ChatGPTStatusWrapper />
         <SidebarChatBox
           onSendMessage={async (question, options) => {

@@ -45,28 +45,30 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       }}
     >
       {/* close btn */}
-      <TextOnlyTooltip
-        placement={'bottom'}
-        title={t('client:sidebar__button__close_sidebar')}
-        description={chatBoxShortCutKey}
-      >
-        <IconButton
-          sx={{ flexShrink: 0 }}
-          onClick={() => {
-            if (isMaxAIImmersiveChatPage()) {
-              window.close()
-              return
-            }
-            hideChatBox()
-          }}
+      {!isInImmersiveChatPage && (
+        <TextOnlyTooltip
+          placement={'bottom'}
+          title={t('client:sidebar__button__close_sidebar')}
+          description={chatBoxShortCutKey}
         >
-          <CloseIcon sx={{ fontSize: '24px' }} />
-        </IconButton>
-      </TextOnlyTooltip>
+          <IconButton
+            sx={{ flexShrink: 0 }}
+            onClick={() => {
+              if (isInImmersiveChatPage) {
+                window.close()
+                return
+              }
+              hideChatBox()
+            }}
+          >
+            <CloseIcon sx={{ fontSize: '24px' }} />
+          </IconButton>
+        </TextOnlyTooltip>
+      )}
 
       {/* nav content */}
       <Stack
-        justifyContent={'end'}
+        justifyContent={isInImmersiveChatPage ? 'start' : 'end'}
         sx={{
           width: '100%',
           height: 0,
@@ -89,36 +91,38 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       {/* nav options */}
       <Stack spacing={1}>
         {/* full screen btn*/}
-        <TextOnlyTooltip
-          title={t('client:sidebar__button__immersive_chat')}
-          placement="left"
-        >
-          <IconButton
-            onClick={() => {
-              if (currentSidebarConversationType !== 'Summary') {
-                chromeExtensionClientOpenPage({
-                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
-                  query: `?conversationType=${currentSidebarConversationType}`,
-                })
-              } else {
-                chromeExtensionClientOpenPage({
-                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
-                })
-              }
-            }}
+        {!isInImmersiveChatPage && (
+          <TextOnlyTooltip
+            title={t('client:sidebar__button__immersive_chat')}
+            placement="left"
           >
-            <ContextMenuIcon
-              icon={'Fullscreen'}
-              sx={{
-                color: 'text.secondary',
-                fontSize: 24,
+            <IconButton
+              onClick={() => {
+                if (currentSidebarConversationType !== 'Summary') {
+                  chromeExtensionClientOpenPage({
+                    url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                    query: `?conversationType=${currentSidebarConversationType}`,
+                  })
+                } else {
+                  chromeExtensionClientOpenPage({
+                    url: Browser.runtime.getURL(`/pages/chat/index.html`),
+                  })
+                }
               }}
-            />
-          </IconButton>
-        </TextOnlyTooltip>
+            >
+              <ContextMenuIcon
+                icon={'Fullscreen'}
+                sx={{
+                  color: 'text.secondary',
+                  fontSize: 24,
+                }}
+              />
+            </IconButton>
+          </TextOnlyTooltip>
+        )}
         <TextOnlyTooltip title={t('common:settings')} placement="left">
           <IconButton
-            sx={{ flexShrink: 0, py: 1.25 }}
+            sx={{ flexShrink: 0 }}
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',

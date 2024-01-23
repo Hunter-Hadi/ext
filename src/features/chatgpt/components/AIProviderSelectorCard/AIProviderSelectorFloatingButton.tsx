@@ -75,17 +75,19 @@ const AIProviderSelectorFloatingButton: FC<{
         }}
       >
         <AIProviderIcon aiProviderType={aiProvider} />
-        <Typography
-          ml={0.5}
-          fontSize={14}
-          lineHeight={1.4}
-          color="text.secondary"
-          sx={{
-            userSelect: 'none',
-          }}
-        >
-          {currentAIProviderModelDetail?.title}
-        </Typography>
+        {currentAIProviderModelDetail?.title && (
+          <Typography
+            ml={0.5}
+            fontSize={14}
+            lineHeight={1.4}
+            color="text.secondary"
+            sx={{
+              userSelect: 'none',
+            }}
+          >
+            {currentAIProviderModelDetail.title}
+          </Typography>
+        )}
         <Popover
           open={open}
           anchorEl={anchorEl}

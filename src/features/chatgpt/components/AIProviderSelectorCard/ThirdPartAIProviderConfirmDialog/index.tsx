@@ -178,6 +178,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
             boxShadow: '0px 0px 16px 0px rgba(255, 255, 255, 0.08) inset',
           }}
           onClick={() => handleConfirmProvider(confirmProviderOption)}
+          data-testid="third-part-ai-provider-continue-button"
         >
           {t('client:provider__confirm_dialog__continue_with', {
             label: t(confirmProviderOption.label as any),

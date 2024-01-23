@@ -105,6 +105,10 @@ const BaseSidebarSystemMessage: FC<{
   return (
     <Stack
       className={'chat-message--text'}
+      data-testid={isPricingHooksCard ? 'pricing-hooks-card' : undefined}
+      data-permission-scene-type={
+        permissionSceneType ? permissionSceneType : undefined
+      }
       sx={{
         ...memoSx,
       }}

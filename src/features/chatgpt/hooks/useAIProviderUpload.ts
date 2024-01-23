@@ -105,6 +105,7 @@ const useAIProviderUpload = () => {
                 chatUploadFile.uploadStatus = result.success
                   ? 'success'
                   : 'error'
+                chatUploadFile.blobUrl = ''
                 chatUploadFile.uploadErrorMessage = result.error
                 chatUploadFile.uploadProgress = result.success ? 100 : 0
                 if (chatUploadFile.uploadedUrl) {

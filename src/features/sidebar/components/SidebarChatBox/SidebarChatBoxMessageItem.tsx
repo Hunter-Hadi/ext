@@ -15,6 +15,7 @@ import {
   SidebarSystemMessage,
   SidebarUserMessage,
 } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
+import useChatMessageExpiredFileUpdater from '@/features/sidebar/hooks/useChatMessageExpiredFileUpdater'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const SidebarChatBoxMessageItem: FC<{
@@ -23,6 +24,7 @@ const SidebarChatBoxMessageItem: FC<{
 }> = (props) => {
   const { message, className } = props
   const { isDarkMode } = useCustomTheme()
+  useChatMessageExpiredFileUpdater(message)
   const [isHover, setIsHover] = useState(false)
   const hoverTimer = useRef<any>(null)
   const hoverSx = useMemo(() => {
@@ -40,6 +42,7 @@ const SidebarChatBoxMessageItem: FC<{
           }),
     }
   }, [isHover])
+
   return (
     <Stack
       className={className}

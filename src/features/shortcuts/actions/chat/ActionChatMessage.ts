@@ -6,7 +6,6 @@ import { parametersParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-
 export class ActionChatMessage extends Action {
   static type = 'CHAT_MESSAGE'
   constructor(

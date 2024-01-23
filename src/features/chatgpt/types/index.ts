@@ -95,12 +95,14 @@ export interface IAIResponseOriginalMessage {
     metadata?: string
   }
   content?: {
-    title?: IAIResponseOriginalMessageMetadataTitle
     contentType: 'text' | 'image'
+    title?: IAIResponseOriginalMessageMetadataTitle
     text: string
     language?: string
   }
   metadata?: {
+    // 附件
+    attachments?: IChatUploadFile[]
     includeHistory?: boolean
     isComplete?: boolean
     finish?: {
@@ -188,6 +190,7 @@ export interface IChatUploadFile {
   uploadErrorMessage?: string
   uploadedUrl?: string
   uploadedFileId?: string
+  meta?: any
 }
 
 export type IAIProviderModelDescriptionType = {

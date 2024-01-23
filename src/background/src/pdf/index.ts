@@ -33,16 +33,27 @@ import Log from '@/utils/Log'
 //   console.log('pdfSnifferStartListener success', result, rules)
 // }
 const log = new Log('PDF')
-export const openPDFViewer = async (tabId: number, url: string) => {
+export const openPDFViewer = async (
+  tabId: number,
+  url: string,
+  newTab = false,
+) => {
   const settings = await getLiteChromeExtensionDBStorage()
   if (settings.userSettings?.pdf?.enabled) {
     const redirectUrl = Browser.runtime.getURL(
       `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
     )
     log.info('pdfSnifferStartListener success', url, redirectUrl)
-    await Browser.tabs.update(tabId, {
-      url: redirectUrl,
-    })
+    if (newTab) {
+      await Browser.tabs.create({
+        url: redirectUrl,
+        active: true,
+      })
+    } else {
+      await Browser.tabs.update(tabId, {
+        url: redirectUrl,
+      })
+    }
   }
 }
 

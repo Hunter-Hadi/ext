@@ -83,7 +83,10 @@ const HomeViewContentNav = () => {
       updateSidebarConversationType('Summary')
     }
     if (value === 'chat_with_pdf') {
-      // do nothing
+      chromeExtensionClientOpenPage({
+        key: 'pdf_viewer',
+        query: '?pdfUrl=&newTab=true',
+      })
     }
     if (value === 'ai_provider') {
       // do nothing

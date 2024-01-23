@@ -128,7 +128,10 @@ export const ClientMessageInit = () => {
             } else if (key) {
               let tabId: number | undefined = undefined
               if (key === 'pdf_viewer' && sender.tab?.id && sender.tab.url) {
-                await openPDFViewer(sender.tab.id, sender.tab.url)
+                const queryObj = new URLSearchParams(query)
+                const pdfUrl = queryObj.get('pdfUrl') ?? sender.tab.url
+                const newTab = queryObj.get('newTab') === 'true'
+                await openPDFViewer(sender.tab.id, pdfUrl, newTab)
               } else if (key === 'current_page') {
                 if (sender.tab?.id) {
                   await Browser.tabs.update(sender.tab.id, {

@@ -6,7 +6,7 @@ import React, { FC } from 'react'
 import { APP_VERSION, RELEASE_LOG_URL } from '@/constants'
 
 const SidebarChatBoxReleaseLog: FC = () => {
-  const ReleaseLogText = `Access your chat history in immersive chat.`
+  const ReleaseLogText = `Create AI art & images.`
   return (
     <Typography
       width={'100%'}

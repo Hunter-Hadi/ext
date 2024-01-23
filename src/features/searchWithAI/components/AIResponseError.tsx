@@ -9,6 +9,7 @@ import React from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 
 import {
   ISearchWithAIProviderType,
@@ -77,6 +78,9 @@ const AIResponseError: FC<IProps> = ({
     if (provider === SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE) {
       return 'https://claude.ai/login'
     }
+    if (provider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE) {
+      return `${APP_USE_CHAT_GPT_HOST}/login`
+    }
     return ''
   }, [provider])
 
@@ -102,14 +106,23 @@ const AIResponseError: FC<IProps> = ({
       }
       return `Please log into ${providerOption.label} and try again.`
     }
+
+    if (
+      errorStatus === 'UNAUTHORIZED' &&
+      provider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE
+    ) {
+      return `Please log into [app.maxai.me](${APP_USE_CHAT_GPT_HOST}) and try again.`
+    }
+
     return text
-  }, [text, provider])
+  }, [text, provider, errorStatus])
 
   useEffect(() => {
     if (
       textCover.includes('sign in') ||
       textCover.includes('log into') ||
-      textCover.includes('Failed to access Bard')
+      textCover.includes('Failed to access Bard') ||
+      textCover.includes('log in')
     ) {
       setErrorStatus('UNAUTHORIZED')
       return

@@ -58,10 +58,11 @@ class SearchWIthAIChatSystem {
 
           case 'SWAI_askAIQuestion': {
             // 特殊处理
-            // 为了不在 auth 时自动弹出登录窗口， 在bard 和 claude 时不执行 auth
+            // 为了不在 auth 时自动弹出登录窗口，
             if (
               this.currentProvider !== SEARCH_WITH_AI_PROVIDER_MAP.BARD &&
-              this.currentProvider !== SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE
+              this.currentProvider !== SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE &&
+              this.currentProvider !== SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE
             ) {
               await this.auth(sender.tab?.id || 0)
             }

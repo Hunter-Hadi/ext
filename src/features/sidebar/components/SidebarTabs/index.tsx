@@ -89,16 +89,14 @@ const SidebarTabs: FC = () => {
     }
   })
   const memoSidebarTabsData = useMemo(() => {
-    return sidebarTabsData
-      .filter((tab) => {
-        if (tab.value === 'Summary') {
-          if (isInImmersiveChatPage) {
-            return false
-          }
+    return sidebarTabsData.filter((tab) => {
+      if (tab.value === 'Summary') {
+        if (isInImmersiveChatPage) {
+          return false
         }
-        return true
-      })
-      .reverse()
+      }
+      return true
+    })
   }, [])
   return (
     <Stack

@@ -24,6 +24,7 @@ import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChat
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
 import { chromeExtensionClientOpenPage } from '@/utils'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarChatBoxInputActions: FC<{
   onSendMessage?: (message: string, options: IUserChatMessageExtraType) => void
@@ -126,7 +127,8 @@ const SidebarChatBoxInputActions: FC<{
           !smoothConversationLoading && <SearchWithAICopilotToggle />}
 
         {/* chat history btn */}
-        {currentSidebarConversationType !== 'Summary' && (
+        {currentSidebarConversationType !== 'Summary' &&
+        !isMaxAIImmersiveChatPage() ? (
           <TextOnlyTooltip
             placement={'top'}
             title={t('client:sidebar__speed_dial__chat_history__button')}
@@ -152,7 +154,7 @@ const SidebarChatBoxInputActions: FC<{
               />
             </Button>
           </TextOnlyTooltip>
-        )}
+        ) : null}
 
         {/* art */}
         {currentSidebarConversationType === 'Art' &&

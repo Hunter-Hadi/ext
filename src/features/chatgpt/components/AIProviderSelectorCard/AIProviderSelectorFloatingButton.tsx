@@ -18,7 +18,7 @@ const AIProviderSelectorFloatingButton: FC<{
   const { currentSidebarConversationType } = useSidebarSettings()
   const {
     aiProvider = 'USE_CHAT_GPT_PLUS',
-    aiProviderModel,
+    currentAIProviderModelDetail,
   } = useAIProviderModels()
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
   // 用户打开之后，锁定关闭700ms
@@ -84,7 +84,7 @@ const AIProviderSelectorFloatingButton: FC<{
             userSelect: 'none',
           }}
         >
-          {aiProviderModel}
+          {currentAIProviderModelDetail?.title}
         </Typography>
         <Popover
           open={open}

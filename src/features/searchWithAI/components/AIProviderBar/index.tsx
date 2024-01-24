@@ -10,13 +10,14 @@ import { FC } from 'react'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
-
-import { ISearchWithAIProviderType } from '../constants'
+import ThirdPartyProvider from '@/features/searchWithAI/components/AIProviderBar/ThirdPartyProvider'
+import SearchWIthAIProviderIcon from '@/features/searchWithAI/components/SearchWIthAIProviderIcon'
+import { ISearchWithAIProviderType } from '@/features/searchWithAI/constants'
 import SearchWithAIProviderOptions, {
   ISearchWithAIProviderOptionsType,
-} from '../constants/searchWithAIProviderOptions'
-import useSearchWithProvider from '../hooks/useSearchWithProvider'
-import SearchWIthAIProviderIcon from './SearchWIthAIProviderIcon'
+} from '@/features/searchWithAI/constants/searchWithAIProviderOptions'
+import useSearchWithProvider from '@/features/searchWithAI/hooks/useSearchWithProvider'
+import { getSearchWithAIRootElement } from '@/features/searchWithAI/utils'
 
 interface IProps {
   onProviderChange: () => void
@@ -26,7 +27,10 @@ interface IProps {
 
 const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
   // TODO: providerList 从 AIProviderOptions 配置中读取
-  const providerList = SearchWithAIProviderOptions
+  // 默认值渲染 isThirdParty: false 的 provider
+  const providerList = SearchWithAIProviderOptions.filter(
+    (provider) => !provider.isThirdParty,
+  )
 
   const {
     provider: currentProvider,
@@ -38,21 +42,13 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
     return currentProvider === provider
   }
 
-  const renderIcon = (
-    provider: ISearchWithAIProviderOptionsType,
-    rightBorder = false,
-  ) => {
+  const renderIcon = (provider: ISearchWithAIProviderOptionsType) => {
     const providerIcon = (
       <IconButton
+        className="search-with-ai-provider-button"
         sx={{
           p: 1,
           borderRadius: 0,
-          borderRight: rightBorder ? '1px solid' : 'none',
-          borderColor: (t) =>
-            t.palette.mode === 'dark'
-              ? 'rgba(255, 255, 255, 0.08)'
-              : 'rgba(0, 0, 0, 0.08)',
-
           bgcolor: (t) => {
             if (isProviderActive(provider.value)) {
               return t.palette.mode === 'dark'
@@ -129,10 +125,22 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
         width: 'max-content',
         mx: 'auto',
         overflow: 'hidden',
+
+        '& button.search-with-ai-provider-button': {
+          borderRight: '1px solid',
+          borderColor: (t) =>
+            t.palette.mode === 'dark'
+              ? 'rgba(255, 255, 255, 0.08)'
+              : 'rgba(0, 0, 0, 0.08)',
+        },
+        '& > span:last-of-type > .search-with-ai-provider-button': {
+          borderRight: 'none',
+        },
+
         ...sx,
       }}
     >
-      {providerList.map((provider, index) => {
+      {providerList.map((provider) => {
         return (
           <Tooltip
             PopperProps={{
@@ -142,15 +150,19 @@ const AIProviderBar: FC<IProps> = ({ onProviderChange, disabled, sx }) => {
             title={<Typography fontSize={12}>{provider.label}</Typography>}
             placement="top"
           >
-            <span>{renderIcon(provider, index < providerList.length - 1)}</span>
+            <span>{renderIcon(provider)}</span>
           </Tooltip>
         )
       })}
+      <ThirdPartyProvider
+        disabled={disabled}
+        onProviderChange={onProviderChange}
+      />
     </Stack>
   )
 }
 
-const PreChangeCheckerTooltip = (
+export const PreChangeCheckerTooltip = (
   props: ISearchWithAIProviderOptionsType['preChangeChecker'] & {
     children: React.ReactNode
   },
@@ -167,10 +179,10 @@ const PreChangeCheckerTooltip = (
 
   return (
     <TextOnlyTooltip
-      // arrow
+      arrow
       open={open}
       PopperProps={{
-        disablePortal: true,
+        container: getSearchWithAIRootElement(),
         sx: {
           '& > div': {
             bgcolor: (t) => {
@@ -184,7 +196,7 @@ const PreChangeCheckerTooltip = (
           },
         },
       }}
-      placement="bottom"
+      placement="left"
       title={
         <ClickAwayListener
           mouseEvent={'onMouseDown'}

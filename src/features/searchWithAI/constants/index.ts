@@ -26,4 +26,22 @@ export const SEARCH_WITH_AI_PROVIDER_MAP = {
 
 export type ISearchWithAIProviderType = typeof SEARCH_WITH_AI_PROVIDER_MAP[keyof typeof SEARCH_WITH_AI_PROVIDER_MAP]
 
+export const TRIGGER_MODE_OPTIONS = [
+  {
+    name: 'feature__search_with_ai__trigger_mode__always__name',
+    value: 'always',
+    desc: 'feature__search_with_ai__trigger_mode__always__desc',
+  },
+  {
+    name: 'feature__search_with_ai__trigger_mode__question-mask__name',
+    value: 'question-mask',
+    desc: 'feature__search_with_ai__trigger_mode__question-mask__desc',
+  },
+  {
+    name: 'feature__search_with_ai__trigger_mode__manual__name',
+    value: 'manual',
+    desc: 'feature__search_with_ai__trigger_mode__manual__desc',
+  },
+] as const
+
 export * from './searchWithAIPrompt'

@@ -6,27 +6,10 @@ import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { TRIGGER_MODE_OPTIONS } from '@/features/searchWithAI/constants'
 import useSearchWithAISettings from '@/features/searchWithAI/hooks/useSearchWithAISettings'
 import { ISearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-
-const TRIGGER_MODE_OPTIONS = [
-  {
-    name: 'feature__search_with_ai__trigger_mode__always__name',
-    value: 'always',
-    desc: 'feature__search_with_ai__trigger_mode__always__desc',
-  },
-  {
-    name: 'feature__search_with_ai__trigger_mode__question-mask__name',
-    value: 'question-mask',
-    desc: 'feature__search_with_ai__trigger_mode__question-mask__desc',
-  },
-  {
-    name: 'feature__search_with_ai__trigger_mode__manual__name',
-    value: 'manual',
-    desc: 'feature__search_with_ai__trigger_mode__manual__desc',
-  },
-] as const
 
 const FeatureTriggerModeCard: FC = () => {
   const { t } = useTranslation('settings')

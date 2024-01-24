@@ -454,7 +454,7 @@ const AutoHeightTextarea: FC<{
           className={'max-ai-user-input__expand'}
           sx={{
             '&:has(> div)': { py: 1, pl: 1 },
-            alignSelf: 'end',
+            alignSelf: 'start',
           }}
         >
           {expandNode}

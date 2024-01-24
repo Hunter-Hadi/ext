@@ -70,7 +70,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,
-      color: 'primary.main',
+      color: 'text.primary',
       '&:hover': {
         borderColor: 'primary.main',
       },

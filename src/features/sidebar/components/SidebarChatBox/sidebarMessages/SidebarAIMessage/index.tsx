@@ -80,11 +80,9 @@ const BaseSidebarAIMessage: FC<{
       borderRadius: '8px',
       borderBottomLeftRadius: 0,
       color: isDarkMode ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
-      border: '1px solid',
-      borderColor: isDarkMode ? 'customColor.borderColor' : 'transparent',
-      bgcolor: isDarkMode
-        ? 'rgba(255, 255, 255, 0.04)'
-        : 'rgb(233,233,235)!important',
+      // border: '1px solid',
+      // borderColor: isDarkMode ? 'customColor.borderColor' : 'transparent',
+      bgcolor: 'customColor.secondaryBackground',
     } as SxProps
   }, [isDarkMode])
   const isWaitFirstAIResponseText = useMemo(() => {

@@ -78,10 +78,10 @@
   "commands": {
     "show-floating-menu": {
       "suggested_key": {
-        "default": "Alt+I",
-        "windows": "Alt+I",
-        "linux": "Alt+I",
-        "mac": "Command+I"
+        "default": "Shift+Alt+I",
+        "windows": "Shift+Alt+I",
+        "linux": "Shift+Alt+I",
+        "mac": "Shift+Command+I"
       },
       "description": "Draft new text"
     },
@@ -95,6 +95,12 @@
       "description": "Active MaxAI.me"
     },
     "open-immersive-chat": {
+      "suggested_key": {
+        "default": "Alt+I",
+        "windows": "Alt+I",
+        "linux": "Alt+I",
+        "mac": "Command+I"
+      },
       "description": "Open immersive chat"
     }
   },

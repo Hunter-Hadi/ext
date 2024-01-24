@@ -1,3 +1,4 @@
+import QuestionAnswerIcon from '@mui/icons-material/QuestionAnswer'
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined'
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined'
 import SvgIcon from '@mui/material/SvgIcon'
@@ -12,18 +13,7 @@ const SidebarTabIcons: FC<{ icon: string }> = ({ icon }) => {
   }, [])
 
   if (icon === 'Chat') {
-    return (
-      <SvgIcon sx={memoSx}>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 25" fill="none">
-          <g mask="url(#mask0_6341_60613)">
-            <path
-              d="M7 18.377C6.71667 18.377 6.47917 18.2811 6.2875 18.0895C6.09583 17.8978 6 17.6603 6 17.377V15.377H19V6.37695H21C21.2833 6.37695 21.5208 6.47279 21.7125 6.66445C21.9042 6.85612 22 7.09362 22 7.37695V22.377L18 18.377H7ZM2 17.377V3.37695C2 3.09362 2.09583 2.85612 2.2875 2.66445C2.47917 2.47279 2.71667 2.37695 3 2.37695H16C16.2833 2.37695 16.5208 2.47279 16.7125 2.66445C16.9042 2.85612 17 3.09362 17 3.37695V12.377C17 12.6603 16.9042 12.8978 16.7125 13.0895C16.5208 13.2811 16.2833 13.377 16 13.377H6L2 17.377ZM15 11.377V4.37695H4V11.377H15Z"
-              fill="currentColor"
-            />
-          </g>
-        </svg>
-      </SvgIcon>
-    )
+    return <QuestionAnswerIcon sx={memoSx} />
   }
   if (icon === 'Summary') {
     return <SummarizeOutlinedIcon sx={memoSx} />

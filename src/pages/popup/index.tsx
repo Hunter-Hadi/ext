@@ -251,6 +251,10 @@ const init = async () => {
           </RecoilRoot>
         </React.StrictMode>,
       )
+    } finally {
+      Browser.action.setBadgeText({
+        text: '',
+      })
     }
   }, 100)
 }

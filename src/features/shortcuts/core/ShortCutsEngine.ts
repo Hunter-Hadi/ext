@@ -32,6 +32,7 @@ import {
   ActionSliceOfText,
   ActionSummarizeOfText,
   ActionTextHandler,
+  ActionUploadPDFOfCRX,
   ActionURL,
   ActionWebGPTSearchResultsExpand,
 } from '@/features/shortcuts/actions'
@@ -71,6 +72,7 @@ const ActionClassMap = {
   [ActionFetchActions.type]: ActionFetchActions,
   [ActionGetYoutubeTranscriptOfURL.type]: ActionGetYoutubeTranscriptOfURL,
   [ActionGetPDFContentsOfCRX.type]: ActionGetPDFContentsOfCRX,
+  [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
   [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,

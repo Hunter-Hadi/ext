@@ -1,3 +1,4 @@
+import OpenInNewOutlinedIcon from '@mui/icons-material/OpenInNewOutlined'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
@@ -116,7 +117,7 @@ const SearchWithAISettings = () => {
           <Button
             variant="text"
             onClick={openOptionsPage}
-            startIcon={<SettingsOutlinedIcon />}
+            endIcon={<OpenInNewOutlinedIcon />}
             sx={{
               width: 'max-content',
               justifyContent: 'flex-start',

@@ -8,10 +8,6 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'TOTAL_CHAT_DAILY_LIMIT',
   'CUSTOM_PROMPT',
-  'CUSTOM_PROMPT_GROUP',
-  'GMAIL_DRAFT_BUTTON',
-  'GMAIL_REPLY_BUTTON',
-  'GMAIL_CONTEXT_MENU',
   'AI_RESPONSE_LANGUAGE',
   'PDF_AI_VIEWER',
   'PREFERRED_LANGUAGE',
@@ -21,9 +17,16 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_PAID_MODEL_GPT3_5',
   'MAXAI_PAID_MODEL_GPT3_5_16K',
   'MAXAI_PAID_MODEL_GPT4',
+  'MAXAI_PAID_MODEL_GPT4_TURBO',
   'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
   'MAXAI_PAID_MODEL_CLAUDE_V2',
   'MAXAI_PAID_MODEL_GEMINI_PRO',
+  'MAXAI_PAID_MODEL_CLAUDE_V2_1',
+  'MAXAI_PAID_MODEL_GPT4_VISION',
+  'CUSTOM_PROMPT_GROUP',
+  'GMAIL_DRAFT_BUTTON',
+  'GMAIL_REPLY_BUTTON',
+  'GMAIL_CONTEXT_MENU',
   'OUTLOOK_COMPOSE_NEW_BUTTON',
   'OUTLOOK_COMPOSE_REPLY_BUTTON',
   'OUTLOOK_REFINE_DRAFT_BUTTON',
@@ -48,8 +51,6 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SIDEBAR_SEARCH_WITH_AI',
-  'MAXAI_PAID_MODEL_CLAUDE_V2_1',
-  'MAXAI_PAID_MODEL_GPT4_VISION',
   'SIDEBAR_ART_AND_IMAGES',
 ] as const
 
@@ -271,6 +272,20 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // MAX AI - paid model - gpt4
   MAXAI_PAID_MODEL_GPT4: {
     videoUrl: 'https://www.youtube.com/embed/mAi1D9cbGos',
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gpt4.png',
+    )}`,
+    title: (t) =>
+      t('client:permission__pricing_hook__max_ai_paid_model__gpt4__title'),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gpt4__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // MAX AI - paid model - gpt4-turbo
+  MAXAI_PAID_MODEL_GPT4_TURBO: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt4.png',
     )}`,

@@ -143,6 +143,16 @@ const initChromeExtensionInstalled = () => {
  * 更新时触发的行为
  */
 const initChromeExtensionUpdated = async () => {
+  // 更新图标
+  Browser.action.setBadgeBackgroundColor({
+    color: '#FF0000',
+  })
+  Browser.action.setBadgeText({
+    text: 'NEW',
+  })
+  Browser.action.setBadgeTextColor({
+    color: '#FFFFFF',
+  })
   // @since - 2023-11-20
   // @description 黑五
   const executeBlackFridayPromotion = async () => {
@@ -508,6 +518,9 @@ const initChromeExtensionAction = () => {
     }
   })
   Browser.action.onClicked.addListener(async (tab) => {
+    Browser.action.setBadgeText({
+      text: '',
+    })
     if (tab && tab.id && tab.active) {
       if (tab.url === 'chrome://extensions/shortcuts') {
         return

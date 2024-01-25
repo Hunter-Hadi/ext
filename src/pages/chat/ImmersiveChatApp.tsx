@@ -72,7 +72,12 @@ const App: FC = () => {
                 borderColor={'customColor.borderColor'}
               >
                 <SidebarNav />
-                <ConversationList />
+                <ConversationList
+                  sx={{
+                    flex: 1,
+                    width: 0,
+                  }}
+                />
               </Stack>
               <Stack
                 sx={{

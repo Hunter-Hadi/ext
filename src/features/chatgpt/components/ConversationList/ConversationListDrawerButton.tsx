@@ -76,7 +76,12 @@ const ConversationListDrawerButton: FC = () => {
               />
             </IconButton>
           )}
-          <ConversationList />
+          <ConversationList
+            sx={{
+              width: '100%',
+              boxSizing: 'border-box',
+            }}
+          />
         </Stack>
       </Drawer>
     </>

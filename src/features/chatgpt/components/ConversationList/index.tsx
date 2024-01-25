@@ -1,5 +1,6 @@
 import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
 import React, { FC, useEffect, useMemo, useState } from 'react'
@@ -16,7 +17,11 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
-const ConversationList: FC = () => {
+interface IProps {
+  sx?: SxProps
+}
+
+const ConversationList: FC<IProps> = ({ sx }) => {
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
     currentSidebarConversationId,
@@ -109,7 +114,7 @@ const ConversationList: FC = () => {
     })
   })
   return (
-    <Stack width={0} flex={1} height={'100%'} spacing={1} p={1}>
+    <Stack height={'100%'} spacing={1} p={1} sx={sx}>
       <Stack
         flex={1}
         height={0}

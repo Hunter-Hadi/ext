@@ -192,14 +192,16 @@ const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
               if (menuOpenTimer.current) {
                 window.clearTimeout(menuOpenTimer.current)
               }
-              handleChangeProvider(currentShowThirdPartyProvider)
+              if (!isProviderActive(currentShowThirdPartyProvider)) {
+                handleChangeProvider(currentShowThirdPartyProvider)
+              }
             }}
             onMouseEnter={() => {
               setTooltipOpen(true)
               if (menuOpenTimer.current) {
                 window.clearTimeout(menuOpenTimer.current)
               }
-              menuOpenTimer.current = window.setTimeout(handleOpenMenu, 500)
+              menuOpenTimer.current = window.setTimeout(handleOpenMenu, 100)
             }}
             onMouseLeave={() => {
               setTooltipOpen(false)
@@ -233,7 +235,7 @@ const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
             if (menuOpenTimer.current) {
               window.clearTimeout(menuOpenTimer.current)
             }
-            menuOpenTimer.current = window.setTimeout(handleOpenMenu, 500)
+            menuOpenTimer.current = window.setTimeout(handleOpenMenu, 100)
           }}
           onMouseLeave={() => {
             if (menuOpenTimer.current) {

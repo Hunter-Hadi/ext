@@ -1,5 +1,4 @@
 import CloseIcon from '@mui/icons-material/Close'
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import IconButton from '@mui/material/IconButton'
@@ -9,10 +8,9 @@ import Typography from '@mui/material/Typography'
 import { FC, useMemo } from 'react'
 import React from 'react'
 
-import { chromeExtensionClientOpenPage } from '@/utils'
-
 import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
 import SearchWithAILogo from './SearchWithAILogo'
+import SearchWithAISettings from './SearchWithAISettings'
 import SearchWithAIWebAccessToggle from './SearchWithAIWebAccessToggle'
 interface IProps {
   status: IAIForSearchStatus
@@ -43,18 +41,18 @@ const SearchWithAIHeader: FC<IProps> = ({
     // }
 
     const commonActions = [
-      {
-        name: 'settings',
-        label: '',
-        icon: <SettingsOutlinedIcon fontSize="inherit" />,
-        tooltip: 'Settings',
-        onClick: () => {
-          chromeExtensionClientOpenPage({
-            key: 'options',
-            query: '#/search-with-ai',
-          })
-        },
-      },
+      // {
+      //   name: 'settings',
+      //   label: '',
+      //   icon: <SettingsOutlinedIcon fontSize="inherit" />,
+      //   tooltip: 'Settings',
+      //   onClick: () => {
+      //     chromeExtensionClientOpenPage({
+      //       key: 'options',
+      //       query: '#/search-with-ai',
+      //     })
+      //   },
+      // },
       {
         name: 'close',
         label: '',
@@ -115,6 +113,7 @@ const SearchWithAIHeader: FC<IProps> = ({
             onChange={handleResetStatus}
           />
         )}
+        <SearchWithAISettings />
         {actionsBtn.map((action) => {
           return (
             <Tooltip

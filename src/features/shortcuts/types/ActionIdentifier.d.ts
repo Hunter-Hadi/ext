@@ -39,6 +39,10 @@ type ActionIdentifier =
   | 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   // 从插件获取PDF的内容
   | 'GET_PDF_CONTENTS_OF_CRX'
+  // 从插件获取PDF的内容
+  | 'GET_PDF_PATH_OF_CRX'
+  // 从插件上传PDF的内容
+  | 'UPLOAD_PDF_OF_CRX'
   // 从@mozilla/readability获取网页内容
   | 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
   // 从各大邮件网站获取内容

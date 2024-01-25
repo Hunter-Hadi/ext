@@ -18,6 +18,7 @@ export const isArticlePage = () => {
     'recipe',
     'profile',
     'website',
+    'stories',
   ]
   const hasKeyword = keywords.some((keyword) =>
     websitePathname.includes(`/${keyword}/`),

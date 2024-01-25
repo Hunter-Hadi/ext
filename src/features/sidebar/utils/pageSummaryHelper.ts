@@ -439,6 +439,10 @@ Use the following format:
           },
         },
         {
+          type: 'UPLOAD_PDF_OF_CRX',
+          parameters: {},
+        },
+        {
           type: 'GET_PDF_CONTENTS_OF_CRX',
           parameters: {},
         },

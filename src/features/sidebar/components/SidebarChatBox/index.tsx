@@ -10,7 +10,6 @@ import { useSetRecoilState } from 'recoil'
 
 import AutoHeightTextarea, {
   LINE_HEIGHT,
-  MIN_LINE,
   TEXTAREA_PADDING_Y,
 } from '@/components/AutoHeightTextarea'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -267,11 +266,11 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             modelKey={'Sidebar'}
           />
           <AutoHeightTextarea
+            minLine={3}
             sx={{
-              // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
               minHeight: isSetVariables
                 ? 0
-                : LINE_HEIGHT * MIN_LINE + TEXTAREA_PADDING_Y * 2 + 40,
+                : LINE_HEIGHT * 3 + TEXTAREA_PADDING_Y * 2 + 40, // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
               height: isSetVariables ? '0!important' : 'unset',
               visibility: isSetVariables ? 'hidden' : 'visible',
             }}

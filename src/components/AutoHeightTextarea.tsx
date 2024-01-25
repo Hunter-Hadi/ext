@@ -38,8 +38,6 @@ const MAX_LINE = () => {
   return Math.max(Math.floor((window.innerHeight * 0.5) / 24) || 5)
 }
 
-export const MIN_LINE = 2
-
 const autoSizeTextarea = (
   textareaElement: HTMLTextAreaElement,
   childrenHeight = 0,
@@ -48,13 +46,14 @@ const autoSizeTextarea = (
   const boxElement = textareaElement?.parentElement?.parentElement
   if (textareaElement && boxElement) {
     const textareaStyle = window.getComputedStyle(textareaElement)
+    const minLine = Number(textareaElement.getAttribute('data-min-line')) || 1
     const paddingLength =
       parseInt(textareaStyle.paddingTop ?? TEXTAREA_PADDING_Y, 10) +
       parseInt(textareaStyle.paddingBottom ?? TEXTAREA_PADDING_Y, 10)
     textareaElement.style.cssText = 'height:0px'
     const scrollHeight = textareaElement.value
       ? textareaElement.scrollHeight
-      : LINE_HEIGHT * MIN_LINE + paddingLength // 最小高度
+      : LINE_HEIGHT * minLine + paddingLength // 最小高度
     let textAreaHeight = Math.min(LINE_HEIGHT * MAX_LINE(), scrollHeight)
     if (minHeight === 0) {
       minHeight =
@@ -62,7 +61,7 @@ const autoSizeTextarea = (
           ?.offsetHeight || 0
     }
     const minTextAreaHeight = Math.max(
-      LINE_HEIGHT * MIN_LINE + paddingLength,
+      LINE_HEIGHT * minLine + paddingLength,
       minHeight || 0,
     )
     textAreaHeight = Math.max(minTextAreaHeight, textAreaHeight)
@@ -170,6 +169,7 @@ const AutoHeightTextarea: FC<{
   placeholder?: string
   debounceOnChange?: boolean
   expandNode?: React.ReactNode
+  minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
@@ -187,6 +187,7 @@ const AutoHeightTextarea: FC<{
     placeholder = 'Ask AI...',
     expandNode,
     sx,
+    minLine = 1,
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const onCompositionRef = useRef(false)
@@ -426,7 +427,7 @@ const AutoHeightTextarea: FC<{
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
             my: 1.5,
             fontSize: '16px',
-            minHeight: LINE_HEIGHT * MIN_LINE + TEXTAREA_PADDING_Y * 2 + 'px',
+            // minHeight: LINE_HEIGHT * minLine + 'px',
             lineHeight: LINE_HEIGHT + 'px',
             background: 'transparent!important',
             borderColor: 'transparent!important',
@@ -466,6 +467,7 @@ const AutoHeightTextarea: FC<{
           ref={textareaRef}
           value={inputValue}
           rows={1}
+          data-min-line={minLine}
           onCopy={(event) => {
             event.stopPropagation()
           }}

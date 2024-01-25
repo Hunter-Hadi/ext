@@ -11,18 +11,19 @@ import { ChatGPTConversationState } from '@/features/sidebar/store'
 const useSmoothConversationLoading = (smoothInterval = 200) => {
   const conversationState = useRecoilValue(ChatGPTConversationState)
   const [smoothConversationLoading, setSmoothConversationLoading] = useState(
-    conversationState.loading,
+    false,
   )
   useEffect(() => {
     let timer: null | ReturnType<typeof setTimeout> = null
-    if (!conversationState.loading) {
+    if (conversationState.loading) {
+      console.log('debouncedLoadingState', true)
+      setSmoothConversationLoading(true)
+    } else {
       timer = setTimeout(() => {
         console.log('debouncedLoadingState', false)
         setSmoothConversationLoading(false)
       }, smoothInterval)
     }
-    console.log('debouncedLoadingState', true)
-    setSmoothConversationLoading(true)
     return () => {
       if (timer) {
         clearTimeout(timer)

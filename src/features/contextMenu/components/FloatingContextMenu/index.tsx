@@ -685,6 +685,7 @@ const FloatingContextMenu: FC<{
                     </>
                   ) : (
                     <AutoHeightTextarea
+                      minLine={1}
                       stopPropagation
                       expandNode={
                         floatingDropdownMenu.open && (
@@ -716,6 +717,7 @@ const FloatingContextMenu: FC<{
                             '&:has(> div)': {
                               pr: 1,
                             },
+                            alignSelf: 'end',
                           },
                         },
                         borderRadius: 0,

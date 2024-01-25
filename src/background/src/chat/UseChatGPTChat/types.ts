@@ -98,7 +98,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     ],
     maxTokens: 128000,
     permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4',
+      sceneType: 'MAXAI_PAID_MODEL_GPT4_TURBO',
       roles: ['pro', 'elite'],
     },
   },

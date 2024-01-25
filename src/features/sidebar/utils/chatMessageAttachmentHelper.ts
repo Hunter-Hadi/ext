@@ -70,7 +70,7 @@ export const isMaxAIAttachmentExpired = (attachment: IChatUploadFile) => {
         const expiredDate = new Date(
           new Date(createdAt).getTime() + Number(expiredAt) * 1000,
         )
-        if (expiredDate.getTime() < Date.now()) {
+        if (expiredDate.getTime() > new Date().getTime()) {
           return true
         }
       }

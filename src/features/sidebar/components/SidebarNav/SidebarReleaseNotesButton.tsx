@@ -57,6 +57,7 @@ const SidebarReleaseNotesButton = () => {
       </TextOnlyTooltip>
 
       <Drawer
+        keepMounted
         anchor={'bottom'}
         open={releaseModalOpen}
         onClose={handleReleaseModalClose}

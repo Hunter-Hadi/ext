@@ -45,7 +45,8 @@
     "download": "Download",
     "download_image": "Download image",
     "copy_image": "Copy image",
-    "screenshot": "Screenshot"
+    "screenshot": "Screenshot",
+    "release_notes": "Release notes"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",

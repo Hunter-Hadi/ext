@@ -401,7 +401,6 @@ const AutoHeightTextarea: FC<{
           overflow: 'hidden',
           position: 'relative',
           '& textarea': {
-            maxHeight: '30px',
             opacity: 0,
           },
           '& .chat-box__input-skeleton': {

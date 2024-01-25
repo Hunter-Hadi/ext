@@ -79,7 +79,7 @@ const BaseSidebarAIMessage: FC<{
       wordBreak: 'break-word',
       borderRadius: '8px',
       borderBottomLeftRadius: 0,
-      color: isDarkMode ? '#FFFFFFDE' : 'rgba(0,0,0,0.87)',
+      color: 'text.primary',
       // border: '1px solid',
       // borderColor: isDarkMode ? 'customColor.borderColor' : 'transparent',
       bgcolor: 'customColor.secondaryBackground',

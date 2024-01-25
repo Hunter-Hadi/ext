@@ -169,15 +169,15 @@ const ConversationList: FC = () => {
                   ? {
                       bgcolor: (theme) =>
                         theme.palette.mode === 'dark'
-                          ? 'rgb(56, 56, 56)'
-                          : 'rgb(235, 227, 345)',
+                          ? 'rgba(255, 255, 255, 0.16)'
+                          : 'rgba(144, 101, 176, 0.16)',
                     }
                   : {
                       '&:hover': {
                         bgcolor: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? 'rgba(56,56,56,0.4)'
-                            : 'rgba(235,227,255,0.2)',
+                            ? 'rgba(255, 255, 255, 0.06)'
+                            : 'rgba(144, 101, 176, 0.06)',
                       },
                     }),
               }}

@@ -140,6 +140,9 @@ const SidebarTabs: FC = () => {
                 py: 1,
                 position: 'relative',
                 [isInImmersiveChatPage ? 'right' : 'left']: -1,
+                '&:hover': {
+                  bgcolor: '#9065b014',
+                },
               }}
               onClick={() => {
                 !disabled && updateSidebarConversationType(item.value)

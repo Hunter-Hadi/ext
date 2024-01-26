@@ -102,7 +102,6 @@ const SidebarTabs: FC = () => {
     <Stack
       alignItems={'center'}
       width={'100%'}
-      bgcolor={'background.paper'}
       spacing={2}
       sx={{
         position: 'sticky',
@@ -113,11 +112,11 @@ const SidebarTabs: FC = () => {
       {memoSidebarTabsData.map((item) => {
         const isActive = currentSidebarConversationType === item.value
         const disabled = conversation.loading
-        const bgcolor = isActive
-          ? isDarkMode
-            ? 'rgba(255, 255, 255, 0.08)'
-            : 'rgba(118, 1, 211, 0.08)'
-          : 'transparent'
+        // const bgcolor = isActive
+        //   ? isDarkMode
+        //     ? 'rgba(255, 255, 255, 0.08)'
+        //     : 'rgba(118, 1, 211, 0.08)'
+        //   : 'transparent'
 
         return (
           <TextOnlyTooltip
@@ -131,16 +130,19 @@ const SidebarTabs: FC = () => {
               alignItems="center"
               sx={{
                 width: '100%',
-                [isInImmersiveChatPage
-                  ? 'borderRight'
-                  : 'borderLeft']: '2px solid',
-                borderColor: isActive ? 'primary.main' : 'transparent',
+                // [isInImmersiveChatPage
+                //   ? 'borderRight'
+                //   : 'borderLeft']: '2px solid',
+                // borderColor: isActive ? 'primary.main' : 'transparent',
                 color: isActive ? 'primary.main' : 'text.secondary',
                 cursor: disabled ? 'auto' : 'pointer',
-                bgcolor: bgcolor,
+                // bgcolor: bgcolor,
                 py: 1,
                 position: 'relative',
                 [isInImmersiveChatPage ? 'right' : 'left']: -1,
+                '&:hover': {
+                  bgcolor: '#9065b014',
+                },
               }}
               onClick={() => {
                 !disabled && updateSidebarConversationType(item.value)

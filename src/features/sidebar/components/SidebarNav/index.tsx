@@ -41,10 +41,11 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       spacing={2}
       sx={{
         width: isInImmersiveChatPage ? 80 : 60,
-        [isInImmersiveChatPage ? 'borderRight' : 'borderLeft']: '1px solid',
-        borderColor: 'divider',
-        pb: 2,
-        pt: 0.5,
+        // [isInImmersiveChatPage ? 'borderRight' : 'borderLeft']: '1px solid',
+        // borderColor: 'divider',
+        pb: 4,
+        pt: 1,
+        bgcolor: 'customColor.secondaryBackground',
 
         ...sx,
       }}
@@ -149,6 +150,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
             <SettingsOutlinedIcon
               sx={{
                 fontSize: '20px',
+                my: '2px',
               }}
             />
           </IconButton>

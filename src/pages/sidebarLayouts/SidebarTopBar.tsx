@@ -87,7 +87,7 @@ const SidebarTopBar: FC = () => {
             sx={{
               height: '48px',
               position: 'relative',
-              backgroundColor: '#7601D3',
+              backgroundColor: '#9065B0',
             }}
           >
             <Stack direction={'row'} alignItems={'center'} gap={0.5}>

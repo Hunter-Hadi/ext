@@ -3,7 +3,7 @@ import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { SxProps } from '@mui/material/styles'
+import { SxProps, Theme } from '@mui/material/styles'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
@@ -69,8 +69,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,
-      color: 'primary.main',
+      borderColor: 'primary.main',
+      color: (t: Theme) => {
+        return t.palette.mode === 'dark' ? '#fff' : 'primary.main'
+      },
       '&:hover': {
+        color: 'customColor.hoverColor',
         borderColor: 'primary.main',
       },
     }

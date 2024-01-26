@@ -131,15 +131,15 @@ const HomeViewContentNav = () => {
                     color: 'text.primary',
                     cursor: 'pointer',
                     borderRadius: 2,
-                    // transition: 'all 0.3s ease-in-out',
+                    // transition: 'all 0.3s ease',
                     bgcolor: isDark
-                      ? 'rgba(59, 61, 62, 0.60)'
-                      : 'rgba(233, 233, 235, 0.60)',
+                      ? 'customColor.secondaryBackground'
+                      : '#F5F6F7',
 
                     '&:hover': {
                       bgcolor: isDark
-                        ? 'rgba(59, 61, 62, 0.80)'
-                        : 'rgba(233, 233, 235, 0.80)',
+                        ? 'rgba(255, 255, 255, 0.10)'
+                        : 'rgba(0, 0, 0, 0.10)',
                     },
                   }
                 }}

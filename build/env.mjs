@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs'
-import { join, dirname } from 'path'
+import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -28,6 +28,10 @@ const getArgs = () => {
 
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
+const WWW_PROJECT_HOST = isProduction
+  ? 'https://www.maxai.me'
+  : 'https://main.d35dysdwr52gaf.amplifyapp.com'
+
 const APP_USE_CHAT_GPT_HOST = isProduction
   ? 'https://app.maxai.me'
   : 'https://main.d3bohqvl407i44.amplifyapp.com'
@@ -41,6 +45,7 @@ const NODE_ENV = isProduction ? 'production' : 'development'
 
 const env = {
   NODE_ENV,
+  WWW_PROJECT_HOST,
   APP_USE_CHAT_GPT_HOST,
   APP_USE_CHAT_GPT_API_HOST,
   APP_NAME,
@@ -57,4 +62,4 @@ const getReplaceEnv = () => {
   })
   return replaceEnv
 }
-export { getReplaceEnv, env, isProduction }
+export { env, getReplaceEnv, isProduction }

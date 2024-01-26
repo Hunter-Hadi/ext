@@ -11,6 +11,8 @@ import useWindowSize from '@/features/common/hooks/useWindowSize'
 import SidebarChatBoxReleaseLog from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxReleaseLog'
 const { getOS } = new UAParser()
 const SidebarChatBoxFooter: FC = () => {
+  return null
+
   const { width, scrollWidth } = useWindowSize()
   const { t } = useTranslation(['common'])
   const [needSafePadding, setNeedSafePadding] = useState(false)

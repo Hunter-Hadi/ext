@@ -1,5 +1,7 @@
 import CloseIcon from '@mui/icons-material/Close'
+import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined'
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined'
+import { Typography } from '@mui/material'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
@@ -10,6 +12,9 @@ import Browser from 'webextension-polyfill'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { APP_VERSION } from '@/constants'
+import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
+import SidebarReleaseNotesButton from '@/features/sidebar/components/SidebarNav/SidebarReleaseNotesButton'
 import SidebarTabs from '@/features/sidebar/components/SidebarTabs'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -38,8 +43,8 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         width: isInImmersiveChatPage ? 80 : 60,
         [isInImmersiveChatPage ? 'borderRight' : 'borderLeft']: '1px solid',
         borderColor: 'divider',
-        pb: 4,
-        pt: 1,
+        pb: 2,
+        pt: 0.5,
 
         ...sx,
       }}
@@ -89,7 +94,16 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
       />
 
       {/* nav options */}
-      <Stack spacing={1}>
+      <Stack
+        spacing={1}
+        alignItems="center"
+        sx={{
+          color: 'text.secondary',
+          '& > button, & > a': {
+            color: 'text.secondary',
+          },
+        }}
+      >
         {/* full screen btn*/}
         {!isInImmersiveChatPage && (
           <TextOnlyTooltip
@@ -113,16 +127,19 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
               <ContextMenuIcon
                 icon={'Fullscreen'}
                 sx={{
-                  color: 'text.secondary',
+                  // 由于 ContextMenuIcon 视觉上看起来比其他 icon 更小（不饱满）
+                  // 所以为了视觉上的大小统一，这里设置为 24px
                   fontSize: 24,
                 }}
               />
             </IconButton>
           </TextOnlyTooltip>
         )}
+
+        {/* settings btn */}
         <TextOnlyTooltip title={t('common:settings')} placement="left">
           <IconButton
-            sx={{ flexShrink: 0 }}
+            sx={{ flexShrink: 0, width: 'max-content' }}
             onClick={() => {
               chromeExtensionClientOpenPage({
                 key: 'options',
@@ -131,13 +148,31 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
           >
             <SettingsOutlinedIcon
               sx={{
-                // 由于 SettingsOutlinedIcon 视觉上看起来比 ContextMenuIcon 更大（更饱满）
-                // 所以为了视觉上的大小统一，这里设置为 20px
                 fontSize: '20px',
               }}
             />
           </IconButton>
         </TextOnlyTooltip>
+
+        <SidebarReleaseNotesButton />
+
+        {/* email btn */}
+        <TextOnlyTooltip title={t('common:contact_us')} placement="left">
+          <IconButton
+            sx={{ flexShrink: 0, width: 'max-content' }}
+            target={'_blank'}
+            href={CHROME_EXTENSION_MAIL_TO}
+          >
+            <EmailOutlinedIcon
+              sx={{
+                fontSize: '20px',
+              }}
+            />
+          </IconButton>
+        </TextOnlyTooltip>
+
+        {/* version */}
+        <Typography fontSize={10}>{`v${APP_VERSION}`}</Typography>
       </Stack>
     </Stack>
   )

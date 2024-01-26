@@ -60,6 +60,9 @@ export const AI_PROVIDER_MAP = {
 export const APP_USE_CHAT_GPT_API_HOST = process.env.APP_USE_CHAT_GPT_API_HOST
 export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
 
+// www.maxai.me
+export const WWW_PROJECT_HOST = process.env.WWW_PROJECT_HOST
+
 // openai
 export const OPENAI_IFRAME_ID = `${MAXAI_CHROME_EXTENSION_ID}_OPENAI_IFRAME_ID`
 

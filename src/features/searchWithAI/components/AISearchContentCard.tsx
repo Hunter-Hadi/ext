@@ -44,7 +44,7 @@ const AISearchContentCard: FC<IProps> = ({
   const { loading: providerLoading } = useSearchWithProvider()
 
   const triggerMode = searchWithAISettings.triggerMode
-  const currentAIProvider = searchWithAISettings.aiProvider
+  const currentAIProvider = searchWithAISettings.currentAIProvider
 
   const {
     // loading,

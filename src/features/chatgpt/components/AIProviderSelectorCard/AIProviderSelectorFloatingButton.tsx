@@ -5,8 +5,8 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useRef } from 'react'
 
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import AIProviderSelector from '@/features/chatgpt/components/AIProviderSelectorCard/index'
+import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -17,7 +17,7 @@ const AIProviderSelectorFloatingButton: FC<{
   const { sx } = props
   const { currentSidebarConversationType } = useSidebarSettings()
   const {
-    aiProvider = 'USE_CHAT_GPT_PLUS',
+    currentAIProvider = 'USE_CHAT_GPT_PLUS',
     currentAIProviderModelDetail,
   } = useAIProviderModels()
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
@@ -74,7 +74,7 @@ const AIProviderSelectorFloatingButton: FC<{
           waitResetRef.current = false
         }}
       >
-        <AIProviderIcon aiProviderType={aiProvider} />
+        <AIProviderIcon aiProviderType={currentAIProvider} />
         {currentAIProviderModelDetail?.title && (
           <Typography
             ml={0.5}
@@ -148,6 +148,6 @@ const AIProviderSelectorFloatingButton: FC<{
         </Popover>
       </Box>
     )
-  }, [aiProvider, open, currentSidebarConversationType])
+  }, [currentAIProvider, open, currentSidebarConversationType])
 }
 export default AIProviderSelectorFloatingButton

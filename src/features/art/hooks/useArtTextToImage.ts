@@ -1,7 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { getThirdProviderSettings } from '@/background/src/chat/util'
-import { setChromeExtensionOnBoardingData } from '@/background/utils'
 import { ART_NATURAL_LANGUAGE_TO_DALL_E_3_PROMPT } from '@/features/art/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
@@ -34,11 +33,6 @@ const useArtTextToImage = () => {
     if (currentSidebarConversationType !== 'Art') {
       await updateSidebarConversationType('Art')
     }
-    //切换至Art的时候把ChatGPT（MaxAI）的provider的onboarding check设置为true
-    await setChromeExtensionOnBoardingData(
-      'ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_USE_CHAT_GPT_PLUS',
-      true,
-    )
     await createConversation('Art')
     // 如果不是elite用户
     if (currentUserPlan.name !== 'elite') {

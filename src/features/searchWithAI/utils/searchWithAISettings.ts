@@ -8,7 +8,7 @@ import {
 export const SEARCH_WITH_AI_STORAGE_KEY = 'SEARCH_WITH_AI_STORAGE_KEY'
 
 export interface ISearchWithAISettings {
-  aiProvider: ISearchWithAIProviderType
+  currentAIProvider: ISearchWithAIProviderType
   enable: boolean
   triggerMode: 'manual' | 'always' | 'question-mask'
   webAccessPrompt: boolean
@@ -16,7 +16,7 @@ export interface ISearchWithAISettings {
 }
 
 export const DEFAULT_SEARCH_WITH_AI_SETTING: ISearchWithAISettings = {
-  aiProvider: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE,
+  currentAIProvider: SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE,
   enable: true,
   triggerMode: 'always',
   webAccessPrompt: true,

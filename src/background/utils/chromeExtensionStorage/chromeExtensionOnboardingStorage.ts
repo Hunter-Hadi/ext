@@ -1,10 +1,6 @@
 import Browser from 'webextension-polyfill'
 
-import { IAIProviderType } from '@/background/provider/chat'
-import {
-  AI_PROVIDER_MAP,
-  CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
-} from '@/constants'
+import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/constants'
 import {
   InputAssistantButtonGroupConfigHostKeys,
   InputAssistantButtonGroupConfigHostType,
@@ -13,7 +9,6 @@ import {
 export type OnBoardingKeyType =
   | 'ON_BOARDING_RECORD_FIRST_MESSAGE'
   | 'ON_BOARDING_RECORD_BROWSER_VERSION'
-  | `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${IAIProviderType}`
   // 2023年的黑色星期五的banner
   | 'ON_BOARDING_BLACK_FRIDAY_2023_BANNER'
   | 'ON_BOARDING_BLACK_FRIDAY_2023_OPEN_LINK'
@@ -50,13 +45,6 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     // 关闭free trail - 2023-10-17 - @HuangSong
     ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES: 0,
   }
-  // 记录每个AI Provider至少auth过一次
-  Object.keys(AI_PROVIDER_MAP).forEach((AI_PROVIDER) => {
-    onBoardingMap[
-      `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${AI_PROVIDER}` as OnBoardingKeyType
-    ] = false
-  })
-  onBoardingMap['ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_MAXAI_DALLE'] = true
   /**
    * InputAssistantButton onBoarding Keys
    * @since 2023-10-09 - 为Help me write的各个button添加lifetime的5次free trial - @HuangSong

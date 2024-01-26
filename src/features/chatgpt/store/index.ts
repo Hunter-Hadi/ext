@@ -23,14 +23,11 @@ export const ClientConversationMapState = atom<{
   default: {},
 })
 
-export const ThirdPartAIProviderConfirmDialogState = atom<{
+export const ThirdPartyAIProviderConfirmDialogState = atom<{
   open: boolean
-  confirmProviderValue: string
 }>({
-  key: 'ThirdPartAIProviderConfirmDialogState',
+  key: 'ThirdPartyAIProviderConfirmDialogState',
   default: {
     open: false,
-    // 触发 dialog 的 provider
-    confirmProviderValue: '',
   },
 })

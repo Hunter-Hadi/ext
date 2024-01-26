@@ -193,18 +193,14 @@ export interface IChatUploadFile {
   meta?: any
 }
 
-export type IAIProviderModelDescriptionType = {
-  label: (t: TFunction<['common', 'client']>) => React.ReactNode
-  value: (t: TFunction<['common', 'client']>) => React.ReactNode
-}
-
 export interface IAIProviderModel {
   title: string
   titleTag: string
   value: string
   tags: string[]
   maxTokens: number
-  descriptions: IAIProviderModelDescriptionType[]
+  description: (t: TFunction<['common', 'client']>) => React.ReactNode
+  poweredBy?: string
   disabled?: boolean
   uploadFileConfig?: {
     accept: string

@@ -1,25 +1,21 @@
 import ChatOutlinedIcon from '@mui/icons-material/ChatOutlined'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import NotificationImportantOutlinedIcon from '@mui/icons-material/NotificationImportantOutlined'
-import LoadingButton from '@mui/lab/LoadingButton'
 import Box from '@mui/material/Box'
-import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ThirdPartAIProviderConfirmDialogState } from '@/features/chatgpt/store'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import ThirdPartyAIProviderModelSelectorCard from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderModelSelectorCard'
+import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 
-import AIProviderOptions, { AIProviderOptionType } from '../AIProviderOptions'
-import ThirdPartAIProviderForEnhancedStability from './ThirdPartAIProviderForEnhancedStability'
+import ThirdPartyAIProviderRecommendations from './ThirdPartyAIProviderRecommendations'
 
 interface ThirdPartAIProviderConfirmDialogProps {
   sx?: SxProps
@@ -30,58 +26,15 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
 }) => {
   const { t } = useTranslation(['client', 'common'])
   const [dialogState, setDialogState] = useRecoilState(
-    ThirdPartAIProviderConfirmDialogState,
+    ThirdPartyAIProviderConfirmDialogState,
   )
-  const [loading, setLoading] = React.useState(false)
 
-  const { open, confirmProviderValue } = dialogState
-
-  const {
-    updateSidebarSettings,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
-  const {
-    cleanConversation,
-    createConversation,
-    switchBackgroundChatSystemAIProvider,
-  } = useClientConversation()
-
-  const confirmProviderOption = useMemo(() => {
-    return AIProviderOptions.find(
-      (provider) => confirmProviderValue === provider.value,
-    )
-  }, [confirmProviderValue])
+  const { open } = dialogState
 
   const handleClose = () => {
     setDialogState({
       open: false,
-      confirmProviderValue: '',
     })
-  }
-
-  const handleConfirmProvider = async (
-    providerOption: AIProviderOptionType,
-  ) => {
-    try {
-      setLoading(true)
-
-      await updateSidebarSettings({
-        common: {
-          currentAIProvider: providerOption.value,
-        },
-      })
-      await switchBackgroundChatSystemAIProvider(providerOption.value)
-      if (currentSidebarConversationType === 'Chat') {
-        await cleanConversation(true)
-        await createConversation('Chat')
-      }
-
-      handleClose()
-    } catch (error) {
-      console.error('handleConfirmProvider error', error)
-    } finally {
-      setLoading(false)
-    }
   }
 
   useEffect(() => {
@@ -99,10 +52,6 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
     }
   }, [open])
 
-  if (!confirmProviderOption || !open) {
-    return null
-  }
-
   return (
     <Box
       component={'div'}
@@ -111,13 +60,13 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
         borderRadius: '4px',
         border: '1px solid #EBEBEB',
         boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-        width: 434,
+        width: 448,
         display: 'flex',
         alignItems: 'stretch',
         justifyContent: 'center',
         flexDirection: 'column',
         height: 'calc(100vh - 200px)',
-        maxHeight: '720px',
+        maxHeight: '823px',
         ...sx,
       }}
     >
@@ -151,9 +100,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           pr={4}
           textAlign={'left'}
         >
-          {t('client:provider__confirm_dialog__title', {
-            label: confirmProviderOption.label,
-          })}
+          {t('client:provider__third_party_confirm_dialog__title')}
         </Typography>
 
         <Typography
@@ -163,39 +110,18 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           lineHeight={1.5}
           textAlign={'left'}
         >
-          {t('client:provider__confirm_dialog__sub_title')}
+          {t('client:provider__third_party_confirm_dialog__sub_title')}
         </Typography>
-
-        <LoadingButton
-          variant="outlined"
-          loading={loading}
-          sx={{
-            py: 1,
-            borderRadius: 1,
-            flex: 1,
-            border: '1px solid rgba(118, 1, 211, 0.16)',
-            background: 'rgba(118, 1, 211, 0.08)',
-            boxShadow: '0px 0px 16px 0px rgba(255, 255, 255, 0.08) inset',
-          }}
-          onClick={() => handleConfirmProvider(confirmProviderOption)}
-          data-testid="third-part-ai-provider-continue-button"
-        >
-          {t('client:provider__confirm_dialog__continue_with', {
-            label: t(confirmProviderOption.label as any),
-          })}
-        </LoadingButton>
       </Stack>
       <Stack
-        p={2}
         spacing={2}
         sx={{
+          padding: '0 16px 16px 16px',
           flex: 1,
           height: 0,
           overflowY: 'auto',
         }}
       >
-        <Divider />
-
         <Stack direction={'row'} spacing={1} alignItems="center">
           <NotificationImportantOutlinedIcon
             sx={{
@@ -210,7 +136,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
             color={'text.primary'}
             lineHeight={1.5}
           >
-            {t('client:provider__confirm_dialog__important_reminder')}
+            {t('client:provider__third_party_confirm_dialog__important__title')}
           </Typography>
         </Stack>
 
@@ -222,10 +148,12 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           mt={'4px !important'}
           textAlign={'left'}
         >
-          {t('client:provider__confirm_dialog__important_reminder__desc')}
+          {t(
+            'client:provider__third_party_confirm_dialog__important__description',
+          )}
         </Typography>
 
-        <ThirdPartAIProviderForEnhancedStability />
+        <ThirdPartyAIProviderRecommendations />
 
         <Stack direction={'row'} spacing={1} alignItems="center">
           <ChatOutlinedIcon
@@ -241,7 +169,9 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
             color={'text.primary'}
             lineHeight={1.5}
           >
-            {t('client:provider__confirm_dialog__your_feedback_matters')}
+            {t(
+              'client:provider__third_party_confirm_dialog__your_feedback_matters__title',
+            )}
           </Typography>
         </Stack>
 
@@ -253,7 +183,9 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           mt={'4px !important'}
           textAlign={'left'}
         >
-          {t('client:provider__confirm_dialog__your_feedback_matters__desc')}
+          {t(
+            'client:provider__third_party_confirm_dialog__your_feedback_matters__description',
+          )}
         </Typography>
         <Typography
           sx={{ flexShrink: 0 }}
@@ -272,6 +204,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           </Link>
         </Typography>
       </Stack>
+      <ThirdPartyAIProviderModelSelectorCard />
     </Box>
   )
 }

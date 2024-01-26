@@ -165,6 +165,8 @@ export interface IChromeExtensionLocalStorage {
   sidebarSettings?: {
     chat?: {
       conversationId?: string
+      thirdAIProvider?: IAIProviderType
+      thirdAIProviderModel?: string
     }
     summary?: {
       conversationId?: string

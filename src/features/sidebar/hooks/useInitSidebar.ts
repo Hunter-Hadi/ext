@@ -55,7 +55,6 @@ const useInitSidebar = () => {
       switch (currentSidebarConversationType) {
         case 'Chat':
           {
-            createConversation('Chat').then().catch()
           }
           break
         case 'Summary':

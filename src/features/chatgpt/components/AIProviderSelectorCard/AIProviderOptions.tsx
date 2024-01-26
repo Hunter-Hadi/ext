@@ -7,7 +7,6 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { I18nextKeysType } from '@/i18next'
 
 export type AIProviderOptionType = {
-  beta: boolean
   label: string
   value: IAIProviderType
   shortDescription: (t: TFunction<['common', 'client']>) => React.ReactNode
@@ -15,21 +14,10 @@ export type AIProviderOptionType = {
   authDescription: I18nextKeysType
   authButtonText: I18nextKeysType
   authOpenInNew: boolean
-  isThirdParty: boolean
+  thirdParty?: boolean
 }
 const AIProviderOptions: AIProviderOptionType[] = [
-  // {
-  //   beta: false,
-  //   label: 'client:provider__poe__title',
-  //   description: '',
-  //   value: AI_PROVIDER_MAP.POE,
-  //   authDescription: 'client:provider__poe__auth_description',
-  //   shortDescription: `client:provider__poe__short_description`,
-  //   authButtonText: 'client:provider__bing_web_app__auth_button_text',
-  //   authOpenInNew: false,
-  // },
   {
-    beta: false,
     label: 'Bing web app',
     description: '',
     value: AI_PROVIDER_MAP.BING,
@@ -38,10 +26,9 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__bing_web_app__short_description`),
     authButtonText: `client:provider__bing_web_app__auth_button_text`,
     authOpenInNew: false,
-    isThirdParty: true,
+    thirdParty: true,
   },
   {
-    beta: false,
     label: 'Bard web app',
     description: '',
     value: AI_PROVIDER_MAP.BARD,
@@ -50,10 +37,9 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__bard_web_app__short_description`),
     authButtonText: `client:provider__bard_web_app__auth_button_text`,
     authOpenInNew: false,
-    isThirdParty: true,
+    thirdParty: true,
   },
   {
-    beta: false,
     label: 'Claude web app',
     value: AI_PROVIDER_MAP.CLAUDE,
     description: '',
@@ -62,10 +48,9 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__claude_web_app__short_description`),
     authButtonText: `client:provider__claude_web_app__auth_button_text`,
     authOpenInNew: true,
-    isThirdParty: true,
+    thirdParty: true,
   },
   {
-    beta: false,
     label: 'ChatGPT web app',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI,
@@ -74,10 +59,9 @@ const AIProviderOptions: AIProviderOptionType[] = [
       t(`client:provider__chatgpt_web_app__short_description`),
     authButtonText: `client:provider__chatgpt_web_app__auth_button_text`,
     authOpenInNew: true,
-    isThirdParty: true,
+    thirdParty: true,
   },
   {
-    beta: false,
     label: 'OpenAI API',
     description: '',
     value: AI_PROVIDER_MAP.OPENAI_API,
@@ -112,10 +96,9 @@ const AIProviderOptions: AIProviderOptionType[] = [
     ),
     authButtonText: `client:provider__openai_api__auth_button_text`,
     authOpenInNew: true,
-    isThirdParty: true,
+    thirdParty: true,
   },
   {
-    beta: true,
     label: 'Gemini',
     value: AI_PROVIDER_MAP.MAXAI_GEMINI,
     description: '',
@@ -123,10 +106,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__gemini__short_description`),
     authButtonText: `client:provider__gemini__auth_button_text`,
     authOpenInNew: false,
-    isThirdParty: false,
   },
   {
-    beta: false,
     label: 'Claude',
     value: AI_PROVIDER_MAP.MAXAI_CLAUDE,
     description: '',
@@ -134,10 +115,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__claude__short_description`),
     authButtonText: `client:provider__claude__auth_button_text`,
     authOpenInNew: false,
-    isThirdParty: false,
   },
   {
-    beta: false,
     description: '',
     label: 'ChatGPT',
     authDescription: `client:provider__chatgpt__auth_description`,
@@ -145,10 +124,8 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__chatgpt__short_description`),
     authButtonText: `client:provider__chatgpt__auth_button_text`,
     authOpenInNew: false,
-    isThirdParty: false,
   },
   {
-    beta: false,
     description: '',
     label: 'Free AI',
     authDescription: `client:provider__free_ai__auth_description`,
@@ -156,7 +133,6 @@ const AIProviderOptions: AIProviderOptionType[] = [
     shortDescription: (t) => t(`client:provider__free_ai__short_description`),
     authButtonText: `client:provider__free_ai__auth_button_text`,
     authOpenInNew: false,
-    isThirdParty: false,
   },
 ]
 export default AIProviderOptions

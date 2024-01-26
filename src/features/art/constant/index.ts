@@ -1,7 +1,4 @@
-import dayjs from 'dayjs'
-
 import { IArtTextToImageModel } from '@/features/art/types'
-import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const MAXAI_IMAGE_GENERATE_MODELS: IArtTextToImageModel[] = [
@@ -12,30 +9,9 @@ export const MAXAI_IMAGE_GENERATE_MODELS: IArtTextToImageModel[] = [
     maxTokens: 4096,
     tags: [],
     exampleImage: '',
-    descriptions: [
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__max_token'),
-        value: (t) =>
-          `${numberWithCommas(4096, 0)} ${t(
-            'client:provider__model__tooltip_card__label__max_token__suffix',
-          )}`,
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__description'),
-        value: (t) =>
-          t(`client:provider__chatgpt__model__gpt_3_5__description`),
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__training_date'),
-        value: (t) =>
-          `${t(
-            'client:provider__model__tooltip_card__label__training_date__prefix',
-          )} ${dayjs('2021-09-01').format('MMM YYYY')}`,
-      },
-    ],
+    poweredBy: 'OpenAI',
+    description: (t) =>
+      t(`client:provider__chatgpt__model__gpt_3_5__description`),
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
       roles: ['elite'],

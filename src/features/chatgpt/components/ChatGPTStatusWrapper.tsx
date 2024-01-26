@@ -14,13 +14,12 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { GoogleIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { AuthState } from '@/features/auth/store'
-import AIProviderSelectorCard from '@/features/chatgpt/components/AIProviderSelectorCard'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
-import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
+import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog'
 import {
   ChatGPTClientState,
-  ThirdPartAIProviderConfirmDialogState,
+  ThirdPartyAIProviderConfirmDialogState,
 } from '@/features/chatgpt/store'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { useFocus } from '@/features/common/hooks/useFocus'
@@ -38,7 +37,7 @@ const ChatGPTStatusWrapper: FC = () => {
   const [prevStatus, setPrevStatus] = useState(status)
 
   const { open: providerConfirmDialogOpen } = useRecoilValue(
-    ThirdPartAIProviderConfirmDialogState,
+    ThirdPartyAIProviderConfirmDialogState,
   )
 
   useEffect(() => {
@@ -293,45 +292,28 @@ const ChatGPTStatusWrapper: FC = () => {
       </Box>
     )
   }
-
-  // 即使 success 了 providerConfirmDialogOpen 为 true 时需要显示
-  if (status === 'success' && !providerConfirmDialogOpen) {
-    return null
+  if (status === 'needAuth' || providerConfirmDialogOpen) {
+    return (
+      <Box sx={memoMaskSx}>
+        <Paper
+          sx={{
+            position: 'absolute',
+            right: 16,
+            top: '50%',
+            transform: 'translateY(-50%)',
+            bgcolor: 'background.paper',
+            display: 'flex',
+            flexDirection: 'column',
+            userSelect: 'auto',
+          }}
+        >
+          <ThirdPartAIProviderConfirmDialog />
+        </Paper>
+        {memoImmersiveChatMask}
+      </Box>
+    )
   }
-
-  return (
-    <Box sx={memoMaskSx}>
-      <Paper
-        sx={{
-          position: 'absolute',
-          right: 8,
-          bottom: 125,
-          bgcolor: 'background.paper',
-          display: 'flex',
-          flexDirection: 'column',
-          filter: `blur(${providerConfirmDialogOpen ? 5 : 0}px)`,
-          pointerEvents: providerConfirmDialogOpen ? 'none' : 'auto',
-        }}
-      >
-        <AIProviderSelectorCard />
-      </Paper>
-
-      <Paper
-        sx={{
-          position: 'absolute',
-          right: 8,
-          bottom: '2%',
-          bgcolor: 'background.paper',
-          display: 'flex',
-          flexDirection: 'column',
-          userSelect: 'auto',
-        }}
-      >
-        <ThirdPartAIProviderConfirmDialog />
-      </Paper>
-      {memoImmersiveChatMask}
-    </Box>
-  )
+  return null
 }
 
 export { ChatGPTStatusWrapper }

@@ -8,8 +8,8 @@ import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 
 const AIProviderInfoCard: FC<{
   aiProviderOption: AIProviderOptionType

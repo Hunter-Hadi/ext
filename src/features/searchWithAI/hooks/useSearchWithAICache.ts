@@ -14,7 +14,7 @@ interface ISearchWithAICacheType {
   key: string
 
   searchPage: ISearchPageKey
-  aiProvider: ISearchWithAIProviderType
+  currentAIProvider: ISearchWithAIProviderType
   query: string
   completedMessage: string
   webAccess: boolean
@@ -90,7 +90,7 @@ const removeSearchWithAICacheByKey = async (key: string) => {
 // 统一 key 的生成方式
 const generateSearchWithAICacheKey = (
   searchPage: ISearchWithAICacheType['searchPage'],
-  aiProvider: ISearchWithAICacheType['aiProvider'],
+  aiProvider: ISearchWithAICacheType['currentAIProvider'],
   query: ISearchWithAICacheType['query'],
   webAccess: ISearchWithAICacheType['webAccess'],
 ) => {
@@ -102,7 +102,7 @@ const generateSearchWithAICacheKey = (
 const useSearchWithAICache = () => {
   const getSearchWithAICacheData = async (
     searchPage: ISearchWithAICacheType['searchPage'],
-    aiProvider: ISearchWithAICacheType['aiProvider'],
+    aiProvider: ISearchWithAICacheType['currentAIProvider'],
     query: ISearchWithAICacheType['query'],
     webAccess: ISearchWithAICacheType['webAccess'],
   ) => {
@@ -135,7 +135,7 @@ const useSearchWithAICache = () => {
   ) => {
     const key = generateSearchWithAICacheKey(
       newData.searchPage,
-      newData.aiProvider,
+      newData.currentAIProvider,
       newData.query,
       newData.webAccess,
     )

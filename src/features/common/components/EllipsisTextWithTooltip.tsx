@@ -1,5 +1,5 @@
 import { SxProps } from '@mui/material/styles'
-import Tooltip from '@mui/material/Tooltip'
+import Tooltip, { TooltipProps } from '@mui/material/Tooltip'
 import Typography, { TypographyProps } from '@mui/material/Typography'
 import React, {
   FC,
@@ -17,6 +17,8 @@ interface IProps extends TypographyProps {
   lineClamp?: number
   // 是否开启对元素大小的监听, 当元素大小发生变化时, 重新计算是否需要渲染 Tooltip
   resizeListener?: boolean
+  tooltipZIndex?: number
+  TooltipProps?: Omit<TooltipProps, 'title' | 'children'>
 }
 
 const EllipsisTextWithTooltip: FC<IProps> = ({
@@ -25,6 +27,8 @@ const EllipsisTextWithTooltip: FC<IProps> = ({
   children,
   lineClamp = 3,
   resizeListener = false,
+  tooltipZIndex,
+  TooltipProps,
   ...restProps
 }) => {
   const resizeObserver = useRef<ResizeObserver | null>(null)
@@ -67,7 +71,16 @@ const EllipsisTextWithTooltip: FC<IProps> = ({
   }, [rendered, resizeListener, updateTooltipStatus, textRef])
 
   return (
-    <Tooltip title={disableTooltip ? '' : tooltip}>
+    <Tooltip
+      title={disableTooltip ? '' : tooltip}
+      PopperProps={{
+        style: {
+          zIndex: tooltipZIndex || 9999,
+          maxWidth: 180,
+        },
+      }}
+      {...TooltipProps}
+    >
       <Typography
         ref={textRef}
         sx={{

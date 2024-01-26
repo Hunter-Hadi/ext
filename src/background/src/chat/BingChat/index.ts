@@ -3,10 +3,7 @@ import { ofetch } from 'ofetch'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { BingWebBot } from '@/background/src/chat/BingChat/bing'
 import { Event } from '@/background/src/chat/BingChat/bing/types'
-import {
-  getChromeExtensionOnBoardingData,
-  requestHostPermission,
-} from '@/background/utils'
+import { requestHostPermission } from '@/background/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class BingChat extends BaseChat {
@@ -19,12 +16,7 @@ class BingChat extends BaseChat {
   }
   async init() {
     this.log.info('init')
-    const onBoardingData = await getChromeExtensionOnBoardingData()
-    if (onBoardingData) {
-      this.status = onBoardingData.ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_BING
-        ? 'success'
-        : 'needAuth'
-    }
+    this.status = 'success'
   }
   async auth() {
     this.active = true

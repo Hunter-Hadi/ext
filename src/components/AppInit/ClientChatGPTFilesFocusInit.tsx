@@ -43,7 +43,6 @@ const ClientChatGPTFilesFocusInit = () => {
         data: {},
       })
       .then((result) => {
-        console.log(`zztest useFocus`, blurDelayRef.current)
         if (blurDelayRef.current) {
           return
         }

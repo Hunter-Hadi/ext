@@ -9,17 +9,22 @@ import React, { FC } from 'react'
 
 import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { getAppContextMenuRootElement } from '@/utils'
 
-const AIModelSelectorButton: FC<{
+const AIProviderModelSelectorButton: FC<{
   sx?: SxProps
+  size?: 'normal' | 'small'
 }> = (props) => {
-  const { sx } = props
+  const { sx, size = 'normal' } = props
   const {
     currentAIProvider = 'USE_CHAT_GPT_PLUS',
     currentAIProviderModelDetail,
   } = useAIProviderModels()
+  const { isSelectedThirdAIProvider } = useThirdAIProviderModels()
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef<HTMLButtonElement>(null)
 
@@ -43,9 +48,9 @@ const AIModelSelectorButton: FC<{
     if (prevOpen.current === true && open === false) {
       anchorRef.current!.focus()
     }
-
     prevOpen.current = open
   }, [open])
+
   return (
     <Box>
       <Button
@@ -70,7 +75,15 @@ const AIModelSelectorButton: FC<{
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        <AIProviderIcon aiProviderType={currentAIProvider} />
+        {isSelectedThirdAIProvider ? (
+          <ThirdPartyAIProviderIcon
+            sx={{
+              fontSize: '20px',
+            }}
+          />
+        ) : (
+          <AIProviderIcon aiProviderType={currentAIProvider} />
+        )}
         {currentAIProviderModelDetail?.title && (
           <Typography
             ml={0.5}
@@ -98,7 +111,11 @@ const AIModelSelectorButton: FC<{
               },
             },
           ]}
-          container={getMaxAISidebarRootElement()}
+          container={
+            size === 'small'
+              ? getAppContextMenuRootElement()
+              : getMaxAISidebarRootElement()
+          }
         >
           {({ TransitionProps, placement }) => (
             <Grow
@@ -133,7 +150,7 @@ const AIModelSelectorButton: FC<{
                   }}
                 >
                   <Box>
-                    <AIModelSelectorCard />
+                    <AIModelSelectorCard onClose={handleClose} />
                   </Box>
                 </ClickAwayListener>
               </Box>
@@ -144,4 +161,4 @@ const AIModelSelectorButton: FC<{
     </Box>
   )
 }
-export default AIModelSelectorButton
+export default AIProviderModelSelectorButton

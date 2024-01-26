@@ -29,7 +29,7 @@ import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
-import AIProviderIconWithTooltip from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIconWithTooltip'
+import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -656,18 +656,7 @@ const FloatingContextMenu: FC<{
                 alignItems={'center'}
                 gap={1}
               >
-                <AIProviderIconWithTooltip
-                  TooltipProps={{
-                    placement: safePlacement.contextMenuPlacement,
-                    floatingMenuTooltip: true,
-                  }}
-                  size={16}
-                  sx={{
-                    flexShrink: 0,
-                    p: '4px',
-                    alignSelf: 'start',
-                  }}
-                />
+                <AIProviderModelSelectorButton size={'small'} />
                 <Stack
                   direction={'row'}
                   width={0}

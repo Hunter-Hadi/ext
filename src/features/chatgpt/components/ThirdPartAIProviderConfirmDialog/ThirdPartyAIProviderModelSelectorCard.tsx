@@ -98,7 +98,7 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
         width: '100%',
         left: 0,
         bottom: 0,
-        gap: 2,
+        gap: 3,
         px: 2,
         py: 1.5,
         bgcolor: (t) =>

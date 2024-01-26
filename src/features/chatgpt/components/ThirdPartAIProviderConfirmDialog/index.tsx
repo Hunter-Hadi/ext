@@ -65,7 +65,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
         alignItems: 'stretch',
         justifyContent: 'center',
         flexDirection: 'column',
-        height: 'calc(100vh - 200px)',
+        height: 'calc(100vh - 32px)',
         maxHeight: '823px',
         ...sx,
       }}
@@ -119,7 +119,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           padding: '0 16px 16px 16px',
           flex: 1,
           height: 0,
-          mb: '200px',
+          mb: '170px',
           overflowY: 'auto',
         }}
       >

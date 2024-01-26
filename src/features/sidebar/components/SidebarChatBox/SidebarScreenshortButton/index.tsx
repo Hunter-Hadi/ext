@@ -10,12 +10,21 @@ import { base642file } from '@/background/utils/uplpadFileProcessHelper'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { MaxAIChatFileHandleUploadState } from '@/features/chatgpt/components/ChatIconFileUpload'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   hideChatBox,
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { clientRunBackgroundGetScreenshot } from '@/utils/clientCallChromeExtensionCollection'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+
+export const takeShortcutScreenshot = () => {
+  getMaxAISidebarRootElement()
+    ?.querySelector('[data-testid="maxai-take-screenshot"]')
+    ?.dispatchEvent(new MouseEvent('click', { bubbles: true }))
+}
 const SidebarScreenshotButton: FC<{
   sx?: SxProps
 }> = ({ sx }) => {
@@ -24,14 +33,27 @@ const SidebarScreenshotButton: FC<{
   const maxAIChatFileHandleUpload = useRecoilValue(
     MaxAIChatFileHandleUploadState,
   )
+  const {
+    updateAIProviderModel,
+    currentAIProvider,
+    currentAIProviderModel,
+  } = useAIProviderModels()
   return (
     <>
       <TextOnlyTooltip placement={'top'} title={t('common:screenshot')}>
         <Button
           data-testid={'maxai-take-screenshot'}
           onClick={() => {
-            if (isShowChatBox()) {
+            if (!isMaxAIImmersiveChatPage() && isShowChatBox()) {
               hideChatBox()
+            }
+            if (
+              currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
+              currentAIProviderModel !== 'gpt-4-vision-preview'
+            ) {
+              updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-vision-preview')
+                .then()
+                .catch()
             }
             const div = document.createElement('div')
             document.body.appendChild(div)

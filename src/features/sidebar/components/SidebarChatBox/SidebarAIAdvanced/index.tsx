@@ -136,7 +136,7 @@ const SearchWithAIAdvanced: FC<{
                 borderRadius: '4px',
                 border: '1px solid #EBEBEB',
                 boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                width: 434,
+                width: 402,
                 display: 'flex',
                 alignItems: 'stretch',
                 justifyContent: 'center',

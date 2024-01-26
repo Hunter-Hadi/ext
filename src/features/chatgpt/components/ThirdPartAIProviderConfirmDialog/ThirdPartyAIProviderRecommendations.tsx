@@ -28,7 +28,6 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
   ) => {
     try {
       setLoading(true)
-    } catch (e) {
       await updateAIProviderModel(
         AIProviderModelSelectorOption.AIProvider,
         AIProviderModelSelectorOption.value,
@@ -36,6 +35,8 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
       setDialogState({
         open: false,
       })
+    } catch (e) {
+      console.error(e)
     } finally {
       setLoading(false)
     }

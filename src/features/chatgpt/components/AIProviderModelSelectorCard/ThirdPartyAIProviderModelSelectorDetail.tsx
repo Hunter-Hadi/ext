@@ -11,7 +11,7 @@ const ThirdPartyAIProviderModelSelectorDetail: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const {
     currentThirdAIProviderDetail,
-    setAIProviderModelToThirdParty,
+    showThirdPartyAIProviderConfirmDialog,
   } = useThirdAIProviderModels()
   return (
     <Stack
@@ -51,7 +51,7 @@ const ThirdPartyAIProviderModelSelectorDetail: FC = () => {
           onMouseDownCapture={async (event) => {
             event.stopPropagation()
             event.preventDefault()
-            await setAIProviderModelToThirdParty()
+            showThirdPartyAIProviderConfirmDialog()
           }}
         >
           {currentThirdAIProviderDetail && (

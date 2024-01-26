@@ -9,7 +9,6 @@ import { useTranslation } from 'react-i18next'
 import { IAIProviderType } from '@/background/provider/chat'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
-import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 
 const AIProviderInfoCard: FC<{
   aiProviderOption: AIProviderOptionType
@@ -54,7 +53,7 @@ const AIProviderInfoCard: FC<{
       >
         {/*logo*/}
         <Stack direction={'row'} spacing={1}>
-          <AIProviderIcon aiProviderType={aiProviderOption.value} size={24} />
+          {/*<AIProviderIcon aiProviderType={aiProviderOption.value} size={24} />*/}
           <Typography fontSize={'16px'} fontWeight={600} color={'text.primary'}>
             {aiProviderOption.label}
           </Typography>

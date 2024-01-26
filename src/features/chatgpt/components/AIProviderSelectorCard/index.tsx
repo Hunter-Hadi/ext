@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
+import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthButton'
 import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'

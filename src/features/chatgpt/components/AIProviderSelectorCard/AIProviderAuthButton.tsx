@@ -11,14 +11,13 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import AIProviderInfoCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderInfoCard'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 const port = new ContentScriptConnectionV2()
 
-const AIProviderAuthCard: FC<{
+const AIProviderAuthButton: FC<{
   aiProviderOption: AIProviderOptionType
 }> = (props) => {
   const { aiProviderOption } = props
@@ -56,11 +55,9 @@ const AIProviderAuthCard: FC<{
     }
   }, [chatGPTClientState.status])
   return (
-    <AIProviderInfoCard
-      authMode
-      aiProviderOption={aiProviderOption}
-      boxSx={{
-        p: 0,
+    <Stack
+      sx={{
+        width: '100%',
       }}
     >
       {(chatGPTClientState.status === 'loading' ||
@@ -160,6 +157,7 @@ const AIProviderAuthCard: FC<{
               },
             }}
             sx={{
+              borderRadius: '8px',
               fontSize: '14px',
               fontWeight: 400,
               width: '100%',
@@ -224,7 +222,7 @@ const AIProviderAuthCard: FC<{
           </TooltipButton>
         </Stack>
       )}
-    </AIProviderInfoCard>
+    </Stack>
   )
 }
-export default AIProviderAuthCard
+export default AIProviderAuthButton

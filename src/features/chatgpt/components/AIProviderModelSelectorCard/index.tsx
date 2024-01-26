@@ -61,7 +61,10 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     setHoverModel,
   ] = useState<AIProviderModelSelectorOption | null>(null)
   const [isHoverThirdPartyModel, setIsHoverThirdPartyModel] = useState(false)
-  const { setAIProviderModelToThirdParty } = useThirdAIProviderModels()
+  const {
+    showThirdPartyAIProviderConfirmDialog,
+    isSelectedThirdAIProvider,
+  } = useThirdAIProviderModels()
   const {
     currentAIProviderModelDetail,
     updateAIProviderModel,
@@ -138,6 +141,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
               }}
               key={AIModelOption.value}
               selected={
+                !isSelectedThirdAIProvider &&
                 AIModelOption.value === currentAIProviderModelDetail?.value
               }
               onClick={async () => {
@@ -174,9 +178,9 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             setHoverModel(null)
             setIsHoverThirdPartyModel(true)
           }}
-          selected={!isSelectedMaxAIMainPartModel}
-          onClick={async () => {
-            await setAIProviderModelToThirdParty()
+          selected={isSelectedThirdAIProvider}
+          onClick={() => {
+            showThirdPartyAIProviderConfirmDialog()
           }}
         >
           <Stack alignItems={'center'} direction={'row'}>

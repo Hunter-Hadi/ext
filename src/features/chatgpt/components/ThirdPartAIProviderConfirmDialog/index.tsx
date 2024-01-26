@@ -119,6 +119,7 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
           padding: '0 16px 16px 16px',
           flex: 1,
           height: 0,
+          mb: '200px',
           overflowY: 'auto',
         }}
       >
@@ -200,7 +201,9 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
             target={'_blank'}
             href={CHROME_EXTENSION_MAIL_TO}
           >
-            {t('common:contact_us')}
+            {t(
+              'client:provider__third_party_confirm_dialog__your_feedback_matters__button_title',
+            )}
           </Link>
         </Typography>
       </Stack>

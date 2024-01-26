@@ -14,8 +14,9 @@ import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 const AIProviderModelSelectorDetail: FC<{
   AIProviderModel: string
   AIProvider: IAIProviderType
+  hideAIProviderIcon?: boolean
 }> = (props) => {
-  const { AIProviderModel, AIProvider } = props
+  const { AIProviderModel, AIProvider, hideAIProviderIcon = false } = props
   const { t } = useTranslation(['common', 'client'])
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModels()
   const currentAIProviderModelDetail = useMemo(() => {
@@ -33,13 +34,20 @@ const AIProviderModelSelectorDetail: FC<{
       >
         <Stack gap={1}>
           <Stack direction={'row'} alignItems={'center'} gap={1}>
-            <AIProviderIcon
-              aiProviderType={AIProvider}
-              sx={{
-                fontSize: '24px',
-              }}
-            />
-            <Typography fontSize={'16px'} fontWeight={500}>
+            {!hideAIProviderIcon && (
+              <AIProviderIcon
+                aiProviderType={AIProvider}
+                sx={{
+                  fontSize: '24px',
+                }}
+              />
+            )}
+
+            <Typography
+              fontSize={'16px'}
+              fontWeight={500}
+              color={'text.primary'}
+            >
               {currentAIProviderModelDetail?.title}
             </Typography>
           </Stack>

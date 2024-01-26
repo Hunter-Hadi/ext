@@ -64,7 +64,10 @@ export const APP_USE_CHAT_GPT_HOST = process.env.APP_USE_CHAT_GPT_HOST
 export const OPENAI_IFRAME_ID = `${MAXAI_CHROME_EXTENSION_ID}_OPENAI_IFRAME_ID`
 
 // user settings
+// 带侧边栏的整个宽度
 export const CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH = 480
+// 只有聊天框的宽度
+export const CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH = 420
 
 export const RELEASE_LOG_URL = 'https://twitter.com/MaxAI_HQ'
 

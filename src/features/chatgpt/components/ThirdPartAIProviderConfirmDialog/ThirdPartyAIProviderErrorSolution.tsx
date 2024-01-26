@@ -7,9 +7,9 @@ import { useTranslation } from 'react-i18next'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 
-import ThirdPartAIProviderForEnhancedStability from './ThirdPartAIProviderForEnhancedStability'
+import ThirdPartyAIProviderRecommendations from './ThirdPartyAIProviderRecommendations'
 
-const ThirdPartAIProviderErrorSolution = () => {
+const ThirdPartyAIProviderErrorSolution = () => {
   const { t } = useTranslation(['client'])
 
   const { currentAIProviderDetail } = useAIProviderModels()
@@ -49,9 +49,9 @@ const ThirdPartAIProviderErrorSolution = () => {
           },
         )}
       </Typography>
-      <ThirdPartAIProviderForEnhancedStability />
+      <ThirdPartyAIProviderRecommendations />
     </Stack>
   )
 }
 
-export default ThirdPartAIProviderErrorSolution
+export default ThirdPartyAIProviderErrorSolution

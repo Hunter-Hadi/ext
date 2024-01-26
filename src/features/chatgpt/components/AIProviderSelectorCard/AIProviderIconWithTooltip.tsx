@@ -9,7 +9,7 @@ import TextOnlyTooltip, {
 } from '@/components/TextOnlyTooltip'
 import AIProviderIcon, {
   AIProviderIconProps,
-} from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
+} from '@/features/chatgpt/components/icons/AIProviderIcon'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 

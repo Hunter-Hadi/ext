@@ -11,13 +11,13 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import AIProviderAuthCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderAuthCard'
 import AIProviderCard from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderCard'
-import AIProviderIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderIcon'
-import AIProviderMainPartIcon from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderMainPartIcon'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProviderMainPartIcon'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import {
   ChatGPTClientState,
-  ThirdPartAIProviderConfirmDialogState,
+  ThirdPartyAIProviderConfirmDialogState,
 } from '@/features/chatgpt/store'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -48,7 +48,7 @@ const AIProviderSelectorCard: FC<AIProviderSelectorCardProps> = (props) => {
   } = useClientConversation()
 
   const setProviderConfirmDialogState = useSetRecoilState(
-    ThirdPartAIProviderConfirmDialogState,
+    ThirdPartyAIProviderConfirmDialogState,
   )
 
   const isLoadingMemo = useMemo(() => {

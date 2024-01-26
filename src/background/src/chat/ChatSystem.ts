@@ -19,14 +19,11 @@ import ConversationManager, {
 import {
   backgroundSendAllClientMessage,
   createBackgroundMessageListener,
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import {
   getChromeExtensionLocalStorage,
   setChromeExtensionLocalStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { APP_VERSION } from '@/constants'
 import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
 import { MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL } from '@/features/common/constants'
@@ -354,40 +351,11 @@ class ChatSystem implements ChatSystemInterface {
   async auth(authTabId: number) {
     if (this.currentAdapter) {
       await this.currentAdapter.auth(authTabId)
-      const onBoardingData = await getChromeExtensionOnBoardingData()
-      const onBoardingDataKey = `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${this.currentProvider}`
-      // 如果onBoardingData里面有这个key, 才保存
-      if (
-        Object.prototype.hasOwnProperty.call(onBoardingData, onBoardingDataKey)
-      ) {
-        await setChromeExtensionOnBoardingData(
-          onBoardingDataKey as OnBoardingKeyType,
-          true,
-        )
-      }
     }
   }
   async preAuth() {
     if (this.currentAdapter) {
-      // 判断是否auth过，如果从来没有auth过，就不需要preAuth
-      const onBoardingData = await getChromeExtensionOnBoardingData()
-      const onBoardingDataKey = `ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_${this.currentProvider}`
-      // 如果onBoardingData里面有这个key, 并且为true, 才执行preAuth
-      if (
-        Object.prototype.hasOwnProperty.call(onBoardingData, onBoardingDataKey)
-      ) {
-        if (onBoardingData[onBoardingDataKey as OnBoardingKeyType]) {
-          await this.currentAdapter.preAuth()
-        } else {
-          // 说明没有onBoarding过
-          await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-            status: 'needAuth',
-          })
-        }
-      } else {
-        // 如果onBoardingData里面没有这个key, 按理说不可能没有, 但是为了保险起见, 正常执行preAuth
-        await this.currentAdapter.preAuth()
-      }
+      await this.currentAdapter.preAuth()
     }
   }
   sendQuestion: IChatGPTAskQuestionFunctionType = (

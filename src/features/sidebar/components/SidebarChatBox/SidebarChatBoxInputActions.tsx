@@ -13,7 +13,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
-import AIProviderSelectorFloatingButton from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderSelectorFloatingButton'
+import AIModelSelectorButton from '@/features/chatgpt/components/AIModelSelectorButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
@@ -94,7 +94,8 @@ const SidebarChatBoxInputActions: FC<{
       spacing={1}
       width={'100%'}
     >
-      <AIProviderSelectorFloatingButton />
+      <AIModelSelectorButton />
+      {/*<AIProviderSelectorFloatingButton />*/}
       <Typography
         component={'span'}
         color={'text.secondary'}

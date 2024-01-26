@@ -1,8 +1,5 @@
-import dayjs from 'dayjs'
-
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { I18nextKeysType } from '@/i18next'
-import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export enum BingConversationStyle {
   Creative = 'creative',
@@ -38,30 +35,9 @@ export const BING_MODELS: IAIProviderModel[] = [
     value: 'gpt-4',
     maxTokens: 8192,
     tags: [],
-    descriptions: [
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__max_token'),
-        value: (t) =>
-          `${numberWithCommas(8192, 0)} ${t(
-            'client:provider__model__tooltip_card__label__max_token__suffix',
-          )}`,
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__description'),
-        value: (t) =>
-          t('client:provider__bing_web_app__model__gpt_4__description'),
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__training_date'),
-        value: (t) =>
-          `${t(
-            'client:provider__model__tooltip_card__label__training_date__prefix',
-          )} ${dayjs('2021-09-01').format('MMM YYYY')}`,
-      },
-    ],
+    poweredBy: 'Microsoft',
+    description: (t) =>
+      t('client:provider__bing_web_app__model__gpt_4__description'),
     uploadFileConfig: {
       accept: 'image/gif, image/jpeg, image/png, image/webp',
       acceptTooltip: (t) =>

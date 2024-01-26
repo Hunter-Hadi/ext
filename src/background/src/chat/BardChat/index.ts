@@ -7,7 +7,6 @@ import {
   parseBardResponse,
 } from '@/background/src/chat/BardChat/utils'
 import BaseChat from '@/background/src/chat/BaseChat'
-import { getChromeExtensionOnBoardingData } from '@/background/utils'
 import { deserializeUploadFile } from '@/background/utils/uplpadFileProcessHelper'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
@@ -27,12 +26,7 @@ class BardChat extends BaseChat {
     this.init()
   }
   async init() {
-    const onBoardingData = await getChromeExtensionOnBoardingData()
-    if (onBoardingData) {
-      this.status = onBoardingData.ON_BOARDING_RECORD_AI_PROVIDER_HAS_AUTH_BARD
-        ? 'success'
-        : 'needAuth'
-    }
+    this.status = 'success'
   }
   async checkAuth() {
     this.active = true

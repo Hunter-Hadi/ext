@@ -3,6 +3,7 @@ import reverse from 'lodash-es/reverse'
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { IAIProviderType } from '@/background/provider/chat'
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
@@ -13,12 +14,13 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { AppLocalStorageState } from '@/store'
-import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 /**
  * 用来获取当前AI提供商的模型列表
@@ -30,11 +32,8 @@ const useAIProviderModels = () => {
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const currentProvider =
     appLocalStorage.sidebarSettings?.common?.currentAIProvider
-  const [loading, setLoading] = useState(false)
-  const {
-    currentThirdProviderSettings,
-    saveThirdProviderSettings,
-  } = useThirdProviderSettings()
+  const { currentThirdProviderSettings } = useThirdProviderSettings()
+  const { createConversation } = useClientConversation()
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
@@ -79,34 +78,20 @@ const useAIProviderModels = () => {
               item.tags?.find((tag) => tag.toLowerCase().includes('mobile')) ||
               '',
             maxTokens: item.max_tokens,
+            poweredBy: 'OpenAI',
             tags: item.tags || [],
-            descriptions: [
-              {
-                label: (t) =>
-                  t('client:provider__model__tooltip_card__label__max_token'),
-                value: (t) =>
-                  `${numberWithCommas(item.max_tokens, 0)} ${t(
-                    'client:provider__model__tooltip_card__label__max_token__suffix',
-                  )}`,
-              },
-              {
-                label: (t) =>
-                  t('client:provider__model__tooltip_card__label__description'),
-                value: (t) => {
-                  const description = item.description
-                  // provider__chatgpt_web_app__text_davinci_002_render_sha__description
-                  const key = `provider__chatgpt_web_app__${item.slug}__description`.replace(
-                    /-/g,
-                    '_',
-                  )
-                  const i18nKey: any = `client:${key}`
-                  if (t(i18nKey) !== key) {
-                    return t(i18nKey)
-                  }
-                  return description
-                },
-              },
-            ],
+            description: (t) => {
+              const description = item.description
+              const key = `provider__chatgpt_web_app__${item.slug}__description`.replace(
+                /-/g,
+                '_',
+              )
+              const i18nKey: any = `client:${key}`
+              if (t(i18nKey) !== key) {
+                return t(i18nKey)
+              }
+              return description
+            },
             disabled:
               // 白名单有值才判断
               whiteListModels.length > 0
@@ -152,42 +137,56 @@ const useAIProviderModels = () => {
     )
   }, [currentAIProviderModel, aiProviderModels])
   const updateAIProviderModel = useCallback(
-    async (model: string) => {
+    async (AIProvider: IAIProviderType, model: string) => {
       try {
-        if (
-          currentProvider &&
-          aiProviderModels.find((item) => item.value === model)
-        ) {
-          setLoading(true)
-          await saveThirdProviderSettings(currentProvider, {
-            model,
-          })
+        let now = new Date().getTime()
+        await setChromeExtensionLocalStorage({
+          sidebarSettings: {
+            common: {
+              currentAIProvider: AIProvider,
+            },
+            chat: {
+              conversationId: '',
+            },
+            art: {
+              conversationId: '',
+            },
+          },
+          thirdProviderSettings: {
+            [AIProvider]: {
+              model,
+            },
+          },
+        })
+
+        console.log(
+          '[TimeTimeTimeTime] 切换AIProvider1',
+          new Date().getTime() - now,
+        )
+        now = new Date().getTime()
+        if (AIProvider === 'MAXAI_DALLE') {
+          await createConversation('Art')
+        } else {
+          await createConversation('Chat')
         }
+        console.log(
+          '[TimeTimeTimeTime] 切换AIProvider2',
+          new Date().getTime() - now,
+        )
       } catch (e) {
         console.log(e)
-      } finally {
-        setLoading(false)
       }
     },
     [currentProvider, aiProviderModels],
   )
-  useEffect(() => {
-    // TODO 历史遗留问题
-    if (
-      currentProvider === 'CLAUDE' &&
-      currentThirdProviderSettings?.model === 'a2'
-    ) {
-      updateAIProviderModel(CLAUDE_MODELS[0].value)
-    }
-  }, [currentAIProviderModel, currentProvider])
   return {
-    aiProvider: appLocalStorage.sidebarSettings?.common?.currentAIProvider,
-    aiProviderModel: currentAIProviderModel,
+    currentAIProviderModel: currentAIProviderModel,
+    currentAIProvider:
+      appLocalStorage.sidebarSettings?.common?.currentAIProvider,
     currentAIProviderDetail,
     currentAIProviderModelDetail,
     aiProviderModels,
     updateAIProviderModel,
-    loading,
     AI_PROVIDER_MODEL_MAP,
   }
 }

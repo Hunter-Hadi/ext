@@ -7,7 +7,7 @@ import React, { FC, useMemo, useState } from 'react'
 
 import { usePermissionCard } from '@/features/auth'
 import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper/types'
-import ThirdPartAIProviderErrorSolution from '@/features/chatgpt/components/AIProviderSelectorCard/ThirdPartAIProviderConfirmDialog/ThirdPartAIProviderErrorSolution'
+import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxSystemTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarChatBoxSystemTools'
@@ -143,7 +143,7 @@ const BaseSidebarSystemMessage: FC<{
             </div>
           </Stack>
           <Collapse in={solutionsShow}>
-            <ThirdPartAIProviderErrorSolution />
+            <ThirdPartyAIProviderErrorSolution />
           </Collapse>
         </Box>
       </Alert>

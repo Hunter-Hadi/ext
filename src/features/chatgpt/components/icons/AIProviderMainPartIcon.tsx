@@ -11,7 +11,6 @@ const AIProviderMainPartIcon: FC<IProps> = ({ iconSize = 16 }) => (
       fontSize: iconSize,
       color: (t) => {
         const isDarkMode = t.palette.mode === 'dark'
-
         return isDarkMode ? 'white' : 'primary.main'
       },
     }}

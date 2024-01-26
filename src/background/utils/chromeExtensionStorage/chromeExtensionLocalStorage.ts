@@ -29,6 +29,8 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
     sidebarSettings: {
       chat: {
         conversationId: '',
+        thirdAIProvider: AI_PROVIDER_MAP.OPENAI,
+        thirdAIProviderModel: 'text-davinci-002-render-sha',
       },
       summary: {
         conversationId: '',

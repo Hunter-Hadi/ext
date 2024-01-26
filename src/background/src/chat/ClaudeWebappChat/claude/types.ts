@@ -1,5 +1,4 @@
 import { IAIProviderModel } from '@/features/chatgpt/types'
-import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export interface ClaudeConversation {
   created_at: string
@@ -45,24 +44,9 @@ export const CLAUDE_MODELS: IAIProviderModel[] = [
     value: 'claude-2.1',
     maxTokens: 100 * 1000,
     tags: [],
-    descriptions: [
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__max_token'),
-        value: (t) =>
-          `${numberWithCommas(100 * 1000, 0)} ${t(
-            'client:provider__model__tooltip_card__label__max_token__suffix',
-          )}`,
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__description'),
-        value: (t) =>
-          t(
-            'client:provider__claude_web_app__model__claude_2_100k__description',
-          ),
-      },
-    ],
+    poweredBy: 'Anthropic',
+    description: (t) =>
+      t('client:provider__claude_web_app__model__claude_2_100k__description'),
     uploadFileConfig: {
       accept:
         '.pdf,.doc,.docx,.rtf,.epub,.odt,.odp,.pptx,.txt,.py,.ipynb,.js,.jsx,.html,.css,.java,.cs,.php,.c,.cpp,.cxx,.h,.hpp,.rs,.R,.Rmd,.swift,.go,.rb,.kt,.kts,.ts,.tsx,.m,.scala,.rs,.dart,.lua,.pl,.pm,.t,.sh,.bash,.zsh,.csv,.log,.ini,.config,.json,.yaml,.yml,.toml,.lua,.sql,.bat,.md,.coffee',

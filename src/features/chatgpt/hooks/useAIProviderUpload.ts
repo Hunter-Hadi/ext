@@ -28,7 +28,10 @@ const port = new ContentScriptConnectionV2({
 
 const useAIProviderUpload = () => {
   const [files, setFiles] = useState<IChatUploadFile[]>([])
-  const { currentAIProviderModelDetail, aiProvider } = useAIProviderModels()
+  const {
+    currentAIProviderModelDetail,
+    currentAIProvider,
+  } = useAIProviderModels()
   const {
     currentSidebarConversationMessages,
     currentSidebarConversationId,
@@ -55,7 +58,7 @@ const useAIProviderUpload = () => {
       })
       console.log('useAIProviderUpload [aiProviderUploadFiles]', uploadingFiles)
       setFiles(uploadingFiles)
-      switch (aiProvider) {
+      switch (currentAIProvider) {
         case 'OPENAI':
           {
             // 确保/pages/chatgpt/codeInterpreter.ts正确的注入了
@@ -147,7 +150,7 @@ const useAIProviderUpload = () => {
         blurDelayRef.current = false
       }, 1000)
     },
-    [AIProviderConfig, aiProvider],
+    [AIProviderConfig, currentAIProvider],
   )
   const aiProviderRemoveFiles = useCallback(
     async (files: IChatUploadFile[]) => {
@@ -164,18 +167,18 @@ const useAIProviderUpload = () => {
     [AIProviderConfig],
   )
   const aiProviderUploadingTooltip = useMemo(() => {
-    switch (aiProvider) {
+    switch (currentAIProvider) {
       case 'OPENAI':
         return 'File uploading. Please send your message once upload completes.'
       default:
         return 'File uploading. Please send your message once upload completes.'
     }
     return ''
-  }, [aiProvider])
+  }, [currentAIProvider])
   useEffect(() => {
     const errorItem = files.find((item) => item.uploadStatus === 'error')
     if (errorItem) {
-      switch (aiProvider) {
+      switch (currentAIProvider) {
         case 'OPENAI':
           {
             if (
@@ -239,7 +242,7 @@ const useAIProviderUpload = () => {
       }
       aiProviderRemoveFiles([errorItem])
     }
-  }, [files, aiProvider])
+  }, [files, currentAIProvider])
   useFocus(() => {
     port
       .postMessage({

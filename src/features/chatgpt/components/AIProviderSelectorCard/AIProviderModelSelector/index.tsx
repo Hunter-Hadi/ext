@@ -18,13 +18,12 @@ import { list2Options } from '@/utils/dataHelper/arrayHelper'
 const AIProviderModelSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const {
-    aiProviderModel,
+    currentAIProviderModel,
     aiProviderModels,
-    loading,
     updateAIProviderModel,
-    aiProvider,
+    currentAIProvider,
   } = useAIProviderModels()
-  const prevAIProvider = usePrevious(aiProvider)
+  const prevAIProvider = usePrevious(currentAIProvider)
   const { cleanConversation, createConversation } = useClientConversation()
   const { currentSidebarConversationType } = useSidebarSettings()
   const aiProviderModelsOptions = useMemo(
@@ -37,7 +36,6 @@ const AIProviderModelSelector: FC = () => {
   )
   const handleUpdateModel = useCallback(
     async (updateModel: string) => {
-      await updateAIProviderModel(updateModel)
       // 如果当前是chat，就清空会话，重新创建
       if (currentSidebarConversationType === 'Chat') {
         await cleanConversation(true)
@@ -57,12 +55,12 @@ const AIProviderModelSelector: FC = () => {
     handleUpdateModelRef.current = handleUpdateModel
   }, [handleUpdateModel])
   useEffect(() => {
-    if (aiProviderModel && aiProviderModels.length > 0) {
+    if (currentAIProviderModel && aiProviderModels.length > 0) {
       const modelIsNotFind = aiProviderModels.every(
-        (item) => item.value !== aiProviderModel,
+        (item) => item.value !== currentAIProviderModel,
       )
       const modelIsDisabled = aiProviderModels.find(
-        (model) => model.value === aiProviderModel,
+        (model) => model.value === currentAIProviderModel,
       )?.disabled
       // 如果当前选中的model不在列表中或者被禁用了，就选中第一个，但是因为我们的列表是从下往上排的，所以要选最后一个不是禁用的
       if (modelIsNotFind || modelIsDisabled) {
@@ -74,18 +72,22 @@ const AIProviderModelSelector: FC = () => {
         }
       }
     }
-  }, [aiProviderModels, aiProviderModel])
+  }, [aiProviderModels, currentAIProviderModel])
   useEffect(() => {
     getChromeExtensionLocalStorage().then((appLocalStorage) => {
-      if (prevAIProvider && aiProvider && prevAIProvider !== aiProvider) {
+      if (
+        prevAIProvider &&
+        currentAIProvider &&
+        prevAIProvider !== currentAIProvider
+      ) {
         const currentModel =
-          appLocalStorage.thirdProviderSettings?.[aiProvider]?.model
+          appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model
         if (currentModel) {
           handleUpdateModelRef.current(currentModel)
         }
       }
     })
-  }, [aiProvider])
+  }, [currentAIProvider])
   return (
     <BaseSelect
       displayLoading={false}
@@ -107,7 +109,7 @@ const AIProviderModelSelector: FC = () => {
         },
       }}
       onPermission={async () => {
-        if (aiProvider === 'USE_CHAT_GPT_PLUS') {
+        if (currentAIProvider === 'USE_CHAT_GPT_PLUS') {
           // 恢复为gpt3.5 turbo, 这里不用ai provider models是因为已经倒序了
           await handleUpdateModel(USE_CHAT_GPT_PLUS_MODELS[0].value)
         }
@@ -117,13 +119,12 @@ const AIProviderModelSelector: FC = () => {
       }}
       sx={{ width: '100%' }}
       size={'small'}
-      loading={loading}
       label={t('common:model')}
       labelSx={{
         fontSize: 16,
       }}
       options={aiProviderModelsOptions}
-      value={aiProviderModel}
+      value={currentAIProviderModel}
       onChange={async (value) => {
         await handleUpdateModel(value as string)
       }}
@@ -224,26 +225,6 @@ const AIProviderModelSelector: FC = () => {
                     })}
                   </Stack>
                 )}
-                {original.descriptions.map((item, index) => {
-                  return (
-                    <Stack spacing={0.5} key={index}>
-                      <Typography
-                        fontSize={'12px'}
-                        color={'text.secondary'}
-                        textAlign={'left'}
-                      >
-                        {item.label(t)}:
-                      </Typography>
-                      <Typography
-                        fontSize={'12px'}
-                        color={'text.primary'}
-                        textAlign={'left'}
-                      >
-                        {item.value(t)}
-                      </Typography>
-                    </Stack>
-                  )
-                })}
               </Stack>
             }
           >

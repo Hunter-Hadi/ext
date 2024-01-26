@@ -1,5 +1,4 @@
 import { IAIProviderModel } from '@/features/chatgpt/types'
-import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
 export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
   {
@@ -8,22 +7,9 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     value: 'gemini-pro',
     maxTokens: 32768,
     tags: [],
-    descriptions: [
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__max_token'),
-        value: (t) =>
-          `${numberWithCommas(32768, 0)} ${t(
-            'client:provider__model__tooltip_card__label__max_token__suffix',
-          )}`,
-      },
-      {
-        label: (t) =>
-          t('client:provider__model__tooltip_card__label__description'),
-        value: (t) =>
-          t(`client:provider__gemini__model__gemini_pro__description`),
-      },
-    ],
+    poweredBy: 'Google',
+    description: (t) =>
+      t(`client:provider__gemini__model__gemini_pro__description`),
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
       roles: ['elite'],

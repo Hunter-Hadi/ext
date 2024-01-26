@@ -217,6 +217,13 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
               },
             },
           },
+          MuiAutocomplete: {
+            styleOverrides: {
+              popper: {
+                zIndex: '2147483620',
+              },
+            },
+          },
         },
         palette: {
           primary: {

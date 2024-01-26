@@ -1,15 +1,17 @@
 import Box from '@mui/material/Box'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
+import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useRef } from 'react'
-import { useRecoilValue } from 'recoil'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import ArtAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/ArtAdvanced'
+import ChatAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/ChatAdvanced'
+import SearchAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SearchAdvanced'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { AppLocalStorageState } from '@/store'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * AI设置
@@ -20,7 +22,6 @@ const SearchWithAIAdvanced: FC<{
 }> = (props) => {
   const { sx } = props
   const { currentSidebarConversationType } = useSidebarSettings()
-  const appLocalStorage = useRecoilValue(AppLocalStorageState)
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
   // 用户打开之后，锁定关闭700ms
   const lockTimerRef = useRef<any>(null)
@@ -37,24 +38,27 @@ const SearchWithAIAdvanced: FC<{
     setAnchorEl(null)
   }
   const open = Boolean(anchorEl)
+
+  if (currentSidebarConversationType === 'Summary') {
+    return null
+  }
+
   return (
     <Box
       id={'MaxAIAIAdvanced'}
       sx={{
-        width: '44px',
-        height: '44px',
+        width: '40px',
+        height: '40px',
         position: 'relative',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: '50%',
-        border: '1px solid #EBEBEB',
+        borderRadius: 2,
         cursor: 'pointer',
-        borderColor: (t) =>
-          t.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.16)' : '#EBEBEB',
-        bgcolor: (t) => (t.palette.mode === 'dark' ? '#333' : '#fff'),
+        bgcolor: (t) =>
+          t.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.16)' : '#fff',
         boxShadow:
-          '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09);',
+          '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
         ...sx,
       }}
       aria-owns={open ? 'mouse-over-popover' : undefined}
@@ -96,7 +100,7 @@ const SearchWithAIAdvanced: FC<{
         disableScrollLock
         PaperProps={{
           sx: {
-            ml: isMaxAIImmersiveChatPage() ? 0 : '8px',
+            // ml: isMaxAIImmersiveChatPage() ? 0 : '8px',
           },
         }}
       >
@@ -138,7 +142,41 @@ const SearchWithAIAdvanced: FC<{
                 justifyContent: 'center',
                 flexDirection: 'row',
               }}
-            ></Box>
+            >
+              <Stack spacing={1} p={1} width={'100%'}>
+                {currentSidebarConversationType === 'Search' && (
+                  <SearchAdvanced />
+                )}
+                {currentSidebarConversationType === 'Art' && <ArtAdvanced />}
+                {currentSidebarConversationType === 'Chat' && <ChatAdvanced />}
+                <Stack
+                  sx={{ minHeight: '28px' }}
+                  width={'100%'}
+                  spacing={1}
+                  alignItems={'center'}
+                  direction={'row'}
+                  justifyContent={'end'}
+                  flexDirection={'row'}
+                >
+                  <IconButton
+                    onClick={() => {
+                      if (lockCloseRef.current) {
+                        return
+                      }
+                      waitResetRef.current = true
+                      handlePopoverClose()
+                    }}
+                  >
+                    <ContextMenuIcon
+                      icon={'Close'}
+                      sx={{
+                        fontSize: `24px`,
+                      }}
+                    />
+                  </IconButton>
+                </Stack>
+              </Stack>
+            </Box>
           </Box>
         </ClickAwayListener>
       </Popover>

@@ -7,27 +7,34 @@ import { AppDBStorageState } from '@/store'
 
 type CustomColor = {
   main: React.CSSProperties['color']
+  hoverColor: React.CSSProperties['color']
   borderColor: React.CSSProperties['color']
   background: React.CSSProperties['color']
   paperBackground: React.CSSProperties['color']
+  secondaryBackground: React.CSSProperties['color']
 }
 
 export const customColor = {
-  main: '#7601D3',
-  darkMain: '#B273FF',
+  main: '#9065B0',
+  darkMain: '#9065B0',
+
+  hoverColor: '#73518D',
+  darkHoverColor: '#A684C0',
   // borderColor: getIsDarkMode()
   //   ? 'rgba(255, 255, 255, 0.12)'
   //   : 'rgb(237,237,236)',
   // background: getIsDarkMode() ? '#14162a' : '#ffffff',
   // paperBackground: getIsDarkMode() ? '#292b42' : '#ffffff',
 
-  lightBorderColor: 'rgb(237,237,236)',
+  lightBorderColor: 'rgba(0,0,0,0.08)',
   lightBackground: '#fff',
   lightPaperBackground: '#fff',
+  lightSecondaryBackground: '#F4F4F4',
 
-  darkBorderColor: 'rgba(255, 255, 255, 0.2)',
+  darkBorderColor: 'rgba(255, 255, 255, 0.08)',
   darkBackground: '#202124',
-  darkPaperBackground: '#2C2C2C',
+  darkPaperBackground: '#2c2c2c',
+  darkSecondaryBackground: '#3B3D3E',
 }
 
 declare module '@mui/material/styles' {
@@ -109,17 +116,6 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
                 fontSize: '14px',
                 textTransform: 'none',
               },
-              contained: isDarkMode
-                ? {
-                    backgroundColor: '#6b24c2b3',
-                  }
-                : {},
-              outlined: isDarkMode
-                ? {
-                    color: '#FFFFFF',
-                    borderColor: '#B273FF',
-                  }
-                : {},
             },
             variants: [
               {
@@ -221,6 +217,13 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
               },
             },
           },
+          MuiAutocomplete: {
+            styleOverrides: {
+              popper: {
+                zIndex: '2147483620',
+              },
+            },
+          },
         },
         palette: {
           primary: {
@@ -246,6 +249,12 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
             paperBackground: isDarkMode
               ? customColor.darkPaperBackground
               : customColor.lightPaperBackground,
+            secondaryBackground: isDarkMode
+              ? customColor.darkSecondaryBackground
+              : customColor.lightSecondaryBackground,
+            hoverColor: isDarkMode
+              ? customColor.darkHoverColor
+              : customColor.hoverColor,
           },
           neutral: {
             main: 'rgba(0, 0, 0, 0.4)',

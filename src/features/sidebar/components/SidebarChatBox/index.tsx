@@ -3,7 +3,7 @@ import StopOutlinedIcon from '@mui/icons-material/StopOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { SxProps } from '@mui/material/styles'
+import { SxProps, Theme } from '@mui/material/styles'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
@@ -23,8 +23,7 @@ import {
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
-import ArtTextToImageAdvanced from '@/features/sidebar/components/SidebarChatBox/art_components/ArtTextToImageAdvanced'
-import SearchWithAIAdvanced from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIAdvanced'
+import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
 import SidebarChatBoxFooter from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxFooter'
 import SidebarChatBoxInputActions from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxInputActions'
@@ -69,8 +68,12 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,
-      color: 'primary.main',
+      borderColor: 'primary.main',
+      color: (t: Theme) => {
+        return t.palette.mode === 'dark' ? '#fff' : 'primary.main'
+      },
       '&:hover': {
+        color: 'customColor.hoverColor',
         borderColor: 'primary.main',
       },
     }
@@ -194,20 +197,14 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
               }}
             />
 
-            <SearchWithAIAdvanced
+            <SidebarAIAdvanced
               sx={{
                 position: 'absolute',
                 bottom: 0,
                 right: 0,
               }}
             />
-            <ArtTextToImageAdvanced
-              sx={{
-                position: 'absolute',
-                bottom: 0,
-                right: 0,
-              }}
-            />
+
             {!loading && messages.length > 0 && tempIsShowRegenerate && (
               <>
                 <Button

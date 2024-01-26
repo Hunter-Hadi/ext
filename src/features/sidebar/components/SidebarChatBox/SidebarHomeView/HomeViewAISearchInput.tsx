@@ -53,14 +53,12 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
         return {
           width: '100%',
           height: '100%',
-          bgcolor: isDark
-            ? 'rgba(59, 61, 62, 0.60)'
-            : 'rgba(233, 233, 235, 0.60)',
+          bgcolor: isDark ? 'customColor.secondaryBackground' : '#F5F6F7',
 
           '&:hover': {
             bgcolor: isDark
-              ? 'rgba(59, 61, 62, 0.80)'
-              : 'rgba(233, 233, 235, 0.80)',
+              ? 'rgba(255, 255, 255, 0.10)'
+              : 'rgba(0, 0, 0, 0.10)',
           },
 
           borderRadius: 2,

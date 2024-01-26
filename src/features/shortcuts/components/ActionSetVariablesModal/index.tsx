@@ -647,7 +647,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           disabled={loading}
           onClick={async () => await confirmModal()}
           variant={'contained'}
-          color={'primary'}
+          // color={'primary.main'}
           sx={{
             width: '32px',
             height: '32px',

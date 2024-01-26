@@ -521,7 +521,7 @@ const OpenAIDaemonProcess: FC = () => {
           position: 'absolute',
           height: 40,
           width: '100%',
-          bgcolor: '#7601D3',
+          bgcolor: '#9065B0',
           zIndex: 1000,
           color: '#fff',
         }}
@@ -712,7 +712,7 @@ const KeepChatAliveDaemonProcess: FC = () => {
           <CloseAlert
             icon={<></>}
             sx={{
-              // bgcolor: '#7601D3',
+              // bgcolor: '#9065B0',
               // '& .MuiAlert-icon': {
               //   display: 'none',
               // },
@@ -724,7 +724,7 @@ const KeepChatAliveDaemonProcess: FC = () => {
               // },
               p: '16px!important',
               bgcolor: '#fff',
-              border: '1px solid #7601D3',
+              border: '1px solid #9065B0',
               '& > div': {
                 '&:first-of-type': {
                   display: 'none',
@@ -741,7 +741,7 @@ const KeepChatAliveDaemonProcess: FC = () => {
                 },
               },
               '& *': {
-                color: '#7601D3',
+                color: '#9065B0',
               },
             }}
           >
@@ -759,10 +759,10 @@ const KeepChatAliveDaemonProcess: FC = () => {
                 disableElevation
                 variant={'contained'}
                 sx={{
-                  bgcolor: '#7601D3',
+                  bgcolor: '#9065B0',
                   color: '#fff',
                   '&:hover': {
-                    bgcolor: '#7601D3',
+                    bgcolor: '#9065B0',
                   },
                   textTransform: 'none',
                 }}

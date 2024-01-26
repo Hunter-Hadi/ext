@@ -4,7 +4,7 @@
   right: 0;
   height: 100vh;
   box-sizing: border-box;
-  display: flex!important;
+  display: flex !important;
   flex-direction: column;
   opacity: 0;
   transition: all 0.1s ease-in-out;
@@ -12,9 +12,9 @@
   visibility: hidden;
   width: unset;
 }
-#USE_CHAT_GPT_AI_ROOT_Minimize_Container{
+#USE_CHAT_GPT_AI_ROOT_Minimize_Container {
   z-index: 2147483647;
-  visibility: visible!important;
+  visibility: visible !important;
 }
 #USE_CHAT_GPT_AI_ROOT.open {
   min-width: 400px;
@@ -56,36 +56,39 @@
 /*notion end*/
 
 /*gmail start */
-.usechatgpt-ai__gmail-toolbar-button-group{
+.usechatgpt-ai__gmail-toolbar-button-group {
   transition: all 0.1s ease-in-out;
 }
 .usechatgpt-ai__gmail-toolbar-button-group:hover {
-  box-shadow: 0 1px 2px 0 rgb(138 51 210 / 30%), 0 1px 3px 1px rgb(138 51 210 / 30%);
+  box-shadow: 0 1px 2px 0 rgb(138 51 210 / 30%),
+    0 1px 3px 1px rgb(138 51 210 / 30%);
   border-radius: 4px;
 }
-.usechatgpt-ai__gmail-toolbar-button-group:hover .usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown {
-  background: #9134DC !important;
+.usechatgpt-ai__gmail-toolbar-button-group:hover
+  .usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown {
+  background: #9134dc !important;
 }
 
 .usechatgpt-ai__gmail-toolbar-button-wrapper--cta {
   cursor: pointer;
-  height: 36px!important;
-  background: #7601D3 !important;
-  padding: 0 8px!important;
-  border-radius: 4px 0 0 4px!important;
-  width: unset!important;
-  transition: color .1s ease-in-out;
+  height: 36px !important;
+  background: #9065b0 !important;
+  padding: 0 8px !important;
+  border-radius: 4px 0 0 4px !important;
+  width: unset !important;
+  transition: color 0.1s ease-in-out;
 }
 .usechatgpt-ai__gmail-toolbar-button-wrapper--cta:before {
-  display: none!important;
+  display: none !important;
 }
-.usechatgpt-ai__gmail-toolbar-button-wrapper--cta .usechatgpt-ai__gmail-toolbar-button--cta.inboxsdk__button_icon,
-.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown .usechatgpt-ai__gmail-toolbar-button--dropdown.inboxsdk__button_icon{
+.usechatgpt-ai__gmail-toolbar-button-wrapper--cta
+  .usechatgpt-ai__gmail-toolbar-button--cta.inboxsdk__button_icon,
+.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown
+  .usechatgpt-ai__gmail-toolbar-button--dropdown.inboxsdk__button_icon {
   opacity: 1;
 }
 
-
-.usechatgpt-ai__gmail-app-button.inboxsdk__button_icon{
+.usechatgpt-ai__gmail-app-button.inboxsdk__button_icon {
   margin: 0;
   width: 40px;
   height: 40px;
@@ -94,26 +97,26 @@
   justify-content: center;
   border-radius: 20px;
 }
-.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown{
+.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown {
   cursor: pointer;
-  height: 36px!important;
-  background: #7601D3 !important;
-  padding: 0 2px!important;
-  border-radius: 0 4px 4px 0!important;
+  height: 36px !important;
+  background: #9065b0 !important;
+  padding: 0 2px !important;
+  border-radius: 0 4px 4px 0 !important;
   border-left: 1px solid rgba(0, 0, 0, 0.87) !important;
-  margin-left: 0!important;
-  transition: color .1s ease-in-out;
+  margin-left: 0 !important;
+  transition: color 0.1s ease-in-out;
 }
-.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown.usechatgpt-ai__gmail-toolbar-button--dropdown:before{
-  display: none!important;
+.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown.usechatgpt-ai__gmail-toolbar-button--dropdown:before {
+  display: none !important;
 }
-.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown.usechatgpt-ai__gmail-toolbar-button--dropdown{
-  opacity: 1!important;
+.usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown.usechatgpt-ai__gmail-toolbar-button--dropdown {
+  opacity: 1 !important;
 }
 
 .usechatgpt-ai__gmail-toolbar-button-wrapper--dropdown:hover,
-.usechatgpt-ai__gmail-toolbar-button-wrapper--cta:hover{
-  background: #9134DC !important;
+.usechatgpt-ai__gmail-toolbar-button-wrapper--cta:hover {
+  background: #9134dc !important;
 }
 
 body[dir='rtl'] #USE_CHAT_GPT_AI_ROOT {
@@ -121,14 +124,15 @@ body[dir='rtl'] #USE_CHAT_GPT_AI_ROOT {
   left: 0;
 }
 
-.google-s-ad,.google-s-ad__wrapper {
+.google-s-ad,
+.google-s-ad__wrapper {
   display: none !important;
 }
 
 use-chat-gpt-ai.open,
 #USE_CHAT_GPT_AI_ROOT.open,
-use-chat-gpt-ai-content-menu{
-  visibility: visible!important;
+use-chat-gpt-ai-content-menu {
+  visibility: visible !important;
   outline: none;
 }
 

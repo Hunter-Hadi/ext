@@ -107,7 +107,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     })
     if (ctaButtonSx) {
       const {
-        backgroundColor = '#7601D3',
+        backgroundColor = '#9065B0',
         hoverBackgroundColor = 'rgb(94,34,169)',
         color = '#fff',
         hoverColor = '#fff',
@@ -139,7 +139,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     }
     if (dropdownButtonSx) {
       const {
-        backgroundColor = '#7601D3',
+        backgroundColor = '#9065B0',
         hoverBackgroundColor = 'rgb(94,34,169)',
         color = '#fff',
         hoverColor = '#fff',

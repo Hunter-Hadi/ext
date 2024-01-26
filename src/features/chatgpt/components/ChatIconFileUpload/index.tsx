@@ -1,13 +1,8 @@
 import Button from '@mui/material/Button'
-import React, { FC, useEffect, useMemo, useRef } from 'react'
+import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { atom, useRecoilValue, useSetRecoilState } from 'recoil'
-import { v4 as uuidV4 } from 'uuid'
+import { useRecoilValue } from 'recoil'
 
-import {
-  checkFileTypeIsImage,
-  file2base64,
-} from '@/background/utils/uplpadFileProcessHelper'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ChatIconFileList, {
@@ -16,6 +11,7 @@ import ChatIconFileList, {
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import { ChatGPTConversationState } from '@/features/sidebar/store'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
@@ -23,14 +19,6 @@ interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   onUpload?: (files: IChatUploadFile[]) => void
   onDone?: (files: IChatUploadFile[]) => void
 }
-export const MaxAIChatFileHandleUploadState = atom<{
-  uploadFile: (file: File) => void
-}>({
-  key: 'MaxAIChatFileHandleUploadState',
-  default: {
-    uploadFile: () => {},
-  },
-})
 
 const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   const { disabled = false, TooltipProps, onUpload, onDone, ...rest } = props
@@ -42,28 +30,15 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
   } = useAIProviderUpload()
-  const setMaxAIChatFileHandleUploadState = useSetRecoilState(
-    MaxAIChatFileHandleUploadState,
-  )
   const clientState = useRecoilValue(ChatGPTClientState)
   const conversation = useRecoilValue(ChatGPTConversationState)
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
-  const maxFileSize = AIProviderConfig?.maxFileSize || 5 * 1024 * 1024 // 5MB
+  const maxFileSize = AIProviderConfig?.maxFileSize
   const isMaxFiles = useMemo(() => {
     return files.length >= (AIProviderConfig?.maxCount || 1)
   }, [files])
-  useEffect(() => {
-    setMaxAIChatFileHandleUploadState({
-      uploadFile: async (file) => {
-        await handleUpload({
-          target: {
-            files: [file],
-          },
-        } as any)
-      },
-    })
-  }, [])
+
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const existFilesCount = files?.length || 0
     const canUploadCount = maxFiles - existFilesCount
@@ -77,52 +52,11 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       return
     }
     // upload
-    const newUploadFiles = await Promise.all(
-      filesArray.map(async (file) => {
-        const isImageFile = checkFileTypeIsImage(file)
-        let icon = 'file'
-        let base64Data = ''
-        // image, svg, gif
-        if (isImageFile) {
-          icon = 'image'
-          base64Data = (await file2base64(file)) || ''
-        }
-        // id: string
-        // fileName: string
-        // fileSize: number
-        // fileType: string
-        // blobUrl?: string
-        // icon?: string
-        // file?: File
-        // uploadProgress?: number
-        // uploadStatus?: 'idle' | 'uploading' | 'success' | 'error'
-        // uploadErrorMessage?: string
-        // uploadedUrl?: string
-        const uploadFile = {
-          id: uuidV4(),
-          file,
-          fileName: file.name,
-          fileSize: file.size,
-          fileType: file.type,
-          base64Data,
-          blobUrl: URL.createObjectURL(file),
-          uploadStatus: 'idle',
-          uploadErrorMessage: '',
-          uploadProgress: 0,
-          icon,
-        } as IChatUploadFile
-        // check file size
-        if (maxFileSize > 0 && uploadFile.fileSize > maxFileSize) {
-          uploadFile.uploadStatus = 'error'
-          uploadFile.uploadErrorMessage = `Upload failed: ${
-            uploadFile.fileName
-          } exceeds the ${(maxFileSize / 1024 / 1024).toFixed(
-            0,
-          )}MB limit. Please select a smaller file.`
-        }
-        return uploadFile
-      }),
+    const newUploadFiles = await formatClientUploadFiles(
+      filesArray,
+      maxFileSize,
     )
+
     await aiProviderUploadFiles(files.concat(newUploadFiles))
     // clear input
     if (inputRef.current) {

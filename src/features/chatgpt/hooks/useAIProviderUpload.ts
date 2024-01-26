@@ -1,20 +1,17 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import isArray from 'lodash-es/isArray'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo } from 'react'
+import { useRecoilState } from 'recoil'
 
-import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
-import { useCreateClientMessageListener } from '@/background/utils'
 import {
   checkFileTypeIsImage,
   serializeUploadFile,
 } from '@/background/utils/uplpadFileProcessHelper'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { useFocus } from '@/features/common/hooks/useFocus'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
@@ -27,7 +24,11 @@ const port = new ContentScriptConnectionV2({
 })
 
 const useAIProviderUpload = () => {
-  const [files, setFiles] = useState<IChatUploadFile[]>([])
+  const [clientUploadedState, setClientUploadedState] = useRecoilState(
+    ClientUploadedFilesState,
+  )
+  const { files } = clientUploadedState
+
   const {
     currentAIProviderModelDetail,
     currentAIProvider,
@@ -36,10 +37,28 @@ const useAIProviderUpload = () => {
     currentSidebarConversationMessages,
     currentSidebarConversationId,
   } = useSidebarSettings()
-  const blurDelayRef = useRef(false)
   const AIProviderConfig = useMemo(() => {
     return currentAIProviderModelDetail?.uploadFileConfig
   }, [currentAIProviderModelDetail])
+
+  const setFiles = (files: IChatUploadFile[]) => {
+    setClientUploadedState((preSate) => {
+      return {
+        ...preSate,
+        files,
+      }
+    })
+  }
+
+  const updateBlurDelayRef = (flag: boolean) => {
+    setClientUploadedState((preSate) => {
+      return {
+        ...preSate,
+        blurDelay: flag,
+      }
+    })
+  }
+
   // 上传文件
   const aiProviderUploadFiles = useCallback(
     async (newUploadFiles: IChatUploadFile[]) => {
@@ -48,7 +67,7 @@ const useAIProviderUpload = () => {
       //   event: 'Client_chatGetUploadFileToken',
       //   data: {},
       // })
-      blurDelayRef.current = true
+      updateBlurDelayRef(true)
       const uploadingFiles = cloneDeep(newUploadFiles).map((item) => {
         if (item.uploadStatus === 'idle') {
           item.uploadStatus = 'uploading'
@@ -147,7 +166,7 @@ const useAIProviderUpload = () => {
           break
       }
       setTimeout(() => {
-        blurDelayRef.current = false
+        updateBlurDelayRef(false)
       }, 1000)
     },
     [AIProviderConfig, currentAIProvider],
@@ -175,6 +194,7 @@ const useAIProviderUpload = () => {
     }
     return ''
   }, [currentAIProvider])
+
   useEffect(() => {
     const errorItem = files.find((item) => item.uploadStatus === 'error')
     if (errorItem) {
@@ -243,55 +263,7 @@ const useAIProviderUpload = () => {
       aiProviderRemoveFiles([errorItem])
     }
   }, [files, currentAIProvider])
-  useFocus(() => {
-    port
-      .postMessage({
-        event: 'Client_chatGetFiles',
-        data: {},
-      })
-      .then((result) => {
-        if (blurDelayRef.current) {
-          return
-        }
-        if (isArray(result.data)) {
-          console.log('useAIProviderUpload [Client_chatGetFiles]', result.data)
-          setFiles(result.data)
-        }
-      })
-  })
-  useEffectOnce(() => {
-    port
-      .postMessage({
-        event: 'Client_chatGetFiles',
-        data: {},
-      })
-      .then((result) => {
-        if (isArray(result.data)) {
-          console.log('useAIProviderUpload [Client_chatGetFiles]', result.data)
-          setFiles(result.data)
-        }
-      })
-  })
-  useCreateClientMessageListener(async (event, data, sender) => {
-    switch (event as IChromeExtensionClientListenEvent) {
-      case 'Client_listenUploadFilesChange': {
-        const { files } = data
-        console.log(
-          'useAIProviderUpload [Client_listenUploadFilesChange]',
-          files,
-        )
-        setFiles(files)
-        return {
-          success: true,
-          data: {},
-          message: '',
-        }
-      }
-      default:
-        break
-    }
-    return undefined
-  })
+
   return {
     aiProviderUploadingTooltip,
     AIProviderConfig,

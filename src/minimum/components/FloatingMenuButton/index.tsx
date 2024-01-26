@@ -13,8 +13,11 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
+import MaxAIArtMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIArtMiniButton'
 import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
+import MaxAIImmersiveChatButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIImmersiveChatButton'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
+import MaxAIScreenshotMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIScreenshotMiniButton'
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
 import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
@@ -175,19 +178,33 @@ const FloatingMenuButton: FC = () => {
                   data: {},
                 })
               }}
-            >
-              <Stack pb={'6px'} spacing={'6px'}>
-                {isHover && (
-                  <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />
-                )}
-                {isHover && (
-                  <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
-                )}
-                {(isHover || isKeepShow) && (
-                  <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
-                )}
-              </Stack>
-            </MaxAIMiniButton>
+              aboveNode={
+                <Stack spacing={'6px'}>
+                  {isHover && (
+                    <MaxAIScreenshotMiniButton key={'MaxAIScreenshotButton'} />
+                  )}
+                  {isHover && <MaxAIArtMiniButton key={'MaxAIArtButton'} />}
+                  {isHover && (
+                    <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
+                  )}
+                  {(isHover || isKeepShow) && (
+                    <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
+                  )}
+                </Stack>
+              }
+              underNode={
+                <Stack spacing={'6px'}>
+                  {isHover && (
+                    <MaxAIImmersiveChatButton
+                      key={'MaxAIImmersiveChatButton'}
+                    />
+                  )}
+                  {isHover && (
+                    <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />
+                  )}
+                </Stack>
+              }
+            />
           </Box>
         </Box>
       </Draggable>

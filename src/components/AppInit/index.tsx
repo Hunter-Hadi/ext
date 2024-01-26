@@ -4,6 +4,7 @@ import { useSetRecoilState } from 'recoil'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
+import ClientChatGPTFilesFocusInit from '@/components/AppInit/ClientChatGPTFilesFocusInit'
 import {
   MAXAIPDFAIViewerErrorAlert,
   MaxAIPDFAIViewerTopBarButtonGroup,
@@ -128,6 +129,7 @@ const AppInit = () => {
       <ContextMenuRoot />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
+      <ClientChatGPTFilesFocusInit />
     </>
   )
 }

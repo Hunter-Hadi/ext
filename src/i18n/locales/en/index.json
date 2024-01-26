@@ -261,6 +261,7 @@
     "sidebar__refresh_page__button": "Refresh this page",
     "sidebar__input__placeholder": "Ask AI...",
     "sidebar__input__tokens_limited__title": "tokens max",
+    "sidebar__mini_button__screenshot__tooltip": "AI screenshot",
     "floating_menu__button__cta__tooltip": "Ask AI to edit, summarize, explain, or generate text",
     "floating_menu__button__hide_menu": "Hide menu",
     "floating_menu__button__hide_menu__until_next_visit": "Hide menu until next visit",

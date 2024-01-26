@@ -36,7 +36,7 @@ export const maxAIFileUpload = async (
       })
     }
     const formData = new FormData()
-    formData.append('file', file, filename)
+    formData.append('file', file)
     formData.append('file_name', filename)
     formData.append('use_case', useCase)
     fetch(`${APP_USE_CHAT_GPT_API_HOST}/app/upload_file`, {

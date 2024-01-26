@@ -2,14 +2,13 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import Browser from 'webextension-polyfill'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
-import { ISidebarConversationType } from '@/features/sidebar/store'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
-const MaxAISummarizeMiniButton = () => {
+const MaxAIImmersiveChatButton = () => {
   const { t } = useTranslation(['common', 'client'])
   return (
     <Stack
@@ -25,7 +24,7 @@ const MaxAISummarizeMiniButton = () => {
       <TextOnlyTooltip
         arrow
         minimumTooltip
-        title={t('client:sidebar__tabs__search__tooltip')}
+        title={t('client:sidebar__button__immersive_chat')}
         placement={'left'}
       >
         <Button
@@ -42,24 +41,10 @@ const MaxAISummarizeMiniButton = () => {
               color: 'primary.main',
             },
           }}
-          onClick={(event) => {
-            showChatBox()
-            const timer = setInterval(() => {
-              if (
-                getMaxAISidebarRootElement()?.querySelector(
-                  'p[data-testid="max-ai__search-tab"]',
-                )
-              ) {
-                clearInterval(timer)
-                window.dispatchEvent(
-                  new CustomEvent('MaxAISwitchSidebarTab', {
-                    detail: {
-                      type: 'Search' as ISidebarConversationType,
-                    },
-                  }),
-                )
-              }
-            }, 500)
+          onClick={() => {
+            chromeExtensionClientOpenPage({
+              url: Browser.runtime.getURL(`/pages/chat/index.html`),
+            })
           }}
         >
           <ContextMenuIcon
@@ -67,11 +52,11 @@ const MaxAISummarizeMiniButton = () => {
               fontSize: '20px',
               color: 'inherit',
             }}
-            icon={'Search'}
+            icon={'Fullscreen'}
           />
         </Button>
       </TextOnlyTooltip>
     </Stack>
   )
 }
-export default MaxAISummarizeMiniButton
+export default MaxAIImmersiveChatButton

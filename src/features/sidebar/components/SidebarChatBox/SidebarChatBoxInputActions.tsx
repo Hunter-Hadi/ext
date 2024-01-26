@@ -147,11 +147,7 @@ const SidebarChatBoxInputActions: FC<{
         {/* shortcut btn */}
         {currentSidebarConversationType === 'Chat' &&
           !smoothConversationLoading && (
-            <SidebarScreenshotButton
-              sx={{
-                ...actionsBtnColorSxMemo,
-              }}
-            />
+            <SidebarScreenshotButton sx={actionsBtnColorSxMemo} />
           )}
 
         {/* prompt library btn */}

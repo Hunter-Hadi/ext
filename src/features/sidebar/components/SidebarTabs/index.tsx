@@ -12,7 +12,6 @@ import {
   ISidebarConversationType,
 } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { I18nextKeysType } from '@/i18next'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -63,7 +62,6 @@ export const sidebarTabsData: Array<{
 ]
 
 const SidebarTabs: FC = () => {
-  const { isDarkMode } = useCustomTheme()
   const { t } = useTranslation(['common', 'client'])
 
   const {
@@ -152,7 +150,7 @@ const SidebarTabs: FC = () => {
               <Typography
                 fontSize={12}
                 color={'inherit'}
-                data-testid={'max-ai__summary-tab'}
+                data-testid={`max-ai__${item.value.toLowerCase()}-tab`}
                 lineHeight={1}
               >
                 {t(item.label as any)}

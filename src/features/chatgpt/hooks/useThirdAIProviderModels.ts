@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP } from '@/constants'
-import AIProviderOptions from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'

@@ -11,7 +11,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderSelectorCard/AIProviderOptions'
+import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
 

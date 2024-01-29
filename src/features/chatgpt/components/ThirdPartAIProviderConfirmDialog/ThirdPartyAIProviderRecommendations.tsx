@@ -5,8 +5,9 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 
-import AIProviderModelSelectorOptions, {
+import {
   AIProviderModelSelectorOption,
+  ChatAIProviderModelSelectorOptions,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
@@ -31,6 +32,7 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
       await updateAIProviderModel(
         AIProviderModelSelectorOption.AIProvider,
         AIProviderModelSelectorOption.value,
+        'Chat',
       )
       setDialogState({
         open: false,
@@ -76,31 +78,33 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
         flexWrap={'wrap'}
         gap={1}
       >
-        {AIProviderModelSelectorOptions.map((AIProviderModelSelectorOption) => (
-          <LoadingButton
-            loading={loading}
-            variant="outlined"
-            key={AIProviderModelSelectorOption.value}
-            startIcon={
-              <AIProviderIcon
-                aiProviderType={AIProviderModelSelectorOption.AIProvider}
-                size={24}
-              />
-            }
-            endIcon={<AIProviderMainPartIcon />}
-            sx={{
-              flexShrink: 0,
-              borderRadius: 2,
-            }}
-            onClick={async () => {
-              await handleSelectRecommendationModel(
-                AIProviderModelSelectorOption,
-              )
-            }}
-          >
-            {AIProviderModelSelectorOption.label}
-          </LoadingButton>
-        ))}
+        {ChatAIProviderModelSelectorOptions.map(
+          (AIProviderModelSelectorOption) => (
+            <LoadingButton
+              loading={loading}
+              variant="outlined"
+              key={AIProviderModelSelectorOption.value}
+              startIcon={
+                <AIProviderIcon
+                  aiProviderType={AIProviderModelSelectorOption.AIProvider}
+                  size={24}
+                />
+              }
+              endIcon={<AIProviderMainPartIcon />}
+              sx={{
+                flexShrink: 0,
+                borderRadius: 2,
+              }}
+              onClick={async () => {
+                await handleSelectRecommendationModel(
+                  AIProviderModelSelectorOption,
+                )
+              }}
+            >
+              {AIProviderModelSelectorOption.label}
+            </LoadingButton>
+          ),
+        )}
       </Stack>
     </>
   )

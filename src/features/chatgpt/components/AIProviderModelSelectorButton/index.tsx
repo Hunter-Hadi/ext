@@ -6,27 +6,63 @@ import Popper from '@mui/material/Popper'
 import { SxProps } from '@mui/material/styles'
 import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 
+import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
+import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
-import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
+import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
+import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import { getAppContextMenuRootElement } from '@/utils'
 
 const AIProviderModelSelectorButton: FC<{
+  sidebarConversationType: ISidebarConversationType
   sx?: SxProps
   size?: 'normal' | 'small'
   placement?: TooltipProps['placement']
 }> = (props) => {
-  const { sx, size = 'normal', placement } = props
-  const {
-    currentAIProvider = 'USE_CHAT_GPT_PLUS',
-    currentAIProviderModelDetail,
-  } = useAIProviderModels()
-  const { isSelectedThirdAIProvider } = useThirdAIProviderModels()
+  const { sx, size = 'normal', placement, sidebarConversationType } = props
+  const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
+  // 当前sidebarConversationType的AI provider
+  const currentChatAIProvider =
+    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
+      .AIProvider ||
+    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider
+  // 当前sidebarConversationType的AI model
+  const currentChatModel =
+    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
+      .AIModel ||
+    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+  const currentModelDetail = useMemo(() => {
+    const AIProviderSelectorModel = ChatAIProviderModelSelectorOptions.find(
+      (option) => option.value === currentChatModel,
+    )
+    if (
+      AIProviderSelectorModel &&
+      AIProviderSelectorModel.AIProvider === currentChatAIProvider
+    ) {
+      // 说明是从AI Provider Selector选中的Model
+      return {
+        label: AIProviderSelectorModel.label,
+        value: AIProviderSelectorModel.value,
+        AIProvider: AIProviderSelectorModel.AIProvider,
+      }
+    }
+    const models = AI_PROVIDER_MODEL_MAP[currentChatAIProvider]
+    const currentModel =
+      models.find((model) => model.value === currentChatModel) || models[0]
+    return {
+      label: currentModel.title,
+      value: currentModel.value,
+      AIProvider: currentChatAIProvider,
+    }
+  }, [AI_PROVIDER_MODEL_MAP, currentChatModel, currentChatAIProvider])
   const [open, setOpen] = React.useState(false)
   const anchorRef = React.useRef<HTMLButtonElement>(null)
 
@@ -46,13 +82,12 @@ const AIProviderModelSelectorButton: FC<{
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open)
-  React.useEffect(() => {
+  useEffect(() => {
     if (prevOpen.current === true && open === false) {
       anchorRef.current!.focus()
     }
     prevOpen.current = open
   }, [open])
-
   return (
     <Box>
       <Button
@@ -77,16 +112,16 @@ const AIProviderModelSelectorButton: FC<{
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        {isSelectedThirdAIProvider ? (
+        {isThirdPartyAIProvider(currentChatAIProvider) ? (
           <ThirdPartyAIProviderIcon
             sx={{
               fontSize: '20px',
             }}
           />
         ) : (
-          <AIProviderIcon aiProviderType={currentAIProvider} />
+          <AIProviderIcon aiProviderType={currentChatAIProvider} />
         )}
-        {currentAIProviderModelDetail?.title && (
+        {currentModelDetail?.label && (
           <Typography
             ml={0.5}
             fontSize={14}
@@ -96,7 +131,7 @@ const AIProviderModelSelectorButton: FC<{
               userSelect: 'none',
             }}
           >
-            {currentAIProviderModelDetail.title}
+            {currentModelDetail.label}
           </Typography>
         )}
         <Popper
@@ -152,7 +187,10 @@ const AIProviderModelSelectorButton: FC<{
                   }}
                 >
                   <Box>
-                    <AIModelSelectorCard onClose={handleClose} />
+                    <AIModelSelectorCard
+                      sidebarConversationType={sidebarConversationType}
+                      onClose={handleClose}
+                    />
                   </Box>
                 </ClickAwayListener>
               </Box>

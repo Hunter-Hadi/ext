@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
@@ -32,11 +33,9 @@ const useInitSidebar = () => {
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const {
-    switchBackgroundChatSystemAIProvider,
-    createConversation,
-  } = useClientConversation()
+  const { switchBackgroundChatSystemAIProvider } = useClientConversation()
   const { continueInSearchWithAI } = useSearchWithAI()
   const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
   const sidebarSettingsRef = useRef(sidebarSettings)
@@ -47,7 +46,26 @@ const useInitSidebar = () => {
     sidebarSettingsRef.current = sidebarSettings
   }, [sidebarSettings])
   useEffect(() => {
+    let isExpired = false
     if (currentSidebarConversationType) {
+      const switchConversation = async (conversationId?: string) => {
+        if (!conversationId) {
+          return
+        }
+        const conversation = await clientGetConversation(conversationId)
+        if (
+          !isExpired &&
+          conversation &&
+          conversation.meta.AIProvider &&
+          conversation.meta.AIModel
+        ) {
+          await updateAIProviderModel(
+            conversation.meta.AIProvider,
+            conversation.meta.AIModel,
+            false,
+          )
+        }
+      }
       console.log(
         '新版Conversation currentSidebarConversationType',
         currentSidebarConversationType,
@@ -55,6 +73,8 @@ const useInitSidebar = () => {
       switch (currentSidebarConversationType) {
         case 'Chat':
           {
+            // 切换回cache中的conversation
+            switchConversation(sidebarSettingsRef.current?.chat?.conversationId)
           }
           break
         case 'Summary':
@@ -71,10 +91,21 @@ const useInitSidebar = () => {
         case 'Search':
           {
             // Search的逻辑
+            switchConversation(
+              sidebarSettingsRef.current?.search?.conversationId,
+            )
+          }
+          break
+        case 'Art':
+          {
+            switchConversation(sidebarSettingsRef.current?.art?.conversationId)
           }
           break
       }
       pageConversationTypeRef.current = currentSidebarConversationType
+    }
+    return () => {
+      isExpired = true
     }
   }, [currentSidebarConversationType])
   // summary 重新生成的逻辑
@@ -118,7 +149,6 @@ const useInitSidebar = () => {
               )
               await switchBackgroundChatSystemAIProvider(
                 conversation.meta.AIProvider,
-                conversation.meta.AIModel,
               )
             }
           }

@@ -49,33 +49,41 @@ const useSidebarSettings = () => {
     appLocalStorage.sidebarSettings?.summary?.conversationId,
     appLocalStorage.sidebarSettings?.art?.conversationId,
   ])
-  const sidebarConversationTypeMessageMap = useMemo(() => {
+  const sidebarConversationTypeofConversationMap = useMemo(() => {
     return {
       Chat:
         clientConversationMap[
           appLocalStorage.sidebarSettings?.chat?.conversationId || ''
-        ]?.messages || [],
+        ],
       Search:
         clientConversationMap[
           appLocalStorage.sidebarSettings?.search?.conversationId || ''
-        ]?.messages || [],
-      Summary:
-        clientConversationMap[getPageSummaryConversationId()]?.messages || [],
+        ],
+      Summary: clientConversationMap[getPageSummaryConversationId()],
       Art:
         clientConversationMap[
           appLocalStorage.sidebarSettings?.art?.conversationId || ''
-        ]?.messages || [],
+        ],
     } as {
-      [key in ISidebarConversationType]: IChatMessage[]
+      [key in ISidebarConversationType]: IChatConversation | null
     }
   }, [
-    currentSidebarConversationId,
+    clientConversationMap,
     appLocalStorage.sidebarSettings?.art?.conversationId,
     appLocalStorage.sidebarSettings?.chat?.conversationId,
     appLocalStorage.sidebarSettings?.search?.conversationId,
     appLocalStorage.sidebarSettings?.summary?.conversationId,
-    clientConversationMap,
   ])
+  const sidebarConversationTypeMessageMap = useMemo(() => {
+    return {
+      Chat: sidebarConversationTypeofConversationMap.Chat?.messages || [],
+      Search: sidebarConversationTypeofConversationMap.Search?.messages || [],
+      Summary: sidebarConversationTypeofConversationMap.Summary?.messages || [],
+      Art: sidebarConversationTypeofConversationMap.Art?.messages || [],
+    } as {
+      [key in ISidebarConversationType]: IChatMessage[]
+    }
+  }, [currentSidebarConversationId, sidebarConversationTypeofConversationMap])
   const currentSidebarConversation = useMemo(() => {
     return clientConversationMap[currentSidebarConversationId || ''] as
       | IChatConversation
@@ -120,6 +128,7 @@ const useSidebarSettings = () => {
     currentSidebarConversationId,
     currentSidebarConversationMessages,
     sidebarConversationTypeMessageMap,
+    sidebarConversationTypeofConversationMap,
     updateSidebarSettings,
     updateSidebarConversationType,
   }

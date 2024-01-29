@@ -17,8 +17,10 @@ const MaxAIMiniButton: FC<{
   onMouseLeave?: (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => void
+  aboveNode?: React.ReactNode
+  underNode?: React.ReactNode
 }> = (props) => {
-  const { isDragging, children, onClick } = props
+  const { isDragging, onClick, aboveNode, underNode } = props
   const { chatBoxShortCutKey } = useCommands()
   const [buttonHover, setButtonHover] = useState(false)
   const [delayHoverTooltip, setDelayHoverTooltip] = useState(false)
@@ -108,16 +110,32 @@ const MaxAIMiniButton: FC<{
           }}
         />
       </Stack>
-      <Stack
-        sx={{
-          position: 'absolute',
-          left: 0,
-          width: 42,
-          bottom: 32,
-        }}
-      >
-        {children as any}
-      </Stack>
+      {aboveNode && (
+        <Stack
+          sx={{
+            position: 'absolute',
+            left: 0,
+            width: 42,
+            bottom: 32,
+            pb: '6px',
+          }}
+        >
+          {aboveNode}
+        </Stack>
+      )}
+      {underNode && (
+        <Stack
+          sx={{
+            position: 'absolute',
+            left: 0,
+            width: 42,
+            top: 32,
+            pt: '6px',
+          }}
+        >
+          {underNode}
+        </Stack>
+      )}
     </Stack>
   )
 }

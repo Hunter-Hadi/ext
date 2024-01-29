@@ -8,7 +8,9 @@ import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
+import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 
@@ -19,7 +21,10 @@ const SidebarChatBoxSystemTools: FC<{
 }> = (props) => {
   const { message, onSolutionToggle, solutionsShow } = props
   const { t } = useTranslation(['common', 'client'])
-  const { currentSidebarConversationMessages } = useSidebarSettings()
+  const {
+    currentSidebarConversationMessages,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
   const lastMessage =
     currentSidebarConversationMessages.length > 0
       ? currentSidebarConversationMessages[
@@ -27,6 +32,8 @@ const SidebarChatBoxSystemTools: FC<{
         ]
       : undefined
   const { currentUserPlan, userInfo } = useUserInfo()
+  const { regenerate } = useClientChat()
+  const { regenerateSearchWithAI } = useSearchWithAI()
   const chatMessageType =
     message.meta?.systemMessageType ||
     message.extra?.systemMessageType ||
@@ -110,6 +117,13 @@ const SidebarChatBoxSystemTools: FC<{
             sx={{
               border: '1px solid rgba(244, 67, 54, 0.5)',
               color: '#f44336',
+            }}
+            onClick={async () => {
+              if (currentSidebarConversationType === 'Search') {
+                await regenerateSearchWithAI()
+                return
+              }
+              await regenerate()
             }}
           >
             {t('client:sidebar__button__retry')}

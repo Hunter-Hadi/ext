@@ -1,15 +1,15 @@
+import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
-import { ISidebarConversationType } from '@/features/sidebar/store'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
+import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
-const MaxAISummarizeMiniButton = () => {
+const MaxAIScreenshotMiniButton = () => {
   const { t } = useTranslation(['common', 'client'])
   return (
     <Stack
@@ -25,7 +25,7 @@ const MaxAISummarizeMiniButton = () => {
       <TextOnlyTooltip
         arrow
         minimumTooltip
-        title={t('client:sidebar__tabs__search__tooltip')}
+        title={t('client:sidebar__mini_button__screenshot__tooltip')}
         placement={'left'}
       >
         <Button
@@ -43,35 +43,42 @@ const MaxAISummarizeMiniButton = () => {
             },
           }}
           onClick={(event) => {
-            showChatBox()
+            // showChatBox()
             const timer = setInterval(() => {
-              if (
-                getMaxAISidebarRootElement()?.querySelector(
-                  'p[data-testid="max-ai__search-tab"]',
-                )
-              ) {
+              const screenshotBtn = queryShadowContainerElementSelector<HTMLElement>(
+                MAXAI_MINIMIZE_CONTAINER_ID,
+                'button[data-testid="maxai-take-screenshot"]',
+              )
+              if (screenshotBtn) {
                 clearInterval(timer)
-                window.dispatchEvent(
-                  new CustomEvent('MaxAISwitchSidebarTab', {
-                    detail: {
-                      type: 'Search' as ISidebarConversationType,
-                    },
-                  }),
-                )
+                screenshotBtn.click()
               }
             }, 500)
           }}
         >
-          <ContextMenuIcon
+          <ContentCutOutlinedIcon
             sx={{
-              fontSize: '20px',
+              transform: 'rotate(-90deg)',
               color: 'inherit',
+              fontSize: '18px',
             }}
-            icon={'Search'}
           />
         </Button>
       </TextOnlyTooltip>
+
+      {/* 在 click MaxAIScreenshotMiniButton 时 通过找到下面这个隐藏的 SidebarScreenshotButton 组件触发 click 事件，来实现截图  */}
+      <SidebarScreenshotButton
+        sx={{
+          position: 'absolute',
+          display: 'none',
+          visibility: 0,
+          width: 0,
+          height: 0,
+          opacity: 0,
+          zIndex: -1,
+        }}
+      />
     </Stack>
   )
 }
-export default MaxAISummarizeMiniButton
+export default MaxAIScreenshotMiniButton

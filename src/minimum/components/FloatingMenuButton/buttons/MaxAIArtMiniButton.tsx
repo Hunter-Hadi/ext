@@ -7,25 +7,9 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
-const tooltipKey = () => {
-  const summaryType = getPageSummaryType()
-  switch (summaryType) {
-    case 'DEFAULT_EMAIL_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__default_email'
-    case 'PAGE_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__page'
-    case 'PDF_CRX_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__pdf_crx'
-    case 'YOUTUBE_VIDEO_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__youtube_video'
-    default:
-      return 'client:sidebar__tabs__summary__tooltip__page'
-  }
-}
-const MaxAISummarizeMiniButton = () => {
+const MaxAIArtMiniButton = () => {
   const { t } = useTranslation(['common', 'client'])
   return (
     <Stack
@@ -41,7 +25,7 @@ const MaxAISummarizeMiniButton = () => {
       <TextOnlyTooltip
         arrow
         minimumTooltip
-        title={t(tooltipKey() as any)}
+        title={t('client:sidebar__tabs__art__tooltip')}
         placement={'left'}
       >
         <Button
@@ -63,14 +47,14 @@ const MaxAISummarizeMiniButton = () => {
             const timer = setInterval(() => {
               if (
                 getMaxAISidebarRootElement()?.querySelector(
-                  'p[data-testid="max-ai__summary-tab"]',
+                  'p[data-testid="max-ai__art-tab"]',
                 )
               ) {
                 clearInterval(timer)
                 window.dispatchEvent(
                   new CustomEvent('MaxAISwitchSidebarTab', {
                     detail: {
-                      type: 'Summary' as ISidebarConversationType,
+                      type: 'Art' as ISidebarConversationType,
                     },
                   }),
                 )
@@ -83,11 +67,11 @@ const MaxAISummarizeMiniButton = () => {
               fontSize: '20px',
               color: 'inherit',
             }}
-            icon={'Summarize'}
+            icon={'Art'}
           />
         </Button>
       </TextOnlyTooltip>
     </Stack>
   )
 }
-export default MaxAISummarizeMiniButton
+export default MaxAIArtMiniButton

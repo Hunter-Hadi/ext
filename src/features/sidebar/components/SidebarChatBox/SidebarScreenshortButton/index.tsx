@@ -4,13 +4,13 @@ import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import { base642file } from '@/background/utils/uplpadFileProcessHelper'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { MaxAIChatFileHandleUploadState } from '@/features/chatgpt/components/ChatIconFileUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   hideChatBox,
@@ -30,14 +30,15 @@ const SidebarScreenshotButton: FC<{
 }> = ({ sx }) => {
   const { t } = useTranslation(['common'])
   const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
-  const maxAIChatFileHandleUpload = useRecoilValue(
-    MaxAIChatFileHandleUploadState,
-  )
   const {
     updateAIProviderModel,
     currentAIProvider,
     currentAIProviderModel,
   } = useAIProviderModels()
+
+  const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
+  const maxFileSize = AIProviderConfig?.maxFileSize
+
   return (
     <>
       <TextOnlyTooltip placement={'top'} title={t('common:screenshot')}>
@@ -82,10 +83,12 @@ const SidebarScreenshotButton: FC<{
           rootContainer={rootEl}
         >
           <ScreenshotComponent
-            onChange={({ imageFile }) => {
+            onChange={async ({ imageFile }) => {
               setRootEl(null)
               showChatBox()
-              maxAIChatFileHandleUpload.uploadFile(imageFile)
+              aiProviderUploadFiles(
+                await formatClientUploadFiles([imageFile], maxFileSize),
+              )
             }}
           />
         </DynamicComponent>

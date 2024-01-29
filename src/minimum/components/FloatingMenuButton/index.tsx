@@ -13,8 +13,11 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
+import MaxAIArtMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIArtMiniButton'
 import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
+import MaxAIImmersiveChatButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIImmersiveChatButton'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
+import MaxAIScreenshotMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIScreenshotMiniButton'
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
 import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
@@ -22,7 +25,8 @@ import { isArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const actionsCount = 4
-const safeTopY = actionsCount * (32 + 6)
+// 顶部安全高度 = 4个按钮高度 + 16px
+const safeTopY = actionsCount * (32 + 6) + 16
 
 const saveBowserLocalStoreageFloatingButtonY = async (y: number) => {
   await Browser.storage.local.set({
@@ -46,13 +50,23 @@ const FloatingMenuButton: FC = () => {
   const prevDragAxisYRef = useRef(dragAxisY)
   const [isLoaded, setIsLoaded] = useState(false)
   useEffect(() => {
-    if (height && height - 32 <= dragAxisY) {
-      const calcY = height - 32
-      const newPosition = calcY <= 0 ? DEFAULT_TOP : calcY
-      setDragAxisY(newPosition)
-    } else if (dragAxisY < safeTopY) {
-      // 最小顶部高度
-      setDragAxisY(safeTopY)
+    if (height) {
+      if (height - 32 <= dragAxisY) {
+        const calcY = height - 32
+        const newPosition = calcY <= 0 ? DEFAULT_TOP : calcY
+        setDragAxisY(newPosition)
+      } else if (dragAxisY < safeTopY) {
+        // 最小顶部高度
+        setDragAxisY(safeTopY)
+      }
+
+      // 底部距离
+      const bottom = height - dragAxisY
+      // 最小底部高度 = 4个按钮高度 + 16px
+      const safeBottomY = 4 * (32 + 6) + 16
+      if (bottom < safeBottomY) {
+        setDragAxisY(height - safeBottomY)
+      }
     }
   }, [dragAxisY, height])
   useEffectOnce(() => {
@@ -175,19 +189,33 @@ const FloatingMenuButton: FC = () => {
                   data: {},
                 })
               }}
-            >
-              <Stack pb={'6px'} spacing={'6px'}>
-                {isHover && (
-                  <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />
-                )}
-                {isHover && (
-                  <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
-                )}
-                {(isHover || isKeepShow) && (
-                  <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
-                )}
-              </Stack>
-            </MaxAIMiniButton>
+              aboveNode={
+                <Stack spacing={'6px'}>
+                  {isHover && (
+                    <MaxAIScreenshotMiniButton key={'MaxAIScreenshotButton'} />
+                  )}
+                  {isHover && <MaxAIArtMiniButton key={'MaxAIArtButton'} />}
+                  {isHover && (
+                    <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
+                  )}
+                  {(isHover || isKeepShow) && (
+                    <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
+                  )}
+                </Stack>
+              }
+              underNode={
+                <Stack spacing={'6px'}>
+                  {isHover && (
+                    <MaxAIImmersiveChatButton
+                      key={'MaxAIImmersiveChatButton'}
+                    />
+                  )}
+                  {isHover && (
+                    <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />
+                  )}
+                </Stack>
+              }
+            />
           </Box>
         </Box>
       </Draggable>

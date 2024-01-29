@@ -15,11 +15,11 @@ const MaxAISettingsMiniButton = () => {
     <Tooltip
       title={<MaxAIHideMiniButton key={'MaxAIHideMiniButton'} />}
       PopperProps={{
-        placement: 'top',
+        placement: 'bottom',
         disablePortal: true,
         sx: {
           '& > div': {
-            mb: '8px!important',
+            mt: '8px!important',
             padding: '0!important',
             bgcolor: 'unset!important',
           },
@@ -51,7 +51,7 @@ const MaxAISettingsMiniButton = () => {
               display: 'flex',
               boxShadow:
                 '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
-              color: 'text.secondary',
+              color: 'primary.main',
               '&:hover': {
                 color: 'primary.main',
               },

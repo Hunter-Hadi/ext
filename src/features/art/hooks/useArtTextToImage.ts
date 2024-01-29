@@ -122,6 +122,7 @@ const useArtTextToImage = () => {
         {
           type: 'ASK_CHATGPT',
           parameters: {
+            isEnabledDetectAIResponseLanguage: false,
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             AskChatGPTActionQuestion: {
               text: text,
@@ -198,6 +199,7 @@ const useArtTextToImage = () => {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+            isEnabledDetectAIResponseLanguage: false,
             AskChatGPTActionQuestion: {
               text: `{{IMAGE_PROMPT}}`,
               meta: {

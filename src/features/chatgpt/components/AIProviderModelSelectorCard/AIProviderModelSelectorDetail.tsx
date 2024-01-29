@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
@@ -18,12 +18,10 @@ const AIProviderModelSelectorDetail: FC<{
 }> = (props) => {
   const { AIProviderModel, AIProvider, hideAIProviderIcon = false } = props
   const { t } = useTranslation(['common', 'client'])
-  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModels()
+  const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const currentAIProviderModelDetail = useMemo(() => {
-    return AI_PROVIDER_MODEL_MAP?.[AIProvider]?.find(
-      (model) => model.value === AIProviderModel,
-    )
-  }, [AI_PROVIDER_MODEL_MAP, AIProvider, AIProviderModel])
+    return getAIProviderModelDetail(AIProvider, AIProviderModel)
+  }, [getAIProviderModelDetail, AIProvider, AIProviderModel])
   return (
     <AppLoadingLayout loading={!currentAIProviderModelDetail}>
       <Stack

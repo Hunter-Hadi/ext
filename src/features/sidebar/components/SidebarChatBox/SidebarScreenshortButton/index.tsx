@@ -56,6 +56,8 @@ const SidebarScreenshotButton: FC<{
                 .catch()
             }
             const div = document.createElement('div')
+            div.style.width = '100vw'
+            div.style.height = '100vh'
             document.body.appendChild(div)
             setRootEl(div)
           }}
@@ -123,8 +125,8 @@ const ScreenshotComponent: FC<{
     }
   }
   const handleDragEnd = async (e: React.MouseEvent<HTMLDivElement>) => {
-    console.log(e)
     setIsDragging(false)
+    console.log(e)
     const base64Data = await clientRunBackgroundGetScreenshot(
       window.location.href,
       false,
@@ -211,15 +213,20 @@ const ScreenshotComponent: FC<{
       <Box
         sx={{
           position: 'absolute',
-          top: area[1],
-          left: area[0],
-          width: area[2],
-          height: area[3],
+          top: `${area[1]}px`,
+          left: `${area[0]}px`,
+          width: `${area[2]}px`,
+          height: `${area[3]}px`,
           outline: '3px dashed',
           outlineColor: '#7601D3',
         }}
-      ></Box>
+      >
+        {/*<span>*/}
+        {/*  {area[2]}-{area[3]}*/}
+        {/*</span>*/}
+      </Box>
       {maskRects.map((mask, index) => {
+        // const colors = ['#ff000030', '#00ff0030', '#0000ff30', '#ffff0030']
         return (
           <Box
             key={mask.join(',')}
@@ -230,6 +237,7 @@ const ScreenshotComponent: FC<{
               width: mask[2],
               height: mask[3],
               backgroundColor: 'rgba(0,0,0,0.3)',
+              // backgroundColor: colors[index],
             }}
           />
         )

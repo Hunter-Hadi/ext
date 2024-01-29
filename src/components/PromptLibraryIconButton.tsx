@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { MagicBookIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
@@ -64,7 +65,7 @@ const PromptLibraryIconButton: FC<{
         const virtualRect = {
           x: left,
           y: rect.y - 8,
-          width: 1,
+          width: isImmersiveChatPage ? 1 : 58,
           height: 1,
           top: rect.top - 8,
           left: left,
@@ -158,6 +159,7 @@ const PromptLibraryIconButton: FC<{
           sx={{
             p: '5px',
             minWidth: 'unset',
+            border: '1px solid',
             ...sx,
           }}
           variant={promptLibraryOpen ? 'contained' : 'outlined'}
@@ -190,7 +192,7 @@ const PromptLibraryIconButton: FC<{
         anchorEl={anchorEl}
         placement={placement}
         transition
-        keepMounted
+        // keepMounted
       >
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
@@ -213,12 +215,16 @@ const PromptLibraryIconButton: FC<{
                 }}
                 elevation={4}
                 sx={{
+                  boxSizing: 'border-box',
                   width: isImmersiveChatPage
                     ? 'calc(100vw - 128px)'
-                    : `calc(100% - 48px)`,
+                    : `calc(100% - 60px)`,
                   height: 'calc(100vh - 140px)',
                   maxHeight: '1067px',
                   minWidth: 402,
+                  maxWidth: isImmersiveChatPage
+                    ? 'unset'
+                    : CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
                   ml: isImmersiveChatPage ? 0 : 1,
                   p: 2,
                 }}

@@ -76,6 +76,12 @@ const SidebarChatBoxChatSpeedDial: FC<{
               marginBottom: '-40px!important',
               paddingBottom: '48px!important',
             },
+
+            '& + div > button': {
+              width: 40,
+              height: 40,
+              borderRadius: 2,
+            },
           },
         }}
         icon={

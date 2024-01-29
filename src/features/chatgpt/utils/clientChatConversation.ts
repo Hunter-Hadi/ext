@@ -136,7 +136,7 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
                 '',
               maxTokens: OpenAIModel.max_tokens,
               tags: OpenAIModel.tags || [],
-              descriptions: [],
+              description: (t) => '',
             }
           },
         ),

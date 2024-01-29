@@ -10,14 +10,21 @@ import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorDetail'
-import AIProviderModelSelectorOptions, {
+import {
   AIProviderModelSelectorOption,
+  ChatAIProviderModelSelectorOptions,
+  getAIProviderModelSelectorOptions,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProviderMainPartIcon'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useAIProviderModels, {
+  useAIProviderModelsMap,
+} from '@/features/chatgpt/hooks/useAIProviderModels'
+import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 const BetaIcon: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   return (
@@ -50,11 +57,12 @@ const BetaIcon: FC = () => {
 }
 
 interface AIModelSelectorCardProps {
+  sidebarConversationType: ISidebarConversationType
   sx?: SxProps
   onClose?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
 const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
-  const { sx, onClose } = props
+  const { sidebarConversationType, sx, onClose } = props
   const { t } = useTranslation(['common', 'client'])
   const [
     hoverModel,
@@ -65,25 +73,61 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     showThirdPartyAIProviderConfirmDialog,
     isSelectedThirdAIProvider,
   } = useThirdAIProviderModels()
-  const {
-    currentAIProviderModelDetail,
-    updateAIProviderModel,
-  } = useAIProviderModels()
+  const { updateAIProviderModel } = useAIProviderModels()
+  const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+  // 当前sidebarConversationType的AI provider
+  const currentAIProvider =
+    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
+      .AIProvider ||
+    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider
+  // 当前sidebarConversationType的AI model
+  const currentAIModel =
+    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
+      .AIModel ||
+    SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
+  const currentSidebarConversationTypeModels = useMemo(() => {
+    return getAIProviderModelSelectorOptions(sidebarConversationType)
+  }, [sidebarConversationType])
+  const currentModelDetail = useMemo(() => {
+    const AIProviderSelectorModel = ChatAIProviderModelSelectorOptions.find(
+      (option) => option.value === currentAIModel,
+    )
+    if (
+      AIProviderSelectorModel &&
+      AIProviderSelectorModel.AIProvider === currentAIProvider
+    ) {
+      // 说明是从AI Provider Selector选中的Model
+      return {
+        label: AIProviderSelectorModel.label,
+        value: AIProviderSelectorModel.value,
+        AIProvider: AIProviderSelectorModel.AIProvider,
+      }
+    }
+    const models = AI_PROVIDER_MODEL_MAP[currentAIProvider]
+    const currentModel =
+      models.find((model) => model.value === currentAIModel) || models[0]
+    return {
+      label: currentModel.title,
+      value: currentModel.value,
+      AIProvider: currentAIProvider,
+    }
+  }, [AI_PROVIDER_MODEL_MAP, currentAIModel, currentAIProvider])
   const isSelectedMaxAIMainPartModel = useMemo(() => {
     // hover的优先级最高
     if (hoverModel) {
       return hoverModel
     }
     // 选择了AI模型时，显示AI模型详情
-    if (currentAIProviderModelDetail?.value) {
+    if (currentModelDetail?.value) {
       return (
-        AIProviderModelSelectorOptions.find(
-          (option) => option.value === currentAIProviderModelDetail.value,
-        ) || null
+        currentSidebarConversationTypeModels.find((option) => {
+          return option.value === currentModelDetail.value
+        }) || null
       )
     }
     return null
-  }, [currentAIProviderModelDetail?.value, hoverModel])
+  }, [currentModelDetail?.value, sidebarConversationType, hoverModel])
   return (
     <Box
       onClick={(event: React.MouseEvent<HTMLDivElement>) => {
@@ -132,7 +176,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
           },
         }}
       >
-        {AIProviderModelSelectorOptions.map((AIModelOption) => {
+        {currentSidebarConversationTypeModels.map((AIModelOption) => {
           return (
             <MenuItem
               onMouseEnter={() => {
@@ -142,12 +186,13 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
               key={AIModelOption.value}
               selected={
                 !isSelectedThirdAIProvider &&
-                AIModelOption.value === currentAIProviderModelDetail?.value
+                AIModelOption.value === currentModelDetail?.value
               }
               onClick={async () => {
                 await updateAIProviderModel(
                   AIModelOption.AIProvider,
                   AIModelOption.value,
+                  sidebarConversationType,
                 )
               }}
             >
@@ -172,34 +217,37 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             </MenuItem>
           )
         })}
-        <Divider sx={{ px: 1 }} />
-        <MenuItem
-          onMouseEnter={() => {
-            setHoverModel(null)
-            setIsHoverThirdPartyModel(true)
-          }}
-          selected={isSelectedThirdAIProvider}
-          onClick={() => {
-            showThirdPartyAIProviderConfirmDialog()
-          }}
-        >
-          <Stack alignItems={'center'} direction={'row'}>
-            <Typography
-              fontSize={'14px'}
-              lineHeight={'20px'}
-              color={'text.primary'}
-            >
-              {t(
-                'client:sidebar__ai_provider__model_selector__third_party_ai_provider__title',
-              )}
-            </Typography>
-            <KeyboardArrowRightOutlinedIcon
-              sx={{
-                fontSize: '20px',
-              }}
-            />
-          </Stack>
-        </MenuItem>
+        {/* NOTE: 只有Chat板块有第三方的*/}
+        {sidebarConversationType === 'Chat' && <Divider sx={{ px: 1 }} />}
+        {sidebarConversationType === 'Chat' && (
+          <MenuItem
+            onMouseEnter={() => {
+              setHoverModel(null)
+              setIsHoverThirdPartyModel(true)
+            }}
+            selected={isSelectedThirdAIProvider}
+            onClick={() => {
+              showThirdPartyAIProviderConfirmDialog()
+            }}
+          >
+            <Stack alignItems={'center'} direction={'row'}>
+              <Typography
+                fontSize={'14px'}
+                lineHeight={'20px'}
+                color={'text.primary'}
+              >
+                {t(
+                  'client:sidebar__ai_provider__model_selector__third_party_ai_provider__title',
+                )}
+              </Typography>
+              <KeyboardArrowRightOutlinedIcon
+                sx={{
+                  fontSize: '20px',
+                }}
+              />
+            </Stack>
+          </MenuItem>
+        )}
       </MenuList>
       <Stack width={0} flex={1}>
         {isSelectedMaxAIMainPartModel && !isHoverThirdPartyModel ? (

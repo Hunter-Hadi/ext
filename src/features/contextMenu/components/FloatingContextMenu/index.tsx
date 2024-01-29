@@ -656,7 +656,10 @@ const FloatingContextMenu: FC<{
                 alignItems={'center'}
                 gap={1}
               >
-                <AIProviderModelSelectorButton size={'small'} />
+                <AIProviderModelSelectorButton
+                  sidebarConversationType={'Chat'}
+                  size={'small'}
+                />
                 <Stack
                   direction={'row'}
                   width={0}

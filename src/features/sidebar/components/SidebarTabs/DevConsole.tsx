@@ -1,6 +1,7 @@
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import Button from '@mui/material/Button'
+import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useMemo, useState } from 'react'
@@ -19,6 +20,7 @@ const DevConsole: FC = () => {
     currentSidebarConversationId,
     currentSidebarConversationType,
     currentSidebarConversation,
+    sidebarSettings,
   } = useSidebarSettings()
   const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
@@ -124,6 +126,11 @@ const DevConsole: FC = () => {
             {currentSidebarConversation?.messages.length}]
           </p>
           <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
+          <p>Chat: {sidebarSettings?.chat?.conversationId}</p>
+          <p>Summary: {sidebarSettings?.summary?.conversationId}</p>
+          <p>Search: {sidebarSettings?.search?.conversationId}</p>
+          <p>Art: {sidebarSettings?.art?.conversationId}</p>
+          <Divider></Divider>
           <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
           {/*<pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>*/}
           {/*<pre>*/}

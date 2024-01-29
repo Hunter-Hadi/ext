@@ -20,6 +20,7 @@ import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSele
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import { AppLocalStorageState } from '@/store'
 
 export const useAIProviderModelsMap = () => {
@@ -155,20 +156,21 @@ const useAIProviderModels = () => {
       (item) => item.value === currentAIProviderModel,
     )
   }, [currentAIProviderModel, aiProviderModels])
+  /**
+   * 如果传入了sidebarConversationType，说明要更新这个sidebarConversationType的conversation
+   */
   const updateAIProviderModel = useCallback(
-    async (AIProvider: IAIProviderType, model: string) => {
+    async (
+      AIProvider: IAIProviderType,
+      model: string,
+      sidebarConversationType?: ISidebarConversationType,
+    ) => {
       try {
         let now = new Date().getTime()
         await setChromeExtensionLocalStorage({
           sidebarSettings: {
             common: {
               currentAIProvider: AIProvider,
-            },
-            chat: {
-              conversationId: '',
-            },
-            art: {
-              conversationId: '',
             },
           },
           thirdProviderSettings: {
@@ -177,21 +179,42 @@ const useAIProviderModels = () => {
             },
           },
         })
-
         console.log(
           '[TimeTimeTimeTime] 切换AIProvider1',
           new Date().getTime() - now,
         )
         now = new Date().getTime()
-        if (AIProvider === 'MAXAI_DALLE') {
-          await createConversation('Art')
-        } else {
-          await createConversation('Chat')
+        if (sidebarConversationType) {
+          if (sidebarConversationType === 'Chat') {
+            await setChromeExtensionLocalStorage({
+              sidebarSettings: {
+                chat: {
+                  conversationId: await createConversation('Chat'),
+                },
+              },
+            })
+          } else if (sidebarConversationType === 'Art') {
+            await setChromeExtensionLocalStorage({
+              sidebarSettings: {
+                art: {
+                  conversationId: await createConversation('Art'),
+                },
+              },
+            })
+          } else if (sidebarConversationType === 'Search') {
+            await setChromeExtensionLocalStorage({
+              sidebarSettings: {
+                search: {
+                  conversationId: await createConversation('Search'),
+                },
+              },
+            })
+          }
+          console.log(
+            '[TimeTimeTimeTime] 切换AIProvider2',
+            new Date().getTime() - now,
+          )
         }
-        console.log(
-          '[TimeTimeTimeTime] 切换AIProvider2',
-          new Date().getTime() - now,
-        )
       } catch (e) {
         console.log(e)
       }

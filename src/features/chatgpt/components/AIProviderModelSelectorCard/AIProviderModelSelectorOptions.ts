@@ -1,4 +1,5 @@
 import { IAIProviderType } from '@/background/provider/chat'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 
 export type AIProviderModelSelectorOption = {
   dev?: boolean
@@ -8,7 +9,7 @@ export type AIProviderModelSelectorOption = {
   value: string
   AIProvider: IAIProviderType
 }
-const AIProviderModelSelectorOptions: AIProviderModelSelectorOption[] = [
+export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[] = [
   {
     dev: true,
     mainPart: true,
@@ -73,4 +74,27 @@ const AIProviderModelSelectorOptions: AIProviderModelSelectorOption[] = [
     AIProvider: 'USE_CHAT_GPT_PLUS',
   },
 ]
-export default AIProviderModelSelectorOptions
+
+export const ArtAIProviderModelSelectorOptions: AIProviderModelSelectorOption[] = [
+  {
+    mainPart: true,
+    label: 'DALL·E 3',
+    value: 'dall-e-3',
+    AIProvider: 'MAXAI_DALLE',
+  },
+]
+
+export const getAIProviderModelSelectorOptions = (
+  conversationType: ISidebarConversationType,
+) => {
+  switch (conversationType) {
+    case 'Chat':
+      return ChatAIProviderModelSelectorOptions
+    case 'Summary':
+      return []
+    case 'Search':
+      return []
+    case 'Art':
+      return ArtAIProviderModelSelectorOptions
+  }
+}

@@ -30,6 +30,35 @@ import {
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
+export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
+  [key in ISidebarConversationType]: {
+    AIProvider: IAIProviderType
+    AIModel: string
+    maxTokens: number
+  }
+} = {
+  Chat: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: 'gpt-3.5-turbo',
+    maxTokens: 4096,
+  },
+  Summary: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: 'gpt-3.5-turbo',
+    maxTokens: PAGE_SUMMARY_MAX_TOKENS,
+  },
+  Search: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: 'gpt-3.5-turbo',
+    maxTokens: 16384,
+  },
+  Art: {
+    AIProvider: 'MAXAI_DALLE',
+    AIModel: 'dall-e-3',
+    maxTokens: 16384,
+  },
+}
+
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -61,21 +90,6 @@ const useClientConversation = () => {
     const conversationType =
       overwriteConversationType || currentSidebarConversationType
     if (conversationType === 'Chat') {
-      const chatCacheConversationId = (await getChromeExtensionLocalStorage())
-        .sidebarSettings?.chat?.conversationId
-      // 如果chat板块已经有conversationId了
-      if (
-        chatCacheConversationId &&
-        (await clientGetConversation(chatCacheConversationId))
-      ) {
-        console.log(
-          '新版Conversation chatCacheConversationId',
-          chatCacheConversationId,
-        )
-        // 如果已经存在了，并且有AI消息，那么就不用创建了
-        return chatCacheConversationId
-      }
-      // 如果没有，那么就创建一个
       const appLocalStorage = await getChromeExtensionLocalStorage()
       // 获取当前AIProvider
       const currentAIProvider = appLocalStorage.sidebarSettings?.common
@@ -133,9 +147,7 @@ const useClientConversation = () => {
             type: 'Summary',
             title: conversationTitleMap[pageSummaryType],
             meta: merge({
-              AIProvider: 'USE_CHAT_GPT_PLUS',
-              AIModel: 'gpt-3.5-turbo',
-              maxTokens: PAGE_SUMMARY_MAX_TOKENS,
+              ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
               pageSummaryType,
               //               pageSummaryId: pageSummaryData.pageSummaryId,
               //               pageSummaryType: pageSummaryData.pageSummaryType,
@@ -174,11 +186,7 @@ const useClientConversation = () => {
           initConversationData: {
             type: 'Search',
             title: 'AI-powered search',
-            meta: merge({
-              AIProvider: 'USE_CHAT_GPT_PLUS',
-              AIModel: 'gpt-3.5-turbo',
-              maxTokens: 16384, // gpt-3.5-16k
-            }),
+            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
           } as Partial<IChatConversation>,
         },
       })
@@ -212,11 +220,7 @@ const useClientConversation = () => {
           initConversationData: {
             type: 'Art',
             title: 'AI-powered image generate',
-            meta: merge({
-              AIProvider: 'MAXAI_DALLE',
-              AIModel: 'dall-e-3',
-              maxTokens: 16384,
-            }),
+            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art),
           } as Partial<IChatConversation>,
         },
       })

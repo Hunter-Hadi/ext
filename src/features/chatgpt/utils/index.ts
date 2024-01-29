@@ -5,6 +5,7 @@ import {
   IChromeExtensionClientSendEvent,
   IOpenAIChatSendEvent,
 } from '@/background/eventType'
+import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
@@ -101,9 +102,7 @@ export class ContentScriptConnectionV2 {
   }
 }
 
-export const getAIProviderSampleFiles = async (): Promise<
-  IChatUploadFile[]
-> => {
+export const getAIProviderChatFiles = async (): Promise<IChatUploadFile[]> => {
   const port = new ContentScriptConnectionV2({
     runtime: 'client',
   })
@@ -121,4 +120,19 @@ export const getAIProviderSampleFiles = async (): Promise<
   } else {
     return []
   }
+}
+
+/**
+ * 是否为第三方AI provider
+ * @param provider
+ */
+export const isThirdPartyAIProvider = (provider: IAIProviderType) => {
+  const thirdPartyAIProvider: IAIProviderType[] = [
+    'OPENAI',
+    'OPENAI_API',
+    'POE',
+    'BARD',
+    'BING',
+  ]
+  return thirdPartyAIProvider.includes(provider)
 }

@@ -6,7 +6,7 @@ import { isPermissionCardSceneType } from '@/features/auth/components/Permission
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import {
   ContentScriptConnectionV2,
-  getAIProviderSampleFiles,
+  getAIProviderChatFiles,
 } from '@/features/chatgpt'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import {
@@ -102,7 +102,7 @@ export class ActionAskChatGPT extends Action {
       // 设置attachments
       this.question.meta.attachments = this.question.meta.attachments?.length
         ? this.question.meta.attachments
-        : await getAIProviderSampleFiles()
+        : await getAIProviderChatFiles()
       // Question的Meta信息
       const {
         // contextMenu的信息

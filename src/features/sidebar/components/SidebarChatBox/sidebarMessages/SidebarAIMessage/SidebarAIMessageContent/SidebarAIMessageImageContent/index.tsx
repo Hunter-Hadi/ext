@@ -6,6 +6,7 @@ import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import DevContent from '@/components/DevContent'
 import LazyLoadImage from '@/components/LazyLoadImage'
+import { CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH } from '@/constants'
 import { IArtTextToImageMetadata } from '@/features/art/types'
 import { artTextToAspectRatio } from '@/features/art/utils'
 import { IAIResponseMessage, IChatUploadFile } from '@/features/chatgpt/types'
@@ -131,13 +132,15 @@ const SidebarAIMessageImageContent: FC<{
       mt={1}
       minHeight={'16px'}
       width={'60%'}
-      minWidth={415}
+      minWidth={CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH - 16 - 16}
       sx={{
         position: 'relative',
       }}
     >
       {renderDataList.map((renderData, index) => {
-        const width = boxRef.current?.getBoundingClientRect().width || 415
+        const width =
+          boxRef.current?.getBoundingClientRect().width ||
+          CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH - 16 - 16
         const height =
           width / artTextToAspectRatio(renderData?.image?.meta?.aspectRatio)
         return (

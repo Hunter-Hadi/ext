@@ -9,6 +9,7 @@ import { IChatConversation } from '@/background/src/chatConversations'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
@@ -36,6 +37,8 @@ const useClientConversation = () => {
   const [conversation, setConversation] = useRecoilState(
     ChatGPTConversationState,
   )
+
+  const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const {
     currentSidebarConversationType,
@@ -90,7 +93,9 @@ const useClientConversation = () => {
             type: 'Chat',
             title: 'Ask AI anything',
             meta: {
-              maxTokens: 4096,
+              maxTokens:
+                getAIProviderModelDetail(currentAIProvider, currentModel)
+                  ?.maxTokens || 4096,
               ...(await getAIProviderConversationMetaConfig(currentAIProvider)),
             },
           } as Partial<IChatConversation>,

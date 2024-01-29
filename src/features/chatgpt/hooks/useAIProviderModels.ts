@@ -22,18 +22,10 @@ import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderS
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { AppLocalStorageState } from '@/store'
 
-/**
- * 用来获取当前AI提供商的模型列表
- * @since 2023-07-18
- * @version 1.0.0 - 返回数据结构title\titleTag\maxToken\tags\descriptions
- */
-
-const useAIProviderModels = () => {
+export const useAIProviderModelsMap = () => {
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const currentProvider =
     appLocalStorage.sidebarSettings?.common?.currentAIProvider
-  const { currentThirdProviderSettings } = useThirdProviderSettings()
-  const { createConversation } = useClientConversation()
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
@@ -117,6 +109,33 @@ const useAIProviderModels = () => {
     whiteListModels,
     appLocalStorage.thirdProviderSettings?.OPENAI?.modelOptions,
   ])
+  const getAIProviderModelDetail = (
+    AIProvider: IAIProviderType,
+    findModel: string,
+  ) => {
+    return AI_PROVIDER_MODEL_MAP[AIProvider]?.find(
+      (model) => model.value === findModel,
+    )
+  }
+  return {
+    AI_PROVIDER_MODEL_MAP,
+    getAIProviderModelDetail,
+  }
+}
+
+/**
+ * 用来获取当前AI提供商的模型列表
+ * @since 2023-07-18
+ * @version 1.0.0 - 返回数据结构title\titleTag\maxToken\tags\descriptions
+ */
+
+const useAIProviderModels = () => {
+  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+  const currentProvider =
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider
+  const { currentThirdProviderSettings } = useThirdProviderSettings()
+  const { createConversation } = useClientConversation()
   const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []
     if (!currentProvider) {
@@ -187,7 +206,6 @@ const useAIProviderModels = () => {
     currentAIProviderModelDetail,
     aiProviderModels,
     updateAIProviderModel,
-    AI_PROVIDER_MODEL_MAP,
   }
 }
 

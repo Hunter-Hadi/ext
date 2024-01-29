@@ -4,7 +4,9 @@ import { useRecoilState } from 'recoil'
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP } from '@/constants'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useAIProviderModels, {
+  useAIProviderModelsMap,
+} from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -18,11 +20,8 @@ const useThirdAIProviderModels = () => {
   const [, setDialogState] = useRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )
-  const {
-    currentAIProvider,
-    updateAIProviderModel,
-    AI_PROVIDER_MODEL_MAP,
-  } = useAIProviderModels()
+  const { currentAIProvider, updateAIProviderModel } = useAIProviderModels()
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { sidebarSettings, updateSidebarSettings } = useSidebarSettings()
 
   // 当前设置的第三方的AIProvider

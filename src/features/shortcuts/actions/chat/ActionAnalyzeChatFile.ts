@@ -101,6 +101,7 @@ export class ActionAnalyzeChatFile extends Action {
             .catch()
         } else {
           sliceTextByTokens(text, this.MAX_UPLOAD_TEXT_FILE_TOKENS, {
+            thread: 4,
             partOfTextLength: 80 * 1000,
           }).then((uploadData) => {
             // 异步通知LarkBot

@@ -167,7 +167,7 @@ class ChatSystem implements ChatSystemInterface {
                   ) {
                     await this.switchAdapterWithConversation(conversation)
                   } else if (conversation.id) {
-                    // 更新当前会话
+                    // 更新AI provider的当前使用的会话
                     await this.currentAdapter?.createConversation(conversation)
                   }
                   // 处理AIProvider的参数

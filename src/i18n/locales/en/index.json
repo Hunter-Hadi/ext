@@ -537,6 +537,8 @@
     "immersive_chat__delete_all_chat__title": "Clear your conversation history - are you sure?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirm deletion",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel",
+    "immersive_chat__delete_chat__button__title": "Clear chat",
+    "immersive_chat__no_conversation": "No chat history",
     "activity__black_friday_2023__title": "Limited-Time Black Friday Deals – Up to 50% Off!",
     "activity__christmas_2023__title": "CHRISTMAS & NEW YEAR GIVEAWAYS",
     "activity__1st_anniversary_2024__title1": "MaxAI's 1st anniversary celebration",

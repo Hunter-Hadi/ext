@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { getChromeExtensionUserId } from '@/features/auth/utils'
+import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   IChatMessage,
   IChatUploadFile,
@@ -121,39 +121,40 @@ class ConversationDB {
    * 添加或更新对话。
    *
    * @param conversation 要添加或更新的对话对象
+   * @param options 是否需要更新到DB
+   * @param options.syncConversation 是否需要更新Conversation到DB
    * @returns Promise 对象，表示操作的异步结果
    */
   public addOrUpdateConversation(
     conversation: IChatConversation,
-    needUpdateLastActiveTime = true,
+    options?: {
+      syncConversation?: boolean
+    },
   ): Promise<void> {
+    const { syncConversation = false } = options || {}
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
+        if (syncConversation) {
+          console.log(
+            `DB_Conversation addOrUpdateConversation [同步会话]`,
+            conversation,
+          )
+        } else {
+          console.log(`DB_Conversation addOrUpdateConversation`, conversation)
+        }
         const db = await this.openDatabase()
         const transaction = db.transaction([this.objectStoreName], 'readwrite')
         const objectStore = transaction.objectStore(this.objectStoreName)
-        if (needUpdateLastActiveTime) {
-          conversation.updated_at = new Date().toISOString()
-        }
+        conversation.updated_at = new Date().toISOString()
         objectStore.put(conversation)
-        console.log(
-          'clientChatConversationModifyChatMessages prev save',
-          conversation,
-        )
         transaction.oncomplete = () => {
-          console.log(
-            'clientChatConversationModifyChatMessages saved',
-            conversation,
-          )
+          if (syncConversation) {
+            // TODO: 同步会话到后端
+          }
           resolve() // 操作成功完成，解析 Promise
         }
         transaction.onerror = (event) => {
-          console.log(
-            'clientChatConversationModifyChatMessages saved error',
-            event,
-            conversation,
-          )
           reject((event.target as any)?.error || '') // 操作出错，拒绝 Promise 并传递错误信息
         }
       } catch (error) {
@@ -176,13 +177,10 @@ class ConversationDB {
 
         const transaction = db.transaction([this.objectStoreName], 'readwrite')
         const objectStore = transaction.objectStore(this.objectStoreName)
-
         objectStore.delete(conversationId)
-
         transaction.oncomplete = () => {
           resolve() // 操作成功完成，解析 Promise
         }
-
         transaction.onerror = (event) => {
           reject((event.target as any)?.error || '') // 操作出错，拒绝 Promise 并传递错误信息
         }
@@ -208,16 +206,13 @@ class ConversationDB {
 
         const transaction = db.transaction([this.objectStoreName], 'readonly')
         const objectStore = transaction.objectStore(this.objectStoreName)
-
         const request = objectStore.get(conversationId)
-
         request.onsuccess = (event) => {
           const conversation = (event.target as any)?.result as
             | IChatConversation
             | undefined
           resolve(conversation) // 解析 Promise 为获取到的对话对象
         }
-
         request.onerror = (event) => {
           reject((event.target as any)?.error || '') // 操作出错，拒绝 Promise 并传递错误信息
         }
@@ -236,14 +231,12 @@ class ConversationDB {
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        const userId = await getChromeExtensionUserId()
+        const userId = await getMaxAIChromeExtensionUserId()
         const db = await this.openDatabase()
 
         const transaction = db.transaction([this.objectStoreName], 'readonly')
         const objectStore = transaction.objectStore(this.objectStoreName)
-
         const request = objectStore.getAll()
-
         request.onsuccess = async (event) => {
           let conversations = ((event.target as any)?.result ||
             []) as IChatConversation[]
@@ -341,7 +334,7 @@ export default class ConversationManager {
   )
   static async createConversation(newConversation: Partial<IChatConversation>) {
     const defaultConversation: IChatConversation = {
-      authorId: await getChromeExtensionUserId(),
+      authorId: await getMaxAIChromeExtensionUserId(),
       id: uuidV4(),
       title: 'Chat',
       type: 'Chat',
@@ -350,6 +343,11 @@ export default class ConversationManager {
       messages: [],
       meta: {},
       isDelete: false,
+      version: 2,
+      share: {
+        shareId: undefined,
+        shareType: 'private',
+      },
     }
     const saveConversation = mergeWithObject([
       defaultConversation,
@@ -357,14 +355,15 @@ export default class ConversationManager {
     ])
     // 清除无信息的会话
     await this.conversationDB.removeEmptyMessagesConversations()
-    await this.conversationDB.addOrUpdateConversation(saveConversation, false)
+    await this.conversationDB.addOrUpdateConversation(saveConversation, {
+      syncConversation: true,
+    })
     // 异步清除无用的对话
     // this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as IChatConversation
   }
   static async getAllConversation() {
     const conversations = await this.conversationDB.getAllConversations()
-    console.log('新版Conversation getAllConversation', conversations)
     return conversations
   }
 
@@ -380,6 +379,7 @@ export default class ConversationManager {
       return false
     }
     conversation.isDelete = true
+    console.log('DB_Conversation softDeleteConversation', conversationId)
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
   }
@@ -406,7 +406,7 @@ export default class ConversationManager {
   static async getAllPaginationConversations(): Promise<
     PaginationConversation[]
   > {
-    if (!(await getChromeExtensionUserId())) {
+    if (!(await getMaxAIChromeExtensionUserId())) {
       return []
     }
     const conversations = await this.conversationDB.getAllConversations()
@@ -490,6 +490,7 @@ export default class ConversationManager {
     if (!conversation) {
       return false
     }
+    console.log('DB_Conversation pushMessages', newMessages)
     conversation.messages = conversation.messages.concat(newMessages)
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
@@ -514,6 +515,7 @@ export default class ConversationManager {
       conversation.messages[messageIndex],
       updateMessage,
     ])
+    console.log('DB_Conversation updateMessage', updateMessage)
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
   }
@@ -532,6 +534,7 @@ export default class ConversationManager {
       0,
       conversation.messages.length - finallyDeleteCount,
     )
+    console.log('DB_Conversation deleteMessages', finallyDeleteCount)
     // save
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true

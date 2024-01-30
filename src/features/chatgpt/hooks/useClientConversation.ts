@@ -19,7 +19,7 @@ import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/ge
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
-  ChatGPTConversationState,
+  ClientWritingMessageState,
   ISidebarConversationType,
 } from '@/features/sidebar/store'
 import {
@@ -61,8 +61,8 @@ const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useClientConversation = () => {
-  const [conversation, setConversation] = useRecoilState(
-    ChatGPTConversationState,
+  const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
+    ClientWritingMessageState,
   )
 
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
@@ -234,7 +234,7 @@ const useClientConversation = () => {
   }
 
   const cleanConversation = async () => {
-    if (conversation.loading) {
+    if (clientWritingMessage.loading) {
       return
     }
     console.log(
@@ -276,8 +276,7 @@ const useClientConversation = () => {
         },
       })
     }
-    setConversation({
-      model: '',
+    setClientWritingMessage({
       writingMessage: null,
       loading: false,
     })
@@ -353,7 +352,7 @@ const useClientConversation = () => {
     }
   }
   const showConversationLoading = () => {
-    setConversation((prevState) => {
+    setClientWritingMessage((prevState) => {
       return {
         ...prevState,
         loading: true,
@@ -361,7 +360,7 @@ const useClientConversation = () => {
     })
   }
   const hideConversationLoading = () => {
-    setConversation((prevState) => {
+    setClientWritingMessage((prevState) => {
       return {
         ...prevState,
         loading: false,
@@ -396,23 +395,10 @@ const useClientConversation = () => {
    * @param message
    */
   const updateClientWritingMessage = (message: IAIResponseMessage | null) => {
-    setConversation((prevState) => {
+    setClientWritingMessage((prevState) => {
       return {
         ...prevState,
         writingMessage: message,
-      }
-    })
-  }
-  /**
-   * 更新当前conversation的lastMessageId
-   * @description - 用来stop和context menu的draft
-   * @param messageId
-   */
-  const updateClientConversationLastMessageId = (messageId: string) => {
-    setConversation((prevState) => {
-      return {
-        ...prevState,
-        lastMessageId: messageId,
       }
     })
   }
@@ -427,7 +413,7 @@ const useClientConversation = () => {
     return null
   }
   return {
-    conversation,
+    clientWritingMessage,
     cleanConversation,
     createConversation,
     switchConversation,
@@ -444,7 +430,6 @@ const useClientConversation = () => {
     deleteMessage,
     updateMessage,
     updateClientWritingMessage,
-    updateClientConversationLastMessageId,
     getConversation: clientGetConversation,
     getCurrentConversation,
   }

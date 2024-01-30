@@ -12,7 +12,7 @@ import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -31,7 +31,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderUploadingTooltip,
   } = useAIProviderUpload()
   const clientState = useRecoilValue(ChatGPTClientState)
-  const conversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
   const maxFileSize = AIProviderConfig?.maxFileSize
@@ -66,7 +66,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   if (
     !AIProviderConfig ||
     clientState.status !== 'success' ||
-    conversation.loading
+    clientWritingMessage.loading
   ) {
     return <></>
   }

@@ -8,6 +8,8 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
+export type IChatMessagePublishStatus = 'success' | 'error' | 'publishing'
+
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'
   text: string
@@ -17,6 +19,10 @@ export interface IChatMessage {
   meta?: {
     [key: string]: any
   }
+  // 由indexDB管理，不需要主动设置/更新 - 2.0版本才有 - 2024-01-30
+  created_at?: string
+  updated_at?: string
+  publishStatus?: IChatMessagePublishStatus
 }
 
 export interface IAskChatGPTActionQuestionType

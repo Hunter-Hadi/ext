@@ -465,6 +465,9 @@ export const ClientMessageInit = () => {
             if (oldConversation) {
               await ConversationManager.conversationDB.addOrUpdateConversation(
                 mergeWithObject([oldConversation, updateConversationData]),
+                {
+                  syncConversation: true,
+                },
               )
               const newConversationData = await ConversationManager.getClientConversation(
                 conversationId,
@@ -474,7 +477,7 @@ export const ClientMessageInit = () => {
                   event: 'Client_listenUpdateConversationMessages',
                   id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                   data: {
-                    conversation: newConversationData,
+                    clientWritingMessage: newConversationData,
                     conversationId,
                   },
                 }))
@@ -533,7 +536,7 @@ export const ClientMessageInit = () => {
                 event: 'Client_listenUpdateConversationMessages',
                 id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
-                  conversation: await ConversationManager.getClientConversation(
+                  clientWritingMessage: await ConversationManager.getClientConversation(
                     conversationId,
                   ),
                   conversationId,

@@ -8,7 +8,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTabIcons'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
-  ChatGPTConversationState,
+  ClientWritingMessageState,
   ISidebarConversationType,
 } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
@@ -69,7 +69,7 @@ const SidebarTabs: FC = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
 
-  const conversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
 
   // 在 immersive chat 页面, 有特殊的渲染逻辑
   const isInImmersiveChatPage = useMemo(() => isMaxAIImmersiveChatPage(), [])
@@ -109,7 +109,7 @@ const SidebarTabs: FC = () => {
     >
       {memoSidebarTabsData.map((item) => {
         const isActive = currentSidebarConversationType === item.value
-        const disabled = conversation.loading
+        const disabled = clientWritingMessage.loading
         // const bgcolor = isActive
         //   ? isDarkMode
         //     ? 'rgba(255, 255, 255, 0.08)'

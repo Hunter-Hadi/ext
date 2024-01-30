@@ -21,7 +21,7 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 import {
   getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
@@ -35,7 +35,9 @@ const usePageSummary = () => {
     currentSidebarConversationType,
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const updateConversation = useSetRecoilState(ChatGPTConversationState)
+  const updateClientWritingMessage = useSetRecoilState(
+    ClientWritingMessageState,
+  )
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const [runActions, setRunActions] = useState<ISetActionsType>([])
@@ -48,7 +50,7 @@ const usePageSummary = () => {
     }
     console.log('新版Conversation 创建pageSummary')
     const pageSummaryConversationId = getPageSummaryConversationId()
-    updateConversation((prevState) => {
+    updateClientWritingMessage((prevState) => {
       return {
         ...prevState,
         loading: true,
@@ -75,7 +77,7 @@ const usePageSummary = () => {
           aiMessage?.originalMessage &&
           aiMessage?.originalMessage.metadata?.isComplete
         ) {
-          updateConversation((prevState) => {
+          updateClientWritingMessage((prevState) => {
             return {
               ...prevState,
               loading: false,
@@ -102,7 +104,7 @@ const usePageSummary = () => {
         console.log('新版Conversation pageSummary开始创建')
         // 进入loading
         await createConversation()
-        updateConversation((prevState) => {
+        updateClientWritingMessage((prevState) => {
           return {
             ...prevState,
             loading: false,

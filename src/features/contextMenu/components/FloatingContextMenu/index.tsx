@@ -77,7 +77,7 @@ import {
 } from '@/features/contextMenu/utils'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -97,7 +97,7 @@ const FloatingContextMenu: FC<{
   const { currentSelectionRef } = useRangy()
   const { askAIWIthShortcuts, askAIQuestion, regenerate } = useClientChat()
   const currentHostRef = useRef(getCurrentDomainHost())
-  const conversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const {
     currentSidebarConversationType,
@@ -325,7 +325,7 @@ const FloatingContextMenu: FC<{
     console.log('AIInput remove', floatingDropdownMenu.open)
   }, [floatingDropdownMenu.open])
   useEffect(() => {
-    if (!conversation.loading) {
+    if (!clientWritingMessage.loading) {
       if (isFloatingContextMenuVisible()) {
         const textareaEl = getAppContextMenuRootElement()?.querySelector(
           `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
@@ -337,7 +337,7 @@ const FloatingContextMenu: FC<{
         }
       }
     }
-  }, [conversation.loading])
+  }, [clientWritingMessage.loading])
   const askChatGPT = async (inputValue: string) => {
     if (inputValue.trim()) {
       const draft = floatingContextMenuDraft

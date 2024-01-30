@@ -9,23 +9,23 @@ import { useRecoilValue } from 'recoil'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { FloatingContextMenuOpenSidebarButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuOpenSidebarButton'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 
 const FloatingContextMenuShortcutButtonGroup: FC = () => {
   // const appState = useRecoilValue(AppState)
-  const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const needRegenerateRef = useRef(false)
   const isGenerating = useMemo(() => {
     if (
-      chatGPTConversation.loading &&
-      chatGPTConversation.writingMessage?.text
+      clientWritingMessage.loading &&
+      clientWritingMessage.writingMessage?.text
     ) {
       return true
     }
     return false
-  }, [chatGPTConversation.loading, chatGPTConversation.writingMessage])
+  }, [clientWritingMessage.loading, clientWritingMessage.writingMessage])
   const { stopGenerate, regenerate } = useClientChat()
   const handleShortCut = useCallback(
     async (key: FloatingContextMenuShortcutKey) => {

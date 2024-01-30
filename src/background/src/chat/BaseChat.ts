@@ -55,9 +55,6 @@ class BaseChat {
   }
   async updateClientStatus(status: ChatStatus) {
     if (this.active) {
-      if (status === 'needAuth') {
-        debugger
-      }
       this.status = status
       this.log.info('updateStatus', this.status)
       await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {

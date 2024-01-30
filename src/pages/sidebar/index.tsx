@@ -24,7 +24,7 @@ const SidebarPage = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
-  const { conversation, cleanConversation } = useClientConversation()
+  const { clientWritingMessage, cleanConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
@@ -52,7 +52,7 @@ const SidebarPage = () => {
               })
             }
           }}
-          writingMessage={conversation.writingMessage}
+          writingMessage={clientWritingMessage.writingMessage}
           messages={currentSidebarConversationMessages}
           loading={smoothConversationLoading}
           onReGenerate={async () => {

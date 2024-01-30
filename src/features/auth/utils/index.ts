@@ -69,7 +69,7 @@ export const getChromeExtensionUserInfo = async (
 /**
  * 获取用户id
  */
-export const getChromeExtensionUserId = async (): Promise<string> => {
+export const getMaxAIChromeExtensionUserId = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
     CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   )

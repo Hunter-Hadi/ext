@@ -26,7 +26,7 @@ import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -58,7 +58,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
   const { currentUserPlan } = useUserInfo()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
-  const { loading } = useRecoilValue(ChatGPTConversationState)
+  const { loading } = useRecoilValue(ClientWritingMessageState)
   const { askAIWIthShortcuts } = useClientChat()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {

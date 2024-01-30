@@ -113,6 +113,11 @@ const useInitClientConversationMap = () => {
       case 'Client_listenUpdateConversationMessages':
         {
           const { conversation, conversationId } = data
+          console.log(
+            'Client_listenUpdateConversationMessages',
+            conversation.id,
+            conversation.messages,
+          )
           if (conversation?.id) {
             setClientConversationMap((prevState) => {
               return {

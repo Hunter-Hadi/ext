@@ -19,7 +19,7 @@ import {
   APP_VERSION,
 } from '@/constants'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 import Log from '@/utils/Log'
@@ -291,7 +291,7 @@ class MaxAIClaudeChat extends BaseChat {
     this.active = false
   }
   private async getToken() {
-    return await getChromeExtensionAccessToken()
+    return await getMaxAIChromeExtensionAccessToken()
   }
   async updateClientStatus() {
     if (this.active) {

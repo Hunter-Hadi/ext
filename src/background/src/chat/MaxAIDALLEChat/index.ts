@@ -17,7 +17,7 @@ import {
   APP_VERSION,
 } from '@/constants'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
-import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 
@@ -262,7 +262,7 @@ class MaxAIDALLEChat extends BaseChat {
     this.active = false
   }
   private async getToken() {
-    return await getChromeExtensionAccessToken()
+    return await getMaxAIChromeExtensionAccessToken()
   }
   async updateClientStatus() {
     if (this.active) {

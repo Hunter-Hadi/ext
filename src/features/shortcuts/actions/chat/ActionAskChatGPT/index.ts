@@ -356,6 +356,7 @@ export class ActionAskChatGPT extends Action {
                 },
               },
               conversationId,
+              false,
             )
           }
         } catch (e) {

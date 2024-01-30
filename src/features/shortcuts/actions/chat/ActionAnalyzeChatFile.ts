@@ -79,6 +79,7 @@ export class ActionAnalyzeChatFile extends Action {
               },
             },
             conversationId,
+            true,
           )
           // 异步通知LarkBot
           sendLarkBotMessage(
@@ -132,6 +133,7 @@ export class ActionAnalyzeChatFile extends Action {
                     },
                   },
                   conversationId,
+                  true,
                 )
               },
             )
@@ -145,6 +147,7 @@ export class ActionAnalyzeChatFile extends Action {
           },
         },
         conversationId,
+        true,
       )
       this.output = pageSummarySystemPrompt
     } catch (e) {

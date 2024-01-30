@@ -13,7 +13,7 @@ import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientCon
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import {
   clientChatConversationModifyChatMessages,
-  clientChatConversationUpdate,
+  clientUpdateChatConversation,
 } from '@/features/chatgpt/utils/clientChatConversation'
 import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
@@ -295,10 +295,12 @@ const useClientConversation = () => {
   const updateConversation = async (
     conversation: Partial<IChatConversation>,
     conversationId: string,
+    syncConversationToDB = false,
   ) => {
-    await clientChatConversationUpdate(
+    await clientUpdateChatConversation(
       conversationId || currentConversationIdRef.current || '',
       conversation,
+      syncConversationToDB,
     )
   }
   const pushMessage = async (

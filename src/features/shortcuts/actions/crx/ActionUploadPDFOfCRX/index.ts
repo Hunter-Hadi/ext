@@ -70,6 +70,7 @@ export class ActionUploadPDFOfCRX extends Action {
               },
             },
             conversationId,
+            true,
           )
           return uploadedFile
         }

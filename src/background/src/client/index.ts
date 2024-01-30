@@ -29,8 +29,8 @@ import {
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import {
-  getChromeExtensionAccessToken,
   getChromeExtensionUserInfo,
+  getMaxAIChromeExtensionAccessToken,
 } from '@/features/auth/utils'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import WebsiteContextManager, {
@@ -304,7 +304,7 @@ export const ClientMessageInit = () => {
           break
         case 'Client_updateUseChatGPTAuthInfo':
           {
-            const prevToken = await getChromeExtensionAccessToken()
+            const prevToken = await getMaxAIChromeExtensionAccessToken()
             const { accessToken, refreshToken, userInfo } = data
             log.info(
               'Client_updateUseChatGPTAuthInfo',
@@ -458,7 +458,11 @@ export const ClientMessageInit = () => {
           break
         case 'Client_updateConversation':
           {
-            const { conversationId, updateConversationData } = data
+            const {
+              conversationId,
+              updateConversationData,
+              syncConversationToDB,
+            } = data
             const oldConversation = await ConversationManager.conversationDB.getConversationById(
               conversationId,
             )
@@ -466,7 +470,8 @@ export const ClientMessageInit = () => {
               await ConversationManager.conversationDB.addOrUpdateConversation(
                 mergeWithObject([oldConversation, updateConversationData]),
                 {
-                  syncConversation: true,
+                  syncConversationToDB: syncConversationToDB === true,
+                  reason: 'Client_updateConversation',
                 },
               )
               const newConversationData = await ConversationManager.getClientConversation(
@@ -477,7 +482,7 @@ export const ClientMessageInit = () => {
                   event: 'Client_listenUpdateConversationMessages',
                   id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                   data: {
-                    clientWritingMessage: newConversationData,
+                    conversation: newConversationData,
                     conversationId,
                   },
                 }))
@@ -536,7 +541,7 @@ export const ClientMessageInit = () => {
                 event: 'Client_listenUpdateConversationMessages',
                 id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
-                  clientWritingMessage: await ConversationManager.getClientConversation(
+                  conversation: await ConversationManager.getClientConversation(
                     conversationId,
                   ),
                   conversationId,

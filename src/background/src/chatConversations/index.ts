@@ -1,6 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
+import { addOrUpdateDBConversation } from '@/background/src/chatConversations/conversationToDBHelper'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   IChatMessage,
@@ -122,26 +123,27 @@ class ConversationDB {
    *
    * @param conversation 要添加或更新的对话对象
    * @param options 是否需要更新到DB
-   * @param options.syncConversation 是否需要更新Conversation到DB
+   * @param options.syncConversationToDB 是否需要更新Conversation到DB
    * @returns Promise 对象，表示操作的异步结果
    */
   public addOrUpdateConversation(
     conversation: IChatConversation,
     options?: {
-      syncConversation?: boolean
+      syncConversationToDB?: boolean
+      reason?: string
     },
   ): Promise<void> {
-    const { syncConversation = false } = options || {}
+    const { syncConversationToDB = false, reason } = options || {}
     // eslint-disable-next-line no-async-promise-executor
     return new Promise(async (resolve, reject) => {
       try {
-        if (syncConversation) {
+        if (syncConversationToDB) {
           console.log(
-            `DB_Conversation addOrUpdateConversation [同步会话]`,
+            `DB_Conversation addOrUpdateConversation [同步会话][${reason}]`,
             conversation,
           )
         } else {
-          console.log(`DB_Conversation addOrUpdateConversation`, conversation)
+          // console.log(`DB_Conversation addOrUpdateConversation`, conversation)
         }
         const db = await this.openDatabase()
         const transaction = db.transaction([this.objectStoreName], 'readwrite')
@@ -149,8 +151,9 @@ class ConversationDB {
         conversation.updated_at = new Date().toISOString()
         objectStore.put(conversation)
         transaction.oncomplete = () => {
-          if (syncConversation) {
-            // TODO: 同步会话到后端
+          if (syncConversationToDB) {
+            // 同步会话到后端
+            addOrUpdateDBConversation(conversation).then().catch()
           }
           resolve() // 操作成功完成，解析 Promise
         }
@@ -311,11 +314,16 @@ class ConversationDB {
       ),
     )
   }
-  public async removeEmptyMessagesConversations(): Promise<void> {
+  public async removeEmptyMessagesConversations(
+    filterConversationId: string,
+  ): Promise<void> {
     const allConversations = await this.getAllConversations()
     const waitDeleteConversations: IChatConversation[] = allConversations.filter(
       (conversation) => {
-        return conversation.messages.length === 0
+        return (
+          conversation.messages.length === 0 &&
+          conversation.id !== filterConversationId
+        )
       },
     )
     await Promise.all(
@@ -333,6 +341,7 @@ export default class ConversationManager {
     'conversations',
   )
   static async createConversation(newConversation: Partial<IChatConversation>) {
+    let now = new Date().getTime()
     const defaultConversation: IChatConversation = {
       authorId: await getMaxAIChromeExtensionUserId(),
       id: uuidV4(),
@@ -354,10 +363,29 @@ export default class ConversationManager {
       newConversation,
     ])
     // 清除无信息的会话
-    await this.conversationDB.removeEmptyMessagesConversations()
+    this.conversationDB
+      .removeEmptyMessagesConversations(saveConversation.id)
+      .then()
+      .catch()
+    let syncConversationToDB = true
+    console.log(
+      `[DB_Conversation] using time1: ${new Date().getTime() - now}ms`,
+    )
+    now = new Date().getTime()
+    if (await this.conversationDB.getConversationById(saveConversation.id)) {
+      syncConversationToDB = false
+    }
+    console.log(
+      `[DB_Conversation] using time2: ${new Date().getTime() - now}ms`,
+    )
+    now = new Date().getTime()
     await this.conversationDB.addOrUpdateConversation(saveConversation, {
-      syncConversation: true,
+      syncConversationToDB: syncConversationToDB,
+      reason: 'createConversation',
     })
+    console.log(
+      `[DB_Conversation] using time3: ${new Date().getTime() - now}ms`,
+    )
     // 异步清除无用的对话
     // this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as IChatConversation

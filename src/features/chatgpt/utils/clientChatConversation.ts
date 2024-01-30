@@ -58,13 +58,15 @@ export const clientChatConversationModifyChatMessages = async (
 
 /**
  * Client更新Conversation的信息
- * @param conversationId
- * @param updateConversationData
+ * @param conversationId - 需要更新的conversationId
+ * @param updateConversationData - 需要更新的数据
+ * @param syncConversationToDB - 是否同步到服务器
  */
 
-export const clientChatConversationUpdate = async (
+export const clientUpdateChatConversation = async (
   conversationId: string,
   updateConversationData: Partial<IChatConversation>,
+  syncConversationToDB: boolean,
 ) => {
   try {
     const port = new ContentScriptConnectionV2()
@@ -73,6 +75,7 @@ export const clientChatConversationUpdate = async (
       data: {
         conversationId,
         updateConversationData,
+        syncConversationToDB,
       },
     })
     return result.success

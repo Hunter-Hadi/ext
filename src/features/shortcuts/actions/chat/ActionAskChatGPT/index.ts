@@ -110,6 +110,10 @@ export class ActionAskChatGPT extends Action {
         // AI response的消息Id
         outputMessageId,
       } = this.question.meta
+      // 设置includeHistory
+      if (contextMenu?.id) {
+        this.question.meta.includeHistory = false
+      }
       // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏
       // 用于用户看到的信息
       let messageVisibleText = this.question.text

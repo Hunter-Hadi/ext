@@ -1,7 +1,8 @@
 import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import React from 'react'
+import { SxProps } from '@mui/material/styles'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -9,7 +10,11 @@ import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
-const MaxAIScreenshotMiniButton = () => {
+interface IProps {
+  sx?: SxProps
+}
+
+const MaxAIScreenshotMiniButton: FC<IProps> = ({ sx }) => {
   const { t } = useTranslation(['common', 'client'])
   return (
     <Stack
@@ -18,6 +23,7 @@ const MaxAIScreenshotMiniButton = () => {
         width: 32,
         height: 32,
         borderRadius: '50%',
+        ...sx,
       }}
       alignItems={'center'}
       justifyContent={'center'}
@@ -70,12 +76,10 @@ const MaxAIScreenshotMiniButton = () => {
       <SidebarScreenshotButton
         sx={{
           position: 'absolute',
-          display: 'none',
-          visibility: 0,
+          visibility: 'hidden',
           width: 0,
           height: 0,
           opacity: 0,
-          zIndex: -1,
         }}
       />
     </Stack>

@@ -191,9 +191,12 @@ const FloatingMenuButton: FC = () => {
               }}
               aboveNode={
                 <Stack spacing={'6px'}>
-                  {isHover && (
-                    <MaxAIScreenshotMiniButton key={'MaxAIScreenshotButton'} />
-                  )}
+                  <MaxAIScreenshotMiniButton
+                    key={'MaxAIScreenshotButton'}
+                    sx={{
+                      visibility: isHover ? 'visible' : 'hidden',
+                    }}
+                  />
                   {isHover && <MaxAIArtMiniButton key={'MaxAIArtButton'} />}
                   {isHover && (
                     <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />

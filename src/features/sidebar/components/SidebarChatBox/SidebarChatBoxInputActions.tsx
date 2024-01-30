@@ -160,7 +160,7 @@ const SidebarChatBoxInputActions: FC<{
           sx={{
             ...actionsBtnColorSxMemo,
             visibility: isPromptLibraryIconButtonShow ? 'visible' : 'hidden',
-            position: isPromptLibraryIconButtonShow ? 'static' : 'absolute',
+            position: isPromptLibraryIconButtonShow ? 'relative' : 'absolute',
             [`&.${buttonClasses.contained}`]: {
               color: 'white',
             },

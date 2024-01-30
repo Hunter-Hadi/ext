@@ -1,7 +1,6 @@
-import cloneDeep from 'lodash-es/cloneDeep'
 import merge from 'lodash-es/merge'
 import { useEffect, useRef } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
@@ -11,7 +10,6 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import {
   clientChatConversationModifyChatMessages,
@@ -68,7 +66,6 @@ const useClientConversation = () => {
   )
 
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
-  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const {
     currentSidebarConversationType,
     currentSidebarConversationId,
@@ -236,87 +233,43 @@ const useClientConversation = () => {
     return conversationId
   }
 
-  const cleanConversation = async (saveConversationCache = false) => {
+  const cleanConversation = async () => {
+    if (conversation.loading) {
+      return
+    }
     console.log(
       '新版Conversation 清除conversation',
       currentSidebarConversationType,
       currentConversationIdRef.current,
     )
-    // 让用户在切换回对应model的时候保留聊天记录
-    if (
-      currentSidebarConversationType === 'Chat' &&
-      currentConversationIdRef.current
-    ) {
-      // 拿到当前conversation的AIProvider和AIModel
-      const waitRemoveConversation = await clientGetConversation(
-        currentConversationIdRef.current,
-      )
-      const waitRemoveConversationAIProvider =
-        waitRemoveConversation?.meta?.AIProvider
-      const waitRemoveConversationAIModel =
-        waitRemoveConversation?.meta?.AIModel
-      // 基于当前AIProvider和AIModel，更新cache
-      if (waitRemoveConversationAIProvider && waitRemoveConversationAIModel) {
-        if (saveConversationCache) {
-          await updateSidebarSettings({
-            cache: {
-              chatConversationCache: {
-                [waitRemoveConversationAIProvider +
-                waitRemoveConversationAIModel]: currentConversationIdRef.current,
-              },
-            },
-          })
-        } else {
-          await updateSidebarSettings({
-            cache: {
-              chatConversationCache: {
-                [waitRemoveConversationAIProvider +
-                waitRemoveConversationAIModel]: '',
-              },
-            },
-          })
-        }
-      }
-    }
-    await port.postMessage({
-      event: 'Client_removeChatGPTConversation',
-      data: {
-        conversationId: currentConversationIdRef.current,
-      },
-    })
     if (currentSidebarConversationType === 'Chat') {
       await updateSidebarSettings({
         chat: {
-          conversationId: '',
+          conversationId: await createConversation('Chat'),
         },
       })
     } else if (currentSidebarConversationType === 'Summary') {
       // 清除pageSummary的conversationId
       await updateSidebarSettings({
         summary: {
-          conversationId: '',
+          conversationId: await createConversation('Summary'),
         },
       })
     } else if (currentSidebarConversationType === 'Search') {
       // 清除search的conversationId
       await updateSidebarSettings({
         search: {
-          conversationId: '',
+          conversationId: await createConversation('Search'),
         },
       })
     } else if (currentSidebarConversationType === 'Art') {
       // 清除search的conversationId
       await updateSidebarSettings({
         art: {
-          conversationId: '',
+          conversationId: await createConversation('Art'),
         },
       })
     }
-    updateConversationMap((prev) => {
-      const newConversationMap = cloneDeep(prev)
-      delete newConversationMap[currentConversationIdRef.current || '']
-      return newConversationMap
-    })
     setConversation({
       model: '',
       writingMessage: null,

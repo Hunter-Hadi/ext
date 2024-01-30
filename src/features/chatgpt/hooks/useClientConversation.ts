@@ -162,20 +162,6 @@ const useClientConversation = () => {
         },
       })
     } else if (conversationType === 'Search') {
-      const searchCacheConversationId = (await getChromeExtensionLocalStorage())
-        .sidebarSettings?.search?.conversationId
-      // 如果search板块已经有conversationId了
-      if (
-        searchCacheConversationId &&
-        (await clientGetConversation(searchCacheConversationId))
-      ) {
-        console.log(
-          '新版Conversation chatCacheConversationId',
-          searchCacheConversationId,
-        )
-        // 如果已经存在了，并且有AI消息，那么就不用创建了
-        return searchCacheConversationId
-      }
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',

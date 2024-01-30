@@ -1,17 +1,14 @@
 import SendIcon from '@mui/icons-material/Send'
 import Box from '@mui/material/Box'
-import Button, { buttonClasses } from '@mui/material/Button'
+import { buttonClasses } from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import Browser from 'webextension-polyfill'
 
-import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import PromptLibraryIconButton from '@/components/PromptLibraryIconButton'
-import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
@@ -21,10 +18,10 @@ import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
+import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatBox/SidebarChatHistoryButton'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
-import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarChatBoxInputActions: FC<{
@@ -122,33 +119,18 @@ const SidebarChatBoxInputActions: FC<{
         {/* chat history btn */}
         {currentSidebarConversationType !== 'Summary' &&
         !isMaxAIImmersiveChatPage() ? (
-          <TextOnlyTooltip
-            placement={'top'}
-            title={t('client:sidebar__speed_dial__chat_history__button')}
-          >
-            <Button
-              onClick={() => {
-                chromeExtensionClientOpenPage({
-                  url: Browser.runtime.getURL(`/pages/chat/index.html`),
-                  query: `?conversationType=${currentSidebarConversationType}`,
-                })
-              }}
-              sx={{
-                p: '5px',
-                minWidth: 'unset',
-                ...actionsBtnColorSxMemo,
-              }}
-              variant={'outlined'}
-            >
-              <ContextMenuIcon
-                icon={'History'}
-                sx={{
-                  fontSize: '20px',
-                }}
-              />
-            </Button>
-          </TextOnlyTooltip>
+          <SidebarChatHistoryButton
+            sx={{
+              ...actionsBtnColorSxMemo,
+              visibility: isPromptLibraryIconButtonShow ? 'visible' : 'hidden',
+              position: isPromptLibraryIconButtonShow ? 'relative' : 'absolute',
+              [`&.${buttonClasses.contained}`]: {
+                color: 'white',
+              },
+            }}
+          />
         ) : null}
+
         {/* shortcut btn */}
         {currentSidebarConversationType === 'Chat' &&
           !smoothConversationLoading && (

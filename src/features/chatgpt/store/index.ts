@@ -1,7 +1,10 @@
 import { atom } from 'recoil'
 
 import { ChatStatus } from '@/background/provider/chat'
-import { IChatConversation } from '@/background/src/chatConversations'
+import {
+  IChatConversation,
+  PaginationConversation,
+} from '@/background/src/chatConversations'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
 export const ChatGPTClientState = atom<{
@@ -42,4 +45,9 @@ export const ClientUploadedFilesState = atom<{
     files: [],
     blurDelay: false,
   },
+})
+
+export const PaginationConversationsState = atom<PaginationConversation[]>({
+  key: 'PaginationConversationsState',
+  default: [],
 })

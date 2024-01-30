@@ -8,8 +8,10 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ClearChatButton: FC<{
   conversationId: string
@@ -20,19 +22,48 @@ const ClearChatButton: FC<{
   const { cleanConversation } = useClientConversation()
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
+
+  const isInImmersiveChat = isMaxAIImmersiveChatPage()
+
   return (
     <>
-      <IconButton
-        onClick={() => {
-          setOpen(true)
-        }}
+      <TextOnlyTooltip
+        placement={'top'}
+        title={t('client:immersive_chat__delete_chat__button__title')}
       >
-        <ContextMenuIcon icon={'Delete'} size={16} />
-      </IconButton>
+        <IconButton
+          onClick={(e: React.MouseEvent) => {
+            e.stopPropagation()
+            setOpen(true)
+          }}
+          sx={{
+            p: 0.5,
+          }}
+        >
+          <ContextMenuIcon icon={'Delete'} size={16} />
+        </IconButton>
+      </TextOnlyTooltip>
+
       <Modal
         open={open}
-        onClose={() => {
+        onClose={(e: React.MouseEvent) => {
+          e.stopPropagation()
           setOpen(false)
+        }}
+        sx={{
+          position: isInImmersiveChat ? 'fixed' : 'absolute',
+        }}
+        slotProps={{
+          root: {
+            onClick: (e: React.MouseEvent) => {
+              e.stopPropagation()
+            },
+          },
+          backdrop: {
+            sx: {
+              position: isInImmersiveChat ? 'fixed' : 'absolute',
+            },
+          },
         }}
       >
         <Container
@@ -44,8 +75,11 @@ const ClearChatButton: FC<{
             borderRadius: '4px',
             bgcolor: (t) => (t.palette.mode === 'dark' ? '#3d3d3d' : '#fff'),
             maxWidth: '512px!important',
-            width: '100%',
+            width: isInImmersiveChat ? '100%' : '448px',
             p: 2,
+          }}
+          onClick={(e: React.MouseEvent) => {
+            e.stopPropagation()
           }}
         >
           <Stack spacing={2}>

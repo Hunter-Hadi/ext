@@ -30,7 +30,7 @@ import Log from '@/utils/Log'
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
 class UseChatGPTPlusChat extends BaseChat {
-  status: ChatStatus = 'needAuth'
+  status: ChatStatus = 'success'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
@@ -42,7 +42,7 @@ class UseChatGPTPlusChat extends BaseChat {
   }
   async preAuth() {
     this.active = true
-    await this.checkTokenAndUpdateStatus()
+    // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
     this.active = true
@@ -430,7 +430,7 @@ class UseChatGPTPlusChat extends BaseChat {
   }
   async updateClientStatus() {
     if (this.active) {
-      console.log('Client_authChatGPTProvider updateClientStatus', this.status)
+      console.log('Client_AuthAIProvider updateClientStatus', this.status)
       await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
         status: this.status,
       })

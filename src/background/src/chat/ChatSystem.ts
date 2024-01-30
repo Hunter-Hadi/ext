@@ -71,14 +71,16 @@ class ChatSystem implements ChatSystemInterface {
               message: '',
             }
           }
-          case 'Client_authChatGPTProvider': {
+          case 'Client_AuthAIProvider': {
             const { provider } = data
-            await this.switchAdapter(provider)
-            await this.auth(sender.tab?.id || 0)
+            const needAuthAIProvider = this.adapters[
+              provider as IAIProviderType
+            ]
+            await needAuthAIProvider?.auth(sender.tab?.id || 0)
             console.log(
-              'Client_authChatGPTProvider',
-              this.currentAdapter?.status,
-              this.currentAdapter,
+              'Client_AuthAIProvider',
+              needAuthAIProvider?.status,
+              needAuthAIProvider,
             )
             return {
               success: true,

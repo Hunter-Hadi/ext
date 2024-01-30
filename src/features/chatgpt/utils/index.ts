@@ -136,3 +136,24 @@ export const isThirdPartyAIProvider = (provider: IAIProviderType) => {
   ]
   return thirdPartyAIProvider.includes(provider)
 }
+
+// 客户端切换 AI provider 并且 auth 的方法
+export const clientSwitchAndAuthAIProvider = async (
+  provider: IAIProviderType,
+) => {
+  const port = new ContentScriptConnectionV2()
+  await port.postMessage({
+    event: 'Client_switchAIProvider',
+    data: {
+      provider,
+    },
+  })
+  const result = await port.postMessage({
+    event: 'Client_AuthAIProvider',
+    data: {
+      provider,
+    },
+  })
+
+  return result.success
+}

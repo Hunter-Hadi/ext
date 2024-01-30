@@ -13,6 +13,7 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { clientSwitchAndAuthAIProvider } from '@/features/chatgpt/utils'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 const port = new ContentScriptConnectionV2()
@@ -24,18 +25,6 @@ const AIProviderAuthButton: FC<{
   const { t } = useTranslation(['common', 'client'])
   const chatGPTClientState = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
-
-  const handleAuthProvider = async (aiProviderOption: AIProviderOptionType) => {
-    const authProvider = async () => {
-      await port.postMessage({
-        event: 'Client_authChatGPTProvider',
-        data: {
-          provider: aiProviderOption.value,
-        },
-      })
-    }
-    await authProvider()
-  }
 
   useEffect(() => {
     let timer: any | null = null
@@ -84,13 +73,10 @@ const AIProviderAuthButton: FC<{
                         textDecoration: 'underline',
                       },
                     }}
-                    onClick={() => {
-                      port.postMessage({
-                        event: 'Client_authChatGPTProvider',
-                        data: {
-                          provider: AI_PROVIDER_MAP.OPENAI,
-                        },
-                      })
+                    onClick={async () => {
+                      await clientSwitchAndAuthAIProvider(
+                        AI_PROVIDER_MAP.OPENAI,
+                      )
                     }}
                   >
                     <Typography
@@ -208,7 +194,7 @@ const AIProviderAuthButton: FC<{
               )
             }
             onClick={async () => {
-              await handleAuthProvider(aiProviderOption)
+              await clientSwitchAndAuthAIProvider(aiProviderOption.value)
             }}
             variant={'contained'}
             disableElevation

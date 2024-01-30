@@ -5,12 +5,10 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { clientSwitchAndAuthAIProvider } from '@/features/chatgpt/utils'
 
 import SearchWIthAIProviderIcon from '../components/SearchWIthAIProviderIcon'
 import { SEARCH_WITH_AI_PROVIDER_MAP } from '../constants'
-
-const port = new ContentScriptConnectionV2()
 
 const OpenAICheckerTooltip = () => {
   const { t } = useTranslation(['client'])
@@ -63,12 +61,9 @@ const OpenAICheckerTooltip = () => {
           mt: '16px !important',
         }}
         onClick={async () => {
-          await port.postMessage({
-            event: 'Client_authChatGPTProvider',
-            data: {
-              provider: SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API,
-            },
-          })
+          await clientSwitchAndAuthAIProvider(
+            SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API,
+          )
         }}
       >
         {t('client:provider__openai_api__auth_button_text')}

@@ -15,7 +15,7 @@ export const ChatGPTClientState = atom<{
   key: 'ChatGPTClientState',
   default: {
     loaded: false,
-    status: 'needAuth',
+    status: 'success',
     aborts: [],
   },
 })

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import {
@@ -32,7 +32,6 @@ const useSearchWithAI = () => {
   const updateConversation = useSetRecoilState(ChatGPTConversationState)
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
-  const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
@@ -107,7 +106,7 @@ const useSearchWithAI = () => {
         includeHistory,
       )
       lastMessageIdRef.current = messageId
-      setRunActions(actions)
+      runSearchWithAIActions(actions)
     } catch (e) {
       console.log('创建Conversation失败', e)
     }
@@ -198,28 +197,31 @@ const useSearchWithAI = () => {
       console.log('重新生成Conversation失败', e)
     }
   }
-  useEffect(() => {
-    if (
-      runActions.length > 0 &&
-      !isFetchingRef.current &&
-      currentSidebarConversationType === 'Search' &&
-      currentSidebarConversationId
-    ) {
-      isFetchingRef.current = true
-      askAIWIthShortcuts(runActions)
-        .then()
-        .catch()
-        .finally(async () => {
-          isFetchingRef.current = false
-          setRunActions([])
-        })
-    }
-  }, [
-    askAIWIthShortcuts,
-    currentSidebarConversationType,
-    currentSidebarConversationId,
-    runActions,
-  ])
+
+  const runSearchWithAIActions = useCallback(
+    (actions: ISetActionsType) => {
+      if (
+        actions.length > 0 &&
+        !isFetchingRef.current &&
+        currentSidebarConversationType === 'Search' &&
+        currentSidebarConversationId
+      ) {
+        isFetchingRef.current = true
+        askAIWIthShortcuts(actions)
+          .then()
+          .catch()
+          .finally(async () => {
+            isFetchingRef.current = false
+          })
+      }
+    },
+    [
+      askAIWIthShortcuts,
+      currentSidebarConversationType,
+      currentSidebarConversationId,
+    ],
+  )
+
   return {
     createSearchWithAI,
     regenerateSearchWithAI,

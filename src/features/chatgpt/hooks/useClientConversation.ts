@@ -249,10 +249,16 @@ const useClientConversation = () => {
         },
       })
     } else if (currentSidebarConversationType === 'Summary') {
+      await clientChatConversationModifyChatMessages(
+        'delete',
+        getPageSummaryConversationId(),
+        99999999,
+        [],
+      )
       // 清除pageSummary的conversationId
       await updateSidebarSettings({
         summary: {
-          conversationId: await createConversation('Summary'),
+          conversationId: '',
         },
       })
     } else if (currentSidebarConversationType === 'Search') {

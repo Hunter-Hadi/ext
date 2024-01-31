@@ -7,13 +7,11 @@ import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxUserTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarChatBoxUserTools'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
-import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const BaseSidebarUserMessage: FC<{
   message: IUserChatMessage
 }> = (props) => {
   const { message } = props
-  const { isDarkMode } = useCustomTheme()
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',

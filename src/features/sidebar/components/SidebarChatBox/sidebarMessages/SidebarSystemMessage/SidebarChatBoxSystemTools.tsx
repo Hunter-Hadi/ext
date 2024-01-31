@@ -90,7 +90,7 @@ const SidebarChatBoxSystemTools: FC<{
           {upgradeCardText}
         </Button>
       )}
-      {chatMessageStatus === 'error' && currentAIProviderDetail?.isThirdParty && (
+      {chatMessageStatus === 'error' && currentAIProviderDetail?.thirdParty && (
         <Button
           size={'small'}
           variant={'outlined'}

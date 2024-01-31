@@ -12,7 +12,6 @@ import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIco
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
 import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { chromeExtensionClientOpenPage } from '@/utils'
@@ -24,7 +23,6 @@ const ChatBoxHeader: FC<{
   const { showConversationList } = props
   const { t } = useTranslation(['common', 'client'])
   const { chatBoxShortCutKey } = useCommands()
-  const { currentSidebarConversationType } = useSidebarSettings()
   const currentBreakpoint = useCurrentBreakpoint()
   const theme = useCustomTheme()
   const isDownSm = useMediaQuery(theme.customTheme.breakpoints.down('sm'))

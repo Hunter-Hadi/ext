@@ -170,6 +170,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             px: 1,
             borderRight: '2px solid',
             borderColor: 'transparent',
+            minHeight: 'auto',
             '&.Mui-selected': {
               borderColor: 'primary.main',
             },

@@ -1,3 +1,4 @@
+import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo } from 'react'
@@ -49,26 +50,35 @@ const BaseSidebarUserMessage: FC<{
       messageText: formatChatMessageContent(message),
     }
   }, [message])
+
+  const includeHistory = useMemo(() => {
+    return !!message.meta?.includeHistory
+  }, [message])
+
   console.log('测试性能SidebarUserMessage', 'rerender')
   return (
-    <Stack
-      className={'chat-message--text'}
-      sx={{
-        ...memoSx,
-      }}
-    >
-      {renderData.attachments.length > 0 && (
-        <ChatIconFileList
-          size={'small'}
-          direction={'row'}
-          disabledRemove
-          sx={{ mb: 1 }}
-          files={renderData.attachments}
-        />
-      )}
-      {renderData.messageText}
-      <SidebarChatBoxUserTools message={message} />
-    </Stack>
+    <>
+      {!includeHistory && <Divider sx={{ mb: 2 }} />}
+
+      <Stack
+        className={'chat-message--text'}
+        sx={{
+          ...memoSx,
+        }}
+      >
+        {renderData.attachments.length > 0 && (
+          <ChatIconFileList
+            size={'small'}
+            direction={'row'}
+            disabledRemove
+            sx={{ mb: 1 }}
+            files={renderData.attachments}
+          />
+        )}
+        {renderData.messageText}
+        <SidebarChatBoxUserTools message={message} />
+      </Stack>
+    </>
   )
 }
 

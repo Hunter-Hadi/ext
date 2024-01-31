@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
@@ -247,7 +248,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       )}
       {!coverLoading ? (
         <SidebarAIMessageTools message={message as IAIResponseMessage} />
-      ) : null}
+      ) : (
+        <Box />
+      )}
     </Stack>
   )
 }

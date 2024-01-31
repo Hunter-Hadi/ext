@@ -13,6 +13,7 @@ interface LanguageSelectProps {
   defaultValue?: string
   onChange?: (value: string) => void
   sx?: SxProps
+  boxSx?: SxProps
 }
 
 function filterOptions(options: any[], { inputValue }: any) {
@@ -32,6 +33,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       console.log(value)
     },
     sx,
+    boxSx,
   } = props
   const { t } = useTranslation(['common'])
   const [value, setValue] = React.useState<{ label: string; value: string }>(
@@ -62,6 +64,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       BoxProps={{
         sx: {
           maxWidth: 'fit-content',
+          ...boxSx,
         },
       }}
     >

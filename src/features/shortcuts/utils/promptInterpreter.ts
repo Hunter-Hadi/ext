@@ -103,6 +103,7 @@ export const promptLibraryCardDetailDataToActions = (
         parameters: {
           ActionChatMessageOperationType: 'add',
           ActionChatMessageConfig: {
+            messageId: '',
             type: 'ai',
             text: '',
             originalMessage: {

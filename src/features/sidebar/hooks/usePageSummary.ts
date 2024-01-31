@@ -3,7 +3,7 @@
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import {
@@ -40,7 +40,6 @@ const usePageSummary = () => {
   )
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
-  const [runActions, setRunActions] = useState<ISetActionsType>([])
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
@@ -143,34 +142,37 @@ const usePageSummary = () => {
           getPageSummaryType(),
         )
         lastMessageIdRef.current = messageId
-        setRunActions(actions)
+        runPageSummaryActions(actions)
       } catch (e) {
         console.log('创建Conversation失败', e)
       }
     }
   }
-  useEffect(() => {
-    if (
-      runActions.length > 0 &&
-      !isFetchingRef.current &&
-      currentSidebarConversationType === 'Summary' &&
-      currentSidebarConversationId
-    ) {
-      isFetchingRef.current = true
-      askAIWIthShortcuts(runActions)
-        .then()
-        .catch()
-        .finally(() => {
-          isFetchingRef.current = false
-        })
-      setRunActions([])
-    }
-  }, [
-    askAIWIthShortcuts,
-    currentSidebarConversationType,
-    currentSidebarConversationId,
-    runActions,
-  ])
+
+  const runPageSummaryActions = useCallback(
+    (actions: ISetActionsType) => {
+      if (
+        actions.length > 0 &&
+        !isFetchingRef.current &&
+        currentSidebarConversationType === 'Summary' &&
+        currentSidebarConversationId
+      ) {
+        isFetchingRef.current = true
+        askAIWIthShortcuts(actions)
+          .then()
+          .catch()
+          .finally(() => {
+            isFetchingRef.current = false
+          })
+      }
+    },
+    [
+      askAIWIthShortcuts,
+      currentSidebarConversationType,
+      currentSidebarConversationId,
+    ],
+  )
+
   return {
     createPageSummary,
   }

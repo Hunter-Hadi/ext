@@ -395,11 +395,42 @@ export class ActionAskChatGPT extends Action {
                 sources: {
                   status: 'complete',
                 },
+                isComplete: true,
               },
             },
           } as any,
         ],
       )
+    } else if (this.question?.conversationId) {
+      const messages = (
+        await clientGetConversation(this.question?.conversationId)
+      )?.messages
+      if (messages) {
+        const lastMessage = messages[messages.length - 1]
+        if (isAIMessage(lastMessage)) {
+          if (lastMessage.originalMessage) {
+            await clientChatConversationModifyChatMessages(
+              'update',
+              this.question?.conversationId,
+              0,
+              [
+                {
+                  type: 'ai',
+                  messageId: lastMessage.messageId,
+                  originalMessage: {
+                    metadata: {
+                      sources: {
+                        status: 'complete',
+                      },
+                      isComplete: true,
+                    },
+                  },
+                } as any,
+              ],
+            )
+          }
+        }
+      }
     }
     return true
   }

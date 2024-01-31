@@ -57,10 +57,7 @@ const useChatMessageExpiredFileUpdater = (message: IChatMessage) => {
                   if (isMaxAIAttachmentExpired(attachment)) {
                     const newFile = await clientGetMaxAIFileUrlWithFileId(
                       attachment.uploadedFileId,
-                      {
-                        message_id: newMessage.messageId,
-                        conversation_id: currentSidebarConversationId,
-                      },
+                      {},
                     )
                     attachment.uploadedFileId =
                       newFile?.file_id || attachment.uploadedFileId

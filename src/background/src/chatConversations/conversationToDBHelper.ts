@@ -46,13 +46,14 @@ export const getDBConversationDetail = async (conversationId: string) => {
 export const addOrUpdateDBConversation = async (
   conversation: IChatConversation,
 ) => {
+  return
   const uploadConversation: any = cloneDeep(conversation)
   if (uploadConversation) {
     const messages = uploadConversation.messages
     // 不需要保存messages
     delete uploadConversation.messages
   }
-  await maxAIRequest('/conversation/upsert_conversation', conversation)
+  await maxAIRequest('/conversation/upsert_conversation', uploadConversation)
 }
 
 /**
@@ -101,6 +102,7 @@ export const addOrUpdateDBConversationMessages = async (
   messages: IChatMessage[],
 ) => {
   try {
+    return
     const response = await maxAIMessageRequest(
       '/conversation/add_messages',
       {
@@ -129,6 +131,7 @@ export const deleteDBConversationMessages = async (
   messageIds: string[],
 ) => {
   try {
+    return
     const response = await maxAIMessageRequest(
       '/conversation/delete_messages',
       {

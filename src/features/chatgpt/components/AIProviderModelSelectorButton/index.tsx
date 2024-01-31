@@ -8,6 +8,7 @@ import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
 import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
@@ -123,7 +124,7 @@ const AIProviderModelSelectorButton: FC<{
         )}
         {currentModelDetail?.label && (
           <Typography
-            ml={0.5}
+            mx={0.5}
             fontSize={14}
             lineHeight={1.4}
             color="text.secondary"
@@ -134,70 +135,77 @@ const AIProviderModelSelectorButton: FC<{
             {currentModelDetail.label}
           </Typography>
         )}
-        <Popper
-          open={open}
-          anchorEl={anchorRef.current}
-          role={undefined}
-          placement={placement || 'top-start'}
-          transition
-          modifiers={[
-            {
-              name: 'offset',
-              options: {
-                offset: [0, 8],
-              },
-            },
-          ]}
-          container={
-            size === 'small'
-              ? getAppContextMenuRootElement()
-              : getMaxAISidebarRootElement()
-          }
-        >
-          {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === 'bottom-start' ? 'left top' : 'left bottom',
-              }}
-            >
-              <Box>
-                <ClickAwayListener
-                  onClickAway={(event) => {
-                    const aiProviderCard = getMaxAISidebarRootElement()?.querySelector(
-                      '#MaxAIProviderSelectorCard',
-                    ) as HTMLElement
-                    if (aiProviderCard) {
-                      const rect = aiProviderCard.getBoundingClientRect()
-                      const x = (event as MouseEvent).clientX
-                      const y = (event as MouseEvent).clientY
-                      if (
-                        x > rect.left &&
-                        x < rect.right &&
-                        y > rect.top &&
-                        y < rect.bottom
-                      ) {
-                        // 点击在卡片内部
-                        return
-                      }
-                      handleClose(event)
-                      event.stopPropagation()
-                    }
-                  }}
-                >
-                  <Box>
-                    <AIModelSelectorCard
-                      sidebarConversationType={sidebarConversationType}
-                      onClose={handleClose}
-                    />
-                  </Box>
-                </ClickAwayListener>
-              </Box>
-            </Grow>
-          )}
-        </Popper>
+        <ContextMenuIcon
+          icon={'ExpandMore'}
+          sx={{
+            color: 'text.secondary',
+            fontSize: '16px',
+          }}
+        />
       </Button>
+      <Popper
+        open={open}
+        anchorEl={anchorRef.current}
+        role={undefined}
+        placement={placement || 'top-start'}
+        transition
+        modifiers={[
+          {
+            name: 'offset',
+            options: {
+              offset: [0, 8],
+            },
+          },
+        ]}
+        container={
+          size === 'small'
+            ? getAppContextMenuRootElement()
+            : getMaxAISidebarRootElement()
+        }
+      >
+        {({ TransitionProps, placement }) => (
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === 'bottom-start' ? 'left top' : 'left bottom',
+            }}
+          >
+            <Box>
+              <ClickAwayListener
+                onClickAway={(event) => {
+                  const aiProviderCard = getMaxAISidebarRootElement()?.querySelector(
+                    '#MaxAIProviderSelectorCard',
+                  ) as HTMLElement
+                  if (aiProviderCard) {
+                    const rect = aiProviderCard.getBoundingClientRect()
+                    const x = (event as MouseEvent).clientX
+                    const y = (event as MouseEvent).clientY
+                    if (
+                      x > rect.left &&
+                      x < rect.right &&
+                      y > rect.top &&
+                      y < rect.bottom
+                    ) {
+                      // 点击在卡片内部
+                      return
+                    }
+                    handleClose(event)
+                    event.stopPropagation()
+                  }
+                }}
+              >
+                <Box>
+                  <AIModelSelectorCard
+                    sidebarConversationType={sidebarConversationType}
+                    onClose={handleClose}
+                  />
+                </Box>
+              </ClickAwayListener>
+            </Box>
+          </Grow>
+        )}
+      </Popper>
     </Box>
   )
 }

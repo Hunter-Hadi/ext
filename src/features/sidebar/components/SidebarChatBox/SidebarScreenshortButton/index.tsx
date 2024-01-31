@@ -43,7 +43,7 @@ const SidebarScreenshotButton: FC<{
 
   return (
     <>
-      <TextOnlyTooltip placement={'top'} title={t('common:screenshot')}>
+      <TextOnlyTooltip placement={'top'} title={t('common:ai_screenshot')}>
         <Button
           data-testid={'maxai-take-screenshot'}
           onClick={() => {

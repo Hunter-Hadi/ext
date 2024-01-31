@@ -3,7 +3,6 @@ import { useEffect, useRef } from 'react'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
@@ -120,10 +119,6 @@ const useClientChat = () => {
       await pushPricingHookMessage('PDF_AI_VIEWER')
       return
     }
-    const token = await chromeExtensionArkoseTokenGenerator.generateToken(
-      'gpt_3_5',
-    )
-    debugger
     // 3. Model - 付费卡点
     const currentConversation = await getCurrentConversation()
     if (

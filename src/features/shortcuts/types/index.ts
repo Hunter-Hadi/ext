@@ -1,5 +1,6 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { IClientConversationEngine } from '@/features/chatgpt/hooks/useClientConversation'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
@@ -89,8 +90,11 @@ export interface IShortcutEngine {
   status: 'idle' | 'running' | 'stop' | 'complete'
   actions: IAction[]
   variables: Map<string, any>
-  run: (params: any) => Promise<void>
-  stop: () => void
+  run: (params: {
+    parameters: IShortCutsParameter[]
+    engine: IShortcutEngineExternalEngine
+  }) => Promise<void>
+  stop: (params: { engine: IShortcutEngineExternalEngine }) => void
   reset: () => void
   stepIndex: number
   setVariable: (

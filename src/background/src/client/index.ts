@@ -17,6 +17,7 @@ import {
   createChromeExtensionOptionsPage,
   safeGetBrowserTab,
 } from '@/background/utils'
+import BackgroundAbortFetch from '@/background/utils/BackgroundAbortFetch'
 import { getContextMenuActions } from '@/background/utils/buttonSettings'
 import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
 import {
@@ -556,13 +557,43 @@ export const ClientMessageInit = () => {
           break
         case 'Client_proxyFetchAPI': {
           try {
-            const { url, options } = data
+            const { url, options, abortTaskId } = data
             const { parse = 'json', ...parseOptions } = options
-            const result = await fetch(url, parseOptions)
+            const result = await BackgroundAbortFetch.fetch(
+              url,
+              parseOptions,
+              abortTaskId,
+            )
             return {
               success: true,
-              data:
-                parse === 'json' ? await result.json() : await result.text(),
+              data: {
+                response: {
+                  ok: result.ok,
+                  status: result.status,
+                  statusText: result.statusText,
+                  url: result.url,
+                  redirected: result.redirected,
+                },
+                data:
+                  parse === 'json' ? await result.json() : await result.text(),
+              },
+              message: 'ok',
+            }
+          } catch (e) {
+            return {
+              success: false,
+              data: e,
+              message: 'ok',
+            }
+          }
+        }
+        case 'Client_abortProxyFetchAPI': {
+          try {
+            const { abortTaskId } = data
+            const success = BackgroundAbortFetch.abort(abortTaskId)
+            return {
+              success,
+              data: {},
               message: 'ok',
             }
           } catch (e) {

@@ -62,6 +62,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_removeAllConversation'
   | 'Client_removeConversationByType'
   | 'Client_proxyFetchAPI'
+  | 'Client_abortProxyFetchAPI'
   | 'Client_getIframePageContent'
   | 'Client_ListenProxyWebsocketResponse'
   // 上传文件相关

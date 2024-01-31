@@ -1,8 +1,5 @@
 import Browser from 'webextension-polyfill'
 
-import { backgroundGetUrlContent } from '@/background/utils'
-import { getWebpageTitleAndText } from '@/features/shortcuts/utils/webHelper'
-
 const timeKey = 'CHAT_GPT_WHITE_LIST_MODELS_TIME'
 const modelKey = 'CHAT_GPT_WHITE_LIST_MODELS'
 
@@ -16,8 +13,9 @@ export const updateChatGPTWhiteListModelAsync = async (): Promise<string[]> => {
       return await getChatGPTWhiteListModelAsync()
     }
   }
-  const webpageData = await getWebpageTitleAndText(
+  const webpageData = await backgroundGetContentOfURL(
     `https://www.phtracker.com/crx/info/provider/v1`,
+    10 * 1000,
   )
   if (webpageData.success && webpageData.body) {
     try {
@@ -49,12 +47,13 @@ export const getChatGPTWhiteListModelAsync = async (): Promise<string[]> => {
       return data
     } else {
       // 说明没有缓存，需要更新
-      const result = await backgroundGetUrlContent(
+      const webpageData = await backgroundGetContentOfURL(
         'https://www.phtracker.com/crx/info/provider/v1',
+        20 * 1000,
       )
-      if (result.success && result.data && result.data.body) {
+      if (webpageData.success && webpageData.body) {
         try {
-          const data = JSON.parse(result.data.body)
+          const data = JSON.parse(webpageData.body)
           if (data.models) {
             // set to local storage
             await Browser.storage.local.set({
@@ -76,3 +75,4 @@ export const getChatGPTWhiteListModelAsync = async (): Promise<string[]> => {
     return []
   }
 }
+import backgroundGetContentOfURL from '@/features/shortcuts/utils/web/backgroundGetContentOfURL'

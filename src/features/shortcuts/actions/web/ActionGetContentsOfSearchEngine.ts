@@ -1,7 +1,12 @@
 import isNumber from 'lodash-es/isNumber'
 import uniqBy from 'lodash-es/uniqBy'
+import { v4 as uuidV4 } from 'uuid'
 
-import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import {
+  completeLastAIMessageOnError,
+  completeLastAIMessageOnStop,
+  IShortcutEngineExternalEngine,
+} from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import {
   parametersParserDecorator,
@@ -11,10 +16,9 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
-import {
-  backgroundFetchHTMLByUrl,
-  crawlingSearchResults,
-} from '@/features/shortcuts/utils/searchEngineCrawling'
+import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
+import { crawlingSearchResults } from '@/features/shortcuts/utils/searchEngineCrawling'
+import clientGetContentOfURL from '@/features/shortcuts/utils/web/clientGetContentOfURL'
 import { interleaveMerge } from '@/utils/dataHelper/arrayHelper'
 
 export interface SearchResponse {
@@ -31,6 +35,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
    * @private
    */
   private SearchEngineResultDefaultLimit = 6
+  private searchEngineTaskMap: Map<string, boolean>
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -38,6 +43,11 @@ export class ActionGetContentsOfSearchEngine extends Action {
     autoExecute: boolean,
   ) {
     super(id, 'GET_CONTENTS_OF_SEARCH_ENGINE', parameters, autoExecute)
+    this.searchEngineTaskMap = new Map<string, boolean>()
+  }
+
+  private isTaskAbort(abortTaskId: string) {
+    return this.searchEngineTaskMap.get(abortTaskId) || false
   }
 
   @parametersParserDecorator()
@@ -45,6 +55,7 @@ export class ActionGetContentsOfSearchEngine extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
+  @completeLastAIMessageOnError()
   async execute(
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
@@ -75,18 +86,33 @@ export class ActionGetContentsOfSearchEngine extends Action {
           queryArr = query.split(searchParams.splitWith)
           delete searchParams.splitWith
         }
+        let isManualStop = false
         const searchResultArr = await Promise.all(
           queryArr.map(async (itemQuery) => {
+            // 0. 给每个searchResult设置一个abortTaskId
+            const abortTaskId = uuidV4()
+            this.searchEngineTaskMap.set(abortTaskId, false)
             const fullSearchURL = this.getFullSearchURL(
               searchEngine,
               searchParams,
               itemQuery.trim(),
             )
-
-            const { html, status } = await backgroundFetchHTMLByUrl(
+            const { html, status } = await clientGetContentOfURL(
               fullSearchURL,
+              20 * 1000,
+              abortTaskId,
             )
-            if (status === 301 || status === 302 || status === 429) {
+            if (this.isTaskAbort(abortTaskId)) {
+              isManualStop = true
+              // 任务被中止
+              return []
+            }
+            if (
+              status === 301 ||
+              status === 302 ||
+              status === 429 ||
+              status === 404
+            ) {
               // search engine 被重定向
               // 目前默认为 301，需要人机验证
               this.error = `[Click here for ${searchEngine.replace(/^\w/, (c) =>
@@ -106,6 +132,12 @@ export class ActionGetContentsOfSearchEngine extends Action {
             return []
           }),
         )
+        // 如果是手动停止，不需要继续执行
+        if (isManualStop) {
+          this.output = '[]'
+          this.error = ''
+          return
+        }
         if (this.error) {
           // 有错误，不需要继续执行
           return
@@ -129,6 +161,17 @@ export class ActionGetContentsOfSearchEngine extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  @completeLastAIMessageOnStop()
+  async stop(): Promise<boolean> {
+    // 停止所有的总结任务
+    this.searchEngineTaskMap.forEach((isEnd, key) => {
+      if (!isEnd) {
+        clientAbortFetchAPI(key)
+        this.searchEngineTaskMap.set(key, true)
+      }
+    })
+    return true
   }
   private getFullSearchURL(
     engine: URLSearchEngine | string,

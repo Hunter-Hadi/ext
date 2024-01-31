@@ -103,9 +103,11 @@ export class YoutubeTranscript {
   /**
    * Fetch transcript from YTB Video
    * @param videoId Video url or video identifier
+   * @param abortTaskId Abort task id
    */
   public static async fetchYoutubePageContentWithoutDocument(
     videoId: string,
+    abortTaskId?: string,
   ): Promise<ISocialMediaPostContextData> {
     try {
       const pageContent = await clientFetchAPI(
@@ -113,6 +115,7 @@ export class YoutubeTranscript {
         {
           parse: 'text',
         },
+        abortTaskId,
       )
       if (pageContent.success) {
         // youTube transcript

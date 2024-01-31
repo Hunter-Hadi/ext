@@ -10,8 +10,7 @@ export const MAXAI_IMAGE_GENERATE_MODELS: IArtTextToImageModel[] = [
     tags: [],
     exampleImage: '',
     poweredBy: 'OpenAI',
-    description: (t) =>
-      t(`client:provider__chatgpt__model__gpt_3_5__description`),
+    description: (t) => t(`client:art__model__dalle3__description`),
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
       roles: ['elite'],

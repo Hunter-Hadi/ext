@@ -66,10 +66,23 @@ const clientAskMaxAIChatProvider = async (
   }
 
   let maxAIApi = ''
+  const bodyObject: Record<string, any> = {
+    streaming: false,
+    message_content,
+    chat_history,
+    chrome_extension_version: APP_VERSION,
+    model_name: model,
+    prompt_id,
+    prompt_name,
+    temperature: Math.min(temperature, 1.2),
+    ...(doc_id ? { doc_id } : {}),
+  }
   if (aiProvider === 'MAXAI_CLAUDE') {
     maxAIApi = '/gpt/get_claude_response'
   } else if (aiProvider === 'USE_CHAT_GPT_PLUS') {
-    maxAIApi = '/gpt/get_chatgpt_response'
+    maxAIApi = '/gpt/get_search_page_summary_response'
+    // 请求 get_search_page_summary_response 接口时，不需要传 model_name，由后端控制
+    bodyObject.model_name = undefined
   }
   if (!maxAIApi) {
     return {
@@ -78,6 +91,7 @@ const clientAskMaxAIChatProvider = async (
       data: '',
     }
   }
+
   const result = await clientFetchAPI(
     `${APP_USE_CHAT_GPT_API_HOST}${maxAIApi}`,
     {
@@ -86,17 +100,7 @@ const clientAskMaxAIChatProvider = async (
         'Content-Type': 'application/json',
         Authorization: `Bearer ${await getAccessToken()}`,
       },
-      body: JSON.stringify({
-        streaming: false,
-        message_content,
-        chat_history,
-        chrome_extension_version: APP_VERSION,
-        model_name: model,
-        prompt_id,
-        prompt_name,
-        temperature: Math.min(temperature, 1.2),
-        ...(doc_id ? { doc_id } : {}),
-      }),
+      body: JSON.stringify(bodyObject),
     },
   )
   return {

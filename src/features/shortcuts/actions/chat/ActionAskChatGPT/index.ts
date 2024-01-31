@@ -329,6 +329,17 @@ export class ActionAskChatGPT extends Action {
             // 移除AI writing message
             clientConversationEngine.updateClientWritingMessage(null)
           }
+
+          // 如果是 smart search，并且报错了需要用 messageVisibleText 做 fallback 处理
+          if (
+            this.question.meta.contextMenu?.text === '[Search] smart query' &&
+            errorMessage &&
+            !this.answer
+          ) {
+            this.output = this.question.meta.messageVisibleText || ''
+            errorMessage = ''
+          }
+
           if (errorMessage) {
             if (isPermissionCardSceneType(errorMessage)) {
               await clientConversationEngine.pushPricingHookMessage(
@@ -346,6 +357,7 @@ export class ActionAskChatGPT extends Action {
               } as ISystemChatMessage)
             }
           }
+
           // 如果第三方AI provider的conversationId
           if (AIConversationId) {
             // 更新第三方AI provider的conversationId

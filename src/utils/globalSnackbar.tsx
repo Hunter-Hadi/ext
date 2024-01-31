@@ -1,7 +1,3 @@
-import createCache from '@emotion/cache'
-import { CacheProvider, ThemeProvider } from '@emotion/react'
-import CloseIcon from '@mui/icons-material/Close'
-import IconButton from '@mui/material/IconButton'
 import {
   OptionsObject,
   ProviderContext as SnackbarProviderContext,
@@ -12,17 +8,13 @@ import {
 } from 'notistack'
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { RecoilRoot } from 'recoil'
-
-import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { createShadowRoot } from '@/utils/elementHelper'
 
 export const MAXAI_SNACKBAR_SHADOW_ROOT_ID = 'MAXAI_SNACKBAR_ROOT'
 
 const MAXAI_SNACKBAR_SHADOW_CONTAINER_ID = 'MAXAI_SNACKBAR_CONTAINER'
 
 let snackbarRef: SnackbarProviderContext
-const SnackbarUtilsConfigurator: React.FC = () => {
+const SnackbarUtilsConfiguration: React.FC = () => {
   snackbarRef = useSnackbar()
   return null
 }
@@ -35,68 +27,58 @@ export const closeAllSnackbar = () => {
   }
 }
 
-export const getWebChatGPTSnackbarDocument = () => {
-  return document
-    .getElementById(MAXAI_SNACKBAR_SHADOW_ROOT_ID)
-    ?.shadowRoot?.getElementById(
-      MAXAI_SNACKBAR_SHADOW_CONTAINER_ID,
-    ) as HTMLElement
+export const getGlobalSnackbarDocument = () => {
+  return document.getElementById(MAXAI_SNACKBAR_SHADOW_CONTAINER_ID)
 }
 
 export const ChatGPTSnackbarContainer = () => {
-  const { customTheme } = useCustomTheme({ colorSchema: 'dark' })
   return (
-    <ThemeProvider theme={customTheme}>
-      <SnackbarProvider
-        maxSnack={3}
-        preventDuplicate
-        hideIconVariant
-        autoHideDuration={3000}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'right',
-        }}
-        action={(key) => (
-          <IconButton
-            onClick={() => {
-              if (snackbarRef && snackbarRef.closeSnackbar) {
-                snackbarRef.closeSnackbar(key)
-              }
-            }}
-          >
-            <CloseIcon fontSize="inherit" sx={{ color: 'white' }} />
-          </IconButton>
-        )}
-      >
-        <SnackbarUtilsConfigurator />
-      </SnackbarProvider>
-    </ThemeProvider>
+    <SnackbarProvider
+      maxSnack={3}
+      preventDuplicate
+      hideIconVariant
+      autoHideDuration={3000}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'left',
+      }}
+      action={(key) => (
+        <svg
+          focusable="false"
+          aria-hidden="true"
+          viewBox="0 0 24 24"
+          style={{
+            width: '1em',
+            height: '1em',
+            display: 'inline-block',
+            fill: 'currentcolor',
+            fontSize: 18,
+            cursor: 'pointer',
+          }}
+          onClick={() => {
+            if (snackbarRef && snackbarRef.closeSnackbar) {
+              snackbarRef.closeSnackbar(key)
+            }
+          }}
+        >
+          <path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+        </svg>
+      )}
+    >
+      <SnackbarUtilsConfiguration />
+    </SnackbarProvider>
   )
 }
 
 export const renderGlobalSnackbar = () => {
-  // 在chatgpt 网页渲染一个 Snackbar components 用于显示提示信息
-  const { container, shadowRoot, emotionRoot } = createShadowRoot({
-    containerId: MAXAI_SNACKBAR_SHADOW_CONTAINER_ID,
-    shadowRootId: MAXAI_SNACKBAR_SHADOW_ROOT_ID,
-    presetContainerElement(shadowContainer) {
-      shadowContainer.style.color = '#fff'
-    },
-  })
+  const container = document.createElement('div')
+  container.id = MAXAI_SNACKBAR_SHADOW_CONTAINER_ID
   container.style.zIndex = `2147483647`
-  document.body.appendChild(shadowRoot)
-  const emotionCache = createCache({
-    key: `webchatgpt-snackbar-emotion-cache`,
-    prepend: true,
-    container: emotionRoot,
-  })
+  container.style.color = '#fff'
+  document.body.appendChild(container)
   createRoot(container).render(
     <React.StrictMode>
-      <RecoilRoot>
-        <CacheProvider value={emotionCache}>
-          <ChatGPTSnackbarContainer />
-        </CacheProvider>
-      </RecoilRoot>
+      <ChatGPTSnackbarContainer />
     </React.StrictMode>,
   )
 }

@@ -25,6 +25,7 @@ const ChatAdvanced = () => {
         {userSettings && (
           <LanguageSelect
             sx={{ flexShrink: 0, width: '100%' }}
+            boxSx={{ maxWidth: 'unset' }}
             label={t(
               'settings:feature_card__ai_response_language__field_ai_response_language__label',
             )}

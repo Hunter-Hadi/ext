@@ -3,6 +3,7 @@ import Skeleton from '@mui/material/Skeleton'
 import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
 
+import { CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH } from '@/constants'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SidebarAIMessageSkeletonContent: FC<{
@@ -11,7 +12,11 @@ const SidebarAIMessageSkeletonContent: FC<{
   const { contentType = 'text' } = props
   if (contentType === 'image') {
     return (
-      <Stack mt={1} width={'60%'} minWidth={415}>
+      <Stack
+        mt={1}
+        width={'60%'}
+        minWidth={CHROME_EXTENSION_CHAT_MESSAGE_BOX_WIDTH - 16 - 16}
+      >
         <Stack
           width={'100%'}
           sx={{

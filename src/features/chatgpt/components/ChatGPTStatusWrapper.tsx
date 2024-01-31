@@ -5,7 +5,7 @@ import Link from '@mui/material/Link'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import { FC, useEffect, useMemo, useState } from 'react'
+import { FC, useEffect, useMemo } from 'react'
 import React from 'react'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -23,6 +23,7 @@ import {
 } from '@/features/chatgpt/store'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { useFocus } from '@/features/common/hooks/useFocus'
+import { usePrevious } from '@/features/common/hooks/usePrevious'
 import { AppDBStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
@@ -34,7 +35,7 @@ const ChatGPTStatusWrapper: FC = () => {
     ChatGPTClientState,
   )
   const { status } = chatGPTClientState
-  const [prevStatus, setPrevStatus] = useState(status)
+  const prevStatus = usePrevious(status)
 
   const { open: providerConfirmDialogOpen } = useRecoilValue(
     ThirdPartyAIProviderConfirmDialogState,
@@ -46,8 +47,7 @@ const ChatGPTStatusWrapper: FC = () => {
       console.log('get latest settings')
       getLiteChromeExtensionDBStorage().then(setAppDBStorage)
     }
-    setPrevStatus(status)
-  }, [status])
+  }, [status, prevStatus])
 
   useFocus(() => {
     console.log('gmain chatgpt onFocus')

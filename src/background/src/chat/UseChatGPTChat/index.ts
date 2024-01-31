@@ -421,7 +421,7 @@ class UseChatGPTPlusChat extends BaseChat {
   }
   async destroy() {
     log.info('destroy')
-    this.status = 'needAuth'
+    // this.status = 'needAuth'
     // await this.updateClientStatus()
     this.active = false
   }

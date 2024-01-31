@@ -23,12 +23,15 @@ import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
-const BaseSidebarAIMessage: FC<{
-  liteMode?: boolean
+interface IProps {
   message: IAIResponseMessage
   isDarkMode?: boolean
-}> = (props) => {
-  const { message, isDarkMode, liteMode = false } = props
+  liteMode?: boolean
+  loading?: boolean
+}
+
+const BaseSidebarAIMessage: FC<IProps> = (props) => {
+  const { message, isDarkMode, liteMode = false, loading = false } = props
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
   const renderData = useMemo(() => {
     try {
@@ -88,6 +91,14 @@ const BaseSidebarAIMessage: FC<{
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer
   }, [renderData.answer])
+
+  const coverLoading = useMemo(() => {
+    // 如果是 rich ai message，需要判断 messageIsComplete
+    if (isRichAIMessage) {
+      return !renderData.messageIsComplete || loading
+    }
+    return loading
+  }, [loading, renderData.messageIsComplete, isRichAIMessage])
 
   return (
     <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
@@ -234,7 +245,9 @@ const BaseSidebarAIMessage: FC<{
           <CustomMarkdown>{renderData.answer}</CustomMarkdown>
         </div>
       )}
-      <SidebarAIMessageTools message={message as IAIResponseMessage} />
+      {!coverLoading ? (
+        <SidebarAIMessageTools message={message as IAIResponseMessage} />
+      ) : null}
     </Stack>
   )
 }

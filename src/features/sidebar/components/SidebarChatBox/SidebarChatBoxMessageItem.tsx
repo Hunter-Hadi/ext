@@ -18,11 +18,14 @@ import {
 import useChatMessageExpiredFileUpdater from '@/features/sidebar/hooks/useChatMessageExpiredFileUpdater'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
-const SidebarChatBoxMessageItem: FC<{
+interface IProps {
   message: IChatMessage
   className?: string
-}> = (props) => {
-  const { message, className } = props
+  loading?: boolean
+}
+
+const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
+  const { message, className, loading } = props
   const { isDarkMode } = useCustomTheme()
   useChatMessageExpiredFileUpdater(message)
   const [isHover, setIsHover] = useState(false)
@@ -107,6 +110,7 @@ const SidebarChatBoxMessageItem: FC<{
           <SidebarAIMessage
             isDarkMode={isDarkMode}
             message={message as IAIResponseMessage}
+            loading={loading}
           />
         )}
         {isUserMessage(message) && <SidebarUserMessage message={message} />}

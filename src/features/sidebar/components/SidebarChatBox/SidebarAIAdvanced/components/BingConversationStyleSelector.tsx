@@ -21,7 +21,7 @@ import {
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -41,7 +41,7 @@ const BingConversationStyleSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const { cleanConversation } = useClientConversation()
   const { loading: chatGPTConversationLoading } = useRecoilValue(
-    ChatGPTConversationState,
+    ClientWritingMessageState,
   )
   const [bingConversationStyle, setBingConversationStyle] = useState(
     BingConversationStyle.Balanced,

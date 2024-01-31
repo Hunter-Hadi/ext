@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { FloatingContextMenuDraftState } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 /**
  * AI持续生成的草稿
  */
@@ -13,7 +13,7 @@ const useFloatingContextMenuDraft = () => {
     currentSidebarConversationMessages,
     currentSidebarConversationType,
   } = useSidebarSettings()
-  const conversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const floatingContextMenuDraft = useRecoilValue(FloatingContextMenuDraftState)
   const aiMessages: IChatMessage[] = []
   let lastAIMessageId = floatingContextMenuDraft.lastAIMessageId
@@ -46,9 +46,9 @@ const useFloatingContextMenuDraft = () => {
           }
         }
       }
-      if (conversation.writingMessage) {
-        if (conversation.writingMessage.type === 'ai') {
-          aiMessages.push(conversation.writingMessage)
+      if (clientWritingMessage.writingMessage) {
+        if (clientWritingMessage.writingMessage.type === 'ai') {
+          aiMessages.push(clientWritingMessage.writingMessage)
         }
       }
 
@@ -60,7 +60,7 @@ const useFloatingContextMenuDraft = () => {
         'AiInput aiMessages',
         lastAIMessageId,
         aiMessages,
-        conversation.writingMessage,
+        clientWritingMessage.writingMessage,
         draft,
       )
       return draft
@@ -68,7 +68,7 @@ const useFloatingContextMenuDraft = () => {
     return ''
   }, [
     lastAIMessageId,
-    conversation.writingMessage,
+    clientWritingMessage.writingMessage,
     currentSidebarConversationMessages,
     currentSidebarConversationType,
   ])

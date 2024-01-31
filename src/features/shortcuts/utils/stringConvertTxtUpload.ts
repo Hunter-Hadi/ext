@@ -40,7 +40,6 @@ export const stringConvertTxtUpload = async (
   // eslint-disable-next-line no-async-promise-executor
   return new Promise<string>(async (resolve) => {
     const md5HashId = md5TextEncrypt(text)
-    debugger
     // 查看docId是否存在
     if (await checkDocIdExist(accessToken, md5HashId)) {
       resolve(md5HashId)

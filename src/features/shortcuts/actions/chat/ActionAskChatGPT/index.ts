@@ -220,10 +220,6 @@ export class ActionAskChatGPT extends Action {
           id: contextMenu?.id || 'chat',
           host: getCurrentDomainHost(),
         })
-        // 发消息之前记录messageId
-        engine.clientConversationEngine?.updateClientConversationLastMessageId(
-          this.question.messageId,
-        )
         // 第三方AI provider的conversationId
         let AIConversationId = ''
         let errorMessage = ''
@@ -360,6 +356,7 @@ export class ActionAskChatGPT extends Action {
                 },
               },
               conversationId,
+              false,
             )
           }
         } catch (e) {

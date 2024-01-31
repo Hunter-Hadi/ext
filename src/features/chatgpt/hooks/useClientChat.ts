@@ -264,6 +264,7 @@ const useClientChat = () => {
         },
       },
       conversationId,
+      false,
     )
   }
   /**

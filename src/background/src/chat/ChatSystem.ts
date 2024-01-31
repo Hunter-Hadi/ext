@@ -457,7 +457,7 @@ class ChatSystem implements ChatSystemInterface {
       conversationId,
     )
     backgroundSendAllClientMessage('Client_listenUpdateConversationMessages', {
-      conversation,
+      conversation: conversation,
       conversationId,
     })
   }

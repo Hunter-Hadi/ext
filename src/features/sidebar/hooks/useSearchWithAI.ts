@@ -15,7 +15,7 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
 import {
   isShowChatBox,
@@ -29,7 +29,9 @@ const useSearchWithAI = () => {
     currentSidebarConversationMessages,
     updateSidebarConversationType,
   } = useSidebarSettings()
-  const updateConversation = useSetRecoilState(ChatGPTConversationState)
+  const updateClientWritingMessage = useSetRecoilState(
+    ClientWritingMessageState,
+  )
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
@@ -64,7 +66,7 @@ const useSearchWithAI = () => {
       await updateSidebarConversationType('Search')
     }
     console.log('新版Conversation 创建searchWithAI')
-    updateConversation((prevState) => {
+    updateClientWritingMessage((prevState) => {
       return {
         ...prevState,
         loading: true,
@@ -74,7 +76,7 @@ const useSearchWithAI = () => {
       console.log('新版Conversation search with AI 开始创建')
       // 进入loading
       await createConversation('Search')
-      updateConversation((prevState) => {
+      updateClientWritingMessage((prevState) => {
         return {
           ...prevState,
           loading: false,

@@ -14,7 +14,7 @@ import {
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { sendLarkBotMessage } from '@/utils/larkBot'
 
-export const getChromeExtensionAccessToken = async (): Promise<string> => {
+export const getMaxAIChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
     CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   )
@@ -69,7 +69,7 @@ export const getChromeExtensionUserInfo = async (
 /**
  * 获取用户id
  */
-export const getChromeExtensionUserId = async (): Promise<string> => {
+export const getMaxAIChromeExtensionUserId = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
     CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   )
@@ -84,7 +84,7 @@ export const fetchUserSubscriptionInfo = async (): Promise<
   IUserRole | undefined
 > => {
   try {
-    const token = await getChromeExtensionAccessToken()
+    const token = await getMaxAIChromeExtensionAccessToken()
     if (!token) {
       return undefined
     }
@@ -228,7 +228,7 @@ export const fetchUserInfo = async (): Promise<
   IUseChatGPTUserInfo | undefined
 > => {
   try {
-    const token = await getChromeExtensionAccessToken()
+    const token = await getMaxAIChromeExtensionAccessToken()
     if (!token) {
       return undefined
     }

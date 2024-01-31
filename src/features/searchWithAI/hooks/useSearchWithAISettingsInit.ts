@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
-import { getChromeExtensionAccessToken } from '@/features/auth/utils'
+import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 
 import {
@@ -35,7 +35,7 @@ const useSearchWithAISettingsInit = () => {
             SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
           ] as ISearchWithAIProviderType[]
           if (needLoginProvider.includes(settings.currentAIProvider)) {
-            const token = await getChromeExtensionAccessToken()
+            const token = await getMaxAIChromeExtensionAccessToken()
             if (!token) {
               settings.currentAIProvider =
                 DEFAULT_SEARCH_WITH_AI_SETTING.currentAIProvider

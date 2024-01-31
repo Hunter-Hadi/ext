@@ -19,7 +19,7 @@ import { isProduction } from '@/constants'
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -85,7 +85,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     contextMenuContainer,
     setContextMenuContainer,
   ] = useState<HTMLElement | null>(null)
-  const { loading } = useRecoilValue(ChatGPTConversationState)
+  const { loading } = useRecoilValue(ClientWritingMessageState)
   const [isCTAHover, setIsCTAHover] = useState(false)
   const [isBoxHover, setIsBoxHover] = useState(false)
   const memoButtonSx = useMemo(() => {

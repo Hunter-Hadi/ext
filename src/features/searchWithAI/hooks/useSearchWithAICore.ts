@@ -420,7 +420,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     completedAnswer,
     isAnswering,
     loading: conversation.loading,
-    conversation,
+    conversation: conversation,
     isUseCache,
     handleResetStatus,
     handleAskQuestion,

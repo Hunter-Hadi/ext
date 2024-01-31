@@ -12,7 +12,7 @@ import { resetChromeExtensionOnBoardingData } from '@/background/utils'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 const DevConsole: FC = () => {
   const {
@@ -22,7 +22,7 @@ const DevConsole: FC = () => {
     currentSidebarConversation,
     sidebarSettings,
   } = useSidebarSettings()
-  const chatGPTConversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
   const renderConversation = useMemo(() => {
@@ -117,7 +117,7 @@ const DevConsole: FC = () => {
             </Button>
           </Stack>
           <p>authStatus: {chatGPTClientState.status}</p>
-          <p>loading: {chatGPTConversation.loading ? 'loading' : 'done'}</p>
+          <p>loading: {clientWritingMessage.loading ? 'loading' : 'done'}</p>
           <p>
             currentSidebarConversationType: {currentSidebarConversationType}
           </p>

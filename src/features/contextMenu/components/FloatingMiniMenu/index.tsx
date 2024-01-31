@@ -31,7 +31,7 @@ import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
-import { ChatGPTConversationState } from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
 import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
@@ -46,7 +46,7 @@ const FloatingMiniMenu: FC<{
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )
-  const conversation = useRecoilValue(ChatGPTConversationState)
+  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
@@ -176,13 +176,13 @@ const FloatingMiniMenu: FC<{
     }
   }, [])
   useEffect(() => {
-    if (conversation.loading) {
+    if (clientWritingMessage.loading) {
       setTimeout(() => {
         handleCloseClickContextMenuButton()
       }, 1000)
       handleCloseClickContextMenuButton()
     }
-  }, [conversation.loading])
+  }, [clientWritingMessage.loading])
   return (
     <Paper
       elevation={3}

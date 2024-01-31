@@ -3,17 +3,13 @@ import { atom } from 'recoil'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-export const ChatGPTConversationState = atom<{
+export const ClientWritingMessageState = atom<{
   writingMessage: IChatMessage | null
-  lastMessageId?: string
-  model: string
   loading: boolean
 }>({
-  key: 'ChatGPTConversationState',
+  key: 'ClientWritingMessageState',
   default: {
     writingMessage: null,
-    lastMessageId: '',
-    model: '',
     loading: false,
   },
 })

@@ -81,7 +81,6 @@ const useClientConversation = () => {
   }, [currentConversationTypeRef])
   const createConversation = async (
     overwriteConversationType?: ISidebarConversationType,
-    forceCreate = false,
   ): Promise<string> => {
     let conversationId: string = ''
     // 因为从外部打开sidebar的时候conversationId和type都是有延迟的，所以直接从localStorage拿
@@ -163,24 +162,6 @@ const useClientConversation = () => {
         },
       })
     } else if (conversationType === 'Search') {
-      if (!forceCreate) {
-        const searchCacheConversationId = (
-          await getChromeExtensionLocalStorage()
-        ).sidebarSettings?.search?.conversationId
-        // 如果search板块已经有conversationId了
-        if (
-          searchCacheConversationId &&
-          (await clientGetConversation(searchCacheConversationId))
-        ) {
-          console.log(
-            '新版Conversation chatCacheConversationId',
-            searchCacheConversationId,
-          )
-          // 如果已经存在了，并且有AI消息，那么就不用创建了
-          return searchCacheConversationId
-        }
-      }
-
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -201,22 +182,6 @@ const useClientConversation = () => {
         })
       }
     } else if (conversationType === 'Art') {
-      if (!forceCreate) {
-        const chatCacheConversationId = (await getChromeExtensionLocalStorage())
-          .sidebarSettings?.art?.conversationId
-        // 如果chat板块已经有conversationId了
-        if (
-          chatCacheConversationId &&
-          (await clientGetConversation(chatCacheConversationId))
-        ) {
-          console.log(
-            '新版Conversation chatCacheConversationId',
-            chatCacheConversationId,
-          )
-          // 如果已经存在了，并且有AI消息，那么就不用创建了
-          return chatCacheConversationId
-        }
-      }
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -272,14 +237,14 @@ const useClientConversation = () => {
       // 清除search的conversationId
       await updateSidebarSettings({
         search: {
-          conversationId: await createConversation('Search', true),
+          conversationId: await createConversation('Search'),
         },
       })
     } else if (currentSidebarConversationType === 'Art') {
       // 清除search的conversationId
       await updateSidebarSettings({
         art: {
-          conversationId: await createConversation('Art', true),
+          conversationId: await createConversation('Art'),
         },
       })
     }

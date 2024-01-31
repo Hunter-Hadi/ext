@@ -24,6 +24,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = ({
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const lazyImageIdRef = useRef(uuidV4())
   useEffect(() => {
+    console.log(`[LazyLoadImage] useEffect`, src)
     const loadImage = () => {
       console.log(`loadImage`, src)
       const image = new Image()

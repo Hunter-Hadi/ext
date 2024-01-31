@@ -8,7 +8,7 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
-export type IChatMessagePublishStatus = 'success' | 'error' | 'publishing'
+export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
 
 export interface IChatMessage {
   type: 'user' | 'ai' | 'system' | 'third'

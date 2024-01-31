@@ -1,7 +1,11 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { addOrUpdateDBConversation } from '@/background/src/chatConversations/conversationToDBHelper'
+import {
+  addOrUpdateDBConversation,
+  addOrUpdateDBConversationMessages,
+  deleteDBConversationMessages,
+} from '@/background/src/chatConversations/conversationToDBHelper'
 import { getMaxAIChromeExtensionUserId } from '@/features/auth/utils'
 import {
   IChatMessage,
@@ -138,6 +142,7 @@ class ConversationDB {
     return new Promise(async (resolve, reject) => {
       try {
         if (syncConversationToDB) {
+          conversation = await migratingToConversationV2(conversation)
           console.log(
             `DB_Conversation addOrUpdateConversation [同步会话][${reason}]`,
             conversation,
@@ -248,15 +253,6 @@ class ConversationDB {
             conversations.map(async (conversation) => {
               if (!conversation.authorId && userId && conversation.id) {
                 conversation.authorId = userId
-                // 顺便更新新字段
-                if (
-                  !Object.prototype.hasOwnProperty.call(
-                    conversation,
-                    'isDelete',
-                  )
-                ) {
-                  conversation.isDelete = false
-                }
                 await this.addOrUpdateConversation(conversation)
               }
               return conversation
@@ -518,9 +514,24 @@ export default class ConversationManager {
     if (!conversation) {
       return false
     }
-    console.log('DB_Conversation pushMessages', newMessages)
-    conversation.messages = conversation.messages.concat(newMessages)
+    const addTimeNewMessages = newMessages.map((newMessage) => {
+      if (!newMessage.created_at) {
+        newMessage.created_at = new Date().toISOString()
+      }
+      if (!newMessage.updated_at) {
+        newMessage.updated_at = new Date().toISOString()
+      }
+      if (!newMessage.publishStatus) {
+        newMessage.publishStatus = 'unpublished'
+      }
+      return newMessage
+    })
+    console.log('DB_Conversation pushMessages', addTimeNewMessages)
+    conversation.messages = conversation.messages.concat(addTimeNewMessages)
     await this.conversationDB.addOrUpdateConversation(conversation)
+    addOrUpdateDBConversationMessages(conversation, addTimeNewMessages)
+      .then()
+      .catch()
     return true
   }
   static async updateMessage(
@@ -539,12 +550,19 @@ export default class ConversationManager {
     if (messageIndex === -1) {
       return false
     }
+    if (!updateMessage.created_at) {
+      updateMessage.created_at = new Date().toISOString()
+    }
+    updateMessage.updated_at = new Date().toISOString()
     conversation.messages[messageIndex] = mergeWithObject([
       conversation.messages[messageIndex],
       updateMessage,
     ])
     console.log('DB_Conversation updateMessage', updateMessage)
     await this.conversationDB.addOrUpdateConversation(conversation)
+    addOrUpdateDBConversationMessages(conversation, [updateMessage])
+      .then()
+      .catch()
     return true
   }
   static async deleteMessages(conversationId: string, deleteCount: number) {
@@ -554,17 +572,27 @@ export default class ConversationManager {
     if (!conversation) {
       return false
     }
+    const deleteMessageIds: string[] = []
     let finallyDeleteCount = deleteCount
     if (deleteCount > conversation.messages.length) {
       finallyDeleteCount = conversation.messages.length
     }
-    conversation.messages = conversation.messages.slice(
-      0,
-      conversation.messages.length - finallyDeleteCount,
+    // 从后往前删除
+    while (conversation.messages.length > 0 && finallyDeleteCount > 0) {
+      const deleteMessageId = conversation.messages.pop()?.messageId
+      if (deleteMessageId) {
+        deleteMessageIds.push(deleteMessageId)
+      }
+      finallyDeleteCount--
+    }
+    console.log(
+      'DB_Conversation deleteMessages',
+      finallyDeleteCount,
+      deleteMessageIds,
     )
-    console.log('DB_Conversation deleteMessages', finallyDeleteCount)
     // save
     await this.conversationDB.addOrUpdateConversation(conversation)
+    deleteDBConversationMessages(conversation, deleteMessageIds).then().catch()
     return true
   }
   /**
@@ -609,4 +637,37 @@ export default class ConversationManager {
       return false
     }
   }
+}
+
+/**
+ * 迁移Conversation到V2
+ * @param conversation
+ */
+export const migratingToConversationV2 = async (
+  conversation: IChatConversation,
+) => {
+  if (conversation.version === 2) {
+    return conversation
+  }
+  if (conversation.authorId) {
+    conversation.authorId = await getMaxAIChromeExtensionUserId()
+  }
+  if (!Object.prototype.hasOwnProperty.call(conversation, 'isDelete')) {
+    conversation.isDelete = false
+  }
+  conversation.messages = conversation.messages.map((message) => {
+    if (!message.created_at) {
+      message.created_at = new Date().toISOString()
+    }
+    if (!message.updated_at) {
+      message.updated_at = new Date().toISOString()
+    }
+    if (!message.publishStatus) {
+      message.publishStatus = 'unpublished'
+    }
+    return message
+  })
+  conversation.version = 2
+  console.log('DB_Conversation migratingToConversationV2', conversation)
+  return conversation
 }

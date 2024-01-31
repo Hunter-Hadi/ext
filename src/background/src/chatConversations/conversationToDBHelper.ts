@@ -5,7 +5,7 @@ import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { IChatMessage } from '@/features/chatgpt/types'
 
-export const maxAIRequest = async <T>(path: string, data: any) => {
+export const maxAIRequest = async (path: string, data: any) => {
   return await fetch(`${APP_USE_CHAT_GPT_API_HOST}${path}`, {
     method: 'POST',
     headers: {
@@ -13,7 +13,7 @@ export const maxAIRequest = async <T>(path: string, data: any) => {
       Authorization: `Bearer ${await getMaxAIChromeExtensionAccessToken()}`,
     },
     body: data === undefined ? undefined : JSON.stringify(data),
-  }).then((res) => (res.json() as any) as T)
+  })
 }
 
 /**
@@ -24,9 +24,7 @@ export const maxAIRequest = async <T>(path: string, data: any) => {
  * @param conversationIds
  */
 export const getDBConversationExist = async (conversationIds: string[]) => {
-  await maxAIRequest<{
-    data: IChatConversation[]
-  }>('/conversation/get_conversations_basic_by_ids', {
+  await maxAIRequest('/conversation/get_conversations_basic_by_ids', {
     conversation_ids: conversationIds,
   })
 }
@@ -36,9 +34,7 @@ export const getDBConversationExist = async (conversationIds: string[]) => {
  * @param conversationId
  */
 export const getDBConversationDetail = async (conversationId: string) => {
-  await maxAIRequest<{
-    data: IChatConversation
-  }>('/conversation/get_conversation', {
+  await maxAIRequest('/conversation/get_conversation', {
     conversation_id: conversationId,
   })
 }
@@ -50,12 +46,14 @@ export const getDBConversationDetail = async (conversationId: string) => {
 export const addOrUpdateDBConversation = async (
   conversation: IChatConversation,
 ) => {
+  return
   const uploadConversation: any = cloneDeep(conversation)
   if (uploadConversation) {
+    const messages = uploadConversation.messages
     // 不需要保存messages
     delete uploadConversation.messages
   }
-  await maxAIRequest('/conversation/upsert_conversation', conversation)
+  await maxAIRequest('/conversation/upsert_conversation', uploadConversation)
 }
 
 /**
@@ -75,42 +73,88 @@ export const shareConversation = async (
   })
 }
 
+const maxAIMessageRequest = async (
+  path: string,
+  data: any,
+  conversation: IChatConversation,
+) => {
+  try {
+    let response = await maxAIRequest(path, data)
+    if (response.status === 404) {
+      // 说明conversation不存在, 需要创建
+      await addOrUpdateDBConversation(conversation)
+      response = await maxAIRequest(path, data)
+    }
+    return response
+  } catch (e) {
+    debugger
+    return undefined
+  }
+}
+
 /**
- * 添加message到DB中的conversation
- * @param conversationId
+ * 添加/更新messages到DB中的conversation
+ * @param conversation
  * @param messages
  */
-export const pushMessageToDBConversation = async (
-  conversationId: string,
+export const addOrUpdateDBConversationMessages = async (
+  conversation: IChatConversation,
   messages: IChatMessage[],
 ) => {
-  await maxAIRequest('/conversation/add_messages', {
-    conversation_id: conversationId,
-    messages,
-  })
+  try {
+    return
+    const response = await maxAIMessageRequest(
+      '/conversation/add_messages',
+      {
+        conversation_id: conversation.id,
+        messages,
+      },
+      conversation,
+    )
+    if (response?.ok && response?.status === 200) {
+      const data = await response.json()
+      debugger
+    }
+    return true
+  } catch (e) {
+    debugger
+    return false
+  }
 }
 /**
  * 删除DB中的conversation中的message
- * @param conversationId
+ * @param conversation
  * @param messageIds
  */
-export const deleteMessageFromDBConversation = async (
-  conversationId: string,
+export const deleteDBConversationMessages = async (
+  conversation: IChatConversation,
   messageIds: string[],
 ) => {
-  await maxAIRequest('/conversation/delete_messages', {
-    conversation_id: conversationId,
-    message_ids: messageIds,
-  })
+  try {
+    return
+    const response = await maxAIMessageRequest(
+      '/conversation/delete_messages',
+      {
+        conversation_id: conversation.id,
+        message_ids: messageIds,
+      },
+      conversation,
+    )
+    debugger
+    return true
+  } catch (e) {
+    debugger
+    return false
+  }
 }
 
 /**
  * 获取DB中的conversation的messages
- * @param conversationId
+ * @param conversation
  * @param filters
  */
 export const getDBConversationMessages = async (
-  conversationId: string,
+  conversation: IChatConversation,
   filters?: {
     page?: number
     page_size?: number
@@ -118,10 +162,19 @@ export const getDBConversationMessages = async (
     end_time?: number
   },
 ) => {
-  await maxAIRequest<{
-    data: IChatMessage[]
-  }>('/conversation/get_messages', {
-    conversation_id: conversationId,
-    ...filters,
-  })
+  try {
+    const response = await maxAIMessageRequest(
+      '/conversation/get_messages',
+      {
+        conversation_id: conversation.id,
+        ...filters,
+      },
+      conversation,
+    )
+    debugger
+    return true
+  } catch (e) {
+    debugger
+    return false
+  }
 }

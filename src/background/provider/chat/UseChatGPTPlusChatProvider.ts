@@ -9,13 +9,17 @@ import { UseChatGPTPlusChat } from '@/background/src/chat'
 import {
   IMaxAIChatGPTBackendAPIType,
   IMaxAIChatMessage,
+  IMaxAIChatMessageContent,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -93,6 +97,30 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         })
       }
       question.meta?.historyMessages?.forEach((message) => {
+        const content: IMaxAIChatMessageContent[] = [
+          {
+            type: 'text',
+            text: message.text,
+          },
+        ]
+        // 插入附件
+        if (isUserMessage(message)) {
+          if (message?.meta?.attachments?.length) {
+            message.meta.attachments.forEach((attachment) => {
+              if (
+                attachment.uploadStatus === 'success' &&
+                attachment.uploadedUrl
+              ) {
+                content.push({
+                  type: 'image_url',
+                  image_url: {
+                    url: attachment.uploadedUrl,
+                  },
+                })
+              }
+            })
+          }
+        }
         chat_history.push({
           role:
             message.type === 'ai'
@@ -100,12 +128,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
               : message.type === 'user'
               ? 'human'
               : 'system',
-          content: [
-            {
-              type: 'text',
-              text: message.text,
-            },
-          ],
+          content,
         })
       })
       if (docId && chat_history?.[0]?.role === 'ai') {

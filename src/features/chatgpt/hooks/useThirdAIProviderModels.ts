@@ -7,6 +7,7 @@ import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSele
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -23,7 +24,7 @@ const useThirdAIProviderModels = () => {
   const { currentAIProvider, updateAIProviderModel } = useAIProviderModels()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { sidebarSettings, updateSidebarSettings } = useSidebarSettings()
-
+  const { createConversation } = useClientConversation()
   // 当前设置的第三方的AIProvider
   const currentThirdAIProvider =
     sidebarSettings?.chat?.thirdAIProvider || AI_PROVIDER_MAP.OPENAI
@@ -57,6 +58,7 @@ const useThirdAIProviderModels = () => {
         thirdAIProviderModel: model,
       },
     })
+    await createConversation('Chat')
   }
   /**
    * 设置当前的Model为第三方AIProvider的model

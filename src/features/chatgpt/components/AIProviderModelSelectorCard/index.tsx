@@ -21,7 +21,10 @@ import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProvid
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
-import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
+import {
+  SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG,
+  useClientConversation,
+} from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/store'
@@ -74,6 +77,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     isSelectedThirdAIProvider,
   } = useThirdAIProviderModels()
   const { updateAIProviderModel } = useAIProviderModels()
+  const { createConversation } = useClientConversation()
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   // 当前sidebarConversationType的AI provider
@@ -193,8 +197,8 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 await updateAIProviderModel(
                   AIModelOption.AIProvider,
                   AIModelOption.value,
-                  sidebarConversationType,
                 )
+                await createConversation(sidebarConversationType)
               }}
             >
               <Stack alignItems={'center'} direction={'row'}>

@@ -60,7 +60,6 @@ const useInitSidebar = () => {
           await updateAIProviderModel(
             conversation.meta.AIProvider,
             conversation.meta.AIModel,
-            currentSidebarConversationType,
           )
         }
       }

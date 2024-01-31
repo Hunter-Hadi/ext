@@ -10,6 +10,7 @@ import {
   ChatAIProviderModelSelectorOptions,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 
 import AIProviderIcon from '../icons/AIProviderIcon'
@@ -23,6 +24,7 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
     ThirdPartyAIProviderConfirmDialogState,
   )
   const { updateAIProviderModel } = useAIProviderModels()
+  const { createConversation } = useClientConversation()
 
   const handleSelectRecommendationModel = async (
     AIProviderModelSelectorOption: AIProviderModelSelectorOption,
@@ -32,8 +34,8 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
       await updateAIProviderModel(
         AIProviderModelSelectorOption.AIProvider,
         AIProviderModelSelectorOption.value,
-        'Chat',
       )
+      await createConversation('Chat')
       setDialogState({
         open: false,
       })

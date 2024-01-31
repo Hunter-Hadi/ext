@@ -10,6 +10,7 @@ import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
@@ -37,6 +38,7 @@ const SidebarScreenshotButton: FC<{
   } = useAIProviderModels()
 
   const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
+  const { createConversation } = useClientConversation()
   const maxFileSize = AIProviderConfig?.maxFileSize
 
   return (
@@ -53,7 +55,9 @@ const SidebarScreenshotButton: FC<{
               currentAIProviderModel !== 'gpt-4-vision-preview'
             ) {
               updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-vision-preview')
-                .then()
+                .then(() => {
+                  createConversation('Chat')
+                })
                 .catch()
             }
             const div = document.createElement('div')

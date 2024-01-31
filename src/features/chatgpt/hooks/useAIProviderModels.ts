@@ -17,10 +17,8 @@ import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/t
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
-import { ISidebarConversationType } from '@/features/sidebar/store'
 import { AppLocalStorageState } from '@/store'
 
 export const useAIProviderModelsMap = () => {
@@ -136,7 +134,6 @@ const useAIProviderModels = () => {
   const currentProvider =
     appLocalStorage.sidebarSettings?.common?.currentAIProvider
   const { currentThirdProviderSettings } = useThirdProviderSettings()
-  const { createConversation } = useClientConversation()
   const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []
     if (!currentProvider) {
@@ -163,10 +160,10 @@ const useAIProviderModels = () => {
     async (
       AIProvider: IAIProviderType,
       model: string,
-      sidebarConversationType?: ISidebarConversationType,
+      // sidebarConversationType?: ISidebarConversationType,
     ) => {
       try {
-        let now = new Date().getTime()
+        // const now = new Date().getTime()
         await setChromeExtensionLocalStorage({
           sidebarSettings: {
             common: {
@@ -179,42 +176,6 @@ const useAIProviderModels = () => {
             },
           },
         })
-        console.log(
-          '[TimeTimeTimeTime] 切换AIProvider1',
-          new Date().getTime() - now,
-        )
-        now = new Date().getTime()
-        if (sidebarConversationType) {
-          if (sidebarConversationType === 'Chat') {
-            await setChromeExtensionLocalStorage({
-              sidebarSettings: {
-                chat: {
-                  conversationId: await createConversation('Chat'),
-                },
-              },
-            })
-          } else if (sidebarConversationType === 'Art') {
-            await setChromeExtensionLocalStorage({
-              sidebarSettings: {
-                art: {
-                  conversationId: await createConversation('Art'),
-                },
-              },
-            })
-          } else if (sidebarConversationType === 'Search') {
-            await setChromeExtensionLocalStorage({
-              sidebarSettings: {
-                search: {
-                  conversationId: await createConversation('Search'),
-                },
-              },
-            })
-          }
-          console.log(
-            '[TimeTimeTimeTime] 切换AIProvider2',
-            new Date().getTime() - now,
-          )
-        }
       } catch (e) {
         console.log(e)
       }

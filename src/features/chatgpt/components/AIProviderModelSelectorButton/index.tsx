@@ -3,12 +3,15 @@ import Button from '@mui/material/Button'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Grow from '@mui/material/Grow'
 import Popper from '@mui/material/Popper'
+import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import { TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
 import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
@@ -27,7 +30,9 @@ const AIProviderModelSelectorButton: FC<{
   size?: 'normal' | 'small'
   placement?: TooltipProps['placement']
 }> = (props) => {
+  const { t } = useTranslation(['client'])
   const { sx, size = 'normal', placement, sidebarConversationType } = props
+  const [isHoverButton, setIsHoverButton] = useState(false)
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   // 当前sidebarConversationType的AI provider
   const currentChatAIProvider =
@@ -113,35 +118,54 @@ const AIProviderModelSelectorButton: FC<{
         aria-haspopup="true"
         onClick={handleToggle}
       >
-        {isThirdPartyAIProvider(currentChatAIProvider) ? (
-          <ThirdPartyAIProviderIcon
-            sx={{
-              fontSize: '20px',
+        <TextOnlyTooltip
+          title={t(
+            'client:sidebar__ai_provider__model_selector__button__tooltip',
+          )}
+          open={isHoverButton && !open}
+          placement={placement}
+        >
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            onMouseEnter={() => {
+              setIsHoverButton(true)
             }}
-          />
-        ) : (
-          <AIProviderIcon aiProviderType={currentChatAIProvider} />
-        )}
-        {currentModelDetail?.label && (
-          <Typography
-            mx={0.5}
-            fontSize={14}
-            lineHeight={1.4}
-            color="text.secondary"
-            sx={{
-              userSelect: 'none',
+            onMouseLeave={() => {
+              setIsHoverButton(false)
             }}
           >
-            {currentModelDetail.label}
-          </Typography>
-        )}
-        <ContextMenuIcon
-          icon={'ExpandMore'}
-          sx={{
-            color: 'text.secondary',
-            fontSize: '16px',
-          }}
-        />
+            {isThirdPartyAIProvider(currentChatAIProvider) ? (
+              <ThirdPartyAIProviderIcon
+                sx={{
+                  fontSize: '20px',
+                }}
+              />
+            ) : (
+              <AIProviderIcon aiProviderType={currentChatAIProvider} />
+            )}
+            {currentModelDetail?.label && (
+              <Typography
+                mx={0.5}
+                fontSize={14}
+                lineHeight={1.4}
+                color="text.secondary"
+                sx={{
+                  userSelect: 'none',
+                }}
+              >
+                {currentModelDetail.label}
+              </Typography>
+            )}
+            <ContextMenuIcon
+              icon={'ExpandMore'}
+              sx={{
+                color: 'text.secondary',
+                fontSize: '16px',
+              }}
+            />
+          </Stack>
+        </TextOnlyTooltip>
       </Button>
       <Popper
         open={open}

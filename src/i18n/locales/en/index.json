@@ -562,6 +562,7 @@
     "home_view_content_nav__ai_provider__title": "AI providers",
     "home_view_content_nav__immersive_chat__title": "Immersive chat",
     "home_view_content_nav__upload": "upload",
+    "sidebar__ai_provider__model_selector__button__tooltip": "Switch AI model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Third-party AI providers",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Third-party AI providers are not managed by MaxAI. We highly recommend using our premium AI providers for fast and high-quality AI experience.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Third-party AI models",

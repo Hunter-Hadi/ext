@@ -292,7 +292,12 @@ const ChatGPTStatusWrapper: FC = () => {
       </Box>
     )
   }
-  if (status === 'needAuth' || providerConfirmDialogOpen) {
+  if (
+    status === 'needAuth' ||
+    status === 'loading' ||
+    status === 'complete' ||
+    providerConfirmDialogOpen
+  ) {
     return (
       <Box sx={memoMaskSx}>
         <Paper

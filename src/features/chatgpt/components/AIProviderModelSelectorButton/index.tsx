@@ -56,10 +56,10 @@ const AIProviderModelSelectorButton: FC<{
     }
     const models = AI_PROVIDER_MODEL_MAP[currentChatAIProvider]
     const currentModel =
-      models.find((model) => model.value === currentChatModel) || models[0]
+      models.find((model) => model.value === currentChatModel) || models?.[0]
     return {
-      label: currentModel.title,
-      value: currentModel.value,
+      label: currentModel?.title || '',
+      value: currentModel?.value || '',
       AIProvider: currentChatAIProvider,
     }
   }, [AI_PROVIDER_MODEL_MAP, currentChatModel, currentChatAIProvider])

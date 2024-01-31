@@ -10,7 +10,7 @@ import { promiseTimeout } from '@/utils/promiseUtils'
  * @param timeout
  * @param abortTaskId
  */
-const clientGetContentOfURL = async (
+const backgroundGetContentOfURL = async (
   url: string,
   timeout: number,
   abortTaskId?: string,
@@ -61,4 +61,4 @@ const clientGetContentOfURL = async (
   }
   return result
 }
-export default clientGetContentOfURL
+export default backgroundGetContentOfURL

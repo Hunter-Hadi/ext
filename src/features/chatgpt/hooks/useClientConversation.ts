@@ -27,6 +27,7 @@ import {
   getPageSummaryType,
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
+import { getInputMediator } from '@/store/InputMediator'
 
 export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   [key in ISidebarConversationType]: {
@@ -214,6 +215,8 @@ const useClientConversation = () => {
       currentSidebarConversationType,
       currentConversationIdRef.current,
     )
+    getInputMediator('floatingMenuInputMediator').updateInputValue('')
+    getInputMediator('chatBoxInputMediator').updateInputValue('')
     if (currentSidebarConversationType === 'Chat') {
       await updateSidebarSettings({
         chat: {

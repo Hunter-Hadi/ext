@@ -10,6 +10,7 @@ import {
   MAXAI_CHROME_EXTENSION_ID,
   MAXAI_MINIMIZE_CONTAINER_ID,
 } from '@/features/common/constants'
+import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 
 import SPARootProtector from './utils/SPARootProtector'
 
@@ -17,21 +18,12 @@ const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
 
-const canUseWebComponent = () => {
-  if (window.location.host === 'dribbble.com') {
-    // 在 dribbble.com 中会把自定义元素 隐藏，所以不使用自定义元素
-    return false
-  }
-
-  return 'customElements' in window
-}
-
 function minimumAppRender() {
   import('@/minimum/MinimumApp').then((module) => {
     const { default: MinimumApp } = module
-    const isSupportWebComponent = canUseWebComponent()
+    const supportWebComponent = isSupportWebComponent()
     const minimumAppRoot = document.createElement(
-      isSupportWebComponent ? 'max-ai-minimum-app' : 'div',
+      supportWebComponent ? 'max-ai-minimum-app' : 'div',
     )
     minimumAppRoot.id = MAXAI_MINIMIZE_CONTAINER_ID
     minimumAppRoot.setAttribute('data-version', APP_VERSION)

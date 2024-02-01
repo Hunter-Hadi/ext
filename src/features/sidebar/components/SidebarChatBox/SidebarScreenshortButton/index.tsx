@@ -225,7 +225,7 @@ const ScreenshotComponent: FC<{
           width: `${area[2]}px`,
           height: `${area[3]}px`,
           outline: '3px dashed',
-          outlineColor: '#7601D3',
+          outlineColor: '#9065B0',
         }}
       >
         {/*<span>*/}

@@ -2,14 +2,23 @@ import { SxProps } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
 
-import HomeViewContentNav from './HomeViewContentNav'
-import HomeViewPdfDropBox from './HomeViewPdfDropBox'
+import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
+import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNav'
+import HomeViewPdfDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewPdfDropBox'
 
 interface ISidebarHomeViewProps {
   sx?: SxProps
 }
 
 const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
+  const {
+    files,
+    AIProviderConfig,
+    aiProviderUploadFiles,
+  } = useAIProviderUpload()
+  const maxFileSize = AIProviderConfig?.maxFileSize
+
   const [isDragOver, setIsDragOver] = useState(false)
 
   const handleDragEnter = (event: any) => {
@@ -25,8 +34,23 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
     setIsDragOver(false)
   }
 
-  const handleDrop = (event: any) => {
-    // event.preventDefault()
+  const handleDrop = async (event: any) => {
+    const file = event.dataTransfer.files[0]
+
+    const isImage = file.type.includes('image')
+    const isPDF = file.type.includes('pdf')
+
+    if (isImage) {
+      event.preventDefault()
+      const newUploadFiles = await formatClientUploadFiles([file], maxFileSize)
+      aiProviderUploadFiles(files.concat(newUploadFiles))
+    }
+
+    if (isPDF) {
+      // event.preventDefault()
+      // do nothing
+    }
+
     setIsDragOver(false)
   }
 

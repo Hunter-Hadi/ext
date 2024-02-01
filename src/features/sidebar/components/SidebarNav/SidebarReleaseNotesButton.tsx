@@ -16,7 +16,6 @@ import { WWW_PROJECT_HOST } from '@/constants'
 const SidebarReleaseNotesButton = () => {
   const theme = useTheme()
   const { t } = useTranslation(['common'])
-  console.log('theme', theme)
 
   const [releaseModalOpen, setReleaseModalOpen] = React.useState(false)
 

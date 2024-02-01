@@ -31,10 +31,6 @@ const HomeViewPdfDropBox = () => {
           color: 'text.secondary',
         }
       }}
-      // onDragEnter={handleDragEnter}
-      // onDragOver={handleDragOver}
-      // onDragLeave={handleDragLeave}
-      // onDrop={handleDrop}
     >
       <UploadFileOutlinedIcon />
       <Typography>

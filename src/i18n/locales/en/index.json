@@ -45,7 +45,7 @@
     "download": "Download",
     "download_image": "Download image",
     "copy_image": "Copy image",
-    "screenshot": "Screenshot",
+    "screenshot": "AI screenshot",
     "release_notes": "Release notes"
   },
   "settings": {
@@ -556,11 +556,13 @@
     "home_view_content_nav__one_click_prompts_title": "1-click prompts",
     "home_view_content_nav__my_own_prompts__title": "My own prompts",
     "home_view_content_nav__summary__title": "Summary",
-    "home_view_content_nav__chat_with_pdf_title": "Chat with your PDF",
+    "home_view_content_nav__chat_with_pdf_title": "Chat with any PDF",
     "home_view_content_nav__chat_with_pdf__desc1": "Drop PDF here or",
     "home_view_content_nav__ai_provider__title": "AI providers",
     "home_view_content_nav__immersive_chat__title": "Immersive chat",
     "home_view_content_nav__upload": "upload",
+    "home_view_content_nav__choose_file": "Choose File",
+    "home_view_content_nav__drop_here_text": "or drop PDF/image here",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Third-party AI providers",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Third-party AI providers are not managed by MaxAI. We highly recommend using our premium AI providers for fast and high-quality AI experience.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Third-party AI models",

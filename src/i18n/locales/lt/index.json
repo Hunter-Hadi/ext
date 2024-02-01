@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopijuoti su formatavimu",
     "download": "Atsisiųsti",
     "download_image": "Atsisiųsti paveikslėlį",
-    "copy_image": "Kopijuoti paveikslėlį"
+    "copy_image": "Kopijuoti paveikslėlį",
+    "screenshot": "AI ekrano kopija"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -459,7 +460,7 @@
     "immersive_chat__delete_all_chat__title": "Išvalyti pokalbių istoriją - ar tikrai?",
     "immersive_chat__delete_all_chat__button__delete__title": "Patvirtinti ištrynimą",
     "immersive_chat__delete_all_chat__button__cancel__title": "Atšaukti",
-    "immersive_chat__delete_all_chat__button__title": "Išvalyti visus pokalbius",
+    "immersive_chat__delete_all_chat__button__title": "Ištrinti visus pokalbius",
     "sidebar__share__share_button__tooltip": "Atsisiųsti pokalbį",
     "provider__openai_api__model__gpt_3_5_1106__description": "Naujausias GPT-3.5 Turbo modelis su patobulinta instrukcijų sekimu, JSON režimu, atkūrimo išvestimis, lygiagrečiu funkcijų kvietimu ir daugiau. Grąžina maksimaliai 4 096 išvesties ženklus.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Naujausias GPT-4 Turbo modelis, pritaikytas greičiui ir efektyvumui, turi pažangų instrukcijų sekančią funkciją, skirtą greitam atsakui. Jame yra optimizuotas JSON režimas struktūrizuotų duomenų tvarkymui, užtikrinantys nuoseklų ir kartojamą išvesties rezultatą, bei palaikomas lygiagretus funkcijų kvietimas daugiauzduočių efektyvumui. Šis modelis išlaiko maksimalų 4 096 ženklų išvesties limitą, subalansuodamas išsamius atsakymus su efektyviu veikimu.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Atnaujinkite, kad gautumėte prieigą prie gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nauja AI galimybių dimensija su GPT-4-Vision - revoliucinis šuolis AI technologijoje, jungiantis vaizdo apdorojimą su pažangiu GPT-4 kalbos supratimu.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Atnaujinkite, kad kurtumėte AI meną ir paveikslus",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 kartų padidinkite savo kūrybiškumą ir produktyvumą su pažangiausiais AI meno modeliais. Greitai paverčkite savo vizijas į nuostabius paveikslėlius. Paprasta, galinga, transformuojanti."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 kartų padidinkite savo kūrybiškumą ir produktyvumą su pažangiausiais AI meno modeliais. Greitai paverčkite savo vizijas į nuostabius paveikslėlius. Paprasta, galinga, transformuojanti.",
+    "home_view_content_nav__chat_with_pdf_title": "Pokalbis su bet kuriuo PDF",
+    "immersive_chat__delete_chat__button__title": "Ištrinti pokalbį"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

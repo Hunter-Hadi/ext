@@ -11,8 +11,9 @@ import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesH
 
 const BaseSidebarUserMessage: FC<{
   message: IUserChatMessage
+  order?: number
 }> = (props) => {
-  const { message } = props
+  const { message, order } = props
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -51,14 +52,15 @@ const BaseSidebarUserMessage: FC<{
     }
   }, [message])
 
-  const includeHistory = useMemo(() => {
-    return !!message.meta?.includeHistory
-  }, [message])
+  const showDivider = useMemo(() => {
+    return !message.meta?.includeHistory && order !== 1
+  }, [message, order])
 
   console.log('测试性能SidebarUserMessage', 'rerender')
+
   return (
     <>
-      {!includeHistory && <Divider sx={{ mb: 2 }} />}
+      {showDivider && <Divider sx={{ mb: 2 }} />}
 
       <Stack
         className={'chat-message--text'}

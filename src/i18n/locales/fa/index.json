@@ -43,7 +43,8 @@
     "copy_with_formatting": "کپی با قالب‌بندی",
     "download": "دانلود",
     "download_image": "دانلود تصویر",
-    "copy_image": "کپی تصویر"
+    "copy_image": "کپی تصویر",
+    "screenshot": "عکس از صفحه نمایش هوش مصنوعی"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "است.",
     "immersive_chat__delete_chat__button__delete__title": "حذف",
     "immersive_chat__delete_chat__button__cancel__title": "لغو",
-    "immersive_chat__delete_all_chat__title": "پاک کردن تاریخچه گفتگو - آیا مطمئن هستید؟",
+    "immersive_chat__delete_all_chat__title": "پاک کردن تاریخچه چت شما - آیا مطمئن هستید؟",
     "immersive_chat__delete_all_chat__button__delete__title": "تأیید حذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "لغو",
-    "immersive_chat__delete_all_chat__button__title": "پاک کردن همه چت‌ها",
+    "immersive_chat__delete_all_chat__button__title": "حذف همه چت‌ها",
     "sidebar__share__share_button__tooltip": "دانلود چت",
     "provider__openai_api__model__gpt_3_5_1106__description": "مدل GPT-3.5 Turbo جدیدتر با دنبال کردن دستور بهبود یافته، حالت JSON، خروجی های قابل تکرار، فراخوانی تابع موازی و بیشتر. حداکثر 4,096 توکن خروجی را برمیگرداند.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "مدل GPT-4 Turbo جدیدترین مدل است که برای سرعت و کارآیی بهبود یافته است و شامل دستورالعمل‌های پیشرفته برای پاسخ سریع است. این مدل شامل حالت JSON بهینه شده برای کنترل داده‌های ساختاری است، خروجی‌های قابل تکرار و پایدار را تضمین می‌کند و قابلیت فراخوانی تابع موازی را برای کارایی چند وظیفه‌ای پشتیبانی می‌کند. این مدل حداکثر ۴,۰۹۶ توکن خروجی را حفظ می‌کند و با توازن پاسخ‌های جامع با عملکرد سریع عمل می‌کند.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "ارتقا برای دسترسی به gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "بعدی از قابلیت‌های هوش مصنوعی با GPT-4-Vision - یک پیشرفت بزرگ در فناوری هوش مصنوعی که پردازش تصویر را با درک زبان پیشرفته GPT-4 یکپارچه می‌کند.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "ارتقا برای ایجاد هنر و تصاویر هوش مصنوعی",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "خلاقیت و بهره‌وری خود را با مدل‌های هنری هوش مصنوعی پیشرفته‌ترین مدل‌های هنری هوش مصنوعی 10 برابر کنید. به سرعت تصاویر خلاقانه خود را به تصاویر شگفت‌انگیز تبدیل کنید. ساده، قدرتمند، تحولی."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "خلاقیت و بهره‌وری خود را با مدل‌های هنری هوش مصنوعی پیشرفته‌ترین مدل‌های هنری هوش مصنوعی 10 برابر کنید. به سرعت تصاویر خلاقانه خود را به تصاویر شگفت‌انگیز تبدیل کنید. ساده، قدرتمند، تحولی.",
+    "home_view_content_nav__chat_with_pdf_title": "چت با هر فایل PDF",
+    "immersive_chat__delete_chat__button__title": "حذف چت"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

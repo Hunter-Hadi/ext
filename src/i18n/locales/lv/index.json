@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopēt ar formatēšanu",
     "download": "Lejupielādēt",
     "download_image": "Lejupielādēt attēlu",
-    "copy_image": "Kopēt attēlu"
+    "copy_image": "Kopēt attēlu",
+    "screenshot": "AI ekrānuzņēmums"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Dzēst",
     "immersive_chat__delete_chat__button__cancel__title": "Atcelt",
-    "immersive_chat__delete_all_chat__title": "Notīrīt sarunas vēsturi - vai esat pārliecināts?",
+    "immersive_chat__delete_all_chat__title": "Notīrīt čata vēsturi - vai esat pārliecināts?",
     "immersive_chat__delete_all_chat__button__delete__title": "Apstiprināt dzēšanu",
     "immersive_chat__delete_all_chat__button__cancel__title": "Atcelt",
-    "immersive_chat__delete_all_chat__button__title": "Notīrīt visus čatus",
+    "immersive_chat__delete_all_chat__button__title": "Dzēst visus čatus",
     "sidebar__share__share_button__tooltip": "Lejupielādēt čatu",
     "provider__openai_api__model__gpt_3_5_1106__description": "Jaunākais GPT-3.5 Turbo modelis ar uzlabotu instrukciju sekošanu, JSON režīmu, reproducējamām izvadēm, paralēlu funkciju izsaukšanu un citiem uzlabojumiem. Atgriež maksimāli 4 096 izvades žetonus.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Jaunākais GPT-4 Turbo modelis, uzlabots ātrumam un efektivitātei, piedāvā uzlabotu instrukciju sekošanu, pielāgotu ātrai atbildes sniegšanai. Tas ietver optimizētu JSON režīmu strukturētu datu apstrādei, nodrošina vienmērīgus un reproducējamus rezultātus un atbalsta paralēlo funkciju izsaukšanu daudzuzdevumu efektivitātei. Šī modelis uztur maksimālo izvades simbolu skaitu - 4096, līdzsvarojot visaptverošas atbildes ar optimizētu veiktspēju.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Jauniniet, lai piekļūtu gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Jauna dimensija AI spējās ar GPT-4-Vision - revolucionārs solis AI tehnoloģijā, kas integrē attēlu apstrādi ar GPT-4 uzlaboto valodas sapratni.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Jauniniet, lai radītu AI mākslu un attēlus",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x palieliniet savu radošumu un produktivitāti ar visvarenākajiem AI mākslas modeļiem. Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x palieliniet savu radošumu un produktivitāti ar visvarenākajiem AI mākslas modeļiem. Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
+    "home_view_content_nav__chat_with_pdf_title": "Saraksties ar jebkuru PDF",
+    "immersive_chat__delete_chat__button__title": "Dzēst čatu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

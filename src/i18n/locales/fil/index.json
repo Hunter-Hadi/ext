@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopyahin na may pormat",
     "download": "I-download",
     "download_image": "I-download ang imahe",
-    "copy_image": "Kopyahin ang imahe"
+    "copy_image": "Kopyahin ang imahe",
+    "screenshot": "AI screenshot"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -456,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Tanggalin",
     "immersive_chat__delete_chat__button__cancel__title": "Kanselahin",
-    "immersive_chat__delete_all_chat__title": "Tanggalin ang buong kasaysayan ng usapan - sigurado ka ba?",
+    "immersive_chat__delete_all_chat__title": "Burahin ang kasaysayan ng iyong chat - sigurado ka ba?",
     "immersive_chat__delete_all_chat__button__delete__title": "Kumpirmahin ang pagtanggal",
     "immersive_chat__delete_all_chat__button__cancel__title": "Kanselahin",
     "immersive_chat__delete_all_chat__button__title": "Burahin ang lahat ng mga chat",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Mag-upgrade para ma-access ang gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Isang bagong dimensyon ng mga kakayahan ng AI gamit ang GPT-4-Vision - isang makabuluhang hakbang sa teknolohiya ng AI na nag-uugnay ng pagproseso ng mga imahe sa advanced na pang-unawa sa wika ng GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Mag-upgrade para makagawa ng sining at mga imahe ng AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 beses palakasin ang iyong kreatibidad at produktibidad gamit ang pinakamahusay na mga modelo ng sining ng AI. Mabilis na gawing kahanga-hanga ang iyong mga pangarap na imahe. Simple, malakas, transformative."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 beses palakasin ang iyong kreatibidad at produktibidad gamit ang pinakamahusay na mga modelo ng sining ng AI. Mabilis na gawing kahanga-hanga ang iyong mga pangarap na imahe. Simple, malakas, transformative.",
+    "home_view_content_nav__chat_with_pdf_title": "Makipag-chat sa anumang PDF",
+    "immersive_chat__delete_chat__button__title": "Burahin ang chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

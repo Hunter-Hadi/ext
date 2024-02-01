@@ -43,7 +43,8 @@
     "copy_with_formatting": "Copiază cu formatare",
     "download": "Descărcare",
     "download_image": "Descarcă imaginea",
-    "copy_image": "Copiază imaginea"
+    "copy_image": "Copiază imaginea",
+    "screenshot": "Captură de ecran AI"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -456,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Ștergeți",
     "immersive_chat__delete_chat__button__cancel__title": "Anulați",
-    "immersive_chat__delete_all_chat__title": "Ștergeți întreaga istorie a conversațiilor - sunteți sigur?",
+    "immersive_chat__delete_all_chat__title": "Ștergeți istoricul chat-ului - sunteți sigur?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmați ștergerea",
     "immersive_chat__delete_all_chat__button__cancel__title": "Anulați",
     "immersive_chat__delete_all_chat__button__title": "Ștergeți toate conversațiile",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgrade pentru a accesa gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "O nouă dimensiune a capacităților AI cu GPT-4-Vision - un salt revoluționar în tehnologia AI care integrează procesarea imaginilor cu înțelegerea avansată a limbajului GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade pentru a crea artă și imagini AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Multiplică-ți creativitatea și productivitatea cu cele mai avansate modele de artă AI. Transformă rapid viziunile tale în imagini uimitoare. Simplu, puternic, transformativ."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Multiplică-ți creativitatea și productivitatea cu cele mai avansate modele de artă AI. Transformă rapid viziunile tale în imagini uimitoare. Simplu, puternic, transformativ.",
+    "home_view_content_nav__chat_with_pdf_title": "Chat cu orice PDF",
+    "immersive_chat__delete_chat__button__title": "Șterge chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

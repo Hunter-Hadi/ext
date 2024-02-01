@@ -43,7 +43,8 @@
     "copy_with_formatting": "העתק עם עיצוב",
     "download": "הורדה",
     "download_image": "הורד תמונה",
-    "copy_image": "העתק תמונה"
+    "copy_image": "העתק תמונה",
+    "screenshot": "צילום מסך של AI"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "מחק",
     "immersive_chat__delete_chat__button__cancel__title": "ביטול",
-    "immersive_chat__delete_all_chat__title": "נקה את ההיסטוריה של השיחה - האם אתה בטוח?",
+    "immersive_chat__delete_all_chat__title": "נקה את ההיסטוריה של הצ'אט - האם אתה בטוח?",
     "immersive_chat__delete_all_chat__button__delete__title": "אשר מחיקה",
     "immersive_chat__delete_all_chat__button__cancel__title": "ביטול",
-    "immersive_chat__delete_all_chat__button__title": "נקה את כל השיחות",
+    "immersive_chat__delete_all_chat__button__title": "מחק את כל הצ'אטים",
     "sidebar__share__share_button__tooltip": "הורדת צ'אט",
     "provider__openai_api__model__gpt_3_5_1106__description": "הדגם האחרון של GPT-3.5 Turbo עם שיפור בעקיפת הוראות, מצב JSON, פלטים ניתנים לשחזור, קריאה פרולית לפונקציות ועוד. מחזיר מקסימום 4,096 אסימונים פלט.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "המודל החדש ביותר של GPT-4 Turbo, משופר למהירות ויעילות, כולל יכולת מתקדמת לעקוב אחר הוראות מותאמות לתגובה מהירה. הוא כולל מצב JSON מותאם לטיפול בנתונים מובנים, מבטיח פלט עקבי ומשנה ותמיכה בקריאת פונקציות מקבוצה מקבילה ליעילות במקביל. המודל מתחזק פלט מרבי של 4,096 טוקנים, מאזן בין תגובות מקיפות לביצועים משופרים.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "שדרג כדי לקבל גישה ל-gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "ממד חדש של יכולות AI עם GPT-4-Vision - קפיצה מהפכנית בטכנולוגיית AI שמשלבת עיבוד תמונה עם הבנה מתקדמת של שפה של GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "שדרג כדי ליצור אמנות ותמונות AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "הכפילו את היצירתיות והיציבות שלכם בעזרת הדגמים המתקדמים ביותר של AI לאמנות. הפוך את החזון שלך לתמונות מרהיבות במהירות. פשוט, עוצמתי, מהפכני."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "הכפילו את היצירתיות והיציבות שלכם בעזרת הדגמים המתקדמים ביותר של AI לאמנות. הפוך את החזון שלך לתמונות מרהיבות במהירות. פשוט, עוצמתי, מהפכני.",
+    "home_view_content_nav__chat_with_pdf_title": "שוחח עם כל PDF",
+    "immersive_chat__delete_chat__button__title": "מחק צ'אט"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

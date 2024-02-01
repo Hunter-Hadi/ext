@@ -43,7 +43,8 @@
     "copy_with_formatting": "ફોર્મેટિંગ સાથે કૉપી",
     "download": "ડાઉનલોડ",
     "download_image": "છબી ડાઉનલોડ કરો",
-    "copy_image": "છબી કૉપિ કરો"
+    "copy_image": "છબી કૉપિ કરો",
+    "screenshot": "એઆઈ સ્ક્રીનશોટ"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "પ્રવૃત્તિ કરો gpt-4-vision એક્સેસ મેળવવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 ની એડવાંસ ભાષા સમજણની સાથે છબી પ્રક્રિયાને સંયોજિત કરતી GPT-4-Vision સાથે AI ક્ષમતાઓનો એક નવો આયામ - એક આઈનો ચઢાવોનો ધમાકો.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "પ્રવૃત્તિ કરો AI આર્ટ અને છબીઓ બનાવવા માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "સૌથી અગ્રગણ્ય AI આર્ટ મોડલો સાથે 10x તમારી રચનાત્મકતા અને ઉત્પાદકતા. તમારા દૃષ્ટિને શાનદાર છબીઓમાં તરત ફેરવો. સરળ, શક્તિશાળી, પરિવર્તક."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "સૌથી અગ્રગણ્ય AI આર્ટ મોડલો સાથે 10x તમારી રચનાત્મકતા અને ઉત્પાદકતા. તમારા દૃષ્ટિને શાનદાર છબીઓમાં તરત ફેરવો. સરળ, શક્તિશાળી, પરિવર્તક.",
+    "home_view_content_nav__chat_with_pdf_title": "કોઈ પીડીએફ સાથે ચેટ કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

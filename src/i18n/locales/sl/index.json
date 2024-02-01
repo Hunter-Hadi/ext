@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopiraj s formatiranjem",
     "download": "Prenesi",
     "download_image": "Prenesi sliko",
-    "copy_image": "Kopiraj sliko"
+    "copy_image": "Kopiraj sliko",
+    "screenshot": "Posnetek zaslona AI"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -456,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Izbriši",
     "immersive_chat__delete_chat__button__cancel__title": "Prekliči",
-    "immersive_chat__delete_all_chat__title": "Izbriši celotno zgodovino pogovora - ste prepričani?",
+    "immersive_chat__delete_all_chat__title": "Počisti zgodovino klepeta - ste prepričani?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potrdi brisanje",
     "immersive_chat__delete_all_chat__button__cancel__title": "Prekliči",
     "immersive_chat__delete_all_chat__button__title": "Izbriši vse klepete",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Nadgradi za dostop do gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nova dimenzija AI sposobnosti z GPT-4-Vision - prebojni skok v tehnologiji AI, ki integrira obdelavo slik z naprednim jezikovnim razumevanjem GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Nadgradi za ustvarjanje AI umetnosti in slik",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Povečajte svojo ustvarjalnost in produktivnost za 10-krat z najnaprednejšimi modeli AI umetnosti. Hitro pretvorite svoje vizije v osupljive slike. Preprosto, močno, preoblikovalno."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Povečajte svojo ustvarjalnost in produktivnost za 10-krat z najnaprednejšimi modeli AI umetnosti. Hitro pretvorite svoje vizije v osupljive slike. Preprosto, močno, preoblikovalno.",
+    "home_view_content_nav__chat_with_pdf_title": "Klepetajte s katerim koli PDF-jem",
+    "immersive_chat__delete_chat__button__title": "Izbriši klepet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

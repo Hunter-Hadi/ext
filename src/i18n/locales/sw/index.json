@@ -43,7 +43,8 @@
     "copy_with_formatting": "Nakili na muundo",
     "download": "Pakua",
     "download_image": "Pakua picha",
-    "copy_image": "Nakili picha"
+    "copy_image": "Nakili picha",
+    "screenshot": "Picha ya AI"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -456,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Futa",
     "immersive_chat__delete_chat__button__cancel__title": "Ghairi",
-    "immersive_chat__delete_all_chat__title": "Futa historia yako ya mazungumzo - una uhakika?",
+    "immersive_chat__delete_all_chat__title": "Ondoa historia yako ya mazungumzo - una uhakika?",
     "immersive_chat__delete_all_chat__button__delete__title": "Thibitisha kufuta",
     "immersive_chat__delete_all_chat__button__cancel__title": "Ghairi",
     "immersive_chat__delete_all_chat__button__title": "Futa mazungumzo yote",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Sasisha ili kupata gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Uwezo mpya wa AI na GPT-4-Vision - hatua ya kipekee katika teknolojia ya AI ambayo inaunganisha usindikaji wa picha na ufahamu wa lugha ya hali ya juu ya GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Sasisha ili kuunda sanaa na picha za AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Ongeza ubunifu wako mara 10 na ufanisi na mifano ya sanaa ya AI ya hali ya juu zaidi. Haraka geuza maono yako kuwa picha za kushangaza. Rahisi, yenye nguvu, inayobadilisha."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Ongeza ubunifu wako mara 10 na ufanisi na mifano ya sanaa ya AI ya hali ya juu zaidi. Haraka geuza maono yako kuwa picha za kushangaza. Rahisi, yenye nguvu, inayobadilisha.",
+    "home_view_content_nav__chat_with_pdf_title": "Ongea na PDF yoyote",
+    "immersive_chat__delete_chat__button__title": "Futa mazungumzo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

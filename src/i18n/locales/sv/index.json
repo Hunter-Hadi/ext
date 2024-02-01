@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopiera med formatering",
     "download": "Ladda ner",
     "download_image": "Ladda ner bild",
-    "copy_image": "Kopiera bild"
+    "copy_image": "Kopiera bild",
+    "screenshot": "AI skärmdump"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Radera",
     "immersive_chat__delete_chat__button__cancel__title": "Avbryt",
-    "immersive_chat__delete_all_chat__title": "Rensa din konversationshistorik - är du säker?",
+    "immersive_chat__delete_all_chat__title": "Rensa din chatt-historik - är du säker?",
     "immersive_chat__delete_all_chat__button__delete__title": "Bekräfta radering",
     "immersive_chat__delete_all_chat__button__cancel__title": "Avbryt",
-    "immersive_chat__delete_all_chat__button__title": "Rensa alla chattar",
+    "immersive_chat__delete_all_chat__button__title": "Radera alla chattar",
     "sidebar__share__share_button__tooltip": "Ladda ner chatt",
     "provider__openai_api__model__gpt_3_5_1106__description": "Den senaste GPT-3.5 Turbo-modellen med förbättrad instruktionsföljning, JSON-läge, reproducerbara utdata, parallell funktionsanrop och mer. Returnerar maximalt 4 096 utdatatokens.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Den senaste GPT-4 Turbo-modellen, förbättrad för hastighet och effektivitet, har avancerad instruktionsföljning anpassad för snabb respons. Den inkluderar ett optimerat JSON-läge för hantering av strukturerade data, säkerställer konsekventa och reproducerbara resultat och stöder parallell funktionsanrop för effektiv multitasking. Denna modell bibehåller en maximal utmatning på 4 096 token, vilket balanserar omfattande svar med strömlinjeformad prestanda.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Uppgradera för att få tillgång till gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "En ny dimension av AI-funktioner med GPT-4-Vision - ett banbrytande språng inom AI-teknik som integrerar bildbehandling med den avancerade språkförståelsen hos GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Uppgradera för att skapa AI-konst och bilder",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x din kreativitet och produktivitet med de mest avancerade AI-konstmodellerna. Omvandla snabbt dina visioner till fantastiska bilder. Enkelt, kraftfullt, transformerande."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x din kreativitet och produktivitet med de mest avancerade AI-konstmodellerna. Omvandla snabbt dina visioner till fantastiska bilder. Enkelt, kraftfullt, transformerande.",
+    "home_view_content_nav__chat_with_pdf_title": "Chatta med vilken PDF som helst",
+    "immersive_chat__delete_chat__button__title": "Radera chatt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

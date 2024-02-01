@@ -42,6 +42,7 @@ const ConversationList: FC<IProps> = ({
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
 
   const {
+    loading,
     paginationConversations,
     setPaginationConversations,
     fetchPaginationConversations,
@@ -286,7 +287,9 @@ const ConversationList: FC<IProps> = ({
           )
         })}
 
-        {filteredPaginationConversations.length === 0 && renderEmptyFeedback()}
+        {!loading && filteredPaginationConversations.length === 0
+          ? renderEmptyFeedback()
+          : null}
       </Stack>
       <Stack flexShrink={0}>
         {hideClearAllButton ? null : (

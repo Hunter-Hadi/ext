@@ -43,7 +43,8 @@
     "copy_with_formatting": "Sao chép với định dạng",
     "download": "Tải xuống",
     "download_image": "Tải xuống hình ảnh",
-    "copy_image": "Sao chép hình ảnh"
+    "copy_image": "Sao chép hình ảnh",
+    "screenshot": "Ảnh chụp màn hình AI"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -456,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Xóa",
     "immersive_chat__delete_chat__button__cancel__title": "Hủy",
-    "immersive_chat__delete_all_chat__title": "Xóa toàn bộ lịch sử trò chuyện của bạn - bạn có chắc chắn?",
+    "immersive_chat__delete_all_chat__title": "Xóa lịch sử trò chuyện của bạn - bạn chắc chứ?",
     "immersive_chat__delete_all_chat__button__delete__title": "Xác nhận xóa",
     "immersive_chat__delete_all_chat__button__cancel__title": "Hủy",
     "immersive_chat__delete_all_chat__button__title": "Xóa tất cả cuộc trò chuyện",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Nâng cấp để truy cập gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Một chiều mới của khả năng AI với GPT-4-Vision - một bước nhảy đột phá trong công nghệ AI kết hợp xử lý hình ảnh với khả năng hiểu ngôn ngữ tiên tiến của GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Nâng cấp để tạo nghệ thuật và hình ảnh AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Tăng gấp 10 sự sáng tạo và năng suất của bạn với các mô hình nghệ thuật AI tiên tiến nhất. Nhanh chóng biến tầm nhìn của bạn thành những hình ảnh tuyệt đẹp. Đơn giản, mạnh mẽ, biến đổi."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Tăng gấp 10 sự sáng tạo và năng suất của bạn với các mô hình nghệ thuật AI tiên tiến nhất. Nhanh chóng biến tầm nhìn của bạn thành những hình ảnh tuyệt đẹp. Đơn giản, mạnh mẽ, biến đổi.",
+    "home_view_content_nav__chat_with_pdf_title": "Trò chuyện với bất kỳ PDF nào",
+    "immersive_chat__delete_chat__button__title": "Xóa cuộc trò chuyện"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

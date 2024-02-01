@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
@@ -9,6 +10,7 @@ import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTa
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { I18nextKeysType } from '@/i18next'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -60,6 +62,7 @@ export const sidebarTabsData: Array<{
 
 const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
+  const { isDarkMode } = useCustomTheme()
 
   const {
     currentSidebarConversationType,
@@ -106,53 +109,54 @@ const SidebarTabs: FC = () => {
       {memoSidebarTabsData.map((item) => {
         const isActive = currentSidebarConversationType === item.value
         const disabled = smoothConversationLoading
-        // const bgcolor = isActive
-        //   ? isDarkMode
-        //     ? 'rgba(255, 255, 255, 0.08)'
-        //     : 'rgba(118, 1, 211, 0.08)'
-        //   : 'transparent'
+        const bgcolor = isActive
+          ? isDarkMode
+            ? 'rgba(44, 44, 44, 1)'
+            : 'rgba(144, 101, 176, 0.16)'
+          : 'transparent'
 
         return (
-          <TextOnlyTooltip
-            key={item.value}
-            placement="left"
-            title={t(item.tooltip?.() as any)}
-          >
-            <Stack
-              spacing={0.5}
-              justifyContent="center"
-              alignItems="center"
-              sx={{
-                width: '100%',
-                // [isInImmersiveChatPage
-                //   ? 'borderRight'
-                //   : 'borderLeft']: '2px solid',
-                // borderColor: isActive ? 'primary.main' : 'transparent',
-                color: isActive ? 'primary.main' : 'text.secondary',
-                cursor: disabled ? 'auto' : 'pointer',
-                // bgcolor: bgcolor,
-                py: 1,
-                position: 'relative',
-                [isInImmersiveChatPage ? 'right' : 'left']: -1,
-                '&:hover': {
-                  bgcolor: '#9065b014',
-                },
-              }}
-              onClick={() => {
-                !disabled && updateSidebarConversationType(item.value)
-              }}
+          <Box width={1} px={isInImmersiveChatPage ? 1 : 0.5} key={item.value}>
+            <TextOnlyTooltip
+              placement="left"
+              title={t(item.tooltip?.() as any)}
             >
-              <SidebarTabIcons icon={item.icon} />
-              <Typography
-                fontSize={12}
-                color={'inherit'}
-                data-testid={`max-ai__${item.value.toLowerCase()}-tab`}
-                lineHeight={1}
+              <Stack
+                spacing={0.5}
+                justifyContent="center"
+                alignItems="center"
+                sx={{
+                  width: '100%',
+                  // [isInImmersiveChatPage
+                  //   ? 'borderRight'
+                  //   : 'borderLeft']: '2px solid',
+                  // borderColor: isActive ? 'primary.main' : 'transparent',
+                  color: isActive ? 'primary.main' : 'text.secondary',
+                  cursor: disabled ? 'auto' : 'pointer',
+                  bgcolor: bgcolor,
+                  py: 0.5,
+                  position: 'relative',
+                  borderRadius: 2,
+                  '&:hover': {
+                    bgcolor: isActive ? bgcolor : '#9065b014',
+                  },
+                }}
+                onClick={() => {
+                  !disabled && updateSidebarConversationType(item.value)
+                }}
               >
-                {t(item.label as any)}
-              </Typography>
-            </Stack>
-          </TextOnlyTooltip>
+                <SidebarTabIcons icon={item.icon} />
+                <Typography
+                  fontSize={12}
+                  color={'inherit'}
+                  data-testid={`max-ai__${item.value.toLowerCase()}-tab`}
+                  lineHeight={1}
+                >
+                  {t(item.label as any)}
+                </Typography>
+              </Stack>
+            </TextOnlyTooltip>
+          </Box>
         )
       })}
     </Stack>

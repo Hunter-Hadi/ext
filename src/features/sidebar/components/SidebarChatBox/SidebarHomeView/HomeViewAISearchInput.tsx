@@ -72,7 +72,7 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
       <form onSubmit={handleSubmit}>
         <OutlinedInput
           size="small"
-          placeholder="AI Search"
+          placeholder="Ask anything..."
           name="searchValue"
           disabled={loading}
           sx={{
@@ -84,14 +84,14 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
             '& > fieldset': {
               borderColor: 'transparent !important',
             },
-            '& > input::placeholder': {
-              color: 'inherit',
-              opacity: 1,
-            },
           }}
           startAdornment={
-            <InputAdornment position="end" sx={{ ml: '3px', mr: '3px' }}>
-              <IconButton type="submit" size="small">
+            <InputAdornment position="end" sx={{ ml: '3px', mr: '0px' }}>
+              <IconButton
+                type="submit"
+                size="small"
+                sx={{ color: 'text.primary' }}
+              >
                 {loading ? (
                   <CircularProgress size={20} sx={{ m: '0 auto' }} />
                 ) : (

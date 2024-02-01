@@ -43,7 +43,8 @@
     "copy_with_formatting": "ఫార్మాటింగ్ తో కాపీ",
     "download": "డౌన్‌లోడ్",
     "download_image": "చిత్రం డౌన్‌లోడ్ చేయండి",
-    "copy_image": "చిత్రం కాపీ చేయండి"
+    "copy_image": "చిత్రం కాపీ చేయండి",
+    "screenshot": "AI స్క్రీన్‌షాట్"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "తొలగించు",
     "immersive_chat__delete_chat__button__cancel__title": "రద్దు చేయి",
-    "immersive_chat__delete_all_chat__title": "మీ చాట్ చర్యల చరిత్రను తొలగించాలా - ఖచ్చితంగా ఉందా?",
+    "immersive_chat__delete_all_chat__title": "మీ చాట్ చరిత్రను తొలగించడానికి ఖాతరీగా ఉందా?",
     "immersive_chat__delete_all_chat__button__delete__title": "తొలగించించు ధృవీకరణ",
     "immersive_chat__delete_all_chat__button__cancel__title": "రద్దు చేయి",
-    "immersive_chat__delete_all_chat__button__title": "అన్ని చాట్లను తొలగించు",
+    "immersive_chat__delete_all_chat__button__title": "అన్ని చాట్‌లను తొలగించు",
     "sidebar__share__share_button__tooltip": "చాట్ డౌన్లోడ్ చేయండి",
     "provider__openai_api__model__gpt_3_5_1106__description": "పెరిగిన GPT-3.5 టర్బో మోడల్, మెరుగుపరచిన మార్గదర్శనకు అనుసరించి, JSON మోడ్, మరియు మరీ మరిన్ని. మించిన 4,096 ఔట్పుట్ టోకన్‌లను తరిమికొట్టేది.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "తాజా GPT-4 టర్బో మోడల్, వేగం మరియు ఎఫిషన్సీ కోసం అప్టిమైజ్ చేయబడింది, రిపీటేబుల్ ఆవర్తనాలను కొనసాగించే కోసం అభినందనీయ మార్గను అనుకూలంగా ఉంది. ఇది సంగతులు డేటా హాండ్లింగ్‌కు అప్టిమైజ్ చేయడానికి ఒక అప్టిమైజ్ చేయబడిన JSON మోడ్ ను కలిగి ఉంటుంది, సమర్థిస్తుంది సమతుల్య మరియు పునరావర్తనాత్మక ఔట్పుట్లను మాయంచినప్పుడు మరియు మల్టీటాస్కింగ్ ఎఫిషన్సీ కోసం పరాలెల్ ఫంక్షన్ కాలింగ్‌ను మద్దతు చేస్తుంది. ఈ మోడల్ 4,096 టోకన్లను మరియు పూర్తి సమగ్ర సమాధానాలను సమతుల్యంగా ఉంచేందుకు పరిమితించినప్పుడు, సరళీకృత పనిచేసేందుకు సమర్థంగా ఉంది.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "GPT-4-విషన్‌కు అప్‌గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision తో AI సామర్థ్యాల కొరకు ఒక కొత్త ఆయామం - GPT-4 యొక్క ఆధునిక భాషా అర్థంపూర్వకతను చిత్ర ప్రాసెసింగ్‌తో కలిపించడంతో ఒక మున్నించిన AI టెక్నాలజీ యొక్క అద్భుతమైన దారికను సహజంగా పొందండి.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI కళాకారుత్వం మరియు చిత్రాలను సృష్టించడానికి అప్‌గ్రేడ్ చేయండి",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "అత్యంత ముందుగా AI కళాకారుత్వ మోడల్‌లతో 10x మీ సృజనాత్మకత మరియు ఉత్పత్తిశీలతను పెంచండి. మీ దృష్టిని అద్భుతమైన చిత్రాలకు మరోసారి మార్చండి. సరళమైన, శక్తివంతమైన, మార్పులు చేసే విధానం."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "అత్యంత ముందుగా AI కళాకారుత్వ మోడల్‌లతో 10x మీ సృజనాత్మకత మరియు ఉత్పత్తిశీలతను పెంచండి. మీ దృష్టిని అద్భుతమైన చిత్రాలకు మరోసారి మార్చండి. సరళమైన, శక్తివంతమైన, మార్పులు చేసే విధానం.",
+    "home_view_content_nav__chat_with_pdf_title": "ఏదైనా PDF తో చాట్ చేయండి",
+    "immersive_chat__delete_chat__button__title": "చాట్ తొలగించు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -43,7 +43,8 @@
     "copy_with_formatting": "Másolat formázással",
     "download": "Letöltés",
     "download_image": "Kép letöltése",
-    "copy_image": "Kép másolása"
+    "copy_image": "Kép másolása",
+    "screenshot": "AI képernyőkép"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Törlés",
     "immersive_chat__delete_chat__button__cancel__title": "Mégse",
-    "immersive_chat__delete_all_chat__title": "Biztosan törli a beszélgetési előzményeket?",
+    "immersive_chat__delete_all_chat__title": "Töröld a chat előzményeket - biztos vagy benne?",
     "immersive_chat__delete_all_chat__button__delete__title": "Törlés megerősítése",
     "immersive_chat__delete_all_chat__button__cancel__title": "Mégse",
-    "immersive_chat__delete_all_chat__button__title": "Összes csevegés törlése",
+    "immersive_chat__delete_all_chat__button__title": "Összes chat törlése",
     "sidebar__share__share_button__tooltip": "Chat letöltése",
     "provider__openai_api__model__gpt_3_5_1106__description": "A legújabb GPT-3.5 Turbo modell, amely javított utasítás követést, JSON módot, reprodukálható kimeneteket, párhuzamos függvényhívást és még sok mást tartalmaz. Legfeljebb 4 096 kimeneti token-t ad vissza.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "A legújabb GPT-4 Turbo modell, amelyet a sebesség és hatékonyság fokozására fejlesztettek ki, rendelkezik fejlett utasítás-követéssel a gyors válasz érdekében. Tartalmaz egy optimalizált JSON módot a strukturált adatkezeléshez, biztosítja a következetes és reprodukálható kimeneteket, és támogatja a párhuzamos funkcióhívást a multitasking hatékonyságához. Ez a modell legfeljebb 4 096 token kimenetet tartalmaz, összhangban az átfogó válaszokkal és a streamlined teljesítménnyel.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Frissítés a gpt-4-vision eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Az AI képességek új dimenziója a GPT-4-Vision-nel - egy forradalmi ugrás az AI technológiában, amely integrálja a képfeldolgozást a GPT-4 fejlett nyelvi megértésével.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Frissítés az AI művészet és képek létrehozásához",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10-szeresére növelheti kreativitását és produktivitását a legfejlettebb AI művészeti modellekkel. Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, transzformáló."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10-szeresére növelheti kreativitását és produktivitását a legfejlettebb AI művészeti modellekkel. Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, transzformáló.",
+    "home_view_content_nav__chat_with_pdf_title": "Beszélgetés bármilyen PDF-fel",
+    "immersive_chat__delete_chat__button__title": "Chat törlése"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

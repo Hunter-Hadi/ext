@@ -150,7 +150,6 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
             <SettingsOutlinedIcon
               sx={{
                 fontSize: '20px',
-                my: '2px',
               }}
             />
           </IconButton>

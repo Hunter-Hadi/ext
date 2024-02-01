@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopiraj s formatiranjem",
     "download": "Preuzmi",
     "download_image": "Preuzmi sliku",
-    "copy_image": "Kopiraj sliku"
+    "copy_image": "Kopiraj sliku",
+    "screenshot": "Snimka zaslona AI"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Nadogradite za pristup gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nova dimenzija AI sposobnosti s GPT-4-Vision - revolucionarni skok u AI tehnologiji koji integrira obradu slika s naprednim jezičnim razumijevanjem GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Nadogradite za stvaranje AI umjetnosti i slika",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Povećajte svoju kreativnost i produktivnost 10 puta uz najnaprednije modele AI umjetnosti. Brzo pretvorite svoje vizije u zadivljujuće slike. Jednostavno, moćno, transformirajuće."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Povećajte svoju kreativnost i produktivnost 10 puta uz najnaprednije modele AI umjetnosti. Brzo pretvorite svoje vizije u zadivljujuće slike. Jednostavno, moćno, transformirajuće.",
+    "home_view_content_nav__chat_with_pdf_title": "Razgovarajte s bilo kojim PDF-om",
+    "immersive_chat__delete_chat__button__title": "Izbriši razgovor"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

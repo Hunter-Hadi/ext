@@ -160,6 +160,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
               className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
               message={message}
               loading={false}
+              order={index + 1}
             />
           )
         })}
@@ -172,6 +173,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
             className={'use-chat-gpt-ai__writing-message-item'}
             message={writingMessage}
             loading={true}
+            order={-1}
           />
         ) : null}
       </AppSuspenseLoadingLayout>

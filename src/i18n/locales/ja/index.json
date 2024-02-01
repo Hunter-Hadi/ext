@@ -43,7 +43,8 @@
     "copy_with_formatting": "書式付きコピー",
     "download": "ダウンロード",
     "download_image": "画像をダウンロード",
-    "copy_image": "画像をコピー"
+    "copy_image": "画像をコピー",
+    "screenshot": "AIのスクリーンショット"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "が削除されます。",
     "immersive_chat__delete_chat__button__delete__title": "削除",
     "immersive_chat__delete_chat__button__cancel__title": "キャンセル",
-    "immersive_chat__delete_all_chat__title": "会話履歴をすべて削除しますか？",
+    "immersive_chat__delete_all_chat__title": "チャット履歴をクリアしますか？",
     "immersive_chat__delete_all_chat__button__delete__title": "削除を確認",
     "immersive_chat__delete_all_chat__button__cancel__title": "キャンセル",
-    "immersive_chat__delete_all_chat__button__title": "すべてのチャットをクリア",
+    "immersive_chat__delete_all_chat__button__title": "すべてのチャットを削除",
     "sidebar__share__share_button__tooltip": "チャットをダウンロード",
     "provider__openai_api__model__gpt_3_5_1106__description": "改良された指示の追跡、JSONモード、再現可能な出力、並列関数呼び出しなどを備えた最新のGPT-3.5 Turboモデル。最大4,096の出力トークンを返します。",
     "provider__openai_api__model__gpt_4_1106_preview__description": "最新のGPT-4 Turboモデルは、高速かつ効率的に強化されており、迅速な応答に適した高度な命令の従属を特長としています。構造化データの処理に最適化されたJSONモードを備え、一貫性と再現性のある出力を保証し、マルチタスキング効率のための並列関数呼び出しをサポートします。このモデルは、包括的な応答と効率的なパフォーマンスのバランスを保ちながら、最大4,096トークンの出力を維持します。",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-visionへのアクセスをアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-VisionはAI技術の画期的な進歩であり、GPT-4の高度な言語理解と画像処理を統合しています。",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AIアートと画像の作成をアップグレード",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "最も高度なAIアートモデルで創造性と生産性を10倍に。ビジョンを素晴らしい画像に迅速に変換します。シンプルで強力、変革的です。"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "最も高度なAIアートモデルで創造性と生産性を10倍に。ビジョンを素晴らしい画像に迅速に変換します。シンプルで強力、変革的です。",
+    "home_view_content_nav__chat_with_pdf_title": "PDFとチャットする",
+    "immersive_chat__delete_chat__button__title": "チャットを削除"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

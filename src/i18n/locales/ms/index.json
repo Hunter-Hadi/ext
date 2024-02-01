@@ -43,7 +43,8 @@
     "copy_with_formatting": "Salin dengan pemformatan",
     "download": "Muat turun",
     "download_image": "Muat turun imej",
-    "copy_image": "Salin imej"
+    "copy_image": "Salin imej",
+    "screenshot": "Tangkapan skrin AI"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Padam",
     "immersive_chat__delete_chat__button__cancel__title": "Batal",
-    "immersive_chat__delete_all_chat__title": "Padam sejarah perbualan anda - adakah anda pasti?",
+    "immersive_chat__delete_all_chat__title": "Padam sejarah sembang anda - anda pasti?",
     "immersive_chat__delete_all_chat__button__delete__title": "Sahkan pemadaman",
     "immersive_chat__delete_all_chat__button__cancel__title": "Batal",
-    "immersive_chat__delete_all_chat__button__title": "Padam semua perbualan",
+    "immersive_chat__delete_all_chat__button__title": "Padam semua sembang",
     "sidebar__share__share_button__tooltip": "Muat turun perbualan",
     "provider__openai_api__model__gpt_3_5_1106__description": "Model GPT-3.5 Turbo terkini dengan peningkatan mengikut arahan, mod JSON, hasil boleh diulangi, pemanggilan fungsi selari, dan banyak lagi. Mengembalikan maksimum 4,096 token output.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 Turbo terkini, ditingkatkan untuk kelajuan dan kecekapan, menampilkan pengikutan arahan lanjutan yang disesuaikan untuk tindak balas yang pantas. Ia termasuk mod JSON yang dioptimumkan untuk pemprosesan data berstruktur, memastikan hasil yang konsisten dan boleh diulangi, dan menyokong panggilan fungsi selari untuk kecekapan multitugas. Model ini mengekalkan output maksimum sebanyak 4,096 token, menyeimbangkan respons menyeluruh dengan prestasi yang lancar.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Naik taraf untuk mengakses gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Dimensi baru kemampuan AI dengan GPT-4-Vision - satu lonjakan terobosan dalam teknologi AI yang mengintegrasikan pemprosesan imej dengan pemahaman bahasa yang canggih dari GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Naik taraf untuk mencipta seni dan imej AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Meningkatkan kreativiti dan produktiviti anda sebanyak 10 kali ganda dengan model seni AI yang paling canggih. Dengan cepat ubah visi anda menjadi imej yang menakjubkan. Mudah, berkuasa, dan transformatif."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Meningkatkan kreativiti dan produktiviti anda sebanyak 10 kali ganda dengan model seni AI yang paling canggih. Dengan cepat ubah visi anda menjadi imej yang menakjubkan. Mudah, berkuasa, dan transformatif.",
+    "home_view_content_nav__chat_with_pdf_title": "Berbual dengan mana-mana PDF",
+    "immersive_chat__delete_chat__button__title": "Padam sembang"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

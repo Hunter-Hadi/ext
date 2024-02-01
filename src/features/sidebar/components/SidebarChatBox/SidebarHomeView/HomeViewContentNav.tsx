@@ -15,8 +15,12 @@ import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
+import HomeViewAIScreenshotButton from './HomeViewAIScreenshotButton'
 import HomeViewAISearchInput from './HomeViewAISearchInput'
+import HomeViewChatWithPdfButton from './HomeViewChatWithPdfButton'
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
+import HomeViewFileUploader from './HomeViewFileUploader'
+import HomeViewPageSummaryButton from './HomeViewPageSummaryButton'
 
 const HomeViewContentNav = () => {
   const { t } = useTranslation()
@@ -35,6 +39,11 @@ const HomeViewContentNav = () => {
   >(() => {
     return [
       {
+        show: !isMaxAIImmersiveChatPage(),
+        title: t('client:home_view_content_nav__immersive_chat__title'),
+        value: 'immersive_chat',
+      },
+      {
         show: true,
         title: t('client:home_view_content_nav__one_click_prompts_title'),
         value: 'one_click_prompts',
@@ -43,21 +52,6 @@ const HomeViewContentNav = () => {
         show: true,
         title: t('client:home_view_content_nav__my_own_prompts__title'),
         value: 'my_own_prompts',
-      },
-      {
-        show: !isMaxAIImmersiveChatPage(),
-        title: t('client:home_view_content_nav__summary__title'),
-        value: 'summary',
-      },
-      {
-        show: true,
-        title: t('client:home_view_content_nav__chat_with_pdf_title'),
-        value: 'chat_with_pdf',
-      },
-      {
-        show: !isMaxAIImmersiveChatPage(),
-        title: t('client:home_view_content_nav__immersive_chat__title'),
-        value: 'immersive_chat',
       },
     ]
   }, [t])
@@ -122,7 +116,7 @@ const HomeViewContentNav = () => {
               <Stack
                 direction={'row'}
                 alignItems="center"
-                spacing={1}
+                spacing={0.5}
                 sx={(t) => {
                   const isDark = t.palette.mode === 'dark'
 
@@ -158,6 +152,22 @@ const HomeViewContentNav = () => {
             </Grid>
           )
         })}
+        <Grid item xs={6}>
+          <Grid container spacing={1.5}>
+            <Grid item xs={12}>
+              <HomeViewPageSummaryButton />
+            </Grid>
+            <Grid item xs={12}>
+              <HomeViewChatWithPdfButton />
+            </Grid>
+            <Grid item xs={12}>
+              <HomeViewAIScreenshotButton />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item xs={6}>
+          <HomeViewFileUploader />
+        </Grid>
       </Grid>
     </Box>
   )

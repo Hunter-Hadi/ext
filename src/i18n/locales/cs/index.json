@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopírovat s formátováním",
     "download": "Stáhnout",
     "download_image": "Stáhnout obrázek",
-    "copy_image": "Kopírovat obrázek"
+    "copy_image": "Kopírovat obrázek",
+    "screenshot": "Snímek obrazovky AI"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -456,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Smazat",
     "immersive_chat__delete_chat__button__cancel__title": "Zrušit",
-    "immersive_chat__delete_all_chat__title": "Vymazat historii konverzace - jste si jisti?",
+    "immersive_chat__delete_all_chat__title": "Vymazat historii chatu - jste si jisti?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdit smazání",
     "immersive_chat__delete_all_chat__button__cancel__title": "Zrušit",
-    "immersive_chat__delete_all_chat__button__title": "Vymazat všechny chaty",
+    "immersive_chat__delete_all_chat__button__title": "Smazat všechny chaty",
     "sidebar__share__share_button__tooltip": "Stáhnout chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Nejnovější model GPT-3.5 Turbo s vylepšeným následováním instrukcí, režimem JSON, reprodukovatelnými výstupy, paralelním voláním funkcí a dalšími funkcemi. Vrací maximálně 4 096 výstupních tokenů.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Nejnovější model GPT-4 Turbo, vylepšený pro rychlost a efektivitu, nabízí pokročilé následování instrukcí přizpůsobené pro rychlou odezvu. Obsahuje optimalizovaný režim JSON pro manipulaci se strukturovanými daty, zajišťuje konzistentní a reprodukovatelné výstupy a podporuje paralelní volání funkcí pro efektivitu multitaskingu. Tento model udržuje maximální výstup 4 096 tokenů, vyvažuje komplexní odpovědi s výkonem ve streamline.",
@@ -520,7 +521,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgradujte pro přístup k gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nový rozměr schopností AI s GPT-4-Vision - průlomový skok v technologii AI, který integruje zpracování obrazu s pokročilým jazykovým porozuměním GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgradujte pro tvorbu AI umění a obrázků",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zvýšte svou kreativitu a produktivitu 10krát s nejvyspělejšími modely AI umění. Rychle přetvořte své vize do ohromujících obrázků. Jednoduché, výkonné, transformační."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zvýšte svou kreativitu a produktivitu 10krát s nejvyspělejšími modely AI umění. Rychle přetvořte své vize do ohromujících obrázků. Jednoduché, výkonné, transformační.",
+    "home_view_content_nav__chat_with_pdf_title": "Chat s libovolným PDF",
+    "immersive_chat__delete_chat__button__title": "Smazat chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

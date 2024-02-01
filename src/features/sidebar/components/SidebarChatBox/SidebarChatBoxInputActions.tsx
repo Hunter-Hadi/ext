@@ -58,6 +58,20 @@ const SidebarChatBoxInputActions: FC<{
     )
   }, [currentSidebarConversationType, smoothConversationLoading])
 
+  const isScreenShotIconButtonShow = useMemo(() => {
+    return (
+      currentSidebarConversationType === 'Chat' && !smoothConversationLoading
+    )
+  }, [currentSidebarConversationType, smoothConversationLoading])
+
+  const isChatHistoryIconButtonShow = useMemo(() => {
+    return (
+      currentSidebarConversationType !== 'Summary' &&
+      !isMaxAIImmersiveChatPage() &&
+      !smoothConversationLoading
+    )
+  }, [currentSidebarConversationType, smoothConversationLoading])
+
   useEffect(() => {
     const handleInputUpdate = (newInputValue: string, metaData: any) => {
       console.log(metaData)
@@ -116,26 +130,30 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
-        {/* chat history btn */}
-        {currentSidebarConversationType !== 'Summary' &&
-        !isMaxAIImmersiveChatPage() ? (
-          <SidebarChatHistoryButton
-            sx={{
-              ...actionsBtnColorSxMemo,
-              visibility: isPromptLibraryIconButtonShow ? 'visible' : 'hidden',
-              position: isPromptLibraryIconButtonShow ? 'relative' : 'absolute',
-              [`&.${buttonClasses.contained}`]: {
-                color: 'white',
-              },
-            }}
-          />
-        ) : null}
+        {/* search copilot btn */}
+        {currentSidebarConversationType === 'Search' &&
+          !smoothConversationLoading && <SearchWithAICopilotToggle />}
 
-        {/* shortcut btn */}
-        {currentSidebarConversationType === 'Chat' &&
-          !smoothConversationLoading && (
-            <SidebarScreenshotButton sx={actionsBtnColorSxMemo} />
-          )}
+        {/* chat history btn */}
+        <SidebarChatHistoryButton
+          sx={{
+            ...actionsBtnColorSxMemo,
+            visibility: isChatHistoryIconButtonShow ? 'visible' : 'hidden',
+            position: isChatHistoryIconButtonShow ? 'relative' : 'absolute',
+            [`&.${buttonClasses.contained}`]: {
+              color: 'white',
+            },
+          }}
+        />
+
+        {/* screenshot btn */}
+        <SidebarScreenshotButton
+          sx={{
+            ...actionsBtnColorSxMemo,
+            visibility: isScreenShotIconButtonShow ? 'visible' : 'hidden',
+            position: isScreenShotIconButtonShow ? 'relative' : 'absolute',
+          }}
+        />
 
         {/* prompt library btn */}
         <PromptLibraryIconButton
@@ -148,10 +166,6 @@ const SidebarChatBoxInputActions: FC<{
             },
           }}
         />
-
-        {/* search copilot btn */}
-        {currentSidebarConversationType === 'Search' &&
-          !smoothConversationLoading && <SearchWithAICopilotToggle />}
 
         {/* art */}
         {currentSidebarConversationType === 'Art' &&

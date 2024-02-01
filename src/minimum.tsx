@@ -17,10 +17,19 @@ const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
 
+const canUseWebComponent = () => {
+  if (window.location.host === 'dribbble.com') {
+    // 在 dribbble.com 中会把自定义元素 隐藏，所以不使用自定义元素
+    return false
+  }
+
+  return 'customElements' in window
+}
+
 function minimumAppRender() {
   import('@/minimum/MinimumApp').then((module) => {
     const { default: MinimumApp } = module
-    const isSupportWebComponent = 'customElements' in window
+    const isSupportWebComponent = canUseWebComponent()
     const minimumAppRoot = document.createElement(
       isSupportWebComponent ? 'max-ai-minimum-app' : 'div',
     )

@@ -40,7 +40,8 @@
     "copy_with_formatting": "Պատճենեք ձեր տեքստը ձևաչափված",
     "download": "Ներբեռնել",
     "download_image": "Ներբեռնել պատկերը",
-    "copy_image": "Պատճենել պատկերը"
+    "copy_image": "Պատճենել պատկերը",
+    "screenshot": "AI-ի սկրինշոթ"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -453,8 +454,8 @@
     "immersive_chat__delete_chat__description2": "։",
     "immersive_chat__delete_chat__button__delete__title": "Ջնջել",
     "immersive_chat__delete_chat__button__cancel__title": "Չեղարկել",
-    "immersive_chat__delete_all_chat__button__title": "Մաքրել բոլոր խոսքերը",
-    "immersive_chat__delete_all_chat__title": "Մաքրե՞լ ձեր խոսերի պատմությունը - հաստատված եք",
+    "immersive_chat__delete_all_chat__button__title": "Ջնջել բոլոր խոսաքույրները",
+    "immersive_chat__delete_all_chat__title": "Մաքրել ձեր խոսաքաղաքի պատմությունը - հաստատում եք?",
     "immersive_chat__delete_all_chat__button__delete__title": "Հաստատել ջնջումը",
     "immersive_chat__delete_all_chat__button__cancel__title": "Չեղարկել",
     "sidebar__share__share_button__tooltip": "Ներբեռնել խոսակցությունը",
@@ -517,7 +518,9 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Թարմացնել gpt-4-vision-ին մասնակցելու համար",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "AI համարների նոր չափանիշ GPT-4-Vision-ը - AI տեխնոլոգիայի առաջնության նոր քայլ, որը միանգամայնում է պատկերագրմանը GPT-4-ի բարձր լեզվական հասանելության հետ",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Թարմացնել AI արվեստի և պատկերների ստեղծումը մասնակցելու համար",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Կատարեք ձեր սփյուռքները 10 անգամ արագությամբ և արտադրականությամբ առաջարկելով ամենանորագծային AI արվեստի մոդելները։ Արագությամբ վերադարձնեք ձեր տեսարժանակները հեռանալով զգալիորեն։"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Կատարեք ձեր սփյուռքները 10 անգամ արագությամբ և արտադրականությամբ առաջարկելով ամենանորագծային AI արվեստի մոդելները։ Արագությամբ վերադարձնեք ձեր տեսարժանակները հեռանալով զգալիորեն։",
+    "home_view_content_nav__chat_with_pdf_title": "Զրուցարանի հետ խոսել PDF-ի մասին",
+    "immersive_chat__delete_chat__button__title": "Ջնջել խոսաքույրը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

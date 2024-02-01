@@ -16,6 +16,7 @@ import {
   MAXAI_SIDEBAR_ID,
   MAXAI_SIDEBAR_WRAPPER_ID,
 } from '@/features/common/constants'
+import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 import {
   getCurrentDomainHost,
   isMaxAIImmersiveChatPage,
@@ -31,7 +32,7 @@ ClassNameGenerator.configure(
   (componentName) => `${AppNameToClassName}--${componentName}`,
 )
 
-const isSupportWebComponent = 'customElements' in window
+const supportWebComponent = isSupportWebComponent()
 
 if (location.host === 'chat.openai.com') {
   const script = document.createElement('script')
@@ -99,7 +100,7 @@ function mainAppRender() {
 
   console.log('init client')
   const contextMenu = document.createElement(
-    isSupportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
+    supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
   )
   contextMenu.id = MAXAI_CONTEXT_MENU_ID
   if (
@@ -110,7 +111,7 @@ function mainAppRender() {
   }
   document.body.appendChild(contextMenu)
   const container = document.createElement(
-    isSupportWebComponent ? 'use-chat-gpt-ai' : 'div',
+    supportWebComponent ? 'use-chat-gpt-ai' : 'div',
   )
   container.id = MAXAI_SIDEBAR_ID
   container.style.display = 'none'

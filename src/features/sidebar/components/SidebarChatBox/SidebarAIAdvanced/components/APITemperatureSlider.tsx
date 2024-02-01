@@ -44,10 +44,23 @@ const APITemperatureSlider: FC<{
     debounceSaveThirdProviderSettings(temperature)
   }, [temperature])
   return (
-    <FormControl fullWidth>
-      <InputLabel id="max-ai__ai-provider-temperature-select-label">{`${t(
-        'client:provider__temperature__label',
-      )}: ${currentThirdProviderSettings.temperature}`}</InputLabel>
+    <FormControl
+      fullWidth
+      sx={{
+        '#max-ai__ai-provider-temperature-select-label': {
+          fontSize: 16,
+        },
+
+        'fieldset > legend': {
+          fontSize: 14,
+        },
+      }}
+    >
+      <InputLabel id="max-ai__ai-provider-temperature-select-label">
+        {`${t('client:provider__temperature__label')}: ${
+          currentThirdProviderSettings.temperature
+        }`}
+      </InputLabel>
 
       <Select
         sx={{

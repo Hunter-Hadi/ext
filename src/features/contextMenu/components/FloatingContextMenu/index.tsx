@@ -650,19 +650,10 @@ const FloatingContextMenu: FC<{
               }}
             >
               <WritingMessageBox />
-              <Stack
-                width={'100%'}
-                direction={'row'}
-                alignItems={'center'}
-                gap={1}
-              >
-                <AIProviderModelSelectorButton
-                  sidebarConversationType={'Chat'}
-                  size={'small'}
-                />
+              <Stack width={'100%'} gap={0.5}>
                 <Stack
                   direction={'row'}
-                  width={0}
+                  width={'100%'}
                   flex={1}
                   alignItems={'center'}
                   spacing={1}
@@ -686,9 +677,6 @@ const FloatingContextMenu: FC<{
                               placement: safePlacement.contextMenuPlacement,
                               floatingMenuTooltip: true,
                             }}
-                            sx={{
-                              alignSelf: 'end',
-                            }}
                             direction={'column'}
                             size={'tiny'}
                           />
@@ -709,7 +697,6 @@ const FloatingContextMenu: FC<{
                             '&:has(> div)': {
                               pr: 1,
                             },
-                            alignSelf: 'end',
                           },
                         },
                         borderRadius: 0,
@@ -723,8 +710,29 @@ const FloatingContextMenu: FC<{
                       }}
                     />
                   )}
+                  {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
+                  <FloatingContextMenuShortcutButtonGroup />
+                </Stack>
+                <Stack
+                  direction={'row'}
+                  justifyContent="space-between"
+                  onClick={() => {
+                    const textareaEl = getAppContextMenuRootElement()?.querySelector(
+                      `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+                    ) as HTMLTextAreaElement
+                    if (textareaEl) {
+                      setTimeout(() => {
+                        textareaEl?.focus()
+                      }, 1)
+                    }
+                  }}
+                >
+                  <AIProviderModelSelectorButton
+                    sidebarConversationType={'Chat'}
+                    size={'small'}
+                  />
                   {!loading && (
-                    <>
+                    <Stack direction={'row'} alignItems="center" gap={1}>
                       <TextOnlyTooltip
                         floatingMenuTooltip
                         title={t('client:floating_menu__button__send_to_ai')}
@@ -770,10 +778,8 @@ const FloatingContextMenu: FC<{
                           floatingMenuTooltip: true,
                         }}
                       />
-                    </>
+                    </Stack>
                   )}
-                  {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
-                  <FloatingContextMenuShortcutButtonGroup />
                 </Stack>
               </Stack>
             </div>

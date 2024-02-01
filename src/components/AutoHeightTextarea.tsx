@@ -21,6 +21,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
+import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
@@ -172,6 +173,10 @@ const AutoHeightTextarea: FC<{
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
+  const {
+    isChatGPTVision,
+    uploadImagesAndSwitchToVision,
+  } = useUploadImagesAndSwitchToVision()
   const {
     defaultValue,
     onChange,
@@ -471,8 +476,25 @@ const AutoHeightTextarea: FC<{
           onCut={(event) => {
             event.stopPropagation()
           }}
-          onPaste={(event) => {
+          onPaste={async (event) => {
             event.stopPropagation()
+            if (isChatGPTVision) {
+              // 粘贴处理
+              const clipboardData = event.clipboardData
+              const items = clipboardData?.items
+              const images = Array.from(items).filter((item) => {
+                return item.type.indexOf('image') !== -1
+              })
+              if (images.length) {
+                event.preventDefault()
+                console.log('粘贴图片', images)
+                const image = images[0]
+                const file = image.getAsFile()
+                if (file) {
+                  await uploadImagesAndSwitchToVision([file])
+                }
+              }
+            }
           }}
           // onKeyDownCapture={(event) => {
           //   console.log('测试键盘 onKeyDownCapture', event)

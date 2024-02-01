@@ -56,7 +56,7 @@ const HomeViewAIScreenshotButton = () => {
         lineHeight={1.5}
         color="inherit"
       >
-        {t('common:screenshot')}
+        {t('common:ai_screenshot')}
       </Typography>
     </Stack>
   )

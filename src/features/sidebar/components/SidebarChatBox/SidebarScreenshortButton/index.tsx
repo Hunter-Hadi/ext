@@ -12,7 +12,6 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   hideChatBox,
   isShowChatBox,
@@ -21,26 +20,40 @@ import {
 import { clientRunBackgroundGetScreenshot } from '@/utils/clientCallChromeExtensionCollection'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-export const takeShortcutScreenshot = () => {
-  getMaxAISidebarRootElement()
-    ?.querySelector('[data-testid="maxai-take-screenshot"]')
-    ?.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-}
-const SidebarScreenshotButton: FC<{
-  sx?: SxProps
-}> = ({ sx }) => {
-  const { t } = useTranslation(['common'])
-  const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
+export const useUploadImagesAndSwitchToVision = () => {
+  const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
+  const { createConversation } = useClientConversation()
   const {
     updateAIProviderModel,
     currentAIProvider,
     currentAIProviderModel,
   } = useAIProviderModels()
+  const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
+    if (
+      currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
+      currentAIProviderModel !== 'gpt-4-vision-preview'
+    ) {
+      await updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-vision-preview')
+      await createConversation('Chat')
+    }
+    await aiProviderUploadFiles(
+      await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
+    )
+  }
+  return {
+    isChatGPTVision:
+      currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
+      currentAIProviderModel === 'gpt-4-vision-preview',
+    uploadImagesAndSwitchToVision,
+  }
+}
 
-  const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
-  const { createConversation } = useClientConversation()
-  const maxFileSize = AIProviderConfig?.maxFileSize
-
+const SidebarScreenshotButton: FC<{
+  sx?: SxProps
+}> = ({ sx }) => {
+  const { t } = useTranslation(['common'])
+  const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
+  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
   return (
     <>
       <TextOnlyTooltip placement={'top'} title={t('common:ai_screenshot')}>
@@ -49,16 +62,6 @@ const SidebarScreenshotButton: FC<{
           onClick={() => {
             if (!isMaxAIImmersiveChatPage() && isShowChatBox()) {
               hideChatBox()
-            }
-            if (
-              currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
-              currentAIProviderModel !== 'gpt-4-vision-preview'
-            ) {
-              updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-vision-preview')
-                .then(() => {
-                  createConversation('Chat')
-                })
-                .catch()
             }
             const div = document.createElement('div')
             div.style.width = '100vw'
@@ -90,9 +93,7 @@ const SidebarScreenshotButton: FC<{
             onChange={async ({ imageFile }) => {
               setRootEl(null)
               showChatBox()
-              aiProviderUploadFiles(
-                await formatClientUploadFiles([imageFile], maxFileSize),
-              )
+              await uploadImagesAndSwitchToVision([imageFile])
             }}
           />
         </DynamicComponent>

@@ -61,7 +61,7 @@ const LANGUAGES_OPTIONS = [
   { language_code: 'sq', value: 'Albanian', label: 'Shqip' },
   { language_code: 'sk', value: 'Slovak', label: 'Slovenčina' },
   { language_code: 'sl', value: 'Slovenian', label: 'Slovenščina' },
-  { language_code: 'fi', value: 'Finnish', label: 'Suomi' },
+  { language_code: 'fi', value: 'Finnish', label: 'Suomi (Finnish)' },
   { language_code: 'sv', value: 'Swedish', label: 'Svenska' },
   { language_code: 'tl', value: 'Tagalog', label: 'Tagalog' },
   { language_code: 'tt', value: 'Tatar', label: 'Tatarça' },

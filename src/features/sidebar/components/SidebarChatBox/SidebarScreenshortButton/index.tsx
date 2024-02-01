@@ -134,10 +134,7 @@ const ScreenshotComponent: FC<{
   const handleDragEnd = async (e: React.MouseEvent<HTMLDivElement>) => {
     setIsDragging(false)
     console.log(e)
-    const base64Data = await clientRunBackgroundGetScreenshot(
-      window.location.href,
-      false,
-    )
+    const base64Data = await clientRunBackgroundGetScreenshot(false)
     if (base64Data) {
       // 用canvas裁切
       const canvas = document.createElement('canvas')

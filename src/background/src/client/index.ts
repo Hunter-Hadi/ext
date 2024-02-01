@@ -47,7 +47,13 @@ export const ClientMessageInit = () => {
       switch (event as IChromeExtensionClientSendEvent) {
         case 'Client_ping': {
           return {
-            data: true,
+            data: {
+              windowId: sender.tab?.windowId,
+              tabId: sender.tab?.id,
+              tagUrl: sender.tab?.url,
+              url: sender.url,
+              frameId: sender.frameId,
+            },
             success: true,
             message: 'ok',
           }

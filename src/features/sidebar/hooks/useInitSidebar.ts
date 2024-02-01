@@ -75,9 +75,12 @@ const useInitSidebar = () => {
         case 'Summary':
           {
             // 切换回cache中的conversation
-            switchConversation(getPageSummaryConversationId()).then(() => {
-              startListen()
-            })
+            createPageSummary()
+              .then()
+              .then()
+              .finally(() => {
+                startListen()
+              })
           }
           break
         case 'Search':

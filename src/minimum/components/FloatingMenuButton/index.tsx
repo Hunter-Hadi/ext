@@ -13,7 +13,6 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
-import MaxAIArtMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIArtMiniButton'
 import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import MaxAIImmersiveChatButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIImmersiveChatButton'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
@@ -24,7 +23,7 @@ import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/button
 import { isArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
-const actionsCount = 4
+const actionsCount = 3
 // 顶部安全高度 = 4个按钮高度 + 16px
 const safeTopY = actionsCount * (32 + 6) + 16
 
@@ -191,15 +190,11 @@ const FloatingMenuButton: FC = () => {
               }}
               aboveNode={
                 <Stack spacing={'6px'}>
-                  <MaxAIScreenshotMiniButton
-                    key={'MaxAIScreenshotButton'}
-                    sx={{
-                      visibility: isHover ? 'visible' : 'hidden',
-                    }}
-                  />
-                  {isHover && <MaxAIArtMiniButton key={'MaxAIArtButton'} />}
                   {isHover && (
                     <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
+                  )}
+                  {isHover && (
+                    <MaxAIScreenshotMiniButton key={'MaxAIScreenshotButton'} />
                   )}
                   {(isHover || isKeepShow) && (
                     <MaxAISummarizeButton key={'MaxAISummarizeButton'} />

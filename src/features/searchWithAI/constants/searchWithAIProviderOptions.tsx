@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import { PermissionWrapperProps } from '@/features/auth/components/PermissionWrapper'
 
 import OpenAICheckerTooltip from '../components/OpenAICheckerTooltip'
@@ -77,7 +77,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     isThirdParty: true,
     preChangeChecker: {
       checker: async () => {
-        const settings = await getThirdProviderSettings('OPENAI_API')
+        const settings = await getAIProviderSettings('OPENAI_API')
         return !!settings?.apiKey
       },
       tooltip: {

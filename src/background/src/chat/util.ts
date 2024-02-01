@@ -268,17 +268,17 @@ export const setWindowIdOfChatGPTTab = async (windowId: number) => {
 }
 
 /**
- * 获取第三方AI Provider的设置
- * @param thirdProviderKey
+ * 获取AI Provider的设置
+ * @param AIProviderKey
  */
-export const getThirdProviderSettings = async <T extends IAIProviderType>(
-  thirdProviderKey: T,
+export const getAIProviderSettings = async <T extends IAIProviderType>(
+  AIProviderKey: T,
 ) => {
   try {
     const settings = await getChromeExtensionLocalStorage()
-    const thirdProviderSetting = settings.thirdProviderSettings
-    if (thirdProviderSetting && thirdProviderSetting[thirdProviderKey]) {
-      return thirdProviderSetting[thirdProviderKey] as IThirdProviderSettings[T]
+    const providerSetting = settings.thirdProviderSettings
+    if (providerSetting && providerSetting[AIProviderKey]) {
+      return providerSetting[AIProviderKey] as IThirdProviderSettings[T]
     }
     return undefined
   } catch (e) {
@@ -287,22 +287,22 @@ export const getThirdProviderSettings = async <T extends IAIProviderType>(
 }
 
 /**
- * 设置第三方AI Provider的设置
- * @param thirdProviderKey
- * @param newThirdProviderSettings
+ * 设置AI Provider的设置
+ * @param AIProviderKey
+ * @param newAIProviderSettings
  */
-export const setThirdProviderSettings = async <T extends IAIProviderType>(
-  thirdProviderKey: T,
-  newThirdProviderSettings: Partial<IThirdProviderSettings[T]>,
+export const setAIProviderSettings = async <T extends IAIProviderType>(
+  AIProviderKey: T,
+  newAIProviderSettings: Partial<IThirdProviderSettings[T]>,
 ) => {
   try {
     await setChromeExtensionLocalStorage((settings) => {
       lodashSet(
         settings,
-        `thirdProviderSettings.${thirdProviderKey}`,
+        `thirdProviderSettings.${AIProviderKey}`,
         mergeWithObject([
-          lodashGet(settings, `thirdProviderSettings.${thirdProviderKey}`),
-          newThirdProviderSettings,
+          lodashGet(settings, `thirdProviderSettings.${AIProviderKey}`),
+          newAIProviderSettings,
         ]),
       )
       return settings

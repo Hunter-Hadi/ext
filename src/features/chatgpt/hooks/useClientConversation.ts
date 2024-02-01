@@ -256,17 +256,6 @@ const useClientConversation = () => {
       loading: false,
     })
   }
-  const switchBackgroundChatSystemAIProvider = async (
-    provider: IAIProviderType,
-  ) => {
-    const result = await port.postMessage({
-      event: 'Client_switchAIProvider',
-      data: {
-        provider,
-      },
-    })
-    return result.success
-  }
   const switchConversation = async (conversationId: string) => {
     if (conversationId && currentConversationIdRef.current !== conversationId) {
       const port = new ContentScriptConnectionV2()
@@ -395,7 +384,6 @@ const useClientConversation = () => {
     createConversation,
     switchConversation,
     updateConversation,
-    switchBackgroundChatSystemAIProvider,
     currentSidebarConversationId,
     currentConversationIdRef,
     currentSidebarConversationType,

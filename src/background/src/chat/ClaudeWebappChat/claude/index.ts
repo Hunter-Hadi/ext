@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 
 import {
@@ -74,7 +74,7 @@ export class Claude {
     if (regenerate) {
       text = ''
     }
-    const claudeSettings = await getThirdProviderSettings('CLAUDE')
+    const claudeSettings = await getAIProviderSettings('CLAUDE')
     await fetchSSE(apiHost, {
       signal,
       method: 'POST',

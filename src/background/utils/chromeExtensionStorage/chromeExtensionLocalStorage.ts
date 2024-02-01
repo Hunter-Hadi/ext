@@ -24,6 +24,14 @@ import {
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
+/**
+ * 默认的AIProvider配置
+ */
+export const MAXAI_DEFAULT_AI_PROVIDER_CONFIG = {
+  AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+  AIModel: 'gpt-3.5-turbo',
+}
+
 export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {
   return {
     sidebarSettings: {
@@ -46,7 +54,7 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
         isEnabledConversationalMode: true,
       },
       common: {
-        currentAIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+        currentAIProvider: MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider,
         chatBoxWidth: CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH,
       },
       cache: {

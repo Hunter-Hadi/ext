@@ -3,7 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAiApiChat/types'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
   createChromeExtensionOptionsPage,
@@ -210,7 +210,7 @@ class OpenAiApiChat extends BaseChat {
     // this.messagesContext = {}
   }
   async checkApiKey() {
-    const settings = await getThirdProviderSettings('OPENAI_API')
+    const settings = await getAIProviderSettings('OPENAI_API')
     if (!settings?.apiKey || !settings.apiHost) {
       this.status = 'needAuth'
       await this.updateClientStatus()
@@ -222,7 +222,7 @@ class OpenAiApiChat extends BaseChat {
     }
   }
   async getChatGPTAPISettings() {
-    const settings = await getThirdProviderSettings('OPENAI_API')
+    const settings = await getAIProviderSettings('OPENAI_API')
     return settings?.apiKey && settings.apiHost ? settings : false
   }
   async abortTask(taskId: string) {

@@ -3,8 +3,8 @@ import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import {
-  getThirdProviderSettings,
-  setThirdProviderSettings,
+  getAIProviderSettings,
+  setAIProviderSettings,
 } from '@/background/src/chat/util'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
@@ -30,7 +30,7 @@ const useThirdProviderSettings = () => {
     providerKey: T,
   ) => {
     try {
-      return await getThirdProviderSettings(providerKey)
+      return await getAIProviderSettings(providerKey)
     } catch (e) {
       console.log(e)
       return undefined
@@ -40,7 +40,7 @@ const useThirdProviderSettings = () => {
     providerKey: T,
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {
-    const success = await setThirdProviderSettings(providerKey, settings)
+    const success = await setAIProviderSettings(providerKey, settings)
     console.log(
       '新版Conversation 更新saveThirdProviderSettings',
       providerKey,
@@ -71,7 +71,7 @@ export const useSingleThirdProviderSettings = <T extends IAIProviderType>(
   const updateThirdProviderSettings = async (
     settings: Partial<IThirdProviderSettings[T]>,
   ) => {
-    const success = await setThirdProviderSettings(providerKey, settings)
+    const success = await setAIProviderSettings(providerKey, settings)
     if (success) {
       setAppLocalStorage(await getChromeExtensionLocalStorage())
     }

@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import { ClientProxyWebSocket } from '@/background/utils/clientProxyWebsocket/background'
 
 import { createConversation } from './api'
@@ -116,7 +116,7 @@ export class BingWebBot {
     if (!this.conversationContext) {
       try {
         const conversation = await createConversation()
-        const bingSettings = await getThirdProviderSettings('BING')
+        const bingSettings = await getAIProviderSettings('BING')
         this.conversationContext = {
           conversationId: conversation.conversationId,
           conversationSignature: conversation.conversationSignature,

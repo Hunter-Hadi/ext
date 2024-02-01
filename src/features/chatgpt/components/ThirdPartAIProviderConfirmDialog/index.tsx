@@ -11,8 +11,12 @@ import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
+import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
 import ThirdPartyAIProviderModelSelectorCard from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderModelSelectorCard'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 
 import ThirdPartyAIProviderRecommendations from './ThirdPartyAIProviderRecommendations'
@@ -28,10 +32,20 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
   const [dialogState, setDialogState] = useRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )
-
+  const { isSelectedThirdAIProvider } = useThirdAIProviderModels()
+  const { updateAIProviderModel } = useAIProviderModels()
+  const { createConversation } = useClientConversation()
   const { open } = dialogState
 
-  const handleClose = () => {
+  const handleClose = async () => {
+    // 如果点击了关闭按钮， 并且当前选中的已经是第三方AI provider， 则切换回默认的AI provider和AI model
+    if (isSelectedThirdAIProvider) {
+      await updateAIProviderModel(
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider,
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel,
+      )
+      await createConversation()
+    }
     setDialogState({
       open: false,
     })

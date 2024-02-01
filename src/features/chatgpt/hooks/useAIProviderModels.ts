@@ -16,6 +16,7 @@ import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
@@ -176,12 +177,27 @@ const useAIProviderModels = () => {
             },
           },
         })
+        await switchBackgroundChatSystemAIProvider(AIProvider)
       } catch (e) {
         console.log(e)
       }
     },
     [currentProvider, aiProviderModels],
   )
+  const switchBackgroundChatSystemAIProvider = async (
+    provider: IAIProviderType,
+  ) => {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    const result = await port.postMessage({
+      event: 'Client_switchAIProvider',
+      data: {
+        provider,
+      },
+    })
+    return result.success
+  }
   return {
     currentAIProviderModel: currentAIProviderModel,
     currentAIProvider:

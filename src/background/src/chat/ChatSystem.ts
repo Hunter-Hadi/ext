@@ -9,9 +9,9 @@ import {
 } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import {
-  getThirdProviderSettings,
+  getAIProviderSettings,
   processAskAIParameters,
-  setThirdProviderSettings,
+  setAIProviderSettings,
 } from '@/background/src/chat/util'
 import ConversationManager, {
   IChatConversation,
@@ -471,10 +471,8 @@ class ChatSystem implements ChatSystemInterface {
     if (currentConversationAIProvider) {
       console.log('新版Conversation 切换会话: ', conversation?.id, conversation)
       // 更新本地储存AI Provider Settings
-      const cache = await getThirdProviderSettings(
-        currentConversationAIProvider,
-      )
-      await setThirdProviderSettings(currentConversationAIProvider, {
+      const cache = await getAIProviderSettings(currentConversationAIProvider)
+      await setAIProviderSettings(currentConversationAIProvider, {
         ...cache,
         model: conversation.meta.AIModel || cache?.model,
       })

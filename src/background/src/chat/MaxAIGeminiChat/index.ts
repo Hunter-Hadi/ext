@@ -7,7 +7,7 @@ import {
   IMaxAIChatMessage,
   IMaxAIChatMessageContent,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
@@ -115,7 +115,7 @@ class MaxAIGeminiChat extends BaseChat {
       chat_history = [],
       meta,
     } = options || {}
-    const userConfig = await getThirdProviderSettings('MAXAI_GEMINI')
+    const userConfig = await getAIProviderSettings('MAXAI_GEMINI')
     const postBody = Object.assign(
       {
         chat_history,

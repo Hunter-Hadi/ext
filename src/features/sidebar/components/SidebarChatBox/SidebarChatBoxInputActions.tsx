@@ -31,7 +31,7 @@ const SidebarChatBoxInputActions: FC<{
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [inputValue, setInputValue] = useState('')
-  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const ref = React.useRef<HTMLElement>(null)
   const nextMessageIsActionRef = useRef(false)
   const metaDataRef = useRef<any>({})

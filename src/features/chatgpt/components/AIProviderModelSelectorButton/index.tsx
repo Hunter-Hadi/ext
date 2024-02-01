@@ -19,6 +19,7 @@ import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/store'
@@ -32,6 +33,7 @@ const AIProviderModelSelectorButton: FC<{
 }> = (props) => {
   const { t } = useTranslation(['client'])
   const { sx, size = 'normal', placement, sidebarConversationType } = props
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const [isHoverButton, setIsHoverButton] = useState(false)
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   // 当前sidebarConversationType的AI provider
@@ -97,6 +99,7 @@ const AIProviderModelSelectorButton: FC<{
   return (
     <Box>
       <Button
+        disabled={smoothConversationLoading}
         disableRipple
         id={'max-ai__ai-provider-floating-button'}
         ref={anchorRef}

@@ -9,10 +9,10 @@ import ChatIconFileList, {
   ChatIconFileListProps,
 } from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -31,7 +31,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderUploadingTooltip,
   } = useAIProviderUpload()
   const clientState = useRecoilValue(ChatGPTClientState)
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
   const maxFileSize = AIProviderConfig?.maxFileSize
@@ -66,7 +66,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   if (
     !AIProviderConfig ||
     clientState.status !== 'success' ||
-    clientWritingMessage.loading
+    smoothConversationLoading
   ) {
     return <></>
   }

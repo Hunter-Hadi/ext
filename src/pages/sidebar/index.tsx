@@ -25,7 +25,7 @@ const SidebarPage = () => {
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
   const { clientWritingMessage, cleanConversation } = useClientConversation()
-  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
   useEffect(() => {

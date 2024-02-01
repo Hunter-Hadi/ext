@@ -713,7 +713,20 @@ const FloatingContextMenu: FC<{
                   {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
                   <FloatingContextMenuShortcutButtonGroup />
                 </Stack>
-                <Stack direction={'row'} justifyContent="space-between">
+                <Stack
+                  direction={'row'}
+                  justifyContent="space-between"
+                  onClick={() => {
+                    const textareaEl = getAppContextMenuRootElement()?.querySelector(
+                      `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+                    ) as HTMLTextAreaElement
+                    if (textareaEl) {
+                      setTimeout(() => {
+                        textareaEl?.focus()
+                      }, 1)
+                    }
+                  }}
+                >
                   <AIProviderModelSelectorButton
                     sidebarConversationType={'Chat'}
                     size={'small'}

@@ -11,6 +11,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
 
 /**
@@ -71,6 +72,7 @@ const useThirdAIProviderModels = () => {
     )
   }
   const showThirdPartyAIProviderConfirmDialog = () => {
+    showChatBox()
     setDialogState({
       open: true,
     })

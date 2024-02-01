@@ -30,8 +30,7 @@ export const updateRemoteAIProviderConfigAsync = async (): Promise<IRemoteAIProv
     const now = Date.now()
     const diff = now - lastFetchTime[REMOTE_AI_PROVIDER_CONFIG_TIME_KEY]
     // 2小时内不更新
-    // if (diff < 2 * 60 * 60 * 1000) {
-    if (diff < 2 * 1000) {
+    if (diff < 2 * 60 * 60 * 1000) {
       return await getRemoteAIProviderConfigCache()
     }
   }

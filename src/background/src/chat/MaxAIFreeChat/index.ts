@@ -27,7 +27,7 @@ import Log from '@/utils/Log'
 const log = new Log('Background/Chat/MaxAIFreeChat')
 
 class MaxAIFreeChat extends BaseChat {
-  status: ChatStatus = 'needAuth'
+  status: ChatStatus = 'success'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
@@ -39,7 +39,9 @@ class MaxAIFreeChat extends BaseChat {
   }
   async preAuth() {
     this.active = true
-    await this.checkTokenAndUpdateStatus()
+    this.status = 'success'
+    await this.updateClientStatus()
+    // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
     this.active = true

@@ -1,7 +1,7 @@
 import LoadingButton from '@mui/lab/LoadingButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 
@@ -11,6 +11,7 @@ import {
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 
 import AIProviderIcon from '../icons/AIProviderIcon'
@@ -24,7 +25,22 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
   )
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
-
+  const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
+  const currentSidebarConversationTypeModels = useMemo(() => {
+    return ChatAIProviderModelSelectorOptions.filter((model) => {
+      // 过滤掉被隐藏的AI模型
+      return !remoteAIProviderConfig.hiddenAIProviders.includes(
+        model.AIProvider,
+      )
+    }).map((model) => {
+      if (model.disabled !== true) {
+        model.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
+          model.AIProvider,
+        )
+      }
+      return model
+    })
+  }, [remoteAIProviderConfig.hiddenAIProviders])
   const handleSelectRecommendationModel = async (
     AIProviderModelSelectorOption: AIProviderModelSelectorOption,
   ) => {
@@ -79,9 +95,10 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
         flexWrap={'wrap'}
         gap={1}
       >
-        {ChatAIProviderModelSelectorOptions.map(
+        {currentSidebarConversationTypeModels.map(
           (AIProviderModelSelectorOption) => (
             <LoadingButton
+              disabled={AIProviderModelSelectorOption.disabled}
               loading={loading}
               variant="outlined"
               key={AIProviderModelSelectorOption.value}

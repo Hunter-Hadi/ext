@@ -183,7 +183,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         aria-labelledby="maxai-ai-model-selector-menu"
         onKeyDown={(event) => {}}
         sx={{
-          width: 188,
+          width: 198,
           flexShrink: 0,
           borderRight: '1px solid',
           borderColor: '#ebebeb',

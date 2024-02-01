@@ -17,7 +17,7 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
  * AI设置
  * @constructor
  */
-const SearchWithAIAdvanced: FC<{
+const SidebarAIAdvanced: FC<{
   sx?: SxProps
 }> = (props) => {
   const { sx } = props
@@ -183,4 +183,4 @@ const SearchWithAIAdvanced: FC<{
     </Box>
   )
 }
-export default SearchWithAIAdvanced
+export default SidebarAIAdvanced

@@ -130,6 +130,10 @@ const SidebarChatBoxInputActions: FC<{
         justifyContent={'end'}
         gap={1}
       >
+        {/* search copilot btn */}
+        {currentSidebarConversationType === 'Search' &&
+          !smoothConversationLoading && <SearchWithAICopilotToggle />}
+
         {/* chat history btn */}
         <SidebarChatHistoryButton
           sx={{
@@ -162,10 +166,6 @@ const SidebarChatBoxInputActions: FC<{
             },
           }}
         />
-
-        {/* search copilot btn */}
-        {currentSidebarConversationType === 'Search' &&
-          !smoothConversationLoading && <SearchWithAICopilotToggle />}
 
         {/* art */}
         {currentSidebarConversationType === 'Art' &&

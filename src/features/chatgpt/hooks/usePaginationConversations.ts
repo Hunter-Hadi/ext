@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { PaginationConversation } from '@/background/src/chatConversations'
@@ -6,12 +7,14 @@ import { clientGetAllPaginationConversations } from '@/features/chatgpt/hooks/us
 import { PaginationConversationsState } from '@/features/chatgpt/store'
 
 const usePaginationConversations = () => {
+  const [loading, setLoading] = useState(false)
   const [paginationConversations, setPaginationConversations] = useRecoilState(
     PaginationConversationsState,
   )
 
   const fetchPaginationConversations = async () => {
     return new Promise<PaginationConversation[]>((resolve) => {
+      setLoading(true)
       clientGetAllPaginationConversations()
         .then((conversations) => {
           const beautyConversations = conversations
@@ -48,10 +51,14 @@ const usePaginationConversations = () => {
           console.log(e)
           resolve([])
         })
+        .finally(() => {
+          setLoading(false)
+        })
     })
   }
 
   return {
+    loading,
     paginationConversations,
     setPaginationConversations,
     fetchPaginationConversations,

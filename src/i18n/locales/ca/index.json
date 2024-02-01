@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Esborrar",
     "immersive_chat__delete_chat__button__cancel__title": "Cancel·lar",
-    "immersive_chat__delete_all_chat__title": "Esborrar tot l'historial de conversa - esteu segur?",
+    "immersive_chat__delete_all_chat__title": "Esborrar l'historial del teu xat - n'estàs segur?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmar esborrat",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel·lar",
-    "immersive_chat__delete_all_chat__button__title": "Esborra tots els xats",
+    "immersive_chat__delete_all_chat__button__title": "Eliminar tots els xats",
     "sidebar__share__share_button__tooltip": "Descarrega el xat",
     "provider__openai_api__model__gpt_3_5_1106__description": "El model GPT-3.5 Turbo més recent amb millora en el seguiment d'instruccions, mode JSON, sortides reproductibles, crida de funcions paral·leles i més. Retorna un màxim de 4.096 tokens de sortida.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "El model GPT-4 Turbo més recent, millorat per a la velocitat i l'eficiència, ofereix un seguiment d'instruccions avançat adaptat per a una resposta ràpida. Inclou un mode JSON optimitzat per al maneig de dades estructurades, garanteix sortides coherents i reproductibles i admet crides de funcions paral·leles per a una eficiència multitasca. Aquest model manté una sortida màxima de 4.096 tokens, equilibrant respostes completes amb un rendiment simplificat.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Una nova dimensió de capacitats d'IA amb GPT-4-Vision: un salt innovador en la tecnologia d'IA que integra el processament d'imatges amb la comprensió avançada del llenguatge de GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Actualitza per crear art i imatges d'IA",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Multiplica per 10 la teva creativitat i productivitat amb els models d'art d'IA més avançats. Converteix ràpidament les teves visions en imatges impressionants. Simple, potent, transformador.",
-    "home_view_content_nav__chat_with_pdf_title": "Xateja amb qualsevol PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Xateja amb qualsevol PDF",
+    "immersive_chat__delete_chat__button__title": "Eliminar xat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

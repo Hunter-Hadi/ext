@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "।",
     "immersive_chat__delete_chat__button__delete__title": "हटाएं",
     "immersive_chat__delete_chat__button__cancel__title": "रद्द करें",
-    "immersive_chat__delete_all_chat__title": "क्या आप वाकई अपने बातचीत इतिहास को साफ करना चाहते हैं?",
+    "immersive_chat__delete_all_chat__title": "अपना चैट इतिहास साफ करें - क्या आपको यकीन है?",
     "immersive_chat__delete_all_chat__button__delete__title": "हटाने की पुष्टि करें",
     "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करें",
-    "immersive_chat__delete_all_chat__button__title": "सभी चैट साफ़ करें",
+    "immersive_chat__delete_all_chat__button__title": "सभी चैट हटाएं",
     "sidebar__share__share_button__tooltip": "चैट डाउनलोड करें",
     "provider__openai_api__model__gpt_3_5_1106__description": "नवीनतम GPT-3.5 टर्बो मॉडल जिसमें सुधारित निर्देशिका का पालन, JSON मोड, पुनरावृत्ति योग्य आउटपुट, समानांतर कार्य को बुलाने और अधिक है। अधिकतम 4,096 आउटपुट टोकन वापस करता है।",
     "provider__openai_api__model__gpt_4_1106_preview__description": "नवीनतम GPT-4 Turbo मॉडल, जो स्पीड और प्रभावशीलता के लिए अनुकूलित है, त्वरित प्रतिक्रिया के लिए तैयार की गई उन्नत निर्देशिका के साथ आता है। इसमें संरचित डेटा की व्यवस्था के लिए अनुकूलित JSON मोड शामिल है, सतत और पुनर्प्रयोज्य परिणाम सुनिश्चित करता है, और बहुकार्य कुशलता के लिए पैरालेल फंक्शन कॉलिंग का समर्थन करता है। यह मॉडल 4,096 टोकन की अधिकतम आउटपुट रखता है, जो संपूर्ण प्रतिक्रियाओं को संतुलित करता है और संचालनशील प्रदर्शन के साथ।",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision के साथ AI क्षमताओं का एक नया आयाम - AI प्रौद्योगिकी में एक उभरती हुई कदम जो GPT-4 की उन्नत भाषा समझ को छवि प्रसंस्करण के साथ एकीकृत करता है।",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI कला और छवियों को बनाने के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सबसे उन्नत AI कला मॉडल के साथ अपनी रचनात्मकता और उत्पादकता को 10 गुना बढ़ाएं। अपने दृश्यों को तेजी से शानदार छवियों में बदलें। सरल, शक्तिशाली, परिवर्तनकारी।",
-    "home_view_content_nav__chat_with_pdf_title": "किसी भी पीडीएफ के साथ चैट करें"
+    "home_view_content_nav__chat_with_pdf_title": "किसी भी पीडीएफ के साथ चैट करें",
+    "immersive_chat__delete_chat__button__title": "चैट हटाएं"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

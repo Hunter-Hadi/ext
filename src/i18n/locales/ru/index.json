@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Удалить",
     "immersive_chat__delete_chat__button__cancel__title": "Отмена",
-    "immersive_chat__delete_all_chat__title": "Очистить историю переписки - вы уверены?",
+    "immersive_chat__delete_all_chat__title": "Очистить историю чата - вы уверены?",
     "immersive_chat__delete_all_chat__button__delete__title": "Подтвердить удаление",
     "immersive_chat__delete_all_chat__button__cancel__title": "Отмена",
-    "immersive_chat__delete_all_chat__button__title": "Очистить все чаты",
+    "immersive_chat__delete_all_chat__button__title": "Удалить все чаты",
     "sidebar__share__share_button__tooltip": "Скачать чат",
     "provider__openai_api__model__gpt_3_5_1106__description": "Последняя модель GPT-3.5 Turbo с улучшенной инструкцией, режимом JSON, воспроизводимыми результатами, параллельным вызовом функций и другими возможностями. Возвращает максимум 4 096 токенов вывода.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Последняя модель GPT-4 Turbo, улучшенная для скорости и эффективности, обладает продвинутым следованием инструкциям, настроенным для быстрого ответа. Она включает оптимизированный режим JSON для обработки структурированных данных, гарантирует последовательные и воспроизводимые результаты и поддерживает параллельное вызов функций для повышения эффективности многозадачности. Эта модель поддерживает максимальный вывод из 4 096 токенов, обеспечивая баланс между полными ответами и оптимальной производительностью.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Новое измерение возможностей искусственного интеллекта с GPT-4-Vision - прорывным скачком в технологии искусственного интеллекта, объединяющим обработку изображений с продвинутым пониманием языка GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Обновитесь, чтобы создавать искусство и изображения с помощью ИИ",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Увеличьте свою креативность и продуктивность в 10 раз с помощью самых передовых моделей искусственного интеллекта для создания произведений искусства. Быстро превращайте свои видения в потрясающие изображения. Просто, мощно, трансформационно.",
-    "home_view_content_nav__chat_with_pdf_title": "Чат с любым PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Чат с любым PDF",
+    "immersive_chat__delete_chat__button__title": "Удалить чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

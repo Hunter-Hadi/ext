@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Sil",
     "immersive_chat__delete_chat__button__cancel__title": "İptal",
-    "immersive_chat__delete_all_chat__title": "Tüm sohbet geçmişinizi temizlemek istediğinizden emin misiniz?",
+    "immersive_chat__delete_all_chat__title": "Sohbet geçmişinizi temizleyin - emin misiniz?",
     "immersive_chat__delete_all_chat__button__delete__title": "Silme işlemini onayla",
     "immersive_chat__delete_all_chat__button__cancel__title": "İptal",
-    "immersive_chat__delete_all_chat__button__title": "Tüm sohbetleri temizle",
+    "immersive_chat__delete_all_chat__button__title": "Tüm sohbetleri sil",
     "sidebar__share__share_button__tooltip": "Sohbeti indir",
     "provider__openai_api__model__gpt_3_5_1106__description": "Geliştirilmiş talimat takibi, JSON modu, tekrarlanabilir çıktılar, paralel işlev çağrısı ve daha fazlasıyla en son GPT-3.5 Turbo modeli. En fazla 4,096 çıktı belirteci döndürür.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "En son GPT-4 Turbo modeli, hız ve verimlilik için geliştirilmiş olup hızlı yanıt için özelleştirilmiş ilerleme takibi özelliklerine sahiptir. Yapılandırılmış veri işleme için optimize edilmiş bir JSON modunu içerir, tutarlı ve tekrarlanabilir çıktıları garanti eder ve çoklu görev verimliliği için paralel işlev çağrılarını destekler. Bu model, kapsamlı yanıtları akıcı performansla dengeleyerek maksimum 4.096 token çıktısı sunar.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4'ün gelişmiş dil anlama yeteneğiyle görüntü işleme entegre eden AI teknolojisinde çığır açan bir adım olan GPT-4-Vision ile AI yeteneklerinin yeni bir boyutuna erişin.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI sanatı ve resimleri oluşturmak için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "En gelişmiş AI sanat modelleriyle yaratıcılığınızı ve üretkenliğinizi 10 kat artırın. Vizyonlarınızı hızla etkileyici resimlere dönüştürün. Basit, güçlü, dönüştürücü.",
-    "home_view_content_nav__chat_with_pdf_title": "Herhangi bir PDF ile sohbet edin"
+    "home_view_content_nav__chat_with_pdf_title": "Herhangi bir PDF ile sohbet edin",
+    "immersive_chat__delete_chat__button__title": "Sohbeti Sil"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

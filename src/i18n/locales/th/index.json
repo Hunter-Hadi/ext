@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "。",
     "immersive_chat__delete_chat__button__delete__title": "ลบ",
     "immersive_chat__delete_chat__button__cancel__title": "ยกเลิก",
-    "immersive_chat__delete_all_chat__title": "ล้างประวัติการสนทนาของคุณ - แน่ใจหรือไม่?",
+    "immersive_chat__delete_all_chat__title": "ล้างประวัติแชทของคุณ - แน่ใจหรือไม่?",
     "immersive_chat__delete_all_chat__button__delete__title": "ยืนยันการลบ",
     "immersive_chat__delete_all_chat__button__cancel__title": "ยกเลิก",
-    "immersive_chat__delete_all_chat__button__title": "ล้างการสนทนาทั้งหมด",
+    "immersive_chat__delete_all_chat__button__title": "ลบแชททั้งหมด",
     "sidebar__share__share_button__tooltip": "ดาวน์โหลดแชท",
     "provider__openai_api__model__gpt_3_5_1106__description": "โมเดล GPT-3.5 Turbo ล่าสุดที่มีการปรับปรุงในการติดตามคำแนะนำ, โหมด JSON, ผลลัพธ์ที่สามารถทำซ้ำได้, การเรียกใช้ฟังก์ชันแบบพร้อมกัน, และอื่น ๆ ส่งคืนจำนวนสูงสุด 4,096 โทเค็นผลลัพธ์",
     "provider__openai_api__model__gpt_4_1106_preview__description": "โมเดล GPT-4 Turbo ล่าสุด พัฒนาขึ้นเพื่อความเร็วและประสิทธิภาพ มีความสามารถในการทำตามคำสั่งขั้นสูงที่เหมาะสำหรับการตอบสนองที่รวดเร็ว รองรับโหมด JSON ที่ถูกปรับแต่งให้สามารถจัดการข้อมูลที่มีโครงสร้างได้อย่างมีประสิทธิภาพ รับประกันผลลัพธ์ที่สม่ำเสมอและสนับสนุนการเรียกใช้ฟังก์ชันขนาดใหญ่พร้อมกันเพื่อความประสิทธิภาพในการทำงานหลายอย่าง โมเดลนี้รองรับการสร้างผลลัพธ์สูงสุด 4,096 โทเค็น เพื่อให้ได้คำตอบที่ครอบคลุมและประสิทธิภาพที่ดี",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "มิติใหม่ของความสามารถ AI ด้วย GPT-4-Vision - กระโดดข้ามที่น่าตื่นเต้นในเทคโนโลยี AI ที่รวมการประมวลผลภาพกับความเข้าใจภาษาขั้นสูงของ GPT-4",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "อัปเกรดเพื่อสร้างศิลปะและรูปภาพ AI",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "เพิ่มความคิดสร้างสรรค์และผลิตภัณฑ์ได้อย่างรวดเร็วด้วยโมเดลศิลปะและภาพ AI ที่ล้ำสมัยที่สุด แปลงความคิดของคุณให้เป็นภาพที่น่าตื่นตาตื่นใจ ง่าย มีประสิทธิภาพ",
-    "home_view_content_nav__chat_with_pdf_title": "สนทนากับ PDF ใดก็ได้"
+    "home_view_content_nav__chat_with_pdf_title": "สนทนากับ PDF ใดก็ได้",
+    "immersive_chat__delete_chat__button__title": "ลบแชท"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

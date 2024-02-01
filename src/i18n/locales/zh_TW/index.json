@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "。",
     "immersive_chat__delete_chat__button__delete__title": "刪除",
     "immersive_chat__delete_chat__button__cancel__title": "取消",
-    "immersive_chat__delete_all_chat__title": "清除您的對話記錄 - 您確定嗎？",
+    "immersive_chat__delete_all_chat__title": "清除聊天記錄 - 確定嗎？",
     "immersive_chat__delete_all_chat__button__delete__title": "確認刪除",
     "immersive_chat__delete_all_chat__button__cancel__title": "取消",
-    "immersive_chat__delete_all_chat__button__title": "清除所有聊天",
+    "immersive_chat__delete_all_chat__button__title": "刪除所有聊天",
     "sidebar__share__share_button__tooltip": "下載聊天",
     "provider__openai_api__model__gpt_3_5_1106__description": "具有改進的指示追蹤、JSON 模式、可重現的輸出、並行函數調用等功能的最新 GPT-3.5 Turbo 模型。返回最多 4,096 個輸出標記。",
     "provider__openai_api__model__gpt_4_1106_preview__description": "最新的GPT-4 Turbo模型，經過優化以提高速度和效率，具有針對快速響應量身定制的高級指令遵循功能。它包括了優化的JSON模式以處理結構化數據，確保一致且可重現的輸出，並支持並行函數調用以實現多任務效率。該模型最大輸出為4,096個標記，平衡全面回答和流線型性能。",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "通過GPT-4-Vision獲得全新的AI能力 - 這是AI技術的重大飛躍，將圖像處理與GPT-4的高級語言理解相結合。",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "升級以創建AI藝術和圖像",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "使用最先進的AI藝術模型將您的創造力和生產力提升10倍。快速將您的想像轉化為令人驚嘆的圖像。簡單、強大、具有變革性。",
-    "home_view_content_nav__chat_with_pdf_title": "與任何 PDF 聊天"
+    "home_view_content_nav__chat_with_pdf_title": "與任何 PDF 聊天",
+    "immersive_chat__delete_chat__button__title": "刪除聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

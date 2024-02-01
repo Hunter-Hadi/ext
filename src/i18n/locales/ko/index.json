@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "삭제",
     "immersive_chat__delete_chat__button__cancel__title": "취소",
-    "immersive_chat__delete_all_chat__title": "대화 기록 지우기 - 확실합니까?",
+    "immersive_chat__delete_all_chat__title": "채팅 기록 지우기 - 확실합니까?",
     "immersive_chat__delete_all_chat__button__delete__title": "삭제 확인",
     "immersive_chat__delete_all_chat__button__cancel__title": "취소",
-    "immersive_chat__delete_all_chat__button__title": "모든 채팅 지우기",
+    "immersive_chat__delete_all_chat__button__title": "모든 채팅 삭제",
     "sidebar__share__share_button__tooltip": "채팅 다운로드",
     "provider__openai_api__model__gpt_3_5_1106__description": "최신 GPT-3.5 Turbo 모델로 개선된 지시문 따르기, JSON 모드, 재현 가능한 출력, 병렬 함수 호출 등을 제공합니다. 최대 4,096개의 출력 토큰을 반환합니다.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "최신 GPT-4 Turbo 모델은 속도와 효율성을 향상시킨 것으로, 신속한 응답을 위해 맞춤형된 고급 지시문 따르기 기능을 갖추고 있습니다. 구조화된 데이터 처리를 위한 최적화된 JSON 모드를 포함하며, 일관되고 재현 가능한 출력을 보장하며, 병렬 함수 호출을 지원하여 다중 작업 효율성을 유지합니다. 이 모델은 최대 4,096개의 토큰을 출력하며, 포괄적인 응답과 순조로운 성능을 균형있게 유지합니다.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4의 고급 언어 이해력과 이미지 처리를 통합한 AI 기술의 혁신적인 도약인 GPT-4-Vision으로 AI 능력의 새로운 차원을 경험해보세요.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI 예술과 이미지 생성을 위해 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "가장 고급스러운 AI 예술 모델로 창의성과 생산성을 10배로 높여보세요. 비전을 아름다운 이미지로 신속하게 변환하세요. 간단하고 강력하며 혁신적입니다.",
-    "home_view_content_nav__chat_with_pdf_title": "PDF와 채팅하기"
+    "home_view_content_nav__chat_with_pdf_title": "PDF와 채팅하기",
+    "immersive_chat__delete_chat__button__title": "채팅 삭제"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

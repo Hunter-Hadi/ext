@@ -457,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Löschen",
     "immersive_chat__delete_chat__button__cancel__title": "Abbrechen",
-    "immersive_chat__delete_all_chat__title": "Gesprächsverlauf löschen - Sind Sie sicher?",
+    "immersive_chat__delete_all_chat__title": "Löschen Sie Ihren Chat-Verlauf - Sind Sie sicher?",
     "immersive_chat__delete_all_chat__button__delete__title": "Löschung bestätigen",
     "immersive_chat__delete_all_chat__button__cancel__title": "Abbrechen",
     "immersive_chat__delete_all_chat__button__title": "Alle Chats löschen",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Eine neue Dimension der KI-Fähigkeiten mit GPT-4-Vision - ein bahnbrechender Fortschritt in der KI-Technologie, der Bildverarbeitung mit dem fortschrittlichen Sprachverständnis von GPT-4 integriert.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade, um KI-Kunst und Bilder zu erstellen",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Steigern Sie Ihre Kreativität und Produktivität um das 10-fache mit den fortschrittlichsten KI-Kunstmodellen. Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, transformierend.",
-    "home_view_content_nav__chat_with_pdf_title": "Mit jedem PDF chatten"
+    "home_view_content_nav__chat_with_pdf_title": "Mit jedem PDF chatten",
+    "immersive_chat__delete_chat__button__title": "Chat löschen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

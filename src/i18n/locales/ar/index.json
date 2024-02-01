@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": " .",
     "immersive_chat__delete_chat__button__delete__title": "حذف",
     "immersive_chat__delete_chat__button__cancel__title": "إلغاء",
-    "immersive_chat__delete_all_chat__title": "هل أنت متأكد من رغبتك في مسح سجل المحادثات الخاص بك؟",
+    "immersive_chat__delete_all_chat__title": "مسح سجل المحادثات الخاص بك - هل أنت متأكد؟",
     "immersive_chat__delete_all_chat__button__delete__title": "تأكيد الحذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "إلغاء",
-    "immersive_chat__delete_all_chat__button__title": "مسح جميع المحادثات",
+    "immersive_chat__delete_all_chat__button__title": "حذف جميع الدردشات",
     "sidebar__share__share_button__tooltip": "تحميل المحادثة",
     "provider__openai_api__model__gpt_3_5_1106__description": "أحدث نموذج GPT-3.5 Turbo مع تحسين متابعة التعليمات، وضع JSON، النتائج المستنسخة، استدعاء الوظائف المتوازية، والمزيد. يُرجع حد أقصى من 4,096 رمز إخراج.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "أحدث نموذج GPT-4 Turbo ، المحسّن للسرعة والكفاءة ، يتميز بمتابعة تعليمية متقدمة مصممة للاستجابة السريعة. يتضمن وضع JSON المحسّن لمعالجة البيانات المهيكلة ، ويضمن إخراجًا متسقًا وقابلاً لإعادة التكرار ، ويدعم استدعاء الوظيفة المتوازية لكفاءة المهام المتعددة. يحافظ هذا النموذج على إخراج أقصى قدر من الرموز (4,096) ، مع توازن الردود الشاملة مع الأداء المبسط.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "بعدًا جديدًا في قدرات الذكاء الاصطناعي مع GPT-4-Vision - قفزة ثورية في تكنولوجيا الذكاء الاصطناعي تدمج معالجة الصور مع فهم اللغة المتقدم لـ GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "الترقية لإنشاء فن وصور بواسطة الذكاء الاصطناعي",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "قم بتضاعف إبداعك وإنتاجيتك بفضل نماذج الذكاء الاصطناعي الأكثر تقدمًا. حوّل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة.",
-    "home_view_content_nav__chat_with_pdf_title": "الدردشة مع أي ملف PDF"
+    "home_view_content_nav__chat_with_pdf_title": "الدردشة مع أي ملف PDF",
+    "immersive_chat__delete_chat__button__title": "حذف الدردشة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Slet",
     "immersive_chat__delete_chat__button__cancel__title": "Annuller",
-    "immersive_chat__delete_all_chat__title": "Ryd din samtalehistorik - er du sikker?",
+    "immersive_chat__delete_all_chat__title": "Ryd din chat-historik - er du sikker?",
     "immersive_chat__delete_all_chat__button__delete__title": "Bekræft sletning",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annuller",
-    "immersive_chat__delete_all_chat__button__title": "Ryd alle chats",
+    "immersive_chat__delete_all_chat__button__title": "Slet alle chats",
     "sidebar__share__share_button__tooltip": "Hent chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Den nyeste GPT-3.5 Turbo-model med forbedret instruktionsfølgelse, JSON-tilstand, reproducerbare resultater, parallel funktionopkald og mere. Returnerer maksimalt 4.096 output tokens.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Den nyeste GPT-4 Turbo-model, forbedret til hastighed og effektivitet, har avanceret instruktionsfølgelse skræddersyet til hurtig respons. Den inkluderer en optimeret JSON-tilstand til håndtering af strukturerede data, sikrer ensartede og reproducerbare output og understøtter parallel funktionssamtale for multitasking-effektivitet. Denne model opretholder en maksimal output på 4.096 tokens, der balancerer omfattende svar med strømlinet ydeevne.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "En ny dimension af AI-funktioner med GPT-4-Vision - et banebrydende spring inden for AI-teknologi, der integrerer billedbehandling med den avancerede sprogforståelse fra GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Opgrader for at skabe AI-kunst og billeder",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x din kreativitet og produktivitet med de mest avancerede AI-kunstmodeller. Omdan hurtigt dine visioner til fantastiske billeder. Enkelt, kraftfuldt, transformerende.",
-    "home_view_content_nav__chat_with_pdf_title": "Chat med enhver PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Chat med enhver PDF",
+    "immersive_chat__delete_chat__button__title": "Slet chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

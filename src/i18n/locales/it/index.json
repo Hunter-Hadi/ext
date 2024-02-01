@@ -457,7 +457,7 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Elimina",
     "immersive_chat__delete_chat__button__cancel__title": "Annulla",
-    "immersive_chat__delete_all_chat__title": "Cancella la cronologia della conversazione - sei sicuro?",
+    "immersive_chat__delete_all_chat__title": "Cancella la cronologia della chat - sei sicuro?",
     "immersive_chat__delete_all_chat__button__delete__title": "Conferma eliminazione",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annulla",
     "immersive_chat__delete_all_chat__button__title": "Elimina tutte le chat",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Una nuova dimensione delle capacità dell'IA con GPT-4-Vision - un balzo rivoluzionario nella tecnologia dell'IA che integra l'elaborazione delle immagini con la comprensione avanzata del linguaggio di GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Passa per creare arte e immagini AI",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Moltiplica per 10 la tua creatività e produttività con i modelli d'arte AI più avanzati. Trasforma rapidamente le tue visioni in immagini mozzafiato. Semplice, potente, trasformativo.",
-    "home_view_content_nav__chat_with_pdf_title": "Chat con qualsiasi PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Chat con qualsiasi PDF",
+    "immersive_chat__delete_chat__button__title": "Elimina chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

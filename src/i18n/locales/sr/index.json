@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Obriši",
     "immersive_chat__delete_chat__button__cancel__title": "Otkaži",
-    "immersive_chat__delete_all_chat__title": "Obriši celu istoriju razgovora - da li ste sigurni?",
+    "immersive_chat__delete_all_chat__title": "Obriši istoriju četa - da li ste sigurni?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potvrdi brisanje",
     "immersive_chat__delete_all_chat__button__cancel__title": "Otkaži",
-    "immersive_chat__delete_all_chat__button__title": "Obriši sve razgovore",
+    "immersive_chat__delete_all_chat__button__title": "Obriši sve četove",
     "sidebar__share__share_button__tooltip": "Preuzmi čet",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnoviji GPT-3.5 Turbo model sa poboljšanim praćenjem instrukcija, JSON režimom, reproduktivnim izlazima, paralelnim pozivanjem funkcija i još mnogo toga. Vraća maksimalno 4.096 izlaznih tokena.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Najnoviji model GPT-4 Turbo, unapređen za brzinu i efikasnost, ima napredno praćenje instrukcija prilagođeno za brz odgovor. Uključuje optimizovan JSON režim za obradu strukturiranih podataka, obezbeđuje dosledne i reprodukovane rezultate i podržava paralelno pozivanje funkcija za efikasnost više zadataka. Ovaj model održava maksimalan izlaz od 4.096 tokena, balansirajući sveobuhvatne odgovore sa efikasnim performansama.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nova dimenzija AI mogućnosti sa GPT-4-Vision - revolucionarni skok u AI tehnologiji koji integriše obradu slika sa naprednim jezičkim razumevanjem GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Nadogradi da bi kreirao AI umetnost i slike",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Povećaj svoju kreativnost i produktivnost 10 puta uz najnaprednije modele AI umetnosti. Brzo pretvori svoje vizije u zadivljujuće slike. Jednostavno, moćno, transformišuće.",
-    "home_view_content_nav__chat_with_pdf_title": "Ćaskanje sa bilo kojim PDF-om"
+    "home_view_content_nav__chat_with_pdf_title": "Ćaskanje sa bilo kojim PDF-om",
+    "immersive_chat__delete_chat__button__title": "Obriši čet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

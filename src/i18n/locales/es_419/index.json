@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Eliminar",
     "immersive_chat__delete_chat__button__cancel__title": "Cancelar",
-    "immersive_chat__delete_all_chat__title": "¿Borrar el historial de conversación? - ¿Estás seguro?",
+    "immersive_chat__delete_all_chat__title": "Borrar el historial de chat - ¿estás seguro?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmar borrado",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancelar",
-    "immersive_chat__delete_all_chat__button__title": "Borrar todos los chats",
+    "immersive_chat__delete_all_chat__button__title": "Eliminar todos los chats",
     "sidebar__share__share_button__tooltip": "Descargar chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "El último modelo GPT-3.5 Turbo con mejor seguimiento de instrucciones, modo JSON, salidas reproducibles, llamadas de función paralelas y más. Devuelve un máximo de 4,096 tokens de salida.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "El último modelo GPT-4 Turbo, mejorado para velocidad y eficiencia, cuenta con un seguimiento avanzado de instrucciones adaptado para respuestas rápidas. Incluye un modo JSON optimizado para el manejo de datos estructurados, garantiza salidas consistentes y reproducibles, y admite llamadas de función paralelas para una eficiencia multitarea. Este modelo mantiene una salida máxima de 4,096 tokens, equilibrando respuestas completas con un rendimiento ágil.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Una nueva dimensión de capacidades de IA con GPT-4-Vision: un salto revolucionario en la tecnología de IA que integra el procesamiento de imágenes con la comprensión avanzada del lenguaje de GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Actualiza para crear arte e imágenes de IA",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Aumenta tu creatividad y productividad 10 veces con los modelos de arte de IA más avanzados. Convierte rápidamente tus visiones en imágenes impresionantes. Simple, poderoso, transformador.",
-    "home_view_content_nav__chat_with_pdf_title": "Chatea con cualquier PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Chatea con cualquier PDF",
+    "immersive_chat__delete_chat__button__title": "Eliminar chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

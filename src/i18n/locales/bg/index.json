@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Изтрий",
     "immersive_chat__delete_chat__button__cancel__title": "Отказ",
-    "immersive_chat__delete_all_chat__title": "Изчистване на историята на разговора - сигурни ли сте?",
+    "immersive_chat__delete_all_chat__title": "Изчисти историята на чата - сигурни ли сте?",
     "immersive_chat__delete_all_chat__button__delete__title": "Потвърди изтриването",
     "immersive_chat__delete_all_chat__button__cancel__title": "Отказ",
-    "immersive_chat__delete_all_chat__button__title": "Изчисти всички чатове",
+    "immersive_chat__delete_all_chat__button__title": "Изтрий всички чатове",
     "sidebar__share__share_button__tooltip": "Изтегли чат",
     "provider__openai_api__model__gpt_3_5_1106__description": "Най-новият модел GPT-3.5 Turbo с подобрено следване на инструкциите, режим JSON, възпроизводими изходи, паралелно извикване на функции и други. Връща максимум 4,096 токена за изход.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Най-новият модел GPT-4 Turbo, подобрен за скорост и ефективност, разполага с напреднала инструкция следване, персонализирана за бърз отговор. Включва оптимизиран JSON режим за обработка на структурирани данни, гарантира последователни и възпроизводими изходи и поддържа паралелно извикване на функции за ефективност при многозадачност. Този модел поддържа максимален изход от 4,096 токена, балансирайки изчерпателни отговори с оптимизирана производителност.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Ново измерение на AI възможностите с GPT-4-Vision - революционен скок в AI технологията, който интегрира обработката на изображения със напредналото разбиране на езика на GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Надстройте, за да създавате AI изкуство и изображения",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Увеличете с 10 пъти вашата креативност и продуктивност с най-развитите модели за AI изкуство. Бързо превръщайте вашите визии в изумителни изображения. Просто, мощно, трансформиращо.",
-    "home_view_content_nav__chat_with_pdf_title": "Чат с всяко PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Чат с всяко PDF",
+    "immersive_chat__delete_chat__button__title": "Изтрий чат"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

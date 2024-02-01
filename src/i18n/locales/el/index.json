@@ -460,7 +460,7 @@
     "immersive_chat__delete_all_chat__title": "Καθαρισμός ιστορικού συνομιλίας - είστε σίγουροι;",
     "immersive_chat__delete_all_chat__button__delete__title": "Επιβεβαίωση διαγραφής",
     "immersive_chat__delete_all_chat__button__cancel__title": "Ακύρωση",
-    "immersive_chat__delete_all_chat__button__title": "Καθαρισμός όλων των συνομιλιών",
+    "immersive_chat__delete_all_chat__button__title": "Διαγραφή όλων των συνομιλιών",
     "sidebar__share__share_button__tooltip": "Λήψη συνομιλίας",
     "provider__openai_api__model__gpt_3_5_1106__description": "Το πιο πρόσφατο μοντέλο GPT-3.5 Turbo με βελτιωμένη ακολουθία οδηγιών, λειτουργία JSON, αναπαράσταση αποτελεσμάτων, παράλληλη κλήση συναρτήσεων και πολλά άλλα. Επιστρέφει ένα μέγιστο αριθμό 4.096 διατάξεων εξόδου.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Το πιο πρόσφατο μοντέλο GPT-4 Turbo, βελτιωμένο για ταχύτητα και αποδοτικότητα, διαθέτει προηγμένη ακολούθηση οδηγιών που προσαρμόζεται για γρήγορη απόκριση. Περιλαμβάνει ένα βελτιστοποιημένο JSON mode για τη διαχείριση δομημένων δεδομένων, εξασφαλίζει συνεπείς και αναπαράστασης εξόδους και υποστηρίζει παράλληλη κλήση λειτουργιών για αποδοτικότητα πολλαπλών εργασιών. Αυτό το μοντέλο διατηρεί ένα μέγιστο αποτέλεσμα 4.096 tokens, ισορροπώντας περιεκτικές απαντήσεις με αποδοτική απόδοση.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Μια νέα διάσταση των δυνατοτήτων της AI με το GPT-4-Vision - ένα καινοτόμο άλμα στην τεχνολογία της AI που ενσωματώνει την επεξεργασία εικόνας με την προηγμένη γλωσσική κατανόηση του GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Αναβαθμίστε για να δημιουργήσετε AI art και εικόνες",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Αυξήστε κατά 10 φορές τη δημιουργικότητά σας και την παραγωγικότητά σας με τα πιο προηγμένα μοντέλα τέχνης AI. Μετατρέψτε γρήγορα τις εικόνες σας σε εκπληκτικά αποτελέσματα. Απλό, ισχυρό, μετασχηματιστικό.",
-    "home_view_content_nav__chat_with_pdf_title": "Συνομιλήστε με οποιοδήποτε PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Συνομιλήστε με οποιοδήποτε PDF",
+    "immersive_chat__delete_chat__button__title": "Διαγραφή συνομιλίας"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

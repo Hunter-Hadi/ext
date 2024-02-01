@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Supprimer",
     "immersive_chat__delete_chat__button__cancel__title": "Annuler",
-    "immersive_chat__delete_all_chat__title": "Effacer l'historique de conversation - êtes-vous sûr(e) ?",
+    "immersive_chat__delete_all_chat__title": "Effacer l'historique de votre chat - êtes-vous sûr ?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirmer la suppression",
     "immersive_chat__delete_all_chat__button__cancel__title": "Annuler",
-    "immersive_chat__delete_all_chat__button__title": "Effacer tous les chats",
+    "immersive_chat__delete_all_chat__button__title": "Supprimer tous les chats",
     "sidebar__share__share_button__tooltip": "Télécharger le chat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Le dernier modèle GPT-3.5 Turbo avec une meilleure prise en compte des instructions, le mode JSON, des sorties reproductibles, l'appel de fonctions parallèles et plus encore. Renvoie un maximum de 4 096 jetons de sortie.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Le dernier modèle GPT-4 Turbo, amélioré pour la vitesse et l'efficacité, offre un suivi avancé des instructions adapté à une réponse rapide. Il comprend un mode JSON optimisé pour la manipulation de données structurées, garantit des sorties cohérentes et reproductibles, et prend en charge l'appel de fonctions parallèles pour une efficacité multitâche. Ce modèle maintient une sortie maximale de 4 096 jetons, équilibrant des réponses complètes avec des performances optimisées.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Une nouvelle dimension des capacités de l'IA avec GPT-4-Vision - un bond révolutionnaire dans la technologie de l'IA qui intègre le traitement d'image à la compréhension avancée du langage de GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Mettez à niveau pour créer de l'art et des images IA",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Multipliez par 10 votre créativité et votre productivité avec les modèles d'art IA les plus avancés. Transformez rapidement vos visions en images époustouflantes. Simple, puissant, transformateur.",
-    "home_view_content_nav__chat_with_pdf_title": "Discutez avec n'importe quel PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Discutez avec n'importe quel PDF",
+    "immersive_chat__delete_chat__button__title": "Supprimer le chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

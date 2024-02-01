@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "அழி",
     "immersive_chat__delete_chat__button__cancel__title": "ரத்துசெய்",
-    "immersive_chat__delete_all_chat__title": "உங்கள் உரையாடல் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
+    "immersive_chat__delete_all_chat__title": "உங்கள் உரைநடத்தை அழிக்க - நீங்கள் உறுதியா?",
     "immersive_chat__delete_all_chat__button__delete__title": "நீக்குதலை உறுதிப்படுத்து",
     "immersive_chat__delete_all_chat__button__cancel__title": "ரத்துசெய்",
-    "immersive_chat__delete_all_chat__button__title": "அனைத்து உரைநடவடிக்கைகளையும் நீக்கு",
+    "immersive_chat__delete_all_chat__button__title": "அனைத்து உரைநடத்தையும் அழிக்கவும்",
     "sidebar__share__share_button__tooltip": "அறிவிப்பு பதிவிறக்கம்",
     "provider__openai_api__model__gpt_3_5_1106__description": "மேலும் கட்டுப்பாடு அதிகரித்த GPT-3.5 டர்போ மாதிரி, JSON முறை, மீண்டும் உருவாக்கப்பட்ட வெளியீட்டுகள், பல்வேறு செயல்பாட்டு அழுத்த அழைப்புகள் மற்றும் மேலும் அதிகப்படுத்தப்பட்டன. அதிகப்படுத்தப்பட்ட 4,096 வெளியீட்டு டோக்கன்களை திரும்பக் கொடுக்கிறது.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "விரைவு மற்றும் செயல்பாட்டிற்கு மேம்படுத்தப்பட்ட GPT-4 டர்போ மாதிரி, விரைவு மற்றும் செயல்பாட்டிற்கான உயர்நிலை உத்திரவாதம் அமைப்புகளைக் கொண்டுள்ளது. இது விரைவு பதில் வழங்கும் மூலத்தை முன்னிட்டு மேம்படுத்தப்பட்டுள்ளது. இது படிகள் தரவு செயலாக்கத்திற்கான ஒரு மிகுந்த பதில் முறையைக் கொண்டுள்ளது, முழுமையான பதில்களை சுருக்கமாக வழங்குகின்றது.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision உடன் பட செயலாக்கத்தை மேம்படுத்தும் AI தொழில்நுட்பத்தின் புதிய அமைப்பு - GPT-4 மாதிரி மூலம் பட செயலாக்கத்தை மேம்படுத்தும் மேம்படுத்தும் மொழி புரிந்துகொள்ளும் மூலம் புதிய அமைப்பு.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI கலையை உருவாக்க gpt-4-vision அணுகலை மேம்படுத்துக",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "மிகவும் மேம்பட்ட AI கலை மாதிரிகளுடன் 10x உங்கள் உரிமையையும் உற்பத்தியையும் அதிகரிக்கவும். உங்கள் காட்சிகளை அழகாக மாற்றுவதை வேகமாக செய்யும். எளிதான, வல்லமையான, மாற்றுப்படுத்தும்.",
-    "home_view_content_nav__chat_with_pdf_title": "எந்த பிடிஎஃப் உடன் உரையாட"
+    "home_view_content_nav__chat_with_pdf_title": "எந்த பிடிஎஃப் உடன் உரையாட",
+    "immersive_chat__delete_chat__button__title": "அழிக்கவும் உரைநடத்தை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

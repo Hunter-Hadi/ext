@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "۔",
     "immersive_chat__delete_chat__button__delete__title": "حذف کریں",
     "immersive_chat__delete_chat__button__cancel__title": "منسوخ کریں",
-    "immersive_chat__delete_all_chat__title": "کیا آپ اپنی بات چیت کی تاریخ صاف کرنا چاہتے ہیں؟",
+    "immersive_chat__delete_all_chat__title": "اپنی چیٹ کی تاریخ مٹائیں - کیا آپ واقعی یقینی ہیں؟",
     "immersive_chat__delete_all_chat__button__delete__title": "تصدیق حذف",
     "immersive_chat__delete_all_chat__button__cancel__title": "منسوخ کریں",
-    "immersive_chat__delete_all_chat__button__title": "تمام چیٹوں کو صاف کریں",
+    "immersive_chat__delete_all_chat__button__title": "تمام چیٹس حذف کریں",
     "sidebar__share__share_button__tooltip": "چیٹ ڈاؤن لوڈ کریں",
     "provider__openai_api__model__gpt_3_5_1106__description": "تازہ ترین GPT-3.5 ٹربو ماڈل جس میں بہتر ہدایات کی پیروی، JSON موڈ، قابل دوبارہ پیدا ہونے والے نتائج، متوازی فنکشن کالنگ، اور مزید خصوصیات شامل ہیں۔ زیادہ سے زیادہ 4,096 خروجی ٹوکنز واپس کرتا ہے۔",
     "provider__openai_api__model__gpt_4_1106_preview__description": "تازہ ترین GPT-4 Turbo ماڈل، تیزی اور کارآمدی کے لئے بہتر بنایا گیا ہے، جس میں تیز رد عمل کے لئے مخصوص ہدایات کا پیروی کیا گیا ہے۔ یہ ساختارمند ڈیٹا کی ہندسوں کے ساتھ کام کرنے کے لئے ایک تجویز شدہ JSON موڈ شامل کرتا ہے، یہ یقینی بناتا ہے کہ خروجی مستقل اور دوبارہ قابل تکرار ہوتی ہے، اور متعدد کاموں کی کارآمدی کے لئے متوازی فنکشن کالنگ کو سپورٹ کرتا ہے۔ یہ ماڈل 4,096 ٹوکنز کی زیادہ سے زیادہ خروجی کو برقرار رکھتا ہے، جو مکمل جوابات کو مسلسل عمل کے ساتھ توازن دیتا ہے۔",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 کی تقدیر سے بڑھ کر AI صلاحیتوں کا نیا جائزہ لیں - GPT-4 کی تفصیلی زبانی سمجھ کو تصویری پروسیسنگ کے ساتھ ملا کر AI ٹیکنالوجی میں ایک نئی بہار ہے۔",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI آرٹ اور تصاویر بنانے کے لئے اپ گریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "سب سے تجدید شدہ AI آرٹ ماڈلز کے ساتھ اپنی تخلیقیت اور پیداواری کو 10 گنا بڑھائیں۔ اپنی خوابوں کو دلکش تصاویر میں تیزی سے تبدیل کریں۔ آسان، طاقتور، تحولیہ۔",
-    "home_view_content_nav__chat_with_pdf_title": "کسی بھی پی ڈی ایف کے ساتھ چیٹ کریں"
+    "home_view_content_nav__chat_with_pdf_title": "کسی بھی پی ڈی ایف کے ساتھ چیٹ کریں",
+    "immersive_chat__delete_chat__button__title": "چیٹ حذف کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

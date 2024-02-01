@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "डिलीट करा",
     "immersive_chat__delete_chat__button__cancel__title": "रद्द करा",
-    "immersive_chat__delete_all_chat__title": "तुमच्या चर्चेचा संपूर्ण इतिहास काढून टाकायला खात्री आहे - तुम्ही खात्री आहात का?",
+    "immersive_chat__delete_all_chat__title": "तुमच्या चॅट इतिहासाला साफ करा - खात्री आहे का?",
     "immersive_chat__delete_all_chat__button__delete__title": "डिलीट करण्याची पुष्टी करा",
     "immersive_chat__delete_all_chat__button__cancel__title": "रद्द करा",
-    "immersive_chat__delete_all_chat__button__title": "सर्व चॅट काढा",
+    "immersive_chat__delete_all_chat__button__title": "सर्व चॅट्स हटवा",
     "sidebar__share__share_button__tooltip": "चॅट डाउनलोड करा",
     "provider__openai_api__model__gpt_3_5_1106__description": "अद्याप आलेला GPT-3.5 Turbo मॉडेल, सुधारित निर्देशांवर अनुसरण करणे, JSON मोड, पुनरावृत्तीय आउटपुट, समानांतर कार्यक्षमता व इतर गोष्टी. 4,096 आउटपुट टोकनची जास्तीत जास्त परत करते.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "नवीनतम GPT-4 Turbo मॉडेल, गती आणि प्रभावशीलतेसाठी अनुकूलित, त्वरित प्रतिसादासाठी तयार केलेल्या उन्नत मार्गदर्शनाचा वापर करतो. हे संरचित डेटा संबंधित माहितीसाठी अनुकूलित JSON मोड आणि निरंतर आणि पुनरावृत्तीय उत्पादन आणि बहुक्रिया क्षमतेसाठी पार्लेल फंक्शन कॉलिंगचा समर्थन करतो. हा मॉडेल 4,096 टोकनची जास्तीत जास्त उत्पादन ठेवतो, संपूर्ण प्रतिसादांच्या संघटना सह त्याची कामगिरी करतो.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 च्या प्रगत भाषा समजूतीसह GPT-4-Vision - AI तंत्रज्ञानाच्या एक नवीन आयामाची अद्यावत जोडणारी एक उद्घाटनात्मक लहान चल होती, ज्यामुळे छायांकनाचे प्रक्रियांचे एकत्रित करणे आणि GPT-4 च्या विविध भाषा समजूतीसह त्यांच्या प्रविष्ट्यांचे विश्लेषण करणे सक्षम होते.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI कला आणि छायांकनासाठी अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सर्वाधिक उन्नत AI कला मॉडेलसह 10x आपल्या सृजनशीलतेचा आणि उत्पादकतेचा वापर करा. आपल्या दृष्टींचे अद्यावत छायांकन झाल्यास त्यांच्या आश्चर्यजनक छायांकनांमध्ये त्वरितपणे परिवर्तित करा. सोपे, शक्तिशाली, परिवर्तक.",
-    "home_view_content_nav__chat_with_pdf_title": "कोणत्याही PDF सह चॅट करा"
+    "home_view_content_nav__chat_with_pdf_title": "कोणत्याही PDF सह चॅट करा",
+    "immersive_chat__delete_chat__button__title": "चॅट हटवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

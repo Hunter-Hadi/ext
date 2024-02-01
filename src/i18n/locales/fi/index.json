@@ -460,7 +460,7 @@
     "immersive_chat__delete_all_chat__title": "Tyhjennä keskusteluhistoriasi - oletko varma?",
     "immersive_chat__delete_all_chat__button__delete__title": "Vahvista poisto",
     "immersive_chat__delete_all_chat__button__cancel__title": "Peruuta",
-    "immersive_chat__delete_all_chat__button__title": "Tyhjennä kaikki keskustelut",
+    "immersive_chat__delete_all_chat__button__title": "Poista kaikki keskustelut",
     "sidebar__share__share_button__tooltip": "Lataa keskustelu",
     "provider__openai_api__model__gpt_3_5_1106__description": "Uusin GPT-3.5 Turbo -malli, jossa on parannettu ohjeiden seuraaminen, JSON-tila, toistettavat tulosteet, rinnakkainen funktiokutsu ja paljon muuta. Palauttaa enintään 4 096 tulostetunnusta.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Uusin GPT-4 Turbo -malli, joka on parannettu nopeutta ja tehokkuutta varten, sisältää edistyneen ohjeiden seuraamisen nopeaa vastausta varten. Siinä on optimoitu JSON-tila rakenteellisten tietojen käsittelyyn, varmistaa yhtenäiset ja toistettavat tulosteet sekä tukee rinnakkaista funktiokutsua moniajoisuuden tehostamiseksi. Tämä malli ylläpitää enintään 4 096 merkin tulostusta tasapainottaen kattavia vastauksia virtaviivaisella suorituskyvyllä.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Uusi ulottuvuus tekoälyn kyvyissä GPT-4-Visionin avulla - mullistava harppaus tekoälyteknologiassa, joka yhdistää kuvankäsittelyn GPT-4:n edistykselliseen kielitaitoon.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Päivitä luodaksesi tekoälytaidetta ja kuvia",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Kymmenkertaista luovuutesi ja tuottavuutesi edistyksellisimmillä tekoälytaidemalleilla. Muunna visiosi upeiksi kuviksi nopeasti. Yksinkertainen, voimakas, muuntautumiskykyinen.",
-    "home_view_content_nav__chat_with_pdf_title": "Keskustele minkä tahansa PDF:n kanssa"
+    "home_view_content_nav__chat_with_pdf_title": "Keskustele minkä tahansa PDF:n kanssa",
+    "immersive_chat__delete_chat__button__title": "Poista keskustelu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

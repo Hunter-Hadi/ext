@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "ആണ്.",
     "immersive_chat__delete_chat__button__delete__title": "ഇല്ലാതാക്കുക",
     "immersive_chat__delete_chat__button__cancel__title": "റദ്ദാക്കുക",
-    "immersive_chat__delete_all_chat__title": "നിങ്ങളുടെ സംഭാഷണ ചരിത്രം മായ്ക്കാൻ ഉറപ്പാണോ - ഉറപ്പാണോ?",
+    "immersive_chat__delete_all_chat__title": "നിങ്ങളുടെ ചാറ്റ് ചരിത്രം മായ്‌ക്കാൻ ഉറപ്പാണോ?",
     "immersive_chat__delete_all_chat__button__delete__title": "മായ്ക്കൽ സ്ഥിരീകരിക്കുക",
     "immersive_chat__delete_all_chat__button__cancel__title": "റദ്ദാക്കുക",
-    "immersive_chat__delete_all_chat__button__title": "എല്ലാ ചാറ്റുകൾക്കും മായ്‌ക്കുക",
+    "immersive_chat__delete_all_chat__button__title": "എല്ലാ ചാറ്റുകൾ ഇല്ലാതാക്കുക",
     "sidebar__share__share_button__tooltip": "ചാറ്റ് ഡൗൺലോഡ് ചെയ്യുക",
     "provider__openai_api__model__gpt_3_5_1106__description": "പുതിയ GPT-3.5 ടർബോ മോഡൽ, മൊഡൽ അനുസരിച്ച് ഇൻസ്ട്രക്ഷൻ പിന്തുണ, JSON മോഡ്, പുനർനിർമ്മിക്കാവുന്ന ഔട്ട്പുട്ട്, പരാളം ഫങ്ഷൻ കോളിംഗ് എന്നിവയുമായി കൂടുതൽ. 4,096 ഔട്ട്പുട്ട് ടോക്കനുകൾ മാത്രം പിന്തുണയ്ക്കുന്നു.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 Turbo terkini, ditingkatkan untuk kelajuan dan kecekapan, menampilkan pengikutan arahan lanjutan yang disesuaikan untuk tindak balas yang pantas. Ia termasuk mod JSON yang dioptimumkan untuk pengendalian data berstruktur, memastikan hasil yang konsisten dan boleh diulangi, dan menyokong pemanggilan fungsi serentak untuk kecekapan multitugas. Model ini mengekalkan output maksimum sebanyak 4,096 token, menyeimbangkan respon komprehensif dengan prestasi yang lancar.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 എന്നറിയപ്പെടുന്ന GPT-4-Vision എന്ന ഏറ്റവും പുതിയ AI സാധ്യതകളുടെ ഒരു പുതിയ ആയാമമാണ്, ഇമേജ് പ്രോസസ്സിങ് മറ്റും GPT-4 എന്ന അഗ്രഗണിത ഭാഷാ പഠനത്തെ ഒരുപക്ഷേ ലിങ്ക് ചെയ്യുന്ന AI ടെക്നോളജിയാണ്",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI കല മറ്റും ചിത്രങ്ങൾ സൃഷ്ടിക്കാൻ അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "ഏറ്റവും പുതിയ AI കല മോഡലുകളുമായി 10x നിങ്ങളുടെ സൃഷ്ടികളും ഉത്പാദനശീലതയും പ്രവർത്തിക്കുക. നിങ്ങളുടെ ദർശനങ്ങളെ മികച്ച ചിത്രങ്ങളായാക്കുക. ലളിതമായാണ്, ശക്തമായാണ്, മാറ്റപ്പെടുത്തുന്നത്.",
-    "home_view_content_nav__chat_with_pdf_title": "ഏതെങ്കിലും PDF-യുമായി ചാറ്റ് ചെയ്യുക"
+    "home_view_content_nav__chat_with_pdf_title": "ഏതെങ്കിലും PDF-യുമായി ചാറ്റ് ചെയ്യുക",
+    "immersive_chat__delete_chat__button__title": "ചാറ്റ് ഇല്ലാതാക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

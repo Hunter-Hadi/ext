@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Hapus",
     "immersive_chat__delete_chat__button__cancel__title": "Batal",
-    "immersive_chat__delete_all_chat__title": "Hapus riwayat percakapan Anda - apakah Anda yakin?",
+    "immersive_chat__delete_all_chat__title": "Hapus riwayat obrolan Anda - apakah Anda yakin?",
     "immersive_chat__delete_all_chat__button__delete__title": "Konfirmasi penghapusan",
     "immersive_chat__delete_all_chat__button__cancel__title": "Batal",
-    "immersive_chat__delete_all_chat__button__title": "Hapus semua percakapan",
+    "immersive_chat__delete_all_chat__button__title": "Hapus semua obrolan",
     "sidebar__share__share_button__tooltip": "Unduh percakapan",
     "provider__openai_api__model__gpt_3_5_1106__description": "Model GPT-3.5 Turbo terbaru dengan peningkatan dalam mengikuti instruksi, mode JSON, output yang dapat direproduksi, pemanggilan fungsi paralel, dan lainnya. Mengembalikan maksimal 4.096 token output.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Model GPT-4 Turbo terbaru, ditingkatkan untuk kecepatan dan efisiensi, dilengkapi dengan instruksi lanjutan yang disesuaikan untuk respons cepat. Ini mencakup mode JSON yang dioptimalkan untuk penanganan data terstruktur, memastikan output yang konsisten dan dapat direproduksi, dan mendukung pemanggilan fungsi paralel untuk efisiensi multitasking. Model ini mempertahankan output maksimum sebanyak 4.096 token, menjaga keseimbangan antara respons komprehensif dengan performa yang lancar.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Dimensi baru dari kemampuan AI dengan GPT-4-Vision - lompatan terobosan dalam teknologi AI yang mengintegrasikan pemrosesan gambar dengan pemahaman bahasa canggih dari GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Tingkatkan untuk membuat seni dan gambar AI",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Meningkatkan kreativitas dan produktivitas Anda 10 kali lipat dengan model seni AI paling canggih. Cepat mengubah visi Anda menjadi gambar yang menakjubkan. Sederhana, kuat, dan transformatif.",
-    "home_view_content_nav__chat_with_pdf_title": "Chat dengan PDF apa pun"
+    "home_view_content_nav__chat_with_pdf_title": "Chat dengan PDF apa pun",
+    "immersive_chat__delete_chat__button__title": "Hapus obrolan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

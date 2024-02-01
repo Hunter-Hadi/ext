@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 ನ ಮುಂದಿನ ಹೆಜ್ಜೆಯಾಗಿರುವ GPT-4-Vision ಜೊತೆಗೆ ಹೊಸ ಆಯ್ಕೆಗಳ ಪ್ರಮುಖ ಲೀಪ್ ಆಗಿದೆ - ಚಿತ್ರ ಪ್ರಕ್ರಿಯೆಯನ್ನು GPT-4 ನ ಮುಂದಿನ ಭಾಷಾ ಅರಿವಿನೊಂದಿಗೆ ಒಡೆದುಹಾಕುವುದು.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "ಐಎನ್‌ನಿಂದ ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಲು ಅಪ್‌ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "ಅತ್ಯಂತ ಮುಂದುವರಿದ ಐಎನ್ ಕಲಾ ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ನಿಮ್ಮ ಸೃಜಿತವಾದ ಮತ್ತು ಉತ್ಪಾದಕತೆಯನ್ನು 10 ಪಟಗಳಷ್ಟು ಹೆಚ್ಚಿಸಿ. ನಿಮ್ಮ ಕನಸುಗಳನ್ನು ಅದ್ಭುತ ಚಿತ್ರಗಳಾಗಿ ಬದಲಾಯಿಸಿ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಪರಿವರ್ತನಾತ್ಮಕ.",
-    "home_view_content_nav__chat_with_pdf_title": "ಯಾವುದೇ PDF ಜೊತೆ ಚಾಟ್ ಮಾಡಿ"
+    "home_view_content_nav__chat_with_pdf_title": "ಯಾವುದೇ PDF ಜೊತೆ ಚಾಟ್ ಮಾಡಿ",
+    "immersive_chat__delete_chat__button__title": "ಚಾಟ್ ಅಳಿಸಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

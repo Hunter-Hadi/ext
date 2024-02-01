@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": ".",
     "immersive_chat__delete_chat__button__delete__title": "Usuń",
     "immersive_chat__delete_chat__button__cancel__title": "Anuluj",
-    "immersive_chat__delete_all_chat__title": "Wyczyść historię rozmowy - na pewno?",
+    "immersive_chat__delete_all_chat__title": "Wyczyść historię czatu - na pewno?",
     "immersive_chat__delete_all_chat__button__delete__title": "Potwierdź usunięcie",
     "immersive_chat__delete_all_chat__button__cancel__title": "Anuluj",
-    "immersive_chat__delete_all_chat__button__title": "Wyczyść wszystkie rozmowy",
+    "immersive_chat__delete_all_chat__button__title": "Usuń wszystkie czaty",
     "sidebar__share__share_button__tooltip": "Pobierz czat",
     "provider__openai_api__model__gpt_3_5_1106__description": "Najnowszy model GPT-3.5 Turbo z ulepszonym śledzeniem instrukcji, trybem JSON, powtarzalnymi wynikami, równoległym wywoływaniem funkcji i więcej. Zwraca maksymalnie 4 096 tokenów wyjściowych.",
     "provider__openai_api__model__gpt_4_1106_preview__description": "Najnowszy model GPT-4 Turbo, ulepszony pod kątem szybkości i wydajności, posiada zaawansowane śledzenie instrukcji dostosowane do szybkiej odpowiedzi. Zawiera zoptymalizowany tryb JSON do obsługi danych strukturalnych, zapewnia spójne i powtarzalne wyniki oraz obsługuje równoległe wywoływanie funkcji dla efektywności wielozadaniowej. Ten model utrzymuje maksymalną liczbę 4 096 tokenów, łącząc wszechstronne odpowiedzi z wydajnością.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nowy wymiar możliwości sztucznej inteligencji dzięki GPT-4-Vision - przełomowy skok w technologii AI, który integruje przetwarzanie obrazów z zaawansowanym zrozumieniem języka GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Uaktualnij, aby tworzyć sztukę i obrazy AI",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zwiększ swoją kreatywność i produktywność dziesięciokrotnie dzięki najbardziej zaawansowanym modelom sztuki AI. Szybko zamieniaj swoje wizje w oszałamiające obrazy. Proste, potężne, przekształcające.",
-    "home_view_content_nav__chat_with_pdf_title": "Czatuj z dowolnym plikiem PDF"
+    "home_view_content_nav__chat_with_pdf_title": "Czatuj z dowolnym plikiem PDF",
+    "immersive_chat__delete_chat__button__title": "Usuń czat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

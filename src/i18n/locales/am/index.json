@@ -457,10 +457,10 @@
     "immersive_chat__delete_chat__description2": "።",
     "immersive_chat__delete_chat__button__delete__title": "ሰርዝ",
     "immersive_chat__delete_chat__button__cancel__title": "ይቅረት",
-    "immersive_chat__delete_all_chat__title": "የእርሶ የክስ ታሪክን ማስጀመሪያ - እርስዎ አልፎ ማስቀመጥ ነው?",
+    "immersive_chat__delete_all_chat__title": "የእርሶ ሁኔታዎን ማስጀመሪያ ለመስጠት - እርስዎ ለማድረግ ነው?",
     "immersive_chat__delete_all_chat__button__delete__title": "ማስቀመጥ አስተካክል",
     "immersive_chat__delete_all_chat__button__cancel__title": "ይቅረት",
-    "immersive_chat__delete_all_chat__button__title": "ሁሉንም ውይይትን አጥፋ",
+    "immersive_chat__delete_all_chat__button__title": "ሁሉንም ስህተት አጥፋ",
     "sidebar__share__share_button__tooltip": "የኮስታንት ልጥፍ ለውጥ",
     "provider__openai_api__model__gpt_3_5_1106__description": "የቅርብ GPT-3.5 Turbo ሞዴል በማስተላለፊያ የሚገኙት የተለመደው የማስታወቂያ እናትን እና JSON ሞዴ, የማስተላለፊያ ዝርዝርዎን የሚያስቀምጡ, የማስተላለፊያ የማስታወቂያ ውሂብ ሰውነታችንን እና ተጨማሪ እርምጃዎችን ይመልከቱ። የሚገኘው የማስተላለፊያ ሞዴ 4,096 የገቡበት የጽሑፍ ቶክን ይመልከቱ።",
     "provider__openai_api__model__gpt_4_1106_preview__description": "የቅንጅቶች ማስታወቂያን እናውቃለን GPT-4 ሞዴል በርቀት የተሻለ, JSON ሞዴ, የተሸጠረ የማስታወቂያ ውሂብ, የማስታወቂያ ማጣሪያ መጠቀም እና በተለያዩ ማስታወቂያዎች የሚገኙ ማስታወቂያዎች ይመልከቱ. የሚገኘው የማስታወቂያ ቶከን የ4,096 የሚያስቀምጥ ውሂብ ይመልከቱ.",
@@ -522,7 +522,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision - የAI ባህሪ እና ስሜት መሳሪያዎችን የሚያስተዳድር የAI ነገሮችን የሚያስተዳድር ማሳወቂያ ነው።",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "የAI አርት እና ምስል የሚፈልጉትን ይዘት ይጠቀሙ",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "የሚፈልጉትን የAI አርት መሳሪያዎችን 10 አይነት የሚያስተዳድር የAI አርት መሳሪያዎችን የሚያስተዳድር ማሳወቂያ ነው። በትኩረት የሚያስተዳድርበት ምስልን በትኩረት የሚያስተዳድር ማሳወቂያ ነው።",
-    "home_view_content_nav__chat_with_pdf_title": "በየኤክስ ውስጥ PDF እንዴት እይታዎች እያለው ይወዳሉ"
+    "home_view_content_nav__chat_with_pdf_title": "በየኤክስ ውስጥ PDF እንዴት እይታዎች እያለው ይወዳሉ",
+    "immersive_chat__delete_chat__button__title": "ስህተት አጥፋ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

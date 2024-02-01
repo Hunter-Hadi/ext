@@ -104,7 +104,7 @@ const HomeViewContentNav = () => {
   return (
     <Box py={2}>
       <Grid container spacing={1.5}>
-        <Grid key={'ai-search'} item xs={6}>
+        <Grid key={'ai-search'} item xs={isMaxAIImmersiveChatPage() ? 12 : 6}>
           <HomeViewAISearchInput />
         </Grid>
         {HOME_VIEW_CONTENT_NAV.map((navItem) => {
@@ -152,20 +152,22 @@ const HomeViewContentNav = () => {
             </Grid>
           )
         })}
-        <Grid item xs={6}>
+        <Grid item xs={isMaxAIImmersiveChatPage() ? 12 : 6}>
           <Grid container spacing={1.5}>
-            <Grid item xs={12}>
-              <HomeViewPageSummaryButton />
-            </Grid>
-            <Grid item xs={12}>
+            {!isMaxAIImmersiveChatPage() ? (
+              <Grid item xs={12}>
+                <HomeViewPageSummaryButton />
+              </Grid>
+            ) : null}
+            <Grid item xs={isMaxAIImmersiveChatPage() ? 6 : 12}>
               <HomeViewChatWithPdfButton />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={isMaxAIImmersiveChatPage() ? 6 : 12}>
               <HomeViewAIScreenshotButton />
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={isMaxAIImmersiveChatPage() ? 12 : 6}>
           <HomeViewFileUploader />
         </Grid>
       </Grid>

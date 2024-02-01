@@ -99,11 +99,23 @@ const useShortCutsEngine = () => {
     if (!shortCutsEngineRef.current) {
       return
     }
-    await shortCutsEngineRef.current.stop()
+    await shortCutsEngineRef.current.stop({
+      engine: {
+        shortcutsEngine: shortCutsEngineRef.current,
+        clientConversationEngine,
+        clientMessageChannelEngine,
+        shortcutsMessageChannelEngine,
+      },
+    })
     setShortsCutsState({
       status: shortCutsEngine.status || 'idle',
     })
-  }, [shortCutsEngineRef])
+  }, [
+    shortCutsEngineRef,
+    clientConversationEngine,
+    clientMessageChannelEngine,
+    shortcutsMessageChannelEngine,
+  ])
 
   const resetShortCuts = useCallback(() => {
     if (!shortCutsEngineRef.current) {
@@ -113,7 +125,7 @@ const useShortCutsEngine = () => {
     setShortsCutsState({
       status: shortCutsEngine.status || 'idle',
     })
-  }, [])
+  }, [shortCutsEngineRef])
 
   return {
     getParams,

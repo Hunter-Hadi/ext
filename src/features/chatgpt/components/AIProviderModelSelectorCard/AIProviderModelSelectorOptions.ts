@@ -14,7 +14,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     dev: true,
     mainPart: true,
     label: 'Free AI',
-    value: 'mythomist-7b',
+    value: 'mistral-7b-instruct',
     AIProvider: 'MAXAI_FREE',
   },
   {

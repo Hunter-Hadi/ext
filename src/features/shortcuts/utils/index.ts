@@ -126,7 +126,24 @@ export const chatGPTCommonErrorInterceptor = (errorMsg?: string) => {
   return newErrorMsg
 }
 
-export const clientFetchAPI = async (url: string, options: any) => {
+type ClientFetchAPIResponse<T> = {
+  success: boolean
+  data: T | null
+  responseRaw: {
+    ok: boolean
+    status: number
+    statusText: string
+    url: string
+    redirected: boolean
+  } | null
+  message: string
+  error: string
+}
+export const clientFetchAPI = async <T = any>(
+  url: string,
+  options: any,
+  abortTaskId?: string,
+): Promise<ClientFetchAPIResponse<T>> => {
   try {
     const port = new ContentScriptConnectionV2()
     const response = await port.postMessage({
@@ -134,6 +151,34 @@ export const clientFetchAPI = async (url: string, options: any) => {
       data: {
         url,
         options,
+        abortTaskId,
+      },
+    })
+    return {
+      success: response.success,
+      data: response?.data?.data,
+      responseRaw: response?.data?.response,
+      message: response.message,
+      error: '',
+    }
+  } catch (error) {
+    return {
+      success: false,
+      data: null,
+      error: (error as any)?.message || error,
+      responseRaw: null,
+      message: '',
+    }
+  }
+}
+
+export const clientAbortFetchAPI = async (abortTaskId: string) => {
+  try {
+    const port = new ContentScriptConnectionV2()
+    const response = await port.postMessage({
+      event: 'Client_abortProxyFetchAPI',
+      data: {
+        abortTaskId,
       },
     })
     return {
@@ -150,11 +195,11 @@ export const clientFetchAPI = async (url: string, options: any) => {
   }
 }
 
-export const clientFetchMaxAIAPI = async (
+export const clientFetchMaxAIAPI = async <T = any>(
   url: string,
   body: any,
   options: any = {},
-) => {
+): Promise<ClientFetchAPIResponse<T>> => {
   try {
     const port = new ContentScriptConnectionV2()
     const fingerprint = await getFingerPrint()
@@ -185,14 +230,18 @@ export const clientFetchMaxAIAPI = async (
     })
     return {
       success: response.success,
-      data: response.data,
-      error: response.message,
+      responseRaw: response?.data?.response,
+      data: response?.data?.data,
+      message: response.message,
+      error: '',
     }
   } catch (error) {
     return {
       success: false,
+      responseRaw: null,
       data: null,
       error: (error as any)?.message || error,
+      message: '',
     }
   }
 }

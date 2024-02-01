@@ -1,3 +1,4 @@
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
@@ -15,7 +16,7 @@ export interface IAction {
   //动作的类型，比如 "RENDER_TEMPLATE" 或 "ASK_CHATGPT"
   type: ActionIdentifier
   execute: (params: any, engine: any) => Promise<any>
-  stop: () => Promise<boolean>
+  stop: (params: { engine: IShortcutEngineExternalEngine }) => Promise<boolean>
   reset: () => void
   error?: string
   output?: any

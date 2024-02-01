@@ -1,8 +1,5 @@
 import cheerio from 'cheerio'
 
-import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { SearchResponse } from '@/features/shortcuts/actions/web/ActionGetContentsOfSearchEngine'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import {
   checkIsDomain,
@@ -603,26 +600,5 @@ function getNameByUrl(url: string) {
     return hostArr.length >= 3 ? hostArr[1] : hostArr[0]
   } catch (error) {
     return url
-  }
-}
-
-/**
- * 获取html
- * @param url
- */
-export const backgroundFetchHTMLByUrl = async (url: string) => {
-  const port = new ContentScriptConnectionV2({
-    runtime: 'shortcut',
-  })
-  const response = await port.postMessage({
-    event: 'ShortCuts_getContentOfSearchEngine' as IShortCutsSendEvent,
-    data: {
-      URL: url,
-    },
-  })
-  const { status, html } = (response.data || {}) as SearchResponse
-  return {
-    status,
-    html,
   }
 }

@@ -3,15 +3,12 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTabIcons'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import {
-  ClientWritingMessageState,
-  ISidebarConversationType,
-} from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { I18nextKeysType } from '@/i18next'
@@ -71,8 +68,7 @@ const SidebarTabs: FC = () => {
     currentSidebarConversationType,
     updateSidebarConversationType,
   } = useSidebarSettings()
-
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
+  const { smoothConversationLoading } = useSmoothConversationLoading()
 
   // 在 immersive chat 页面, 有特殊的渲染逻辑
   const isInImmersiveChatPage = useMemo(() => isMaxAIImmersiveChatPage(), [])
@@ -112,7 +108,7 @@ const SidebarTabs: FC = () => {
     >
       {memoSidebarTabsData.map((item) => {
         const isActive = currentSidebarConversationType === item.value
-        const disabled = clientWritingMessage.loading
+        const disabled = smoothConversationLoading
         const bgcolor = isActive
           ? isDarkMode
             ? 'rgba(44, 44, 44, 1)'

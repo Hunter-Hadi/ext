@@ -1,6 +1,12 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
-import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import {
+  completeLastAIMessageOnError,
+  completeLastAIMessageOnStop,
+  IShortcutEngineExternalEngine,
+} from '@/features/shortcuts'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
@@ -8,10 +14,10 @@ import {
   pushOutputToChat,
   withLoadingDecorators,
 } from '@/features/shortcuts/decorators'
-import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 import { ICrawlingSearchResult } from '@/features/shortcuts/utils/searchEngineCrawling'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import {
@@ -19,12 +25,14 @@ import {
   MAX_CHARACTERS_TOKENS,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
+import clientGetContentOfURL from '@/features/shortcuts/utils/web/clientGetContentOfURL'
 
 // import { SLICE_MAX_CHARACTERS } from '@/features/shortcuts/actions/documents/ActionSliceOfText'
 
 // NOTE: 这只是为了WebGPT的业务实现的，不具备通用性
 export class ActionWebGPTSearchResultsExpand extends Action {
   static type: ActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
+  private pageSummaryTaskMap: Map<string, boolean>
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -32,12 +40,18 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     autoExecute: boolean,
   ) {
     super(id, type, parameters, autoExecute)
+    this.pageSummaryTaskMap = new Map<string, boolean>()
+  }
+
+  private isTaskAbort(abortTaskId: string) {
+    return this.pageSummaryTaskMap.get(abortTaskId) || false
   }
 
   @withLoadingDecorators()
   @pushOutputToChat({
     onlyError: true,
   })
+  @completeLastAIMessageOnError()
   async execute(
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
@@ -82,8 +96,24 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         const expandResults = await Promise.all<ICrawlingSearchResult>(
           searchResults.map(async (searchResult) => {
             try {
+              // 0. 给每个searchResult设置一个abortTaskId
+              const abortTaskId = uuidV4()
+              this.pageSummaryTaskMap.set(abortTaskId, false)
+              const fallbackData = {
+                url: '',
+                body: '',
+                title: '',
+              }
               // 1. 根据 url 获取页面内容
-              let response: any = undefined
+              let pageRawContent: {
+                success: boolean
+                body: string
+                title: string
+              } = {
+                success: false,
+                body: '',
+                title: '',
+              }
               // 判断是不是youtube
               const youtubeVideoId = YoutubeTranscript.retrieveVideoId(
                 searchResult.url,
@@ -91,33 +121,37 @@ export class ActionWebGPTSearchResultsExpand extends Action {
               if (youtubeVideoId) {
                 const postContextData = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
                   youtubeVideoId,
+                  abortTaskId,
                 )
+                if (this.isTaskAbort(abortTaskId)) {
+                  // 如果abort, 返回 fallbackData
+                  return fallbackData
+                }
                 if (postContextData.SOCIAL_MEDIA_PAGE_CONTENT) {
-                  response = {
-                    data: {
-                      success: true,
-                      body: postContextData.SOCIAL_MEDIA_PAGE_CONTENT,
-                      title: postContextData.post?.title,
-                    },
+                  pageRawContent = {
+                    success: true,
+                    body: postContextData.SOCIAL_MEDIA_PAGE_CONTENT,
+                    title: postContextData.post?.title || '',
                   }
                 }
               } else {
-                response = await engine.shortcutsMessageChannelEngine!.postMessage(
-                  {
-                    event: 'ShortCuts_getContentOfURL' as IShortCutsSendEvent,
-                    data: {
-                      URL: searchResult.url,
-                      timeOut: 20 * 1000, // 20s
-                      // 暂时不使用 google snapshot
-                      // withSnapshot: true,
-                    },
-                  },
+                const result = await clientGetContentOfURL(
+                  searchResult.url,
+                  20 * 1000,
+                  abortTaskId,
                 )
+                if (this.isTaskAbort(abortTaskId)) {
+                  // 如果abort, 返回 fallbackData
+                  return fallbackData
+                }
+                pageRawContent.success = result.success
+                pageRawContent.body = result.readabilityText
+                pageRawContent.title = result.title
               }
               // 2. 获取页面内容成功时，用页面内容替换 body、title
-              if (response.data.success) {
-                searchResult.body = response.data.body || searchResult.body
-                searchResult.title = response.data.title || searchResult.title
+              if (pageRawContent.success) {
+                searchResult.body = pageRawContent.body || searchResult.body
+                searchResult.title = pageRawContent.title || searchResult.title
                 // 3. 获取页面内容成功时，才会进行异步总结
                 // 根据 MAX_CHARACTERS_TOKENS ，计算出每次总结结果的长度
                 const partOfPageSummaryTokensLimit = Math.floor(
@@ -125,7 +159,12 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 )
                 const bodyTokens = (await getTextTokens(searchResult.body))
                   .length
+                if (this.isTaskAbort(abortTaskId)) {
+                  // 如果abort, 返回 fallbackData
+                  return fallbackData
+                }
                 if (bodyTokens > partOfPageSummaryTokensLimit) {
+                  this.pageSummaryTaskMap.set(abortTaskId, false)
                   // 网页内容的长度超过了每次总结的长度，需要进行总结
                   const summarizeResult = await this.createWebpageSummary(
                     searchResult,
@@ -133,7 +172,12 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                     partOfPageSummaryTokensLimit,
                     params.AI_RESPONSE_LANGUAGE ||
                       DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+                    abortTaskId,
                   )
+                  if (this.isTaskAbort(abortTaskId)) {
+                    // 如果abort, 返回 fallbackData
+                    return fallbackData
+                  }
                   searchResult.body = textHandler(summarizeResult.data, {
                     trim: true,
                     noSummaryTag: true,
@@ -176,7 +220,22 @@ export class ActionWebGPTSearchResultsExpand extends Action {
       this.output = template
     } catch (e) {
       this.error = (e as any).toString()
+    } finally {
+      // 清空任务
+      this.pageSummaryTaskMap.clear()
     }
+  }
+
+  @completeLastAIMessageOnStop()
+  async stop(): Promise<boolean> {
+    // 停止所有的总结任务
+    this.pageSummaryTaskMap.forEach((isEnd, key) => {
+      if (!isEnd) {
+        clientAbortFetchAPI(key)
+        this.pageSummaryTaskMap.set(key, true)
+      }
+    })
+    return true
   }
 
   private async createWebpageSummary(
@@ -184,6 +243,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     prompt: string,
     maxTokens: number,
     aiResponseLanguage: string,
+    abortTaskId: string,
   ) {
     let messageContent = prompt
       .replaceAll('{{SMART_QUERY}}', pageContent.searchQuery || '')
@@ -202,7 +262,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
     }
     return await clientAskMaxAIChatProvider(
       'USE_CHAT_GPT_PLUS',
-      'gpt-3.5-turbo-16k',
+      'gpt-4',
       {
         message_content: [
           {
@@ -213,6 +273,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',
         prompt_name: '[Search] smart page',
       },
+      abortTaskId,
     )
   }
 }

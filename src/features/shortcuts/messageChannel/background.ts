@@ -8,11 +8,6 @@ import {
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { backgroundSendClientToExecuteOperationElement } from '@/features/shortcuts/utils/OperationElementHelper'
-import {
-  getWebpageTitleAndText,
-  getWebpageUrlContent,
-} from '@/features/shortcuts/utils/webHelper'
-import { promiseTimeout } from '@/utils/promiseUtils'
 
 // const log = new Log('Background/ShortCut')
 
@@ -20,33 +15,6 @@ export const ShortcutMessageBackgroundInit = () => {
   createBackgroundMessageListener(async (runtime, event, data, sender) => {
     if (runtime === 'shortcut') {
       switch (event as IShortCutsSendEvent) {
-        case 'ShortCuts_getContentOfURL': {
-          const { URL, timeout } = data
-          const webpageData = await promiseTimeout(
-            getWebpageTitleAndText(URL),
-            timeout || 60 * 1000, //如果没有传入timeout，就默认60秒
-            {
-              title: '',
-              body: '',
-              url: '',
-              success: false,
-            },
-          )
-          return {
-            data: webpageData,
-            success: webpageData.success,
-            message: 'ok',
-          }
-        }
-        case 'ShortCuts_getContentOfSearchEngine': {
-          const { URL } = data
-          const webpageContent = await getWebpageUrlContent(URL)
-          return {
-            data: webpageContent,
-            success: webpageContent.success,
-            message: 'ok',
-          }
-        }
         case 'ShortCuts_OperationPageElement':
           {
             const OperationElementConfig = data.OperationElementConfig as OperationElementConfigType

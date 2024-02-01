@@ -75,7 +75,6 @@ const useSearchWithAI = () => {
     try {
       console.log('新版Conversation search with AI 开始创建')
       // 进入loading
-      await createConversation('Search')
       updateClientWritingMessage((prevState) => {
         return {
           ...prevState,

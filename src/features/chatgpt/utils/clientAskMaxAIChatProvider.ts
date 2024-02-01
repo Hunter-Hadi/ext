@@ -20,7 +20,7 @@ const clientAskMaxAIChatProvider = async (
     temperature?: number
     doc_id?: string
   },
-  waitAuth = false,
+  taskId: string,
 ) => {
   const {
     chat_history = [],
@@ -34,9 +34,8 @@ const clientAskMaxAIChatProvider = async (
   const port = new ContentScriptConnectionV2({
     runtime: 'client',
   })
-  if (waitAuth) {
-    // log backend log
-    const { data: isDailyUsageLimit } = await port.postMessage({
+  port
+    .postMessage({
       event: 'Client_logCallApiRequest',
       data: {
         name: prompt_name,
@@ -44,27 +43,8 @@ const clientAskMaxAIChatProvider = async (
         host,
       },
     })
-    if (isDailyUsageLimit) {
-      return {
-        success: false,
-        error: 'daily usage limit',
-        data: '',
-      }
-    }
-  } else {
-    port
-      .postMessage({
-        event: 'Client_logCallApiRequest',
-        data: {
-          name: prompt_name,
-          id: prompt_id,
-          host,
-        },
-      })
-      .then()
-      .catch()
-  }
-
+    .then()
+    .catch()
   let maxAIApi = ''
   const bodyObject: Record<string, any> = {
     streaming: false,
@@ -102,6 +82,7 @@ const clientAskMaxAIChatProvider = async (
       },
       body: JSON.stringify(bodyObject),
     },
+    taskId,
   )
   return {
     success: true,

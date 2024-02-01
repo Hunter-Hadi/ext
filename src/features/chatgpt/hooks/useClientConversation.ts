@@ -27,6 +27,7 @@ import {
   getPageSummaryType,
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
+import { getInputMediator } from '@/store/InputMediator'
 
 export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   [key in ISidebarConversationType]: {
@@ -214,6 +215,8 @@ const useClientConversation = () => {
       currentSidebarConversationType,
       currentConversationIdRef.current,
     )
+    getInputMediator('floatingMenuInputMediator').updateInputValue('')
+    getInputMediator('chatBoxInputMediator').updateInputValue('')
     if (currentSidebarConversationType === 'Chat') {
       await updateSidebarSettings({
         chat: {
@@ -252,17 +255,6 @@ const useClientConversation = () => {
       writingMessage: null,
       loading: false,
     })
-  }
-  const switchBackgroundChatSystemAIProvider = async (
-    provider: IAIProviderType,
-  ) => {
-    const result = await port.postMessage({
-      event: 'Client_switchAIProvider',
-      data: {
-        provider,
-      },
-    })
-    return result.success
   }
   const switchConversation = async (conversationId: string) => {
     if (conversationId && currentConversationIdRef.current !== conversationId) {
@@ -392,7 +384,6 @@ const useClientConversation = () => {
     createConversation,
     switchConversation,
     updateConversation,
-    switchBackgroundChatSystemAIProvider,
     currentSidebarConversationId,
     currentConversationIdRef,
     currentSidebarConversationType,

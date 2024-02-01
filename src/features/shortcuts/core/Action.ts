@@ -41,7 +41,7 @@ class Action implements IAction {
   async parseTemplate(template: string, params: ActionParameters) {
     return shortcutsRenderTemplate(template, params)
   }
-  async stop() {
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
     this.reset()
     return false
   }

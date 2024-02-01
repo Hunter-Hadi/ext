@@ -3,10 +3,11 @@ import { useEffect, useRef } from 'react'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { IUserChatMessage } from '@/features/chatgpt/types'
+import { IAIProviderModel, IUserChatMessage } from '@/features/chatgpt/types'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -31,6 +32,7 @@ const useClientChat = () => {
     stopShortCuts,
     getParams,
   } = useShortCutsEngine()
+  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const runShortCutsRef = useRef(runShortCuts)
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
@@ -42,6 +44,7 @@ const useClientChat = () => {
     hideConversationLoading,
     showConversationLoading,
     updateConversation,
+    getCurrentConversation,
   } = useClientConversation()
   const askAIQuestion = async (question: IAskAIQuestion) => {
     if (!question.meta?.attachments) {
@@ -116,16 +119,39 @@ const useClientChat = () => {
       await pushPricingHookMessage('PDF_AI_VIEWER')
       return
     }
+    // 3. Model - 付费卡点
+    const currentConversation = await getCurrentConversation()
+    if (
+      currentConversation?.meta.AIProvider &&
+      currentConversation?.meta.AIModel
+    ) {
+      const currentModelDetail:
+        | IAIProviderModel
+        | undefined = AI_PROVIDER_MODEL_MAP[
+        currentConversation.meta.AIProvider
+      ]?.find((AIModel) => AIModel.value === currentConversation.meta.AIModel)
+      if (currentModelDetail?.permission) {
+        if (
+          !currentModelDetail.permission.roles.includes(currentUserPlan.name)
+        ) {
+          // 如果当前AIModel有权限限制
+          // 则提示用户付费
+          await pushPricingHookMessage(currentModelDetail.permission.sceneType)
+          return
+        }
+      }
+    }
+
     // 判断是否有不保存最后运行的Shortcuts的Action存在
     const isNeedSaveLastRunShortcuts = actions.find((action) => {
       const notSaveActionType: ActionIdentifier[] = ['SET_VARIABLES_MODAL']
       return notSaveActionType.includes(action.type)
     })
     if (isSaveLastRunShortcuts && !isNeedSaveLastRunShortcuts) {
-      // 3. 保存最后一次运行的shortcuts
+      // 4. 保存最后一次运行的shortcuts
       await saveLastRunShortcuts(conversationId, actions, overwriteParameters)
     }
-    // 4. 运行shortcuts
+    // 5. 运行shortcuts
     setShortCuts(actions)
     await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
   }

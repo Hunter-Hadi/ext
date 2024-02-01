@@ -6,7 +6,7 @@ import {
   IMaxAIChatMessage,
   IMaxAIChatMessageContent,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
@@ -105,7 +105,7 @@ class MaxAIDALLEChat extends BaseChat {
     }
     const { taskId, meta, chat_history } = options || {}
     const conversationId = this.conversation?.id || ''
-    const userConfig = await getThirdProviderSettings('MAXAI_DALLE')
+    const userConfig = await getAIProviderSettings('MAXAI_DALLE')
     const controller = new AbortController()
     const signal = controller.signal
     if (taskId) {

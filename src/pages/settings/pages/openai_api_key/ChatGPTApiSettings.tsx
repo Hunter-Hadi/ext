@@ -15,8 +15,8 @@ import { useTranslation } from 'react-i18next'
 
 import { IOpenAIApiSettingsType } from '@/background/src/chat/OpenAIApiChat/types'
 import {
-  getThirdProviderSettings,
-  setThirdProviderSettings,
+  getAIProviderSettings,
+  setAIProviderSettings,
 } from '@/background/src/chat/util'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
@@ -42,7 +42,7 @@ const ChatGPTApiSettings: FC = () => {
   )
   useEffectOnce(() => {
     setLoaded(false)
-    getThirdProviderSettings('OPENAI_API').then((settings) => {
+    getAIProviderSettings('OPENAI_API').then((settings) => {
       if (settings) {
         initSettingsRef.current = cloneDeep(settings)
         setSettings(settings)
@@ -51,7 +51,7 @@ const ChatGPTApiSettings: FC = () => {
     })
   })
   const debounceSetSettings = useCallback(
-    debounce(setThirdProviderSettings, 1000),
+    debounce(setAIProviderSettings, 1000),
     [],
   )
   useEffect(() => {

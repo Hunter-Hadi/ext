@@ -9,7 +9,7 @@ import {
   IMaxAIChatMessageContent,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,
   chromeExtensionLogout,
@@ -42,6 +42,8 @@ class UseChatGPTPlusChat extends BaseChat {
   }
   async preAuth() {
     this.active = true
+    this.status = 'success'
+    await this.updateClientStatus()
     // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
@@ -124,7 +126,7 @@ class UseChatGPTPlusChat extends BaseChat {
       chat_history = [],
       meta,
     } = options || {}
-    const userConfig = await getThirdProviderSettings('USE_CHAT_GPT_PLUS')
+    const userConfig = await getAIProviderSettings('USE_CHAT_GPT_PLUS')
     const currentModel =
       this.conversation?.meta.AIModel ||
       userConfig!.model ||

@@ -8,7 +8,10 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  getChromeExtensionLocalStorage,
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   IAIProviderModel,
@@ -94,10 +97,11 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
 }> => {
   const settings = await getChromeExtensionLocalStorage()
   const currentAIProvider =
-    settings.sidebarSettings?.common?.currentAIProvider || 'USE_CHAT_GPT_PLUS'
+    settings.sidebarSettings?.common?.currentAIProvider ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
   const currentModelValue =
     settings.thirdProviderSettings?.[currentAIProvider]?.model ||
-    'gpt-3.5-turbo'
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel
   let currentModel: IAIProviderModel | null = null
   const findModelDetail = (models: IAIProviderModel[]) => {
     currentModel =

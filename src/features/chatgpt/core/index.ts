@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
@@ -409,7 +409,7 @@ export class ChatGPTConversation {
     let isSend = false
     let resultText = ''
     let resultMessageId = ''
-    const settings = await getThirdProviderSettings('OPENAI')
+    const settings = await getAIProviderSettings('OPENAI')
     let arkoseToken = undefined
     try {
       arkoseToken = await generateArkoseToken(this.model)

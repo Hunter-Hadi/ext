@@ -11,11 +11,12 @@ import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types
 import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { getChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
+import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
@@ -29,7 +30,7 @@ export const useAIProviderModelsMap = () => {
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
     if (currentProvider === 'OPENAI') {
-      getChatGPTWhiteListModelAsync().then((data) => {
+      updateChatGPTWhiteListModelAsync().then((data) => {
         setWhiteListModels(data)
       })
     }
@@ -176,12 +177,27 @@ const useAIProviderModels = () => {
             },
           },
         })
+        await switchBackgroundChatSystemAIProvider(AIProvider)
       } catch (e) {
         console.log(e)
       }
     },
     [currentProvider, aiProviderModels],
   )
+  const switchBackgroundChatSystemAIProvider = async (
+    provider: IAIProviderType,
+  ) => {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    const result = await port.postMessage({
+      event: 'Client_switchAIProvider',
+      data: {
+        provider,
+      },
+    })
+    return result.success
+  }
   return {
     currentAIProviderModel: currentAIProviderModel,
     currentAIProvider:

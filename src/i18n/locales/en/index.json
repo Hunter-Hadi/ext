@@ -45,7 +45,8 @@
     "download": "Download",
     "download_image": "Download image",
     "copy_image": "Copy image",
-    "screenshot": "AI screenshot",
+    "screenshot": "Screenshot",
+    "ai_screenshot": "AI screenshot",
     "release_notes": "Release notes"
   },
   "settings": {
@@ -562,6 +563,7 @@
     "home_view_content_nav__upload": "upload",
     "home_view_content_nav__choose_file": "Choose File",
     "home_view_content_nav__drop_here_text": "or drop PDF/image here",
+    "sidebar__ai_provider__model_selector__button__tooltip": "Switch AI model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Third-party AI providers",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Third-party AI providers are not managed by MaxAI. We highly recommend using our premium AI providers for fast and high-quality AI experience.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Third-party AI models",

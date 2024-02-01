@@ -7,7 +7,7 @@ import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
@@ -32,7 +32,7 @@ const APITemperatureSlider: FC<{
     setTemperature(currentThirdProviderSettings.temperature)
   }, [currentThirdProviderSettings.temperature])
   const debounceSaveThirdProviderSettings = debounce(async (value: number) => {
-    const prevTemperature = ((await getThirdProviderSettings(provider)) as any)
+    const prevTemperature = ((await getAIProviderSettings(provider)) as any)
       ?.temperature
     if (prevTemperature !== value) {
       await saveThirdProviderSettings(provider, {

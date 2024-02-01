@@ -8,7 +8,7 @@ import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiCh
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
-  getThirdProviderSettings,
+  getAIProviderSettings,
 } from '@/background/src/chat/util'
 import ConversationManager, {
   IChatConversation,
@@ -249,7 +249,7 @@ class OpenAIChat extends BaseChat {
       )
     }
     if (!this.conversation) {
-      const currentModel = (await getThirdProviderSettings('OPENAI'))?.model
+      const currentModel = (await getAIProviderSettings('OPENAI'))?.model
       if (currentModel) {
         await super.createConversation({
           ...initConversationData,
@@ -300,7 +300,7 @@ class OpenAIChat extends BaseChat {
       updateChatGPTWhiteListModelAsync().then().catch()
       this.questionSender = sender
       this.isAnswering = true
-      const settings = await getThirdProviderSettings('OPENAI')
+      const settings = await getAIProviderSettings('OPENAI')
       if (
         settings?.model === 'gpt-4-code-interpreter' ||
         settings?.model === 'gpt-4'
@@ -543,7 +543,7 @@ class OpenAIChat extends BaseChat {
         const processTabId = this.chatGPTProxyInstance?.id
         if (processTabId) {
           // 说明ping失败了，需要重新打开一个code_interpreter页面
-          const settings = await getThirdProviderSettings('OPENAI')
+          const settings = await getAIProviderSettings('OPENAI')
           if (
             settings?.modelOptions?.find(
               (model) => model.slug === 'gpt-4-code-interpreter',

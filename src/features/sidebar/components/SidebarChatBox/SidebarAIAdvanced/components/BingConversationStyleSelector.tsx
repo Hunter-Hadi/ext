@@ -15,8 +15,8 @@ import {
   BingConversationStyle,
 } from '@/background/src/chat/BingChat/bing/types'
 import {
-  getThirdProviderSettings,
-  setThirdProviderSettings,
+  getAIProviderSettings,
+  setAIProviderSettings,
 } from '@/background/src/chat/util'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
@@ -47,14 +47,14 @@ const BingConversationStyleSelector: FC = () => {
     BingConversationStyle.Balanced,
   )
   useEffectOnce(() => {
-    getThirdProviderSettings('BING').then((bingSettings) => {
+    getAIProviderSettings('BING').then((bingSettings) => {
       if (bingSettings?.conversationStyle) {
         setBingConversationStyle(bingSettings.conversationStyle)
       }
     })
   })
   useFocus(() => {
-    getThirdProviderSettings('BING').then((bingSettings) => {
+    getAIProviderSettings('BING').then((bingSettings) => {
       if (bingSettings?.conversationStyle) {
         setBingConversationStyle(bingSettings.conversationStyle)
       }
@@ -112,7 +112,7 @@ const BingConversationStyleSelector: FC = () => {
         value={bingConversationStyle}
         onChange={async (event) => {
           try {
-            await setThirdProviderSettings('BING', {
+            await setAIProviderSettings('BING', {
               conversationStyle: event.target.value as BingConversationStyle,
             })
             await cleanConversation()

@@ -2,6 +2,8 @@
 import lodashSet from 'lodash-es/set'
 import { v4 as uuidV4 } from 'uuid'
 
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
@@ -223,6 +225,115 @@ export function clearUserInput(beforeExecute = true) {
         getInputMediator(chatBoxInputMediator).updateInputValue('')
         return value
       }
+    }
+  }
+}
+
+/**
+ * 在stop的时候，结束最后一条AI message
+ */
+export function completeLastAIMessageOnStop() {
+  return function (
+    target: Action,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
+    const oldFunc = descriptor.value
+    descriptor.value = async function (params: {
+      engine: IShortcutEngineExternalEngine
+    }) {
+      const { clientConversationEngine } = params?.engine || {}
+      // 结束最后一条AI message
+      if (clientConversationEngine?.currentConversationIdRef.current) {
+        const currentConversation = await clientConversationEngine.getCurrentConversation()
+        if (currentConversation) {
+          const lastMessage =
+            currentConversation.messages[
+              currentConversation.messages.length - 1
+            ]
+          if (isAIMessage(lastMessage)) {
+            if (lastMessage.originalMessage) {
+              await clientChatConversationModifyChatMessages(
+                'update',
+                clientConversationEngine?.currentConversationIdRef.current,
+                0,
+                [
+                  {
+                    type: 'ai',
+                    messageId: lastMessage.messageId,
+                    originalMessage: {
+                      metadata: {
+                        sources: {
+                          status: 'complete',
+                        },
+                        isComplete: true,
+                      },
+                    },
+                  } as any,
+                ],
+              )
+            }
+          }
+        }
+      }
+      const value = await oldFunc.apply(this, [params])
+      return value
+    }
+  }
+}
+
+/**
+ * 在error的时候，结束最后一条AI message
+ */
+export function completeLastAIMessageOnError() {
+  return function (
+    target: Action,
+    propertyKey: string,
+    descriptor: PropertyDescriptor,
+  ) {
+    const oldFunc = descriptor.value
+    descriptor.value = async function (...args: any[]) {
+      const value = await oldFunc.apply(this, args)
+      const actionInstance: Action = this as any
+      if (actionInstance.error) {
+        const [, engine] = args
+        const { clientConversationEngine } =
+          (engine as IShortcutEngineExternalEngine) || {}
+        // 结束最后一条AI message
+        if (clientConversationEngine?.currentConversationIdRef.current) {
+          const currentConversation = await clientConversationEngine.getCurrentConversation()
+          if (currentConversation) {
+            const lastMessage =
+              currentConversation.messages[
+                currentConversation.messages.length - 1
+              ]
+            if (isAIMessage(lastMessage)) {
+              if (lastMessage.originalMessage) {
+                await clientChatConversationModifyChatMessages(
+                  'update',
+                  clientConversationEngine?.currentConversationIdRef.current,
+                  0,
+                  [
+                    {
+                      type: 'ai',
+                      messageId: lastMessage.messageId,
+                      originalMessage: {
+                        metadata: {
+                          sources: {
+                            status: 'complete',
+                          },
+                          isComplete: true,
+                        },
+                      },
+                    } as any,
+                  ],
+                )
+              }
+            }
+          }
+        }
+      }
+      return value
     }
   }
 }

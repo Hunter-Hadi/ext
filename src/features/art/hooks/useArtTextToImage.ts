@@ -1,6 +1,6 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { getThirdProviderSettings } from '@/background/src/chat/util'
+import { getAIProviderSettings } from '@/background/src/chat/util'
 import { ART_NATURAL_LANGUAGE_TO_DALL_E_3_PROMPT } from '@/features/art/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
@@ -41,7 +41,7 @@ const useArtTextToImage = () => {
       return
     }
     const messageId = uuidV4()
-    const modelConfig = await getThirdProviderSettings('MAXAI_DALLE')
+    const modelConfig = await getAIProviderSettings('MAXAI_DALLE')
     const isNeedTransform =
       sidebarSettings?.art?.isEnabledConversationalMode === true
     let actions: ISetActionsType = []

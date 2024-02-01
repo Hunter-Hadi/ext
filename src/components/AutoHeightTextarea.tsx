@@ -21,7 +21,6 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
@@ -173,7 +172,6 @@ const AutoHeightTextarea: FC<{
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const {
     defaultValue,
     onChange,
@@ -272,7 +270,7 @@ const AutoHeightTextarea: FC<{
   useEffect(() => {
     nextMessageIsActionRef.current = false
     metaDataRef.current = {}
-  }, [clientWritingMessage.loading])
+  }, [loading])
   // 更新input高度
   useEffect(() => {
     throttleAutoSizeTextarea(

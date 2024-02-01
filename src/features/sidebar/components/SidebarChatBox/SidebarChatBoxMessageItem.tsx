@@ -20,12 +20,13 @@ import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 interface IProps {
   message: IChatMessage
+  order: number
   className?: string
   loading?: boolean
 }
 
 const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
-  const { message, className, loading } = props
+  const { message, className, loading, order } = props
   const { isDarkMode } = useCustomTheme()
   useChatMessageExpiredFileUpdater(message)
   const [isHover, setIsHover] = useState(false)
@@ -113,7 +114,9 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
             loading={loading}
           />
         )}
-        {isUserMessage(message) && <SidebarUserMessage message={message} />}
+        {isUserMessage(message) && (
+          <SidebarUserMessage message={message} order={order} />
+        )}
       </AppSuspenseLoadingLayout>
     </Stack>
   )

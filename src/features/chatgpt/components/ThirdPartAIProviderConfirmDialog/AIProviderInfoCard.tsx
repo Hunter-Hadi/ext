@@ -58,6 +58,18 @@ const AIProviderInfoCard: FC<{
             {aiProviderOption.label}
           </Typography>
         </Stack>
+        {aiProviderOption?.disabled && (
+          <Typography
+            fontSize={'14px'}
+            color={'text.primary'}
+            textAlign={'left'}
+            fontWeight={700}
+          >
+            {t(
+              'client:sidebar__ai_provider__provider_selector__disabled__description',
+            )}
+          </Typography>
+        )}
         {authMode && (
           <Typography
             fontSize={'14px'}

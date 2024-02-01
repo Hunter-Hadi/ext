@@ -19,7 +19,6 @@ import AIProviderMainPartIcon from '../icons/AIProviderMainPartIcon'
 const ThirdPartyAIProviderRecommendations: FC = () => {
   const { t } = useTranslation(['client'])
   const [loading, setLoading] = React.useState(false)
-
   const setDialogState = useSetRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )

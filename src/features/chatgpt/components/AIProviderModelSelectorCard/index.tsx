@@ -25,6 +25,7 @@ import {
   SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG,
   useClientConversation,
 } from '@/features/chatgpt/hooks/useClientConversation'
+import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/store'
@@ -83,6 +84,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
+  const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   // 当前sidebarConversationType的AI provider
   const currentAIProvider =
@@ -96,7 +98,21 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
   const currentSidebarConversationTypeModels = useMemo(() => {
     return getAIProviderModelSelectorOptions(sidebarConversationType)
-  }, [sidebarConversationType])
+      .filter((model) => {
+        // 过滤掉被隐藏的AI模型
+        return !remoteAIProviderConfig.hiddenAIProviders.includes(
+          model.AIProvider,
+        )
+      })
+      .map((model) => {
+        if (model.disabled !== true) {
+          model.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
+            model.AIProvider,
+          )
+        }
+        return model
+      })
+  }, [sidebarConversationType, remoteAIProviderConfig.hiddenAIProviders])
   const currentModelDetail = useMemo(() => {
     const AIProviderSelectorModel = ChatAIProviderModelSelectorOptions.find(
       (option) => option.value === currentAIModel,
@@ -188,7 +204,11 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         {currentSidebarConversationTypeModels.map((AIModelOption) => {
           return (
             <MenuItem
+              disabled={AIModelOption.disabled}
               onMouseEnter={() => {
+                if (isHoverThirdPartyModel) {
+                  return
+                }
                 setIsHoverThirdPartyModel(false)
                 setHoverModel(AIModelOption)
               }}
@@ -198,6 +218,9 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 AIModelOption.value === currentModelDetail?.value
               }
               onClick={async () => {
+                if (isHoverThirdPartyModel) {
+                  return
+                }
                 await updateAIProviderModel(
                   AIModelOption.AIProvider,
                   AIModelOption.value,

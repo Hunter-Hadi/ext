@@ -4,7 +4,6 @@ import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { ChatStatus } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import BaseChat from '@/background/src/chat/BaseChat'
-import { updateChatGPTWhiteListModelAsync } from '@/background/src/chat/OpenAiChat/utils'
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
@@ -296,8 +295,6 @@ class OpenAIChat extends BaseChat {
   ) => {
     const meta = question.meta || {}
     if (!this.isAnswering) {
-      // 获取model的白名单，因为要动态禁用一些model
-      updateChatGPTWhiteListModelAsync().then().catch()
       this.questionSender = sender
       this.isAnswering = true
       const settings = await getAIProviderSettings('OPENAI')

@@ -15,6 +15,7 @@ export type AIProviderOptionType = {
   authButtonText: I18nextKeysType
   authOpenInNew: boolean
   thirdParty?: boolean
+  disabled?: boolean
 }
 const AIProviderOptions: AIProviderOptionType[] = [
   {

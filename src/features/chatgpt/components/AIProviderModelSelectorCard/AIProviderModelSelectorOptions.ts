@@ -3,8 +3,8 @@ import { ISidebarConversationType } from '@/features/sidebar/store'
 import { I18nextKeysType } from '@/i18next'
 
 export type AIProviderModelSelectorOption = {
-  dev?: boolean
   tag?: I18nextKeysType
+  disabled?: boolean
   mainPart?: boolean
   label: string
   value: string

@@ -37,6 +37,7 @@ import {
   PoeChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
+import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import ConversationManager from '@/background/src/chatConversations'
 import { ClientMessageInit } from '@/background/src/client'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
@@ -331,6 +332,10 @@ const initChromeExtensionUpdated = async () => {
   }
   // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
   await ConversationManager.getAllConversation()
+  // NOTE: 远程更新AI配置
+  setTimeout(() => {
+    updateRemoteAIProviderConfigAsync().then().catch()
+  }, (1 + Math.floor(Math.random() * 9)) * 1000)
 }
 
 /**

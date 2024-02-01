@@ -1,57 +1,78 @@
 import Browser from 'webextension-polyfill'
 
+import { IAIProviderType } from '@/background/provider/chat'
 import backgroundGetContentOfURL from '@/features/shortcuts/utils/web/backgroundGetContentOfURL'
 
-export const timeKey = 'CHAT_GPT_WHITE_LIST_MODELS_TIME'
-export const modelKey = 'CHAT_GPT_WHITE_LIST_MODELS'
+export const REMOTE_AI_PROVIDER_CONFIG_TIME_KEY =
+  'REMOTE_AI_PROVIDER_CONFIG_TIME_KEY'
+export const REMOTE_AI_PROVIDER_CONFIG_KEY = 'REMOTE_AI_PROVIDER_CONFIG_KEY'
+
+export interface IRemoteAIProviderConfig {
+  date: number
+  chatGPTWebappModelsWhiteList: string[]
+  disabledAIProviders: IAIProviderType[]
+  hiddenAIProviders: IAIProviderType[]
+}
+
+export const DEFAULT_REMOTE_AI_PROVIDER_CONFIG: IRemoteAIProviderConfig = {
+  date: Date.now(),
+  chatGPTWebappModelsWhiteList: [],
+  disabledAIProviders: [],
+  hiddenAIProviders: [],
+}
 
 // background发起的
-export const updateChatGPTWhiteListModelAsync = async (): Promise<string[]> => {
-  const lastFetchTime = await Browser.storage.local.get(timeKey)
-  if (lastFetchTime[timeKey]) {
+export const updateRemoteAIProviderConfigAsync = async (): Promise<IRemoteAIProviderConfig> => {
+  const lastFetchTime = await Browser.storage.local.get(
+    REMOTE_AI_PROVIDER_CONFIG_TIME_KEY,
+  )
+  if (lastFetchTime[REMOTE_AI_PROVIDER_CONFIG_TIME_KEY]) {
     const now = Date.now()
-    const diff = now - lastFetchTime[timeKey]
-    // 1小时内不更新
-    if (diff < 60 * 60 * 1000) {
-      return await getChatGPTWhiteListModels()
+    const diff = now - lastFetchTime[REMOTE_AI_PROVIDER_CONFIG_TIME_KEY]
+    // 2小时内不更新
+    // if (diff < 2 * 60 * 60 * 1000) {
+    if (diff < 2 * 1000) {
+      return await getRemoteAIProviderConfigCache()
     }
   }
   const webpageData = await backgroundGetContentOfURL(
-    `https://www.phtracker.com/crx/info/provider/v1`,
+    `https://www.phtracker.com/crx/info/provider/v2`,
     10 * 1000,
   )
   if (webpageData.success && webpageData.readabilityText) {
     try {
-      const data = JSON.parse(webpageData.readabilityText)
-      if (data.models) {
+      const data = JSON.parse(
+        webpageData.readabilityText,
+      ) as IRemoteAIProviderConfig
+      if (data?.date) {
         // set to local storage
         await Browser.storage.local.set({
-          [modelKey]: JSON.stringify(data.models),
+          [REMOTE_AI_PROVIDER_CONFIG_KEY]: JSON.stringify(data),
         })
         await Browser.storage.local.set({
-          [timeKey]: Date.now(),
+          [REMOTE_AI_PROVIDER_CONFIG_TIME_KEY]: Date.now(),
         })
-        return data.models
+        return data
       }
-      return []
+      return DEFAULT_REMOTE_AI_PROVIDER_CONFIG
     } catch (e) {
       console.log(e)
-      return []
+      return DEFAULT_REMOTE_AI_PROVIDER_CONFIG
     }
   }
-  return []
+  return DEFAULT_REMOTE_AI_PROVIDER_CONFIG
 }
 
-export const getChatGPTWhiteListModels = async (): Promise<string[]> => {
+export const getRemoteAIProviderConfigCache = async (): Promise<IRemoteAIProviderConfig> => {
   try {
-    const cache = await Browser.storage.local.get(modelKey)
-    if (cache[modelKey]) {
-      const data = JSON.parse(cache[modelKey])
+    const cache = await Browser.storage.local.get(REMOTE_AI_PROVIDER_CONFIG_KEY)
+    if (cache[REMOTE_AI_PROVIDER_CONFIG_KEY]) {
+      const data = JSON.parse(cache[REMOTE_AI_PROVIDER_CONFIG_KEY])
       return data
     }
-    return []
+    return DEFAULT_REMOTE_AI_PROVIDER_CONFIG
   } catch (e) {
     console.log(e)
-    return []
+    return DEFAULT_REMOTE_AI_PROVIDER_CONFIG
   }
 }

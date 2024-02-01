@@ -18,6 +18,7 @@ import AIProviderOptions, {
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import AIProviderAuthButton from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/AIProviderAuthButton'
 import AIProviderInfoCard from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/AIProviderInfoCard'
+import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
@@ -55,6 +56,22 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
     AI_PROVIDER_MODEL_MAP,
     hideThirdPartyAIProviderConfirmDialog,
   } = useThirdAIProviderModels()
+  const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
+  const memoizedThirdAIProviderOptions = useMemo(() => {
+    return ThirdPartyAIProvidersOptions.filter((option) => {
+      return !remoteAIProviderConfig.hiddenAIProviders.includes(option.value)
+    }).map((option) => {
+      if (!option.origin) {
+        return option
+      }
+      if (option.origin.disabled !== true) {
+        option.origin.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
+          option.value,
+        )
+      }
+      return option
+    })
+  }, [remoteAIProviderConfig])
   const memoizedThirdAIProviderModelOptions = useMemo(() => {
     if (userSelectAIProvider) {
       return list2Options(AI_PROVIDER_MODEL_MAP[userSelectAIProvider], {
@@ -127,9 +144,13 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
       <AppLoadingLayout loading={!currentThirdAIProviderModel}>
         <Stack direction={'row'} alignItems={'center'} gap={2}>
           <BaseSelect
-            onChange={(value) => {
+            onChange={(value, option) => {
               setUserSelectAIProvider(value as IAIProviderType)
               setUserSelectAIProviderModel(null)
+              // 重新确认AuthStatus
+              if (isContinue) {
+                setIsContinue(false)
+              }
             }}
             sx={{
               width: '192px',
@@ -140,12 +161,12 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
               },
             }}
             defaultValue={currentThirdAIProvider}
-            options={ThirdPartyAIProvidersOptions}
+            options={memoizedThirdAIProviderOptions}
             label={t(
               'client:provider__third_party_confirm_dialog__choose_third_party__selector__ai_provider__title',
             )}
             renderValue={(value) => {
-              const option = ThirdPartyAIProvidersOptions.find(
+              const option = memoizedThirdAIProviderOptions.find(
                 (option) => option.value === value,
               )
               return (
@@ -167,6 +188,12 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
                   </Typography>
                 </Stack>
               )
+            }}
+            labelProp={{
+              color: 'red!important',
+              '&.Mui-disabled': {
+                pointerEvents: 'auto!important',
+              },
             }}
             renderLabel={(value, option) => {
               const original = option.origin as AIProviderOptionType
@@ -201,6 +228,12 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
                     direction={'row'}
                     alignItems={'center'}
                     spacing={1}
+                    onClickCapture={(event) => {
+                      if (original?.disabled) {
+                        event.stopPropagation()
+                        event.preventDefault()
+                      }
+                    }}
                   >
                     <ThirdPartyAIProviderIcon />
                     <Typography

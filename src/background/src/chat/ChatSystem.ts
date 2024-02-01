@@ -8,6 +8,7 @@ import {
   IAIProviderType,
 } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
+import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import {
   getAIProviderSettings,
   processAskAIParameters,
@@ -37,6 +38,7 @@ class ChatSystem implements ChatSystemInterface {
     [key in IAIProviderType]?: ChatAdapterInterface
   } = {}
   constructor() {
+    // 获取model的白名单，因为要动态禁用一些model
     this.initChatSystem()
   }
   get conversation() {
@@ -155,6 +157,8 @@ class ChatSystem implements ChatSystemInterface {
           }
           case 'Client_askChatGPTQuestion':
             {
+              // 每次提问的时候尝试更新一下model的白名单
+              updateRemoteAIProviderConfigAsync().then().catch()
               const taskId = data.taskId
               const question = data.question as IUserChatMessage
               console.log('新版Conversation 提问', question)

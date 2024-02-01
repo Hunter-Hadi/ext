@@ -43,7 +43,8 @@
     "copy_with_formatting": "서식이 있는 복사",
     "download": "다운로드",
     "download_image": "이미지 다운로드",
-    "copy_image": "이미지 복사"
+    "copy_image": "이미지 복사",
+    "screenshot": "AI 스크린샷"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision에 액세스하려면 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4의 고급 언어 이해력과 이미지 처리를 통합한 AI 기술의 혁신적인 도약인 GPT-4-Vision으로 AI 능력의 새로운 차원을 경험해보세요.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI 예술과 이미지 생성을 위해 업그레이드하세요",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "가장 고급스러운 AI 예술 모델로 창의성과 생산성을 10배로 높여보세요. 비전을 아름다운 이미지로 신속하게 변환하세요. 간단하고 강력하며 혁신적입니다."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "가장 고급스러운 AI 예술 모델로 창의성과 생산성을 10배로 높여보세요. 비전을 아름다운 이미지로 신속하게 변환하세요. 간단하고 강력하며 혁신적입니다.",
+    "home_view_content_nav__chat_with_pdf_title": "PDF와 채팅하기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

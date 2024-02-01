@@ -43,7 +43,8 @@
     "copy_with_formatting": "Biçimlendirmeyle Kopyala",
     "download": "İndir",
     "download_image": "Resmi indir",
-    "copy_image": "Resmi kopyala"
+    "copy_image": "Resmi kopyala",
+    "screenshot": "AI ekran görüntüsü"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Gpt-4-vision'a erişim için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4'ün gelişmiş dil anlama yeteneğiyle görüntü işleme entegre eden AI teknolojisinde çığır açan bir adım olan GPT-4-Vision ile AI yeteneklerinin yeni bir boyutuna erişin.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI sanatı ve resimleri oluşturmak için yükseltme yapın",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "En gelişmiş AI sanat modelleriyle yaratıcılığınızı ve üretkenliğinizi 10 kat artırın. Vizyonlarınızı hızla etkileyici resimlere dönüştürün. Basit, güçlü, dönüştürücü."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "En gelişmiş AI sanat modelleriyle yaratıcılığınızı ve üretkenliğinizi 10 kat artırın. Vizyonlarınızı hızla etkileyici resimlere dönüştürün. Basit, güçlü, dönüştürücü.",
+    "home_view_content_nav__chat_with_pdf_title": "Herhangi bir PDF ile sohbet edin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

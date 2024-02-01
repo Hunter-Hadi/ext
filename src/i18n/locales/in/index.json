@@ -43,7 +43,8 @@
     "copy_with_formatting": "Salin dengan pemformatan",
     "download": "Unduh",
     "download_image": "Unduh gambar",
-    "copy_image": "Salin gambar"
+    "copy_image": "Salin gambar",
+    "screenshot": "Tangkapan Layar AI"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Tingkatkan untuk mengakses gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Dimensi baru dari kemampuan AI dengan GPT-4-Vision - lompatan terobosan dalam teknologi AI yang mengintegrasikan pemrosesan gambar dengan pemahaman bahasa canggih dari GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Tingkatkan untuk membuat seni dan gambar AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Meningkatkan kreativitas dan produktivitas Anda 10 kali lipat dengan model seni AI paling canggih. Cepat mengubah visi Anda menjadi gambar yang menakjubkan. Sederhana, kuat, dan transformatif."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Meningkatkan kreativitas dan produktivitas Anda 10 kali lipat dengan model seni AI paling canggih. Cepat mengubah visi Anda menjadi gambar yang menakjubkan. Sederhana, kuat, dan transformatif.",
+    "home_view_content_nav__chat_with_pdf_title": "Chat dengan PDF apa pun"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

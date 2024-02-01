@@ -43,7 +43,8 @@
     "copy_with_formatting": "Αντιγραφή με μορφοποίηση",
     "download": "Λήψη",
     "download_image": "Λήψη εικόνας",
-    "copy_image": "Αντιγραφή εικόνας"
+    "copy_image": "Αντιγραφή εικόνας",
+    "screenshot": "Στιγμιότυπο AI"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Αναβαθμίστε για πρόσβαση στο gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Μια νέα διάσταση των δυνατοτήτων της AI με το GPT-4-Vision - ένα καινοτόμο άλμα στην τεχνολογία της AI που ενσωματώνει την επεξεργασία εικόνας με την προηγμένη γλωσσική κατανόηση του GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Αναβαθμίστε για να δημιουργήσετε AI art και εικόνες",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Αυξήστε κατά 10 φορές τη δημιουργικότητά σας και την παραγωγικότητά σας με τα πιο προηγμένα μοντέλα τέχνης AI. Μετατρέψτε γρήγορα τις εικόνες σας σε εκπληκτικά αποτελέσματα. Απλό, ισχυρό, μετασχηματιστικό."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Αυξήστε κατά 10 φορές τη δημιουργικότητά σας και την παραγωγικότητά σας με τα πιο προηγμένα μοντέλα τέχνης AI. Μετατρέψτε γρήγορα τις εικόνες σας σε εκπληκτικά αποτελέσματα. Απλό, ισχυρό, μετασχηματιστικό.",
+    "home_view_content_nav__chat_with_pdf_title": "Συνομιλήστε με οποιοδήποτε PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

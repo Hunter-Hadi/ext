@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopioi muotoilulla",
     "download": "Lataa",
     "download_image": "Lataa kuva",
-    "copy_image": "Kopioi kuva"
+    "copy_image": "Kopioi kuva",
+    "screenshot": "AI-näyttökuva"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Päivitä pääsy gpt-4-visioniin",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Uusi ulottuvuus tekoälyn kyvyissä GPT-4-Visionin avulla - mullistava harppaus tekoälyteknologiassa, joka yhdistää kuvankäsittelyn GPT-4:n edistykselliseen kielitaitoon.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Päivitä luodaksesi tekoälytaidetta ja kuvia",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Kymmenkertaista luovuutesi ja tuottavuutesi edistyksellisimmillä tekoälytaidemalleilla. Muunna visiosi upeiksi kuviksi nopeasti. Yksinkertainen, voimakas, muuntautumiskykyinen."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Kymmenkertaista luovuutesi ja tuottavuutesi edistyksellisimmillä tekoälytaidemalleilla. Muunna visiosi upeiksi kuviksi nopeasti. Yksinkertainen, voimakas, muuntautumiskykyinen.",
+    "home_view_content_nav__chat_with_pdf_title": "Keskustele minkä tahansa PDF:n kanssa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

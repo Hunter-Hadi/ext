@@ -43,7 +43,8 @@
     "copy_with_formatting": "Másolat formázással",
     "download": "Letöltés",
     "download_image": "Kép letöltése",
-    "copy_image": "Kép másolása"
+    "copy_image": "Kép másolása",
+    "screenshot": "AI képernyőkép"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Frissítés a gpt-4-vision eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Az AI képességek új dimenziója a GPT-4-Vision-nel - egy forradalmi ugrás az AI technológiában, amely integrálja a képfeldolgozást a GPT-4 fejlett nyelvi megértésével.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Frissítés az AI művészet és képek létrehozásához",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10-szeresére növelheti kreativitását és produktivitását a legfejlettebb AI művészeti modellekkel. Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, transzformáló."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10-szeresére növelheti kreativitását és produktivitását a legfejlettebb AI művészeti modellekkel. Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, transzformáló.",
+    "home_view_content_nav__chat_with_pdf_title": "Beszélgetés bármilyen PDF-fel"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -43,7 +43,8 @@
     "copy_with_formatting": "نسخ مع التنسيق",
     "download": "تحميل",
     "download_image": "تحميل الصورة",
-    "copy_image": "نسخ الصورة"
+    "copy_image": "نسخ الصورة",
+    "screenshot": "لقطة شاشة ذكاء اصطناعي"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "الترقية للوصول إلى gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "بعدًا جديدًا في قدرات الذكاء الاصطناعي مع GPT-4-Vision - قفزة ثورية في تكنولوجيا الذكاء الاصطناعي تدمج معالجة الصور مع فهم اللغة المتقدم لـ GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "الترقية لإنشاء فن وصور بواسطة الذكاء الاصطناعي",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "قم بتضاعف إبداعك وإنتاجيتك بفضل نماذج الذكاء الاصطناعي الأكثر تقدمًا. حوّل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "قم بتضاعف إبداعك وإنتاجيتك بفضل نماذج الذكاء الاصطناعي الأكثر تقدمًا. حوّل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة.",
+    "home_view_content_nav__chat_with_pdf_title": "الدردشة مع أي ملف PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

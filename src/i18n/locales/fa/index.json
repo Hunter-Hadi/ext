@@ -43,7 +43,8 @@
     "copy_with_formatting": "کپی با قالب‌بندی",
     "download": "دانلود",
     "download_image": "دانلود تصویر",
-    "copy_image": "کپی تصویر"
+    "copy_image": "کپی تصویر",
+    "screenshot": "عکس از صفحه نمایش هوش مصنوعی"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "ارتقا برای دسترسی به gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "بعدی از قابلیت‌های هوش مصنوعی با GPT-4-Vision - یک پیشرفت بزرگ در فناوری هوش مصنوعی که پردازش تصویر را با درک زبان پیشرفته GPT-4 یکپارچه می‌کند.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "ارتقا برای ایجاد هنر و تصاویر هوش مصنوعی",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "خلاقیت و بهره‌وری خود را با مدل‌های هنری هوش مصنوعی پیشرفته‌ترین مدل‌های هنری هوش مصنوعی 10 برابر کنید. به سرعت تصاویر خلاقانه خود را به تصاویر شگفت‌انگیز تبدیل کنید. ساده، قدرتمند، تحولی."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "خلاقیت و بهره‌وری خود را با مدل‌های هنری هوش مصنوعی پیشرفته‌ترین مدل‌های هنری هوش مصنوعی 10 برابر کنید. به سرعت تصاویر خلاقانه خود را به تصاویر شگفت‌انگیز تبدیل کنید. ساده، قدرتمند، تحولی.",
+    "home_view_content_nav__chat_with_pdf_title": "چت با هر فایل PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

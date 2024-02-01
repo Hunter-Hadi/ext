@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopiuj z formatowaniem",
     "download": "Pobierz",
     "download_image": "Pobierz obraz",
-    "copy_image": "Kopiuj obraz"
+    "copy_image": "Kopiuj obraz",
+    "screenshot": "Zrzut ekranu AI"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Uaktualnij, aby uzyskać dostęp do gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nowy wymiar możliwości sztucznej inteligencji dzięki GPT-4-Vision - przełomowy skok w technologii AI, który integruje przetwarzanie obrazów z zaawansowanym zrozumieniem języka GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Uaktualnij, aby tworzyć sztukę i obrazy AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zwiększ swoją kreatywność i produktywność dziesięciokrotnie dzięki najbardziej zaawansowanym modelom sztuki AI. Szybko zamieniaj swoje wizje w oszałamiające obrazy. Proste, potężne, przekształcające."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zwiększ swoją kreatywność i produktywność dziesięciokrotnie dzięki najbardziej zaawansowanym modelom sztuki AI. Szybko zamieniaj swoje wizje w oszałamiające obrazy. Proste, potężne, przekształcające.",
+    "home_view_content_nav__chat_with_pdf_title": "Czatuj z dowolnym plikiem PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

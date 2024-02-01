@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopieren mit Formatierung",
     "download": "Herunterladen",
     "download_image": "Bild herunterladen",
-    "copy_image": "Bild kopieren"
+    "copy_image": "Bild kopieren",
+    "screenshot": "AI Screenshot"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgrade, um auf gpt-4-vision zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Eine neue Dimension der KI-Fähigkeiten mit GPT-4-Vision - ein bahnbrechender Fortschritt in der KI-Technologie, der Bildverarbeitung mit dem fortschrittlichen Sprachverständnis von GPT-4 integriert.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade, um KI-Kunst und Bilder zu erstellen",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Steigern Sie Ihre Kreativität und Produktivität um das 10-fache mit den fortschrittlichsten KI-Kunstmodellen. Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, transformierend."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Steigern Sie Ihre Kreativität und Produktivität um das 10-fache mit den fortschrittlichsten KI-Kunstmodellen. Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, transformierend.",
+    "home_view_content_nav__chat_with_pdf_title": "Mit jedem PDF chatten"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

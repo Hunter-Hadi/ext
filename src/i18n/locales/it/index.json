@@ -43,7 +43,8 @@
     "copy_with_formatting": "Copia con formattazione",
     "download": "Scarica",
     "download_image": "Scarica immagine",
-    "copy_image": "Copia immagine"
+    "copy_image": "Copia immagine",
+    "screenshot": "Screenshot IA"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Passa a gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Una nuova dimensione delle capacità dell'IA con GPT-4-Vision - un balzo rivoluzionario nella tecnologia dell'IA che integra l'elaborazione delle immagini con la comprensione avanzata del linguaggio di GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Passa per creare arte e immagini AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Moltiplica per 10 la tua creatività e produttività con i modelli d'arte AI più avanzati. Trasforma rapidamente le tue visioni in immagini mozzafiato. Semplice, potente, trasformativo."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Moltiplica per 10 la tua creatività e produttività con i modelli d'arte AI più avanzati. Trasforma rapidamente le tue visioni in immagini mozzafiato. Semplice, potente, trasformativo.",
+    "home_view_content_nav__chat_with_pdf_title": "Chat con qualsiasi PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

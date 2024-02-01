@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopírovat s formátováním",
     "download": "Stáhnout",
     "download_image": "Stáhnout obrázek",
-    "copy_image": "Kopírovat obrázek"
+    "copy_image": "Kopírovat obrázek",
+    "screenshot": "Snímek obrazovky AI"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgradujte pro přístup k gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Nový rozměr schopností AI s GPT-4-Vision - průlomový skok v technologii AI, který integruje zpracování obrazu s pokročilým jazykovým porozuměním GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgradujte pro tvorbu AI umění a obrázků",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zvýšte svou kreativitu a produktivitu 10krát s nejvyspělejšími modely AI umění. Rychle přetvořte své vize do ohromujících obrázků. Jednoduché, výkonné, transformační."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Zvýšte svou kreativitu a produktivitu 10krát s nejvyspělejšími modely AI umění. Rychle přetvořte své vize do ohromujících obrázků. Jednoduché, výkonné, transformační.",
+    "home_view_content_nav__chat_with_pdf_title": "Chat s libovolným PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

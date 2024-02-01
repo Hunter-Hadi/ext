@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopēt ar formatēšanu",
     "download": "Lejupielādēt",
     "download_image": "Lejupielādēt attēlu",
-    "copy_image": "Kopēt attēlu"
+    "copy_image": "Kopēt attēlu",
+    "screenshot": "AI ekrānuzņēmums"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Jauniniet, lai piekļūtu gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Jauna dimensija AI spējās ar GPT-4-Vision - revolucionārs solis AI tehnoloģijā, kas integrē attēlu apstrādi ar GPT-4 uzlaboto valodas sapratni.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Jauniniet, lai radītu AI mākslu un attēlus",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x palieliniet savu radošumu un produktivitāti ar visvarenākajiem AI mākslas modeļiem. Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x palieliniet savu radošumu un produktivitāti ar visvarenākajiem AI mākslas modeļiem. Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
+    "home_view_content_nav__chat_with_pdf_title": "Saraksties ar jebkuru PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

@@ -43,7 +43,8 @@
     "copy_with_formatting": "فارمیٹنگ کے ساتھ کاپی",
     "download": "ڈاؤن لوڈ",
     "download_image": "تصویر ڈاؤن لوڈ کریں",
-    "copy_image": "تصویر کاپی کریں"
+    "copy_image": "تصویر کاپی کریں",
+    "screenshot": "AI تصویر"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision تک رسائی حاصل کرنے کے لئے اپ گریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 کی تقدیر سے بڑھ کر AI صلاحیتوں کا نیا جائزہ لیں - GPT-4 کی تفصیلی زبانی سمجھ کو تصویری پروسیسنگ کے ساتھ ملا کر AI ٹیکنالوجی میں ایک نئی بہار ہے۔",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI آرٹ اور تصاویر بنانے کے لئے اپ گریڈ کریں",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "سب سے تجدید شدہ AI آرٹ ماڈلز کے ساتھ اپنی تخلیقیت اور پیداواری کو 10 گنا بڑھائیں۔ اپنی خوابوں کو دلکش تصاویر میں تیزی سے تبدیل کریں۔ آسان، طاقتور، تحولیہ۔"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "سب سے تجدید شدہ AI آرٹ ماڈلز کے ساتھ اپنی تخلیقیت اور پیداواری کو 10 گنا بڑھائیں۔ اپنی خوابوں کو دلکش تصاویر میں تیزی سے تبدیل کریں۔ آسان، طاقتور، تحولیہ۔",
+    "home_view_content_nav__chat_with_pdf_title": "کسی بھی پی ڈی ایف کے ساتھ چیٹ کریں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

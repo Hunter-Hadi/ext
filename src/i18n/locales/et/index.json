@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopeeri vormindamisega",
     "download": "Laadi alla",
     "download_image": "Laadi pilt alla",
-    "copy_image": "Kopeeri pilt"
+    "copy_image": "Kopeeri pilt",
+    "screenshot": "AI ekraanipilt"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Uuenda gpt-4-visioni kasutamiseks",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "AI võimekuste uus dimensioon GPT-4-Visioniga - läbimurre AI tehnoloogias, mis integreerib pilditöötluse GPT-4 edasijõudnud keele mõistmisega.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Uuenda AI kunsti ja piltide loomiseks",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x oma loovust ja tootlikkust kõige arenenumate AI kunstimudelitega. Muutke oma visioonid kiiresti vapustavateks piltideks. Lihtne, võimas, muutev."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10x oma loovust ja tootlikkust kõige arenenumate AI kunstimudelitega. Muutke oma visioonid kiiresti vapustavateks piltideks. Lihtne, võimas, muutev.",
+    "home_view_content_nav__chat_with_pdf_title": "Vestle mis tahes PDF-iga"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

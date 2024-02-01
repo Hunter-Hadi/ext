@@ -43,7 +43,8 @@
     "copy_with_formatting": "स्वरूपण सह कॉपी",
     "download": "डाउनलोड",
     "download_image": "छाया डाउनलोड करा",
-    "copy_image": "छाया कॉपी करा"
+    "copy_image": "छाया कॉपी करा",
+    "screenshot": "AI स्क्रीनशॉट"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision वापरण्यासाठी अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4 च्या प्रगत भाषा समजूतीसह GPT-4-Vision - AI तंत्रज्ञानाच्या एक नवीन आयामाची अद्यावत जोडणारी एक उद्घाटनात्मक लहान चल होती, ज्यामुळे छायांकनाचे प्रक्रियांचे एकत्रित करणे आणि GPT-4 च्या विविध भाषा समजूतीसह त्यांच्या प्रविष्ट्यांचे विश्लेषण करणे सक्षम होते.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI कला आणि छायांकनासाठी अपग्रेड करा",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सर्वाधिक उन्नत AI कला मॉडेलसह 10x आपल्या सृजनशीलतेचा आणि उत्पादकतेचा वापर करा. आपल्या दृष्टींचे अद्यावत छायांकन झाल्यास त्यांच्या आश्चर्यजनक छायांकनांमध्ये त्वरितपणे परिवर्तित करा. सोपे, शक्तिशाली, परिवर्तक."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सर्वाधिक उन्नत AI कला मॉडेलसह 10x आपल्या सृजनशीलतेचा आणि उत्पादकतेचा वापर करा. आपल्या दृष्टींचे अद्यावत छायांकन झाल्यास त्यांच्या आश्चर्यजनक छायांकनांमध्ये त्वरितपणे परिवर्तित करा. सोपे, शक्तिशाली, परिवर्तक.",
+    "home_view_content_nav__chat_with_pdf_title": "कोणत्याही PDF सह चॅट करा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

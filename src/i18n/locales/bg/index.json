@@ -43,7 +43,8 @@
     "copy_with_formatting": "Копиране със форматиране",
     "download": "Изтегли",
     "download_image": "Изтегли изображение",
-    "copy_image": "Копирай изображение"
+    "copy_image": "Копирай изображение",
+    "screenshot": "Снимка на AI"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Надстройте, за да получите достъп до gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Ново измерение на AI възможностите с GPT-4-Vision - революционен скок в AI технологията, който интегрира обработката на изображения със напредналото разбиране на езика на GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Надстройте, за да създавате AI изкуство и изображения",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Увеличете с 10 пъти вашата креативност и продуктивност с най-развитите модели за AI изкуство. Бързо превръщайте вашите визии в изумителни изображения. Просто, мощно, трансформиращо."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Увеличете с 10 пъти вашата креативност и продуктивност с най-развитите модели за AI изкуство. Бързо превръщайте вашите визии в изумителни изображения. Просто, мощно, трансформиращо.",
+    "home_view_content_nav__chat_with_pdf_title": "Чат с всяко PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

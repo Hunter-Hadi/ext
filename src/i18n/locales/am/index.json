@@ -43,7 +43,8 @@
     "copy_with_formatting": "በፎርማቲንግ የተጻፈው ኮፒ",
     "download": "ለውጥ",
     "download_image": "ምስል ያግኙ",
-    "copy_image": "ምስል ይይዛ"
+    "copy_image": "ምስል ይይዛ",
+    "screenshot": "የኤክስ ስኮት"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -468,15 +469,6 @@
     "sidebar__speed_dial__chat_history__button": "የውጤት ማሰሻ",
     "activity__christmas_2023__title": "ገንዘብ እና አዲስ ዓመት ማስታወቂያዎች",
     "provider__label__third_part": "የ3ኛ ግብር",
-    "provider__confirm_dialog__title": "እርስዎ አሁን የ3ኛ ግብር AI ድርጅትን በመቀየር ላይ ነው: {{label}}",
-    "provider__confirm_dialog__sub_title": "እኛ የሚያስተዳድር ስራዎችን በተለያዩ AI አካል ለማስተላለፍ የሚያስችል እናደርጋለን.",
-    "provider__confirm_dialog__important_reminder": "አጠቃላይ ማስታወቂያ",
-    "provider__confirm_dialog__important_reminder__desc": "እኛን የሚያስተላልፉት የስራ ማስታወቂያ እና የምትጠቀሙት የስራ መስሪያ አልተሳካም፣ እኛን የMaxAI ተጠቃሚ አስተዳደር ነው. እኛ በተጨማሪ ስራዎችን የሚያስተላልፉትን የሚያስችል እናደርጋለን.",
-    "provider__confirm_dialog__for_enhanced_stability": "ለተለያዩ አስተሳሰብ",
-    "provider__confirm_dialog__for_enhanced_stability__desc": "የሚጠቀሙት አስተዳደር የሚሆኑትን ፕሪሚየም AI የሚገኙትን እና የማይረጋገጡትን AI አጠቃላይ አገልግሎትን ለመስጠት የሚያስችል ነው።",
-    "provider__confirm_dialog__for_enhanced_stability__switch_to": "እርስዎ ይለያዩን ይመልከቱ:",
-    "provider__confirm_dialog__your_feedback_matters": "የምስል ማስታወቂያዎችዎ አለመግባባት",
-    "provider__confirm_dialog__your_feedback_matters__desc": "እርስዎ ለማንኛውም ተጠቃሚ ወይም አስተዳደር ከሆነው ማስታወቂያዎች ይህንን ማስታወቂያ እናደርጋለን. የምስል ማስታወቂያዎችዎን ለማስተላለፍ እናመሰግናለን. የምስል ማስታወቂያዎችዎን የሚያስችል እናደርጋለን!",
     "provider__confirm_dialog__continue_with": "{{label}} እርስዎን ይቀመጣል",
     "provider__confirm_dialog__integration_issue_detected": "የማስተላለፉት ውስጥ የሚያስቀምጡ ደንቆሮ ተጠቃሚ ነው",
     "provider__confirm_dialog__integration_issue_detected__desc": "የ{{label}} በአሁኑ ጊዜ መቀጠል ላይ MaxAI እየሰራን ነው። በቅርብ ጊዜ የሚጠቀሙትን የማይታወቅ ድጋፍ እናስተማሩን ለማድረግ የሚያስችል ነው። በመስመር ጋር ሌሎች የሚጠቀሙትን ድጋፍ እና በአጠቃላይ ወይም በአጠቃላይ የሚያስችል ድጋፍ ይጠቀሙት።",
@@ -529,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "የgpt-4-vision ይዘትን ይጠቀሙ",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision - የAI ባህሪ እና ስሜት መሳሪያዎችን የሚያስተዳድር የAI ነገሮችን የሚያስተዳድር ማሳወቂያ ነው።",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "የAI አርት እና ምስል የሚፈልጉትን ይዘት ይጠቀሙ",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "የሚፈልጉትን የAI አርት መሳሪያዎችን 10 አይነት የሚያስተዳድር የAI አርት መሳሪያዎችን የሚያስተዳድር ማሳወቂያ ነው። በትኩረት የሚያስተዳድርበት ምስልን በትኩረት የሚያስተዳድር ማሳወቂያ ነው።"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "የሚፈልጉትን የAI አርት መሳሪያዎችን 10 አይነት የሚያስተዳድር የAI አርት መሳሪያዎችን የሚያስተዳድር ማሳወቂያ ነው። በትኩረት የሚያስተዳድርበት ምስልን በትኩረት የሚያስተዳድር ማሳወቂያ ነው።",
+    "home_view_content_nav__chat_with_pdf_title": "በየኤክስ ውስጥ PDF እንዴት እይታዎች እያለው ይወዳሉ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

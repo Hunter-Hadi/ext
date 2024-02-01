@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopyahin na may pormat",
     "download": "I-download",
     "download_image": "I-download ang imahe",
-    "copy_image": "Kopyahin ang imahe"
+    "copy_image": "Kopyahin ang imahe",
+    "screenshot": "AI screenshot"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Mag-upgrade para ma-access ang gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Isang bagong dimensyon ng mga kakayahan ng AI gamit ang GPT-4-Vision - isang makabuluhang hakbang sa teknolohiya ng AI na nag-uugnay ng pagproseso ng mga imahe sa advanced na pang-unawa sa wika ng GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Mag-upgrade para makagawa ng sining at mga imahe ng AI",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 beses palakasin ang iyong kreatibidad at produktibidad gamit ang pinakamahusay na mga modelo ng sining ng AI. Mabilis na gawing kahanga-hanga ang iyong mga pangarap na imahe. Simple, malakas, transformative."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "10 beses palakasin ang iyong kreatibidad at produktibidad gamit ang pinakamahusay na mga modelo ng sining ng AI. Mabilis na gawing kahanga-hanga ang iyong mga pangarap na imahe. Simple, malakas, transformative.",
+    "home_view_content_nav__chat_with_pdf_title": "Makipag-chat sa anumang PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

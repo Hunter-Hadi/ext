@@ -43,7 +43,8 @@
     "copy_with_formatting": "स्वरूपण के साथ प्रतिलिपि",
     "download": "डाउनलोड",
     "download_image": "छवि डाउनलोड करें",
-    "copy_image": "छवि कॉपी करें"
+    "copy_image": "छवि कॉपी करें",
+    "screenshot": "एआई स्क्रीनशॉट"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision तक पहुँच के लिए अपग्रेड करें",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision के साथ AI क्षमताओं का एक नया आयाम - AI प्रौद्योगिकी में एक उभरती हुई कदम जो GPT-4 की उन्नत भाषा समझ को छवि प्रसंस्करण के साथ एकीकृत करता है।",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI कला और छवियों को बनाने के लिए अपग्रेड करें",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सबसे उन्नत AI कला मॉडल के साथ अपनी रचनात्मकता और उत्पादकता को 10 गुना बढ़ाएं। अपने दृश्यों को तेजी से शानदार छवियों में बदलें। सरल, शक्तिशाली, परिवर्तनकारी।"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "सबसे उन्नत AI कला मॉडल के साथ अपनी रचनात्मकता और उत्पादकता को 10 गुना बढ़ाएं। अपने दृश्यों को तेजी से शानदार छवियों में बदलें। सरल, शक्तिशाली, परिवर्तनकारी।",
+    "home_view_content_nav__chat_with_pdf_title": "किसी भी पीडीएफ के साथ चैट करें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

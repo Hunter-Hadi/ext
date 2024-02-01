@@ -43,7 +43,8 @@
     "copy_with_formatting": "書式付きコピー",
     "download": "ダウンロード",
     "download_image": "画像をダウンロード",
-    "copy_image": "画像をコピー"
+    "copy_image": "画像をコピー",
+    "screenshot": "AIのスクリーンショット"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-visionへのアクセスをアップグレード",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-VisionはAI技術の画期的な進歩であり、GPT-4の高度な言語理解と画像処理を統合しています。",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AIアートと画像の作成をアップグレード",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "最も高度なAIアートモデルで創造性と生産性を10倍に。ビジョンを素晴らしい画像に迅速に変換します。シンプルで強力、変革的です。"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "最も高度なAIアートモデルで創造性と生産性を10倍に。ビジョンを素晴らしい画像に迅速に変換します。シンプルで強力、変革的です。",
+    "home_view_content_nav__chat_with_pdf_title": "PDFとチャットする"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

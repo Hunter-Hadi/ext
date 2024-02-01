@@ -43,7 +43,8 @@
     "copy_with_formatting": "ఫార్మాటింగ్ తో కాపీ",
     "download": "డౌన్‌లోడ్",
     "download_image": "చిత్రం డౌన్‌లోడ్ చేయండి",
-    "copy_image": "చిత్రం కాపీ చేయండి"
+    "copy_image": "చిత్రం కాపీ చేయండి",
+    "screenshot": "AI స్క్రీన్‌షాట్"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "GPT-4-విషన్‌కు అప్‌గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision తో AI సామర్థ్యాల కొరకు ఒక కొత్త ఆయామం - GPT-4 యొక్క ఆధునిక భాషా అర్థంపూర్వకతను చిత్ర ప్రాసెసింగ్‌తో కలిపించడంతో ఒక మున్నించిన AI టెక్నాలజీ యొక్క అద్భుతమైన దారికను సహజంగా పొందండి.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI కళాకారుత్వం మరియు చిత్రాలను సృష్టించడానికి అప్‌గ్రేడ్ చేయండి",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "అత్యంత ముందుగా AI కళాకారుత్వ మోడల్‌లతో 10x మీ సృజనాత్మకత మరియు ఉత్పత్తిశీలతను పెంచండి. మీ దృష్టిని అద్భుతమైన చిత్రాలకు మరోసారి మార్చండి. సరళమైన, శక్తివంతమైన, మార్పులు చేసే విధానం."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "అత్యంత ముందుగా AI కళాకారుత్వ మోడల్‌లతో 10x మీ సృజనాత్మకత మరియు ఉత్పత్తిశీలతను పెంచండి. మీ దృష్టిని అద్భుతమైన చిత్రాలకు మరోసారి మార్చండి. సరళమైన, శక్తివంతమైన, మార్పులు చేసే విధానం.",
+    "home_view_content_nav__chat_with_pdf_title": "ఏదైనా PDF తో చాట్ చేయండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

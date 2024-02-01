@@ -43,7 +43,8 @@
     "copy_with_formatting": "帶格式的複製",
     "download": "下載",
     "download_image": "下載圖片",
-    "copy_image": "複製圖片"
+    "copy_image": "複製圖片",
+    "screenshot": "AI 截圖"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "升級以訪問gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "通過GPT-4-Vision獲得全新的AI能力 - 這是AI技術的重大飛躍，將圖像處理與GPT-4的高級語言理解相結合。",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "升級以創建AI藝術和圖像",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "使用最先進的AI藝術模型將您的創造力和生產力提升10倍。快速將您的想像轉化為令人驚嘆的圖像。簡單、強大、具有變革性。"
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "使用最先進的AI藝術模型將您的創造力和生產力提升10倍。快速將您的想像轉化為令人驚嘆的圖像。簡單、強大、具有變革性。",
+    "home_view_content_nav__chat_with_pdf_title": "與任何 PDF 聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

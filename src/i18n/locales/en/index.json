@@ -552,7 +552,6 @@
     "art__text_to_image__advanced__aspect_ratio__title": "Aspect ratio",
     "art__text_to_image__advanced__content_type__title": "Content type",
     "art__model__dalle3__description": "DALL-E 3, developed by OpenAI, is a revolutionary text-to-image model that creates highly detailed images from textual descriptions, showcasing a significant advancement in AI-driven image generation.",
-
     "home_view_content_nav__one_click_prompts_title": "1-click prompts",
     "home_view_content_nav__my_own_prompts__title": "My own prompts",
     "home_view_content_nav__summary__title": "Summary",

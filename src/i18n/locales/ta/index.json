@@ -43,7 +43,8 @@
     "copy_with_formatting": "வடிவமைப்புடன் நகலெழுது",
     "download": "பதிவிறக்கு",
     "download_image": "படத்தை பதிவிறக்கு",
-    "copy_image": "படத்தை நகலெடு"
+    "copy_image": "படத்தை நகலெடு",
+    "screenshot": "ஏதேனும் புகைப்படம்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "gpt-4-vision அணுகலை மேம்படுத்துக",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision உடன் பட செயலாக்கத்தை மேம்படுத்தும் AI தொழில்நுட்பத்தின் புதிய அமைப்பு - GPT-4 மாதிரி மூலம் பட செயலாக்கத்தை மேம்படுத்தும் மேம்படுத்தும் மொழி புரிந்துகொள்ளும் மூலம் புதிய அமைப்பு.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "AI கலையை உருவாக்க gpt-4-vision அணுகலை மேம்படுத்துக",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "மிகவும் மேம்பட்ட AI கலை மாதிரிகளுடன் 10x உங்கள் உரிமையையும் உற்பத்தியையும் அதிகரிக்கவும். உங்கள் காட்சிகளை அழகாக மாற்றுவதை வேகமாக செய்யும். எளிதான, வல்லமையான, மாற்றுப்படுத்தும்."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "மிகவும் மேம்பட்ட AI கலை மாதிரிகளுடன் 10x உங்கள் உரிமையையும் உற்பத்தியையும் அதிகரிக்கவும். உங்கள் காட்சிகளை அழகாக மாற்றுவதை வேகமாக செய்யும். எளிதான, வல்லமையான, மாற்றுப்படுத்தும்.",
+    "home_view_content_nav__chat_with_pdf_title": "எந்த பிடிஎஃப் உடன் உரையாட"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

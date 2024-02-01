@@ -43,7 +43,8 @@
     "copy_with_formatting": "Kopiëren met opmaak",
     "download": "Download",
     "download_image": "Afbeelding downloaden",
-    "copy_image": "Afbeelding kopiëren"
+    "copy_image": "Afbeelding kopiëren",
+    "screenshot": "AI schermafbeelding"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -520,7 +521,8 @@
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgrade om toegang te krijgen tot gpt-4-vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "Een nieuwe dimensie van AI-mogelijkheden met GPT-4-Vision - een baanbrekende sprong in AI-technologie die beeldverwerking integreert met het geavanceerde taalbegrip van GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "Upgrade om AI-kunst en afbeeldingen te maken",
-    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Verhoog je creativiteit en productiviteit met 10x met de meest geavanceerde AI-kunstmodellen. Zet snel je visies om in verbluffende afbeeldingen. Simpel, krachtig, transformerend."
+    "permission__pricing_hook__max_ai_paid_model__maxai_art__description": "Verhoog je creativiteit en productiviteit met 10x met de meest geavanceerde AI-kunstmodellen. Zet snel je visies om in verbluffende afbeeldingen. Simpel, krachtig, transformerend.",
+    "home_view_content_nav__chat_with_pdf_title": "Chat met een willekeurige PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

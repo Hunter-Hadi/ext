@@ -2,7 +2,7 @@ import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { base642file } from '@/background/utils/uplpadFileProcessHelper'
@@ -54,6 +54,25 @@ const SidebarScreenshotButton: FC<{
   const { t } = useTranslation(['common'])
   const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
   const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setRootEl(null)
+        showChatBox()
+        return
+      }
+    }
+
+    if (rootEl) {
+      window.addEventListener('keydown', onKeyDown, true)
+    }
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown, true)
+    }
+  }, [rootEl])
+
   return (
     <>
       <TextOnlyTooltip placement={'top'} title={t('common:ai_screenshot')}>

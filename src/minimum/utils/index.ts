@@ -20,12 +20,14 @@ export const isArticlePage = () => {
     'website',
     'stories',
   ]
+
   const hasKeyword = keywords.some((keyword) =>
     websitePathname.includes(`/${keyword}/`),
   )
   if (hasKeyword) {
     return true
   }
+
   const hostWithPathname = `${websiteHost}${websitePathname}`
   // NOTE: 能尽量用字符串匹配的就用字符串匹配，不要用正则
   const textMatches = [
@@ -35,6 +37,13 @@ export const isArticlePage = () => {
   if (textMatches.find((match) => hostWithPathname.startsWith(match))) {
     return true
   }
+
+  // 黑名单地址
+  const backListUrl = ['figma.com/file']
+  if (backListUrl.some((url) => hostWithPathname.includes(url))) {
+    return false
+  }
+
   const regexMatches = [/github.com\/.+/, /reddit.com\/r\/.+/, /quora.com\/.+/]
   const regexHostWithPathname = `${websiteHost}${websitePathname.slice(0, 5)}`
   if (regexMatches.find((match) => regexHostWithPathname.match(match))) {

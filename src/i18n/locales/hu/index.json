@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Használd a Gemini-t az bővítmény működtetéséhez.",
     "provider__gemini__auth_button_text": "Folytatás a Gemini-vel",
     "provider__gemini__model__gemini_pro__description": "Google Gemini családja, skálázhatóságot kínál és erős általános képességeket mutat, támogat 38 nyelvet és egy 32k tokenes kontextusablakot.",
-    "provider__label__beta": "béta",
+    "provider__label__beta": "Béta",
     "permission__pricing_hook__button__upgrade_to_elite": "Frissítés Elite-re",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Frissítés a gemini-pro eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google legképzettebb és általános modellje. Alapvetően multimodalitásra épül. A Gemini a MaxAI-n jelenleg béta fázisban van, csak szöveget és kódot támogat, hamarosan pedig képek, videók és hangok támogatását is hozzáadja.",

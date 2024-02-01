@@ -391,7 +391,8 @@
     "provider__free_ai__model__openchat_7b__description": "This model integrates OpenChat's open-source language capabilities, refined with Conditioned Reinforcement Learning Fine-Tuning, and trained on diverse data sets for nuanced understanding.",
     "provider__free_ai__model__mythomist_7b__description": "A Fusion of Excellence – Crafted by the creator of MythoMax, this model amalgamates Neural Chat 7B, Airoboros 7B, Toppy M 7B, Zepher 7B Beta, Nous Capybara 34B, OpenHeremes 2.5, and more, to enhance ChatGPT roleplaying by reducing word anticipation, ministrations, and other undesirable elements.",
     "provider__label__third_part": "3rd-party",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
+    "provider__label__free": "Free",
     "provider__label__hide": "Hide",
     "provider__label__view_solutions": "View solutions",
     "provider__third_party_confirm_dialog__title": "About 3rd-party AI providers",
@@ -553,7 +554,6 @@
     "art__text_to_image__advanced__aspect_ratio__title": "Aspect ratio",
     "art__text_to_image__advanced__content_type__title": "Content type",
     "art__model__dalle3__description": "DALL-E 3, developed by OpenAI, is a revolutionary text-to-image model that creates highly detailed images from textual descriptions, showcasing a significant advancement in AI-driven image generation.",
-
     "home_view_content_nav__one_click_prompts_title": "1-click prompts",
     "home_view_content_nav__my_own_prompts__title": "My own prompts",
     "home_view_content_nav__summary__title": "Summary",

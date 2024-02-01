@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Gunakan Gemini untuk mengaktifkan ekstensi.",
     "provider__gemini__auth_button_text": "Lanjutkan dengan Gemini",
     "provider__gemini__model__gemini_pro__description": "Keluarga Gemini dari Google, dirancang untuk menawarkan skalabilitas dan kemampuan umum yang kuat, mendukung 38 bahasa dan jendela konteks sebesar 32k token.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Tingkatkan ke Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Tingkatkan untuk mengakses gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Model paling canggih dan umum dari Google. Dibangun dari awal untuk multimodalitas. Gemini di MaxAI saat ini dalam fase beta, hanya mendukung teks dan kode, dan akan segera menambahkan dukungan untuk gambar, video, dan audio.",

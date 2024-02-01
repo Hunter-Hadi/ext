@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Uzantıyı çalıştırmak için Gemini'yi kullanın.",
     "provider__gemini__auth_button_text": "Gemini ile Devam Et",
     "provider__gemini__model__gemini_pro__description": "Google'un Gemini ailesi, ölçeklenebilirlik sunan ve güçlü genel yeteneklere sahip olan bir modeldir. 38 dil ve 32k token'lık bir bağlam penceresini destekler.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Elite'e Yükselt",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "gemini-pro'ya erişim için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'ın en yetenekli ve genel modelidir. Çoklu modellik için temelden oluşturulmuştur. MaxAI üzerindeki Gemini şu anda beta aşamasındadır ve yalnızca metin ve kod desteği sunmaktadır. Yakında resim, video ve ses desteği de ekleyecektir.",

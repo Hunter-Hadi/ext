@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Используйте Gemini для работы с расширением.",
     "provider__gemini__auth_button_text": "Продолжить с Gemini",
     "provider__gemini__model__gemini_pro__description": "Семейство Gemini от Google, разработанное для обеспечения масштабируемости и обладающее сильными универсальными возможностями, поддерживает 38 языков и контекстное окно из 32 тысяч токенов.",
-    "provider__label__beta": "бета",
+    "provider__label__beta": "Бета",
     "permission__pricing_hook__button__upgrade_to_elite": "Обновить до Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Обновите, чтобы получить доступ к gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Самая мощная и универсальная модель от Google. Создана с нуля для мультимодальности. Gemini на MaxAI в настоящее время находится в бета-фазе и поддерживает только текст и код, вскоре будет добавлена поддержка изображений, видео и аудио.",

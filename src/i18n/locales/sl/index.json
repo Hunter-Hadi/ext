@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Uporabite Gemini za napajanje razširitve.",
     "provider__gemini__auth_button_text": "Nadaljujte z Gemini",
     "provider__gemini__model__gemini_pro__description": "Gemini družina Googla, zasnovana za skalabilnost in močne splošne sposobnosti, podpira 38 jezikov in kontekstno okno s 32k žetoni.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Nadgradite na Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nadgradite za dostop do gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Najbolj zmogljiv in splošen model Googla. Zgrajen od začetka za multimodalnost. Gemini na MaxAI je trenutno v beta fazi in podpira samo besedilo in kodo, kmalu pa bo dodal podporo za slike, videoposnetke in zvok.",

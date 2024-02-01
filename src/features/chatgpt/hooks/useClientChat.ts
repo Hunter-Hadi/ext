@@ -34,9 +34,6 @@ const useClientChat = () => {
   } = useShortCutsEngine()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const runShortCutsRef = useRef(runShortCuts)
-  useEffect(() => {
-    runShortCutsRef.current = runShortCuts
-  }, [runShortCuts])
   const {
     currentConversationIdRef,
     createConversation,
@@ -45,7 +42,11 @@ const useClientChat = () => {
     showConversationLoading,
     updateConversation,
     getCurrentConversation,
+    getConversation,
   } = useClientConversation()
+  useEffect(() => {
+    runShortCutsRef.current = runShortCuts
+  }, [runShortCuts])
   const askAIQuestion = async (question: IAskAIQuestion) => {
     if (!question.meta?.attachments) {
       // 获取attachments
@@ -101,7 +102,9 @@ const useClientChat = () => {
     } = options || {}
     // 1.在所有对话之前，确保先有conversationId
     let conversationId = currentConversationIdRef.current
-    if (!conversationId) {
+    if (conversationId && (await getConversation(conversationId))?.id) {
+      // 如果有conversationId && 如果conversationId存在
+    } else {
       conversationId = await createConversation()
     }
     // 2.付费卡点判断

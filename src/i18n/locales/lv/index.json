@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Izmantojiet Gemini, lai nodrošinātu paplašinājumu.",
     "provider__gemini__auth_button_text": "Turpināt ar Gemini",
     "provider__gemini__model__gemini_pro__description": "Google Gemini ģimene, kas ir izstrādāta, lai nodrošinātu mērogojamību un spēcīgas vispārējas spējas, atbalsta 38 valodas un konteksta logu ar 32k simboliem.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Jaunināt līdz Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Jaunināt, lai piekļūtu gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google visspēcīgākais un vispārīgākais modelis. Izveidots no nulles multimodalitātei. Gemini MaxAI pašlaik ir beta fāzē, atbalstot tikai tekstu un kodu, drīzumā tiks pievienota atbalsts attēliem, video un audio.",

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -21,6 +21,7 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { AppLocalStorageState } from '@/store'
 
 const useSearchWithAI = () => {
   const {
@@ -29,12 +30,18 @@ const useSearchWithAI = () => {
     currentSidebarConversationMessages,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
+
   const updateClientWritingMessage = useSetRecoilState(
     ClientWritingMessageState,
   )
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
-  const { createConversation, pushPricingHookMessage } = useClientConversation()
+  const {
+    createConversation,
+    pushPricingHookMessage,
+    getConversation,
+  } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const memoPrevQuestions = useMemo(() => {
@@ -65,7 +72,18 @@ const useSearchWithAI = () => {
     if (currentSidebarConversationType !== 'Search') {
       await updateSidebarConversationType('Search')
     }
-    console.log('新版Conversation 创建searchWithAI')
+    if (
+      appLocalStorage.sidebarSettings?.search?.conversationId &&
+      (await getConversation(
+        appLocalStorage.sidebarSettings?.search?.conversationId,
+      ))
+    ) {
+      // conversation存在
+    } else {
+      console.log('新版Conversation 创建searchWithAI')
+      // conversation不存在
+      await createConversation('Search')
+    }
     updateClientWritingMessage((prevState) => {
       return {
         ...prevState,

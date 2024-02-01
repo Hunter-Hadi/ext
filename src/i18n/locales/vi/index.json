@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Sử dụng Gemini để cung cấp sức mạnh cho tiện ích mở rộng.",
     "provider__gemini__auth_button_text": "Tiếp tục với Gemini",
     "provider__gemini__model__gemini_pro__description": "Gia đình Gemini của Google, được thiết kế để cung cấp khả năng mở rộng và có khả năng tổng quát mạnh mẽ, hỗ trợ 38 ngôn ngữ và cửa sổ ngữ cảnh 32k từ.",
-    "provider__label__beta": "phiên bản beta",
+    "provider__label__beta": "Phiên bản Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Nâng cấp lên Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Nâng cấp để truy cập gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Mô hình phổ biến và tổng quát nhất của Google. Xây dựng từ đầu cho đa chế độ. Gemini trên MaxAI hiện đang ở giai đoạn beta, chỉ hỗ trợ văn bản và mã, và sẽ sớm thêm hỗ trợ cho hình ảnh, video và âm thanh.",

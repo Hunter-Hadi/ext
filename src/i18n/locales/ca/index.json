@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Utilitza Gemini per alimentar l'extensió.",
     "provider__gemini__auth_button_text": "Continua amb Gemini",
     "provider__gemini__model__gemini_pro__description": "Família Gemini de Google, dissenyada per oferir escalabilitat i exhibeix fortes capacitats generalistes, suportant 38 idiomes i una finestra de context de 32k tokens.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Millora a Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Millora per accedir a gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "El model més capaç i general de Google. Construït des de zero per a multimodalitat. Gemini en MaxAI està actualment en fase beta, suportant només text i codi, i aviat afegirà suport per a imatges, vídeos i àudio.",

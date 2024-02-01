@@ -312,12 +312,14 @@ class ConversationDB {
   }
   public async removeEmptyMessagesConversations(
     filterConversationId: string,
+    filterConversationType: ISidebarConversationType,
   ): Promise<void> {
     const allConversations = await this.getAllConversations()
     const waitDeleteConversations: IChatConversation[] = allConversations.filter(
       (conversation) => {
         return (
           conversation.messages.length === 0 &&
+          conversation.type === filterConversationType &&
           conversation.id !== filterConversationId
         )
       },
@@ -354,13 +356,16 @@ export default class ConversationManager {
         shareType: 'private',
       },
     }
-    const saveConversation = mergeWithObject([
+    const saveConversation: IChatConversation = mergeWithObject([
       defaultConversation,
       newConversation,
     ])
     // 清除无信息的会话
     this.conversationDB
-      .removeEmptyMessagesConversations(saveConversation.id)
+      .removeEmptyMessagesConversations(
+        saveConversation.id,
+        saveConversation.type,
+      )
       .then()
       .catch()
     let syncConversationToDB = true

@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Gamitin ang Gemini upang palakasin ang extension.",
     "provider__gemini__auth_button_text": "Magpatuloy gamit ang Gemini",
     "provider__gemini__model__gemini_pro__description": "Ang pamilya ng Gemini ng Google, na dinisenyo upang mag-alok ng kakayahan sa pagkalaki-laki at nagpapakita ng malalim na pangkalahatang kakayahan, suportado ang 38 wika at may isang window ng konteksto na may 32k tokens.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Mag-upgrade sa Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Mag-upgrade upang ma-access ang gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Ang pinakamahusay at pangkalahatang modelo ng Google. Binuo mula sa simula para sa multimodality. Ang Gemini sa MaxAI ay kasalukuyang nasa beta phase, suportado lamang ang teksto at code, at madaragdagan ng suporta para sa mga imahe, bidyo, at audio sa lalong madaling panahon.",

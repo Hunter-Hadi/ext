@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Naudokite „Gemini“, kad galėtumėte įjungti plėtinį.",
     "provider__gemini__auth_button_text": "Tęsti su Gemini",
     "provider__gemini__model__gemini_pro__description": "Google Gemini šeima, sukurta siekiant pasiūlyti mastą ir pasižymi stipriomis universalumo savybėmis, palaikanti 38 kalbas ir konteksto langą iki 32 tūkst. ženklų.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Atnaujinti iki Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Atnaujinkite, kad gautumėte prieigą prie gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google galingiausias ir universalus modelis. Sukurtas nuo pat pradžių daugiamodalumui. Gemini MaxAI yra beta fazėje ir kol kas palaiko tik tekstą ir kodą, o netrukus bus pridėta palaikymas vaizdams, vaizdo įrašams ir garso įrašams.",

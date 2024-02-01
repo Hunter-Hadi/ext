@@ -476,7 +476,7 @@
     "provider__gemini__auth_description": "Օգտագործեք Gemini-ն ընդունելու համար:",
     "provider__gemini__auth_button_text": "Շարունակեք գեմինի-ով",
     "provider__gemini__model__gemini_pro__description": "Գուգլի Gemini ընտրանքը, որը ստեղծվել է մասնակցության համար, առաջարկում է մեծատառերի և հիմնական հատկությունների աջակցության հզորություն, աջակցություն է աջակցում 38 լեզուները և 32k տոկենների պատուհանը:",
-    "provider__label__beta": "բետա",
+    "provider__label__beta": "Բետա",
     "permission__pricing_hook__button__upgrade_to_elite": "Խաղարկեք էլիտային",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Խաղարկեք gemini-pro-ին մասնակցելու համար",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Գուգլիի ամենահզոր և հիմնական մոդելը: Գրված է միայն տեքստի և ծրագրավորման համար: Gemini-ն MaxAI-ում դեռևս բետա փորձարկման փուլում է, աջակցում է միայն տեքստի և ծրագրավորման համար, ինչպես նաև շուկայում շարժվող նկարների, տեսանյութերի և ձայնային աղբյուրների աջակցումը կատարվի շուտով:",

@@ -28,7 +28,11 @@ import {
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-const BetaIcon: FC = () => {
+import { I18nextKeysType } from '@/i18next'
+const AIProviderModelTagIcon: FC<{
+  tag: I18nextKeysType
+}> = (props) => {
+  const { tag } = props
   const { t } = useTranslation(['common', 'client'])
   return (
     <Typography
@@ -54,7 +58,7 @@ const BetaIcon: FC = () => {
         color: 'primary.main',
       }}
     >
-      {t('client:provider__label__beta')}
+      {t(tag as any)}
     </Typography>
   )
 }
@@ -117,7 +121,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
       AIProvider: currentAIProvider,
     }
   }, [AI_PROVIDER_MODEL_MAP, currentAIModel, currentAIProvider])
-  const isSelectedMaxAIMainPartModel = useMemo(() => {
+  const isSelectedMaxAIModel = useMemo(() => {
     // hover的优先级最高
     if (hoverModel) {
       return hoverModel
@@ -216,7 +220,9 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 </Typography>
                 <Stack direction={'row'} alignItems={'center'} gap={0.5}>
                   {AIModelOption.mainPart && <AIProviderMainPartIcon />}
-                  {AIModelOption.beta && <BetaIcon />}
+                  {AIModelOption.tag && (
+                    <AIProviderModelTagIcon tag={AIModelOption.tag} />
+                  )}
                 </Stack>
               </Stack>
             </MenuItem>
@@ -255,10 +261,10 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         )}
       </MenuList>
       <Stack width={0} flex={1}>
-        {isSelectedMaxAIMainPartModel && !isHoverThirdPartyModel ? (
+        {isSelectedMaxAIModel && !isHoverThirdPartyModel ? (
           <AIProviderModelSelectorDetail
-            AIProvider={isSelectedMaxAIMainPartModel.AIProvider}
-            AIProviderModel={isSelectedMaxAIMainPartModel.value}
+            AIProvider={isSelectedMaxAIModel.AIProvider}
+            AIProviderModel={isSelectedMaxAIModel.value}
           />
         ) : (
           <ThirdPartyAIProviderModelSelectorDetail />

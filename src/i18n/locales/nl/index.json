@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Gebruik Gemini om de extensie te activeren.",
     "provider__gemini__auth_button_text": "Doorgaan met Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini-familie, ontworpen om schaalbaarheid te bieden en sterke generalistische mogelijkheden te tonen, ondersteunt 38 talen en een contextvenster van 32k tokens.",
-    "provider__label__beta": "bèta",
+    "provider__label__beta": "Bèta",
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade naar Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgrade om toegang te krijgen tot gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google's meest capabele en algemene model. Vanaf de basis opgebouwd voor multimodaliteit. Gemini op MaxAI bevindt zich momenteel in de bètafase en ondersteunt alleen tekst en code, en zal binnenkort ondersteuning toevoegen voor afbeeldingen, video's en audio.",

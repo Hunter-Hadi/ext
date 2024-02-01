@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Použijte Gemini k napájení rozšíření.",
     "provider__gemini__auth_button_text": "Pokračovat s Gemini",
     "provider__gemini__model__gemini_pro__description": "Gemini rodiny od Googlu, navržený pro škálovatelnost a silné obecné schopnosti, podporuje 38 jazyků a kontextové okno o velikosti 32 tisíc tokenů.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Upgradovat na Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Upgradujte pro přístup k gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Nejvýkonnější a nejobecnější model od Googlu. Postavený od základu pro multimodalitu. Gemini na MaxAI je momentálně ve fázi beta verze, podporuje pouze text a kód a brzy přidá podporu pro obrázky, videa a zvuk.",

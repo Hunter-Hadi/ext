@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Χρησιμοποιήστε το Δίδυμο για να ενεργοποιήσετε την επέκταση.",
     "provider__gemini__auth_button_text": "Συνέχεια με το Δίδυμο",
     "provider__gemini__model__gemini_pro__description": "Η οικογένεια Gemini της Google, σχεδιασμένη για κλιμακωσιμότητα και επιδεικνύει ισχυρές γενικές δυνατότητες, υποστηρίζοντας 38 γλώσσες και ένα παράθυρο περιβάλλοντος 32k διακριτικών.",
-    "provider__label__beta": "βήτα",
+    "provider__label__beta": "Βήτα",
     "permission__pricing_hook__button__upgrade_to_elite": "Αναβάθμιση σε Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Αναβαθμίστε για πρόσβαση στο Δίδυμο Pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Το πιο ικανό και γενικό μοντέλο της Google. Κατασκευασμένο από το μηδέν για πολυτροπικότητα. Το Gemini στο MaxAI βρίσκεται αυτή τη στιγμή στη φάση της beta, υποστηρίζοντας μόνο κείμενο και κώδικα, και σύντομα θα προσθέσει υποστήριξη για εικόνες, βίντεο και ήχο.",

@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Använd Gemini för att driva tillägget.",
     "provider__gemini__auth_button_text": "Fortsätt med Gemini",
     "provider__gemini__model__gemini_pro__description": "Googles Gemini-familj, utformad för skalbarhet och visar starka allmänna förmågor, stöder 38 språk och ett sammanhangsfönster på 32k tokens.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Uppgradera till Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Uppgradera för att få tillgång till gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Googles mest kapabla och allmänna modell. Byggd från grunden för multimodalitet. Gemini på MaxAI är för närvarande i betafasen och stöder endast text och kod, och kommer snart att lägga till stöd för bilder, videor och ljud.",

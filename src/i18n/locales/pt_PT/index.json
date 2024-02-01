@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Use Gémeos para alimentar a extensão.",
     "provider__gemini__auth_button_text": "Continuar com Gémeos",
     "provider__gemini__model__gemini_pro__description": "A família Gemini do Google, projetada para oferecer escalabilidade e exibir capacidades generalistas fortes, suportando 38 idiomas e uma janela de contexto de 32k tokens.",
-    "provider__label__beta": "beta",
+    "provider__label__beta": "Beta",
     "permission__pricing_hook__button__upgrade_to_elite": "Atualizar para Elite",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Atualize para acessar gemini-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "O modelo mais capaz e geral do Google. Construído do zero para multimodalidade. O Gemini no MaxAI está atualmente na fase beta, suportando apenas texto e código, e em breve adicionará suporte para imagens, vídeos e áudio.",

@@ -1,9 +1,10 @@
 import { IAIProviderType } from '@/background/provider/chat'
 import { ISidebarConversationType } from '@/features/sidebar/store'
+import { I18nextKeysType } from '@/i18next'
 
 export type AIProviderModelSelectorOption = {
   dev?: boolean
-  beta?: boolean
+  tag?: I18nextKeysType
   mainPart?: boolean
   label: string
   value: string
@@ -11,14 +12,6 @@ export type AIProviderModelSelectorOption = {
 }
 export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[] = [
   {
-    dev: true,
-    mainPart: true,
-    label: 'Free AI',
-    value: 'mistral-7b-instruct',
-    AIProvider: 'MAXAI_FREE',
-  },
-  {
-    beta: false,
     mainPart: true,
     label: 'gpt-3.5-turbo',
     value: 'gpt-3.5-turbo',
@@ -43,7 +36,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     AIProvider: 'MAXAI_CLAUDE',
   },
   {
-    beta: true,
+    tag: 'client:provider__label__beta',
     mainPart: true,
     label: 'gemini-pro',
     value: 'gemini-pro',
@@ -72,6 +65,12 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     label: 'gpt-4',
     value: 'gpt-4',
     AIProvider: 'USE_CHAT_GPT_PLUS',
+  },
+  {
+    tag: 'client:provider__label__free',
+    label: 'Free AI',
+    value: 'mistral-7b-instruct',
+    AIProvider: 'MAXAI_FREE',
   },
 ]
 

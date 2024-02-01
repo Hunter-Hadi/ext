@@ -4,8 +4,15 @@ import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { IChatConversation } from '@/background/src/chatConversations'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { OPENAI_API_SYSTEM_MESSAGE } from '@/background/src/chat/OpenAIApiChat/types'
+import {
+  IChatConversation,
+  IChatConversationMeta,
+} from '@/background/src/chatConversations'
+import {
+  getChromeExtensionLocalStorage,
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -15,7 +22,6 @@ import {
   clientChatConversationModifyChatMessages,
   clientUpdateChatConversation,
 } from '@/features/chatgpt/utils/clientChatConversation'
-import { getAIProviderConversationMetaConfig } from '@/features/chatgpt/utils/getAIProviderConversationMetaConfig'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
@@ -65,12 +71,12 @@ const useClientConversation = () => {
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageState,
   )
-
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const {
     currentSidebarConversationType,
     currentSidebarConversationId,
     updateSidebarSettings,
+    sidebarSettings,
   } = useSidebarSettings()
   const currentConversationIdRef = useRef(currentSidebarConversationId)
   const currentConversationTypeRef = useRef(currentSidebarConversationType)
@@ -90,13 +96,28 @@ const useClientConversation = () => {
     if (conversationType === 'Chat') {
       const appLocalStorage = await getChromeExtensionLocalStorage()
       // 获取当前AIProvider
-      const currentAIProvider = appLocalStorage.sidebarSettings?.common
+      let currentAIProvider = appLocalStorage.sidebarSettings?.common
         ?.currentAIProvider as IAIProviderType
+      // 如果是MAXAI_DALLE，那么就用默认的AIProvider
+      if (currentAIProvider === 'MAXAI_DALLE') {
+        currentAIProvider = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
+      }
       // 获取当前AIProvider的model
       const currentModel =
         appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model || ''
       // 获取当前AIProvider的model的maxTokens
       console.log('新版Conversation ', currentAIProvider, currentModel)
+      const baseMetaConfig: Partial<IChatConversationMeta> = {
+        AIProvider: currentAIProvider,
+        AIModel: currentModel,
+        maxTokens:
+          getAIProviderModelDetail(currentAIProvider, currentModel)
+            ?.maxTokens || 4096,
+      }
+      // 如果是OPENAI_API，那么就加上systemPrompt
+      if (currentAIProvider === 'OPENAI_API') {
+        baseMetaConfig.systemPrompt = OPENAI_API_SYSTEM_MESSAGE
+      }
       // 创建一个新的conversation
       const result = await port.postMessage({
         event: 'Client_createChatGPTConversation',
@@ -104,12 +125,7 @@ const useClientConversation = () => {
           initConversationData: {
             type: 'Chat',
             title: 'Ask AI anything',
-            meta: {
-              maxTokens:
-                getAIProviderModelDetail(currentAIProvider, currentModel)
-                  ?.maxTokens || 4096,
-              ...(await getAIProviderConversationMetaConfig(currentAIProvider)),
-            },
+            meta: baseMetaConfig,
           } as Partial<IChatConversation>,
         },
       })
@@ -218,6 +234,15 @@ const useClientConversation = () => {
     getInputMediator('floatingMenuInputMediator').updateInputValue('')
     getInputMediator('chatBoxInputMediator').updateInputValue('')
     if (currentSidebarConversationType === 'Chat') {
+      if (sidebarSettings?.chat?.conversationId) {
+        if (
+          (await clientGetConversation(sidebarSettings?.chat?.conversationId))
+            ?.messages.length === 0
+        ) {
+          // 如果已经是空的了，那么就不用清除了
+          return
+        }
+      }
       await updateSidebarSettings({
         chat: {
           conversationId: await createConversation('Chat'),
@@ -237,6 +262,15 @@ const useClientConversation = () => {
         },
       })
     } else if (currentSidebarConversationType === 'Search') {
+      if (sidebarSettings?.search?.conversationId) {
+        if (
+          (await clientGetConversation(sidebarSettings?.search?.conversationId))
+            ?.messages.length === 0
+        ) {
+          // 如果已经是空的了，那么就不用清除了
+          return
+        }
+      }
       // 清除search的conversationId
       await updateSidebarSettings({
         search: {
@@ -244,6 +278,15 @@ const useClientConversation = () => {
         },
       })
     } else if (currentSidebarConversationType === 'Art') {
+      if (sidebarSettings?.art?.conversationId) {
+        if (
+          (await clientGetConversation(sidebarSettings?.art?.conversationId))
+            ?.messages.length === 0
+        ) {
+          // 如果已经是空的了，那么就不用清除了
+          return
+        }
+      }
       // 清除search的conversationId
       await updateSidebarSettings({
         art: {

@@ -479,7 +479,7 @@
     "provider__gemini__auth_description": "Kasuta Gemini laienduse toitmiseks.",
     "provider__gemini__auth_button_text": "Jätka koos Gemini'ga",
     "provider__gemini__model__gemini_pro__description": "Google'i Gemini perekond, mille eesmärk on pakkuda skaleeritavust ja näidata tugevaid üldistusvõimeid, toetades 38 keelt ja kontekstakna suurust 32k sõnani.",
-    "provider__label__beta": "beeta",
+    "provider__label__beta": "Beeta",
     "permission__pricing_hook__button__upgrade_to_elite": "Tõsta Elite tasemele",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__title": "Uuenda juurdepääsuks gemini-pro-le",
     "permission__pricing_hook__max_ai_paid_model__gemini_pro__description": "Google'i võimekaim ja üldine mudel. Ehitatud multimodaalsuseks algusest peale. Gemini MaxAI-s on praegu beetaversioon, toetades ainult teksti ja koodi ning lisab peagi toe piltidele, videotele ja helile.",

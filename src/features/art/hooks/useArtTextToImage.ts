@@ -1,3 +1,4 @@
+import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { getAIProviderSettings } from '@/background/src/chat/util'
@@ -15,10 +16,16 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { AppLocalStorageState } from '@/store'
 
 const useArtTextToImage = () => {
   const { askAIWIthShortcuts } = useClientChat()
-  const { pushPricingHookMessage, createConversation } = useClientConversation()
+  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
+  const {
+    pushPricingHookMessage,
+    createConversation,
+    getConversation,
+  } = useClientConversation()
   const {
     sidebarSettings,
     currentSidebarConversationType,
@@ -33,7 +40,17 @@ const useArtTextToImage = () => {
     if (currentSidebarConversationType !== 'Art') {
       await updateSidebarConversationType('Art')
     }
-    await createConversation('Art')
+    if (
+      appLocalStorage.sidebarSettings?.art?.conversationId &&
+      (await getConversation(
+        appLocalStorage.sidebarSettings?.art?.conversationId,
+      ))
+    ) {
+      // conversation存在
+    } else {
+      // conversation不存在
+      await createConversation('Art')
+    }
     // 如果不是elite用户
     if (currentUserPlan.name !== 'elite') {
       await pushPricingHookMessage('SIDEBAR_ART_AND_IMAGES')

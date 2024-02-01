@@ -164,7 +164,7 @@ const useAIProviderModels = () => {
       // sidebarConversationType?: ISidebarConversationType,
     ) => {
       try {
-        // const now = new Date().getTime()
+        let now = new Date().getTime()
         await setChromeExtensionLocalStorage({
           sidebarSettings: {
             common: {
@@ -177,7 +177,10 @@ const useAIProviderModels = () => {
             },
           },
         })
+        console.log('updateAIProviderModel1', new Date().getTime() - now)
+        now = new Date().getTime()
         await switchBackgroundChatSystemAIProvider(AIProvider)
+        console.log('updateAIProviderModel2', new Date().getTime() - now)
       } catch (e) {
         console.log(e)
       }

@@ -6,9 +6,7 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
-import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
-import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 
 interface IProps {
   sx?: SxProps
@@ -51,10 +49,9 @@ const MaxAIScreenshotMiniButton: FC<IProps> = ({ sx }) => {
           onClick={(event) => {
             // showChatBox()
             const timer = setInterval(() => {
-              const screenshotBtn = queryShadowContainerElementSelector<HTMLElement>(
-                MAXAI_MINIMIZE_CONTAINER_ID,
+              const screenshotBtn = getMaxAISidebarRootElement()?.querySelector(
                 'button[data-testid="maxai-take-screenshot"]',
-              )
+              ) as HTMLButtonElement
               if (screenshotBtn) {
                 clearInterval(timer)
                 screenshotBtn.click()
@@ -71,17 +68,6 @@ const MaxAIScreenshotMiniButton: FC<IProps> = ({ sx }) => {
           />
         </Button>
       </TextOnlyTooltip>
-
-      {/* 在 click MaxAIScreenshotMiniButton 时 通过找到下面这个隐藏的 SidebarScreenshotButton 组件触发 click 事件，来实现截图  */}
-      <SidebarScreenshotButton
-        sx={{
-          position: 'absolute',
-          visibility: 'hidden',
-          width: 0,
-          height: 0,
-          opacity: 0,
-        }}
-      />
     </Stack>
   )
 }

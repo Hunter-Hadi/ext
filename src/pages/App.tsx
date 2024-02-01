@@ -13,6 +13,7 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
+import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
@@ -129,7 +130,19 @@ const App: FC = () => {
                   {isOpened && <SidebarPage />}
                   {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}
                   {!isOpened && (
-                    <ActionSetVariablesModal modelKey={'Sidebar'} />
+                    <>
+                      {/* 在 click MaxAIScreenshotMiniButton 时 通过找到下面这个隐藏的 SidebarScreenshotButton 组件触发 click 事件，来实现截图  */}
+                      <SidebarScreenshotButton
+                        sx={{
+                          position: 'absolute',
+                          visibility: 'hidden',
+                          width: 0,
+                          height: 0,
+                          opacity: 0,
+                        }}
+                      />
+                      <ActionSetVariablesModal modelKey={'Sidebar'} />
+                    </>
                   )}
                 </Stack>
               </AppSuspenseLoadingLayout>

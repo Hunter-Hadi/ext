@@ -47,8 +47,9 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
     }
 
     if (isPDF) {
-      // event.preventDefault()
+      event.stopPropagation()
       // do nothing
+      // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
     }
 
     setIsDragOver(false)

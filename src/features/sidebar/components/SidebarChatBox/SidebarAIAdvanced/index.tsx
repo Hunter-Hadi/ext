@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton'
 import Popover from '@mui/material/Popover'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useRef } from 'react'
+import React, { FC } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
@@ -23,15 +23,7 @@ const SidebarAIAdvanced: FC<{
   const { sx } = props
   const { currentSidebarConversationType } = useSidebarSettings()
   const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null)
-  // 用户打开之后，锁定关闭700ms
-  const lockTimerRef = useRef<any>(null)
-  const lockCloseRef = useRef(false)
-  // 当用户手动点击了，在移开按钮之后，才能打开 popover
-  const waitResetRef = useRef(false)
   const handlePopoverOpen = (event: React.MouseEvent<HTMLElement>) => {
-    if (waitResetRef.current) {
-      return
-    }
     setAnchorEl(event.currentTarget)
   }
   const handlePopoverClose = () => {
@@ -63,20 +55,7 @@ const SidebarAIAdvanced: FC<{
       }}
       aria-owns={open ? 'mouse-over-popover' : undefined}
       aria-haspopup="true"
-      onMouseEnter={(event) => {
-        if (lockTimerRef.current) {
-          clearTimeout(lockTimerRef.current)
-        }
-        lockCloseRef.current = true
-        lockTimerRef.current = setTimeout(() => {
-          lockCloseRef.current = false
-        }, 700)
-        handlePopoverOpen(event)
-      }}
-      onMouseLeave={() => {
-        handlePopoverClose()
-        waitResetRef.current = false
-      }}
+      onClick={handlePopoverOpen}
     >
       <ContextMenuIcon
         sx={{
@@ -127,56 +106,48 @@ const SidebarAIAdvanced: FC<{
           }}
         >
           <Box
-            onMouseEnter={handlePopoverOpen}
-            onMouseLeave={handlePopoverClose}
+            id={'MaxAIAIAdvancedCard'}
+            sx={{
+              borderRadius: '4px',
+              border: '1px solid #EBEBEB',
+              boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
+              width: 402,
+              display: 'flex',
+              alignItems: 'stretch',
+              justifyContent: 'center',
+              flexDirection: 'row',
+            }}
           >
-            <Box
-              id={'MaxAIAIAdvancedCard'}
-              sx={{
-                borderRadius: '4px',
-                border: '1px solid #EBEBEB',
-                boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-                width: 402,
-                display: 'flex',
-                alignItems: 'stretch',
-                justifyContent: 'center',
-                flexDirection: 'row',
-              }}
-            >
-              <Stack spacing={1} p={1} width={'100%'}>
-                {currentSidebarConversationType === 'Search' && (
-                  <SearchAdvanced />
-                )}
-                {currentSidebarConversationType === 'Art' && <ArtAdvanced />}
-                {currentSidebarConversationType === 'Chat' && <ChatAdvanced />}
-                <Stack
-                  sx={{ minHeight: '28px' }}
-                  width={'100%'}
-                  spacing={1}
-                  alignItems={'center'}
-                  direction={'row'}
-                  justifyContent={'end'}
-                  flexDirection={'row'}
+            <Stack spacing={1} p={1} width={'100%'}>
+              {currentSidebarConversationType === 'Search' && (
+                <SearchAdvanced />
+              )}
+              {currentSidebarConversationType === 'Art' && <ArtAdvanced />}
+              {currentSidebarConversationType === 'Chat' && <ChatAdvanced />}
+              <Stack
+                sx={{ minHeight: '28px' }}
+                width={'100%'}
+                spacing={1}
+                alignItems={'center'}
+                direction={'row'}
+                justifyContent={'end'}
+                flexDirection={'row'}
+              >
+                <IconButton
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    handlePopoverClose()
+                  }}
                 >
-                  <IconButton
-                    onClick={() => {
-                      if (lockCloseRef.current) {
-                        return
-                      }
-                      waitResetRef.current = true
-                      handlePopoverClose()
+                  <ContextMenuIcon
+                    icon={'Close'}
+                    sx={{
+                      fontSize: `24px`,
                     }}
-                  >
-                    <ContextMenuIcon
-                      icon={'Close'}
-                      sx={{
-                        fontSize: `24px`,
-                      }}
-                    />
-                  </IconButton>
-                </Stack>
+                  />
+                </IconButton>
               </Stack>
-            </Box>
+            </Stack>
           </Box>
         </ClickAwayListener>
       </Popover>

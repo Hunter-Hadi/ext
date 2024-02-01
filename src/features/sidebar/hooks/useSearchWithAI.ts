@@ -219,12 +219,7 @@ const useSearchWithAI = () => {
 
   const runSearchWithAIActions = useCallback(
     (actions: ISetActionsType) => {
-      if (
-        actions.length > 0 &&
-        !isFetchingRef.current &&
-        currentSidebarConversationType === 'Search' &&
-        currentSidebarConversationId
-      ) {
+      if (actions.length > 0 && !isFetchingRef.current) {
         isFetchingRef.current = true
         askAIWIthShortcuts(actions)
           .then()
@@ -234,11 +229,7 @@ const useSearchWithAI = () => {
           })
       }
     },
-    [
-      askAIWIthShortcuts,
-      currentSidebarConversationType,
-      currentSidebarConversationId,
-    ],
+    [askAIWIthShortcuts],
   )
 
   return {

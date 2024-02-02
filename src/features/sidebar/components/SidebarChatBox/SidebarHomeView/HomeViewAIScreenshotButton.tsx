@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MAXAI_APP_ROOT_ID } from '@/features/common/constants'
@@ -8,7 +8,7 @@ import { queryShadowContainerElementSelector } from '@/utils/elementHelper'
 
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 
-const HomeViewAIScreenshotButton = () => {
+const HomeViewAIScreenshotButton: FC = () => {
   const { t } = useTranslation(['common'])
 
   const handleClick = () => {
@@ -33,26 +33,30 @@ const HomeViewAIScreenshotButton = () => {
         const isDark = t.palette.mode === 'dark'
 
         return {
-          p: 1,
-          color: 'text.primary',
           cursor: 'pointer',
           borderRadius: 2,
-          // transition: 'all 0.3s ease',
-          bgcolor: isDark ? 'customColor.secondaryBackground' : '#F5F6F7',
-
+          color: 'text.secondary',
+          px: 1.5,
+          py: 1,
+          bgcolor: isDark ? 'rgba(255, 255, 255, 0.12)' : 'rgba(0, 0, 0, 0.08)',
           '&:hover': {
-            bgcolor: isDark
-              ? 'rgba(255, 255, 255, 0.10)'
-              : 'rgba(0, 0, 0, 0.10)',
+            bgcolor: isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)',
+            color: isDark ? 'rgba(255, 255, 255, 0.3)' : 'rgba(0, 0, 0, 0.38)',
           },
         }
       }}
       onClick={handleClick}
     >
-      <HomeViewContentNavIcons icon={'screenshot'} />
+      <HomeViewContentNavIcons
+        icon={'screenshot'}
+        sx={{
+          p: 0,
+          fontSize: 20,
+        }}
+      />
       <Typography
         fontSize={14}
-        fontWeight={400}
+        fontWeight={500}
         lineHeight={1.5}
         color="inherit"
       >

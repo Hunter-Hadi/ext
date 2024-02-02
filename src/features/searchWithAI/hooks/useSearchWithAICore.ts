@@ -129,7 +129,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
     const cacheData = await getSearchWithAICacheData(
       siteName,
-      searchWithAISettings.currentAIProvider,
+      searchWithAISettings.aiProvider,
       question,
       webAccessPrompt,
     )
@@ -236,12 +236,12 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         data: {
           name: 'SEARCH_WITH_AI',
           id: 'SEARCH_WITH_AI',
-          provider: searchWithAISettings.currentAIProvider,
+          provider: searchWithAISettings.aiProvider,
           host: getCurrentDomainHost(),
         },
       })
     }
-    if (searchWithAISettings.currentAIProvider === 'OPENAI') {
+    if (searchWithAISettings.aiProvider === 'OPENAI') {
       const arkoseToken = await chromeExtensionArkoseTokenGenerator.generateToken(
         'gpt_3_5',
       )
@@ -268,7 +268,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
       loadingRef.current = false
       return
-    }, PROVIDER_TIMEOUT_DURATION[searchWithAISettings.currentAIProvider])
+    }, PROVIDER_TIMEOUT_DURATION[searchWithAISettings.aiProvider])
 
     await searchWithAIAskQuestion(
       {
@@ -343,7 +343,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
         setSearchWithAICacheData({
           searchPage: siteName,
-          currentAIProvider: searchWithAISettings.currentAIProvider,
+          currentAIProvider: searchWithAISettings.aiProvider,
           query: question,
           completedMessage: message,
           sources,
@@ -360,7 +360,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     question,
     searchWithAISettings?.webAccessPrompt,
     status,
-    searchWithAISettings?.currentAIProvider,
+    searchWithAISettings?.aiProvider,
   ])
 
   const handleResetStatus = useCallback(async () => {

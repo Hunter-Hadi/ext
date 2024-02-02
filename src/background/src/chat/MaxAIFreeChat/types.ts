@@ -9,7 +9,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     value: 'mistral-7b-instruct',
     maxTokens: 8192,
     tags: [],
-    poweredBy: 'Mistral',
+    poweredBy: 'MaxAI',
     description: (t) =>
       t(`client:provider__free_ai__model__special__description`),
     // description: (t) =>

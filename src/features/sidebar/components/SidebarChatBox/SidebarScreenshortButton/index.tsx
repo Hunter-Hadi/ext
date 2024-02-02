@@ -166,23 +166,20 @@ const ScreenshotComponent: FC<{
       img.src = base64Data
       img.onload = () => {
         // 裁切图片
-        const [x, y, width, height] = area
+        // 基于屏幕的长宽，绘制图片
+        const windowWidth = window.innerWidth
+        // 计算原始图片和屏幕长宽的缩放
+        const scale = img.naturalWidth / windowWidth
+        const [x, y, width, height] = area.map((v) => v * scale)
         canvas.width = width
         canvas.height = height
-        ctx?.drawImage(
-          img,
-          x + 3,
-          y + 3,
-          width - 3,
-          height - 3,
-          0,
-          0,
-          width,
-          height,
-        )
+        // draw Dimensions = width/height
+        ctx?.drawImage(img, x, y, width, height, 0, 0, width, height)
+        // ctx?.drawImage(img, x, y, width, height, 0, 0, width, height)
         const newBase64Data = canvas.toDataURL('image/png')
         const zip = new JSZip()
-        zip.file(`w${width - 3}_h${height - 3}_x${x + 3}_y${y + 3}.txt`, '')
+        zip.file(`cropped_w${width}_h${height}_x${x}_y${y}.txt`, '')
+        zip.file(`raw_w${img.naturalWidth}_h${img.naturalHeight}.txt`, '')
         zip.file('raw.png', base64Data.split(',')[1], { base64: true })
         zip.file('cropped.png', newBase64Data.split(',')[1], {
           base64: true,

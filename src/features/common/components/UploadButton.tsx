@@ -14,16 +14,23 @@ const VisuallyHiddenInput = styled('input')({
   width: 1,
 })
 
-interface IUploadButtonProps extends ButtonProps {
+interface IUploadButtonProps extends Omit<ButtonProps, 'onChange'> {
   accept?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const UploadButton: React.FC<IUploadButtonProps> = (props) => {
-  const { children, variant = 'contained', accept, ...restProps } = props
+  const {
+    children,
+    variant = 'contained',
+    accept,
+    onChange,
+    ...restProps
+  } = props
   return (
     <Button component="label" variant={variant} {...(restProps as any)}>
       {children}
-      <VisuallyHiddenInput type="file" accept={accept} />
+      <VisuallyHiddenInput type="file" accept={accept} onChange={onChange} />
     </Button>
   )
 }

@@ -1,26 +1,13 @@
 import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined'
-import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import { styled } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import UploadButton from '@/features/common/components/UploadButton'
 import HomeViewContentNavIcons from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNavIcons'
 import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { chromeExtensionClientOpenPage } from '@/utils'
-
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  width: 1,
-})
 
 const HomeViewFileUploader = () => {
   const { t } = useTranslation(['client'])
@@ -85,10 +72,10 @@ const HomeViewFileUploader = () => {
         <HomeViewContentNavIcons icon={'drop_image'} />
       </Stack>
 
-      <Button
+      <UploadButton
         startIcon={<UploadFileOutlinedIcon />}
+        accept="image/*,.pdf"
         variant="secondary"
-        component="label"
         sx={{
           mb: 0.5,
           color: 'text.secondary',
@@ -97,18 +84,16 @@ const HomeViewFileUploader = () => {
           lineHeight: 1.4,
           borderRadius: 2,
         }}
+        onChange={async (e) => {
+          if (e.target.files && e.target.files.length > 0) {
+            await handleUploadFiles(e.target.files[0])
+            // reset
+            e.target.value = ''
+          }
+        }}
       >
         {t('client:home_view_content_nav__choose_file')}
-        <VisuallyHiddenInput
-          type="file"
-          accept="image/*,.pdf"
-          onChange={(e) => {
-            if (e.target.files) {
-              handleUploadFiles(e.target.files[0])
-            }
-          }}
-        />
-      </Button>
+      </UploadButton>
 
       <Typography
         fontSize={14}

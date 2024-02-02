@@ -41,11 +41,14 @@ const useAIProviderUpload = () => {
     return currentAIProviderModelDetail?.uploadFileConfig
   }, [currentAIProviderModelDetail])
 
-  const setFiles = (files: IChatUploadFile[]) => {
+  const setFiles = (
+    files: IChatUploadFile[],
+    operate: 'add' | 'cover' = 'cover',
+  ) => {
     setClientUploadedState((preSate) => {
       return {
         ...preSate,
-        files,
+        files: operate === 'add' ? preSate.files.concat(files) : files,
       }
     })
   }
@@ -76,7 +79,7 @@ const useAIProviderUpload = () => {
         return item
       })
       console.log('useAIProviderUpload [aiProviderUploadFiles]', uploadingFiles)
-      setFiles(uploadingFiles)
+      setFiles(uploadingFiles, 'add')
       switch (currentAIProvider) {
         case 'OPENAI':
           {

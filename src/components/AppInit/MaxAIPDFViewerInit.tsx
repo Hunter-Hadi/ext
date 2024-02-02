@@ -182,9 +182,13 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
             <UploadButton
               accept=".pdf"
               onChange={(event) => {
-                const file = (event.target as any).files?.[0]
-                if (file) {
-                  handleUploadPDF(file)
+                if (event.target.files && event.target.files.length > 0) {
+                  const file = event.target.files?.[0]
+                  if (file) {
+                    handleUploadPDF(file)
+                    // reset
+                    event.target.value = ''
+                  }
                 }
               }}
               variant={'contained'}

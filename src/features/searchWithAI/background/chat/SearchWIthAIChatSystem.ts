@@ -32,7 +32,7 @@ class SearchWIthAIChatSystem {
 
     // init default current provider
     getSearchWithAISettings().then((settings) => {
-      this.currentProvider = settings.currentAIProvider
+      this.currentProvider = settings.aiProvider
     })
   }
   get currentAdapter(): ChatAdapterInterface | undefined {
@@ -92,7 +92,7 @@ class SearchWIthAIChatSystem {
   async switchAdapter(provider: ISearchWithAIProviderType) {
     await this.destroy()
     this.currentProvider = provider
-    await setSearchWithAISettings({ currentAIProvider: provider })
+    await setSearchWithAISettings({ aiProvider: provider })
     return this.currentAdapter
   }
   async auth(authTabId: number) {

@@ -34,19 +34,17 @@ const useSearchWithAISettingsInit = () => {
             SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE,
             SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
           ] as ISearchWithAIProviderType[]
-          if (needLoginProvider.includes(settings.currentAIProvider)) {
+          if (needLoginProvider.includes(settings.aiProvider)) {
             const token = await getMaxAIChromeExtensionAccessToken()
             if (!token) {
-              settings.currentAIProvider =
-                DEFAULT_SEARCH_WITH_AI_SETTING.currentAIProvider
+              settings.aiProvider = DEFAULT_SEARCH_WITH_AI_SETTING.aiProvider
               await setSearchWithAISettings({
-                currentAIProvider:
-                  DEFAULT_SEARCH_WITH_AI_SETTING.currentAIProvider,
+                aiProvider: DEFAULT_SEARCH_WITH_AI_SETTING.aiProvider,
               })
               await port.postMessage({
                 event: 'SWAI_switchAIProvider',
                 data: {
-                  provider: DEFAULT_SEARCH_WITH_AI_SETTING.currentAIProvider,
+                  provider: DEFAULT_SEARCH_WITH_AI_SETTING.aiProvider,
                 },
               })
             }

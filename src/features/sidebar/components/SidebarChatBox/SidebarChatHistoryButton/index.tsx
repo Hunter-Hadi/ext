@@ -10,7 +10,7 @@ import { PopperPlacementType } from '@mui/material/Popper'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -47,6 +47,19 @@ const SidebarChatHistoryButton: FC<{
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+
+  const currentI18nTitle = useMemo(() => {
+    if (currentSidebarConversationType === 'Search') {
+      return t('client:sidebar__speed_dial__search_history__button')
+    }
+    if (currentSidebarConversationType === 'Summary') {
+      return t('client:sidebar__speed_dial__summary_history__button')
+    }
+    if (currentSidebarConversationType === 'Art') {
+      return t('client:sidebar__speed_dial__art_history__button')
+    }
+    return t('client:sidebar__speed_dial__chat_history__button')
+  }, [t, currentSidebarConversationType])
 
   const handleOpenModal = () => {
     setModalOpen(true)
@@ -104,10 +117,7 @@ const SidebarChatHistoryButton: FC<{
   }, [modalOpen])
   return (
     <>
-      <TextOnlyTooltip
-        placement={'top'}
-        title={t('client:sidebar__speed_dial__chat_history__button')}
-      >
+      <TextOnlyTooltip placement={'top'} title={currentI18nTitle}>
         <Button
           onClick={handleClick('top')}
           data-testid={'maxai-chat-history-button'}
@@ -202,7 +212,7 @@ const SidebarChatHistoryButton: FC<{
                         flex={1}
                         textAlign={'center'}
                       >
-                        {t('client:sidebar__speed_dial__chat_history__button')}
+                        {currentI18nTitle}
                       </Typography>
                       <ClearAllChatButton
                         variant="icon"

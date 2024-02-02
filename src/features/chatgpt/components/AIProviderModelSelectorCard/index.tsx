@@ -18,6 +18,7 @@ import {
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProviderMainPartIcon'
+import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -29,12 +30,10 @@ import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProvi
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/store'
-import { I18nextKeysType } from '@/i18next'
 const AIProviderModelTagIcon: FC<{
-  tag: I18nextKeysType
+  tag: string
 }> = (props) => {
   const { tag } = props
-  const { t } = useTranslation(['common', 'client'])
   return (
     <Typography
       component={'span'}
@@ -59,7 +58,7 @@ const AIProviderModelTagIcon: FC<{
         color: 'primary.main',
       }}
     >
-      {t(tag as any)}
+      {tag}
     </Typography>
   )
 }
@@ -146,7 +145,10 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     if (currentModelDetail?.value) {
       return (
         currentSidebarConversationTypeModels.find((option) => {
-          return option.value === currentModelDetail.value
+          return (
+            option.value === currentModelDetail.value &&
+            currentModelDetail.AIProvider === option.AIProvider
+          )
         }) || null
       )
     }
@@ -182,13 +184,14 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         id={'maxai-ai-model-selector-menu'}
         aria-labelledby="maxai-ai-model-selector-menu"
         sx={{
+          overflowY: 'auto',
+          overflowX: 'hidden',
           width: 198,
           flexShrink: 0,
           borderRight: '1px solid',
           borderColor: '#ebebeb',
           py: 0,
           maxHeight: 210,
-          overflow: 'auto',
           [`.${menuItemClasses.root}`]: {
             px: 1,
             borderRight: '2px solid',
@@ -248,6 +251,8 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             </MenuItem>
           )
         })}
+        {/*// 占位*/}
+        <Box height={'4px'} width={'100%'}></Box>
         {/* NOTE: 只有Chat板块有第三方的*/}
         {sidebarConversationType === 'Chat' && <Divider sx={{ px: 1 }} />}
         {sidebarConversationType === 'Chat' && (
@@ -263,10 +268,15 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             }}
           >
             <Stack alignItems={'center'} direction={'row'}>
+              <ThirdPartyAIProviderIcon sx={{ fontSize: '20px' }} />
               <Typography
                 fontSize={'14px'}
                 lineHeight={'20px'}
                 color={'text.primary'}
+                sx={{
+                  ml: 1,
+                  mr: 0.5,
+                }}
               >
                 {t(
                   'client:sidebar__ai_provider__model_selector__third_party_ai_provider__title',

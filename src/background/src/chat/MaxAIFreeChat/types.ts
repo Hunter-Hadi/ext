@@ -2,7 +2,7 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 
 export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
   {
-    title: 'mistral-7b-instruct',
+    title: 'Free AI',
     titleTag: '',
     value: 'mistral-7b-instruct',
     maxTokens: 8192,

@@ -36,6 +36,7 @@ export const useUploadImagesAndSwitchToVision = () => {
       await updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-vision-preview')
       await createConversation('Chat')
     }
+
     await aiProviderUploadFiles(
       await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
     )

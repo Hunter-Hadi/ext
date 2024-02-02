@@ -57,7 +57,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       maxFileSize,
     )
 
-    await aiProviderUploadFiles(files.concat(newUploadFiles))
+    await aiProviderUploadFiles(newUploadFiles)
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''

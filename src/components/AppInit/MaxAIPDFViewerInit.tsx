@@ -1,6 +1,7 @@
 import NoteAddOutlinedIcon from '@mui/icons-material/NoteAddOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
@@ -13,8 +14,10 @@ import Browser from 'webextension-polyfill'
 
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
+import UploadButton from '@/features/common/components/UploadButton'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useInterval from '@/features/common/hooks/useInterval'
+import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -25,6 +28,8 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   const [delay, setDelay] = useState<number | null>(100)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
+
+  const [uploadLoading, setUploadLoading] = useState(false)
 
   const handleDragEnter = (event: any) => {
     event.preventDefault()
@@ -40,43 +45,65 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   }
 
   const handleDrop = (event: any) => {
-    event.preventDefault()
+    // event.preventDefault()
     setIsDragOver(false)
-
-    const files = event.dataTransfer.files as FileList
-    // 处理拖放的文件
-    console.log(files)
-    const dropPDFFile = Array.from(files).find((file) => {
-      return file.type === 'application/pdf' || file.name.endsWith('.pdf')
-    })
-    if (dropPDFFile) {
-      const pdfLib = (window as any).PDFViewerApplication
-      // open pdf file
-      if (pdfLib) {
-        pdfLib.open({
-          url: URL.createObjectURL(dropPDFFile),
-          originalUrl: dropPDFFile.name,
-        })
-      }
+    const file = event.dataTransfer?.files?.[0]
+    if (file && file.type.includes('pdf')) {
+      window.close()
     }
+
+    // const files = event.dataTransfer.files as FileList
+    // // 处理拖放的文件
+    // console.log(files)
+    // const dropPDFFile = Array.from(files).find((file) => {
+    //   return file.type === 'application/pdf' || file.name.endsWith('.pdf')
+    // })
+    // debugger
+    // if (dropPDFFile) {
+    //   const pdfLib = (window as any).PDFViewerApplication
+    //   // open pdf file
+    //   if (pdfLib) {
+    //     pdfLib.open({
+    //       url: URL.createObjectURL(dropPDFFile),
+    //       originalUrl: dropPDFFile.name,
+    //     })
+    //   }
+    // }
   }
 
-  useInterval(() => {
-    const root = document.body.querySelector(
-      '#usechatgptPDFViewerErrorAlert',
-    ) as HTMLElement
-    if (root) {
-      root.style.top = '120px'
-      root.style.left = '50%'
-      root.style.transform = 'translateX(-50%)'
-      root.style.zIndex = 'unset'
-      console.log('PDFViewerError', delay)
-      setDelay(null)
-      setRootElement(root as HTMLElement)
-      setShow(true)
-      return
+  const handleUploadPDF = async (file: File) => {
+    setUploadLoading(true)
+    const result = await maxAIFileUpload(file, {
+      useCase: 'multimodal',
+    })
+    if (result.success && result.file_url) {
+      chromeExtensionClientOpenPage({
+        key: 'pdf_viewer',
+        query: `?pdfUrl=${encodeURIComponent(result.file_url)}&newTab=false`,
+      })
     }
-  }, delay)
+    setUploadLoading(false)
+  }
+
+  useInterval(
+    () => {
+      const root = document.body.querySelector(
+        '#usechatgptPDFViewerErrorAlert',
+      ) as HTMLElement
+      if (root) {
+        root.style.top = '120px'
+        root.style.left = '50%'
+        root.style.transform = 'translateX(-50%)'
+        root.style.zIndex = 'unset'
+        console.log('PDFViewerError', delay)
+        setDelay(null)
+        setRootElement(root as HTMLElement)
+        setShow(true)
+        return
+      }
+    },
+    rootElement ? null : delay,
+  )
   if (!show || !rootElement) {
     return null
   }
@@ -152,12 +179,17 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
               bgcolor: 'background.paper',
             }}
           >
-            <Button
-              onClick={(event) => {
-                event.stopPropagation()
-                ;(document.querySelector(
-                  '#openFile',
-                ) as HTMLButtonElement)?.click()
+            <UploadButton
+              accept=".pdf"
+              onChange={(event) => {
+                if (event.target.files && event.target.files.length > 0) {
+                  const file = event.target.files?.[0]
+                  if (file) {
+                    handleUploadPDF(file)
+                    // reset
+                    event.target.value = ''
+                  }
+                }
               }}
               variant={'contained'}
               sx={{
@@ -172,27 +204,38 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
                 color: 'rgba(255,255,255,.87)',
               }}
             >
-              <NoteAddOutlinedIcon
-                sx={{
-                  fontSize: '24px',
-                  color: 'inherit',
-                }}
-              />
-              <Typography fontSize={'16px'} fontWeight={600}>
-                {t('client:pdf_ai_viewer__file_picker__button__title')}
-              </Typography>
-              <Typography
-                fontSize={'14px'}
-                fontWeight={400}
-                color={'rgba(0,0,0,.6)'}
-                sx={{
-                  position: 'absolute',
-                  bottom: -24,
-                }}
-              >
-                {t('client:pdf_ai_viewer__file_picker__button__description')}
-              </Typography>
-            </Button>
+              {uploadLoading ? (
+                <CircularProgress
+                  size={24}
+                  sx={{ m: '0 auto', color: 'white' }}
+                />
+              ) : (
+                <>
+                  <NoteAddOutlinedIcon
+                    sx={{
+                      fontSize: '24px',
+                      color: 'inherit',
+                    }}
+                  />
+                  <Typography fontSize={'16px'} fontWeight={600}>
+                    {t('client:pdf_ai_viewer__file_picker__button__title')}
+                  </Typography>
+                  <Typography
+                    fontSize={'14px'}
+                    fontWeight={400}
+                    color={'rgba(0,0,0,.6)'}
+                    sx={{
+                      position: 'absolute',
+                      bottom: -24,
+                    }}
+                  >
+                    {t(
+                      'client:pdf_ai_viewer__file_picker__button__description',
+                    )}
+                  </Typography>
+                </>
+              )}
+            </UploadButton>
           </Box>
         </Stack>
       </Stack>

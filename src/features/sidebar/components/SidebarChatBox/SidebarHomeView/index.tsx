@@ -2,22 +2,16 @@ import { SxProps } from '@mui/material'
 import Stack from '@mui/material/Stack'
 import React, { FC, useState } from 'react'
 
-import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
-import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNav'
 import HomeViewPdfDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewPdfDropBox'
+import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 
 interface ISidebarHomeViewProps {
   sx?: SxProps
 }
 
 const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
-  const {
-    files,
-    AIProviderConfig,
-    aiProviderUploadFiles,
-  } = useAIProviderUpload()
-  const maxFileSize = AIProviderConfig?.maxFileSize
+  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
 
   const [isDragOver, setIsDragOver] = useState(false)
 
@@ -42,8 +36,8 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
 
     if (isImage) {
       event.preventDefault()
-      const newUploadFiles = await formatClientUploadFiles([file], maxFileSize)
-      aiProviderUploadFiles(files.concat(newUploadFiles))
+
+      uploadImagesAndSwitchToVision([file])
     }
 
     if (isPDF) {

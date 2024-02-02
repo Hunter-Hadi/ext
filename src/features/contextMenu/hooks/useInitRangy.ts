@@ -507,6 +507,7 @@ const useInitRangy = () => {
       setFloatingDropdownMenu({
         open: false,
         rootRect: null,
+        showModelSelector: false,
       })
       setFloatingDropdownMenuSystemItems({
         selectContextMenuId: '',

@@ -10,6 +10,7 @@ import useAIProviderModels, {
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import { useFloatingContextMenu } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
@@ -22,6 +23,7 @@ const useThirdAIProviderModels = () => {
   const [, setDialogState] = useRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )
+  const { hideFloatingContextMenu } = useFloatingContextMenu()
   const { currentAIProvider, updateAIProviderModel } = useAIProviderModels()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { sidebarSettings, updateSidebarSettings } = useSidebarSettings()
@@ -73,6 +75,7 @@ const useThirdAIProviderModels = () => {
   }
   const showThirdPartyAIProviderConfirmDialog = () => {
     showChatBox()
+    hideFloatingContextMenu()
     setDialogState({
       open: true,
     })

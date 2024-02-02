@@ -219,6 +219,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                 setFloatingDropdownMenu({
                   open: false,
                   rootRect: null,
+                  showModelSelector: false,
                 })
                 setContextMenuSettings((prevSettings) => ({
                   ...prevSettings,
@@ -271,6 +272,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             setFloatingDropdownMenu({
                               open: false,
                               rootRect: null,
+                              showModelSelector: false,
                             })
                           }}
                         >
@@ -285,6 +287,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             setFloatingDropdownMenu({
                               open: false,
                               rootRect: null,
+                              showModelSelector: false,
                             })
                             hideRangy()
                           }}
@@ -364,6 +367,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             setFloatingDropdownMenu({
                               open: false,
                               rootRect: null,
+                              showModelSelector: false,
                             })
                           }}
                         >
@@ -378,6 +382,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
                             setFloatingDropdownMenu({
                               open: false,
                               rootRect: null,
+                              showModelSelector: false,
                             })
                             hideRangy()
                           }}

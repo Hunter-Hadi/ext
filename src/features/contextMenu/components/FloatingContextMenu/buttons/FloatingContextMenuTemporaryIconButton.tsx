@@ -43,6 +43,7 @@ const FloatingContextMenuTemporaryIconButton: FC<{
           setFloatingDropdownMenu({
             open: false,
             rootRect: null,
+            showModelSelector: false,
           })
           setContextMenuSettings((prevSettings) => ({
             ...prevSettings,

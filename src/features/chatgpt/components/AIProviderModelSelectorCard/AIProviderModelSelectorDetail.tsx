@@ -31,7 +31,7 @@ const AIProviderModelSelectorDetail: FC<{
         }}
       >
         <Stack gap={1}>
-          <Stack direction={'row'} alignItems={'center'} gap={1}>
+          <Stack direction={'row'} alignItems={'start'} gap={1}>
             {!hideAIProviderIcon && (
               <AIProviderIcon
                 aiProviderType={AIProvider}
@@ -43,6 +43,7 @@ const AIProviderModelSelectorDetail: FC<{
 
             <Typography
               fontSize={'16px'}
+              lineHeight={'20px'}
               fontWeight={500}
               color={'text.primary'}
             >

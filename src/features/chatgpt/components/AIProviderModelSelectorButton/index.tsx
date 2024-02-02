@@ -201,9 +201,15 @@ const AIProviderModelSelectorButton: FC<{
             <Box>
               <ClickAwayListener
                 onClickAway={(event) => {
-                  const aiProviderCard = getMaxAISidebarRootElement()?.querySelector(
-                    '#MaxAIProviderSelectorCard',
-                  ) as HTMLElement
+                  const aiProviderCard =
+                    size === 'small'
+                      ? (getAppContextMenuRootElement()?.querySelector(
+                          '#MaxAIProviderSelectorCard',
+                        ) as HTMLElement)
+                      : (getMaxAISidebarRootElement()?.querySelector(
+                          '#MaxAIProviderSelectorCard',
+                        ) as HTMLElement)
+                  debugger
                   if (aiProviderCard) {
                     const rect = aiProviderCard.getBoundingClientRect()
                     const x = (event as MouseEvent).clientX
@@ -223,6 +229,7 @@ const AIProviderModelSelectorButton: FC<{
                 }}
               >
                 <Box>
+                  <span>{open ? '1' : '2'}</span>
                   <AIModelSelectorCard
                     sidebarConversationType={sidebarConversationType}
                     onClose={handleClose}

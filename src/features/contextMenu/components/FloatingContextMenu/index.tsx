@@ -480,6 +480,7 @@ const FloatingContextMenu: FC<{
               setFloatingDropdownMenu({
                 open: false,
                 rootRect: null,
+                showModelSelector: false,
               })
               return
             }
@@ -548,6 +549,7 @@ const FloatingContextMenu: FC<{
         setFloatingDropdownMenu({
           open: false,
           rootRect: null,
+          showModelSelector: false,
         })
         showChatBox()
       }
@@ -563,6 +565,7 @@ const FloatingContextMenu: FC<{
               setFloatingDropdownMenu({
                 open: false,
                 rootRect: null,
+                showModelSelector: false,
               })
               // 如果出错了，则打开聊天框
               showChatBox()
@@ -727,10 +730,13 @@ const FloatingContextMenu: FC<{
                     }
                   }}
                 >
-                  <AIProviderModelSelectorButton
-                    sidebarConversationType={'Chat'}
-                    size={'small'}
-                  />
+                  {floatingDropdownMenu.open &&
+                    floatingDropdownMenu.showModelSelector && (
+                      <AIProviderModelSelectorButton
+                        sidebarConversationType={'Chat'}
+                        size={'small'}
+                      />
+                    )}
                   {!loading && (
                     <Stack direction={'row'} alignItems="center" gap={1}>
                       <TextOnlyTooltip

@@ -40,11 +40,13 @@ export const RangyState = atom<{
 export const FloatingDropdownMenuState = atom<{
   open: boolean
   rootRect: IRangyRect | null
+  showModelSelector: boolean
 }>({
   key: 'FloatingDropdownMenuState',
   default: {
     open: false,
     rootRect: null,
+    showModelSelector: false,
   },
 })
 

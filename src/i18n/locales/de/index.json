@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "KI-Anbieter von Drittanbietern werden nicht von MaxAI verwaltet. Wir empfehlen dringend, unsere Premium-KI-Anbieter für eine schnelle und hochwertige KI-Erfahrung zu verwenden.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "KI-Anbieter von Drittanbietern",
     "sidebar__ai_provider__provider_selector__disabled__description": "KI-Anbieter in der Erweiterung deaktiviert. Bitte versuchen Sie es später erneut.",
-    "sidebar__chat__advanced__title": "Erweiterte Chat-Optionen"
+    "sidebar__chat__advanced__title": "Erweiterte Chat-Optionen",
+    "provider__free_ai__model__special__description": "Free AI bietet grundlegenden, kostenlosen Zugang zu KI-Produktivitätstools, perfekt für leichte oder Testzwecke. Es ermöglicht Ihnen, die grundlegenden Funktionen von MaxAI zu testen und bietet einen einfachen Upgrade-Pfad zur vollständigen, erweiterten MaxAI-Suite. Unser Ziel ist es, Free AI kontinuierlich zu verbessern und den Unterschied zwischen unseren kostenlosen und Premium-KI-Optionen zu verringern."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

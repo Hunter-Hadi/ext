@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3rd-party AI 공급업체는 MaxAI에서 관리하지 않습니다. 빠르고 고품질의 AI 경험을 위해 저희 프리미엄 AI 공급업체를 사용하는 것을 강력히 권장합니다.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-party AI 공급업체",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI 공급업체가 업그레이드로 인해 확장 프로그램에서 비활성화되었습니다. 나중에 다시 시도해주세요.",
-    "sidebar__chat__advanced__title": "고급 채팅 옵션"
+    "sidebar__chat__advanced__title": "고급 채팅 옵션",
+    "provider__free_ai__model__special__description": "Free AI는 경량 또는 평가용으로 완벽한 기본 AI 생산성 도구에 대한 무료 액세스를 제공합니다. MaxAI의 기본 기능을 테스트하고, 전문적인 MaxAI 스위트로 쉽게 업그레이드할 수 있습니다. 우리는 계속해서 Free AI를 개선하여 무료와 프리미엄 AI 옵션 간의 차이를 줄이고자 합니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

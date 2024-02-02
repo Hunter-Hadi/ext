@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Les fournisseurs d'IA tiers ne sont pas gérés par MaxAI. Nous vous recommandons vivement d'utiliser nos fournisseurs d'IA premium pour une expérience IA rapide et de haute qualité.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Fournisseurs d'IA tiers",
     "sidebar__ai_provider__provider_selector__disabled__description": "Le fournisseur d'IA est désactivé dans l'extension pour une mise à niveau. Veuillez réessayer ultérieurement.",
-    "sidebar__chat__advanced__title": "Options de chat avancées"
+    "sidebar__chat__advanced__title": "Options de chat avancées",
+    "provider__free_ai__model__special__description": "Free AI offre un accès de base et gratuit aux outils de productivité de l'IA, parfait pour une utilisation légère ou d'essai. Il vous permet de tester les fonctionnalités de base de MaxAI, avec une voie de mise à niveau facile vers la suite complète et avancée de MaxAI. Nous nous efforçons d'améliorer continuellement Free AI, en réduisant la différence entre nos options d'IA gratuites et premium."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

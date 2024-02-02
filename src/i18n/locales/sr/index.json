@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Provajderi AI treće strane nisu upravljani od strane MaxAI-a. Toplo preporučujemo korišćenje naših premium AI provajdera za brzo i visokokvalitetno AI iskustvo.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Provajderi AI treće strane",
     "sidebar__ai_provider__provider_selector__disabled__description": "Provajder AI onemogućen u ekstenziji zbog nadogradnje. Molimo pokušajte kasnije.",
-    "sidebar__chat__advanced__title": "Napredne opcije razgovora"
+    "sidebar__chat__advanced__title": "Napredne opcije razgovora",
+    "provider__free_ai__model__special__description": "Besplatni AI pruža osnovan, besplatan pristup alatima za produktivnost AI, savršenim za lagano ili probno korišćenje. Omogućava vam testiranje osnovnih funkcija MaxAI-a, sa jednostavnim putem nadogradnje na puni, napredni MaxAI paket. Cilj nam je da kontinuirano unapređujemo Besplatni AI, smanjujući razliku između naše besplatne i premium AI opcije."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

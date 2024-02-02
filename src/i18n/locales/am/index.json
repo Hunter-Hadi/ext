@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "የራሱን አገልግሎት የሚጠቀሙ ነፃ ማስተናገዷን ይጠቀሙ ነው። የሚጠቀሙ አገልግሎት ለመጠቀም እና የሚጠቀሙ የAI አገልግሎት ማሳወቂያዎችን ለመጠቀም ይሻላል።",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3ኛ-ህገመን AI አገልግሎቶች",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI አገልግሎት የሚጠቀሙ ለማይፈልጉ የሚገኝ ማስተናገዷን ይጠቀሙ። እባክዎ እንዴት ያስተናግዳል.",
-    "sidebar__chat__advanced__title": "የተሻሻለ ውይይት አማራጭዎች"
+    "sidebar__chat__advanced__title": "የተሻሻለ ውይይት አማራጭዎች",
+    "provider__free_ai__model__special__description": "የነፃ ማስተርጓሚያ መሳሪያ በነፃ የሚገኙ ምልክቶችን የሚጠቀሙ አጠባበቅ የAI ተሽከርካሪ ተግባራትን በነፃ የሚገኙ ማስተርጓሚያ ቡድን ነው። ይህንን በተጨማሪ እይታ የMaxAI የተሽከርካሪ ተግባራትን የሚገኙ ምልክቶችን ለመረጃ የሚቀጥለውን መስራት ይችላል። እኛ የነፃ እና የፕሪሚየም AI መረጃዎች አድርገናል።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

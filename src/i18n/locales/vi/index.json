@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Các nhà cung cấp AI bên thứ ba không được quản lý bởi MaxAI. Chúng tôi rất khuyến nghị sử dụng các nhà cung cấp AI cao cấp của chúng tôi để có trải nghiệm AI nhanh chóng và chất lượng cao.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Nhà cung cấp AI bên thứ ba",
     "sidebar__ai_provider__provider_selector__disabled__description": "Nhà cung cấp AI đã bị vô hiệu hóa trong tiện ích mở rộng để nâng cấp. Vui lòng thử lại sau.",
-    "sidebar__chat__advanced__title": "Tùy chọn trò chuyện nâng cao"
+    "sidebar__chat__advanced__title": "Tùy chọn trò chuyện nâng cao",
+    "provider__free_ai__model__special__description": "Free AI cung cấp truy cập cơ bản và miễn phí vào các công cụ năng suất AI, hoàn hảo cho việc sử dụng nhẹ nhàng hoặc thử nghiệm. Nó cho phép bạn kiểm tra các tính năng cơ bản của MaxAI, với một con đường nâng cấp dễ dàng đến bộ công cụ MaxAI toàn diện và tiên tiến. Chúng tôi nhằm mục tiêu cải thiện liên tục Free AI, giảm sự khác biệt giữa các lựa chọn AI miễn phí và cao cấp của chúng tôi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

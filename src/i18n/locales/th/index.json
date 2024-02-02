@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "ผู้ให้บริการ AI จากบุคคลที่สามไม่ได้รับการจัดการโดย MaxAI เราขอแนะนำให้ใช้ผู้ให้บริการ AI พรีเมียมของเราสำหรับประสบการณ์ AI ที่รวดเร็วและคุณภาพสูง",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "ผู้ให้บริการ AI จากบุคคลที่สาม",
     "sidebar__ai_provider__provider_selector__disabled__description": "ผู้ให้บริการ AI ถูกปิดใช้งานในส่วนขยายเพื่ออัปเกรด โปรดลองอีกครั้งภายหลัง",
-    "sidebar__chat__advanced__title": "ตัวเลือกแชทขั้นสูง"
+    "sidebar__chat__advanced__title": "ตัวเลือกแชทขั้นสูง",
+    "provider__free_ai__model__special__description": "Free AI ให้การเข้าถึงเครื่องมือผลิตภัณฑ์ AI พื้นฐานโดยไม่มีค่าใช้จ่าย เหมาะสำหรับการใช้งานที่เบาหวานหรือทดลอง มันช่วยให้คุณทดสอบคุณสมบัติพื้นฐานของ MaxAI ได้อย่างง่ายดาย พร้อมทางเลือกในการอัพเกรดไปสู่ชุดคุณสมบัติขั้นสูงแบบเต็มรูปแบบของ MaxAI เรามุ่งหวังที่จะปรับปรุง Free AI อย่างต่อเนื่องเพื่อลดความแตกต่างระหว่างตัวเลือก AI แบบฟรีและแบบพรีเมียมของเรา"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

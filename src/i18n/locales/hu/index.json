@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "A harmadik féltől származó AI-szolgáltatókat nem kezeli a MaxAI. Nagyon ajánljuk, hogy használja prémium AI-szolgáltatóinkat a gyors és magas minőségű AI-élmény érdekében.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Harmadik féltől származó AI-szolgáltatók",
     "sidebar__ai_provider__provider_selector__disabled__description": "Az AI-szolgáltató letiltva a bővítményben történő frissítéshez. Kérjük, próbálja meg később.",
-    "sidebar__chat__advanced__title": "Haladó chat beállítások"
+    "sidebar__chat__advanced__title": "Haladó chat beállítások",
+    "provider__free_ai__model__special__description": "A Free AI alapvető, költségmentes hozzáférést biztosít az AI termelékenységi eszközökhöz, tökéletes a könnyű vagy próbálkozó használathoz. Lehetővé teszi a MaxAI alapvető funkcióinak tesztelését, egyszerű frissítési lehetőséggel a teljes, fejlett MaxAI csomaghoz. Célunk, hogy folyamatosan javítsuk a Free AI-t, csökkentve a különbséget a szabad és prémium AI lehetőségeink között."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -1,6 +1,8 @@
 import { IAIProviderModel } from '@/features/chatgpt/types'
 
 export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
+  // NOTE: 这里是因为要让用户看不到mistral 7b
+  // 所以title和description都是特殊的
   {
     title: 'Free AI',
     titleTag: '',
@@ -9,7 +11,9 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     tags: [],
     poweredBy: 'Mistral',
     description: (t) =>
-      t(`client:provider__free_ai__model__mistral_7b_instruct__description`),
+      t(`client:provider__free_ai__model__special__description`),
+    // description: (t) =>
+    //   t(`client:provider__free_ai__model__mistral_7b_instruct__description`),
   },
   {
     title: 'openchat-7b',

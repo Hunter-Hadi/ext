@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Penyedia AI pihak ketiga tidak dikendalikan oleh MaxAI. Kami sangat mengesyorkan menggunakan penyedia AI premium kami untuk pengalaman AI yang cepat dan berkualiti tinggi.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Penyedia AI pihak ketiga",
     "sidebar__ai_provider__provider_selector__disabled__description": "Penyedia AI dilumpuhkan dalam sambungan untuk peningkatan. Sila cuba lagi nanti.",
-    "sidebar__chat__advanced__title": "Pilihan perbualan lanjutan"
+    "sidebar__chat__advanced__title": "Pilihan perbualan lanjutan",
+    "provider__free_ai__model__special__description": "Free AI menyediakan akses asas tanpa kos kepada alat produktiviti AI, sesuai untuk penggunaan ringan atau percubaan. Ia membolehkan anda menguji ciri-ciri asas MaxAI, dengan laluan peningkatan mudah ke rangkaian penuh MaxAI yang canggih. Kami bertujuan untuk terus meningkatkan Free AI, mengurangkan perbezaan antara pilihan AI percuma dan premium kami."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

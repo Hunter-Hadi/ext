@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "AI-providers van derden worden niet beheerd door MaxAI. We raden ten zeerste aan om onze premium AI-providers te gebruiken voor een snelle en hoogwaardige AI-ervaring.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "AI-providers van derden",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-provider uitgeschakeld in extensie voor upgrade. Probeer het later opnieuw.",
-    "sidebar__chat__advanced__title": "Geavanceerde chatopties"
+    "sidebar__chat__advanced__title": "Geavanceerde chatopties",
+    "provider__free_ai__model__special__description": "Free AI biedt basis, kosteloze toegang tot AI-productiviteitstools, perfect voor licht of proefgebruik. Hiermee kunt u de basisfuncties van MaxAI testen, met een eenvoudig upgrade-pad naar de volledige, geavanceerde MaxAI-suite. We streven ernaar om Free AI continu te verbeteren en het verschil tussen onze gratis en premium AI-opties te verkleinen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

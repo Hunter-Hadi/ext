@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Dostawcy AI zewnętrznych nie są zarządzani przez MaxAI. Zdecydowanie polecamy korzystanie z naszych premium dostawców AI, aby uzyskać szybkie i wysokiej jakości doświadczenie AI.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Dostawcy AI zewnętrznych",
     "sidebar__ai_provider__provider_selector__disabled__description": "Dostawca AI jest wyłączony w rozszerzeniu ze względu na aktualizację. Proszę spróbować później.",
-    "sidebar__chat__advanced__title": "Zaawansowane opcje czatu"
+    "sidebar__chat__advanced__title": "Zaawansowane opcje czatu",
+    "provider__free_ai__model__special__description": "Free AI zapewnia podstawowy, bezpłatny dostęp do narzędzi produktywnościowych opartych na sztucznej inteligencji, idealnych do lekkiego użytku lub testów. Pozwala przetestować podstawowe funkcje MaxAI z łatwą ścieżką aktualizacji do pełnego, zaawansowanego pakietu MaxAI. Dążymy do ciągłego doskonalenia Free AI, zmniejszając różnicę między naszymi darmowymi a premium opcjami AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

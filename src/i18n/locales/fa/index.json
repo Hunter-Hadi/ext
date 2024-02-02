@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "ارائه دهندگان هوش مصنوعی شخص ثالث توسط MaxAI مدیریت نمی‌شوند. ما به شدت توصیه می‌کنیم از ارائه دهندگان هوش مصنوعی پریمیوم ما برای تجربه سریع و با کیفیت هوش مصنوعی استفاده کنید.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "ارائه دهندگان هوش مصنوعی شخص ثالث",
     "sidebar__ai_provider__provider_selector__disabled__description": "ارائه دهنده هوش مصنوعی در افزونه غیرفعال است. لطفاً بعداً امتحان کنید.",
-    "sidebar__chat__advanced__title": "گزینه های پیشرفته چت"
+    "sidebar__chat__advanced__title": "گزینه های پیشرفته چت",
+    "provider__free_ai__model__special__description": "Free AI ابزارهای بهره وری هوش مصنوعی را بدون هزینه ارائه می دهد که برای استفاده نورانی یا آزمایشی مناسب است. این به شما امکان می دهد ویژگی های پایه MaxAI را تست کنید، با یک مسیر ارتقاء آسان به مجموعه کامل و پیشرفته MaxAI. ما سعی داریم به طور مداوم Free AI را بهبود بخشیم و تفاوت بین گزینه های رایگان و پرمیوم AI خود را کاهش دهیم."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

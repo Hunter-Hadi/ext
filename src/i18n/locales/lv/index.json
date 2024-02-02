@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3. pušu AI pakalpojumu sniedzēji nav pārvaldīti ar MaxAI. Mēs ļoti iesakām izmantot mūsu premium AI pakalpojumu sniedzējus, lai nodrošinātu ātru un augstas kvalitātes AI pieredzi.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3. pušu AI pakalpojumu sniedzēji",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI pakalpojums ir atspējots paplašinājumā, lai to uzlabotu. Lūdzu, mēģiniet vēlāk.",
-    "sidebar__chat__advanced__title": "Papildu čata opcijas"
+    "sidebar__chat__advanced__title": "Papildu čata opcijas",
+    "provider__free_ai__model__special__description": "Bezmaksas AI nodrošina pamata piekļuvi AI produktivitātes rīkiem, kas ir ideāli piemēroti vieglai vai izmēģinājuma lietošanai. Tas ļauj jums pārbaudīt MaxAI pamata funkcijas ar vienkāršu uzlabošanas ceļu uz pilnu, uzlaboto MaxAI komplektu. Mēs cenšamies nepārtraukti uzlabot Bezmaksas AI, samazinot atšķirību starp mūsu bezmaksas un premium AI iespējām."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Tredjeparts AI-leverantörer hanteras inte av MaxAI. Vi rekommenderar starkt att använda våra premium AI-leverantörer för snabb och högkvalitativ AI-upplevelse.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Tredjeparts AI-leverantörer",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-leverantören är inaktiverad i tillägget för uppgradering. Försök igen senare.",
-    "sidebar__chat__advanced__title": "Avancerade chattalternativ"
+    "sidebar__chat__advanced__title": "Avancerade chattalternativ",
+    "provider__free_ai__model__special__description": "Free AI ger grundläggande, kostnadsfri tillgång till AI-produktivitetsverktyg, perfekt för lätt eller testanvändning. Det låter dig testa MaxAI:s grundläggande funktioner med en enkel uppgraderingsväg till den fullständiga, avancerade MaxAI-sviten. Vi strävar efter att kontinuerligt förbättra Free AI och minska skillnaden mellan våra gratis- och premiumalternativ för AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

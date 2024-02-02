@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Ang mga 3rd-party AI provider ay hindi pinamamahalaan ng MaxAI. Mariing inirerekomenda namin ang paggamit ng aming premium AI providers para sa mabilis at mataas na kalidad na AI experience.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Mga 3rd-party AI provider",
     "sidebar__ai_provider__provider_selector__disabled__description": "Hindi pinagana ang AI provider sa extension para sa upgrade. Subukan muli mamaya.",
-    "sidebar__chat__advanced__title": "Advanced na mga opsyon sa chat"
+    "sidebar__chat__advanced__title": "Advanced na mga opsyon sa chat",
+    "provider__free_ai__model__special__description": "Ang Libreng AI ay nagbibigay ng mga pangunahing tool sa produktibidad ng AI nang walang bayad, na perpekto para sa magaan o pagsusubok na paggamit. Ito ay nagbibigay-daan sa iyo na subukan ang mga pangunahing tampok ng MaxAI, na may madaling daan tungo sa buong at advanced na suite ng MaxAI. Layunin naming patuloy na mapabuti ang Libreng AI, na nagbabawas ng pagkakaiba sa pagitan ng aming libre at premium na mga pagpipilian ng AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

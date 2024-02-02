@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3. taraf AI sağlayıcıları MaxAI tarafından yönetilmez. Hızlı ve yüksek kaliteli bir AI deneyimi için premium AI sağlayıcılarımızı kullanmanızı şiddetle tavsiye ederiz.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3. taraf AI sağlayıcıları",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI sağlayıcısı uzantıda devre dışı bırakıldı. Lütfen daha sonra tekrar deneyin.",
-    "sidebar__chat__advanced__title": "Gelişmiş sohbet seçenekleri"
+    "sidebar__chat__advanced__title": "Gelişmiş sohbet seçenekleri",
+    "provider__free_ai__model__special__description": "Ücretsiz AI, hafif veya deneme kullanımı için mükemmel olan temel AI üretkenlik araçlarına ücretsiz erişim sağlar. Temel MaxAI özelliklerini test etmenizi sağlar ve tam, gelişmiş MaxAI paketine kolay bir yükseltme yolunu sunar. Ücretsiz AI'yi sürekli olarak geliştirmeyi hedefliyoruz, ücretsiz ve premium AI seçeneklerimiz arasındaki farkı azaltıyoruz."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

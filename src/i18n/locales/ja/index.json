@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "サードパーティのAIプロバイダはMaxAIによって管理されていません。高速かつ高品質なAI体験のために、当社のプレミアムAIプロバイダを使用することを強くお勧めします。",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "サードパーティのAIプロバイダ",
     "sidebar__ai_provider__provider_selector__disabled__description": "AIプロバイダは拡張機能で無効になっています。後でもう一度お試しください。",
-    "sidebar__chat__advanced__title": "高度なチャットオプション"
+    "sidebar__chat__advanced__title": "高度なチャットオプション",
+    "provider__free_ai__model__special__description": "Free AIは、AI生産性ツールへの基本的で無料のアクセスを提供し、軽量またはトライアル利用に最適です。基本的なMaxAIの機能をテストすることができ、簡単にフルバージョンの高度なMaxAIスイートにアップグレードできます。私たちはFree AIを継続的に改善し、無料とプレミアムのAIオプションの違いを減らすことを目指しています。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Kolmanda osapoole AI pakkujaid ei haldada MaxAI. Soovitame tungivalt kasutada meie tasulisi AI pakkujaid kiireks ja kvaliteetseks AI kogemuseks.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Kolmanda osapoole AI pakkujad",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI pakkujat pole laienduses täiustamiseks lubatud. Palun proovige hiljem uuesti.",
-    "sidebar__chat__advanced__title": "Täpsemad vestlusvalikud"
+    "sidebar__chat__advanced__title": "Täpsemad vestlusvalikud",
+    "provider__free_ai__model__special__description": "Free AI pakub põhilisi, tasuta juurdepääsu AI tootlikkuse tööriistadele, mis sobivad ideaalselt kergeks või katsetamiseks. See võimaldab teil testida MaxAI põhifunktsioone, lihtsa üleminekuga täielikule ja edasijõudnutele mõeldud MaxAI komplektile. Meie eesmärk on pidevalt parandada Free AI-d, vähendades erinevust meie tasuta ja tasuliste AI valikute vahel."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

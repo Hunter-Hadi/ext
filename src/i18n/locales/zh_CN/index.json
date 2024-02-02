@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "第三方AI提供商不受MaxAI管理。我们强烈建议使用我们的高级AI提供商以获得快速和高质量的AI体验。",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "第三方AI提供商",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI提供商在扩展中已禁用以进行升级。请稍后再试。",
-    "sidebar__chat__advanced__title": "高级聊天选项"
+    "sidebar__chat__advanced__title": "高级聊天选项",
+    "provider__free_ai__model__special__description": "免费AI提供基本的、无成本的AI生产力工具，非常适合轻量级或试用。它让您测试MaxAI的基本功能，并提供了升级到完整高级MaxAI套件的简单路径。我们致力于不断改进免费AI，缩小免费和高级AI选项之间的差距。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

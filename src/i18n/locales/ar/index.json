@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "مُزودي AI من جهات ثالثة لا يتم إدارتهم بواسطة MaxAI. نوصي بشدة باستخدام مُزودي AI المتميزين الخاصين بنا لتجربة AI سريعة وعالية الجودة.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "مُزودي AI من جهات ثالثة",
     "sidebar__ai_provider__provider_selector__disabled__description": "تم تعطيل مُزود AI في الامتداد للترقية. يُرجى المحاولة لاحقًا.",
-    "sidebar__chat__advanced__title": "خيارات متقدمة للدردشة"
+    "sidebar__chat__advanced__title": "خيارات متقدمة للدردشة",
+    "provider__free_ai__model__special__description": "يوفر Free AI الوصول المجاني إلى أدوات إنتاجية تعتمد على الذكاء الاصطناعي، مثالي للاستخدام الخفيف أو التجريبي. يتيح لك اختبار الميزات الأساسية لـ MaxAI، مع خيار الترقية السهل إلى حزمة MaxAI الكاملة والمتقدمة. نحن نهدف إلى تحسين Free AI بشكل مستمر، وتقليل الفروق بين خيارات الذكاء الاصطناعي المجانية والمميزة لدينا."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

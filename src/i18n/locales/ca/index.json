@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Els proveïdors d'IA de tercers no estan gestionats per MaxAI. Recomanem encaridament utilitzar els nostres proveïdors d'IA premium per a una experiència d'IA ràpida i de qualitat.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Proveïdors d'IA de tercers",
     "sidebar__ai_provider__provider_selector__disabled__description": "El proveïdor d'IA està desactivat a l'extensió per actualització. Si us plau, prova-ho més tard.",
-    "sidebar__chat__advanced__title": "Opcions avançades de xat"
+    "sidebar__chat__advanced__title": "Opcions avançades de xat",
+    "provider__free_ai__model__special__description": "Free AI proporciona accés bàsic i gratuït a eines de productivitat d'IA, perfectes per a un ús lleuger o de prova. Et permet provar les funcionalitats bàsiques de MaxAI, amb una ruta senzilla per actualitzar-te a la suite completa i avançada de MaxAI. Volem millorar constantment Free AI, reduint la diferència entre les nostres opcions d'IA gratuïtes i premiums."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

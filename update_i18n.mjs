@@ -391,10 +391,7 @@ const updateI18nJson = async (
       if (Object.keys(partOfNeedTranslateJson).length > 0) {
         needTranslateJsonList.push(partOfNeedTranslateJson)
       }
-      if (needTranslateJsonList.length > 0) {
-        console.log('需要翻译的i18n片段数量: ', needTranslateJsonList.length)
-        return
-      }
+      console.log('需要翻译的i18n片段数量: ', needTranslateJsonList.length)
       let mergedJson = _.cloneDeep(currentLanguageJson)
       let translateHasError = false
       let percentRate = 0

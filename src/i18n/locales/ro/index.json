@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Furnizorii de AI terți nu sunt gestionați de MaxAI. Vă recomandăm să utilizați furnizorii noștri premium de AI pentru o experiență AI rapidă și de înaltă calitate.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Furnizori AI terți",
     "sidebar__ai_provider__provider_selector__disabled__description": "Furnizorul AI este dezactivat în extensie pentru actualizare. Vă rugăm să încercați mai târziu.",
-    "sidebar__chat__advanced__title": "Opțiuni avansate de chat"
+    "sidebar__chat__advanced__title": "Opțiuni avansate de chat",
+    "provider__free_ai__model__special__description": "Free AI oferă acces gratuit la instrumente de productivitate AI de bază, perfecte pentru utilizare ușoară sau de încercare. Vă permite să testați funcționalitățile de bază ale MaxAI, cu o cale ușoară de upgrade către suita completă și avansată MaxAI. Ne propunem să îmbunătățim continuu Free AI, reducând diferența dintre opțiunile noastre gratuite și premium AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

@@ -20,7 +20,7 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
 
   // const { updateSidebarConversationType } = useSidebarSettings()
 
-  const { t } = useTranslation('client')
+  const { t } = useTranslation(['client'])
 
   const [loading, setLoading] = React.useState(false)
 

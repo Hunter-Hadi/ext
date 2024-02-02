@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Poskytovatelé AI třetích stran nejsou spravováni společností MaxAI. Doporučujeme používat naše prémiové poskytovatele AI pro rychlou a kvalitní zkušenost s umělou inteligencí.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Poskytovatelé AI třetích stran",
     "sidebar__ai_provider__provider_selector__disabled__description": "Poskytovatel AI je v rozšíření zakázán pro upgrade. Zkuste to prosím později.",
-    "sidebar__chat__advanced__title": "Pokročilé možnosti chatu"
+    "sidebar__chat__advanced__title": "Pokročilé možnosti chatu",
+    "provider__free_ai__model__special__description": "Free AI poskytuje základní bezplatný přístup k produktivním nástrojům umělé inteligence, ideální pro lehké nebo zkušební použití. Umožňuje vám otestovat základní funkce MaxAI s jednoduchou možností upgrade na plný pokročilý balíček MaxAI. Snažíme se neustále zlepšovat Free AI a snižovat rozdíl mezi naší bezplatnou a prémiovou nabídkou umělé inteligence."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

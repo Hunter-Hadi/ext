@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Watoa huduma wa AI wa tatu hawasimamiwi na MaxAI. Tunapendekeza sana kutumia watoa huduma wetu wa AI wa malipo kwa uzoefu wa haraka na wa hali ya juu wa AI.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Watoa huduma wa AI wa tatu",
     "sidebar__ai_provider__provider_selector__disabled__description": "Mtoa huduma wa AI amezimwa katika programu-jalizi kwa ajili ya kuboresha. Tafadhali jaribu tena baadaye.",
-    "sidebar__chat__advanced__title": "Chaguo za mazungumzo ya juu"
+    "sidebar__chat__advanced__title": "Chaguo za mazungumzo ya juu",
+    "provider__free_ai__model__special__description": "Free AI inatoa ufikiaji wa msingi na usiolipishwa kwa zana za uzalishaji za AI, kamili kwa matumizi ya mwanga au majaribio. Inakuruhusu kujaribu vipengele vya msingi vya MaxAI, na njia rahisi ya kuboresha kwenye pakiti kamili na ya juu ya MaxAI. Lengo letu ni kuboresha Free AI kila mara, kupunguza tofauti kati ya chaguzi yetu ya bure na premium za AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "ספקי AI מצד שלישי אינם ננהלים על ידי MaxAI. אנחנו ממליצים בחום להשתמש בספקי הAI הפרימיום שלנו לחוויית AI מהירה ואיכותית.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "ספקי AI מצד שלישי",
     "sidebar__ai_provider__provider_selector__disabled__description": "ספק AI מנוטרל בתוסף לשדרוג. נסה שוב מאוחר יותר.",
-    "sidebar__chat__advanced__title": "אפשרויות צ'אט מתקדמות"
+    "sidebar__chat__advanced__title": "אפשרויות צ'אט מתקדמות",
+    "provider__free_ai__model__special__description": "Free AI מספק גישה בסיסית וחינמית לכלי הפועלות של AI, מושלמת לשימוש קל או לניסיון. היא מאפשרת לך לבדוק את התכונות הבסיסיות של MaxAI, עם אפשרות שדרוג קלה לחבילה המלאה והמתקדמת של MaxAI. אנחנו שואפים לשפר את Free AI באופן מתמיד, ולהפחית את ההבדל בין האפשרויות החינמיות והפרימיום שלנו בתחום הAI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

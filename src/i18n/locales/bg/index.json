@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "AI доставчиците от трета страна не се управляват от MaxAI. Настоятелно препоръчваме използването на нашите премиум AI доставчици за бърз и висококачествен AI опит.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "AI доставчици от трета страна",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI доставчикът е деактивиран в разширението за ъпгрейд. Моля, опитайте по-късно.",
-    "sidebar__chat__advanced__title": "Разширени опции за чат"
+    "sidebar__chat__advanced__title": "Разширени опции за чат",
+    "provider__free_ai__model__special__description": "Free AI предоставя основни инструменти за продуктивност на изкуствения интелект безплатно, идеални за лека или пробна употреба. Той ви позволява да тествате основните функции на MaxAI с лесен ъпгрейд към пълния напреднал пакет MaxAI. Нашата цел е да подобрим Free AI непрекъснато, намалявайки разликата между нашите безплатни и премиум варианти на изкуствения интелект."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

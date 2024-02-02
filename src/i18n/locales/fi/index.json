@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Kolmannen osapuolen AI-palveluntarjoajia ei hallinnoi MaxAI. Suosittelemme erittäin lämpimästi käyttämään premium-AI-palveluntarjoajiamme nopeaa ja korkealaatuista AI-kokemusta varten.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Kolmannen osapuolen AI-palveluntarjoajat",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-palveluntarjoaja on poistettu käytöstä laajennuksen päivityksen vuoksi. Yritä myöhemmin uudelleen.",
-    "sidebar__chat__advanced__title": "Edistyneet keskusteluasetukset"
+    "sidebar__chat__advanced__title": "Edistyneet keskusteluasetukset",
+    "provider__free_ai__model__special__description": "Free AI tarjoaa perusominaisuudet ilmaiseksi käytettäväksi. Se on täydellinen kevyt- tai kokeilukäyttöön. Voit testata MaxAI:n perustoimintoja ja päivittää helposti täyteen, edistyneeseen MaxAI-pakettiin. Pyrimme jatkuvasti parantamaan Free AI:ta ja vähentämään eroa ilmaisen ja maksullisen AI-vaihtoehdon välillä."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

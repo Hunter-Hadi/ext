@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "Trečiosios šalies AI tiekėjai nėra valdomi MaxAI. Labai rekomenduojame naudoti mūsų premium AI tiekėjus, kad gautumėte greitą ir aukštos kokybės AI patirtį.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Trečiosios šalies AI tiekėjai",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI tiekėjas išjungtas plėtiniui atnaujinimui. Bandykite vėliau.",
-    "sidebar__chat__advanced__title": "Išplėstiniai pokalbių nustatymai"
+    "sidebar__chat__advanced__title": "Išplėstiniai pokalbių nustatymai",
+    "provider__free_ai__model__special__description": "Nemokama dirbtinio intelekto (AI) paslauga suteikia pagrindinį, nemokamą prieigą prie AI produktyvumo įrankių, puikiai tinkamų lengvam arba bandymo naudojimui. Tai leidžia jums išbandyti MaxAI pagrindines funkcijas ir lengvai atnaujinti iki visapusiško, pažangaus MaxAI paketo. Mes nuolat siekiame tobulinti nemokamą AI paslaugą, mažindami skirtumus tarp mūsų nemokamos ir premium AI pasirinkimo galimybių."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -574,7 +574,8 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3જી પક્ષ AI પ્રદાતાઓ મેક્સAI દ્વારા મેનેજ થતા નથી. ફાસ્ટ અને ઉચ્ચ ગુણવત્તાવાળી AI અનુભવ માટે અમારા પ્રીમિયમ AI પ્રદાતાઓનો ઉપયોગ કરવાની અત્યારે સલાહ આપીએ છીએ.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3જી પક્ષ AI પ્રદાતાઓ",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI પ્રદાતા એક્સ્ટેન્શનમાં અપગ્રેડ માટે અક્ષમ છે. કૃપા કરીને પછી થી પ્રયાસ કરો.",
-    "sidebar__chat__advanced__title": "ઉન્નત ચેટ વિકલ્પો"
+    "sidebar__chat__advanced__title": "ઉન્નત ચેટ વિકલ્પો",
+    "provider__free_ai__model__special__description": "મુક્ત AI બનેલી મોટાભાગના વપરાશકર્તાઓ માટે મફત એઆઈ ઉપલબ્ધ કરે છે, જે હાલમાં પ્રક્રિયાશીલતા સાધનોને મળતી નથી. આ આપને મક્સએઆઈના મૂળભૂત વ્યાપારને ચાલાવવાની સરળ અપગ્રેડ માર્ગ આપે છે. અમે મુક્ત એઆઈને સતત સુધારવામાં રહ્યાં છીએ, અમારી મુક્ત અને પ્રીમિયમ AI વિકલ્પોમાં ફરક ઘટાડવામાં મદદ કરવામાં આવી છે."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -204,6 +204,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         {currentSidebarConversationTypeModels.map((AIModelOption) => {
           return (
             <MenuItem
+              data-testid={`maxai--ai-model-selector--menu-item--${AIModelOption.value}`}
               disabled={AIModelOption.disabled}
               onMouseEnter={() => {
                 setIsHoverThirdPartyModel(false)
@@ -252,6 +253,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         {sidebarConversationType === 'Chat' && <Divider sx={{ px: 1 }} />}
         {sidebarConversationType === 'Chat' && (
           <MenuItem
+            data-testid={`maxai--ai-model-selector--menu-item--third-ai-provider`}
             onMouseEnter={() => {
               setHoverModel(null)
               setIsHoverThirdPartyModel(true)

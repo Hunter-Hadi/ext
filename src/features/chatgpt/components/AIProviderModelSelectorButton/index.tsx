@@ -25,13 +25,20 @@ import { ISidebarConversationType } from '@/features/sidebar/store'
 import { getAppContextMenuRootElement } from '@/utils'
 
 const AIProviderModelSelectorButton: FC<{
+  disabled?: boolean
   sidebarConversationType: ISidebarConversationType
   sx?: SxProps
   size?: 'normal' | 'small'
   placement?: TooltipProps['placement']
 }> = (props) => {
   const { t } = useTranslation(['client'])
-  const { sx, size = 'normal', placement, sidebarConversationType } = props
+  const {
+    sx,
+    size = 'normal',
+    placement,
+    sidebarConversationType,
+    disabled,
+  } = props
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [isHoverButton, setIsHoverButton] = useState(false)
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
@@ -130,7 +137,7 @@ const AIProviderModelSelectorButton: FC<{
   return (
     <Box>
       <Button
-        disabled={smoothConversationLoading}
+        disabled={disabled || smoothConversationLoading}
         disableRipple
         id={'max-ai__ai-provider-floating-button'}
         ref={anchorRef}
@@ -191,13 +198,15 @@ const AIProviderModelSelectorButton: FC<{
                 {currentModelDetail.label}
               </Typography>
             )}
-            <ContextMenuIcon
-              icon={'ExpandMore'}
-              sx={{
-                color: 'text.secondary',
-                fontSize: '16px',
-              }}
-            />
+            {!disabled && (
+              <ContextMenuIcon
+                icon={'ExpandMore'}
+                sx={{
+                  color: 'text.secondary',
+                  fontSize: '16px',
+                }}
+              />
+            )}
           </Stack>
         </TextOnlyTooltip>
       </Button>

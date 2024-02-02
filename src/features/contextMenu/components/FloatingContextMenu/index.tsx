@@ -733,12 +733,22 @@ const FloatingContextMenu: FC<{
                   {floatingDropdownMenu.open &&
                     floatingDropdownMenu.showModelSelector && (
                       <AIProviderModelSelectorButton
+                        disabled={
+                          !floatingDropdownMenu.open ||
+                          !floatingDropdownMenu.showModelSelector
+                        }
                         sidebarConversationType={'Chat'}
                         size={'small'}
                       />
                     )}
                   {!loading && (
-                    <Stack direction={'row'} alignItems="center" gap={1}>
+                    <Stack
+                      direction={'row'}
+                      alignItems="center"
+                      gap={1}
+                      ml={'auto'}
+                      mr={0}
+                    >
                       <TextOnlyTooltip
                         floatingMenuTooltip
                         title={t('client:floating_menu__button__send_to_ai')}

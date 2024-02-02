@@ -12,6 +12,7 @@ export interface IRemoteAIProviderConfig {
   chatGPTWebappModelsWhiteList: string[]
   disabledAIProviders: IAIProviderType[]
   hiddenAIProviders: IAIProviderType[]
+  claudeWebappModel: string
 }
 
 export const DEFAULT_REMOTE_AI_PROVIDER_CONFIG: IRemoteAIProviderConfig = {
@@ -19,6 +20,7 @@ export const DEFAULT_REMOTE_AI_PROVIDER_CONFIG: IRemoteAIProviderConfig = {
   chatGPTWebappModelsWhiteList: [],
   disabledAIProviders: [],
   hiddenAIProviders: [],
+  claudeWebappModel: 'claude-2.0',
 }
 
 // background发起的

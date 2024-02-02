@@ -4,6 +4,7 @@ import { v4 as uuidV4 } from 'uuid'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 
+import { getRemoteAIProviderConfigCache } from '../../OpenAiChat/utils'
 import {
   createClaudeConversation,
   deleteClaudeConversation,
@@ -76,6 +77,7 @@ export class Claude {
       text = ''
     }
     const claudeSettings = await getAIProviderSettings('CLAUDE')
+    const { claudeWebappModel } = await getRemoteAIProviderConfigCache()
     await fetchSSE(apiHost, {
       signal,
       method: 'POST',
@@ -90,7 +92,7 @@ export class Claude {
           return originalAttachment
         }),
         files: [], //暂时不知道 claude 这个字段是干什么的
-        model: claudeSettings?.model || 'claude-2',
+        model: claudeWebappModel || claudeSettings?.model || 'claude-2.1',
         prompt: text,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       }),

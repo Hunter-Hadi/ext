@@ -38,6 +38,7 @@ import {
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
+import { setAIProviderSettings } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import { ClientMessageInit } from '@/background/src/client'
 import { pdfSnifferStartListener } from '@/background/src/pdf'
@@ -72,6 +73,8 @@ import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChann
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { sendLarkBotMessage } from '@/utils/larkBot'
+
+import { CLAUDE_MODELS } from './src/chat/ClaudeWebappChat/claude/types'
 
 /**
  * background.js 入口
@@ -137,6 +140,19 @@ const initChromeExtensionInstalled = () => {
       title: 'MaxAI.me',
       contexts: ['all'],
     })
+
+    // NOTE: 特殊处理
+    // 由于 claude 更新了 model，所以这里需要在用户更新到 3.0.0 插件的时候
+    // 更新用户缓存中的 claude  model
+    // 可以在 大于 3.0.0 版本的时候删除这段代码
+    if (
+      object.reason === (Browser as any).runtime.OnInstalledReason.UPDATE &&
+      APP_VERSION === '3.0.0'
+    ) {
+      await setAIProviderSettings('CLAUDE', {
+        model: CLAUDE_MODELS[0].value,
+      })
+    }
   })
 }
 

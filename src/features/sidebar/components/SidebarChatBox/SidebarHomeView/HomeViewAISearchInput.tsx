@@ -69,7 +69,7 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
         }
       }}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} autoComplete="off">
         <OutlinedInput
           size="small"
           placeholder="Ask anything..."

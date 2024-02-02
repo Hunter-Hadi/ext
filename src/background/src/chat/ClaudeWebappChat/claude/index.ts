@@ -68,8 +68,9 @@ export class Claude {
     this.abortController = new AbortController()
     const signal = this.abortController.signal
     const apiHost = regenerate
-      ? 'https://claude.ai/api/retry_message'
-      : 'https://claude.ai/api/append_message'
+      ? `https://claude.ai/api/organizations/${this.organizationId}/chat_conversations/${conversationId}/retry_completion`
+      : `https://claude.ai/api/organizations/${this.organizationId}/chat_conversations/${conversationId}/completion`
+
     // claude api 的设计是，如果是regenerate用户发送的消息必须是空的
     if (regenerate) {
       text = ''
@@ -88,15 +89,10 @@ export class Claude {
           delete originalAttachment.id
           return originalAttachment
         }),
-        completion: {
-          incremental: true,
-          model: claudeSettings?.model || 'claude-2',
-          prompt: text,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-        },
-        conversation_uuid: conversationId,
-        organization_uuid: this.organizationId,
-        text,
+        files: [], //暂时不知道 claude 这个字段是干什么的
+        model: claudeSettings?.model || 'claude-2',
+        prompt: text,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       }),
       onMessage: (message: string) => {
         console.debug('claude sse message', message)

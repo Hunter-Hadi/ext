@@ -52,7 +52,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
     <Box
       sx={{
         position: 'absolute',
-        left: 0,
+        left: -8,
         bottom: 0,
         width: 40,
         height: 40,

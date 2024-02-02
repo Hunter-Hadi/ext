@@ -6,9 +6,8 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
-import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import HomeViewContentNavIcons from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNavIcons'
+import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 const VisuallyHiddenInput = styled('input')({
@@ -26,20 +25,19 @@ const VisuallyHiddenInput = styled('input')({
 const HomeViewFileUploader = () => {
   const { t } = useTranslation(['client'])
 
-  const {
-    files,
-    AIProviderConfig,
-    aiProviderUploadFiles,
-  } = useAIProviderUpload()
-  const maxFileSize = AIProviderConfig?.maxFileSize
+  // const {
+  //   files,
+  //   AIProviderConfig,
+  //   aiProviderUploadFiles,
+  // } = useAIProviderUpload()
+
+  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
 
   const handleUploadFiles = async (file: File) => {
     const isImage = file.type.includes('image')
     const isPDF = file.type.includes('pdf')
     if (isImage) {
-      const newUploadFiles = await formatClientUploadFiles([file], maxFileSize)
-
-      aiProviderUploadFiles(files.concat(newUploadFiles))
+      uploadImagesAndSwitchToVision([file])
     }
 
     if (isPDF) {

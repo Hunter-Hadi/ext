@@ -19,16 +19,15 @@ const useSearchWithProvider = () => {
     setSearchWithAISettings,
   } = useSearchWithAISettings()
 
-  const currentProvider = useMemo(
-    () => searchWithAISettings.currentAIProvider,
-    [searchWithAISettings.currentAIProvider],
-  )
+  const currentProvider = useMemo(() => searchWithAISettings.aiProvider, [
+    searchWithAISettings.aiProvider,
+  ])
 
   const switchProvider = useCallback(
     async (provider: ISearchWithAIProviderType) => {
       setLoading(true)
       setSearchWithAISettings({
-        currentAIProvider: provider,
+        aiProvider: provider,
       })
       await port.postMessage({
         event: 'SWAI_switchAIProvider',

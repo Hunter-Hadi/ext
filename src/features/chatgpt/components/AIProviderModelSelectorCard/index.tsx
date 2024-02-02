@@ -181,7 +181,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         autoFocusItem
         id={'maxai-ai-model-selector-menu'}
         aria-labelledby="maxai-ai-model-selector-menu"
-        onKeyDown={(event) => {}}
         sx={{
           width: 198,
           flexShrink: 0,

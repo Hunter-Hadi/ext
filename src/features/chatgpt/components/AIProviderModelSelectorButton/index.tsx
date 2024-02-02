@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Grow from '@mui/material/Grow'
 import Popper from '@mui/material/Popper'
 import Stack from '@mui/material/Stack'
@@ -95,6 +94,38 @@ const AIProviderModelSelectorButton: FC<{
       anchorRef.current!.focus()
     }
     prevOpen.current = open
+  }, [open])
+  useEffect(() => {
+    const mouseEventHandler = (event: MouseEvent) => {
+      const aiProviderCard =
+        size === 'small'
+          ? (getAppContextMenuRootElement()?.querySelector(
+              '#MaxAIProviderSelectorCard',
+            ) as HTMLElement)
+          : (getMaxAISidebarRootElement()?.querySelector(
+              '#MaxAIProviderSelectorCard',
+            ) as HTMLElement)
+      if (aiProviderCard) {
+        const rect = aiProviderCard.getBoundingClientRect()
+        const x = (event as MouseEvent).clientX
+        const y = (event as MouseEvent).clientY
+        if (
+          x > rect.left &&
+          x < rect.right &&
+          y > rect.top &&
+          y < rect.bottom
+        ) {
+          // 点击在卡片内部
+          return
+        }
+        handleClose(event)
+        event.stopPropagation()
+      }
+    }
+    document.addEventListener('mousedown', mouseEventHandler)
+    return () => {
+      document.removeEventListener('mousedown', mouseEventHandler)
+    }
   }, [open])
   return (
     <Box>
@@ -199,43 +230,10 @@ const AIProviderModelSelectorButton: FC<{
             }}
           >
             <Box>
-              <ClickAwayListener
-                onClickAway={(event) => {
-                  const aiProviderCard =
-                    size === 'small'
-                      ? (getAppContextMenuRootElement()?.querySelector(
-                          '#MaxAIProviderSelectorCard',
-                        ) as HTMLElement)
-                      : (getMaxAISidebarRootElement()?.querySelector(
-                          '#MaxAIProviderSelectorCard',
-                        ) as HTMLElement)
-                  debugger
-                  if (aiProviderCard) {
-                    const rect = aiProviderCard.getBoundingClientRect()
-                    const x = (event as MouseEvent).clientX
-                    const y = (event as MouseEvent).clientY
-                    if (
-                      x > rect.left &&
-                      x < rect.right &&
-                      y > rect.top &&
-                      y < rect.bottom
-                    ) {
-                      // 点击在卡片内部
-                      return
-                    }
-                    handleClose(event)
-                    event.stopPropagation()
-                  }
-                }}
-              >
-                <Box>
-                  <span>{open ? '1' : '2'}</span>
-                  <AIModelSelectorCard
-                    sidebarConversationType={sidebarConversationType}
-                    onClose={handleClose}
-                  />
-                </Box>
-              </ClickAwayListener>
+              <AIModelSelectorCard
+                sidebarConversationType={sidebarConversationType}
+                onClose={handleClose}
+              />
             </Box>
           </Grow>
         )}

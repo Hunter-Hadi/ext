@@ -324,7 +324,7 @@ const initChromeExtensionUpdated = async () => {
   if (APP_VERSION === '2.4.8') {
     analyzeIndexDBMemory()
   }
-  if (APP_VERSION === '2.5.2') {
+  if (APP_VERSION === '3.0.0') {
     setTimeout(
       executeMaxAIOneYearPromotion,
       (1 + Math.floor(Math.random() * 9)) * 1000,

@@ -7,12 +7,14 @@ import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
 interface IHomeViewAISearchInputProps {}
 
 const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   const { createSearchWithAI } = useSearchWithAI()
+  const { createConversation } = useClientConversation()
 
   // const { cleanConversation } = useClientConversation()
 
@@ -40,6 +42,7 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
     }
 
     setLoading(true)
+    await createConversation('Search')
     await createSearchWithAI(question, false)
 
     target.reset()

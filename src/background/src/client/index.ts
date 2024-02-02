@@ -37,6 +37,7 @@ import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndCon
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
+import { convertBlobToBase64 } from '@/utils/dataHelper/fileHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import Log from '@/utils/Log'
 
@@ -570,6 +571,18 @@ export const ClientMessageInit = () => {
               parseOptions,
               abortTaskId,
             )
+            let resultData: any = null
+            if (parse === 'json') {
+              resultData = await result.json()
+            } else if (parse === 'blob') {
+              const blob = await result.blob()
+              resultData = {
+                base64: await convertBlobToBase64(blob),
+                contentType: blob.type,
+              }
+            } else {
+              resultData = await result.text()
+            }
             return {
               success: true,
               data: {
@@ -580,8 +593,7 @@ export const ClientMessageInit = () => {
                   url: result.url,
                   redirected: result.redirected,
                 },
-                data:
-                  parse === 'json' ? await result.json() : await result.text(),
+                data: resultData,
               },
               message: 'ok',
             }

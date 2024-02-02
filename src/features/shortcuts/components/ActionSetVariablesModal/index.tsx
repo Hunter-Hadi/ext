@@ -17,7 +17,6 @@ import { v4 as uuidV4 } from 'uuid'
 import TooltipButton from '@/components/TooltipButton'
 import { isProduction } from '@/constants'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
   getSetVariablesModalSelectCache,
@@ -76,7 +75,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     answerInsertMessageId,
     askChatGPTActionParameters,
   } = props
-  const { createConversation } = useClientConversation()
   const { askAIWIthShortcuts, loading, shortCutsEngineRef } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
@@ -180,7 +178,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     if (Object.keys(getValues()).length === 0) {
       return
     }
-    await createConversation('Chat')
     const presetVariables = cloneDeep(getValues())
     setForm({})
     reset()

@@ -2,6 +2,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useCallback, useMemo } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
@@ -100,6 +101,13 @@ const useFloatingContextMenu = () => {
           }
         }
         // 2. 如果当前有选中文本在不可编辑元素上或者可编辑元素上有真正的选中文本在或者按下command + i, 则展开
+        let showModelSelector = true
+        if (
+          element?.target &&
+          getMaxAISidebarRootElement()?.contains(element?.target)
+        ) {
+          showModelSelector = false
+        }
         if (
           (!virtualSelectionElement?.isEditableElement &&
             virtualSelectionElement.selectionText) ||
@@ -127,6 +135,7 @@ const useFloatingContextMenu = () => {
             rootRect: computedRectPosition(
               virtualSelectionElement.selectionRect,
             ),
+            showModelSelector,
           })
           return
         }
@@ -143,6 +152,7 @@ const useFloatingContextMenu = () => {
       setFloatingDropdownMenu({
         open: false,
         rootRect: null,
+        showModelSelector: false,
       })
       if (isFloatingContextMenuOpen) {
         showChatBox()
@@ -207,6 +217,7 @@ const useFloatingContextMenu = () => {
     setFloatingDropdownMenu({
       open: false,
       rootRect: null,
+      showModelSelector: false,
     })
   }
   return {

@@ -1,3 +1,4 @@
+import CircularProgress from '@mui/material/CircularProgress'
 import IconButton, { IconButtonProps } from '@mui/material/IconButton'
 import React, { FC } from 'react'
 
@@ -9,9 +10,17 @@ interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
   title: React.ReactNode | string
   placement?: TextOnlyTooltipProps['placement']
   TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
+  loading?: boolean
 }
 const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
-  const { title, placement, TooltipProps, ...iconButtonProps } = props
+  const {
+    title,
+    placement,
+    TooltipProps,
+    loading = false,
+    children,
+    ...iconButtonProps
+  } = props
   return (
     <TextOnlyTooltip
       placement={placement || 'top'}
@@ -22,7 +31,13 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
       {...TooltipProps}
     >
       <div>
-        <IconButton {...iconButtonProps} />
+        <IconButton {...iconButtonProps}>
+          {loading ? (
+            <CircularProgress size={16} sx={{ m: '0 auto' }} />
+          ) : (
+            children
+          )}
+        </IconButton>
       </div>
     </TextOnlyTooltip>
   )

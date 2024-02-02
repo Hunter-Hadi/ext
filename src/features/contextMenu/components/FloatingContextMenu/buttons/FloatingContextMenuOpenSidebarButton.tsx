@@ -52,6 +52,7 @@ const FloatingContextMenuOpenSidebarButton: FC<{
           setFloatingDropdownMenu({
             open: false,
             rootRect: null,
+            showModelSelector: false,
           })
           if (isShowChatBox()) {
             // hideChatBox()

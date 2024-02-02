@@ -1,5 +1,6 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { convertBase64ToBlob } from '@/utils/dataHelper/fileHelper'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import { getAccessToken } from '@/utils/request'
 
@@ -154,6 +155,12 @@ export const clientFetchAPI = async <T = any>(
         abortTaskId,
       },
     })
+    if (options?.parse === 'blob' && response?.data?.data?.base64) {
+      response.data.data = convertBase64ToBlob(
+        response.data.data.base64,
+        options?.blobContentType || response.data.data.contentType,
+      )
+    }
     return {
       success: response.success,
       data: response?.data?.data,

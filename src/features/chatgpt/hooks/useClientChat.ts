@@ -69,6 +69,10 @@ const useClientChat = () => {
         },
       ])
     }
+    // 如果有附件, 设置includeHistory=false
+    if (question?.meta?.attachments?.length) {
+      question.meta.includeHistory = false
+    }
     await askAIWIthShortcuts([
       {
         type: 'ASK_CHATGPT',

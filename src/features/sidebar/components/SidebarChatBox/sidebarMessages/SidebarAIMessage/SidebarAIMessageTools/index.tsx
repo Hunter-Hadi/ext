@@ -1,11 +1,12 @@
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
@@ -17,6 +18,7 @@ const SidebarAIMessageTools: FC<{
 }> = (props) => {
   const { message } = props
   const { t } = useTranslation(['common'])
+  const [isCoping, setIsCoping] = useState(false)
   const messageContentType =
     message.originalMessage?.content?.contentType || 'text'
   const gmailChatBoxAiToolsRef = React.useRef<HTMLDivElement>(null)
@@ -32,36 +34,34 @@ const SidebarAIMessageTools: FC<{
     >
       {messageContentType === 'image' && (
         <TooltipIconButton
+          loading={isCoping}
+          disabled={isCoping}
           title={t('common:copy_image')}
           onClick={(event) => {
             const image = findSelectorParent(
               '.maxai-ai-message__image__content__box img',
               event.currentTarget,
             ) as HTMLImageElement
-            if (!image) {
+            if (!image?.src) {
               return
             }
-            // 创建一个canvas元素
-            const canvas = document.createElement('canvas')
-            const context = canvas.getContext('2d')
-
-            // 设置canvas的宽高与图片相同
-            canvas.width = image.naturalWidth
-            canvas.height = image.naturalHeight
-
-            // 将图片绘制到canvas上
-            context!.drawImage(image, 0, 0)
-            canvas.toBlob((blob) => {
-              if (blob) {
+            setIsCoping(true)
+            clientFetchAPI(image.src, {
+              parse: 'blob',
+              blobContentType: 'image/png',
+            }).then((result) => {
+              if (result.success && result?.data?.type) {
                 navigator.clipboard
                   .write([
                     new ClipboardItem({
-                      [blob.type]: blob,
+                      [result.data.type]: result.data,
                     }),
                   ])
                   .then(() => {
-                    console.log('Copied')
+                    setIsCoping(false)
                   })
+              } else {
+                setIsCoping(false)
               }
             })
           }}

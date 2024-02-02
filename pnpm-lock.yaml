@@ -226,6 +226,9 @@ devDependencies:
   '@types/crypto-js':
     specifier: ^4.1.1
     version: registry.npmmirror.com/@types/crypto-js@4.1.1
+  '@types/file-saver':
+    specifier: ^2.0.7
+    version: 2.0.7
   '@types/firefox-webext-browser':
     specifier: ^82.0.0
     version: registry.npmmirror.com/@types/firefox-webext-browser@82.0.0
@@ -669,6 +672,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@types/file-saver@2.0.7:
+    resolution: {integrity: sha512-dNKVfHd/jk0SkR/exKGj2ggkB45MAkzvWCaqLUUgkyjITkGNzH8H+yUwr+BLJUBjZOe9w8X3wgmXhZDRg1ED6A==}
+    dev: true
 
   /ansi-regex@5.0.1:
     resolution: {integrity: sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ==}

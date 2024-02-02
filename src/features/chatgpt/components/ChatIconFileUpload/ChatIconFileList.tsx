@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useMemo, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import LazyLoadImage from '@/components/LazyLoadImage'
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
@@ -126,16 +127,14 @@ const ChatIconFileList: FC<ChatIconFileListProps> = (props) => {
                     />
                   </Stack>
                 ) : (
-                  <img
+                  <LazyLoadImage
+                    preview={disabledRemove}
                     width={boxHeight}
                     height={boxHeight}
                     alt={file.fileName}
-                    style={
-                      {
-                        // objectFit: 'cover',
-                      }
+                    src={
+                      file.uploadedUrl || file.base64Data || file.blobUrl || ''
                     }
-                    src={file.uploadedUrl || file.base64Data || file.blobUrl}
                   />
                 )}
               </Stack>

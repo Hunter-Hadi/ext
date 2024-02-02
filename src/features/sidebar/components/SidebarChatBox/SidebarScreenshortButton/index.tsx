@@ -111,6 +111,7 @@ const SidebarScreenshotButton: FC<{
         >
           <ScreenshotComponent
             onChange={async ({ imageFile }) => {
+              rootEl?.remove()
               setRootEl(null)
               showChatBox()
               await uploadImagesAndSwitchToVision([imageFile])

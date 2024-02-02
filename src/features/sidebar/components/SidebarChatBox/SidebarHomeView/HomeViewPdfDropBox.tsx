@@ -1,9 +1,10 @@
-import UploadFileOutlinedIcon from '@mui/icons-material/UploadFileOutlined'
+import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
 import { Typography } from '@mui/material'
 import Stack from '@mui/material/Stack'
-import upperFirst from 'lodash-es/upperFirst'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+
+import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 
 const HomeViewPdfDropBox = () => {
   const { t } = useTranslation()
@@ -32,9 +33,12 @@ const HomeViewPdfDropBox = () => {
         }
       }}
     >
-      <UploadFileOutlinedIcon />
-      <Typography>
-        {upperFirst(t('client:home_view_content_nav__upload'))}
+      <Stack direction={'row'} spacing={0.5}>
+        <HomeViewContentNavIcons icon={'chat_with_pdf'} />
+        <ImageOutlinedIcon />
+      </Stack>
+      <Typography fontSize={16} fontWeight={400} lineHeight={1.5}>
+        {t('client:home_view_content_nav__drop_pdf_and_image_here')}
       </Typography>
     </Stack>
   )

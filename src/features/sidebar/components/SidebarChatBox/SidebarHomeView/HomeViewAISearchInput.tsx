@@ -5,6 +5,7 @@ import InputAdornment from '@mui/material/InputAdornment'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
@@ -16,6 +17,8 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   // const { cleanConversation } = useClientConversation()
 
   // const { updateSidebarConversationType } = useSidebarSettings()
+
+  const { t } = useTranslation('client')
 
   const [loading, setLoading] = React.useState(false)
 
@@ -72,7 +75,7 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
       <form onSubmit={handleSubmit} autoComplete="off">
         <OutlinedInput
           size="small"
-          placeholder="Ask anything..."
+          placeholder={t('client:home_view_content_nav__ai_search_placeholder')}
           name="searchValue"
           disabled={loading}
           sx={{

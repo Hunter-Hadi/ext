@@ -206,9 +206,6 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
             <MenuItem
               disabled={AIModelOption.disabled}
               onMouseEnter={() => {
-                if (isHoverThirdPartyModel) {
-                  return
-                }
                 setIsHoverThirdPartyModel(false)
                 setHoverModel(AIModelOption)
               }}

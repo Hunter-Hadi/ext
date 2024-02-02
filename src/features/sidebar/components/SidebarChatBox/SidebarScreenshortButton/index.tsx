@@ -2,6 +2,9 @@ import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
+import dayjs from 'dayjs'
+import { saveAs } from 'file-saver'
+import JSZip from 'jszip'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -178,6 +181,18 @@ const ScreenshotComponent: FC<{
           height,
         )
         const newBase64Data = canvas.toDataURL('image/png')
+        const zip = new JSZip()
+        zip.file(`w${width - 3}_h${height - 3}_x${x + 3}_y${y + 3}.txt`, '')
+        zip.file('raw.png', base64Data.split(',')[1], { base64: true })
+        zip.file('cropped.png', newBase64Data.split(',')[1], {
+          base64: true,
+        })
+        zip.generateAsync({ type: 'blob' }).then(function (content) {
+          saveAs(
+            content,
+            `screenshot_${dayjs().format('YYYY_MM_DD_HH_mm_ss')}.zip`,
+          )
+        })
         canvas.toBlob((blob) => {
           console.log(blob)
           if (blob) {

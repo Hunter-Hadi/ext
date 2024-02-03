@@ -554,7 +554,6 @@
     "sidebar__tabs__search__action_btn__title": "નવી શોધ",
     "sidebar__tabs__art__action_btn__title": "નવી આર્ટ",
     "immersive_chat__delete_chat__button__title": "ચેટ કાઢો",
-    "immersive_chat__no_conversation": "કોઈ ચેટ ઇતિહાસ નથી",
     "art__model__dalle3__description": "DALL-E 3, OpenAI દ્વારા વિકસિત થયેલ એક ક્રાંતિકારી ટેક્સ્ટ-ટુ-ઇમેજ મોડલ છે જે પાઠાત્મક વર્ણનોથી અત્યંત વિગતવાર છબીઓ બનાવે છે, જે AI દ્વારા ચલાવવામાં આવતી છબી ઉત્પાદનમાં એક મહત્વાકાંક્ષી આગમન છે.",
     "home_view_content_nav__one_click_prompts_title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
     "home_view_content_nav__my_own_prompts__title": "મારા પ્રોમ્પ્ટ્સ",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3જી પક્ષ AI પ્રદાતાઓ",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI પ્રદાતા એક્સ્ટેન્શનમાં અપગ્રેડ માટે અક્ષમ છે. કૃપા કરીને પછી થી પ્રયાસ કરો.",
     "sidebar__chat__advanced__title": "ઉન્નત ચેટ વિકલ્પો",
-    "provider__free_ai__model__special__description": "મુક્ત AI બનેલી મોટાભાગના વપરાશકર્તાઓ માટે મફત એઆઈ ઉપલબ્ધ કરે છે, જે હાલમાં પ્રક્રિયાશીલતા સાધનોને મળતી નથી. આ આપને મક્સએઆઈના મૂળભૂત વ્યાપારને ચાલાવવાની સરળ અપગ્રેડ માર્ગ આપે છે. અમે મુક્ત એઆઈને સતત સુધારવામાં રહ્યાં છીએ, અમારી મુક્ત અને પ્રીમિયમ AI વિકલ્પોમાં ફરક ઘટાડવામાં મદદ કરવામાં આવી છે."
+    "provider__free_ai__model__special__description": "મુક્ત AI બનેલી મોટાભાગના વપરાશકર્તાઓ માટે મફત એઆઈ ઉપલબ્ધ કરે છે, જે હાલમાં પ્રક્રિયાશીલતા સાધનોને મળતી નથી. આ આપને મક્સએઆઈના મૂળભૂત વ્યાપારને ચાલાવવાની સરળ અપગ્રેડ માર્ગ આપે છે. અમે મુક્ત એઆઈને સતત સુધારવામાં રહ્યાં છીએ, અમારી મુક્ત અને પ્રીમિયમ AI વિકલ્પોમાં ફરક ઘટાડવામાં મદદ કરવામાં આવી છે.",
+    "immersive_chat__chat_no_conversation__title": "હજી સુધી કોઈ ચેટ ઇતિહાસ ઉપલબ્ધ નથી",
+    "immersive_chat__summary_no_conversation__title": "હજી સુધી કોઈ સંગ્રહ ઇતિહાસ ઉપલબ્ધ નથી",
+    "immersive_chat__search_no_conversation__title": "હજી સુધી કોઈ શોધ ઇતિહાસ ઉપલબ્ધ નથી",
+    "immersive_chat__art_no_conversation__title": "હજી સુધી કોઈ આર્ટ ઇતિહાસ ઉપલબ્ધ નથી"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "પ્રોમ્પ્ટ વિગતો જુઓ",
     "delete_prompt__tooltip": "પ્રોમ્પ્ટ કાઢો",
     "edit_prompt__tooltip": "પ્રોમ્પ્ટ સંપાદિત કરો"
+  },
+  "maxai_tour": {
+    "button__next__title": "આગળ",
+    "button__back__title": "પાછળ",
+    "button__finish__title": "સમાપ્ત",
+    "text_of": "ની",
+    "sidebar_tour__step__1__title": "તમારી ઇંટરફેસ ભાષા પસંદ કરો",
+    "sidebar_tour__step__2__title": "AIમાં ડાઇવ કરો",
+    "sidebar_tour__step__2__description_1": "એલ કોઈપણ પ્રશ્ન કરો",
+    "sidebar_tour__step__2__description_2": "પેજ સારાંશ અને ચેટ",
+    "sidebar_tour__step__2__description_3": "એલ-પવર્ડ શોધ",
+    "sidebar_tour__step__2__description_4": "એલ આર્ટ અને છબીઓ બનાવો",
+    "sidebar_tour__step__3__title": "AI મોડલ બદલો",
+    "sidebar_tour__step__3__description_1": "વિવિધ AI મોડલ્સનો ઉપયોગ કરવા માટે બદલો:",
+    "sidebar_tour__step__3__description_2": "અને વધુ શક્તિશાળી AI મોડલ્સ.",
+    "sidebar_tour__step__4__title": "મોહક ચેટ",
+    "sidebar_tour__step__4__description": "મોહક ચેટ વ્યવસ્થા સુરક્ષિત, વૈયક્તિકૃત AI-સહાયિત વાતાવરણ પૂર્ણ કરે છે, જે કાર્યક્ષમતા અને સાચાઈને વધારે કરે છે.",
+    "sidebar_tour__step__5__title": "MaxAIની જાદૂ અનુભવો અને અન્વેષણ કરો",
+    "sidebar_tour__step__5__feature_1__title": "નવી ચેટ",
+    "sidebar_tour__step__5__feature_2__title": "સેટિંગ્સ",
+    "sidebar_tour__step__5__feature_3__title": "ચેટ ઇતિહાસ",
+    "sidebar_tour__step__5__feature_4__title": "AI સ્ક્રીનશોટ",
+    "sidebar_tour__step__5__feature_5__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
+    "sidebar_tour__step__5__feature_6__title": "પ્રોમ્પ્ટ ઉપયોગ કરો"
   }
 }

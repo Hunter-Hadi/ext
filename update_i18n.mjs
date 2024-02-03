@@ -274,6 +274,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `prompt_library.${key}`)) {
       return `prompt_library.${key}`
     }
+    if (_.get(sourceJson, `maxai_tour.${key}`)) {
+      return `maxai_tour.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs

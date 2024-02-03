@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "继续",
     "sidebar__tabs__search__action_btn__title": "新搜索",
     "sidebar__tabs__art__action_btn__title": "新艺术",
-    "immersive_chat__no_conversation": "无聊天记录",
     "art__model__dalle3__description": "DALL-E 3是由OpenAI开发的一种革命性的文本到图像模型，可以从文本描述中创建高度详细的图像，展示了人工智能驱动的图像生成的重大进展。",
     "home_view_content_nav__one_click_prompts_title": "一键提示",
     "home_view_content_nav__my_own_prompts__title": "我的提示",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "第三方AI提供商",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI提供商在扩展中已禁用以进行升级。请稍后再试。",
     "sidebar__chat__advanced__title": "高级聊天选项",
-    "provider__free_ai__model__special__description": "免费AI提供基本的、无成本的AI生产力工具，非常适合轻量级或试用。它让您测试MaxAI的基本功能，并提供了升级到完整高级MaxAI套件的简单路径。我们致力于不断改进免费AI，缩小免费和高级AI选项之间的差距。"
+    "provider__free_ai__model__special__description": "免费AI提供基本的、无成本的AI生产力工具，非常适合轻量级或试用。它让您测试MaxAI的基本功能，并提供了升级到完整高级MaxAI套件的简单路径。我们致力于不断改进免费AI，缩小免费和高级AI选项之间的差距。",
+    "immersive_chat__chat_no_conversation__title": "暂无聊天记录",
+    "immersive_chat__summary_no_conversation__title": "暂无摘要记录",
+    "immersive_chat__search_no_conversation__title": "暂无搜索记录",
+    "immersive_chat__art_no_conversation__title": "暂无艺术记录"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "查看提示详细信息",
     "delete_prompt__tooltip": "删除提示",
     "edit_prompt__tooltip": "编辑提示"
+  },
+  "maxai_tour": {
+    "button__next__title": "下一步",
+    "button__back__title": "返回",
+    "button__finish__title": "完成",
+    "text_of": "的",
+    "sidebar_tour__step__1__title": "选择界面语言",
+    "sidebar_tour__step__2__title": "深入了解AI",
+    "sidebar_tour__step__2__description_1": "向Al提问",
+    "sidebar_tour__step__2__description_2": "页面摘要和聊天",
+    "sidebar_tour__step__2__description_3": "基于Al的搜索",
+    "sidebar_tour__step__2__description_4": "创建Al艺术和图像",
+    "sidebar_tour__step__3__title": "更改AI模型",
+    "sidebar_tour__step__3__description_1": "切换使用不同的AI模型，包括：",
+    "sidebar_tour__step__3__description_2": "以及更强大的AI模型。",
+    "sidebar_tour__step__4__title": "沉浸式聊天",
+    "sidebar_tour__step__4__description": "沉浸式聊天功能提供安全、个性化的AI辅助环境，提高效率和准确性。",
+    "sidebar_tour__step__5__title": "探索和体验MaxAI的魔力",
+    "sidebar_tour__step__5__feature_1__title": "新聊天",
+    "sidebar_tour__step__5__feature_2__title": "设置",
+    "sidebar_tour__step__5__feature_3__title": "聊天记录",
+    "sidebar_tour__step__5__feature_4__title": "AI截图",
+    "sidebar_tour__step__5__feature_5__title": "1键提示",
+    "sidebar_tour__step__5__feature_6__title": "使用提示"
   }
 }

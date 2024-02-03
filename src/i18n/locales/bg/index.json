@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Продължи",
     "sidebar__tabs__search__action_btn__title": "Ново търсене",
     "sidebar__tabs__art__action_btn__title": "Ново изкуство",
-    "immersive_chat__no_conversation": "Няма чат история",
     "art__model__dalle3__description": "DALL-E 3, разработен от OpenAI, е революционен модел за превръщане на текст в изображение, който създава изключително детайлни изображения от текстови описания, показвайки значителен напредък в генерирането на изображения с помощта на AI.",
     "home_view_content_nav__one_click_prompts_title": "1-клик промпти",
     "home_view_content_nav__my_own_prompts__title": "Моите собствени промпти",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "AI доставчици от трета страна",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI доставчикът е деактивиран в разширението за ъпгрейд. Моля, опитайте по-късно.",
     "sidebar__chat__advanced__title": "Разширени опции за чат",
-    "provider__free_ai__model__special__description": "Free AI предоставя основни инструменти за продуктивност на изкуствения интелект безплатно, идеални за лека или пробна употреба. Той ви позволява да тествате основните функции на MaxAI с лесен ъпгрейд към пълния напреднал пакет MaxAI. Нашата цел е да подобрим Free AI непрекъснато, намалявайки разликата между нашите безплатни и премиум варианти на изкуствения интелект."
+    "provider__free_ai__model__special__description": "Free AI предоставя основни инструменти за продуктивност на изкуствения интелект безплатно, идеални за лека или пробна употреба. Той ви позволява да тествате основните функции на MaxAI с лесен ъпгрейд към пълния напреднал пакет MaxAI. Нашата цел е да подобрим Free AI непрекъснато, намалявайки разликата между нашите безплатни и премиум варианти на изкуствения интелект.",
+    "immersive_chat__chat_no_conversation__title": "Все още няма налична история на чата",
+    "immersive_chat__summary_no_conversation__title": "Все още няма налична история на обобщението",
+    "immersive_chat__search_no_conversation__title": "Все още няма налична история на търсенето",
+    "immersive_chat__art_no_conversation__title": "Все още няма налична история на изкуството"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Преглед на детайлите на подсказката",
     "delete_prompt__tooltip": "Изтрий подсказка",
     "edit_prompt__tooltip": "Редактирай подсказка"
+  },
+  "maxai_tour": {
+    "button__next__title": "Следващ",
+    "button__back__title": "Назад",
+    "button__finish__title": "Завърши",
+    "text_of": "от",
+    "sidebar_tour__step__1__title": "Изберете вашия език на интерфейса",
+    "sidebar_tour__step__2__title": "Погледнете в AI",
+    "sidebar_tour__step__2__description_1": "Попитайте Ал нещо",
+    "sidebar_tour__step__2__description_2": "Резюме на страницата и чат",
+    "sidebar_tour__step__2__description_3": "Търсене с помощта на AI",
+    "sidebar_tour__step__2__description_4": "Създаване на изкуство и изображения с помощта на AI",
+    "sidebar_tour__step__3__title": "Промяна на AI модели",
+    "sidebar_tour__step__3__description_1": "Променете за да използвате различни AI модели, включително:",
+    "sidebar_tour__step__3__description_2": "и по-мощни AI модели.",
+    "sidebar_tour__step__4__title": "Поглъщащ чат",
+    "sidebar_tour__step__4__description": "Функцията за поглъщащ чат предлага сигурна, персонализирана AI-помощна среда, която повишава ефективността и точността.",
+    "sidebar_tour__step__5__title": "Разгледайте и изживейте магията на MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Нов чат",
+    "sidebar_tour__step__5__feature_2__title": "Настройки",
+    "sidebar_tour__step__5__feature_3__title": "История на чата",
+    "sidebar_tour__step__5__feature_4__title": "AI снимка",
+    "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
+    "sidebar_tour__step__5__feature_6__title": "Използване на подсказка"
   }
 }

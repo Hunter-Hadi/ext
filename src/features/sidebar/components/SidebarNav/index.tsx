@@ -112,6 +112,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
             placement="left"
           >
             <IconButton
+              data-testid={`maxai--sidebar--immersive_chat--button`}
               onClick={() => {
                 if (currentSidebarConversationType !== 'Summary') {
                   chromeExtensionClientOpenPage({
@@ -140,6 +141,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         {/* settings btn */}
         <TextOnlyTooltip title={t('common:settings')} placement="left">
           <IconButton
+            data-testid={`maxai--sidebar--settings--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
             onClick={() => {
               chromeExtensionClientOpenPage({
@@ -160,6 +162,7 @@ const SidebarNav: FC<IProps> = ({ sx }) => {
         {/* email btn */}
         <TextOnlyTooltip title={t('common:contact_us')} placement="left">
           <IconButton
+            data-testid={`maxai--sidebar--contact_us--button`}
             sx={{ flexShrink: 0, width: 'max-content' }}
             target={'_blank'}
             href={CHROME_EXTENSION_MAIL_TO}

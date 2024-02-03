@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Fortsett",
     "sidebar__tabs__search__action_btn__title": "Ny søk",
     "sidebar__tabs__art__action_btn__title": "Ny kunst",
-    "immersive_chat__no_conversation": "Ingen chat-historikk",
     "art__model__dalle3__description": "DALL-E 3, utviklet av OpenAI, er en revolusjonerende tekst-til-bilde-modell som skaper svært detaljerte bilder fra tekstbeskrivelser, og viser en betydelig fremgang innen AI-drevet bildegenerering.",
     "home_view_content_nav__one_click_prompts_title": "1-klikk-prompter",
     "home_view_content_nav__my_own_prompts__title": "Mine egne prompter",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Tredjeparts AI-leverandører",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-leverandør deaktivert i utvidelsen for oppgradering. Prøv igjen senere.",
     "sidebar__chat__advanced__title": "Avanserte chat-alternativer",
-    "provider__free_ai__model__special__description": "Free AI gir grunnleggende, kostnadsfri tilgang til AI-produktivitetsverktøy, perfekt for lett eller prøvebruk. Det lar deg teste MaxAI's grunnleggende funksjoner, med en enkel oppgraderingsmulighet til den komplette, avanserte MaxAI-pakken. Vi har som mål å kontinuerlig forbedre Free AI, og redusere forskjellen mellom våre gratis- og premium AI-alternativer."
+    "provider__free_ai__model__special__description": "Free AI gir grunnleggende, kostnadsfri tilgang til AI-produktivitetsverktøy, perfekt for lett eller prøvebruk. Det lar deg teste MaxAI's grunnleggende funksjoner, med en enkel oppgraderingsmulighet til den komplette, avanserte MaxAI-pakken. Vi har som mål å kontinuerlig forbedre Free AI, og redusere forskjellen mellom våre gratis- og premium AI-alternativer.",
+    "immersive_chat__chat_no_conversation__title": "Ingen chat-historikk tilgjengelig ennå",
+    "immersive_chat__summary_no_conversation__title": "Ingen sammendrags-historikk tilgjengelig ennå",
+    "immersive_chat__search_no_conversation__title": "Ingen søkehistorikk tilgjengelig ennå",
+    "immersive_chat__art_no_conversation__title": "Ingen kunsthistorikk tilgjengelig ennå"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Vis detaljer for prompt",
     "delete_prompt__tooltip": "Slett prompt",
     "edit_prompt__tooltip": "Rediger prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Neste",
+    "button__back__title": "Tilbake",
+    "button__finish__title": "Fullfør",
+    "text_of": "av",
+    "sidebar_tour__step__1__title": "Velg grensesnittspråk",
+    "sidebar_tour__step__2__title": "Dykk inn i AI",
+    "sidebar_tour__step__2__description_1": "Spør Al om hva som helst",
+    "sidebar_tour__step__2__description_2": "Sammendrag av side og chat",
+    "sidebar_tour__step__2__description_3": "AI-drevet søk",
+    "sidebar_tour__step__2__description_4": "Lag Al-kunst og bilder",
+    "sidebar_tour__step__3__title": "Endre AI-modeller",
+    "sidebar_tour__step__3__description_1": "Bytt til å bruke forskjellige AI-modeller, inkludert:",
+    "sidebar_tour__step__3__description_2": "og mer kraftige AI-modeller.",
+    "sidebar_tour__step__4__title": "Immersiv chat",
+    "sidebar_tour__step__4__description": "Den immersive chat-funksjonen tilbyr et sikkert, personlig AI-assistert miljø som forbedrer effektiviteten og nøyaktigheten.",
+    "sidebar_tour__step__5__title": "Utforsk og opplev magien til MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Ny chat",
+    "sidebar_tour__step__5__feature_2__title": "Innstillinger",
+    "sidebar_tour__step__5__feature_3__title": "Chat-historikk",
+    "sidebar_tour__step__5__feature_4__title": "AI-skjermbilde",
+    "sidebar_tour__step__5__feature_5__title": "1-klikks forslag",
+    "sidebar_tour__step__5__feature_6__title": "Bruk forslag"
   }
 }

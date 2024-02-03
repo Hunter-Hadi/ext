@@ -8,7 +8,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'mistral-7b-instruct',
     maxTokens: 8192,
-    tags: [],
+    tags: ['Free'],
     poweredBy: 'MaxAI',
     description: (t) =>
       t(`client:provider__free_ai__model__special__description`),
@@ -20,7 +20,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'openchat-7b',
     maxTokens: 8192,
-    tags: [],
+    tags: ['Free'],
     poweredBy: 'Openchat',
     description: (t) =>
       t(`client:provider__free_ai__model__openchat_7b__description`),
@@ -30,7 +30,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'mythomist-7b',
     maxTokens: 32768,
-    tags: [],
+    tags: ['Free'],
     poweredBy: 'MythoMist',
     description: (t) =>
       t(`client:provider__free_ai__model__mythomist_7b__description`),

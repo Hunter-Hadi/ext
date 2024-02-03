@@ -8,6 +8,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
+import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -32,7 +33,14 @@ const SidebarPage = () => {
     pingDaemonProcess()
   }, [])
   return (
-    <Stack flex={1} height={0} position={'relative'} direction="row">
+    <Stack
+      flex={1}
+      height={0}
+      position={'relative'}
+      direction="row"
+      id={'MaxAISidebarContainer'}
+    >
+      <SidebarTour />
       <Stack flex={1} width={0}>
         {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
         <ChatGPTStatusWrapper />
@@ -66,7 +74,6 @@ const SidebarPage = () => {
           onReset={cleanConversation}
         />
       </Stack>
-
       {!isMaxAIImmersiveChatPage() && <SidebarNav />}
     </Stack>
   )

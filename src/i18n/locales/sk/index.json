@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Pokračovať",
     "sidebar__tabs__search__action_btn__title": "Nové vyhľadávanie",
     "sidebar__tabs__art__action_btn__title": "Nové umenie",
-    "immersive_chat__no_conversation": "Žiadna história chatu",
     "art__model__dalle3__description": "DALL-E 3, vyvinutý spoločnosťou OpenAI, je revolučný model pre prevod textu na obraz, ktorý vytvára veľmi podrobné obrázky z textových popisov, čím predstavuje významný pokrok v generovaní obrazov riadenom AI.",
     "home_view_content_nav__one_click_prompts_title": "1-kliknutie podnety",
     "home_view_content_nav__my_own_prompts__title": "Moje vlastné podnety",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Poskytovatelia AI tretích strán",
     "sidebar__ai_provider__provider_selector__disabled__description": "Poskytovateľ AI je v rozšírení zakázaný pre aktualizáciu. Skúste to prosím neskôr.",
     "sidebar__chat__advanced__title": "Pokročilé možnosti chatu",
-    "provider__free_ai__model__special__description": "Free AI poskytuje základné nástroje na zvýšenie produktivity AI bezplatne, ideálne pre ľahké alebo skúšobné použitie. Umožňuje vám testovať základné funkcie MaxAI s jednoduchou možnosťou upgrade na plný pokročilý balík MaxAI. Snažíme sa neustále zlepšovať Free AI a znižovať rozdiel medzi našimi bezplatnými a prémiovými možnosťami AI."
+    "provider__free_ai__model__special__description": "Free AI poskytuje základné nástroje na zvýšenie produktivity AI bezplatne, ideálne pre ľahké alebo skúšobné použitie. Umožňuje vám testovať základné funkcie MaxAI s jednoduchou možnosťou upgrade na plný pokročilý balík MaxAI. Snažíme sa neustále zlepšovať Free AI a znižovať rozdiel medzi našimi bezplatnými a prémiovými možnosťami AI.",
+    "immersive_chat__chat_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história chatu",
+    "immersive_chat__summary_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história súhrnu",
+    "immersive_chat__search_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história vyhľadávania",
+    "immersive_chat__art_no_conversation__title": "Zatiaľ nie je k dispozícii žiadna história umenia"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Zobraziť detaily promptu",
     "delete_prompt__tooltip": "Vymazať prompt",
     "edit_prompt__tooltip": "Upraviť prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Ďalej",
+    "button__back__title": "Späť",
+    "button__finish__title": "Dokončiť",
+    "text_of": "z",
+    "sidebar_tour__step__1__title": "Vyberte si jazyk rozhrania",
+    "sidebar_tour__step__2__title": "Ponořte se do AI",
+    "sidebar_tour__step__2__description_1": "Opýtajte sa Al na čokoľvek",
+    "sidebar_tour__step__2__description_2": "Stručný prehľad stránky a chat",
+    "sidebar_tour__step__2__description_3": "Vyhľadávanie s využitím AI",
+    "sidebar_tour__step__2__description_4": "Vytváranie umenia a obrázkov s využitím AI",
+    "sidebar_tour__step__3__title": "Zmena AI modelov",
+    "sidebar_tour__step__3__description_1": "Zmeňte používané AI modely, vrátane:",
+    "sidebar_tour__step__3__description_2": "a ďalších výkonnejších AI modelov.",
+    "sidebar_tour__step__4__title": "Pohlcujúci chat",
+    "sidebar_tour__step__4__description": "Funkcia pohlcujúceho chatu ponúka bezpečné a personalizované prostredie s pomocou AI, čo zvyšuje efektivitu a presnosť.",
+    "sidebar_tour__step__5__title": "Preskúmajte a zažite kúzlo MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nový chat",
+    "sidebar_tour__step__5__feature_2__title": "Nastavenia",
+    "sidebar_tour__step__5__feature_3__title": "História chatu",
+    "sidebar_tour__step__5__feature_4__title": "Snímka obrazovky s AI",
+    "sidebar_tour__step__5__feature_5__title": "1-kliknuté podnety",
+    "sidebar_tour__step__5__feature_6__title": "Použiť podnet"
   }
 }

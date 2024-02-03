@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Продовжити",
     "sidebar__tabs__search__action_btn__title": "Новий пошук",
     "sidebar__tabs__art__action_btn__title": "Нове мистецтво",
-    "immersive_chat__no_conversation": "Історія чату відсутня",
     "art__model__dalle3__description": "DALL-E 3, розроблений OpenAI, є революційною моделлю перетворення тексту на зображення, яка створює докладні зображення за текстовими описами, демонструючи значний прогрес у генерації зображень, здійснюваній штучним інтелектом.",
     "home_view_content_nav__one_click_prompts_title": "1-клік пропозиції",
     "home_view_content_nav__my_own_prompts__title": "Мої власні пропозиції",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Постачальники штучного інтелекту сторонніх розробників",
     "sidebar__ai_provider__provider_selector__disabled__description": "Постачальник штучного інтелекту вимкнено в розширенні для оновлення. Будь ласка, спробуйте пізніше.",
     "sidebar__chat__advanced__title": "Розширені параметри чату",
-    "provider__free_ai__model__special__description": "Free AI надає базовий безкоштовний доступ до інструментів продуктивності штучного інтелекту, ідеально підходить для легкого або пробного використання. Ви можете перевірити основні функції MaxAI з легким оновленням до повної розширеної ​​версії MaxAI. Ми постійно покращуємо Free AI, зменшуючи різницю між нашими безкоштовними та преміум-варіантами штучного інтелекту."
+    "provider__free_ai__model__special__description": "Free AI надає базовий безкоштовний доступ до інструментів продуктивності штучного інтелекту, ідеально підходить для легкого або пробного використання. Ви можете перевірити основні функції MaxAI з легким оновленням до повної розширеної ​​версії MaxAI. Ми постійно покращуємо Free AI, зменшуючи різницю між нашими безкоштовними та преміум-варіантами штучного інтелекту.",
+    "immersive_chat__chat_no_conversation__title": "Ще немає доступної історії чату",
+    "immersive_chat__summary_no_conversation__title": "Ще немає доступної історії підсумків",
+    "immersive_chat__search_no_conversation__title": "Ще немає доступної історії пошуку",
+    "immersive_chat__art_no_conversation__title": "Ще немає доступної історії мистецтва"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Переглянути деталі промпта",
     "delete_prompt__tooltip": "Видалити промпт",
     "edit_prompt__tooltip": "Редагувати промпт"
+  },
+  "maxai_tour": {
+    "button__next__title": "Далі",
+    "button__back__title": "Назад",
+    "button__finish__title": "Завершити",
+    "text_of": "з",
+    "sidebar_tour__step__1__title": "Виберіть мову інтерфейсу",
+    "sidebar_tour__step__2__title": "Зануртесь у світ штучного інтелекту",
+    "sidebar_tour__step__2__description_1": "Запитайте у Макса будь-що",
+    "sidebar_tour__step__2__description_2": "Огляд сторінки та чат",
+    "sidebar_tour__step__2__description_3": "Пошук з використанням штучного інтелекту",
+    "sidebar_tour__step__2__description_4": "Створення мистецтва та зображень з використанням штучного інтелекту",
+    "sidebar_tour__step__3__title": "Зміна моделей штучного інтелекту",
+    "sidebar_tour__step__3__description_1": "Змініть, щоб використовувати різні моделі штучного інтелекту, включаючи:",
+    "sidebar_tour__step__3__description_2": "та більш потужні моделі штучного інтелекту.",
+    "sidebar_tour__step__4__title": "Занурення у чат",
+    "sidebar_tour__step__4__description": "Функція занурення у чат надає безпечне та персоналізоване середовище з допомогою штучного інтелекту, що покращує ефективність та точність.",
+    "sidebar_tour__step__5__title": "Досліджуйте та відчуйте магію MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Новий чат",
+    "sidebar_tour__step__5__feature_2__title": "Налаштування",
+    "sidebar_tour__step__5__feature_3__title": "Історія чату",
+    "sidebar_tour__step__5__feature_4__title": "Скріншот штучного інтелекту",
+    "sidebar_tour__step__5__feature_5__title": "Підказки за 1 кліком",
+    "sidebar_tour__step__5__feature_6__title": "Використовуйте підказку"
   }
 }

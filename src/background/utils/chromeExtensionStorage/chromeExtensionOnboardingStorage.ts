@@ -22,6 +22,8 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${InputAssistantButtonGroupConfigHostType}_TIMES`
+  // MaxAI 3.0版本OnBoarding
+  | 'ON_BOARDING_MAXAI_3_0'
 
 export type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number
@@ -44,6 +46,7 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     // 记录用户剩余的search free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
     ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES: 0,
+    ON_BOARDING_MAXAI_3_0: false,
   }
   /**
    * InputAssistantButton onBoarding Keys

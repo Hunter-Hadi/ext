@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "جاری رکھیں",
     "sidebar__tabs__search__action_btn__title": "نئی تلاش",
     "sidebar__tabs__art__action_btn__title": "نئی آرٹ",
-    "immersive_chat__no_conversation": "کوئی چیٹ کی تاریخ نہیں",
     "art__model__dalle3__description": "DALL-E 3، OpenAI کا تیار کردہ ایک انقلابی ماڈل ہے جو متنی تفصیلات سے بہت تفصیلی تصاویر بناتا ہے، جو AI کی قائدہ تصویری پیداوار میں ایک نمایاں ترقی کو دکھاتا ہے.",
     "home_view_content_nav__one_click_prompts_title": "1-کلک پرومپٹس",
     "home_view_content_nav__my_own_prompts__title": "میرے خود کے پرومپٹس",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "تیسری طرف کے AI فراہم کنندگان",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI فراہم کنندہ کو اپ گریڈ کے لئے توسیع میں غیر فعال کردیا گیا ہے. براہ کرم بعد میں کوشش کریں.",
     "sidebar__chat__advanced__title": "اعلی درجے کی چیٹ کے اختیارات",
-    "provider__free_ai__model__special__description": "مفت AI بنیادی، بلا کسٹ ایکسیس فراہم کرتا ہے جو AI پیداوار کی آلات تکنولوجی کا استعمال کرنے کے لئے مثالی ہے، خاص طور پر ہلکے یا آزمائشی استعمال کے لئے۔ یہ آپ کو میکسAI کی بنیادی خصوصیات کا آزمائش کرنے دیتا ہے، ایک آسان اپگریڈ راستہ کے ساتھ پوری، ایڈوانسڈ میکسAI سوئٹ کی طرف۔ ہم مفت AI کو مستقل طور پر بہتر بنانے کا مقصد رکھتے ہیں، ہمارے مفت اور پریمیم AI کے آپشنز کے درمیان فرق کو کم کرتے ہیں۔"
+    "provider__free_ai__model__special__description": "مفت AI بنیادی، بلا کسٹ ایکسیس فراہم کرتا ہے جو AI پیداوار کی آلات تکنولوجی کا استعمال کرنے کے لئے مثالی ہے، خاص طور پر ہلکے یا آزمائشی استعمال کے لئے۔ یہ آپ کو میکسAI کی بنیادی خصوصیات کا آزمائش کرنے دیتا ہے، ایک آسان اپگریڈ راستہ کے ساتھ پوری، ایڈوانسڈ میکسAI سوئٹ کی طرف۔ ہم مفت AI کو مستقل طور پر بہتر بنانے کا مقصد رکھتے ہیں، ہمارے مفت اور پریمیم AI کے آپشنز کے درمیان فرق کو کم کرتے ہیں۔",
+    "immersive_chat__chat_no_conversation__title": "ابھی تک کوئی چیٹ کی تاریخ دستیاب نہیں ہے",
+    "immersive_chat__summary_no_conversation__title": "ابھی تک کوئی خلاصہ کی تاریخ دستیاب نہیں ہے",
+    "immersive_chat__search_no_conversation__title": "ابھی تک کوئی تلاش کی تاریخ دستیاب نہیں ہے",
+    "immersive_chat__art_no_conversation__title": "ابھی تک کوئی آرٹ کی تاریخ دستیاب نہیں ہے"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "پرومپٹ کی تفصیلات دیکھیں",
     "delete_prompt__tooltip": "پرومپٹ حذف کریں",
     "edit_prompt__tooltip": "پرومپٹ میں ترمیم کریں"
+  },
+  "maxai_tour": {
+    "button__next__title": "اگلا",
+    "button__back__title": "پیچھے",
+    "button__finish__title": "مکمل",
+    "text_of": "کا",
+    "sidebar_tour__step__1__title": "اپنی انٹرفیس زبان منتخب کریں",
+    "sidebar_tour__step__2__title": "AI میں ڈوبیں",
+    "sidebar_tour__step__2__description_1": "ال کچھ بھی پوچھیں",
+    "sidebar_tour__step__2__description_2": "صفحہ خلاصہ اور چیٹ",
+    "sidebar_tour__step__2__description_3": "ال پر مبنی تلاش",
+    "sidebar_tour__step__2__description_4": "ال آرٹ اور تصاویر بنائیں",
+    "sidebar_tour__step__3__title": "AI ماڈل تبدیل کریں",
+    "sidebar_tour__step__3__description_1": "مختلف AI ماڈل استعمال کرنے کے لئے تبدیل کریں جن میں شامل ہیں:",
+    "sidebar_tour__step__3__description_2": "اور زیادہ طاقتور AI ماڈلز.",
+    "sidebar_tour__step__4__title": "غرق کن چیٹ",
+    "sidebar_tour__step__4__description": "غرق کن چیٹ کی خصوصیت محفوظ، شخصیت پسندیدہ AI اسسٹڈ ماحول فراہم کرتی ہے جو کارکردگی اور درستگی میں اضافہ کرتی ہے.",
+    "sidebar_tour__step__5__title": "میکس اے کی جادو کو کھجلائیں اور تجربہ کریں",
+    "sidebar_tour__step__5__feature_1__title": "نئی چیٹ",
+    "sidebar_tour__step__5__feature_2__title": "ترتیبات",
+    "sidebar_tour__step__5__feature_3__title": "چیٹ کی تاریخ",
+    "sidebar_tour__step__5__feature_4__title": "AI سکرین شاٹ",
+    "sidebar_tour__step__5__feature_5__title": "1-کلک پرومپٹس",
+    "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں"
   }
 }

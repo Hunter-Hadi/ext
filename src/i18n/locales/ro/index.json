@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Continuă",
     "sidebar__tabs__search__action_btn__title": "Căutare nouă",
     "sidebar__tabs__art__action_btn__title": "Artă nouă",
-    "immersive_chat__no_conversation": "Niciun istoric de conversație",
     "art__model__dalle3__description": "DALL-E 3, dezvoltat de OpenAI, este un model revoluționar de transformare a textului în imagine care creează imagini extrem de detaliate din descrieri textuale, demonstrând un avans semnificativ în generarea de imagini cu ajutorul AI.",
     "home_view_content_nav__one_click_prompts_title": "Prompts cu un singur clic",
     "home_view_content_nav__my_own_prompts__title": "Prompts personale",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Furnizori AI terți",
     "sidebar__ai_provider__provider_selector__disabled__description": "Furnizorul AI este dezactivat în extensie pentru actualizare. Vă rugăm să încercați mai târziu.",
     "sidebar__chat__advanced__title": "Opțiuni avansate de chat",
-    "provider__free_ai__model__special__description": "Free AI oferă acces gratuit la instrumente de productivitate AI de bază, perfecte pentru utilizare ușoară sau de încercare. Vă permite să testați funcționalitățile de bază ale MaxAI, cu o cale ușoară de upgrade către suita completă și avansată MaxAI. Ne propunem să îmbunătățim continuu Free AI, reducând diferența dintre opțiunile noastre gratuite și premium AI."
+    "provider__free_ai__model__special__description": "Free AI oferă acces gratuit la instrumente de productivitate AI de bază, perfecte pentru utilizare ușoară sau de încercare. Vă permite să testați funcționalitățile de bază ale MaxAI, cu o cale ușoară de upgrade către suita completă și avansată MaxAI. Ne propunem să îmbunătățim continuu Free AI, reducând diferența dintre opțiunile noastre gratuite și premium AI.",
+    "immersive_chat__chat_no_conversation__title": "Nu există încă istoric de chat",
+    "immersive_chat__summary_no_conversation__title": "Nu există încă istoric de rezumat",
+    "immersive_chat__search_no_conversation__title": "Nu există încă istoric de căutare",
+    "immersive_chat__art_no_conversation__title": "Nu există încă istoric de artă"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Vezi detalii prompt",
     "delete_prompt__tooltip": "Șterge prompt",
     "edit_prompt__tooltip": "Editează prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Următor",
+    "button__back__title": "Înapoi",
+    "button__finish__title": "Finalizare",
+    "text_of": "din",
+    "sidebar_tour__step__1__title": "Alegeți limba interfeței",
+    "sidebar_tour__step__2__title": "Explorați AI",
+    "sidebar_tour__step__2__description_1": "Întrebați pe Al orice",
+    "sidebar_tour__step__2__description_2": "Rezumatul paginii și chat-ul",
+    "sidebar_tour__step__2__description_3": "Căutare cu ajutorul lui Al",
+    "sidebar_tour__step__2__description_4": "Creați artă și imagini cu ajutorul lui Al",
+    "sidebar_tour__step__3__title": "Schimbați modelele de AI",
+    "sidebar_tour__step__3__description_1": "Schimbați pentru a utiliza diferite modele de AI, inclusiv:",
+    "sidebar_tour__step__3__description_2": "și mai puternice modele de AI.",
+    "sidebar_tour__step__4__title": "Chat imersiv",
+    "sidebar_tour__step__4__description": "Funcția de chat imersiv oferă un mediu securizat și personalizat asistat de AI, îmbunătățind eficiența și precizia.",
+    "sidebar_tour__step__5__title": "Explorați și experimentați magia MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Chat nou",
+    "sidebar_tour__step__5__feature_2__title": "Setări",
+    "sidebar_tour__step__5__feature_3__title": "Istoric chat",
+    "sidebar_tour__step__5__feature_4__title": "Captură de ecran AI",
+    "sidebar_tour__step__5__feature_5__title": "Sugestii cu un clic",
+    "sidebar_tour__step__5__feature_6__title": "Utilizați sugestia"
   }
 }

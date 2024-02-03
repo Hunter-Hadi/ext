@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Fortfahren",
     "sidebar__tabs__search__action_btn__title": "Neue Suche",
     "sidebar__tabs__art__action_btn__title": "Neue Kunst",
-    "immersive_chat__no_conversation": "Kein Chatverlauf",
     "art__model__dalle3__description": "DALL-E 3, entwickelt von OpenAI, ist ein revolutionäres Text-zu-Bild-Modell, das hochdetaillierte Bilder aus textuellen Beschreibungen erstellt und einen bedeutenden Fortschritt in der KI-gesteuerten Bildgenerierung zeigt.",
     "home_view_content_nav__one_click_prompts_title": "1-Klick-Anregungen",
     "home_view_content_nav__my_own_prompts__title": "Meine eigenen Anregungen",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "KI-Anbieter von Drittanbietern",
     "sidebar__ai_provider__provider_selector__disabled__description": "KI-Anbieter in der Erweiterung deaktiviert. Bitte versuchen Sie es später erneut.",
     "sidebar__chat__advanced__title": "Erweiterte Chat-Optionen",
-    "provider__free_ai__model__special__description": "Free AI bietet grundlegenden, kostenlosen Zugang zu KI-Produktivitätstools, perfekt für leichte oder Testzwecke. Es ermöglicht Ihnen, die grundlegenden Funktionen von MaxAI zu testen und bietet einen einfachen Upgrade-Pfad zur vollständigen, erweiterten MaxAI-Suite. Unser Ziel ist es, Free AI kontinuierlich zu verbessern und den Unterschied zwischen unseren kostenlosen und Premium-KI-Optionen zu verringern."
+    "provider__free_ai__model__special__description": "Free AI bietet grundlegenden, kostenlosen Zugang zu KI-Produktivitätstools, perfekt für leichte oder Testzwecke. Es ermöglicht Ihnen, die grundlegenden Funktionen von MaxAI zu testen und bietet einen einfachen Upgrade-Pfad zur vollständigen, erweiterten MaxAI-Suite. Unser Ziel ist es, Free AI kontinuierlich zu verbessern und den Unterschied zwischen unseren kostenlosen und Premium-KI-Optionen zu verringern.",
+    "immersive_chat__chat_no_conversation__title": "Kein Chat-Verlauf verfügbar",
+    "immersive_chat__summary_no_conversation__title": "Kein Zusammenfassungsverlauf verfügbar",
+    "immersive_chat__search_no_conversation__title": "Kein Suchverlauf verfügbar",
+    "immersive_chat__art_no_conversation__title": "Kein Kunstverlauf verfügbar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Prompt-Details anzeigen",
     "delete_prompt__tooltip": "Prompt löschen",
     "edit_prompt__tooltip": "Prompt bearbeiten"
+  },
+  "maxai_tour": {
+    "button__next__title": "Weiter",
+    "button__back__title": "Zurück",
+    "button__finish__title": "Fertigstellen",
+    "text_of": "von",
+    "sidebar_tour__step__1__title": "Wählen Sie Ihre Benutzeroberflächensprache",
+    "sidebar_tour__step__2__title": "Tauchen Sie in KI ein",
+    "sidebar_tour__step__2__description_1": "Fragen Sie Al alles",
+    "sidebar_tour__step__2__description_2": "Seitenzusammenfassung & Chat",
+    "sidebar_tour__step__2__description_3": "KI-gesteuerte Suche",
+    "sidebar_tour__step__2__description_4": "Erstellen Sie Al-Kunst und Bilder",
+    "sidebar_tour__step__3__title": "Ändern Sie KI-Modelle",
+    "sidebar_tour__step__3__description_1": "Wechseln Sie zu verschiedenen KI-Modellen, einschließlich:",
+    "sidebar_tour__step__3__description_2": "und leistungsstärkere KI-Modelle.",
+    "sidebar_tour__step__4__title": "Eintauchen in den Chat",
+    "sidebar_tour__step__4__description": "Die Funktion für den Eintauchchat bietet eine sichere, personalisierte KI-unterstützte Umgebung, die Effizienz und Genauigkeit verbessert.",
+    "sidebar_tour__step__5__title": "Entdecken und erleben Sie die Magie von MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Neuer Chat",
+    "sidebar_tour__step__5__feature_2__title": "Einstellungen",
+    "sidebar_tour__step__5__feature_3__title": "Chat-Verlauf",
+    "sidebar_tour__step__5__feature_4__title": "KI-Bildschirmfoto",
+    "sidebar_tour__step__5__feature_5__title": "1-Klick-Anregungen",
+    "sidebar_tour__step__5__feature_6__title": "Verwenden Sie die Anregung"
   }
 }

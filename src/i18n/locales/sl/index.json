@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Nadaljujte",
     "sidebar__tabs__search__action_btn__title": "Novo iskanje",
     "sidebar__tabs__art__action_btn__title": "Nova umetnost",
-    "immersive_chat__no_conversation": "Ni zgodovine klepeta",
     "art__model__dalle3__description": "DALL-E 3, razvit s strani OpenAI, je revolucionaren model pretvorbe besedila v sliko, ki ustvarja izjemno podrobne slike iz besedilnih opisov in predstavlja pomemben napredek na področju generiranja slik z uporabo AI.",
     "home_view_content_nav__one_click_prompts_title": "1-kliknite spodbude",
     "home_view_content_nav__my_own_prompts__title": "Moje lastne spodbude",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Ponudniki AI tretjih oseb",
     "sidebar__ai_provider__provider_selector__disabled__description": "Ponudnik AI je v razširitvi onemogočen zaradi nadgradnje. Poskusite znova pozneje.",
     "sidebar__chat__advanced__title": "Napredne možnosti klepeta",
-    "provider__free_ai__model__special__description": "Brezplačna AI zagotavlja osnoven, brezplačen dostop do orodij za produktivnost AI, ki so popolni za lahko ali preizkusno uporabo. Omogoča vam preizkušanje osnovnih funkcij MaxAI z enostavno nadgradnjo na celovit in napreden paket MaxAI. Stremimo k stalnim izboljšavam Brezplačne AI, da zmanjšamo razliko med našimi brezplačnimi in premium možnostmi AI."
+    "provider__free_ai__model__special__description": "Brezplačna AI zagotavlja osnoven, brezplačen dostop do orodij za produktivnost AI, ki so popolni za lahko ali preizkusno uporabo. Omogoča vam preizkušanje osnovnih funkcij MaxAI z enostavno nadgradnjo na celovit in napreden paket MaxAI. Stremimo k stalnim izboljšavam Brezplačne AI, da zmanjšamo razliko med našimi brezplačnimi in premium možnostmi AI.",
+    "immersive_chat__chat_no_conversation__title": "Še ni na voljo nobene zgodovine klepeta",
+    "immersive_chat__summary_no_conversation__title": "Še ni na voljo nobene zgodovine povzetka",
+    "immersive_chat__search_no_conversation__title": "Še ni na voljo nobene zgodovine iskanja",
+    "immersive_chat__art_no_conversation__title": "Še ni na voljo nobene zgodovine umetnosti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Poglej podrobnosti o nalogi",
     "delete_prompt__tooltip": "Izbriši nalogo",
     "edit_prompt__tooltip": "Uredi nalogo"
+  },
+  "maxai_tour": {
+    "button__next__title": "Naprej",
+    "button__back__title": "Nazaj",
+    "button__finish__title": "Končaj",
+    "text_of": "od",
+    "sidebar_tour__step__1__title": "Izberite jezik uporabniškega vmesnika",
+    "sidebar_tour__step__2__title": "Potopite se v umetno inteligenco",
+    "sidebar_tour__step__2__description_1": "Vprašajte Al karkoli",
+    "sidebar_tour__step__2__description_2": "Povzetek strani in klepet",
+    "sidebar_tour__step__2__description_3": "Iskanje z Al-om",
+    "sidebar_tour__step__2__description_4": "Ustvarjanje umetnosti in slik z Al-om",
+    "sidebar_tour__step__3__title": "Spremenite modele AI",
+    "sidebar_tour__step__3__description_1": "Spremenite uporabo različnih modelov AI, vključno z:",
+    "sidebar_tour__step__3__description_2": "in močnejšimi modeli AI.",
+    "sidebar_tour__step__4__title": "Potopitveni klepet",
+    "sidebar_tour__step__4__description": "Funkcija potopitvenega klepeta ponuja varno, personalizirano okolje z asistenco AI, ki izboljšuje učinkovitost in natančnost.",
+    "sidebar_tour__step__5__title": "Raziščite in doživite čarobnost MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nov klepet",
+    "sidebar_tour__step__5__feature_2__title": "Nastavitve",
+    "sidebar_tour__step__5__feature_3__title": "Zgodovina klepeta",
+    "sidebar_tour__step__5__feature_4__title": "Posnetek zaslona AI",
+    "sidebar_tour__step__5__feature_5__title": "1-klikni namigi",
+    "sidebar_tour__step__5__feature_6__title": "Uporabite namig"
   }
 }

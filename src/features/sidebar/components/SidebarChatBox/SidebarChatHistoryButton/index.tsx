@@ -61,6 +61,18 @@ const SidebarChatHistoryButton: FC<{
     return t('client:sidebar__speed_dial__chat_history__button')
   }, [t, currentSidebarConversationType])
 
+  const currentI18nEmptyContent = useMemo(() => {
+    if (currentSidebarConversationType === 'Search') {
+      return t('client:immersive_chat__search_no_conversation__title')
+    }
+    if (currentSidebarConversationType === 'Summary') {
+      return t('client:immersive_chat__summary_no_conversation__title')
+    }
+    if (currentSidebarConversationType === 'Art') {
+      return t('client:immersive_chat__art_no_conversation__title')
+    }
+    return t('client:immersive_chat__chat_no_conversation__title')
+  }, [t, currentSidebarConversationType])
   const handleOpenModal = () => {
     setModalOpen(true)
   }
@@ -262,6 +274,9 @@ const SidebarChatHistoryButton: FC<{
                               src={`${getChromeExtensionAssetsURL(
                                 '/images/common/data-empty.png',
                               )}`}
+                              imgStyle={{
+                                objectFit: 'contain',
+                              }}
                               alt={'no_conversation'}
                             />
                             <Typography
@@ -269,7 +284,7 @@ const SidebarChatHistoryButton: FC<{
                               lineHeight={1.5}
                               textAlign={'center'}
                             >
-                              {t('client:immersive_chat__no_conversation')}
+                              {currentI18nEmptyContent}
                             </Typography>
                           </Stack>
                         }

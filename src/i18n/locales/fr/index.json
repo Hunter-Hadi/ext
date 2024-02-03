@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Continuer",
     "sidebar__tabs__search__action_btn__title": "Nouvelle recherche",
     "sidebar__tabs__art__action_btn__title": "Nouvel art",
-    "immersive_chat__no_conversation": "Aucun historique de chat",
     "art__model__dalle3__description": "DALL-E 3, développé par OpenAI, est un modèle révolutionnaire de texte vers image qui crée des images hautement détaillées à partir de descriptions textuelles, démontrant une avancée significative dans la génération d'images pilotée par l'IA.",
     "home_view_content_nav__one_click_prompts_title": "Prompts en 1 clic",
     "home_view_content_nav__my_own_prompts__title": "Mes propres prompts",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Fournisseurs d'IA tiers",
     "sidebar__ai_provider__provider_selector__disabled__description": "Le fournisseur d'IA est désactivé dans l'extension pour une mise à niveau. Veuillez réessayer ultérieurement.",
     "sidebar__chat__advanced__title": "Options de chat avancées",
-    "provider__free_ai__model__special__description": "Free AI offre un accès de base et gratuit aux outils de productivité de l'IA, parfait pour une utilisation légère ou d'essai. Il vous permet de tester les fonctionnalités de base de MaxAI, avec une voie de mise à niveau facile vers la suite complète et avancée de MaxAI. Nous nous efforçons d'améliorer continuellement Free AI, en réduisant la différence entre nos options d'IA gratuites et premium."
+    "provider__free_ai__model__special__description": "Free AI offre un accès de base et gratuit aux outils de productivité de l'IA, parfait pour une utilisation légère ou d'essai. Il vous permet de tester les fonctionnalités de base de MaxAI, avec une voie de mise à niveau facile vers la suite complète et avancée de MaxAI. Nous nous efforçons d'améliorer continuellement Free AI, en réduisant la différence entre nos options d'IA gratuites et premium.",
+    "immersive_chat__chat_no_conversation__title": "Aucune conversation disponible pour le moment",
+    "immersive_chat__summary_no_conversation__title": "Aucun résumé disponible pour le moment",
+    "immersive_chat__search_no_conversation__title": "Aucun historique de recherche disponible pour le moment",
+    "immersive_chat__art_no_conversation__title": "Aucun historique d'art disponible pour le moment"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Voir les détails de la suggestion",
     "delete_prompt__tooltip": "Supprimer la suggestion",
     "edit_prompt__tooltip": "Modifier la suggestion"
+  },
+  "maxai_tour": {
+    "button__next__title": "Suivant",
+    "button__back__title": "Retour",
+    "button__finish__title": "Terminer",
+    "text_of": "de",
+    "sidebar_tour__step__1__title": "Choisissez votre langue d'interface",
+    "sidebar_tour__step__2__title": "Plongez dans l'IA",
+    "sidebar_tour__step__2__description_1": "Posez toutes vos questions à Al",
+    "sidebar_tour__step__2__description_2": "Résumé de la page et chat",
+    "sidebar_tour__step__2__description_3": "Recherche alimentée par Al",
+    "sidebar_tour__step__2__description_4": "Créez de l'art et des images avec Al",
+    "sidebar_tour__step__3__title": "Changer les modèles d'IA",
+    "sidebar_tour__step__3__description_1": "Changez pour utiliser différents modèles d'IA, y compris :",
+    "sidebar_tour__step__3__description_2": "et des modèles d'IA plus puissants.",
+    "sidebar_tour__step__4__title": "Chat immersif",
+    "sidebar_tour__step__4__description": "La fonctionnalité de chat immersif offre un environnement assisté par IA sécurisé et personnalisé, améliorant l'efficacité et la précision.",
+    "sidebar_tour__step__5__title": "Explorez et découvrez la magie de MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nouveau chat",
+    "sidebar_tour__step__5__feature_2__title": "Paramètres",
+    "sidebar_tour__step__5__feature_3__title": "Historique du chat",
+    "sidebar_tour__step__5__feature_4__title": "Capture d'écran de l'IA",
+    "sidebar_tour__step__5__feature_5__title": "Suggestions en 1 clic",
+    "sidebar_tour__step__5__feature_6__title": "Utiliser une suggestion"
   }
 }

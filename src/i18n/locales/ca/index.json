@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Continua",
     "sidebar__tabs__search__action_btn__title": "Cerca nova",
     "sidebar__tabs__art__action_btn__title": "Art nou",
-    "immersive_chat__no_conversation": "Cap historial de xat",
     "art__model__dalle3__description": "DALL-E 3, desenvolupat per OpenAI, és un model revolucionari de text a imatge que crea imatges altament detallades a partir de descripcions textuals, mostrant un avanç significatiu en la generació d'imatges impulsada per IA.",
     "home_view_content_nav__one_click_prompts_title": "Prompts d'un clic",
     "home_view_content_nav__my_own_prompts__title": "Els meus propis prompts",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Proveïdors d'IA de tercers",
     "sidebar__ai_provider__provider_selector__disabled__description": "El proveïdor d'IA està desactivat a l'extensió per actualització. Si us plau, prova-ho més tard.",
     "sidebar__chat__advanced__title": "Opcions avançades de xat",
-    "provider__free_ai__model__special__description": "Free AI proporciona accés bàsic i gratuït a eines de productivitat d'IA, perfectes per a un ús lleuger o de prova. Et permet provar les funcionalitats bàsiques de MaxAI, amb una ruta senzilla per actualitzar-te a la suite completa i avançada de MaxAI. Volem millorar constantment Free AI, reduint la diferència entre les nostres opcions d'IA gratuïtes i premiums."
+    "provider__free_ai__model__special__description": "Free AI proporciona accés bàsic i gratuït a eines de productivitat d'IA, perfectes per a un ús lleuger o de prova. Et permet provar les funcionalitats bàsiques de MaxAI, amb una ruta senzilla per actualitzar-te a la suite completa i avançada de MaxAI. Volem millorar constantment Free AI, reduint la diferència entre les nostres opcions d'IA gratuïtes i premiums.",
+    "immersive_chat__chat_no_conversation__title": "Encara no hi ha cap historial de xats disponible",
+    "immersive_chat__summary_no_conversation__title": "Encara no hi ha cap historial de resums disponible",
+    "immersive_chat__search_no_conversation__title": "Encara no hi ha cap historial de cerca disponible",
+    "immersive_chat__art_no_conversation__title": "Encara no hi ha cap historial d'art disponible"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Veure detalls de la indicació",
     "delete_prompt__tooltip": "Eliminar indicació",
     "edit_prompt__tooltip": "Editar indicació"
+  },
+  "maxai_tour": {
+    "button__next__title": "Següent",
+    "button__back__title": "Enrere",
+    "button__finish__title": "Acaba",
+    "text_of": "de",
+    "sidebar_tour__step__1__title": "Trieu el vostre idioma d'interfície",
+    "sidebar_tour__step__2__title": "Endinseu-vos en la IA",
+    "sidebar_tour__step__2__description_1": "Pregunteu a l'Al qualsevol cosa",
+    "sidebar_tour__step__2__description_2": "Resum de pàgina i xat",
+    "sidebar_tour__step__2__description_3": "Cerca alimentada per IA",
+    "sidebar_tour__step__2__description_4": "Creeu art i imatges amb Al",
+    "sidebar_tour__step__3__title": "Canvieu els models d'IA",
+    "sidebar_tour__step__3__description_1": "Canvieu per utilitzar diferents models d'IA, incloent:",
+    "sidebar_tour__step__3__description_2": "i més models d'IA potents.",
+    "sidebar_tour__step__4__title": "Xat immersiu",
+    "sidebar_tour__step__4__description": "La funció de xat immersiu ofereix un entorn assistit per IA segur i personalitzat, millorant l'eficiència i l'exactitud.",
+    "sidebar_tour__step__5__title": "Explora i experimenta la màgia de MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Xat nou",
+    "sidebar_tour__step__5__feature_2__title": "Configuració",
+    "sidebar_tour__step__5__feature_3__title": "Historial de xats",
+    "sidebar_tour__step__5__feature_4__title": "Captura de pantalla d'IA",
+    "sidebar_tour__step__5__feature_5__title": "Suggeriments amb 1 clic",
+    "sidebar_tour__step__5__feature_6__title": "Utilitza el suggeriment"
   }
 }

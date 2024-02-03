@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "계속하기",
     "sidebar__tabs__search__action_btn__title": "새로운 검색",
     "sidebar__tabs__art__action_btn__title": "새로운 아트",
-    "immersive_chat__no_conversation": "채팅 기록 없음",
     "art__model__dalle3__description": "OpenAI에서 개발한 DALL-E 3은 텍스트 설명으로부터 고도로 상세한 이미지를 생성하는 혁신적인 텍스트-이미지 모델로, AI 기반 이미지 생성의 중요한 발전을 보여줍니다.",
     "home_view_content_nav__one_click_prompts_title": "1클릭 프롬프트",
     "home_view_content_nav__my_own_prompts__title": "내 프롬프트",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-party AI 공급업체",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI 공급업체가 업그레이드로 인해 확장 프로그램에서 비활성화되었습니다. 나중에 다시 시도해주세요.",
     "sidebar__chat__advanced__title": "고급 채팅 옵션",
-    "provider__free_ai__model__special__description": "Free AI는 경량 또는 평가용으로 완벽한 기본 AI 생산성 도구에 대한 무료 액세스를 제공합니다. MaxAI의 기본 기능을 테스트하고, 전문적인 MaxAI 스위트로 쉽게 업그레이드할 수 있습니다. 우리는 계속해서 Free AI를 개선하여 무료와 프리미엄 AI 옵션 간의 차이를 줄이고자 합니다."
+    "provider__free_ai__model__special__description": "Free AI는 경량 또는 평가용으로 완벽한 기본 AI 생산성 도구에 대한 무료 액세스를 제공합니다. MaxAI의 기본 기능을 테스트하고, 전문적인 MaxAI 스위트로 쉽게 업그레이드할 수 있습니다. 우리는 계속해서 Free AI를 개선하여 무료와 프리미엄 AI 옵션 간의 차이를 줄이고자 합니다.",
+    "immersive_chat__chat_no_conversation__title": "아직 대화 기록이 없습니다",
+    "immersive_chat__summary_no_conversation__title": "아직 요약 기록이 없습니다",
+    "immersive_chat__search_no_conversation__title": "아직 검색 기록이 없습니다",
+    "immersive_chat__art_no_conversation__title": "아직 예술 기록이 없습니다"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "프롬프트 세부 정보 보기",
     "delete_prompt__tooltip": "프롬프트 삭제",
     "edit_prompt__tooltip": "프롬프트 편집"
+  },
+  "maxai_tour": {
+    "button__next__title": "다음",
+    "button__back__title": "뒤로",
+    "button__finish__title": "완료",
+    "text_of": "의",
+    "sidebar_tour__step__1__title": "인터페이스 언어 선택",
+    "sidebar_tour__step__2__title": "AI에 빠져보세요",
+    "sidebar_tour__step__2__description_1": "Al에게 질문하기",
+    "sidebar_tour__step__2__description_2": "페이지 요약 및 채팅",
+    "sidebar_tour__step__2__description_3": "AI 기반 검색",
+    "sidebar_tour__step__2__description_4": "AI 예술 및 이미지 생성",
+    "sidebar_tour__step__3__title": "AI 모델 변경",
+    "sidebar_tour__step__3__description_1": "다른 AI 모델 사용으로 변경:",
+    "sidebar_tour__step__3__description_2": "그리고 더 강력한 AI 모델.",
+    "sidebar_tour__step__4__title": "몰입형 채팅",
+    "sidebar_tour__step__4__description": "몰입형 채팅 기능은 안전하고 개인화된 AI 지원 환경을 제공하여 효율성과 정확성을 향상시킵니다.",
+    "sidebar_tour__step__5__title": "MaxAI의 마법을 탐색하고 경험해보세요",
+    "sidebar_tour__step__5__feature_1__title": "새로운 채팅",
+    "sidebar_tour__step__5__feature_2__title": "설정",
+    "sidebar_tour__step__5__feature_3__title": "채팅 기록",
+    "sidebar_tour__step__5__feature_4__title": "AI 스크린샷",
+    "sidebar_tour__step__5__feature_5__title": "1-클릭 프롬프트",
+    "sidebar_tour__step__5__feature_6__title": "프롬프트 사용"
   }
 }

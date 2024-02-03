@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Doorgaan",
     "sidebar__tabs__search__action_btn__title": "Nieuwe zoekopdracht",
     "sidebar__tabs__art__action_btn__title": "Nieuwe kunst",
-    "immersive_chat__no_conversation": "Geen chatgeschiedenis",
     "art__model__dalle3__description": "DALL-E 3, ontwikkeld door OpenAI, is een revolutionair tekst-naar-afbeeldingmodel dat gedetailleerde afbeeldingen maakt op basis van tekstuele beschrijvingen en een aanzienlijke vooruitgang toont in door AI aangedreven beeldgeneratie.",
     "home_view_content_nav__one_click_prompts_title": "1-klik prompts",
     "home_view_content_nav__my_own_prompts__title": "Mijn eigen prompts",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "AI-providers van derden",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-provider uitgeschakeld in extensie voor upgrade. Probeer het later opnieuw.",
     "sidebar__chat__advanced__title": "Geavanceerde chatopties",
-    "provider__free_ai__model__special__description": "Free AI biedt basis, kosteloze toegang tot AI-productiviteitstools, perfect voor licht of proefgebruik. Hiermee kunt u de basisfuncties van MaxAI testen, met een eenvoudig upgrade-pad naar de volledige, geavanceerde MaxAI-suite. We streven ernaar om Free AI continu te verbeteren en het verschil tussen onze gratis en premium AI-opties te verkleinen."
+    "provider__free_ai__model__special__description": "Free AI biedt basis, kosteloze toegang tot AI-productiviteitstools, perfect voor licht of proefgebruik. Hiermee kunt u de basisfuncties van MaxAI testen, met een eenvoudig upgrade-pad naar de volledige, geavanceerde MaxAI-suite. We streven ernaar om Free AI continu te verbeteren en het verschil tussen onze gratis en premium AI-opties te verkleinen.",
+    "immersive_chat__chat_no_conversation__title": "Nog geen chatgeschiedenis beschikbaar",
+    "immersive_chat__summary_no_conversation__title": "Nog geen samenvattingsgeschiedenis beschikbaar",
+    "immersive_chat__search_no_conversation__title": "Nog geen zoekgeschiedenis beschikbaar",
+    "immersive_chat__art_no_conversation__title": "Nog geen kunstgeschiedenis beschikbaar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Bekijk promptdetails",
     "delete_prompt__tooltip": "Prompt verwijderen",
     "edit_prompt__tooltip": "Prompt bewerken"
+  },
+  "maxai_tour": {
+    "button__next__title": "Volgende",
+    "button__back__title": "Terug",
+    "button__finish__title": "Voltooien",
+    "text_of": "van",
+    "sidebar_tour__step__1__title": "Kies uw interface taal",
+    "sidebar_tour__step__2__title": "Duik in AI",
+    "sidebar_tour__step__2__description_1": "Vraag Al alles",
+    "sidebar_tour__step__2__description_2": "Pagina samenvatting & chat",
+    "sidebar_tour__step__2__description_3": "Al-aangedreven zoekopdracht",
+    "sidebar_tour__step__2__description_4": "Maak Al kunst & afbeeldingen",
+    "sidebar_tour__step__3__title": "Verander AI-modellen",
+    "sidebar_tour__step__3__description_1": "Verander om verschillende AI-modellen te gebruiken, waaronder:",
+    "sidebar_tour__step__3__description_2": "en krachtigere AI-modellen.",
+    "sidebar_tour__step__4__title": "Meeslepende chat",
+    "sidebar_tour__step__4__description": "De meeslepende chatfunctie biedt een veilige, gepersonaliseerde AI-ondersteunde omgeving, waardoor efficiëntie en nauwkeurigheid worden verbeterd.",
+    "sidebar_tour__step__5__title": "Ontdek en ervaar de magie van MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nieuwe chat",
+    "sidebar_tour__step__5__feature_2__title": "Instellingen",
+    "sidebar_tour__step__5__feature_3__title": "Chatgeschiedenis",
+    "sidebar_tour__step__5__feature_4__title": "AI-screenshot",
+    "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
+    "sidebar_tour__step__5__feature_6__title": "Gebruik prompt"
   }
 }

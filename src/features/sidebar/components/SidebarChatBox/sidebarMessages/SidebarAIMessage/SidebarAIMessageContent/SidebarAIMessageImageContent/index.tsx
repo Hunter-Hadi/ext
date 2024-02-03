@@ -171,7 +171,7 @@ const SidebarAIMessageImageContent: FC<{
             }}
           >
             <LazyLoadImage
-              sx={{
+              SkeletonSx={{
                 width: '100%',
               }}
               height={height}
@@ -314,7 +314,7 @@ const SidebarAIMessageImageContent: FC<{
               </Stack>
               <LazyLoadImage
                 height={415}
-                sx={{
+                SkeletonSx={{
                   width: '100%',
                 }}
                 src={renderData.image?.uploadedUrl || ''}

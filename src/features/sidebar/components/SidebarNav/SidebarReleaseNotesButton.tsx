@@ -42,6 +42,7 @@ const SidebarReleaseNotesButton = () => {
       {/* release btn */}
       <TextOnlyTooltip title={t('common:release_notes')} placement="left">
         <IconButton
+          data-testid={`maxai--sidebar--release_notes--button`}
           sx={{ flexShrink: 0, width: 'max-content' }}
           onClick={() => {
             setReleaseModalOpen(true)

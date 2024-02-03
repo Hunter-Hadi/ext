@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "ادامه",
     "sidebar__tabs__search__action_btn__title": "جستجوی جدید",
     "sidebar__tabs__art__action_btn__title": "هنر جدید",
-    "immersive_chat__no_conversation": "تاریخچه چتی وجود ندارد",
     "art__model__dalle3__description": "DALL-E 3، توسعه داده شده توسط OpenAI، یک مدل نوآورانه متن به تصویر است که تصاویر بسیار جزئی و دقیق را از توصیفات متنی ایجاد می‌کند و پیشرفت قابل توجهی در تولید تصاویر مبتنی بر هوش مصنوعی نشان می‌دهد.",
     "home_view_content_nav__one_click_prompts_title": "پرومپت 1 کلیک",
     "home_view_content_nav__my_own_prompts__title": "پرومپت‌های خودم",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "ارائه دهندگان هوش مصنوعی شخص ثالث",
     "sidebar__ai_provider__provider_selector__disabled__description": "ارائه دهنده هوش مصنوعی در افزونه غیرفعال است. لطفاً بعداً امتحان کنید.",
     "sidebar__chat__advanced__title": "گزینه های پیشرفته چت",
-    "provider__free_ai__model__special__description": "Free AI ابزارهای بهره وری هوش مصنوعی را بدون هزینه ارائه می دهد که برای استفاده نورانی یا آزمایشی مناسب است. این به شما امکان می دهد ویژگی های پایه MaxAI را تست کنید، با یک مسیر ارتقاء آسان به مجموعه کامل و پیشرفته MaxAI. ما سعی داریم به طور مداوم Free AI را بهبود بخشیم و تفاوت بین گزینه های رایگان و پرمیوم AI خود را کاهش دهیم."
+    "provider__free_ai__model__special__description": "Free AI ابزارهای بهره وری هوش مصنوعی را بدون هزینه ارائه می دهد که برای استفاده نورانی یا آزمایشی مناسب است. این به شما امکان می دهد ویژگی های پایه MaxAI را تست کنید، با یک مسیر ارتقاء آسان به مجموعه کامل و پیشرفته MaxAI. ما سعی داریم به طور مداوم Free AI را بهبود بخشیم و تفاوت بین گزینه های رایگان و پرمیوم AI خود را کاهش دهیم.",
+    "immersive_chat__chat_no_conversation__title": "هنوز تاریخچه چتی موجود نیست",
+    "immersive_chat__summary_no_conversation__title": "هنوز تاریخچه خلاصه موجود نیست",
+    "immersive_chat__search_no_conversation__title": "هنوز تاریخچه جستجو موجود نیست",
+    "immersive_chat__art_no_conversation__title": "هنوز تاریخچه هنری موجود نیست"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "مشاهده جزئیات پیام",
     "delete_prompt__tooltip": "حذف پیام",
     "edit_prompt__tooltip": "ویرایش پیام"
+  },
+  "maxai_tour": {
+    "button__next__title": "بعدی",
+    "button__back__title": "قبلی",
+    "button__finish__title": "پایان",
+    "text_of": "از",
+    "sidebar_tour__step__1__title": "زبان رابط کاربری خود را انتخاب کنید",
+    "sidebar_tour__step__2__title": "در عمق هوش مصنوعی غوطه ور شوید",
+    "sidebar_tour__step__2__description_1": "هر سوالی را از ال بپرسید",
+    "sidebar_tour__step__2__description_2": "خلاصه صفحه و چت",
+    "sidebar_tour__step__2__description_3": "جستجوی قدرتمند با ال",
+    "sidebar_tour__step__2__description_4": "ایجاد هنر و تصاویر با ال",
+    "sidebar_tour__step__3__title": "تغییر مدل‌های هوش مصنوعی",
+    "sidebar_tour__step__3__description_1": "تغییر به استفاده از مدل‌های هوش مصنوعی مختلف از جمله:",
+    "sidebar_tour__step__3__description_2": "و مدل‌های هوش مصنوعی قدرتمندتر.",
+    "sidebar_tour__step__4__title": "چت غوطه ور",
+    "sidebar_tour__step__4__description": "امکان چت غوطه ور ارائه محیطی امن و شخصی‌سازی شده توسط هوش مصنوعی، کارایی و دقت را بهبود می‌بخشد.",
+    "sidebar_tour__step__5__title": "کشف و تجربه جادوی MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "چت جدید",
+    "sidebar_tour__step__5__feature_2__title": "تنظیمات",
+    "sidebar_tour__step__5__feature_3__title": "تاریخچه چت",
+    "sidebar_tour__step__5__feature_4__title": "عکس صفحه با ال",
+    "sidebar_tour__step__5__feature_5__title": "پیشنهادهای 1 کلیکی",
+    "sidebar_tour__step__5__feature_6__title": "استفاده از پیشنهاد"
   }
 }

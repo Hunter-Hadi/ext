@@ -97,6 +97,7 @@ const SidebarTabs: FC = () => {
   }, [])
   return (
     <Stack
+      data-testid={'maxAISidebarTabsContainer'}
       alignItems={'center'}
       width={'100%'}
       spacing={2}
@@ -122,6 +123,7 @@ const SidebarTabs: FC = () => {
               title={t(item.tooltip?.() as any)}
             >
               <Stack
+                data-testid={`maxai--sidebar--${item.value.toLowerCase()}_tab`}
                 spacing={0.5}
                 justifyContent="center"
                 alignItems="center"

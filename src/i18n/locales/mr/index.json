@@ -555,7 +555,6 @@
     "provider__third_party_confirm_dialog__continue__title": "सुरू ठेवा",
     "sidebar__tabs__search__action_btn__title": "नवीन शोध",
     "sidebar__tabs__art__action_btn__title": "नवीन कला",
-    "immersive_chat__no_conversation": "कोणताही चॅट इतिहास नाही",
     "art__model__dalle3__description": "DALL-E 3, OpenAI द्वारा विकसित केलेले एक क्रांतिकारी मजकूर-प्रतिमा मॉडेल आहे, ज्याने टेक्स्टाच्या वर्णनांच्या आधारे उच्च तपशीलवारील प्रतिमा तयार करते, AI-द्वारे संचालित प्रतिमा निर्माणातील एक महत्त्वाचे उन्नती दर्शवते.",
     "home_view_content_nav__one_click_prompts_title": "1-क्लिक प्रॉम्प्ट्स",
     "home_view_content_nav__my_own_prompts__title": "माझे स्वतंत्र प्रॉम्प्ट्स",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3rd-पार्टी AI प्रदात्या MaxAI द्वारे नियंत्रित केलेल्या नाहीत. फास्ट आणि उच्च गुणवत्तेची AI अनुभवासाठी, आम्ही आमच्या प्रीमियम AI प्रदात्या वापरणे अत्यंत शिफारस करतो.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-पार्टी AI प्रदात्या",
     "sidebar__ai_provider__provider_selector__disabled__description": "अपग्रेडसाठी एक्सटेंशनमध्ये AI प्रदाता अक्षम केला आहे. कृपया नंतर प्रयत्न करा.",
-    "sidebar__chat__advanced__title": "प्रगत चॅट पर्याये"
+    "sidebar__chat__advanced__title": "प्रगत चॅट पर्याये",
+    "immersive_chat__chat_no_conversation__title": "अद्याप चॅट इतिहास उपलब्ध नाही",
+    "immersive_chat__summary_no_conversation__title": "अद्याप संक्षेप इतिहास उपलब्ध नाही",
+    "immersive_chat__search_no_conversation__title": "अद्याप शोध इतिहास उपलब्ध नाही",
+    "immersive_chat__art_no_conversation__title": "अद्याप कला इतिहास उपलब्ध नाही"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "प्रॉम्प्टची माहिती पहा",
     "delete_prompt__tooltip": "प्रॉम्प्ट काढा",
     "edit_prompt__tooltip": "प्रॉम्प्ट संपादित करा"
+  },
+  "maxai_tour": {
+    "button__next__title": "पुढे",
+    "button__back__title": "मागे",
+    "button__finish__title": "संपले",
+    "text_of": "च्या",
+    "sidebar_tour__step__1__title": "तुमची इंटरफेस भाषा निवडा",
+    "sidebar_tour__step__2__title": "AI मध्ये उभा",
+    "sidebar_tour__step__2__description_1": "काहीही प्रश्न करा",
+    "sidebar_tour__step__2__description_2": "पृष्ठ संक्षेप आणि चॅट",
+    "sidebar_tour__step__2__description_3": "AI शक्तिशाली शोध",
+    "sidebar_tour__step__2__description_4": "AI कला आणि प्रतिमा तयार करा",
+    "sidebar_tour__step__3__title": "AI मॉडेल बदला",
+    "sidebar_tour__step__3__description_1": "विविध AI मॉडेल वापरण्यासाठी बदला, ज्यांमध्ये समाविष्ट आहेत:",
+    "sidebar_tour__step__3__description_2": "आणि अधिक शक्तिशाली AI मॉडेल.",
+    "sidebar_tour__step__4__title": "प्रवेशासाठी चॅट",
+    "sidebar_tour__step__4__description": "प्रवेशासाठी चॅट सुविधा सुरक्षित, वैयक्तिकृत AI सहाय्यक वातावरण प्रदान करते, प्रभावीता आणि यथार्थता वाढवते.",
+    "sidebar_tour__step__5__title": "MaxAI च्या जादूची अन्वेषणे आणि अनुभवे",
+    "sidebar_tour__step__5__feature_1__title": "नवीन चॅट",
+    "sidebar_tour__step__5__feature_2__title": "सेटिंग्ज",
+    "sidebar_tour__step__5__feature_3__title": "चॅट इतिहास",
+    "sidebar_tour__step__5__feature_4__title": "AI स्क्रीनशॉट",
+    "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
+    "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट वापरा"
   }
 }

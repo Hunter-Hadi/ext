@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "కొనసాగించు",
     "sidebar__tabs__search__action_btn__title": "కొత్త శోధన",
     "sidebar__tabs__art__action_btn__title": "కొత్త కళా",
-    "immersive_chat__no_conversation": "చాట్ చరిత్ర లేదు",
     "art__model__dalle3__description": "DALL-E 3, OpenAI ద్వారా అభివృద్ధి చేయబడిన ఒక క్రాంతికారి టెక్స్ట్-టు-చిత్రం మోడల్, పఠనాల వివరణల నుండి అత్యున్నత వివరణాత్మక చిత్రాలను సృష్టిస్తుంది, AI-ప్రేరిత చిత్ర సృజనలో గట్టి మున్నాటలో ప్రగతిని చూపిస్తుంది.",
     "home_view_content_nav__one_click_prompts_title": "1-క్లిక్ ప్రాంప్ట్‌లు",
     "home_view_content_nav__my_own_prompts__title": "నా ప్రాంప్ట్‌లు",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3వ పార్టీ AI ప్రొవైడర్‌లు",
     "sidebar__ai_provider__provider_selector__disabled__description": "అప్‌గ్రేడ్ కోసం పొడిగింపులు చేయబడిన ఎక్స్టెన్షన్‌లో AI ప్రొవైడర్ మార్చబడింది. దయచేసి తరువాత ప్రయత్నించండి.",
     "sidebar__chat__advanced__title": "ఆధ్వర్యంగ చాట్ ఎంపికలు",
-    "provider__free_ai__model__special__description": "ఉచిత యూఎక్స్ బేసిక్, అనువర్తనాలకు ప్రాముఖ్యత ఇవ్వడం ద్వారా ఉచిత యొక్క యాటాలను అందిస్తుంది. ఇది మీకు మాక్స్‌ఏఐఐ యొక్క బేసిక్ లక్షణాలను పరీక్షించడం చేస్తుంది, సరళమైన నవీకరణ పథంలో పూర్తి, అభివృద్ధిగా మాక్స్‌ఏఐఐ స్వీట్‌కు అప్గ్రేడ్ మార్గం ఉంది. మేము ఉచిత యొక్క మరియు ప్రీమియం యొక్క యాటాల మధ్య వ్యత్యాసాన్ని తక్కువ చేయడం ద్వారా ఉచిత యొక్క ఏఐ ని మీరు మరియు మీ ఆదాయాన్ని మెరుగుపరచడానికి ప్రయత్నిస్తున్నాము."
+    "provider__free_ai__model__special__description": "ఉచిత యూఎక్స్ బేసిక్, అనువర్తనాలకు ప్రాముఖ్యత ఇవ్వడం ద్వారా ఉచిత యొక్క యాటాలను అందిస్తుంది. ఇది మీకు మాక్స్‌ఏఐఐ యొక్క బేసిక్ లక్షణాలను పరీక్షించడం చేస్తుంది, సరళమైన నవీకరణ పథంలో పూర్తి, అభివృద్ధిగా మాక్స్‌ఏఐఐ స్వీట్‌కు అప్గ్రేడ్ మార్గం ఉంది. మేము ఉచిత యొక్క మరియు ప్రీమియం యొక్క యాటాల మధ్య వ్యత్యాసాన్ని తక్కువ చేయడం ద్వారా ఉచిత యొక్క ఏఐ ని మీరు మరియు మీ ఆదాయాన్ని మెరుగుపరచడానికి ప్రయత్నిస్తున్నాము.",
+    "immersive_chat__chat_no_conversation__title": "ఇంకా చాట్ చరిత్ర లేదు",
+    "immersive_chat__summary_no_conversation__title": "ఇంకా సారాంశ చరిత్ర లేదు",
+    "immersive_chat__search_no_conversation__title": "ఇంకా శోధన చరిత్ర లేదు",
+    "immersive_chat__art_no_conversation__title": "ఇంకా కళ చరిత్ర లేదు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "ప్రాంతం వివరాలను చూడండి",
     "delete_prompt__tooltip": "ప్రాంతంని తొలగించండి",
     "edit_prompt__tooltip": "ప్రాంతంని సవరించండి"
+  },
+  "maxai_tour": {
+    "button__next__title": "తరువాత",
+    "button__back__title": "తిరిగి",
+    "button__finish__title": "పూర్తి",
+    "text_of": "యొక్క",
+    "sidebar_tour__step__1__title": "మీ ఇంటర్ఫేస్ భాషను ఎంచుకోండి",
+    "sidebar_tour__step__2__title": "AIలో దుముకుంటాం",
+    "sidebar_tour__step__2__description_1": "ఏల్ ఏనైనా అడ్డుకోండి",
+    "sidebar_tour__step__2__description_2": "పేజీ సారాంశం & చాట్",
+    "sidebar_tour__step__2__description_3": "AI ప్రాధాన్యత ఉన్న శోధన",
+    "sidebar_tour__step__2__description_4": "AI కలా & చిత్రాలను సృష్టించండి",
+    "sidebar_tour__step__3__title": "AI మోడల్స్ మార్చండి",
+    "sidebar_tour__step__3__description_1": "విభిన్న AI మోడల్స్ ఉపయోగించడానికి మార్చండి:",
+    "sidebar_tour__step__3__description_2": "మరియు ఇతర శక్తివంతమైన AI మోడల్స్.",
+    "sidebar_tour__step__4__title": "ఆకర్షణీయ చాట్",
+    "sidebar_tour__step__4__description": "ఆకర్షణీయ చాట్ ఫీచర్ సురక్షితంగా, వ్యక్తిగతంగా AI-సహాయం ప్రదానం చేసే పర్యావరణాన్ని ప్రదర్శించండి, యాంత్రికతను మరియు ఖచ్చితతను పెంచుకోవడానికి.",
+    "sidebar_tour__step__5__title": "MaxAI మాయాన్ని అన్వేషించండి మరియు అనుభవించండి",
+    "sidebar_tour__step__5__feature_1__title": "కొత్త చాట్",
+    "sidebar_tour__step__5__feature_2__title": "సెట్టింగ్లు",
+    "sidebar_tour__step__5__feature_3__title": "చాట్ చరిత్ర",
+    "sidebar_tour__step__5__feature_4__title": "AI స్క్రీన్‌షాట్",
+    "sidebar_tour__step__5__feature_5__title": "1-క్లిక్ ప్రాంప్ట్‌లు",
+    "sidebar_tour__step__5__feature_6__title": "ప్రాంప్ట్‌ను ఉపయోగించు"
   }
 }

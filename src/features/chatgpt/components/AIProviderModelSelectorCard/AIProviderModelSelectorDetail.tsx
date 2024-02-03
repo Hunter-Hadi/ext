@@ -1,4 +1,3 @@
-import Chip from '@mui/material/Chip'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
@@ -65,22 +64,29 @@ const AIProviderModelSelectorDetail: FC<{
               <Stack direction={'row'} flexWrap={'wrap'} gap={'4px'}>
                 {currentAIProviderModelDetail.tags.map((tag) => {
                   return (
-                    <Chip
-                      sx={{
-                        fontSize: '12px',
-                        height: '18px',
-                        textTransform: 'capitalize',
-                        flexShrink: 0,
-                        '& > span': {
-                          px: '6px',
-                        },
-                      }}
+                    <Typography
                       key={tag}
-                      label={tag}
-                      color="primary"
-                      size={'small'}
-                      variant={'outlined'}
-                    />
+                      component={'span'}
+                      fontSize={'12px'}
+                      fontWeight={500}
+                      textAlign={'left'}
+                      px={0.5}
+                      borderRadius={1}
+                      bgcolor={(t) =>
+                        t.palette.mode === 'dark'
+                          ? 'rgba(255, 255, 255, 0.08)'
+                          : 'rgba(0, 0, 0, 0.08)'
+                      }
+                      whiteSpace={'nowrap'}
+                      sx={{
+                        borderRadius: '4px',
+                        border: '1px solid',
+                        borderColor: 'primary.main',
+                        color: 'primary.main',
+                      }}
+                    >
+                      {tag}
+                    </Typography>
                   )
                 })}
               </Stack>

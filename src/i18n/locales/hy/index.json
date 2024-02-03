@@ -551,7 +551,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Շարունակել",
     "sidebar__tabs__search__action_btn__title": "Նոր որոնում",
     "sidebar__tabs__art__action_btn__title": "Նոր արվեստ",
-    "immersive_chat__no_conversation": "Ոչ մի խոսատեսական պատմություն",
     "art__model__dalle3__description": "DALL-E 3, որը զարգացվել է OpenAI-ի կողմից, հանրայինում է տեքստային նկարների ստեղծման համար առաջարկում է շատ մանրամասներով նկարներ, որոնք ցուցադրում են AI-ի կատարումը պատկերացման մեծ առաջադրանքը։",
     "home_view_content_nav__one_click_prompts_title": "1-կլիք նախադիտումներ",
     "home_view_content_nav__my_own_prompts__title": "Իմ սեփական նախադիտումները",
@@ -572,7 +571,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3-րդ անձնակազմի AI մատակարարներ",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI մատակարարը ապահովված է ընդացիկայինում բարելավման համար։ Խնդրում ենք փորձել հետաձգվել։",
     "sidebar__chat__advanced__title": "Ընդլայնված խոսատեսության ընտրանքներ",
-    "provider__free_ai__model__special__description": "Free AI-ն ապահովում է անվճար մոդելավորում առանձին, բազմաթիվ գործիքներին, որոնցից համակարգչային աշխատանքը հասանելի է անվճար, ինչպես նաև լայնականացված կամ փորձառու օգտագործման համար: Դուք կարող եք ստուգել MaxAI-ի հիմնական հատկությունները Free AI-ում, որպեսզի հեշտությամբ բարձրացնեք դառնալու դեպքում լրացուցիչ, առաջադրանքային MaxAI հավելվածին: Մենք նպաստում ենք ապահովել Free AI-ն ավելի լավագույն՝ բարձրացնելով անվճար և վարժարանական AI ընտրանքների միջև առավելագույն տարբերությունը:"
+    "provider__free_ai__model__special__description": "Free AI-ն ապահովում է անվճար մոդելավորում առանձին, բազմաթիվ գործիքներին, որոնցից համակարգչային աշխատանքը հասանելի է անվճար, ինչպես նաև լայնականացված կամ փորձառու օգտագործման համար: Դուք կարող եք ստուգել MaxAI-ի հիմնական հատկությունները Free AI-ում, որպեսզի հեշտությամբ բարձրացնեք դառնալու դեպքում լրացուցիչ, առաջադրանքային MaxAI հավելվածին: Մենք նպաստում ենք ապահովել Free AI-ն ավելի լավագույն՝ բարձրացնելով անվճար և վարժարանական AI ընտրանքների միջև առավելագույն տարբերությունը:",
+    "immersive_chat__chat_no_conversation__title": "Ոչ մի խոսքագրությունից դեռևս չկա",
+    "immersive_chat__summary_no_conversation__title": "Ոչ մի ամփոփումից դեռևս չկա",
+    "immersive_chat__search_no_conversation__title": "Ոչ մի որոնման պատմությունից դեռևս չկա",
+    "immersive_chat__art_no_conversation__title": "Ոչ մի արվեստի պատմությունից դեռևս չկա"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Դիտել հավատարմագրության մանրամասները",
     "delete_prompt__tooltip": "Ջնջել հավատարմագրությունը",
     "edit_prompt__tooltip": "Խմբագրել հավատարմագրությունը"
+  },
+  "maxai_tour": {
+    "button__next__title": "Հաջորդը",
+    "button__back__title": "Հետ",
+    "button__finish__title": "Ավարտ",
+    "text_of": "ից",
+    "sidebar_tour__step__1__title": "Ընտրեք ձեր ինտերֆեյսի լեզուն",
+    "sidebar_tour__step__2__title": "Դիվերսիցիա AI-ում",
+    "sidebar_tour__step__2__description_1": "Հարցերով հարցեր",
+    "sidebar_tour__step__2__description_2": "Էջի ամփոփում և խոսք",
+    "sidebar_tour__step__2__description_3": "AI-ով որոնում",
+    "sidebar_tour__step__2__description_4": "Ստեղծել Al արվեստ և պատկերներ",
+    "sidebar_tour__step__3__title": "Փոխել AI մոդելները",
+    "sidebar_tour__step__3__description_1": "Փոխարինեք տարբեր AI մոդելներով, ներառյալ՝",
+    "sidebar_tour__step__3__description_2": "և ավելի հզոր AI մոդելներով։",
+    "sidebar_tour__step__4__title": "Արագացնելով խոսքը",
+    "sidebar_tour__step__4__description": "Արագացնելով խոսքը ապահովում է անվտանգ, անձնական AI-ով աջակցվող միջոցառում, որը բարելավում է արտադրականացումը և ճշգրիտությունը։",
+    "sidebar_tour__step__5__title": "Գտնել և զգուշացնել MaxAI-ի հերթականությունը",
+    "sidebar_tour__step__5__feature_1__title": "Նոր խոսք",
+    "sidebar_tour__step__5__feature_2__title": "Կարգավորումներ",
+    "sidebar_tour__step__5__feature_3__title": "Խոսքի պատմություն",
+    "sidebar_tour__step__5__feature_4__title": "AI էկրանիկ",
+    "sidebar_tour__step__5__feature_5__title": "1-կտավ",
+    "sidebar_tour__step__5__feature_6__title": "Օգտագործել հուշում"
   }
 }

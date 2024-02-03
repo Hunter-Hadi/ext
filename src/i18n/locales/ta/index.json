@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "தொடர்க",
     "sidebar__tabs__search__action_btn__title": "புதிய தேடல்",
     "sidebar__tabs__art__action_btn__title": "புதிய கலை",
-    "immersive_chat__no_conversation": "உரையாடல் வரலாறு இல்லை",
     "art__model__dalle3__description": "DALL-E 3, OpenAI வழங்கிய ஒரு புதிய உரையாடல் மாதிரி, உரையாடல் விளக்கத்திலிருந்து மிகுந்த விரிவான படங்களை உருவாக்குகின்றது, AI மூலம் இனம் உருவாக்கத்தில் மிகுந்த முன்னணி முனைவோட்டத்தைக் காட்டுகின்றது.",
     "home_view_content_nav__one_click_prompts_title": "1-கிளிக் செய்த உதவிகள்",
     "home_view_content_nav__my_own_prompts__title": "எனது உரையாடல்கள்",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3-ஆம் தரப்பு AI வழங்குநர்கள்",
     "sidebar__ai_provider__provider_selector__disabled__description": "மேம்பாடுகளுக்காக நீக்கப்பட்டுள்ள ஏஐ வழங்குநர் நீக்கப்பட்டுள்ளது. பின்னர் முயற்சிக்கவும்.",
     "sidebar__chat__advanced__title": "மேம்படுத்தப்பட்ட உரையாடல் விருப்பங்கள்",
-    "provider__free_ai__model__special__description": "இலவச ஏதோனும் அடிப்படையான AI உதவி அணுகல் வழங்குகிறது, இது ஒரு குறிப்பிட்ட பயன்பாட்டிற்கு பெரியான அணுகல் முறைகளுடன் பொருந்தும். இது மேக்ஸ்AI-ன் அடிப்படை அம்சங்களை சோதிக்க அனுமதிக்கும், முழுமையான மேக்ஸ்AI சுயவிவரத்திற்கு எளிதான மேம்பாடு வழங்குகிறது. நாங்கள் இலவச ஏதோனும் மற்றும் பிரீமியம் AI விருப்பங்களுக்கு உள்ள வேறுபாட்டை குறைக்க, இலவச AI-யை மேம்படுத்துகின்றோம்."
+    "provider__free_ai__model__special__description": "இலவச ஏதோனும் அடிப்படையான AI உதவி அணுகல் வழங்குகிறது, இது ஒரு குறிப்பிட்ட பயன்பாட்டிற்கு பெரியான அணுகல் முறைகளுடன் பொருந்தும். இது மேக்ஸ்AI-ன் அடிப்படை அம்சங்களை சோதிக்க அனுமதிக்கும், முழுமையான மேக்ஸ்AI சுயவிவரத்திற்கு எளிதான மேம்பாடு வழங்குகிறது. நாங்கள் இலவச ஏதோனும் மற்றும் பிரீமியம் AI விருப்பங்களுக்கு உள்ள வேறுபாட்டை குறைக்க, இலவச AI-யை மேம்படுத்துகின்றோம்.",
+    "immersive_chat__chat_no_conversation__title": "இன்று உரையாடல் வரலாறு கிடைக்கவில்லை",
+    "immersive_chat__summary_no_conversation__title": "சுருக்கம் வரலாறு கிடைக்கவில்லை",
+    "immersive_chat__search_no_conversation__title": "தேடல் வரலாறு கிடைக்கவில்லை",
+    "immersive_chat__art_no_conversation__title": "கலை வரலாறு கிடைக்கவில்லை"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "உரை விவரங்களைக் காண்க",
     "delete_prompt__tooltip": "உரையை நீக்கு",
     "edit_prompt__tooltip": "உரையைத் திருத்து"
+  },
+  "maxai_tour": {
+    "button__next__title": "அடுத்து",
+    "button__back__title": "பின் செல்",
+    "button__finish__title": "முடிவு",
+    "text_of": "இன்",
+    "sidebar_tour__step__1__title": "உங்கள் பயன்பாட்டு மொழியைத் தேர்ந்தெடுக்கவும்",
+    "sidebar_tour__step__2__title": "ஐயில் மூழ்கு",
+    "sidebar_tour__step__2__description_1": "எல் என்னால் கேள்வி கேட்கவும்",
+    "sidebar_tour__step__2__description_2": "பக்க சுருக்கம் & உரைப்படி",
+    "sidebar_tour__step__2__description_3": "ஐயில் செருகுதல்",
+    "sidebar_tour__step__2__description_4": "ஐயில் கலை & படங்கள் உருவாக்குதல்",
+    "sidebar_tour__step__3__title": "ஐய் மாதிரிகளை மாற்றுக",
+    "sidebar_tour__step__3__description_1": "வேறு ஐய் மாதிரிகளைப் பயன்படுத்த மாற்றவும்:",
+    "sidebar_tour__step__3__description_2": "மிகவும் அதிக சக்தியுள்ள ஐய் மாதிரிகள்.",
+    "sidebar_tour__step__4__title": "மனநிறைவு உரைப்படி",
+    "sidebar_tour__step__4__description": "மனநிறைவு உரைப்படி அமைப்பு பொதுவாக ஐயை உதவும் ஒரு பாதுகாப்பான, தனிப்பட்ட ஐய் உதவியுள்ள சூழலை வழங்குகிறது, செயல்பாட்டை மற்றும் சரிபார்க்கலை மேம்படுத்துகின்றது.",
+    "sidebar_tour__step__5__title": "மேக்ஸ் ஐயின் மந்திரத்தை ஆராயுங்கள் மற்றும் அனுபவியுங்கள்",
+    "sidebar_tour__step__5__feature_1__title": "புதிய உரைப்படி",
+    "sidebar_tour__step__5__feature_2__title": "அமைப்புகள்",
+    "sidebar_tour__step__5__feature_3__title": "உரைப்படி வரலாறு",
+    "sidebar_tour__step__5__feature_4__title": "ஐய் திரைப்படம்",
+    "sidebar_tour__step__5__feature_5__title": "1-கிளிக் உதவிகள்",
+    "sidebar_tour__step__5__feature_6__title": "உதவி பயன்படுத்து"
   }
 }

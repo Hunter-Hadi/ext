@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Kontynuuj",
     "sidebar__tabs__search__action_btn__title": "Nowe wyszukiwanie",
     "sidebar__tabs__art__action_btn__title": "Nowa sztuka",
-    "immersive_chat__no_conversation": "Brak historii rozmowy",
     "art__model__dalle3__description": "DALL-E 3, opracowany przez OpenAI, to rewolucyjny model tekst-do-obrazu, który tworzy szczegółowe obrazy na podstawie opisów tekstowych, prezentując znaczący postęp w generowaniu obrazów przy użyciu AI.",
     "home_view_content_nav__one_click_prompts_title": "Podpowiedzi jednym kliknięciem",
     "home_view_content_nav__my_own_prompts__title": "Moje własne podpowiedzi",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Dostawcy AI zewnętrznych",
     "sidebar__ai_provider__provider_selector__disabled__description": "Dostawca AI jest wyłączony w rozszerzeniu ze względu na aktualizację. Proszę spróbować później.",
     "sidebar__chat__advanced__title": "Zaawansowane opcje czatu",
-    "provider__free_ai__model__special__description": "Free AI zapewnia podstawowy, bezpłatny dostęp do narzędzi produktywnościowych opartych na sztucznej inteligencji, idealnych do lekkiego użytku lub testów. Pozwala przetestować podstawowe funkcje MaxAI z łatwą ścieżką aktualizacji do pełnego, zaawansowanego pakietu MaxAI. Dążymy do ciągłego doskonalenia Free AI, zmniejszając różnicę między naszymi darmowymi a premium opcjami AI."
+    "provider__free_ai__model__special__description": "Free AI zapewnia podstawowy, bezpłatny dostęp do narzędzi produktywnościowych opartych na sztucznej inteligencji, idealnych do lekkiego użytku lub testów. Pozwala przetestować podstawowe funkcje MaxAI z łatwą ścieżką aktualizacji do pełnego, zaawansowanego pakietu MaxAI. Dążymy do ciągłego doskonalenia Free AI, zmniejszając różnicę między naszymi darmowymi a premium opcjami AI.",
+    "immersive_chat__chat_no_conversation__title": "Brak dostępnej historii czatu",
+    "immersive_chat__summary_no_conversation__title": "Brak dostępnej historii podsumowania",
+    "immersive_chat__search_no_conversation__title": "Brak dostępnej historii wyszukiwania",
+    "immersive_chat__art_no_conversation__title": "Brak dostępnej historii sztuki"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Wyświetl szczegóły promptu",
     "delete_prompt__tooltip": "Usuń prompt",
     "edit_prompt__tooltip": "Edytuj prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Dalej",
+    "button__back__title": "Wstecz",
+    "button__finish__title": "Zakończ",
+    "text_of": "z",
+    "sidebar_tour__step__1__title": "Wybierz język interfejsu",
+    "sidebar_tour__step__2__title": "Zanurz się w sztucznej inteligencji",
+    "sidebar_tour__step__2__description_1": "Zadaj Alowi pytanie",
+    "sidebar_tour__step__2__description_2": "Podsumowanie strony i czat",
+    "sidebar_tour__step__2__description_3": "Wyszukiwanie z wykorzystaniem AI",
+    "sidebar_tour__step__2__description_4": "Tworzenie sztuki i obrazów z wykorzystaniem AI",
+    "sidebar_tour__step__3__title": "Zmień modele AI",
+    "sidebar_tour__step__3__description_1": "Zmień na korzystanie z różnych modeli AI, w tym:",
+    "sidebar_tour__step__3__description_2": "i bardziej zaawansowanych modeli AI.",
+    "sidebar_tour__step__4__title": "Czat w pełnym ekranie",
+    "sidebar_tour__step__4__description": "Funkcja czatu w pełnym ekranie oferuje bezpieczne, spersonalizowane środowisko wspomagane przez AI, zwiększając efektywność i dokładność.",
+    "sidebar_tour__step__5__title": "Odkryj i doświadcz magii MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nowy czat",
+    "sidebar_tour__step__5__feature_2__title": "Ustawienia",
+    "sidebar_tour__step__5__feature_3__title": "Historia czatu",
+    "sidebar_tour__step__5__feature_4__title": "Zrzut ekranu AI",
+    "sidebar_tour__step__5__feature_5__title": "Podpowiedzi jednym kliknięciem",
+    "sidebar_tour__step__5__feature_6__title": "Użyj podpowiedzi"
   }
 }

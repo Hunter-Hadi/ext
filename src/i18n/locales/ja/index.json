@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "続行",
     "sidebar__tabs__search__action_btn__title": "新しい検索",
     "sidebar__tabs__art__action_btn__title": "新しいアート",
-    "immersive_chat__no_conversation": "チャット履歴なし",
     "art__model__dalle3__description": "OpenAIによって開発されたDALL-E 3は、テキストから画像を生成する革命的なモデルであり、AIによる画像生成の大幅な進歩を示しています。",
     "home_view_content_nav__one_click_prompts_title": "1クリックプロンプト",
     "home_view_content_nav__my_own_prompts__title": "私自身のプロンプト",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "サードパーティのAIプロバイダ",
     "sidebar__ai_provider__provider_selector__disabled__description": "AIプロバイダは拡張機能で無効になっています。後でもう一度お試しください。",
     "sidebar__chat__advanced__title": "高度なチャットオプション",
-    "provider__free_ai__model__special__description": "Free AIは、AI生産性ツールへの基本的で無料のアクセスを提供し、軽量またはトライアル利用に最適です。基本的なMaxAIの機能をテストすることができ、簡単にフルバージョンの高度なMaxAIスイートにアップグレードできます。私たちはFree AIを継続的に改善し、無料とプレミアムのAIオプションの違いを減らすことを目指しています。"
+    "provider__free_ai__model__special__description": "Free AIは、AI生産性ツールへの基本的で無料のアクセスを提供し、軽量またはトライアル利用に最適です。基本的なMaxAIの機能をテストすることができ、簡単にフルバージョンの高度なMaxAIスイートにアップグレードできます。私たちはFree AIを継続的に改善し、無料とプレミアムのAIオプションの違いを減らすことを目指しています。",
+    "immersive_chat__chat_no_conversation__title": "まだチャット履歴はありません",
+    "immersive_chat__summary_no_conversation__title": "まだサマリー履歴はありません",
+    "immersive_chat__search_no_conversation__title": "まだ検索履歴はありません",
+    "immersive_chat__art_no_conversation__title": "まだアート履歴はありません"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "プロンプトの詳細を表示",
     "delete_prompt__tooltip": "プロンプトを削除",
     "edit_prompt__tooltip": "プロンプトを編集"
+  },
+  "maxai_tour": {
+    "button__next__title": "次へ",
+    "button__back__title": "戻る",
+    "button__finish__title": "完了",
+    "text_of": "の",
+    "sidebar_tour__step__1__title": "インターフェース言語を選択",
+    "sidebar_tour__step__2__title": "AIにダイブ",
+    "sidebar_tour__step__2__description_1": "Alに何でも聞く",
+    "sidebar_tour__step__2__description_2": "ページの要約とチャット",
+    "sidebar_tour__step__2__description_3": "Alパワード検索",
+    "sidebar_tour__step__2__description_4": "Alアートと画像の作成",
+    "sidebar_tour__step__3__title": "AIモデルの変更",
+    "sidebar_tour__step__3__description_1": "以下の異なるAIモデルを使用するには変更してください：",
+    "sidebar_tour__step__3__description_2": "より強力なAIモデルなど。",
+    "sidebar_tour__step__4__title": "没入型チャット",
+    "sidebar_tour__step__4__description": "没入型チャット機能は、セキュアで個別化されたAI支援環境を提供し、効率と正確性を向上させます。",
+    "sidebar_tour__step__5__title": "MaxAIの魔法を探索して体験する",
+    "sidebar_tour__step__5__feature_1__title": "新しいチャット",
+    "sidebar_tour__step__5__feature_2__title": "設定",
+    "sidebar_tour__step__5__feature_3__title": "チャット履歴",
+    "sidebar_tour__step__5__feature_4__title": "AIスクリーンショット",
+    "sidebar_tour__step__5__feature_5__title": "1クリックプロンプト",
+    "sidebar_tour__step__5__feature_6__title": "プロンプトの使用"
   }
 }

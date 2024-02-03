@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Продолжить",
     "sidebar__tabs__search__action_btn__title": "Новый поиск",
     "sidebar__tabs__art__action_btn__title": "Новое искусство",
-    "immersive_chat__no_conversation": "Нет истории чата",
     "art__model__dalle3__description": "DALL-E 3, разработанный OpenAI, является революционной моделью текст-изображение, которая создает высокодетализированные изображения на основе текстовых описаний, демонстрируя значительное развитие в области генерации изображений с помощью ИИ.",
     "home_view_content_nav__one_click_prompts_title": "1-клик подсказки",
     "home_view_content_nav__my_own_prompts__title": "Мои собственные подсказки",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Сторонние провайдеры ИИ",
     "sidebar__ai_provider__provider_selector__disabled__description": "Провайдер ИИ отключен в расширении для обновления. Пожалуйста, попробуйте позже.",
     "sidebar__chat__advanced__title": "Расширенные параметры чата",
-    "provider__free_ai__model__special__description": "Free AI предоставляет базовый бесплатный доступ к инструментам продуктивности ИИ, идеально подходит для легкого или пробного использования. Он позволяет вам протестировать основные функции MaxAI с возможностью легкого перехода к полной, расширенной версии набора MaxAI. Мы стремимся постоянно улучшать Free AI, сокращая разницу между нашими бесплатными и премиум-вариантами ИИ."
+    "provider__free_ai__model__special__description": "Free AI предоставляет базовый бесплатный доступ к инструментам продуктивности ИИ, идеально подходит для легкого или пробного использования. Он позволяет вам протестировать основные функции MaxAI с возможностью легкого перехода к полной, расширенной версии набора MaxAI. Мы стремимся постоянно улучшать Free AI, сокращая разницу между нашими бесплатными и премиум-вариантами ИИ.",
+    "immersive_chat__chat_no_conversation__title": "Еще нет доступной истории чата",
+    "immersive_chat__summary_no_conversation__title": "Еще нет доступной истории резюме",
+    "immersive_chat__search_no_conversation__title": "Еще нет доступной истории поиска",
+    "immersive_chat__art_no_conversation__title": "Еще нет доступной истории искусства"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Просмотреть детали подсказки",
     "delete_prompt__tooltip": "Удалить подсказку",
     "edit_prompt__tooltip": "Редактировать подсказку"
+  },
+  "maxai_tour": {
+    "button__next__title": "Далее",
+    "button__back__title": "Назад",
+    "button__finish__title": "Завершить",
+    "text_of": "из",
+    "sidebar_tour__step__1__title": "Выберите язык интерфейса",
+    "sidebar_tour__step__2__title": "Погрузитесь в искусственный интеллект",
+    "sidebar_tour__step__2__description_1": "Спросите Ала о чем угодно",
+    "sidebar_tour__step__2__description_2": "Сводка страницы и чат",
+    "sidebar_tour__step__2__description_3": "Поиск с помощью ИИ",
+    "sidebar_tour__step__2__description_4": "Создание искусства и изображений с помощью ИИ",
+    "sidebar_tour__step__3__title": "Изменение моделей ИИ",
+    "sidebar_tour__step__3__description_1": "Переключайтесь на использование разных моделей ИИ, включая:",
+    "sidebar_tour__step__3__description_2": "и более мощные модели ИИ.",
+    "sidebar_tour__step__4__title": "Погружной чат",
+    "sidebar_tour__step__4__description": "Функция погружного чата предлагает безопасную, персонализированную среду с помощью ИИ, повышая эффективность и точность.",
+    "sidebar_tour__step__5__title": "Исследуйте и ощутите волшебство MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Новый чат",
+    "sidebar_tour__step__5__feature_2__title": "Настройки",
+    "sidebar_tour__step__5__feature_3__title": "История чата",
+    "sidebar_tour__step__5__feature_4__title": "Снимок экрана с помощью ИИ",
+    "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
+    "sidebar_tour__step__5__feature_6__title": "Использование подсказки"
   }
 }

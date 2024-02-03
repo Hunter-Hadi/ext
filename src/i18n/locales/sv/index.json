@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Fortsätt",
     "sidebar__tabs__search__action_btn__title": "Ny sökning",
     "sidebar__tabs__art__action_btn__title": "Ny konst",
-    "immersive_chat__no_conversation": "Ingen chatt-historik",
     "art__model__dalle3__description": "DALL-E 3, utvecklad av OpenAI, är en revolutionerande text-till-bild-modell som skapar högupplösta bilder från textbeskrivningar och visar en betydande framsteg inom AI-driven bildgenerering.",
     "home_view_content_nav__one_click_prompts_title": "1-klicks-promptar",
     "home_view_content_nav__my_own_prompts__title": "Mina egna promptar",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Tredjeparts AI-leverantörer",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-leverantören är inaktiverad i tillägget för uppgradering. Försök igen senare.",
     "sidebar__chat__advanced__title": "Avancerade chattalternativ",
-    "provider__free_ai__model__special__description": "Free AI ger grundläggande, kostnadsfri tillgång till AI-produktivitetsverktyg, perfekt för lätt eller testanvändning. Det låter dig testa MaxAI:s grundläggande funktioner med en enkel uppgraderingsväg till den fullständiga, avancerade MaxAI-sviten. Vi strävar efter att kontinuerligt förbättra Free AI och minska skillnaden mellan våra gratis- och premiumalternativ för AI."
+    "provider__free_ai__model__special__description": "Free AI ger grundläggande, kostnadsfri tillgång till AI-produktivitetsverktyg, perfekt för lätt eller testanvändning. Det låter dig testa MaxAI:s grundläggande funktioner med en enkel uppgraderingsväg till den fullständiga, avancerade MaxAI-sviten. Vi strävar efter att kontinuerligt förbättra Free AI och minska skillnaden mellan våra gratis- och premiumalternativ för AI.",
+    "immersive_chat__chat_no_conversation__title": "Ingen chatt-historik tillgänglig ännu",
+    "immersive_chat__summary_no_conversation__title": "Ingen sammanfattning-historik tillgänglig ännu",
+    "immersive_chat__search_no_conversation__title": "Ingen sökhistorik tillgänglig ännu",
+    "immersive_chat__art_no_conversation__title": "Ingen konsthistorik tillgänglig ännu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Visa detaljer för prompt",
     "delete_prompt__tooltip": "Radera prompt",
     "edit_prompt__tooltip": "Redigera prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Nästa",
+    "button__back__title": "Tillbaka",
+    "button__finish__title": "Slutför",
+    "text_of": "av",
+    "sidebar_tour__step__1__title": "Välj ditt gränssnittsspråk",
+    "sidebar_tour__step__2__title": "Dyk in i AI",
+    "sidebar_tour__step__2__description_1": "Fråga Al vad som helst",
+    "sidebar_tour__step__2__description_2": "Sidsummering och chatt",
+    "sidebar_tour__step__2__description_3": "Al-drivet sökande",
+    "sidebar_tour__step__2__description_4": "Skapa Al-konst och bilder",
+    "sidebar_tour__step__3__title": "Byt AI-modeller",
+    "sidebar_tour__step__3__description_1": "Byt till att använda olika AI-modeller, inklusive:",
+    "sidebar_tour__step__3__description_2": "och mer kraftfulla AI-modeller.",
+    "sidebar_tour__step__4__title": "Immersiv chatt",
+    "sidebar_tour__step__4__description": "Funktionen för immersiv chatt erbjuder en säker, personlig AI-assisterad miljö som förbättrar effektiviteten och noggrannheten.",
+    "sidebar_tour__step__5__title": "Utforska och upplev magin med MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Ny chatt",
+    "sidebar_tour__step__5__feature_2__title": "Inställningar",
+    "sidebar_tour__step__5__feature_3__title": "Chathistorik",
+    "sidebar_tour__step__5__feature_4__title": "AI-skärmbild",
+    "sidebar_tour__step__5__feature_5__title": "1-klicks-promptar",
+    "sidebar_tour__step__5__feature_6__title": "Använd prompt"
   }
 }

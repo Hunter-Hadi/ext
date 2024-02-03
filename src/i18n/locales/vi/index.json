@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Tiếp tục",
     "sidebar__tabs__search__action_btn__title": "Tìm kiếm mới",
     "sidebar__tabs__art__action_btn__title": "Nghệ thuật mới",
-    "immersive_chat__no_conversation": "Không có lịch sử trò chuyện",
     "art__model__dalle3__description": "DALL-E 3, được phát triển bởi OpenAI, là một mô hình tạo hình ảnh từ văn bản cách mạng, tạo ra các hình ảnh chi tiết cao từ mô tả văn bản, thể hiện sự tiến bộ đáng kể trong việc tạo ra hình ảnh dựa trên AI.",
     "home_view_content_nav__one_click_prompts_title": "Gợi ý 1 nhấp",
     "home_view_content_nav__my_own_prompts__title": "Gợi ý của tôi",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Nhà cung cấp AI bên thứ ba",
     "sidebar__ai_provider__provider_selector__disabled__description": "Nhà cung cấp AI đã bị vô hiệu hóa trong tiện ích mở rộng để nâng cấp. Vui lòng thử lại sau.",
     "sidebar__chat__advanced__title": "Tùy chọn trò chuyện nâng cao",
-    "provider__free_ai__model__special__description": "Free AI cung cấp truy cập cơ bản và miễn phí vào các công cụ năng suất AI, hoàn hảo cho việc sử dụng nhẹ nhàng hoặc thử nghiệm. Nó cho phép bạn kiểm tra các tính năng cơ bản của MaxAI, với một con đường nâng cấp dễ dàng đến bộ công cụ MaxAI toàn diện và tiên tiến. Chúng tôi nhằm mục tiêu cải thiện liên tục Free AI, giảm sự khác biệt giữa các lựa chọn AI miễn phí và cao cấp của chúng tôi."
+    "provider__free_ai__model__special__description": "Free AI cung cấp truy cập cơ bản và miễn phí vào các công cụ năng suất AI, hoàn hảo cho việc sử dụng nhẹ nhàng hoặc thử nghiệm. Nó cho phép bạn kiểm tra các tính năng cơ bản của MaxAI, với một con đường nâng cấp dễ dàng đến bộ công cụ MaxAI toàn diện và tiên tiến. Chúng tôi nhằm mục tiêu cải thiện liên tục Free AI, giảm sự khác biệt giữa các lựa chọn AI miễn phí và cao cấp của chúng tôi.",
+    "immersive_chat__chat_no_conversation__title": "Chưa có lịch sử trò chuyện",
+    "immersive_chat__summary_no_conversation__title": "Chưa có lịch sử tóm tắt",
+    "immersive_chat__search_no_conversation__title": "Chưa có lịch sử tìm kiếm",
+    "immersive_chat__art_no_conversation__title": "Chưa có lịch sử nghệ thuật"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Xem chi tiết gợi ý",
     "delete_prompt__tooltip": "Xóa gợi ý",
     "edit_prompt__tooltip": "Chỉnh sửa gợi ý"
+  },
+  "maxai_tour": {
+    "button__next__title": "Tiếp theo",
+    "button__back__title": "Quay lại",
+    "button__finish__title": "Hoàn thành",
+    "text_of": "của",
+    "sidebar_tour__step__1__title": "Chọn ngôn ngữ giao diện của bạn",
+    "sidebar_tour__step__2__title": "Khám phá AI",
+    "sidebar_tour__step__2__description_1": "Hỏi Al bất cứ điều gì",
+    "sidebar_tour__step__2__description_2": "Tóm tắt trang & chat",
+    "sidebar_tour__step__2__description_3": "Tìm kiếm dựa trên AI",
+    "sidebar_tour__step__2__description_4": "Tạo nghệ thuật và hình ảnh AI",
+    "sidebar_tour__step__3__title": "Thay đổi mô hình AI",
+    "sidebar_tour__step__3__description_1": "Thay đổi để sử dụng các mô hình AI khác nhau bao gồm:",
+    "sidebar_tour__step__3__description_2": "và các mô hình AI mạnh mẽ hơn.",
+    "sidebar_tour__step__4__title": "Chat chuyên sâu",
+    "sidebar_tour__step__4__description": "Tính năng chat chuyên sâu cung cấp môi trường hỗ trợ AI cá nhân hóa, an toàn, nâng cao hiệu suất và độ chính xác.",
+    "sidebar_tour__step__5__title": "Khám phá và trải nghiệm phép màu của MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Chat mới",
+    "sidebar_tour__step__5__feature_2__title": "Cài đặt",
+    "sidebar_tour__step__5__feature_3__title": "Lịch sử chat",
+    "sidebar_tour__step__5__feature_4__title": "Ảnh chụp màn hình AI",
+    "sidebar_tour__step__5__feature_5__title": "Gợi ý 1-click",
+    "sidebar_tour__step__5__feature_6__title": "Sử dụng gợi ý"
   }
 }

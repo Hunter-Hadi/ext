@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Continua",
     "sidebar__tabs__search__action_btn__title": "Nuova ricerca",
     "sidebar__tabs__art__action_btn__title": "Nuova arte",
-    "immersive_chat__no_conversation": "Nessuna cronologia della chat",
     "art__model__dalle3__description": "DALL-E 3, sviluppato da OpenAI, è un modello rivoluzionario di generazione di immagini da testo che crea immagini altamente dettagliate da descrizioni testuali, mostrando un significativo avanzamento nella generazione di immagini basata sull'IA.",
     "home_view_content_nav__one_click_prompts_title": "Promemoria con 1 clic",
     "home_view_content_nav__my_own_prompts__title": "I miei promemoria",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Fornitori di AI di terze parti",
     "sidebar__ai_provider__provider_selector__disabled__description": "Il fornitore di AI è disabilitato nell'estensione per l'aggiornamento. Riprova più tardi.",
     "sidebar__chat__advanced__title": "Opzioni avanzate della chat",
-    "provider__free_ai__model__special__description": "Free AI fornisce accesso di base e gratuito agli strumenti di produttività AI, perfetti per un uso leggero o di prova. Ti consente di testare le funzionalità di base di MaxAI, con un percorso di aggiornamento semplice alla suite completa e avanzata di MaxAI. Il nostro obiettivo è migliorare continuamente Free AI, riducendo la differenza tra le nostre opzioni AI gratuite e premium."
+    "provider__free_ai__model__special__description": "Free AI fornisce accesso di base e gratuito agli strumenti di produttività AI, perfetti per un uso leggero o di prova. Ti consente di testare le funzionalità di base di MaxAI, con un percorso di aggiornamento semplice alla suite completa e avanzata di MaxAI. Il nostro obiettivo è migliorare continuamente Free AI, riducendo la differenza tra le nostre opzioni AI gratuite e premium.",
+    "immersive_chat__chat_no_conversation__title": "Nessuna cronologia chat disponibile al momento",
+    "immersive_chat__summary_no_conversation__title": "Nessuna cronologia riepilogativa disponibile al momento",
+    "immersive_chat__search_no_conversation__title": "Nessuna cronologia di ricerca disponibile al momento",
+    "immersive_chat__art_no_conversation__title": "Nessuna cronologia artistica disponibile al momento"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Visualizza dettagli prompt",
     "delete_prompt__tooltip": "Elimina prompt",
     "edit_prompt__tooltip": "Modifica prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Avanti",
+    "button__back__title": "Indietro",
+    "button__finish__title": "Fine",
+    "text_of": "di",
+    "sidebar_tour__step__1__title": "Scegli la lingua dell'interfaccia",
+    "sidebar_tour__step__2__title": "Immergiti nell'IA",
+    "sidebar_tour__step__2__description_1": "Chiedi ad Al qualsiasi cosa",
+    "sidebar_tour__step__2__description_2": "Riepilogo della pagina e chat",
+    "sidebar_tour__step__2__description_3": "Ricerca alimentata da Al",
+    "sidebar_tour__step__2__description_4": "Crea arte e immagini con Al",
+    "sidebar_tour__step__3__title": "Cambia modelli di IA",
+    "sidebar_tour__step__3__description_1": "Cambia per utilizzare diversi modelli di IA, inclusi:",
+    "sidebar_tour__step__3__description_2": "e modelli di IA più potenti.",
+    "sidebar_tour__step__4__title": "Chat coinvolgente",
+    "sidebar_tour__step__4__description": "La funzione di chat coinvolgente offre un ambiente assistito da IA sicuro e personalizzato, migliorando l'efficienza e l'accuratezza.",
+    "sidebar_tour__step__5__title": "Esplora ed esperienza la magia di MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nuova chat",
+    "sidebar_tour__step__5__feature_2__title": "Impostazioni",
+    "sidebar_tour__step__5__feature_3__title": "Cronologia chat",
+    "sidebar_tour__step__5__feature_4__title": "Screenshot di IA",
+    "sidebar_tour__step__5__feature_5__title": "Promemoria in un clic",
+    "sidebar_tour__step__5__feature_6__title": "Utilizza il prompt"
   }
 }

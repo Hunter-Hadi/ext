@@ -114,6 +114,13 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
             }}
           />
         )}
+        slotProps={{
+          popper: {
+            sx: {
+              zIndex: 2147483648,
+            },
+          },
+        }}
       />
     </PermissionWrapper>
   )

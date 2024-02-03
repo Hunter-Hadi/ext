@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Folytatás",
     "sidebar__tabs__search__action_btn__title": "Új keresés",
     "sidebar__tabs__art__action_btn__title": "Új művészeti alkotás",
-    "immersive_chat__no_conversation": "Nincs chat előzmény",
     "art__model__dalle3__description": "Az OpenAI által fejlesztett DALL-E 3 forradalmi szöveg-kép modell, amely részletes képeket hoz létre szöveges leírásokból, jelentős előrelépést mutatva az AI-alapú képgenerálás terén.",
     "home_view_content_nav__one_click_prompts_title": "1 kattintásos promptok",
     "home_view_content_nav__my_own_prompts__title": "Saját promptok",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Harmadik féltől származó AI-szolgáltatók",
     "sidebar__ai_provider__provider_selector__disabled__description": "Az AI-szolgáltató letiltva a bővítményben történő frissítéshez. Kérjük, próbálja meg később.",
     "sidebar__chat__advanced__title": "Haladó chat beállítások",
-    "provider__free_ai__model__special__description": "A Free AI alapvető, költségmentes hozzáférést biztosít az AI termelékenységi eszközökhöz, tökéletes a könnyű vagy próbálkozó használathoz. Lehetővé teszi a MaxAI alapvető funkcióinak tesztelését, egyszerű frissítési lehetőséggel a teljes, fejlett MaxAI csomaghoz. Célunk, hogy folyamatosan javítsuk a Free AI-t, csökkentve a különbséget a szabad és prémium AI lehetőségeink között."
+    "provider__free_ai__model__special__description": "A Free AI alapvető, költségmentes hozzáférést biztosít az AI termelékenységi eszközökhöz, tökéletes a könnyű vagy próbálkozó használathoz. Lehetővé teszi a MaxAI alapvető funkcióinak tesztelését, egyszerű frissítési lehetőséggel a teljes, fejlett MaxAI csomaghoz. Célunk, hogy folyamatosan javítsuk a Free AI-t, csökkentve a különbséget a szabad és prémium AI lehetőségeink között.",
+    "immersive_chat__chat_no_conversation__title": "Még nincs elérhető csevegési előzmény",
+    "immersive_chat__summary_no_conversation__title": "Még nincs elérhető összefoglaló előzmény",
+    "immersive_chat__search_no_conversation__title": "Még nincs elérhető keresési előzmény",
+    "immersive_chat__art_no_conversation__title": "Még nincs elérhető művészeti előzmény"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Feladat részleteinek megtekintése",
     "delete_prompt__tooltip": "Feladat törlése",
     "edit_prompt__tooltip": "Feladat szerkesztése"
+  },
+  "maxai_tour": {
+    "button__next__title": "Következő",
+    "button__back__title": "Vissza",
+    "button__finish__title": "Befejezés",
+    "text_of": "a",
+    "sidebar_tour__step__1__title": "Válassza ki a felhasználói felület nyelvét",
+    "sidebar_tour__step__2__title": "Merüljön el az AI-ban",
+    "sidebar_tour__step__2__description_1": "Kérdezze meg Al-t bármit",
+    "sidebar_tour__step__2__description_2": "Oldal összefoglaló és chat",
+    "sidebar_tour__step__2__description_3": "Al-vezérelt keresés",
+    "sidebar_tour__step__2__description_4": "Al művészet és képek létrehozása",
+    "sidebar_tour__step__3__title": "AI modellek változtatása",
+    "sidebar_tour__step__3__description_1": "Váltson más AI modellekre, beleértve:",
+    "sidebar_tour__step__3__description_2": "és erősebb AI modellekre.",
+    "sidebar_tour__step__4__title": "Mélyreható chat",
+    "sidebar_tour__step__4__description": "A mélyreható chat funkció biztonságos, személyre szabott AI-asszisztált környezetet kínál, növelve a hatékonyságot és pontosságot.",
+    "sidebar_tour__step__5__title": "Fedezze fel és tapasztalja meg a MaxAI varázsát",
+    "sidebar_tour__step__5__feature_1__title": "Új chat",
+    "sidebar_tour__step__5__feature_2__title": "Beállítások",
+    "sidebar_tour__step__5__feature_3__title": "Chat előzmények",
+    "sidebar_tour__step__5__feature_4__title": "AI képernyőkép",
+    "sidebar_tour__step__5__feature_5__title": "1 kattintásos promptok",
+    "sidebar_tour__step__5__feature_6__title": "Használjon promptot"
   }
 }

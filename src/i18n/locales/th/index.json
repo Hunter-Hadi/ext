@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "ดำเนินการต่อ",
     "sidebar__tabs__search__action_btn__title": "ค้นหาใหม่",
     "sidebar__tabs__art__action_btn__title": "ศิลปะใหม่",
-    "immersive_chat__no_conversation": "ไม่มีประวัติการสนทนา",
     "art__model__dalle3__description": "DALL-E 3 ที่พัฒนาโดย OpenAI เป็นโมเดลการสร้างภาพจากข้อความที่เป็นนวัตกรรมที่สร้างภาพที่ละเอียดสูงจากคำอธิบายทางข้อความ แสดงให้เห็นถึงความก้าวหน้าที่สำคัญในการสร้างภาพด้วย AI",
     "home_view_content_nav__one_click_prompts_title": "1-คลิก prompts",
     "home_view_content_nav__my_own_prompts__title": "Prompts ของฉัน",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "ผู้ให้บริการ AI จากบุคคลที่สาม",
     "sidebar__ai_provider__provider_selector__disabled__description": "ผู้ให้บริการ AI ถูกปิดใช้งานในส่วนขยายเพื่ออัปเกรด โปรดลองอีกครั้งภายหลัง",
     "sidebar__chat__advanced__title": "ตัวเลือกแชทขั้นสูง",
-    "provider__free_ai__model__special__description": "Free AI ให้การเข้าถึงเครื่องมือผลิตภัณฑ์ AI พื้นฐานโดยไม่มีค่าใช้จ่าย เหมาะสำหรับการใช้งานที่เบาหวานหรือทดลอง มันช่วยให้คุณทดสอบคุณสมบัติพื้นฐานของ MaxAI ได้อย่างง่ายดาย พร้อมทางเลือกในการอัพเกรดไปสู่ชุดคุณสมบัติขั้นสูงแบบเต็มรูปแบบของ MaxAI เรามุ่งหวังที่จะปรับปรุง Free AI อย่างต่อเนื่องเพื่อลดความแตกต่างระหว่างตัวเลือก AI แบบฟรีและแบบพรีเมียมของเรา"
+    "provider__free_ai__model__special__description": "Free AI ให้การเข้าถึงเครื่องมือผลิตภัณฑ์ AI พื้นฐานโดยไม่มีค่าใช้จ่าย เหมาะสำหรับการใช้งานที่เบาหวานหรือทดลอง มันช่วยให้คุณทดสอบคุณสมบัติพื้นฐานของ MaxAI ได้อย่างง่ายดาย พร้อมทางเลือกในการอัพเกรดไปสู่ชุดคุณสมบัติขั้นสูงแบบเต็มรูปแบบของ MaxAI เรามุ่งหวังที่จะปรับปรุง Free AI อย่างต่อเนื่องเพื่อลดความแตกต่างระหว่างตัวเลือก AI แบบฟรีและแบบพรีเมียมของเรา",
+    "immersive_chat__chat_no_conversation__title": "ยังไม่มีประวัติการแชท",
+    "immersive_chat__summary_no_conversation__title": "ยังไม่มีประวัติสรุป",
+    "immersive_chat__search_no_conversation__title": "ยังไม่มีประวัติการค้นหา",
+    "immersive_chat__art_no_conversation__title": "ยังไม่มีประวัติศิลปะ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "ดูรายละเอียดของคำสั่ง",
     "delete_prompt__tooltip": "ลบคำสั่ง",
     "edit_prompt__tooltip": "แก้ไขคำสั่ง"
+  },
+  "maxai_tour": {
+    "button__next__title": "ถัดไป",
+    "button__back__title": "กลับ",
+    "button__finish__title": "เสร็จสิ้น",
+    "text_of": "ของ",
+    "sidebar_tour__step__1__title": "เลือกภาษาของอินเตอร์เฟซของคุณ",
+    "sidebar_tour__step__2__title": "ลงจาก AI",
+    "sidebar_tour__step__2__description_1": "ถาม Al อะไรก็ได้",
+    "sidebar_tour__step__2__description_2": "สรุปหน้า & แชท",
+    "sidebar_tour__step__2__description_3": "การค้นหาที่ใช้ AI",
+    "sidebar_tour__step__2__description_4": "สร้าง Al art & รูปภาพ",
+    "sidebar_tour__step__3__title": "เปลี่ยนโมเดล AI",
+    "sidebar_tour__step__3__description_1": "เปลี่ยนเพื่อใช้โมเดล AI ที่แตกต่างกันได้รวมถึง:",
+    "sidebar_tour__step__3__description_2": "และโมเดล AI ที่มีกำลังการทำงานมากขึ้น",
+    "sidebar_tour__step__4__title": "แชทที่มีความตื่นตกใจ",
+    "sidebar_tour__step__4__description": "คุณสมบัติแชทที่มีความตื่นตกใจให้บริการในสภาพแวดล้อมที่ปลอดภัยและได้รับการช่วยเหลือจาก AI ที่กำหนดเองเพื่อเพิ่มประสิทธิภาพและความแม่นยำ",
+    "sidebar_tour__step__5__title": "สำรวจและสัมผัสความเห็นของ MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "แชทใหม่",
+    "sidebar_tour__step__5__feature_2__title": "การตั้งค่า",
+    "sidebar_tour__step__5__feature_3__title": "ประวัติแชท",
+    "sidebar_tour__step__5__feature_4__title": "ภาพหน้าจอ AI",
+    "sidebar_tour__step__5__feature_5__title": "คำใบ้ด้วยคลิกเดียว",
+    "sidebar_tour__step__5__feature_6__title": "ใช้คำใบ้"
   }
 }

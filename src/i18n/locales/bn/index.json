@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "চালিয়ে যান",
     "sidebar__tabs__search__action_btn__title": "নতুন অনুসন্ধান",
     "sidebar__tabs__art__action_btn__title": "নতুন আর্ট",
-    "immersive_chat__no_conversation": "কোন চ্যাট ইতিহাস নেই",
     "art__model__dalle3__description": "DALL-E 3, OpenAI দ্বারা উন্নত হয়েছে, এটি পাঠ্য বিবরণ থেকে অত্যন্ত বিস্তৃত চিত্র তৈরি করে যা AI-চালিত চিত্র উৎপাদনে একটি গুরুত্বপূর্ণ উন্নতি প্রদর্শন করে।",
     "home_view_content_nav__one_click_prompts_title": "1-ক্লিক প্রম্পট",
     "home_view_content_nav__my_own_prompts__title": "আমার নিজস্ব প্রম্পট",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "থার্ড-পার্টি AI প্রদানকারী",
     "sidebar__ai_provider__provider_selector__disabled__description": "আপগ্রেডের জন্য এক্সটেনশনে এইআই প্রদানকারী অক্ষম। দয়া করে পরে চেষ্টা করুন।",
     "sidebar__chat__advanced__title": "উন্নত চ্যাট বিকল্প",
-    "provider__free_ai__model__special__description": "ফ্রি এআই বেসিক প্রদান করে, এটি আই প্রোডাক্টিভিটি টুলের মৌলিক অ্যাক্সেস সরবরাহ করে যা হালকা বা ট্রায়াল ব্যবহারের জন্য উপযুক্ত। এটি আপনাকে ম্যাক্সএআই এর মৌলিক বৈশিষ্ট্যগুলি পরীক্ষা করতে দেয়, একটি সহজ আপগ্রেড পথ সহ পূর্ণ এডভান্সড ম্যাক্সএআই সুইটে। আমরা ফ্রি এআইকে নিরান্তরভাবে উন্নত করতে চেষ্টা করছি, আমাদের ফ্রি এবং প্রিমিয়াম এআই বিকল্পগুলির মধ্যে পার্থক্য হ্রাস করতে।"
+    "provider__free_ai__model__special__description": "ফ্রি এআই বেসিক প্রদান করে, এটি আই প্রোডাক্টিভিটি টুলের মৌলিক অ্যাক্সেস সরবরাহ করে যা হালকা বা ট্রায়াল ব্যবহারের জন্য উপযুক্ত। এটি আপনাকে ম্যাক্সএআই এর মৌলিক বৈশিষ্ট্যগুলি পরীক্ষা করতে দেয়, একটি সহজ আপগ্রেড পথ সহ পূর্ণ এডভান্সড ম্যাক্সএআই সুইটে। আমরা ফ্রি এআইকে নিরান্তরভাবে উন্নত করতে চেষ্টা করছি, আমাদের ফ্রি এবং প্রিমিয়াম এআই বিকল্পগুলির মধ্যে পার্থক্য হ্রাস করতে।",
+    "immersive_chat__chat_no_conversation__title": "এখনও কোনও চ্যাট ইতিহাস উপলব্ধ নেই",
+    "immersive_chat__summary_no_conversation__title": "এখনও কোনও সংক্ষিপ্ত ইতিহাস উপলব্ধ নেই",
+    "immersive_chat__search_no_conversation__title": "এখনও কোনও অনুসন্ধান ইতিহাস উপলব্ধ নেই",
+    "immersive_chat__art_no_conversation__title": "এখনও কোনও শিল্প ইতিহাস উপলব্ধ নেই"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "প্রম্পটের বিশদ দেখুন",
     "delete_prompt__tooltip": "প্রম্পট মুছুন",
     "edit_prompt__tooltip": "প্রম্পট সম্পাদনা করুন"
+  },
+  "maxai_tour": {
+    "button__next__title": "পরবর্তী",
+    "button__back__title": "পিছনে",
+    "button__finish__title": "শেষ",
+    "text_of": "এর",
+    "sidebar_tour__step__1__title": "আপনার ইন্টারফেস ভাষা নির্বাচন করুন",
+    "sidebar_tour__step__2__title": "এইচআইতে ডাইভ",
+    "sidebar_tour__step__2__description_1": "যেকোনো জিনিস জিজ্ঞাসা করুন",
+    "sidebar_tour__step__2__description_2": "পৃষ্ঠা সংক্ষেপ এবং চ্যাট",
+    "sidebar_tour__step__2__description_3": "এল-পাওয়ারড অনুসন্ধান",
+    "sidebar_tour__step__2__description_4": "এল আর্ট এবং চিত্র তৈরি করুন",
+    "sidebar_tour__step__3__title": "এইচআই মডেল পরিবর্তন করুন",
+    "sidebar_tour__step__3__description_1": "বিভিন্ন এইচআই মডেল ব্যবহার করতে পরিবর্তন করুন, যেমন:",
+    "sidebar_tour__step__3__description_2": "এবং আরও শক্তিশালী এইচআই মডেলগুলি।",
+    "sidebar_tour__step__4__title": "সম্পূর্ণাঙ্গ চ্যাট",
+    "sidebar_tour__step__4__description": "সম্পূর্ণাঙ্গ চ্যাট বৈশিষ্ট্য নির্দেশ করে নিরাপদ, ব্যক্তিগত এই-সহায়তা প্রদান করে এবং দক্ষতা এবং নির্ভুলতা বৃদ্ধি করে।",
+    "sidebar_tour__step__5__title": "ম্যাক্সএআই এর জাদু অনুভব করুন",
+    "sidebar_tour__step__5__feature_1__title": "নতুন চ্যাট",
+    "sidebar_tour__step__5__feature_2__title": "সেটিংস",
+    "sidebar_tour__step__5__feature_3__title": "চ্যাট ইতিহাস",
+    "sidebar_tour__step__5__feature_4__title": "এইচআই স্ক্রিনশট",
+    "sidebar_tour__step__5__feature_5__title": "1-ক্লিক প্রম্পট",
+    "sidebar_tour__step__5__feature_6__title": "প্রম্পট ব্যবহার করুন"
   }
 }

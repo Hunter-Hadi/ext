@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Magpatuloy",
     "sidebar__tabs__search__action_btn__title": "Bagong paghahanap",
     "sidebar__tabs__art__action_btn__title": "Bagong Sining",
-    "immersive_chat__no_conversation": "Walang kasaysayan ng chat",
     "art__model__dalle3__description": "Ang DALL-E 3, na binuo ng OpenAI, ay isang rebolusyonaryong text-to-image model na lumilikha ng mga detalyadong imahe mula sa mga deskripsyon ng teksto, nagpapakita ng malaking pag-unlad sa AI-driven image generation.",
     "home_view_content_nav__one_click_prompts_title": "1-click prompts",
     "home_view_content_nav__my_own_prompts__title": "Aking sariling mga prompts",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Mga 3rd-party AI provider",
     "sidebar__ai_provider__provider_selector__disabled__description": "Hindi pinagana ang AI provider sa extension para sa upgrade. Subukan muli mamaya.",
     "sidebar__chat__advanced__title": "Advanced na mga opsyon sa chat",
-    "provider__free_ai__model__special__description": "Ang Libreng AI ay nagbibigay ng mga pangunahing tool sa produktibidad ng AI nang walang bayad, na perpekto para sa magaan o pagsusubok na paggamit. Ito ay nagbibigay-daan sa iyo na subukan ang mga pangunahing tampok ng MaxAI, na may madaling daan tungo sa buong at advanced na suite ng MaxAI. Layunin naming patuloy na mapabuti ang Libreng AI, na nagbabawas ng pagkakaiba sa pagitan ng aming libre at premium na mga pagpipilian ng AI."
+    "provider__free_ai__model__special__description": "Ang Libreng AI ay nagbibigay ng mga pangunahing tool sa produktibidad ng AI nang walang bayad, na perpekto para sa magaan o pagsusubok na paggamit. Ito ay nagbibigay-daan sa iyo na subukan ang mga pangunahing tampok ng MaxAI, na may madaling daan tungo sa buong at advanced na suite ng MaxAI. Layunin naming patuloy na mapabuti ang Libreng AI, na nagbabawas ng pagkakaiba sa pagitan ng aming libre at premium na mga pagpipilian ng AI.",
+    "immersive_chat__chat_no_conversation__title": "Walang kasaysayan ng chat na magagamit pa",
+    "immersive_chat__summary_no_conversation__title": "Walang kasaysayan ng buod na magagamit pa",
+    "immersive_chat__search_no_conversation__title": "Walang kasaysayan ng paghahanap na magagamit pa",
+    "immersive_chat__art_no_conversation__title": "Walang kasaysayan ng sining na magagamit pa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Tingnan ang mga Detalye ng Prompt",
     "delete_prompt__tooltip": "Burahin ang Prompt",
     "edit_prompt__tooltip": "I-edit ang Prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Susunod",
+    "button__back__title": "Bumalik",
+    "button__finish__title": "Tapos na",
+    "text_of": "ng",
+    "sidebar_tour__step__1__title": "Piliin ang wika ng iyong interface",
+    "sidebar_tour__step__2__title": "Lumubog sa AI",
+    "sidebar_tour__step__2__description_1": "Tanungin si Al tungkol sa anuman",
+    "sidebar_tour__step__2__description_2": "Buod ng pahina at chat",
+    "sidebar_tour__step__2__description_3": "Al-powered paghahanap",
+    "sidebar_tour__step__2__description_4": "Lumikha ng Al art at mga imahe",
+    "sidebar_tour__step__3__title": "Baguhin ang mga AI model",
+    "sidebar_tour__step__3__description_1": "Baguhin upang gamitin ang iba't ibang AI model kabilang ang:",
+    "sidebar_tour__step__3__description_2": "at mas malalakas na AI model.",
+    "sidebar_tour__step__4__title": "Immersive chat",
+    "sidebar_tour__step__4__description": "Ang Immersive chat feature ay nag-aalok ng ligtas, personalisadong AI-assisted environment, na nagpapabuti sa kahusayan at katumpakan.",
+    "sidebar_tour__step__5__title": "Tuklasin at maranasan ang mahika ng MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Bagong chat",
+    "sidebar_tour__step__5__feature_2__title": "Mga setting",
+    "sidebar_tour__step__5__feature_3__title": "Kasaysayan ng chat",
+    "sidebar_tour__step__5__feature_4__title": "AI screenshot",
+    "sidebar_tour__step__5__feature_5__title": "1-click prompts",
+    "sidebar_tour__step__5__feature_6__title": "Gamitin ang prompt"
   }
 }

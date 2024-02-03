@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Continuar",
     "sidebar__tabs__search__action_btn__title": "Nueva búsqueda",
     "sidebar__tabs__art__action_btn__title": "Nuevo arte",
-    "immersive_chat__no_conversation": "Sin historial de chat",
     "art__model__dalle3__description": "DALL-E 3, desarrollado por OpenAI, es un modelo revolucionario de texto a imagen que crea imágenes altamente detalladas a partir de descripciones textuales, mostrando un avance significativo en la generación de imágenes impulsada por IA.",
     "home_view_content_nav__one_click_prompts_title": "Prompts de 1 clic",
     "home_view_content_nav__my_own_prompts__title": "Mis propios prompts",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Proveedores de IA de terceros",
     "sidebar__ai_provider__provider_selector__disabled__description": "Proveedor de IA desactivado en la extensión para actualización. Por favor, inténtalo más tarde.",
     "sidebar__chat__advanced__title": "Opciones avanzadas de chat",
-    "provider__free_ai__model__special__description": "Free AI ofrece acceso básico y sin costo a herramientas de productividad de IA, perfectas para uso ligero o de prueba. Le permite probar las funciones básicas de MaxAI, con una ruta de actualización sencilla a la suite completa y avanzada de MaxAI. Nuestro objetivo es mejorar continuamente Free AI, reduciendo la diferencia entre nuestras opciones de IA gratuitas y premium."
+    "provider__free_ai__model__special__description": "Free AI ofrece acceso básico y sin costo a herramientas de productividad de IA, perfectas para uso ligero o de prueba. Le permite probar las funciones básicas de MaxAI, con una ruta de actualización sencilla a la suite completa y avanzada de MaxAI. Nuestro objetivo es mejorar continuamente Free AI, reduciendo la diferencia entre nuestras opciones de IA gratuitas y premium.",
+    "immersive_chat__chat_no_conversation__title": "Aún no hay historial de chat disponible",
+    "immersive_chat__summary_no_conversation__title": "Aún no hay historial de resumen disponible",
+    "immersive_chat__search_no_conversation__title": "Aún no hay historial de búsqueda disponible",
+    "immersive_chat__art_no_conversation__title": "Aún no hay historial de arte disponible"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Ver detalles de la sugerencia",
     "delete_prompt__tooltip": "Eliminar sugerencia",
     "edit_prompt__tooltip": "Editar sugerencia"
+  },
+  "maxai_tour": {
+    "button__next__title": "Siguiente",
+    "button__back__title": "Atrás",
+    "button__finish__title": "Finalizar",
+    "text_of": "de",
+    "sidebar_tour__step__1__title": "Elige tu idioma de interfaz",
+    "sidebar_tour__step__2__title": "Sumérgete en la IA",
+    "sidebar_tour__step__2__description_1": "Pregunta cualquier cosa a Al",
+    "sidebar_tour__step__2__description_2": "Resumen de página y chat",
+    "sidebar_tour__step__2__description_3": "Búsqueda impulsada por Al",
+    "sidebar_tour__step__2__description_4": "Crea arte e imágenes con Al",
+    "sidebar_tour__step__3__title": "Cambiar modelos de IA",
+    "sidebar_tour__step__3__description_1": "Cambia para usar diferentes modelos de IA, incluyendo:",
+    "sidebar_tour__step__3__description_2": "y más modelos de IA potentes.",
+    "sidebar_tour__step__4__title": "Chat inmersivo",
+    "sidebar_tour__step__4__description": "La función de chat inmersivo ofrece un entorno seguro y personalizado asistido por IA, mejorando la eficiencia y precisión.",
+    "sidebar_tour__step__5__title": "Explora y experimenta la magia de MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Nuevo chat",
+    "sidebar_tour__step__5__feature_2__title": "Configuración",
+    "sidebar_tour__step__5__feature_3__title": "Historial de chat",
+    "sidebar_tour__step__5__feature_4__title": "Captura de pantalla de IA",
+    "sidebar_tour__step__5__feature_5__title": "Prompts de 1 clic",
+    "sidebar_tour__step__5__feature_6__title": "Usar prompt"
   }
 }

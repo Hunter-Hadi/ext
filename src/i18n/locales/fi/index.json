@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Jatka",
     "sidebar__tabs__search__action_btn__title": "Uusi haku",
     "sidebar__tabs__art__action_btn__title": "Uusi taide",
-    "immersive_chat__no_conversation": "Ei keskusteluhistoriaa",
     "art__model__dalle3__description": "DALL-E 3, jonka on kehittänyt OpenAI, on vallankumouksellinen tekstistä kuvaan -malli, joka luo erittäin yksityiskohtaisia kuvia tekstuaalisista kuvauksista, esitellen merkittävää edistystä AI-ohjatun kuvanluonnin alalla.",
     "home_view_content_nav__one_click_prompts_title": "1-klikkaus-aloitukset",
     "home_view_content_nav__my_own_prompts__title": "Omat aloitukset",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Kolmannen osapuolen AI-palveluntarjoajat",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI-palveluntarjoaja on poistettu käytöstä laajennuksen päivityksen vuoksi. Yritä myöhemmin uudelleen.",
     "sidebar__chat__advanced__title": "Edistyneet keskusteluasetukset",
-    "provider__free_ai__model__special__description": "Free AI tarjoaa perusominaisuudet ilmaiseksi käytettäväksi. Se on täydellinen kevyt- tai kokeilukäyttöön. Voit testata MaxAI:n perustoimintoja ja päivittää helposti täyteen, edistyneeseen MaxAI-pakettiin. Pyrimme jatkuvasti parantamaan Free AI:ta ja vähentämään eroa ilmaisen ja maksullisen AI-vaihtoehdon välillä."
+    "provider__free_ai__model__special__description": "Free AI tarjoaa perusominaisuudet ilmaiseksi käytettäväksi. Se on täydellinen kevyt- tai kokeilukäyttöön. Voit testata MaxAI:n perustoimintoja ja päivittää helposti täyteen, edistyneeseen MaxAI-pakettiin. Pyrimme jatkuvasti parantamaan Free AI:ta ja vähentämään eroa ilmaisen ja maksullisen AI-vaihtoehdon välillä.",
+    "immersive_chat__chat_no_conversation__title": "Ei vielä saatavilla olevaa keskusteluhistoriaa",
+    "immersive_chat__summary_no_conversation__title": "Ei vielä saatavilla olevaa yhteenvedon historiaa",
+    "immersive_chat__search_no_conversation__title": "Ei vielä saatavilla olevaa hakuhistoriaa",
+    "immersive_chat__art_no_conversation__title": "Ei vielä saatavilla olevaa taidehistoriaa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Näytä kysymyksen tiedot",
     "delete_prompt__tooltip": "Poista kysymys",
     "edit_prompt__tooltip": "Muokkaa kysymystä"
+  },
+  "maxai_tour": {
+    "button__next__title": "Seuraava",
+    "button__back__title": "Takaisin",
+    "button__finish__title": "Valmis",
+    "text_of": "of",
+    "sidebar_tour__step__1__title": "Valitse käyttöliittymän kieli",
+    "sidebar_tour__step__2__title": "Sukella tekoälyyn",
+    "sidebar_tour__step__2__description_1": "Kysy Alilta mitä tahansa",
+    "sidebar_tour__step__2__description_2": "Sivun yhteenveto ja keskustelu",
+    "sidebar_tour__step__2__description_3": "Al-avusteinen haku",
+    "sidebar_tour__step__2__description_4": "Luo Al-taidetta ja kuvia",
+    "sidebar_tour__step__3__title": "Vaihda tekoälymalleja",
+    "sidebar_tour__step__3__description_1": "Vaihda käytettäviä tekoälymalleja, mukaan lukien:",
+    "sidebar_tour__step__3__description_2": "ja tehokkaampia tekoälymalleja.",
+    "sidebar_tour__step__4__title": "Immersiivinen keskustelu",
+    "sidebar_tour__step__4__description": "Immersiivinen keskustelutoiminto tarjoaa turvallisen ja personoidun tekoälyavusteisen ympäristön, joka parantaa tehokkuutta ja tarkkuutta.",
+    "sidebar_tour__step__5__title": "Tutustu ja koe MaxAI:n taika",
+    "sidebar_tour__step__5__feature_1__title": "Uusi keskustelu",
+    "sidebar_tour__step__5__feature_2__title": "Asetukset",
+    "sidebar_tour__step__5__feature_3__title": "Keskusteluhistoria",
+    "sidebar_tour__step__5__feature_4__title": "Tekoälynäyttökuva",
+    "sidebar_tour__step__5__feature_5__title": "1-klikkausvihjeet",
+    "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä"
   }
 }

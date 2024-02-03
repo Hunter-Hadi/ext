@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "המשך",
     "sidebar__tabs__search__action_btn__title": "חיפוש חדש",
     "sidebar__tabs__art__action_btn__title": "אמנות חדשה",
-    "immersive_chat__no_conversation": "אין היסטוריית צ'אט",
     "art__model__dalle3__description": "DALL-E 3, שפותח על ידי OpenAI, הוא דגם טקסט-לתמונה מהפכני היוצר תמונות מפורטות ביותר מתיאורים טקסטואליים, המציג התקדמות משמעותית ביצירת תמונות באמצעות AI.",
     "home_view_content_nav__one_click_prompts_title": "הפרומטים של לחיצה אחת",
     "home_view_content_nav__my_own_prompts__title": "הפרומטים שלי",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "ספקי AI מצד שלישי",
     "sidebar__ai_provider__provider_selector__disabled__description": "ספק AI מנוטרל בתוסף לשדרוג. יש לנסות שוב מאוחר יותר.",
     "sidebar__chat__advanced__title": "אפשרויות צ'אט מתקדמות",
-    "provider__free_ai__model__special__description": "Free AI מספק גישה בסיסית וחינמית לכלי הפועלות של AI, מושלמת לשימוש קל או לניסיון. היא מאפשרת לך לבדוק את התכונות הבסיסיות של MaxAI, עם אפשרות שדרוג קלה לחבילה המלאה והמתקדמת של MaxAI. אנחנו שואפים לשפר את Free AI באופן מתמיד, ולהפחית את ההבדל בין האפשרויות החינמיות והפרימיום שלנו בתחום הAI."
+    "provider__free_ai__model__special__description": "Free AI מספק גישה בסיסית וחינמית לכלי הפועלות של AI, מושלמת לשימוש קל או לניסיון. היא מאפשרת לך לבדוק את התכונות הבסיסיות של MaxAI, עם אפשרות שדרוג קלה לחבילה המלאה והמתקדמת של MaxAI. אנחנו שואפים לשפר את Free AI באופן מתמיד, ולהפחית את ההבדל בין האפשרויות החינמיות והפרימיום שלנו בתחום הAI.",
+    "immersive_chat__chat_no_conversation__title": "אין עדיין היסטוריית צ'אט זמינה",
+    "immersive_chat__summary_no_conversation__title": "אין עדיין היסטוריית סיכום זמינה",
+    "immersive_chat__search_no_conversation__title": "אין עדיין היסטוריית חיפוש זמינה",
+    "immersive_chat__art_no_conversation__title": "אין עדיין היסטוריית אמנות זמינה"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "צפה בפרטי התרגיל",
     "delete_prompt__tooltip": "מחק תרגיל",
     "edit_prompt__tooltip": "ערוך תרגיל"
+  },
+  "maxai_tour": {
+    "button__next__title": "הבא",
+    "button__back__title": "חזור",
+    "button__finish__title": "סיום",
+    "text_of": "של",
+    "sidebar_tour__step__1__title": "בחר את שפת הממשק שלך",
+    "sidebar_tour__step__2__title": "עזוב לתוך AI",
+    "sidebar_tour__step__2__description_1": "שאל את אל כל דבר",
+    "sidebar_tour__step__2__description_2": "סיכום עמוד וצ'אט",
+    "sidebar_tour__step__2__description_3": "חיפוש מופעל על ידי AI",
+    "sidebar_tour__step__2__description_4": "צור אמנות ותמונות AI",
+    "sidebar_tour__step__3__title": "שנה מודלי AI",
+    "sidebar_tour__step__3__description_1": "שנה להשתמש במודלי AI שונים כולל:",
+    "sidebar_tour__step__3__description_2": "ומודלי AI עוצמתיים יותר.",
+    "sidebar_tour__step__4__title": "צ'אט מוקף",
+    "sidebar_tour__step__4__description": "התכונה של צ'אט מוקף מספקת סביבת AI אישית ומאובטחת, המשפרת יעילות ודיוק.",
+    "sidebar_tour__step__5__title": "חקור וחווה את קסם MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "צ'אט חדש",
+    "sidebar_tour__step__5__feature_2__title": "הגדרות",
+    "sidebar_tour__step__5__feature_3__title": "היסטוריית צ'אט",
+    "sidebar_tour__step__5__feature_4__title": "צילום מסך AI",
+    "sidebar_tour__step__5__feature_5__title": "פרומטים בלחיצה אחת",
+    "sidebar_tour__step__5__feature_6__title": "השתמש בפרומט"
   }
 }

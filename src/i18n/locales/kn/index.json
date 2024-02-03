@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "ಮುಂದುವರಿಸಿ",
     "sidebar__tabs__search__action_btn__title": "ಹೊಸ ಹುಡುಕಾಟ",
     "sidebar__tabs__art__action_btn__title": "ಹೊಸ ಕಲೆ",
-    "immersive_chat__no_conversation": "ಚಾಟ್ ಇತಿಹಾಸ ಇಲ್ಲ",
     "art__model__dalle3__description": "DALL-E 3, OpenAI ದ್ವಾರಿ ಅಭಿವೃದ್ಧಿಗೊಂಡ ಪಠ್ಯದ ವಿವರಣೆಗಳಿಂದ ಉತ್ತೇಜನಕಾರಿ ಚಿತ್ರಗಳನ್ನು ರಚಿಸುವ ಕ್ರಾಂತಿಕಾರಿ ಪಠ್ಯ-ಚಿತ್ರ ಮಾದರಿ.",
     "home_view_content_nav__one_click_prompts_title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
     "home_view_content_nav__my_own_prompts__title": "ನನ್ನ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3ನೇ ಪಕ್ಷ AI ಪ್ರೊವೈಡರ್‌ಗಳು",
     "sidebar__ai_provider__provider_selector__disabled__description": "ಮೆಚ್ಚಿನಂತೆ ಮೆಕ್ಸ್‌ಐಯಲ್ಲಿ AI ಪ್ರೊವೈಡರ್ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಲು ಪ್ರದೇಶದಲ್ಲಿ ಅನುಮತಿಸಲಾಗಿಲ್ಲ. ದಯವಿಟ್ಟು ನಂತರ ಪ್ರಯತ್ನಿಸಿ.",
     "sidebar__chat__advanced__title": "ಮುಂದಿನ ಚಾಟ್ ಆಯ್ಕೆಗಳು",
-    "provider__free_ai__model__special__description": "ಉಚಿತ ಏಐ ಬೇಸಿಗೆ ಎಂಜಿನ್ ಪರಿಕರಗಳಿಗೆ ಮೊದಲಿನ, ಖರ್ಚು ಇಲ್ಲದ ಪ್ರವೇಶವನ್ನು ಒದಗಿಸುತ್ತದೆ. ಇದು ನೀವು ಮ್ಯಾಕ್ಸ್‌ಏಐ ಬೇಸಿಕ್ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಪರೀಕ್ಷಿಸಲು ಅನುವಾದವನ್ನು ನೀಡುತ್ತದೆ, ಸುಲಭವಾದ ಮೆಚ್ಚುಗೆ ಪಥವನ್ನು ಪೂರ್ಣ ಮ್ಯಾಕ್ಸ್‌ಏಐ ಸ್ಯೂಟ್‌ಗೆ ಮುಂದುವರೆಸುತ್ತದೆ. ನಾವು ಉಚಿತ ಏಐಯ ಹೊಸಲಿಗೆ ಸಾಧಾರಣವನ್ನು ಮುಂದುವರೆಸುತ್ತಿದ್ದೇವೆ, ಉಚಿತ ಮತ್ತು ಪ್ರೀಮಿಯಂ ಏಐ ಆಯ್ಕೆಗಳ ನಡುವೆ ಅಂತರವನ್ನು ಕಡಿಮೆಗೊಳಿಸುವುದು ಉದ್ದೇಶ."
+    "provider__free_ai__model__special__description": "ಉಚಿತ ಏಐ ಬೇಸಿಗೆ ಎಂಜಿನ್ ಪರಿಕರಗಳಿಗೆ ಮೊದಲಿನ, ಖರ್ಚು ಇಲ್ಲದ ಪ್ರವೇಶವನ್ನು ಒದಗಿಸುತ್ತದೆ. ಇದು ನೀವು ಮ್ಯಾಕ್ಸ್‌ಏಐ ಬೇಸಿಕ್ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಪರೀಕ್ಷಿಸಲು ಅನುವಾದವನ್ನು ನೀಡುತ್ತದೆ, ಸುಲಭವಾದ ಮೆಚ್ಚುಗೆ ಪಥವನ್ನು ಪೂರ್ಣ ಮ್ಯಾಕ್ಸ್‌ಏಐ ಸ್ಯೂಟ್‌ಗೆ ಮುಂದುವರೆಸುತ್ತದೆ. ನಾವು ಉಚಿತ ಏಐಯ ಹೊಸಲಿಗೆ ಸಾಧಾರಣವನ್ನು ಮುಂದುವರೆಸುತ್ತಿದ್ದೇವೆ, ಉಚಿತ ಮತ್ತು ಪ್ರೀಮಿಯಂ ಏಐ ಆಯ್ಕೆಗಳ ನಡುವೆ ಅಂತರವನ್ನು ಕಡಿಮೆಗೊಳಿಸುವುದು ಉದ್ದೇಶ.",
+    "immersive_chat__chat_no_conversation__title": "ಇನ್ನೂ ಚಾಟ್ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
+    "immersive_chat__summary_no_conversation__title": "ಇನ್ನೂ ಸಾರಾಂಶ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
+    "immersive_chat__search_no_conversation__title": "ಇನ್ನೂ ಹುಡುಕಾಟ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ",
+    "immersive_chat__art_no_conversation__title": "ಇನ್ನೂ ಕಲೆ ಹಿಸ್ಟರಿ ಲಭ್ಯವಿಲ್ಲ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "ಪ್ರಮ್ಪ್ಟ್ ವಿವರಗಳನ್ನು ವೀಕ್ಷಿಸಿ",
     "delete_prompt__tooltip": "ಪ್ರಮ್ಪ್ಟ್ ಅಳಿಸಿ",
     "edit_prompt__tooltip": "ಪ್ರಮ್ಪ್ಟ್ ಬದಲಾಯಿಸಿ"
+  },
+  "maxai_tour": {
+    "button__next__title": "ಮುಂದೆ",
+    "button__back__title": "ಹಿಂದೆ",
+    "button__finish__title": "ಮುಗಿಸು",
+    "text_of": "ನಲ್ಲಿ",
+    "sidebar_tour__step__1__title": "ನಿಮ್ಮ ಇಂಟರ್ಫೇಸ್ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ",
+    "sidebar_tour__step__2__title": "AI-ಗೆ ಮುಳುಗಿಹೋಗಿ",
+    "sidebar_tour__step__2__description_1": "ಏನಾದರೂ ಪ್ರಶ್ನಿಸಿ",
+    "sidebar_tour__step__2__description_2": "ಪುಟ ಸಾರಾಂಶ ಮತ್ತು ಚಾಟ್",
+    "sidebar_tour__step__2__description_3": "AI ಶಕ್ತಿಯ ಹುಡುಕಾಟ",
+    "sidebar_tour__step__2__description_4": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
+    "sidebar_tour__step__3__title": "AI ಮಾದರಿಗಳನ್ನು ಬದಲಾಯಿಸಿ",
+    "sidebar_tour__step__3__description_1": "ವಿವಿಧ AI ಮಾದರಿಗಳನ್ನು ಬಳಸಲು ಬದಲಾಯಿಸಿ:",
+    "sidebar_tour__step__3__description_2": "ಮತ್ತು ಹೆಚ್ಚು ಶಕ್ತಿಶಾಲಿ ಏಐ ಮಾದರಿಗಳು.",
+    "sidebar_tour__step__4__title": "ಮೂರ್ಛಿತ ಚಾಟ್",
+    "sidebar_tour__step__4__description": "ಮೂರ್ಛಿತ ಚಾಟ್ ವೈಶಿಷ್ಟ್ಯ ಭದ್ರವಾದ, ವೈಯಕ್ತಿಕವಾದ AI ಸಹಾಯದ ಪರಿಸರವನ್ನು ಒದಗಿಸುತ್ತದೆ, ದಕ್ಷತೆ ಮತ್ತು ನಿಖರತೆಯನ್ನು ಹೆಚ್ಚಿಸುತ್ತದೆ.",
+    "sidebar_tour__step__5__title": "MaxAI ನ ಮಾಯಾಜಾಲವನ್ನು ಅನ್ವೇಷಿಸಿ ಅನುಭವಿಸಿ",
+    "sidebar_tour__step__5__feature_1__title": "ಹೊಸ ಚಾಟ್",
+    "sidebar_tour__step__5__feature_2__title": "ಸೆಟ್ಟಿಂಗ್ಗಳು",
+    "sidebar_tour__step__5__feature_3__title": "ಚಾಟ್ ಇತಿಹಾಸ",
+    "sidebar_tour__step__5__feature_4__title": "AI ಸ್ಕ್ರೀನ್‌ಶಾಟ್",
+    "sidebar_tour__step__5__feature_5__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
+    "sidebar_tour__step__5__feature_6__title": "ಪ್ರಾಂಪ್ಟ್ ಬಳಸಿ"
   }
 }

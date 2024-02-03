@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "जारी रखें",
     "sidebar__tabs__search__action_btn__title": "नया खोज",
     "sidebar__tabs__art__action_btn__title": "नई कला",
-    "immersive_chat__no_conversation": "कोई चैट इतिहास नहीं",
     "art__model__dalle3__description": "DALL-E 3, OpenAI द्वारा विकसित एक क्रांतिकारी पाठ-से-छवि मॉडल है जो पाठात्मक विवरण से उच्च विस्तृत छवियाँ बनाता है, जो AI द्वारा निर्मित छवि उत्पादन में एक महत्वपूर्ण आगे की ओर की प्रगति का प्रदर्शन करता है।",
     "home_view_content_nav__one_click_prompts_title": "1-क्लिक प्रॉम्प्ट्स",
     "home_view_content_nav__my_own_prompts__title": "मेरे खुद के प्रॉम्प्ट्स",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd पार्टी AI प्रदाताएं",
     "sidebar__ai_provider__provider_selector__disabled__description": "एक्सटेंशन में AI प्रदाता अपग्रेड के लिए अक्षम है। कृपया बाद में प्रयास करें।",
     "sidebar__chat__advanced__title": "उन्नत चैट विकल्प",
-    "provider__free_ai__model__special__description": "फ्री एआई मुफ्त एआई प्रोडक्टिविटी टूल्स का साधारण, नि: शुल्क पहुंच प्रदान करता है, जो हल्के या परीक्षण के उपयोग के लिए उपयुक्त है। इससे आप मैक्सएआई की मूलभूत सुविधाओं का परीक्षण कर सकते हैं, जिसमें एक आसान अपग्रेड पथ है पूर्ण, उन्नत मैक्सएआई सुइट के लिए। हम नियमित रूप से फ्री एआई को सुधारने का प्रयास कर रहे हैं, हमारे मुफ्त और प्रीमियम एआई विकल्पों के बीच अंतर को कम करते हुए।"
+    "provider__free_ai__model__special__description": "फ्री एआई मुफ्त एआई प्रोडक्टिविटी टूल्स का साधारण, नि: शुल्क पहुंच प्रदान करता है, जो हल्के या परीक्षण के उपयोग के लिए उपयुक्त है। इससे आप मैक्सएआई की मूलभूत सुविधाओं का परीक्षण कर सकते हैं, जिसमें एक आसान अपग्रेड पथ है पूर्ण, उन्नत मैक्सएआई सुइट के लिए। हम नियमित रूप से फ्री एआई को सुधारने का प्रयास कर रहे हैं, हमारे मुफ्त और प्रीमियम एआई विकल्पों के बीच अंतर को कम करते हुए।",
+    "immersive_chat__chat_no_conversation__title": "अभी तक कोई चैट इतिहास उपलब्ध नहीं है",
+    "immersive_chat__summary_no_conversation__title": "अभी तक कोई सारांश इतिहास उपलब्ध नहीं है",
+    "immersive_chat__search_no_conversation__title": "अभी तक कोई खोज इतिहास उपलब्ध नहीं है",
+    "immersive_chat__art_no_conversation__title": "अभी तक कोई कला इतिहास उपलब्ध नहीं है"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "प्रोम्प्ट विवरण देखें",
     "delete_prompt__tooltip": "प्रोम्प्ट हटाएं",
     "edit_prompt__tooltip": "प्रोम्प्ट संपादित करें"
+  },
+  "maxai_tour": {
+    "button__next__title": "आगे",
+    "button__back__title": "पीछे",
+    "button__finish__title": "समाप्त",
+    "text_of": "का",
+    "sidebar_tour__step__1__title": "अपनी इंटरफेस भाषा चुनें",
+    "sidebar_tour__step__2__title": "AI में डूबो",
+    "sidebar_tour__step__2__description_1": "Al से कुछ भी पूछें",
+    "sidebar_tour__step__2__description_2": "पेज सारांश और चैट",
+    "sidebar_tour__step__2__description_3": "Al-संचालित खोज",
+    "sidebar_tour__step__2__description_4": "Al कला और छवियों को बनाएं",
+    "sidebar_tour__step__3__title": "AI मॉडल बदलें",
+    "sidebar_tour__step__3__description_1": "विभिन्न AI मॉडल का उपयोग करने के लिए बदलें, जिनमें शामिल हैं:",
+    "sidebar_tour__step__3__description_2": "और अधिक शक्तिशाली AI मॉडल।",
+    "sidebar_tour__step__4__title": "संपूर्णता वाली चैट",
+    "sidebar_tour__step__4__description": "संपूर्णता वाली चैट सुविधा सुरक्षित, व्यक्तिगत AI सहायित वातावरण प्रदान करती है, जो कार्यक्षमता और सटीकता को बढ़ाती है।",
+    "sidebar_tour__step__5__title": "MaxAI के जादू को खोजें और अनुभव करें",
+    "sidebar_tour__step__5__feature_1__title": "नई चैट",
+    "sidebar_tour__step__5__feature_2__title": "सेटिंग्स",
+    "sidebar_tour__step__5__feature_3__title": "चैट इतिहास",
+    "sidebar_tour__step__5__feature_4__title": "AI स्क्रीनशॉट",
+    "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
+    "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट का उपयोग करें"
   }
 }

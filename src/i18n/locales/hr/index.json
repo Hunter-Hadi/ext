@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Nastavi",
     "sidebar__tabs__search__action_btn__title": "Novo pretraživanje",
     "sidebar__tabs__art__action_btn__title": "Nova umjetnost",
-    "immersive_chat__no_conversation": "Nema povijesti razgovora",
     "art__model__dalle3__description": "DALL-E 3, razvijen od strane OpenAI-a, revolucionarni je model teksta u sliku koji stvara vrlo detaljne slike iz tekstualnih opisa, prikazujući značajan napredak u generiranju slika pomoću AI-ja.",
     "home_view_content_nav__one_click_prompts_title": "1-klik upute",
     "home_view_content_nav__my_own_prompts__title": "Moje vlastite upute",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-party AI pružatelji",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI pružatelj onemogućen u proširenju zbog nadogradnje. Pokušajte kasnije.",
     "sidebar__chat__advanced__title": "Napredne opcije razgovora",
-    "provider__free_ai__model__special__description": "Besplatni AI pruža osnovan, besplatan pristup alatima za produktivnost AI-a, savršenim za lagano ili probno korištenje. Omogućuje vam testiranje osnovnih značajki MaxAI-a, s jednostavnim putem nadogradnje na puni, napredni paket MaxAI-a. Cilj nam je kontinuirano poboljšavati Besplatni AI, smanjujući razliku između naše besplatne i premium AI opcije."
+    "provider__free_ai__model__special__description": "Besplatni AI pruža osnovan, besplatan pristup alatima za produktivnost AI-a, savršenim za lagano ili probno korištenje. Omogućuje vam testiranje osnovnih značajki MaxAI-a, s jednostavnim putem nadogradnje na puni, napredni paket MaxAI-a. Cilj nam je kontinuirano poboljšavati Besplatni AI, smanjujući razliku između naše besplatne i premium AI opcije.",
+    "immersive_chat__chat_no_conversation__title": "Još nema dostupne povijesti razgovora",
+    "immersive_chat__summary_no_conversation__title": "Još nema dostupne povijesti sažetaka",
+    "immersive_chat__search_no_conversation__title": "Još nema dostupne povijesti pretraživanja",
+    "immersive_chat__art_no_conversation__title": "Još nema dostupne povijesti umjetnosti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Pogledaj detalje",
     "delete_prompt__tooltip": "Izbriši zadatak",
     "edit_prompt__tooltip": "Uredi zadatak"
+  },
+  "maxai_tour": {
+    "button__next__title": "Dalje",
+    "button__back__title": "Natrag",
+    "button__finish__title": "Završi",
+    "text_of": "od",
+    "sidebar_tour__step__1__title": "Odaberite jezik sučelja",
+    "sidebar_tour__step__2__title": "Zaronite u AI",
+    "sidebar_tour__step__2__description_1": "Pitajte Al sve",
+    "sidebar_tour__step__2__description_2": "Sažetak stranice i chat",
+    "sidebar_tour__step__2__description_3": "Pretraživanje s pomoću AI",
+    "sidebar_tour__step__2__description_4": "Stvaranje umjetnosti i slika s pomoću AI",
+    "sidebar_tour__step__3__title": "Promijenite AI modele",
+    "sidebar_tour__step__3__description_1": "Promijenite kako biste koristili različite AI modele, uključujući:",
+    "sidebar_tour__step__3__description_2": "i još moćnije AI modele.",
+    "sidebar_tour__step__4__title": "Imerzivni chat",
+    "sidebar_tour__step__4__description": "Funkcija imerzivnog chata pruža sigurno, personalizirano okruženje s pomoću AI, poboljšavajući učinkovitost i točnost.",
+    "sidebar_tour__step__5__title": "Istražite i doživite čaroliju MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Novi chat",
+    "sidebar_tour__step__5__feature_2__title": "Postavke",
+    "sidebar_tour__step__5__feature_3__title": "Povijest chata",
+    "sidebar_tour__step__5__feature_4__title": "AI snimka zaslona",
+    "sidebar_tour__step__5__feature_5__title": "1-klik upute",
+    "sidebar_tour__step__5__feature_6__title": "Koristite uputu"
   }
 }

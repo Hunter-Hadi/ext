@@ -32,7 +32,8 @@ interface LazyLoadImageProps {
   preview?: boolean
   placement?: Placement
   maxRetryTimes?: number
-  sx?: SxProps
+  SkeletonSx?: SxProps
+  imgStyle?: React.CSSProperties
 }
 
 const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
@@ -41,10 +42,11 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
     alt,
     height,
     width = '100%',
-    sx,
+    SkeletonSx,
     maxRetryTimes = 1,
     preview,
     placement,
+    imgStyle,
   } = props
   const [imageSrc, setImageSrc] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -122,7 +124,7 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
           height={height}
           sx={{
             width: width,
-            ...sx,
+            ...SkeletonSx,
           }}
         />
       ) : (
@@ -131,6 +133,10 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
           title={
             preview ? (
               <img
+                style={{
+                  objectFit: 'contain',
+                  ...imgStyle,
+                }}
                 src={imageSrc as string}
                 alt={alt}
                 width={256}
@@ -150,6 +156,9 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
             alt={alt}
             width={width}
             height={height}
+            style={{
+              ...imgStyle,
+            }}
           />
         </LightTooltip>
       )}

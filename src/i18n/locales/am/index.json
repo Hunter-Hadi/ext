@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "ቀጥል",
     "sidebar__tabs__search__action_btn__title": "አዲስ ፍለጋ",
     "sidebar__tabs__art__action_btn__title": "አዲስ አርት",
-    "immersive_chat__no_conversation": "የውይይት ታሪክ የለም",
     "art__model__dalle3__description": "DALL-E 3, በOpenAI ተልኳል, የጥንቃቄ መስመር-ስራ ሞዴል ነው የጥንቃቄ መስመር-ስራ ምልክት ከጽሁፍ መጠቀም የAI-በሽታ ልዩ ባህሪዎችን የሚጠቀሙ ነው።",
     "home_view_content_nav__one_click_prompts_title": "1-ጊዜ መልእክቶች",
     "home_view_content_nav__my_own_prompts__title": "የኔ መልእክቶች",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3ኛ-ህገመን AI አገልግሎቶች",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI አገልግሎት የሚጠቀሙ ለማይፈልጉ የሚገኝ ማስተናገዷን ይጠቀሙ። እባክዎ እንዴት ያስተናግዳል.",
     "sidebar__chat__advanced__title": "የተሻሻለ ውይይት አማራጭዎች",
-    "provider__free_ai__model__special__description": "የነፃ ማስተርጓሚያ መሳሪያ በነፃ የሚገኙ ምልክቶችን የሚጠቀሙ አጠባበቅ የAI ተሽከርካሪ ተግባራትን በነፃ የሚገኙ ማስተርጓሚያ ቡድን ነው። ይህንን በተጨማሪ እይታ የMaxAI የተሽከርካሪ ተግባራትን የሚገኙ ምልክቶችን ለመረጃ የሚቀጥለውን መስራት ይችላል። እኛ የነፃ እና የፕሪሚየም AI መረጃዎች አድርገናል።"
+    "provider__free_ai__model__special__description": "የነፃ ማስተርጓሚያ መሳሪያ በነፃ የሚገኙ ምልክቶችን የሚጠቀሙ አጠባበቅ የAI ተሽከርካሪ ተግባራትን በነፃ የሚገኙ ማስተርጓሚያ ቡድን ነው። ይህንን በተጨማሪ እይታ የMaxAI የተሽከርካሪ ተግባራትን የሚገኙ ምልክቶችን ለመረጃ የሚቀጥለውን መስራት ይችላል። እኛ የነፃ እና የፕሪሚየም AI መረጃዎች አድርገናል።",
+    "immersive_chat__chat_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
+    "immersive_chat__summary_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
+    "immersive_chat__search_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም",
+    "immersive_chat__art_no_conversation__title": "የቤት ማስታወቂያ አልተገኘም"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "የመግለጫ ዝርዝር ይመልከቱ",
     "delete_prompt__tooltip": "መሰረዝ ይሰረዝ",
     "edit_prompt__tooltip": "መለየት ይሰረዝ"
+  },
+  "maxai_tour": {
+    "button__next__title": "ቀጥል",
+    "button__back__title": "ወደ ኋላ",
+    "button__finish__title": "ማስተካከያ",
+    "text_of": "በ",
+    "sidebar_tour__step__1__title": "የሚገኙበት የማስተርኳሪ ቋንቋ ምረጥ",
+    "sidebar_tour__step__2__title": "AI ውስጥ መስጠት",
+    "sidebar_tour__step__2__description_1": "ለ Al ምጥ ይጠይቁ",
+    "sidebar_tour__step__2__description_2": "ገጽ ጥቅም & ውይይት",
+    "sidebar_tour__step__2__description_3": "AI ማዘጋጃ",
+    "sidebar_tour__step__2__description_4": "AI ስኮል እና ምስል ፍጠር",
+    "sidebar_tour__step__3__title": "AI ሞዴሎችን ቀይር",
+    "sidebar_tour__step__3__description_1": "በአጠቃላይ AI ሞዴሎች ውስጥ ቀይር:",
+    "sidebar_tour__step__3__description_2": "እና ተጨባጭ AI ሞዴሎች.",
+    "sidebar_tour__step__4__title": "የመስጠት ውይይት",
+    "sidebar_tour__step__4__description": "የመስጠት ውይይት ማስተርኳሪ የሚያስፈልገው የሆነው የAI-አጠቃላይ መተግበሪያ እንዲሁም የጥቅምን ውይይት የሚያስፈልገው የሆነው የማስተርኳሪ የAI-አጠቃላይ መተግበሪያ ነው።",
+    "sidebar_tour__step__5__title": "MaxAI የሚሰሩትን ማስተርኳሪ እና ምሳሌዎች ማግኘት",
+    "sidebar_tour__step__5__feature_1__title": "አዲስ ውይይት",
+    "sidebar_tour__step__5__feature_2__title": "ማስተካከያዎች",
+    "sidebar_tour__step__5__feature_3__title": "የውይይት ታሪክ",
+    "sidebar_tour__step__5__feature_4__title": "AI ስኮልስሌት",
+    "sidebar_tour__step__5__feature_5__title": "1-ጁል መልዕክት",
+    "sidebar_tour__step__5__feature_6__title": "መልዕክት አጠቃላይ"
   }
 }

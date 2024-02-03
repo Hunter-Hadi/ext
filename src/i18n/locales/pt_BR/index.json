@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Continuar",
     "sidebar__tabs__search__action_btn__title": "Nova busca",
     "sidebar__tabs__art__action_btn__title": "Nova arte",
-    "immersive_chat__no_conversation": "Nenhum histórico de chat",
     "art__model__dalle3__description": "DALL-E 3, desenvolvido pela OpenAI, é um modelo revolucionário de texto para imagem que cria imagens altamente detalhadas a partir de descrições textuais, mostrando um avanço significativo na geração de imagens impulsionada por IA.",
     "home_view_content_nav__one_click_prompts_title": "Prompts de 1 clique",
     "home_view_content_nav__my_own_prompts__title": "Meus próprios prompts",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Provedores de IA de terceiros",
     "sidebar__ai_provider__provider_selector__disabled__description": "Provedor de IA desativado na extensão para atualização. Por favor, tente novamente mais tarde.",
     "sidebar__chat__advanced__title": "Opções avançadas de chat",
-    "provider__free_ai__model__special__description": "O Free AI oferece acesso básico e gratuito às ferramentas de produtividade de IA, perfeito para uso leve ou de teste. Ele permite que você teste os recursos básicos do MaxAI, com um caminho fácil para atualizar para a suíte completa e avançada do MaxAI. Nosso objetivo é melhorar continuamente o Free AI, reduzindo a diferença entre nossas opções de IA gratuita e premium."
+    "provider__free_ai__model__special__description": "O Free AI oferece acesso básico e gratuito às ferramentas de produtividade de IA, perfeito para uso leve ou de teste. Ele permite que você teste os recursos básicos do MaxAI, com um caminho fácil para atualizar para a suíte completa e avançada do MaxAI. Nosso objetivo é melhorar continuamente o Free AI, reduzindo a diferença entre nossas opções de IA gratuita e premium.",
+    "immersive_chat__chat_no_conversation__title": "Ainda não há histórico de chat disponível",
+    "immersive_chat__summary_no_conversation__title": "Ainda não há histórico de resumo disponível",
+    "immersive_chat__search_no_conversation__title": "Ainda não há histórico de pesquisa disponível",
+    "immersive_chat__art_no_conversation__title": "Ainda não há histórico de arte disponível"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Ver detalhes do prompt",
     "delete_prompt__tooltip": "Excluir prompt",
     "edit_prompt__tooltip": "Editar prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Próximo",
+    "button__back__title": "Voltar",
+    "button__finish__title": "Concluir",
+    "text_of": "de",
+    "sidebar_tour__step__1__title": "Escolha o idioma da interface",
+    "sidebar_tour__step__2__title": "Explore a IA",
+    "sidebar_tour__step__2__description_1": "Pergunte qualquer coisa ao Al",
+    "sidebar_tour__step__2__description_2": "Resumo da página e chat",
+    "sidebar_tour__step__2__description_3": "Busca com IA",
+    "sidebar_tour__step__2__description_4": "Crie arte e imagens com IA",
+    "sidebar_tour__step__3__title": "Mude os modelos de IA",
+    "sidebar_tour__step__3__description_1": "Mude para usar diferentes modelos de IA, incluindo:",
+    "sidebar_tour__step__3__description_2": "e modelos de IA mais poderosos.",
+    "sidebar_tour__step__4__title": "Chat imersivo",
+    "sidebar_tour__step__4__description": "O recurso de chat imersivo oferece um ambiente seguro e personalizado assistido por IA, aumentando a eficiência e a precisão.",
+    "sidebar_tour__step__5__title": "Explore e experimente a magia do MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Novo chat",
+    "sidebar_tour__step__5__feature_2__title": "Configurações",
+    "sidebar_tour__step__5__feature_3__title": "Histórico de chat",
+    "sidebar_tour__step__5__feature_4__title": "Captura de tela com IA",
+    "sidebar_tour__step__5__feature_5__title": "Prompts de 1 clique",
+    "sidebar_tour__step__5__feature_6__title": "Usar prompt"
   }
 }

@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "തുടരുക",
     "sidebar__tabs__search__action_btn__title": "പുതിയ തിരയൽ",
     "sidebar__tabs__art__action_btn__title": "പുതിയ കല",
-    "immersive_chat__no_conversation": "ചാറ്റ് ചരിത്രം ഇല്ല",
     "art__model__dalle3__description": "DALL-E 3, OpenAI ദ്വാരാ വികസിച്ച ഒരു പഠന-ചിത്ര മോഡൽ ആണ്, വാചകീയ വിവരങ്ങളിൽ ഉയർന്ന വിശദീകരണങ്ങൾ നിർമിക്കുന്നു, AI-യുടെ ചിത്ര സൃഷ്ടിയിലേക്ക് ഒരു പ്രധാന മുന്നോട്ടം പ്രദർശിപ്പിക്കുന്നു.",
     "home_view_content_nav__one_click_prompts_title": "1-ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
     "home_view_content_nav__my_own_prompts__title": "എന്റെ പ്രോംപ്റ്റുകൾ",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3-ാം പാർട്ടി AI പ്രൊവൈഡേഴ്സുകൾ",
     "sidebar__ai_provider__provider_selector__disabled__description": "അപ്ഗ്രേഡിന് എക്സ്റ്റൻഷൻലിനിയബിൽ ഡിസേബിൾ ചെയ്തു. ദയവായി ശേഷം ശ്രമിക്കുക.",
     "sidebar__chat__advanced__title": "ഉൾപ്പെടെ ചാറ്റ് ഓപ്ഷനുകൾ",
-    "provider__free_ai__model__special__description": "Free AI അടിസ്ഥാനമായ, ചെലവ് ഇല്ലാതെ AI ഉപയോഗ്യതാ ഉപകരണങ്ങള്‍ക്ക് സൗജന്യമായ ആക്സസ് നൽകുന്നു, ലൈറ്റ് അല്ലെങ്കിൽ ട്രയൽ ഉപയോഗത്തിന് പൂർണ്ണമായി പെരുക്കാൻ പാത നൽകുന്നു. ഇത് നിങ്ങളുടെ ബേസിക് സവിശേഷതകളും മാക്സ് എ.ഐ. സ്വതന്ത്ര പരിഷ്ക്കരണങ്ങളും പരീക്ഷിക്കാൻ അനുവദിക്കുന്നു, സൗജന്യമായി ലഭ്യമാക്കുന്നതിന് ഒരു എളുപ്പമായ അപ്‌ഗ്രേഡ് പാതയും ഉണ്ട്. ഞങ്ങൾ സ്വതന്ത്രമായി ലഭ്യമാക്കുന്നതും പ്രീമിയം AI ഓപ്ഷനുകളുമായ ഫലങ്ങളുടെ വ്യത്യാസം കുറയ്ക്കുന്നതിനുള്ള അവസരങ്ങൾ നിങ്ങളുടെ അനുഭവത്തെ മെച്ചപ്പെടുത്താൻ ശ്രമിക്കുന്നു."
+    "provider__free_ai__model__special__description": "Free AI അടിസ്ഥാനമായ, ചെലവ് ഇല്ലാതെ AI ഉപയോഗ്യതാ ഉപകരണങ്ങള്‍ക്ക് സൗജന്യമായ ആക്സസ് നൽകുന്നു, ലൈറ്റ് അല്ലെങ്കിൽ ട്രയൽ ഉപയോഗത്തിന് പൂർണ്ണമായി പെരുക്കാൻ പാത നൽകുന്നു. ഇത് നിങ്ങളുടെ ബേസിക് സവിശേഷതകളും മാക്സ് എ.ഐ. സ്വതന്ത്ര പരിഷ്ക്കരണങ്ങളും പരീക്ഷിക്കാൻ അനുവദിക്കുന്നു, സൗജന്യമായി ലഭ്യമാക്കുന്നതിന് ഒരു എളുപ്പമായ അപ്‌ഗ്രേഡ് പാതയും ഉണ്ട്. ഞങ്ങൾ സ്വതന്ത്രമായി ലഭ്യമാക്കുന്നതും പ്രീമിയം AI ഓപ്ഷനുകളുമായ ഫലങ്ങളുടെ വ്യത്യാസം കുറയ്ക്കുന്നതിനുള്ള അവസരങ്ങൾ നിങ്ങളുടെ അനുഭവത്തെ മെച്ചപ്പെടുത്താൻ ശ്രമിക്കുന്നു.",
+    "immersive_chat__chat_no_conversation__title": "ഇതുവരെ ചാറ്റ് ചരിത്രം ലഭ്യമല്ല",
+    "immersive_chat__summary_no_conversation__title": "ഇതുവരെ സംഗ്രഹം ചരിത്രം ലഭ്യമല്ല",
+    "immersive_chat__search_no_conversation__title": "ഇതുവരെ തിരയൽ ചരിത്രം ലഭ്യമല്ല",
+    "immersive_chat__art_no_conversation__title": "ഇതുവരെ കലയുടെ ചരിത്രം ലഭ്യമല്ല"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "പ്രോംപ്റ്റ് വിശദാംശങ്ങൾ കാണുക",
     "delete_prompt__tooltip": "പ്രോംപ്റ്റ് ഇല്ലാതാക്കുക",
     "edit_prompt__tooltip": "പ്രോംപ്റ്റ് എഡിറ്റുചെയ്യുക"
+  },
+  "maxai_tour": {
+    "button__next__title": "അടുത്തത്",
+    "button__back__title": "പിന്നിൽ",
+    "button__finish__title": "പൂർത്തിയാക്കുക",
+    "text_of": "എന്നതിന്റെ",
+    "sidebar_tour__step__1__title": "നിങ്ങളുടെ ഇന്റർഫേസ് ഭാഷ തിരഞ്ഞെടുക്കുക",
+    "sidebar_tour__step__2__title": "AI-യിൽ മുഴുവൻ പ്രവേശിക്കുക",
+    "sidebar_tour__step__2__description_1": "ഏല്‍ ഏതെങ്കിലും ചോദിക്കുക",
+    "sidebar_tour__step__2__description_2": "പേജ് സംഗ്രഹം & ചാറ്റ്",
+    "sidebar_tour__step__2__description_3": "AI-യിൽ അധിക ശക്തമായ തിരയൽ",
+    "sidebar_tour__step__2__description_4": "AI ചിത്രങ്ങൾ & ചിത്രങ്ങൾ സൃഷ്ടിക്കുക",
+    "sidebar_tour__step__3__title": "AI മോഡലുകൾ മാറ്റുക",
+    "sidebar_tour__step__3__description_1": "വ്യത്യസ്ത AI മോഡലുകൾ ഉപയോഗിക്കാൻ മാറ്റുക:",
+    "sidebar_tour__step__3__description_2": "കൂടുതൽ ശക്തമായ AI മോഡലുകൾ.",
+    "sidebar_tour__step__4__title": "ആഴത്തിലുള്ള ചാറ്റ്",
+    "sidebar_tour__step__4__description": "ആഴത്തിലുള്ള ചാറ്റ് സവിശേഷത സുരക്ഷിതമായ, വ്യക്തിപരമായ AI-സഹായിത പരിസ്ഥിതി നൽകുന്നു, ഉറപ്പുവരുത്തൽ അനുഭവപ്പെടുന്നു.",
+    "sidebar_tour__step__5__title": "MaxAI-യുടെ മാന്ത്രികത്തിനും അനുഭവത്തിനും അന്വേഷിക്കുക",
+    "sidebar_tour__step__5__feature_1__title": "പുതിയ ചാറ്റ്",
+    "sidebar_tour__step__5__feature_2__title": "ക്രമീകരണങ്ങൾ",
+    "sidebar_tour__step__5__feature_3__title": "ചാറ്റ് ചരിത്രം",
+    "sidebar_tour__step__5__feature_4__title": "AI സ്ക്രീൻഷോട്ട്",
+    "sidebar_tour__step__5__feature_5__title": "1-ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
+    "sidebar_tour__step__5__feature_6__title": "പ്രോംപ്റ്റ് ഉപയോഗിക്കുക"
   }
 }

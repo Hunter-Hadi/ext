@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Teruskan",
     "sidebar__tabs__search__action_btn__title": "Carian baru",
     "sidebar__tabs__art__action_btn__title": "Seni baru",
-    "immersive_chat__no_conversation": "Tiada sejarah perbualan",
     "art__model__dalle3__description": "DALL-E 3, yang dibangunkan oleh OpenAI, adalah model teks-ke-gambar yang revolusioner yang mencipta imej yang sangat terperinci dari huraian teks, mempamerkan kemajuan yang signifikan dalam penghasilan imej berasaskan AI.",
     "home_view_content_nav__one_click_prompts_title": "Promp 1-klik",
     "home_view_content_nav__my_own_prompts__title": "Promp saya sendiri",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "Penyedia AI pihak ketiga",
     "sidebar__ai_provider__provider_selector__disabled__description": "Penyedia AI dilumpuhkan dalam sambungan untuk peningkatan. Sila cuba lagi nanti.",
     "sidebar__chat__advanced__title": "Pilihan perbualan lanjutan",
-    "provider__free_ai__model__special__description": "Free AI menyediakan akses asas tanpa kos kepada alat produktiviti AI, sesuai untuk penggunaan ringan atau percubaan. Ia membolehkan anda menguji ciri-ciri asas MaxAI, dengan laluan peningkatan mudah ke rangkaian penuh MaxAI yang canggih. Kami bertujuan untuk terus meningkatkan Free AI, mengurangkan perbezaan antara pilihan AI percuma dan premium kami."
+    "provider__free_ai__model__special__description": "Free AI menyediakan akses asas tanpa kos kepada alat produktiviti AI, sesuai untuk penggunaan ringan atau percubaan. Ia membolehkan anda menguji ciri-ciri asas MaxAI, dengan laluan peningkatan mudah ke rangkaian penuh MaxAI yang canggih. Kami bertujuan untuk terus meningkatkan Free AI, mengurangkan perbezaan antara pilihan AI percuma dan premium kami.",
+    "immersive_chat__chat_no_conversation__title": "Tiada sejarah perbualan yang tersedia lagi",
+    "immersive_chat__summary_no_conversation__title": "Tiada sejarah ringkasan yang tersedia lagi",
+    "immersive_chat__search_no_conversation__title": "Tiada sejarah carian yang tersedia lagi",
+    "immersive_chat__art_no_conversation__title": "Tiada sejarah seni yang tersedia lagi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Lihat butiran prompt",
     "delete_prompt__tooltip": "Padam prompt",
     "edit_prompt__tooltip": "Edit prompt"
+  },
+  "maxai_tour": {
+    "button__next__title": "Seterusnya",
+    "button__back__title": "Kembali",
+    "button__finish__title": "Selesai",
+    "text_of": "daripada",
+    "sidebar_tour__step__1__title": "Pilih bahasa antara muka anda",
+    "sidebar_tour__step__2__title": "Terjun ke dalam AI",
+    "sidebar_tour__step__2__description_1": "Tanya Al apa saja",
+    "sidebar_tour__step__2__description_2": "Ringkasan halaman & sembang",
+    "sidebar_tour__step__2__description_3": "Carian berasaskan AI",
+    "sidebar_tour__step__2__description_4": "Cipta seni dan imej AI",
+    "sidebar_tour__step__3__title": "Tukar model AI",
+    "sidebar_tour__step__3__description_1": "Tukar untuk menggunakan model AI yang berbeza termasuk:",
+    "sidebar_tour__step__3__description_2": "dan model AI yang lebih canggih.",
+    "sidebar_tour__step__4__title": "Sembang yang menarik",
+    "sidebar_tour__step__4__description": "Ciri sembang yang menarik menawarkan persekitaran AI yang selamat dan peribadi, meningkatkan kecekapan dan ketepatan.",
+    "sidebar_tour__step__5__title": "Teroka dan alami keajaiban MaxAI",
+    "sidebar_tour__step__5__feature_1__title": "Sembang baru",
+    "sidebar_tour__step__5__feature_2__title": "Tetapan",
+    "sidebar_tour__step__5__feature_3__title": "Sejarah sembang",
+    "sidebar_tour__step__5__feature_4__title": "Tangkapan skrin AI",
+    "sidebar_tour__step__5__feature_5__title": "Panduan 1-klik",
+    "sidebar_tour__step__5__feature_6__title": "Gunakan panduan"
   }
 }

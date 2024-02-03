@@ -554,7 +554,6 @@
     "provider__third_party_confirm_dialog__continue__title": "Turpināt",
     "sidebar__tabs__search__action_btn__title": "Jauna meklēšana",
     "sidebar__tabs__art__action_btn__title": "Jauna māksla",
-    "immersive_chat__no_conversation": "Nav čata vēstures",
     "art__model__dalle3__description": "DALL-E 3, kas izstrādāts OpenAI, ir revolucionārs teksta uz attēlu modelis, kas no teksta aprakstiem veido ļoti detalizētus attēlus, demonstrējot ievērojamu progresu AI vadītā attēlu ģenerēšanā.",
     "home_view_content_nav__one_click_prompts_title": "1-klikšķa pamudinājumi",
     "home_view_content_nav__my_own_prompts__title": "Mani paša pamudinājumi",
@@ -575,7 +574,11 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3. pušu AI pakalpojumu sniedzēji",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI pakalpojums ir atspējots paplašinājumā, lai to uzlabotu. Lūdzu, mēģiniet vēlāk.",
     "sidebar__chat__advanced__title": "Papildu čata opcijas",
-    "provider__free_ai__model__special__description": "Bezmaksas AI nodrošina pamata piekļuvi AI produktivitātes rīkiem, kas ir ideāli piemēroti vieglai vai izmēģinājuma lietošanai. Tas ļauj jums pārbaudīt MaxAI pamata funkcijas ar vienkāršu uzlabošanas ceļu uz pilnu, uzlaboto MaxAI komplektu. Mēs cenšamies nepārtraukti uzlabot Bezmaksas AI, samazinot atšķirību starp mūsu bezmaksas un premium AI iespējām."
+    "provider__free_ai__model__special__description": "Bezmaksas AI nodrošina pamata piekļuvi AI produktivitātes rīkiem, kas ir ideāli piemēroti vieglai vai izmēģinājuma lietošanai. Tas ļauj jums pārbaudīt MaxAI pamata funkcijas ar vienkāršu uzlabošanas ceļu uz pilnu, uzlaboto MaxAI komplektu. Mēs cenšamies nepārtraukti uzlabot Bezmaksas AI, samazinot atšķirību starp mūsu bezmaksas un premium AI iespējām.",
+    "immersive_chat__chat_no_conversation__title": "Vēl nav pieejama čata vēsture",
+    "immersive_chat__summary_no_conversation__title": "Vēl nav pieejama kopsavilkuma vēsture",
+    "immersive_chat__search_no_conversation__title": "Vēl nav pieejama meklēšanas vēsture",
+    "immersive_chat__art_no_conversation__title": "Vēl nav pieejama mākslas vēsture"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -837,5 +840,29 @@
     "view_details__tooltip": "Skatīt uzdevuma detaļas",
     "delete_prompt__tooltip": "Dzēst uzdevumu",
     "edit_prompt__tooltip": "Rediģēt uzdevumu"
+  },
+  "maxai_tour": {
+    "button__next__title": "Nākamais",
+    "button__back__title": "Atpakaļ",
+    "button__finish__title": "Pabeigt",
+    "text_of": "no",
+    "sidebar_tour__step__1__title": "Izvēlieties saskarnes valodu",
+    "sidebar_tour__step__2__title": "Iegrimstiet AI",
+    "sidebar_tour__step__2__description_1": "Jautājiet Al jebko",
+    "sidebar_tour__step__2__description_2": "Lapas kopsavilkums un čats",
+    "sidebar_tour__step__2__description_3": "Al-darbināta meklēšana",
+    "sidebar_tour__step__2__description_4": "Izveidojiet Al mākslu un attēlus",
+    "sidebar_tour__step__3__title": "Mainīt AI modeļus",
+    "sidebar_tour__step__3__description_1": "Mainiet, lai izmantotu dažādus AI modeļus, tostarp:",
+    "sidebar_tour__step__3__description_2": "un vēl spēcīgākus AI modeļus.",
+    "sidebar_tour__step__4__title": "Iedziļināts čats",
+    "sidebar_tour__step__4__description": "Iedziļināta čata funkcija piedāvā drošu, personalizētu AI asistēto vidi, uzlabojot efektivitāti un precizitāti.",
+    "sidebar_tour__step__5__title": "Izpētiet un izbaudiet MaxAI burvību",
+    "sidebar_tour__step__5__feature_1__title": "Jauns čats",
+    "sidebar_tour__step__5__feature_2__title": "Iestatījumi",
+    "sidebar_tour__step__5__feature_3__title": "Čata vēsture",
+    "sidebar_tour__step__5__feature_4__title": "AI ekrānuzņēmums",
+    "sidebar_tour__step__5__feature_5__title": "1-klikšķa norādes",
+    "sidebar_tour__step__5__feature_6__title": "Izmantojiet norādi"
   }
 }

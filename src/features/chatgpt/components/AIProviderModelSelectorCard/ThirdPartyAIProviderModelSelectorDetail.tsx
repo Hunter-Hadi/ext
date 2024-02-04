@@ -22,7 +22,7 @@ const ThirdPartyAIProviderModelSelectorDetail: FC = () => {
     >
       <Stack gap={1}>
         <Stack direction={'row'} alignItems={'center'} gap={1}>
-          <Typography fontSize={'16px'} fontWeight={500}>
+          <Typography fontSize={'16px'} fontWeight={500} color={'text.primary'}>
             {t(
               'client:sidebar__ai_provider__model_selector__third_party_ai_provider__title',
             )}

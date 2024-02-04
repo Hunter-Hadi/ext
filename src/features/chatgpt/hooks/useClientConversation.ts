@@ -146,10 +146,10 @@ const useClientConversation = () => {
       const conversationTitleMap: {
         [key in IPageSummaryType]: string
       } = {
-        PAGE_SUMMARY: 'Page summary & chat',
-        DEFAULT_EMAIL_SUMMARY: 'Email summary & chat',
-        PDF_CRX_SUMMARY: 'PDF summary & chat',
-        YOUTUBE_VIDEO_SUMMARY: 'Video summary & chat',
+        PAGE_SUMMARY: 'Summarize & ask on page',
+        DEFAULT_EMAIL_SUMMARY: 'Summarize & ask on email',
+        PDF_CRX_SUMMARY: 'Summarize & ask on PDF',
+        YOUTUBE_VIDEO_SUMMARY: 'Summarize & ask on video',
       }
       const pageSummaryType = getPageSummaryType()
       // 如果没有，那么就创建一个

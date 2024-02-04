@@ -4,6 +4,7 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -17,6 +18,7 @@ import {
 } from '@/components/CustomIcon'
 import LanguageCodeSelect from '@/components/select/LanguageCodeSelect'
 import { useAuthLogin } from '@/features/auth'
+import { ChatGPTClientState } from '@/features/chatgpt/store'
 import Tour from '@/features/common/components/Tour'
 import { TourStepInfo } from '@/features/common/components/Tour/TourStep'
 import { useFocus } from '@/features/common/hooks/useFocus'
@@ -115,11 +117,7 @@ const Step3Content: FC = () => {
           display: 'inline',
         }}
       >
-        {t('maxai_tour:sidebar_tour__step__3__description_1') + '\n'}
-        <Typography component={'span'} color={'primary.main'}>
-          {'ChatGPT, Claude, Gemini '}
-        </Typography>
-        {t('maxai_tour:sidebar_tour__step__3__description_2')}
+        {t('maxai_tour:sidebar_tour__step__3__description_1')}
       </Typography>
     </Stack>
   )
@@ -274,6 +272,10 @@ const SidebarTour: FC = () => {
   const [chatBoxContainer, setChatBoxContainer] = useState<HTMLElement | null>(
     null,
   )
+  const chatGPTClientState = useRecoilValue(ChatGPTClientState)
+
+  const { status } = chatGPTClientState
+
   useEffect(() => {
     const root = getMaxAISidebarRootElement() as HTMLElement
     const container = root?.querySelector(
@@ -414,7 +416,9 @@ const SidebarTour: FC = () => {
     }
     return steps
   }, [t, appContainer])
-  if (!container || !loaded || !isLogin) return null
+
+  if (!container || !loaded || !isLogin || status !== 'success') return null
+
   return (
     <Tour
       zIndex={2147483647}

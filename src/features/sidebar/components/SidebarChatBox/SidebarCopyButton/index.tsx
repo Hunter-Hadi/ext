@@ -166,6 +166,7 @@ const SidebarCopyButton: FC<{
                 color: 'text.primary',
                 borderRadius: '4px',
               }}
+              data-testid="ai-message-tools__copy-with-formatting"
             >
               <Stack
                 direction={'row'}
@@ -227,6 +228,7 @@ const SidebarCopyButton: FC<{
                     color: 'text.primary',
                     borderRadius: '4px',
                   }}
+                  data-testid="ai-message-tools__copy-as-plain-text"
                 >
                   <Stack
                     direction={'row'}

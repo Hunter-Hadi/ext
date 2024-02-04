@@ -40,6 +40,7 @@ const FloatingInputButton: FC<{
   className,
   sx,
 }) => {
+  const testid = 'max-ai__actions__button--use-max-ai'
   const { t } = useTranslation(['common', 'client'])
   const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
   const handleClick = (event: any) => {
@@ -69,6 +70,7 @@ const FloatingInputButton: FC<{
         className={className}
         title={t('client:sidebar__button__use_prompt')}
         onClick={handleClick}
+        data-testid={testid}
       >
         <UseChatGptIcon
           sx={{
@@ -83,6 +85,7 @@ const FloatingInputButton: FC<{
     <TextOnlyTooltip
       placement={'top'}
       title={t('client:sidebar__button__use_prompt')}
+      data-testid={testid}
     >
       <Button
         className={className}

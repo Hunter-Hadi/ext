@@ -210,6 +210,7 @@ const SidebarChatBoxInputActions: FC<{
               nextMessageIsActionRef.current = false
             }
           }}
+          data-testid={'sidebar_actions__send_btn'}
         >
           {smoothConversationLoading ? (
             <CircularProgress size={16} />

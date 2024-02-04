@@ -216,6 +216,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                     onReGenerate && onReGenerate()
                   }}
                   sx={shortcutsActionBtnSxMemo}
+                  data-testid="sidebar_actions__regenerate"
                 >
                   {t('client:sidebar__button__regenerate')}
                 </Button>
@@ -235,6 +236,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                           })
                       }}
                       sx={shortcutsActionBtnSxMemo}
+                      data-testid="sidebar_actions__continue"
                     >
                       {t('client:sidebar__button__continue')}
                     </Button>
@@ -250,6 +252,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                 onClick={() => {
                   onStopGenerate && onStopGenerate()
                 }}
+                data-testid="sidebar_actions__stop_generating"
               >
                 {t('client:sidebar__button__stop_generating')}
               </Button>

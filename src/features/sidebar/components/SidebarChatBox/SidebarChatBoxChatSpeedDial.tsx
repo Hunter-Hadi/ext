@@ -97,7 +97,11 @@ const SidebarChatBoxChatSpeedDial: FC<{
               onClick && onClick('new')
             }}
           >
-            <TextOnlyTooltip placement={'left'} title={cleanBtnTooltipTitle}>
+            <TextOnlyTooltip
+              placement={'left'}
+              title={cleanBtnTooltipTitle}
+              data-testid="maxai_speed_dial__new_chat_button"
+            >
               <Stack
                 p={1}
                 alignItems={'center'}
@@ -124,6 +128,7 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 title={t(
                   'client:sidebar__speed_dial__restart_extension__button',
                 )}
+                data-testid="maxai_speed_dial__restart_extension_button"
               >
                 <Stack
                   p={1}

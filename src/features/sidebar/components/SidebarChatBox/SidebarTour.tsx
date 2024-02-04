@@ -82,10 +82,7 @@ const Step2Content: FC = () => {
             <Stack
               sx={{
                 bgcolor: 'rgb(235,235,235)',
-                color: (t) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgba(0,0,0,.6)'
-                    : 'rgba(255,255,255,.6)',
+                color: 'rgba(0,0,0,.6)',
               }}
               width={48}
               height={48}
@@ -152,7 +149,7 @@ const Step5Content: FC = () => {
       {
         icon: (
           <CleanChatBoxIcon
-            sx={{ color: '#fff', fontSize: '24px', borderRadius: '8px' }}
+            sx={{ color: '#fff', fontSize: '20px', borderRadius: '8px' }}
           />
         ),
         title: t('maxai_tour:sidebar_tour__step__5__feature_1__title'),
@@ -162,7 +159,7 @@ const Step5Content: FC = () => {
           <ContextMenuIcon
             icon={'Settings'}
             sx={{
-              fontSize: '24px',
+              fontSize: '20px',
               borderRadius: '8px',
             }}
           />
@@ -174,7 +171,7 @@ const Step5Content: FC = () => {
           <ContextMenuIcon
             icon={'History'}
             sx={{
-              fontSize: '24px',
+              fontSize: '20px',
               borderRadius: '8px',
             }}
           />
@@ -186,7 +183,7 @@ const Step5Content: FC = () => {
           <ContentCutOutlinedIcon
             sx={{
               transform: 'rotate(-90deg)',
-              fontSize: '24px',
+              fontSize: '20px',
               borderRadius: '8px',
             }}
           />
@@ -197,7 +194,7 @@ const Step5Content: FC = () => {
         icon: (
           <MagicBookIcon
             sx={{
-              fontSize: '24px',
+              fontSize: '20px',
               borderRadius: '8px',
             }}
           />
@@ -208,7 +205,7 @@ const Step5Content: FC = () => {
         icon: (
           <UseChatGptIcon
             sx={{
-              fontSize: '24px',
+              fontSize: '20px',
               color: 'text.secondary',
               borderRadius: '8px',
             }}
@@ -328,6 +325,7 @@ const SidebarTour: FC = () => {
         placement: 'bottom',
         title: t('maxai_tour:sidebar_tour__step__1__title'),
         description: <Step1Content />,
+        closeIcon: null,
       },
       {
         target: () => {
@@ -339,6 +337,7 @@ const SidebarTour: FC = () => {
         placement: 'left',
         title: t('maxai_tour:sidebar_tour__step__2__title'),
         description: <Step2Content />,
+        closeIcon: null,
       },
       {
         target: () => {
@@ -350,10 +349,13 @@ const SidebarTour: FC = () => {
         placement: 'top-start',
         title: t('maxai_tour:sidebar_tour__step__3__title'),
         description: <Step3Content />,
-        imgCover: getChromeExtensionAssetsURL('/images/pdf/guide-2.gif'),
+        imgCover: getChromeExtensionAssetsURL(
+          '/images/on-boarding/immersive-chat.gif',
+        ),
         sx: {
           maxWidth: '320px',
         },
+        closeIcon: null,
       },
       {
         target: () => {
@@ -365,10 +367,13 @@ const SidebarTour: FC = () => {
         placement: 'left-end',
         title: t('maxai_tour:sidebar_tour__step__4__title'),
         description: <Step4Content />,
-        imgCover: getChromeExtensionAssetsURL('/images/pdf/guide-2.gif'),
+        imgCover: getChromeExtensionAssetsURL(
+          '/images/on-boarding/immersive-chat.gif',
+        ),
         sx: {
           maxWidth: '320px',
         },
+        closeIcon: null,
       },
       {
         target: () => {
@@ -400,6 +405,7 @@ const SidebarTour: FC = () => {
         placement: 'top',
         title: t('maxai_tour:sidebar_tour__step__5__title'),
         description: <Step5Content />,
+        closeIcon: null,
       },
     ]
     if (isImmersiveChatRef.current) {

@@ -111,20 +111,24 @@ const DefaultPanel: FC<TourStepProps> = (props) => {
             arrowColor={borderColor}
           />
         )}
-        <IconButton
-          sx={{
-            position: 'absolute',
-            top: 12,
-            right: 12,
-          }}
-          onClick={onClose}
-        >
-          {closeIcon ? (
-            closeIcon
-          ) : (
-            <CloseOutlined sx={{ fontSize: '16px', color: 'text.secondary' }} />
-          )}
-        </IconButton>
+        {closeIcon !== null && (
+          <IconButton
+            sx={{
+              position: 'absolute',
+              top: 12,
+              right: 12,
+            }}
+            onClick={onClose}
+          >
+            {closeIcon ? (
+              closeIcon
+            ) : (
+              <CloseOutlined
+                sx={{ fontSize: '16px', color: 'text.secondary' }}
+              />
+            )}
+          </IconButton>
+        )}
         <Typography
           textAlign={'left'}
           component={'div'}

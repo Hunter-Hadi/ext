@@ -84,8 +84,6 @@ const SidebarScreenshotButton: FC<{
               hideChatBox()
             }
             const div = document.createElement('div')
-            div.style.width = '100vw'
-            div.style.height = '100vh'
             document.body.appendChild(div)
             setRootEl(div)
           }}

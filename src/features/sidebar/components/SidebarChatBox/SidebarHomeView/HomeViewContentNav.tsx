@@ -36,10 +36,7 @@ interface IHomeViewNavItem {
 const HomeViewContentNav = () => {
   const { t } = useTranslation()
 
-  const {
-    currentSidebarConversationType,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationType } = useSidebarSettings()
 
   const inImmersiveChat = useMemo(() => isMaxAIImmersiveChatPage(), [])
 
@@ -101,14 +98,18 @@ const HomeViewContentNav = () => {
             <Grid item xs={12}>
               <HomeViewAISearchInput />
             </Grid>
-            <Grid item xs={12}>
-              <HomeViewPageSummaryButton />
-            </Grid>
-            <Grid item xs={12}>
-              <HomeViewDefaultNavItem
-                navItem={HOME_VIEW_CONTENT_NAV_CONFIG['immersive_chat']}
-              />
-            </Grid>
+            {!inImmersiveChat && (
+              <Grid item xs={12}>
+                <HomeViewPageSummaryButton />
+              </Grid>
+            )}
+            {!inImmersiveChat && (
+              <Grid item xs={12}>
+                <HomeViewDefaultNavItem
+                  navItem={HOME_VIEW_CONTENT_NAV_CONFIG['immersive_chat']}
+                />
+              </Grid>
+            )}
           </Grid>
         </Grid>
         <Grid item xs={6} order={inImmersiveChat ? 4 : 2}>
@@ -143,6 +144,10 @@ const HomeViewContentNav = () => {
 const HomeViewDefaultNavItem: FC<{
   navItem: IHomeViewNavItem
 }> = ({ navItem }) => {
+  if (!navItem.show) {
+    return null
+  }
+
   return (
     <Stack
       direction={'row'}

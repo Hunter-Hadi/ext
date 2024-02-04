@@ -350,7 +350,7 @@ const SidebarTour: FC = () => {
         title: t('maxai_tour:sidebar_tour__step__3__title'),
         description: <Step3Content />,
         imgCover: getChromeExtensionAssetsURL(
-          '/images/on-boarding/immersive-chat.gif',
+          '/images/on-boarding/switch-AI-model.gif',
         ),
         sx: {
           maxWidth: '320px',

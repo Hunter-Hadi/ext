@@ -128,7 +128,12 @@ const useClientChat = () => {
     }
     // 3. Model - 付费卡点
     const currentConversation = await getCurrentConversation()
+    // 如果 执行的 actions 中有 ASK_CHATGPT 的话，就判断是否有 付费卡点
+    const hasAskChatGPT = actions.find(
+      (action) => action.type === 'ASK_CHATGPT',
+    )
     if (
+      hasAskChatGPT &&
       currentConversation?.meta.AIProvider &&
       currentConversation?.meta.AIModel
     ) {

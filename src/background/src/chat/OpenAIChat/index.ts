@@ -4,6 +4,7 @@ import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
 import { ChatStatus } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import BaseChat from '@/background/src/chat/BaseChat'
+import ChatGPTSocketManager from '@/background/src/chat/OpenAIChat/socket'
 import {
   checkChatGPTProxyInstance,
   createDaemonProcessTab,
@@ -33,6 +34,7 @@ class OpenAIChat extends BaseChat {
   // 当前问答中的 taskId
   private currentTaskId?: string
   private questionSender?: Browser.Runtime.MessageSender
+  private token?: string
   constructor() {
     super('OpenAIChat')
     this.init()
@@ -68,6 +70,10 @@ class OpenAIChat extends BaseChat {
           case 'OpenAIDaemonProcess_setDaemonProcess':
             {
               if (!this.active) break
+              const { token } = data
+              if (token) {
+                this.token = token
+              }
               log.info('OpenAIDaemonProcess_setDaemonProcess')
               this.chatGPTProxyInstance = sender.tab
               this.status = 'success'
@@ -321,14 +327,59 @@ class OpenAIChat extends BaseChat {
         }
       }
       meta.ChatGPTAIModel = this.conversation?.meta?.AIModel
-      await this.sendDaemonProcessTask(
-        'OpenAIDaemonProcess_askChatGPTQuestion',
-        {
+      const isConnectSuccess = await ChatGPTSocketManager.socketService.connect(
+        this.token || '',
+      )
+      if (isConnectSuccess) {
+        ChatGPTSocketManager.socketService.onMessageIdListener(
+          question.messageId,
+          async (messageId, event) => {
+            console.log('ChatGPTSocketManager', event)
+            if (this.questionSender?.tab?.id) {
+              // messageId: string
+              // parentMessageId: string
+              // conversationId: string
+              // text: string
+              // originalMessage?: IAIResponseOriginalMessage
+              await Browser.tabs.sendMessage(this.questionSender.tab.id, {
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+                event: 'Client_askChatGPTQuestionResponse',
+                data: {
+                  taskId,
+                  data: {
+                    messageId: event.messageId,
+                    parentMessageId: event.parentMessageId,
+                    conversationId: event.conversationId,
+                    text: event.text,
+                  },
+                  done: event.done,
+                  error: event.error,
+                },
+              })
+            }
+            if (event.done) {
+              this.isAnswering = false
+            }
+          },
+        )
+        debugger
+        this.sendDaemonProcessTask('OpenAIDaemonProcess_askChatGPTQuestion', {
           taskId,
           question,
           meta: meta,
-        },
-      )
+        })
+      } else if (this.questionSender.tab?.id) {
+        await Browser.tabs.sendMessage(this.questionSender.tab.id, {
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+          event: 'Client_askChatGPTQuestionResponse',
+          data: {
+            taskId,
+            data: null,
+            done: true,
+            error: 'socket connect failed',
+          },
+        })
+      }
     }
   }
   async abortAskQuestion(messageId: string) {

@@ -4,26 +4,25 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 
-const textWithPageSummaryType = () => {
-  const summaryType = getPageSummaryType()
-  switch (summaryType) {
-    case 'DEFAULT_EMAIL_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__default_email'
-    case 'PAGE_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__page'
-    case 'PDF_CRX_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__pdf_crx'
-    case 'YOUTUBE_VIDEO_SUMMARY':
-      return 'client:sidebar__tabs__summary__tooltip__youtube_video'
-    default:
-      return 'client:sidebar__tabs__summary__tooltip__page'
-  }
-}
+// const textWithPageSummaryType = () => {
+//   const summaryType = getPageSummaryType()
+//   switch (summaryType) {
+//     case 'DEFAULT_EMAIL_SUMMARY':
+//       return 'client:sidebar__tabs__summary__tooltip__default_email'
+//     case 'PAGE_SUMMARY':
+//       return 'client:sidebar__tabs__summary__tooltip__page'
+//     case 'PDF_CRX_SUMMARY':
+//       return 'client:sidebar__tabs__summary__tooltip__pdf_crx'
+//     case 'YOUTUBE_VIDEO_SUMMARY':
+//       return 'client:sidebar__tabs__summary__tooltip__youtube_video'
+//     default:
+//       return 'client:sidebar__tabs__summary__tooltip__page'
+//   }
+// }
 
 const HomeViewPageSummaryButton = () => {
   const { t } = useTranslation(['client'])
@@ -70,7 +69,7 @@ const HomeViewPageSummaryButton = () => {
         lineHeight={1.5}
         color="inherit"
       >
-        {t(textWithPageSummaryType() as any)}
+        {t('client:home_view_content_nav__summary__title')}
       </Typography>
     </Stack>
   )

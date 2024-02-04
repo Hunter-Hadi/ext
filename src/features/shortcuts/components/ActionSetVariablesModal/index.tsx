@@ -16,6 +16,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import TooltipButton from '@/components/TooltipButton'
 import { isProduction } from '@/constants'
+import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
@@ -627,9 +628,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         gap={1}
         flexShrink={0}
       >
+        <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
+
         <Button
           sx={{
             height: '32px',
+            ml: 'auto',
           }}
           onClick={async () => await closeModal(true)}
           variant={'secondary'}

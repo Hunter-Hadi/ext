@@ -44,7 +44,7 @@ class PoeChatProvider implements ChatAdapterInterface {
     question,
   ) => {
     const messageId = uuidV4()
-    const options = question.meta || {}
+    const options = question?.meta || {}
     await this.poeChat.askChatGPT(
       question.text,
       {

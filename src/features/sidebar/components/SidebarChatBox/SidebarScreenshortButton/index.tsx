@@ -80,11 +80,17 @@ const SidebarScreenshotButton: FC<{
         <Button
           data-testid={'maxai-take-screenshot'}
           onClick={() => {
-            if (!isMaxAIImmersiveChatPage() && isShowChatBox()) {
+            const isImmersiveChatPage = isMaxAIImmersiveChatPage()
+            if (!isImmersiveChatPage && isShowChatBox()) {
               hideChatBox()
             }
             const div = document.createElement('div')
+            div.style.width = '100vw'
+            div.style.height = '100vh'
+            div.style.position = 'fixed'
+            div.style.zIndex = '2147483647'
             document.body.appendChild(div)
+            document.body.style.overflow = 'hidden'
             setRootEl(div)
           }}
           sx={{

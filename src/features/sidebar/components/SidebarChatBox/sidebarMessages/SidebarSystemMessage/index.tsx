@@ -142,9 +142,14 @@ const BaseSidebarSystemMessage: FC<{
               <CustomMarkdown>{systemMessageText}</CustomMarkdown>
             </div>
           </Stack>
-          <Collapse in={solutionsShow}>
-            <ThirdPartyAIProviderErrorSolution />
-          </Collapse>
+
+          {/* Collapse 如果 in 为 false 直接渲染会影响 SvgIcon 组件的渲染 */}
+          {/* 虽然不知道为什么，但是目前可以这样解决 */}
+          {solutionsShow && (
+            <Collapse in={solutionsShow}>
+              <ThirdPartyAIProviderErrorSolution />
+            </Collapse>
+          )}
         </Box>
       </Alert>
       <SidebarChatBoxSystemTools

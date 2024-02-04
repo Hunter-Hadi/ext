@@ -387,13 +387,13 @@ const SidebarTour: FC = () => {
                   ? {
                       width: rect.width,
                       left: rect.left + 8,
-                      top: rect.height + 65 - 185 - 16,
+                      top: rect.height + rect.top - 170 - 12,
                       height: 170,
                     }
                   : {
                       width: rect.width - 28,
                       left: rect.left + 12,
-                      top: rect.height - 185 - 8,
+                      top: rect.height + rect.top - 185 - 6,
                       height: 185 - 8,
                     }
               },

@@ -99,7 +99,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     },
     uploadFileConfig: {
       maxFileSize: 20 * 1024 * 1024, // 20
-      accept: '.jpg,.jpeg,.png,.webp',
+      accept: '.jpg,.jpeg,.png,.webp,.gif',
       acceptTooltip: (t) =>
         t('client:provider__chatgpt__upload__accept_tooltip'),
       maxCount: 5,

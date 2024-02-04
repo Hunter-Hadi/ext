@@ -3,11 +3,12 @@ import { inputBaseClasses } from '@mui/material/InputBase'
 import { inputLabelClasses } from '@mui/material/InputLabel'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
 interface LanguageSelectProps {
@@ -46,6 +47,30 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       )
     },
   )
+
+  const [open, setOpen] = React.useState(false)
+
+  useEffect(() => {
+    // 为解决 input filter 输入时 和 youtube 快捷键冲突的问题，
+    const isYoutube = getCurrentDomainHost() === 'youtube.com'
+
+    if (!isYoutube || !open) {
+      return
+    }
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'i') {
+        e.stopPropagation()
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown, true)
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown, true)
+    }
+  }, [open])
+
   return (
     <PermissionWrapper
       sceneType={'AI_RESPONSE_LANGUAGE'}
@@ -71,6 +96,13 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
       }}
     >
       <Autocomplete
+        open={open}
+        onOpen={() => {
+          setOpen(true)
+        }}
+        onClose={() => {
+          setOpen(false)
+        }}
         noOptionsText={t('common:no_options')}
         disableClearable
         value={value}

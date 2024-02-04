@@ -1,12 +1,15 @@
 import Autocomplete from '@mui/material/Autocomplete'
+import { inputBaseClasses } from '@mui/material/InputBase'
+import { inputLabelClasses } from '@mui/material/InputLabel'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IOptionType } from '@/components/select/BaseSelect'
 import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface LanguageCodeSelectProps {
   label?: string
@@ -59,6 +62,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
     },
     sx,
   } = props
+  const [open, setOpen] = React.useState(false)
   const { t } = useTranslation(['common'])
   const [value, setValue] = React.useState<IOptionType>(() => {
     return (
@@ -66,6 +70,28 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
       defaultLanguageCodeOption
     )
   })
+
+  useEffect(() => {
+    // 为解决 input filter 输入时 和 youtube 快捷键冲突的问题，
+    const isYoutube = getCurrentDomainHost() === 'youtube.com'
+
+    if (!isYoutube || !open) {
+      return
+    }
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'i') {
+        e.stopPropagation()
+      }
+    }
+
+    window.addEventListener('keydown', onKeyDown, true)
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown, true)
+    }
+  }, [open])
+
   return (
     <PermissionWrapper
       sceneType={'PREFERRED_LANGUAGE'}
@@ -91,15 +117,47 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
       }}
     >
       <Autocomplete
+        open={open}
+        onOpen={() => {
+          setOpen(true)
+        }}
+        onClose={() => {
+          setOpen(false)
+        }}
         noOptionsText={t('common:no_options')}
         disableClearable
         value={value}
         size={'small'}
-        sx={{ width: 160, ...sx }}
+        sx={{
+          width: 160,
+          [`.${inputLabelClasses.root}`]: {
+            fontSize: 16,
+          },
+          [`.${inputBaseClasses.root}`]: {
+            fontSize: 16,
+          },
+          [`.${inputBaseClasses.root} fieldset > legend`]: {
+            fontSize: 14,
+          },
+          ...sx,
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              fontSize: 14,
+            },
+          },
+          popper: {
+            sx: {
+              zIndex: 2147483648,
+            },
+          },
+        }}
         autoHighlight
         getOptionLabel={(option) => option.label}
         options={LanguageCodeOptions}
         onChange={(event: any, newValue) => {
+          event.stopPropagation()
           setValue(newValue)
           onChange(newValue.value)
         }}
@@ -114,13 +172,6 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
             }}
           />
         )}
-        slotProps={{
-          popper: {
-            sx: {
-              zIndex: 2147483648,
-            },
-          },
-        }}
       />
     </PermissionWrapper>
   )

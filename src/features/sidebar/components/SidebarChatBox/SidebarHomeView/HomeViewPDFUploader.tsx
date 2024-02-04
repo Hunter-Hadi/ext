@@ -90,7 +90,7 @@ const HomeViewPDFUploader = () => {
           })
         }}
       >
-        <HomeViewContentNavIcons icon={'chat_with_pdf'} />
+        <HomeViewContentNavIcons icon={'chat_with_pdf'} sx={{ fontSize: 20 }} />
         <Typography
           fontSize={14}
           fontWeight={500}
@@ -102,10 +102,11 @@ const HomeViewPDFUploader = () => {
       </Stack>
 
       <Typography
-        fontSize={12}
+        fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="inherit"
+        color="text.secondary"
+        mt={'2px'}
       >
         {t('client:home_view_content_nav__pdf_uploader__drop_pdf_here')}
       </Typography>

@@ -87,10 +87,11 @@ const HomeViewImageUploader = () => {
       </Stack>
 
       <Typography
-        fontSize={12}
+        fontSize={14}
         fontWeight={400}
         lineHeight={1.5}
-        color="inherit"
+        color="text.secondary"
+        mt={'2px'}
       >
         {t('client:home_view_content_nav__image_uploader__drop_image_here')}
       </Typography>

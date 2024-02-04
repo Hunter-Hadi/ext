@@ -312,7 +312,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
         'client:permission__pricing_hook__max_ai_paid_model__gpt4_vision__description',
       ),
     ctaButtonText: (t) =>
-      t('client:permission__pricing_hook__button__upgrade_to_elite'),
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
   // MAX AI - paid model - gpt3.5
   MAXAI_PAID_MODEL_GPT3_5: {

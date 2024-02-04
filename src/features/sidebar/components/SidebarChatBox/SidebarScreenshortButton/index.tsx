@@ -31,9 +31,9 @@ export const useUploadImagesAndSwitchToVision = () => {
   const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
     if (
       currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
-      currentAIProviderModel !== 'gpt-4-vision-preview'
+      currentAIProviderModel !== 'gpt-4-0125-preview'
     ) {
-      await updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-vision-preview')
+      await updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-0125-preview')
       await createConversation('Chat')
     }
 
@@ -44,7 +44,7 @@ export const useUploadImagesAndSwitchToVision = () => {
   return {
     isChatGPTVision:
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
-      currentAIProviderModel === 'gpt-4-vision-preview',
+      currentAIProviderModel === 'gpt-4-0125-preview',
     uploadImagesAndSwitchToVision,
   }
 }

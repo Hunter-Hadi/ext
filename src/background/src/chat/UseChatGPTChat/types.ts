@@ -42,20 +42,20 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     description: (t) =>
       t(`client:provider__chatgpt__model__gpt_3_5__description`),
   },
-  {
-    title: 'gpt-4-turbo',
-    titleTag: '',
-    value: 'gpt-4-1106-preview',
-    tags: [],
-    poweredBy: 'OpenAI',
-    description: (t) =>
-      t('client:provider__openai_api__model__gpt_4_1106_preview__description'),
-    maxTokens: 128000,
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4_TURBO',
-      roles: ['pro', 'elite'],
-    },
-  },
+  // {
+  //   title: 'gpt-4-turbo',
+  //   titleTag: '',
+  //   value: 'gpt-4-1106-preview',
+  //   tags: [],
+  //   poweredBy: 'OpenAI',
+  //   description: (t) =>
+  //     t('client:provider__openai_api__model__gpt_4_1106_preview__description'),
+  //   maxTokens: 128000,
+  //   permission: {
+  //     sceneType: 'MAXAI_PAID_MODEL_GPT4_TURBO',
+  //     roles: ['pro', 'elite'],
+  //   },
+  // },
   {
     title: 'gpt-3.5-turbo-16k',
     titleTag: '',
@@ -85,17 +85,17 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     },
   },
   {
-    title: 'gpt-4-vision',
-    value: 'gpt-4-vision-preview',
-    titleTag: 'New',
-    tags: ['New'],
+    title: 'gpt-4-turbo',
+    value: 'gpt-4-0125-preview',
+    titleTag: 'Vision',
+    tags: ['Vision'],
     poweredBy: 'OpenAI',
     description: (t) =>
       t('client:provider__chatgpt__model__gpt_4_vision__description'),
     maxTokens: 128000,
     permission: {
       sceneType: 'MAXAI_PAID_MODEL_GPT4_VISION',
-      roles: ['elite'],
+      roles: ['pro', 'elite'],
     },
     uploadFileConfig: {
       maxFileSize: 20 * 1024 * 1024, // 20

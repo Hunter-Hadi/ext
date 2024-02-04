@@ -39,7 +39,7 @@ const ChatAdvanced = () => {
           />
         )}
         {currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
-          currentAIProviderModel !== 'gpt-4-vision-preview' && (
+          currentAIProviderModel !== 'gpt-4-0125-preview' && (
             <APITemperatureSlider
               provider={'USE_CHAT_GPT_PLUS'}
               authSceneType={'MAXAI_CHATGPT_TEMPERATURE'}

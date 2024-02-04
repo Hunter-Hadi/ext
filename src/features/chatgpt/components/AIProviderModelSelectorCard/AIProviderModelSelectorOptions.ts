@@ -19,15 +19,9 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
   {
     mainPart: true,
     label: 'gpt-4-turbo',
-    value: 'gpt-4-1106-preview',
+    value: 'gpt-4-0125-preview',
     AIProvider: 'USE_CHAT_GPT_PLUS',
-  },
-  {
-    mainPart: true,
-    label: 'gpt-4-vision',
-    value: 'gpt-4-vision-preview',
-    AIProvider: 'USE_CHAT_GPT_PLUS',
-    tag: 'New',
+    tag: 'Vision',
   },
   {
     mainPart: true,

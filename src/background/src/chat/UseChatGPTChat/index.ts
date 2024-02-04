@@ -132,7 +132,7 @@ class UseChatGPTPlusChat extends BaseChat {
       userConfig!.model ||
       USE_CHAT_GPT_PLUS_MODELS[0].value
     const uploadFiles = await this.getFiles()
-    if (uploadFiles.length > 0 && currentModel === 'gpt-4-vision-preview') {
+    if (uploadFiles.length > 0 && currentModel === 'gpt-4-0125-preview') {
       uploadFiles.map((file) => {
         if (file.uploadedUrl && file.uploadStatus === 'success') {
           message_content.push({

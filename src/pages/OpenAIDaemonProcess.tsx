@@ -186,6 +186,9 @@ const useDaemonProcess = () => {
                 })
                 await port.postMessage({
                   event: 'OpenAIDaemonProcess_setDaemonProcess',
+                  data: {
+                    token: chatGptInstanceRef.current.token,
+                  },
                 })
                 setDaemonProcessTabTitle()
                 const nextRoot = document.getElementById('__next')

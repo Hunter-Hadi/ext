@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Ανταμοιβές",
     "sidebar__top_bar__upgrade__title": "Αναβάθμιση",
     "activity__1st_anniversary_2024__title1": "Γιορτή 1ου επετείου του MaxAI",
-    "activity__1st_anniversary_2024__title2": "Έως και 50% ΕΚΠΤΩΣΗ!",
+    "activity__1st_anniversary_2024__title2": "Έως και {{PERCENT}}% ΕΚΠΤΩΣΗ!",
     "pdf_ai_viewer__file_picker__title": "Συνομιλήστε με οποιοδήποτε PDF",
     "pdf_ai_viewer__file_picker__description": "Λάβετε περιλήψεις PDF AI, λάβετε άμεσες απαντήσεις, κατανοήστε έρευνες και πολλά άλλα.",
     "pdf_ai_viewer__file_picker__button__title": "Επιλέξτε Αρχείο",

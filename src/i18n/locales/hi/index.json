@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "पुरस्कार",
     "sidebar__top_bar__upgrade__title": "अपग्रेड",
     "activity__1st_anniversary_2024__title1": "मैक्सएआई का 1वां वर्षगांठ समारोह",
-    "activity__1st_anniversary_2024__title2": "50% तक की छूट!",
+    "activity__1st_anniversary_2024__title2": "तक {{PERCENT}}% छूट!",
     "pdf_ai_viewer__file_picker__title": "किसी भी पीडीएफ के साथ चैट करें",
     "pdf_ai_viewer__file_picker__description": "पीडीएफ एआई सारांश प्राप्त करें, तत्वसूची उत्तर प्राप्त करें, अनुसंधान को समझें और बहुत कुछ।",
     "pdf_ai_viewer__file_picker__button__title": "फ़ाइल चुनें",

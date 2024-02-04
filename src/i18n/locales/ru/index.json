@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Награды",
     "sidebar__top_bar__upgrade__title": "Обновить",
     "activity__1st_anniversary_2024__title1": "Празднование 1-й годовщины MaxAI",
-    "activity__1st_anniversary_2024__title2": "Скидка до 50%!",
+    "activity__1st_anniversary_2024__title2": "Скидка до {{PERCENT}}%!",
     "pdf_ai_viewer__file_picker__title": "Общайтесь с любым PDF",
     "pdf_ai_viewer__file_picker__description": "Получайте краткие описания PDF AI, получайте мгновенные ответы, понимайте исследования и многое другое.",
     "pdf_ai_viewer__file_picker__button__title": "Выбрать файл",

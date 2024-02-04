@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "奖励",
     "sidebar__top_bar__upgrade__title": "升级",
     "activity__1st_anniversary_2024__title1": "MaxAI的一周年庆典",
-    "activity__1st_anniversary_2024__title2": "高达50%折扣！",
+    "activity__1st_anniversary_2024__title2": "高达{{PERCENT}}%折扣！",
     "pdf_ai_viewer__file_picker__title": "与任何PDF聊天",
     "pdf_ai_viewer__file_picker__description": "获取PDF AI摘要，获得即时答案，理解研究等。",
     "pdf_ai_viewer__file_picker__button__title": "选择文件",

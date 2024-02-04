@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "پاداش‌ها",
     "sidebar__top_bar__upgrade__title": "ارتقا",
     "activity__1st_anniversary_2024__title1": "جشن سالگرد اولین سالگرد MaxAI",
-    "activity__1st_anniversary_2024__title2": "تا 50٪ تخفیف!",
+    "activity__1st_anniversary_2024__title2": "تا {{PERCENT}}٪ تخفیف!",
     "pdf_ai_viewer__file_picker__title": "چت با هر فایل PDF",
     "pdf_ai_viewer__file_picker__description": "خلاصه‌های هوش مصنوعی PDF را دریافت کنید، پاسخ‌های فوری بگیرید، تحقیقات را درک کنید و غیره.",
     "pdf_ai_viewer__file_picker__button__title": "انتخاب فایل",

@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "รางวัล",
     "sidebar__top_bar__upgrade__title": "อัพเกรด",
     "activity__1st_anniversary_2024__title1": "การฉลองครบรอบปีที่ 1 ของ MaxAI",
-    "activity__1st_anniversary_2024__title2": "สูงสุดถึง 50% ลด!",
+    "activity__1st_anniversary_2024__title2": "สูงสุด {{PERCENT}}% ลดราคา!",
     "pdf_ai_viewer__file_picker__title": "แชทกับ PDF ใดก็ได้",
     "pdf_ai_viewer__file_picker__description": "รับสรุป PDF AI รับคำตอบทันที เข้าใจงานวิจัย และอื่น ๆ",
     "pdf_ai_viewer__file_picker__button__title": "เลือกไฟล์",

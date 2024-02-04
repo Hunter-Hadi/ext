@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Recompense",
     "sidebar__top_bar__upgrade__title": "Upgrade",
     "activity__1st_anniversary_2024__title1": "Aniversarea de 1 an a MaxAI",
-    "activity__1st_anniversary_2024__title2": "Reduceri de până la 50%!",
+    "activity__1st_anniversary_2024__title2": "Până la {{PERCENT}}% REDUCERE!",
     "pdf_ai_viewer__file_picker__title": "Chat cu orice PDF",
     "pdf_ai_viewer__file_picker__description": "Obține rezumate AI ale PDF-urilor, primește răspunsuri instantanee, înțelege cercetarea și multe altele.",
     "pdf_ai_viewer__file_picker__button__title": "Alege fișierul",

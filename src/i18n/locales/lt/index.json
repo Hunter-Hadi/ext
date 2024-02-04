@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Apdovanojimai",
     "sidebar__top_bar__upgrade__title": "Atnaujinimas",
     "activity__1st_anniversary_2024__title1": "MaxAI pirmojo metinių šventė",
-    "activity__1st_anniversary_2024__title2": "Iki 50% NUOLAIDA!",
+    "activity__1st_anniversary_2024__title2": "Iki {{PERCENT}}% NUOLAIDA!",
     "pdf_ai_viewer__file_picker__title": "Pokalbis su bet kuriuo PDF",
     "pdf_ai_viewer__file_picker__description": "Gaukite PDF AI santraukas, gaukite momentinius atsakymus, supraskite tyrimus ir daugiau.",
     "pdf_ai_viewer__file_picker__button__title": "Pasirinkti failą",

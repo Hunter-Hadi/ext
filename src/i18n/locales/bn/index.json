@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "পুরস্কার",
     "sidebar__top_bar__upgrade__title": "আপগ্রেড",
     "activity__1st_anniversary_2024__title1": "ম্যাক্সএআই এর ১ম বার্ষিকী উদযাপন",
-    "activity__1st_anniversary_2024__title2": "৫০% ছাড়!",
+    "activity__1st_anniversary_2024__title2": "পর্যাপ্ত {{PERCENT}}% ছাড়!",
     "pdf_ai_viewer__file_picker__title": "যে কোনও PDF দিয়ে চ্যাট করুন",
     "pdf_ai_viewer__file_picker__description": "PDF AI সংক্ষেপ পান, তাৎক্ষণিক উত্তর পান, গবেষণা বুঝুন এবং আরো অনেক কিছু।",
     "pdf_ai_viewer__file_picker__button__title": "ফাইল চয়ন করুন",

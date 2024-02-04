@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Mga Pabuya",
     "sidebar__top_bar__upgrade__title": "Pag-upgrade",
     "activity__1st_anniversary_2024__title1": "Pagsasaya sa ika-1 anibersaryo ng MaxAI",
-    "activity__1st_anniversary_2024__title2": "Hanggang 50% OFF!",
+    "activity__1st_anniversary_2024__title2": "Hanggang {{PERCENT}}% DISKUWENTO!",
     "pdf_ai_viewer__file_picker__title": "Makipag-chat sa anumang PDF",
     "pdf_ai_viewer__file_picker__description": "Kumuha ng mga buod ng PDF AI, tumanggap ng mga instant na sagot, maunawaan ang pananaliksik, at higit pa.",
     "pdf_ai_viewer__file_picker__button__title": "Pumili ng File",

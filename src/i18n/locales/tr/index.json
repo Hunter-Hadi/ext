@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Ödüller",
     "sidebar__top_bar__upgrade__title": "Yükseltme",
     "activity__1st_anniversary_2024__title1": "MaxAI'nin 1. yıl dönümü kutlaması",
-    "activity__1st_anniversary_2024__title2": "Tüm ürünlerde %50'ye varan İNDİRİM!",
+    "activity__1st_anniversary_2024__title2": "%%{{PERCENT}} indirim!",
     "pdf_ai_viewer__file_picker__title": "Herhangi bir PDF ile sohbet edin",
     "pdf_ai_viewer__file_picker__description": "PDF AI özetlerini alın, anında cevaplar alın, araştırmaları anlayın ve daha fazlasını yapın.",
     "pdf_ai_viewer__file_picker__button__title": "Dosya Seçin",

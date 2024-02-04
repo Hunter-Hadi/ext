@@ -7,9 +7,11 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useActivity from '@/features/auth/hooks/useActivity'
+import { useUserInfo } from '@/features/chatgpt/hooks'
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])
+  const { currentUserPlan } = useUserInfo()
   const {
     isShowActivityBanner,
     isAbleToCloseActivityBanner,
@@ -122,7 +124,9 @@ const SidebarTopBar: FC = () => {
                   lineHeight: '16px',
                 }}
               >
-                {t('client:activity__1st_anniversary_2024__title2')}
+                {t('client:activity__1st_anniversary_2024__title2', {
+                  PERCENT: currentUserPlan.name === 'free' ? '68' : '30',
+                })}
               </Typography>
             </Stack>
             {isAbleToCloseActivityBanner && (

@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Récompenses",
     "sidebar__top_bar__upgrade__title": "Mise à niveau",
     "activity__1st_anniversary_2024__title1": "Célébration du 1er anniversaire de MaxAI",
-    "activity__1st_anniversary_2024__title2": "Jusqu'à 50% de réduction !",
+    "activity__1st_anniversary_2024__title2": "Jusqu'à {{PERCENT}}% DE RÉDUCTION !",
     "pdf_ai_viewer__file_picker__title": "Discutez avec n'importe quel PDF",
     "pdf_ai_viewer__file_picker__description": "Obtenez des résumés de l'IA PDF, recevez des réponses instantanées, comprenez la recherche et plus encore.",
     "pdf_ai_viewer__file_picker__button__title": "Choisir un fichier",

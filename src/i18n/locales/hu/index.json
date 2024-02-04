@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Jutalmak",
     "sidebar__top_bar__upgrade__title": "Frissítés",
     "activity__1st_anniversary_2024__title1": "MaxAI első évforduló ünneplése",
-    "activity__1st_anniversary_2024__title2": "Akár 50% kedvezmény!",
+    "activity__1st_anniversary_2024__title2": "Akár {{PERCENT}}% KEDVEZMÉNY!",
     "pdf_ai_viewer__file_picker__title": "Beszélgetés bármilyen PDF-fel",
     "pdf_ai_viewer__file_picker__description": "Szerezzen PDF AI összefoglalókat, kapjon azonnali válaszokat, értse meg a kutatást és még sok mást.",
     "pdf_ai_viewer__file_picker__button__title": "Fájl kiválasztása",

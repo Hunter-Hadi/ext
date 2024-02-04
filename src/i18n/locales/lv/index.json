@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Ieguvumi",
     "sidebar__top_bar__upgrade__title": "Uzlabot",
     "activity__1st_anniversary_2024__title1": "MaxAI pirmās gadadienas svinības",
-    "activity__1st_anniversary_2024__title2": "Līdz pat 50% atlaidi!",
+    "activity__1st_anniversary_2024__title2": "Līdz {{PERCENT}}% ATLAIDE!",
     "pdf_ai_viewer__file_picker__title": "Sarakstieties ar jebkuru PDF",
     "pdf_ai_viewer__file_picker__description": "Iegūstiet PDF AI kopsavilkumus, saņemiet nekavējoties atbildes, saprotiet pētījumus un citu informāciju.",
     "pdf_ai_viewer__file_picker__button__title": "Izvēlēties failu",

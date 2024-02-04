@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Nagrade",
     "sidebar__top_bar__upgrade__title": "Unapredi",
     "activity__1st_anniversary_2024__title1": "Proslava prvog rođendana MaxAI",
-    "activity__1st_anniversary_2024__title2": "Do 50% POPUSTA!",
+    "activity__1st_anniversary_2024__title2": "Do {{PERCENT}}% POPUSTA!",
     "pdf_ai_viewer__file_picker__title": "Ćaskanje sa bilo kojim PDF-om",
     "pdf_ai_viewer__file_picker__description": "Dobijte rezimee PDF AI, primajte trenutne odgovore, razumite istraživanja i još mnogo toga.",
     "pdf_ai_viewer__file_picker__button__title": "Izaberite fajl",

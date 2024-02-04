@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "పురస్కారాలు",
     "sidebar__top_bar__upgrade__title": "అప్గ్రేడ్",
     "activity__1st_anniversary_2024__title1": "MaxAI యొక్క 1వ వార్షికోత్సవ ఆచరణ",
-    "activity__1st_anniversary_2024__title2": "50% కూడా తగ్గింపు!",
+    "activity__1st_anniversary_2024__title2": "పూర్తి సంవత్సరానికి వరకు {{PERCENT}}% ఆఫ్!",
     "pdf_ai_viewer__file_picker__title": "ఏ పిడిఎఫ్‌తో చాట్ చేయండి",
     "pdf_ai_viewer__file_picker__description": "పిడిఎఫ్ ఎయి సారాంశాలు పొందండి, తక్షణ సమాధానాలను పొందండి, శోధనను అర్థం చేయండి, మరియు మరీ చేయండి.",
     "pdf_ai_viewer__file_picker__button__title": "ఫైల్ ఎంచుకోండి",

@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "પુરસ્કારો",
     "sidebar__top_bar__upgrade__title": "અપગ્રેડ",
     "activity__1st_anniversary_2024__title1": "MaxAIની 1મી વાર્ષિકોત્સવ ઉજવણી",
-    "activity__1st_anniversary_2024__title2": "સુધી 50% છૂટ!",
+    "activity__1st_anniversary_2024__title2": "સુધી {{PERCENT}}% છૂટ!",
     "pdf_ai_viewer__file_picker__title": "કોઈ પીડીએફ સાથે ચેટ કરો",
     "pdf_ai_viewer__file_picker__description": "પીડીએફ AI સારાંશો મેળવો, તક્ષણસ્પદ જવાબો મેળવો, શોધો સમજો, અને વધુ.",
     "pdf_ai_viewer__file_picker__button__title": "ફાઇલ પસંદ કરો",

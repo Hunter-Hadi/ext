@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Tuzo",
     "sidebar__top_bar__upgrade__title": "Kuboresha",
     "activity__1st_anniversary_2024__title1": "Sherehe ya kumbukumbu ya mwaka wa kwanza wa MaxAI",
-    "activity__1st_anniversary_2024__title2": "Hadithi hadi 50%!",
+    "activity__1st_anniversary_2024__title2": "Mpaka {{PERCENT}}% PUNGUZO!",
     "pdf_ai_viewer__file_picker__title": "Chat na PDF yoyote",
     "pdf_ai_viewer__file_picker__description": "Pata muhtasari wa PDF AI, pata majibu ya papo hapo, elewa utafiti, na zaidi.",
     "pdf_ai_viewer__file_picker__button__title": "Chagua Faili",

@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Ricompense",
     "sidebar__top_bar__upgrade__title": "Aggiornamento",
     "activity__1st_anniversary_2024__title1": "Celebrazione del primo anniversario di MaxAI",
-    "activity__1st_anniversary_2024__title2": "Fino al 50% DI SCONTO!",
+    "activity__1st_anniversary_2024__title2": "Fino al {{PERCENT}}% DI SCONTO!",
     "pdf_ai_viewer__file_picker__title": "Chatta con qualsiasi PDF",
     "pdf_ai_viewer__file_picker__description": "Ottieni riassunti AI dei PDF, ricevi risposte istantanee, comprendi la ricerca e altro ancora.",
     "pdf_ai_viewer__file_picker__button__title": "Scegli File",

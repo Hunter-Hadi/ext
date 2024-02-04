@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "보상",
     "sidebar__top_bar__upgrade__title": "업그레이드",
     "activity__1st_anniversary_2024__title1": "MaxAI의 1주년 기념 행사",
-    "activity__1st_anniversary_2024__title2": "최대 50% 할인!",
+    "activity__1st_anniversary_2024__title2": "최대 {{PERCENT}}% 할인!",
     "pdf_ai_viewer__file_picker__title": "PDF와 대화하기",
     "pdf_ai_viewer__file_picker__description": "PDF AI 요약을 받고 즉각적인 답변을 받으며 연구를 이해하는 등의 기능을 이용하세요.",
     "pdf_ai_viewer__file_picker__button__title": "파일 선택",

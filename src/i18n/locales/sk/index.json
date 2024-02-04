@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Odmienky",
     "sidebar__top_bar__upgrade__title": "Aktualizovať",
     "activity__1st_anniversary_2024__title1": "Oslava 1. výročia MaxAI",
-    "activity__1st_anniversary_2024__title2": "Až 50% ZĽAVA!",
+    "activity__1st_anniversary_2024__title2": "Až do {{PERCENT}}% ZĽAVA!",
     "pdf_ai_viewer__file_picker__title": "Chatujte s akýmkoľvek PDF",
     "pdf_ai_viewer__file_picker__description": "Získajte súhrny PDF AI, dostávajte okamžité odpovede, porozumite výskumu a viac.",
     "pdf_ai_viewer__file_picker__button__title": "Vyberte súbor",

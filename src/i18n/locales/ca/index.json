@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Recompenses",
     "sidebar__top_bar__upgrade__title": "Millora",
     "activity__1st_anniversary_2024__title1": "Celebra el primer aniversari de MaxAI",
-    "activity__1st_anniversary_2024__title2": "Fins a un 50% DE DESCOMPTE!",
+    "activity__1st_anniversary_2024__title2": "Fins a un {{PERCENT}}% DE DESCOMPTE!",
     "pdf_ai_viewer__file_picker__title": "Xateja amb qualsevol PDF",
     "pdf_ai_viewer__file_picker__description": "Obtén resums d'IA de PDF, rep respostes instantànies, entén la recerca i més.",
     "pdf_ai_viewer__file_picker__button__title": "Tria un fitxer",

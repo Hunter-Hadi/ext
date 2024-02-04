@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "Palkinnot",
     "sidebar__top_bar__upgrade__title": "Päivitys",
     "activity__1st_anniversary_2024__title1": "MaxAI:n 1-vuotisjuhla",
-    "activity__1st_anniversary_2024__title2": "Jopa 50% ALE!",
+    "activity__1st_anniversary_2024__title2": "Jopa {{PERCENT}}% ALENNUS!",
     "pdf_ai_viewer__file_picker__title": "Keskustele minkä tahansa PDF:n kanssa",
     "pdf_ai_viewer__file_picker__description": "Saat PDF AI -yhteenvedot, saat välittömät vastaukset, ymmärrät tutkimusta ja paljon muuta.",
     "pdf_ai_viewer__file_picker__button__title": "Valitse tiedosto",

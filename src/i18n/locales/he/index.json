@@ -490,7 +490,7 @@
     "sidebar__top_bar__rewards__title": "פרסים",
     "sidebar__top_bar__upgrade__title": "שדרוג",
     "activity__1st_anniversary_2024__title1": "חגיגת השנה הראשונה של MaxAI",
-    "activity__1st_anniversary_2024__title2": "עד 50% הנחה!",
+    "activity__1st_anniversary_2024__title2": "עד {{PERCENT}}% הנחה!",
     "pdf_ai_viewer__file_picker__title": "שוחח עם קובץ PDF כלשהו",
     "pdf_ai_viewer__file_picker__description": "קבל סיכומי AI של PDF, קבל תשובות מיידיות, הבנה של מחקר ועוד.",
     "pdf_ai_viewer__file_picker__button__title": "בחר קובץ",

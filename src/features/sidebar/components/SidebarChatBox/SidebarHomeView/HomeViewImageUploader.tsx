@@ -59,7 +59,7 @@ const HomeViewImageUploader = () => {
       <Stack spacing={0.5}>
         <UploadButton
           startIcon={<ImageOutlinedIcon />}
-          accept="image/*"
+          accept=".jpg,.jpeg,.png,.webp,.gif"
           variant="secondary"
           sx={{
             color: 'text.secondary',

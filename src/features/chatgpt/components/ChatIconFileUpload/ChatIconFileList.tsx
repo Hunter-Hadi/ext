@@ -99,6 +99,10 @@ const ChatIconFileList: FC<ChatIconFileListProps> = (props) => {
                 sx={{
                   overflow: 'hidden',
                   borderRadius: '4px 0 0 4px',
+                  bgcolor: 'background.paper',
+                  '& > img': {
+                    objectFit: 'contain',
+                  },
                 }}
               >
                 {file.icon === 'file' ? (

@@ -1,4 +1,6 @@
 import Autocomplete from '@mui/material/Autocomplete'
+import { inputBaseClasses } from '@mui/material/InputBase'
+import { inputLabelClasses } from '@mui/material/InputLabel'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import React, { FC } from 'react'
@@ -95,7 +97,26 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
         disableClearable
         value={value}
         size={'small'}
-        sx={{ width: 160, ...sx }}
+        sx={{
+          width: 160,
+          [`.${inputLabelClasses.root}`]: {
+            fontSize: 16,
+          },
+          [`.${inputBaseClasses.root}`]: {
+            fontSize: 16,
+          },
+          [`.${inputBaseClasses.root} fieldset > legend`]: {
+            fontSize: 14,
+          },
+          ...sx,
+        }}
+        slotProps={{
+          paper: {
+            sx: {
+              fontSize: 14,
+            },
+          },
+        }}
         autoHighlight
         getOptionLabel={(option) => option.label}
         options={LanguageCodeOptions}

@@ -268,6 +268,7 @@ const ConversationList: FC<IProps> = ({
                               },
                             )
                           }}
+                          conversationType={conversation.type}
                           conversationId={conversation.id}
                           conversationTitle={
                             conversation.title || conversation.lastMessage?.text

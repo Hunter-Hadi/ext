@@ -519,7 +519,7 @@
     "art__text_to_image__advanced__aspect_ratio__title": "આંકડાકાર",
     "art__text_to_image__advanced__content_type__title": "સામગ્રી પ્રકાર",
     "provider__chatgpt__model__gpt_4_vision__description": "જે ઓપનએઆઈની સૌથી અગ્રણીસ્થાનકારી આવૃત્તિ છે, જે ચિત્ર પ્રક્રિયાની શક્તિશાળી ક્ષમતાઓને GPT-4 Turbo મોડલની તાજેતરની ભાષા સમજોની પ્રગતિની સાથે સંયોજીત કરે છે.",
-    "provider__chatgpt__upload__accept_tooltip": "ફાઇલ .jpg, .jpeg, .png, .webp અપલોડ કરો",
+    "provider__chatgpt__upload__accept_tooltip": "ફાઇલ અપલોડ કરો .jpg, .jpeg, .png, .webp, .gif",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "એક્સેસ મેળવવા માટે અપગ્રેડ કરો gpt-4-turbo સાથે વિઝન",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "GPT-4-Vision સાથે એઆઈ ટેકનોલોજીમાં ઓપનએઆઈની ક્રાંતિકારી આગાહી - એઆઈ ટેકનોલોજીની એક અગ્રણીસ્થાનકારી લાંબીધરાની ચઢાવેલી પ્રગતિ, જે GPT-4 ના અદ્વિતીય ભાષા સમજોની પ્રગતિને ચિત્ર પ્રક્રિયાની સાથે સંયોજીત કરે છે.",
     "permission__pricing_hook__max_ai_paid_model__maxai_art__title": "પ્રવૃત્તિ કરો AI આર્ટ અને છબીઓ બનાવવા માટે અપગ્રેડ કરો",

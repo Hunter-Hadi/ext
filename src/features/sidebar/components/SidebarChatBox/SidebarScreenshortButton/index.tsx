@@ -13,6 +13,7 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
   hideChatBox,
   isShowChatBox,
@@ -25,11 +26,18 @@ export const useUploadImagesAndSwitchToVision = () => {
   const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
   const { createConversation } = useClientConversation()
   const {
+    updateSidebarConversationType,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
+  const {
     updateAIProviderModel,
     currentAIProvider,
     currentAIProviderModel,
   } = useAIProviderModels()
   const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
+    if (currentSidebarConversationType !== 'Chat') {
+      await updateSidebarConversationType('Chat')
+    }
     if (
       currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
       currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO

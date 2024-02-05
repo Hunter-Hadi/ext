@@ -4,33 +4,62 @@ import IconButton from '@mui/material/IconButton'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { ISidebarConversationType } from '@/features/sidebar/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ClearChatButton: FC<{
   conversationId: string
   conversationTitle: string
+  conversationType: ISidebarConversationType
   onDelete?: () => void
 }> = (props) => {
-  const { conversationTitle, conversationId, onDelete } = props
+  const {
+    conversationTitle,
+    conversationType,
+    conversationId,
+    onDelete,
+  } = props
   const { cleanConversation } = useClientConversation()
   const { t } = useTranslation(['client', 'common'])
+
+  const removeButtonTitle = useMemo(() => {
+    if (conversationType === 'Summary') {
+      return t('client:immersive_chat__delete_summary__title')
+    }
+    if (conversationType === 'Search') {
+      return t('client:immersive_chat__delete_search__title')
+    }
+    if (conversationType === 'Art') {
+      return t('client:immersive_chat__delete_art__title')
+    }
+    return t('client:immersive_chat__delete_chat__title')
+  }, [conversationType, t])
+  const removeButtonTooltip = useMemo(() => {
+    if (conversationType === 'Summary') {
+      return t('client:immersive_chat__delete_summary__button__title')
+    }
+    if (conversationType === 'Search') {
+      return t('client:immersive_chat__delete_search__button__title')
+    }
+    if (conversationType === 'Art') {
+      return t('client:immersive_chat__delete_art__button__title')
+    }
+    return t('client:immersive_chat__delete_chat__button__title')
+  }, [conversationType, t])
   const [open, setOpen] = React.useState(false)
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
   return (
     <>
-      <TextOnlyTooltip
-        placement={'top'}
-        title={t('client:immersive_chat__delete_chat__button__title')}
-      >
+      <TextOnlyTooltip placement={'top'} title={removeButtonTooltip}>
         <IconButton
           onClick={(e: React.MouseEvent) => {
             e.stopPropagation()
@@ -89,7 +118,7 @@ const ClearChatButton: FC<{
               lineHeight={'24px'}
               color={'text.primary'}
             >
-              {t('client:immersive_chat__delete_chat__title')}
+              {removeButtonTitle}
             </Typography>
             <Typography fontSize={'16px'} color={'text.primary'}>
               {`${t('client:immersive_chat__delete_chat__description1')} `}

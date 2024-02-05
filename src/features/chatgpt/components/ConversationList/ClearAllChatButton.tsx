@@ -5,7 +5,7 @@ import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -26,6 +26,32 @@ const ClearAllChatButton: FC<IProps> = (props) => {
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
   const { currentSidebarConversationType } = useSidebarSettings()
+
+  const currentDeleteAllButtonTitle = useMemo(() => {
+    if (currentSidebarConversationType === 'Summary') {
+      return t('client:immersive_chat__delete_all_summary__button__title')
+    }
+    if (currentSidebarConversationType === 'Search') {
+      return t('client:immersive_chat__delete_all_search__button__title')
+    }
+    if (currentSidebarConversationType === 'Art') {
+      return t('client:immersive_chat__delete_all_art__button__title')
+    }
+    return t('client:immersive_chat__delete_all_chat__button__title')
+  }, [t, currentSidebarConversationType])
+
+  const currentDeleteAllConfirmTitle = useMemo(() => {
+    if (currentSidebarConversationType === 'Summary') {
+      return t('client:immersive_chat__delete_all_summary__title')
+    }
+    if (currentSidebarConversationType === 'Search') {
+      return t('client:immersive_chat__delete_all_search__title')
+    }
+    if (currentSidebarConversationType === 'Art') {
+      return t('client:immersive_chat__delete_all_art__title')
+    }
+    return t('client:immersive_chat__delete_all_chat__title')
+  }, [t, currentSidebarConversationType])
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
@@ -58,17 +84,14 @@ const ClearAllChatButton: FC<IProps> = (props) => {
               color={'text.primary'}
               lineHeight={'24px'}
             >
-              {t('client:immersive_chat__delete_all_chat__button__title')}
+              {currentDeleteAllButtonTitle}
             </Typography>
           </Stack>
         </Button>
       )}
 
       {variant === 'icon' && (
-        <TextOnlyTooltip
-          placement={'top'}
-          title={t('client:immersive_chat__delete_all_chat__button__title')}
-        >
+        <TextOnlyTooltip placement={'top'} title={currentDeleteAllButtonTitle}>
           <IconButton
             data-testid={testid}
             onClick={(e: React.MouseEvent) => {
@@ -124,7 +147,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
               lineHeight={'24px'}
               color={'text.primary'}
             >
-              {t('client:immersive_chat__delete_all_chat__title')}
+              {currentDeleteAllConfirmTitle}
             </Typography>
             <Stack direction={'row'} spacing={1} justifyContent={'end'}>
               <Button

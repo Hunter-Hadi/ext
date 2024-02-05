@@ -14,6 +14,7 @@ import {
   getChatMessageAttachments,
   getMaxAIFileIdFromAttachmentURL,
 } from '@/features/sidebar/utils/chatMessageAttachmentHelper'
+import { promiseTimeout } from '@/utils/promiseUtils'
 
 const SidebarAIMessageAttachmentsDownloadButton: FC<{
   message: IChatMessage
@@ -46,24 +47,34 @@ const SidebarAIMessageAttachmentsDownloadButton: FC<{
               downloadUrl
           }
         }
-        const result = await clientFetchAPI(downloadUrl, {
-          parse: 'blob',
-          contentType: 'image/png',
-        })
-        if (result.success && result?.data?.type) {
-          let fileName = message.text
-          if (isAIMessage(message)) {
-            fileName = message.originalMessage?.metadata?.title?.title || ''
+        try {
+          const result = await promiseTimeout(
+            clientFetchAPI(downloadUrl, {
+              parse: 'blob',
+              contentType: 'image/png',
+            }),
+            20 * 1000,
+            {
+              success: false,
+            } as any,
+          )
+          if (result.success && result?.data?.type) {
+            let fileName = message.text
+            if (isAIMessage(message)) {
+              fileName = message.originalMessage?.metadata?.title?.title || ''
+            }
+            // download image
+            saveAs(result.data, `${fileName}.png`)
+          } else {
+            // NOTE: 保底方案
+            const a = document.createElement('a')
+            a.href = downloadUrl
+            a.download = 'download'
+            a.click()
+            a.remove()
           }
-          // download image
-          saveAs(result.data, `${fileName}.png`)
-        } else {
-          // NOTE: 保底方案
-          const a = document.createElement('a')
-          a.href = downloadUrl
-          a.download = 'download'
-          a.click()
-          a.remove()
+        } catch (e) {
+          console.error(e)
         }
       }),
     )

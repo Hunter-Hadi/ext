@@ -11,6 +11,7 @@ import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platf
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import { promiseTimeout } from '@/utils/promiseUtils'
 
 const SidebarAIMessageTools: FC<{
   useChatGPTAble?: boolean
@@ -37,7 +38,7 @@ const SidebarAIMessageTools: FC<{
           loading={isCoping}
           disabled={isCoping}
           title={t('common:copy_image')}
-          onClick={(event) => {
+          onClick={async (event) => {
             const image = findSelectorParent(
               '.maxai-ai-message__image__content__box img',
               event.currentTarget,
@@ -46,10 +47,17 @@ const SidebarAIMessageTools: FC<{
               return
             }
             setIsCoping(true)
-            clientFetchAPI(image.src, {
-              parse: 'blob',
-              blobContentType: 'image/png',
-            }).then((result) => {
+            try {
+              const result = await promiseTimeout(
+                clientFetchAPI(image.src, {
+                  parse: 'blob',
+                  blobContentType: 'image/png',
+                }),
+                20 * 1000,
+                {
+                  success: false,
+                } as any,
+              )
               if (result.success && result?.data?.type) {
                 navigator.clipboard
                   .write([
@@ -63,7 +71,9 @@ const SidebarAIMessageTools: FC<{
               } else {
                 setIsCoping(false)
               }
-            })
+            } catch (e) {
+              setIsCoping(false)
+            }
           }}
         >
           <ContextMenuIcon

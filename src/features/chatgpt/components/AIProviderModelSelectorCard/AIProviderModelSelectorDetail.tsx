@@ -100,13 +100,14 @@ const AIProviderModelSelectorDetail: FC<{
                 TooltipProps={{
                   placement: 'top',
                 }}
-                lineClamp={4}
+                lineClamp={6}
               >
                 {currentAIProviderModelDetail?.poweredBy &&
                   t(`client:provider__model__tooltip_card__label__powered_by`, {
                     COMPANY: currentAIProviderModelDetail.poweredBy,
                   })}{' '}
-                {currentAIProviderModelDetail?.maxTokens &&
+                {currentAIProviderModelDetail.value !== 'dall-e-3' &&
+                  currentAIProviderModelDetail?.maxTokens &&
                   t(`client:provider__model__tooltip_card__label__max_tokens`, {
                     MAX_TOKENS: numberWithCommas(
                       currentAIProviderModelDetail.maxTokens,

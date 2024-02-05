@@ -6,7 +6,7 @@ export const MAXAI_IMAGE_GENERATE_MODELS: IArtTextToImageModel[] = [
     title: 'DALL·E 3',
     titleTag: '',
     value: 'dall-e-3',
-    maxTokens: 4096,
+    maxTokens: 4000,
     tags: [],
     exampleImage: '',
     poweredBy: 'OpenAI',

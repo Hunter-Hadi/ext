@@ -228,6 +228,8 @@ class ChatGPTSocketService {
       this.socket = null
     }
     this.status = 'disconnected'
+    this.isDetected = false
+    this.isSocketService = false
     return true
   }
 
@@ -364,48 +366,58 @@ class ChatGPTSocketService {
     if (this.token) {
       let isSSE = false
       let conversationId = ''
-      await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
-        provider: 'OPENAI_API',
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${this.token}`,
-        },
-        body: JSON.stringify({
-          action: 'next',
-          arkose_token: null,
-          messages: [
-            {
-              id: uuidV4(),
-              author: {
-                role: 'user',
+      try {
+        await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
+          provider: 'OPENAI_API',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.token}`,
+          },
+          body: JSON.stringify({
+            action: 'next',
+            arkose_token: null,
+            messages: [
+              {
+                id: uuidV4(),
+                author: {
+                  role: 'user',
+                },
+                content: {
+                  content_type: 'text',
+                  parts: ['hi'],
+                },
+                metadata: {},
               },
-              content: {
-                content_type: 'text',
-                parts: ['hi'],
-              },
-              metadata: {},
-            },
-          ],
-          parent_message_id: uuidV4(),
-          model: 'text-davinci-002-render-sha',
-        }),
-        onMessage: (message) => {
-          try {
-            if (!conversationId) {
-              const messageConversationId = JSON.parse(message).conversation_id
-              if (messageConversationId) {
-                conversationId = messageConversationId
+            ],
+            parent_message_id: uuidV4(),
+            model: 'text-davinci-002-render-sha',
+          }),
+          onMessage: (message) => {
+            try {
+              if (!conversationId) {
+                const messageConversationId = JSON.parse(message)
+                  .conversation_id
+                if (messageConversationId) {
+                  conversationId = messageConversationId
+                }
               }
+            } catch (e) {
+              console.log(e)
             }
-          } catch (e) {
-            console.log(e)
-          }
-          isSSE = true
-        },
-      })
-        .then()
-        .catch()
+            isSSE = true
+          },
+        })
+          .then()
+          .catch()
+      } catch (e) {
+        // 401
+        if ((e as any)?.message?.includes('challenge_required')) {
+          // 需要arkose_token
+        }
+        console.log(e)
+        return true
+      }
       if (conversationId) {
         // 删除会话
         chatGptRequest(

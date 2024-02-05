@@ -429,6 +429,7 @@ class OpenAIChat extends BaseChat {
     return result.success
   }
   async destroy() {
+    ChatGPTSocketManager.socketService.disconnect()
     log.info('destroy')
     this.clearFiles()
     // this.status = 'needAuth'

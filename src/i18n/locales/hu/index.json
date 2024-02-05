@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Oldal összefoglalása",
     "home_view_content_nav__summary_video__title": "Videó összefoglalása",
     "home_view_content_nav__summary_email__title": "E-mail összefoglalása",
-    "home_view_content_nav__summary_PDF__title": "PDF összefoglalása"
+    "home_view_content_nav__summary_PDF__title": "PDF összefoglalása",
+    "home_view__search__title": "AI-alapú keresés",
+    "home_view__search__description": "Kapjon válaszokat bármilyen kérdésre valós idejű webhely hozzáféréssel.",
+    "home_view__art__title": "Hozzon létre AI művészetet és képeket",
+    "home_view__art__description": "Változtassa meg látomásait lenyűgöző képekkel."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

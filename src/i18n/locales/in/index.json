@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Halaman Ringkasan",
     "home_view_content_nav__summary_video__title": "Video Ringkasan",
     "home_view_content_nav__summary_email__title": "Email Ringkasan",
-    "home_view_content_nav__summary_PDF__title": "PDF Ringkasan"
+    "home_view_content_nav__summary_PDF__title": "PDF Ringkasan",
+    "home_view__search__title": "Pencarian berbasis AI",
+    "home_view__search__description": "Dapatkan jawaban untuk pertanyaan apa pun dengan akses web real-time.",
+    "home_view__art__title": "Buat seni & gambar AI",
+    "home_view__art__description": "Ubah visi Anda menjadi gambar yang menakjubkan."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

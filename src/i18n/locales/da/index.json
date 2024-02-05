@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Opsummer side",
     "home_view_content_nav__summary_video__title": "Opsummer video",
     "home_view_content_nav__summary_email__title": "Opsummer e-mail",
-    "home_view_content_nav__summary_PDF__title": "Opsummer PDF"
+    "home_view_content_nav__summary_PDF__title": "Opsummer PDF",
+    "home_view__search__title": "AI-drevet søgning",
+    "home_view__search__description": "Få svar på alle spørgsmål med realtids webadgang.",
+    "home_view__art__title": "Skab AI-kunst og billeder",
+    "home_view__art__description": "Omdan dine visioner til fantastiske billeder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

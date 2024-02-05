@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Pagina di riepilogo",
     "home_view_content_nav__summary_video__title": "Video di riepilogo",
     "home_view_content_nav__summary_email__title": "Email di riepilogo",
-    "home_view_content_nav__summary_PDF__title": "PDF di riepilogo"
+    "home_view_content_nav__summary_PDF__title": "PDF di riepilogo",
+    "home_view__search__title": "Ricerca potenziata dall'IA",
+    "home_view__search__description": "Ottieni risposte a qualsiasi domanda con accesso web in tempo reale.",
+    "home_view__art__title": "Crea arte e immagini con l'IA",
+    "home_view__art__description": "Trasforma le tue visioni in immagini mozzafiato."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

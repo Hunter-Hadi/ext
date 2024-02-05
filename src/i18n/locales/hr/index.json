@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Sažmi stranicu",
     "home_view_content_nav__summary_video__title": "Sažmi video",
     "home_view_content_nav__summary_email__title": "Sažmi e-poštu",
-    "home_view_content_nav__summary_PDF__title": "Sažmi PDF"
+    "home_view_content_nav__summary_PDF__title": "Sažmi PDF",
+    "home_view__search__title": "Pretraživanje s umjetnom inteligencijom",
+    "home_view__search__description": "Dobijte odgovore na bilo koja pitanja uz trenutni pristup webu.",
+    "home_view__art__title": "Stvaranje umjetnosti i slika s umjetnom inteligencijom",
+    "home_view__art__description": "Pretvorite svoje vizije u impresivne slike."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

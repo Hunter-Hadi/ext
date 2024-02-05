@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "সংক্ষেপ পৃষ্ঠা",
     "home_view_content_nav__summary_video__title": "সংক্ষেপ ভিডিও",
     "home_view_content_nav__summary_email__title": "সংক্ষেপ ইমেল",
-    "home_view_content_nav__summary_PDF__title": "সংক্ষেপ পিডিএফ"
+    "home_view_content_nav__summary_PDF__title": "সংক্ষেপ পিডিএফ",
+    "home_view__search__title": "এইচআই-পাওয়ারড অনুসন্ধান",
+    "home_view__search__description": "রিয়েল-টাইম ওয়েব অ্যাক্সেস দিয়ে যেকোনো প্রশ্নের উত্তর পান।",
+    "home_view__art__title": "এইচআই শিল্প এবং চিত্র তৈরি করুন",
+    "home_view__art__description": "আপনার ভাবনাগুলি অসামান্য চিত্রে পরিণত করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

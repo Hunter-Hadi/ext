@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Ringkaskan halaman",
     "home_view_content_nav__summary_video__title": "Ringkaskan video",
     "home_view_content_nav__summary_email__title": "Ringkaskan emel",
-    "home_view_content_nav__summary_PDF__title": "Ringkaskan PDF"
+    "home_view_content_nav__summary_PDF__title": "Ringkaskan PDF",
+    "home_view__search__title": "Carian dikuasakan AI",
+    "home_view__search__description": "Dapatkan jawapan kepada sebarang soalan dengan akses web secara langsung.",
+    "home_view__art__title": "Cipta seni & imej AI",
+    "home_view__art__description": "Ubah wawasan anda menjadi imej yang menakjubkan."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

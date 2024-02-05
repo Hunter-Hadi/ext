@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "总结页面",
     "home_view_content_nav__summary_video__title": "总结视频",
     "home_view_content_nav__summary_email__title": "总结电子邮件",
-    "home_view_content_nav__summary_PDF__title": "总结PDF"
+    "home_view_content_nav__summary_PDF__title": "总结PDF",
+    "home_view__search__title": "AI 助力搜索",
+    "home_view__search__description": "实时网络访问，获取任何问题的答案。",
+    "home_view__art__title": "创作 AI 艺术与图像",
+    "home_view__art__description": "将您的想象变成令人惊叹的图像。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

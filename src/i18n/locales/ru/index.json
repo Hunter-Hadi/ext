@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Страница суммирования",
     "home_view_content_nav__summary_video__title": "Видео суммирования",
     "home_view_content_nav__summary_email__title": "Суммирование электронной почты",
-    "home_view_content_nav__summary_PDF__title": "Суммирование PDF"
+    "home_view_content_nav__summary_PDF__title": "Суммирование PDF",
+    "home_view__search__title": "Поиск с искусственным интеллектом",
+    "home_view__search__description": "Получайте ответы на любые вопросы с мгновенным доступом к вебу.",
+    "home_view__art__title": "Создание искусства и изображений с помощью ИИ",
+    "home_view__art__description": "Превратите свои видения в потрясающие изображения."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

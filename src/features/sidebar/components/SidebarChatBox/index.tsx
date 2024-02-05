@@ -96,7 +96,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     return (
       messages.length <= 0 &&
       !writingMessage &&
-      currentSidebarConversationType === 'Chat'
+      currentSidebarConversationType !== 'Summary'
     )
   }, [messages, writingMessage, currentSidebarConversationType])
 

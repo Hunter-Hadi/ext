@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Oppsummeringsside",
     "home_view_content_nav__summary_video__title": "Oppsummer video",
     "home_view_content_nav__summary_email__title": "Oppsummer e-post",
-    "home_view_content_nav__summary_PDF__title": "Oppsummer PDF"
+    "home_view_content_nav__summary_PDF__title": "Oppsummer PDF",
+    "home_view__search__title": "AI-drevet søk",
+    "home_view__search__description": "Få svar på alle spørsmål med sanntids web-tilgang.",
+    "home_view__art__title": "Lag AI-kunst og bilder",
+    "home_view__art__description": "Gjør visjonene dine om til fantastiske bilder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

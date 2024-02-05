@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Seiten zusammenfassen",
     "home_view_content_nav__summary_video__title": "Video zusammenfassen",
     "home_view_content_nav__summary_email__title": "E-Mail zusammenfassen",
-    "home_view_content_nav__summary_PDF__title": "PDF zusammenfassen"
+    "home_view_content_nav__summary_PDF__title": "PDF zusammenfassen",
+    "home_view__search__title": "KI-unterstützte Suche",
+    "home_view__search__description": "Erhalten Sie Antworten auf alle Fragen mit Echtzeit-Webzugriff.",
+    "home_view__art__title": "Erstellen Sie KI-Kunst & Bilder",
+    "home_view__art__description": "Verwandeln Sie Ihre Visionen in atemberaubende Bilder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

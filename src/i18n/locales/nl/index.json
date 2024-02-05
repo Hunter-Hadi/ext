@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Pagina samenvatten",
     "home_view_content_nav__summary_video__title": "Video samenvatten",
     "home_view_content_nav__summary_email__title": "E-mail samenvatten",
-    "home_view_content_nav__summary_PDF__title": "PDF samenvatten"
+    "home_view_content_nav__summary_PDF__title": "PDF samenvatten",
+    "home_view__search__title": "Zoeken met AI",
+    "home_view__search__description": "Krijg antwoorden op al je vragen met realtime webtoegang.",
+    "home_view__art__title": "Maak AI-kunst en afbeeldingen",
+    "home_view__art__description": "Verander je visies in verbluffende afbeeldingen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

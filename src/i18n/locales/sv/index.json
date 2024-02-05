@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Sammanfatta sida",
     "home_view_content_nav__summary_video__title": "Sammanfatta video",
     "home_view_content_nav__summary_email__title": "Sammanfatta e-post",
-    "home_view_content_nav__summary_PDF__title": "Sammanfatta PDF"
+    "home_view_content_nav__summary_PDF__title": "Sammanfatta PDF",
+    "home_view__search__title": "Sökning med AI",
+    "home_view__search__description": "Få svar på alla frågor med realtidswebbåtkomst.",
+    "home_view__art__title": "Skapa AI-konst och bilder",
+    "home_view__art__description": "Omvandla dina visioner till fantastiska bilder."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

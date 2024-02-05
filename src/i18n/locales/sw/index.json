@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Muhtasari wa ukurasa",
     "home_view_content_nav__summary_video__title": "Muhtasari wa video",
     "home_view_content_nav__summary_email__title": "Muhtasari wa barua pepe",
-    "home_view_content_nav__summary_PDF__title": "Muhtasari wa PDF"
+    "home_view_content_nav__summary_PDF__title": "Muhtasari wa PDF",
+    "home_view__search__title": "Utafutaji unaotumia AI",
+    "home_view__search__description": "Pata majibu ya maswali yoyote na ufikiaji wa wavuti halisi.",
+    "home_view__art__title": "Tengeneza sanaa na picha za AI",
+    "home_view__art__description": "Geuza maono yako kuwa picha za kushangaza."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

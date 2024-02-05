@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Buod ng pahina",
     "home_view_content_nav__summary_video__title": "Buod ng video",
     "home_view_content_nav__summary_email__title": "Buod ng email",
-    "home_view_content_nav__summary_PDF__title": "Buod ng PDF"
+    "home_view_content_nav__summary_PDF__title": "Buod ng PDF",
+    "home_view__search__title": "Paghahanap na pinagpapalakas ng AI",
+    "home_view__search__description": "Makakuha ng mga sagot sa anumang mga tanong gamit ang real-time na web access.",
+    "home_view__art__title": "Lumikha ng sining at mga imahe gamit ang AI",
+    "home_view__art__description": "Gawing kahanga-hanga ang iyong mga pangitain sa pamamagitan ng mga kahanga-hangang imahe."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

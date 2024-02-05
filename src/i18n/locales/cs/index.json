@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Stručný přehled stránky",
     "home_view_content_nav__summary_video__title": "Stručný přehled videa",
     "home_view_content_nav__summary_email__title": "Stručný přehled e-mailu",
-    "home_view_content_nav__summary_PDF__title": "Stručný přehled PDF"
+    "home_view_content_nav__summary_PDF__title": "Stručný přehled PDF",
+    "home_view__search__title": "Vyhledávání s umělou inteligencí",
+    "home_view__search__description": "Získejte odpovědi na jakékoliv otázky s okamžitým přístupem na web.",
+    "home_view__art__title": "Vytvořte umělecká díla a obrázky s umělou inteligencí",
+    "home_view__art__description": "Přetvořte své vize do ohromujících obrázků."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

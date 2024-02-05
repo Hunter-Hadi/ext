@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Résumé de la page",
     "home_view_content_nav__summary_video__title": "Résumé de la vidéo",
     "home_view_content_nav__summary_email__title": "Résumé de l'email",
-    "home_view_content_nav__summary_PDF__title": "Résumé du PDF"
+    "home_view_content_nav__summary_PDF__title": "Résumé du PDF",
+    "home_view__search__title": "Recherche alimentée par l'IA",
+    "home_view__search__description": "Obtenez des réponses à toutes vos questions avec un accès web en temps réel.",
+    "home_view__art__title": "Créez de l'art et des images IA",
+    "home_view__art__description": "Transformez vos visions en images époustouflantes."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

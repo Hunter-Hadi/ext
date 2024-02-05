@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "சுருக்கம் பக்கம்",
     "home_view_content_nav__summary_video__title": "சுருக்கம் வீடியோ",
     "home_view_content_nav__summary_email__title": "சுருக்கம் மின்னஞ்சல்",
-    "home_view_content_nav__summary_PDF__title": "சுருக்கம் PDF"
+    "home_view_content_nav__summary_PDF__title": "சுருக்கம் PDF",
+    "home_view__search__title": "ஏதேனும் கேள்விகளுக்கு பதில் பெறுங்கள்",
+    "home_view__search__description": "உண்மையான இணைய அணுகலுடன் எந்த கேள்விக்கும் பதில்களைப் பெறுங்கள்.",
+    "home_view__art__title": "ஐயம் கலை & படங்கள் உருவாக்குங்கள்",
+    "home_view__art__description": "உங்கள் காட்சிகளை அழகாக்குங்கள் மாற்றுங்கள்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

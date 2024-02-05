@@ -590,7 +590,11 @@
     "home_view_content_nav__summary_page__title": "Սեփականատեր էջ",
     "home_view_content_nav__summary_video__title": "Սեփականատեր վիդեո",
     "home_view_content_nav__summary_email__title": "Սեփականատեր էլ․ փոստ",
-    "home_view_content_nav__summary_PDF__title": "Սեփականատեր PDF"
+    "home_view_content_nav__summary_PDF__title": "Սեփականատեր PDF",
+    "home_view__search__title": "Արվեստագիտության որոնում AI-ի միջոցով",
+    "home_view__search__description": "Ստացեք պատասխաններ ցանկացած հարցերին իրական ժամանակաշրջանային վեբ մուտքով։",
+    "home_view__art__title": "Ստեղծեք AI արվեստը և պատկերները",
+    "home_view__art__description": "Վերադարձրեք ձեր տեսարժանությունները հեռուստագեղձ պատկերների։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

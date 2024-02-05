@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Страница за обобщение",
     "home_view_content_nav__summary_video__title": "Видео за обобщение",
     "home_view_content_nav__summary_email__title": "Имейл за обобщение",
-    "home_view_content_nav__summary_PDF__title": "PDF за обобщение"
+    "home_view_content_nav__summary_PDF__title": "PDF за обобщение",
+    "home_view__search__title": "Търсене с изкуствен интелект",
+    "home_view__search__description": "Получавайте отговори на всякакви въпроси с реално време достъп до уеб.",
+    "home_view__art__title": "Създаване на изкуство и изображения с изкуствен интелект",
+    "home_view__art__description": "Превърнете вашите визии в изумителни изображения."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "עמוד סיכום",
     "home_view_content_nav__summary_video__title": "סיכום וידאו",
     "home_view_content_nav__summary_email__title": "סיכום אימייל",
-    "home_view_content_nav__summary_PDF__title": "סיכום PDF"
+    "home_view_content_nav__summary_PDF__title": "סיכום PDF",
+    "home_view__search__title": "חיפוש מופעל על ידי AI",
+    "home_view__search__description": "קבל תשובות לכל שאלה עם גישה בזמן אמת לרשת האינטרנט.",
+    "home_view__art__title": "צור אמנות ותמונות בעזרת AI",
+    "home_view__art__description": "הפוך את החזונות שלך לתמונות מרהיבות."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

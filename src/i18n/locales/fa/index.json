@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "صفحه خلاصه",
     "home_view_content_nav__summary_video__title": "ویدیو خلاصه",
     "home_view_content_nav__summary_email__title": "ایمیل خلاصه",
-    "home_view_content_nav__summary_PDF__title": "PDF خلاصه"
+    "home_view_content_nav__summary_PDF__title": "PDF خلاصه",
+    "home_view__search__title": "جستجوی قدرتمند هوش مصنوعی",
+    "home_view__search__description": "با دسترسی به وب در زمان واقعی، پاسخی برای هر سوال بگیرید.",
+    "home_view__art__title": "ایجاد هنر و تصاویر هوش مصنوعی",
+    "home_view__art__description": "تصورات خود را به تصاویر شگفت انگیز تبدیل کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

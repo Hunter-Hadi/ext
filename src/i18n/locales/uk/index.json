@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "صفحہ خلاصہ کریں",
     "home_view_content_nav__summary_video__title": "ویڈیو خلاصہ کریں",
     "home_view_content_nav__summary_email__title": "ای میل خلاصہ کریں",
-    "home_view_content_nav__summary_PDF__title": "پی ڈی ایف خلاصہ کریں"
+    "home_view_content_nav__summary_PDF__title": "پی ڈی ایف خلاصہ کریں",
+    "home_view__search__title": "AI پاورڈ تلاش",
+    "home_view__search__description": "حقیقی وقت کے ویب رسائی کے ساتھ کسی بھی سوال کے جوابات حاصل کریں۔",
+    "home_view__art__title": "AI آرٹ اور تصاویر بنائیں",
+    "home_view__art__description": "اپنی تصورات کو دلکش تصاویر میں تبدیل کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

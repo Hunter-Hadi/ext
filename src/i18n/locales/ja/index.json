@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "ページを要約する",
     "home_view_content_nav__summary_video__title": "ビデオを要約する",
     "home_view_content_nav__summary_email__title": "メールを要約する",
-    "home_view_content_nav__summary_PDF__title": "PDFを要約する"
+    "home_view_content_nav__summary_PDF__title": "PDFを要約する",
+    "home_view__search__title": "AIパワーのある検索",
+    "home_view__search__description": "リアルタイムのウェブアクセスでどんな質問にも答えを得ることができます。",
+    "home_view__art__title": "AIアート＆画像の作成",
+    "home_view__art__description": "あなたのビジョンを見事な画像に変えましょう。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

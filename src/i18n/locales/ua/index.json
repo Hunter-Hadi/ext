@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Сторінка зведення",
     "home_view_content_nav__summary_video__title": "Відео зведення",
     "home_view_content_nav__summary_email__title": "Електронна пошта зведення",
-    "home_view_content_nav__summary_PDF__title": "PDF зведення"
+    "home_view_content_nav__summary_PDF__title": "PDF зведення",
+    "home_view__search__title": "Пошук з AI",
+    "home_view__search__description": "Отримуйте відповіді на будь-які питання з реальним доступом до Інтернету в режимі реального часу.",
+    "home_view__art__title": "Створюйте мистецтво та зображення з AI",
+    "home_view__art__description": "Перетворюйте свої бачення в захоплюючі зображення."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

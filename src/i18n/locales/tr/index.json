@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "Özetleme sayfası",
     "home_view_content_nav__summary_video__title": "Özetleme video",
     "home_view_content_nav__summary_email__title": "Özetleme e-posta",
-    "home_view_content_nav__summary_PDF__title": "Özetleme PDF"
+    "home_view_content_nav__summary_PDF__title": "Özetleme PDF",
+    "home_view__search__title": "Yapay Zeka destekli arama",
+    "home_view__search__description": "Gerçek zamanlı web erişimi ile herhangi bir soruya cevap alın.",
+    "home_view__art__title": "AI sanatı ve resimleri oluşturun",
+    "home_view__art__description": "Vizyonlarınızı etkileyici görüntülere dönüştürün."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

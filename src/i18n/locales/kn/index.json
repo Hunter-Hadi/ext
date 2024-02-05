@@ -593,7 +593,11 @@
     "home_view_content_nav__summary_page__title": "ಸಂಗ್ರಹಿಸಿ ಪುಟ",
     "home_view_content_nav__summary_video__title": "ಸಂಗ್ರಹಿಸಿ ವೀಡಿಯೊ",
     "home_view_content_nav__summary_email__title": "ಸಂಗ್ರಹಿಸಿ ಇಮೇಲ್",
-    "home_view_content_nav__summary_PDF__title": "ಸಂಗ್ರಹಿಸಿ PDF"
+    "home_view_content_nav__summary_PDF__title": "ಸಂಗ್ರಹಿಸಿ PDF",
+    "home_view__search__title": "AI ಶಕ್ತಿಯ ಹುಡುಕು",
+    "home_view__search__description": "ವಾಸ್ತವಿಕ ಸಮಯ ವೆಬ್‌ ಪ್ರವೇಶದೊಂದಿಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
+    "home_view__art__title": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
+    "home_view__art__description": "ನಿಮ್ಮ ಕನಸುಗಳನ್ನು ಅದ್ಭುತ ಚಿತ್ರಗಳಾಗಿ ಪರಿವರ್ತಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
@@ -29,10 +30,10 @@ const useInitSidebar = () => {
     currentSidebarConversation,
     sidebarSettings,
     currentSidebarConversationType,
-    currentSidebarConversationId,
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const { currentConversationIdRef } = useClientConversation()
   const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
@@ -145,33 +146,6 @@ const useInitSidebar = () => {
       updateSidebarConversationType('Chat')
     }
   }, [pageUrl])
-  // conversationID切换的时候的处理
-  const currentSidebarConversationIdRef = useRef(currentSidebarConversationId)
-  // useEffect(() => {
-  //   // 切换使用的AI provider
-  //   let destroy = false
-  //   if (currentSidebarConversationId) {
-  //     clientGetConversation(currentSidebarConversationId).then(
-  //       async (conversation) => {
-  //         if (conversation?.meta.AIProvider) {
-  //           if (!destroy) {
-  //             console.log(
-  //               '新版Conversation 切换Tab导致AIProvider',
-  //               conversation.meta.AIProvider,
-  //             )
-  //             await switchBackgroundChatSystemAIProvider(
-  //               conversation.meta.AIProvider,
-  //             )
-  //           }
-  //         }
-  //       },
-  //     )
-  //   }
-  //   currentSidebarConversationIdRef.current = currentSidebarConversationId
-  //   return () => {
-  //     destroy = true
-  //   }
-  // }, [currentSidebarConversationId])
   // 监听搜索引擎的continue search with ai
   useEffect(() => {
     const listener = (event: any) => {
@@ -187,9 +161,9 @@ const useInitSidebar = () => {
   })
   // focus的时候更新消息
   useFocus(() => {
-    if (currentSidebarConversationIdRef.current) {
+    if (currentConversationIdRef.current) {
       const start = new Date().getTime()
-      clientGetConversation(currentSidebarConversationIdRef.current).then(
+      clientGetConversation(currentConversationIdRef.current).then(
         (conversation) => {
           if (conversation) {
             console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')

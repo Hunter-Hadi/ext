@@ -295,12 +295,13 @@ const useDaemonProcess = () => {
                 break
               case 'OpenAIDaemonProcess_askChatGPTQuestion':
                 {
-                  const { taskId, question, meta } = data
+                  const { taskId, question, meta, isWebSocket } = data
                   log.info(
                     'OpenAIDaemonProcess_askChatGPTQuestion',
                     taskId,
                     question,
                     meta,
+                    isWebSocket,
                   )
                   const {
                     conversationId,
@@ -314,6 +315,12 @@ const useDaemonProcess = () => {
                   const ChatGPTAIModel = meta.ChatGPTAIModel
                   if (!conversation) {
                     if (ChatGPTAIModel) {
+                      if (
+                        isWebSocket &&
+                        chatGptInstanceRef.current.conversations
+                      ) {
+                        chatGptInstanceRef.current.conversations = []
+                      }
                       conversation = await chatGptInstanceRef.current?.createConversation(
                         conversationId,
                         ChatGPTAIModel,

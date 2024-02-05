@@ -186,7 +186,8 @@ class ChatSystem implements ChatSystemInterface {
                       question.meta?.regenerate &&
                       question.meta.attachments?.length
                     ) {
-                      await this.currentAdapter.uploadFiles(
+                      await this.currentAdapter.clearFiles()
+                      await this.currentAdapter.updateFiles(
                         question.meta.attachments,
                       )
                     }

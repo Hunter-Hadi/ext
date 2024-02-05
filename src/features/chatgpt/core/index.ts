@@ -86,6 +86,7 @@ export interface IChatGPTConversation {
 }
 
 export interface IChatGPTDaemonProcess {
+  conversations: ChatGPTConversation[]
   token?: string
   models: IChatGPTModelType[]
   plugins: IChatGPTPluginType[]
@@ -465,6 +466,18 @@ export class ChatGPTConversation {
               }
             })
             .concat(postMessage.messages[0].content.parts)
+          postMessage.messages[0].metadata = {
+            attachments: params.meta.attachments.map((chatUploadFile: any) => {
+              return {
+                name: chatUploadFile.name,
+                size: chatUploadFile.size,
+                id: chatUploadFile.id,
+                mimeType: chatUploadFile.type,
+                width: 0,
+                height: 0,
+              }
+            }),
+          }
         } catch (e) {
           // 防止报错影响运行
         }

@@ -127,7 +127,7 @@ class ChatGPTSocketService {
   private status: 'disconnected' | 'connecting' | 'connected' = 'disconnected'
   private socket: WebSocket | null = null
   private isDetected: boolean = false
-  private isSocketService: boolean = false
+  public isSocketService: boolean = false
   private messageListeners: Map<
     string,
     ChatGPTSocketServiceMessageListener
@@ -376,6 +376,7 @@ class ChatGPTSocketService {
         console.log(
           'ChatGPTWebapp Socket message',
           this.messageListeners,
+          this.socketIdMessageMap,
           message,
         )
         this.messageListeners.forEach((listener, messageId) => {
@@ -412,7 +413,7 @@ class ChatGPTSocketService {
           ChatGPTMessageRawData: cache.rawMessage,
         })
         this.socketIdMessageMap.delete(socketId)
-        this.messageListeners.delete(cache.messageId)
+        this.messageListeners.delete(cache.parentMessageId)
       }
       return
     }

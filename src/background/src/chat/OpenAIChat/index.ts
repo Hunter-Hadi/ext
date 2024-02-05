@@ -332,6 +332,25 @@ class OpenAIChat extends BaseChat {
             async (messageId, event) => {
               console.log('ChatGPTSocketManager', event)
               if (this.questionSender?.tab?.id) {
+                if (!this.isAnswering) {
+                  // 说明手动结束了
+                  await Browser.tabs.sendMessage(this.questionSender.tab.id, {
+                    id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+                    event: 'Client_askChatGPTQuestionResponse',
+                    data: {
+                      taskId,
+                      data: {
+                        messageId: event.messageId,
+                        parentMessageId: event.parentMessageId,
+                        conversationId: event.conversationId,
+                        text: event.text,
+                      },
+                      done: true,
+                      error: event.error,
+                    },
+                  })
+                  return
+                }
                 // messageId: string
                 // parentMessageId: string
                 // conversationId: string
@@ -395,6 +414,11 @@ class OpenAIChat extends BaseChat {
     }
   }
   async abortAskQuestion(messageId: string) {
+    // 目前ChatGPT webapp就是啥也没做，直接stop
+    if (ChatGPTSocketManager.socketService.isSocketService) {
+      this.isAnswering = false
+      return true
+    }
     const result = await this.sendDaemonProcessTask(
       'OpenAIDaemonProcess_abortAskChatGPTQuestion',
       {

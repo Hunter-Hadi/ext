@@ -85,6 +85,69 @@ const chatGptRequest = (
     body: data === undefined ? undefined : JSON.stringify(data),
   })
 }
+const getConversationFileUrl = async (params: {
+  token: string
+  conversationId: string
+  message_id: string
+  sandbox_path: string
+}) => {
+  const { token, conversationId, message_id, sandbox_path } = params
+  const fallbackUrl = `https://chat.openai.com/c/${conversationId}`
+  // https://chat.openai.com/backend-api/conversation/647c720d-9eeb-4986-8b89-112098f107b6/interpreter/download?message_id=895986d6-bd39-404e-a485-923cdb5c7476&sandbox_path=%2Fmnt%2Fdata%2Fclip_3s.mp4
+  try {
+    const resp = await chatGptRequest(
+      token,
+      'GET',
+      `/backend-api/conversation/${conversationId}/interpreter/download?message_id=${message_id}&sandbox_path=${sandbox_path}`,
+    )
+    const data = await resp.json()
+    // error_code:"ace_pod_expired"
+    // status:"error"
+    if (data?.status === 'error') {
+      return {
+        success: false,
+        data: fallbackUrl,
+        error: 'File Expired',
+      }
+    }
+    return {
+      success: true,
+      data: data?.download_url || fallbackUrl,
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      success: false,
+      data: fallbackUrl,
+      error: 'Network Error',
+    }
+  }
+}
+const getConversationDownloadFile = async (params: {
+  token: string
+  uuid: string
+}) => {
+  // https://chat.openai.com/backend-api/files/181e27fe-1a7b-4d14-ab17-68f70582ab30/download
+  const { token, uuid } = params
+  try {
+    const resp = await chatGptRequest(
+      token,
+      'GET',
+      `/backend-api/files/${uuid}/download`,
+    )
+    const data = await resp.json()
+    return {
+      success: true,
+      data: data?.download_url,
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      success: false,
+      data: '',
+    }
+  }
+}
 
 interface ChatGPTSocketServiceMessage {
   connectionId: string
@@ -388,10 +451,10 @@ class ChatGPTSocketService {
     }
   }
 
-  private processMessage(
+  private async processMessage(
     chatGPTSocketServiceMessage: ChatGPTSocketServiceMessage,
     onMessage: (data: ChatGPTSocketServiceMessageListenerData) => void,
-  ): void {
+  ): Promise<void> {
     if (
       !chatGPTSocketServiceMessage.message ||
       chatGPTSocketServiceMessage.message === ''
@@ -402,11 +465,78 @@ class ChatGPTSocketService {
       const socketId = chatGPTSocketServiceMessage.data?.response_id
       if (socketId && this.socketIdMessageMap.has(socketId)) {
         const cache = this.socketIdMessageMap.get(socketId)!
+        let newResultText = cache.text
+        // 渲染displayImage
+        if (this.token && cache.displayImages.length > 0) {
+          const imageUrls = await Promise.all(
+            cache.displayImages.map(async (displayImageId) => {
+              return await getConversationDownloadFile({
+                token: this.token!,
+                uuid: displayImageId,
+              })
+            }),
+          )
+          imageUrls.forEach((image) => {
+            if (image.success && image.data) {
+              newResultText = `![image](${image.data})\n${newResultText}`
+            }
+          })
+        }
+        // 解析resultText中的markdown链接
+        const markdownLinks = newResultText.match(/\[.*?\]\(.*?\)/g)
+        if (
+          cache.conversationId &&
+          cache.messageId &&
+          markdownLinks &&
+          markdownLinks.length > 0
+        ) {
+          const replaceDataList = await Promise.all(
+            markdownLinks.map(async (markdownLink) => {
+              // "[Download the clipped video](sandbox:/mnt/data/clip_3s.mp4)"
+              // split by "]("
+              const parts = markdownLink.split('](')
+              if (parts.length !== 2) {
+                return undefined
+              }
+              const text = parts[0].slice(1)
+              const url = parts[1].slice(0, -1)
+              if (!url.startsWith('sandbox:')) {
+                return undefined
+              }
+              const downloadFile = await getConversationFileUrl({
+                token: this.token!,
+                conversationId: cache.conversationId,
+                message_id: cache.messageId,
+                sandbox_path: url.replace('sandbox:', ''),
+              })
+              if (downloadFile.success) {
+                return {
+                  original: markdownLink,
+                  new: `[${text}](${downloadFile.data})`,
+                } as {
+                  original: string
+                  new: string
+                }
+              } else {
+                return undefined
+              }
+            }),
+          )
+
+          replaceDataList.forEach((replaceData) => {
+            if (replaceData) {
+              newResultText = newResultText.replace(
+                replaceData.original,
+                replaceData.new,
+              )
+            }
+          })
+        }
         onMessage({
           parentMessageId: cache.parentMessageId,
           messageId: cache.messageId,
           conversationId: cache.conversationId,
-          text: cache.text,
+          text: newResultText,
           error: '',
           done: true,
           ChatGPTSocketRawData: chatGPTSocketServiceMessage,
@@ -437,10 +567,12 @@ class ChatGPTSocketService {
           rawMessage,
         })
       }
+      const cache = this.socketIdMessageMap.get(socketId)!
       if (rawMessage.error) {
         onMessage({
           messageId,
-          parentMessageId,
+          // 因为parentMessageId和messageId都会变，只有socketId不会变，所以在第一次socketIdMessageMap之后，就不能改parentMessageId
+          parentMessageId: cache.parentMessageId,
           conversationId: rawMessage.conversation_id,
           text: '',
           error: rawMessage.error,
@@ -455,7 +587,6 @@ class ChatGPTSocketService {
         rawMessage.message?.content?.parts?.[0] ||
         rawMessage.message?.content?.text ||
         ''
-      const cache = this.socketIdMessageMap.get(socketId)!
       // web browsing object
       // {"message": {"id": "a1bad9ad-29b0-4ab3-8603-a9f6b4399fbb", "author": {"role": "assistant", "name": null, "metadata": {}}, "create_time": 1684210390.537254, "update_time": null, "content": {"content_type": "code", "language": "unknown", "text": "# To find out today's news, I'll perform a search.\nsearch(\"2023\u5e745\u670816\u65e5"}, "status": "in_progress", "end_turn": null, "weight": 1.0, "metadata": {"message_type": "next", "model_slug": "gpt-4-browsing"}, "recipient": "browser"}, "conversation_id": "3eade3ec-a3b7-4d04-941b-52347d533c80", "error": null}
       if (typeof text === 'string' && text.includes(`<<ImageDisplayed>>`)) {
@@ -471,6 +602,7 @@ class ChatGPTSocketService {
         }
       }
       if (rawMessage.message?.content?.content_type === 'multimodal_text') {
+        debugger
         // 判断是不是gpt-4 dalle的图片
         if (
           (rawMessage.message.content.parts?.[0] as any)?.content_type ===
@@ -492,7 +624,8 @@ class ChatGPTSocketService {
       this.socketIdMessageMap.set(socketId, cache)
       onMessage({
         messageId,
-        parentMessageId,
+        // 因为parentMessageId和messageId都会变，只有socketId不会变，所以在第一次socketIdMessageMap之后，就不能改parentMessageId
+        parentMessageId: cache.parentMessageId,
         done: false,
         conversationId: rawMessage.conversation_id,
         text: cache.text,

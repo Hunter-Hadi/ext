@@ -185,7 +185,10 @@ class ChatSystem implements ChatSystemInterface {
                       question.meta?.regenerate &&
                       question.meta.attachments?.length
                     ) {
-                      this.currentAdapter.chatFiles = question.meta.attachments
+                      await this.currentAdapter.clearFiles()
+                      await this.currentAdapter.updateFiles(
+                        question.meta.attachments,
+                      )
                     }
                   }
                   // 更新客户端的聊天记录

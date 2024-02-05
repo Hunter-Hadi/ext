@@ -318,11 +318,15 @@ class OpenAIChat extends BaseChat {
         }
       }
       meta.ChatGPTAIModel = this.conversation?.meta?.AIModel
+      // 初始化socket
       ChatGPTSocketManager.socketService.init(this.token || '')
+      // 判断是否是socket
       const isSocket = await ChatGPTSocketManager.socketService.detectChatGPTWebappIsSocket()
       if (isSocket) {
+        // 如果是socket, 在提问之前先连接socket
         const isConnectSuccess = await ChatGPTSocketManager.socketService.connect()
         if (isConnectSuccess) {
+          // 如果连接成功，监听question.messageId的消息
           ChatGPTSocketManager.socketService.onMessageIdListener(
             question.messageId,
             async (messageId, event) => {
@@ -365,6 +369,7 @@ class OpenAIChat extends BaseChat {
             isWebSocket: true,
           })
         } else if (this.questionSender.tab?.id) {
+          // 如果连接失败，直接返回错误
           await Browser.tabs.sendMessage(this.questionSender.tab.id, {
             id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
             event: 'Client_askChatGPTQuestionResponse',

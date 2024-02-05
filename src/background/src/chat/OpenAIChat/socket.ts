@@ -249,6 +249,10 @@ class ChatGPTSocketService {
           })
         }
       } else if (jsonData.type === 'message') {
+        console.log(
+          `ChatGPTWebapp handleSocketMessage [Message]`,
+          jsonData.from,
+        )
         if (jsonData.from === 'group') {
           const socketData = chatGPTWebappTransformData(
             jsonData.data,
@@ -416,8 +420,8 @@ class ChatGPTSocketService {
       const rawMessage: IChatGPTRawMessage = JSON.parse(
         chatGPTSocketServiceMessage.message,
       )
-      const messageId = rawMessage.message.id
-      const parentMessageId = rawMessage.message.metadata.parent_id || ''
+      const messageId = rawMessage?.message?.id || ''
+      const parentMessageId = rawMessage?.message?.metadata?.parent_id || ''
       const socketId = chatGPTSocketServiceMessage.data?.response_id
       if (!messageId || !socketId || !parentMessageId) {
         return

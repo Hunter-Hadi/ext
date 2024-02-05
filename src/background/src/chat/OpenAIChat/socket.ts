@@ -26,6 +26,9 @@
 //   "error": null
 // }
 //
+import { v4 as uuidV4 } from 'uuid'
+
+import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 
 interface IChatGPTRawMessage {
   message: {
@@ -120,8 +123,11 @@ export type ChatGPTSocketServiceMessageListener = (
 ) => void
 
 class ChatGPTSocketService {
+  private token: string | null = null
   private status: 'disconnected' | 'connecting' | 'connected' = 'disconnected'
   private socket: WebSocket | null = null
+  private isDetected: boolean = false
+  private isSocketService: boolean = false
   private messageListeners: Map<
     string,
     ChatGPTSocketServiceMessageListener
@@ -137,13 +143,17 @@ class ChatGPTSocketService {
       rawMessage: IChatGPTRawMessage
     }
   > = new Map()
-  public async connect(token: string): Promise<boolean> {
+
+  public init(token: string) {
+    this.token = token
+  }
+  public async connect(): Promise<boolean> {
     if (this.status === 'connected') {
       return true
     }
     await this.disconnect()
     this.status = 'connecting'
-    const result = await this.registerWebSocket(token)
+    const result = await this.registerWebSocket()
     if (result && result.wss_url) {
       return await this.createWebSocket(result.wss_url)
     }
@@ -158,9 +168,9 @@ class ChatGPTSocketService {
     return true
   }
 
-  private async registerWebSocket(token: string): Promise<any> {
+  private async registerWebSocket(): Promise<any> {
     const response = await chatGptRequest(
-      token,
+      this.token!,
       'POST',
       '/backend-api/register-websocket',
       {},
@@ -280,6 +290,73 @@ class ChatGPTSocketService {
     }
   }
 
+  public async detectChatGPTWebappIsSocket() {
+    if (this.isDetected) {
+      return this.isSocketService
+    }
+    if (this.token) {
+      let isSSE = false
+      let conversationId = ''
+      await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
+        provider: 'OPENAI_API',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+        body: JSON.stringify({
+          action: 'next',
+          arkose_token: null,
+          messages: [
+            {
+              id: uuidV4(),
+              author: {
+                role: 'user',
+              },
+              content: {
+                content_type: 'text',
+                parts: ['hi'],
+              },
+              metadata: {},
+            },
+          ],
+          parent_message_id: uuidV4(),
+          model: 'text-davinci-002-render-sha',
+        }),
+        onMessage: (message) => {
+          try {
+            if (!conversationId) {
+              const messageConversationId = JSON.parse(message).conversation_id
+              if (messageConversationId) {
+                conversationId = messageConversationId
+              }
+            }
+          } catch (e) {
+            console.log(e)
+          }
+          isSSE = true
+        },
+      })
+        .then()
+        .catch()
+      if (conversationId) {
+        // 删除会话
+        chatGptRequest(
+          this.token,
+          'PATCH',
+          `/backend-api/conversation/${conversationId}`,
+          {
+            is_visible: false,
+          },
+        )
+          .then()
+          .catch()
+      }
+      this.isSocketService = !isSSE
+      return this.isSocketService
+    }
+    return this.isSocketService
+  }
   public onMessageIdListener(
     messageId: string,
     listener: ChatGPTSocketServiceMessageListener,

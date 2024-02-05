@@ -86,6 +86,7 @@ export interface IChatGPTConversation {
 }
 
 export interface IChatGPTDaemonProcess {
+  conversations: ChatGPTConversation[]
   token?: string
   models: IChatGPTModelType[]
   plugins: IChatGPTPluginType[]

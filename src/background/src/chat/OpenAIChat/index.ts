@@ -247,26 +247,17 @@ class OpenAIChat extends BaseChat {
     }
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    if (this.conversation) {
-      // 更新conversation, 获取实际的ChatGPT conversation id
-      this.conversation = await ConversationManager.conversationDB.getConversationById(
-        this.conversation.id,
-      )
-    }
-    if (!this.conversation) {
-      const currentModel = (await getAIProviderSettings('OPENAI'))?.model
-      if (currentModel) {
-        await super.createConversation({
-          ...initConversationData,
-          meta: {
-            ...initConversationData.meta,
-            AIModel: currentModel,
-          },
-        })
-      } else {
-        await super.createConversation()
-      }
-    }
+    const currentModel = (await getAIProviderSettings('OPENAI'))?.model
+    const conversationId = await super.createConversation({
+      ...initConversationData,
+      meta: {
+        ...initConversationData.meta,
+        AIModel: currentModel,
+      },
+    })
+    this.conversation = await ConversationManager.conversationDB.getConversationById(
+      conversationId,
+    )
     await this.sendDaemonProcessTask('OpenAIDaemonProcess_createConversation', {
       conversationId: this.conversation?.meta?.AIConversationId || '',
       model: this.conversation?.meta?.AIModel || '',
@@ -327,58 +318,74 @@ class OpenAIChat extends BaseChat {
         }
       }
       meta.ChatGPTAIModel = this.conversation?.meta?.AIModel
-      const isConnectSuccess = await ChatGPTSocketManager.socketService.connect(
-        this.token || '',
-      )
-      if (isConnectSuccess) {
-        ChatGPTSocketManager.socketService.onMessageIdListener(
-          question.messageId,
-          async (messageId, event) => {
-            console.log('ChatGPTSocketManager', event)
-            if (this.questionSender?.tab?.id) {
-              // messageId: string
-              // parentMessageId: string
-              // conversationId: string
-              // text: string
-              // originalMessage?: IAIResponseOriginalMessage
-              await Browser.tabs.sendMessage(this.questionSender.tab.id, {
-                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-                event: 'Client_askChatGPTQuestionResponse',
-                data: {
-                  taskId,
+      ChatGPTSocketManager.socketService.init(this.token || '')
+      const isSocket = await ChatGPTSocketManager.socketService.detectChatGPTWebappIsSocket()
+      if (isSocket) {
+        const isConnectSuccess = await ChatGPTSocketManager.socketService.connect()
+        if (isConnectSuccess) {
+          ChatGPTSocketManager.socketService.onMessageIdListener(
+            question.messageId,
+            async (messageId, event) => {
+              console.log('ChatGPTSocketManager', event)
+              if (this.questionSender?.tab?.id) {
+                // messageId: string
+                // parentMessageId: string
+                // conversationId: string
+                // text: string
+                // originalMessage?: IAIResponseOriginalMessage
+                await Browser.tabs.sendMessage(this.questionSender.tab.id, {
+                  id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+                  event: 'Client_askChatGPTQuestionResponse',
                   data: {
-                    messageId: event.messageId,
-                    parentMessageId: event.parentMessageId,
-                    conversationId: event.conversationId,
-                    text: event.text,
+                    taskId,
+                    data: {
+                      messageId: event.messageId,
+                      parentMessageId: event.parentMessageId,
+                      conversationId: event.conversationId,
+                      text: event.text,
+                    },
+                    done: event.done,
+                    error: event.error,
                   },
-                  done: event.done,
-                  error: event.error,
-                },
-              })
-            }
-            if (event.done) {
-              this.isAnswering = false
-            }
+                })
+              }
+              if (event.done) {
+                this.isAnswering = false
+              }
+            },
+          )
+          // 发送真正的conversationID
+          if (this.conversation?.meta.AIConversationId) {
+            question.conversationId = this.conversation.meta.AIConversationId
+          }
+          this.sendDaemonProcessTask('OpenAIDaemonProcess_askChatGPTQuestion', {
+            taskId,
+            question,
+            meta: meta,
+            isWebSocket: true,
+          })
+        } else if (this.questionSender.tab?.id) {
+          await Browser.tabs.sendMessage(this.questionSender.tab.id, {
+            id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+            event: 'Client_askChatGPTQuestionResponse',
+            data: {
+              taskId,
+              data: null,
+              done: true,
+              error: 'socket connect failed',
+            },
+          })
+        }
+      } else {
+        await this.sendDaemonProcessTask(
+          'OpenAIDaemonProcess_askChatGPTQuestion',
+          {
+            taskId,
+            question,
+            meta: meta,
+            isWebSocket: false,
           },
         )
-        debugger
-        this.sendDaemonProcessTask('OpenAIDaemonProcess_askChatGPTQuestion', {
-          taskId,
-          question,
-          meta: meta,
-        })
-      } else if (this.questionSender.tab?.id) {
-        await Browser.tabs.sendMessage(this.questionSender.tab.id, {
-          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-          event: 'Client_askChatGPTQuestionResponse',
-          data: {
-            taskId,
-            data: null,
-            done: true,
-            error: 'socket connect failed',
-          },
-        })
       }
     }
   }

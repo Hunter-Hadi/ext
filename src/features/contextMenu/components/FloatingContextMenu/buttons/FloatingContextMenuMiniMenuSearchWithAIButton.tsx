@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipButton from '@/components/TooltipButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 
 const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
@@ -15,6 +16,7 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
 }> = (props) => {
   const { sx, placement, TooltipProps } = props
   const { t } = useTranslation(['common', 'client'])
+  const { createConversation } = useClientConversation()
   const { createSearchWithAI } = useSearchWithAI()
   return (
     <Stack
@@ -55,6 +57,7 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
         onClick={async (event) => {
           event.stopPropagation()
           event.preventDefault()
+          await createConversation('Search')
           const selectedText = window.getSelection()?.toString()
           if (selectedText) {
             await createSearchWithAI(selectedText, false)

@@ -6,7 +6,6 @@ import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
 import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useSetRecoilState } from 'recoil'
 
 import AutoHeightTextarea, {
   LINE_HEIGHT,
@@ -32,7 +31,6 @@ import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/Sideba
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { SidebarPageState } from '@/features/sidebar/store'
 import { clientRestartChromeExtension } from '@/utils'
 
 interface IGmailChatBoxProps {
@@ -61,9 +59,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isSetVariables, setIsSetVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
-  const { currentSidebarConversationType } = useSidebarSettings()
-
-  const setSidebarPageState = useSetRecoilState(SidebarPageState)
+  const {
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+  } = useSidebarSettings()
 
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
@@ -102,11 +101,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
 
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
-      // 新的消息发送时，重置消息列表的页码
-      setSidebarPageState((preState) => ({
-        ...preState,
-        messageListPageNum: 1,
-      }))
       onSendMessage && onSendMessage(value, options)
     },
     [onSendMessage],
@@ -147,14 +141,17 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         }
       />
 
-      <SidebarChatBoxMessageListContainer
-        loading={loading}
-        messages={messages}
-        writingMessage={writingMessage}
-        sx={{
-          textAlign: 'left',
-        }}
-      />
+      {currentSidebarConversationId && messages.length > 0 ? (
+        <SidebarChatBoxMessageListContainer
+          conversationId={currentSidebarConversationId}
+          loading={loading}
+          messages={messages}
+          writingMessage={writingMessage}
+          sx={{
+            textAlign: 'left',
+          }}
+        />
+      ) : null}
 
       <Stack
         className={'use-chat-gpt-ai__chat-box__input-box'}

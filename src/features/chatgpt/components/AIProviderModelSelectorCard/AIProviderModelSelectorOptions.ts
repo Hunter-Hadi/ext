@@ -1,4 +1,8 @@
 import { IAIProviderType } from '@/background/provider/chat'
+import {
+  MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import { ISidebarConversationType } from '@/features/sidebar/store'
 
 export type AIProviderModelSelectorOption = {
@@ -13,13 +17,13 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
   {
     mainPart: true,
     label: 'gpt-3.5-turbo',
-    value: 'gpt-3.5-turbo',
+    value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
     AIProvider: 'USE_CHAT_GPT_PLUS',
   },
   {
     mainPart: true,
     label: 'gpt-4-turbo',
-    value: 'gpt-4-0125-preview',
+    value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
     AIProvider: 'USE_CHAT_GPT_PLUS',
     tag: 'Vision',
   },

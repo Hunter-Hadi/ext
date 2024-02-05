@@ -11,7 +11,10 @@ import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  USE_CHAT_GPT_PLUS_MODELS,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import {
   IChromeExtensionLocalStorage,
   IChromeExtensionLocalStorageUpdateFunction,
@@ -29,7 +32,7 @@ import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
  */
 export const MAXAI_DEFAULT_AI_PROVIDER_CONFIG = {
   AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-  AIModel: 'gpt-3.5-turbo',
+  AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
 }
 
 export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStorage => {

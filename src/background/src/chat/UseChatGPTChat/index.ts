@@ -7,6 +7,7 @@ import {
   IMaxAIChatGPTBackendAPIType,
   IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
@@ -132,7 +133,10 @@ class UseChatGPTPlusChat extends BaseChat {
       userConfig!.model ||
       USE_CHAT_GPT_PLUS_MODELS[0].value
     const uploadFiles = await this.getFiles()
-    if (uploadFiles.length > 0 && currentModel === 'gpt-4-0125-preview') {
+    if (
+      uploadFiles.length > 0 &&
+      currentModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO
+    ) {
       uploadFiles.map((file) => {
         if (file.uploadedUrl && file.uploadStatus === 'success') {
           message_content.push({

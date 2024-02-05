@@ -5,6 +5,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { OPENAI_API_SYSTEM_MESSAGE } from '@/background/src/chat/OpenAIApiChat/types'
+import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import {
   IChatConversation,
   IChatConversationMeta,
@@ -44,17 +45,17 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
 } = {
   Chat: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: 'gpt-3.5-turbo',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
     maxTokens: 4096,
   },
   Summary: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: 'gpt-3.5-turbo',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
     maxTokens: PAGE_SUMMARY_MAX_TOKENS,
   },
   Search: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
-    AIModel: 'gpt-3.5-turbo',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
     maxTokens: 16384,
   },
   Art: {

@@ -5,6 +5,7 @@ import BaseChat from '@/background/src/chat/BaseChat'
 import {
   IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
@@ -130,7 +131,7 @@ class MaxAIDALLEChat extends BaseChat {
               chat_history,
               message_content,
               chrome_extension_version: APP_VERSION,
-              model_name: 'gpt-3.5-turbo',
+              model_name: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
               prompt_id: meta?.contextMenu?.id || 'chat',
               prompt_name: meta?.contextMenu?.text || 'chat',
             }),

@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
@@ -71,6 +72,13 @@ const AIProviderModelSelectorButton: FC<{
     const models = AI_PROVIDER_MODEL_MAP[currentChatAIProvider]
     const currentModel =
       models.find((model) => model.value === currentChatModel) || models?.[0]
+    if (!currentModel) {
+      return {
+        label: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+        value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+        AIProvider: 'USE_CHAT_GPT_PLUS',
+      }
+    }
     return {
       label: currentModel?.title || '',
       value: currentModel?.value || '',

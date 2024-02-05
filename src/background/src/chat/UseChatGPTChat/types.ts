@@ -31,11 +31,14 @@ export interface IMaxAIChatMessage {
   content: IMaxAIChatMessageContent[]
 }
 
+export const MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO = 'gpt-3.5-turbo'
+export const MAXAI_CHATGPT_MODEL_GPT_4_TURBO = 'gpt-4-turbo-preview'
+
 export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   {
     title: 'gpt-3.5-turbo',
     titleTag: '',
-    value: 'gpt-3.5-turbo',
+    value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
     maxTokens: 4096,
     tags: [],
     poweredBy: 'OpenAI',
@@ -86,7 +89,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
   },
   {
     title: 'gpt-4-turbo',
-    value: 'gpt-4-0125-preview',
+    value: MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
     titleTag: 'Vision',
     tags: ['Vision'],
     poweredBy: 'OpenAI',

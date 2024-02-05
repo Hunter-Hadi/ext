@@ -5,6 +5,7 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { base642file } from '@/background/utils/uplpadFileProcessHelper'
 import DynamicComponent from '@/components/DynamicComponent'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -31,9 +32,12 @@ export const useUploadImagesAndSwitchToVision = () => {
   const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
     if (
       currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
-      currentAIProviderModel !== 'gpt-4-0125-preview'
+      currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO
     ) {
-      await updateAIProviderModel('USE_CHAT_GPT_PLUS', 'gpt-4-0125-preview')
+      await updateAIProviderModel(
+        'USE_CHAT_GPT_PLUS',
+        MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+      )
       await createConversation('Chat')
     }
 
@@ -44,7 +48,7 @@ export const useUploadImagesAndSwitchToVision = () => {
   return {
     isChatGPTVision:
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
-      currentAIProviderModel === 'gpt-4-0125-preview',
+      currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
     uploadImagesAndSwitchToVision,
   }
 }

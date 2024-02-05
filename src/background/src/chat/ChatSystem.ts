@@ -47,6 +47,7 @@ class ChatSystem implements ChatSystemInterface {
   get status(): ChatStatus {
     if (this.currentAdapter) {
       if (this.currentAdapter.status === 'needAuth') {
+        // do nothing
       }
       return this.currentAdapter.status
     }
@@ -185,7 +186,9 @@ class ChatSystem implements ChatSystemInterface {
                       question.meta?.regenerate &&
                       question.meta.attachments?.length
                     ) {
-                      this.currentAdapter.chatFiles = question.meta.attachments
+                      await this.currentAdapter.uploadFiles(
+                        question.meta.attachments,
+                      )
                     }
                   }
                   // 更新客户端的聊天记录

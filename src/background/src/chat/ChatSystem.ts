@@ -47,6 +47,7 @@ class ChatSystem implements ChatSystemInterface {
   get status(): ChatStatus {
     if (this.currentAdapter) {
       if (this.currentAdapter.status === 'needAuth') {
+        // do nothing
       }
       return this.currentAdapter.status
     }

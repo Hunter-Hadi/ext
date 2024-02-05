@@ -1,10 +1,13 @@
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
-import { throttle } from 'lodash-es'
+import throttle from 'lodash-es/throttle'
 import React, { FC, useEffect, useRef } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
+import { useFocus } from '@/features/common/hooks/useFocus'
+import useInterval from '@/features/common/hooks/useInterval'
+import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
 
 export const messageListContainerId = 'message-list-scroll-container'
@@ -16,7 +19,10 @@ const SidebarChatBoxMessageItem = React.lazy(
     ),
 )
 
+const messageItemOnReadyFlag = 'message-item-on-ready-flag'
+
 interface IProps {
+  conversationId: string
   messages: IChatMessage[]
   writingMessage: IChatMessage | null
   loading?: boolean
@@ -24,46 +30,83 @@ interface IProps {
 }
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
-  const { writingMessage, messages, loading, sx } = props
+  const { conversationId, writingMessage, messages, loading, sx } = props
 
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
-  const scrolledToBottomRef = useRef(true)
+  // 用于判断 当前触发的 effect 时是否需要滚动到底部
+  const needScrollToBottomRef = useRef(true)
 
-  const { slicedMessageList } = useMessageListPaginator(messages, {
-    scrollContainerId: messageListContainerId,
-  })
+  const [messageItemIsReady, setMessageItemIsReady] = React.useState(false)
+
+  const { slicedMessageList, changePageNumber } = useMessageListPaginator(
+    !!(messageItemIsReady && conversationId),
+    scrollContainerRef,
+    messages,
+  )
+
+  // 用 interval 来找 message-item-on-ready-flag 元素
+  // 用于判断 Suspense 是否完成
+  // NOTE: 当然这是不干净的做法，如果找到了更好的做法需要替换
+  useInterval(
+    () => {
+      const sidebarRoot = getMaxAISidebarRootElement()
+      const messageItemOnReadyFlagElement = sidebarRoot?.querySelector(
+        `#${messageItemOnReadyFlag}`,
+      )
+      if (messageItemOnReadyFlagElement) {
+        setMessageItemIsReady(true)
+      }
+    },
+    messageItemIsReady ? null : 200,
+  )
+
+  const handleScrollToBottom = (force = false) => {
+    const containerElement = scrollContainerRef.current
+    if (force) {
+      needScrollToBottomRef.current = true
+    }
+    if (needScrollToBottomRef.current && containerElement) {
+      containerElement.scrollTo(0, containerElement.scrollHeight)
+    }
+  }
+
+  // messageItemIsReady 为 true 时，滚动到底部
+  useEffect(() => {
+    messageItemIsReady && handleScrollToBottom()
+  }, [messageItemIsReady])
+
+  // 当 loading 变化为 true 时，强制滚动到底部
+  useEffect(() => {
+    if (loading) {
+      handleScrollToBottom(true)
+      setTimeout(() => {
+        changePageNumber(1)
+      }, 0)
+    }
+  }, [loading])
 
   useEffect(() => {
-    const containerElement = scrollContainerRef.current
-    if (scrolledToBottomRef.current && containerElement) {
-      containerElement.scrollTo(0, containerElement.scrollHeight)
+    if (writingMessage) {
+      handleScrollToBottom()
     }
   }, [writingMessage])
 
+  // 当 conversationId 变化时，强制滚动到底部
   useEffect(() => {
-    if (loading) {
-      // 这里的 scrollToBottom 需要兼容 search / summary 的情况
-      // 当在 loading 时，如果最后一条消息是 search / summary
-      // 判断 scrolledToBottomRef.current 为 true 时滚动到底部
-      const lastMessage = messages[messages.length - 1]
-      if (lastMessage && lastMessage.type === 'ai') {
-        const lastMessageOriginalData = (lastMessage as IAIResponseMessage)
-          ?.originalMessage
-        if (
-          lastMessageOriginalData &&
-          (lastMessageOriginalData.metadata?.shareType === 'search' ||
-            lastMessageOriginalData.metadata?.shareType === 'summary')
-        ) {
-          const containerElement = scrollContainerRef.current
-          if (scrolledToBottomRef.current && containerElement) {
-            containerElement.scrollTo(0, containerElement.scrollHeight)
-          }
-        }
-      }
+    if (messageItemIsReady && conversationId) {
+      // conversationId 变换的时候，message 有几率为空数组导致页面没有 scrollHeight
+      // 所以这里需要滚动两次，
+      handleScrollToBottom(true)
+      setTimeout(() => {
+        changePageNumber(1)
+        handleScrollToBottom(true)
+      }, 500)
     }
-  }, [loading, messages])
+  }, [messageItemIsReady && conversationId])
 
+  // 当用户主动滚动 message list 时，如果滚动到底部，设置 needScrollToBottomRef.current 为 true
+  // 当用户主动滚动 message list 时，如果往顶部滚动，设置 needScrollToBottomRef.current 为 false
   useEffect(() => {
     const containerElement = scrollContainerRef.current
     if (!containerElement) {
@@ -71,7 +114,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     }
     const handleScroll = (event: any) => {
       if (event.deltaY < 0) {
-        scrolledToBottomRef.current = false
+        needScrollToBottomRef.current = false
         return
       }
       const scrollTop = containerElement.scrollTop
@@ -79,7 +122,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       const clientHeight = containerElement.clientHeight
       const isScrolledToBottom = clientHeight + scrollTop >= scrollHeight
       if (isScrolledToBottom) {
-        scrolledToBottomRef.current = true
+        needScrollToBottomRef.current = true
       }
     }
 
@@ -89,57 +132,54 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       containerElement.removeEventListener('wheel', throttleHandleScroll)
   }, [])
 
+  // 当页面 onfocus 时，判断 是否需要滚动到底部
+  useFocus(handleScrollToBottom)
+
+  // const lastScrollId = useRef('')
+  // useEffect(() => {
+  //   if (messages.length > 0) {
+  //     for (let i = messages.length - 1; i >= 0; i--) {
+  //       const message = messages[i]
+  //       if (message) {
+  //         // if (message.type === 'user' || message.type === 'system') {
+  //         const containerElement = scrollContainerRef.current
+  //         if (
+  //           lastScrollId.current &&
+  //           lastScrollId.current !== message.messageId
+  //         ) {
+  //           needScrollToBottomRef.current = true
+  //           setTimeout(() => {
+  //             containerElement &&
+  //               containerElement.scrollTo(0, containerElement.scrollHeight)
+  //           }, 0)
+  //         }
+  //         lastScrollId.current = message.messageId
+  //         break
+  //       }
+  //     }
+  //   }
+  // }, [messages])
+
   useEffect(() => {
-    // 当页面 onfocus 时，需要判断 scrolledToBottomRef.current 是否为 true
-    const focusListener = () => {
-      const containerElement = scrollContainerRef.current
-      if (containerElement) {
-        scrolledToBottomRef.current &&
-          containerElement.scrollTo(0, containerElement.scrollHeight)
-
-        // TODO
-        /**
-         * 待优化的点
-         * 现在只是用 setTimeout 来等待 SidebarChatBoxMessageItem Suspense 完成的延迟
-         * 正确的做法应该是在 SidebarChatBoxMessageItem Suspense 完成时触发一个 callback 来让 scrolledToBottomRef滚动至底部
-         * 不过还没找到正确方法
-         */
-        setTimeout(() => {
-          scrolledToBottomRef.current &&
-            containerElement.scrollTo(0, containerElement.scrollHeight)
-        }, 1000)
-      }
-    }
-
-    focusListener()
-    window.addEventListener('focus', focusListener)
-    return () => window.removeEventListener('focus', focusListener)
-  }, [])
-
-  const lastScrollId = useRef('')
-  useEffect(() => {
-    if (messages.length > 0) {
-      for (let i = messages.length - 1; i >= 0; i--) {
-        const message = messages[i]
-        if (message) {
-          // if (message.type === 'user' || message.type === 'system') {
-          const containerElement = scrollContainerRef.current
-          if (
-            lastScrollId.current &&
-            lastScrollId.current !== message.messageId
-          ) {
-            scrolledToBottomRef.current = true
-            setTimeout(() => {
-              containerElement &&
-                containerElement.scrollTo(0, containerElement.scrollHeight)
-            }, 0)
-          }
-          lastScrollId.current = message.messageId
-          break
+    if (loading) {
+      // 这里的 scrollToBottom 需要兼容 search / summary 的情况
+      // 当在 loading 时，如果最后一条消息是 search / summary
+      // 判断 needScrollToBottomRef.current 为 true 时滚动到底部
+      const lastMessage = messages[messages.length - 1]
+      if (lastMessage && lastMessage.type === 'ai') {
+        const lastMessageOriginalData = (lastMessage as IAIResponseMessage)
+          ?.originalMessage
+        if (
+          lastMessageOriginalData &&
+          (lastMessageOriginalData.metadata?.shareType === 'search' ||
+            lastMessageOriginalData.metadata?.shareType === 'summary' ||
+            lastMessageOriginalData.metadata?.shareType === 'art')
+        ) {
+          handleScrollToBottom()
         }
       }
     }
-  }, [messages])
+  }, [loading, messages])
 
   return (
     <Box
@@ -153,6 +193,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
       }}
     >
       <AppSuspenseLoadingLayout>
+        <Box id={messageItemOnReadyFlag} />
         {slicedMessageList.map((message, index) => {
           return (
             <SidebarChatBoxMessageItem

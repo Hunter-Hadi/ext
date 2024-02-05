@@ -1,16 +1,12 @@
-import { throttle } from 'lodash-es'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { debounce, throttle } from 'lodash-es'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { IChatMessage } from '@/features/chatgpt/types'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 
 import { SidebarPageState } from '../store'
 
 interface ISliceMessageOptions {
-  // 滚动容器的元素id
-  scrollContainerId?: string
-
   // 监听列表第几个元素（从上往下数）
   buffer?: number
 
@@ -18,15 +14,14 @@ interface ISliceMessageOptions {
 }
 
 const useMessageListPaginator = (
+  ready: boolean,
+  scrollContainerRef: React.RefObject<HTMLElement>,
   list: IChatMessage[],
   coverOptions?: ISliceMessageOptions,
 ) => {
-  const [loaded, setLoaded] = useState(false)
-
   const {
     // 经过测试 buffer 为 0 时，滚动翻页的效果最好
     buffer = 0,
-    scrollContainerId = '',
     pageSize = 10,
   } = coverOptions || {}
 
@@ -61,8 +56,7 @@ const useMessageListPaginator = (
   )
 
   const getScrollContainerElement = () => {
-    const root = getMaxAISidebarRootElement()
-    return root?.querySelector<HTMLElement>(`#${scrollContainerId}`)
+    return scrollContainerRef?.current
   }
 
   const getMessageListItems = () => {
@@ -78,48 +72,22 @@ const useMessageListPaginator = (
     return []
   }
 
-  const checkContainerListIsLoaded = useCallback(async () => {
-    return new Promise((resolve) => {
-      // 轮询 containerList
-      const pollingContainerList = () => {
-        let timer: number | null = null
-        if (timer) {
-          window.clearTimeout(timer)
-        }
-        const scrollContainer = getScrollContainerElement()
-        if (scrollContainer) {
-          resolve(true)
-          return
-        }
-        timer = window.setTimeout(() => {
-          pollingContainerList()
-        }, 200)
-      }
-      pollingContainerList()
-    })
-  }, [])
-
-  useEffect(() => {
-    // 检查 containerList 是否已经加载
-    checkContainerListIsLoaded().then(() => {
-      // 由于 容器在加载 message list 时滚动条会在顶部，所以需要延迟等待，容器自动滚动到底部时才开始监听
-      setTimeout(() => {
-        setLoaded(true)
-      }, 1000)
-    })
-  }, [])
-
   const loadMore = useCallback(() => {
+    if (!ready) {
+      return
+    }
     setPageNum((prePageNum) => {
       if (prePageNum * pageSize >= total) {
         return prePageNum
       }
       return prePageNum + 1
     })
-  }, [total, pageSize])
+  }, [ready, total, pageSize])
 
   const loadMoreRef = useRef(loadMore)
-  useEffect(() => (loadMoreRef.current = throttle(loadMore, 1000)), [loadMore])
+  useEffect(() => {
+    loadMoreRef.current = debounce(loadMore, 100)
+  }, [loadMore])
 
   const startMonitor = useCallback(() => {
     if (observer.current) {
@@ -140,7 +108,7 @@ const useMessageListPaginator = (
             // 因为只监听某个item 所以只有一个
             const monitorEl = entries[0]
             if (monitorEl.isIntersecting) {
-              console.log('trigger loadMore', target)
+              console.log('zztest trigger loadMore', target)
               loadMoreRef.current()
             }
           }
@@ -185,17 +153,17 @@ const useMessageListPaginator = (
   }, [refreshMonitorTarget, slicedMessageList])
 
   useEffect(() => {
-    if (loaded && list.length > pageSize) {
+    if (ready && list.length > pageSize) {
       startMonitor()
     }
 
     return () => {
       observer.current && observer.current.disconnect()
     }
-  }, [loaded, startMonitor, list, pageSize])
+  }, [ready, startMonitor, list, pageSize])
 
   useEffect(() => {
-    if (!loaded || list.length <= pageSize) {
+    if (!ready || list.length <= pageSize) {
       return
     }
 
@@ -213,27 +181,25 @@ const useMessageListPaginator = (
     return () => {
       scrollContainer?.removeEventListener('scroll', debounceRecordScrollInfo)
     }
-  }, [loaded, list])
+  }, [ready, list.length, pageSize])
 
   useEffect(() => {
-    setPageNum(1)
-  }, [total])
-
-  useEffect(() => {
-    if (!loaded) {
+    if (!ready) {
       return
     }
-    // 当 slicedMessageList 变化时，代表滚动加载了
+    // 当 pageNum 变化时，代表滚动加载了
     // 需要把滚动位置移动到 lastTimeObserverTarget.current 的位置
     const scrollContainer = getScrollContainerElement()
-    if (scrollContainer && scrollTop.current > 0) {
+    console.log(`zztest scrollTop.current`, scrollTop.current)
+    if (scrollContainer && scrollTop.current >= 0) {
       const currentScrollHeight = scrollContainer?.scrollHeight
       scrollContainer.scrollTop =
         scrollTop.current + currentScrollHeight - originalScrollHeight.current
     }
-  }, [loaded, slicedMessageList])
+  }, [ready, pageNum])
 
   return {
+    pageNum: sidebarPageState.messageListPageNum,
     slicedMessageList,
     loadMore,
     changePageNumber: useCallback((page: number) => setPageNum(page), []),

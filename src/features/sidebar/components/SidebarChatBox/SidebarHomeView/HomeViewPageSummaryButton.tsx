@@ -1,6 +1,6 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { useMemo, useRef } from 'react'
+import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -33,10 +33,6 @@ const HomeViewPageSummaryButton = () => {
   const handleClick = () => {
     updateSidebarConversationType('Summary')
   }
-  const i18nKeyRef = useRef(textWithPageSummaryType())
-  const buttonText = useMemo(() => {
-    return t(i18nKeyRef.current as any)
-  }, [t])
 
   if (isMaxAIImmersiveChatPage()) {
     return null
@@ -74,7 +70,7 @@ const HomeViewPageSummaryButton = () => {
         lineHeight={1.5}
         color="inherit"
       >
-        {buttonText}
+        {t(textWithPageSummaryType() as any)}
       </Typography>
     </Stack>
   )

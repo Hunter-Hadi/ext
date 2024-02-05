@@ -5,7 +5,6 @@ import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { UseChatGptIcon } from '@/components/CustomIcon'
 import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNav'
 import HomeViewPdfDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewPdfDropBox'
 import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
@@ -133,7 +132,8 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
         sx={sx}
       >
         <Stack justifyContent={'center'} alignItems={'center'}>
-          <UseChatGptIcon
+          <ContextMenuIcon
+            icon={'Art'}
             sx={{
               color: 'primary.main',
               fontSize: '48px',

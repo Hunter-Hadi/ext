@@ -597,7 +597,17 @@
     "home_view__search__title": "AI 強化搜尋",
     "home_view__search__description": "即時網路存取，獲得任何問題的答案。",
     "home_view__art__title": "創作 AI 藝術與圖像",
-    "home_view__art__description": "將您的想像轉化為令人驚豔的圖像。"
+    "home_view__art__description": "將您的想像轉化為令人驚豔的圖像。",
+    "sidebar__conversation_share__share_button__title": "分享",
+    "sidebar__conversation_share__copy_button__copy_link": "複製連結",
+    "sidebar__conversation_share__share_panel__title": "查看訪問權限",
+    "sidebar__conversation_share__share_panel__private_button__title": "私密",
+    "sidebar__conversation_share__share_panel__private_button__description": "只有您可以查看此內容",
+    "sidebar__conversation_share__share_panel__public_button__title": "可分享",
+    "sidebar__conversation_share__share_panel__public_button__description": "任何擁有連結的人都可以查看此內容",
+    "sidebar__conversation_share__share_panel__copied_tip": "已複製連結",
+    "sidebar__conversation_share__share_panel__success_tip": "已將共享對話 URL 複製到剪貼簿！",
+    "sidebar__conversation_share__share_panel__error_tip": "無法分享。請檢查您的網路連線或稍後再試。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

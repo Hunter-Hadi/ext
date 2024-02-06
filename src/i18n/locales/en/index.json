@@ -597,7 +597,17 @@
     "sidebar__ai_provider__model_selector__third_party_ai_provider__description": "3rd-party AI providers are not managed by MaxAI. We highly recommend using our premium AI providers for fast and high-quality AI experience.",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__selector__title": "3rd-party AI providers",
     "sidebar__ai_provider__provider_selector__disabled__description": "AI provider disabled in extension for upgrade. Please try later.",
-    "sidebar__chat__advanced__title": "Advanced chat options"
+    "sidebar__chat__advanced__title": "Advanced chat options",
+    "sidebar__conversation_share__share_button__title": "Share",
+    "sidebar__conversation_share__copy_button__copy_link": "Copy link",
+    "sidebar__conversation_share__share_panel__title": "View access",
+    "sidebar__conversation_share__share_panel__private_button__title": "Secret",
+    "sidebar__conversation_share__share_panel__private_button__description": "Only you can view this",
+    "sidebar__conversation_share__share_panel__public_button__title": "Shareable",
+    "sidebar__conversation_share__share_panel__public_button__description": "Anyone with the link can view this",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link copied",
+    "sidebar__conversation_share__share_panel__success_tip": "The shared conversation URL has been copied to the clipboard!",
+    "sidebar__conversation_share__share_panel__error_tip": "Unable to share at the moment. Please check your network or try again later."
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

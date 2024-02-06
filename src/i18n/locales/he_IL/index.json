@@ -597,7 +597,17 @@
     "home_view__search__title": "חיפוש מופעל על ידי AI",
     "home_view__search__description": "קבל תשובות לכל שאלה עם גישה בזמן אמת לרשת האינטרנט.",
     "home_view__art__title": "צור אמנות ותמונות בעזרת AI",
-    "home_view__art__description": "הפוך את החזונות שלך לתמונות מרהיבות."
+    "home_view__art__description": "הפוך את החזונות שלך לתמונות מרהיבות.",
+    "sidebar__conversation_share__share_button__title": "שיתוף",
+    "sidebar__conversation_share__copy_button__copy_link": "העתק קישור",
+    "sidebar__conversation_share__share_panel__title": "צפייה בגישה",
+    "sidebar__conversation_share__share_panel__private_button__title": "סודי",
+    "sidebar__conversation_share__share_panel__private_button__description": "רק אתה יכול לצפות בזה",
+    "sidebar__conversation_share__share_panel__public_button__title": "ניתן לשיתוף",
+    "sidebar__conversation_share__share_panel__public_button__description": "כל אחד עם הקישור יכול לצפות בזה",
+    "sidebar__conversation_share__share_panel__copied_tip": "הקישור הועתק",
+    "sidebar__conversation_share__share_panel__success_tip": "קישור השיחה ששותף הועתק ללוח עריכה!",
+    "sidebar__conversation_share__share_panel__error_tip": "לא ניתן לשתף כרגע. אנא בדוק את הרשת שלך או נסה שוב מאוחר יותר."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

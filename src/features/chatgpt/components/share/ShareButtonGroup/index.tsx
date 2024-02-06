@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { IChatConversationShareConfig } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -22,6 +23,7 @@ const createShareLink = (shareId: string) => {
 }
 
 const ShareButtonGroup: FC = () => {
+  const { t } = useTranslation(['client'])
   const { currentSidebarConversation } = useSidebarSettings()
   const [isUploadingConversation, setIsUploadingConversation] = useState(false)
   const [buttonLoading, setButtonLoading] = useState(false)
@@ -47,18 +49,21 @@ const ShareButtonGroup: FC = () => {
       setButtonLoading(true)
       const enabled = shareType === 'public'
       const shareConfig = await clientFetchMaxAIAPI<{
-        id: string
+        status: string
+        data?: {
+          id?: string
+        }
       }>('/conversation/share_conversation', {
         id: currentSidebarConversation.id,
         share_enabled: enabled,
       })
-      if (shareConfig.data.status === 'OK') {
+      if (shareConfig?.data?.status === 'OK') {
         await clientUpdateChatConversation(
           currentSidebarConversation.id,
           {
             share: {
               enabled,
-              shareId: shareId || shareConfig.data.data!.id,
+              shareId: shareId || shareConfig?.data?.data?.id || '',
               shareType,
             },
           },
@@ -88,7 +93,7 @@ const ShareButtonGroup: FC = () => {
     } else {
       const errorTips = () => {
         globalSnackbar.error(
-          'Unable to share at the moment: please check your network connection or try again later as our service may be temporarily unavailable.',
+          t('client:sidebar__conversation_share__share_panel__error_tip'),
           {
             anchorOrigin: {
               vertical: 'top',
@@ -107,35 +112,40 @@ const ShareButtonGroup: FC = () => {
         // 消息是分开存的, 需要删除
         delete needUploadConversation.messages
         // 需要上传
-        const result = await clientFetchMaxAIAPI(
-          '/conversation/upsert_conversation',
-          needUploadConversation,
-        )
-        if (result.data.status !== 'OK') {
+        const result = await clientFetchMaxAIAPI<{
+          status: string
+        }>('/conversation/upsert_conversation', needUploadConversation)
+        if (result.data?.status !== 'OK') {
           errorTips()
           return
         }
         // 上传消息
         const conversationId = needUploadConversation.id
-        // 每次上传50条消息
-        const perUploadCount = 50
+        // 每次上传30条消息
+        const perUploadCount = 30
         const messageChunks = []
         for (let i = 0; i < needUploadMessages.length; i += perUploadCount) {
           messageChunks.push(needUploadMessages.slice(i, i + perUploadCount))
         }
         for (const messageChunk of messageChunks) {
-          let result = await clientFetchMaxAIAPI('/conversation/add_messages', {
+          let result = await clientFetchMaxAIAPI<{
+            status: string
+          }>('/conversation/add_messages', {
             conversation_id: conversationId,
             messages: messageChunk,
           })
           // 重试2次
-          if (result.data.status !== 'OK') {
-            result = await clientFetchMaxAIAPI('/conversation/add_messages', {
+          if (result.data?.status !== 'OK') {
+            result = await clientFetchMaxAIAPI<{
+              status: string
+            }>('/conversation/add_messages', {
               conversation_id: conversationId,
               messages: messageChunk,
             })
-            if (result.data.status !== 'OK') {
-              await clientFetchMaxAIAPI('/conversation/add_messages', {
+            if (result.data?.status !== 'OK') {
+              await clientFetchMaxAIAPI<{
+                status: string
+              }>('/conversation/add_messages', {
                 conversation_id: conversationId,
                 messages: messageChunk,
               })
@@ -144,12 +154,15 @@ const ShareButtonGroup: FC = () => {
         }
         // 上传完消息后, 获取分享链接
         const shareConfig = await clientFetchMaxAIAPI<{
-          id: string
+          status: string
+          data?: {
+            id?: string
+          }
         }>('/conversation/share_conversation', {
           id: conversationId,
           share_enabled: true,
         })
-        if (result.data.status !== 'OK' || !shareConfig?.data?.data?.id) {
+        if (result.data?.status !== 'OK' || !shareConfig?.data?.data?.id) {
           errorTips()
           return
         }
@@ -175,7 +188,7 @@ const ShareButtonGroup: FC = () => {
     const shareLink = createShareLink(currentCopyShareId)
     navigator.clipboard.writeText(shareLink)
     snackNotifications.success(
-      'The shared conversation URL has been copied to the clipboard!',
+      t('client:sidebar__conversation_share__share_panel__success_tip'),
       {
         anchorOrigin: {
           vertical: 'top',
@@ -199,6 +212,9 @@ const ShareButtonGroup: FC = () => {
       {isShareable && shareId && (
         <CopyTooltipIconButton
           copyText={createShareLink(shareId)}
+          copyToClipboardTooltip={
+            'client:sidebar__conversation_share__copy_button__copy_link'
+          }
           icon={<ContextMenuIcon icon={'Link'} />}
           sx={{
             display: 'flex',
@@ -238,7 +254,9 @@ const ShareButtonGroup: FC = () => {
             icon={'Lock'}
           />
         )}
-        <Typography component={'span'}>Share</Typography>
+        <Typography component={'span'}>
+          {t('sidebar__conversation_share__share_button__title')}
+        </Typography>
       </LoadingButton>
       <Menu
         PaperProps={{
@@ -261,7 +279,7 @@ const ShareButtonGroup: FC = () => {
       >
         <Stack py={1} px={2} width={320} gap={1}>
           <Typography fontSize={16} fontWeight={500}>
-            View Access
+            {t('sidebar__conversation_share__share_panel__title')}
           </Typography>
           <Stack
             sx={{
@@ -281,6 +299,7 @@ const ShareButtonGroup: FC = () => {
             }}
           >
             <Button
+              data-testid={'maxai--conversation--share-private-button'}
               disabled={buttonLoading}
               onClick={async () => {
                 await switchShareType('private')
@@ -303,7 +322,9 @@ const ShareButtonGroup: FC = () => {
                     fontSize={'14px'}
                     color={'text.primary'}
                   >
-                    Private
+                    {t(
+                      'client:sidebar__conversation_share__share_panel__private_button__title',
+                    )}
                   </Typography>
                   {!isShareable && (
                     <ContextMenuIcon
@@ -317,7 +338,9 @@ const ShareButtonGroup: FC = () => {
                   fontSize={'12px'}
                   color={'text.secondary'}
                 >
-                  Only you can view this
+                  {t(
+                    'client:sidebar__conversation_share__share_panel__private_button__description',
+                  )}
                 </Typography>
               </Stack>
             </Button>
@@ -344,7 +367,9 @@ const ShareButtonGroup: FC = () => {
                     fontSize={'14px'}
                     color={'text.primary'}
                   >
-                    Shareable
+                    {t(
+                      'client:sidebar__conversation_share__share_panel__public_button__title',
+                    )}
                   </Typography>
                   {isShareable && (
                     <ContextMenuIcon
@@ -358,7 +383,9 @@ const ShareButtonGroup: FC = () => {
                   fontSize={'12px'}
                   color={'text.secondary'}
                 >
-                  Anyone with the link can view this
+                  {t(
+                    'client:sidebar__conversation_share__share_panel__public_button__description',
+                  )}
                 </Typography>
               </Stack>
             </Button>
@@ -374,7 +401,9 @@ const ShareButtonGroup: FC = () => {
                 fontSize={'12px'}
                 color={'#379837'}
               >
-                Link copied
+                {t(
+                  'client:sidebar__conversation_share__share_panel__copied_tip',
+                )}
               </Typography>
             </Stack>
           )}

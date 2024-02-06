@@ -597,7 +597,17 @@
     "home_view__search__title": "Vyhľadávanie s umelou inteligenciou",
     "home_view__search__description": "Získajte odpovede na akékoľvek otázky s okamžitým prístupom na web.",
     "home_view__art__title": "Vytvorte umelecké diela a obrázky s umelou inteligenciou",
-    "home_view__art__description": "Premieňte svoje predstavy na ohromujúce obrázky."
+    "home_view__art__description": "Premieňte svoje predstavy na ohromujúce obrázky.",
+    "sidebar__conversation_share__share_button__title": "Zdieľať",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopírovať odkaz",
+    "sidebar__conversation_share__share_panel__title": "Pristup k zobrazeniu",
+    "sidebar__conversation_share__share_panel__private_button__title": "Tajné",
+    "sidebar__conversation_share__share_panel__private_button__description": "Iba vy môžete to vidieť",
+    "sidebar__conversation_share__share_panel__public_button__title": "Zdieľateľné",
+    "sidebar__conversation_share__share_panel__public_button__description": "Kto má odkaz, môže to vidieť",
+    "sidebar__conversation_share__share_panel__copied_tip": "Odkaz skopírovaný",
+    "sidebar__conversation_share__share_panel__success_tip": "URL zdieľanej konverzácie bolo skopírované do schránky!",
+    "sidebar__conversation_share__share_panel__error_tip": "Momentálne nie je možné zdieľať. Skontrolujte svoje pripojenie alebo skúste znova neskôr."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

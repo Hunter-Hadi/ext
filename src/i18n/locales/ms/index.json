@@ -597,7 +597,17 @@
     "home_view__search__title": "Carian dikuasakan AI",
     "home_view__search__description": "Dapatkan jawapan kepada sebarang soalan dengan akses web secara langsung.",
     "home_view__art__title": "Cipta seni & imej AI",
-    "home_view__art__description": "Ubah wawasan anda menjadi imej yang menakjubkan."
+    "home_view__art__description": "Ubah wawasan anda menjadi imej yang menakjubkan.",
+    "sidebar__conversation_share__share_button__title": "Kongsi",
+    "sidebar__conversation_share__copy_button__copy_link": "Salin pautan",
+    "sidebar__conversation_share__share_panel__title": "Akses paparan",
+    "sidebar__conversation_share__share_panel__private_button__title": "Rahsia",
+    "sidebar__conversation_share__share_panel__private_button__description": "Hanya anda yang boleh melihat ini",
+    "sidebar__conversation_share__share_panel__public_button__title": "Boleh dikongsi",
+    "sidebar__conversation_share__share_panel__public_button__description": "Sesiapa sahaja dengan pautan boleh melihat ini",
+    "sidebar__conversation_share__share_panel__copied_tip": "Pautan disalin",
+    "sidebar__conversation_share__share_panel__success_tip": "URL perbualan yang dikongsi telah disalin ke papan klip!",
+    "sidebar__conversation_share__share_panel__error_tip": "Tidak dapat berkongsi buat masa ini. Sila periksa rangkaian anda atau cuba lagi kemudian."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

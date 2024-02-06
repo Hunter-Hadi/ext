@@ -597,7 +597,17 @@
     "home_view__search__title": "എ.ഐ.-പവർഡ് തിരച്ചിൽ",
     "home_view__search__description": "പ്രശ്നങ്ങൾക്ക് പ്രത്യേക സമയത്ത് വെബ്ബ് ആക്സസ് ഉപയോഗിച്ച് ഉത്തരങ്ങൾ നേടുക.",
     "home_view__art__title": "എ.ഐ. കലയും ചിത്രങ്ങളും സൃഷ്ടിക്കുക",
-    "home_view__art__description": "നിങ്ങളുടെ ദർശനങ്ങൾ അതിഭീഷണിയായ ചിത്രങ്ങളാക്കുക."
+    "home_view__art__description": "നിങ്ങളുടെ ദർശനങ്ങൾ അതിഭീഷണിയായ ചിത്രങ്ങളാക്കുക.",
+    "sidebar__conversation_share__share_button__title": "പങ്കിടുക",
+    "sidebar__conversation_share__copy_button__copy_link": "ലിങ്ക് പകർത്തുക",
+    "sidebar__conversation_share__share_panel__title": "ആക്സസ് കാണുക",
+    "sidebar__conversation_share__share_panel__private_button__title": "രഹസ്യം",
+    "sidebar__conversation_share__share_panel__private_button__description": "നിങ്ങൾക്ക് മാത്രം കാണാവുന്നു",
+    "sidebar__conversation_share__share_panel__public_button__title": "പങ്കരായം",
+    "sidebar__conversation_share__share_panel__public_button__description": "ലിങ്ക് ഉപയോഗിച്ച് എവിടെയും കാണാവുന്നു",
+    "sidebar__conversation_share__share_panel__copied_tip": "ലിങ്ക് പകർത്തി",
+    "sidebar__conversation_share__share_panel__success_tip": "പങ്കിട്ട സംഭാഷണത്തിന്റെ URL ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തപ്പെട്ടു!",
+    "sidebar__conversation_share__share_panel__error_tip": "നിലവിലെയായി പങ്കിടാൻ കഴിയില്ല. ദയവായി നിങ്ങളുടെ നെറ്റ്വർക്ക് പരിശോധിക്കുക അല്ലെങ്കിൽ പിന്നീട് ശ്രമിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

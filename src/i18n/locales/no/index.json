@@ -597,7 +597,17 @@
     "home_view__search__title": "AI-drevet søk",
     "home_view__search__description": "Få svar på alle spørsmål med sanntids web-tilgang.",
     "home_view__art__title": "Lag AI-kunst og bilder",
-    "home_view__art__description": "Gjør visjonene dine om til fantastiske bilder."
+    "home_view__art__description": "Gjør visjonene dine om til fantastiske bilder.",
+    "sidebar__conversation_share__share_button__title": "Del",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopier lenke",
+    "sidebar__conversation_share__share_panel__title": "Vis tilgang",
+    "sidebar__conversation_share__share_panel__private_button__title": "Hemmelig",
+    "sidebar__conversation_share__share_panel__private_button__description": "Bare du kan se dette",
+    "sidebar__conversation_share__share_panel__public_button__title": "Delelig",
+    "sidebar__conversation_share__share_panel__public_button__description": "Alle med lenken kan se dette",
+    "sidebar__conversation_share__share_panel__copied_tip": "Lenke kopiert",
+    "sidebar__conversation_share__share_panel__success_tip": "Den delte samtalelenken er kopiert til utklippstavlen!",
+    "sidebar__conversation_share__share_panel__error_tip": "Kan ikke dele for øyeblikket. Sjekk nettverket ditt eller prøv igjen senere."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

@@ -597,7 +597,17 @@
     "home_view__search__title": "Yapay Zeka destekli arama",
     "home_view__search__description": "Gerçek zamanlı web erişimi ile herhangi bir soruya cevap alın.",
     "home_view__art__title": "AI sanatı ve resimleri oluşturun",
-    "home_view__art__description": "Vizyonlarınızı etkileyici görüntülere dönüştürün."
+    "home_view__art__description": "Vizyonlarınızı etkileyici görüntülere dönüştürün.",
+    "sidebar__conversation_share__share_button__title": "Paylaş",
+    "sidebar__conversation_share__copy_button__copy_link": "Bağlantıyı Kopyala",
+    "sidebar__conversation_share__share_panel__title": "Erişimi Görüntüle",
+    "sidebar__conversation_share__share_panel__private_button__title": "Gizli",
+    "sidebar__conversation_share__share_panel__private_button__description": "Sadece siz bunu görebilir",
+    "sidebar__conversation_share__share_panel__public_button__title": "Paylaşılabilir",
+    "sidebar__conversation_share__share_panel__public_button__description": "Bağlantıya sahip herkes bunu görebilir",
+    "sidebar__conversation_share__share_panel__copied_tip": "Bağlantı kopyalandı",
+    "sidebar__conversation_share__share_panel__success_tip": "Paylaşılan konuşma URL'si panoya kopyalandı!",
+    "sidebar__conversation_share__share_panel__error_tip": "Şu anda paylaşılamıyor. Lütfen ağınızı kontrol edin veya daha sonra tekrar deneyin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

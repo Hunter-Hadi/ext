@@ -597,7 +597,17 @@
     "home_view__search__title": "AI پاورڈ تلاش",
     "home_view__search__description": "حقیقی وقت کے ویب رسائی کے ساتھ کسی بھی سوال کے جوابات حاصل کریں۔",
     "home_view__art__title": "AI آرٹ اور تصاویر بنائیں",
-    "home_view__art__description": "اپنی تصورات کو دلکش تصاویر میں تبدیل کریں۔"
+    "home_view__art__description": "اپنی تصورات کو دلکش تصاویر میں تبدیل کریں۔",
+    "sidebar__conversation_share__share_button__title": "تقسیم کریں",
+    "sidebar__conversation_share__copy_button__copy_link": "لنک کاپی کریں",
+    "sidebar__conversation_share__share_panel__title": "دسترسی دیکھیں",
+    "sidebar__conversation_share__share_panel__private_button__title": "خفیہ",
+    "sidebar__conversation_share__share_panel__private_button__description": "صرف آپ اسے دیکھ سکتے ہیں",
+    "sidebar__conversation_share__share_panel__public_button__title": "شئیر کرنے کے قابل",
+    "sidebar__conversation_share__share_panel__public_button__description": "لنک کے ساتھ کوئی بھی اسے دیکھ سکتا ہے",
+    "sidebar__conversation_share__share_panel__copied_tip": "لنک کاپی ہوگئی",
+    "sidebar__conversation_share__share_panel__success_tip": "مشترکہ گفتگو کا URL کلپ بورڈ میں کاپی کر لیا گیا ہے!",
+    "sidebar__conversation_share__share_panel__error_tip": "موجودہ وقت میں تقسیم نہیں کی جا سکتی ہے. براہ کرم اپنا نیٹ ورک چیک کریں یا بعد میں دوبارہ کوشش کریں."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

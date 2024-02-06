@@ -597,7 +597,17 @@
     "home_view__search__title": "AI-alapú keresés",
     "home_view__search__description": "Kapjon válaszokat bármilyen kérdésre valós idejű webhely hozzáféréssel.",
     "home_view__art__title": "Hozzon létre AI művészetet és képeket",
-    "home_view__art__description": "Változtassa meg látomásait lenyűgöző képekkel."
+    "home_view__art__description": "Változtassa meg látomásait lenyűgöző képekkel.",
+    "sidebar__conversation_share__share_button__title": "Megosztás",
+    "sidebar__conversation_share__copy_button__copy_link": "Link másolása",
+    "sidebar__conversation_share__share_panel__title": "Hozzáférés megtekintése",
+    "sidebar__conversation_share__share_panel__private_button__title": "Titkos",
+    "sidebar__conversation_share__share_panel__private_button__description": "Csak te láthatod ezt",
+    "sidebar__conversation_share__share_panel__public_button__title": "Megosztható",
+    "sidebar__conversation_share__share_panel__public_button__description": "Bárki, aki rendelkezik a linkkel, megtekintheti ezt",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link másolva",
+    "sidebar__conversation_share__share_panel__success_tip": "A megosztott beszélgetés URL-je másolva lett a vágólapra!",
+    "sidebar__conversation_share__share_panel__error_tip": "Jelenleg nem lehet megosztani. Kérlek, ellenőrizd a hálózatot vagy próbáld újra később."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

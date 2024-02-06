@@ -597,7 +597,17 @@
     "home_view__search__title": "Tìm kiếm được cung cấp bởi trí tuệ nhân tạo",
     "home_view__search__description": "Nhận câu trả lời cho bất kỳ câu hỏi nào với truy cập web thời gian thực.",
     "home_view__art__title": "Tạo nghệ thuật và hình ảnh AI",
-    "home_view__art__description": "Biến những ý tưởng của bạn thành những hình ảnh tuyệt đẹp."
+    "home_view__art__description": "Biến những ý tưởng của bạn thành những hình ảnh tuyệt đẹp.",
+    "sidebar__conversation_share__share_button__title": "Chia sẻ",
+    "sidebar__conversation_share__copy_button__copy_link": "Sao chép liên kết",
+    "sidebar__conversation_share__share_panel__title": "Xem truy cập",
+    "sidebar__conversation_share__share_panel__private_button__title": "Bí mật",
+    "sidebar__conversation_share__share_panel__private_button__description": "Chỉ bạn có thể xem điều này",
+    "sidebar__conversation_share__share_panel__public_button__title": "Có thể chia sẻ",
+    "sidebar__conversation_share__share_panel__public_button__description": "Ai đó có thể xem điều này qua liên kết",
+    "sidebar__conversation_share__share_panel__copied_tip": "Liên kết đã được sao chép",
+    "sidebar__conversation_share__share_panel__success_tip": "URL cuộc trò chuyện đã được chia sẻ đã được sao chép vào clipboard!",
+    "sidebar__conversation_share__share_panel__error_tip": "Không thể chia sẻ lúc này. Vui lòng kiểm tra kết nối mạng hoặc thử lại sau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

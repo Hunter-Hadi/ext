@@ -597,7 +597,17 @@
     "home_view__search__title": "ஏதேனும் கேள்விகளுக்கு பதில் பெறுங்கள்",
     "home_view__search__description": "உண்மையான இணைய அணுகலுடன் எந்த கேள்விக்கும் பதில்களைப் பெறுங்கள்.",
     "home_view__art__title": "ஐயம் கலை & படங்கள் உருவாக்குங்கள்",
-    "home_view__art__description": "உங்கள் காட்சிகளை அழகாக்குங்கள் மாற்றுங்கள்."
+    "home_view__art__description": "உங்கள் காட்சிகளை அழகாக்குங்கள் மாற்றுங்கள்.",
+    "sidebar__conversation_share__share_button__title": "பகிர்",
+    "sidebar__conversation_share__copy_button__copy_link": "இணைப்பு நகலெடு",
+    "sidebar__conversation_share__share_panel__title": "அணுகலைப் பார்",
+    "sidebar__conversation_share__share_panel__private_button__title": "ரகசியமானது",
+    "sidebar__conversation_share__share_panel__private_button__description": "நீங்களே இதைப் பார்க்கலாம்",
+    "sidebar__conversation_share__share_panel__public_button__title": "பகிரக்கூடியது",
+    "sidebar__conversation_share__share_panel__public_button__description": "இணைப்புடன் எவரும் இதைப் பார்க்கலாம்",
+    "sidebar__conversation_share__share_panel__copied_tip": "இணைப்பு நகலெடுக்கப்பட்டது",
+    "sidebar__conversation_share__share_panel__success_tip": "பகிரப்பட்ட உரையாடல் URL க்கு நகலெடுக்கப்பட்டுள்ளது!",
+    "sidebar__conversation_share__share_panel__error_tip": "தற்போது பகிர முடியவில்லை. உங்கள் நெட்வொர்க்கை சரிபார்க்கவும் அல்லது பின்னர் முயற்சிக்கவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

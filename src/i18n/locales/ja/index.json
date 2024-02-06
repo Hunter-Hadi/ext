@@ -597,7 +597,17 @@
     "home_view__search__title": "AIパワーのある検索",
     "home_view__search__description": "リアルタイムのウェブアクセスでどんな質問にも答えを得ることができます。",
     "home_view__art__title": "AIアート＆画像の作成",
-    "home_view__art__description": "あなたのビジョンを見事な画像に変えましょう。"
+    "home_view__art__description": "あなたのビジョンを見事な画像に変えましょう。",
+    "sidebar__conversation_share__share_button__title": "共有",
+    "sidebar__conversation_share__copy_button__copy_link": "リンクをコピー",
+    "sidebar__conversation_share__share_panel__title": "アクセスを表示",
+    "sidebar__conversation_share__share_panel__private_button__title": "秘密",
+    "sidebar__conversation_share__share_panel__private_button__description": "あなただけがこれを表示できます",
+    "sidebar__conversation_share__share_panel__public_button__title": "共有可能",
+    "sidebar__conversation_share__share_panel__public_button__description": "リンクを持っている人は誰でもこれを表示できます",
+    "sidebar__conversation_share__share_panel__copied_tip": "リンクがコピーされました",
+    "sidebar__conversation_share__share_panel__success_tip": "共有された会話のURLがクリップボードにコピーされました！",
+    "sidebar__conversation_share__share_panel__error_tip": "現在共有できません。ネットワークを確認するか、後でもう一度試してください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

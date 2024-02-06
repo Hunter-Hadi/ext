@@ -597,7 +597,17 @@
     "home_view__search__title": "AI-शक्तिपूर्ण शोध",
     "home_view__search__description": "वेब प्रवेशासह तत्काल उत्तरे मिळवा.",
     "home_view__art__title": "AI कला आणि प्रतिमा तयार करा",
-    "home_view__art__description": "तुमच्या दृष्टींना अद्भुत छायाचित्रे बदला."
+    "home_view__art__description": "तुमच्या दृष्टींना अद्भुत छायाचित्रे बदला.",
+    "sidebar__conversation_share__share_button__title": "सामायिक करा",
+    "sidebar__conversation_share__copy_button__copy_link": "लिंक कॉपी करा",
+    "sidebar__conversation_share__share_panel__title": "पहा प्रवेश",
+    "sidebar__conversation_share__share_panel__private_button__title": "रहस्य",
+    "sidebar__conversation_share__share_panel__private_button__description": "फक्त आपण पहू शकता",
+    "sidebar__conversation_share__share_panel__public_button__title": "शेअर करण्यायोग्य",
+    "sidebar__conversation_share__share_panel__public_button__description": "लिंकसह कोणताही बघू शकतो",
+    "sidebar__conversation_share__share_panel__copied_tip": "लिंक कॉपी केली",
+    "sidebar__conversation_share__share_panel__success_tip": "सामायिक केलेले संवाद URL क्लिपबोर्डवर कॉपी केले गेले आहे!",
+    "sidebar__conversation_share__share_panel__error_tip": "आत्ताच सामायिक करणे संपादित करण्यास अक्षम. कृपया आपले नेटवर्क तपासा किंवा नंतर पुन्हा प्रयत्न करा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

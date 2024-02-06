@@ -597,7 +597,17 @@
     "home_view__search__title": "การค้นหาด้วย AI",
     "home_view__search__description": "รับคำตอบสำหรับคำถามใดๆ ด้วยการเข้าถึงเว็บแบบเรียลไทม์",
     "home_view__art__title": "สร้างศิลปะและรูปภาพด้วย AI",
-    "home_view__art__description": "แปลงความคิดของคุณให้กลายเป็นภาพที่น่าตื่นตา"
+    "home_view__art__description": "แปลงความคิดของคุณให้กลายเป็นภาพที่น่าตื่นตา",
+    "sidebar__conversation_share__share_button__title": "แชร์",
+    "sidebar__conversation_share__copy_button__copy_link": "คัดลอกลิงก์",
+    "sidebar__conversation_share__share_panel__title": "ดูการเข้าถึง",
+    "sidebar__conversation_share__share_panel__private_button__title": "ลับ",
+    "sidebar__conversation_share__share_panel__private_button__description": "คุณเท่านั้นที่สามารถดูได้",
+    "sidebar__conversation_share__share_panel__public_button__title": "สามารถแชร์",
+    "sidebar__conversation_share__share_panel__public_button__description": "ใครก็ตามที่มีลิงก์สามารถดูได้",
+    "sidebar__conversation_share__share_panel__copied_tip": "คัดลอกลิงก์แล้ว",
+    "sidebar__conversation_share__share_panel__success_tip": "URL การสนทนาที่แชร์ได้ถูกคัดลอกไปยังคลิปบอร์ดแล้ว!",
+    "sidebar__conversation_share__share_panel__error_tip": "ไม่สามารถแชร์ได้ในขณะนี้ โปรดตรวจสอบเครือข่ายหรือลองอีกครั้งในภายหลัง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

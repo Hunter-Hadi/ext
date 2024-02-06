@@ -597,7 +597,17 @@
     "home_view__search__title": "KI-unterstützte Suche",
     "home_view__search__description": "Erhalten Sie Antworten auf alle Fragen mit Echtzeit-Webzugriff.",
     "home_view__art__title": "Erstellen Sie KI-Kunst & Bilder",
-    "home_view__art__description": "Verwandeln Sie Ihre Visionen in atemberaubende Bilder."
+    "home_view__art__description": "Verwandeln Sie Ihre Visionen in atemberaubende Bilder.",
+    "sidebar__conversation_share__share_button__title": "Teilen",
+    "sidebar__conversation_share__copy_button__copy_link": "Link kopieren",
+    "sidebar__conversation_share__share_panel__title": "Zugriff anzeigen",
+    "sidebar__conversation_share__share_panel__private_button__title": "Geheim",
+    "sidebar__conversation_share__share_panel__private_button__description": "Nur Sie können dies anzeigen",
+    "sidebar__conversation_share__share_panel__public_button__title": "Freigeben",
+    "sidebar__conversation_share__share_panel__public_button__description": "Jeder mit dem Link kann dies anzeigen",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link kopiert",
+    "sidebar__conversation_share__share_panel__success_tip": "Die URL des geteilten Gesprächs wurde in die Zwischenablage kopiert!",
+    "sidebar__conversation_share__share_panel__error_tip": "Aktuell ist kein Teilen möglich. Bitte überprüfen Sie Ihr Netzwerk oder versuchen Sie es später erneut."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

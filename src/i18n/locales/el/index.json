@@ -597,7 +597,17 @@
     "home_view__search__title": "Αναζήτηση με AI",
     "home_view__search__description": "Λάβετε απαντήσεις σε οποιεσδήποτε ερωτήσεις με πρόσβαση σε πραγματικό χρόνο στον ιστό.",
     "home_view__art__title": "Δημιουργία τέχνης και εικόνων με AI",
-    "home_view__art__description": "Μετατρέψτε τις εικόνες σας σε εκπληκτικά έργα τέχνης."
+    "home_view__art__description": "Μετατρέψτε τις εικόνες σας σε εκπληκτικά έργα τέχνης.",
+    "sidebar__conversation_share__share_button__title": "Κοινοποίηση",
+    "sidebar__conversation_share__copy_button__copy_link": "Αντιγραφή συνδέσμου",
+    "sidebar__conversation_share__share_panel__title": "Προβολή πρόσβασης",
+    "sidebar__conversation_share__share_panel__private_button__title": "Μυστικό",
+    "sidebar__conversation_share__share_panel__private_button__description": "Μόνο εσείς μπορείτε να το δείτε",
+    "sidebar__conversation_share__share_panel__public_button__title": "Δυνατότητα κοινοποίησης",
+    "sidebar__conversation_share__share_panel__public_button__description": "Οποιοσδήποτε με τον σύνδεσμο μπορεί να το δεί",
+    "sidebar__conversation_share__share_panel__copied_tip": "Αντιγράφηκε ο σύνδεσμος",
+    "sidebar__conversation_share__share_panel__success_tip": "Ο URL της κοινόχρηστης συνομιλίας αντιγράφηκε στο πρόχειρο!",
+    "sidebar__conversation_share__share_panel__error_tip": "Δεν είναι δυνατή η κοινοποίηση αυτήν τη στιγμή. Ελέγξτε το δίκτυό σας ή προσπαθήστε ξανά αργότερα."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

@@ -597,7 +597,17 @@
     "home_view__search__title": "Cerca impulsada per IA",
     "home_view__search__description": "Obtén respostes a qualsevol pregunta amb accés web en temps real.",
     "home_view__art__title": "Crea art i imatges amb IA",
-    "home_view__art__description": "Converteix les teves visions en imatges impressionants."
+    "home_view__art__description": "Converteix les teves visions en imatges impressionants.",
+    "sidebar__conversation_share__share_button__title": "Compartir",
+    "sidebar__conversation_share__copy_button__copy_link": "Copiar enllaç",
+    "sidebar__conversation_share__share_panel__title": "Veure accés",
+    "sidebar__conversation_share__share_panel__private_button__title": "Secret",
+    "sidebar__conversation_share__share_panel__private_button__description": "Només tu pots veure això",
+    "sidebar__conversation_share__share_panel__public_button__title": "Compartible",
+    "sidebar__conversation_share__share_panel__public_button__description": "Qualsevol persona amb l'enllaç pot veure això",
+    "sidebar__conversation_share__share_panel__copied_tip": "Enllaç copiat",
+    "sidebar__conversation_share__share_panel__success_tip": "L'URL de la conversa compartida s'ha copiat al porta-retalls!",
+    "sidebar__conversation_share__share_panel__error_tip": "No es pot compartir en aquest moment. Comproveu la vostra xarxa o torneu-ho a provar més tard."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

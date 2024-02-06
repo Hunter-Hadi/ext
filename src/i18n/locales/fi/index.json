@@ -597,7 +597,17 @@
     "home_view__search__title": "Tekoälyllä varustettu haku",
     "home_view__search__description": "Saat vastauksia mihin tahansa kysymykseen reaaliaikaisella verkkopääsyllä.",
     "home_view__art__title": "Luo tekoälytaidetta ja kuvia",
-    "home_view__art__description": "Muunna visiosi upeiksi kuviksi."
+    "home_view__art__description": "Muunna visiosi upeiksi kuviksi.",
+    "sidebar__conversation_share__share_button__title": "Jaa",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopioi linkki",
+    "sidebar__conversation_share__share_panel__title": "Näytä pääsy",
+    "sidebar__conversation_share__share_panel__private_button__title": "Salainen",
+    "sidebar__conversation_share__share_panel__private_button__description": "Vain sinä voit nähdä tämän",
+    "sidebar__conversation_share__share_panel__public_button__title": "Jaettavissa",
+    "sidebar__conversation_share__share_panel__public_button__description": "Kuka tahansa linkin kanssa voi nähdä tämän",
+    "sidebar__conversation_share__share_panel__copied_tip": "Linkki kopioitu",
+    "sidebar__conversation_share__share_panel__success_tip": "Jaetun keskustelun URL on kopioitu leikepöydälle!",
+    "sidebar__conversation_share__share_panel__error_tip": "Jakaminen ei tällä hetkellä ole mahdollista. Tarkista verkkoyhteytesi tai yritä myöhemmin uudelleen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

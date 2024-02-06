@@ -597,7 +597,17 @@
     "home_view__search__title": "Pencarian berbasis AI",
     "home_view__search__description": "Dapatkan jawaban untuk pertanyaan apa pun dengan akses web real-time.",
     "home_view__art__title": "Buat seni & gambar AI",
-    "home_view__art__description": "Ubah visi Anda menjadi gambar yang menakjubkan."
+    "home_view__art__description": "Ubah visi Anda menjadi gambar yang menakjubkan.",
+    "sidebar__conversation_share__share_button__title": "Bagikan",
+    "sidebar__conversation_share__copy_button__copy_link": "Salin tautan",
+    "sidebar__conversation_share__share_panel__title": "Akses tampilan",
+    "sidebar__conversation_share__share_panel__private_button__title": "Rahasia",
+    "sidebar__conversation_share__share_panel__private_button__description": "Hanya Anda yang dapat melihat ini",
+    "sidebar__conversation_share__share_panel__public_button__title": "Dapat Dibagikan",
+    "sidebar__conversation_share__share_panel__public_button__description": "Siapa pun dengan tautan dapat melihat ini",
+    "sidebar__conversation_share__share_panel__copied_tip": "Tautan disalin",
+    "sidebar__conversation_share__share_panel__success_tip": "URL percakapan yang dibagikan telah disalin ke clipboard!",
+    "sidebar__conversation_share__share_panel__error_tip": "Tidak dapat membagikan saat ini. Harap periksa jaringan Anda atau coba lagi nanti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

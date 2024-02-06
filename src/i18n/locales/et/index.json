@@ -597,7 +597,17 @@
     "home_view__search__title": "AI-toega otsing",
     "home_view__search__description": "Saage vastused kõigile küsimustele reaalajas veebipääsu abil.",
     "home_view__art__title": "Loo AI kunst ja pildid",
-    "home_view__art__description": "Muutke oma visioonid hämmastavateks piltideks."
+    "home_view__art__description": "Muutke oma visioonid hämmastavateks piltideks.",
+    "sidebar__conversation_share__share_button__title": "Jaga",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopeeri link",
+    "sidebar__conversation_share__share_panel__title": "Vaata juurdepääsu",
+    "sidebar__conversation_share__share_panel__private_button__title": "Salajane",
+    "sidebar__conversation_share__share_panel__private_button__description": "Seda saab vaadata ainult sina",
+    "sidebar__conversation_share__share_panel__public_button__title": "Jagatav",
+    "sidebar__conversation_share__share_panel__public_button__description": "Igaüks, kellel on link, saab seda vaadata",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link kopeeritud",
+    "sidebar__conversation_share__share_panel__success_tip": "Jagatud vestluse URL on kopeeritud lõikelauale!",
+    "sidebar__conversation_share__share_panel__error_tip": "Hetkel ei saa jagada. Palun kontrolli oma võrku või proovi hiljem uuesti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

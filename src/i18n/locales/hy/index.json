@@ -594,7 +594,17 @@
     "home_view__search__title": "Արվեստագիտության որոնում AI-ի միջոցով",
     "home_view__search__description": "Ստացեք պատասխաններ ցանկացած հարցերին իրական ժամանակաշրջանային վեբ մուտքով։",
     "home_view__art__title": "Ստեղծեք AI արվեստը և պատկերները",
-    "home_view__art__description": "Վերադարձրեք ձեր տեսարժանությունները հեռուստագեղձ պատկերների։"
+    "home_view__art__description": "Վերադարձրեք ձեր տեսարժանությունները հեռուստագեղձ պատկերների։",
+    "sidebar__conversation_share__share_button__title": "Կիսվել",
+    "sidebar__conversation_share__copy_button__copy_link": "Պատճենել հղումը",
+    "sidebar__conversation_share__share_panel__title": "Դիտել մասնակցությունը",
+    "sidebar__conversation_share__share_panel__private_button__title": "Գաղտնաբառային",
+    "sidebar__conversation_share__share_panel__private_button__description": "Միայն Դուք կարող եք դիտել այսը",
+    "sidebar__conversation_share__share_panel__public_button__title": "Կարող է կիսվել",
+    "sidebar__conversation_share__share_panel__public_button__description": "Այլոք՝ ուղիղ հղման հետ կարող են դիտել այսը",
+    "sidebar__conversation_share__share_panel__copied_tip": "Հղումը պատճենված է",
+    "sidebar__conversation_share__share_panel__success_tip": "Կիսվելու հղումը բեռնվել է ստեղծած սեզմանական URL-ին!",
+    "sidebar__conversation_share__share_panel__error_tip": "Չհաջողվեց կիսելը։ Խնդրում ենք ստուգել ձեր ցանցային կամ փորձել նորից։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

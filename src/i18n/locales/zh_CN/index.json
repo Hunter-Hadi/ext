@@ -597,7 +597,17 @@
     "home_view__search__title": "AI 助力搜索",
     "home_view__search__description": "实时网络访问，获取任何问题的答案。",
     "home_view__art__title": "创作 AI 艺术与图像",
-    "home_view__art__description": "将您的想象变成令人惊叹的图像。"
+    "home_view__art__description": "将您的想象变成令人惊叹的图像。",
+    "sidebar__conversation_share__share_button__title": "分享",
+    "sidebar__conversation_share__copy_button__copy_link": "复制链接",
+    "sidebar__conversation_share__share_panel__title": "查看访问权限",
+    "sidebar__conversation_share__share_panel__private_button__title": "私密",
+    "sidebar__conversation_share__share_panel__private_button__description": "只有您可以查看此内容",
+    "sidebar__conversation_share__share_panel__public_button__title": "可共享",
+    "sidebar__conversation_share__share_panel__public_button__description": "任何拥有链接的人都可以查看此内容",
+    "sidebar__conversation_share__share_panel__copied_tip": "链接已复制",
+    "sidebar__conversation_share__share_panel__success_tip": "已将共享对话的URL复制到剪贴板！",
+    "sidebar__conversation_share__share_panel__error_tip": "无法分享。请检查您的网络或稍后重试。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -4,6 +4,7 @@ import { IChatConversation } from '@/background/src/chatConversations/index'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { IChatMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 export const maxAIRequest = async (path: string, data: any) => {
   return await fetch(`${APP_USE_CHAT_GPT_API_HOST}${path}`, {
@@ -103,12 +104,33 @@ export const addOrUpdateDBConversationMessages = async (
     if (!conversation.share?.shareId) {
       return false
     }
-    console.log('DB_Conversation addOrUpdateDBConversationMessages', messages)
+    const filteredMessages = messages
+      .filter((message) => {
+        if (isAIMessage(message)) {
+          if (message.originalMessage) {
+            return message.originalMessage.metadata?.isComplete
+          }
+        }
+        return message
+      })
+      .map((message) => {
+        if (!message.parentMessageId) {
+          message.parentMessageId = ''
+        }
+        return message
+      })
+    if (filteredMessages.length === 0) {
+      return
+    }
+    console.log(
+      'DB_Conversation addOrUpdateDBConversationMessages',
+      filteredMessages,
+    )
     const response = await maxAIMessageRequest(
       '/conversation/add_messages',
       {
         conversation_id: conversation.id,
-        messages,
+        messages: filteredMessages,
       },
       conversation,
     )
@@ -165,7 +187,7 @@ export const getDBConversationMessages = async (
   },
 ) => {
   try {
-    const response = await maxAIMessageRequest(
+    await maxAIMessageRequest(
       '/conversation/get_messages',
       {
         conversation_id: conversation.id,
@@ -173,10 +195,8 @@ export const getDBConversationMessages = async (
       },
       conversation,
     )
-    debugger
     return true
   } catch (e) {
-    debugger
     return false
   }
 }

@@ -597,7 +597,17 @@
     "home_view__search__title": "البحث بقوة الذكاء الاصطناعي",
     "home_view__search__description": "احصل على إجابات على أي أسئلة مع وصول فوري إلى الويب.",
     "home_view__art__title": "إنشاء فن وصور بقوة الذكاء الاصطناعي",
-    "home_view__art__description": "حوّل رؤيتك إلى صور مذهلة."
+    "home_view__art__description": "حوّل رؤيتك إلى صور مذهلة.",
+    "sidebar__conversation_share__share_button__title": "مشاركة",
+    "sidebar__conversation_share__copy_button__copy_link": "نسخ الرابط",
+    "sidebar__conversation_share__share_panel__title": "عرض الوصول",
+    "sidebar__conversation_share__share_panel__private_button__title": "سري",
+    "sidebar__conversation_share__share_panel__private_button__description": "يمكنك فقط رؤية هذا",
+    "sidebar__conversation_share__share_panel__public_button__title": "قابل للمشاركة",
+    "sidebar__conversation_share__share_panel__public_button__description": "أي شخص لديه الرابط يمكنه رؤية هذا",
+    "sidebar__conversation_share__share_panel__copied_tip": "تم نسخ الرابط",
+    "sidebar__conversation_share__share_panel__success_tip": "تم نسخ عنوان URL للمحادثة المشتركة إلى الحافظة!",
+    "sidebar__conversation_share__share_panel__error_tip": "غير قادر على المشاركة في الوقت الحالي. يرجى التحقق من الشبكة الخاصة بك أو المحاولة مرة أخرى لاحقًا."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

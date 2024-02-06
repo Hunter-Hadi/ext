@@ -597,7 +597,17 @@
     "home_view__search__title": "Iskanje z umetno inteligenco",
     "home_view__search__description": "Dobite odgovore na vsa vprašanja s spletnim dostopom v realnem času.",
     "home_view__art__title": "Ustvarjanje umetnosti in slik z umetno inteligenco",
-    "home_view__art__description": "Spremenite svoje vizije v osupljive slike."
+    "home_view__art__description": "Spremenite svoje vizije v osupljive slike.",
+    "sidebar__conversation_share__share_button__title": "Deli",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopiraj povezavo",
+    "sidebar__conversation_share__share_panel__title": "Poglej dostop",
+    "sidebar__conversation_share__share_panel__private_button__title": "Skrivno",
+    "sidebar__conversation_share__share_panel__private_button__description": "Samo vi lahko to vidite",
+    "sidebar__conversation_share__share_panel__public_button__title": "Deljivo",
+    "sidebar__conversation_share__share_panel__public_button__description": "Vsakdo s povezavo lahko to vidi",
+    "sidebar__conversation_share__share_panel__copied_tip": "Povezava je kopirana",
+    "sidebar__conversation_share__share_panel__success_tip": "URL deljene pogovora je bil kopiran v odložišče!",
+    "sidebar__conversation_share__share_panel__error_tip": "Trenutno ni mogoče deliti. Preverite svoje omrežje ali poskusite znova kasneje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

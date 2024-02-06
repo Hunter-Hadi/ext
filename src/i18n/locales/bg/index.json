@@ -597,7 +597,17 @@
     "home_view__search__title": "Търсене с изкуствен интелект",
     "home_view__search__description": "Получавайте отговори на всякакви въпроси с реално време достъп до уеб.",
     "home_view__art__title": "Създаване на изкуство и изображения с изкуствен интелект",
-    "home_view__art__description": "Превърнете вашите визии в изумителни изображения."
+    "home_view__art__description": "Превърнете вашите визии в изумителни изображения.",
+    "sidebar__conversation_share__share_button__title": "Сподели",
+    "sidebar__conversation_share__copy_button__copy_link": "Копирай връзка",
+    "sidebar__conversation_share__share_panel__title": "Достъп за преглед",
+    "sidebar__conversation_share__share_panel__private_button__title": "Тайно",
+    "sidebar__conversation_share__share_panel__private_button__description": "Само вие можете да видите това",
+    "sidebar__conversation_share__share_panel__public_button__title": "Споделено",
+    "sidebar__conversation_share__share_panel__public_button__description": "Всеки с връзката може да види това",
+    "sidebar__conversation_share__share_panel__copied_tip": "Връзката е копирана",
+    "sidebar__conversation_share__share_panel__success_tip": "URL адресът на споделената разговор е копиран в клипборда!",
+    "sidebar__conversation_share__share_panel__error_tip": "Неуспешно споделяне в момента. Моля, проверете вашата мрежа или опитайте отново по-късно."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

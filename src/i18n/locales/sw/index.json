@@ -597,7 +597,17 @@
     "home_view__search__title": "Utafutaji unaotumia AI",
     "home_view__search__description": "Pata majibu ya maswali yoyote na ufikiaji wa wavuti halisi.",
     "home_view__art__title": "Tengeneza sanaa na picha za AI",
-    "home_view__art__description": "Geuza maono yako kuwa picha za kushangaza."
+    "home_view__art__description": "Geuza maono yako kuwa picha za kushangaza.",
+    "sidebar__conversation_share__share_button__title": "Shiriki",
+    "sidebar__conversation_share__copy_button__copy_link": "Nakili kiungo",
+    "sidebar__conversation_share__share_panel__title": "Angalia upatikanaji",
+    "sidebar__conversation_share__share_panel__private_button__title": "Siri",
+    "sidebar__conversation_share__share_panel__private_button__description": "Wewe pekee unaweza kuona hii",
+    "sidebar__conversation_share__share_panel__public_button__title": "Inayoweza kushirikiwa",
+    "sidebar__conversation_share__share_panel__public_button__description": "Yeyote mwenye kiungo anaweza kuona hii",
+    "sidebar__conversation_share__share_panel__copied_tip": "Kiungo kimenukuliwa",
+    "sidebar__conversation_share__share_panel__success_tip": "URL ya mazungumzo iliyoshirikiwa imekopiwa kwenye ubao wa kunakili!",
+    "sidebar__conversation_share__share_panel__error_tip": "Haiwezekani kushiriki kwa sasa. Tafadhali angalia mtandao wako au jaribu tena baadaye."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

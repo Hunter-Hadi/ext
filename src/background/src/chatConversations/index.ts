@@ -411,7 +411,10 @@ export default class ConversationManager {
       return false
     }
     conversation.isDelete = true
-    await this.conversationDB.addOrUpdateConversation(conversation)
+    await this.conversationDB.addOrUpdateConversation(conversation, {
+      syncConversationToDB: true,
+      reason: 'softDeleteConversation',
+    })
     return true
   }
 
@@ -521,7 +524,23 @@ export default class ConversationManager {
     if (!conversation) {
       return false
     }
-    const addTimeNewMessages = newMessages.map((newMessage) => {
+    const addTimeNewMessages = newMessages.map((newMessage, index) => {
+      if (!newMessage.parentMessageId) {
+        // 如果是第一条消息，那么parentMessageId是最后一条消息
+        if (index === 0) {
+          const conversationLastMessage =
+            conversation.messages[conversation.messages.length - 1]
+          if (conversationLastMessage) {
+            newMessage.parentMessageId = conversationLastMessage.messageId || ''
+          } else {
+            newMessage.parentMessageId = ''
+          }
+        } else {
+          // 如果不是第一条消息，那么parentMessageId是前一条消息
+          const parentMessage = newMessages[index - 1]
+          newMessage.parentMessageId = parentMessage?.messageId || ''
+        }
+      }
       if (!newMessage.created_at) {
         newMessage.created_at = new Date().toISOString()
       }
@@ -560,10 +579,11 @@ export default class ConversationManager {
       updateMessage.created_at = new Date().toISOString()
     }
     updateMessage.updated_at = new Date().toISOString()
-    conversation.messages[messageIndex] = mergeWithObject([
+    updateMessage = mergeWithObject([
       conversation.messages[messageIndex],
       updateMessage,
     ])
+    conversation.messages[messageIndex] = updateMessage
     await this.conversationDB.addOrUpdateConversation(conversation)
     addOrUpdateDBConversationMessages(conversation, [updateMessage])
       .then()

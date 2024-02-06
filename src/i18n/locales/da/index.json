@@ -597,7 +597,17 @@
     "home_view__search__title": "AI-drevet søgning",
     "home_view__search__description": "Få svar på alle spørgsmål med realtids webadgang.",
     "home_view__art__title": "Skab AI-kunst og billeder",
-    "home_view__art__description": "Omdan dine visioner til fantastiske billeder."
+    "home_view__art__description": "Omdan dine visioner til fantastiske billeder.",
+    "sidebar__conversation_share__share_button__title": "Del",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopier link",
+    "sidebar__conversation_share__share_panel__title": "Vis adgang",
+    "sidebar__conversation_share__share_panel__private_button__title": "Hemmelig",
+    "sidebar__conversation_share__share_panel__private_button__description": "Kun du kan se dette",
+    "sidebar__conversation_share__share_panel__public_button__title": "Deleligt",
+    "sidebar__conversation_share__share_panel__public_button__description": "Alle med linket kan se dette",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link kopieret",
+    "sidebar__conversation_share__share_panel__success_tip": "Den delte samtale-URL er blevet kopieret til udklipsholderen!",
+    "sidebar__conversation_share__share_panel__error_tip": "Kan ikke dele i øjeblikket. Kontrollér dit netværk eller prøv igen senere."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

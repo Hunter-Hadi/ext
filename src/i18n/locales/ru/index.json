@@ -597,7 +597,17 @@
     "home_view__search__title": "Поиск с искусственным интеллектом",
     "home_view__search__description": "Получайте ответы на любые вопросы с мгновенным доступом к вебу.",
     "home_view__art__title": "Создание искусства и изображений с помощью ИИ",
-    "home_view__art__description": "Превратите свои видения в потрясающие изображения."
+    "home_view__art__description": "Превратите свои видения в потрясающие изображения.",
+    "sidebar__conversation_share__share_button__title": "Поделиться",
+    "sidebar__conversation_share__copy_button__copy_link": "Копировать ссылку",
+    "sidebar__conversation_share__share_panel__title": "Просмотр доступа",
+    "sidebar__conversation_share__share_panel__private_button__title": "Секретно",
+    "sidebar__conversation_share__share_panel__private_button__description": "Только вы можете просматривать это",
+    "sidebar__conversation_share__share_panel__public_button__title": "Доступ по ссылке",
+    "sidebar__conversation_share__share_panel__public_button__description": "Любой с ссылкой может просматривать это",
+    "sidebar__conversation_share__share_panel__copied_tip": "Ссылка скопирована",
+    "sidebar__conversation_share__share_panel__success_tip": "URL общего разговора был скопирован в буфер обмена!",
+    "sidebar__conversation_share__share_panel__error_tip": "Не удалось поделиться на данный момент. Проверьте вашу сеть или попробуйте позже."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

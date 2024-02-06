@@ -597,7 +597,17 @@
     "home_view__search__title": "Пошук з AI",
     "home_view__search__description": "Отримуйте відповіді на будь-які питання з реальним доступом до Інтернету в режимі реального часу.",
     "home_view__art__title": "Створюйте мистецтво та зображення з AI",
-    "home_view__art__description": "Перетворюйте свої бачення в захоплюючі зображення."
+    "home_view__art__description": "Перетворюйте свої бачення в захоплюючі зображення.",
+    "sidebar__conversation_share__share_button__title": "Поділитися",
+    "sidebar__conversation_share__copy_button__copy_link": "Скопіювати посилання",
+    "sidebar__conversation_share__share_panel__title": "Перегляд доступу",
+    "sidebar__conversation_share__share_panel__private_button__title": "Секретно",
+    "sidebar__conversation_share__share_panel__private_button__description": "Тільки ви можете переглянути це",
+    "sidebar__conversation_share__share_panel__public_button__title": "Доступно для поділу",
+    "sidebar__conversation_share__share_panel__public_button__description": "Будь-хто з посиланням може переглянути це",
+    "sidebar__conversation_share__share_panel__copied_tip": "Посилання скопійовано",
+    "sidebar__conversation_share__share_panel__success_tip": "URL спільної розмови було скопійовано в буфер обміну!",
+    "sidebar__conversation_share__share_panel__error_tip": "Наразі неможливо поділитися. Будь ласка, перевірте вашу мережу або спробуйте пізніше."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

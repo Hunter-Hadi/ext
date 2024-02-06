@@ -597,7 +597,17 @@
     "home_view__search__title": "Căutare cu inteligență artificială",
     "home_view__search__description": "Obțineți răspunsuri la orice întrebări cu acces web în timp real.",
     "home_view__art__title": "Creați artă și imagini cu IA",
-    "home_view__art__description": "Transformați-vă viziunile în imagini uimitoare."
+    "home_view__art__description": "Transformați-vă viziunile în imagini uimitoare.",
+    "sidebar__conversation_share__share_button__title": "Partajează",
+    "sidebar__conversation_share__copy_button__copy_link": "Copiază linkul",
+    "sidebar__conversation_share__share_panel__title": "Acces vizualizare",
+    "sidebar__conversation_share__share_panel__private_button__title": "Secret",
+    "sidebar__conversation_share__share_panel__private_button__description": "Doar tu poți vizualiza acesta",
+    "sidebar__conversation_share__share_panel__public_button__title": "Partajabil",
+    "sidebar__conversation_share__share_panel__public_button__description": "Oricine cu linkul poate vizualiza acesta",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link copiat",
+    "sidebar__conversation_share__share_panel__success_tip": "URL-ul conversației partajate a fost copiat în clipboard!",
+    "sidebar__conversation_share__share_panel__error_tip": "Imposibil de partajat momentan. Verifică rețeaua sau încearcă din nou mai târziu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

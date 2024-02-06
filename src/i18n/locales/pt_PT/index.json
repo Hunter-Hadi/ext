@@ -597,7 +597,17 @@
     "home_view__search__title": "Pesquisa com IA",
     "home_view__search__description": "Obtenha respostas para qualquer pergunta com acesso web em tempo real.",
     "home_view__art__title": "Crie arte e imagens com IA",
-    "home_view__art__description": "Transforme suas visões em imagens impressionantes."
+    "home_view__art__description": "Transforme suas visões em imagens impressionantes.",
+    "sidebar__conversation_share__share_button__title": "Partilhar",
+    "sidebar__conversation_share__copy_button__copy_link": "Copiar link",
+    "sidebar__conversation_share__share_panel__title": "Ver acesso",
+    "sidebar__conversation_share__share_panel__private_button__title": "Secreto",
+    "sidebar__conversation_share__share_panel__private_button__description": "Apenas você pode ver isto",
+    "sidebar__conversation_share__share_panel__public_button__title": "Partilhável",
+    "sidebar__conversation_share__share_panel__public_button__description": "Qualquer pessoa com o link pode ver isto",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link copiado",
+    "sidebar__conversation_share__share_panel__success_tip": "O URL da conversa partilhada foi copiado para a área de transferência!",
+    "sidebar__conversation_share__share_panel__error_tip": "Não é possível partilhar neste momento. Por favor, verifique a sua rede ou tente novamente mais tarde."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

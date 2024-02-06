@@ -597,7 +597,17 @@
     "home_view__search__title": "AI పోవర్డ్ శోధన",
     "home_view__search__description": "రియల్-టైమ్ వెబ్ యాక్సెస్ తో ఏ ప్రశ్నకు సమాధానం పొందండి.",
     "home_view__art__title": "AI కళాకారత్వం & చిత్రాలు సృష్టించండి",
-    "home_view__art__description": "మీ కలలను అద్భుతమైన చిత్రాలకు మార్చండి."
+    "home_view__art__description": "మీ కలలను అద్భుతమైన చిత్రాలకు మార్చండి.",
+    "sidebar__conversation_share__share_button__title": "భాగస్వామ్యం",
+    "sidebar__conversation_share__copy_button__copy_link": "లింకును నకలు చేయండి",
+    "sidebar__conversation_share__share_panel__title": "ప్రదర్శన యాక్సెస్",
+    "sidebar__conversation_share__share_panel__private_button__title": "రహస్యం",
+    "sidebar__conversation_share__share_panel__private_button__description": "మీరే ఇది చూడగలరు",
+    "sidebar__conversation_share__share_panel__public_button__title": "షేరబుల్",
+    "sidebar__conversation_share__share_panel__public_button__description": "లింకుతో ఎవరైనా చూడగలరు",
+    "sidebar__conversation_share__share_panel__copied_tip": "లింకు నకలు చేయబడింది",
+    "sidebar__conversation_share__share_panel__success_tip": "షేర్ చేసిన సంభాషణ URL క్లిప్‌బోర్డ్‌కు నకలు చేయబడింది!",
+    "sidebar__conversation_share__share_panel__error_tip": "ప్రస్తుతం షేర్ చేయలేరు. దయచేసి మీ నెట్‌వర్క్‌ను తనిఖీ చేయండి లేదా తరువాత మళ్ళీ ప్రయత్నించండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

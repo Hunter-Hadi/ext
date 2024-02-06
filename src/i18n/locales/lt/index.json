@@ -597,7 +597,17 @@
     "home_view__search__title": "AI valdomas paieška",
     "home_view__search__description": "Gaukite atsakymus į bet kokius klausimus su realiu laiko interneto prieiga.",
     "home_view__art__title": "Kurkite AI meną ir paveikslus",
-    "home_view__art__description": "Paverkite savo vizijas į nuostabius paveikslus."
+    "home_view__art__description": "Paverkite savo vizijas į nuostabius paveikslus.",
+    "sidebar__conversation_share__share_button__title": "Dalintis",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopijuoti nuorodą",
+    "sidebar__conversation_share__share_panel__title": "Peržiūros prieiga",
+    "sidebar__conversation_share__share_panel__private_button__title": "Slaptas",
+    "sidebar__conversation_share__share_panel__private_button__description": "Tik jūs galite tai peržiūrėti",
+    "sidebar__conversation_share__share_panel__public_button__title": "Bendrinamas",
+    "sidebar__conversation_share__share_panel__public_button__description": "Bet kas, turintis nuorodą, gali tai peržiūrėti",
+    "sidebar__conversation_share__share_panel__copied_tip": "Nuoroda nukopijuota",
+    "sidebar__conversation_share__share_panel__success_tip": "Bendrintos pokalbio URL nuorodos kopija nukopijuota į iškarpinę!",
+    "sidebar__conversation_share__share_panel__error_tip": "Šiuo metu nepavyksta dalintis. Patikrinkite savo tinklą arba bandykite vėliau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

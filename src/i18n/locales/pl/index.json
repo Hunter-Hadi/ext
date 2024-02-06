@@ -597,7 +597,17 @@
     "home_view__search__title": "Wyszukiwanie zasilane sztuczną inteligencją",
     "home_view__search__description": "Otrzymuj odpowiedzi na dowolne pytania dzięki dostępowi do sieci w czasie rzeczywistym.",
     "home_view__art__title": "Twórz sztukę i obrazy z wykorzystaniem AI",
-    "home_view__art__description": "Przekształć swoje wizje w oszałamiające obrazy."
+    "home_view__art__description": "Przekształć swoje wizje w oszałamiające obrazy.",
+    "sidebar__conversation_share__share_button__title": "Udostępnij",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopiuj link",
+    "sidebar__conversation_share__share_panel__title": "Dostęp do wyświetlania",
+    "sidebar__conversation_share__share_panel__private_button__title": "Prywatne",
+    "sidebar__conversation_share__share_panel__private_button__description": "Tylko Ty możesz to zobaczyć",
+    "sidebar__conversation_share__share_panel__public_button__title": "Udostępniane",
+    "sidebar__conversation_share__share_panel__public_button__description": "Każdy z linkiem może to zobaczyć",
+    "sidebar__conversation_share__share_panel__copied_tip": "Skopiowany link",
+    "sidebar__conversation_share__share_panel__success_tip": "URL udostępnionej rozmowy został skopiowany do schowka!",
+    "sidebar__conversation_share__share_panel__error_tip": "Nie można udostępnić w tej chwili. Sprawdź swoje połączenie sieciowe lub spróbuj ponownie później."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

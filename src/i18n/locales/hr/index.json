@@ -597,7 +597,17 @@
     "home_view__search__title": "Pretraživanje s umjetnom inteligencijom",
     "home_view__search__description": "Dobijte odgovore na bilo koja pitanja uz trenutni pristup webu.",
     "home_view__art__title": "Stvaranje umjetnosti i slika s umjetnom inteligencijom",
-    "home_view__art__description": "Pretvorite svoje vizije u impresivne slike."
+    "home_view__art__description": "Pretvorite svoje vizije u impresivne slike.",
+    "sidebar__conversation_share__share_button__title": "Podijeli",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopiraj link",
+    "sidebar__conversation_share__share_panel__title": "Pregled pristupa",
+    "sidebar__conversation_share__share_panel__private_button__title": "Tajno",
+    "sidebar__conversation_share__share_panel__private_button__description": "Samo vi možete vidjeti ovo",
+    "sidebar__conversation_share__share_panel__public_button__title": "Dijeljivo",
+    "sidebar__conversation_share__share_panel__public_button__description": "Bilo tko s poveznicom može vidjeti ovo",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link kopiran",
+    "sidebar__conversation_share__share_panel__success_tip": "URL dijeljenog razgovora je kopiran u međuspremnik!",
+    "sidebar__conversation_share__share_panel__error_tip": "Trenutno nije moguće podijeliti. Provjerite svoju mrežu ili pokušajte ponovno kasnije."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

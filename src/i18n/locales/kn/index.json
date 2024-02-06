@@ -597,7 +597,17 @@
     "home_view__search__title": "AI ಶಕ್ತಿಯ ಹುಡುಕು",
     "home_view__search__description": "ವಾಸ್ತವಿಕ ಸಮಯ ವೆಬ್‌ ಪ್ರವೇಶದೊಂದಿಗೆ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
     "home_view__art__title": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
-    "home_view__art__description": "ನಿಮ್ಮ ಕನಸುಗಳನ್ನು ಅದ್ಭುತ ಚಿತ್ರಗಳಾಗಿ ಪರಿವರ್ತಿಸಿ."
+    "home_view__art__description": "ನಿಮ್ಮ ಕನಸುಗಳನ್ನು ಅದ್ಭುತ ಚಿತ್ರಗಳಾಗಿ ಪರಿವರ್ತಿಸಿ.",
+    "sidebar__conversation_share__share_button__title": "ಹಂಚು",
+    "sidebar__conversation_share__copy_button__copy_link": "ಲಿಂಕ್ ನಕಲಿ",
+    "sidebar__conversation_share__share_panel__title": "ಪ್ರವೇಶ ವೀಕ್ಷಿಸು",
+    "sidebar__conversation_share__share_panel__private_button__title": "ಗುಪ್ತ",
+    "sidebar__conversation_share__share_panel__private_button__description": "ನೀವೇ ಈಗೆ ವೀಕ್ಷಿಸಬಹುದು",
+    "sidebar__conversation_share__share_panel__public_button__title": "ಹಂಚಿಕೊಳ್ಳಲು ಯೋಗ್ಯ",
+    "sidebar__conversation_share__share_panel__public_button__description": "ಲಿಂಕ್ ಹೊಂದಿರುವವರೆಗೆ ಯಾರೇ ವೀಕ್ಷಿಸಬಹುದು",
+    "sidebar__conversation_share__share_panel__copied_tip": "ಲಿಂಕ್ ನಕಲಿಮಾಡಲಾಗಿದೆ",
+    "sidebar__conversation_share__share_panel__success_tip": "ಹಂಚಿಕೊಳ್ಳಲಾದ ಸಂಭಾಷಣೆಯ URL ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಮಾಡಲಾಗಿದೆ!",
+    "sidebar__conversation_share__share_panel__error_tip": "ಈ ಕ್ಷಣದಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ. ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್‌ನೇರವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

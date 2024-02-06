@@ -597,7 +597,17 @@
     "home_view__search__title": "Pretraga sa AI tehnologijom",
     "home_view__search__description": "Dobijte odgovore na bilo koja pitanja uz trenutan pristup webu.",
     "home_view__art__title": "Kreirajte AI umetnost i slike",
-    "home_view__art__description": "Pretvorite svoje vizije u impresivne slike."
+    "home_view__art__description": "Pretvorite svoje vizije u impresivne slike.",
+    "sidebar__conversation_share__share_button__title": "Podeli",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopiraj link",
+    "sidebar__conversation_share__share_panel__title": "Pregled pristupa",
+    "sidebar__conversation_share__share_panel__private_button__title": "Tajno",
+    "sidebar__conversation_share__share_panel__private_button__description": "Samo vi možete videti ovo",
+    "sidebar__conversation_share__share_panel__public_button__title": "Deljivo",
+    "sidebar__conversation_share__share_panel__public_button__description": "Bilo ko sa linkom može videti ovo",
+    "sidebar__conversation_share__share_panel__copied_tip": "Link kopiran",
+    "sidebar__conversation_share__share_panel__success_tip": "URL deljene konverzacije je kopiran u međuspremnik!",
+    "sidebar__conversation_share__share_panel__error_tip": "Trenutno nije moguće deliti. Molimo proverite svoju mrežu ili pokušajte ponovo kasnije."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

@@ -597,7 +597,17 @@
     "home_view__search__title": "Paghahanap na pinagpapalakas ng AI",
     "home_view__search__description": "Makakuha ng mga sagot sa anumang mga tanong gamit ang real-time na web access.",
     "home_view__art__title": "Lumikha ng sining at mga imahe gamit ang AI",
-    "home_view__art__description": "Gawing kahanga-hanga ang iyong mga pangitain sa pamamagitan ng mga kahanga-hangang imahe."
+    "home_view__art__description": "Gawing kahanga-hanga ang iyong mga pangitain sa pamamagitan ng mga kahanga-hangang imahe.",
+    "sidebar__conversation_share__share_button__title": "Ibahagi",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopyahin ang link",
+    "sidebar__conversation_share__share_panel__title": "Tingnan ang access",
+    "sidebar__conversation_share__share_panel__private_button__title": "Lihim",
+    "sidebar__conversation_share__share_panel__private_button__description": "Ikaw lang ang makakakita nito",
+    "sidebar__conversation_share__share_panel__public_button__title": "Maibabahagi",
+    "sidebar__conversation_share__share_panel__public_button__description": "Sinuman na may link ay maaaring makakita nito",
+    "sidebar__conversation_share__share_panel__copied_tip": "Nakopya ang link",
+    "sidebar__conversation_share__share_panel__success_tip": "Ang URL ng ibinahaging usapan ay nakopya sa clipboard!",
+    "sidebar__conversation_share__share_panel__error_tip": "Hindi maibahagi sa ngayon. Mangyaring suriin ang iyong network o subukan muli mamaya."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

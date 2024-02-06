@@ -597,7 +597,17 @@
     "home_view__search__title": "የማስፈሪያ እይታ",
     "home_view__search__description": "መልስ ለማግኘት በሰሞኑ የድህረ ገፅ ውስጥ ያለውን ጥያቄ ይጠቀሙ.",
     "home_view__art__title": "AI ስነ-ስርዓት እና ምስሎች ፍሪኩር",
-    "home_view__art__description": "የሚለውን አስተያየትን የሚያስቀምጥ ምስሎችን በማስፈሪያ ለመሳሰሉ ይቀምጡ."
+    "home_view__art__description": "የሚለውን አስተያየትን የሚያስቀምጥ ምስሎችን በማስፈሪያ ለመሳሰሉ ይቀምጡ.",
+    "sidebar__conversation_share__share_button__title": "አገልግሎት",
+    "sidebar__conversation_share__copy_button__copy_link": "አጽዳ",
+    "sidebar__conversation_share__share_panel__title": "መረጃ ይመልከቱ",
+    "sidebar__conversation_share__share_panel__private_button__title": "ማህተም",
+    "sidebar__conversation_share__share_panel__private_button__description": "ለእርስዎ በሚገኙ የሚመልከት",
+    "sidebar__conversation_share__share_panel__public_button__title": "ለማስተማር",
+    "sidebar__conversation_share__share_panel__public_button__description": "ለእርስዎ በሚገኙ የሚመልከት",
+    "sidebar__conversation_share__share_panel__copied_tip": "የአገልግሎት ስህተት ተጭኗል",
+    "sidebar__conversation_share__share_panel__success_tip": "የአገልግሎት ስህተት የተጭነህ በመቀጠል በቂጥር ውስጥ ተጭኗል!",
+    "sidebar__conversation_share__share_panel__error_tip": "አሁን ማስተማር አይችልም. እባክዎ የስህተትዎን ማሳወቂያ ወደግል ወደግል ይሞክሩ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

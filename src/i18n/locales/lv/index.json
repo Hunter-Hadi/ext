@@ -597,7 +597,17 @@
     "home_view__search__title": "AI pārvaldīta meklēšana",
     "home_view__search__description": "Iegūstiet atbildes uz jebkuriem jautājumiem ar reāllaika tīmekļa piekļuvi.",
     "home_view__art__title": "Izveidojiet AI mākslu un attēlus",
-    "home_view__art__description": "Pārvērtiet savas redzējumus par apburošiem attēliem."
+    "home_view__art__description": "Pārvērtiet savas redzējumus par apburošiem attēliem.",
+    "sidebar__conversation_share__share_button__title": "Dalīties",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopēt saiti",
+    "sidebar__conversation_share__share_panel__title": "Skatīt piekļuvi",
+    "sidebar__conversation_share__share_panel__private_button__title": "Slēpts",
+    "sidebar__conversation_share__share_panel__private_button__description": "Tikai jūs varat to skatīt",
+    "sidebar__conversation_share__share_panel__public_button__title": "Koplietojams",
+    "sidebar__conversation_share__share_panel__public_button__description": "Jebkurš ar saiti var to skatīt",
+    "sidebar__conversation_share__share_panel__copied_tip": "Saites kopētas",
+    "sidebar__conversation_share__share_panel__success_tip": "Koplietotās sarunas URL ir nokopēts starpliktuvē!",
+    "sidebar__conversation_share__share_panel__error_tip": "Pašlaik nevar koplietot. Lūdzu, pārbaudiet savu tīklu vai mēģiniet vēlreiz vēlāk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

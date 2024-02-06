@@ -597,7 +597,17 @@
     "home_view__search__title": "Vyhledávání s umělou inteligencí",
     "home_view__search__description": "Získejte odpovědi na jakékoliv otázky s okamžitým přístupem na web.",
     "home_view__art__title": "Vytvořte umělecká díla a obrázky s umělou inteligencí",
-    "home_view__art__description": "Přetvořte své vize do ohromujících obrázků."
+    "home_view__art__description": "Přetvořte své vize do ohromujících obrázků.",
+    "sidebar__conversation_share__share_button__title": "Sdílet",
+    "sidebar__conversation_share__copy_button__copy_link": "Kopírovat odkaz",
+    "sidebar__conversation_share__share_panel__title": "Zobrazit přístup",
+    "sidebar__conversation_share__share_panel__private_button__title": "Tajné",
+    "sidebar__conversation_share__share_panel__private_button__description": "Pouze vy můžete toto zobrazit",
+    "sidebar__conversation_share__share_panel__public_button__title": "Sdílitelné",
+    "sidebar__conversation_share__share_panel__public_button__description": "Kdokoli s odkazem může toto zobrazit",
+    "sidebar__conversation_share__share_panel__copied_tip": "Odkaz zkopírován",
+    "sidebar__conversation_share__share_panel__success_tip": "URL sdílené konverzace bylo zkopírováno do schránky!",
+    "sidebar__conversation_share__share_panel__error_tip": "Momentálně nelze sdílet. Zkontrolujte svou síť nebo zkuste to znovu později."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

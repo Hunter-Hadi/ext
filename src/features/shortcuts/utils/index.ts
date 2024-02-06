@@ -129,11 +129,7 @@ export const chatGPTCommonErrorInterceptor = (errorMsg?: string) => {
 
 type ClientFetchAPIResponse<T> = {
   success: boolean
-  data: {
-    data: T | null
-    status: string
-    success: boolean
-  }
+  data: T | null
   responseRaw: {
     ok: boolean
     status: number
@@ -175,11 +171,7 @@ export const clientFetchAPI = async <T = any>(
   } catch (error) {
     return {
       success: false,
-      data: {
-        data: null,
-        status: '',
-        success: false,
-      },
+      data: null,
       error: (error as any)?.message || error,
       responseRaw: null,
       message: '',
@@ -254,11 +246,7 @@ export const clientFetchMaxAIAPI = async <T = any>(
     return {
       success: false,
       responseRaw: null,
-      data: {
-        data: null,
-        status: '',
-        success: false,
-      },
+      data: null,
       error: (error as any)?.message || error,
       message: '',
     }

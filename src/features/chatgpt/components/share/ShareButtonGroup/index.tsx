@@ -16,6 +16,7 @@ import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import snackNotifications from '@/utils/globalSnackbar'
 import globalSnackbar from '@/utils/globalSnackbar'
+import { WWW_PROJECT_HOST } from '@/constants'
 
 const createShareLink = (shareId: string) => {
   return `${WWW_PROJECT_HOST}/share/${shareId}`

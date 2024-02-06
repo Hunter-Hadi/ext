@@ -80,6 +80,9 @@ const SidebarAIMessageTools: FC<{
                     })
                   }
                 }
+                newImage.onerror = () => {
+                  resolve(false)
+                }
               })
             } catch (e) {
               console.error('Error copying image to clipboard', e)

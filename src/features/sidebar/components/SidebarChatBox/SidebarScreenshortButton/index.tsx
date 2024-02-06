@@ -12,6 +12,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
@@ -28,6 +29,7 @@ export const useUploadImagesAndSwitchToVision = () => {
   const {
     updateSidebarConversationType,
     currentSidebarConversationType,
+    sidebarSettings,
   } = useSidebarSettings()
   const {
     updateAIProviderModel,
@@ -38,17 +40,24 @@ export const useUploadImagesAndSwitchToVision = () => {
     if (currentSidebarConversationType !== 'Chat') {
       await updateSidebarConversationType('Chat')
     }
-    if (
-      currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
-      currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO
-    ) {
+    if (sidebarSettings.chat?.conversationId) {
+      const conversation = await clientGetConversation(
+        sidebarSettings?.chat?.conversationId,
+      )
+      if (conversation?.meta?.AIModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO) {
+        await updateAIProviderModel(
+          'USE_CHAT_GPT_PLUS',
+          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+        )
+        await createConversation('Chat')
+      }
+    } else {
       await updateAIProviderModel(
         'USE_CHAT_GPT_PLUS',
         MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       )
       await createConversation('Chat')
     }
-
     await aiProviderUploadFiles(
       await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
     )

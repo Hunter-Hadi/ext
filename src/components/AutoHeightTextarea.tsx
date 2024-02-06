@@ -22,6 +22,7 @@ import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
@@ -172,6 +173,7 @@ const AutoHeightTextarea: FC<{
   minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
+  const { currentSidebarConversationType } = useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const {
     isChatGPTVision,
@@ -360,7 +362,7 @@ const AutoHeightTextarea: FC<{
         ...computedChildrenHeight('appState'),
       )
     }
-  }, [appState.open, loading])
+  }, [appState.open, loading, currentSidebarConversationType])
   useEffectOnce(() => {
     if (
       InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&

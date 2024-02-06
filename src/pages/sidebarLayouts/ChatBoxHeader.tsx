@@ -16,6 +16,7 @@ import useCommands from '@/hooks/useCommands'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import ShareButtonGroup from '@/features/chatgpt/components/share/ShareButtonGroup'
 
 const ChatBoxHeader: FC<{
   showConversationList?: boolean
@@ -117,6 +118,7 @@ const ChatBoxHeader: FC<{
           </Typography>
         )}
         <HistoryShareButton />
+        <ShareButtonGroup />
       </Stack>
     </Stack>
   )

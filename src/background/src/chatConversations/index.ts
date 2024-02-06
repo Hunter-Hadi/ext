@@ -158,7 +158,11 @@ class ConversationDB {
         transaction.oncomplete = () => {
           if (syncConversationToDB) {
             // 同步会话到后端
-            addOrUpdateDBConversation(conversation).then().catch()
+            // addOrUpdateDBConversation(conversation).then().catch()
+            // TODO: 年前先不同步到后端,但如果是分享的chat，还是需要同步
+            if (conversation.share?.shareId && conversation.isDelete) {
+              addOrUpdateDBConversation(conversation).then().catch()
+            }
           }
           resolve() // 操作成功完成，解析 Promise
         }
@@ -253,7 +257,6 @@ class ConversationDB {
             conversations.map(async (conversation) => {
               if (!conversation.authorId && userId && conversation.id) {
                 conversation.authorId = userId
-                await this.addOrUpdateConversation(conversation)
               }
               return conversation
             }),
@@ -408,7 +411,6 @@ export default class ConversationManager {
       return false
     }
     conversation.isDelete = true
-    console.log('DB_Conversation softDeleteConversation', conversationId)
     await this.conversationDB.addOrUpdateConversation(conversation)
     return true
   }
@@ -531,7 +533,6 @@ export default class ConversationManager {
       }
       return newMessage
     })
-    console.log('DB_Conversation pushMessages', addTimeNewMessages)
     conversation.messages = conversation.messages.concat(addTimeNewMessages)
     await this.conversationDB.addOrUpdateConversation(conversation)
     addOrUpdateDBConversationMessages(conversation, addTimeNewMessages)
@@ -563,7 +564,6 @@ export default class ConversationManager {
       conversation.messages[messageIndex],
       updateMessage,
     ])
-    console.log('DB_Conversation updateMessage', updateMessage)
     await this.conversationDB.addOrUpdateConversation(conversation)
     addOrUpdateDBConversationMessages(conversation, [updateMessage])
       .then()
@@ -590,11 +590,6 @@ export default class ConversationManager {
       }
       finallyDeleteCount--
     }
-    console.log(
-      'DB_Conversation deleteMessages',
-      finallyDeleteCount,
-      deleteMessageIds,
-    )
     // save
     await this.conversationDB.addOrUpdateConversation(conversation)
     deleteDBConversationMessages(conversation, deleteMessageIds).then().catch()

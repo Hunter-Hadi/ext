@@ -46,10 +46,9 @@ export const getDBConversationDetail = async (conversationId: string) => {
 export const addOrUpdateDBConversation = async (
   conversation: IChatConversation,
 ) => {
-  return
+  //TODO: 年前不需要被动创建或更新Conversation, 除了要分享的chat被删除
   const uploadConversation: any = cloneDeep(conversation)
   if (uploadConversation) {
-    const messages = uploadConversation.messages
     // 不需要保存messages
     delete uploadConversation.messages
   }
@@ -87,7 +86,6 @@ const maxAIMessageRequest = async (
     }
     return response
   } catch (e) {
-    debugger
     return undefined
   }
 }
@@ -102,7 +100,10 @@ export const addOrUpdateDBConversationMessages = async (
   messages: IChatMessage[],
 ) => {
   try {
-    return
+    if (!conversation.share?.shareId) {
+      return false
+    }
+    console.log('DB_Conversation addOrUpdateDBConversationMessages', messages)
     const response = await maxAIMessageRequest(
       '/conversation/add_messages',
       {
@@ -113,11 +114,10 @@ export const addOrUpdateDBConversationMessages = async (
     )
     if (response?.ok && response?.status === 200) {
       const data = await response.json()
-      debugger
+      return data.status === 'OK'
     }
-    return true
+    return false
   } catch (e) {
-    debugger
     return false
   }
 }
@@ -131,7 +131,7 @@ export const deleteDBConversationMessages = async (
   messageIds: string[],
 ) => {
   try {
-    return
+    console.log('DB_Conversation deleteMessages', messageIds)
     const response = await maxAIMessageRequest(
       '/conversation/delete_messages',
       {
@@ -140,10 +140,12 @@ export const deleteDBConversationMessages = async (
       },
       conversation,
     )
-    debugger
-    return true
+    if (response?.ok && response?.status === 200) {
+      const data = await response.json()
+      return data.status === 'OK'
+    }
+    return false
   } catch (e) {
-    debugger
     return false
   }
 }

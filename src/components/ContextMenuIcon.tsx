@@ -8,7 +8,9 @@ import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
@@ -32,10 +34,12 @@ import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined'
 import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined'
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
+import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined'
 import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined'
 import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
 import LaptopMacOutlinedIcon from '@mui/icons-material/LaptopMacOutlined'
+import LinkOutlinedIcon from '@mui/icons-material/LinkOutlined'
 import ListAltOutlinedIcon from '@mui/icons-material/ListAltOutlined'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
@@ -152,6 +156,10 @@ export const CONTEXT_MENU_ICONS = [
   'FileDownload',
   'History',
   'Art',
+  'IosShare',
+  'Link',
+  'Check',
+  'GreenCircleCheck',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -391,6 +399,21 @@ const ContextMenuIcon: FC<{
       return <HistoryOutlinedIcon sx={sxMemo} />
     case 'Art':
       return <Art sx={sxMemo} />
+    case 'IosShare':
+      return <IosShareOutlinedIcon sx={sxMemo} />
+    case 'Link':
+      return <LinkOutlinedIcon sx={sxMemo} />
+    case 'Check':
+      return <CheckOutlinedIcon sx={sxMemo} />
+    case 'GreenCircleCheck':
+      return (
+        <CheckCircleIcon
+          sx={{
+            ...sxMemo,
+            color: '#379837',
+          }}
+        />
+      )
     default:
       if (icon.toString().startsWith('http')) {
         return (

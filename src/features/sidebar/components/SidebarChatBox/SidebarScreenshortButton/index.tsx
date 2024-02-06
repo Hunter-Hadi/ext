@@ -111,7 +111,6 @@ const SidebarScreenshotButton: FC<{
             div.style.position = 'fixed'
             div.style.zIndex = '2147483647'
             document.body.appendChild(div)
-            document.body.style.overflow = 'hidden'
             setRootEl(div)
           }}
           sx={{

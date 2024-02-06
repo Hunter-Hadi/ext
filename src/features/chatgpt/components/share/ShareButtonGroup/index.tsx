@@ -11,15 +11,15 @@ import { useTranslation } from 'react-i18next'
 import { IChatConversationShareConfig } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
+import { WWW_PROJECT_HOST } from '@/constants'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import snackNotifications from '@/utils/globalSnackbar'
 import globalSnackbar from '@/utils/globalSnackbar'
-import { WWW_PROJECT_HOST } from '@/constants'
 
 const createShareLink = (shareId: string) => {
-  return `${WWW_PROJECT_HOST}/share/${shareId}`
+  return `${WWW_PROJECT_HOST}/share?id=${shareId}`
 }
 
 const ShareButtonGroup: FC = () => {

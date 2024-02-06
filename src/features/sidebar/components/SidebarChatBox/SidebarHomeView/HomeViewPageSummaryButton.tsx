@@ -17,7 +17,7 @@ const textWithPageSummaryType = () => {
     case 'PAGE_SUMMARY':
       return 'client:home_view_content_nav__summary_page__title'
     case 'PDF_CRX_SUMMARY':
-      return 'client:home_view_content_nav__summary_pdf__title'
+      return 'client:home_view_content_nav__summary_PDF__title'
     case 'YOUTUBE_VIDEO_SUMMARY':
       return 'client:home_view_content_nav__summary_video__title'
     default:

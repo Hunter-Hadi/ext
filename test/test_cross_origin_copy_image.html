@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport'
+        content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>Document</title>
+</head>
+<body>
+<div style='width: 200px;height:200px' id='img-preview'></div>
+<p>ImgUrl: <input type='text' value='https://i.imgur.com/6mBcat0.png'></p>
+<p><button onclick='load()'>Load And Copy to clipboard</button></p>
+</body>
+<script>
+  function load() {
+    var imgUrl = document.querySelector('input').value;
+    var img = new Image();
+    img.src = imgUrl;
+    img.setAttribute('crossOrigin', 'anonymous')
+    img.style.width = '100%';
+    img.style.objectFit = 'contain'
+    img.onload = function () {
+      document.getElementById('img-preview').innerHTML = '';
+      document.getElementById('img-preview').appendChild(img);
+      // copy to clipboard
+      const  canvas = document.createElement('canvas');
+      canvas.width = img.naturalWidth;
+      canvas.height = img.naturalHeight;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      canvas.toBlob(function (blob) {
+        const item = new ClipboardItem({ 'image/png': blob });
+        navigator.clipboard.write([item]).then(function () {
+          console.log('Image copied to clipboard');
+          alert('Image copied to clipboard')
+        }).catch(function (error) {
+          console.error('Error copying image to clipboard', error);
+          alert('Error copying image to clipboard');
+        });
+      });
+    }
+    img.onerror = function (event) {
+      debugger
+    }
+  }
+</script>
+</html>

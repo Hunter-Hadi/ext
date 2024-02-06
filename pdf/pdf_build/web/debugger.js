@@ -364,7 +364,7 @@ const Stepper = (function StepperClosure() {
           table.classList.add("showText");
           decArgs.append(table);
           table.append(charCodeRow, fontCharRow, unicodeRow);
-        } else if (fn === "restore" && this.indentLevel > 0) {
+        } else if (fn === "restore") {
           this.indentLevel--;
         }
         line.append(c("td", " ".repeat(this.indentLevel * 2) + fn));

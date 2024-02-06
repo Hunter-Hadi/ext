@@ -13,7 +13,7 @@ const textWithPageSummaryType = () => {
   const summaryType = getPageSummaryType()
   switch (summaryType) {
     case 'DEFAULT_EMAIL_SUMMARY':
-      return 'client:home_view_content_nav__summary_emai;__title'
+      return 'client:home_view_content_nav__summary_email__title'
     case 'PAGE_SUMMARY':
       return 'client:home_view_content_nav__summary_page__title'
     case 'PDF_CRX_SUMMARY':

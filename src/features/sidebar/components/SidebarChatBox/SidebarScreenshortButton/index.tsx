@@ -40,9 +40,9 @@ export const useUploadImagesAndSwitchToVision = () => {
     if (currentSidebarConversationType !== 'Chat') {
       await updateSidebarConversationType('Chat')
     }
-    if (sidebarSettings.chat?.conversationId) {
+    if (sidebarSettings?.chat?.conversationId) {
       const conversation = await clientGetConversation(
-        sidebarSettings?.chat?.conversationId,
+        sidebarSettings.chat.conversationId,
       )
       if (conversation?.meta?.AIModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO) {
         await updateAIProviderModel(

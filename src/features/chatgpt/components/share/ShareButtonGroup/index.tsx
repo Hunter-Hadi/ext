@@ -68,9 +68,27 @@ const ShareButtonGroup: FC = () => {
           },
           false,
         )
+      } else {
+        globalSnackbar.error(
+          t('client:sidebar__conversation_share__share_panel__error_tip'),
+          {
+            anchorOrigin: {
+              vertical: 'top',
+              horizontal: 'center',
+            },
+          },
+        )
       }
     } catch (e) {
-      // TODO
+      globalSnackbar.error(
+        t('client:sidebar__conversation_share__share_panel__error_tip'),
+        {
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'center',
+          },
+        },
+      )
     } finally {
       setButtonLoading(false)
     }
@@ -82,9 +100,9 @@ const ShareButtonGroup: FC = () => {
     let currentCopyShareId = ''
     // TODO: 年前上线的版本
     if (shareId) {
+      currentCopyShareId = shareId
       if (isShareable) {
         // 打开dropdown并复制连接到剪贴板
-        currentCopyShareId = shareId
       } else {
         // 如果是私有的, 切换为公开
         await switchShareType('public')

@@ -253,7 +253,7 @@ const ShareButtonGroup: FC = () => {
             icon={'Lock'}
           />
         )}
-        <Typography component={'span'} fontSize={'16px'}>
+        <Typography component={'span'} fontSize={'14px'}>
           {t('sidebar__conversation_share__share_button__title')}
         </Typography>
       </LoadingButton>

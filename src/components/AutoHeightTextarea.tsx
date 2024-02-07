@@ -435,6 +435,7 @@ const AutoHeightTextarea: FC<{
         sx={{
           '& > textarea': {
             p: 1,
+            maxHeight: loading ? LINE_HEIGHT * minLine + 16 : 'unset',
             color: (t) =>
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
             my: 1.5,

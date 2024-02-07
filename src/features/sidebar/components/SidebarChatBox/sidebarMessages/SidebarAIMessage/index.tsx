@@ -249,7 +249,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       {!coverLoading ? (
         <SidebarAIMessageTools message={message as IAIResponseMessage} />
       ) : (
-        <Box />
+        <Box height={'26px'} />
       )}
     </Stack>
   )

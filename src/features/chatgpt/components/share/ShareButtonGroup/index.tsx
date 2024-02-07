@@ -15,7 +15,6 @@ import { WWW_PROJECT_HOST } from '@/constants'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import snackNotifications from '@/utils/globalSnackbar'
 import globalSnackbar from '@/utils/globalSnackbar'
 
 const createShareLink = (shareId: string) => {
@@ -187,16 +186,16 @@ const ShareButtonGroup: FC = () => {
     }
     const shareLink = createShareLink(currentCopyShareId)
     navigator.clipboard.writeText(shareLink)
-    snackNotifications.success(
-      t('client:sidebar__conversation_share__share_panel__success_tip'),
-      {
-        anchorOrigin: {
-          vertical: 'top',
-          horizontal: 'center',
-        },
-        // autoHideDuration: 3000,
-      },
-    )
+    // snackNotifications.success(
+    //   t('client:sidebar__conversation_share__share_panel__success_tip'),
+    //   {
+    //     anchorOrigin: {
+    //       vertical: 'top',
+    //       horizontal: 'center',
+    //     },
+    //     // autoHideDuration: 3000,
+    //   },
+    // )
     const fallbackTarget = parent?.querySelector(
       'button[data-testid="maxai--conversation--share-button"]',
     ) as HTMLButtonElement
@@ -254,7 +253,7 @@ const ShareButtonGroup: FC = () => {
             icon={'Lock'}
           />
         )}
-        <Typography component={'span'}>
+        <Typography component={'span'} fontSize={'16px'}>
           {t('sidebar__conversation_share__share_button__title')}
         </Typography>
       </LoadingButton>

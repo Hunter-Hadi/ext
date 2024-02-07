@@ -4,17 +4,19 @@ import IconButton from '@mui/material/IconButton'
 import InputAdornment from '@mui/material/InputAdornment'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import Stack from '@mui/material/Stack'
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 interface IHomeViewAISearchInputProps {}
 
 const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   const { createSearchWithAI } = useSearchWithAI()
   const { createConversation } = useClientConversation()
+  const {currentSidebarConversationType,updateSidebarConversationType} = useSidebarSettings()
 
   // const { cleanConversation } = useClientConversation()
 
@@ -23,7 +25,8 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
   const { t } = useTranslation(['client'])
 
   const [loading, setLoading] = React.useState(false)
-
+  const [waitAskQuestion, setWaitAskQuestion] = React.useState('')
+  const onceRef = React.useRef(false)
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -43,13 +46,20 @@ const HomeViewAISearchInput: FC<IHomeViewAISearchInputProps> = () => {
 
     setLoading(true)
     await createConversation('Search')
-    await createSearchWithAI(question, false)
-
+    updateSidebarConversationType('Search')
+    onceRef.current = true
+    setWaitAskQuestion(question)
     target.reset()
 
     setLoading(false)
   }
-
+  useEffect(() => {
+    if (waitAskQuestion && currentSidebarConversationType === 'Search' && onceRef.current) {
+      onceRef.current = false
+      createSearchWithAI(waitAskQuestion, false)
+      setWaitAskQuestion('')
+    }
+  }, [waitAskQuestion, currentSidebarConversationType, createSearchWithAI])
   return (
     <Stack
       direction="row"

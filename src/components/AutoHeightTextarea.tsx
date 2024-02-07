@@ -173,7 +173,10 @@ const AutoHeightTextarea: FC<{
   minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
-  const { currentSidebarConversationType } = useSidebarSettings()
+  const {
+    currentSidebarConversationId,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const {
     isChatGPTVision,
@@ -362,7 +365,12 @@ const AutoHeightTextarea: FC<{
         ...computedChildrenHeight('appState'),
       )
     }
-  }, [appState.open, loading, currentSidebarConversationType])
+  }, [
+    appState.open,
+    loading,
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+  ])
   useEffectOnce(() => {
     if (
       InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&

@@ -80,6 +80,7 @@ const SidebarScreenshotButton: FC<{
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
+        rootEl?.remove()
         setRootEl(null)
         showChatBox()
         return

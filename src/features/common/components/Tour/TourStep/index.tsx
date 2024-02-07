@@ -153,7 +153,7 @@ const DefaultPanel: FC<TourStepProps> = (props) => {
               color={'text.primary'}
             >
               {current}
-              {` ${t('maxai_tour:text_of')} `}
+              {` of `}
               {total}
             </Typography>
           </Stack>

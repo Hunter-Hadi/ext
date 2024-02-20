@@ -60,6 +60,11 @@ const SidebarPromotionDialog = () => {
         return
       }
 
+      // if (!onBoardingData.ON_BOARDING_MAXAI_3_0) {
+      //   // maxai 3.0 的 onboarding tour，还没有结束，不弹窗
+      //   return
+      // }
+
       // 弹窗
       // 加个延迟让用户看到聊天框
       setTimeout(async () => {
@@ -116,6 +121,7 @@ const SidebarPromotionDialog = () => {
       }}
       sx={{
         position: 'absolute',
+        zIndex: 2147483647,
         [`.${backdropClasses.root}`]: {
           position: 'absolute',
         },

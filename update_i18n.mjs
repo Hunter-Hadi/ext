@@ -70,8 +70,9 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
           } catch (e) {
             console.log('33333')
             // 第三次尝试,替换文本中错误的冒号
-            const errorColon =
-              JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
+            const errorColon = JSON.stringify(jsonText).match(
+              /"(?<colon>.)\s?{/,
+            )?.groups?.colon
             if (errorColon) {
               const jsonText3 = jsonText.replaceAll(errorColon, ':')
               data = JSON.parse(jsonText3.replace(/^\n?```\n?|\n?```\n?$/g, ''))
@@ -478,7 +479,6 @@ import postcssPlugin from 'esbuild-style-plugin'
 
 import * as buildEnv from './build/env.mjs'
 
-
 /**
  * 更新system prompt的i18n key
  * @param forceUpdate
@@ -588,11 +588,8 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = [
-    'sidebar_tour__step__1__title'
-  ]
-  const retryLanguageCodes = [
-  ]
+  const keys = []
+  const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
 }
 

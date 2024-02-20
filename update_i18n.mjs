@@ -1,11 +1,11 @@
+import { ChatGPTAPI } from 'chatgpt'
+import fs from 'fs'
+import pkg from 'gpt-3-encoder'
+import { HttpsProxyAgent } from 'https-proxy-agent'
+import * as _ from 'lodash-es'
+import nodeFetch from 'node-fetch'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
-import fs from 'fs'
-import * as _ from 'lodash-es'
-import { ChatGPTAPI } from 'chatgpt'
-import { HttpsProxyAgent } from 'https-proxy-agent'
-import nodeFetch from 'node-fetch'
-import pkg from 'gpt-3-encoder'
 const { encode } = pkg
 const debug = false
 
@@ -472,9 +472,10 @@ const updateI18nJson = async (
   console.log('==================================')
 }
 
+import autoprefixer from 'autoprefixer'
 import esbuild from 'esbuild'
 import postcssPlugin from 'esbuild-style-plugin'
-import autoprefixer from 'autoprefixer'
+
 import * as buildEnv from './build/env.mjs'
 
 
@@ -588,6 +589,7 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 async function main() {
   await updateDefaultJson(true)
   const keys = [
+    'sidebar_tour__step__1__title'
   ]
   const retryLanguageCodes = [
   ]

@@ -604,7 +604,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Այլոք՝ ուղիղ հղման հետ կարող են դիտել այսը",
     "sidebar__conversation_share__share_panel__copied_tip": "Հղումը պատճենված է",
     "sidebar__conversation_share__share_panel__success_tip": "Կիսվելու հղումը բեռնվել է ստեղծած սեզմանական URL-ին!",
-    "sidebar__conversation_share__share_panel__error_tip": "Չհաջողվեց կիսելը։ Խնդրում ենք ստուգել ձեր ցանցային կամ փորձել նորից։"
+    "sidebar__conversation_share__share_panel__error_tip": "Չհաջողվեց կիսելը։ Խնդրում ենք ստուգել ձեր ցանցային կամ փորձել նորից։",
+    "sidebar__promotion_dialog__title": "Նոր պրեմիում հատկություններ {{VERSION}}-ում",
+    "sidebar__promotion_dialog__content_item1__title": "Ստեղծեք AI արվեստ և պատկերներ",
+    "sidebar__promotion_dialog__content_item1__description": "Արագությամբ դարձրեք ձեր նախագծերը հետևյալ պատկերացումով: Պարզ, արագ, փոքրաթերթային:",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo պարբերակով",
+    "sidebar__promotion_dialog__content_item2__description": "Մասնակցեք OpenAI-ի առաջիններին՝ GPT-4-ի լեզվի հասկացմանը միացնելով պատկերագրման ադապտացիայի ավազարկղում:",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Մասնակցեք Google-ի ամենահամարական և ընդհանուր մոդելին մուլտիմոդալության համար:",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Մասնակցեք Anthropic-ի նորացված լավագույն մոդելին, որը առաջարկում է 200K տոկենային պատուհանական պատուհան և շատ փոքր հալուզիայի չափեր:",
+    "sidebar__promotion_dialog__content_item5__title": "AI-ով անհայտ որոնում",
+    "sidebar__promotion_dialog__content_item5__description": "Ստացեք պատասխաններ ամենակարևոր հարցերին բացահայտ վեբ արտադրանքի մասին:",
+    "sidebar__promotion_dialog__content_item6__title": "Կենդանիներով ամբողջականություն",
+    "sidebar__promotion_dialog__content_item6__description": "Ստացեք ամբողջականություն, հարցեր առանց պատասխանի և գտնեք տեղեկություն ցանկացած վեբ էջի, PDF-ի, էլ. փոստի և YouTube վիդեոյի մասին:",
+    "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Անցկացնելուց շուտ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

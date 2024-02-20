@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "లింకుతో ఎవరైనా చూడగలరు",
     "sidebar__conversation_share__share_panel__copied_tip": "లింకు నకలు చేయబడింది",
     "sidebar__conversation_share__share_panel__success_tip": "షేర్ చేసిన సంభాషణ URL క్లిప్‌బోర్డ్‌కు నకలు చేయబడింది!",
-    "sidebar__conversation_share__share_panel__error_tip": "ప్రస్తుతం షేర్ చేయలేరు. దయచేసి మీ నెట్‌వర్క్‌ను తనిఖీ చేయండి లేదా తరువాత మళ్ళీ ప్రయత్నించండి."
+    "sidebar__conversation_share__share_panel__error_tip": "ప్రస్తుతం షేర్ చేయలేరు. దయచేసి మీ నెట్‌వర్క్‌ను తనిఖీ చేయండి లేదా తరువాత మళ్ళీ ప్రయత్నించండి.",
+    "sidebar__promotion_dialog__title": "కొత్త ప్రీమియం ఫీచర్లు {{VERSION}}లో",
+    "sidebar__promotion_dialog__content_item1__title": "AI కళాకారత్వం మరియు చిత్రాలు సృష్టించండి",
+    "sidebar__promotion_dialog__content_item1__description": "మీ దృష్టిని అద్భుతమైన చిత్రాలకు మార్చండి. సరళమైన, శక్తివంతమైన, మార్పులు చేసే.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-టర్బో విత్ విజన్",
+    "sidebar__promotion_dialog__content_item2__description": "గోపెన్‌ఐ యొక్క క్రాంతికారి జిపిటి-4 విజన్‌ను ప్రాప్యత చేసేది, గతిశీలమైన భాషా అర్థంపు తో చిత్ర ప్రాసెసింగ్‌ను సమకల్పించడం.",
+    "sidebar__promotion_dialog__content_item3__title": "జెమిని-ప్రొ",
+    "sidebar__promotion_dialog__content_item3__description": "మల్టీమోడాలిటీకి గూగుల్‌ను అత్యంత సాధారణ మరియు అధిక మోడల్‌ను ప్రాప్యత చేసేందుకు.",
+    "sidebar__promotion_dialog__content_item4__title": "క్లోడ్-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "అంథ్రాపిక్‌ను కొత్త ఉత్తమ మోడల్‌ను ప్రాప్యత చేసేందుకు, 200K టోకన్ కంటెక్స్ట్ విండో మరియు చాలా తక్కువ హాల్యూసినేషన్ రేట్లు.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-ప్రోవర్డ్ శోధన",
+    "sidebar__promotion_dialog__content_item5__description": "సమగ్ర వెబ్ ప్రజ్ఞలతో కఠిన ప్రశ్నలకు సమాధానాలు పొందండి.",
+    "sidebar__promotion_dialog__content_item6__title": "సారంపు చేయండి & ఏదైనా పేజీలో అడ్డు చేయండి",
+    "sidebar__promotion_dialog__content_item6__description": "ఏదైనా వెబ్‌పేజీ, PDF, ఇమెయిల్ మరియు YouTube వీడియో గురించి సంగ్రహాలను పొందండి, సారాంశాలను తీసుకోండి, ప్రశ్నలను అడ్డు చేయండి.",
+    "sidebar__promotion_dialog__cta_button": "ఇప్పుడు అప్గ్రేడ్ చేయండి - ఆఫర్ త్వరలో ముగిసేది!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

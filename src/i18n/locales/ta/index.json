@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "இணைப்புடன் எவரும் இதைப் பார்க்கலாம்",
     "sidebar__conversation_share__share_panel__copied_tip": "இணைப்பு நகலெடுக்கப்பட்டது",
     "sidebar__conversation_share__share_panel__success_tip": "பகிரப்பட்ட உரையாடல் URL க்கு நகலெடுக்கப்பட்டுள்ளது!",
-    "sidebar__conversation_share__share_panel__error_tip": "தற்போது பகிர முடியவில்லை. உங்கள் நெட்வொர்க்கை சரிபார்க்கவும் அல்லது பின்னர் முயற்சிக்கவும்."
+    "sidebar__conversation_share__share_panel__error_tip": "தற்போது பகிர முடியவில்லை. உங்கள் நெட்வொர்க்கை சரிபார்க்கவும் அல்லது பின்னர் முயற்சிக்கவும்.",
+    "sidebar__promotion_dialog__title": "புதிய மிகச் சிறந்த அம்சங்கள் {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "ஐயாவின் கலை மற்றும் படங்களை உருவாக்குக",
+    "sidebar__promotion_dialog__content_item1__description": "உங்கள் கண்ணோட்டத்தை அழகாக்க வேகமாக படங்களாக மாற்றுங்கள். எளிதான, வல்லுநரான, மாற்றுத்திறனான.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-டர்போ மூடப்பட்ட பார்வையிடத்தையும் உரை புரிந்துகொள்ளுங்கள்",
+    "sidebar__promotion_dialog__content_item2__description": "பட செயலாக்கத்தை GPT-4 எனும் மேம்படுத்தப்பட்ட மொழி புரிந்துகொள்ளும் GPT-4-வின் மேலதிக மொழி புரிப்புடன் ஒருங்கிணைக்கப்பட்டுள்ளது.",
+    "sidebar__promotion_dialog__content_item3__title": "ஜெமினி-ப்ரோ",
+    "sidebar__promotion_dialog__content_item3__description": "பல்வகையான மாதிரிகளுக்கான Google அதிக திறனான மாதிரி அணுகுதல்.",
+    "sidebar__promotion_dialog__content_item4__title": "கிளோட்-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Anthropic என்னும் புதிய சிறந்த மாதிரி, 200K டோக்கன் உள்ளடக்கப்பட்ட சூழல் சாளரங்களுடன் மிகவும் குறைந்த மயங்குதல் விகிதங்களை வழங்குகிறது.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-ஐ பயன்படுத்தி தேடுக",
+    "sidebar__promotion_dialog__content_item5__description": "மிகவும் கடினமான கேள்விகளுக்கு முழுமையான வலைத்தள அறிவிப்புகளைப் பெறுங்கள்.",
+    "sidebar__promotion_dialog__content_item6__title": "எந்த பக்கத்திலும் சுருக்கம் செய்யுங்கள் மற்றும் கேள்விகள் கேட்குங்கள்",
+    "sidebar__promotion_dialog__content_item6__description": "எந்த வலைப்பக்கம், PDF, மின்னஞ்சல் மற்றும் YouTube வீடியோவிலுள்ள எந்த தகவலுக்கும் சுருக்கங்களைப் பெறுங்கள்.",
+    "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்து - சம்பாதிக்கும் நேரம் முடிந்துவிட்டது!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

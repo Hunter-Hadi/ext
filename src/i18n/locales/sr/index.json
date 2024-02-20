@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Bilo ko sa linkom može videti ovo",
     "sidebar__conversation_share__share_panel__copied_tip": "Link kopiran",
     "sidebar__conversation_share__share_panel__success_tip": "URL deljene konverzacije je kopiran u međuspremnik!",
-    "sidebar__conversation_share__share_panel__error_tip": "Trenutno nije moguće deliti. Molimo proverite svoju mrežu ili pokušajte ponovo kasnije."
+    "sidebar__conversation_share__share_panel__error_tip": "Trenutno nije moguće deliti. Molimo proverite svoju mrežu ili pokušajte ponovo kasnije.",
+    "sidebar__promotion_dialog__title": "Nove premium funkcije u {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Kreirajte AI umetnost i slike",
+    "sidebar__promotion_dialog__content_item1__description": "Brzo pretvorite svoje vizije u zadivljujuće slike. Jednostavno, moćno, transformišuće.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo sa vizijom",
+    "sidebar__promotion_dialog__content_item2__description": "Pristupite revolucionarnom GPT-4-vision od OpenAI-a koji integriše obradu slika sa naprednim jezičkim razumevanjem GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Pristupite najmoćnijem i najopštijem modelu za multimodalnost od Google-a.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Pristupite novom najboljem modelu od Anthropic-a, koji nudi prozor konteksta od 200K tokena i mnogo niže stope halucinacija.",
+    "sidebar__promotion_dialog__content_item5__title": "Pretraga sa AI podrškom",
+    "sidebar__promotion_dialog__content_item5__description": "Dobijte odgovore na najteža pitanja uz sveobuhvatne web informacije.",
+    "sidebar__promotion_dialog__content_item6__title": "Sumirajte i pitajte na bilo kojoj stranici",
+    "sidebar__promotion_dialog__content_item6__description": "Dobijte sažetke, postavljajte pitanja i pronađite informacije o bilo kojoj veb stranici, PDF-u, e-pošti i YouTube videu.",
+    "sidebar__promotion_dialog__cta_button": "Nadogradite sada - Ponuda ističe uskoro!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

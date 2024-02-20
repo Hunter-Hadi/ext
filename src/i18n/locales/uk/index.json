@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "لنک کے ساتھ کوئی بھی اسے دیکھ سکتا ہے",
     "sidebar__conversation_share__share_panel__copied_tip": "لنک کاپی ہوگئی",
     "sidebar__conversation_share__share_panel__success_tip": "مشترکہ گفتگو کا URL کلپ بورڈ میں کاپی کر لیا گیا ہے!",
-    "sidebar__conversation_share__share_panel__error_tip": "موجودہ وقت میں تقسیم نہیں کی جا سکتی ہے. براہ کرم اپنا نیٹ ورک چیک کریں یا بعد میں دوبارہ کوشش کریں."
+    "sidebar__conversation_share__share_panel__error_tip": "موجودہ وقت میں تقسیم نہیں کی جا سکتی ہے. براہ کرم اپنا نیٹ ورک چیک کریں یا بعد میں دوبارہ کوشش کریں.",
+    "sidebar__promotion_dialog__title": "نئی پریمیم خصوصیات {{VERSION}} میں",
+    "sidebar__promotion_dialog__content_item1__title": "AI آرٹ اور تصاویر بنائیں",
+    "sidebar__promotion_dialog__content_item1__description": "اپنے وژنز کو دلکش تصاویر میں تیزی سے تبدیل کریں۔ آسان، طاقتور، تحولیہ۔",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-ٹربو وژن کے ساتھ",
+    "sidebar__promotion_dialog__content_item2__description": "OpenAI کی انقلابی GPT-4-وژن تک رسائی حاصل کریں جو تصویری پروسیسنگ کو GPT-4 کی تقدیری زبانی فہم کے ساتھ ملا کرتا ہے۔",
+    "sidebar__promotion_dialog__content_item3__title": "جیمنی-پرو",
+    "sidebar__promotion_dialog__content_item3__description": "ملٹی موڈالٹی کے لئے گوگل کا سب سے قابلِ اعتماد اور عام ماڈل تک رسائی حاصل کریں۔",
+    "sidebar__promotion_dialog__content_item4__title": "کلوڈ-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Anthropic کا نیا بہترین ماڈل، جو 200K ٹوکن کنٹیکسٹ ونڈو اور بہت کم ہالیوسینیشن ریٹس پیش کرتا ہے۔",
+    "sidebar__promotion_dialog__content_item5__title": "AI پاورڈ تلاش",
+    "sidebar__promotion_dialog__content_item5__description": "سخت سوالات کے جوابات حاصل کریں مکمل ویب انسائٹس کے ساتھ۔",
+    "sidebar__promotion_dialog__content_item6__title": "تفصیلی خلاصہ اور کسی صفحے پر سوال کریں",
+    "sidebar__promotion_dialog__content_item6__description": "کسی بھی ویب پیج، پی ڈی ایف، ای میل اور یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔",
+    "sidebar__promotion_dialog__cta_button": "اب اپگریڈ کریں - پیشکش جلد ختم ہوجائے گی!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

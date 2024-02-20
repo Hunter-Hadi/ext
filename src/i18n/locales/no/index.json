@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Alle med lenken kan se dette",
     "sidebar__conversation_share__share_panel__copied_tip": "Lenke kopiert",
     "sidebar__conversation_share__share_panel__success_tip": "Den delte samtalelenken er kopiert til utklippstavlen!",
-    "sidebar__conversation_share__share_panel__error_tip": "Kan ikke dele for øyeblikket. Sjekk nettverket ditt eller prøv igjen senere."
+    "sidebar__conversation_share__share_panel__error_tip": "Kan ikke dele for øyeblikket. Sjekk nettverket ditt eller prøv igjen senere.",
+    "sidebar__promotion_dialog__title": "Nye premium-funksjoner i {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Lag AI-kunst og bilder",
+    "sidebar__promotion_dialog__content_item1__description": "Gjør visjonene dine om til fantastiske bilder raskt. Enkelt, kraftig, transformerende.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo med visjon",
+    "sidebar__promotion_dialog__content_item2__description": "Få tilgang til OpenAI's revolusjonerende GPT-4-visjon som integrerer bildebehandling med den avanserte språkforståelsen til GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Få tilgang til Googles mest kapable og generelle modell for multimodalitet.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Få tilgang til Anthropics nye beste modell, som tilbyr et kontekstvindu på 200K tokens og mye lavere hallusinasjonsrate.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-drevet søk",
+    "sidebar__promotion_dialog__content_item5__description": "Få svar på de vanskeligste spørsmålene med omfattende webinnsikt.",
+    "sidebar__promotion_dialog__content_item6__title": "Oppsummer og spør om hvilken som helst side",
+    "sidebar__promotion_dialog__content_item6__description": "Få oppsummeringer, still spørsmål og finn informasjon om hvilken som helst nettside, PDF, e-post og YouTube-video.",
+    "sidebar__promotion_dialog__cta_button": "Oppgrader nå - Tilbudet avsluttes snart!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

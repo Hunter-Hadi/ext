@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "लिंकसह कोणताही बघू शकतो",
     "sidebar__conversation_share__share_panel__copied_tip": "लिंक कॉपी केली",
     "sidebar__conversation_share__share_panel__success_tip": "सामायिक केलेले संवाद URL क्लिपबोर्डवर कॉपी केले गेले आहे!",
-    "sidebar__conversation_share__share_panel__error_tip": "आत्ताच सामायिक करणे संपादित करण्यास अक्षम. कृपया आपले नेटवर्क तपासा किंवा नंतर पुन्हा प्रयत्न करा."
+    "sidebar__conversation_share__share_panel__error_tip": "आत्ताच सामायिक करणे संपादित करण्यास अक्षम. कृपया आपले नेटवर्क तपासा किंवा नंतर पुन्हा प्रयत्न करा.",
+    "sidebar__promotion_dialog__title": "नवीन प्रीमियम सुविधा {{VERSION}} मध्ये",
+    "sidebar__promotion_dialog__content_item1__title": "AI कला आणि छायाचित्रे तयार करा",
+    "sidebar__promotion_dialog__content_item1__description": "तुमच्या दृष्टींचे अद्भुत छायाचित्रे झटपट तयार करा. सोपे, शक्तिशाली, परिवर्तक.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-तेजस्वी विजनसह",
+    "sidebar__promotion_dialog__content_item2__description": "OpenAI च्या क्रांतिकारी GPT-4-विजनच्या विकसित भाषा समजण्यासह छायाचित्र प्रक्रियेचा प्रवेश करा.",
+    "sidebar__promotion_dialog__content_item3__title": "जेमिनी-प्रो",
+    "sidebar__promotion_dialog__content_item3__description": "बहुद्रव्यांच्या सर्वात क्षमतेशील आणि सामान्य मॉडेलसाठी Google चे उपयुक्ततम.",
+    "sidebar__promotion_dialog__content_item4__title": "क्लोड-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Anthropic चा नवीन उत्कृष्ट मॉडेल, 200K टोकन संदर्भ विंडो आणि खूप कमी हॅलुसिनेशन दरांसह.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-शक्तिशाली शोध",
+    "sidebar__promotion_dialog__content_item5__description": "संपूर्ण वेब सूचनांसह कठीण प्रश्नांचे उत्तर मिळवा.",
+    "sidebar__promotion_dialog__content_item6__title": "संक्षेपण करा आणि कोणत्याही पृष्ठावर विचारा",
+    "sidebar__promotion_dialog__content_item6__description": "कोणत्याही वेबपेज, PDF, ईमेल आणि YouTube व्हिडिओवरील संक्षेपण, प्रश्न विचारा आणि माहिती शोधा.",
+    "sidebar__promotion_dialog__cta_button": "अपग्रेड करा - प्रस्ताव लवकरच संपले जाते!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

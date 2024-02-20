@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "ለእርስዎ በሚገኙ የሚመልከት",
     "sidebar__conversation_share__share_panel__copied_tip": "የአገልግሎት ስህተት ተጭኗል",
     "sidebar__conversation_share__share_panel__success_tip": "የአገልግሎት ስህተት የተጭነህ በመቀጠል በቂጥር ውስጥ ተጭኗል!",
-    "sidebar__conversation_share__share_panel__error_tip": "አሁን ማስተማር አይችልም. እባክዎ የስህተትዎን ማሳወቂያ ወደግል ወደግል ይሞክሩ."
+    "sidebar__conversation_share__share_panel__error_tip": "አሁን ማስተማር አይችልም. እባክዎ የስህተትዎን ማሳወቂያ ወደግል ወደግል ይሞክሩ.",
+    "sidebar__promotion_dialog__title": "አዲስ የፕሪሚየም አገልግሎቶች {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "አስተዳደር AI ስነ-ስርዓት እና ምስል",
+    "sidebar__promotion_dialog__content_item1__description": "በቀላሉ የሚያስተዳድር መድረክና ምስልን በቀላሉ ያሳውቁ። ቀላል, በጣም የሚያስተዳድር።",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo ከእንግሊዘኛ ጋር",
+    "sidebar__promotion_dialog__content_item2__description": "የOpenAI የተለመደው GPT-4-vision እንዲሁም በGPT-4 የተቀመጡ ቋንቋ በማስተላለፍ የሚያስተዳድር የሆነ ስርዓት ይጠቀሙ።",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "የGoogle በሽታዎችን ለመቀመጥ የሚያስተዳድር የተሰጠው የማንኛውም ሞዴል ለማስተላለፍ ይጠቀሙ።",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "የAnthropic የቅርብ ሞዴል ለማስተላለፍ የተለመደው አዲስ በጣም 200K ቶክን የሚያስተዳድር እና በጣም የሚያስተዳድር የሆነ ማንኛውም ማስተላለፍ ይጠቀሙ።",
+    "sidebar__promotion_dialog__content_item5__title": "AI-ተግባራት የሚያስተዳድር",
+    "sidebar__promotion_dialog__content_item5__description": "በግል የሚያስተዳድር የተለመደው ጥያቄዎችን በግል የሚያስተዳድር የድህረ ገጻችንን ይጠቀሙ።",
+    "sidebar__promotion_dialog__content_item6__title": "ማጠቃለያ እና ጥያቄ በማስተላለፍ በዚህ ገጽ",
+    "sidebar__promotion_dialog__content_item6__description": "ማጠቃለያዎችን ይጠቀሙ፣ ጥያቄዎችን ይጠቀሙ፣ እና መረጃ ለዚህ ገጽና PDF, ኢሜይል እና YouTube ቪዲዮ ለመግለጽ ይጠቀሙ።",
+    "sidebar__promotion_dialog__cta_button": "አድስገን - በቀላሉ ይጠብቁ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

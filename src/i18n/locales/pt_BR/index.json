@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Qualquer pessoa com o link pode visualizar isso",
     "sidebar__conversation_share__share_panel__copied_tip": "Link copiado",
     "sidebar__conversation_share__share_panel__success_tip": "A URL da conversa compartilhada foi copiada para a área de transferência!",
-    "sidebar__conversation_share__share_panel__error_tip": "Não é possível compartilhar no momento. Verifique sua rede ou tente novamente mais tarde."
+    "sidebar__conversation_share__share_panel__error_tip": "Não é possível compartilhar no momento. Verifique sua rede ou tente novamente mais tarde.",
+    "sidebar__promotion_dialog__title": "Novos recursos premium na versão {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Crie arte e imagens com IA",
+    "sidebar__promotion_dialog__content_item1__description": "Transforme rapidamente suas visões em imagens impressionantes. Simples, poderoso, transformador.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo com visão",
+    "sidebar__promotion_dialog__content_item2__description": "Acesse a revolucionária GPT-4-vision da OpenAI que integra processamento de imagem com a avançada compreensão de linguagem do GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Acesse o modelo mais capaz e geral do Google para multimodalidade.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Acesse o melhor novo modelo da Anthropic, oferecendo uma janela de contexto de 200K tokens e taxas de alucinação muito menores.",
+    "sidebar__promotion_dialog__content_item5__title": "Busca alimentada por IA",
+    "sidebar__promotion_dialog__content_item5__description": "Obtenha respostas para as perguntas mais difíceis com insights abrangentes da web.",
+    "sidebar__promotion_dialog__content_item6__title": "Resuma e pergunte sobre qualquer página",
+    "sidebar__promotion_dialog__content_item6__description": "Obtenha resumos, faça perguntas e encontre informações sobre qualquer página da web, PDF, e-mail e vídeo do YouTube.",
+    "sidebar__promotion_dialog__cta_button": "Atualize agora - Oferta termina em breve!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

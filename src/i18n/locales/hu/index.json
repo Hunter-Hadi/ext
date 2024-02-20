@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Bárki, aki rendelkezik a linkkel, megtekintheti ezt",
     "sidebar__conversation_share__share_panel__copied_tip": "Link másolva",
     "sidebar__conversation_share__share_panel__success_tip": "A megosztott beszélgetés URL-je másolva lett a vágólapra!",
-    "sidebar__conversation_share__share_panel__error_tip": "Jelenleg nem lehet megosztani. Kérlek, ellenőrizd a hálózatot vagy próbáld újra később."
+    "sidebar__conversation_share__share_panel__error_tip": "Jelenleg nem lehet megosztani. Kérlek, ellenőrizd a hálózatot vagy próbáld újra később.",
+    "sidebar__promotion_dialog__title": "Új prémium funkciók a(z) {{VERSION}} verzióban",
+    "sidebar__promotion_dialog__content_item1__title": "Készíts AI művészetet és képeket",
+    "sidebar__promotion_dialog__content_item1__description": "Gyorsan alakítsd át elképzeléseidet lenyűgöző képekké. Egyszerű, erőteljes, átalakító.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo látással",
+    "sidebar__promotion_dialog__content_item2__description": "Hozzáférhetsz az OpenAI forradalmi GPT-4-vision nevű szolgáltatásához, amely összekapcsolja a képfeldolgozást a GPT-4 fejlett nyelvi megértésével.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Hozzáférhetsz a Google legképzettebb és legáltalánosabb multimodális modelljéhez.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Hozzáférhetsz az Anthropic új legjobb modelljéhez, amely egy 200K tokenes kontextusablakkal rendelkezik, és sokkal alacsonyabb hallucinációs arányokat kínál.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-alapú keresés",
+    "sidebar__promotion_dialog__content_item5__description": "Kapj válaszokat a legnehezebb kérdésekre átfogó webes információk segítségével.",
+    "sidebar__promotion_dialog__content_item6__title": "Összefoglalás és kérdés feltevése bármelyik oldalon",
+    "sidebar__promotion_dialog__content_item6__description": "Kapj összefoglalókat, tegyél fel kérdéseket, és találj információt bármelyik weboldalról, PDF-ről, e-mailről és YouTube-videóról.",
+    "sidebar__promotion_dialog__cta_button": "Frissítés most - Az ajánlat hamarosan lejár!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

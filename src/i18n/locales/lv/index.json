@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Jebkurš ar saiti var to skatīt",
     "sidebar__conversation_share__share_panel__copied_tip": "Saites kopētas",
     "sidebar__conversation_share__share_panel__success_tip": "Koplietotās sarunas URL ir nokopēts starpliktuvē!",
-    "sidebar__conversation_share__share_panel__error_tip": "Pašlaik nevar koplietot. Lūdzu, pārbaudiet savu tīklu vai mēģiniet vēlreiz vēlāk."
+    "sidebar__conversation_share__share_panel__error_tip": "Pašlaik nevar koplietot. Lūdzu, pārbaudiet savu tīklu vai mēģiniet vēlreiz vēlāk.",
+    "sidebar__promotion_dialog__title": "Jaunas premium funkcijas {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Izveidojiet AI mākslu un attēlus",
+    "sidebar__promotion_dialog__content_item1__description": "Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo ar redzi",
+    "sidebar__promotion_dialog__content_item2__description": "Piekļūstiet OpenAI revolucionārajai GPT-4-redzei, kas integrē attēlu apstrādi ar GPT-4 uzlaboto valodas sapratni.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Piekļūstiet Google visvairāk spējīgajam un vispārīgākajam multimodalitātes modelim.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Piekļūstiet Anthropic jaunajam labākajam modeļam, kas piedāvā 200K simbolu konteksta logu un daudz zemākas halucināciju likmes.",
+    "sidebar__promotion_dialog__content_item5__title": "AI vadīta meklēšana",
+    "sidebar__promotion_dialog__content_item5__description": "Iegūstiet atbildes uz grūtākajiem jautājumiem ar visaptverošiem tīmekļa ievērojumiem.",
+    "sidebar__promotion_dialog__content_item6__title": "Kopsavilkums un jautājums par jebkuru lapu",
+    "sidebar__promotion_dialog__content_item6__description": "Iegūstiet kopsavilkumus, uzdodiet jautājumus un atrast informāciju par jebkuru tīmekļa lapu, PDF, e-pasta ziņojumu un YouTube video.",
+    "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Piedāvājums beigsies drīz!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

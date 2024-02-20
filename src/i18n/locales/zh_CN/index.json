@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "任何拥有链接的人都可以查看此内容",
     "sidebar__conversation_share__share_panel__copied_tip": "链接已复制",
     "sidebar__conversation_share__share_panel__success_tip": "已将共享对话的URL复制到剪贴板！",
-    "sidebar__conversation_share__share_panel__error_tip": "无法分享。请检查您的网络或稍后重试。"
+    "sidebar__conversation_share__share_panel__error_tip": "无法分享。请检查您的网络或稍后重试。",
+    "sidebar__promotion_dialog__title": "新功能 {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "创建 AI 艺术和图像",
+    "sidebar__promotion_dialog__content_item1__description": "将您的想象迅速转化为令人惊叹的图像。简单、强大、变革性。",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo 视觉版",
+    "sidebar__promotion_dialog__content_item2__description": "访问 OpenAI 的革命性 GPT-4-vision，将图像处理与 GPT-4 的高级语言理解相结合。",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "访问 Google 最强大、最通用的多模态模型。",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "访问 Anthropic 的最新顶级模型，提供 200K 个标记上下文窗口和更低的幻觉率。",
+    "sidebar__promotion_dialog__content_item5__title": "AI 强化搜索",
+    "sidebar__promotion_dialog__content_item5__description": "通过全面的网络洞察力获取对最困难问题的答案。",
+    "sidebar__promotion_dialog__content_item6__title": "摘要和在任何页面上提问",
+    "sidebar__promotion_dialog__content_item6__description": "获取任何网页、PDF、电子邮件和 YouTube 视频的摘要、提问和信息。",
+    "sidebar__promotion_dialog__cta_button": "立即升级 - 优惠即将结束！"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Bet kas, turintis nuorodą, gali tai peržiūrėti",
     "sidebar__conversation_share__share_panel__copied_tip": "Nuoroda nukopijuota",
     "sidebar__conversation_share__share_panel__success_tip": "Bendrintos pokalbio URL nuorodos kopija nukopijuota į iškarpinę!",
-    "sidebar__conversation_share__share_panel__error_tip": "Šiuo metu nepavyksta dalintis. Patikrinkite savo tinklą arba bandykite vėliau."
+    "sidebar__conversation_share__share_panel__error_tip": "Šiuo metu nepavyksta dalintis. Patikrinkite savo tinklą arba bandykite vėliau.",
+    "sidebar__promotion_dialog__title": "Naujos premium funkcijos {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Kurkite AI meną ir paveikslus",
+    "sidebar__promotion_dialog__content_item1__description": "Greitai paverčia savo vizijas į nuostabius paveikslus. Paprasta, galinga, transformuojanti.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo su vaizdu",
+    "sidebar__promotion_dialog__content_item2__description": "Pasiekite OpenAI revoliucinį GPT-4-vaizdą, kuris integruoja vaizdų apdorojimą su pažangiu GPT-4 kalbos supratimu.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Pasiekite Google galingiausią ir universalų modelį multimodalumui.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Pasiekite Anthropic naują geriausią modelį, siūlantį 200K ženklų konteksto langą ir žymiai mažesnes halucinacijų normas.",
+    "sidebar__promotion_dialog__content_item5__title": "AI pagrįstas paieška",
+    "sidebar__promotion_dialog__content_item5__description": "Gaukite atsakymus į sunkiausius klausimus su išsamiomis interneto žiniomis.",
+    "sidebar__promotion_dialog__content_item6__title": "Santraukos ir klausimai bet kurioje puslapyje",
+    "sidebar__promotion_dialog__content_item6__description": "Gaukite santraukas, užduokite klausimus ir raskite informaciją apie bet kurį tinklalapį, PDF, el. laišką ir „YouTube“ vaizdo įrašą.",
+    "sidebar__promotion_dialog__cta_button": "Atnaujinkite dabar - pasiūlymas baigiasi greitai!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

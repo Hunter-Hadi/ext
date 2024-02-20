@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "লিংক থাকলে কেউই দেখতে পারবে",
     "sidebar__conversation_share__share_panel__copied_tip": "লিংক অনুলিপি করা হয়েছে",
     "sidebar__conversation_share__share_panel__success_tip": "শেয়ার করা মন্তব্যের URL ক্লিপবোর্ডে কপি করা হয়েছে!",
-    "sidebar__conversation_share__share_panel__error_tip": "এখন মুহূর্তে শেয়ার করা যাচ্ছে না। দয়া করে আপনার নেটওয়ার্ক পরীক্ষা করুন বা পরে আবার চেষ্টা করুন।"
+    "sidebar__conversation_share__share_panel__error_tip": "এখন মুহূর্তে শেয়ার করা যাচ্ছে না। দয়া করে আপনার নেটওয়ার্ক পরীক্ষা করুন বা পরে আবার চেষ্টা করুন।",
+    "sidebar__promotion_dialog__title": "নতুন প্রিমিয়াম ফিচার {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "একটি AI আর্ট এবং ইমেজ তৈরি করুন",
+    "sidebar__promotion_dialog__content_item1__description": "আপনার ভাবনাগুলি দ্রুত অসাধারণ ছবি তৈরি করুন। সহজ, শক্তিশালী, পরিবর্তনশীল।",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-টার্বো ভিশন সহ",
+    "sidebar__promotion_dialog__content_item2__description": "অপেনএইআই-র উন্নত ভাষা বোঝার সাথে চিত্র প্রক্রিয়াকরণ সংযোগ করা GPT-4-ভিশনে অ্যাক্সেস পান।",
+    "sidebar__promotion_dialog__content_item3__title": "জেমিনি-প্রো",
+    "sidebar__promotion_dialog__content_item3__description": "মাল্টিমোডালিটির জন্য গুগলের সবচেয়ে ক্ষমতাশালী এবং সাধারণ মডেলে অ্যাক্সেস পান।",
+    "sidebar__promotion_dialog__content_item4__title": "ক্লোড-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Anthropic-এর নতুন সেরা মডেলের অ্যাক্সেস পান, যা 200K টোকেন সংকেত উইন্ডো এবং অনেক কম হ্যালুসিনেশন হার দেয়।",
+    "sidebar__promotion_dialog__content_item5__title": "AI-পাওয়ারড সার্চ",
+    "sidebar__promotion_dialog__content_item5__description": "সম্পূর্ণ ওয়েব ইনসাইট দিয়ে সবচেয়ে কঠিন প্রশ্নের উত্তর পান।",
+    "sidebar__promotion_dialog__content_item6__title": "সারাংশ করুন এবং যেকোনো পৃষ্ঠায় প্রশ্ন করুন",
+    "sidebar__promotion_dialog__content_item6__description": "যেকোনো ওয়েবপেজ, পিডিএফ, ইমেল এবং YouTube ভিডিও সম্পর্কে সংক্ষিপ্তসার, প্রশ্ন করুন এবং তথ্য খুঁজুন।",
+    "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - অফার শীঘ্রই শেষ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

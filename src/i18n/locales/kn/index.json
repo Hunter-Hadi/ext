@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "ಲಿಂಕ್ ಹೊಂದಿರುವವರೆಗೆ ಯಾರೇ ವೀಕ್ಷಿಸಬಹುದು",
     "sidebar__conversation_share__share_panel__copied_tip": "ಲಿಂಕ್ ನಕಲಿಮಾಡಲಾಗಿದೆ",
     "sidebar__conversation_share__share_panel__success_tip": "ಹಂಚಿಕೊಳ್ಳಲಾದ ಸಂಭಾಷಣೆಯ URL ಕ್ಲಿಪ್‌ಬೋರ್ಡ್‌ಗೆ ನಕಲಿಮಾಡಲಾಗಿದೆ!",
-    "sidebar__conversation_share__share_panel__error_tip": "ಈ ಕ್ಷಣದಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ. ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್‌ನೇರವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+    "sidebar__conversation_share__share_panel__error_tip": "ಈ ಕ್ಷಣದಲ್ಲಿ ಹಂಚಿಕೊಳ್ಳಲು ಸಾಧ್ಯವಿಲ್ಲ. ನಿಮ್ಮ ನೆಟ್‌ವರ್ಕ್‌ನೇರವನ್ನು ಪರಿಶೀಲಿಸಿ ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "sidebar__promotion_dialog__title": "ಹೊಸ ಪ್ರೀಮಿಯಂ ವೈಶಿಷ್ಟ್ಯಗಳು {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
+    "sidebar__promotion_dialog__content_item1__description": "ನಿಮ್ಮ ಭಾವನೆಗಳನ್ನು ಅದ್ಭುತ ಚಿತ್ರಗಳಾಗಿ ಪರಿವರ್ತಿಸುವುದು ಬೇಗನೆ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಪರಿವರ್ತನಾತ್ಮಕ.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-ಟರ್ಬೋ ವಿಜನ್ ಜೊತೆಗೆ",
+    "sidebar__promotion_dialog__content_item2__description": "ಚಿತ್ರ ಪ್ರಕ್ರಿಯೆಯನ್ನು GPT-4 ಅದ್ವಿತೀಯ ಭಾಷಾ ಗ್ರಹಣ ಸಾಮರ್ಥ್ಯದೊಂದಿಗೆ ಒಳಪಡಿಸುವ OpenAI ನ ಕ್ರಾಂತಿಕಾರಿ ವಿಜನ್ ಅನುಭವವನ್ನು ಪಡೆಯಿರಿ.",
+    "sidebar__promotion_dialog__content_item3__title": "ಜೆಮಿನಿ-ಪ್ರೊ",
+    "sidebar__promotion_dialog__content_item3__description": "ಬಹುಮುಖತೆಯ ಗೂಗಲ್ ಮಾದರಿಗಾಗಿ ಅತ್ಯುತ್ತಮ ಮತ್ತು ಸಾಮಾನ್ಯ ಮಾದರಿಯನ್ನು ಪಡೆಯಿರಿ.",
+    "sidebar__promotion_dialog__content_item4__title": "ಕ್ಲೋಡ್-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "ಹೆಚ್ಚು ಕನಸು ರೇಟ್‌ಗಳು ಕಡಿಮೆಯಾಗಿ, 200K ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಒಳಗೊಂಡ ಅಂಥ್ರೋಪಿಕ್ನ ಹೊಸ ಉತ್ತಮ ಮಾದರಿಗೆ ಪ್ರವೇಶವನ್ನು ಪಡೆಯಿರಿ.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-ಶಕ್ತಿಯ ಹುಡುಕಾಟ",
+    "sidebar__promotion_dialog__content_item5__description": "ವಿಸ್ತೃತ ವೆಬ್ ಪರಿಣಾಮಗಳೊಂದಿಗೆ ಕಠಿಣ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
+    "sidebar__promotion_dialog__content_item6__title": "ಸಂಗ್ರಹಿಸಿ ಮತ್ತು ಯಾವುದೇ ಪುಟದ ಮೇಲೆ ಪ್ರಶ್ನೆ ಕೇಳಿ",
+    "sidebar__promotion_dialog__content_item6__description": "ಯಾವುದೇ ವೆಬ್‌ಪೇಜ್, ಪಿಡಿಎಫ್, ಇಮೇಲ್ ಮತ್ತು ಯೂಟ್ಯೂಬ್ ವೀಡಿಯೊಗೆ ಸಂಗ್ರಹಿಸಿ, ಪರಿಷ್ಕರಿಸಿ, ಪ್ರಶ್ನೆ ಕೇಳಿ ಮತ್ತು ಮಾಹಿತಿಯನ್ನು ಹುಡುಕಿ.",
+    "sidebar__promotion_dialog__cta_button": "ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ - ಆಫರ್ ಬೇಗನೆ ಮುಗಿಯುತ್ತದೆ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Bağlantıya sahip herkes bunu görebilir",
     "sidebar__conversation_share__share_panel__copied_tip": "Bağlantı kopyalandı",
     "sidebar__conversation_share__share_panel__success_tip": "Paylaşılan konuşma URL'si panoya kopyalandı!",
-    "sidebar__conversation_share__share_panel__error_tip": "Şu anda paylaşılamıyor. Lütfen ağınızı kontrol edin veya daha sonra tekrar deneyin."
+    "sidebar__conversation_share__share_panel__error_tip": "Şu anda paylaşılamıyor. Lütfen ağınızı kontrol edin veya daha sonra tekrar deneyin.",
+    "sidebar__promotion_dialog__title": "Yeni premium özellikler {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "AI sanatı ve resimleri oluşturun",
+    "sidebar__promotion_dialog__content_item1__description": "Vizyonlarınızı hızla etkileyici resimlere dönüştürün. Basit, güçlü, dönüştürücü.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo ile görüş",
+    "sidebar__promotion_dialog__content_item2__description": "OpenAI'nin devrim niteliğindeki GPT-4-vision'ına erişin, görüntü işleme yeteneklerini GPT-4'ün gelişmiş dil anlama yetisiyle birleştirir.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Çoklu modellik için Google'ın en yetenekli ve genel modeline erişim sağlayın.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Anthropic'in yeni en iyi modeline erişin, 200K tokenlik bir bağlam penceresi sunar ve yanılsama oranları çok daha düşüktür.",
+    "sidebar__promotion_dialog__content_item5__title": "AI destekli arama",
+    "sidebar__promotion_dialog__content_item5__description": "En zor soruların cevaplarını kapsamlı web bilgileriyle alın.",
+    "sidebar__promotion_dialog__content_item6__title": "Herhangi bir sayfada özetleyin ve soru sorun",
+    "sidebar__promotion_dialog__content_item6__description": "Herhangi bir web sayfası, PDF, e-posta ve YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun.",
+    "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Teklif yakında sona eriyor!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -8,6 +8,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
+import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
@@ -41,6 +42,7 @@ const SidebarPage = () => {
       id={'MaxAISidebarContainer'}
     >
       <SidebarTour />
+      <SidebarPromotionDialog />
       <Stack flex={1} width={0}>
         {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
         <ChatGPTStatusWrapper />

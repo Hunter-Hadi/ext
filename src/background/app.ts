@@ -67,6 +67,7 @@ import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
 } from '@/features/common/constants'
+import { getBrowserType } from '@/features/common/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
@@ -276,7 +277,7 @@ const initChromeExtensionUpdated = async () => {
    * @since 2024-01-15
    * @description 2024插件1周年
    */
-  const executeMaxAIOneYearPromotion = async () => {
+  const executeMaxAIOneYearPromotion = async (onlyFreeUser = false) => {
     const onBoardingData = await getChromeExtensionOnBoardingData()
     // 如果已经弹窗过了，就不再弹窗
     if (onBoardingData.ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK) {
@@ -288,6 +289,13 @@ const initChromeExtensionUpdated = async () => {
       true,
     )
     if (result?.role) {
+      if (onlyFreeUser && result.role.name === 'free') {
+        await Browser.tabs.create({
+          url: `https://app.maxai.me/anniversary2024`,
+        })
+        return
+      }
+
       if (
         result.role.is_one_times_pay_user ||
         (result.role.name === 'elite' &&
@@ -330,6 +338,15 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
+
+  if (APP_VERSION === '3.0.1' && getBrowserType() === 'Edge') {
+    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
+    setTimeout(
+      () => executeMaxAIOneYearPromotion(true),
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
+  }
+
   // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
   await ConversationManager.getAllConversation()
   // NOTE: 远程更新AI配置

@@ -2,7 +2,7 @@ import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
@@ -36,6 +36,14 @@ export const useUploadImagesAndSwitchToVision = () => {
     currentAIProvider,
     currentAIProviderModel,
   } = useAIProviderModels()
+
+  // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
+  // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
+  const aiProviderUploadFilesRef = useRef(aiProviderUploadFiles)
+  useEffect(() => {
+    aiProviderUploadFilesRef.current = aiProviderUploadFiles
+  }, [aiProviderUploadFiles])
+
   const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
     if (currentSidebarConversationType !== 'Chat') {
       await updateSidebarConversationType('Chat')
@@ -58,7 +66,7 @@ export const useUploadImagesAndSwitchToVision = () => {
       )
       await createConversation('Chat')
     }
-    await aiProviderUploadFiles(
+    await aiProviderUploadFilesRef.current(
       await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
     )
   }

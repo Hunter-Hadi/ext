@@ -55,7 +55,7 @@ export type IAIForSearchStatus =
 // 不同 provider 的超时时间
 const PROVIDER_TIMEOUT_DURATION: Record<ISearchWithAIProviderType, number> = {
   MAXAI_FREE: 10000,
-  OPENAI: 10000,
+  OPENAI: 15000,
   USE_CHAT_GPT_PLUS: 10000,
   MAXAI_CLAUDE: 10000,
   OPENAI_API: 10000,
@@ -253,12 +253,20 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     timer.current && window.clearTimeout(timer.current)
     timer.current = window.setTimeout(() => {
       // console.error('in timeout')
+      const PROVIDER_ERROR_MESSAGE: Record<string, string> = {
+        MAXAI_FREE:
+          'It seems like the system is experiencing some trouble right now. Please switch to other premium AI models now to enjoy high-quality experiences, or try again later.',
+      }
+
+      const timeoutErrorMessage =
+        PROVIDER_ERROR_MESSAGE[searchWithAISettings.aiProvider] ||
+        'It seems like the system is experiencing some trouble right now. Please try again.'
+
       setStatus('error')
       isTimeout = true
       updateConversation({
         loading: false,
-        errorMessage:
-          'It seems like the system is experiencing some trouble right now. Please try again.',
+        errorMessage: timeoutErrorMessage,
         writingMessage: '',
       })
 

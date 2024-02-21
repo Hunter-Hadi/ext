@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Pääse ligi gpt-3.5-turbo-16k, tõstes tasemele Pro",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Samad võimalused nagu standardse gpt-3.5-turbo mudelil, kuid 4 korda suurema kontekstiga.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Pääse ligi gpt-4-le, tõstes tasemele Pro",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI GPT-4 Turbo on kiire ja tõhus, sobib suurepäraselt reaalajas rakendusteks, mis nõuavad loovust ja arenenud mõtlemist ning pakub täiustatud reageerimisaegu ja järjepidevat väljundit.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI GPT-4, mis on optimeeritud kiiruse ja tõhususe jaoks, sobib suurepäraselt reaalajas rakendustesse, mis nõuavad loovust ja arenenud mõtlemist ning pakub paremat reageerimisaega ja järjepidevat väljundit.",
     "prompt__group__suggested__title": "Soovitatud",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Peida Gmaili abiline",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Täiendage piiramatu ChatGPT kasutamise jaoks",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Lubage oma brauseri seadetes valik \"Luba juurdepääs faili URL-idele\", navigeerides aadressile",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". See võimaldab 'PDF AI vaaturil' avaneda automaatselt, kui lohistate PDF-faile brauserisse.",
     "sidebar__tabs__art__title": "Kunst",
-    "sidebar__tabs__art__tooltip": "AI-toega kunst",
+    "sidebar__tabs__art__tooltip": "Loo AI kunst ja pildid",
     "provider__claude__model__claude_2_1_200k__description": "Sama võimekus nagu baasclaude-2-100k režiimil, kuid kahekordse konteksti pikkusega. Lisaks oluline vähendamine mudeli hallutsinatsioonide määrades.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Uuenda juurdepääsuks claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropicu võimsaim mudel, 200K kontekstakna, suurepärane ülesannete jaoks alates keerukast dialoogist ja loovast sisu loomisest kuni üksikasjaliku juhendini. Lisaks oluline vähendamine mudeli hallutsinatsioonide määrades.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Igaüks, kellel on link, saab seda vaadata",
     "sidebar__conversation_share__share_panel__copied_tip": "Link kopeeritud",
     "sidebar__conversation_share__share_panel__success_tip": "Jagatud vestluse URL on kopeeritud lõikelauale!",
-    "sidebar__conversation_share__share_panel__error_tip": "Hetkel ei saa jagada. Palun kontrolli oma võrku või proovi hiljem uuesti.",
-    "sidebar__promotion_dialog__title": "Uued lisafunktsioonid versioonis {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Loo AI kunsti ja pilte",
-    "sidebar__promotion_dialog__content_item1__description": "Muuda oma visioonid kiiresti vapustavateks piltideks. Lihtne, võimas, muutustele alluv.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo nägemisega",
-    "sidebar__promotion_dialog__content_item2__description": "Kasuta OpenAI revolutsioonilist GPT-4-nägemist, mis ühendab pilditöötluse GPT-4 edasijõudnud keeleoskusega.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Kasuta Google'i kõige võimekamat ja üldist multimodaalset mudelit.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Kasuta Anthropicu uusimat parimat mudelit, mis pakub 200K sõna kontekstakent ja palju madalamat hallutsinatsioonimäära.",
-    "sidebar__promotion_dialog__content_item5__title": "AI-toega otsing",
-    "sidebar__promotion_dialog__content_item5__description": "Saa vastused kõige raskematele küsimustele põhjalike veebiandmete abil.",
-    "sidebar__promotion_dialog__content_item6__title": "Kokkuvõte ja küsimuste esitamine igal lehel",
-    "sidebar__promotion_dialog__content_item6__description": "Saa kokkuvõtteid, esita küsimusi ja leia teavet mis tahes veebilehe, PDF-i, e-kirja ja YouTube'i video kohta.",
-    "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Pakkumine lõpeb peagi!"
+    "sidebar__conversation_share__share_panel__error_tip": "Hetkel ei saa jagada. Palun kontrolli oma võrku või proovi hiljem uuesti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Vasta põhipunktidega",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Kiire vastus",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vasta põhipunktidega (test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norra"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norra",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Eesti"
   },
   "prompt_editor": {
     "preset_variables__title": "Võimed",
@@ -888,7 +875,6 @@
     "button__next__title": "Järgmine",
     "button__back__title": "Tagasi",
     "button__finish__title": "Lõpeta",
-    "text_of": "kohta",
     "sidebar_tour__step__1__title": "Valige eelistatud kasutajaliidese keel",
     "sidebar_tour__step__2__title": "Suurenda oma tootlikkust 10 korda tehisintellektiga",
     "sidebar_tour__step__2__description_1": "Küsi Alilt kõike",

@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Mag-upgrade upang mag-access sa gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Katulad na kakayahan ng standard na gpt-3.5-turbo model ngunit may 4 na beses na context.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Mag-upgrade upang mag-access sa gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Ang GPT-4 Turbo ng OpenAI, na pinahusay para sa bilis at kahusayan, ay magaling sa mga aplikasyon sa real-time na nangangailangan ng katalinuhan at advanced na pag-iisip na may pinabuting oras ng pagtugon at konsistenteng output.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "Ang GPT-4 ng OpenAI, na pinahusay para sa bilis at kahusayan, ay magaling sa mga aplikasyon sa real-time na nangangailangan ng katalinuhan at advanced na pag-iisip na may pinabuting oras ng pagtugon at kahalintulad na output.",
     "prompt__group__suggested__title": "Mga Iminumungkahing",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Itago ang Gmail assistant",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Mag-upgrade para sa walang limitasyong paggamit ng ChatGPT",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Paganahin ang opsiyong \"Payagan ang access sa mga URL ng file\" sa iyong mga setting ng browser sa pamamagitan ng pag-navigate sa",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ito ay magpapahintulot na ang 'PDF AI viewer' ay awtomatikong magbukas kapag i-drag at i-drop mo ang mga file ng PDF sa browser.",
     "sidebar__tabs__art__title": "Sining",
-    "sidebar__tabs__art__tooltip": "Sining na pinagana ng AI",
+    "sidebar__tabs__art__tooltip": "Lumikha ng sining at mga imahe gamit ang AI",
     "provider__claude__model__claude_2_1_200k__description": "May parehong kakayahan tulad ng base na claude-2-100k mode pero may dobleng haba ng konteksto. Kasama ang malaking pagbawas sa mga rate ng hallucination ng modelo.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Mag-upgrade para ma-access ang claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Ang pinakamalakas na modelo ng Anthropic, may 200K na window ng konteksto, mahusay para sa mga gawain mula sa sophisticated dialogue at creative content generation hanggang sa detalyadong instruction. Kasama ang malaking pagbawas sa mga rate ng hallucination ng modelo.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Sinuman na may link ay maaaring makakita nito",
     "sidebar__conversation_share__share_panel__copied_tip": "Nakopya ang link",
     "sidebar__conversation_share__share_panel__success_tip": "Ang URL ng ibinahaging usapan ay nakopya sa clipboard!",
-    "sidebar__conversation_share__share_panel__error_tip": "Hindi maibahagi sa ngayon. Mangyaring suriin ang iyong network o subukan muli mamaya.",
-    "sidebar__promotion_dialog__title": "Bagong premium na mga tampok sa {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Lumikha ng sining at mga imahe gamit ang AI",
-    "sidebar__promotion_dialog__content_item1__description": "Mabilis na gawing kahanga-hangang mga imahe ang iyong mga pangarap. Simple, malakas, mapagbago.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo na may paningin",
-    "sidebar__promotion_dialog__content_item2__description": "Ma-access ang rebolusyonaryong GPT-4-vision ng OpenAI na nag-iintegrate ng pagproseso ng mga imahe sa advanced na pang-unawa sa wika ng GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Ma-access ang pinakamahusay at pangkalahatang modelo ng Google para sa multimodality.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Ma-access ang bagong pinakamahusay na modelo ng Anthropic, na nag-aalok ng 200K token context window at mas mababang hallucination rates.",
-    "sidebar__promotion_dialog__content_item5__title": "AI-powered na paghahanap",
-    "sidebar__promotion_dialog__content_item5__description": "Kumuha ng mga sagot sa mga pinakamahirap na tanong gamit ang kumprehensibong mga kaalaman sa web.",
-    "sidebar__promotion_dialog__content_item6__title": "Buod at magtanong sa anumang pahina",
-    "sidebar__promotion_dialog__content_item6__description": "Kumuha ng mga buod, magtanong, at hanapin ang impormasyon tungkol sa anumang webpage, PDF, email, at YouTube video.",
-    "sidebar__promotion_dialog__cta_button": "Mag-upgrade ngayon - Ang alok ay magtatapos sa lalong madaling panahon!"
+    "sidebar__conversation_share__share_panel__error_tip": "Hindi maibahagi sa ngayon. Mangyaring suriin ang iyong network o subukan muli mamaya."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Tugon gamit ang pangunahing puntos",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Mabilis na tugon",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Tugon gamit ang pangunahing puntos (test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Filipino"
   },
   "prompt_editor": {
     "preset_variables__title": "Kakayahan",
@@ -888,7 +875,6 @@
     "button__next__title": "Susunod",
     "button__back__title": "Bumalik",
     "button__finish__title": "Tapos na",
-    "text_of": "ng",
     "sidebar_tour__step__1__title": "Piliin ang iyong nais na wika ng interface",
     "sidebar_tour__step__2__title": "Palakasin ang iyong produktibidad ng 10X gamit ang AI",
     "sidebar_tour__step__2__description_1": "Tanungin si Al tungkol sa anuman",

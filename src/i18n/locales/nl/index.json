@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Upgrade om toegang te krijgen tot gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Zelfde mogelijkheden als het standaard gpt-3.5-turbo-model, maar met 4 keer de context.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Upgrade om toegang te krijgen tot gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's GPT-4 Turbo, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in real-time toepassingen die creativiteit en geavanceerd redeneren vereisen met verbeterde responstijden en consistente output.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 van OpenAI, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in realtime toepassingen die creativiteit en geavanceerd redeneren vereisen met verbeterde responstijden en consistente output.",
     "prompt__group__suggested__title": "Aanbevolen",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail-assistent verbergen",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Upgrade voor onbeperkt ChatGPT-gebruik",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Schakel de optie \"Toegang verlenen tot bestands-URL's\" in uw browserinstellingen in door naar",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "te gaan. Hierdoor wordt de 'PDF AI-viewer' automatisch geopend wanneer u PDF-bestanden in de browser sleept en plaatst.",
     "sidebar__tabs__art__title": "Kunst",
-    "sidebar__tabs__art__tooltip": "AI-aangedreven kunst",
+    "sidebar__tabs__art__tooltip": "Maak AI-kunst en afbeeldingen",
     "provider__claude__model__claude_2_1_200k__description": "Zelfde mogelijkheden als het basis claude-2-100k model, maar met 2x de contextlengte. Plus aanzienlijke vermindering van model hallucinaties.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Upgrade om toegang te krijgen tot claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic's krachtigste model, 200K contextvenster, ideaal voor taken variërend van geavanceerde dialoog en creatieve inhoudsgeneratie tot gedetailleerde instructie. Plus aanzienlijke vermindering van model hallucinaties.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Iedereen met de link kan dit bekijken",
     "sidebar__conversation_share__share_panel__copied_tip": "Link gekopieerd",
     "sidebar__conversation_share__share_panel__success_tip": "De URL van het gedeelde gesprek is gekopieerd naar het klembord!",
-    "sidebar__conversation_share__share_panel__error_tip": "Kan op dit moment niet delen. Controleer uw netwerk of probeer het later opnieuw.",
-    "sidebar__promotion_dialog__title": "Nieuwe premium functies in {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Creëer AI-kunst en afbeeldingen",
-    "sidebar__promotion_dialog__content_item1__description": "Verander snel je visies in verbluffende afbeeldingen. Eenvoudig, krachtig, transformerend.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo met visie",
-    "sidebar__promotion_dialog__content_item2__description": "Toegang tot OpenAI's revolutionaire GPT-4-visie die beeldverwerking integreert met het geavanceerde taalbegrip van GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Toegang tot Google's meest capabele en algemene model voor multimodaliteit.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Toegang tot Anthropic's beste nieuwe model, met een contextvenster van 200K tokens en veel lagere hallucinatieratio's.",
-    "sidebar__promotion_dialog__content_item5__title": "AI-aangedreven zoekopdracht",
-    "sidebar__promotion_dialog__content_item5__description": "Krijg antwoorden op de moeilijkste vragen met uitgebreide webinzichten.",
-    "sidebar__promotion_dialog__content_item6__title": "Samenvatten & vragen stellen op elke pagina",
-    "sidebar__promotion_dialog__content_item6__description": "Krijg samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail en YouTube-video.",
-    "sidebar__promotion_dialog__cta_button": "Nu upgraden - Aanbieding eindigt binnenkort!"
+    "sidebar__conversation_share__share_panel__error_tip": "Kan op dit moment niet delen. Controleer uw netwerk of probeer het later opnieuw."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Antwoord met kernpunten",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Snelle reactie",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwoord met kernpunten (test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noors"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noors",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Fins"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogelijkheden",
@@ -888,7 +875,6 @@
     "button__next__title": "Volgende",
     "button__back__title": "Terug",
     "button__finish__title": "Voltooien",
-    "text_of": "van",
     "sidebar_tour__step__1__title": "Kies uw voorkeurstaal van de interface",
     "sidebar_tour__step__2__title": "Verhoog je productiviteit met AI",
     "sidebar_tour__step__2__description_1": "Vraag Al alles",

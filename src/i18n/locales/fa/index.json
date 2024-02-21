@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "ارتقا برای دسترسی به gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "قابلیت‌هایی مشابه مدل استاندارد gpt-3.5-turbo دارد، اما با 4 برابر زمینه.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "ارتقا برای دسترسی به gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 Turbo از OpenAI، بهینه شده برای سرعت و کارآیی، در برنامه‌های زمان واقعی که نیاز به خلاقیت و استدلال پیشرفته با زمان پاسخ و خروجی پایدار دارند، عالی عمل می‌کند.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 اوپن‌ای‌آی، بهینه شده برای سرعت و کارآیی، در برنامه‌های زمان واقعی که نیاز به خلاقیت و استدلال پیشرفته با زمان پاسخ دهی بهبود یافته و خروجی پایدار دارند، بسیار عالی عمل می‌کند.",
     "prompt__group__suggested__title": "پیشنهاد شده",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "مخفی کردن دستیار Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "ارتقا برای استفاده نامحدود از ChatGPT",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "گزینه \"اجازه دسترسی به URLهای فایل\" را در تنظیمات مرورگر خود فعال کنید با رفتن به",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". این کار باعث می‌شود 'نمایشگر هوش مصنوعی PDF' به صورت خودکار با کشیدن و رها کردن فایل‌های PDF به مرورگر باز شود.",
     "sidebar__tabs__art__title": "هنر",
-    "sidebar__tabs__art__tooltip": "هنر قدرت گرفته از هوش مصنوعی",
+    "sidebar__tabs__art__tooltip": "ایجاد هنر و تصاویر هوش مصنوعی",
     "provider__claude__model__claude_2_1_200k__description": "قابلیت‌های مشابه حالت پایه claude-2-100k با طول متن دو برابر. همچنین کاهش قابل توجه در نرخ وهمزادی مدل.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "ارتقا برای دسترسی به claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "قدرتمندترین مدل Anthropic، پنجره متن 200K، مناسب برای وظایفی از جمله دیالوگ پیچیده و تولید محتوای خلاق تا دستورات دقیق. همچنین کاهش قابل توجه در نرخ وهمزادی مدل.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "هر کسی با لینک می‌تواند این را ببیند",
     "sidebar__conversation_share__share_panel__copied_tip": "لینک کپی شد",
     "sidebar__conversation_share__share_panel__success_tip": "آدرس URL گفتگوی به اشتراک گذاشته شده در کلیپ‌بورد کپی شد!",
-    "sidebar__conversation_share__share_panel__error_tip": "در حال حاضر قادر به اشتراک گذاری نیستیم. لطفاً اتصال خود را بررسی کنید یا بعداً دوباره تلاش کنید.",
-    "sidebar__promotion_dialog__title": "ویژگی‌های جدید ویژه در {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "ایجاد هنر و تصاویر هوش مصنوعی",
-    "sidebar__promotion_dialog__content_item1__description": "به سرعت تصورات خود را به تصاویر شگفت‌انگیز تبدیل کنید. ساده، قدرتمند، تحول‌آفرین.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo با دید",
-    "sidebar__promotion_dialog__content_item2__description": "به GPT-4-vision نوآورانه OpenAI دسترسی پیدا کنید که پردازش تصویر را با درک زبان پیشرفته GPT-4 ترکیب می‌کند.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "به قدرتمندترین و کلیت‌ترین مدل گوگل برای چندحالتی دسترسی پیدا کنید.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "به بهترین مدل جدید Anthropic دسترسی پیدا کنید که یک پنجره متن با 200 هزار توکن و نرخ هالوسیناسیون بسیار پایین‌تر ارائه می‌دهد.",
-    "sidebar__promotion_dialog__content_item5__title": "جستجوی قدرتمند با استفاده از هوش مصنوعی",
-    "sidebar__promotion_dialog__content_item5__description": "با داشتن بینش جامع وب، به پاسخ‌های سخت‌ترین سوال‌ها دسترسی پیدا کنید.",
-    "sidebar__promotion_dialog__content_item6__title": "خلاصه‌سازی و پرسش در هر صفحه",
-    "sidebar__promotion_dialog__content_item6__description": "خلاصه‌ها را بگیرید، سوال بپرسید و اطلاعاتی درباره هر صفحه وب، PDF، ایمیل و ویدیوی YouTube پیدا کنید.",
-    "sidebar__promotion_dialog__cta_button": "هم‌اکنون ارتقا دهید - پیشنهاد به زودی پایان می‌یابد!"
+    "sidebar__conversation_share__share_panel__error_tip": "در حال حاضر قادر به اشتراک گذاری نیستیم. لطفاً اتصال خود را بررسی کنید یا بعداً دوباره تلاش کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "پاسخ با نکات کلیدی",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "پاسخ سریع",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "پاسخ با نکات کلیدی (تست)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نروژی"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نروژی",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "فنلاند"
   },
   "prompt_editor": {
     "preset_variables__title": "قابلیت‌ها",
@@ -888,7 +875,6 @@
     "button__next__title": "بعدی",
     "button__back__title": "قبلی",
     "button__finish__title": "پایان",
-    "text_of": "از",
     "sidebar_tour__step__1__title": "زبان رابط کاربری مورد نظر خود را انتخاب کنید",
     "sidebar_tour__step__2__title": "افزایش بهره‌وری خود را با هوش مصنوعی 10 برابر کنید",
     "sidebar_tour__step__2__description_1": "هر سوالی را از ال بپرسید",

@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Nadogradite da biste pristupili gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Iste mogućnosti kao standardni model gpt-3.5-turbo, ali sa 4 puta više konteksta.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Nadogradite da biste pristupili gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 Turbo kompanije OpenAI, optimizovan za brzinu i efikasnost, odličan je u realnom vremenu aplikacija koje zahtevaju kreativnost i napredno zaključivanje sa poboljšanim vremenom odgovora i doslednim rezultatima.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 kompanije OpenAI, optimizovan za brzinu i efikasnost, odličan je u realnom vremenu aplikacija koje zahtevaju kreativnost i napredno zaključivanje sa poboljšanim vremenom odziva i doslednim rezultatima.",
     "prompt__group__suggested__title": "Predloženo",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Sakrij Gmail asistenta",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Unapredite za neograničeno korišćenje ChatGPT-a",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Omogućite opciju \"Dozvoli pristup URL-ovima fajlova\" u podešavanjima vašeg pretraživača tako što ćete otići na",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ovo će omogućiti da se 'PDF AI pregledač' automatski otvori kada prevučete i otpustite PDF fajlove u pretraživač.",
     "sidebar__tabs__art__title": "Umetnost",
-    "sidebar__tabs__art__tooltip": "Umetnost sa AI tehnologijom",
+    "sidebar__tabs__art__tooltip": "Kreirajte AI umetnost i slike",
     "provider__claude__model__claude_2_1_200k__description": "Iste mogućnosti kao i osnovni claude-2-100k model, ali sa dvostrukom dužinom konteksta. Plus značajno smanjenje stope halucinacija modela.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nadogradite da biste pristupili claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Najmoćniji model kompanije Anthropic, prozor konteksta od 200K, odličan za zadatke koji se kreću od sofisticiranog dijaloga i generisanja kreativnog sadržaja do detaljnih instrukcija. Plus značajno smanjenje stope halucinacija modela.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Bilo ko sa linkom može videti ovo",
     "sidebar__conversation_share__share_panel__copied_tip": "Link kopiran",
     "sidebar__conversation_share__share_panel__success_tip": "URL deljene konverzacije je kopiran u međuspremnik!",
-    "sidebar__conversation_share__share_panel__error_tip": "Trenutno nije moguće deliti. Molimo proverite svoju mrežu ili pokušajte ponovo kasnije.",
-    "sidebar__promotion_dialog__title": "Nove premium funkcije u {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Kreirajte AI umetnost i slike",
-    "sidebar__promotion_dialog__content_item1__description": "Brzo pretvorite svoje vizije u zadivljujuće slike. Jednostavno, moćno, transformišuće.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo sa vizijom",
-    "sidebar__promotion_dialog__content_item2__description": "Pristupite revolucionarnom GPT-4-vision od OpenAI-a koji integriše obradu slika sa naprednim jezičkim razumevanjem GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Pristupite najmoćnijem i najopštijem modelu za multimodalnost od Google-a.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Pristupite novom najboljem modelu od Anthropic-a, koji nudi prozor konteksta od 200K tokena i mnogo niže stope halucinacija.",
-    "sidebar__promotion_dialog__content_item5__title": "Pretraga sa AI podrškom",
-    "sidebar__promotion_dialog__content_item5__description": "Dobijte odgovore na najteža pitanja uz sveobuhvatne web informacije.",
-    "sidebar__promotion_dialog__content_item6__title": "Sumirajte i pitajte na bilo kojoj stranici",
-    "sidebar__promotion_dialog__content_item6__description": "Dobijte sažetke, postavljajte pitanja i pronađite informacije o bilo kojoj veb stranici, PDF-u, e-pošti i YouTube videu.",
-    "sidebar__promotion_dialog__cta_button": "Nadogradite sada - Ponuda ističe uskoro!"
+    "sidebar__conversation_share__share_panel__error_tip": "Trenutno nije moguće deliti. Molimo proverite svoju mrežu ili pokušajte ponovo kasnije."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Odgovori sa ključnim tačkama",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Brzi odgovor",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odgovori sa ključnim tačkama (test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norveški"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norveški",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Srpski"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogućnosti",
@@ -888,7 +875,6 @@
     "button__next__title": "Sledeće",
     "button__back__title": "Nazad",
     "button__finish__title": "Završi",
-    "text_of": "od",
     "sidebar_tour__step__1__title": "Izaberite željeni jezik interfejsa",
     "sidebar_tour__step__2__title": "Povećajte produktivnost za 10 puta uz pomoć veštačke inteligencije",
     "sidebar_tour__step__2__description_1": "Pitajte Al sve",

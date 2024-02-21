@@ -47,34 +47,50 @@ const SidebarAIMessageTools: FC<{
             setIsCoping(true)
             try {
               const newImage = new Image()
-              newImage.src = image.src
-              newImage.crossOrigin = 'anonymous'
-              newImage.onload = async () => {
-                const canvas = document.createElement('canvas')
-                canvas.width = newImage.naturalWidth
-                canvas.height = newImage.naturalHeight
-                const ctx = canvas.getContext('2d')
-                if (ctx) {
-                  ctx.drawImage(newImage, 0, 0)
-                  canvas.toBlob(function (blob) {
-                    if (blob) {
-                      const item = new ClipboardItem({ 'image/png': blob })
-                      navigator.clipboard
-                        .write([item])
-                        .then(function () {
-                          console.log('Image copied to clipboard')
-                        })
-                        .catch(function (error) {
-                          console.error(
-                            'Error copying image to clipboard',
-                            error,
-                          )
-                        })
+              await new Promise((resolve) => {
+                try {
+                  newImage.src = image.src
+                  newImage.crossOrigin = 'anonymous'
+                  newImage.onload = () => {
+                    const canvas = document.createElement('canvas')
+                    canvas.width = newImage.naturalWidth
+                    canvas.height = newImage.naturalHeight
+                    const ctx = canvas.getContext('2d')
+                    if (ctx) {
+                      ctx.drawImage(newImage, 0, 0)
+                      canvas.toBlob(function (blob) {
+                        if (blob) {
+                          const item = new ClipboardItem({ 'image/png': blob })
+                          navigator.clipboard
+                            .write([item])
+                            .then(function () {
+                              console.log('Image copied to clipboard')
+                              resolve(true)
+                            })
+                            .catch(function (error) {
+                              console.error(
+                                'Error copying image to clipboard',
+                                error,
+                              )
+                              resolve(false)
+                            })
+                            .finally(() => {})
+                        } else {
+                          resolve(false)
+                        }
+                      })
                     }
-                  })
+                  }
+                  newImage.onerror = () => {
+                    resolve(false)
+                  }
+                } catch (e) {
+                  resolve(false)
                 }
-              }
+              })
             } catch (e) {
+              console.error('Error copying image to clipboard', e)
+            } finally {
               setIsCoping(false)
             }
           }}

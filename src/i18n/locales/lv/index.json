@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Uzlabojiet, lai piekļūtu gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Tādas pašas iespējas kā standarta gpt-3.5-turbo modelim, bet ar 4 reizes lielāku kontekstu.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Uzlabojiet, lai piekļūtu gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI GPT-4 Turbo, optimizēts ātrumam un efektivitātei, izceļas reāllaika lietojumprogrammās, kas prasa radošumu un uzlabotu loģisko domāšanu ar uzlabotiem atbildes laikiem un vienmērīgu rezultātu.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI GPT-4, optimizēts ātrumam un efektivitātei, izceļas reāllaika lietojumprogrammās, kas prasa radošumu un uzlabotu loģisko domāšanu ar uzlabotiem atbildes laikiem un vienmērīgu rezultātu.",
     "prompt__group__suggested__title": "Ieteikts",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Paslēpt Gmail asistentu",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Jauniniet, lai iegūtu neierobežotu ChatGPT lietošanu",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Iespējojiet \"Atļaut piekļuvi failu URL\" opciju pārlūka iestatījumos, dodoties uz",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tas ļaus 'PDF AI skatītājam' automātiski atvērties, kad velkat un nomest PDF failus pārlūkā.",
     "sidebar__tabs__art__title": "Māksla",
-    "sidebar__tabs__art__tooltip": "Māksla, kas darbojas ar mākslīgo intelektu",
+    "sidebar__tabs__art__tooltip": "Izveidojiet AI mākslu un attēlus",
     "provider__claude__model__claude_2_1_200k__description": "Tādas pašas iespējas kā pamata claude-2-100k režīmam, bet ar divkārt lielāku konteksta garumu. Papildus ievērojami samazināts modeļa halucināciju līmenis.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Jauniniet, lai piekļūtu claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropic visvarenākais modelis ar 200K konteksta logu, lielisks uzdevumiem, sākot no sarežģītas dialoga un radošas saturveidošanas līdz detalizētiem norādījumiem. Papildus ievērojami samazināts modeļa halucināciju līmenis.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Jebkurš ar saiti var to skatīt",
     "sidebar__conversation_share__share_panel__copied_tip": "Saites kopētas",
     "sidebar__conversation_share__share_panel__success_tip": "Koplietotās sarunas URL ir nokopēts starpliktuvē!",
-    "sidebar__conversation_share__share_panel__error_tip": "Pašlaik nevar koplietot. Lūdzu, pārbaudiet savu tīklu vai mēģiniet vēlreiz vēlāk.",
-    "sidebar__promotion_dialog__title": "Jaunas premium funkcijas {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Izveidojiet AI mākslu un attēlus",
-    "sidebar__promotion_dialog__content_item1__description": "Ātri pārvēršiet savas vizijas par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo ar redzi",
-    "sidebar__promotion_dialog__content_item2__description": "Piekļūstiet OpenAI revolucionārajai GPT-4-redzei, kas integrē attēlu apstrādi ar GPT-4 uzlaboto valodas sapratni.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Piekļūstiet Google visvairāk spējīgajam un vispārīgākajam multimodalitātes modelim.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Piekļūstiet Anthropic jaunajam labākajam modeļam, kas piedāvā 200K simbolu konteksta logu un daudz zemākas halucināciju likmes.",
-    "sidebar__promotion_dialog__content_item5__title": "AI vadīta meklēšana",
-    "sidebar__promotion_dialog__content_item5__description": "Iegūstiet atbildes uz grūtākajiem jautājumiem ar visaptverošiem tīmekļa ievērojumiem.",
-    "sidebar__promotion_dialog__content_item6__title": "Kopsavilkums un jautājums par jebkuru lapu",
-    "sidebar__promotion_dialog__content_item6__description": "Iegūstiet kopsavilkumus, uzdodiet jautājumus un atrast informāciju par jebkuru tīmekļa lapu, PDF, e-pasta ziņojumu un YouTube video.",
-    "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Piedāvājums beigsies drīz!"
+    "sidebar__conversation_share__share_panel__error_tip": "Pašlaik nevar koplietot. Lūdzu, pārbaudiet savu tīklu vai mēģiniet vēlreiz vēlāk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Atbildēt ar galvenajiem punktiem",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Ātra atbilde",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Atbildēt ar galvenajiem punktiem (tests)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvēģu"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvēģu",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Somija"
   },
   "prompt_editor": {
     "preset_variables__title": "Iespējas",
@@ -888,7 +875,6 @@
     "button__next__title": "Nākamais",
     "button__back__title": "Atpakaļ",
     "button__finish__title": "Pabeigt",
-    "text_of": "no",
     "sidebar_tour__step__1__title": "Izvēlieties vēlamo saskarnes valodu",
     "sidebar_tour__step__2__title": "Palieliniet savu produktivitāti par 10 reizēm ar AI",
     "sidebar_tour__step__2__description_1": "Jautājiet Al jebko",

@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Päivitä päästäksesi käsiksi gpt-3.5-turbo-16k -malliin",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Sama toiminnallisuus kuin standardilla gpt-3.5-turbo-mallilla, mutta nelinkertaisella kontekstilla.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Päivitä päästäksesi käsiksi gpt-4 -malliin",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI:n GPT-4 Turbo, joka on optimoitu nopeuteen ja tehokkuuteen, erottuu reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja kehittyneitä päättelytaitoja parannetuilla vasteajoilla ja yhtenäisellä tulosteella.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI:n GPT-4, joka on optimoitu nopeutta ja tehokkuutta varten, loistaa reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja kehittyneitä päättelytaitoja parannetuilla vastausajoilla ja tasaisella tulostuksella.",
     "prompt__group__suggested__title": "Ehdotettu",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Piilota Gmail-assistentti",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Päivittääksesi rajattoman ChatGPT-käytön",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Ota käyttöön \"Salli pääsy tiedostojen URL-osoitteisiin\" -vaihtoehto selaimen asetuksissa siirtymällä osoitteeseen",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Tämä mahdollistaa 'PDF AI -katseluohjelman' avautumisen automaattisesti, kun vedät ja pudotat PDF-tiedostoja selaimessa.",
     "sidebar__tabs__art__title": "Taide",
-    "sidebar__tabs__art__tooltip": "Tekoälyllä tehty taideteos",
+    "sidebar__tabs__art__tooltip": "Luo tekoälytaidetta ja kuvia",
     "provider__claude__model__claude_2_1_200k__description": "Sama toiminnallisuus kuin perusmallissa claude-2-100k, mutta kaksinkertainen kontekstin pituus. Lisäksi merkittävä vähennys mallin harhailumäärissä.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Päivitä pääsy claude-2.1-200k:een",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropicin tehokkain malli, 200K kontekstiruutu, sopii erinomaisesti monimutkaiseen vuoropuheluun ja luovaan sisällöntuotantoon yksityiskohtaisilla ohjeilla. Lisäksi merkittävä vähennys mallin harhailumäärissä.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Kuka tahansa linkin kanssa voi nähdä tämän",
     "sidebar__conversation_share__share_panel__copied_tip": "Linkki kopioitu",
     "sidebar__conversation_share__share_panel__success_tip": "Jaetun keskustelun URL on kopioitu leikepöydälle!",
-    "sidebar__conversation_share__share_panel__error_tip": "Jakaminen ei tällä hetkellä ole mahdollista. Tarkista verkkoyhteytesi tai yritä myöhemmin uudelleen.",
-    "sidebar__promotion_dialog__title": "Uudet premium-ominaisuudet versiossa {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Luo tekoälytaidetta ja kuvia",
-    "sidebar__promotion_dialog__content_item1__description": "Muunna visiosi upeiksi kuviksi nopeasti. Yksinkertaista, tehokasta, mullistavaa.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo näkemyksellä",
-    "sidebar__promotion_dialog__content_item2__description": "Käytä OpenAI:n vallankumouksellistä GPT-4-näkemystä, joka yhdistää kuvankäsittelyn GPT-4:n edistykselliseen kielitaitoon.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Pääsy Googlen kyvykkäimpään ja yleisimpään multimodaalimalliin.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Pääsy Anthropicin uuteen parhaaseen malliin, jossa on 200 000 sanan kontekstiruutu ja paljon alhaisemmat harhaluulotasot.",
-    "sidebar__promotion_dialog__content_item5__title": "AI-pohjainen haku",
-    "sidebar__promotion_dialog__content_item5__description": "Saat vastauksia vaikeimpiin kysymyksiin kattavien verkkotietojen avulla.",
-    "sidebar__promotion_dialog__content_item6__title": "Tiivistä ja kysy mistä tahansa sivulta",
-    "sidebar__promotion_dialog__content_item6__description": "Saat tiivistelmiä, kysy kysymyksiä ja löydät tietoa mistä tahansa verkkosivusta, PDF:stä, sähköpostista ja YouTube-videosta.",
-    "sidebar__promotion_dialog__cta_button": "Päivitä nyt - Tarjous päättyy pian!"
+    "sidebar__conversation_share__share_panel__error_tip": "Jakaminen ei tällä hetkellä ole mahdollista. Tarkista verkkoyhteytesi tai yritä myöhemmin uudelleen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Vastaa avainkohtien kanssa",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Pikavastaus",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vastaa avainkohtien kanssa (testi)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norja"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norja",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Suomi"
   },
   "prompt_editor": {
     "preset_variables__title": "Ominaisuudet",
@@ -888,7 +875,6 @@
     "button__next__title": "Seuraava",
     "button__back__title": "Takaisin",
     "button__finish__title": "Valmis",
-    "text_of": "of",
     "sidebar_tour__step__1__title": "Valitse haluamasi käyttöliittymän kieli",
     "sidebar_tour__step__2__title": "Kasvata tuottavuuttasi 10-kertaiseksi tekoälyn avulla",
     "sidebar_tour__step__2__description_1": "Kysy Alilta mitä tahansa",

@@ -11,15 +11,14 @@ import { useTranslation } from 'react-i18next'
 import { IChatConversationShareConfig } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { WWW_PROJECT_HOST } from '@/constants'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import snackNotifications from '@/utils/globalSnackbar'
 import globalSnackbar from '@/utils/globalSnackbar'
 
 const createShareLink = (shareId: string) => {
-  return `${APP_USE_CHAT_GPT_HOST}/share/${shareId}`
+  return `${WWW_PROJECT_HOST}/share?id=${shareId}`
 }
 
 const ShareButtonGroup: FC = () => {
@@ -69,9 +68,27 @@ const ShareButtonGroup: FC = () => {
           },
           false,
         )
+      } else {
+        globalSnackbar.error(
+          t('client:sidebar__conversation_share__share_panel__error_tip'),
+          {
+            anchorOrigin: {
+              vertical: 'top',
+              horizontal: 'center',
+            },
+          },
+        )
       }
     } catch (e) {
-      // TODO
+      globalSnackbar.error(
+        t('client:sidebar__conversation_share__share_panel__error_tip'),
+        {
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'center',
+          },
+        },
+      )
     } finally {
       setButtonLoading(false)
     }
@@ -83,9 +100,9 @@ const ShareButtonGroup: FC = () => {
     let currentCopyShareId = ''
     // TODO: 年前上线的版本
     if (shareId) {
+      currentCopyShareId = shareId
       if (isShareable) {
         // 打开dropdown并复制连接到剪贴板
-        currentCopyShareId = shareId
       } else {
         // 如果是私有的, 切换为公开
         await switchShareType('public')
@@ -187,16 +204,16 @@ const ShareButtonGroup: FC = () => {
     }
     const shareLink = createShareLink(currentCopyShareId)
     navigator.clipboard.writeText(shareLink)
-    snackNotifications.success(
-      t('client:sidebar__conversation_share__share_panel__success_tip'),
-      {
-        anchorOrigin: {
-          vertical: 'top',
-          horizontal: 'center',
-        },
-        // autoHideDuration: 3000,
-      },
-    )
+    // snackNotifications.success(
+    //   t('client:sidebar__conversation_share__share_panel__success_tip'),
+    //   {
+    //     anchorOrigin: {
+    //       vertical: 'top',
+    //       horizontal: 'center',
+    //     },
+    //     // autoHideDuration: 3000,
+    //   },
+    // )
     const fallbackTarget = parent?.querySelector(
       'button[data-testid="maxai--conversation--share-button"]',
     ) as HTMLButtonElement
@@ -254,7 +271,7 @@ const ShareButtonGroup: FC = () => {
             icon={'Lock'}
           />
         )}
-        <Typography component={'span'}>
+        <Typography component={'span'} fontSize={'14px'}>
           {t('sidebar__conversation_share__share_button__title')}
         </Typography>
       </LoadingButton>

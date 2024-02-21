@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Sasisha ili kupata gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Uwezo sawa na mfano wa kawaida wa gpt-3.5-turbo lakini na muktadha mara 4 zaidi.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Sasisha ili kupata gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 Turbo ya OpenAI, iliyoboreshwa kwa ajili ya kasi na ufanisi, inafanya vizuri katika matumizi ya wakati halisi yanayohitaji ubunifu na hoja za juu na majibu yenye kasi na matokeo thabiti.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 ya OpenAI, iliyoboreshwa kwa kasi na ufanisi, inafanya vizuri katika matumizi ya wakati halisi yanayohitaji ubunifu na hoja za juu na majibu yenye muda mfupi na matokeo thabiti.",
     "prompt__group__suggested__title": "Inapendekezwa",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ficha msaidizi wa Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Sasisha kwa matumizi yasiyokuwa na kikomo ya ChatGPT",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Washa chaguo la \"Ruhusu ufikiaji wa URL za faili\" katika mipangilio ya kivinjari chako kwa kwenda",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Hii itawezesha 'Mwonekano wa PDF AI' kufungua kiotomatiki unapoburuta na kuacha faili za PDF kwenye kivinjari.",
     "sidebar__tabs__art__title": "Sanaa",
-    "sidebar__tabs__art__tooltip": "Sanaa yenye nguvu ya AI",
+    "sidebar__tabs__art__tooltip": "Tengeneza sanaa na picha za AI",
     "provider__claude__model__claude_2_1_200k__description": "Uwezo sawa na mfano wa msingi wa claude-2-100k lakini na urefu wa muktadha mara mbili. Pamoja na kupunguzwa kwa kiwango kikubwa cha uhalisia wa mfano.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nunua ili kupata ufikiaji wa claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Mfano wenye nguvu zaidi wa Anthropic, dirisha la muktadha lenye urefu wa 200K, mzuri kwa majukumu yanayotofautiana kutoka kwa mazungumzo ya kisasa na uzalishaji wa maudhui ya ubunifu hadi maelekezo ya kina. Pamoja na kupunguzwa kwa kiwango kikubwa cha uhalisia wa mfano.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Yeyote mwenye kiungo anaweza kuona hii",
     "sidebar__conversation_share__share_panel__copied_tip": "Kiungo kimenukuliwa",
     "sidebar__conversation_share__share_panel__success_tip": "URL ya mazungumzo iliyoshirikiwa imekopiwa kwenye ubao wa kunakili!",
-    "sidebar__conversation_share__share_panel__error_tip": "Haiwezekani kushiriki kwa sasa. Tafadhali angalia mtandao wako au jaribu tena baadaye.",
-    "sidebar__promotion_dialog__title": "Vipengele vipya vya premium katika {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Tengeneza sanaa na picha za AI",
-    "sidebar__promotion_dialog__content_item1__description": "Haraka geuza maono yako kuwa picha za kushangaza. Rahisi, yenye nguvu, inayobadilisha.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo na uwezo wa kuona",
-    "sidebar__promotion_dialog__content_item2__description": "Pata ufahamu wa lugha ya hali ya juu ya GPT-4 iliyounganishwa na usindikaji wa picha wa kipekee wa GPT-4-vision wa OpenAI.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Pata mfano mkuu na wenye uwezo zaidi wa Google kwa multimodality.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Pata mfano bora mpya wa Anthropic, unaozingatia dirisha la muktadha lenye herufi 200K na viwango vya kuhallucinate chini sana.",
-    "sidebar__promotion_dialog__content_item5__title": "Utafutaji unaotumia AI",
-    "sidebar__promotion_dialog__content_item5__description": "Pata majibu ya maswali magumu na ufahamu wa kina wa wavuti.",
-    "sidebar__promotion_dialog__content_item6__title": "Kuhifadhi & uliza kwenye ukurasa wowote",
-    "sidebar__promotion_dialog__content_item6__description": "Pata muhtasari, ulize maswali, na pata habari kuhusu ukurasa wowote, PDF, barua pepe, na video za YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Nunua sasa - Ofa inamalizika hivi karibuni!"
+    "sidebar__conversation_share__share_panel__error_tip": "Haiwezekani kushiriki kwa sasa. Tafadhali angalia mtandao wako au jaribu tena baadaye."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Jibu na pointi muhimu",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Jibu haraka",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Jibu na pointi muhimu (jaribio)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Kina"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Kina",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Swahili"
   },
   "prompt_editor": {
     "preset_variables__title": "Uwezo",
@@ -888,7 +875,6 @@
     "button__next__title": "Ijayo",
     "button__back__title": "Nyuma",
     "button__finish__title": "Maliza",
-    "text_of": "ya",
     "sidebar_tour__step__1__title": "Chagua lugha yako ya interface unayopendelea",
     "sidebar_tour__step__2__title": "Ongeza ufanisi wako kwa AI",
     "sidebar_tour__step__2__description_1": "Uliza Al chochote",

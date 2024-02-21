@@ -23,7 +23,7 @@ export const LANGUAGE_CODE_MAP: {
   },
   et: { label: 'Eesti', en_label: 'Estonian' },
   fa: { label: 'فارسی', en_label: 'Persian' },
-  fi: { label: 'Suomi (Finnish)', en_label: 'Finnish' },
+  fi: { label: 'Suomi', en_label: 'Finnish' },
   fil: { label: 'Filipino', en_label: 'Filipino' },
   fr: { label: 'Français', en_label: 'French' },
   gu: { label: 'ગુજરાતી', en_label: 'Gujarati' },

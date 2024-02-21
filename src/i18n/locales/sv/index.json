@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Uppgradera för att få tillgång till gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Samma kapabiliteter som standardmodellen gpt-3.5-turbo men med 4 gånger kontexten.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Uppgradera för att få tillgång till gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's GPT-4 Turbo, optimerad för hastighet och effektivitet, utmärker sig i realtidsapplikationer som kräver kreativitet och avancerad resonemang med förbättrade svarstider och konsekvent resultat.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI:s GPT-4, optimerad för hastighet och effektivitet, utmärker sig i realtidsapplikationer som kräver kreativitet och avancerat resonemang med förbättrade svarstider och konsekvent resultat.",
     "prompt__group__suggested__title": "Föreslagna",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Dölj Gmail-assistent",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Uppgradera för obegränsad ChatGPT-användning",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Aktivera alternativet \"Tillåt åtkomst till fil-URL:er\" i webbläsarens inställningar genom att navigera till",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Detta gör att 'PDF AI-visaren' öppnas automatiskt när du drar och släpper PDF-filer i webbläsaren.",
     "sidebar__tabs__art__title": "Konst",
-    "sidebar__tabs__art__tooltip": "AI-drivna konstverk",
+    "sidebar__tabs__art__tooltip": "Skapa AI-konst och bilder",
     "provider__claude__model__claude_2_1_200k__description": "Samma kapabiliteter som grundläggande claude-2-100k-läge men med dubbelt så långt sammanhang. Dessutom en betydande minskning av modellens hallucinationsfrekvens.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Uppgradera för att få tillgång till claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropics mest kraftfulla modell, 200K kontextfönster, perfekt för uppgifter som sträcker sig från sofistikerad dialog och kreativt innehållsgenerering till detaljerade instruktioner. Dessutom en betydande minskning av modellens hallucinationsfrekvens.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Alla med länken kan se detta",
     "sidebar__conversation_share__share_panel__copied_tip": "Länk kopierad",
     "sidebar__conversation_share__share_panel__success_tip": "Den delade konversations-URL:en har kopierats till urklipp!",
-    "sidebar__conversation_share__share_panel__error_tip": "Det går inte att dela för tillfället. Kontrollera din nätverksanslutning eller försök igen senare.",
-    "sidebar__promotion_dialog__title": "Nya premiumfunktioner i {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Skapa AI-konst och bilder",
-    "sidebar__promotion_dialog__content_item1__description": "Omvandla snabbt dina visioner till fantastiska bilder. Enkelt, kraftfullt, transformerande.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo med vision",
-    "sidebar__promotion_dialog__content_item2__description": "Få tillgång till OpenAI:s revolutionerande GPT-4-vision som integrerar bildbehandling med den avancerade språkförståelsen hos GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Få tillgång till Googles mest kapabla och allmänna modell för multimodalitet.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Få tillgång till Anthropics nya bästa modell, som erbjuder ett kontextfönster på 200K token och mycket lägre hallucinationsfrekvens.",
-    "sidebar__promotion_dialog__content_item5__title": "AI-driven sökning",
-    "sidebar__promotion_dialog__content_item5__description": "Få svar på de svåraste frågorna med omfattande webbinsikter.",
-    "sidebar__promotion_dialog__content_item6__title": "Sammanfatta och fråga om vilken sida som helst",
-    "sidebar__promotion_dialog__content_item6__description": "Få sammanfattningar, ställ frågor och hitta information om vilken webbsida, PDF, e-post och YouTube-video som helst.",
-    "sidebar__promotion_dialog__cta_button": "Uppgradera nu - Erbjudandet slutar snart!"
+    "sidebar__conversation_share__share_panel__error_tip": "Det går inte att dela för tillfället. Kontrollera din nätverksanslutning eller försök igen senare."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Svara med nyckelpunkter",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Snabbt svar",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svara med nyckelpunkter (test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norska"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norska",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finska"
   },
   "prompt_editor": {
     "preset_variables__title": "Färdigheter",
@@ -888,7 +875,6 @@
     "button__next__title": "Nästa",
     "button__back__title": "Tillbaka",
     "button__finish__title": "Slutför",
-    "text_of": "av",
     "sidebar_tour__step__1__title": "Välj ditt föredragna gränssnittsspråk",
     "sidebar_tour__step__2__title": "10Xa din produktivitet med AI",
     "sidebar_tour__step__2__description_1": "Fråga Al vad som helst",

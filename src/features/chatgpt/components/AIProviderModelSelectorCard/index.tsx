@@ -129,10 +129,10 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
     }
     const models = AI_PROVIDER_MODEL_MAP[currentAIProvider]
     const currentModel =
-      models.find((model) => model.value === currentAIModel) || models[0]
+      models.find((model) => model.value === currentAIModel) || models?.[0]
     return {
-      label: currentModel.title,
-      value: currentModel.value,
+      label: currentModel?.title,
+      value: currentModel?.value,
       AIProvider: currentAIProvider,
     }
   }, [AI_PROVIDER_MODEL_MAP, currentAIModel, currentAIProvider])

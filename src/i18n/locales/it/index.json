@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Passa a Pro per accedere a gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Le stesse capacità del modello standard gpt-3.5-turbo ma con 4 volte il contesto.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Passa a Pro per accedere a gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 Turbo di OpenAI, ottimizzato per velocità ed efficienza, eccelle nelle applicazioni in tempo reale che richiedono creatività e ragionamento avanzato con tempi di risposta migliorati e output coerenti.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 di OpenAI, ottimizzato per velocità ed efficienza, eccelle nelle applicazioni in tempo reale che richiedono creatività e ragionamento avanzato con tempi di risposta migliorati e output coerenti.",
     "prompt__group__suggested__title": "Suggeriti",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Nascondi assistente Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Aggiorna per l'uso illimitato di ChatGPT",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Abilita l'opzione \"Consenti accesso agli URL dei file\" nelle impostazioni del tuo browser navigando su",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Ciò consentirà all' 'Visualizzatore PDF AI' di aprirsi automaticamente quando trascini e rilasci file PDF nel browser.",
     "sidebar__tabs__art__title": "Arte",
-    "sidebar__tabs__art__tooltip": "Arte potenziata dall'IA",
+    "sidebar__tabs__art__tooltip": "Crea arte e immagini con l'IA",
     "provider__claude__model__claude_2_1_200k__description": "Le stesse capacità del modello base claude-2-100k ma con una lunghezza del contesto doppia. Inoltre, significativa riduzione delle percentuali di allucinazione del modello.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Aggiorna per accedere a claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Il modello più potente di Anthropic, finestra di contesto di 200K, ottimo per compiti che vanno dal dialogo sofisticato e la generazione di contenuti creativi alle istruzioni dettagliate. Inoltre, significativa riduzione delle percentuali di allucinazione del modello.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Chiunque con il link può visualizzarlo",
     "sidebar__conversation_share__share_panel__copied_tip": "Link copiato",
     "sidebar__conversation_share__share_panel__success_tip": "L'URL della conversazione condivisa è stato copiato negli appunti!",
-    "sidebar__conversation_share__share_panel__error_tip": "Impossibile condividere al momento. Controlla la tua connessione di rete o riprova più tardi.",
-    "sidebar__promotion_dialog__title": "Nuove funzionalità premium in {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Crea arte e immagini con l'IA",
-    "sidebar__promotion_dialog__content_item1__description": "Trasforma rapidamente le tue visioni in immagini sbalorditive. Semplice, potente, trasformativo.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo con visione",
-    "sidebar__promotion_dialog__content_item2__description": "Accedi alla rivoluzionaria GPT-4-vision di OpenAI che integra l'elaborazione delle immagini con la comprensione avanzata del linguaggio di GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Accedi al modello più capace e generale di Google per la multimodalità.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Accedi al nuovo miglior modello di Anthropic, che offre una finestra di contesto di 200K token e tassi di allucinazione molto più bassi.",
-    "sidebar__promotion_dialog__content_item5__title": "Ricerca potenziata dall'IA",
-    "sidebar__promotion_dialog__content_item5__description": "Ottieni risposte alle domande più difficili con approfondimenti completi sul web.",
-    "sidebar__promotion_dialog__content_item6__title": "Sintetizza e chiedi su qualsiasi pagina",
-    "sidebar__promotion_dialog__content_item6__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF, email e video di YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Aggiorna ora - Offerta termina presto!"
+    "sidebar__conversation_share__share_panel__error_tip": "Impossibile condividere al momento. Controlla la tua connessione di rete o riprova più tardi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Rispondi con punti chiave",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Risposta rapida",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Rispondi con punti chiave (test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvegese"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvegese",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finlandese"
   },
   "prompt_editor": {
     "preset_variables__title": "Funzionalità",
@@ -888,7 +875,6 @@
     "button__next__title": "Avanti",
     "button__back__title": "Indietro",
     "button__finish__title": "Fine",
-    "text_of": "di",
     "sidebar_tour__step__1__title": "Scegli la tua lingua preferita dell'interfaccia",
     "sidebar_tour__step__2__title": "Aumenta la tua produttività del 10X con l'IA",
     "sidebar_tour__step__2__description_1": "Chiedi ad Al qualsiasi cosa",

@@ -623,7 +623,7 @@ export default class ConversationManager {
       const conversations = await this.conversationDB.getAllConversations()
       await Promise.all(
         conversations.map(async (conversation) => {
-          if (conversation.id) {
+          if (conversation.id && !conversation.isDelete) {
             await this.softDeleteConversation(conversation.id)
           }
         }),
@@ -646,7 +646,11 @@ export default class ConversationManager {
       const conversations = await this.conversationDB.getAllConversations()
       await Promise.all(
         conversations.map(async (conversation) => {
-          if (conversation.id && conversation.type === type) {
+          if (
+            conversation.id &&
+            conversation.type === type &&
+            !conversation.isDelete
+          ) {
             await this.softDeleteConversation(conversation.id)
           }
         }),

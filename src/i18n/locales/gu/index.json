@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "gpt-3.5-turbo-16k એક્સેસ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "મૂળ gpt-3.5-turbo મોડેલની જેમ ક્ષમતા છે, પરંતુ 4 ગણતરી સંદર્ભમાં.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "gpt-4 એક્સેસ માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIનું GPT-4 ટર્બો, ઝડપી અને દક્ષતાથી મેળવેલું, સરળતા અને આગળ વધતી જવાબદારીઓ સાથે રિયલ-ટાઇમ એપ્લિકેશનમાં ઉત્કૃષ્ટ રીઝનિંગ અને સારવારની જવાબદારીઓને મહત્વ આપે છે.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAIનો GPT-4, ઝડપી અને દક્ષતાથી મુકેલો, સરળતા અને આગળ વધતી સમજણ જોઈએ છે જેમાં રચનાત્મકતા અને ઉન્નત તરીકે સોચવાની જરૂર હોય તેવી વાતો છે.",
     "prompt__group__suggested__title": "સૂચવેલ",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Gmail સહાયક છુપાવો",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "અનલિમિટેડ ChatGPT વપરાશ માટે અપગ્રેડ કરો",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "તમારા બ્રાઉઝર સેટિંગ્સમાં \"ફાઇલ URLને ઍક્સેસ આપવાની મંજૂરી આપો\" વિકલ્પને સક્ષમ કરો અને તેમાં જઈને",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": "પર જવો. આ તમને અનુમતિ આપશે કે જ્યારે તમે પીડીએફ ફાઇલોને બ્રાઉઝરમાં ખેંચો અને છોડો ત્યારે 'પીડીએફ AI જોવાની સ્વિચ' આપોઆપ ખુલી જશે.",
     "sidebar__tabs__art__title": "કલા",
-    "sidebar__tabs__art__tooltip": "AI પર આધારિત કલા",
+    "sidebar__tabs__art__tooltip": "એઆઈ આર્ટ અને છબીઓ બનાવો",
     "provider__claude__model__claude_2_1_200k__description": "બેઝ ક્લોડ-2-100k મોડની સમાન સક્ષમતા છે, પરંતુ સંદર્ભ લંબાઈની 2 ગુણાંકન છે. અને મોડલ હેલ્યુસિનેશન દરમિયાન વધારે કમી.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "પહોંચ મેળવવા માટે અપગ્રેડ કરો claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Anthropicનું સૌથી શક્તિશાળી મોડલ, 200K સંદર્ભ વિંડો, સુસંગત સંવાદ અને રચના ઉત્પાદન થી વિસ્તૃત માર્ગદર્શિકા સુધીની કાર્યો માટે મહત્વપૂર્ણ છે. અને મોડલ હેલ્યુસિનેશન દરમિયાન વધારે કમી.",
@@ -577,7 +577,8 @@
     "immersive_chat__chat_no_conversation__title": "હજી સુધી કોઈ ચેટ ઇતિહાસ ઉપલબ્ધ નથી",
     "immersive_chat__summary_no_conversation__title": "હજી સુધી કોઈ સંગ્રહ ઇતિહાસ ઉપલબ્ધ નથી",
     "immersive_chat__search_no_conversation__title": "હજી સુધી કોઈ શોધ ઇતિહાસ ઉપલબ્ધ નથી",
-    "immersive_chat__art_no_conversation__title": "હજી સુધી કોઈ આર્ટ ઇતિહાસ ઉપલબ્ધ નથી"
+    "immersive_chat__art_no_conversation__title": "હજી સુધી કોઈ આર્ટ ઇતિહાસ ઉપલબ્ધ નથી",
+    "home_view__art__title": "એઆઈ આર્ટ અને છબીઓ બનાવો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -844,7 +845,6 @@
     "button__next__title": "આગળ",
     "button__back__title": "પાછળ",
     "button__finish__title": "સમાપ્ત",
-    "text_of": "ની",
     "sidebar_tour__step__1__title": "તમારી પસંદગીની ઇંટરફેસ ભાષા પસંદ કરો",
     "sidebar_tour__step__2__title": "એઆઈ સાથે તમારી ઉત્પાદકતાને 10X વધારો",
     "sidebar_tour__step__2__description_1": "એલ કોઈપણ પ્રશ્ન કરો",

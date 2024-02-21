@@ -477,7 +477,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Upgrade to access gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Same capabilities as the standard gpt-3.5-turbo model but with 4 times the context.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Upgrade to access gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's GPT-4 Turbo, optimized for speed and efficiency, excels in real-time applications requiring creativity and advanced reasoning with enhanced response times and consistent output.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "OpenAI's GPT-4, optimized for speed and efficiency, excels in real-time applications requiring creativity and advanced reasoning with enhanced response times and consistent output.",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__title": "Upgrade to access gpt-4-turbo with vision",
     "permission__pricing_hook__max_ai_paid_model__gpt4_vision__description": "OpenAI's revolutionary advancement in AI technology with GPT-4-Vision – a groundbreaking leap in AI technology that integrates image processing with the advanced language understanding of GPT-4.",
     "permission__pricing_hook__max_ai_paid_model__page_summary__title": "Upgrade to summarize and chat with any page",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Anyone with the link can view this",
     "sidebar__conversation_share__share_panel__copied_tip": "Link copied",
     "sidebar__conversation_share__share_panel__success_tip": "The shared conversation URL has been copied to the clipboard!",
-    "sidebar__conversation_share__share_panel__error_tip": "Unable to share at the moment. Please check your network or try again later.",
-    "sidebar__promotion_dialog__title": "New premium features in {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Create AI art and images",
-    "sidebar__promotion_dialog__content_item1__description": "Rapidly turn your visions into stunning images. Simple, powerful, transformative.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo with vision",
-    "sidebar__promotion_dialog__content_item2__description": "Access OpenAI's revolutionary GPT-4-vision that integrates image processing with the advanced language understanding of GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Access Google's most capable and general model for multimodality.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Access Anthropic's new best model, offering a 200K token context window and much lower hallucination rates.",
-    "sidebar__promotion_dialog__content_item5__title": "AI-powered search",
-    "sidebar__promotion_dialog__content_item5__description": "Get answers to the hardest questions with comprehensive web insights.",
-    "sidebar__promotion_dialog__content_item6__title": "Summarize & ask on any page",
-    "sidebar__promotion_dialog__content_item6__description": "Get summaries, ask questions, and find information about any webpage, PDF, email, and YouTube video.",
-    "sidebar__promotion_dialog__cta_button": "Upgrade now - Offer ends soon!"
+    "sidebar__conversation_share__share_panel__error_tip": "Unable to share at the moment. Please check your network or try again later."
   },
   "prompt_editor": {
     "template__error__title": "Template is required",
@@ -708,7 +694,6 @@
     "button__next__title": "Next",
     "button__back__title": "Back",
     "button__finish__title": "Finish",
-    "text_of": "of",
     "sidebar_tour__step__1__title": "Choose your preferred interface language",
     "sidebar_tour__step__2__title": "10X your productivity with AI",
     "sidebar_tour__step__2__description_1": "Ask Al anything",
@@ -905,6 +890,7 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Reply with key points",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Quick reply",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Reply with key points(test)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Suomi"
   }
 }

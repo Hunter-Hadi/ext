@@ -54,8 +54,8 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
 
     setIsDragOver(false)
   }
-  if (currentSidebarConversationType === 'Chat') {
-    return (
+  return (
+    <>
       <Stack
         px={2}
         width="100%"
@@ -67,7 +67,10 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
-        sx={sx}
+        sx={{
+          display: currentSidebarConversationType === 'Chat' ? 'flex' : 'none',
+          ...sx,
+        }}
       >
         {isDragOver ? (
           <HomeViewPdfDropBox />
@@ -77,91 +80,86 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
           </Stack>
         )}
       </Stack>
-    )
-  }
-  if (currentSidebarConversationType === 'Search') {
-    return (
-      <Stack
-        px={2}
-        width="100%"
-        height="100%"
-        justifyContent="center"
-        alignItems="center"
-        position="relative"
-        sx={sx}
-      >
-        <Stack justifyContent={'center'} alignItems={'center'}>
-          <ContextMenuIcon
-            icon={'Search'}
-            sx={{
-              color: 'primary.main',
-              fontSize: '48px',
-            }}
-          />
-          <Typography
-            mt={1.5}
-            mb={1}
-            fontSize={'20px'}
-            fontWeight={700}
-            textAlign={'center'}
-            color={'text.primary'}
-          >
-            {t('client:home_view__search__title')}
-          </Typography>
-          <Typography
-            fontSize={'14px'}
-            fontWeight={400}
-            textAlign={'center'}
-            color={'text.primary'}
-          >
-            {t('client:home_view__search__description')}
-          </Typography>
+      {currentSidebarConversationType === 'Search' && (
+        <Stack
+          px={2}
+          width="100%"
+          height="100%"
+          justifyContent="center"
+          alignItems="center"
+          position="relative"
+          sx={sx}
+        >
+          <Stack justifyContent={'center'} alignItems={'center'}>
+            <ContextMenuIcon
+              icon={'Search'}
+              sx={{
+                color: 'primary.main',
+                fontSize: '48px',
+              }}
+            />
+            <Typography
+              mt={1.5}
+              mb={1}
+              fontSize={'20px'}
+              fontWeight={700}
+              textAlign={'center'}
+              color={'text.primary'}
+            >
+              {t('client:home_view__search__title')}
+            </Typography>
+            <Typography
+              fontSize={'14px'}
+              fontWeight={400}
+              textAlign={'center'}
+              color={'text.primary'}
+            >
+              {t('client:home_view__search__description')}
+            </Typography>
+          </Stack>
         </Stack>
-      </Stack>
-    )
-  }
-  if (currentSidebarConversationType === 'Art') {
-    return (
-      <Stack
-        px={2}
-        width="100%"
-        height="100%"
-        justifyContent="center"
-        alignItems="center"
-        position="relative"
-        sx={sx}
-      >
-        <Stack justifyContent={'center'} alignItems={'center'}>
-          <ContextMenuIcon
-            icon={'Art'}
-            sx={{
-              color: 'primary.main',
-              fontSize: '48px',
-            }}
-          />
-          <Typography
-            mt={1.5}
-            mb={1}
-            fontSize={'20px'}
-            fontWeight={700}
-            textAlign={'center'}
-            color={'text.primary'}
-          >
-            {t('client:home_view__art__title')}
-          </Typography>
-          <Typography
-            fontSize={'14px'}
-            fontWeight={400}
-            textAlign={'center'}
-            color={'text.primary'}
-          >
-            {t('client:home_view__art__description')}
-          </Typography>
+      )}
+      {currentSidebarConversationType === 'Art' && (
+        <Stack
+          px={2}
+          width="100%"
+          height="100%"
+          justifyContent="center"
+          alignItems="center"
+          position="relative"
+          sx={sx}
+        >
+          <Stack justifyContent={'center'} alignItems={'center'}>
+            <ContextMenuIcon
+              icon={'Art'}
+              sx={{
+                color: 'primary.main',
+                fontSize: '48px',
+              }}
+            />
+            <Typography
+              mt={1.5}
+              mb={1}
+              fontSize={'20px'}
+              fontWeight={700}
+              textAlign={'center'}
+              color={'text.primary'}
+            >
+              {t('client:home_view__art__title')}
+            </Typography>
+            <Typography
+              fontSize={'14px'}
+              fontWeight={400}
+              textAlign={'center'}
+              color={'text.primary'}
+            >
+              {t('client:home_view__art__description')}
+            </Typography>
+          </Stack>
         </Stack>
-      </Stack>
-    )
-  }
-  return null
+      )}
+    </>
+  )
 }
 
 export default SidebarHomeView

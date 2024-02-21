@@ -396,7 +396,7 @@
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title": "Nâng cấp để truy cập gpt-3.5-turbo-16k",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description": "Có cùng khả năng như mô hình tiêu chuẩn gpt-3.5-turbo nhưng với 4 lần ngữ cảnh.",
     "permission__pricing_hook__max_ai_paid_model__gpt4__title": "Nâng cấp để truy cập gpt-4",
-    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 Turbo của OpenAI, tối ưu hóa về tốc độ và hiệu suất, xuất sắc trong các ứng dụng thời gian thực yêu cầu sự sáng tạo và lập luận nâng cao với thời gian phản hồi nhanh chóng và kết quả nhất quán.",
+    "permission__pricing_hook__max_ai_paid_model__gpt4__description": "GPT-4 của OpenAI, tối ưu hóa cho tốc độ và hiệu suất, xuất sắc trong các ứng dụng thời gian thực yêu cầu sự sáng tạo và lập luận nâng cao với thời gian phản hồi nhanh hơn và kết quả nhất quán.",
     "prompt__group__suggested__title": "Đề xuất",
     "gmail__cta_button__dropdown__hide_gmail_assistant": "Ẩn trợ lý Gmail",
     "permission__pricing_hook__max_ai_paid_model__gpt3_5__title": "Nâng cấp để sử dụng ChatGPT không giới hạn",
@@ -505,7 +505,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Bật tùy chọn \"Cho phép truy cập vào URL tệp\" trong cài đặt trình duyệt của bạn bằng cách điều hướng đến",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". Điều này sẽ cho phép 'Trình xem PDF AI' tự động mở khi bạn kéo và thả các tệp PDF vào trình duyệt.",
     "sidebar__tabs__art__title": "Nghệ thuật",
-    "sidebar__tabs__art__tooltip": "Nghệ thuật được hỗ trợ bởi trí tuệ nhân tạo",
+    "sidebar__tabs__art__tooltip": "Tạo nghệ thuật và hình ảnh AI",
     "provider__claude__model__claude_2_1_200k__description": "Cùng khả năng như mô hình claude-2-100k gốc nhưng với độ dài ngữ cảnh gấp đôi. Cùng với việc giảm đáng kể tỷ lệ tạo ra thông tin sai lệch của mô hình.",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__title": "Nâng cấp để truy cập claude-2.1-200k",
     "permission__pricing_hook__max_ai_paid_model__claude_v2_1__description": "Mô hình mạnh nhất của Anthropic, cửa sổ ngữ cảnh 200K, phù hợp cho các nhiệm vụ từ cuộc trò chuyện phức tạp và tạo nội dung sáng tạo đến hướng dẫn chi tiết. Cùng với việc giảm đáng kể tỷ lệ tạo ra thông tin sai lệch của mô hình.",
@@ -607,21 +607,7 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Ai đó có thể xem điều này qua liên kết",
     "sidebar__conversation_share__share_panel__copied_tip": "Liên kết đã được sao chép",
     "sidebar__conversation_share__share_panel__success_tip": "URL cuộc trò chuyện đã được chia sẻ đã được sao chép vào clipboard!",
-    "sidebar__conversation_share__share_panel__error_tip": "Không thể chia sẻ lúc này. Vui lòng kiểm tra kết nối mạng hoặc thử lại sau.",
-    "sidebar__promotion_dialog__title": "Tính năng cao cấp mới trong {{VERSION}}",
-    "sidebar__promotion_dialog__content_item1__title": "Tạo nghệ thuật và hình ảnh AI",
-    "sidebar__promotion_dialog__content_item1__description": "Biến tưởng của bạn trở thành những hình ảnh tuyệt đẹp một cách nhanh chóng. Đơn giản, mạnh mẽ, biến đổi.",
-    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo với khả năng nhìn thấy",
-    "sidebar__promotion_dialog__content_item2__description": "Truy cập vào GPT-4-vision cách mạng của OpenAI kết hợp xử lý hình ảnh với khả năng hiểu ngôn ngữ tiên tiến của GPT-4.",
-    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
-    "sidebar__promotion_dialog__content_item3__description": "Truy cập vào mô hình tổng quát và mạnh mẽ nhất của Google cho đa dạng hình ảnh.",
-    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
-    "sidebar__promotion_dialog__content_item4__description": "Truy cập vào mô hình tốt nhất mới nhất của Anthropic, cung cấp cửa sổ ngữ cảnh 200K token và tỷ lệ tưởng tượng thấp hơn nhiều.",
-    "sidebar__promotion_dialog__content_item5__title": "Tìm kiếm được cung cấp bởi trí tuệ nhân tạo",
-    "sidebar__promotion_dialog__content_item5__description": "Nhận câu trả lời cho những câu hỏi khó nhất với thông tin toàn diện từ web.",
-    "sidebar__promotion_dialog__content_item6__title": "Tóm tắt và hỏi trên mọi trang",
-    "sidebar__promotion_dialog__content_item6__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF, email và video YouTube nào.",
-    "sidebar__promotion_dialog__cta_button": "Nâng cấp ngay - Ưu đãi sẽ kết thúc sớm!"
+    "sidebar__conversation_share__share_panel__error_tip": "Không thể chia sẻ lúc này. Vui lòng kiểm tra kết nối mạng hoặc thử lại sau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",
@@ -801,7 +787,8 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84682eb1": "Trả lời với điểm chính",
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Trả lời nhanh",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Trả lời với điểm chính (thử nghiệm)",
-    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Tiếng Na Uy"
+    "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Tiếng Na Uy",
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Tiếng Việt"
   },
   "prompt_editor": {
     "preset_variables__title": "Khả năng",
@@ -888,7 +875,6 @@
     "button__next__title": "Tiếp theo",
     "button__back__title": "Quay lại",
     "button__finish__title": "Hoàn thành",
-    "text_of": "của",
     "sidebar_tour__step__1__title": "Chọn ngôn ngữ giao diện ưa thích của bạn",
     "sidebar_tour__step__2__title": "Tăng năng suất của bạn lên 10 lần với Trí tuệ Nhân tạo",
     "sidebar_tour__step__2__description_1": "Hỏi Al bất cứ điều gì",

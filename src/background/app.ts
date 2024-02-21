@@ -347,6 +347,14 @@ const initChromeExtensionUpdated = async () => {
     )
   }
 
+  if (APP_VERSION === '3.0.2' && getBrowserType() === 'Edge') {
+    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
+    setTimeout(
+      () => executeMaxAIOneYearPromotion(true),
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
+  }
+
   // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
   await ConversationManager.getAllConversation()
   // NOTE: 远程更新AI配置

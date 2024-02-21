@@ -127,7 +127,7 @@ class BardChat extends BaseChat {
         ]),
       ]
       const result = await ofetch(
-        'https://bard.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate',
+        'https://gemini.google.com/_/BardChatUi/data/assistant.lamda.BardFrontendService/StreamGenerate',
         {
           method: 'POST',
           signal: signal,

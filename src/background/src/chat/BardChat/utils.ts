@@ -8,8 +8,8 @@ function extractFromHTML(variableName: string, html: string) {
 
 export const fetchBardRequestParams = async () => {
   try {
-    const html = await ofetch('https://bard.google.com/faq', {
-      cache: 'reload',
+    const html = await ofetch('https://gemini.google.com/', {
+      responseType: 'text',
     })
     const atValue = extractFromHTML('SNlM0e', html)
     const blValue = extractFromHTML('cfb2h', html)
@@ -29,7 +29,7 @@ export const parseBardResponse = (resp: string) => {
     return {
       text: '',
       error:
-        'Please log into [bard.google.com](https://bard.google.com) and try again.',
+        'Please log into [bard.google.com](https://gemini.google.com) and try again.',
       ids: ['', '', ''] as [string, string, string],
     }
   }

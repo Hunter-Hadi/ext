@@ -11,12 +11,12 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
 import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
+import ShareButtonGroup from '@/features/chatgpt/components/share/ShareButtonGroup'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useCommands from '@/hooks/useCommands'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
-import ShareButtonGroup from '@/features/chatgpt/components/share/ShareButtonGroup'
 
 const ChatBoxHeader: FC<{
   showConversationList?: boolean

@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Qualsevol persona amb l'enllaç pot veure això",
     "sidebar__conversation_share__share_panel__copied_tip": "Enllaç copiat",
     "sidebar__conversation_share__share_panel__success_tip": "L'URL de la conversa compartida s'ha copiat al porta-retalls!",
-    "sidebar__conversation_share__share_panel__error_tip": "No es pot compartir en aquest moment. Comproveu la vostra xarxa o torneu-ho a provar més tard."
+    "sidebar__conversation_share__share_panel__error_tip": "No es pot compartir en aquest moment. Comproveu la vostra xarxa o torneu-ho a provar més tard.",
+    "sidebar__promotion_dialog__title": "Noves funcionalitats premium a {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Crea art i imatges amb IA",
+    "sidebar__promotion_dialog__content_item1__description": "Converteix ràpidament les teves visions en imatges impressionants. Senzill, potent, transformador.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo amb visió",
+    "sidebar__promotion_dialog__content_item2__description": "Accedeix a la revolucionària GPT-4-vision d'OpenAI que integra el processament d'imatges amb la comprensió avançada del llenguatge de GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Accedeix al model més capaç i general de Google per a multimodalitat.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Accedeix al millor nou model d'Anthropic, que ofereix una finestra de context de 200K tokens i taxes de creences molt més baixes.",
+    "sidebar__promotion_dialog__content_item5__title": "Cerca impulsada per IA",
+    "sidebar__promotion_dialog__content_item5__description": "Obtén respostes a les preguntes més difícils amb informació completa de la web.",
+    "sidebar__promotion_dialog__content_item6__title": "Resumeix i pregunta sobre qualsevol pàgina",
+    "sidebar__promotion_dialog__content_item6__description": "Obtén resums, fes preguntes i troba informació sobre qualsevol pàgina web, PDF, correu electrònic i vídeo de YouTube.",
+    "sidebar__promotion_dialog__cta_button": "Millora ara - L'oferta acaba aviat!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

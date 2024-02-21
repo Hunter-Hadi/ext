@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "ใครก็ตามที่มีลิงก์สามารถดูได้",
     "sidebar__conversation_share__share_panel__copied_tip": "คัดลอกลิงก์แล้ว",
     "sidebar__conversation_share__share_panel__success_tip": "URL การสนทนาที่แชร์ได้ถูกคัดลอกไปยังคลิปบอร์ดแล้ว!",
-    "sidebar__conversation_share__share_panel__error_tip": "ไม่สามารถแชร์ได้ในขณะนี้ โปรดตรวจสอบเครือข่ายหรือลองอีกครั้งในภายหลัง"
+    "sidebar__conversation_share__share_panel__error_tip": "ไม่สามารถแชร์ได้ในขณะนี้ โปรดตรวจสอบเครือข่ายหรือลองอีกครั้งในภายหลัง",
+    "sidebar__promotion_dialog__title": "คุณสมบัติพรีเมียมใหม่ใน {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "สร้างศิลปะและรูปภาพด้วย AI",
+    "sidebar__promotion_dialog__content_item1__description": "แปลงความคิดของคุณให้กลายเป็นภาพที่น่าตื่นตาตื่นใจได้อย่างรวดเร็ว ง่าย และมีประสิทธิภาพ",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo พร้อมภาพ",
+    "sidebar__promotion_dialog__content_item2__description": "เข้าถึง GPT-4-vision ที่เป็นนวัตกรรมของ OpenAI ที่รวมการประมวลผลภาพกับความเข้าใจภาษาขั้นสูงของ GPT-4",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "เข้าถึงโมเดลที่สามารถใช้งานได้ดีที่สุดและทั่วไปของ Google สำหรับการใช้งานแบบมัลติโมดัลลิตี้",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "เข้าถึงโมเดลที่ดีที่สุดใหม่ของ Anthropic ที่มีหน้าต่างความสัมพันธ์ของตัวอักษร 200,000 โทเค็นและอัตราการสร้างภาพที่ต่ำกว่ามาก",
+    "sidebar__promotion_dialog__content_item5__title": "ค้นหาด้วย AI",
+    "sidebar__promotion_dialog__content_item5__description": "ได้รับคำตอบสำหรับคำถามที่ยากที่สุดด้วยข้อมูลทางเว็บที่ครอบคลุม",
+    "sidebar__promotion_dialog__content_item6__title": "สรุปและถามเกี่ยวกับหน้าเว็บใดก็ได้",
+    "sidebar__promotion_dialog__content_item6__description": "รับสรุปย่อ ถามคำถาม และค้นหาข้อมูลเกี่ยวกับหน้าเว็บ เอกสาร PDF อีเมล และวิดีโอ YouTube ได้",
+    "sidebar__promotion_dialog__cta_button": "อัปเกรดตอนนี้ - ข้อเสนอสิ้นสุดในเร็ว ๆ นี้!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

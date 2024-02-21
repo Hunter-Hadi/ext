@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Iedereen met de link kan dit bekijken",
     "sidebar__conversation_share__share_panel__copied_tip": "Link gekopieerd",
     "sidebar__conversation_share__share_panel__success_tip": "De URL van het gedeelde gesprek is gekopieerd naar het klembord!",
-    "sidebar__conversation_share__share_panel__error_tip": "Kan op dit moment niet delen. Controleer uw netwerk of probeer het later opnieuw."
+    "sidebar__conversation_share__share_panel__error_tip": "Kan op dit moment niet delen. Controleer uw netwerk of probeer het later opnieuw.",
+    "sidebar__promotion_dialog__title": "Nieuwe premium functies in {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Creëer AI-kunst en afbeeldingen",
+    "sidebar__promotion_dialog__content_item1__description": "Verander snel je visies in verbluffende afbeeldingen. Eenvoudig, krachtig, transformerend.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo met visie",
+    "sidebar__promotion_dialog__content_item2__description": "Toegang tot OpenAI's revolutionaire GPT-4-visie die beeldverwerking integreert met het geavanceerde taalbegrip van GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Toegang tot Google's meest capabele en algemene model voor multimodaliteit.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Toegang tot Anthropic's nieuwe beste model, met een contextvenster van 200K tokens en veel lagere hallucinatieratio's.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-aangedreven zoekopdracht",
+    "sidebar__promotion_dialog__content_item5__description": "Krijg antwoorden op de moeilijkste vragen met uitgebreide webinzichten.",
+    "sidebar__promotion_dialog__content_item6__title": "Samenvatten & vragen stellen op elke pagina",
+    "sidebar__promotion_dialog__content_item6__description": "Krijg samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail en YouTube-video.",
+    "sidebar__promotion_dialog__cta_button": "Nu upgraden - Aanbieding eindigt binnenkort!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "هر کسی با لینک می‌تواند این را ببیند",
     "sidebar__conversation_share__share_panel__copied_tip": "لینک کپی شد",
     "sidebar__conversation_share__share_panel__success_tip": "آدرس URL گفتگوی به اشتراک گذاشته شده در کلیپ‌بورد کپی شد!",
-    "sidebar__conversation_share__share_panel__error_tip": "در حال حاضر قادر به اشتراک گذاری نیستیم. لطفاً اتصال خود را بررسی کنید یا بعداً دوباره تلاش کنید."
+    "sidebar__conversation_share__share_panel__error_tip": "در حال حاضر قادر به اشتراک گذاری نیستیم. لطفاً اتصال خود را بررسی کنید یا بعداً دوباره تلاش کنید.",
+    "sidebar__promotion_dialog__title": "ویژگی‌های جدید ویژه در {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "ایجاد هنر و تصاویر هوش مصنوعی",
+    "sidebar__promotion_dialog__content_item1__description": "به سرعت تصورات خود را به تصاویر شگفت‌انگیز تبدیل کنید. ساده، قدرتمند، تحول‌آفرین.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo با دید",
+    "sidebar__promotion_dialog__content_item2__description": "به GPT-4-vision نوآورانه OpenAI دسترسی پیدا کنید که پردازش تصویر را با درک زبان پیشرفته GPT-4 ترکیب می‌کند.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "به قدرتمندترین و کلیت‌ترین مدل گوگل برای چندحالتی دسترسی پیدا کنید.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "به بهترین مدل جدید Anthropic دسترسی پیدا کنید که یک پنجره متن با 200 هزار توکن و نرخ هالوسیناسیون بسیار پایین‌تر ارائه می‌دهد.",
+    "sidebar__promotion_dialog__content_item5__title": "جستجوی قدرتمند با استفاده از هوش مصنوعی",
+    "sidebar__promotion_dialog__content_item5__description": "با داشتن بینش جامع وب، به پاسخ‌های سخت‌ترین سوالات دسترسی پیدا کنید.",
+    "sidebar__promotion_dialog__content_item6__title": "خلاصه‌سازی و پرسش در هر صفحه",
+    "sidebar__promotion_dialog__content_item6__description": "خلاصه‌ها را بگیرید، سوال بپرسید و اطلاعاتی درباره هر صفحه وب، PDF، ایمیل و ویدیوی YouTube پیدا کنید.",
+    "sidebar__promotion_dialog__cta_button": "هم‌اکنون ارتقا دهید - پیشنهاد به زودی به پایان می‌رسد!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "ലിങ്ക് ഉപയോഗിച്ച് എവിടെയും കാണാവുന്നു",
     "sidebar__conversation_share__share_panel__copied_tip": "ലിങ്ക് പകർത്തി",
     "sidebar__conversation_share__share_panel__success_tip": "പങ്കിട്ട സംഭാഷണത്തിന്റെ URL ക്ലിപ്പ്ബോർഡിലേക്ക് പകർത്തപ്പെട്ടു!",
-    "sidebar__conversation_share__share_panel__error_tip": "നിലവിലെയായി പങ്കിടാൻ കഴിയില്ല. ദയവായി നിങ്ങളുടെ നെറ്റ്വർക്ക് പരിശോധിക്കുക അല്ലെങ്കിൽ പിന്നീട് ശ്രമിക്കുക."
+    "sidebar__conversation_share__share_panel__error_tip": "നിലവിലെയായി പങ്കിടാൻ കഴിയില്ല. ദയവായി നിങ്ങളുടെ നെറ്റ്വർക്ക് പരിശോധിക്കുക അല്ലെങ്കിൽ പിന്നീട് ശ്രമിക്കുക.",
+    "sidebar__promotion_dialog__title": "പുതിയ പ്രീമിയം സവിശേഷതകൾ {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "AI കലാകൃതികൾക്ക് സൃഷ്ടിക്കുക",
+    "sidebar__promotion_dialog__content_item1__description": "നിങ്ങളുടെ ദർശനങ്ങൾ അതിഭീകരിച്ച് അടയാളപ്പെടുത്തുക. ലളിതവും, ശക്തവും, മാറ്റപ്പെടുത്തുന്നതുമായി.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-ടർബോ വിജനൊട്ടിൽ",
+    "sidebar__promotion_dialog__content_item2__description": "ഇമേജ് പ്രോസസിങ്ങും GPT-4 യുടെ അഭിപ്രായ ഭാഷാ അറിവിനുള്ള ഉയർന്ന മനസ്സ് ഒരുപോലെ കൂട്ടിച്ചേർക്കുന്ന GPT-4-വിജൻ ആക്സസ് ലഭിക്കുക.",
+    "sidebar__promotion_dialog__content_item3__title": "ജെമിനി-പ്രോ",
+    "sidebar__promotion_dialog__content_item3__description": "ബഹുമുഖത്തിന് ഗൂഗിളിന്റെ ഏറ്റവും കഴിവുള്ള ജനറൽ മോഡൽ ആക്സസ് ലഭിക്കുക.",
+    "sidebar__promotion_dialog__content_item4__title": "ക്ലോഡ്-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "ഹാലൂസിനേഷൻ നിരക്കുകളും അതിലെ 200K ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോയും കൂടുതൽ കുറവാണ് ഓഫർ ചെയ്യുന്ന ഏറ്റവും മികച്ച പുതിയ മോഡൽ ആക്സസ് ലഭിക്കുക.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-പ്രവർത്തനം തിരയൽ",
+    "sidebar__promotion_dialog__content_item5__description": "വിപുലമായ വെബ് അന്വേഷണങ്ങൾക്ക് ഉത്തരം നൽകുക.",
+    "sidebar__promotion_dialog__content_item6__title": "ഏതെങ്കിലും പേജിൽ സംഗ്രഹിക്കുക & ചോദിക്കുക",
+    "sidebar__promotion_dialog__content_item6__description": "ഏതെങ്കിലും വെബ് പേജ്, PDF, ഇമെയിൽ, യൂട്യൂബ് വീഡിയോയും സംശയങ്ങൾ ചോദിക്കുക, അറിയുക, സംഗ്രഹിക്കുക.",
+    "sidebar__promotion_dialog__cta_button": "ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക - ഓഫർ ഇനിയും അവസാനിക്കുന്നു!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

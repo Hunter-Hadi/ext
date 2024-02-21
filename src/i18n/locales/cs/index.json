@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Kdokoli s odkazem může toto zobrazit",
     "sidebar__conversation_share__share_panel__copied_tip": "Odkaz zkopírován",
     "sidebar__conversation_share__share_panel__success_tip": "URL sdílené konverzace bylo zkopírováno do schránky!",
-    "sidebar__conversation_share__share_panel__error_tip": "Momentálně nelze sdílet. Zkontrolujte svou síť nebo zkuste to znovu později."
+    "sidebar__conversation_share__share_panel__error_tip": "Momentálně nelze sdílet. Zkontrolujte svou síť nebo zkuste to znovu později.",
+    "sidebar__promotion_dialog__title": "Nové prémiové funkce ve verzi {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Vytvářejte umělecká díla a obrázky pomocí AI",
+    "sidebar__promotion_dialog__content_item1__description": "Rychle přetvořte své vize do ohromujících obrázků. Jednoduché, výkonné, transformační.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo s vizí",
+    "sidebar__promotion_dialog__content_item2__description": "Získejte přístup k revolučnímu GPT-4-vision od OpenAI, který integruje zpracování obrazu s pokročilým jazykovým porozuměním GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Získejte přístup k nejvýkonnějšímu a nejobecnějšímu modelu od Googlu pro multimodalitu.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Získejte přístup k novému nejlepšímu modelu od Anthropic, který nabízí okno kontextu o délce 200 tisíc tokenů a mnohem nižší míru halucinací.",
+    "sidebar__promotion_dialog__content_item5__title": "Vyhledávání s podporou AI",
+    "sidebar__promotion_dialog__content_item5__description": "Získejte odpovědi na nejtěžší otázky s pomocí komplexních informací z webu.",
+    "sidebar__promotion_dialog__content_item6__title": "Shrňte a ptáte se na jakoukoli stránku",
+    "sidebar__promotion_dialog__content_item6__description": "Získejte shrnutí, položte otázky a najděte informace o jakékoli webové stránce, PDF, e-mailu a YouTube videu.",
+    "sidebar__promotion_dialog__cta_button": "Upgradujte nyní - Nabídka končí brzy!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

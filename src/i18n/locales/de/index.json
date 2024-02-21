@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Jeder mit dem Link kann dies anzeigen",
     "sidebar__conversation_share__share_panel__copied_tip": "Link kopiert",
     "sidebar__conversation_share__share_panel__success_tip": "Die URL des geteilten Gesprächs wurde in die Zwischenablage kopiert!",
-    "sidebar__conversation_share__share_panel__error_tip": "Aktuell ist kein Teilen möglich. Bitte überprüfen Sie Ihr Netzwerk oder versuchen Sie es später erneut."
+    "sidebar__conversation_share__share_panel__error_tip": "Aktuell ist kein Teilen möglich. Bitte überprüfen Sie Ihr Netzwerk oder versuchen Sie es später erneut.",
+    "sidebar__promotion_dialog__title": "Neue Premium-Funktionen in {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Erstellen Sie KI-Kunst und Bilder",
+    "sidebar__promotion_dialog__content_item1__description": "Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, bahnbrechend.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo mit Vision",
+    "sidebar__promotion_dialog__content_item2__description": "Greifen Sie auf OpenAI's revolutionäres GPT-4-Vision zu, das Bildverarbeitung mit dem fortschrittlichen Sprachverständnis von GPT-4 integriert.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Greifen Sie auf Googles fähigstes und allgemeinstes Modell für Multimodalität zu.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Greifen Sie auf Anthropics neuestes Spitzenmodell zu, das ein Kontextfenster von 200K Token und wesentlich niedrigere Halluzinationsraten bietet.",
+    "sidebar__promotion_dialog__content_item5__title": "KI-gesteuerte Suche",
+    "sidebar__promotion_dialog__content_item5__description": "Erhalten Sie Antworten auf die schwierigsten Fragen mit umfassenden Web-Einblicken.",
+    "sidebar__promotion_dialog__content_item6__title": "Zusammenfassen und auf jeder Seite fragen",
+    "sidebar__promotion_dialog__content_item6__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF, E-Mail und YouTube-Video.",
+    "sidebar__promotion_dialog__cta_button": "Jetzt upgraden - Angebot endet bald!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

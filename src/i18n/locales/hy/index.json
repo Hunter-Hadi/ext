@@ -604,7 +604,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Այլոք՝ ուղիղ հղման հետ կարող են դիտել այսը",
     "sidebar__conversation_share__share_panel__copied_tip": "Հղումը պատճենված է",
     "sidebar__conversation_share__share_panel__success_tip": "Կիսվելու հղումը բեռնվել է ստեղծած սեզմանական URL-ին!",
-    "sidebar__conversation_share__share_panel__error_tip": "Չհաջողվեց կիսելը։ Խնդրում ենք ստուգել ձեր ցանցային կամ փորձել նորից։"
+    "sidebar__conversation_share__share_panel__error_tip": "Չհաջողվեց կիսելը։ Խնդրում ենք ստուգել ձեր ցանցային կամ փորձել նորից։",
+    "sidebar__promotion_dialog__title": "Նոր պրեմիում հատկություններ {{VERSION}}-ում",
+    "sidebar__promotion_dialog__content_item1__title": "Ստեղծեք AI արվեստ և պատկերներ",
+    "sidebar__promotion_dialog__content_item1__description": "Արագությամբ դարձրեք ձեր նախագծերը հետևյալ պատկերացումով: Պարզ, արագ, փոքրաթեթվածքային:",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo պարբերակով",
+    "sidebar__promotion_dialog__content_item2__description": "Մասնակցեք OpenAI-ի հասարական GPT-4-vision-ին, որը միացնում է պատկերավորումը GPT-4-ի առաջադրանքների հետ:",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Մասնակցեք Google-ի ամենահամարակալից և ընդհանուր մոդելից մուլտիմոդալության համար:",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Մասնակցեք Anthropic-ի նորիցական լավագույն մոդելին, որը առաջարկում է 200K տոկենայի պատուհանական պատուհան և շատ փոքր հալուզացիայի չափեր:",
+    "sidebar__promotion_dialog__content_item5__title": "AI-ով անհատական որոնում",
+    "sidebar__promotion_dialog__content_item5__description": "Ստացեք պատասխաններ ամենակարևոր հարցերին բացահայտող վեբ արտադրանքի համարական տեղեկություններով:",
+    "sidebar__promotion_dialog__content_item6__title": "Ամփոփելեք և հարցերը դառնալով ցանկացած էջում",
+    "sidebar__promotion_dialog__content_item6__description": "Ստացեք ամփոփումներ, հարցեր և գտնեք տեղեկություն ցանկացած վեբ էջի, PDF-ի, էլ. փոստի և YouTube վիդեոյի մասին:",
+    "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Անցած է ավարտը!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

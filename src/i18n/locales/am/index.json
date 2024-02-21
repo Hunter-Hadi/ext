@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "ለእርስዎ በሚገኙ የሚመልከት",
     "sidebar__conversation_share__share_panel__copied_tip": "የአገልግሎት ስህተት ተጭኗል",
     "sidebar__conversation_share__share_panel__success_tip": "የአገልግሎት ስህተት የተጭነህ በመቀጠል በቂጥር ውስጥ ተጭኗል!",
-    "sidebar__conversation_share__share_panel__error_tip": "አሁን ማስተማር አይችልም. እባክዎ የስህተትዎን ማሳወቂያ ወደግል ወደግል ይሞክሩ."
+    "sidebar__conversation_share__share_panel__error_tip": "አሁን ማስተማር አይችልም. እባክዎ የስህተትዎን ማሳወቂያ ወደግል ወደግል ይሞክሩ.",
+    "sidebar__promotion_dialog__title": "አዲስ የፕሪሚየም አገልግሎቶች {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "አስተያየት ለማስታወቂያዎች እና ምስል",
+    "sidebar__promotion_dialog__content_item1__description": "በቀላሉ የሚያስተምር ምስልን በትክክል እና በጥቅምት የሚያስተምር ምስልን በተለያዩ አይነት ማስታወቂያዎች ለማስተምር በቀላሉ የሚያስተምር ምስልን በትክክል እና በጥቅምት የሚያስተምር",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo ከመሰረታዊ የሚሰራ የማስተማሪ ስሜት",
+    "sidebar__promotion_dialog__content_item2__description": "የGPT-4 የትንሽ ቋንቋ በትክክል የሚሰራ የGPT-4 የቋንቋ ባለቤት ማስተማሪ ስሜትን የሚያስተምር",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "የGoogle በተለያዩ ሞዴል ለማስተማሪያዎች የሚሰራ እና የሚስተምር ሞዴል",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "የAnthropic የአዲስ ባለቤት ሞዴል ከመሰረታዊ የሚሰራ ማስተማሪ ስሜት እና በጥቅምት የሚስተምር ማስተማሪ ስሜት",
+    "sidebar__promotion_dialog__content_item5__title": "AI-የማስተማሪ ድጋፍ",
+    "sidebar__promotion_dialog__content_item5__description": "በግል የሚያስተምር ጥያቄዎችን በተጨማሪ የድርጅት መረጃዎች ያለውን የድርጅት መረጃ ለመስጠት",
+    "sidebar__promotion_dialog__content_item6__title": "መግቢያና ጥያቄ በዚህ ገጽ ላይ ለጥቅም የሚሰራ",
+    "sidebar__promotion_dialog__content_item6__description": "መግቢያና ጥያቄዎችን ማግባት እና ለመስጠት የሚሰራ ማስተማሪያዎችን ለመስጠት እና የድርጅቱን መረጃ ለመስጠት",
+    "sidebar__promotion_dialog__cta_button": "አድስገን - በቀላሉ ይጠብቁ!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

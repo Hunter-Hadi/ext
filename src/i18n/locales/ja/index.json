@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "リンクを持っている人は誰でもこれを表示できます",
     "sidebar__conversation_share__share_panel__copied_tip": "リンクがコピーされました",
     "sidebar__conversation_share__share_panel__success_tip": "共有された会話のURLがクリップボードにコピーされました！",
-    "sidebar__conversation_share__share_panel__error_tip": "現在共有できません。ネットワークを確認するか、後でもう一度試してください。"
+    "sidebar__conversation_share__share_panel__error_tip": "現在共有できません。ネットワークを確認するか、後でもう一度試してください。",
+    "sidebar__promotion_dialog__title": "新しいプレミアム機能 {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "AIアートと画像を作成する",
+    "sidebar__promotion_dialog__content_item1__description": "ビジョンを素晴らしい画像に素早く変換します。シンプルでパワフル、変革的です。",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo with vision",
+    "sidebar__promotion_dialog__content_item2__description": "画像処理とGPT-4の高度な言語理解を統合したOpenAIの革命的なGPT-4-visionにアクセスできます。",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "マルチモダリティ向けのGoogle最も能力のある一般的なモデルにアクセスできます。",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Anthropicの新しいベストモデルにアクセスできます。200Kトークンのコンテキストウィンドウとはるかに低い幻覚率を提供します。",
+    "sidebar__promotion_dialog__content_item5__title": "AIパワード検索",
+    "sidebar__promotion_dialog__content_item5__description": "包括的なウェブインサイトで最も難しい質問に答えを得ます。",
+    "sidebar__promotion_dialog__content_item6__title": "任意のページを要約して質問する",
+    "sidebar__promotion_dialog__content_item6__description": "任意のウェブページ、PDF、メール、YouTubeビデオについて要約を取得し、質問をし、情報を見つけます。",
+    "sidebar__promotion_dialog__cta_button": "今すぐアップグレード - お得な期間は間もなく終了します！"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

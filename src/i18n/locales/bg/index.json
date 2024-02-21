@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Всеки с връзката може да види това",
     "sidebar__conversation_share__share_panel__copied_tip": "Връзката е копирана",
     "sidebar__conversation_share__share_panel__success_tip": "URL адресът на споделената разговор е копиран в клипборда!",
-    "sidebar__conversation_share__share_panel__error_tip": "Неуспешно споделяне в момента. Моля, проверете вашата мрежа или опитайте отново по-късно."
+    "sidebar__conversation_share__share_panel__error_tip": "Неуспешно споделяне в момента. Моля, проверете вашата мрежа или опитайте отново по-късно.",
+    "sidebar__promotion_dialog__title": "Нови премиум функции в {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Създавайте изкуство и изображения с изкуствен интелект",
+    "sidebar__promotion_dialog__content_item1__description": "Бързо превръщайте вашите визии във впечатляващи изображения. Просто, мощно, трансформиращо.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo с визия",
+    "sidebar__promotion_dialog__content_item2__description": "Достъп до революционния GPT-4-vision на OpenAI, който интегрира обработката на изображения с напредналото разбиране на езика на GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Достъп до най-способната и обща модел на Google за мултимодалност.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Достъп до новия най-добър модел на Anthropic, предлагащ контекстно прозорче от 200K токена и много по-ниски проценти на халюцинации.",
+    "sidebar__promotion_dialog__content_item5__title": "Търсене с изкуствен интелект",
+    "sidebar__promotion_dialog__content_item5__description": "Получавайте отговори на най-трудните въпроси с обширни уеб изводи.",
+    "sidebar__promotion_dialog__content_item6__title": "Резюмирайте и задавайте въпроси за всяка страница",
+    "sidebar__promotion_dialog__content_item6__description": "Получавайте резюмета, задавайте въпроси и намирайте информация за всяка уеб страница, PDF файл, имейл и YouTube видео.",
+    "sidebar__promotion_dialog__cta_button": "Надстройте сега - Офертата изтича скоро!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

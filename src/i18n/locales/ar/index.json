@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "أي شخص لديه الرابط يمكنه رؤية هذا",
     "sidebar__conversation_share__share_panel__copied_tip": "تم نسخ الرابط",
     "sidebar__conversation_share__share_panel__success_tip": "تم نسخ عنوان URL للمحادثة المشتركة إلى الحافظة!",
-    "sidebar__conversation_share__share_panel__error_tip": "غير قادر على المشاركة في الوقت الحالي. يرجى التحقق من الشبكة الخاصة بك أو المحاولة مرة أخرى لاحقًا."
+    "sidebar__conversation_share__share_panel__error_tip": "غير قادر على المشاركة في الوقت الحالي. يرجى التحقق من الشبكة الخاصة بك أو المحاولة مرة أخرى لاحقًا.",
+    "sidebar__promotion_dialog__title": "ميزات متميزة جديدة في {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "إنشاء فن وصور بالذكاء الاصطناعي",
+    "sidebar__promotion_dialog__content_item1__description": "حوّل رؤيتك إلى صور مذهلة بسرعة. بسيطة، قوية، مبتكرة.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo مع الرؤية",
+    "sidebar__promotion_dialog__content_item2__description": "احصل على GPT-4-vision الثوري من OpenAI الذي يدمج معالجة الصور مع الفهم المتقدم للغة في GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "احصل على أقوى وأكثر نموذج عام من Google للتعددية.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "احصل على أفضل نموذج جديد من Anthropic، يوفر نافذة سياق تحتوي على 200 ألف رمز ومعدلات هلوسة أقل بكثير.",
+    "sidebar__promotion_dialog__content_item5__title": "البحث المدعوم بالذكاء الاصطناعي",
+    "sidebar__promotion_dialog__content_item5__description": "احصل على إجابات لأصعب الأسئلة مع رؤى شاملة عن الويب.",
+    "sidebar__promotion_dialog__content_item6__title": "تلخيص وطرح الأسئلة عن أي صفحة",
+    "sidebar__promotion_dialog__content_item6__description": "احصل على تلخيصات، طرح الأسئلة، والعثور على معلومات حول أي صفحة وملف PDF وبريد إلكتروني وفيديو يوتيوب.",
+    "sidebar__promotion_dialog__cta_button": "ترقية الآن - العرض ينتهي قريبًا!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

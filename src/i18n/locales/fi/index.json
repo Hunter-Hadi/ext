@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Kuka tahansa linkin kanssa voi nähdä tämän",
     "sidebar__conversation_share__share_panel__copied_tip": "Linkki kopioitu",
     "sidebar__conversation_share__share_panel__success_tip": "Jaetun keskustelun URL on kopioitu leikepöydälle!",
-    "sidebar__conversation_share__share_panel__error_tip": "Jakaminen ei tällä hetkellä ole mahdollista. Tarkista verkkoyhteytesi tai yritä myöhemmin uudelleen."
+    "sidebar__conversation_share__share_panel__error_tip": "Jakaminen ei tällä hetkellä ole mahdollista. Tarkista verkkoyhteytesi tai yritä myöhemmin uudelleen.",
+    "sidebar__promotion_dialog__title": "Uudet premium-ominaisuudet versiossa {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Luo tekoälytaidetta ja kuvia",
+    "sidebar__promotion_dialog__content_item1__description": "Muunna visiosi upeiksi kuviksi nopeasti. Yksinkertaista, tehokasta, mullistavaa.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo näöllä",
+    "sidebar__promotion_dialog__content_item2__description": "Käytä OpenAI:n vallankumouksellistä GPT-4-näköä, joka yhdistää kuvankäsittelyn GPT-4:n edistykselliseen kielitaitoon.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Pääsy Googlen kyvykkäimpään ja yleisimpään multimodaalimalliin.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Pääsy Anthropicin uuteen parhaaseen malliin, jossa on 200 000 sanan kontekstiruutu ja paljon pienemmät harhaluulot.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-pohjainen haku",
+    "sidebar__promotion_dialog__content_item5__description": "Saat vastauksia vaikeimpiin kysymyksiin kattavien verkkotietojen avulla.",
+    "sidebar__promotion_dialog__content_item6__title": "Tiivistä ja kysy mistä tahansa sivulta",
+    "sidebar__promotion_dialog__content_item6__description": "Saat tiivistelmiä, voit esittää kysymyksiä ja löytää tietoa mistä tahansa verkkosivusta, PDF-tiedostosta, sähköpostista ja YouTube-videosta.",
+    "sidebar__promotion_dialog__cta_button": "Päivitä nyt - Tarjous päättyy pian!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

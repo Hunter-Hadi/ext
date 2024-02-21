@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Οποιοσδήποτε με τον σύνδεσμο μπορεί να το δεί",
     "sidebar__conversation_share__share_panel__copied_tip": "Αντιγράφηκε ο σύνδεσμος",
     "sidebar__conversation_share__share_panel__success_tip": "Ο URL της κοινόχρηστης συνομιλίας αντιγράφηκε στο πρόχειρο!",
-    "sidebar__conversation_share__share_panel__error_tip": "Δεν είναι δυνατή η κοινοποίηση αυτήν τη στιγμή. Ελέγξτε το δίκτυό σας ή προσπαθήστε ξανά αργότερα."
+    "sidebar__conversation_share__share_panel__error_tip": "Δεν είναι δυνατή η κοινοποίηση αυτήν τη στιγμή. Ελέγξτε το δίκτυό σας ή προσπαθήστε ξανά αργότερα.",
+    "sidebar__promotion_dialog__title": "Νέα προηγμένα χαρακτηριστικά στην έκδοση {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Δημιουργία τέχνης και εικόνων με την χρήση AI",
+    "sidebar__promotion_dialog__content_item1__description": "Μετατρέψτε γρήγορα τις ιδέες σας σε εκπληκτικές εικόνες. Απλό, ισχυρό, μεταμορφωτικό.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo με όραση",
+    "sidebar__promotion_dialog__content_item2__description": "Αποκτήστε πρόσβαση στο επαναστατικό GPT-4-vision της OpenAI που ενσωματώνει την επεξεργασία εικόνας με την προηγμένη γλωσσική κατανόηση του GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Αποκτήστε πρόσβαση στον πιο ικανό και γενικό μοντέλο της Google για την πολυμορφία.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Αποκτήστε πρόσβαση στο νέο καλύτερο μοντέλο της Anthropic, που προσφέρει ένα παράθυρο περιεχομένου 200K tokens και πολύ χαμηλότερα επίπεδα υπαλλαγής.",
+    "sidebar__promotion_dialog__content_item5__title": "Αναζήτηση με AI",
+    "sidebar__promotion_dialog__content_item5__description": "Λάβετε απαντήσεις στις πιο δύσκολες ερωτήσεις με πλήρεις πληροφορίες από τον ιστό.",
+    "sidebar__promotion_dialog__content_item6__title": "Περίληψη και ερώτηση σε οποιαδήποτε σελίδα",
+    "sidebar__promotion_dialog__content_item6__description": "Λάβετε περιλήψεις, κάντε ερωτήσεις και βρείτε πληροφορίες για οποιαδήποτε ιστοσελίδα, PDF, email και YouTube βίντεο.",
+    "sidebar__promotion_dialog__cta_button": "Αναβαθμίστε τώρα - Η προσφορά λήγει σύντομα!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

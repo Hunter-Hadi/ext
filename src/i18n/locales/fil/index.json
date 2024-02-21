@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Sinuman na may link ay maaaring makakita nito",
     "sidebar__conversation_share__share_panel__copied_tip": "Nakopya ang link",
     "sidebar__conversation_share__share_panel__success_tip": "Ang URL ng ibinahaging usapan ay nakopya sa clipboard!",
-    "sidebar__conversation_share__share_panel__error_tip": "Hindi maibahagi sa ngayon. Mangyaring suriin ang iyong network o subukan muli mamaya."
+    "sidebar__conversation_share__share_panel__error_tip": "Hindi maibahagi sa ngayon. Mangyaring suriin ang iyong network o subukan muli mamaya.",
+    "sidebar__promotion_dialog__title": "Bagong premium na mga tampok sa {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Lumikha ng sining at mga imahe gamit ang AI",
+    "sidebar__promotion_dialog__content_item1__description": "Mabilis na gawing kahanga-hangang mga imahe ang iyong mga pangarap. Simple, malakas, mapagbago.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo na may paningin",
+    "sidebar__promotion_dialog__content_item2__description": "Ma-access ang rebolusyonaryong GPT-4-vision ng OpenAI na nag-iintegrate ng pagproseso ng mga imahe sa advanced na pang-unawa sa wika ng GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Ma-access ang pinakamahusay at pangkalahatang modelo ng Google para sa multimodality.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Ma-access ang bagong pinakamahusay na modelo ng Anthropic, na nag-aalok ng 200K token context window at mas mababang hallucination rates.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-powered na paghahanap",
+    "sidebar__promotion_dialog__content_item5__description": "Kumuha ng mga sagot sa mga pinakamahirap na tanong gamit ang kumprehensibong mga kaalaman sa web.",
+    "sidebar__promotion_dialog__content_item6__title": "Buod at magtanong sa anumang pahina",
+    "sidebar__promotion_dialog__content_item6__description": "Kumuha ng mga buod, magtanong, at hanapin ang impormasyon tungkol sa anumang webpage, PDF, email, at YouTube video.",
+    "sidebar__promotion_dialog__cta_button": "Mag-upgrade ngayon - Ang alok ay magtatapos sa lalong madaling panahon!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

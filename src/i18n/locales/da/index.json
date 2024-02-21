@@ -607,7 +607,21 @@
     "sidebar__conversation_share__share_panel__public_button__description": "Alle med linket kan se dette",
     "sidebar__conversation_share__share_panel__copied_tip": "Link kopieret",
     "sidebar__conversation_share__share_panel__success_tip": "Den delte samtale-URL er blevet kopieret til udklipsholderen!",
-    "sidebar__conversation_share__share_panel__error_tip": "Kan ikke dele i øjeblikket. Kontrollér dit netværk eller prøv igen senere."
+    "sidebar__conversation_share__share_panel__error_tip": "Kan ikke dele i øjeblikket. Kontrollér dit netværk eller prøv igen senere.",
+    "sidebar__promotion_dialog__title": "Nye premium funktioner i {{VERSION}}",
+    "sidebar__promotion_dialog__content_item1__title": "Skab AI-kunst og billeder",
+    "sidebar__promotion_dialog__content_item1__description": "Omdan hurtigt dine visioner til fantastiske billeder. Simpelt, kraftfuldt, transformerende.",
+    "sidebar__promotion_dialog__content_item2__title": "GPT-4-turbo med vision",
+    "sidebar__promotion_dialog__content_item2__description": "Få adgang til OpenAI's revolutionerende GPT-4-vision, der integrerer billedbehandling med den avancerede sprogforståelse fra GPT-4.",
+    "sidebar__promotion_dialog__content_item3__title": "Gemini-pro",
+    "sidebar__promotion_dialog__content_item3__description": "Få adgang til Googles mest kapable og generelle model for multimodalitet.",
+    "sidebar__promotion_dialog__content_item4__title": "Claude-2.1-200k",
+    "sidebar__promotion_dialog__content_item4__description": "Få adgang til Anthropics nye bedste model, der tilbyder et 200K-token kontekstvindue og meget lavere hallucinationsrater.",
+    "sidebar__promotion_dialog__content_item5__title": "AI-drevet søgning",
+    "sidebar__promotion_dialog__content_item5__description": "Få svar på de sværeste spørgsmål med omfattende webindsigter.",
+    "sidebar__promotion_dialog__content_item6__title": "Opsummer og spørg på enhver side",
+    "sidebar__promotion_dialog__content_item6__description": "Få opsummeringer, stil spørgsmål og find information om enhver hjemmeside, PDF, e-mail og YouTube-video.",
+    "sidebar__promotion_dialog__cta_button": "Opgrader nu - Tilbudet udløber snart!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

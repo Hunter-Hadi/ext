@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Wyczyść swoją rozmowę i rozpocznij informacyjną i przyjazną rozmowę.",
     "provider__bing_web_app__conversation_style__precise__title": "Precyzyjny",
     "provider__bing_web_app__conversation_style__precise__description": "Wyczyść swoją rozmowę i rozpocznij zwięzłą i prostą rozmowę.",
-    "provider__bard_web_app__title": "Aplikacja internetowa Bard",
-    "provider__bard_web_app__short_description": "Wzbogacone o Google Lens.",
-    "provider__bard_web_app__auth_description": "Użyj swojego własnego konta Google Bard, aby zasilać rozszerzenie.",
-    "provider__bard_web_app__auth_button_text": "Kontynuuj z aplikacją internetową Bard",
+    "provider__bard_web_app__title": "Aplikacja internetowa Gemini",
+    "provider__bard_web_app__short_description": "Dostęp do najbardziej zaawansowanego modelu sztucznej inteligencji Google.",
+    "provider__bard_web_app__auth_description": "Użyj swojego własnego konta Google Gemini, aby zasilać rozszerzenie.",
+    "provider__bard_web_app__auth_button_text": "Kontynuuj z aplikacją internetową Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Prześlij plik JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Najbardziej zaawansowany model stworzony przez Google. Zasila Bard, interfejs API PaLM, MakerSuite i różne funkcje przestrzeni roboczej w Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Rozumowanie, wielojęzyczne tłumaczenie, kodowanie i wiele więcej.",
     "provider__claude_web_app__title": "Aplikacja internetowa Claude",
     "provider__claude_web_app__short_description": "Okno kontekstowe 100K. Czat z wieloma dokumentami.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Otrzymuj odpowiedzi na najtrudniejsze pytania dzięki wszechstronnym informacjom z sieci.",
     "sidebar__promotion_dialog__content_item6__title": "Podsumuj i pytaj o dowolną stronę",
     "sidebar__promotion_dialog__content_item6__description": "Otrzymuj podsumowania, zadawaj pytania i znajduj informacje na temat dowolnej strony internetowej, pliku PDF, wiadomości e-mail i filmu na YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Zaktualizuj teraz - Oferta kończy się wkrótce!"
+    "sidebar__promotion_dialog__cta_button": "Zaktualizuj teraz - Oferta kończy się wkrótce!",
+    "provider__bard_web_app__model__gemini__description": "Najbardziej zaawansowany model stworzony przez Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

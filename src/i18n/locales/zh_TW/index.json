@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "清除對話並開始資訊豐富且友善的聊天。",
     "provider__bing_web_app__conversation_style__precise__title": "精確",
     "provider__bing_web_app__conversation_style__precise__description": "清除對話並開始簡潔明確的聊天。",
-    "provider__bard_web_app__title": "Bard網路應用程式",
-    "provider__bard_web_app__short_description": "搭配Google Lens進行增強。",
-    "provider__bard_web_app__auth_description": "使用您自己的Google Bard帳戶來提供擴充功能。",
-    "provider__bard_web_app__auth_button_text": "繼續使用Bard網路應用程式",
+    "provider__bard_web_app__title": "雙子網頁應用程式",
+    "provider__bard_web_app__short_description": "存取 Google 最強大的 AI 模型。",
+    "provider__bard_web_app__auth_description": "使用您自己的 Google 雙子帳戶來提供擴充功能。",
+    "provider__bard_web_app__auth_button_text": "繼續使用雙子網頁應用程式",
     "provider__bard_web_app__upload__accept_tooltip": "上傳檔案 JPEG、PNG、WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Google 最先進的模型。為 Bard、PaLM API、MakerSuite 和 Google 的各種 Workspace 功能提供動力。",
     "provider__bard_web_app__model__what_it_can_do__description": "推理、多語言翻譯、編碼等功能。",
     "provider__claude_web_app__title": "Claude 網頁應用程式",
     "provider__claude_web_app__short_description": "100K 上下文視窗。與多個文件進行聊天。",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "通過全面的網絡洞察力獲得對最困難問題的答案。",
     "sidebar__promotion_dialog__content_item6__title": "摘要和在任何頁面上提問",
     "sidebar__promotion_dialog__content_item6__description": "獲取關於任何網頁、PDF、電子郵件和YouTube視頻的摘要、提問和信息。",
-    "sidebar__promotion_dialog__cta_button": "立即升級-優惠即將結束！"
+    "sidebar__promotion_dialog__cta_button": "立即升級-優惠即將結束！",
+    "provider__bard_web_app__model__gemini__description": "Google 最先進的模型。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

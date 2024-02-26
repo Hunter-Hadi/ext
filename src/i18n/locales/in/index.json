@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Bersihkan percakapan Anda dan mulai obrolan informatif dan ramah.",
     "provider__bing_web_app__conversation_style__precise__title": "Tepat",
     "provider__bing_web_app__conversation_style__precise__description": "Bersihkan percakapan Anda dan mulai obrolan yang ringkas dan langsung.",
-    "provider__bard_web_app__title": "Aplikasi web Bard",
-    "provider__bard_web_app__short_description": "Ditingkatkan dengan Google Lens.",
-    "provider__bard_web_app__auth_description": "Gunakan akun Google Bard Anda sendiri untuk mengaktifkan ekstensi ini.",
-    "provider__bard_web_app__auth_button_text": "Lanjutkan dengan aplikasi web Bard",
+    "provider__bard_web_app__title": "Aplikasi web Gemini",
+    "provider__bard_web_app__short_description": "Akses model AI paling mumpuni dari Google.",
+    "provider__bard_web_app__auth_description": "Gunakan akun Gemini Google Anda sendiri untuk mengaktifkan ekstensi.",
+    "provider__bard_web_app__auth_button_text": "Lanjutkan dengan aplikasi web Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Unggah file JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Model paling canggih oleh Google. Menggerakkan Bard, PaLM API, MakerSuite, dan berbagai fitur Workspace di Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan multibahasa, pemrograman, dan lainnya.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
     "provider__claude_web_app__short_description": "Jendela konteks 100K. Chat dengan beberapa dokumen.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Dapatkan jawaban untuk pertanyaan-pertanyaan sulit dengan wawasan web yang komprehensif.",
     "sidebar__promotion_dialog__content_item6__title": "Ringkaskan & tanyakan pada setiap halaman",
     "sidebar__promotion_dialog__content_item6__description": "Dapatkan ringkasan, ajukan pertanyaan, dan temukan informasi tentang setiap halaman web, PDF, email, dan video YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Tingkatkan sekarang - Penawaran berakhir segera!"
+    "sidebar__promotion_dialog__cta_button": "Tingkatkan sekarang - Penawaran berakhir segera!",
+    "provider__bard_web_app__model__gemini__description": "Model paling canggih oleh Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

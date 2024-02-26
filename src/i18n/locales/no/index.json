@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Fjern samtalen din og start en informativ og vennlig chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Presis",
     "provider__bing_web_app__conversation_style__precise__description": "Fjern samtalen din og start en kortfattet og direkte chat.",
-    "provider__bard_web_app__title": "Bard webapp",
-    "provider__bard_web_app__short_description": "Forbedret med Google Lens.",
-    "provider__bard_web_app__auth_description": "Bruk din egen Google Bard-konto for å drive utvidelsen.",
-    "provider__bard_web_app__auth_button_text": "Fortsett med Bard web app",
+    "provider__bard_web_app__title": "Gemini nettapp",
+    "provider__bard_web_app__short_description": "Få tilgang til Googles mest kapable AI-modell.",
+    "provider__bard_web_app__auth_description": "Bruk din egen Google Gemini-konto for å drive utvidelsen.",
+    "provider__bard_web_app__auth_button_text": "Fortsett med Gemini nettapp",
     "provider__bard_web_app__upload__accept_tooltip": "Last opp fil JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Den mest avanserte modellen fra Google. Drives Bard, PaLM API, MakerSuite og ulike Workspace-funksjoner hos Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Resonnement, flerspråklig oversettelse, koding og mer.",
     "provider__claude_web_app__title": "Claude web app",
     "provider__claude_web_app__short_description": "100K kontekstvindu. Chat med flere dokumenter.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Få svar på de vanskeligste spørsmålene med omfattende webinnsikt.",
     "sidebar__promotion_dialog__content_item6__title": "Oppsummer og spør om hvilken som helst side",
     "sidebar__promotion_dialog__content_item6__description": "Få oppsummeringer, still spørsmål og finn informasjon om hvilken som helst nettside, PDF, e-post og YouTube-video.",
-    "sidebar__promotion_dialog__cta_button": "Oppgrader nå - Tilbudet avsluttes snart!"
+    "sidebar__promotion_dialog__cta_button": "Oppgrader nå - Tilbudet avsluttes snart!",
+    "provider__bard_web_app__model__gemini__description": "Den mest avanserte modellen fra Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

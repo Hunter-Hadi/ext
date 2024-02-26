@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Neteja la teva conversa i comença un xat informatiu i amigable.",
     "provider__bing_web_app__conversation_style__precise__title": "Precís",
     "provider__bing_web_app__conversation_style__precise__description": "Neteja la teva conversa i comença un xat concís i directe.",
-    "provider__bard_web_app__title": "Aplicació web de Bard",
-    "provider__bard_web_app__short_description": "Millorat amb Google Lens.",
-    "provider__bard_web_app__auth_description": "Utilitza el teu propi compte de Google Bard per alimentar l'extensió.",
-    "provider__bard_web_app__auth_button_text": "Continua amb l'aplicació web de Bard",
+    "provider__bard_web_app__title": "Aplicació web de Gemini",
+    "provider__bard_web_app__short_description": "Accedeix al model d'IA més capaç de Google.",
+    "provider__bard_web_app__auth_description": "Utilitza el teu propi compte de Google Gemini per alimentar l'extensió.",
+    "provider__bard_web_app__auth_button_text": "Continua amb l'aplicació web de Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Carrega fitxers JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "El model més avançat de Google. Alimenta Bard, PaLM API, MakerSuite i diverses funcionalitats de Workspace a Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Raonament, traducció multilingüe, codificació i més.",
     "provider__claude_web_app__title": "Aplicació web Claude",
     "provider__claude_web_app__short_description": "Finestra de context de 100K. Xateja amb diversos documents.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Obtén respostes a les preguntes més difícils amb informació completa de la web.",
     "sidebar__promotion_dialog__content_item6__title": "Resumeix i pregunta sobre qualsevol pàgina",
     "sidebar__promotion_dialog__content_item6__description": "Obtén resums, fes preguntes i troba informació sobre qualsevol pàgina web, PDF, correu electrònic i vídeo de YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Millora ara - L'oferta acaba aviat!"
+    "sidebar__promotion_dialog__cta_button": "Millora ara - L'oferta acaba aviat!",
+    "provider__bard_web_app__model__gemini__description": "El model més avançat de Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

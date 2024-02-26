@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Kustuta vestlus ja alusta informatiivset ja sõbralikku vestlust.",
     "provider__bing_web_app__conversation_style__precise__title": "Täpne",
     "provider__bing_web_app__conversation_style__precise__description": "Kustuta vestlus ja alusta lühikest ja otsekoheset vestlust.",
-    "provider__bard_web_app__title": "Bard veebirakendus",
-    "provider__bard_web_app__short_description": "Täiustatud Google Lensiga.",
-    "provider__bard_web_app__auth_description": "Kasuta oma Google Bardi kontot laienduse toiteks.",
-    "provider__bard_web_app__auth_button_text": "Jätka Bard veebirakendusega",
+    "provider__bard_web_app__title": "Gemini veebirakendus",
+    "provider__bard_web_app__short_description": "Pääse ligi Google'i võimsaimale AI mudelile.",
+    "provider__bard_web_app__auth_description": "Kasuta laienduse toitmiseks oma Google Gemini kontot.",
+    "provider__bard_web_app__auth_button_text": "Jätka Gemini veebirakendusega",
     "provider__bard_web_app__upload__accept_tooltip": "Laadi üles fail JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Google'i kõige arenenum mudel. Töötab Bardi, PaLM API, MakerSuite ja erinevate tööruumi funktsioonidega Google'is.",
     "provider__bard_web_app__model__what_it_can_do__description": "Järeldamine, mitmekeelne tõlge, programmeerimine ja palju muud.",
     "provider__claude_web_app__title": "Claude veebirakendus",
     "provider__claude_web_app__short_description": "100K kontekstaken. Vestle mitme dokumendiga.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Saa vastused kõige raskematele küsimustele põhjalike veebiandmete abil.",
     "sidebar__promotion_dialog__content_item6__title": "Kokkuvõte ja küsimuste esitamine igal lehel",
     "sidebar__promotion_dialog__content_item6__description": "Saa kokkuvõtteid, esita küsimusi ja leia teavet mis tahes veebilehe, PDF-i, e-kirja ja YouTube'i video kohta.",
-    "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Pakkumine lõpeb peagi!"
+    "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Pakkumine lõpeb peagi!",
+    "provider__bard_web_app__model__gemini__description": "Google kõige arenenum mudel."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

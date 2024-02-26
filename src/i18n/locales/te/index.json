@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "మీ సంభాషణను తొలగించి ఒక సమాచారమైన మరియు సౌజన్యమైన చాట్ ప్రారంభించండి.",
     "provider__bing_web_app__conversation_style__precise__title": "ప్రెసైస్",
     "provider__bing_web_app__conversation_style__precise__description": "మీ సంభాషణను తొలగించి ఒక సంక్షిప్త మరియు స్పష్టమైన చాట్ ప్రారంభించండి.",
-    "provider__bard_web_app__title": "Bard వెబ్ యాప్",
-    "provider__bard_web_app__short_description": "Google Lens తో పెంచబడినది.",
-    "provider__bard_web_app__auth_description": "మీ స్వంత గూగుల్ బార్డ్ ఖాతాను ఉపయోగించి పొందండి.",
-    "provider__bard_web_app__auth_button_text": "బార్డ్ వెబ్ యాప్‌తో కొనిని కొనడానికి కొనిమితంగా",
+    "provider__bard_web_app__title": "జెమిని వెబ్ యాప్",
+    "provider__bard_web_app__short_description": "గూగుల్‌కు అత్యంత సాధ్యమైన AI మోడల్‌ను ప్రాప్యత చేయండి.",
+    "provider__bard_web_app__auth_description": "మీ సొంత గూగుల్ జెమిని ఖాతాను ఉపయోగించి పొందండి.",
+    "provider__bard_web_app__auth_button_text": "జెమిని వెబ్ యాప్‌తో కొనిని చేయండి",
     "provider__bard_web_app__upload__accept_tooltip": "ఫైల్‌ను అప్‌లోడ్ చేయండి JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "గూగుల్ ద్వారా అత్యంత ఆధునిక మోడల్. బార్డ్, PaLM API, MakerSuite మరియు వివిధ వర్క్‌స్పేస్ ఫీచర్లను గూగుల్‌లో ప్రారంభించేందుకు.",
     "provider__bard_web_app__model__what_it_can_do__description": "ఆకలితో, బహుభాషా అనువాదం, కోడింగ్, మరియు మరొకటికి ఎంచుకోవచ్చు.",
     "provider__claude_web_app__title": "క్లోడ్ వెబ్ యాప్",
     "provider__claude_web_app__short_description": "100K కంటెక్స్ట్ విండో. మరుపు పత్రాలతో చాట్ చేయండి.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "కఠిన ప్రశ్నలకు విస్తృత వెబ్ ఇన్సైట్లతో సమాధానాలు పొందండి.",
     "sidebar__promotion_dialog__content_item6__title": "సంగ్రహించండి మరియు అన్ని పేజీలో అడ్డుకోండి",
     "sidebar__promotion_dialog__content_item6__description": "సంగ్రహించండి, ప్రశ్నలు అడ్డుకోండి, మరియు ఏదైనా వెబ్‌పేజీ, PDF, ఇమెయిల్, మరియు YouTube వీడియో గురించి సమాచారం కనుగొనండి.",
-    "sidebar__promotion_dialog__cta_button": "ఇప్పుడు అప్గ్రేడ్ చేయండి - ఆఫర్ త్వరలో ముగిసేది!"
+    "sidebar__promotion_dialog__cta_button": "ఇప్పుడు అప్గ్రేడ్ చేయండి - ఆఫర్ త్వరలో ముగిసేది!",
+    "provider__bard_web_app__model__gemini__description": "Google ద్వారా అత్యంత ఉన్నత మోడల్."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

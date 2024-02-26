@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Futa mazungumzo yako na anza mazungumzo yenye habari na ya kirafiki.",
     "provider__bing_web_app__conversation_style__precise__title": "Sahihi",
     "provider__bing_web_app__conversation_style__precise__description": "Futa mazungumzo yako na anza mazungumzo ya kifupi na wazi.",
-    "provider__bard_web_app__title": "Programu ya wavuti ya Bard",
-    "provider__bard_web_app__short_description": "Imeboreshwa na Google Lens.",
-    "provider__bard_web_app__auth_description": "Tumia akaunti yako ya Google Bard kuwezesha upanuzi.",
-    "provider__bard_web_app__auth_button_text": "Endelea na programu ya wavuti ya Bard",
+    "provider__bard_web_app__title": "Programu ya wavuti ya Gemini",
+    "provider__bard_web_app__short_description": "Pata mfano wenye uwezo zaidi wa AI wa Google.",
+    "provider__bard_web_app__auth_description": "Tumia akaunti yako ya Gemini ya Google kuwezesha kifaa cha nyongeza.",
+    "provider__bard_web_app__auth_button_text": "Endelea na programu ya wavuti ya Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Pakia faili JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Mfano wa juu kabisa uliotengenezwa na Google. Inatumika kwenye Bard, PaLM API, MakerSuite, na vipengele mbalimbali vya Workspace katika Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Hoja za mantiki, tafsiri nyingi lugha, uandishi wa nambari, na zaidi.",
     "provider__claude_web_app__title": "Programu ya wavuti ya Claude",
     "provider__claude_web_app__short_description": "Dirisha la muktadha lenye nafasi ya 100K. Ongea na hati nyingi.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Pata majibu ya maswali magumu na ufahamu wa kina wa wavuti.",
     "sidebar__promotion_dialog__content_item6__title": "Kuhifadhi & uliza kwenye ukurasa wowote",
     "sidebar__promotion_dialog__content_item6__description": "Pata muhtasari, ulize maswali, na pata habari kuhusu ukurasa wowote, PDF, barua pepe, na video za YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Nunua sasa - Ofa inamalizika hivi karibuni!"
+    "sidebar__promotion_dialog__cta_button": "Nunua sasa - Ofa inamalizika hivi karibuni!",
+    "provider__bard_web_app__model__gemini__description": "Mfano wenye maendeleo zaidi na Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

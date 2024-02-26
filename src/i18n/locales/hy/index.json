@@ -303,12 +303,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Մաքուրեք ձեր խոսակցությունը և սկսեք ինֆորմատիվ և ընկալության խոսելով:",
     "provider__bing_web_app__conversation_style__precise__title": "Համապատասխան",
     "provider__bing_web_app__conversation_style__precise__description": "Մաքուրեք ձեր խոսակցությունը և սկսեք համապատասխանաբարելավումներով և հասկանալի խոսելով:",
-    "provider__bard_web_app__title": "Bard վեբ հավելված",
-    "provider__bard_web_app__short_description": "Բարելավված Google Lens-ով:",
-    "provider__bard_web_app__auth_description": "Օգտագործեք ձեր սեփական Google Bard հաշիվը համարի ընթացքում հավելվածը զարգացնելու համար:",
-    "provider__bard_web_app__auth_button_text": "Շարունակեք Bard վեբ հավելվածով",
+    "provider__bard_web_app__title": "Գեմինի վեբ հավելված",
+    "provider__bard_web_app__short_description": "Մուտք Google-ի ամենակարճ AI մոդելին։",
+    "provider__bard_web_app__auth_description": "Օգտագործեք ձեր սեփական Google Gemini հաշիվը ընդունելու ընդլայնումը։",
+    "provider__bard_web_app__auth_button_text": "Շարունակեք գեմինի վեբ հավելվածով",
     "provider__bard_web_app__upload__accept_tooltip": "Վերբեռնեք ֆայլ JPEG, PNG, WEBP ձևաչափով",
-    "provider__bard_web_app__model__palm_2__description": "Google-ի ամենակարճատ մոդելը: Բարելավված է Bard, PaLM API, MakerSuite և տարբեր Workspace հատկությունների համար Google-ում:",
     "provider__bard_web_app__model__what_it_can_do__description": "Թեստավորում, բազմլեզվական թարգմանություն, ծրագրավորում և այլն:",
     "provider__claude_web_app__title": "Claude վեբ հավելված",
     "provider__claude_web_app__short_description": "100K հատկապատումի պատուհան: խոսեք միայնակ փաստաթղթերով:",
@@ -618,7 +617,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Ստացեք պատասխաններ ամենակարևոր հարցերին բացահայտող վեբ արտադրանքի համարական տեղեկություններով:",
     "sidebar__promotion_dialog__content_item6__title": "Ամփոփելեք և հարցերը դառնալով ցանկացած էջում",
     "sidebar__promotion_dialog__content_item6__description": "Ստացեք ամփոփումներ, հարցեր և գտնեք տեղեկություն ցանկացած վեբ էջի, PDF-ի, էլ. փոստի և YouTube վիդեոյի մասին:",
-    "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Անցած է ավարտը!"
+    "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Անցած է ավարտը!",
+    "provider__bard_web_app__model__gemini__description": "Գոլորշինը առաջարկում է Google-ի ամենակարճատեսական մոդելը։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

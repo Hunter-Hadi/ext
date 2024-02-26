@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Wis je gesprek en begin een informatief en vriendelijk gesprek.",
     "provider__bing_web_app__conversation_style__precise__title": "Nauwkeurig",
     "provider__bing_web_app__conversation_style__precise__description": "Wis je gesprek en begin een beknopt en rechttoe rechtaan gesprek.",
-    "provider__bard_web_app__title": "Bard web app",
-    "provider__bard_web_app__short_description": "Verbeterd met Google Lens.",
-    "provider__bard_web_app__auth_description": "Gebruik je eigen Google Bard-account om de extensie te activeren.",
-    "provider__bard_web_app__auth_button_text": "Doorgaan met Bard web app",
+    "provider__bard_web_app__title": "Gemini web-app",
+    "provider__bard_web_app__short_description": "Toegang tot Google's meest capabele AI-model.",
+    "provider__bard_web_app__auth_description": "Gebruik je eigen Google Gemini-account om de extensie te activeren.",
+    "provider__bard_web_app__auth_button_text": "Doorgaan met Gemini web-app",
     "provider__bard_web_app__upload__accept_tooltip": "Upload bestand JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Het meest geavanceerde model van Google. Aangedreven door Bard, PaLM API, MakerSuite en verschillende Workspace-functies bij Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Redenering, meertalige vertaling, codering en meer.",
     "provider__claude_web_app__title": "Claude web app",
     "provider__claude_web_app__short_description": "100K contextvenster. Chat met meerdere documenten.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Krijg antwoorden op de moeilijkste vragen met uitgebreide webinzichten.",
     "sidebar__promotion_dialog__content_item6__title": "Samenvatten & vragen stellen op elke pagina",
     "sidebar__promotion_dialog__content_item6__description": "Krijg samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail en YouTube-video.",
-    "sidebar__promotion_dialog__cta_button": "Nu upgraden - Aanbieding eindigt binnenkort!"
+    "sidebar__promotion_dialog__cta_button": "Nu upgraden - Aanbieding eindigt binnenkort!",
+    "provider__bard_web_app__model__gemini__description": "Het meest geavanceerde model van Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

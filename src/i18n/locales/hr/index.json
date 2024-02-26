@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Obrišite svoj razgovor i započnite informativan i prijateljski chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Precizno",
     "provider__bing_web_app__conversation_style__precise__description": "Obrišite svoj razgovor i započnite sažet i jednostavan chat.",
-    "provider__bard_web_app__title": "Bard web aplikacija",
-    "provider__bard_web_app__short_description": "Poboljšano s Google Lensom.",
-    "provider__bard_web_app__auth_description": "Koristite vlastiti Google Bard račun za napajanje proširenja.",
-    "provider__bard_web_app__auth_button_text": "Nastavite s Bard web aplikacijom",
+    "provider__bard_web_app__title": "Gemini web aplikacija",
+    "provider__bard_web_app__short_description": "Pristupajte najmoćnijem AI modelu tvrtke Google.",
+    "provider__bard_web_app__auth_description": "Koristite vlastiti Google Gemini račun za pokretanje proširenja.",
+    "provider__bard_web_app__auth_button_text": "Nastavi s Gemini web aplikacijom",
     "provider__bard_web_app__upload__accept_tooltip": "Prenesite datoteku JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Najnapredniji model od strane Googlea. Pokreće Bard, PaLM API, MakerSuite i razne značajke radnog prostora u Googleu.",
     "provider__bard_web_app__model__what_it_can_do__description": "Razmišljanje, višejezični prijevod, kodiranje i još mnogo toga.",
     "provider__claude_web_app__title": "Claude web aplikacija",
     "provider__claude_web_app__short_description": "Prozor konteksta od 100 tisuća. Razgovarajte s više dokumenata.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Dobijte odgovore na najteža pitanja s cjelovitim uvidima s weba.",
     "sidebar__promotion_dialog__content_item6__title": "Sažmi i pitaj na bilo kojoj stranici",
     "sidebar__promotion_dialog__content_item6__description": "Dobijte sažetke, postavljajte pitanja i pronalazite informacije o bilo kojoj web stranici, PDF-u, e-pošti i YouTube videu.",
-    "sidebar__promotion_dialog__cta_button": "Nadogradite sada - Ponuda završava uskoro!"
+    "sidebar__promotion_dialog__cta_button": "Nadogradite sada - Ponuda završava uskoro!",
+    "provider__bard_web_app__model__gemini__description": "Najnapredniji model od strane Googlea."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

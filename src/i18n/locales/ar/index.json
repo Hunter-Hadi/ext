@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "امسح المحادثة الخاصة بك وابدأ دردشة مفيدة وودية.",
     "provider__bing_web_app__conversation_style__precise__title": "دقيق",
     "provider__bing_web_app__conversation_style__precise__description": "امسح المحادثة الخاصة بك وابدأ دردشة موجزة ومباشرة.",
-    "provider__bard_web_app__title": "تطبيق ويب Bard",
-    "provider__bard_web_app__short_description": "محسّن بواسطة Google Lens.",
-    "provider__bard_web_app__auth_description": "استخدم حساب Google Bard الخاص بك لتشغيل الامتداد.",
-    "provider__bard_web_app__auth_button_text": "المتابعة مع تطبيق Bard على الويب",
+    "provider__bard_web_app__title": "تطبيق Gemini على الويب",
+    "provider__bard_web_app__short_description": "الوصول إلى نموذج AI الأكثر قدرة من Google.",
+    "provider__bard_web_app__auth_description": "استخدم حساب Gemini الخاص بك في Google لتشغيل الامتداد.",
+    "provider__bard_web_app__auth_button_text": "المتابعة مع تطبيق Gemini على الويب",
     "provider__bard_web_app__upload__accept_tooltip": "تحميل ملف JPEG، PNG، WEBP",
-    "provider__bard_web_app__model__palm_2__description": "أكثر نموذج متقدم من Google. يشغّل Bard و PaLM API و MakerSuite وميزات Workspace المختلفة في Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "الاستدلال والترجمة متعددة اللغات والبرمجة والمزيد.",
     "provider__claude_web_app__title": "تطبيق Claude على الويب",
     "provider__claude_web_app__short_description": "نافذة سياق بحجم 100 ألف. دردشة مع وثائق متعددة.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "احصل على إجابات لأصعب الأسئلة مع رؤى شاملة عن الويب.",
     "sidebar__promotion_dialog__content_item6__title": "تلخيص وطرح الأسئلة عن أي صفحة",
     "sidebar__promotion_dialog__content_item6__description": "احصل على تلخيصات، طرح الأسئلة، والعثور على معلومات حول أي صفحة وملف PDF وبريد إلكتروني وفيديو يوتيوب.",
-    "sidebar__promotion_dialog__cta_button": "ترقية الآن - العرض ينتهي قريبًا!"
+    "sidebar__promotion_dialog__cta_button": "ترقية الآن - العرض ينتهي قريبًا!",
+    "provider__bard_web_app__model__gemini__description": "أحدث نموذج من قوقل."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "ล้างการสนทนาของคุณและเริ่มสนทนาที่เป็นประโยชน์และเป็นมิตร",
     "provider__bing_web_app__conversation_style__precise__title": "แม่นยำ",
     "provider__bing_web_app__conversation_style__precise__description": "ล้างการสนทนาของคุณและเริ่มสนทนาที่กระชับและตรงไปตรงมา",
-    "provider__bard_web_app__title": "แอปเว็บ Bard",
-    "provider__bard_web_app__short_description": "เพิ่มความสามารถด้วย Google Lens",
-    "provider__bard_web_app__auth_description": "ใช้บัญชี Google Bard ของคุณเพื่อให้กำลังขับเคลื่อนส่วนขยายนี้",
-    "provider__bard_web_app__auth_button_text": "ดำเนินการต่อด้วยแอปเว็บ Bard",
+    "provider__bard_web_app__title": "แอปเว็บ Gemini",
+    "provider__bard_web_app__short_description": "เข้าถึงโมเดล AI ที่มีความสามารถมากที่สุดของ Google",
+    "provider__bard_web_app__auth_description": "ใช้บัญชี Gemini ของ Google เพื่อให้กำลังใจให้กับส่วนขยาย",
+    "provider__bard_web_app__auth_button_text": "ดำเนินการต่อด้วยแอปเว็บ Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "อัปโหลดไฟล์ JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "รุ่นที่ทันสมัยที่สุดจาก Google สามารถใช้งาน Bard, PaLM API, MakerSuite และคุณสมบัติ Workspace ต่างๆ ที่ Google",
     "provider__bard_web_app__model__what_it_can_do__description": "การแสดงเหตุผล, การแปลภาษาหลากหลายภาษา, การเขียนโค้ด และอื่นๆ",
     "provider__claude_web_app__title": "แอปเว็บ Claude",
     "provider__claude_web_app__short_description": "หน้าต่างความสัมพันธ์ 100K แชทกับเอกสารหลายรายการ",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "ได้รับคำตอบสำหรับคำถามที่ยากที่สุดด้วยข้อมูลทางเว็บที่ครอบคลุม",
     "sidebar__promotion_dialog__content_item6__title": "สรุปและถามเกี่ยวกับหน้าเว็บใดก็ได้",
     "sidebar__promotion_dialog__content_item6__description": "รับสรุปย่อ ถามคำถาม และค้นหาข้อมูลเกี่ยวกับหน้าเว็บ เอกสาร PDF อีเมล และวิดีโอ YouTube ได้",
-    "sidebar__promotion_dialog__cta_button": "อัปเกรดตอนนี้ - ข้อเสนอสิ้นสุดในเร็ว ๆ นี้!"
+    "sidebar__promotion_dialog__cta_button": "อัปเกรดตอนนี้ - ข้อเสนอสิ้นสุดในเร็ว ๆ นี้!",
+    "provider__bard_web_app__model__gemini__description": "รุ่นที่ล้ำสมัยที่สุดจาก Google"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

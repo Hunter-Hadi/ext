@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Очистіть свою розмову і почніть інформативний і дружній чат.",
     "provider__bing_web_app__conversation_style__precise__title": "Точний",
     "provider__bing_web_app__conversation_style__precise__description": "Очистіть свою розмову і почніть лаконічний і прямолінійний чат.",
-    "provider__bard_web_app__title": "Веб-додаток Bard",
-    "provider__bard_web_app__short_description": "Покращений за допомогою Google Lens.",
-    "provider__bard_web_app__auth_description": "Використовуйте свій власний обліковий запис Google Bard для розширення.",
-    "provider__bard_web_app__auth_button_text": "Продовжити з веб-додатком Bard",
+    "provider__bard_web_app__title": "Веб-додаток Gemini",
+    "provider__bard_web_app__short_description": "Отримуйте доступ до найбільш потужної моделі штучного інтелекту Google.",
+    "provider__bard_web_app__auth_description": "Використовуйте свій власний обліковий запис Google Gemini для розширення.",
+    "provider__bard_web_app__auth_button_text": "Продовжити з веб-додатком Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Завантажити файл JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Найпотужніша модель від Google. Забезпечує роботу Bard, PaLM API, MakerSuite та різних функцій Workspace у Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Міркування, багатомовний переклад, програмування та інше.",
     "provider__claude_web_app__title": "Веб-додаток Claude",
     "provider__claude_web_app__short_description": "100K вікно контексту. Чат з кількома документами.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Отримуйте відповіді на найскладніші питання з допомогою всебічного аналізу веб-інформації.",
     "sidebar__promotion_dialog__content_item6__title": "Зведення до керна та запити на будь-якій сторінці",
     "sidebar__promotion_dialog__content_item6__description": "Отримуйте зведення, задавайте питання та знаходьте інформацію про будь-яку веб-сторінку, PDF-файл, електронного листа та відео на YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Оновити зараз - Пропозиція закінчується незабаром!"
+    "sidebar__promotion_dialog__cta_button": "Оновити зараз - Пропозиція закінчується незабаром!",
+    "provider__bard_web_app__model__gemini__description": "Найбільш розширена модель від Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

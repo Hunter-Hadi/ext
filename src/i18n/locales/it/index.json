@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Cancella la tua conversazione e inizia una chat informativa e amichevole.",
     "provider__bing_web_app__conversation_style__precise__title": "Preciso",
     "provider__bing_web_app__conversation_style__precise__description": "Cancella la tua conversazione e inizia una chat concisa e diretta.",
-    "provider__bard_web_app__title": "App web Bard",
-    "provider__bard_web_app__short_description": "Potenziato con Google Lens.",
-    "provider__bard_web_app__auth_description": "Utilizza il tuo account Google Bard per alimentare l'estensione.",
-    "provider__bard_web_app__auth_button_text": "Continua con l'app web di Bard",
+    "provider__bard_web_app__title": "App web Gemini",
+    "provider__bard_web_app__short_description": "Accedi al modello di intelligenza artificiale più avanzato di Google.",
+    "provider__bard_web_app__auth_description": "Utilizza il tuo account Google Gemini per alimentare l'estensione.",
+    "provider__bard_web_app__auth_button_text": "Continua con l'app web Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Carica file JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Il modello più avanzato di Google. Alimenta Bard, PaLM API, MakerSuite e varie funzionalità di Workspace presso Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Ragionamento, traduzione multilingue, codifica e altro ancora.",
     "provider__claude_web_app__title": "App web Claude",
     "provider__claude_web_app__short_description": "Finestra di contesto da 100K. Chat con documenti multipli.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Ottieni risposte alle domande più difficili con approfondimenti completi sul web.",
     "sidebar__promotion_dialog__content_item6__title": "Sintetizza e chiedi su qualsiasi pagina",
     "sidebar__promotion_dialog__content_item6__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF, email e video di YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Aggiorna ora - Offerta termina presto!"
+    "sidebar__promotion_dialog__cta_button": "Aggiorna ora - Offerta termina presto!",
+    "provider__bard_web_app__model__gemini__description": "Il modello più avanzato di Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

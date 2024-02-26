@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Burahin ang iyong usapan at magsimula ng impormatibo at magiliw na chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Tumpak",
     "provider__bing_web_app__conversation_style__precise__description": "Burahin ang iyong usapan at magsimula ng maikli at tuwid na chat.",
-    "provider__bard_web_app__title": "Bard web app",
-    "provider__bard_web_app__short_description": "Pinalakas gamit ang Google Lens.",
-    "provider__bard_web_app__auth_description": "Gamitin ang iyong sariling Google Bard account upang patakbuhin ang extension.",
-    "provider__bard_web_app__auth_button_text": "Magpatuloy gamit ang Bard web app",
+    "provider__bard_web_app__title": "Gemini web app",
+    "provider__bard_web_app__short_description": "Ma-access ang pinakamahusay na AI model ng Google.",
+    "provider__bard_web_app__auth_description": "Gamitin ang iyong sariling Google Gemini account upang palakasin ang extension.",
+    "provider__bard_web_app__auth_button_text": "Magpatuloy sa Gemini web app",
     "provider__bard_web_app__upload__accept_tooltip": "I-upload ang file JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Ang pinakasusi na modelo ng Google. Nagbibigay ng lakas sa Bard, PaLM API, MakerSuite, at iba pang mga tampok ng Workspace sa Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Pag-iisip, multilingual na pagsasalin, pagko-code, at higit pa.",
     "provider__claude_web_app__title": "Claude web app",
     "provider__claude_web_app__short_description": "100K na bintana ng konteksto. Makipag-chat sa maraming dokumento.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Kumuha ng mga sagot sa mga pinakamahirap na tanong gamit ang kumprehensibong mga kaalaman sa web.",
     "sidebar__promotion_dialog__content_item6__title": "Buod at magtanong sa anumang pahina",
     "sidebar__promotion_dialog__content_item6__description": "Kumuha ng mga buod, magtanong, at hanapin ang impormasyon tungkol sa anumang webpage, PDF, email, at YouTube video.",
-    "sidebar__promotion_dialog__cta_button": "Mag-upgrade ngayon - Ang alok ay magtatapos sa lalong madaling panahon!"
+    "sidebar__promotion_dialog__cta_button": "Mag-upgrade ngayon - Ang alok ay magtatapos sa lalong madaling panahon!",
+    "provider__bard_web_app__model__gemini__description": "Ang pinakamahusay na modelo ng Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

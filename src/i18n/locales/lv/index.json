@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Notīriet savu sarunu un sāciet informatīvu un draudzīgu tērzēšanu.",
     "provider__bing_web_app__conversation_style__precise__title": "Precīzs",
     "provider__bing_web_app__conversation_style__precise__description": "Notīriet savu sarunu un sāciet īsu un tiešu tērzēšanu.",
-    "provider__bard_web_app__title": "Bard tīmekļa lietotne",
-    "provider__bard_web_app__short_description": "Papildināts ar Google Lens.",
-    "provider__bard_web_app__auth_description": "Izmantojiet savu Google Bard kontu, lai nodrošinātu paplašinājumu.",
-    "provider__bard_web_app__auth_button_text": "Turpināt ar Bard web lietotni",
+    "provider__bard_web_app__title": "Gemini tīmekļa lietotne",
+    "provider__bard_web_app__short_description": "Piekļūstiet Google visvairāk spējīgajam AI modelim.",
+    "provider__bard_web_app__auth_description": "Izmantojiet savu pašu Google Gemini kontu, lai nodrošinātu paplašinājumu.",
+    "provider__bard_web_app__auth_button_text": "Turpināt ar Gemini tīmekļa lietotni",
     "provider__bard_web_app__upload__accept_tooltip": "Augšupielādēt failu JPEG, PNG, WEBP formātā",
-    "provider__bard_web_app__model__palm_2__description": "Visattīstītākais Google modelis. Nodrošina Bard, PaLM API, MakerSuite un dažādas darbvietas funkcijas Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Loģika, daudzvalodu tulkošana, programmēšana un vairāk.",
     "provider__claude_web_app__title": "Claude web lietotne",
     "provider__claude_web_app__short_description": "100K konteksta logs. Sarunājieties ar vairākiem dokumentiem.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Iegūstiet atbildes uz grūtākajiem jautājumiem ar visaptverošiem tīmekļa ievērojumiem.",
     "sidebar__promotion_dialog__content_item6__title": "Kopsavilkums un jautājums par jebkuru lapu",
     "sidebar__promotion_dialog__content_item6__description": "Iegūstiet kopsavilkumus, uzdodiet jautājumus un atrast informāciju par jebkuru tīmekļa lapu, PDF, e-pasta ziņojumu un YouTube video.",
-    "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Piedāvājums beigsies drīz!"
+    "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Piedāvājums beigsies drīz!",
+    "provider__bard_web_app__model__gemini__description": "Visattīstītākais Google modeļa variants."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

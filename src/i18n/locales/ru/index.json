@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Очистите свой разговор и начните информативный и дружелюбный чат.",
     "provider__bing_web_app__conversation_style__precise__title": "Точный",
     "provider__bing_web_app__conversation_style__precise__description": "Очистите свой разговор и начните краткий и прямолинейный чат.",
-    "provider__bard_web_app__title": "Веб-приложение Bard",
-    "provider__bard_web_app__short_description": "Улучшено с помощью Google Lens.",
-    "provider__bard_web_app__auth_description": "Используйте свою учетную запись Google Bard для работы с расширением.",
-    "provider__bard_web_app__auth_button_text": "Продолжить с веб-приложением Bard",
+    "provider__bard_web_app__title": "Веб-приложение Gemini",
+    "provider__bard_web_app__short_description": "Получите доступ к самой мощной модели искусственного интеллекта Google.",
+    "provider__bard_web_app__auth_description": "Используйте свою учетную запись Google Gemini для работы с расширением.",
+    "provider__bard_web_app__auth_button_text": "Продолжить с веб-приложением Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Загрузите файл JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Самая передовая модель от Google. Питает Bard, PaLM API, MakerSuite и различные функции Workspace в Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Рассуждение, многоязычный перевод, кодирование и многое другое.",
     "provider__claude_web_app__title": "Веб-приложение Claude",
     "provider__claude_web_app__short_description": "Окно контекста 100K. Чат с несколькими документами.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Получайте ответы на самые сложные вопросы с помощью всестороннего анализа веб-содержимого.",
     "sidebar__promotion_dialog__content_item6__title": "Суммирование и задание вопросов на любой странице",
     "sidebar__promotion_dialog__content_item6__description": "Получайте краткие изложения, задавайте вопросы и находите информацию о любой веб-странице, PDF-файле, электронной почте и видео на YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Обновить сейчас - Предложение заканчивается скоро!"
+    "sidebar__promotion_dialog__cta_button": "Обновить сейчас - Предложение заканчивается скоро!",
+    "provider__bard_web_app__model__gemini__description": "Самая передовая модель от Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

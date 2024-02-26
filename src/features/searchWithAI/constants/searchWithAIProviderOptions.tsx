@@ -57,7 +57,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     isThirdParty: true,
   },
   {
-    label: 'Bard web app',
+    label: 'Gemini web app',
     value: SEARCH_WITH_AI_PROVIDER_MAP.BARD,
     isThirdParty: true,
   },

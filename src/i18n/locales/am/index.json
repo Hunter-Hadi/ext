@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "የድርጅትዎን ማስተካከል የሚቀጥል የመግቢያ አስተካክል ማስተካከል፣ ማስተካከልዎን የሚቀጥል የመግቢያ አስተካክል እይታዎችን ማስተካከል።",
     "provider__bing_web_app__conversation_style__precise__title": "የተመሳሳይ",
     "provider__bing_web_app__conversation_style__precise__description": "የድርጅትዎን ማስተካከል የሚቀጥል የመግቢያ አስተካክል ማስተካከል፣ ማስተካከልዎን የሚቀጥል የመግቢያ አስተካክል እይታዎችን ማስተካከል።",
-    "provider__bard_web_app__title": "Bard የድርጅት መተግበሪያ",
-    "provider__bard_web_app__short_description": "በ Google Lens የተሰጠውን የእርስዎ መግለጫ ያለውን የአስተዳደር ነገር።",
-    "provider__bard_web_app__auth_description": "እርስዎን የአስተዳደር አካውንት ለመጠቀም Google Bard አካውንት ይጠቀሙ።",
-    "provider__bard_web_app__auth_button_text": "በ Bard web app የሚሞቱትን ይቀጥሉ",
+    "provider__bard_web_app__title": "ገሚኒ ዌብ አፕ",
+    "provider__bard_web_app__short_description": "የGoogle መሳሪያ ማስተላለፊያን ይጠቀሙ.",
+    "provider__bard_web_app__auth_description": "የሚናገሩትን የGoogle Gemini አካውንት በመጠቀም የተጠቃሚውን መጠቀም ይችላሉ.",
+    "provider__bard_web_app__auth_button_text": "በገሚኒ ዌብ አፕ በመቀጠል ይግቡ",
     "provider__bard_web_app__upload__accept_tooltip": "ፋይል JPEG, PNG, WEBP ይጠቀሙ",
-    "provider__bard_web_app__model__palm_2__description": "በ Google የተሰጠው የባርድና PaLM API, MakerSuite, እና የግል የሆነ ተሳትፎች የሚሆኑ መሳሪያዎችን ይጠቀሙ።",
     "provider__bard_web_app__model__what_it_can_do__description": "ማስተካከያ, በብልህናም ተርጓሚ, ኮድንግ, እና ተጨማሪ የሆነ እናት።",
     "provider__claude_web_app__title": "Claude web app",
     "provider__claude_web_app__short_description": "100K የመጠቀሚያ ወንድም ዋና የሆነ የአካውንት ወንድም እናት።",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "በግል የሚያስተምር ጥያቄዎችን በተጨማሪ የድርጅት መረጃዎች ያለውን የድርጅት መረጃ ለመስጠት",
     "sidebar__promotion_dialog__content_item6__title": "መግቢያና ጥያቄ በዚህ ገጽ ላይ ለጥቅም የሚሰራ",
     "sidebar__promotion_dialog__content_item6__description": "መግቢያና ጥያቄዎችን ማግባት እና ለመስጠት የሚሰራ ማስተማሪያዎችን ለመስጠት እና የድርጅቱን መረጃ ለመስጠት",
-    "sidebar__promotion_dialog__cta_button": "አድስገን - በቀላሉ ይጠብቁ!"
+    "sidebar__promotion_dialog__cta_button": "አድስገን - በቀላሉ ይጠብቁ!",
+    "provider__bard_web_app__model__gemini__description": "በGoogle የተሻለ ማስታወቂያ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

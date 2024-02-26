@@ -30,7 +30,7 @@ const AIProviderOptions: AIProviderOptionType[] = [
     thirdParty: true,
   },
   {
-    label: 'Bard web app',
+    label: 'Gemini web app',
     description: '',
     value: AI_PROVIDER_MAP.BARD,
     authDescription: `client:provider__bard_web_app__auth_description`,

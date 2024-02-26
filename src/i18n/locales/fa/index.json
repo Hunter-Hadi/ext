@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "گفتگوی خود را پاک کرده و یک چت اطلاعاتی و دوستانه را شروع کنید.",
     "provider__bing_web_app__conversation_style__precise__title": "دقیق",
     "provider__bing_web_app__conversation_style__precise__description": "گفتگوی خود را پاک کرده و یک چت مختصر و روشن را شروع کنید.",
-    "provider__bard_web_app__title": "برنامه وب Bard",
-    "provider__bard_web_app__short_description": "بهبود یافته با لنز گوگل.",
-    "provider__bard_web_app__auth_description": "از حساب کاربری بارد خود در گوگل برای قدرت دادن به افزونه استفاده کنید.",
-    "provider__bard_web_app__auth_button_text": "ادامه با برنامه وب بارد",
+    "provider__bard_web_app__title": "برنامه وب جواهری",
+    "provider__bard_web_app__short_description": "دسترسی به قدرتمندترین مدل هوش مصنوعی گوگل.",
+    "provider__bard_web_app__auth_description": "از حساب Gemini خود در گوگل استفاده کنید تا افزونه را تغذیه کنید.",
+    "provider__bard_web_app__auth_button_text": "ادامه با برنامه وب جواهری",
     "provider__bard_web_app__upload__accept_tooltip": "آپلود فایل JPEG، PNG، WEBP",
-    "provider__bard_web_app__model__palm_2__description": "پیشرفته ترین مدل توسط گوگل. قدرت بارد، رابط برنامه نویسی PaLM، MakerSuite و ویژگی های مختلف فضای کار در گوگل را فراهم می کند.",
     "provider__bard_web_app__model__what_it_can_do__description": "استدلال، ترجمه چند زبانه، کدنویسی و غیره.",
     "provider__claude_web_app__title": "برنامه وب کلود",
     "provider__claude_web_app__short_description": "پنجره متنی 100K. چت با چندین سند.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "با داشتن بینش جامع وب، به پاسخ‌های سخت‌ترین سوالات دسترسی پیدا کنید.",
     "sidebar__promotion_dialog__content_item6__title": "خلاصه‌سازی و پرسش در هر صفحه",
     "sidebar__promotion_dialog__content_item6__description": "خلاصه‌ها را بگیرید، سوال بپرسید و اطلاعاتی درباره هر صفحه وب، PDF، ایمیل و ویدیوی YouTube پیدا کنید.",
-    "sidebar__promotion_dialog__cta_button": "هم‌اکنون ارتقا دهید - پیشنهاد به زودی به پایان می‌رسد!"
+    "sidebar__promotion_dialog__cta_button": "هم‌اکنون ارتقا دهید - پیشنهاد به زودی به پایان می‌رسد!",
+    "provider__bard_web_app__model__gemini__description": "پیشرفته‌ترین مدل توسط گوگل."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

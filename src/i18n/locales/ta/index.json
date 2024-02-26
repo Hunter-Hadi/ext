@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "உங்கள் உரையாடலை அழிக்கவும் அறிவாளி மற்றும் நலமாக உரையாடுங்கள்.",
     "provider__bing_web_app__conversation_style__precise__title": "துண்டு",
     "provider__bing_web_app__conversation_style__precise__description": "உங்கள் உரையாடலை அழிக்கவும் சுருக்கமாக மற்றும் தளாக்கமாக உரையாடுங்கள்.",
-    "provider__bard_web_app__title": "Bard வலைத்தள பயன்பாடு",
-    "provider__bard_web_app__short_description": "Google Lens மூலம் மேம்படுத்தப்பட்டது.",
-    "provider__bard_web_app__auth_description": "நீங்கள் உங்கள் சொந்த கூகுள் பார்ட் கணக்கை பயன்படுத்தி நீங்கள் நீட்டிப்புகளை அதிகரிக்கலாம்.",
-    "provider__bard_web_app__auth_button_text": "பார்ட் வலைத்தளத்துடன் தொடர்க",
+    "provider__bard_web_app__title": "ஜெமினி வலைப்பக்கம்",
+    "provider__bard_web_app__short_description": "கூகுளின் அதிக முக்கிய AI மாதிரி அணுகல்.",
+    "provider__bard_web_app__auth_description": "நீங்கள் உங்கள் சொந்த கூகுள் ஜெமினி கணக்கைப் பயன்படுத்தி நீங்கள் நீட்டிப்புக்கு அனைத்து முடிவுகளையும் இயக்க முடியும்.",
+    "provider__bard_web_app__auth_button_text": "ஜெமினி வலைப்பக்கத்துடன் தொடர்க",
     "provider__bard_web_app__upload__accept_tooltip": "கோப்பை பதிவேற்று JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "கூகுள் மூலம் மிகவும் முன்னெச்சரியான மாதிரி. பார்ட், PaLM API, மேக்கர் சுவிட், மற்றும் பல வேலைகளுக்கு கூகுளின் வேலைப்பாடுகளை அதிகரிக்கின்றது.",
     "provider__bard_web_app__model__what_it_can_do__description": "காரணம், பல மொழி மொழிபெயர்ப்பு, குறியீடு, மற்றும் பல வேலைகள்.",
     "provider__claude_web_app__title": "கிளோட் வலைத்தளம்",
     "provider__claude_web_app__short_description": "100K உருப்படிகள் சார்ந்த சந்தா. பல ஆவணங்களுடன் உரையாடுவது.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "மிகவும் கடினமான கேள்விகளுக்கு முழுமையான வலைத்தள முகவரிகளைப் பெறுங்கள்.",
     "sidebar__promotion_dialog__content_item6__title": "ஒவ்வொரு பக்கத்திலும் சுருக்கம் செய்யுங்கள் மற்றும் கேள்விகள் கேட்குங்கள்",
     "sidebar__promotion_dialog__content_item6__description": "எந்த வலைத்தளம், பிடிஎஃப், மின்னஞ்சல் மற்றும் யூடியூப் வீடியோவில் பற்றிய சுருக்கங்களைப் பெறுங்கள்.",
-    "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்து - சமயம் முடிந்தது!"
+    "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்து - சமயம் முடிந்தது!",
+    "provider__bard_web_app__model__gemini__description": "Google மூலம் மிகவும் மேம்படுத்தப்பட்ட மாதிரி."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

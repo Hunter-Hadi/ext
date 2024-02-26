@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Išvalykite pokalbį ir pradėkite informatyvų ir draugišką pokalbį.",
     "provider__bing_web_app__conversation_style__precise__title": "Tikslus",
     "provider__bing_web_app__conversation_style__precise__description": "Išvalykite pokalbį ir pradėkite glaustą ir tiesmuką pokalbį.",
-    "provider__bard_web_app__title": "Bard internetinė programa",
-    "provider__bard_web_app__short_description": "Papildyta „Google Lens“.",
-    "provider__bard_web_app__auth_description": "Naudokite savo „Google Bard“ paskyrą, kad galėtumėte naudoti plėtinį.",
-    "provider__bard_web_app__auth_button_text": "Tęsti su Bard web programėle",
+    "provider__bard_web_app__title": "Gemini internetinė programa",
+    "provider__bard_web_app__short_description": "Pasiekite Google galingiausią dirbtinio intelekto modelį.",
+    "provider__bard_web_app__auth_description": "Naudokite savo Google Gemini paskyrą, kad galėtumėte naudoti plėtinį.",
+    "provider__bard_web_app__auth_button_text": "Tęsti su Gemini internetine programa",
     "provider__bard_web_app__upload__accept_tooltip": "Įkelkite failą JPEG, PNG, WEBP formatu",
-    "provider__bard_web_app__model__palm_2__description": "Pažangiausias „Google“ modelis. Suteikia galimybes „Bard“, PaLM API, MakerSuite ir įvairioms „Google“ darbo vietos funkcijoms.",
     "provider__bard_web_app__model__what_it_can_do__description": "Mąstymas, daugiakalbė vertimas, kodavimas ir kt.",
     "provider__claude_web_app__title": "Claude web programėlė",
     "provider__claude_web_app__short_description": "100 tūkst. konteksto langas. Bendravimas su keliais dokumentais.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Gaukite atsakymus į sunkiausius klausimus su išsamiomis interneto žiniomis.",
     "sidebar__promotion_dialog__content_item6__title": "Santraukos ir klausimai bet kurioje puslapyje",
     "sidebar__promotion_dialog__content_item6__description": "Gaukite santraukas, užduokite klausimus ir raskite informaciją apie bet kurį tinklalapį, PDF, el. laišką ir „YouTube“ vaizdo įrašą.",
-    "sidebar__promotion_dialog__cta_button": "Atnaujinkite dabar - pasiūlymas baigiasi greitai!"
+    "sidebar__promotion_dialog__cta_button": "Atnaujinkite dabar - pasiūlymas baigiasi greitai!",
+    "provider__bard_web_app__model__gemini__description": "Pažangiausias Google modelis."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

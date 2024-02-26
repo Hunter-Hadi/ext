@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "נקה את השיחה שלך והתחל שיח מידעי וידידותי.",
     "provider__bing_web_app__conversation_style__precise__title": "מדויק",
     "provider__bing_web_app__conversation_style__precise__description": "נקה את השיחה שלך והתחל שיח תמציתי וישיר.",
-    "provider__bard_web_app__title": "אפליקציית האינטרנט של Bard",
-    "provider__bard_web_app__short_description": "משופר עם Google Lens.",
-    "provider__bard_web_app__auth_description": "השתמש בחשבון ה-Bard שלך מ-Google כדי להפעיל את ההרחבה.",
-    "provider__bard_web_app__auth_button_text": "המשך עם אפליקציית האינטרנט של Bard",
+    "provider__bard_web_app__title": "אפליקציית הרשת של Gemini",
+    "provider__bard_web_app__short_description": "גישה למודל הבינה המלאכותית המתקדם ביותר של Google.",
+    "provider__bard_web_app__auth_description": "השתמש בחשבון ה-Gemini של Google שלך כדי להפעיל את התוסף.",
+    "provider__bard_web_app__auth_button_text": "המשך עם אפליקציית הרשת של Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "העלה קובץ JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "הדגם המתקדם ביותר של Google. מפעיל את Bard, PaLM API, MakerSuite ותכונות Workspace שונות ב-Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "שיקול, תרגום מרובה שפות, קידוד ועוד.",
     "provider__claude_web_app__title": "אפליקציית האינטרנט של Claude",
     "provider__claude_web_app__short_description": "חלון קשר בגודל 100K. צ'אט עם מסמכים מרובים.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "קבל תשובות לשאלות הכי קשות עם תובנות מקיפות מהרשת.",
     "sidebar__promotion_dialog__content_item6__title": "סיכום ושאלות על כל עמוד",
     "sidebar__promotion_dialog__content_item6__description": "קבל סיכומים, שאלות ומידע על כל עמוד אינטרנט, PDF, דוא\"ל וסרטון ב-YouTube.",
-    "sidebar__promotion_dialog__cta_button": "שדרג עכשיו - הצעה תסתיים בקרוב!"
+    "sidebar__promotion_dialog__cta_button": "שדרג עכשיו - הצעה תסתיים בקרוב!",
+    "provider__bard_web_app__model__gemini__description": "הדגם המתקדם ביותר של גוגל."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

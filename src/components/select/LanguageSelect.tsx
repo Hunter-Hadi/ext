@@ -123,7 +123,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
         slotProps={{
           paper: {
             sx: {
-              fontSize: 14,
+              fontSize: 16,
             },
           },
         }}

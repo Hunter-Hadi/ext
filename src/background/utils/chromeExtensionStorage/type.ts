@@ -103,6 +103,10 @@ export interface IChromeExtensionDBStorage {
       microsoftTeams?: boolean
       googleChat?: boolean
     }
+    pageTranslation?: {
+      sourceLanguage?: string
+      targetLanguage?: string
+    }
   }
   buttonSettings?: {
     [key in IChromeExtensionButtonSettingKey]: IChromeExtensionButtonSetting

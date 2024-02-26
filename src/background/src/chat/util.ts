@@ -22,6 +22,7 @@ import {
   IUserChatMessage,
 } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
@@ -144,19 +145,6 @@ export const clientAskAIQuestion = async (
   return new Promise((resolve) => {
     const taskId = question.messageId
     let isRunningTask = false
-    const requestIdleCallbackPolyfill =
-      window.requestIdleCallback ||
-      function (cb) {
-        const start = Date.now()
-        return setTimeout(function () {
-          cb({
-            didTimeout: false,
-            timeRemaining: function () {
-              return Math.max(0, 50 - (Date.now() - start))
-            },
-          })
-        }, 1)
-      }
     let prevTaskIndex = -1
     const runTask = () => {
       requestIdleCallbackPolyfill(

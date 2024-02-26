@@ -16,6 +16,7 @@ import useWindowSize from '@/features/common/hooks/useWindowSize'
 import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import MaxAIImmersiveChatButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIImmersiveChatButton'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
+import MaxAIPageTranslateButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIPageTranslateButton'
 import MaxAIScreenshotMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIScreenshotMiniButton'
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
@@ -190,6 +191,12 @@ const FloatingMenuButton: FC = () => {
               }}
               aboveNode={
                 <Stack spacing={'6px'}>
+                  <MaxAIPageTranslateButton
+                    key={'MaxAIPageTranslateButton'}
+                    sx={{
+                      display: isHover ? 'block' : 'none',
+                    }}
+                  />
                   {isHover && (
                     <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
                   )}

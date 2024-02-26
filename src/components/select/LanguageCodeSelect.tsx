@@ -1,9 +1,9 @@
 import Autocomplete from '@mui/material/Autocomplete'
 import { inputBaseClasses } from '@mui/material/InputBase'
 import { inputLabelClasses } from '@mui/material/InputLabel'
-import { SxProps } from '@mui/material/styles'
+import { CSSObject, SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
-import React, { FC, useEffect } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IOptionType } from '@/components/select/BaseSelect'
@@ -14,6 +14,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 interface LanguageCodeSelectProps {
   label?: string
   defaultValue?: string
+  expandOptionsHandler?: (options: IOptionType[]) => IOptionType[]
   onChange?: (value: string) => void
   sx?: SxProps
 }
@@ -57,6 +58,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
   const {
     label = 'Choose a language',
     defaultValue = '',
+    expandOptionsHandler,
     onChange = (value: string) => {
       console.log(value)
     },
@@ -64,9 +66,16 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
   } = props
   const [open, setOpen] = React.useState(false)
   const { t } = useTranslation(['common'])
+
+  const options = useMemo(() => {
+    return expandOptionsHandler
+      ? expandOptionsHandler(LanguageCodeOptions)
+      : LanguageCodeOptions
+  }, [expandOptionsHandler])
+
   const [value, setValue] = React.useState<IOptionType>(() => {
     return (
-      LanguageCodeOptions.find((option) => option.value === defaultValue) ||
+      options.find((option) => option.value === defaultValue) ||
       defaultLanguageCodeOption
     )
   })
@@ -131,10 +140,10 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
         sx={{
           width: 160,
           [`.${inputLabelClasses.root}`]: {
-            fontSize: 16,
+            fontSize: (sx as CSSObject)?.fontSize ?? 16,
           },
           [`.${inputBaseClasses.root}`]: {
-            fontSize: 16,
+            fontSize: (sx as CSSObject)?.fontSize ?? 16,
           },
           [`.${inputBaseClasses.root} fieldset > legend`]: {
             fontSize: 14,
@@ -144,7 +153,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
         slotProps={{
           paper: {
             sx: {
-              fontSize: 14,
+              fontSize: (sx as CSSObject)?.fontSize ?? 16,
             },
           },
           popper: {
@@ -155,7 +164,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
         }}
         autoHighlight
         getOptionLabel={(option) => option.label}
-        options={LanguageCodeOptions}
+        options={options}
         onChange={(event: any, newValue) => {
           event.stopPropagation()
           setValue(newValue)

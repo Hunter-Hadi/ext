@@ -158,7 +158,11 @@ class ConversationDB {
         transaction.oncomplete = () => {
           if (syncConversationToDB) {
             // 同步会话到后端
-            addOrUpdateDBConversation(conversation).then().catch()
+            // addOrUpdateDBConversation(conversation).then().catch()
+            // TODO: 年前先不同步到后端,但如果是分享的chat，还是需要同步
+            if (conversation.share?.shareId && conversation.isDelete) {
+              addOrUpdateDBConversation(conversation).then().catch()
+            }
           }
           resolve() // 操作成功完成，解析 Promise
         }
@@ -253,7 +257,6 @@ class ConversationDB {
             conversations.map(async (conversation) => {
               if (!conversation.authorId && userId && conversation.id) {
                 conversation.authorId = userId
-                await this.addOrUpdateConversation(conversation)
               }
               return conversation
             }),
@@ -408,8 +411,10 @@ export default class ConversationManager {
       return false
     }
     conversation.isDelete = true
-    console.log('DB_Conversation softDeleteConversation', conversationId)
-    await this.conversationDB.addOrUpdateConversation(conversation)
+    await this.conversationDB.addOrUpdateConversation(conversation, {
+      syncConversationToDB: true,
+      reason: 'softDeleteConversation',
+    })
     return true
   }
 
@@ -519,7 +524,23 @@ export default class ConversationManager {
     if (!conversation) {
       return false
     }
-    const addTimeNewMessages = newMessages.map((newMessage) => {
+    const addTimeNewMessages = newMessages.map((newMessage, index) => {
+      if (!newMessage.parentMessageId) {
+        // 如果是第一条消息，那么parentMessageId是最后一条消息
+        if (index === 0) {
+          const conversationLastMessage =
+            conversation.messages[conversation.messages.length - 1]
+          if (conversationLastMessage) {
+            newMessage.parentMessageId = conversationLastMessage.messageId || ''
+          } else {
+            newMessage.parentMessageId = ''
+          }
+        } else {
+          // 如果不是第一条消息，那么parentMessageId是前一条消息
+          const parentMessage = newMessages[index - 1]
+          newMessage.parentMessageId = parentMessage?.messageId || ''
+        }
+      }
       if (!newMessage.created_at) {
         newMessage.created_at = new Date().toISOString()
       }
@@ -531,7 +552,6 @@ export default class ConversationManager {
       }
       return newMessage
     })
-    console.log('DB_Conversation pushMessages', addTimeNewMessages)
     conversation.messages = conversation.messages.concat(addTimeNewMessages)
     await this.conversationDB.addOrUpdateConversation(conversation)
     addOrUpdateDBConversationMessages(conversation, addTimeNewMessages)
@@ -559,11 +579,11 @@ export default class ConversationManager {
       updateMessage.created_at = new Date().toISOString()
     }
     updateMessage.updated_at = new Date().toISOString()
-    conversation.messages[messageIndex] = mergeWithObject([
+    updateMessage = mergeWithObject([
       conversation.messages[messageIndex],
       updateMessage,
     ])
-    console.log('DB_Conversation updateMessage', updateMessage)
+    conversation.messages[messageIndex] = updateMessage
     await this.conversationDB.addOrUpdateConversation(conversation)
     addOrUpdateDBConversationMessages(conversation, [updateMessage])
       .then()
@@ -590,11 +610,6 @@ export default class ConversationManager {
       }
       finallyDeleteCount--
     }
-    console.log(
-      'DB_Conversation deleteMessages',
-      finallyDeleteCount,
-      deleteMessageIds,
-    )
     // save
     await this.conversationDB.addOrUpdateConversation(conversation)
     deleteDBConversationMessages(conversation, deleteMessageIds).then().catch()
@@ -608,7 +623,7 @@ export default class ConversationManager {
       const conversations = await this.conversationDB.getAllConversations()
       await Promise.all(
         conversations.map(async (conversation) => {
-          if (conversation.id) {
+          if (conversation.id && !conversation.isDelete) {
             await this.softDeleteConversation(conversation.id)
           }
         }),
@@ -631,7 +646,11 @@ export default class ConversationManager {
       const conversations = await this.conversationDB.getAllConversations()
       await Promise.all(
         conversations.map(async (conversation) => {
-          if (conversation.id && conversation.type === type) {
+          if (
+            conversation.id &&
+            conversation.type === type &&
+            !conversation.isDelete
+          ) {
             await this.softDeleteConversation(conversation.id)
           }
         }),

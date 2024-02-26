@@ -22,6 +22,7 @@ import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
@@ -172,6 +173,10 @@ const AutoHeightTextarea: FC<{
   minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
+  const {
+    currentSidebarConversationId,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const {
     isChatGPTVision,
@@ -360,7 +365,12 @@ const AutoHeightTextarea: FC<{
         ...computedChildrenHeight('appState'),
       )
     }
-  }, [appState.open, loading])
+  }, [
+    appState.open,
+    loading,
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+  ])
   useEffectOnce(() => {
     if (
       InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&
@@ -425,6 +435,7 @@ const AutoHeightTextarea: FC<{
         sx={{
           '& > textarea': {
             p: 1,
+            maxHeight: loading ? LINE_HEIGHT * minLine + 16 : 'unset',
             color: (t) =>
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,.87)!important',
             my: 1.5,

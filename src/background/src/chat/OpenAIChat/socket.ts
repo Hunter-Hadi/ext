@@ -26,9 +26,6 @@
 //   "error": null
 // }
 //
-import { v4 as uuidV4 } from 'uuid'
-
-import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 
 interface IChatGPTRawMessage {
   message: {
@@ -365,74 +362,38 @@ class ChatGPTSocketService {
     }
     if (this.token) {
       let isSSE = false
-      let conversationId = ''
       try {
-        await fetchSSE(`${CHAT_GPT_PROXY_HOST}/backend-api/conversation`, {
-          provider: 'OPENAI_API',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.token}`,
-          },
-          body: JSON.stringify({
-            action: 'next',
-            arkose_token: null,
-            messages: [
-              {
-                id: uuidV4(),
-                author: {
-                  role: 'user',
-                },
-                content: {
-                  content_type: 'text',
-                  parts: ['hi'],
-                },
-                metadata: {},
-              },
-            ],
-            parent_message_id: uuidV4(),
-            model: 'text-davinci-002-render-sha',
-          }),
-          onMessage: (message) => {
-            try {
-              if (!conversationId) {
-                const messageConversationId = JSON.parse(message)
-                  .conversation_id
-                if (messageConversationId) {
-                  conversationId = messageConversationId
-                }
-              }
-            } catch (e) {
-              console.log(e)
-            }
-            isSSE = true
-          },
-        })
-          .then()
-          .catch()
-      } catch (e) {
-        // 401
-        if ((e as any)?.message?.includes('challenge_required')) {
-          // 需要arkose_token
-        }
-        console.log(e)
-        return true
-      }
-      if (conversationId) {
-        // 删除会话
-        chatGptRequest(
-          this.token,
-          'PATCH',
-          `/backend-api/conversation/${conversationId}`,
+        const result = await fetch(
+          `${CHAT_GPT_PROXY_HOST}/backend-api/accounts/check/v4-2023-04-27`,
           {
-            is_visible: false,
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${this.token}`,
+            },
           },
         )
-          .then()
-          .catch()
+        if (result.ok && result.status === 200) {
+          this.isDetected = true
+          const data = await result.json()
+          // account_ordering: [xxx]
+          // accounts: {xxx, default: {features:[]}}
+          const features: string[] = []
+          data?.account_ordering?.forEach((userId: string) => {
+            if (data?.accounts?.[userId]?.features) {
+              features.push(...data?.accounts?.[userId]?.features)
+            }
+          })
+          features.push(...(data?.accounts?.default?.features || []))
+          if (features.includes('shared_websocket')) {
+            this.isSocketService = true
+            isSSE = true
+          }
+        }
+      } catch (e) {
+        // console.error(e)
       }
-      this.isSocketService = !isSSE
-      return this.isSocketService
+      return isSSE
     }
     return this.isSocketService
   }
@@ -614,7 +575,6 @@ class ChatGPTSocketService {
         }
       }
       if (rawMessage.message?.content?.content_type === 'multimodal_text') {
-        debugger
         // 判断是不是gpt-4 dalle的图片
         if (
           (rawMessage.message.content.parts?.[0] as any)?.content_type ===

@@ -1,11 +1,11 @@
 import lodashGet from 'lodash-es/get'
 
-import { fetchBackendApi } from '@/background/api'
 import { IChatMessage, IChatUploadFile } from '@/features/chatgpt/types'
 import {
   isAIMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
+import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 /**
  * 判断是否是MaxAI的附件
@@ -93,13 +93,16 @@ export const clientGetMaxAIFileUrlWithFileId = async (
     conversation_id?: string
   },
 ): Promise<{ file_id: string; file_url: string } | null> => {
-  const result = await fetchBackendApi('/app/get_file', {
+  const result = await clientFetchMaxAIAPI<{
+    file_id: string
+    file_url: string
+  }>('/app/get_file', {
     file_id: fileId,
     ...config,
   })
-  if (result.file_id && result.file_url) {
+  if (result?.data?.file_id && result?.data?.file_url) {
     return {
-      ...result,
+      ...result.data,
     }
   }
   return null

@@ -2,7 +2,7 @@ import ContentCutOutlinedIcon from '@mui/icons-material/ContentCutOutlined'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
@@ -12,6 +12,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {
@@ -28,28 +29,44 @@ export const useUploadImagesAndSwitchToVision = () => {
   const {
     updateSidebarConversationType,
     currentSidebarConversationType,
+    sidebarSettings,
   } = useSidebarSettings()
   const {
     updateAIProviderModel,
     currentAIProvider,
     currentAIProviderModel,
   } = useAIProviderModels()
+
+  // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
+  // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
+  const aiProviderUploadFilesRef = useRef(aiProviderUploadFiles)
+  useEffect(() => {
+    aiProviderUploadFilesRef.current = aiProviderUploadFiles
+  }, [aiProviderUploadFiles])
+
   const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
     if (currentSidebarConversationType !== 'Chat') {
       await updateSidebarConversationType('Chat')
     }
-    if (
-      currentAIProvider !== 'USE_CHAT_GPT_PLUS' ||
-      currentAIProviderModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO
-    ) {
+    if (sidebarSettings?.chat?.conversationId) {
+      const conversation = await clientGetConversation(
+        sidebarSettings.chat.conversationId,
+      )
+      if (conversation?.meta?.AIModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO) {
+        await updateAIProviderModel(
+          'USE_CHAT_GPT_PLUS',
+          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+        )
+        await createConversation('Chat')
+      }
+    } else {
       await updateAIProviderModel(
         'USE_CHAT_GPT_PLUS',
         MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       )
       await createConversation('Chat')
     }
-
-    await aiProviderUploadFiles(
+    await aiProviderUploadFilesRef.current(
       await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
     )
   }
@@ -71,6 +88,7 @@ const SidebarScreenshotButton: FC<{
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === 'Escape') {
+        rootEl?.remove()
         setRootEl(null)
         showChatBox()
         return
@@ -102,7 +120,6 @@ const SidebarScreenshotButton: FC<{
             div.style.position = 'fixed'
             div.style.zIndex = '2147483647'
             document.body.appendChild(div)
-            document.body.style.overflow = 'hidden'
             setRootEl(div)
           }}
           sx={{

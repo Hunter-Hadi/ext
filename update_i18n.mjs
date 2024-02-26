@@ -1,11 +1,11 @@
+import { ChatGPTAPI } from 'chatgpt'
+import fs from 'fs'
+import pkg from 'gpt-3-encoder'
+import { HttpsProxyAgent } from 'https-proxy-agent'
+import * as _ from 'lodash-es'
+import nodeFetch from 'node-fetch'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
-import fs from 'fs'
-import * as _ from 'lodash-es'
-import { ChatGPTAPI } from 'chatgpt'
-import { HttpsProxyAgent } from 'https-proxy-agent'
-import nodeFetch from 'node-fetch'
-import pkg from 'gpt-3-encoder'
 const { encode } = pkg
 const debug = false
 
@@ -70,8 +70,9 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
           } catch (e) {
             console.log('33333')
             // 第三次尝试,替换文本中错误的冒号
-            const errorColon =
-              JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
+            const errorColon = JSON.stringify(jsonText).match(
+              /"(?<colon>.)\s?{/,
+            )?.groups?.colon
             if (errorColon) {
               const jsonText3 = jsonText.replaceAll(errorColon, ':')
               data = JSON.parse(jsonText3.replace(/^\n?```\n?|\n?```\n?$/g, ''))
@@ -472,11 +473,11 @@ const updateI18nJson = async (
   console.log('==================================')
 }
 
+import autoprefixer from 'autoprefixer'
 import esbuild from 'esbuild'
 import postcssPlugin from 'esbuild-style-plugin'
-import autoprefixer from 'autoprefixer'
-import * as buildEnv from './build/env.mjs'
 
+import * as buildEnv from './build/env.mjs'
 
 /**
  * 更新system prompt的i18n key
@@ -587,10 +588,8 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = [
-  ]
-  const retryLanguageCodes = [
-  ]
+  const keys = []
+  const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
 }
 

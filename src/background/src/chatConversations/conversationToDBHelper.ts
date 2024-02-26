@@ -4,6 +4,7 @@ import { IChatConversation } from '@/background/src/chatConversations/index'
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { IChatMessage } from '@/features/chatgpt/types'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 export const maxAIRequest = async (path: string, data: any) => {
   return await fetch(`${APP_USE_CHAT_GPT_API_HOST}${path}`, {
@@ -46,10 +47,9 @@ export const getDBConversationDetail = async (conversationId: string) => {
 export const addOrUpdateDBConversation = async (
   conversation: IChatConversation,
 ) => {
-  return
+  //TODO: 年前不需要被动创建或更新Conversation, 除了要分享的chat被删除
   const uploadConversation: any = cloneDeep(conversation)
   if (uploadConversation) {
-    const messages = uploadConversation.messages
     // 不需要保存messages
     delete uploadConversation.messages
   }
@@ -87,7 +87,6 @@ const maxAIMessageRequest = async (
     }
     return response
   } catch (e) {
-    debugger
     return undefined
   }
 }
@@ -102,22 +101,45 @@ export const addOrUpdateDBConversationMessages = async (
   messages: IChatMessage[],
 ) => {
   try {
-    return
+    if (!conversation.share?.shareId) {
+      return false
+    }
+    const filteredMessages = messages
+      .filter((message) => {
+        if (isAIMessage(message)) {
+          if (message.originalMessage) {
+            return message.originalMessage.metadata?.isComplete
+          }
+        }
+        return message
+      })
+      .map((message) => {
+        if (!message.parentMessageId) {
+          message.parentMessageId = ''
+        }
+        return message
+      })
+    if (filteredMessages.length === 0) {
+      return
+    }
+    console.log(
+      'DB_Conversation addOrUpdateDBConversationMessages',
+      filteredMessages,
+    )
     const response = await maxAIMessageRequest(
       '/conversation/add_messages',
       {
         conversation_id: conversation.id,
-        messages,
+        messages: filteredMessages,
       },
       conversation,
     )
     if (response?.ok && response?.status === 200) {
       const data = await response.json()
-      debugger
+      return data.status === 'OK'
     }
-    return true
+    return false
   } catch (e) {
-    debugger
     return false
   }
 }
@@ -131,7 +153,7 @@ export const deleteDBConversationMessages = async (
   messageIds: string[],
 ) => {
   try {
-    return
+    console.log('DB_Conversation deleteMessages', messageIds)
     const response = await maxAIMessageRequest(
       '/conversation/delete_messages',
       {
@@ -140,10 +162,12 @@ export const deleteDBConversationMessages = async (
       },
       conversation,
     )
-    debugger
-    return true
+    if (response?.ok && response?.status === 200) {
+      const data = await response.json()
+      return data.status === 'OK'
+    }
+    return false
   } catch (e) {
-    debugger
     return false
   }
 }
@@ -163,7 +187,7 @@ export const getDBConversationMessages = async (
   },
 ) => {
   try {
-    const response = await maxAIMessageRequest(
+    await maxAIMessageRequest(
       '/conversation/get_messages',
       {
         conversation_id: conversation.id,
@@ -171,10 +195,8 @@ export const getDBConversationMessages = async (
       },
       conversation,
     )
-    debugger
     return true
   } catch (e) {
-    debugger
     return false
   }
 }

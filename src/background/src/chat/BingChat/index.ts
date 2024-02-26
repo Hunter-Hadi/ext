@@ -67,6 +67,7 @@ class BingChat extends BaseChat {
       imageUrl: file?.uploadedUrl,
       signal,
       onEvent: (event: Event) => {
+        console.log(`bingLib onEvent`, event)
         if (event.type === 'ERROR') {
           onMessage?.({
             type: 'error',

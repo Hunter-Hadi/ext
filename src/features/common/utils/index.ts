@@ -46,3 +46,18 @@ export const hasData = (data: any): boolean => {
       return false
   }
 }
+
+// 获取当前浏览器类型
+export const getBrowserType = () => {
+  try {
+    const isEdge =
+      navigator.userAgent.indexOf('Edge') > -1 ||
+      navigator.userAgent.indexOf('Edg') !== -1
+    if (isEdge) {
+      return 'Edge'
+    }
+    return 'Chrome'
+  } catch (error) {
+    return 'Chrome'
+  }
+}

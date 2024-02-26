@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import IconButton from '@mui/material/IconButton'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
@@ -92,29 +93,25 @@ const SidebarTopBar: FC = () => {
               backgroundColor: '#9065B0',
             }}
           >
-            <Stack direction={'row'} alignItems={'center'} gap={0.5}>
-              <Typography
+            <Stack direction={'row'} alignItems={'baseline'} gap={0.5}>
+              <Box
                 component={'span'}
                 sx={{
-                  fontSize: '16px',
+                  display: 'inline-block',
                   color: '#fff',
-                  fontWeight: 400,
-                  lineHeight: '16px',
+                  textAlign: 'center',
+                  fontWeight: 600,
+                  borderRadius: 26,
+                  border: '1px solid #FFF',
+                  background: '#9065B0',
+                  boxShadow: '0px 0px 0px 0px #FFD15C inset',
+                  px: 0.8,
+                  py: 0.2,
+                  fontSize: '16px',
                 }}
               >
-                {t('client:activity__1st_anniversary_2024__title1')}
-              </Typography>
-              <Typography
-                component={'span'}
-                sx={{
-                  fontSize: '16px',
-                  color: '#fff',
-                  fontWeight: 400,
-                  lineHeight: '16px',
-                }}
-              >
-                {'–'}
-              </Typography>
+                {t(`client:activity__1st_anniversary_2024__title1`)}
+              </Box>
               <Typography
                 component={'span'}
                 sx={{
@@ -125,7 +122,7 @@ const SidebarTopBar: FC = () => {
                 }}
               >
                 {t('client:activity__1st_anniversary_2024__title2', {
-                  PERCENT: currentUserPlan.name === 'free' ? '68' : '30',
+                  PERCENT: currentUserPlan.name === 'free' ? '68' : '40',
                 })}
               </Typography>
             </Stack>

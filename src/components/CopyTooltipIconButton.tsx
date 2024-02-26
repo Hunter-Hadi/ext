@@ -7,24 +7,36 @@ import React, { FC, useMemo, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useTranslation } from 'react-i18next'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { I18nextKeysType } from '@/i18next'
 
 interface ITooltipIconButton extends IconButtonProps {
   copyText: string
   onCopy?: () => void
   children?: React.ReactNode
   sx?: SxProps
+  icon?: React.ReactNode
+  copyToClipboardTooltip?: I18nextKeysType
+  copiedTooltip?: I18nextKeysType
 }
 const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
-  const { copyText, onCopy, sx } = props
+  const {
+    copyText,
+    onCopy,
+    sx,
+    icon,
+    copyToClipboardTooltip,
+    copiedTooltip,
+  } = props
   const { t } = useTranslation(['common'])
   const [isCopied, setIsCopied] = useState(false)
   const title = useMemo(() => {
     if (isCopied) {
-      return t('common:copied')
+      return t((copiedTooltip as any) || 'common:copied')
     }
-    return t('common:copy_to_clipboard')
-  }, [t, isCopied])
+    return t((copyToClipboardTooltip as any) || 'common:copy_to_clipboard')
+  }, [t, isCopied, copyToClipboardTooltip, copiedTooltip])
   return (
     <CopyToClipboard
       text={copyText}
@@ -41,7 +53,11 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
       }}
     >
       <TooltipIconButton title={title} sx={sx} className={props.className}>
-        <ContentCopyIcon sx={{ fontSize: 16 }} />
+        {isCopied ? (
+          <ContextMenuIcon icon={'Check'} />
+        ) : (
+          icon || <ContentCopyIcon sx={{ fontSize: 16 }} />
+        )}
         {props.children}
       </TooltipIconButton>
     </CopyToClipboard>

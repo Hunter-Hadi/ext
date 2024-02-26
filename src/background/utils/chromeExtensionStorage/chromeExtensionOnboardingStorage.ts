@@ -18,6 +18,7 @@ export type OnBoardingKeyType =
   // 2024插件1周年
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_BANNER'
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK'
+  | 'ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG'
   // summary 和 search 和  input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
@@ -40,6 +41,7 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     ON_BOARDING_CHRISTMAS_2023_BANNER: false,
     ON_BOARDING_1ST_ANNIVERSARY_2024_BANNER: false,
     ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK: false,
+    ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG: false,
     // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
     ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 0,

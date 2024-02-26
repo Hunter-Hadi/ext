@@ -70,6 +70,7 @@ export class ActionAskChatGPT extends Action {
       const text = String(
         this.parameters.AskChatGPTActionQuestion?.text ||
           this.parameters.compliedTemplate ||
+          params.LAST_ACTION_OUTPUT ||
           '',
       )
       const messageId =

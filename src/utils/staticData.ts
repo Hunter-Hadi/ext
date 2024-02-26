@@ -374,7 +374,7 @@ export const LANGUAGES_OPTIONS = [
     value: 'Serbian (Latin)',
   },
   {
-    label: 'Suomi (Finnish)',
+    label: 'Suomi',
     value: 'Finnish',
   },
   {

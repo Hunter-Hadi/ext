@@ -371,6 +371,13 @@ const FloatingContextMenu: FC<{
         } else {
           // 5.
           currentDraft = '{{SELECTED_TEXT}}'
+          // 当选中只读文字的时候，应该是在sidebar里显示回复 - 20240221 - @huangsong
+          showChatBox()
+          setFloatingDropdownMenu({
+            open: false,
+            rootRect: null,
+            showModelSelector: false,
+          })
         }
       }
       let template = `${inputValue}`

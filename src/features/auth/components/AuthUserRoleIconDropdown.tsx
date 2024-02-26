@@ -1,6 +1,6 @@
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo } from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { GiftIcon } from '@/components/CustomIcon'
@@ -8,32 +8,11 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import LoginLayout from '@/features/auth/components/LoginLayout'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const AuthUserRoleIconDropdown: FC = () => {
-  const {
-    currentUserPlan,
-    syncUserInfo,
-    syncUserSubscriptionInfo,
-  } = useUserInfo()
+  const { currentUserPlan } = useUserInfo()
+  const userRole = currentUserPlan.name
   const { t } = useTranslation(['common', 'client'])
-  useEffectOnce(() => {
-    syncUserInfo().then()
-    if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
-      const pathname = window.location.pathname
-      if (
-        ['/my-plan', '/pricing', '/payment/error', '/payment/success'].includes(
-          pathname,
-        )
-      ) {
-        syncUserSubscriptionInfo().then()
-      }
-    }
-  })
-  const userRole = useMemo(() => {
-    return currentUserPlan.name
-  }, [currentUserPlan])
   return (
     <LoginLayout>
       {userRole === 'pro' && (

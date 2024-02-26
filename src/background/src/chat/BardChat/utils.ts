@@ -32,8 +32,8 @@ export const parseBardResponse = (resp: string) => {
       return {
         text: '',
         error:
-          'Please log into [bard.google.com](https://gemini.google.com) and try again.',
-        ids: ['', '', ''] as [string, string, string],
+          'Please log into [gemini.google.com](https://gemini.google.com) and try again.',
+        ids: ['', '', ''] as string[],
       }
     }
     console.debug('bard response payload', payload)

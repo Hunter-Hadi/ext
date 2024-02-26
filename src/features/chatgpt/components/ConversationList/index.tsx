@@ -10,7 +10,9 @@ import { PaginationConversation } from '@/background/src/chatConversations'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import ClearChatButton from '@/features/chatgpt/components/ConversationList/ClearChatButton'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
-import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
+import useAIProviderModels, {
+  useAIProviderModelsMap,
+} from '@/features/chatgpt/hooks/useAIProviderModels'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIProviderModel } from '@/features/chatgpt/types'
@@ -40,7 +42,7 @@ const ConversationList: FC<IProps> = ({
     updateSidebarConversationType,
   } = useSidebarSettings()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
-
+  const { updateAIProviderModel } = useAIProviderModels()
   const {
     loading,
     paginationConversations,
@@ -156,7 +158,12 @@ const ConversationList: FC<IProps> = ({
                     })
                     updateSidebarConversationType(conversation.type)
                   }
-
+                  if (conversation.AIModel && conversation.AIProvider) {
+                    await updateAIProviderModel(
+                      conversation.AIProvider,
+                      conversation.AIModel,
+                    )
+                  }
                   onSelectConversation?.(conversation)
                 }}
                 sx={{

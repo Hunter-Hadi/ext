@@ -1,6 +1,9 @@
 import Browser from 'webextension-polyfill'
 
-import { CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY } from '@/constants'
+import {
+  APP_VERSION,
+  CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
+} from '@/constants'
 import {
   InputAssistantButtonGroupConfigHostKeys,
   InputAssistantButtonGroupConfigHostType,
@@ -19,6 +22,7 @@ export type OnBoardingKeyType =
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_BANNER'
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK'
   | 'ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG'
+  | `ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_${typeof APP_VERSION}`
   // summary 和 search 和  input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'

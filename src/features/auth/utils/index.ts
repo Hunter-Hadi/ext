@@ -49,7 +49,7 @@ export const getChromeExtensionUserInfo = async (
         userData.role = cacheRoleData
         isUpdated = true
       }
-      if (forceUpdate || !userData.role) {
+      if (forceUpdate || !userData?.role?.name) {
         userData.role = await fetchUserSubscriptionInfo()
         isUpdated = true
       }

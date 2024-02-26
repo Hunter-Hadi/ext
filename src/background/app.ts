@@ -339,15 +339,7 @@ const initChromeExtensionUpdated = async () => {
     )
   }
 
-  if (APP_VERSION === '3.0.1' && getBrowserType() === 'Edge') {
-    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
-    setTimeout(
-      () => executeMaxAIOneYearPromotion(true),
-      (1 + Math.floor(Math.random() * 9)) * 1000,
-    )
-  }
-
-  if (APP_VERSION === '3.0.2' && getBrowserType() === 'Edge') {
+  if (APP_VERSION === '3.0.3' && getBrowserType() === 'Edge') {
     // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
     setTimeout(
       () => executeMaxAIOneYearPromotion(true),

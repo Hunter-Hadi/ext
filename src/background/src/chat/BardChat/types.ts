@@ -10,7 +10,7 @@ export const BARD_MODELS: IAIProviderModel[] = [
     title: 'Gemini',
     titleTag: '',
     value: 'PaLM 2',
-    maxTokens: 8192,
+    maxTokens: 32768,
     tags: [],
     poweredBy: 'Google',
     description: (t) =>

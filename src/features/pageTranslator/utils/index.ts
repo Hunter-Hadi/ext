@@ -1,3 +1,15 @@
+import { MAXAI_TRANSLATE_CUSTOM_ELEMENT } from '@/features/pageTranslator/constants'
+
+// 确认当前 容器没有 maxai-trans 元素
+export const checkChildHasTranslateElement = (
+  containerElement: HTMLElement,
+) => {
+  return (
+    containerElement.getElementsByTagName(MAXAI_TRANSLATE_CUSTOM_ELEMENT)
+      .length > 0
+  )
+}
+
 // 判断 element 是否是有效的元素
 export const isTranslationValidElement = (element: HTMLElement | null) => {
   try {
@@ -14,6 +26,7 @@ export const isTranslationValidElement = (element: HTMLElement | null) => {
         'OBJECT',
         'EM',
         'CITE',
+        'STRONG',
       ]
       if (blackTagList.includes(element.tagName)) {
         return false

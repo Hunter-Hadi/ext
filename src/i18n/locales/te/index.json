@@ -47,7 +47,9 @@
     "screenshot": "AI స్క్రీన్‌షాట్",
     "all_settings": "అన్ని సెట్టింగ్లు",
     "ai_screenshot": "AI స్క్రీన్‌షాట్",
-    "release_notes": "విడుదల మంచిపత్రాలు"
+    "release_notes": "విడుదల మంచిపత్రాలు",
+    "web_translation": "వెబ్ అనువాదం",
+    "show_original_text": "మూల పఠనం చూపించు"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "సంగ్రహించండి మరియు అన్ని పేజీలో అడ్డుకోండి",
     "sidebar__promotion_dialog__content_item6__description": "సంగ్రహించండి, ప్రశ్నలు అడ్డుకోండి, మరియు ఏదైనా వెబ్‌పేజీ, PDF, ఇమెయిల్, మరియు YouTube వీడియో గురించి సమాచారం కనుగొనండి.",
     "sidebar__promotion_dialog__cta_button": "ఇప్పుడు అప్గ్రేడ్ చేయండి - ఆఫర్ త్వరలో ముగిసేది!",
-    "provider__bard_web_app__model__gemini__description": "Google ద్వారా అత్యంత ఉన్నత మోడల్."
+    "provider__bard_web_app__model__gemini__description": "Google ద్వారా అత్యంత ఉన్నత మోడల్.",
+    "translation_advanced__title": "అనువాద సెట్టింగ్స్",
+    "translation_advanced__source_lang_select__label": "మూల భాష",
+    "translation_advanced__target_lang_select__label": "లక్ష్య భాష"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

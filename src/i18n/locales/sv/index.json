@@ -47,7 +47,9 @@
     "screenshot": "AI skärmdump",
     "all_settings": "Alla inställningar",
     "ai_screenshot": "AI-skärmbild",
-    "release_notes": "Versionsanteckningar"
+    "release_notes": "Versionsanteckningar",
+    "web_translation": "Webböversättning",
+    "show_original_text": "Visa originaltext"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Sammanfatta och fråga om vilken sida som helst",
     "sidebar__promotion_dialog__content_item6__description": "Få sammanfattningar, ställ frågor och hitta information om vilken webbsida, PDF, e-post och YouTube-video som helst.",
     "sidebar__promotion_dialog__cta_button": "Uppgradera nu - Erbjudandet slutar snart!",
-    "provider__bard_web_app__model__gemini__description": "Den mest avancerade modellen av Google."
+    "provider__bard_web_app__model__gemini__description": "Den mest avancerade modellen av Google.",
+    "translation_advanced__title": "Översättningsinställningar",
+    "translation_advanced__source_lang_select__label": "Källspråk",
+    "translation_advanced__target_lang_select__label": "Målspråk"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

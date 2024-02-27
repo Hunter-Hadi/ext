@@ -47,7 +47,9 @@
     "screenshot": "AI ಸ್ಕ್ರೀನ್‌ಷಾಟ್",
     "all_settings": "ಎಲ್ಲಾ ಸೆಟ್ಟಿಂಗುಗಳು",
     "ai_screenshot": "AI ಸ್ಕ್ರೀನ್‌ಷಾಟ್",
-    "release_notes": "ಬಿಡುಗಡೆ ನೋಟಿಗಳು"
+    "release_notes": "ಬಿಡುಗಡೆ ನೋಟಿಗಳು",
+    "web_translation": "ವೆಬ್ ಅನುವಾದ",
+    "show_original_text": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "ಸಂಗ್ರಹಿಸಿ ಮತ್ತು ಯಾವುದೇ ಪುಟದ ಮೇಲೆ ಪ್ರಶ್ನೆ ಕೇಳಿ",
     "sidebar__promotion_dialog__content_item6__description": "ಯಾವುದೇ ವೆಬ್ಪೇಜ್, ಪಿಡಿಎಫ್, ಇಮೇಲ್ ಮತ್ತು ಯೂಟ್ಯೂಬ್ ವೀಡಿಯೊಗೆ ಸಂಗ್ರಹಿಸಿ, ಪರಿಷ್ಕರಿಸಿ, ಪ್ರಶ್ನೆ ಕೇಳಿ ಮತ್ತು ಮಾಹಿತಿಯನ್ನು ಹುಡುಕಿ.",
     "sidebar__promotion_dialog__cta_button": "ಈಗ ಮೆಚ್ಚುಗೆ ಪಡೆಯಿರಿ - ಆಫರ್ ಬೇಗನೆ ಮುಗಿಯುತ್ತದೆ!",
-    "provider__bard_web_app__model__gemini__description": "Google ದ್ವಾರಾ ಅಭಿವೃದ್ಧಿಗೆ ಬಂದ ಅತ್ಯಂತ ಮುಂದುವರಿದ ಮಾದರಿ."
+    "provider__bard_web_app__model__gemini__description": "Google ದ್ವಾರಾ ಅಭಿವೃದ್ಧಿಗೆ ಬಂದ ಅತ್ಯಂತ ಮುಂದುವರಿದ ಮಾದರಿ.",
+    "translation_advanced__title": "ಅನುವಾದ ಸೆಟ್ಟಿಂಗ್ಗಳು",
+    "translation_advanced__source_lang_select__label": "ಮೂಲ ಭಾಷೆ",
+    "translation_advanced__target_lang_select__label": "ಲಕ್ಷ್ಯ ಭಾಷೆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

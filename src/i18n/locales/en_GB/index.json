@@ -47,7 +47,9 @@
     "copy_image": "Copy image",
     "screenshot": "Screenshot",
     "ai_screenshot": "AI screenshot",
-    "release_notes": "Release notes"
+    "release_notes": "Release notes",
+    "web_translation": "Web Translation",
+    "show_original_text": "Show original text"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item5__description": "Get answers to the hardest questions with comprehensive web insights.",
     "sidebar__promotion_dialog__content_item6__title": "Summarize & ask on any page",
     "sidebar__promotion_dialog__content_item6__description": "Get summaries, ask questions, and find information about any webpage, PDF, email, and YouTube video.",
-    "sidebar__promotion_dialog__cta_button": "Upgrade now - Offer ends soon!"
+    "sidebar__promotion_dialog__cta_button": "Upgrade now - Offer ends soon!",
+    "translation_advanced__title": "Translation settings",
+    "translation_advanced__source_lang_select__label": "Source language",
+    "translation_advanced__target_lang_select__label": "Target language"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

@@ -47,7 +47,9 @@
     "screenshot": "AI تصویر",
     "all_settings": "تمام ترتیبات",
     "ai_screenshot": "AI سکرین شاٹ",
-    "release_notes": "ریلیز نوٹس"
+    "release_notes": "ریلیز نوٹس",
+    "web_translation": "ویب ترجمہ",
+    "show_original_text": "اصل متن دکھائیں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "تفصیلی خلاصہ اور کسی بھی صفحے پر سوال کریں",
     "sidebar__promotion_dialog__content_item6__description": "کسی بھی ویب پیج، پی ڈی ایف، ای میل اور یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔",
     "sidebar__promotion_dialog__cta_button": "اب اپگریڈ کریں - پیشکش جلد ختم ہوجائے گی!",
-    "provider__bard_web_app__model__gemini__description": "گوگل کا سب سے تجربہ کار ماڈل۔"
+    "provider__bard_web_app__model__gemini__description": "گوگل کا سب سے تجربہ کار ماڈل۔",
+    "translation_advanced__title": "ترجمہ کی ترتیبات",
+    "translation_advanced__source_lang_select__label": "ابتدائی زبان",
+    "translation_advanced__target_lang_select__label": "ہدف زبان"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

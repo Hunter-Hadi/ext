@@ -47,7 +47,9 @@
     "screenshot": "عکس از صفحه نمایش هوش مصنوعی",
     "all_settings": "تمام تنظیمات",
     "ai_screenshot": "عکس‌برداری هوش مصنوعی",
-    "release_notes": "یادداشت‌های نسخه"
+    "release_notes": "یادداشت‌های نسخه",
+    "web_translation": "ترجمه وب",
+    "show_original_text": "نمایش متن اصلی"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "خلاصه‌سازی و پرسش در هر صفحه",
     "sidebar__promotion_dialog__content_item6__description": "خلاصه‌ها را بگیرید، سوال بپرسید و اطلاعاتی درباره هر صفحه وب، PDF، ایمیل و ویدیوی YouTube پیدا کنید.",
     "sidebar__promotion_dialog__cta_button": "هم‌اکنون ارتقا دهید - پیشنهاد به زودی به پایان می‌رسد!",
-    "provider__bard_web_app__model__gemini__description": "پیشرفته‌ترین مدل توسط گوگل."
+    "provider__bard_web_app__model__gemini__description": "پیشرفته‌ترین مدل توسط گوگل.",
+    "translation_advanced__title": "تنظیمات ترجمه",
+    "translation_advanced__source_lang_select__label": "زبان منبع",
+    "translation_advanced__target_lang_select__label": "زبان مقصد"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

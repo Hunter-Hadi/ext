@@ -47,7 +47,9 @@
     "screenshot": "Screenshot IA",
     "all_settings": "Tutte le impostazioni",
     "ai_screenshot": "Screenshot AI",
-    "release_notes": "Note sulla versione"
+    "release_notes": "Note sulla versione",
+    "web_translation": "Traduzione Web",
+    "show_original_text": "Mostra testo originale"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Sintetizza e chiedi su qualsiasi pagina",
     "sidebar__promotion_dialog__content_item6__description": "Ottieni riassunti, fai domande e trova informazioni su qualsiasi pagina web, PDF, email e video di YouTube.",
     "sidebar__promotion_dialog__cta_button": "Aggiorna ora - Offerta termina presto!",
-    "provider__bard_web_app__model__gemini__description": "Il modello più avanzato di Google."
+    "provider__bard_web_app__model__gemini__description": "Il modello più avanzato di Google.",
+    "translation_advanced__title": "Impostazioni di traduzione",
+    "translation_advanced__source_lang_select__label": "Lingua di origine",
+    "translation_advanced__target_lang_select__label": "Lingua di destinazione"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

@@ -47,7 +47,9 @@
     "screenshot": "AI képernyőkép",
     "all_settings": "Minden beállítás",
     "ai_screenshot": "AI képernyőkép",
-    "release_notes": "Verzióinformációk"
+    "release_notes": "Verzióinformációk",
+    "web_translation": "Webfordítás",
+    "show_original_text": "Eredeti szöveg megjelenítése"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Összefoglalás és kérdés feltevése bármelyik oldalon",
     "sidebar__promotion_dialog__content_item6__description": "Kapj összefoglalókat, tegyél fel kérdéseket, és találj információt bármelyik weboldalról, PDF-ről, e-mailről és YouTube-videóról.",
     "sidebar__promotion_dialog__cta_button": "Frissítés most - Az ajánlat hamarosan lejár!",
-    "provider__bard_web_app__model__gemini__description": "A Google legfejlettebb modellje."
+    "provider__bard_web_app__model__gemini__description": "A Google legfejlettebb modellje.",
+    "translation_advanced__title": "Fordítási beállítások",
+    "translation_advanced__source_lang_select__label": "Forrásnyelv",
+    "translation_advanced__target_lang_select__label": "Célnyelv"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

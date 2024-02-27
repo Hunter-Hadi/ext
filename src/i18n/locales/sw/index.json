@@ -47,7 +47,9 @@
     "screenshot": "Picha ya AI",
     "all_settings": "Mipangilio yote",
     "ai_screenshot": "Picha ya AI",
-    "release_notes": "Maelezo ya toleo"
+    "release_notes": "Maelezo ya toleo",
+    "web_translation": "Tafsiri ya Wavuti",
+    "show_original_text": "Onyesha maandishi ya awali"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Kuhifadhi & uliza kwenye ukurasa wowote",
     "sidebar__promotion_dialog__content_item6__description": "Pata muhtasari, ulize maswali, na pata habari kuhusu ukurasa wowote, PDF, barua pepe, na video za YouTube.",
     "sidebar__promotion_dialog__cta_button": "Nunua sasa - Ofa inamalizika hivi karibuni!",
-    "provider__bard_web_app__model__gemini__description": "Mfano wenye maendeleo zaidi na Google."
+    "provider__bard_web_app__model__gemini__description": "Mfano wenye maendeleo zaidi na Google.",
+    "translation_advanced__title": "Mipangilio ya Tafsiri",
+    "translation_advanced__source_lang_select__label": "Lugha ya chanzo",
+    "translation_advanced__target_lang_select__label": "Lugha ya lengo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

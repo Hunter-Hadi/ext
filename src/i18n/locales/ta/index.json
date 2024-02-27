@@ -47,7 +47,9 @@
     "screenshot": "ஏதேனும் புகைப்படம்",
     "all_settings": "அனைத்து அமைப்புகள்",
     "ai_screenshot": "AI ஸ்கிரீன்ஷாட்",
-    "release_notes": "வெளியீட்டு குறிப்புகள்"
+    "release_notes": "வெளியீட்டு குறிப்புகள்",
+    "web_translation": "வலை மொழிபெயர்ப்பு",
+    "show_original_text": "மூல உரையைக் காட்டு"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "ஒவ்வொரு பக்கத்திலும் சுருக்கம் செய்யுங்கள் மற்றும் கேள்விகள் கேட்குங்கள்",
     "sidebar__promotion_dialog__content_item6__description": "எந்த வலைத்தளம், பிடிஎஃப், மின்னஞ்சல் மற்றும் யூடியூப் வீடியோவில் பற்றிய சுருக்கங்களைப் பெறுங்கள்.",
     "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்து - சமயம் முடிந்தது!",
-    "provider__bard_web_app__model__gemini__description": "Google மூலம் மிகவும் மேம்படுத்தப்பட்ட மாதிரி."
+    "provider__bard_web_app__model__gemini__description": "Google மூலம் மிகவும் மேம்படுத்தப்பட்ட மாதிரி.",
+    "translation_advanced__title": "மொழிபெயர்ப்பு அமைப்புகள்",
+    "translation_advanced__source_lang_select__label": "மூல மொழி",
+    "translation_advanced__target_lang_select__label": "இலக்கு மொழி"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

@@ -47,7 +47,9 @@
     "screenshot": "AI ekran görüntüsü",
     "all_settings": "Tüm ayarlar",
     "ai_screenshot": "AI ekran görüntüsü",
-    "release_notes": "Sürüm notları"
+    "release_notes": "Sürüm notları",
+    "web_translation": "Web Çevirisi",
+    "show_original_text": "Orijinal metni göster"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Herhangi bir sayfada özetleyin ve soru sorun",
     "sidebar__promotion_dialog__content_item6__description": "Herhangi bir web sayfası, PDF, e-posta ve YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun.",
     "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Teklif yakında sona eriyor!",
-    "provider__bard_web_app__model__gemini__description": "Google tarafından geliştirilen en gelişmiş model."
+    "provider__bard_web_app__model__gemini__description": "Google tarafından geliştirilen en gelişmiş model.",
+    "translation_advanced__title": "Çeviri ayarları",
+    "translation_advanced__source_lang_select__label": "Kaynak dil",
+    "translation_advanced__target_lang_select__label": "Hedef dil"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -47,7 +47,9 @@
     "screenshot": "Zrzut ekranu AI",
     "all_settings": "Wszystkie ustawienia",
     "ai_screenshot": "Zrzut ekranu AI",
-    "release_notes": "Notatki wydania"
+    "release_notes": "Notatki wydania",
+    "web_translation": "Tłumaczenie strony internetowej",
+    "show_original_text": "Pokaż oryginalny tekst"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Podsumuj i pytaj o dowolną stronę",
     "sidebar__promotion_dialog__content_item6__description": "Otrzymuj podsumowania, zadawaj pytania i znajduj informacje na temat dowolnej strony internetowej, pliku PDF, wiadomości e-mail i filmu na YouTube.",
     "sidebar__promotion_dialog__cta_button": "Zaktualizuj teraz - Oferta kończy się wkrótce!",
-    "provider__bard_web_app__model__gemini__description": "Najbardziej zaawansowany model stworzony przez Google."
+    "provider__bard_web_app__model__gemini__description": "Najbardziej zaawansowany model stworzony przez Google.",
+    "translation_advanced__title": "Ustawienia tłumaczenia",
+    "translation_advanced__source_lang_select__label": "Język źródłowy",
+    "translation_advanced__target_lang_select__label": "Język docelowy"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

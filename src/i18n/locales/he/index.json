@@ -47,7 +47,9 @@
     "screenshot": "צילום מסך של AI",
     "all_settings": "כל ההגדרות",
     "ai_screenshot": "צילום מסך באמצעות AI",
-    "release_notes": "הערות גרסה"
+    "release_notes": "הערות גרסה",
+    "web_translation": "תרגום אינטרנט",
+    "show_original_text": "הצג טקסט מקור"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "סיכום ושאלות על כל עמוד",
     "sidebar__promotion_dialog__content_item6__description": "קבל סיכומים, שאלות ומצא מידע על כל עמוד אינטרנט, PDF, דוא\"ל וסרטון ב-YouTube.",
     "sidebar__promotion_dialog__cta_button": "שדרג עכשיו - הצעה תסתיים בקרוב!",
-    "provider__bard_web_app__model__gemini__description": "הדגם המתקדם ביותר של גוגל."
+    "provider__bard_web_app__model__gemini__description": "הדגם המתקדם ביותר של גוגל.",
+    "translation_advanced__title": "הגדרות תרגום",
+    "translation_advanced__source_lang_select__label": "שפת מקור",
+    "translation_advanced__target_lang_select__label": "שפת יעד"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

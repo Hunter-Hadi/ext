@@ -47,7 +47,9 @@
     "screenshot": "AI 截图",
     "all_settings": "所有设置",
     "ai_screenshot": "AI截图",
-    "release_notes": "发布说明"
+    "release_notes": "发布说明",
+    "web_translation": "网页翻译",
+    "show_original_text": "显示原文"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "摘要和在任何页面上提问",
     "sidebar__promotion_dialog__content_item6__description": "获取任何网页、PDF、电子邮件和 YouTube 视频的摘要、提问和信息。",
     "sidebar__promotion_dialog__cta_button": "立即升级 - 优惠即将结束！",
-    "provider__bard_web_app__model__gemini__description": "谷歌最先进的模型。"
+    "provider__bard_web_app__model__gemini__description": "谷歌最先进的模型。",
+    "translation_advanced__title": "翻译设置",
+    "translation_advanced__source_lang_select__label": "源语言",
+    "translation_advanced__target_lang_select__label": "目标语言"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

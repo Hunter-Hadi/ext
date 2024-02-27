@@ -47,7 +47,9 @@
     "screenshot": "Скріншот ШІ",
     "all_settings": "Всі налаштування",
     "ai_screenshot": "AI знімок екрану",
-    "release_notes": "Примітки до випуску"
+    "release_notes": "Примітки до випуску",
+    "web_translation": "Веб-переклад",
+    "show_original_text": "Показати оригінальний текст"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Зведення до керна та запити на будь-якій сторінці",
     "sidebar__promotion_dialog__content_item6__description": "Отримуйте зведення, задавайте питання та знаходьте інформацію про будь-яку веб-сторінку, PDF-файл, електронного листа та відео на YouTube.",
     "sidebar__promotion_dialog__cta_button": "Оновити зараз - Пропозиція закінчується незабаром!",
-    "provider__bard_web_app__model__gemini__description": "Найбільш розширена модель від Google."
+    "provider__bard_web_app__model__gemini__description": "Найбільш розширена модель від Google.",
+    "translation_advanced__title": "Налаштування перекладу",
+    "translation_advanced__source_lang_select__label": "Мова джерела",
+    "translation_advanced__target_lang_select__label": "Цільова мова"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

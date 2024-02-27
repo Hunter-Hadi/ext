@@ -47,7 +47,9 @@
     "screenshot": "የኤክስ ስኮት",
     "all_settings": "ሁሉንም ማስተካከያዎች",
     "ai_screenshot": "AI ስክሪንሽዎች",
-    "release_notes": "የማስታወቂያ ጥቅሞች"
+    "release_notes": "የማስታወቂያ ጥቅሞች",
+    "web_translation": "የድርጅት ተርጓሚ",
+    "show_original_text": "የነጻ ጽሑፍ አሳይ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "መግቢያና ጥያቄ በዚህ ገጽ ላይ ለጥቅም የሚሰራ",
     "sidebar__promotion_dialog__content_item6__description": "መግቢያና ጥያቄዎችን ማግባት እና ለመስጠት የሚሰራ ማስተማሪያዎችን ለመስጠት እና የድርጅቱን መረጃ ለመስጠት",
     "sidebar__promotion_dialog__cta_button": "አድስገን - በቀላሉ ይጠብቁ!",
-    "provider__bard_web_app__model__gemini__description": "በGoogle የተሻለ ማስታወቂያ."
+    "provider__bard_web_app__model__gemini__description": "በGoogle የተሻለ ማስታወቂያ.",
+    "translation_advanced__title": "የተሻለ ትርጓሜዎች",
+    "translation_advanced__source_lang_select__label": "የመጀመሪያ ቋንቋ",
+    "translation_advanced__target_lang_select__label": "የማስተማር ቋንቋ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

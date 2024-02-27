@@ -47,7 +47,9 @@
     "screenshot": "لقطة شاشة ذكاء اصطناعي",
     "all_settings": "جميع الإعدادات",
     "ai_screenshot": "لقطة شاشة AI",
-    "release_notes": "ملاحظات الإصدار"
+    "release_notes": "ملاحظات الإصدار",
+    "web_translation": "ترجمة الويب",
+    "show_original_text": "عرض النص الأصلي"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "تلخيص وطرح الأسئلة عن أي صفحة",
     "sidebar__promotion_dialog__content_item6__description": "احصل على تلخيصات، طرح الأسئلة، والعثور على معلومات حول أي صفحة وملف PDF وبريد إلكتروني وفيديو يوتيوب.",
     "sidebar__promotion_dialog__cta_button": "ترقية الآن - العرض ينتهي قريبًا!",
-    "provider__bard_web_app__model__gemini__description": "أحدث نموذج من قوقل."
+    "provider__bard_web_app__model__gemini__description": "أحدث نموذج من قوقل.",
+    "translation_advanced__title": "إعدادات الترجمة",
+    "translation_advanced__source_lang_select__label": "اللغة المصدر",
+    "translation_advanced__target_lang_select__label": "اللغة المستهدفة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

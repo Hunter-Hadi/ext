@@ -47,7 +47,9 @@
     "screenshot": "AI snimak ekrana",
     "all_settings": "Sva podešavanja",
     "ai_screenshot": "AI snimak ekrana",
-    "release_notes": "Napomene o izdanju"
+    "release_notes": "Napomene o izdanju",
+    "web_translation": "Veb prevod",
+    "show_original_text": "Prikaži originalni tekst"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Sumirajte i pitajte na bilo kojoj stranici",
     "sidebar__promotion_dialog__content_item6__description": "Dobijte sažetke, postavljajte pitanja i pronađite informacije o bilo kojoj veb stranici, PDF-u, e-pošti i YouTube videu.",
     "sidebar__promotion_dialog__cta_button": "Nadogradite sada - Ponuda ističe uskoro!",
-    "provider__bard_web_app__model__gemini__description": "Najnapredniji model od strane Google-a."
+    "provider__bard_web_app__model__gemini__description": "Najnapredniji model od strane Google-a.",
+    "translation_advanced__title": "Podešavanja prevoda",
+    "translation_advanced__source_lang_select__label": "Izvorni jezik",
+    "translation_advanced__target_lang_select__label": "Ciljni jezik"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

@@ -47,7 +47,9 @@
     "screenshot": "AI ekrano kopija",
     "all_settings": "Visi nustatymai",
     "ai_screenshot": "AI ekrano kopija",
-    "release_notes": "Atnaujinimo pastabos"
+    "release_notes": "Atnaujinimo pastabos",
+    "web_translation": "Tinklalapio vertimas",
+    "show_original_text": "Rodyti originalų tekstą"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Santraukos ir klausimai bet kurioje puslapyje",
     "sidebar__promotion_dialog__content_item6__description": "Gaukite santraukas, užduokite klausimus ir raskite informaciją apie bet kurį tinklalapį, PDF, el. laišką ir „YouTube“ vaizdo įrašą.",
     "sidebar__promotion_dialog__cta_button": "Atnaujinkite dabar - pasiūlymas baigiasi greitai!",
-    "provider__bard_web_app__model__gemini__description": "Pažangiausias Google modelis."
+    "provider__bard_web_app__model__gemini__description": "Pažangiausias Google modelis.",
+    "translation_advanced__title": "Vertimo nustatymai",
+    "translation_advanced__source_lang_select__label": "Ištekstinė kalba",
+    "translation_advanced__target_lang_select__label": "Tikslo kalba"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

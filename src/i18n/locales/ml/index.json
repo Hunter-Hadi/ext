@@ -47,7 +47,9 @@
     "screenshot": "എ.ഐ. സ്ക്രീൻഷോട്ട്",
     "all_settings": "എല്ലാ ക്രമീകരണങ്ങൾ",
     "ai_screenshot": "AI സ്‌ക്രീൻഷോട്ട്",
-    "release_notes": "പുറത്തിറക്കം വിവരങ്ങൾ"
+    "release_notes": "പുറത്തിറക്കം വിവരങ്ങൾ",
+    "web_translation": "വെബ് പരിഭാഷ",
+    "show_original_text": "ഓരിജിനൽ ടെക്സ്റ്റ് കാണിക്കുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "ഏതെങ്കിലും പേജിൽ സംഗ്രഹിക്കുക & ചോദിക്കുക",
     "sidebar__promotion_dialog__content_item6__description": "ഏതെങ്കിലും വെബ് പേജ്, PDF, ഇമെയിൽ, യൂട്യൂബ് വീഡിയോയും സംശയങ്ങൾ ചോദിക്കുക, അറിയുക, സംഗ്രഹിക്കുക.",
     "sidebar__promotion_dialog__cta_button": "ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക - ഓഫർ ഇനിയും അവസാനിക്കുന്നു!",
-    "provider__bard_web_app__model__gemini__description": "ഗൂഗിളിന്റെ ഏറ്റവും അടുത്ത മോഡൽ."
+    "provider__bard_web_app__model__gemini__description": "ഗൂഗിളിന്റെ ഏറ്റവും അടുത്ത മോഡൽ.",
+    "translation_advanced__title": "പരിഭാഷ ക്രമീകരണങ്ങൾ",
+    "translation_advanced__source_lang_select__label": "മൂല ഭാഷ",
+    "translation_advanced__target_lang_select__label": "ലക്ഷ്യ ഭാഷ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

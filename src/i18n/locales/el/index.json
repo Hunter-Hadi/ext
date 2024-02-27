@@ -47,7 +47,9 @@
     "screenshot": "Στιγμιότυπο AI",
     "all_settings": "Όλες οι ρυθμίσεις",
     "ai_screenshot": "Στιγμιότυπο AI",
-    "release_notes": "Σημειώσεις έκδοσης"
+    "release_notes": "Σημειώσεις έκδοσης",
+    "web_translation": "Μετάφραση Ιστοσελίδας",
+    "show_original_text": "Εμφάνιση αρχικού κειμένου"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Περίληψη και ερώτηση σε οποιαδήποτε σελίδα",
     "sidebar__promotion_dialog__content_item6__description": "Λάβετε περιλήψεις, κάντε ερωτήσεις και βρείτε πληροφορίες για οποιαδήποτε ιστοσελίδα, PDF, email και YouTube βίντεο.",
     "sidebar__promotion_dialog__cta_button": "Αναβαθμίστε τώρα - Η προσφορά λήγει σύντομα!",
-    "provider__bard_web_app__model__gemini__description": "Το πιο προηγμένο μοντέλο από την Google."
+    "provider__bard_web_app__model__gemini__description": "Το πιο προηγμένο μοντέλο από την Google.",
+    "translation_advanced__title": "Ρυθμίσεις μετάφρασης",
+    "translation_advanced__source_lang_select__label": "Γλώσσα προέλευσης",
+    "translation_advanced__target_lang_select__label": "Γλώσσα προορισμού"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

@@ -47,7 +47,9 @@
     "screenshot": "AI ekraanipilt",
     "all_settings": "Kõik seaded",
     "ai_screenshot": "AI ekraanipilt",
-    "release_notes": "Väljalaske märkused"
+    "release_notes": "Väljalaske märkused",
+    "web_translation": "Veebi tõlge",
+    "show_original_text": "Näita algset teksti"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Kokkuvõte ja küsimuste esitamine igal lehel",
     "sidebar__promotion_dialog__content_item6__description": "Saa kokkuvõtteid, esita küsimusi ja leia teavet mis tahes veebilehe, PDF-i, e-kirja ja YouTube'i video kohta.",
     "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Pakkumine lõpeb peagi!",
-    "provider__bard_web_app__model__gemini__description": "Google kõige arenenum mudel."
+    "provider__bard_web_app__model__gemini__description": "Google kõige arenenum mudel.",
+    "translation_advanced__title": "Tõlke seaded",
+    "translation_advanced__source_lang_select__label": "Allikakeel",
+    "translation_advanced__target_lang_select__label": "Sihtkeel"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

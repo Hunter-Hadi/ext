@@ -47,7 +47,9 @@
     "screenshot": "ภาพหน้าจอ AI",
     "all_settings": "การตั้งค่าทั้งหมด",
     "ai_screenshot": "ภาพหน้าจอ AI",
-    "release_notes": "บันทึกการอัปเดต"
+    "release_notes": "บันทึกการอัปเดต",
+    "web_translation": "การแปลเว็บ",
+    "show_original_text": "แสดงข้อความเดิม"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "สรุปและถามเกี่ยวกับหน้าเว็บใดก็ได้",
     "sidebar__promotion_dialog__content_item6__description": "รับสรุปย่อ ถามคำถาม และค้นหาข้อมูลเกี่ยวกับหน้าเว็บ เอกสาร PDF อีเมล และวิดีโอ YouTube ได้",
     "sidebar__promotion_dialog__cta_button": "อัปเกรดตอนนี้ - ข้อเสนอสิ้นสุดในเร็ว ๆ นี้!",
-    "provider__bard_web_app__model__gemini__description": "รุ่นที่ล้ำสมัยที่สุดจาก Google"
+    "provider__bard_web_app__model__gemini__description": "รุ่นที่ล้ำสมัยที่สุดจาก Google",
+    "translation_advanced__title": "การตั้งค่าการแปล",
+    "translation_advanced__source_lang_select__label": "ภาษาต้นทาง",
+    "translation_advanced__target_lang_select__label": "ภาษาเป้าหมาย"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

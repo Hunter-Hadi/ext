@@ -47,7 +47,9 @@
     "screenshot": "Снимка на AI",
     "all_settings": "Всички настройки",
     "ai_screenshot": "AI снимка",
-    "release_notes": "Забележки за версията"
+    "release_notes": "Забележки за версията",
+    "web_translation": "Уеб превод",
+    "show_original_text": "Покажи оригиналния текст"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Резюмирайте и задавайте въпроси за всяка страница",
     "sidebar__promotion_dialog__content_item6__description": "Получавайте резюмета, задавайте въпроси и намирайте информация за всяка уеб страница, PDF файл, имейл и YouTube видео.",
     "sidebar__promotion_dialog__cta_button": "Надстройте сега - Офертата изтича скоро!",
-    "provider__bard_web_app__model__gemini__description": "Най-развитата модел от Google."
+    "provider__bard_web_app__model__gemini__description": "Най-развитата модел от Google.",
+    "translation_advanced__title": "Настройки за превод",
+    "translation_advanced__source_lang_select__label": "Език на източника",
+    "translation_advanced__target_lang_select__label": "Език на целта"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

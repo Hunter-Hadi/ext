@@ -47,7 +47,9 @@
     "screenshot": "Snímka obrazovky AI",
     "all_settings": "Všetky nastavenia",
     "ai_screenshot": "AI snímka obrazovky",
-    "release_notes": "Poznámky k vydaniu"
+    "release_notes": "Poznámky k vydaniu",
+    "web_translation": "Preklad webov",
+    "show_original_text": "Zobraziť pôvodný text"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Zhrňte a pýtajte sa na akúkoľvek stránku",
     "sidebar__promotion_dialog__content_item6__description": "Získajte súhrny, kladnite otázky a nájdite informácie o akomkoľvek webovom sídle, PDF, e-maili a YouTube videu.",
     "sidebar__promotion_dialog__cta_button": "Vylepšiť teraz - Ponuka končí čoskoro!",
-    "provider__bard_web_app__model__gemini__description": "Najpokročilejší model od Google."
+    "provider__bard_web_app__model__gemini__description": "Najpokročilejší model od Google.",
+    "translation_advanced__title": "Nastavenia prekladu",
+    "translation_advanced__source_lang_select__label": "Zdrojový jazyk",
+    "translation_advanced__target_lang_select__label": "Cieľový jazyk"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

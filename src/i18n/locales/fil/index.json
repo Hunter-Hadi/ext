@@ -47,7 +47,9 @@
     "screenshot": "AI screenshot",
     "all_settings": "Lahat ng mga setting",
     "ai_screenshot": "AI screenshot",
-    "release_notes": "Mga release notes"
+    "release_notes": "Mga release notes",
+    "web_translation": "Pagsasalin ng Web",
+    "show_original_text": "Ipakita ang orihinal na teksto"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Buod at magtanong sa anumang pahina",
     "sidebar__promotion_dialog__content_item6__description": "Kumuha ng mga buod, magtanong, at hanapin ang impormasyon tungkol sa anumang webpage, PDF, email, at YouTube video.",
     "sidebar__promotion_dialog__cta_button": "Mag-upgrade ngayon - Ang alok ay magtatapos sa lalong madaling panahon!",
-    "provider__bard_web_app__model__gemini__description": "Ang pinakamahusay na modelo ng Google."
+    "provider__bard_web_app__model__gemini__description": "Ang pinakamahusay na modelo ng Google.",
+    "translation_advanced__title": "Mga Setting sa Pagsasalin",
+    "translation_advanced__source_lang_select__label": "Wika ng Pinagmulan",
+    "translation_advanced__target_lang_select__label": "Wika ng Layunin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

@@ -47,7 +47,9 @@
     "screenshot": "AI Screenshot",
     "all_settings": "Alle Einstellungen",
     "ai_screenshot": "KI-Screenshot",
-    "release_notes": "Versionshinweise"
+    "release_notes": "Versionshinweise",
+    "web_translation": "Web-Übersetzung",
+    "show_original_text": "Originaltext anzeigen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Zusammenfassen und auf jeder Seite fragen",
     "sidebar__promotion_dialog__content_item6__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF, E-Mail und YouTube-Video.",
     "sidebar__promotion_dialog__cta_button": "Jetzt upgraden - Angebot endet bald!",
-    "provider__bard_web_app__model__gemini__description": "Das fortschrittlichste Modell von Google."
+    "provider__bard_web_app__model__gemini__description": "Das fortschrittlichste Modell von Google.",
+    "translation_advanced__title": "Übersetzungseinstellungen",
+    "translation_advanced__source_lang_select__label": "Ausgangssprache",
+    "translation_advanced__target_lang_select__label": "Zielsprache"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

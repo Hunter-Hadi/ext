@@ -44,7 +44,9 @@
     "screenshot": "AI-ի սկրինշոթ",
     "all_settings": "Բոլոր կարգավորումները",
     "ai_screenshot": "AI էկրանիկ",
-    "release_notes": "Թողարկման նշումներ"
+    "release_notes": "Թողարկման նշումներ",
+    "web_translation": "Վեբ Թարգմանություն",
+    "show_original_text": "Ցուցադրել սկզբնական տեքստը"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -618,7 +620,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Ամփոփելեք և հարցերը դառնալով ցանկացած էջում",
     "sidebar__promotion_dialog__content_item6__description": "Ստացեք ամփոփումներ, հարցեր և գտնեք տեղեկություն ցանկացած վեբ էջի, PDF-ի, էլ. փոստի և YouTube վիդեոյի մասին:",
     "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Անցած է ավարտը!",
-    "provider__bard_web_app__model__gemini__description": "Գոլորշինը առաջարկում է Google-ի ամենակարճատեսական մոդելը։"
+    "provider__bard_web_app__model__gemini__description": "Գոլորշինը առաջարկում է Google-ի ամենակարճատեսական մոդելը։",
+    "translation_advanced__title": "Թարգմանության պարամետրեր",
+    "translation_advanced__source_lang_select__label": "Աղբյուր լեզու",
+    "translation_advanced__target_lang_select__label": "Նպատակ լեզու"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -47,7 +47,9 @@
     "screenshot": "এইচটি স্ক্রিনশট",
     "all_settings": "সমস্ত সেটিংস",
     "ai_screenshot": "AI স্ক্রিনশট",
-    "release_notes": "রিলিজ নোট"
+    "release_notes": "রিলিজ নোট",
+    "web_translation": "ওয়েব অনুবাদ",
+    "show_original_text": "মূল পাঠ্য দেখান"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "সারাংশ করুন এবং যেকোনো পৃষ্ঠায় প্রশ্ন করুন",
     "sidebar__promotion_dialog__content_item6__description": "যেকোনো ওয়েবপেজ, পিডিএফ, ইমেল এবং YouTube ভিডিও সম্পর্কে সংক্ষিপ্তসার, প্রশ্ন করুন এবং তথ্য খুঁজুন।",
     "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - অফার শীঘ্রই শেষ!",
-    "provider__bard_web_app__model__gemini__description": "গুগলের দ্বারা সর্বাধিক উন্নত মডেল।"
+    "provider__bard_web_app__model__gemini__description": "গুগলের দ্বারা সর্বাধিক উন্নত মডেল।",
+    "translation_advanced__title": "অনুবাদ সেটিংস",
+    "translation_advanced__source_lang_select__label": "উত্স ভাষা",
+    "translation_advanced__target_lang_select__label": "লক্ষ্য ভাষা"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

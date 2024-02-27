@@ -47,7 +47,9 @@
     "screenshot": "AI schermafbeelding",
     "all_settings": "Alle instellingen",
     "ai_screenshot": "AI-screenshot",
-    "release_notes": "Release-opmerkingen"
+    "release_notes": "Release-opmerkingen",
+    "web_translation": "Webvertaling",
+    "show_original_text": "Toon oorspronkelijke tekst"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Samenvatten & vragen stellen op elke pagina",
     "sidebar__promotion_dialog__content_item6__description": "Krijg samenvattingen, stel vragen en vind informatie over elke webpagina, PDF, e-mail en YouTube-video.",
     "sidebar__promotion_dialog__cta_button": "Nu upgraden - Aanbieding eindigt binnenkort!",
-    "provider__bard_web_app__model__gemini__description": "Het meest geavanceerde model van Google."
+    "provider__bard_web_app__model__gemini__description": "Het meest geavanceerde model van Google.",
+    "translation_advanced__title": "Vertalingsinstellingen",
+    "translation_advanced__source_lang_select__label": "Bron taal",
+    "translation_advanced__target_lang_select__label": "Doeltaal"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

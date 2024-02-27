@@ -47,7 +47,9 @@
     "screenshot": "Captura de tela IA",
     "all_settings": "Todas as configurações",
     "ai_screenshot": "Captura de tela AI",
-    "release_notes": "Notas de lançamento"
+    "release_notes": "Notas de lançamento",
+    "web_translation": "Tradução na Web",
+    "show_original_text": "Mostrar texto original"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Resuma e pergunte sobre qualquer página",
     "sidebar__promotion_dialog__content_item6__description": "Obtenha resumos, faça perguntas e encontre informações sobre qualquer página da web, PDF, e-mail e vídeo do YouTube.",
     "sidebar__promotion_dialog__cta_button": "Atualize agora - Oferta termina em breve!",
-    "provider__bard_web_app__model__gemini__description": "O modelo mais avançado do Google."
+    "provider__bard_web_app__model__gemini__description": "O modelo mais avançado do Google.",
+    "translation_advanced__title": "Configurações de tradução",
+    "translation_advanced__source_lang_select__label": "Idioma de origem",
+    "translation_advanced__target_lang_select__label": "Idioma de destino"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

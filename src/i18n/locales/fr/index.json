@@ -47,7 +47,9 @@
     "screenshot": "Capture d'écran IA",
     "all_settings": "Tous les paramètres",
     "ai_screenshot": "Capture d'écran IA",
-    "release_notes": "Notes de version"
+    "release_notes": "Notes de version",
+    "web_translation": "Traduction Web",
+    "show_original_text": "Afficher le texte original"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Résumez et posez des questions sur n'importe quelle page",
     "sidebar__promotion_dialog__content_item6__description": "Obtenez des résumés, posez des questions et trouvez des informations sur n'importe quelle page web, PDF, e-mail et vidéo YouTube.",
     "sidebar__promotion_dialog__cta_button": "Mettez à niveau maintenant - Offre se termine bientôt!",
-    "provider__bard_web_app__model__gemini__description": "Le modèle le plus avancé par Google."
+    "provider__bard_web_app__model__gemini__description": "Le modèle le plus avancé par Google.",
+    "translation_advanced__title": "Paramètres de traduction",
+    "translation_advanced__source_lang_select__label": "Langue source",
+    "translation_advanced__target_lang_select__label": "Langue cible"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

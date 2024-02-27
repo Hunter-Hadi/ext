@@ -47,7 +47,9 @@
     "screenshot": "Ảnh chụp màn hình AI",
     "all_settings": "Tất cả cài đặt",
     "ai_screenshot": "Ảnh chụp màn hình AI",
-    "release_notes": "Ghi chú phát hành"
+    "release_notes": "Ghi chú phát hành",
+    "web_translation": "Dịch trang web",
+    "show_original_text": "Hiển thị văn bản gốc"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Tóm tắt và hỏi trên mọi trang",
     "sidebar__promotion_dialog__content_item6__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF, email và video YouTube nào.",
     "sidebar__promotion_dialog__cta_button": "Nâng cấp ngay - Ưu đãi sẽ kết thúc sớm!",
-    "provider__bard_web_app__model__gemini__description": "Mô hình tiên tiến nhất của Google."
+    "provider__bard_web_app__model__gemini__description": "Mô hình tiên tiến nhất của Google.",
+    "translation_advanced__title": "Cài đặt dịch",
+    "translation_advanced__source_lang_select__label": "Ngôn ngữ nguồn",
+    "translation_advanced__target_lang_select__label": "Ngôn ngữ đích"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

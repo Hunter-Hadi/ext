@@ -47,7 +47,9 @@
     "screenshot": "AI 스크린샷",
     "all_settings": "모든 설정",
     "ai_screenshot": "AI 스크린샷",
-    "release_notes": "릴리즈 노트"
+    "release_notes": "릴리즈 노트",
+    "web_translation": "웹 번역",
+    "show_original_text": "원본 텍스트 보기"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "요약 및 페이지에서 질문하기",
     "sidebar__promotion_dialog__content_item6__description": "웹페이지, PDF, 이메일 및 YouTube 비디오에 대한 요약, 질문 및 정보를 찾아보세요.",
     "sidebar__promotion_dialog__cta_button": "지금 업그레이드 - 제공 기간 종료 임박!",
-    "provider__bard_web_app__model__gemini__description": "Google에서 제공하는 가장 고급 모델입니다."
+    "provider__bard_web_app__model__gemini__description": "Google에서 제공하는 가장 고급 모델입니다.",
+    "translation_advanced__title": "번역 설정",
+    "translation_advanced__source_lang_select__label": "원본 언어",
+    "translation_advanced__target_lang_select__label": "대상 언어"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

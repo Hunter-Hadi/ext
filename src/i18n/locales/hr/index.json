@@ -47,7 +47,9 @@
     "screenshot": "Snimka zaslona AI",
     "all_settings": "Sve postavke",
     "ai_screenshot": "AI snimak ekrana",
-    "release_notes": "Bilješke o izdanju"
+    "release_notes": "Bilješke o izdanju",
+    "web_translation": "Web prijevod",
+    "show_original_text": "Prikaži izvorni tekst"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Sažmi i pitaj na bilo kojoj stranici",
     "sidebar__promotion_dialog__content_item6__description": "Dobijte sažetke, postavljajte pitanja i pronalazite informacije o bilo kojoj web stranici, PDF-u, e-pošti i YouTube videu.",
     "sidebar__promotion_dialog__cta_button": "Nadogradite sada - Ponuda završava uskoro!",
-    "provider__bard_web_app__model__gemini__description": "Najnapredniji model od strane Googlea."
+    "provider__bard_web_app__model__gemini__description": "Najnapredniji model od strane Googlea.",
+    "translation_advanced__title": "Postavke prijevoda",
+    "translation_advanced__source_lang_select__label": "Izvorni jezik",
+    "translation_advanced__target_lang_select__label": "Ciljni jezik"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

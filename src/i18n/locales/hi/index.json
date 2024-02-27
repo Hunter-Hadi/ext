@@ -47,7 +47,9 @@
     "screenshot": "एआई स्क्रीनशॉट",
     "all_settings": "सभी सेटिंग्स",
     "ai_screenshot": "AI स्क्रीनशॉट",
-    "release_notes": "रिलीज नोट्स"
+    "release_notes": "रिलीज नोट्स",
+    "web_translation": "वेब अनुवाद",
+    "show_original_text": "मूल पाठ दिखाएं"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "सारांश बनाएं और किसी पृष्ठ पर पूछें",
     "sidebar__promotion_dialog__content_item6__description": "किसी भी वेबपेज, पीडीएफ, ईमेल और YouTube वीडियो के बारे में सारांश बनाएं, सवाल पूछें और जानकारी ढूंढें।",
     "sidebar__promotion_dialog__cta_button": "अभी अपग्रेड करें - ऑफर जल्द ही समाप्त हो जाएगा!",
-    "provider__bard_web_app__model__gemini__description": "Google द्वारा सबसे उन्नत मॉडल।"
+    "provider__bard_web_app__model__gemini__description": "Google द्वारा सबसे उन्नत मॉडल।",
+    "translation_advanced__title": "अनुवाद सेटिंग्स",
+    "translation_advanced__source_lang_select__label": "स्रोत भाषा",
+    "translation_advanced__target_lang_select__label": "लक्षित भाषा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

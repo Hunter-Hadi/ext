@@ -47,7 +47,9 @@
     "screenshot": "AI skærmbillede",
     "all_settings": "Alle indstillinger",
     "ai_screenshot": "AI skærmbillede",
-    "release_notes": "Versionsnoter"
+    "release_notes": "Versionsnoter",
+    "web_translation": "Web Oversættelse",
+    "show_original_text": "Vis original tekst"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Opsummer og spørg på enhver side",
     "sidebar__promotion_dialog__content_item6__description": "Få opsummeringer, stil spørgsmål og find information om enhver hjemmeside, PDF, e-mail og YouTube-video.",
     "sidebar__promotion_dialog__cta_button": "Opgrader nu - Tilbudet udløber snart!",
-    "provider__bard_web_app__model__gemini__description": "Den mest avancerede model af Google."
+    "provider__bard_web_app__model__gemini__description": "Den mest avancerede model af Google.",
+    "translation_advanced__title": "Oversættelsesindstillinger",
+    "translation_advanced__source_lang_select__label": "Kildesprog",
+    "translation_advanced__target_lang_select__label": "Målsprog"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

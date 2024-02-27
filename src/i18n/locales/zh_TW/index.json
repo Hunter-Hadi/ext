@@ -47,7 +47,9 @@
     "screenshot": "AI 截圖",
     "all_settings": "所有設定",
     "ai_screenshot": "AI 截圖",
-    "release_notes": "發行說明"
+    "release_notes": "發行說明",
+    "web_translation": "網頁翻譯",
+    "show_original_text": "顯示原文"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "摘要和在任何頁面上提問",
     "sidebar__promotion_dialog__content_item6__description": "獲取關於任何網頁、PDF、電子郵件和YouTube視頻的摘要、提問和信息。",
     "sidebar__promotion_dialog__cta_button": "立即升級-優惠即將結束！",
-    "provider__bard_web_app__model__gemini__description": "Google 最先進的模型。"
+    "provider__bard_web_app__model__gemini__description": "Google 最先進的模型。",
+    "translation_advanced__title": "翻譯設定",
+    "translation_advanced__source_lang_select__label": "來源語言",
+    "translation_advanced__target_lang_select__label": "目標語言"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

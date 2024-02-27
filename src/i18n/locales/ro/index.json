@@ -47,7 +47,9 @@
     "screenshot": "Captură de ecran AI",
     "all_settings": "Toate setările",
     "ai_screenshot": "Captură AI",
-    "release_notes": "Note de lansare"
+    "release_notes": "Note de lansare",
+    "web_translation": "Traducere web",
+    "show_original_text": "Afișează textul original"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Rezumați și întrebați pe orice pagină",
     "sidebar__promotion_dialog__content_item6__description": "Obțineți rezumate, puneți întrebări și găsiți informații despre orice pagină web, PDF, e-mail și videoclip YouTube.",
     "sidebar__promotion_dialog__cta_button": "Faceți upgrade acum - Oferta se încheie curând!",
-    "provider__bard_web_app__model__gemini__description": "Cel mai avansat model de la Google."
+    "provider__bard_web_app__model__gemini__description": "Cel mai avansat model de la Google.",
+    "translation_advanced__title": "Setări de traducere",
+    "translation_advanced__source_lang_select__label": "Limba sursă",
+    "translation_advanced__target_lang_select__label": "Limba țintă"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

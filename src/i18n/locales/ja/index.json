@@ -47,7 +47,9 @@
     "screenshot": "AIのスクリーンショット",
     "all_settings": "すべての設定",
     "ai_screenshot": "AIスクリーンショット",
-    "release_notes": "リリースノート"
+    "release_notes": "リリースノート",
+    "web_translation": "ウェブ翻訳",
+    "show_original_text": "元のテキストを表示"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "任意のページを要約して質問する",
     "sidebar__promotion_dialog__content_item6__description": "任意のウェブページ、PDF、メール、YouTubeビデオについて要約を取得し、質問をし、情報を見つけます。",
     "sidebar__promotion_dialog__cta_button": "今すぐアップグレード - お得な期間は間もなく終了します！",
-    "provider__bard_web_app__model__gemini__description": "Googleによる最も高度なモデルです。"
+    "provider__bard_web_app__model__gemini__description": "Googleによる最も高度なモデルです。",
+    "translation_advanced__title": "翻訳設定",
+    "translation_advanced__source_lang_select__label": "ソース言語",
+    "translation_advanced__target_lang_select__label": "ターゲット言語"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

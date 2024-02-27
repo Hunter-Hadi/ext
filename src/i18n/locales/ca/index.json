@@ -47,7 +47,9 @@
     "screenshot": "Captura de pantalla d'IA",
     "all_settings": "Totes les configuracions",
     "ai_screenshot": "Captura d'AI",
-    "release_notes": "Notes de la versió"
+    "release_notes": "Notes de la versió",
+    "web_translation": "Traducció web",
+    "show_original_text": "Mostra el text original"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Resumeix i pregunta sobre qualsevol pàgina",
     "sidebar__promotion_dialog__content_item6__description": "Obtén resums, fes preguntes i troba informació sobre qualsevol pàgina web, PDF, correu electrònic i vídeo de YouTube.",
     "sidebar__promotion_dialog__cta_button": "Millora ara - L'oferta acaba aviat!",
-    "provider__bard_web_app__model__gemini__description": "El model més avançat de Google."
+    "provider__bard_web_app__model__gemini__description": "El model més avançat de Google.",
+    "translation_advanced__title": "Configuració de traducció",
+    "translation_advanced__source_lang_select__label": "Idioma d'origen",
+    "translation_advanced__target_lang_select__label": "Idioma de destinació"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

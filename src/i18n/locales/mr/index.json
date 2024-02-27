@@ -47,7 +47,9 @@
     "screenshot": "AI स्क्रीनशॉट",
     "all_settings": "सर्व सेटिंग्ज",
     "ai_screenshot": "AI स्क्रीनशॉट",
-    "release_notes": "रिलीज नोट्स"
+    "release_notes": "रिलीज नोट्स",
+    "web_translation": "वेब भाषांतर",
+    "show_original_text": "मूळ मजकूर दाखवा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "संक्षेपित करा आणि कोणत्याही पृष्ठावर प्रश्न विचारा",
     "sidebar__promotion_dialog__content_item6__description": "कोणत्याही वेबपेज, पीडीएफ, ईमेल आणि YouTube व्हिडिओवरील संक्षेप, प्रश्न विचारा आणि माहिती शोधा.",
     "sidebar__promotion_dialog__cta_button": "अपग्रेड करा - प्रस्ताव लवकरच संपले जाते!",
-    "provider__bard_web_app__model__gemini__description": "Google द्वारा सर्वोत्कृष्ट मॉडेल."
+    "provider__bard_web_app__model__gemini__description": "Google द्वारा सर्वोत्कृष्ट मॉडेल.",
+    "translation_advanced__title": "भाषांतर सेटिंग्ज",
+    "translation_advanced__source_lang_select__label": "स्रोत भाषा",
+    "translation_advanced__target_lang_select__label": "लक्षित भाषा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

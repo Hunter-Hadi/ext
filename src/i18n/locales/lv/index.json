@@ -47,7 +47,9 @@
     "screenshot": "AI ekrānuzņēmums",
     "all_settings": "Visi iestatījumi",
     "ai_screenshot": "AI ekrānuzņēmums",
-    "release_notes": "Izdevuma piezīmes"
+    "release_notes": "Izdevuma piezīmes",
+    "web_translation": "Tīmekļa tulkošana",
+    "show_original_text": "Rādīt oriģinālo tekstu"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Kopsavilkums un jautājums par jebkuru lapu",
     "sidebar__promotion_dialog__content_item6__description": "Iegūstiet kopsavilkumus, uzdodiet jautājumus un atrast informāciju par jebkuru tīmekļa lapu, PDF, e-pasta ziņojumu un YouTube video.",
     "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Piedāvājums beigsies drīz!",
-    "provider__bard_web_app__model__gemini__description": "Visattīstītākais Google modeļa variants."
+    "provider__bard_web_app__model__gemini__description": "Visattīstītākais Google modeļa variants.",
+    "translation_advanced__title": "Tulkošanas iestatījumi",
+    "translation_advanced__source_lang_select__label": "Avota valoda",
+    "translation_advanced__target_lang_select__label": "Mērķa valoda"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

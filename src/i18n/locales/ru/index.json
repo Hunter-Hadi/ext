@@ -47,7 +47,9 @@
     "screenshot": "Снимок экрана ИИ",
     "all_settings": "Все настройки",
     "ai_screenshot": "Скриншот с помощью ИИ",
-    "release_notes": "Примечания к выпуску"
+    "release_notes": "Примечания к выпуску",
+    "web_translation": "Веб-перевод",
+    "show_original_text": "Показать оригинальный текст"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Суммирование и задание вопросов на любой странице",
     "sidebar__promotion_dialog__content_item6__description": "Получайте краткие изложения, задавайте вопросы и находите информацию о любой веб-странице, PDF-файле, электронной почте и видео на YouTube.",
     "sidebar__promotion_dialog__cta_button": "Обновить сейчас - Предложение заканчивается скоро!",
-    "provider__bard_web_app__model__gemini__description": "Самая передовая модель от Google."
+    "provider__bard_web_app__model__gemini__description": "Самая передовая модель от Google.",
+    "translation_advanced__title": "Настройки перевода",
+    "translation_advanced__source_lang_select__label": "Исходный язык",
+    "translation_advanced__target_lang_select__label": "Целевой язык"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

@@ -47,7 +47,9 @@
     "screenshot": "AI-näyttökuva",
     "all_settings": "Kaikki asetukset",
     "ai_screenshot": "AI-näyttökuva",
-    "release_notes": "Julkaisutiedot"
+    "release_notes": "Julkaisutiedot",
+    "web_translation": "Verkkokäännös",
+    "show_original_text": "Näytä alkuperäinen teksti"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -621,7 +623,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Tiivistä ja kysy mistä tahansa sivulta",
     "sidebar__promotion_dialog__content_item6__description": "Saat tiivistelmiä, voit esittää kysymyksiä ja löytää tietoa mistä tahansa verkkosivusta, PDF-tiedostosta, sähköpostista ja YouTube-videosta.",
     "sidebar__promotion_dialog__cta_button": "Päivitä nyt - Tarjous päättyy pian!",
-    "provider__bard_web_app__model__gemini__description": "Googlen kehittynein malli."
+    "provider__bard_web_app__model__gemini__description": "Googlen kehittynein malli.",
+    "translation_advanced__title": "Käännöksen asetukset",
+    "translation_advanced__source_lang_select__label": "Lähdekieli",
+    "translation_advanced__target_lang_select__label": "Kohdekieli"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -55,6 +55,26 @@ const PageTranslateAdvancedButton: FC<IPageTranslateAdvancedButtonProps> = ({
     }
   }, [open])
 
+  useEffect(() => {
+    if (
+      userSettings?.pageTranslation?.targetLanguage === '' ||
+      userSettings?.pageTranslation?.targetLanguage === undefined
+    ) {
+      if (userSettings?.preferredLanguage) {
+        setUserSettings({
+          ...userSettings,
+          pageTranslation: {
+            ...userSettings?.pageTranslation,
+            targetLanguage: userSettings?.preferredLanguage,
+          },
+        })
+      }
+    }
+  }, [
+    userSettings?.pageTranslation?.targetLanguage,
+    userSettings?.preferredLanguage,
+  ])
+
   return (
     <Box>
       <Button

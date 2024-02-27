@@ -10,6 +10,9 @@ export const checkValidElement = (element: HTMLElement | null) => {
       element.tagName !== 'IFRAME' &&
       element.tagName !== 'BODY' &&
       element.tagName !== 'CODE' &&
+      element.closest('CODE') === null &&
+      element.tagName !== 'PRE' &&
+      element.closest('PRE') === null &&
       element.tagName !== 'OBJECT' &&
       element.tagName !== 'EM' &&
       element.tagName !== 'CITE' &&

@@ -10,8 +10,6 @@ import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import { checkValidElement } from '@/features/pageTranslator/utils'
 
-const MAXAI_HIDE_TRANSLATE_STYLE = 'maxai-hide-translate-style'
-
 class PageTranslator {
   translateItemsSet: Set<TranslateTextItem>
   translator: TranslateService
@@ -21,16 +19,12 @@ class PageTranslator {
   fromCode?: string
   toCode?: string
 
-  // 用来隐藏 translate 元素的 style 标签
-  hideTranslateStyle: HTMLStyleElement | null = null
-
   // 用于监听 document 动态变化
   mutationsObserver: MutationObserver | null = null
 
   constructor(fromCode?: string, toCode?: string) {
     this.translateItemsSet = new Set()
     this.translator = new TranslateService()
-    this.hideTranslateStyle = null
     this.isEnable = false
     this.loading = false
     this.fromCode = fromCode ?? ''
@@ -178,6 +172,9 @@ class PageTranslator {
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT} {
         display: inline-block;
       }
+      ${MAXAI_TRANSLATE_CUSTOM_ELEMENT}.maxai-trans-hide {
+        display: none !important;
+      }
       ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
         display: inline-block;
         margin: 4px 0;
@@ -206,31 +203,22 @@ class PageTranslator {
 
   cleanTranslateElements() {
     this.isEnable = false
-    const styleId = MAXAI_HIDE_TRANSLATE_STYLE
-    if (!document.getElementById(styleId)) {
-      const style = document.createElement('style')
-      style.id = styleId
-      style.innerHTML = `
-        ${MAXAI_TRANSLATE_CUSTOM_ELEMENT} {
-          display: none;
-        }
-      `
-      this.hideTranslateStyle = style
-      document.head.appendChild(style)
-    }
+
+    this.translateItemsSet.forEach((translateItem) => {
+      translateItem.translateContainerElement?.classList.add('maxai-trans-hide')
+    })
 
     this.closeMutationsObserver()
   }
 
   showTranslateElements() {
     this.isEnable = true
-    if (this.hideTranslateStyle) {
-      this.hideTranslateStyle.remove()
-    }
 
-    const styleId = MAXAI_HIDE_TRANSLATE_STYLE
-    const styleElement = document.getElementById(styleId)
-    styleElement && styleElement.remove()
+    this.translateItemsSet.forEach((translateItem) => {
+      translateItem.translateContainerElement?.classList.remove(
+        'maxai-trans-hide',
+      )
+    })
 
     this.startMutationsObserver()
   }

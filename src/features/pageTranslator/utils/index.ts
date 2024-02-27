@@ -27,6 +27,7 @@ export const isTranslationValidElement = (element: HTMLElement | null) => {
         'EM',
         'CITE',
         'STRONG',
+        'NOBR',
       ]
       if (blackTagList.includes(element.tagName)) {
         return false

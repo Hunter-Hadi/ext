@@ -30,7 +30,7 @@ class TranslateTextItem {
 
   translateStatus: ITranslateStatus
 
-  isBlock: boolean
+  isInline: boolean
 
   constructor(element: HTMLElement) {
     // this.uid = uuidV4()
@@ -48,7 +48,7 @@ class TranslateTextItem {
     this.translateContainerElement = null
     this.translateInlineElement = null
 
-    this.isBlock = false
+    this.isInline = false
 
     this.observeIntersection()
     this.insertCustomElement()
@@ -86,27 +86,33 @@ class TranslateTextItem {
 
   insertCustomElement() {
     if (this.rawElement) {
-      let isBlock = false
-      if (
-        this.rawElement.tagName === 'P' ||
-        this.rawElement.tagName === 'DIV'
-      ) {
-        isBlock = true
+      let isInline = false
+
+      const rawText = this.rawText.trim()
+
+      const { display } = getComputedStyle(this.rawElement)
+      if (display.includes('inline')) {
+        isInline = true
       }
 
-      if (this.rawText.length > 25 || this.rawText.split(' ').length > 4) {
-        isBlock = true
+      if (rawText.length <= 25 || rawText.split(' ').length <= 4) {
+        isInline = true
       }
 
-      this.isBlock = isBlock
+      const isUnicodeText = rawText.match(/\p{Unified_Ideograph}/gu)
+      if (isUnicodeText) {
+        isInline = rawText.length <= 7
+      }
+
+      this.isInline = isInline
 
       const customElement = document.createElement(
         MAXAI_TRANSLATE_CUSTOM_ELEMENT,
       )
       const inlineElement = document.createElement(
-        isBlock
-          ? MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT
-          : MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
+        isInline
+          ? MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT
+          : MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
       )
 
       inlineElement.classList.add('notranslate')
@@ -148,7 +154,11 @@ class TranslateTextItem {
     ) {
       this.translateInlineElement.removeAttribute('title')
       this.translateInlineElement.innerText = this.translatedText
-      if (this.isBlock) {
+      if (this.isInline) {
+        // inline 元素需要添加 class
+        this.translateInlineElement.classList.add('maxai-trans-inline')
+      } else {
+        // block 元素需要添加 br
         const hasBr = this.translateContainerElement?.querySelector('br')
         if (!hasBr) {
           const br = document.createElement('br')
@@ -157,8 +167,6 @@ class TranslateTextItem {
             this.translateInlineElement,
           )
         }
-      } else {
-        this.translateInlineElement.classList.add('maxai-trans-inline')
       }
     }
   }

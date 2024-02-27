@@ -21,23 +21,44 @@ export const fetchBardRequestParams = async () => {
 }
 
 export const parseBardResponse = (resp: string) => {
-  const data = JSON.parse(resp.split('\n')[3])
-  const payload = JSON.parse(data[0][2])
-  if (!payload) {
-    // FIXME: 需要测试所有场景
-    // throw new ChatError('Failed to access Bard', ErrorCode.BARD_EMPTY_RESPONSE)
+  try {
+    const dataList =
+      resp.split('\n').filter((str) => str.startsWith(`[["wrb.fr"`)) || []
+    const data = JSON.parse(dataList[1] || dataList[0])
+    const payload = JSON.parse(data?.[0]?.[2])
+    if (!payload) {
+      // FIXME: 需要测试所有场景
+      // throw new ChatError('Failed to access Bard', ErrorCode.BARD_EMPTY_RESPONSE)
+      return {
+        text: '',
+        error:
+          'Please log into [gemini.google.com](https://gemini.google.com) and try again.',
+        ids: ['', '', ''] as string[],
+      }
+    }
+    console.debug('bard response payload', payload)
+    let text = payload[4][0][1][0] as string
+    const images = payload?.[4]?.[0]?.[12]?.[7]?.[0] || []
+    if (images.length > 0) {
+      images.map((image: any) => {
+        const imageUrl = image?.[0]?.[3]?.[3]
+        const imageText = image?.[1]?.[0]
+        if (imageUrl && imageText) {
+          text = text.replace(imageText, `!${imageText}(${imageUrl})`)
+        }
+      })
+    }
+    return {
+      text,
+      error: '',
+      ids: [...payload[1], payload[4][0][0]] as [string, string, string],
+    }
+  } catch (e) {
+    console.error('parseBardResponse', e)
     return {
       text: '',
-      error:
-        'Please log into [bard.google.com](https://gemini.google.com) and try again.',
-      ids: ['', '', ''] as [string, string, string],
+      error: `Something went wrong. Please try again.`,
+      ids: ['', '', ''],
     }
-  }
-  console.debug('bard response payload', payload)
-  const text = payload[4][0][1][0] as string
-  return {
-    text,
-    error: '',
-    ids: [...payload[1], payload[4][0][0]] as [string, string, string],
   }
 }

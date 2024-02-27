@@ -14,6 +14,7 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { APP_VERSION } from '@/constants'
+import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/features/activity/constants'
 import { useUserInfo } from '@/features/chatgpt'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
@@ -56,7 +57,11 @@ const SidebarPromotionDialog = () => {
 
     getChromeExtensionOnBoardingData().then((onBoardingData) => {
       // 弹过了，不弹窗
-      if (onBoardingData.ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG) {
+      if (
+        onBoardingData[
+          ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY
+        ]
+      ) {
         return
       }
 
@@ -69,7 +74,7 @@ const SidebarPromotionDialog = () => {
       // 加个延迟让用户看到聊天框
       setTimeout(async () => {
         await setChromeExtensionOnBoardingData(
-          'ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG',
+          ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY,
           true,
         )
 

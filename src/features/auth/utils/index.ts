@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import Browser from 'webextension-polyfill'
 
@@ -41,12 +42,14 @@ export const getChromeExtensionUserInfo = async (
       let userData =
         cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
           ?.userData
+      const cacheRoleData = cloneDeep(userData?.role || {})
       let isUpdated = false
       if (!userData || forceUpdate) {
         userData = await fetchUserInfo()
+        userData.role = cacheRoleData
         isUpdated = true
       }
-      if (forceUpdate || !userData.role) {
+      if (forceUpdate || !userData?.role?.name) {
         userData.role = await fetchUserSubscriptionInfo()
         isUpdated = true
       }
@@ -240,7 +243,6 @@ export const fetchUserInfo = async (): Promise<
         },
       },
     )
-    const role = await fetchUserSubscriptionInfo()
     if (response.ok) {
       const result = await response.json()
       if (result.status === 'OK' && result?.data?.email) {
@@ -248,7 +250,6 @@ export const fetchUserInfo = async (): Promise<
         if (result.data?.conversationId) {
           delete result.data.conversationId
         }
-        result.data.role = role
         return result.data as IUseChatGPTUserInfo
       }
     }

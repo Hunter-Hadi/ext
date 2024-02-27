@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "ನಿಮ್ಮ ಚಾಟ್ ಅಳಿಸಿ ಮೂರುಗುಂಪು ಮತ್ತು ಮಾಹಿತಿಯ ಮತ್ತು ಸ್ನೇಹಪೂರ್ಣ ಚಾಟ್ ಪ್ರಾರಂಭಿಸಿ.",
     "provider__bing_web_app__conversation_style__precise__title": "ಖಚಿತ",
     "provider__bing_web_app__conversation_style__precise__description": "ನಿಮ್ಮ ಚಾಟ್ ಅಳಿಸಿ ಮೂರುಗುಂಪು ಮತ್ತು ಸಂಕ್ಷಿಪ್ತ ಮತ್ತು ಸೋಜಿಗ ಚಾಟ್ ಪ್ರಾರಂಭಿಸಿ.",
-    "provider__bard_web_app__title": "Bard ವೆಬ್ ಆ್ಯಪ್",
-    "provider__bard_web_app__short_description": "Google Lens ಜೊತೆಗೆ ಮೆರುಗಿದೆ.",
-    "provider__bard_web_app__auth_description": "ನಿಮ್ಮ ಸ್ವಂತ ಗೂಗಲ್ ಬಾರ್ಡ್ ಖಾತೆಯನ್ನು ಉಪಯೋಗಿಸಿ ಈ ವಿಸ್ತರಣೆಗೆ ಶಕ್ತಿ ನೀಡಿ.",
-    "provider__bard_web_app__auth_button_text": "ಬಾರ್ಡ್ ವೆಬ್ ಆ್ಯಪ್ ಜರುಗಿಸಲು ಮುಂದುವರಿಯಿರಿ",
+    "provider__bard_web_app__title": "ಜೆಮಿನಿ ವೆಬ್ ಆಪ್",
+    "provider__bard_web_app__short_description": "ಗೂಗಲ್ ಅತ್ಯುತ್ತಮ ಎನ್ನುವ ಐಎನ್ ಮಾದರಿಯನ್ನು ಪ್ರವೇಶಿಸಿ.",
+    "provider__bard_web_app__auth_description": "ನೀವು ನಿಮ್ಮ ಸ್ವಂತ ಗೂಗಲ್ ಜೆಮಿನಿ ಖಾತೆಯನ್ನು ವಿಸ್ತರಿಸಲು ಬಳಸಿ.",
+    "provider__bard_web_app__auth_button_text": "ಜೆಮಿನಿ ವೆಬ್ ಆಪ್ ಜರುಗಿಸಿ",
     "provider__bard_web_app__upload__accept_tooltip": "ಫೈಲ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "ಗೂಗಲ್ ದ್ವಾರಾ ಹೊರತುಪಡಿಸಲಾಗಿರುವ ಅತ್ಯಂತ ಮುನ್ನಡೆದ ಮಾದರಿ. ಗೂಗಲ್ ನಲ್ಲಿ ಬಾರ್ಡ್, PaLM API, MakerSuite ಮತ್ತು ವಿವಿಧ ಕಾರ್ಯಾಚರಣೆ ವೀಕ್ಷಣೆಗಳನ್ನು ಸಾಧಿಸುತ್ತದೆ.",
     "provider__bard_web_app__model__what_it_can_do__description": "ಯುಕ್ತಿ, ಬಹುಭಾಷಾ ಅನುವಾದ, ಕೋಡಿಂಗ್ ಮತ್ತು ಇತರೆ.",
     "provider__claude_web_app__title": "ಕ್ಲೋಡ್ ವೆಬ್ ಆ್ಯಪ್",
     "provider__claude_web_app__short_description": "100K ಸಂದರ್ಭ ವಿಂಡೋ. ಹಲವು ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ಚಾಟ್ ಮಾಡಿ.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "ವಿಸ್ತೃತ ವೆಬ್ ಅರಿವುಗಳೊಂದಿಗೆ ಕಠಿಣ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ.",
     "sidebar__promotion_dialog__content_item6__title": "ಸಂಗ್ರಹಿಸಿ ಮತ್ತು ಯಾವುದೇ ಪುಟದ ಮೇಲೆ ಪ್ರಶ್ನೆ ಕೇಳಿ",
     "sidebar__promotion_dialog__content_item6__description": "ಯಾವುದೇ ವೆಬ್ಪೇಜ್, ಪಿಡಿಎಫ್, ಇಮೇಲ್ ಮತ್ತು ಯೂಟ್ಯೂಬ್ ವೀಡಿಯೊಗೆ ಸಂಗ್ರಹಿಸಿ, ಪರಿಷ್ಕರಿಸಿ, ಪ್ರಶ್ನೆ ಕೇಳಿ ಮತ್ತು ಮಾಹಿತಿಯನ್ನು ಹುಡುಕಿ.",
-    "sidebar__promotion_dialog__cta_button": "ಈಗ ಮೆಚ್ಚುಗೆ ಪಡೆಯಿರಿ - ಆಫರ್ ಬೇಗನೆ ಮುಗಿಯುತ್ತದೆ!"
+    "sidebar__promotion_dialog__cta_button": "ಈಗ ಮೆಚ್ಚುಗೆ ಪಡೆಯಿರಿ - ಆಫರ್ ಬೇಗನೆ ಮುಗಿಯುತ್ತದೆ!",
+    "provider__bard_web_app__model__gemini__description": "Google ದ್ವಾರಾ ಅಭಿವೃದ್ಧಿಗೆ ಬಂದ ಅತ್ಯಂತ ಮುಂದುವರಿದ ಮಾದರಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "ತ್ವರಿತ ಉತ್ತರ",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಉತ್ತರಿಸಿ (ಪರೀಕ್ಷೆ)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ನಾರ್ವೇಜಿಯನ್",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "ಸುವೋಮಿ"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "ಸುವೋಮಿ",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "ಚೆಕ್"
   },
   "prompt_editor": {
     "preset_variables__title": "ಸಾಮರ್ಥ್ಯಗಳು",

@@ -294,12 +294,11 @@
     "provider__bing_web_app__auth_button_text": "Bing ウェブアプリで続行",
     "provider__bing_web_app__upload__accept_tooltip": "画像を追加",
     "provider__bing_web_app__model__gpt_4__description": "GPT-3.5 モデルよりも高性能で、より複雑なタスクをこなし、チャットに最適化されています。OpenAI の最新モデルのリリースから2週間後に更新されます。",
-    "provider__bard_web_app__title": "Bard ウェブアプリ",
-    "provider__bard_web_app__short_description": "Google レンズを利用した強化版。",
-    "provider__bard_web_app__auth_description": "拡張機能のパワーを引き出すために、独自の Google Bard アカウントを使用します。",
-    "provider__bard_web_app__auth_button_text": "Bard ウェブアプリで続行",
+    "provider__bard_web_app__title": "ジェミニウェブアプリ",
+    "provider__bard_web_app__short_description": "Googleの最も能力のあるAIモデルにアクセス。",
+    "provider__bard_web_app__auth_description": "拡張機能をパワーアップするために、独自のGoogleジェミニアカウントを使用してください。",
+    "provider__bard_web_app__auth_button_text": "ジェミニウェブアプリで続行",
     "provider__bard_web_app__upload__accept_tooltip": "JPEG、PNG、WEBP ファイルをアップロード",
-    "provider__bard_web_app__model__palm_2__description": "Google による最も高度なモデル。Bard、PaLM API、MakerSuite、およびさまざまな Google Workspace の機能を提供します。",
     "provider__bard_web_app__model__what_it_can_do__description": "推論、多言語翻訳、コーディングなど。",
     "provider__claude_web_app__title": "Claude ウェブアプリ",
     "provider__claude_web_app__short_description": "100Kコンテキストウィンドウ。複数のドキュメントでチャット。",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "包括的なウェブインサイトで最も難しい質問に答えを得ます。",
     "sidebar__promotion_dialog__content_item6__title": "任意のページを要約して質問する",
     "sidebar__promotion_dialog__content_item6__description": "任意のウェブページ、PDF、メール、YouTubeビデオについて要約を取得し、質問をし、情報を見つけます。",
-    "sidebar__promotion_dialog__cta_button": "今すぐアップグレード - お得な期間は間もなく終了します！"
+    "sidebar__promotion_dialog__cta_button": "今すぐアップグレード - お得な期間は間もなく終了します！",
+    "provider__bard_web_app__model__gemini__description": "Googleによる最も高度なモデルです。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "クイック返信",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "キーポイントで返信（テスト）",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ノルウェー語",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "フィンランド"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "フィンランド",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "チェコ語"
   },
   "prompt_editor": {
     "preset_variables__title": "機能",

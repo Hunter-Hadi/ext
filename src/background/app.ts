@@ -62,6 +62,7 @@ import {
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
+import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/features/activity/constants'
 import { getChromeExtensionUserInfo } from '@/features/auth/utils'
 import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
@@ -339,7 +340,7 @@ const initChromeExtensionUpdated = async () => {
     )
   }
 
-  if (APP_VERSION === '3.0.1' && getBrowserType() === 'Edge') {
+  if (APP_VERSION === '3.0.3' && getBrowserType() === 'Edge') {
     // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
     setTimeout(
       () => executeMaxAIOneYearPromotion(true),
@@ -347,13 +348,11 @@ const initChromeExtensionUpdated = async () => {
     )
   }
 
-  if (APP_VERSION === '3.0.2' && getBrowserType() === 'Edge') {
-    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
-    setTimeout(
-      () => executeMaxAIOneYearPromotion(true),
-      (1 + Math.floor(Math.random() * 9)) * 1000,
-    )
-  }
+  // 每次更新都重置一下 sidebar anniversary dialog
+  await setChromeExtensionOnBoardingData(
+    ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY,
+    false,
+  )
 
   // TODO: 预计2024-01移除这段逻辑, 更新老用户的conversation的authorId字段
   await ConversationManager.getAllConversation()

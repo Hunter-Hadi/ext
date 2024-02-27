@@ -10,9 +10,10 @@ import {
   MaxAIPDFAIViewerTopBarButtonGroup,
 } from '@/components/AppInit/MaxAIPDFViewerInit'
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { useInitChatGPTClient } from '@/features/chatgpt'
+import { useInitChatGPTClient, useUserInfo } from '@/features/chatgpt'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
@@ -28,7 +29,10 @@ import useHideInHost from '@/minimum/hooks/useHideInHost'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  getCurrentDomainHost,
+  isMaxAIImmersiveChatPage,
+} from '@/utils/dataHelper/websiteHelper'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
 import { clientGetBrowserInfo } from '@/utils/larkBot'
 import Log from '@/utils/Log'
@@ -92,6 +96,28 @@ export const AppSettingsInit = () => {
   return <></>
 }
 
+/**
+ * 在访问my-plan等页面时，更新用户的订阅信息.
+ * @constructor
+ */
+const MaxAISubscriptionUpdate = () => {
+  const { syncUserInfo, syncUserSubscriptionInfo } = useUserInfo()
+  useEffectOnce(() => {
+    syncUserInfo().then()
+    if (String(APP_USE_CHAT_GPT_HOST).includes(getCurrentDomainHost())) {
+      const pathname = window.location.pathname
+      if (
+        ['/my-plan', '/pricing', '/payment/error', '/payment/success'].includes(
+          pathname,
+        )
+      ) {
+        syncUserSubscriptionInfo().then()
+      }
+    }
+  })
+  return null
+}
+
 const AppInit = () => {
   useHideInHost()
   useInitChatGPTClient()
@@ -124,6 +150,7 @@ const AppInit = () => {
   useInitRangy()
   return (
     <>
+      <MaxAISubscriptionUpdate />
       <MAXAIPDFAIViewerErrorAlert />
       <MaxAIPDFAIViewerTopBarButtonGroup />
       <ContextMenuRoot />

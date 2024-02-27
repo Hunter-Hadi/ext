@@ -1,5 +1,5 @@
 {
-  "description": "Най-бързият начин да използвате изкуствен интелект, задвижван от ChatGPT, Claude, Gemini навсякъде. Единственото разширение за генеративен изкуствен интелект, което ви е необходимо.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Използвайте изкуствен интелект с едно щракване навсякъде",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Изчистете разговора си и започнете информативен и приятелски чат.",
     "provider__bing_web_app__conversation_style__precise__title": "Приложим",
     "provider__bing_web_app__conversation_style__precise__description": "Изчистете разговора си и започнете кратък и ясен чат.",
-    "provider__bard_web_app__title": "Уеб приложение Bard",
-    "provider__bard_web_app__short_description": "Подобрено с Google Lens.",
-    "provider__bard_web_app__auth_description": "Използвайте своя собствен акаунт на Google Bard, за да задействате разширението.",
-    "provider__bard_web_app__auth_button_text": "Продължете с Bard уеб приложение",
+    "provider__bard_web_app__title": "Уеб приложение Gemini",
+    "provider__bard_web_app__short_description": "Достъп до най-способната AI модел на Google.",
+    "provider__bard_web_app__auth_description": "Използвайте собствения си акаунт в Google Gemini, за да задействате разширението.",
+    "provider__bard_web_app__auth_button_text": "Продължете с уеб приложението Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Качете файл JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Най-продвинатият модел от Google. Задвижва Bard, PaLM API, MakerSuite и различни функции на работното пространство в Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Разсъждение, многоезичен превод, програмиране и други.",
     "provider__claude_web_app__title": "Claude уеб приложение",
     "provider__claude_web_app__short_description": "100K контекстно прозорец. Чат с няколко документа.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Получавайте отговори на най-трудните въпроси с обширни уеб изводи.",
     "sidebar__promotion_dialog__content_item6__title": "Резюмирайте и задавайте въпроси за всяка страница",
     "sidebar__promotion_dialog__content_item6__description": "Получавайте резюмета, задавайте въпроси и намирайте информация за всяка уеб страница, PDF файл, имейл и YouTube видео.",
-    "sidebar__promotion_dialog__cta_button": "Надстройте сега - Офертата изтича скоро!"
+    "sidebar__promotion_dialog__cta_button": "Надстройте сега - Офертата изтича скоро!",
+    "provider__bard_web_app__model__gemini__description": "Най-развитата модел от Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Бърз отговор",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Отговор с ключови точки (тест)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Норвежки",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Финландия"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Финландия",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Чешки"
   },
   "prompt_editor": {
     "preset_variables__title": "Възможности",

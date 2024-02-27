@@ -1,5 +1,5 @@
 {
-  "description": "Nejrychlejší způsob, jak používat umělou inteligenci poháněnou ChatGPT, Claude, Gemini kdekoli. Jediné rozšíření generativní umělé inteligence, které potřebujete.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Použijte umělou inteligenci kdekoli jedním kliknutím",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Vymažte svou konverzaci a začněte informativní a přátelský chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Přesný",
     "provider__bing_web_app__conversation_style__precise__description": "Vymažte svou konverzaci a začněte stručný a přímočarý chat.",
-    "provider__bard_web_app__title": "Bard webová aplikace",
-    "provider__bard_web_app__short_description": "Vylepšeno pomocí Google Lens.",
-    "provider__bard_web_app__auth_description": "Použijte svůj vlastní účet Google Bard k napájení rozšíření.",
-    "provider__bard_web_app__auth_button_text": "Pokračovat s aplikací Bard",
+    "provider__bard_web_app__title": "Gemini webová aplikace",
+    "provider__bard_web_app__short_description": "Přístup k nejvýkonnějšímu modelu umělé inteligence od Googlu.",
+    "provider__bard_web_app__auth_description": "Použijte svůj vlastní účet Google Gemini pro napájení rozšíření.",
+    "provider__bard_web_app__auth_button_text": "Pokračovat s Gemini webovou aplikací",
     "provider__bard_web_app__upload__accept_tooltip": "Nahrát soubor JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Nejvyspělejší model od Googlu. Napájí Bard, PaLM API, MakerSuite a různé funkce Workspace ve společnosti Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Odvozování, vícejazyčný překlad, programování a další.",
     "provider__claude_web_app__title": "Aplikace Claude",
     "provider__claude_web_app__short_description": "100K kontextové okno. Chat s více dokumenty.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Získejte odpovědi na nejtěžší otázky s pomocí komplexních informací z webu.",
     "sidebar__promotion_dialog__content_item6__title": "Shrňte a ptáte se na jakoukoli stránku",
     "sidebar__promotion_dialog__content_item6__description": "Získejte shrnutí, položte otázky a najděte informace o jakékoli webové stránce, PDF, e-mailu a YouTube videu.",
-    "sidebar__promotion_dialog__cta_button": "Upgradujte nyní - Nabídka končí brzy!"
+    "sidebar__promotion_dialog__cta_button": "Upgradujte nyní - Nabídka končí brzy!",
+    "provider__bard_web_app__model__gemini__description": "Nejvyspělejší model od Googlu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Rychlá odpověď",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpověď s klíčovými body (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norština",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Čeština"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Suomi",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Čeština"
   },
   "prompt_editor": {
     "preset_variables__title": "Schopnosti",

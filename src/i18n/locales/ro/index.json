@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Ștergeți conversația și începeți o discuție informativă și prietenoasă.",
     "provider__bing_web_app__conversation_style__precise__title": "Precis",
     "provider__bing_web_app__conversation_style__precise__description": "Ștergeți conversația și începeți o discuție concisă și directă.",
-    "provider__bard_web_app__title": "Aplicația web Bard",
-    "provider__bard_web_app__short_description": "Îmbunătățit cu Google Lens.",
-    "provider__bard_web_app__auth_description": "Utilizați propriul cont Google Bard pentru a alimenta extensia.",
-    "provider__bard_web_app__auth_button_text": "Continuați cu aplicația web Bard",
+    "provider__bard_web_app__title": "Aplicație web Gemini",
+    "provider__bard_web_app__short_description": "Accesați cel mai capabil model de IA al Google.",
+    "provider__bard_web_app__auth_description": "Utilizați propriul cont Google Gemini pentru a alimenta extensia.",
+    "provider__bard_web_app__auth_button_text": "Continuați cu aplicația web Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Încărcați fișier JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Cel mai avansat model de la Google. Alimentează Bard, PaLM API, MakerSuite și diverse funcționalități Workspace la Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Raționament, traducere multilingvă, programare și altele.",
     "provider__claude_web_app__title": "Aplicație web Claude",
     "provider__claude_web_app__short_description": "Fereastră de context de 100K. Conversați cu mai multe documente.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Obțineți răspunsuri la cele mai dificile întrebări cu informații cuprinzătoare despre web.",
     "sidebar__promotion_dialog__content_item6__title": "Rezumați și întrebați pe orice pagină",
     "sidebar__promotion_dialog__content_item6__description": "Obțineți rezumate, puneți întrebări și găsiți informații despre orice pagină web, PDF, e-mail și videoclip YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Faceți upgrade acum - Oferta se încheie curând!"
+    "sidebar__promotion_dialog__cta_button": "Faceți upgrade acum - Oferta se încheie curând!",
+    "provider__bard_web_app__model__gemini__description": "Cel mai avansat model de la Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Răspuns rapid",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Răspunde cu punctele cheie (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvegiană",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finlanda"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finlanda",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Cehă"
   },
   "prompt_editor": {
     "preset_variables__title": "Capabilități",

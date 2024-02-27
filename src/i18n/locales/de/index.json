@@ -1,5 +1,5 @@
 {
-  "description": "Der schnellste Weg, KI zu nutzen, die von ChatGPT, Claude, Gemini unterstützt wird. Die einzige generative KI-Erweiterung, die Sie benötigen.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Verwenden Sie KI mit nur einem Klick überall",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Löschen Sie das Gespräch und beginnen Sie einen informativen und freundlichen Chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Präzise",
     "provider__bing_web_app__conversation_style__precise__description": "Löschen Sie das Gespräch und beginnen Sie einen prägnanten und unkomplizierten Chat.",
-    "provider__bard_web_app__title": "Bard Web-App",
-    "provider__bard_web_app__short_description": "Mit Google Lens verbessert.",
-    "provider__bard_web_app__auth_description": "Verwenden Sie Ihr eigenes Google Bard-Konto, um die Erweiterung zu aktivieren.",
-    "provider__bard_web_app__auth_button_text": "Mit Bard Web-App fortfahren",
+    "provider__bard_web_app__title": "Gemini Web-App",
+    "provider__bard_web_app__short_description": "Zugriff auf Googles leistungsfähigstes KI-Modell.",
+    "provider__bard_web_app__auth_description": "Verwenden Sie Ihr eigenes Google Gemini-Konto, um die Erweiterung zu aktivieren.",
+    "provider__bard_web_app__auth_button_text": "Mit Gemini Web-App fortfahren",
     "provider__bard_web_app__upload__accept_tooltip": "Datei hochladen (JPEG, PNG, WEBP)",
-    "provider__bard_web_app__model__palm_2__description": "Das fortschrittlichste Modell von Google. Ermöglicht Bard, PaLM API, MakerSuite und verschiedene Workspace-Funktionen bei Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Begründung, mehrsprachige Übersetzung, Codierung und mehr.",
     "provider__claude_web_app__title": "Claude Web-App",
     "provider__claude_web_app__short_description": "100K Kontextfenster. Chatten mit mehreren Dokumenten.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Erhalten Sie Antworten auf die schwierigsten Fragen mit umfassenden Web-Einblicken.",
     "sidebar__promotion_dialog__content_item6__title": "Zusammenfassen und auf jeder Seite fragen",
     "sidebar__promotion_dialog__content_item6__description": "Erhalten Sie Zusammenfassungen, stellen Sie Fragen und finden Sie Informationen zu jeder Webseite, PDF, E-Mail und YouTube-Video.",
-    "sidebar__promotion_dialog__cta_button": "Jetzt upgraden - Angebot endet bald!"
+    "sidebar__promotion_dialog__cta_button": "Jetzt upgraden - Angebot endet bald!",
+    "provider__bard_web_app__model__gemini__description": "Das fortschrittlichste Modell von Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Schnelle Antwort",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwort mit Schlüsselpunkten (Test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegisch",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finnisch"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finnisch",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tschechisch"
   },
   "prompt_editor": {
     "preset_variables__title": "Fähigkeiten",

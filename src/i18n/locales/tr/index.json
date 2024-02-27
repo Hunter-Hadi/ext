@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT tarafından desteklenen yapay zeka ile her yerde kullanabileceğiniz en hızlı yol. İhtiyacınız olan tek üretken AI uzantısı.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Her Yerde 1 Tıkla AI Kullanın",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Sohbetinizi temizleyin ve bilgilendirici ve samimi bir sohbete başlayın.",
     "provider__bing_web_app__conversation_style__precise__title": "Hassas",
     "provider__bing_web_app__conversation_style__precise__description": "Sohbetinizi temizleyin ve özlü ve açık bir sohbete başlayın.",
-    "provider__bard_web_app__title": "Bard web uygulaması",
-    "provider__bard_web_app__short_description": "Google Lens ile geliştirilmiş.",
-    "provider__bard_web_app__auth_description": "Uzantıyı çalıştırmak için kendi Google Bard hesabınızı kullanın.",
-    "provider__bard_web_app__auth_button_text": "Bard web uygulamasına devam et",
+    "provider__bard_web_app__title": "Gemini web uygulaması",
+    "provider__bard_web_app__short_description": "Google'ın en yetenekli yapay zeka modeline erişin.",
+    "provider__bard_web_app__auth_description": "Uzantıyı çalıştırmak için kendi Google Gemini hesabınızı kullanın.",
+    "provider__bard_web_app__auth_button_text": "Gemini web uygulamasına devam edin",
     "provider__bard_web_app__upload__accept_tooltip": "JPEG, PNG, WEBP dosyası yükleyin",
-    "provider__bard_web_app__model__palm_2__description": "Google'ın en gelişmiş modeli. Bard, PaLM API, MakerSuite ve çeşitli Google Workspace özelliklerini destekler.",
     "provider__bard_web_app__model__what_it_can_do__description": "Akıl yürütme, çok dilli çeviri, kodlama ve daha fazlası.",
     "provider__claude_web_app__title": "Claude web uygulaması",
     "provider__claude_web_app__short_description": "100K bağlam penceresi. Birden çok belgeyle sohbet edin.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "En zor soruların cevaplarını kapsamlı web bilgileriyle alın.",
     "sidebar__promotion_dialog__content_item6__title": "Herhangi bir sayfada özetleyin ve soru sorun",
     "sidebar__promotion_dialog__content_item6__description": "Herhangi bir web sayfası, PDF, e-posta ve YouTube videosu hakkında özetler alın, sorular sorun ve bilgi bulun.",
-    "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Teklif yakında sona eriyor!"
+    "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Teklif yakında sona eriyor!",
+    "provider__bard_web_app__model__gemini__description": "Google tarafından geliştirilen en gelişmiş model."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Hızlı yanıt",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Anahtar noktalarıyla yanıtla(test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norveççe",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Fince"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Fince",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Çek"
   },
   "prompt_editor": {
     "preset_variables__title": "Yetenekler",

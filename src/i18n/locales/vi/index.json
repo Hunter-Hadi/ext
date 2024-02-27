@@ -1,5 +1,5 @@
 {
-  "description": "Cách nhanh nhất để sử dụng trí tuệ nhân tạo được cung cấp bởi ChatGPT, Claude, Gemini mọi nơi. Chỉ cần một tiện ích AI sinh sản duy nhất bạn cần.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Sử dụng Trí tuệ Nhân tạo bằng 1-Click Mọi nơi",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Xóa cuộc trò chuyện của bạn và bắt đầu một cuộc trò chuyện thông tin và thân thiện.",
     "provider__bing_web_app__conversation_style__precise__title": "Chính xác",
     "provider__bing_web_app__conversation_style__precise__description": "Xóa cuộc trò chuyện của bạn và bắt đầu một cuộc trò chuyện ngắn gọn và rõ ràng.",
-    "provider__bard_web_app__title": "Ứng dụng web Bard",
-    "provider__bard_web_app__short_description": "Được nâng cấp với Google Lens.",
-    "provider__bard_web_app__auth_description": "Sử dụng tài khoản Google Bard của bạn để cung cấp sức mạnh cho tiện ích.",
-    "provider__bard_web_app__auth_button_text": "Tiếp tục với ứng dụng web Bard",
+    "provider__bard_web_app__title": "Ứng dụng web Gemini",
+    "provider__bard_web_app__short_description": "Truy cập vào mô hình trí tuệ nhân tạo mạnh nhất của Google.",
+    "provider__bard_web_app__auth_description": "Sử dụng tài khoản Gemini của Google để kích hoạt tiện ích.",
+    "provider__bard_web_app__auth_button_text": "Tiếp tục với ứng dụng web Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Tải lên tệp JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Mô hình tiên tiến nhất của Google. Cung cấp sức mạnh cho Bard, PaLM API, MakerSuite và các tính năng Workspace khác tại Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Luận lý, dịch đa ngôn ngữ, mã hóa và nhiều hơn nữa.",
     "provider__claude_web_app__title": "Ứng dụng web Claude",
     "provider__claude_web_app__short_description": "Cửa sổ ngữ cảnh 100K. Trò chuyện với nhiều tài liệu.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Nhận câu trả lời cho những câu hỏi khó nhất với thông tin toàn diện từ web.",
     "sidebar__promotion_dialog__content_item6__title": "Tóm tắt và hỏi trên mọi trang",
     "sidebar__promotion_dialog__content_item6__description": "Nhận tóm tắt, đặt câu hỏi và tìm thông tin về bất kỳ trang web, PDF, email và video YouTube nào.",
-    "sidebar__promotion_dialog__cta_button": "Nâng cấp ngay - Ưu đãi sẽ kết thúc sớm!"
+    "sidebar__promotion_dialog__cta_button": "Nâng cấp ngay - Ưu đãi sẽ kết thúc sớm!",
+    "provider__bard_web_app__model__gemini__description": "Mô hình tiên tiến nhất của Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Trả lời nhanh",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Trả lời với điểm chính (thử nghiệm)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Tiếng Na Uy",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Tiếng Việt"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Tiếng Việt",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tiếng Séc"
   },
   "prompt_editor": {
     "preset_variables__title": "Khả năng",

@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "대화를 지우고 정보를 제공하고 친근한 대화를 시작하세요.",
     "provider__bing_web_app__conversation_style__precise__title": "정확한",
     "provider__bing_web_app__conversation_style__precise__description": "대화를 지우고 간결하고 명확한 대화를 시작하세요.",
-    "provider__bard_web_app__title": "Bard 웹 앱",
-    "provider__bard_web_app__short_description": "Google Lens로 향상됨.",
-    "provider__bard_web_app__auth_description": "확장 기능을 사용하려면 Google Bard 계정을 사용하세요.",
-    "provider__bard_web_app__auth_button_text": "Bard 웹 앱으로 계속하기",
+    "provider__bard_web_app__title": "젬니 웹 앱",
+    "provider__bard_web_app__short_description": "Google의 가장 능력있는 AI 모델에 접근하세요.",
+    "provider__bard_web_app__auth_description": "확장 프로그램을 작동시키기 위해 자체 Google 젬니 계정을 사용하세요.",
+    "provider__bard_web_app__auth_button_text": "젬니 웹 앱으로 계속하기",
     "provider__bard_web_app__upload__accept_tooltip": "JPEG, PNG, WEBP 파일 업로드",
-    "provider__bard_web_app__model__palm_2__description": "Google의 가장 고급 모델입니다. Bard, PaLM API, MakerSuite 및 Google의 다양한 Workspace 기능을 지원합니다.",
     "provider__bard_web_app__model__what_it_can_do__description": "추론, 다국어 번역, 코딩 등",
     "provider__claude_web_app__title": "Claude 웹 앱",
     "provider__claude_web_app__short_description": "100K 컨텍스트 창. 여러 문서와 대화하세요.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "포괄적인 웹 인사이트로 어려운 질문에 대한 답을 얻으세요.",
     "sidebar__promotion_dialog__content_item6__title": "요약 및 페이지에서 질문하기",
     "sidebar__promotion_dialog__content_item6__description": "웹페이지, PDF, 이메일 및 YouTube 비디오에 대한 요약, 질문 및 정보를 찾아보세요.",
-    "sidebar__promotion_dialog__cta_button": "지금 업그레이드 - 제공 기간 종료 임박!"
+    "sidebar__promotion_dialog__cta_button": "지금 업그레이드 - 제공 기간 종료 임박!",
+    "provider__bard_web_app__model__gemini__description": "Google에서 제공하는 가장 고급 모델입니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "빠른 답장",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "주요 포인트로 답장(테스트)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "노르웨이어",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "핀란드"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "핀란드",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "체코"
   },
   "prompt_editor": {
     "preset_variables__title": "기능",

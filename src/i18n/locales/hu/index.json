@@ -1,5 +1,5 @@
 {
-  "description": "A leggyorsabb módja az AI használatának, amelyet a ChatGPT, Claude, Gemini hajt. Az egyetlen generatív AI kiterjesztés, amire szükséged van.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Használja az AI-t egyetlen kattintással bárhol",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Törölje a beszélgetést és kezdjen el egy tájékoztató és barátságos beszélgetést.",
     "provider__bing_web_app__conversation_style__precise__title": "Pontos",
     "provider__bing_web_app__conversation_style__precise__description": "Törölje a beszélgetést és kezdjen el egy tömör és közvetlen beszélgetést.",
-    "provider__bard_web_app__title": "Bard webalkalmazás",
-    "provider__bard_web_app__short_description": "Google Lens-szel kiegészítve.",
-    "provider__bard_web_app__auth_description": "Használd a saját Google Bard fiókodat az bővítmény működtetéséhez.",
-    "provider__bard_web_app__auth_button_text": "Folytatás a Bard web alkalmazással",
+    "provider__bard_web_app__title": "Gemini web alkalmazás",
+    "provider__bard_web_app__short_description": "Hozzáférés a Google legképzettebb AI modelljéhez.",
+    "provider__bard_web_app__auth_description": "Használja saját Google Gemini fiókját az kiterjesztés működtetéséhez.",
+    "provider__bard_web_app__auth_button_text": "Folytatás a Gemini web alkalmazással",
     "provider__bard_web_app__upload__accept_tooltip": "Fájl feltöltése JPEG, PNG, WEBP formátumban",
-    "provider__bard_web_app__model__palm_2__description": "A Google legfejlettebb modellje. Hatalmat ad a Bardnak, a PaLM API-nak, a MakerSuite-nek és a Google különböző Munkaterületi funkcióinak.",
     "provider__bard_web_app__model__what_it_can_do__description": "Következtetés, többnyelvű fordítás, kódolás és még sok más.",
     "provider__claude_web_app__title": "Claude web alkalmazás",
     "provider__claude_web_app__short_description": "100K kontextusablak. Csevegés több dokumentummal.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Kapj válaszokat a legnehezebb kérdésekre átfogó webes információk segítségével.",
     "sidebar__promotion_dialog__content_item6__title": "Összefoglalás és kérdés feltevése bármelyik oldalon",
     "sidebar__promotion_dialog__content_item6__description": "Kapj összefoglalókat, tegyél fel kérdéseket, és találj információt bármelyik weboldalról, PDF-ről, e-mailről és YouTube-videóról.",
-    "sidebar__promotion_dialog__cta_button": "Frissítés most - Az ajánlat hamarosan lejár!"
+    "sidebar__promotion_dialog__cta_button": "Frissítés most - Az ajánlat hamarosan lejár!",
+    "provider__bard_web_app__model__gemini__description": "A Google legfejlettebb modellje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Gyors válasz",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Válasz kulcsfontosságú pontokkal (teszt)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norvég",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finnish"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finnish",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Cseh"
   },
   "prompt_editor": {
     "preset_variables__title": "Képességek",

@@ -73,7 +73,7 @@ const AIResponseError: FC<IProps> = ({
       return `https://bing.com/chat`
     }
     if (provider === SEARCH_WITH_AI_PROVIDER_MAP.BARD) {
-      return `https://bard.google.com`
+      return `https://gemini.google.com`
     }
     if (provider === SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE) {
       return 'https://claude.ai/login'

@@ -1,5 +1,5 @@
 {
-  "description": "ChatGPT، Claude، Gemini کی طاقتور ترین طریقہ جو آپ کہیں بھی استعمال کرنے کے لئے AI پر مبنی ہے۔ صرف ایک تولیدی AI توسیع جو آپ کو ضرورت ہے۔",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: کہیں بھی 1-کلک AI استعمال کریں",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "اپنی گفتگو کو صاف کریں اور معلوماتی اور دوستانہ چیٹ شروع کریں۔",
     "provider__bing_web_app__conversation_style__precise__title": "عینی",
     "provider__bing_web_app__conversation_style__precise__description": "اپنی گفتگو کو صاف کریں اور مختصر اور واضح چیٹ شروع کریں۔",
-    "provider__bard_web_app__title": "بارڈ ویب ایپ",
-    "provider__bard_web_app__short_description": "گوگل لینس کے ساتھ مستعمل کیا گیا ہے۔",
-    "provider__bard_web_app__auth_description": "ایکسٹینشن کو چلانے کے لئے اپنا خود کا گوگل بارڈ اکاؤنٹ استعمال کریں۔",
-    "provider__bard_web_app__auth_button_text": "بارڈ ویب ایپ کے ساتھ جاری رکھیں",
+    "provider__bard_web_app__title": "جمینی ویب ایپ",
+    "provider__bard_web_app__short_description": "گوگل کے سب سے قابلِ اہتمام AI ماڈل تک رسائی حاصل کریں۔",
+    "provider__bard_web_app__auth_description": "اپنے خود کے گوگل جمینی اکاؤنٹ کا استعمال کریں تاکہ توسیع کو طاقت دیں۔",
+    "provider__bard_web_app__auth_button_text": "جمینی ویب ایپ کے ساتھ جاری رکھیں",
     "provider__bard_web_app__upload__accept_tooltip": "فائل اپ لوڈ کریں JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "گوگل کا سب سے تجدید شدہ ماڈل۔ بارڈ، پام API، میکر سوئٹ، اور مختلف ورکسپیس کی خصوصیات کو طاقت دیتا ہے۔",
     "provider__bard_web_app__model__what_it_can_do__description": "تحقیق، بہاشمی ترجمہ، کوڈنگ، اور مزید۔",
     "provider__claude_web_app__title": "کلوڈ ویب ایپ",
     "provider__claude_web_app__short_description": "100K سیاق و سباق ونڈو۔ متعدد دستاویزات کے ساتھ چیٹ کریں۔",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "سخت سوالات کے جوابات حاصل کریں مکمل ویب انسائٹس کے ساتھ۔",
     "sidebar__promotion_dialog__content_item6__title": "تفصیلی خلاصہ اور کسی بھی صفحے پر سوال کریں",
     "sidebar__promotion_dialog__content_item6__description": "کسی بھی ویب پیج، پی ڈی ایف، ای میل اور یوٹیوب ویڈیو کے بارے میں خلاصے حاصل کریں، سوالات پوچھیں اور معلومات تلاش کریں۔",
-    "sidebar__promotion_dialog__cta_button": "اب اپگریڈ کریں - پیشکش جلد ختم ہوجائے گی!"
+    "sidebar__promotion_dialog__cta_button": "اب اپگریڈ کریں - پیشکش جلد ختم ہوجائے گی!",
+    "provider__bard_web_app__model__gemini__description": "گوگل کا سب سے تجربہ کار ماڈل۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "تیز جواب",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "مضامین کے مختصر جواب دیں (ٹیسٹ)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نارویجین",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "سومی"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "سومی",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "چیک"
   },
   "prompt_editor": {
     "preset_variables__title": "صلاحیتوں",

@@ -7,14 +7,14 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 
 export const BARD_MODELS: IAIProviderModel[] = [
   {
-    title: 'PaLM 2',
+    title: 'Gemini',
     titleTag: '',
     value: 'PaLM 2',
-    maxTokens: 8192,
+    maxTokens: 32768,
     tags: [],
     poweredBy: 'Google',
     description: (t) =>
-      t('client:provider__bard_web_app__model__palm_2__description'),
+      t('client:provider__bard_web_app__model__gemini__description'),
     uploadFileConfig: {
       maxFileSize: 25 * 1024 * 1024, // 25MB
       accept: '.jpg,.jpeg,.png,.webp',

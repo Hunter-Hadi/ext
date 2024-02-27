@@ -9,6 +9,7 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -22,6 +23,7 @@ const DevConsole: FC = () => {
     currentSidebarConversation,
     sidebarSettings,
   } = useSidebarSettings()
+  const { currentAIProviderModel } = useAIProviderModels()
   const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
@@ -125,6 +127,7 @@ const DevConsole: FC = () => {
             currentSidebarAIProvider: {currentSidebarAIProvider} - [
             {currentSidebarConversation?.messages.length}]
           </p>
+          <p>currentSidebarAIMode: {currentAIProviderModel}</p>
           <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
           <p>Chat: {sidebarSettings?.chat?.conversationId}</p>
           <p>Summary: {sidebarSettings?.summary?.conversationId}</p>

@@ -294,12 +294,11 @@
     "provider__bing_web_app__auth_button_text": "继续使用Bing网络应用",
     "provider__bing_web_app__upload__accept_tooltip": "添加图片",
     "provider__bing_web_app__model__gpt_4__description": "比任何GPT-3.5模型更强大，能够执行更复杂的任务，并针对聊天进行了优化。在OpenAI发布最新模型2周后将进行更新。",
-    "provider__bard_web_app__title": "Bard网络应用",
-    "provider__bard_web_app__short_description": "配备Google Lens增强功能。",
-    "provider__bard_web_app__auth_description": "使用您自己的Google Bard账户来提供扩展功能。",
-    "provider__bard_web_app__auth_button_text": "继续使用Bard网络应用",
+    "provider__bard_web_app__title": "Gemini 网页应用",
+    "provider__bard_web_app__short_description": "访问谷歌最强大的 AI 模型。",
+    "provider__bard_web_app__auth_description": "使用您自己的谷歌 Gemini 帐户来提供扩展功能。",
+    "provider__bard_web_app__auth_button_text": "继续使用 Gemini 网页应用",
     "provider__bard_web_app__upload__accept_tooltip": "上传文件JPEG、PNG、WEBP",
-    "provider__bard_web_app__model__palm_2__description": "谷歌最先进的模型。为Bard、PaLM API、MakerSuite和谷歌的各种Workspace功能提供动力。",
     "provider__bard_web_app__model__what_it_can_do__description": "推理、多语言翻译、编码等。",
     "provider__claude_web_app__title": "Claude网络应用",
     "provider__claude_web_app__short_description": "100K上下文窗口。与多个文档进行聊天。",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "通过全面的网络洞察力获取对最困难问题的答案。",
     "sidebar__promotion_dialog__content_item6__title": "摘要和在任何页面上提问",
     "sidebar__promotion_dialog__content_item6__description": "获取任何网页、PDF、电子邮件和 YouTube 视频的摘要、提问和信息。",
-    "sidebar__promotion_dialog__cta_button": "立即升级 - 优惠即将结束！"
+    "sidebar__promotion_dialog__cta_button": "立即升级 - 优惠即将结束！",
+    "provider__bard_web_app__model__gemini__description": "谷歌最先进的模型。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "快速回复",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "回复关键点（测试）",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "挪威语",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "芬兰"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "芬兰",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "捷克语"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",

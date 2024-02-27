@@ -19,7 +19,7 @@ class BardChat extends BaseChat {
     atValue: string
     blValue: string
   }
-  contextIds: [string, string, string] = ['', '', '']
+  contextIds: string[] = ['', '', '']
   constructor() {
     super('BardChat')
     this.token = undefined
@@ -42,7 +42,7 @@ class BardChat extends BaseChat {
       // need Auth
       await this.updateClientStatus('needAuth')
       await Browser.tabs.create({
-        url: 'https://bard.google.com/',
+        url: 'https://gemini.google.com/',
         active: true,
       })
     } else {
@@ -95,7 +95,7 @@ class BardChat extends BaseChat {
         type: 'error',
         done: true,
         error:
-          'Please log into [bard.google.com](https://bard.google.com) and try again.',
+          'Please log into [gemini.google.com](https://gemini.google.com) and try again.',
         data: {
           text: '',
           conversationId: '',

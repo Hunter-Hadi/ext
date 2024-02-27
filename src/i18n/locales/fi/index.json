@@ -1,5 +1,5 @@
 {
-  "description": "Nopein tapa käyttää ChatGPT:n, Clauden ja Geminin tehostamaa tekoälyä missä tahansa. Ainoa generatiivisen tekoälyn laajennus, jota tarvitset.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Käytä 1-Click AI missä tahansa",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Tyhjennä keskustelu ja aloita informatiivinen ja ystävällinen keskustelu.",
     "provider__bing_web_app__conversation_style__precise__title": "Tarkka",
     "provider__bing_web_app__conversation_style__precise__description": "Tyhjennä keskustelu ja aloita tiivis ja suoraviivainen keskustelu.",
-    "provider__bard_web_app__title": "Bard-verkkosovellus",
-    "provider__bard_web_app__short_description": "Parannettu Google Lensillä.",
-    "provider__bard_web_app__auth_description": "Käytä omaa Google Bard -tiliäsi laajennuksen voimana.",
-    "provider__bard_web_app__auth_button_text": "Jatka Bard web-sovelluksella",
+    "provider__bard_web_app__title": "Gemini-verkkosovellus",
+    "provider__bard_web_app__short_description": "Käytä Google'n kyvykkäintä tekoälymallia.",
+    "provider__bard_web_app__auth_description": "Käytä omaa Google Gemini -tiliäsi laajennuksen voimanlähteenä.",
+    "provider__bard_web_app__auth_button_text": "Jatka Gemini-verkkosovelluksella",
     "provider__bard_web_app__upload__accept_tooltip": "Lataa tiedosto JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Googlen kehittynein malli. Antaa voiman Bardille, PaLM API:lle, MakerSuitelle ja erilaisille Workspace-ominaisuuksille Googlessa.",
     "provider__bard_web_app__model__what_it_can_do__description": "Päättelyä, monikielistä kääntämistä, koodausta ja paljon muuta.",
     "provider__claude_web_app__title": "Claude web-sovellus",
     "provider__claude_web_app__short_description": "100K kontekstiruutu. Keskustele useiden asiakirjojen kanssa.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Saat vastauksia vaikeimpiin kysymyksiin kattavien verkkotietojen avulla.",
     "sidebar__promotion_dialog__content_item6__title": "Tiivistä ja kysy mistä tahansa sivulta",
     "sidebar__promotion_dialog__content_item6__description": "Saat tiivistelmiä, voit esittää kysymyksiä ja löytää tietoa mistä tahansa verkkosivusta, PDF-tiedostosta, sähköpostista ja YouTube-videosta.",
-    "sidebar__promotion_dialog__cta_button": "Päivitä nyt - Tarjous päättyy pian!"
+    "sidebar__promotion_dialog__cta_button": "Päivitä nyt - Tarjous päättyy pian!",
+    "provider__bard_web_app__model__gemini__description": "Googlen kehittynein malli."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Pikavastaus",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Vastaa avainkohtien kanssa (testi)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norja",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Suomi"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Suomi",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tšekki"
   },
   "prompt_editor": {
     "preset_variables__title": "Ominaisuudet",

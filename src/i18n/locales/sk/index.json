@@ -1,5 +1,5 @@
 {
-  "description": "Najrýchlejší spôsob, ako používať umelú inteligenciu poháňanú ChatGPT, Claude, Gemini kdekoľvek. Jedinečné rozšírenie generatívnej AI, ktoré potrebujete.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Použite 1-klikovú AI kdekoľvek",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Vymažte konverzáciu a začnite informatívny a priateľský chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Presný",
     "provider__bing_web_app__conversation_style__precise__description": "Vymažte konverzáciu a začnite stručný a priamočiary chat.",
-    "provider__bard_web_app__title": "Bard webová aplikácia",
-    "provider__bard_web_app__short_description": "Vylepšené s Google Lens.",
-    "provider__bard_web_app__auth_description": "Použite svoj vlastný účet Google Bard na napájanie rozšírenia.",
-    "provider__bard_web_app__auth_button_text": "Pokračovať s aplikáciou Bard",
+    "provider__bard_web_app__title": "Gemini webová aplikácia",
+    "provider__bard_web_app__short_description": "Prístup k najschopnejšiemu AI modelu od Googlu.",
+    "provider__bard_web_app__auth_description": "Použite svoj vlastný účet Google Gemini na napájanie rozšírenia.",
+    "provider__bard_web_app__auth_button_text": "Pokračovať s Gemini webovou aplikáciou",
     "provider__bard_web_app__upload__accept_tooltip": "Nahrajte súbor JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Najpokročilejší model od spoločnosti Google. Napája Bard, PaLM API, MakerSuite a rôzne funkcie Workspace v službe Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Rozumovanie, viacjazyčný preklad, programovanie a ďalšie.",
     "provider__claude_web_app__title": "Aplikácia Claude",
     "provider__claude_web_app__short_description": "100K kontextové okno. Chatujte s viacerými dokumentmi.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Získajte odpovede na najťažšie otázky s podrobnými informáciami z webu.",
     "sidebar__promotion_dialog__content_item6__title": "Zhrňte a pýtajte sa na akúkoľvek stránku",
     "sidebar__promotion_dialog__content_item6__description": "Získajte súhrny, kladnite otázky a nájdite informácie o akomkoľvek webovom sídle, PDF, e-maili a YouTube videu.",
-    "sidebar__promotion_dialog__cta_button": "Vylepšiť teraz - Ponuka končí čoskoro!"
+    "sidebar__promotion_dialog__cta_button": "Vylepšiť teraz - Ponuka končí čoskoro!",
+    "provider__bard_web_app__model__gemini__description": "Najpokročilejší model od Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Rýchla odpoveď",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpovedať kľúčovými bodmi (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Nórsky",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Slovenský"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Slovenský",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Čeština"
   },
   "prompt_editor": {
     "preset_variables__title": "Schopnosti",

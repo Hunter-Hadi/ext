@@ -1,5 +1,5 @@
 {
-  "description": "Najszybszy sposób na korzystanie z AI napędzanego przez ChatGPT, Claude, Gemini w dowolnym miejscu. Jedyny rozszerzenie generatywne AI, którego potrzebujesz.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Użyj sztucznej inteligencji w jednym kliknięciu wszędzie",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Wyczyść swoją rozmowę i rozpocznij informacyjną i przyjazną rozmowę.",
     "provider__bing_web_app__conversation_style__precise__title": "Precyzyjny",
     "provider__bing_web_app__conversation_style__precise__description": "Wyczyść swoją rozmowę i rozpocznij zwięzłą i prostą rozmowę.",
-    "provider__bard_web_app__title": "Aplikacja internetowa Bard",
-    "provider__bard_web_app__short_description": "Wzbogacone o Google Lens.",
-    "provider__bard_web_app__auth_description": "Użyj swojego własnego konta Google Bard, aby zasilać rozszerzenie.",
-    "provider__bard_web_app__auth_button_text": "Kontynuuj z aplikacją internetową Bard",
+    "provider__bard_web_app__title": "Aplikacja internetowa Gemini",
+    "provider__bard_web_app__short_description": "Dostęp do najbardziej zaawansowanego modelu sztucznej inteligencji Google.",
+    "provider__bard_web_app__auth_description": "Użyj swojego własnego konta Google Gemini, aby zasilać rozszerzenie.",
+    "provider__bard_web_app__auth_button_text": "Kontynuuj z aplikacją internetową Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Prześlij plik JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Najbardziej zaawansowany model stworzony przez Google. Zasila Bard, interfejs API PaLM, MakerSuite i różne funkcje przestrzeni roboczej w Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Rozumowanie, wielojęzyczne tłumaczenie, kodowanie i wiele więcej.",
     "provider__claude_web_app__title": "Aplikacja internetowa Claude",
     "provider__claude_web_app__short_description": "Okno kontekstowe 100K. Czat z wieloma dokumentami.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Otrzymuj odpowiedzi na najtrudniejsze pytania dzięki wszechstronnym informacjom z sieci.",
     "sidebar__promotion_dialog__content_item6__title": "Podsumuj i pytaj o dowolną stronę",
     "sidebar__promotion_dialog__content_item6__description": "Otrzymuj podsumowania, zadawaj pytania i znajduj informacje na temat dowolnej strony internetowej, pliku PDF, wiadomości e-mail i filmu na YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Zaktualizuj teraz - Oferta kończy się wkrótce!"
+    "sidebar__promotion_dialog__cta_button": "Zaktualizuj teraz - Oferta kończy się wkrótce!",
+    "provider__bard_web_app__model__gemini__description": "Najbardziej zaawansowany model stworzony przez Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Szybka odpowiedź",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odpowiedz kluczowymi punktami (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norweski",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Fiński"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Fiński",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Czeski"
   },
   "prompt_editor": {
     "preset_variables__title": "Możliwości",

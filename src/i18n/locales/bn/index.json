@@ -1,5 +1,5 @@
 {
-  "description": "চ্যাটজিপিটি দ্বারা সক্ষম এআই ব্যবহারের সবচেয়ে দ্রুত উপায়, ক্লোড, জেমিনি। আপনি যেখানেই যান, শুধুমাত্র জেনারেটিভ এআই এক্সটেনশন আপনার প্রয়োজন।",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: কোথাও এখানে 1-ক্লিক এইআই ব্যবহার করুন",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "আপনার চ্যাট মুছে ফেলুন এবং একটি তথ্যমূলক এবং বন্ধুত্বপূর্ণ চ্যাট শুরু করুন।",
     "provider__bing_web_app__conversation_style__precise__title": "সঠিক",
     "provider__bing_web_app__conversation_style__precise__description": "আপনার চ্যাট মুছে ফেলুন এবং একটি সংক্ষিপ্ত এবং সরাসরি চ্যাট শুরু করুন।",
-    "provider__bard_web_app__title": "বার্ড ওয়েব অ্যাপ",
-    "provider__bard_web_app__short_description": "গুগল লেন্স সহ উন্নত।",
-    "provider__bard_web_app__auth_description": "এক্সটেনশন চালাতে আপনার নিজের গুগল বার্ড অ্যাকাউন্ট ব্যবহার করুন।",
-    "provider__bard_web_app__auth_button_text": "বার্ড ওয়েব অ্যাপ দিয়ে চালিয়ে যান",
+    "provider__bard_web_app__title": "জেমিনি ওয়েব অ্যাপ",
+    "provider__bard_web_app__short_description": "গুগলের সবচেয়ে ক্ষমতাশালী AI মডেলে প্রবেশ করুন।",
+    "provider__bard_web_app__auth_description": "এক্সটেনশন চালাতে আপনার নিজের গুগল জেমিনি অ্যাকাউন্ট ব্যবহার করুন।",
+    "provider__bard_web_app__auth_button_text": "জেমিনি ওয়েব অ্যাপ চালিয়ে যান",
     "provider__bard_web_app__upload__accept_tooltip": "ফাইল আপলোড করুন JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "গুগলের সবচেয়ে উন্নত মডেল। বার্ড, পালম API, মেকারসুইট, এবং গুগলের বিভিন্ন ওয়ার্কস্পেস ফিচারে কাজ করে।",
     "provider__bard_web_app__model__what_it_can_do__description": "যুক্তিসঙ্গতি, বহুভাষিক অনুবাদ, কোডিং এবং আরও।",
     "provider__claude_web_app__title": "ক্লোড ওয়েব অ্যাপ",
     "provider__claude_web_app__short_description": "100K কনটেক্সট উইন্ডো। একাধিক ডকুমেন্টের সাথে চ্যাট করুন।",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "সম্পূর্ণ ওয়েব ইনসাইট দিয়ে সবচেয়ে কঠিন প্রশ্নের উত্তর পান।",
     "sidebar__promotion_dialog__content_item6__title": "সারাংশ করুন এবং যেকোনো পৃষ্ঠায় প্রশ্ন করুন",
     "sidebar__promotion_dialog__content_item6__description": "যেকোনো ওয়েবপেজ, পিডিএফ, ইমেল এবং YouTube ভিডিও সম্পর্কে সংক্ষিপ্তসার, প্রশ্ন করুন এবং তথ্য খুঁজুন।",
-    "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - অফার শীঘ্রই শেষ!"
+    "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - অফার শীঘ্রই শেষ!",
+    "provider__bard_web_app__model__gemini__description": "গুগলের দ্বারা সর্বাধিক উন্নত মডেল।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "দ্রুত উত্তর",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "মূল পয়েন্ট দিয়ে উত্তর দিন (পরীক্ষা)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "নরওয়েজীয়",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "সুওমি"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "সুওমি",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "চেক"
   },
   "prompt_editor": {
     "preset_variables__title": "ক্ষমতা",

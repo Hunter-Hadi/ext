@@ -1,5 +1,5 @@
 {
-  "description": "Den hurtigste måde at bruge AI, der er drevet af ChatGPT, Claude, Gemini hvor som helst. Den eneste generative AI-udvidelse, du har brug for.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Brug 1-klik AI Overalt",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Ryd din samtale og start en informativ og venlig chat.",
     "provider__bing_web_app__conversation_style__precise__title": "Præcis",
     "provider__bing_web_app__conversation_style__precise__description": "Ryd din samtale og start en kortfattet og direkte chat.",
-    "provider__bard_web_app__title": "Bard webapp",
-    "provider__bard_web_app__short_description": "Forbedret med Google Lens.",
-    "provider__bard_web_app__auth_description": "Brug din egen Google Bard-konto til at drive udvidelsen.",
-    "provider__bard_web_app__auth_button_text": "Fortsæt med Bard web app",
+    "provider__bard_web_app__title": "Gemini web app",
+    "provider__bard_web_app__short_description": "Få adgang til Googles mest kapable AI-model.",
+    "provider__bard_web_app__auth_description": "Brug din egen Google Gemini-konto til at drive udvidelsen.",
+    "provider__bard_web_app__auth_button_text": "Fortsæt med Gemini web app",
     "provider__bard_web_app__upload__accept_tooltip": "Upload fil JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Den mest avancerede model fra Google. Driver Bard, PaLM API, MakerSuite og forskellige Workspace-funktioner hos Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Ræsonnement, flersproget oversættelse, kodning og mere.",
     "provider__claude_web_app__title": "Claude web app",
     "provider__claude_web_app__short_description": "100K kontekstvindue. Chat med flere dokumenter.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Få svar på de sværeste spørgsmål med omfattende webindsigter.",
     "sidebar__promotion_dialog__content_item6__title": "Opsummer og spørg på enhver side",
     "sidebar__promotion_dialog__content_item6__description": "Få opsummeringer, stil spørgsmål og find information om enhver hjemmeside, PDF, e-mail og YouTube-video.",
-    "sidebar__promotion_dialog__cta_button": "Opgrader nu - Tilbudet udløber snart!"
+    "sidebar__promotion_dialog__cta_button": "Opgrader nu - Tilbudet udløber snart!",
+    "provider__bard_web_app__model__gemini__description": "Den mest avancerede model af Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Hurtigt svar",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Svar med nøglepunkter (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norsk",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finsk"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finsk",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tjekkisk"
   },
   "prompt_editor": {
     "preset_variables__title": "Funktioner",

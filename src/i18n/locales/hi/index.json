@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "अपनी चर्चा को साफ करें और एक ज्ञानवर्धक और मित्रतापूर्ण चैट शुरू करें।",
     "provider__bing_web_app__conversation_style__precise__title": "सटीक",
     "provider__bing_web_app__conversation_style__precise__description": "अपनी चर्चा को साफ करें और एक संक्षिप्त और सीधी चैट शुरू करें।",
-    "provider__bard_web_app__title": "Bard वेब ऐप",
-    "provider__bard_web_app__short_description": "Google Lens के साथ बढ़ाया गया।",
-    "provider__bard_web_app__auth_description": "एक्सटेंशन को संचालित करने के लिए अपने Google Bard खाते का उपयोग करें।",
-    "provider__bard_web_app__auth_button_text": "Bard वेब ऐप के साथ जारी रखें",
+    "provider__bard_web_app__title": "जेमिनी वेब ऐप",
+    "provider__bard_web_app__short_description": "Google के सबसे सक्षम AI मॉडल तक पहुंचें।",
+    "provider__bard_web_app__auth_description": "एक्सटेंशन को संचालित करने के लिए अपना Google जेमिनी खाता उपयोग करें।",
+    "provider__bard_web_app__auth_button_text": "जेमिनी वेब ऐप के साथ जारी रखें",
     "provider__bard_web_app__upload__accept_tooltip": "फ़ाइल अपलोड करें JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Google द्वारा सबसे उन्नत मॉडल। बार्ड, PaLM API, MakerSuite, और विभिन्न Workspace सुविधाओं को Google पर संचालित करता है।",
     "provider__bard_web_app__model__what_it_can_do__description": "तर्क, बहुभाषी अनुवाद, कोडिंग, और अधिक।",
     "provider__claude_web_app__title": "Claude वेब ऐप",
     "provider__claude_web_app__short_description": "100K संदर्भ विंडो। कई दस्तावेज़ों के साथ चैट करें।",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "संपूर्ण वेब इंसाइट के साथ सबसे कठिन सवालों के जवाब प्राप्त करें।",
     "sidebar__promotion_dialog__content_item6__title": "सारांश बनाएं और किसी पृष्ठ पर पूछें",
     "sidebar__promotion_dialog__content_item6__description": "किसी भी वेबपेज, पीडीएफ, ईमेल और YouTube वीडियो के बारे में सारांश बनाएं, सवाल पूछें और जानकारी ढूंढें।",
-    "sidebar__promotion_dialog__cta_button": "अभी अपग्रेड करें - ऑफर जल्द ही समाप्त हो जाएगा!"
+    "sidebar__promotion_dialog__cta_button": "अभी अपग्रेड करें - ऑफर जल्द ही समाप्त हो जाएगा!",
+    "provider__bard_web_app__model__gemini__description": "Google द्वारा सबसे उन्नत मॉडल।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "त्वरित जवाब",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "मुख्य बिंदुओं के साथ जवाब दें (परीक्षण)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "नॉर्वेजियन",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "सुओमी"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "सुओमी",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "चेक"
   },
   "prompt_editor": {
     "preset_variables__title": "क्षमताएँ",

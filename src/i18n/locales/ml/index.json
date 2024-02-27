@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Gemini പ്രവർത്തിപ്പിക്കുന്ന AI ഉപയോഗിക്കാൻ ഏറ്റവും വേഗത്തിൽ. നിങ്ങൾക്ക് ആവശ്യമായ ഏറ്റവും സൃഷ്ടികരണാധികാരി AI എക്സ്റ്റൻഷൻ.",
-  "name": "MaxAI.me: ചാറ്റ്‌ജിപിടി, ക്ലോഡ്, ബാർഡ്, ബിംഗ് എയി ഉപയോഗിക്കുന്നതിന് 1-ക്ലിക്ക് AI എവിടെയും ഉപയോഗിക്കുന്നതിന്റെ ഏറ്റവും വേഗത്തിലേക്ക്",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
+  "name": "MaxAI.me: Use 1-Click AI Anywhere",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ലോഗ് ഔട്ട്",
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "സംഭാഷണം മായ്‌ക്കുകയും അറിവുപോലെയുള്ള ഒരു സൌഹൃദപൂർണ്ണമായ സംഭാഷണത്തിൽ ആരംഭിക്കുക.",
     "provider__bing_web_app__conversation_style__precise__title": "വ്യക്ഷമായ",
     "provider__bing_web_app__conversation_style__precise__description": "സംഭാഷണം മായ്‌ക്കുകയും സംക്ഷിപ്തമായ, നിരക്കുന്ന ഒരു സൗജന്യമായ സംഭാഷണത്തിൽ ആരംഭിക്കുക.",
-    "provider__bard_web_app__title": "Bard വെബ് ആപ്പ്",
-    "provider__bard_web_app__short_description": "Diperkaya dengan Google Lens.",
-    "provider__bard_web_app__auth_description": "Gunakan akaun Google Bard anda sendiri untuk memperkuat sambungan ini.",
-    "provider__bard_web_app__auth_button_text": "Teruskan dengan aplikasi web Bard",
+    "provider__bard_web_app__title": "ജെമിനി വെബ് ആപ്പ്",
+    "provider__bard_web_app__short_description": "ഗൂഗിളിന്റെ ഏറ്റവും യോഗ്യമായ AI മോഡൽക്ക് പ്രവേശനം.",
+    "provider__bard_web_app__auth_description": "എന്റെ സ്വന്തമായ Google Gemini അക്കൗണ്ട് ഉപയോഗിച്ച് വിപുലീകരണം നടപ്പിലാക്കുക.",
+    "provider__bard_web_app__auth_button_text": "ജെമിനി വെബ് ആപ്പിൽ തുടരുക",
     "provider__bard_web_app__upload__accept_tooltip": "Muat naik fail JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Model tercanggih oleh Google. Memperkuat Bard, API PaLM, MakerSuite, dan pelbagai ciri Workspace di Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan pelbagai bahasa, pengaturcaraan, dan banyak lagi.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
     "provider__claude_web_app__short_description": "Jendela konteks 100K. Berbual dengan beberapa dokumen.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "വിപുലമായ വെബ് അന്വേഷണങ്ങൾക്ക് ഉത്തരം നൽകുക.",
     "sidebar__promotion_dialog__content_item6__title": "ഏതെങ്കിലും പേജിൽ സംഗ്രഹിക്കുക & ചോദിക്കുക",
     "sidebar__promotion_dialog__content_item6__description": "ഏതെങ്കിലും വെബ് പേജ്, PDF, ഇമെയിൽ, യൂട്യൂബ് വീഡിയോയും സംശയങ്ങൾ ചോദിക്കുക, അറിയുക, സംഗ്രഹിക്കുക.",
-    "sidebar__promotion_dialog__cta_button": "ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക - ഓഫർ ഇനിയും അവസാനിക്കുന്നു!"
+    "sidebar__promotion_dialog__cta_button": "ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക - ഓഫർ ഇനിയും അവസാനിക്കുന്നു!",
+    "provider__bard_web_app__model__gemini__description": "ഗൂഗിളിന്റെ ഏറ്റവും അടുത്ത മോഡൽ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "വേഗത്തിൽ ഉത്തരം നൽകുക",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "പ്രധാന പോയന്റുകൾക്ക് ഉത്തരം നൽകുക (ടെസ്റ്റ്)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "നോർവീജിയൻ",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "സൂമി"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "സൂമി",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "ചെക്ക്"
   },
   "prompt_editor": {
     "preset_variables__title": "സാധ്യതകൾ",

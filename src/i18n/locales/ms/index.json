@@ -1,5 +1,5 @@
 {
-  "description": "Cara terpantas untuk menggunakan AI yang dikuasakan oleh ChatGPT, Claude, Gemini di mana-mana. Satu-satunya sambungan AI generatif yang anda perlukan.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Gunakan AI 1-Klik Di Mana-mana",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Padam perbualan anda dan mulakan perbualan yang informatif dan mesra.",
     "provider__bing_web_app__conversation_style__precise__title": "Tepat",
     "provider__bing_web_app__conversation_style__precise__description": "Padam perbualan anda dan mulakan perbualan yang ringkas dan langsung.",
-    "provider__bard_web_app__title": "Aplikasi web Bard",
-    "provider__bard_web_app__short_description": "Ditingkatkan dengan Google Lens.",
-    "provider__bard_web_app__auth_description": "Gunakan akaun Google Bard anda sendiri untuk membolehkan sambungan.",
-    "provider__bard_web_app__auth_button_text": "Teruskan dengan aplikasi web Bard",
+    "provider__bard_web_app__title": "Aplikasi web Gemini",
+    "provider__bard_web_app__short_description": "Akses model AI paling canggih dari Google.",
+    "provider__bard_web_app__auth_description": "Gunakan akun Gemini Google Anda sendiri untuk mengaktifkan ekstensi.",
+    "provider__bard_web_app__auth_button_text": "Lanjutkan dengan aplikasi web Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Muat naik fail JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Model paling canggih oleh Google. Membolehkan Bard, API PaLM, MakerSuite, dan pelbagai ciri Workspace di Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan pelbagai bahasa, pengaturcaraan, dan banyak lagi.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
     "provider__claude_web_app__short_description": "Jendela konteks 100K. Berbual dengan beberapa dokumen.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Dapatkan jawapan kepada soalan-soalan yang paling sukar dengan pandangan web menyeluruh.",
     "sidebar__promotion_dialog__content_item6__title": "Ringkaskan & tanya pada mana-mana laman",
     "sidebar__promotion_dialog__content_item6__description": "Dapatkan ringkasan, tanya soalan, dan cari maklumat tentang mana-mana laman web, PDF, e-mel, dan video YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Naik taraf sekarang - Tawaran berakhir tidak lama lagi!"
+    "sidebar__promotion_dialog__cta_button": "Naik taraf sekarang - Tawaran berakhir tidak lama lagi!",
+    "provider__bard_web_app__model__gemini__description": "Model paling canggih oleh Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Balasan cepat",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Balas dengan poin utama (ujian)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norwegian",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Malay"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Malay",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Czech"
   },
   "prompt_editor": {
     "preset_variables__title": "Kemampuan",

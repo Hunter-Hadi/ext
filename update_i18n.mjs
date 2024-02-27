@@ -586,11 +586,46 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
   await updateI18nJson(keys, forceUpdate, retryLanguageCodes)
 }
 
+
+async function fixManifestTooLongName() {
+  const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
+  const enName = sourceJson.name
+  const enDescription = sourceJson.description
+  const i18nDirs = fs.readdirSync(jsonDir, { withFileTypes: true })
+  i18nDirs.forEach(({ name }) => {
+    const filePath = join(jsonDir, `/${name}/index.json`)
+    const json = JSON.parse(fs.readFileSync(filePath, 'utf-8'))
+    // https://developer.chrome.com/docs/extensions/reference/manifest/name
+    if (json.name.length >= 70) {
+      console.log(
+        `修复[${name}]语言包的name字段长度: ${json.name.length} => ${enName.length}`,
+      )
+      json.name = enName
+      fs.writeFileSync(
+        filePath,
+        JSON.stringify(json, null, 2),
+      )
+    }
+    // https://developer.chrome.com/docs/extensions/reference/manifest/description
+    if (json.description.length >= 130) {
+      console.log(
+        `修复[${name}]语言包的description字段长度: ${json.description.length} => ${enDescription.length}`,
+      )
+      json.description = enDescription
+      fs.writeFileSync(
+        filePath,
+        JSON.stringify(json, null, 2),
+      )
+    }
+  })
+}
+
 async function main() {
   await updateDefaultJson(true)
   const keys = []
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
+  await fixManifestTooLongName()
 }
 
 main().then().catch()

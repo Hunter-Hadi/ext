@@ -1,5 +1,5 @@
 {
-  "description": "A maneira mais rápida de usar a IA alimentada por ChatGPT, Claude, Gemini em qualquer lugar. A única extensão de IA generativa que você precisa.",
+  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Use IA em 1 Clique em Qualquer Lugar",
   "shortName": "MaxAI.me",
   "common": {
@@ -305,12 +305,11 @@
     "provider__bing_web_app__conversation_style__balanced__description": "Limpe sua conversa e inicie um bate-papo informativo e amigável.",
     "provider__bing_web_app__conversation_style__precise__title": "Preciso",
     "provider__bing_web_app__conversation_style__precise__description": "Limpe sua conversa e inicie um bate-papo conciso e direto.",
-    "provider__bard_web_app__title": "Aplicativo web Bard",
-    "provider__bard_web_app__short_description": "Aprimorado com o Google Lens.",
-    "provider__bard_web_app__auth_description": "Use sua própria conta do Google Bard para alimentar a extensão.",
-    "provider__bard_web_app__auth_button_text": "Continuar com o aplicativo web Bard",
+    "provider__bard_web_app__title": "Aplicativo web Gemini",
+    "provider__bard_web_app__short_description": "Acesse o modelo de IA mais capaz do Google.",
+    "provider__bard_web_app__auth_description": "Use sua própria conta do Google Gemini para alimentar a extensão.",
+    "provider__bard_web_app__auth_button_text": "Continuar com o aplicativo web Gemini",
     "provider__bard_web_app__upload__accept_tooltip": "Enviar arquivo JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "O modelo mais avançado do Google. Alimenta o Bard, a API PaLM, o MakerSuite e vários recursos do Workspace no Google.",
     "provider__bard_web_app__model__what_it_can_do__description": "Raciocínio, tradução multilíngue, codificação e muito mais.",
     "provider__claude_web_app__title": "Aplicativo web Claude",
     "provider__claude_web_app__short_description": "Janela de contexto de 100 mil. Converse com vários documentos.",
@@ -621,7 +620,8 @@
     "sidebar__promotion_dialog__content_item5__description": "Obtenha respostas para as perguntas mais difíceis com insights abrangentes da web.",
     "sidebar__promotion_dialog__content_item6__title": "Resuma e pergunte sobre qualquer página",
     "sidebar__promotion_dialog__content_item6__description": "Obtenha resumos, faça perguntas e encontre informações sobre qualquer página da web, PDF, e-mail e vídeo do YouTube.",
-    "sidebar__promotion_dialog__cta_button": "Atualize agora - Oferta termina em breve!"
+    "sidebar__promotion_dialog__cta_button": "Atualize agora - Oferta termina em breve!",
+    "provider__bard_web_app__model__gemini__description": "O modelo mais avançado do Google."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -802,7 +802,8 @@
     "3df7e144-272e-4e7e-9ba4-06cc3dd9584d": "Resposta rápida",
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Responder com pontos-chave (teste)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norueguês",
-    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finland"
+    "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finland",
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tcheco"
   },
   "prompt_editor": {
     "preset_variables__title": "Recursos",

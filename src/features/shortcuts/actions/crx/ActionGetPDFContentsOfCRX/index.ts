@@ -42,7 +42,19 @@ export class ActionGetPDFContentsOfCRX extends Action {
               try {
                 const pageInstance = await pdfInstance.getPage(pageNum)
                 const textContents = await pageInstance.getTextContent()
-                return textContents.items.map((item: any) => item.str).join('')
+                // https://mozilla.github.io/pdf.js/api/draft/module-pdfjsLib.html
+                // hasEOL: boolean - 是否有换行符
+                // str: string - 文本内容
+                let pageTextContent = ''
+                textContents.items.forEach(
+                  (item: { hasEOL: boolean; str: string }) => {
+                    pageTextContent += item.str
+                    if (item.hasEOL) {
+                      pageTextContent += '\n'
+                    }
+                  },
+                )
+                return pageTextContent
               } catch (e) {
                 console.error(
                   `ActionGetPDFContentsOfCRX getPDFPageContents error: \t`,
@@ -53,6 +65,9 @@ export class ActionGetPDFContentsOfCRX extends Action {
             }
             let PDFContent = ''
             for (let i = 0; i < totalPages; i++) {
+              if (i > 0) {
+                PDFContent += '\n'
+              }
               PDFContent += await getPDFPageContents(i + 1)
               // computed tokens
               const process = ((i + 1) / totalPages) * 100

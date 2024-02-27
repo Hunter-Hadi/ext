@@ -24,7 +24,9 @@ export const parseBardResponse = (resp: string) => {
   try {
     const dataList =
       resp.split('\n').filter((str) => str.startsWith(`[["wrb.fr"`)) || []
-    const data = JSON.parse(dataList[1] || dataList[0])
+    const data = dataList
+      .map((str) => JSON.parse(str))
+      .filter((data) => data?.[0]?.[2])?.[0]
     const payload = JSON.parse(data?.[0]?.[2])
     if (!payload) {
       // FIXME: 需要测试所有场景

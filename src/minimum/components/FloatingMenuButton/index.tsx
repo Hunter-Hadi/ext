@@ -25,7 +25,7 @@ import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/button
 import { isArticlePage as checkIsArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
-const actionsCount = 3
+const actionsCount = 5
 // 顶部安全高度 = 4个按钮高度 + 16px
 const safeTopY = actionsCount * (32 + 6) + 16
 

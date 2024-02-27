@@ -3,6 +3,8 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Link from '@mui/material/Link'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
@@ -12,6 +14,7 @@ import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import UploadButton from '@/features/common/components/UploadButton'
@@ -259,43 +262,79 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }))
 
-const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
+const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
+  rootElement: HTMLElement
+}> = (props) => {
+  const { rootElement } = props
   const { t } = useTranslation(['common', 'client'])
-  const [show, setShow] = useState(false)
-  const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
-  const [isAccessPermission, setIsAccessPermission] = useState(true)
-  useEffectOnce(() => {
-    if (isMaxAIPDFPage()) {
-      Browser.extension.isAllowedFileSchemeAccess().then(setIsAccessPermission)
-      const pdfViewerRoot = document.querySelector('#toolbarViewerLeft')
-      if (pdfViewerRoot) {
-        const div = document.createElement('div')
-        div.id = 'MaxAIPDFViewerTopBarButtonGroup'
-        div.style.display = 'flex'
-        div.style.alignItems = 'center'
-        div.style.height = '32px'
-        pdfViewerRoot.appendChild(div)
-        setRootElement(div)
-      }
-      setShow(true)
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const [selectedIndex, setSelectedIndex] = React.useState(0)
+  const open = Boolean(anchorEl)
+  const handleOpenDefaultViewer = async () => {
+    // 获取pdfjs当前doc的文件路径
+    const unit8Array = await (window as any)?.PDFViewerApplication?.pdfDocument?.getData()
+    if (unit8Array) {
+      const file = new File([unit8Array], 'pdf', {
+        type: 'application/pdf',
+      })
+      const fileURL = URL.createObjectURL(file)
+      window.open(fileURL)
     }
-  })
-  if (!show || !rootElement) {
-    return null
+  }
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleClose = () => {
+    setAnchorEl(null)
   }
   return (
-    <DynamicComponent
-      rootContainer={rootElement}
-      customElementName={'maxai-pdf-ai-viewer-top-bar-button-group'}
-    >
-      <Stack direction={'row'} alignItems={'center'} gap={1}>
+    <>
+      <Button
+        sx={{
+          position: 'relative',
+          zIndex: 1301,
+        }}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        disableElevation
+        startIcon={<ContextMenuIcon icon={'PDF'} />}
+        disableRipple
+        onMouseEnter={handleClick}
+        onClick={handleOpenDefaultViewer}
+      >
+        {t('client:pdf_ai_viewer__once_default_button__short_title')}
+      </Button>
+      <Menu
+        open={open}
+        anchorEl={anchorEl}
+        disablePortal
+        onClose={handleClose}
+        slotProps={{
+          root: {
+            style: {
+              zIndex: 1300,
+            },
+          },
+        }}
+      >
+        <MenuItem
+          onClick={handleOpenDefaultViewer}
+          disableRipple
+          onMouseEnter={() => {
+            setSelectedIndex(0)
+          }}
+          selected={selectedIndex === 0}
+        >
+          {t('client:pdf_ai_viewer__once_default_button__title')}
+        </MenuItem>
         <LightTooltip
+          placeholder={'right'}
           PopperProps={{
             sx: {
               zIndex: 99999999,
             },
             container: rootElement,
-            disablePortal: true,
+            // disablePortal: true,
           }}
           title={
             <Stack width={320} gap={1}>
@@ -338,26 +377,61 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
           placement={'bottom-start'}
           arrow
         >
-          <Button
+          <MenuItem
+            onMouseEnter={() => {
+              setSelectedIndex(1)
+            }}
+            selected={selectedIndex === 1}
             onClick={async () => {
               await chromeExtensionClientOpenPage({
                 key: 'options',
                 query: '?id=pdf-viewer#/appearance',
               })
+              handleClose()
             }}
-            sx={{
-              fontSize: '14px',
-              color: 'rgba(255,255,255,.87)',
-              height: 32,
-              display: 'flex',
-              alignItems: 'center',
-              gap: 1,
-            }}
+            disableRipple
           >
             {t('client:pdf_ai_viewer__toggle_button__pdf_ai_viewer__title')}
-            <Switch checked size={'small'} />
-          </Button>
+          </MenuItem>
         </LightTooltip>
+      </Menu>
+    </>
+  )
+}
+
+const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
+  const { t } = useTranslation(['common', 'client'])
+  const [show, setShow] = useState(false)
+  const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
+  const [isAccessPermission, setIsAccessPermission] = useState(true)
+  useEffectOnce(() => {
+    if (isMaxAIPDFPage()) {
+      Browser.extension.isAllowedFileSchemeAccess().then(setIsAccessPermission)
+      const pdfViewerRoot = document.querySelector('#toolbarViewerLeft')
+      if (pdfViewerRoot) {
+        const div = document.createElement('div')
+        div.id = 'MaxAIPDFViewerTopBarButtonGroup'
+        div.style.display = 'flex'
+        div.style.alignItems = 'center'
+        div.style.height = '32px'
+        pdfViewerRoot.appendChild(div)
+        setRootElement(div)
+      }
+      setShow(true)
+    }
+  })
+  const boxRef = React.useRef<HTMLDivElement>(null)
+  if (!show || !rootElement) {
+    return null
+  }
+  return (
+    <DynamicComponent
+      rootContainer={rootElement}
+      customElementName={'maxai-pdf-ai-viewer-top-bar-button-group'}
+    >
+      <Stack direction={'row'} alignItems={'center'} gap={1} ref={boxRef}>
+        <MaxAIPDFAIViewerSwitchToDefaultButton rootElement={boxRef.current!} />
+
         {!isAccessPermission && (
           <LightTooltip
             PopperProps={{
@@ -430,4 +504,19 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
   )
 }
 
-export { MAXAIPDFAIViewerErrorAlert, MaxAIPDFAIViewerTopBarButtonGroup }
+const detectBrowserDefaultPDFViewer = () => {
+  // 判断是不是chrome自带的pdf viewer
+  if (
+    document.querySelector('embed[name][type="application/pdf"][internalid]')
+  ) {
+    chromeExtensionClientOpenPage({
+      key: 'pdf_viewer',
+    })
+  }
+}
+
+export {
+  detectBrowserDefaultPDFViewer,
+  MAXAIPDFAIViewerErrorAlert,
+  MaxAIPDFAIViewerTopBarButtonGroup,
+}

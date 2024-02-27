@@ -6,6 +6,7 @@ import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensi
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 import ClientChatGPTFilesFocusInit from '@/components/AppInit/ClientChatGPTFilesFocusInit'
 import {
+  detectBrowserDefaultPDFViewer,
   MAXAIPDFAIViewerErrorAlert,
   MaxAIPDFAIViewerTopBarButtonGroup,
 } from '@/components/AppInit/MaxAIPDFViewerInit'
@@ -132,14 +133,7 @@ const AppInit = () => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()
     }
-    // 判断是不是chrome自带的pdf viewer
-    if (
-      document.querySelector('embed[name][type="application/pdf"][internalid]')
-    ) {
-      chromeExtensionClientOpenPage({
-        key: 'pdf_viewer',
-      })
-    }
+    detectBrowserDefaultPDFViewer()
     renderGlobalSnackbar()
     ShortcutMessageClientInit()
     clientGetBrowserInfo().then().catch()

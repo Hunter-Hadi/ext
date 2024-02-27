@@ -33,6 +33,7 @@ import Log from '@/utils/Log'
 //   console.log('pdfSnifferStartListener success', result, rules)
 // }
 const log = new Log('PDF')
+
 export const openPDFViewer = async (
   tabId: number,
   url: string,

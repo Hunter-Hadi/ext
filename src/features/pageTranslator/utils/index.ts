@@ -1,5 +1,5 @@
 // 判断 element 是否是有效的元素
-export const checkValidElement = (element: HTMLElement | null) => {
+export const isTranslationValidElement = (element: HTMLElement | null) => {
   if (element) {
     const { display } = getComputedStyle(element)
 
@@ -17,6 +17,8 @@ export const checkValidElement = (element: HTMLElement | null) => {
       element.tagName !== 'EM' &&
       element.tagName !== 'CITE' &&
       element.closest('cite') === null &&
+      !/^\d+$/.test(element.innerText) && // 纯数字的元素不翻译
+      !element.className.includes('icon') && // icon 不翻译
       display !== 'none' &&
       !element.classList.contains('notranslate')
     )

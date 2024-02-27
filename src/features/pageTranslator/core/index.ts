@@ -8,7 +8,7 @@ import {
 } from '@/features/pageTranslator/constants'
 import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
-import { checkValidElement } from '@/features/pageTranslator/utils'
+import { isTranslationValidElement } from '@/features/pageTranslator/utils'
 
 class PageTranslator {
   translateItemsSet: Set<TranslateTextItem>
@@ -69,7 +69,7 @@ class PageTranslator {
         if (
           node.nodeValue?.trim() &&
           containerElement &&
-          checkValidElement(containerElement) &&
+          isTranslationValidElement(containerElement) &&
           containerElement.getElementsByTagName(MAXAI_TRANSLATE_CUSTOM_ELEMENT)
             .length <= 0
         ) {

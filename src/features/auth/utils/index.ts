@@ -207,7 +207,7 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             const userData =
               cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
                 ?.userData
-            if (userData.subscription_plan_name) {
+            if (userData?.subscription_plan_name) {
               subscription_plan_name = userData.subscription_plan_name
             }
           }

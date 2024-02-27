@@ -57,6 +57,9 @@ const useSyncSettingsChecker = () => {
         if (saveSettings) {
           await setChromeExtensionDBStorage(saveSettings)
         }
+        if (!(await isSettingsLastModifiedEqual())) {
+          await checkSettingsSync()
+        }
         const success = await syncLocalSettingsToServerSettings()
         if (success) {
           debounceEnqueueSnackbar(t('settings:sync__save_success'), {

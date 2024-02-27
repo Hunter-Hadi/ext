@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Dapatkan ringkasan PDF AI, terima jawaban instan, pahami penelitian, dan lainnya.",
     "pdf_ai_viewer__file_picker__button__title": "Pilih File",
     "pdf_ai_viewer__file_picker__button__description": "atau seret PDF ke sini",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Penampil PDF AI",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Selalu buka PDF dengan penampil default",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Ringkas & chat dengan PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' memungkinkan Anda untuk merangkum dan mengobrol dengan dokumen PDF apa pun, serta memilih teks apa pun dalam file PDF lokal dan menggunakan petunjuk AI pada mereka. Anda dapat mematikannya kapan saja di ekstensi ini",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Pengaturan",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Model paling canggih oleh Google.",
     "translation_advanced__title": "Pengaturan Terjemahan",
     "translation_advanced__source_lang_select__label": "Bahasa Sumber",
-    "translation_advanced__target_lang_select__label": "Bahasa Tujuan"
+    "translation_advanced__target_lang_select__label": "Bahasa Tujuan",
+    "pdf_ai_viewer__once_default_button__short_title": "Tampilan default",
+    "pdf_ai_viewer__once_default_button__title": "Buka PDF sekali dengan tampilan default"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

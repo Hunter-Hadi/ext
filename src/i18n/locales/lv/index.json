@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Iegūstiet PDF AI kopsavilkumus, saņemiet nekavējoties atbildes, saprotiet pētījumus un citu informāciju.",
     "pdf_ai_viewer__file_picker__button__title": "Izvēlēties failu",
     "pdf_ai_viewer__file_picker__button__description": "vai nomest PDF šeit",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI skatītājs",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Vienmēr atvērt PDF failus ar noklusējuma skatītāju",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Kopsavilkums un saruna ar PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI skatītājs' ļauj jums apkopot un sazināties ar jebkuru PDF dokumentu, kā arī izvēlēties jebkuru tekstu vietējos PDF failos un izmantot uz tiem balstītas AI norādes. Jūs vienmēr varat to izslēgt paplašinājuma",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Iestatījumu lapā",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Visattīstītākais Google modeļa variants.",
     "translation_advanced__title": "Tulkošanas iestatījumi",
     "translation_advanced__source_lang_select__label": "Avota valoda",
-    "translation_advanced__target_lang_select__label": "Mērķa valoda"
+    "translation_advanced__target_lang_select__label": "Mērķa valoda",
+    "pdf_ai_viewer__once_default_button__short_title": "Noklusējuma skatītājs",
+    "pdf_ai_viewer__once_default_button__title": "Atvērt PDF vienreiz ar noklusējuma skatītāju"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

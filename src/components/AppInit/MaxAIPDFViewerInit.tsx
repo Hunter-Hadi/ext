@@ -279,6 +279,7 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
       })
       const fileURL = URL.createObjectURL(file)
       window.open(fileURL)
+      handleClose()
     }
   }
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {

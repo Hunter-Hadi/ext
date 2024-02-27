@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Obține rezumate AI ale PDF-urilor, primește răspunsuri instantanee, înțelege cercetarea și multe altele.",
     "pdf_ai_viewer__file_picker__button__title": "Alege fișierul",
     "pdf_ai_viewer__file_picker__button__description": "sau lasă PDF-ul aici",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Vizualizator PDF AI",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Deschideți întotdeauna fișierele PDF cu vizualizatorul implicit",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Rezumă și discută cu PDF-uri",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' vă permite să rezumați și să discutați cu orice document PDF, și să selectați orice text în fișiere PDF locale și să utilizați prompt-uri AI pe acestea. Puteți dezactiva funcția în orice moment în extensia",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Setări",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Cel mai avansat model de la Google.",
     "translation_advanced__title": "Setări de traducere",
     "translation_advanced__source_lang_select__label": "Limba sursă",
-    "translation_advanced__target_lang_select__label": "Limba țintă"
+    "translation_advanced__target_lang_select__label": "Limba țintă",
+    "pdf_ai_viewer__once_default_button__short_title": "Vizualizator implicit",
+    "pdf_ai_viewer__once_default_button__title": "Deschideți PDF-ul o dată cu vizualizatorul implicit"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

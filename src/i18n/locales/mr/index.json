@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "PDF AI संक्षेप घेणे, प्रत्यक्ष उत्तर मिळवणे, संशोधनाची समज, आणि अधिक मिळवा.",
     "pdf_ai_viewer__file_picker__button__title": "फाइल निवडा",
     "pdf_ai_viewer__file_picker__button__description": "किंवा येथे PDF ड्रॉप करा",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI दर्शक",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "डिफॉल्ट व्ह्यूअरसह पीडीएफ नेहमीच उघडा",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "संक्षेप करा आणि PDF सह चॅट करा",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI व्ह्यूअर' आपल्याला कोणत्याही PDF दस्तऐवजाचे संक्षेप आणि चॅट करण्यासाठी आणि स्थानिक PDF फाइलमधील कोणत्याही मजकूर निवडा आणि त्यांच्यावर AI प्रॉम्प्ट वापरा याची परवानगी देते. आपण हे किंवा कोणतेही वेळेवर बंद करू शकता विस्ताराच्या",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "सेटिंग्ज पेजवर",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Google द्वारा सर्वोत्कृष्ट मॉडेल.",
     "translation_advanced__title": "भाषांतर सेटिंग्ज",
     "translation_advanced__source_lang_select__label": "स्रोत भाषा",
-    "translation_advanced__target_lang_select__label": "लक्षित भाषा"
+    "translation_advanced__target_lang_select__label": "लक्षित भाषा",
+    "pdf_ai_viewer__once_default_button__short_title": "मुख्य दृश्यकार",
+    "pdf_ai_viewer__once_default_button__title": "प्राथमिक दृश्यकारसह पीडीएफ एकदा उघडा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Erhalten Sie PDF-KI-Zusammenfassungen, erhalten Sie sofortige Antworten, verstehen Sie Forschungsergebnisse und mehr.",
     "pdf_ai_viewer__file_picker__button__title": "Datei auswählen",
     "pdf_ai_viewer__file_picker__button__description": "oder PDF hier ablegen",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF-KI-Viewer",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDFs immer mit Standard-Viewer öffnen",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Zusammenfassen und chatten Sie mit PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI Viewer' ermöglicht es Ihnen, jedes PDF-Dokument zusammenzufassen und zu besprechen sowie beliebigen Text in lokalen PDF-Dateien auszuwählen und KI-Hinweise darauf anzuwenden. Sie können es jederzeit in der Erweiterung deaktivieren.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Einstellungen",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Das fortschrittlichste Modell von Google.",
     "translation_advanced__title": "Übersetzungseinstellungen",
     "translation_advanced__source_lang_select__label": "Ausgangssprache",
-    "translation_advanced__target_lang_select__label": "Zielsprache"
+    "translation_advanced__target_lang_select__label": "Zielsprache",
+    "pdf_ai_viewer__once_default_button__short_title": "Standardanzeige",
+    "pdf_ai_viewer__once_default_button__title": "PDF einmal mit Standardanzeige öffnen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

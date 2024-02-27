@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Pata muhtasari wa PDF AI, pata majibu ya papo hapo, elewa utafiti, na zaidi.",
     "pdf_ai_viewer__file_picker__button__title": "Chagua Faili",
     "pdf_ai_viewer__file_picker__button__description": "au weka PDF hapa",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Mwonekano wa PDF AI",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Fungua PDFs daima na mtazamaji wa chaguo-msingi",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Muhtasari & chat na PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'Tazama PDF AI' inakuwezesha kusawazisha na kuongea na hati yoyote ya PDF, na kuchagua maandishi yoyote katika faili za PDF za ndani na kutumia vidokezo vya AI juu yao. Unaweza kuzima wakati wowote kwenye kiendelezi",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Mipangilio",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Mfano wenye maendeleo zaidi na Google.",
     "translation_advanced__title": "Mipangilio ya Tafsiri",
     "translation_advanced__source_lang_select__label": "Lugha ya chanzo",
-    "translation_advanced__target_lang_select__label": "Lugha ya lengo"
+    "translation_advanced__target_lang_select__label": "Lugha ya lengo",
+    "pdf_ai_viewer__once_default_button__short_title": "Mwonekano wa kawaida",
+    "pdf_ai_viewer__once_default_button__title": "Fungua PDF mara moja na mwonekano wa kawaida"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

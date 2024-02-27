@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "ፕዲና AI መግለጫዎችን ያግኙን, በቀላል መስራት የሚቻልዎትን ለመረጃዎች ያስተላልፉትን እና በምሳሌ የሚታይ የሆነ ለማሳየት ይጠቀሙበታል",
     "pdf_ai_viewer__file_picker__button__title": "ፋይል ምረጥ",
     "pdf_ai_viewer__file_picker__button__description": "ወደ PDF ያስገቡ ወይም አስቀምጡ",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI መረጃ ያግኙ",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "የአጭሩ የ PDF ተመሳሳይ መሳሪያዎችን በነባሪ የመቀየር ዕቃ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "ፕዲናውን ጥቅም እና ለማድረግ በ PDF ስልክ ላይ ያስተላልፉ",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' የሚጠቀሙት ነጥብ የሚጠቅሙትን እና የሚከተሉትን ፅሁፍ ለመጠቀም እና ለመከታተል ይችላሉ። ሌሎች PDF ፅሁፎችን ለመጠቀም እና ለመከታተል AI prompts ያስተካክሉት። ይህንን ማጣት ለመቀየር የሚችሉትን ጥቅም በመጠቀም ይችላሉ።",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "የተለያዩ ቦታዎች ጋር",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "በGoogle የተሻለ ማስታወቂያ.",
     "translation_advanced__title": "የተሻለ ትርጓሜዎች",
     "translation_advanced__source_lang_select__label": "የመጀመሪያ ቋንቋ",
-    "translation_advanced__target_lang_select__label": "የማስተማር ቋንቋ"
+    "translation_advanced__target_lang_select__label": "የማስተማር ቋንቋ",
+    "pdf_ai_viewer__once_default_button__short_title": "ነባር የተከፈተ መሳሪያ",
+    "pdf_ai_viewer__once_default_button__title": "የተከፈተ መሳሪያን አንጻር ከንግግር ያንጻር"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

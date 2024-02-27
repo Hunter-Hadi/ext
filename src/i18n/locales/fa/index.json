@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "خلاصه‌های هوش مصنوعی PDF را دریافت کنید، پاسخ‌های فوری بگیرید، تحقیقات را درک کنید و غیره.",
     "pdf_ai_viewer__file_picker__button__title": "انتخاب فایل",
     "pdf_ai_viewer__file_picker__button__description": "یا فایل PDF را اینجا رها کنید",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "نمایشگر هوش مصنوعی PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "همیشه PDF ها را با نمایشگر پیش فرض باز کنید",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "خلاصه‌سازی و چت با فایل PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'نمایشگر PDF AI' به شما اجازه می‌دهد تا هر سند PDF را خلاصه کنید و با آن چت کنید و هر متنی را در فایل‌های PDF محلی انتخاب کنید و از پیشنهادهای هوش مصنوعی بر روی آن استفاده کنید. شما می‌توانید هر زمانی که خواستید آن را در افزونه خاموش کنید",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "تنظیمات",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "پیشرفته‌ترین مدل توسط گوگل.",
     "translation_advanced__title": "تنظیمات ترجمه",
     "translation_advanced__source_lang_select__label": "زبان منبع",
-    "translation_advanced__target_lang_select__label": "زبان مقصد"
+    "translation_advanced__target_lang_select__label": "زبان مقصد",
+    "pdf_ai_viewer__once_default_button__short_title": "نمایشگر پیش‌فرض",
+    "pdf_ai_viewer__once_default_button__title": "باز کردن PDF یک بار با نمایشگر پیش‌فرض"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

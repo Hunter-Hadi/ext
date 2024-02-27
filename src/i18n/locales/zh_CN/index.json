@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "获取PDF AI摘要，获得即时答案，理解研究等。",
     "pdf_ai_viewer__file_picker__button__title": "选择文件",
     "pdf_ai_viewer__file_picker__button__description": "或将PDF拖放到此处",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI查看器",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "始终使用默认查看器打开PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "摘要和聊天与PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "“PDF AI viewer”可用于摘要和聊天任何PDF文档，并选择本地PDF文件中的任意文本并对其使用AI提示。您可以随时在扩展程序的",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "设置页面",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "谷歌最先进的模型。",
     "translation_advanced__title": "翻译设置",
     "translation_advanced__source_lang_select__label": "源语言",
-    "translation_advanced__target_lang_select__label": "目标语言"
+    "translation_advanced__target_lang_select__label": "目标语言",
+    "pdf_ai_viewer__once_default_button__short_title": "默认查看器",
+    "pdf_ai_viewer__once_default_button__title": "使用默认查看器打开PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

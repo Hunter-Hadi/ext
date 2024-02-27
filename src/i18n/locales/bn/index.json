@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "PDF AI সংক্ষেপ পান, তাৎক্ষণিক উত্তর পান, গবেষণা বুঝুন এবং আরো অনেক কিছু।",
     "pdf_ai_viewer__file_picker__button__title": "ফাইল চয়ন করুন",
     "pdf_ai_viewer__file_picker__button__description": "অথবা এখানে PDF ড্রপ করুন",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI ভিউয়ার",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "ডিফল্ট ভিউয়ার সঙ্গে সর্বদা PDF খুলুন",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "সংক্ষেপ করুন এবং PDF দিয়ে চ্যাট করুন",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'পিডিএফ এআই ভিউয়ার' আপনাকে সংক্ষেপ করতে এবং যেকোনো পিডিএফ ডকুমেন্টের সাথে চ্যাট করতে এবং স্থানীয় পিডিএফ ফাইলের যেকোনো টেক্সট নির্বাচন করতে এবং এতে এআই প্রম্পট ব্যবহার করতে দেয়। আপনি এটি যে কোনও সময়ে অফ করতে পারেন এক্সটেনশনের",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "সেটিংস পৃষ্ঠায়",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "গুগলের দ্বারা সর্বাধিক উন্নত মডেল।",
     "translation_advanced__title": "অনুবাদ সেটিংস",
     "translation_advanced__source_lang_select__label": "উত্স ভাষা",
-    "translation_advanced__target_lang_select__label": "লক্ষ্য ভাষা"
+    "translation_advanced__target_lang_select__label": "লক্ষ্য ভাষা",
+    "pdf_ai_viewer__once_default_button__short_title": "ডিফল্ট ভিউয়ার",
+    "pdf_ai_viewer__once_default_button__title": "ডিফল্ট ভিউয়ার দিয়ে একবার পিডিএফ খুলুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

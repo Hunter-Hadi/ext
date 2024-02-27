@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Отримуйте підсумки PDF AI, отримуйте миттєві відповіді, розумійте дослідження та багато іншого.",
     "pdf_ai_viewer__file_picker__button__title": "Вибрати файл",
     "pdf_ai_viewer__file_picker__button__description": "або перетягніть PDF сюди",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Переглядач PDF AI",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Завжди відкривати PDF-файли за допомогою типового переглядача",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Підсумуйте та спілкуйтеся з PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI переглядач' дозволяє вам зробити підсумок та спілкуватися з будь-яким PDF-документом, а також виділяти будь-який текст у локальних PDF-файлах та використовувати на них пропозиції штучного інтелекту. Ви можете вимкнути його в будь-який час у розширенні",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Сторінка налаштувань",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Найбільш розширена модель від Google.",
     "translation_advanced__title": "Налаштування перекладу",
     "translation_advanced__source_lang_select__label": "Мова джерела",
-    "translation_advanced__target_lang_select__label": "Цільова мова"
+    "translation_advanced__target_lang_select__label": "Цільова мова",
+    "pdf_ai_viewer__once_default_button__short_title": "Стандартний переглядач",
+    "pdf_ai_viewer__once_default_button__title": "Відкрити PDF один раз за допомогою стандартного переглядача"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

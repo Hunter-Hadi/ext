@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "பிடிஎஃப் ஏஐ சுருக்கங்களைப் பெறுவது, உடனடியாக பதில்களைப் பெறுவது, ஆராய்ச்சியைப் புரிந்துகொள்ளுங்கள் மற்றும் மேலும் பலவற்றைப் பெறுங்கள்.",
     "pdf_ai_viewer__file_picker__button__title": "கோப்பைத் தேர்வு செய்க",
     "pdf_ai_viewer__file_picker__button__description": "அல்லது இங்கே பிடிஎஃப் விடுவி",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "பிடிஎஃப் ஏஐ காட்சி",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "இயல்புநிலை காட்சிப்படுத்தி PDF கோப்புகளை எப்பொழுதும் திறந்துவிடு",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "பிடிஎஃப் மூலத்துடன் சுருக்கம் செய்க",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI காட்சி' உருவாக்குபவர்கள் எந்த PDF ஆவணத்தையும் சுருக்கமாக சுருக்கி உரையைத் தேர்ந்தெடுக்கலாம், அதில் உள்ள எந்த உரையையும் பயன்படுத்தி அதன் மூலம் ஐஏ விருப்பங்களைப் பயன்படுத்தலாம். நீங்கள் எப்போதும் இதை முடக்கலாம்",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "'அமைப்புகள்' பக்கத்தில்",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Google மூலம் மிகவும் மேம்படுத்தப்பட்ட மாதிரி.",
     "translation_advanced__title": "மொழிபெயர்ப்பு அமைப்புகள்",
     "translation_advanced__source_lang_select__label": "மூல மொழி",
-    "translation_advanced__target_lang_select__label": "இலக்கு மொழி"
+    "translation_advanced__target_lang_select__label": "இலக்கு மொழி",
+    "pdf_ai_viewer__once_default_button__short_title": "இயல்புநிலை காட்சி",
+    "pdf_ai_viewer__once_default_button__title": "இயல்புநிலை காட்சி மூலம் ஒருமுறை PDF திறக்க"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "పిడిఎఫ్ ఎయి సారాంశాలు పొందండి, తక్షణ సమాధానాలను పొందండి, శోధనను అర్థం చేయండి, మరియు మరీ చేయండి.",
     "pdf_ai_viewer__file_picker__button__title": "ఫైల్ ఎంచుకోండి",
     "pdf_ai_viewer__file_picker__button__description": "లేదా పిడిఎఫ్‌ను ఇక్కడ డ్రాప్ చేయండి",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "పిడిఎఫ్ ఎయి వీక్షకు",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "డిఫాల్ట్ వీయూయర్‌తో ఎపుడైనా PDFలను తెరవండి",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "పిడిఎఫ్‌ను సంగ్రహించండి మరియు చాట్ చేయండి",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI వీయూయర్' మీరు ఏ పిడిఎఫ్ పత్రాన్ని సంగ్రహించడానికి, సంగ్రహించడానికి మరియు లోకల్ పిడిఎఫ్ ఫైళ్లలో ఉన్న యాంత్రిక పఠనాలను ఉపయోగించడానికి AI ప్రాంప్ట్‌లను ఎంచుకోగలరు. మీరు అది ఎప్పుడైనా ఆఫ్ చేయగలరు ఎక్స్టెన్షన్‌లో",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "'సెట్టింగ్స్ పేజీ'లో",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Google ద్వారా అత్యంత ఉన్నత మోడల్.",
     "translation_advanced__title": "అనువాద సెట్టింగ్స్",
     "translation_advanced__source_lang_select__label": "మూల భాష",
-    "translation_advanced__target_lang_select__label": "లక్ష్య భాష"
+    "translation_advanced__target_lang_select__label": "లక్ష్య భాష",
+    "pdf_ai_viewer__once_default_button__short_title": "డిఫాల్ట్ వీయూయర్",
+    "pdf_ai_viewer__once_default_button__title": "డిఫాల్ట్ వీయూయర్తో ప్రాథమికంగా PDF తెరవండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

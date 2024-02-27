@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Λάβετε περιλήψεις PDF AI, λάβετε άμεσες απαντήσεις, κατανοήστε έρευνες και πολλά άλλα.",
     "pdf_ai_viewer__file_picker__button__title": "Επιλέξτε Αρχείο",
     "pdf_ai_viewer__file_picker__button__description": "ή αποθέστε το PDF εδώ",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Προβολέας PDF AI",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Ανοίξτε πάντα τα PDF με τον προεπιλεγμένο προβολέα",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Συνοψίστε και συνομιλήστε με PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'Ο προβολέας PDF AI' σας επιτρέπει να συνοψίσετε και να συνομιλήσετε με οποιοδήποτε αρχείο PDF, και να επιλέξετε οποιοδήποτε κείμενο σε τοπικά αρχεία PDF και να χρησιμοποιήσετε AI προτροπές για αυτά. Μπορείτε να το απενεργοποιήσετε οποιαδήποτε στιγμή στην επέκταση",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "σελίδα Ρυθμίσεων",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Το πιο προηγμένο μοντέλο από την Google.",
     "translation_advanced__title": "Ρυθμίσεις μετάφρασης",
     "translation_advanced__source_lang_select__label": "Γλώσσα προέλευσης",
-    "translation_advanced__target_lang_select__label": "Γλώσσα προορισμού"
+    "translation_advanced__target_lang_select__label": "Γλώσσα προορισμού",
+    "pdf_ai_viewer__once_default_button__short_title": "Προεπιλεγμένος προβολέας",
+    "pdf_ai_viewer__once_default_button__title": "Άνοιγμα PDF μία φορά με τον προεπιλεγμένο προβολέα"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

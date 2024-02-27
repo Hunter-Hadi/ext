@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Obtén resums d'IA de PDF, rep respostes instantànies, entén la recerca i més.",
     "pdf_ai_viewer__file_picker__button__title": "Tria un fitxer",
     "pdf_ai_viewer__file_picker__button__description": "o arrossega el PDF aquí",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visor d'IA de PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Obrir sempre els PDF amb el visor per defecte",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Resumeix i xateja amb PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI visualitzador' et permet resumir i xatejar amb qualsevol document PDF, i seleccionar qualsevol text en fitxers PDF locals i utilitzar suggeriments d'IA en ells. Pots desactivar-ho en qualsevol moment a l'extensió",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Pàgina de configuració",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "El model més avançat de Google.",
     "translation_advanced__title": "Configuració de traducció",
     "translation_advanced__source_lang_select__label": "Idioma d'origen",
-    "translation_advanced__target_lang_select__label": "Idioma de destinació"
+    "translation_advanced__target_lang_select__label": "Idioma de destinació",
+    "pdf_ai_viewer__once_default_button__short_title": "Visor per defecte",
+    "pdf_ai_viewer__once_default_button__title": "Obre el PDF una vegada amb el visor per defecte"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

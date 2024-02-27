@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Få sammanfattningar av PDF AI, få omedelbara svar, förstå forskning och mer.",
     "pdf_ai_viewer__file_picker__button__title": "Välj fil",
     "pdf_ai_viewer__file_picker__button__description": "eller släpp PDF här",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "PDF AI-visare",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Öppna alltid PDF-filer med standardvisaren",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Sammanfatta och chatta med PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visare' låter dig sammanfatta och chatta med vilket PDF-dokument som helst, samt markera valfri text i lokala PDF-filer och använda AI-prompter på dem. Du kan stänga av det när som helst i tilläggets",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Inställningssida",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Den mest avancerade modellen av Google.",
     "translation_advanced__title": "Översättningsinställningar",
     "translation_advanced__source_lang_select__label": "Källspråk",
-    "translation_advanced__target_lang_select__label": "Målspråk"
+    "translation_advanced__target_lang_select__label": "Målspråk",
+    "pdf_ai_viewer__once_default_button__short_title": "Standardvisare",
+    "pdf_ai_viewer__once_default_button__title": "Öppna PDF en gång med standardvisaren"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

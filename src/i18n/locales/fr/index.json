@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Obtenez des résumés de l'IA PDF, recevez des réponses instantanées, comprenez la recherche et plus encore.",
     "pdf_ai_viewer__file_picker__button__title": "Choisir un fichier",
     "pdf_ai_viewer__file_picker__button__description": "ou déposez le PDF ici",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visionneuse IA PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Ouvrir toujours les PDF avec le visualiseur par défaut",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Résumez et discutez avec un PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' vous permet de résumer et de discuter avec n'importe quel document PDF, et de sélectionner n'importe quel texte dans les fichiers PDF locaux et d'utiliser des suggestions d'IA dessus. Vous pouvez le désactiver à tout moment sur l'extension",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Page des paramètres",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Le modèle le plus avancé par Google.",
     "translation_advanced__title": "Paramètres de traduction",
     "translation_advanced__source_lang_select__label": "Langue source",
-    "translation_advanced__target_lang_select__label": "Langue cible"
+    "translation_advanced__target_lang_select__label": "Langue cible",
+    "pdf_ai_viewer__once_default_button__short_title": "Visionneuse par défaut",
+    "pdf_ai_viewer__once_default_button__title": "Ouvrir le PDF une fois avec la visionneuse par défaut"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Obtén resúmenes de IA de PDF, recibe respuestas instantáneas, comprende investigaciones y más.",
     "pdf_ai_viewer__file_picker__button__title": "Elegir archivo",
     "pdf_ai_viewer__file_picker__button__description": "o arrastra el PDF aquí",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visor de IA de PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Abrir siempre los PDF con el visor predeterminado",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Resumir y chatear con PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' te permite resumir y chatear con cualquier documento PDF, y seleccionar cualquier texto en archivos PDF locales y usar sugerencias de IA en ellos. Puedes desactivarlo en cualquier momento en la extensión.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Página de configuración",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "El modelo más avanzado de Google.",
     "translation_advanced__title": "Configuración de traducción",
     "translation_advanced__source_lang_select__label": "Idioma de origen",
-    "translation_advanced__target_lang_select__label": "Idioma de destino"
+    "translation_advanced__target_lang_select__label": "Idioma de destino",
+    "pdf_ai_viewer__once_default_button__short_title": "Visor predeterminado",
+    "pdf_ai_viewer__once_default_button__title": "Abrir PDF una vez con el visor predeterminado"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

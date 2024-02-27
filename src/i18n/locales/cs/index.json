@@ -496,7 +496,7 @@
     "pdf_ai_viewer__file_picker__description": "Získejte souhrny PDF AI, získávejte okamžité odpovědi, porozumějte výzkumu a mnohem více.",
     "pdf_ai_viewer__file_picker__button__title": "Vybrat soubor",
     "pdf_ai_viewer__file_picker__button__description": "nebo sem přetáhněte PDF",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Prohlížeč PDF AI",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Vždy otevírat PDF s výchozím prohlížečem",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Shrňte a chatujte s PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI prohlížeč' vám umožňuje shrnout a chatovat s libovolným PDF dokumentem a vybrat libovolný text v místních PDF souborech a použít na něj AI podněty. Můžete jej kdykoli vypnout v rozšíření",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Nastavení",
@@ -626,7 +626,9 @@
     "provider__bard_web_app__model__gemini__description": "Nejvyspělejší model od Googlu.",
     "translation_advanced__title": "Nastavení překladu",
     "translation_advanced__source_lang_select__label": "Výchozí jazyk",
-    "translation_advanced__target_lang_select__label": "Cílový jazyk"
+    "translation_advanced__target_lang_select__label": "Cílový jazyk",
+    "pdf_ai_viewer__once_default_button__short_title": "Výchozí prohlížeč",
+    "pdf_ai_viewer__once_default_button__title": "Otevřít PDF jednou s výchozím prohlížečem"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

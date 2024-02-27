@@ -347,6 +347,13 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
+  if (APP_VERSION === '3.0.4' && getBrowserType() === 'Edge') {
+    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
+    setTimeout(
+      () => executeMaxAIOneYearPromotion(true),
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
+  }
 
   // 每次更新都重置一下 sidebar anniversary dialog
   await setChromeExtensionOnBoardingData(

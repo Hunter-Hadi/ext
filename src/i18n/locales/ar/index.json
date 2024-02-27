@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "اختر ملف",
     "pdf_ai_viewer__file_picker__button__description": "أو اسحب الملف PDF هنا",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "افتح دائمًا ملفات PDF باستخدام العارض الافتراضي",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "تلخيص والدردشة مع ملف PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "تعطيل عارض MaxAI لملفات PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'عارض PDF الذكي' يتيح لك تلخيص والدردشة مع أي مستند PDF، وتحديد أي نص في ملفات PDF المحلية واستخدام تلميحات الذكاء الاصطناعي عليها. يمكنك إيقافه في أي وقت على الامتداد",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "الخاصة بالامتداد",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

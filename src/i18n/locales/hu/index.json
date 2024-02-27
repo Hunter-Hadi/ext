@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Fájl kiválasztása",
     "pdf_ai_viewer__file_picker__button__description": "vagy húzza ide a PDF-et",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Mindig nyissa meg a PDF-eket az alapértelmezett nézővel",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Összefoglalás és beszélgetés a PDF-fel",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "MaxAI PDF AI nézet letiltása",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI néző' lehetővé teszi, hogy összefoglalja és beszélgetjen bármely PDF dokumentummal, és kiválassza a helyi PDF fájlokban található szöveget, majd AI segítséggel dolgozza fel. Bármikor kikapcsolhatja a bővítményen",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Beállítások oldalon",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

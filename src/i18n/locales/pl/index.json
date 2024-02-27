@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Wybierz plik",
     "pdf_ai_viewer__file_picker__button__description": "lub upuść tutaj plik PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Zawsze otwieraj pliki PDF za pomocą domyślnego przeglądarki",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Podsumuj i rozmawiaj z plikiem PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Wyłącz przeglądarkę MaxAI PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' pozwala podsumować i rozmawiać z dowolnym dokumentem PDF oraz wybierać tekst w lokalnych plikach PDF i korzystać z podpowiedzi AI na nich. Możesz go wyłączyć w dowolnym momencie w rozszerzeniu",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Strona ustawień",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

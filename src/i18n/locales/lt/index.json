@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Pasirinkti failą",
     "pdf_ai_viewer__file_picker__button__description": "arba nutempti PDF čia",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Visada atidaryti PDF failus su numatytuoju peržiūros įrankiu",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Santrauka ir pokalbis su PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Išjungti MaxAI PDF AI peržiūros priemonę",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI peržiūros įrankis' leidžia jums suvesti ir bendrauti su bet kuriuo PDF dokumentu, taip pat pasirinkti bet kurį tekstą vietiniuose PDF failuose ir naudoti juos su AI užuominomis. Ją galite išjungti bet kuriuo metu plėtinių",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "nustatymų puslapyje",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Vybrat soubor",
     "pdf_ai_viewer__file_picker__button__description": "nebo sem přetáhněte PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Vždy otevírat PDF s výchozím prohlížečem",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Shrňte a chatujte s PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Vypnout prohlížeč MaxAI PDF AI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI prohlížeč' vám umožňuje shrnout a chatovat s libovolným PDF dokumentem a vybrat libovolný text v místních PDF souborech a použít na něj AI podněty. Můžete jej kdykoli vypnout v rozšíření",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Nastavení",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

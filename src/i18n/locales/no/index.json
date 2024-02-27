@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Velg fil",
     "pdf_ai_viewer__file_picker__button__description": "eller slipp PDF her",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Åpne alltid PDF-er med standardvisning",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Oppsummer og chat med PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Deaktiver MaxAI PDF AI-visning",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-visning' lar deg oppsummere og chatte med hvilken som helst PDF-dokument, og velge hvilken som helst tekst i lokale PDF-filer og bruke AI-prompter på dem. Du kan slå det av når som helst på utvidelsens",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Innstillinger side",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

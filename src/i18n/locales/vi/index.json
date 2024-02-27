@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Chọn Tệp",
     "pdf_ai_viewer__file_picker__button__description": "hoặc thả PDF vào đây",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Luôn mở PDF với trình xem mặc định",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Tóm tắt & trò chuyện với PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Tắt trình xem MaxAI PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' cho phép bạn tóm tắt và trò chuyện với bất kỳ tài liệu PDF nào, và chọn bất kỳ văn bản nào trong các tệp PDF cục bộ và sử dụng gợi ý AI trên chúng. Bạn có thể tắt nó bất kỳ lúc nào trên tiện ích mở rộng",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "trang Cài đặt của tiện ích mở rộng",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

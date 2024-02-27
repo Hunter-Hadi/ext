@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Pumili ng File",
     "pdf_ai_viewer__file_picker__button__description": "o i-drop ang PDF dito",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Laging buksan ang mga PDF gamit ang default na viewer",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Buodin at makipag-chat sa PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "I-disable ang MaxAI PDF AI viewer",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' ay nagbibigay-daan sa iyo na buod at makipag-chat sa anumang dokumentong PDF, at pumili ng anumang teksto sa lokal na mga file ng PDF at gamitin ang mga AI prompt sa kanila. Maaari mong patayin ito anumang oras sa extension's",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Settings page",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

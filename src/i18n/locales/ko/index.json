@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "파일 선택",
     "pdf_ai_viewer__file_picker__button__description": "또는 PDF 파일을 여기에 놓으세요",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "기본 뷰어로 항상 PDF 열기",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "PDF 요약 및 대화",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "MaxAI PDF AI 뷰어 비활성화",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI 뷰어'를 사용하여 모든 PDF 문서를 요약하고 채팅할 수 있으며, 로컬 PDF 파일에서 텍스트를 선택하고 AI 프롬프트를 사용할 수 있습니다. 확장 프로그램의 언제든지 끌 수 있습니다.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "설정 페이지",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "에서 끌 수 있습니다.",

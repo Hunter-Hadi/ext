@@ -438,7 +438,7 @@
     "pdf_ai_viewer__once_default_button__short_title": "Default viewer",
     "pdf_ai_viewer__once_default_button__title": "Open PDF once with default viewer",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Always open PDFs with default viewer",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Summarize & chat with PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Disable MaxAI PDF AI viewer",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' lets you summarize and chat with any PDF document, and select any text in local PDF files and use AI prompts on them. You can turn it off at any time on the extension's",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Settings page",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

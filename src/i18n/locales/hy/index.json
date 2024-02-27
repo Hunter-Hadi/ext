@@ -494,7 +494,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Ընտրեք ֆայլը",
     "pdf_ai_viewer__file_picker__button__description": "կամ դրանից վերցրեք PDF-ը",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Բացել PDF-ները միայն սկզբնական դիտողով",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Սեղմեք և խոսեք PDF-ի հետ",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Անջատեք MaxAI PDF AI դիտումը",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer'-ը թույլ է տալիս ամփոփել և խոսել ցանկացած PDF փաստաթղթի հետ, նաև ընտրել տեքստ տալով տեքստը լոկալ PDF ֆայլերում և օգտագործել AI հարցումները դրանց վրա: Դուք կարող եք անջատել այն ցանկացած պահին ընդգրկիչի",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "կարգավորման էջում",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

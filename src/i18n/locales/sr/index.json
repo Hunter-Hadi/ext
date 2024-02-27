@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Izaberite fajl",
     "pdf_ai_viewer__file_picker__button__description": "ili prevucite PDF ovde",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Uvek otvaraj PDF-ove sa podrazumevanim pregledačem",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Sumirajte i četujte sa PDF-om",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Onemogući MaxAI PDF AI pregledač",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI pregledač' vam omogućava da sažmete i razgovarate sa bilo kojim PDF dokumentom, i izaberete bilo koji tekst u lokalnim PDF fajlovima i koristite AI podsticaje na njima. Uvek možete isključiti ovu funkciju u proširenju",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Stranica za podešavanja",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

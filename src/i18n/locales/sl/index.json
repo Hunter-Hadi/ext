@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Izberi datoteko",
     "pdf_ai_viewer__file_picker__button__description": "ali spustite PDF tukaj",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Vedno odprite PDF-je z privzetim pregledovalnikom",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Povzemite in klepetajte s PDF-jem",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Onemogoči MaxAI PDF AI pregledovalnik",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI ogledovalnik' vam omogoča povzetek in klepet s katerim koli PDF dokumentom ter izbiro katerega koli besedila v lokalnih PDF datotekah in uporabo AI namigov nanje. Kadarkoli ga lahko izklopite na razširitvi.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Stran z nastavitvami",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

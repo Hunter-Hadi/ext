@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Vali fail",
     "pdf_ai_viewer__file_picker__button__description": "või lohista PDF siia",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Avage alati PDF-id vaikimisi vaaturiga",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Kokkuvõte ja vestlus PDF-iga",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Keela MaxAI PDF AI vaatur",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI vaataja' võimaldab sul kokku võtta ja vestelda mis tahes PDF-dokumendiga ning valida kohalike PDF-failide teksti ja kasutada nende peal AI vihjeid. Saad selle igal ajal laienduse",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Seadete lehel",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

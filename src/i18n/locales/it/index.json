@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Scegli File",
     "pdf_ai_viewer__file_picker__button__description": "o trascina qui il PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Apri sempre i PDF con il visualizzatore predefinito",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Riassumi e chatta con i PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Disabilita visualizzatore PDF AI MaxAI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' ti consente di riassumere e chattare con qualsiasi documento PDF, e selezionare qualsiasi testo nei file PDF locali e utilizzare su di essi suggerimenti di intelligenza artificiale. Puoi disattivarlo in qualsiasi momento nell'estensione",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Pagina Impostazioni",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

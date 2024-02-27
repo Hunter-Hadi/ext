@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Escolher Arquivo",
     "pdf_ai_viewer__file_picker__button__description": "ou solte o PDF aqui",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Sempre abrir PDFs com visualizador padrão",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Resuma e converse com PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Desativar visualizador de IA de PDF MaxAI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI viewer' permite resumir e conversar com qualquer documento PDF, e selecionar qualquer texto em arquivos PDF locais e usar prompts de IA neles. Você pode desativá-lo a qualquer momento na extensão",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Configurações",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": "da extensão.",

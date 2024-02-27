@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Valitse tiedosto",
     "pdf_ai_viewer__file_picker__button__description": "tai pudota PDF tähän",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Avaa aina PDF-tiedostot oletusnäkymällä",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Tiivistä ja keskustele PDF:n kanssa",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Poista käytöstä MaxAI PDF AI -katseluohjelma",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI -katseluohjelma' mahdollistaa PDF-dokumenttien tiivistämisen ja keskustelun sekä paikallisten PDF-tiedostojen tekstien valitsemisen ja niiden käyttämisen AI-vihjeillä. Voit kytkeä sen pois päältä milloin tahansa laajennuksen",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Asetukset-sivulla",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

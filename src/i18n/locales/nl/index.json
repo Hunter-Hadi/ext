@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Kies bestand",
     "pdf_ai_viewer__file_picker__button__description": "of plaats hier een PDF",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Open PDF's altijd met standaard viewer",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Samenvatten en chatten met PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Schakel MaxAI PDF AI-viewer uit",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI-viewer' stelt u in staat om een samenvatting te maken en te chatten met elk PDF-document, en tekst te selecteren in lokale PDF-bestanden en er AI-aanwijzingen op toe te passen. U kunt het op elk moment uitschakelen in de extensie.",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Instellingenpagina",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

@@ -497,7 +497,7 @@
     "pdf_ai_viewer__file_picker__button__title": "Tria un fitxer",
     "pdf_ai_viewer__file_picker__button__description": "o arrossega el PDF aquí",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__title": "Obrir sempre els PDF amb el visor per defecte",
-    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Resumeix i xateja amb PDF",
+    "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__title": "Desactiva el visor de PDF d'IA MaxAI",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description1": "'PDF AI visualitzador' et permet resumir i xatejar amb qualsevol document PDF, i seleccionar qualsevol text en fitxers PDF locals i utilitzar suggeriments d'IA en ells. Pots desactivar-ho en qualsevol moment a l'extensió",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description2": "Pàgina de configuració",
     "pdf_ai_viewer__toggle_button__pdf_ai_viewer__tooltip__description3": ".",

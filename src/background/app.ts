@@ -347,8 +347,8 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
-  if (APP_VERSION === '3.0.4' && getBrowserType() === 'Edge') {
-    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
+  if (APP_VERSION === '3.0.4') {
+    // 3.0.4这一版，大促页面针对所有free users都弹出（包括Chrome和Edge） - @huangsong
     setTimeout(
       () => executeMaxAIOneYearPromotion(true),
       (1 + Math.floor(Math.random() * 9)) * 1000,

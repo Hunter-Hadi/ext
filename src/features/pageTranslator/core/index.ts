@@ -5,7 +5,6 @@ import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
 import {
   MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_CUSTOM_ELEMENT,
-  MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
 } from '@/features/pageTranslator/constants'
 import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
@@ -29,11 +28,7 @@ class PageTranslator {
   _fetching: boolean
   onFetchingChange?: (loading: boolean) => void
 
-  constructor(
-    fromCode?: string,
-    toCode?: string,
-    onFetchingChange?: (loading: boolean) => void,
-  ) {
+  constructor(fromCode?: string, toCode?: string) {
     this.translateItemsSet = new Set()
     this.translator = new TranslateService()
     this.isEnable = false
@@ -42,7 +37,7 @@ class PageTranslator {
     this.toCode = toCode ?? 'en'
 
     this._fetching = false
-    this.onFetchingChange = onFetchingChange
+    this.onFetchingChange = () => {}
 
     this.startEventListener()
 
@@ -55,9 +50,13 @@ class PageTranslator {
 
   set fetching(value: boolean) {
     this._fetching = value
-    if (this.onFetchingChange) {
+    if (this.onFetchingChange && this.isEnable) {
       this.onFetchingChange(value)
     }
+  }
+
+  setOnFetchingChange(onFetchingChange: (loading: boolean) => void) {
+    this.onFetchingChange = onFetchingChange
   }
 
   updateFromCode(newFromCode: string) {
@@ -200,9 +199,6 @@ class PageTranslator {
       @keyframes maxai-trans-spin {
         to {transform: rotate(360deg);}
       }
-      ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT} {
-        display: inline-block;
-      }
       ${MAXAI_TRANSLATE_CUSTOM_ELEMENT}.maxai-trans-hide {
         display: none !important;
       }
@@ -295,4 +291,4 @@ class PageTranslator {
   }
 }
 
-export default PageTranslator
+export default new PageTranslator()

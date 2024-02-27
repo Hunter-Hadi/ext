@@ -13,6 +13,7 @@ import { useRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useUserInfo } from '@/features/chatgpt'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import PageTranslator from '@/features/pageTranslator/core'
 import { pageTranslationEnableAtom } from '@/features/pageTranslator/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -45,15 +46,7 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
   const [advancedOpen, setAdvancedOpen] = useState(false)
   const [loading, setLoading] = useState(false)
   const firstLoading = useRef(true)
-  const pageTranslatorRef = useRef(
-    new PageTranslator(
-      userSettings?.pageTranslation?.sourceLanguage,
-      userSettings?.pageTranslation?.targetLanguage,
-      debounce((newLoading) => {
-        setLoading(newLoading)
-      }, 400),
-    ),
-  )
+  const pageTranslatorRef = useRef(PageTranslator)
 
   const showAdvancedButton = useMemo(() => isHover || advancedOpen, [
     isHover,
@@ -115,6 +108,10 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
       )
     }
   }, [userSettings?.pageTranslation?.targetLanguage, isLogin])
+
+  useEffectOnce(() => {
+    pageTranslatorRef.current.setOnFetchingChange(debounce(setLoading, 400))
+  })
 
   return (
     <Box

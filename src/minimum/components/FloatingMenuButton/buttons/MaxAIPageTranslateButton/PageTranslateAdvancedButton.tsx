@@ -149,7 +149,7 @@ const PageTranslateAdvancedButton: FC<IPageTranslateAdvancedButtonProps> = ({
             sx={{
               borderRadius: '4px',
               boxShadow: '0px 4px 8px 0px rgba(0, 0, 0, 0.16)',
-              width: 320,
+              width: 350,
               display: 'flex',
               alignItems: 'stretch',
               justifyContent: 'center',

@@ -310,7 +310,6 @@
     "provider__bard_web_app__auth_description": "તમારા ખુદની ગૂગલ જેમિની એકાઉન્ટનો ઉપયોગ કરીને એક્સ્ટેન્શનને ચાલુ કરો.",
     "provider__bard_web_app__auth_button_text": "જેમિની વેબ એપ સાથે ચાલુ રાખો",
     "provider__bard_web_app__upload__accept_tooltip": "ફાઇલ અપલોડ કરો JPEG, PNG, WEBP",
-    "provider__bard_web_app__model__palm_2__description": "Google દ્વારા સૌથી આગ્રહી મોડેલ. બાર્ડ, PaLM API, MakerSuite અને વિવિધ વર્કસ્પેસ વિશેષતાઓને સક્ષમ બનાવે છે.",
     "provider__bard_web_app__model__what_it_can_do__description": "તાર્કિક, બહુભાષી અનુવાદ, કોડિંગ અને વધુ.",
     "provider__claude_web_app__title": "Claude web app",
     "provider__claude_web_app__short_description": "100K સંદર્ભ વિંડો. એકથી વધુ દસ્તાવેજો સાથે ચેટ કરો.",
@@ -578,7 +577,19 @@
     "immersive_chat__summary_no_conversation__title": "હજી સુધી કોઈ સંગ્રહ ઇતિહાસ ઉપલબ્ધ નથી",
     "immersive_chat__search_no_conversation__title": "હજી સુધી કોઈ શોધ ઇતિહાસ ઉપલબ્ધ નથી",
     "immersive_chat__art_no_conversation__title": "હજી સુધી કોઈ આર્ટ ઇતિહાસ ઉપલબ્ધ નથી",
-    "home_view__art__title": "એઆઈ આર્ટ અને છબીઓ બનાવો"
+    "home_view__art__title": "એઆઈ આર્ટ અને છબીઓ બનાવો",
+    "sidebar__promotion_dialog__content_item1__title": "મોહક અનુવાદ",
+    "sidebar__promotion_dialog__content_item1__description": "માહિતી પ્રાપ્તિની ક્ષમતા વધારવા માટે એક ક્લિક સાથે બિલિંગ્વાલ વાંચવીને સક્ષમ બનાવો.",
+    "sidebar__promotion_dialog__content_item2__title": "AI આર્ટ અને છબીઓ બનાવો",
+    "sidebar__promotion_dialog__content_item2__description": "તમારા દૃષ્ટિને શાનદાર છબીઓમાં તરીકે ફેરવો. સરળ, શક્તિશાળી, પરિવર્તનાત્મક.",
+    "sidebar__promotion_dialog__content_item3__title": "સંગ્રહ અને પુછો કોઈ પણ પૃષ્ઠ પર",
+    "sidebar__promotion_dialog__content_item3__description": "કોઈ પણ વેબપેજ, PDF, ઇમેઇલ અને YouTube વિડિઓ વિશે સંગ્રહો, પ્રશ્નો પૂછો અને માહિતી શોધો.",
+    "sidebar__promotion_dialog__content_item4__title": "AI શક્તિશાળી શોધ",
+    "sidebar__promotion_dialog__content_item4__description": "વિસ્તૃત વેબ અનુભવથી સબસ્ટન્ટિયલ પ્રશ્નોના જવાબો મેળવો.",
+    "sidebar__promotion_dialog__content_item5__title": "GPT-4-ટર્બો સાથે દૃષ્ટિ",
+    "sidebar__promotion_dialog__content_item5__description": "ઓપનએઆઈની ક્રાંતિકારી GPT-4-વિઝનને એકત્રિત કરે છે જે GPT-4ની અગ્રણી ભાષા સમજોની સામર્થ્ય સાથે ચિત્ર પ્રક્રિયાને.",
+    "sidebar__promotion_dialog__content_item6__title": "જેમિની-પ્રો",
+    "sidebar__promotion_dialog__content_item6__description": "બહુમોડાલિતા માટે ગૂગલનું સૌથી સક્ષમ અને સામાન્ય મોડેલ એક્સેસ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

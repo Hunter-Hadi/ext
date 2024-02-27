@@ -4,15 +4,16 @@
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import debounce from 'lodash-es/debounce'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import Draggable from 'react-draggable'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import Browser from 'webextension-polyfill'
 
 import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
+import { pageTranslationEnableAtom } from '@/features/pageTranslator/store'
 import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import MaxAIImmersiveChatButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIImmersiveChatButton'
 import MaxAIMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIMiniButton'
@@ -21,7 +22,7 @@ import MaxAIScreenshotMiniButton from '@/minimum/components/FloatingMenuButton/b
 import MaxAISearchWithAIButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISearchWithAIButton'
 import MaxAISettingsMiniButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISettingsMiniButton'
 import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAISummarizeMiniButton'
-import { isArticlePage } from '@/minimum/utils'
+import { isArticlePage as checkIsArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const actionsCount = 3
@@ -41,7 +42,7 @@ const getBowserLocalStoreageFloatingButtonY = async () => {
 const FloatingMenuButton: FC = () => {
   const { height } = useWindowSize()
   const [maxAIMinimumHide] = useRecoilState(MaxAIMinimumHideState)
-  const [isKeepShow, setIsKeepShow] = useState(false)
+  const [isArticlePage, setIsArticlePage] = useState(false)
   const [dragAxisY, setDragAxisY] = useState(() => DEFAULT_TOP)
   const [isHover, setIsHover] = useState(false)
   const [isHoverButton, setIsHoverButton] = useState(false)
@@ -49,6 +50,9 @@ const FloatingMenuButton: FC = () => {
   const currentDragAxisYRef = useRef(dragAxisY)
   const prevDragAxisYRef = useRef(dragAxisY)
   const [isLoaded, setIsLoaded] = useState(false)
+
+  const translationEnable = useRecoilValue(pageTranslationEnableAtom)
+
   useEffect(() => {
     if (height) {
       if (height - 32 <= dragAxisY) {
@@ -81,16 +85,15 @@ const FloatingMenuButton: FC = () => {
     currentDragAxisYRef.current = dragAxisY
     saveBowserLocalStoreageFloatingButtonY(dragAxisY)
   }, [dragAxisY])
-  const checkIsKeepShow = debounce(() => {
-    console.log('checkIsKeepShow', isArticlePage())
-    setIsKeepShow(isArticlePage())
+  const checkIsArticlePageDebounce = debounce(() => {
+    setIsArticlePage(checkIsArticlePage())
   }, 1000)
   useEffectOnce(() => {
-    setIsKeepShow(isArticlePage())
+    setIsArticlePage(checkIsArticlePage())
   })
   useCreateClientMessageListener(async (event) => {
     if (event === 'Client_listenTabUrlUpdate') {
-      checkIsKeepShow()
+      checkIsArticlePageDebounce()
       return {
         success: true,
         message: 'ok',
@@ -99,6 +102,15 @@ const FloatingMenuButton: FC = () => {
     }
     return undefined
   })
+
+  const pageTranslateButtonShow = useMemo(() => {
+    return isHover || translationEnable
+  }, [isHover, translationEnable])
+
+  const summarizeButtonShow = useMemo(() => {
+    return isHover || isArticlePage
+  }, [isHover, isArticlePage])
+
   if (!isLoaded || maxAIMinimumHide) {
     return null
   }
@@ -148,7 +160,9 @@ const FloatingMenuButton: FC = () => {
               width: 42,
               height: 32,
               transform:
-                isHover || isKeepShow ? 'translateX(0)' : 'translateX(10px)',
+                isHover || summarizeButtonShow || pageTranslateButtonShow
+                  ? 'translateX(0)'
+                  : 'translateX(10px)',
               transition: '0.1s all',
               borderRadius: '27px 0 0 27px',
               bgcolor: 'background.paper',
@@ -191,25 +205,25 @@ const FloatingMenuButton: FC = () => {
               }}
               aboveNode={
                 <Stack spacing={'6px'}>
-                  <MaxAIPageTranslateButton
-                    key={'MaxAIPageTranslateButton'}
-                    sx={{
-                      display: isHover ? 'block' : 'none',
-                    }}
-                  />
                   {isHover && (
                     <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
                   )}
                   {isHover && (
                     <MaxAIScreenshotMiniButton key={'MaxAIScreenshotButton'} />
                   )}
-                  {(isHover || isKeepShow) && (
+                  {summarizeButtonShow && (
                     <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
                   )}
                 </Stack>
               }
               underNode={
                 <Stack spacing={'6px'}>
+                  <MaxAIPageTranslateButton
+                    key={'MaxAIPageTranslateButton'}
+                    sx={{
+                      display: pageTranslateButtonShow ? 'block' : 'none',
+                    }}
+                  />
                   {isHover && (
                     <MaxAIImmersiveChatButton
                       key={'MaxAIImmersiveChatButton'}

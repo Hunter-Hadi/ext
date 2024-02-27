@@ -142,38 +142,12 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
       <Stack
         sx={{
           position: 'absolute',
-          bottom: '2px',
+          top: '2px',
         }}
         spacing={0.5}
         alignItems={'center'}
         justifyContent={'center'}
       >
-        <PageTranslateAdvancedButton
-          onOpen={() => {
-            setAdvancedOpen(true)
-          }}
-          onClose={() => {
-            setAdvancedOpen(false)
-            setIsHover(false)
-          }}
-          onCodeChange={({ fromCode, toCode }) => {
-            let isChange = false
-            if (fromCode || fromCode === '') {
-              isChange = true
-              pageTranslatorRef.current.updateFromCode(fromCode)
-            }
-            if (toCode) {
-              isChange = true
-              pageTranslatorRef.current.updateToCode(toCode)
-            }
-
-            if (isChange) {
-              pageTranslatorRef.current.retranslate()
-              toggleTranslation(true)
-            }
-          }}
-        />
-
         <TextOnlyTooltip
           arrow
           minimumTooltip
@@ -246,6 +220,32 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
             </Button>
           )}
         </TextOnlyTooltip>
+
+        <PageTranslateAdvancedButton
+          onOpen={() => {
+            setAdvancedOpen(true)
+          }}
+          onClose={() => {
+            setAdvancedOpen(false)
+            setIsHover(false)
+          }}
+          onCodeChange={({ fromCode, toCode }) => {
+            let isChange = false
+            if (fromCode || fromCode === '') {
+              isChange = true
+              pageTranslatorRef.current.updateFromCode(fromCode)
+            }
+            if (toCode) {
+              isChange = true
+              pageTranslatorRef.current.updateToCode(toCode)
+            }
+
+            if (isChange) {
+              pageTranslatorRef.current.retranslate()
+              toggleTranslation(true)
+            }
+          }}
+        />
       </Stack>
     </Box>
   )

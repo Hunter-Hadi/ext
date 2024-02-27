@@ -21,7 +21,7 @@ interface IPageTranslateAdvancedButtonProps {
 }
 
 const LanguageCodeDefaultOption = {
-  label: 'Detect language',
+  label: 'Detected language',
   value: '',
 }
 

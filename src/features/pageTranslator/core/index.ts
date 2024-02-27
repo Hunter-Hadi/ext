@@ -1,4 +1,5 @@
 import debounce from 'lodash-es/debounce'
+import throttle from 'lodash-es/throttle'
 
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
 import {
@@ -22,7 +23,14 @@ class PageTranslator {
   // 用于监听 document 动态变化
   mutationsObserver: MutationObserver | null = null
 
-  constructor(fromCode?: string, toCode?: string) {
+  _fetching: boolean
+  onFetchingChange?: (loading: boolean) => void
+
+  constructor(
+    fromCode?: string,
+    toCode?: string,
+    onFetchingChange?: (loading: boolean) => void,
+  ) {
     this.translateItemsSet = new Set()
     this.translator = new TranslateService()
     this.isEnable = false
@@ -30,9 +38,23 @@ class PageTranslator {
     this.fromCode = fromCode ?? ''
     this.toCode = toCode ?? 'en'
 
+    this._fetching = false
+    this.onFetchingChange = onFetchingChange
+
     this.startEventListener()
 
     // const mutations = new MutationObserver((mutations) => {
+  }
+
+  get fetching() {
+    return this._fetching
+  }
+
+  set fetching(value: boolean) {
+    this._fetching = value
+    if (this.onFetchingChange) {
+      this.onFetchingChange(value)
+    }
   }
 
   updateFromCode(newFromCode: string) {
@@ -107,7 +129,10 @@ class PageTranslator {
               this.translateItemsSet.delete(sameElementItem)
             }
 
-            if (containerElement.innerText.trim()) {
+            if (
+              containerElement.innerText?.trim &&
+              containerElement.innerText?.trim()
+            ) {
               const translateTextItem = new TranslateTextItem(containerElement)
               this.translateItemsSet.add(translateTextItem)
             }
@@ -124,6 +149,9 @@ class PageTranslator {
   }
 
   async doTranslate() {
+    if (this.fetching) {
+      return
+    }
     const needTranslateItems: TranslateTextItem[] = []
 
     this.translateItemsSet.forEach((translateItem) => {
@@ -138,11 +166,13 @@ class PageTranslator {
 
     if (needTranslateItems.length > 0) {
       console.log(`needTranslateItems`, needTranslateItems)
+      this.fetching = true
       await this.translator.translate(
         needTranslateItems,
         this.toCode,
         this.fromCode,
       )
+      this.fetching = false
     }
   }
 
@@ -235,7 +265,7 @@ class PageTranslator {
       return
     }
     this.mutationsObserver = new MutationObserver(
-      debounce(this.startPageTranslator, 500).bind(this),
+      throttle(this.startPageTranslator, 300).bind(this),
     )
     this.mutationsObserver.observe(document, {
       attributes: false,

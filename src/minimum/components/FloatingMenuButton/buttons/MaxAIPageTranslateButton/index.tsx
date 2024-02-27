@@ -6,7 +6,7 @@ import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { styled, SxProps } from '@mui/material/styles'
-import { random } from 'lodash-es'
+import debounce from 'lodash-es/debounce'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
@@ -44,11 +44,14 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
   )
   const [advancedOpen, setAdvancedOpen] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [firstLoading, setFirstLoading] = useState(true)
+  const firstLoading = useRef(true)
   const pageTranslatorRef = useRef(
     new PageTranslator(
       userSettings?.pageTranslation?.sourceLanguage,
       userSettings?.pageTranslation?.targetLanguage,
+      debounce((newLoading) => {
+        setLoading(newLoading)
+      }, 400),
     ),
   )
 
@@ -70,26 +73,26 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
 
     const newTranslationEnableValue = flag ?? !translationEnable
 
-    if (newTranslationEnableValue && firstLoading) {
-      // open translator
-      setLoading(true)
-      // only first time loading delay
-      // fake loading delay
-      setTimeout(
-        () => {
-          setTranslationEnable(newTranslationEnableValue)
-          pageTranslatorRef.current.toggle(newTranslationEnableValue)
-          setFirstLoading(false)
-          setLoading(false)
-        },
-        newTranslationEnableValue ? random(300, 600) : 0,
-      )
-    } else {
-      // close translator
-      setTranslationEnable(newTranslationEnableValue)
-      pageTranslatorRef.current.toggle(newTranslationEnableValue)
-    }
+    pageTranslatorRef.current.toggle(newTranslationEnableValue)
+    // set timeout 是为了等待 pageTranslator 设置 loading 状态
+    // 只有第一次加载时才有延迟
+    setTimeout(
+      () => {
+        setTranslationEnable(newTranslationEnableValue)
+        if (firstLoading.current) {
+          firstLoading.current = false
+        }
+      },
+      firstLoading.current ? 600 : 0,
+    )
   }
+
+  const showTranslatedBadge = useMemo(() => {
+    return (
+      translationEnable &&
+      document.querySelectorAll('maxai-trans:not(.maxai-trans-hide)').length > 0
+    )
+  }, [translationEnable])
 
   useEffect(() => {
     if (!isLogin) {
@@ -194,7 +197,7 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
             >
               <CustomStyleBadge
                 badgeContent={
-                  translationEnable ? (
+                  showTranslatedBadge ? (
                     <CheckCircleIcon
                       sx={{
                         fontSize: 10,

@@ -1,30 +1,67 @@
 // 判断 element 是否是有效的元素
 export const isTranslationValidElement = (element: HTMLElement | null) => {
-  if (element) {
-    const { display } = getComputedStyle(element)
+  try {
+    if (element) {
+      const blackTagList = [
+        'title',
+        'SCRIPT',
+        'STYLE',
+        'NOSCRIPT',
+        'IFRAME',
+        'BODY',
+        'CODE',
+        'PRE',
+        'OBJECT',
+        'EM',
+        'CITE',
+      ]
+      if (blackTagList.includes(element.tagName)) {
+        return false
+      }
 
-    return (
-      element.tagName !== 'SCRIPT' &&
-      element.tagName !== 'STYLE' &&
-      element.tagName !== 'NOSCRIPT' &&
-      element.tagName !== 'IFRAME' &&
-      element.tagName !== 'BODY' &&
-      element.tagName !== 'CODE' &&
-      element.closest('CODE') === null &&
-      element.tagName !== 'PRE' &&
-      element.closest('PRE') === null &&
-      element.tagName !== 'OBJECT' &&
-      element.tagName !== 'EM' &&
-      element.tagName !== 'CITE' &&
-      element.closest('cite') === null &&
-      !/^\d+$/.test(element.innerText) && // 纯数字的元素不翻译
-      !element.className.includes('icon') && // icon 不翻译
-      display !== 'none' &&
-      !element.classList.contains('notranslate')
-    )
+      if (
+        element.closest('CODE') ||
+        element.closest('PRE') ||
+        element.closest('cite')
+      ) {
+        return false
+      }
+
+      const { display } = getComputedStyle(element)
+      if (display === 'none') {
+        return false
+      }
+
+      if (
+        element.getAttribute('translate') === 'no' ||
+        element.getAttribute('contenteditable') === 'true' ||
+        element.classList.contains('notranslate')
+      ) {
+        return false
+      }
+
+      if (element.className.includes('icon')) {
+        // icon 不翻译
+        return false
+      }
+
+      if (/^\d+$/.test(element.innerText)) {
+        // 纯数字的元素不翻译
+        return false
+      }
+
+      if (element.innerText.trim().length <= 1) {
+        // 字数太少不翻译
+        return false
+      }
+
+      return true
+    } else {
+      return false
+    }
+  } catch (error) {
+    return false
   }
-
-  return false
 }
 
 // 将 language code 转换成  translate api 支持的 code

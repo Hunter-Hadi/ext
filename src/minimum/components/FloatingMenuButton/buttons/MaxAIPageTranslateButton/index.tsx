@@ -12,8 +12,10 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import { useUserInfo } from '@/features/chatgpt'
 import PageTranslator from '@/features/pageTranslator/core'
 import { pageTranslationEnableAtom } from '@/features/pageTranslator/store'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import PageTranslateAdvancedButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIPageTranslateButton/PageTranslateAdvancedButton'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
@@ -31,6 +33,7 @@ interface IMaxAIPageTranslateButtonProps {
 const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
   sx,
 }) => {
+  const { userInfo } = useUserInfo()
   const { t } = useTranslation(['common', 'client'])
   const { userSettings } = useUserSettings()
 
@@ -54,7 +57,13 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
     advancedOpen,
   ])
 
+  const isLogin = useMemo(() => !!userInfo, [userInfo])
+
   const toggleTranslation = async (flag?: boolean) => {
+    if (!isLogin) {
+      showChatBox()
+      return
+    }
     if (loading) {
       return
     }
@@ -83,20 +92,26 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
   }
 
   useEffect(() => {
+    if (!isLogin) {
+      return
+    }
     if (userSettings?.pageTranslation?.sourceLanguage) {
       pageTranslatorRef.current.updateFromCode(
         userSettings.pageTranslation.sourceLanguage,
       )
     }
-  }, [userSettings?.pageTranslation?.sourceLanguage])
+  }, [userSettings?.pageTranslation?.sourceLanguage, isLogin])
 
   useEffect(() => {
+    if (!isLogin) {
+      return
+    }
     if (userSettings?.pageTranslation?.targetLanguage) {
       pageTranslatorRef.current.updateToCode(
         userSettings.pageTranslation.targetLanguage,
       )
     }
-  }, [userSettings?.pageTranslation?.targetLanguage])
+  }, [userSettings?.pageTranslation?.targetLanguage, isLogin])
 
   return (
     <Box
@@ -115,6 +130,9 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
         ...sx,
       }}
       onMouseEnter={() => {
+        if (!isLogin) {
+          return
+        }
         setIsHover(true)
       }}
       onMouseLeave={() => {

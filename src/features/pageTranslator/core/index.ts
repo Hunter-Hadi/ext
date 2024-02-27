@@ -2,12 +2,15 @@ import debounce from 'lodash-es/debounce'
 
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
 import {
+  MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
 } from '@/features/pageTranslator/constants'
 import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import { checkValidElement } from '@/features/pageTranslator/utils'
+
+const MAXAI_HIDE_TRANSLATE_STYLE = 'maxai-hide-translate-style'
 
 class PageTranslator {
   translateItemsSet: Set<TranslateTextItem>
@@ -45,15 +48,15 @@ class PageTranslator {
     this.toCode = newToCode
   }
 
-  filterSameElement(element: HTMLElement) {
+  findSameElement(element: HTMLElement) {
     const translateItemsSet = this.translateItemsSet
     for (const translateItem of translateItemsSet) {
       if (translateItem.rawElement === element) {
-        return false
+        return translateItem
       }
     }
 
-    return true
+    return null
   }
 
   startPageTranslator() {
@@ -103,10 +106,14 @@ class PageTranslator {
           }
 
           if (textNode && containerElement) {
-            const hasSameParentElement = this.filterSameElement(
-              containerElement,
-            )
-            if (hasSameParentElement && containerElement.innerText.trim()) {
+            const sameElementItem = this.findSameElement(containerElement)
+
+            if (sameElementItem) {
+              sameElementItem.reset()
+              this.translateItemsSet.delete(sameElementItem)
+            }
+
+            if (containerElement.innerText.trim()) {
               const translateTextItem = new TranslateTextItem(containerElement)
               this.translateItemsSet.add(translateTextItem)
             }
@@ -171,6 +178,10 @@ class PageTranslator {
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT} {
         display: inline-block;
       }
+      ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
+        display: inline-block;
+        margin: 4px 0;
+      }
       .maxai-trans-icon {
         display: inline !important;
         border: none !important;
@@ -195,7 +206,7 @@ class PageTranslator {
 
   cleanTranslateElements() {
     this.isEnable = false
-    const styleId = 'maxai-hide-translate-style'
+    const styleId = MAXAI_HIDE_TRANSLATE_STYLE
     if (!document.getElementById(styleId)) {
       const style = document.createElement('style')
       style.id = styleId
@@ -216,6 +227,10 @@ class PageTranslator {
     if (this.hideTranslateStyle) {
       this.hideTranslateStyle.remove()
     }
+
+    const styleId = MAXAI_HIDE_TRANSLATE_STYLE
+    const styleElement = document.getElementById(styleId)
+    styleElement && styleElement.remove()
 
     this.startMutationsObserver()
   }

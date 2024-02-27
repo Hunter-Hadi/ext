@@ -11,6 +11,9 @@ export const checkValidElement = (element: HTMLElement | null) => {
       element.tagName !== 'BODY' &&
       element.tagName !== 'CODE' &&
       element.tagName !== 'OBJECT' &&
+      element.tagName !== 'EM' &&
+      element.tagName !== 'CITE' &&
+      element.closest('cite') === null &&
       display !== 'none' &&
       !element.classList.contains('notranslate')
     )

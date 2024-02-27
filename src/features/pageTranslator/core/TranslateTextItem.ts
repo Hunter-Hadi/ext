@@ -1,4 +1,5 @@
 import {
+  MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
 } from '@/features/pageTranslator/constants'
@@ -29,6 +30,8 @@ class TranslateTextItem {
 
   translateStatus: ITranslateStatus
 
+  isBlock: boolean
+
   constructor(element: HTMLElement) {
     // this.uid = uuidV4()
     this.rawElement = element
@@ -44,6 +47,8 @@ class TranslateTextItem {
 
     this.translateContainerElement = null
     this.translateInlineElement = null
+
+    this.isBlock = false
 
     this.observeIntersection()
     this.insertCustomElement()
@@ -81,11 +86,27 @@ class TranslateTextItem {
 
   insertCustomElement() {
     if (this.rawElement) {
+      let isBlock = false
+      if (
+        this.rawElement.tagName === 'P' ||
+        this.rawElement.tagName === 'DIV'
+      ) {
+        isBlock = true
+      }
+
+      if (this.rawText.length > 25 || this.rawText.split(' ').length > 4) {
+        isBlock = true
+      }
+
+      this.isBlock = isBlock
+
       const customElement = document.createElement(
         MAXAI_TRANSLATE_CUSTOM_ELEMENT,
       )
       const inlineElement = document.createElement(
-        MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
+        isBlock
+          ? MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT
+          : MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
       )
 
       inlineElement.classList.add('notranslate')
@@ -127,7 +148,18 @@ class TranslateTextItem {
     ) {
       this.translateInlineElement.removeAttribute('title')
       this.translateInlineElement.innerText = this.translatedText
-      this.translateInlineElement.classList.add('maxai-trans-inline')
+      if (this.isBlock) {
+        const hasBr = this.translateContainerElement?.querySelector('br')
+        if (!hasBr) {
+          const br = document.createElement('br')
+          this.translateContainerElement?.insertBefore(
+            br,
+            this.translateInlineElement,
+          )
+        }
+      } else {
+        this.translateInlineElement.classList.add('maxai-trans-inline')
+      }
     }
   }
 

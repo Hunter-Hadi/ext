@@ -1,3 +1,4 @@
+import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
 interface IProps extends React.ImgHTMLAttributes<HTMLImageElement> {
@@ -5,14 +6,23 @@ interface IProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   width: number
   height: number
   alt?: string
+  sx?: SxProps
 }
 
-const ResponsiveImage: FC<IProps> = ({ src, alt, width, height, ...rest }) => (
+const ResponsiveImage: FC<IProps> = ({
+  src,
+  alt,
+  width,
+  height,
+  sx,
+  ...rest
+}) => (
   <div
     style={{
       position: 'relative',
       width: '100%',
       paddingTop: `${(height / width) * 100}%`,
+      ...sx,
     }}
   >
     <img

@@ -27,6 +27,11 @@ const SidebarPromotionDialog = () => {
 
   const [open, setOpen] = React.useState(false)
 
+  const routerToAnniversary2024Page = () => {
+    window.open('https://app.maxai.me/anniversary2024')
+    handleClose()
+  }
+
   const handleClose = () => {
     setOpen(false)
   }
@@ -169,6 +174,10 @@ const SidebarPromotionDialog = () => {
             )}
             width={832}
             height={468}
+            onClick={routerToAnniversary2024Page}
+            sx={{
+              cursor: 'pointer',
+            }}
           />
 
           <Stack py={2} spacing={1}>

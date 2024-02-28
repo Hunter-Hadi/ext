@@ -498,7 +498,7 @@ Use the following format:
             AskChatGPTActionQuestion: {
               text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 
-The context text originates from the main content of a PDF viewed on the browser at {{CURRENT_WEBPAGE_URL}}.
+The context text originates from the main content of a PDF in the system prompt.
 
 Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.

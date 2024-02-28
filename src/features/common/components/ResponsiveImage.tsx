@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
@@ -17,8 +18,8 @@ const ResponsiveImage: FC<IProps> = ({
   sx,
   ...rest
 }) => (
-  <div
-    style={{
+  <Box
+    sx={{
       position: 'relative',
       width: '100%',
       paddingTop: `${(height / width) * 100}%`,
@@ -41,7 +42,7 @@ const ResponsiveImage: FC<IProps> = ({
         ...rest.style,
       }}
     />
-  </div>
+  </Box>
 )
 
 export default ResponsiveImage

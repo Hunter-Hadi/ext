@@ -4,9 +4,8 @@ import { MAXAI_TRANSLATE_CUSTOM_ELEMENT } from '@/features/pageTranslator/consta
 export const checkChildHasTranslateElement = (
   containerElement: HTMLElement,
 ) => {
-  return (
-    containerElement.getElementsByTagName(MAXAI_TRANSLATE_CUSTOM_ELEMENT)
-      .length > 0
+  return !!containerElement.querySelector(
+    `& > ${MAXAI_TRANSLATE_CUSTOM_ELEMENT}`,
   )
 }
 
@@ -64,7 +63,7 @@ export const isTranslationValidElement = (element: HTMLElement | null) => {
         return false
       }
 
-      if (element.innerText.trim().length <= 1) {
+      if (element.innerText.trim().length <= 2) {
         // 字数太少不翻译
         return false
       }

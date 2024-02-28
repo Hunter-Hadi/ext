@@ -167,7 +167,7 @@ class ShortCutsEngine implements IShortcutEngine {
       // execute action
       action.status = 'running'
       this.emit('action', action)
-      await action.execute(this.getVariables(), engine)
+      await action.execute(this.getVariablesValue(), engine)
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       if (action.status === 'stop') {
@@ -249,7 +249,12 @@ class ShortCutsEngine implements IShortcutEngine {
               break
             }
             const output = currentAction.output || ''
-            this.setVariable('LAST_ACTION_OUTPUT', output, true)
+            this.setVariable({
+              key: 'LAST_ACTION_OUTPUT',
+              value: output,
+              overwrite: true,
+              isBuildIn: true,
+            })
             console.log('ShortCutEngine.run: output', output)
             const nextAction = this.getNextAction()
             if (nextAction?.autoExecute && !currentAction.error) {
@@ -283,36 +288,36 @@ class ShortCutsEngine implements IShortcutEngine {
     this.variables = new Map<string, any>()
     this.status = 'idle'
   }
-  setVariable(
-    key: IShortcutEngineVariableType,
-    value: any,
-    overwrite: boolean,
-  ) {
+  setVariable(variable: IShortCutsParameter) {
     // console.log('ShortCutEngine.setVariable', key, value, overwrite)
-    if (this.variables.has(key as string)) {
-      if (overwrite) {
-        this.variables.set(key as string, value)
+    if (this.variables.has(variable.key)) {
+      if (variable.overwrite) {
+        this.variables.set(variable.key, variable)
       } else {
         console.log('ShortCutEngine.setVariable: key already exists')
       }
     } else {
-      this.variables.set(key as string, value)
+      this.variables.set(variable.key, variable)
     }
   }
-  setVariables(
-    variables: Array<{
-      key: IShortcutEngineVariableType
-      value: any
-      overwrite: boolean
-    }>,
-  ) {
+  setVariables(variables: IShortCutsParameter[]) {
     console.log('ShortCutEngine.setVariables', variables)
     variables.forEach((variable) => {
-      this.setVariable(variable.key, variable.value, variable.overwrite)
+      this.setVariable(variable)
     })
   }
   getVariable(key: IShortcutEngineVariableType) {
     return this.variables.get(key as string)
+  }
+  getVariablesValue() {
+    const transformedMap: {
+      [key: string]: any
+    } = {}
+    this.variables.forEach((value, key) => {
+      transformedMap[key] = value.value
+    })
+    console.log('ShortCutEngine.getVariables', transformedMap)
+    return transformedMap
   }
   getVariables() {
     console.log(

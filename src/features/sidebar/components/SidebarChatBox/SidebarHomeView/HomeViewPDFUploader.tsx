@@ -4,36 +4,12 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 
 const HomeViewPDFUploader = () => {
   const { t } = useTranslation(['client'])
-
-  // const {
-  //   files,
-  //   AIProviderConfig,
-  //   aiProviderUploadFiles,
-  // } = useAIProviderUpload()
-
-  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
-
-  const handleUploadFiles = async (file: File) => {
-    const isImage = file.type.includes('image')
-    const isPDF = file.type.includes('pdf')
-    if (isImage) {
-      uploadImagesAndSwitchToVision([file])
-    }
-
-    if (isPDF) {
-      chromeExtensionClientOpenPage({
-        key: 'pdf_viewer',
-        query: '?pdfUrl=&newTab=true',
-      })
-    }
-  }
 
   return (
     <Stack

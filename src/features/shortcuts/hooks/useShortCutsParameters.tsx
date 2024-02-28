@@ -18,6 +18,7 @@ export interface IShortCutsParameter {
   key: string
   value: any
   overwrite: boolean
+  isBuildIn?: boolean
 }
 
 const useShortCutsParameters = () => {
@@ -85,6 +86,7 @@ const useShortCutsParameters = () => {
         key,
         value: builtInParameters[key as IShortcutEngineBuiltInVariableType],
         overwrite: true,
+        isBuildIn: true,
       })
     })
     console.log(

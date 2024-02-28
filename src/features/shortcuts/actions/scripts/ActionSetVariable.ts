@@ -29,13 +29,14 @@ export class ActionSetVariable extends Action {
         return
       }
       if (engine.shortcutsEngine?.setVariable) {
-        engine.shortcutsEngine.setVariable(
-          VariableName as string,
-          this.parameters?.WFFormValues?.Value ||
+        engine.shortcutsEngine.setVariable({
+          key: VariableName as string,
+          value:
+            this.parameters?.WFFormValues?.Value ||
             params.LAST_ACTION_OUTPUT ||
             '',
-          true,
-        )
+          overwrite: true,
+        })
         this.output = params.LAST_ACTION_OUTPUT || ''
       }
     } catch (e) {

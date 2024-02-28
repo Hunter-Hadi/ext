@@ -1,12 +1,13 @@
+import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo } from 'react'
 
-import ChatIconFileList from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
-import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
+import { IUserChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxUserTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarChatBoxUserTools'
+import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 
 const BaseSidebarUserMessage: FC<{
@@ -36,21 +37,6 @@ const BaseSidebarUserMessage: FC<{
       overflow: 'hidden',
     } as SxProps
   }, [message])
-  const renderData = useMemo(() => {
-    let attachments: IChatUploadFile[] = []
-    if (message.type === 'user') {
-      attachments = (message as IUserChatMessage)?.meta?.attachments || []
-      if (attachments && attachments.length) {
-        attachments = attachments.filter(
-          (item) => item.uploadStatus === 'success',
-        )
-      }
-    }
-    return {
-      attachments,
-      messageText: formatChatMessageContent(message),
-    }
-  }, [message])
 
   const showDivider = useMemo(() => {
     return !message.meta?.includeHistory && order !== 1
@@ -59,28 +45,19 @@ const BaseSidebarUserMessage: FC<{
   console.log('测试性能SidebarUserMessage', 'rerender')
 
   return (
-    <>
+    <Box component={'div'} className={'chat-message--user'}>
       {showDivider && <Divider sx={{ mb: 2 }} />}
-
+      <SidebarUserMessageContexts message={message} />
       <Stack
         className={'chat-message--text'}
         sx={{
           ...memoSx,
         }}
       >
-        {renderData.attachments.length > 0 && (
-          <ChatIconFileList
-            size={'small'}
-            direction={'row'}
-            disabledRemove
-            sx={{ mb: 1 }}
-            files={renderData.attachments}
-          />
-        )}
-        {renderData.messageText}
+        {formatChatMessageContent(message)}
         <SidebarChatBoxUserTools message={message} />
       </Stack>
-    </>
+    </Box>
   )
 }
 

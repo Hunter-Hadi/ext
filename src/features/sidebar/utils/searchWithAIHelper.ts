@@ -381,7 +381,6 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
           meta: {
             messageVisibleText: query,
             outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
-            searchSources: '{{SEARCH_SOURCES}}',
             includeHistory,
             contextMenu: {
               id: '73361add-2d6a-4bf3-b2a7-5097551653e7',

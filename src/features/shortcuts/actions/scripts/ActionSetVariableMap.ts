@@ -26,11 +26,11 @@ export class ActionSetVariableMap extends Action {
       if (engine.shortcutsEngine?.setVariable) {
         Object.keys(VariableMap).forEach((VariableName) => {
           if (VariableMap[VariableName] !== undefined) {
-            engine.shortcutsEngine!.setVariable(
-              VariableName,
-              VariableMap[VariableName],
-              true,
-            )
+            engine.shortcutsEngine!.setVariable({
+              key: VariableName,
+              value: VariableMap[VariableName],
+              overwrite: true,
+            })
           }
         })
         this.output = JSON.stringify(VariableMap)

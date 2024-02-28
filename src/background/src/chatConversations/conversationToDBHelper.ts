@@ -152,6 +152,9 @@ export const deleteDBConversationMessages = async (
   conversation: IChatConversation,
   messageIds: string[],
 ) => {
+  if (!conversation.share?.shareId) {
+    return false
+  }
   try {
     console.log('DB_Conversation deleteMessages', messageIds)
     const response = await maxAIMessageRequest(

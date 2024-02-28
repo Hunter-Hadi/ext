@@ -12,7 +12,7 @@ import path from 'path'
 import archiver from 'archiver'
 import dayjs from 'dayjs'
 
-// import eslint from 'esbuild-plugin-eslint';
+// import eslint from 'esbuild-plugin-eslint';;
 import resolve from 'esbuild-plugin-resolve'
 
 const replaceEnv = buildEnv.getReplaceEnv()

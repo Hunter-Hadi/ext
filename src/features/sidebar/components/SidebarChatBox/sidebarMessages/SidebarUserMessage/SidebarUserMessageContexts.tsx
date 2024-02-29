@@ -166,6 +166,7 @@ const SidebarUserMessageContexts: FC<{
                       <LazyLoadImage
                         imgStyle={{
                           borderRadius: '8px',
+                          objectFit: 'cover',
                         }}
                         key={attachment.uploadedUrl}
                         src={attachment.uploadedUrl}

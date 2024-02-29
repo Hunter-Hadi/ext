@@ -42,6 +42,12 @@ export interface IUserChatMessage extends IChatMessage {
   meta?: IChatMessageExtraMetaType
 }
 
+export interface IUserChatMessageExtraMetaContextType {
+  type: 'text'
+  value: string
+  key: string
+}
+
 export type IChatMessageExtraMetaType = {
   // 是否自动判断AIResponseLanguage
   isEnabledDetectAIResponseLanguage?: boolean
@@ -52,8 +58,6 @@ export type IChatMessageExtraMetaType = {
   attachments?: IChatUploadFile[]
   // 本条消息的显示消息
   messageVisibleText?: string
-  // 搜索的消息源Json
-  searchSources?: string
   // 是否包含历史消息
   includeHistory?: boolean
   // 聊天记录
@@ -64,6 +68,10 @@ export type IChatMessageExtraMetaType = {
   regenerate?: boolean
   // 是否使用了JsonMode
   isEnabledJsonMode?: boolean
+  // quote的消息
+  quoteMessage?: IChatMessage
+  // 上下文
+  contexts?: IUserChatMessageExtraMetaContextType[]
   [key: string]: any
 }
 

@@ -44,7 +44,7 @@ export class ActionSetVariablesModal extends Action {
       }
       // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
       let needUserInput = false
-      const shortCutsVariables = engine.shortcutsEngine?.getVariables()
+      const shortCutsVariables = engine.shortcutsEngine?.getVariablesValue()
       const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
       cloneConfig.variables.map((variable) => {
         if (
@@ -113,11 +113,11 @@ export class ActionSetVariablesModal extends Action {
       if (result.success) {
         Object.keys(result.data).forEach((VariableName) => {
           if (result.data[VariableName] !== undefined) {
-            engine.shortcutsEngine?.setVariable(
-              VariableName,
-              result.data[VariableName],
-              true,
-            )
+            engine.shortcutsEngine?.setVariable({
+              key: VariableName,
+              value: result.data[VariableName],
+              overwrite: true,
+            })
           }
         })
       } else {

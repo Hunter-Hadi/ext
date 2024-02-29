@@ -89,7 +89,7 @@ export interface IShortcutEngine {
   // 基础
   status: 'idle' | 'running' | 'stop' | 'complete'
   actions: IAction[]
-  variables: Map<string, any>
+  variables: Map<string, IShortCutsParameter>
   run: (params: {
     parameters: IShortCutsParameter[]
     engine: IShortcutEngineExternalEngine
@@ -97,20 +97,11 @@ export interface IShortcutEngine {
   stop: (params: { engine: IShortcutEngineExternalEngine }) => void
   reset: () => void
   stepIndex: number
-  setVariable: (
-    key: IShortcutEngineVariableType,
-    value: any,
-    overwrite: boolean,
-  ) => void
-  setVariables: (
-    variables: Array<{
-      key: IShortcutEngineVariableType
-      value: any
-      overwrite: boolean
-    }>,
-  ) => void
+  setVariable: (variable: IShortCutsParameter) => void
+  setVariables: (variables: IShortCutsParameter[]) => void
   getVariable: (key: IShortcutEngineVariableType) => any
-  getVariables: () => Record<string, any>
+  getVariables: () => Record<string, IShortCutsParameter>
+  getVariablesValue: () => Record<string, any>
   setActions: (actions: ISetActionsType) => void
   pushActions: (actions: ISetActionsType, position: 'after' | 'last') => void
   getCurrentAction: () => IAction

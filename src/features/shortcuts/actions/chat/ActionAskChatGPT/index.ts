@@ -22,6 +22,7 @@ import {
   withLoadingDecorators,
 } from '@/features/shortcuts'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
+import generateUserMessageContexts from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generateUserMessageContexts'
 import Action from '@/features/shortcuts/core/Action'
 import {
   clearUserInput,
@@ -110,10 +111,17 @@ export class ActionAskChatGPT extends Action {
         contextMenu,
         // AI response的消息Id
         outputMessageId,
+        // 上下文
+        contexts,
       } = this.question.meta
       // 设置includeHistory
       if (contextMenu?.id) {
         this.question.meta.includeHistory = false
+      }
+      if (!contexts) {
+        this.question.meta.contexts = generateUserMessageContexts(
+          engine.shortcutsEngine?.getVariables() || {},
+        )
       }
       // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏
       // 用于用户看到的信息

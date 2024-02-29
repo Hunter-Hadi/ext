@@ -225,9 +225,6 @@ const FloatingContextMenu: FC<{
     }
     return contextMenuList
   }, [loading, contextMenuList, haveContext, draftContextMenuList])
-  useEffect(() => {
-    console.log('Context Menu List', memoMenuList)
-  }, [memoMenuList])
   const haveDraft = useMemo(() => {
     return inputValue.length > 0
   }, [inputValue])

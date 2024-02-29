@@ -41,7 +41,7 @@ export const findFirstNotInlineParentElement = (
   let parentElement = element?.parentElement
   while (parentElement) {
     const { display } = getComputedStyle(parentElement)
-    if (display !== 'inline' && display !== 'none') {
+    if (!display.includes('inline') && display !== 'none') {
       return parentElement
     }
     parentElement = parentElement.parentElement

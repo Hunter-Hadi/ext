@@ -1,10 +1,11 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, Fragment, useMemo, useState } from 'react'
 
 import LazyLoadImage from '@/components/LazyLoadImage'
 import { IUserChatMessage } from '@/features/chatgpt/types'
@@ -57,9 +58,8 @@ const SidebarUserMessageContexts: FC<{
             open={open}
             title={
               <Stack
-                p={1}
+                py={0.5}
                 borderRadius={1}
-                width={280}
                 maxHeight={400}
                 overflow={'auto'}
               >
@@ -69,36 +69,45 @@ const SidebarUserMessageContexts: FC<{
                       return null
                     }
                     return (
-                      <LazyLoadImage
-                        imgStyle={{
-                          borderRadius: 1,
-                          objectFit: 'contain',
-                          border: '1px solid rgba(0, 0, 0, 0.12)',
-                          padding: '8px',
-                        }}
-                        key={attachment.uploadedUrl}
-                        src={attachment.uploadedUrl}
-                        alt={attachment.fileName}
-                        width={240}
-                        height={240}
-                      />
+                      <Fragment key={attachment.uploadedUrl}>
+                        <LazyLoadImage
+                          imgStyle={{
+                            borderRadius: '8px',
+                            border: '1px solid #00000014',
+                            objectFit: 'contain',
+                            boxSizing: 'border-box',
+                          }}
+                          src={attachment.uploadedUrl}
+                          alt={attachment.fileName}
+                          width={280}
+                          height={280}
+                        />
+                        <Divider sx={{ my: 0.5 }} />
+                      </Fragment>
                     )
                   })}
                   {contexts?.map((context, index) => {
                     return (
-                      <Typography
-                        key={index}
-                        variant={'body2'}
-                        lineHeight={'20px'}
-                      >
-                        {context.key}: {context.value}
-                      </Typography>
+                      <Fragment key={index}>
+                        <Typography
+                          width={280}
+                          whiteSpace={'pre-wrap'}
+                          key={index}
+                          color={'text.primary'}
+                          textAlign={'left'}
+                          lineHeight={'24px'}
+                          fontSize={'16px'}
+                        >
+                          {context.key}: {context.value}
+                        </Typography>
+                        <Divider sx={{ my: 0.5 }} />
+                      </Fragment>
                     )
                   })}
                 </Stack>
               </Stack>
             }
-            placement={'left'}
+            placement={'top'}
             arrow
             disableFocusListener
             disableHoverListener
@@ -109,7 +118,7 @@ const SidebarUserMessageContexts: FC<{
               onClick={() => setOpen(true)}
               p={1}
               sx={{
-                borderRadius: 1,
+                borderRadius: '8px',
                 width: 'max-content',
                 maxWidth: 'calc(100% - 16px)',
                 backgroundColor: 'rgba(235, 235, 235, 1)',
@@ -137,13 +146,13 @@ const SidebarUserMessageContexts: FC<{
                     return (
                       <LazyLoadImage
                         imgStyle={{
-                          borderRadius: 1,
+                          borderRadius: '8px',
                         }}
                         key={attachment.uploadedUrl}
                         src={attachment.uploadedUrl}
                         alt={attachment.fileName}
-                        width={72}
-                        height={54}
+                        width={64}
+                        height={48}
                       />
                     )
                   })}
@@ -164,10 +173,10 @@ const SidebarUserMessageContexts: FC<{
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
                   }}
+                  fontSize={'14px'}
                   variant={'body2'}
                   lineHeight={'20px'}
                 >
-                  {open ? '点击收起' : '点击展开'}
                   {contexts?.[0]?.key}: {contexts?.[0]?.value}
                 </Typography>
               )}

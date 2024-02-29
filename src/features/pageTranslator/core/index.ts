@@ -5,15 +5,18 @@ import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
 import {
   MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_CUSTOM_ELEMENT,
+  MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
 } from '@/features/pageTranslator/constants'
 import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import {
-  checkChildHasTranslateElement,
+  findFirstNotInlineParentElement,
+  isLastTextNode,
   isTranslationValidElement,
 } from '@/features/pageTranslator/utils'
 
 class PageTranslator {
+  textNodesSet: Set<Node>
   translateItemsSet: Set<TranslateTextItem>
   translator: TranslateService
   loading: boolean
@@ -29,6 +32,7 @@ class PageTranslator {
   onFetchingChange?: (loading: boolean) => void
 
   constructor(fromCode?: string, toCode?: string) {
+    this.textNodesSet = new Set()
     this.translateItemsSet = new Set()
     this.translator = new TranslateService()
     this.isEnable = false
@@ -66,7 +70,7 @@ class PageTranslator {
     this.toCode = newToCode
   }
 
-  findSameElement(element: HTMLElement) {
+  findSameTranslateItem(element: HTMLElement) {
     const translateItemsSet = this.translateItemsSet
     for (const translateItem of translateItemsSet) {
       if (translateItem.rawElement === element) {
@@ -89,31 +93,51 @@ class PageTranslator {
       document.body,
       NodeFilter.SHOW_TEXT,
       (node) => {
-        const containerElement = node.parentElement
-        if (
-          node.nodeValue?.trim() &&
-          containerElement &&
-          isTranslationValidElement(containerElement) &&
-          !checkChildHasTranslateElement(containerElement)
-        ) {
-          return NodeFilter.FILTER_ACCEPT
+        if (this.textNodesSet.has(node)) {
+          return NodeFilter.FILTER_REJECT
         }
 
-        return NodeFilter.FILTER_REJECT
+        const parentElement = node.parentElement
+        if (
+          !(node.nodeValue || '').trim() ||
+          !parentElement ||
+          parentElement.closest(MAXAI_TRANSLATE_CUSTOM_ELEMENT)
+        ) {
+          return NodeFilter.FILTER_REJECT
+        }
+
+        return NodeFilter.FILTER_ACCEPT
+
+        // const containerElement = findFirstNotInlineParentElement(node)
+        // if (
+        //   node.nodeValue?.trim() &&
+        //   containerElement &&
+        //   isTranslationValidElement(containerElement) &&
+        //   !checkChildHasTranslateElement(containerElement)
+        // ) {
+        //   return NodeFilter.FILTER_ACCEPT
+        // }
+
+        // return NodeFilter.FILTER_REJECT
       },
     )
 
     let treeWalkerIsDone = false
+    // translate item 的容器中所有的 textNode
+    let translateItemTextNodes: Node[] = []
+    // translate item 的容器元素
+    let translateItemContainerElement: HTMLElement | null = null
     const loopTreeWorker = () => {
       requestIdleCallbackPolyfill((deadline) => {
         let timeRemain = deadline.timeRemaining()
         for (let i = 0; timeRemain > 0; timeRemain -= performance.now() - i) {
           i = performance.now()
-          const textNode = treeWalker.nextNode()
-          const containerElement = textNode?.parentElement
+          const currentTextNode = treeWalker.nextNode()
+
+          // debugger
 
           // treeWalker.nextNode() 结束时 doTranslate
-          if (!textNode) {
+          if (!currentTextNode) {
             treeWalkerIsDone = true
             setTimeout(() => {
               const doTranslateDebounce = debounce(this.doTranslate, 100)
@@ -122,21 +146,56 @@ class PageTranslator {
             return
           }
 
-          if (textNode && containerElement) {
-            const sameElementItem = this.findSameElement(containerElement)
+          const containerElement = findFirstNotInlineParentElement(
+            currentTextNode,
+          )
 
-            if (sameElementItem) {
-              sameElementItem.reset()
-              this.translateItemsSet.delete(sameElementItem)
-            }
+          if (
+            !containerElement ||
+            !isTranslationValidElement(currentTextNode.parentElement)
+          ) {
+            continue
+          }
 
-            if (
-              containerElement.innerText?.trim &&
-              containerElement.innerText?.trim()
-            ) {
-              const translateTextItem = new TranslateTextItem(containerElement)
-              this.translateItemsSet.add(translateTextItem)
-            }
+          if (!translateItemContainerElement) {
+            translateItemContainerElement = containerElement
+          }
+
+          // const parentElement = findParentElementWithTextNode(currentTextNode)
+          // const previousElement = parentElement
+          //   ? parentElement.previousElementSibling
+          //   : currentTextNode.previousSibling
+
+          // let isOnlyOneChildrenNode = false
+
+          // if (previousElement) {
+          //   isOnlyOneChildrenNode =
+          //     previousElement.nodeName === 'BR' ||
+          //     previousElement.nodeName === 'LI' ||
+          //     ('tagName' in previousElement
+          //       ? isBlockElement(previousElement)
+          //       : false)
+          // }
+
+          // debugger
+          if (
+            !this.findSameTranslateItem(containerElement) &&
+            isLastTextNode(currentTextNode, containerElement)
+          ) {
+            translateItemTextNodes.push(currentTextNode)
+            const translateTextItem = new TranslateTextItem(
+              translateItemTextNodes,
+              translateItemContainerElement,
+            )
+            this.translateItemsSet.add(translateTextItem)
+            translateItemTextNodes.forEach((textNode) => {
+              this.textNodesSet.add(textNode)
+            })
+
+            translateItemTextNodes = []
+            translateItemContainerElement = null
+          } else {
+            translateItemTextNodes.push(currentTextNode)
           }
         }
 
@@ -206,6 +265,19 @@ class PageTranslator {
         display: inline-block;
         margin: 4px 0;
       }
+
+      ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.loading,
+      ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT}.loading {
+        white-space: normal;
+        margin: 0;
+      }
+
+      ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.retry,
+      ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT}.retry {
+        white-space: normal;
+        margin: 0;
+      }
+
       .maxai-trans-icon {
         display: inline !important;
         border: none !important;

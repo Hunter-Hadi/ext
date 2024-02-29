@@ -1,4 +1,5 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
+import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
@@ -89,6 +90,19 @@ const SidebarUserMessageContexts: FC<{
                   {contexts?.map((context, index) => {
                     return (
                       <Fragment key={index}>
+                        <Chip
+                          variant={'outlined'}
+                          label={context.key}
+                          color={'primary'}
+                          size="small"
+                          sx={{
+                            width: 'max-content',
+                            bgcolor: (t) =>
+                              t.palette.mode === 'dark'
+                                ? 'rgba(249,244,255)'
+                                : 'rgba(249,244,255)',
+                          }}
+                        />
                         <Typography
                           width={280}
                           whiteSpace={'pre-wrap'}
@@ -98,9 +112,14 @@ const SidebarUserMessageContexts: FC<{
                           lineHeight={'24px'}
                           fontSize={'16px'}
                         >
-                          {context.key}: {context.value}
+                          {context.value}
                         </Typography>
-                        <Divider sx={{ my: 0.5 }} />
+                        {
+                          // 最后一个不需要分割线
+                          index !== contexts.length - 1 && (
+                            <Divider sx={{ my: 0.5 }} />
+                          )
+                        }
                       </Fragment>
                     )
                   })}

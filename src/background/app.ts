@@ -68,7 +68,6 @@ import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
 } from '@/features/common/constants'
-import { getBrowserType } from '@/features/common/utils'
 import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
@@ -333,22 +332,9 @@ const initChromeExtensionUpdated = async () => {
   if (APP_VERSION === '2.4.8') {
     analyzeIndexDBMemory()
   }
-  if (APP_VERSION === '3.0.0') {
-    setTimeout(
-      executeMaxAIOneYearPromotion,
-      (1 + Math.floor(Math.random() * 9)) * 1000,
-    )
-  }
 
-  if (APP_VERSION === '3.0.3' && getBrowserType() === 'Edge') {
-    // edge 的 free 用户才会弹出 promotion 页面，chrome 的用户会在 sidebar 中弹出 dialog promotion  - @tdzhang
-    setTimeout(
-      () => executeMaxAIOneYearPromotion(true),
-      (1 + Math.floor(Math.random() * 9)) * 1000,
-    )
-  }
-  if (APP_VERSION === '3.0.4') {
-    // 3.0.4这一版，大促页面针对所有free users都弹出（包括Chrome和Edge） - @huangsong
+  // 3.0.5这一版，大促页面针对所有free users都弹出（包括Chrome和Edge） - @huangsong
+  if (APP_VERSION === '3.0.5') {
     setTimeout(
       () => executeMaxAIOneYearPromotion(true),
       (1 + Math.floor(Math.random() * 9)) * 1000,

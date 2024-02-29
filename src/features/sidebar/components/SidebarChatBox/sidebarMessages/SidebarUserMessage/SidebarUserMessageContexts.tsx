@@ -140,7 +140,10 @@ const SidebarUserMessageContexts: FC<{
                 borderRadius: '8px',
                 width: 'max-content',
                 maxWidth: 'calc(100% - 16px)',
-                backgroundColor: 'rgba(235, 235, 235, 1)',
+                bgcolor: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgba(60, 60, 60, 1)'
+                    : 'rgba(235, 235, 235, 1)',
                 cursor: 'pointer',
               }}
               ml={'auto'}

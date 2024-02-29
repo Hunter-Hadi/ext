@@ -3,6 +3,10 @@ import {
   MAXAI_TRANSLATE_CUSTOM_ELEMENT,
   MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
 } from '@/features/pageTranslator/constants'
+import {
+  findFirstNotInlineParentElement,
+  insertAfter,
+} from '@/features/pageTranslator/utils'
 
 type ITranslateStatus = 'idle' | 'fetching' | 'success' | 'error'
 
@@ -37,7 +41,7 @@ class TranslateTextItem {
   constructor(textNode: Node[], element: HTMLElement) {
     // this.uid = uuidV4()
     this.rawElement = element
-    this.rawText = element.innerText || ''
+    this.rawText = textNode.map((node) => node.textContent).join(' ')
     this.textNodes = textNode
     this.translatedLangCode = ''
     this.originalLangCode = ''
@@ -124,13 +128,15 @@ class TranslateTextItem {
       this.translateInnerElement = inlineElement
 
       const textNode = this.textNodes[this.textNodes.length - 1]
-      if (this.textNodes.length === 1) {
-        textNode.parentElement?.insertBefore(
-          customElement,
-          textNode.nextSibling,
-        )
+      if (this.textNodes.length <= 2) {
+        insertAfter(customElement, textNode)
       } else {
-        this.rawElement.appendChild(customElement)
+        const notInlineParentElement = findFirstNotInlineParentElement(textNode)
+        if (notInlineParentElement) {
+          notInlineParentElement.appendChild(customElement)
+        } else {
+          insertAfter(customElement, textNode)
+        }
       }
     }
   }

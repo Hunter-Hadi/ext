@@ -20,12 +20,15 @@ export const checkChildHasTranslateElement = (
   )
 }
 
-// 将 beInsertedElement 插入到 node 之后
-export const insertNodeAfter = function (
-  beInsertedElement: HTMLElement,
-  node: Node | HTMLElement,
+// 将 elementToInsert 插入到 referenceElement 之后
+export const insertAfter = function (
+  elementToInsert: Node | Element,
+  referenceElement: Node | Element,
 ) {
-  node.parentElement?.insertBefore(beInsertedElement, node.nextSibling)
+  referenceElement.parentElement?.insertBefore(
+    elementToInsert,
+    referenceElement.nextSibling,
+  )
 }
 
 // 判断当前 element 是否是 显示状态

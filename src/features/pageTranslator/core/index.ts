@@ -134,8 +134,6 @@ class PageTranslator {
           i = performance.now()
           const currentTextNode = treeWalker.nextNode()
 
-          // debugger
-
           // treeWalker.nextNode() 结束时 doTranslate
           if (!currentTextNode) {
             treeWalkerIsDone = true
@@ -300,7 +298,7 @@ class PageTranslator {
     document.head.appendChild(style)
   }
 
-  cleanTranslateElements() {
+  hideTranslateElements() {
     this.isEnable = false
 
     this.translateItemsSet.forEach((translateItem) => {
@@ -348,7 +346,7 @@ class PageTranslator {
     if (enable) {
       this.startPageTranslator()
     } else {
-      this.cleanTranslateElements()
+      this.hideTranslateElements()
     }
   }
 
@@ -359,6 +357,7 @@ class PageTranslator {
     })
 
     this.translateItemsSet.clear()
+    this.textNodesSet.clear()
     this.startPageTranslator()
   }
 }

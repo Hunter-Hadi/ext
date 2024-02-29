@@ -513,7 +513,7 @@ const useInitRangy = () => {
         selectContextMenuId: '',
         lastOutput: '',
       })
-      hideRangy()
+      hideRangy(true)
       selectionElementRef.current = null
     }
     switch (selectedDraftContextMenuType) {

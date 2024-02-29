@@ -4,7 +4,6 @@ import { useRecoilState, useRecoilValue } from 'recoil'
 import { useAuthLogin } from '@/features/auth'
 import { ContentScriptConnectionV2, pingUntilLogin } from '@/features/chatgpt'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { useRangy } from '@/features/contextMenu'
 import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -25,7 +24,6 @@ const shortcutsMessageChannelEngine = new ContentScriptConnectionV2({
 })
 const useShortCutsEngine = () => {
   const { isLogin } = useAuthLogin()
-  const { hideRangy } = useRangy()
   const getParams = useShortCutsParameters()
   const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
   const { loading: chatGPTConversationLoading } = useRecoilValue(
@@ -80,7 +78,6 @@ const useShortCutsEngine = () => {
             },
           })
         }
-        hideRangy(true)
       } catch (e) {
         console.log('run short cuts error: \t', e)
       } finally {

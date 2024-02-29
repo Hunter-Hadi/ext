@@ -48,6 +48,7 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import {
   useContextMenuList,
   useDraftContextMenuList,
+  useFloatingContextMenu,
   useRangy,
 } from '@/features/contextMenu/hooks'
 import {
@@ -94,7 +95,7 @@ const FloatingContextMenu: FC<{
   const { root } = props
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
-  const { currentSelectionRef } = useRangy()
+  const { currentSelectionRef, hideRangy } = useRangy()
   const { askAIWIthShortcuts, askAIQuestion, regenerate } = useClientChat()
   const currentHostRef = useRef(getCurrentDomainHost())
   const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
@@ -103,6 +104,7 @@ const FloatingContextMenu: FC<{
     currentSidebarConversationType,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const { hideFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
@@ -370,11 +372,7 @@ const FloatingContextMenu: FC<{
           currentDraft = '{{SELECTED_TEXT}}'
           // 当选中只读文字的时候，应该是在sidebar里显示回复 - 20240221 - @huangsong
           showChatBox()
-          setFloatingDropdownMenu({
-            open: false,
-            rootRect: null,
-            showModelSelector: false,
-          })
+          hideFloatingContextMenu()
         }
       }
       let template = `${inputValue}`
@@ -481,11 +479,7 @@ const FloatingContextMenu: FC<{
           if (isDraftContextMenu) {
             if (needOpenChatBox) {
               showChatBox()
-              setFloatingDropdownMenu({
-                open: false,
-                rootRect: null,
-                showModelSelector: false,
-              })
+              hideFloatingContextMenu()
               return
             }
             setFloatingDropdownMenuSystemItems((prev) => {
@@ -550,11 +544,7 @@ const FloatingContextMenu: FC<{
         needOpenChatBox = true
       }
       if (!isEditableElement || needOpenChatBox) {
-        setFloatingDropdownMenu({
-          open: false,
-          rootRect: null,
-          showModelSelector: false,
-        })
+        hideFloatingContextMenu()
         showChatBox()
       }
       setInputValue('')
@@ -566,11 +556,7 @@ const FloatingContextMenu: FC<{
               shortCutsEngineRef.current?.getNextAction()?.error || ''
             if (error) {
               console.log('[ContextMenu Module] error', error)
-              setFloatingDropdownMenu({
-                open: false,
-                rootRect: null,
-                showModelSelector: false,
-              })
+              hideFloatingContextMenu()
               // 如果出错了，则打开聊天框
               showChatBox()
             }
@@ -578,6 +564,9 @@ const FloatingContextMenu: FC<{
           .catch()
           .finally(() => {
             isRunningActionsRef.current = false
+            if (!isEditableElement) {
+              hideRangy(true)
+            }
           })
       }
     }

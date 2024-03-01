@@ -4,7 +4,7 @@ import {
   MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT,
 } from '@/features/pageTranslator/constants'
 import {
-  findFirstNotInlineParentElement,
+  findInlineParentElement,
   insertAfter,
 } from '@/features/pageTranslator/utils'
 
@@ -40,9 +40,17 @@ class TranslateTextItem {
 
   constructor(textNode: Node[], element: HTMLElement) {
     // this.uid = uuidV4()
+
+    // 需要过滤掉 不是 element 子元素的 textNode
+    const filterTextNode = textNode.filter((node) => {
+      return element.contains(node)
+    })
+
     this.rawElement = element
-    this.rawText = textNode.map((node) => node.textContent).join(' ')
-    this.textNodes = textNode
+    this.rawText = filterTextNode
+      .map((node) => node?.nodeValue?.trim() || '')
+      .join(' ')
+    this.textNodes = filterTextNode
     this.translatedLangCode = ''
     this.originalLangCode = ''
     this.translatedText = ''
@@ -128,15 +136,11 @@ class TranslateTextItem {
       this.translateInnerElement = inlineElement
 
       const textNode = this.textNodes[this.textNodes.length - 1]
-      if (this.textNodes.length <= 2) {
+      if (this.textNodes.length === 1) {
         insertAfter(customElement, textNode)
       } else {
-        const notInlineParentElement = findFirstNotInlineParentElement(textNode)
-        if (notInlineParentElement) {
-          notInlineParentElement.appendChild(customElement)
-        } else {
-          insertAfter(customElement, textNode)
-        }
+        const inlineElement = findInlineParentElement(textNode)
+        insertAfter(customElement, inlineElement || textNode)
       }
     }
   }
@@ -180,7 +184,7 @@ class TranslateTextItem {
         this.translateInnerElement.classList.add('maxai-trans-inline')
       } else {
         // block 元素需要添加 br
-        const hasBr = this.translateContainerElement?.querySelector('br')
+        const hasBr = this.translateContainerElement?.querySelector('& > br')
         if (!hasBr) {
           const br = document.createElement('br')
           this.translateContainerElement?.insertBefore(

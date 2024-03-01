@@ -102,7 +102,13 @@ class TranslateService {
         return result.every((item) => item)
       }
 
-      const needTextArray = needTranslateItems.map((item) => item.rawText)
+      const needTextArray = needTranslateItems
+        .map((item) => item.rawText)
+        .filter((text) => text)
+
+      if (needTextArray.length <= 0) {
+        return false
+      }
 
       needTranslateItems.forEach((item) => item.updateFetchStatus('fetching'))
 

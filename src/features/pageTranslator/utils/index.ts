@@ -37,14 +37,29 @@ export const isElementVisible = (element: HTMLElement) => {
   return display !== 'none' && visibility !== 'hidden' && opacity !== '0'
 }
 
-// 找到第一个不为 inline 的父元素
-export const findFirstNotInlineParentElement = (
+// 找到第一个 block 的父元素
+export const findBlockParentElement = (
   element: Node | HTMLElement | null,
 ): HTMLElement | null => {
   let parentElement = element?.parentElement
   while (parentElement) {
     const { display } = getComputedStyle(parentElement)
-    if (!display.includes('inline') && display !== 'none') {
+    if (isBlockElement(parentElement) && display !== 'none') {
+      return parentElement
+    }
+    parentElement = parentElement.parentElement
+  }
+  return null
+}
+
+// 找到第一个是 inline 的父元素
+export const findInlineParentElement = (
+  element: Node | HTMLElement | null,
+): HTMLElement | null => {
+  let parentElement = element?.parentElement
+  while (parentElement) {
+    const { display } = getComputedStyle(parentElement)
+    if (isInlineElement(parentElement) && display !== 'none') {
       return parentElement
     }
     parentElement = parentElement.parentElement
@@ -170,25 +185,25 @@ export const isTranslationValidElement = (element: HTMLElement | null) => {
         return false
       }
 
-      const text = element.innerText.trim()
-      if (text.length <= 2) {
-        // 字数太少不翻译
-        return false
-      }
+      // const text = element.innerText.trim()
+      // if (text.length <= 2) {
+      //   // 字数太少不翻译
+      //   return false
+      // }
 
-      if (
-        /^(.){0,3}(\d*[,:._-])*\d+(.){0,5}$/g.test(text) ||
-        /^(([A-Z0-9]+[_-])*[A-Z0-9]){1,8}$/g.test(text) ||
-        /^\w+@\w+[.]\w+$/g.test(text) ||
-        /^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(
-          text,
-        ) ||
-        /^@[\S]+$/g.test(text) ||
-        /^[-`~!@#$%^&*()_+=[\]{};:'",<.>/?]+$/g.test(text)
-      ) {
-        // 一些特殊的文本不翻译（规则参考 Sider）
-        return false
-      }
+      // if (
+      //   /^(.){0,3}(\d*[,:._-])*\d+(.){0,5}$/g.test(text) ||
+      //   /^(([A-Z0-9]+[_-])*[A-Z0-9]){1,8}$/g.test(text) ||
+      //   /^\w+@\w+[.]\w+$/g.test(text) ||
+      //   /^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(
+      //     text,
+      //   ) ||
+      //   /^@[\S]+$/g.test(text) ||
+      //   /^[-`~!@#$%^&*()_+=[\]{};:'",<.>/?]+$/g.test(text)
+      // ) {
+      //   // 一些特殊的文本不翻译（规则参考 Sider）
+      //   return false
+      // }
 
       return true
     } else {
@@ -197,6 +212,26 @@ export const isTranslationValidElement = (element: HTMLElement | null) => {
   } catch (error) {
     return false
   }
+}
+
+// 校验 内容 是否是不需要被翻译的 content
+export const isNotToTranslateText = (content: string) => {
+  const text = content?.trim() || ''
+  if (
+    text.length < 2 ||
+    /^\d+$/.test(text) ||
+    /^(.){0,3}(\d*[,:._-])*\d+(.){0,5}$/g.test(text) ||
+    /^(([A-Z0-9]+[_-])*[A-Z0-9]){1,8}$/g.test(text) ||
+    /^\w+@\w+[.]\w+$/g.test(text) ||
+    /^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)$/.test(
+      text,
+    ) ||
+    /^@[\S]+$/g.test(text) ||
+    /^[-`~!@#$%^&*()_+=[\]{};:'",<.>/?]+$/g.test(text)
+  ) {
+    return true
+  }
+  return false
 }
 
 // 将 language code 转换成  translate api 支持的 code

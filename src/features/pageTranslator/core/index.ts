@@ -10,8 +10,10 @@ import {
 import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import {
-  findFirstNotInlineParentElement,
-  isLastTextNode,
+  findBlockParentElement,
+  findParentElementWithTextNode,
+  isBlockElement,
+  isNotToTranslateText,
   isTranslationValidElement,
 } from '@/features/pageTranslator/utils'
 
@@ -107,26 +109,14 @@ class PageTranslator {
         }
 
         return NodeFilter.FILTER_ACCEPT
-
-        // const containerElement = findFirstNotInlineParentElement(node)
-        // if (
-        //   node.nodeValue?.trim() &&
-        //   containerElement &&
-        //   isTranslationValidElement(containerElement) &&
-        //   !checkChildHasTranslateElement(containerElement)
-        // ) {
-        //   return NodeFilter.FILTER_ACCEPT
-        // }
-
-        // return NodeFilter.FILTER_REJECT
       },
     )
 
     let treeWalkerIsDone = false
     // translate item 的容器中所有的 textNode
-    let translateItemTextNodes: Node[] = []
+    let prepareTranslateTextNodes: Node[] = []
     // translate item 的容器元素
-    let translateItemContainerElement: HTMLElement | null = null
+    let prepareTranslateContainer: HTMLElement | null = null
     const loopTreeWorker = () => {
       requestIdleCallbackPolyfill((deadline) => {
         let timeRemain = deadline.timeRemaining()
@@ -136,6 +126,13 @@ class PageTranslator {
 
           // treeWalker.nextNode() 结束时 doTranslate
           if (!currentTextNode) {
+            if (prepareTranslateTextNodes.length && prepareTranslateContainer) {
+              this.newPageTranslateItem(
+                prepareTranslateTextNodes,
+                prepareTranslateContainer,
+              )
+            }
+
             treeWalkerIsDone = true
             setTimeout(() => {
               const doTranslateDebounce = debounce(this.doTranslate, 100)
@@ -144,9 +141,14 @@ class PageTranslator {
             return
           }
 
-          const containerElement = findFirstNotInlineParentElement(
-            currentTextNode,
-          )
+          const containerElement = findBlockParentElement(currentTextNode)
+
+          if (
+            containerElement &&
+            containerElement.querySelector(MAXAI_TRANSLATE_CUSTOM_ELEMENT)
+          ) {
+            continue
+          }
 
           if (
             !containerElement ||
@@ -155,45 +157,36 @@ class PageTranslator {
             continue
           }
 
-          if (!translateItemContainerElement) {
-            translateItemContainerElement = containerElement
+          if (!prepareTranslateContainer) {
+            prepareTranslateContainer = containerElement
           }
 
-          // const parentElement = findParentElementWithTextNode(currentTextNode)
-          // const previousElement = parentElement
-          //   ? parentElement.previousElementSibling
-          //   : currentTextNode.previousSibling
+          const parentElement = findParentElementWithTextNode(currentTextNode)
+          const previousElement = parentElement
+            ? parentElement.previousElementSibling
+            : currentTextNode.previousSibling
 
-          // let isOnlyOneChildrenNode = false
+          // 判断是否是新的一行，新的一行需要新建一个 translateItem
+          let isNewLine = false
 
-          // if (previousElement) {
-          //   isOnlyOneChildrenNode =
-          //     previousElement.nodeName === 'BR' ||
-          //     previousElement.nodeName === 'LI' ||
-          //     ('tagName' in previousElement
-          //       ? isBlockElement(previousElement)
-          //       : false)
-          // }
+          if (previousElement) {
+            isNewLine =
+              previousElement.nodeName === 'BR' ||
+              previousElement.nodeName === 'LI' ||
+              ('tagName' in previousElement
+                ? isBlockElement(previousElement)
+                : false)
+          }
 
-          // debugger
-          if (
-            !this.findSameTranslateItem(containerElement) &&
-            isLastTextNode(currentTextNode, containerElement)
-          ) {
-            translateItemTextNodes.push(currentTextNode)
-            const translateTextItem = new TranslateTextItem(
-              translateItemTextNodes,
-              translateItemContainerElement,
+          if (prepareTranslateContainer !== containerElement || isNewLine) {
+            this.newPageTranslateItem(
+              prepareTranslateTextNodes,
+              prepareTranslateContainer,
             )
-            this.translateItemsSet.add(translateTextItem)
-            translateItemTextNodes.forEach((textNode) => {
-              this.textNodesSet.add(textNode)
-            })
-
-            translateItemTextNodes = []
-            translateItemContainerElement = null
+            prepareTranslateContainer = containerElement
+            prepareTranslateTextNodes = [currentTextNode]
           } else {
-            translateItemTextNodes.push(currentTextNode)
+            prepareTranslateTextNodes.push(currentTextNode)
           }
         }
 
@@ -204,6 +197,25 @@ class PageTranslator {
     }
 
     loopTreeWorker()
+  }
+
+  newPageTranslateItem(textNodes: Node[], containerElement: HTMLElement) {
+    textNodes.forEach((textNode) => {
+      this.textNodesSet.add(textNode)
+    })
+
+    const allText = textNodes
+      .map((node) => node.textContent || '')
+      .join('')
+      .trim()
+
+    if (isNotToTranslateText(allText)) {
+      return
+    }
+
+    const translateItem = new TranslateTextItem(textNodes, containerElement)
+    this.translateItemsSet.add(translateItem)
+    console.log(`zztest this.translateItemsSet`, this.translateItemsSet)
   }
 
   async doTranslate() {
@@ -262,12 +274,6 @@ class PageTranslator {
       ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT} {
         display: inline-block;
         margin: 4px 0;
-      }
-
-      ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.loading,
-      ${MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT}.loading {
-        white-space: normal;
-        margin: 0;
       }
 
       ${MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT}.retry,

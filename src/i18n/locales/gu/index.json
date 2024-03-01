@@ -590,7 +590,11 @@
     "sidebar__promotion_dialog__content_item5__title": "GPT-4-ટર્બો સાથે દૃષ્ટિ",
     "sidebar__promotion_dialog__content_item5__description": "ઓપનએઆઈની ક્રાંતિકારી GPT-4-વિઝનને એકત્રિત કરે છે જે GPT-4ની અગ્રણી ભાષા સમજોની સામર્થ્ય સાથે ચિત્ર પ્રક્રિયાને.",
     "sidebar__promotion_dialog__content_item6__title": "જેમિની-પ્રો",
-    "sidebar__promotion_dialog__content_item6__description": "બહુમોડાલિતા માટે ગૂગલનું સૌથી સક્ષમ અને સામાન્ય મોડેલ એક્સેસ કરો."
+    "sidebar__promotion_dialog__content_item6__description": "બહુમોડાલિતા માટે ગૂગલનું સૌથી સક્ષમ અને સામાન્ય મોડેલ એક્સેસ કરો.",
+    "home_view_content_nav__summary_page__title": "પૃષ્ઠને સંક્ષેપિત કરો અને પુછો",
+    "home_view_content_nav__summary_video__title": "વિડિઓ પર સંક્ષેપિત કરો અને પુછો",
+    "home_view_content_nav__summary_email__title": "ઇમેઇલ પર સંક્ષેપિત કરો અને પુછો",
+    "home_view_content_nav__summary_PDF__title": "PDF પર સંક્ષેપિત કરો અને પુછો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

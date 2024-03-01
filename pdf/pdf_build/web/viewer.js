@@ -2293,7 +2293,10 @@ function webViewerInitialized() {
     if (!files || files.length === 0) {
       return;
     }
-
+    const maxAIAlert = document.querySelector('#usechatgptPDFViewerErrorAlert')
+    if (maxAIAlert) {
+      maxAIAlert.style.display = 'none'
+    }
     eventBus.dispatch("fileinputchange", {
       source: this,
       fileInput: evt.dataTransfer

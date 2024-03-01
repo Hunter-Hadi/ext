@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, useState } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -31,6 +31,14 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   const [delay, setDelay] = useState<number | null>(100)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
+  const isAccessPermissionRef = useRef(false)
+  useEffectOnce(() => {
+    if (isMaxAIPDFPage()) {
+      Browser.extension.isAllowedFileSchemeAccess().then((result) => {
+        isAccessPermissionRef.current = result
+      })
+    }
+  })
 
   const [uploadLoading, setUploadLoading] = useState(false)
 
@@ -47,12 +55,32 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
     setIsDragOver(false)
   }
 
-  const handleDrop = (event: any) => {
-    // event.preventDefault()
+  const handleDrop = async (event: any) => {
     setIsDragOver(false)
-    const file = event.dataTransfer?.files?.[0]
-    if (file && file.type.includes('pdf')) {
-      window.close()
+    if (!isAccessPermissionRef.current) {
+      event.preventDefault()
+      const container = document.querySelector('#viewerContainer')
+      if (container) {
+        // mock drop event
+        const dropEvent = new Event('drop', {
+          bubbles: true,
+          cancelable: true,
+        })
+        Object.defineProperty(dropEvent, 'dataTransfer', {
+          value: {
+            files: event.dataTransfer.files,
+            items: event.dataTransfer.items,
+            types: event.dataTransfer.types,
+          },
+        })
+        container.dispatchEvent(dropEvent)
+        setShow(false)
+      }
+    } else {
+      const file = event.dataTransfer?.files?.[0]
+      if (file && file.type.includes('pdf')) {
+        window.close()
+      }
     }
 
     // const files = event.dataTransfer.files as FileList
@@ -110,6 +138,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   if (!show || !rootElement) {
     return null
   }
+
   return (
     <DynamicComponent
       rootContainer={rootElement}

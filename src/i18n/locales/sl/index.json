@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Osvežite to stran, da aktivirate razširitev na tej strani.",
     "sidebar__refresh_page__button": "Osvežite to stran",
-    "sidebar__input__placeholder": "Vprašajte AI...",
     "floating_menu__button__cta__tooltip": "Prosite AI, naj uredi, povzame, pojasni ali generira besedilo",
     "floating_menu__button__hide_menu": "Skrij meni",
     "floating_menu__button__hide_menu__until_next_visit": "Skrij meni do naslednjega obiska",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Izvorna jezikovna nastavitev",
     "translation_advanced__target_lang_select__label": "Ciljna jezikovna nastavitev",
     "pdf_ai_viewer__once_default_button__short_title": "Privzeti pregledovalnik",
-    "pdf_ai_viewer__once_default_button__title": "Odpri PDF enkrat z privzetim pregledovalnikom"
+    "pdf_ai_viewer__once_default_button__title": "Odpri PDF enkrat z privzetim pregledovalnikom",
+    "sidebar__input__chat__placeholder": "Vprašaj AI...",
+    "sidebar__input__summary__page_placeholder": "Vprašaj AI karkoli o strani...",
+    "sidebar__input__summary__pdf_placeholder": "Vprašaj AI karkoli o PDF...",
+    "sidebar__input__summary__email_placeholder": "Vprašaj AI karkoli o e-pošti...",
+    "sidebar__input__summary__video_placeholder": "Vprašaj AI karkoli o videu...",
+    "sidebar__input__search__placeholder": "Vprašajte splet...",
+    "sidebar__input__art__placeholder": "Vprašaj AI..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

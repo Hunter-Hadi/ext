@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Last inn denne siden på nytt for å aktivere utvidelsen på denne siden.",
     "sidebar__refresh_page__button": "Last inn denne siden på nytt",
-    "sidebar__input__placeholder": "Spør AI...",
     "floating_menu__button__cta__tooltip": "Be AI om å redigere, oppsummere, forklare eller generere tekst",
     "floating_menu__button__hide_menu": "Skjul menyen",
     "floating_menu__button__hide_menu__until_next_visit": "Skjul menyen til neste besøk",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Kildespråk",
     "translation_advanced__target_lang_select__label": "Målspråk",
     "pdf_ai_viewer__once_default_button__short_title": "Standardvisning",
-    "pdf_ai_viewer__once_default_button__title": "Åpne PDF én gang med standardvisning"
+    "pdf_ai_viewer__once_default_button__title": "Åpne PDF én gang med standardvisning",
+    "sidebar__input__chat__placeholder": "Spør AI...",
+    "sidebar__input__summary__page_placeholder": "Spør AI om hva som helst på siden...",
+    "sidebar__input__summary__pdf_placeholder": "Spør AI om hva som helst om PDF-en...",
+    "sidebar__input__summary__email_placeholder": "Spør AI om hva som helst om e-posten...",
+    "sidebar__input__summary__video_placeholder": "Spør AI om hva som helst om videoen...",
+    "sidebar__input__search__placeholder": "Spør nettet...",
+    "sidebar__input__art__placeholder": "Spør AI..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

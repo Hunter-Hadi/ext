@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Обновите эту страницу, чтобы активировать расширение на этой странице.",
     "sidebar__refresh_page__button": "Обновить эту страницу",
-    "sidebar__input__placeholder": "Задайте вопрос ИИ...",
     "floating_menu__button__cta__tooltip": "Попросите ИИ отредактировать, суммировать, объяснить или сгенерировать текст",
     "floating_menu__button__hide_menu": "Скрыть меню",
     "floating_menu__button__hide_menu__until_next_visit": "Скрыть меню до следующего посещения",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Исходный язык",
     "translation_advanced__target_lang_select__label": "Целевой язык",
     "pdf_ai_viewer__once_default_button__short_title": "По умолчанию",
-    "pdf_ai_viewer__once_default_button__title": "Открыть PDF один раз с помощью просмотрщика по умолчанию"
+    "pdf_ai_viewer__once_default_button__title": "Открыть PDF один раз с помощью просмотрщика по умолчанию",
+    "sidebar__input__chat__placeholder": "Задайте вопрос ИИ...",
+    "sidebar__input__summary__page_placeholder": "Задайте ИИ любой вопрос о странице...",
+    "sidebar__input__summary__pdf_placeholder": "Задайте ИИ любой вопрос о PDF...",
+    "sidebar__input__summary__email_placeholder": "Задайте ИИ любой вопрос об электронной почте...",
+    "sidebar__input__summary__video_placeholder": "Задайте ИИ любой вопрос о видео...",
+    "sidebar__input__search__placeholder": "Задайте вопрос...",
+    "sidebar__input__art__placeholder": "Задайте ИИ вопрос..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

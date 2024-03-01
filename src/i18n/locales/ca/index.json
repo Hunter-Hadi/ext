@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Actualitzeu aquesta pàgina per activar l'extensió en aquesta pàgina.",
     "sidebar__refresh_page__button": "Actualitza aquesta pàgina",
-    "sidebar__input__placeholder": "Pregunta a l'IA...",
     "floating_menu__button__cta__tooltip": "Demana a l'IA que editi, resumisqui, expliqui o generi text",
     "floating_menu__button__hide_menu": "Amaga el menú",
     "floating_menu__button__hide_menu__until_next_visit": "Amaga el menú fins a la propera visita",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Idioma d'origen",
     "translation_advanced__target_lang_select__label": "Idioma de destinació",
     "pdf_ai_viewer__once_default_button__short_title": "Visor per defecte",
-    "pdf_ai_viewer__once_default_button__title": "Obre el PDF una vegada amb el visor per defecte"
+    "pdf_ai_viewer__once_default_button__title": "Obre el PDF una vegada amb el visor per defecte",
+    "sidebar__input__chat__placeholder": "Pregunta a l'IA...",
+    "sidebar__input__summary__page_placeholder": "Pregunta a l'IA sobre la pàgina...",
+    "sidebar__input__summary__pdf_placeholder": "Pregunta a l'IA sobre el PDF...",
+    "sidebar__input__summary__email_placeholder": "Pregunta a l'IA sobre el correu electrònic...",
+    "sidebar__input__summary__video_placeholder": "Pregunta a l'IA sobre el vídeo...",
+    "sidebar__input__search__placeholder": "Pregunta a la web...",
+    "sidebar__input__art__placeholder": "Pregunta a l'IA..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

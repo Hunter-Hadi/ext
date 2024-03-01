@@ -258,7 +258,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Թարմացրեք էջը, որպեսզի ակտիվացնեք ընդլայնումը այս էջում:",
     "sidebar__refresh_page__button": "Թարմացնել էջը",
-    "sidebar__input__placeholder": "Հարցերով AI...",
     "floating_menu__button__cta__tooltip": "Հարցերով AI-ին խմբագրել, ամփոփել, բացատրել կամ գեներացնել տեքստ",
     "floating_menu__button__hide_menu": "Թաքցնել մենյուն",
     "floating_menu__button__hide_menu__until_next_visit": "Թաքցնել մենյուն մինչև հաջորդ այցերը",
@@ -625,7 +624,14 @@
     "translation_advanced__source_lang_select__label": "Աղբյուր լեզու",
     "translation_advanced__target_lang_select__label": "Նպատակ լեզու",
     "pdf_ai_viewer__once_default_button__short_title": "Կանխորոշված դիտում",
-    "pdf_ai_viewer__once_default_button__title": "Բացել PDF-ը միայն մեկ անգամ սկսած դիտարկիչով"
+    "pdf_ai_viewer__once_default_button__title": "Բացել PDF-ը միայն մեկ անգամ սկսած դիտարկիչով",
+    "sidebar__input__chat__placeholder": "Հարցնել AI-ին...",
+    "sidebar__input__summary__page_placeholder": "Հարցնել AI-ին ամենայնը էջի մասին...",
+    "sidebar__input__summary__pdf_placeholder": "Հարցնել AI-ին ամենայնը PDF-ի մասին...",
+    "sidebar__input__summary__email_placeholder": "Հարցնել AI-ին ամենայնը էլ. փոստի մասին...",
+    "sidebar__input__summary__video_placeholder": "Հարցնել AI-ին ամենայնը վիդեոի մասին...",
+    "sidebar__input__search__placeholder": "Հարցնել վեբը...",
+    "sidebar__input__art__placeholder": "Հարցնել AI-ին..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

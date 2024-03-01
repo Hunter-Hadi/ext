@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me！",
     "sidebar__refresh_page__description": "刷新此頁面以啟用擴充功能。",
     "sidebar__refresh_page__button": "刷新此頁面",
-    "sidebar__input__placeholder": "問 AI...",
     "floating_menu__button__cta__tooltip": "請 AI 編輯、摘要、解釋或生成文本",
     "floating_menu__button__hide_menu": "隱藏選單",
     "floating_menu__button__hide_menu__until_next_visit": "隱藏選單直到下次訪問",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "來源語言",
     "translation_advanced__target_lang_select__label": "目標語言",
     "pdf_ai_viewer__once_default_button__short_title": "預設檢視器",
-    "pdf_ai_viewer__once_default_button__title": "使用預設檢視器開啟 PDF"
+    "pdf_ai_viewer__once_default_button__title": "使用預設檢視器開啟 PDF",
+    "sidebar__input__chat__placeholder": "請問 AI...",
+    "sidebar__input__summary__page_placeholder": "請問 AI 關於這個頁面的任何事情...",
+    "sidebar__input__summary__pdf_placeholder": "請問 AI 關於這個 PDF 的任何事情...",
+    "sidebar__input__summary__email_placeholder": "請問 AI 關於這封電子郵件的任何事情...",
+    "sidebar__input__summary__video_placeholder": "請問 AI 關於這個影片的任何事情...",
+    "sidebar__input__search__placeholder": "在網頁上提問...",
+    "sidebar__input__art__placeholder": "請問 AI..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

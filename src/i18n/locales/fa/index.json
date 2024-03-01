@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "برای فعالسازی افزونه در این صفحه، آن را بازنشانی کنید.",
     "sidebar__refresh_page__button": "بازنشانی این صفحه",
-    "sidebar__input__placeholder": "از هوش مصنوعی بپرسید...",
     "floating_menu__button__cta__tooltip": "از هوش مصنوعی بخواهید متن را ویرایش، خلاصه، توضیح یا تولید کند",
     "floating_menu__button__hide_menu": "مخفی کردن منو",
     "floating_menu__button__hide_menu__until_next_visit": "مخفی کردن منو تا بازدید بعدی",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "زبان منبع",
     "translation_advanced__target_lang_select__label": "زبان مقصد",
     "pdf_ai_viewer__once_default_button__short_title": "نمایشگر پیش‌فرض",
-    "pdf_ai_viewer__once_default_button__title": "باز کردن PDF یک بار با نمایشگر پیش‌فرض"
+    "pdf_ai_viewer__once_default_button__title": "باز کردن PDF یک بار با نمایشگر پیش‌فرض",
+    "sidebar__input__chat__placeholder": "سوالی از هوش مصنوعی بپرسید...",
+    "sidebar__input__summary__page_placeholder": "از هوش مصنوعی دربارهٔ صفحه هر چیزی بپرسید...",
+    "sidebar__input__summary__pdf_placeholder": "از هوش مصنوعی دربارهٔ فایل PDF هر چیزی بپرسید...",
+    "sidebar__input__summary__email_placeholder": "از هوش مصنوعی دربارهٔ ایمیل هر چیزی بپرسید...",
+    "sidebar__input__summary__video_placeholder": "از هوش مصنوعی دربارهٔ ویدیو هر چیزی بپرسید...",
+    "sidebar__input__search__placeholder": "سوال خود را بپرسید...",
+    "sidebar__input__art__placeholder": "سوالی از هوش مصنوعی بپرسید..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

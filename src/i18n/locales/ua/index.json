@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Оновіть цю сторінку, щоб активувати розширення на цій сторінці.",
     "sidebar__refresh_page__button": "Оновити цю сторінку",
-    "sidebar__input__placeholder": "Запитайте ШІ...",
     "floating_menu__button__cta__tooltip": "Попросіть ШІ відредагувати, підсумувати, пояснити або згенерувати текст",
     "floating_menu__button__hide_menu": "Сховати меню",
     "floating_menu__button__hide_menu__until_next_visit": "Сховати меню до наступного відвідування",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Мова джерела",
     "translation_advanced__target_lang_select__label": "Цільова мова",
     "pdf_ai_viewer__once_default_button__short_title": "Стандартний переглядач",
-    "pdf_ai_viewer__once_default_button__title": "Відкрити PDF один раз за допомогою стандартного переглядача"
+    "pdf_ai_viewer__once_default_button__title": "Відкрити PDF один раз за допомогою стандартного переглядача",
+    "sidebar__input__chat__placeholder": "Запитайте ШІ...",
+    "sidebar__input__summary__page_placeholder": "Запитайте ШІ що-небудь про сторінку...",
+    "sidebar__input__summary__pdf_placeholder": "Запитайте ШІ що-небудь про PDF...",
+    "sidebar__input__summary__email_placeholder": "Запитайте ШІ що-небудь про електронну пошту...",
+    "sidebar__input__summary__video_placeholder": "Запитайте ШІ що-небудь про відео...",
+    "sidebar__input__search__placeholder": "Запитайте веб...",
+    "sidebar__input__art__placeholder": "Запитайте ШІ..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

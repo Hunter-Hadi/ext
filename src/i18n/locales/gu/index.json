@@ -259,7 +259,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "આ પેજને રિફ્રેશ કરીને એક્સટેન્શનને આ પેજ પર સક્રિય કરો.",
     "sidebar__refresh_page__button": "આ પેજને રિફ્રેશ કરો",
-    "sidebar__input__placeholder": "AIને પૂછો...",
     "floating_menu__button__cta__tooltip": "AIને ટેક્સ્ટ સંપાદિત, સંગ્રહિત, સમજાવી અથવા ઉત્પાદિત કરવા માટે પૂછો",
     "floating_menu__button__hide_menu": "મેનૂ છુપાવો",
     "floating_menu__button__hide_menu__until_next_visit": "આગામી મુલાકાત સુધી મેનૂ છુપાવો",
@@ -594,7 +593,8 @@
     "home_view_content_nav__summary_page__title": "પૃષ્ઠને સંક્ષેપિત કરો અને પુછો",
     "home_view_content_nav__summary_video__title": "વિડિઓ પર સંક્ષેપિત કરો અને પુછો",
     "home_view_content_nav__summary_email__title": "ઇમેઇલ પર સંક્ષેપિત કરો અને પુછો",
-    "home_view_content_nav__summary_PDF__title": "PDF પર સંક્ષેપિત કરો અને પુછો"
+    "home_view_content_nav__summary_PDF__title": "PDF પર સંક્ષેપિત કરો અને પુછો",
+    "sidebar__input__search__placeholder": "વેબ પૂછો..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Aktualisieren Sie diese Seite, um die Erweiterung auf dieser Seite zu aktivieren.",
     "sidebar__refresh_page__button": "Diese Seite aktualisieren",
-    "sidebar__input__placeholder": "Fragen Sie KI...",
     "floating_menu__button__cta__tooltip": "Bitten Sie KI um Bearbeitung, Zusammenfassung, Erklärung oder Textgenerierung",
     "floating_menu__button__hide_menu": "Menü ausblenden",
     "floating_menu__button__hide_menu__until_next_visit": "Menü bis zum nächsten Besuch ausblenden",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Ausgangssprache",
     "translation_advanced__target_lang_select__label": "Zielsprache",
     "pdf_ai_viewer__once_default_button__short_title": "Standardanzeige",
-    "pdf_ai_viewer__once_default_button__title": "PDF einmal mit Standardanzeige öffnen"
+    "pdf_ai_viewer__once_default_button__title": "PDF einmal mit Standardanzeige öffnen",
+    "sidebar__input__chat__placeholder": "Fragen Sie KI...",
+    "sidebar__input__summary__page_placeholder": "Fragen Sie KI etwas über die Seite...",
+    "sidebar__input__summary__pdf_placeholder": "Fragen Sie KI etwas über das PDF...",
+    "sidebar__input__summary__email_placeholder": "Fragen Sie KI etwas über die E-Mail...",
+    "sidebar__input__summary__video_placeholder": "Fragen Sie KI etwas über das Video...",
+    "sidebar__input__search__placeholder": "Fragen Sie das Web...",
+    "sidebar__input__art__placeholder": "Fragen Sie KI..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

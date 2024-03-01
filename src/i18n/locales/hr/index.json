@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "Osvježite ovu stranicu da biste aktivirali ekstenziju na ovoj stranici.",
     "sidebar__refresh_page__button": "Osvježi ovu stranicu",
-    "sidebar__input__placeholder": "Pitaj AI...",
     "floating_menu__button__cta__tooltip": "Zamolite AI da uredi, sažme, objasni ili generira tekst",
     "floating_menu__button__hide_menu": "Sakrij izbornik",
     "floating_menu__button__hide_menu__until_next_visit": "Sakrij izbornik do sljedećeg posjeta",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "Izvorni jezik",
     "translation_advanced__target_lang_select__label": "Ciljni jezik",
     "pdf_ai_viewer__once_default_button__short_title": "Zadani preglednik",
-    "pdf_ai_viewer__once_default_button__title": "Otvori PDF jednom s zadanim preglednikom"
+    "pdf_ai_viewer__once_default_button__title": "Otvori PDF jednom s zadanim preglednikom",
+    "sidebar__input__chat__placeholder": "Pitaj AI...",
+    "sidebar__input__summary__page_placeholder": "Pitaj AI bilo što o stranici...",
+    "sidebar__input__summary__pdf_placeholder": "Pitaj AI bilo što o PDF-u...",
+    "sidebar__input__summary__email_placeholder": "Pitaj AI bilo što o e-pošti...",
+    "sidebar__input__summary__video_placeholder": "Pitaj AI bilo što o videu...",
+    "sidebar__input__search__placeholder": "Pitajte web...",
+    "sidebar__input__art__placeholder": "Pitaj AI..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

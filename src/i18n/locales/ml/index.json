@@ -260,7 +260,6 @@
     "sidebar__refresh_page__title": "MaxAI.me!",
     "sidebar__refresh_page__description": "ഈ പേജ് പുനഃസജ്ജമാക്കാൻ ഈ പേജ് പുനഃസജ്ജമാക്കുക.",
     "sidebar__refresh_page__button": "ഈ പേജ് പുനഃസജ്ജമാക്കുക",
-    "sidebar__input__placeholder": "AI-യെ ചോദിക്കുക...",
     "floating_menu__button__cta__tooltip": "AI-യെ എഡിറ്റ്, സംഗ്രഹിക്കുക, വിശദീകരിക്കുക, അല്ലെങ്കിൽ ടെക്സ്റ്റ് സൃഷ്ടിക്കുകയാണ് ചോദിക്കുക",
     "floating_menu__button__hide_menu": "മെനു മറയ്ക്കുക",
     "floating_menu__button__hide_menu__until_next_visit": "അടുത്ത സന്ദർശനത്തിനുള്ളിൽ മെനു മറയ്ക്കുക",
@@ -628,7 +627,14 @@
     "translation_advanced__source_lang_select__label": "മൂല ഭാഷ",
     "translation_advanced__target_lang_select__label": "ലക്ഷ്യ ഭാഷ",
     "pdf_ai_viewer__once_default_button__short_title": "Viewer lal",
-    "pdf_ai_viewer__once_default_button__title": "PDF ഒരു സ്വതേ വ്യൂവർ ഉപയോഗിച്ച് തുറക്കുക"
+    "pdf_ai_viewer__once_default_button__title": "PDF ഒരു സ്വതേ വ്യൂവർ ഉപയോഗിച്ച് തുറക്കുക",
+    "sidebar__input__chat__placeholder": "എന്തെങ്കിലും ചോദിക്കുക...",
+    "sidebar__input__summary__page_placeholder": "പേജിനെ സമ്പൂർണ്ണമായി വിചാരിക്കുക...",
+    "sidebar__input__summary__pdf_placeholder": "PDF-യെ സമ്പൂർണ്ണമായി വിചാരിക്കുക...",
+    "sidebar__input__summary__email_placeholder": "ഇമെയിലിനെ സമ്പൂർണ്ണമായി വിചാരിക്കുക...",
+    "sidebar__input__summary__video_placeholder": "വീഡിയോയെ സമ്പൂർണ്ണമായി വിചാരിക്കുക...",
+    "sidebar__input__search__placeholder": "വെബ്ബ് ചോദിക്കുക...",
+    "sidebar__input__art__placeholder": "എന്തെങ്കിലും ചോദിക്കുക..."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

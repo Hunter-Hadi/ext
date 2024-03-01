@@ -4,14 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import { SxProps, Theme } from '@mui/material/styles'
-import React, {
-  FC,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AutoHeightTextarea, {
@@ -71,11 +64,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     currentSidebarConversationType,
     currentSidebarConversationId,
   } = useSidebarSettings()
-  const pageSummaryTypeRef = useRef(getPageSummaryType())
-
   const textareaPlaceholder = useMemo(() => {
     if (currentSidebarConversationType === 'Summary') {
-      switch (pageSummaryTypeRef.current) {
+      const pageSummaryType = getPageSummaryType()
+      switch (pageSummaryType) {
         case 'PAGE_SUMMARY':
           return t('client:sidebar__input__summary__page_placeholder')
         case 'YOUTUBE_VIDEO_SUMMARY':
@@ -95,7 +87,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       return t('client:sidebar__input__art__placeholder')
     }
     return t('client:sidebar__input__chat__placeholder')
-  }, [currentSidebarConversationType, pageSummaryTypeRef, t])
+  }, [currentSidebarConversationType, t])
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,

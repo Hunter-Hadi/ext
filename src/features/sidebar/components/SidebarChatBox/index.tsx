@@ -64,6 +64,15 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     currentSidebarConversationId,
   } = useSidebarSettings()
 
+  const textareaPlaceholder = useMemo(() => {
+    if (currentSidebarConversationType === 'Summary') {
+      return 'Ask AI anything about the page...'
+    }
+    if (currentSidebarConversationType === 'Search') {
+      return 'Ask AI anything about the web...'
+    }
+    return 'Ask AI...'
+  }, [currentSidebarConversationType])
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,
@@ -263,6 +272,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             modelKey={'Sidebar'}
           />
           <AutoHeightTextarea
+            placeholder={textareaPlaceholder}
             minLine={3}
             sx={{
               minHeight: isSetVariables

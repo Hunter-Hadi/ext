@@ -19,6 +19,7 @@ export interface IShortCutsParameter {
   value: any
   overwrite: boolean
   isBuildIn?: boolean
+  label?: string
 }
 
 const useShortCutsParameters = () => {

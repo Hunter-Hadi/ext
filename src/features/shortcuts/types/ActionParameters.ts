@@ -3,6 +3,7 @@ import {
   IChatMessage,
 } from '@/features/chatgpt/types'
 import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/ActionSetVariablesModal'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
@@ -59,6 +60,8 @@ interface ActionParameters {
   CURRENT_WEBPAGE_URL?: string
   CURRENT_WEBPAGE_TITLE?: string
   AI_RESPONSE_LANGUAGE?: string
+  AI_RESPONSE_TONE?: string
+  AI_RESPONSE_WRITING_STYLE?: string
   // TODO 需要实现
   Advanced?: boolean
   AssertionType?: AssertionType
@@ -172,7 +175,7 @@ interface ActionParameters {
   Variable?: WFSerialization | string
   VariableName?: string
   VariableMap?: {
-    [key in string]: string | number | undefined
+    [key in string]: string | number | IShortCutsParameter | undefined
   }
   WFVolume?: number
   WFWorkflowName?: string

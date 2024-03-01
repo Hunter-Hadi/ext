@@ -108,7 +108,14 @@ const SidebarChatBoxChatSpeedDial: FC<{
                 justifyContent={'center'}
                 component={'div'}
               >
-                <CleanChatBoxIcon sx={{ color: '#fff', fontSize: '24px' }} />
+                {currentSidebarConversationType === 'Summary' ? (
+                  <CleanChatBoxIcon sx={{ color: '#fff', fontSize: '24px' }} />
+                ) : (
+                  <ContextMenuIcon
+                    icon={'NewChat'}
+                    sx={{ color: '#fff', fontSize: '24px' }}
+                  />
+                )}
               </Stack>
             </TextOnlyTooltip>
           </Box>

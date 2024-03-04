@@ -290,7 +290,7 @@ export const languageCodeToApiSupportCode = (code: string) => {
     te: 'te',
     th: 'th',
     tr: 'tr',
-    ua: 'ua',
+    ua: 'uk',
     uk: 'uk',
     vi: 'vi',
     zh_CN: 'zh-Hans',

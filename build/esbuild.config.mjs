@@ -166,7 +166,11 @@ async function esbuildConfig() {
     ),
     outdir: buildDir,
   })
-  fs.writeJsonSync(`${releasesDir}/meta.json`, result.metafile)
+  try {
+    fs.writeJsonSync(`${releasesDir}/meta.json`, result.metafile)
+  } catch (e) {
+    // console.error(e.message || e)
+  }
 }
 async function updateManifest() {
   const manifest = await fs.readJson(`${buildDir}/manifest.json`)

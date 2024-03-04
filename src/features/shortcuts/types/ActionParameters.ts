@@ -172,8 +172,9 @@ interface ActionParameters {
   URLSearchEngineParams?: {
     [key in string]: string
   }
-  Variable?: WFSerialization | string
+  Variable?: IShortCutsParameter | string
   VariableName?: string
+  VariableLabel?: string
   VariableMap?: {
     [key in string]: string | number | IShortCutsParameter | undefined
   }
@@ -190,7 +191,7 @@ interface ActionParameters {
   // 是否受到用户设置的AI response language的影响
   isEnabledDetectAIResponseLanguage?: boolean
   // Operation Element
-  OperationElementElementSelector?: string
+  OperationElementSelector?: string
   OperationElementTabID?: number
   OperationElementConfig?: OperationElementConfigType
   AnalyzeChatFileName?: string

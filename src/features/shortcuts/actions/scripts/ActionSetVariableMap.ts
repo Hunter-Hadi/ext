@@ -1,4 +1,7 @@
-import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import {
+  IShortcutEngineExternalEngine,
+  parametersParserDecorator,
+} from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -15,6 +18,7 @@ export class ActionSetVariableMap extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
+  @parametersParserDecorator()
   @pushOutputToChat({
     onlyError: true,
   })

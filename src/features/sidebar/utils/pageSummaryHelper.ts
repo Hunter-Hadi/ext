@@ -624,7 +624,7 @@ Use the following format:
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
           parameters: {
-            OperationElementElementSelector: 'ytd-watch-metadata #title',
+            OperationElementSelector: 'ytd-watch-metadata #title',
           },
         },
         {

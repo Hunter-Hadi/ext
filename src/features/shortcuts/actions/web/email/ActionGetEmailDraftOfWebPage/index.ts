@@ -28,14 +28,12 @@ export class ActionGetEmailDraftOfWebPage extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      const OperationElementElementSelector =
-        this.parameters.OperationElementElementSelector ||
-        params.OperationElementElementSelector ||
+      const OperationElementSelector =
+        this.parameters.OperationElementSelector ||
+        params.OperationElementSelector ||
         ''
-      if (OperationElementElementSelector) {
-        const result = await getEmailWebsitePageDraft(
-          OperationElementElementSelector,
-        )
+      if (OperationElementSelector) {
+        const result = await getEmailWebsitePageDraft(OperationElementSelector)
         this.output = result
       } else {
         this.output = ''

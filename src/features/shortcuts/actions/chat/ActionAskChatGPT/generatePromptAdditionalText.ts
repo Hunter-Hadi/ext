@@ -14,7 +14,7 @@ const generatePromptAdditionalText = async (
     READABILITY_CONTENTS?: string
     // quick reply的上下文
     SOCIAL_MEDIA_TARGET_POST_OR_COMMENT?: string
-    SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT?: string
+    SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT?: string
     EMAIL_DRAFT?: string
     POST_DRAFT?: string
   },
@@ -32,7 +32,7 @@ const generatePromptAdditionalText = async (
     params.READABILITY_CONTENTS || //总结的上下文
     params.WEB_SEARCH_RESULTS || // 搜索的上下文
     params.PAGE_CONTENT || // 搜索的上下文
-    params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT || // quick reply的上下文
+    params.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT || // quick reply的上下文
     params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
     params.EMAIL_DRAFT || // quick reply的上下文
     params.POST_DRAFT || // quick reply的上下文

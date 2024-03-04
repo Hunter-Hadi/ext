@@ -25,6 +25,7 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -96,7 +97,11 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
           type: 'SET_VARIABLE_MAP',
           parameters: {
             VariableMap: {
-              OperationElementElementSelector: `[maxai-input-assistant-button-id="${rootId}"]`,
+              OperationElementSelector: {
+                key: 'OperationElementSelector',
+                value: `[maxai-input-assistant-button-id="${rootId}"]`,
+                isBuildIn: true,
+              } as IShortCutsParameter,
             },
           },
         })

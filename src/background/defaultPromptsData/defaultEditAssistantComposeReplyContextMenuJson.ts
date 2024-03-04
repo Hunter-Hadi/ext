@@ -28,7 +28,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -96,7 +96,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here' the text to reply to:
@@ -164,7 +164,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -232,7 +232,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -300,7 +300,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -358,12 +358,6 @@ Output the answer without additional context, explanation, or extra wording, jus
           },
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
@@ -374,7 +368,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -442,7 +436,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -501,12 +495,6 @@ Output the answer without additional context, explanation, or extra wording, jus
           },
         },
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'POST_CONTENT',
-          },
-        },
-        {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
@@ -517,7 +505,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 Here's the text to reply to:
@@ -578,7 +566,7 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+            template: '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
           },
         },
         {
@@ -605,7 +593,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 
@@ -684,7 +672,7 @@ Your task is to write a reply to the following text, which is a post/comment on 
 
 The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
 <context>
-{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}
+{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
 </context>
 
 
@@ -708,12 +696,11 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                     variables: [
                       {
                         label: 'Context',
-                        VariableName:
-                          'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT',
+                        VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
                         valueType: 'Text',
                         placeholder: 'Enter context',
                         defaultValue:
-                          '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT}}',
+                          '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
                       },
                       {
                         label: 'Target post/comment',
@@ -821,14 +808,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'yes' to whatever the recipient is asking for in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'yes' to whatever the recipient is asking for in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {
@@ -877,14 +870,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'no' to whatever the recipient is asking for in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'no' to whatever the recipient is asking for in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {
@@ -933,14 +932,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'thank you', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'thank you', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {
@@ -989,14 +994,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'sorry', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'sorry', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {
@@ -1045,14 +1056,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'provide more information and details', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way. \n\nSpecify the additional information you ask for, presenting it in a clear format.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'provide more information and details', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way. \n\nSpecify the additional information you ask for, presenting it in a clear format.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {
@@ -1101,14 +1118,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny email reply joking about the email message, without confirming or denying whatever the recipient is asking for.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 50 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny email reply joking about the email message, without confirming or denying whatever the recipient is asking for.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 50 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {
@@ -1157,14 +1180,20 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_DRAFT',
+            VariableName: {
+              key: 'SLICE_EMAIL_CONTEXT',
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              label: 'Slice email context',
+              overwrite: true,
+              isBuildIn: true,
+            },
           },
         },
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a follow-up email message to the following text delimited by triple backticks, which is the last email I sent to the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a concise follow-up email message to ask for a response in a polite, friendly, professional, and proper way. Make the content sincere, persuasive, and appealing. Also, mention any important numbers and details, if any, from previous emails that are helpful for clarification and making the follow-up compelling.\n\nMake the follow-up clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your follow-up.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the follow-up like a real person would. Keep your tone balanced, not too casual or too formal, to match what the follow-up is meant to do.\n\nDo not include email subject, just output the follow-up message. Ensure the follow-up's word count is no more than 100 words.\n\nOutput the follow-up without additional context, explanation, or extra wording, just the follow-up itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{EMAIL_DRAFT}}\n```",
+              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a follow-up email message to the following text delimited by triple backticks, which is the last email I sent to the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a concise follow-up email message to ask for a response in a polite, friendly, professional, and proper way. Make the content sincere, persuasive, and appealing. Also, mention any important numbers and details, if any, from previous emails that are helpful for clarification and making the follow-up compelling.\n\nMake the follow-up clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your follow-up.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the follow-up like a real person would. Keep your tone balanced, not too casual or too formal, to match what the follow-up is meant to do.\n\nDo not include email subject, just output the follow-up message. Ensure the follow-up's word count is no more than 100 words.\n\nOutput the follow-up without additional context, explanation, or extra wording, just the follow-up itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SLICE_EMAIL_CONTEXT}}\n```",
           },
         },
         {

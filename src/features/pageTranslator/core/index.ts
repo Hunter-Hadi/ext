@@ -215,7 +215,7 @@ class PageTranslator {
 
     const translateItem = new TranslateTextItem(textNodes, containerElement)
     this.translateItemsSet.add(translateItem)
-    console.log(`zztest this.translateItemsSet`, this.translateItemsSet)
+    // console.log(`zztest this.translateItemsSet`, this.translateItemsSet)
   }
 
   async doTranslate() {

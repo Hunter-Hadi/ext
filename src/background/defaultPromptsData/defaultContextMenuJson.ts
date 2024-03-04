@@ -1227,7 +1227,13 @@ Now, write a concise reply to the post/comment above by *writing a better versio
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'MAXAI_CONTINUE_WRITING_TEXT_DRAFT',
+            Variable: {
+              key: `MAXAI_CONTINUE_WRITING_TEXT_DRAFT`,
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              isBuildIn: true,
+              overwrite: true,
+              label: 'Continue writing text draft',
+            },
           },
         },
         {

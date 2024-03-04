@@ -2,28 +2,33 @@
  * 插件活动的hook
  */
 import dayjs from 'dayjs'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
+import { atom, useRecoilState } from 'recoil'
 
-import {
-  getChromeExtensionOnBoardingData,
-  setChromeExtensionOnBoardingData,
-} from '@/background/utils'
+import { getChromeExtensionOnBoardingData } from '@/background/utils'
 import { OnBoardingKeyType } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 
 // 活动结束的时间
-const ACTIVITY_END_TIME = '2024-03-01'
+const ACTIVITY_END_TIME = '2024-05-01'
 // 活动可以手动关闭banner的时间
 const ACTIVITY_ABLE_CLOSE_START_TIME = '2023-12-21'
 
 const currentActivityKey: OnBoardingKeyType =
   'ON_BOARDING_1ST_ANNIVERSARY_2024_BANNER'
 
+const isShownCurrentActivityAtom = atom({
+  key: 'isShownCurrentActivity',
+  default: false,
+})
+
 const useActivity = () => {
   const { isLogin } = useAuthLogin()
   const { currentUserPlan, loading } = useUserInfo()
-  const [isShowCurrentActivity, setIsShowCurrentActivity] = useState(false)
+  const [isShownCurrentActivity, setIsShownCurrentActivity] = useRecoilState(
+    isShownCurrentActivityAtom,
+  )
   // 是否是第一次加载，因为loading做为依赖，会闪烁
   const firstLoadingRef = useRef(false)
   // 是否展示活动的banner
@@ -39,14 +44,14 @@ const useActivity = () => {
         (currentUserPlan.planName === 'ELITE_YEARLY' &&
           currentUserPlan.name === 'elite') ||
         currentUserPlan.isOneTimePayUser ||
-        isShowCurrentActivity
+        isShownCurrentActivity
       ) {
         return false
       }
       return true
     }
     return false
-  }, [isLogin, isShowCurrentActivity, currentUserPlan, loading])
+  }, [isLogin, isShownCurrentActivity, currentUserPlan, loading])
   /**
    * 是否可以关闭活动的banner
    */
@@ -57,13 +62,13 @@ const useActivity = () => {
    * 关闭活动的banner
    */
   const handleCloseActivityBanner = async () => {
-    await setChromeExtensionOnBoardingData(currentActivityKey, true)
-    setIsShowCurrentActivity(true)
+    // await setChromeExtensionOnBoardingData(currentActivityKey, true)
+    setIsShownCurrentActivity(true)
   }
   // 获取是否已经展示过活动的banner
   useEffect(() => {
     getChromeExtensionOnBoardingData().then((data) => {
-      setIsShowCurrentActivity(data[currentActivityKey] as boolean)
+      setIsShownCurrentActivity(data[currentActivityKey] as boolean)
     })
   }, [])
   return {

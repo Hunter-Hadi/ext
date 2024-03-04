@@ -28,21 +28,19 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    const OperationElementElementSelector =
-      this.parameters.OperationElementElementSelector ||
-      params.OperationElementElementSelector ||
+    const OperationElementSelector =
+      this.parameters.OperationElementSelector ||
+      params.OperationElementSelector ||
       ''
     try {
-      const result = await getSocialMediaPostContent(
-        OperationElementElementSelector,
-      )
-      this.output = result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT
+      const result = await getSocialMediaPostContent(OperationElementSelector)
+      this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
       const { shortcutsEngine, clientConversationEngine } = engine
       if (shortcutsEngine && clientConversationEngine) {
         let SOCIAL_MEDIA_TARGET_POST_OR_COMMENT =
           result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT
-        let SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT =
-          result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT
+        let SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT =
+          result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
         // reply with keyPoints的逻辑
         const conversation = await clientConversationEngine.getCurrentConversation()
         // 预留1000个token给summary
@@ -61,13 +59,13 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         )
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT = sliceOfTargetPostContext
         if (isLimit) {
-          SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT = ''
+          SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = ''
         } else {
           const { text: sliceOfFullPostContext } = await sliceTextByTokens(
-            SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT,
+            SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
             totalTokens - sliceOfTargetPostContextUsingTokens,
           )
-          SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT = sliceOfFullPostContext
+          SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = sliceOfFullPostContext
         }
         shortcutsEngine.pushActions(
           [
@@ -75,16 +73,34 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
               type: 'SET_VARIABLE_MAP',
               parameters: {
                 VariableMap: {
-                  SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
-                  SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT,
-                  SOCIAL_MEDIA_PAGE_CONTENT: result.SOCIAL_MEDIA_PAGE_CONTENT,
+                  SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: {
+                    key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+                    value: SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
+                    overwrite: true,
+                    isBuildIn: false,
+                    label: 'Target post/comment',
+                  },
+                  SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: {
+                    key: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
+                    value: SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
+                    overwrite: true,
+                    isBuildIn: false,
+                    label: 'Context',
+                  },
+                  SOCIAL_MEDIA_PAGE_CONTENT: {
+                    key: '',
+                    value: result.SOCIAL_MEDIA_PAGE_CONTENT,
+                    overwrite: true,
+                    isBuildIn: true,
+                    label: 'Post content',
+                  },
                 },
               },
             },
             {
               type: 'RENDER_TEMPLATE',
               parameters: {
-                template: result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT_CONTEXT,
+                template: result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
               },
             },
           ],

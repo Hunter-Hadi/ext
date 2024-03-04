@@ -29,6 +29,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -83,6 +84,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -137,6 +139,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -191,6 +194,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -245,6 +249,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -299,6 +304,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -354,6 +360,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -409,6 +416,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -464,6 +472,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -537,6 +546,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -591,6 +601,7 @@ const socialMediaPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'POST_DRAFT',
+            VariableLabel: 'Post draft',
           },
         },
         {
@@ -674,6 +685,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -728,6 +740,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -782,6 +795,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -836,6 +850,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -890,6 +905,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -944,6 +960,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -999,6 +1016,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -1054,6 +1072,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -1109,6 +1128,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -1182,6 +1202,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {
@@ -1236,6 +1257,7 @@ const emailPrompts = [
           type: 'SET_VARIABLE',
           parameters: {
             VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
           },
         },
         {

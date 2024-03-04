@@ -1,6 +1,10 @@
-import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import {
+  IShortcutEngineExternalEngine,
+  parametersParserDecorator,
+} from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
@@ -14,6 +18,7 @@ export class ActionSetVariable extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
+  @parametersParserDecorator()
   @pushOutputToChat({
     onlyError: true,
   })
@@ -21,23 +26,32 @@ export class ActionSetVariable extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
+    debugger
     try {
-      const VariableName =
+      const Variable =
         this.parameters.VariableName || this.parameters.Variable || ''
-      if (!VariableName) {
+      const VariableLabel = this.parameters.VariableLabel || undefined
+      if (!Variable) {
         this.error = 'Action no variable name!'
         return
       }
       if (engine.shortcutsEngine?.setVariable) {
-        engine.shortcutsEngine.setVariable({
-          key: VariableName as string,
-          value:
-            this.parameters?.WFFormValues?.Value ||
-            params.LAST_ACTION_OUTPUT ||
-            '',
-          overwrite: true,
-        })
-        this.output = params.LAST_ACTION_OUTPUT || ''
+        if (typeof Variable === 'string') {
+          engine.shortcutsEngine.setVariable({
+            key: Variable as string,
+            value:
+              this.parameters?.WFFormValues?.Value ||
+              params.LAST_ACTION_OUTPUT ||
+              '',
+            overwrite: true,
+            label: VariableLabel,
+            isBuildIn: false,
+          })
+          this.output = params.LAST_ACTION_OUTPUT || ''
+        } else {
+          engine.shortcutsEngine.setVariable(Variable as IShortCutsParameter)
+          this.output = (Variable as IShortCutsParameter).value
+        }
       }
     } catch (e) {
       this.error = (e as any).toString()

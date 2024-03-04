@@ -15,14 +15,15 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
   [`& .${tooltipClasses.tooltip}`]: {
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: theme.palette.mode === 'dark' ? '#393743' : '#ffffff',
+    borderLeft: '4px solid #9065B0',
     color: 'rgba(0, 0, 0, 0.87)',
     fontSize: 12,
-    boxShadow: theme.shadows[1],
+    boxShadow: `0px 4px 6px -2px rgba(16, 24, 40, 0.03), 0px 12px 16px -4px rgba(16, 24, 40, 0.08);`,
     maxWidth: 'none',
   },
   [`& .${tooltipClasses.arrow}`]: {
-    color: theme.palette.background.paper,
+    color: theme.palette.mode === 'dark' ? '#393743' : '#ffffff',
   },
 }))
 
@@ -80,8 +81,8 @@ const SidebarUserMessageContexts: FC<{
                           }}
                           src={attachment.uploadedUrl}
                           alt={attachment.fileName}
-                          width={280}
-                          height={280}
+                          width={384}
+                          height={384}
                         />
                         <Divider sx={{ my: 0.5 }} />
                       </Fragment>
@@ -104,7 +105,7 @@ const SidebarUserMessageContexts: FC<{
                           }}
                         />
                         <Typography
-                          width={280}
+                          width={384}
                           whiteSpace={'pre-wrap'}
                           key={index}
                           color={'text.primary'}
@@ -141,9 +142,8 @@ const SidebarUserMessageContexts: FC<{
                 width: 'max-content',
                 maxWidth: 'calc(100% - 16px)',
                 bgcolor: (t) =>
-                  t.palette.mode === 'dark'
-                    ? 'rgba(60, 60, 60, 1)'
-                    : 'rgba(235, 235, 235, 1)',
+                  t.palette.mode === 'dark' ? '#393743' : '#F6F2F9',
+                borderLeft: '4px solid #9065B0',
                 cursor: 'pointer',
               }}
               ml={'auto'}

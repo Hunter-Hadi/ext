@@ -333,8 +333,8 @@ const initChromeExtensionUpdated = async () => {
     analyzeIndexDBMemory()
   }
 
-  // 3.0.5这一版，大促页面针对所有free users都弹出（包括Chrome和Edge） - @huangsong
-  if (APP_VERSION === '3.0.5') {
+  // 3.0.6这一版，大促页面针对所有free users都弹出（包括Chrome和Edge） - @huangsong
+  if (APP_VERSION === '3.0.6') {
     setTimeout(
       () => executeMaxAIOneYearPromotion(true),
       (1 + Math.floor(Math.random() * 9)) * 1000,

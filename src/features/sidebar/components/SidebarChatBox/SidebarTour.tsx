@@ -11,11 +11,7 @@ import {
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import {
-  CleanChatBoxIcon,
-  MagicBookIcon,
-  UseChatGptIcon,
-} from '@/components/CustomIcon'
+import { MagicBookIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import LanguageCodeSelect from '@/components/select/LanguageCodeSelect'
 import { useAuthLogin } from '@/features/auth'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
@@ -146,7 +142,8 @@ const Step5Content: FC = () => {
     return [
       {
         icon: (
-          <CleanChatBoxIcon
+          <ContextMenuIcon
+            icon={'NewChat'}
             sx={{ color: '#fff', fontSize: '20px', borderRadius: '8px' }}
           />
         ),
@@ -204,7 +201,7 @@ const Step5Content: FC = () => {
           <UseChatGptIcon
             sx={{
               fontSize: '20px',
-              color: 'text.secondary',
+              color: '#fff',
               borderRadius: '8px',
             }}
           />

@@ -25,6 +25,7 @@ import {
 } from '@/features/shortcuts/components/ActionSetVariablesModal/setVariablesModalSelectCache'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
@@ -187,10 +188,43 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     const runActions: ISetActionsType = []
     if (config?.template) {
       const template = getValues()?.TEMPLATE || config?.template || ''
+      const variableDetailMap: Record<string, IActionSetVariable> = {
+        ...config?.variables?.reduce((prev, current) => {
+          return {
+            ...prev,
+            [current.VariableName]: current,
+          }
+        }, {}),
+        ...config?.systemVariables?.reduce((prev, current) => {
+          return {
+            ...prev,
+            [current.VariableName]: current,
+          }
+        }, {}),
+      }
+      const shortcutsVariables: Record<string, IShortCutsParameter> = {}
+      Object.keys(presetVariables).forEach((key) => {
+        const variableDetail = variableDetailMap[key]
+        if (variableDetail) {
+          shortcutsVariables[key] = {
+            key,
+            value: presetVariables[key],
+            overwrite: true,
+            isBuildIn: variableDetail.systemVariable,
+            label: variableDetail.label,
+          }
+        } else {
+          shortcutsVariables[key] = {
+            key,
+            value: presetVariables[key],
+            overwrite: true,
+          }
+        }
+      })
       runActions.push({
         type: 'SET_VARIABLE_MAP',
         parameters: {
-          VariableMap: presetVariables,
+          VariableMap: shortcutsVariables,
         },
       })
       // 要等modal运行完后设置完成变量再push actions

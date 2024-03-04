@@ -27,14 +27,12 @@ export class ActionGetSocialMediaPostDraftOfWebPage extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    const OperationElementElementSelector =
-      this.parameters.OperationElementElementSelector ||
-      params.OperationElementElementSelector ||
+    const OperationElementSelector =
+      this.parameters.OperationElementSelector ||
+      params.OperationElementSelector ||
       ''
     try {
-      const result = await getSocialMediaPostDraft(
-        OperationElementElementSelector,
-      )
+      const result = await getSocialMediaPostDraft(OperationElementSelector)
       this.output = result
     } catch (e) {
       this.error = (e as Error).toString()

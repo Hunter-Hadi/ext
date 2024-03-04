@@ -29,9 +29,9 @@ export class ActionGetEmailContentsOfWebPage extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    const OperationElementElementSelector =
-      this.parameters.OperationElementElementSelector ||
-      params.OperationElementElementSelector ||
+    const OperationElementSelector =
+      this.parameters.OperationElementSelector ||
+      params.OperationElementSelector ||
       ''
     // 是否要对变量进行MiddleOut
     const isVariableMiddleOutEnabled =
@@ -44,7 +44,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
       let EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT = ''
       if (!EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT) {
         const result = await getEmailWebsitePageContentsOrDraft(
-          OperationElementElementSelector,
+          OperationElementSelector,
         )
         EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT = result.emailContext
         EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT =
@@ -88,8 +88,20 @@ export class ActionGetEmailContentsOfWebPage extends Action {
                 type: 'SET_VARIABLE_MAP',
                 parameters: {
                   VariableMap: {
-                    EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
-                    EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
+                    EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT: {
+                      key: 'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
+                      value: EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
+                      label: 'Email context',
+                      isBuildIn: false,
+                      overwrite: true,
+                    },
+                    EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT: {
+                      key: 'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
+                      value: EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
+                      label: 'Target email',
+                      isBuildIn: false,
+                      overwrite: true,
+                    },
                   },
                 },
               },
@@ -109,8 +121,20 @@ export class ActionGetEmailContentsOfWebPage extends Action {
                 type: 'SET_VARIABLE_MAP',
                 parameters: {
                   VariableMap: {
-                    EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
-                    EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
+                    EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT: {
+                      key: 'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
+                      value: EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
+                      label: 'Email context',
+                      isBuildIn: false,
+                      overwrite: true,
+                    },
+                    EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT: {
+                      key: 'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
+                      value: EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
+                      label: 'Target email',
+                      isBuildIn: false,
+                      overwrite: true,
+                    },
                   },
                 },
               },

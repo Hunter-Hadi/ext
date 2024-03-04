@@ -31,6 +31,7 @@ import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/Sideba
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientRestartChromeExtension } from '@/utils'
 
 interface IGmailChatBoxProps {
@@ -63,7 +64,30 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     currentSidebarConversationType,
     currentSidebarConversationId,
   } = useSidebarSettings()
-
+  const textareaPlaceholder = useMemo(() => {
+    if (currentSidebarConversationType === 'Summary') {
+      const pageSummaryType = getPageSummaryType()
+      switch (pageSummaryType) {
+        case 'PAGE_SUMMARY':
+          return t('client:sidebar__input__summary__page_placeholder')
+        case 'YOUTUBE_VIDEO_SUMMARY':
+          return t('client:sidebar__input__summary__video_placeholder')
+        case 'DEFAULT_EMAIL_SUMMARY':
+          return t('client:sidebar__input__summary__email_placeholder')
+        case 'PDF_CRX_SUMMARY':
+          return t('client:sidebar__input__summary__pdf_placeholder')
+        default:
+          return t('client:sidebar__input__summary__page_placeholder')
+      }
+    }
+    if (currentSidebarConversationType === 'Search') {
+      return t('client:sidebar__input__search__placeholder')
+    }
+    if (currentSidebarConversationType === 'Art') {
+      return t('client:sidebar__input__art__placeholder')
+    }
+    return t('client:sidebar__input__chat__placeholder')
+  }, [currentSidebarConversationType, t])
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,
@@ -263,6 +287,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             modelKey={'Sidebar'}
           />
           <AutoHeightTextarea
+            placeholder={textareaPlaceholder}
             minLine={3}
             sx={{
               minHeight: isSetVariables

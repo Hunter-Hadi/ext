@@ -41,12 +41,16 @@ export const parseBardResponse = (resp: string) => {
     console.debug('bard response payload', payload)
     let text = payload[4][0][1][0] as string
     const images = payload?.[4]?.[0]?.[12]?.[7]?.[0] || []
+    const imageTextHistory: string[] = []
     if (images.length > 0) {
       images.map((image: any) => {
         const imageUrl = image?.[0]?.[3]?.[3]
         const imageText = image?.[1]?.[0]
-        if (imageUrl && imageText) {
+        if (imageUrl && imageText && !imageTextHistory.includes(imageText)) {
+          imageTextHistory.push(imageText)
           text = text.replace(imageText, `!${imageText}(${imageUrl})`)
+        } else {
+          text += `!${imageText}(${imageUrl})`
         }
       })
     }

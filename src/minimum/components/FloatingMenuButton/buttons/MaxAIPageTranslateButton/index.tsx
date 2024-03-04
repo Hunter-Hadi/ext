@@ -29,10 +29,13 @@ const CustomStyleBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
 
 interface IMaxAIPageTranslateButtonProps {
   sx?: SxProps
+  onAdvancedOpen?: () => void
+  onAdvancedClose?: () => void
 }
 
 const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
   sx,
+  onAdvancedClose,
 }) => {
   const { userInfo } = useUserInfo()
   const { t } = useTranslation(['common', 'client'])
@@ -117,136 +120,158 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
     <Box
       sx={{
         position: 'relative',
-        bgcolor: 'background.paper',
         width: 32,
-        height: showAdvancedButton ? '64px' : '32px',
-        transition: 'height 0.3s',
-        p: '2px',
-        boxSizing: 'border-box',
-        borderRadius: '32px',
-        boxShadow:
-          '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
-        overflow: 'hidden',
-        ...sx,
-      }}
-      onMouseEnter={() => {
-        if (!isLogin) {
-          return
-        }
-        setIsHover(true)
-      }}
-      onMouseLeave={() => {
-        setIsHover(false)
+        height: 32,
       }}
     >
-      <Stack
+      <Box
         sx={{
           position: 'absolute',
-          top: '2px',
-        }}
-        spacing={0.5}
-        alignItems={'center'}
-        justifyContent={'center'}
-      >
-        <TextOnlyTooltip
-          arrow
-          minimumTooltip
-          title={
-            translationEnable
-              ? t('common:show_original_text')
-              : t('common:web_translation')
-          }
-          placement={'left'}
-        >
-          {loading ? (
-            <Stack
-              sx={{
-                width: 28,
-                height: 28,
-                borderRadius: '50%',
-              }}
-              alignItems={'center'}
-              justifyContent={'center'}
-            >
-              <CircularProgress size={20} sx={{ m: '0 auto' }} />
-            </Stack>
-          ) : (
-            <Button
-              sx={{
-                position: 'relative',
-                width: 28,
-                height: 28,
-                borderRadius: '50%',
-                minWidth: 'unset',
-                display: 'flex',
-                color: 'primary.main',
-                '&:hover': {
-                  color: 'primary.main',
-                  bgcolor: (t) =>
-                    t.palette.mode === 'dark'
-                      ? 'rgba(255, 255, 255, 0.16)'
-                      : 'rgba(144, 101, 176, 0.16)',
-                },
-              }}
-              onClick={() => {
-                toggleTranslation()
-              }}
-            >
-              <CustomStyleBadge
-                badgeContent={
-                  showTranslatedBadge ? (
-                    <CheckCircleIcon
-                      sx={{
-                        fontSize: 10,
-                        color: 'rgba(52, 168, 83, 1)',
-                        bgcolor: 'background.paper',
-                        borderRadius: '50%',
-                      }}
-                    />
-                  ) : null
-                }
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-              >
-                <TranslateOutlinedIcon
-                  sx={{
-                    fontSize: '20px',
-                    color: 'inherit',
-                  }}
-                />
-              </CustomStyleBadge>
-            </Button>
-          )}
-        </TextOnlyTooltip>
+          right: 0,
+          width: showAdvancedButton ? 64 : 32,
+          height: 32,
+          overflow: 'hidden',
+          borderRadius: '32px',
+          p: '2px',
+          boxSizing: 'border-box',
+          boxShadow:
+            '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
+          bgcolor: 'background.paper',
+          transition: 'width 0.3s',
 
-        <PageTranslateAdvancedButton
-          onOpen={() => {
-            setAdvancedOpen(true)
+          ...sx,
+        }}
+      >
+        <Box
+          sx={{
+            position: 'absolute',
+            right: 0,
+            width: 64,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '2px',
           }}
-          onClose={() => {
-            setAdvancedOpen(false)
+          onMouseEnter={() => {
+            if (!isLogin) {
+              return
+            }
+            setIsHover(true)
+          }}
+          onMouseLeave={() => {
             setIsHover(false)
           }}
-          onCodeChange={({ fromCode, toCode }) => {
-            let isChange = false
-            if (fromCode || fromCode === '') {
-              isChange = true
-              pageTranslatorRef.current.updateFromCode(fromCode)
+        >
+          <TextOnlyTooltip
+            arrow
+            open={isHover}
+            minimumTooltip
+            title={
+              translationEnable
+                ? t('common:show_original_text')
+                : t('common:web_translation')
             }
-            if (toCode) {
-              isChange = true
-              pageTranslatorRef.current.updateToCode(toCode)
-            }
+            placement={'left'}
+          >
+            <Box />
+          </TextOnlyTooltip>
+          <Stack
+            direction="row"
+            spacing={0.5}
+            alignItems={'center'}
+            justifyContent={'center'}
+          >
+            <PageTranslateAdvancedButton
+              onOpen={() => {
+                setAdvancedOpen(true)
+              }}
+              onClose={() => {
+                setAdvancedOpen(false)
+                setIsHover(false)
 
-            if (isChange) {
-              pageTranslatorRef.current.retranslate()
-              toggleTranslation(true)
-            }
-          }}
-        />
-      </Stack>
+                onAdvancedClose && onAdvancedClose()
+              }}
+              onCodeChange={({ fromCode, toCode }) => {
+                let isChange = false
+                if (fromCode || fromCode === '') {
+                  isChange = true
+                  pageTranslatorRef.current.updateFromCode(fromCode)
+                }
+                if (toCode) {
+                  isChange = true
+                  pageTranslatorRef.current.updateToCode(toCode)
+                }
+
+                if (isChange) {
+                  pageTranslatorRef.current.retranslate()
+                  toggleTranslation(true)
+                }
+              }}
+            />
+
+            {loading ? (
+              <Stack
+                sx={{
+                  width: 28,
+                  height: 28,
+                  borderRadius: '50%',
+                }}
+                alignItems={'center'}
+                justifyContent={'center'}
+              >
+                <CircularProgress size={20} sx={{ m: '0 auto' }} />
+              </Stack>
+            ) : (
+              <Button
+                sx={{
+                  position: 'relative',
+                  width: 28,
+                  height: 28,
+                  borderRadius: '50%',
+                  minWidth: 'unset',
+                  display: 'flex',
+                  color: 'primary.main',
+                  '&:hover': {
+                    color: 'primary.main',
+                    bgcolor: (t) =>
+                      t.palette.mode === 'dark'
+                        ? 'rgba(255, 255, 255, 0.16)'
+                        : 'rgba(144, 101, 176, 0.16)',
+                  },
+                }}
+                onClick={() => {
+                  toggleTranslation()
+                }}
+              >
+                <CustomStyleBadge
+                  badgeContent={
+                    showTranslatedBadge ? (
+                      <CheckCircleIcon
+                        sx={{
+                          fontSize: 10,
+                          color: 'rgba(52, 168, 83, 1)',
+                          bgcolor: 'background.paper',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    ) : null
+                  }
+                  anchorOrigin={{
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  }}
+                >
+                  <TranslateOutlinedIcon
+                    sx={{
+                      fontSize: '20px',
+                      color: 'inherit',
+                    }}
+                  />
+                </CustomStyleBadge>
+              </Button>
+            )}
+          </Stack>
+        </Box>
+      </Box>
     </Box>
   )
 }

@@ -2,6 +2,7 @@
  * 渲染到页面中 右侧的 button
  */
 import Box from '@mui/material/Box'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import debounce from 'lodash-es/debounce'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
@@ -13,6 +14,7 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useWindowSize from '@/features/common/hooks/useWindowSize'
+import useCurrentPageLanguage from '@/features/pageTranslator/hook/useCurrentPageLanguage'
 import { pageTranslationEnableAtom } from '@/features/pageTranslator/store'
 import { MaxAIMinimumHideState } from '@/minimum/components/FloatingMenuButton/buttons/MaxAIHideMiniButton'
 import MaxAIImmersiveChatButton from '@/minimum/components/FloatingMenuButton/buttons/MaxAIImmersiveChatButton'
@@ -52,6 +54,8 @@ const FloatingMenuButton: FC = () => {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const translationEnable = useRecoilValue(pageTranslationEnableAtom)
+
+  const { currentPageLanguageNotEqualTargetLanguage } = useCurrentPageLanguage()
 
   useEffect(() => {
     if (height) {
@@ -104,8 +108,10 @@ const FloatingMenuButton: FC = () => {
   })
 
   const pageTranslateButtonShow = useMemo(() => {
-    return isHover || translationEnable
-  }, [isHover, translationEnable])
+    return (
+      isHover || translationEnable || currentPageLanguageNotEqualTargetLanguage //如果探测到当前页面的语言和希望翻译的 target language不同，就会出现
+    )
+  }, [isHover, translationEnable, currentPageLanguageNotEqualTargetLanguage])
 
   const summarizeButtonShow = useMemo(() => {
     return isHover || isArticlePage
@@ -155,87 +161,104 @@ const FloatingMenuButton: FC = () => {
             userSelect: 'none',
           }}
         >
-          <Box
-            sx={{
-              width: 42,
-              height: 32,
-              transform:
-                isHover || summarizeButtonShow || pageTranslateButtonShow
-                  ? 'translateX(0)'
-                  : 'translateX(10px)',
-              transition: '0.1s all',
-              borderRadius: '27px 0 0 27px',
-              bgcolor: 'background.paper',
-              boxShadow:
-                '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
-              cursor: 'pointer',
-            }}
-            onMouseLeave={() => {
+          <ClickAwayListener
+            onClickAway={(event) => {
               setIsHover(false)
-              setIsHoverButton(false)
-            }}
-            onMouseDown={() => {
-              prevDragAxisYRef.current = dragAxisY
+              setIsDragging(false)
             }}
           >
-            <MaxAIMiniButton
-              onMouseEnter={() => {
-                setIsHover(true)
-                setIsHoverButton(true)
-                console.log('MaxAIMiniButton enter')
+            <Box
+              sx={{
+                width: 42,
+                height: 32,
+                transform:
+                  isHover || summarizeButtonShow || pageTranslateButtonShow
+                    ? 'translateX(0)'
+                    : 'translateX(10px)',
+                transition: '0.1s all',
+                borderRadius: '27px 0 0 27px',
+                bgcolor: 'background.paper',
+                boxShadow:
+                  '0px 0px 0.5px 0px rgba(0, 0, 0, 0.40), 0px 1px 3px 0px rgba(0, 0, 0, 0.09), 0px 4px 8px 0px rgba(0, 0, 0, 0.09)',
+                cursor: 'pointer',
               }}
               onMouseLeave={() => {
+                setIsHover(false)
                 setIsHoverButton(false)
-                console.log('MaxAIMiniButton onMouseLeave')
               }}
-              isDragging={isDragging}
-              onClick={() => {
-                if (
-                  Math.abs(
-                    prevDragAxisYRef.current - currentDragAxisYRef.current,
-                  ) > 5
-                ) {
-                  return
+              onMouseDown={() => {
+                prevDragAxisYRef.current = dragAxisY
+              }}
+            >
+              <MaxAIMiniButton
+                onMouseEnter={() => {
+                  setIsHover(true)
+                  setIsHoverButton(true)
+                  console.log('MaxAIMiniButton enter')
+                }}
+                onMouseLeave={() => {
+                  setIsHoverButton(false)
+                  console.log('MaxAIMiniButton onMouseLeave')
+                }}
+                isDragging={isDragging}
+                onClick={() => {
+                  if (
+                    Math.abs(
+                      prevDragAxisYRef.current - currentDragAxisYRef.current,
+                    ) > 5
+                  ) {
+                    return
+                  }
+                  const port = new ContentScriptConnectionV2()
+                  port.postMessage({
+                    event: 'Client_emitCMDJ',
+                    data: {},
+                  })
+                }}
+                aboveNode={
+                  <Stack spacing={'6px'}>
+                    {isHover && (
+                      <MaxAISearchWithAIButton
+                        key={'MaxAISearchWithAIButton'}
+                      />
+                    )}
+                    {isHover && (
+                      <MaxAIScreenshotMiniButton
+                        key={'MaxAIScreenshotButton'}
+                      />
+                    )}
+                    {summarizeButtonShow && (
+                      <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
+                    )}
+                  </Stack>
                 }
-                const port = new ContentScriptConnectionV2()
-                port.postMessage({
-                  event: 'Client_emitCMDJ',
-                  data: {},
-                })
-              }}
-              aboveNode={
-                <Stack spacing={'6px'}>
-                  {isHover && (
-                    <MaxAISearchWithAIButton key={'MaxAISearchWithAIButton'} />
-                  )}
-                  {isHover && (
-                    <MaxAIScreenshotMiniButton key={'MaxAIScreenshotButton'} />
-                  )}
-                  {summarizeButtonShow && (
-                    <MaxAISummarizeButton key={'MaxAISummarizeButton'} />
-                  )}
-                </Stack>
-              }
-              underNode={
-                <Stack spacing={'6px'}>
-                  <MaxAIPageTranslateButton
-                    key={'MaxAIPageTranslateButton'}
-                    sx={{
-                      display: pageTranslateButtonShow ? 'block' : 'none',
-                    }}
-                  />
-                  {isHover && (
-                    <MaxAIImmersiveChatButton
-                      key={'MaxAIImmersiveChatButton'}
+                underNode={
+                  <Stack spacing={'6px'}>
+                    <MaxAIPageTranslateButton
+                      key={'MaxAIPageTranslateButton'}
+                      onAdvancedClose={() => {
+                        setIsHover(false)
+                        setIsHoverButton(false)
+                      }}
+                      sx={{
+                        display: pageTranslateButtonShow ? 'block' : 'none',
+                      }}
                     />
-                  )}
-                  {isHover && (
-                    <MaxAISettingsMiniButton key={'MaxAISettingsMiniButton'} />
-                  )}
-                </Stack>
-              }
-            />
-          </Box>
+                    {isHover && (
+                      <MaxAIImmersiveChatButton
+                        key={'MaxAIImmersiveChatButton'}
+                      />
+                    )}
+                    {isHover && (
+                      <MaxAISettingsMiniButton
+                        key={'MaxAISettingsMiniButton'}
+                      />
+                    )}
+                  </Stack>
+                }
+              />
+            </Box>
+          </ClickAwayListener>
         </Box>
       </Draggable>
     </Box>

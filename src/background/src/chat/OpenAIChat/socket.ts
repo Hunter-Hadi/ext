@@ -407,7 +407,10 @@ class ChatGPTSocketService {
   private async onSocketMessage(
     chatGPTSocketServiceMessage: ChatGPTSocketServiceMessage,
   ) {
-    if (chatGPTSocketServiceMessage?.kind === 'serverData') {
+    if (
+      chatGPTSocketServiceMessage?.kind === 'serverData' ||
+      chatGPTSocketServiceMessage?.kind === 'groupData'
+    ) {
       this.processMessage(chatGPTSocketServiceMessage, (message) => {
         console.log(
           'ChatGPTWebapp Socket message',

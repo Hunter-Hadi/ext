@@ -7,6 +7,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { getSearchWithAIRootElement } from '@/features/searchWithAI/utils'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { getAppContextMenuRootElement } from '@/utils'
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
@@ -64,8 +65,18 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
             setIsLoading(false)
             resolve(true)
           }
-          image.onerror = () => {
-            resolve(false)
+          image.onerror = async () => {
+            // 用background fetch一次
+            const result = await clientFetchAPI(src, {
+              parse: 'blob',
+            })
+            if (result) {
+              setImageSrc(URL.createObjectURL(result.data))
+              setIsLoading(false)
+              resolve(true)
+            } else {
+              resolve(false)
+            }
           }
         })
       }

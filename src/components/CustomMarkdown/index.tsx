@@ -235,7 +235,12 @@ const CustomMarkdown: FC<{
                   />
                 )
               }
-              return <img {...{ src, alt: data?.alt || alt || '', title }} />
+              return (
+                <LazyLoadImage
+                  height={387}
+                  {...{ src: src || '', alt: data?.alt || alt || '', title }}
+                />
+              )
             },
           }}
         >

@@ -8,6 +8,7 @@ const generateUserMessageContexts = (
   shortCutsParameters: Record<string, IShortCutsParameter>,
   promptText: string,
 ): IUserChatMessageExtraMetaContextType[] => {
+  debugger
   const contextMap: Map<
     string,
     IUserChatMessageExtraMetaContextType
@@ -67,16 +68,10 @@ const generateUserMessageContexts = (
   ) {
     contextMap.delete('SELECTED_TEXT')
   }
-  // 过滤空值
-  contextMap.forEach((item, key) => {
-    if (!item.value) {
-      contextMap.delete(key)
-    }
-  })
   return orderBy(
     Array.from(contextMap.values()),
     (item) => item.value.length,
-    'desc',
+    'asc',
   )
 }
 export default generateUserMessageContexts

@@ -38,6 +38,7 @@ const useCurrentPageLanguage = () => {
           currentWindow: true,
         },
       ])) || []
+    // console.log(`activeTabs`, activeTabs)
     const currentActiveTab = activeTabs[0]
     const tabId = currentActiveTab?.id
     if (currentActiveTab && tabId) {

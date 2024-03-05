@@ -1,11 +1,7 @@
 import AES from 'crypto-js/aes'
 import Browser from 'webextension-polyfill'
 
-import {
-  APP_USE_CHAT_GPT_API_HOST,
-  APP_VERSION,
-  isProduction,
-} from '@/constants'
+import { APP_VERSION, isProduction } from '@/constants'
 import {
   getMaxAIChromeExtensionEmail,
   getMaxAIChromeExtensionUserId,
@@ -49,15 +45,18 @@ export const backgroundSendMaxAINotification = async (
     }),
     'MaxAI',
   ).toString()
-  return fetch(APP_USE_CHAT_GPT_API_HOST + '/app/send_notification', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
+  return fetch(
+    'https://api.extensions-hub.com/extensionhub/send_notification',
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        msg: text,
+      }),
     },
-    body: JSON.stringify({
-      msg: text,
-    }),
-  })
+  )
     .then()
     .catch()
 }

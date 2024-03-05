@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "አይ ጥያቄ ይጠይቁ ስለ ኢሜይል...",
     "sidebar__input__summary__video_placeholder": "አይ ጥያቄ ይጠይቁ ስለ ቪዲዮ...",
     "sidebar__input__search__placeholder": "የድረ-ገጽ ጥያቄ ይጠይቁ...",
-    "sidebar__input__art__placeholder": "አይ ጥያቄ ይጠይቁ..."
+    "sidebar__input__art__placeholder": "አይ ጥያቄ ይጠይቁ...",
+    "provider__claude__model__claude_3_200k__description": "ክላድ 3 ሶኒት የሚጠቀም እና የሚፈጥር መሰረት ነው። ይህ ሞዴል በበጎ ማስታወቂያ የሚሰራ ለበዛበት AI ስርጭት በተለያዩ አጠቃላይ መስመር ውስጥ ለማስተላለፍ እና ለማስታወቂያ የሚችል ነው።",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "የ claude-3-sonnet ይሁኑ፣ የተጠቀሱትን ይጠቀሙ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "የሚጠቀም እና የሚፈጥር መሰረት የክላድ 3 ሶኒት—Anthropic's dynamic powerhouse with a 200,000-token capability. Perfect for tasks demanding precision and speed, this model excels in data processing, sales optimization, and code generation. Elevate your AI capabilities and drive success with Claude 3 Sonnet—subscribe now and experience the difference!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

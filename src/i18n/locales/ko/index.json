@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "이메일에 대해 AI에게 무엇이든 물어보세요...",
     "sidebar__input__summary__video_placeholder": "비디오에 대해 AI에게 무엇이든 물어보세요...",
     "sidebar__input__search__placeholder": "웹에서 물어보세요...",
-    "sidebar__input__art__placeholder": "AI에게 물어보세요..."
+    "sidebar__input__art__placeholder": "AI에게 물어보세요...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet은 지능과 속도 사이의 이상적인 균형을 유지합니다. 이 모델은 대규모 AI 배포에서 높은 내구성을 갖추고 있으며, 코드 생성 및 품질 관리와 같은 다양한 응용 분야에서 뛰어난 성능을 발휘합니다.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "클로드-3-손네트에 액세스하려면 업그레이드하세요",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude 3 Sonnet의 잠재력을 발휘하세요. 20만 토큰 기능을 갖춘 Anthropic의 동적인 파워하우스입니다. 정밀성과 속도를 요구하는 작업에 완벽하게 적합하며, 데이터 처리, 판매 최적화 및 코드 생성에서 뛰어난 성능을 발휘합니다. AI 역량을 향상시키고 성공을 이끌어내기 위해 Claude 3 Sonnet을 지금 구독하고 차이를 경험해보세요!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

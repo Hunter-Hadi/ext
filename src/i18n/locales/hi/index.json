@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "ईमेल के बारे में AI से कुछ पूछें...",
     "sidebar__input__summary__video_placeholder": "वीडियो के बारे में AI से कुछ पूछें...",
     "sidebar__input__search__placeholder": "वेब से पूछें...",
-    "sidebar__input__art__placeholder": "AI से पूछें..."
+    "sidebar__input__art__placeholder": "AI से पूछें...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet बुद्धिमत्ता और गति के बीच सही संतुलन स्थापित करता है। यह मॉडल बड़े पैमाने पर AI डिप्लॉयमेंट में उच्च सहनशक्ति के लिए इंजीनियर किया गया है, और कोड जनरेशन और गुणवत्ता नियंत्रण जैसे विभिन्न अनुप्रयोगों में उत्कृष्टता प्रदर्शित करता है।",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "क्लोड-3-सोनेट तक पहुंच अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude 3 Sonnet की क्षमता को खोलें - Anthropic का गतिशील पॉवरहाउस जिसमें 200,000 टोकन की क्षमता है। सटीकता और गति की मांग करने वाले कार्यों के लिए उत्कृष्ट, यह मॉडल डेटा प्रोसेसिंग, बिक्री अनुकूलन और कोड जनरेशन में उत्कृष्टता प्रदर्शित करता है। अपनी AI क्षमताओं को ऊंचा करें और Claude 3 Sonnet के साथ सफलता प्राप्त करें - अभी सदस्यता लें और अंतर का अनुभव करें!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

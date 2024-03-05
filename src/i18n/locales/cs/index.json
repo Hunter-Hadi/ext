@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Zeptejte se AI cokoli o e-mailu...",
     "sidebar__input__summary__video_placeholder": "Zeptejte se AI cokoli o videu...",
     "sidebar__input__search__placeholder": "Zeptejte se webu...",
-    "sidebar__input__art__placeholder": "Zeptejte se AI..."
+    "sidebar__input__art__placeholder": "Zeptejte se AI...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet dosahuje ideální rovnováhy mezi inteligencí a rychlostí. Tento model je navržen pro vysokou odolnost ve velkých nasazeních umělé inteligence a vyniká v různých aplikacích, jako je generování kódu a kontrola kvality.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Upgradujte pro přístup k Claude-3-Sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Uvolněte potenciál Claude 3 Sonnet - dynamického powerhousu Anthropic s kapacitou 200 000 tokenů. Perfektní pro úkoly vyžadující přesnost a rychlost, tento model exceluje v zpracování dat, optimalizaci prodeje a generování kódu. Zvyšte své schopnosti v oblasti umělé inteligence a dosáhněte úspěchu s Claude 3 Sonnet - přihlaste se nyní a zažijte rozdíl!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

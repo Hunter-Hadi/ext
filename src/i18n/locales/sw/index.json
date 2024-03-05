@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Uliza AI chochote kuhusu barua pepe...",
     "sidebar__input__summary__video_placeholder": "Uliza AI chochote kuhusu video...",
     "sidebar__input__search__placeholder": "Uliza wavuti...",
-    "sidebar__input__art__placeholder": "Uliza AI..."
+    "sidebar__input__art__placeholder": "Uliza AI...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet inaleta usawa mzuri kati ya akili na kasi. Mfano huu umetengenezwa kwa ajili ya uvumilivu mkubwa katika upelekaji wa AI wa kiwango kikubwa, na unafanya vizuri katika matumizi mbalimbali kama vile uzalishaji wa nambari na udhibiti wa ubora.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Sasisha ili kupata claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Toa uwezo wa Claude 3 Sonnet—nguvu ya kipekee ya Anthropic yenye uwezo wa maneno 200,000. Kamili kwa kazi zinazohitaji usahihi na kasi, mfano huu unafanya vizuri katika usindikaji wa data, optimization ya mauzo, na uzalishaji wa nambari. Pandisha uwezo wako wa AI na fikia mafanikio na Claude 3 Sonnet—jisajili sasa na ujionee tofauti!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

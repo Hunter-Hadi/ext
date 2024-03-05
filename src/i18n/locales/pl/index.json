@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Zapytaj SI o cokolwiek na temat wiadomości e-mail...",
     "sidebar__input__summary__video_placeholder": "Zapytaj SI o cokolwiek na temat filmu...",
     "sidebar__input__search__placeholder": "Zapytaj sieci...",
-    "sidebar__input__art__placeholder": "Zapytaj SI..."
+    "sidebar__input__art__placeholder": "Zapytaj SI...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet osiąga idealną równowagę między inteligencją a szybkością. Ten model został zaprojektowany dla wysokiej wytrzymałości w dużych implementacjach sztucznej inteligencji i doskonale sprawdza się w różnych zastosowaniach, takich jak generowanie kodu i kontrola jakości.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Uaktualnij, aby uzyskać dostęp do sonetu claude-3",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Odblokuj potencjał Claude 3 Sonnet - dynamicznego mocarza Anthropic o zdolności do przetwarzania 200 000 tokenów. Doskonały do zadań wymagających precyzji i szybkości, ten model doskonale sprawdza się w przetwarzaniu danych, optymalizacji sprzedaży i generowaniu kodu. Podnieś swoje możliwości AI i odnieś sukces z Claude 3 Sonnet - subskrybuj teraz i poczuj różnicę!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

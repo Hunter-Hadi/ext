@@ -64,6 +64,7 @@ const generateUserMessageContexts = (
   // 如果有selected text，但是不在prompt中，那就删除
   if (
     contextMap.get('SELECTED_TEXT') &&
+    contextMap.get('SELECTED_TEXT')?.value?.trim() &&
     !promptText.includes(contextMap.get('SELECTED_TEXT')?.value as string)
   ) {
     contextMap.delete('SELECTED_TEXT')

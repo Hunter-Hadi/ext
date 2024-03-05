@@ -113,7 +113,7 @@ const SidebarUserMessageContexts: FC<{
                           lineHeight={'24px'}
                           fontSize={'16px'}
                         >
-                          {context.value}
+                          {context.value?.trim() ?? ''}
                         </Typography>
                         {
                           // 最后一个不需要分割线

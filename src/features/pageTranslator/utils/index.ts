@@ -110,25 +110,18 @@ export function getAllTextNodes(element: Element | Node) {
   return textNodes
 }
 
-// 判断当前元素是否是 其父元素的最后一个 textNode 元素
-export const isLastTextNode = (
-  node: Node,
-  parentElement?: HTMLElement | null,
-) => {
-  // 首先检查提供的节点是否是文本节点
-  if (node.nodeType !== Node.TEXT_NODE) {
-    return false
+// 检查当前元素是否在 contentEditable 元素中
+export function findContentEditableParent(element: HTMLElement) {
+  let elementTemplate: HTMLElement | null = element
+  while (elementTemplate && elementTemplate.tagName !== 'BODY') {
+    // 检查元素是否是 contentEditable
+    if (elementTemplate?.contentEditable === 'true') {
+      return elementTemplate
+    }
+    // 向上移动到父元素
+    elementTemplate = elementTemplate.parentElement
   }
-
-  // 获取父元素
-  const containerElement = parentElement ?? node.parentElement
-  if (!containerElement) {
-    return false // 如果没有父元素，直接返回false
-  }
-
-  const textNode = getAllTextNodes(containerElement)
-  const lastTextNode = textNode[textNode.length - 1]
-  return lastTextNode === node
+  return null
 }
 
 // 判断 element 是否是有效的元素
@@ -226,7 +219,10 @@ export const isNotToTranslateText = (content: string) => {
       text,
     ) ||
     /^@[\S]+$/g.test(text) ||
-    /^[-`~!@#$%^&*()_+=[\]{};:'",<.>/?]+$/g.test(text)
+    /^[-`~!@#$%^&*()_+=[\]{};:'",<.>/?]+$/g.test(text) ||
+    /^(\p{Emoji_Presentation}|\p{Extended_Pictographic}|\p{Emoji_Modifier_Base}|\p{Emoji_Component}|\p{Emoji}\uFE0F)+$/u.test(
+      text,
+    )
   ) {
     return true
   }

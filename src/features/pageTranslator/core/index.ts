@@ -11,6 +11,7 @@ import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import {
   findBlockParentElement,
+  findContentEditableParent,
   findParentElementWithTextNode,
   isBlockElement,
   isNotToTranslateText,
@@ -210,6 +211,10 @@ class PageTranslator {
       .trim()
 
     if (isNotToTranslateText(allText)) {
+      return
+    }
+
+    if (findContentEditableParent(containerElement)) {
       return
     }
 

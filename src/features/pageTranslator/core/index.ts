@@ -268,13 +268,14 @@ class PageTranslator {
 
   startEventListener() {
     const doTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
+    const retryTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
 
     const messageHandler = {
       MAXAI_PageTranslatorEvent_doTranslate: () => {
         doTranslateDebounce()
       },
       MAXAI_PageTranslatorEvent_retryTranslate: () => {
-        this.retryTranslate()
+        retryTranslateDebounce()
       },
     }
 

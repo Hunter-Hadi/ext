@@ -1,10 +1,10 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 
-import { getAIProviderSettings } from '@/background/src/chat/util'
+// import { getAIProviderSettings } from '@/background/src/chat/util'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 
-import { getRemoteAIProviderConfigCache } from '../../OpenAiChat/utils'
+// import { getRemoteAIProviderConfigCache } from '../../OpenAiChat/utils'
 import {
   createClaudeConversation,
   deleteClaudeConversation,
@@ -76,8 +76,8 @@ export class Claude {
     if (regenerate) {
       text = ''
     }
-    const claudeSettings = await getAIProviderSettings('CLAUDE')
-    const { claudeWebappModel } = await getRemoteAIProviderConfigCache()
+    // const claudeSettings = await getAIProviderSettings('CLAUDE')
+    // const { claudeWebappModel } = await getRemoteAIProviderConfigCache()
     await fetchSSE(apiHost, {
       signal,
       method: 'POST',

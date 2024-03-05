@@ -145,7 +145,6 @@ export const isTranslationValidElement = (element: HTMLElement | null) => {
         'CODE',
         'PRE',
         'OBJECT',
-        'EM',
         'CITE',
         'STRONG',
         'NOBR',

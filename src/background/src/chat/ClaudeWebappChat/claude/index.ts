@@ -92,7 +92,8 @@ export class Claude {
           return originalAttachment
         }),
         files: [], //暂时不知道 claude 这个字段是干什么的
-        model: claudeWebappModel || claudeSettings?.model || 'claude-2.1',
+        // claude 改版不需要传入 model - 2024-03-05
+        // model: claudeWebappModel || claudeSettings?.model || 'claude-2.1',
         prompt: text,
         timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       }),

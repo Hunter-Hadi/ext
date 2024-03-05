@@ -201,7 +201,7 @@ const Step5Content: FC = () => {
           <UseChatGptIcon
             sx={{
               fontSize: '20px',
-              color: '#fff',
+              color: 'text.primary',
               borderRadius: '8px',
             }}
           />

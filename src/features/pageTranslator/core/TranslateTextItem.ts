@@ -106,18 +106,22 @@ class TranslateTextItem {
 
       const rawText = this.rawText.trim()
 
-      const { display } = getComputedStyle(this.rawElement)
-      if (display.includes('inline')) {
-        isInline = true
-      }
+      // debugger
 
-      if (rawText.length <= 25 || rawText.split(' ').length <= 4) {
-        isInline = true
-      }
+      // const { display } = getComputedStyle(this.rawElement)
+      // if (display.includes('inline')) {
+      //   isInline = true
+      // }
 
       const isUnicodeText = rawText.match(/\p{Unified_Ideograph}/gu)
+      // 如果是中文，且长度小于 0.25 * 15 个字符，认为是 inline
       if (isUnicodeText) {
-        isInline = rawText.length <= 7
+        isInline = rawText.length <= 0.25 * 15
+      } else if (
+        rawText.length <= 15 &&
+        rawText.split(' ').filter((text) => text.trim()).length <= 2
+      ) {
+        isInline = true
       }
 
       this.isInline = isInline

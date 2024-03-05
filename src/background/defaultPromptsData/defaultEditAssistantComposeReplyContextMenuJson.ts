@@ -621,12 +621,14 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                         valueType: 'Text',
                         placeholder: 'Enter target post/comment',
                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                        systemVariable: true,
                       },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
+                        systemVariable: true,
                       },
                     ],
                     systemVariables: [
@@ -701,6 +703,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                         placeholder: 'Enter context',
                         defaultValue:
                           '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
+                        systemVariable: true,
                       },
                       {
                         label: 'Target post/comment',
@@ -708,6 +711,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                         valueType: 'Text',
                         placeholder: 'Enter target post/comment',
                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+                        systemVariable: true,
                       },
                       {
                         label: 'Key points',
@@ -1294,12 +1298,14 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+                        systemVariable: true,
                       },
                       {
                         label: 'Key points',
                         VariableName: 'KEY_POINTS',
                         valueType: 'Text',
                         placeholder: 'Enter key points',
+                        systemVariable: true,
                       },
                     ],
                     systemVariables: [
@@ -1375,6 +1381,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
+                        systemVariable: true,
                       },
                       {
                         label: 'Target Email',
@@ -1384,6 +1391,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
+                        systemVariable: true,
                       },
                       {
                         label: 'Key points',

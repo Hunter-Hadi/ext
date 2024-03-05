@@ -27,17 +27,9 @@ const generateUserMessageContexts = (
   })
   // 特殊的上下文的key
   const specialContextKeyMap: {
-    [key in keyof ActionParameters & {
-      SYSTEM_CURRENT_DATE: 'SYSTEM_CURRENT_DATE'
-    }]: string
+    [key in keyof ActionParameters]: string
   } = {
     SELECTED_TEXT: 'Selected text',
-    AI_RESPONSE_LANGUAGE: 'AI Response language',
-    AI_RESPONSE_TONE: 'Tone',
-    AI_RESPONSE_WRITING_STYLE: 'Writing style',
-    CURRENT_WEBSITE_DOMAIN: 'Current website domain',
-    // Settings - My own prompts - Capabilities
-    SYSTEM_CURRENT_DATE: 'Current date',
   }
   Object.keys(specialContextKeyMap).forEach((specialContextKey) => {
     if (contextMap.has(specialContextKey)) {
@@ -60,14 +52,7 @@ const generateUserMessageContexts = (
       }
     }
   })
-  if (
-    contextMap.has('AI_RESPONSE_LANGUAGE') &&
-    !contextMap.has('AI_RESPONSE_TONE') &&
-    !contextMap.has('AI_RESPONSE_WRITING_STYLE')
-  ) {
-    // AI_RESPONSE_LANGUAGE不会单独出现，所以需要删除
-    contextMap.delete('AI_RESPONSE_LANGUAGE')
-  }
+
   // 如果有selected text，但是不在prompt中，那就删除
   if (
     contextMap.get('SELECTED_TEXT') &&

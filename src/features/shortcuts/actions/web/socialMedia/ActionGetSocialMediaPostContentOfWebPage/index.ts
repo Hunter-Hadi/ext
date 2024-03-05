@@ -77,14 +77,14 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
                     key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
                     value: SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                     overwrite: true,
-                    isBuildIn: false,
+                    isBuildIn: true,
                     label: 'Target post/comment',
                   },
                   SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: {
                     key: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
                     value: SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
                     overwrite: true,
-                    isBuildIn: false,
+                    isBuildIn: true,
                     label: 'Context',
                   },
                   SOCIAL_MEDIA_PAGE_CONTENT: {

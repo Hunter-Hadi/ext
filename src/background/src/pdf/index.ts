@@ -1,6 +1,6 @@
 import Browser from 'webextension-polyfill'
 
-import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionStorage/getLiteChromeExtensionDBStorage'
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import Log from '@/utils/Log'
 // NOTE: 2023-05-15
 /**
@@ -39,7 +39,7 @@ export const openPDFViewer = async (
   url: string,
   newTab = false,
 ) => {
-  const settings = await getLiteChromeExtensionDBStorage()
+  const settings = await getChromeExtensionDBStorage()
   if (settings.userSettings?.pdf?.enabled) {
     const redirectUrl = Browser.runtime.getURL(
       `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,

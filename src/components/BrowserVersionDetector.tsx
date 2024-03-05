@@ -12,7 +12,7 @@ import {
 import { BrowserIcon } from '@/components/CustomIcon'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 const { getBrowser } = new UAParser()
 
@@ -70,8 +70,9 @@ const BrowserVersionDetector: FC<{
         if (data.ON_BOARDING_RECORD_BROWSER_VERSION) {
           return
         }
-        await sendLarkBotMessage(
-          '[Browser] Browser version is not compatible',
+        await clientSendMaxAINotification(
+          'CLIENT',
+          '[CLIENT] Browser version is not compatible',
           `Browser: [${browser.name}]\nVersion: [${browser.version}]`,
           { uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d' },
         )
@@ -113,8 +114,9 @@ const BrowserVersionDetector: FC<{
         onClick={(event) => {
           event.preventDefault()
           event.stopPropagation()
-          sendLarkBotMessage(
-            '[Browser] Browser clicked update',
+          clientSendMaxAINotification(
+            'CLIENT',
+            '[CLIENT] Browser clicked update',
             `Browser: [${browserName}]\nVersion: [${browserVersion}]`,
             { uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d' },
           )

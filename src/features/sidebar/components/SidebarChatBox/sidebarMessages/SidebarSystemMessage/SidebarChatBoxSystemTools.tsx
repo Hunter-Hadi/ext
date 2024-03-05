@@ -12,7 +12,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 const SidebarChatBoxSystemTools: FC<{
   solutionsShow: boolean
@@ -55,7 +55,8 @@ const SidebarChatBoxSystemTools: FC<{
       chatMessageType === 'needUpgrade' &&
       (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite')
     ) {
-      sendLarkBotMessage(
+      clientSendMaxAINotification(
+        'PRICING',
         `[Pricing] Pro show pricing card`,
         JSON.stringify({
           user: userInfo,

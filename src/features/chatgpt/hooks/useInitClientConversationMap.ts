@@ -10,7 +10,7 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export const clientGetConversation = async (conversationId: string) => {
   try {

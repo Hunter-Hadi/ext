@@ -33,7 +33,7 @@ import {
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
-import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import useContextMenuSearchTextStore from '@/features/sidebar/hooks/useContextMenuSearchTextStore'
 import ContextMenuActionConfirmModal, {
   IConfirmActionType,
 } from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuActionConfirmModal'

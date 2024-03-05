@@ -11,7 +11,7 @@ import {
   fuzzySearchContextMenuList,
   groupByContextMenuItem,
 } from '@/features/contextMenu/utils'
-import { useContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import useContextMenuSearchTextStore from '@/features/sidebar/hooks/useContextMenuSearchTextStore'
 
 const useContextMenuList = (
   buttonSettingKey: IChromeExtensionButtonSettingKey,

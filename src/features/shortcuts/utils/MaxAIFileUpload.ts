@@ -1,6 +1,6 @@
 import { APP_USE_CHAT_GPT_API_HOST } from '@/constants'
-import { sendLarkBotMessage } from '@/utils/larkBot'
 import { getAccessToken } from '@/utils/request'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 // 上传的文件用途
 export type MaxAIFileUploadUseCase = 'summary' | 'multimodal'
 export type MaxAIFileUploadResponse = {
@@ -71,7 +71,8 @@ export const maxAIFileUpload = async (
       })
       .catch((error) => {
         console.error('文件上传错误:', error)
-        sendLarkBotMessage(
+        clientSendMaxAINotification(
+          'MAXAI_API',
           '[API] [/gpt/analyze_file] error',
           JSON.stringify(
             {

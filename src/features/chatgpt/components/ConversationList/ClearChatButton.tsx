@@ -11,7 +11,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const ClearChatButton: FC<{

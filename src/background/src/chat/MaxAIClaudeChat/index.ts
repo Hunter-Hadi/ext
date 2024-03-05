@@ -21,8 +21,8 @@ import {
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
-import { sendLarkBotMessage } from '@/utils/larkBot'
 import Log from '@/utils/Log'
+import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 const log = new Log('Background/Chat/MaxAIClaudeChat')
 
@@ -244,7 +244,8 @@ class MaxAIClaudeChat extends BaseChat {
     if (hasError) {
       if (messageResult === '') {
         // HACK: 后端现在偶尔会返回空字符串，这里做个fallback
-        sendLarkBotMessage(
+        backgroundSendMaxAINotification(
+          'MAXAI_API',
           '[API] response empty string.',
           JSON.stringify(
             {

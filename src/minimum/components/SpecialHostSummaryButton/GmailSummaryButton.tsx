@@ -7,7 +7,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
 const GmailSummaryButton: FC = () => {

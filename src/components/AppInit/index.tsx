@@ -35,8 +35,8 @@ import {
   isMaxAIImmersiveChatPage,
 } from '@/utils/dataHelper/websiteHelper'
 import { renderGlobalSnackbar } from '@/utils/globalSnackbar'
-import { clientGetBrowserInfo } from '@/utils/larkBot'
 import Log from '@/utils/Log'
+import { clientSetBrowserUAInfo } from '@/utils/sendMaxAINotification/client'
 const log = new Log('AppInit')
 
 const UseChatGPTWebPageJumpToShortCuts = () => {
@@ -136,7 +136,7 @@ const AppInit = () => {
     detectBrowserDefaultPDFViewer()
     renderGlobalSnackbar()
     ShortcutMessageClientInit()
-    clientGetBrowserInfo().then().catch()
+    clientSetBrowserUAInfo().then().catch()
     initClientProxyWebsocket()
   })
   // 初始化one-click referral, https://app.maxai.me/referral

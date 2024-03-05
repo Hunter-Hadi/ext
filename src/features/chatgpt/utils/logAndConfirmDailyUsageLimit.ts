@@ -15,8 +15,11 @@ import {
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { getFingerPrint } from '@/utils/fingerPrint'
-import { getBrowserInfo, sendLarkBotMessage } from '@/utils/larkBot'
 import { getAccessToken } from '@/utils/request'
+import {
+  backgroundGetBrowserUAInfo,
+  backgroundSendMaxAINotification,
+} from '@/utils/sendMaxAINotification/background'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -53,13 +56,14 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         MAXAI_DALLE: 'dalle',
         MAXAI_FREE: 'free',
       }
+      const UAInfo = await backgroundGetBrowserUAInfo()
       const info_object = {
         ai_provider:
           beautyQueryMap[provider as IAIProviderType] || 'UNKNOWN_PROVIDER',
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,
-        browser: await getBrowserInfo(),
+        browser: UAInfo.browser,
         app_version: APP_VERSION,
       }
       if (contextMenuIsFavoriteContextMenu(info_object.prompt_id)) {
@@ -138,7 +142,8 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
               userInfo.role.exp_time &&
               dayjs(userInfo.role.exp_time).diff(dayjs().utc()) > 0
             ) {
-              sendLarkBotMessage(
+              backgroundSendMaxAINotification(
+                'PRICING',
                 `[Pricing] Pro [cache] has reached the limit`,
                 `Pro user ${
                   userInfo?.email

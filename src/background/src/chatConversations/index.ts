@@ -16,7 +16,7 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { ContextMenuNamePrefixRegex } from '@/features/shortcuts/utils/ContextMenuNamePrefixList'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 export interface IChatConversation {

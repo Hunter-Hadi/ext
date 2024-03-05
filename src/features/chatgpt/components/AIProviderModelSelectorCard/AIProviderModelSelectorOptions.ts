@@ -3,7 +3,7 @@ import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export type AIProviderModelSelectorOption = {
   tag?: string

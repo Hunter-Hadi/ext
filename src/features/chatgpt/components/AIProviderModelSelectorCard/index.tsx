@@ -29,7 +29,7 @@ import {
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 const AIProviderModelTagIcon: FC<{
   tag: string
 }> = (props) => {

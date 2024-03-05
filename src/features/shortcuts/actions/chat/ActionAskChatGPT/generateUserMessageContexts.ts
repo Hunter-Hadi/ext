@@ -27,12 +27,17 @@ const generateUserMessageContexts = (
   })
   // 特殊的上下文的key
   const specialContextKeyMap: {
-    [key in keyof ActionParameters]: string
+    [key in keyof ActionParameters & {
+      SYSTEM_CURRENT_DATE: 'SYSTEM_CURRENT_DATE'
+    }]: string
   } = {
     SELECTED_TEXT: 'Selected text',
     AI_RESPONSE_LANGUAGE: 'AI Response language',
     AI_RESPONSE_TONE: 'Tone',
     AI_RESPONSE_WRITING_STYLE: 'Writing style',
+    CURRENT_WEBSITE_DOMAIN: 'Current website domain',
+    // Settings - My own prompts - Capabilities
+    SYSTEM_CURRENT_DATE: 'Current date',
   }
   Object.keys(specialContextKeyMap).forEach((specialContextKey) => {
     if (contextMap.has(specialContextKey)) {

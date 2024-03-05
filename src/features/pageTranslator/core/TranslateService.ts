@@ -2,6 +2,7 @@ import Browser from 'webextension-polyfill'
 
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import { languageCodeToApiSupportCode } from '@/features/pageTranslator/utils'
+import { promiseTimeout } from '@/utils/promiseUtils'
 
 const TRANSLATOR_ACCESS_TOKEN_CACHE_KEY = 'TRANSLATOR_ACCESS_TOKEN_CACHE_KEY'
 
@@ -115,17 +116,22 @@ class TranslateService {
       const fixedToCode = languageCodeToApiSupportCode(to)
       const fixedFromCode = languageCodeToApiSupportCode(from)
 
-      const translatorResponse = await fetch(
-        `https://api-edge.cognitive.microsofttranslator.com/translate?from=${fixedFromCode}&to=${fixedToCode}&api-version=3.0`,
-        {
-          method: 'POST',
-          body: JSON.stringify(needTextArray.map((text) => ({ Text: text }))),
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.token}`,
+      const translatorResponse = await promiseTimeout(
+        fetch(
+          `https://api-edge.cognitive.microsofttranslator.com/translate?from=${fixedFromCode}&to=${fixedToCode}&api-version=3.0`,
+          {
+            method: 'POST',
+            body: JSON.stringify(needTextArray.map((text) => ({ Text: text }))),
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${this.token}`,
+            },
           },
-        },
+        ),
+        20000, // 20s
+        new Response(),
       )
+
       if (translatorResponse.status === 401) {
         await this.fetchAccessToken()
         return this.translate(needTranslateItems, to, from)

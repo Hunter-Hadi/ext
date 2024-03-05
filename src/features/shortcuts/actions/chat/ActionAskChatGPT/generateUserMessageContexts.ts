@@ -6,6 +6,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 const generateUserMessageContexts = (
   shortCutsParameters: Record<string, IShortCutsParameter>,
+  promptText: string,
 ): IUserChatMessageExtraMetaContextType[] => {
   const contextMap: Map<
     string,
@@ -61,6 +62,13 @@ const generateUserMessageContexts = (
   ) {
     // AI_RESPONSE_LANGUAGE不会单独出现，所以需要删除
     contextMap.delete('AI_RESPONSE_LANGUAGE')
+  }
+  // 如果有selected text，但是不在prompt中，那就删除
+  if (
+    contextMap.get('SELECTED_TEXT') &&
+    !promptText.includes(contextMap.get('SELECTED_TEXT')?.value as string)
+  ) {
+    contextMap.delete('SELECTED_TEXT')
   }
   return orderBy(
     Array.from(contextMap.values()),

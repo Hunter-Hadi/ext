@@ -164,7 +164,7 @@ const SidebarPromotionDialog = () => {
           </Typography>
 
           <IconButton onClick={handleClose}>
-            <CloseOutlinedIcon sx={{ fontSize: 20, color: 'text.primary' }} />
+            <CloseOutlinedIcon sx={{ fontSize: 24, color: 'text.primary' }} />
           </IconButton>
         </Stack>
         {/* content */}

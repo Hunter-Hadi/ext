@@ -46,4 +46,18 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       roles: ['elite'],
     },
   },
+  {
+    title: 'claude-3-sonnet',
+    titleTag: '',
+    value: 'claude-3-sonnet',
+    maxTokens: 200000,
+    tags: [],
+    poweredBy: 'Anthropic',
+    description: (t) =>
+      t(`client:provider__claude__model__claude_3_200k__description`),
+    permission: {
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3',
+      roles: ['elite'],
+    },
+  },
 ]

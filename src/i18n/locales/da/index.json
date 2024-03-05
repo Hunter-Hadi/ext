@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Spørg AI om noget i e-mailen...",
     "sidebar__input__summary__video_placeholder": "Spørg AI om noget i videoen...",
     "sidebar__input__search__placeholder": "Spørg på nettet...",
-    "sidebar__input__art__placeholder": "Spørg AI..."
+    "sidebar__input__art__placeholder": "Spørg AI...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet rammer den ideelle balance mellem intelligens og hastighed. Denne model er designet til høj udholdenhed i store AI-implementeringer og excellerer i forskellige applikationer som kodegenerering og kvalitetskontrol.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Opgrader for at få adgang til claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Udnyt potentialet i Claude 3 Sonnet - Anthropics dynamiske kraftværk med en kapacitet på 200.000 tokens. Perfekt til opgaver der kræver præcision og hastighed, excellerer denne model inden for dataforarbejdning, salgsoptimering og kodegenerering. Hæv dine AI-evner og skab succes med Claude 3 Sonnet - tilmeld dig nu og oplev forskellen!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

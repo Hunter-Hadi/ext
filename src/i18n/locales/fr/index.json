@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Demandez à l'IA n'importe quoi sur l'e-mail...",
     "sidebar__input__summary__video_placeholder": "Demandez à l'IA n'importe quoi sur la vidéo...",
     "sidebar__input__search__placeholder": "Posez votre question...",
-    "sidebar__input__art__placeholder": "Demandez à l'IA..."
+    "sidebar__input__art__placeholder": "Demandez à l'IA...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet frappe le juste équilibre entre intelligence et rapidité. Ce modèle est conçu pour une grande endurance dans les déploiements d'IA à grande échelle et excelle dans diverses applications telles que la génération de code et le contrôle qualité.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Mise à niveau pour accéder à claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Libérez le potentiel de Claude 3 Sonnet - la puissance dynamique d'Anthropic avec une capacité de 200 000 jetons. Parfait pour les tâches exigeant précision et rapidité, ce modèle excelle dans le traitement des données, l'optimisation des ventes et la génération de code. Augmentez vos capacités d'IA et atteignez le succès avec Claude 3 Sonnet - abonnez-vous maintenant et découvrez la différence!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

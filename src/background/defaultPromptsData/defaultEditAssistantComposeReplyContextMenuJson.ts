@@ -621,7 +621,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                         valueType: 'Text',
                         placeholder: 'Enter target post/comment',
                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-                        systemVariable: true,
+                        systemVariable: false,
                       },
                       {
                         label: 'Key points',
@@ -711,7 +711,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                         valueType: 'Text',
                         placeholder: 'Enter target post/comment',
                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-                        systemVariable: true,
+                        systemVariable: false,
                       },
                       {
                         label: 'Key points',
@@ -1298,7 +1298,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
-                        systemVariable: true,
+                        systemVariable: false,
                       },
                       {
                         label: 'Key points',
@@ -1391,7 +1391,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                         placeholder: 'Enter email context',
                         defaultValue:
                           '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
-                        systemVariable: true,
+                        systemVariable: false,
                       },
                       {
                         label: 'Key points',

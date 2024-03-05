@@ -79,6 +79,8 @@ const App: FC = () => {
                   }}
                 />
               </Stack>
+
+              {/* 页面左侧 ConversationList 的占位元素 */}
               <Stack
                 sx={{
                   transition: 'width 0.3s ease-in-out',
@@ -89,6 +91,7 @@ const App: FC = () => {
                   },
                 }}
               />
+
               <Stack mx={'auto'} height={'100%'} maxWidth={768} width={'100vw'}>
                 <NormalChatPage />
               </Stack>

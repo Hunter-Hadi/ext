@@ -14,6 +14,7 @@ import dayjs from 'dayjs'
 
 // import eslint from 'esbuild-plugin-eslint';;
 import resolve from 'esbuild-plugin-resolve'
+import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
 
 const replaceEnv = buildEnv.getReplaceEnv()
 const isProduction = buildEnv.isProduction
@@ -42,9 +43,7 @@ async function cleanBuildDir() {
 async function esbuildConfig() {
   await esbuild.build({
     platform: 'browser',
-    entryPoints: [
-      'src/worker.ts',
-    ],
+    entryPoints: ['src/worker.ts'],
     format: 'esm',
     drop: isProduction ? ['console', 'debugger'] : [],
     bundle: true,
@@ -134,18 +133,8 @@ async function esbuildConfig() {
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
-        source: ['src/pages/settings/index.html'],
-        target: `${buildDir}/pages/settings`,
-        copyWithFolder: false,
-      }),
-      copyStaticFilesPlugin({
         source: ['src/pages/popup/index.html'],
         target: `${buildDir}/pages/popup`,
-        copyWithFolder: false,
-      }),
-      copyStaticFilesPlugin({
-        source: ['src/pages/chat/index.html'],
-        target: `${buildDir}/pages/chat`,
         copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
@@ -162,10 +151,40 @@ async function esbuildConfig() {
               target: `${buildDir}`,
               copyWithFolder: false,
             }),
+            copyStaticFilesPlugin({
+              source: ['src/lib/react-devtools.js'],
+              target: `${buildDir}`,
+              copyWithFolder: false,
+            }),
           ],
     ),
     outdir: buildDir,
   })
+
+  async function copyHTML() {
+    const sources = [
+      {
+        source: '/pages/settings/index.html',
+        target: `${buildDir}/pages/settings`,
+      },
+      {
+        source: '/pages/chat/index.html',
+        target: `${buildDir}/pages/chat`,
+      },
+    ]
+    // 因为要替换html的内容，所以不使用copyStaticFilesPlugin
+    for (const { source, target } of sources) {
+      let html = readFileSync(`${sourceDir}/${source}`, 'utf-8')
+      if (isProduction) {
+        html = html.replace(`<script src='/react-devtools.js'></script>`, '')
+      }
+      if (!existsSync(target)) {
+        mkdirSync(target, { recursive: true })
+      }
+      writeFileSync(`${target}/index.html`, html, 'utf-8')
+    }
+  }
+  await copyHTML()
   try {
     fs.writeJsonSync(`${releasesDir}/meta.json`, result.metafile)
   } catch (e) {
@@ -249,9 +268,19 @@ async function hotReload() {
   })
 }
 
+async function reactDevtools() {
+  const child = spawn('react-devtools', [''], {
+    stdio: 'inherit',
+  })
+  child.on('close', (code) => {
+    console.log(`child process exited with code ${code}`)
+  })
+}
+
 async function main() {
   if (!isProduction) {
     await hotReload()
+    await reactDevtools()
     await buildFiles()
     const watcher = chokidar.watch(sourceDir, {
       ignoreInitial: true,

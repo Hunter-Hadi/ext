@@ -52,7 +52,14 @@ const generateUserMessageContexts = (
       }
     }
   })
-
+  // 黑名单key, 来自于:
+  // 1. Settings - my-own-prompts - capebilities
+  const blackKeyList = ['SYSTEM_CURRENT_DATE']
+  blackKeyList.forEach((key) => {
+    if (contextMap.has(key)) {
+      contextMap.delete(key)
+    }
+  })
   // 如果有selected text，但是不在prompt中，那就删除
   if (
     contextMap.get('SELECTED_TEXT') &&

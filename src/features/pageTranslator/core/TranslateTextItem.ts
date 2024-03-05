@@ -105,18 +105,22 @@ class TranslateTextItem {
 
       const rawText = this.rawText.trim()
 
-      const { display } = getComputedStyle(this.rawElement)
-      if (display.includes('inline')) {
-        isInline = true
-      }
+      // debugger
 
-      if (rawText.length <= 25 || rawText.split(' ').length <= 4) {
-        isInline = true
-      }
+      // const { display } = getComputedStyle(this.rawElement)
+      // if (display.includes('inline')) {
+      //   isInline = true
+      // }
 
       const isUnicodeText = rawText.match(/\p{Unified_Ideograph}/gu)
+      // 如果是中文，且长度小于 0.25 * 15 个字符，认为是 inline
       if (isUnicodeText) {
-        isInline = rawText.length <= 7
+        isInline = rawText.length <= 0.25 * 15
+      } else if (
+        rawText.length <= 15 &&
+        rawText.split(' ').filter((text) => text.trim()).length <= 2
+      ) {
+        isInline = true
       }
 
       this.isInline = isInline
@@ -124,16 +128,23 @@ class TranslateTextItem {
       const customElement = document.createElement(
         MAXAI_TRANSLATE_CUSTOM_ELEMENT,
       )
-      const inlineElement = document.createElement(
+      const innerElement = document.createElement(
         isInline
           ? MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT
           : MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
       )
 
-      inlineElement.classList.add('notranslate')
-      customElement.appendChild(inlineElement)
+      innerElement.classList.add('notranslate')
+      customElement.appendChild(innerElement)
       this.translateContainerElement = customElement
-      this.translateInnerElement = inlineElement
+      this.translateInnerElement = innerElement
+
+      // const contentEditableParent = findContentEditableParent(this.rawElement)
+      // if (contentEditableParent) {
+      //   this.rawElement = contentEditableParent
+      //   insertAfter(customElement, contentEditableParent)
+      //   return
+      // }
 
       const textNode = this.textNodes[this.textNodes.length - 1]
       if (this.textNodes.length === 1) {
@@ -228,7 +239,7 @@ class TranslateTextItem {
     e.stopPropagation()
     e.preventDefault()
     window.dispatchEvent(
-      new CustomEvent('MAXAI_PageTranslatorEvent_doTranslate'),
+      new CustomEvent('MAXAI_PageTranslatorEvent_retryTranslate'),
     )
   }
 

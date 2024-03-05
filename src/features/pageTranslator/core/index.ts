@@ -11,6 +11,7 @@ import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import {
   findBlockParentElement,
+  findContentEditableParent,
   findParentElementWithTextNode,
   isBlockElement,
   isNotToTranslateText,
@@ -213,22 +214,26 @@ class PageTranslator {
       return
     }
 
+    if (findContentEditableParent(containerElement)) {
+      return
+    }
+
     const translateItem = new TranslateTextItem(textNodes, containerElement)
     this.translateItemsSet.add(translateItem)
     // console.log(`zztest this.translateItemsSet`, this.translateItemsSet)
   }
 
-  async doTranslate() {
+  async doTranslate(retryTranslateItem: TranslateTextItem[] = []) {
     if (this.fetching) {
       return
     }
-    const needTranslateItems: TranslateTextItem[] = []
+    const needTranslateItems: TranslateTextItem[] = [...retryTranslateItem]
 
     this.translateItemsSet.forEach((translateItem) => {
       if (
         !translateItem.isTranslated &&
         translateItem.isIntersecting &&
-        translateItem.translateStatus !== 'fetching'
+        translateItem.translateStatus === 'idle'
       ) {
         needTranslateItems.push(translateItem)
       }
@@ -245,16 +250,51 @@ class PageTranslator {
     }
   }
 
+  async retryTranslate() {
+    const needTranslateItems: TranslateTextItem[] = []
+
+    this.translateItemsSet.forEach((translateItem) => {
+      if (
+        !translateItem.isTranslated &&
+        translateItem.isIntersecting &&
+        translateItem.translateStatus === 'error'
+      ) {
+        needTranslateItems.push(translateItem)
+      }
+    })
+
+    this.doTranslate(needTranslateItems)
+  }
+
   startEventListener() {
-    const doTranslateDebounce = debounce(this.doTranslate, 100).bind(this)
+    const doTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
+    const retryTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
+
+    const messageHandler = {
+      MAXAI_PageTranslatorEvent_doTranslate: () => {
+        doTranslateDebounce()
+      },
+      MAXAI_PageTranslatorEvent_retryTranslate: () => {
+        retryTranslateDebounce()
+      },
+    }
+
     window.addEventListener(
       'MAXAI_PageTranslatorEvent_doTranslate',
-      doTranslateDebounce,
+      messageHandler['MAXAI_PageTranslatorEvent_doTranslate'],
+    )
+    window.addEventListener(
+      'MAXAI_PageTranslatorEvent_retryTranslate',
+      messageHandler['MAXAI_PageTranslatorEvent_retryTranslate'],
     )
     window.addEventListener('beforeunload', () => {
       window.removeEventListener(
         'MAXAI_PageTranslatorEvent_doTranslate',
-        doTranslateDebounce,
+        messageHandler['MAXAI_PageTranslatorEvent_doTranslate'],
+      )
+      window.removeEventListener(
+        'MAXAI_PageTranslatorEvent_retryTranslate',
+        messageHandler['MAXAI_PageTranslatorEvent_retryTranslate'],
       )
     })
   }

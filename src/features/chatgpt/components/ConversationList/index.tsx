@@ -206,10 +206,18 @@ const ConversationList: FC<IProps> = ({
                     direction={'row'}
                     alignItems={'center'}
                     justifyContent={'space-between'}
+                    gap={1}
                   >
-                    <Stack direction={'row'} gap={1} alignItems={'center'}>
+                    <Stack
+                      direction={'row'}
+                      gap={1}
+                      alignItems={'center'}
+                      flex={1}
+                      width={0}
+                    >
                       <Chip
                         sx={{
+                          flexShrink: 0,
                           width: '64px',
                           fontSize: '12px',
                           padding: '0!important',
@@ -222,6 +230,9 @@ const ConversationList: FC<IProps> = ({
                         size="small"
                       />
                       <Typography
+                        noWrap
+                        flex={1}
+                        width={0}
                         color={'text.secondary'}
                         fontSize={'12px'}
                         lineHeight={'16px'}
@@ -234,6 +245,7 @@ const ConversationList: FC<IProps> = ({
                       </Typography>
                     </Stack>
                     <Typography
+                      flexShrink={0}
                       color={'text.secondary'}
                       fontSize={'12px'}
                       lineHeight={'16px'}

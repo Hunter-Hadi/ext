@@ -25,10 +25,8 @@ import {
 } from '@/features/chatgpt/utils/clientChatConversation'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import {
-  ClientWritingMessageState,
-  ISidebarConversationType,
-} from '@/features/sidebar/store'
+import { ClientWritingMessageState } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import {
   getPageSummaryConversationId,
   getPageSummaryType,

@@ -1,11 +1,6 @@
-import { useMemo, useState } from 'react'
-import { useRecoilValue } from 'recoil'
 import Browser from 'webextension-polyfill'
 
 import { CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY } from '@/constants'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { useFocus } from '@/features/common/hooks/useFocus'
-import { AppDBStorageState } from '@/store'
 
 export interface ContextMenuSearchTextStoreI18nStore {
   [key: string]: string
@@ -68,29 +63,5 @@ export const clearContextMenuSearchTextStore = async () => {
     )
   } catch (e) {
     console.log(e)
-  }
-}
-
-export const useContextMenuSearchTextStore = () => {
-  const { userSettings } = useRecoilValue(AppDBStorageState)
-  const [
-    contextMenuSearchTextStore,
-    setContextMenuSearchTextStore,
-  ] = useState<ContextMenuSearchTextStore>({})
-  const contextMenuSearchTextWithCurrentLanguage = useMemo<ContextMenuSearchTextStoreI18nStore>(() => {
-    if (userSettings?.preferredLanguage) {
-      return contextMenuSearchTextStore[userSettings.preferredLanguage] || {}
-    }
-    return {}
-  }, [userSettings?.preferredLanguage, contextMenuSearchTextStore])
-  useFocus(() => {
-    getContextMenuSearchTextStore().then(setContextMenuSearchTextStore)
-  })
-  useEffectOnce(() => {
-    getContextMenuSearchTextStore().then(setContextMenuSearchTextStore)
-  })
-  return {
-    contextMenuSearchTextWithCurrentLanguage,
-    setContextMenuSearchTextStore,
   }
 }

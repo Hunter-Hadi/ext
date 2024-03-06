@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Küsi AI-lt midagi e-posti kohta...",
     "sidebar__input__summary__video_placeholder": "Küsi AI-lt midagi video kohta...",
     "sidebar__input__search__placeholder": "Küsi veebist...",
-    "sidebar__input__art__placeholder": "Küsi AI-lt..."
+    "sidebar__input__art__placeholder": "Küsi AI-lt...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet lööb ideaalse tasakaalu intelligentsuse ja kiiruse vahel. See mudel on loodud suuremahuliste AI-rakenduste jaoks, tagades kõrge vastupidavuse ning sobib suurepäraselt erinevateks rakendusteks nagu koodi genereerimine ja kvaliteedikontroll.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Täiusta juurdepääsuks Claude-3-sonnetile",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Vabasta Claude 3 Sonneti potentsiaal - Anthropicu dünaamiline jõujaam, millel on 200 000-tokeni võimekus. Ideaalne ülesannete jaoks, mis nõuavad täpsust ja kiirust, see mudel on suurepärane andmete töötlemisel, müügioptimeerimisel ja koodi genereerimisel. Tõsta oma AI võimekust ja saavuta edu Claude 3 Sonnetiga - telli kohe ja tunneta erinevust!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

@@ -12,7 +12,7 @@ import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 
 /**

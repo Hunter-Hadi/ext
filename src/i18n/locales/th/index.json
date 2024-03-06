@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "ถาม AI เกี่ยวกับอีเมล...",
     "sidebar__input__summary__video_placeholder": "ถาม AI เกี่ยวกับวิดีโอ...",
     "sidebar__input__search__placeholder": "ถามเว็บ...",
-    "sidebar__input__art__placeholder": "ถาม AI..."
+    "sidebar__input__art__placeholder": "ถาม AI...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet สร้างความสมดุลระหว่างความฉลาดและความเร็วอย่างลงตัว โมเดลนี้ถูกออกแบบมาเพื่อให้ทนทานสูงในการใช้งาน AI ขนาดใหญ่และมีประสิทธิภาพสูงในการประยุกต์ใช้ในงานต่างๆ เช่น การสร้างโค้ดและการควบคุมคุณภาพ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "อัปเกรดเพื่อเข้าถึง claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "ปลดล็อกศักยภาพของ Claude 3 Sonnet - พลังงานไดนามิกของ Anthropic ที่มีความสามารถในการประมวลผล 200,000 โทเค็น เหมาะสำหรับงานที่ต้องการความแม่นยำและความเร็ว โมเดลนี้มีประสิทธิภาพในการประมวลผลข้อมูล การปรับปรุงการขาย และการสร้างโค้ด เพิ่มศักยภาพ AI ของคุณและสร้างความสำเร็จด้วย Claude 3 Sonnet - สมัครสมาชิกตอนนี้และสัมผัสความแตกต่าง!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

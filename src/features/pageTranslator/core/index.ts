@@ -11,6 +11,7 @@ import TranslateService from '@/features/pageTranslator/core/TranslateService'
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import {
   findBlockParentElement,
+  findContentEditableParent,
   findParentElementWithTextNode,
   isBlockElement,
   isNotToTranslateText,
@@ -213,6 +214,10 @@ class PageTranslator {
       return
     }
 
+    if (findContentEditableParent(containerElement)) {
+      return
+    }
+
     const translateItem = new TranslateTextItem(textNodes, containerElement)
     this.translateItemsSet.add(translateItem)
     // console.log(`zztest this.translateItemsSet`, this.translateItemsSet)
@@ -263,13 +268,14 @@ class PageTranslator {
 
   startEventListener() {
     const doTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
+    const retryTranslateDebounce = debounce(this.doTranslate, 500).bind(this)
 
     const messageHandler = {
       MAXAI_PageTranslatorEvent_doTranslate: () => {
         doTranslateDebounce()
       },
       MAXAI_PageTranslatorEvent_retryTranslate: () => {
-        this.retryTranslate()
+        retryTranslateDebounce()
       },
     }
 

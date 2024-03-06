@@ -9,7 +9,7 @@ import {
 } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 /**
  * @since 2023-09-11
@@ -82,7 +82,8 @@ export class ActionAnalyzeChatFile extends Action {
             true,
           )
           // 异步通知LarkBot
-          sendLarkBotMessage(
+          clientSendMaxAINotification(
+            'SUMMARY',
             `[Summary] tokens has reached maximum limit.`,
             `${JSON.stringify(
               {
@@ -106,7 +107,8 @@ export class ActionAnalyzeChatFile extends Action {
             partOfTextLength: 80 * 1000,
           }).then((uploadData) => {
             // 异步通知LarkBot
-            sendLarkBotMessage(
+            clientSendMaxAINotification(
+              'SUMMARY',
               `[Summary] tokens has reached maximum limit.`,
               `${JSON.stringify(
                 {

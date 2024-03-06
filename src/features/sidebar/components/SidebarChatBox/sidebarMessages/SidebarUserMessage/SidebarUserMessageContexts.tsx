@@ -200,7 +200,7 @@ const SidebarUserMessageContexts: FC<{
                   variant={'body2'}
                   lineHeight={'20px'}
                 >
-                  {contexts?.[0]?.key}: {contexts?.[0]?.value}
+                  {contexts?.[0]?.value}
                 </Typography>
               )}
               <Stack flexShrink={0}>

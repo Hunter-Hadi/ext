@@ -1,7 +1,7 @@
 import { APP_USE_CHAT_GPT_API_HOST, isProduction } from '@/constants'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
-import { sendLarkBotMessage } from '@/utils/larkBot'
 import { getAccessToken } from '@/utils/request'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 // export const MaxUploadTxtFileSize = 1024 * 1024 * 32 // 32MB
 export const MAX_UPLOAD_TEXT_FILE_TOKENS = 400 * 1000 // 400k
@@ -62,7 +62,8 @@ export const stringConvertTxtUpload = async (
       .then((result) => {
         const docId = result?.data?.doc_id || ''
         if (!docId) {
-          sendLarkBotMessage(
+          clientSendMaxAINotification(
+            'MAXAI_API',
             '[API] [/gpt/analyze_file] error',
             JSON.stringify(
               {
@@ -80,7 +81,8 @@ export const stringConvertTxtUpload = async (
       })
       .catch((error) => {
         console.error('文件上传错误:', error)
-        sendLarkBotMessage(
+        clientSendMaxAINotification(
+          'MAXAI_API',
           '[API] [/gpt/analyze_file] error',
           JSON.stringify(
             {

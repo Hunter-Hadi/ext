@@ -129,16 +129,23 @@ class TranslateTextItem {
       const customElement = document.createElement(
         MAXAI_TRANSLATE_CUSTOM_ELEMENT,
       )
-      const inlineElement = document.createElement(
+      const innerElement = document.createElement(
         isInline
           ? MAXAI_TRANSLATE_INLINE_CUSTOM_ELEMENT
           : MAXAI_TRANSLATE_BLOCK_CUSTOM_ELEMENT,
       )
 
-      inlineElement.classList.add('notranslate')
-      customElement.appendChild(inlineElement)
+      innerElement.classList.add('notranslate')
+      customElement.appendChild(innerElement)
       this.translateContainerElement = customElement
-      this.translateInnerElement = inlineElement
+      this.translateInnerElement = innerElement
+
+      // const contentEditableParent = findContentEditableParent(this.rawElement)
+      // if (contentEditableParent) {
+      //   this.rawElement = contentEditableParent
+      //   insertAfter(customElement, contentEditableParent)
+      //   return
+      // }
 
       const textNode = this.textNodes[this.textNodes.length - 1]
       if (this.textNodes.length === 1) {

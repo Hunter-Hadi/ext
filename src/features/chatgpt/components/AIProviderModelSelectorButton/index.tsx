@@ -22,7 +22,7 @@ import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hoo
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getAppContextMenuRootElement } from '@/utils'
 
 const AIProviderModelSelectorButton: FC<{

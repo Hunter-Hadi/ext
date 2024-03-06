@@ -6,7 +6,7 @@ import ReferralConfig from '@/features/referral/config'
 import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 const useAutoFacebookReferral = () => {
   const { userInfo } = useUserInfo()
@@ -23,7 +23,8 @@ const useAutoFacebookReferral = () => {
           action.parameters?.VariableName === 'AutoTwitterReferralResult'
         ) {
           const isSuccess = action.parameters.WFFormValues?.Value === true
-          sendLarkBotMessage(
+          clientSendMaxAINotification(
+            'REFERRAL',
             `[Referral] One-click button [Facebook] ${
               isSuccess ? 'Success' : 'Fail'
             }`,

@@ -3,7 +3,7 @@ import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
   MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
 } from '@/background/src/chat/UseChatGPTChat/types'
-import { ISidebarConversationType } from '@/features/sidebar/store'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export type AIProviderModelSelectorOption = {
   tag?: string
@@ -27,6 +27,12 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     AIProvider: 'USE_CHAT_GPT_PLUS',
     tag: 'Vision',
   },
+  // {
+  //   mainPart: true,
+  //   label: 'claude-3-sonnet',
+  //   value: 'claude-3-sonnet',
+  //   AIProvider: 'MAXAI_CLAUDE',
+  // },
   {
     mainPart: true,
     label: 'claude-2.1-200k',

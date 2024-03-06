@@ -13,7 +13,7 @@ import {
   IUserRole,
 } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 export const getMaxAIChromeExtensionAccessToken = async (): Promise<string> => {
   const cache = await Browser.storage.local.get(
@@ -82,7 +82,19 @@ export const getMaxAIChromeExtensionUserId = async (): Promise<string> => {
   }
   return ''
 }
-
+/**
+ * 获取用户Email
+ */
+export const getMaxAIChromeExtensionEmail = async (): Promise<string> => {
+  const cache = await Browser.storage.local.get(
+    CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  )
+  if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+    return cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+      ?.userData?.email as string
+  }
+  return ''
+}
 export const fetchUserSubscriptionInfo = async (): Promise<
   IUserRole | undefined
 > => {
@@ -156,7 +168,8 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             }
           }
           if (role.name === 'pro' && result.data.has_reached_limit) {
-            sendLarkBotMessage(
+            backgroundSendMaxAINotification(
+              'PRICING',
               `[Pricing] Pro [subscription_info] has reached the limit`,
               `Pro token [${token}] call api has reached the limit.\n${JSON.stringify(
                 result?.data,
@@ -167,7 +180,8 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             )
           }
           if (role === 'pro' && dayjs().utc().diff(dayjs(role.exp_time)) > 0) {
-            sendLarkBotMessage(
+            backgroundSendMaxAINotification(
+              'MAXAI_API',
               '[API] error response roles',
               `Pro token [${token}]\n${JSON.stringify(result?.data)}`,
               {
@@ -176,7 +190,8 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             )
           }
           if (role.name === 'elite' && result.data.has_reached_limit) {
-            sendLarkBotMessage(
+            backgroundSendMaxAINotification(
+              'PRICING',
               `[Pricing] Elite [subscription_info] has reached the limit`,
               `Elite token [${token}] call api has reached the limit.\n${JSON.stringify(
                 result?.data,
@@ -190,7 +205,8 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             role === 'elite' &&
             dayjs().utc().diff(dayjs(role.exp_time)) > 0
           ) {
-            sendLarkBotMessage(
+            backgroundSendMaxAINotification(
+              'MAXAI_API',
               '[API] error response roles',
               `Elite token [${token}]\n${JSON.stringify(result?.data)}`,
               {

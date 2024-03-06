@@ -72,7 +72,7 @@ import { SearchWithAIMessageInit } from '@/features/searchWithAI/background'
 import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChannel/background'
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
 /**
  * background.js 入口
@@ -250,7 +250,8 @@ const initChromeExtensionUpdated = async () => {
             if (size > 0) {
               setTimeout(() => {
                 // 发送到larkbot
-                sendLarkBotMessage(
+                backgroundSendMaxAINotification(
+                  'MEMORY',
                   '[Memory] storage size',
                   JSON.stringify(
                     {

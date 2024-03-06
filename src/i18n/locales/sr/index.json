@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Pitajte veštačku inteligenciju bilo šta o e-pošti...",
     "sidebar__input__summary__video_placeholder": "Pitajte veštačku inteligenciju bilo šta o videu...",
     "sidebar__input__search__placeholder": "Pitajte web...",
-    "sidebar__input__art__placeholder": "Pitajte veštačku inteligenciju..."
+    "sidebar__input__art__placeholder": "Pitajte veštačku inteligenciju...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet postiže idealnu ravnotežu između inteligencije i brzine. Ovaj model je dizajniran za visoku izdržljivost u AI implementacijama velikog obima, i odlično se snalazi u raznim aplikacijama poput generisanja koda i kontrole kvaliteta.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Nadogradite da biste pristupili klod-3-sonetu",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Otkrijte potencijal Claude 3 Sonnet - dinamične moćne mašine Anthropic-a sa mogućnošću od 200.000 tokena. Savršen za zadatke koji zahtevaju preciznost i brzinu, ovaj model se ističe u obradi podataka, optimizaciji prodaje i generisanju koda. Unapredite svoje AI mogućnosti i postignite uspeh sa Claude 3 Sonnet - pretplatite se sada i osetite razliku!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

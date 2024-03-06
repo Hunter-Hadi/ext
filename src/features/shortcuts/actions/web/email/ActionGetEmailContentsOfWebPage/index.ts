@@ -92,7 +92,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
                       key: 'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
                       value: EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
                       label: 'Email context',
-                      isBuildIn: false,
+                      isBuildIn: true,
                       overwrite: true,
                     },
                     EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT: {
@@ -125,7 +125,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
                       key: 'EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT',
                       value: EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
                       label: 'Email context',
-                      isBuildIn: false,
+                      isBuildIn: true,
                       overwrite: true,
                     },
                     EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT: {

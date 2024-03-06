@@ -20,7 +20,7 @@ import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
-import { sendLarkBotMessage } from '@/utils/larkBot'
+import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 const useCountDown = (duration: number) => {
   const [timeLeft, setTimeLeft] = useState(duration)
@@ -198,9 +198,14 @@ const FeatureChatGPTStableModeCard: FC = () => {
             const newChecked = !isRunning
             if (newChecked) {
               await setStopTime()
-              sendLarkBotMessage('Stable Mode Enabled', `duration: ${value}`, {
-                uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d',
-              })
+              clientSendMaxAINotification(
+                'CLIENT',
+                'Stable Mode Enabled',
+                `duration: ${value}`,
+                {
+                  uuid: 'dd385931-45f4-4de1-8e48-8145561b0f9d',
+                },
+              )
             } else {
               await stop()
             }

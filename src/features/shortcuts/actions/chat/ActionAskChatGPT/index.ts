@@ -52,7 +52,7 @@ export class ActionAskChatGPT extends Action {
 
   @parametersParserDecorator()
   @templateParserDecorator()
-  @clearUserInput(false)
+  @clearUserInput(true)
   @withLoadingDecorators()
   async execute(
     params: ActionParameters,
@@ -121,6 +121,7 @@ export class ActionAskChatGPT extends Action {
       if (!contexts) {
         this.question.meta.contexts = generateUserMessageContexts(
           engine.shortcutsEngine?.getVariables() || {},
+          this.question.text,
         )
       }
       // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏

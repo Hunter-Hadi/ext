@@ -29,11 +29,7 @@ class ClaudeChatProvider implements ChatAdapterInterface {
     return this.claudeWebappChat.conversation
   }
   async createConversation(initConversationData: Partial<IChatConversation>) {
-    if (
-      initConversationData?.id &&
-      this.claudeWebappChat.conversation?.id &&
-      initConversationData.id !== this.claudeWebappChat.conversation.id
-    ) {
+    if (this.claudeWebappChat.conversation?.id) {
       console.log('新版Conversation 因为conversation id变了, 移除conversation')
       await this.claudeWebappChat.removeConversation()
     }

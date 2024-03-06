@@ -634,7 +634,10 @@
     "sidebar__input__summary__email_placeholder": "Kysy tekoälyltä mitä tahansa sähköpostista...",
     "sidebar__input__summary__video_placeholder": "Kysy tekoälyltä mitä tahansa videosta...",
     "sidebar__input__search__placeholder": "Kysy verkosta...",
-    "sidebar__input__art__placeholder": "Kysy tekoälyltä..."
+    "sidebar__input__art__placeholder": "Kysy tekoälyltä...",
+    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet is the perfect combination of intelligence and speed. This model is designed for high durability in large-scale AI deployments, and performs exceptionally well in various applications such as code generation and quality control.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Päivitä saadaksesi pääsyn Claude-3-sonnetiin",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Unleash the potential of Claude 3 Sonnet—Anthropic's dynamic powerhouse with a 200,000-token capability. Perfect for tasks demanding precision and speed, this model excels in data processing, sales optimization, and code generation. Elevate your AI capabilities and drive success with Claude 3 Sonnet—subscribe now and experience the difference!"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

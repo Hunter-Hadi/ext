@@ -60,8 +60,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isSetVariables, setIsSetVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
-  const { currentSidebarConversationType, currentSidebarConversationId } =
-    useSidebarSettings()
+  const {
+    currentSidebarConversationType,
+    currentSidebarConversationId,
+  } = useSidebarSettings()
   const textareaPlaceholder = useMemo(() => {
     if (currentSidebarConversationType === 'Summary') {
       const pageSummaryType = getPageSummaryType()
@@ -287,7 +289,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           <AutoHeightTextarea
             placeholder={textareaPlaceholder}
             minLine={3}
-            key={currentSidebarConversationType}
             sx={{
               minHeight: isSetVariables
                 ? 0

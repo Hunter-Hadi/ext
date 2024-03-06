@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "Tanyakan pada AI...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet mencapai keseimbangan ideal antara kecerdasan dan kecepatan. Model ini dirancang untuk daya tahan tinggi dalam implementasi AI skala besar, dan unggul dalam berbagai aplikasi seperti pembuatan kode dan kontrol kualitas.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Tingkatkan untuk mengakses claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Bebaskan potensi Claude 3 Sonnet—kekuatan dinamis Anthropic dengan kemampuan 200.000 token. Sempurna untuk tugas yang membutuhkan ketepatan dan kecepatan, model ini unggul dalam pemrosesan data, optimasi penjualan, dan pembuatan kode. Tingkatkan kemampuan AI Anda dan raih kesuksesan dengan Claude 3 Sonnet—berlangganan sekarang dan rasakan perbedaannya!"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude-3-Sonnet dari Anthropic menciptakan keseimbangan antara kecerdasan dan kecepatan, dengan kemampuan hingga 200.000 token. Cocok untuk tugas-tugas yang membutuhkan ketepatan dan kecepatan, seperti pemrosesan data, optimasi penjualan, pembuatan kode, dan lainnya."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

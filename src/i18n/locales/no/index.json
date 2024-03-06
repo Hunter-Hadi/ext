@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "Spør AI...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet slår den ideelle balansen mellom intelligens og hastighet. Denne modellen er utviklet for høy utholdenhet i store AI-implementeringer, og utmerker seg i ulike applikasjoner som kodegenerering og kvalitetskontroll.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Oppgrader for å få tilgang til claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Frigjør potensialet til Claude 3 Sonnet - Anthropics dynamiske kraftverk med en kapasitet på 200 000 token. Perfekt for oppgaver som krever presisjon og hastighet, utmerker denne modellen seg innen databehandling, salgsoptimalisering og kodegenerering. Øk dine AI-muligheter og oppnå suksess med Claude 3 Sonnet - abonner nå og opplev forskjellen!"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropics Claude-3-Sonnet oppnår en balanse mellom intelligens og hastighet, med en kapasitet på 200 000 token. Perfekt for oppgaver som krever både presisjon og hastighet, som databehandling, salgsoptimalisering, kodegenerering og mer."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

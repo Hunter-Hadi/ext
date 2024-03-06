@@ -59,5 +59,12 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3',
       roles: ['elite'],
     },
+    uploadFileConfig: {
+      maxFileSize: 20 * 1024 * 1024, // 20
+      accept: '.jpg,.jpeg,.png,.webp,.gif',
+      acceptTooltip: (t) =>
+        t('client:provider__chatgpt__upload__accept_tooltip'),
+      maxCount: 5,
+    },
   },
 ]

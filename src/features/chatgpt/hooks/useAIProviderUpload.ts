@@ -116,6 +116,7 @@ const useAIProviderUpload = () => {
           }
           break
         case 'USE_CHAT_GPT_PLUS':
+        case 'MAXAI_CLAUDE':
           {
             const newFiles = await Promise.all(
               newUploadFiles.map(async (chatUploadFile) => {

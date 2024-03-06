@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "Klauskite dirbtinio intelekto...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet pasiekia idealų balansą tarp intelekto ir greičio. Šis modelis yra sukurtas dideliam ištvermingumui masto AI diegimuose ir puikiai veikia įvairiose srityse, tokiose kaip kodo generavimas ir kokybės kontrolė.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Atlaisvinkite Claude 3 Sonnet potencialą - Anthropic dinaminį galingumą su 200 000 ženklų galimybėmis. Puikiai tinka užduotims, reikalaujantiems tikslumo ir greičio, šis modelis puikiai veikia duomenų apdorojime, pardavimų optimizavime ir kodo generavime. Pakelkite savo AI galimybes ir pasiekti sėkmę su Claude 3 Sonnet - užsiprenumeruokite dabar ir patirkite skirtumą!"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropic's Claude-3-Sonnet pasižymi intelekto ir greičio pusiausvyra, turintis 200 000 ženklų galimybes. Puikiai tinka užduotims, reikalaujantiems tiek tikslumo, tiek greičio, pvz., duomenų apdorojimui, pardavimų optimizavimui, kodo generavimui ir kt."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

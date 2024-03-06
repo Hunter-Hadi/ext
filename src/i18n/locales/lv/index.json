@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "Jautājiet AI...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet ir ideāls līdzsvars starp intelektu un ātrumu. Šis modelis ir izstrādāts, lai nodrošinātu augstu noturību lielapjoma AI implementācijās un izceļas dažādās lietojumprogrammās, piemēram, koda ģenerēšanā un kvalitātes kontrole.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Jauninājiet, lai piekļūtu kloda-3-sonetam",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Atbrīvojiet Claude 3 Sonnet potenciālu - Anthropic dinamiskais spēks ar 200 000 simbolu iespēju. Ideāli piemērots uzdevumiem, kas prasa precizitāti un ātrumu, šis modelis izceļas datu apstrādē, pārdošanas optimizācijā un koda ģenerēšanā. Paaugstiniet savas AI iespējas un panāciet veiksmi ar Claude 3 Sonnet - abonējieties tagad un izbaudiet atšķirību!"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropic's Claude-3-Sonnet panāk līdzsvaru starp intelektu un ātrumu, ar 200 000 simbolu spēju. Ideāli piemērots uzdevumiem, kas prasa gan precizitāti, gan ātrumu, piemēram, datu apstrādei, pārdošanas optimizācijai, koda ģenerēšanai un citiem."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

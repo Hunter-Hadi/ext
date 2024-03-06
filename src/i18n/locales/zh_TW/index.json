@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "請問 AI...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet在智能和速度之間取得了理想的平衡。該模型經過優化，適用於大規模AI部署，並在代碼生成和質量控制等各種應用中表現出色。",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "升級以存取claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "釋放Claude 3 Sonnet的潛力-這是Anthropic動力強大的模型，具有20萬令牌的能力。非常適合需要精確度和速度的任務，該模型在數據處理、銷售優化和代碼生成方面表現出色。提升您的AI能力，通過訂閱Claude 3 Sonnet來實現成功！"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropic的Claude-3-Sonnet在智能和速度之間取得平衡，具有20萬個令牌的能力。非常適合需要精確性和速度的任務，如數據處理、銷售優化、代碼生成等。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

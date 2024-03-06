@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "Pitaj AI...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet udara idealnu ravnotežu između inteligencije i brzine. Ovaj model je dizajniran za visoku izdržljivost u AI implementacijama velikog obima i odličan je u raznim aplikacijama poput generisanja koda i kontrole kvaliteta.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Nadogradite za pristup claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Otkrijte potencijal Claude 3 Sonnet - dinamične snage Anthropic-a s mogućnošću od 200.000 tokena. Savršen za zadatke koji zahtevaju preciznost i brzinu, ovaj model se ističe u obradi podataka, optimizaciji prodaje i generisanju koda. Unapredite svoje AI mogućnosti i postignite uspeh sa Claude 3 Sonnet - pretplatite se sada i doživite razliku!"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropicov Claude-3-Sonnet postiže ravnotežu između inteligencije i brzine, s mogućnošću od 200.000 tokena. Savršen za zadatke koji zahtijevaju preciznost i brzinu, poput obrade podataka, optimizacije prodaje, generiranja koda i još mnogo toga."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

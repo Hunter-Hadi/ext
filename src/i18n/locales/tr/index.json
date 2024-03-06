@@ -637,7 +637,7 @@
     "sidebar__input__art__placeholder": "AI'ya sor...",
     "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet, zeka ve hız arasında ideal bir denge sağlar. Bu model, büyük ölçekli yapay zeka uygulamalarında yüksek dayanıklılık için tasarlanmış olup, kod üretimi ve kalite kontrol gibi çeşitli uygulamalarda mükemmel performans gösterir.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Claude-3-Sonnet'e erişmek için yükseltin",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude 3 Sonnet'in potansiyelini ortaya çıkarın - Anthropic'in 200.000 token kapasitesine sahip dinamik gücü. Hassasiyet ve hız gerektiren görevler için mükemmel olan bu model, veri işleme, satış optimizasyonu ve kod üretiminde mükemmel performans gösterir. AI yeteneklerinizi yükseltin ve başarıya ulaşın - Claude 3 Sonnet'e şimdi abone olun ve farkı yaşayın!"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropic'ın Claude-3-Sonnet'i, zeka ve hız arasında bir denge sağlar ve 200.000 token kapasitesine sahiptir. Veri işleme, satış optimizasyonu, kod oluşturma ve daha fazlası gibi hem hassasiyet hem de hız gerektiren görevler için mükemmeldir."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

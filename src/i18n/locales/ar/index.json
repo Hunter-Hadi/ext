@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "اسأل الذكاء الاصطناعي عن أي شيء في الفيديو...",
     "sidebar__input__search__placeholder": "اسأل الويب...",
     "sidebar__input__art__placeholder": "اسأل الذكاء الاصطناعي...",
-    "provider__claude__model__claude_3_200k__description": "يضرب كلود 3 سونيت التوازن المثالي بين الذكاء والسرعة. تم تصميم هذا النموذج للتحمل العالي في نشر الذكاء الاصطناعي على نطاق واسع، ويتفوق في تطبيقات مختلفة مثل إنشاء الشفرة ومراقبة الجودة.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "ترقية للوصول إلى كلود-3-سونيت",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "يحقق Claude-3-Sonnet من Anthropic توازنًا بين الذكاء والسرعة، مع قدرة على 200,000 رمز. مثالي للمهام التي تتطلب الدقة والسرعة معًا، مثل معالجة البيانات وتحسين المبيعات وإنشاء الشفرة وغيرها."
+    "provider__claude__model__claude_3_sonnet__description": "يجمع Claude-3-Sonnet بين الذكاء والسرعة. مثالي للمهام التي تتطلب الدقة والسرعة معًا، مثل معالجة البيانات وتحسين المبيعات وإنشاء الشفرة وغيرها.",
+    "provider__claude__model__claude_3_opus__description": "أذكى نموذج من Anthropic، يتمتع بأداء رائع في المهام المعقدة للغاية. يمكنه التنقل في الاستفسارات غير المحدودة والسيناريوهات غير المعروفة بطلاقة مذهلة وفهم شبيه بالإنسان، مما يظهر لنا الحدود الخارجية لما يمكن تحقيقه باستخدام الذكاء الاصطناعي الإنتاجي.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "الترقية للوصول إلى claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "يجمع Claude-3-Sonnet من Anthropic بين الذكاء والسرعة، مع إمكانية استخدام 200 ألف رمز. مثالي للمهام التي تتطلب الدقة والسرعة معًا، مثل معالجة البيانات وتحسين المبيعات وإنشاء الشفرة وغيرها.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "الترقية للوصول إلى claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "أذكى نموذج من Anthropic، مع إمكانية استخدام 200 ألف رمز. احصل على أفضل أداء في السوق للمهام المعقدة للغاية والاستفسارات غير المحدودة والسيناريوهات غير المعروفة بطلاقة مذهلة وفهم شبيه بالإنسان."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

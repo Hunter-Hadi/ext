@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "ถาม AI เกี่ยวกับวิดีโอ...",
     "sidebar__input__search__placeholder": "ถามเว็บ...",
     "sidebar__input__art__placeholder": "ถาม AI...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet สร้างความสมดุลระหว่างความฉลาดและความเร็วอย่างลงตัว โมเดลนี้ถูกออกแบบมาเพื่อให้ทนทานสูงในการใช้งาน AI ขนาดใหญ่และมีประสิทธิภาพสูงในการประยุกต์ใช้ในงานต่างๆ เช่น การสร้างโค้ดและการควบคุมคุณภาพ",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "อัปเกรดเพื่อเข้าถึง claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude-3-Sonnet ของ Anthropic เป็นการรักษาความสมดุลระหว่างความฉลาดและความเร็ว ด้วยความสามารถในการประมวลผล 200,000 โทเค็น เหมาะสำหรับงานที่ต้องการความแม่นยำและความเร็วพร้อมกัน เช่น การประมวลผลข้อมูล การปรับปรุงการขาย การสร้างรหัส และอื่น ๆ"
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet สร้างความสมดุลระหว่างความฉลาดและความเร็ว ลงตัวสำหรับงานที่ต้องการความแม่นยำและความเร็ว เช่น การประมวลผลข้อมูล การปรับปรุงการขาย การสร้างโค้ด และอื่น ๆ",
+    "provider__claude__model__claude_3_opus__description": "โมเดลที่ฉลาดที่สุดของ Anthropic ด้วยประสิทธิภาพที่ดีที่สุดในตลาดสำหรับงานที่ซับซ้อนมาก สามารถนำทางได้ในกรณีที่ไม่มีข้อจำกัดและสถานการณ์ที่ไม่เคยเห็นมาก่อนด้วยความคล่องตัวและความเข้าใจคล้ายมนุษย์ แสดงให้เราเห็นขอบเขตภายนอกของสิ่งที่เป็นไปได้ด้วย AI ที่สร้าง",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "อัปเกรดเพื่อเข้าถึง claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Claude-3-Sonnet ของ Anthropic สร้างความสมดุลระหว่างความฉลาดและความเร็ว พร้อมกับความสามารถในการใช้โทเค็น 200k ตัว เหมาะสำหรับงานที่ต้องการความแม่นยำและความเร็ว เช่น การประมวลผลข้อมูล การปรับปรุงการขาย การสร้างโค้ด และอื่น ๆ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "อัปเกรดเพื่อเข้าถึง claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "โมเดลที่ฉลาดที่สุดของ Anthropic พร้อมกับความสามารถในการใช้โทเค็น 200k ตัว สัมผัสประสบการณ์ที่ดีที่สุดในตลาดสำหรับงานที่ซับซ้อนมาก การใช้โปรมปราณสูง และสถานการณ์ที่ไม่เคยเห็นมาก่อนด้วยความคล่องตัวและความเข้าใจคล้ายมนุษย์"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

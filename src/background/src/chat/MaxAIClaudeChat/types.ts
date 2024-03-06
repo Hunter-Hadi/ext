@@ -54,9 +54,30 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     tags: [],
     poweredBy: 'Anthropic',
     description: (t) =>
-      t(`client:provider__claude__model__claude_3_200k__description`),
+      t(`client:provider__claude__model__claude_3_sonnet__description`),
     permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3',
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
+      roles: ['elite'],
+    },
+    uploadFileConfig: {
+      maxFileSize: 20 * 1024 * 1024, // 20
+      accept: '.jpg,.jpeg,.png,.webp,.gif',
+      acceptTooltip: (t) =>
+        t('client:provider__chatgpt__upload__accept_tooltip'),
+      maxCount: 5,
+    },
+  },
+  {
+    title: 'claude-3-opus',
+    titleTag: '',
+    value: 'claude-3-opus',
+    maxTokens: 200000,
+    tags: [],
+    poweredBy: 'Anthropic',
+    description: (t) =>
+      t(`client:provider__claude__model__claude_3_opus__description`),
+    permission: {
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
       roles: ['elite'],
     },
     uploadFileConfig: {

@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "Vprašaj AI karkoli o videu...",
     "sidebar__input__search__placeholder": "Vprašajte splet...",
     "sidebar__input__art__placeholder": "Vprašaj AI...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet doseže idealno ravnovesje med inteligenco in hitrostjo. Ta model je zasnovan za visoko vzdržljivost v velikih AI implementacijah in se odlično obnese pri različnih aplikacijah, kot so generiranje kode in nadzor kakovosti.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Nadgradite za dostop do claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude-3-Sonnet Anthropic doseže ravnotežje med inteligenco in hitrostjo, s sposobnostjo 200.000 žetonov. Popoln za naloge, ki zahtevajo tako natančnost kot hitrost, kot so obdelava podatkov, optimizacija prodaje, generiranje kode in še več."
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet doseže ravnotežje med inteligenco in hitrostjo. Popoln za naloge, ki zahtevajo tako natančnost kot hitrost, na primer obdelava podatkov, optimizacija prodaje, generiranje kode in še več.",
+    "provider__claude__model__claude_3_opus__description": "Najinteligentnejši model podjetja Anthropic z najboljšo zmogljivostjo na trgu pri izjemno kompleksnih nalogah. Zna se spopasti z odprtimi vprašanji in nepredvidenimi scenariji s presenetljivo tekočnostjo in razumevanjem, ki je podobno človeškemu, kar nam pokaže meje tega, kar je mogoče doseči z generativno umetno inteligenco.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Nadgradite za dostop do claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropicov Claude-3-Sonnet doseže ravnotežje med inteligenco in hitrostjo ter ima zmogljivost 200 tisoč žetonov. Popoln za naloge, ki zahtevajo tako natančnost kot hitrost, na primer obdelava podatkov, optimizacija prodaje, generiranje kode in še več.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Nadgradite za dostop do claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Najinteligentnejši model podjetja Anthropic z zmogljivostjo 200 tisoč žetonov. Doživite najboljšo zmogljivost na trgu pri izjemno kompleksnih nalogah, odprtih vprašanjih in nepredvidenih scenarijih s presenetljivo tekočnostjo in razumevanjem, ki je podobno človeškemu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

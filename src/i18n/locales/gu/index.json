@@ -603,11 +603,8 @@
     "sidebar__input__summary__video_placeholder": "વિડિઓ વિશે AIથી કોઈપણ પ્રશ્ન પૂછો...",
     "sidebar__input__art__placeholder": "AIને પુછો...",
     "provider__bard_web_app__model__gemini__description": "Google દ્વારા સૌથી અગ્રણીય મોડેલ.",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet બુદ્ધિમતા અને ઝડપથીની સાથે સરળતાને સંજોગીત કરે છે. આ મોડેલ મોટા પૈમાને AI ઉપયોગમાં સામર્થ્યવાળી છે અને કોડ જનરેશન અને ગુણવત્તા નિયંત્રણ જેવી વિવિધ એપ્લિકેશન્સમાં ઉત્કૃષ્ટ છે.",
     "pdf_ai_viewer__once_default_button__short_title": "મૂળ જોવાનું",
     "pdf_ai_viewer__once_default_button__title": "મૂળ જોવાથી પ્રથમ PDF ખોલો",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "ક્લોડ-3-સોનેટ એક્સેસ માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropicનો Claude-3-Sonnet બુદ્ધિમાની અને ઝડપથીની વચ્ચે સ્થિરતાનો સંજોગ સ્થાપિત કરે છે, જેમાં 200,000 ટોકનની સામર્થ્ય છે. ડેટા પ્રોસેસિંગ, વેચાણ અનેકરણ, કોડ ઉત્પાદન વગેરે જેવી કાર્યો માટે પરફેક્ટ.",
     "immersive_chat__delete_summary__title": "સંગ્રહને કાઢી નાખવું?",
     "immersive_chat__delete_search__title": "શોધને કાઢી નાખવું?",
     "immersive_chat__delete_art__title": "કલાને કાઢી નાખવું?",
@@ -637,7 +634,13 @@
     "sidebar__promotion_dialog__cta_button": "હવે અપગ્રેડ કરો - ઓફર બહુ જલદી સમાપ્ત થાય!",
     "translation_advanced__title": "અનુવાદ સેટિંગ્સ",
     "translation_advanced__source_lang_select__label": "સોર્સ ભાષા",
-    "translation_advanced__target_lang_select__label": "લક્ષ્ય ભાષા"
+    "translation_advanced__target_lang_select__label": "લક્ષ્ય ભાષા",
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet બુદ્ધિ અને ઝડપથીની સામેવાર છે. ડેટા પ્રક્રિયા, વેચાણ અને કોડ જનરેશન જેવી કાર્યો માટે પરફેક્ટ.",
+    "provider__claude__model__claude_3_opus__description": "Anthropicનું સૌથી બુદ્ધિમાન મોડેલ, ખૂબ સંકલ્પનાઓ અને માનવસમ્જસ્યતાની સાથે ખૂબ સારી પ્રદર્શનશીલતા પર આધારિત છે. જેથી જેને આપણે સામાન્ય એવા કાર્યોમાં કરી શકીએ તેની બહારની મર્યાદાઓ દેખાવે છે.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "પ્રવૃત્તિ કરો ક્લોડ-3-સોનેટ એક્સેસ માટે",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropicનું Claude-3-Sonnet બુદ્ધિ અને ઝડપથીની સામેવાર છે, 200k-token ક્ષમતાથી. ડેટા પ્રક્રિયા, વેચાણ અને કોડ જનરેશન જેવી કાર્યો માટે પરફેક્ટ.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "પ્રવૃત્તિ કરો ક્લોડ-3-ઓપસ એક્સેસ માટે",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropicનું સૌથી બુદ્ધિમાન મોડેલ, 200k-token ક્ષમતાથી. ખૂબ સંકલ્પનાઓ, સામાન્ય એવા કાર્યો, અને માનવસમ્જસ્યતાની સાથે આશ્ચર્યજનક ફ્લુએન્સી અને સમજણ અનુભવો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

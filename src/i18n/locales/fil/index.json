@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "Tanongin ang AI tungkol sa video...",
     "sidebar__input__search__placeholder": "Tanongin ang web...",
     "sidebar__input__art__placeholder": "Tanongin ang AI...",
-    "provider__claude__model__claude_3_200k__description": "Ang Claude 3 Sonnet ay nagtataglay ng tamang balanse sa pagitan ng talino at bilis. Ang modelo na ito ay dinisenyo para sa matibay na paggamit sa malalaking deployment ng AI, at mahusay sa iba't ibang aplikasyon tulad ng paglikha ng code at pagsusuri ng kalidad.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Mag-upgrade para ma-access ang claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Ang Claude-3-Sonnet ng Anthropic ay nagtataglay ng isang balanse sa pagitan ng talino at bilis, na may kakayahang magproseso ng 200,000-token. Perpekto para sa mga gawain na nangangailangan ng kahusayan at bilis, tulad ng pagproseso ng data, pagsasaayos ng mga benta, paglikha ng code, at iba pa."
+    "provider__claude__model__claude_3_sonnet__description": "Ang Claude-3-Sonnet ay nagtataglay ng balanse sa pagitan ng talino at bilis. Perpekto para sa mga gawain na nangangailangan ng kahusayan at bilis, tulad ng pagproseso ng data, pagsasaayos ng mga benta, paglikha ng code, at iba pa.",
+    "provider__claude__model__claude_3_opus__description": "Ang pinakamatalinong modelo ng Anthropic, na may pinakamahusay na performance sa mga napakakomplikadong gawain. Kayang mag-navigate sa mga open-ended prompts at sight-unseen scenarios na may kamangha-manghang kasanayan at pang-unawa na katulad ng isang tao, ipinapakita sa atin ang mga hangganan ng posibleng gawin ng generative AI.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Mag-upgrade upang ma-access ang claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Ang Claude-3-Sonnet ng Anthropic ay nagtataglay ng balanse sa pagitan ng talino at bilis, na may kakayahang 200k-token. Perpekto para sa mga gawain na nangangailangan ng kahusayan at bilis, tulad ng pagproseso ng data, pagsasaayos ng mga benta, paglikha ng code, at iba pa.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Mag-upgrade upang ma-access ang claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Ang pinakamatalinong modelo ng Anthropic, na may kakayahang 200k-token. Maranasan ang pinakamahusay na performance sa mga napakakomplikadong gawain, open-ended prompts, at sight-unseen scenarios na may kamangha-manghang kasanayan at pang-unawa na katulad ng isang tao."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

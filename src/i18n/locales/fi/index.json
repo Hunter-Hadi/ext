@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "Kysy tekoälyltä mitä tahansa videosta...",
     "sidebar__input__search__placeholder": "Kysy verkosta...",
     "sidebar__input__art__placeholder": "Kysy tekoälyltä...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet is the perfect combination of intelligence and speed. This model is designed for high durability in large-scale AI deployments, and performs exceptionally well in various applications such as code generation and quality control.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Päivitä saadaksesi pääsyn Claude-3-sonnetiin",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropicin Claude-3-Sonnet tasapainottaa älykkyyden ja nopeuden, jossa on 200 000 merkin kyky. Täydellinen tehtäviin, jotka vaativat sekä tarkkuutta että nopeutta, kuten datan käsittely, myynnin optimointi, koodin generointi ja paljon muuta."
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet tasapainoilee älykkyyden ja nopeuden välillä. Täydellinen tehtäviin, jotka vaativat sekä tarkkuutta että nopeutta, kuten datan käsittelyä, myynnin optimointia, koodin generointia ja paljon muuta.",
+    "provider__claude__model__claude_3_opus__description": "Anthropicin älykkäin malli, jolla on markkinoiden parhaat suorituskykyominaisuudet erittäin monimutkaisissa tehtävissä. Se pystyy navigoimaan avoimiin kysymyksiin ja näkemättömiin skenaarioihin poikkeuksellisen sujuvasti ja ihmismäisellä ymmärryksellä, näyttäen meille generatiivisen tekoälyn mahdollisuudet.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Päivitä pääsy claude-3-sonnetiin",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropicin Claude-3-Sonnet tasapainoilee älykkyyden ja nopeuden välillä, ja sillä on 200 000 sanan kapasiteetti. Täydellinen tehtäviin, jotka vaativat sekä tarkkuutta että nopeutta, kuten datan käsittelyä, myynnin optimointia, koodin generointia ja paljon muuta.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Päivitä pääsy claude-3-opukseen",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropicin älykkäin malli, jolla on 200 000 sanan kapasiteetti. Koe markkinoiden parhaat suorituskykyominaisuudet erittäin monimutkaisissa tehtävissä, avoimissa kysymyksissä ja näkemättömissä skenaarioissa poikkeuksellisen sujuvasti ja ihmismäisellä ymmärryksellä."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

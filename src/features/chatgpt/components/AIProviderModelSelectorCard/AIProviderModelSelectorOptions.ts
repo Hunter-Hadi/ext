@@ -29,6 +29,12 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
   },
   {
     mainPart: true,
+    label: 'claude-3-opus',
+    value: 'claude-3-opus',
+    AIProvider: 'MAXAI_CLAUDE',
+  },
+  {
+    mainPart: true,
     label: 'claude-3-sonnet',
     value: 'claude-3-sonnet',
     AIProvider: 'MAXAI_CLAUDE',

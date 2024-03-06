@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "Klauskite dirbtinio intelekto apie vaizdo įrašą...",
     "sidebar__input__search__placeholder": "Klauskite interneto...",
     "sidebar__input__art__placeholder": "Klauskite dirbtinio intelekto...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet pasiekia idealų balansą tarp intelekto ir greičio. Šis modelis yra sukurtas dideliam ištvermingumui masto AI diegimuose ir puikiai veikia įvairiose srityse, tokiose kaip kodo generavimas ir kokybės kontrolė.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Anthropic's Claude-3-Sonnet pasižymi intelekto ir greičio pusiausvyra, turintis 200 000 ženklų galimybes. Puikiai tinka užduotims, reikalaujantiems tiek tikslumo, tiek greičio, pvz., duomenų apdorojimui, pardavimų optimizavimui, kodo generavimui ir kt."
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet pasiekia pusiausvyrą tarp intelekto ir greičio. Puikiai tinka užduotims, reikalaujančioms tiek precizijos, tiek greičio, pvz., duomenų apdorojimui, pardavimų optimizavimui, kodo generavimui ir kt.",
+    "provider__claude__model__claude_3_opus__description": "Anthropic išmanžiausias modelis su geriausiomis rinkoje savybėmis sudėtingoms užduotims. Jis gali naviguoti per atviras užduotis ir nematytas scenarijus su pastebimu sklandumu ir žmogišku supratimu, demonstruodamas mums ribas, kas įmanoma su generatyvine dirbtine intelekta.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic Claude-3-Sonnet pasiekia pusiausvyrą tarp intelekto ir greičio, turintis 200 tūkst. ženklų talpą. Puikiai tinka užduotims, reikalaujančioms tiek precizijos, tiek greičio, pvz., duomenų apdorojimui, pardavimų optimizavimui, kodo generavimui ir kt.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic išmanžiausias modelis su 200 tūkst. ženklų talpą. Patirkite geriausią rinkoje savybes sudėtingoms užduotims, atviroms užduotims ir nematytams scenarijams su pastebimu sklandumu ir žmogišku supratimu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

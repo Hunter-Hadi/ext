@@ -635,9 +635,12 @@
     "sidebar__input__summary__video_placeholder": "አይ ጥያቄ ይጠይቁ ስለ ቪዲዮ...",
     "sidebar__input__search__placeholder": "የድረ-ገጽ ጥያቄ ይጠይቁ...",
     "sidebar__input__art__placeholder": "አይ ጥያቄ ይጠይቁ...",
-    "provider__claude__model__claude_3_200k__description": "ክላድ 3 ሶኒት የሚጠቀም እና የሚፈጥር መሰረት ነው። ይህ ሞዴል በበጎ ማስታወቂያ የሚሰራ ለበዛበት AI ስርጭት በተለያዩ አጠቃላይ መስመር ውስጥ ለማስተላለፍ እና ለማስታወቂያ የሚችል ነው።",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "የ claude-3-sonnet ይሁኑ፣ የተጠቀሱትን ይጠቀሙ",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "አንተፕሪንዲክ የክላድ-3-ሶኒት የማህበራዊነትንና መጠቀምን የ200,000-ቶክን እንዲሁም የታሪክን እና የታሪክን ስልክ ለመስራት የሚያስችል ነው። የሚሠሩት ስልክዎን የሚያገኙ ስልክዎች እና በተጨማሪ የሚሰራ ማሳያ የሆነውን ስልክ ለማስተላለፍ፣ ስልክዎን ለማስተላለፍ፣ ሮም የሚለውን ስልክ ለመጠቀም፣ ኮድ የሚለውን ስልክ ለመጠቀም፣ እና በተጨማሪ የሚሰራ ማሳያ የሆነውን ስልክ ለማስተላለፍ ይጠቀምልሃል።"
+    "provider__claude__model__claude_3_sonnet__description": "ክላዩድ-3-ሶኒት የሚጠቀምበት መሰረትና ስፍራ መሆን እንዲሁም በቀላሉ የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል፣ ስለሆነም የሚጠቀምበት ማሳወቂያዎችን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል።",
+    "provider__claude__model__claude_3_opus__description": "አንቴሪክ በተለያዩ ስልኮች ላይ የሚጠቀምበት መሰረት እና የሚጠቀምበት ስፍራ የሚጠቀምበት ማሳወቂያ ነው። ይህንን ስልኮችን በጣም የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል፣ ስለሆነም የሚጠቀምበት ስፍራዎችን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል።",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "ይዘትን ለ claude-3-sonnet ይጠቀሙ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "አንቴሪክ የሚጠቀምበት መሰረት እና ስፍራ የሚጠቀምበት ማሳወቂያ ነው፣ ከ200k-ቶን በላይ የሚጠቀምበት መሰረትን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል፣ ስለሆነም የሚጠቀምበት ማሳወቂያዎችን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል።",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "ይዘትን ለ claude-3-opus ይጠቀሙ",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "አንቴሪክ በተለያዩ ስልኮች ላይ የሚጠቀምበት መሰረት እና የሚጠቀምበት ስፍራ የሚጠቀምበት ማሳወቂያ ነው። ይህንን ስልኮችን በጣም የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል፣ ስለሆነም የሚጠቀምበት ስፍራዎችን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

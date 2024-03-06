@@ -64,6 +64,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     currentSidebarConversationType,
     currentSidebarConversationId,
   } = useSidebarSettings()
+
   const textareaPlaceholder = useMemo(() => {
     if (currentSidebarConversationType === 'Summary') {
       const pageSummaryType = getPageSummaryType()

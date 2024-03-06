@@ -28,7 +28,7 @@ import { isArticlePage as checkIsArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
 const aboveActionsCount = 3
-const underActionsCount = 3
+const underActionsCount = 4
 // 安全高度 = 按钮高度 + 16px
 const safeTopY = aboveActionsCount * (32 + 6) + 16
 const safeBottomYOffset = underActionsCount * (32 + 6) + 16
@@ -61,7 +61,7 @@ const FloatingMenuButton: FC = () => {
 
   useEffect(() => {
     if (height) {
-      if (dragAxisY < safeTopY) {
+      if (dragAxisY < safeTopY || height <= safeTopY + safeBottomYOffset) {
         // 最小顶部安全高度
         setDragAxisY(safeTopY)
       } else if (dragAxisY > height - safeBottomYOffset) {

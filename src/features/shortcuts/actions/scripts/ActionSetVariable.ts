@@ -26,7 +26,6 @@ export class ActionSetVariable extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    debugger
     try {
       const Variable =
         this.parameters.VariableName || this.parameters.Variable || ''

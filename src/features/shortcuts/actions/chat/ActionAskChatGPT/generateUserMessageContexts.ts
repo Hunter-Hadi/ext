@@ -8,7 +8,6 @@ const generateUserMessageContexts = (
   shortCutsParameters: Record<string, IShortCutsParameter>,
   promptText: string,
 ): IUserChatMessageExtraMetaContextType[] => {
-  debugger
   const contextMap: Map<
     string,
     IUserChatMessageExtraMetaContextType

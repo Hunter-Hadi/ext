@@ -1,1 +1,2 @@
 /pdf/**/*.js
+!/src/lib/react-devtools.js

@@ -51,7 +51,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'claude-3-sonnet',
     maxTokens: 200000,
-    tags: [],
+    tags: ['Vision'],
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_sonnet__description`),
@@ -72,7 +72,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'claude-3-opus',
     maxTokens: 200000,
-    tags: [],
+    tags: ['Beta', 'Vision'],
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_opus__description`),

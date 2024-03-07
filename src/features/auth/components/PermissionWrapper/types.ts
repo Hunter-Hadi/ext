@@ -56,7 +56,8 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SIDEBAR_ART_AND_IMAGES',
 ] as const
 
-export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
+export type PermissionWrapperCardSceneType =
+  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
 
 export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
@@ -415,7 +416,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // MAX AI - paid model - calude - 3 opus
   MAXAI_PAID_MODEL_CLAUDE_V3_OPUS: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-3-sonnet.png',
+      '/images/upgrade/claude-3-opus.png',
     )}`,
     title: (t) =>
       t(

@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic క్లోడ్-3-సోనెట్ బుద్ధిమత్తత మరియు వేగం మధ్య సంతోషంగా సంఘటించినట్లు, 200k-టోకెన్ సామర్థ్యం ఉంచేందుకు. డేటా ప్రాసెసింగ్, అమ్మకాల అప్టిమైజేషన్, కోడ్ జనరేషన్ మరియు మరీ ఎక్కువసేపు అవసరం ఉంచే పనుల కోసం పూర్తిగా సరిపడిన మోడల్.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "క్లోడ్-3-ఓపస్ కి ప్రాధాన్యత ఇవ్వండి",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic అత్యుత్తమ మోడల్, 200k-టోకెన్ సామర్థ్యం ఉంచేందుకు. అత్యుత్తమ కార్యకలాపాలపై మార్కెట్ పనిచేసే పనిమోడల్, ఓపెన్-ఎండెడ్ ప్రాంప్ట్లను మరియు చూడలేని స్థాయిలో అనుభవించడంలో అద్భుత స్వాధీనత మరియు మానవిక అర్థంతనం ఉంచే సామర్థ్యం.",
-    "sidebar__conversation__message__context_cleared": "కంటెక్స్టు తొలగించబడింది"
+    "sidebar__conversation__message__context_cleared": "కంటెక్స్టు తొలగించబడింది",
+    "pdf_ai_viewer__share_button__title": "మూల PDF URL నకలు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

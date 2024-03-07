@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "AnthropicのClaude-3-Sonnetは知能と速度のバランスを取り、200kトークンの能力を持っています。データ処理、販売最適化、コード生成など、精度と速度の両方を要求するタスクに最適です。",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "クロード-3-オーパスへのアップグレード",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropicの最も知能が高いモデルであり、200kトークンの能力を持っています。非常に複雑なタスク、オープンエンドのプロンプト、未見のシナリオにおいて市場最高のパフォーマンスと驚くほど流暢で人間らしい理解力を体験してください。",
-    "sidebar__conversation__message__context_cleared": "コンテキストがクリアされました"
+    "sidebar__conversation__message__context_cleared": "コンテキストがクリアされました",
+    "pdf_ai_viewer__share_button__title": "オリジナルのPDF URLをコピー"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic'in Claude-3-Sonnet modeli, zeka ve hız arasında bir denge sağlar ve 200k-token kapasitesine sahiptir. Veri işleme, satış optimizasyonu, kod oluşturma ve daha fazlası gibi hem hassasiyet hem de hız gerektiren görevler için mükemmeldir.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Claude-3-opus'a erişmek için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic'in en akıllı modelidir ve 200k-token kapasitesine sahiptir. Son derece karmaşık görevler, açık uçlu ipuçları ve görülmemiş senaryolarla olağanüstü akıcılık ve insan gibi anlama yeteneğiyle en iyi performansı deneyimleyin.",
-    "sidebar__conversation__message__context_cleared": "Bağlam temizlendi"
+    "sidebar__conversation__message__context_cleared": "Bağlam temizlendi",
+    "pdf_ai_viewer__share_button__title": "Orijinal PDF URL'sini kopyala"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

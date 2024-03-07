@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropicin Claude-3-Sonnet tasapainoilee älykkyyden ja nopeuden välillä, ja sillä on 200 000 sanan kapasiteetti. Täydellinen tehtäviin, jotka vaativat sekä tarkkuutta että nopeutta, kuten datan käsittelyä, myynnin optimointia, koodin generointia ja paljon muuta.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Päivitä pääsy claude-3-opukseen",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropicin älykkäin malli, jolla on 200 000 sanan kapasiteetti. Koe markkinoiden parhaat suorituskykyominaisuudet erittäin monimutkaisissa tehtävissä, avoimissa kysymyksissä ja näkemättömissä skenaarioissa poikkeuksellisen sujuvasti ja ihmismäisellä ymmärryksellä.",
-    "sidebar__conversation__message__context_cleared": "Konteksti tyhjennetty"
+    "sidebar__conversation__message__context_cleared": "Konteksti tyhjennetty",
+    "pdf_ai_viewer__share_button__title": "Kopioi alkuperäinen PDF-URL"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

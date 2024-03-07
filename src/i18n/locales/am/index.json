@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "አንቴሪክ የሚጠቀምበት መሰረት እና ስፍራ የሚጠቀምበት ማሳወቂያ ነው፣ ከ200k-ቶን በላይ የሚጠቀምበት መሰረትን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል፣ ስለሆነም የሚጠቀምበት ማሳወቂያዎችን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል።",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "ይዘትን ለ claude-3-opus ይጠቀሙ",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "አንቴሪክ በተለያዩ ስልኮች ላይ የሚጠቀምበት መሰረት እና የሚጠቀምበት ስፍራ የሚጠቀምበት ማሳወቂያ ነው። ይህንን ስልኮችን በጣም የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል፣ ስለሆነም የሚጠቀምበት ስፍራዎችን የሚጠቀምበት ማሳወቂያዎችን ይጠቀምበታል።",
-    "sidebar__conversation__message__context_cleared": "የአሁኑ መልዕክት ማጥፋት ተወግዷል"
+    "sidebar__conversation__message__context_cleared": "የአሁኑ መልዕክት ማጥፋት ተወግዷል",
+    "pdf_ai_viewer__share_button__title": "የክፍል የተሰኘው PDF URL ዝርዝርን ያስቀምጥ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

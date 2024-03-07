@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "کلود-۳-سونت آنتروپیک، تعادلی بین هوش و سرعت را به ارمغان می آورد، با قابلیت ۲۰۰ هزار توکن. برای وظایفی که هم دقت و هم سرعت می‌طلبند، مانند پردازش داده، بهینه‌سازی فروش، تولید کد و غیره، این مدل کاملاً مناسب است.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "ارتقا برای دسترسی به کلود ۳ اوپوس",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "هوشمندترین مدل آنتروپیک با قابلیت ۲۰۰ هزار توکن. تجربه عملکرد برتر در وظایف بسیار پیچیده، پرسش‌های بی‌پایان و سناریوهای ناشناخته را با فصاحت و درک شبیه به انسان به دست آورید.",
-    "sidebar__conversation__message__context_cleared": "پاک کردن متن"
+    "sidebar__conversation__message__context_cleared": "پاک کردن متن",
+    "pdf_ai_viewer__share_button__title": "کپی کردن آدرس اصلی PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

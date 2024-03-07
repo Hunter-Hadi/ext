@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "הדגם Claude-3-Sonnet של Anthropic משלב בין אינטיליגנציה למהירות, עם יכולת של 200,000 טוקנים. מושלם למשימות הדורשות דיוק ומהירות, כמו עיבוד נתונים, אופטימיזציה של מכירות, יצירת קוד ועוד.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "שדרג כדי לקבל גישה לקלוד-3-אופוס",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "הדגם החכם ביותר של Anthropic, עם יכולת של 200,000 טוקנים. חווי את הביצועים הטובים ביותר בשוק עבור משימות מורכבות ביותר, הוראות פתוחות וסצנאות שאינן ידועות מראש בצורה של זריזות והבנה דומה לאדם.",
-    "sidebar__conversation__message__context_cleared": "נוקה הקשר"
+    "sidebar__conversation__message__context_cleared": "נוקה הקשר",
+    "pdf_ai_viewer__share_button__title": "העתק כתובת URL המקורית של ה- PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

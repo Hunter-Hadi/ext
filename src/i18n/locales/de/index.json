@@ -641,7 +641,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropics Claude-3-Sonnet findet eine Balance zwischen Intelligenz und Geschwindigkeit mit einer Kapazität von 200.000 Tokens. Perfekt für Aufgaben, die Präzision und Schnelligkeit erfordern, wie Datenverarbeitung, Verkaufsoptimierung, Codegenerierung und mehr.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Upgrade, um auf claude-3-opus zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropics intelligentestes Modell mit einer Kapazität von 200.000 Tokens. Erleben Sie die beste Leistung auf hochkomplexen Aufgaben, offenen Anfragen und unbekannten Szenarien mit bemerkenswerter Flüssigkeit und menschenähnlichem Verständnis.",
-    "sidebar__conversation__message__context_cleared": "Kontext gelöscht"
+    "sidebar__conversation__message__context_cleared": "Kontext gelöscht",
+    "pdf_ai_viewer__share_button__title": "Original PDF-URL kopieren"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

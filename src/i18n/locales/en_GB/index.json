@@ -454,6 +454,7 @@
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title": "Open 'PDF AI viewer' automatically",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1": "Enable the \"Allow access to file URLs\" option in your browser settings by navigating to",
     "pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2": ". This will let the 'PDF AI viewer' open automatically when you drag and drop PDF files into the browser.",
+    "pdf_ai_viewer__share_button__title": "Copy original PDF URL",
     "permission__pricing_hook__button__upgrade_to_pro": "Upgrade to Pro",
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade to Elite",
     "permission__pricing_hook__daily_limit__title": "Upgrade for unlimited usage",

@@ -11,6 +11,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { I18nextKeysType } from '@/i18next'
 
+
 interface ITooltipIconButton extends IconButtonProps {
   copyText: string
   onCopy?: () => void
@@ -19,6 +20,7 @@ interface ITooltipIconButton extends IconButtonProps {
   icon?: React.ReactNode
   copyToClipboardTooltip?: I18nextKeysType
   copiedTooltip?: I18nextKeysType
+  TooltipProps?: Parameters<typeof TooltipIconButton>[0]['TooltipProps']
 }
 const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
   const {
@@ -28,6 +30,7 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
     icon,
     copyToClipboardTooltip,
     copiedTooltip,
+    TooltipProps,
   } = props
   const { t } = useTranslation(['common'])
   const [isCopied, setIsCopied] = useState(false)
@@ -52,7 +55,7 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
         }, 1000)
       }}
     >
-      <TooltipIconButton title={title} sx={sx} className={props.className}>
+      <TooltipIconButton title={title} sx={sx} className={props.className} TooltipProps={TooltipProps}>
         {isCopied ? (
           <ContextMenuIcon icon={'Check'} />
         ) : (

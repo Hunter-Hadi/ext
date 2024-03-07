@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent } from 'react'
+import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -433,37 +433,37 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
 
 const MaxAIPDFAIViewerShareButton: FC = () => {
   const { element } = useFindElement('#toolbarViewerRight')
-
-  // const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
-  // const [isAccessPermission, setIsAccessPermission] = useState(true)
-
-  // useEffectOnce(() => {
-  //   if (isMaxAIPDFPage()) {
-  //     Browser.extension.isAllowedFileSchemeAccess().then(setIsAccessPermission)
-  //     const pdfViewerRoot = document.querySelector('#toolbarViewerRight')
-  //     if (pdfViewerRoot) {
-  //       const div = document.createElement('div')
-  //       div.id = 'MaxAIPDFViewerTopBarButtonGroup'
-  //       div.style.display = 'flex'
-  //       div.style.alignItems = 'center'
-  //       div.style.height = '32px'
-  //       pdfViewerRoot.appendChild(div)
-  //       setRootElement(div)
-  //     }
-  //     setShow(true)
-  //   }
-  // })
-  // const boxRef = useRef<HTMLDivElement>(null)
-  // if (!show || !rootElement) {
-  //   return null
-  // }
+  const [show, setShow] = useState(false);
 
   const shareURL = useMemo(() => {
     const searchParams = new URLSearchParams(window.location.search);
     return searchParams.get('file') || '';
-  }, [window.location.search])
+  }, [window.location.search]);
 
-  return (
+  useEffect(() => {
+    if (shareURL.includes('http')) {
+      setTimeout(() => setShow(true), 1500);
+    }
+  }, [shareURL]);
+
+  if (!show) return null;
+
+  return <>
+    <DynamicComponent
+      rootContainer={element}
+      customElementName={'max-ai-pdf-share-button-separator'}
+    >
+      <Box
+        sx={{
+          mx: 1,
+          my: 0.75,
+          width: '1px',
+          height: 20,
+          backgroundColor: 'rgba(0, 0, 0, 0.3)',
+        }}
+        component="div"
+      />
+    </DynamicComponent>
     <DynamicComponent
       rootContainer={element}
       customElementName={'max-ai-pdf-share-button'}
@@ -499,7 +499,7 @@ const MaxAIPDFAIViewerShareButton: FC = () => {
         size="small"
       />
     </DynamicComponent>
-  )
+  </>
 }
 
 const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
@@ -507,7 +507,6 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
   const [show, setShow] = useState(false)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
   const [isAccessPermission, setIsAccessPermission] = useState(true)
-  const [shareButtonShow, setShareButtonShow] = useState(false)
   useEffectOnce(() => {
     if (isMaxAIPDFPage()) {
       Browser.extension.isAllowedFileSchemeAccess().then(setIsAccessPermission)
@@ -531,9 +530,6 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
     }
-    setTimeout(() => {
-      setShareButtonShow(true)
-    }, 1000)
   })
   const boxRef = useRef<HTMLDivElement>(null)
   if (!show || !rootElement) {
@@ -616,7 +612,7 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
           )}
         </Stack>
       </DynamicComponent>
-      {shareButtonShow && <MaxAIPDFAIViewerShareButton />}
+      <MaxAIPDFAIViewerShareButton />
     </>
   )
 }

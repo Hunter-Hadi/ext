@@ -17,9 +17,11 @@ import Browser from 'webextension-polyfill'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import UploadButton from '@/features/common/components/UploadButton'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useInterval from '@/features/common/hooks/useInterval'
+import useFindElement from '@/features/common/hooks/useFindElement'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import { isMaxAIPDFPage, handleMaxAIPDFViewerResize } from '@/utils/dataHelper/websiteHelper'
@@ -429,11 +431,83 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
   )
 }
 
+const MaxAIPDFAIViewerShareButton: FC = () => {
+  const { element } = useFindElement('#toolbarViewerRight')
+
+  // const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
+  // const [isAccessPermission, setIsAccessPermission] = useState(true)
+
+  // useEffectOnce(() => {
+  //   if (isMaxAIPDFPage()) {
+  //     Browser.extension.isAllowedFileSchemeAccess().then(setIsAccessPermission)
+  //     const pdfViewerRoot = document.querySelector('#toolbarViewerRight')
+  //     if (pdfViewerRoot) {
+  //       const div = document.createElement('div')
+  //       div.id = 'MaxAIPDFViewerTopBarButtonGroup'
+  //       div.style.display = 'flex'
+  //       div.style.alignItems = 'center'
+  //       div.style.height = '32px'
+  //       pdfViewerRoot.appendChild(div)
+  //       setRootElement(div)
+  //     }
+  //     setShow(true)
+  //   }
+  // })
+  // const boxRef = useRef<HTMLDivElement>(null)
+  // if (!show || !rootElement) {
+  //   return null
+  // }
+
+  const shareURL = useMemo(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    return searchParams.get('file') || '';
+  }, [window.location.search])
+
+  return (
+    <DynamicComponent
+      rootContainer={element}
+      customElementName={'max-ai-pdf-share-button'}
+    >
+      <CopyTooltipIconButton
+        copyText={shareURL}
+        copyToClipboardTooltip={
+          'client:pdf_ai_viewer__share_button__title'
+        }
+        icon={<ContextMenuIcon icon={'Link'} />}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          borderRadius: '8px',
+          minWidth: 'unset',
+          backgroundColor: '#666667',
+          color: '#FFFFFF',
+          mt: 0.375,
+          order: 0,
+          fontSize: 24,
+        }}
+        TooltipProps={{
+          placement: 'bottom',
+          arrow: true,
+        }}
+        PopperProps={{
+          disablePortal: true,
+          sx: {
+            whiteSpace: 'nowrap'
+          }
+        } as any}
+        size="small"
+      />
+    </DynamicComponent>
+  )
+}
+
 const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
   const [isAccessPermission, setIsAccessPermission] = useState(true)
+  const [shareButtonShow, setShareButtonShow] = useState(false)
   useEffectOnce(() => {
     if (isMaxAIPDFPage()) {
       Browser.extension.isAllowedFileSchemeAccess().then(setIsAccessPermission)
@@ -457,88 +531,93 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
     }
+    setTimeout(() => {
+      setShareButtonShow(true)
+    }, 1000)
   })
   const boxRef = useRef<HTMLDivElement>(null)
   if (!show || !rootElement) {
     return null
   }
   return (
-    <DynamicComponent
-      rootContainer={rootElement}
-      customElementName={'maxai-pdf-ai-viewer-top-bar-button-group'}
-    >
-      <Stack direction={'row'} alignItems={'center'} gap={1} ref={boxRef}>
-        <MaxAIPDFAIViewerSwitchToDefaultButton rootElement={boxRef.current!} />
-
-        {!isAccessPermission && (
-          <LightTooltip
-            PopperProps={{
-              sx: {
-                zIndex: 99999999,
-              },
-              container: rootElement,
-              disablePortal: true,
-            }}
-            title={
-              <Stack width={320} gap={1}>
-                <Typography fontSize={'16px'} fontWeight={700}>
-                  {t(
-                    'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title',
-                  )}
-                </Typography>
-                <Typography fontSize={'14px'} fontWeight={400}>
-                  {t(
-                    'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1',
-                  )}{' '}
-                  <Link
-                    color={'text.primary'}
-                    href={'#'}
-                    onClick={async (event) => {
-                      event.preventDefault()
-                      event.stopPropagation()
-                      await chromeExtensionClientOpenPage({
-                        key: 'manage_extension',
-                      })
-                    }}
-                  >
-                    {'chrome://extensions'}
-                  </Link>
-                  {t(
-                    'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2',
-                  )}
-                </Typography>
-                <img
-                  style={{ flexShrink: 0, alignSelf: 'center' }}
-                  width={'100%'}
-                  src={getChromeExtensionAssetsURL('/images/pdf/guide-2.gif')}
-                />
-              </Stack>
-            }
-            placement={'bottom-start'}
-            arrow
-          >
-            <Button
-              onClick={async () => {
-                await chromeExtensionClientOpenPage({
-                  key: 'manage_extension',
-                })
+    <>
+      <DynamicComponent
+        rootContainer={rootElement}
+        customElementName={'maxai-pdf-ai-viewer-top-bar-button-group'}
+      >
+        <Stack direction={'row'} alignItems={'center'} gap={1} ref={boxRef}>
+          <MaxAIPDFAIViewerSwitchToDefaultButton rootElement={boxRef.current!} />
+          {!isAccessPermission && (
+            <LightTooltip
+              PopperProps={{
+                sx: {
+                  zIndex: 99999999,
+                },
+                container: rootElement,
+                disablePortal: true,
               }}
-              sx={{
-                fontSize: '14px',
-                color: 'rgba(255,255,255,.87)',
-                height: 32,
-                display: 'flex',
-                alignItems: 'center',
-                gap: 1,
-              }}
+              title={
+                <Stack width={320} gap={1}>
+                  <Typography fontSize={'16px'} fontWeight={700}>
+                    {t(
+                      'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__title',
+                    )}
+                  </Typography>
+                  <Typography fontSize={'14px'} fontWeight={400}>
+                    {t(
+                      'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description1',
+                    )}{' '}
+                    <Link
+                      color={'text.primary'}
+                      href={'#'}
+                      onClick={async (event) => {
+                        event.preventDefault()
+                        event.stopPropagation()
+                        await chromeExtensionClientOpenPage({
+                          key: 'manage_extension',
+                        })
+                      }}
+                    >
+                      {'chrome://extensions'}
+                    </Link>
+                    {t(
+                      'client:pdf_ai_viewer__toggle_button__drag_drop_pdf__tooltip__description2',
+                    )}
+                  </Typography>
+                  <img
+                    style={{ flexShrink: 0, alignSelf: 'center' }}
+                    width={'100%'}
+                    src={getChromeExtensionAssetsURL('/images/pdf/guide-2.gif')}
+                  />
+                </Stack>
+              }
+              placement={'bottom-start'}
+              arrow
             >
-              {t('client:pdf_ai_viewer__toggle_button__drag_drop_pdf__title')}
-              <Switch checked={isAccessPermission} size={'small'} />
-            </Button>
-          </LightTooltip>
-        )}
-      </Stack>
-    </DynamicComponent>
+              <Button
+                onClick={async () => {
+                  await chromeExtensionClientOpenPage({
+                    key: 'manage_extension',
+                  })
+                }}
+                sx={{
+                  fontSize: '14px',
+                  color: 'rgba(255,255,255,.87)',
+                  height: 32,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 1,
+                }}
+              >
+                {t('client:pdf_ai_viewer__toggle_button__drag_drop_pdf__title')}
+                <Switch checked={isAccessPermission} size={'small'} />
+              </Button>
+            </LightTooltip>
+          )}
+        </Stack>
+      </DynamicComponent>
+      {shareButtonShow && <MaxAIPDFAIViewerShareButton />}
+    </>
   )
 }
 

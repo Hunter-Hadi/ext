@@ -1,15 +1,17 @@
 import CircularProgress from '@mui/material/CircularProgress'
-import IconButton, { IconButtonProps } from '@mui/material/IconButton'
+import IconButton, { type IconButtonProps } from '@mui/material/IconButton'
+import { type PopperProps } from '@mui/material/Popper'
 import React, { FC } from 'react'
 
 import TextOnlyTooltip, {
   TextOnlyTooltipProps,
 } from '@/components/TextOnlyTooltip'
 
-interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
+export interface ITooltipIconButton extends Omit<IconButtonProps, 'title'> {
   title: React.ReactNode | string
   placement?: TextOnlyTooltipProps['placement']
   TooltipProps?: Omit<TextOnlyTooltipProps, 'children' | 'title'>
+  PopperProps?: PopperProps;
   loading?: boolean
 }
 const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
@@ -19,6 +21,7 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
     TooltipProps,
     loading = false,
     children,
+    PopperProps,
     ...iconButtonProps
   } = props
   return (
@@ -27,6 +30,7 @@ const TooltipIconButton: FC<ITooltipIconButton> = (props) => {
       title={title}
       PopperProps={{
         sx: {},
+        ...PopperProps,
       }}
       {...TooltipProps}
     >

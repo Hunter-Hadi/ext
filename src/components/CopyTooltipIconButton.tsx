@@ -1,28 +1,28 @@
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { IconButtonProps } from '@mui/material/IconButton'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useMemo, useState } from 'react'
+import React, { type FC, useMemo, useState, type ReactNode } from 'react'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import TooltipIconButton from '@/components/TooltipIconButton'
+import TooltipIconButton, { type ITooltipIconButton } from '@/components/TooltipIconButton'
 import { I18nextKeysType } from '@/i18next'
 
-
-interface ITooltipIconButton extends IconButtonProps {
+interface ICopyTooltipIconButton extends IconButtonProps {
   copyText: string
   onCopy?: () => void
-  children?: React.ReactNode
+  children?: ReactNode
   sx?: SxProps
-  icon?: React.ReactNode
+  icon?: ReactNode
   copyToClipboardTooltip?: I18nextKeysType
   copiedTooltip?: I18nextKeysType
-  TooltipProps?: Parameters<typeof TooltipIconButton>[0]['TooltipProps']
+  TooltipProps: ITooltipIconButton['TooltipProps']
+  PopperProps: ITooltipIconButton['PopperProps']
 }
-const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
+const CopyTooltipIconButton: FC<ICopyTooltipIconButton> = (props) => {
   const {
     copyText,
     onCopy,
@@ -31,6 +31,8 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
     copyToClipboardTooltip,
     copiedTooltip,
     TooltipProps,
+    PopperProps,
+    ...buttonProps
   } = props
   const { t } = useTranslation(['common'])
   const [isCopied, setIsCopied] = useState(false)
@@ -55,7 +57,7 @@ const CopyTooltipIconButton: FC<ITooltipIconButton> = (props) => {
         }, 1000)
       }}
     >
-      <TooltipIconButton title={title} sx={sx} className={props.className} TooltipProps={TooltipProps}>
+      <TooltipIconButton title={title} sx={sx} className={props.className} TooltipProps={TooltipProps} PopperProps={PopperProps} {...buttonProps}>
         {isCopied ? (
           <ContextMenuIcon icon={'Check'} />
         ) : (

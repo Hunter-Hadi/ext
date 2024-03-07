@@ -16,7 +16,7 @@ const PDFSummaryButton: FC = () => {
   return (
     <DynamicComponent
       rootContainer={element}
-      customElementName={'max-ai-gmail-summary-button'}
+      customElementName={'max-ai-pdf-summary-button'}
     >
       <Button
         sx={{

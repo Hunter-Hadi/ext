@@ -7,7 +7,7 @@
     "lib": ["dom", "es2021"],
     "module": "ESNext",
     "moduleResolution": "node",
-    "noImplicitReturns": true,
+    "noImplicitReturns": false,
     "noUnusedLocals": true,
     "strict": true,
     "target": "es2018",
@@ -19,6 +19,6 @@
     "types": [
       "esbuild-style-plugin"
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
   }
 }

@@ -3124,7 +3124,7 @@ dialog :link {
   }
 }
 
-@container outContainer (max-width: 690px) {
+@container outContainer (max-width: 733px) {
   #toolbarViewer {
     grid-template-areas: "l l r r" "l l m m";
     grid-template-columns: auto auto;
@@ -3135,7 +3135,7 @@ dialog :link {
   }
 }
 
-@container outContainer (max-width: 560px) {
+@container outContainer (max-width: 650px) {
   #toolbarContainer {
     height: 96px;
   }

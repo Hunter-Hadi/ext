@@ -31,7 +31,6 @@ const App: FC = () => {
     resizeEnable,
   } = useChatBoxWidth()
   const [appState, setAppState] = useRecoilState(AppState)
-  const [isOpened, setIsOpened] = React.useState(false)
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {
       mutations.forEach((mu) => {
@@ -59,14 +58,25 @@ const App: FC = () => {
   }, [])
   useEffect(() => {
     if (appState.open) {
-      setIsOpened(true)
+      setAppState((prev) => {
+        return {
+          ...prev,
+          loadedAppSidebar: true,
+        }
+      })
     }
   }, [appState.open])
   useEffect(() => {
-    if (!isOpened) {
+    if (!appState.loadedAppSidebar) {
       const timer = setInterval(() => {
         if (isShowChatBox()) {
-          setIsOpened(true)
+          setAppState((prev) => {
+            return {
+              ...prev,
+              loadedAppSidebar: true,
+            }
+          })
+          clearInterval(timer)
         }
       }, 1000)
       return () => {
@@ -76,7 +86,7 @@ const App: FC = () => {
     return () => {
       // do nothing
     }
-  }, [isOpened])
+  }, [appState.loadedAppSidebar])
   return (
     <>
       <Resizable
@@ -127,9 +137,9 @@ const App: FC = () => {
             <BrowserVersionDetector>
               <AppSuspenseLoadingLayout>
                 <Stack flex={1} height={0}>
-                  {isOpened && <SidebarPage />}
+                  {appState.loadedAppSidebar && <SidebarPage />}
                   {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}
-                  {!isOpened && (
+                  {!appState.loadedAppSidebar && (
                     <>
                       {/* 在 click MaxAIScreenshotMiniButton 时 通过找到下面这个隐藏的 SidebarScreenshotButton 组件触发 click 事件，来实现截图  */}
                       <SidebarScreenshotButton

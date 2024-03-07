@@ -9,12 +9,15 @@ export const AppState = atom<{
   env: 'gmail' | 'normal'
   open: boolean
   loading: boolean
+  // 因为App是动态加载的，所以有个flag来标记状态
+  loadedAppSidebar: boolean
 }>({
   key: 'AppState',
   default: {
     env: getEnv(),
     open: false,
     loading: false,
+    loadedAppSidebar: false,
   },
 })
 

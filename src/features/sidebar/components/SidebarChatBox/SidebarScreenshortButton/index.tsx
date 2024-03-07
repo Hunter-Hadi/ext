@@ -23,7 +23,7 @@ import {
 import { clientRunBackgroundGetScreenshot } from '@/utils/clientCallChromeExtensionCollection'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-export const useUploadImagesAndSwitchToVision = () => {
+export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
   const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
   const { createConversation } = useClientConversation()
   const {
@@ -31,11 +31,8 @@ export const useUploadImagesAndSwitchToVision = () => {
     currentSidebarConversationType,
     sidebarSettings,
   } = useSidebarSettings()
-  const {
-    updateAIProviderModel,
-    currentAIProvider,
-    currentAIProviderModel,
-  } = useAIProviderModels()
+  const { updateAIProviderModel, currentAIProvider, currentAIProviderModel } =
+    useAIProviderModels()
 
   // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
   // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
@@ -44,7 +41,9 @@ export const useUploadImagesAndSwitchToVision = () => {
     aiProviderUploadFilesRef.current = aiProviderUploadFiles
   }, [aiProviderUploadFiles])
 
-  const uploadImagesAndSwitchToVision = async (imageFiles: File[]) => {
+  const uploadImagesAndSwitchToMaxAIVisionModel = async (
+    imageFiles: File[],
+  ) => {
     if (currentSidebarConversationType !== 'Chat') {
       await updateSidebarConversationType('Chat')
     }
@@ -52,7 +51,14 @@ export const useUploadImagesAndSwitchToVision = () => {
       const conversation = await clientGetConversation(
         sidebarSettings.chat.conversationId,
       )
-      if (conversation?.meta?.AIModel !== MAXAI_CHATGPT_MODEL_GPT_4_TURBO) {
+      if (
+        !conversation?.meta?.AIModel ||
+        ![
+          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+          'claude-3-sonnet',
+          'claude-3-opus',
+        ].includes(conversation?.meta?.AIModel)
+      ) {
         await updateAIProviderModel(
           'USE_CHAT_GPT_PLUS',
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
@@ -70,11 +76,23 @@ export const useUploadImagesAndSwitchToVision = () => {
       await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
     )
   }
-  return {
-    isChatGPTVision:
+  const isMaxAIVisionModel = useMemo(() => {
+    if (
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
-      currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-    uploadImagesAndSwitchToVision,
+      currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO
+    ) {
+      return true
+    }
+    if (currentAIProvider === 'MAXAI_CLAUDE') {
+      return ['claude-3-sonnet', 'claude-3-opus'].includes(
+        currentAIProviderModel,
+      )
+    }
+    return false
+  }, [currentAIProvider, currentAIProviderModel])
+  return {
+    isMaxAIVisionModel,
+    uploadImagesAndSwitchToMaxAIVisionModel,
   }
 }
 
@@ -83,7 +101,8 @@ const SidebarScreenshotButton: FC<{
 }> = ({ sx }) => {
   const { t } = useTranslation(['common'])
   const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
-  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
+  const { uploadImagesAndSwitchToMaxAIVisionModel } =
+    useUploadImagesAndSwitchToMaxAIVisionModel()
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -147,7 +166,7 @@ const SidebarScreenshotButton: FC<{
               rootEl?.remove()
               setRootEl(null)
               showChatBox()
-              await uploadImagesAndSwitchToVision([imageFile])
+              await uploadImagesAndSwitchToMaxAIVisionModel([imageFile])
             }}
           />
         </DynamicComponent>
@@ -162,10 +181,7 @@ const ScreenshotComponent: FC<{
   const [isDragging, setIsDragging] = useState(false)
   const startPointRef = React.useRef<[number, number]>([0, 0])
   const [area, setArea] = useState<[number, number, number, number]>([
-    0,
-    0,
-    0,
-    0,
+    0, 0, 0, 0,
   ])
   const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
     console.log(e)

@@ -108,7 +108,7 @@ const useInitSidebar = () => {
   // summary 重新生成的逻辑
   useEffect(() => {
     // 如果不是Summary, return
-    if (currentSidebarConversationType !== 'Summary') {
+    if (currentSidebarConversationType !== 'Summary' || !appState.open) {
       return
     }
     if (currentSidebarConversation?.id) {
@@ -129,7 +129,11 @@ const useInitSidebar = () => {
       // 直接触发create
     }
     createPageSummary().then().catch().finally()
-  }, [currentSidebarConversation?.id, currentSidebarConversationType])
+  }, [
+    currentSidebarConversation?.id,
+    currentSidebarConversationType,
+    appState.open,
+  ])
   // summary 聚焦处理
   useFocus(() => {
     if (pageConversationTypeRef.current === 'Summary') {

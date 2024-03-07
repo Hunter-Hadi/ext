@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 import { atom, useRecoilState } from 'recoil'
 
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
-import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import { useUploadImagesAndSwitchToMaxAIVisionModel } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 
 const IsSidebarDragOverAtom = atom({
   key: 'SidebarDragOverAtom',
@@ -10,7 +10,8 @@ const IsSidebarDragOverAtom = atom({
 })
 
 const useSidebarDropEvent = () => {
-  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
+  const { uploadImagesAndSwitchToMaxAIVisionModel } =
+    useUploadImagesAndSwitchToMaxAIVisionModel()
 
   const [isSidebarDragOver, setIsSidebarDragOver] = useRecoilState(
     IsSidebarDragOverAtom,
@@ -54,7 +55,7 @@ const useSidebarDropEvent = () => {
     if (isImage) {
       event.preventDefault()
 
-      uploadImagesAndSwitchToVision([file])
+      uploadImagesAndSwitchToMaxAIVisionModel([file])
     }
 
     if (isPDF) {

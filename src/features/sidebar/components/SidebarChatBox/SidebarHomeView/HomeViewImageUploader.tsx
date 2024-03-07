@@ -6,7 +6,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 
 import UploadButton from '@/features/common/components/UploadButton'
-import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import { useUploadImagesAndSwitchToMaxAIVisionModel } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 import HomeViewAIScreenshotButton from './HomeViewAIScreenshotButton'
@@ -20,13 +20,14 @@ const HomeViewImageUploader = () => {
   //   aiProviderUploadFiles,
   // } = useAIProviderUpload()
 
-  const { uploadImagesAndSwitchToVision } = useUploadImagesAndSwitchToVision()
+  const { uploadImagesAndSwitchToMaxAIVisionModel } =
+    useUploadImagesAndSwitchToMaxAIVisionModel()
 
   const handleUploadFiles = async (file: File) => {
     const isImage = file.type.includes('image')
     const isPDF = file.type.includes('pdf')
     if (isImage) {
-      uploadImagesAndSwitchToVision([file])
+      uploadImagesAndSwitchToMaxAIVisionModel([file])
     }
 
     if (isPDF) {

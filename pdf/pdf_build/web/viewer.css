@@ -3155,3 +3155,15 @@ dialog :link {
     inset: 96px 0 0;
   }
 }
+
+
+
+@container outContainer (max-width: 650px) {
+  #toolbarContainer {
+    height: 128px;
+  }
+
+  #viewerContainer {
+    inset: 128px 0 0;
+  }
+}

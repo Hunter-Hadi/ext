@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, useRef, useState } from 'react'
+import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -22,7 +22,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useInterval from '@/features/common/hooks/useInterval'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
+import { isMaxAIPDFPage, handleMaxAIPDFViewerResize } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const MAXAIPDFAIViewerErrorAlert: FC = () => {
@@ -296,9 +296,9 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
 }> = (props) => {
   const { rootElement } = props
   const { t } = useTranslation(['common', 'client'])
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const [selectedIndex, setSelectedIndex] = React.useState(0)
-  const open = Boolean(anchorEl)
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const open = useMemo(() => Boolean(anchorEl), [anchorEl]);
   const handleOpenDefaultViewer = async () => {
     // 获取pdfjs当前doc的文件路径
     const unit8Array = await (window as any)?.PDFViewerApplication?.pdfDocument?.getData()
@@ -311,12 +311,12 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
       handleClose()
     }
   }
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = useCallback((event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
-  }
-  const handleClose = () => {
+  }, [])
+  const handleClose = useCallback(() => {
     setAnchorEl(null)
-  }
+  }, [])
   return (
     <>
       <Button
@@ -450,7 +450,15 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
       setShow(true)
     }
   })
-  const boxRef = React.useRef<HTMLDivElement>(null)
+  useEffectOnce(() => {
+    // 如果浏览器不兼容 CSS @container 用JS动画代替
+    if (!CSS.supports("container-type", "inline-size")) {
+      const handleResize = () => handleMaxAIPDFViewerResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }
+  })
+  const boxRef = useRef<HTMLDivElement>(null)
   if (!show || !rootElement) {
     return null
   }

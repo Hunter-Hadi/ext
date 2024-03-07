@@ -11,6 +11,7 @@ import {
 import SocialMediaPostContext, {
   ICommentData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
+import { concat } from 'lodash-es'
 
 const getYouTubeCommentContent = async (
   ytdCommentBox: HTMLElement,
@@ -143,27 +144,62 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         console.log('contentsElement', contentsElement)
         let sections = document.getElementById("sections");
         if (sections?.querySelector("#count")) {
-          console.log('评论加载 成功 //////', contentsElement)
-
-          const commentThreadRenderers = contentsElement?.getElementsByTagName('ytd-comment-thread-renderer');
-          if (commentThreadRenderers) {
-            for (let i = 0; i < commentThreadRenderers.length; i++) {
-              const commentThreadRenderer = commentThreadRenderers[i];
-              const data = await getYouTubeCommentContent(commentThreadRenderer as unknown as HTMLElement)
-              console.log('contentsElement', data)
-            }
-
-          }
+          console.log('simply 评论获取 成功 //////', contentsElement)
+          const list = await getCommitList()
+          console.log('simply commit list 1', list)
+          youTubeSocialMediaPostContext.addCommentList(list)
         } else {
-          //滑动加载评论
-          let distanceFromTop = sections?.getBoundingClientRect().top;
-          window.scrollBy({ top: distanceFromTop });
-          let countInterval = setInterval(() => {
-            if (sections && sections.querySelector("#count")) {
-              window.scrollTo({ top: 0 });
-              clearInterval(countInterval)
+          console.log('simply 评论失败 成功 //////', contentsElement)
+
+          // console.log('simply sections', sections)
+          // let items = document.getElementById("items");
+          // let itemsBottom = items?.getBoundingClientRect().bottom;
+          // console.log('simply itemsBottom', items?.getBoundingClientRect(), itemsBottom,items?.offsetTop)
+
+          // window.scrollBy({ top: itemsBottom });
+          let items = document.querySelector('#items.style-scope.ytd-watch-next-secondary-results-renderer');
+          if (items) {
+            let rect = items.getBoundingClientRect();
+            let offsetTop = rect.top;
+            let offsetBottom = rect.bottom;
+            if (offsetTop && offsetTop > 100) {
+              // 说明是在简介下方
+              window.scrollTo({
+                top: offsetBottom + 100
+              });
+              await awaitScrollFun(() => {
+                let sectionsDom = document.getElementById("sections");
+                if (sectionsDom) {
+                  return sectionsDom?.getBoundingClientRect().top > 0
+                } else {
+                  return false
+                }
+              })
+              await awaitScrollFun(() => !!(sections && sections.querySelector("#count")))
+
+            } else {
+              // 正常情况
+              console.log('元素不存在');
+              //滑动加载评论
+              await awaitScrollFun(() => {
+                //判断
+                let sectionsDom = document.getElementById("sections");
+                if (sectionsDom) {
+                  return sectionsDom?.getBoundingClientRect().top > 0
+                } else {
+                  return false
+                }
+              })
+              let distanceFromTop = sections?.getBoundingClientRect().top;
+              window.scrollBy({ top: distanceFromTop });
             }
-          }, 100);
+          }
+          await awaitScroll(sections)
+          console.log('simply awaitScroll')
+          window.scrollTo({ top: 0 });
+          const list = await getCommitList()
+          console.log('simply commit list 2', list)
+          youTubeSocialMediaPostContext?.addCommentList(list)
         }
         return youTubeSocialMediaPostContext.data
 
@@ -239,4 +275,38 @@ export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
     30,
   )
   return (youTubeDraftEditor as HTMLDivElement)?.innerText || ''
+}
+const awaitScroll = (sections: HTMLElement | null) => {
+  return new Promise<void>((resolve) => {
+    let countInterval = setInterval(async () => {
+      if (sections && sections.querySelector("#count")) {
+        resolve()
+        clearInterval(countInterval)
+      }
+    }, 200);
+  })
+}
+const awaitScrollFun = async (condition: () => boolean) => {
+  return new Promise<void>((resolve) => {
+    let countInterval = setInterval(async () => {
+      if (condition && condition()) {
+        resolve()
+        clearInterval(countInterval)
+      }
+    }, 200);
+  })
+}
+const getCommitList = async () => {
+  const contentsElement = document.getElementById('contents');
+  const commentThreadRenderers = contentsElement?.getElementsByTagName('ytd-comment-thread-renderer');
+  const list = []
+  if (commentThreadRenderers) {
+    for (let i = 0; i < commentThreadRenderers.length; i++) {
+      const commentThreadRenderer = commentThreadRenderers[i];
+      const data = await getYouTubeCommentContent(commentThreadRenderer as unknown as HTMLElement)
+      list.push(data)
+    }
+  }
+  return list
+
 }

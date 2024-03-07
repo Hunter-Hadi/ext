@@ -97,12 +97,17 @@ export default class SocialMediaPostContext {
     }
   }
   addCommentList(commentList: ICommentData[]) {
+    console.log('simply addCommentList 1',commentList)
     this.commentList.push(commentList)
   }
 
   get data(): ISocialMediaPostContextData {
     const { content, author, title } = this.post
+    console.log('simply addCommentList 2',this.commentList)
+
     const commentsData = createCommentListData(this.commentList?.[0] || [])
+    console.log('simply commentsData',commentsData)
+
     let postText = ''
     postText += `[${this.config.postTitle}]`
     postText += `\n**Post author:** ${author || 'N/A'}`

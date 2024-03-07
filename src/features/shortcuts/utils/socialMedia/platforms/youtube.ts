@@ -19,6 +19,10 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector(
       '#header-author #author-text > span',
     ) as HTMLSpanElement)?.innerText || ''
+  const commmitAuthor =
+    (ytdCommentBox.querySelector(
+      '#header-author #author-text > yt-formatted-string',
+    ) as HTMLSpanElement)?.innerText || ''
   const date =
     (ytdCommentBox.querySelector(
       '#header-author > yt-formatted-string',
@@ -34,7 +38,7 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector('#content-text') as HTMLDivElement)
       ?.innerText || ''
   return {
-    author: author.replace(/\n/g, '').trim(),
+    author: (author || commmitAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
   }
@@ -42,13 +46,9 @@ const getYouTubeCommentContent = async (
 
 export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
+  type
 ) => {
   try {
-    // comment box
-    const ytdCommentBox = findParentEqualSelector(
-      'ytd-commentbox',
-      inputAssistantButton,
-    )
     const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
       window.location.href,
     )
@@ -137,54 +137,93 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       }
     }
     if (youTubeSocialMediaPostContext) {
-      if (ytdCommentBox) {
-        // 视频底下的评论
-        if (
-          findParentEqualSelector(
-            'ytd-comment-simplebox-renderer',
-            ytdCommentBox,
-            5,
-          )
-        ) {
-          // Nothing
+      if (type === 'Summary') {
+        //获取所有评论
+        const contentsElement = document.getElementById('contents');
+        console.log('contentsElement', contentsElement)
+        let sections = document.getElementById("sections");
+        if (sections?.querySelector("#count")) {
+          console.log('评论加载 成功 //////', contentsElement)
+
+          const commentThreadRenderers = contentsElement?.getElementsByTagName('ytd-comment-thread-renderer');
+          if (commentThreadRenderers) {
+            for (let i = 0; i < commentThreadRenderers.length; i++) {
+              const commentThreadRenderer = commentThreadRenderers[i];
+              const data = await getYouTubeCommentContent(commentThreadRenderer as unknown as HTMLElement)
+              console.log('contentsElement', data)
+            }
+
+          }
         } else {
-          const ytdRootComment = findParentEqualSelector(
-            'ytd-comment-thread-renderer',
-            ytdCommentBox,
-          )?.querySelector('& > ytd-comment-renderer' as any) as HTMLElement
-          // 第一层评论
-          if (ytdRootComment) {
-            const currenYtdCommentBox = findParentEqualSelector(
-              'ytd-comment-renderer',
+          //滑动加载评论
+          let distanceFromTop = sections?.getBoundingClientRect().top;
+          window.scrollBy({ top: distanceFromTop });
+          let countInterval = setInterval(() => {
+            if (sections && sections.querySelector("#count")) {
+              window.scrollTo({ top: 0 });
+              clearInterval(countInterval)
+            }
+          }, 100);
+        }
+        return youTubeSocialMediaPostContext.data
+
+      } else {
+        // comment box
+        const ytdCommentBox = findParentEqualSelector(
+          'ytd-commentbox',
+          inputAssistantButton,
+        )
+        if (ytdCommentBox) {
+          // 视频底下的评论
+          if (
+            findParentEqualSelector(
+              'ytd-comment-simplebox-renderer',
               ytdCommentBox,
+              5,
             )
-            if (currenYtdCommentBox) {
-              // 判断是不是回复别人的评论
-              const ytdCommentRepliesRenderer = findSelectorParent(
-                'ytd-comment-replies-renderer',
-                currenYtdCommentBox,
-                5,
+          ) {
+            // Nothing
+          } else {
+            const ytdRootComment = findParentEqualSelector(
+              'ytd-comment-thread-renderer',
+              ytdCommentBox,
+            )?.querySelector('& > ytd-comment-renderer' as any) as HTMLElement
+            // 第一层评论
+            if (ytdRootComment) {
+              const currenYtdCommentBox = findParentEqualSelector(
+                'ytd-comment-renderer',
+                ytdCommentBox,
               )
-              // youtube只有两层评论
-              if (
-                ytdCommentRepliesRenderer?.contains(currenYtdCommentBox) &&
-                !currenYtdCommentBox.isSameNode(ytdRootComment)
-              ) {
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeCommentContent(ytdRootComment),
-                  await getYouTubeCommentContent(currenYtdCommentBox),
-                ])
-              } else {
-                // 只有一层评论
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeCommentContent(ytdRootComment),
-                ])
+              if (currenYtdCommentBox) {
+                // 判断是不是回复别人的评论
+                const ytdCommentRepliesRenderer = findSelectorParent(
+                  'ytd-comment-replies-renderer',
+                  currenYtdCommentBox,
+                  5,
+                )
+                // youtube只有两层评论
+                if (
+                  ytdCommentRepliesRenderer?.contains(currenYtdCommentBox) &&
+                  !currenYtdCommentBox.isSameNode(ytdRootComment)
+                ) {
+                  youTubeSocialMediaPostContext.addCommentList([
+                    await getYouTubeCommentContent(ytdRootComment),
+                    await getYouTubeCommentContent(currenYtdCommentBox),
+                  ])
+                } else {
+                  // 只有一层评论
+                  youTubeSocialMediaPostContext.addCommentList([
+                    await getYouTubeCommentContent(ytdRootComment),
+                  ])
+                }
               }
             }
           }
         }
+        return youTubeSocialMediaPostContext.data
+
       }
-      return youTubeSocialMediaPostContext.data
+
     }
   } catch (e) {
     console.error(e)

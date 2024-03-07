@@ -33,6 +33,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
+  type?:string
 ): Promise<ISocialMediaPostContextData> => {
   const inputAssistantButton = document.querySelector(
     inputAssistantButtonElementSelector,
@@ -52,7 +53,7 @@ export const getSocialMediaPostContent = async (
     return await facebookGetPostContent(inputAssistantButton)
   }
   if (host === 'youtube.com') {
-    return await youTubeGetPostContent(inputAssistantButton)
+    return await youTubeGetPostContent(inputAssistantButton,type)
   }
   if (host === 'studio.youtube.com') {
     return await youTubeStudioGetPostContent(inputAssistantButton)

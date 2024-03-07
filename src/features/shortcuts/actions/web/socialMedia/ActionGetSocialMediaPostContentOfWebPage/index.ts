@@ -33,7 +33,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       params.OperationElementSelector ||
       ''
     try {
-      const result = await getSocialMediaPostContent(OperationElementSelector)
+      const result = await getSocialMediaPostContent(OperationElementSelector,engine?.clientConversationEngine?.currentSidebarConversationType)
       this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
       const { shortcutsEngine, clientConversationEngine } = engine
       if (shortcutsEngine && clientConversationEngine) {

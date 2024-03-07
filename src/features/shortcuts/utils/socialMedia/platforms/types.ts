@@ -2,6 +2,7 @@ import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMe
 
 export type GetSocialMediaPostContentFunction = (
   inputAssistantButton: HTMLElement,
+  type?:string
 ) => Promise<ISocialMediaPostContextData>
 
 export type GetSocialMediaPostDraftFunction = (

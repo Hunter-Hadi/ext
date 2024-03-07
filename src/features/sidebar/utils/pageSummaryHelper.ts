@@ -677,22 +677,39 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
+              text: ` from {{page}}
 
-The context text is the information and/or transcript of a video from {{CURRENT_WEBPAGE_URL}}.
+I want you to only answer in {{language}}. Your goal is to divide the chunk of the transcript into sections of information with a common theme and note the beginning timestamp of each section.
+Each information block should not be less than 2 minutes, contains the timestamp of the beginning of the section, a textual description of the main content of the entire section, and 1 to 3 bullet points that elaborate on the main ideas of the entire section. Do not use words like "emphasis" to go into the exact detail and terminology.
+Your response must be concise, informative and easy to read & understand.
+Use the specified format:
 
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
+- [Section beginning Timestamp URL] [Section emoji] [Section key takeaway in {{english}}]
 
----
+  - Section key takeaway,
 
-Use the following format:
-#### TL;DR
-<summary of the text>
+  - [Use as many bullet points for section key takeaways as you need].
 
-#### Key Takeaways
-<list of key takeaways>
+
+Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task.  focus on practical implementations. include the specific topics discussed, the advice given to students, and any specific tools or methods recommended for use in the course.
+
+The timestamp should be presented in markdown URL format. The URL text indicates, and the address links to a specific time in the video, for example:
+- [00:00](https://youtu.be/Mde2q7GFCrw?t=0s)  ...
+- [01:18](https://youtu.be/Mde2q7GFCrw?t=78s)  ...
+- [03:37](https://youtu.be/Mde2q7GFCrw?t=217s)  ...
+
+Keep emoji relevant and unique to each section. Do not use the same emoji for every section. Do not render brackets. Do not prepend takeaway with "Key takeaway".
+
+[VIDEO TITLE]:
+{{desc}}
+
+[VIDEO URL]:
+{{url}}
+
+[VIDEO TRANSCRIPT CHUNK]:
+{{chunk}}
+
+[TRANSCRIPT INFORMATION SECTIONS IN {{language}}]:
 `,
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,

@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Nadogradite da biste pristupili claude-3-sonnet",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropicov Claude-3-Sonnet postiže ravnotežu između inteligencije i brzine, s mogućnosti od 200 tisuća tokena. Savršen za zadatke koji zahtijevaju preciznost i brzinu, poput obrade podataka, optimizacije prodaje, generiranja koda i više.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Nadogradite da biste pristupili claude-3-opus",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Najinteligentniji model tvrtke Anthropic, s mogućnosti od 200 tisuća tokena. Iskusite najbolju izvedbu na tržištu za izuzetno složene zadatke, otvorene upute i scenarije koje niste vidjeli s izvanrednom tečnošću i razumijevanjem nalik ljudskom."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Najinteligentniji model tvrtke Anthropic, s mogućnosti od 200 tisuća tokena. Iskusite najbolju izvedbu na tržištu za izuzetno složene zadatke, otvorene upute i scenarije koje niste vidjeli s izvanrednom tečnošću i razumijevanjem nalik ljudskom.",
+    "sidebar__conversation__message__context_cleared": "Očišćen kontekst"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

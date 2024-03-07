@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "کلوڈ-3-سونیٹ تک رسائی حاصل کرنے کے لئے اپ گریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic کا Claude-3-Sonnet عقل اور رفتار کے درمیان توازن برقرار کرتا ہے، 200k ٹوکن کی صلاحیت کے ساتھ۔ دقت اور رفتار دونوں کی طلب و عمل کرنے والے کاموں کے لئے مثالی ہے، جیسے ڈیٹا پروسیسنگ، فروخت کی ترتیب، کوڈ تیاری، اور مزید۔",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "کلوڈ-3-اوپس تک رسائی حاصل کرنے کے لئے اپ گریڈ کریں",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic کا سب سے ذہین ماڈل ہے، 200k ٹوکن کی صلاحیت کے ساتھ۔ بہترین عملکردگی کا تجربہ کریں ہائی کمپلیکس ٹاسکس، بے حد پرامن پرومپٹس، اور نظر نہ آنے والے مناظر کے ساتھ بے حد فصاحت اور انسانی طرح سمجھ سے ناواقفی۔"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic کا سب سے ذہین ماڈل ہے، 200k ٹوکن کی صلاحیت کے ساتھ۔ بہترین عملکردگی کا تجربہ کریں ہائی کمپلیکس ٹاسکس، بے حد پرامن پرومپٹس، اور نظر نہ آنے والے مناظر کے ساتھ بے حد فصاحت اور انسانی طرح سمجھ سے ناواقفی۔",
+    "sidebar__conversation__message__context_cleared": "سیاق صاف کیا گیا"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

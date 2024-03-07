@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "클로드-3-손네트에 액세스하려면 업그레이드하세요",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic의 Claude-3-Sonnet은 지능과 속도 사이의 균형을 유지하며, 200k 토큰 기능을 제공합니다. 데이터 처리, 판매 최적화, 코드 생성 등과 같이 정확성과 속도를 모두 요구하는 작업에 이상적입니다.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "클로드-3-오푸스에 액세스하려면 업그레이드하세요",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic의 가장 지능적인 모델로, 200k 토큰 기능을 제공합니다. 매우 복잡한 작업, 무한한 프롬프트, 시각 없는 시나리오에서 뛰어난 유창성과 인간과 같은 이해력을 경험해보세요."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic의 가장 지능적인 모델로, 200k 토큰 기능을 제공합니다. 매우 복잡한 작업, 무한한 프롬프트, 시각 없는 시나리오에서 뛰어난 유창성과 인간과 같은 이해력을 경험해보세요.",
+    "sidebar__conversation__message__context_cleared": "컨텍스트 지워짐"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Frissítés a claude-3-sonnet eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Az Anthropic Claude-3-Sonnet modellje egyensúlyt teremt az intelligencia és a sebesség között, 200 ezer tokenes kapacitással. Ideális olyan feladatokhoz, amelyek precizitást és sebességet igényelnek, például adatfeldolgozás, értékesítés optimalizálása, kódgenerálás és még sok más.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Frissítés a claude-3-opus eléréséhez",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Az Anthropic legintelligensebb modellje, 200 ezer tokenes kapacitással. Tapasztald meg a legjobb teljesítményt a nagyon összetett feladatokban, nyitott végű kérdésekben és előre nem látott helyzetekben rendkívüli folyékonysággal és emberi megértéssel."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Az Anthropic legintelligensebb modellje, 200 ezer tokenes kapacitással. Tapasztald meg a legjobb teljesítményt a nagyon összetett feladatokban, nyitott végű kérdésekben és előre nem látott helyzetekben rendkívüli folyékonysággal és emberi megértéssel.",
+    "sidebar__conversation__message__context_cleared": "Kontextus törölve"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

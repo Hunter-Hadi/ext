@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "claude-3-sonnet ची प्रवेशसाध्यता अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic चे Claude-3-Sonnet बुद्धिमत्ता आणि गतीमय संतुलन जत्रा करतो, 200k-टोकन क्षमतेसह. डेटा प्रोसेसिंग, विक्रय अपचयन, कोड उत्पादन इत्यादीसारख्या कार्यांसाठी योग्यता आणि गती दोन्ही मागणार्या कार्यांसाठी पूर्ण.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "claude-3-opus ची प्रवेशसाध्यता अपग्रेड करा",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic चे सर्वोत्कृष्ट बुद्धिमत्ता असलेले मॉडेल, 200k-टोकन क्षमतेसह. अत्यंत संकटापूर्ण कार्यांच्या उदाहरणांवर, नेव्हिगेट करण्यासाठी उघड प्रॉम्प्ट्स आणि दृष्टीहीन परिस्थितींवर श्रेष्ठ-बाजार क्षमता अनुभवा, अद्यावत क्षमतेने बिनवाड्य आणि मानवप्रमाणे समजून दर्शवा."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic चे सर्वोत्कृष्ट बुद्धिमत्ता असलेले मॉडेल, 200k-टोकन क्षमतेसह. अत्यंत संकटापूर्ण कार्यांच्या उदाहरणांवर, नेव्हिगेट करण्यासाठी उघड प्रॉम्प्ट्स आणि दृष्टीहीन परिस्थितींवर श्रेष्ठ-बाजार क्षमता अनुभवा, अद्यावत क्षमतेने बिनवाड्य आणि मानवप्रमाणे समजून दर्शवा.",
+    "sidebar__conversation__message__context_cleared": "संदर्भ साफ केला"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

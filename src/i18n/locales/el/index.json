@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Αναβαθμίστε για πρόσβαση στο claude-3-sonnet",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Το Claude-3-Sonnet της Anthropic επιτυγχάνει έναν ισορροπημένο συνδυασμό μεταξύ νοημοσύνης και ταχύτητας, με δυνατότητα 200k tokens. Ιδανικό για εργασίες που απαιτούν ακρίβεια και ταχύτητα, όπως επεξεργασία δεδομένων, βελτιστοποίηση πωλήσεων, δημιουργία κώδικα και πολλά άλλα.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Αναβαθμίστε για πρόσβαση στο claude-3-opus",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Το πιο έξυπνο μοντέλο της Anthropic, με δυνατότητα 200k tokens. Ζήστε την καλύτερη απόδοση στην αγορά για υψηλά πολύπλοκα καθήκοντα, ανοιχτές εντολές και προβλήματα που δεν έχετε δει ποτέ, με εξαιρετική ευχέρεια και ανθρώπινη κατανόηση."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Το πιο έξυπνο μοντέλο της Anthropic, με δυνατότητα 200k tokens. Ζήστε την καλύτερη απόδοση στην αγορά για υψηλά πολύπλοκα καθήκοντα, ανοιχτές εντολές και προβλήματα που δεν έχετε δει ποτέ, με εξαιρετική ευχέρεια και ανθρώπινη κατανόηση.",
+    "sidebar__conversation__message__context_cleared": "Καθαρισμός περιβάλλοντος"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

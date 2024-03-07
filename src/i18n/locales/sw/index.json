@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Nunua ili kupata ufikiaji wa claude-3-sonnet",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Claude-3-Sonnet ya Anthropic inaleta usawa kati ya akili na kasi, na uwezo wa maneno 200k. Kamili kwa kazi zinazohitaji usahihi na kasi, kama vile usindikaji wa data, optimization ya mauzo, uundaji wa nambari, na zaidi.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Nunua ili kupata ufikiaji wa claude-3-opus",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Modeli yenye akili zaidi ya Anthropic, na uwezo wa maneno 200k. Pata utendaji bora sokoni kwenye kazi zenye ugumu mkubwa, maelekezo yasiyokuwa na mwisho, na hali ambazo hazijawahi kuonekana kwa ufasaha na uelewa unaofanana na binadamu."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Modeli yenye akili zaidi ya Anthropic, na uwezo wa maneno 200k. Pata utendaji bora sokoni kwenye kazi zenye ugumu mkubwa, maelekezo yasiyokuwa na mwisho, na hali ambazo hazijawahi kuonekana kwa ufasaha na uelewa unaofanana na binadamu.",
+    "sidebar__conversation__message__context_cleared": "Muktadha umefutwa"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

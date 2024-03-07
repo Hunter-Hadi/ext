@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "ಕ್ಲೋಡ್-3-ಸೊನ್ನೆಟ್ ಪ್ರವೇಶಕ್ಕಾಗಿ ಮೆಚ್ಚುಗೆ ಮಾಡಿ",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic ಯಾವುದೇ ಕಠಿಣ ಕಾರ್ಯಗಳ ಮೇಲೆ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಹೊಂದುವ ಅತ್ಯುತ್ತಮ ಮಾದರಿ. 200k-ಟೋಕನ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿರುವ Claude-3-Sonnet ಆಯ್ಕೆಗಳಿಗೆ ಸರಿಯಾದ ಆಯ್ಕೆ. ಡೇಟಾ ಪ್ರಕ್ರಿಯೆ, ಮಾರಾಟ ಅನುಕೂಲಕ್ಕೆ, ಕೋಡ್ ರಚನೆ ಮುಂತಾದ ಶ್ರೇಷ್ಠತೆ ಮತ್ತು ವೇಗದ ಅಗತ್ಯವನ್ನು ಹೊಂದಿರುವ ಕೆಲಸಗಳಿಗೆ ಸರಿಯಾದ ಆಯ್ಕೆ.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "ಕ್ಲೋಡ್-3-ಓಪಸ್ ಪ್ರವೇಶಕ್ಕಾಗಿ ಮೆಚ್ಚುಗೆ ಮಾಡಿ",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic ಯಾವುದೇ ಕಠಿಣ ಕಾರ್ಯಗಳ ಮೇಲೆ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಹೊಂದುವ ಅತ್ಯುತ್ತಮ ಮಾದರಿ. 200k-ಟೋಕನ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿರುವ ಆಯ್ಕೆ. ಕಠಿಣ ಕಾರ್ಯಗಳ, ಸೀಮಿತವಾದ ಪ್ರಾಂಪ್ಟ್‌ಗಳು ಮತ್ತು ನೋಡಿದವುಗಳ ಸಹಜ ಸಾಮರ್ಥ್ಯದಲ್ಲಿ ಅದ್ಭುತ ಸುಧಾರಣೆಯನ್ನು ಅನುಭವಿಸಿ."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic ಯಾವುದೇ ಕಠಿಣ ಕಾರ್ಯಗಳ ಮೇಲೆ ಉತ್ತಮ ಪ್ರದರ್ಶನ ಹೊಂದುವ ಅತ್ಯುತ್ತಮ ಮಾದರಿ. 200k-ಟೋಕನ್ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿರುವ ಆಯ್ಕೆ. ಕಠಿಣ ಕಾರ್ಯಗಳ, ಸೀಮಿತವಾದ ಪ್ರಾಂಪ್ಟ್‌ಗಳು ಮತ್ತು ನೋಡಿದವುಗಳ ಸಹಜ ಸಾಮರ್ಥ್ಯದಲ್ಲಿ ಅದ್ಭುತ ಸುಧಾರಣೆಯನ್ನು ಅನುಭವಿಸಿ.",
+    "sidebar__conversation__message__context_cleared": "ಸಂದರ್ಭ ತೆರವಲಾಗಿದೆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

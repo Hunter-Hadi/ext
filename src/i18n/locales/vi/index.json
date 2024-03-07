@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Nâng cấp để truy cập claude-3-sonnet",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Claude-3-Sonnet của Anthropic đạt được sự cân bằng giữa thông minh và tốc độ, với khả năng 200k-token. Hoàn hảo cho các nhiệm vụ đòi hỏi độ chính xác và tốc độ, như xử lý dữ liệu, tối ưu hóa bán hàng, tạo mã và nhiều hơn nữa.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Nâng cấp để truy cập claude-3-opus",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Mô hình thông minh nhất của Anthropic, với khả năng 200k-token. Trải nghiệm hiệu suất tốt nhất trên các nhiệm vụ phức tạp, yêu cầu mở và các tình huống không được nhìn thấy trước với sự trôi chảy đáng kinh ngạc và hiểu biết giống con người."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Mô hình thông minh nhất của Anthropic, với khả năng 200k-token. Trải nghiệm hiệu suất tốt nhất trên các nhiệm vụ phức tạp, yêu cầu mở và các tình huống không được nhìn thấy trước với sự trôi chảy đáng kinh ngạc và hiểu biết giống con người.",
+    "sidebar__conversation__message__context_cleared": "Xóa ngữ cảnh"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

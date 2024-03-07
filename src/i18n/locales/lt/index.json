@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-sonnet",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic Claude-3-Sonnet pasiekia pusiausvyrą tarp intelekto ir greičio, turintis 200 tūkst. ženklų talpą. Puikiai tinka užduotims, reikalaujančioms tiek precizijos, tiek greičio, pvz., duomenų apdorojimui, pardavimų optimizavimui, kodo generavimui ir kt.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-opus",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic išmanžiausias modelis su 200 tūkst. ženklų talpą. Patirkite geriausią rinkoje savybes sudėtingoms užduotims, atviroms užduotims ir nematytams scenarijams su pastebimu sklandumu ir žmogišku supratimu."
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic išmanžiausias modelis su 200 tūkst. ženklų talpą. Patirkite geriausią rinkoje savybes sudėtingoms užduotims, atviroms užduotims ir nematytams scenarijams su pastebimu sklandumu ir žmogišku supratimu.",
+    "sidebar__conversation__message__context_cleared": "Kontekstas išvalytas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

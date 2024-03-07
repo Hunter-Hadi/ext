@@ -640,7 +640,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "আপগ্রেড করে claude-3-sonnet এক্সেস করুন",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic-এর ক্লোড-৩-সনেট বুদ্ধিমত্তা এবং দ্রুততার মধ্যে একটি সমন্বয় স্থাপন করে, ২০০k-টোকেন ক্ষমতার সাথে। ডেটা প্রসেসিং, বিক্রয় অপটিমাইজেশন, কোড জেনারেশন ইত্যাদি সহ সঠিকতা এবং দ্রুততা প্রয়োজনীয় কাজের জন্য একটি উত্তম বিকল্প।",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "আপগ্রেড করে claude-3-opus এক্সেস করুন",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic-এর সবচেয়ে বুদ্ধিমান মডেল, ২০০k-টোকেন ক্ষমতার সাথে। অত্যন্ত জটিল কাজ, অপেন-এন্ডেড প্রম্পট এবং দৃষ্টিহীন স্থিতিতে অবাধ্যতা এবং মানুষের মতো বোঝার সাথে অবিশ্বাস্যভাবে ফ্লুয়েন্সি দেখায়।"
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic-এর সবচেয়ে বুদ্ধিমান মডেল, ২০০k-টোকেন ক্ষমতার সাথে। অত্যন্ত জটিল কাজ, অপেন-এন্ডেড প্রম্পট এবং দৃষ্টিহীন স্থিতিতে অবাধ্যতা এবং মানুষের মতো বোঝার সাথে অবিশ্বাস্যভাবে ফ্লুয়েন্সি দেখায়।",
+    "sidebar__conversation__message__context_cleared": "সংদর্শন মুছে ফেলা হয়েছে"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

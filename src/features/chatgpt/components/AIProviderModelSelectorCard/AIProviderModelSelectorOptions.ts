@@ -27,12 +27,12 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     AIProvider: 'USE_CHAT_GPT_PLUS',
     tag: 'Vision',
   },
-  // {
-  //   mainPart: true,
-  //   label: 'claude-3-opus',
-  //   value: 'claude-3-opus',
-  //   AIProvider: 'MAXAI_CLAUDE',
-  // },
+  {
+    mainPart: true,
+    label: 'claude-3-opus',
+    value: 'claude-3-opus',
+    AIProvider: 'MAXAI_CLAUDE',
+  },
   {
     mainPart: true,
     label: 'claude-3-sonnet',

@@ -638,6 +638,7 @@
     "sidebar__promotion_dialog__content_item6__title": "Gemini-pro",
     "sidebar__promotion_dialog__content_item6__description": "Access Google's most capable and general model for multimodality.",
     "sidebar__promotion_dialog__cta_button": "Upgrade now - Offer ends soon!",
+    "sidebar__conversation__message__context_cleared": "Context cleared",
     "translation_advanced__title": "Translation settings",
     "translation_advanced__source_lang_select__label": "Source language",
     "translation_advanced__target_lang_select__label": "Target language"

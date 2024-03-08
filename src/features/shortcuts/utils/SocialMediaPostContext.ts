@@ -1,3 +1,5 @@
+import { ISidebarConversationType } from "@/features/sidebar/types"
+
 export interface ICommentData {
   content: string
   author: string
@@ -28,7 +30,7 @@ ${content}`,
       lastText: comments[comments.length - 1].text,
       previous,
       previousText: previous.map((comment) => comment.text).join('\n\n'),
-      fullText: comments.join('\n\n'),
+      fullText: comments.map((comment) => comment.text).join('\n\n'),
     }
   }
   return null
@@ -64,7 +66,8 @@ export default class SocialMediaPostContext {
     postContentTagName: string
     meta?: {
       [key in string]: string
-    }
+    },
+    type?: ISidebarConversationType
   }
   constructor(
     post: ISocialMediaPost,
@@ -73,18 +76,21 @@ export default class SocialMediaPostContext {
       postContentTagName?: string
       meta?: {
         [key in string]: string
-      }
+      },
+      type?: ISidebarConversationType
     },
   ) {
     const {
       postTitle = 'Post',
       postContentTagName = 'Post caption/description',
       meta = {},
+      type
     } = options || {}
     this.config = {
       postTitle,
       postContentTagName,
       meta,
+      type
     }
     this.post = post
   }
@@ -97,31 +103,37 @@ export default class SocialMediaPostContext {
     }
   }
   addCommentList(commentList: ICommentData[]) {
-    console.log('simply addCommentList 1',commentList)
+    console.log('simply addCommentList 1', commentList)
     this.commentList.push(commentList)
   }
 
   get data(): ISocialMediaPostContextData {
     const { content, author, title } = this.post
-    console.log('simply addCommentList 2',this.commentList)
-
+    console.log('simply addCommentList 2', this.commentList, this.post)
     const commentsData = createCommentListData(this.commentList?.[0] || [])
-    console.log('simply commentsData',commentsData)
+    console.log('simply commentsData', commentsData)
+    const isSummaryTool = this.config.type === 'Summary'
 
     let postText = ''
     postText += `[${this.config.postTitle}]`
     postText += `\n**Post author:** ${author || 'N/A'}`
     postText += `\n**Post title:** ${title || 'N/A'}`
+    if (isSummaryTool && commentsData?.fullText) {
+      postText += `\n**Post commentList:** ${commentsData.fullText || 'N/A'}`
+    }
     postText += `\n**${this.config.postContentTagName}:**\n${content || 'N/A'}`
     let pageContent = ''
     pageContent += `[Page title]: ${title || 'N/A'}`
     pageContent += `\n[Page author]: ${author || 'N/A'}`
     pageContent += `\n[Page content]:\n${content || 'N/A'}`
+    if (isSummaryTool && commentsData?.fullText) {
+      pageContent += `\n[Page commentList]:\n${commentsData.fullText || 'N/A'}`
+    }
     Object.keys(this.config.meta || {}).forEach((metaKey) => {
       postText += `\n**${metaKey}:**\n${this.config.meta?.[metaKey] || 'N/A'}`
       pageContent += `\n[${metaKey}]:\n${this.config.meta?.[metaKey] || 'N/A'}`
     })
-    if (commentsData?.lastText) {
+    if (commentsData?.lastText && !isSummaryTool) {
       return {
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: commentsData.lastText,
         SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: commentsData.previousText

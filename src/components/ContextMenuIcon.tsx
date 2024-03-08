@@ -73,6 +73,9 @@ import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
+import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
+import ClosedCaptionOffOutlinedIcon from '@mui/icons-material/ClosedCaptionOffOutlined';
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -164,6 +167,7 @@ export const CONTEXT_MENU_ICONS = [
   'PictureAsPdf',
   'PDF',
   'NewChat',
+  'AutoStoriesOutlined',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -464,6 +468,24 @@ const ContextMenuIcon: FC<{
             ...sxMemo,
             color: '#379837',
           }}
+        />
+      )
+    case 'AutoStoriesOutlined':
+      return (
+        <AutoStoriesOutlinedIcon
+          sx={sxMemo}
+        />
+      )
+    case 'CommentOutlined':
+      return (
+        <CommentOutlinedIcon
+          sx={sxMemo}
+        />
+      )
+    case 'ClosedCaptionOffOutlined':
+      return (
+        <ClosedCaptionOffOutlinedIcon
+          sx={sxMemo}
         />
       )
     default:

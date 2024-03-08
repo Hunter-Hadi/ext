@@ -14,12 +14,17 @@ import {
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
+import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt } from './pageSummaryPrompt'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
   | 'YOUTUBE_VIDEO_SUMMARY'
   | 'PDF_CRX_SUMMARY'
   | 'DEFAULT_EMAIL_SUMMARY'
+
+export const PAGE_SUMMARY_YOUTUB_TIME_STAMPED_SUMMARY_PROMPT = ''
+export const PAGE_SUMMARY_YOUTUB_TOP_COMMENTS_PROMPT = ''
+export const PAGE_SUMMARY_YOUTUB_KEY_TRANSCRIPT_PROMPT = ''
 
 export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   [key in IPageSummaryType]: IContextMenuItem
@@ -130,23 +135,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
-
-The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}.
-
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-`,
+              text: getSummaryPagePrompt(),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -309,27 +298,7 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
-
-The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
-
-Output a summary, a list of key takeaways, and a list of action items respectively.
-The summary should be a one-liner in at most 100 words. 
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-
-#### Action Items
-<list of action items>
-`,
+              text: getSummaryEmailPrompt(),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -496,23 +465,7 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
-
-The context text originates from the main content of a PDF is in the system prompt.
-
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-`,
+              text: getSummaryPdfPrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -677,40 +630,7 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: ` from {{page}}
-
-I want you to only answer in {{language}}. Your goal is to divide the chunk of the transcript into sections of information with a common theme and note the beginning timestamp of each section.
-Each information block should not be less than 2 minutes, contains the timestamp of the beginning of the section, a textual description of the main content of the entire section, and 1 to 3 bullet points that elaborate on the main ideas of the entire section. Do not use words like "emphasis" to go into the exact detail and terminology.
-Your response must be concise, informative and easy to read & understand.
-Use the specified format:
-
-- [Section beginning Timestamp URL] [Section emoji] [Section key takeaway in {{english}}]
-
-  - Section key takeaway,
-
-  - [Use as many bullet points for section key takeaways as you need].
-
-
-Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task.  focus on practical implementations. include the specific topics discussed, the advice given to students, and any specific tools or methods recommended for use in the course.
-
-The timestamp should be presented in markdown URL format. The URL text indicates, and the address links to a specific time in the video, for example:
-- [00:00](https://youtu.be/Mde2q7GFCrw?t=0s)  ...
-- [01:18](https://youtu.be/Mde2q7GFCrw?t=78s)  ...
-- [03:37](https://youtu.be/Mde2q7GFCrw?t=217s)  ...
-
-Keep emoji relevant and unique to each section. Do not use the same emoji for every section. Do not render brackets. Do not prepend takeaway with "Key takeaway".
-
-[VIDEO TITLE]:
-{{desc}}
-
-[VIDEO URL]:
-{{url}}
-
-[VIDEO TRANSCRIPT CHUNK]:
-{{chunk}}
-
-[TRANSCRIPT INFORMATION SECTIONS IN {{language}}]:
-`,
+              text: getSummaryYoutubeVideoPrompt(),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },

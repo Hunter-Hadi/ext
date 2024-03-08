@@ -29,11 +29,12 @@ import {
 import SocialMediaPostContext, {
   ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
-  type?:string
+  type?:ISidebarConversationType
 ): Promise<ISocialMediaPostContextData> => {
   const inputAssistantButton = document.querySelector(
     inputAssistantButtonElementSelector,

@@ -139,7 +139,9 @@ const useClientConversation = () => {
     } else if (conversationType === 'Summary') {
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
-      if (conversationId && (await clientGetConversation(conversationId))) {
+      let conversationInfo = await clientGetConversation(conversationId)
+      //判断了第一个是否是添加消息，才是最开始的actions
+      if (conversationId && conversationInfo?.meta?.lastRunActions?.[0].parameters?.ActionChatMessageOperationType === 'add') {
         return conversationId
       }
       const conversationTitleMap: {
@@ -225,6 +227,7 @@ const useClientConversation = () => {
     if (clientWritingMessage.loading) {
       return
     }
+    debugger
     console.log(
       '新版Conversation 清除conversation',
       currentSidebarConversationType,

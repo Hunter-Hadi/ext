@@ -117,6 +117,7 @@ const useAIProviderUpload = () => {
           break
         case 'USE_CHAT_GPT_PLUS':
         case 'MAXAI_CLAUDE':
+        case 'MAXAI_GEMINI':
           {
             const newFiles = await Promise.all(
               newUploadFiles.map(async (chatUploadFile) => {
@@ -226,7 +227,7 @@ const useAIProviderUpload = () => {
                     meta: {
                       status:
                         errorItem.uploadErrorMessage ===
-                        `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+                          `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
                           ? 'info'
                           : 'error',
                     },

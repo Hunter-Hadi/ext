@@ -642,7 +642,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "క్లోడ్-3-ఓపస్ కి ప్రాధాన్యత ఇవ్వండి",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic అత్యుత్తమ మోడల్, 200k-టోకెన్ సామర్థ్యం ఉంచేందుకు. అత్యుత్తమ కార్యకలాపాలపై మార్కెట్ పనిచేసే పనిమోడల్, ఓపెన్-ఎండెడ్ ప్రాంప్ట్లను మరియు చూడలేని స్థాయిలో అనుభవించడంలో అద్భుత స్వాధీనత మరియు మానవిక అర్థంతనం ఉంచే సామర్థ్యం.",
     "sidebar__conversation__message__context_cleared": "కంటెక్స్టు తొలగించబడింది",
-    "pdf_ai_viewer__share_button__title": "మూల PDF URL నకలు"
+    "pdf_ai_viewer__share_button__title": "మూల PDF URL నకలు",
+    "provider__gemini__upload__accept_tooltip": "ఫైల్ అప్లోడ్ చేయండి JPEG, PNG, WEBP"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

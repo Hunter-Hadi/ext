@@ -642,7 +642,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Naik taraf untuk mengakses claude-3-opus",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Model paling pintar Anthropic, dengan keupayaan 200k-token. Rasai prestasi terbaik di pasaran untuk tugas-tugas yang sangat kompleks, permintaan tanpa had, dan skenario yang tidak diketahui dengan lancar dan pemahaman seperti manusia.",
     "sidebar__conversation__message__context_cleared": "Konteks dibersihkan",
-    "pdf_ai_viewer__share_button__title": "Salin URL PDF asal"
+    "pdf_ai_viewer__share_button__title": "Salin URL PDF asal",
+    "provider__gemini__upload__accept_tooltip": "Muat naik fail JPEG, PNG, WEBP"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -642,7 +642,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-opus",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic išmanžiausias modelis su 200 tūkst. ženklų talpą. Patirkite geriausią rinkoje savybes sudėtingoms užduotims, atviroms užduotims ir nematytams scenarijams su pastebimu sklandumu ir žmogišku supratimu.",
     "sidebar__conversation__message__context_cleared": "Kontekstas išvalytas",
-    "pdf_ai_viewer__share_button__title": "Kopijuoti originalų PDF URL"
+    "pdf_ai_viewer__share_button__title": "Kopijuoti originalų PDF URL",
+    "provider__gemini__upload__accept_tooltip": "Įkelkite failą JPEG, PNG, WEBP"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

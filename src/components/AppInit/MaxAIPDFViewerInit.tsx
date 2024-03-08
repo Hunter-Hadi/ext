@@ -24,7 +24,7 @@ import useInterval from '@/features/common/hooks/useInterval'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { isMaxAIPDFPage, handleMaxAIPDFViewerResize } from '@/utils/dataHelper/websiteHelper'
+import { isMaxAIPDFPage, handleMaxAIPDFViewerResize, getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const MAXAIPDFAIViewerErrorAlert: FC = () => {
@@ -435,10 +435,7 @@ const MaxAIPDFAIViewerShareButton: FC = () => {
   const { element } = useFindElement('#toolbarViewerRight')
   const [show, setShow] = useState(false);
 
-  const shareURL = useMemo(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get('file') || '';
-  }, [window.location.search]);
+  const shareURL = useMemo(() => getOriginalFileURL(window.location.search), [window.location.search]);
 
   useEffect(() => {
     if (shareURL.includes('http')) {

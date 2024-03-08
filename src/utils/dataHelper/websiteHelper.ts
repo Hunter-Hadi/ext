@@ -143,7 +143,7 @@ export const isMaxAIPage = () => {
 /**
  * 获取文件原本的 URL，如果没有直接返回传入的 URL
  */
-export const getOriginalFileURL = (url: string) => {
+export const getOriginalFileURL = (url = '') => {
   if (isMaxAIPDFPage()) {
     url = new URLSearchParams(url.split('?')[1]).get('file') || url;
   }

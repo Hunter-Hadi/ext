@@ -4,7 +4,7 @@ import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { OPENAI_API_SYSTEM_MESSAGE } from '@/background/src/chat/OpenAIApiChat/types'
+import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import {
   IChatConversation,
@@ -115,7 +115,9 @@ const useClientConversation = () => {
       }
       // 如果是OPENAI_API，那么就加上systemPrompt
       if (currentAIProvider === 'OPENAI_API') {
-        baseMetaConfig.systemPrompt = OPENAI_API_SYSTEM_MESSAGE
+        baseMetaConfig.systemPrompt = openAIAPISystemPromptGenerator(
+          currentModel,
+        )
       }
       // 创建一个新的conversation
       const result = await port.postMessage({

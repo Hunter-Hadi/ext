@@ -6,7 +6,7 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'gemini-pro',
     maxTokens: 32768,
-    tags: ['Beta'],
+    tags: ['Beta', 'Vision'],
     poweredBy: 'Google',
     description: (t) =>
       t(`client:provider__gemini__model__gemini_pro__description`),

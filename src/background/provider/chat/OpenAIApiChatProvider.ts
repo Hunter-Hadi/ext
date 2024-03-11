@@ -8,7 +8,7 @@ import {
 import { OpenAiApiChat } from '@/background/src/chat'
 import {
   IOpenAIApiChatMessage,
-  OPENAI_API_SYSTEM_MESSAGE,
+  openAIAPISystemPromptGenerator,
 } from '@/background/src/chat/OpenAIApiChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
@@ -61,7 +61,9 @@ class OpenAIApiChatProvider implements ChatAdapterInterface {
         role: 'system',
         content:
           this.openAiApiChat.conversation?.meta.systemPrompt ||
-          OPENAI_API_SYSTEM_MESSAGE,
+          openAIAPISystemPromptGenerator(
+            this.openAiApiChat.conversation?.meta.AIModel || '',
+          ),
       },
     ]
     const options = question.meta || {}

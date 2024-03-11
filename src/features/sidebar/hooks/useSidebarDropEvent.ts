@@ -10,8 +10,9 @@ const IsSidebarDragOverAtom = atom({
 })
 
 const useSidebarDropEvent = () => {
-  const { uploadImagesAndSwitchToMaxAIVisionModel } =
-    useUploadImagesAndSwitchToMaxAIVisionModel()
+  const {
+    uploadImagesAndSwitchToMaxAIVisionModel,
+  } = useUploadImagesAndSwitchToMaxAIVisionModel()
 
   const [isSidebarDragOver, setIsSidebarDragOver] = useRecoilState(
     IsSidebarDragOverAtom,
@@ -34,12 +35,13 @@ const useSidebarDropEvent = () => {
 
     // 检查相关目标是否还在外层div内
     if (
-      relatedTarget &&
-      !(
-        relatedTargetOffsetParent &&
-        relatedTargetOffsetParent?.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID
-      ) &&
-      !event.currentTarget.contains(relatedTarget)
+      (relatedTarget &&
+        !(
+          relatedTargetOffsetParent &&
+          relatedTargetOffsetParent?.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID
+        ) &&
+        !event.currentTarget.contains(relatedTarget)) ||
+      !relatedTarget
     ) {
       // 设置你的状态为false
       setIsSidebarDragOver(false)

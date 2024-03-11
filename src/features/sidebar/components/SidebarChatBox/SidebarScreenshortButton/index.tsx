@@ -88,6 +88,11 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         currentAIProviderModel,
       )
     }
+    if (currentAIProvider === 'MAXAI_GEMINI') {
+      return ['gemini-pro'].includes(
+        currentAIProviderModel,
+      )
+    }
     return false
   }, [currentAIProvider, currentAIProviderModel])
   return {

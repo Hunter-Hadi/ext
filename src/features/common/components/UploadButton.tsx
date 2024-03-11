@@ -1,6 +1,6 @@
+import React, { type FC, type ChangeEvent } from 'react'
 import Button, { ButtonProps } from '@mui/material/Button'
 import { styled } from '@mui/material/styles'
-import * as React from 'react'
 
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
@@ -16,10 +16,10 @@ const VisuallyHiddenInput = styled('input')({
 
 interface IUploadButtonProps extends Omit<ButtonProps, 'onChange'> {
   accept?: string
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
-const UploadButton: React.FC<IUploadButtonProps> = (props) => {
+const UploadButton: FC<IUploadButtonProps> = (props) => {
   const {
     children,
     variant = 'contained',

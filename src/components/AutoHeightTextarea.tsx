@@ -21,7 +21,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { useUploadImagesAndSwitchToVision } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
+import { useUploadImagesAndSwitchToMaxAIVisionModel } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -173,15 +173,11 @@ const AutoHeightTextarea: FC<{
   minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
-  const {
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationId, currentSidebarConversationType } =
+    useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const {
-    isChatGPTVision,
-    uploadImagesAndSwitchToVision,
-  } = useUploadImagesAndSwitchToVision()
+  const { isMaxAIVisionModel, uploadImagesAndSwitchToMaxAIVisionModel } =
+    useUploadImagesAndSwitchToMaxAIVisionModel()
   const {
     defaultValue,
     onChange,
@@ -489,7 +485,7 @@ const AutoHeightTextarea: FC<{
           }}
           onPaste={async (event) => {
             event.stopPropagation()
-            if (isChatGPTVision) {
+            if (isMaxAIVisionModel) {
               // 粘贴处理
               const clipboardData = event.clipboardData
               const items = clipboardData?.items
@@ -502,7 +498,7 @@ const AutoHeightTextarea: FC<{
                 const image = images[0]
                 const file = image.getAsFile()
                 if (file) {
-                  await uploadImagesAndSwitchToVision([file])
+                  await uploadImagesAndSwitchToMaxAIVisionModel([file])
                 }
               }
             }

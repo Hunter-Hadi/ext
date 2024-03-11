@@ -27,9 +27,11 @@ import MaxAISummarizeButton from '@/minimum/components/FloatingMenuButton/button
 import { isArticlePage as checkIsArticlePage } from '@/minimum/utils'
 const DEFAULT_TOP = window.innerHeight * 0.382
 
-const actionsCount = 5
-// 顶部安全高度 = 4个按钮高度 + 16px
-const safeTopY = actionsCount * (32 + 6) + 16
+const aboveActionsCount = 3
+const underActionsCount = 4
+// 安全高度 = 按钮高度 + 16px
+const safeTopY = aboveActionsCount * (32 + 6) + 16
+const safeBottomYOffset = underActionsCount * (32 + 6) + 16
 
 const saveBowserLocalStoreageFloatingButtonY = async (y: number) => {
   await Browser.storage.local.set({
@@ -59,21 +61,17 @@ const FloatingMenuButton: FC = () => {
 
   useEffect(() => {
     if (height) {
-      if (height - 32 <= dragAxisY) {
+      if (dragAxisY < safeTopY || height <= safeTopY + safeBottomYOffset) {
+        // 最小顶部安全高度
+        setDragAxisY(safeTopY)
+      } else if (dragAxisY > height - safeBottomYOffset) {
+        // 最小低部安全高度
+        setDragAxisY(height - safeBottomYOffset)
+      } else if (height - 32 <= dragAxisY) {
+        // 在安全高度之内
         const calcY = height - 32
         const newPosition = calcY <= 0 ? DEFAULT_TOP : calcY
         setDragAxisY(newPosition)
-      } else if (dragAxisY < safeTopY) {
-        // 最小顶部高度
-        setDragAxisY(safeTopY)
-      }
-
-      // 底部距离
-      const bottom = height - dragAxisY
-      // 最小底部高度 = 4个按钮高度 + 16px
-      const safeBottomY = 4 * (32 + 6) + 16
-      if (bottom < safeBottomY) {
-        setDragAxisY(height - safeBottomY)
       }
     }
   }, [dragAxisY, height])

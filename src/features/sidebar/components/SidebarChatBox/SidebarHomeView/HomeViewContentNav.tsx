@@ -19,7 +19,7 @@ import HomeViewAISearchInput from './HomeViewAISearchInput'
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 import HomeViewImageUploader from './HomeViewImageUploader'
 import HomeViewPageSummaryButton from './HomeViewPageSummaryButton'
-import HomeViewPDFUploader from './HomeViewPDFUploader'
+import HomeViewPdfFUploader from './HomeViewPdfFUploader'
 
 type IHomeViewNavItemValueType =
   | 'immersive_chat'
@@ -116,7 +116,7 @@ const HomeViewContentNav = () => {
           <HomeViewImageUploader />
         </Grid>
         <Grid item xs={6} order={3}>
-          <HomeViewPDFUploader />
+          <HomeViewPdfFUploader />
         </Grid>
         <Grid
           item

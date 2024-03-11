@@ -138,13 +138,26 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         chat_history.splice(0, 1)
       }
     }
+    const content: IMaxAIChatMessageContent[] = [
+      {
+        type: 'text',
+        text: question.text,
+      },
+    ]
+    if (question.meta?.attachments) {
+      question.meta.attachments.forEach((attachment) => {
+        if (attachment.uploadStatus === 'success' && attachment.uploadedUrl) {
+          content.push({
+            type: 'image_url',
+            image_url: {
+              url: attachment.uploadedUrl,
+            },
+          })
+        }
+      })
+    }
     await this.useChatGPTPlusChat.askChatGPT(
-      [
-        {
-          type: 'text',
-          text: question.text,
-        },
-      ],
+      content,
       {
         doc_id: docId,
         backendAPI,

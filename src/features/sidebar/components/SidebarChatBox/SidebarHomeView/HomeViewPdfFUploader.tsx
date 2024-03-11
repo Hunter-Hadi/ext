@@ -8,7 +8,7 @@ import { chromeExtensionClientOpenPage } from '@/utils'
 
 import HomeViewContentNavIcons from './HomeViewContentNavIcons'
 
-const HomeViewPDFUploader = () => {
+const HomeViewPdfFUploader = () => {
   const { t } = useTranslation(['client'])
 
   return (
@@ -90,4 +90,4 @@ const HomeViewPDFUploader = () => {
   )
 }
 
-export default HomeViewPDFUploader
+export default HomeViewPdfFUploader

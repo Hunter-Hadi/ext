@@ -2,7 +2,9 @@ import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { IUserChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
@@ -14,6 +16,7 @@ const BaseSidebarUserMessage: FC<{
   message: IUserChatMessage
   order?: number
 }> = (props) => {
+  const { t } = useTranslation(['client'])
   const { message, order } = props
   const memoSx = useMemo(() => {
     return {
@@ -46,7 +49,13 @@ const BaseSidebarUserMessage: FC<{
 
   return (
     <Box component={'div'} className={'chat-message--user'}>
-      {showDivider && <Divider sx={{ mb: 2 }} />}
+      {showDivider && (
+        <Divider sx={{ mb: 2 }}>
+          <Typography color={'text.secondary'} fontSize={'12px'}>
+            {t('client:sidebar__conversation__message__context_cleared')}
+          </Typography>
+        </Divider>
+      )}
       <SidebarUserMessageContexts message={message} />
       <Stack
         className={'chat-message--text'}

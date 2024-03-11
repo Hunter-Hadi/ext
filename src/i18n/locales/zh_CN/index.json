@@ -635,9 +635,14 @@
     "sidebar__input__summary__video_placeholder": "询问 AI 关于视频的任何事情...",
     "sidebar__input__search__placeholder": "在网上搜索...",
     "sidebar__input__art__placeholder": "询问 AI...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet在智能和速度之间取得了理想的平衡。该模型经过优化，适用于大规模AI部署，并在代码生成和质量控制等各种应用中表现出色。",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "升级以访问Claude-3-Sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "释放Claude 3 Sonnet的潜力——Anthropic动态强大的模型，具备20万个令牌的能力。非常适合需要精确和快速处理数据的任务，如数据处理、销售优化和代码生成。提升您的AI能力，驱动成功，立即订阅Claude 3 Sonnet，体验不同！"
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet在智能和速度之间取得了平衡。非常适合需要精确性和速度的任务，如数据处理、销售优化、代码生成等。",
+    "provider__claude__model__claude_3_opus__description": "Anthropic最智能的模型，在高度复杂的任务上表现出色。它可以在开放式提示和未知情景中流畅地导航，并具有人类般的理解能力，展示了生成式AI的可能性的极限。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "升级以访问claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic的Claude-3-Sonnet在智能和速度之间取得了平衡，拥有20万个令牌的能力。非常适合需要精确性和速度的任务，如数据处理、销售优化、代码生成等。",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "升级以访问claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic最智能的模型，拥有20万个令牌的能力。体验在高度复杂的任务、开放式提示和未知情景中表现出色的最佳性能，具有流畅的理解能力和人类般的理解能力。",
+    "sidebar__conversation__message__context_cleared": "上下文已清除",
+    "pdf_ai_viewer__share_button__title": "复制原始PDF网址"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

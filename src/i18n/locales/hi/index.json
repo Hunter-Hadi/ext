@@ -635,9 +635,14 @@
     "sidebar__input__summary__video_placeholder": "वीडियो के बारे में AI से कुछ पूछें...",
     "sidebar__input__search__placeholder": "वेब से पूछें...",
     "sidebar__input__art__placeholder": "AI से पूछें...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet बुद्धिमत्ता और गति के बीच सही संतुलन स्थापित करता है। यह मॉडल बड़े पैमाने पर AI डिप्लॉयमेंट में उच्च सहनशक्ति के लिए इंजीनियर किया गया है, और कोड जनरेशन और गुणवत्ता नियंत्रण जैसे विभिन्न अनुप्रयोगों में उत्कृष्टता प्रदर्शित करता है।",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "क्लोड-3-सोनेट तक पहुंच अपग्रेड करें",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Claude 3 Sonnet की क्षमता को खोलें - Anthropic का गतिशील पॉवरहाउस जिसमें 200,000 टोकन की क्षमता है। सटीकता और गति की मांग करने वाले कार्यों के लिए उत्कृष्ट, यह मॉडल डेटा प्रोसेसिंग, बिक्री अनुकूलन और कोड जनरेशन में उत्कृष्टता प्रदर्शित करता है। अपनी AI क्षमताओं को ऊंचा करें और Claude 3 Sonnet के साथ सफलता प्राप्त करें - अभी सदस्यता लें और अंतर का अनुभव करें!"
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet बुद्धिमत्ता और गति के बीच संतुलन स्थापित करता है। डेटा प्रसंस्करण, बिक्री अनुकूलन, कोड उत्पादन आदि जैसे कार्यों के लिए यह सही है जो सटीकता और गति दोनों की मांग करते हैं।",
+    "provider__claude__model__claude_3_opus__description": "Anthropic का सबसे बुद्धिमान मॉडल, जो उच्च जटिल कार्यों पर श्रेष्ठ-बाजार प्रदर्शन के साथ है। यह खुले-समाप्त प्रॉम्प्ट और दृष्टि-नहीं-देखे स्थितियों को बेहद धाराप्रवाह और मानव-जैसी समझ के साथ नेविगेट कर सकता है, जो हमें जनरेटिव AI के संभावित बाह्य सीमाओं को दिखाता है।",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "claude-3-sonnet तक पहुँच के लिए अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Anthropic का Claude-3-Sonnet बुद्धिमत्ता और गति के बीच संतुलन स्थापित करता है, जिसमें 200k-टोकन क्षमता होती है। डेटा प्रसंस्करण, बिक्री अनुकूलन, कोड उत्पादन आदि जैसे कार्यों के लिए यह सही है जो सटीकता और गति दोनों की मांग करते हैं।",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "claude-3-opus तक पहुँच के लिए अपग्रेड करें",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropic का सबसे बुद्धिमान मॉडल, जिसमें 200k-टोकन क्षमता होती है। उच्च जटिल कार्यों, खुले-समाप्त प्रॉम्प्ट्स और दृष्टि-नहीं-देखे स्थितियों पर धाराप्रवाह और मानव-जैसी समझ के साथ श्रेष्ठ-बाजार प्रदर्शन का अनुभव करें।",
+    "sidebar__conversation__message__context_cleared": "संदर्भ साफ हुआ",
+    "pdf_ai_viewer__share_button__title": "मूल PDF URL की प्रतिलिपि बनाएँ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

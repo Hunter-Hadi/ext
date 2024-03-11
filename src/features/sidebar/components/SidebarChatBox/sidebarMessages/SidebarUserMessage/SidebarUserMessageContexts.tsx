@@ -8,6 +8,7 @@ import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, Fragment, useMemo, useState } from 'react'
 
+import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import { IUserChatMessage } from '@/features/chatgpt/types'
 
@@ -91,19 +92,24 @@ const SidebarUserMessageContexts: FC<{
                   {contexts?.map((context, index) => {
                     return (
                       <Fragment key={index}>
-                        <Chip
-                          variant={'outlined'}
-                          label={context.key}
-                          color={'primary'}
-                          size="small"
-                          sx={{
-                            width: 'max-content',
-                            bgcolor: (t) =>
-                              t.palette.mode === 'dark'
-                                ? 'rgba(249,244,255)'
-                                : 'rgba(249,244,255)',
-                          }}
-                        />
+                        <Stack direction={'row'} gap={1} alignItems={'center'}>
+                          <Chip
+                            variant={'outlined'}
+                            label={context.key}
+                            color={'primary'}
+                            size="small"
+                            sx={{
+                              width: 'max-content',
+                              bgcolor: (t) =>
+                                t.palette.mode === 'dark'
+                                  ? 'rgba(249,244,255)'
+                                  : 'rgba(249,244,255)',
+                            }}
+                          />
+                          <CopyTooltipIconButton
+                            copyText={context.value?.trim() ?? ''}
+                          />
+                        </Stack>
                         <Typography
                           width={384}
                           whiteSpace={'pre-wrap'}
@@ -113,7 +119,7 @@ const SidebarUserMessageContexts: FC<{
                           lineHeight={'24px'}
                           fontSize={'16px'}
                         >
-                          {context.value}
+                          {context.value?.trim() ?? ''}
                         </Typography>
                         {
                           // 最后一个不需要分割线

@@ -635,9 +635,14 @@
     "sidebar__input__summary__video_placeholder": "Hỏi AI về video...",
     "sidebar__input__search__placeholder": "Hỏi trên web...",
     "sidebar__input__art__placeholder": "Hỏi AI...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet đạt được sự cân bằng lý tưởng giữa thông minh và tốc độ. Mô hình này được thiết kế để chịu được tải cao trong triển khai trí tuệ nhân tạo quy mô lớn, và xuất sắc trong các ứng dụng khác nhau như sinh mã code và kiểm soát chất lượng.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Nâng cấp để truy cập claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Khai phá tiềm năng của Claude 3 Sonnet - công cụ mạnh mẽ của Anthropic với khả năng xử lý 200,000 từ. Hoàn hảo cho các nhiệm vụ đòi hỏi độ chính xác và tốc độ, mô hình này xuất sắc trong xử lý dữ liệu, tối ưu hóa bán hàng và sinh mã code. Nâng cao khả năng trí tuệ nhân tạo của bạn và đạt được thành công với Claude 3 Sonnet - đăng ký ngay và trải nghiệm sự khác biệt!"
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet đạt được sự cân bằng giữa thông minh và tốc độ. Hoàn hảo cho các nhiệm vụ đòi hỏi độ chính xác và tốc độ, như xử lý dữ liệu, tối ưu hóa bán hàng, tạo mã và nhiều hơn nữa.",
+    "provider__claude__model__claude_3_opus__description": "Mô hình thông minh nhất của Anthropic, với hiệu suất tốt nhất trên các nhiệm vụ phức tạp. Nó có thể điều hướng các yêu cầu mở và các tình huống không được nhìn thấy trước với sự trôi chảy đáng kinh ngạc và hiểu biết giống con người, cho chúng ta thấy giới hạn xa nhất của những gì có thể làm được với trí tuệ nhân tạo sinh sản.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Nâng cấp để truy cập claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Claude-3-Sonnet của Anthropic đạt được sự cân bằng giữa thông minh và tốc độ, với khả năng 200k-token. Hoàn hảo cho các nhiệm vụ đòi hỏi độ chính xác và tốc độ, như xử lý dữ liệu, tối ưu hóa bán hàng, tạo mã và nhiều hơn nữa.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Nâng cấp để truy cập claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Mô hình thông minh nhất của Anthropic, với khả năng 200k-token. Trải nghiệm hiệu suất tốt nhất trên các nhiệm vụ phức tạp, yêu cầu mở và các tình huống không được nhìn thấy trước với sự trôi chảy đáng kinh ngạc và hiểu biết giống con người.",
+    "sidebar__conversation__message__context_cleared": "Xóa ngữ cảnh",
+    "pdf_ai_viewer__share_button__title": "Sao chép URL PDF gốc"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

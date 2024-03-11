@@ -117,7 +117,13 @@ class MaxAIClaudeChat extends BaseChat {
       chat_history = [],
       meta,
     } = options || {}
+
     const userConfig = await getAIProviderSettings('MAXAI_CLAUDE')
+    const currentModel =
+      this.conversation?.meta.AIModel ||
+      userConfig!.model ||
+      MAXAI_CLAUDE_MODELS[0].value
+    this.clearFiles()
     const postBody = Object.assign(
       {
         chat_history,
@@ -125,10 +131,7 @@ class MaxAIClaudeChat extends BaseChat {
         streaming,
         message_content,
         chrome_extension_version: APP_VERSION,
-        model_name:
-          this.conversation?.meta.AIModel ||
-          userConfig!.model ||
-          MAXAI_CLAUDE_MODELS[0].value,
+        model_name: currentModel,
         prompt_id: meta?.contextMenu?.id || 'chat',
         prompt_name: meta?.contextMenu?.text || 'chat',
         // TODO: 界面还没做

@@ -41,7 +41,6 @@ export const backgroundSendMaxAINotification = async (
       platform: os.name,
       platform_version: os.version,
       languages: navigator.languages,
-      fp: '',
     }),
     'MaxAI',
   ).toString()

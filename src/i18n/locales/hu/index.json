@@ -635,9 +635,14 @@
     "sidebar__input__summary__video_placeholder": "Kérdezze az AI-t bármit a videóról...",
     "sidebar__input__search__placeholder": "Kérdezze a webet...",
     "sidebar__input__art__placeholder": "Kérdezze az AI-t...",
-    "provider__claude__model__claude_3_200k__description": "A Claude 3 Sonnet az intelligencia és a sebesség ideális egyensúlyát üti meg. Ez a modell nagy teljesítményű AI telepítésekhez lett tervezve, és kiválóan alkalmas olyan alkalmazásokhoz, mint a kódgenerálás és a minőségellenőrzés.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Frissítés a claude-3-sonnet eléréséhez",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Engedje szabadjára a Claude 3 Sonnet potenciálját - az Anthropic dinamikus erőgépét, amely 200 000 token képességgel rendelkezik. Tökéletes feladatokhoz, amelyek precizitást és sebességet igényelnek, ez a modell kiemelkedik az adatfeldolgozásban, az értékesítés optimalizálásában és a kódgenerálásban. Fejlessze AI képességeit és érjen el sikereket a Claude 3 Sonnettel - iratkozzon fel most és tapasztalja meg a különbséget!"
+    "provider__claude__model__claude_3_sonnet__description": "A Claude-3-Sonnet egyensúlyt teremt az intelligencia és a sebesség között. Ideális olyan feladatokhoz, amelyek precizitást és sebességet igényelnek, például adatfeldolgozás, értékesítés optimalizálása, kódgenerálás és még sok más.",
+    "provider__claude__model__claude_3_opus__description": "Az Anthropic legintelligensebb modellje, kiemelkedő teljesítménnyel a nagyon összetett feladatokban. Képes navigálni nyitott végű kérdések és előre nem látott helyzetek között rendkívüli folyékonysággal és emberi megértéssel, bemutatva nekünk a generatív AI határait.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Frissítés a claude-3-sonnet eléréséhez",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Az Anthropic Claude-3-Sonnet modellje egyensúlyt teremt az intelligencia és a sebesség között, 200 ezer tokenes kapacitással. Ideális olyan feladatokhoz, amelyek precizitást és sebességet igényelnek, például adatfeldolgozás, értékesítés optimalizálása, kódgenerálás és még sok más.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Frissítés a claude-3-opus eléréséhez",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Az Anthropic legintelligensebb modellje, 200 ezer tokenes kapacitással. Tapasztald meg a legjobb teljesítményt a nagyon összetett feladatokban, nyitott végű kérdésekben és előre nem látott helyzetekben rendkívüli folyékonysággal és emberi megértéssel.",
+    "sidebar__conversation__message__context_cleared": "Kontextus törölve",
+    "pdf_ai_viewer__share_button__title": "Másolja az eredeti PDF URL-t"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

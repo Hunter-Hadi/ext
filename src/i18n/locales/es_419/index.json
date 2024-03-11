@@ -635,9 +635,14 @@
     "sidebar__input__summary__video_placeholder": "Pregúntale a la IA cualquier cosa sobre el video...",
     "sidebar__input__search__placeholder": "Pregunta en la web...",
     "sidebar__input__art__placeholder": "Pregúntale a la IA...",
-    "provider__claude__model__claude_3_200k__description": "Claude 3 Sonnet encuentra el equilibrio ideal entre inteligencia y velocidad. Este modelo está diseñado para una alta resistencia en implementaciones de IA a gran escala, y destaca en diversas aplicaciones como generación de código y control de calidad.",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__title": "Actualiza para acceder a claude-3-sonnet",
-    "permission__pricing_hook__max_ai_paid_model__claude_v3__description": "Libera el potencial de Claude 3 Sonnet, la poderosa herramienta dinámica de Anthropic con una capacidad de 200,000 tokens. Perfecto para tareas que requieren precisión y velocidad, este modelo sobresale en procesamiento de datos, optimización de ventas y generación de código. Mejora tus capacidades de IA y alcanza el éxito con Claude 3 Sonnet. ¡Suscríbete ahora y experimenta la diferencia!"
+    "provider__claude__model__claude_3_sonnet__description": "Claude-3-Sonnet encuentra un equilibrio entre inteligencia y velocidad. Perfecto para tareas que requieren precisión y velocidad, como procesamiento de datos, optimización de ventas, generación de código y más.",
+    "provider__claude__model__claude_3_opus__description": "El modelo más inteligente de Anthropic, con un rendimiento líder en el mercado en tareas altamente complejas. Puede navegar por indicaciones abiertas y escenarios desconocidos con una fluidez y comprensión similares a las humanas, mostrándonos los límites de lo posible con la IA generativa.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title": "Actualiza para acceder a claude-3-sonnet",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description": "Claude-3-Sonnet de Anthropic encuentra un equilibrio entre inteligencia y velocidad, con una capacidad de 200k tokens. Perfecto para tareas que requieren precisión y velocidad, como procesamiento de datos, optimización de ventas, generación de código y más.",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Actualiza para acceder a claude-3-opus",
+    "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "El modelo más inteligente de Anthropic, con una capacidad de 200k tokens. Experimenta el mejor rendimiento del mercado en tareas altamente complejas, indicaciones abiertas y escenarios desconocidos con una fluidez y comprensión similares a las humanas.",
+    "sidebar__conversation__message__context_cleared": "Contexto borrado",
+    "pdf_ai_viewer__share_button__title": "Copiar URL original del PDF"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

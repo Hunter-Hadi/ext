@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -7,13 +7,18 @@ import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientCon
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
+import {
+  getPageSummaryConversationId,
+  getPageSummaryType,
+} from '@/features/sidebar/utils/pageSummaryHelper'
+import { AppState } from '@/store'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -24,6 +29,7 @@ import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSumma
  *
  */
 const useInitSidebar = () => {
+  const appState = useRecoilValue(AppState)
   const { createPageSummary } = usePageSummary()
   const { pageUrl, startListen } = usePageUrlChange()
   const {
@@ -44,7 +50,7 @@ const useInitSidebar = () => {
   }, [sidebarSettings])
   useEffect(() => {
     let isExpired = false
-    if (currentSidebarConversationType) {
+    if (currentSidebarConversationType && appState.open) {
       const switchConversation = async (conversationId?: string) => {
         if (!conversationId) {
           return
@@ -76,12 +82,7 @@ const useInitSidebar = () => {
         case 'Summary':
           {
             // 切换回cache中的conversation
-            createPageSummary()
-              .then()
-              .then()
-              .finally(() => {
-                startListen()
-              })
+            createPageSummary().then().then()
           }
           break
         case 'Search':
@@ -103,11 +104,11 @@ const useInitSidebar = () => {
     return () => {
       isExpired = true
     }
-  }, [currentSidebarConversationType])
+  }, [currentSidebarConversationType, appState.open])
   // summary 重新生成的逻辑
   useEffect(() => {
     // 如果不是Summary, return
-    if (currentSidebarConversationType !== 'Summary') {
+    if (currentSidebarConversationType !== 'Summary' || !appState.open) {
       return
     }
     if (currentSidebarConversation?.id) {
@@ -117,9 +118,8 @@ const useInitSidebar = () => {
       }
       // 如果有消息了
       if (currentSidebarConversation?.messages) {
-        const firstAIMessage = currentSidebarConversation?.messages.find(
-          isAIMessage,
-        )
+        const firstAIMessage =
+          currentSidebarConversation?.messages.find(isAIMessage)
         // 如果已经有总结并且完成了，那就跳出
         if (firstAIMessage?.originalMessage?.metadata?.isComplete) {
           return
@@ -129,7 +129,11 @@ const useInitSidebar = () => {
       // 直接触发create
     }
     createPageSummary().then().catch().finally()
-  }, [currentSidebarConversation?.id, currentSidebarConversationType])
+  }, [
+    currentSidebarConversation?.id,
+    currentSidebarConversationType,
+    appState.open,
+  ])
   // summary 聚焦处理
   useFocus(() => {
     if (pageConversationTypeRef.current === 'Summary') {
@@ -140,10 +144,32 @@ const useInitSidebar = () => {
       })
     }
   })
-  // Summary的特殊逻辑 - 切换url的时候为了省下token，直接切换到chat
+  // Summary的特殊逻辑
+  // - 切换url的时候为了省下token，直接切换到chat
+  // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
+  const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
-    if (pageConversationTypeRef.current === 'Summary') {
-      updateSidebarConversationType('Chat')
+    pageUrlIsUsedRef.current = false
+  }, [pageUrl])
+  useEffect(() => {
+    if (!pageUrlIsUsedRef.current) {
+      const pageSummaryType = getPageSummaryType()
+      pageUrlIsUsedRef.current = true
+      console.log('special pageSummaryType', pageSummaryType)
+      if (
+        pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
+        pageSummaryType === 'PDF_CRX_SUMMARY'
+      ) {
+        updateSidebarSettings({
+          summary: {
+            conversationId: getPageSummaryConversationId(),
+          },
+        }).then(() => {
+          updateSidebarConversationType('Summary')
+        })
+      } else if (pageConversationTypeRef.current === 'Summary') {
+        updateSidebarConversationType('Chat')
+      }
     }
   }, [pageUrl])
   // 监听搜索引擎的continue search with ai
@@ -178,6 +204,9 @@ const useInitSidebar = () => {
         },
       )
     }
+  })
+  useEffectOnce(() => {
+    startListen()
   })
 }
 

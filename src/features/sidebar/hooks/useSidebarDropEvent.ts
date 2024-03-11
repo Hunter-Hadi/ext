@@ -49,7 +49,6 @@ const useSidebarDropEvent = () => {
   }, [])
 
   const handleDrop = async (event: any) => {
-    console.log('testestdropdrop')
     const file = event.dataTransfer.files[0]
 
     const isImage = file.type.includes('image')

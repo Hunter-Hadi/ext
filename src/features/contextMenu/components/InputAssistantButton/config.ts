@@ -65,7 +65,7 @@ export type InputAssistantButtonGroupConfigHostType =
   | 'reddit.com'
 
 const InputAssistantButtonGroupConfig = {
-  'mail.google.com': {
+  'mail.google.com': [{
     enable: true,
     rootSelectors: ['.btC'],
     rootParentDeep: 0,
@@ -98,7 +98,28 @@ const InputAssistantButtonGroupConfig = {
       borderRadius: '18px',
       margin: '0 0 0 12px',
     },
-  },
+  }, {
+    enable: true,
+    rootSelectors: ['.amn'],
+    rootParentDeep: 0,
+    rootWrapperTagName: 'td',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+    },
+    appendPosition: 4,
+    CTAButtonStyle: {
+      borderRadius: '18px',
+      iconSize: 18,
+      padding: '9px',
+      borderWidth: 0,
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '18px',
+      margin: '0 0 0 12px',
+    },
+  }],
   'outlook.office.com': {
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -133,7 +154,7 @@ const InputAssistantButtonGroupConfig = {
       margin: '0 0 0 12px',
     },
   },
-  'outlook.live.com': {
+  'outlook.live.com': [{
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
     rootParentDeep: 1,
@@ -165,7 +186,28 @@ const InputAssistantButtonGroupConfig = {
     InputAssistantBoxSx: {
       margin: '0 0 0 12px',
     },
-  },
+  }, {
+    enable: true,
+    rootSelectors: ['.th6py'],
+    rootParentDeep: 0,
+    rootStyle: 'overflow: unset;',
+    rootParentStyle: 'overflow: unset;',
+    rootWrapperTagName: 'div',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+    },
+    appendPosition: 2,
+    CTAButtonStyle: {
+      padding: '6px 20px',
+      borderWidth: 0,
+      borderRadius: '4px',
+    },
+    InputAssistantBoxSx: {
+      margin: '4px 0 0 12px',
+    },
+  }],
   'outlook.office365.com': {
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -501,8 +543,8 @@ const InputAssistantButtonGroupConfig = {
     InputAssistantBoxSx: {},
   },
 } as {
-  [key in InputAssistantButtonGroupConfigHostType]: IInputAssistantButtonGroupConfig
-}
+    [key in InputAssistantButtonGroupConfigHostType]: IInputAssistantButtonGroupConfig | IInputAssistantButtonGroupConfig[]
+  }
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
   InputAssistantButtonGroupConfig,
 ) as InputAssistantButtonGroupConfigHostType[]

@@ -23,10 +23,14 @@ import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
 function getStrTime(url: string) {
   try {
-    const timeStr = url.match(/\d+s/); // 使用正则表达式匹配数字加"s"的模式
-    if (timeStr) {
-      const seconds = parseInt(timeStr[0], 10); // 将匹配到的时间字符串转换为整数
+    let parsedUrl = new URL(url);
+    let params = new URLSearchParams(parsedUrl.search);
+    let time = params.get('t');
+    if (time) {
+      let seconds = parseInt(time.replace('s', ''), 10);
       return seconds
+    } else {
+      return false
     }
   } catch (e) {
     return false
@@ -37,11 +41,7 @@ const OverrideAnchor: FC<{
   href?: string
   title?: string
 }> = (props) => {
-  let url = props.href
   let isYoutubeTimeUrl = props.href && props.href.startsWith("https://www.youtube.com/watch") && props.href.endsWith("s")
-  if (isYoutubeTimeUrl && props.href) {
-    url = props.href.replace("https://www.youtube.com", "")
-  }
   if (props.href?.startsWith('key=')) {
     const params = new URLSearchParams(props.href)
     const key: any = params.get('key') || ''
@@ -64,18 +64,22 @@ const OverrideAnchor: FC<{
     }
   }
   const clickUrl = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault()
-    try {
-      var video = document.querySelector('video');
-      if (video && props.href) {
-        const timeStr = getStrTime(props.href)
-        if (typeof timeStr === 'number') {
-          video.currentTime = timeStr;
+    debugger
+    if (isYoutubeTimeUrl) {
+      e.preventDefault()
+      try {
+        var video = document.querySelector('video');
+        if (video && props.href) {
+          const timeStr = getStrTime(props.href)
+          if (typeof timeStr === 'number') {
+            video.currentTime = timeStr;
+          }
         }
-      }
-    } catch (e) {
+      } catch (e) {
 
+      }
     }
+
 
   }
   return (

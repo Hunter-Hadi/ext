@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent, useEffect } from 'react'
+import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent, type ChangeEvent, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -39,6 +39,14 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
       Browser.extension.isAllowedFileSchemeAccess().then((result) => {
         isAccessPermissionRef.current = result
       })
+      // Use MaxAI event to cover the native event
+      const nativeFileInput = document.querySelector<HTMLInputElement>('#fileInput');
+      if (nativeFileInput) {
+        // @ts-ignore
+        nativeFileInput.addEventListener('change', handleUploadFile);
+        // @ts-ignore
+        return () => nativeFileInput.removeEventListener('change', handleUploadFile);
+      }
     }
   })
 
@@ -103,6 +111,17 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
     //   }
     // }
   }
+
+  const handleUploadFile = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files?.[0]
+      if (file) {
+        handleUploadPDF(file)
+        // reset
+        event.target.value = ''
+      }
+    }
+  }, [])
 
   const handleUploadPDF = async (file: File) => {
     setUploadLoading(true)
@@ -215,16 +234,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
           >
             <UploadButton
               accept=".pdf"
-              onChange={(event) => {
-                if (event.target.files && event.target.files.length > 0) {
-                  const file = event.target.files?.[0]
-                  if (file) {
-                    handleUploadPDF(file)
-                    // reset
-                    event.target.value = ''
-                  }
-                }
-              }}
+              onChange={handleUploadFile}
               variant={'contained'}
               sx={{
                 position: 'relative',

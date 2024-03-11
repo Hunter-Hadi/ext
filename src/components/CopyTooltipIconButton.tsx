@@ -21,8 +21,8 @@ interface ICopyTooltipIconButton extends IconButtonProps {
   icon?: ReactNode
   copyToClipboardTooltip?: I18nextKeysType
   copiedTooltip?: I18nextKeysType
-  TooltipProps: ITooltipIconButton['TooltipProps']
-  PopperProps: ITooltipIconButton['PopperProps']
+  TooltipProps?: ITooltipIconButton['TooltipProps']
+  PopperProps?: ITooltipIconButton['PopperProps']
 }
 const CopyTooltipIconButton: FC<ICopyTooltipIconButton> = (props) => {
   const {

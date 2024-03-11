@@ -396,6 +396,7 @@
     "provider__gemini__auth_description": "Use Gemini to power the extension.",
     "provider__gemini__auth_button_text": "Continue with Gemini",
     "provider__gemini__model__gemini_pro__description": "Google's Gemini family, designed to offer scalability and exhibits strong generalist capabilities, supporting 38 languages and a context window of 32k tokens.",
+    "provider__gemini__upload__accept_tooltip": "Upload file JPEG, PNG, WEBP",
     "provider__free_ai__title": "Free AI",
     "provider__free_ai__short_description": "Designed for basic usage, it offers key features but does not encompass the extensive versatility and advanced capabilities of our Pro/Elite models. Ideal for newcomers exploring MaxAI features or for casual applications.",
     "provider__free_ai__auth_description": "FreeAI provides fundamental functionalities similar to other LLMs. ",

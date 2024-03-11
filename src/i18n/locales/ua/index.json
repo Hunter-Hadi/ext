@@ -642,7 +642,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "Оновити, щоб отримати доступ до claude-3-opus",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Найрозумніша модель Anthropic з можливістю обробки 200 тис. токенів. Досвідчуйте найкращу продуктивність на складних завданнях, відкритих запитах та сценаріях без попереднього перегляду з неймовірною легкістю та розумінням, наближеним до людського.",
     "sidebar__conversation__message__context_cleared": "Контекст очищено",
-    "pdf_ai_viewer__share_button__title": "Копіювати посилання на оригінальний PDF"
+    "pdf_ai_viewer__share_button__title": "Копіювати посилання на оригінальний PDF",
+    "provider__gemini__upload__accept_tooltip": "Завантажте файл JPEG, PNG, WEBP"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

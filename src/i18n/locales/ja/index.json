@@ -642,7 +642,8 @@
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title": "クロード-3-オーパスへのアップグレード",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description": "Anthropicの最も知能が高いモデルであり、200kトークンの能力を持っています。非常に複雑なタスク、オープンエンドのプロンプト、未見のシナリオにおいて市場最高のパフォーマンスと驚くほど流暢で人間らしい理解力を体験してください。",
     "sidebar__conversation__message__context_cleared": "コンテキストがクリアされました",
-    "pdf_ai_viewer__share_button__title": "オリジナルのPDF URLをコピー"
+    "pdf_ai_viewer__share_button__title": "オリジナルのPDF URLをコピー",
+    "provider__gemini__upload__accept_tooltip": "JPEG、PNG、WEBPファイルをアップロードしてください"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

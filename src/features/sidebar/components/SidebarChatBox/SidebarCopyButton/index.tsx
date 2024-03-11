@@ -77,11 +77,11 @@ const SidebarCopyButton: FC<{
       setDelayIsHover(false)
       clearTimeout(copySuccessTimer.current)
       setCopyButtonKey('')
-      return () => {}
+      return () => { }
     }
   }, [isHover])
   return (
-    <React.Fragment>
+    <>
       <Button
         ref={copyButtonRef}
         sx={{
@@ -277,7 +277,7 @@ const SidebarCopyButton: FC<{
           </ListItem>
         </List>
       </Popover>
-    </React.Fragment>
+    </>
   )
 }
 export default SidebarCopyButton

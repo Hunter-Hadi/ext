@@ -14,5 +14,12 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
       roles: ['elite'],
     },
+    uploadFileConfig: {
+      maxFileSize: 20 * 1024 * 1024, // 20
+      accept: '.jpg,.jpeg,.png,.webp',
+      acceptTooltip: (t) =>
+        t('client:provider__gemini__upload__accept_tooltip'),
+      maxCount: 1,
+    },
   },
 ]

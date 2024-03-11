@@ -95,7 +95,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     }
     return loading
   }, [loading, renderData.messageIsComplete, isRichAIMessage])
-  const { switchSummaryNavDom } = useSwitchSummaryAction(message, coverLoading, order)
+  const { SwitchSummaryNavDom } = useSwitchSummaryAction(message, coverLoading, order)
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -119,7 +119,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
 
   return (
     <Stack ref={chatMesssageRef} className={'chat-message--text'} sx={{ ...memoSx }}>
-      {switchSummaryNavDom()}
+      {<SwitchSummaryNavDom />}
       {isRichAIMessage ? (
         <Stack spacing={2}>
           {renderData.title && (

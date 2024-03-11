@@ -33,11 +33,13 @@ export const HeightUpdateScrolling: FC<IProps> = ({ children, height, update }) 
     const scrollRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
+        scrollToBottom()
+    }, [update])
+    const scrollToBottom = throttle(() => {
         if (scrollRef.current) {
             scrollRef.current.scrollTop = scrollRef.current.scrollHeight
         }
-    }, [update])
-
+    }, 100); // 100ms的延迟
     useEffect(() => {
         const handleScroll = throttle(() => {
             if (scrollRef.current && scrollTopRef.current) {

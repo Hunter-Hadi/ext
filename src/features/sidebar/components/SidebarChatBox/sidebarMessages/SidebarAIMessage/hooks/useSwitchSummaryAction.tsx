@@ -6,11 +6,11 @@ import useClientChat from "@/features/chatgpt/hooks/useClientChat"
 import { IAIResponseMessage } from "@/features/chatgpt/types"
 import { ISetActionsType } from "@/features/shortcuts/types/Action"
 import useSidebarSettings from "@/features/sidebar/hooks/useSidebarSettings"
-import {getPageSummaryType, getSummaryNavActions, allSummaryNavList } from "@/features/sidebar/utils/pageSummaryHelper"
+import { getPageSummaryType, getSummaryNavActions, allSummaryNavList } from "@/features/sidebar/utils/pageSummaryHelper"
 import { summaryGetPromptObj } from "@/features/sidebar/utils/pageSummaryNavPrompt"
 import { getChromeExtensionLocalStorage, setChromeExtensionLocalStorage } from "@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage"
 
-const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean,order:number) => {
+const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean, order: number) => {
     const [actionKey, setActionKey] = useState('all')
     const { askAIWIthShortcuts } = useClientChat()
     const summaryType = useMemo(() => getPageSummaryType(), [])
@@ -26,7 +26,7 @@ const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean,or
         setActionKey(smmaryNavKey)
     }
     const isShowSummaryNavDom = useMemo(() => {
-        return currentSidebarConversationType === 'Summary'&&order===1
+        return currentSidebarConversationType === 'Summary' && order === 1
     }, [currentSidebarConversationType])
     const clickNavTriggerActionChange = async (navItem: {
         title: string;
@@ -46,7 +46,7 @@ const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean,or
         const actions = getSummaryNavActions({ type: summaryType, messageId: message.messageId, prompt: promptText, title: navItem.title })
         askAIWIthShortcuts((actions as ISetActionsType))
     }
-    const switchSummaryNavDom = () => {
+    const SwitchSummaryNavDom = React.memo(() => {
         if (!isShowSummaryNavDom) return null
         return <ButtonGroup variant="outlined" aria-label="Basic button group" >
             {
@@ -65,8 +65,7 @@ const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean,or
                 ))
             }
         </ButtonGroup >
-
-    }
-    return { switchSummaryNavDom }
+    });
+    return { SwitchSummaryNavDom }
 }
 export default useSwitchSummaryAction

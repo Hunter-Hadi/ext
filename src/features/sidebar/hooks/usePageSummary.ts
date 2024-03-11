@@ -138,7 +138,7 @@ const usePageSummary = () => {
             return
           }
         }
-        const { actions, messageId } = getContextMenuActionsByPageSummaryType(
+        const { actions, messageId } = await getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )
         lastMessageIdRef.current = messageId

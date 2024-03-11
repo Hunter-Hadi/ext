@@ -143,11 +143,8 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         if (window.location.href.startsWith('https://www.youtube.com/shorts')) {
           return youTubeSocialMediaPostContext.data
         }
-        const contentsElement = document.getElementById('contents');
         if (document?.querySelector("#sections #count")) {
-          console.log('simply 评论获取 成功 //////', contentsElement)
           const list = await getCommitList()
-          console.log('simply commit list 1', list)
           youTubeSocialMediaPostContext.addCommentList(list)
         } else {
           let oldScrollY = window.scrollY
@@ -158,18 +155,13 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
               top: items?.scrollHeight + 100,
             });
           }
-          console.log('simply scrollHeight', items?.scrollHeight)
           await awaitScrollFun(() => !!document?.querySelector("#sections #count .style-scope.yt-formatted-string"), 200)//等待#count出现
-          console.log('simply #count出现')
           window.scrollTo({ top: oldScrollY });
           const list = await getCommitList()
-          console.log('simply commit list 2', list)
           youTubeSocialMediaPostContext.addCommentList(list)
         }
 
-
         return youTubeSocialMediaPostContext.data
-
       } else {
         // comment box
         const ytdCommentBox = findParentEqualSelector(

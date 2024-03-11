@@ -146,15 +146,15 @@ export const getSummaryYoutubeVideoPrompt = (key: 'all' | 'transcript' | 'commit
         case 'commit':
             defPrompt += `Output comment list.
             The format of the comment should be as follows.
-            Name: Comment
-            Name: Comment
+            1.Name: Comment
+            2.Name: Comment
             ---
             Use the following format:
-            ####Top Comment
+            #### Top Comment
 
             Here is a summary of the comments, brief and no more than 50 words long
 
-            Display the "comment list" here and output it in regular font`
+            Display the "comment list" here and output it in regular font, with a limit of 15 comments per list`
             break
         case 'transcript':
             defPrompt = `

@@ -174,6 +174,7 @@ export interface IChromeExtensionLocalStorage {
     }
     summary?: {
       conversationId?: string
+      currentNavType?: { [key in string]: string }
     }
     search?: {
       conversationId?: string

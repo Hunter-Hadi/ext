@@ -41,7 +41,8 @@ export const HeightUpdateScrolling: FC<IProps> = ({ children, height, update }) 
     useEffect(() => {
         const handleScroll = throttle(() => {
             if (scrollRef.current && scrollTopRef.current) {
-                if (scrollRef.current.scrollHeight - scrollRef.current.scrollTop === scrollRef.current.clientHeight) {
+                const distanceFromBottom = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - scrollRef.current.clientHeight;
+                if (distanceFromBottom <= 16) {
                     // 滚动到底部
                     scrollTopRef.current.classList.add('shadow-top');
                     scrollTopRef.current.classList.remove('shadow-bottom');

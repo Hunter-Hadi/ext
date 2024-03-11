@@ -29,6 +29,13 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       tag: 'Vision',
     },
     {
+      tag: 'Beta',
+      mainPart: true,
+      label: 'gemini-pro',
+      value: 'gemini-pro',
+      AIProvider: 'MAXAI_GEMINI',
+    },
+    {
       mainPart: true,
       label: 'claude-3-opus',
       value: 'claude-3-opus',
@@ -49,22 +56,15 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       AIProvider: 'MAXAI_CLAUDE',
     },
     {
-      tag: 'Beta',
       mainPart: true,
-      label: 'gemini-pro',
-      value: 'gemini-pro',
-      AIProvider: 'MAXAI_GEMINI',
+      label: 'claude-2-100k',
+      value: 'claude-2',
+      AIProvider: 'MAXAI_CLAUDE',
     },
     {
       mainPart: true,
       label: 'claude-instant-100k',
       value: 'claude-instant-v1',
-      AIProvider: 'MAXAI_CLAUDE',
-    },
-    {
-      mainPart: true,
-      label: 'claude-2-100k',
-      value: 'claude-2',
       AIProvider: 'MAXAI_CLAUDE',
     },
     {

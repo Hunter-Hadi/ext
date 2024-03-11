@@ -112,7 +112,7 @@ const InputAssistantButtonGroupConfig = {
     CTAButtonStyle: {
       borderRadius: '18px',
       iconSize: 18,
-      padding: '9px',
+      padding: '9px 27px',
       borderWidth: 0,
     },
     InputAssistantBoxSx: {

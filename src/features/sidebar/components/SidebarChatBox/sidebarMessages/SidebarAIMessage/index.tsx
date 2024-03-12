@@ -21,9 +21,10 @@ import SidebarAIMessageSkeletonContent from '@/features/sidebar/components/Sideb
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
-import useSwitchSummaryAction from './hooks/useSwitchSummaryAction'
-import { HeightUpdateScrolling } from './HeightUpdateScrolling'
+
 import { messageListContainerId } from '../../SidebarChatBoxMessageListContainer'
+import { HeightUpdateScrolling } from './HeightUpdateScrolling'
+import useSwitchSummaryAction from './hooks/useSwitchSummaryAction'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -36,18 +37,26 @@ interface IProps {
 }
 
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
-  const { message, isDarkMode, liteMode = false, loading = false, order } = props
+  const {
+    message,
+    isDarkMode,
+    liteMode = false,
+    loading = false,
+    order,
+  } = props
   const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(260)
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
-  const chatMesssageRef = useRef<HTMLDivElement>(null)
+  const chatMessageRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const parentElement = chatMesssageRef.current?.closest(`#${messageListContainerId}`)
+    const parentElement = chatMessageRef.current?.closest(
+      `#${messageListContainerId}`,
+    )
     if (parentElement?.clientHeight) {
       const messageListContainerHeight = parentElement.clientHeight
       setSummaryViewMaxHeight(messageListContainerHeight - 380)
     }
-  }, [chatMesssageRef])
+  }, [chatMessageRef])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -95,7 +104,11 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     }
     return loading
   }, [loading, renderData.messageIsComplete, isRichAIMessage])
-  const { SwitchSummaryNavDom } = useSwitchSummaryAction(message, coverLoading, order)
+  const { SwitchSummaryNavDom } = useSwitchSummaryAction(
+    message,
+    coverLoading,
+    order,
+  )
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -115,10 +128,12 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     return !renderData.answer
   }, [renderData.answer])
 
-
-
   return (
-    <Stack ref={chatMesssageRef} className={'chat-message--text'} sx={{ ...memoSx }}>
+    <Stack
+      ref={chatMessageRef}
+      className={'chat-message--text'}
+      sx={{ ...memoSx }}
+    >
       {<SwitchSummaryNavDom />}
       {isRichAIMessage ? (
         <Stack spacing={2}>
@@ -237,7 +252,10 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   contentType={renderData.content.contentType}
                 />
               ) : (
-                <HeightUpdateScrolling height={summaryViewMaxHeight} update={message.text} >
+                <HeightUpdateScrolling
+                  height={summaryViewMaxHeight}
+                  update={message.text}
+                >
                   <SidebarAIMessageContent AIMessage={message} />
                 </HeightUpdateScrolling>
               )}
@@ -249,8 +267,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 <MetadataTitleRender title={renderData.deepDive.title} />
               )}
               <div
-                className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''
-                  }`}
+                className={`markdown-body ${
+                  isDarkMode ? 'markdown-body-dark' : ''
+                }`}
               >
                 <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
               </div>

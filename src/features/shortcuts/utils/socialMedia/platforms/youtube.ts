@@ -19,7 +19,7 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector(
       '#header-author #author-text > span',
     ) as HTMLSpanElement)?.innerText || ''
-  const commmitAuthor =
+  const commentAuthor =
     (ytdCommentBox.querySelector(
       '#header-author #author-text > yt-formatted-string',
     ) as HTMLSpanElement)?.innerText || ''
@@ -42,7 +42,7 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector('#content-text') as HTMLDivElement)
       ?.innerText || ''
   return {
-    author: (author || commmitAuthor).replace(/\n/g, '').trim(),
+    author: (author || commentAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
     like:like.replace(/\n/g, '').trim(),
@@ -152,9 +152,9 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           const list = await getCommitList()
           youTubeSocialMediaPostContext.addCommentList(list)
         } else {
-          let oldScrollY = window.scrollY
+          const oldScrollY = window.scrollY
           //没有则滚动到当前主div的最下面
-          let items = document.querySelector('#columns.style-scope.ytd-watch-flexy');
+          const items = document.querySelector('#columns.style-scope.ytd-watch-flexy');
           if (items) {
             window.scrollTo({
               top: items?.scrollHeight + 100,
@@ -240,19 +240,9 @@ export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   )
   return (youTubeDraftEditor as HTMLDivElement)?.innerText || ''
 }
-const awaitScroll = (sections: HTMLElement | null) => {
-  return new Promise<void>((resolve) => {
-    let countInterval = setInterval(async () => {
-      if (sections && sections.querySelector("#count")) {
-        resolve()
-        clearInterval(countInterval)
-      }
-    }, 200);
-  })
-}
 const awaitScrollFun = async (condition: () => boolean, time?: number) => {
   return new Promise<void>((resolve) => {
-    let countInterval = setInterval(async () => {
+    const countInterval = setInterval(async () => {
       if (condition && condition()) {
         if (time) {
           setTimeout(() => {

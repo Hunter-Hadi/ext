@@ -2,10 +2,12 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import {
@@ -14,19 +16,14 @@ import {
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
+
 import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObj } from './pageSummaryNavPrompt'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
   | 'YOUTUBE_VIDEO_SUMMARY'
   | 'PDF_CRX_SUMMARY'
   | 'DEFAULT_EMAIL_SUMMARY'
-
-export const PAGE_SUMMARY_YOUTUB_TIME_STAMPED_SUMMARY_PROMPT = ''
-export const PAGE_SUMMARY_YOUTUB_TOP_COMMENTS_PROMPT = ''
-export const PAGE_SUMMARY_YOUTUB_KEY_TRANSCRIPT_PROMPT = ''
 
 export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   [key in IPageSummaryType]: IContextMenuItem
@@ -137,7 +134,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: getSummaryPagePrompt(),
+              text: getSummaryPagePrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -300,7 +297,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: getSummaryEmailPrompt(),
+              text: getSummaryEmailPrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -632,7 +629,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: getSummaryYoutubeVideoPrompt(),
+              text: getSummaryYoutubeVideoPrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -767,7 +764,7 @@ export const getSummaryNavActions: (params: { type: IPageSummaryType, messageId?
 
   currentActions = currentActions.map(action => {
     if (action.parameters.ActionChatMessageOperationType === 'add' && params.title) {
-      let actionTitle = (action.parameters?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage?.metadata?.title
+      const actionTitle = (action.parameters?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage?.metadata?.title
       if (actionTitle) {
         actionTitle.title = params.title
       }

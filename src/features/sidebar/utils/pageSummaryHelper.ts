@@ -17,7 +17,7 @@ import {
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
-import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObj } from './pageSummaryNavPrompt'
+import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObject,TSummaryParamsPromptType } from './pageSummaryNavPrompt'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -689,7 +689,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   },
 }
 
-export const allSummaryNavList: { [key in IPageSummaryType]: { title: string, titleIcon: string, key: string }[] } = {
+export const allSummaryNavList: { [key in IPageSummaryType]: { title: string, titleIcon: string, key: TSummaryParamsPromptType }[] } = {
   'PAGE_SUMMARY': [
     { title: 'Summarize page', titleIcon: 'Summarize', key: 'all' },
     { title: 'Summarize page (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
@@ -719,7 +719,7 @@ export const getContextMenuActionsByPageSummaryType = async (
 
   //获取summary导航数据 逻辑
   const summaryNavKey = chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[pageSummaryType] || 'all'
-  const summaryNavPrompt = summaryGetPromptObj[pageSummaryType](summaryNavKey)//as假过判断ts，实际不是all
+  const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](summaryNavKey)//as假过判断ts，实际不是all
   const title = allSummaryNavList[pageSummaryType].find(item => item.key === summaryNavKey)?.title
   const summaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: summaryNavPrompt, title })
   const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])

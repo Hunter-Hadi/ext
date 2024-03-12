@@ -15,7 +15,10 @@ import {
   getPageSummaryType,
   getSummaryNavActions,
 } from '@/features/sidebar/utils/pageSummaryHelper'
-import { summaryGetPromptObj } from '@/features/sidebar/utils/pageSummaryNavPrompt'
+import {
+  summaryGetPromptObject,
+  TSummaryParamsPromptType,
+} from '@/features/sidebar/utils/pageSummaryNavPrompt'
 interface IProps {
   message: IAIResponseMessage
   loading: boolean
@@ -38,11 +41,11 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   const clickNavTriggerActionChange = async (navItem: {
     title: string
     titleIcon: string
-    key: string
+    key: TSummaryParamsPromptType
   }) => {
     if (loading) return
     setActionKey(navItem.key)
-    const promptText = summaryGetPromptObj[summaryType](navItem.key as 'all') //as假过判断ts，实际不是all
+    const promptText = summaryGetPromptObject[summaryType](navItem.key as 'all') //as假过判断ts，实际不是all
     await setChromeExtensionLocalStorage({
       sidebarSettings: {
         summary: {

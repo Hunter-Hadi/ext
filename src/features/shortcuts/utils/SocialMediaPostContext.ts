@@ -1,28 +1,10 @@
-import { ISidebarConversationType } from '@/features/sidebar/types'
-
 export interface ICommentData {
   content: string
   author: string
   date: string
-  like?: string
-}
-export interface ICreateCommentListData {
-  last: {
-    data: ICommentData
-    text: string
-  }
-  lastText: string
-  previous: {
-    data: ICommentData
-    text: string
-  }[]
-  previousText: string
-  fullText: string
 }
 // TODO 只支持单条评论树级
-export const createCommentListData: (
-  commentList: ICommentData[],
-) => ICreateCommentListData | null = (commentList) => {
+export const createCommentListData = (commentList: ICommentData[]) => {
   if (commentList.length > 0) {
     const comments: Array<{
       data: ICommentData
@@ -30,11 +12,10 @@ export const createCommentListData: (
     }> = []
     commentList.forEach((commentData, index) => {
       // index代表 # 的数量
-      const { content, author, like } = commentData
+      const { content, author } = commentData
       comments.push({
         text: `[Comment ${index + 1}]
 **Author:** ${author}
-**like:** ${like}
 **Comment:**
 ${content}`,
         data: commentData,
@@ -47,7 +28,7 @@ ${content}`,
       lastText: comments[comments.length - 1].text,
       previous,
       previousText: previous.map((comment) => comment.text).join('\n\n'),
-      fullText: comments.map((comment) => comment.text).join('\n\n'),
+      fullText: comments.join('\n\n'),
     }
   }
   return null
@@ -84,7 +65,6 @@ export default class SocialMediaPostContext {
     meta?: {
       [key in string]: string
     }
-    type?: ISidebarConversationType
   }
   constructor(
     post: ISocialMediaPost,
@@ -94,20 +74,17 @@ export default class SocialMediaPostContext {
       meta?: {
         [key in string]: string
       }
-      type?: ISidebarConversationType
     },
   ) {
     const {
       postTitle = 'Post',
       postContentTagName = 'Post caption/description',
       meta = {},
-      type,
     } = options || {}
     this.config = {
       postTitle,
       postContentTagName,
       meta,
-      type,
     }
     this.post = post
   }
@@ -126,28 +103,20 @@ export default class SocialMediaPostContext {
   get data(): ISocialMediaPostContextData {
     const { content, author, title } = this.post
     const commentsData = createCommentListData(this.commentList?.[0] || [])
-    const isSummaryTool = this.config.type === 'Summary'
-
     let postText = ''
     postText += `[${this.config.postTitle}]`
     postText += `\n**Post author:** ${author || 'N/A'}`
     postText += `\n**Post title:** ${title || 'N/A'}`
-    if (isSummaryTool && commentsData?.fullText) {
-      postText += `\n**Post commentList:** ${commentsData.fullText || 'N/A'}`
-    }
     postText += `\n**${this.config.postContentTagName}:**\n${content || 'N/A'}`
     let pageContent = ''
     pageContent += `[Page title]: ${title || 'N/A'}`
     pageContent += `\n[Page author]: ${author || 'N/A'}`
     pageContent += `\n[Page content]:\n${content || 'N/A'}`
-    if (isSummaryTool && commentsData?.fullText) {
-      pageContent += `\n[Page commentList]:\n${commentsData.fullText || 'N/A'}`
-    }
     Object.keys(this.config.meta || {}).forEach((metaKey) => {
       postText += `\n**${metaKey}:**\n${this.config.meta?.[metaKey] || 'N/A'}`
       pageContent += `\n[${metaKey}]:\n${this.config.meta?.[metaKey] || 'N/A'}`
     })
-    if (commentsData?.lastText && !isSummaryTool) {
+    if (commentsData?.lastText) {
       return {
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: commentsData.lastText,
         SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: commentsData.previousText

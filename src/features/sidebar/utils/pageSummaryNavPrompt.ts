@@ -189,7 +189,7 @@ Keep emoji relevant and unique to each section. Do not use the same emoji for ev
 // 对象类型
 export type TSummaryParamsPromptType='all' | 'summary' | 'keyTakeaways'| 'commit'| 'transcript'|'actions'
 
-interface SummaryGetPromptObject {
+interface ISummaryGetPromptObject {
     PAGE_SUMMARY: (key?: TSummaryParamsPromptType) => string;
     PDF_CRX_SUMMARY: (key?: TSummaryParamsPromptType) => string;
     YOUTUBE_VIDEO_SUMMARY: (key?: TSummaryParamsPromptType) => string;
@@ -197,7 +197,7 @@ interface SummaryGetPromptObject {
 }
 
 // 定义的对象符合我们之前定义的接口类型
-export const summaryGetPromptObj: SummaryGetPromptObject = {
+export const summaryGetPromptObject: ISummaryGetPromptObject = {
     'PAGE_SUMMARY': getSummaryPagePrompt,
     'PDF_CRX_SUMMARY': getSummaryPdfPrompt,
     'YOUTUBE_VIDEO_SUMMARY': getSummaryYoutubeVideoPrompt,

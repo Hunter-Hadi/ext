@@ -45,7 +45,7 @@ ${content}`,
       lastText: comments[comments.length - 1].text,
       previous,
       previousText: previous.map((comment) => comment.text).join('\n\n'),
-      fullText: comments.join('\n\n'),
+      fullText: comments.map((comment) => comment.text).join('\n\n'),
     }
   }
   return null

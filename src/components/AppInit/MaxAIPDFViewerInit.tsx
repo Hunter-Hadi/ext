@@ -10,7 +10,7 @@ import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent, useEffect } from 'react'
+import React, { useRef, useState, useMemo, useCallback, type FC, type MouseEvent, type ChangeEvent, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
@@ -24,7 +24,7 @@ import useInterval from '@/features/common/hooks/useInterval'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { isMaxAIPDFPage, handleMaxAIPDFViewerResize } from '@/utils/dataHelper/websiteHelper'
+import { isMaxAIPDFPage, handleMaxAIPDFViewerResize, getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const MAXAIPDFAIViewerErrorAlert: FC = () => {
@@ -39,6 +39,26 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
       Browser.extension.isAllowedFileSchemeAccess().then((result) => {
         isAccessPermissionRef.current = result
       })
+      // Use MaxAI event to cover the native event
+      const nativeFileInput = document.querySelector<HTMLInputElement>('#fileInput');
+      if (nativeFileInput) {
+        const handleNativeDrop = (e: CustomEvent<{files: FileList}>) => {
+          const file = e.detail.files?.[0]
+          if (file) {
+            handleUploadPDF(file)
+          }
+        }
+        // @ts-ignore
+        nativeFileInput.addEventListener('nativedrop', handleNativeDrop)
+        // @ts-ignore
+        nativeFileInput.addEventListener('change', handleUploadFile);
+        return () => {
+          // @ts-ignore
+          nativeFileInput.removeEventListener('change', handleUploadFile);
+          // @ts-ignore
+          nativeFileInput.removeEventListener('nativedrop', handleNativeDrop);
+        }
+      }
     }
   })
 
@@ -103,6 +123,17 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
     //   }
     // }
   }
+
+  const handleUploadFile = useCallback((event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files?.[0]
+      if (file) {
+        handleUploadPDF(file)
+        // reset
+        event.target.value = ''
+      }
+    }
+  }, [])
 
   const handleUploadPDF = async (file: File) => {
     setUploadLoading(true)
@@ -215,16 +246,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
           >
             <UploadButton
               accept=".pdf"
-              onChange={(event) => {
-                if (event.target.files && event.target.files.length > 0) {
-                  const file = event.target.files?.[0]
-                  if (file) {
-                    handleUploadPDF(file)
-                    // reset
-                    event.target.value = ''
-                  }
-                }
-              }}
+              onChange={handleUploadFile}
               variant={'contained'}
               sx={{
                 position: 'relative',
@@ -435,10 +457,7 @@ const MaxAIPDFAIViewerShareButton: FC = () => {
   const { element } = useFindElement('#toolbarViewerRight')
   const [show, setShow] = useState(false);
 
-  const shareURL = useMemo(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get('file') || '';
-  }, [window.location.search]);
+  const shareURL = useMemo(() => getOriginalFileURL(window.location.search), [window.location.search]);
 
   useEffect(() => {
     if (shareURL.includes('http')) {

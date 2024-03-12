@@ -100,10 +100,8 @@ const FloatingContextMenu: FC<{
   const currentHostRef = useRef(getCurrentDomainHost())
   const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const {
-    currentSidebarConversationType,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
   const { hideFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
@@ -112,10 +110,8 @@ const FloatingContextMenu: FC<{
   const { isLogin } = useAuthLogin()
   const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
-  const [
-    floatingDropdownMenuSystemItems,
-    setFloatingDropdownMenuSystemItems,
-  ] = useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
+    useRecoilState(FloatingDropdownMenuSystemItemsState)
   // 判断是不是从sidebar的use prompt的按钮点击触发的actions
   const isContextMenuFromSidebar = useCallback(() => {
     const activeElement =
@@ -456,9 +452,8 @@ const FloatingContextMenu: FC<{
         }
         // 如果是[推荐]菜单的动作，则需要转换为[草稿]菜单的动作
         if (isSuggestedContextMenu) {
-          currentContextMenu = contextMenuToFavoriteContextMenu(
-            currentContextMenu,
-          )
+          currentContextMenu =
+            contextMenuToFavoriteContextMenu(currentContextMenu)
         }
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
@@ -548,8 +543,21 @@ const FloatingContextMenu: FC<{
         showChatBox()
       }
       setInputValue('')
+      const selectionElement = currentSelectionRef.current?.selectionElement
       if (lastRecordContextMenu) {
-        askAIWIthShortcuts(runActions)
+        askAIWIthShortcuts(runActions, {
+          overwriteParameters: selectionElement?.selectionText
+            ? [
+                {
+                  key: 'SELECTED_TEXT',
+                  value: selectionElement.selectionText,
+                  label: 'Selected text',
+                  isBuildIn: true,
+                  overwrite: true,
+                },
+              ]
+            : [],
+        })
           .then(() => {
             // done
             const error =
@@ -713,9 +721,10 @@ const FloatingContextMenu: FC<{
                   direction={'row'}
                   justifyContent="space-between"
                   onClick={() => {
-                    const textareaEl = getAppContextMenuRootElement()?.querySelector(
-                      `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-                    ) as HTMLTextAreaElement
+                    const textareaEl =
+                      getAppContextMenuRootElement()?.querySelector(
+                        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+                      ) as HTMLTextAreaElement
                     if (textareaEl) {
                       setTimeout(() => {
                         textareaEl?.focus()

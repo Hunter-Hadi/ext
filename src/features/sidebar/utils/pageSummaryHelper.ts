@@ -183,6 +183,10 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         //     },
         //   },
         // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -345,6 +349,10 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         //       },
         //     },
         //   },
+        // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
         // },
       ],
       visibility: {
@@ -513,6 +521,10 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         //     },
         //   },
         // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -679,6 +691,10 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,

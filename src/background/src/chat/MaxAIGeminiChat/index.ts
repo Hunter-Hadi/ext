@@ -118,6 +118,7 @@ class MaxAIGeminiChat extends BaseChat {
       meta,
     } = options || {}
     const userConfig = await getAIProviderSettings('MAXAI_GEMINI')
+    this.clearFiles()
     const postBody = Object.assign(
       {
         chat_history,

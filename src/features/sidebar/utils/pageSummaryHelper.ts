@@ -591,12 +591,6 @@ Use the following format:
       type: 'shortcuts',
       actions: [
         {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'AI_RESPONSE_MESSAGE_ID',
-          },
-        },
-        {
           type: 'CHAT_MESSAGE',
           parameters: {
             ActionChatMessageOperationType: 'add',

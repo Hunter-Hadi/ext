@@ -24,7 +24,7 @@ import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/
 
 import { messageListContainerId } from '../../SidebarChatBoxMessageListContainer'
 import { HeightUpdateScrolling } from './HeightUpdateScrolling'
-import useSwitchSummaryAction from './hooks/useSwitchSummaryAction'
+import { SwitchSummaryActionNav } from './SwitchSummaryActionNav'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -33,7 +33,6 @@ interface IProps {
   isDarkMode?: boolean
   liteMode?: boolean
   loading?: boolean
-  order: number
 }
 
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
@@ -42,7 +41,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     isDarkMode,
     liteMode = false,
     loading = false,
-    order,
   } = props
   const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(260)
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
@@ -104,11 +102,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     }
     return loading
   }, [loading, renderData.messageIsComplete, isRichAIMessage])
-  const { SwitchSummaryNavDom } = useSwitchSummaryAction(
-    message,
-    coverLoading,
-    order,
-  )
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -134,7 +127,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       className={'chat-message--text'}
       sx={{ ...memoSx }}
     >
-      {<SwitchSummaryNavDom />}
+      {message.originalMessage?.metadata?.shareType === 'summary' && (
+        <SwitchSummaryActionNav message={message} loading={coverLoading} />
+      )}
       {isRichAIMessage ? (
         <Stack spacing={2}>
           {renderData.title && (

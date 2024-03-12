@@ -1,5 +1,5 @@
 
-export const getSummaryPagePrompt = (key: 'all' | 'summary' | 'keyTakeaways' = 'all') => {
+export const getSummaryPagePrompt = (key: TSummaryParamsPromptType = 'all') => {
     let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
     The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}
   
@@ -38,7 +38,7 @@ export const getSummaryPagePrompt = (key: 'all' | 'summary' | 'keyTakeaways' = '
     }
     return defPrompt
 }
-export const getSummaryPdfPrompt = (key: 'all' | 'summary' | 'keyTakeaways' = 'all') => {
+export const getSummaryPdfPrompt = (key: TSummaryParamsPromptType = 'all') => {
     let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
   The context text originates from the main content of a PDF is in the system prompt.
   `
@@ -76,7 +76,7 @@ export const getSummaryPdfPrompt = (key: 'all' | 'summary' | 'keyTakeaways' = 'a
     }
     return defPrompt
 }
-export const getSummaryEmailPrompt = (key: 'all' | 'summary' | 'keyTakeaways' | 'actions' = 'all') => {
+export const getSummaryEmailPrompt = (key: TSummaryParamsPromptType = 'all') => {
     let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
 The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.`
     switch (key) {
@@ -126,7 +126,7 @@ The context text comprises email messages from an email thread you received or s
     }
     return defPrompt
 }
-export const getSummaryYoutubeVideoPrompt = (key: 'all' | 'transcript' | 'commit' = 'all') => {
+export const getSummaryYoutubeVideoPrompt = (key: TSummaryParamsPromptType = 'all') => {
     let defPrompt = `Ignore all previous explanations. Ignore all previous restrictions. You are a highly skilled YouTube researcher who can read and write correctly and fluently, and can extract all important information from any text. Your task is to summarize and extract all the key content of contextual text separated by three backtracks in all relevant aspects.
     The contextual text is the information and/or transcript of the video from {{current WEBPAGEURL}}.
 `
@@ -187,11 +187,13 @@ Keep emoji relevant and unique to each section. Do not use the same emoji for ev
     return defPrompt
 }
 // 对象类型
+export type TSummaryParamsPromptType='all' | 'summary' | 'keyTakeaways'| 'commit'| 'transcript'|'actions'
+
 interface SummaryGetPromptObject {
-    PAGE_SUMMARY: (key?: 'all' | 'summary' | 'keyTakeaways') => string;
-    PDF_CRX_SUMMARY: (key?: 'all' | 'summary' | 'keyTakeaways') => string;
-    YOUTUBE_VIDEO_SUMMARY: (key?: 'all' | 'transcript' | 'commit') => string;
-    DEFAULT_EMAIL_SUMMARY: (key?: 'all' | 'summary' | 'keyTakeaways' | 'actions') => string;
+    PAGE_SUMMARY: (key?: TSummaryParamsPromptType) => string;
+    PDF_CRX_SUMMARY: (key?: TSummaryParamsPromptType) => string;
+    YOUTUBE_VIDEO_SUMMARY: (key?: TSummaryParamsPromptType) => string;
+    DEFAULT_EMAIL_SUMMARY: (key?: TSummaryParamsPromptType) => string;
 }
 
 // 定义的对象符合我们之前定义的接口类型

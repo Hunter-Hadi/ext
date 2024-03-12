@@ -717,13 +717,13 @@ export const getContextMenuActionsByPageSummaryType = async (
 ) => {
   const chromeExtensionData = await getChromeExtensionLocalStorage()
 
-  //获取smmary导航数据 逻辑
-  const smmaryNavKey = chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[pageSummaryType] || 'all'
-  const smmaryNavPrompt = summaryGetPromptObj[pageSummaryType]((smmaryNavKey as 'all'))//as假过判断ts，实际不是all
-  const title = allSummaryNavList[pageSummaryType].find(item => item.key === smmaryNavKey)?.title
-  const smmaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: smmaryNavPrompt, title })
+  //获取summary导航数据 逻辑
+  const summaryNavKey = chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[pageSummaryType] || 'all'
+  const summaryNavPrompt = summaryGetPromptObj[pageSummaryType](summaryNavKey)//as假过判断ts，实际不是all
+  const title = allSummaryNavList[pageSummaryType].find(item => item.key === summaryNavKey)?.title
+  const summaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: summaryNavPrompt, title })
   const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])
-  contextMenu.data.actions = cloneDeep(smmaryNavActions)
+  contextMenu.data.actions = cloneDeep(summaryNavActions)
 
   let messageId = ''
   const actions = (contextMenu.data.actions || []).map((action, index) => {

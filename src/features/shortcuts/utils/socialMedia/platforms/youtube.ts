@@ -9,7 +9,10 @@ import {
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
+  createCommentListData,
   ICommentData,
+  ICreateCommentListData,
+  ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 const getYouTubeCommentContent = async (
@@ -27,7 +30,7 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector(
       '#header-author > yt-formatted-string',
     ) as HTMLDivElement)?.innerText || ''
-    const like =
+  const like =
     (ytdCommentBox.querySelector(
       '#toolbar > #vote-count-left',
     ) as HTMLDivElement)?.innerText || ''
@@ -45,15 +48,19 @@ const getYouTubeCommentContent = async (
     author: (author || commentAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
-    like:like.replace(/\n/g, '').trim(),
+    like: like.replace(/\n/g, '').trim(),
   }
 }
 
 export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
-  type
 ) => {
   try {
+    // comment box
+    const ytdCommentBox = findParentEqualSelector(
+      'ytd-commentbox',
+      inputAssistantButton,
+    )
     const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
       window.location.href,
     )
@@ -105,7 +112,6 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           meta: {
             'Post video transcript': youTubeTranscriptText,
           },
-          type:type
         },
       )
     } else if (
@@ -143,92 +149,125 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       }
     }
     if (youTubeSocialMediaPostContext) {
-      if (type === 'Summary') {
-        //获取所有评论
-        if (window.location.href.startsWith('https://www.youtube.com/shorts')) {
-          return youTubeSocialMediaPostContext.data
-        }
-        if (document?.querySelector("#sections #count")) {
-          const list = await getCommitList()
-          youTubeSocialMediaPostContext.addCommentList(list)
+      if (ytdCommentBox) {
+        // 视频底下的评论
+        if (
+          findParentEqualSelector(
+            'ytd-comment-simplebox-renderer',
+            ytdCommentBox,
+            5,
+          )
+        ) {
+          // Nothing
         } else {
-          const oldScrollY = window.scrollY
-          //没有则滚动到当前主div的最下面
-          const items = document.querySelector('#columns.style-scope.ytd-watch-flexy');
-          if (items) {
-            window.scrollTo({
-              top: items?.scrollHeight + 100,
-            });
-          }
-          await awaitScrollFun(() => !!document?.querySelector("#sections #count .style-scope.yt-formatted-string"), 200)//等待#count出现
-          window.scrollTo({ top: oldScrollY });
-          const list = await getCommitList()
-          youTubeSocialMediaPostContext.addCommentList(list)
-        }
-
-        return youTubeSocialMediaPostContext.data
-      } else {
-        // comment box
-        const ytdCommentBox = findParentEqualSelector(
-          'ytd-commentbox',
-          inputAssistantButton,
-        )
-        if (ytdCommentBox) {
-          // 视频底下的评论
-          if (
-            findParentEqualSelector(
-              'ytd-comment-simplebox-renderer',
+          const ytdRootComment = findParentEqualSelector(
+            'ytd-comment-thread-renderer',
+            ytdCommentBox,
+          )?.querySelector('& > ytd-comment-renderer' as any) as HTMLElement
+          // 第一层评论
+          if (ytdRootComment) {
+            const currenYtdCommentBox = findParentEqualSelector(
+              'ytd-comment-renderer',
               ytdCommentBox,
-              5,
             )
-          ) {
-            // Nothing
-          } else {
-            const ytdRootComment = findParentEqualSelector(
-              'ytd-comment-thread-renderer',
-              ytdCommentBox,
-            )?.querySelector('& > ytd-comment-renderer' as any) as HTMLElement
-            // 第一层评论
-            if (ytdRootComment) {
-              const currenYtdCommentBox = findParentEqualSelector(
-                'ytd-comment-renderer',
-                ytdCommentBox,
+            if (currenYtdCommentBox) {
+              // 判断是不是回复别人的评论
+              const ytdCommentRepliesRenderer = findSelectorParent(
+                'ytd-comment-replies-renderer',
+                currenYtdCommentBox,
+                5,
               )
-              if (currenYtdCommentBox) {
-                // 判断是不是回复别人的评论
-                const ytdCommentRepliesRenderer = findSelectorParent(
-                  'ytd-comment-replies-renderer',
-                  currenYtdCommentBox,
-                  5,
-                )
-                // youtube只有两层评论
-                if (
-                  ytdCommentRepliesRenderer?.contains(currenYtdCommentBox) &&
-                  !currenYtdCommentBox.isSameNode(ytdRootComment)
-                ) {
-                  youTubeSocialMediaPostContext.addCommentList([
-                    await getYouTubeCommentContent(ytdRootComment),
-                    await getYouTubeCommentContent(currenYtdCommentBox),
-                  ])
-                } else {
-                  // 只有一层评论
-                  youTubeSocialMediaPostContext.addCommentList([
-                    await getYouTubeCommentContent(ytdRootComment),
-                  ])
-                }
+              // youtube只有两层评论
+              if (
+                ytdCommentRepliesRenderer?.contains(currenYtdCommentBox) &&
+                !currenYtdCommentBox.isSameNode(ytdRootComment)
+              ) {
+                youTubeSocialMediaPostContext.addCommentList([
+                  await getYouTubeCommentContent(ytdRootComment),
+                  await getYouTubeCommentContent(currenYtdCommentBox),
+                ])
+              } else {
+                // 只有一层评论
+                youTubeSocialMediaPostContext.addCommentList([
+                  await getYouTubeCommentContent(ytdRootComment),
+                ])
               }
             }
           }
         }
-        return youTubeSocialMediaPostContext.data
-
       }
-
+      return youTubeSocialMediaPostContext.data
     }
   } catch (e) {
     console.error(e)
   }
   return SocialMediaPostContext.emptyData
+}
+export const getYouTubeSocialMediaPostCommentsContent: (
+  result: ISocialMediaPostContextData,
+) => Promise<ISocialMediaPostContextData | null> = async (result) => {
+  //获取所有评论,判断是否是youtube视频页面
+  const commentsInfo = await youTubeGetPostCommentsInfo()
+  if (
+    commentsInfo?.commentsData &&
+    commentsInfo.commitList.length > 0
+  ) {
+    const postText = `${result?.postText}\n[Post commentList]:\n${
+      commentsInfo?.commentsData.fullText || 'N/A'
+    }`
+    const pageContent = `${
+      result?.SOCIAL_MEDIA_PAGE_CONTENT
+    }\n[Page commentList]:\n${commentsInfo?.commentsData.fullText || 'N/A'}`
+    return {
+      ...result,
+      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: postText,
+      SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: postText,
+      postText,
+      previousComments: commentsInfo.commitList || [],
+      previousCommentsText: commentsInfo?.commentsData?.previousText,
+      SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
+    }
+  } else {
+    return null
+  }
+}
+export const youTubeGetPostCommentsInfo: () => Promise<{
+  commentsData: ICreateCommentListData | null
+  commitList: ICommentData[]
+} | null> = async () => {
+  try {
+    if (document?.querySelector('#sections #count')) {
+      const commitList = await getCommitList()
+      const commentsData = createCommentListData(commitList || [])
+      return { commentsData, commitList }
+    } else {
+      const oldScrollY = window.scrollY
+      //没有则滚动到当前主div的最下面
+      const items = document.querySelector(
+        '#columns.style-scope.ytd-watch-flexy',
+      )
+      if (items) {
+        window.scrollTo({
+          top: items?.scrollHeight + 100,
+        })
+      }
+      await awaitScrollFun(
+        () =>
+          !!document?.querySelector(
+            '#sections #count .style-scope.yt-formatted-string',
+          ),
+        200,
+      ) //等待#count出现
+      window.scrollTo({ top: oldScrollY })
+      const commitList = await getCommitList()
+      const commentsData = createCommentListData(commitList || [])
+
+      return { commentsData, commitList }
+    }
+  } catch (e) {
+    console.error(e)
+    return null
+  }
 }
 export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   inputAssistantButton,
@@ -254,19 +293,22 @@ const awaitScrollFun = async (condition: () => boolean, time?: number) => {
 
         clearInterval(countInterval)
       }
-    }, 200);
+    }, 200)
   })
 }
 const getCommitList = async () => {
-  const commentThreadRenderers = document?.getElementsByTagName('ytd-comment-thread-renderer');
+  const commentThreadRenderers = document?.getElementsByTagName(
+    'ytd-comment-thread-renderer',
+  )
   const list = []
   if (commentThreadRenderers) {
     for (let i = 0; i < commentThreadRenderers.length; i++) {
-      const commentThreadRenderer = commentThreadRenderers[i];
-      const data = await getYouTubeCommentContent(commentThreadRenderer as unknown as HTMLElement)
+      const commentThreadRenderer = commentThreadRenderers[i]
+      const data = await getYouTubeCommentContent(
+        (commentThreadRenderer as unknown) as HTMLElement,
+      )
       list.push(data)
     }
   }
   return list
-
 }

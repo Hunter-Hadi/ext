@@ -29,12 +29,10 @@ import {
 import SocialMediaPostContext, {
   ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
-import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
-  type?:ISidebarConversationType
 ): Promise<ISocialMediaPostContextData> => {
   const inputAssistantButton = document.querySelector(
     inputAssistantButtonElementSelector,
@@ -54,7 +52,7 @@ export const getSocialMediaPostContent = async (
     return await facebookGetPostContent(inputAssistantButton)
   }
   if (host === 'youtube.com') {
-    return await youTubeGetPostContent(inputAssistantButton,type)
+    return await youTubeGetPostContent(inputAssistantButton)
   }
   if (host === 'studio.youtube.com') {
     return await youTubeStudioGetPostContent(inputAssistantButton)

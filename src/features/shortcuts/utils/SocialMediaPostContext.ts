@@ -1,13 +1,28 @@
-import { ISidebarConversationType } from "@/features/sidebar/types"
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export interface ICommentData {
   content: string
   author: string
   date: string
-  like: string
+  like?: string
+}
+export interface ICreateCommentListData {
+  last: {
+    data: ICommentData
+    text: string
+  }
+  lastText: string
+  previous: {
+    data: ICommentData
+    text: string
+  }[]
+  previousText: string
+  fullText: string
 }
 // TODO 只支持单条评论树级
-export const createCommentListData = (commentList: ICommentData[]) => {
+export const createCommentListData: (
+  commentList: ICommentData[],
+) => ICreateCommentListData | null = (commentList) => {
   if (commentList.length > 0) {
     const comments: Array<{
       data: ICommentData
@@ -68,7 +83,7 @@ export default class SocialMediaPostContext {
     postContentTagName: string
     meta?: {
       [key in string]: string
-    },
+    }
     type?: ISidebarConversationType
   }
   constructor(
@@ -78,7 +93,7 @@ export default class SocialMediaPostContext {
       postContentTagName?: string
       meta?: {
         [key in string]: string
-      },
+      }
       type?: ISidebarConversationType
     },
   ) {
@@ -86,13 +101,13 @@ export default class SocialMediaPostContext {
       postTitle = 'Post',
       postContentTagName = 'Post caption/description',
       meta = {},
-      type
+      type,
     } = options || {}
     this.config = {
       postTitle,
       postContentTagName,
       meta,
-      type
+      type,
     }
     this.post = post
   }

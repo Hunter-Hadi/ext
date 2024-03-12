@@ -276,6 +276,7 @@ export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   )
   return (youTubeDraftEditor as HTMLDivElement)?.innerText || ''
 }
+
 const awaitScrollFun = async (condition: () => boolean, time?: number) => {
   return new Promise<void>((resolve) => {
     const countInterval = setInterval(async () => {

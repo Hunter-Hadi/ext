@@ -4,8 +4,6 @@
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
 import { useCallback, useRef } from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
 import { useSetRecoilState } from 'recoil'
 
 import {
@@ -29,12 +27,10 @@ import {
   getPageSummaryConversationId,
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
-import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
 const usePageSummary = () => {
   const {
     updateSidebarSettings,
-    sidebarSettings,
     currentSidebarConversationId,
     currentSidebarConversationType,
   } = useSidebarSettings()
@@ -43,18 +39,11 @@ const usePageSummary = () => {
     ClientWritingMessageState,
   )
   const { currentUserPlan } = useUserInfo()
-  const { userSettings } = useUserSettings()
 
-  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
-  const {
-    createConversation,
-    pushPricingHookMessage,
-    getCurrentConversation,
-  } = useClientConversation()
+  const { askAIWIthShortcuts } = useClientChat()
+  const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
-
-  const [isSummarySuccess, setIsSummarySuccess] = useState(false)
 
   const createPageSummary = async () => {
     if (isFetchingRef.current) {
@@ -155,7 +144,6 @@ const usePageSummary = () => {
           getPageSummaryType(),
         )
         lastMessageIdRef.current = messageId
-        setIsSummarySuccess(false)
         runPageSummaryActions(actions)
       } catch (e) {
         console.log('创建Conversation失败', e)
@@ -174,12 +162,8 @@ const usePageSummary = () => {
         isFetchingRef.current = true
         // debugger
         askAIWIthShortcuts(actions)
-          .then(() => {
-            setIsSummarySuccess(true)
-          })
-          .catch(() => {
-            setIsSummarySuccess(false)
-          })
+          .then()
+          .catch()
           .finally(() => {
             isFetchingRef.current = false
           })
@@ -191,40 +175,6 @@ const usePageSummary = () => {
       currentSidebarConversationId,
     ],
   )
-
-  // const recordSummaryData = useCallback(async () => {
-  //   console.log(`shortCutsEngineRef.current?.`, shortCutsEngineRef)
-  //   console.log(`userSettings?.language`, userSettings?.language)
-  //   const conversation = await getCurrentConversation()
-  //   const actions = shortCutsEngineRef.current?.actions
-  //   if (conversation && actions) {
-  //     // 在 actions 找到最后一个 ask chatgpt 的 output
-  //     const lastAskChatgptAction = actions.find(
-  //       (action) => action.type === 'ASK_CHATGPT',
-  //     )
-
-  //     const summaryOutput = lastAskChatgptAction?.output
-  //     if (lastAskChatgptAction && summaryOutput) {
-  //       const recordData = {
-  //         ai_model: conversation.meta.AIModel,
-  //         ai_r_language: userSettings?.language,
-  //         url: window.location.href,
-  //         url_type: getPageSummaryType(),
-  //         version: APP_VERSION,
-
-  //         summary: summaryOutput,
-  //         title: document.title,
-  //       }
-  //       debugger
-  //     }
-  //   }
-  // }, [userSettings?.language])
-
-  useEffect(() => {
-    if (isSummarySuccess) {
-      // recordSummaryData()
-    }
-  }, [isSummarySuccess])
 
   return {
     createPageSummary,

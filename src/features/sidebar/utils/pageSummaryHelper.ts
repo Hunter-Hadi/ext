@@ -195,6 +195,10 @@ Use the following format:
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -378,6 +382,10 @@ Use the following format:
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -561,6 +569,10 @@ Use the following format:
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -578,6 +590,12 @@ Use the following format:
       editable: false,
       type: 'shortcuts',
       actions: [
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
         {
           type: 'CHAT_MESSAGE',
           parameters: {
@@ -743,6 +761,10 @@ Use the following format:
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,

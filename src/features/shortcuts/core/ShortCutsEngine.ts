@@ -30,6 +30,7 @@ import {
   ActionSetVariableMap,
   ActionSetVariablesModal,
   ActionSliceOfText,
+  ActionsMaxAISummaryLog,
   ActionSummarizeOfText,
   ActionTextHandler,
   ActionUploadPDFOfCRX,
@@ -90,6 +91,7 @@ const ActionClassMap = {
   [ActionTextHandler.type]: ActionTextHandler,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

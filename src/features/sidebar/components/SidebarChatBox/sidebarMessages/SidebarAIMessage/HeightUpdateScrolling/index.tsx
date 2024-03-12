@@ -1,6 +1,6 @@
 import { Stack, styled } from "@mui/material"
-import React, { FC, useEffect, useRef } from "react"
 import throttle from 'lodash-es/throttle';
+import React, { FC, useEffect, useRef } from "react"
 interface IProps {
     children: React.ReactNode
     height: number
@@ -39,15 +39,15 @@ const StackWrap = styled(Stack)({
         maskImage: 'linear-gradient(to top, #000 calc(100% - var(--mask-top-height)), transparent)',
     },
 })
-let lastScrollTop = 0, isScroolView = false;
+let lastScrollTop = 0, isScrollView = false;
 export const HeightUpdateScrolling: FC<IProps> = ({ children, height, update }) => {
     const scrollTopRef = useRef<HTMLDivElement>(null)
     const scrollRef = useRef<HTMLDivElement>(null)
     useEffect(() => {
-        isScroolView = false
+        isScrollView = false
     }, [])
     useEffect(() => {
-        if (!isScroolView) {
+        if (!isScrollView) {
             scrollToBottom()
         }
     }, [update])
@@ -65,7 +65,7 @@ export const HeightUpdateScrolling: FC<IProps> = ({ children, height, update }) 
                 // 如果用户手动滚动，则停止自动滚动
                 if (scrollTop < lastScrollTop - 20 && scrollTop > height) {
                     // 向上滚动
-                    isScroolView = true
+                    isScrollView = true
                     // 更新 lastScrollTop 的值为当前的 scrollTop
                 }
                 lastScrollTop = scrollTop;

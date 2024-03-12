@@ -24,7 +24,7 @@ interface IProps {
   loading: boolean
 }
 export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
-  const [actionKey, setActionKey] = useState('all')
+  const [summaryActionKey, setSummaryActionKey] = useState('all')
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
   useEffect(() => {
@@ -36,7 +36,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
       chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
         summaryType
       ] || 'all'
-    setActionKey(summaryNavKey)
+    setSummaryActionKey(summaryNavKey)
   }
   const clickNavTriggerActionChange = async (navItem: {
     title: string
@@ -44,7 +44,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     key: TSummaryParamsPromptType
   }) => {
     if (loading) return
-    setActionKey(navItem.key)
+    setSummaryActionKey(navItem.key)
     const promptText = summaryGetPromptObject[summaryType](navItem.key as 'all') //as假过判断ts，实际不是all
     await setChromeExtensionLocalStorage({
       sidebarSettings: {
@@ -67,12 +67,12 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
         <TextOnlyTooltip key={navItem.key} title={navItem.title}>
           <Button
             disabled={loading}
-            variant={actionKey === navItem.key ? 'contained' : 'outlined'}
+            variant={summaryActionKey === navItem.key ? 'contained' : 'outlined'}
             onClick={() => clickNavTriggerActionChange(navItem)}
           >
             <ContextMenuIcon
               sx={{
-                color: actionKey === navItem.key ? '#fff' : 'primary.main',
+                color: summaryActionKey === navItem.key ? '#fff' : 'primary.main',
                 fontSize: 18,
               }}
               icon={navItem.titleIcon}

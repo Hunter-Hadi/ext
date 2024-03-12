@@ -208,10 +208,7 @@ export const getYouTubeSocialMediaPostCommentsContent: (
 ) => Promise<ISocialMediaPostContextData | null> = async (result) => {
   //获取所有评论,判断是否是youtube视频页面
   const commentsInfo = await youTubeGetPostCommentsInfo()
-  if (
-    commentsInfo?.commentsData &&
-    commentsInfo.commitList.length > 0
-  ) {
+  if (commentsInfo?.commentsData && commentsInfo.commitList.length > 0) {
     const postText = `${result?.postText}\n[Post commentList]:\n${
       commentsInfo?.commentsData.fullText || 'N/A'
     }`

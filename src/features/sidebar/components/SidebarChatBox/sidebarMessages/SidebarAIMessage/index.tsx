@@ -36,12 +36,7 @@ interface IProps {
 }
 
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
-  const {
-    message,
-    isDarkMode,
-    liteMode = false,
-    loading = false,
-  } = props
+  const { message, isDarkMode, liteMode = false, loading = false } = props
   const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(260)
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
   const chatMessageRef = useRef<HTMLDivElement>(null)
@@ -246,13 +241,15 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 <SidebarAIMessageSkeletonContent
                   contentType={renderData.content.contentType}
                 />
-              ) : (
+              ) : message.originalMessage?.metadata?.shareType === 'summary' ? (
                 <HeightUpdateScrolling
                   height={summaryViewMaxHeight}
                   update={message.text}
                 >
                   <SidebarAIMessageContent AIMessage={message} />
                 </HeightUpdateScrolling>
+              ) : (
+                <SidebarAIMessageContent AIMessage={message} />
               )}
             </Stack>
           )}

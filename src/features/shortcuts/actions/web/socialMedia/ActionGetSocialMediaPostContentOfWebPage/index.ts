@@ -1,4 +1,3 @@
-
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import {
@@ -41,7 +40,6 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           'Summary' &&
         params.CURRENT_WEBSITE_DOMAIN === 'www.youtube.com'
       ) {
-        //拿取评论所有列表数据
         const haveCommentResults = await getYouTubeSocialMediaPostCommentsContent(
           result,
         )

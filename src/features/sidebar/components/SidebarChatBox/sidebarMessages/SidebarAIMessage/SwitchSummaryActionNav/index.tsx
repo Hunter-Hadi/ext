@@ -45,7 +45,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   }) => {
     if (loading) return
     setSummaryActionKey(navItem.key)
-    const promptText = summaryGetPromptObject[summaryType](navItem.key as 'all') //as假过判断ts，实际不是all
+    const promptText = summaryGetPromptObject[summaryType](navItem.key) 
     await setChromeExtensionLocalStorage({
       sidebarSettings: {
         summary: {

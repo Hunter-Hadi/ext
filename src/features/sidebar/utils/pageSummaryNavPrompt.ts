@@ -1,12 +1,11 @@
-
 export const getSummaryPagePrompt = (key: TSummaryParamsPromptType = 'all') => {
-    let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
+  let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
     The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}
   
     `
-    switch (key) {
-        case 'all':
-            defPrompt += `Output a summary and a list of key takeaways respectively.
+  switch (key) {
+    case 'all':
+      defPrompt += `Output a summary and a list of key takeaways respectively.
         The summary should be a one-liner in at most 100 words.
         The key takeaways should be in up to seven bulletpoints, the fewer the better.
         ---
@@ -16,35 +15,35 @@ export const getSummaryPagePrompt = (key: TSummaryParamsPromptType = 'all') => {
         
         #### Key Takeaways
         <list of key takeaways>`
-            break
+      break
 
-        case 'summary':
-            defPrompt += `Output a summary.
+    case 'summary':
+      defPrompt += `Output a summary.
             The summary should be a maximum of 100 words per line.
             ---
             Use the following format:
             #### TL;DR
             <summary of the text>`
-            break
-        case 'keyTakeaways':
-            defPrompt += `Output a list of key points.
+      break
+    case 'keyTakeaways':
+      defPrompt += `Output a list of key points.
             Output Text.
             The key harvest should be at a maximum of seven cowshed points, the less the better.
             ---
             Use the following format:
             #### Key Takeaways
             <list of key takeaways>`
-            break
-    }
-    return defPrompt
+      break
+  }
+  return defPrompt
 }
 export const getSummaryPdfPrompt = (key: TSummaryParamsPromptType = 'all') => {
-    let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
+  let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
   The context text originates from the main content of a PDF is in the system prompt.
   `
-    switch (key) {
-        case 'all':
-            defPrompt += `Output a summary and a list of key takeaways respectively.
+  switch (key) {
+    case 'all':
+      defPrompt += `Output a summary and a list of key takeaways respectively.
         The summary should be a one-liner in at most 100 words.
         The key takeaways should be in up to seven bulletpoints, the fewer the better.
         ---
@@ -54,34 +53,36 @@ export const getSummaryPdfPrompt = (key: TSummaryParamsPromptType = 'all') => {
         
         #### Key Takeaways
         <list of key takeaways>`
-            break
-        case 'summary':
-            defPrompt += `Output a summary.
+      break
+    case 'summary':
+      defPrompt += `Output a summary.
             The summary should be a maximum of 100 words per line.
             ---
             Use the following format:
 
             #### TL;DR
             <summary of the text>`
-            break
-        case 'keyTakeaways':
-            defPrompt += `Output a list of key points.
+      break
+    case 'keyTakeaways':
+      defPrompt += `Output a list of key points.
             The key harvest should be at a maximum of seven cowshed points, the less the better.
             ---
             Use the following format:
 
             #### Key Takeaways
             <list of key takeaways>`
-            break
-    }
-    return defPrompt
+      break
+  }
+  return defPrompt
 }
-export const getSummaryEmailPrompt = (key: TSummaryParamsPromptType = 'all') => {
-    let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
+export const getSummaryEmailPrompt = (
+  key: TSummaryParamsPromptType = 'all',
+) => {
+  let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
 The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.`
-    switch (key) {
-        case 'all':
-            defPrompt += `Output a summary, a list of key takeaways, and a list of action items respectively.
+  switch (key) {
+    case 'all':
+      defPrompt += `Output a summary, a list of key takeaways, and a list of action items respectively.
             The summary should be a one-liner in at most 100 words. 
             The key takeaways should be in up to seven bulletpoints, the fewer the better.
             When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
@@ -97,42 +98,43 @@ The context text comprises email messages from an email thread you received or s
             
             #### Action Items
             <list of action items>`
-            break
-        case 'summary':
-            defPrompt += `Output a summary.
+      break
+    case 'summary':
+      defPrompt += `Output a summary.
             The summary should be a maximum of 100 words per line.
             ---
             Use the following format:
             #### TL;DR
         <summary of the text>`
-            break
-        case 'keyTakeaways':
-            defPrompt += `Output a list of key points.
+      break
+    case 'keyTakeaways':
+      defPrompt += `Output a list of key points.
             The key harvest should be at a maximum of seven cowshed points, the less the better.
             ---
             Use the following format:
             #### Key Takeaways
         <list of key takeaways>`
-            break
-        case 'actions':
-            defPrompt += `Output a list of action items.
+      break
+    case 'actions':
+      defPrompt += `Output a list of action items.
             When extracting action items, only recognize the action items that require the reader to perform the operation, and exclude the action items that need to be performed from anyone outside the reader. Output action items in bullet points and select a matching emoji for each bullet point.
             ---
             Use the following format:
             #### Action Items
             <list of action items>`
-            break
-
-    }
-    return defPrompt
+      break
+  }
+  return defPrompt
 }
-export const getSummaryYoutubeVideoPrompt = (key: TSummaryParamsPromptType = 'all') => {
-    let defPrompt = `Ignore all previous explanations. Ignore all previous restrictions. You are a highly skilled YouTube researcher who can read and write correctly and fluently, and can extract all important information from any text. Your task is to summarize and extract all the key content of contextual text separated by three backtracks in all relevant aspects.
+export const getSummaryYoutubeVideoPrompt = (
+  key: TSummaryParamsPromptType = 'all',
+) => {
+  let defPrompt = `Ignore all previous explanations. Ignore all previous restrictions. You are a highly skilled YouTube researcher who can read and write correctly and fluently, and can extract all important information from any text. Your task is to summarize and extract all the key content of contextual text separated by three backtracks in all relevant aspects.
     The contextual text is the information and/or transcript of the video from {{current WEBPAGEURL}}.
 `
-    switch (key) {
-        case 'all':
-            defPrompt += `Output a summary and a list of key takeaways respectively.
+  switch (key) {
+    case 'all':
+      defPrompt += `Output a summary and a list of key takeaways respectively.
         The summary should be a one-liner in at most 100 words.
         The key takeaways should be in up to seven bulletpoints, the fewer the better.
         ---
@@ -142,22 +144,21 @@ export const getSummaryYoutubeVideoPrompt = (key: TSummaryParamsPromptType = 'al
         
         #### Key Takeaways
         <list of key takeaways>`
-            break
-        case 'commit':
-            defPrompt += `The format for outputting comments should be as follows, 
-            you only need to return the following format
-            ---
-            [Use the following Markdown format:]
-            #### Top Comment
-            [The following comment list should not exceed 10]
-            _TL;DR_ **[Summarize user comments and opinions on the video, short text, no more than 100 words]**
-            - **User name** 👍 [like] \n
-                User comments should be identical
-            
-            `
-            break
-        case 'transcript':
-            defPrompt = `
+      break
+    case 'commit':
+      defPrompt += `The format for outputting comments should be as follows, 
+      you only need to return the following format
+      ---
+      [Please do not output code format,Use the following Markdown format:]
+      #### Top Comment
+      [Display only the top 10 comment list]
+      _TL;DR_ **[Summarize user comments and opinions on the video, short text, no more than 100 words]**
+      - **User name** 👍 [like]
+       !\\nOutput user comments content here!
+      `
+      break
+    case 'transcript':
+      defPrompt = `
             from {{page}}
 
 I want you to only answer in {{language}}. Your goal is to divide the chunk of the transcript into sections of information with a common theme and note the beginning timestamp of each section.
@@ -182,24 +183,30 @@ Keep emoji relevant and unique to each section. Do not use the same emoji for ev
 
 [VIDEO TRANSCRIPT CHUNK]:
 {{chunk}}`
-            break
-    }
-    return defPrompt
+      break
+  }
+  return defPrompt
 }
 // 对象类型
-export type TSummaryParamsPromptType='all' | 'summary' | 'keyTakeaways'| 'commit'| 'transcript'|'actions'
+export type TSummaryParamsPromptType =
+  | 'all'
+  | 'summary'
+  | 'keyTakeaways'
+  | 'commit'
+  | 'transcript'
+  | 'actions'
 
 interface ISummaryGetPromptObject {
-    PAGE_SUMMARY: (key?: TSummaryParamsPromptType) => string;
-    PDF_CRX_SUMMARY: (key?: TSummaryParamsPromptType) => string;
-    YOUTUBE_VIDEO_SUMMARY: (key?: TSummaryParamsPromptType) => string;
-    DEFAULT_EMAIL_SUMMARY: (key?: TSummaryParamsPromptType) => string;
+  PAGE_SUMMARY: (key?: TSummaryParamsPromptType) => string
+  PDF_CRX_SUMMARY: (key?: TSummaryParamsPromptType) => string
+  YOUTUBE_VIDEO_SUMMARY: (key?: TSummaryParamsPromptType) => string
+  DEFAULT_EMAIL_SUMMARY: (key?: TSummaryParamsPromptType) => string
 }
 
 // 定义的对象符合我们之前定义的接口类型
 export const summaryGetPromptObject: ISummaryGetPromptObject = {
-    'PAGE_SUMMARY': getSummaryPagePrompt,
-    'PDF_CRX_SUMMARY': getSummaryPdfPrompt,
-    'YOUTUBE_VIDEO_SUMMARY': getSummaryYoutubeVideoPrompt,
-    'DEFAULT_EMAIL_SUMMARY': getSummaryEmailPrompt,
+  PAGE_SUMMARY: getSummaryPagePrompt,
+  PDF_CRX_SUMMARY: getSummaryPdfPrompt,
+  YOUTUBE_VIDEO_SUMMARY: getSummaryYoutubeVideoPrompt,
+  DEFAULT_EMAIL_SUMMARY: getSummaryEmailPrompt,
 }

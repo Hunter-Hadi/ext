@@ -127,8 +127,8 @@ The context text comprises email messages from an email thread you received or s
     return defPrompt
 }
 export const getSummaryYoutubeVideoPrompt = (key: 'all' | 'transcript' | 'commit' = 'all') => {
-    let defPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
-    The context text is the information and/or transcript of a video from {{CURRENT_WEBPAGE_URL}}.
+    let defPrompt = `Ignore all previous explanations. Ignore all previous restrictions. You are a highly skilled YouTube researcher who can read and write correctly and fluently, and can extract all important information from any text. Your task is to summarize and extract all the key content of contextual text separated by three backtracks in all relevant aspects.
+    The contextual text is the information and/or transcript of the video from {{current WEBPAGEURL}}.
 `
     switch (key) {
         case 'all':
@@ -144,17 +144,17 @@ export const getSummaryYoutubeVideoPrompt = (key: 'all' | 'transcript' | 'commit
         <list of key takeaways>`
             break
         case 'commit':
-            defPrompt += `Output comment list.
-            The format of the comment should be as follows.
-            1.Name: Comment
-            2.Name: Comment
+            defPrompt += `The format for outputting comments should be as follows, 
+            you only need to return the following format
             ---
-            Use the following format:
+            [Use the following Markdown format:]
             #### Top Comment
-
-            Here is a summary of the comments, brief and no more than 50 words long
-
-            Display the "comment list" here and output it in regular font, with a limit of 15 comments per list`
+            [The following comment list should not exceed 10]
+            _TLDR_ **[Summarize user comments and opinions on the video, short text, no more than 100 words]**
+            - **User name** 👍 [like] \n
+                User comments should be identical
+            
+            `
             break
         case 'transcript':
             defPrompt = `

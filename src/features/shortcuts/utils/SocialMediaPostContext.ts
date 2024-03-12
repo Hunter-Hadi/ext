@@ -4,6 +4,7 @@ export interface ICommentData {
   content: string
   author: string
   date: string
+  like: string
 }
 // TODO 只支持单条评论树级
 export const createCommentListData = (commentList: ICommentData[]) => {
@@ -14,10 +15,11 @@ export const createCommentListData = (commentList: ICommentData[]) => {
     }> = []
     commentList.forEach((commentData, index) => {
       // index代表 # 的数量
-      const { content, author } = commentData
+      const { content, author, like } = commentData
       comments.push({
         text: `[Comment ${index + 1}]
 **Author:** ${author}
+**like:** ${like}
 **Comment:**
 ${content}`,
         data: commentData,

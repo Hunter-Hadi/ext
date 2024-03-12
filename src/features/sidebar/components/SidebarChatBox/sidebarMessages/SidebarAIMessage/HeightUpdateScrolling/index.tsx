@@ -3,21 +3,12 @@ import React, { FC, useEffect, useRef } from "react"
 import throttle from 'lodash-es/throttle';
 interface IProps {
     children: React.ReactNode
-    height: string
+    height: number
     update: string
-}
-const beforeCss = {
-    content: "''",
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    height: '5px',
-    pointerEvents: 'none', // 使得伪元素不影响其他元素的交互
-    zIndex: 9999,
 }
 
 const StackWrap = styled(Stack)({
-    '&.masked-overflow': {
+    '&.scroll-masked': {
         '--scrollbar-width': '13px',
         '--mask-top-height': '30px',
         '--mask-bottom-height': '56px',
@@ -35,36 +26,30 @@ const StackWrap = styled(Stack)({
         WebkitMaskSize: 'calc(100% - var(--scrollbar-width)) 100%, var(--scrollbar-width) 100%',
         maskSize: 'calc(100% - var(--scrollbar-width)) 100%, var(--scrollbar-width) 100%',
     },
-    '&.masked-overflow__both': {
+    '&.scroll-masked-both': {
         WebkitMaskImage: 'linear-gradient(to bottom, transparent, #000 var(--mask-top-height), #000 calc(100% - var(--mask-bottom-height)), transparent), linear-gradient(#000, #000)',
         maskImage: 'linear-gradient(to bottom, transparent, #000 var(--mask-top-height), #000 calc(100% - var(--mask-bottom-height)), transparent), linear-gradient(#000, #000)',
     },
-    '&.masked-overflow__bottom': {
+    '&.scroll-masked-bottom': {
         WebkitMaskImage: 'linear-gradient(to bottom, #000 calc(100% - var(--mask-bottom-height)), transparent)',
         maskImage: 'linear-gradient(to bottom, #000 calc(100% - var(--mask-bottom-height)), transparent)',
     },
-    '&.masked-overflow__top': {
+    '&.scroll-masked-top': {
         WebkitMaskImage: 'linear-gradient(to top, #000 calc(100% - var(--mask-top-height)), transparent)',
         maskImage: 'linear-gradient(to top, #000 calc(100% - var(--mask-top-height)), transparent)',
     },
-    position: 'relative',
-    '&.shadow-bottom::before': {
-        ...beforeCss,
-        bottom: 0, // 根据你的需求调整
-        background: 'linear-gradient(to top, rgba(128, 128, 128, 0.5), transparent)', // 从底部到顶部的渐变
-    },
-    '&.shadow-top::before': {
-        ...beforeCss,
-        top: 0, // 根据你的需求调整
-        background: 'linear-gradient(to bottom, rgba(128, 128, 128, 0.5), transparent)', // 从顶部到底部的渐变
-    }
 })
+let lastScrollTop = 0, isScroolView = false;
 export const HeightUpdateScrolling: FC<IProps> = ({ children, height, update }) => {
     const scrollTopRef = useRef<HTMLDivElement>(null)
     const scrollRef = useRef<HTMLDivElement>(null)
-
     useEffect(() => {
-        scrollToBottom()
+        isScroolView = false
+    }, [])
+    useEffect(() => {
+        if (!isScroolView) {
+            scrollToBottom()
+        }
     }, [update])
     const scrollToBottom = throttle(() => {
         if (scrollRef.current) {
@@ -74,24 +59,43 @@ export const HeightUpdateScrolling: FC<IProps> = ({ children, height, update }) 
     useEffect(() => {
         const handleScroll = throttle(() => {
             if (scrollRef.current && scrollTopRef.current) {
-                const distanceFromBottom = scrollRef.current.scrollHeight - scrollRef.current.scrollTop - scrollRef.current.clientHeight;
-                if (distanceFromBottom <= 16) {
-                    // 滚动到底部
-                    scrollTopRef.current.classList.add('shadow-top');
-                    scrollTopRef.current.classList.remove('shadow-bottom');
+                const scrollTop = scrollRef.current.scrollTop;
+                const scrollHeight = scrollRef.current.scrollHeight;
+                const clientHeight = scrollRef.current.clientHeight;
+                // 如果用户手动滚动，则停止自动滚动
+                if (scrollTop < lastScrollTop - 20 && scrollTop > height) {
+                    // 向上滚动
+                    isScroolView = true
+                    // 更新 lastScrollTop 的值为当前的 scrollTop
+                }
+                lastScrollTop = scrollTop;
+                if (!(scrollHeight > clientHeight || scrollHeight > height)) {
+                    //没有出现滚动条啦
+                    scrollTopRef.current.classList.remove('scroll-masked-both', 'scroll-masked-top', 'scroll-masked-bottom');
+                    return
+                }
+                const distanceFromBottom = scrollHeight - scrollTop - clientHeight;
+                if (scrollTop <= 10) {
+                    // 滚动到距离顶部10的位置
+                    scrollTopRef.current.classList.remove('scroll-masked-both', 'scroll-masked-top');
+                    scrollTopRef.current.classList.add('scroll-masked', 'scroll-masked-bottom');
+                } else if (distanceFromBottom <= 10) {
+                    // 滚动到底部10度为主
+                    scrollTopRef.current.classList.remove('scroll-masked-both', 'scroll-masked-top');
+                    scrollTopRef.current.classList.add('scroll-masked', 'scroll-masked-top');
                 } else {
-                    scrollTopRef.current.classList.add('shadow-bottom');
-                    scrollTopRef.current.classList.remove('shadow-top');
+                    scrollTopRef.current.classList.remove('scroll-masked-top', 'scroll-masked-bottom');
+                    scrollTopRef.current.classList.add('scroll-masked', 'scroll-masked-both');
                 }
             }
-        }, 100); // 100ms的延迟
+        }, 50); // 100ms的延迟
         scrollRef.current?.addEventListener('scroll', handleScroll);
         return () => {
             scrollRef.current?.removeEventListener('scroll', handleScroll);
         };
     }, []);
     return <StackWrap ref={scrollTopRef}>
-        <div ref={scrollRef} style={{ maxHeight: height, overflowY: 'auto' }}>
+        <div ref={scrollRef} style={{ maxHeight: height + 'px', overflowY: 'auto' }}>
             {children}
         </div>
     </StackWrap>

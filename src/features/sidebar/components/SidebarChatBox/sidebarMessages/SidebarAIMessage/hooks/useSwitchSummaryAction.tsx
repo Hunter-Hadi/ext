@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react"
-import { Button, ButtonGroup, Tooltip } from "@mui/material"
+import { Button, ButtonGroup } from "@mui/material"
 
 import { ContextMenuIcon } from "@/components/ContextMenuIcon"
 import useClientChat from "@/features/chatgpt/hooks/useClientChat"
@@ -9,6 +9,7 @@ import useSidebarSettings from "@/features/sidebar/hooks/useSidebarSettings"
 import { getPageSummaryType, getSummaryNavActions, allSummaryNavList } from "@/features/sidebar/utils/pageSummaryHelper"
 import { summaryGetPromptObj } from "@/features/sidebar/utils/pageSummaryNavPrompt"
 import { getChromeExtensionLocalStorage, setChromeExtensionLocalStorage } from "@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage"
+import TextOnlyTooltip from "@/components/TextOnlyTooltip"
 
 const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean, order: number) => {
     const [actionKey, setActionKey] = useState('all')
@@ -51,7 +52,7 @@ const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean, o
         return <ButtonGroup variant="outlined" aria-label="Basic button group" >
             {
                 allSummaryNavList[summaryType].map(navItem => (
-                    <Tooltip title={navItem.title}>
+                    <TextOnlyTooltip title={navItem.title}>
                         <Button disabled={loading} variant={actionKey === navItem.key ? "contained" : "outlined"} onClick={() => clickNavTriggerActionChange(navItem)}>
                             <ContextMenuIcon
                                 sx={{
@@ -61,7 +62,7 @@ const useSwitchSummaryAction = (message: IAIResponseMessage, loading: boolean, o
                                 icon={navItem.titleIcon}
                             />
                         </Button>
-                    </Tooltip>
+                    </TextOnlyTooltip>
                 ))
             }
         </ButtonGroup >

@@ -237,7 +237,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                   contentType={renderData.content.contentType}
                 />
               ) : (
-                <HeightUpdateScrolling height={`${summaryViewMaxHeight}px`} update={message.text} >
+                <HeightUpdateScrolling height={summaryViewMaxHeight} update={message.text} >
                   <SidebarAIMessageContent AIMessage={message} />
                 </HeightUpdateScrolling>
               )}

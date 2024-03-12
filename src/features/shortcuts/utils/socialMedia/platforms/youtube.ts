@@ -27,6 +27,10 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector(
       '#header-author > yt-formatted-string',
     ) as HTMLDivElement)?.innerText || ''
+    const like =
+    (ytdCommentBox.querySelector(
+      '#toolbar > #vote-count-left',
+    ) as HTMLDivElement)?.innerText || ''
   const expandButton = ytdCommentBox?.querySelector(
     'tp-yt-paper-button#expand',
   ) as HTMLButtonElement
@@ -41,6 +45,7 @@ const getYouTubeCommentContent = async (
     author: (author || commmitAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
+    like:like.replace(/\n/g, '').trim(),
   }
 }
 

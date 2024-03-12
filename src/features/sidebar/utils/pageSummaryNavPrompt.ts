@@ -150,7 +150,7 @@ export const getSummaryYoutubeVideoPrompt = (key: 'all' | 'transcript' | 'commit
             [Use the following Markdown format:]
             #### Top Comment
             [The following comment list should not exceed 10]
-            _TLDR_ **[Summarize user comments and opinions on the video, short text, no more than 100 words]**
+            _TL;DR_ **[Summarize user comments and opinions on the video, short text, no more than 100 words]**
             - **User name** 👍 [like] \n
                 User comments should be identical
             

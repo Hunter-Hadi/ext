@@ -31,8 +31,11 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     currentSidebarConversationType,
     sidebarSettings,
   } = useSidebarSettings()
-  const { updateAIProviderModel, currentAIProvider, currentAIProviderModel } =
-    useAIProviderModels()
+  const {
+    updateAIProviderModel,
+    currentAIProvider,
+    currentAIProviderModel,
+  } = useAIProviderModels()
 
   // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
   // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
@@ -57,6 +60,7 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
           'claude-3-sonnet',
           'claude-3-opus',
+          'gemini-pro',
         ].includes(conversation?.meta?.AIModel)
       ) {
         await updateAIProviderModel(
@@ -89,9 +93,7 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       )
     }
     if (currentAIProvider === 'MAXAI_GEMINI') {
-      return ['gemini-pro'].includes(
-        currentAIProviderModel,
-      )
+      return ['gemini-pro'].includes(currentAIProviderModel)
     }
     return false
   }, [currentAIProvider, currentAIProviderModel])
@@ -106,8 +108,9 @@ const SidebarScreenshotButton: FC<{
 }> = ({ sx }) => {
   const { t } = useTranslation(['common'])
   const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
-  const { uploadImagesAndSwitchToMaxAIVisionModel } =
-    useUploadImagesAndSwitchToMaxAIVisionModel()
+  const {
+    uploadImagesAndSwitchToMaxAIVisionModel,
+  } = useUploadImagesAndSwitchToMaxAIVisionModel()
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -186,7 +189,10 @@ const ScreenshotComponent: FC<{
   const [isDragging, setIsDragging] = useState(false)
   const startPointRef = React.useRef<[number, number]>([0, 0])
   const [area, setArea] = useState<[number, number, number, number]>([
-    0, 0, 0, 0,
+    0,
+    0,
+    0,
+    0,
   ])
   const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
     console.log(e)

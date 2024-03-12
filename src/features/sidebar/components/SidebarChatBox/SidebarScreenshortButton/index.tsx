@@ -24,7 +24,11 @@ import { clientRunBackgroundGetScreenshot } from '@/utils/clientCallChromeExtens
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
-  const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
+  const {
+    files,
+    AIProviderConfig,
+    aiProviderUploadFiles,
+  } = useAIProviderUpload()
   const { createConversation } = useClientConversation()
   const {
     updateSidebarConversationType,
@@ -76,9 +80,17 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       )
       await createConversation('Chat')
     }
-    await aiProviderUploadFilesRef.current(
-      await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
-    )
+    const existFilesCount = files?.length || 0
+    const maxFiles = AIProviderConfig?.maxCount || 1
+    const canUploadCount = maxFiles - existFilesCount
+    if (canUploadCount > 0) {
+      await aiProviderUploadFilesRef.current(
+        await formatClientUploadFiles(
+          imageFiles,
+          AIProviderConfig?.maxFileSize,
+        ),
+      )
+    }
   }
   const isMaxAIVisionModel = useMemo(() => {
     if (

@@ -1,11 +1,13 @@
 import Stack from '@mui/material/Stack'
-import React, { useEffect } from 'react'
+import Typography from '@mui/material/Typography'
+import React, { useEffect, useMemo } from 'react'
 
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import { ChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarFilesDropBox'
@@ -24,7 +26,17 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 //   )?.value
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
-const SidebarPage = () => {
+
+const Test = () => {
+  const { clientConversation } = useClientConversation()
+  return (
+    <Typography id={'chat-panel'} variant="h6" color={'text.primary'}>
+      {clientConversation?.id}
+    </Typography>
+  )
+}
+
+const SidebarChatPanel = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
@@ -32,12 +44,56 @@ const SidebarPage = () => {
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
-  const {
-    handleDragEnter,
-    handleDragOver,
-    handleDragLeave,
-    handleDrop,
-  } = useSidebarDropEvent()
+  return (
+    <>
+      <Test />
+      <ChatGPTStatusWrapper />
+      <SidebarChatBox
+        onSendMessage={async (question, options) => {
+          if (currentSidebarConversationType === 'Search') {
+            await createSearchWithAI(question, true)
+          } else if (currentSidebarConversationType === 'Art') {
+            await startTextToImage(question)
+          } else {
+            await askAIQuestion({
+              type: 'user',
+              text: question,
+              meta: {
+                ...options,
+              },
+            })
+          }
+        }}
+        writingMessage={clientWritingMessage.writingMessage}
+        messages={currentSidebarConversationMessages}
+        loading={smoothConversationLoading}
+        onReGenerate={async () => {
+          if (currentSidebarConversationType === 'Search') {
+            await regenerateSearchWithAI()
+            return
+          }
+          await regenerate()
+        }}
+        onStopGenerate={stopGenerate}
+        onReset={cleanConversation}
+      />
+      <SidebarFilesDropBox />
+    </>
+  )
+}
+
+const SidebarPage = () => {
+  const { currentSidebarConversationId, createSidebarConversation } =
+    useSidebarSettings()
+
+  const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
+    useSidebarDropEvent()
+  const sidebarContextValue = useMemo(() => {
+    return {
+      conversationId: currentSidebarConversationId,
+      createConversation: createSidebarConversation,
+    }
+  }, [currentSidebarConversationId])
   useEffect(() => {
     pingDaemonProcess()
   }, [])
@@ -61,38 +117,9 @@ const SidebarPage = () => {
         onDrop={handleDrop}
       >
         {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
-        <ChatGPTStatusWrapper />
-        <SidebarChatBox
-          onSendMessage={async (question, options) => {
-            if (currentSidebarConversationType === 'Search') {
-              await createSearchWithAI(question, true)
-            } else if (currentSidebarConversationType === 'Art') {
-              await startTextToImage(question)
-            } else {
-              await askAIQuestion({
-                type: 'user',
-                text: question,
-                meta: {
-                  ...options,
-                },
-              })
-            }
-          }}
-          writingMessage={clientWritingMessage.writingMessage}
-          messages={currentSidebarConversationMessages}
-          loading={smoothConversationLoading}
-          onReGenerate={async () => {
-            if (currentSidebarConversationType === 'Search') {
-              await regenerateSearchWithAI()
-              return
-            }
-            await regenerate()
-          }}
-          onStopGenerate={stopGenerate}
-          onReset={cleanConversation}
-        />
-
-        <SidebarFilesDropBox />
+        <ChatPanelContext.Provider value={sidebarContextValue}>
+          <SidebarChatPanel />
+        </ChatPanelContext.Provider>
       </Stack>
       {!isMaxAIImmersiveChatPage() && <SidebarNav />}
     </Stack>

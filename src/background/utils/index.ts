@@ -337,7 +337,6 @@ export const backgroundRestartChromeExtension = async () => {
   try {
     const tabIds = await Browser.tabs.query({
       active: true,
-      currentWindow: true,
     })
     await Browser.runtime.reload()
     tabIds.forEach((tab) => {

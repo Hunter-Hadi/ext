@@ -19,9 +19,7 @@ import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/componen
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProviderMainPartIcon'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
-import useAIProviderModels, {
-  useAIProviderModelsMap,
-} from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import {
   SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG,
   useClientConversation,
@@ -63,25 +61,20 @@ const AIProviderModelTagIcon: FC<{
   )
 }
 
-interface AIModelSelectorCardProps {
+export interface IAIModelSelectorCardProps {
   sidebarConversationType: ISidebarConversationType
   sx?: SxProps
   onClose?: (event: React.MouseEvent<HTMLDivElement>) => void
 }
-const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
+const AIModelSelectorCard: FC<IAIModelSelectorCardProps> = (props) => {
   const { sidebarConversationType, sx, onClose } = props
   const { t } = useTranslation(['common', 'client'])
-  const [
-    hoverModel,
-    setHoverModel,
-  ] = useState<AIProviderModelSelectorOption | null>(null)
-  const [isHoverThirdPartyModel, setIsHoverThirdPartyModel] = useState(false)
-  const {
-    showThirdPartyAIProviderConfirmDialog,
-    isSelectedThirdAIProvider,
-  } = useThirdAIProviderModels()
-  const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
+  const [hoverModel, setHoverModel] =
+    useState<AIProviderModelSelectorOption | null>(null)
+  const [isHoverThirdPartyModel, setIsHoverThirdPartyModel] = useState(false)
+  const { showThirdPartyAIProviderConfirmDialog, isSelectedThirdAIProvider } =
+    useThirdAIProviderModels()
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
@@ -221,11 +214,11 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                 if (isHoverThirdPartyModel) {
                   return
                 }
-                await updateAIProviderModel(
+                await createConversation(
+                  sidebarConversationType,
                   AIModelOption.AIProvider,
                   AIModelOption.value,
                 )
-                await createConversation(sidebarConversationType)
               }}
             >
               <Stack alignItems={'center'} direction={'row'}>

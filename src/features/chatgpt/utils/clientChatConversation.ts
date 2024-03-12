@@ -98,10 +98,10 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   const settings = await getChromeExtensionLocalStorage()
   const currentAIProvider =
     settings.sidebarSettings?.common?.currentAIProvider ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider
   const currentModelValue =
     settings.thirdProviderSettings?.[currentAIProvider]?.model ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel
   let currentModel: IAIProviderModel | null = null
   const findModelDetail = (models: IAIProviderModel[]) => {
     currentModel =

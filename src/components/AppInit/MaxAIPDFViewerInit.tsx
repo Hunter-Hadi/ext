@@ -42,10 +42,22 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
       // Use MaxAI event to cover the native event
       const nativeFileInput = document.querySelector<HTMLInputElement>('#fileInput');
       if (nativeFileInput) {
+        const handleNativeDrop = (e: CustomEvent<{files: FileList}>) => {
+          const file = e.detail.files?.[0]
+          if (file) {
+            handleUploadPDF(file)
+          }
+        }
+        // @ts-ignore
+        nativeFileInput.addEventListener('nativedrop', handleNativeDrop)
         // @ts-ignore
         nativeFileInput.addEventListener('change', handleUploadFile);
-        // @ts-ignore
-        return () => nativeFileInput.removeEventListener('change', handleUploadFile);
+        return () => {
+          // @ts-ignore
+          nativeFileInput.removeEventListener('change', handleUploadFile);
+          // @ts-ignore
+          nativeFileInput.removeEventListener('nativedrop', handleNativeDrop);
+        }
       }
     }
   })

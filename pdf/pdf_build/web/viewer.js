@@ -2287,6 +2287,7 @@ function webViewerInitialized() {
   });
   appConfig.mainContainer.addEventListener("drop", function (evt) {
     evt.preventDefault();
+    
     const {
       files
     } = evt.dataTransfer;
@@ -2298,10 +2299,17 @@ function webViewerInitialized() {
     if (maxAIAlert) {
       maxAIAlert.style.display = 'none'
     }
-    eventBus.dispatch("fileinputchange", {
-      source: this,
-      fileInput: evt.dataTransfer
+    const event = new CustomEvent('nativedrop', {
+      detail: {
+        files,
+      }
     });
+    const fileInput = PDFViewerApplication.appConfig.openFileInput
+    fileInput.dispatchEvent(event);
+    // eventBus.dispatch("fileinputchange", {
+    //   source: this,
+    //   fileInput: evt.dataTransfer
+    // });
   });
 
   if (!PDFViewerApplication.supportsDocumentFonts) {

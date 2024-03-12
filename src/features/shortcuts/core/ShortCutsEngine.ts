@@ -76,11 +76,14 @@ const ActionClassMap = {
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]:
+    ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
-  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
-  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]:
+    ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]:
+    ActionGetSocialMediaPostContentOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

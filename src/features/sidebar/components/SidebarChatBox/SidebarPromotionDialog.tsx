@@ -181,16 +181,27 @@ const SidebarPromotionDialog = () => {
             }}
           />
 
-          <Stack py={2} spacing={1}>
+          <Stack py={2}>
             {promotionDescription.map((descriptionItem) => (
-              <Stack key={descriptionItem.title} spacing={1} direction="row">
+              <Stack
+                key={descriptionItem.title}
+                direction="row"
+                sx={{
+                  position: 'relative',
+                  pl: 1.5,
+                }}
+              >
                 <Box
-                  mt={1}
                   width={4}
                   height={4}
                   flexShrink={0}
                   borderRadius={'50%'}
                   bgcolor="text.primary"
+                  sx={{
+                    position: 'absolute',
+                    top: 8,
+                    left: 0,
+                  }}
                 />
                 <Typography
                   fontSize={16}

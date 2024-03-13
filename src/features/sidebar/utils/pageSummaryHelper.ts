@@ -17,7 +17,7 @@ import {
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
-import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObject,TSummaryParamsPromptType } from './pageSummaryNavPrompt'
+import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObject,SummaryParamsPromptType } from './pageSummaryNavPrompt'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -705,7 +705,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   },
 }
 
-export const allSummaryNavList: { [key in IPageSummaryType]: { title: string, titleIcon: string, key: TSummaryParamsPromptType }[] } = {
+export const allSummaryNavList: { [key in IPageSummaryType]: { title: string, titleIcon: string, key: SummaryParamsPromptType }[] } = {
   'PAGE_SUMMARY': [
     { title: 'Summarize page', titleIcon: 'Summarize', key: 'all' },
     { title: 'Summarize page (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
@@ -765,6 +765,7 @@ export const getContextMenuActionsByPageSummaryType = async (
     messageId,
   }
 }
+//获取不同总结nav的Actions
 export const getSummaryNavActions: (params: { type: IPageSummaryType, messageId?: string, prompt: string, title?: string }) => ISetActionsType = (params) => {
   let currentActions = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [])
 

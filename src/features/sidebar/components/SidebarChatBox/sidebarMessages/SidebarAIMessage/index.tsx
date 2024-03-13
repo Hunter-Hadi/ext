@@ -40,14 +40,21 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(260)
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
   const chatMessageRef = useRef<HTMLDivElement>(null)
-
+  const isSummaryMessage =
+    message.originalMessage?.metadata?.shareType === 'summary'
   useEffect(() => {
-    const parentElement = chatMessageRef.current?.closest(
-      `#${messageListContainerId}`,
-    )
-    if (parentElement?.clientHeight) {
-      const messageListContainerHeight = parentElement.clientHeight
-      setSummaryViewMaxHeight(messageListContainerHeight - 380)
+    if (isSummaryMessage) {
+      const otherViewHeight = 300 //临时简单计算，待优化
+      const parentElement = chatMessageRef.current?.closest(
+        `#${messageListContainerId}`,
+      )
+      const messageListContainerHeight = parentElement?.clientHeight
+      if (
+        messageListContainerHeight &&
+        messageListContainerHeight > otherViewHeight
+      ) {
+        setSummaryViewMaxHeight(messageListContainerHeight - otherViewHeight)
+      }
     }
   }, [chatMessageRef])
   const renderData = useMemo(() => {
@@ -122,7 +129,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       className={'chat-message--text'}
       sx={{ ...memoSx }}
     >
-      {message.originalMessage?.metadata?.shareType === 'summary' && (
+      {isSummaryMessage && (
         <SwitchSummaryActionNav message={message} loading={coverLoading} />
       )}
       {isRichAIMessage ? (
@@ -241,7 +248,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 <SidebarAIMessageSkeletonContent
                   contentType={renderData.content.contentType}
                 />
-              ) : message.originalMessage?.metadata?.shareType === 'summary' ? (
+              ) : isSummaryMessage ? (
                 <HeightUpdateScrolling
                   height={summaryViewMaxHeight}
                   update={message.text}

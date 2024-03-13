@@ -28,8 +28,8 @@ const getYouTubeUrlTime = (url: string) => {
     const params = new URLSearchParams(parsedUrl.search);
     const time = params.get('t');
     if (time) {
-      const seconds = parseInt(time.replace('s', ''), 10);
-      return seconds
+      const timeNum = parseInt(time.replace('s', ''), 10);
+      return timeNum
     } else {
       return false
     }

@@ -17,7 +17,7 @@ import {
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   summaryGetPromptObject,
-  TSummaryParamsPromptType,
+  SummaryParamsPromptType,
 } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 interface IProps {
   message: IAIResponseMessage
@@ -27,10 +27,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   const [summaryActionKey, setSummaryActionKey] = useState('all')
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
-  useEffect(() => {
-    setSwitchSummaryDefault()
-  }, [])
-  const setSwitchSummaryDefault = async () => {
+  const setSwitchSummaryDefaultKey = async () => {
     const chromeExtensionData = await getChromeExtensionLocalStorage()
     const summaryNavKey =
       chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
@@ -41,7 +38,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   const clickNavTriggerActionChange = async (navItem: {
     title: string
     titleIcon: string
-    key: TSummaryParamsPromptType
+    key: SummaryParamsPromptType
   }) => {
     if (loading) return
     setSummaryActionKey(navItem.key)
@@ -61,6 +58,9 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     })
     askAIWIthShortcuts(actions as ISetActionsType)
   }
+  useEffect(() => {
+    setSwitchSummaryDefaultKey()
+  }, [])
   return (
     <ButtonGroup variant="outlined" aria-label="Basic button group">
       {allSummaryNavList[summaryType].map((navItem) => (

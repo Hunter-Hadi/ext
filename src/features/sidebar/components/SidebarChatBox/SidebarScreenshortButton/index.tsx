@@ -85,7 +85,7 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     const maxFiles = AIProviderConfig?.maxCount || 1
     const canUploadCount = maxFiles - existFilesCount
     if (canUploadCount === 0) {
-      await aiProviderRemoveFiles([files[0]])
+      await aiProviderRemoveFiles(files.slice(0, imageFiles.length))
     }
     await aiProviderUploadFilesRef.current(
       await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),

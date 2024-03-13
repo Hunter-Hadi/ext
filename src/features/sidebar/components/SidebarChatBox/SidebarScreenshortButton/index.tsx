@@ -88,7 +88,10 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       await aiProviderRemoveFiles(files.slice(0, imageFiles.length))
     }
     await aiProviderUploadFilesRef.current(
-      await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
+      await formatClientUploadFiles(
+        imageFiles.slice(0, maxFiles),
+        AIProviderConfig?.maxFileSize,
+      ),
     )
   }
   const isMaxAIVisionModel = useMemo(() => {

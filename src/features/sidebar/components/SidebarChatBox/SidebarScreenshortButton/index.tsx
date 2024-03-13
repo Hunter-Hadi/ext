@@ -28,6 +28,7 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     files,
     AIProviderConfig,
     aiProviderUploadFiles,
+    aiProviderRemoveFiles,
   } = useAIProviderUpload()
   const { createConversation } = useClientConversation()
   const {
@@ -83,14 +84,12 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     const existFilesCount = files?.length || 0
     const maxFiles = AIProviderConfig?.maxCount || 1
     const canUploadCount = maxFiles - existFilesCount
-    if (canUploadCount > 0) {
-      await aiProviderUploadFilesRef.current(
-        await formatClientUploadFiles(
-          imageFiles,
-          AIProviderConfig?.maxFileSize,
-        ),
-      )
+    if (canUploadCount === 0) {
+      await aiProviderRemoveFiles([files[0]])
     }
+    await aiProviderUploadFilesRef.current(
+      await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
+    )
   }
   const isMaxAIVisionModel = useMemo(() => {
     if (

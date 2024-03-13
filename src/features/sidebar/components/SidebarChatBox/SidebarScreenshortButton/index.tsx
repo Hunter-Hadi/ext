@@ -24,16 +24,23 @@ import { clientRunBackgroundGetScreenshot } from '@/utils/clientCallChromeExtens
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
-  const { files, AIProviderConfig, aiProviderUploadFiles } =
-    useAIProviderUpload()
+  const {
+    files,
+    AIProviderConfig,
+    aiProviderUploadFiles,
+    aiProviderRemoveFiles,
+  } = useAIProviderUpload()
   const { createConversation } = useClientConversation()
   const {
     updateSidebarConversationType,
     currentSidebarConversationType,
     sidebarSettings,
   } = useSidebarSettings()
-  const { updateAIProviderModel, currentAIProvider, currentAIProviderModel } =
-    useAIProviderModels()
+  const {
+    updateAIProviderModel,
+    currentAIProvider,
+    currentAIProviderModel,
+  } = useAIProviderModels()
 
   // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
   // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
@@ -45,7 +52,6 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
   const uploadImagesAndSwitchToMaxAIVisionModel = async (
     imageFiles: File[],
   ) => {
-    debugger
     if (currentSidebarConversationType !== 'Chat') {
       await updateSidebarConversationType('Chat')
     }
@@ -78,14 +84,15 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     const existFilesCount = files?.length || 0
     const maxFiles = AIProviderConfig?.maxCount || 1
     const canUploadCount = maxFiles - existFilesCount
-    if (canUploadCount > 0) {
-      await aiProviderUploadFilesRef.current(
-        await formatClientUploadFiles(
-          imageFiles,
-          AIProviderConfig?.maxFileSize,
-        ),
-      )
+    if (canUploadCount === 0) {
+      await aiProviderRemoveFiles(files.slice(0, imageFiles.length))
     }
+    await aiProviderUploadFilesRef.current(
+      await formatClientUploadFiles(
+        imageFiles.slice(0, maxFiles),
+        AIProviderConfig?.maxFileSize,
+      ),
+    )
   }
   const isMaxAIVisionModel = useMemo(() => {
     if (
@@ -115,8 +122,9 @@ const SidebarScreenshotButton: FC<{
 }> = ({ sx }) => {
   const { t } = useTranslation(['common'])
   const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
-  const { uploadImagesAndSwitchToMaxAIVisionModel } =
-    useUploadImagesAndSwitchToMaxAIVisionModel()
+  const {
+    uploadImagesAndSwitchToMaxAIVisionModel,
+  } = useUploadImagesAndSwitchToMaxAIVisionModel()
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -195,7 +203,10 @@ const ScreenshotComponent: FC<{
   const [isDragging, setIsDragging] = useState(false)
   const startPointRef = React.useRef<[number, number]>([0, 0])
   const [area, setArea] = useState<[number, number, number, number]>([
-    0, 0, 0, 0,
+    0,
+    0,
+    0,
+    0,
   ])
   const handleDragStart = (e: React.MouseEvent<HTMLDivElement>) => {
     console.log(e)

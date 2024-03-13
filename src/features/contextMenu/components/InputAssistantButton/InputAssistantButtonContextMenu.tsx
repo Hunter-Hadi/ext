@@ -24,6 +24,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -37,6 +38,7 @@ interface InputAssistantButtonContextMenuProps {
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
+  onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
 const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> = (
   props,
@@ -47,6 +49,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
     rootId,
     root,
     permissionWrapperCardSceneType,
+    onSelectionEffect
   } = props
   const [
     clickContextMenu,
@@ -142,6 +145,8 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         .finally(() => {
           isRunningRef.current = false
         })
+        
+      onSelectionEffect && onSelectionEffect();
     }
   }, [clickContextMenu])
   useEffect(() => {

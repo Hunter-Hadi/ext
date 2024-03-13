@@ -2,6 +2,7 @@ import Browser from 'webextension-polyfill'
 
 import TranslateTextItem from '@/features/pageTranslator/core/TranslateTextItem'
 import { languageCodeToApiSupportCode } from '@/features/pageTranslator/utils'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { promiseTimeout } from '@/utils/promiseUtils'
 
 const TRANSLATOR_ACCESS_TOKEN_CACHE_KEY = 'TRANSLATOR_ACCESS_TOKEN_CACHE_KEY'
@@ -55,15 +56,21 @@ class TranslateService {
         return
       }
       this.authFetching = true
-      const authResponse = await fetch(
+      const authResponse = await clientFetchAPI(
         'https://edge.microsoft.com/translate/auth',
         {
           method: 'GET',
+          parse: 'text',
         },
       )
-      const accessToken = await authResponse.text()
-      this.token = accessToken
-      await this.setCacheToken(accessToken)
+      if (
+        authResponse.responseRaw?.ok === true &&
+        authResponse.responseRaw?.status === 200
+      ) {
+        const accessToken = await authResponse.data
+        this.token = accessToken
+        await this.setCacheToken(accessToken)
+      }
     } catch (error) {
       console.error('fetchAccessToken error', error)
     } finally {
@@ -75,6 +82,7 @@ class TranslateService {
     needTranslateItems: TranslateTextItem[],
     to = '',
     from = '',
+    canReTry = true,
   ): Promise<boolean> {
     if (!this.token) {
       await this.fetchAccessToken()
@@ -116,10 +124,11 @@ class TranslateService {
       const fixedToCode = languageCodeToApiSupportCode(to)
       const fixedFromCode = languageCodeToApiSupportCode(from)
 
-      const translatorResponse = await promiseTimeout(
-        fetch(
-          `https://api-edge.cognitive.microsofttranslator.com/translate?from=${fixedFromCode}&to=${fixedToCode}&api-version=3.0`,
+      const fetchTranslatorResponse = await promiseTimeout(
+        clientFetchAPI<ITranslationResponse[]>(
+          `https://api-edge.cognitive.microsofttranslator.com/translate?from=${fixedFromCode}&to=${fixedToCode}&api-version=3.0&includeSentenceLength=true`,
           {
+            parse: 'json',
             method: 'POST',
             body: JSON.stringify(needTextArray.map((text) => ({ Text: text }))),
             headers: {
@@ -129,17 +138,25 @@ class TranslateService {
           },
         ),
         20000, // 20s
-        new Response(),
+        null,
       )
 
-      if (translatorResponse.status === 401) {
+      const translatorResponseRaw = fetchTranslatorResponse?.responseRaw
+
+      if (translatorResponseRaw?.status === 401 && canReTry) {
         await this.fetchAccessToken()
-        return this.translate(needTranslateItems, to, from)
+        return this.translate(needTranslateItems, to, from, false)
       }
 
       let isSuccess = false
-      if (translatorResponse.ok === true && translatorResponse.status === 200) {
-        const data = (await translatorResponse.json()) as ITranslationResponse[]
+      if (
+        fetchTranslatorResponse &&
+        fetchTranslatorResponse.data &&
+        translatorResponseRaw?.ok === true &&
+        translatorResponseRaw?.status === 200
+      ) {
+        const data = fetchTranslatorResponse?.data ?? null
+
         if (data.length === needTextArray.length) {
           isSuccess = true
           for (let i = 0; i < data.length; i++) {
@@ -160,6 +177,9 @@ class TranslateService {
           }
         }
         return isSuccess
+      }
+      if (!isSuccess) {
+        needTranslateItems.forEach((item) => item.updateFetchStatus('error'))
       }
       return isSuccess
     } catch (error) {

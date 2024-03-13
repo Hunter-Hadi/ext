@@ -76,7 +76,6 @@ class TranslateTextItem {
         const element = entries[0]
         this.isIntersecting = element.isIntersecting
         if (this.isIntersecting) {
-          console.log(`zztest isIntersecting`, element)
           window.dispatchEvent(
             new CustomEvent('MAXAI_PageTranslatorEvent_doTranslate'),
           )

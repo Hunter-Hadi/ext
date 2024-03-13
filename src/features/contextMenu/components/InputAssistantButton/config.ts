@@ -112,8 +112,8 @@ const InputAssistantButtonGroupConfig = {
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
         onSelectionEffect: () => {
           const replyButton = document.getElementById(':1v')
-          replyButton?.click();
-          
+          replyButton?.click()
+
           // [Need to figure: Opening sidebar will seize the focus]
           // setTimeout(() => {
           //   const replyTextarea = document.getElementById(':8t')
@@ -213,6 +213,18 @@ const InputAssistantButtonGroupConfig = {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: () => {
+          const replyButton = document.querySelector<HTMLElement>(
+            '.th6py > button',
+          )
+          replyButton?.click()
+
+          // [Need to figure: Opening sidebar will seize the focus]
+          // setTimeout(() => {
+          //   const replyTextarea = document.getElementById(':8t')
+          //   replyTextarea?.focus();
+          // })
+        },
       },
       appendPosition: 2,
       CTAButtonStyle: {

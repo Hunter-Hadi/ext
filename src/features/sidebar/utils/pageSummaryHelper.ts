@@ -736,8 +736,8 @@ export const getContextMenuActionsByPageSummaryType = async (
   //获取summary导航数据 逻辑
   const summaryNavKey = chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[pageSummaryType] || 'all'
   const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](summaryNavKey)
-  const title = allSummaryNavList[pageSummaryType].find(item => item.key === summaryNavKey)?.title
-  const summaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: summaryNavPrompt, title })
+  const summaryNaTitle = allSummaryNavList[pageSummaryType].find(item => item.key === summaryNavKey)?.title
+  const summaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: summaryNavPrompt, title:summaryNaTitle })
   const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])
   contextMenu.data.actions = cloneDeep(summaryNavActions)
 

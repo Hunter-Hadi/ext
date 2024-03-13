@@ -6,7 +6,7 @@ import Dialog, { dialogClasses } from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -25,7 +25,7 @@ const SidebarPromotionDialog = () => {
   const { browserAgent } = useBrowserAgent()
   const { userInfo, currentUserPlan } = useUserInfo()
 
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   const routerToAnniversary2024Page = () => {
     window.open('https://app.maxai.me/anniversary2024')
@@ -106,14 +106,14 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item4__title'),
         description: t('sidebar__promotion_dialog__content_item4__description'),
       },
-      {
-        title: t('sidebar__promotion_dialog__content_item5__title'),
-        description: t('sidebar__promotion_dialog__content_item5__description'),
-      },
-      {
-        title: t('sidebar__promotion_dialog__content_item6__title'),
-        description: t('sidebar__promotion_dialog__content_item6__description'),
-      },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item5__title'),
+      //   description: t('sidebar__promotion_dialog__content_item5__description'),
+      // },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item6__title'),
+      //   description: t('sidebar__promotion_dialog__content_item6__description'),
+      // },
     ]
   }, [t])
 

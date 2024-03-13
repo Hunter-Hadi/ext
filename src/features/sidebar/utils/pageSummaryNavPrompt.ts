@@ -75,9 +75,7 @@ export const getSummaryPdfPrompt = (key: SummaryParamsPromptType = 'all') => {
   }
   return defaultPrompt
 }
-export const getSummaryEmailPrompt = (
-  key: SummaryParamsPromptType = 'all',
-) => {
+export const getSummaryEmailPrompt = (key: SummaryParamsPromptType = 'all') => {
   let defaultPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
 The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.`
   switch (key) {
@@ -153,8 +151,9 @@ export const getSummaryYoutubeVideoPrompt = (
       #### Top Comment
       [Display only the top 10 comment list]
       _TL;DR_ **[Summarize user comments and opinions on the video, short text, no more than 100 words]**
-      - **User name** 👍 [like]
-       !\\nOutput user comments content here!
+
+        **[@User name]** 👍 [like]
+          ![line wrap]Output user comments content here!
       `
       break
     case 'transcript':

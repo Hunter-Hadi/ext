@@ -5,13 +5,16 @@ import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined'
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
+import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
+import ClosedCaptionOffOutlinedIcon from '@mui/icons-material/ClosedCaptionOffOutlined';
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
@@ -164,6 +167,9 @@ export const CONTEXT_MENU_ICONS = [
   'PictureAsPdf',
   'PDF',
   'NewChat',
+  'AutoStoriesOutlined',
+  'CommentOutlined',
+  'ClosedCaptionOffOutlined'
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -464,6 +470,24 @@ const ContextMenuIcon: FC<{
             ...sxMemo,
             color: '#379837',
           }}
+        />
+      )
+    case 'AutoStoriesOutlined':
+      return (
+        <AutoStoriesOutlinedIcon
+          sx={sxMemo}
+        />
+      )
+    case 'CommentOutlined':
+      return (
+        <CommentOutlinedIcon
+          sx={sxMemo}
+        />
+      )
+    case 'ClosedCaptionOffOutlined':
+      return (
+        <ClosedCaptionOffOutlinedIcon
+          sx={sxMemo}
         />
       )
     default:

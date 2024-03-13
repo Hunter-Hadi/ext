@@ -1,3 +1,4 @@
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {
   GetSocialMediaPostContentFunction,
@@ -9,7 +10,10 @@ import {
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
+  createCommentListData,
   ICommentData,
+  ICreateCommentListData,
+  ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 const getYouTubeCommentContent = async (
@@ -19,9 +23,17 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector(
       '#header-author #author-text > span',
     ) as HTMLSpanElement)?.innerText || ''
+  const commentAuthor =
+    (ytdCommentBox.querySelector(
+      '#header-author #author-text > yt-formatted-string',
+    ) as HTMLSpanElement)?.innerText || ''
   const date =
     (ytdCommentBox.querySelector(
       '#header-author > yt-formatted-string',
+    ) as HTMLDivElement)?.innerText || ''
+  const like =
+    (ytdCommentBox.querySelector(
+      '#toolbar > #vote-count-left',
     ) as HTMLDivElement)?.innerText || ''
   const expandButton = ytdCommentBox?.querySelector(
     'tp-yt-paper-button#expand',
@@ -34,9 +46,10 @@ const getYouTubeCommentContent = async (
     (ytdCommentBox.querySelector('#content-text') as HTMLDivElement)
       ?.innerText || ''
   return {
-    author: author.replace(/\n/g, '').trim(),
+    author: (author || commentAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
+    like: like.replace(/\n/g, '').trim(),
   }
 }
 
@@ -191,6 +204,88 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   }
   return SocialMediaPostContext.emptyData
 }
+export const getYouTubeSocialMediaPostCommentsContent: (
+  result: ISocialMediaPostContextData,
+) => Promise<ISocialMediaPostContextData | null> = async (result) => {
+  //获取所有评论,判断是否是youtube视频页面
+  const chromeExtensionData = await getChromeExtensionLocalStorage()
+  const summaryNavKey =
+    chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
+      'YOUTUBE_VIDEO_SUMMARY'
+    ]
+  if (summaryNavKey !== 'commit') {
+    return null
+  }
+  const delTranscriptPostText = result?.postText.substring(
+    0,
+    result?.postText.indexOf('**Post video transcript:**') +
+      '**Post video transcript:**'.length,
+  )
+  const delTranscriptContentText = result?.SOCIAL_MEDIA_PAGE_CONTENT.substring(
+    0,
+    result?.SOCIAL_MEDIA_PAGE_CONTENT.indexOf('**Post video transcript:**') +
+      '**Post video transcript:**'.length,
+  )
+
+  const commentsInfo = await youTubeGetPostCommentsInfo()
+  if (commentsInfo?.commentsData && commentsInfo.commitList.length > 0) {
+    const postText = `${delTranscriptPostText}\n[Post commentList]:\n${
+      commentsInfo?.commentsData.fullText || 'N/A'
+    }`
+    const pageContent = `${delTranscriptContentText}\n[Page commentList]:\n${
+      commentsInfo?.commentsData.fullText || 'N/A'
+    }`
+    return {
+      ...result,
+      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: postText,
+      SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: postText,
+      postText,
+      previousComments: commentsInfo.commitList || [],
+      previousCommentsText: commentsInfo?.commentsData?.previousText,
+      SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
+    }
+  } else {
+    return null
+  }
+}
+export const youTubeGetPostCommentsInfo: () => Promise<{
+  commentsData: ICreateCommentListData | null
+  commitList: ICommentData[]
+} | null> = async () => {
+  try {
+    if (document?.querySelector('#sections #count')) {
+      const commitList = await getCommitList()
+      const commentsData = createCommentListData(commitList || [])
+      return { commentsData, commitList }
+    } else {
+      const oldScrollY = window.scrollY
+      //没有则滚动到当前主div的最下面
+      const items = document.querySelector(
+        '#columns.style-scope.ytd-watch-flexy',
+      )
+      if (items) {
+        window.scrollTo({
+          top: items?.scrollHeight + 100,
+        })
+      }
+      await awaitScrollFun(
+        () =>
+          !!document?.querySelector(
+            '#sections #count .style-scope.yt-formatted-string',
+          ),
+        200,
+      ) //等待#count出现
+      window.scrollTo({ top: oldScrollY })
+      const commitList = await getCommitList()
+      const commentsData = createCommentListData(commitList || [])
+
+      return { commentsData, commitList }
+    }
+  } catch (e) {
+    console.error(e)
+    return null
+  }
+}
 export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   inputAssistantButton,
 ) => {
@@ -200,4 +295,38 @@ export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
     30,
   )
   return (youTubeDraftEditor as HTMLDivElement)?.innerText || ''
+}
+
+const awaitScrollFun = async (condition: () => boolean, time?: number) => {
+  return new Promise<void>((resolve) => {
+    const countInterval = setInterval(async () => {
+      if (condition && condition()) {
+        if (time) {
+          setTimeout(() => {
+            resolve()
+          }, time)
+        } else {
+          resolve()
+        }
+
+        clearInterval(countInterval)
+      }
+    }, 200)
+  })
+}
+const getCommitList = async () => {
+  const commentThreadRenderers = document?.getElementsByTagName(
+    'ytd-comment-thread-renderer',
+  )
+  const list = []
+  if (commentThreadRenderers) {
+    for (let i = 0; i < commentThreadRenderers.length; i++) {
+      const commentThreadRenderer = commentThreadRenderers[i]
+      const data = await getYouTubeCommentContent(
+        (commentThreadRenderer as unknown) as HTMLElement,
+      )
+      list.push(data)
+    }
+  }
+  return list
 }

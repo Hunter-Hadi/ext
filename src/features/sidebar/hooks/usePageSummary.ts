@@ -39,10 +39,12 @@ const usePageSummary = () => {
     ClientWritingMessageState,
   )
   const { currentUserPlan } = useUserInfo()
+
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
+
   const createPageSummary = async () => {
     if (isFetchingRef.current) {
       return
@@ -138,7 +140,7 @@ const usePageSummary = () => {
             return
           }
         }
-        const { actions, messageId } = getContextMenuActionsByPageSummaryType(
+        const { actions, messageId } = await getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )
         lastMessageIdRef.current = messageId
@@ -158,6 +160,7 @@ const usePageSummary = () => {
         currentSidebarConversationId
       ) {
         isFetchingRef.current = true
+        // debugger
         askAIWIthShortcuts(actions)
           .then()
           .catch()

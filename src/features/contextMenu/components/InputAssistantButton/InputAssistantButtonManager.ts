@@ -26,13 +26,13 @@ class InputAssistantButtonManager {
   host: InputAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
   interval = 1000
-  config: IInputAssistantButtonGroupConfig | null
+  configs: IInputAssistantButtonGroupConfig | IInputAssistantButtonGroupConfig[] | null
   observerMap: Map<HTMLElement, IInputAssistantButtonObserverData>
   stop: boolean
   constructor() {
     this.stop = false
     this.host = getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
-    this.config = inputAssistantButtonBaseConfig[this.host]
+    this.configs = inputAssistantButtonBaseConfig[this.host]
     this.observerMap = new Map()
   }
   createInputAssistantButtonListener(
@@ -45,49 +45,55 @@ class InputAssistantButtonManager {
       if (this.stop) {
         return
       }
-      if (this.config) {
-        const {
-          rootSelectors,
-          rootSelectorStyle,
-          rootParentDeep = 0,
-        } = this.config
-        const rootElements: HTMLElement[] = []
-        rootSelectors.map((rootSelector) =>
-          rootElements.push(
-            ...(document.querySelectorAll(rootSelector) as any),
-          ),
-        )
-        let isAddNew = false
-        rootElements.forEach((element) => {
-          const origin = element as HTMLElement
-          let rootElement = element
-          let deep = rootParentDeep
-          while (deep > 0) {
-            deep--
-            rootElement = rootElement.parentElement as HTMLElement
-          }
-          if (rootSelectorStyle) {
-            mergeElementCssText(origin, rootSelectorStyle)
-          }
-          const newObserverData = this.attachInputAssistantButton(
-            rootElement as HTMLElement,
+      if (this.configs) {
+        if (!Array.isArray(this.configs)) {
+          this.configs = [this.configs]
+        }
+        this.configs.forEach((config) => {
+          const {
+            rootSelectors,
+            rootSelectorStyle,
+            rootParentDeep = 0,
+          } = config
+          const rootElements: HTMLElement[] = []
+          rootSelectors.map((rootSelector) =>
+            rootElements.push(
+              ...(document.querySelectorAll(rootSelector) as any),
+            ),
           )
-          if (newObserverData) {
-            isAddNew = true
-            log.info(`newObserverData: `, newObserverData)
+          let isAddNew = false
+          rootElements.forEach((element) => {
+            const origin = element as HTMLElement
+            let rootElement = element
+            let deep = rootParentDeep
+            while (deep > 0) {
+              deep--
+              rootElement = rootElement.parentElement as HTMLElement
+            }
+            if (rootSelectorStyle) {
+              mergeElementCssText(origin, rootSelectorStyle)
+            }
+            const newObserverData = this.attachInputAssistantButton(
+              rootElement as HTMLElement,
+              config,
+            )
+            if (newObserverData) {
+              isAddNew = true
+              log.info(`newObserverData: `, newObserverData)
+            }
+          })
+          // remove unused observer
+          const isClean = this.cleanObserverMap()
+          if (isClean || isAddNew) {
+            listener(this.getAllObserverData(), config)
           }
         })
-        // remove unused observer
-        const isClean = this.cleanObserverMap()
-        if (isClean || isAddNew) {
-          listener(this.getAllObserverData(), this.config)
-        }
       }
     }, this.interval)
   }
-  attachInputAssistantButton(rootElement: HTMLElement) {
+  attachInputAssistantButton(rootElement: HTMLElement, config: IInputAssistantButtonGroupConfig) {
     if (
-      !this.config ||
+      !this.configs ||
       rootElement.querySelector('[maxai-input-assistant-button-id]')
     ) {
       return null
@@ -98,7 +104,7 @@ class InputAssistantButtonManager {
       rootParentStyleDeep = 1,
       rootNextElementSiblingStyle,
       rootPreviousElementSiblingStyle,
-    } = this.config
+    } = config
     if (rootElement && rootStyle) {
       if (
         rootPreviousElementSiblingStyle &&
@@ -128,7 +134,7 @@ class InputAssistantButtonManager {
       }
     }
     const id = uuidV4()
-    const { rootWrapperTagName, appendPosition, rootWrapperStyle } = this.config
+    const { rootWrapperTagName, appendPosition, rootWrapperStyle } = config
     const isSupportWebComponent = 'customElements' in window
     const rootWrapperElement = document.createElement(rootWrapperTagName)
     if (rootWrapperStyle) {
@@ -165,7 +171,7 @@ class InputAssistantButtonManager {
     })
     const buttonGroup = getInputAssistantButtonGroupWithHost({
       keyElement: rootElement,
-      buttonGroupConfig: this.config,
+      buttonGroupConfig: config,
     })
     if (buttonGroup.length === 0) {
       observer.disconnect()
@@ -183,7 +189,7 @@ class InputAssistantButtonManager {
       shadowRootElement: shadowContainer as ShadowRoot,
       buttonGroup: getInputAssistantButtonGroupWithHost({
         keyElement: rootElement,
-        buttonGroupConfig: this.config,
+        buttonGroupConfig: config,
       }),
     } as IInputAssistantButtonObserverData
     this.observerMap.set(rootElement, observerData)

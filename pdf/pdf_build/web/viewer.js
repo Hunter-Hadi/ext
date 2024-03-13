@@ -1981,7 +1981,8 @@ const PDFViewerApplication = {
       eventBus._on("pagechanging", _boundEvents.reportPageStatsPDFBug);
     }
 
-    eventBus._on("fileinputchange", webViewerFileInputChange);
+    // Use MaxAI event to cover the native event
+    // eventBus._on("fileinputchange", webViewerFileInputChange);
 
     eventBus._on("openfile", webViewerOpenFile);
   },
@@ -2126,7 +2127,7 @@ const PDFViewerApplication = {
       _boundEvents.reportPageStatsPDFBug = null;
     }
 
-    eventBus._off("fileinputchange", webViewerFileInputChange);
+    // eventBus._off("fileinputchange", webViewerFileInputChange);
 
     eventBus._off("openfile", webViewerOpenFile);
 
@@ -2275,10 +2276,10 @@ function webViewerInitialized() {
       return;
     }
 
-    eventBus.dispatch("fileinputchange", {
-      source: this,
-      fileInput: evt.target
-    });
+    // eventBus.dispatch("fileinputchange", {
+    //   source: this,
+    //   fileInput: evt.target
+    // });
   });
   appConfig.mainContainer.addEventListener("dragover", function (evt) {
     evt.preventDefault();
@@ -2286,6 +2287,7 @@ function webViewerInitialized() {
   });
   appConfig.mainContainer.addEventListener("drop", function (evt) {
     evt.preventDefault();
+    
     const {
       files
     } = evt.dataTransfer;
@@ -2297,10 +2299,17 @@ function webViewerInitialized() {
     if (maxAIAlert) {
       maxAIAlert.style.display = 'none'
     }
-    eventBus.dispatch("fileinputchange", {
-      source: this,
-      fileInput: evt.dataTransfer
+    const event = new CustomEvent('nativedrop', {
+      detail: {
+        files,
+      }
     });
+    const fileInput = PDFViewerApplication.appConfig.openFileInput
+    fileInput.dispatchEvent(event);
+    // eventBus.dispatch("fileinputchange", {
+    //   source: this,
+    //   fileInput: evt.dataTransfer
+    // });
   });
 
   if (!PDFViewerApplication.supportsDocumentFonts) {
@@ -2512,23 +2521,23 @@ function webViewerHashchange(evt) {
 }
 
 {
-  var webViewerFileInputChange = function (evt) {
-    if (PDFViewerApplication.pdfViewer?.isInPresentationMode) {
-      return;
-    }
+  // var webViewerFileInputChange = function (evt) {
+  //   if (PDFViewerApplication.pdfViewer?.isInPresentationMode) {
+  //     return;
+  //   }
 
-    const file = evt.fileInput.files[0];
-    let url = URL.createObjectURL(file);
+  //   const file = evt.fileInput.files[0];
+  //   let url = URL.createObjectURL(file);
 
-    if (file.name) {
-      url = {
-        url,
-        originalUrl: file.name
-      };
-    }
+  //   if (file.name) {
+  //     url = {
+  //       url,
+  //       originalUrl: file.name
+  //     };
+  //   }
 
-    PDFViewerApplication.open(url);
-  };
+  //   PDFViewerApplication.open(url);
+  // };
 
   var webViewerOpenFile = function (evt) {
     const fileInput = PDFViewerApplication.appConfig.openFileInput;

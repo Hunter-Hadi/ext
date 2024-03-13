@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
@@ -22,6 +22,10 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 
+import { messageListContainerId } from '../../SidebarChatBoxMessageListContainer'
+import { HeightUpdateScrolling } from './HeightUpdateScrolling'
+import { SwitchSummaryActionNav } from './SwitchSummaryActionNav'
+
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 interface IProps {
@@ -33,7 +37,26 @@ interface IProps {
 
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { message, isDarkMode, liteMode = false, loading = false } = props
+  const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(260)
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
+  const chatMessageRef = useRef<HTMLDivElement>(null)
+  const isSummaryMessage =
+    message.originalMessage?.metadata?.shareType === 'summary'
+  useEffect(() => {
+    if (isSummaryMessage) {
+      const otherViewHeight = 300 //临时简单计算，待优化
+      const parentElement = chatMessageRef.current?.closest(
+        `#${messageListContainerId}`,
+      )
+      const messageListContainerHeight = parentElement?.clientHeight
+      if (
+        messageListContainerHeight &&
+        messageListContainerHeight > otherViewHeight
+      ) {
+        setSummaryViewMaxHeight(messageListContainerHeight - otherViewHeight)
+      }
+    }
+  }, [chatMessageRef])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -74,6 +97,13 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       }
     }
   }, [message])
+  const coverLoading = useMemo(() => {
+    // 如果是 rich ai message，需要判断 messageIsComplete
+    if (isRichAIMessage) {
+      return !renderData.messageIsComplete || loading
+    }
+    return loading
+  }, [loading, renderData.messageIsComplete, isRichAIMessage])
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -93,16 +123,15 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     return !renderData.answer
   }, [renderData.answer])
 
-  const coverLoading = useMemo(() => {
-    // 如果是 rich ai message，需要判断 messageIsComplete
-    if (isRichAIMessage) {
-      return !renderData.messageIsComplete || loading
-    }
-    return loading
-  }, [loading, renderData.messageIsComplete, isRichAIMessage])
-
   return (
-    <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
+    <Stack
+      ref={chatMessageRef}
+      className={'chat-message--text'}
+      sx={{ ...memoSx }}
+    >
+      {isSummaryMessage && (
+        <SwitchSummaryActionNav message={message} loading={coverLoading} />
+      )}
       {isRichAIMessage ? (
         <Stack spacing={2}>
           {renderData.title && (
@@ -219,12 +248,19 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 <SidebarAIMessageSkeletonContent
                   contentType={renderData.content.contentType}
                 />
+              ) : isSummaryMessage ? (
+                <HeightUpdateScrolling
+                  height={summaryViewMaxHeight}
+                  update={message.text}
+                >
+                  <SidebarAIMessageContent AIMessage={message} />
+                </HeightUpdateScrolling>
               ) : (
                 <SidebarAIMessageContent AIMessage={message} />
               )}
             </Stack>
           )}
-          {renderData.deepDive && (
+          {renderData.deepDive && renderData.deepDive.title && (
             <Stack spacing={1}>
               {renderData.deepDive.title && (
                 <MetadataTitleRender title={renderData.deepDive.title} />

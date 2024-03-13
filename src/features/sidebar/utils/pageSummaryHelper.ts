@@ -2,10 +2,12 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import {
@@ -14,6 +16,8 @@ import {
 } from '@/pages/content_script_iframe/iframePageContentHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
+
+import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObject,SummaryParamsPromptType } from './pageSummaryNavPrompt'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -130,23 +134,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects.
-
-The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}.
-
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-`,
+              text: getSummaryPagePrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -194,6 +182,10 @@ Use the following format:
         //       },
         //     },
         //   },
+        // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
         // },
       ],
       visibility: {
@@ -309,27 +301,7 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways and action items of the context text delimited by triple backticks in all relevant aspects. 
-
-The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
-
-Output a summary, a list of key takeaways, and a list of action items respectively.
-The summary should be a one-liner in at most 100 words. 
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-
-#### Action Items
-<list of action items>
-`,
+              text: getSummaryEmailPrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -377,6 +349,10 @@ Use the following format:
         //       },
         //     },
         //   },
+        // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
         // },
       ],
       visibility: {
@@ -496,23 +472,7 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
-
-The context text originates from the main content of a PDF is in the system prompt.
-
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-`,
+              text: getSummaryPdfPrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -560,6 +520,10 @@ Use the following format:
         //       },
         //     },
         //   },
+        // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
         // },
       ],
       visibility: {
@@ -677,23 +641,7 @@ Use the following format:
           type: 'ASK_CHATGPT',
           parameters: {
             AskChatGPTActionQuestion: {
-              text: `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
-
-The context text is the information and/or transcript of a video from {{CURRENT_WEBPAGE_URL}}.
-
-Output a summary and a list of key takeaways respectively.
-The summary should be a one-liner in at most 100 words.
-The key takeaways should be in up to seven bulletpoints, the fewer the better.
-
----
-
-Use the following format:
-#### TL;DR
-<summary of the text>
-
-#### Key Takeaways
-<list of key takeaways>
-`,
+              text: getSummaryYoutubeVideoPrompt('all'),
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
               },
@@ -743,6 +691,10 @@ Use the following format:
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -753,10 +705,42 @@ Use the following format:
   },
 }
 
-export const getContextMenuActionsByPageSummaryType = (
+export const allSummaryNavList: { [key in IPageSummaryType]: { title: string, titleIcon: string, key: SummaryParamsPromptType }[] } = {
+  'PAGE_SUMMARY': [
+    { title: 'Summarize page', titleIcon: 'Summarize', key: 'all' },
+    { title: 'Summarize page (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
+    { title: 'Summarize page (Key takeaways)', titleIcon: 'Bulleted', key: 'keyTakeaways' },
+  ],
+  'PDF_CRX_SUMMARY': [
+    { title: 'Summarize PDF', titleIcon: 'Summarize', key: 'all' },
+    { title: 'Summarize PDF (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
+    { title: 'Summarize PDF (Key takeaways)', titleIcon: 'Bulleted', key: 'keyTakeaways' },
+  ],
+  'YOUTUBE_VIDEO_SUMMARY': [
+    { title: 'Summarize video', titleIcon: 'Summarize', key: 'all' },
+    { title: 'Summarize comments', titleIcon: 'CommentOutlined', key: 'commit' },
+    { title: 'Show transcript', titleIcon: 'ClosedCaptionOffOutlined', key: 'transcript' },
+  ],
+  'DEFAULT_EMAIL_SUMMARY': [
+    { title: 'Summarize email', titleIcon: 'Summarize', key: 'all' },
+    { title: 'Summarize email (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
+    { title: 'Summarize email (Key takeaways)', titleIcon: 'Bulleted', key: 'keyTakeaways' },
+    { title: 'Summarize email (Action items)', titleIcon: 'Bulleted', key: 'actions' },
+  ],
+}
+export const getContextMenuActionsByPageSummaryType = async (
   pageSummaryType: IPageSummaryType,
 ) => {
+  const chromeExtensionData = await getChromeExtensionLocalStorage()
+
+  //获取summary导航数据 逻辑
+  const summaryNavKey = chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[pageSummaryType] || 'all'
+  const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](summaryNavKey)
+  const summaryNaTitle = allSummaryNavList[pageSummaryType].find(item => item.key === summaryNavKey)?.title
+  const summaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: summaryNavPrompt, title:summaryNaTitle })
   const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])
+  contextMenu.data.actions = cloneDeep(summaryNavActions)
+
   let messageId = ''
   const actions = (contextMenu.data.actions || []).map((action, index) => {
     if (index === 0) {
@@ -781,7 +765,89 @@ export const getContextMenuActionsByPageSummaryType = (
     messageId,
   }
 }
+//获取不同总结nav的Actions
+export const getSummaryNavActions: (params: { type: IPageSummaryType, messageId?: string, prompt: string, title?: string }) => ISetActionsType = (params) => {
+  let currentActions = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [])
 
+  if (params.messageId) {
+    //传入messageId 代表 采用之前的msg
+    currentActions = currentActions?.filter(item => {
+      if (item.parameters.ActionChatMessageOperationType === 'add') {
+        return false
+      }
+      return true
+    })
+  }
+
+  currentActions = currentActions.map(action => {
+    if (action.parameters.ActionChatMessageOperationType === 'add' && params.title) {
+      const actionTitle = (action.parameters?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage?.metadata?.title
+      if (actionTitle) {
+        actionTitle.title = params.title
+      }
+    }
+    if (params.messageId && action?.parameters?.ActionChatMessageConfig?.messageId) {
+      action.parameters.ActionChatMessageConfig.messageId = params.messageId
+    }
+    if (params.messageId && action?.parameters?.AskChatGPTActionQuestion?.meta?.outputMessageId) {
+      action.parameters.AskChatGPTActionQuestion.meta.outputMessageId = params.messageId
+    }
+    if (params.prompt && action.type === 'ASK_CHATGPT' && action.parameters.AskChatGPTActionQuestion) {
+      action.parameters.AskChatGPTActionQuestion.text = params.prompt
+    }
+    return action
+  })
+  if (params.messageId) {
+    const defAction: ISetActionsType = [{
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: params.messageId || '',
+          text: '',
+          originalMessage: {
+            metadata: {
+              isComplete: false,
+              copilot: {
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'complete',
+                    icon: 'SmartToy',
+                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+                  },
+                ],
+              },
+              title: {
+                title: params.title || 'Summary',
+              },
+              deepDive: {
+                title: {
+                  title: '',
+                  titleIcon: '',
+                },
+                value: '',
+              },
+            },
+            content: {
+              title: {
+                title: 'Summary',
+              },
+              text: '',
+              contentType: 'text',
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    }
+    ]
+    return [...defAction, ...currentActions]
+  } else {
+    return [...currentActions]
+  }
+}
 const getCurrentPageUrl = () => {
   const pageUrl = window.location.href
   return pageUrl

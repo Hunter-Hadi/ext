@@ -258,14 +258,31 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
       const commentsData = createCommentListData(commitList || [])
       return { commentsData, commitList }
     } else {
-      const oldScrollY = window.scrollY
+      await awaitScrollFun(
+        () =>
+          !!document?.querySelector(
+            '#columns #below #above-the-fold #description #info-container',
+          ),
+        500,
+        1000 * 5,
+      ) //等待信息的出现
+      const commentsOff = document.querySelector('#message a')
+      if (
+        commentsOff &&
+        commentsOff
+          .getAttribute('href')
+          ?.includes('support.google.com/youtube/answer/9706180')
+      ) {
+        //代表评论关闭 状态
+        return null
+      }
       //没有则滚动到当前主div的最下面
       const items = document.querySelector(
-        '#columns.style-scope.ytd-watch-flexy',
+        '#columns.style-scope.ytd-watch-flexy #primary-inner',
       )
       if (items) {
         window.scrollTo({
-          top: items?.scrollHeight + 100,
+          top: items?.scrollHeight,
         })
       }
       await awaitScrollFun(
@@ -273,9 +290,10 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           !!document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
           ),
-        200,
+        300,
+        1000 * 5,
       ) //等待#count出现
-      window.scrollTo({ top: oldScrollY })
+      window.scrollTo({ top: 0 })
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
 
@@ -297,7 +315,11 @@ export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   return (youTubeDraftEditor as HTMLDivElement)?.innerText || ''
 }
 
-const awaitScrollFun = async (condition: () => boolean, time?: number) => {
+const awaitScrollFun = async (
+  condition: () => boolean,
+  time?: number,
+  timeout?: number,
+) => {
   return new Promise<void>((resolve) => {
     const countInterval = setInterval(async () => {
       if (condition && condition()) {
@@ -312,21 +334,30 @@ const awaitScrollFun = async (condition: () => boolean, time?: number) => {
         clearInterval(countInterval)
       }
     }, 200)
+    if (timeout) {
+      setTimeout(() => {
+        countInterval && clearInterval(countInterval)
+      }, timeout)
+    }
   })
 }
 const getCommitList = async () => {
-  const commentThreadRenderers = document?.getElementsByTagName(
-    'ytd-comment-thread-renderer',
-  )
-  const list = []
-  if (commentThreadRenderers) {
-    for (let i = 0; i < commentThreadRenderers.length; i++) {
-      const commentThreadRenderer = commentThreadRenderers[i]
-      const data = await getYouTubeCommentContent(
-        (commentThreadRenderer as unknown) as HTMLElement,
-      )
-      list.push(data)
+  try {
+    const commentThreadRenderers = document?.getElementsByTagName(
+      'ytd-comment-thread-renderer',
+    )
+    const list = []
+    if (commentThreadRenderers) {
+      for (let i = 0; i < commentThreadRenderers.length; i++) {
+        const commentThreadRenderer = commentThreadRenderers[i]
+        const data = await getYouTubeCommentContent(
+          (commentThreadRenderer as unknown) as HTMLElement,
+        )
+        list.push(data)
+      }
     }
+    return list
+  } catch (e) {
+    return []
   }
-  return list
 }

@@ -66,6 +66,7 @@ import ShortTextIcon from '@mui/icons-material/ShortText'
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import SubjectIcon from '@mui/icons-material/Subject'
+import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined';
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined'
 import SupportOutlinedIcon from '@mui/icons-material/SupportOutlined'
 import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined'
@@ -169,7 +170,8 @@ export const CONTEXT_MENU_ICONS = [
   'NewChat',
   'AutoStoriesOutlined',
   'CommentOutlined',
-  'ClosedCaptionOffOutlined'
+  'ClosedCaptionOffOutlined',
+  'SubjectOutlined'
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -490,6 +492,8 @@ const ContextMenuIcon: FC<{
           sx={sxMemo}
         />
       )
+      case 'SubjectOutlined':
+        return <SubjectOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

@@ -17,10 +17,8 @@ const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
 const userInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationId,
-  } = useSidebarSettings()
+  const { currentSidebarConversationMessages, currentSidebarConversationId } =
+    useSidebarSettings()
   const needPushUpgradeMessage = useRef(false)
   const upgradeTextRef = useRef('')
   const syncUserInfo = async () => {

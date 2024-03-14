@@ -88,6 +88,7 @@ const useClientConversation = () => {
   const createConversation = async (
     overwriteConversationType?: ISidebarConversationType,
   ): Promise<string> => {
+    debugger
     let conversationId: string = ''
     // 因为从外部打开sidebar的时候conversationId和type都是有延迟的，所以直接从localStorage拿
     const conversationType =
@@ -115,9 +116,8 @@ const useClientConversation = () => {
       }
       // 如果是OPENAI_API，那么就加上systemPrompt
       if (currentAIProvider === 'OPENAI_API') {
-        baseMetaConfig.systemPrompt = openAIAPISystemPromptGenerator(
-          currentModel,
-        )
+        baseMetaConfig.systemPrompt =
+          openAIAPISystemPromptGenerator(currentModel)
       }
       // 创建一个新的conversation
       const result = await port.postMessage({

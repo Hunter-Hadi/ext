@@ -137,11 +137,10 @@ const useClientChat = () => {
       currentConversation?.meta.AIProvider &&
       currentConversation?.meta.AIModel
     ) {
-      const currentModelDetail:
-        | IAIProviderModel
-        | undefined = AI_PROVIDER_MODEL_MAP[
-        currentConversation.meta.AIProvider
-      ]?.find((AIModel) => AIModel.value === currentConversation.meta.AIModel)
+      const currentModelDetail: IAIProviderModel | undefined =
+        AI_PROVIDER_MODEL_MAP[currentConversation.meta.AIProvider]?.find(
+          (AIModel) => AIModel.value === currentConversation.meta.AIModel,
+        )
       if (currentModelDetail?.permission) {
         if (
           !currentModelDetail.permission.roles.includes(currentUserPlan.name)

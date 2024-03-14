@@ -14,6 +14,7 @@ import {
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import { getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * 格式化AI消息的内容
@@ -41,7 +42,7 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
             }
             // 添加Sources
             if (originalMessage.metadata?.sourceWebpage?.url) {
-              formatText = `${formatText}\n\nSource:\n${originalMessage.metadata.sourceWebpage.url}`
+              formatText = `${formatText}\n\nSource:\n${getOriginalFileURL(originalMessage.metadata?.sourceWebpage?.url)}`
             }
             // 替换 ####Title => Title:
             formatText = formatText.replace(/####\s?([^\n]+)/g, '$1:')
@@ -128,7 +129,7 @@ export const formatAIMessageContentForClipboard = (
             const sourceUrlElement = doc.createElement('a')
             sourceUrlElement.href = url
             sourceUrlElement.target = '_blank'
-            sourceUrlElement.innerText = url
+            sourceUrlElement.innerText = getOriginalFileURL(url)
             doc.body.appendChild(sourceElement)
             doc.body.appendChild(sourceUrlElement)
           }
@@ -306,7 +307,7 @@ export const formatMessagesToLiteHistory = async (
       if (needSystemOrThirdMessage) {
         liteHistory.push(
           `${message.type === 'system' ? `System: ` : `Third: `}` +
-            formatThirdOrSystemMessageContent(message as IThirdChatMessage),
+          formatThirdOrSystemMessageContent(message as IThirdChatMessage),
         )
       }
     }

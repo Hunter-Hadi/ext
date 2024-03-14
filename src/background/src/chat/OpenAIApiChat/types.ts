@@ -12,7 +12,15 @@ export type IOpenAIApiSettingsType = {
 }
 const currentDate = new Date().toISOString().split('T')[0]
 
-export const OPENAI_API_SYSTEM_MESSAGE = `You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2021-09-01\nCurrent date: ${currentDate}`
+// export const OPENAI_API_SYSTEM_MESSAGE = `You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: 2021-09-01\nCurrent date: ${currentDate}`
+
+export const openAIAPISystemPromptGenerator = (model: string) => {
+  let cutoffDate = '2021-09-01'
+  if (model === 'gpt-4-1106-preview' || model === 'gpt-4-vision-preview') {
+    cutoffDate = '2023-04-01'
+  }
+  return `You are ChatGPT, a large language model trained by OpenAI.\nKnowledge cutoff: ${cutoffDate}\nCurrent date: ${currentDate}`
+}
 
 // @docs - https://platform.openai.com/docs/models/gpt-4
 export const OPENAI_API_MODELS: IAIProviderModel[] = [

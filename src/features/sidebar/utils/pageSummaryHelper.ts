@@ -195,6 +195,10 @@ Use the following format:
         //     },
         //   },
         // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -377,6 +381,10 @@ Use the following format:
         //       },
         //     },
         //   },
+        // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
         // },
       ],
       visibility: {
@@ -561,6 +569,10 @@ Use the following format:
         //     },
         //   },
         // },
+        // {
+        //   type: 'MAXAI_SUMMARY_LOG',
+        //   parameters: {},
+        // },
       ],
       visibility: {
         isWhitelistMode: false,
@@ -743,6 +755,10 @@ Use the following format:
         //     },
         //   },
         // },
+        {
+          type: 'MAXAI_SUMMARY_LOG',
+          parameters: {},
+        },
       ],
       visibility: {
         isWhitelistMode: false,

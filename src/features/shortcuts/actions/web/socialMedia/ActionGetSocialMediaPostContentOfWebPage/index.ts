@@ -8,9 +8,11 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getSocialMediaPostContent } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 export class ActionGetSocialMediaPostContentOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE'
+  originalSocialMediaPostContent: ISocialMediaPostContextData | null = null
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -35,6 +37,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
     try {
       const result = await getSocialMediaPostContent(OperationElementSelector)
       this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
+      this.originalSocialMediaPostContent = result
       const { shortcutsEngine, clientConversationEngine } = engine
       if (shortcutsEngine && clientConversationEngine) {
         let SOCIAL_MEDIA_TARGET_POST_OR_COMMENT =

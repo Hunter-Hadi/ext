@@ -1,15 +1,12 @@
 import { Button, ButtonGroup } from '@mui/material'
+import throttle from 'lodash-es/throttle'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
-import {
-  getChromeExtensionLocalStorage,
-  setChromeExtensionLocalStorage,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import {
   allSummaryNavList,
   getPageSummaryType,
@@ -23,26 +20,37 @@ interface IProps {
   message: IAIResponseMessage
   loading: boolean
 }
+let speedChangeKey = 'all'
 export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   const [summaryActionKey, setSummaryActionKey] = useState('all')
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
-  const setSwitchSummaryDefaultKey = async () => {
-    const chromeExtensionData = await getChromeExtensionLocalStorage()
-    const summaryNavKey =
-      chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
-        summaryType
-      ] || 'all'
-    setSummaryActionKey(summaryNavKey)
+  const changeSummaryActionKey = (key: SummaryParamsPromptType) => {
+    speedChangeKey = key
+    setSummaryActionKey(key)
   }
+  useEffect(() => {
+    const autoChangeNav = throttle(() => {
+      const messageNavTitle = message.originalMessage?.metadata?.title?.title
+      if (messageNavTitle && allSummaryNavList[summaryType]) {
+        const currentMessageNav = allSummaryNavList[summaryType].find(
+          (item) => item.title === messageNavTitle,
+        )
+        if (currentMessageNav) {
+          changeSummaryActionKey(currentMessageNav.key)
+        }
+      }
+    }, 100)
+    autoChangeNav()
+  }, [message.originalMessage?.metadata?.title?.title])
   const clickNavTriggerActionChange = async (navItem: {
     title: string
     titleIcon: string
     key: SummaryParamsPromptType
   }) => {
-    if (loading) return
-    setSummaryActionKey(navItem.key)
-    const promptText = summaryGetPromptObject[summaryType](navItem.key) 
+    if (loading || speedChangeKey === navItem.key) return//防止多次触发
+    changeSummaryActionKey(navItem.key)
+    const promptText = summaryGetPromptObject[summaryType](navItem.key)
     await setChromeExtensionLocalStorage({
       sidebarSettings: {
         summary: {
@@ -50,29 +58,30 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
         },
       },
     })
-    const actions = getSummaryNavActions({
+    const actions = await getSummaryNavActions({
       type: summaryType,
       messageId: message.messageId,
       prompt: promptText,
       title: navItem.title,
+      key: navItem.key,
     })
-    askAIWIthShortcuts(actions as ISetActionsType)
+    askAIWIthShortcuts(actions)
   }
-  useEffect(() => {
-    setSwitchSummaryDefaultKey()
-  }, [])
   return (
     <ButtonGroup variant="outlined" aria-label="Basic button group">
       {allSummaryNavList[summaryType].map((navItem) => (
         <TextOnlyTooltip key={navItem.key} title={navItem.title}>
           <Button
             disabled={loading}
-            variant={summaryActionKey === navItem.key ? 'contained' : 'outlined'}
+            variant={
+              summaryActionKey === navItem.key ? 'contained' : 'outlined'
+            }
             onClick={() => clickNavTriggerActionChange(navItem)}
           >
             <ContextMenuIcon
               sx={{
-                color: summaryActionKey === navItem.key ? '#fff' : 'primary.main',
+                color:
+                  summaryActionKey === navItem.key ? '#fff' : 'primary.main',
                 fontSize: 18,
               }}
               icon={navItem.titleIcon}

@@ -62,7 +62,7 @@ export const HeightUpdateScrolling: FC<IProps> = ({
     isScrollView = false
   }, [])
   useEffect(() => {
-    if (!isScrollView) {
+    if (!isScrollView&&update) {
       scrollToBottom()
     }
   }, [update])
@@ -133,7 +133,7 @@ export const HeightUpdateScrolling: FC<IProps> = ({
     <StackWrap ref={scrollTopRef}>
       <div
         ref={scrollRef}
-        style={{ maxHeight: height + 'px', overflowY: 'auto' }}
+        style={{ maxHeight: height + 'px', overflowY: 'auto',paddingRight:'10px' }}
       >
         {children}
       </div>

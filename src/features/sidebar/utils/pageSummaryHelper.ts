@@ -17,7 +17,15 @@ import {
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
-import { getSummaryEmailPrompt, getSummaryPagePrompt, getSummaryPdfPrompt, getSummaryYoutubeVideoPrompt, summaryGetPromptObject,SummaryParamsPromptType } from './pageSummaryNavPrompt'
+import {
+  getSummaryEmailPrompt,
+  getSummaryPagePrompt,
+  getSummaryPdfPrompt,
+  getSummaryYoutubeVideoPrompt,
+  summaryGetPromptObject,
+  SummaryParamsPromptType,
+} from './pageSummaryNavPrompt'
+import { youTubeSummaryChangeTool } from './summaryActionsChangeTool/youTubeSummaryChangeTool'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -705,27 +713,78 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   },
 }
 
-export const allSummaryNavList: { [key in IPageSummaryType]: { title: string, titleIcon: string, key: SummaryParamsPromptType }[] } = {
-  'PAGE_SUMMARY': [
+export const allSummaryNavList: {
+  [key in IPageSummaryType]: {
+    title: string
+    titleIcon: string
+    key: SummaryParamsPromptType
+    config?: {
+      isAutoScroll?: boolean
+    }
+  }[]
+} = {
+  PAGE_SUMMARY: [
     { title: 'Summarize page', titleIcon: 'Summarize', key: 'all' },
-    { title: 'Summarize page (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
-    { title: 'Summarize page (Key takeaways)', titleIcon: 'Bulleted', key: 'keyTakeaways' },
+    {
+      title: 'Summarize page (TL;DR)',
+      titleIcon: 'AutoStoriesOutlined',
+      key: 'summary',
+    },
+    {
+      title: 'Summarize page (Key takeaways)',
+      titleIcon: 'Bulleted',
+      key: 'keyTakeaways',
+    },
   ],
-  'PDF_CRX_SUMMARY': [
+  PDF_CRX_SUMMARY: [
     { title: 'Summarize PDF', titleIcon: 'Summarize', key: 'all' },
-    { title: 'Summarize PDF (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
-    { title: 'Summarize PDF (Key takeaways)', titleIcon: 'Bulleted', key: 'keyTakeaways' },
+    {
+      title: 'Summarize PDF (TL;DR)',
+      titleIcon: 'AutoStoriesOutlined',
+      key: 'summary',
+    },
+    {
+      title: 'Summarize PDF (Key takeaways)',
+      titleIcon: 'Bulleted',
+      key: 'keyTakeaways',
+    },
   ],
-  'YOUTUBE_VIDEO_SUMMARY': [
+  YOUTUBE_VIDEO_SUMMARY: [
     { title: 'Summarize video', titleIcon: 'Summarize', key: 'all' },
-    { title: 'Summarize comments', titleIcon: 'CommentOutlined', key: 'commit' },
-    { title: 'Show transcript', titleIcon: 'ClosedCaptionOffOutlined', key: 'transcript' },
+    {
+      title: 'Summarize comments',
+      titleIcon: 'CommentOutlined',
+      key: 'commit',
+      config: {
+        isAutoScroll: false,
+      },
+    },
+    // {
+    //   title: 'Show transcript',
+    //   titleIcon: 'ClosedCaptionOffOutlined',
+    //   key: 'transcript',
+    //   config: {
+    //     isAutoScroll: false,
+    //   },
+    // },
   ],
-  'DEFAULT_EMAIL_SUMMARY': [
+  DEFAULT_EMAIL_SUMMARY: [
     { title: 'Summarize email', titleIcon: 'Summarize', key: 'all' },
-    { title: 'Summarize email (TL;DR)', titleIcon: 'AutoStoriesOutlined', key: 'summary' },
-    { title: 'Summarize email (Key takeaways)', titleIcon: 'Bulleted', key: 'keyTakeaways' },
-    { title: 'Summarize email (Action items)', titleIcon: 'Bulleted', key: 'actions' },
+    {
+      title: 'Summarize email (TL;DR)',
+      titleIcon: 'AutoStoriesOutlined',
+      key: 'summary',
+    },
+    {
+      title: 'Summarize email (Key takeaways)',
+      titleIcon: 'Bulleted',
+      key: 'keyTakeaways',
+    },
+    {
+      title: 'Summarize email (Action items)',
+      titleIcon: 'Bulleted',
+      key: 'actions',
+    },
   ],
 }
 export const getContextMenuActionsByPageSummaryType = async (
@@ -734,10 +793,22 @@ export const getContextMenuActionsByPageSummaryType = async (
   const chromeExtensionData = await getChromeExtensionLocalStorage()
 
   //获取summary导航数据 逻辑
-  const summaryNavKey = chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[pageSummaryType] || 'all'
-  const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](summaryNavKey)
-  const summaryNaTitle = allSummaryNavList[pageSummaryType].find(item => item.key === summaryNavKey)?.title
-  const summaryNavActions = getSummaryNavActions({ type: pageSummaryType, prompt: summaryNavPrompt, title:summaryNaTitle })
+  const summaryNavKey =
+    chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
+      pageSummaryType
+    ] || 'all'
+  const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
+    summaryNavKey,
+  )
+  const summaryNaTitle = allSummaryNavList[pageSummaryType].find(
+    (item) => item.key === summaryNavKey,
+  )?.title
+  const summaryNavActions = await getSummaryNavActions({
+    type: pageSummaryType,
+    prompt: summaryNavPrompt,
+    title: summaryNaTitle,
+    key: summaryNavKey,
+  })
   const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])
   contextMenu.data.actions = cloneDeep(summaryNavActions)
 
@@ -766,82 +837,107 @@ export const getContextMenuActionsByPageSummaryType = async (
   }
 }
 //获取不同总结nav的Actions
-export const getSummaryNavActions: (params: { type: IPageSummaryType, messageId?: string, prompt: string, title?: string }) => ISetActionsType = (params) => {
-  let currentActions = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [])
+export const getSummaryNavActions: (params: {
+  type: IPageSummaryType
+  messageId?: string
+  prompt: string
+  key: SummaryParamsPromptType
+  title?: string
+}) => Promise<ISetActionsType> = async (params) => {
+  let currentActions = cloneDeep(
+    PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [],
+  )
 
   if (params.messageId) {
     //传入messageId 代表 采用之前的msg
-    currentActions = currentActions?.filter(item => {
+    currentActions = currentActions?.filter((item) => {
       if (item.parameters.ActionChatMessageOperationType === 'add') {
         return false
       }
       return true
     })
   }
-
-  currentActions = currentActions.map(action => {
-    if (action.parameters.ActionChatMessageOperationType === 'add' && params.title) {
-      const actionTitle = (action.parameters?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage?.metadata?.title
+  currentActions = await youTubeSummaryChangeTool(params.key, currentActions) //进行actions增改
+  currentActions = currentActions.map((action) => {
+    if (
+      action.parameters.ActionChatMessageOperationType === 'add' &&
+      params.title
+    ) {
+      const actionTitle = (action.parameters
+        ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
+        ?.metadata?.title
       if (actionTitle) {
         actionTitle.title = params.title
       }
     }
-    if (params.messageId && action?.parameters?.ActionChatMessageConfig?.messageId) {
+    if (
+      params.messageId &&
+      action?.parameters?.ActionChatMessageConfig?.messageId
+    ) {
       action.parameters.ActionChatMessageConfig.messageId = params.messageId
     }
-    if (params.messageId && action?.parameters?.AskChatGPTActionQuestion?.meta?.outputMessageId) {
-      action.parameters.AskChatGPTActionQuestion.meta.outputMessageId = params.messageId
+    if (
+      params.messageId &&
+      action?.parameters?.AskChatGPTActionQuestion?.meta?.outputMessageId
+    ) {
+      action.parameters.AskChatGPTActionQuestion.meta.outputMessageId =
+        params.messageId
     }
-    if (params.prompt && action.type === 'ASK_CHATGPT' && action.parameters.AskChatGPTActionQuestion) {
+    if (
+      params.prompt &&
+      action.type === 'ASK_CHATGPT' &&
+      action.parameters.AskChatGPTActionQuestion
+    ) {
       action.parameters.AskChatGPTActionQuestion.text = params.prompt
     }
     return action
   })
   if (params.messageId) {
-    const defAction: ISetActionsType = [{
-      type: 'CHAT_MESSAGE',
-      parameters: {
-        ActionChatMessageOperationType: 'update',
-        ActionChatMessageConfig: {
-          type: 'ai',
-          messageId: params.messageId || '',
-          text: '',
-          originalMessage: {
-            metadata: {
-              isComplete: false,
-              copilot: {
-                steps: [
-                  {
-                    title: 'Analyzing video',
-                    status: 'complete',
-                    icon: 'SmartToy',
-                    value: '{{CURRENT_WEBPAGE_TITLE}}',
-                  },
-                ],
-              },
-              title: {
-                title: params.title || 'Summary',
-              },
-              deepDive: {
-                title: {
-                  title: '',
-                  titleIcon: '',
+    const defAction: ISetActionsType = [
+      {
+        type: 'CHAT_MESSAGE',
+        parameters: {
+          ActionChatMessageOperationType: 'update',
+          ActionChatMessageConfig: {
+            type: 'ai',
+            messageId: params.messageId || '',
+            text: '',
+            originalMessage: {
+              metadata: {
+                isComplete: false,
+                copilot: {
+                  steps: [
+                    {
+                      title: 'Analyzing video',
+                      status: 'complete',
+                      icon: 'SmartToy',
+                      value: '{{CURRENT_WEBPAGE_TITLE}}',
+                    },
+                  ],
                 },
-                value: '',
+                title: {
+                  title: params.title || 'Summary',
+                },
+                deepDive: {
+                  title: {
+                    title: '',
+                    titleIcon: '',
+                  },
+                  value: '',
+                },
               },
-            },
-            content: {
-              title: {
-                title: 'Summary',
+              content: {
+                title: {
+                  title: 'Summary',
+                },
+                text: '',
+                contentType: 'text',
               },
-              text: '',
-              contentType: 'text',
+              includeHistory: false,
             },
-            includeHistory: false,
-          },
-        } as IAIResponseMessage,
-      },
-    }
+          } as IAIResponseMessage,
+        },
+      }
     ]
     return [...defAction, ...currentActions]
   } else {

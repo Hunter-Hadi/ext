@@ -857,7 +857,9 @@ export const getSummaryNavActions: (params: {
       return true
     })
   }
-  currentActions = await youTubeSummaryChangeTool(params.key, currentActions) //进行actions增改
+  if(params.type==='YOUTUBE_VIDEO_SUMMARY'){
+    currentActions = await youTubeSummaryChangeTool(params.key, currentActions) //进行actions增改
+  }
   currentActions = currentActions.map((action) => {
     if (
       action.parameters.ActionChatMessageOperationType === 'add' &&

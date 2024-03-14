@@ -39,10 +39,10 @@ interface IProps {
   liteMode?: boolean
   loading?: boolean
 }
-
+let isSetSummaryViewMaxHeight = false
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { message, isDarkMode, liteMode = false, loading = false } = props
-  const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(260)
+  const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(300)
   const [IsSummaryAutoScroll, setIsSummaryAutoScroll] = useState(false)
 
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
@@ -52,8 +52,8 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     [message],
   )
   useEffect(() => {
-    if (isSummaryMessage) {
-      const otherViewHeight = 400 //临时简单计算，待优化
+    if (isSummaryMessage && !isSetSummaryViewMaxHeight) {
+      const otherViewHeight = 300 //临时简单计算，待优化
       const minViewHeight = 200
       const parentElement = chatMessageRef.current?.closest(
         `#${messageListContainerId}`,
@@ -64,6 +64,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         messageListContainerHeight > otherViewHeight
       ) {
         const currentHeight = messageListContainerHeight - otherViewHeight
+        isSetSummaryViewMaxHeight = true
         setSummaryViewMaxHeight(
           currentHeight > minViewHeight ? currentHeight : minViewHeight,
         )

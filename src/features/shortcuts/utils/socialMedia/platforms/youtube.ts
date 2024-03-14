@@ -263,7 +263,7 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           !!document?.querySelector(
             '#columns #below #above-the-fold #description #info-container',
           ),
-        500,
+        2000,
         1000 * 5,
       ) //等待信息的出现
       const commentsOff = document.querySelector('#message a')
@@ -290,7 +290,7 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           !!document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
           ),
-        300,
+        2000,
         1000 * 5,
       ) //等待#count出现
       window.scrollTo({ top: 0 })
@@ -337,6 +337,7 @@ const awaitScrollFun = async (
     if (timeout) {
       setTimeout(() => {
         countInterval && clearInterval(countInterval)
+        resolve()
       }, timeout)
     }
   })

@@ -782,7 +782,7 @@ export const allSummaryNavList: {
     },
     {
       title: 'Summarize email (Action items)',
-      titleIcon: 'Bulleted',
+      titleIcon: 'SubjectOutlined',
       key: 'actions',
     },
   ],

@@ -23,6 +23,8 @@ export interface IInputAssistantButtonObserverData {
   config: IInputAssistantButtonGroupConfig
 }
 
+const elementRoute = new WeakMap()
+
 class InputAssistantButtonManager {
   host: InputAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
@@ -40,9 +42,7 @@ class InputAssistantButtonManager {
     this.observerMap = new Map()
   }
   createInputAssistantButtonListener(
-    listener: (
-      allObserverData: IInputAssistantButtonObserverData[],
-    ) => void,
+    listener: (allObserverData: IInputAssistantButtonObserverData[]) => void,
   ) {
     this.timer = setInterval(() => {
       if (this.stop) {
@@ -55,33 +55,51 @@ class InputAssistantButtonManager {
             rootSelectorStyle,
             rootParentDeep = 0,
           } = config
-          const rootElements: HTMLElement[] = []
-          rootSelectors.map((rootSelector) =>
-            rootElements.push(
-              ...(document.querySelectorAll(rootSelector) as any),
-            ),
-          )
           let isAddNew = false
-          rootElements.forEach((element) => {
-            const origin = element as HTMLElement
-            let rootElement = element
-            let deep = rootParentDeep
-            while (deep > 0) {
-              deep--
-              rootElement = rootElement.parentElement as HTMLElement
+          // temp fix select shadowRoot
+          for (const rootSelector of rootSelectors) {
+            const selectorLayer = Array.isArray(rootSelector)
+              ? [...rootSelector]
+              : [rootSelector]
+
+            const elements: (Document | ShadowRoot | Element)[] = [document]
+            for (const layer of selectorLayer) {
+              const length = elements.length
+              for (let i = 0; i < length; i++) {
+                let d: any = elements.shift()!
+                if (d.shadowRoot) {
+                  d = d.shadowRoot
+                }
+                d.querySelectorAll(layer).forEach((el: any) => {
+                  elementRoute.set(el, d)
+                  elements.push(el)
+                })
+              }
             }
-            if (rootSelectorStyle) {
-              mergeElementCssText(origin, rootSelectorStyle)
+            for (const element of elements) {
+              const origin = element as HTMLElement
+              let rootElement = element
+              let deep = rootParentDeep
+              while (deep > 0) {
+                deep--
+                const topLevelElement = elementRoute.get(rootElement)
+                elementRoute.delete(rootElement)
+                rootElement = rootElement.parentElement as HTMLElement
+                elementRoute.set(rootElement, topLevelElement)
+              }
+              if (rootSelectorStyle) {
+                mergeElementCssText(origin, rootSelectorStyle)
+              }
+              const newObserverData = this.attachInputAssistantButton(
+                rootElement as HTMLElement,
+                config,
+              )
+              if (newObserverData) {
+                isAddNew = true
+                log.info(`newObserverData: `, newObserverData)
+              }
             }
-            const newObserverData = this.attachInputAssistantButton(
-              rootElement as HTMLElement,
-              config,
-            )
-            if (newObserverData) {
-              isAddNew = true
-              log.info(`newObserverData: `, newObserverData)
-            }
-          })
+          }
           // remove unused observer
           const isClean = this.cleanObserverMap()
           if (isClean || isAddNew) {
@@ -169,7 +187,7 @@ class InputAssistantButtonManager {
     const observer = new MutationObserver(() => {
       // TODO 监听元素位置更新位置
 
-      // temp to feature: `Help me write`
+      // temp feature: `Help me write`
       const shouldDestory = !(typeof enable === 'function' ? enable() : enable)
       if (shouldDestory) {
         rootWrapperElement.parentElement?.removeChild(rootWrapperElement)
@@ -218,7 +236,16 @@ class InputAssistantButtonManager {
         (element) =>
           element.sheet?.cssRules.length === 0 && element.innerHTML === '',
       )
-      if (document.body.contains(rootElement) && !hasEmptyEmotion) {
+      // temp fix select shadowRoot
+      let isContain = false
+      let topLevelElement = elementRoute.get(rootElement)
+      let currentLevelElement = rootElement
+      while (topLevelElement) {
+        isContain = topLevelElement.contains(currentLevelElement)
+        currentLevelElement = topLevelElement
+        topLevelElement = elementRoute.get(topLevelElement)
+      }
+      if (isContain && !hasEmptyEmotion) {
         return
       }
       isClean = true

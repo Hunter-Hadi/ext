@@ -236,11 +236,10 @@ const getRedditButtonGroup = (
       buttonGroupConfig.composeReplyButton,
       buttonGroupConfig.refineDraftButton,
     ]
-  } else {
-    return [
-      buttonGroupConfig.composeNewButton,
-      buttonGroupConfig.refineDraftButton,
-    ]
   }
+  return [
+    buttonGroupConfig.composeNewButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
 }
 export default checkHostUsingButtonKeys

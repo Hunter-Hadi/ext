@@ -27,7 +27,7 @@ interface IInputAssistantButtonGroupConfigBase {
 export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
   enable: boolean | (() => boolean)
-  rootSelectors: string[]
+  rootSelectors: (string | string[])[]
   // 距离root还有多少层parent
   rootParentDeep: number
   // 渲染根节点的TagName
@@ -547,13 +547,10 @@ const InputAssistantButtonGroupConfig = {
   'reddit.com': {
     enable: true,
     rootSelectors: [
-      'div[data-test-id="comment-submission-form-richtext"] + div button[type="submit"]',
-      'hr + div > div > div > div:nth-child(1) button',
+      ['shreddit-composer', 'div[slot="action-bar-right"]']
     ],
-    rootSelectorStyle: 'order:2',
-    rootWrapperStyle: 'order:1;',
-    appendPosition: 1,
-    rootParentDeep: 1,
+    appendPosition: 2,
+    rootParentDeep: 0,
     rootWrapperTagName: 'div',
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',

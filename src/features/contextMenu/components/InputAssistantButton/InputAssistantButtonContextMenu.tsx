@@ -144,7 +144,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         .catch()
         .finally(() => {
           isRunningRef.current = false
-          
+
           // temporary support onSelectionEffect
           onSelectionEffect && onSelectionEffect();
         })

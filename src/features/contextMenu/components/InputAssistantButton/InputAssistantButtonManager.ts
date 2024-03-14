@@ -20,25 +20,28 @@ export interface IInputAssistantButtonObserverData {
   renderRootElement: HTMLElement
   destroy: () => void
   buttonGroup: IInputAssistantButton[]
+  config: IInputAssistantButtonGroupConfig
 }
 
 class InputAssistantButtonManager {
   host: InputAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
   interval = 1000
-  configs: IInputAssistantButtonGroupConfig | IInputAssistantButtonGroupConfig[] | null
+  configs: IInputAssistantButtonGroupConfig[] | null
   observerMap: Map<HTMLElement, IInputAssistantButtonObserverData>
   stop: boolean
   constructor() {
     this.stop = false
     this.host = getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
-    this.configs = inputAssistantButtonBaseConfig[this.host]
+    this.configs = (() => {
+      const configs = inputAssistantButtonBaseConfig[this.host]
+      return Array.isArray(configs) ? configs : [configs]
+    })()
     this.observerMap = new Map()
   }
   createInputAssistantButtonListener(
     listener: (
       allObserverData: IInputAssistantButtonObserverData[],
-      config: IInputAssistantButtonGroupConfig,
     ) => void,
   ) {
     this.timer = setInterval(() => {
@@ -46,10 +49,7 @@ class InputAssistantButtonManager {
         return
       }
       if (this.configs) {
-        if (!Array.isArray(this.configs)) {
-          this.configs = [this.configs]
-        }
-        this.configs.forEach((config) => {
+        for (const config of this.configs) {
           const {
             rootSelectors,
             rootSelectorStyle,
@@ -85,13 +85,16 @@ class InputAssistantButtonManager {
           // remove unused observer
           const isClean = this.cleanObserverMap()
           if (isClean || isAddNew) {
-            listener(this.getAllObserverData(), config)
+            listener(this.getAllObserverData())
           }
-        })
+        }
       }
     }, this.interval)
   }
-  attachInputAssistantButton(rootElement: HTMLElement, config: IInputAssistantButtonGroupConfig) {
+  attachInputAssistantButton(
+    rootElement: HTMLElement,
+    config: IInputAssistantButtonGroupConfig,
+  ) {
     if (
       !this.configs ||
       rootElement.querySelector('[maxai-input-assistant-button-id]')
@@ -99,6 +102,7 @@ class InputAssistantButtonManager {
       return null
     }
     const {
+      enable,
       rootStyle,
       rootParentStyle,
       rootParentStyleDeep = 1,
@@ -164,6 +168,12 @@ class InputAssistantButtonManager {
     log.info(`appendElement: `, rootWrapperElement)
     const observer = new MutationObserver(() => {
       // TODO 监听元素位置更新位置
+
+      // temp to feature: `Help me write`
+      const shouldDestory = !(typeof enable === 'function' ? enable() : enable)
+      if (shouldDestory) {
+        rootWrapperElement.parentElement?.removeChild(rootWrapperElement)
+      }
     })
     observer.observe(rootElement, {
       childList: true,
@@ -186,6 +196,7 @@ class InputAssistantButtonManager {
       },
       renderRootElement: container,
       observer,
+      config,
       shadowRootElement: shadowContainer as ShadowRoot,
       buttonGroup: getInputAssistantButtonGroupWithHost({
         keyElement: rootElement,

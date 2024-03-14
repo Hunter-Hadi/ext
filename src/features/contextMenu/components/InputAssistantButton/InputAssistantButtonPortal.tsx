@@ -3,7 +3,6 @@ import { createPortal } from 'react-dom'
 import { useRecoilValue } from 'recoil'
 
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { IInputAssistantButtonGroupConfig } from '@/features/contextMenu/components/InputAssistantButton/config'
 import InputAssistantButton from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
 import InputAssistantButtonManager, {
   IInputAssistantButtonObserverData,
@@ -12,9 +11,6 @@ import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const InputAssistantPortal: FC = () => {
   const appSetting = useRecoilValue(AppDBStorageState)
-  const [config, setConfig] = useState<IInputAssistantButtonGroupConfig | null>(
-    null,
-  )
   const [allObserverData, setAllObserverData] = useState<
     IInputAssistantButtonObserverData[]
   >([])
@@ -24,9 +20,8 @@ const InputAssistantPortal: FC = () => {
   useEffectOnce(() => {
     inputAssistantPortalRef.current = new InputAssistantButtonManager()
     inputAssistantPortalRef.current.createInputAssistantButtonListener(
-      (allObserverData, config) => {
+      (allObserverData) => {
         setAllObserverData(allObserverData)
-        setConfig(config)
       },
     )
   })
@@ -93,9 +88,9 @@ const InputAssistantPortal: FC = () => {
             rootId={observerData.id}
             buttonGroup={observerData.buttonGroup}
             root={observerData!.renderRootElement as HTMLElement}
-            InputAssistantBoxSx={config?.InputAssistantBoxSx}
-            CTAButtonStyle={config?.CTAButtonStyle}
-            DropdownButtonStyle={config?.DropdownButtonStyle}
+            InputAssistantBoxSx={observerData.config?.InputAssistantBoxSx}
+            CTAButtonStyle={observerData.config?.CTAButtonStyle}
+            DropdownButtonStyle={observerData.config?.DropdownButtonStyle}
           />,
           observerData.renderRootElement,
           observerData.id,

@@ -26,7 +26,7 @@ interface IInputAssistantButtonGroupConfigBase {
 }
 export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
-  enable: boolean
+  enable: boolean | (() => boolean)
   rootSelectors: string[]
   // 距离root还有多少层parent
   rootParentDeep: number
@@ -105,18 +105,19 @@ const InputAssistantButtonGroupConfig = {
       enable: true,
       rootSelectors: ['.amn'],
       rootParentDeep: 0,
-      rootWrapperTagName: 'td',
+      rootWrapperTagName: 'div',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
         onSelectionEffect: () => {
-          const replyButton = document.getElementById(':1v')
+          const replyButton = document.querySelector('.amn')
+            ?.firstElementChild as HTMLElement
           replyButton?.click()
 
           // [Need to figure: Opening sidebar will seize the focus]
           // setTimeout(() => {
-          //   const replyTextarea = document.getElementById(':8t')
+          //   const replyTextarea = document.querySelector('div[contenteditable="true"]')
           //   replyTextarea?.focus();
           // })
         },
@@ -218,12 +219,6 @@ const InputAssistantButtonGroupConfig = {
             '.th6py > button',
           )
           replyButton?.click()
-
-          // [Need to figure: Opening sidebar will seize the focus]
-          // setTimeout(() => {
-          //   const replyTextarea = document.getElementById(':8t')
-          //   replyTextarea?.focus();
-          // })
         },
       },
       appendPosition: 2,
@@ -270,45 +265,80 @@ const InputAssistantButtonGroupConfig = {
       margin: '0 0 0 12px',
     },
   },
-  'twitter.com': {
-    enable: true,
-    rootSelectors: [
-      'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
-    ],
-    rootSelectorStyle: 'order:2;',
-    rootParentDeep: 1,
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_NEW_BUTTON',
+  'twitter.com': [
+    {
+      enable: true,
+      rootSelectors: [
+        'div[data-testid="toolBar"] > div:nth-child(2) div[role="button"][data-testid]',
+      ],
+      rootSelectorStyle: 'order:2;',
+      rootParentDeep: 1,
+      rootWrapperTagName: 'div',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'TWITTER_COMPOSE_NEW_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'TWITTER_COMPOSE_REPLY_BUTTON',
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'TWITTER_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        iconSize: 16,
+        borderRadius: '18px 0 0 18px',
+        padding: '10px 9px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 18px 18px 0',
+        padding: '8px 3px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        margin: '0 0 0 12px',
+      },
+      rootWrapperStyle: 'order :1;',
+      appendPosition: 0,
     },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'TWITTER_COMPOSE_REPLY_BUTTON',
+    {
+      enable: () => {
+        if (document.querySelector('div[data-testid="toolBar"]')) return false
+        return true
+      },
+      rootSelectors: [
+        'div[role="progressbar"] + div > div > div > div > div > div > div > div > div > div:not([data-testid="toolBar"]) > div > div[role="button"][data-testid="tweetButtonInline"]',
+      ],
+      rootParentDeep: 1,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: () => {
+          const replyTextarea = document.querySelector(
+            'div[role="button"][data-testid="tweetButtonInline"]',
+          )?.parentElement?.firstElementChild as HTMLElement
+          replyTextarea?.click()
+        },
+      },
+      appendPosition: 1,
+      CTAButtonStyle: {
+        borderRadius: '18px',
+        iconSize: 18,
+        padding: '9px 23px',
+        borderWidth: 0,
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        margin: '0 0 0 12px',
+      },
     },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'TWITTER_REFINE_DRAFT_BUTTON',
-    },
-    CTAButtonStyle: {
-      iconSize: 16,
-      borderRadius: '18px 0 0 18px',
-      padding: '10px 9px',
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 18px 18px 0',
-      padding: '8px 3px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '18px',
-      margin: '0 0 0 12px',
-    },
-    rootWrapperStyle: 'order :1;',
-    appendPosition: 0,
-  },
+  ],
   'linkedin.com': {
     enable: true,
     rootSelectors: [

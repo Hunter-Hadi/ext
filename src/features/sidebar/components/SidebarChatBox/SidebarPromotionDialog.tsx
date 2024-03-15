@@ -106,14 +106,10 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item4__title'),
         description: t('sidebar__promotion_dialog__content_item4__description'),
       },
-      // {
-      //   title: t('sidebar__promotion_dialog__content_item5__title'),
-      //   description: t('sidebar__promotion_dialog__content_item5__description'),
-      // },
-      // {
-      //   title: t('sidebar__promotion_dialog__content_item6__title'),
-      //   description: t('sidebar__promotion_dialog__content_item6__description'),
-      // },
+      {
+        title: t('sidebar__promotion_dialog__content_item5__title'),
+        description: t('sidebar__promotion_dialog__content_item5__description'),
+      },
     ]
   }, [t])
 
@@ -143,15 +139,15 @@ const SidebarPromotionDialog = () => {
         },
       }}
     >
-      <Stack>
+      <Stack
+        sx={{
+          maxHeight: 'calc(100vh - 100px)',
+          p: 2,
+          gap: 2,
+        }}
+      >
         {/* title */}
-        <Stack
-          direction={'row'}
-          spacing={1}
-          px={2}
-          py={2.5}
-          alignItems="center"
-        >
+        <Stack direction={'row'} spacing={1} alignItems="center" flexShrink={0}>
           <Typography
             fontSize={16}
             color="text.primary"
@@ -168,7 +164,14 @@ const SidebarPromotionDialog = () => {
           </IconButton>
         </Stack>
         {/* content */}
-        <Stack px={2}>
+        <Stack
+          px={2}
+          height={0}
+          flex={1}
+          sx={{
+            overflowY: 'auto',
+          }}
+        >
           <ResponsiveImage
             src={getChromeExtensionAssetsURL(
               '/images/activity/promotion-dialog-banner.png',
@@ -220,7 +223,7 @@ const SidebarPromotionDialog = () => {
           </Stack>
         </Stack>
         {/* cta button */}
-        <Box p={2}>
+        <Box flexShrink={0}>
           <Button
             variant="contained"
             fullWidth

@@ -38,7 +38,7 @@ export class ActionYoutubeGetComments extends Action {
           return Number(value)
         },
         ['desc'],
-      ).filter(item=>item.like !== '0'&&item.content!=='') //对like排序
+      ).filter(item=>item.like !== '0'||item.content!=='') //对like排序
       const commentsText = sortedComments
         .map((comment) => {
           return `**${comment.author}** ${

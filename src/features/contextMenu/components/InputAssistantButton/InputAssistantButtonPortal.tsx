@@ -83,15 +83,7 @@ const InputAssistantPortal: FC = () => {
     <>
       {allObserverData.map((observerData) => {
         return createPortal(
-          <InputAssistantButton
-            shadowRoot={observerData!.shadowRootElement}
-            rootId={observerData.id}
-            buttonGroup={observerData.buttonGroup}
-            root={observerData!.renderRootElement as HTMLElement}
-            InputAssistantBoxSx={observerData.config?.InputAssistantBoxSx}
-            CTAButtonStyle={observerData.config?.CTAButtonStyle}
-            DropdownButtonStyle={observerData.config?.DropdownButtonStyle}
-          />,
+          <InputAssistantButton observerData={observerData} />,
           observerData.renderRootElement,
           observerData.id,
         )

@@ -1,3 +1,4 @@
+import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
 import {
   facebookGetDraftContent,
   facebookGetPostContent,
@@ -34,9 +35,13 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
 ): Promise<ISocialMediaPostContextData> => {
-  const inputAssistantButton = document.querySelector(
-    inputAssistantButtonElementSelector,
-  ) as HTMLButtonElement
+  const inputAssistantButton =
+    InputAssistantButtonElementRouteMap.get(
+      inputAssistantButtonElementSelector,
+    ) ||
+    (document.querySelector(
+      inputAssistantButtonElementSelector,
+    ) as HTMLButtonElement)
 
   if (!inputAssistantButton) {
     return SocialMediaPostContext.emptyData

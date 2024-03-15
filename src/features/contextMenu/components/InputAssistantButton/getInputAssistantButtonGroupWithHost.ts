@@ -18,47 +18,40 @@ const checkHostUsingButtonKeys = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const host = getCurrentDomainHost()
-  if (host === 'mail.google.com') {
-    return getGmailButtonGroup(config)
+  switch (host) {
+    case 'mail.google.com':
+      return getGmailButtonGroup(config)
+
+    case 'outlook.office.com':
+    case 'outlook.live.com':
+    case 'outlook.office365.com':
+      return getOutlookButtonGroup(config)
+
+    case 'twitter.com':
+      return getTwitterButtonGroup(config)
+
+    case 'linkedin.com':
+      return getLinkedInButtonGroup(config)
+
+    case 'facebook.com':
+      return getFacebookButtonGroup(config)
+
+    case 'youtube.com':
+    case 'studio.youtube.com':
+      return getYouTubeButtonGroup(config)
+
+    case 'instagram.com':
+      return getInstagramButtonGroup(config)
+
+    case 'reddit.com':
+      return getRedditButtonGroup(config)
+
+    default:
+      return [
+        config.buttonGroupConfig.composeReplyButton,
+        config.buttonGroupConfig.refineDraftButton,
+      ]
   }
-  if (
-    host === 'outlook.office.com' ||
-    host === 'outlook.live.com' ||
-    host === 'outlook.office365.com'
-  ) {
-    return getOutlookButtonGroup(config)
-  }
-  if (host === 'twitter.com') {
-    return getTwitterButtonGroup(config)
-  }
-  if (host === 'linkedin.com') {
-    return getLinkedInButtonGroup(config)
-  }
-  if (host === 'facebook.com') {
-    return getFacebookButtonGroup(config)
-  }
-  if (host === 'youtube.com') {
-    return [
-      config.buttonGroupConfig.composeReplyButton,
-      config.buttonGroupConfig.refineDraftButton,
-    ]
-  }
-  if (host === 'studio.youtube.com') {
-    return [
-      config.buttonGroupConfig.composeReplyButton,
-      config.buttonGroupConfig.refineDraftButton,
-    ]
-  }
-  if (host === 'instagram.com') {
-    return getInstagramButtonGroup(config)
-  }
-  if (host === 'reddit.com') {
-    return getRedditButtonGroup(config)
-  }
-  return [
-    config.buttonGroupConfig.composeReplyButton,
-    config.buttonGroupConfig.refineDraftButton,
-  ]
 }
 
 const getGmailButtonGroup = (
@@ -201,6 +194,19 @@ const getFacebookButtonGroup = (
   ]
 }
 
+const getYouTubeButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (keyElement.id === 'reply-button-end') {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
 const getInstagramButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
@@ -230,7 +236,7 @@ const getRedditButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.querySelector('button[type="submit"]')) {
+  if (keyElement.querySelector('slot[name="submit-button"]')) {
     // reply
     return [
       buttonGroupConfig.composeReplyButton,

@@ -5,6 +5,8 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
 import { I18nextKeysType } from '@/i18next'
 
+import { type IInputAssistantButtonObserverData, InputAssistantButtonElementRouteMap, } from './InputAssistantButtonManager'
+
 export interface IInputAssistantButton {
   tooltip: I18nextKeysType
   buttonKey: IChromeExtensionButtonSettingKey
@@ -12,7 +14,7 @@ export interface IInputAssistantButton {
   InputAssistantBoxSx?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
-  onSelectionEffect?: (e?: any) => any
+  onSelectionEffect?: (e: IInputAssistantButtonObserverData) => any
 }
 export type IInputAssistantButtonKeyType =
   | 'composeNewButton'
@@ -430,44 +432,80 @@ const InputAssistantButtonGroupConfig = {
       marginRight: '8px',
     },
   },
-  'youtube.com': {
-    enable: true,
-    rootSelectors: [
-      'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
-    ],
-    rootStyle: '',
-    appendPosition: 2,
-    rootParentDeep: 3,
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+  'youtube.com': [
+    {
+      enable: true,
+      rootSelectors: [
+        'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
+      ],
+      rootStyle: '',
+      appendPosition: 2,
+      rootParentDeep: 3,
+      rootWrapperTagName: 'div',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '10px 9px',
+        iconSize: 16,
+        borderRadius: '18px 0 0 18px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 18px 18px 0',
+        padding: '8px 3px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginLeft: '8px',
+      },
     },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+    {
+      enable: true,
+      rootSelectors: ['#reply-button-end'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div', 
+      rootStyle: 'display: flex; align-items: center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: (observerData) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${observerData.id}"]`;
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            (document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            ))
+            
+          inputAssistantButton?.parentNode?.parentNode?.querySelector<HTMLElement>('button[aria-label="Reply"]')?.click()
+        },
+      },
+      appendPosition: 2,
+      CTAButtonStyle: {
+        padding: '8px 18px',
+        iconSize: 16,
+        borderRadius: '18px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginLeft: '8px',
+      },
     },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
-    },
-    CTAButtonStyle: {
-      padding: '10px 9px',
-      iconSize: 16,
-      borderRadius: '18px 0 0 18px',
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 18px 18px 0',
-      padding: '8px 3px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '18px',
-      marginLeft: '8px',
-    },
-  },
+  ],
   'studio.youtube.com': {
     enable: true,
     rootSelectors: ['ytcp-commentbox #submit-button'],
@@ -546,9 +584,7 @@ const InputAssistantButtonGroupConfig = {
   },
   'reddit.com': {
     enable: true,
-    rootSelectors: [
-      ['shreddit-composer', 'div[slot="action-bar-right"]']
-    ],
+    rootSelectors: [['shreddit-composer', 'div[slot="action-bar-right"]']],
     appendPosition: 2,
     rootParentDeep: 0,
     rootWrapperTagName: 'div',
@@ -577,16 +613,18 @@ const InputAssistantButtonGroupConfig = {
       buttonKey: 'inputAssistantComposeReplyButton',
       permissionWrapperCardSceneType: 'REDDIT_COMPOSE_REPLY_BUTTON',
       CTAButtonStyle: {
-        padding: '5px 12px',
-        iconSize: 14,
-        borderRadius: '12px 0  0 12px',
+        iconSize: 16,
+        borderRadius: '16px 0 0 16px',
+        padding: '8px 10px',
+        transparentHeight: 6,
       },
       DropdownButtonStyle: {
-        borderRadius: '0 12px 12px 0',
-        padding: '2px',
+        borderRadius: '0 16px 16px 0',
+        padding: '6px 3px',
+        transparentHeight: 6,
       },
       InputAssistantBoxSx: {
-        borderRadius: '12px',
+        borderRadius: '16px',
       },
     },
     refineDraftButton: {

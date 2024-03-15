@@ -23,7 +23,7 @@ export interface IInputAssistantButtonObserverData {
   config: IInputAssistantButtonGroupConfig
 }
 
-const elementRoute = new WeakMap()
+export const InputAssistantButtonElementRouteMap = new Map<any, Document | ShadowRoot | HTMLElement | Element>()
 
 class InputAssistantButtonManager {
   host: InputAssistantButtonGroupConfigHostType
@@ -66,12 +66,12 @@ class InputAssistantButtonManager {
             for (const layer of selectorLayer) {
               const length = elements.length
               for (let i = 0; i < length; i++) {
-                let d: any = elements.shift()!
-                if (d.shadowRoot) {
-                  d = d.shadowRoot
+                let d = elements.shift()!
+                if ((d as Element).shadowRoot) {
+                  d = (d as any).shadowRoot
                 }
                 d.querySelectorAll(layer).forEach((el: any) => {
-                  elementRoute.set(el, d)
+                  InputAssistantButtonElementRouteMap.set(el, d)
                   elements.push(el)
                 })
               }
@@ -82,10 +82,15 @@ class InputAssistantButtonManager {
               let deep = rootParentDeep
               while (deep > 0) {
                 deep--
-                const topLevelElement = elementRoute.get(rootElement)
-                elementRoute.delete(rootElement)
+                const topLevelElement = InputAssistantButtonElementRouteMap.get(
+                  rootElement,
+                )!
+                InputAssistantButtonElementRouteMap.delete(rootElement)
                 rootElement = rootElement.parentElement as HTMLElement
-                elementRoute.set(rootElement, topLevelElement)
+                InputAssistantButtonElementRouteMap.set(
+                  rootElement,
+                  topLevelElement,
+                )
               }
               if (rootSelectorStyle) {
                 mergeElementCssText(origin, rootSelectorStyle)
@@ -166,6 +171,10 @@ class InputAssistantButtonManager {
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',
     )
     webComponentRoot.setAttribute('maxai-input-assistant-button-id', id)
+    InputAssistantButtonElementRouteMap.set(
+      `[maxai-input-assistant-button-id="${id}"]`,
+      webComponentRoot,
+    )
     rootWrapperElement.appendChild(webComponentRoot)
     if (isNumber(appendPosition)) {
       const referenceElement = rootElement.childNodes[
@@ -237,13 +246,15 @@ class InputAssistantButtonManager {
           element.sheet?.cssRules.length === 0 && element.innerHTML === '',
       )
       // temp fix select shadowRoot
-      let isContain = false
-      let topLevelElement = elementRoute.get(rootElement)
+      let isContain = true
+      let topLevelElement = InputAssistantButtonElementRouteMap.get(rootElement)
       let currentLevelElement = rootElement
-      while (topLevelElement) {
+      while (isContain && topLevelElement) {
         isContain = topLevelElement.contains(currentLevelElement)
-        currentLevelElement = topLevelElement
-        topLevelElement = elementRoute.get(topLevelElement)
+        currentLevelElement = topLevelElement as HTMLElement
+        topLevelElement = InputAssistantButtonElementRouteMap.get(
+          topLevelElement,
+        )
       }
       if (isContain && !hasEmptyEmotion) {
         return

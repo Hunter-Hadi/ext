@@ -1,6 +1,5 @@
 import { cloneDeep } from 'lodash-es'
 
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {
   GetSocialMediaPostContentFunction,
@@ -210,31 +209,12 @@ export const getYouTubeSocialMediaPostCommentsContent: (
   result: ISocialMediaPostContextData,
 ) => Promise<ISocialMediaPostContextData | null> = async (result) => {
   //获取所有评论,判断是否是youtube视频页面
-  const chromeExtensionData = await getChromeExtensionLocalStorage()
-  const summaryNavKey =
-    chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
-      'YOUTUBE_VIDEO_SUMMARY'
-    ]
-  if (summaryNavKey !== 'commit') {
-    return null
-  }
-  const delTranscriptPostText = result?.postText.substring(
-    0,
-    result?.postText.indexOf('**Post video transcript:**') +
-      '**Post video transcript:**'.length,
-  )
-  const delTranscriptContentText = result?.SOCIAL_MEDIA_PAGE_CONTENT.substring(
-    0,
-    result?.SOCIAL_MEDIA_PAGE_CONTENT.indexOf('**Post video transcript:**') +
-      '**Post video transcript:**'.length,
-  )
-
   const commentsInfo = await youTubeGetPostCommentsInfo()
   if (commentsInfo?.commentsData && commentsInfo.commitList.length > 0) {
-    const postText = `${delTranscriptPostText}\n[Post commentList]:\n${
+    const postText = `${result?.postText}\n[Post commentList]:\n${
       commentsInfo?.commentsData.fullText || 'N/A'
     }`
-    const pageContent = `${delTranscriptContentText}\n[Page commentList]:\n${
+    const pageContent = `${result?.SOCIAL_MEDIA_PAGE_CONTENT}\n[Page commentList]:\n${
       commentsInfo?.commentsData.fullText || 'N/A'
     }`
     return {
@@ -255,7 +235,6 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
   commitList: ICommentData[]
 } | null> = async () => {
   try {
-    console.log('simply start youTubeGetPostCommentsInfo')
     await awaitScrollFun(
       () => {
         const primarySkeleton = document.querySelector('ytd-watch-flexy')

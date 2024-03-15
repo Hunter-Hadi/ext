@@ -346,7 +346,7 @@ const InputAssistantButtonGroupConfig = {
       },
     },
   ],
-  'linkedin.com': {
+  'linkedin.com': [{
     enable: true,
     rootSelectors: [
       '.comments-comment-box-comment__text-editor + div > div',
@@ -392,7 +392,52 @@ const InputAssistantButtonGroupConfig = {
       borderRadius: '16px',
       marginRight: '8px',
     },
-  },
+  }, {
+    enable: (rootElement) => {
+      const commentBox = rootElement.parentElement.querySelector('.comments-comment-box');
+      if (commentBox) {
+        return false;
+      }
+      return true
+    },
+    rootSelectors: ['.feed-shared-social-action-bar'],
+    rootParentDeep: 0,
+    rootWrapperTagName: 'div',
+    rootWrapperStyle: 'order: 1;',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      onSelectionEffect: ({ id: buttonId }) => {
+        const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+        const inputAssistantButton =
+          InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+          document.querySelector<HTMLButtonElement>(
+            inputAssistantButtonSelector,
+          )
+
+        inputAssistantButton?.parentNode?.parentNode
+          ?.querySelector<HTMLElement>('button[data-finite-scroll-hotkey="c"]')
+          ?.click()
+
+        setTimeout(() => {
+          const wrapperElement = inputAssistantButton?.parentElement;
+          wrapperElement?.parentElement?.removeChild(wrapperElement)
+        })
+      },
+    },
+    appendPosition: 11,
+    CTAButtonStyle: {
+      padding: '11px 16px',
+      iconSize: 26,
+      borderRadius: '4px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '4px',
+    },
+  },],
   'facebook.com': {
     enable: true,
     rootSelectors: [

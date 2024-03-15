@@ -160,6 +160,9 @@ const getLinkedInButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
+  if (keyElement.classList.contains('feed-shared-social-action-bar')) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
   if (keyElement.classList.contains('share-box_actions')) {
     return [
       buttonGroupConfig.composeNewButton,
@@ -198,7 +201,10 @@ const getYouTubeButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.id === 'placeholder-area' || keyElement.id === 'reply-button-end') {
+  if (
+    keyElement.id === 'placeholder-area' ||
+    keyElement.id === 'reply-button-end'
+  ) {
     return [buttonGroupConfig.composeReplyButton]
   }
   return [

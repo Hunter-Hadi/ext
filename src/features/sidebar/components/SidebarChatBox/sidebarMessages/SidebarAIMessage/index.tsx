@@ -1,9 +1,11 @@
 import Box from '@mui/material/Box'
 import CircularProgress from '@mui/material/CircularProgress'
+import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
@@ -40,6 +42,7 @@ interface IProps {
 }
 let isSetSummaryViewMaxHeight = false
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
+  const { t } = useTranslation(['client'])
   const { message, isDarkMode, liteMode = false, loading = false } = props
   const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(300)
   const [IsSummaryAutoScroll, setIsSummaryAutoScroll] = useState(false)
@@ -159,109 +162,60 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   }, [renderData.answer])
 
   return (
-    <Stack
-      ref={chatMessageRef}
-      className={'chat-message--text'}
-      sx={{ ...memoSx }}
-    >
-      {isSummaryMessage && (
-        <SwitchSummaryActionNav message={message} loading={coverLoading} />
+    <Box component={'div'} className={'chat-message--AI'}>
+      {message.originalMessage?.metadata?.includeHistory === false && (
+        <Divider sx={{ mb: 2 }}>
+          <Typography color={'text.secondary'} fontSize={'12px'}>
+            {t('client:sidebar__conversation__message__context_cleared')}
+          </Typography>
+        </Divider>
       )}
-      {isRichAIMessage ? (
-        <Stack spacing={2}>
-          {renderData.title && (
-            <MetadataTitleRender
-              title={renderData.title}
-              fontSx={{
-                fontWeight: 'bold',
-                fontSize: '28px',
-                color: 'text.primary',
-              }}
-            />
-          )}
-          {renderData.copilot && (
-            <Stack spacing={1}>
-              {renderData.copilot?.title && (
-                <MetadataTitleRender title={renderData.copilot.title} />
-              )}
-              <Stack spacing={1}>
-                {renderData.copilot.steps.map((copilotStep) => {
-                  return (
-                    <SidebarAIMessageCopilotStep
-                      messageIsComplete={renderData.messageIsComplete}
-                      copilot={copilotStep}
-                      key={copilotStep.title}
-                    />
-                  )
-                })}
-              </Stack>
-            </Stack>
-          )}
-          {renderData.sources && renderData.sourcesHasContent && (
-            <Stack spacing={1}>
-              <Stack direction={'row'} alignItems="center" spacing={1}>
-                {renderData.sourcesLoading && !renderData.messageIsComplete ? (
-                  <CircularProgress size={18} />
-                ) : (
-                  <CaptivePortalIcon
-                    sx={{
-                      color: 'primary.main',
-                      fontSize: 20,
-                    }}
-                  />
-                )}
-                <Typography
-                  sx={{
-                    color: 'primary.main',
-                    fontSize: 18,
-                  }}
-                >
-                  Sources
-                </Typography>
-              </Stack>
-              <SidebarAIMessageSourceLinks
-                sourceLinks={renderData.sources.links || []}
-                loading={renderData.sourcesLoading}
+      <Stack
+        ref={chatMessageRef}
+        className={'chat-message--text'}
+        sx={{ ...memoSx }}
+      >
+        {isSummaryMessage && (
+          <SwitchSummaryActionNav message={message} loading={coverLoading} />
+        )}
+        {isRichAIMessage ? (
+          <Stack spacing={2}>
+            {renderData.title && (
+              <MetadataTitleRender
+                title={renderData.title}
+                fontSx={{
+                  fontWeight: 'bold',
+                  fontSize: '28px',
+                  color: 'text.primary',
+                }}
               />
-            </Stack>
-          )}
-          {renderData.content && (
-            <Stack>
-              {!renderData.messageIsComplete ? (
-                <Stack direction={'row'} alignItems="center" spacing={1}>
-                  <CircularProgress size={18} />
-                  <Typography
-                    sx={{
-                      color: 'primary.main',
-                      fontSize: 18,
-                      lineHeight: '20px',
-                    }}
-                  >
-                    {renderData.content.contentType === 'text' && 'Writing'}
-                    {renderData.content.contentType === 'image' &&
-                      'Creating image'}
-                  </Typography>
-                </Stack>
-              ) : (
-                <Stack direction={'row'} alignItems="center" spacing={1}>
-                  {renderData.content.title?.titleIcon ? (
-                    <Stack
-                      alignItems={'center'}
-                      justifyContent={'center'}
-                      width={16}
-                      height={16}
-                    >
-                      <ContextMenuIcon
-                        sx={{
-                          color: 'primary.main',
-                          fontSize:
-                            renderData.content.title?.titleIconSize || 18,
-                        }}
-                        icon={renderData.content.title?.titleIcon}
+            )}
+            {renderData.copilot && (
+              <Stack spacing={1}>
+                {renderData.copilot?.title && (
+                  <MetadataTitleRender title={renderData.copilot.title} />
+                )}
+                <Stack spacing={1}>
+                  {renderData.copilot.steps.map((copilotStep) => {
+                    return (
+                      <SidebarAIMessageCopilotStep
+                        messageIsComplete={renderData.messageIsComplete}
+                        copilot={copilotStep}
+                        key={copilotStep.title}
                       />
-                    </Stack>
+                    )
+                  })}
+                </Stack>
+              </Stack>
+            )}
+            {renderData.sources && renderData.sourcesHasContent && (
+              <Stack spacing={1}>
+                <Stack direction={'row'} alignItems="center" spacing={1}>
+                  {renderData.sourcesLoading &&
+                  !renderData.messageIsComplete ? (
+                    <CircularProgress size={18} />
                   ) : (
-                    <ReadIcon
+                    <CaptivePortalIcon
                       sx={{
                         color: 'primary.main',
                         fontSize: 20,
@@ -272,57 +226,118 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     sx={{
                       color: 'primary.main',
                       fontSize: 18,
-                      lineHeight: '20px',
                     }}
                   >
-                    {renderData.content.title?.title || 'Answer'}
+                    Sources
                   </Typography>
                 </Stack>
-              )}
-              {isWaitFirstAIResponseText && !renderData.messageIsComplete ? (
-                <SidebarAIMessageSkeletonContent
-                  contentType={renderData.content.contentType}
+                <SidebarAIMessageSourceLinks
+                  sourceLinks={renderData.sources.links || []}
+                  loading={renderData.sourcesLoading}
                 />
-              ) : isSummaryMessage ? (
-                <HeightUpdateScrolling
-                  height={summaryViewMaxHeight}
-                  update={IsSummaryAutoScroll ? message.text : ''}
-                >
+              </Stack>
+            )}
+            {renderData.content && (
+              <Stack>
+                {!renderData.messageIsComplete ? (
+                  <Stack direction={'row'} alignItems="center" spacing={1}>
+                    <CircularProgress size={18} />
+                    <Typography
+                      sx={{
+                        color: 'primary.main',
+                        fontSize: 18,
+                        lineHeight: '20px',
+                      }}
+                    >
+                      {renderData.content.contentType === 'text' && 'Writing'}
+                      {renderData.content.contentType === 'image' &&
+                        'Creating image'}
+                    </Typography>
+                  </Stack>
+                ) : (
+                  <Stack direction={'row'} alignItems="center" spacing={1}>
+                    {renderData.content.title?.titleIcon ? (
+                      <Stack
+                        alignItems={'center'}
+                        justifyContent={'center'}
+                        width={16}
+                        height={16}
+                      >
+                        <ContextMenuIcon
+                          sx={{
+                            color: 'primary.main',
+                            fontSize:
+                              renderData.content.title?.titleIconSize || 18,
+                          }}
+                          icon={renderData.content.title?.titleIcon}
+                        />
+                      </Stack>
+                    ) : (
+                      <ReadIcon
+                        sx={{
+                          color: 'primary.main',
+                          fontSize: 20,
+                        }}
+                      />
+                    )}
+                    <Typography
+                      sx={{
+                        color: 'primary.main',
+                        fontSize: 18,
+                        lineHeight: '20px',
+                      }}
+                    >
+                      {renderData.content.title?.title || 'Answer'}
+                    </Typography>
+                  </Stack>
+                )}
+                {isWaitFirstAIResponseText && !renderData.messageIsComplete ? (
+                  <SidebarAIMessageSkeletonContent
+                    contentType={renderData.content.contentType}
+                  />
+                ) : isSummaryMessage ? (
+                  <HeightUpdateScrolling
+                    height={summaryViewMaxHeight}
+                    update={IsSummaryAutoScroll ? message.text : ''}
+                  >
+                    <SidebarAIMessageContent AIMessage={message} />
+                  </HeightUpdateScrolling>
+                ) : (
                   <SidebarAIMessageContent AIMessage={message} />
-                </HeightUpdateScrolling>
-              ) : (
-                <SidebarAIMessageContent AIMessage={message} />
-              )}
-            </Stack>
-          )}
-          {renderData.deepDive && renderData.deepDive.title && (
-            <Stack spacing={1}>
-              {renderData.deepDive.title && (
-                <MetadataTitleRender title={renderData.deepDive.title} />
-              )}
-              <div
-                className={`markdown-body ${
-                  isDarkMode ? 'markdown-body-dark' : ''
-                }`}
-              >
-                <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
-              </div>
-            </Stack>
-          )}
-        </Stack>
-      ) : (
-        <div
-          className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}
-        >
-          <CustomMarkdown>{renderData.answer}</CustomMarkdown>
-        </div>
-      )}
-      {!coverLoading ? (
-        <SidebarAIMessageTools message={message as IAIResponseMessage} />
-      ) : (
-        <Box height={'26px'} />
-      )}
-    </Stack>
+                )}
+              </Stack>
+            )}
+            {renderData.deepDive && renderData.deepDive.title && (
+              <Stack spacing={1}>
+                {renderData.deepDive.title && (
+                  <MetadataTitleRender title={renderData.deepDive.title} />
+                )}
+                <div
+                  className={`markdown-body ${
+                    isDarkMode ? 'markdown-body-dark' : ''
+                  }`}
+                >
+                  <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
+                </div>
+              </Stack>
+            )}
+          </Stack>
+        ) : (
+          <div
+            className={`markdown-body ${
+              isDarkMode ? 'markdown-body-dark' : ''
+            }`}
+          >
+            <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+          </div>
+        )}
+        {!coverLoading ? (
+          <SidebarAIMessageTools message={message as IAIResponseMessage} />
+        ) : (
+          <Box height={'26px'} />
+        )}
+      </Stack>
+    </Box>
   )
 }
 const MetadataTitleRender: FC<{

@@ -32,7 +32,7 @@ const SidebarChatBoxInputActions: FC<{
   const { t } = useTranslation(['common', 'client'])
   const [inputValue, setInputValue] = useState('')
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
-  const ref = React.useRef<HTMLElement | null>(null)
+  const ref = React.useRef<HTMLDivElement | null>(null)
   const nextMessageIsActionRef = useRef(false)
   const metaDataRef = useRef<any>({})
 
@@ -135,6 +135,10 @@ const SidebarChatBoxInputActions: FC<{
         {currentSidebarConversationType === 'Search' &&
           !smoothConversationLoading && <SearchWithAICopilotToggle />}
 
+        {/* art copilot button */}
+        {currentSidebarConversationType === 'Art' &&
+          !smoothConversationLoading && <ArtConversationalModeToggle />}
+
         {/* chat history btn */}
         <SidebarChatHistoryButton
           sx={{
@@ -167,10 +171,6 @@ const SidebarChatBoxInputActions: FC<{
             },
           }}
         />
-
-        {/* art */}
-        {currentSidebarConversationType === 'Art' &&
-          !smoothConversationLoading && <ArtConversationalModeToggle />}
 
         {/* use prompt btn */}
         {currentSidebarConversationType === 'Chat' &&

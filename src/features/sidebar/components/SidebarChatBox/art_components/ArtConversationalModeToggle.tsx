@@ -15,13 +15,31 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 const ArtConversationalModeToggle: FC = () => {
   const { t } = useTranslation(['client', 'common'])
   const { updateSidebarSettings, sidebarSettings } = useSidebarSettings()
-  // TODO - 先隐藏这个开关, 因为不携带历史记录聊天很垃圾 - @huangsong - 2024-01-18
-  return null
   return (
     <TextOnlyTooltip
-      title={t(
-        'client:sidebar__search_with_ai__advanced__copilot__description',
-      )}
+      title={
+        <Stack>
+          <Stack gap={0.5} direction={'row'}>
+            <Typography
+              fontSize={'16px'}
+              color={'text.primary'}
+              fontWeight={500}
+            >
+              {'Pro'}
+            </Typography>
+            <Typography
+              fontSize={'16px'}
+              color={'primary.main'}
+              fontWeight={500}
+            >
+              {'Art'}
+            </Typography>
+          </Stack>
+          <Typography fontSize={'14px'} color={'text.primary'}>
+            {t('client:sidebar__art__advanced__copilot__description')}
+          </Typography>
+        </Stack>
+      }
     >
       <Stack
         onClick={async () => {
@@ -102,7 +120,7 @@ const ArtConversationalModeToggle: FC = () => {
           />
         </Stack>
         <Typography fontSize={'14px'} color={'text.primary'}>
-          {t('client:sidebar__search_with_ai__advanced__copilot__title')}
+          {'Pro'}
         </Typography>
       </Stack>
     </TextOnlyTooltip>

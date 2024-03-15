@@ -21,11 +21,8 @@ import { AppLocalStorageState } from '@/store'
 const useArtTextToImage = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const {
-    pushPricingHookMessage,
-    createConversation,
-    getConversation,
-  } = useClientConversation()
+  const { pushPricingHookMessage, createConversation, getConversation } =
+    useClientConversation()
   const {
     sidebarSettings,
     currentSidebarConversationType,
@@ -62,6 +59,7 @@ const useArtTextToImage = () => {
     const isNeedTransform =
       sidebarSettings?.art?.isEnabledConversationalMode === true
     let actions: ISetActionsType = []
+    // 需要智能生成
     if (isNeedTransform) {
       // 为了让用户可以连续对话，这里合成前面的问题
       const historyMessages: IChatMessage[] = [
@@ -71,7 +69,9 @@ const useArtTextToImage = () => {
           messageId: uuidV4(),
         },
       ]
-      currentSidebarConversationMessages.map((message) => {
+      // 倒序合成
+      for (let i = currentSidebarConversationMessages.length - 1; i >= 0; i--) {
+        const message = currentSidebarConversationMessages[i]
         if (isAIMessage(message) && message.originalMessage) {
           const question = message.originalMessage.metadata?.title?.title || ''
           const answer =
@@ -92,8 +92,12 @@ const useArtTextToImage = () => {
               text: answer,
             })
           }
+          // 因为是从这条消息开始includeHistory为false，所以合成这条消息后,跳出循环
+          if (message.originalMessage.metadata?.includeHistory === false) {
+            break
+          }
         }
-      })
+      }
       actions = [
         {
           type: 'CHAT_MESSAGE',
@@ -125,7 +129,6 @@ const useArtTextToImage = () => {
                   },
                   artTextToImageMetadata: modelConfig,
                 },
-                includeHistory: false,
               },
             } as IAIResponseMessage,
           },
@@ -222,6 +225,119 @@ const useArtTextToImage = () => {
               meta: {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
                 messageVisibleText: `{{IMAGE_PROMPT}}`,
+                contextMenu: {
+                  id: 'f19e862d-e8bb-4b09-9220-6a9a395deb6f',
+                  droppable: false,
+                  parent: '',
+                  text: '[Art] text to image',
+                  data: {
+                    editable: false,
+                    type: 'shortcuts',
+                    actions: [],
+                  },
+                } as IContextMenuItem,
+              },
+            },
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              text: '',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              originalMessage: {
+                content: {
+                  text: '',
+                  contentType: 'image',
+                },
+                metadata: {
+                  attachments: `{{LAST_ACTION_OUTPUT}}` as any,
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+      ]
+    } else {
+      actions = [
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId,
+              text: '',
+              originalMessage: {
+                metadata: {
+                  includeHistory: false,
+                  artTextToImagePrompt: text,
+                  shareType: 'art',
+                  title: {
+                    title: text,
+                  },
+                  copilot: {
+                    title: {
+                      title: 'AI art',
+                      titleIcon: 'Awesome',
+                      titleIconSize: 24,
+                    },
+                    steps: [
+                      {
+                        title: 'Art prompt',
+                        status: 'complete',
+                        icon: 'CheckCircle',
+                        value: text,
+                      },
+                    ],
+                  },
+                  artTextToImageMetadata: modelConfig,
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'AI_RESPONSE_MESSAGE_ID',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: '{{AI_RESPONSE_MESSAGE_ID}}',
+              text: '',
+              originalMessage: {
+                content: {
+                  title: {
+                    title: 'Image',
+                    titleIcon: 'Image',
+                  },
+                  contentType: 'image',
+                  text: '',
+                },
+              },
+            } as IAIResponseMessage,
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+            isEnabledDetectAIResponseLanguage: false,
+            AskChatGPTActionQuestion: {
+              text: text,
+              meta: {
+                includeHistory: false,
+                outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                messageVisibleText: text,
                 contextMenu: {
                   id: 'f19e862d-e8bb-4b09-9220-6a9a395deb6f',
                   droppable: false,

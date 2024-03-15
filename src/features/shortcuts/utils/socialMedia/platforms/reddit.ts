@@ -35,7 +35,6 @@ const getRedditCommentDetail = async (
 export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
-  debugger
   const postContainer = findSelectorParent(
     'div[data-test-id="post-content"]',
     inputAssistantButton,

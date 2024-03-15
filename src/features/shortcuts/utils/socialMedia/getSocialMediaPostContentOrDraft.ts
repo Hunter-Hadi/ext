@@ -35,13 +35,12 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 export const getSocialMediaPostContent = async (
   inputAssistantButtonElementSelector: string,
 ): Promise<ISocialMediaPostContextData> => {
-  const inputAssistantButton =
-    InputAssistantButtonElementRouteMap.get(
+  const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+    inputAssistantButtonElementSelector,
+  ) ||
+    document.querySelector(
       inputAssistantButtonElementSelector,
-    ) ||
-    (document.querySelector(
-      inputAssistantButtonElementSelector,
-    ) as HTMLButtonElement)
+    )) as HTMLButtonElement
 
   if (!inputAssistantButton) {
     return SocialMediaPostContext.emptyData

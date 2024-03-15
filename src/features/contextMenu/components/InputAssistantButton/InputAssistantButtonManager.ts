@@ -23,7 +23,10 @@ export interface IInputAssistantButtonObserverData {
   config: IInputAssistantButtonGroupConfig
 }
 
-export const InputAssistantButtonElementRouteMap = new Map<any, Document | ShadowRoot | HTMLElement | Element>()
+export const InputAssistantButtonElementRouteMap = new Map<
+  any,
+  Document | ShadowRoot | HTMLElement | Element
+>()
 
 class InputAssistantButtonManager {
   host: InputAssistantButtonGroupConfigHostType
@@ -51,6 +54,7 @@ class InputAssistantButtonManager {
       if (this.configs) {
         for (const config of this.configs) {
           const {
+            enable,
             rootSelectors,
             rootSelectorStyle,
             rootParentDeep = 0,
@@ -66,13 +70,13 @@ class InputAssistantButtonManager {
             for (const layer of selectorLayer) {
               const length = elements.length
               for (let i = 0; i < length; i++) {
-                let d = elements.shift()!
-                if ((d as Element).shadowRoot) {
-                  d = (d as any).shadowRoot
+                let rootElement = elements.shift()!
+                if ((rootElement as Element).shadowRoot) {
+                  rootElement = (rootElement as any).shadowRoot
                 }
-                d.querySelectorAll(layer).forEach((el: any) => {
-                  InputAssistantButtonElementRouteMap.set(el, d)
-                  elements.push(el)
+                rootElement.querySelectorAll(layer).forEach((element: any) => {
+                  InputAssistantButtonElementRouteMap.set(element, rootElement)
+                  elements.push(element)
                 })
               }
             }
@@ -95,6 +99,12 @@ class InputAssistantButtonManager {
               if (rootSelectorStyle) {
                 mergeElementCssText(origin, rootSelectorStyle)
               }
+              if (
+                !(typeof enable === 'function' ? enable(rootElement) : enable)
+              ) {
+                return
+              }
+
               const newObserverData = this.attachInputAssistantButton(
                 rootElement as HTMLElement,
                 config,
@@ -197,8 +207,11 @@ class InputAssistantButtonManager {
       // TODO 监听元素位置更新位置
 
       // temp feature: `Help me write`
-      const shouldDestory = !(typeof enable === 'function' ? enable() : enable)
-      if (shouldDestory) {
+      // when clicking the explicit quick reply button, it should open reply textarea automatically and destroy the button itself
+      const shouldDestroy = !(typeof enable === 'function'
+        ? enable(rootElement)
+        : enable)
+      if (shouldDestroy) {
         rootWrapperElement.parentElement?.removeChild(rootWrapperElement)
       }
     })

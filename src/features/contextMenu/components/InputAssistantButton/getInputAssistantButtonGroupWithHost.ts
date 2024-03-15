@@ -198,7 +198,7 @@ const getYouTubeButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.id === 'reply-button-end') {
+  if (keyElement.id === 'placeholder-area' || keyElement.id === 'reply-button-end') {
     return [buttonGroupConfig.composeReplyButton]
   }
   return [

@@ -5,7 +5,10 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
 import { I18nextKeysType } from '@/i18next'
 
-import { type IInputAssistantButtonObserverData, InputAssistantButtonElementRouteMap, } from './InputAssistantButtonManager'
+import {
+  type IInputAssistantButtonObserverData,
+  InputAssistantButtonElementRouteMap,
+} from './InputAssistantButtonManager'
 
 export interface IInputAssistantButton {
   tooltip: I18nextKeysType
@@ -14,7 +17,7 @@ export interface IInputAssistantButton {
   InputAssistantBoxSx?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
-  onSelectionEffect?: (e: IInputAssistantButtonObserverData) => any
+  onSelectionEffect?: (observerData: IInputAssistantButtonObserverData) => any
 }
 export type IInputAssistantButtonKeyType =
   | 'composeNewButton'
@@ -28,7 +31,9 @@ interface IInputAssistantButtonGroupConfigBase {
 }
 export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
-  enable: boolean | (() => boolean)
+  enable:
+    | boolean
+    | ((e: any) => boolean)
   rootSelectors: (string | string[])[]
   // 距离root还有多少层parent
   rootParentDeep: number
@@ -436,7 +441,7 @@ const InputAssistantButtonGroupConfig = {
     {
       enable: true,
       rootSelectors: [
-        'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
+        'ytd-commentbox ytd-button-renderer button[aria-label="Reply"]',
       ],
       rootStyle: '',
       appendPosition: 2,
@@ -472,26 +477,88 @@ const InputAssistantButtonGroupConfig = {
       },
     },
     {
-      enable: true,
-      rootSelectors: ['#reply-button-end'],
+      enable: (rootElement) => {
+        const commentDialog = rootElement.parentElement.querySelector('#comment-dialog');
+        if ((commentDialog as any).hidden || commentDialog.innerHTML === '') {
+          return true;
+        }
+        return false;
+      },
+      rootSelectors: ['#simple-box #placeholder-area'],
       rootParentDeep: 0,
-      rootWrapperTagName: 'div', 
+      rootWrapperTagName: 'div',
       rootStyle: 'display: flex; align-items: center;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
-        onSelectionEffect: (observerData) => {
-          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${observerData.id}"]`;
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
             InputAssistantButtonElementRouteMap.get(
               inputAssistantButtonSelector,
             ) ||
-            (document.querySelector<HTMLButtonElement>(
+            document.querySelector<HTMLButtonElement>(
               inputAssistantButtonSelector,
-            ))
-            
-          inputAssistantButton?.parentNode?.parentNode?.querySelector<HTMLElement>('button[aria-label="Reply"]')?.click()
+            )
+
+          inputAssistantButton?.parentNode?.parentNode
+            ?.querySelector<HTMLElement>('yt-formatted-string#simplebox-placeholder')
+            ?.click()
+
+          setTimeout(() => {
+            const wrapperElement = inputAssistantButton?.parentElement;
+            wrapperElement?.parentElement?.removeChild(wrapperElement)
+          })
+        },
+      },
+      appendPosition: 2,
+      CTAButtonStyle: {
+        padding: '8px 18px',
+        iconSize: 16,
+        borderRadius: '18px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginLeft: '8px',
+        marginBottom: '-12px',
+        transform: 'translateY(-12px)',
+      },
+    },
+    {
+      enable: (rootElement) => {
+        const replyDialog = rootElement.parentElement.nextElementSibling
+        if (replyDialog.innerHTML === '' || (replyDialog as any).hidden) {
+          return true;
+        }
+        return false;
+      },
+      rootSelectors: ['#reply-button-end'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootStyle: 'display: flex; align-items: center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+
+          inputAssistantButton?.parentNode?.parentNode
+            ?.querySelector<HTMLElement>('button[aria-label="Reply"]')
+            ?.click()
+
+          setTimeout(() => {
+            const wrapperElement = inputAssistantButton?.parentElement;
+            wrapperElement?.parentElement?.removeChild(wrapperElement)
+          })
         },
       },
       appendPosition: 2,

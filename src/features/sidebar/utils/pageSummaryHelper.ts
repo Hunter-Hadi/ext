@@ -836,18 +836,23 @@ export const getContextMenuActionsByPageSummaryType = async (
     messageId,
   }
 }
-//获取不同总结nav的Actions
-export const getSummaryNavActions: (params: {
+
+export interface IGetSummaryNavActionsParams{
   type: IPageSummaryType
   messageId?: string
   prompt: string
   key: SummaryParamsPromptType
   title?: string
-}) => Promise<ISetActionsType> = async (params) => {
+}
+//获取不同总结nav的Actions
+export const getSummaryNavActions: (params:IGetSummaryNavActionsParams) => Promise<ISetActionsType> = async (params) => {
   let currentActions = cloneDeep(
     PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [],
   )
 
+  if(params.type==='YOUTUBE_VIDEO_SUMMARY'){
+    currentActions = await youTubeSummaryChangeTool(params, currentActions) //进行actions增改
+  }
   if (params.messageId) {
     //传入messageId 代表 采用之前的msg
     currentActions = currentActions?.filter((item) => {
@@ -856,9 +861,6 @@ export const getSummaryNavActions: (params: {
       }
       return true
     })
-  }
-  if(params.type==='YOUTUBE_VIDEO_SUMMARY'){
-    currentActions = await youTubeSummaryChangeTool(params.key, currentActions) //进行actions增改
   }
   currentActions = currentActions.map((action) => {
     if (

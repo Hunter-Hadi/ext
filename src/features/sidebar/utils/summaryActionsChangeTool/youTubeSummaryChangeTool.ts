@@ -1,29 +1,80 @@
-import { findLastIndex } from 'lodash-es'
-import { cloneDeep, orderBy } from 'lodash-es'
+import { v4 as uuidV4 } from 'uuid'
 
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { youTubeGetPostCommentsInfo } from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
 
-import { SummaryParamsPromptType } from '../pageSummaryNavPrompt'
+import { IGetSummaryNavActionsParams } from '../pageSummaryHelper'
+
+
 export const youTubeSummaryCommentsChangeTool = async (
   actions: ISetActionsType,
+  params: IGetSummaryNavActionsParams
 ) => {
   try {
-    const askChatGptIndex = actions.findIndex(
-      (item) => item.type === 'ASK_CHATGPT',
-    )
-    const commentsInfo = await youTubeGetPostCommentsInfo()
-
-    if (commentsInfo?.commitList.length === 0 || !commentsInfo) {
-      //当没有评论直接显示无
-      actions = actions.filter(
-        (action) =>
-          action.type !== 'ASK_CHATGPT' &&
-          action.type !== 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE' &&
-          action.type !== 'ANALYZE_CHAT_FILE',
-      )
-      actions.push({
+    const newActions:ISetActionsType= [
+      {
+        type: 'CHAT_MESSAGE',
+        parameters: {
+          ActionChatMessageOperationType: 'add',
+          ActionChatMessageConfig: {
+            type: 'ai',
+            messageId: uuidV4(),
+            text: '',
+            originalMessage: {
+              metadata: {
+                sourceWebpage: {
+                  url: `{{CURRENT_WEBPAGE_URL}}`,
+                  title: `{{CURRENT_WEBPAGE_TITLE}}`,
+                },
+                shareType: 'summary',
+                title: {
+                  title: `Summarize video`,
+                },
+                copilot: {
+                  title: {
+                    title: 'Page insights',
+                    titleIcon: 'LaptopMac',
+                  },
+                  steps: [
+                    {
+                      title: 'Analyzing video',
+                      status: 'loading',
+                      icon: 'SmartToy',
+                    },
+                  ],
+                },
+              },
+              includeHistory: false,
+            },
+          } as IAIResponseMessage,
+        },
+      },
+      {
+        type: 'SET_VARIABLE',
+        parameters: {
+          VariableName: 'AI_RESPONSE_MESSAGE_ID',
+        },
+      },
+      {
+        type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+        parameters: {
+          OperationElementSelector: 'ytd-watch-metadata #title',
+        },
+      },
+      {
+        type: 'SET_VARIABLE',
+        parameters: {
+          VariableName: 'READABILITY_CONTENTS',
+        },
+      },
+      {
+        type: 'ANALYZE_CHAT_FILE',
+        parameters: {
+          AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+          AnalyzeChatFileImmediateUpdateConversation: false,
+        },
+      },
+      {
         type: 'CHAT_MESSAGE',
         parameters: {
           ActionChatMessageOperationType: 'update',
@@ -32,82 +83,183 @@ export const youTubeSummaryCommentsChangeTool = async (
             messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             text: '',
             originalMessage: {
+              metadata: {
+                copilot: {
+                  steps: [
+                    {
+                      title: 'Analyzing video',
+                      status: 'complete',
+                      icon: 'SmartToy',
+                      value: '{{CURRENT_WEBPAGE_TITLE}}',
+                    },
+                  ],
+                },
+              },
               content: {
                 title: {
                   title: 'Summary',
                 },
-                text: '**No comments found 😶**',
+                text: '',
                 contentType: 'text',
               },
               includeHistory: false,
             },
           } as IAIResponseMessage,
         },
-      })
-      return actions
-    }
-    const sortedComments = orderBy(
-      commentsInfo?.commitList ?? [],
-      (item) => {
-        const value = item.like
-        if (value && value.endsWith('K')) {
-          return Number(value.slice(0, -1)) * 1000
-        }
-        return Number(value)
       },
-      ['desc'],
-    ) //对like排序
-    const commentText = sortedComments
-      .map((comment) => {
-        return `**${comment.author}** ${
-          comment.like !== '0' ? '👍' + comment.like : ''
-        }\n  ${comment.content}\n`
-      })
-      .join('\n')
-
-    const actionSetTemplateList: ISetActionsType = [
       {
-        type: 'RENDER_TEMPLATE',
+        type: 'YOUTUBE_GET_COMMENTS',
+        parameters: {},
+      },
+      {
+        type: 'SET_VARIABLE',
         parameters: {
-          template: `#### Top Comment
-   _TL;DR_ **{{SUMMARY_CONTENTS}}**
-   
-  ${commentText}
-                `,
+          VariableName: 'YOUTUBE_COMMENT',
+        },
+      },
+      {
+        type: 'SCRIPTS_CONDITIONAL',
+        parameters: {
+          WFCondition: 'Equals',
+          WFFormValues: {
+            Value: '',
+            WFSerializationType: 'WFDictionaryFieldValue',
+          },
+          WFConditionalIfTrueActions: [
+            {
+              type: 'CHAT_MESSAGE',
+              parameters: {
+                ActionChatMessageOperationType: 'update',
+                ActionChatMessageConfig: {
+                  type: 'ai',
+                  messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  text: `{{LAST_ACTION_OUTPUT}`,
+                  originalMessage: {
+                    status: 'complete',
+                    metadata: {
+                      isComplete: true,
+                      deepDive: {
+                        title: {
+                          title: 'Deep dive',
+                          titleIcon: 'TipsAndUpdates',
+                        },
+                        value: 'Ask AI anything about the video...',
+                      },
+                    },
+                    content: {
+                      text: `{{LAST_ACTION_OUTPUT}}`,
+                      title: {
+                        title: 'Summary',
+                      },
+                      contentType: 'text',
+                    },
+                    includeHistory: false,
+                  },
+                } as IAIResponseMessage,
+              },
+            },
+            {
+              type: 'CHAT_MESSAGE',
+              parameters: {
+                ActionChatMessageOperationType: 'update',
+                ActionChatMessageConfig: {
+                  type: 'ai',
+                  messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  text: '',
+                  originalMessage: {
+                    content: {
+                      title: {
+                        title: 'Summary',
+                      },
+                      text: '**No comments found 😶**',
+                      contentType: 'text',
+                    },
+                    includeHistory: false,
+                  },
+                } as IAIResponseMessage,
+              },
+            },
+          ],
+          WFConditionalIfFalseActions: [
+            {
+              type: 'ASK_CHATGPT',
+              parameters: {
+                AskChatGPTActionQuestion: {
+                  text: params.prompt,
+                  meta: {
+                    outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  },
+                },
+                AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
+              },
+            },
+            {
+              type: 'SET_VARIABLE',
+              parameters: {
+                VariableName: 'SUMMARY_CONTENTS',
+              },
+            },
+            {
+              type: 'RENDER_TEMPLATE',
+              parameters: {
+                template: `#### Top Comment
+_TL;DR_ **{{SUMMARY_CONTENTS}}**
+       
+{{YOUTUBE_COMMENT}}
+                    `,
+              },
+            },
+            {
+              type: 'CHAT_MESSAGE',
+              parameters: {
+                ActionChatMessageOperationType: 'update',
+                ActionChatMessageConfig: {
+                  type: 'ai',
+                  messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  text: `{{LAST_ACTION_OUTPUT}`,
+                  originalMessage: {
+                    status: 'complete',
+                    metadata: {
+                      isComplete: true,
+                      deepDive: {
+                        title: {
+                          title: 'Deep dive',
+                          titleIcon: 'TipsAndUpdates',
+                        },
+                        value: 'Ask AI anything about the video...',
+                      },
+                    },
+                    content: {
+                      text: `{{LAST_ACTION_OUTPUT}}`,
+                      title: {
+                        title: 'Summary',
+                      },
+                      contentType: 'text',
+                    },
+                    includeHistory: false,
+                  },
+                } as IAIResponseMessage,
+              },
+            },
+            {
+              type: 'MAXAI_SUMMARY_LOG',
+              parameters: {},
+            },
+          ],
         },
       },
     ]
-    actions.splice(askChatGptIndex + 2, 0, ...actionSetTemplateList)
-    const lastChatMessageIndex = findLastIndex(
-      actions,
-      (item) => item.type === 'CHAT_MESSAGE',
-    )
-    const lastChatMessageAction = actions?.[lastChatMessageIndex]
-    if (lastChatMessageAction?.parameters?.ActionChatMessageConfig) {
-      lastChatMessageAction.parameters.ActionChatMessageConfig.text = `{{LAST_ACTION_OUTPUT}}`
-      const originalMessage = (lastChatMessageAction?.parameters
-        ?.ActionChatMessageConfig as IAIResponseMessage).originalMessage
-      if (originalMessage) {
-        originalMessage.content = {
-          text: `{{LAST_ACTION_OUTPUT}}`,
-          title: {
-            title: 'Summary',
-          },
-          contentType: 'text',
-        }
-      }
-    }
-    return cloneDeep(actions)
+    return newActions
   } catch (e) {
     return actions
   }
 }
 export const youTubeSummaryChangeTool = async (
-  summaryNavKey: SummaryParamsPromptType,
+  params: IGetSummaryNavActionsParams,
   actions: ISetActionsType,
 ) => {
-  if (summaryNavKey === 'commit') {
-    return await youTubeSummaryCommentsChangeTool(actions)
+  if (params.key === 'commit') {
+    return await youTubeSummaryCommentsChangeTool(actions,params)
   }
   return actions
 }

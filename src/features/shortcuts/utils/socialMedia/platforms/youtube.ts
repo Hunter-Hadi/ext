@@ -209,24 +209,29 @@ export const getYouTubeSocialMediaPostCommentsContent: (
   result: ISocialMediaPostContextData,
 ) => Promise<ISocialMediaPostContextData | null> = async (result) => {
   //获取所有评论,判断是否是youtube视频页面
-  const commentsInfo = await youTubeGetPostCommentsInfo()
-  if (commentsInfo?.commentsData && commentsInfo.commitList.length > 0) {
-    const postText = `${result?.postText}\n[Post commentList]:\n${
-      commentsInfo?.commentsData.fullText || 'N/A'
-    }`
-    const pageContent = `${result?.SOCIAL_MEDIA_PAGE_CONTENT}\n[Page commentList]:\n${
-      commentsInfo?.commentsData.fullText || 'N/A'
-    }`
-    return {
-      ...result,
-      SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: postText,
-      SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: postText,
-      postText,
-      previousComments: commentsInfo.commitList || [],
-      previousCommentsText: commentsInfo?.commentsData?.previousText,
-      SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
+  try {
+    const commentsInfo = await youTubeGetPostCommentsInfo()
+    if (commentsInfo?.commentsData && commentsInfo.commitList.length > 0) {
+      const postText = `${result?.postText}\n[Post commentList]:\n${
+        commentsInfo?.commentsData.fullText || 'N/A'
+      }`
+      const pageContent = `${
+        result?.SOCIAL_MEDIA_PAGE_CONTENT
+      }\n[Page commentList]:\n${commentsInfo?.commentsData.fullText || 'N/A'}`
+      return {
+        ...result,
+        SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: postText,
+        SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: postText,
+        postText,
+        previousComments: commentsInfo.commitList || [],
+        previousCommentsText: commentsInfo?.commentsData?.previousText,
+        SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
+      }
+    } else {
+      return null
     }
-  } else {
+  } catch (e) {
+    console.log(e)
     return null
   }
 }

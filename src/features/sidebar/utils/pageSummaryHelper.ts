@@ -790,50 +790,57 @@ export const allSummaryNavList: {
 export const getContextMenuActionsByPageSummaryType = async (
   pageSummaryType: IPageSummaryType,
 ) => {
-  const chromeExtensionData = await getChromeExtensionLocalStorage()
+  try {
+    const chromeExtensionData = await getChromeExtensionLocalStorage()
 
-  //获取summary导航数据 逻辑
-  const summaryNavKey =
-    chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
-      pageSummaryType
-    ] || 'all'
-  const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
-    summaryNavKey,
-  )
-  const summaryNaTitle = allSummaryNavList[pageSummaryType].find(
-    (item) => item.key === summaryNavKey,
-  )?.title
-  const summaryNavActions = await getSummaryNavActions({
-    type: pageSummaryType,
-    prompt: summaryNavPrompt,
-    title: summaryNaTitle,
-    key: summaryNavKey,
-  })
-  const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType])
-  contextMenu.data.actions = cloneDeep(summaryNavActions)
+    //获取summary导航数据 逻辑
+    const summaryNavKey =
+      chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
+        pageSummaryType
+      ] || 'all'
+    const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
+      summaryNavKey,
+    )
+    const summaryNaTitle = allSummaryNavList[pageSummaryType].find(
+      (item) => item.key === summaryNavKey,
+    )?.title
+    const summaryNavActions = await getSummaryNavActions({
+      type: pageSummaryType,
+      prompt: summaryNavPrompt,
+      title: summaryNaTitle,
+      key: summaryNavKey,
+    })
+    const contextMenu = cloneDeep(
+      PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType],
+    )
+    contextMenu.data.actions = cloneDeep(summaryNavActions)
 
-  let messageId = ''
-  const actions = (contextMenu.data.actions || []).map((action, index) => {
-    if (index === 0) {
-      messageId = action.parameters.ActionChatMessageConfig?.messageId || ''
-    }
-    if (
-      action.type === 'ASK_CHATGPT' &&
-      action.parameters.AskChatGPTActionQuestion
-    ) {
-      action.parameters.AskChatGPTActionQuestion = {
-        ...action.parameters.AskChatGPTActionQuestion,
-        meta: {
-          ...action.parameters.AskChatGPTActionQuestion.meta,
-          contextMenu: cloneDeep(contextMenu),
-        },
+    let messageId = ''
+    const actions = (contextMenu.data.actions || []).map((action, index) => {
+      if (index === 0) {
+        messageId = action.parameters.ActionChatMessageConfig?.messageId || ''
       }
+      if (
+        action.type === 'ASK_CHATGPT' &&
+        action.parameters.AskChatGPTActionQuestion
+      ) {
+        action.parameters.AskChatGPTActionQuestion = {
+          ...action.parameters.AskChatGPTActionQuestion,
+          meta: {
+            ...action.parameters.AskChatGPTActionQuestion.meta,
+            contextMenu: cloneDeep(contextMenu),
+          },
+        }
+      }
+      return action
+    })
+    return {
+      actions,
+      messageId,
     }
-    return action
-  })
-  return {
-    actions,
-    messageId,
+  } catch (e) {
+    console.log(e)
+    return undefined
   }
 }
 
@@ -848,107 +855,112 @@ export interface IGetSummaryNavActionsParams {
 export const getSummaryNavActions: (
   params: IGetSummaryNavActionsParams,
 ) => Promise<ISetActionsType> = async (params) => {
-  let currentActions = cloneDeep(
-    PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [],
-  )
+  try {
+    let currentActions = cloneDeep(
+      PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [],
+    )
 
-  if (params.type === 'YOUTUBE_VIDEO_SUMMARY') {
-    currentActions = await youTubeSummaryChangeTool(params, currentActions) //进行actions增改
-  }
-  if (params.messageId) {
-    //传入messageId 代表 采用之前的msg
-    currentActions = currentActions?.filter((item) => {
-      if (item.parameters.ActionChatMessageOperationType === 'add') {
-        return false
+    if (params.type === 'YOUTUBE_VIDEO_SUMMARY') {
+      currentActions = await youTubeSummaryChangeTool(params, currentActions) //进行actions增改
+    }
+    if (params.messageId) {
+      //传入messageId 代表 采用之前的msg
+      currentActions = currentActions?.filter((item) => {
+        if (item.parameters.ActionChatMessageOperationType === 'add') {
+          return false
+        }
+        return true
+      })
+    }
+    //下面代码等youTubeSummaryChangeTool actions完善可以去除
+    currentActions = currentActions.map((action) => {
+      if (
+        action.parameters.ActionChatMessageOperationType === 'add' &&
+        params.title
+      ) {
+        const actionTitle = (action.parameters
+          ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
+          ?.metadata?.title
+        if (actionTitle) {
+          actionTitle.title = params.title
+        }
       }
-      return true
+      if (
+        params.messageId &&
+        action?.parameters?.ActionChatMessageConfig?.messageId
+      ) {
+        action.parameters.ActionChatMessageConfig.messageId = params.messageId
+      }
+      if (
+        params.messageId &&
+        action?.parameters?.AskChatGPTActionQuestion?.meta?.outputMessageId
+      ) {
+        action.parameters.AskChatGPTActionQuestion.meta.outputMessageId =
+          params.messageId
+      }
+      if (
+        params.prompt &&
+        action.type === 'ASK_CHATGPT' &&
+        action.parameters.AskChatGPTActionQuestion
+      ) {
+        action.parameters.AskChatGPTActionQuestion.text = params.prompt
+      }
+      return action
     })
-  }
-  //下面代码等youTubeSummaryChangeTool actions完善可以去除
-  currentActions = currentActions.map((action) => {
-    if (
-      action.parameters.ActionChatMessageOperationType === 'add' &&
-      params.title
-    ) {
-      const actionTitle = (action.parameters
-        ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
-        ?.metadata?.title
-      if (actionTitle) {
-        actionTitle.title = params.title
-      }
-    }
-    if (
-      params.messageId &&
-      action?.parameters?.ActionChatMessageConfig?.messageId
-    ) {
-      action.parameters.ActionChatMessageConfig.messageId = params.messageId
-    }
-    if (
-      params.messageId &&
-      action?.parameters?.AskChatGPTActionQuestion?.meta?.outputMessageId
-    ) {
-      action.parameters.AskChatGPTActionQuestion.meta.outputMessageId =
-        params.messageId
-    }
-    if (
-      params.prompt &&
-      action.type === 'ASK_CHATGPT' &&
-      action.parameters.AskChatGPTActionQuestion
-    ) {
-      action.parameters.AskChatGPTActionQuestion.text = params.prompt
-    }
-    return action
-  })
-  if (params.messageId) {
-    const defAction: ISetActionsType = [
-      {
-        type: 'CHAT_MESSAGE',
-        parameters: {
-          ActionChatMessageOperationType: 'update',
-          ActionChatMessageConfig: {
-            type: 'ai',
-            messageId: params.messageId || '',
-            text: '',
-            originalMessage: {
-              metadata: {
-                isComplete: false,
-                copilot: {
-                  steps: [
-                    {
-                      title: 'Analyzing video',
-                      status: 'complete',
-                      icon: 'SmartToy',
-                      value: '{{CURRENT_WEBPAGE_TITLE}}',
-                    },
-                  ],
-                },
-                title: {
-                  title: params.title || 'Summary',
-                },
-                deepDive: {
-                  title: {
-                    title: '',
-                    titleIcon: '',
+    if (params.messageId) {
+      const defAction: ISetActionsType = [
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'update',
+            ActionChatMessageConfig: {
+              type: 'ai',
+              messageId: params.messageId || '',
+              text: '',
+              originalMessage: {
+                metadata: {
+                  isComplete: false,
+                  copilot: {
+                    steps: [
+                      {
+                        title: 'Analyzing video',
+                        status: 'complete',
+                        icon: 'SmartToy',
+                        value: '{{CURRENT_WEBPAGE_TITLE}}',
+                      },
+                    ],
                   },
-                  value: '',
+                  title: {
+                    title: params.title || 'Summary',
+                  },
+                  deepDive: {
+                    title: {
+                      title: '',
+                      titleIcon: '',
+                    },
+                    value: '',
+                  },
                 },
-              },
-              content: {
-                title: {
-                  title: 'Summary',
+                content: {
+                  title: {
+                    title: 'Summary',
+                  },
+                  text: '',
+                  contentType: 'text',
                 },
-                text: '',
-                contentType: 'text',
+                includeHistory: false,
               },
-              includeHistory: false,
-            },
-          } as IAIResponseMessage,
+            } as IAIResponseMessage,
+          },
         },
-      },
-    ]
-    return [...defAction, ...currentActions]
-  } else {
-    return [...currentActions]
+      ]
+      return [...defAction, ...currentActions]
+    } else {
+      return [...currentActions]
+    }
+  } catch (e) {
+    console.log(e)
+    return []
   }
 }
 const getCurrentPageUrl = () => {

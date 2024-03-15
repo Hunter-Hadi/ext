@@ -57,25 +57,33 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     isSetSummaryViewMaxHeight = false
   }, [])
   useEffect(() => {
-    if (isSummaryMessage && !isSetSummaryViewMaxHeight) {
-      const otherViewHeight = 380 //临时简单计算，待优化
-      const minViewHeight = 200
-      const parentElement = chatMessageRef.current?.closest(
-        `#${messageListContainerId}`,
-      )
-      const messageListContainerHeight = parentElement?.clientHeight
-      if (
-        messageListContainerHeight &&
-        messageListContainerHeight > otherViewHeight
-      ) {
-        const currentHeight = messageListContainerHeight - otherViewHeight
-        isSetSummaryViewMaxHeight = true
-        setSummaryViewMaxHeight(
-          currentHeight > minViewHeight ? currentHeight : minViewHeight,
+    try {
+      if (isSummaryMessage && !isSetSummaryViewMaxHeight) {
+        const otherViewHeight = 380 //临时简单计算，待优化
+        const minViewHeight = 200
+        const parentElement = chatMessageRef.current?.closest(
+          `#${messageListContainerId}`,
         )
+        const messageListContainerHeight = parentElement?.clientHeight
+        if (
+          messageListContainerHeight &&
+          messageListContainerHeight > otherViewHeight
+        ) {
+          const currentHeight = messageListContainerHeight - otherViewHeight
+          isSetSummaryViewMaxHeight = true
+          setSummaryViewMaxHeight(
+            currentHeight > minViewHeight ? currentHeight : minViewHeight,
+          )
+        }
       }
+    } catch (e) {
+      console.log(e)
     }
-  }, [chatMessageRef,message.messageId, message.originalMessage?.metadata?.title?.title])
+  }, [
+    chatMessageRef,
+    message.messageId,
+    message.originalMessage?.metadata?.title?.title,
+  ])
   const getIsSummaryAutoScroll = () => {
     //fixing第二版该逻辑抽离出去
     const summaryType = getPageSummaryType()

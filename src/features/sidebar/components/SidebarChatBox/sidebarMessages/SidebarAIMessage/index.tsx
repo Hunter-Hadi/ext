@@ -36,6 +36,7 @@ const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
 interface IProps {
   message: IAIResponseMessage
+  order: number
   isDarkMode?: boolean
   liteMode?: boolean
   loading?: boolean
@@ -174,13 +175,14 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
 
   return (
     <Box component={'div'} className={'chat-message--AI'}>
-      {message.originalMessage?.metadata?.includeHistory === false && (
-        <Divider sx={{ mb: 2 }}>
-          <Typography color={'text.secondary'} fontSize={'12px'}>
-            {t('client:sidebar__conversation__message__context_cleared')}
-          </Typography>
-        </Divider>
-      )}
+      {message.originalMessage?.metadata?.includeHistory === false &&
+        props.order !== 1 && (
+          <Divider sx={{ mb: 2 }}>
+            <Typography color={'text.secondary'} fontSize={'12px'}>
+              {t('client:sidebar__conversation__message__context_cleared')}
+            </Typography>
+          </Divider>
+        )}
       <Stack
         ref={chatMessageRef}
         className={'chat-message--text'}

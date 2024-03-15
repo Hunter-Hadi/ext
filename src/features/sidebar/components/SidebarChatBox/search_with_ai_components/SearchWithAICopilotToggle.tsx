@@ -22,20 +22,16 @@ const SearchWithAICopilotToggle: FC = () => {
           <Stack gap={0.5} direction={'row'}>
             <Typography
               fontSize={'16px'}
-              color={'text.primary'}
+              color={'rgba(255, 255, 255, .87)'}
               fontWeight={500}
             >
               {'Pro'}
             </Typography>
-            <Typography
-              fontSize={'16px'}
-              color={'primary.main'}
-              fontWeight={500}
-            >
+            <Typography fontSize={'16px'} color={'#d9a7ff'} fontWeight={500}>
               {'Search'}
             </Typography>
           </Stack>
-          <Typography fontSize={'14px'} color={'text.primary'}>
+          <Typography fontSize={'14px'} color={'rgba(255, 255, 255, .87)'}>
             {t(
               'client:sidebar__search_with_ai__advanced__copilot__description',
             )}

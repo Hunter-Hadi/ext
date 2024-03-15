@@ -128,6 +128,7 @@ const useInitSidebar = () => {
     } else {
       // 直接触发create
     }
+    
     createPageSummary().then().catch().finally()
   }, [
     currentSidebarConversation?.id,

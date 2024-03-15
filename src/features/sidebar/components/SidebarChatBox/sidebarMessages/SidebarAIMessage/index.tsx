@@ -51,8 +51,11 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     [message],
   )
   useEffect(() => {
+    isSetSummaryViewMaxHeight = false
+  }, [])
+  useEffect(() => {
     if (isSummaryMessage && !isSetSummaryViewMaxHeight) {
-      const otherViewHeight = 300 //临时简单计算，待优化
+      const otherViewHeight = 380 //临时简单计算，待优化
       const minViewHeight = 200
       const parentElement = chatMessageRef.current?.closest(
         `#${messageListContainerId}`,
@@ -69,7 +72,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         )
       }
     }
-  }, [chatMessageRef])
+  }, [chatMessageRef,message.messageId, message.originalMessage?.metadata?.title?.title])
   const getIsSummaryAutoScroll = () => {
     //fixing第二版该逻辑抽离出去
     const summaryType = getPageSummaryType()

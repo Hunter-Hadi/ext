@@ -5,13 +5,12 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 
 import { IGetSummaryNavActionsParams } from '../pageSummaryHelper'
 
-
 export const youTubeSummaryCommentsChangeTool = async (
   actions: ISetActionsType,
-  params: IGetSummaryNavActionsParams
+  params: IGetSummaryNavActionsParams,
 ) => {
   try {
-    const newActions:ISetActionsType= [
+    const newActions: ISetActionsType = [
       {
         type: 'CHAT_MESSAGE',
         parameters: {
@@ -80,7 +79,7 @@ export const youTubeSummaryCommentsChangeTool = async (
           ActionChatMessageOperationType: 'update',
           ActionChatMessageConfig: {
             type: 'ai',
-            messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+            messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
             text: '',
             originalMessage: {
               metadata: {
@@ -132,7 +131,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                 ActionChatMessageOperationType: 'update',
                 ActionChatMessageConfig: {
                   type: 'ai',
-                  messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
                   text: `{{LAST_ACTION_OUTPUT}`,
                   originalMessage: {
                     status: 'complete',
@@ -164,7 +163,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                 ActionChatMessageOperationType: 'update',
                 ActionChatMessageConfig: {
                   type: 'ai',
-                  messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
                   text: '',
                   originalMessage: {
                     content: {
@@ -187,7 +186,8 @@ export const youTubeSummaryCommentsChangeTool = async (
                 AskChatGPTActionQuestion: {
                   text: params.prompt,
                   meta: {
-                    outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                    outputMessageId:
+                      params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
                   },
                 },
                 AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
@@ -215,7 +215,7 @@ _TL;DR_ **{{SUMMARY_CONTENTS}}**
                 ActionChatMessageOperationType: 'update',
                 ActionChatMessageConfig: {
                   type: 'ai',
-                  messageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
+                  messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
                   text: `{{LAST_ACTION_OUTPUT}`,
                   originalMessage: {
                     status: 'complete',
@@ -259,7 +259,7 @@ export const youTubeSummaryChangeTool = async (
   actions: ISetActionsType,
 ) => {
   if (params.key === 'commit') {
-    return await youTubeSummaryCommentsChangeTool(actions,params)
+    return await youTubeSummaryCommentsChangeTool(actions, params)
   }
   return actions
 }

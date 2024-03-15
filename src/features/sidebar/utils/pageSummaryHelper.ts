@@ -837,7 +837,7 @@ export const getContextMenuActionsByPageSummaryType = async (
   }
 }
 
-export interface IGetSummaryNavActionsParams{
+export interface IGetSummaryNavActionsParams {
   type: IPageSummaryType
   messageId?: string
   prompt: string
@@ -845,12 +845,14 @@ export interface IGetSummaryNavActionsParams{
   title?: string
 }
 //获取不同总结nav的Actions
-export const getSummaryNavActions: (params:IGetSummaryNavActionsParams) => Promise<ISetActionsType> = async (params) => {
+export const getSummaryNavActions: (
+  params: IGetSummaryNavActionsParams,
+) => Promise<ISetActionsType> = async (params) => {
   let currentActions = cloneDeep(
     PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [],
   )
 
-  if(params.type==='YOUTUBE_VIDEO_SUMMARY'){
+  if (params.type === 'YOUTUBE_VIDEO_SUMMARY') {
     currentActions = await youTubeSummaryChangeTool(params, currentActions) //进行actions增改
   }
   if (params.messageId) {
@@ -862,6 +864,7 @@ export const getSummaryNavActions: (params:IGetSummaryNavActionsParams) => Promi
       return true
     })
   }
+  //下面代码等youTubeSummaryChangeTool actions完善可以去除
   currentActions = currentActions.map((action) => {
     if (
       action.parameters.ActionChatMessageOperationType === 'add' &&
@@ -941,7 +944,7 @@ export const getSummaryNavActions: (params:IGetSummaryNavActionsParams) => Promi
             },
           } as IAIResponseMessage,
         },
-      }
+      },
     ]
     return [...defAction, ...currentActions]
   } else {

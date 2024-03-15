@@ -3,7 +3,6 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import throttle from 'lodash-es/throttle'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -90,11 +89,8 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   }
 
   useEffect(() => {
-    const fetchAndSetIsSummaryAutoScroll = throttle(() => {
-      const isScroll = getIsSummaryAutoScroll()
-      setIsSummaryAutoScroll(!!isScroll)
-    }, 100)
-    fetchAndSetIsSummaryAutoScroll()
+    const isScroll = getIsSummaryAutoScroll()
+    setIsSummaryAutoScroll(!!isScroll)
   }, [message.originalMessage?.metadata?.title?.title])
   const renderData = useMemo(() => {
     try {

@@ -1,3 +1,5 @@
+import { cloneDeep } from 'lodash-es'
+
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {
@@ -253,51 +255,95 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
   commitList: ICommentData[]
 } | null> = async () => {
   try {
+    console.log('simply start youTubeGetPostCommentsInfo')
+    await awaitScrollFun(
+      () => {
+        const primarySkeleton = document.querySelector('ytd-watch-flexy')
+        const domVideoId = primarySkeleton?.getAttribute('video-id')
+        const urlObj = new URL(window.location.href)
+        const urlVideoId = urlObj.searchParams.get('v')
+        return domVideoId === urlVideoId
+      },
+      500,
+      1000 * 60,
+    ) //等待videoID变化完成
+    console.log('simply 0')
     if (document?.querySelector('#sections #count')) {
+      console.log('simply 0 0')
+
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
       return { commentsData, commitList }
     } else {
-      await awaitScrollFun(
-        () =>
-          !!document?.querySelector(
-            '#columns #below #above-the-fold #description #info-container',
-          ),
-        2000,
-        1000 * 5,
-      ) //等待信息的出现
-      const commentsOff = document.querySelector('#message a')
+      console.log('simply 1')
+
+      if (document.getElementById('content-pages')) {
+        //直播页面直接无评论
+        return null
+      }
+      const topCommentsOff = document.querySelector('#message a')
       if (
-        commentsOff &&
-        commentsOff
+        topCommentsOff &&
+        topCommentsOff
           .getAttribute('href')
           ?.includes('support.google.com/youtube/answer/9706180')
       ) {
+        window.scrollTo({ top: 0 })
         //代表评论关闭 状态
         return null
       }
-      //没有则滚动到当前主div的最下面
-      const items = document.querySelector(
-        '#columns.style-scope.ytd-watch-flexy #primary-inner',
-      )
-      if (items) {
-        window.scrollTo({
-          top: items?.scrollHeight,
-        })
-      }
+      console.log('simply 2')
+      let scrollIndex = 0
       await awaitScrollFun(
-        () =>
-          !!document?.querySelector(
+        () => {
+          if (scrollIndex > 10) {
+            return true
+          }
+          //没有则滚动到当前主div的最下面往上滚动，完成过渡
+          const items = document.querySelector(
+            '#columns.style-scope.ytd-watch-flexy #primary-inner',
+          )
+          if (items) {
+            console.log('simply scrollIndex', scrollIndex)
+            window.scrollTo({
+              top: items?.scrollHeight / scrollIndex,
+            })
+            scrollIndex += 0.5
+          }
+          const countDom = document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
-          ),
-        2000,
-        1000 * 5,
-      ) //等待#count出现
+          )
+          return (
+            !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断load消失
+          )
+        },
+        500,
+        1000 * 10,
+      )
       window.scrollTo({ top: 0 })
+
+      await awaitScrollFun(
+        () => {
+          //判断用户头像图片是否加载完成则数据完成开始获取
+          const avatarView = document.querySelector('#author-thumbnail img')
+          if (
+            avatarView?.clientWidth &&
+            avatarView?.clientHeight &&
+            avatarView?.clientWidth > 0 &&
+            avatarView?.clientHeight > 0
+          ) {
+            return true
+          } else {
+            return false
+          }
+        },
+        500,
+        1000 * 5,
+      )
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
-
-      return { commentsData, commitList }
+      console.log('simply allData', { commentsData, commitList })
+      return cloneDeep({ commentsData, commitList })
     }
   } catch (e) {
     console.error(e)

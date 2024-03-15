@@ -1,5 +1,4 @@
 import { Button, ButtonGroup } from '@mui/material'
-import throttle from 'lodash-es/throttle'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
@@ -30,8 +29,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     setSummaryActionKey(key)
   }
   useEffect(() => {
-    const autoChangeNav = throttle(() => {
-      const messageNavTitle = message.originalMessage?.metadata?.title?.title
+    const messageNavTitle = message.originalMessage?.metadata?.title?.title
       if (messageNavTitle && allSummaryNavList[summaryType]) {
         const currentMessageNav = allSummaryNavList[summaryType].find(
           (item) => item.title === messageNavTitle,
@@ -40,8 +38,6 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
           changeSummaryActionKey(currentMessageNav.key)
         }
       }
-    }, 100)
-    autoChangeNav()
   }, [message.originalMessage?.metadata?.title?.title])
   const clickNavTriggerActionChange = async (navItem: {
     title: string

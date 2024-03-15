@@ -48,11 +48,15 @@ import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
+import { ActionYoutubeGetComments } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetComments'
+
 const ActionClassMap = {
   // 废弃
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
+  [ActionYoutubeGetComments.type]: ActionYoutubeGetComments,
+
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAskChatGPT.type]: ActionAskChatGPT,

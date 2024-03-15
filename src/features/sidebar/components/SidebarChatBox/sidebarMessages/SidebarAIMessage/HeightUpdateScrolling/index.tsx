@@ -73,55 +73,59 @@ export const HeightUpdateScrolling: FC<IProps> = ({
   }, 100) // 100ms的延迟
   useEffect(() => {
     const handleScroll = throttle(() => {
-      if (scrollRef.current && scrollTopRef.current) {
-        const scrollTop = scrollRef.current.scrollTop
-        const scrollHeight = scrollRef.current.scrollHeight
-        const clientHeight = scrollRef.current.clientHeight
-        // 如果用户手动滚动，则停止自动滚动
-        if (scrollTop < lastScrollTop && scrollTop > height) {
-          isScrollView = true
+      try {
+        if (scrollRef.current && scrollTopRef.current) {
+          const scrollTop = scrollRef.current.scrollTop
+          const scrollHeight = scrollRef.current.scrollHeight
+          const clientHeight = scrollRef.current.clientHeight
+          // 如果用户手动滚动，则停止自动滚动
+          if (scrollTop < lastScrollTop && scrollTop > height) {
+            isScrollView = true
+          }
+          lastScrollTop = scrollTop
+          if (!(scrollHeight > clientHeight || scrollHeight > height)) {
+            //没有出现滚动条啦
+            scrollTopRef.current.classList.remove(
+              'scroll-masked-both',
+              'scroll-masked-top',
+              'scroll-masked-bottom',
+            )
+            return
+          }
+          const distanceFromBottom = scrollHeight - scrollTop - clientHeight
+          if (scrollTop <= 10) {
+            // 滚动到距离顶部10的位置
+            scrollTopRef.current.classList.remove(
+              'scroll-masked-both',
+              'scroll-masked-top',
+            )
+            scrollTopRef.current.classList.add(
+              'scroll-masked',
+              'scroll-masked-bottom',
+            )
+          } else if (distanceFromBottom <= 10) {
+            // 滚动到底部10度为主
+            scrollTopRef.current.classList.remove(
+              'scroll-masked-both',
+              'scroll-masked-top',
+            )
+            scrollTopRef.current.classList.add(
+              'scroll-masked',
+              'scroll-masked-top',
+            )
+          } else {
+            scrollTopRef.current.classList.remove(
+              'scroll-masked-top',
+              'scroll-masked-bottom',
+            )
+            scrollTopRef.current.classList.add(
+              'scroll-masked',
+              'scroll-masked-both',
+            )
+          }
         }
-        lastScrollTop = scrollTop
-        if (!(scrollHeight > clientHeight || scrollHeight > height)) {
-          //没有出现滚动条啦
-          scrollTopRef.current.classList.remove(
-            'scroll-masked-both',
-            'scroll-masked-top',
-            'scroll-masked-bottom',
-          )
-          return
-        }
-        const distanceFromBottom = scrollHeight - scrollTop - clientHeight
-        if (scrollTop <= 10) {
-          // 滚动到距离顶部10的位置
-          scrollTopRef.current.classList.remove(
-            'scroll-masked-both',
-            'scroll-masked-top',
-          )
-          scrollTopRef.current.classList.add(
-            'scroll-masked',
-            'scroll-masked-bottom',
-          )
-        } else if (distanceFromBottom <= 10) {
-          // 滚动到底部10度为主
-          scrollTopRef.current.classList.remove(
-            'scroll-masked-both',
-            'scroll-masked-top',
-          )
-          scrollTopRef.current.classList.add(
-            'scroll-masked',
-            'scroll-masked-top',
-          )
-        } else {
-          scrollTopRef.current.classList.remove(
-            'scroll-masked-top',
-            'scroll-masked-bottom',
-          )
-          scrollTopRef.current.classList.add(
-            'scroll-masked',
-            'scroll-masked-both',
-          )
-        }
+      } catch (e) {
+        console.log('e', e)
       }
     }, 50)
     scrollRef.current?.addEventListener('scroll', handleScroll)

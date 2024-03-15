@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash-es/cloneDeep'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIResponseMessage } from '@/features/chatgpt/types'
@@ -249,9 +250,9 @@ _TL;DR_ **{{SUMMARY_CONTENTS}}**
         },
       },
     ]
-    return newActions
+    return cloneDeep(newActions)
   } catch (e) {
-    return actions
+    return cloneDeep(actions)
   }
 }
 export const youTubeSummaryChangeTool = async (
@@ -261,5 +262,5 @@ export const youTubeSummaryChangeTool = async (
   if (params.key === 'commit') {
     return await youTubeSummaryCommentsChangeTool(actions, params)
   }
-  return actions
+  return cloneDeep(actions)
 }

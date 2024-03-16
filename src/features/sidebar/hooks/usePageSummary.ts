@@ -26,7 +26,10 @@ import {
   getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
   getPageSummaryType,
+  getSummaryNavItemByType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
+
+import { SummaryParamsPromptType } from '../utils/pageSummaryNavPrompt'
 
 const usePageSummary = () => {
   const {
@@ -43,13 +46,17 @@ const usePageSummary = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
+  const currentPageSummaryKey = useRef<SummaryParamsPromptType | undefined>(
+    undefined,
+  )
+
   const lastMessageIdRef = useRef('')
 
   const createPageSummary = async () => {
     if (isFetchingRef.current) {
       return
     }
-    console.log('新版Conversation 创建pageSummary')
+console.log('新版Conversation 创建pageSummary')
     const pageSummaryConversationId = getPageSummaryConversationId()
     updateClientWritingMessage((prevState) => {
       return {
@@ -57,14 +64,30 @@ const usePageSummary = () => {
         loading: true,
       }
     })
+
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       const pageSummaryConversation = await clientGetConversation(
         pageSummaryConversationId,
       )
+
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         console.log('新版Conversation pageSummary已经存在')
+        if (!currentPageSummaryKey.current) {
+          //拿取当前页面加载的summary nav的key 保持状态
+          const lastRunActionTitle = (pageSummaryConversation?.meta
+            ?.lastRunActions?.[0]?.parameters
+            .ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
+            ?.metadata?.title?.title
+          if (lastRunActionTitle) {
+            currentPageSummaryKey.current = getSummaryNavItemByType(
+              pageSummaryConversation.meta.pageSummaryType,
+              lastRunActionTitle,
+              'title',
+            )?.key
+          } 
+        }
         await updateSidebarSettings({
           summary: {
             conversationId: pageSummaryConversationId,
@@ -142,12 +165,14 @@ const usePageSummary = () => {
         }
         const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
+          currentPageSummaryKey.current,
         )
-        if(paramsPageSummaryTypeData){
+        if (paramsPageSummaryTypeData) {
+          currentPageSummaryKey.current =
+            paramsPageSummaryTypeData.summaryNavKey
           lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
           runPageSummaryActions(paramsPageSummaryTypeData.actions)
         }
-       
       } catch (e) {
         console.log('创建Conversation失败', e)
       }

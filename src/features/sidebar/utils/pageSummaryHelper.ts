@@ -787,22 +787,33 @@ export const allSummaryNavList: {
     },
   ],
 }
+export const getSummaryNavItemByType = (
+  type: IPageSummaryType,
+  value: string,
+  valueType: 'title' | 'titleIcon' | 'key' = 'key',
+) => {
+  return allSummaryNavList[type].find((item) => item[valueType] === value)
+}
 export const getContextMenuActionsByPageSummaryType = async (
   pageSummaryType: IPageSummaryType,
+  currentConversationKey?: SummaryParamsPromptType,
 ) => {
   try {
-    const chromeExtensionData = await getChromeExtensionLocalStorage()
-
-    //获取summary导航数据 逻辑
-    const summaryNavKey =
-      chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
-        pageSummaryType
-      ] || 'all'
+    let summaryNavKey = currentConversationKey
+    if (!summaryNavKey) {
+      const chromeExtensionData = await getChromeExtensionLocalStorage()
+      //获取summary导航数据 逻辑
+      summaryNavKey =
+        chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
+          pageSummaryType
+        ] || 'all'
+    }
     const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
       summaryNavKey,
     )
-    const summaryNaTitle = allSummaryNavList[pageSummaryType].find(
-      (item) => item.key === summaryNavKey,
+    const summaryNaTitle = getSummaryNavItemByType(
+      pageSummaryType,
+      summaryNavKey,
     )?.title
     const summaryNavActions = await getSummaryNavActions({
       type: pageSummaryType,
@@ -837,6 +848,7 @@ export const getContextMenuActionsByPageSummaryType = async (
     return {
       actions,
       messageId,
+      summaryNavKey,
     }
   } catch (e) {
     console.log(e)

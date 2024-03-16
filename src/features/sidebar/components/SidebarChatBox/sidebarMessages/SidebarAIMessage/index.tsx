@@ -22,8 +22,8 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 import {
-  allSummaryNavList,
   getPageSummaryType,
+  getSummaryNavItemByType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
 import { messageListContainerId } from '../../SidebarChatBoxMessageListContainer'
@@ -85,10 +85,13 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     //fixing第二版该逻辑抽离出去
     const summaryType = getPageSummaryType()
     const messageNavTitle = message.originalMessage?.metadata?.title?.title
-    if (messageNavTitle && allSummaryNavList[summaryType]) {
-      const isAutoScroll = allSummaryNavList[summaryType].find(
-        (item) => item.title === messageNavTitle,
-      )?.config?.isAutoScroll
+    if (messageNavTitle) {
+      const summaryNavInfo = getSummaryNavItemByType(
+        summaryType,
+        messageNavTitle,
+        'title',
+      )
+      const isAutoScroll = summaryNavInfo?.config?.isAutoScroll
       if (isAutoScroll === false) {
         return false
       } else {

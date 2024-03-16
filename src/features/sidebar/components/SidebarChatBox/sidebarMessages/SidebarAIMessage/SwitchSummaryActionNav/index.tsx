@@ -10,6 +10,7 @@ import {
   allSummaryNavList,
   getPageSummaryType,
   getSummaryNavActions,
+  getSummaryNavItemByType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   summaryGetPromptObject,
@@ -30,21 +31,23 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   }
   useEffect(() => {
     const messageNavTitle = message.originalMessage?.metadata?.title?.title
-      if (messageNavTitle && allSummaryNavList[summaryType]) {
-        const currentMessageNav = allSummaryNavList[summaryType].find(
-          (item) => item.title === messageNavTitle,
-        )
-        if (currentMessageNav) {
-          changeSummaryActionKey(currentMessageNav.key)
-        }
+    if (messageNavTitle) {
+      const summaryNavInfo = getSummaryNavItemByType(
+        summaryType,
+        messageNavTitle,
+        'title',
+      )
+      if (summaryNavInfo) {
+        changeSummaryActionKey(summaryNavInfo.key)
       }
+    }
   }, [message.originalMessage?.metadata?.title?.title])
   const clickNavTriggerActionChange = async (navItem: {
     title: string
     titleIcon: string
     key: SummaryParamsPromptType
   }) => {
-    if (loading || speedChangeKey === navItem.key) return//防止多次触发
+    if (loading || speedChangeKey === navItem.key) return //防止多次触发
     changeSummaryActionKey(navItem.key)
     const promptText = summaryGetPromptObject[summaryType](navItem.key)
     await setChromeExtensionLocalStorage({

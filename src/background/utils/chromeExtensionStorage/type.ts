@@ -4,6 +4,7 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { IArtTextToImageMetadata } from '@/features/art/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import { IPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { SummaryParamsPromptType } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 
 export type IChromeExtensionButtonSettingKey =
@@ -176,7 +177,7 @@ export interface IChromeExtensionLocalStorage {
     }
     summary?: {
       conversationId?: string
-      currentNavType?: { [key in string]: SummaryParamsPromptType }
+      currentNavType?: { [key in IPageSummaryType]: SummaryParamsPromptType }
     }
     search?: {
       conversationId?: string

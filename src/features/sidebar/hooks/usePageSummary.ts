@@ -46,9 +46,9 @@ const usePageSummary = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
-  const currentPageSummaryKey = useRef<SummaryParamsPromptType | undefined>(
-    undefined,
-  )
+  const currentPageSummaryKey = useRef<
+    { [key in string]: SummaryParamsPromptType | undefined }
+  >({})
 
   const lastMessageIdRef = useRef('')
 
@@ -56,7 +56,7 @@ const usePageSummary = () => {
     if (isFetchingRef.current) {
       return
     }
-console.log('新版Conversation 创建pageSummary')
+    console.log('新版Conversation 创建pageSummary')
     const pageSummaryConversationId = getPageSummaryConversationId()
     updateClientWritingMessage((prevState) => {
       return {
@@ -70,23 +70,24 @@ console.log('新版Conversation 创建pageSummary')
       const pageSummaryConversation = await clientGetConversation(
         pageSummaryConversationId,
       )
-
+      const currentPageSummaryType =
+        pageSummaryConversation?.meta.pageSummaryType
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         console.log('新版Conversation pageSummary已经存在')
-        if (!currentPageSummaryKey.current) {
-          //拿取当前页面加载的summary nav的key 保持状态
-          const lastRunActionTitle = (pageSummaryConversation?.meta
-            ?.lastRunActions?.[0]?.parameters
-            .ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
-            ?.metadata?.title?.title
-          if (lastRunActionTitle) {
-            currentPageSummaryKey.current = getSummaryNavItemByType(
-              pageSummaryConversation.meta.pageSummaryType,
-              lastRunActionTitle,
-              'title',
-            )?.key
-          } 
+        //拿取当前页面加载的summary nav的key 保持状态
+        const lastRunActionTitle = (pageSummaryConversation?.meta
+          ?.lastRunActions?.[0]?.parameters
+          .ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
+          ?.metadata?.title?.title
+        if (lastRunActionTitle && currentPageSummaryType) {
+          currentPageSummaryKey.current[
+            currentPageSummaryType
+          ] = getSummaryNavItemByType(
+            currentPageSummaryType,
+            lastRunActionTitle,
+            'title',
+          )?.key
         }
         await updateSidebarSettings({
           summary: {
@@ -165,10 +166,10 @@ console.log('新版Conversation 创建pageSummary')
         }
         const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
-          currentPageSummaryKey.current,
+          currentPageSummaryKey.current[currentPageSummaryType],
         )
         if (paramsPageSummaryTypeData) {
-          currentPageSummaryKey.current =
+          currentPageSummaryKey.current[currentPageSummaryType] =
             paramsPageSummaryTypeData.summaryNavKey
           lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
           runPageSummaryActions(paramsPageSummaryTypeData.actions)

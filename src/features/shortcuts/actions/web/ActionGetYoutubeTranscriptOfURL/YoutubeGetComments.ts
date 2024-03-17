@@ -3,7 +3,6 @@ import { orderBy } from 'lodash-es'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { youTubeGetPostCommentsInfo } from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
 
 /**
  * @since 2024-03-15
@@ -19,17 +18,18 @@ export class ActionYoutubeGetComments extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute() {
+  async execute(
+    params: ActionParameters,
+  ) {
     try {
-      const commentsInfo = await youTubeGetPostCommentsInfo()
-      console.log('simply commentsInfo', commentsInfo)
-      if (commentsInfo?.commitList.length === 0 || !commentsInfo) {
+      const commentList = params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS
+      if (commentList && commentList.length === 0) {
         //当没有评论直接显示无
         this.output = ''
         return
       }
       const sortedComments = orderBy(
-        commentsInfo?.commitList ?? [],
+        commentList ?? [],
         (item) => {
           const value = item.like
           if (value && value.endsWith('K')) {
@@ -38,7 +38,7 @@ export class ActionYoutubeGetComments extends Action {
           return Number(value)
         },
         ['desc'],
-      ).filter(item=>item.like !== '0'||item.content!=='') //对like排序
+      ).filter((item) => item.like !== '0' || item.content !== '') //对like排序
       const commentsText = sortedComments
         .map((comment) => {
           return `**${comment.author}** ${

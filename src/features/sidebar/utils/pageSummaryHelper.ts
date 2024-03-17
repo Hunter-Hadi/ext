@@ -792,6 +792,7 @@ export const getSummaryNavItemByType = (
   value: string,
   valueType: 'title' | 'titleIcon' | 'key' = 'key',
 ) => {
+  if (valueType === 'key' && !value) value = 'all' //默认赋值，防止异常
   return allSummaryNavList[type].find((item) => item[valueType] === value)
 }
 export const getContextMenuActionsByPageSummaryType = async (

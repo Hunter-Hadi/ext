@@ -823,6 +823,7 @@ export const getContextMenuActionsByPageSummaryType = async (
     const summaryNaTitle = getSummaryNavItemByType(
       pageSummaryType,
       summaryNavKey,
+      'key',
     )?.title
     const summaryNavActions = await getSummaryNavActions({
       type: pageSummaryType,

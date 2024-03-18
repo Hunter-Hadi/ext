@@ -32,7 +32,7 @@ export const createCommentListData: (
       comments.push({
         text: `[Comment ${index + 1}]
 **Author:** ${author}
-**like:** ${like}
+${like ? `**like:** ${like}` : ''}
 **Comment:**
 ${content}`,
         data: commentData,

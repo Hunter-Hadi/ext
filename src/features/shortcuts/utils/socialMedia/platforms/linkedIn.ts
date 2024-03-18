@@ -2,7 +2,10 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ICommentData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
@@ -19,14 +22,20 @@ const getLinkedInCommentDetail = async (
   const commentDate =
     (root.querySelector('time') as HTMLTimeElement)?.innerText || ''
 
-  const commentContent = root.querySelector<HTMLDivElement>(
-    '.comments-comment-item__main-content',
-  )?.textContent
+  const commentContent =
+    root.querySelector<HTMLDivElement>('.comments-comment-item__main-content')
+      ?.textContent || ''
+
+  const commentLike =
+    root.querySelector<HTMLElement>(
+      '.comments-comment-social-bar__reactions-count',
+    )?.innerText || '0'
 
   return {
     author: commentAuthor || '',
-    date: commentDate || '',
-    content: commentContent || '',
+    date: commentDate,
+    content: commentContent,
+    like: commentLike,
   }
 }
 
@@ -43,7 +52,7 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
       '.update-components-actor__meta',
     )
     const contentContainer = linkedinPostContainer.querySelector<HTMLElement>(
-      '.feed-shared-update-v2__description-wrapper',
+      '.update-components-update-v2__commentary',
     )
     if (metadataContainer && contentContainer) {
       const socialMediaPostContext = new SocialMediaPostContext({
@@ -51,7 +60,7 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           metadataContainer?.querySelector<HTMLElement>(
             '.update-components-actor__name',
           )?.innerText || '',
-        content: contentContainer.textContent || '',
+        content: contentContainer.innerText || '',
         title: '',
         date:
           metadataContainer
@@ -63,7 +72,7 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
       })
 
       // if exists main comment container, it means it's a reply for comments
-      const mainCommentContainer = findSelectorParent(
+      const mainCommentContainer = findParentEqualSelector(
         '.comments-comments-list__comment-item[data-id]',
         inputAssistantButton,
       )
@@ -83,7 +92,7 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           )?.innerText || ''
 
         // the comment from the main comment (AKA secondary comment)
-        const secondaryComment = findSelectorParent(
+        const secondaryComment = findParentEqualSelector(
           '.comments-reply-item',
           inputAssistantButton,
         )
@@ -104,7 +113,10 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           }
         }
         // or it maybe click the quick reply button of secondary comment
-        else if (mainCommentContainer !== secondaryComment) {
+        else if (
+          secondaryComment &&
+          mainCommentContainer !== secondaryComment
+        ) {
           linkedInPostComments.push(
             await getLinkedInCommentDetail(secondaryComment),
           )

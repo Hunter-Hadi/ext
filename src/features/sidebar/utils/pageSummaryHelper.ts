@@ -793,7 +793,15 @@ export const getSummaryNavItemByType = (
   valueType: 'title' | 'titleIcon' | 'key' = 'key',
 ) => {
   if (valueType === 'key' && !value) value = 'all' //默认赋值，防止异常
-  return allSummaryNavList[type].find((item) => item[valueType] === value)
+  const summaryNavItem = allSummaryNavList[type].find(
+    (item) => item[valueType] === value,
+  )
+  if (valueType === 'key' && !summaryNavItem) {
+    //防止summary nav key 找元素的时候，异常，因为nav有可能会删除
+    return allSummaryNavList[type].find((item) => item[valueType] === 'all')
+  } else {
+    return summaryNavItem
+  }
 }
 export const getContextMenuActionsByPageSummaryType = async (
   pageSummaryType: IPageSummaryType,

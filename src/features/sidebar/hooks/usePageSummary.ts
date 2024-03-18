@@ -48,7 +48,7 @@ const usePageSummary = () => {
   const isFetchingRef = useRef(false)
   const currentPageSummaryKey = useRef<
     { [key in string]: SummaryParamsPromptType | undefined }
-  >({})
+  >({}) //储存Summary nav key
 
   const lastMessageIdRef = useRef('')
 
@@ -75,19 +75,20 @@ const usePageSummary = () => {
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (pageSummaryConversation?.id) {
         console.log('新版Conversation pageSummary已经存在')
-        //拿取当前页面加载的summary nav的key 保持状态
+        //拿取当前页面summary page的summary nav的key 保持状态
         const lastRunActionTitle = (pageSummaryConversation?.meta
           ?.lastRunActions?.[0]?.parameters
           .ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
           ?.metadata?.title?.title
         if (lastRunActionTitle && currentPageSummaryType) {
-          currentPageSummaryKey.current[
-            currentPageSummaryType
-          ] = getSummaryNavItemByType(
+          const newSummaryNavKey = getSummaryNavItemByType(
             currentPageSummaryType,
             lastRunActionTitle,
             'title',
           )?.key
+          currentPageSummaryKey.current[
+            currentPageSummaryType
+          ] = newSummaryNavKey
         }
         await updateSidebarSettings({
           summary: {

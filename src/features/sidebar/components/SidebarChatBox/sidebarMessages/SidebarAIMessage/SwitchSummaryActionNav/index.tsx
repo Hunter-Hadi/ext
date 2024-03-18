@@ -20,9 +20,11 @@ interface IProps {
   message: IAIResponseMessage
   loading: boolean
 }
-let speedChangeKey = 'all'
+let speedChangeKey = ''
 export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
-  const [summaryActionKey, setSummaryActionKey] = useState('all')
+  const [summaryActionKey, setSummaryActionKey] = useState<
+    SummaryParamsPromptType | undefined
+  >(undefined)
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
   const changeSummaryActionKey = (key: SummaryParamsPromptType) => {
@@ -40,6 +42,9 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
       if (summaryNavInfo) {
         changeSummaryActionKey(summaryNavInfo.key)
       }
+    }
+    if (!speedChangeKey) {
+      changeSummaryActionKey('all')
     }
   }, [message.originalMessage?.metadata?.title?.title])
   const clickNavTriggerActionChange = async (navItem: {

@@ -207,7 +207,7 @@ const FloatingContextMenu: FC<{
   const [inputValue, setInputValue] = useState('')
   // 记录最后选择的contextMenu并发送log
   const lastRecordContextMenuRef = useRef<IContextMenuItem | null>(null)
-  const { loading, shortCutsEngineRef } = useClientChat()
+  const { loading, shortCutsEngine } = useClientChat()
   const { contextMenuList, originContextMenuList } = useContextMenuList(
     'textSelectPopupButton',
     inputValue,
@@ -560,8 +560,7 @@ const FloatingContextMenu: FC<{
         })
           .then(() => {
             // done
-            const error =
-              shortCutsEngineRef.current?.getNextAction()?.error || ''
+            const error = shortCutsEngine?.getNextAction()?.error || ''
             if (error) {
               console.log('[ContextMenu Module] error', error)
               hideFloatingContextMenu()

@@ -1,10 +1,11 @@
-import { useCallback, useRef } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import { ContentScriptConnectionV2, pingUntilLogin } from '@/features/chatgpt'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import ShortCutsEngine from '@/features/shortcuts/core/ShortCutsEngine'
+import { IShortcutEngine } from '@/features/shortcuts'
+import ShortCutsEngineFactory from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ShortCutsState } from '@/features/shortcuts/store'
@@ -15,7 +16,6 @@ import {
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 
-const shortCutsEngine = new ShortCutsEngine()
 const clientMessageChannelEngine = new ContentScriptConnectionV2({
   runtime: 'client',
 })
@@ -29,13 +29,23 @@ const useShortCutsEngine = () => {
   const { loading: chatGPTConversationLoading } = useRecoilValue(
     ClientWritingMessageState,
   )
-  const shortCutsEngineRef = useRef<ShortCutsEngine | null>(shortCutsEngine)
   const clientConversationEngine = useClientConversation()
+  const [shortCutsEngine, setShortCutsEngine] =
+    useState<IShortcutEngine | null>(ShortCutsEngineFactory.create(''))
+  useEffect(() => {
+    if (clientConversationEngine.currentConversationId) {
+      setShortCutsEngine(
+        ShortCutsEngineFactory.create(
+          clientConversationEngine.currentConversationId,
+        ),
+      )
+    }
+  }, [clientConversationEngine.currentConversationId])
   const setShortCuts = (actions: ISetActionsType) => {
-    if (!shortCutsEngineRef.current) {
+    if (!shortCutsEngine) {
       return false
     }
-    shortCutsEngineRef.current?.setActions(actions)
+    shortCutsEngine?.setActions(actions)
     return true
   }
   const runShortCuts = useCallback(
@@ -43,7 +53,7 @@ const useShortCutsEngine = () => {
       isOpenSidebarChatBox = false,
       overwriteParameters?: IShortCutsParameter[],
     ) => {
-      if (!shortCutsEngineRef.current) {
+      if (!shortCutsEngine) {
         return
       }
       if (!isLogin || (isOpenSidebarChatBox && !isShowChatBox())) {
@@ -54,10 +64,10 @@ const useShortCutsEngine = () => {
         // 确保没有在运行
         if (
           isLoginSuccess &&
-          (shortCutsEngineRef.current?.stepIndex === -1 ||
-            shortCutsEngineRef.current.status === 'stop')
+          (shortCutsEngine?.stepIndex === -1 ||
+            shortCutsEngine.status === 'stop')
         ) {
-          const needLoading = shortCutsEngineRef.current?.actions.find(
+          const needLoading = shortCutsEngine?.actions.find(
             (action) => action.type === 'ASK_CHATGPT',
           )
           if (needLoading) {
@@ -65,13 +75,13 @@ const useShortCutsEngine = () => {
               status: 'running',
             })
           }
-          await shortCutsEngineRef.current.run({
+          await shortCutsEngine.run({
             parameters:
               overwriteParameters && overwriteParameters.length > 0
                 ? overwriteParameters
                 : getParams().shortCutsParameters,
             engine: {
-              shortcutsEngine: shortCutsEngineRef.current,
+              shortcutsEngine: shortCutsEngine,
               clientConversationEngine,
               clientMessageChannelEngine,
               shortcutsMessageChannelEngine,
@@ -82,12 +92,12 @@ const useShortCutsEngine = () => {
         console.log('run short cuts error: \t', e)
       } finally {
         setShortsCutsState({
-          status: shortCutsEngine.status || 'idle',
+          status: shortCutsEngine?.status || 'idle',
         })
       }
     },
     [
-      shortCutsEngineRef,
+      shortCutsEngine,
       clientConversationEngine,
       clientMessageChannelEngine,
       shortcutsMessageChannelEngine,
@@ -96,40 +106,40 @@ const useShortCutsEngine = () => {
     ],
   )
   const stopShortCuts = useCallback(async () => {
-    if (!shortCutsEngineRef.current) {
+    if (!shortCutsEngine) {
       return
     }
-    await shortCutsEngineRef.current.stop({
+    await shortCutsEngine.stop({
       engine: {
-        shortcutsEngine: shortCutsEngineRef.current,
+        shortcutsEngine: shortCutsEngine,
         clientConversationEngine,
         clientMessageChannelEngine,
         shortcutsMessageChannelEngine,
       },
     })
     setShortsCutsState({
-      status: shortCutsEngine.status || 'idle',
+      status: shortCutsEngine?.status || 'idle',
     })
   }, [
-    shortCutsEngineRef,
+    shortCutsEngine,
     clientConversationEngine,
     clientMessageChannelEngine,
     shortcutsMessageChannelEngine,
   ])
 
   const resetShortCuts = useCallback(() => {
-    if (!shortCutsEngineRef.current) {
+    if (!shortCutsEngine) {
       return
     }
-    shortCutsEngineRef.current.reset()
+    shortCutsEngine.reset()
     setShortsCutsState({
-      status: shortCutsEngine.status || 'idle',
+      status: shortCutsEngine?.status || 'idle',
     })
-  }, [shortCutsEngineRef])
+  }, [shortCutsEngine])
 
   return {
     getParams,
-    shortCutsEngineRef,
+    shortCutsEngine,
     runShortCuts,
     setShortCuts,
     loading: shortCutsState.status === 'running' || chatGPTConversationLoading,

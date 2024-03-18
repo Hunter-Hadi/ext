@@ -26,7 +26,7 @@ const useClientChat = () => {
   const { currentUserPlan } = useUserInfo()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
-    shortCutsEngineRef,
+    shortCutsEngine,
     setShortCuts,
     runShortCuts,
     stopShortCuts,
@@ -36,13 +36,11 @@ const useClientChat = () => {
   const runShortCutsRef = useRef(runShortCuts)
   const {
     currentConversationIdRef,
-    createConversation,
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
     updateConversation,
     getCurrentConversation,
-    getConversation,
   } = useClientConversation()
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
@@ -83,6 +81,7 @@ const useClientChat = () => {
       },
     ])
   }
+
   /**
    * 问AI问题
    * @param actions
@@ -105,12 +104,7 @@ const useClientChat = () => {
       isOpenSidebarChatBox = false,
     } = options || {}
     // 1.在所有对话之前，确保先有conversationId
-    let conversationId = currentConversationIdRef.current
-    if (conversationId && (await getConversation(conversationId))?.id) {
-      // 如果有conversationId && 如果conversationId存在
-    } else {
-      conversationId = await createConversation()
-    }
+    const conversationId = shortCutsEngine!.conversationId
     // 2.付费卡点判断
     // PDF付费卡点
     if (
@@ -335,7 +329,7 @@ const useClientChat = () => {
   }
 
   return {
-    shortCutsEngineRef,
+    shortCutsEngine,
     askAIQuestion,
     askAIWIthShortcuts,
     regenerate,

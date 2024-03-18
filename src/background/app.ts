@@ -9,34 +9,8 @@ export type {
   IOpenAIChatListenTaskEvent,
   IOpenAIChatSendEvent,
 } from './eventType'
-import {
-  BardChatProvider,
-  BingChatProvider,
-  ChatAdapter,
-  ClaudeChatProvider,
-  MaxAIClaudeChatProvider,
-  MaxAIDALLEChatProvider,
-  MaxAIFreeChatProvider,
-  OpenAIApiChatProvider,
-  OpenAIChatProvider,
-  PoeChatProvider,
-  UseChatGPTPlusChatProvider,
-} from '@/background/provider/chat'
-import { MaxAIGeminiChatProvider } from '@/background/provider/chat/MaxAIGeminiChatProvider'
-import {
-  BardChat,
-  BingChat,
-  ChatSystem,
-  ClaudeWebappChat,
-  MaxAIClaudeChat,
-  MaxAIDALLEChat,
-  MaxAIFreeChat,
-  MaxAIGeminiChat,
-  OpenAiApiChat,
-  OpenAIChat,
-  PoeChat,
-  UseChatGPTPlusChat,
-} from '@/background/src/chat'
+
+import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import ConversationManager from '@/background/src/chatConversations'
 import { ClientMessageInit } from '@/background/src/client'
@@ -57,7 +31,6 @@ import {
   syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import {
-  AI_PROVIDER_MAP,
   APP_VERSION,
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -360,6 +333,7 @@ const initChromeExtensionUpdated = async () => {
  * 插件消息通信初始化
  */
 const initChromeExtensionMessage = () => {
+  new ChatSystemFactory()
   ClientMessageInit()
   ShortcutMessageBackgroundInit()
   Browser.runtime.onMessage.addListener(
@@ -387,48 +361,6 @@ const initChromeExtensionMessage = () => {
       }
     },
   )
-  const chatSystem = new ChatSystem()
-  const openAIChatAdapter = new ChatAdapter(
-    new OpenAIChatProvider(new OpenAIChat()),
-  )
-  const useChatGPTPlusAdapter = new ChatAdapter(
-    new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
-  )
-  const newOpenAIApiChatAdapter = new ChatAdapter(
-    new OpenAIApiChatProvider(new OpenAiApiChat()),
-  )
-  const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
-  const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
-  const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
-  const claudeChatAdapter = new ChatAdapter(
-    new ClaudeChatProvider(new ClaudeWebappChat()),
-  )
-  const maxAIClaudeAdapter = new ChatAdapter(
-    new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
-  )
-  const maxAIGeminiAdapter = new ChatAdapter(
-    new MaxAIGeminiChatProvider(new MaxAIGeminiChat()),
-  )
-  const maxAIArtAdapter = new ChatAdapter(
-    new MaxAIDALLEChatProvider(new MaxAIDALLEChat()),
-  )
-  const maxAiFreeAdapter = new ChatAdapter(
-    new MaxAIFreeChatProvider(new MaxAIFreeChat()),
-  )
-  chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
-  chatSystem.addAdapter(
-    AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    useChatGPTPlusAdapter,
-  )
-  chatSystem.addAdapter(AI_PROVIDER_MAP.BING, bingChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.BARD, bardChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_FREE, maxAiFreeAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_DALLE, maxAIArtAdapter)
   // search with AI
   SearchWithAIMessageInit()
 }

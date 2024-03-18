@@ -104,13 +104,17 @@ const ActionClassMap = {
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
 
 class ShortCutsEngine implements IShortcutEngine {
+  conversationId: string
+  createdAt = new Date()
+  updatedAt = new Date()
   status: IShortcutEngine['status'] = 'idle'
   variables = new Map<string, IShortCutsParameter>()
   stepIndex = -1
   actions: IShortcutEngine['actions'] = []
   listeners: IShortcutEngine['listeners'] = []
-  constructor() {
-    console.log('ShortCutEngine.constructor')
+  constructor(conversationId: string) {
+    this.conversationId = conversationId
+    console.log('ShortCutEngine.constructor', conversationId)
   }
 
   setActions(
@@ -200,6 +204,7 @@ class ShortCutsEngine implements IShortcutEngine {
     parameters: IShortCutsParameter[]
     engine: IShortcutEngineExternalEngine
   }) {
+    this.updatedAt = new Date()
     try {
       const { engine, parameters } = params || {}
       if (this.status === 'idle' || this.status === 'stop') {
@@ -288,7 +293,7 @@ class ShortCutsEngine implements IShortcutEngine {
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
     this.status = 'stop'
     console.log('ShortCutEngine.stop')
-    await this.getCurrentAction().stop(params)
+    await this.getCurrentAction()?.stop(params)
   }
 
   reset() {
@@ -368,4 +373,37 @@ class ShortCutsEngine implements IShortcutEngine {
     })
   }
 }
-export default ShortCutsEngine
+export default class ShortCutsEngineFactory {
+  static shortCutsEngineMap: Map<string, ShortCutsEngine> = new Map()
+  static create(conversationId: string) {
+    ShortCutsEngineFactory.removeUnnecessaryShortcutsEngine()
+    if (ShortCutsEngineFactory.shortCutsEngineMap.has(conversationId)) {
+      console.log(
+        'ShortCutsEngineFactory.create',
+        ShortCutsEngineFactory.shortCutsEngineMap,
+      )
+      return (
+        ShortCutsEngineFactory.shortCutsEngineMap.get(conversationId) || null
+      )
+    }
+    const shortCutsEngine = new ShortCutsEngine(conversationId)
+    ShortCutsEngineFactory.shortCutsEngineMap.set(
+      conversationId,
+      shortCutsEngine,
+    )
+    console.log(
+      'ShortCutsEngineFactory.create',
+      ShortCutsEngineFactory.shortCutsEngineMap,
+    )
+    return shortCutsEngine
+  }
+  // 释放5分钟没有使用的引擎
+  static removeUnnecessaryShortcutsEngine() {
+    const now = new Date()
+    ShortCutsEngineFactory.shortCutsEngineMap.forEach((engine, key) => {
+      if (now.getTime() - engine.updatedAt.getTime() > 1000 * 60 * 5) {
+        ShortCutsEngineFactory.shortCutsEngineMap.delete(key)
+      }
+    })
+  }
+}

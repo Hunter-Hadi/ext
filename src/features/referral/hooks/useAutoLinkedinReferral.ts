@@ -10,7 +10,7 @@ import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/clien
 
 const useAutoLinkedinReferral = () => {
   const { userInfo } = useUserInfo()
-  const { askAIWIthShortcuts, shortCutsEngineRef, loading } = useClientChat()
+  const { askAIWIthShortcuts, shortCutsEngine, loading } = useClientChat()
   const autoLinkedinReferral = useCallback(async () => {
     if (!loading) {
       const postText = ReferralConfig.inviteLink(userInfo?.referral_code || '')
@@ -52,7 +52,7 @@ const useAutoLinkedinReferral = () => {
           }
         }
       }
-      shortCutsEngineRef.current?.addListener(listener)
+      shortCutsEngine?.addListener(listener)
       await askAIWIthShortcuts([
         {
           type: 'OPEN_URLS',
@@ -171,7 +171,7 @@ const useAutoLinkedinReferral = () => {
           },
         },
       ])
-      shortCutsEngineRef.current?.removeListener(listener)
+      shortCutsEngine?.removeListener(listener)
       return true
     }
     return false

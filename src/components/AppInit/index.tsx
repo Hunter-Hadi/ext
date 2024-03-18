@@ -15,7 +15,6 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitChatGPTClient, useUserInfo } from '@/features/chatgpt'
-import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
@@ -23,7 +22,6 @@ import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateL
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
-import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { useInitI18n } from '@/i18n/hooks'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
@@ -73,7 +71,8 @@ export const AppSettingsInit = () => {
   useThemeUpdateListener()
   useEffect(() => {
     const updateAppSettings = async () => {
-      const liteChromeExtensionDBStorage = await clientGetLiteChromeExtensionDBStorage()
+      const liteChromeExtensionDBStorage =
+        await clientGetLiteChromeExtensionDBStorage()
       if (liteChromeExtensionDBStorage) {
         setAppDBStorage({
           ...liteChromeExtensionDBStorage,
@@ -127,8 +126,6 @@ const AppInit = () => {
   useInitI18n()
   useInjectShortCutsRunTime()
   useInitWebPageMessageChannel()
-  useInitClientConversationMap()
-  useInitSidebar()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()

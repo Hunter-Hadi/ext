@@ -22,7 +22,8 @@ export const SHORTCUT_ENGINE_BUILD_IN_VARIABLES = [
   'AI_OUTPUT_LANGUAGE',
   'AI_RESPONSE_LANGUAGE',
 ] as const
-export type IShortcutEngineBuiltInVariableType = typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES[number]
+export type IShortcutEngineBuiltInVariableType =
+  (typeof SHORTCUT_ENGINE_BUILD_IN_VARIABLES)[number]
 // OPTIMIZE: 这里的类型应该是ActionParameters，但是ActionParameters的类型太复杂了，所以先用any
 export type IShortcutEngineVariableType =
   | IShortcutEngineBuiltInVariableType
@@ -86,6 +87,7 @@ export interface IShortcutEngineExternalEngine {
 
 // 定义捷径引擎接口
 export interface IShortcutEngine {
+  conversationId: string
   // 基础
   status: 'idle' | 'running' | 'stop' | 'complete'
   actions: IAction[]

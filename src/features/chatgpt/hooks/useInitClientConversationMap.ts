@@ -8,8 +8,8 @@ import {
 } from '@/background/src/chatConversations'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export const clientGetConversation = async (conversationId: string) => {
@@ -107,41 +107,66 @@ const useInitClientConversationMap = () => {
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
   )
-  const { currentSidebarConversationId } = useSidebarSettings()
-  useCreateClientMessageListener(async (event, data, sender) => {
+  const { currentConversationId, updateChatStatus } = useClientConversation()
+  useCreateClientMessageListener(async (event, data) => {
     switch (event) {
-      case 'Client_listenUpdateConversationMessages':
-        {
-          const { conversation, conversationId } = data
-          if (conversation?.id) {
-            setClientConversationMap((prevState) => {
-              return {
-                ...prevState,
-                [conversation.id]: conversation,
-              }
-            })
-          } else if (conversationId && !conversation) {
-            // 如果是删除的话，就不会有conversation
-            setClientConversationMap((prevState) => {
-              const newState = cloneDeep(prevState)
-              delete newState[conversationId]
-              return newState
-            })
-          }
-          return {
-            success: true,
-          }
+      case 'Client_listenUpdateConversationMessages': {
+        const { conversation, conversationId } = data
+        if (conversation?.id && conversationId === currentConversationId) {
+          setClientConversationMap((prevState) => {
+            return {
+              ...prevState,
+              [conversation.id]: conversation,
+            }
+          })
+        } else if (!conversation && conversationId === currentConversationId) {
+          // 如果是删除的话，就不会有conversation
+          setClientConversationMap((prevState) => {
+            const newState = cloneDeep(prevState)
+            delete newState[conversationId]
+            return newState
+          })
         }
-        break
+        return {
+          success: true,
+        }
+      }
     }
     return undefined
   })
   useEffect(() => {
-    if (currentSidebarConversationId) {
-      clientGetConversation(currentSidebarConversationId).then(
+    if (currentConversationId) {
+      const port = new ContentScriptConnectionV2({
+        runtime: 'client',
+      })
+      /**
+       * 检查Chat状态
+       */
+      const checkChatGPTStatus = async () => {
+        debugger
+        const result = await port.postMessage({
+          event: 'Client_checkChatGPTStatus',
+          data: {
+            conversationId: currentConversationId,
+          },
+        })
+        console.log(
+          `新版Conversation [${currentConversationId}]status更新`,
+          result.data,
+        )
+        if (result.success && result.data.status) {
+          updateChatStatus(result.data.status)
+        }
+      }
+      window.addEventListener('focus', checkChatGPTStatus)
+      // 获取当前的conversation的数据
+      clientGetConversation(currentConversationId).then(
         async (conversation) => {
           if (conversation) {
-            console.log('新版Conversation effect更新', conversation.messages)
+            console.log(
+              `新版Conversation [${currentConversationId}]effect更新`,
+              conversation.messages,
+            )
             setClientConversationMap((prevState) => {
               return {
                 ...prevState,
@@ -151,7 +176,12 @@ const useInitClientConversationMap = () => {
           }
         },
       )
+      return () => {
+        port.destroy()
+        window.removeEventListener('focus', checkChatGPTStatus)
+      }
     }
-  }, [currentSidebarConversationId])
+    return () => {}
+  }, [currentConversationId])
 }
 export default useInitClientConversationMap

@@ -10,6 +10,7 @@ import {
   getChromeExtensionOnBoardingData,
   setChromeExtensionOnBoardingData,
 } from '@/background/utils'
+import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
@@ -104,7 +105,11 @@ const usePageSummary = () => {
       try {
         console.log('新版Conversation pageSummary开始创建')
         // 进入loading
-        await createConversation()
+        await createConversation(
+          'Summary',
+          MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIProvider,
+          MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIModel,
+        )
         updateClientWritingMessage((prevState) => {
           return {
             ...prevState,

@@ -5,10 +5,9 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { clientSwitchAndAuthAIProvider } from '@/features/chatgpt/utils'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 import SearchWIthAIProviderIcon from '../components/SearchWIthAIProviderIcon'
-import { SEARCH_WITH_AI_PROVIDER_MAP } from '../constants'
 
 const OpenAICheckerTooltip = () => {
   const { t } = useTranslation(['client'])
@@ -61,9 +60,10 @@ const OpenAICheckerTooltip = () => {
           mt: '16px !important',
         }}
         onClick={async () => {
-          await clientSwitchAndAuthAIProvider(
-            SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API,
-          )
+          await chromeExtensionClientOpenPage({
+            key: 'options',
+            query: `?#/openai-api-key`,
+          })
         }}
       >
         {t('client:provider__openai_api__auth_button_text')}

@@ -77,7 +77,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     answerInsertMessageId,
     askChatGPTActionParameters,
   } = props
-  const { askAIWIthShortcuts, loading, shortCutsEngineRef } = useClientChat()
+  const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
@@ -103,11 +103,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     clearErrors,
     formState: { errors },
   } = useForm<ActionSetVariablesConfirmData['data']>()
-  const [form, setForm] = useState<
-    {
-      [key in string]: ReturnType<typeof register>
-    }
-  >({})
+  const [form, setForm] = useState<{
+    [key in string]: ReturnType<typeof register>
+  }>({})
   const closeModal = async (isCancel: boolean) => {
     pendingPromises.forEach((promise) => {
       promise.resolve({
@@ -288,7 +286,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       await askAIWIthShortcuts(runActions)
         .then(() => {
           // done
-          const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
+          const error = shortCutsEngine?.getNextAction()?.error || ''
           if (error) {
             // 如果出错了，则打开聊天框
             showChatBox()
@@ -435,7 +433,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     runActionsRef.current = runActions
   }, [runActions])
   useEffectOnce(() => {
-    shortCutsEngineRef.current?.addListener((event, shortcutEngine) => {
+    shortCutsEngine?.addListener((event, shortcutEngine) => {
       if (event === 'status') {
         if (shortcutEngine.status === 'complete') {
           runActionsRef.current(true).then().catch()

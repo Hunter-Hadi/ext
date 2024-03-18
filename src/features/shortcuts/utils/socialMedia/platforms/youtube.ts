@@ -22,19 +22,16 @@ const getYouTubeCommentContent = async (
     ytdCommentBox.querySelector<HTMLElement>(
       'yt-formatted-string.published-time-text',
     )?.innerText || ''
-  // const expandButton = ytdCommentBox?.querySelector(
-  //   'tp-yt-paper-button#expand',
-  // ) as HTMLButtonElement
-  // if (expandButton) {
-  //   expandButton.click()
-  //   await delayAndScrollToInputAssistantButton(100)
-  // }
+  const like =
+    ytdCommentBox.querySelector<HTMLElement>('#vote-count-middle')?.innerText ||
+    ''
   const commentText =
     ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
   return {
     author: author.replace(/\n/g, '').trim(),
     date,
     content: commentText,
+    like: like.trim(),
   }
 }
 

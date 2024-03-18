@@ -2,6 +2,7 @@ export interface ICommentData {
   content: string
   author: string
   date: string
+  like?: string
 }
 // TODO 只支持单条评论树级
 export const createCommentListData = (commentList: ICommentData[]) => {

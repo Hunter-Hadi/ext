@@ -276,7 +276,7 @@ export const youTubeSummaryTranscriptChangeTool = async (
               },
               shareType: 'summary',
               title: {
-                title: `Summarize video`,
+                title: `Show transcript`,
               },
               copilot: {
                 title: {
@@ -336,7 +336,7 @@ export const youTubeSummaryTranscriptChangeTool = async (
             content: {
               text: `{{LAST_ACTION_OUTPUT}}`,
               title: {
-                title: 'Summary',
+                title: 'Transcript',
               },
               contentType: 'text',
             },

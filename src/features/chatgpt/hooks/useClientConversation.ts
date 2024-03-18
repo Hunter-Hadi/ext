@@ -113,7 +113,7 @@ const useClientConversation = () => {
       currentConversation?.type || 'Chat',
       currentConversation?.meta.AIProvider ||
         MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider,
-      currentConversation?.meta.AIProvider ||
+      currentConversation?.meta.AIModel ||
         MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel,
     )
     setClientWritingMessage({

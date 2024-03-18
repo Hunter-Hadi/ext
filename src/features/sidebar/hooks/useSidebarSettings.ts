@@ -3,6 +3,7 @@ import { useMemo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
+import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
 import {
   IChatConversation,
   IChatConversationMeta,
@@ -152,7 +153,7 @@ const useSidebarSettings = () => {
       }
       // 如果是OPENAI_API，那么就加上systemPrompt
       if (AIProvider === 'OPENAI_API') {
-        baseMetaConfig.systemPrompt = OPENAI_API_SYSTEM_MESSAGE
+        baseMetaConfig.systemPrompt = openAIAPISystemPromptGenerator(AIModel)
       }
       // 创建一个新的conversation
       const result = await port.postMessage({

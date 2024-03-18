@@ -31,9 +31,7 @@ interface IInputAssistantButtonGroupConfigBase {
 }
 export interface IInputAssistantButtonGroupConfig
   extends IInputAssistantButtonGroupConfigBase {
-  enable:
-    | boolean
-    | ((e: any) => boolean)
+  enable: boolean | ((e: any) => boolean)
   rootSelectors: (string | string[])[]
   // 距离root还有多少层parent
   rootParentDeep: number
@@ -222,9 +220,8 @@ const InputAssistantButtonGroupConfig = {
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
         onSelectionEffect: () => {
-          const replyButton = document.querySelector<HTMLElement>(
-            '.th6py > button',
-          )
+          const replyButton =
+            document.querySelector<HTMLElement>('.th6py > button')
           replyButton?.click()
         },
       },
@@ -346,135 +343,148 @@ const InputAssistantButtonGroupConfig = {
       },
     },
   ],
-  'linkedin.com': [{
-    enable: true,
-    rootSelectors: [
-      '.comments-comment-box-comment__text-editor + div > div',
-      '.share-box_actions .share-actions__primary-action',
-    ],
-    rootStyle: 'display:flex;align-items:center;',
-    appendPosition: 0,
-    rootParentDeep: 1,
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_NEW_BUTTON',
-    },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_REPLY_BUTTON',
+  'linkedin.com': [
+    {
+      enable: true,
+      rootSelectors: [
+        '.comments-comment-box-comment__text-editor + div > div',
+        '.share-box_actions .share-actions__primary-action',
+      ],
+      rootStyle: 'display:flex;align-items:center;',
+      appendPosition: 0,
+      rootParentDeep: 1,
+      rootWrapperTagName: 'div',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_NEW_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_REPLY_BUTTON',
+        CTAButtonStyle: {
+          padding: '2px 6px',
+        },
+        DropdownButtonStyle: {
+          padding: '0px',
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'LINKEDIN_REFINE_DRAFT_BUTTON',
+      },
       CTAButtonStyle: {
-        padding: '2px 6px',
+        iconSize: 16,
+        borderRadius: '16px 0 0 16px',
+        padding: '8px 10px',
+        transparentHeight: 6,
       },
       DropdownButtonStyle: {
-        padding: '0px',
+        borderRadius: '0 16px 16px 0',
+        padding: '6px 3px',
+        transparentHeight: 6,
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '16px',
+        marginRight: '8px',
       },
     },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'LINKEDIN_REFINE_DRAFT_BUTTON',
-    },
-    CTAButtonStyle: {
-      iconSize: 16,
-      borderRadius: '16px 0 0 16px',
-      padding: '8px 10px',
-      transparentHeight: 6,
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 16px 16px 0',
-      padding: '6px 3px',
-      transparentHeight: 6,
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '16px',
-      marginRight: '8px',
-    },
-  }, {
-    enable: (rootElement) => {
-      const commentBox = rootElement.parentElement.querySelector('.comments-comment-box');
-      const disableComment = rootElement.querySelector('button[data-finite-scroll-hotkey="c"][disabled]')
-      if (commentBox || disableComment) {
-        return false;
-      }
-      return true
-    },
-    rootSelectors: ['.feed-shared-social-action-bar'],
-    rootParentDeep: 0,
-    rootWrapperTagName: 'div',
-    rootWrapperStyle: 'order: 1;',
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
-      onSelectionEffect: ({ id: buttonId }) => {
-        const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-        const inputAssistantButton =
-          InputAssistantButtonElementRouteMap.get(
-            inputAssistantButtonSelector,
-          ) ||
-          document.querySelector<HTMLButtonElement>(
-            inputAssistantButtonSelector,
-          )
+    {
+      enable: (rootElement) => {
+        const commentBox = rootElement.parentElement.querySelector(
+          '.comments-comment-box',
+        )
+        const disableComment = rootElement.querySelector(
+          'button[data-finite-scroll-hotkey="c"][disabled]',
+        )
+        if (commentBox || disableComment) {
+          return false
+        }
+        return true
+      },
+      rootSelectors: ['.feed-shared-social-action-bar'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'order: 1;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
 
-        inputAssistantButton?.parentNode?.parentNode
-          ?.querySelector<HTMLElement>('button[data-finite-scroll-hotkey="c"]')
-          ?.click()
+          inputAssistantButton?.parentNode?.parentNode
+            ?.querySelector<HTMLElement>(
+              'button[data-finite-scroll-hotkey="c"]',
+            )
+            ?.click()
 
-        setTimeout(() => {
-          inputAssistantButton?.parentElement?.remove();
-        })
+          setTimeout(() => {
+            inputAssistantButton?.parentElement?.remove()
+          })
+        },
+      },
+      appendPosition: 0,
+      CTAButtonStyle: {
+        padding: '11px 32px',
+        iconSize: 26,
+        borderRadius: '4px',
+      },
+      InputAssistantBoxSx: {
+        width: 'max-content',
+        borderRadius: '4px',
       },
     },
-    appendPosition: 0,
-    CTAButtonStyle: {
-      padding: '11px 16px',
-      iconSize: 26,
-      borderRadius: '4px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '4px',
-    },
-  }, {
-    enable: true,
-    rootSelectors: ['.comments-comment-social-bar'],
-    rootParentDeep: 0,
-    rootStyle: 'transform: translateX(-0.8rem);',
-    rootWrapperTagName: 'div',
-    rootWrapperStyle: 'order: 1;',
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
-      onSelectionEffect: ({ id: buttonId }) => {
-        const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-        const inputAssistantButton =
-          InputAssistantButtonElementRouteMap.get(
-            inputAssistantButtonSelector,
-          ) ||
-          document.querySelector<HTMLButtonElement>(
-            inputAssistantButtonSelector,
-          )
+    {
+      enable: true,
+      rootSelectors: ['.comments-comment-social-bar'],
+      rootParentDeep: 0,
+      rootStyle: 'transform: translateX(-0.8rem);',
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'order: 1;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
 
-        inputAssistantButton?.parentNode?.parentNode
-          ?.querySelector<HTMLElement>('button.comments-comment-social-bar__reply-action-button')
-          ?.click()
+          inputAssistantButton?.parentNode?.parentNode
+            ?.querySelector<HTMLElement>(
+              'button.comments-comment-social-bar__reply-action-button',
+            )
+            ?.click()
+        },
+      },
+      appendPosition: 0,
+      CTAButtonStyle: {
+        padding: '4px 10px',
+        iconSize: 12,
+        borderRadius: '4px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '4px',
+        marginBottom: '-4px',
+        transform: 'translateY(-2px)',
       },
     },
-    appendPosition: 0,
-    CTAButtonStyle: {
-      padding: '4px 10px',
-      iconSize: 12,
-      borderRadius: '4px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '4px',
-      marginBottom: '-4px',
-      transform: 'translateY(-2px)',
-    },
-  }],
+  ],
   'facebook.com': {
     enable: true,
     rootSelectors: [
@@ -560,11 +570,12 @@ const InputAssistantButtonGroupConfig = {
     },
     {
       enable: (rootElement) => {
-        const commentDialog = rootElement.parentElement.querySelector('#comment-dialog');
+        const commentDialog =
+          rootElement.parentElement.querySelector('#comment-dialog')
         if ((commentDialog as any).hidden || commentDialog.innerHTML === '') {
-          return true;
+          return true
         }
-        return false;
+        return false
       },
       rootSelectors: ['#simple-box #placeholder-area'],
       rootParentDeep: 0,
@@ -585,11 +596,13 @@ const InputAssistantButtonGroupConfig = {
             )
 
           inputAssistantButton?.parentNode?.parentNode
-            ?.querySelector<HTMLElement>('yt-formatted-string#simplebox-placeholder')
+            ?.querySelector<HTMLElement>(
+              'yt-formatted-string#simplebox-placeholder',
+            )
             ?.click()
 
           setTimeout(() => {
-            inputAssistantButton?.parentElement?.remove();
+            inputAssistantButton?.parentElement?.remove()
           })
         },
       },
@@ -610,9 +623,9 @@ const InputAssistantButtonGroupConfig = {
       enable: (rootElement) => {
         const replyDialog = rootElement.parentElement.nextElementSibling
         if (replyDialog.innerHTML === '' || (replyDialog as any).hidden) {
-          return true;
+          return true
         }
-        return false;
+        return false
       },
       rootSelectors: ['#reply-button-end'],
       rootParentDeep: 0,
@@ -637,7 +650,7 @@ const InputAssistantButtonGroupConfig = {
             ?.click()
 
           setTimeout(() => {
-            const wrapperElement = inputAssistantButton?.parentElement;
+            const wrapperElement = inputAssistantButton?.parentElement
             wrapperElement?.parentElement?.removeChild(wrapperElement)
           })
         },

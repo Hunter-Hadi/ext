@@ -234,6 +234,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          onSelectionEffect={buttonGroup[0].onSelectionEffect}
         >
           <Box>
             <TextOnlyTooltip

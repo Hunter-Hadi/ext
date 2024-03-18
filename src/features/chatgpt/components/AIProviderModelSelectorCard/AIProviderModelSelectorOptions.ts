@@ -44,9 +44,10 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
-      label: 'claude-2.1-200k',
-      value: 'claude-v2:1',
+      label: 'claude-3-haiku',
+      value: 'claude-3-haiku',
       AIProvider: 'MAXAI_CLAUDE',
+      tag: 'Beta',
     },
     {
       tag: 'Beta',
@@ -57,14 +58,20 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     },
     {
       mainPart: true,
-      label: 'claude-instant-100k',
-      value: 'claude-instant-v1',
+      label: 'claude-2.1-200k',
+      value: 'claude-v2:1',
       AIProvider: 'MAXAI_CLAUDE',
     },
     {
       mainPart: true,
       label: 'claude-2-100k',
       value: 'claude-2',
+      AIProvider: 'MAXAI_CLAUDE',
+    },
+    {
+      mainPart: true,
+      label: 'claude-instant-100k',
+      value: 'claude-instant-v1',
       AIProvider: 'MAXAI_CLAUDE',
     },
     {

@@ -45,52 +45,52 @@ const PromptLibraryIconButton: FC<{
   const [placement, setPlacement] = React.useState<PopperPlacementType>()
   const isImmersiveChatPage = isMaxAIImmersiveChatPage()
   const paperRef = useRef<HTMLDivElement>()
-  const handleClick = (newPlacement: PopperPlacementType) => (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    const containerElement = (getMaxAISidebarRootElement()?.querySelector(
-      '#maxAISidebarChatBox',
-    ) || document.body) as HTMLDivElement
-    const targetElement = event.currentTarget as HTMLButtonElement
-    // 高度取决于targetElement的高度
-    // 宽度取决于containerElement的中心
-    const rect = targetElement.getBoundingClientRect()
-    const containerRect = containerElement.getBoundingClientRect()
-    setAnchorEl({
-      getBoundingClientRect: () => {
-        const left = isImmersiveChatPage
-          ? document.body.offsetWidth / 2 + 8
-          : containerRect.x + containerRect.width / 2
-        const virtualRect = {
-          x: left,
-          y: rect.y - 8,
-          width: isImmersiveChatPage ? 1 : 58,
-          height: 1,
-          top: rect.top - 8,
-          left: left,
-          bottom: rect.top + 1,
-          right: left + 1,
-        } as DOMRect
-        // draw
-        // const div = document.createElement('div')
-        // div.style.position = 'absolute'
-        // div.style.top = `${virtualRect.y}px`
-        // div.style.left = `${virtualRect.x}px`
-        // div.style.width = `${virtualRect.width}px`
-        // div.style.height = `${virtualRect.height}px`
-        // div.style.border = '1px solid red'
-        // div.style.zIndex = '999999999999'
-        // document.body.appendChild(div)
-        return virtualRect
-      },
-    } as any)
-    setTimeout(() => {
-      paperRef.current?.focus()
-    }, 100)
-    setIsClickOpenOnce(true)
-    openPromptLibrary()
-    setPlacement(newPlacement)
-  }
+  const handleClick =
+    (newPlacement: PopperPlacementType) =>
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      const containerElement = (getMaxAISidebarRootElement()?.querySelector(
+        '#maxAISidebarChatBox',
+      ) || document.body) as HTMLDivElement
+      const targetElement = event.currentTarget as HTMLButtonElement
+      // 高度取决于targetElement的高度
+      // 宽度取决于containerElement的中心
+      const rect = targetElement.getBoundingClientRect()
+      const containerRect = containerElement.getBoundingClientRect()
+      setAnchorEl({
+        getBoundingClientRect: () => {
+          const left = isImmersiveChatPage
+            ? document.body.offsetWidth / 2 + 8
+            : containerRect.x + containerRect.width / 2
+          const virtualRect = {
+            x: left,
+            y: rect.y - 8,
+            width: isImmersiveChatPage ? 1 : 58,
+            height: 1,
+            top: rect.top - 8,
+            left: left,
+            bottom: rect.top + 1,
+            right: left + 1,
+          } as DOMRect
+          // draw
+          // const div = document.createElement('div')
+          // div.style.position = 'absolute'
+          // div.style.top = `${virtualRect.y}px`
+          // div.style.left = `${virtualRect.x}px`
+          // div.style.width = `${virtualRect.width}px`
+          // div.style.height = `${virtualRect.height}px`
+          // div.style.border = '1px solid red'
+          // div.style.zIndex = '999999999999'
+          // document.body.appendChild(div)
+          return virtualRect
+        },
+      } as any)
+      setTimeout(() => {
+        paperRef.current?.focus()
+      }, 100)
+      setIsClickOpenOnce(true)
+      openPromptLibrary()
+      setPlacement(newPlacement)
+    }
   const initPromptLibraryRef = useRef(false)
   useEffectOnce(() => {
     if (initPromptLibraryRef.current) {
@@ -130,7 +130,11 @@ const PromptLibraryIconButton: FC<{
       const actions = promptLibraryCardDetailDataToActions(
         selectedPromptLibraryCard,
       )
-      if (actions && shortCutsEngineRef.current?.status === 'idle') {
+      if (
+        actions &&
+        shortCutsEngineRef.current?.status &&
+        ['idle', 'stop'].includes(shortCutsEngineRef.current?.status)
+      ) {
         updateSidebarConversationType('Chat')
         cancelSelectPromptLibraryCard()
         askAIWIthShortcuts(actions).then().catch()

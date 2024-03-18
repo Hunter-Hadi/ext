@@ -24,7 +24,12 @@ import { clientRunBackgroundGetScreenshot } from '@/utils/clientCallChromeExtens
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
-  const { AIProviderConfig, aiProviderUploadFiles } = useAIProviderUpload()
+  const {
+    files,
+    AIProviderConfig,
+    aiProviderUploadFiles,
+    aiProviderRemoveFiles,
+  } = useAIProviderUpload()
   const { createConversation } = useClientConversation()
   const {
     updateSidebarConversationType,
@@ -57,6 +62,8 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
           'claude-3-sonnet',
           'claude-3-opus',
+          'claude-3-haiku',
+          'gemini-pro',
         ].includes(conversation?.meta?.AIModel)
       ) {
         await updateAIProviderModel(
@@ -72,8 +79,17 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       )
       await createConversation('Chat')
     }
+    const existFilesCount = files?.length || 0
+    const maxFiles = AIProviderConfig?.maxCount || 1
+    const canUploadCount = maxFiles - existFilesCount
+    if (canUploadCount === 0) {
+      await aiProviderRemoveFiles(files.slice(0, imageFiles.length))
+    }
     await aiProviderUploadFilesRef.current(
-      await formatClientUploadFiles(imageFiles, AIProviderConfig?.maxFileSize),
+      await formatClientUploadFiles(
+        imageFiles.slice(0, maxFiles),
+        AIProviderConfig?.maxFileSize,
+      ),
     )
   }
   const isMaxAIVisionModel = useMemo(() => {
@@ -84,9 +100,12 @@ export const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
       return true
     }
     if (currentAIProvider === 'MAXAI_CLAUDE') {
-      return ['claude-3-sonnet', 'claude-3-opus'].includes(
+      return ['claude-3-sonnet', 'claude-3-opus', 'claude-3-haiku'].includes(
         currentAIProviderModel,
       )
+    }
+    if (currentAIProvider === 'MAXAI_GEMINI') {
+      return ['gemini-pro'].includes(currentAIProviderModel)
     }
     return false
   }, [currentAIProvider, currentAIProviderModel])

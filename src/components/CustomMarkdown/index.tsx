@@ -22,11 +22,28 @@ import { chromeExtensionClientOpenPage, CLIENT_OPEN_PAGE_KEYS } from '@/utils'
 import CopyTooltipIconButton from '../CopyTooltipIconButton'
 import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
 
+const getYouTubeUrlTime = (url: string) => {
+  try {
+    const parsedUrl = new URL(url);
+    const params = new URLSearchParams(parsedUrl.search);
+    const time = params.get('t');
+    if (time) {
+      const timeNum = parseInt(time.replace('s', ''), 10);
+      return timeNum
+    } else {
+      return false
+    }
+  } catch (e) {
+    return false
+  }
+}
+
 const OverrideAnchor: FC<{
   children: React.ReactNode
   href?: string
   title?: string
 }> = (props) => {
+  const isYoutubeTimeUrl = props.href && props.href.startsWith("https://www.youtube.com/watch") && props.href.endsWith("s")
   if (props.href?.startsWith('key=')) {
     const params = new URLSearchParams(props.href)
     const key: any = params.get('key') || ''
@@ -48,8 +65,24 @@ const OverrideAnchor: FC<{
       )
     }
   }
+  const clickLinkUrl = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (isYoutubeTimeUrl) {
+      e.preventDefault()
+      try {
+        const video = document.querySelector('video');
+        if (video && props.href) {
+          const timeStr = getYouTubeUrlTime(props.href)
+          if (typeof timeStr === 'number') {
+            video.currentTime = timeStr;
+          }
+        }
+      } catch (e) {
+        console.log('clickLinkUrl error', e)
+      }
+    }
+  }
   return (
-    <Link sx={{ cursor: 'pointer' }} href={props.href} target={'_blank'}>
+    <Link sx={{ cursor: 'pointer' }} href={props.href} target={'_blank'} onClick={clickLinkUrl}>
       {props.children}
     </Link>
   )

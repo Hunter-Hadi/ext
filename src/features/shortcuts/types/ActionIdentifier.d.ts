@@ -2,6 +2,8 @@ type ActionIdentifier =
   | WebGPTActionIdentifier
   // 渲染模板
   | 'RENDER_TEMPLATE'
+  //youtube获取评论
+  | 'YOUTUBE_GET_COMMENTS'
   /**
    * @deprecated - 这个action已经被废弃了，使用RENDER_TEMPLATE代替
    * @description - 渲染AI Prompt
@@ -73,6 +75,8 @@ type ActionIdentifier =
   | 'TEXT_HANDLER'
   // 聊天信息管理
   | 'CHAT_MESSAGE'
+  // MaAI 总结完成后记录数据的 action
+  | 'MAXAI_SUMMARY_LOG'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

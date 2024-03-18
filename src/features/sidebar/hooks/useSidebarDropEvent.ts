@@ -10,8 +10,9 @@ const IsSidebarDragOverAtom = atom({
 })
 
 const useSidebarDropEvent = () => {
-  const { uploadImagesAndSwitchToMaxAIVisionModel } =
-    useUploadImagesAndSwitchToMaxAIVisionModel()
+  const {
+    uploadImagesAndSwitchToMaxAIVisionModel,
+  } = useUploadImagesAndSwitchToMaxAIVisionModel()
 
   const [isSidebarDragOver, setIsSidebarDragOver] = useRecoilState(
     IsSidebarDragOverAtom,
@@ -34,12 +35,13 @@ const useSidebarDropEvent = () => {
 
     // 检查相关目标是否还在外层div内
     if (
-      relatedTarget &&
-      !(
-        relatedTargetOffsetParent &&
-        relatedTargetOffsetParent?.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID
-      ) &&
-      !event.currentTarget.contains(relatedTarget)
+      (relatedTarget &&
+        !(
+          relatedTargetOffsetParent &&
+          relatedTargetOffsetParent?.id === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID
+        ) &&
+        !event.currentTarget.contains(relatedTarget)) ||
+      !relatedTarget
     ) {
       // 设置你的状态为false
       setIsSidebarDragOver(false)
@@ -47,21 +49,22 @@ const useSidebarDropEvent = () => {
   }, [])
 
   const handleDrop = async (event: any) => {
-    const file = event.dataTransfer.files[0]
+    const { files } = event.dataTransfer
 
-    const isImage = file.type.includes('image')
-    const isPDF = file.type.includes('pdf')
+    if (files.length > 0) {
+      const isImage = files[0].type.includes('image')
+      const isPDF = files[0].type.includes('pdf')
 
-    if (isImage) {
-      event.preventDefault()
-
-      uploadImagesAndSwitchToMaxAIVisionModel([file])
-    }
-
-    if (isPDF) {
-      event.stopPropagation()
-      // do nothing
-      // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
+      if (isImage) {
+        event.preventDefault()
+        uploadImagesAndSwitchToMaxAIVisionModel(
+          [...files].filter((file: File) => file.type.includes('image')),
+        )
+      } else if (isPDF) {
+        event.stopPropagation()
+        // do nothing
+        // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
+      }
     }
 
     setIsSidebarDragOver(false)

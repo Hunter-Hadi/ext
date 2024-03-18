@@ -39,10 +39,12 @@ const usePageSummary = () => {
     ClientWritingMessageState,
   )
   const { currentUserPlan } = useUserInfo()
+
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
+
   const createPageSummary = async () => {
     if (isFetchingRef.current) {
       return
@@ -138,11 +140,14 @@ const usePageSummary = () => {
             return
           }
         }
-        const { actions, messageId } = getContextMenuActionsByPageSummaryType(
+        const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )
-        lastMessageIdRef.current = messageId
-        runPageSummaryActions(actions)
+        if(paramsPageSummaryTypeData){
+          lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
+          runPageSummaryActions(paramsPageSummaryTypeData.actions)
+        }
+       
       } catch (e) {
         console.log('创建Conversation失败', e)
       }
@@ -158,6 +163,7 @@ const usePageSummary = () => {
         currentSidebarConversationId
       ) {
         isFetchingRef.current = true
+        // debugger
         askAIWIthShortcuts(actions)
           .then()
           .catch()

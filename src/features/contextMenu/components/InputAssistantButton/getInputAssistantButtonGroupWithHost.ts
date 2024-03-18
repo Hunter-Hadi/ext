@@ -65,6 +65,12 @@ const getGmailButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
+  // temp fix for gmail
+  if (keyElement.classList.contains('amn')) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+    ]
+  }
   const emailMessageList = document.querySelectorAll('div[data-message-id]')
   for (let i = 0; i < emailMessageList.length; i++) {
     const emailMessageElement = emailMessageList[i]
@@ -84,6 +90,12 @@ const getOutlookButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
+  // temp fix for outlook mail
+  if (keyElement.classList.contains('th6py')) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+    ]
+  }
   const listContainer = document.querySelector(
     'div[data-app-section="ConversationContainer"]',
   ) as HTMLDivElement

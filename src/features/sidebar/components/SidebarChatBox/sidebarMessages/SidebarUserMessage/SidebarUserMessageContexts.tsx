@@ -63,7 +63,7 @@ const SidebarUserMessageContexts: FC<{
               <Stack
                 py={0.5}
                 borderRadius={1}
-                maxHeight={400}
+                maxHeight={430}
                 overflow={'auto'}
               >
                 <Stack gap={1}>

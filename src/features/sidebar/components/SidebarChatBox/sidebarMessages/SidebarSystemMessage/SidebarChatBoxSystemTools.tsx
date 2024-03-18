@@ -68,6 +68,7 @@ const SidebarChatBoxSystemTools: FC<{
       )
     }
   }, [currentUserPlan.name, chatMessageType])
+
   return (
     <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
       {chatMessageType === 'needUpgrade' && (
@@ -108,7 +109,8 @@ const SidebarChatBoxSystemTools: FC<{
         </Button>
       )}
 
-      {chatMessageType === 'normal' &&
+      {message.meta.status !== 'success' &&
+        chatMessageType === 'normal' &&
         lastMessage?.messageId === message.messageId &&
         message.parentMessageId && (
           <Button

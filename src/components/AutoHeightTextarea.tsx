@@ -173,11 +173,15 @@ const AutoHeightTextarea: FC<{
   minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
-  const { currentSidebarConversationId, currentSidebarConversationType } =
-    useSidebarSettings()
+  const {
+    currentSidebarConversationId,
+    currentSidebarConversationType,
+  } = useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const { isMaxAIVisionModel, uploadImagesAndSwitchToMaxAIVisionModel } =
-    useUploadImagesAndSwitchToMaxAIVisionModel()
+  const {
+    isMaxAIVisionModel,
+    uploadImagesAndSwitchToMaxAIVisionModel,
+  } = useUploadImagesAndSwitchToMaxAIVisionModel()
   const {
     defaultValue,
     onChange,
@@ -493,13 +497,16 @@ const AutoHeightTextarea: FC<{
                 return item.type.indexOf('image') !== -1
               })
               if (images.length) {
-                event.preventDefault()
                 console.log('粘贴图片', images)
-                const image = images[0]
-                const file = image.getAsFile()
-                if (file) {
-                  await uploadImagesAndSwitchToMaxAIVisionModel([file])
+                event.preventDefault()
+                const imageFiles = []
+                for (const image of images) {
+                  const file = image.getAsFile()
+                  if (file) {
+                    imageFiles.push(file)
+                  }
                 }
+                await uploadImagesAndSwitchToMaxAIVisionModel(imageFiles)
               }
             }
           }}

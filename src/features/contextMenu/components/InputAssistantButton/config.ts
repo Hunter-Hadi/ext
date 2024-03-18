@@ -12,6 +12,7 @@ export interface IInputAssistantButton {
   InputAssistantBoxSx?: SxProps
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
+  onSelectionEffect?: (e?: any) => any
 }
 export type IInputAssistantButtonKeyType =
   | 'composeNewButton'
@@ -65,40 +66,74 @@ export type InputAssistantButtonGroupConfigHostType =
   | 'reddit.com'
 
 const InputAssistantButtonGroupConfig = {
-  'mail.google.com': {
-    enable: true,
-    rootSelectors: ['.btC'],
-    rootParentDeep: 0,
-    rootWrapperTagName: 'td',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+  'mail.google.com': [
+    {
+      enable: true,
+      rootSelectors: ['.btC'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'td',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+      },
+      appendPosition: 1,
+      CTAButtonStyle: {
+        borderRadius: '18px 0 0 18px',
+        iconSize: 18,
+        padding: '9px 12px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 18px 18px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        margin: '0 0 0 12px',
+      },
     },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+    {
+      enable: true,
+      rootSelectors: ['.amn'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'td',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: () => {
+          const replyButton = document.getElementById(':1v')
+          replyButton?.click()
+
+          // [Need to figure: Opening sidebar will seize the focus]
+          // setTimeout(() => {
+          //   const replyTextarea = document.getElementById(':8t')
+          //   replyTextarea?.focus();
+          // })
+        },
+      },
+      appendPosition: 4,
+      CTAButtonStyle: {
+        borderRadius: '18px',
+        iconSize: 18,
+        padding: '9px 27px',
+        borderWidth: 0,
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        margin: '0 0 0 12px',
+      },
     },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
-    },
-    appendPosition: 1,
-    CTAButtonStyle: {
-      borderRadius: '18px 0 0 18px',
-      iconSize: 18,
-      padding: '9px 12px',
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 18px 18px 0',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '18px',
-      margin: '0 0 0 12px',
-    },
-  },
+  ],
   'outlook.office.com': {
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -133,39 +168,75 @@ const InputAssistantButtonGroupConfig = {
       margin: '0 0 0 12px',
     },
   },
-  'outlook.live.com': {
-    enable: true,
-    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
-    rootParentDeep: 1,
-    rootStyle: 'overflow: unset;',
-    rootParentStyle: 'overflow: unset;',
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+  'outlook.live.com': [
+    {
+      enable: true,
+      rootSelectors: ['div[data-testid="ComposeSendButton"]'],
+      rootParentDeep: 1,
+      rootStyle: 'overflow: unset;',
+      rootParentStyle: 'overflow: unset;',
+      rootWrapperTagName: 'div',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+      },
+      appendPosition: 1,
+      CTAButtonStyle: {
+        padding: '6px 20px',
+      },
+      DropdownButtonStyle: {
+        padding: '6px',
+      },
+      InputAssistantBoxSx: {
+        margin: '0 0 0 12px',
+      },
     },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+    {
+      enable: true,
+      rootSelectors: ['.th6py'],
+      rootParentDeep: 0,
+      rootStyle: 'overflow: unset;',
+      rootParentStyle: 'overflow: unset;',
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        onSelectionEffect: () => {
+          const replyButton = document.querySelector<HTMLElement>(
+            '.th6py > button',
+          )
+          replyButton?.click()
+
+          // [Need to figure: Opening sidebar will seize the focus]
+          // setTimeout(() => {
+          //   const replyTextarea = document.getElementById(':8t')
+          //   replyTextarea?.focus();
+          // })
+        },
+      },
+      appendPosition: 2,
+      CTAButtonStyle: {
+        padding: '6px 20px',
+        borderWidth: 0,
+        borderRadius: '4px',
+      },
+      InputAssistantBoxSx: {
+        margin: '4px 0 0 12px',
+      },
     },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
-    },
-    appendPosition: 1,
-    CTAButtonStyle: {
-      padding: '6px 20px',
-    },
-    DropdownButtonStyle: {
-      padding: '6px',
-    },
-    InputAssistantBoxSx: {
-      margin: '0 0 0 12px',
-    },
-  },
+  ],
   'outlook.office365.com': {
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -501,7 +572,9 @@ const InputAssistantButtonGroupConfig = {
     InputAssistantBoxSx: {},
   },
 } as {
-  [key in InputAssistantButtonGroupConfigHostType]: IInputAssistantButtonGroupConfig
+  [key in InputAssistantButtonGroupConfigHostType]:
+    | IInputAssistantButtonGroupConfig
+    | IInputAssistantButtonGroupConfig[]
 }
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
   InputAssistantButtonGroupConfig,

@@ -30,6 +30,7 @@ import {
   ActionSetVariableMap,
   ActionSetVariablesModal,
   ActionSliceOfText,
+  ActionsMaxAISummaryLog,
   ActionSummarizeOfText,
   ActionTextHandler,
   ActionUploadPDFOfCRX,
@@ -47,11 +48,15 @@ import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
+import { ActionYoutubeGetComments } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetComments'
+
 const ActionClassMap = {
   // 废弃
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
+  [ActionYoutubeGetComments.type]: ActionYoutubeGetComments,
+
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAskChatGPT.type]: ActionAskChatGPT,
@@ -75,11 +80,14 @@ const ActionClassMap = {
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]:
+    ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
-  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
-  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]:
+    ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]:
+    ActionGetSocialMediaPostContentOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
@@ -90,6 +98,7 @@ const ActionClassMap = {
   [ActionTextHandler.type]: ActionTextHandler,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

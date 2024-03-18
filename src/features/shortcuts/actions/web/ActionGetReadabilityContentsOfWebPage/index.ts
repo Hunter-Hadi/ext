@@ -12,6 +12,7 @@ import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/page
 
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
+  originalInnerText: string = ''
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -33,6 +34,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getPageContentWithMozillaReadability())
+      this.originalInnerText = document.body.innerText
       if (result.length < 100 && typeof document !== 'undefined') {
         this.output = document.body.innerText
       } else {

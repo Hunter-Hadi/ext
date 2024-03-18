@@ -122,7 +122,12 @@ const SidebarTopBar: FC = () => {
                 }}
               >
                 {t('client:activity__1st_anniversary_2024__title2', {
-                  PERCENT: currentUserPlan.name === 'free' ? '68' : '40',
+                  PERCENT:
+                    currentUserPlan.name === 'free' ||
+                    currentUserPlan.name === 'new_user' ||
+                    currentUserPlan.name === 'pro_gift'
+                      ? '68'
+                      : '40',
                 })}
               </Typography>
             </Stack>

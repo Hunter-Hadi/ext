@@ -48,9 +48,13 @@ const useInitSidebar = () => {
   useEffect(() => {
     sidebarSettingsRef.current = sidebarSettings
   }, [sidebarSettings])
+  const appOpenRef = useRef(appState.open)
+  useEffect(() => {
+    appOpenRef.current = appState.open
+  }, [appState.open])
   useEffect(() => {
     let isExpired = false
-    if (currentSidebarConversationType && appState.open) {
+    if (currentSidebarConversationType && appOpenRef.current) {
       const switchConversation = async (conversationId?: string) => {
         if (!conversationId) {
           return
@@ -104,7 +108,7 @@ const useInitSidebar = () => {
     return () => {
       isExpired = true
     }
-  }, [currentSidebarConversationType, appState.open])
+  }, [currentSidebarConversationType])
   // summary 重新生成的逻辑
   useEffect(() => {
     // 如果不是Summary, return
@@ -128,6 +132,7 @@ const useInitSidebar = () => {
     } else {
       // 直接触发create
     }
+    
     createPageSummary().then().catch().finally()
   }, [
     currentSidebarConversation?.id,

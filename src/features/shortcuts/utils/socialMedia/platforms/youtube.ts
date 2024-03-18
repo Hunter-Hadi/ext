@@ -27,13 +27,13 @@ const getYouTubeCommentContent = async (
     ytdCommentBox.querySelector<HTMLElement>(
       'yt-formatted-string.published-time-text',
     )?.innerText || ''
+  const commentText =
+    ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
   const like =
     ytdCommentBox.querySelector<HTMLElement>('#vote-count-middle')?.innerText ||
     ''
-  const commentText =
-    ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
   return {
-    author: (author || commentAuthor).replace(/\n/g, '').trim(),
+    author,
     date,
     content: commentText,
     like: like.trim(),

@@ -10,6 +10,8 @@ import useInterval from '@/features/common/hooks/useInterval'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
 
+import useSidebarSettings from '../../hooks/useSidebarSettings'
+
 export const messageListContainerId = 'message-list-scroll-container'
 
 const SidebarChatBoxMessageItem = React.lazy(
@@ -31,7 +33,7 @@ interface IProps {
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   const { conversationId, writingMessage, messages, loading, sx } = props
-
+  const { currentSidebarConversationType } = useSidebarSettings()
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
   // 用于判断 当前触发的 effect 时是否需要滚动到底部
@@ -44,7 +46,6 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     scrollContainerRef,
     messages,
   )
-
   // 用 interval 来找 message-item-on-ready-flag 元素
   // 用于判断 Suspense 是否完成
   // NOTE: 当然这是不干净的做法，如果找到了更好的做法需要替换
@@ -78,14 +79,18 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
 
   // 当 loading 变化为 true 时，强制滚动到底部
   useEffect(() => {
+    if (currentSidebarConversationType === 'Summary' && !writingMessage) {
+      //加!writingMessage是因为为了summary nav切换的loading更新会滚动到最下面，应该保持在原来的位置
+      //是因为 summary nav 功能切换的时候loading会为true而writingMessage为空
+      return
+    }
     if (loading) {
       handleScrollToBottom(true)
       setTimeout(() => {
         changePageNumber(1)
       }, 0)
     }
-  }, [loading])
-
+  }, [loading, writingMessage,currentSidebarConversationType])
   useEffect(() => {
     if (writingMessage) {
       handleScrollToBottom()

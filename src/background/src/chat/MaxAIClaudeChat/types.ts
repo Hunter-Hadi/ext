@@ -47,6 +47,27 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     },
   },
   {
+    title: 'claude-3-haiku',
+    titleTag: '',
+    value: 'claude-3-haiku',
+    maxTokens: 200000,
+    tags: ['Beta', 'Vision'],
+    poweredBy: 'Anthropic',
+    description: (t) =>
+      t(`client:provider__claude__model__claude_3_haiku__description`),
+    permission: {
+      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
+      roles: ['elite'],
+    },
+    uploadFileConfig: {
+      maxFileSize: 20 * 1024 * 1024, // 20
+      accept: '.jpg,.jpeg,.png,.webp,.gif',
+      acceptTooltip: (t) =>
+        t('client:provider__chatgpt__upload__accept_tooltip'),
+      maxCount: 5,
+    },
+  },
+  {
     title: 'claude-3-sonnet',
     titleTag: '',
     value: 'claude-3-sonnet',

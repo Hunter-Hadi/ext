@@ -22,6 +22,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_PAID_MODEL_CLAUDE_V2',
   'MAXAI_PAID_MODEL_GEMINI_PRO',
   'MAXAI_PAID_MODEL_CLAUDE_V2_1',
+  'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
   'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
   'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
   'MAXAI_PAID_MODEL_GPT4_VISION',
@@ -393,6 +394,22 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     description: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__claude_v2_1__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_elite'),
+  },
+  // MAX AI - paid model - calude - 3 haiku
+  MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/claude-3-haiku.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_elite'),

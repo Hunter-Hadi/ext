@@ -45,6 +45,12 @@ export const defaultChromeExtensionLocalStorage = (): IChromeExtensionLocalStora
       },
       summary: {
         conversationId: '',
+        currentNavType:{
+          PAGE_SUMMARY:'all',
+          PDF_CRX_SUMMARY:'all',
+          YOUTUBE_VIDEO_SUMMARY:'all',
+          DEFAULT_EMAIL_SUMMARY:'all',
+        }
       },
       search: {
         conversationId: '',

@@ -4,8 +4,23 @@ export interface ICommentData {
   date: string
   like?: string
 }
+export interface ICreateCommentListData {
+  last: {
+    data: ICommentData
+    text: string
+  }
+  lastText: string
+  previous: {
+    data: ICommentData
+    text: string
+  }[]
+  previousText: string
+  fullText: string
+}
 // TODO 只支持单条评论树级
-export const createCommentListData = (commentList: ICommentData[]) => {
+export const createCommentListData: (
+  commentList: ICommentData[],
+) => ICreateCommentListData | null = (commentList) => {
   if (commentList.length > 0) {
     const comments: Array<{
       data: ICommentData
@@ -13,10 +28,11 @@ export const createCommentListData = (commentList: ICommentData[]) => {
     }> = []
     commentList.forEach((commentData, index) => {
       // index代表 # 的数量
-      const { content, author } = commentData
+      const { content, author, like } = commentData
       comments.push({
         text: `[Comment ${index + 1}]
 **Author:** ${author}
+**like:** ${like}
 **Comment:**
 ${content}`,
         data: commentData,
@@ -29,7 +45,7 @@ ${content}`,
       lastText: comments[comments.length - 1].text,
       previous,
       previousText: previous.map((comment) => comment.text).join('\n\n'),
-      fullText: comments.join('\n\n'),
+      fullText: comments.map((comment) => comment.text).join('\n\n'),
     }
   }
   return null

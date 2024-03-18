@@ -1,3 +1,5 @@
+import { cloneDeep } from 'lodash-es'
+
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {
   GetSocialMediaPostContentFunction,
@@ -9,7 +11,10 @@ import {
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
+  createCommentListData,
   ICommentData,
+  ICreateCommentListData,
+  ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 
 const getYouTubeCommentContent = async (
@@ -28,7 +33,7 @@ const getYouTubeCommentContent = async (
   const commentText =
     ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
   return {
-    author: author.replace(/\n/g, '').trim(),
+    author: (author || commentAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
     like: like.trim(),
@@ -171,6 +176,135 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   }
   return SocialMediaPostContext.emptyData
 }
+export const getYouTubeSocialMediaPostCommentsContent: (
+  result: ISocialMediaPostContextData,
+) => Promise<ISocialMediaPostContextData | null> = async (result) => {
+  //获取所有评论,判断是否是youtube视频页面
+  try {
+    const commentsInfo = await youTubeGetPostCommentsInfo()
+    if (commentsInfo?.commentsData && commentsInfo.commitList.length > 0) {
+      const postText = `${result?.postText}\n[Post commentList]:\n${
+        commentsInfo?.commentsData.fullText || 'N/A'
+      }`
+      const pageContent = `${
+        result?.SOCIAL_MEDIA_PAGE_CONTENT
+      }\n[Page commentList]:\n${commentsInfo?.commentsData.fullText || 'N/A'}`
+      return {
+        ...result,
+        SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: postText,
+        SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: postText,
+        postText,
+        previousComments: commentsInfo.commitList || [],
+        previousCommentsText: commentsInfo?.commentsData?.previousText,
+        SOCIAL_MEDIA_PAGE_CONTENT: pageContent,
+      }
+    } else {
+      return null
+    }
+  } catch (e) {
+    console.log(e)
+    return null
+  }
+}
+export const youTubeGetPostCommentsInfo: () => Promise<{
+  commentsData: ICreateCommentListData | null
+  commitList: ICommentData[]
+} | null> = async () => {
+  try {
+    await awaitScrollFun(
+      () => {
+        const primarySkeleton = document.querySelector('ytd-watch-flexy')
+        const domVideoId = primarySkeleton?.getAttribute('video-id')
+        const urlObj = new URL(window.location.href)
+        const urlVideoId = urlObj.searchParams.get('v')
+        return domVideoId === urlVideoId
+      },
+      500,
+      1000 * 60,
+    ) //等待videoID变化完成
+    console.log('simply 0')
+    if (document?.querySelector('#sections #count')) {
+      console.log('simply 0 0')
+
+      const commitList = await getCommitList()
+      const commentsData = createCommentListData(commitList || [])
+      return { commentsData, commitList }
+    } else {
+      console.log('simply 1')
+
+      if (document.getElementById('content-pages')) {
+        //直播页面直接无评论
+        return null
+      }
+      const topCommentsOff = document.querySelector('#message a')
+      if (
+        topCommentsOff &&
+        topCommentsOff
+          .getAttribute('href')
+          ?.includes('support.google.com/youtube/answer/9706180')
+      ) {
+        window.scrollTo({ top: 0 })
+        //代表评论关闭 状态
+        return null
+      }
+      console.log('simply 2')
+      let scrollIndex = 0
+      await awaitScrollFun(
+        () => {
+          if (scrollIndex > 10) {
+            return true
+          }
+          //没有则滚动到当前主div的最下面往上滚动，完成过渡
+          const items = document.querySelector(
+            '#columns.style-scope.ytd-watch-flexy #primary-inner',
+          )
+          if (items) {
+            console.log('simply scrollIndex', scrollIndex)
+            window.scrollTo({
+              top: items?.scrollHeight / scrollIndex,
+            })
+            scrollIndex += 0.5
+          }
+          const countDom = document?.querySelector(
+            '#sections #count .style-scope.yt-formatted-string',
+          )
+          return (
+            !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断load消失
+          )
+        },
+        500,
+        1000 * 10,
+      )
+      window.scrollTo({ top: 0 })
+
+      await awaitScrollFun(
+        () => {
+          //判断用户头像图片是否加载完成则数据完成开始获取
+          const avatarView = document.querySelector('#author-thumbnail img')
+          if (
+            avatarView?.clientWidth &&
+            avatarView?.clientHeight &&
+            avatarView?.clientWidth > 0 &&
+            avatarView?.clientHeight > 0
+          ) {
+            return true
+          } else {
+            return false
+          }
+        },
+        500,
+        1000 * 5,
+      )
+      const commitList = await getCommitList()
+      const commentsData = createCommentListData(commitList || [])
+      console.log('simply allData', { commentsData, commitList })
+      return cloneDeep({ commentsData, commitList })
+    }
+  } catch (e) {
+    console.error(e)
+    return null
+  }
+}
 export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
   inputAssistantButton,
 ) => {
@@ -180,4 +314,52 @@ export const youTubeGetDraftContent: GetSocialMediaPostDraftFunction = (
     30,
   )
   return (youTubeDraftEditor as HTMLDivElement)?.innerText || ''
+}
+
+const awaitScrollFun = async (
+  condition: () => boolean,
+  time?: number,
+  timeout?: number,
+) => {
+  return new Promise<void>((resolve) => {
+    const countInterval = setInterval(async () => {
+      if (condition && condition()) {
+        if (time) {
+          setTimeout(() => {
+            resolve()
+          }, time)
+        } else {
+          resolve()
+        }
+
+        clearInterval(countInterval)
+      }
+    }, 200)
+    if (timeout) {
+      setTimeout(() => {
+        countInterval && clearInterval(countInterval)
+        resolve()
+      }, timeout)
+    }
+  })
+}
+const getCommitList = async () => {
+  try {
+    const commentThreadRenderers = document?.getElementsByTagName(
+      'ytd-comment-thread-renderer',
+    )
+    const list = []
+    if (commentThreadRenderers) {
+      for (let i = 0; i < commentThreadRenderers.length; i++) {
+        const commentThreadRenderer = commentThreadRenderers[i]
+        const data = await getYouTubeCommentContent(
+          (commentThreadRenderer as unknown) as HTMLElement,
+        )
+        list.push(data)
+      }
+    }
+    return list
+  } catch (e) {
+    return []
+  }
 }

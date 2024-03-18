@@ -140,11 +140,14 @@ const usePageSummary = () => {
             return
           }
         }
-        const { actions, messageId } = getContextMenuActionsByPageSummaryType(
+        const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
           getPageSummaryType(),
         )
-        lastMessageIdRef.current = messageId
-        runPageSummaryActions(actions)
+        if(paramsPageSummaryTypeData){
+          lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
+          runPageSummaryActions(paramsPageSummaryTypeData.actions)
+        }
+       
       } catch (e) {
         console.log('创建Conversation失败', e)
       }

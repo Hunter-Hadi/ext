@@ -8,6 +8,7 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getSocialMediaPostContent } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
+import { getYouTubeSocialMediaPostCommentsContent } from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
 import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 export class ActionGetSocialMediaPostContentOfWebPage extends Action {
@@ -35,7 +36,19 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       params.OperationElementSelector ||
       ''
     try {
-      const result = await getSocialMediaPostContent(OperationElementSelector)
+      let result = await getSocialMediaPostContent(OperationElementSelector)
+      if (
+        engine?.clientConversationEngine?.currentSidebarConversationType ===
+          'Summary' &&
+        params.CURRENT_WEBSITE_DOMAIN === 'www.youtube.com'
+      ) {
+        const haveCommentResults = await getYouTubeSocialMediaPostCommentsContent(
+          result,
+        )
+        if (haveCommentResults) {
+          result = haveCommentResults
+        }
+      }
       this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
       this.originalSocialMediaPostContent = result
       const { shortcutsEngine, clientConversationEngine } = engine

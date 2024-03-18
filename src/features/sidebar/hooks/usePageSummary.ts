@@ -58,6 +58,7 @@ const usePageSummary = () => {
         return
       }
       console.log('新版Conversation 创建pageSummary')
+      console.log('simply createPageSummary')
       const pageSummaryConversationId = getPageSummaryConversationId()
       updateClientWritingMessage((prevState) => {
         return {

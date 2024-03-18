@@ -759,14 +759,14 @@ export const allSummaryNavList: {
         isAutoScroll: false,
       },
     },
-    {
-      title: 'Show transcript',
-      titleIcon: 'ClosedCaptionOffOutlined',
-      key: 'transcript',
-      config: {
-        isAutoScroll: false,
-      },
-    },
+    // {
+    //   title: 'Show transcript',
+    //   titleIcon: 'ClosedCaptionOffOutlined',
+    //   key: 'transcript',
+    //   config: {
+    //     isAutoScroll: false,
+    //   },
+    // },
   ],
   DEFAULT_EMAIL_SUMMARY: [
     { title: 'Summarize email', titleIcon: 'Summarize', key: 'all' },

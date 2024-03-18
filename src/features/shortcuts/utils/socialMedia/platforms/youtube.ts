@@ -290,9 +290,9 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           if (items) {
             console.log('simply scrollIndex', scrollIndex)
             window.scrollTo({
-              top: items?.scrollHeight / scrollIndex,
+              top: (scrollIndex / 10) * items?.scrollHeight,
             })
-            scrollIndex += 0.5
+            scrollIndex += 2
           }
           const countDom = document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
@@ -301,7 +301,7 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
             !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断load消失
           )
         },
-        500,
+        200,
         1000 * 10,
       )
       window.scrollTo({ top: 0 })

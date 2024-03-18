@@ -3,7 +3,7 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
@@ -21,13 +21,7 @@ import SidebarAIMessageSkeletonContent from '@/features/sidebar/components/Sideb
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
-import {
-  getPageSummaryType,
-  getSummaryNavItemByType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
 
-import { messageListContainerId } from '../../SidebarChatBoxMessageListContainer'
-import { HeightUpdateScrolling } from './HeightUpdateScrolling'
 import { SwitchSummaryActionNav } from './SwitchSummaryActionNav'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
@@ -38,74 +32,15 @@ interface IProps {
   liteMode?: boolean
   loading?: boolean
 }
-let isSetSummaryViewMaxHeight = false
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { message, isDarkMode, liteMode = false, loading = false } = props
-  const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(300)
-  const [IsSummaryAutoScroll, setIsSummaryAutoScroll] = useState(false)
 
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
-  const chatMessageRef = useRef<HTMLDivElement>(null)
   const isSummaryMessage = useMemo(
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
   )
-  useEffect(() => {
-    isSetSummaryViewMaxHeight = false
-  }, [])
-  useEffect(() => {
-    try {
-      if (isSummaryMessage && !isSetSummaryViewMaxHeight) {
-        const otherViewHeight = 380 //临时简单计算，待优化
-        const minViewHeight = 200
-        const parentElement = chatMessageRef.current?.closest(
-          `#${messageListContainerId}`,
-        )
-        const messageListContainerHeight = parentElement?.clientHeight
-        if (
-          messageListContainerHeight &&
-          messageListContainerHeight > otherViewHeight
-        ) {
-          const currentHeight = messageListContainerHeight - otherViewHeight
-          isSetSummaryViewMaxHeight = true
-          setSummaryViewMaxHeight(
-            currentHeight > minViewHeight ? currentHeight : minViewHeight,
-          )
-        }
-      }
-    } catch (e) {
-      console.log(e)
-    }
-  }, [
-    chatMessageRef,
-    message.messageId,
-    message.originalMessage?.metadata?.title?.title,
-  ])
-  const getIsSummaryAutoScroll = () => {
-    //fixing第二版该逻辑抽离出去
-    const summaryType = getPageSummaryType()
-    const messageNavTitle = message.originalMessage?.metadata?.title?.title
-    if (messageNavTitle) {
-      const summaryNavInfo = getSummaryNavItemByType(
-        summaryType,
-        messageNavTitle,
-        'title',
-      )
-      const isAutoScroll = summaryNavInfo?.config?.isAutoScroll
-      if (isAutoScroll === false) {
-        return false
-      } else {
-        return true
-      }
-    } else {
-      return true
-    }
-  }
 
-  useEffect(() => {
-    const isScroll = getIsSummaryAutoScroll()
-    setIsSummaryAutoScroll(!!isScroll)
-  }, [message.originalMessage?.metadata?.title?.title])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -173,11 +108,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   }, [renderData.answer])
 
   return (
-    <Stack
-      ref={chatMessageRef}
-      className={'chat-message--text'}
-      sx={{ ...memoSx }}
-    >
+    <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
       {isSummaryMessage && (
         <SwitchSummaryActionNav message={message} loading={coverLoading} />
       )}
@@ -297,13 +228,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 <SidebarAIMessageSkeletonContent
                   contentType={renderData.content.contentType}
                 />
-              ) : isSummaryMessage ? (
-                <HeightUpdateScrolling
-                  height={summaryViewMaxHeight}
-                  update={IsSummaryAutoScroll ? message.text : ''}
-                >
-                  <SidebarAIMessageContent AIMessage={message} />
-                </HeightUpdateScrolling>
               ) : (
                 <SidebarAIMessageContent AIMessage={message} />
               )}

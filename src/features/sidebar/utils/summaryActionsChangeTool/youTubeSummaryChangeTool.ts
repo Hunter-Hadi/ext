@@ -108,16 +108,6 @@ export const youTubeSummaryCommentsChangeTool = async (
         },
       },
       {
-        type: 'YOUTUBE_GET_COMMENTS',
-        parameters: {},
-      },
-      {
-        type: 'SET_VARIABLE',
-        parameters: {
-          VariableName: 'YOUTUBE_COMMENT',
-        },
-      },
-      {
         type: 'SCRIPTS_CONDITIONAL',
         parameters: {
           WFCondition: 'Equals',
@@ -203,10 +193,9 @@ export const youTubeSummaryCommentsChangeTool = async (
             {
               type: 'RENDER_TEMPLATE',
               parameters: {
-                template: `#### Top Comment
-_TL;DR_ **{{SUMMARY_CONTENTS}}**
-       
-{{YOUTUBE_COMMENT}}
+                template: `#### Top Comments summary
+                
+{{SUMMARY_CONTENTS}}
                     `,
               },
             },

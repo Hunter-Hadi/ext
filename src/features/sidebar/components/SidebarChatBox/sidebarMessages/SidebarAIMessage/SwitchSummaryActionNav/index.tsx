@@ -45,6 +45,17 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
         'title',
       )
       if (summaryNavInfo) {
+        //新进页面，变更 顶部的状态保存
+        updateCurrentPageSummaryKey((summaryKeys) => {
+          if (summaryKeys[summaryType]) {
+            return summaryKeys
+          } else {
+            return {
+              ...summaryKeys,
+              [summaryType]: summaryNavInfo.key,
+            }
+          }
+        })
         changeSummaryActionKey(summaryNavInfo.key)
       }
     }

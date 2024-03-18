@@ -3,7 +3,6 @@ import { useMemo } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { OPENAI_API_SYSTEM_MESSAGE } from '@/background/src/chat/OpenAIApiChat/types'
 import {
   IChatConversation,
   IChatConversationMeta,

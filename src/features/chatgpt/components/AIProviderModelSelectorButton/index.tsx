@@ -101,6 +101,29 @@ const AIProviderModelSelectorButton: FC<{
     }
     setOpen(false)
   }
+  const AIModelPopperModifiers = [
+    {
+      name: 'RTLSupport',
+      enabled: document.querySelector('body').getAttribute('dir') === 'rtl',
+      phase: 'main',
+      fn({ state }) {
+        if (state.modifiersData.popperOffsets) {
+          const referenceEndX =
+            state.rects.reference.x + state.rects.reference.width
+          const popperX = referenceEndX - state.rects.popper.width
+          if (popperX > 0) {
+            state.modifiersData.popperOffsets.x = popperX
+          }
+        }
+      },
+    },
+    {
+      name: 'offset',
+      options: {
+        offset: [0, 8],
+      },
+    },
+  ]
 
   // return focus to the button when we transitioned from !open -> open
   const prevOpen = React.useRef(open)
@@ -224,14 +247,7 @@ const AIProviderModelSelectorButton: FC<{
         role={undefined}
         placement={placement || 'top-start'}
         transition
-        modifiers={[
-          {
-            name: 'offset',
-            options: {
-              offset: [0, 8],
-            },
-          },
-        ]}
+        modifiers={AIModelPopperModifiers}
         container={
           size === 'small'
             ? getAppContextMenuRootElement()

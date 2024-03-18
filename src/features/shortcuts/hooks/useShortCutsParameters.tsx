@@ -1,3 +1,4 @@
+import { cloneDeep } from 'lodash-es'
 import { useCallback } from 'react'
 import { useRecoilValue } from 'recoil'
 
@@ -95,9 +96,9 @@ const useShortCutsParameters = () => {
       Object.entries(builtInParameters),
     )
     return {
-      builtInParameters,
-      parameters,
-      shortCutsParameters: Object.values(parameters),
+      builtInParameters: cloneDeep(builtInParameters),
+      parameters: cloneDeep(parameters),
+      shortCutsParameters: cloneDeep(parameters),
     }
   }, [
     appState.env,

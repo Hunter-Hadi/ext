@@ -1,11 +1,13 @@
 import { Button, ButtonGroup } from '@mui/material'
 import React, { FC, useEffect, useMemo, useState } from 'react'
+import { useSetRecoilState } from 'recoil'
 
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
   allSummaryNavList,
   getPageSummaryType,
@@ -27,6 +29,9 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   >(undefined)
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
+  const updateCurrentPageSummaryKey = useSetRecoilState(
+    SidebarPageSummaryNavKeyState,
+  )
   const changeSummaryActionKey = (key: SummaryParamsPromptType) => {
     speedChangeKey = key
     setSummaryActionKey(key)
@@ -55,6 +60,13 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
     if (loading || speedChangeKey === navItem.key) return //防止多次触发
     changeSummaryActionKey(navItem.key)
     const promptText = summaryGetPromptObject[summaryType](navItem.key)
+
+    updateCurrentPageSummaryKey((summaryKeys) => {
+      return {
+        ...summaryKeys,
+        [summaryType]: navItem.key,
+      }
+    })
     await setChromeExtensionLocalStorage({
       sidebarSettings: {
         summary: {

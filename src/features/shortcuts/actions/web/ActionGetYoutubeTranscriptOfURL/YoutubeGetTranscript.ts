@@ -100,7 +100,7 @@ export class ActionYoutubeGetTranscript extends Action {
       const timeString = this.formatSecondsAsTimestamp(start)
 
       // 返回格式化后的字符串
-      return `- [${timeString}](${url}&t=${start}s) ${text}\n`
+      return `- [${timeString}](${url}&t=${start}s) ${text}\n\n`
     })
 
     // 将所有的链接拼接成为一个长字符串，每个链接之间用换行符分隔

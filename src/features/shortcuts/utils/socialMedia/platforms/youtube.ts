@@ -21,36 +21,22 @@ const getYouTubeCommentContent = async (
   ytdCommentBox: HTMLElement,
 ): Promise<ICommentData> => {
   const author =
-    (ytdCommentBox.querySelector(
-      '#header-author #author-text > span',
-    ) as HTMLSpanElement)?.innerText || ''
-  const commentAuthor =
-    (ytdCommentBox.querySelector(
-      '#header-author #author-text > yt-formatted-string',
-    ) as HTMLSpanElement)?.innerText || ''
-  const date =
-    (ytdCommentBox.querySelector(
-      '#header-author > yt-formatted-string',
-    ) as HTMLDivElement)?.innerText || ''
-  const like =
-    (ytdCommentBox.querySelector(
-      '#toolbar > #vote-count-left',
-    ) as HTMLDivElement)?.innerText || ''
-  const expandButton = ytdCommentBox?.querySelector(
-    'tp-yt-paper-button#expand',
-  ) as HTMLButtonElement
-  if (expandButton) {
-    expandButton.click()
-    await delayAndScrollToInputAssistantButton(100)
-  }
-  const commentText =
-    (ytdCommentBox.querySelector('#content-text') as HTMLDivElement)
+    ytdCommentBox.querySelector<HTMLElement>('#author-text yt-formatted-string')
       ?.innerText || ''
+  const date =
+    ytdCommentBox.querySelector<HTMLElement>(
+      'yt-formatted-string.published-time-text',
+    )?.innerText || ''
+  const like =
+    ytdCommentBox.querySelector<HTMLElement>('#vote-count-middle')?.innerText ||
+    ''
+  const commentText =
+    ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
   return {
     author: (author || commentAuthor).replace(/\n/g, '').trim(),
     date,
     content: commentText,
-    like: like.replace(/\n/g, '').trim(),
+    like: like.trim(),
   }
 }
 
@@ -58,11 +44,6 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
   try {
-    // comment box
-    const ytdCommentBox = findParentEqualSelector(
-      'ytd-commentbox',
-      inputAssistantButton,
-    )
     const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
       window.location.href,
     )
@@ -151,6 +132,11 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       }
     }
     if (youTubeSocialMediaPostContext) {
+      // comment box
+      const ytdCommentBox = findParentEqualSelector(
+        '#body.ytd-comment-renderer',
+        inputAssistantButton,
+      )
       if (ytdCommentBox) {
         // 视频底下的评论
         if (
@@ -162,40 +148,25 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         ) {
           // Nothing
         } else {
-          const ytdRootComment = findParentEqualSelector(
-            'ytd-comment-thread-renderer',
-            ytdCommentBox,
-          )?.querySelector('& > ytd-comment-renderer' as any) as HTMLElement
-          // 第一层评论
-          if (ytdRootComment) {
-            const currenYtdCommentBox = findParentEqualSelector(
-              'ytd-comment-renderer',
+          const commentList: ICommentData[] = []
+          const isReplyingOthersExpandingReply = Boolean(
+            findParentEqualSelector(
+              '#replies.ytd-comment-thread-renderer',
               ytdCommentBox,
+              6,
+            ),
+          )
+          if (isReplyingOthersExpandingReply) {
+            const ytdRootComment = findParentEqualSelector(
+              'ytd-comment-thread-renderer',
+              ytdCommentBox,
+            )?.querySelector<HTMLElement>(
+              '& > ytd-comment-renderer#comment #body.ytd-comment-renderer',
             )
-            if (currenYtdCommentBox) {
-              // 判断是不是回复别人的评论
-              const ytdCommentRepliesRenderer = findSelectorParent(
-                'ytd-comment-replies-renderer',
-                currenYtdCommentBox,
-                5,
-              )
-              // youtube只有两层评论
-              if (
-                ytdCommentRepliesRenderer?.contains(currenYtdCommentBox) &&
-                !currenYtdCommentBox.isSameNode(ytdRootComment)
-              ) {
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeCommentContent(ytdRootComment),
-                  await getYouTubeCommentContent(currenYtdCommentBox),
-                ])
-              } else {
-                // 只有一层评论
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeCommentContent(ytdRootComment),
-                ])
-              }
-            }
+            commentList.push(await getYouTubeCommentContent(ytdRootComment!))
           }
+          commentList.push(await getYouTubeCommentContent(ytdCommentBox))
+          youTubeSocialMediaPostContext.addCommentList(commentList)
         }
       }
       return youTubeSocialMediaPostContext.data

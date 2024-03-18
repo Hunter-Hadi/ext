@@ -88,7 +88,6 @@ const useClientConversation = () => {
   const createConversation = async (
     overwriteConversationType?: ISidebarConversationType,
   ): Promise<string> => {
-    debugger
     let conversationId: string = ''
     // 因为从外部打开sidebar的时候conversationId和type都是有延迟的，所以直接从localStorage拿
     const conversationType =

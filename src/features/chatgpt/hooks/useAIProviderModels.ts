@@ -165,7 +165,6 @@ const useAIProviderModels = () => {
       // sidebarConversationType?: ISidebarConversationType,
     ) => {
       try {
-        debugger
         let now = new Date().getTime()
         await setChromeExtensionLocalStorage({
           sidebarSettings: {

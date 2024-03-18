@@ -65,11 +65,24 @@ const useShortCutsEngine = () => {
               status: 'running',
             })
           }
+          const overwriteParametersMap: Record<string, IShortCutsParameter> = {}
+          if (overwriteParameters) {
+            overwriteParameters.forEach((param) => {
+              overwriteParametersMap[param.key] = param
+            })
+          }
+          const shortCutsParameters = getParams().shortCutsParameters.map(
+            (shortCutsParameter) => {
+              const overwriteParam =
+                overwriteParametersMap[shortCutsParameter.key]
+              if (overwriteParam) {
+                return overwriteParam
+              }
+              return shortCutsParameter
+            },
+          )
           await shortCutsEngineRef.current.run({
-            parameters:
-              overwriteParameters && overwriteParameters.length > 0
-                ? overwriteParameters
-                : getParams().shortCutsParameters,
+            parameters: shortCutsParameters,
             engine: {
               shortcutsEngine: shortCutsEngineRef.current,
               clientConversationEngine,

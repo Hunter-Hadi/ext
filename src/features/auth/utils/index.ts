@@ -214,12 +214,17 @@ export const fetchUserSubscriptionInfo = async (): Promise<
               },
             )
           }
-          let subscription_plan_name: IUserPlanNameType = 'UNKNOWN'
-          // 因为这是另一个接口的字段，所以套着拿
+          // subscription_plan_name 直接使用 get_user_subscription_info 接口返回的数据
+          let subscription_plan_name = result?.data
+            ?.subscription_plan_name as IUserPlanNameType
+
           const cache = await Browser.storage.local.get(
             CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
           )
-          if (cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]) {
+          if (
+            subscription_plan_name === 'UNKNOWN' &&
+            cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
+          ) {
             const userData =
               cache[CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]
                 ?.userData

@@ -74,10 +74,11 @@ export const useAIProviderModelsMap = () => {
             tags: item.tags || [],
             description: (t) => {
               const description = item.description
-              const key = `provider__chatgpt_web_app__${item.slug}__description`.replace(
-                /-/g,
-                '_',
-              )
+              const key =
+                `provider__chatgpt_web_app__${item.slug}__description`.replace(
+                  /-/g,
+                  '_',
+                )
               const i18nKey: any = `client:${key}`
               if (t(i18nKey) !== key) {
                 return t(i18nKey)

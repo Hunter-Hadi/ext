@@ -115,9 +115,8 @@ const useClientConversation = () => {
       }
       // 如果是OPENAI_API，那么就加上systemPrompt
       if (currentAIProvider === 'OPENAI_API') {
-        baseMetaConfig.systemPrompt = openAIAPISystemPromptGenerator(
-          currentModel,
-        )
+        baseMetaConfig.systemPrompt =
+          openAIAPISystemPromptGenerator(currentModel)
       }
       // 创建一个新的conversation
       const result = await port.postMessage({

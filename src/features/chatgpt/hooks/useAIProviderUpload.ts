@@ -197,7 +197,6 @@ const useAIProviderUpload = () => {
       default:
         return 'File uploading. Please send your message once upload completes.'
     }
-    return ''
   }, [currentAIProvider])
 
   useEffect(() => {

@@ -246,7 +246,6 @@ class ChatSystem implements ChatSystemInterface {
                 message: '',
               }
             }
-            break
           case 'Client_chatUploadFiles':
             {
               const { files } = data
@@ -258,7 +257,6 @@ class ChatSystem implements ChatSystemInterface {
                 message: '',
               }
             }
-            break
           case 'Client_chatAbortUploadFiles':
             {
               const { files } = data
@@ -272,7 +270,6 @@ class ChatSystem implements ChatSystemInterface {
                 message: '',
               }
             }
-            break
           case 'Client_chatRemoveFiles':
             {
               const { files } = data
@@ -286,7 +283,6 @@ class ChatSystem implements ChatSystemInterface {
                 message: '',
               }
             }
-            break
           case 'Client_chatClearFiles':
             {
               const success = await this.clearFiles()
@@ -297,7 +293,6 @@ class ChatSystem implements ChatSystemInterface {
                 message: '',
               }
             }
-            break
           case 'Client_chatUploadFilesChange':
             {
               const { files } = data
@@ -309,7 +304,6 @@ class ChatSystem implements ChatSystemInterface {
                 message: 'ok',
               }
             }
-            break
           case 'Client_chatGetUploadFileToken': {
             const token = await this.getUploadFileToken()
             return {
@@ -340,6 +334,11 @@ class ChatSystem implements ChatSystemInterface {
     this.adapters[provider] = adapter
   }
   async switchAdapter(provider: IAIProviderType) {
+    if (this.currentProvider !== provider) {
+      // 如果切换了AI Provider，需要清空当前的文件
+      this.clearFiles()
+      this.updateClientFiles()
+    }
     this.currentProvider = provider
     await setChromeExtensionLocalStorage((settings) => {
       if (settings.sidebarSettings?.common) {

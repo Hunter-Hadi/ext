@@ -6,7 +6,7 @@ import Dialog, { dialogClasses } from '@mui/material/Dialog'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -25,7 +25,7 @@ const SidebarPromotionDialog = () => {
   const { browserAgent } = useBrowserAgent()
   const { userInfo, currentUserPlan } = useUserInfo()
 
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   const routerToAnniversary2024Page = () => {
     window.open('https://app.maxai.me/anniversary2024')
@@ -110,10 +110,6 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item5__title'),
         description: t('sidebar__promotion_dialog__content_item5__description'),
       },
-      {
-        title: t('sidebar__promotion_dialog__content_item6__title'),
-        description: t('sidebar__promotion_dialog__content_item6__description'),
-      },
     ]
   }, [t])
 
@@ -143,15 +139,15 @@ const SidebarPromotionDialog = () => {
         },
       }}
     >
-      <Stack>
+      <Stack
+        sx={{
+          maxHeight: 'calc(100vh - 100px)',
+          p: 2,
+          gap: 2,
+        }}
+      >
         {/* title */}
-        <Stack
-          direction={'row'}
-          spacing={1}
-          px={2}
-          py={2.5}
-          alignItems="center"
-        >
+        <Stack direction={'row'} spacing={1} alignItems="center" flexShrink={0}>
           <Typography
             fontSize={16}
             color="text.primary"
@@ -168,7 +164,14 @@ const SidebarPromotionDialog = () => {
           </IconButton>
         </Stack>
         {/* content */}
-        <Stack px={2}>
+        <Stack
+          px={2}
+          height={0}
+          flex={1}
+          sx={{
+            overflowY: 'auto',
+          }}
+        >
           <ResponsiveImage
             src={getChromeExtensionAssetsURL(
               '/images/activity/promotion-dialog-banner.png',
@@ -181,16 +184,27 @@ const SidebarPromotionDialog = () => {
             }}
           />
 
-          <Stack py={2} spacing={1}>
+          <Stack py={2}>
             {promotionDescription.map((descriptionItem) => (
-              <Stack key={descriptionItem.title} spacing={1} direction="row">
+              <Stack
+                key={descriptionItem.title}
+                direction="row"
+                sx={{
+                  position: 'relative',
+                  pl: 1.5,
+                }}
+              >
                 <Box
-                  mt={1}
                   width={4}
                   height={4}
                   flexShrink={0}
                   borderRadius={'50%'}
                   bgcolor="text.primary"
+                  sx={{
+                    position: 'absolute',
+                    top: 8,
+                    left: 0,
+                  }}
                 />
                 <Typography
                   fontSize={16}
@@ -209,7 +223,7 @@ const SidebarPromotionDialog = () => {
           </Stack>
         </Stack>
         {/* cta button */}
-        <Box p={2}>
+        <Box flexShrink={0}>
           <Button
             variant="contained"
             fullWidth

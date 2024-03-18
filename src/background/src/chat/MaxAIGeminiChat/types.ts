@@ -19,7 +19,7 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
       accept: '.jpg,.jpeg,.png,.webp',
       acceptTooltip: (t) =>
         t('client:provider__gemini__upload__accept_tooltip'),
-      maxCount: 1,
+      maxCount: 5,
     },
   },
 ]

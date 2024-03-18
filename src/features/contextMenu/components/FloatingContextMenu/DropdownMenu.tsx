@@ -776,6 +776,7 @@ export const MenuComponent = React.forwardRef<
           React.cloneElement(referenceElement, {
             ...getReferenceProps({
               ...props,
+              style: { width: '100%' },
               className: `${isNested ? 'MenuItem' : 'RootMenu'}`,
               onClick(event) {
                 event.stopPropagation()

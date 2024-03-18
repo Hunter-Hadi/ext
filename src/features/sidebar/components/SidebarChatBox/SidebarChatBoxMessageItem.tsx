@@ -112,6 +112,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
             isDarkMode={isDarkMode}
             message={message as IAIResponseMessage}
             loading={loading}
+            order={order}
           />
         )}
         {isUserMessage(message) && (

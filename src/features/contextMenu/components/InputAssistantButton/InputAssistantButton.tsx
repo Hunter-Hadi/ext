@@ -17,9 +17,10 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isProduction } from '@/constants'
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
-import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
 import { ClientWritingMessageState } from '@/features/sidebar/store'
+
+import { type IInputAssistantButtonObserverData } from './InputAssistantButtonManager'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -57,28 +58,29 @@ export interface InputAssistantButtonStyle {
 }
 
 interface InputAssistantButtonProps {
-  root: HTMLElement
-  shadowRoot: ShadowRoot
-  rootId: string
   buttonMode?: 'fixed' | 'static' // 按钮模式
   buttonPosition?: InputAssistantButtonPosition // 按钮位置
   buttonSize?: InputAssistantButtonSize // 按钮尺寸
-  CTAButtonStyle?: InputAssistantButtonStyle // 按钮样式
-  DropdownButtonStyle?: InputAssistantButtonStyle // 按钮样式
-  InputAssistantBoxSx?: SxProps // 按钮容器样式
-  buttonGroup: IInputAssistantButton[] // 按钮组
   placement?: InputAssistantButtonPosition // 按钮弹出位置
+  observerData: IInputAssistantButtonObserverData
 }
 const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   const {
-    rootId,
-    InputAssistantBoxSx,
-    DropdownButtonStyle,
-    CTAButtonStyle,
-    buttonGroup,
-    shadowRoot,
+    observerData,
     placement,
   } = props
+  const {
+    id: rootId,
+    config: buttonConfig,
+    buttonGroup,// 按钮组
+    renderRootElement: root,
+    shadowRootElement: shadowRoot,
+  } = observerData;
+  const {
+    InputAssistantBoxSx,// 按钮容器样式
+    DropdownButtonStyle,// 按钮样式
+    CTAButtonStyle,// 按钮样式
+  } = buttonConfig;
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const { t } = useTranslation(['client'])
   const [
@@ -234,6 +236,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          onSelectionEffect={
+            buttonGroup[0]?.onSelectionEffect &&
+            (() => buttonGroup[0].onSelectionEffect!(observerData))
+          }
         >
           <Box>
             <TextOnlyTooltip

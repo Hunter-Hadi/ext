@@ -17,9 +17,27 @@ const SearchWithAICopilotToggle: FC = () => {
   const { updateSidebarSettings, sidebarSettings } = useSidebarSettings()
   return (
     <TextOnlyTooltip
-      title={t(
-        'client:sidebar__search_with_ai__advanced__copilot__description',
-      )}
+      title={
+        <Stack>
+          <Stack gap={0.5} direction={'row'}>
+            <Typography
+              fontSize={'16px'}
+              color={'rgba(255, 255, 255, .87)'}
+              fontWeight={500}
+            >
+              {'Pro'}
+            </Typography>
+            <Typography fontSize={'16px'} color={'#d9a7ff'} fontWeight={500}>
+              {'Search'}
+            </Typography>
+          </Stack>
+          <Typography fontSize={'14px'} color={'rgba(255, 255, 255, .87)'}>
+            {t(
+              'client:sidebar__search_with_ai__advanced__copilot__description',
+            )}
+          </Typography>
+        </Stack>
+      }
     >
       <Stack
         onClick={async () => {
@@ -98,8 +116,13 @@ const SearchWithAICopilotToggle: FC = () => {
             color="primary"
           />
         </Stack>
-        <Typography fontSize={'14px'} color={'text.primary'}>
-          {t('client:sidebar__search_with_ai__advanced__copilot__title')}
+        <Typography
+          fontSize={'14px'}
+          color={
+            sidebarSettings?.search?.copilot ? 'primary.main' : 'text.primary'
+          }
+        >
+          {'Pro'}
         </Typography>
       </Stack>
     </TextOnlyTooltip>

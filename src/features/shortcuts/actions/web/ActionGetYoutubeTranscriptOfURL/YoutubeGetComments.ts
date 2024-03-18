@@ -18,9 +18,7 @@ export class ActionYoutubeGetComments extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute(
-    params: ActionParameters,
-  ) {
+  async execute(params: ActionParameters) {
     try {
       const commentList = params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS
       if (commentList && commentList.length === 0) {

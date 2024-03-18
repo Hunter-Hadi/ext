@@ -255,12 +255,107 @@ _TL;DR_ **{{SUMMARY_CONTENTS}}**
     return cloneDeep(actions)
   }
 }
+export const youTubeSummaryTranscriptChangeTool = async (
+  actions: ISetActionsType,
+  params: IGetSummaryNavActionsParams,
+) => {
+  const newActions: ISetActionsType = [
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'add',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: uuidV4(),
+          text: '',
+          originalMessage: {
+            metadata: {
+              sourceWebpage: {
+                url: `{{CURRENT_WEBPAGE_URL}}`,
+                title: `{{CURRENT_WEBPAGE_TITLE}}`,
+              },
+              shareType: 'summary',
+              title: {
+                title: `Summarize video`,
+              },
+              copilot: {
+                title: {
+                  title: 'Page insights',
+                  titleIcon: 'LaptopMac',
+                },
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'loading',
+                    icon: 'SmartToy',
+                  },
+                ],
+              },
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+      parameters: {
+        VariableName: 'GET_LIST_DATA',
+      },
+    },
+    {
+      type: 'YOUTUBE_GET_TRANSCRIPT',
+      parameters: {},
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+          text: `{{LAST_ACTION_OUTPUT}`,
+          originalMessage: {
+            status: 'complete',
+            metadata: {
+              isComplete: true,
+              deepDive: {
+                title: {
+                  title: 'Deep dive',
+                  titleIcon: 'TipsAndUpdates',
+                },
+                value: 'Ask AI anything about the video...',
+              },
+            },
+            content: {
+              text: `{{LAST_ACTION_OUTPUT}}`,
+              title: {
+                title: 'Summary',
+              },
+              contentType: 'text',
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+  ]
+  return cloneDeep(newActions)
+}
 export const youTubeSummaryChangeTool = async (
   params: IGetSummaryNavActionsParams,
   actions: ISetActionsType,
 ) => {
   if (params.key === 'commit') {
     return await youTubeSummaryCommentsChangeTool(actions, params)
+  } else if (params.key === 'transcript') {
+    return await youTubeSummaryTranscriptChangeTool(actions, params)
   }
   return cloneDeep(actions)
 }

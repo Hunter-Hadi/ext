@@ -50,7 +50,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           result = haveCommentResults
         }
       }
-
+      console.log('simply result', result)
       this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
       this.originalSocialMediaPostContent = result
       const { shortcutsEngine, clientConversationEngine } = engine

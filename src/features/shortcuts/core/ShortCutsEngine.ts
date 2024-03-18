@@ -49,6 +49,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 import { ActionYoutubeGetComments } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetComments'
+import { ActionYoutubeGetTranscript } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetTranscript'
 
 const ActionClassMap = {
   // 废弃
@@ -56,6 +57,7 @@ const ActionClassMap = {
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
   [ActionYoutubeGetComments.type]: ActionYoutubeGetComments,
+  [ActionYoutubeGetTranscript.type]: ActionYoutubeGetTranscript,
 
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
@@ -80,14 +82,11 @@ const ActionClassMap = {
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]:
-    ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
-  [ActionGetSocialMediaPostDraftOfWebPage.type]:
-    ActionGetSocialMediaPostDraftOfWebPage,
-  [ActionGetSocialMediaPostContentOfWebPage.type]:
-    ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

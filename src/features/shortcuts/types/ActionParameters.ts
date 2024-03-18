@@ -13,6 +13,7 @@ import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
 import { ITextHandlerParameters } from '@/features/shortcuts/utils/textHelper'
 import { IWebsiteContext } from '@/features/websiteContext/background'
 
+import { ICommentData } from '../utils/SocialMediaPostContext'
 import AssertionType from './IOS_WF/AssertionType'
 import FaceTimeType from './IOS_WF/FaceTimeType'
 import WFArchiveFormat from './IOS_WF/WFArchiveFormat'
@@ -209,6 +210,7 @@ interface ActionParameters {
   ActionChatMessageConfig?: IChatMessage
   // 是否需要Action产生的变量进行MiddleOut:GET_EMAIL_CONTENTS_OF_WEBPAGE\GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE
   isVariableMiddleOutEnabled?: boolean
+  SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS?:ICommentData[]|undefined
 }
 
 export default ActionParameters

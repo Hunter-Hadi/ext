@@ -4,7 +4,7 @@
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
 import { useCallback, useRef } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -21,7 +21,10 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
+import {
+  ClientWritingMessageState,
+  SidebarPageSummaryNavKeyState,
+} from '@/features/sidebar/store'
 import {
   getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
@@ -38,119 +41,137 @@ const usePageSummary = () => {
   const updateClientWritingMessage = useSetRecoilState(
     ClientWritingMessageState,
   )
+  const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
+    SidebarPageSummaryNavKeyState,
+  )
   const { currentUserPlan } = useUserInfo()
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isFetchingRef = useRef(false)
+
   const lastMessageIdRef = useRef('')
 
   const createPageSummary = async () => {
-    if (isFetchingRef.current) {
-      return
-    }
-    console.log('新版Conversation 创建pageSummary')
-    const pageSummaryConversationId = getPageSummaryConversationId()
-    updateClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: true,
+    try {
+      if (isFetchingRef.current) {
+        return
       }
-    })
-    if (pageSummaryConversationId) {
-      // 看看有没有已经存在的conversation
-      const pageSummaryConversation = await clientGetConversation(
-        pageSummaryConversationId,
-      )
-      // 如果已经存在了，并且有AI消息，那么就不用创建了
-      if (pageSummaryConversation?.id) {
-        console.log('新版Conversation pageSummary已经存在')
-        await updateSidebarSettings({
-          summary: {
-            conversationId: pageSummaryConversationId,
-          },
-        })
-        const aiMessage = pageSummaryConversation.messages?.find((message) =>
-          isAIMessage(message),
-        ) as IAIResponseMessage
-        if (
-          aiMessage &&
-          aiMessage?.originalMessage &&
-          aiMessage?.originalMessage.metadata?.isComplete
-        ) {
-          updateClientWritingMessage((prevState) => {
-            return {
-              ...prevState,
-              loading: false,
-            }
-          })
-          updateConversationMap((prevState) => {
-            return {
-              ...prevState,
-              [pageSummaryConversation.id]: pageSummaryConversation,
-            }
-          })
-          return
-        } else {
-          // 如果没有AI消息，那么清空所有消息，然后添加AI消息
-          await clientChatConversationModifyChatMessages(
-            'clear',
-            pageSummaryConversationId,
-            0,
-            [],
-          )
+      console.log('新版Conversation 创建pageSummary')
+      console.log('simply createPageSummary')
+      const pageSummaryConversationId = getPageSummaryConversationId()
+      updateClientWritingMessage((prevState) => {
+        return {
+          ...prevState,
+          loading: true,
         }
-      }
-      try {
-        console.log('新版Conversation pageSummary开始创建')
-        // 进入loading
-        await createConversation()
-        updateClientWritingMessage((prevState) => {
-          return {
-            ...prevState,
-            loading: false,
-          }
-        })
-        // 如果是免费用户
-        if (
-          currentUserPlan.name !== 'pro' &&
-          currentUserPlan.name !== 'elite'
-        ) {
-          // 判断lifetimes free trial是否已经用完
-          const summaryLifetimesQuota =
-            Number(
-              (await getChromeExtensionOnBoardingData())
-                .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
-            ) || 0
-          if (summaryLifetimesQuota > 0) {
-            // 如果没有用完，那么就减一
-            await setChromeExtensionOnBoardingData(
-              'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
-              summaryLifetimesQuota - 1,
-            )
+      })
+
+      if (pageSummaryConversationId) {
+        // 看看有没有已经存在的conversation
+        const pageSummaryConversation = await clientGetConversation(
+          pageSummaryConversationId,
+        )
+        const currentPageSummaryType = getPageSummaryType()
+        // 如果已经存在了，并且有AI消息，那么就不用创建了
+        if (pageSummaryConversation?.id) {
+          await updateSidebarSettings({
+            summary: {
+              conversationId: pageSummaryConversationId,
+            },
+          })
+          const aiMessage = pageSummaryConversation.messages?.find((message) =>
+            isAIMessage(message),
+          ) as IAIResponseMessage
+          if (
+            aiMessage &&
+            aiMessage?.originalMessage &&
+            aiMessage?.originalMessage.metadata?.isComplete
+          ) {
+            updateClientWritingMessage((prevState) => {
+              return {
+                ...prevState,
+                loading: false,
+              }
+            })
+            updateConversationMap((prevState) => {
+              return {
+                ...prevState,
+                [pageSummaryConversation.id]: pageSummaryConversation,
+              }
+            })
+            return
           } else {
+            // 如果没有AI消息，那么清空所有消息，然后添加AI消息
             await clientChatConversationModifyChatMessages(
               'clear',
               pageSummaryConversationId,
               0,
               [],
             )
-            await pushPricingHookMessage('PAGE_SUMMARY')
-            authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
-            return
           }
         }
-        const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
-          getPageSummaryType(),
-        )
-        if(paramsPageSummaryTypeData){
-          lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
-          runPageSummaryActions(paramsPageSummaryTypeData.actions)
+        try {
+          console.log('新版Conversation pageSummary开始创建')
+          // 进入loading
+          await createConversation()
+          updateClientWritingMessage((prevState) => {
+            return {
+              ...prevState,
+              loading: false,
+            }
+          })
+          // 如果是免费用户
+          if (
+            currentUserPlan.name !== 'pro' &&
+            currentUserPlan.name !== 'elite'
+          ) {
+            // 判断lifetimes free trial是否已经用完
+            const summaryLifetimesQuota =
+              Number(
+                (await getChromeExtensionOnBoardingData())
+                  .ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES,
+              ) || 0
+            if (summaryLifetimesQuota > 0) {
+              // 如果没有用完，那么就减一
+              await setChromeExtensionOnBoardingData(
+                'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES',
+                summaryLifetimesQuota - 1,
+              )
+            } else {
+              await clientChatConversationModifyChatMessages(
+                'clear',
+                pageSummaryConversationId,
+                0,
+                [],
+              )
+              await pushPricingHookMessage('PAGE_SUMMARY')
+              authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
+              return
+            }
+          }
+
+          const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
+            getPageSummaryType(),
+            currentPageSummaryKey[currentPageSummaryType],
+          )
+          if (paramsPageSummaryTypeData) {
+            setCurrentPageSummaryKey((summaryKeys) => {
+              return {
+                ...summaryKeys,
+                [currentPageSummaryType]:
+                  paramsPageSummaryTypeData.summaryNavKey,
+              }
+            })
+            lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
+            runPageSummaryActions(paramsPageSummaryTypeData.actions)
+          }
+        } catch (e) {
+          console.log('创建Conversation失败', e)
         }
-       
-      } catch (e) {
-        console.log('创建Conversation失败', e)
       }
+    } catch (error) {
+      console.log('simply createPageSummary error', error)
     }
   }
 

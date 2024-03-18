@@ -97,6 +97,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           },
         },
       )
+      window?.scrollTo({ top: 0 }) //点击 show more 展开更多，会置顶然后再滚下去一点，导致后面的拿评论滚动视图没有铺满
     } else if (
       window.location.href.startsWith('https://www.youtube.com/shorts')
     ) {
@@ -206,6 +207,16 @@ export const getYouTubeSocialMediaPostCommentsContent: (
     return null
   }
 }
+//拿取视频内容可滚动高度是多少
+export const getAllYoutubeContentHeight = () => {
+  const topHeadHeight =
+    document.querySelector('#masthead-container.style-scope.ytd-app')
+      ?.clientHeight || 0
+  const topVideoHeight =
+    document.querySelector('#player-container.style-scope.ytd-watch-flexy')
+      ?.clientHeight || 0
+  return window.innerHeight - topHeadHeight - topVideoHeight
+}
 export const youTubeGetPostCommentsInfo: () => Promise<{
   commentsData: ICreateCommentListData | null
   commitList: ICommentData[]
@@ -230,10 +241,29 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
       const commentsData = createCommentListData(commitList || [])
       return { commentsData, commitList }
     } else {
-      console.log('simply 1')
-
+      let currentHeight = 0
+      const allContentDom = document.querySelector(
+        '#below.style-scope.ytd-watch-flexy',
+      )
+      const allContentScrollHeight = getAllYoutubeContentHeight()
+      console.log('simply allContentScrollHeight', allContentScrollHeight)
+      currentHeight = allContentScrollHeight
+      if (currentHeight < 10) {
+        //如果allContentScrollHeight的高度小于10，判为没有高度，则滚动下去一点
+        const topVideoHeight =
+          (document.querySelector('#player.style-scope.ytd-watch-flexy')
+            ?.clientHeight || 200) / 2
+        window?.scrollTo({ top: topVideoHeight })
+        currentHeight = topVideoHeight / 2
+      }
+      allContentDom?.setAttribute(
+        'style',
+        `overflow-y: auto; height: ${currentHeight}px;scrollbar-width: thin;scrollbar-color: transparent transparent;`,
+      )
       if (document.getElementById('content-pages')) {
         //直播页面直接无评论
+        allContentDom?.removeAttribute('style')
+        window?.scrollTo({ top: 0 })
         return null
       }
       const topCommentsOff = document.querySelector('#message a')
@@ -243,7 +273,8 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           .getAttribute('href')
           ?.includes('support.google.com/youtube/answer/9706180')
       ) {
-        window.scrollTo({ top: 0 })
+        allContentDom?.removeAttribute('style')
+        window?.scrollTo({ top: 0 })
         //代表评论关闭 状态
         return null
       }
@@ -255,28 +286,23 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
             return true
           }
           //没有则滚动到当前主div的最下面往上滚动，完成过渡
-          const items = document.querySelector(
-            '#columns.style-scope.ytd-watch-flexy #primary-inner',
-          )
-          if (items) {
-            console.log('simply scrollIndex', scrollIndex)
-            window.scrollTo({
-              top: items?.scrollHeight / scrollIndex,
-            })
-            scrollIndex += 0.5
-          }
+          allContentDom?.scrollTo({
+            top: allContentDom?.scrollHeight / scrollIndex,
+          })
+          scrollIndex += 1
           const countDom = document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
           )
           return (
-            !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断load消失
+            !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断count是否出现了
           )
         },
-        500,
+        300,
         1000 * 10,
       )
-      window.scrollTo({ top: 0 })
-
+      allContentDom?.scrollTo({ top: 0 })
+      allContentDom?.removeAttribute('style')
+      window?.scrollTo({ top: 0 })
       await awaitScrollFun(
         () => {
           //判断用户头像图片是否加载完成则数据完成开始获取

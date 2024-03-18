@@ -42,6 +42,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           'Summary' &&
         params.CURRENT_WEBSITE_DOMAIN === 'www.youtube.com'
       ) {
+        //为youtube添加评论prompt数据
         const haveCommentResults = await getYouTubeSocialMediaPostCommentsContent(
           result,
         )
@@ -49,6 +50,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           result = haveCommentResults
         }
       }
+      console.log('simply result', result)
       this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
       this.originalSocialMediaPostContent = result
       const { shortcutsEngine, clientConversationEngine } = engine
@@ -109,6 +111,13 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
                     overwrite: true,
                     isBuildIn: true,
                     label: 'Post content',
+                  },
+                  SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS: {
+                    key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS',
+                    value: result.previousComments,
+                    overwrite: true,
+                    isBuildIn: false,
+                    label: 'Comments',
                   },
                 },
               },

@@ -102,7 +102,6 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
       }}
       key={message.messageId}
     >
-      <p>{message.messageId}</p>
       <DevContent>
         <DevMessageSourceData message={message} />
       </DevContent>

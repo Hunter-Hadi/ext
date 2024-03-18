@@ -395,7 +395,8 @@ const InputAssistantButtonGroupConfig = {
   }, {
     enable: (rootElement) => {
       const commentBox = rootElement.parentElement.querySelector('.comments-comment-box');
-      if (commentBox) {
+      const disableComment = rootElement.querySelector('button[data-finite-scroll-hotkey="c"][disabled]')
+      if (commentBox || disableComment) {
         return false;
       }
       return true
@@ -423,12 +424,11 @@ const InputAssistantButtonGroupConfig = {
           ?.click()
 
         setTimeout(() => {
-          const wrapperElement = inputAssistantButton?.parentElement;
-          wrapperElement?.parentElement?.removeChild(wrapperElement)
+          inputAssistantButton?.parentElement?.remove();
         })
       },
     },
-    appendPosition: 11,
+    appendPosition: 0,
     CTAButtonStyle: {
       padding: '11px 16px',
       iconSize: 26,
@@ -552,8 +552,7 @@ const InputAssistantButtonGroupConfig = {
             ?.click()
 
           setTimeout(() => {
-            const wrapperElement = inputAssistantButton?.parentElement;
-            wrapperElement?.parentElement?.removeChild(wrapperElement)
+            inputAssistantButton?.parentElement?.remove();
           })
         },
       },

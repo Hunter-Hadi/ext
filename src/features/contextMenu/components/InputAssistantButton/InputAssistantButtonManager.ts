@@ -102,7 +102,8 @@ class InputAssistantButtonManager {
               if (
                 !(typeof enable === 'function' ? enable(rootElement) : enable)
               ) {
-                return
+                this.observerMap.get(rootElement as HTMLElement)?.destroy()
+                continue
               }
 
               const newObserverData = this.attachInputAssistantButton(
@@ -212,7 +213,7 @@ class InputAssistantButtonManager {
         ? enable(rootElement)
         : enable)
       if (shouldDestroy) {
-        rootWrapperElement.parentElement?.removeChild(rootWrapperElement)
+        rootWrapperElement?.remove()
       }
     })
     observer.observe(rootElement, {

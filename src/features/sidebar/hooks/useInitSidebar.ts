@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
@@ -30,8 +31,9 @@ import { AppState } from '@/store'
  */
 const useInitSidebar = () => {
   const appState = useRecoilValue(AppState)
-  const { createPageSummary } = usePageSummary()
+  const { createPageSummary, resetPageSummary } = usePageSummary()
   const { pageUrl, startListen } = usePageUrlChange()
+  const { stopGenerate } = useClientChat()
   const {
     currentSidebarConversation,
     sidebarSettings,
@@ -132,8 +134,9 @@ const useInitSidebar = () => {
     } else {
       // 直接触发create
     }
-    
-    createPageSummary().then().catch().finally()
+    stopGenerate().then(() => {
+      createPageSummary().then().catch().finally()
+    })
   }, [
     currentSidebarConversation?.id,
     currentSidebarConversationType,
@@ -154,6 +157,7 @@ const useInitSidebar = () => {
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
   const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
+    resetPageSummary()
     pageUrlIsUsedRef.current = false
   }, [pageUrl])
   useEffect(() => {

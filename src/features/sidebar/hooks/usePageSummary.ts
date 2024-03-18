@@ -151,10 +151,11 @@ const usePageSummary = () => {
             }
           }
 
-          const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
-            getPageSummaryType(),
-            currentPageSummaryKey[currentPageSummaryType],
-          )
+          const paramsPageSummaryTypeData =
+            await getContextMenuActionsByPageSummaryType(
+              getPageSummaryType(),
+              currentPageSummaryKey[currentPageSummaryType],
+            )
           if (paramsPageSummaryTypeData) {
             setCurrentPageSummaryKey((summaryKeys) => {
               return {
@@ -200,9 +201,10 @@ const usePageSummary = () => {
     ],
   )
 
-  return {
-    createPageSummary,
+  const resetPageSummary = () => {
+    isFetchingRef.current = false
   }
+  return { resetPageSummary, createPageSummary }
 }
 
 export default usePageSummary

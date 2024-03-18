@@ -3,6 +3,7 @@
  * @since - 2023-08-15
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
+import { cloneDeep } from 'lodash-es'
 import { useCallback, useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
@@ -150,10 +151,10 @@ const usePageSummary = () => {
               return
             }
           }
-
+          const nowCurrentPageSummaryKey = cloneDeep(currentPageSummaryKey)
           const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
             getPageSummaryType(),
-            currentPageSummaryKey[currentPageSummaryType],
+            nowCurrentPageSummaryKey[currentPageSummaryType],
           )
           if (paramsPageSummaryTypeData) {
             setCurrentPageSummaryKey((summaryKeys) => {

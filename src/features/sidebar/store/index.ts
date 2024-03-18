@@ -50,7 +50,7 @@ export const SidebarPageState = atom<{
 export const SidebarPageSummaryNavKeyState = atom<
   { [key in string]: SummaryParamsPromptType | undefined }
 >({
-  key: 'SidebarPageState',
+  key: 'SidebarPageSummaryNavKeyState',
   default: {
     PAGE_SUMMARY: undefined,
     PDF_CRX_SUMMARY: undefined,

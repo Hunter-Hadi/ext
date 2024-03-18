@@ -6,7 +6,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 /**
  * @since 2024-03-15
- * @description youtube拿取评论数据,目前未使用
+ * @description youtube拿取评论数据,目前未使用，因为 youtube summary comment评论列表功能的显示已被去除
  */
 export class ActionYoutubeGetComments extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_COMMENTS'

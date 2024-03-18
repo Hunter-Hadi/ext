@@ -167,7 +167,7 @@ Use the following format:
 #### Key Takeaways
 <list of key takeaways>`
       break
-    case 'commit':
+    case 'comment':
       defaultPrompt += `Summarize people's views on the video in approximately 30 words using comment data, in short plain text, and return it in plain text`
       break
     case 'transcript':
@@ -201,7 +201,7 @@ export type SummaryParamsPromptType =
   | 'all'
   | 'summary'
   | 'keyTakeaways'
-  | 'commit'
+  | 'comment'
   | 'transcript'
   | 'actions'
 

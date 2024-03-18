@@ -341,7 +341,7 @@ export const youTubeSummaryChangeTool = async (
   params: IGetSummaryNavActionsParams,
   actions: ISetActionsType,
 ) => {
-  if (params.key === 'commit') {
+  if (params.key === 'comment') {
     return await youTubeSummaryCommentsChangeTool(actions, params)
   } else if (params.key === 'transcript') {
     return await youTubeSummaryTranscriptChangeTool(actions, params)

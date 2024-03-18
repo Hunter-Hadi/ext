@@ -754,7 +754,7 @@ export const allSummaryNavList: {
     {
       title: 'Summarize comments',
       titleIcon: 'CommentOutlined',
-      key: 'commit',
+      key: 'comment',
       config: {
         isAutoScroll: false,
       },

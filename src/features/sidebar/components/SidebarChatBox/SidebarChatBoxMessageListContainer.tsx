@@ -81,11 +81,6 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
 
   // 当 loading 变化为 true 时，强制滚动到底部
   useEffect(() => {
-    if (currentSidebarConversationType === 'Summary' && !writingMessage) {
-      //加!writingMessage是因为为了summary nav切换的loading更新会滚动到最下面，应该保持在原来的位置
-      //是因为 summary nav 功能切换的时候loading会为true而writingMessage为空
-      return
-    }
     if (loading) {
       handleScrollToBottom(true)
       setTimeout(() => {

@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
   IAIResponseMessage,
@@ -257,7 +258,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                     isDarkMode ? 'markdown-body-dark' : ''
                   }`}
                 >
-                  <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
+                  <AppSuspenseLoadingLayout>
+                    <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
+                  </AppSuspenseLoadingLayout>
                 </div>
               </Stack>
             )}
@@ -268,7 +271,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               isDarkMode ? 'markdown-body-dark' : ''
             }`}
           >
-            <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+            <AppSuspenseLoadingLayout>
+              <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+            </AppSuspenseLoadingLayout>
           </div>
         )}
         {!coverLoading ? (

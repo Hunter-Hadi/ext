@@ -1,5 +1,6 @@
 import React, { FC, useMemo } from 'react'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
@@ -24,7 +25,9 @@ const SidebarAIMessageTextContent: FC<{
   }, [AIMessage])
   return (
     <div className={`markdown-body ${isDarkMode ? 'markdown-body-dark' : ''}`}>
-      <CustomMarkdown>{currentContentValue}</CustomMarkdown>
+      <AppSuspenseLoadingLayout>
+        <CustomMarkdown>{currentContentValue}</CustomMarkdown>
+      </AppSuspenseLoadingLayout>
     </div>
   )
 }

@@ -45,7 +45,12 @@ const useInitSidebar = () => {
   const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
-  const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
+  const currentSidebarConversationTypeRef = useRef<ISidebarConversationType>(
+    currentSidebarConversationType,
+  )
+  useEffect(() => {
+    currentSidebarConversationTypeRef.current = currentSidebarConversationType
+  }, [currentSidebarConversationType])
   const sidebarSettingsRef = useRef(sidebarSettings)
   useEffect(() => {
     sidebarSettingsRef.current = sidebarSettings
@@ -105,7 +110,6 @@ const useInitSidebar = () => {
           }
           break
       }
-      pageConversationTypeRef.current = currentSidebarConversationType
     }
     return () => {
       isExpired = true
@@ -144,7 +148,7 @@ const useInitSidebar = () => {
   ])
   // summary 聚焦处理
   useFocus(() => {
-    if (pageConversationTypeRef.current === 'Summary') {
+    if (currentSidebarConversationTypeRef.current === 'Summary') {
       updateSidebarSettings({
         summary: {
           conversationId: getPageSummaryConversationId(),
@@ -176,7 +180,7 @@ const useInitSidebar = () => {
         }).then(() => {
           updateSidebarConversationType('Summary')
         })
-      } else if (pageConversationTypeRef.current === 'Summary') {
+      } else if (currentSidebarConversationTypeRef.current === 'Summary') {
         updateSidebarConversationType('Chat')
       }
     }

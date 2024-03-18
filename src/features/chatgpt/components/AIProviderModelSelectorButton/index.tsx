@@ -101,12 +101,12 @@ const AIProviderModelSelectorButton: FC<{
     }
     setOpen(false)
   }
-  const AIModelPopperModifiers = [
+  const AIModelPopperModifiers: any = [
     {
       name: 'RTLSupport',
-      enabled: document.querySelector('body').getAttribute('dir') === 'rtl',
+      enabled: document.querySelector('body')?.getAttribute('dir') === 'rtl',
       phase: 'main',
-      fn({ state }) {
+      fn({ state }: any) {
         if (state.modifiersData.popperOffsets) {
           const referenceEndX =
             state.rects.reference.x + state.rects.reference.width

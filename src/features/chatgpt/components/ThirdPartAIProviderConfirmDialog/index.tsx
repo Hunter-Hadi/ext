@@ -25,9 +25,9 @@ interface ThirdPartAIProviderConfirmDialogProps {
   sx?: SxProps
 }
 
-const ThirdPartAIProviderConfirmDialog: FC<
-  ThirdPartAIProviderConfirmDialogProps
-> = ({ sx }) => {
+const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps> = ({
+  sx,
+}) => {
   const { t } = useTranslation(['client', 'common'])
   const [dialogState, setDialogState] = useRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
@@ -41,8 +41,8 @@ const ThirdPartAIProviderConfirmDialog: FC<
     // 如果点击了关闭按钮， 并且当前选中的已经是第三方AI provider， 则切换回默认的AI provider和AI model
     if (isSelectedThirdAIProvider) {
       await updateAIProviderModel(
-        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider,
-        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel,
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider,
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel,
       )
       await createConversation()
     }

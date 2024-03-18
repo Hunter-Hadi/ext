@@ -32,7 +32,6 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_backgroundRunFunction'
   | 'Client_getChromeExtensionCommands'
   | 'Client_checkChatGPTStatus'
-  | 'Client_switchAIProvider'
   | 'Client_AuthAIProvider'
   | 'Client_createChatGPTConversation'
   | 'Client_changeConversation'

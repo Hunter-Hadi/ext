@@ -11,14 +11,15 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { clientSwitchAndAuthAIProvider } from '@/features/chatgpt/utils'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 const AIProviderAuthButton: FC<{
   aiProviderOption: AIProviderOptionType
 }> = (props) => {
   const { aiProviderOption } = props
+  const { authAIProvider } = useClientConversation()
   const { t } = useTranslation(['common', 'client'])
   const chatGPTClientState = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
@@ -71,9 +72,7 @@ const AIProviderAuthButton: FC<{
                       },
                     }}
                     onClick={async () => {
-                      await clientSwitchAndAuthAIProvider(
-                        AI_PROVIDER_MAP.OPENAI,
-                      )
+                      await authAIProvider()
                     }}
                   >
                     <Typography
@@ -191,7 +190,7 @@ const AIProviderAuthButton: FC<{
               )
             }
             onClick={async () => {
-              await clientSwitchAndAuthAIProvider(aiProviderOption.value)
+              await authAIProvider()
             }}
             variant={'contained'}
             disableElevation

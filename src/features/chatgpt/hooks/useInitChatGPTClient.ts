@@ -8,7 +8,6 @@ import { IChromeExtensionClientListenEvent } from '@/background/app'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
-import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
 import {
@@ -150,45 +149,6 @@ const useInitChatGPTClient = () => {
     }
     return undefined
   })
-  useEffect(() => {
-    const checkChatGPTStatus = async () => {
-      const result = await port.postMessage({
-        event: 'Client_checkChatGPTStatus',
-      })
-      if (result.success && result.data.status) {
-        setChatGPT((prevState) => {
-          if (result.data.status !== 'success') {
-            prevState.aborts.forEach((fn) => fn())
-            return {
-              loaded: false,
-              status: result.data.status,
-              aborts: [],
-            }
-          }
-          return {
-            loaded: true,
-            status: result.data.status,
-            aborts: prevState.aborts,
-          }
-        })
-      }
-    }
-    const port = new ContentScriptConnectionV2({
-      runtime: 'client',
-    })
-    const onFocus = async () => {
-      await checkChatGPTStatus()
-    }
-    port.postMessage({
-      event: 'Client_checkChatGPTStatus',
-    })
-    checkChatGPTStatus()
-    window.addEventListener('focus', onFocus)
-    return () => {
-      window.removeEventListener('focus', onFocus)
-      port?.destroy()
-    }
-  }, [])
 }
 
 export { useInitChatGPTClient }

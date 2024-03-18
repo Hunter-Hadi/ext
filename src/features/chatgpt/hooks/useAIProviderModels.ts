@@ -14,9 +14,11 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { getRemoteAIProviderConfigCache } from '@/background/src/chat/OpenAiChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
+import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { AppLocalStorageState } from '@/store'
 
@@ -126,35 +128,35 @@ export const useAIProviderModelsMap = () => {
  * 用来获取当前AI提供商的模型列表
  * @since 2023-07-18
  * @version 1.0.0 - 返回数据结构title\titleTag\maxToken\tags\descriptions
- * @version 2.0.0 - 和AppLocalStorage解绑 - 2024-03-11
  */
 
 const useAIProviderModels = () => {
-  const { clientConversation } = useClientConversation()
+  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
-  const currentAIProvider = clientConversation?.meta?.AIProvider
-  const currentAIProviderModel = clientConversation?.meta?.AIModel
-  // 当前选中的AI provider的models
-  const currentAIProviderModelOptions = useMemo<IAIProviderModel[]>(() => {
+  const currentProvider =
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider
+  const { currentThirdProviderSettings } = useThirdProviderSettings()
+  const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []
-    if (!currentAIProvider) {
+    if (!currentProvider) {
       return currentModels
     }
-    currentModels = AI_PROVIDER_MODEL_MAP[currentAIProvider]
+    currentModels = AI_PROVIDER_MODEL_MAP[currentProvider]
     return currentModels
-  }, [currentAIProvider, AI_PROVIDER_MODEL_MAP])
-  // 当前选中的AI provider的详情
+  }, [currentProvider, AI_PROVIDER_MODEL_MAP])
+  const currentAIProviderModel = useMemo(() => {
+    return currentThirdProviderSettings?.model || ''
+  }, [currentProvider, currentThirdProviderSettings])
   const currentAIProviderDetail = useMemo(() => {
-    return AIProviderOptions.find((item) => item.value === currentAIProvider)
-  }, [currentAIProvider])
+    return AIProviderOptions.find((item) => item.value === currentProvider)
+  }, [currentProvider])
   const currentAIProviderModelDetail = useMemo(() => {
-    return currentAIProviderModelOptions.find(
+    return aiProviderModels.find(
       (item) => item.value === currentAIProviderModel,
     )
-  }, [currentAIProviderModel, currentAIProviderModelOptions])
+  }, [currentAIProviderModel, aiProviderModels])
   /**
-   * 更新AI provider的模型
-   * @deprecated 2024-03-11 - 和AppLocalStorage解绑
+   * 如果传入了sidebarConversationType，说明要更新这个sidebarConversationType的conversation
    */
   const updateAIProviderModel = useCallback(
     async (
@@ -162,36 +164,52 @@ const useAIProviderModels = () => {
       model: string,
       // sidebarConversationType?: ISidebarConversationType,
     ) => {
-      // try {
-      // let now = new Date().getTime()
-      // await setChromeExtensionLocalStorage({
-      //   sidebarSettings: {
-      //     common: {
-      //       currentAIProvider: AIProvider,
-      //     },
-      //   },
-      //   thirdProviderSettings: {
-      //     [AIProvider]: {
-      //       model,
-      //     },
-      //   },
-      // })
-      // console.log('updateAIProviderModel1', new Date().getTime() - now)
-      // now = new Date().getTime()
-      // await switchBackgroundChatSystemAIProvider(AIProvider)
-      // console.log('updateAIProviderModel2', new Date().getTime() - now)
-      // } catch (e) {
-      //   console.log(e)
-      // }
+      try {
+        debugger
+        let now = new Date().getTime()
+        await setChromeExtensionLocalStorage({
+          sidebarSettings: {
+            common: {
+              currentAIProvider: AIProvider,
+            },
+          },
+          thirdProviderSettings: {
+            [AIProvider]: {
+              model,
+            },
+          },
+        })
+        console.log('updateAIProviderModel1', new Date().getTime() - now)
+        now = new Date().getTime()
+        await switchBackgroundChatSystemAIProvider(AIProvider)
+        console.log('updateAIProviderModel2', new Date().getTime() - now)
+      } catch (e) {
+        console.log(e)
+      }
     },
-    [currentAIProvider, currentAIProviderModelOptions],
+    [currentProvider, aiProviderModels],
   )
+  const switchBackgroundChatSystemAIProvider = async (
+    provider: IAIProviderType,
+  ) => {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    const result = await port.postMessage({
+      event: 'Client_switchAIProvider',
+      data: {
+        provider,
+      },
+    })
+    return result.success
+  }
   return {
-    currentAIProvider,
-    currentAIProviderModel,
+    currentAIProviderModel: currentAIProviderModel,
+    currentAIProvider:
+      appLocalStorage.sidebarSettings?.common?.currentAIProvider,
     currentAIProviderDetail,
     currentAIProviderModelDetail,
-    currentAIProviderModelOptions,
+    aiProviderModels,
     updateAIProviderModel,
   }
 }

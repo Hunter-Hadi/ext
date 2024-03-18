@@ -533,7 +533,7 @@ const InputAssistantButtonGroupConfig = {
     {
       enable: true,
       rootSelectors: [
-        'ytd-commentbox ytd-button-renderer button[aria-label="Reply"]',
+        'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
       ],
       rootStyle: '',
       appendPosition: 2,

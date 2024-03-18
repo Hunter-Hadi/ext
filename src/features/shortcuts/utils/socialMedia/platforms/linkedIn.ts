@@ -97,9 +97,15 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           inputAssistantButton,
         )
 
-        // if exists mention, it means it's a reply for secondary comment
+        // it maybe click the quick reply button of secondary comment
+        if (secondaryComment && mainCommentContainer !== secondaryComment) {
+          linkedInPostComments.push(
+            await getLinkedInCommentDetail(secondaryComment),
+          )
+        }
+        // or if exists mention, it means it's a reply for secondary comment
         // need to fix: this way can not find the correct secondary comment precisely
-        if (mention) {
+        else if (mention) {
           const secondaryComments = mainCommentContainer.querySelectorAll<HTMLElement>(
             '.comments-comment-item__nested-items .comments-comment-item',
           )
@@ -112,15 +118,7 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
             }
           }
         }
-        // or it maybe click the quick reply button of secondary comment
-        else if (
-          secondaryComment &&
-          mainCommentContainer !== secondaryComment
-        ) {
-          linkedInPostComments.push(
-            await getLinkedInCommentDetail(secondaryComment),
-          )
-        }
+        
         socialMediaPostContext.addCommentList(linkedInPostComments)
       }
       return socialMediaPostContext.data

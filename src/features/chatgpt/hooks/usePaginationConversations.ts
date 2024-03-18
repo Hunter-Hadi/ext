@@ -3,8 +3,8 @@ import { useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { PaginationConversation } from '@/background/src/chatConversations'
-import { clientGetAllPaginationConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { PaginationConversationsState } from '@/features/chatgpt/store'
+import { clientGetAllPaginationConversations } from '@/features/chatgpt/utils/chatConversationUtils'
 
 const usePaginationConversations = () => {
   const [loading, setLoading] = useState(false)

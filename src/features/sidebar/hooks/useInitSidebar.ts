@@ -1,12 +1,12 @@
 import { useEffect, useRef } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
+import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
@@ -19,6 +19,7 @@ import {
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -39,7 +40,8 @@ const useInitSidebar = () => {
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
-  const { currentConversationIdRef } = useClientConversation()
+  const { currentConversationIdRef, createConversation } =
+    useClientConversation()
   const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
@@ -48,13 +50,12 @@ const useInitSidebar = () => {
   useEffect(() => {
     sidebarSettingsRef.current = sidebarSettings
   }, [sidebarSettings])
-  const appOpenRef = useRef(appState.open)
-  useEffect(() => {
-    appOpenRef.current = appState.open
-  }, [appState.open])
   useEffect(() => {
     let isExpired = false
-    if (currentSidebarConversationType && appOpenRef.current) {
+    if (
+      currentSidebarConversationType &&
+      (appState.open || isMaxAIImmersiveChatPage())
+    ) {
       const switchConversation = async (conversationId?: string) => {
         if (!conversationId) {
           return
@@ -72,6 +73,15 @@ const useInitSidebar = () => {
           )
         }
       }
+      const createCurrentSidebarConversation = async () => {
+        await createConversation(
+          currentSidebarConversationType,
+          MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
+            .AIProvider,
+          MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
+            .AIModel,
+        )
+      }
       console.log(
         '新版Conversation currentSidebarConversationType',
         currentSidebarConversationType,
@@ -79,27 +89,43 @@ const useInitSidebar = () => {
       switch (currentSidebarConversationType) {
         case 'Chat':
           {
-            // 切换回cache中的conversation
-            switchConversation(sidebarSettingsRef.current?.chat?.conversationId)
+            if (sidebarSettingsRef.current?.chat?.conversationId) {
+              // 切换回cache中的conversation
+              switchConversation(
+                sidebarSettingsRef.current?.chat?.conversationId,
+              )
+            } else {
+              createCurrentSidebarConversation()
+            }
           }
           break
         case 'Summary':
           {
-            // 切换回cache中的conversation
-            createPageSummary().then().then()
+            createCurrentSidebarConversation()
           }
           break
         case 'Search':
           {
-            // Search的逻辑
-            switchConversation(
-              sidebarSettingsRef.current?.search?.conversationId,
-            )
+            if (sidebarSettingsRef.current?.search?.conversationId) {
+              // 切换回cache中的conversation
+              switchConversation(
+                sidebarSettingsRef.current?.search?.conversationId,
+              )
+            } else {
+              createCurrentSidebarConversation()
+            }
           }
           break
         case 'Art':
           {
-            switchConversation(sidebarSettingsRef.current?.art?.conversationId)
+            if (sidebarSettingsRef.current?.art?.conversationId) {
+              // 切换回cache中的conversation
+              switchConversation(
+                sidebarSettingsRef.current?.art?.conversationId,
+              )
+            } else {
+              createCurrentSidebarConversation()
+            }
           }
           break
       }
@@ -108,35 +134,22 @@ const useInitSidebar = () => {
     return () => {
       isExpired = true
     }
-  }, [currentSidebarConversationType])
+  }, [currentSidebarConversationType, appState.open])
   // summary 重新生成的逻辑
   useEffect(() => {
     // 如果不是Summary, return
     if (currentSidebarConversationType !== 'Summary' || !appState.open) {
       return
     }
-    if (currentSidebarConversation?.id) {
-      // 如过conversation不是summary， return
-      if (currentSidebarConversation?.type !== 'Summary') {
-        return
-      }
-      // 如果有消息了
-      if (currentSidebarConversation?.messages) {
-        const firstAIMessage =
-          currentSidebarConversation?.messages.find(isAIMessage)
-        // 如果已经有总结并且完成了，那就跳出
-        if (firstAIMessage?.originalMessage?.metadata?.isComplete) {
-          return
-        }
-      }
-    } else {
-      // 直接触发create
+    if (
+      currentSidebarConversation?.id &&
+      currentSidebarConversation?.type === 'Summary'
+    ) {
+      createPageSummary().then().catch().finally()
     }
-    
-    createPageSummary().then().catch().finally()
   }, [
-    currentSidebarConversation?.id,
     currentSidebarConversationType,
+    currentSidebarConversation,
     appState.open,
   ])
   // summary 聚焦处理
@@ -189,7 +202,7 @@ const useInitSidebar = () => {
     return () => {
       window.removeEventListener('MaxAIContinueSearchWithAI', listener)
     }
-  })
+  }, [])
   // focus的时候更新消息
   useFocus(() => {
     if (currentConversationIdRef.current) {

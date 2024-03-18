@@ -378,10 +378,6 @@ export default class ShortCutsEngineFactory {
   static create(conversationId: string) {
     ShortCutsEngineFactory.removeUnnecessaryShortcutsEngine()
     if (ShortCutsEngineFactory.shortCutsEngineMap.has(conversationId)) {
-      console.log(
-        'ShortCutsEngineFactory.create',
-        ShortCutsEngineFactory.shortCutsEngineMap,
-      )
       return (
         ShortCutsEngineFactory.shortCutsEngineMap.get(conversationId) || null
       )

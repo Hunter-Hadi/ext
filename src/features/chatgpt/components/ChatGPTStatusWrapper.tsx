@@ -17,10 +17,8 @@ import { AuthState } from '@/features/auth/store'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog'
-import {
-  ChatGPTClientState,
-  ThirdPartyAIProviderConfirmDialogState,
-} from '@/features/chatgpt/store'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import { usePrevious } from '@/features/common/hooks/usePrevious'
@@ -31,23 +29,20 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 const ChatGPTStatusWrapper: FC = () => {
   const [authLogin] = useRecoilState(AuthState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const [chatGPTClientState, setChatGPTClientState] = useRecoilState(
-    ChatGPTClientState,
-  )
-  const { status } = chatGPTClientState
-  const prevStatus = usePrevious(status)
+  const { chatStatus, updateChatStatus } = useClientConversation()
+  const prevStatus = usePrevious(chatStatus)
 
   const { open: providerConfirmDialogOpen } = useRecoilValue(
     ThirdPartyAIProviderConfirmDialogState,
   )
 
   useEffect(() => {
-    if (prevStatus !== status && status === 'success') {
+    if (prevStatus !== chatStatus && chatStatus === 'success') {
       // get latest settings
       console.log('get latest settings')
       getLiteChromeExtensionDBStorage().then(setAppDBStorage)
     }
-  }, [status, prevStatus])
+  }, [chatStatus, prevStatus])
 
   useFocus(() => {
     console.log('gmain chatgpt onFocus')
@@ -55,10 +50,7 @@ const ChatGPTStatusWrapper: FC = () => {
       console.log('gmain chatgpt onFocus: pingDaemonProcess', res)
       // 如果没有连接上，就需要重新加载
       if (!res) {
-        setChatGPTClientState((s) => ({
-          ...s,
-          status: 'needReload',
-        }))
+        updateChatStatus('needReload')
       }
     })
   })
@@ -95,7 +87,7 @@ const ChatGPTStatusWrapper: FC = () => {
     return null
   }, [memoMaskSx])
 
-  if (status === 'needReload') {
+  if (chatStatus === 'needReload') {
     return (
       <Box sx={memoMaskSx}>
         <Stack spacing={2} width={'calc(100% - 16px)'}>
@@ -293,9 +285,9 @@ const ChatGPTStatusWrapper: FC = () => {
     )
   }
   if (
-    status === 'needAuth' ||
-    status === 'loading' ||
-    status === 'complete' ||
+    chatStatus === 'needAuth' ||
+    chatStatus === 'loading' ||
+    chatStatus === 'complete' ||
     providerConfirmDialogOpen
   ) {
     return (

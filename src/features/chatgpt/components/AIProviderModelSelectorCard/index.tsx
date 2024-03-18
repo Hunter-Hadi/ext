@@ -71,15 +71,11 @@ interface AIModelSelectorCardProps {
 const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
   const { sidebarConversationType, sx, onClose } = props
   const { t } = useTranslation(['common', 'client'])
-  const [
-    hoverModel,
-    setHoverModel,
-  ] = useState<AIProviderModelSelectorOption | null>(null)
+  const [hoverModel, setHoverModel] =
+    useState<AIProviderModelSelectorOption | null>(null)
   const [isHoverThirdPartyModel, setIsHoverThirdPartyModel] = useState(false)
-  const {
-    showThirdPartyAIProviderConfirmDialog,
-    isSelectedThirdAIProvider,
-  } = useThirdAIProviderModels()
+  const { showThirdPartyAIProviderConfirmDialog, isSelectedThirdAIProvider } =
+    useThirdAIProviderModels()
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
@@ -225,7 +221,11 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                   AIModelOption.AIProvider,
                   AIModelOption.value,
                 )
-                await createConversation(sidebarConversationType)
+                await createConversation(
+                  sidebarConversationType,
+                  AIModelOption.AIProvider,
+                  AIModelOption.value,
+                )
               }}
             >
               <Stack alignItems={'center'} direction={'row'}>

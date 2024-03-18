@@ -5,7 +5,7 @@ import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import useInitConversationUpdate from '@/features/chatgpt/hooks/useInitConversationUpdate'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarFilesDropBox'
@@ -20,6 +20,7 @@ const Test = () => {
     </Typography>
   )
 }
+
 const SidebarChatPanel = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
@@ -29,7 +30,7 @@ const SidebarChatPanel = () => {
   const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
   useInitSidebar()
-  useInitClientConversationMap()
+  useInitConversationUpdate()
   return (
     <>
       <Test />

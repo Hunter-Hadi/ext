@@ -36,7 +36,7 @@ const PromptLibraryIconButton: FC<{
     selectedPromptLibraryCard,
     cancelSelectPromptLibraryCard,
   } = usePromptLibrary()
-  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
+  const { askAIWIthShortcuts, shortCutsEngine } = useClientChat()
   const { updateSidebarConversationType } = useSidebarSettings()
   const { isOpenPromptLibraryEditForm } = usePromptActions()
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
@@ -130,11 +130,7 @@ const PromptLibraryIconButton: FC<{
       const actions = promptLibraryCardDetailDataToActions(
         selectedPromptLibraryCard,
       )
-      if (
-        actions &&
-        shortCutsEngineRef.current?.status &&
-        ['idle', 'stop'].includes(shortCutsEngineRef.current?.status)
-      ) {
+      if (actions && shortCutsEngine?.status === 'idle') {
         updateSidebarConversationType('Chat')
         cancelSelectPromptLibraryCard()
         askAIWIthShortcuts(actions).then().catch()

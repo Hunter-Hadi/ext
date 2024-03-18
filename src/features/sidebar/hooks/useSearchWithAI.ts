@@ -10,8 +10,8 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -37,11 +37,8 @@ const useSearchWithAI = () => {
   )
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
-  const {
-    createConversation,
-    pushPricingHookMessage,
-    getConversation,
-  } = useClientConversation()
+  const { createConversation, pushPricingHookMessage, getConversation } =
+    useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const memoPrevQuestions = useMemo(() => {

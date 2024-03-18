@@ -1,13 +1,17 @@
 /**
  * 初始化chat客户端
  */
+import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useRef } from 'react'
-import { useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import { IChromeExtensionClientListenEvent } from '@/background/app'
 import { useCreateClientMessageListener } from '@/background/utils'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
+import {
+  ChatGPTClientState,
+  ClientConversationMapState,
+} from '@/features/chatgpt/store'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import { replaceMarkerContent } from '@/features/contextMenu/utils/selectionHelper'
 import {
@@ -22,6 +26,9 @@ const log = new Log('InitChatGPT')
 
 const useInitChatGPTClient = () => {
   const setChatGPT = useSetRecoilState(ChatGPTClientState)
+  const [, setClientConversationMap] = useRecoilState(
+    ClientConversationMapState,
+  )
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
@@ -144,6 +151,27 @@ const useInitChatGPTClient = () => {
           }
         }
         break
+      case 'Client_listenUpdateConversationMessages': {
+        const { conversation, conversationId } = data
+        if (conversation?.id) {
+          setClientConversationMap((prevState) => {
+            return {
+              ...prevState,
+              [conversation.id]: conversation,
+            }
+          })
+        } else if (!conversation) {
+          // 如果是删除的话，就不会有conversation
+          setClientConversationMap((prevState) => {
+            const newState = cloneDeep(prevState)
+            delete newState[conversationId]
+            return newState
+          })
+        }
+        return {
+          success: true,
+        }
+      }
       default:
         break
     }

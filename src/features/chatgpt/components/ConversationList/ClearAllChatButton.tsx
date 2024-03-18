@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { removeConversationsByType } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { clientRemoveConversationsByType } from '@/features/chatgpt/utils/chatConversationUtils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -165,7 +165,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
                 color={'error'}
                 onClick={async () => {
                   try {
-                    await removeConversationsByType(
+                    await clientRemoveConversationsByType(
                       currentSidebarConversationType,
                     )
                     onDelete?.()

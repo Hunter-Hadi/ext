@@ -15,9 +15,9 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
@@ -145,14 +145,12 @@ const usePageSummary = () => {
             return
           }
         }
-        const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
-          getPageSummaryType(),
-        )
-        if(paramsPageSummaryTypeData){
+        const paramsPageSummaryTypeData =
+          await getContextMenuActionsByPageSummaryType(getPageSummaryType())
+        if (paramsPageSummaryTypeData) {
           lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
           runPageSummaryActions(paramsPageSummaryTypeData.actions)
         }
-       
       } catch (e) {
         console.log('创建Conversation失败', e)
       }

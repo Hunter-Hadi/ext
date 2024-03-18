@@ -87,17 +87,49 @@ export default class ChatSystemFactory {
     chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_DALLE, maxAIArtAdapter)
     return chatSystem
   }
+  getChatSystem(conversationId: string) {
+    const chatSystem = this.chatSystemMap.get(conversationId)
+    if (!chatSystem) {
+      const newChatSystem = this.createChatSystem()
+      this.chatSystemMap.set(conversationId, newChatSystem)
+      return newChatSystem
+    }
+    return chatSystem
+  }
   constructor() {
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'client') {
-        if (!data.conversationId) {
-          return
+        switch (event) {
+          case 'Client_createChatGPTConversation': {
+            const initConversationData = (data.initConversationData ||
+              {}) as IChatConversation
+            console.log(
+              '[Background]新版Conversation 创建会话',
+              initConversationData,
+            )
+            const currentChatSystem = this.getChatSystem(
+              initConversationData.id,
+            )
+            await currentChatSystem.switchAdapter(
+              initConversationData.meta.AIProvider || 'USE_CHAT_GPT_PLUS',
+            )
+            const conversationId = await currentChatSystem.createConversation(
+              initConversationData || {},
+            )
+            return {
+              success: true,
+              data: {
+                conversationId,
+              },
+              message: '',
+            }
+          }
         }
-        let currentChatSystem = this.chatSystemMap.get(data.conversationId)
-        if (!currentChatSystem) {
-          currentChatSystem = this.createChatSystem()
-          this.chatSystemMap.set(data.conversationId, currentChatSystem)
-        }
+      }
+      return undefined
+    })
+    createBackgroundMessageListener(async (runtime, event, data, sender) => {
+      if (runtime === 'client') {
         switch (event) {
           case 'Client_AuthAIProvider': {
             const { provider } = data
@@ -111,47 +143,13 @@ export default class ChatSystemFactory {
             }
           }
           case 'Client_checkChatGPTStatus': {
-            debugger
+            const currentChatSystem = this.getChatSystem(data.conversationId)
             return {
               success: true,
               data: {
-                status: currentChatSystem.status,
+                status: currentChatSystem.currentAdapter?.status || 'success',
               },
               message: '',
-            }
-          }
-          case 'Client_createChatGPTConversation': {
-            const initConversationData = (data.initConversationData ||
-              {}) as IChatConversation
-            console.log('新版Conversation 创建会话', initConversationData)
-            if (
-              initConversationData.meta.AIProvider &&
-              currentChatSystem.currentProvider !==
-                initConversationData.meta.AIProvider
-            ) {
-              await currentChatSystem.switchAdapter(
-                initConversationData.meta.AIProvider,
-              )
-            }
-            const conversationId = await currentChatSystem.createConversation(
-              initConversationData || {},
-            )
-            if (conversationId) {
-              return {
-                success: true,
-                data: {
-                  conversationId,
-                },
-                message: '',
-              }
-            } else {
-              return {
-                success: false,
-                data: {
-                  conversationId,
-                },
-                message: 'create conversation failed',
-              }
             }
           }
           case 'Client_changeConversation': {
@@ -181,32 +179,24 @@ export default class ChatSystemFactory {
           }
           case 'Client_askChatGPTQuestion':
             {
+              const currentChatSystem = this.getChatSystem(data.conversationId)
               // 每次提问的时候尝试更新一下model的白名单
               updateRemoteAIProviderConfigAsync().then().catch()
               const taskId = data.taskId
               const question = data.question as IUserChatMessage
-              console.log('新版Conversation 提问', question)
+              console.log('[Background]新版Conversation 提问', question)
               if (question.conversationId) {
                 const conversation =
                   await ConversationManager.conversationDB.getConversationById(
                     question.conversationId,
                   )
-                if (conversation) {
-                  // 如果会话存在，但是AIProvider不一致，需要切换AIProvider
-                  if (
-                    conversation?.meta?.AIProvider &&
-                    conversation.meta.AIProvider !==
-                      currentChatSystem.currentProvider
-                  ) {
-                    await currentChatSystem.switchAdapterWithConversation(
-                      conversation,
-                    )
-                  } else if (conversation.id) {
-                    // 更新AI provider的当前使用的会话
-                    await currentChatSystem.currentAdapter?.createConversation(
-                      conversation,
-                    )
-                  }
+                if (
+                  conversation &&
+                  currentChatSystem.conversation?.id !== conversation.id
+                ) {
+                  await currentChatSystem.switchAdapterWithConversation(
+                    conversation,
+                  )
                   // 处理AIProvider的参数
                   await processAskAIParameters(conversation, question)
                   // 处理attachments
@@ -230,6 +220,11 @@ export default class ChatSystemFactory {
               }
               await currentChatSystem.sendQuestion(taskId, sender, question)
               currentChatSystem.updateClientFiles()
+              return {
+                success: true,
+                data: {},
+                message: '',
+              }
             }
             break
           case 'Client_removeChatGPTConversation': {
@@ -278,7 +273,7 @@ export default class ChatSystemFactory {
             {
               return {
                 success: true,
-                data: currentChatSystem.chatFiles,
+                data: this.getChatSystem(data.conversationId).chatFiles,
                 message: '',
               }
             }

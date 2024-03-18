@@ -12,7 +12,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import {

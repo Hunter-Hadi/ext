@@ -1,5 +1,6 @@
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
+import { IShortCutsParameter } from '2@/features/shortcuts/hooks/useShortCutsParameters'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, {
   FC,
@@ -24,9 +25,7 @@ import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
-import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -38,27 +37,16 @@ interface InputAssistantButtonContextMenuProps {
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
-  onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
-const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> = (
-  props,
-) => {
-  const {
-    buttonKey,
-    children,
-    rootId,
-    root,
-    permissionWrapperCardSceneType,
-    onSelectionEffect
-  } = props
-  const [
-    clickContextMenu,
-    setClickContextMenu,
-  ] = useState<IContextMenuItem | null>(null)
-  const {
-    currentSidebarConversationType,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+const InputAssistantButtonContextMenu: FC<
+  InputAssistantButtonContextMenuProps
+> = (props) => {
+  const { buttonKey, children, rootId, root, permissionWrapperCardSceneType } =
+    props
+  const [clickContextMenu, setClickContextMenu] =
+    useState<IContextMenuItem | null>(null)
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
@@ -76,7 +64,8 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
       if (!loading && contextMenu.data.actions) {
         // 每个网站5次免费InputAssistantButton的机会
         const onBoardingData = await getChromeExtensionOnBoardingData()
-        const key = `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
+        const key =
+          `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
         const currentHostFreeTrialTimes = Number(onBoardingData[key] || 0)
         // 如果没有权限, 显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
@@ -145,8 +134,6 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         .finally(() => {
           isRunningRef.current = false
         })
-        
-      onSelectionEffect && onSelectionEffect();
     }
   }, [clickContextMenu])
   useEffect(() => {

@@ -45,8 +45,6 @@ const BaseSidebarUserMessage: FC<{
     return !message.meta?.includeHistory && order !== 1
   }, [message, order])
 
-  console.log('测试性能SidebarUserMessage', 'rerender')
-
   return (
     <Box component={'div'} className={'chat-message--user'}>
       {showDivider && (

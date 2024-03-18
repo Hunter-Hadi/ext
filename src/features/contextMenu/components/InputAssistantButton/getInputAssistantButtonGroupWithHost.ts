@@ -160,7 +160,10 @@ const getLinkedInButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.classList.contains('feed-shared-social-action-bar')) {
+  if (
+    keyElement.classList.contains('feed-shared-social-action-bar') ||
+    keyElement.classList.contains('comments-comment-social-bar')
+  ) {
     return [buttonGroupConfig.composeReplyButton]
   }
   if (keyElement.classList.contains('share-box_actions')) {

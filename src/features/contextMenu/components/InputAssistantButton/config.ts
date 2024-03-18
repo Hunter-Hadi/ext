@@ -437,7 +437,44 @@ const InputAssistantButtonGroupConfig = {
     InputAssistantBoxSx: {
       borderRadius: '4px',
     },
-  },],
+  }, {
+    enable: true,
+    rootSelectors: ['.comments-comment-social-bar'],
+    rootParentDeep: 0,
+    rootStyle: 'transform: translateX(-0.8rem);',
+    rootWrapperTagName: 'div',
+    rootWrapperStyle: 'order: 1;',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      onSelectionEffect: ({ id: buttonId }) => {
+        const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+        const inputAssistantButton =
+          InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+          document.querySelector<HTMLButtonElement>(
+            inputAssistantButtonSelector,
+          )
+
+        inputAssistantButton?.parentNode?.parentNode
+          ?.querySelector<HTMLElement>('button.comments-comment-social-bar__reply-action-button')
+          ?.click()
+      },
+    },
+    appendPosition: 0,
+    CTAButtonStyle: {
+      padding: '4px 10px',
+      iconSize: 12,
+      borderRadius: '4px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '4px',
+      marginBottom: '-4px',
+      transform: 'translateY(-2px)',
+    },
+  }],
   'facebook.com': {
     enable: true,
     rootSelectors: [

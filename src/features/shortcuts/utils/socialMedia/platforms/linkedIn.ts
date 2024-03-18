@@ -72,7 +72,8 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
         linkedInPostComments.push(
           await getLinkedInCommentDetail(mainCommentContainer),
         )
-        // if exists mention, it means it's a reply for the comment from main comment  (AKA secondary comment)
+
+        // the mention of the main comment
         const mention =
           findSelectorParent(
             '.comments-comment-texteditor',
@@ -80,6 +81,15 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           )?.querySelector<HTMLElement>(
             '.comments-comment-box-comment__text-editor .ql-mention',
           )?.innerText || ''
+
+        // the comment from the main comment (AKA secondary comment)
+        const secondaryComment = findSelectorParent(
+          '.comments-reply-item',
+          inputAssistantButton,
+        )
+
+        // if exists mention, it means it's a reply for secondary comment
+        // need to fix: this way can not find the correct secondary comment precisely
         if (mention) {
           const secondaryComments = mainCommentContainer.querySelectorAll<HTMLElement>(
             '.comments-comment-item__nested-items .comments-comment-item',
@@ -92,6 +102,12 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
               linkedInPostComments.push(secondaryCommentDetail)
             }
           }
+        }
+        // or it maybe click the quick reply button of secondary comment
+        else if (mainCommentContainer !== secondaryComment) {
+          linkedInPostComments.push(
+            await getLinkedInCommentDetail(secondaryComment),
+          )
         }
         socialMediaPostContext.addCommentList(linkedInPostComments)
       }

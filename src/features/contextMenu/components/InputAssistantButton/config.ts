@@ -3,6 +3,7 @@ import { SxProps } from '@mui/material/styles'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
+import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import { I18nextKeysType } from '@/i18next'
 
 import {
@@ -485,7 +486,7 @@ const InputAssistantButtonGroupConfig = {
       },
     },
   ],
-  'facebook.com': {
+  'facebook.com': [{
     enable: true,
     rootSelectors: [
       'div > div > div > #focused-state-composer-submit > span > div > i',
@@ -528,12 +529,86 @@ const InputAssistantButtonGroupConfig = {
       borderRadius: '16px',
       marginRight: '8px',
     },
-  },
+  }, {
+    enable: true,
+    rootSelectors: ['div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div > div > div > div:nth-child(2) > div'],
+    rootParentDeep: 0,
+    rootWrapperTagName: 'div',
+    rootWrapperStyle: 'order: 1; flex: 1; padding: 6px 2px;',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      onSelectionEffect: ({ id: buttonId }) => {
+        const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+        const inputAssistantButton =
+          InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+          document.querySelector<HTMLButtonElement>(
+            inputAssistantButtonSelector,
+          )
+
+        inputAssistantButton?.parentElement?.nextElementSibling?.nextElementSibling?.querySelector<HTMLElement>('[role="button"]')?.click()
+      },
+    },
+    appendPosition: 0,
+    CTAButtonStyle: {
+      height: 'inherit',
+      padding: 0,
+      iconSize: 20,
+      borderRadius: '4px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '4px',
+    },
+  }, {
+    enable: (rootElement) => {
+      // const commentBox = rootElement.parentElement.querySelector('.comments-comment-box');
+      // const disableComment = rootElement.querySelector('button[data-finite-scroll-hotkey="c"][disabled]')
+      // if (commentBox || disableComment) {
+      //   return false;
+      // }
+      return true
+    },
+    rootSelectors: ['div[role="dialog"] div[role="article"][aria-label] > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)'],
+    rootParentDeep: 0,
+    rootStyle: 'position: relative;',
+    rootWrapperTagName: 'div',
+    rootWrapperStyle: 'position: absolute; top: 0; right: 0; transform: translateX(60%); z-index: 1;',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      onSelectionEffect: ({ id: buttonId }) => {
+        const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+        const inputAssistantButton =
+          InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+          document.querySelector<HTMLButtonElement>(
+            inputAssistantButtonSelector,
+          )
+
+        findSelectorParent('div[role="article"][aria-label] > ul > li:nth-child(3) [role="button"]', inputAssistantButton as HTMLElement)?.click();
+      },
+    },
+    appendPosition: 0,
+    CTAButtonStyle: {
+      padding: '5px 4.5px',
+      iconSize: 12,
+      borderRadius: '24px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '24px',
+    },
+  }],
   'youtube.com': [
     {
       enable: true,
       rootSelectors: [
-        'ytd-commentbox ytd-button-renderer button.yt-spec-button-shape-next.yt-spec-button-shape-next--filled',
+        'ytd-commentbox ytd-button-renderer button[aria-label="Reply"]',
+        'ytd-commentbox ytd-button-renderer button[aria-label="Comment"]',
       ],
       rootStyle: '',
       appendPosition: 2,

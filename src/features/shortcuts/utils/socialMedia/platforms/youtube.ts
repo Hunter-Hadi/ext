@@ -207,15 +207,32 @@ export const getYouTubeSocialMediaPostCommentsContent: (
     return null
   }
 }
-//拿取视频内容可滚动高度是多少
-export const getAllYoutubeContentHeight = () => {
-  const topHeadHeight =
-    document.querySelector('#masthead-container.style-scope.ytd-app')
-      ?.clientHeight || 0
-  const topVideoHeight =
-    document.querySelector('#player-container.style-scope.ytd-watch-flexy')
-      ?.clientHeight || 0
-  return window.innerHeight - topHeadHeight - topVideoHeight
+
+// 设置 youtube 评论窗口定位到屏幕上方左边并隐藏
+const setCommentLoadingPosition = () => {
+  const selector = document.querySelector(
+    '#below ytd-item-section-renderer.style-scope.ytd-comments',
+  )
+  if (selector instanceof HTMLElement) {
+    selector.style.position = 'fixed'
+    selector.style.top = '0'
+    selector.style.left = '0'
+    selector.style.visibility = 'hidden'
+  }
+}
+
+// 去除youtube 评论窗口定位并显示出来
+const resetCommentLoadingPosition = () => {
+  const selector = document.querySelector(
+    '#below ytd-item-section-renderer.style-scope.ytd-comments',
+  )
+  if (selector instanceof HTMLElement) {
+    selector.style.position = ''
+    selector.style.top = ''
+    selector.style.left = ''
+    selector.style.display = ''
+    selector.style.visibility = 'visible'
+  }
 }
 export const youTubeGetPostCommentsInfo: () => Promise<{
   commentsData: ICreateCommentListData | null
@@ -233,37 +250,15 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
       500,
       1000 * 60,
     ) //等待videoID变化完成
-    console.log('simply 0')
     if (document?.querySelector('#sections #count')) {
-      console.log('simply 0 0')
-
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
       return { commentsData, commitList }
     } else {
-      let currentHeight = 0
-      const allContentDom = document.querySelector(
-        '#below.style-scope.ytd-watch-flexy',
-      )
-      const allContentScrollHeight = getAllYoutubeContentHeight()
-      console.log('simply allContentScrollHeight', allContentScrollHeight)
-      currentHeight = allContentScrollHeight
-      if (currentHeight < 10) {
-        //如果allContentScrollHeight的高度小于10，判为没有高度，则滚动下去一点
-        const topVideoHeight =
-          (document.querySelector('#player.style-scope.ytd-watch-flexy')
-            ?.clientHeight || 200) / 2
-        window?.scrollTo({ top: topVideoHeight })
-        currentHeight = topVideoHeight / 2
-      }
-      allContentDom?.setAttribute(
-        'style',
-        `overflow-y: auto; height: ${currentHeight}px;scrollbar-width: thin;scrollbar-color: transparent transparent;`,
-      )
+      setCommentLoadingPosition() //模拟加载窗口出现了
+
       if (document.getElementById('content-pages')) {
         //直播页面直接无评论
-        allContentDom?.removeAttribute('style')
-        window?.scrollTo({ top: 0 })
         return null
       }
       const topCommentsOff = document.querySelector('#message a')
@@ -273,7 +268,6 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           .getAttribute('href')
           ?.includes('support.google.com/youtube/answer/9706180')
       ) {
-        allContentDom?.removeAttribute('style')
         window?.scrollTo({ top: 0 })
         //代表评论关闭 状态
         return null
@@ -285,10 +279,6 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           if (scrollIndex > 10) {
             return true
           }
-          //没有则滚动到当前主div的最下面往上滚动，完成过渡
-          allContentDom?.scrollTo({
-            top: allContentDom?.scrollHeight / scrollIndex,
-          })
           scrollIndex += 1
           const countDom = document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
@@ -300,9 +290,7 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
         300,
         1000 * 10,
       )
-      allContentDom?.scrollTo({ top: 0 })
-      allContentDom?.removeAttribute('style')
-      window?.scrollTo({ top: 0 })
+      resetCommentLoadingPosition() //去除 模拟加载
       await awaitScrollFun(
         () => {
           //判断用户头像图片是否加载完成则数据完成开始获取
@@ -323,7 +311,6 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
       )
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
-      console.log('simply allData', { commentsData, commitList })
       return cloneDeep({ commentsData, commitList })
     }
   } catch (e) {

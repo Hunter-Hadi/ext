@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Най-бързият модел на Anthropic в класа си за интелигентност, Haiku е универсално решение за широка гама от ежедневни задачи.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Надстройте, за да получите достъп до claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Най-бързият модел на Anthropic в класа си за интелигентност, Haiku е универсално решение за широка гама от ежедневни задачи.",
-    "sidebar__art__advanced__copilot__description": "Имайте пълен контрол върху генерирането на изкуство без оптимизация на изкуствени интелигентни подсказки."
+    "sidebar__art__advanced__copilot__description": "Имайте пълен контрол върху генерирането на изкуство без оптимизация на изкуствени интелигентни подсказки.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Обобщете страницата",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Обобщете страницата (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Обобщете страницата (Основни изводи)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Обобщете PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Обобщете PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Обобщете PDF (Основни изводи)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Обобщете видеото",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Обобщете коментарите",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Обобщете имейла",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Обобщете имейла (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Обобщете имейла (Основни изводи)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Обобщете имейла (Елементи за действие)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

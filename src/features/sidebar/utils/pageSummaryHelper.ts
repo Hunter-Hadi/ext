@@ -10,6 +10,7 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
+import { I18nextKeysType } from '@/i18next'
 import {
   getIframePageContent,
   isNeedGetIframePageContent,
@@ -721,36 +722,60 @@ export const allSummaryNavList: {
     config?: {
       isAutoScroll?: boolean
     }
+    tooltip: I18nextKeysType
   }[]
 } = {
   PAGE_SUMMARY: [
-    { title: 'Summarize page', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize page',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip: 'client:sidebar__summary__nav__page_summary__tooltip__default',
+    },
     {
       title: 'Summarize page (TL;DR)',
       titleIcon: 'AutoStoriesOutlined',
       key: 'summary',
+      tooltip: 'client:sidebar__summary__nav__page_summary__tooltip__tldr',
     },
     {
       title: 'Summarize page (Key takeaways)',
       titleIcon: 'Bulleted',
       key: 'keyTakeaways',
+      tooltip:
+        'client:sidebar__summary__nav__page_summary__tooltip__key_takeaways',
     },
   ],
   PDF_CRX_SUMMARY: [
-    { title: 'Summarize PDF', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize PDF',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip:
+        'client:sidebar__summary__nav__pdf_crx_summary__tooltip__default',
+    },
     {
       title: 'Summarize PDF (TL;DR)',
       titleIcon: 'AutoStoriesOutlined',
       key: 'summary',
+      tooltip: 'client:sidebar__summary__nav__pdf_crx_summary__tooltip__tldr',
     },
     {
       title: 'Summarize PDF (Key takeaways)',
       titleIcon: 'Bulleted',
       key: 'keyTakeaways',
+      tooltip:
+        'client:sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways',
     },
   ],
   YOUTUBE_VIDEO_SUMMARY: [
-    { title: 'Summarize video', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize video',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__default',
+    },
     {
       title: 'Summarize comments',
       titleIcon: 'CommentOutlined',
@@ -758,6 +783,8 @@ export const allSummaryNavList: {
       config: {
         isAutoScroll: false,
       },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__comment',
     },
     // {
     //   title: 'Show transcript',
@@ -769,21 +796,31 @@ export const allSummaryNavList: {
     // },
   ],
   DEFAULT_EMAIL_SUMMARY: [
-    { title: 'Summarize email', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize email',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip: 'client:sidebar__summary__nav__email_summary__tooltip__default',
+    },
     {
       title: 'Summarize email (TL;DR)',
       titleIcon: 'AutoStoriesOutlined',
       key: 'summary',
+      tooltip: 'client:sidebar__summary__nav__email_summary__tooltip__tldr',
     },
     {
       title: 'Summarize email (Key takeaways)',
       titleIcon: 'Bulleted',
       key: 'keyTakeaways',
+      tooltip:
+        'client:sidebar__summary__nav__email_summary__tooltip__key_takeaways',
     },
     {
       title: 'Summarize email (Action items)',
       titleIcon: 'SubjectOutlined',
       key: 'actions',
+      tooltip:
+        'client:sidebar__summary__nav__email_summary__tooltip__action_items',
     },
   ],
 }
@@ -817,9 +854,8 @@ export const getContextMenuActionsByPageSummaryType = async (
           pageSummaryType
         ] || 'all'
     }
-    const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
-      summaryNavKey,
-    )
+    const summaryNavPrompt =
+      summaryGetPromptObject[pageSummaryType](summaryNavKey)
     const summaryNaTitle = getSummaryNavItemByType(
       pageSummaryType,
       summaryNavKey,
@@ -900,9 +936,9 @@ export const getSummaryNavActions: (
         action.parameters.ActionChatMessageOperationType === 'add' &&
         params.title
       ) {
-        const actionTitle = (action.parameters
-          ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
-          ?.metadata?.title
+        const actionTitle = (
+          action.parameters?.ActionChatMessageConfig as IAIResponseMessage
+        )?.originalMessage?.metadata?.title
         if (actionTitle) {
           actionTitle.title = params.title
         }

@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropicの最速モデルであるHaikuは、幅広い日常のタスクに対応する多目的なソリューションです。",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "claude-3-haikuへのアップグレード",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropicの最速モデルであるHaikuは、幅広い日常のタスクに対応する多目的なソリューションです。",
-    "sidebar__art__advanced__copilot__description": "AIパワードアートプロンプトの最適化なしで、アート生成を完全に制御します。"
+    "sidebar__art__advanced__copilot__description": "AIパワードアートプロンプトの最適化なしで、アート生成を完全に制御します。",
+    "sidebar__summary__nav__page_summary__tooltip__default": "ページを要約する",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "ページを要約する（TL;DR）",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "ページを要約する（キーポイント）",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDFを要約する",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDFを要約する（TL;DR）",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDFを要約する（キーポイント）",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "動画を要約する",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "コメントを要約する",
+    "sidebar__summary__nav__email_summary__tooltip__default": "メールを要約する",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "メールを要約する（TL;DR）",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "メールを要約する（キーポイント）",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "メールを要約する（アクションアイテム）"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Najhitrejši model Anthropic v svojem razredu inteligence, Haiku je vsestranska rešitev za širok nabor vsakodnevnih nalog.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Nadgradite za dostop do claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Najhitrejši model Anthropic v svojem razredu inteligence, Haiku je vsestranska rešitev za širok nabor vsakodnevnih nalog.",
-    "sidebar__art__advanced__copilot__description": "Imejte popoln nadzor nad generiranjem umetnosti brez optimizacije umetniških spodbud z umetno inteligenco."
+    "sidebar__art__advanced__copilot__description": "Imejte popoln nadzor nad generiranjem umetnosti brez optimizacije umetniških spodbud z umetno inteligenco.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Povzetek strani",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Povzetek strani (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Povzetek strani (Ključne ugotovitve)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Povzetek PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Povzetek PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Povzetek PDF (Ključne ugotovitve)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Povzetek videa",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Povzetek komentarjev",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Povzetek e-pošte",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Povzetek e-pošte (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Povzetek e-pošte (Ključne ugotovitve)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Povzetek e-pošte (Naloge)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

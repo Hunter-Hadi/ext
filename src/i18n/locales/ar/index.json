@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "أسرع نموذج لشركة أنثروبيك في فئته الذكاءية، هايكو هو حلاً متعدد الاستخدامات لمجموعة واسعة من المهام اليومية.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "الترقية للوصول إلى كلاود-3-هايكو",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "أسرع نموذج لشركة أنثروبيك في فئته الذكاءية، هايكو هو حلاً متعدد الاستخدامات لمجموعة واسعة من المهام اليومية.",
-    "sidebar__art__advanced__copilot__description": "احصل على التحكم الكامل في إنتاج الفن دون تحسين بيانات الفن المدعومة بالذكاء الاصطناعي."
+    "sidebar__art__advanced__copilot__description": "احصل على التحكم الكامل في إنتاج الفن دون تحسين بيانات الفن المدعومة بالذكاء الاصطناعي.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "تلخيص الصفحة",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "تلخيص الصفحة (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "تلخيص الصفحة (أهم النقاط)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "تلخيص ملف PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "تلخيص ملف PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "تلخيص ملف PDF (أهم النقاط)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "تلخيص الفيديو",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "تلخيص التعليقات",
+    "sidebar__summary__nav__email_summary__tooltip__default": "تلخيص البريد الإلكتروني",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "تلخيص البريد الإلكتروني (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "تلخيص البريد الإلكتروني (أهم النقاط)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "تلخيص البريد الإلكتروني (عناصر العمل)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

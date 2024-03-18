@@ -1,5 +1,6 @@
 import { Button, ButtonGroup } from '@mui/material'
 import React, { FC, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
 
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
@@ -24,6 +25,7 @@ interface IProps {
 }
 let speedChangeKey = ''
 export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
+  const { t } = useTranslation(['client'])
   const [summaryActionKey, setSummaryActionKey] = useState<
     SummaryParamsPromptType | undefined
   >(undefined)
@@ -97,7 +99,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   return (
     <ButtonGroup variant="outlined" aria-label="Basic button group">
       {allSummaryNavList[summaryType].map((navItem) => (
-        <TextOnlyTooltip key={navItem.key} title={navItem.title}>
+        <TextOnlyTooltip key={navItem.key} title={t(navItem.tooltip)}>
           <Button
             disabled={loading}
             variant={

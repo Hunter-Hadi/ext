@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic的最快模型，适用于各种日常任务。",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "升级以访问claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic的最快模型，适用于各种日常任务。",
-    "sidebar__art__advanced__copilot__description": "在没有AI辅助艺术提示优化的情况下完全控制艺术生成。"
+    "sidebar__art__advanced__copilot__description": "在没有AI辅助艺术提示优化的情况下完全控制艺术生成。",
+    "sidebar__summary__nav__page_summary__tooltip__default": "总结页面",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "总结页面（简而言之）",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "总结页面（要点）",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "总结PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "总结PDF（简而言之）",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "总结PDF（要点）",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "总结视频",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "总结评论",
+    "sidebar__summary__nav__email_summary__tooltip__default": "总结电子邮件",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "总结电子邮件（简而言之）",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "总结电子邮件（要点）",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "总结电子邮件（行动项）"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropics snabbaste modell i sin intelligensklass, Haiku är en mångsidig lösning för ett brett utbud av vardagliga uppgifter.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Uppgradera för att få tillgång till claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropics snabbaste modell i sin intelligensklass, Haiku är en mångsidig lösning för ett brett utbud av vardagliga uppgifter.",
-    "sidebar__art__advanced__copilot__description": "Ha full kontroll över konstgenerering utan optimering av AI-drivna konstprompter."
+    "sidebar__art__advanced__copilot__description": "Ha full kontroll över konstgenerering utan optimering av AI-drivna konstprompter.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Sammanfatta sida",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Sammanfatta sida (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Sammanfatta sida (Viktiga poänger)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Sammanfatta PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Sammanfatta PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Sammanfatta PDF (Viktiga poänger)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Sammanfatta video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Sammanfatta kommentarer",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Sammanfatta e-post",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Sammanfatta e-post (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Sammanfatta e-post (Viktiga poänger)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sammanfatta e-post (Åtgärder)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

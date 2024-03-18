@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Το γρηγορότερο μοντέλο της Anthropic στην κατηγορία της νοημοσύνης του, το Haiku είναι μια ευέλικτη λύση για μια ευρεία γκάμα καθημερινών εργασιών.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Αναβαθμίστε για πρόσβαση στο claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Το γρηγορότερο μοντέλο της Anthropic στην κατηγορία της νοημοσύνης του, το Haiku είναι μια ευέλικτη λύση για μια ευρεία γκάμα καθημερινών εργασιών.",
-    "sidebar__art__advanced__copilot__description": "Έχετε πλήρη έλεγχο της δημιουργίας τέχνης χωρίς βελτιστοποίηση με τη χρήση AI-powered art prompts."
+    "sidebar__art__advanced__copilot__description": "Έχετε πλήρη έλεγχο της δημιουργίας τέχνης χωρίς βελτιστοποίηση με τη χρήση AI-powered art prompts.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Σύνοψη σελίδας",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Σύνοψη σελίδας (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Σύνοψη σελίδας (Κυριότερα σημεία)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Σύνοψη PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Σύνοψη PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Σύνοψη PDF (Κυριότερα σημεία)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Σύνοψη βίντεο",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Σύνοψη σχολίων",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Σύνοψη email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Σύνοψη email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Σύνοψη email (Κυριότερα σημεία)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Σύνοψη email (Στοιχεία δράσης)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

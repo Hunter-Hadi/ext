@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Najbrži model tvrtke Anthropic u svojoj inteligentnoj klasi, Haiku je svestrano rješenje za širok raspon svakodnevnih zadataka.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Nadogradite da biste pristupili claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Najbrži model tvrtke Anthropic u svojoj inteligentnoj klasi, Haiku je svestrano rješenje za širok raspon svakodnevnih zadataka.",
-    "sidebar__art__advanced__copilot__description": "Imajte potpunu kontrolu nad generiranjem umjetnosti bez optimizacije umjetničkih uputa s AI pogonom."
+    "sidebar__art__advanced__copilot__description": "Imajte potpunu kontrolu nad generiranjem umjetnosti bez optimizacije umjetničkih uputa s AI pogonom.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Sažmi stranicu",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Sažmi stranicu (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Sažmi stranicu (Ključne poruke)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Sažmi PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Sažmi PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Sažmi PDF (Ključne poruke)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Sažmi video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Sažmi komentare",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Sažmi e-poštu",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Sažmi e-poštu (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Sažmi e-poštu (Ključne poruke)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sažmi e-poštu (Stavke za radnju)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

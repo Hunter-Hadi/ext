@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Самая быстрая модель Anthropic в своем классе интеллекта, Haiku - универсальное решение для широкого спектра повседневных задач.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Повысьте уровень доступа к claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Самая быстрая модель Anthropic в своем классе интеллекта, Haiku - универсальное решение для широкого спектра повседневных задач.",
-    "sidebar__art__advanced__copilot__description": "Полный контроль над генерацией искусства без оптимизации с помощью AI."
+    "sidebar__art__advanced__copilot__description": "Полный контроль над генерацией искусства без оптимизации с помощью AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Суммировать страницу",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Суммировать страницу (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Суммировать страницу (Основные выводы)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Суммировать PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Суммировать PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Суммировать PDF (Основные выводы)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Суммировать видео",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Суммировать комментарии",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Суммировать электронную почту",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Суммировать электронную почту (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Суммировать электронную почту (Основные выводы)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Суммировать электронную почту (Действия)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

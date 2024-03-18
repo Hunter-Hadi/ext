@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic'ın zekâ sınıfındaki en hızlı modeli olan Haiku, geniş bir yelpazede günlük görevler için çok yönlü bir çözümdür.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Claude-3-haiku'ya erişim için yükseltme yapın",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic'ın zekâ sınıfındaki en hızlı modeli olan Haiku, geniş bir yelpazede günlük görevler için çok yönlü bir çözümdür.",
-    "sidebar__art__advanced__copilot__description": "AI destekli sanat ipuçları optimizasyonu olmadan sanat üretimi üzerinde tam kontrol sahibi olun."
+    "sidebar__art__advanced__copilot__description": "AI destekli sanat ipuçları optimizasyonu olmadan sanat üretimi üzerinde tam kontrol sahibi olun.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Sayfayı özetle",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Sayfayı özetle (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Sayfayı özetle (Ana noktalar)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF'yi özetle",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF'yi özetle (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF'yi özetle (Ana noktalar)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Videoyu özetle",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Yorumları özetle",
+    "sidebar__summary__nav__email_summary__tooltip__default": "E-postayı özetle",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "E-postayı özetle (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-postayı özetle (Ana noktalar)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-postayı özetle (Eylem maddeleri)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

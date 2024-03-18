@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic 的最快模型，屬於智能類別中的佼佼者，Haiku 是解決各種日常任務的多功能解決方案。",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "升級以存取 claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic 的最快模型，屬於智能類別中的佼佼者，Haiku 是解決各種日常任務的多功能解決方案。",
-    "sidebar__art__advanced__copilot__description": "在沒有 AI 引導優化的情況下完全控制藝術生成。"
+    "sidebar__art__advanced__copilot__description": "在沒有 AI 引導優化的情況下完全控制藝術生成。",
+    "sidebar__summary__nav__page_summary__tooltip__default": "總結頁面",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "總結頁面 (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "總結頁面 (重點摘要)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "總結 PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "總結 PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "總結 PDF (重點摘要)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "總結影片",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "總結評論",
+    "sidebar__summary__nav__email_summary__tooltip__default": "總結郵件",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "總結郵件 (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "總結郵件 (重點摘要)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "總結郵件 (行動項目)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

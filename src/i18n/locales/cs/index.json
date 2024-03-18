@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Nejrychlejší model od Anthropic ve své třídě inteligence, Haiku je všestranným řešením pro širokou škálu každodenních úkolů.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Upgradujte pro přístup k claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Nejrychlejší model od Anthropic ve své třídě inteligence, Haiku je všestranným řešením pro širokou škálu každodenních úkolů.",
-    "sidebar__art__advanced__copilot__description": "Mějte plnou kontrolu nad generováním umění bez optimalizace uměleckých podnětů pomocí AI."
+    "sidebar__art__advanced__copilot__description": "Mějte plnou kontrolu nad generováním umění bez optimalizace uměleckých podnětů pomocí AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Shrnutí stránky",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Shrnutí stránky (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Shrnutí stránky (Hlavní myšlenky)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Shrnutí PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Shrnutí PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Shrnutí PDF (Hlavní myšlenky)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Shrnutí videa",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Shrnutí komentářů",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Shrnutí emailu",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Shrnutí emailu (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Shrnutí emailu (Hlavní myšlenky)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Shrnutí emailu (Úkoly)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

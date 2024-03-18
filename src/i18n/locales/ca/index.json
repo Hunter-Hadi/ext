@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "El model més ràpid d'Anthropic en la seva classe d'intel·ligència, Haiku és una solució versàtil per a una àmplia gamma de tasques quotidianes.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Actualitza per accedir a claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "El model més ràpid d'Anthropic en la seva classe d'intel·ligència, Haiku és una solució versàtil per a una àmplia gamma de tasques quotidianes.",
-    "sidebar__art__advanced__copilot__description": "Tingueu un control total sobre la generació d'art sense optimització de suggeriments d'art impulsats per AI."
+    "sidebar__art__advanced__copilot__description": "Tingueu un control total sobre la generació d'art sense optimització de suggeriments d'art impulsats per AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Resum de la pàgina",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Resum de la pàgina (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Resum de la pàgina (Idees principals)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Resum del PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Resum del PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Resum del PDF (Idees principals)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Resum del vídeo",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Resum dels comentaris",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Resum del correu electrònic",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Resum del correu electrònic (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resum del correu electrònic (Idees principals)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Resum del correu electrònic (Accions)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

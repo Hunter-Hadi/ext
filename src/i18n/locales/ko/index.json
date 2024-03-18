@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic의 지능 클래스에서 가장 빠른 모델인 Haiku는 다양한 일상 업무에 대한 다재다능한 솔루션입니다.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "claude-3-haiku에 액세스 업그레이드",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic의 지능 클래스에서 가장 빠른 모델인 Haiku는 다양한 일상 업무에 대한 다재다능한 솔루션입니다.",
-    "sidebar__art__advanced__copilot__description": "AI 기반 예술 프롬프트 최적화 없이 예술 생성을 완전히 제어하세요."
+    "sidebar__art__advanced__copilot__description": "AI 기반 예술 프롬프트 최적화 없이 예술 생성을 완전히 제어하세요.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "페이지 요약",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "페이지 요약 (간략하게)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "페이지 요약 (주요 내용)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF 요약",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF 요약 (간략하게)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF 요약 (주요 내용)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "동영상 요약",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "댓글 요약",
+    "sidebar__summary__nav__email_summary__tooltip__default": "이메일 요약",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "이메일 요약 (간략하게)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "이메일 요약 (주요 내용)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "이메일 요약 (액션 아이템)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

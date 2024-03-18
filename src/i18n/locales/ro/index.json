@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Cel mai rapid model al Anthropic în clasa sa de inteligență, Haiku este o soluție versatilă pentru o gamă largă de sarcini zilnice.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Upgradează pentru a accesa claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Cel mai rapid model al Anthropic în clasa sa de inteligență, Haiku este o soluție versatilă pentru o gamă largă de sarcini zilnice.",
-    "sidebar__art__advanced__copilot__description": "Ai control total asupra generării de artă fără optimizarea prompturilor de artă cu ajutorul AI."
+    "sidebar__art__advanced__copilot__description": "Ai control total asupra generării de artă fără optimizarea prompturilor de artă cu ajutorul AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Rezumat pagină",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Rezumat pagină (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Rezumat pagină (Idei principale)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Rezumat PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Rezumat PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Rezumat PDF (Idei principale)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Rezumat video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Rezumat comentarii",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Rezumat email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Rezumat email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Rezumat email (Idei principale)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Rezumat email (Elemente de acțiune)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

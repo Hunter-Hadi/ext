@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Haiku ist das schnellste Modell von Anthropic in seiner Intelligenzklasse und eine vielseitige Lösung für eine Vielzahl von alltäglichen Aufgaben.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Upgrade, um auf claude-3-haiku zuzugreifen",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Haiku ist das schnellste Modell von Anthropic in seiner Intelligenzklasse und eine vielseitige Lösung für eine Vielzahl von alltäglichen Aufgaben.",
-    "sidebar__art__advanced__copilot__description": "Haben Sie die volle Kontrolle über die Generierung von Kunst ohne Optimierung von KI-unterstützten Kunstvorgaben."
+    "sidebar__art__advanced__copilot__description": "Haben Sie die volle Kontrolle über die Generierung von Kunst ohne Optimierung von KI-unterstützten Kunstvorgaben.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Seite zusammenfassen",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Seite zusammenfassen (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Seite zusammenfassen (Haupterkenntnisse)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF zusammenfassen",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF zusammenfassen (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF zusammenfassen (Haupterkenntnisse)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Video zusammenfassen",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Kommentare zusammenfassen",
+    "sidebar__summary__nav__email_summary__tooltip__default": "E-Mail zusammenfassen",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "E-Mail zusammenfassen (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-Mail zusammenfassen (Haupterkenntnisse)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-Mail zusammenfassen (Aktionspunkte)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -645,7 +645,19 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic greičiausias modelis savo intelekto klasėje, Haiku yra universalus sprendimas įvairioms kasdieninėms užduotims.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Atnaujinkite, kad gautumėte prieigą prie claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic greičiausias modelis savo intelekto klasėje, Haiku yra universalus sprendimas įvairioms kasdieninėms užduotims.",
-    "sidebar__art__advanced__copilot__description": "Turėkite visišką kontrolę nad menų generavimu be dirbtinio intelekto pagalbos."
+    "sidebar__art__advanced__copilot__description": "Turėkite visišką kontrolę nad menų generavimu be dirbtinio intelekto pagalbos.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Apibendrinkite puslapį",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Apibendrinkite puslapį (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Apibendrinkite puslapį (Pagrindiniai išvadai)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Apibendrinkite PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Apibendrinkite PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Apibendrinkite PDF (Pagrindiniai išvadai)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Apibendrinkite vaizdo įrašą",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Apibendrinkite komentarus",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Apibendrinkite el. laišką",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Apibendrinkite el. laišką (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Apibendrinkite el. laišką (Pagrindiniai išvadai)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Apibendrinkite el. laišką (Veiksmų punktai)"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

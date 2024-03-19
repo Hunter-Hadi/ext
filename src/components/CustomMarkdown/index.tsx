@@ -24,11 +24,11 @@ import TagLabelList, { isTagLabelListCheck } from './TagLabelList'
 
 const getYouTubeUrlTime = (url: string) => {
   try {
-    const parsedUrl = new URL(url);
-    const params = new URLSearchParams(parsedUrl.search);
-    const time = params.get('t');
+    const parsedUrl = new URL(url)
+    const params = new URLSearchParams(parsedUrl.search)
+    const time = params.get('t')
     if (time) {
-      const timeNum = parseInt(time.replace('s', ''), 10);
+      const timeNum = parseInt(time.replace('s', ''), 10)
       return timeNum
     } else {
       return false
@@ -43,7 +43,10 @@ const OverrideAnchor: FC<{
   href?: string
   title?: string
 }> = (props) => {
-  const isYoutubeTimeUrl = props.href && props.href.startsWith("https://www.youtube.com/watch") && props.href.endsWith("s")
+  const isYoutubeTimeUrl =
+    props.href &&
+    props.href.startsWith('https://www.youtube.com/watch') &&
+    props.href.endsWith('s')
   if (props.href?.startsWith('key=')) {
     const params = new URLSearchParams(props.href)
     const key: any = params.get('key') || ''
@@ -69,11 +72,11 @@ const OverrideAnchor: FC<{
     if (isYoutubeTimeUrl) {
       e.preventDefault()
       try {
-        const video = document.querySelector('video');
+        const video = document.querySelector('video')
         if (video && props.href) {
           const timeStr = getYouTubeUrlTime(props.href)
           if (typeof timeStr === 'number') {
-            video.currentTime = timeStr;
+            video.currentTime = timeStr
           }
         }
       } catch (e) {
@@ -82,7 +85,12 @@ const OverrideAnchor: FC<{
     }
   }
   return (
-    <Link sx={{ cursor: 'pointer' }} href={props.href} target={'_blank'} onClick={clickLinkUrl}>
+    <Link
+      sx={{ cursor: 'pointer' }}
+      href={props.href}
+      target={'_blank'}
+      onClick={clickLinkUrl}
+    >
       {props.children}
     </Link>
   )

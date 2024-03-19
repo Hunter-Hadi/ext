@@ -676,13 +676,15 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                 status: 'complete',
                 metadata: {
                   isComplete: true,
-                  deepDive: {
-                    title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
+                  deepDive: [
+                    {
+                      title: {
+                        title: 'Deep dive',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value: 'Ask AI anything about the video...',
                     },
-                    value: 'Ask AI anything about the video...',
-                  },
+                  ],
                 },
                 includeHistory: false,
               },
@@ -786,14 +788,16 @@ export const allSummaryNavList: {
       tooltip:
         'client:sidebar__summary__nav__youtube_summary__tooltip__comment',
     },
-    // {
-    //   title: 'Show transcript',
-    //   titleIcon: 'ClosedCaptionOffOutlined',
-    //   key: 'transcript',
-    //   config: {
-    //     isAutoScroll: false,
-    //   },
-    // },
+    {
+      title: 'Show transcript',
+      titleIcon: 'ClosedCaptionOffOutlined',
+      key: 'transcript',
+      config: {
+        isAutoScroll: false,
+      },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
+    },
   ],
   DEFAULT_EMAIL_SUMMARY: [
     {
@@ -854,8 +858,9 @@ export const getContextMenuActionsByPageSummaryType = async (
           pageSummaryType
         ] || 'all'
     }
-    const summaryNavPrompt =
-      summaryGetPromptObject[pageSummaryType](summaryNavKey)
+    const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
+      summaryNavKey,
+    )
     const summaryNaTitle = getSummaryNavItemByType(
       pageSummaryType,
       summaryNavKey,
@@ -936,9 +941,9 @@ export const getSummaryNavActions: (
         action.parameters.ActionChatMessageOperationType === 'add' &&
         params.title
       ) {
-        const actionTitle = (
-          action.parameters?.ActionChatMessageConfig as IAIResponseMessage
-        )?.originalMessage?.metadata?.title
+        const actionTitle = (action.parameters
+          ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
+          ?.metadata?.title
         if (actionTitle) {
           actionTitle.title = params.title
         }
@@ -966,6 +971,8 @@ export const getSummaryNavActions: (
       return action
     })
     if (params.messageId) {
+      const isTranscript =
+        params.type === 'YOUTUBE_VIDEO_SUMMARY' && params.key === 'transcript'
       const defAction: ISetActionsType = [
         {
           type: 'CHAT_MESSAGE',
@@ -982,7 +989,7 @@ export const getSummaryNavActions: (
                     steps: [
                       {
                         title: 'Analyzing video',
-                        status: 'complete',
+                        status: isTranscript ? 'loading' : 'complete',
                         icon: 'SmartToy',
                         value: '{{CURRENT_WEBPAGE_TITLE}}',
                       },
@@ -991,17 +998,20 @@ export const getSummaryNavActions: (
                   title: {
                     title: params.title || 'Summary',
                   },
-                  deepDive: {
-                    title: {
-                      title: '',
-                      titleIcon: '',
-                    },
-                    value: '',
-                  },
+                  deepDive:
+                    params.type === 'YOUTUBE_VIDEO_SUMMARY'
+                      ? []
+                      : {
+                          title: {
+                            title: '',
+                            titleIcon: '',
+                          },
+                          value: '',
+                        },
                 },
                 content: {
                   title: {
-                    title: 'Summary',
+                    title: isTranscript ? 'noneShowContent' : 'Summary',
                   },
                   text: '',
                   contentType: 'text',

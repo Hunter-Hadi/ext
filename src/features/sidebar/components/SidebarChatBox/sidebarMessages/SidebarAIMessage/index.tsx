@@ -25,6 +25,7 @@ import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarCh
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
 
+import DeepDiveVIew from './DeepDiveVIew'
 import { SwitchSummaryActionNav } from './SwitchSummaryActionNav'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
@@ -59,10 +60,12 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         content: message.originalMessage?.content,
         messageIsComplete: message.originalMessage?.metadata?.isComplete,
         deepDive: message.originalMessage?.metadata?.deepDive,
-      }
+      } //nonsense:后面可以优化为数组根据type类型去渲染，并加载对应组件统一化更高
+
       if (Object.keys(currentRenderData?.sources || {}).length > 1) {
         currentRenderData.sourcesHasContent = true
       }
+
       if (message.originalMessage?.content?.text) {
         currentRenderData.answer =
           textHandler(message.originalMessage.content.text, {
@@ -185,84 +188,76 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 />
               </Stack>
             )}
-            {renderData.content && (
-              <Stack>
-                {!renderData.messageIsComplete ? (
-                  <Stack direction={'row'} alignItems="center" spacing={1}>
-                    <CircularProgress size={18} />
-                    <Typography
-                      sx={{
-                        color: 'primary.main',
-                        fontSize: 18,
-                        lineHeight: '20px',
-                      }}
-                    >
-                      {renderData.content.contentType === 'text' && 'Writing'}
-                      {renderData.content.contentType === 'image' &&
-                        'Creating image'}
-                    </Typography>
-                  </Stack>
-                ) : (
-                  <Stack direction={'row'} alignItems="center" spacing={1}>
-                    {renderData.content.title?.titleIcon ? (
-                      <Stack
-                        alignItems={'center'}
-                        justifyContent={'center'}
-                        width={16}
-                        height={16}
-                      >
-                        <ContextMenuIcon
-                          sx={{
-                            color: 'primary.main',
-                            fontSize:
-                              renderData.content.title?.titleIconSize || 18,
-                          }}
-                          icon={renderData.content.title?.titleIcon}
-                        />
-                      </Stack>
-                    ) : (
-                      <ReadIcon
+            {renderData.content &&
+              renderData.content.title?.title !== 'noneShowContent' && (
+                <Stack>
+                  {!renderData.messageIsComplete ? (
+                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                      <CircularProgress size={18} />
+                      <Typography
                         sx={{
                           color: 'primary.main',
-                          fontSize: 20,
+                          fontSize: 18,
+                          lineHeight: '20px',
                         }}
-                      />
-                    )}
-                    <Typography
-                      sx={{
-                        color: 'primary.main',
-                        fontSize: 18,
-                        lineHeight: '20px',
-                      }}
-                    >
-                      {renderData.content.title?.title || 'Answer'}
-                    </Typography>
-                  </Stack>
-                )}
-                {isWaitFirstAIResponseText && !renderData.messageIsComplete ? (
-                  <SidebarAIMessageSkeletonContent
-                    contentType={renderData.content.contentType}
-                  />
-                ) : (
-                  <SidebarAIMessageContent AIMessage={message} />
-                )}
-              </Stack>
-            )}
-            {renderData.deepDive && renderData.deepDive.title && (
-              <Stack spacing={1}>
-                {renderData.deepDive.title && (
-                  <MetadataTitleRender title={renderData.deepDive.title} />
-                )}
-                <div
-                  className={`markdown-body ${
-                    isDarkMode ? 'markdown-body-dark' : ''
-                  }`}
-                >
-                  <AppSuspenseLoadingLayout>
-                    <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
-                  </AppSuspenseLoadingLayout>
-                </div>
-              </Stack>
+                      >
+                        {renderData.content.contentType === 'text' && 'Writing'}
+                        {renderData.content.contentType === 'image' &&
+                          'Creating image'}
+                      </Typography>
+                    </Stack>
+                  ) : (
+                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                      {renderData.content.title?.titleIcon ? (
+                        <Stack
+                          alignItems={'center'}
+                          justifyContent={'center'}
+                          width={16}
+                          height={16}
+                        >
+                          <ContextMenuIcon
+                            sx={{
+                              color: 'primary.main',
+                              fontSize:
+                                renderData.content.title?.titleIconSize || 18,
+                            }}
+                            icon={renderData.content.title?.titleIcon}
+                          />
+                        </Stack>
+                      ) : (
+                        <ReadIcon
+                          sx={{
+                            color: 'primary.main',
+                            fontSize: 20,
+                          }}
+                        />
+                      )}
+                      <Typography
+                        sx={{
+                          color: 'primary.main',
+                          fontSize: 18,
+                          lineHeight: '20px',
+                        }}
+                      >
+                        {renderData.content.title?.title || 'Answer'}
+                      </Typography>
+                    </Stack>
+                  )}
+                  {isWaitFirstAIResponseText &&
+                  !renderData.messageIsComplete ? (
+                    <SidebarAIMessageSkeletonContent
+                      contentType={renderData.content.contentType}
+                    />
+                  ) : (
+                    <SidebarAIMessageContent AIMessage={message} />
+                  )}
+                </Stack>
+              )}
+            {renderData.deepDive && (
+              <DeepDiveVIew
+                data={renderData.deepDive}
+                isDarkMode={isDarkMode}
+              />
             )}
           </Stack>
         ) : (
@@ -285,7 +280,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     </Box>
   )
 }
-const MetadataTitleRender: FC<{
+export const MetadataTitleRender: FC<{
   title: IAIResponseOriginalMessageMetadataTitle
   fontSx?: SxProps
 }> = (props) => {

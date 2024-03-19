@@ -4,7 +4,7 @@ import React, { FC, useEffect, useRef } from 'react'
 interface IProps {
   children: React.ReactNode
   height: number
-  update: string
+  update?: string
 }
 
 const StackWrap = styled(Stack)({

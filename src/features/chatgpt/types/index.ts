@@ -98,6 +98,18 @@ export type IAIResponseOriginalMessageMetadataTitle = {
   titleIcon?: string
   titleIconSize?: number
 }
+export type IAIResponseOriginalMessageMetaDeep = {
+  title?: IAIResponseOriginalMessageMetadataTitle
+} & (
+  | {
+      type?: 'text'
+      value: string
+    }
+  | {
+      type: 'transcript'
+      value: string //为二阶段做数据准备
+    }
+)
 
 export interface IAIResponseOriginalMessage {
   id?: string
@@ -141,10 +153,9 @@ export interface IAIResponseOriginalMessage {
     artTextToImageMetadata?: IArtTextToImageMetadata
     artTextToImagePrompt?: string
     // summary底下的最后一句
-    deepDive?: {
-      title?: IAIResponseOriginalMessageMetadataTitle
-      value: string
-    }
+    deepDive?:
+      | IAIResponseOriginalMessageMetaDeep
+      | IAIResponseOriginalMessageMetaDeep[] //注意：有数组和对象类型，deepDive变化不能从 对象<=>数组 ，要一样类型才可以变化
     // 分享的类型, 用作在copy和share的时候
     shareType?: 'normal' | 'summary' | 'search' | 'art'
     // TODO

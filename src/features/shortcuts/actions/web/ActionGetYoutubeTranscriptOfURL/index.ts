@@ -1,4 +1,5 @@
 import {
+  IShortcutEngineExternalEngine,
   pushOutputToChat,
   templateParserDecorator,
   withLoadingDecorators,
@@ -7,6 +8,8 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+
+import { stopActionMessage } from '../../common'
 
 export class ActionGetYoutubeTranscriptOfURL extends Action {
   static type: ActionIdentifier = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
@@ -67,5 +70,9 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

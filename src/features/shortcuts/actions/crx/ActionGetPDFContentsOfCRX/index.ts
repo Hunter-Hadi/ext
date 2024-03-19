@@ -7,6 +7,8 @@ import {
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+
+import { stopActionMessage } from '../../common'
 export class ActionGetPDFContentsOfCRX extends Action {
   static type: ActionIdentifier = 'GET_PDF_CONTENTS_OF_CRX'
   constructor(
@@ -87,5 +89,9 @@ export class ActionGetPDFContentsOfCRX extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

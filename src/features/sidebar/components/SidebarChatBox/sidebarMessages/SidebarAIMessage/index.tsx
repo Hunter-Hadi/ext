@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -46,7 +46,14 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
   )
-
+  useEffect(() => {
+    console.log(
+      'simply props BaseSidebarAIMessage',
+      isRichAIMessage,
+      message.originalMessage,
+      liteMode,
+    )
+  }, [isRichAIMessage, message.originalMessage, liteMode])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {

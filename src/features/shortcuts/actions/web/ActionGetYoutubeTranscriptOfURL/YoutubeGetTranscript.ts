@@ -3,6 +3,7 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
+import { stopActionMessage } from '../../common'
 import { TranscriptResponse } from './YoutubeTranscript'
 
 /**
@@ -124,5 +125,9 @@ export class ActionYoutubeGetTranscript extends Action {
     } else {
       return `${minutesString}:${secondsString}`
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

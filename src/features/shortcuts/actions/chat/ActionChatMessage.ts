@@ -6,6 +6,8 @@ import { parametersParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+
+import { stopActionMessage } from '../common'
 export class ActionChatMessage extends Action {
   static type = 'CHAT_MESSAGE'
   constructor(
@@ -54,5 +56,9 @@ export class ActionChatMessage extends Action {
     } catch (e) {
       this.error = (e as any).message
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

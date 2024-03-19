@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Узагальнити електронного листа",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Узагальнити електронного листа (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Узагальнити електронного листа (Основні висновки)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Узагальнити електронного листа (Пункти дій)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Узагальнити електронного листа (Пункти дій)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Показати транскрипцію"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

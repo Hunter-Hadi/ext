@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "E-pasta kopsavilkums",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "E-pasta kopsavilkums (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-pasta kopsavilkums (Galvenie secinājumi)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-pasta kopsavilkums (Darbības vienumi)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-pasta kopsavilkums (Darbības vienumi)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rādīt transkriptu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

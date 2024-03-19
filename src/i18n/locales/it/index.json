@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Sommario email",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Sommario email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Sommario email (Punti chiave)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sommario email (Azioni)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sommario email (Azioni)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostra trascrizione"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

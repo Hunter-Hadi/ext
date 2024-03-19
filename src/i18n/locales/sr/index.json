@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Sumiraj email",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Sumiraj email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Sumiraj email (Ključne tačke)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sumiraj email (Akcijski elementi)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sumiraj email (Akcijski elementi)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Prikaži transkript"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

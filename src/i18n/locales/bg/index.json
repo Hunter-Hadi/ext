@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Обобщете имейла",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Обобщете имейла (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Обобщете имейла (Основни изводи)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Обобщете имейла (Елементи за действие)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Обобщете имейла (Елементи за действие)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Покажи транскрипцията"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

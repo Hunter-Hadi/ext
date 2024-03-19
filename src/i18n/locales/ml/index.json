@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "ഇമെയില്‍ സംഗ്രഹിക്കുക",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ഇമെയില്‍ സംഗ്രഹിക്കുക (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രധാന പരമ്പരകള്‍)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രവര്‍ത്തന പദങ്ങള്‍)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രവര്‍ത്തന പദങ്ങള്‍)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ട്രാൻസ്ക്രിപ്റ്റ് കാണിക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

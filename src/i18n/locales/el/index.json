@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Σύνοψη email",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Σύνοψη email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Σύνοψη email (Κυριότερα σημεία)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Σύνοψη email (Στοιχεία δράσης)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Σύνοψη email (Στοιχεία δράσης)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Εμφάνιση μεταγραφής"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

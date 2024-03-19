@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "이메일 요약",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "이메일 요약 (간략하게)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "이메일 요약 (주요 내용)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "이메일 요약 (액션 아이템)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "이메일 요약 (액션 아이템)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "자막 보기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

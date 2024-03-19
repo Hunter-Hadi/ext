@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Resum del correu electrònic",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Resum del correu electrònic (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resum del correu electrònic (Idees principals)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Resum del correu electrònic (Accions)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Resum del correu electrònic (Accions)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostra la transcripció"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

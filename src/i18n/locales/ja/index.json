@@ -657,7 +657,8 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "メールを要約する",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "メールを要約する（TL;DR）",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "メールを要約する（キーポイント）",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "メールを要約する（アクションアイテム）"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "メールを要約する（アクションアイテム）",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "トランスクリプトを表示"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

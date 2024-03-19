@@ -191,7 +191,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                 ActionChatMessageConfig: {
                   type: 'ai',
                   messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-                  text: `{{LAST_ACTION_OUTPUT}`,
+                  text: '',
                   originalMessage: {
                     status: 'complete',
                     metadata: {
@@ -203,13 +203,6 @@ export const youTubeSummaryCommentsChangeTool = async (
                         },
                         value: 'Ask AI anything about the video...',
                       },
-                    },
-                    content: {
-                      text: `{{LAST_ACTION_OUTPUT}}`,
-                      title: {
-                        title: 'Summary',
-                      },
-                      contentType: 'text',
                     },
                     includeHistory: false,
                   },

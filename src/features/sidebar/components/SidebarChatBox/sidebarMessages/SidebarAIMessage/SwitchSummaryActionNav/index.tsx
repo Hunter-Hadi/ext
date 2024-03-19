@@ -99,7 +99,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   return (
     <ButtonGroup variant="outlined" aria-label="Basic button group">
       {allSummaryNavList[summaryType].map((navItem) => (
-        <TextOnlyTooltip key={navItem.key} title={t(navItem.tooltip)}>
+        <TextOnlyTooltip key={navItem.key} title={t(navItem.tooltip as any)}>
           <Button
             disabled={loading}
             variant={

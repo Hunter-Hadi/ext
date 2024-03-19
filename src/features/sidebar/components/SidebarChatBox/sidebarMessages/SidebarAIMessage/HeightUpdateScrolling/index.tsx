@@ -78,24 +78,33 @@ export const HeightUpdateScrolling: FC<IProps> = ({
     }
   }, 100) // 100ms的延迟
   const computeMaxHeight = useMemo(() => {
-    //配置了计算父级容器的最大高度
-    if (scrollTopRef && computeConfig) {
-      const otherViewHeight = computeConfig.otherHeight
-      const minViewHeight = computeConfig.minHeight || 350
-      const messageListContainerHeight = scrollTopRef.current?.closest(
-        `${computeConfig.maxId}`,
-      )?.clientHeight
-      if (
-        messageListContainerHeight &&
-        messageListContainerHeight > otherViewHeight
-      ) {
-        return messageListContainerHeight - otherViewHeight
+    const computeMaxHeightThrottle = throttle(() => {
+      //配置了计算父级容器的最大高度
+      console.log('simply computeMaxHeightThrottle')
+      if (scrollTopRef && computeConfig) {
+        const otherViewHeight = computeConfig.otherHeight
+        const minViewHeight = computeConfig.minHeight || 200
+        const messageListContainerHeight = scrollTopRef.current?.closest(
+          `${computeConfig.maxId}`,
+        )?.clientHeight
+        if (
+          messageListContainerHeight &&
+          messageListContainerHeight > otherViewHeight
+        ) {
+          const currentHeight = messageListContainerHeight - otherViewHeight
+          if (currentHeight > minViewHeight) {
+            return currentHeight
+          } else {
+            return minViewHeight
+          }
+        } else {
+          return minViewHeight
+        }
       } else {
-        return minViewHeight
+        return 0
       }
-    } else {
-      return 0
-    }
+    }, 200)
+    return computeMaxHeightThrottle()
   }, [scrollTopRef.current, computeConfig])
   const maxHeight = computeMaxHeight || height || 350
 

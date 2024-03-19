@@ -11,6 +11,8 @@ import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
+import { stopActionMessage } from '../common'
+
 /**
  * @since 2023-09-11
  * @description 当用户聊天的内容超过12k的时候生成md5上传成docId, 并且切割12k给聊天的summary
@@ -155,5 +157,9 @@ export class ActionAnalyzeChatFile extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

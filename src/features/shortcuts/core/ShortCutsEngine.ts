@@ -286,7 +286,7 @@ class ShortCutsEngine implements IShortcutEngine {
 
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
     this.status = 'stop'
-    console.log('ShortCutEngine.stop')
+    console.log('ShortCutEngine.stop', this.getCurrentAction()?.stop)
     await this.getCurrentAction()?.stop(params)
   }
 

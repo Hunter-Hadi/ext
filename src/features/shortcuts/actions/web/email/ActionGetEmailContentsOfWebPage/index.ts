@@ -10,6 +10,8 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
+
+import { stopActionMessage } from '../../../common'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   constructor(
@@ -152,5 +154,9 @@ export class ActionGetEmailContentsOfWebPage extends Action {
     } catch (e) {
       this.error = (e as Error).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

@@ -971,8 +971,8 @@ export const getSummaryNavActions: (
       return action
     })
     if (params.messageId) {
-      const isTranscript =
-        params.type === 'YOUTUBE_VIDEO_SUMMARY' && params.key === 'transcript'
+      // const isTranscript =
+      //   params.type === 'YOUTUBE_VIDEO_SUMMARY' && params.key === 'transcript'
       const defAction: ISetActionsType = [
         {
           type: 'CHAT_MESSAGE',
@@ -989,7 +989,7 @@ export const getSummaryNavActions: (
                     steps: [
                       {
                         title: 'Analyzing video',
-                        status: isTranscript ? 'loading' : 'complete',
+                        status: 'loading',
                         icon: 'SmartToy',
                         value: '{{CURRENT_WEBPAGE_TITLE}}',
                       },
@@ -1011,7 +1011,7 @@ export const getSummaryNavActions: (
                 },
                 content: {
                   title: {
-                    title: isTranscript ? 'noneShowContent' : 'Summary',
+                    title: 'noneShowContent', //隐藏之前的summary 因为content无法被undefined重制为空
                   },
                   text: '',
                   contentType: 'text',

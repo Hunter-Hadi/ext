@@ -1,8 +1,11 @@
 import { orderBy } from 'lodash-es'
 
 import Action from '@/features/shortcuts/core/Action'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+
+import { stopActionMessage } from '../../common'
 
 /**
  * @since 2024-03-15
@@ -48,5 +51,9 @@ export class ActionYoutubeGetComments extends Action {
     } catch (e) {
       this.output = ''
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

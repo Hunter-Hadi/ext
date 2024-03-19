@@ -80,6 +80,61 @@ const getFacebookPostData = async (
   return null
 }
 
+// 获取Facebook视频帖子的作者，日期，内容
+const getFacebookVideoPostData = async (
+  postContainer: HTMLElement | null,
+): Promise<ISocialMediaPost | null> => {
+  if (postContainer) {
+    const postMetadata = postContainer?.firstElementChild?.children?.[1]
+    if (postMetadata) {
+      const postContent = postContainer?.lastElementChild as HTMLElement
+      const postAuthor = postMetadata?.querySelector<HTMLElement>(
+        'h2 [role="link"]',
+      )?.innerText
+      const postDate = postMetadata?.querySelector<HTMLElement>(
+        'span > span > span [aria-label][role="link"]',
+      )?.innerText
+      return {
+        author: postAuthor || '',
+        date: postDate || '',
+        content: postContent?.innerText || '',
+        title: '',
+      }
+    }
+  }
+  return null
+}
+
+// 获取Facebook Reel帖子的作者，日期，内容
+const getFacebookReelPostData = async (
+  postContainer: HTMLElement | null,
+  inputAssistantButton: HTMLElement,
+): Promise<ISocialMediaPost | null> => {
+  if (postContainer) {
+    const postAuthor = postContainer?.firstElementChild?.querySelector<HTMLElement>(
+      'h2 [role="link"][aria-label]',
+    )?.innerText
+    const postContent = postContainer?.children?.[1] as HTMLElement
+    if (postContent) {
+      const facebookExpandButton = postContent?.querySelector<HTMLElement>(
+        '[role="button"]',
+      )
+      if (facebookExpandButton) {
+        facebookExpandButton.click()
+        await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
+      }
+    }
+
+    return {
+      author: postAuthor || '',
+      date: '',
+      content: postContent?.innerText || '',
+      title: '',
+    }
+  }
+  return null
+}
+
 // get the previous level comment
 // temp redundant code, need to optimize:
 const getCommentsBox = (commentElement: HTMLElement, needFurther = false) => {
@@ -100,125 +155,142 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
   )
 
   // if dialog exists, then it should get post data from dialog
+  //
   // or click on explicit quick reply button, it should get post data from the surface
-  const facebookPostData = await getFacebookPostData(
-    postDialog ||
-      findParentEqualSelector('[role="article"]', inputAssistantButton, 30),
-    inputAssistantButton,
-  )
+  const facebookPostData =
+    (await getFacebookPostData(
+      postDialog ||
+        findParentEqualSelector(
+          '[role="article"]:not([aria-label])',
+          inputAssistantButton,
+          30,
+        ),
+      inputAssistantButton,
+    )) ||
+    (await getFacebookVideoPostData(
+      document.querySelector(
+        'div:has(> [data-pagelet="WatchPermalinkVideo"]) + div > div',
+      ) ||
+        document.querySelector(
+          'div[data-pagelet="TahoeRightRail"] > div > div',
+        ),
+    )) ||
+    (await getFacebookReelPostData(
+      document.querySelector('div[data-pagelet="ReelsCommentPane"]'),
+      inputAssistantButton,
+    ))
+
   if (facebookPostData) {
     const facebookSocialMediaPostContext = new SocialMediaPostContext(
       facebookPostData,
     )
-    if (postDialog) {
-      const commentSelector = 'div[role="article"][aria-label]'
-      const facebookReplyForm = findSelectorParent(
-        'form[role="presentation"]',
-        inputAssistantButton,
-      )
-      const isClickingOnButtonOfFormTextarea = facebookReplyForm?.contains(
-        inputAssistantButton,
-      )
 
-      let currentComment = findSelectorParentStrict(
-        `${commentSelector}${
-          isClickingOnButtonOfFormTextarea ? ':has(.xfmpgtx)' : ''
-        }`,
-        inputAssistantButton,
-      )
-      if (currentComment) {
-        let prevLevelComment: HTMLElement | null = null
-        let currentCommentDetail = await getFacebookCommentDetail(
-          currentComment,
+    const commentSelector = 'div[role="article"][aria-label]'
+    const facebookReplyForm = findSelectorParent(
+      'form[role="presentation"]',
+      inputAssistantButton,
+    )
+    const isClickingOnButtonOfFormTextarea = facebookReplyForm?.contains(
+      inputAssistantButton,
+    )
+
+    // if result is messy, should check it: `highlight` css name had changed
+    let currentComment = findSelectorParentStrict(
+      `${commentSelector}${
+        isClickingOnButtonOfFormTextarea ? ':has(.xfmpgtx)' : ''
+      }`,
+      inputAssistantButton,
+    )
+    if (currentComment) {
+      let prevLevelComment: HTMLElement | null = null
+      let currentCommentDetail = await getFacebookCommentDetail(currentComment)
+
+      const facebookPostComments: ICommentData[] = []
+
+      // if click on the quick reply button in form textarea
+      if (isClickingOnButtonOfFormTextarea) {
+        // it maybe chose the first comment by same level, and it is not the correct comment
+        const comments = Array.from(
+          getCommentsBox(currentComment)?.querySelectorAll<HTMLElement>(
+            commentSelector,
+          ) || [],
+        )
+        prevLevelComment = comments[0]
+        // third nesting comments
+        if (prevLevelComment === currentComment) {
+          comments.shift()
+          if (comments.length === 0) {
+            prevLevelComment = null
+          }
+        }
+
+        const mention = facebookReplyForm.querySelector<HTMLElement>(
+          'span[spellcheck="false"][data-lexical-text]',
         )
 
-        const facebookPostComments: ICommentData[] = []
-
-        // if click on the quick reply button in form textarea
-        if (isClickingOnButtonOfFormTextarea) {
-          // it maybe chose the first comment by same level, and it is not the correct comment
-          const comments = Array.from(
-            getCommentsBox(currentComment)?.querySelectorAll<HTMLElement>(
-              commentSelector,
-            ) || [],
-          )
-          prevLevelComment = comments[0]
-          // third nesting comments
-          if (prevLevelComment === currentComment) {
-            comments.shift()
-            if (comments.length === 0) {
-              prevLevelComment = null
-            }
-          }
-
-          const mention = facebookReplyForm.querySelector<HTMLElement>(
-            'span[spellcheck="false"][data-lexical-text]',
-          )
-
-          // need to fix: maybe will cause issues like `linkedinGetPostContent()` did
-          if (mention) {
-            for (let i = 0; i < comments.length; i++) {
-              const formerComment = comments[i]
-              const formerCommentDetail = await getFacebookCommentDetail(
-                formerComment,
-              )
-              if (formerCommentDetail.author === mention.innerText) {
-                currentComment = formerComment
-                currentCommentDetail = formerCommentDetail
-                break
-              }
-            }
-          }
-        }
-
-        facebookPostComments.push(currentCommentDetail)
-
-        if (!prevLevelComment || prevLevelComment === currentComment) {
-          prevLevelComment = findSelectorParentStrict(
-            commentSelector,
-            getCommentsBox(currentComment, true)!,
-          )
-        }
-
-        // eslint-disable-next-line no-constant-condition
-        while (currentComment && prevLevelComment) {
-          // if they are same level comment, then it should get the further parent comment to compare
-          if (
-            getCommentsBox(prevLevelComment, true) ===
-            getCommentsBox(currentComment, true)
-          ) {
-            const furtherPrevLevelComment = findSelectorParentStrict(
-              commentSelector,
-              prevLevelComment,
+        // need to fix: maybe will cause issues like `linkedinGetPostContent()` did
+        if (mention) {
+          for (let i = 0; i < comments.length; i++) {
+            const formerComment = comments[i]
+            const formerCommentDetail = await getFacebookCommentDetail(
+              formerComment,
             )
-            if (
-              !furtherPrevLevelComment ||
-              furtherPrevLevelComment.isSameNode(prevLevelComment)
-            ) {
+            if (formerCommentDetail.author === mention.innerText) {
+              currentComment = formerComment
+              currentCommentDetail = formerCommentDetail
               break
             }
-            facebookPostComments.unshift(
-              await getFacebookCommentDetail(furtherPrevLevelComment),
-            )
-            currentComment = furtherPrevLevelComment
-            prevLevelComment = findSelectorParentStrict(
-              commentSelector,
-              currentComment,
-            )
-          } else {
-            facebookPostComments.unshift(
-              await getFacebookCommentDetail(prevLevelComment),
-            )
-            currentComment = prevLevelComment
-            prevLevelComment = findSelectorParentStrict(
-              commentSelector,
-              currentComment,
-            )
           }
         }
-        if (facebookPostComments.length > 0) {
-          facebookSocialMediaPostContext.addCommentList(facebookPostComments)
+      }
+
+      facebookPostComments.push(currentCommentDetail)
+
+      if (!prevLevelComment || prevLevelComment === currentComment) {
+        prevLevelComment = findSelectorParentStrict(
+          commentSelector,
+          getCommentsBox(currentComment, true)!,
+        )
+      }
+
+      // eslint-disable-next-line no-constant-condition
+      while (currentComment && prevLevelComment) {
+        // if they are same level comment, then it should get the further parent comment to compare
+        if (
+          getCommentsBox(prevLevelComment, true) ===
+          getCommentsBox(currentComment, true)
+        ) {
+          const furtherPrevLevelComment = findSelectorParentStrict(
+            commentSelector,
+            prevLevelComment,
+          )
+          if (
+            !furtherPrevLevelComment ||
+            furtherPrevLevelComment.isSameNode(prevLevelComment)
+          ) {
+            break
+          }
+          facebookPostComments.unshift(
+            await getFacebookCommentDetail(furtherPrevLevelComment),
+          )
+          currentComment = furtherPrevLevelComment
+          prevLevelComment = findSelectorParentStrict(
+            commentSelector,
+            currentComment,
+          )
+        } else {
+          facebookPostComments.unshift(
+            await getFacebookCommentDetail(prevLevelComment),
+          )
+          currentComment = prevLevelComment
+          prevLevelComment = findSelectorParentStrict(
+            commentSelector,
+            currentComment,
+          )
         }
+      }
+      if (facebookPostComments.length > 0) {
+        facebookSocialMediaPostContext.addCommentList(facebookPostComments)
       }
     }
     return facebookSocialMediaPostContext.data

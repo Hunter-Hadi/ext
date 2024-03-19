@@ -213,7 +213,7 @@ const getFacebookButtonGroup = (
   }
 
   const isReplyComment = findParentEqualSelector(
-    'div[role="dialog"] div[role="article"][aria-label]',
+    'div[role="article"][aria-label]',
     keyElement,
     5,
   )

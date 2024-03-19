@@ -536,8 +536,8 @@ const InputAssistantButtonGroupConfig = {
         if ((postFooter.childElementCount === 3 && postFooter.children[1]?.querySelector('span[role="link"]'))) {
           return false
         }
-        if (!rootElement?.parentElement?.previousElementSibling?.querySelector('div[id][role="button"] span') && postFooter.lastElementChild?.innerHTML !== '') {
-          return false;
+        if (findSelectorParent('div > div > div > #focused-state-composer-submit > span > div > i', rootElement, 30)) {
+          return false
         }
       }
       return true
@@ -578,7 +578,7 @@ const InputAssistantButtonGroupConfig = {
       
       return true
     },
-    rootSelectors: ['div[role="dialog"] div[role="article"][aria-label] > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)'],
+    rootSelectors: ['div[role="article"][aria-label] > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)'],
     rootParentDeep: 0,
     rootStyle: 'position: relative;',
     rootWrapperTagName: 'div',
@@ -596,8 +596,8 @@ const InputAssistantButtonGroupConfig = {
           document.querySelector<HTMLButtonElement>(
             inputAssistantButtonSelector,
           )
-
-        findSelectorParent('div[role="article"][aria-label] > ul > li:nth-child(3) [role="button"]', inputAssistantButton as HTMLElement)?.click();
+          
+        findSelectorParent('div[role="article"][aria-label] ul[aria-hidden] > li:nth-child(3) [role="button"]', inputAssistantButton as HTMLElement)?.click();
       },
     },
     appendPosition: 0,

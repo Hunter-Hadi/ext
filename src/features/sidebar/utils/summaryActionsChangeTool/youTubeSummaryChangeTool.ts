@@ -185,21 +185,6 @@ export const youTubeSummaryCommentsChangeTool = async (
               },
             },
             {
-              type: 'SET_VARIABLE',
-              parameters: {
-                VariableName: 'SUMMARY_CONTENTS',
-              },
-            },
-            {
-              type: 'RENDER_TEMPLATE',
-              parameters: {
-                template: `#### Top Comments summary
-                
-{{SUMMARY_CONTENTS}}
-                    `,
-              },
-            },
-            {
               type: 'CHAT_MESSAGE',
               parameters: {
                 ActionChatMessageOperationType: 'update',

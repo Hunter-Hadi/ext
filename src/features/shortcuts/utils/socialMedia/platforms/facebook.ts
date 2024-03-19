@@ -111,7 +111,6 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       facebookPostData,
     )
     if (postDialog) {
-      debugger
       const commentSelector = 'div[role="article"][aria-label]'
       const facebookReplyForm = findSelectorParent(
         'form[role="presentation"]',

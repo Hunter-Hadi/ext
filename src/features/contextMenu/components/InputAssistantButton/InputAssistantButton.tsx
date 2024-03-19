@@ -243,7 +243,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             (() => buttonGroup[0].onSelectionEffect!(observerData))
           }
         >
-          <Box>
+          <Box style={{ width: '100%', height: 'inherit' }} component="div">
             <TextOnlyTooltip
               placement={placement}
               zIndex={2000000}

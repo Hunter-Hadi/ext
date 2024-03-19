@@ -55,7 +55,10 @@ const useClientChat = () => {
         (
           await port.postMessage({
             event: 'Client_chatGetFiles',
-            data: {},
+            data: {
+              conversationId:
+                question.conversationId || currentConversationIdRef.current,
+            },
           })
         )?.data || []
       question = mergeWithObject([

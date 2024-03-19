@@ -146,19 +146,16 @@ const useClientConversation = () => {
       loading: false,
     })
   }
-  const switchConversation = async (conversationId: string) => {
-    if (conversationId && currentConversationIdRef.current !== conversationId) {
-      const port = new ContentScriptConnectionV2()
-      // 复原background conversation
-      const result = await port.postMessage({
-        event: 'Client_changeConversation',
-        data: {
-          conversationId: conversationId,
-        },
-      })
-      return result.success
-    }
-    return true
+  const disposeBackgroundChatSystem = async (conversationId?: string) => {
+    const port = new ContentScriptConnectionV2()
+    // 复原background conversation
+    const result = await port.postMessage({
+      event: 'Client_disposeChatSystem',
+      data: {
+        conversationId: conversationId || currentConversationId,
+      },
+    })
+    return result.success
   }
   const updateConversation = async (
     conversation: Partial<IChatConversation>,
@@ -288,7 +285,7 @@ const useClientConversation = () => {
     clientWritingMessage,
     cleanConversation,
     createConversation,
-    switchConversation,
+    disposeBackgroundChatSystem,
     updateConversation,
     currentConversationId,
     clientConversation,

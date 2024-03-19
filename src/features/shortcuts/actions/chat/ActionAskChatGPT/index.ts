@@ -59,6 +59,7 @@ export class ActionAskChatGPT extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      debugger
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       // 是否启用了Response指定语言语言
@@ -104,7 +105,7 @@ export class ActionAskChatGPT extends Action {
       // 设置attachments
       this.question.meta.attachments = this.question.meta.attachments?.length
         ? this.question.meta.attachments
-        : await getAIProviderChatFiles()
+        : await getAIProviderChatFiles(this.question.conversationId)
       // Question的Meta信息
       const {
         // contextMenu的信息
@@ -392,13 +393,15 @@ export class ActionAskChatGPT extends Action {
     const port = new ContentScriptConnectionV2({
       runtime: 'client',
     })
-    await port.postMessage({
-      event: 'Client_abortAskChatGPTQuestion',
-      data: {
-        messageId: this.question?.messageId,
-      },
-    })
+
     if (this.question?.conversationId && this.question.meta?.outputMessageId) {
+      await port.postMessage({
+        event: 'Client_abortAskChatGPTQuestion',
+        data: {
+          messageId: this.question?.messageId,
+          conversationId: this.question?.conversationId,
+        },
+      })
       // 因为整个过程不一定是成功的
       // 更新消息的isComplete/sources.status
       await clientChatConversationModifyChatMessages(

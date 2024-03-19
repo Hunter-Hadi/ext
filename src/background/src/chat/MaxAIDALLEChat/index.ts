@@ -269,7 +269,6 @@ class MaxAIDALLEChat extends BaseChat {
   }
   async updateClientStatus() {
     if (this.active) {
-      console.log('Client_AuthAIProvider updateClientStatus', this.status)
       await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
         status: this.status,
       })

@@ -4,6 +4,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useCallback, useEffect, useMemo } from 'react'
+import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { PaginationConversation } from '@/background/src/chatConversations'
@@ -13,11 +14,13 @@ import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { AppLocalStorageState } from '@/store'
 
 interface IProps {
   sx?: SxProps
@@ -35,12 +38,14 @@ const ConversationList: FC<IProps> = ({
   emptyFeedback,
 }) => {
   const { smoothConversationLoading } = useSmoothConversationLoading()
+  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const {
     currentSidebarConversationId,
     currentSidebarConversationType,
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
+  const { disposeBackgroundChatSystem } = useClientConversation()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { updateAIProviderModel } = useAIProviderModels()
   const {
@@ -134,9 +139,12 @@ const ConversationList: FC<IProps> = ({
                   if (smoothConversationLoading) {
                     return
                   }
+                  let disposeBackgroundChatSystemConversationId = undefined
                   if (conversation.type === 'Summary') {
                     // do nothing
                   } else if (conversation.type === 'Chat') {
+                    disposeBackgroundChatSystemConversationId =
+                      appLocalStorage.sidebarSettings?.chat?.conversationId
                     await updateSidebarSettings({
                       chat: {
                         conversationId: conversation.id,
@@ -144,6 +152,8 @@ const ConversationList: FC<IProps> = ({
                     })
                     updateSidebarConversationType(conversation.type)
                   } else if (conversation.type === 'Search') {
+                    disposeBackgroundChatSystemConversationId =
+                      appLocalStorage.sidebarSettings?.search?.conversationId
                     await updateSidebarSettings({
                       search: {
                         conversationId: conversation.id,
@@ -151,6 +161,8 @@ const ConversationList: FC<IProps> = ({
                     })
                     updateSidebarConversationType(conversation.type)
                   } else if (conversation.type === 'Art') {
+                    disposeBackgroundChatSystemConversationId =
+                      appLocalStorage.sidebarSettings?.art?.conversationId
                     await updateSidebarSettings({
                       art: {
                         conversationId: conversation.id,
@@ -163,6 +175,14 @@ const ConversationList: FC<IProps> = ({
                       conversation.AIProvider,
                       conversation.AIModel,
                     )
+                  }
+                  // 异步释放Background Conversation
+                  if (disposeBackgroundChatSystemConversationId) {
+                    disposeBackgroundChatSystem(
+                      appLocalStorage.sidebarSettings?.chat?.conversationId,
+                    )
+                      .then()
+                      .catch()
                   }
                   onSelectConversation?.(conversation)
                 }}
@@ -317,7 +337,8 @@ const ConversationList: FC<IProps> = ({
             onDelete={() => {
               fetchPaginationConversations().then((conversations) => {
                 setPaginationConversations(conversations)
-                const needCleanConversationType = currentSidebarConversationType.toLowerCase()
+                const needCleanConversationType =
+                  currentSidebarConversationType.toLowerCase()
                 updateSidebarSettings({
                   [needCleanConversationType]: {
                     conversationId: '',

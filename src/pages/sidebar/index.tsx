@@ -1,9 +1,8 @@
 import Stack from '@mui/material/Stack'
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useMemo, useState } from 'react'
 
 import { ChatStatus } from '@/background/provider/chat'
 import { ChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
-import { pingDaemonProcess } from '@/features/chatgpt/utils'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
 import SidebarChatPanel from '@/features/sidebar/components/SidebarChatPanel'
@@ -38,9 +37,6 @@ const SidebarPage = () => {
     }
   }, [currentSidebarConversationId, chatStatus])
 
-  useEffect(() => {
-    pingDaemonProcess()
-  }, [])
   return (
     <Stack
       flex={1}

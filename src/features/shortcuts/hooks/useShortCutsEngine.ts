@@ -60,7 +60,9 @@ const useShortCutsEngine = () => {
         showChatBox()
       }
       try {
-        const isLoginSuccess = await pingUntilLogin()
+        const isLoginSuccess = await pingUntilLogin(
+          shortCutsEngine.conversationId,
+        )
         // 确保没有在运行
         if (
           isLoginSuccess &&

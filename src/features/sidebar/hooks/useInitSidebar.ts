@@ -56,7 +56,7 @@ const useInitSidebar = () => {
       currentSidebarConversationType &&
       (appState.open || isMaxAIImmersiveChatPage())
     ) {
-      const switchConversation = async (conversationId?: string) => {
+      const switchSidebarConversation = async (conversationId?: string) => {
         if (!conversationId) {
           return
         }
@@ -91,7 +91,7 @@ const useInitSidebar = () => {
           {
             if (sidebarSettingsRef.current?.chat?.conversationId) {
               // 切换回cache中的conversation
-              switchConversation(
+              switchSidebarConversation(
                 sidebarSettingsRef.current?.chat?.conversationId,
               )
             } else {
@@ -108,7 +108,7 @@ const useInitSidebar = () => {
           {
             if (sidebarSettingsRef.current?.search?.conversationId) {
               // 切换回cache中的conversation
-              switchConversation(
+              switchSidebarConversation(
                 sidebarSettingsRef.current?.search?.conversationId,
               )
             } else {
@@ -120,7 +120,7 @@ const useInitSidebar = () => {
           {
             if (sidebarSettingsRef.current?.art?.conversationId) {
               // 切换回cache中的conversation
-              switchConversation(
+              switchSidebarConversation(
                 sidebarSettingsRef.current?.art?.conversationId,
               )
             } else {

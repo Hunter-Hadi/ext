@@ -8,6 +8,7 @@ import {
   serializeUploadFile,
 } from '@/background/utils/uplpadFileProcessHelper'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
@@ -24,19 +25,16 @@ const port = new ContentScriptConnectionV2({
 })
 
 const useAIProviderUpload = () => {
+  const { currentConversationId } = useClientConversation()
   const [clientUploadedState, setClientUploadedState] = useRecoilState(
     ClientUploadedFilesState,
   )
   const { files } = clientUploadedState
 
-  const {
-    currentAIProviderModelDetail,
-    currentAIProvider,
-  } = useAIProviderModels()
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationId,
-  } = useSidebarSettings()
+  const { currentAIProviderModelDetail, currentAIProvider } =
+    useAIProviderModels()
+  const { currentSidebarConversationMessages, currentSidebarConversationId } =
+    useSidebarSettings()
   const AIProviderConfig = useMemo(() => {
     return currentAIProviderModelDetail?.uploadFileConfig
   }, [currentAIProviderModelDetail])
@@ -68,7 +66,9 @@ const useAIProviderUpload = () => {
       // 获取上传令牌
       // const { data: aiProviderUploadFileToken } = await port.postMessage({
       //   event: 'Client_chatGetUploadFileToken',
-      //   data: {},
+      //   data: {
+      //     conversationId: currentConversationId
+      //   },
       // })
       updateBlurDelayRef(true)
       const uploadingFiles = cloneDeep(newUploadFiles).map((item) => {
@@ -78,7 +78,11 @@ const useAIProviderUpload = () => {
         }
         return item
       })
-      console.log('useAIProviderUpload [aiProviderUploadFiles]', uploadingFiles)
+      console.log(
+        'useAIProviderUpload [aiProviderUploadFiles]',
+        uploadingFiles,
+        currentConversationId,
+      )
       setFiles(uploadingFiles, 'add')
       switch (currentAIProvider) {
         case 'OPENAI':
@@ -87,6 +91,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFiles',
               data: {
+                conversationId: currentConversationId,
                 files: uploadingFiles,
               },
             })
@@ -97,9 +102,8 @@ const useAIProviderUpload = () => {
             const newFiles = await Promise.all(
               newUploadFiles.map(async (item) => {
                 if (item.file && checkFileTypeIsImage(item.file)) {
-                  const bingCompressBase64Data = await bingCompressedImageDataAsync(
-                    item.file,
-                  )
+                  const bingCompressBase64Data =
+                    await bingCompressedImageDataAsync(item.file)
                   if (bingCompressBase64Data) {
                     item.base64Data = bingCompressBase64Data
                   }
@@ -110,6 +114,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFiles',
               data: {
+                conversationId: currentConversationId,
                 files: newFiles,
               },
             })
@@ -145,6 +150,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFiles',
               data: {
+                conversationId: currentConversationId,
                 files: newFiles,
               },
             })
@@ -164,6 +170,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFiles',
               data: {
+                conversationId: currentConversationId,
                 files: newFiles,
               },
             })
@@ -174,13 +181,14 @@ const useAIProviderUpload = () => {
         updateBlurDelayRef(false)
       }, 1000)
     },
-    [AIProviderConfig, currentAIProvider],
+    [AIProviderConfig, currentAIProvider, currentConversationId],
   )
   const aiProviderRemoveFiles = useCallback(
     async (files: IChatUploadFile[]) => {
       const result = await port.postMessage({
         event: 'Client_chatRemoveFiles',
         data: {
+          conversationId: currentConversationId,
           files,
         },
       })
@@ -226,7 +234,7 @@ const useAIProviderUpload = () => {
                     meta: {
                       status:
                         errorItem.uploadErrorMessage ===
-                          `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
+                        `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
                           ? 'info'
                           : 'error',
                     },

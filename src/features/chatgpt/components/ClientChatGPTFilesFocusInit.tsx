@@ -4,17 +4,18 @@ import { useRecoilState } from 'recoil'
 
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { useFocus } from '@/features/common/hooks/useFocus'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 
 const ClientChatGPTFilesFocusInit = () => {
+  const { currentConversationId, currentConversationIdRef } =
+    useClientConversation()
   const [clientUploadedState, setClientUploadedState] = useRecoilState(
     ClientUploadedFilesState,
   )
@@ -36,43 +37,43 @@ const ClientChatGPTFilesFocusInit = () => {
     blurDelayRef.current = blurDelay
   }, [blurDelay])
 
-  useFocus(() => {
-    port
-      .postMessage({
+  useEffect(() => {
+    if (!currentConversationId) {
+      return
+    }
+    const updateFiles = async () => {
+      const result = await port.postMessage({
         event: 'Client_chatGetFiles',
-        data: {},
+        data: {
+          conversationId: currentConversationId,
+        },
       })
-      .then((result) => {
-        if (blurDelayRef.current) {
-          return
-        }
-        if (isArray(result.data)) {
-          console.log('useAIProviderUpload [Client_chatGetFiles]', result.data)
-          setFiles(result.data)
-        }
-      })
-  })
-  useEffectOnce(() => {
-    port
-      .postMessage({
-        event: 'Client_chatGetFiles',
-        data: {},
-      })
-      .then((result) => {
-        if (isArray(result.data)) {
-          console.log('useAIProviderUpload [Client_chatGetFiles]', result.data)
-          setFiles(result.data)
-        }
-      })
-  })
+      if (isArray(result.data)) {
+        setFiles(result.data)
+      }
+    }
+    updateFiles()
+    window.addEventListener('focus', updateFiles)
+    return () => {
+      window.removeEventListener('focus', updateFiles)
+    }
+  }, [currentConversationId])
   useCreateClientMessageListener(async (event, data) => {
     switch (event as IChromeExtensionClientListenEvent) {
       case 'Client_listenUploadFilesChange': {
-        const { files } = data
+        const { files, conversationId } = data
         console.log(
           'useAIProviderUpload [Client_listenUploadFilesChange]',
           files,
+          conversationId,
         )
+        if (conversationId !== currentConversationIdRef.current) {
+          return {
+            success: false,
+            data: {},
+            message: 'conversationId not match',
+          }
+        }
         setFiles(files)
         return {
           success: true,

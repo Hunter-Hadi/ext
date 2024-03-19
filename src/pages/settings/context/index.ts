@@ -1,6 +1,11 @@
 import React from 'react'
 
-export const settingsPageRouterList = [
+export const settingsPageRouterList: Array<{
+  route: string
+  label: string
+  divider: boolean
+  devOnly?: boolean
+}> = [
   {
     route: '/me',
     label: 'left_menu__me',
@@ -61,7 +66,13 @@ export const settingsPageRouterList = [
     label: 'left_menu__help',
     divider: false,
   },
-] as const
+  {
+    route: '/dev-test-prompt',
+    label: 'Test prompt',
+    divider: false,
+    devOnly: true,
+  },
+]
 
 export type ISettingsRouteType =
   | (typeof settingsPageRouterList)[number]['route']

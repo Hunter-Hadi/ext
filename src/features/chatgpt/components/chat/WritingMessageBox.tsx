@@ -24,10 +24,8 @@ const WritingMessageBox: FC<{
 }> = (props) => {
   const theme = useCustomTheme()
   const { onChange } = props
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationMessages, currentSidebarConversationType } =
+    useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
@@ -45,11 +43,6 @@ const WritingMessageBox: FC<{
           currentSidebarConversationMessages,
           (message) => message.type === 'ai',
         )?.messageId || ''
-      console.log(
-        'AiInput aiMessages 从后往前找到最近的一条AI消息',
-        lastAIMessageIdRef.current,
-        currentSidebarConversationMessages,
-      )
     }
   }, [currentSidebarConversationMessages, currentSidebarConversationType])
   useEffect(() => {

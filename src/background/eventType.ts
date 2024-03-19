@@ -29,12 +29,13 @@ export type IChromeExtensionClientListenEvent =
 // 客户端发送event
 export type IChromeExtensionClientSendEvent =
   | 'Client_ping'
+  | 'Client_destroyWithLogout'
   | 'Client_backgroundRunFunction'
+  | 'Client_disposeChatSystem'
   | 'Client_getChromeExtensionCommands'
   | 'Client_checkChatGPTStatus'
   | 'Client_AuthAIProvider'
   | 'Client_createChatGPTConversation'
-  | 'Client_changeConversation'
   | 'Client_removeChatGPTConversation'
   | 'Client_askChatGPTQuestion'
   | 'Client_abortAskChatGPTQuestion'
@@ -94,7 +95,6 @@ export type IOpenAIChatSendEvent =
   | 'OpenAIDaemonProcess_taskResponse'
   | 'OpenAIDaemonProcess_pong'
   | 'OpenAIDaemonProcess_daemonProcessSessionExpired'
-  | 'Client_destroyWithLogout'
   | 'OpenAIDaemonProcess_pongFilesUpload'
   | 'OpenAIDaemonProcess_filesUploadResponse'
 

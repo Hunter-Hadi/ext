@@ -11,16 +11,18 @@ import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 
-export const pingDaemonProcess = async () => {
+export const pingDaemonProcess = async (conversationId: string) => {
   const port = new ContentScriptConnectionV2()
   const result = await port.postMessage({
     event: 'Client_checkChatGPTStatus',
-    data: {},
+    data: {
+      conversationId,
+    },
   })
   return result.success
 }
 
-export const pingUntilLogin = () => {
+export const pingUntilLogin = (conversationId: string) => {
   const port = new ContentScriptConnectionV2()
   return new Promise<boolean>((resolve) => {
     console.log('start pingUntilLogin')
@@ -30,7 +32,9 @@ export const pingUntilLogin = () => {
     const checkStatus = async () => {
       const result = await port.postMessage({
         event: 'Client_checkChatGPTStatus',
-        data: {},
+        data: {
+          conversationId,
+        },
       })
       if (result.success) {
         if (result?.data?.status !== 'success') {
@@ -58,7 +62,6 @@ export class ContentScriptConnectionV2 {
       runtime?: 'client' | 'daemon_process' | 'shortcut'
     } = {},
   ) {
-    console.log('[ContentScriptConnectionV2]: init')
     // 初始化运行环境
     this.runtime = options.runtime || 'client'
   }
@@ -102,13 +105,15 @@ export class ContentScriptConnectionV2 {
   }
 }
 
-export const getAIProviderChatFiles = async (): Promise<IChatUploadFile[]> => {
+export const getAIProviderChatFiles = async (
+  conversationId: string,
+): Promise<IChatUploadFile[]> => {
   const port = new ContentScriptConnectionV2({
     runtime: 'client',
   })
   const data = await port.postMessage({
     event: 'Client_chatGetFiles',
-    data: {},
+    data: { conversationId },
   })
   if (data.success) {
     return data.data.map((file: IChatUploadFile) => {

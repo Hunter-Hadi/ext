@@ -34,7 +34,6 @@ const getLiteChromeExtensionDBStorage = async (
         })
     }
   }
-  console.log('lite settings', settings)
   return settings
 }
 export default getLiteChromeExtensionDBStorage

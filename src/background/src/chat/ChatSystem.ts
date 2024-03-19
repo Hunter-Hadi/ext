@@ -25,11 +25,14 @@ import Log from '@/utils/Log'
 const log = new Log('Background/Chat/ChatSystem')
 
 class ChatSystem implements ChatSystemInterface {
+  conversationId: string
   currentProvider?: IAIProviderType
   adapters: {
     [key in IAIProviderType]?: ChatAdapterInterface
   } = {}
-  constructor() {}
+  constructor(conversationId: string) {
+    this.conversationId = conversationId
+  }
   get conversation() {
     return this.currentAdapter?.conversation
   }
@@ -171,8 +174,8 @@ class ChatSystem implements ChatSystemInterface {
     return await this.currentAdapter.clearFiles()
   }
   async updateClientFiles() {
-    console.log('Client_chatUploadFilesChange', this.chatFiles)
     backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
+      conversationId: this.conversationId,
       files: this.chatFiles,
     })
   }

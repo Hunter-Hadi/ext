@@ -20,13 +20,13 @@ import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/Thir
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import { useFocus } from '@/features/common/hooks/useFocus'
 import { usePrevious } from '@/features/common/hooks/usePrevious'
 import { AppDBStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
+  const { currentConversationId } = useClientConversation()
   const [authLogin] = useRecoilState(AuthState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const { chatStatus, updateChatStatus } = useClientConversation()
@@ -44,16 +44,23 @@ const ChatGPTStatusWrapper: FC = () => {
     }
   }, [chatStatus, prevStatus])
 
-  useFocus(() => {
-    console.log('gmain chatgpt onFocus')
-    pingDaemonProcess().then((res) => {
-      console.log('gmain chatgpt onFocus: pingDaemonProcess', res)
-      // 如果没有连接上，就需要重新加载
-      if (!res) {
-        updateChatStatus('needReload')
+  useEffect(() => {
+    const onFocused = () => {
+      if (!currentConversationId) {
+        return
       }
-    })
-  })
+      pingDaemonProcess(currentConversationId).then((res) => {
+        // 如果没有连接上，就需要重新加载
+        if (!res) {
+          updateChatStatus('needReload')
+        }
+      })
+    }
+    window.addEventListener('focus', onFocused)
+    return () => {
+      window.removeEventListener('focus', onFocused)
+    }
+  }, [currentConversationId])
   const memoMaskSx = useMemo(() => {
     return {
       position: 'absolute',

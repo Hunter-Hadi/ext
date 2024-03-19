@@ -255,9 +255,10 @@ class OpenAIChat extends BaseChat {
         AIModel: currentModel,
       },
     })
-    this.conversation = await ConversationManager.conversationDB.getConversationById(
-      conversationId,
-    )
+    this.conversation =
+      await ConversationManager.conversationDB.getConversationById(
+        conversationId,
+      )
     await this.sendDaemonProcessTask('OpenAIDaemonProcess_createConversation', {
       conversationId: this.conversation?.meta?.AIConversationId || '',
       model: this.conversation?.meta?.AIModel || '',
@@ -267,9 +268,10 @@ class OpenAIChat extends BaseChat {
   async removeConversation(conversationId: string) {
     if (this.conversation) {
       // 更新conversation, 获取实际的ChatGPT conversation id
-      this.conversation = await ConversationManager.conversationDB.getConversationById(
-        this.conversation.id,
-      )
+      this.conversation =
+        await ConversationManager.conversationDB.getConversationById(
+          this.conversation.id,
+        )
     }
     if (!this.conversation?.meta.AIConversationId) {
       await this.removeConversationWithCache()
@@ -311,8 +313,8 @@ class OpenAIChat extends BaseChat {
             } as any
           })
           this.chatFiles = []
-          console.log('Client_chatUploadFilesChange', this.chatFiles)
           backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
+            conversationId: this.conversation?.id,
             files: this.chatFiles,
           })
         }
@@ -321,10 +323,12 @@ class OpenAIChat extends BaseChat {
       // 初始化socket
       ChatGPTSocketManager.socketService.init(this.token || '')
       // 判断是否是socket
-      const isSocket = await ChatGPTSocketManager.socketService.detectChatGPTWebappIsSocket()
+      const isSocket =
+        await ChatGPTSocketManager.socketService.detectChatGPTWebappIsSocket()
       if (isSocket) {
         // 如果是socket, 在提问之前先连接socket
-        const isConnectSuccess = await ChatGPTSocketManager.socketService.connect()
+        const isConnectSuccess =
+          await ChatGPTSocketManager.socketService.connect()
         if (isConnectSuccess) {
           // 如果连接成功，监听question.messageId的消息
           ChatGPTSocketManager.socketService.onMessageIdListener(

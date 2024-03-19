@@ -66,6 +66,10 @@ const SettingsPerksPage = React.lazy(
 const SettingsSearchWithAIPage = React.lazy(
   () => import('@/pages/settings/pages/search_with_ai'),
 )
+const SettingsDevTestPrompt = React.lazy(
+  () => import('@/pages/settings/pages/dev_test_prompt'),
+)
+
 const SettingsApp: FC = () => {
   const { loaded, isLogin } = useAuthLogin()
   const onceScrollRef = useRef(false)
@@ -222,6 +226,9 @@ const SettingsApp: FC = () => {
                       {route === '/perks' && <SettingsPerksPage />}
                       {route === '/search-with-ai' && (
                         <SettingsSearchWithAIPage />
+                      )}
+                      {route === '/dev-test-prompt' && (
+                        <SettingsDevTestPrompt />
                       )}
                     </Stack>
                   </Stack>

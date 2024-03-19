@@ -233,6 +233,7 @@ export const clientAskAIQuestion = async (
       data: {
         taskId,
         question,
+        conversationId: question.conversationId,
       },
     })
   })

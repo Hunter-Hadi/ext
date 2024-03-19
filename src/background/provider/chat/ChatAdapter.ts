@@ -17,7 +17,8 @@ export type ChatStatus =
   | 'success'
   | 'needReload'
 
-export type IAIProviderType = typeof AI_PROVIDER_MAP[keyof typeof AI_PROVIDER_MAP]
+export type IAIProviderType =
+  (typeof AI_PROVIDER_MAP)[keyof typeof AI_PROVIDER_MAP]
 
 export type IChatGPTAskQuestionFunctionType = (
   taskId: string,

@@ -31,15 +31,15 @@ import ConversationManager, {
 } from '@/background/src/chatConversations'
 import { createBackgroundMessageListener } from '@/background/utils'
 import { AI_PROVIDER_MAP } from '@/constants'
-import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 
 import { ChatSystem } from './ChatSystem'
 
 export default class ChatSystemFactory {
   chatSystemMap: Map<string, ChatSystem> = new Map()
 
-  createChatSystem = () => {
-    const chatSystem = new ChatSystem()
+  createChatSystem = (conversationId: string) => {
+    const chatSystem = new ChatSystem(conversationId)
     const openAIChatAdapter = new ChatAdapter(
       new OpenAIChatProvider(new OpenAIChat()),
     )
@@ -90,7 +90,7 @@ export default class ChatSystemFactory {
   getChatSystem(conversationId: string) {
     const chatSystem = this.chatSystemMap.get(conversationId)
     if (!chatSystem) {
-      const newChatSystem = this.createChatSystem()
+      const newChatSystem = this.createChatSystem(conversationId)
       this.chatSystemMap.set(conversationId, newChatSystem)
       return newChatSystem
     }
@@ -124,12 +124,47 @@ export default class ChatSystemFactory {
               message: '',
             }
           }
+          case 'Client_destroyWithLogout': {
+            // dispose all the chat system
+            this.chatSystemMap.forEach((chatSystem) => {
+              chatSystem.destroy()
+            })
+            this.chatSystemMap.clear()
+            return {
+              success: true,
+              data: {},
+              message: '',
+            }
+          }
+          case 'Client_disposeChatSystem': {
+            // 释放chatSystem
+            const { conversationId } = data
+            const chatSystem = this.chatSystemMap.get(conversationId)
+            if (chatSystem) {
+              await chatSystem.destroy()
+              this.chatSystemMap.delete(conversationId)
+              console.log(
+                '[Background]新版Conversation 释放会话',
+                conversationId,
+                this.chatSystemMap,
+              )
+            }
+            return {
+              success: true,
+              data: {},
+              message: '',
+            }
+          }
         }
       }
       return undefined
     })
     createBackgroundMessageListener(async (runtime, event, data, sender) => {
       if (runtime === 'client') {
+        if (!data.conversationId) {
+          return undefined
+        }
+        const currentChatSystem = this.getChatSystem(data.conversationId)
         switch (event) {
           case 'Client_AuthAIProvider': {
             const { provider } = data
@@ -143,7 +178,6 @@ export default class ChatSystemFactory {
             }
           }
           case 'Client_checkChatGPTStatus': {
-            const currentChatSystem = this.getChatSystem(data.conversationId)
             return {
               success: true,
               data: {
@@ -152,38 +186,11 @@ export default class ChatSystemFactory {
               message: '',
             }
           }
-          case 'Client_changeConversation': {
-            const { conversationId } = data
-            if (conversationId) {
-              const conversation =
-                await ConversationManager.conversationDB.getConversationById(
-                  conversationId,
-                )
-              if (conversation) {
-                await currentChatSystem.switchAdapterWithConversation(
-                  conversation,
-                )
-                return {
-                  success: true,
-                  data: {
-                    conversationId,
-                  },
-                }
-              }
-            }
-            return {
-              success: false,
-              data: {},
-              message: '',
-            }
-          }
           case 'Client_askChatGPTQuestion':
             {
-              const currentChatSystem = this.getChatSystem(data.conversationId)
+              const { taskId, question } = data
               // 每次提问的时候尝试更新一下model的白名单
               updateRemoteAIProviderConfigAsync().then().catch()
-              const taskId = data.taskId
-              const question = data.question as IUserChatMessage
               console.log('[Background]新版Conversation 提问', question)
               if (question.conversationId) {
                 const conversation =
@@ -261,19 +268,11 @@ export default class ChatSystemFactory {
               message: '',
             }
           }
-          case 'Client_destroyWithLogout': {
-            await currentChatSystem.destroy()
-            return {
-              success: true,
-              data: {},
-              message: '',
-            }
-          }
           case 'Client_chatGetFiles':
             {
               return {
                 success: true,
-                data: this.getChatSystem(data.conversationId).chatFiles,
+                data: currentChatSystem.chatFiles,
                 message: '',
               }
             }
@@ -281,6 +280,18 @@ export default class ChatSystemFactory {
           case 'Client_chatUploadFiles':
             {
               const { files } = data
+              // 如果没提问直接上传文件, 则需要先切换adapter
+              if (!currentChatSystem.currentAdapter) {
+                const conversation =
+                  await ConversationManager.conversationDB.getConversationById(
+                    currentChatSystem.conversationId,
+                  )
+                if (conversation) {
+                  await currentChatSystem.switchAdapterWithConversation(
+                    conversation,
+                  )
+                }
+              }
               await currentChatSystem.uploadFiles(files)
               currentChatSystem.updateClientFiles()
               return {
@@ -292,6 +303,7 @@ export default class ChatSystemFactory {
             break
           case 'Client_chatAbortUploadFiles':
             {
+              // TODO: 上传文件的取消, 好像没有用到
               const { files } = data
               const success = await currentChatSystem.abortUploadFiles(
                 files.map((file: IChatUploadFile) => file.id),
@@ -342,6 +354,7 @@ export default class ChatSystemFactory {
             }
             break
           case 'Client_chatGetUploadFileToken': {
+            // TODO: 上传文件的令牌, 好像没有用到
             const token = await currentChatSystem.getUploadFileToken()
             return {
               success: true,

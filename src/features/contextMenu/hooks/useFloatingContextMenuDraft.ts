@@ -9,10 +9,8 @@ import { ClientWritingMessageState } from '@/features/sidebar/store'
  * AI持续生成的草稿
  */
 const useFloatingContextMenuDraft = () => {
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationMessages, currentSidebarConversationType } =
+    useSidebarSettings()
   const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const floatingContextMenuDraft = useRecoilValue(FloatingContextMenuDraftState)
   const aiMessages: IChatMessage[] = []
@@ -56,13 +54,6 @@ const useFloatingContextMenuDraft = () => {
         .map((message) => message.text)
         .join('\n\n')
         .replace(/\n{2,}/, '\n\n')
-      console.log(
-        'AiInput aiMessages',
-        lastAIMessageId,
-        aiMessages,
-        clientWritingMessage.writingMessage,
-        draft,
-      )
       return draft
     }
     return ''

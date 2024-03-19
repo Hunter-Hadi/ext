@@ -103,7 +103,7 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
   // or click on explicit quick reply button, it should get post data from the surface
   const facebookPostData = await getFacebookPostData(
     postDialog ||
-      findParentEqualSelector('[role="article"]', inputAssistantButton),
+      findParentEqualSelector('[role="article"]', inputAssistantButton, 30),
     inputAssistantButton,
   )
   if (facebookPostData) {

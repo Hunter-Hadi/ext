@@ -530,8 +530,19 @@ const InputAssistantButtonGroupConfig = {
       marginRight: '8px',
     },
   }, {
-    enable: true,
-    rootSelectors: ['div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div > div > div > div:nth-child(2) > div'],
+    enable: (rootElement) => {
+      const postFooter = findSelectorParent('div[data-visualcompletion="ignore-dynamic"] > div:nth-child(1)', rootElement)
+      if (postFooter) {
+        if ((postFooter.childElementCount === 3 && postFooter.children[1]?.querySelector('span[role="link"]'))) {
+          return false
+        }
+        if (!rootElement?.parentElement?.previousElementSibling?.querySelector('div[id][role="button"] span') && postFooter.lastElementChild?.innerHTML !== '') {
+          return false;
+        }
+      }
+      return true
+    },
+    rootSelectors: ['div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)'],
     rootParentDeep: 0,
     rootWrapperTagName: 'div',
     rootWrapperStyle: 'order: 1; flex: 1; padding: 6px 2px;',
@@ -564,11 +575,7 @@ const InputAssistantButtonGroupConfig = {
     },
   }, {
     enable: (rootElement) => {
-      // const commentBox = rootElement.parentElement.querySelector('.comments-comment-box');
-      // const disableComment = rootElement.querySelector('button[data-finite-scroll-hotkey="c"][disabled]')
-      // if (commentBox || disableComment) {
-      //   return false;
-      // }
+      
       return true
     },
     rootSelectors: ['div[role="dialog"] div[role="article"][aria-label] > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1)'],

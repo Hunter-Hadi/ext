@@ -556,8 +556,9 @@ export const MenuComponent = React.forwardRef<
 
             const keydownArrowLeftBackSelectItem = lastKeydownEvent.current
               ?.target as HTMLDivElement
-            const keydownArrowLeftBackSelectId =
-              keydownArrowLeftBackSelectItem?.getAttribute('data-lastid')
+            const keydownArrowLeftBackSelectId = keydownArrowLeftBackSelectItem?.getAttribute(
+              'data-lastid',
+            )
             if (keydownArrowLeftBackSelectId) {
               currentIndex = contextMenuIdList.findIndex(
                 (item) => item.floatingUIId === keydownArrowLeftBackSelectId,
@@ -635,8 +636,18 @@ export const MenuComponent = React.forwardRef<
       onMatch: isOpen ? setActiveIndex : undefined,
       activeIndex,
     })
-    const { getReferenceProps, getFloatingProps, getItemProps } =
-      useInteractions([hover, click, role, dismiss, listNavigation, typeahead])
+    const {
+      getReferenceProps,
+      getFloatingProps,
+      getItemProps,
+    } = useInteractions([
+      hover,
+      click,
+      role,
+      dismiss,
+      listNavigation,
+      typeahead,
+    ])
     // Event emitter allows you to communicate across tree components.
     // This effect closes all menus when an item gets clicked anywhere
     // in the tree.
@@ -849,15 +860,13 @@ export const MenuComponent = React.forwardRef<
                     if (lastParentDropdownMenuItemRef.current) {
                       // aria-controls=":r2m:" aria-activedescendant=":r2v:"
                       // 寻找二级菜单控制的第三集菜单的根节点
-                      const lastDropdownMenuId =
-                        lastParentDropdownMenuItemRef.current
-                          ?.getAttribute('aria-controls')
-                          ?.replace(/:/g, '\\:')
+                      const lastDropdownMenuId = lastParentDropdownMenuItemRef.current
+                        ?.getAttribute('aria-controls')
+                        ?.replace(/:/g, '\\:')
                       // 第三级菜单的容器
-                      const lastDropdownMenu =
-                        getAppContextMenuRootElement()?.querySelector(
-                          `#${lastDropdownMenuId}`,
-                        ) as HTMLDivElement
+                      const lastDropdownMenu = getAppContextMenuRootElement()?.querySelector(
+                        `#${lastDropdownMenuId}`,
+                      ) as HTMLDivElement
                       if (lastDropdownMenu) {
                         // 第三级菜单的选中项
                         const itemId = lastDropdownMenu
@@ -897,10 +906,9 @@ export const MenuComponent = React.forwardRef<
                     )
                     return
                   }
-                  const textareaEl =
-                    getAppContextMenuRootElement()?.querySelector(
-                      `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-                    ) as HTMLTextAreaElement
+                  const textareaEl = getAppContextMenuRootElement()?.querySelector(
+                    `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+                  ) as HTMLTextAreaElement
                   textareaEl?.focus()
                   // console.log(
                   //   `${
@@ -1036,8 +1044,9 @@ export const MenuComponent = React.forwardRef<
                           const target = event.currentTarget as HTMLDivElement
                           if (target.getAttribute('data-id')) {
                             lastParentDropdownMenuItemRef.current = target
-                            const nodeDetail =
-                              getFloatingUIDropdownItemDetail(target)
+                            const nodeDetail = getFloatingUIDropdownItemDetail(
+                              target,
+                            )
                             if (nodeDetail?.id || nodeDetail?.contextMenuId) {
                               // 关闭开着的group
                               if (nodeDetail.expandedSiblingMenuItem) {
@@ -1049,10 +1058,9 @@ export const MenuComponent = React.forwardRef<
                                 ) {
                                   return
                                 }
-                                const expandDropdownItemDetail =
-                                  getFloatingUIDropdownItemDetail(
-                                    nodeDetail.expandedSiblingMenuItem,
-                                  )
+                                const expandDropdownItemDetail = getFloatingUIDropdownItemDetail(
+                                  nodeDetail.expandedSiblingMenuItem,
+                                )
                                 if (
                                   expandDropdownItemDetail?.dropdownSelectedItem
                                 ) {

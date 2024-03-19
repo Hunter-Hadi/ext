@@ -182,18 +182,51 @@ const getFacebookButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  const isForm = findSelectorParent('form[method="POST"]', keyElement, 20)
-  if (isForm) {
+  const isCreatingPost = findSelectorParent(
+    'form[method="POST"]',
+    keyElement,
+    20,
+  )
+  if (isCreatingPost) {
     return [
       buttonGroupConfig.composeNewButton,
       buttonGroupConfig.refineDraftButton,
     ]
   }
+  const isCommentForm = findSelectorParent(
+    'form[role="presentation"]',
+    keyElement,
+    20,
+  )?.contains(keyElement)
+  if (isCommentForm) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  const isExplicitToolbar = findParentEqualSelector(
+    'div[data-visualcompletion="ignore-dynamic"]',
+    keyElement,
+  )
+  if (isExplicitToolbar) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+
+  const isReplyComment = findParentEqualSelector(
+    'div[role="dialog"] div[role="article"][aria-label]',
+    keyElement,
+    5,
+  )
+  if (isReplyComment) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+
   const replyForm = findSelectorParent('form[role="presentation"]', keyElement)
   if (replyForm?.getBoundingClientRect().width < 240) {
     // 宽度不够
     return []
   }
+
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,
@@ -220,16 +253,16 @@ const getInstagramButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  const isForm = findSelectorParent(
+  const inTheForm = findSelectorParent(
     'div[contenteditable="true"]',
     keyElement,
     20,
   )
   const isCreateDialog = findParentEqualSelector(
     'div[aria-label][role="dialog"]',
-    isForm,
+    inTheForm,
   )
-  if (isForm && isCreateDialog) {
+  if (inTheForm && isCreateDialog) {
     return [
       buttonGroupConfig.composeNewButton,
       buttonGroupConfig.refineDraftButton,

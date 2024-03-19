@@ -202,6 +202,7 @@ class InputAssistantButtonManager {
     })
     const shadowContainer = webComponentRoot.shadowRoot
     const container = document.createElement('div')
+    container.style.height = '100%';
     shadowContainer?.appendChild(container)
     log.info(`appendElement: `, rootWrapperElement)
     const observer = new MutationObserver(() => {

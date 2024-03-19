@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useRef } from 'react'
+import React, { FC, useMemo } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
@@ -16,26 +16,6 @@ interface IDeepDiveVIew {
   isDarkMode?: boolean
 }
 const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
-  const chatMessageRef = useRef<HTMLDivElement>(null)
-  const maxHeight = useMemo(() => {
-    if (chatMessageRef) {
-      const otherViewHeight = 380 //临时简单计算，待优化
-      const minViewHeight = 350
-      const messageListContainerHeight = chatMessageRef.current?.closest(
-        `#${messageListContainerId}`,
-      )?.clientHeight
-      if (
-        messageListContainerHeight &&
-        messageListContainerHeight > otherViewHeight
-      ) {
-        return messageListContainerHeight - otherViewHeight
-      } else {
-        return minViewHeight
-      }
-    } else {
-      return 0
-    }
-  }, [chatMessageRef.current])
   const deepDiveList = useMemo(() => {
     if (Array.isArray(props.data)) {
       return props.data
@@ -61,12 +41,16 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
           )}
           {deepDive.type === 'transcript' && (
             <div
-              ref={chatMessageRef}
               className={`markdown-body ${
                 props.isDarkMode ? 'markdown-body-dark' : ''
               }`}
             >
-              <HeightUpdateScrolling height={maxHeight}>
+              <HeightUpdateScrolling
+                computeConfig={{
+                  maxId: `#${messageListContainerId}`,
+                  otherHeight: 380,
+                }}
+              >
                 <CustomMarkdown>{deepDive.value}</CustomMarkdown>
               </HeightUpdateScrolling>
             </div>

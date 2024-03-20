@@ -26,7 +26,7 @@ import {
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -86,7 +86,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const [config, setConfig] = useState<ActionSetVariablesModalConfig | null>(
     null,
   )
-  const inputBoxRef = useRef<HTMLDivElement>()
+  const inputBoxRef = useRef<HTMLDivElement | null>(null)
   const [pendingPromises, setPendingPromises] = useState<
     Array<{
       resolve: (value?: any) => void
@@ -103,11 +103,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     clearErrors,
     formState: { errors },
   } = useForm<ActionSetVariablesConfirmData['data']>()
-  const [form, setForm] = useState<
-    {
-      [key in string]: ReturnType<typeof register>
-    }
-  >({})
+  const [form, setForm] = useState<{
+    [key in string]: ReturnType<typeof register>
+  }>({})
   const closeModal = async (isCancel: boolean) => {
     pendingPromises.forEach((promise) => {
       promise.resolve({
@@ -152,10 +150,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         } as ActionSetVariablesConfirmData)
       })
     } else {
-      await runActions(false)
+      await validateFormAndRunActions(false)
     }
   }
-  const runActions = async (autoExecute: boolean) => {
+  /**
+   * 校验表单并运行actions
+   * @param autoExecute
+   */
+  const validateFormAndRunActions = async (autoExecute: boolean) => {
     const isHaveEmptyValue =
       Object.values(getValues()).filter(
         (value) => String(value || '').trim() === '',
@@ -295,6 +297,13 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           }
         })
         .catch()
+        .finally(() => {
+          // 重置
+          reset()
+          setForm({})
+          setShow(false)
+          onClose?.()
+        })
     }
   }
   const currentModalConfig = useMemo(() => {
@@ -430,15 +439,23 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       })
     })
   })
-  const runActionsRef = useRef(runActions)
+  const runActionsRef = useRef(validateFormAndRunActions)
   useEffect(() => {
-    runActionsRef.current = runActions
-  }, [runActions])
+    runActionsRef.current = validateFormAndRunActions
+  }, [validateFormAndRunActions])
   useEffectOnce(() => {
     shortCutsEngineRef.current?.addListener((event, shortcutEngine) => {
       if (event === 'status') {
         if (shortcutEngine.status === 'complete') {
-          runActionsRef.current(true).then().catch()
+          if (
+            shortcutEngine.actions &&
+            shortcutEngine.actions.find(
+              (action: IAction) => action.type === 'SET_VARIABLES_MODAL',
+            )
+          ) {
+            // 确保在SET_VARIABLES_MODAL之后再运行
+            runActionsRef.current(true).then().catch()
+          }
         }
       }
     })
@@ -600,6 +617,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       </Stack>
       {/*Text*/}
       <Stack
+        component={'div'}
         direction={'row'}
         flexWrap={'wrap'}
         gap={2}

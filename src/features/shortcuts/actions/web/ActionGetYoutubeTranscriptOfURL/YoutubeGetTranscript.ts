@@ -26,8 +26,12 @@ export class ActionYoutubeGetTranscript extends Action {
   ) {
     console.log('simply params', params.LAST_ACTION_OUTPUT, engine)
     try {
+      const maxChars = this.computeMaxChars(
+        (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
+      )
       const timeTextList = this.splitArrayByWordCount(
         (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
+        maxChars,
       )
       if (timeTextList && timeTextList.length > 0) {
         this.output = this.generateTimestampedLinks(
@@ -41,13 +45,25 @@ export class ActionYoutubeGetTranscript extends Action {
       this.output = 'Sorry, No  Transcription Available... 😢'
     }
   }
-  splitArrayByWordCount(arr: TranscriptResponse[], maxChars = 515) {
+  computeMaxChars(dataArray: TranscriptResponse[]) {
+    let totalLength = 0
+
+    for (let i = 0; i < dataArray.length; i++) {
+      totalLength += dataArray[i].text.length
+    }
+    if (totalLength < 2000) {
+      return 350
+    } else {
+      return 500
+    }
+  }
+  splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
     const result: TranscriptResponse[] = [] // 存储分割后的结果
     let currentItem = { start: '', duration: 0, text: '' }
     let currentTextList: string[] = [] // 当前文本暂存列表
     let currentCharsCount = 0 // 当前字符计数
 
-    arr.forEach((item, index) => {
+    dataArray.forEach((item, index) => {
       // 如果当前item的text和已有的text累加不会超过maxChars，就继续合并
       if (currentCharsCount + item.text.length <= maxChars) {
         // 设置start时间为第一次合并的item时间
@@ -62,7 +78,7 @@ export class ActionYoutubeGetTranscript extends Action {
         currentCharsCount += item.text.length
 
         // 如果是数组的最后一个元素，也直接加到结果中
-        if (index === arr.length - 1) {
+        if (index === dataArray.length - 1) {
           currentItem.text = currentTextList.join(' ')
 
           result.push({

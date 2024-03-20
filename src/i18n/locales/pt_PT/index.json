@@ -659,7 +659,7 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumir email (Principais pontos)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumir email (Ações)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcrição",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Desculpe, o tempo atual de publicidade não pode ser redirecionado"
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Aguarde até que o anúncio em vídeo termine de ser reproduzido e tente novamente."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

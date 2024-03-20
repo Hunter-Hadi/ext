@@ -277,6 +277,18 @@ async function reactDevtools() {
   })
 }
 
+const throttleBuildFiles = (() => {
+  let timer
+  return async () => {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(async () => {
+      await buildFiles()
+    }, 1000)
+  }
+})()
+
 async function main() {
   if (!isProduction) {
     await hotReload()
@@ -287,7 +299,7 @@ async function main() {
     })
     watcher.on('change', async (path) => {
       console.log(`File change detected. Path: ${path}`)
-      await buildFiles()
+      await throttleBuildFiles()
     })
   } else {
     await buildFiles()

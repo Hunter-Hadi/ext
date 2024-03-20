@@ -152,7 +152,6 @@ const useInitChatGPTClient = () => {
         }
         break
       case 'Client_listenUpdateConversationMessages': {
-        debugger
         const { conversation, conversationId } = data
         if (conversation?.id) {
           setClientConversationMap((prevState) => {

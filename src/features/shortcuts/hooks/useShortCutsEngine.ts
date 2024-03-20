@@ -90,7 +90,6 @@ const useShortCutsEngine = () => {
               return shortCutsParameter
             },
           )
-          debugger
           await shortCutsEngine.run({
             parameters: shortCutsParameters,
             engine: {

@@ -59,7 +59,6 @@ export class ActionAskChatGPT extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      debugger
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       // 是否启用了Response指定语言语言

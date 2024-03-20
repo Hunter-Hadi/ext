@@ -46,7 +46,6 @@ const useClientChat = () => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
   const askAIQuestion = async (question: IAskAIQuestion) => {
-    debugger
     if (!question.meta?.attachments) {
       // 获取attachments
       const port = new ContentScriptConnectionV2({
@@ -290,7 +289,6 @@ const useClientChat = () => {
     const messages = conversation?.messages || []
     const lastRunActionsMessageId =
       messages.length > 0 ? messages[messages.length - 1].messageId : ''
-    debugger
     await updateConversation(
       {
         meta: {

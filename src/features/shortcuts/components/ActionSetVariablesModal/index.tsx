@@ -19,6 +19,7 @@ import { isProduction } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import {
   getSetVariablesModalSelectCache,
   setVariablesModalSelectCache,
@@ -120,6 +121,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onClose?.()
   }
   const validateForm = async () => {
+    debugger
     const success = await trigger()
     if (!success) {
       if (!show) {
@@ -154,6 +156,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     }
   }
   const runActions = async (autoExecute: boolean) => {
+    debugger
     const isHaveEmptyValue =
       Object.values(getValues()).filter(
         (value) => String(value || '').trim() === '',
@@ -283,6 +286,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           },
         })
       }
+      debugger
       await askAIWIthShortcuts(runActions)
         .then(() => {
           // done
@@ -404,6 +408,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }, [variables, title, systemVariables, modelKey, config])
   useEffectOnce(() => {
     OneShotCommunicator.receive('SetVariablesModal', (data: any) => {
+      debugger
       return new Promise((resolve, reject) => {
         if (data.task === 'open' && data.config?.modelKey === modelKey) {
           setShow(false)
@@ -432,15 +437,24 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   useEffect(() => {
     runActionsRef.current = runActions
   }, [runActions])
-  useEffectOnce(() => {
-    shortCutsEngine?.addListener((event, shortcutEngine) => {
+  useEffect(() => {
+    const shortcutsEngineListener: IShortcutEngineListenerType = (
+      event,
+      shortcutEngine,
+    ) => {
       if (event === 'status') {
         if (shortcutEngine.status === 'complete') {
           runActionsRef.current(true).then().catch()
         }
       }
-    })
-  })
+    }
+    if (shortCutsEngine) {
+      shortCutsEngine.addListener(shortcutsEngineListener)
+      return () => {
+        shortCutsEngine.removeListener(shortcutsEngineListener)
+      }
+    }
+  }, [shortCutsEngine])
   useEffect(() => {
     if (currentSidebarConversationType === 'Chat') {
       setHide(false)

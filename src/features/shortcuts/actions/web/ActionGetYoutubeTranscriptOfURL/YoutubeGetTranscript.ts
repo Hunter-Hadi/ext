@@ -52,7 +52,7 @@ export class ActionYoutubeGetTranscript extends Action {
       totalLength += dataArray[i].text.length
     }
     if (totalLength < 2000) {
-      return 300
+      return 350
     } else {
       return 500
     }

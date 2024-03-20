@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Tiivistä sähköposti (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Tiivistä sähköposti (Tärkeimmät asiat)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Tiivistä sähköposti (Toimenpiteet)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Näytä tekstitys"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Näytä tekstitys",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Odota, kunnes videomainos päättyy ja yritä sitten uudelleen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

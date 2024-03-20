@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Resumé af e-mail (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumé af e-mail (Vigtigste punkter)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumé af e-mail (Handlingspunkter)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkript"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkript",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vent venligst, indtil videoannoncen er færdig med at afspille, og prøv derefter igen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

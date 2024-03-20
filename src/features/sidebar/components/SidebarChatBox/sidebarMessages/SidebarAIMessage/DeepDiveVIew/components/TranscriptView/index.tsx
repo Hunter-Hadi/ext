@@ -1,27 +1,62 @@
 import { Button, Stack, Typography } from '@mui/material'
-import { FC, useEffect } from 'react'
+import { FC } from 'react'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import globalSnackbar from '@/utils/globalSnackbar'
 
 interface ITranscriptView {
   transcriptList: TranscriptResponse[]
 }
 const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
-  useEffect(() => {
-    console.log('simply transcriptListData', transcriptList)
-  }, [transcriptList])
+  const { t } = useTranslation(['client'])
 
   const clickLinkUrl = (time: string) => {
     if (time) {
       try {
+        const isAdvertisingTime = document.querySelector(
+          '#container .ytp-ad-text.ytp-ad-preview-text-modern',
+        )
+        if (
+          isAdvertisingTime &&
+          window.getComputedStyle(isAdvertisingTime).display !== 'none'
+        ) {
+          //在看广告无法跳过，请稍等
+          globalSnackbar.warning(
+            t(
+              'client:sidebar__summary__nav__youtube_summary__transcript__current__advertising',
+            ),
+            {
+              anchorOrigin: {
+                vertical: 'top',
+                horizontal: 'right',
+              },
+            },
+          )
+          return
+        }
+        let waitingTime = 0
+        const isSkipTime = document.querySelector(
+          '#container .ytp-ad-skip-button-modern.ytp-button',
+        ) as HTMLButtonElement
+        if (
+          isSkipTime &&
+          window.getComputedStyle(isSkipTime).display !== 'none'
+        ) {
+          waitingTime = 200
+          //跳过广告处理
+          isSkipTime.click()
+        }
         const video = document.querySelector(
           '#container video',
         ) as HTMLVideoElement
         if (video) {
           const timeNum = parseInt(time, 10)
           if (typeof timeNum === 'number') {
-            video.currentTime = timeNum
+            setTimeout(() => {
+              video.currentTime = timeNum
+            }, waitingTime)
           }
         }
       } catch (e) {

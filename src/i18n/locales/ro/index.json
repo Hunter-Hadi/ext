@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Rezumat email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Rezumat email (Idei principale)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Rezumat email (Elemente de acțiune)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afișează transcrierea"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afișează transcrierea",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vă rugăm să așteptați până când reclama video se termină și apoi încercați din nou."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

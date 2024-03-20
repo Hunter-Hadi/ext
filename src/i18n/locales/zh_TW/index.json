@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "總結郵件 (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "總結郵件 (重點摘要)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "總結郵件 (行動項目)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "顯示文字稿"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "顯示文字稿",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "請等待視頻廣告播放完畢，然後再試一次。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

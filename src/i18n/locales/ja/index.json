@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "メールを要約する（TL;DR）",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "メールを要約する（キーポイント）",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "メールを要約する（アクションアイテム）",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "トランスクリプトを表示"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "トランスクリプトを表示",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "動画広告が再生終了するまでお待ちください。その後、もう一度お試しください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

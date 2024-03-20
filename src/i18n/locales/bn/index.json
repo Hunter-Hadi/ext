@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ইমেল সংক্ষেপ করুন (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ইমেল সংক্ষেপ করুন (গুরুত্বপূর্ণ বিষয়সমূহ)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ইমেল সংক্ষেপ করুন (করনীয়াদি)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ট্রান্সক্রিপ্ট দেখান"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ট্রান্সক্রিপ্ট দেখান",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "দয়া করে ভিডিও বিজ্ঞাপন শেষ হওয়ার পরে আবার চেষ্টা করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

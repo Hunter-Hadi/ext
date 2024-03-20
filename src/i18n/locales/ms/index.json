@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Ringkaskan emel (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Ringkaskan emel (Pengambilan utama)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Ringkaskan emel (Item tindakan)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Tunjukkan transkrip"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Tunjukkan transkrip",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Sila tunggu sehingga iklan video selesai diputar dan cuba lagi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

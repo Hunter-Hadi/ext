@@ -25,7 +25,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
           //在看广告无法跳过，请稍等
           globalSnackbar.warning(
             t(
-              'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
+              'client:sidebar__summary__nav__youtube_summary__transcript__current__advertising',
             ),
             {
               anchorOrigin: {

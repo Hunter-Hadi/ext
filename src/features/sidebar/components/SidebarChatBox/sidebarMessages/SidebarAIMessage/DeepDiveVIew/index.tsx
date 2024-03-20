@@ -8,6 +8,7 @@ import { IAIResponseOriginalMessageMetaDeep } from '@/features/chatgpt/types'
 import { messageListContainerId } from '../../../SidebarChatBoxMessageListContainer'
 import { MetadataTitleRender } from '..'
 import { HeightUpdateScrolling } from '../HeightUpdateScrolling'
+import TranscriptView from './components/TranscriptView'
 
 interface IDeepDiveVIew {
   data:
@@ -15,6 +16,7 @@ interface IDeepDiveVIew {
     | IAIResponseOriginalMessageMetaDeep[]
   isDarkMode?: boolean
 }
+//DeepDiveVIew 名字需改变
 const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
   const deepDiveList = useMemo(() => {
     if (Array.isArray(props.data)) {
@@ -40,20 +42,16 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
             </div>
           )}
           {deepDive.type === 'transcript' && (
-            <div
-              className={`markdown-body ${
-                props.isDarkMode ? 'markdown-body-dark' : ''
-              }`}
+            <HeightUpdateScrolling
+              computeConfig={{
+                maxId: `#${messageListContainerId}`,
+                otherHeight: 380,
+              }}
             >
-              <HeightUpdateScrolling
-                computeConfig={{
-                  maxId: `#${messageListContainerId}`,
-                  otherHeight: 380,
-                }}
-              >
-                <CustomMarkdown>{deepDive.value}</CustomMarkdown>
-              </HeightUpdateScrolling>
-            </div>
+              <AppSuspenseLoadingLayout>
+                <TranscriptView transcriptList={deepDive.value} />
+              </AppSuspenseLoadingLayout>
+            </HeightUpdateScrolling>
           )}
         </Stack>
       ))}

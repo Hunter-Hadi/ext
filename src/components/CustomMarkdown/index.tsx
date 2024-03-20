@@ -72,7 +72,9 @@ const OverrideAnchor: FC<{
     if (isYoutubeTimeUrl) {
       e.preventDefault()
       try {
-        const video = document.querySelector('video')
+        const video = document.querySelector(
+          '#container video',
+        ) as HTMLVideoElement
         if (video && props.href) {
           const timeStr = getYouTubeUrlTime(props.href)
           if (typeof timeStr === 'number') {
@@ -84,16 +86,35 @@ const OverrideAnchor: FC<{
       }
     }
   }
-  return (
-    <Link
-      sx={{ cursor: 'pointer' }}
-      href={props.href}
-      target={'_blank'}
-      onClick={clickLinkUrl}
-    >
-      {props.children}
-    </Link>
-  )
+  if (isYoutubeTimeUrl) {
+    return (
+      <Link
+        sx={{
+          backgroundColor: '#9065B0!important',
+          padding: '3px 5px!important',
+          color: '#fff!important',
+          textDecoration: 'none!important',
+          borderRadius: '5px',
+          cursor: 'pointer',
+          marginRight: '5px!important',
+        }}
+        onClick={clickLinkUrl}
+      >
+        {props.children}
+      </Link>
+    )
+  } else {
+    return (
+      <Link
+        sx={{ cursor: 'pointer' }}
+        href={props.href}
+        target={'_blank'}
+        onClick={clickLinkUrl}
+      >
+        {props.children}
+      </Link>
+    )
+  }
 }
 
 type IHeadingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'

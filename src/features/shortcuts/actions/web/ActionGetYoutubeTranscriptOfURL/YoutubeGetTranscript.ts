@@ -33,16 +33,9 @@ export class ActionYoutubeGetTranscript extends Action {
         (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
         maxChars,
       )
-      if (timeTextList && timeTextList.length > 0) {
-        this.output = this.generateTimestampedLinks(
-          timeTextList,
-          window.location.href,
-        )
-        return
-      }
-      this.output = 'Sorry, No  Transcription Available... 😢'
+      this.output = JSON.stringify(timeTextList)
     } catch (e) {
-      this.output = 'Sorry, No  Transcription Available... 😢'
+      this.output = []
     }
   }
   computeMaxChars(dataArray: TranscriptResponse[]) {
@@ -107,21 +100,22 @@ export class ActionYoutubeGetTranscript extends Action {
 
     return result
   }
-  generateTimestampedLinks(dataArray: TranscriptResponse[], url: string) {
+  generateTimestampedLinks(dataArray: TranscriptResponse[]) {
     // 对数组中的每个对象进行映射操作
-    const links = dataArray.map((item) => {
+    const links: TranscriptResponse[] = dataArray.map((item) => {
       // 从数据中取出start和text
-      const { start, text } = item
-
+      const { start } = item
       // 格式化start时间为"小时:分钟:秒"的格式
       const timeString = this.formatSecondsAsTimestamp(start)
-
       // 返回格式化后的字符串
-      return `- [${timeString}](${url}&t=${start}s) ${text}\n\n`
+      return {
+        ...item,
+        start: timeString,
+      }
     })
 
     // 将所有的链接拼接成为一个长字符串，每个链接之间用换行符分隔
-    return links.join('')
+    return links
   }
 
   // 将秒数格式化为"小时:分钟:秒"的格式

@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Resumir correo electrónico (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumir correo electrónico (Puntos clave)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumir correo electrónico (Elementos de acción)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcripción"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcripción",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lo siento, no se puede redirigir el tiempo actual de publicidad"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

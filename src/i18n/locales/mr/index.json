@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ईमेल संक्षेपित करा (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ईमेल संक्षेपित करा (मुख्य घटक)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ईमेल संक्षेपित करा (क्रियाकलाप)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ट्रांसक्रिप्ट दर्शवा"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ट्रांसक्रिप्ट दर्शवा",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "माफ करा, वर्तमान जाहिरातीचा वेळ पुनर्निर्देशित केला जाऊ शकत नाही"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

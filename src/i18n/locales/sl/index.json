@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Povzetek e-pošte (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Povzetek e-pošte (Ključne ugotovitve)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Povzetek e-pošte (Naloge)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Prikaži prepis"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Prikaži prepis",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Oprostite, trenutnega oglaševanja ni mogoče preusmeriti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

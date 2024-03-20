@@ -77,7 +77,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
                 flex: 1,
               }}
             >
-              {(transcriptItem.text || '').trim().replace(/\n/g, ' ')}
+              {(transcriptItem.text || '').trim().replace(/\n/g, '')}
             </Typography>
           </Stack>
         ))}

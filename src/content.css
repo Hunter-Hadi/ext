@@ -47,6 +47,9 @@
   text-align: inherit;
   text-indent: 0;
 }
+.maxai-snackbar-container-root{
+  z-index: 2147483647!important;
+}
 /* max-ai placeholder end */
 
 /*notion start*/

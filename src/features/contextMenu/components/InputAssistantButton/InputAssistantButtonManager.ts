@@ -202,7 +202,7 @@ class InputAssistantButtonManager {
     })
     const shadowContainer = webComponentRoot.shadowRoot
     const container = document.createElement('div')
-    container.style.height = '100%';
+    container.style.height = '100%'
     shadowContainer?.appendChild(container)
     log.info(`appendElement: `, rootWrapperElement)
     const observer = new MutationObserver(() => {
@@ -235,6 +235,10 @@ class InputAssistantButtonManager {
       destroy: () => {
         observer.disconnect()
         rootWrapperElement.remove()
+        InputAssistantButtonElementRouteMap.delete(
+          `[maxai-input-assistant-button-id="${id}"]`,
+        )
+        InputAssistantButtonElementRouteMap.delete(rootElement)
       },
       renderRootElement: container,
       observer,

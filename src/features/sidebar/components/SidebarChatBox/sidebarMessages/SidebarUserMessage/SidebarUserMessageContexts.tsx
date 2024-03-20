@@ -63,11 +63,18 @@ const SidebarUserMessageContexts: FC<{
               <Stack
                 py={0.5}
                 borderRadius={1}
-                maxHeight={430}
+                maxHeight={520}
                 overflow={'auto'}
               >
                 <Stack gap={1}>
                   {attachmentImages.map((attachment, index) => {
+                    let showDivider = false
+                    if (
+                      index !== attachmentImages.length - 1 ||
+                      (contexts && contexts?.length > 0)
+                    ) {
+                      showDivider = true
+                    }
                     if (!attachment.uploadedUrl) {
                       return null
                     }
@@ -85,7 +92,7 @@ const SidebarUserMessageContexts: FC<{
                           width={384}
                           height={384}
                         />
-                        <Divider sx={{ my: 0.5 }} />
+                        {showDivider && <Divider sx={{ my: 0.5 }} />}
                       </Fragment>
                     )
                   })}

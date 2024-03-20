@@ -182,6 +182,14 @@ const getFacebookButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
+  // Facebook Reels
+  const isFacebookReelPage = findParentEqualSelector(
+    'div:has(div>div[data-pagelet="Reels"]) + div > div:nth-child(1) > div:nth-child(1) > div:nth-child(1):not([aria-label])',
+    keyElement,
+  )
+  if (isFacebookReelPage) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
   const isCreatingPost = findSelectorParent(
     'form[method="POST"]',
     keyElement,
@@ -220,7 +228,6 @@ const getFacebookButtonGroup = (
   if (isReplyComment) {
     return [buttonGroupConfig.composeReplyButton]
   }
-
   const replyForm = findSelectorParent('form[role="presentation"]', keyElement)
   if (replyForm?.getBoundingClientRect().width < 240) {
     // 宽度不够

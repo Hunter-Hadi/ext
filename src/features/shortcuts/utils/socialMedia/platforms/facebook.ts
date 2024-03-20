@@ -116,6 +116,7 @@ const getFacebookReelPostData = async (
     )?.innerText
     const postContent = postContainer?.children?.[1] as HTMLElement
     if (postContent) {
+      // need to fix: when get reel post data again, at that time it becomes a collapse button
       const facebookExpandButton = postContent?.querySelector<HTMLElement>(
         '[role="button"]',
       )

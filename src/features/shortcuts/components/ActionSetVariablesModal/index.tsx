@@ -27,7 +27,7 @@ import {
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import SystemVariableSelect from '@/features/shortcuts/components/SystemVariableSelect'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
@@ -87,7 +87,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   const [config, setConfig] = useState<ActionSetVariablesModalConfig | null>(
     null,
   )
-  const inputBoxRef = useRef<HTMLDivElement>()
+  const inputBoxRef = useRef<HTMLDivElement | null>(null)
   const [pendingPromises, setPendingPromises] = useState<
     Array<{
       resolve: (value?: any) => void
@@ -121,7 +121,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     onClose?.()
   }
   const validateForm = async () => {
-    debugger
     const success = await trigger()
     if (!success) {
       if (!show) {
@@ -152,11 +151,14 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         } as ActionSetVariablesConfirmData)
       })
     } else {
-      await runActions(false)
+      await validateFormAndRunActions(false)
     }
   }
-  const runActions = async (autoExecute: boolean) => {
-    debugger
+  /**
+   * 校验表单并运行actions
+   * @param autoExecute
+   */
+  const validateFormAndRunActions = async (autoExecute: boolean) => {
     const isHaveEmptyValue =
       Object.values(getValues()).filter(
         (value) => String(value || '').trim() === '',
@@ -286,7 +288,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           },
         })
       }
-      debugger
       await askAIWIthShortcuts(runActions)
         .then(() => {
           // done
@@ -297,6 +298,13 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
           }
         })
         .catch()
+        .finally(() => {
+          // 重置
+          reset()
+          setForm({})
+          setShow(false)
+          onClose?.()
+        })
     }
   }
   const currentModalConfig = useMemo(() => {
@@ -408,7 +416,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
   }, [variables, title, systemVariables, modelKey, config])
   useEffectOnce(() => {
     OneShotCommunicator.receive('SetVariablesModal', (data: any) => {
-      debugger
       return new Promise((resolve, reject) => {
         if (data.task === 'open' && data.config?.modelKey === modelKey) {
           setShow(false)
@@ -433,18 +440,24 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       })
     })
   })
-  const runActionsRef = useRef(runActions)
+  const validateFormAndRunActionsRef = useRef(validateFormAndRunActions)
   useEffect(() => {
-    runActionsRef.current = runActions
-  }, [runActions])
+    validateFormAndRunActionsRef.current = validateFormAndRunActions
+  }, [validateFormAndRunActions])
   useEffect(() => {
     const shortcutsEngineListener: IShortcutEngineListenerType = (
       event,
       shortcutEngine,
     ) => {
       if (event === 'status') {
-        if (shortcutEngine.status === 'complete') {
-          runActionsRef.current(true).then().catch()
+        if (
+          shortcutEngine.actions &&
+          shortcutEngine.actions.find(
+            (action: IAction) => action.type === 'SET_VARIABLES_MODAL',
+          )
+        ) {
+          // 确保在SET_VARIABLES_MODAL之后再运行
+          validateFormAndRunActionsRef.current(true).then().catch()
         }
       }
     }
@@ -612,6 +625,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       </Stack>
       {/*Text*/}
       <Stack
+        component={'div'}
         direction={'row'}
         flexWrap={'wrap'}
         gap={2}

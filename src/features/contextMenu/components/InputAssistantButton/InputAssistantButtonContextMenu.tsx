@@ -1,6 +1,5 @@
 import createCache, { EmotionCache } from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
-import { IShortCutsParameter } from '2@/features/shortcuts/hooks/useShortCutsParameters'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, {
   FC,
@@ -25,7 +24,9 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
@@ -36,16 +37,27 @@ interface InputAssistantButtonContextMenuProps {
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
+  onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
-const InputAssistantButtonContextMenu: FC<
-  InputAssistantButtonContextMenuProps
-> = (props) => {
-  const { buttonKey, children, rootId, root, permissionWrapperCardSceneType } =
-    props
-  const [clickContextMenu, setClickContextMenu] =
-    useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType, updateSidebarConversationType } =
-    useSidebarSettings()
+const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> = (
+  props,
+) => {
+  const {
+    buttonKey,
+    children,
+    rootId,
+    root,
+    permissionWrapperCardSceneType,
+    onSelectionEffect
+  } = props
+  const [
+    clickContextMenu,
+    setClickContextMenu,
+  ] = useState<IContextMenuItem | null>(null)
+  const {
+    currentSidebarConversationType,
+    updateSidebarConversationType,
+  } = useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
@@ -132,7 +144,11 @@ const InputAssistantButtonContextMenu: FC<
         .catch()
         .finally(() => {
           isRunningRef.current = false
+
+          // temporary support onSelectionEffect
+          onSelectionEffect && onSelectionEffect();
         })
+
     }
   }, [clickContextMenu])
   useEffect(() => {

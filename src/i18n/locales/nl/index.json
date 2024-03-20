@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Het snelste model van Anthropic in zijn intelligentieklasse, Haiku is een veelzijdige oplossing voor een breed scala aan dagelijkse taken.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Upgrade om toegang te krijgen tot claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Het snelste model van Anthropic in zijn intelligentieklasse, Haiku is een veelzijdige oplossing voor een breed scala aan dagelijkse taken.",
-    "sidebar__art__advanced__copilot__description": "Heb volledige controle over kunstgeneratie zonder optimalisatie van door AI aangedreven kunstprompts."
+    "sidebar__art__advanced__copilot__description": "Heb volledige controle over kunstgeneratie zonder optimalisatie van door AI aangedreven kunstprompts.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Pagina samenvatten",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Pagina samenvatten (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Pagina samenvatten (Belangrijkste punten)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF samenvatten",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF samenvatten (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF samenvatten (Belangrijkste punten)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Video samenvatten",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Reacties samenvatten",
+    "sidebar__summary__nav__email_summary__tooltip__default": "E-mail samenvatten",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "E-mail samenvatten (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-mail samenvatten (Belangrijkste punten)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-mail samenvatten (Actiepunten)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Toon transcriptie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropicin nopein malli älykkyyden luokassaan, Haiku on monipuolinen ratkaisu laajaan valikoimaan jokapäiväisiä tehtäviä.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Päivitä pääsy claude-3-haikuun",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropicin nopein malli älykkyyden luokassaan, Haiku on monipuolinen ratkaisu laajaan valikoimaan jokapäiväisiä tehtäviä.",
-    "sidebar__art__advanced__copilot__description": "Hallitse taiteen luomista täysin ilman AI:n ohjaamien taideaiheiden optimointia."
+    "sidebar__art__advanced__copilot__description": "Hallitse taiteen luomista täysin ilman AI:n ohjaamien taideaiheiden optimointia.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Tiivistä sivu",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Tiivistä sivu (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Tiivistä sivu (Tärkeimmät asiat)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Tiivistä PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Tiivistä PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Tiivistä PDF (Tärkeimmät asiat)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Tiivistä video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Tiivistä kommentit",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Tiivistä sähköposti",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Tiivistä sähköposti (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Tiivistä sähköposti (Tärkeimmät asiat)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Tiivistä sähköposti (Toimenpiteet)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Näytä tekstitys"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

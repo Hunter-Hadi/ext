@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "అంథ్రోపిక్‌లో తేలికపడే మోడల్, హైకు ఒక వివిధ ప్రశ్నల విస్తారంగా ఉపయోగించడానికి ఒక అదనపు పరిష్కారం.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "క్లోడ్-3-హైకుకు ప్రాధాన్యత పొందడానికి నవీకరణ",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "అంథ్రోపిక్‌లో తేలికపడే మోడల్, హైకు ఒక వివిధ ప్రశ్నల విస్తారంగా ఉపయోగించడానికి ఒక అదనపు పరిష్కారం.",
-    "sidebar__art__advanced__copilot__description": "AI-ప్రముఖ కలా ప్రాంప్ట్స్ ఆప్టిమైజేషన్ లేకుండా కలా సృష్టిని పూర్తిగా నియంత్రించండి."
+    "sidebar__art__advanced__copilot__description": "AI-ప్రముఖ కలా ప్రాంప్ట్స్ ఆప్టిమైజేషన్ లేకుండా కలా సృష్టిని పూర్తిగా నియంత్రించండి.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "పేజీని సంగ్రహించండి",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "పేజీని సంగ్రహించండి (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "పేజీని సంగ్రహించండి (ముఖ్య తెలుసుకొనుట)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDFని సంగ్రహించండి",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDFని సంగ్రహించండి (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDFని సంగ్రహించండి (ముఖ్య తెలుసుకొనుట)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "వీడియోని సంగ్రహించండి",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "వ్యాఖ్యలను సంగ్రహించండి",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ఇమెయిల్ని సంగ్రహించండి",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ఇమెయిల్ని సంగ్రహించండి (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ఇమెయిల్ని సంగ్రహించండి (ముఖ్య తెలుసుకొనుట)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ఇమెయిల్ని సంగ్రహించండి (చర్యల అంశాలు)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ట్రాన్స్క్రిప్ట్ చూపించు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

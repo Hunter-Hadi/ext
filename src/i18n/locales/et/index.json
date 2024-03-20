@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropicu kõige kiirem mudel oma intelligentsusklassis, Haiku on mitmekülgne lahendus laiale valikule igapäevaseid ülesandeid.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Täiusta juurdepääsuks claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropicu kõige kiirem mudel oma intelligentsusklassis, Haiku on mitmekülgne lahendus laiale valikule igapäevaseid ülesandeid.",
-    "sidebar__art__advanced__copilot__description": "Omage täielikku kontrolli kunstiloomingu üle ilma AI-toega kunstipromptide optimeerimiseta."
+    "sidebar__art__advanced__copilot__description": "Omage täielikku kontrolli kunstiloomingu üle ilma AI-toega kunstipromptide optimeerimiseta.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Lehekülje kokkuvõte",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Lehekülje kokkuvõte (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Lehekülje kokkuvõte (Peamised mõtted)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF-i kokkuvõte",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF-i kokkuvõte (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF-i kokkuvõte (Peamised mõtted)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Video kokkuvõte",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Kommentaaride kokkuvõte",
+    "sidebar__summary__nav__email_summary__tooltip__default": "E-kirja kokkuvõte",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "E-kirja kokkuvõte (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-kirja kokkuvõte (Peamised mõtted)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-kirja kokkuvõte (Tegevused)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Kuva transkript"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

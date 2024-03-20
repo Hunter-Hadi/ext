@@ -166,7 +166,6 @@ export type IThirdProviderSettings = {
   } & IArtTextToImageMetadata
 }
 
-
 export interface IChromeExtensionLocalStorage {
   sidebarSettings?: {
     chat?: {

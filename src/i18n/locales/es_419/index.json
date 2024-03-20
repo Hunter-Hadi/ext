@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "El modelo más rápido de Anthropic en su clase de inteligencia, Haiku es una solución versátil para una amplia gama de tareas cotidianas.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Actualiza para acceder a claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "El modelo más rápido de Anthropic en su clase de inteligencia, Haiku es una solución versátil para una amplia gama de tareas cotidianas.",
-    "sidebar__art__advanced__copilot__description": "Ten control total sobre la generación de arte sin optimización de sugerencias de arte impulsadas por IA."
+    "sidebar__art__advanced__copilot__description": "Ten control total sobre la generación de arte sin optimización de sugerencias de arte impulsadas por IA.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Resumir página",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Resumir página (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Resumir página (Puntos clave)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Resumir PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Resumir PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Resumir PDF (Puntos clave)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Resumir video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Resumir comentarios",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Resumir correo electrónico",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Resumir correo electrónico (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumir correo electrónico (Puntos clave)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumir correo electrónico (Acciones)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcripción"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

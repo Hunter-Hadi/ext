@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic leggyorsabb modellje az intelligencia osztályában, a Haiku sokoldalú megoldás széles körű mindennapi feladatokhoz.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Frissítés a claude-3-haiku eléréséhez",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic leggyorsabb modellje az intelligencia osztályában, a Haiku sokoldalú megoldás széles körű mindennapi feladatokhoz.",
-    "sidebar__art__advanced__copilot__description": "Teljes irányítás az AI által támogatott művészeti generálás felett anélkül, hogy optimalizálnánk az AI által vezérelt művészeti promptokat."
+    "sidebar__art__advanced__copilot__description": "Teljes irányítás az AI által támogatott művészeti generálás felett anélkül, hogy optimalizálnánk az AI által vezérelt művészeti promptokat.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Oldal összefoglalása",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Oldal összefoglalása (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Oldal összefoglalása (Kulcsfontosságú üzenetek)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF összefoglalása",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF összefoglalása (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF összefoglalása (Kulcsfontosságú üzenetek)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Videó összefoglalása",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Hozzászólások összefoglalása",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Email összefoglalása",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Email összefoglalása (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Email összefoglalása (Kulcsfontosságú üzenetek)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Email összefoglalása (Cselekvési pontok)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transzkript megjelenítése"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

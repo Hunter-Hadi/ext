@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Найшвидша модель Anthropic у своєму класі інтелекту, Haiku - це універсальне рішення для широкого спектру повсякденних завдань.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Оновити, щоб отримати доступ до claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Найшвидша модель Anthropic у своєму класі інтелекту, Haiku - це універсальне рішення для широкого спектру повсякденних завдань.",
-    "sidebar__art__advanced__copilot__description": "Майте повний контроль над генерацією мистецтва без оптимізації промптів мистецтва з використанням штучного інтелекту."
+    "sidebar__art__advanced__copilot__description": "Майте повний контроль над генерацією мистецтва без оптимізації промптів мистецтва з використанням штучного інтелекту.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Узагальнити сторінку",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Узагальнити сторінку (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Узагальнити сторінку (Основні висновки)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Узагальнити PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Узагальнити PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Узагальнити PDF (Основні висновки)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Узагальнити відео",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Узагальнити коментарі",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Узагальнити електронного листа",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Узагальнити електронного листа (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Узагальнити електронного листа (Основні висновки)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Узагальнити електронного листа (Пункти дій)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Показати транскрипцію"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

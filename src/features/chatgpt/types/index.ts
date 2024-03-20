@@ -7,6 +7,7 @@ import { IArtTextToImageMetadata } from '@/features/art/types'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 
 export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
 
@@ -98,6 +99,18 @@ export type IAIResponseOriginalMessageMetadataTitle = {
   titleIcon?: string
   titleIconSize?: number
 }
+export type IAIResponseOriginalMessageMetaDeep = {
+  title?: IAIResponseOriginalMessageMetadataTitle
+} & (
+  | {
+      type?: 'text'
+      value: string
+    }
+  | {
+      type: 'transcript'
+      value: TranscriptResponse[]
+    }
+)
 
 export interface IAIResponseOriginalMessage {
   id?: string
@@ -141,10 +154,9 @@ export interface IAIResponseOriginalMessage {
     artTextToImageMetadata?: IArtTextToImageMetadata
     artTextToImagePrompt?: string
     // summary底下的最后一句
-    deepDive?: {
-      title?: IAIResponseOriginalMessageMetadataTitle
-      value: string
-    }
+    deepDive?:
+      | IAIResponseOriginalMessageMetaDeep
+      | IAIResponseOriginalMessageMetaDeep[] //注意：有数组和对象类型，deepDive变化不能从 对象<=>数组 ，要一样类型才可以变化
     // 分享的类型, 用作在copy和share的时候
     shareType?: 'normal' | 'summary' | 'search' | 'art'
     // TODO

@@ -94,6 +94,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                     },
                   ],
                 },
+                deepDive: [],
               },
               content: {
                 title: {
@@ -108,14 +109,8 @@ export const youTubeSummaryCommentsChangeTool = async (
         },
       },
       {
-        type: 'YOUTUBE_GET_COMMENTS',
+        type: 'YOUTUBE_GET_COMMENTS', //不能删除，做为为下面的判断
         parameters: {},
-      },
-      {
-        type: 'SET_VARIABLE',
-        parameters: {
-          VariableName: 'YOUTUBE_COMMENT',
-        },
       },
       {
         type: 'SCRIPTS_CONDITIONAL',
@@ -138,13 +133,15 @@ export const youTubeSummaryCommentsChangeTool = async (
                     status: 'complete',
                     metadata: {
                       isComplete: true,
-                      deepDive: {
-                        title: {
-                          title: 'Deep dive',
-                          titleIcon: 'TipsAndUpdates',
+                      deepDive: [
+                        {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                          },
+                          value: 'Ask AI anything about the video...',
                         },
-                        value: 'Ask AI anything about the video...',
-                      },
+                      ],
                     },
                     content: {
                       text: `{{LAST_ACTION_OUTPUT}}`,
@@ -195,47 +192,26 @@ export const youTubeSummaryCommentsChangeTool = async (
               },
             },
             {
-              type: 'SET_VARIABLE',
-              parameters: {
-                VariableName: 'SUMMARY_CONTENTS',
-              },
-            },
-            {
-              type: 'RENDER_TEMPLATE',
-              parameters: {
-                template: `#### Top Comment
-_TL;DR_ **{{SUMMARY_CONTENTS}}**
-       
-{{YOUTUBE_COMMENT}}
-                    `,
-              },
-            },
-            {
               type: 'CHAT_MESSAGE',
               parameters: {
                 ActionChatMessageOperationType: 'update',
                 ActionChatMessageConfig: {
                   type: 'ai',
                   messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-                  text: `{{LAST_ACTION_OUTPUT}`,
+                  text: '',
                   originalMessage: {
                     status: 'complete',
                     metadata: {
                       isComplete: true,
-                      deepDive: {
-                        title: {
-                          title: 'Deep dive',
-                          titleIcon: 'TipsAndUpdates',
+                      deepDive: [
+                        {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                          },
+                          value: 'Ask AI anything about the video...',
                         },
-                        value: 'Ask AI anything about the video...',
-                      },
-                    },
-                    content: {
-                      text: `{{LAST_ACTION_OUTPUT}}`,
-                      title: {
-                        title: 'Summary',
-                      },
-                      contentType: 'text',
+                      ],
                     },
                     includeHistory: false,
                   },
@@ -255,12 +231,121 @@ _TL;DR_ **{{SUMMARY_CONTENTS}}**
     return cloneDeep(actions)
   }
 }
+export const youTubeSummaryTranscriptChangeTool = async (
+  actions: ISetActionsType,
+  params: IGetSummaryNavActionsParams,
+) => {
+  const newActions: ISetActionsType = [
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'add',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: uuidV4(),
+          text: '',
+          originalMessage: {
+            metadata: {
+              sourceWebpage: {
+                url: `{{CURRENT_WEBPAGE_URL}}`,
+                title: `{{CURRENT_WEBPAGE_TITLE}}`,
+              },
+              shareType: 'summary',
+              title: {
+                title: `Show transcript`,
+              },
+              copilot: {
+                title: {
+                  title: 'Page insights',
+                  titleIcon: 'LaptopMac',
+                },
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'loading',
+                    icon: 'SmartToy',
+                  },
+                ],
+              },
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+      parameters: {
+        VariableName: 'GET_LIST_DATA',
+      },
+    },
+    {
+      type: 'YOUTUBE_GET_TRANSCRIPT',
+      parameters: {},
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+          text: '',
+          originalMessage: {
+            status: 'complete',
+            content: undefined,
+            metadata: {
+              isComplete: true,
+              copilot: {
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'complete',
+                    icon: 'SmartToy',
+                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+                  },
+                ],
+              },
+              deepDive: [
+                {
+                  type: 'transcript',
+                  title: {
+                    title: 'Transcript',
+                    titleIcon: 'Menu',
+                  },
+                  value: `{{LAST_ACTION_OUTPUT}}`,
+                },
+                {
+                  title: {
+                    title: 'Deep dive',
+                    titleIcon: 'TipsAndUpdates',
+                  },
+                  value: 'Ask AI anything about the video...',
+                },
+              ],
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+  ]
+  return cloneDeep(newActions)
+}
 export const youTubeSummaryChangeTool = async (
   params: IGetSummaryNavActionsParams,
   actions: ISetActionsType,
 ) => {
-  if (params.key === 'commit') {
+  if (params.key === 'comment') {
     return await youTubeSummaryCommentsChangeTool(actions, params)
+  } else if (params.key === 'transcript') {
+    return await youTubeSummaryTranscriptChangeTool(actions, params)
   }
   return cloneDeep(actions)
 }

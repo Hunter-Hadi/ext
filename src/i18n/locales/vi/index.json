@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Mô hình nhanh nhất của Anthropic trong lớp thông minh của nó, Haiku là một giải pháp linh hoạt cho một loạt các nhiệm vụ hàng ngày.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Nâng cấp để truy cập claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Mô hình nhanh nhất của Anthropic trong lớp thông minh của nó, Haiku là một giải pháp linh hoạt cho một loạt các nhiệm vụ hàng ngày.",
-    "sidebar__art__advanced__copilot__description": "Có đầy đủ kiểm soát về việc tạo ra nghệ thuật mà không cần tối ưu hóa gợi ý nghệ thuật được cung cấp bởi trí tuệ nhân tạo."
+    "sidebar__art__advanced__copilot__description": "Có đầy đủ kiểm soát về việc tạo ra nghệ thuật mà không cần tối ưu hóa gợi ý nghệ thuật được cung cấp bởi trí tuệ nhân tạo.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Tóm tắt trang",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Tóm tắt trang (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Tóm tắt trang (Những điểm chính)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Tóm tắt PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Tóm tắt PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Tóm tắt PDF (Những điểm chính)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Tóm tắt video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Tóm tắt bình luận",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Tóm tắt email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Tóm tắt email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Tóm tắt email (Những điểm chính)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Tóm tắt email (Công việc cần làm)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Hiển thị bản ghi âm"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

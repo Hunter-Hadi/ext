@@ -4,9 +4,8 @@ export const getSummaryPagePrompt = (key: SummaryParamsPromptType = 'all') => {
   The context text is sourced from the main content of the webpage at {{CURRENT_WEBPAGE_URL}}.
   
   `
-  switch (key) {
-    case 'all':
-      defaultPrompt += `Output a summary and a list of key takeaways respectively.
+  const initDefPrompt = () => {
+    defaultPrompt += `Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.
 The key takeaways should be in up to seven bulletpoints, the fewer the better.
 
@@ -18,8 +17,11 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>`
+  }
+  switch (key) {
+    case 'all':
+      initDefPrompt()
       break
-
     case 'summary':
       defaultPrompt += `Output a summary.
 The summary should be a one-liner in at most 100 words.
@@ -39,6 +41,9 @@ The key takeaways should be in up to seven bulletpoints, the fewer the better.
 Use the following format:
 #### Key Takeaways
 <list of key takeaways>`
+      break
+    default:
+      initDefPrompt()
       break
   }
   return defaultPrompt
@@ -49,9 +54,8 @@ export const getSummaryPdfPrompt = (key: SummaryParamsPromptType = 'all') => {
 The context text originates from the main content of a PDF is in the system prompt.
   
   `
-  switch (key) {
-    case 'all':
-      defaultPrompt += `Output a summary and a list of key takeaways respectively.
+  const initDefPrompt = () => {
+    defaultPrompt += `Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.
 The key takeaways should be in up to seven bulletpoints, the fewer the better.
 
@@ -63,6 +67,10 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>`
+  }
+  switch (key) {
+    case 'all':
+      initDefPrompt()
       break
     case 'summary':
       defaultPrompt += `Output a summary.
@@ -83,6 +91,9 @@ Use the following format:
 #### Key Takeaways
 <list of key takeaways>`
       break
+    default:
+      initDefPrompt()
+      break
   }
   return defaultPrompt
 }
@@ -92,9 +103,8 @@ export const getSummaryEmailPrompt = (key: SummaryParamsPromptType = 'all') => {
 The context text comprises email messages from an email thread you received or sent on {{CURRENT_WEBSITE_DOMAIN}}.
 
   `
-  switch (key) {
-    case 'all':
-      defaultPrompt += `Output a summary, a list of key takeaways, and a list of action items respectively.
+  const initDefPrompt = () => {
+    defaultPrompt += `Output a summary, a list of key takeaways, and a list of action items respectively.
 The summary should be a one-liner in at most 100 words. 
 The key takeaways should be in up to seven bulletpoints, the fewer the better.
 When extracting the action items, identify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader. Output the action items in bulletpoints, and pick a good matching emoji for every bullet point.
@@ -110,6 +120,10 @@ Use the following format:
 
 #### Action Items
 <list of action items>`
+  }
+  switch (key) {
+    case 'all':
+      initDefPrompt()
       break
     case 'summary':
       defaultPrompt += `Output a summary.
@@ -141,6 +155,9 @@ Use the following format:
 #### Action Items
 <list of action items>`
       break
+    default:
+      initDefPrompt()
+      break
   }
   return defaultPrompt
 }
@@ -150,9 +167,8 @@ export const getSummaryYoutubeVideoPrompt = (
   let defaultPrompt = `Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. 
   
 `
-  switch (key) {
-    case 'all':
-      defaultPrompt += `Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
+  const initDefPrompt = () => {
+    defaultPrompt += `Your task is to summarize and extract all key takeaways of the context text delimited by triple backticks in all relevant aspects. 
 The context text is the information and/or transcript of a video from {{CURRENT_WEBPAGE_URL}}.
 Output a summary and a list of key takeaways respectively.
 The summary should be a one-liner in at most 100 words.
@@ -166,9 +182,19 @@ Use the following format:
 
 #### Key Takeaways
 <list of key takeaways>`
+  }
+  switch (key) {
+    case 'all':
+      initDefPrompt()
       break
-    case 'commit':
-      defaultPrompt += `Summarize people's views on the video in approximately 30 words using comment data, in short plain text, and return it in plain text`
+    case 'comment':
+      defaultPrompt += `Summarize people's views on the video in approximately 30 words using comment data, in short plain text, and return it in plain text
+---
+
+Use the following format:
+#### Top Comments Summary 
+<summary of the text>
+`
       break
     case 'transcript':
       defaultPrompt = `Your goal is to divide the chunk of the transcript into sections of information with a common theme and note the beginning timestamp of each section.
@@ -193,6 +219,9 @@ Keep emoji relevant and unique to each section. Do not use the same emoji for ev
 [VIDEO TRANSCRIPT CHUNK]:
 {{chunk}}`
       break
+    default:
+      initDefPrompt()
+      break
   }
   return defaultPrompt
 }
@@ -201,7 +230,7 @@ export type SummaryParamsPromptType =
   | 'all'
   | 'summary'
   | 'keyTakeaways'
-  | 'commit'
+  | 'comment'
   | 'transcript'
   | 'actions'
 

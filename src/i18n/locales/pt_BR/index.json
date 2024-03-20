@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "O modelo mais rápido da Anthropic em sua classe de inteligência, o Haiku é uma solução versátil para uma ampla gama de tarefas diárias.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Atualize para acessar claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "O modelo mais rápido da Anthropic em sua classe de inteligência, o Haiku é uma solução versátil para uma ampla gama de tarefas diárias.",
-    "sidebar__art__advanced__copilot__description": "Tenha controle total sobre a geração de arte sem otimização de prompts de arte com inteligência artificial."
+    "sidebar__art__advanced__copilot__description": "Tenha controle total sobre a geração de arte sem otimização de prompts de arte com inteligência artificial.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Resumir página",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Resumir página (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Resumir página (Principais pontos)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Resumir PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Resumir PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Resumir PDF (Principais pontos)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Resumir vídeo",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Resumir comentários",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Resumir e-mail",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Resumir e-mail (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumir e-mail (Principais pontos)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumir e-mail (Itens de ação)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcrição"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

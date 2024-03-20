@@ -1,11 +1,6 @@
 import { Stack, styled } from '@mui/material'
 import throttle from 'lodash-es/throttle'
-import React, { FC, useEffect, useRef } from 'react'
-interface IProps {
-  children: React.ReactNode
-  height: number
-  update: string
-}
+import React, { FC, useEffect, useMemo, useRef } from 'react'
 
 const StackWrap = styled(Stack)({
   '&.scroll-masked': {
@@ -51,10 +46,21 @@ const StackWrap = styled(Stack)({
 })
 let lastScrollTop = 0,
   isScrollView = false
+interface IProps {
+  children: React.ReactNode
+  height?: number
+  update?: string
+  computeConfig?: {
+    maxId: string
+    otherHeight: number
+    minHeight?: number
+  }
+}
 export const HeightUpdateScrolling: FC<IProps> = ({
   children,
   height,
   update,
+  computeConfig,
 }) => {
   const scrollTopRef = useRef<HTMLDivElement>(null)
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -71,6 +77,36 @@ export const HeightUpdateScrolling: FC<IProps> = ({
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight
     }
   }, 100) // 100ms的延迟
+  const computeMaxHeightThrottle = throttle(() => {
+    //配置了计算父级容器的最大高度
+    if (scrollTopRef && computeConfig) {
+      const otherViewHeight = computeConfig.otherHeight
+      const minViewHeight = computeConfig.minHeight || 200
+      const messageListContainerHeight = scrollTopRef.current?.closest(
+        `${computeConfig.maxId}`,
+      )?.clientHeight
+      if (
+        messageListContainerHeight &&
+        messageListContainerHeight > otherViewHeight
+      ) {
+        const currentHeight = messageListContainerHeight - otherViewHeight
+        if (currentHeight > minViewHeight) {
+          return currentHeight
+        } else {
+          return minViewHeight
+        }
+      } else {
+        return minViewHeight
+      }
+    } else {
+      return 0
+    }
+  }, 500)
+  const computeMaxHeight = useMemo(() => {
+    return computeMaxHeightThrottle()
+  }, [scrollTopRef.current, computeConfig])
+  const maxHeight = computeMaxHeight || height || 350
+
   useEffect(() => {
     const handleScroll = throttle(() => {
       try {
@@ -79,11 +115,11 @@ export const HeightUpdateScrolling: FC<IProps> = ({
           const scrollHeight = scrollRef.current.scrollHeight
           const clientHeight = scrollRef.current.clientHeight
           // 如果用户手动滚动，则停止自动滚动
-          if (scrollTop < lastScrollTop && scrollTop > height) {
+          if (scrollTop < lastScrollTop && scrollTop > maxHeight) {
             isScrollView = true
           }
           lastScrollTop = scrollTop
-          if (!(scrollHeight > clientHeight || scrollHeight > height)) {
+          if (!(scrollHeight > clientHeight || scrollHeight > maxHeight)) {
             //没有出现滚动条啦
             scrollTopRef.current.classList.remove(
               'scroll-masked-both',
@@ -138,7 +174,7 @@ export const HeightUpdateScrolling: FC<IProps> = ({
       <div
         ref={scrollRef}
         style={{
-          maxHeight: height + 'px',
+          maxHeight: maxHeight + 'px',
           overflowY: 'auto',
           paddingRight: '10px',
         }}

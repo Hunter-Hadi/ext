@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Model wa haraka zaidi wa Anthropic katika darasa lake la akili, Haiku ni suluhisho linaloweza kutumika kwa aina mbalimbali za kazi za kila siku.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Nunua ili kupata ufikiaji wa claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Model wa haraka zaidi wa Anthropic katika darasa lake la akili, Haiku ni suluhisho linaloweza kutumika kwa aina mbalimbali za kazi za kila siku.",
-    "sidebar__art__advanced__copilot__description": "Kuwa na udhibiti kamili juu ya uzalishaji wa sanaa bila kuwezesha uoptimalizeshaji wa maelekezo ya sanaa yenye nguvu ya AI."
+    "sidebar__art__advanced__copilot__description": "Kuwa na udhibiti kamili juu ya uzalishaji wa sanaa bila kuwezesha uoptimalizeshaji wa maelekezo ya sanaa yenye nguvu ya AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Weka muhtasari wa ukurasa",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Weka muhtasari wa ukurasa (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Weka muhtasari wa ukurasa (Mambo muhimu)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Weka muhtasari wa PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Weka muhtasari wa PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Weka muhtasari wa PDF (Mambo muhimu)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Weka muhtasari wa video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Weka muhtasari wa maoni",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Weka muhtasari wa barua pepe",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Weka muhtasari wa barua pepe (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Weka muhtasari wa barua pepe (Mambo muhimu)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Weka muhtasari wa barua pepe (Vitu vya kufanya)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Onyesha maelezo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

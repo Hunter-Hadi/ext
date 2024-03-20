@@ -4,9 +4,10 @@ import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
+import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import {
   IAIResponseMessage,
@@ -23,13 +24,8 @@ import SidebarAIMessageSkeletonContent from '@/features/sidebar/components/Sideb
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
-import {
-  allSummaryNavList,
-  getPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
 
-import { messageListContainerId } from '../../SidebarChatBoxMessageListContainer'
-import { HeightUpdateScrolling } from './HeightUpdateScrolling'
+import DeepDiveVIew from './DeepDiveVIew'
 import { SwitchSummaryActionNav } from './SwitchSummaryActionNav'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
@@ -41,72 +37,23 @@ interface IProps {
   liteMode?: boolean
   loading?: boolean
 }
-let isSetSummaryViewMaxHeight = false
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { t } = useTranslation(['client'])
   const { message, isDarkMode, liteMode = false, loading = false } = props
-  const [summaryViewMaxHeight, setSummaryViewMaxHeight] = useState(300)
-  const [IsSummaryAutoScroll, setIsSummaryAutoScroll] = useState(false)
 
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
-  const chatMessageRef = useRef<HTMLDivElement>(null)
   const isSummaryMessage = useMemo(
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
   )
   useEffect(() => {
-    isSetSummaryViewMaxHeight = false
-  }, [])
-  useEffect(() => {
-    try {
-      if (isSummaryMessage && !isSetSummaryViewMaxHeight) {
-        const otherViewHeight = 380 //临时简单计算，待优化
-        const minViewHeight = 200
-        const parentElement = chatMessageRef.current?.closest(
-          `#${messageListContainerId}`,
-        )
-        const messageListContainerHeight = parentElement?.clientHeight
-        if (
-          messageListContainerHeight &&
-          messageListContainerHeight > otherViewHeight
-        ) {
-          const currentHeight = messageListContainerHeight - otherViewHeight
-          isSetSummaryViewMaxHeight = true
-          setSummaryViewMaxHeight(
-            currentHeight > minViewHeight ? currentHeight : minViewHeight,
-          )
-        }
-      }
-    } catch (e) {
-      console.log(e)
-    }
-  }, [
-    chatMessageRef,
-    message.messageId,
-    message.originalMessage?.metadata?.title?.title,
-  ])
-  const getIsSummaryAutoScroll = () => {
-    //fixing第二版该逻辑抽离出去
-    const summaryType = getPageSummaryType()
-    const messageNavTitle = message.originalMessage?.metadata?.title?.title
-    if (messageNavTitle && allSummaryNavList[summaryType]) {
-      const isAutoScroll = allSummaryNavList[summaryType].find(
-        (item) => item.title === messageNavTitle,
-      )?.config?.isAutoScroll
-      if (isAutoScroll === false) {
-        return false
-      } else {
-        return true
-      }
-    } else {
-      return true
-    }
-  }
-
-  useEffect(() => {
-    const isScroll = getIsSummaryAutoScroll()
-    setIsSummaryAutoScroll(!!isScroll)
-  }, [message.originalMessage?.metadata?.title?.title])
+    console.log(
+      'simply props BaseSidebarAIMessage',
+      isRichAIMessage,
+      message,
+      liteMode,
+    )
+  }, [isRichAIMessage, message, liteMode])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -120,10 +67,12 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         content: message.originalMessage?.content,
         messageIsComplete: message.originalMessage?.metadata?.isComplete,
         deepDive: message.originalMessage?.metadata?.deepDive,
-      }
+      } //nonsense:后面可以优化为数组根据type类型去渲染，并加载对应组件统一化更高
+
       if (Object.keys(currentRenderData?.sources || {}).length > 1) {
         currentRenderData.sourcesHasContent = true
       }
+
       if (message.originalMessage?.content?.text) {
         currentRenderData.answer =
           textHandler(message.originalMessage.content.text, {
@@ -183,11 +132,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             </Typography>
           </Divider>
         )}
-      <Stack
-        ref={chatMessageRef}
-        className={'chat-message--text'}
-        sx={{ ...memoSx }}
-      >
+      <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
         {isSummaryMessage && (
           <SwitchSummaryActionNav message={message} loading={coverLoading} />
         )}
@@ -250,89 +195,76 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 />
               </Stack>
             )}
-            {renderData.content && (
-              <Stack>
-                {!renderData.messageIsComplete ? (
-                  <Stack direction={'row'} alignItems="center" spacing={1}>
-                    <CircularProgress size={18} />
-                    <Typography
-                      sx={{
-                        color: 'primary.main',
-                        fontSize: 18,
-                        lineHeight: '20px',
-                      }}
-                    >
-                      {renderData.content.contentType === 'text' && 'Writing'}
-                      {renderData.content.contentType === 'image' &&
-                        'Creating image'}
-                    </Typography>
-                  </Stack>
-                ) : (
-                  <Stack direction={'row'} alignItems="center" spacing={1}>
-                    {renderData.content.title?.titleIcon ? (
-                      <Stack
-                        alignItems={'center'}
-                        justifyContent={'center'}
-                        width={16}
-                        height={16}
-                      >
-                        <ContextMenuIcon
-                          sx={{
-                            color: 'primary.main',
-                            fontSize:
-                              renderData.content.title?.titleIconSize || 18,
-                          }}
-                          icon={renderData.content.title?.titleIcon}
-                        />
-                      </Stack>
-                    ) : (
-                      <ReadIcon
+            {renderData.content &&
+              renderData.content.title?.title !== 'noneShowContent' && (
+                <Stack>
+                  {!renderData.messageIsComplete ? (
+                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                      <CircularProgress size={18} />
+                      <Typography
                         sx={{
                           color: 'primary.main',
-                          fontSize: 20,
+                          fontSize: 18,
+                          lineHeight: '20px',
                         }}
-                      />
-                    )}
-                    <Typography
-                      sx={{
-                        color: 'primary.main',
-                        fontSize: 18,
-                        lineHeight: '20px',
-                      }}
-                    >
-                      {renderData.content.title?.title || 'Answer'}
-                    </Typography>
-                  </Stack>
-                )}
-                {isWaitFirstAIResponseText && !renderData.messageIsComplete ? (
-                  <SidebarAIMessageSkeletonContent
-                    contentType={renderData.content.contentType}
-                  />
-                ) : isSummaryMessage ? (
-                  <HeightUpdateScrolling
-                    height={summaryViewMaxHeight}
-                    update={IsSummaryAutoScroll ? message.text : ''}
-                  >
+                      >
+                        {renderData.content.contentType === 'text' && 'Writing'}
+                        {renderData.content.contentType === 'image' &&
+                          'Creating image'}
+                      </Typography>
+                    </Stack>
+                  ) : (
+                    <Stack direction={'row'} alignItems="center" spacing={1}>
+                      {renderData.content.title?.titleIcon ? (
+                        <Stack
+                          alignItems={'center'}
+                          justifyContent={'center'}
+                          width={16}
+                          height={16}
+                        >
+                          <ContextMenuIcon
+                            sx={{
+                              color: 'primary.main',
+                              fontSize:
+                                renderData.content.title?.titleIconSize || 18,
+                            }}
+                            icon={renderData.content.title?.titleIcon}
+                          />
+                        </Stack>
+                      ) : (
+                        <ReadIcon
+                          sx={{
+                            color: 'primary.main',
+                            fontSize: 20,
+                          }}
+                        />
+                      )}
+                      <Typography
+                        sx={{
+                          color: 'primary.main',
+                          fontSize: 18,
+                          lineHeight: '20px',
+                        }}
+                      >
+                        {renderData.content.title?.title || 'Answer'}
+                      </Typography>
+                    </Stack>
+                  )}
+                  {isWaitFirstAIResponseText &&
+                  !renderData.messageIsComplete ? (
+                    <SidebarAIMessageSkeletonContent
+                      contentType={renderData.content.contentType}
+                    />
+                  ) : (
                     <SidebarAIMessageContent AIMessage={message} />
-                  </HeightUpdateScrolling>
-                ) : (
-                  <SidebarAIMessageContent AIMessage={message} />
-                )}
-              </Stack>
-            )}
-            {renderData.deepDive && renderData.deepDive.title && (
-              <Stack spacing={1}>
-                {renderData.deepDive.title && (
-                  <MetadataTitleRender title={renderData.deepDive.title} />
-                )}
-                <div
-                  className={`markdown-body ${
-                    isDarkMode ? 'markdown-body-dark' : ''
-                  }`}
-                >
-                  <CustomMarkdown>{renderData.deepDive.value}</CustomMarkdown>
-                </div>
-              </Stack>
+                  )}
+                </Stack>
+              )}
+            {renderData.deepDive && (
+              <DeepDiveVIew
+                data={renderData.deepDive}
+                isDarkMode={isDarkMode}
+              />
             )}
           </Stack>
         ) : (
@@ -341,7 +273,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
               isDarkMode ? 'markdown-body-dark' : ''
             }`}
           >
-            <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+            <AppSuspenseLoadingLayout>
+              <CustomMarkdown>{renderData.answer}</CustomMarkdown>
+            </AppSuspenseLoadingLayout>
           </div>
         )}
         {!coverLoading ? (
@@ -353,7 +287,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     </Box>
   )
 }
-const MetadataTitleRender: FC<{
+export const MetadataTitleRender: FC<{
   title: IAIResponseOriginalMessageMetadataTitle
   fontSx?: SxProps
 }> = (props) => {

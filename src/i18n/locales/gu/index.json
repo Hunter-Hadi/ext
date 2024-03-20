@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "આન્થ્રોપિકની બુદ્ધિમાં તેની વર્ગની સૌથી ઝડપી મોડેલ, હાયકુ એ રોજગારના વિવિધ કાર્યો માટે એક વિવિધ સમાધાન છે.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "પ્રવૃત્તિ કરો ક્લોડ-3-હાયકુ એક્સેસ કરવા માટે",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "આન્થ્રોપિકની બુદ્ધિમાં તેની વર્ગની સૌથી ઝડપી મોડેલ, હાયકુ એ રોજગારના વિવિધ કાર્યો માટે એક વિવિધ સમાધાન છે.",
-    "sidebar__art__advanced__copilot__description": "એઆઈ-પવર્ડ આર્ટ પ્રોમ્પ્ટ્સ ઓપ્ટિમાઇઝેશન વગરની આર્ટ ઉત્પાદન પર પૂરી નિયંત્રણ રાખો."
+    "sidebar__art__advanced__copilot__description": "એઆઈ-પવર્ડ આર્ટ પ્રોમ્પ્ટ્સ ઓપ્ટિમાઇઝેશન વગરની આર્ટ ઉત્પાદન પર પૂરી નિયંત્રણ રાખો.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "પૃષ્ઠ સંક્ષેપિત કરો",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "પૃષ્ઠ સંક્ષેપિત કરો (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "પૃષ્ઠ સંક્ષેપિત કરો (મુખ્ય આપત્તિઓ)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF સંક્ષેપિત કરો",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF સંક્ષેપિત કરો (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF સંક્ષેપિત કરો (મુખ્ય આપત્તિઓ)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "વિડિઓ સંક્ષેપિત કરો",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "ટિપ્પણીઓ સંક્ષેપિત કરો",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ઇમેઇલ સંક્ષેપિત કરો",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ઇમેઇલ સંક્ષેપિત કરો (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ઇમેઇલ સંક્ષેપિત કરો (મુખ્ય આપત્તિઓ)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ઇમેઇલ સંક્ષેપિત કરો (ક્રિયાઓ)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ટ્રાન્સક્રિપ્ટ બતાવો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

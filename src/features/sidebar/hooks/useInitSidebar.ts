@@ -129,7 +129,6 @@ const useInitSidebar = () => {
           }
           break
       }
-      pageConversationTypeRef.current = currentSidebarConversationType
     }
     return () => {
       isExpired = true
@@ -141,12 +140,26 @@ const useInitSidebar = () => {
     if (currentSidebarConversationType !== 'Summary' || !appState.open) {
       return
     }
-    if (
-      currentSidebarConversation?.id &&
-      currentSidebarConversation?.type === 'Summary'
-    ) {
-      createPageSummary().then().catch().finally()
+    if (currentSidebarConversation?.id) {
+      // 如过conversation不是summary， return
+      if (currentSidebarConversation?.type !== 'Summary') {
+        return
+      }
+      // 如果有消息了
+      if (currentSidebarConversation?.messages) {
+        const firstAIMessage =
+          currentSidebarConversation?.messages.find(isAIMessage)
+        // 如果已经有总结并且完成了，那就跳出
+        if (firstAIMessage?.originalMessage?.metadata?.isComplete) {
+          return
+        }
+      }
+    } else {
+      // 直接触发create
     }
+    stopGenerate().then(() => {
+      createPageSummary().then().catch().finally()
+    })
   }, [
     currentSidebarConversationType,
     currentSidebarConversation,
@@ -167,6 +180,7 @@ const useInitSidebar = () => {
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
   const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
+    resetPageSummary()
     pageUrlIsUsedRef.current = false
   }, [pageUrl])
   useEffect(() => {

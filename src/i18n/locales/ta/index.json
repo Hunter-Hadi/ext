@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "மனிதர்களின் விவேகம் வகுப்பில் அதிகவேகமான மாதிரி, ஹைக்கு ஒரு பல்வேறு தினசரி பணிகளுக்கு ஒரு மாறுபட்ட தொழில்நுட்ப தீர்வு.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "குறுக்குவதற்கு claude-3-haiku அணுகலை மேம்படுத்துங்கள்",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "மனிதர்களின் விவேகம் வகுப்பில் அதிகவேகமான மாதிரி, ஹைக்கு ஒரு பல்வேறு தினசரி பணிகளுக்கு ஒரு மாறுபட்ட தொழில்நுட்ப தீர்வு.",
-    "sidebar__art__advanced__copilot__description": "ஐயமும் அற்புதமான கலை உருவாக்கத்தை ஆர்ட் ப்ராம்ப்ஸ் மூலம் முழுமையாக கட்டுப்படுத்துங்கள்."
+    "sidebar__art__advanced__copilot__description": "ஐயமும் அற்புதமான கலை உருவாக்கத்தை ஆர்ட் ப்ராம்ப்ஸ் மூலம் முழுமையாக கட்டுப்படுத்துங்கள்.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "பக்கத்தை சுருக்கம் செய்",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "பக்கத்தை சுருக்கம் செய் (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "பக்கத்தை சுருக்கம் செய் (முக்கிய பிரிவுகள்)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF-ஐ சுருக்கம் செய்",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF-ஐ சுருக்கம் செய் (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF-ஐ சுருக்கம் செய் (முக்கிய பிரிவுகள்)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "வீடியோவை சுருக்கம் செய்",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "கருத்துக்களை சுருக்கம் செய்",
+    "sidebar__summary__nav__email_summary__tooltip__default": "மின்னஞ்சலை சுருக்கம் செய்",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "மின்னஞ்சலை சுருக்கம் செய் (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "மின்னஞ்சலை சுருக்கம் செய் (முக்கிய பிரிவுகள்)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "மின்னஞ்சலை சுருக்கம் செய் (செயல்பாடுகள்)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "மொழிபெயர்க்கப்பட்டு காட்டு"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

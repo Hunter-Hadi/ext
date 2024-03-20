@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic کی ذہین ترین ماڈل، Haiku عمومی استعمال کے وسیع رنج کے لئے ایک متنوع حل ہے۔",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "claude-3-haiku تک رسائی کے لئے اپ گریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic کی ذہین ترین ماڈل، Haiku عمومی استعمال کے وسیع رنج کے لئے ایک متنوع حل ہے۔",
-    "sidebar__art__advanced__copilot__description": "AI-powered art prompts کی بغیر آرٹ تخلیق پر مکمل کنٹرول رکھیں۔"
+    "sidebar__art__advanced__copilot__description": "AI-powered art prompts کی بغیر آرٹ تخلیق پر مکمل کنٹرول رکھیں۔",
+    "sidebar__summary__nav__page_summary__tooltip__default": "صفحہ خلاصہ کریں",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "صفحہ خلاصہ کریں (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "صفحہ خلاصہ کریں (مرکزی نتائج)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF خلاصہ کریں",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF خلاصہ کریں (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF خلاصہ کریں (مرکزی نتائج)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "ویڈیو خلاصہ کریں",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "تبصرے کا خلاصہ کریں",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ای میل خلاصہ کریں",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ای میل خلاصہ کریں (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ای میل خلاصہ کریں (مرکزی نتائج)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ای میل خلاصہ کریں (عملیاتی اقدامات)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ٹرانسکرپٹ دکھائیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

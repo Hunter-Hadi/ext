@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropics raskeste modell i sin intelligensklasse, Haiku er en allsidig løsning for et bredt spekter av hverdagsoppgaver.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Oppgrader for å få tilgang til claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropics raskeste modell i sin intelligensklasse, Haiku er en allsidig løsning for et bredt spekter av hverdagsoppgaver.",
-    "sidebar__art__advanced__copilot__description": "Ha full kontroll over kunstgenerering uten optimalisering av AI-drevne kunstprompter."
+    "sidebar__art__advanced__copilot__description": "Ha full kontroll over kunstgenerering uten optimalisering av AI-drevne kunstprompter.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Oppsummer side",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Oppsummer side (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Oppsummer side (Hovedpoeng)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Oppsummer PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Oppsummer PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Oppsummer PDF (Hovedpoeng)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Oppsummer video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Oppsummer kommentarer",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Oppsummer e-post",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Oppsummer e-post (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Oppsummer e-post (Hovedpoeng)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Oppsummer e-post (Handlingselementer)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkripsjon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

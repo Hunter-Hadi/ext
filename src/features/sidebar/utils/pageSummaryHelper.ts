@@ -10,6 +10,7 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
+import { I18nextKeysType } from '@/i18next'
 import {
   getIframePageContent,
   isNeedGetIframePageContent,
@@ -675,13 +676,15 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
                 status: 'complete',
                 metadata: {
                   isComplete: true,
-                  deepDive: {
-                    title: {
-                      title: 'Deep dive',
-                      titleIcon: 'TipsAndUpdates',
+                  deepDive: [
+                    {
+                      title: {
+                        title: 'Deep dive',
+                        titleIcon: 'TipsAndUpdates',
+                      },
+                      value: 'Ask AI anything about the video...',
                     },
-                    value: 'Ask AI anything about the video...',
-                  },
+                  ],
                 },
                 includeHistory: false,
               },
@@ -721,88 +724,147 @@ export const allSummaryNavList: {
     config?: {
       isAutoScroll?: boolean
     }
+    tooltip: I18nextKeysType
   }[]
 } = {
   PAGE_SUMMARY: [
-    { title: 'Summarize page', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize page',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip: 'client:sidebar__summary__nav__page_summary__tooltip__default',
+    },
     {
       title: 'Summarize page (TL;DR)',
       titleIcon: 'AutoStoriesOutlined',
       key: 'summary',
+      tooltip: 'client:sidebar__summary__nav__page_summary__tooltip__tldr',
     },
     {
       title: 'Summarize page (Key takeaways)',
       titleIcon: 'Bulleted',
       key: 'keyTakeaways',
+      tooltip:
+        'client:sidebar__summary__nav__page_summary__tooltip__key_takeaways',
     },
   ],
   PDF_CRX_SUMMARY: [
-    { title: 'Summarize PDF', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize PDF',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip:
+        'client:sidebar__summary__nav__pdf_crx_summary__tooltip__default',
+    },
     {
       title: 'Summarize PDF (TL;DR)',
       titleIcon: 'AutoStoriesOutlined',
       key: 'summary',
+      tooltip: 'client:sidebar__summary__nav__pdf_crx_summary__tooltip__tldr',
     },
     {
       title: 'Summarize PDF (Key takeaways)',
       titleIcon: 'Bulleted',
       key: 'keyTakeaways',
+      tooltip:
+        'client:sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways',
     },
   ],
   YOUTUBE_VIDEO_SUMMARY: [
-    { title: 'Summarize video', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize video',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__default',
+    },
     {
       title: 'Summarize comments',
       titleIcon: 'CommentOutlined',
-      key: 'commit',
+      key: 'comment',
       config: {
         isAutoScroll: false,
       },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__comment',
     },
-    // {
-    //   title: 'Show transcript',
-    //   titleIcon: 'ClosedCaptionOffOutlined',
-    //   key: 'transcript',
-    //   config: {
-    //     isAutoScroll: false,
-    //   },
-    // },
+    {
+      title: 'Show transcript',
+      titleIcon: 'ClosedCaptionOffOutlined',
+      key: 'transcript',
+      config: {
+        isAutoScroll: false,
+      },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
+    },
   ],
   DEFAULT_EMAIL_SUMMARY: [
-    { title: 'Summarize email', titleIcon: 'Summarize', key: 'all' },
+    {
+      title: 'Summarize email',
+      titleIcon: 'Summarize',
+      key: 'all',
+      tooltip: 'client:sidebar__summary__nav__email_summary__tooltip__default',
+    },
     {
       title: 'Summarize email (TL;DR)',
       titleIcon: 'AutoStoriesOutlined',
       key: 'summary',
+      tooltip: 'client:sidebar__summary__nav__email_summary__tooltip__tldr',
     },
     {
       title: 'Summarize email (Key takeaways)',
       titleIcon: 'Bulleted',
       key: 'keyTakeaways',
+      tooltip:
+        'client:sidebar__summary__nav__email_summary__tooltip__key_takeaways',
     },
     {
       title: 'Summarize email (Action items)',
       titleIcon: 'SubjectOutlined',
       key: 'actions',
+      tooltip:
+        'client:sidebar__summary__nav__email_summary__tooltip__action_items',
     },
   ],
 }
+export const getSummaryNavItemByType = (
+  type: IPageSummaryType,
+  value: string,
+  valueType: 'title' | 'titleIcon' | 'key' = 'key',
+) => {
+  if (valueType === 'key' && !value) value = 'all' //默认赋值，防止异常
+  const summaryNavItem = allSummaryNavList[type].find(
+    (item) => item[valueType] === value,
+  )
+  if (valueType === 'key' && !summaryNavItem) {
+    //防止summary nav key 找元素的时候，异常，因为nav有可能会删除
+    return allSummaryNavList[type].find((item) => item[valueType] === 'all')
+  } else {
+    return summaryNavItem
+  }
+}
 export const getContextMenuActionsByPageSummaryType = async (
   pageSummaryType: IPageSummaryType,
+  currentConversationKey?: SummaryParamsPromptType,
 ) => {
   try {
-    const chromeExtensionData = await getChromeExtensionLocalStorage()
-
-    //获取summary导航数据 逻辑
-    const summaryNavKey =
-      chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
-        pageSummaryType
-      ] || 'all'
+    let summaryNavKey = currentConversationKey
+    if (!summaryNavKey) {
+      const chromeExtensionData = await getChromeExtensionLocalStorage()
+      //获取summary导航数据 逻辑
+      summaryNavKey =
+        chromeExtensionData.sidebarSettings?.summary?.currentNavType?.[
+          pageSummaryType
+        ] || 'all'
+    }
     const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
       summaryNavKey,
     )
-    const summaryNaTitle = allSummaryNavList[pageSummaryType].find(
-      (item) => item.key === summaryNavKey,
+    const summaryNaTitle = getSummaryNavItemByType(
+      pageSummaryType,
+      summaryNavKey,
+      'key',
     )?.title
     const summaryNavActions = await getSummaryNavActions({
       type: pageSummaryType,
@@ -837,6 +899,7 @@ export const getContextMenuActionsByPageSummaryType = async (
     return {
       actions,
       messageId,
+      summaryNavKey,
     }
   } catch (e) {
     console.log(e)
@@ -908,6 +971,8 @@ export const getSummaryNavActions: (
       return action
     })
     if (params.messageId) {
+      // const isTranscript =
+      //   params.type === 'YOUTUBE_VIDEO_SUMMARY' && params.key === 'transcript'
       const defAction: ISetActionsType = [
         {
           type: 'CHAT_MESSAGE',
@@ -924,7 +989,7 @@ export const getSummaryNavActions: (
                     steps: [
                       {
                         title: 'Analyzing video',
-                        status: 'complete',
+                        status: 'loading',
                         icon: 'SmartToy',
                         value: '{{CURRENT_WEBPAGE_TITLE}}',
                       },
@@ -933,17 +998,20 @@ export const getSummaryNavActions: (
                   title: {
                     title: params.title || 'Summary',
                   },
-                  deepDive: {
-                    title: {
-                      title: '',
-                      titleIcon: '',
-                    },
-                    value: '',
-                  },
+                  deepDive:
+                    params.type === 'YOUTUBE_VIDEO_SUMMARY'
+                      ? []
+                      : {
+                          title: {
+                            title: '',
+                            titleIcon: '',
+                          },
+                          value: '',
+                        },
                 },
                 content: {
                   title: {
-                    title: 'Summary',
+                    title: 'noneShowContent', //隐藏之前的summary 因为content无法被undefined重制为空
                   },
                   text: '',
                   contentType: 'text',

@@ -642,7 +642,20 @@
     "provider__claude__model__claude_3_haiku__description": "Համակարգիչի ամենաարագ մոդելը իր հիմնական դասի մեջ, Haiku-ն շատերը հավասար խնդիրների համար բարձրացնող լուծում է:",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Թարմացնել՝ մուտք գալ claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Համակարգիչի ամենաարագ մոդելը իր հիմնական դասի մեջ, Haiku-ն շատերը հավասար խնդիրների համար բարձրացնող լուծում է:",
-    "sidebar__art__advanced__copilot__description": "Առաջինը արվեստագեներացիայի վրա AI-ի աջակցությամբ արվեստագեներացման լավագույն տարածությունը ունեցող կազմակերպություն:"
+    "sidebar__art__advanced__copilot__description": "Առաջինը արվեստագեներացիայի վրա AI-ի աջակցությամբ արվեստագեներացման լավագույն տարածությունը ունեցող կազմակերպություն:",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Էջի ամփոփում",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Էջի ամփոփում (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Էջի ամփոփում (Գլխավոր հարցեր)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF-ի ամփոփում",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF-ի ամփոփում (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF-ի ամփոփում (Գլխավոր հարցեր)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Տեսանյութի ամփոփում",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Դիտել մեկնաբանությունները",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Էլ. փոստի ամփոփում",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Էլ. փոստի ամփոփում (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Էլ. փոստի ամփոփում (Գլխավոր հարցեր)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Էլ. փոստի ամփոփում (Գործողություններ)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Ցուցադրել տեքստային համակարգը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

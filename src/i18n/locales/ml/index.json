@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "അന്ത്രോപിക് സ്വന്തമായിട്ടുള്ള ആഗ്രഹങ്ങളിലേക്ക് ഏറ്റവും വേഗത്തിൽ മോഡൽ, ഹൈക്കു എന്നാൽ ദക്ഷതയുള്ള ഒരു വിപുലീകരണ പരിഹാരമാണ്.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "ക്ലോഡ്-3-ഹൈക്കുക്കിനേക്കാൾ അപ്ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "അന്ത്രോപിക് സ്വന്തമായിട്ടുള്ള ആഗ്രഹങ്ങളിലേക്ക് ഏറ്റവും വേഗത്തിൽ മോഡൽ, ഹൈക്കു എന്നാൽ ദക്ഷതയുള്ള ഒരു വിപുലീകരണ പരിഹാരമാണ്.",
-    "sidebar__art__advanced__copilot__description": "എ.ഐ.-പ്രവർത്തനങ്ങൾ അടയാളപ്പെടുത്താത്ത കലാ സൃഷ്ടികളുടെ പ്രവർത്തനത്തിന് പൂർണ്ണ നിയന്ത്രണം ഉണ്ടാക്കുക."
+    "sidebar__art__advanced__copilot__description": "എ.ഐ.-പ്രവർത്തനങ്ങൾ അടയാളപ്പെടുത്താത്ത കലാ സൃഷ്ടികളുടെ പ്രവർത്തനത്തിന് പൂർണ്ണ നിയന്ത്രണം ഉണ്ടാക്കുക.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "പേജ് സംഗ്രഹിക്കുക",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "പേജ് സംഗ്രഹിക്കുക (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "പേജ് സംഗ്രഹിക്കുക (പ്രധാന പരമ്പരകള്‍)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF സംഗ്രഹിക്കുക",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF സംഗ്രഹിക്കുക (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF സംഗ്രഹിക്കുക (പ്രധാന പരമ്പരകള്‍)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "വീഡിയോ സംഗ്രഹിക്കുക",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "അഭിപ്രായങ്ങള്‍ സംഗ്രഹിക്കുക",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ഇമെയില്‍ സംഗ്രഹിക്കുക",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ഇമെയില്‍ സംഗ്രഹിക്കുക (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രധാന പരമ്പരകള്‍)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രവര്‍ത്തന പദങ്ങള്‍)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ട്രാൻസ്ക്രിപ്റ്റ് കാണിക്കുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

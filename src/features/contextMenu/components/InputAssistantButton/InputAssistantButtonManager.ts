@@ -20,78 +20,115 @@ export interface IInputAssistantButtonObserverData {
   renderRootElement: HTMLElement
   destroy: () => void
   buttonGroup: IInputAssistantButton[]
+  config: IInputAssistantButtonGroupConfig
 }
+
+export const InputAssistantButtonElementRouteMap = new Map<
+  any,
+  Document | ShadowRoot | HTMLElement | Element
+>()
 
 class InputAssistantButtonManager {
   host: InputAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
   interval = 1000
-  configs: IInputAssistantButtonGroupConfig | IInputAssistantButtonGroupConfig[] | null
+  configs: IInputAssistantButtonGroupConfig[] | null
   observerMap: Map<HTMLElement, IInputAssistantButtonObserverData>
   stop: boolean
   constructor() {
     this.stop = false
     this.host = getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
-    this.configs = inputAssistantButtonBaseConfig[this.host]
+    this.configs = (() => {
+      const configs = inputAssistantButtonBaseConfig[this.host]
+      return Array.isArray(configs) ? configs : [configs]
+    })()
     this.observerMap = new Map()
   }
   createInputAssistantButtonListener(
-    listener: (
-      allObserverData: IInputAssistantButtonObserverData[],
-      config: IInputAssistantButtonGroupConfig,
-    ) => void,
+    listener: (allObserverData: IInputAssistantButtonObserverData[]) => void,
   ) {
     this.timer = setInterval(() => {
       if (this.stop) {
         return
       }
       if (this.configs) {
-        if (!Array.isArray(this.configs)) {
-          this.configs = [this.configs]
-        }
-        this.configs.forEach((config) => {
+        for (const config of this.configs) {
           const {
+            enable,
             rootSelectors,
             rootSelectorStyle,
             rootParentDeep = 0,
           } = config
-          const rootElements: HTMLElement[] = []
-          rootSelectors.map((rootSelector) =>
-            rootElements.push(
-              ...(document.querySelectorAll(rootSelector) as any),
-            ),
-          )
           let isAddNew = false
-          rootElements.forEach((element) => {
-            const origin = element as HTMLElement
-            let rootElement = element
-            let deep = rootParentDeep
-            while (deep > 0) {
-              deep--
-              rootElement = rootElement.parentElement as HTMLElement
+          // temp fix select shadowRoot
+          for (const rootSelector of rootSelectors) {
+            const selectorLayer = Array.isArray(rootSelector)
+              ? [...rootSelector]
+              : [rootSelector]
+
+            const elements: (Document | ShadowRoot | Element)[] = [document]
+            for (const layer of selectorLayer) {
+              const length = elements.length
+              for (let i = 0; i < length; i++) {
+                let rootElement = elements.shift()!
+                if ((rootElement as Element).shadowRoot) {
+                  rootElement = (rootElement as any).shadowRoot
+                }
+                rootElement.querySelectorAll(layer).forEach((element: any) => {
+                  InputAssistantButtonElementRouteMap.set(element, rootElement)
+                  elements.push(element)
+                })
+              }
             }
-            if (rootSelectorStyle) {
-              mergeElementCssText(origin, rootSelectorStyle)
+            for (const element of elements) {
+              const origin = element as HTMLElement
+              let rootElement = element
+              let deep = rootParentDeep
+              while (deep > 0) {
+                deep--
+                const topLevelElement = InputAssistantButtonElementRouteMap.get(
+                  rootElement,
+                )!
+                InputAssistantButtonElementRouteMap.delete(rootElement)
+                rootElement = rootElement.parentElement as HTMLElement
+                InputAssistantButtonElementRouteMap.set(
+                  rootElement,
+                  topLevelElement,
+                )
+              }
+              if (rootSelectorStyle) {
+                mergeElementCssText(origin, rootSelectorStyle)
+              }
+              if (
+                !(typeof enable === 'function' ? enable(rootElement) : enable)
+              ) {
+                this.observerMap.get(rootElement as HTMLElement)?.destroy()
+                continue
+              }
+
+              const newObserverData = this.attachInputAssistantButton(
+                rootElement as HTMLElement,
+                config,
+              )
+              if (newObserverData) {
+                isAddNew = true
+                log.info(`newObserverData: `, newObserverData)
+              }
             }
-            const newObserverData = this.attachInputAssistantButton(
-              rootElement as HTMLElement,
-              config,
-            )
-            if (newObserverData) {
-              isAddNew = true
-              log.info(`newObserverData: `, newObserverData)
-            }
-          })
+          }
           // remove unused observer
           const isClean = this.cleanObserverMap()
           if (isClean || isAddNew) {
-            listener(this.getAllObserverData(), config)
+            listener(this.getAllObserverData())
           }
-        })
+        }
       }
     }, this.interval)
   }
-  attachInputAssistantButton(rootElement: HTMLElement, config: IInputAssistantButtonGroupConfig) {
+  attachInputAssistantButton(
+    rootElement: HTMLElement,
+    config: IInputAssistantButtonGroupConfig,
+  ) {
     if (
       !this.configs ||
       rootElement.querySelector('[maxai-input-assistant-button-id]')
@@ -99,6 +136,7 @@ class InputAssistantButtonManager {
       return null
     }
     const {
+      enable,
       rootStyle,
       rootParentStyle,
       rootParentStyleDeep = 1,
@@ -144,6 +182,10 @@ class InputAssistantButtonManager {
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',
     )
     webComponentRoot.setAttribute('maxai-input-assistant-button-id', id)
+    InputAssistantButtonElementRouteMap.set(
+      `[maxai-input-assistant-button-id="${id}"]`,
+      webComponentRoot,
+    )
     rootWrapperElement.appendChild(webComponentRoot)
     if (isNumber(appendPosition)) {
       const referenceElement = rootElement.childNodes[
@@ -160,10 +202,20 @@ class InputAssistantButtonManager {
     })
     const shadowContainer = webComponentRoot.shadowRoot
     const container = document.createElement('div')
+    container.style.height = '100%';
     shadowContainer?.appendChild(container)
     log.info(`appendElement: `, rootWrapperElement)
     const observer = new MutationObserver(() => {
       // TODO 监听元素位置更新位置
+
+      // temp feature: `Help me write`
+      // when clicking the explicit quick reply button, it should open reply textarea automatically and destroy the button itself
+      const shouldDestroy = !(typeof enable === 'function'
+        ? enable(rootElement)
+        : enable)
+      if (shouldDestroy) {
+        rootWrapperElement?.remove()
+      }
     })
     observer.observe(rootElement, {
       childList: true,
@@ -186,6 +238,7 @@ class InputAssistantButtonManager {
       },
       renderRootElement: container,
       observer,
+      config,
       shadowRootElement: shadowContainer as ShadowRoot,
       buttonGroup: getInputAssistantButtonGroupWithHost({
         keyElement: rootElement,
@@ -207,7 +260,18 @@ class InputAssistantButtonManager {
         (element) =>
           element.sheet?.cssRules.length === 0 && element.innerHTML === '',
       )
-      if (document.body.contains(rootElement) && !hasEmptyEmotion) {
+      // temp fix select shadowRoot
+      let isContain = true
+      let topLevelElement = InputAssistantButtonElementRouteMap.get(rootElement)
+      let currentLevelElement = rootElement
+      while (isContain && topLevelElement) {
+        isContain = topLevelElement.contains(currentLevelElement)
+        currentLevelElement = topLevelElement as HTMLElement
+        topLevelElement = InputAssistantButtonElementRouteMap.get(
+          topLevelElement,
+        )
+      }
+      if (isContain && !hasEmptyEmotion) {
         return
       }
       isClean = true

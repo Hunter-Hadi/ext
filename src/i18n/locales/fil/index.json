@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Ang pinakamabilis na modelo ng Anthropic sa kanyang klase ng katalinuhan, ang Haiku ay isang maaasahang solusyon para sa iba't ibang pang-araw-araw na gawain.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Mag-upgrade upang ma-access ang claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Ang pinakamabilis na modelo ng Anthropic sa kanyang klase ng katalinuhan, ang Haiku ay isang maaasahang solusyon para sa iba't ibang pang-araw-araw na gawain.",
-    "sidebar__art__advanced__copilot__description": "Magkaroon ng ganap na kontrol sa paglikha ng sining nang walang optimisasyon ng AI-powered art prompts."
+    "sidebar__art__advanced__copilot__description": "Magkaroon ng ganap na kontrol sa paglikha ng sining nang walang optimisasyon ng AI-powered art prompts.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Buod ng pahina",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Buod ng pahina (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Buod ng pahina (Mga mahahalagang punto)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Buod ng PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Buod ng PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Buod ng PDF (Mga mahahalagang punto)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Buod ng video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Buod ng mga komento",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Buod ng email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Buod ng email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Buod ng email (Mga mahahalagang punto)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Buod ng email (Mga hakbang na dapat gawin)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Ipakita ang transcript"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

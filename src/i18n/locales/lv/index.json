@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropic ātrākais modelis savā inteliģences klasē, Haiku ir daudzpusīga risinājums plašam ikdienas uzdevumu klāstam.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Jauniniet, lai piekļūtu claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropic ātrākais modelis savā inteliģences klasē, Haiku ir daudzpusīga risinājums plašam ikdienas uzdevumu klāstam.",
-    "sidebar__art__advanced__copilot__description": "Pilnībā kontrolējiet mākslas radīšanu bez AI vadītās mākslas pamudinājumu optimizācijas."
+    "sidebar__art__advanced__copilot__description": "Pilnībā kontrolējiet mākslas radīšanu bez AI vadītās mākslas pamudinājumu optimizācijas.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Lapas kopsavilkums",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Lapas kopsavilkums (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Lapas kopsavilkums (Galvenie secinājumi)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF kopsavilkums",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF kopsavilkums (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF kopsavilkums (Galvenie secinājumi)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Video kopsavilkums",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Komentāru kopsavilkums",
+    "sidebar__summary__nav__email_summary__tooltip__default": "E-pasta kopsavilkums",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "E-pasta kopsavilkums (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-pasta kopsavilkums (Galvenie secinājumi)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-pasta kopsavilkums (Darbības vienumi)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rādīt transkriptu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

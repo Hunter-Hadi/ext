@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Najszybszy model w swojej klasie inteligencji Anthropic, Haiku to wszechstronne rozwiązanie do szerokiej gamy codziennych zadań.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Uaktualnij, aby uzyskać dostęp do claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Najszybszy model w swojej klasie inteligencji Anthropic, Haiku to wszechstronne rozwiązanie do szerokiej gamy codziennych zadań.",
-    "sidebar__art__advanced__copilot__description": "Miej pełną kontrolę nad generowaniem sztuki bez optymalizacji za pomocą AI."
+    "sidebar__art__advanced__copilot__description": "Miej pełną kontrolę nad generowaniem sztuki bez optymalizacji za pomocą AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Podsumuj stronę",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Podsumuj stronę (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Podsumuj stronę (Najważniejsze wnioski)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Podsumuj PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Podsumuj PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Podsumuj PDF (Najważniejsze wnioski)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Podsumuj wideo",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Podsumuj komentarze",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Podsumuj e-mail",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Podsumuj e-mail (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Podsumuj e-mail (Najważniejsze wnioski)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Podsumuj e-mail (Zadania do wykonania)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Pokaż transkrypt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "הדגם המהיר ביותר של Anthropic בקטגוריית האינטיליגנציה שלו, Haiku הוא פתרון רב-תכליתי למגוון רחב של משימות יומיות.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "שדרג כדי לגשת ל-claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "הדגם המהיר ביותר של Anthropic בקטגוריית האינטיליגנציה שלו, Haiku הוא פתרון רב-תכליתי למגוון רחב של משימות יומיות.",
-    "sidebar__art__advanced__copilot__description": "קבל שליטה מלאה על יצירת אמנות ללא אופטימיזציה של תגובות אמנות מופעלות על ידי AI."
+    "sidebar__art__advanced__copilot__description": "קבל שליטה מלאה על יצירת אמנות ללא אופטימיזציה של תגובות אמנות מופעלות על ידי AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "סיכום עמוד",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "סיכום עמוד (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "סיכום עמוד (נקודות מרכזיות)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "סיכום PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "סיכום PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "סיכום PDF (נקודות מרכזיות)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "סיכום וידאו",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "סיכום תגובות",
+    "sidebar__summary__nav__email_summary__tooltip__default": "סיכום אימייל",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "סיכום אימייל (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "סיכום אימייל (נקודות מרכזיות)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "סיכום אימייל (פריטי פעולה)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "הצג תמליל"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

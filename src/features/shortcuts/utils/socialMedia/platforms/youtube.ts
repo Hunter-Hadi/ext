@@ -21,36 +21,22 @@ const getYouTubeCommentContent = async (
   ytdCommentBox: HTMLElement,
 ): Promise<ICommentData> => {
   const author =
-    (ytdCommentBox.querySelector(
-      '#header-author #author-text > span',
-    ) as HTMLSpanElement)?.innerText || ''
-  const commentAuthor =
-    (ytdCommentBox.querySelector(
-      '#header-author #author-text > yt-formatted-string',
-    ) as HTMLSpanElement)?.innerText || ''
-  const date =
-    (ytdCommentBox.querySelector(
-      '#header-author > yt-formatted-string',
-    ) as HTMLDivElement)?.innerText || ''
-  const like =
-    (ytdCommentBox.querySelector(
-      '#toolbar > #vote-count-left',
-    ) as HTMLDivElement)?.innerText || ''
-  const expandButton = ytdCommentBox?.querySelector(
-    'tp-yt-paper-button#expand',
-  ) as HTMLButtonElement
-  if (expandButton) {
-    expandButton.click()
-    await delayAndScrollToInputAssistantButton(100)
-  }
-  const commentText =
-    (ytdCommentBox.querySelector('#content-text') as HTMLDivElement)
+    ytdCommentBox.querySelector<HTMLElement>('#author-text yt-formatted-string')
       ?.innerText || ''
+  const date =
+    ytdCommentBox.querySelector<HTMLElement>(
+      'yt-formatted-string.published-time-text',
+    )?.innerText || ''
+  const commentText =
+    ytdCommentBox.querySelector<HTMLElement>('#content-text')?.innerText || ''
+  const like =
+    ytdCommentBox.querySelector<HTMLElement>('#vote-count-middle')?.innerText ||
+    ''
   return {
-    author: (author || commentAuthor).replace(/\n/g, '').trim(),
+    author,
     date,
     content: commentText,
-    like: like.replace(/\n/g, '').trim(),
+    like: like.trim(),
   }
 }
 
@@ -58,11 +44,6 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
   try {
-    // comment box
-    const ytdCommentBox = findParentEqualSelector(
-      'ytd-commentbox',
-      inputAssistantButton,
-    )
     const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
       window.location.href,
     )
@@ -116,6 +97,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           },
         },
       )
+      window?.scrollTo({ top: 0 }) //点击 show more 展开更多，会置顶然后再滚下去一点，导致后面的拿评论滚动视图没有铺满
     } else if (
       window.location.href.startsWith('https://www.youtube.com/shorts')
     ) {
@@ -151,6 +133,11 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       }
     }
     if (youTubeSocialMediaPostContext) {
+      // comment box
+      const ytdCommentBox = findParentEqualSelector(
+        '#body.ytd-comment-renderer',
+        inputAssistantButton,
+      )
       if (ytdCommentBox) {
         // 视频底下的评论
         if (
@@ -162,40 +149,25 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
         ) {
           // Nothing
         } else {
-          const ytdRootComment = findParentEqualSelector(
-            'ytd-comment-thread-renderer',
-            ytdCommentBox,
-          )?.querySelector('& > ytd-comment-renderer' as any) as HTMLElement
-          // 第一层评论
-          if (ytdRootComment) {
-            const currenYtdCommentBox = findParentEqualSelector(
-              'ytd-comment-renderer',
+          const commentList: ICommentData[] = []
+          const isReplyingOthersExpandingReply = Boolean(
+            findParentEqualSelector(
+              '#replies.ytd-comment-thread-renderer',
               ytdCommentBox,
+              6,
+            ),
+          )
+          if (isReplyingOthersExpandingReply) {
+            const ytdRootComment = findParentEqualSelector(
+              'ytd-comment-thread-renderer',
+              ytdCommentBox,
+            )?.querySelector<HTMLElement>(
+              '& > ytd-comment-renderer#comment #body.ytd-comment-renderer',
             )
-            if (currenYtdCommentBox) {
-              // 判断是不是回复别人的评论
-              const ytdCommentRepliesRenderer = findSelectorParent(
-                'ytd-comment-replies-renderer',
-                currenYtdCommentBox,
-                5,
-              )
-              // youtube只有两层评论
-              if (
-                ytdCommentRepliesRenderer?.contains(currenYtdCommentBox) &&
-                !currenYtdCommentBox.isSameNode(ytdRootComment)
-              ) {
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeCommentContent(ytdRootComment),
-                  await getYouTubeCommentContent(currenYtdCommentBox),
-                ])
-              } else {
-                // 只有一层评论
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeCommentContent(ytdRootComment),
-                ])
-              }
-            }
+            commentList.push(await getYouTubeCommentContent(ytdRootComment!))
           }
+          commentList.push(await getYouTubeCommentContent(ytdCommentBox))
+          youTubeSocialMediaPostContext.addCommentList(commentList)
         }
       }
       return youTubeSocialMediaPostContext.data
@@ -235,6 +207,33 @@ export const getYouTubeSocialMediaPostCommentsContent: (
     return null
   }
 }
+
+// 设置 youtube 评论窗口定位到屏幕上方左边并隐藏
+const setCommentLoadingPosition = () => {
+  const selector = document.querySelector(
+    '#below ytd-item-section-renderer.style-scope.ytd-comments',
+  )
+  if (selector instanceof HTMLElement) {
+    selector.style.position = 'fixed'
+    selector.style.top = '0'
+    selector.style.left = '0'
+    selector.style.visibility = 'hidden'
+  }
+}
+
+// 去除youtube 评论窗口定位并显示出来
+const resetCommentLoadingPosition = () => {
+  const selector = document.querySelector(
+    '#below ytd-item-section-renderer.style-scope.ytd-comments',
+  )
+  if (selector instanceof HTMLElement) {
+    selector.style.position = ''
+    selector.style.top = ''
+    selector.style.left = ''
+    selector.style.display = ''
+    selector.style.visibility = 'visible'
+  }
+}
 export const youTubeGetPostCommentsInfo: () => Promise<{
   commentsData: ICreateCommentListData | null
   commitList: ICommentData[]
@@ -251,18 +250,16 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
       500,
       1000 * 60,
     ) //等待videoID变化完成
-    console.log('simply 0')
     if (document?.querySelector('#sections #count')) {
-      console.log('simply 0 0')
-
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
       return { commentsData, commitList }
     } else {
-      console.log('simply 1')
+      setCommentLoadingPosition() //模拟加载窗口出现了
 
       if (document.getElementById('content-pages')) {
         //直播页面直接无评论
+        resetCommentLoadingPosition() //模拟加载窗口出现了
         return null
       }
       const topCommentsOff = document.querySelector('#message a')
@@ -272,7 +269,7 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           .getAttribute('href')
           ?.includes('support.google.com/youtube/answer/9706180')
       ) {
-        window.scrollTo({ top: 0 })
+        resetCommentLoadingPosition() //模拟加载窗口出现了
         //代表评论关闭 状态
         return null
       }
@@ -283,29 +280,18 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
           if (scrollIndex > 10) {
             return true
           }
-          //没有则滚动到当前主div的最下面往上滚动，完成过渡
-          const items = document.querySelector(
-            '#columns.style-scope.ytd-watch-flexy #primary-inner',
-          )
-          if (items) {
-            console.log('simply scrollIndex', scrollIndex)
-            window.scrollTo({
-              top: items?.scrollHeight / scrollIndex,
-            })
-            scrollIndex += 0.5
-          }
+          scrollIndex += 1
           const countDom = document?.querySelector(
             '#sections #count .style-scope.yt-formatted-string',
           )
           return (
-            !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断load消失
+            !!countDom && window.getComputedStyle(countDom).display !== 'none' //判断count是否出现了
           )
         },
-        500,
+        300,
         1000 * 10,
       )
-      window.scrollTo({ top: 0 })
-
+      resetCommentLoadingPosition() //去除 模拟加载
       await awaitScrollFun(
         () => {
           //判断用户头像图片是否加载完成则数据完成开始获取
@@ -326,7 +312,6 @@ export const youTubeGetPostCommentsInfo: () => Promise<{
       )
       const commitList = await getCommitList()
       const commentsData = createCommentListData(commitList || [])
-      console.log('simply allData', { commentsData, commitList })
       return cloneDeep({ commentsData, commitList })
     }
   } catch (e) {

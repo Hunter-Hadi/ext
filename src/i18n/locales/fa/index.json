@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "سریعترین مدل آنتروپیک در کلاس هوش خود، هایکو یک راه حل چند منظوره برای تعداد گسترده ای از وظایف روزمره است.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "ارتقا برای دسترسی به کلود-۳-هایکو",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "سریعترین مدل آنتروپیک در کلاس هوش خود، هایکو یک راه حل چند منظوره برای تعداد گسترده ای از وظایف روزمره است.",
-    "sidebar__art__advanced__copilot__description": "با بهینه سازی پیشرانه های هنری قدرتمند بدون نیاز به هوش مصنوعی، کنترل کامل بر تولید هنر داشته باشید."
+    "sidebar__art__advanced__copilot__description": "با بهینه سازی پیشرانه های هنری قدرتمند بدون نیاز به هوش مصنوعی، کنترل کامل بر تولید هنر داشته باشید.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "خلاصه صفحه",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "خلاصه صفحه (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "خلاصه صفحه (نکات کلیدی)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "خلاصه PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "خلاصه PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "خلاصه PDF (نکات کلیدی)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "خلاصه ویدیو",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "خلاصه نظرات",
+    "sidebar__summary__nav__email_summary__tooltip__default": "خلاصه ایمیل",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "خلاصه ایمیل (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "خلاصه ایمیل (نکات کلیدی)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "خلاصه ایمیل (موارد عملی)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "نمایش متن"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

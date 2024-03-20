@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Najbrži model u svojoj inteligentnoj klasi Anthropic-a, Haiku je svestrano rešenje za širok spektar svakodnevnih zadataka.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Unapredi da pristupiš claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Najbrži model u svojoj inteligentnoj klasi Anthropic-a, Haiku je svestrano rešenje za širok spektar svakodnevnih zadataka.",
-    "sidebar__art__advanced__copilot__description": "Imaj potpunu kontrolu nad generisanjem umetnosti bez optimizacije umetničkih podsticaja sa AI tehnologijom."
+    "sidebar__art__advanced__copilot__description": "Imaj potpunu kontrolu nad generisanjem umetnosti bez optimizacije umetničkih podsticaja sa AI tehnologijom.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Sumiraj stranicu",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Sumiraj stranicu (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Sumiraj stranicu (Ključne tačke)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Sumiraj PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Sumiraj PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Sumiraj PDF (Ključne tačke)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Sumiraj video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Sumiraj komentare",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Sumiraj email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Sumiraj email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Sumiraj email (Ključne tačke)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Sumiraj email (Akcijski elementi)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Prikaži transkript"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

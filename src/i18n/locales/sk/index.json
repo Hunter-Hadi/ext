@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Najrýchlejší model od Anthropic vo svojej inteligentnej triede, Haiku je všestranným riešením pre širokú škálu každodenných úloh.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Vylepšiť pre prístup k claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Najrýchlejší model od Anthropic vo svojej inteligentnej triede, Haiku je všestranným riešením pre širokú škálu každodenných úloh.",
-    "sidebar__art__advanced__copilot__description": "Majte plnú kontrolu nad generovaním umenia bez optimalizácie umelou inteligenciou."
+    "sidebar__art__advanced__copilot__description": "Majte plnú kontrolu nad generovaním umenia bez optimalizácie umelou inteligenciou.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Zhrnúť stránku",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Zhrnúť stránku (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Zhrnúť stránku (Kľúčové myšlienky)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Zhrnúť PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Zhrnúť PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Zhrnúť PDF (Kľúčové myšlienky)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Zhrnúť video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Zhrnúť komentáre",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Zhrnúť email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Zhrnúť email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Zhrnúť email (Kľúčové myšlienky)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Zhrnúť email (Akčné body)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobraziť prepis"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

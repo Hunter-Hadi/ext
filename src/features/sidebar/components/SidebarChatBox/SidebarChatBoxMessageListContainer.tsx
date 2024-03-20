@@ -33,19 +33,21 @@ interface IProps {
 
 const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   const { conversationId, writingMessage, messages, loading, sx } = props
-  const { currentSidebarConversationType } = useSidebarSettings()
+
   const scrollContainerRef = useRef<HTMLElement | null>(null)
 
   // 用于判断 当前触发的 effect 时是否需要滚动到底部
   const needScrollToBottomRef = useRef(true)
 
   const [messageItemIsReady, setMessageItemIsReady] = React.useState(false)
+  const { currentSidebarConversationType } = useSidebarSettings()
 
   const { slicedMessageList, changePageNumber } = useMessageListPaginator(
     !!(messageItemIsReady && conversationId),
     scrollContainerRef,
     messages,
   )
+
   // 用 interval 来找 message-item-on-ready-flag 元素
   // 用于判断 Suspense 是否完成
   // NOTE: 当然这是不干净的做法，如果找到了更好的做法需要替换
@@ -90,7 +92,8 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         changePageNumber(1)
       }, 0)
     }
-  }, [loading, writingMessage,currentSidebarConversationType])
+  }, [loading, writingMessage, currentSidebarConversationType])
+
   useEffect(() => {
     if (writingMessage) {
       handleScrollToBottom()

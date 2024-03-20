@@ -5,16 +5,16 @@ import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined'
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
-import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined';
+import AutoStoriesOutlinedIcon from '@mui/icons-material/AutoStoriesOutlined'
 import BoltOutlinedIcon from '@mui/icons-material/BoltOutlined'
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined'
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import CheckCircleOutlineOutlined from '@mui/icons-material/CheckCircleOutlineOutlined'
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
-import ClosedCaptionOffOutlinedIcon from '@mui/icons-material/ClosedCaptionOffOutlined';
+import ClosedCaptionOffOutlinedIcon from '@mui/icons-material/ClosedCaptionOffOutlined'
 import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
-import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined';
+import CommentOutlinedIcon from '@mui/icons-material/CommentOutlined'
 import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
@@ -66,7 +66,7 @@ import ShortTextIcon from '@mui/icons-material/ShortText'
 import SmartToyOutlinedIcon from '@mui/icons-material/SmartToyOutlined'
 import StarBorderIcon from '@mui/icons-material/StarBorder'
 import SubjectIcon from '@mui/icons-material/Subject'
-import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined';
+import SubjectOutlinedIcon from '@mui/icons-material/SubjectOutlined'
 import SummarizeOutlinedIcon from '@mui/icons-material/SummarizeOutlined'
 import SupportOutlinedIcon from '@mui/icons-material/SupportOutlined'
 import TextSnippetOutlinedIcon from '@mui/icons-material/TextSnippetOutlined'
@@ -171,7 +171,7 @@ export const CONTEXT_MENU_ICONS = [
   'AutoStoriesOutlined',
   'CommentOutlined',
   'ClosedCaptionOffOutlined',
-  'SubjectOutlined'
+  'SubjectOutlined',
 ] as const
 export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
 const ContextMenuIcon: FC<{
@@ -475,25 +475,13 @@ const ContextMenuIcon: FC<{
         />
       )
     case 'AutoStoriesOutlined':
-      return (
-        <AutoStoriesOutlinedIcon
-          sx={sxMemo}
-        />
-      )
+      return <AutoStoriesOutlinedIcon sx={sxMemo} />
     case 'CommentOutlined':
-      return (
-        <CommentOutlinedIcon
-          sx={sxMemo}
-        />
-      )
+      return <CommentOutlinedIcon sx={sxMemo} />
     case 'ClosedCaptionOffOutlined':
-      return (
-        <ClosedCaptionOffOutlinedIcon
-          sx={sxMemo}
-        />
-      )
-      case 'SubjectOutlined':
-        return <SubjectOutlinedIcon sx={sxMemo} />
+      return <ClosedCaptionOffOutlinedIcon sx={sxMemo} />
+    case 'SubjectOutlined':
+      return <SubjectOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "এনথ্রোপিকের বুদ্ধিমান শ্রেণিতে সবচেয়ে দ্রুত মডেল, হাইকু একটি বিস্তারিত সমাধান যা প্রতিদিনের বিভিন্ন কাজের জন্য ব্যবহার করা যায়।",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "আপগ্রেড করুন claude-3-haiku এ অ্যাক্সেস পাওয়ার জন্য",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "এনথ্রোপিকের বুদ্ধিমান শ্রেণিতে সবচেয়ে দ্রুত মডেল, হাইকু একটি বিস্তারিত সমাধান যা প্রতিদিনের বিভিন্ন কাজের জন্য ব্যবহার করা যায়।",
-    "sidebar__art__advanced__copilot__description": "AI-পাওয়ারড আর্ট প্রম্পট অপটিমাইজেশন ছাড়াই আর্ট উত্পাদনের পূর্ণ নিয়ন্ত্রণ থাকুন।"
+    "sidebar__art__advanced__copilot__description": "AI-পাওয়ারড আর্ট প্রম্পট অপটিমাইজেশন ছাড়াই আর্ট উত্পাদনের পূর্ণ নিয়ন্ত্রণ থাকুন।",
+    "sidebar__summary__nav__page_summary__tooltip__default": "পৃষ্ঠার সংক্ষেপ",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "পৃষ্ঠার সংক্ষেপ (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "পৃষ্ঠার সংক্ষেপ (গুরুত্বপূর্ণ বিষয়সমূহ)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF সংক্ষেপ করুন",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF সংক্ষেপ করুন (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF সংক্ষেপ করুন (গুরুত্বপূর্ণ বিষয়সমূহ)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "ভিডিও সংক্ষেপ করুন",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "মন্তব্য সংক্ষেপ করুন",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ইমেল সংক্ষেপ করুন",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ইমেল সংক্ষেপ করুন (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ইমেল সংক্ষেপ করুন (গুরুত্বপূর্ণ বিষয়সমূহ)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ইমেল সংক্ষেপ করুন (করনীয়াদি)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ট্রান্সক্রিপ্ট দেখান"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

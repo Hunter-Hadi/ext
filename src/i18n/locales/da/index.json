@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Anthropics hurtigste model i sin intelligensklasse, Haiku er en alsidig løsning til en bred vifte af hverdagsopgaver.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Opgrader for at få adgang til claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Anthropics hurtigste model i sin intelligensklasse, Haiku er en alsidig løsning til en bred vifte af hverdagsopgaver.",
-    "sidebar__art__advanced__copilot__description": "Få fuld kontrol over kunstgenerering uden optimering af AI-drevne kunstprompter."
+    "sidebar__art__advanced__copilot__description": "Få fuld kontrol over kunstgenerering uden optimering af AI-drevne kunstprompter.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Resumé af side",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Resumé af side (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Resumé af side (Vigtigste punkter)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Resumé af PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Resumé af PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Resumé af PDF (Vigtigste punkter)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Resumé af video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Resumé af kommentarer",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Resumé af e-mail",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Resumé af e-mail (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumé af e-mail (Vigtigste punkter)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumé af e-mail (Handlingspunkter)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkript"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

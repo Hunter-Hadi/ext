@@ -2,6 +2,7 @@ import { atom, atomFamily } from 'recoil'
 
 import { IChatMessage } from '@/features/chatgpt/types'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { SummaryParamsPromptType } from '../utils/pageSummaryNavPrompt'
 
 export const ClientWritingMessageStateFamily = atomFamily<
   {
@@ -43,5 +44,19 @@ export const SidebarPageState = atom<{
   default: {
     sidebarConversationType: 'Chat',
     messageListPageNum: 1,
+  },
+})
+/**
+ * @description - sidebar 让SwitchSummaryActionNav组件的nav 按钮可以 更新 usePageSummary 状态
+ */
+export const SidebarPageSummaryNavKeyState = atom<
+  { [key in string]: SummaryParamsPromptType | undefined }
+>({
+  key: 'SidebarPageSummaryNavKeyState',
+  default: {
+    PAGE_SUMMARY: undefined,
+    PDF_CRX_SUMMARY: undefined,
+    YOUTUBE_VIDEO_SUMMARY: undefined,
+    DEFAULT_EMAIL_SUMMARY: undefined,
   },
 })

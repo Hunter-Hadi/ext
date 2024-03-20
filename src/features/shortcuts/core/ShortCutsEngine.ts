@@ -49,6 +49,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 import { ActionYoutubeGetComments } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetComments'
+import { ActionYoutubeGetTranscript } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetTranscript'
 
 const ActionClassMap = {
   // 废弃
@@ -56,6 +57,7 @@ const ActionClassMap = {
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
   [ActionYoutubeGetComments.type]: ActionYoutubeGetComments,
+  [ActionYoutubeGetTranscript.type]: ActionYoutubeGetTranscript,
 
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,

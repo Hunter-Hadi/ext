@@ -4,6 +4,8 @@ type ActionIdentifier =
   | 'RENDER_TEMPLATE'
   //youtube获取评论
   | 'YOUTUBE_GET_COMMENTS'
+  //youtube获进度数据
+  | 'YOUTUBE_GET_TRANSCRIPT'
   /**
    * @deprecated - 这个action已经被废弃了，使用RENDER_TEMPLATE代替
    * @description - 渲染AI Prompt

@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "अॅंथ्रोपिकच्या बुद्धिमत्ता वर्गातील सर्वात जलद मॉडेल, हाइकू रोजच्या काहीही कामांसाठी एक विविध उपाय आहे.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "claude-3-haiku ची प्रवेशिका अपग्रेड करा",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "अॅंथ्रोपिकच्या बुद्धिमत्ता वर्गातील सर्वात जलद मॉडेल, हाइकू रोजच्या काहीही कामांसाठी एक विविध उपाय आहे.",
-    "sidebar__art__advanced__copilot__description": "AI-पॉवर्ड कला प्रॉम्प्ट्स ऑप्टिमायझेशन नसताना कला उत्पादनचे पूर्ण नियंत्रण घेण्यासह असा विकल्प."
+    "sidebar__art__advanced__copilot__description": "AI-पॉवर्ड कला प्रॉम्प्ट्स ऑप्टिमायझेशन नसताना कला उत्पादनचे पूर्ण नियंत्रण घेण्यासह असा विकल्प.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "पृष्ठ संक्षेपित करा",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "पृष्ठ संक्षेपित करा (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "पृष्ठ संक्षेपित करा (मुख्य घटक)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF संक्षेपित करा",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF संक्षेपित करा (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF संक्षेपित करा (मुख्य घटक)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "व्हिडिओ संक्षेपित करा",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "टिप्पण्या संक्षेपित करा",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ईमेल संक्षेपित करा",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ईमेल संक्षेपित करा (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ईमेल संक्षेपित करा (मुख्य घटक)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ईमेल संक्षेपित करा (क्रियाकलाप)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ट्रांसक्रिप्ट दर्शवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

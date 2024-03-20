@@ -645,7 +645,20 @@
     "sidebar__conversation__message__context_cleared": "Context cleared",
     "translation_advanced__title": "Translation settings",
     "translation_advanced__source_lang_select__label": "Source language",
-    "translation_advanced__target_lang_select__label": "Target language"
+    "translation_advanced__target_lang_select__label": "Target language",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Summarize page",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Summarize page (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Summarize page (Key takeaways)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Summarize PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Summarize PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Summarize PDF (Key takeaways)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Summarize video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Summarize comments",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Summarize email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Summarize email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Summarize email (Key takeaways)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Summarize email (Action items)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Show transcript"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

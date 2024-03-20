@@ -15,7 +15,7 @@ export const messageWithErrorBoundary = <P extends object>(
 
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
       // 处理错误，例如记录错误信息
-      console.error(error, errorInfo)
+      console.error('simply componentDidCatch error', error, errorInfo)
       // 更新状态以渲染降级的 UI
       this.setState({ hasError: true })
     }

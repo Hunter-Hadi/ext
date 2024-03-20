@@ -18,47 +18,40 @@ const checkHostUsingButtonKeys = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const host = getCurrentDomainHost()
-  if (host === 'mail.google.com') {
-    return getGmailButtonGroup(config)
+  switch (host) {
+    case 'mail.google.com':
+      return getGmailButtonGroup(config)
+
+    case 'outlook.office.com':
+    case 'outlook.live.com':
+    case 'outlook.office365.com':
+      return getOutlookButtonGroup(config)
+
+    case 'twitter.com':
+      return getTwitterButtonGroup(config)
+
+    case 'linkedin.com':
+      return getLinkedInButtonGroup(config)
+
+    case 'facebook.com':
+      return getFacebookButtonGroup(config)
+
+    case 'youtube.com':
+    case 'studio.youtube.com':
+      return getYouTubeButtonGroup(config)
+
+    case 'instagram.com':
+      return getInstagramButtonGroup(config)
+
+    case 'reddit.com':
+      return getRedditButtonGroup(config)
+
+    default:
+      return [
+        config.buttonGroupConfig.composeReplyButton,
+        config.buttonGroupConfig.refineDraftButton,
+      ]
   }
-  if (
-    host === 'outlook.office.com' ||
-    host === 'outlook.live.com' ||
-    host === 'outlook.office365.com'
-  ) {
-    return getOutlookButtonGroup(config)
-  }
-  if (host === 'twitter.com') {
-    return getTwitterButtonGroup(config)
-  }
-  if (host === 'linkedin.com') {
-    return getLinkedInButtonGroup(config)
-  }
-  if (host === 'facebook.com') {
-    return getFacebookButtonGroup(config)
-  }
-  if (host === 'youtube.com') {
-    return [
-      config.buttonGroupConfig.composeReplyButton,
-      config.buttonGroupConfig.refineDraftButton,
-    ]
-  }
-  if (host === 'studio.youtube.com') {
-    return [
-      config.buttonGroupConfig.composeReplyButton,
-      config.buttonGroupConfig.refineDraftButton,
-    ]
-  }
-  if (host === 'instagram.com') {
-    return getInstagramButtonGroup(config)
-  }
-  if (host === 'reddit.com') {
-    return getRedditButtonGroup(config)
-  }
-  return [
-    config.buttonGroupConfig.composeReplyButton,
-    config.buttonGroupConfig.refineDraftButton,
-  ]
 }
 
 const getGmailButtonGroup = (
@@ -67,9 +60,7 @@ const getGmailButtonGroup = (
   const { keyElement, buttonGroupConfig } = config
   // temp fix for gmail
   if (keyElement.classList.contains('amn')) {
-    return [
-      buttonGroupConfig.composeReplyButton,
-    ]
+    return [buttonGroupConfig.composeReplyButton]
   }
   const emailMessageList = document.querySelectorAll('div[data-message-id]')
   for (let i = 0; i < emailMessageList.length; i++) {
@@ -92,9 +83,7 @@ const getOutlookButtonGroup = (
   const { keyElement, buttonGroupConfig } = config
   // temp fix for outlook mail
   if (keyElement.classList.contains('th6py')) {
-    return [
-      buttonGroupConfig.composeReplyButton,
-    ]
+    return [buttonGroupConfig.composeReplyButton]
   }
   const listContainer = document.querySelector(
     'div[data-app-section="ConversationContainer"]',
@@ -140,8 +129,11 @@ const getTwitterButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  const rooContainer = getTwitterInputAssistantButtonRootContainer(keyElement)
-  if (rooContainer?.querySelector('article[data-testid="tweet"]')) {
+  const rootContainer = getTwitterInputAssistantButtonRootContainer(keyElement)
+  if (keyElement?.parentElement?.getAttribute('data-testid') !== 'toolBar') {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  if (rootContainer?.querySelector('article[data-testid="tweet"]')) {
     return [
       buttonGroupConfig.composeReplyButton,
       buttonGroupConfig.refineDraftButton,
@@ -168,6 +160,12 @@ const getLinkedInButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
+  if (
+    keyElement.classList.contains('feed-shared-social-action-bar') ||
+    keyElement.classList.contains('comments-comment-social-bar')
+  ) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
   if (keyElement.classList.contains('share-box_actions')) {
     return [
       buttonGroupConfig.composeNewButton,
@@ -184,17 +182,73 @@ const getFacebookButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  const isForm = findSelectorParent('form[method="POST"]', keyElement, 20)
-  if (isForm) {
+  // Facebook Reels
+  const isFacebookReelPage = findParentEqualSelector(
+    'div:has(div>div[data-pagelet="Reels"]) + div > div:nth-child(1) > div:nth-child(1) > div:nth-child(1):not([aria-label])',
+    keyElement,
+  )
+  if (isFacebookReelPage) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  const isCreatingPost = findSelectorParent(
+    'form[method="POST"]',
+    keyElement,
+    20,
+  )
+  if (isCreatingPost) {
     return [
       buttonGroupConfig.composeNewButton,
       buttonGroupConfig.refineDraftButton,
     ]
   }
+  const isCommentForm = findSelectorParent(
+    'form[role="presentation"]',
+    keyElement,
+    20,
+  )?.contains(keyElement)
+  if (isCommentForm) {
+    return [
+      buttonGroupConfig.composeReplyButton,
+      buttonGroupConfig.refineDraftButton,
+    ]
+  }
+  const isExplicitToolbar = findParentEqualSelector(
+    'div[data-visualcompletion="ignore-dynamic"]',
+    keyElement,
+  )
+  if (isExplicitToolbar) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+
+  const isReplyComment = findParentEqualSelector(
+    'div[role="article"][aria-label]',
+    keyElement,
+    5,
+  )
+  if (isReplyComment) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
   const replyForm = findSelectorParent('form[role="presentation"]', keyElement)
   if (replyForm?.getBoundingClientRect().width < 240) {
     // 宽度不够
     return []
+  }
+
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getYouTubeButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (
+    keyElement.id === 'placeholder-area' ||
+    keyElement.id === 'reply-button-end'
+  ) {
+    return [buttonGroupConfig.composeReplyButton]
   }
   return [
     buttonGroupConfig.composeReplyButton,
@@ -206,16 +260,16 @@ const getInstagramButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  const isForm = findSelectorParent(
+  const inTheForm = findSelectorParent(
     'div[contenteditable="true"]',
     keyElement,
     20,
   )
   const isCreateDialog = findParentEqualSelector(
     'div[aria-label][role="dialog"]',
-    isForm,
+    inTheForm,
   )
-  if (isForm && isCreateDialog) {
+  if (inTheForm && isCreateDialog) {
     return [
       buttonGroupConfig.composeNewButton,
       buttonGroupConfig.refineDraftButton,
@@ -231,17 +285,16 @@ const getRedditButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.querySelector('button[type="submit"]')) {
+  if (keyElement.querySelector('slot[name="submit-button"]')) {
     // reply
     return [
       buttonGroupConfig.composeReplyButton,
       buttonGroupConfig.refineDraftButton,
     ]
-  } else {
-    return [
-      buttonGroupConfig.composeNewButton,
-      buttonGroupConfig.refineDraftButton,
-    ]
   }
+  return [
+    buttonGroupConfig.composeNewButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
 }
 export default checkHostUsingButtonKeys

@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Le modèle le plus rapide d'Anthropic dans sa catégorie d'intelligence, Haiku est une solution polyvalente pour une large gamme de tâches quotidiennes.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Mise à niveau pour accéder à claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Le modèle le plus rapide d'Anthropic dans sa catégorie d'intelligence, Haiku est une solution polyvalente pour une large gamme de tâches quotidiennes.",
-    "sidebar__art__advanced__copilot__description": "Ayez un contrôle total sur la génération d'art sans optimisation des suggestions d'art alimentées par l'IA."
+    "sidebar__art__advanced__copilot__description": "Ayez un contrôle total sur la génération d'art sans optimisation des suggestions d'art alimentées par l'IA.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Résumer la page",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Résumer la page (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Résumer la page (Points clés)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Résumer le PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Résumer le PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Résumer le PDF (Points clés)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Résumer la vidéo",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Résumer les commentaires",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Résumer l'email",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Résumer l'email (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Résumer l'email (Points clés)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Résumer l'email (Actions à entreprendre)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afficher la transcription"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

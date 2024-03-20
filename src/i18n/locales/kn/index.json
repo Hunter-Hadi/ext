@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "ಅಂಥ್ರೋಪಿಕ್ ತನ್ನ ಬುದ್ಧಿಮತ್ತೆ ವರ್ಗದಲ್ಲಿ ಅತ್ಯಾಧುನಿಕವಾದ ಹೆಚ್ಚುವರಿ ಮಾದರಿಯ ಹೈಕು, ಎಲ್ಲಾ ದಿನಗಳ ಕೆಲಸಗಳ ವಿಸ್ತಾರವಾದ ಪರಿಹಾರಕ್ಕೆ ಒಂದು ವಿವಿಧ ಪರಿಹಾರ.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "ಹೈಕುಗೆ ಪ್ರವೇಶವನ್ನು ಮೆಚ್ಚಿಡಿ",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "ಅಂಥ್ರೋಪಿಕ್ ತನ್ನ ಬುದ್ಧಿಮತ್ತೆ ವರ್ಗದಲ್ಲಿ ಅತ್ಯಾಧುನಿಕವಾದ ಹೆಚ್ಚುವರಿ ಮಾದರಿಯ ಹೈಕು, ಎಲ್ಲಾ ದಿನಗಳ ಕೆಲಸಗಳ ವಿಸ್ತಾರವಾದ ಪರಿಹಾರ.",
-    "sidebar__art__advanced__copilot__description": "AI-ಶಕ್ತಿಯ ಕಲಾ ಪ್ರಾಂಪ್ಟ್ಸ್ ಸರಿಪಡಿಸಿದ ಕಲಾ ಸೃಷ್ಟಿಯ ಮೇಲೆ ಪೂರ್ಣ ನಿಯಂತ್ರಣ."
+    "sidebar__art__advanced__copilot__description": "AI-ಶಕ್ತಿಯ ಕಲಾ ಪ್ರಾಂಪ್ಟ್ಸ್ ಸರಿಪಡಿಸಿದ ಕಲಾ ಸೃಷ್ಟಿಯ ಮೇಲೆ ಪೂರ್ಣ ನಿಯಂತ್ರಣ.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "ಪುಟವನ್ನು ಸಂಗ್ರಹಿಸಿ",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "ಪುಟವನ್ನು ಸಂಗ್ರಹಿಸಿ (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "ಪುಟವನ್ನು ಸಂಗ್ರಹಿಸಿ (ಮುಖ್ಯ ತಿಳುವಳಿಗಳು)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF ಅನ್ನು ಸಂಗ್ರಹಿಸಿ",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (ಮುಖ್ಯ ತಿಳುವಳಿಗಳು)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "ವೀಡಿಯೊವನ್ನು ಸಂಗ್ರಹಿಸಿ",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "ಟಿಪ್ಪಣಿಗಳನ್ನು ಸಂಗ್ರಹಿಸಿ",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (ಮುಖ್ಯ ತಿಳುವಳಿಗಳು)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (ಕ್ರಿಯಾ ವಿಚಾರಗಳು)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ಟ್ರಾನ್ಸ್ಕ್ರಿಪ್ಟ್ ತೋರಿಸು"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

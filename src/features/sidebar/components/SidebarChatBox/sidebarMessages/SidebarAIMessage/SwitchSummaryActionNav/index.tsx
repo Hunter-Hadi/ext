@@ -1,15 +1,19 @@
 import { Button, ButtonGroup } from '@mui/material'
 import React, { FC, useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useSetRecoilState } from 'recoil'
 
 import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
   allSummaryNavList,
   getPageSummaryType,
   getSummaryNavActions,
+  getSummaryNavItemByType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   summaryGetPromptObject,
@@ -19,34 +23,63 @@ interface IProps {
   message: IAIResponseMessage
   loading: boolean
 }
-let speedChangeKey = 'all'
+let speedChangeKey = ''
 export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
-  const [summaryActionKey, setSummaryActionKey] = useState('all')
+  const { t } = useTranslation(['client'])
+  const [summaryActionKey, setSummaryActionKey] = useState<
+    SummaryParamsPromptType | undefined
+  >(undefined)
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
+  const updateCurrentPageSummaryKey = useSetRecoilState(
+    SidebarPageSummaryNavKeyState,
+  )
   const changeSummaryActionKey = (key: SummaryParamsPromptType) => {
     speedChangeKey = key
     setSummaryActionKey(key)
   }
   useEffect(() => {
     const messageNavTitle = message.originalMessage?.metadata?.title?.title
-      if (messageNavTitle && allSummaryNavList[summaryType]) {
-        const currentMessageNav = allSummaryNavList[summaryType].find(
-          (item) => item.title === messageNavTitle,
-        )
-        if (currentMessageNav) {
-          changeSummaryActionKey(currentMessageNav.key)
-        }
+    if (messageNavTitle) {
+      const summaryNavInfo = getSummaryNavItemByType(
+        summaryType,
+        messageNavTitle,
+        'title',
+      )
+      if (summaryNavInfo) {
+        //新进页面，变更 顶部的状态保存
+        updateCurrentPageSummaryKey((summaryKeys) => {
+          if (summaryKeys[summaryType]) {
+            return summaryKeys
+          } else {
+            return {
+              ...summaryKeys,
+              [summaryType]: summaryNavInfo.key,
+            }
+          }
+        })
+        changeSummaryActionKey(summaryNavInfo.key)
       }
+    }
+    if (!speedChangeKey) {
+      changeSummaryActionKey('all')
+    }
   }, [message.originalMessage?.metadata?.title?.title])
   const clickNavTriggerActionChange = async (navItem: {
     title: string
     titleIcon: string
     key: SummaryParamsPromptType
   }) => {
-    if (loading || speedChangeKey === navItem.key) return//防止多次触发
+    if (loading || speedChangeKey === navItem.key) return //防止多次触发
     changeSummaryActionKey(navItem.key)
     const promptText = summaryGetPromptObject[summaryType](navItem.key)
+
+    updateCurrentPageSummaryKey((summaryKeys) => {
+      return {
+        ...summaryKeys,
+        [summaryType]: navItem.key,
+      }
+    })
     await setChromeExtensionLocalStorage({
       sidebarSettings: {
         summary: {
@@ -66,7 +99,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   return (
     <ButtonGroup variant="outlined" aria-label="Basic button group">
       {allSummaryNavList[summaryType].map((navItem) => (
-        <TextOnlyTooltip key={navItem.key} title={navItem.title}>
+        <TextOnlyTooltip key={navItem.key} title={t(navItem.tooltip as any)}>
           <Button
             disabled={loading}
             variant={

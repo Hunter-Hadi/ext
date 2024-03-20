@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "የAnthropic ብልጭታ ዘመን በመስማት በተጨባጭ የሚሆነው ሃይኩ, የተሻለ መስመር ለመስራት የተሰጠ መሳሪያ ነው።",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "ይዘት ለ claude-3-haiku ይሁኑ",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "የAnthropic ብልጭታ ዘመን በመስማት በተጨባጭ የሚሆነው ሃይኩ, የተሻለ መስመር ለመስራት የተሰጠ መሳሪያ ነው።",
-    "sidebar__art__advanced__copilot__description": "የAI-ተግባር መስመር አጠቃላይ እንዲሁም የብልጭታ መስመር እንዲሆን የሚጠቀሙትን አርት የሚያስተምሩበት መጠን።"
+    "sidebar__art__advanced__copilot__description": "የAI-ተግባር መስመር አጠቃላይ እንዲሁም የብልጭታ መስመር እንዲሆን የሚጠቀሙትን አርት የሚያስተምሩበት መጠን።",
+    "sidebar__summary__nav__page_summary__tooltip__default": "ጥቅም አልተጠቀሙም",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "ጥቅም አልተጠቀሙም (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "ጥቅም አልተጠቀሙም (የመልክት ጥቅሞች)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "PDF ጥቅም አልተጠቀሙም",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "PDF ጥቅም አልተጠቀሙም (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "PDF ጥቅም አልተጠቀሙም (የመልክት ጥቅሞች)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "ቪዲዮ ጥቅም አልተጠቀሙም",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "ቪዲዮ ጥቅም አልተጠቀሙም (አስተያየቶች)",
+    "sidebar__summary__nav__email_summary__tooltip__default": "ኢሜል ጥቅም አልተጠቀሙም",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "ኢሜል ጥቅም አልተጠቀሙም (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ኢሜል ጥቅም አልተጠቀሙም (የመልክት ጥቅሞች)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ኢሜል ጥቅም አልተጠቀሙም (የእንቅስቃሴ እይታዎች)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ትርጉም አሳይ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

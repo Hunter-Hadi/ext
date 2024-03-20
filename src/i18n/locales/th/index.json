@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "โมเดลที่เร็วที่สุดของ Anthropic ในกลุ่มอัจฉริยะของมัน Haiku เป็น solusion ที่หลากหลายสำหรับงานประจำวันที่หลากหลาย",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "อัพเกรดเพื่อเข้าถึง claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "โมเดลที่เร็วที่สุดของ Anthropic ในกลุ่มอัจฉริยะของมัน Haiku เป็น solusion ที่หลากหลายสำหรับงานประจำวันที่หลากหลาย",
-    "sidebar__art__advanced__copilot__description": "ควบคุมการสร้างภาพศิลป์ได้อย่างเต็มที่โดยไม่ต้องใช้การปรับแต่ง AI-powered art prompts"
+    "sidebar__art__advanced__copilot__description": "ควบคุมการสร้างภาพศิลป์ได้อย่างเต็มที่โดยไม่ต้องใช้การปรับแต่ง AI-powered art prompts",
+    "sidebar__summary__nav__page_summary__tooltip__default": "สรุปหน้า",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "สรุปหน้า (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "สรุปหน้า (ข้อความสำคัญ)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "สรุป PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "สรุป PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "สรุป PDF (ข้อความสำคัญ)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "สรุปวิดีโอ",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "สรุปความคิดเห็น",
+    "sidebar__summary__nav__email_summary__tooltip__default": "สรุปอีเมล",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "สรุปอีเมล (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "สรุปอีเมล (ข้อความสำคัญ)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "สรุปอีเมล (รายการที่ต้องทำ)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "แสดงบันทึกเสียง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

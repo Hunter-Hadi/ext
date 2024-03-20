@@ -645,7 +645,20 @@
     "provider__claude__model__claude_3_haiku__description": "Model terpantas Anthropic dalam kelas kecerdasannya, Haiku adalah penyelesaian serba boleh digunakan untuk pelbagai tugas harian.",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title": "Naik taraf untuk mengakses claude-3-haiku",
     "permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description": "Model terpantas Anthropic dalam kelas kecerdasannya, Haiku adalah penyelesaian serba boleh digunakan untuk pelbagai tugas harian.",
-    "sidebar__art__advanced__copilot__description": "Kawal penuh pembangkitan seni tanpa optimasi petua seni berasaskan AI."
+    "sidebar__art__advanced__copilot__description": "Kawal penuh pembangkitan seni tanpa optimasi petua seni berasaskan AI.",
+    "sidebar__summary__nav__page_summary__tooltip__default": "Ringkaskan halaman",
+    "sidebar__summary__nav__page_summary__tooltip__tldr": "Ringkaskan halaman (TL;DR)",
+    "sidebar__summary__nav__page_summary__tooltip__key_takeaways": "Ringkaskan halaman (Pengambilan utama)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__default": "Ringkaskan PDF",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__tldr": "Ringkaskan PDF (TL;DR)",
+    "sidebar__summary__nav__pdf_crx_summary__tooltip__key_takeaways": "Ringkaskan PDF (Pengambilan utama)",
+    "sidebar__summary__nav__youtube_summary__tooltip__default": "Ringkaskan video",
+    "sidebar__summary__nav__youtube_summary__tooltip__comment": "Ringkaskan komen",
+    "sidebar__summary__nav__email_summary__tooltip__default": "Ringkaskan emel",
+    "sidebar__summary__nav__email_summary__tooltip__tldr": "Ringkaskan emel (TL;DR)",
+    "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Ringkaskan emel (Pengambilan utama)",
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Ringkaskan emel (Item tindakan)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Tunjukkan transkrip"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

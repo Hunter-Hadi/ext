@@ -9,6 +9,8 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
+import { stopActionMessage } from '../../common'
+
 export class ActionGetYoutubeTranscriptOfURL extends Action {
   static type: ActionIdentifier = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
   constructor(
@@ -24,11 +26,9 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
     onlyError: true,
   })
   @withLoadingDecorators()
-  async execute(
-    params: ActionParameters,
-    engine: IShortcutEngineExternalEngine,
-  ) {
+  async execute() {
     try {
+      console.log('simply ', this.parameters.VariableName)
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''
@@ -41,6 +41,10 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       )
+      if (this.parameters.VariableName === 'GET_LIST_DATA') {
+        this.output = transcripts
+        return
+      }
       const isEmptyTranscriptText =
         transcripts.length <= 10
           ? transcripts
@@ -66,5 +70,9 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

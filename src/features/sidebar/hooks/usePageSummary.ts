@@ -23,10 +23,7 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import {
-  ClientWritingMessageState,
-  SidebarPageSummaryNavKeyState,
-} from '@/features/sidebar/store'
+import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
   getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
@@ -40,9 +37,7 @@ const usePageSummary = () => {
     currentSidebarConversationType,
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const updateClientWritingMessage = useSetRecoilState(
-    ClientWritingMessageState,
-  )
+  const { updateClientConversationLoading } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
@@ -62,12 +57,7 @@ const usePageSummary = () => {
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')
       const pageSummaryConversationId = getPageSummaryConversationId()
-      updateClientWritingMessage((prevState) => {
-        return {
-          ...prevState,
-          loading: true,
-        }
-      })
+      updateClientConversationLoading(true)
 
       if (pageSummaryConversationId) {
         // 看看有没有已经存在的conversation
@@ -90,12 +80,7 @@ const usePageSummary = () => {
             aiMessage?.originalMessage &&
             aiMessage?.originalMessage.metadata?.isComplete
           ) {
-            updateClientWritingMessage((prevState) => {
-              return {
-                ...prevState,
-                loading: false,
-              }
-            })
+            updateClientConversationLoading(false)
             updateConversationMap((prevState) => {
               return {
                 ...prevState,
@@ -116,13 +101,12 @@ const usePageSummary = () => {
         try {
           console.log('新版Conversation pageSummary开始创建')
           // 进入loading
-          await createConversation()
-          updateClientWritingMessage((prevState) => {
-            return {
-              ...prevState,
-              loading: false,
-            }
-          })
+          await createConversation(
+            'Summary',
+            MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIProvider,
+            MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIModel,
+          )
+          updateClientConversationLoading(false)
           // 如果是免费用户
           if (
             currentUserPlan.name !== 'pro' &&
@@ -153,10 +137,11 @@ const usePageSummary = () => {
             }
           }
           const nowCurrentPageSummaryKey = cloneDeep(currentPageSummaryKey)
-          const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
-            getPageSummaryType(),
-            nowCurrentPageSummaryKey[currentPageSummaryType],
-          )
+          const paramsPageSummaryTypeData =
+            await getContextMenuActionsByPageSummaryType(
+              getPageSummaryType(),
+              nowCurrentPageSummaryKey[currentPageSummaryType],
+            )
           if (paramsPageSummaryTypeData) {
             setCurrentPageSummaryKey((summaryKeys) => {
               return {

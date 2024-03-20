@@ -3,10 +3,12 @@ import { useRecoilValue, useSetRecoilState } from 'recoil'
 
 import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
@@ -31,7 +33,7 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
  */
 const useInitSidebar = () => {
   const appState = useRecoilValue(AppState)
-  const { createPageSummary } = usePageSummary()
+  const { createPageSummary, resetPageSummary } = usePageSummary()
   const { pageUrl, startListen } = usePageUrlChange()
   const {
     currentSidebarConversation,
@@ -42,6 +44,7 @@ const useInitSidebar = () => {
   } = useSidebarSettings()
   const { currentConversationIdRef, createConversation } =
     useClientConversation()
+  const { stopGenerate } = useClientChat()
   const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
@@ -157,9 +160,7 @@ const useInitSidebar = () => {
     } else {
       // 直接触发create
     }
-    stopGenerate().then(() => {
-      createPageSummary().then().catch().finally()
-    })
+    createPageSummary().then().catch().finally()
   }, [
     currentSidebarConversationType,
     currentSidebarConversation,
@@ -180,6 +181,7 @@ const useInitSidebar = () => {
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
   const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
+    stopGenerate()
     resetPageSummary()
     pageUrlIsUsedRef.current = false
   }, [pageUrl])

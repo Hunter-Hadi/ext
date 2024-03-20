@@ -50,10 +50,10 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     console.log(
       'simply props BaseSidebarAIMessage',
       isRichAIMessage,
-      message.originalMessage,
+      message,
       liteMode,
     )
-  }, [isRichAIMessage, message.originalMessage, liteMode])
+  }, [isRichAIMessage, message, liteMode])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {

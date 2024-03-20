@@ -7,6 +7,7 @@ import { IArtTextToImageMetadata } from '@/features/art/types'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 
 export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
 
@@ -107,7 +108,7 @@ export type IAIResponseOriginalMessageMetaDeep = {
     }
   | {
       type: 'transcript'
-      value: string //为二阶段做数据准备
+      value: TranscriptResponse[]
     }
 )
 

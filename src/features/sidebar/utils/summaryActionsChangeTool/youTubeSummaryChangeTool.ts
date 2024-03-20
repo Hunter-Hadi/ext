@@ -280,6 +280,19 @@ export const youTubeSummaryTranscriptChangeTool = async (
       },
     },
     {
+      type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+      parameters: {
+        OperationElementSelector: 'ytd-watch-metadata #title',
+      },
+    },
+    {
+      type: 'ANALYZE_CHAT_FILE',
+      parameters: {
+        AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+        AnalyzeChatFileImmediateUpdateConversation: false,
+      },
+    },
+    {
       type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
       parameters: {
         VariableName: 'GET_LIST_DATA',

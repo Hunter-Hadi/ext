@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Summarize email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Summarize email (Key takeaways)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Summarize email (Action items)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Show transcript"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Show transcript",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Sorry, the current advertising time cannot be redirected"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

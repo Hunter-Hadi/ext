@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "تلخيص البريد الإلكتروني (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "تلخيص البريد الإلكتروني (أهم النقاط)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "تلخيص البريد الإلكتروني (عناصر العمل)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "عرض النص المكتوب"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "عرض النص المكتوب",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "عذرًا، لا يمكن إعادة توجيه وقت الإعلان الحالي"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ઇમેઇલ સંક્ષેપિત કરો (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ઇમેઇલ સંક્ષેપિત કરો (મુખ્ય આપત્તિઓ)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ઇમેઇલ સંક્ષેપિત કરો (ક્રિયાઓ)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ટ્રાન્સક્રિપ્ટ બતાવો"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ટ્રાન્સક્રિપ્ટ બતાવો",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "ક્ષમા કરશો, વર્તમાન જાહેરાત સમયને પુનઃનિર્દેશિત કરી શકતું નથી"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

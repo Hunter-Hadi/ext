@@ -658,7 +658,8 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ఇమెయిల్ని సంగ్రహించండి (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ఇమెయిల్ని సంగ్రహించండి (ముఖ్య తెలుసుకొనుట)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ఇమెయిల్ని సంగ్రహించండి (చర్యల అంశాలు)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ట్రాన్స్క్రిప్ట్ చూపించు"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ట్రాన్స్క్రిప్ట్ చూపించు",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "క్షమించండి, ప్రస్తుత వాణిజ్య సమయం దారికి తిరిగి లేదు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -11,6 +11,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
   useEffect(() => {
     console.log('simply transcriptListData', transcriptList)
   }, [transcriptList])
+
   const clickLinkUrl = (time: string) => {
     if (time) {
       try {
@@ -27,6 +28,11 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
         console.log('clickLinkUrl error', e)
       }
     }
+  }
+  const decodeHtmlEntity = (str: string) => {
+    const textarea = document.createElement('textarea')
+    textarea.innerHTML = str.trim().replace(/\n/g, '')
+    return textarea.value
   }
   const formatSecondsAsTimestamp = (seconds: string) => {
     // 将字符串转换为浮点数并取整
@@ -77,7 +83,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
                 flex: 1,
               }}
             >
-              {(transcriptItem.text || '').trim().replace(/\n/g, ' ')}
+              {decodeHtmlEntity(transcriptItem.text || '')}
             </Typography>
           </Stack>
         ))}

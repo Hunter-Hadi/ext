@@ -109,6 +109,10 @@ export const youTubeSummaryCommentsChangeTool = async (
         },
       },
       {
+        type: 'YOUTUBE_GET_COMMENTS', //不能删除，做为为下面的判断
+        parameters: {},
+      },
+      {
         type: 'SCRIPTS_CONDITIONAL',
         parameters: {
           WFCondition: 'Equals',

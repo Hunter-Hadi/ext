@@ -34,11 +34,11 @@ const getFacebookCommentDetail = async (
   const links = Array.from(
     root?.querySelectorAll('a > span'),
   ) as HTMLSpanElement[]
-  const commentDate = links[links.length - 1]?.innerText || ''
+  const commentDate = links[links.length - 1]?.innerText
   return {
     content: commentContent?.innerText || '',
     author: commentAuthor,
-    date: commentDate,
+    date: commentDate && commentDate.length <= 30 ? commentDate : '',
   }
 }
 
@@ -69,7 +69,8 @@ const getFacebookPostData = async (
       }
       let postAuthor = (
         postMetadata.querySelector<HTMLElement>('h4[id] [role="link"]') ||
-        postMetadata.querySelector<HTMLElement>('h3[id] [role="link"]')
+        postMetadata.querySelector<HTMLElement>('h3[id] [role="link"]') ||
+        postMetadata.querySelector<HTMLElement>('h2[id] [role="link"]')
       )?.innerText
       // maybe the metadata has recommendation, so it need to find the correct metadata
       const correctMetadata = Array.from(
@@ -79,9 +80,10 @@ const getFacebookPostData = async (
       if (correctMetadata.length > 1) {
         postAuthor = correctMetadata[0]?.innerText
       }
+      const date = correctMetadata?.pop()?.innerText
       return {
         author: postAuthor || '',
-        date: correctMetadata?.pop()?.innerText || '',
+        date: date && date.length <= 30 ? date : '',
         content: postContent?.innerText || '',
         title: '',
       }
@@ -98,16 +100,30 @@ const getFacebookVideoPostData = async (
     const postMetadata = postContainer?.firstElementChild?.children?.[1]
     if (postMetadata) {
       const postContent = postContainer?.lastElementChild as HTMLElement
+      if (postContent) {
+        const facebookExpandButton = postContent?.querySelector<HTMLElement>(
+          '[role="button"]',
+        )
+        if (facebookExpandButton) {
+          facebookExpandButton.click()
+          await delayAndScrollToInputAssistantButton(100)
+        }
+      }
       const postAuthor = postMetadata?.querySelector<HTMLElement>(
         'h2 [role="link"]',
       )?.innerText
-      const postDate = postMetadata?.querySelector<HTMLElement>(
-        'span > span > span [aria-label][role="link"]',
+      const postDate = (
+        postMetadata?.querySelector<HTMLElement>(
+          'span > span > span [aria-label][role="link"]',
+        ) ||
+        postMetadata?.querySelector<HTMLElement>(
+          'span > span > span [role="link"] [aria-labelledby]',
+        )
       )?.innerText
       return {
         author: postAuthor || '',
-        date: postDate || '',
-        content: postContent?.innerText || '',
+        date: postDate && postDate.length <= 30 ? postDate : '',
+        content: postContent?.querySelector?.('div')?.innerText || '',
         title: '',
       }
     }
@@ -159,37 +175,55 @@ const getCommentsBox = (commentElement: HTMLElement, needFurther = false) => {
 export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
   inputAssistantButton,
 ) => {
-  const postDialog = findParentEqualSelector(
-    '[role="dialog"]',
-    inputAssistantButton,
-    50,
-  )
+  debugger
+
+  const videoPagePostBox =
+    document.querySelector<HTMLElement>(
+      'div:has(> [data-pagelet="WatchPermalinkVideo"]) + div > div',
+    ) ||
+    document.querySelector<HTMLElement>(
+      'div[data-pagelet="TahoeRightRail"] > div > div',
+    ) ||
+    document.querySelector<HTMLElement>(
+      '#watch_feed > div > div:nth-child(1) > div > div > div:nth-child(2) > div:nth-child(1)',
+    ) ||
+    document.querySelector<HTMLElement>(
+      '[role="dialog"][aria-label] div[role="complementary"] > div:nth-child(1) >div >div:nth-child(1) > div > div > div:nth-child(1)',
+    )
+
+  const reelPagePostBox =
+    document.querySelector<HTMLElement>(
+      'div[data-pagelet="ReelsCommentPane"]',
+    ) ||
+    document.querySelector<HTMLElement>(
+      '[role="main"]:not(:has([aria-describedby][aria-labelledby])) + [role="complementary"] > div > div:nth-child(1) > div > div:nth-child(1) > div',
+    )
 
   // if dialog exists, then it should get post data from dialog
   //
   // or click on explicit quick reply button, it should get post data from the surface
-  const facebookPostData =
-    (await getFacebookPostData(
-      postDialog ||
+  const facebookPostData = await (videoPagePostBox
+    ? getFacebookVideoPostData(videoPagePostBox)
+    : reelPagePostBox
+    ? getFacebookReelPostData(reelPagePostBox, inputAssistantButton)
+    : getFacebookPostData(
         findParentEqualSelector(
-          '[role="article"]:not([aria-label])',
+          '[role="dialog"]:not([aria-label])',
           inputAssistantButton,
-          30,
-        ),
-      inputAssistantButton,
-    )) ||
-    (await getFacebookVideoPostData(
-      document.querySelector(
-        'div:has(> [data-pagelet="WatchPermalinkVideo"]) + div > div',
-      ) ||
-        document.querySelector(
-          'div[data-pagelet="TahoeRightRail"] > div > div',
-        ),
-    )) ||
-    (await getFacebookReelPostData(
-      document.querySelector('div[data-pagelet="ReelsCommentPane"]'),
-      inputAssistantButton,
-    ))
+          50,
+        ) ||
+          findParentEqualSelector(
+            '[role="article"]:not([aria-label]):not(:has( > [aria-label]))',
+            inputAssistantButton,
+            30,
+          ) ||
+          findParentEqualSelector(
+            'div[aria-describedby][aria-labelledby]',
+            inputAssistantButton,
+            30,
+          ),
+        inputAssistantButton,
+      ))
 
   if (facebookPostData) {
     const facebookSocialMediaPostContext = new SocialMediaPostContext(

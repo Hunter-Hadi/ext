@@ -10,7 +10,6 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useRecoilValue } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -23,11 +22,11 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -50,7 +49,7 @@ const InputAssistantButtonContextMenu: FC<
   const { currentUserPlan } = useUserInfo()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
-  const { loading } = useRecoilValue(ClientWritingMessageState)
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const { askAIWIthShortcuts } = useClientChat()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
@@ -61,7 +60,7 @@ const InputAssistantButtonContextMenu: FC<
   }, [permissionWrapperCardSceneType, currentUserPlan])
   const runContextMenu = useCallback(
     async (contextMenu: IContextMenuItem) => {
-      if (!loading && contextMenu.data.actions) {
+      if (!smoothConversationLoading && contextMenu.data.actions) {
         // 每个网站5次免费InputAssistantButton的机会
         const onBoardingData = await getChromeExtensionOnBoardingData()
         const key =
@@ -104,7 +103,7 @@ const InputAssistantButtonContextMenu: FC<
     },
     [
       askAIWIthShortcuts,
-      loading,
+      smoothConversationLoading,
       hasPermission,
       permissionWrapperCardSceneType,
     ],

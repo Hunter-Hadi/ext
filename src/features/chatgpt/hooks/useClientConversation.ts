@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
@@ -18,7 +18,7 @@ import {
   clientUpdateChatConversation,
 } from '@/features/chatgpt/utils/clientChatConversation'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
+import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 import { getInputMediator } from '@/store/InputMediator'
@@ -65,7 +65,7 @@ const useClientConversation = () => {
       ? clientConversationMap[currentConversationId]
       : undefined
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
-    ClientWritingMessageState,
+    ClientWritingMessageStateFamily(currentConversationId || ''),
   )
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
@@ -78,6 +78,12 @@ const useClientConversation = () => {
     currentConversationTypeRef.current = clientConversation?.type
   }, [currentConversationTypeRef])
 
+  const clientConversationMessages = useMemo(() => {
+    if (currentConversationId) {
+      return clientConversationMap[currentConversationId]?.messages || []
+    }
+    return []
+  }, [currentConversationId, clientConversationMap])
   const cleanConversation = async () => {
     if (clientWritingMessage.loading) {
       return
@@ -256,6 +262,19 @@ const useClientConversation = () => {
     })
   }
   /**
+   * 更新当前conversation的loading
+   * @param loading
+   */
+  const updateClientConversationLoading = (loading: boolean) => {
+    setClientWritingMessage((prevState) => {
+      return {
+        ...prevState,
+        loading,
+      }
+    })
+  }
+
+  /**
    * 获取当前conversation
    */
   const getCurrentConversation = async () => {
@@ -279,6 +298,7 @@ const useClientConversation = () => {
   }
 
   return {
+    clientConversationMessages,
     chatStatus,
     updateChatStatus,
     authAIProvider,
@@ -299,6 +319,7 @@ const useClientConversation = () => {
     deleteMessage,
     updateMessage,
     updateClientWritingMessage,
+    updateClientConversationLoading,
     getConversation: clientGetConversation,
     getCurrentConversation,
   }

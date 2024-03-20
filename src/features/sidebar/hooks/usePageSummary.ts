@@ -22,7 +22,6 @@ import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import {
   getContextMenuActionsByPageSummaryType,
   getPageSummaryConversationId,
@@ -36,9 +35,7 @@ const usePageSummary = () => {
     currentSidebarConversationType,
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const updateClientWritingMessage = useSetRecoilState(
-    ClientWritingMessageState,
-  )
+  const { updateClientConversationLoading } = useClientConversation()
   const { currentUserPlan } = useUserInfo()
 
   const { askAIWIthShortcuts } = useClientChat()
@@ -52,12 +49,7 @@ const usePageSummary = () => {
     }
     console.log('新版Conversation 创建pageSummary')
     const pageSummaryConversationId = getPageSummaryConversationId()
-    updateClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: true,
-      }
-    })
+    updateClientConversationLoading(true)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
       const pageSummaryConversation = await clientGetConversation(
@@ -79,12 +71,7 @@ const usePageSummary = () => {
           aiMessage?.originalMessage &&
           aiMessage?.originalMessage.metadata?.isComplete
         ) {
-          updateClientWritingMessage((prevState) => {
-            return {
-              ...prevState,
-              loading: false,
-            }
-          })
+          updateClientConversationLoading(false)
           updateConversationMap((prevState) => {
             return {
               ...prevState,
@@ -110,12 +97,7 @@ const usePageSummary = () => {
           MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIProvider,
           MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIModel,
         )
-        updateClientWritingMessage((prevState) => {
-          return {
-            ...prevState,
-            loading: false,
-          }
-        })
+        updateClientConversationLoading(false)
         // 如果是免费用户
         if (
           currentUserPlan.name !== 'pro' &&

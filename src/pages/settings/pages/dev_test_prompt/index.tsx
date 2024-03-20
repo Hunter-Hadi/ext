@@ -90,6 +90,7 @@ const ChatPanelItem: FC<{
       conversationId: result.data.conversationId,
       status: 'success',
     })
+    return result.data.conversationId
   }
   const chantPanelMemoValue = useMemo<ChatPanelContextValue>(() => {
     return {

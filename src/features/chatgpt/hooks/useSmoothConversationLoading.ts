@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useRecoilValue } from 'recoil'
 
-import { ClientWritingMessageState } from '@/features/sidebar/store'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 
 /**
  * 因为action之间的loading切换比较频繁，可能导致ui闪烁，所以这里封装了一个平滑的loading状态
@@ -9,10 +8,9 @@ import { ClientWritingMessageState } from '@/features/sidebar/store'
  * @since 2023-10-24
  */
 const useSmoothConversationLoading = (smoothInterval = 200) => {
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
-  const [smoothConversationLoading, setSmoothConversationLoading] = useState(
-    false,
-  )
+  const { clientWritingMessage } = useClientConversation()
+  const [smoothConversationLoading, setSmoothConversationLoading] =
+    useState(false)
   useEffect(() => {
     let timer: null | ReturnType<typeof setTimeout> = null
     if (clientWritingMessage.loading) {

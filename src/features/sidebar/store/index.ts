@@ -1,13 +1,16 @@
-import { atom } from 'recoil'
+import { atom, atomFamily } from 'recoil'
 
 import { IChatMessage } from '@/features/chatgpt/types'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
-export const ClientWritingMessageState = atom<{
-  writingMessage: IChatMessage | null
-  loading: boolean
-}>({
-  key: 'ClientWritingMessageState',
+export const ClientWritingMessageStateFamily = atomFamily<
+  {
+    writingMessage: IChatMessage | null
+    loading: boolean
+  },
+  string
+>({
+  key: 'ClientWritingMessageStateFamily',
   default: {
     writingMessage: null,
     loading: false,

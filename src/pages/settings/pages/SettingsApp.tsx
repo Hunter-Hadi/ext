@@ -4,6 +4,7 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
+import { useInitChatGPTClient } from '@/features/chatgpt'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import PageHelp from '@/pages/settings/components/pageHelp'
@@ -117,6 +118,7 @@ const SettingsApp: FC = () => {
       // do nothing
     }
   }, [route, isLogin])
+  useInitChatGPTClient()
   return (
     <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
       <Stack height={'100vh'}>

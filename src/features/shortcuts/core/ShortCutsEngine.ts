@@ -204,6 +204,7 @@ class ShortCutsEngine implements IShortcutEngine {
     parameters: IShortCutsParameter[]
     engine: IShortcutEngineExternalEngine
   }) {
+    debugger
     this.updatedAt = new Date()
     try {
       const { engine, parameters } = params || {}

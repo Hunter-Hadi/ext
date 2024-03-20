@@ -1,3 +1,5 @@
+import { v4 as uuidV4 } from 'uuid'
+
 import {
   BardChatProvider,
   BingChatProvider,
@@ -103,6 +105,9 @@ export default class ChatSystemFactory {
           case 'Client_createChatGPTConversation': {
             const initConversationData = (data.initConversationData ||
               {}) as IChatConversation
+            if (!initConversationData.id) {
+              initConversationData.id = uuidV4()
+            }
             console.log(
               '[Background]新版Conversation 创建会话',
               initConversationData,

@@ -33,6 +33,7 @@ import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProvi
 import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
@@ -78,7 +79,6 @@ import {
 } from '@/features/contextMenu/utils'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -98,7 +98,7 @@ const FloatingContextMenu: FC<{
   const { currentSelectionRef, hideRangy } = useRangy()
   const { askAIWIthShortcuts, askAIQuestion, regenerate } = useClientChat()
   const currentHostRef = useRef(getCurrentDomainHost())
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
+  const { clientWritingMessage } = useClientConversation()
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const { currentSidebarConversationType, updateSidebarConversationType } =
     useSidebarSettings()

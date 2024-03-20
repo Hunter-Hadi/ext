@@ -7,7 +7,6 @@ import { SxProps } from '@mui/material/styles'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import {
   ContextMenuIcon,
@@ -16,10 +15,10 @@ import {
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isProduction } from '@/constants'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import { IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 // 按钮位置选项
 type InputAssistantButtonPosition =
@@ -81,11 +80,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   } = props
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const { t } = useTranslation(['client'])
-  const [
-    contextMenuContainer,
-    setContextMenuContainer,
-  ] = useState<HTMLElement | null>(null)
-  const { loading } = useRecoilValue(ClientWritingMessageState)
+  const [contextMenuContainer, setContextMenuContainer] =
+    useState<HTMLElement | null>(null)
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const [isCTAHover, setIsCTAHover] = useState(false)
   const [isBoxHover, setIsBoxHover] = useState(false)
   const memoButtonSx = useMemo(() => {
@@ -272,10 +269,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     <Button
                       id={`maxAIInputAssistantCtaButton${rootId}`}
                       data-testid={'maxai-input-assistant-cta-button'}
-                      disabled={loading}
+                      disabled={smoothConversationLoading}
                       sx={memoButtonSx.ctaButtonSx}
                     >
-                      {loading ? (
+                      {smoothConversationLoading ? (
                         <CircularProgress
                           size={
                             (memoButtonSx.ctaButtonSx as any)?.iconSize || 16
@@ -350,7 +347,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     <Button
                       id={`maxAIInputAssistantDropdownButton${rootId}`}
                       data-testid={'maxai-input-assistant-dropdown-button'}
-                      disabled={loading}
+                      disabled={smoothConversationLoading}
                       sx={memoButtonSx.dropdownButtonSx}
                     >
                       <ContextMenuIcon

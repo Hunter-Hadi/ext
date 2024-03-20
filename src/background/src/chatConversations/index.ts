@@ -318,15 +318,16 @@ class ConversationDB {
     filterConversationType: ISidebarConversationType,
   ): Promise<void> {
     const allConversations = await this.getAllConversations()
-    const waitDeleteConversations: IChatConversation[] = allConversations.filter(
-      (conversation) => {
+    const waitDeleteConversations: IChatConversation[] =
+      allConversations.filter((conversation) => {
+        // 1. 没有消息
+        // 2. 不是当前对话类型
+        // 3. 不是当前对话ID
         return (
           conversation.messages.length === 0 &&
-          conversation.type === filterConversationType &&
-          conversation.id !== filterConversationId
+          conversation.type !== filterConversationType
         )
-      },
-    )
+      })
     await Promise.all(
       waitDeleteConversations.map((conversation) =>
         this.deleteConversation(conversation.id),

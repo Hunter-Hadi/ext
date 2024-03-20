@@ -17,31 +17,33 @@ import {
 } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 const DevConsole: FC = () => {
   const {
     currentSidebarAIProvider,
     currentSidebarConversationId,
     currentSidebarConversationType,
-    currentSidebarConversation,
     sidebarSettings,
   } = useSidebarSettings()
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
-  const { currentConversationId, chatStatus } = useClientConversation()
+  const {
+    clientWritingMessage,
+    currentConversationId,
+    chatStatus,
+    clientConversation,
+  } = useClientConversation()
   const { currentAIProviderModel } = useAIProviderModels()
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
   const renderConversation = useMemo(() => {
     const clonedConversation: any = cloneDeep(
-      currentSidebarConversation,
+      clientConversation,
     ) as IChatConversation
     if (clonedConversation) {
       clonedConversation.messages = []
     }
     return clonedConversation
-  }, [currentSidebarConversation])
+  }, [clientConversation])
 
   return (
     <Stack
@@ -131,7 +133,7 @@ const DevConsole: FC = () => {
           </p>
           <p>
             currentSidebarAIProvider: {currentSidebarAIProvider} - [
-            {currentSidebarConversation?.messages.length}]
+            {clientConversation?.messages.length}]
           </p>
           <p>currentSidebarAIMode: {currentAIProviderModel}</p>
           <p>currentSidebarConversationId: {currentSidebarConversationId}</p>

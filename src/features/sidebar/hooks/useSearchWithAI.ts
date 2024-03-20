@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -15,7 +15,6 @@ import { clientGetConversation } from '@/features/chatgpt/utils/chatConversation
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { generateSearchWithAIActions } from '@/features/sidebar/utils/searchWithAIHelper'
 import {
   isShowChatBox,
@@ -32,9 +31,7 @@ const useSearchWithAI = () => {
   } = useSidebarSettings()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
 
-  const updateClientWritingMessage = useSetRecoilState(
-    ClientWritingMessageState,
-  )
+  const { updateClientConversationLoading } = useClientConversation()
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
@@ -81,21 +78,11 @@ const useSearchWithAI = () => {
       // conversation不存在
       await createConversation('Search')
     }
-    updateClientWritingMessage((prevState) => {
-      return {
-        ...prevState,
-        loading: true,
-      }
-    })
+    updateClientConversationLoading(true)
     try {
       console.log('新版Conversation search with AI 开始创建')
       // 进入loading
-      updateClientWritingMessage((prevState) => {
-        return {
-          ...prevState,
-          loading: false,
-        }
-      })
+      updateClientConversationLoading(false)
       // 如果是免费用户
       if (currentUserPlan.name !== 'pro' && currentUserPlan.name !== 'elite') {
         // 判断lifetimes free trial是否已经用完

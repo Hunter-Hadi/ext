@@ -1,17 +1,17 @@
 import { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { FloatingContextMenuDraftState } from '@/features/contextMenu'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 /**
  * AI持续生成的草稿
  */
 const useFloatingContextMenuDraft = () => {
   const { currentSidebarConversationMessages, currentSidebarConversationType } =
     useSidebarSettings()
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
+  const { clientWritingMessage } = useClientConversation()
   const floatingContextMenuDraft = useRecoilValue(FloatingContextMenuDraftState)
   const aiMessages: IChatMessage[] = []
   let lastAIMessageId = floatingContextMenuDraft.lastAIMessageId

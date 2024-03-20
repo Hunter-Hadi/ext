@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import { ContentScriptConnectionV2, pingUntilLogin } from '@/features/chatgpt'
@@ -10,7 +10,6 @@ import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ShortCutsState } from '@/features/shortcuts/store'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import {
   isShowChatBox,
   showChatBox,
@@ -26,9 +25,7 @@ const useShortCutsEngine = () => {
   const { isLogin } = useAuthLogin()
   const getParams = useShortCutsParameters()
   const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
-  const { loading: chatGPTConversationLoading } = useRecoilValue(
-    ClientWritingMessageState,
-  )
+  const { clientWritingMessage } = useClientConversation()
   const clientConversationEngine = useClientConversation()
   const [shortCutsEngine, setShortCutsEngine] =
     useState<IShortcutEngine | null>(ShortCutsEngineFactory.create(''))
@@ -93,6 +90,7 @@ const useShortCutsEngine = () => {
               return shortCutsParameter
             },
           )
+          debugger
           await shortCutsEngine.run({
             parameters: shortCutsParameters,
             engine: {
@@ -157,7 +155,8 @@ const useShortCutsEngine = () => {
     shortCutsEngine,
     runShortCuts,
     setShortCuts,
-    loading: shortCutsState.status === 'running' || chatGPTConversationLoading,
+    loading:
+      shortCutsState.status === 'running' || clientWritingMessage.loading,
     status: shortCutsState.status,
     stopShortCuts,
     resetShortCuts,

@@ -467,6 +467,7 @@ export const ClientMessageInit = () => {
           break
         case 'Client_updateConversation':
           {
+            debugger
             const {
               conversationId,
               updateConversationData,

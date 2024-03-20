@@ -26,9 +26,12 @@ const SidebarChatPanel = () => {
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
-  const { clientWritingMessage, cleanConversation } = useClientConversation()
+  const {
+    clientWritingMessage,
+    clientConversationMessages,
+    cleanConversation,
+  } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
-  const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
   useInitSidebar()
   useInitConversationUpdate()
@@ -54,7 +57,7 @@ const SidebarChatPanel = () => {
           }
         }}
         writingMessage={clientWritingMessage.writingMessage}
-        messages={currentSidebarConversationMessages}
+        messages={clientConversationMessages}
         loading={smoothConversationLoading}
         onReGenerate={async () => {
           if (currentSidebarConversationType === 'Search') {

@@ -19,14 +19,24 @@ const getFacebookCommentDetail = async (
 ): Promise<ICommentData> => {
   const commentAuthor =
     (root?.querySelector('a > span > span') as HTMLSpanElement)?.innerText || ''
-  const commentContent =
-    (root?.querySelector('span[lang][dir]') as HTMLSpanElement)?.innerText || ''
+  const commentContent = root?.querySelector(
+    'span[lang][dir]',
+  ) as HTMLSpanElement
+  if (commentContent) {
+    const expandButton = commentContent.querySelector<HTMLElement>(
+      '[role="button"]',
+    )
+    if (expandButton) {
+      expandButton.click()
+      await delayAndScrollToInputAssistantButton(100)
+    }
+  }
   const links = Array.from(
     root?.querySelectorAll('a > span'),
   ) as HTMLSpanElement[]
   const commentDate = links[links.length - 1]?.innerText || ''
   return {
-    content: commentContent,
+    content: commentContent?.innerText || '',
     author: commentAuthor,
     date: commentDate,
   }

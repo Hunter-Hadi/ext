@@ -35,7 +35,7 @@ export class ActionYoutubeGetTranscript extends Action {
       )
       this.output = JSON.stringify(timeTextList)
     } catch (e) {
-      this.output = []
+      this.output = JSON.stringify([])
     }
   }
   computeMaxChars(dataArray: TranscriptResponse[]) {

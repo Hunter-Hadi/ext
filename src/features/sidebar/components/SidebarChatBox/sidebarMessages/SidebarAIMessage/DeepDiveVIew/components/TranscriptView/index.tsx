@@ -36,7 +36,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
           )
           return
         }
-        let waitingTime = 0
+        let waitingTime = 10
         const isSkipTime = document.querySelector(
           '#container .ytp-ad-skip-button-modern.ytp-button',
         ) as HTMLButtonElement
@@ -54,6 +54,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
         if (video) {
           const timeNum = parseInt(time, 10)
           if (typeof timeNum === 'number') {
+            video.play()
             setTimeout(() => {
               video.currentTime = timeNum
             }, waitingTime)

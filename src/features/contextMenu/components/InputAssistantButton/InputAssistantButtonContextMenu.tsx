@@ -26,6 +26,7 @@ import { useContextMenuList } from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ClientWritingMessageState } from '@/features/sidebar/store'
@@ -63,7 +64,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { loading } = useRecoilValue(ClientWritingMessageState)
-  const { askAIWIthShortcuts } = useClientChat()
+  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
     if (permissionWrapperCardSceneType && currentUserPlan.name === 'free') {
@@ -129,6 +130,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
   useEffect(() => {
     sidebarSettingsTypeRef.current = currentSidebarConversationType
   }, [currentSidebarConversationType])
+
   useEffect(() => {
     if (
       !isRunningRef.current &&
@@ -136,6 +138,15 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
       runContextMenuRef.current &&
       sidebarSettingsTypeRef.current === 'Chat'
     ) {
+      let onSelectionEffectListener: IShortcutEngineListenerType | null = null;
+      if (onSelectionEffect) {
+        onSelectionEffectListener = (event, data) => {
+          if(event === 'action' && ['GET_CONTENTS_OF_WEBPAGE', 'GET_EMAIL_CONTENTS_OF_WEBPAGE', 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE', 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE'].includes(data?.type) && data?.status === 'complete') {
+            onSelectionEffect()
+          }
+        }
+        shortCutsEngineRef.current?.addListener(onSelectionEffectListener)
+      }
       isRunningRef.current = true
       setClickContextMenu(null)
       runContextMenuRef
@@ -145,8 +156,11 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
         .finally(() => {
           isRunningRef.current = false
 
+          if (onSelectionEffectListener) {
+            shortCutsEngineRef.current?.removeListener(onSelectionEffectListener)
+          }
           // temporary support onSelectionEffect
-          onSelectionEffect && onSelectionEffect();
+          // onSelectionEffect && onSelectionEffect();
         })
 
     }

@@ -15,6 +15,7 @@ interface IDeepDiveVIew {
     | IAIResponseOriginalMessageMetaDeep[]
   isDarkMode?: boolean
 }
+//DeepDiveVIew 名字需改变
 const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
   const deepDiveList = useMemo(() => {
     if (Array.isArray(props.data)) {

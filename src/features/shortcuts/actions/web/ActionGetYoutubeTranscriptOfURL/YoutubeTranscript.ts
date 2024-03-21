@@ -10,6 +10,9 @@ export interface TranscriptResponse {
   start: string
   duration: string
   text: string
+  children?: TranscriptResponse[]
+  status?: string
+  id?: string
 }
 
 /**

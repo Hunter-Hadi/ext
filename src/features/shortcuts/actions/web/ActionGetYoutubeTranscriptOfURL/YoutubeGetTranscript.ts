@@ -35,7 +35,11 @@ export class ActionYoutubeGetTranscript extends Action {
       const transcript = params.LAST_ACTION_OUTPUT as
         | TranscriptResponse[]
         | undefined
-      if (!transcript || transcript.length === 0) {
+      if (
+        !transcript ||
+        transcript.length === 0 ||
+        !engine.clientConversationEngine?.currentConversationIdRef?.current
+      ) {
         //为空
         this.output = JSON.stringify([])
         return
@@ -50,23 +54,31 @@ export class ActionYoutubeGetTranscript extends Action {
           transcript,
         )
         console.log('simply chapterTextList', chapterTextList)
+        const oldTranscriptList: any[] = this.getPrepareData(chapterTextList)
+        console.log('simply oldTranscriptList 1', oldTranscriptList)
         if (chapterTextList.length > 0) {
-          const transcriptList = await this.testAjaxGet(
-            params.CURRENT_WEBPAGE_TITLE || '',
-            chapterTextList[0],
-          )
-          console.log('simply transcriptList', transcriptList)
-          this.upConversationMessageInfo(
-            (engine.clientMessageChannelEngine as any)
-              ?.currentSidebarConversationId,
-            (params as any).AI_RESPONSE_MESSAGE_ID,
-            transcriptList,
-          )
-          this.output = JSON.stringify(transcriptList)
-          // this.askGptReturnJson(
-          //   params.CURRENT_WEBPAGE_TITLE || '',
-          //   chapterTextList[0],
-          // )
+          for (const index in chapterTextList) {
+            const transcriptList: any = await this.testAjaxGet(
+              params.CURRENT_WEBPAGE_TITLE || '',
+              chapterTextList[index],
+            )
+            oldTranscriptList[index].text = transcriptList?.text
+            oldTranscriptList[index].children = transcriptList?.children
+            oldTranscriptList[index].status = 'complete'
+
+            console.log('simply oldTranscriptList 2', oldTranscriptList)
+
+            this.upConversationMessageInfo(
+              engine.clientConversationEngine?.currentConversationIdRef
+                ?.current,
+              (params as any).AI_RESPONSE_MESSAGE_ID,
+              oldTranscriptList,
+            )
+            this.output = JSON.stringify(oldTranscriptList)
+          }
+          console.log('simply end ----------------------')
+        } else {
+          this.output = JSON.stringify([])
         }
       } else {
         //进入
@@ -131,7 +143,22 @@ ${JSON.stringify(chapterTextList)}`
     }
     return askDAta
   }
-
+  getPrepareData(
+    list: {
+      tokens: number
+      text: string
+      title: string
+      start: string
+    }[],
+  ) {
+    return list.map((item) => ({
+      id: uuidV4(),
+      start: this.timestampToSeconds(item.start),
+      text: '',
+      status: 'loading',
+      children: [],
+    }))
+  }
   testAjaxGet(title: string, chapterTextList: any) {
     //快速开发prompt 使用
     const systemPrompt = `Remember, you are a tool for summarizing transcripts
@@ -209,8 +236,8 @@ ${JSON.stringify(chapterTextList)}
             console.log('simply ajax', JSON.parse(result).choices)
             const jsonStr: string = JSON.parse(result)?.choices?.[0]?.message
               ?.content
-            console.log('simply json', [this.getObjectFromString(jsonStr)])
-            resolve([this.getObjectFromString(jsonStr)])
+            console.log('simply json', this.getObjectFromString(jsonStr))
+            resolve(this.getObjectFromString(jsonStr))
           } catch (e) {
             reject()
           }
@@ -446,6 +473,12 @@ ${JSON.stringify(chapterTextList)}
     messageId: string,
     transcriptData: any,
   ) {
+    console.log(
+      'upConversationMessageInfo',
+      conversationId,
+      messageId,
+      transcriptData,
+    )
     await clientChatConversationModifyChatMessages(
       'update',
       conversationId,
@@ -456,14 +489,29 @@ ${JSON.stringify(chapterTextList)}
           messageId: messageId,
           originalMessage: {
             metadata: {
+              isComplete: true,
+              sources: {
+                status: 'complete',
+              },
+              copilot: {
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'complete',
+                    icon: 'SmartToy',
+                    value: '',
+                  },
+                ],
+              },
               deepDive: [
                 {
                   type: 'transcript',
+                  status: 'complete',
                   title: {
                     title: 'Transcript',
                     titleIcon: 'Menu',
                   },
-                  value: JSON.stringify(transcriptData),
+                  value: transcriptData,
                 },
               ],
             },

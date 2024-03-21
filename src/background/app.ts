@@ -612,29 +612,30 @@ const developmentHotReload = () => {
 }
 
 const initExternalMessageListener = () => {
-  // 可接收外部消息的插件id
-  const extensionWhiteList = [
-    // webchatgpt
-    'lpfemeioodjbpieminkklglpmhlngfcn',
+  // // 可接收外部消息的插件id
+  // const extensionWhiteList = [
+  //   // webchatgpt
+  //   'lpfemeioodjbpieminkklglpmhlngfcn',
 
-    // modHeader
-    'idgpnmonknjnojddfkpgkljpfnnfcklj',
-  ]
+  //   // modHeader
+  //   'idgpnmonknjnojddfkpgkljpfnnfcklj',
+  // ]
 
   Browser.runtime.onMessageExternal.addListener(async function (
     message,
     sender,
   ) {
     // 测试环境跳过 插件白名单 检测
-    if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
-      if (message.event === 'GET_MAXAI_USERINFO') {
-        const userinfo = await getChromeExtensionUserInfo(false)
-        return {
-          isLogin: !!userinfo,
-          success: true,
-        }
+    // 暂时不校验插件id
+    // if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
+    if (message.event === 'GET_MAXAI_USERINFO') {
+      const userinfo = await getChromeExtensionUserInfo(false)
+      return {
+        isLogin: !!userinfo,
+        success: true,
       }
     }
+    // }
     return undefined
   })
 }

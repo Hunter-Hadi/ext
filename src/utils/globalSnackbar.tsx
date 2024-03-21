@@ -42,6 +42,9 @@ export const ChatGPTSnackbarContainer = () => {
         vertical: 'bottom',
         horizontal: 'left',
       }}
+      classes={{
+        containerRoot: 'maxai-snackbar-container-root',
+      }}
       action={(key) => (
         <svg
           focusable="false"

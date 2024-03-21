@@ -24,19 +24,25 @@ const getInstagramCommentDetail = async (
   let commentDate = ''
   // 找到展开按钮
   const expandButton = root.querySelector(
-    'div[role="button"][tabindex="0"]',
+    'div[role="button"][tabindex="0"]:has(> span[dir])',
   ) as HTMLButtonElement
-  if (expandButton && expandButton?.innerText === 'more') {
+  if (expandButton) {
     expandButton.click()
     await delayAndScrollToInputAssistantButton(500)
   }
   // 日期的下一行就是内容
   if (commentDateElement) {
     commentDate = commentDateElement?.dateTime || ''
-    const commentContentElement = findParentEqualSelector(
+    let commentContentElement = findParentEqualSelector(
       'div',
       commentDateElement,
     )?.nextElementSibling as HTMLDivElement
+    // 如果没获取到，说明在主页
+    if (!commentContentElement) {
+      commentContentElement = root.querySelector<HTMLDivElement>(
+        'section + div > span[dir]',
+      )!
+    }
     commentContent = commentContentElement?.innerText || ''
   }
   // 如果没获取到，尝试获取用户名的下一行
@@ -76,12 +82,16 @@ export const instagramGetPostContent: GetSocialMediaPostContentFunction = async 
   if (instagramRootReplyBox) {
     // 查找comment 列表
     const replyMessageThread = instagramRootReplyBox.querySelector('hr')
-      ? (Array.from(
-          instagramRootReplyBox?.querySelectorAll('hr + div > div > div > div'),
-        ) as HTMLDivElement[])
-      : (Array.from(
-          instagramRootReplyBox?.querySelectorAll('section + div > ul > *'),
-        ) as HTMLDivElement[])
+      ? Array.from(
+          instagramRootReplyBox?.querySelectorAll<HTMLElement>(
+            'hr + div > div > div > div',
+          ),
+        )
+      : Array.from(
+          instagramRootReplyBox?.querySelectorAll<HTMLElement>(
+            'section + div > ul > *',
+          ),
+        )
     const [postContent, ...commentRootList] = replyMessageThread
     if (!postContent) {
       // 说明可能在Home或者其他页面

@@ -657,7 +657,9 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Weka muhtasari wa barua pepe",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Weka muhtasari wa barua pepe (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Weka muhtasari wa barua pepe (Mambo muhimu)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Weka muhtasari wa barua pepe (Vitu vya kufanya)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Weka muhtasari wa barua pepe (Vitu vya kufanya)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Onyesha maelezo",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Tafadhali subiri hadi tangazo la video litakapomalizika kucheza na kisha jaribu tena."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

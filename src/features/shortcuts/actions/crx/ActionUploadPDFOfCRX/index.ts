@@ -10,6 +10,8 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 
+import { stopActionMessage } from '../../common'
+
 /**
  * 上传插件PDF viewer的文件到服务器
  * @since - 2024-01-24
@@ -100,5 +102,9 @@ export class ActionUploadPDFOfCRX extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

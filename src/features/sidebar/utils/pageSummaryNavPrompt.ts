@@ -188,7 +188,13 @@ Use the following format:
       initDefPrompt()
       break
     case 'comment':
-      defaultPrompt += `Summarize people's views on the video in approximately 30 words using comment data, in short plain text, and return it in plain text`
+      defaultPrompt += `Summarize people's views on the video in approximately 30 words using comment data, in short plain text, and return it in plain text
+---
+
+Use the following format:
+#### Top Comments Summary 
+<summary of the text>
+`
       break
     case 'transcript':
       defaultPrompt = `Your goal is to divide the chunk of the transcript into sections of information with a common theme and note the beginning timestamp of each section.

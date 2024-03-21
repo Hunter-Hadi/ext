@@ -10,6 +10,8 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
+import { stopActionMessage } from '../../common'
+
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
   originalInnerText: string = ''
@@ -43,5 +45,9 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     } catch (e) {
       this.error = (e as any).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

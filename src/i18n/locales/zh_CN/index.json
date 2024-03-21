@@ -657,7 +657,9 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "总结电子邮件",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "总结电子邮件（简而言之）",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "总结电子邮件（要点）",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "总结电子邮件（行动项）"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "总结电子邮件（行动项）",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "显示剧本",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "请等待视频广告播放完毕，然后再试一次。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

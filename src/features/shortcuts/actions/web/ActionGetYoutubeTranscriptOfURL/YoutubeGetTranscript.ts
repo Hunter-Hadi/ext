@@ -3,6 +3,7 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
+import { stopActionMessage } from '../../common'
 import { TranscriptResponse } from './YoutubeTranscript'
 
 /**
@@ -25,28 +26,37 @@ export class ActionYoutubeGetTranscript extends Action {
   ) {
     console.log('simply params', params.LAST_ACTION_OUTPUT, engine)
     try {
-      const timeTextList = this.splitArrayByWordCount(
+      const maxChars = this.computeMaxChars(
         (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
       )
-      if (timeTextList && timeTextList.length > 0) {
-        this.output = this.generateTimestampedLinks(
-          timeTextList,
-          window.location.href,
-        )
-        return
-      }
-      this.output = 'Sorry, No  Transcription Available... 😢'
+      const timeTextList = this.splitArrayByWordCount(
+        (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
+        maxChars,
+      )
+      this.output = JSON.stringify(timeTextList)
     } catch (e) {
-      this.output = 'Sorry, No  Transcription Available... 😢'
+      this.output = JSON.stringify([])
     }
   }
-  splitArrayByWordCount(arr: TranscriptResponse[], maxChars = 515) {
+  computeMaxChars(dataArray: TranscriptResponse[]) {
+    let totalLength = 0
+
+    for (let i = 0; i < dataArray.length; i++) {
+      totalLength += dataArray[i].text.length
+    }
+    if (totalLength < 2000) {
+      return 350
+    } else {
+      return 500
+    }
+  }
+  splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
     const result: TranscriptResponse[] = [] // 存储分割后的结果
     let currentItem = { start: '', duration: 0, text: '' }
     let currentTextList: string[] = [] // 当前文本暂存列表
     let currentCharsCount = 0 // 当前字符计数
 
-    arr.forEach((item, index) => {
+    dataArray.forEach((item, index) => {
       // 如果当前item的text和已有的text累加不会超过maxChars，就继续合并
       if (currentCharsCount + item.text.length <= maxChars) {
         // 设置start时间为第一次合并的item时间
@@ -61,7 +71,7 @@ export class ActionYoutubeGetTranscript extends Action {
         currentCharsCount += item.text.length
 
         // 如果是数组的最后一个元素，也直接加到结果中
-        if (index === arr.length - 1) {
+        if (index === dataArray.length - 1) {
           currentItem.text = currentTextList.join(' ')
 
           result.push({
@@ -90,21 +100,22 @@ export class ActionYoutubeGetTranscript extends Action {
 
     return result
   }
-  generateTimestampedLinks(dataArray: TranscriptResponse[], url: string) {
+  generateTimestampedLinks(dataArray: TranscriptResponse[]) {
     // 对数组中的每个对象进行映射操作
-    const links = dataArray.map((item) => {
+    const links: TranscriptResponse[] = dataArray.map((item) => {
       // 从数据中取出start和text
-      const { start, text } = item
-
+      const { start } = item
       // 格式化start时间为"小时:分钟:秒"的格式
       const timeString = this.formatSecondsAsTimestamp(start)
-
       // 返回格式化后的字符串
-      return `- [${timeString}](${url}&t=${start}s) ${text}\n\n`
+      return {
+        ...item,
+        start: timeString,
+      }
     })
 
     // 将所有的链接拼接成为一个长字符串，每个链接之间用换行符分隔
-    return links.join('')
+    return links
   }
 
   // 将秒数格式化为"小时:分钟:秒"的格式
@@ -124,5 +135,9 @@ export class ActionYoutubeGetTranscript extends Action {
     } else {
       return `${minutesString}:${secondsString}`
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

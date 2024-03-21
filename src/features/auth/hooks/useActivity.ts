@@ -11,7 +11,7 @@ import { useAuthLogin } from '@/features/auth'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 
 // 活动结束的时间
-const ACTIVITY_END_TIME = '2024-05-01'
+const ACTIVITY_END_TIME = '2024-03-01'
 // 活动可以手动关闭banner的时间
 const ACTIVITY_ABLE_CLOSE_START_TIME = '2023-12-21'
 

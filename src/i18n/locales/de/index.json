@@ -657,7 +657,9 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "E-Mail zusammenfassen",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "E-Mail zusammenfassen (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-Mail zusammenfassen (Haupterkenntnisse)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-Mail zusammenfassen (Aktionspunkte)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "E-Mail zusammenfassen (Aktionspunkte)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transkript anzeigen",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Bitte warten Sie, bis die Videoanzeige abgeschlossen ist, und versuchen Sie es dann erneut."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

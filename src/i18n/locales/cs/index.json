@@ -657,7 +657,9 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Shrnutí emailu",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Shrnutí emailu (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Shrnutí emailu (Hlavní myšlenky)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Shrnutí emailu (Úkoly)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Shrnutí emailu (Úkoly)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobrazit přepis",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počkejte, až skončí reklama ve videu a poté to zkuste znovu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

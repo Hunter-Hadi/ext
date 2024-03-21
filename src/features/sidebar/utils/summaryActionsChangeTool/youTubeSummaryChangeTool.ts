@@ -94,6 +94,7 @@ export const youTubeSummaryCommentsChangeTool = async (
                     },
                   ],
                 },
+                deepDive: [],
               },
               content: {
                 title: {
@@ -106,6 +107,10 @@ export const youTubeSummaryCommentsChangeTool = async (
             },
           } as IAIResponseMessage,
         },
+      },
+      {
+        type: 'YOUTUBE_GET_COMMENTS', //不能删除，做为为下面的判断
+        parameters: {},
       },
       {
         type: 'SCRIPTS_CONDITIONAL',
@@ -128,13 +133,15 @@ export const youTubeSummaryCommentsChangeTool = async (
                     status: 'complete',
                     metadata: {
                       isComplete: true,
-                      deepDive: {
-                        title: {
-                          title: 'Deep dive',
-                          titleIcon: 'TipsAndUpdates',
+                      deepDive: [
+                        {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                          },
+                          value: 'Ask AI anything about the video...',
                         },
-                        value: 'Ask AI anything about the video...',
-                      },
+                      ],
                     },
                     content: {
                       text: `{{LAST_ACTION_OUTPUT}}`,
@@ -185,46 +192,26 @@ export const youTubeSummaryCommentsChangeTool = async (
               },
             },
             {
-              type: 'SET_VARIABLE',
-              parameters: {
-                VariableName: 'SUMMARY_CONTENTS',
-              },
-            },
-            {
-              type: 'RENDER_TEMPLATE',
-              parameters: {
-                template: `#### Top Comments summary
-                
-{{SUMMARY_CONTENTS}}
-                    `,
-              },
-            },
-            {
               type: 'CHAT_MESSAGE',
               parameters: {
                 ActionChatMessageOperationType: 'update',
                 ActionChatMessageConfig: {
                   type: 'ai',
                   messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-                  text: `{{LAST_ACTION_OUTPUT}`,
+                  text: '',
                   originalMessage: {
                     status: 'complete',
                     metadata: {
                       isComplete: true,
-                      deepDive: {
-                        title: {
-                          title: 'Deep dive',
-                          titleIcon: 'TipsAndUpdates',
+                      deepDive: [
+                        {
+                          title: {
+                            title: 'Deep dive',
+                            titleIcon: 'TipsAndUpdates',
+                          },
+                          value: 'Ask AI anything about the video...',
                         },
-                        value: 'Ask AI anything about the video...',
-                      },
-                    },
-                    content: {
-                      text: `{{LAST_ACTION_OUTPUT}}`,
-                      title: {
-                        title: 'Summary',
-                      },
-                      contentType: 'text',
+                      ],
                     },
                     includeHistory: false,
                   },
@@ -293,6 +280,19 @@ export const youTubeSummaryTranscriptChangeTool = async (
       },
     },
     {
+      type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+      parameters: {
+        OperationElementSelector: 'ytd-watch-metadata #title',
+      },
+    },
+    {
+      type: 'ANALYZE_CHAT_FILE',
+      parameters: {
+        AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+        AnalyzeChatFileImmediateUpdateConversation: false,
+      },
+    },
+    {
       type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
       parameters: {
         VariableName: 'GET_LIST_DATA',
@@ -309,25 +309,39 @@ export const youTubeSummaryTranscriptChangeTool = async (
         ActionChatMessageConfig: {
           type: 'ai',
           messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
-          text: `{{LAST_ACTION_OUTPUT}`,
+          text: '',
           originalMessage: {
             status: 'complete',
+            content: undefined,
             metadata: {
               isComplete: true,
-              deepDive: {
-                title: {
-                  title: 'Deep dive',
-                  titleIcon: 'TipsAndUpdates',
+              copilot: {
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'complete',
+                    icon: 'SmartToy',
+                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+                  },
+                ],
+              },
+              deepDive: [
+                {
+                  type: 'transcript',
+                  title: {
+                    title: 'Transcript',
+                    titleIcon: 'Menu',
+                  },
+                  value: `{{LAST_ACTION_OUTPUT}}`,
                 },
-                value: 'Ask AI anything about the video...',
-              },
-            },
-            content: {
-              text: `{{LAST_ACTION_OUTPUT}}`,
-              title: {
-                title: 'Transcript',
-              },
-              contentType: 'text',
+                {
+                  title: {
+                    title: 'Deep dive',
+                    titleIcon: 'TipsAndUpdates',
+                  },
+                  value: 'Ask AI anything about the video...',
+                },
+              ],
             },
             includeHistory: false,
           },

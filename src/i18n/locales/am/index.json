@@ -657,7 +657,9 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "ኢሜል ጥቅም አልተጠቀሙም",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ኢሜል ጥቅም አልተጠቀሙም (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ኢሜል ጥቅም አልተጠቀሙም (የመልክት ጥቅሞች)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "ኢሜል ጥቅም አልተጠቀሙም (የእንቅስቃሴ እይታዎች)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "ኢሜል ጥቅም አልተጠቀሙም (የእንቅስቃሴ እይታዎች)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ትርጉም አሳይ",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "እባክዎ በቪዲዮ የሚታዩ ጣቢያዎች መጨመር ይችላሉ፣ ከዚህ በፊት የተወሰኑትን ይጠቀሙ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

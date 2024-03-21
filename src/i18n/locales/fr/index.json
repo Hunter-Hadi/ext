@@ -657,7 +657,9 @@
     "sidebar__summary__nav__email_summary__tooltip__default": "Résumer l'email",
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Résumer l'email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Résumer l'email (Points clés)",
-    "sidebar__summary__nav__email_summary__tooltip__action_items": "Résumer l'email (Actions à entreprendre)"
+    "sidebar__summary__nav__email_summary__tooltip__action_items": "Résumer l'email (Actions à entreprendre)",
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afficher la transcription",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Veuillez patienter jusqu'à la fin de la publicité vidéo, puis réessayez."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

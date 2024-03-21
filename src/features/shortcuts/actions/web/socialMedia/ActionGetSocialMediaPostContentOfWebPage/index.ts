@@ -11,6 +11,8 @@ import { getSocialMediaPostContent } from '@/features/shortcuts/utils/socialMedi
 import { getYouTubeSocialMediaPostCommentsContent } from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
 import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+
+import { stopActionMessage } from '../../../common'
 export class ActionGetSocialMediaPostContentOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE'
   originalSocialMediaPostContent: ISocialMediaPostContextData | null = null
@@ -135,5 +137,9 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
     } catch (e) {
       this.error = (e as Error).toString()
     }
+  }
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    await stopActionMessage(params)
+    return true
   }
 }

@@ -119,6 +119,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderWidth = '0 1px 0 0',
         iconSize = 20,
         padding = '8px 12px',
+        ...restStyles
       } = cloneCTAButtonStyle || {}
       ctaButtonSx = {
         minWidth: 'unset',
@@ -131,12 +132,12 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderStyle: 'solid',
         position: 'relative',
         padding,
-        iconSize,
         '&:hover': {
           color: hoverColor,
           backgroundColor: hoverBackgroundColor,
           borderColor: hoverBorderColor,
         },
+        ...restStyles,
       }
     }
     if (dropdownButtonSx) {
@@ -219,6 +220,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
   return (
     <div
       style={{
+        height: 'inherit',
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
@@ -241,7 +243,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             (() => buttonGroup[0].onSelectionEffect!(observerData))
           }
         >
-          <Box>
+          <Box style={{ width: '100%', height: 'inherit' }} component="div">
             <TextOnlyTooltip
               placement={placement}
               zIndex={2000000}
@@ -252,6 +254,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             >
               <div
                 style={{
+                  height: 'inherit',
                   display: 'flex',
                   flexDirection: 'column',
                   position: 'relative',

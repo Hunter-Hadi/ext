@@ -8,7 +8,6 @@ import { useClientConversation } from '@/features/chatgpt/hooks/useClientConvers
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
@@ -33,10 +32,10 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
  */
 const useInitSidebar = () => {
   const appState = useRecoilValue(AppState)
-  const { createPageSummary, resetPageSummary } = usePageSummary()
+  const { createPageSummary, resetPageSummary, isGeneratingPageSummaryRef } =
+    usePageSummary()
   const { pageUrl, startListen } = usePageUrlChange()
   const {
-    currentSidebarConversation,
     sidebarSettings,
     currentSidebarConversationType,
     updateSidebarSettings,
@@ -104,7 +103,22 @@ const useInitSidebar = () => {
           break
         case 'Summary':
           {
-            createCurrentSidebarConversation()
+            debugger
+            if (
+              sidebarSettingsRef.current?.summary?.conversationId &&
+              sidebarSettingsRef.current?.summary?.conversationId !==
+                getPageSummaryConversationId()
+            ) {
+              updateSidebarSettings({
+                summary: {
+                  conversationId: '',
+                },
+              }).then(() => {
+                createCurrentSidebarConversation()
+              })
+            } else {
+              createCurrentSidebarConversation()
+            }
           }
           break
         case 'Search':
@@ -139,34 +153,18 @@ const useInitSidebar = () => {
   }, [currentSidebarConversationType, appState.open])
   // summary 重新生成的逻辑
   useEffect(() => {
-    // 如果不是Summary, return
-    if (currentSidebarConversationType !== 'Summary' || !appState.open) {
-      return
+    if (
+      currentSidebarConversationType === 'Summary' &&
+      sidebarSettings?.summary?.conversationId &&
+      !isGeneratingPageSummaryRef.current
+    ) {
+      console.log(
+        'Tracking Tracking Tracking',
+        sidebarSettings?.summary?.conversationId,
+      )
+      createPageSummary().then().catch()
     }
-    debugger
-    if (currentSidebarConversation?.id) {
-      // 如过conversation不是summary， return
-      if (currentSidebarConversation?.type !== 'Summary') {
-        return
-      }
-      // 如果有消息了
-      if (currentSidebarConversation) {
-        if (currentSidebarConversation.messages) {
-          const firstAIMessage =
-            currentSidebarConversation?.messages.find(isAIMessage)
-          // 如果已经有总结并且完成了，那就跳出
-          if (firstAIMessage?.originalMessage?.metadata?.isComplete) {
-            return
-          }
-        }
-        createPageSummary().then().catch().finally()
-      }
-    }
-  }, [
-    currentSidebarConversationType,
-    currentSidebarConversation?.id,
-    appState.open,
-  ])
+  }, [sidebarSettings?.summary?.conversationId, currentSidebarConversationType])
   // summary 聚焦处理
   useFocus(() => {
     if (pageConversationTypeRef.current === 'Summary') {
@@ -182,9 +180,11 @@ const useInitSidebar = () => {
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
   const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
-    stopGenerate()
-    resetPageSummary()
-    pageUrlIsUsedRef.current = false
+    if (pageUrl) {
+      stopGenerate()
+      resetPageSummary()
+      pageUrlIsUsedRef.current = false
+    }
   }, [pageUrl])
   useEffect(() => {
     if (!pageUrlIsUsedRef.current && pageUrl) {

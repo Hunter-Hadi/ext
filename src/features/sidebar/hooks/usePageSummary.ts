@@ -45,16 +45,17 @@ const usePageSummary = () => {
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
-  const isFetchingRef = useRef(false)
+  const isGeneratingPageSummaryRef = useRef(false)
 
   const lastMessageIdRef = useRef('')
 
   const createPageSummary = async () => {
     try {
-      debugger
-      if (isFetchingRef.current) {
+      if (isGeneratingPageSummaryRef.current) {
         return
       }
+      isGeneratingPageSummaryRef.current = true
+      debugger
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')
       const pageSummaryConversationId = getPageSummaryConversationId()
@@ -167,17 +168,15 @@ const usePageSummary = () => {
     (actions: ISetActionsType) => {
       if (
         actions.length > 0 &&
-        !isFetchingRef.current &&
         currentSidebarConversationType === 'Summary' &&
         currentSidebarConversationId
       ) {
-        isFetchingRef.current = true
         // debugger
         askAIWIthShortcuts(actions)
           .then()
           .catch()
           .finally(() => {
-            isFetchingRef.current = false
+            isGeneratingPageSummaryRef.current = false
           })
       }
     },
@@ -189,9 +188,10 @@ const usePageSummary = () => {
   )
 
   const resetPageSummary = () => {
-    isFetchingRef.current = false
+    debugger
+    isGeneratingPageSummaryRef.current = false
   }
-  return { resetPageSummary, createPageSummary }
+  return { resetPageSummary, createPageSummary, isGeneratingPageSummaryRef }
 }
 
 export default usePageSummary

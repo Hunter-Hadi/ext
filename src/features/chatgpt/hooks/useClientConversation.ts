@@ -5,10 +5,8 @@ import { v4 as uuidV4 } from 'uuid'
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
@@ -20,7 +18,6 @@ import {
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryConversationId } from '@/features/sidebar/utils/pageSummaryHelper'
 import { getInputMediator } from '@/store/InputMediator'
 
 export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
@@ -67,7 +64,6 @@ const useClientConversation = () => {
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
     ClientWritingMessageStateFamily(currentConversationId || ''),
   )
-  const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const currentSidebarConversationType = clientConversation?.type || 'Chat'
   const currentConversationIdRef = useRef(currentConversationId)
   const currentConversationTypeRef = useRef(clientConversation?.type)
@@ -95,56 +91,18 @@ const useClientConversation = () => {
       currentConversationTypeRef.current,
       currentConversationIdRef.current,
     )
-    const currentConversation = currentConversationIdRef.current
-      ? await clientGetConversation(currentConversationIdRef.current)
-      : undefined
-    if (currentConversation?.type === 'Chat') {
-      if (currentConversation?.messages.length === 0) {
-        // 如果已经是空的了，那么就不用清除了
-        return
-      }
-    } else if (currentConversation?.type === 'Summary') {
-      await clientChatConversationModifyChatMessages(
-        'delete',
-        getPageSummaryConversationId(),
-        99999999,
-        [],
-      )
-    } else if (currentConversation?.type === 'Search') {
-      if (currentConversation?.messages.length === 0) {
-        // 如果已经是空的了，那么就不用清除了
-        return
-      }
-    } else if (currentConversation?.type === 'Art') {
-      if (currentConversation?.messages.length === 0) {
-        // 如果已经是空的了，那么就不用清除了
-        return
-      }
-    }
-    const createConversationType = currentConversation?.type || 'Chat'
-    const defaultAIProviderConfig =
-      MAXAI_DEFAULT_AI_PROVIDER_CONFIG[createConversationType]
-    const currentAIProvider =
-      currentConversation?.meta.AIProvider || defaultAIProviderConfig.AIProvider
-    const currentAIModel =
-      currentConversation?.meta.AIModel || defaultAIProviderConfig.AIModel
-    const currentAIModelDetail = getAIProviderModelDetail(
-      currentAIProvider,
-      currentAIModel,
-    )
-    // 如果找得到AIModelDetail，那么就用AIModelDetail创建
-    if (currentAIModelDetail) {
+    const currentConversation = await getCurrentConversation()
+    if (currentConversation) {
       await createConversation(
-        createConversationType,
-        currentAIProvider,
-        currentAIModel,
+        currentConversation.type,
+        currentConversation.meta.AIProvider!,
+        currentConversation.meta.AIModel!,
       )
     } else {
-      // 说明model不存在了，那么就用默认的创建
       await createConversation(
-        createConversationType,
-        defaultAIProviderConfig.AIProvider,
-        defaultAIProviderConfig.AIModel,
+        'Chat',
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIProvider,
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel,
       )
     }
     setClientWritingMessage({

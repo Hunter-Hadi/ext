@@ -89,20 +89,20 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
   }
   return (
     <div>
-      {transcriptList &&
-        Array.isArray(transcriptList) &&
-        transcriptList.length === 0 && (
-          <Typography
-            fontSize={16}
-            color="text.primary"
-            sx={{
-              p: 0,
-              flex: 1,
-            }}
-          >
-            Unable to generate video without subtitles.
-          </Typography>
-        )}
+      {(!transcriptList ||
+        !Array.isArray(transcriptList) ||
+        (Array.isArray(transcriptList) && transcriptList.length === 0)) && (
+        <Typography
+          fontSize={16}
+          color="text.primary"
+          sx={{
+            p: 0,
+            flex: 1,
+          }}
+        >
+          Unable to generate video without subtitles.
+        </Typography>
+      )}
       {transcriptList &&
         Array.isArray(transcriptList) &&
         transcriptList.map((transcriptItem, index) => (

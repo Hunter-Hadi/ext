@@ -113,10 +113,21 @@ const AIResponseError: FC<IProps> = ({
     ) {
       return `Please log into [app.maxai.me](${APP_USE_CHAT_GPT_HOST}) and try again.`
     }
-    return (
-      text +
-      '\nAlternatively, you can switch to our free AI model or other premium AI models managed by MaxAI.'
-    )
+    // 如果不是inHouse的错误，提示用户切换到其他AI
+    if (
+      ![
+        SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_FREE,
+        SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE,
+        SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+      ].includes(provider as 'MAXAI_CLAUDE')
+    ) {
+      return (
+        text +
+        '\nAlternatively, you can switch to our free AI model or other premium AI models managed by MaxAI.'
+      )
+    }
+    // 如果是inHouse的错误，直接显示错误信息
+    return text
   }, [text, provider, errorStatus])
 
   useEffect(() => {

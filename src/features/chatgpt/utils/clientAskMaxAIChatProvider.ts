@@ -63,6 +63,8 @@ const clientAskMaxAIChatProvider = async (
     maxAIApi = '/gpt/get_search_page_summary_response'
     // 请求 get_search_page_summary_response 接口时，不需要传 model_name，由后端控制
     bodyObject.model_name = undefined
+  } else if (aiProvider === 'OPENAI_API') {
+    maxAIApi = '/gpt/get_search_page_summary_response'
   }
   if (!maxAIApi) {
     return {

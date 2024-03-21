@@ -1,5 +1,5 @@
 import { Button, Stack, Typography } from '@mui/material'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -11,7 +11,9 @@ interface ITranscriptView {
 }
 const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
   const { t } = useTranslation(['client'])
-
+  useEffect(() => {
+    console.log('simply transcriptList', transcriptList)
+  }, [transcriptList])
   const clickLinkUrl = (time: string) => {
     if (time) {
       try {
@@ -89,20 +91,21 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
   }
   return (
     <div>
-      {transcriptList &&
-        Array.isArray(transcriptList) &&
-        transcriptList.length === 0 && (
-          <Typography
-            fontSize={16}
-            color="text.primary"
-            sx={{
-              p: 0,
-              flex: 1,
-            }}
-          >
-            Unable to generate video without subtitles.
-          </Typography>
-        )}
+      {(!transcriptList ||
+        (transcriptList &&
+          Array.isArray(transcriptList) &&
+          transcriptList.length === 0)) && (
+        <Typography
+          fontSize={16}
+          color="text.primary"
+          sx={{
+            p: 0,
+            flex: 1,
+          }}
+        >
+          Unable to generate video without subtitles.
+        </Typography>
+      )}
       {transcriptList &&
         Array.isArray(transcriptList) &&
         transcriptList.map((transcriptItem, index) => (

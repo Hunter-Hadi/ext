@@ -5,7 +5,7 @@ import Stack from '@mui/material/Stack'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
-import React, { FC, useEffect, useMemo, useState } from 'react'
+import React, { FC, memo, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
@@ -21,9 +21,9 @@ import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsA
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
-const ContextMenuEditForm: FC<{
+const SettingPromptsUpdateFormModal: FC<{
   iconSetting?: boolean
-  settingsKey: IChromeExtensionButtonSettingKey
+  settingsKey?: IChromeExtensionButtonSettingKey
   node: IContextMenuItem
   onSave?: (newNode: IContextMenuItem) => void
   onCancel?: () => void
@@ -281,4 +281,4 @@ const ContextMenuEditForm: FC<{
     </Modal>
   )
 }
-export default ContextMenuEditForm
+export default memo(SettingPromptsUpdateFormModal)

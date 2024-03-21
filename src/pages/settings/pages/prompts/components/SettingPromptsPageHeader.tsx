@@ -3,30 +3,27 @@ import Box from '@mui/material/Box'
 import { buttonBaseClasses } from '@mui/material/ButtonBase'
 import { Theme } from '@mui/material/styles'
 import Tab, { tabClasses } from '@mui/material/Tab'
-import Tabs, { tabsClasses,type TabsProps } from '@mui/material/Tabs'
+import Tabs, { tabsClasses, type TabsProps } from '@mui/material/Tabs'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-export type SettingPromptsHeaderTabKey =
+export type SettingPromptsPageHeaderTabKey =
   | 'CONTEXT_MENU'
   | 'WRITING_ASSISTANT'
   | 'SUMMARY'
   | 'SEARCH'
 
-interface ISettingPromptsHeaderProps {
-  activeTab: SettingPromptsHeaderTabKey
-  setActiveTab: (tab: SettingPromptsHeaderTabKey) => void
+interface ISettingPromptsPageHeaderProps {
+  activeTab: SettingPromptsPageHeaderTabKey
+  setActiveTab: (tab: SettingPromptsPageHeaderTabKey) => void
 }
 
 const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
   ({ theme }) => {
     const t = theme as Theme
     const isDark = t.palette.mode === 'dark'
-    console.log('testest', tabClasses.selected)
     return {
-      //   '&': {
-      //     // background: '#f00',
-      //   },
+        marginBottom: '-1px',
         [`.${tabClasses.root}`]: {
           padding: '16px 12px',
           color: 'rgba(0, 0, 0, 0.6)',
@@ -65,7 +62,7 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
  * Setting My own prompts 的 Header 组件
  * @constructor
  */
-const SettingPromptsHeader: FC<ISettingPromptsHeaderProps> = ({
+const SettingPromptsPageHeader: FC<ISettingPromptsPageHeaderProps> = ({
   activeTab,
   setActiveTab,
 }) => {
@@ -107,4 +104,4 @@ const SettingPromptsHeader: FC<ISettingPromptsHeaderProps> = ({
   )
 }
 
-export default SettingPromptsHeader
+export default SettingPromptsPageHeader

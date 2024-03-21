@@ -10,7 +10,7 @@ import Radio from '@mui/material/Radio'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
-import React, { FC, useMemo, useState } from 'react'
+import React, { type FC, memo, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -18,9 +18,9 @@ import {
   getChromeExtensionDBStorageSnapshotList,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import ContextMenuActionConfirmModal from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuActionConfirmModal'
+import SettingPromptsActionConfirmModal from '@/pages/settings/pages/prompts/components/SettingPromptsActionConfirmModal'
 
-const ContextMenuRestoreDialog: FC<{
+const SettingPromptsRestoreDialog: FC<{
   onClose: () => void
   onRestore: (snapshot: ChromeExtensionDBStorageSnapshot) => void
 }> = (props) => {
@@ -167,7 +167,7 @@ const ContextMenuRestoreDialog: FC<{
             )}
           </Button>
         </Stack>
-        <ContextMenuActionConfirmModal
+        <SettingPromptsActionConfirmModal
           open={confirmOpen}
           actionType={confirmType}
           onConfirm={() => {
@@ -193,4 +193,4 @@ const ContextMenuRestoreDialog: FC<{
     </Dialog>
   )
 }
-export default ContextMenuRestoreDialog
+export default memo(SettingPromptsRestoreDialog)

@@ -10,15 +10,13 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 
 export type IConfirmActionType = 'restore' | 'delete' | 'deleteAll'
 
-interface IProps {
+const SettingPromptsActionConfirmModal: FC<{
   open: boolean
   onClose?(): void
   onConfirm?(type: IConfirmActionType): void
   nodeType?: IContextMenuItem['data']['type']
   actionType?: IConfirmActionType
-}
-
-const ContextMenuActionConfirmModal: FC<IProps> = ({
+}> = ({
   open,
   nodeType = 'shortcuts',
   actionType = 'delete',
@@ -101,4 +99,4 @@ const ContextMenuActionConfirmModal: FC<IProps> = ({
   )
 }
 
-export default ContextMenuActionConfirmModal
+export default SettingPromptsActionConfirmModal

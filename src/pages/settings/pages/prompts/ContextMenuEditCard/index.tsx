@@ -96,16 +96,18 @@ const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string) => {
  * 用来在my own prompts渲染的虚拟节点，让用户设置preset prompt的位置
  */
 export const PRESET_PROMPT_ID = 'PRESET_PROMPT_ID'
-export const PRESET_PROMPT: IContextMenuItem = {
-  text: 'Preset prompts',
-  id: PRESET_PROMPT_ID,
-  parent: 'root',
-  droppable: false,
-  data: {
-    type: 'shortcuts',
-    editable: false,
+export const PRESET_PROMPT: [IContextMenuItem] = [
+  {
+    text: 'Preset prompts',
+    id: PRESET_PROMPT_ID,
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+    },
   },
-}
+]
 
 const ContextMenuEditCard: FC<{
   position: 'start' | 'end'
@@ -324,7 +326,7 @@ const ContextMenuEditCard: FC<{
   const filteredTreeData = useMemo(() => {
     if (!inputValue) {
       if (position === 'start') {
-        return [PRESET_PROMPT].concat(originalTreeData)
+        return PRESET_PROMPT.concat(originalTreeData)
       } else {
         return originalTreeData.concat(PRESET_PROMPT)
       }
@@ -359,6 +361,7 @@ const ContextMenuEditCard: FC<{
     contextMenuSearchTextWithCurrentLanguage,
     position,
   ])
+
   return (
     <Stack spacing={2} height={'100%'}>
       <Stack

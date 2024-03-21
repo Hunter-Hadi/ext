@@ -626,7 +626,7 @@ const initExternalMessageListener = () => {
     sender,
   ) {
     // 测试环境跳过 插件白名单 检测
-    // 暂时不校验插件id
+    // 暂时不校验插件id - 20240321
     // if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
     if (message.event === 'GET_MAXAI_USERINFO') {
       const userinfo = await getChromeExtensionUserInfo(false)

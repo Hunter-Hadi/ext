@@ -113,8 +113,10 @@ const AIResponseError: FC<IProps> = ({
     ) {
       return `Please log into [app.maxai.me](${APP_USE_CHAT_GPT_HOST}) and try again.`
     }
-
-    return text
+    return (
+      text +
+      '\nAlternatively, you can switch to our free AI model or other premium AI models managed by MaxAI.'
+    )
   }, [text, provider, errorStatus])
 
   useEffect(() => {

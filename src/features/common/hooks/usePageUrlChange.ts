@@ -8,6 +8,7 @@ export const usePageUrlChange = () => {
   const timerRef = useRef<any>(null)
   const startListen = () => {
     stopListen()
+    setPageUrl(window.location.href)
     timerRef.current = setInterval(() => {
       const url = window.location.href
       if (!prevPageUrlRef.current) {

@@ -149,18 +149,18 @@ const useInitSidebar = () => {
         return
       }
       // 如果有消息了
-      if (currentSidebarConversation?.messages) {
-        const firstAIMessage =
-          currentSidebarConversation?.messages.find(isAIMessage)
-        // 如果已经有总结并且完成了，那就跳出
-        if (firstAIMessage?.originalMessage?.metadata?.isComplete) {
-          return
+      if (currentSidebarConversation) {
+        if (currentSidebarConversation.messages) {
+          const firstAIMessage =
+            currentSidebarConversation?.messages.find(isAIMessage)
+          // 如果已经有总结并且完成了，那就跳出
+          if (firstAIMessage?.originalMessage?.metadata?.isComplete) {
+            return
+          }
         }
+        createPageSummary().then().catch().finally()
       }
-    } else {
-      // 直接触发create
     }
-    createPageSummary().then().catch().finally()
   }, [
     currentSidebarConversationType,
     currentSidebarConversation,
@@ -186,10 +186,10 @@ const useInitSidebar = () => {
     pageUrlIsUsedRef.current = false
   }, [pageUrl])
   useEffect(() => {
-    if (!pageUrlIsUsedRef.current) {
+    if (!pageUrlIsUsedRef.current && pageUrl) {
       const pageSummaryType = getPageSummaryType()
       pageUrlIsUsedRef.current = true
-      console.log('special pageSummaryType', pageSummaryType)
+      console.log('special pageSummaryType', pageSummaryType, pageUrl)
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
         pageSummaryType === 'PDF_CRX_SUMMARY'

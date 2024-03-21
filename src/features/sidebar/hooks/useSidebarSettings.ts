@@ -175,6 +175,7 @@ const useSidebarSettings = () => {
         })
       }
     } else if (conversationType === 'Summary') {
+      debugger
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (conversationId && (await clientGetConversation(conversationId))) {

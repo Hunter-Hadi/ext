@@ -143,6 +143,7 @@ const useInitSidebar = () => {
     if (currentSidebarConversationType !== 'Summary' || !appState.open) {
       return
     }
+    debugger
     if (currentSidebarConversation?.id) {
       // 如过conversation不是summary， return
       if (currentSidebarConversation?.type !== 'Summary') {
@@ -163,7 +164,7 @@ const useInitSidebar = () => {
     }
   }, [
     currentSidebarConversationType,
-    currentSidebarConversation,
+    currentSidebarConversation?.id,
     appState.open,
   ])
   // summary 聚焦处理

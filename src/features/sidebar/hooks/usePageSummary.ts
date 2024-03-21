@@ -51,6 +51,7 @@ const usePageSummary = () => {
 
   const createPageSummary = async () => {
     try {
+      debugger
       if (isFetchingRef.current) {
         return
       }

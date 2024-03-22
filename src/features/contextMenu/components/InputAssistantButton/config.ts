@@ -151,17 +151,17 @@ const InputAssistantButtonGroupConfig = {
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
     },
     composeReplyButton: {
       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
     },
     refineDraftButton: {
       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+      permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
     },
     appendPosition: 1,
     CTAButtonStyle: {
@@ -186,17 +186,17 @@ const InputAssistantButtonGroupConfig = {
       composeNewButton: {
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
         buttonKey: 'inputAssistantComposeNewButton',
-        permissionWrapperCardSceneType: 'GMAIL_DRAFT_BUTTON',
+        permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
       },
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
       },
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
-        permissionWrapperCardSceneType: 'GMAIL_CONTEXT_MENU',
+        permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
       },
       appendPosition: 1,
       CTAButtonStyle: {
@@ -219,7 +219,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: () => {
           const replyButton = document.querySelector<HTMLElement>(
             '.th6py > button',
@@ -324,7 +324,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'TWITTER_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: () => {
           const replyTextarea = document.querySelector(
             'div[role="button"][data-testid="tweetButtonInline"]',
@@ -413,7 +413,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -456,7 +456,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'LINKEDIN_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -566,7 +566,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'FACEBOOK_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId, renderRootElement }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -613,7 +613,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'FACEBOOK_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -737,7 +737,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -787,7 +787,7 @@ const InputAssistantButtonGroupConfig = {
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
-        permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
           const inputAssistantButton =
@@ -870,17 +870,17 @@ const InputAssistantButtonGroupConfig = {
     composeNewButton: {
       tooltip: 'client:input_assistant_button__compose_new__tooltip',
       buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+      permissionWrapperCardSceneType: 'INSTAGRAM_COMPOSE_NEW_BUTTON',
     },
     composeReplyButton: {
       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
       buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+      permissionWrapperCardSceneType: 'INSTAGRAM_COMPOSE_REPLY_BUTTON',
     },
     refineDraftButton: {
       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
       buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+      permissionWrapperCardSceneType: 'INSTAGRAM_REFINE_DRAFT_BUTTON',
     },
     rootWrapperStyle: 'order:2;margin-right: 8px;margin-left: 8px;',
     CTAButtonStyle: {

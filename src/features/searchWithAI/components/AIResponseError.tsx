@@ -123,7 +123,7 @@ const AIResponseError: FC<IProps> = ({
     ) {
       return (
         text +
-        '\nAlternatively, you can switch to our free AI model or other premium AI models managed by MaxAI.'
+        '\nAlternatively, you can switch to Free Al or other premium Al models managed by MaxAl for a more reliable experience.'
       )
     }
     // 如果是inHouse的错误，直接显示错误信息

@@ -130,10 +130,8 @@ export class ActionAskChatGPT extends Action {
       // 所以要设置messageVisibleText
       if (isEnableAIResponseLanguage) {
         // this.question += await this.generateAdditionalText(params)
-        const {
-          data: additionalText,
-          addPosition,
-        } = await generatePromptAdditionalText(params)
+        const { data: additionalText, addPosition } =
+          await generatePromptAdditionalText(params)
         if (additionalText) {
           if (
             this.question.text.startsWith(
@@ -182,16 +180,15 @@ export class ActionAskChatGPT extends Action {
           Search: 'search_chat',
           Art: 'art',
         }[clientConversationEngine.currentSidebarConversationType]
-        const {
-          data: isDailyUsageLimit,
-        } = await clientMessageChannelEngine.postMessage({
-          event: 'Client_logCallApiRequest',
-          data: {
-            name: contextMenu?.text || fallbackId,
-            id: contextMenu?.id || fallbackId,
-            host: getCurrentDomainHost(),
-          },
-        })
+        const { data: isDailyUsageLimit } =
+          await clientMessageChannelEngine.postMessage({
+            event: 'Client_logCallApiRequest',
+            data: {
+              name: contextMenu?.text || fallbackId,
+              id: contextMenu?.id || fallbackId,
+              host: getCurrentDomainHost(),
+            },
+          })
         if (isDailyUsageLimit) {
           // 触达dailyUsageLimited，向用户展示提示信息
           await clientConversationEngine.pushPricingHookMessage(

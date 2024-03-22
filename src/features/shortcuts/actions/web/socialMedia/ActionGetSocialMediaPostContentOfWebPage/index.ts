@@ -45,9 +45,8 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         params.CURRENT_WEBSITE_DOMAIN === 'www.youtube.com'
       ) {
         //为youtube添加评论prompt数据
-        const haveCommentResults = await getYouTubeSocialMediaPostCommentsContent(
-          result,
-        )
+        const haveCommentResults =
+          await getYouTubeSocialMediaPostCommentsContent(result)
         if (haveCommentResults) {
           result = haveCommentResults
         }
@@ -62,7 +61,8 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         let SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT =
           result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
         // reply with keyPoints的逻辑
-        const conversation = await clientConversationEngine.getCurrentConversation()
+        const conversation =
+          await clientConversationEngine.getCurrentConversation()
         // 预留1000个token给summary
         const totalTokens = Math.max(
           (conversation?.meta?.maxTokens || 4000) - 1000,
@@ -97,28 +97,28 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
                     key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
                     value: SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
                     overwrite: true,
-                    isBuildIn: false,
+                    isBuiltIn: false,
                     label: 'Target post/comment',
                   },
                   SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: {
                     key: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
                     value: SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
                     overwrite: true,
-                    isBuildIn: true,
+                    isBuiltIn: true,
                     label: 'Context',
                   },
                   SOCIAL_MEDIA_PAGE_CONTENT: {
                     key: '',
                     value: result.SOCIAL_MEDIA_PAGE_CONTENT,
                     overwrite: true,
-                    isBuildIn: true,
+                    isBuiltIn: true,
                     label: 'Post content',
                   },
                   SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS: {
                     key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS',
                     value: result.previousComments,
                     overwrite: true,
-                    isBuildIn: false,
+                    isBuiltIn: false,
                     label: 'Comments',
                   },
                 },

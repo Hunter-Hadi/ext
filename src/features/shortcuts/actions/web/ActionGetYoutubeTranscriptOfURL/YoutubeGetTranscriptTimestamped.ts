@@ -10,7 +10,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 
 import { stopActionMessage } from '../../common'
-import { TranscriptResponse } from './YoutubeTranscript'
+import { TranscriptResponse, YoutubeTranscript } from './YoutubeTranscript'
 import { withLoadingDecorators } from '@/features/shortcuts/decorators'
 import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 
@@ -59,16 +59,25 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
   ) {
     console.log('simply params', params.LAST_ACTION_OUTPUT) //LAST_ACTION_OUTPUT有时候会没有
     try {
+      const currentUrl = window.location.href.includes('youtube.com')
+        ? window.location.href
+        : ''
+      const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
+      if (!youtubeLinkURL) {
+        this.error = 'Youtube URL is empty.'
+        return
+      }
+      const transcripts = await YoutubeTranscript.fetchTranscript(
+        youtubeLinkURL,
+      )
+
       const conversationId =
         engine.clientConversationEngine?.currentConversationIdRef?.current
       const messageId = (params as { AI_RESPONSE_MESSAGE_ID?: string })
         .AI_RESPONSE_MESSAGE_ID
-      const transcript = params.LAST_ACTION_OUTPUT as
-        | TranscriptResponse[]
-        | undefined
       if (
-        !transcript ||
-        transcript.length === 0 ||
+        !transcripts ||
+        transcripts.length === 0 ||
         !conversationId ||
         !messageId
       ) {
@@ -78,7 +87,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       }
 
       const chaptersInfoList = this.getChaptersInfoList()
-      const transcriptsText = transcript.map((item) => item.text).join('')
+      const transcriptsText = transcripts.map((item) => item.text).join('')
       const transcriptsTokens = getTextTokens(transcriptsText || '').length
 
       if (
@@ -89,7 +98,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
           chaptersInfoList,
-          transcript,
+          transcripts,
         )
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchAskGptUpdate(
@@ -104,10 +113,10 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       } else {
         debugger
         //自己创建chapters逻辑
-        const chaptersList = this.createChapters(transcript)
+        const chaptersList = this.createChapters(transcripts)
         const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
           chaptersList,
-          transcript,
+          transcripts,
         )
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchAskGptUpdate(

@@ -2,7 +2,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
-import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAiApiChat/types'
+import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAIApiChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
   backgroundSendAllClientMessage,

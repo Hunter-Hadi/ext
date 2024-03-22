@@ -337,7 +337,6 @@ export const processAskAIParameters = async (
     if (systemPromptTokens > 0) {
       maxHistoryCount -= 1
     }
-    debugger
     /**
      * 最大历史记录token数 = maxAIModelTokens - questionPromptTokens - systemPromptTokens - 2000(responseTokens)
      */

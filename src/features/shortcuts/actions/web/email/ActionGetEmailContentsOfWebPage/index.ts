@@ -8,7 +8,10 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getEmailWebsitePageContentsOrDraft } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
 import { stopActionMessage } from '../../../common'
@@ -59,11 +62,10 @@ export class ActionGetEmailContentsOfWebPage extends Action {
           // reply with keyPoints的逻辑
           const conversation =
             await clientConversationEngine.getCurrentConversation()
-          // 预留1000个token给summary
-          const totalTokens = Math.max(
-            (conversation?.meta?.maxTokens || 4000) - 1000,
-            3000,
-          )
+          const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
+          const maxEmailContextTokens =
+            calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
+          // 先计算TargetContext的Tokens占用，剩下的再给FullContext
           // 先计算TargetContext的Tokens占用，剩下的再给FullContext
           const {
             isLimit,
@@ -71,7 +73,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
             tokens: sliceOfTargetEmailContextUsingTokens,
           } = await sliceTextByTokens(
             EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
-            totalTokens,
+            maxEmailContextTokens,
           )
           // 赋值给变量
           EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT =
@@ -82,7 +84,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
           } else {
             const { text: sliceOfFullEmailContext } = await sliceTextByTokens(
               EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
-              totalTokens - sliceOfTargetEmailContextUsingTokens,
+              maxEmailContextTokens - sliceOfTargetEmailContextUsingTokens,
             )
             EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT =
               sliceOfFullEmailContext

@@ -3,7 +3,10 @@ import Action from '@/features/shortcuts/core/Action'
 import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 export const SLICE_MAX_CHARACTERS = 6000
 
 export class ActionSliceOfText extends Action {
@@ -37,12 +40,13 @@ export class ActionSliceOfText extends Action {
       ) {
         let sliceTokens = this.parameters.SliceTextActionTokens
         if (!sliceTokens) {
-          const conversation = await engine.clientConversationEngine?.getCurrentConversation()
+          const conversation =
+            await engine.clientConversationEngine?.getCurrentConversation()
+          const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
           // 预留1000个token给summary
-          sliceTokens = Math.max(
-            (conversation?.meta?.maxTokens || 4000) - 1000,
-            3000,
-          )
+          sliceTokens =
+            AIModelMaxTokens -
+            calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
         }
         this.output = (await sliceTextByTokens(needSplitText, sliceTokens)).text
       } else {

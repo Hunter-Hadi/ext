@@ -10,7 +10,10 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getSocialMediaPostContent } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
 import { getYouTubeSocialMediaPostCommentsContent } from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
 import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 
 import { stopActionMessage } from '../../../common'
 export class ActionGetSocialMediaPostContentOfWebPage extends Action {
@@ -63,11 +66,9 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         // reply with keyPoints的逻辑
         const conversation =
           await clientConversationEngine.getCurrentConversation()
-        // 预留1000个token给summary
-        const totalTokens = Math.max(
-          (conversation?.meta?.maxTokens || 4000) - 1000,
-          3000,
-        )
+        const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
+        const maxSocialMediaContextTokens =
+          calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
         // 先计算TargetContext的Tokens占用，剩下的再给FullContext
         const {
           isLimit,
@@ -75,7 +76,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           tokens: sliceOfTargetPostContextUsingTokens,
         } = await sliceTextByTokens(
           SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
-          totalTokens,
+          AIModelMaxTokens - maxSocialMediaContextTokens,
         )
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT = sliceOfTargetPostContext
         if (isLimit) {
@@ -83,7 +84,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         } else {
           const { text: sliceOfFullPostContext } = await sliceTextByTokens(
             SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
-            totalTokens - sliceOfTargetPostContextUsingTokens,
+            AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
           )
           SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = sliceOfFullPostContext
         }

@@ -1,3 +1,4 @@
+import JSON5 from 'json5'
 import { v4 as uuidV4 } from 'uuid'
 
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
@@ -10,13 +11,39 @@ import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 
 import { stopActionMessage } from '../../common'
 import { TranscriptResponse } from './YoutubeTranscript'
+import { withLoadingDecorators } from '@/features/shortcuts/decorators'
+import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 
+type TranscriptTimestampedType = {
+  title: string
+  start: string
+}
+type TranscriptTimestampedTextType = {
+  text: string
+  start: string
+  tokens?: number
+}
+type TranscriptTimestampedGptType = {
+  children: TranscriptTimestampedParamType[]
+  start: number
+  text: string
+}
+type TranscriptTimestampedParamType = {
+  id: string
+  children: TranscriptTimestampedParamType[]
+  status: 'loading' | 'complete' | 'error'
+  start: number
+  text: string
+}
 /**
  * @since 2024-03-17
  * @description youtube拿取时间文本TRANSCRIPT数据进行TIMESTAMPED
  */
 export class ActionYoutubeGetTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
+  maxChapters = 20
+  isStop = false
+  abortTaskIds: string[] = []
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -25,234 +52,220 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
+  @withLoadingDecorators()
   async execute(
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    console.log('simply params', params, engine)
-    // console.log('simply getChaptersInfoList', this.getChaptersInfoList())
+    console.log('simply params', params.LAST_ACTION_OUTPUT) //LAST_ACTION_OUTPUT有时候会没有
     try {
+      const conversationId =
+        engine.clientConversationEngine?.currentConversationIdRef?.current
+      const messageId = (params as { AI_RESPONSE_MESSAGE_ID?: string })
+        .AI_RESPONSE_MESSAGE_ID
       const transcript = params.LAST_ACTION_OUTPUT as
         | TranscriptResponse[]
         | undefined
       if (
         !transcript ||
         transcript.length === 0 ||
-        !engine.clientConversationEngine?.currentConversationIdRef?.current
+        !conversationId ||
+        !messageId
       ) {
         //为空
         this.output = JSON.stringify([])
         return
       }
+
       const chaptersInfoList = this.getChaptersInfoList()
       console.log('simply chaptersInfoList', chaptersInfoList)
 
-      if (chaptersInfoList) {
+      if (chaptersInfoList && chaptersInfoList.length !== 0) {
         //进入chapters逻辑判断
-        const chapterTextList = this.getChaptersAllTextList(
+        const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
           chaptersInfoList,
           transcript,
         )
         console.log('simply chapterTextList', chapterTextList)
-        const oldTranscriptList: any[] = this.getPrepareData(chapterTextList)
-        console.log('simply oldTranscriptList 1', oldTranscriptList)
         if (chapterTextList.length > 0) {
-          for (const index in chapterTextList) {
-            const transcriptList: any = await this.testAjaxGet(
-              params.CURRENT_WEBPAGE_TITLE || '',
-              chapterTextList[index],
-            )
-            oldTranscriptList[index].text = transcriptList?.text
-            oldTranscriptList[index].children = transcriptList?.children
-            oldTranscriptList[index].status = 'complete'
+          const chapterList = await this.batchAskGptUpdate(
+            conversationId,
+            messageId,
+            chapterTextList,
+          )
+          console.log('simply end ----------------------', chapterList)
 
-            console.log('simply oldTranscriptList 2', oldTranscriptList)
-
-            this.upConversationMessageInfo(
-              engine.clientConversationEngine?.currentConversationIdRef
-                ?.current,
-              (params as any).AI_RESPONSE_MESSAGE_ID,
-              oldTranscriptList,
-            )
-            this.output = JSON.stringify(oldTranscriptList)
-          }
-          console.log('simply end ----------------------')
+          this.output = JSON.stringify(chapterList)
         } else {
           this.output = JSON.stringify([])
         }
       } else {
-        //进入
-        this.output = JSON.stringify([])
+        //自己创建chapters逻辑
+        const chaptersList = this.createChapters(transcript)
+        const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
+          chaptersList,
+          transcript,
+        )
+        console.log('simply createChapters', chaptersList, chapterTextList)
+        if (chapterTextList.length > 0) {
+          const chapterList = await this.batchAskGptUpdate(
+            conversationId,
+            messageId,
+            chapterTextList,
+          )
+          console.log('simply end ----------------------', chapterList)
+
+          this.output = JSON.stringify(chapterList)
+        } else {
+          this.output = JSON.stringify([])
+        }
       }
     } catch (e) {
       this.output = JSON.stringify([])
     }
   }
-  async askGptReturnJson(
-    title: string,
-    chapterTextList: {
-      text: string
-      title: string
-      start: string
-      // tokens: number
-    },
+  async batchAskGptUpdate(
+    conversationId: string,
+    messageId: string,
+    chapterTextList: TranscriptTimestampedTextType[],
   ) {
-    const abortTaskId = uuidV4()
-    const jsonFormat = {
-      start: 'Write  Start Time',
-      text: 'Write content',
-      tip: 'The content should not exceed 20 words',
-      children: [
-        {
-          start: 'Write Start Time',
-          text: 'Write son content',
-          tip: 'The content should not exceed 20 words',
-        },
-      ],
-    }
-    const newPrompt = `
-    Your goal is to divide the large blocks of your transcript into information sections with common themes, and record the start timestamp of each section.
-Each information block contains a timestamp start at the beginning of the chapter, a text description of the main content of the entire chapter, and 1-3 key points that explain the main ideas of the children throughout the chapter. Do not use words like "emphasis" to delve deeper into specific details and terminology.
-Your answer must be concise, rich in content, easy to read and understand.
-According to the required format, do not write any additional content, avoid using common phrases, and do not repeat my tasks. Focus on practical implementation. Including specific topics for discussion, suggestions for students
-The content is as follows 
-${JSON.stringify(chapterTextList)}`
-    console.log('simply sssss', newPrompt)
-    const askDAta = await clientAskMaxAIChatProvider(
-      'USE_CHAT_GPT_PLUS',
-      'claude-3-haiku',
-      {
-        message_content: [
-          {
-            type: 'text',
-            text: newPrompt,
-          },
-        ],
-        prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',
-        prompt_name: '[Search] smart page',
-      },
-      abortTaskId,
-    )
     try {
-      console.log('simply askDAta', askDAta.data)
-
-      console.log('simply askDAta JSON', JSON.parse(askDAta.data))
+      const oldTranscriptList: TranscriptTimestampedParamType[] = this.getPrepareData(
+        chapterTextList,
+      )
+      for (const index in chapterTextList) {
+        if (this.isStop) return oldTranscriptList
+        const transcriptList = await this.askGptReturnJson(
+          chapterTextList[index],
+        )
+        console.log('simply transcriptList', transcriptList)
+        if (this.isStop) return oldTranscriptList
+        if (transcriptList) {
+          oldTranscriptList[index].text = transcriptList?.text
+          oldTranscriptList[index].children = transcriptList?.children
+          oldTranscriptList[index].status = 'complete'
+        } else {
+          oldTranscriptList[index].status = 'error'
+          oldTranscriptList[index].text = '错误了，请重试'
+        }
+        this.upConversationMessageInfo(
+          conversationId,
+          messageId,
+          oldTranscriptList,
+        )
+      }
+      return oldTranscriptList
     } catch (e) {
-      console.error('simply askDAta error', e)
-      return askDAta
+      return []
     }
-    return askDAta
   }
-  getPrepareData(
-    list: {
-      tokens: number
-      text: string
-      title: string
-      start: string
-    }[],
-  ) {
-    return list.map((item) => ({
+  async askGptReturnJson(chapterTextList: {
+    text: string
+    start: string
+    tokens?: number
+  }) {
+    return new Promise<TranscriptTimestampedGptType>((resolve, reject) => {
+      const systemPrompt = `Remember, you are a tool for summarizing transcripts
+    Help me quickly understand the summary of key points and the start timestamp
+    The transcript are composed in the following format
+    [start:transcript start time,text: transcript text]
+    Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task. 
+    Return in JSON format:
+    interface IJsonFormat {
+    text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text
+    start: number //In seconds，User reference text start time
+    children: [
+    //The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
+    {
+      text: string //About 10-20 words to describe, the first key point, Write text
+      start: number //In seconds，User reference text start time
+    },
+    {
+      text: string //About 10-20 words to describe, the second key point is to write the text
+      start: number //In seconds，User reference text start time
+    },
+    {
+      text: string //About 10-20 words to describe, the third key point, write the text
+      start: number //In seconds，User reference text start time
+    },
+    ]
+    }
+    The returned JSON can have up to two levels
+    对了，text告诉我中文
+    `
+      const newPrompt = `
+      对了，text告诉我中文
+    [VIDEO TRANSCRIPT]:
+    ${chapterTextList.text}
+    `
+      const currentAbortTaskId = uuidV4()
+      this.abortTaskIds.push(currentAbortTaskId)
+      clientAskMaxAIChatProvider(
+        'OPENAI_API',
+        (chapterTextList.tokens || 0) > 1000 * 16
+          ? 'gpt-4-0125-preview'
+          : 'gpt-3.5-turbo-1106', //大于16k采用GPT4.0
+        {
+          chat_history: [
+            {
+              role: 'ai',
+              content: [
+                {
+                  type: 'text',
+                  text: systemPrompt,
+                },
+              ],
+            },
+          ],
+          message_content: [
+            {
+              type: 'text',
+              text: newPrompt,
+            },
+          ],
+          prompt_id: uuidV4(),
+          prompt_name: 'Timestamped summary',
+        },
+        currentAbortTaskId,
+      )
+        .then((askDAta) => {
+          try {
+            this.abortTaskIds = this.abortTaskIds.filter(
+              (id) => id !== currentAbortTaskId,
+            )
+            try {
+              console.log('simply askDAta', askDAta)
+              console.log(
+                'simply askDAta json',
+                this.getObjectFromString(askDAta.data),
+              )
+              resolve(this.getObjectFromString(askDAta.data))
+            } catch (e) {
+              reject()
+            }
+          } catch (e) {
+            console.error('simply askDAta error', e)
+            reject()
+          }
+        })
+        .catch((e) => {
+          console.error('simply askDAta error', e)
+          reject()
+        })
+    })
+  }
+  getPrepareData(list: { start: string }[]) {
+    const newList: TranscriptTimestampedParamType[] = list.map((item) => ({
       id: uuidV4(),
       start: this.timestampToSeconds(item.start),
       text: '',
       status: 'loading',
       children: [],
     }))
-  }
-  testAjaxGet(title: string, chapterTextList: any) {
-    //快速开发prompt 使用
-    const systemPrompt = `Remember, you are a tool for summarizing transcripts
-Help me quickly understand the summary of key points and the start timestamp
-The transcript are composed in the following format
-[start:transcript start time,text: transcript text]
-Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task. 
-Return in JSON format:
-interface IJsonFormat {
-text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text
-start: number //In seconds，User reference text start time
-children: [
-//The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
-{
-  text: string //About 10-20 words to describe, the first key point, Write text
-  start: number //In seconds，User reference text start time
-},
-{
-  text: string //About 10-20 words to describe, the second key point is to write the text
-  start: number //In seconds，User reference text start time
-},
-{
-  text: string //About 10-20 words to describe, the third key point, write the text
-  start: number //In seconds，User reference text start time
-},
-]
-}
-The returned JSON can have up to two levels`
-    const newPrompt = `
-[VIDEO TRANSCRIPT]:
-${JSON.stringify(chapterTextList)}
-`
-    const myHeaders = new Headers()
-    myHeaders.append(
-      'Authorization',
-      'Bearer sk-LEg28pwlYqYj0qBmAXjBv5gRTVsy0CvKhcThzOkdOLxti4qP',
-    )
-    myHeaders.append('User-Agent', 'Apifox/1.0.0 (https://apifox.com)')
-    myHeaders.append('Content-Type', 'application/json')
-
-    const raw = JSON.stringify({
-      model: 'gpt-3.5-turbo-1106',
-      messages: [
-        {
-          role: 'system',
-          content: systemPrompt,
-        },
-        {
-          role: 'user',
-          content: newPrompt,
-        },
-      ],
-      stream: false,
-      params: {
-        n: 1,
-        response_format: {
-          type: 'json_object',
-        },
-      },
-    })
-
-    const requestOptions = {
-      method: 'POST',
-      headers: myHeaders,
-      body: raw,
-    }
-    return new Promise((resolve, reject) => {
-      fetch(
-        'https://api.chatanywhere.com.cn/v1/chat/completions',
-        requestOptions,
-      )
-        .then((response) => response.text())
-        .then((result) => {
-          try {
-            console.log('simply ajax', JSON.parse(result).choices)
-            const jsonStr: string = JSON.parse(result)?.choices?.[0]?.message
-              ?.content
-            console.log('simply json', this.getObjectFromString(jsonStr))
-            resolve(this.getObjectFromString(jsonStr))
-          } catch (e) {
-            reject()
-          }
-        })
-        .catch((error) => {
-          console.log('simply ajax error', error)
-          reject()
-        })
-    })
+    return newList
   }
   getChaptersAllTextList(
-    chaptersList: {
-      title: string
-      start: string
-    }[],
+    chaptersList: TranscriptTimestampedType[],
     transcriptList: TranscriptResponse[],
   ) {
     // 将章节开始时间转换为秒并且缓存
@@ -285,22 +298,21 @@ ${JSON.stringify(chapterTextList)}
 
       // 将传录片段的文本加入到当前的章节文本中
       if (transcriptStartSeconds >= chaptersStartSeconds[currentChapterIndex]) {
-        chaptersTextList[
-          currentChapterIndex
-        ].text += `[start:${transcriptStartSeconds},text:${transcript.text}]`
+        chaptersTextList[currentChapterIndex].text += transcript.text
+          ? `[start:${transcriptStartSeconds},text:${transcript.text}]`
+          : ''
       }
     })
 
-    return chaptersTextList.map((item) => {
-      const systemPromptTokens = getTextTokens(item.text || '').length
-      return { ...item, tokens: systemPromptTokens }
-    })
+    return chaptersTextList
+      .filter((item) => !!item.text)
+      .map((item) => {
+        const systemPromptTokens = getTextTokens(item.text || '').length
+        return { tokens: systemPromptTokens, ...item }
+      })
   }
   getChaptersInfoList() {
-    const chapters: {
-      title: string
-      start: string
-    }[] = []
+    const chapters: TranscriptTimestampedType[] = []
     const chaptersAllDom = document.querySelectorAll(
       '#panels #content #contents ytd-macro-markers-list-item-renderer',
     )
@@ -330,17 +342,47 @@ ${JSON.stringify(chapterTextList)}
 
     return totalSeconds
   }
-  computeMaxChars(dataArray: TranscriptResponse[]) {
-    let totalLength = 0
-
-    for (let i = 0; i < dataArray.length; i++) {
-      totalLength += dataArray[i].text.length
-    }
-    if (totalLength < 2000) {
-      return 350
+  createChapters(dataArray: TranscriptResponse[]) {
+    //最多1万tokens一章
+    //最少1000tokens一章
+    // 计算所有字幕文本的tokens总数
+    let currentMinText = 1000
+    const allDuration = dataArray[dataArray.length - 1].start
+    const allText = dataArray.map((item) => item.text).join('')
+    if (allText.length < 4000) {
+      currentMinText = 700 //5
+    } else if (allText.length < 5000) {
+      currentMinText = 1000 //5
+    } else if (allText.length < 10000) {
+      currentMinText = 1500 //5
+    } else if (allText.length < 150000) {
+      currentMinText = allText.length / 10
     } else {
-      return 500
+      currentMinText = 15000
     }
+    // 首先，计算最多1万tokens一章可以分出的章节数
+    let chapterCount = Math.floor(allText.length / currentMinText)
+    // 检查是否有余数且余数大于设定的阈值（2000个tokens）
+    if (allText.length % currentMinText > 2000) {
+      chapterCount += 1 // 如果余数大于2000，则章节数进1
+    }
+    const partDuration = parseFloat(allDuration) / chapterCount // 每份的时长
+
+    const chapters = new Array(chapterCount).fill({}).map((item, index) => {
+      return {
+        title: index.toString(),
+        start: (index * partDuration).toFixed(2).toString(),
+      }
+    })
+    const systemPromptTokens = getTextTokens(allText || '').length
+    console.log(
+      'simply totalLength',
+      allText.length,
+      systemPromptTokens,
+      chapterCount,
+      chapters,
+    )
+    return chapters
   }
   splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
     const result: TranscriptResponse[] = [] // 存储分割后的结果
@@ -437,20 +479,20 @@ ${JSON.stringify(chapterTextList)}
     if (match) {
       jsonStr = match[0]
       try {
-        return JSON.parse(jsonStr)
+        return JSON5.parse(jsonStr)
       } catch (error) {
         match = null
       }
     }
 
     // 尝试匹配 ```json ```包裹中匹配
-    const regex = /```json\n([\s\S]*?)\n```/
+    const regex = /```json\s*([\s\S]*?)\s*```/
     match = str.match(regex)
     if (match) {
       jsonStr = match[1]
 
       try {
-        return JSON.parse(jsonStr)
+        return JSON5.parse(jsonStr)
       } catch (error) {
         match = null
       }
@@ -459,7 +501,7 @@ ${JSON.stringify(chapterTextList)}
     // 直接尝试解析
     try {
       if (jsonStr) {
-        return JSON.parse(jsonStr)
+        return JSON5.parse(jsonStr)
       } else {
         return null
       }
@@ -489,7 +531,7 @@ ${JSON.stringify(chapterTextList)}
           messageId: messageId,
           originalMessage: {
             metadata: {
-              isComplete: true,
+              isComplete: false,
               sources: {
                 status: 'complete',
               },
@@ -521,6 +563,10 @@ ${JSON.stringify(chapterTextList)}
     )
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStop = true
+    this.abortTaskIds.forEach((id) => {
+      clientAbortFetchAPI(id)
+    })
     await stopActionMessage(params)
     return true
   }

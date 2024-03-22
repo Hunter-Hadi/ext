@@ -8,15 +8,16 @@ import globalSnackbar from '@/utils/globalSnackbar'
 
 interface ITranscriptView {
   transcriptList: TranscriptResponse[]
+  loading: boolean
 }
-const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
+const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
   const { t } = useTranslation(['client'])
   const [openIdsList, setOpenIdsList] = useState<{ [key in string]: boolean }>(
     {},
   )
   useEffect(() => {
-    console.log('simply transcriptList ------', transcriptList)
-  }, [transcriptList])
+    console.log('simply transcriptList ------', transcriptList, loading)
+  }, [transcriptList, loading])
   const clickLinkUrl = (time: string) => {
     if (time) {
       try {
@@ -102,14 +103,18 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
       Array.isArray(transcriptList) &&
       transcriptList.map((transcriptItem, index) => {
         if (transcriptItem.status === 'loading' && !transcriptItem.text) {
-          return (
-            <Skeleton
-              variant="rounded"
-              width="100%"
-              height={80}
-              sx={{ marginTop: '15px' }}
-            />
-          )
+          if (loading) {
+            return (
+              <Skeleton
+                variant="rounded"
+                width="100%"
+                height={80}
+                sx={{ marginTop: '15px' }}
+              />
+            )
+          } else {
+            return <></>
+          }
         } else {
           return (
             <Stack key={transcriptItem.start}>
@@ -193,7 +198,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
         }
       })
     )
-  }, [transcriptList, openIdsList])
+  }, [transcriptList, openIdsList, loading])
   return (
     <div>
       {(!transcriptList ||

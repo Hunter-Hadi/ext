@@ -15,6 +15,7 @@ interface IDeepDiveVIew {
     | IAIResponseOriginalMessageMetaDeep
     | IAIResponseOriginalMessageMetaDeep[]
   isDarkMode?: boolean
+  loading: boolean
 }
 //DeepDiveVIew 名字需改变
 const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
@@ -49,13 +50,19 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
               }}
             >
               <AppSuspenseLoadingLayout>
-                <TranscriptView transcriptList={deepDive.value} />
+                <TranscriptView
+                  transcriptList={deepDive.value}
+                  loading={props.loading}
+                />
               </AppSuspenseLoadingLayout>
             </HeightUpdateScrolling>
           )}
           {deepDive.type === 'timestampedSummary' && (
             <AppSuspenseLoadingLayout>
-              <TranscriptView transcriptList={deepDive.value} />
+              <TranscriptView
+                transcriptList={deepDive.value}
+                loading={props.loading}
+              />
             </AppSuspenseLoadingLayout>
           )}
         </Stack>

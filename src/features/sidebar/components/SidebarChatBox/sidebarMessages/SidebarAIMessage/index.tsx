@@ -263,6 +263,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
             {renderData.deepDive && (
               <DeepDiveVIew
                 data={renderData.deepDive}
+                loading={coverLoading}
                 isDarkMode={isDarkMode}
               />
             )}

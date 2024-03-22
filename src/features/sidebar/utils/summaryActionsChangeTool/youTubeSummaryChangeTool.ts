@@ -447,9 +447,9 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
               },
               deepDive: [
                 {
-                  type: 'transcript',
+                  type: 'timestampedSummary',
                   title: {
-                    title: 'Transcript',
+                    title: 'Summary',
                     titleIcon: 'Menu',
                   },
                   value: `{{LAST_ACTION_OUTPUT}}`,

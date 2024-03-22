@@ -83,6 +83,7 @@ export interface GenerateAnswerParams {
   onEvent: (event: Event) => void
   signal?: AbortSignal
   meta?: any
+  streaming?: boolean
 }
 export interface IChatGPTConversationRawMappingData {
   id: string

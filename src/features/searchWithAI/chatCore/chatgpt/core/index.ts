@@ -1,6 +1,7 @@
 // import Log from '@/util/Log'
 import { v4 as uuidV4 } from 'uuid'
 
+import generateSentinelChatRequirementsToken from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import {
   getSearchWithAISettings,
@@ -382,6 +383,8 @@ export class ChatGPTConversation {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
         'Openai-Sentinel-Arkose-Token': searchWithAICacheArkoseToken || '',
+        'Openai-Sentinel-Chat-Requirements-Token':
+          await generateSentinelChatRequirementsToken(this.token),
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: (message: string) => {

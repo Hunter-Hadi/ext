@@ -4,6 +4,7 @@ import { getAIProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import generateSentinelChatRequirementsToken from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 
 import { fetchSSE } from './fetch-sse'
@@ -519,6 +520,8 @@ export class ChatGPTConversation {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
         'Openai-Sentinel-Arkose-Token': arkoseToken || '',
+        'Openai-Sentinel-Chat-Requirements-Token':
+          await generateSentinelChatRequirementsToken(this.token),
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: async (message: string) => {

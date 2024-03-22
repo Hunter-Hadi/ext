@@ -78,43 +78,43 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       }
 
       const chaptersInfoList = this.getChaptersInfoList()
-      console.log('simply chaptersInfoList', chaptersInfoList)
+      const allText = transcript.map((item) => item.text).join('')
+      const systemPromptTokens = getTextTokens(allText || '').length
 
-      if (chaptersInfoList && chaptersInfoList.length !== 0) {
+      if (
+        chaptersInfoList &&
+        chaptersInfoList.length !== 0 &&
+        systemPromptTokens > 2000
+      ) {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
           chaptersInfoList,
           transcript,
         )
-        console.log('simply chapterTextList', chapterTextList)
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchAskGptUpdate(
             conversationId,
             messageId,
             chapterTextList,
           )
-          console.log('simply end ----------------------', chapterList)
-
           this.output = JSON.stringify(chapterList)
         } else {
           this.output = JSON.stringify([])
         }
       } else {
+        debugger
         //自己创建chapters逻辑
         const chaptersList = this.createChapters(transcript)
         const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
           chaptersList,
           transcript,
         )
-        console.log('simply createChapters', chaptersList, chapterTextList)
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchAskGptUpdate(
             conversationId,
             messageId,
             chapterTextList,
           )
-          console.log('simply end ----------------------', chapterList)
-
           this.output = JSON.stringify(chapterList)
         } else {
           this.output = JSON.stringify([])
@@ -135,10 +135,12 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       )
       for (const index in chapterTextList) {
         if (this.isStop) return oldTranscriptList
+        const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.askGptReturnJson(
           chapterTextList[index],
         )
-        console.log('simply transcriptList', transcriptList)
+        const endTime = Date.now() // 记录请求结束时间
+        const requestDuration = endTime - startTime // 计算请求耗时
         if (this.isStop) return oldTranscriptList
         if (transcriptList) {
           oldTranscriptList[index].text = transcriptList?.text
@@ -153,6 +155,12 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
           messageId,
           oldTranscriptList,
         )
+        // 如果请求耗时少于5秒，等待剩余时间
+        if (requestDuration < 3000) {
+          await new Promise((resolve) =>
+            setTimeout(resolve, 3000 - requestDuration),
+          )
+        }
       }
       return oldTranscriptList
     } catch (e) {
@@ -191,10 +199,8 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     ]
     }
     The returned JSON can have up to two levels
-    对了，text告诉我中文
     `
       const newPrompt = `
-      对了，text告诉我中文
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
     `
@@ -202,7 +208,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       this.abortTaskIds.push(currentAbortTaskId)
       clientAskMaxAIChatProvider(
         'OPENAI_API',
-        (chapterTextList.tokens || 0) > 1000 * 16
+        (chapterTextList.tokens || 0) > 1000 * 15
           ? 'gpt-4-0125-preview'
           : 'gpt-3.5-turbo-1106', //大于16k采用GPT4.0
         {
@@ -347,25 +353,31 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     //最少1000tokens一章
     // 计算所有字幕文本的tokens总数
     let currentMinText = 1000
-    const allDuration = dataArray[dataArray.length - 1].start
     const allText = dataArray.map((item) => item.text).join('')
-    if (allText.length < 4000) {
-      currentMinText = 700 //5
-    } else if (allText.length < 5000) {
+    const systemPromptTokens = getTextTokens(allText || '').length
+    const allDuration = dataArray[dataArray.length - 1].start
+    if (systemPromptTokens < 2000) {
+      currentMinText = 600 //5
+    } else if (systemPromptTokens < 4000) {
+      currentMinText = 800 //5
+    } else if (systemPromptTokens < 5000) {
       currentMinText = 1000 //5
-    } else if (allText.length < 10000) {
-      currentMinText = 1500 //5
-    } else if (allText.length < 150000) {
-      currentMinText = allText.length / 10
+    } else if (systemPromptTokens < 10000) {
+      currentMinText = 1200 //5
+    } else if (systemPromptTokens < 130000) {
+      currentMinText = systemPromptTokens / 10
     } else {
-      currentMinText = 15000
+      currentMinText = 13000
     }
     // 首先，计算最多1万tokens一章可以分出的章节数
-    let chapterCount = Math.floor(allText.length / currentMinText)
+    let chapterCount = Math.floor(systemPromptTokens / currentMinText)
+    console.log('simply chapterCount 1', chapterCount)
+
     // 检查是否有余数且余数大于设定的阈值（2000个tokens）
-    if (allText.length % currentMinText > 2000) {
+    if (systemPromptTokens % currentMinText > 500 || chapterCount === 0) {
       chapterCount += 1 // 如果余数大于2000，则章节数进1
     }
+    console.log('simply chapterCount 2', chapterCount)
     const partDuration = parseFloat(allDuration) / chapterCount // 每份的时长
 
     const chapters = new Array(chapterCount).fill({}).map((item, index) => {
@@ -374,7 +386,6 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         start: (index * partDuration).toFixed(2).toString(),
       }
     })
-    const systemPromptTokens = getTextTokens(allText || '').length
     console.log(
       'simply totalLength',
       allText.length,

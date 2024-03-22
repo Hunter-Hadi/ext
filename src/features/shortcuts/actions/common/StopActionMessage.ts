@@ -1,6 +1,5 @@
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-
-import { IShortcutEngineExternalEngine } from '../../types'
+import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 
 /**
  * @since 2024-03-20
@@ -10,7 +9,8 @@ export const stopActionMessage = async (params: {
   engine: IShortcutEngineExternalEngine
 }) => {
   try {
-    const currentConversation = await params.engine.clientConversationEngine?.getCurrentConversation()
+    const currentConversation =
+      await params.engine.clientConversationEngine?.getCurrentConversation()
     if (currentConversation && currentConversation.id) {
       const conversationUpdatedDate = +new Date(currentConversation.updated_at)
       let lastUpdateMessageId = currentConversation.messages?.[0]?.messageId

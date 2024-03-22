@@ -8,7 +8,7 @@ import { IAIResponseOriginalMessageMetaDeep } from '@/features/chatgpt/types'
 import { messageListContainerId } from '../../../SidebarChatBoxMessageListContainer'
 import { MetadataTitleRender } from '..'
 import { HeightUpdateScrolling } from '../HeightUpdateScrolling'
-import TranscriptView from './components/TranscriptView'
+import TranscriptView from './components/SidebarTimestampedSummary'
 
 interface IDeepDiveVIew {
   data:

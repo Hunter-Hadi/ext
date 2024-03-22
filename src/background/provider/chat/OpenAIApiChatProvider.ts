@@ -5,7 +5,7 @@ import {
   ChatAdapterInterface,
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
-import { OpenAiApiChat } from '@/background/src/chat'
+import { OpenAIApiChat } from '@/background/src/chat'
 import {
   IOpenAIApiChatMessage,
   openAIAPISystemPromptGenerator,
@@ -15,9 +15,9 @@ import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 
 class OpenAIApiChatProvider implements ChatAdapterInterface {
-  private openAiApiChat: OpenAiApiChat
+  private openAiApiChat: OpenAIApiChat
 
-  constructor(openAiApiChat: OpenAiApiChat) {
+  constructor(openAiApiChat: OpenAIApiChat) {
     this.openAiApiChat = openAiApiChat
   }
   async auth(authTabId: number) {

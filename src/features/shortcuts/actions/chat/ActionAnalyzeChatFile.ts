@@ -3,11 +3,11 @@ import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { stringConvertTxtUpload } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import {
-  MAX_UPLOAD_TEXT_FILE_TOKENS,
-  stringConvertTxtUpload,
-} from '@/features/shortcuts/utils/stringConvertTxtUpload'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
@@ -17,6 +17,7 @@ import { stopActionMessage } from '../common'
  * @since 2023-09-11
  * @description 当用户聊天的内容超过12k的时候生成md5上传成docId, 并且切割12k给聊天的summary
  * @update 2023-11-30 当用户聊天的内容超过120k的时候生成md5上传成docId, 并且切割120k给聊天的summary
+ * @update 2024-03-22 maxSystemPromptTokens = modelMaxTokens - 8000((historyTokens + questionPromptTokens + responseTokens)
  */
 export class ActionAnalyzeChatFile extends Action {
   static type: ActionIdentifier = 'ANALYZE_CHAT_FILE'
@@ -49,28 +50,29 @@ export class ActionAnalyzeChatFile extends Action {
       const conversationId =
         conversationEngine?.currentConversationIdRef.current || ''
       const conversation = await conversationEngine?.getCurrentConversation()
-      const systemPromptTokensLimit =
+      const maxAIModelTokens =
         this.parameters.AnalyzeChatFileSystemPromptTokenLimit ||
         conversation?.meta?.maxTokens ||
         4096
+      const systemPromptTokensLimit =
+        maxAIModelTokens -
+        calculateMaxHistoryQuestionResponseTokens(maxAIModelTokens)
       const text =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
-      const {
-        isLimit,
-        text: pageSummarySystemPrompt,
-      } = await sliceTextByTokens(text, systemPromptTokensLimit, {
-        thread: 4,
-        partOfTextLength: 80 * 1000,
-      })
+      const { isLimit, text: pageSummarySystemPrompt } =
+        await sliceTextByTokens(text, systemPromptTokensLimit, {
+          thread: 4,
+          partOfTextLength: 20 * 1000,
+        })
       // 如果触发了limit，就截取其中400k上传作为docId
       if (isLimit) {
         if (immediateUpdateConversation) {
           const uploadData = await sliceTextByTokens(
             text,
-            MAX_UPLOAD_TEXT_FILE_TOKENS,
+            systemPromptTokensLimit,
             {
               thread: 4,
-              partOfTextLength: 80 * 1000,
+              partOfTextLength: 20 * 1000,
             },
           )
           const docId = await stringConvertTxtUpload(uploadData.text, fileName)

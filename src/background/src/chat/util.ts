@@ -23,7 +23,10 @@ import {
 } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
-import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  calculateMaxResponseTokens,
+  getTextTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 // let lastBrowserWindowId: number | undefined = undefined
@@ -334,14 +337,15 @@ export const processAskAIParameters = async (
     if (systemPromptTokens > 0) {
       maxHistoryCount -= 1
     }
+    debugger
     /**
-     * 最大历史记录token数 = maxTokens - systemPromptTokens - questionPromptTokens - 1000
+     * 最大历史记录token数 = maxAIModelTokens - questionPromptTokens - systemPromptTokens - 2000(responseTokens)
      */
     const maxHistoryTokens =
       conversationUsingModelMaxTokens -
       systemPromptTokens -
       questionPromptTokens -
-      1000 // 预留1000个token给ai生成的答案
+      calculateMaxResponseTokens(conversationUsingModelMaxTokens)
     // 寻找本次提问的历史记录开始和结束节点
     let startIndex: number | null = null
     let endIndex: number | null = null

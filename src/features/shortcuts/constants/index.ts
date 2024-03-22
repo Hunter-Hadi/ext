@@ -1,2 +1,2 @@
-export const PAGE_SUMMARY_MAX_TOKENS = 120000 // 120k
+export const PAGE_SUMMARY_MAX_TOKENS = 128000 // 128k
 export const PAGE_CHAT_MAX_TOKENS = 4096 // 4k

@@ -130,13 +130,13 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     chapterTextList: TranscriptTimestampedTextType[],
   ) {
     try {
-      const oldTranscriptList: TranscriptTimestampedParamType[] = this.getPrepareData(
+      const oldTranscriptList: TranscriptTimestampedParamType[] = this.getPrepareViewData(
         chapterTextList,
       )
       for (const index in chapterTextList) {
         if (this.isStop) return oldTranscriptList
         const startTime = Date.now() // 记录请求开始时间
-        const transcriptList = await this.askGptReturnJson(
+        const transcriptList = await this.requestGptGetTranscriptJson(
           chapterTextList[index],
         )
         const endTime = Date.now() // 记录请求结束时间
@@ -167,7 +167,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       return []
     }
   }
-  async askGptReturnJson(chapterTextList: {
+  async requestGptGetTranscriptJson(chapterTextList: {
     text: string
     start: string
     tokens?: number
@@ -260,7 +260,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         })
     })
   }
-  getPrepareData(list: { start: string }[]) {
+  getPrepareViewData(list: { start: string }[]) {
     const newList: TranscriptTimestampedParamType[] = list.map((item) => ({
       id: uuidV4(),
       start: this.timestampToSeconds(item.start),

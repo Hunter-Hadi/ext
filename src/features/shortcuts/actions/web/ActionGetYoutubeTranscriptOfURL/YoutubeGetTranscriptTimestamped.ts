@@ -78,13 +78,13 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       }
 
       const chaptersInfoList = this.getChaptersInfoList()
-      const allText = transcript.map((item) => item.text).join('')
-      const systemPromptTokens = getTextTokens(allText || '').length
+      const transcriptsText = transcript.map((item) => item.text).join('')
+      const transcriptsTokens = getTextTokens(transcriptsText || '').length
 
       if (
         chaptersInfoList &&
         chaptersInfoList.length !== 0 &&
-        systemPromptTokens > 2000
+        transcriptsTokens > 2000
       ) {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
@@ -148,14 +148,14 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
           oldTranscriptList[index].status = 'complete'
         } else {
           oldTranscriptList[index].status = 'error'
-          oldTranscriptList[index].text = '错误了，请重试'
+          oldTranscriptList[index].text = 'Error'
         }
-        this.upConversationMessageInfo(
+        this.updateConversationMessageInfo(
           conversationId,
           messageId,
           oldTranscriptList,
         )
-        // 如果请求耗时少于5秒，等待剩余时间
+        // 如果请求耗时少于3秒，等待剩余时间
         if (requestDuration < 3000) {
           await new Promise((resolve) =>
             setTimeout(resolve, 3000 - requestDuration),
@@ -352,29 +352,29 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     //最多1万tokens一章
     //最少1000tokens一章
     // 计算所有字幕文本的tokens总数
-    let currentMinText = 1000
+    let currentTokens = 1000
     const allText = dataArray.map((item) => item.text).join('')
     const systemPromptTokens = getTextTokens(allText || '').length
     const allDuration = dataArray[dataArray.length - 1].start
     if (systemPromptTokens < 2000) {
-      currentMinText = 600 //5
+      currentTokens = 600
     } else if (systemPromptTokens < 4000) {
-      currentMinText = 800 //5
+      currentTokens = 800
     } else if (systemPromptTokens < 5000) {
-      currentMinText = 1000 //5
+      currentTokens = 1000
     } else if (systemPromptTokens < 10000) {
-      currentMinText = 1200 //5
+      currentTokens = 1200
     } else if (systemPromptTokens < 130000) {
-      currentMinText = systemPromptTokens / 10
+      currentTokens = systemPromptTokens / 10
     } else {
-      currentMinText = 13000
+      currentTokens = 13000
     }
     // 首先，计算最多1万tokens一章可以分出的章节数
-    let chapterCount = Math.floor(systemPromptTokens / currentMinText)
+    let chapterCount = Math.floor(systemPromptTokens / currentTokens)
     console.log('simply chapterCount 1', chapterCount)
 
     // 检查是否有余数且余数大于设定的阈值（2000个tokens）
-    if (systemPromptTokens % currentMinText > 500 || chapterCount === 0) {
+    if (systemPromptTokens % currentTokens > 500 || chapterCount === 0) {
       chapterCount += 1 // 如果余数大于2000，则章节数进1
     }
     console.log('simply chapterCount 2', chapterCount)
@@ -521,13 +521,13 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     }
   }
 
-  async upConversationMessageInfo(
+  async updateConversationMessageInfo(
     conversationId: string,
     messageId: string,
     transcriptData: any,
   ) {
     console.log(
-      'upConversationMessageInfo',
+      'updateConversationMessageInfo',
       conversationId,
       messageId,
       transcriptData,

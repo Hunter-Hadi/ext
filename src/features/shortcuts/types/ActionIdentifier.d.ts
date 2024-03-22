@@ -78,8 +78,10 @@ type ActionIdentifier =
   | 'TEXT_HANDLER'
   // 聊天信息管理
   | 'CHAT_MESSAGE'
-  // MaAI 总结完成后记录数据的 action
+  // MaxAI 总结完成后记录数据的 action
   | 'MAXAI_SUMMARY_LOG'
+  //MaxAI 处理内置的变量
+  | 'MAXAI_PROCESS_BUILT_IN_PARAMETERS'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

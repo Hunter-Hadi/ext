@@ -202,9 +202,8 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
   return (
     <div>
       {(!transcriptList ||
-        (transcriptList &&
-          Array.isArray(transcriptList) &&
-          transcriptList.length === 0)) && (
+        !Array.isArray(transcriptList) ||
+        (Array.isArray(transcriptList) && transcriptList.length === 0)) && (
         <Typography
           fontSize={16}
           color="text.primary"

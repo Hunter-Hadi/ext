@@ -74,10 +74,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   // 是否使用了缓存
   const [isUseCache, setIsUseCache] = useState(false)
 
-  const {
-    getSearchWithAICacheData,
-    setSearchWithAICacheData,
-  } = useSearchWithAICache()
+  const { getSearchWithAICacheData, setSearchWithAICacheData } =
+    useSearchWithAICache()
 
   const { searchWithAISettings } = useSearchWithAISettings()
 
@@ -87,11 +85,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
   const setAutoTriggerAskEnable = useSetRecoilState(AutoTriggerAskEnableAtom)
 
-  const {
-    startSourcesLoading,
-    clearSources,
-    setSources,
-  } = useSearchWithAISources()
+  const { startSourcesLoading, clearSources, setSources } =
+    useSearchWithAISources()
 
   const updateConversation = (
     newConversationData: Partial<ISearchWithAIConversationType>,
@@ -242,9 +237,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
     }
     if (searchWithAISettings.aiProvider === 'OPENAI') {
-      const arkoseToken = await chromeExtensionArkoseTokenGenerator.generateToken(
-        'gpt_3_5',
-      )
+      const arkoseToken =
+        await chromeExtensionArkoseTokenGenerator.generateToken('gpt_3_5')
       await setSearchWithAISettings({
         arkoseToken,
       })

@@ -22,6 +22,7 @@ import {
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetYoutubeTranscriptOfURL,
   ActionInsertUserInput,
+  ActionMaxAIProcessBuiltInParameters,
   ActionOpenURLs,
   ActionOperationElement,
   ActionRenderChatGPTPrompt,
@@ -84,11 +85,14 @@ const ActionClassMap = {
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]:
+    ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
-  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
-  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]:
+    ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]:
+    ActionGetSocialMediaPostContentOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
@@ -99,7 +103,10 @@ const ActionClassMap = {
   [ActionTextHandler.type]: ActionTextHandler,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  // maxai
   [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
+  [ActionMaxAIProcessBuiltInParameters.type]:
+    ActionMaxAIProcessBuiltInParameters,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
@@ -263,7 +270,7 @@ class ShortCutsEngine implements IShortcutEngine {
               key: 'LAST_ACTION_OUTPUT',
               value: output,
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             })
             console.log('ShortCutEngine.run: output', output)
             const nextAction = this.getNextAction()

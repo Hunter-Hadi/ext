@@ -415,7 +415,7 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
     {
       type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
       parameters: {
-        VariableName: 'GET_LIST_DATA',
+        VariableName: 'GET_LIST_DATA', //待删除
       },
     },
     {

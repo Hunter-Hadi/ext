@@ -35,6 +35,17 @@ const useShortCutsEngine = () => {
     if (!shortCutsEngineRef.current) {
       return false
     }
+    // 处理内置变量
+    if (
+      !actions.find(
+        (action) => action.type === 'MAXAI_PROCESS_BUILT_IN_PARAMETERS',
+      )
+    ) {
+      actions.unshift({
+        type: 'MAXAI_PROCESS_BUILT_IN_PARAMETERS',
+        parameters: {},
+      })
+    }
     shortCutsEngineRef.current?.setActions(actions)
     return true
   }

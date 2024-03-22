@@ -41,25 +41,21 @@ interface InputAssistantButtonContextMenuProps {
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
-const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> = (
-  props,
-) => {
+const InputAssistantButtonContextMenu: FC<
+  InputAssistantButtonContextMenuProps
+> = (props) => {
   const {
     buttonKey,
     children,
     rootId,
     root,
     permissionWrapperCardSceneType,
-    onSelectionEffect
+    onSelectionEffect,
   } = props
-  const [
-    clickContextMenu,
-    setClickContextMenu,
-  ] = useState<IContextMenuItem | null>(null)
-  const {
-    currentSidebarConversationType,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+  const [clickContextMenu, setClickContextMenu] =
+    useState<IContextMenuItem | null>(null)
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
@@ -77,7 +73,8 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
       if (!loading && contextMenu.data.actions) {
         // 每个网站5次免费InputAssistantButton的机会
         const onBoardingData = await getChromeExtensionOnBoardingData()
-        const key = `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
+        const key =
+          `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${getCurrentDomainHost()}_TIMES` as OnBoardingKeyType
         const currentHostFreeTrialTimes = Number(onBoardingData[key] || 0)
         // 如果没有权限, 显示付费卡片
         if (!hasPermission && permissionWrapperCardSceneType) {
@@ -104,7 +101,7 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
               OperationElementSelector: {
                 key: 'OperationElementSelector',
                 value: `[maxai-input-assistant-button-id="${rootId}"]`,
-                isBuildIn: true,
+                isBuiltIn: true,
               } as IShortCutsParameter,
             },
           },
@@ -138,10 +135,19 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
       runContextMenuRef.current &&
       sidebarSettingsTypeRef.current === 'Chat'
     ) {
-      let onSelectionEffectListener: IShortcutEngineListenerType | null = null;
+      let onSelectionEffectListener: IShortcutEngineListenerType | null = null
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
-          if(event === 'action' && ['GET_CONTENTS_OF_WEBPAGE', 'GET_EMAIL_CONTENTS_OF_WEBPAGE', 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE', 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE'].includes(data?.type) && data?.status === 'complete') {
+          if (
+            event === 'action' &&
+            [
+              'GET_CONTENTS_OF_WEBPAGE',
+              'GET_EMAIL_CONTENTS_OF_WEBPAGE',
+              'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+              'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+            ].includes(data?.type) &&
+            data?.status === 'complete'
+          ) {
             onSelectionEffect()
           }
         }
@@ -157,12 +163,13 @@ const InputAssistantButtonContextMenu: FC<InputAssistantButtonContextMenuProps> 
           isRunningRef.current = false
 
           if (onSelectionEffectListener) {
-            shortCutsEngineRef.current?.removeListener(onSelectionEffectListener)
+            shortCutsEngineRef.current?.removeListener(
+              onSelectionEffectListener,
+            )
           }
           // temporary support onSelectionEffect
           // onSelectionEffect && onSelectionEffect();
         })
-
     }
   }, [clickContextMenu])
   useEffect(() => {

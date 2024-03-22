@@ -212,7 +212,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
             key,
             value: presetVariables[key],
             overwrite: true,
-            isBuildIn: variableDetail.systemVariable,
+            isBuiltIn: variableDetail.systemVariable,
             label: variableDetail.label,
           }
         } else {

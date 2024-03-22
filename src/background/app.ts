@@ -616,9 +616,10 @@ const initExternalMessageListener = () => {
   const extensionWhiteList = [
     // webchatgpt
     'lpfemeioodjbpieminkklglpmhlngfcn',
-
     // modHeader
     'idgpnmonknjnojddfkpgkljpfnnfcklj',
+    //simplytends
+    'kajbojdeijchbhbodifhaigbnbodjahj',
   ]
 
   Browser.runtime.onMessageExternal.addListener(async function (

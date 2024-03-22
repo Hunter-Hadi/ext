@@ -7,6 +7,7 @@ import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, memo, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { v4 } from 'uuid'
 
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import {
@@ -54,10 +55,14 @@ const SettingPromptsUpdateFormModal: FC<{
     if (editNode.data.type === 'group') {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt_group__title')
+        : editNode.id === ''
+        ? t('settings:feature_card__prompts__new_prompt_group__title')
         : t('settings:feature_card__prompts__edit_prompt_group__title')
     } else {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt__title')
+        : editNode.id === ''
+        ? t('settings:feature_card__prompts__new_prompt__title')
         : t('settings:feature_card__prompts__edit_prompt__title')
     }
   }, [isDisabled, editNode.data.type, t])
@@ -240,6 +245,9 @@ const SettingPromptsUpdateFormModal: FC<{
               disabled={isDisabledSave}
               variant={'contained'}
               onClick={() => {
+                if (editNode.id === '') {
+                  editNode.id = v4()
+                }
                 onSave?.(
                   mergeWithObject([
                     editNode,

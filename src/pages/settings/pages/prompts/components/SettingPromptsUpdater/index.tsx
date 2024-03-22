@@ -2,17 +2,15 @@ import AddIcon from '@mui/icons-material/Add'
 import Button from '@mui/material/Button'
 import React, { type Dispatch, type FC, memo,type SetStateAction } from "react"
 import { useTranslation } from 'react-i18next'
-import { v4 } from 'uuid'
 
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { rootId } from '@/pages/settings/pages/prompts/SettingPromptsContextMenuCard'
+import { rootId } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
 
 import SettingPromptEditFormModal from './SettingPromptsUpdateFormModal'
 
 const addNewMenuItem = async (setEditNode: Dispatch<SetStateAction<IContextMenuItem | null>>) => {
-    const newEditId = v4()
     setEditNode({
-      id: newEditId,
+      id: '',
       parent: rootId,
       droppable: true,
       text: '',
@@ -30,12 +28,11 @@ const addNewMenuItem = async (setEditNode: Dispatch<SetStateAction<IContextMenuI
   }
 
 const addNewMenuGroup = async (setEditNode: Dispatch<SetStateAction<IContextMenuItem | null>>) => {
-  const newEditId = v4()
   // setTreeData((prev) =>
   //   prev.concat(),
   // )
   setEditNode({
-    id: newEditId,
+    id: '',
     parent: rootId,
     droppable: true,
     text: '',

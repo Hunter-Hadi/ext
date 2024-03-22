@@ -10,7 +10,6 @@ import { type IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
 import {
   getChromeExtensionDBStorageButtonContextMenu,
-  setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import DevContent from '@/components/DevContent'
 import {
@@ -19,43 +18,17 @@ import {
 } from '@/features/contextMenu/types'
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
 import useContextMenuSearchTextStore from '@/features/sidebar/hooks/useContextMenuSearchTextStore'
+import RadioCardGroup from '@/pages/settings/components/RadioCardGroup';
 import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
 import SettingPromptsActionConfirmModal, { type IConfirmActionType } from '@/pages/settings/pages/prompts/components/SettingPromptsActionConfirmModal'
-import SettingPromptsMenuPanel, { PRESET_PROMPT, PRESET_PROMPT_ID, rootId } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
+import SettingPromptsMenuPanel, { PRESET_PROMPT, PRESET_PROMPT_ID, rootId, saveTreeData } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
 import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel/components/SettingPromptsViewSource';
 import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
 import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper';
 
-import ContextMenuMockTextarea from './ContextMenuMockTextarea'
-
-const EditButtonKey: IChromeExtensionButtonSettingKey = 'textSelectPopupButton'
-
-const saveTreeData = async (
-  key: IChromeExtensionButtonSettingKey,
-  treeData: IContextMenuItem[],
-) => {
-  try {
-    console.log('saveTreeData', key, treeData)
-    const success = await setChromeExtensionDBStorage((settings) => {
-      return {
-        ...settings,
-        buttonSettings: {
-          ...settings.buttonSettings,
-          [key]: {
-            ...settings.buttonSettings?.[key],
-            contextMenu: treeData,
-          },
-        },
-      } as any
-    })
-    console.log(success)
-  } catch (error) {
-    console.log(error)
-  }
-}
-
-const SettingPromptsContextMenuCard: FC = () => {
+const SettingPromptsWritingAssistantCard: FC = () => {
   const { syncLocalToServer } = useSyncSettingsChecker()
   const { t } = useTranslation(['settings'])
   const {
@@ -69,6 +42,7 @@ const SettingPromptsContextMenuCard: FC = () => {
   const defaultTreeDataRef = useRef<null | IContextMenuItem[]>(null)
   const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
 
+  const [editButtonKey, setEditButtonKey] = useState<IChromeExtensionButtonSettingKey>('inputAssistantComposeReplyButton')
   const [loading, setLoading] = useState(false)
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
   const [originalTreeData, setOriginalTreeData] = useState<IContextMenuItem[]>(
@@ -83,7 +57,7 @@ const SettingPromptsContextMenuCard: FC = () => {
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
   
-  const position = useMemo(() =>  buttonSettings?.[EditButtonKey].contextMenuPosition, [buttonSettings?.[EditButtonKey].contextMenuPosition]);
+  const position = useMemo(() =>  buttonSettings?.[editButtonKey].contextMenuPosition, [editButtonKey]);
   const currentConfirmNode = useMemo(() => {
     return originalTreeData.find((item) => item.id === confirmId)
   }, [confirmId, originalTreeData])
@@ -169,11 +143,13 @@ const SettingPromptsContextMenuCard: FC = () => {
 
   useEffect(() => {
     let isDestroy = false
-    if (EditButtonKey) {
+    console.log('testestasdasd', editButtonKey)
+    if (editButtonKey) {
       const getList = async () => {
         const contextMenu = await getChromeExtensionDBStorageButtonContextMenu(
-          EditButtonKey,
+            editButtonKey,
         )
+        console.log('testestcontextMenu', contextMenu)
         if (isDestroy) return
         setOriginalTreeData(contextMenu)
         setTimeout(() => {
@@ -187,7 +163,7 @@ const SettingPromptsContextMenuCard: FC = () => {
     return () => {
       isDestroy = true
     }
-  }, [EditButtonKey])
+  }, [editButtonKey])
 
   useEffect(() => {
     const searchTextMap: {
@@ -211,13 +187,13 @@ const SettingPromptsContextMenuCard: FC = () => {
     }
     findSearchText(rootId)
     if (loadedRef.current) {
-      saveTreeData(EditButtonKey, originalTreeData).then(() => {
+      saveTreeData(editButtonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
         syncLocalToServer()
       })
     }
   }, [originalTreeData])
-  
+
   const filteredTreeData = useMemo(() => {
     if (!inputValue) {
       if (position === 'start') {
@@ -258,79 +234,102 @@ const SettingPromptsContextMenuCard: FC = () => {
   ])
 
   return <>
-    <Stack direction={'row'} alignItems={'center'} spacing={2}>
-      <SettingPromptsUpdater 
-        disabled={loading}
-        node={editNode}
-        iconSetting={true}
-        onSave={handleOnSave}
-        onCancel={() => setEditNode(null)}
-        onDelete={(id) => handleActionConfirmOpen('delete', id)}
-        setEditNode={setEditNode}
+    <RadioCardGroup
+        onChange={async (key) => setEditButtonKey(key as IChromeExtensionButtonSettingKey)}
+        options={[
+          {
+            label: t('settings:feature_card__prompts__writing_assistant__quick_reply_radio_title'),
+            value: 'inputAssistantComposeReplyButton',
+            image: getChromeExtensionAssetsURL(
+              '/images/settings/prompts/quick-reply.png',
+            ),
+          },
+          {
+            label: t('settings:feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title'),
+            value: 'inputAssistantRefineDraftButton',
+            image: getChromeExtensionAssetsURL(
+              '/images/settings/prompts/edit-or-review-draft.png',
+            ),
+          },
+          {
+            label: t('settings:feature_card__prompts__writing_assistant__quick_compose_radio_title'),
+            value: 'inputAssistantComposeNewButton',
+            image: getChromeExtensionAssetsURL(
+              '/images/settings/prompts/quick-compose.png',
+            ),
+          },
+        ]}
+        maxWidth={372}
       />
-      <SettingPromptsRestorer 
-        onRestore={async (snapshot) => {
-          try {
-            setLoading(true)
-            setInputValue('')
-            const buttonSettings = snapshot.settings.buttonSettings
-            if (!buttonSettings) return
-            const { contextMenu } = buttonSettings[EditButtonKey]
-            setOriginalTreeData(contextMenu)
-          } catch (e) {
-            console.error(e)
-          } finally {
-            setLoading(false)
-          }
-        }}
-      />
-    </Stack>
-      
-    <SettingPromptsPositionSwitch
-      buttonKey={EditButtonKey}
-      checked={position === 'end'}
-      label={t(
-        'settings:feature_card__prompts__place_my_own_prompts_switch',
-      )} 
-      sx={{
-        my: '16px'
-      }}
-    />
-      
-    <Stack
-      height={0}
-      flex={1}
-      // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
-    >
-      <Stack height={'100%'}>
-        <DevContent>
-          <SettingPromptsViewSource treeData={originalTreeData} />
-        </DevContent>
-        <ContextMenuMockTextarea
-          defaultValue={inputValue}
-          onChange={setInputValue}
-          placeholder={t(
-            'feature_card__prompts__edit_prompt__mock_input__placeholder',
-          )}
+
+    <Stack sx={{ mt: '16px', p: '8px', border: '1px solid', borderColor: 'primary.main', borderRadius: '8px' }}>
+        <Stack direction={'row'} alignItems={'center'} spacing={2}>
+        <SettingPromptsUpdater 
+            disabled={loading}
+            node={editNode}
+            iconSetting={true}
+            onSave={handleOnSave}
+            onCancel={() => setEditNode(null)}
+            onDelete={(id) => handleActionConfirmOpen('delete', id)}
+            setEditNode={setEditNode}
         />
-        <SettingPromptsMenuPanel 
-          rootId={rootId}
-          initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}
-          treeData={filteredTreeData}
-          editNode={editNode}
-          onChangeOpen={(newOpenIds) => {
-            if (inputValue.trim()) {
-              return
+        <SettingPromptsRestorer 
+            onRestore={async (snapshot) => {
+            try {
+                setLoading(true)
+                setInputValue('')
+                const buttonSettings = snapshot.settings.buttonSettings
+                if (!buttonSettings) return
+                const { contextMenu } = buttonSettings[editButtonKey]
+                setOriginalTreeData(contextMenu)
+            } catch (e) {
+                console.error(e)
+            } finally {
+                setLoading(false)
             }
-            console.log('newOpenIds', newOpenIds)
-            setOpenIds(newOpenIds as string[])
-          }}
-          onDrop={handleDrop}
-          onEditNode={setEditNode}
-          onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
-          disabledDrag={inputValue !== ''} 
+            }}
         />
-      </Stack>
+        </Stack>
+        
+        <SettingPromptsPositionSwitch
+        buttonKey={editButtonKey}
+        checked={position === 'end'}
+        label={t(
+            'settings:feature_card__prompts__place_my_own_prompts_switch',
+        )} 
+        sx={{
+            my: '16px'
+        }}
+        />
+        
+        <Stack
+        height={0}
+        flex={1}
+        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+        >
+        <Stack height={'100%'}>
+            <DevContent>
+            <SettingPromptsViewSource treeData={originalTreeData} />
+            </DevContent>
+            <SettingPromptsMenuPanel 
+            rootId={rootId}
+            initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}
+            treeData={filteredTreeData}
+            editNode={editNode}
+            onChangeOpen={(newOpenIds) => {
+                if (inputValue.trim()) {
+                return
+                }
+                console.log('newOpenIds', newOpenIds)
+                setOpenIds(newOpenIds as string[])
+            }}
+            onDrop={handleDrop}
+            onEditNode={setEditNode}
+            onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
+            disabledDrag={inputValue !== ''} 
+            />
+        </Stack>
+        </Stack>
     </Stack>
     {confirmOpen && confirmType && (
       <SettingPromptsActionConfirmModal
@@ -344,4 +343,4 @@ const SettingPromptsContextMenuCard: FC = () => {
   </>
 }
 
-export default SettingPromptsContextMenuCard;
+export default SettingPromptsWritingAssistantCard;

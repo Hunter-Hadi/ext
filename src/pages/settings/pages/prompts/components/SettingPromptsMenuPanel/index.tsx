@@ -7,6 +7,8 @@ import Box from '@mui/material/Box'
 import React, { type FC, memo } from 'react'
 import { DndProvider } from 'react-dnd'
 
+import { setChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
+import { type IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/type'
 import { type IContextMenuItem } from '@/features/contextMenu/types'
 import { PropsType } from '@/types'
 
@@ -28,6 +30,7 @@ interface ISettingPromptsMenuPanelProps {
     disabledDrag: boolean
 }
 
+export const rootId = 'root'
 /**
  * 用来在my own prompts渲染的虚拟节点，让用户设置preset prompt的位置
  */
@@ -44,6 +47,32 @@ export const PRESET_PROMPT: [IContextMenuItem] = [
     },
   },
 ]
+
+export const saveTreeData = async (
+  key: IChromeExtensionButtonSettingKey,
+  treeData: IContextMenuItem[],
+) => {
+  try {
+    console.log('saveTreeData', key, treeData)
+    const success = await setChromeExtensionDBStorage((settings) => {
+      const newSettings = {
+        ...settings,
+        buttonSettings: {
+          ...settings.buttonSettings,
+          [key]: {
+            ...settings.buttonSettings?.[key],
+            contextMenu: treeData,
+          },
+        },
+      } as any
+      console.log('testestsettings', key, treeData, newSettings)
+      return newSettings
+    })
+    console.log(success)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 const isTreeNodeCanDrop = (treeData: any[], dragId: string, dropId: string, rootId: string) => {
     if (dragId === dropId) {

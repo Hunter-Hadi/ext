@@ -1,13 +1,14 @@
 import styled from '@emotion/styled'
 import Stack, { type StackProps } from '@mui/material/Stack'
 import { Theme } from '@mui/material/styles'
-import React, { type FC, useState } from 'react'
+import React, { type FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
 
 import SettingPromptsPageHeader, { type SettingPromptsPageHeaderTabKey } from './components/SettingPromptsPageHeader'
 import SettingPromptsContextMenuCard from './SettingPromptsContextMenuCard';
+import SettingPromptsWritingAssistantCard from './SettingPromptsWritingAssistantCard'
 
 const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => <Stack {...props} />)(
   ({ theme }) => {
@@ -26,6 +27,17 @@ const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => <Stack
 const SettingsPromptsPage: FC = () => {
   const { t } = useTranslation(['settings'])
   const [activeTab, setActiveTab] = useState<SettingPromptsPageHeaderTabKey>('CONTEXT_MENU');
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search)
+    console.log('testest', searchParams.get('tab'));
+    switch(searchParams.get('tab')) {
+      case 'writing-assistant': setActiveTab('WRITING_ASSISTANT'); break;
+      case 'summary': setActiveTab('SUMMARY'); break;
+      case 'search': setActiveTab('SEARCH'); break;
+      case 'context-menu':
+      default: setActiveTab('CONTEXT_MENU');
+    }
+  }, [])
   return (
     <SettingsFeatureCardLayout
       title={t('settings:feature_card__prompts__title')}
@@ -33,7 +45,8 @@ const SettingsPromptsPage: FC = () => {
     >
       <SettingPromptsPageHeader activeTab={activeTab} setActiveTab={setActiveTab} />
       <SettingsPromptPageCardLayout>
-        {activeTab === 'CONTEXT_MENU' && <SettingPromptsContextMenuCard iconSetting />}
+        {activeTab === 'CONTEXT_MENU' && <SettingPromptsContextMenuCard />}
+        {activeTab === 'WRITING_ASSISTANT' && <SettingPromptsWritingAssistantCard />}
       </SettingsPromptPageCardLayout>
     </SettingsFeatureCardLayout>
   )

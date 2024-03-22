@@ -6,6 +6,7 @@ type ActionIdentifier =
   | 'YOUTUBE_GET_COMMENTS'
   //youtube获进度数据
   | 'YOUTUBE_GET_TRANSCRIPT'
+  | 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
   /**
    * @deprecated - 这个action已经被废弃了，使用RENDER_TEMPLATE代替
    * @description - 渲染AI Prompt

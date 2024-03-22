@@ -53,6 +53,11 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
               </AppSuspenseLoadingLayout>
             </HeightUpdateScrolling>
           )}
+          {deepDive.type === 'timestampedSummary' && (
+            <AppSuspenseLoadingLayout>
+              <TranscriptView transcriptList={deepDive.value} />
+            </AppSuspenseLoadingLayout>
+          )}
         </Stack>
       ))}
     </React.Fragment>

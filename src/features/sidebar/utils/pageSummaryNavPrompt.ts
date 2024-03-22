@@ -233,6 +233,7 @@ export type SummaryParamsPromptType =
   | 'comment'
   | 'transcript'
   | 'actions'
+  | 'timestamped'
 
 interface ISummaryGetPromptObject {
   PAGE_SUMMARY: (key?: SummaryParamsPromptType) => string

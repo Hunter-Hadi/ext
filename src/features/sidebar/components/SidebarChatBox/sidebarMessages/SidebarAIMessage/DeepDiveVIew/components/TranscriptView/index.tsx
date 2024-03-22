@@ -1,5 +1,5 @@
 import { Button, Skeleton, Stack, Typography } from '@mui/material'
-import { FC, useEffect, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -96,6 +96,104 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
     openIdsList[id] = !openIdsList[id]
     setOpenIdsList({ ...openIdsList })
   }
+  const TranscriptListView = useCallback(() => {
+    return (
+      transcriptList &&
+      Array.isArray(transcriptList) &&
+      transcriptList.map((transcriptItem, index) => {
+        if (transcriptItem.status === 'loading' && !transcriptItem.text) {
+          return (
+            <Skeleton
+              variant="rounded"
+              width="100%"
+              height={80}
+              sx={{ marginTop: '15px' }}
+            />
+          )
+        } else {
+          return (
+            <Stack key={transcriptItem.start}>
+              <Stack
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={1}
+                key={index}
+                sx={{ marginTop: '15px' }}
+              >
+                <Button
+                  sx={{
+                    padding: '0 5px!important',
+                    minWidth: '30px',
+                  }}
+                  variant="contained"
+                  size="small"
+                  onClick={() => clickLinkUrl(transcriptItem.start)}
+                >
+                  {formatSecondsAsTimestamp(transcriptItem.start)}
+                </Button>
+
+                <Stack sx={{ flex: 1 }}>
+                  <Typography fontSize={16} color="text.primary">
+                    {decodeHtmlEntity(transcriptItem.text || '')}
+                  </Typography>
+                  {transcriptItem?.children && (
+                    <Stack
+                      onClick={() =>
+                        transcriptItem.id && onSetIdsList(transcriptItem.id)
+                      }
+                      direction="row"
+                      sx={{ cursor: 'pointer' }}
+                      spacing={2}
+                    >
+                      <Typography fontSize={15} color="text.secondary">
+                        {openIdsList[transcriptItem.id || '']
+                          ? 'Collapse'
+                          : 'Expand'}
+                      </Typography>
+                    </Stack>
+                  )}
+                </Stack>
+              </Stack>
+              {transcriptItem?.children &&
+                openIdsList[transcriptItem.id || ''] &&
+                transcriptItem?.children?.map((transcriptChildren) => (
+                  <Stack
+                    direction="row"
+                    justifyContent="flex-start"
+                    alignItems="flex-start"
+                    spacing={1}
+                    key={transcriptChildren.id}
+                    sx={{ marginTop: '5px', marginLeft: '10px' }}
+                  >
+                    <Button
+                      sx={{
+                        padding: '0px!important',
+                        minWidth: '30px',
+                      }}
+                      size="small"
+                      onClick={() => clickLinkUrl(transcriptChildren.start)}
+                    >
+                      {formatSecondsAsTimestamp(transcriptChildren.start)}
+                    </Button>
+                    <Typography
+                      fontSize={15}
+                      color="text.secondary"
+                      sx={{
+                        p: 0,
+                        flex: 1,
+                      }}
+                    >
+                      {decodeHtmlEntity(transcriptChildren.text || '')}
+                    </Typography>
+                  </Stack>
+                ))}
+            </Stack>
+          )
+        }
+      })
+    )
+  }, [transcriptList, openIdsList])
   return (
     <div>
       {(!transcriptList ||
@@ -113,96 +211,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList }) => {
           Unable to generate video without subtitles.
         </Typography>
       )}
-      {transcriptList &&
-        Array.isArray(transcriptList) &&
-        transcriptList.map((transcriptItem, index) => {
-          if (transcriptItem.status === 'loading' && !transcriptItem.text) {
-            return (
-              <Skeleton
-                variant="rounded"
-                width="100%"
-                height={80}
-                sx={{ marginTop: '15px' }}
-              />
-            )
-          } else {
-            return (
-              <Stack key={transcriptItem.start}>
-                <Stack
-                  direction="row"
-                  justifyContent="flex-start"
-                  alignItems="flex-start"
-                  spacing={1}
-                  key={index}
-                  sx={{ marginTop: '15px' }}
-                >
-                  <Button
-                    sx={{
-                      padding: '0 5px!important',
-                      minWidth: '30px',
-                    }}
-                    variant="contained"
-                    size="small"
-                    onClick={() => clickLinkUrl(transcriptItem.start)}
-                  >
-                    {formatSecondsAsTimestamp(transcriptItem.start)}
-                  </Button>
-                  <Stack sx={{ flex: 1 }}>
-                    <Typography fontSize={16} color="text.primary">
-                      {decodeHtmlEntity(transcriptItem.text || '')}
-                    </Typography>
-                    <Stack
-                      onClick={() =>
-                        transcriptItem.id && onSetIdsList(transcriptItem.id)
-                      }
-                      direction="row"
-                      sx={{ cursor: 'pointer' }}
-                      spacing={2}
-                    >
-                      <Typography fontSize={15} color="text.secondary">
-                        {openIdsList[transcriptItem.id || '']
-                          ? 'Collapse'
-                          : 'Expand'}
-                      </Typography>
-                    </Stack>
-                  </Stack>
-                </Stack>
-                {openIdsList[transcriptItem.id || ''] &&
-                  transcriptItem?.children?.map((transcriptChildren) => (
-                    <Stack
-                      direction="row"
-                      justifyContent="flex-start"
-                      alignItems="flex-start"
-                      spacing={1}
-                      key={transcriptChildren.id}
-                      sx={{ marginTop: '5px', marginLeft: '10px' }}
-                    >
-                      <Button
-                        sx={{
-                          padding: '0px!important',
-                          minWidth: '30px',
-                        }}
-                        size="small"
-                        onClick={() => clickLinkUrl(transcriptChildren.start)}
-                      >
-                        {formatSecondsAsTimestamp(transcriptChildren.start)}
-                      </Button>
-                      <Typography
-                        fontSize={15}
-                        color="text.secondary"
-                        sx={{
-                          p: 0,
-                          flex: 1,
-                        }}
-                      >
-                        {decodeHtmlEntity(transcriptChildren.text || '')}
-                      </Typography>
-                    </Stack>
-                  ))}
-              </Stack>
-            )
-          }
-        })}
+      {TranscriptListView()}
     </div>
   )
 }

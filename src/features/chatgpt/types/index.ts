@@ -107,7 +107,7 @@ export type IAIResponseOriginalMessageMetaDeep = {
       value: string
     }
   | {
-      type: 'transcript'
+      type: 'transcript' | 'timestampedSummary'
       value: TranscriptResponse[]
     }
 )

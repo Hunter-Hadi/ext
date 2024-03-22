@@ -50,15 +50,17 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 import { ActionYoutubeGetComments } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetComments'
 import { ActionYoutubeGetTranscript } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetTranscript'
+import { ActionYoutubeGetTranscriptTimestamped } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetTranscriptTimestamped'
 
 const ActionClassMap = {
   // 废弃
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
+  //youtube summary
   [ActionYoutubeGetComments.type]: ActionYoutubeGetComments,
   [ActionYoutubeGetTranscript.type]: ActionYoutubeGetTranscript,
-
+  [ActionYoutubeGetTranscriptTimestamped.type]: ActionYoutubeGetTranscriptTimestamped,
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAskChatGPT.type]: ActionAskChatGPT,

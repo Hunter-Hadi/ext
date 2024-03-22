@@ -779,6 +779,16 @@ export const allSummaryNavList: {
         'client:sidebar__summary__nav__youtube_summary__tooltip__default',
     },
     {
+      title: 'Timestamped summary',
+      titleIcon: 'ClosedCaptionOffOutlined',
+      key: 'timestamped',
+      config: {
+        isAutoScroll: false,
+      },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
+    },
+    {
       title: 'Summarize comments',
       titleIcon: 'CommentOutlined',
       key: 'comment',

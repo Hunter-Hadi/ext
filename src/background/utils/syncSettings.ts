@@ -42,7 +42,6 @@ export const syncLocalSettingsToServerSettings = async () => {
       lastModified,
     })
     const localSettings = await getChromeExtensionDBStorage()
-    console.log('testestlocalSettings', localSettings)
     const result = await post<{
       status: 'OK' | 'ERROR'
     }>('/user/save_user_settings', {

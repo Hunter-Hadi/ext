@@ -16,8 +16,10 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
  */
 const forceUpdateContextMenuReadOnlyOption = async () => {
   const updateContextButtonKeys: IChromeExtensionButtonSettingKey[] = [
-    'inputAssistantComposeReplyButton',
     'textSelectPopupButton',
+    'inputAssistantComposeReplyButton',
+    'inputAssistantRefineDraftButton',
+    'inputAssistantComposeNewButton',
   ]
   const updateButtonContextMenu = async (
     buttonKey: IChromeExtensionButtonSettingKey,

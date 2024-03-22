@@ -29,7 +29,7 @@ import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/Set
 
 import ContextMenuMockTextarea from './ContextMenuMockTextarea'
 
-const EditButtonKey: IChromeExtensionButtonSettingKey = 'textSelectPopupButton'
+const editButtonKey: IChromeExtensionButtonSettingKey = 'textSelectPopupButton'
 
 const saveTreeData = async (
   key: IChromeExtensionButtonSettingKey,
@@ -83,7 +83,7 @@ const SettingPromptsContextMenuCard: FC = () => {
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
   
-  const position = useMemo(() =>  buttonSettings?.[EditButtonKey].contextMenuPosition, [buttonSettings?.[EditButtonKey].contextMenuPosition]);
+  const position = buttonSettings?.[editButtonKey].contextMenuPosition;
   const currentConfirmNode = useMemo(() => {
     return originalTreeData.find((item) => item.id === confirmId)
   }, [confirmId, originalTreeData])
@@ -169,10 +169,10 @@ const SettingPromptsContextMenuCard: FC = () => {
 
   useEffect(() => {
     let isDestroy = false
-    if (EditButtonKey) {
+    if (editButtonKey) {
       const getList = async () => {
         const contextMenu = await getChromeExtensionDBStorageButtonContextMenu(
-          EditButtonKey,
+          editButtonKey,
         )
         if (isDestroy) return
         setOriginalTreeData(contextMenu)
@@ -187,7 +187,7 @@ const SettingPromptsContextMenuCard: FC = () => {
     return () => {
       isDestroy = true
     }
-  }, [EditButtonKey])
+  }, [editButtonKey])
 
   useEffect(() => {
     const searchTextMap: {
@@ -211,7 +211,7 @@ const SettingPromptsContextMenuCard: FC = () => {
     }
     findSearchText(rootId)
     if (loadedRef.current) {
-      saveTreeData(EditButtonKey, originalTreeData).then(() => {
+      saveTreeData(editButtonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
         syncLocalToServer()
       })
@@ -275,7 +275,7 @@ const SettingPromptsContextMenuCard: FC = () => {
             setInputValue('')
             const buttonSettings = snapshot.settings.buttonSettings
             if (!buttonSettings) return
-            const { contextMenu } = buttonSettings[EditButtonKey]
+            const { contextMenu } = buttonSettings[editButtonKey]
             setOriginalTreeData(contextMenu)
           } catch (e) {
             console.error(e)
@@ -287,7 +287,7 @@ const SettingPromptsContextMenuCard: FC = () => {
     </Stack>
       
     <SettingPromptsPositionSwitch
-      buttonKey={EditButtonKey}
+      buttonKey={editButtonKey}
       checked={position === 'end'}
       label={t(
         'settings:feature_card__prompts__place_my_own_prompts_switch',

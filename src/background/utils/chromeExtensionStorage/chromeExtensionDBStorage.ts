@@ -218,7 +218,6 @@ export const setChromeExtensionDBStorage = async (
     const oldSettings = await getChromeExtensionDBStorage()
     if (settingsOrUpdateFunction instanceof Function) {
       const newSettings = settingsOrUpdateFunction(oldSettings)
-      console.log('testestnewSettings', newSettings)
       await Browser.storage.local.set({
         [CHROME_EXTENSION_DB_STORAGE_SAVE_KEY]: JSON.stringify(newSettings),
       })

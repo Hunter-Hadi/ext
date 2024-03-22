@@ -4,6 +4,7 @@ import {
     Tree,
   } from '@minoru/react-dnd-treeview'
 import Box from '@mui/material/Box'
+import { type SxProps } from '@mui/material/styles'
 import React, { type FC, memo } from 'react'
 import { DndProvider } from 'react-dnd'
 
@@ -27,7 +28,8 @@ interface ISettingPromptsMenuPanelProps {
     editNode: IContextMenuItem | null;
     onEditNode: (node: IContextMenuItem) => any;
     onDeleteNode: (nodeId: string) => any;
-    disabledDrag: boolean
+    disabledDrag?: boolean
+    sx?: SxProps
 }
 
 export const rootId = 'root'
@@ -65,7 +67,6 @@ export const saveTreeData = async (
           },
         },
       } as any
-      console.log('testestsettings', key, treeData, newSettings)
       return newSettings
     })
     console.log(success)
@@ -104,7 +105,8 @@ const SettingPromptsMenuPanel: FC<ISettingPromptsMenuPanelProps> = ({
     editNode,
     onEditNode,
     onDeleteNode,
-    disabledDrag = false
+    disabledDrag = false,
+    sx = {},
 }) => {
     return <Box
         sx={{
@@ -154,6 +156,7 @@ const SettingPromptsMenuPanel: FC<ISettingPromptsMenuPanelProps> = ({
         '.context-menu__root': {
             py: 1,
         },
+        ...sx
         }}
     >
         <DndProvider backend={MultiBackend} options={getBackendOptions()}>

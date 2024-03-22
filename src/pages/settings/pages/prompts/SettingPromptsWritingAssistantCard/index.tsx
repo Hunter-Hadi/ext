@@ -14,9 +14,7 @@ import {
 import DevContent from '@/components/DevContent'
 import {
   type IContextMenuItem,
-  type IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
 import useContextMenuSearchTextStore from '@/features/sidebar/hooks/useContextMenuSearchTextStore'
 import RadioCardGroup from '@/pages/settings/components/RadioCardGroup';
 import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
@@ -27,6 +25,8 @@ import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/compone
 import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper';
+
+import InputAssistantButtonExhibit from './InputAssistantButtonExhibit';
 
 const SettingPromptsWritingAssistantCard: FC = () => {
   const { syncLocalToServer } = useSyncSettingsChecker()
@@ -54,10 +54,9 @@ const SettingPromptsWritingAssistantCard: FC = () => {
   const [confirmType, setConfirmType] = useState<IConfirmActionType | null>(
     null,
   )
-  const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
+  const position = buttonSettings?.[editButtonKey].contextMenuPosition;
   
-  const position = useMemo(() =>  buttonSettings?.[editButtonKey].contextMenuPosition, [editButtonKey]);
   const currentConfirmNode = useMemo(() => {
     return originalTreeData.find((item) => item.id === confirmId)
   }, [confirmId, originalTreeData])
@@ -143,13 +142,11 @@ const SettingPromptsWritingAssistantCard: FC = () => {
 
   useEffect(() => {
     let isDestroy = false
-    console.log('testestasdasd', editButtonKey)
     if (editButtonKey) {
       const getList = async () => {
         const contextMenu = await getChromeExtensionDBStorageButtonContextMenu(
             editButtonKey,
         )
-        console.log('testestcontextMenu', contextMenu)
         if (isDestroy) return
         setOriginalTreeData(contextMenu)
         setTimeout(() => {
@@ -195,47 +192,23 @@ const SettingPromptsWritingAssistantCard: FC = () => {
   }, [originalTreeData])
 
   const filteredTreeData = useMemo(() => {
-    if (!inputValue) {
-      if (position === 'start') {
+    if (position === 'start') {
         return PRESET_PROMPT.concat(originalTreeData)
       } else {
         return originalTreeData.concat(PRESET_PROMPT)
       }
-    }
-    const result = fuzzySearchContextMenuList(
-      originalTreeData,
-      inputValue,
-      contextMenuSearchTextWithCurrentLanguage,
-    )
-    const showIds: string[] = []
-    // 返回的结果不一定到root了，需要一直找到root
-    const findUntilRoot = (id: string) => {
-      const item = originalTreeMapRef.current[id]
-      if (item) {
-        showIds.push(item.id)
-        findUntilRoot(item.parent)
-      }
-    }
-    result.forEach((item) => findUntilRoot(item.id))
-    console.log(showIds, originalTreeMapRef.current)
-    const deepFindId = (item: IContextMenuItemWithChildren) => {
-      showIds.push(item.id)
-      if (item.children && item.children.length > 0) {
-        item.children.forEach(deepFindId)
-      }
-    }
-    result.forEach(deepFindId)
-    return originalTreeData.filter((item) => showIds.includes(item.id))
   }, [
     originalTreeData,
-    inputValue,
     contextMenuSearchTextWithCurrentLanguage,
     position,
   ])
 
   return <>
     <RadioCardGroup
-        onChange={async (key) => setEditButtonKey(key as IChromeExtensionButtonSettingKey)}
+        onChange={async (key) => {
+            loadedRef.current = false;
+            setEditButtonKey(key as IChromeExtensionButtonSettingKey)
+        }}
         options={[
           {
             label: t('settings:feature_card__prompts__writing_assistant__quick_reply_radio_title'),
@@ -277,7 +250,6 @@ const SettingPromptsWritingAssistantCard: FC = () => {
             onRestore={async (snapshot) => {
             try {
                 setLoading(true)
-                setInputValue('')
                 const buttonSettings = snapshot.settings.buttonSettings
                 if (!buttonSettings) return
                 const { contextMenu } = buttonSettings[editButtonKey]
@@ -311,22 +283,24 @@ const SettingPromptsWritingAssistantCard: FC = () => {
             <DevContent>
             <SettingPromptsViewSource treeData={originalTreeData} />
             </DevContent>
+            <InputAssistantButtonExhibit highlight={editButtonKey === 'inputAssistantRefineDraftButton'} />
             <SettingPromptsMenuPanel 
-            rootId={rootId}
-            initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}
-            treeData={filteredTreeData}
-            editNode={editNode}
-            onChangeOpen={(newOpenIds) => {
-                if (inputValue.trim()) {
-                return
-                }
-                console.log('newOpenIds', newOpenIds)
-                setOpenIds(newOpenIds as string[])
-            }}
-            onDrop={handleDrop}
-            onEditNode={setEditNode}
-            onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
-            disabledDrag={inputValue !== ''} 
+                rootId={rootId}
+                initialOpen={openIds}
+                treeData={filteredTreeData}
+                editNode={editNode}
+                onChangeOpen={(newOpenIds) => {
+                    console.log('newOpenIds', newOpenIds)
+                    setOpenIds(newOpenIds as string[])
+                }}
+                onDrop={handleDrop}
+                onEditNode={setEditNode}
+                onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
+                sx={{
+                    width: editButtonKey === 'inputAssistantRefineDraftButton' ? 'calc(50% - 12px)' : 'calc(50% + 12px)',
+                    mt: '4px',
+                    ml: editButtonKey === 'inputAssistantRefineDraftButton' ? 'auto' : 0,
+                }}
             />
         </Stack>
         </Stack>

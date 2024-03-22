@@ -68,6 +68,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           await clientConversationEngine.getCurrentConversation()
         const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
         const maxSocialMediaContextTokens =
+          AIModelMaxTokens -
           calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
         // 先计算TargetContext的Tokens占用，剩下的再给FullContext
         const {

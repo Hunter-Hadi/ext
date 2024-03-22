@@ -64,6 +64,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
             await clientConversationEngine.getCurrentConversation()
           const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
           const maxEmailContextTokens =
+            AIModelMaxTokens -
             calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
           // 先计算TargetContext的Tokens占用，剩下的再给FullContext
           // 先计算TargetContext的Tokens占用，剩下的再给FullContext

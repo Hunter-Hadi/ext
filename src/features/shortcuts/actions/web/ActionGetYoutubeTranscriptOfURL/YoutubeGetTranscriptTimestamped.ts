@@ -4,15 +4,15 @@ import { v4 as uuidV4 } from 'uuid'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import Action from '@/features/shortcuts/core/Action'
+import { withLoadingDecorators } from '@/features/shortcuts/decorators'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 
 import { stopActionMessage } from '../../common'
 import { TranscriptResponse, YoutubeTranscript } from './YoutubeTranscript'
-import { withLoadingDecorators } from '@/features/shortcuts/decorators'
-import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 
 type TranscriptTimestampedType = {
   title: string
@@ -96,12 +96,10 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         transcriptsTokens > 2000
       ) {
         //进入chapters逻辑判断
-        const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
-          chaptersInfoList,
-          transcripts,
-        )
+        const chapterTextList: TranscriptTimestampedTextType[] =
+          this.getChaptersAllTextList(chaptersInfoList, transcripts)
         if (chapterTextList.length > 0) {
-          const chapterList = await this.batchAskGptUpdate(
+          const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
             messageId,
             chapterTextList,
@@ -111,15 +109,12 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
           this.output = JSON.stringify([])
         }
       } else {
-        debugger
         //自己创建chapters逻辑
         const chaptersList = this.createChapters(transcripts)
-        const chapterTextList: TranscriptTimestampedTextType[] = this.getChaptersAllTextList(
-          chaptersList,
-          transcripts,
-        )
+        const chapterTextList: TranscriptTimestampedTextType[] =
+          this.getChaptersAllTextList(chaptersList, transcripts)
         if (chapterTextList.length > 0) {
-          const chapterList = await this.batchAskGptUpdate(
+          const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
             messageId,
             chapterTextList,
@@ -133,36 +128,36 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       this.output = JSON.stringify([])
     }
   }
-  async batchAskGptUpdate(
+  async batchRequestUpdateMessage(
     conversationId: string,
     messageId: string,
     chapterTextList: TranscriptTimestampedTextType[],
   ) {
     try {
-      const oldTranscriptList: TranscriptTimestampedParamType[] = this.getPrepareViewData(
-        chapterTextList,
-      )
+      const transcriptViewDataList: TranscriptTimestampedParamType[] =
+        this.getPrepareViewData(chapterTextList)
       for (const index in chapterTextList) {
-        if (this.isStop) return oldTranscriptList
+        if (this.isStop) return transcriptViewDataList
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
           chapterTextList[index],
         )
         const endTime = Date.now() // 记录请求结束时间
         const requestDuration = endTime - startTime // 计算请求耗时
-        if (this.isStop) return oldTranscriptList
+        if (this.isStop) return transcriptViewDataList
         if (transcriptList) {
-          oldTranscriptList[index].text = transcriptList?.text
-          oldTranscriptList[index].children = transcriptList?.children
-          oldTranscriptList[index].status = 'complete'
+          transcriptViewDataList[index].text = transcriptList?.text
+          transcriptViewDataList[index].children = transcriptList?.children
+          transcriptViewDataList[index].status = 'complete'
         } else {
-          oldTranscriptList[index].status = 'error'
-          oldTranscriptList[index].text = 'Error'
+          //出现错误不在往下请求
+          this.isStop = true
+          transcriptViewDataList[index].status = 'error'
         }
         this.updateConversationMessageInfo(
           conversationId,
           messageId,
-          oldTranscriptList,
+          transcriptViewDataList,
         )
         // 如果请求耗时少于3秒，等待剩余时间
         if (requestDuration < 3000) {
@@ -171,7 +166,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
           )
         }
       }
-      return oldTranscriptList
+      return transcriptViewDataList
     } catch (e) {
       return []
     }
@@ -181,8 +176,9 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     start: string
     tokens?: number
   }) {
-    return new Promise<TranscriptTimestampedGptType>((resolve, reject) => {
-      const systemPrompt = `Remember, you are a tool for summarizing transcripts
+    const maxRetries = 2 // 最大尝试次数-1
+    let retries = 0 // 当前尝试次数
+    const systemPrompt = `Remember, you are a tool for summarizing transcripts
     Help me quickly understand the summary of key points and the start timestamp
     The transcript are composed in the following format
     [start:transcript start time,text: transcript text]
@@ -209,65 +205,76 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     }
     The returned JSON can have up to two levels
     `
-      const newPrompt = `
+    const newPrompt = `
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
     `
+    const attemptRequest: () => Promise<
+      TranscriptTimestampedGptType | false
+    > = async () => {
       const currentAbortTaskId = uuidV4()
       this.abortTaskIds.push(currentAbortTaskId)
-      clientAskMaxAIChatProvider(
-        'OPENAI_API',
-        (chapterTextList.tokens || 0) > 1000 * 15
-          ? 'gpt-4-0125-preview'
-          : 'gpt-3.5-turbo-1106', //大于16k采用GPT4.0
-        {
-          chat_history: [
-            {
-              role: 'ai',
-              content: [
-                {
-                  type: 'text',
-                  text: systemPrompt,
-                },
-              ],
-            },
-          ],
-          message_content: [
-            {
-              type: 'text',
-              text: newPrompt,
-            },
-          ],
-          prompt_id: uuidV4(),
-          prompt_name: 'Timestamped summary',
-        },
-        currentAbortTaskId,
-      )
-        .then((askDAta) => {
-          try {
-            this.abortTaskIds = this.abortTaskIds.filter(
-              (id) => id !== currentAbortTaskId,
-            )
-            try {
-              console.log('simply askDAta', askDAta)
-              console.log(
-                'simply askDAta json',
-                this.getObjectFromString(askDAta.data),
-              )
-              resolve(this.getObjectFromString(askDAta.data))
-            } catch (e) {
-              reject()
-            }
-          } catch (e) {
-            console.error('simply askDAta error', e)
-            reject()
-          }
-        })
-        .catch((e) => {
-          console.error('simply askDAta error', e)
-          reject()
-        })
-    })
+      if (this.isStop) return false
+      try {
+        const askData = await clientAskMaxAIChatProvider(
+          'OPENAI_API',
+          (chapterTextList.tokens || 0) > 1000 * 15
+            ? 'gpt-4-0125-preview'
+            : 'gpt-3.5-turbo-1106', //大于16k采用GPT4.0
+          {
+            chat_history: [
+              {
+                role: 'ai',
+                content: [
+                  {
+                    type: 'text',
+                    text: systemPrompt,
+                  },
+                ],
+              },
+            ],
+            message_content: [
+              {
+                type: 'text',
+                text: newPrompt,
+              },
+            ],
+            prompt_id: uuidV4(),
+            prompt_name: 'Timestamped summary',
+          },
+          currentAbortTaskId,
+        )
+        if (this.isStop) return false
+        this.abortTaskIds = this.abortTaskIds.filter(
+          (id) => id !== currentAbortTaskId,
+        )
+        if (askData.success && askData.data) {
+          const transcriptData = this.getObjectFromString(askData.data)
+          console.log('simply askData', askData)
+          console.log('transcriptData', transcriptData)
+          return transcriptData
+        } else {
+          throw new Error()
+        }
+      } catch (e) {
+        console.error('simply askData error', e)
+        retries++
+
+        if (retries <= maxRetries) {
+          console.log(`Retry attempt ${retries}`)
+          await new Promise((resolve) => setTimeout(resolve, 2000)) // 等待2秒
+          return attemptRequest() // 递归调用进行重试
+        } else {
+          return false
+        }
+      }
+    }
+
+    return new Promise<TranscriptTimestampedGptType | false>(
+      (resolve, reject) => {
+        attemptRequest().then(resolve).catch(reject)
+      },
+    )
   }
   getPrepareViewData(list: { start: string }[]) {
     const newList: TranscriptTimestampedParamType[] = list.map((item) => ({

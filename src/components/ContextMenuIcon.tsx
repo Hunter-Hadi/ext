@@ -38,6 +38,7 @@ import HistoryOutlinedIcon from '@mui/icons-material/HistoryOutlined'
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
 import InsertDriveFileOutlinedIcon from '@mui/icons-material/InsertDriveFileOutlined'
 import IosShareOutlinedIcon from '@mui/icons-material/IosShareOutlined'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined'
 import LabelOutlinedIcon from '@mui/icons-material/LabelOutlined'
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined'
@@ -172,8 +173,9 @@ export const CONTEXT_MENU_ICONS = [
   'CommentOutlined',
   'ClosedCaptionOffOutlined',
   'SubjectOutlined',
+  'KeyboardArrowDownIcon',
 ] as const
-export type IContextMenuIconKey = typeof CONTEXT_MENU_ICONS[number]
+export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
   icon: IContextMenuIconKey | string
   size?: number
@@ -482,6 +484,8 @@ const ContextMenuIcon: FC<{
       return <ClosedCaptionOffOutlinedIcon sx={sxMemo} />
     case 'SubjectOutlined':
       return <SubjectOutlinedIcon sx={sxMemo} />
+    case 'KeyboardArrowDown':
+      return <KeyboardArrowDownIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

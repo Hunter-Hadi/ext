@@ -780,13 +780,13 @@ export const allSummaryNavList: {
     },
     {
       title: 'Timestamped summary',
-      titleIcon: 'ClosedCaptionOffOutlined',
+      titleIcon: 'Bulleted',
       key: 'timestamped',
       config: {
         isAutoScroll: false,
       },
       tooltip:
-        'client:sidebar__summary__nav__youtube_summary__tooltip__transcript',
+        'client:sidebar__summary__nav__youtube_summary__tooltip__timestamped',
     },
     {
       title: 'Summarize comments',
@@ -868,9 +868,8 @@ export const getContextMenuActionsByPageSummaryType = async (
           pageSummaryType
         ] || 'all'
     }
-    const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
-      summaryNavKey,
-    )
+    const summaryNavPrompt =
+      summaryGetPromptObject[pageSummaryType](summaryNavKey)
     const summaryNaTitle = getSummaryNavItemByType(
       pageSummaryType,
       summaryNavKey,
@@ -951,9 +950,9 @@ export const getSummaryNavActions: (
         action.parameters.ActionChatMessageOperationType === 'add' &&
         params.title
       ) {
-        const actionTitle = (action.parameters
-          ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
-          ?.metadata?.title
+        const actionTitle = (
+          action.parameters?.ActionChatMessageConfig as IAIResponseMessage
+        )?.originalMessage?.metadata?.title
         if (actionTitle) {
           actionTitle.title = params.title
         }

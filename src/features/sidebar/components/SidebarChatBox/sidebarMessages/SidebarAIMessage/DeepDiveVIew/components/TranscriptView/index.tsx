@@ -1,8 +1,9 @@
 import { Button, Skeleton, Stack, Typography } from '@mui/material'
-import { FC, useCallback, useEffect, useState } from 'react'
+import { FC, useCallback, useEffect, useMemo, useState } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import globalSnackbar from '@/utils/globalSnackbar'
 
@@ -15,6 +16,12 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
   const [openIdsList, setOpenIdsList] = useState<{ [key in string]: boolean }>(
     {},
   )
+  const transcriptLoadingLength = useMemo(() => {
+    return transcriptList.filter((item) => item.status === 'loading').length
+  }, [transcriptList])
+  const transcriptIsError = useMemo(() => {
+    return transcriptList.filter((item) => item.status === 'error').length > 0
+  }, [transcriptList])
   useEffect(() => {
     console.log('simply transcriptList ------', transcriptList, loading)
   }, [transcriptList, loading])
@@ -102,20 +109,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
       transcriptList &&
       Array.isArray(transcriptList) &&
       transcriptList.map((transcriptItem, index) => {
-        if (transcriptItem.status === 'loading' && !transcriptItem.text) {
-          if (loading) {
-            return (
-              <Skeleton
-                variant="rounded"
-                width="100%"
-                height={80}
-                sx={{ marginTop: '15px' }}
-              />
-            )
-          } else {
-            return <></>
-          }
-        } else {
+        if (transcriptItem.status !== 'loading' && transcriptItem.text) {
           return (
             <Stack key={transcriptItem.start}>
               <Stack
@@ -125,6 +119,9 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                 spacing={1}
                 key={index}
                 sx={{ marginTop: '15px' }}
+                onClick={() =>
+                  transcriptItem.id && onSetIdsList(transcriptItem.id)
+                }
               >
                 <Button
                   sx={{
@@ -138,24 +135,35 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                   {formatSecondsAsTimestamp(transcriptItem.start)}
                 </Button>
 
-                <Stack sx={{ flex: 1 }}>
+                <Stack sx={{ flex: 1, cursor: 'pointer' }}>
                   <Typography fontSize={16} color="text.primary">
                     {decodeHtmlEntity(transcriptItem.text || '')}
                   </Typography>
                   {transcriptItem?.children && (
-                    <Stack
-                      onClick={() =>
-                        transcriptItem.id && onSetIdsList(transcriptItem.id)
-                      }
-                      direction="row"
-                      sx={{ cursor: 'pointer' }}
-                      spacing={2}
-                    >
+                    <Stack direction="row" alignItems="center">
                       <Typography fontSize={15} color="text.secondary">
                         {openIdsList[transcriptItem.id || '']
                           ? 'Collapse'
                           : 'Expand'}
                       </Typography>
+                      {openIdsList[transcriptItem.id || ''] ? (
+                        <ContextMenuIcon
+                          sx={{
+                            transform: 'rotate(180deg)',
+                            color: 'rgba(0, 0, 0, 0.6)',
+                          }}
+                          size={25}
+                          icon="KeyboardArrowDown"
+                        />
+                      ) : (
+                        <ContextMenuIcon
+                          sx={{
+                            color: 'rgba(0, 0, 0, 0.6)',
+                          }}
+                          size={25}
+                          icon="KeyboardArrowDown"
+                        />
+                      )}
                     </Stack>
                   )}
                 </Stack>
@@ -184,9 +192,13 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                     <Typography
                       fontSize={15}
                       color="text.secondary"
+                      onClick={() =>
+                        transcriptItem.id && onSetIdsList(transcriptItem.id)
+                      }
                       sx={{
                         p: 0,
                         flex: 1,
+                        cursor: 'pointer',
                       }}
                     >
                       {decodeHtmlEntity(transcriptChildren.text || '')}
@@ -195,6 +207,8 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                 ))}
             </Stack>
           )
+        } else {
+          return <></>
         }
       })
     )
@@ -216,6 +230,35 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
         </Typography>
       )}
       {TranscriptListView()}
+      {!transcriptIsError &&
+        transcriptLoadingLength > 0 &&
+        Array.from(
+          {
+            length: transcriptLoadingLength,
+          },
+          (_, index) => (
+            <Skeleton
+              key={index}
+              variant="rounded"
+              width="100%"
+              height={10}
+              sx={{ marginTop: '5px' }}
+            />
+          ),
+        )}
+      {transcriptIsError && (
+        <Typography
+          fontSize={16}
+          color="error"
+          sx={{
+            p: 0,
+            flex: 1,
+          }}
+        >
+          We haven&apos;t finished summarizing, An exception occurred, please
+          try again later
+        </Typography>
+      )}
     </div>
   )
 }

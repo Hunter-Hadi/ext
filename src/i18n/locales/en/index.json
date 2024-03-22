@@ -659,7 +659,8 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Summarize email (Key takeaways)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Summarize email (Action items)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Show transcript",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Please wait until the video ad finishes playing and then try again."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Please wait until the video ad finishes playing and then try again.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Timestamped summary"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

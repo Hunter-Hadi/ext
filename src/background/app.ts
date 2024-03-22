@@ -620,6 +620,10 @@ const initExternalMessageListener = () => {
     'idgpnmonknjnojddfkpgkljpfnnfcklj',
     //simplytends
     'kajbojdeijchbhbodifhaigbnbodjahj',
+    // opgbiafapkbbnbnjcdomjaghbckfkglc modeheader-edge
+    'opgbiafapkbbnbnjcdomjaghbckfkglc',
+    // flahobhjikkpnpohomeckhdjjkkkkmoc webchatgpt-edge
+    'flahobhjikkpnpohomeckhdjjkkkkmoc',
   ]
 
   Browser.runtime.onMessageExternal.addListener(async function (

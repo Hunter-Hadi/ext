@@ -5,6 +5,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import groupBy from 'lodash-es/groupBy'
 import React, { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil';
 
 import { type IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
@@ -24,6 +25,7 @@ import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/
 import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
 import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store';
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper';
 
 import InputAssistantButtonExhibit from './InputAssistantButtonExhibit';
@@ -42,7 +44,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
   const defaultTreeDataRef = useRef<null | IContextMenuItem[]>(null)
   const originalTreeMapRef = useRef<{ [key: string]: IContextMenuItem }>({})
 
-  const [editButtonKey, setEditButtonKey] = useState<IChromeExtensionButtonSettingKey>('inputAssistantComposeReplyButton')
+  const [editButtonKey, setEditButtonKey] = useRecoilState(SettingPromptsEditButtonKeyAtom)
   const [loading, setLoading] = useState(false)
   const [editNode, setEditNode] = useState<IContextMenuItem | null>(null)
   const [originalTreeData, setOriginalTreeData] = useState<IContextMenuItem[]>(
@@ -55,22 +57,49 @@ const SettingPromptsWritingAssistantCard: FC = () => {
     null,
   )
   const [openIds, setOpenIds] = useState<string[]>([])
-  const position = buttonSettings?.[editButtonKey].contextMenuPosition;
-  
+  const position = editButtonKey ? buttonSettings?.[editButtonKey]?.contextMenuPosition : 'end';
+
   const currentConfirmNode = useMemo(() => {
     return originalTreeData.find((item) => item.id === confirmId)
   }, [confirmId, originalTreeData])
-  const memoAllGroupIds = useMemo(() => {
-    return originalTreeData
-      .filter((item) => item.data.type === 'group')
-      .map((item) => item.id)
-  }, [originalTreeData])
+  const radioCardOptions = useMemo(() => [
+    {
+      label: t('settings:feature_card__prompts__writing_assistant__quick_reply_radio_title'),
+      value: 'inputAssistantComposeReplyButton',
+      image: getChromeExtensionAssetsURL(
+        '/images/settings/prompts/quick-reply.png',
+      ),
+    },
+    {
+      label: t('settings:feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title'),
+      value: 'inputAssistantRefineDraftButton',
+      image: getChromeExtensionAssetsURL(
+        '/images/settings/prompts/edit-or-review-draft.png',
+      ),
+    },
+    {
+      label: t('settings:feature_card__prompts__writing_assistant__quick_compose_radio_title'),
+      value: 'inputAssistantComposeNewButton',
+      image: getChromeExtensionAssetsURL(
+        '/images/settings/prompts/quick-compose.png',
+      ),
+    },
+  ], [t])
+  // const memoAllGroupIds = useMemo(() => {
+  //   return originalTreeData
+  //     .filter((item) => item.data.type === 'group')
+  //     .map((item) => item.id)
+  // }, [originalTreeData])
 
   const handleOnSave = useCallback(
     (newNode: IContextMenuItem) => {
       if (newNode.data.type === 'group') {
         updateMenuItem(newNode)
       } else {
+        // 240323: yangger 说 template 中没有对应的 capability context 就不需要抓取页面内容
+        // newNode.data.actions?.unshift(
+        //   getInputAssistantAction(newNode.data.visibility?.whitelist[0] as InputAssistantButtonGroupConfigHostType),
+        // )
         updateMenuItem(newNode)
       }
       setEditNode(null)
@@ -141,6 +170,13 @@ const SettingPromptsWritingAssistantCard: FC = () => {
   }
 
   useEffect(() => {
+    if (!['inputAssistantComposeReplyButton', 'inputAssistantRefineDraftButton', 'inputAssistantComposeNewButton'].includes(editButtonKey!)) {
+      setEditButtonKey('inputAssistantComposeReplyButton')
+    }
+    return () => setEditButtonKey(null)
+  }, [])
+
+  useEffect(() => {
     let isDestroy = false
     if (editButtonKey) {
       const getList = async () => {
@@ -183,7 +219,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
       })
     }
     findSearchText(rootId)
-    if (loadedRef.current) {
+    if (editButtonKey && loadedRef.current) {
       saveTreeData(editButtonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
         syncLocalToServer()
@@ -209,29 +245,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
             loadedRef.current = false;
             setEditButtonKey(key as IChromeExtensionButtonSettingKey)
         }}
-        options={[
-          {
-            label: t('settings:feature_card__prompts__writing_assistant__quick_reply_radio_title'),
-            value: 'inputAssistantComposeReplyButton',
-            image: getChromeExtensionAssetsURL(
-              '/images/settings/prompts/quick-reply.png',
-            ),
-          },
-          {
-            label: t('settings:feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title'),
-            value: 'inputAssistantRefineDraftButton',
-            image: getChromeExtensionAssetsURL(
-              '/images/settings/prompts/edit-or-review-draft.png',
-            ),
-          },
-          {
-            label: t('settings:feature_card__prompts__writing_assistant__quick_compose_radio_title'),
-            value: 'inputAssistantComposeNewButton',
-            image: getChromeExtensionAssetsURL(
-              '/images/settings/prompts/quick-compose.png',
-            ),
-          },
-        ]}
+        options={radioCardOptions}
         maxWidth={372}
       />
 
@@ -248,30 +262,31 @@ const SettingPromptsWritingAssistantCard: FC = () => {
         />
         <SettingPromptsRestorer 
             onRestore={async (snapshot) => {
-            try {
-                setLoading(true)
-                const buttonSettings = snapshot.settings.buttonSettings
-                if (!buttonSettings) return
-                const { contextMenu } = buttonSettings[editButtonKey]
-                setOriginalTreeData(contextMenu)
-            } catch (e) {
-                console.error(e)
-            } finally {
-                setLoading(false)
-            }
+              if(editButtonKey) {
+                try {
+                    setLoading(true)
+                    const buttonSettings = snapshot.settings.buttonSettings
+                    if (!buttonSettings) return
+                    const { contextMenu } = buttonSettings[editButtonKey!]
+                    setOriginalTreeData(contextMenu)
+                } catch (e) {
+                    console.error(e)
+                } finally {
+                    setLoading(false)
+                }
+              }
             }}
         />
         </Stack>
         
         <SettingPromptsPositionSwitch
-        buttonKey={editButtonKey}
-        checked={position === 'end'}
-        label={t(
-            'settings:feature_card__prompts__place_my_own_prompts_switch',
-        )} 
-        sx={{
-            my: '16px'
-        }}
+          checked={position === 'end'}
+          label={t(
+              'settings:feature_card__prompts__place_my_own_prompts_switch',
+          )} 
+          sx={{
+              my: '16px'
+          }}
         />
         
         <Stack

@@ -7,9 +7,9 @@ import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, memo, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
-import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import {
   CONTEXT_MENU_ICONS,
   ContextMenuIcon,
@@ -19,20 +19,30 @@ import VisibilitySettingCard from '@/components/VisibilitySettingCard'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import ShortcutActionsEditor from '@/features/shortcuts/components/ShortcutsActionsEditor'
 import useShortcutEditorActions from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActions'
+import {
+  SettingPromptsEditButtonKeyAtom,
+  specialInputAssistantButtonKeys,
+} from '@/pages/settings/pages/prompts/store'
 import { SETTINGS_PAGE_CONTENT_WIDTH } from '@/pages/settings/pages/SettingsApp'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 const SettingPromptsUpdateFormModal: FC<{
   iconSetting?: boolean
-  settingsKey?: IChromeExtensionButtonSettingKey
   node: IContextMenuItem
   onSave?: (newNode: IContextMenuItem) => void
   onCancel?: () => void
   onDelete?: (id: string) => void
   open: boolean
-}> = ({ open, node, onSave, onCancel, onDelete, settingsKey, iconSetting }) => {
+}> = ({ open, node, onSave, onCancel, onDelete, iconSetting }) => {
   const { t } = useTranslation(['settings', 'common'])
   const { setActions, generateActions } = useShortcutEditorActions()
+  const [settingPromptsEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom,
+  )
+  const isEditingSpecialButtonKey =
+    settingPromptsEditButtonKey &&
+    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey)
+
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
   )
@@ -47,10 +57,21 @@ const SettingPromptsUpdateFormModal: FC<{
     if (editNode.data.type === 'group') {
       return editNode.text === ''
     } else if (editNode.data.type === 'shortcuts') {
-      return editNode.text === ''
+      let disabledSave = editNode.text === ''
+      if (isEditingSpecialButtonKey) {
+        disabledSave = Boolean(
+          disabledSave || !editNode?.data?.visibility?.whitelist?.length,
+        )
+      }
+      return disabledSave
     }
     return false
-  }, [isDisabled, editNode.text])
+  }, [
+    isDisabled,
+    settingPromptsEditButtonKey,
+    editNode.text,
+    editNode.data.visibility,
+  ])
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {
       return isDisabled
@@ -208,6 +229,9 @@ const SettingPromptsUpdateFormModal: FC<{
                 <Typography variant={'body1'}>
                   {t(
                     'settings:feature_card__prompts__edit_prompt__field_visibility__title',
+                  )}
+                  {isEditingSpecialButtonKey && (
+                    <span style={{ color: 'red' }}>*</span>
                   )}
                 </Typography>
               </Stack>

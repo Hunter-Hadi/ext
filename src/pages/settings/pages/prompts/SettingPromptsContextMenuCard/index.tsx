@@ -5,6 +5,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import groupBy from 'lodash-es/groupBy'
 import React, { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil';
 
 import { type IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
@@ -26,10 +27,9 @@ import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/
 import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
 import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store';
 
 import ContextMenuMockTextarea from './ContextMenuMockTextarea'
-
-const editButtonKey: IChromeExtensionButtonSettingKey = 'textSelectPopupButton'
 
 const saveTreeData = async (
   key: IChromeExtensionButtonSettingKey,
@@ -56,6 +56,7 @@ const saveTreeData = async (
 }
 
 const SettingPromptsContextMenuCard: FC = () => {
+  const [editButtonKey, setEditButtonKey] = useRecoilState(SettingPromptsEditButtonKeyAtom)
   const { syncLocalToServer } = useSyncSettingsChecker()
   const { t } = useTranslation(['settings'])
   const {
@@ -83,7 +84,7 @@ const SettingPromptsContextMenuCard: FC = () => {
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
   
-  const position = buttonSettings?.[editButtonKey].contextMenuPosition;
+  const position = editButtonKey ? buttonSettings?.[editButtonKey]?.contextMenuPosition : 'end';
   const currentConfirmNode = useMemo(() => {
     return originalTreeData.find((item) => item.id === confirmId)
   }, [confirmId, originalTreeData])
@@ -168,6 +169,13 @@ const SettingPromptsContextMenuCard: FC = () => {
   }
 
   useEffect(() => {
+    if (!['textSelectPopupButton'].includes(editButtonKey!)) {
+      setEditButtonKey('textSelectPopupButton')
+    }
+    return () => setEditButtonKey(null)
+  }, [])
+
+  useEffect(() => {
     let isDestroy = false
     if (editButtonKey) {
       const getList = async () => {
@@ -210,7 +218,7 @@ const SettingPromptsContextMenuCard: FC = () => {
       })
     }
     findSearchText(rootId)
-    if (loadedRef.current) {
+    if (loadedRef.current && editButtonKey) {
       saveTreeData(editButtonKey, originalTreeData).then(() => {
         console.log('saveTreeData success')
         syncLocalToServer()
@@ -270,24 +278,25 @@ const SettingPromptsContextMenuCard: FC = () => {
       />
       <SettingPromptsRestorer 
         onRestore={async (snapshot) => {
-          try {
-            setLoading(true)
-            setInputValue('')
-            const buttonSettings = snapshot.settings.buttonSettings
-            if (!buttonSettings) return
-            const { contextMenu } = buttonSettings[editButtonKey]
-            setOriginalTreeData(contextMenu)
-          } catch (e) {
-            console.error(e)
-          } finally {
-            setLoading(false)
+          if (editButtonKey) {
+            try {
+              setLoading(true)
+              setInputValue('')
+              const buttonSettings = snapshot.settings.buttonSettings
+              if (!buttonSettings) return
+              const { contextMenu } = buttonSettings[editButtonKey]
+              setOriginalTreeData(contextMenu)
+            } catch (e) {
+              console.error(e)
+            } finally {
+              setLoading(false)
+            }
           }
         }}
       />
     </Stack>
       
     <SettingPromptsPositionSwitch
-      buttonKey={editButtonKey}
       checked={position === 'end'}
       label={t(
         'settings:feature_card__prompts__place_my_own_prompts_switch',

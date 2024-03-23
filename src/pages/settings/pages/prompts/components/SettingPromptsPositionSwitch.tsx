@@ -1,27 +1,28 @@
 import FormControlLabel, { type FormControlLabelProps } from '@mui/material/FormControlLabel'
 import Switch from '@mui/material/Switch'
 import React, { type FC, memo } from 'react';
+import { useRecoilState } from 'recoil';
 
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
-import { IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/type';
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store';
 
-interface ISettingPromptsPositionSwitchProps extends Omit<FormControlLabelProps, 'control'> { 
-  buttonKey: IChromeExtensionButtonSettingKey;
+interface ISettingPromptsPositionSwitchProps extends Omit<FormControlLabelProps, 'control'> {
 }
 
-const SettingPromptsPositionSwitch: FC<ISettingPromptsPositionSwitchProps> = ({ buttonKey, onChange, ...restProps }) => {
+const SettingPromptsPositionSwitch: FC<ISettingPromptsPositionSwitchProps> = ({ onChange, ...restProps }) => {
   const {
     buttonSettings,
     updateButtonSettings,
   } = useChromeExtensionButtonSettings()
+  const [editButtonKey] = useRecoilState(SettingPromptsEditButtonKeyAtom)
   return <FormControlLabel
     control={<Switch />}
     onChange={async (event, checked) => {
-      if (buttonSettings?.[buttonKey]) {
+      if (editButtonKey && buttonSettings?.[editButtonKey]) {
         await updateButtonSettings(
-          buttonKey,
+          editButtonKey,
           {
-            ...buttonSettings[buttonKey],
+            ...buttonSettings[editButtonKey],
             contextMenuPosition: checked ? 'end' : 'start',
           },
           true,

@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
-import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import { parametersParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -57,7 +57,7 @@ export class ActionChatMessage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

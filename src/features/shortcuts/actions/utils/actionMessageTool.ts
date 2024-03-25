@@ -5,7 +5,7 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
  * @since 2024-03-20
  * @description 停止action的message 消息
  */
-export const stopActionMessage = async (params: {
+export const stopActionMessageStatus = async (params: {
   engine: IShortcutEngineExternalEngine
 }) => {
   try {
@@ -15,7 +15,7 @@ export const stopActionMessage = async (params: {
       const conversationUpdatedDate = +new Date(currentConversation.updated_at)
       let lastUpdateMessageId = currentConversation.messages?.[0]?.messageId
       if (currentConversation.messages.length > 1) {
-        //大于1，利用时间进行排序，一般大于1只有ask-chatgpt,并不会过多的进入进行该sort算法浪费资源
+        //大于1，利用时间进行排序，一般大于1的action只有ask-chatgpt(ask-chatgpt 自己有stop),所以并不会过多的进入该sort算法浪费资源
         lastUpdateMessageId = currentConversation.messages.sort((a, b) => {
           if (a.updated_at === undefined) return 1
           if (b.updated_at === undefined) return -1
@@ -53,6 +53,6 @@ export const stopActionMessage = async (params: {
       }
     }
   } catch (e) {
-    console.log('stopActionMessage error:', e)
+    console.log('stopActionMessageStatus error:', e)
   }
 }

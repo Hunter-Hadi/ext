@@ -4,7 +4,7 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
-import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -46,7 +46,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

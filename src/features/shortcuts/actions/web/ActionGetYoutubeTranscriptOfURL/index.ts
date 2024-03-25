@@ -4,7 +4,7 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
-import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -66,7 +66,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

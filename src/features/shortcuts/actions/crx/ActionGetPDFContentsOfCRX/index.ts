@@ -4,7 +4,7 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
-import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -90,7 +90,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

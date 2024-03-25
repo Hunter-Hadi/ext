@@ -1,5 +1,5 @@
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
-import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import {
   pushOutputToChat,
@@ -140,7 +140,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

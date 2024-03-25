@@ -461,7 +461,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     console.log('simply chapterCount 1', chapterCount)
 
     // 检查是否有余数且余数大于设定的阈值（2000个tokens）
-    if (systemPromptTokens % currentTokens > 500 || chapterCount === 0) {
+    if (systemPromptTokens % currentTokens > 200 || chapterCount === 0) {
       chapterCount += 1 // 如果余数大于2000，则章节数进1
     }
     console.log('simply chapterCount 2', chapterCount)

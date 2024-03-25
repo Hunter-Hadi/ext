@@ -87,7 +87,7 @@ const SettingPromptsPageHeader: FC<ISettingPromptsPageHeaderProps> = ({
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant',
           )}
         />
-        <Tab
+        {/* <Tab
           value={'SUMMARY'}
           label={t(
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__summary',
@@ -98,7 +98,7 @@ const SettingPromptsPageHeader: FC<ISettingPromptsPageHeaderProps> = ({
           label={t(
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__search',
           )}
-        />
+        /> */}
       </CustomTabs>
     </Box>
   )

@@ -1,3 +1,4 @@
+import { isArray } from 'lodash-es'
 import sanitizeHtml from 'sanitize-html'
 import sanitize from 'sanitize-html'
 
@@ -14,8 +15,25 @@ import {
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
+import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import { getOriginalFileURL } from '@/utils/dataHelper/websiteHelper'
+export const formatSecondsAsTimestamp = (seconds: string) => {
+  // 将字符串转换为浮点数并取整
+  const totalSeconds = Math.round(parseFloat(seconds))
+  const hours = Math.floor(totalSeconds / 3600)
+  const minutes = Math.floor((totalSeconds - hours * 3600) / 60)
+  const sec = totalSeconds - hours * 3600 - minutes * 60
 
+  // 使用padStart在个位数前添加0，格式化字符串为两位数
+  const hoursString = hours.toString().padStart(2, '0')
+  const minutesString = minutes.toString().padStart(2, '0')
+  const secondsString = sec.toString().padStart(2, '0')
+  if (hoursString !== '00') {
+    return `${hoursString}:${minutesString}:${secondsString}`
+  } else {
+    return `${minutesString}:${secondsString}`
+  }
+}
 /**
  * 格式化AI消息的内容
  * @param message
@@ -31,6 +49,8 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
           break
         case 'summary':
           {
+            formatText =
+              formatTimestampedSummaryAIMessageContent(message) || formatText //transcripts 数据 转为text
             // 添加标题
             if (
               originalMessage.metadata?.sourceWebpage?.title &&
@@ -42,7 +62,9 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
             }
             // 添加Sources
             if (originalMessage.metadata?.sourceWebpage?.url) {
-              formatText = `${formatText}\n\nSource:\n${getOriginalFileURL(originalMessage.metadata?.sourceWebpage?.url)}`
+              formatText = `${formatText}\n\nSource:\n${getOriginalFileURL(
+                originalMessage.metadata?.sourceWebpage?.url,
+              )}`
             }
             // 替换 ####Title => Title:
             formatText = formatText.replace(/####\s?([^\n]+)/g, '$1:')
@@ -90,6 +112,50 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
     }
   } catch (e) {
     return message.text
+  }
+}
+/**
+ * 格式化AI消息的内容
+ * @param message
+ */
+export const formatTimestampedSummaryAIMessageContent = (
+  message: IAIResponseMessage,
+) => {
+  try {
+    if (
+      message.originalMessage?.metadata?.title?.title === 'Timestamped summary'
+    ) {
+      if (isArray(message.originalMessage?.metadata?.deepDive)) {
+        const transcripts = message.originalMessage?.metadata?.deepDive?.filter(
+          (item) =>
+            item.type === 'timestampedSummary' || item.type === 'transcript',
+        )?.[0]?.value
+        if (isArray(transcripts)) {
+          const markdownTexts = (transcripts as TranscriptResponse[])
+            .map((item) => {
+              const itemText = `- ${formatSecondsAsTimestamp(item.start)}: ${
+                item.text
+              }`
+              const childrenText = item.children
+                ?.map(
+                  (child) =>
+                    `    - ${formatSecondsAsTimestamp(item.start)}: ${
+                      child.text
+                    }`,
+                )
+                .join('\n')
+              return `${itemText}\n${childrenText}`
+            })
+            .join('\n\n')
+          return markdownTexts
+        } else {
+          return false
+        }
+      }
+      return false
+    }
+  } catch (e) {
+    return false
   }
 }
 export const formatAIMessageContentForClipboard = (
@@ -307,7 +373,7 @@ export const formatMessagesToLiteHistory = async (
       if (needSystemOrThirdMessage) {
         liteHistory.push(
           `${message.type === 'system' ? `System: ` : `Third: `}` +
-          formatThirdOrSystemMessageContent(message as IThirdChatMessage),
+            formatThirdOrSystemMessageContent(message as IThirdChatMessage),
         )
       }
     }

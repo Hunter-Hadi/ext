@@ -77,7 +77,7 @@ const SidebarCopyButton: FC<{
       setDelayIsHover(false)
       clearTimeout(copySuccessTimer.current)
       setCopyButtonKey('')
-      return () => { }
+      return () => {}
     }
   }, [isHover])
   return (

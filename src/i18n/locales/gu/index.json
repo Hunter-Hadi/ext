@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "માન્યતાને ક્લિક કરીને ફક્ત જ્યારે એઆઈ પ્રતિસાદ બતાવો.",
     "feature_card__appearance__field_summarize_button__title": "સંક્ષેપ બટન",
     "feature_card__prompts__edit_prompt__field_advance__title": "એડવાન્સ",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "આઉટપુટ ભાષા અને ટોન અને લેખન શૈલી"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "આઉટપુટ ભાષા અને ટોન અને લેખન શૈલી",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "સંદર્ભ મેન્યુ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "લેખન સહાયક",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "સારાંશ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "શોધ",
+    "feature_card__prompts__new_prompt__title": "નવી પ્રોમ્પ્ટ",
+    "feature_card__prompts__new_prompt_group__title": "નવી પ્રોમ્પ્ટ ગ્રૂપ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ઝડપી જવાબ આપો",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ડ્રાફ્ટ સંપાદિત અથવા સમીક્ષા કરો",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ઝડપી રચના કરો"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

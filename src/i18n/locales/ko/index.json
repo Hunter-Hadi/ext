@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "버튼을 수동으로 클릭할 때만 AI 응답 표시",
     "feature_card__appearance__field_summarize_button__title": "요약 버튼",
     "feature_card__prompts__edit_prompt__field_advance__title": "진행",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "출력 언어 및 톤 & 작성 스타일"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "출력 언어 및 톤 & 작성 스타일",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "컨텍스트 메뉴",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "글쓰기 도우미",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "요약",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "검색",
+    "feature_card__prompts__new_prompt__title": "새로운 프롬프트",
+    "feature_card__prompts__new_prompt_group__title": "새로운 프롬프트 그룹",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "빠른 답장",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "드래프트 편집 또는 검토",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "빠른 작성"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",

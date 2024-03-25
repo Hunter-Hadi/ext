@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "ボタンをクリックしたときにのみAIの回答を表示します。",
     "feature_card__appearance__field_summarize_button__title": "要約ボタン",
     "feature_card__prompts__edit_prompt__field_advance__title": "進む",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "出力言語＆トーン＆文章スタイル"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "出力言語＆トーン＆文章スタイル",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "コンテキストメニュー",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "ライティングアシスタント",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "サマリー",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "検索",
+    "feature_card__prompts__new_prompt__title": "新しいプロンプト",
+    "feature_card__prompts__new_prompt_group__title": "新しいプロンプトグループ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "クイックリプライ",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ドラフトの編集またはレビュー",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "クイックコンポーズ"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",

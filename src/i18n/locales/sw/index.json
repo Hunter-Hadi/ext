@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Onyesha majibu ya AI tu wakati unapobofya kitufe kwa mkono.",
     "feature_card__appearance__field_summarize_button__title": "Kifungo cha Muhtasari",
     "feature_card__prompts__edit_prompt__field_advance__title": "Kuendelea",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Lugha ya Matokeo & Mtindo wa Kuandika"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Lugha ya Matokeo & Mtindo wa Kuandika",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menyu ya muktadha",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Msaidizi wa kuandika",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Muhtasari",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Tafuta",
+    "feature_card__prompts__new_prompt__title": "Fungua ombi jipya",
+    "feature_card__prompts__new_prompt_group__title": "Kikundi cha maombi mapya",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Jibu haraka",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Hariri au hakiki rasimu",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Andika haraka"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

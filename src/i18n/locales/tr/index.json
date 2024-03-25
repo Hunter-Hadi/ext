@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Yalnızca manuel olarak bir düğmeye tıkladığınızda AI yanıtını göster.",
     "feature_card__appearance__field_summarize_button__title": "Özetle düğmesi",
     "feature_card__prompts__edit_prompt__field_advance__title": "Gelişmiş",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Çıktı dili ve Tonu ve Yazım stili"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Çıktı dili ve Tonu ve Yazım stili",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Bağlam menüsü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Yazma yardımcısı",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Özet",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Arama",
+    "feature_card__prompts__new_prompt__title": "Yeni ipucu",
+    "feature_card__prompts__new_prompt_group__title": "Yeni ipucu grubu",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hızlı yanıt",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Taslak düzenle veya gözden geçir",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hızlı oluştur"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

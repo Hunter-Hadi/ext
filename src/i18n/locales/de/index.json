@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Nur bei manueller Betätigung einen KI-Antwort anzeigen.",
     "feature_card__appearance__field_summarize_button__title": "Zusammenfassungsschaltfläche",
     "feature_card__prompts__edit_prompt__field_advance__title": "Voranschreiten",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ausgabesprache & Ton & Schreibstil"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ausgabesprache & Ton & Schreibstil",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextmenü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Schreibassistent",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Zusammenfassung",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Suche",
+    "feature_card__prompts__new_prompt__title": "Neue Aufforderung",
+    "feature_card__prompts__new_prompt_group__title": "Neue Aufforderungsgruppe",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Schnelle Antwort",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Entwurf bearbeiten oder überprüfen",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Schnell verfassen"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",

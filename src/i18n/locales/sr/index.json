@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Prikazuje odgovor veštačke inteligencije samo kada ručno kliknete dugme.",
     "feature_card__appearance__field_summarize_button__title": "Dugme za rezime",
     "feature_card__prompts__edit_prompt__field_advance__title": "Napredak",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Jezik izlaza i ton i stil pisanja"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Jezik izlaza i ton i stil pisanja",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstualni meni",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Pomoćnik za pisanje",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Sažetak",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Pretraga",
+    "feature_card__prompts__new_prompt__title": "Novi podsticaj",
+    "feature_card__prompts__new_prompt_group__title": "Nova grupa podsticaja",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Brzi odgovor",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Uredi ili pregledaj nacrt",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Brzo sastavi"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",

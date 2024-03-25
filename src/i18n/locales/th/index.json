@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "แสดงคำตอบของ AI เฉพาะเมื่อคุณคลิกปุ่มด้วยตนเอง",
     "feature_card__appearance__field_summarize_button__title": "ปุ่มสรุป",
     "feature_card__prompts__edit_prompt__field_advance__title": "ขั้นสูง",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ภาษาผลลัพธ์และทัศนคติและรูปแบบการเขียน"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ภาษาผลลัพธ์และทัศนคติและรูปแบบการเขียน",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "เมนูคอนเท็กซ์",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "ผู้ช่วยเขียน",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "สรุป",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "ค้นหา",
+    "feature_card__prompts__new_prompt__title": "แบบสอบถามใหม่",
+    "feature_card__prompts__new_prompt_group__title": "กลุ่มแบบสอบถามใหม่",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ตอบด่วน",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "แก้ไขหรือตรวจสอบร่าง",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "เขียนด่วน"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži odgovor AI samo, ko ročno kliknete gumb.",
     "feature_card__appearance__field_summarize_button__title": "Gumb za povzetek",
     "feature_card__prompts__edit_prompt__field_advance__title": "Napredek",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izhodni jezik in ton ter slog pisanja"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izhodni jezik in ton ter slog pisanja",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstni meni",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Pomočnik pri pisanju",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Povzetek",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Iskanje",
+    "feature_card__prompts__new_prompt__title": "Nov predlog",
+    "feature_card__prompts__new_prompt_group__title": "Nova skupina predlogov",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hitri odgovor",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Uredi ali pregledaj osnutek",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hitro sestavi"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

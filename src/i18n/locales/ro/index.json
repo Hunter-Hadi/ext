@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Afișați răspunsul AI numai atunci când faceți clic manual pe un buton.",
     "feature_card__appearance__field_summarize_button__title": "Buton de rezumat",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avans",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Limba de ieșire și tonul și stilul de scriere"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Limba de ieșire și tonul și stilul de scriere",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Meniu contextual",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Asistent de scriere",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Rezumat",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Căutare",
+    "feature_card__prompts__new_prompt__title": "Prompt nou",
+    "feature_card__prompts__new_prompt_group__title": "Grup prompt nou",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Răspuns rapid",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editare sau revizuire proiect",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Compunere rapidă"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

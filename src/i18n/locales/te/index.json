@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "మీరు మాన్యువల్లో బటన్ నొక్కి మాత్రమే AI సమాధానాన్ని ప్రదర్శించండి.",
     "feature_card__appearance__field_summarize_button__title": "సంగ్రహించు బటన్",
     "feature_card__prompts__edit_prompt__field_advance__title": "ముందుకు వెళ్లండి",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ఔట్పుట్ భాష & శైలి & రచన శైలి"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ఔట్పుట్ భాష & శైలి & రచన శైలి",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "కంటెక్స్ట్ మెనూ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "రచన సహాయకుడు",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "సారాంశం",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "శోధన",
+    "feature_card__prompts__new_prompt__title": "కొత్త ప్రాంప్ట్",
+    "feature_card__prompts__new_prompt_group__title": "కొత్త ప్రాంప్ట్ గ్రూప్",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "త్వరలో జవాబు ఇవ్వండి",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "డ్రాఫ్ట్ను సవరించండి లేదా సమీక్షించండి",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "త్వరలో రచన రచించండి"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",

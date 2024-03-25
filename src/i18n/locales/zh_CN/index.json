@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "仅当您手动点击按钮时才显示AI回复。",
     "feature_card__appearance__field_summarize_button__title": "摘要按钮",
     "feature_card__prompts__edit_prompt__field_advance__title": "提前",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "输出语言和语气和写作风格"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "输出语言和语气和写作风格",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "上下文菜单",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "写作助手",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "摘要",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "搜索",
+    "feature_card__prompts__new_prompt__title": "新提示",
+    "feature_card__prompts__new_prompt_group__title": "新提示组",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "快速回复",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "编辑或审核草稿",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "快速撰写"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",

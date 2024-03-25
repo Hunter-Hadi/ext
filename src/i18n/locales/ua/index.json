@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Відображати відповідь ШІ лише при натисканні кнопки вручну.",
     "feature_card__appearance__field_summarize_button__title": "Кнопка підсумування",
     "feature_card__prompts__edit_prompt__field_advance__title": "Розширений",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Мова виводу та стиль написання"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Мова виводу та стиль написання",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню контексту",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Помічник письма",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Зведення",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Пошук",
+    "feature_card__prompts__new_prompt__title": "Новий підказка",
+    "feature_card__prompts__new_prompt_group__title": "Нова група підказок",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Швидка відповідь",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редагувати або переглянути чернетку",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Швидке створення"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

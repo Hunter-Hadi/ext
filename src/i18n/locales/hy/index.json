@@ -233,7 +233,16 @@
     "feature__search_with_ai__trigger_mode__manual__name": "Ձևանմուշ",
     "feature__search_with_ai__trigger_mode__manual__desc": "Ցուցադրել AI պատասխանը, միայն երբ ձեզ համար կտտացված կոճակը սեղմեք:",
     "feature_card__prompts__edit_prompt__field_advance__title": "Առաջարկում",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ելքի լեզուն և տեսակը և գրանցման ոլորտը"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ելքի լեզուն և տեսակը և գրանցման ոլորտը",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Հատկանիշատեր",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Գրադարան",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Հատուկություն",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Որոնում",
+    "feature_card__prompts__new_prompt__title": "Նոր հարցում",
+    "feature_card__prompts__new_prompt_group__title": "Նոր հարցումների խումբ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Արագ պատասխան",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Խմբագրել կամ վերանայել սևագրությունը",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Արագ կազմակերպում"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",

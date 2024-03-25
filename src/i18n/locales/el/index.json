@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Εμφάνιση απάντησης της Τεχνητής Νοημοσύνης μόνο όταν κάνετε κλικ σε ένα κουμπί χειροκίνητα.",
     "feature_card__appearance__field_summarize_button__title": "Κουμπί περίληψης",
     "feature_card__prompts__edit_prompt__field_advance__title": "Προχωρημένες ρυθμίσεις",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Γλώσσα εξόδου και τόνος και στυλ γραφής"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Γλώσσα εξόδου και τόνος και στυλ γραφής",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Μενού περιβάλλοντος",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Βοηθός συγγραφής",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Περίληψη",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Αναζήτηση",
+    "feature_card__prompts__new_prompt__title": "Νέα υπόδειξη",
+    "feature_card__prompts__new_prompt_group__title": "Νέα ομάδα υποδείξεων",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Γρήγορη απάντηση",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Επεξεργασία ή αναθεώρηση προσχεδίου",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Γρήγορη σύνθεση"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

@@ -64,6 +64,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      const youtubeVideoTitle = params.CURRENT_WEBPAGE_TITLE || ''
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''
@@ -99,7 +100,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       if (
         chaptersInfoList &&
         chaptersInfoList.length !== 0 &&
-        transcriptsTokens > 2000
+        transcriptsTokens > 1000 //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试
       ) {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] =
@@ -111,6 +112,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             conversationId,
             messageId,
             chapterTextList,
+            youtubeVideoTitle,
           )
           this.output = JSON.stringify(chapterList)
         } else {
@@ -127,6 +129,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             conversationId,
             messageId,
             chapterTextList,
+            youtubeVideoTitle,
           )
           this.output = JSON.stringify(chapterList)
         } else {
@@ -158,6 +161,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     conversationId: string,
     messageId: string,
     chapterTextList: TranscriptTimestampedTextType[],
+    youtubeVideoTitle: string,
   ) {
     try {
       const transcriptViewDataList: TranscriptTimestampedParamType[] =
@@ -167,6 +171,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         if (this.isStop) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
+          youtubeVideoTitle,
           chapterTextList[index],
         ) //请求GPT返回json
         const endTime = Date.now() // 记录请求结束时间
@@ -198,11 +203,14 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       return []
     }
   }
-  async requestGptGetTranscriptJson(chapterTextList: {
-    text: string
-    start: string
-    tokens?: number
-  }) {
+  async requestGptGetTranscriptJson(
+    youtubeVideoTitle: string,
+    chapterTextList: {
+      text: string
+      start: string
+      tokens?: number
+    },
+  ) {
     const maxRetries = 2 // 最大尝试次数
     let retries = 0 // 当前尝试次数
     // 语言
@@ -242,6 +250,8 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     `
     const newPrompt = `
     Ignore all previous instructions.${getHaveLanguagePrompt.data}
+    [VIDEO TRANSCRIPT TITLE]:
+    ${youtubeVideoTitle}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
 
@@ -443,9 +453,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const systemPromptTokens = getTextTokens(allText || '').length
     const allDuration = dataArray[dataArray.length - 1].start
     if (systemPromptTokens < 2000) {
-      currentTokens = 600
+      currentTokens = 500
     } else if (systemPromptTokens < 4000) {
-      currentTokens = 800
+      currentTokens = 600
     } else if (systemPromptTokens < 5000) {
       currentTokens = 1000
     } else if (systemPromptTokens < 10000) {

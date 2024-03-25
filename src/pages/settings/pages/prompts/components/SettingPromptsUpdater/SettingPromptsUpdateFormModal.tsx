@@ -35,7 +35,7 @@ const SettingPromptsUpdateFormModal: FC<{
   open: boolean
 }> = ({ open, node, onSave, onCancel, onDelete, iconSetting }) => {
   const { t } = useTranslation(['settings', 'common'])
-  const { setActions, generateActions } = useShortcutEditorActions()
+  const { editHTML, setActions, generateActions } = useShortcutEditorActions()
   const [settingPromptsEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
   )
@@ -54,23 +54,22 @@ const SettingPromptsUpdateFormModal: FC<{
     if (isDisabled) {
       return true
     }
-    if (editNode.data.type === 'group') {
-      return editNode.text === ''
-    } else if (editNode.data.type === 'shortcuts') {
-      let disabledSave = editNode.text === ''
+    let disabledSave = editNode.text === ''
+    if (!disabledSave && editNode.data.type === 'shortcuts') {
+      disabledSave = disabledSave || editHTML.trim() === ''
       if (isEditingSpecialButtonKey) {
         disabledSave = Boolean(
           disabledSave || !editNode?.data?.visibility?.whitelist?.length,
         )
       }
-      return disabledSave
     }
-    return false
+    return disabledSave
   }, [
     isDisabled,
     settingPromptsEditButtonKey,
     editNode.text,
     editNode.data.visibility,
+    editHTML,
   ])
   const modalTitle = useMemo(() => {
     if (editNode.data.type === 'group') {

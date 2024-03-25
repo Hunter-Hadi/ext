@@ -35,13 +35,11 @@ class ArkoseTokenIframeGenerator {
     this.enforcement = undefined
     this.pendingPromises = []
     if (this.model === 'gpt_3_5') {
-      (window as any).useArkoseSetupEnforcementgpt35 = this.useArkoseSetupEnforcement.bind(
-        this,
-      )
+      ;(window as any).useArkoseSetupEnforcementgpt35 =
+        this.useArkoseSetupEnforcement.bind(this)
     } else if (this.model === 'gpt_4') {
-      (window as any).useArkoseSetupEnforcementgpt4 = this.useArkoseSetupEnforcement.bind(
-        this,
-      )
+      ;(window as any)['useArkoseSetupEnforcementchatgpt-paid'] =
+        this.useArkoseSetupEnforcement.bind(this)
     }
     this.injectScript()
   }
@@ -51,6 +49,9 @@ class ArkoseTokenIframeGenerator {
     console.debug(`[${this.model}] bing config`)
     enforcement.setConfig({
       onCompleted: (r) => {
+        if (this.model === 'gpt_3_5') {
+          return
+        }
         console.debug(`[${this.model}] enforcement.onCompleted`, r)
         if (this.pendingPromises.length === 0) {
           console.debug(`[${this.model}] enforcement.save Cached`)
@@ -81,12 +82,15 @@ class ArkoseTokenIframeGenerator {
   injectScript() {
     const script = document.createElement('script')
     if (this.model === 'gpt_3_5') {
-      script.src = this.apiLink
-      script.setAttribute('data-callback', 'useArkoseSetupEnforcementgpt35')
-      script.setAttribute('data-status', 'loading')
+      // script.src = this.apiLink
+      // script.setAttribute('data-callback', 'useArkoseSetupEnforcementchatgpt-paid')
+      // script.setAttribute('data-status', 'loading')
     } else if (this.model === 'gpt_4') {
       script.src = this.apiLink
-      script.setAttribute('data-callback', 'useArkoseSetupEnforcementgpt4')
+      script.setAttribute(
+        'data-callback',
+        'useArkoseSetupEnforcementchatgpt-paid',
+      )
       script.setAttribute('data-status', 'loading')
     }
     document.body.appendChild(script)
@@ -117,7 +121,7 @@ const gpt4ScriptLink = document
 if (gpt35ScriptLink && gpt4ScriptLink) {
   const GPT35ArkoseTokenIframeGenerator = new ArkoseTokenIframeGenerator(
     'gpt_3_5',
-    gpt35ScriptLink,
+    '',
   )
   const GPT4ArkoseTokenIframeGenerator = new ArkoseTokenIframeGenerator(
     'gpt_4',

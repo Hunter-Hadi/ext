@@ -10,7 +10,8 @@ export const stopActionMessage = async (params: {
   engine: IShortcutEngineExternalEngine
 }) => {
   try {
-    const currentConversation = await params.engine.clientConversationEngine?.getCurrentConversation()
+    const currentConversation =
+      await params.engine.clientConversationEngine?.getCurrentConversation()
     if (currentConversation && currentConversation.id) {
       const conversationUpdatedDate = +new Date(currentConversation.updated_at)
       let lastUpdateMessageId = currentConversation.messages?.[0]?.messageId
@@ -43,16 +44,6 @@ export const stopActionMessage = async (params: {
                 metadata: {
                   sources: {
                     status: 'complete',
-                  },
-                  copilot: {
-                    steps: [
-                      {
-                        title: 'Analyzing video',
-                        status: 'complete',
-                        icon: 'SmartToy',
-                        value: '',
-                      },
-                    ],
                   },
                   isComplete: true,
                 },

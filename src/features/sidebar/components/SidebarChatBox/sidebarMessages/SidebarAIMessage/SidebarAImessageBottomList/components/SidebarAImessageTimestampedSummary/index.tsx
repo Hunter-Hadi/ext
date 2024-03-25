@@ -1,5 +1,5 @@
 import { Button, Skeleton, Stack, Typography } from '@mui/material'
-import { FC, useCallback, useEffect, useMemo, useState } from 'react'
+import { FC, useCallback, useMemo, useState } from 'react'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -7,25 +7,24 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import globalSnackbar from '@/utils/globalSnackbar'
 
-interface ITranscriptView {
+interface ISidebarAImessageTimestampedSummary {
   transcriptList: TranscriptResponse[]
   loading: boolean
 }
-const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
+const SidebarAImessageTimestampedSummary: FC<
+  ISidebarAImessageTimestampedSummary
+> = ({ transcriptList, loading }) => {
   const { t } = useTranslation(['client'])
   const [openIdsList, setOpenIdsList] = useState<{ [key in string]: boolean }>(
     {},
   )
-  const transcriptLoadingLength = useMemo(() => {
+  const transcriptLoadingsLength = useMemo(() => {
     return transcriptList.filter((item) => item.status === 'loading').length
   }, [transcriptList])
-  const transcriptIsError = useMemo(() => {
+  const transcriptStatusIsError = useMemo(() => {
     return transcriptList.filter((item) => item.status === 'error').length > 0
   }, [transcriptList])
-  useEffect(() => {
-    console.log('simply transcriptList ------', transcriptList, loading)
-  }, [transcriptList, loading])
-  const clickLinkUrl = (time: string) => {
+  const clickYoutubeJumpTimestamp = (time: string) => {
     if (time) {
       try {
         const isAdvertisingTime = document.querySelector(
@@ -100,7 +99,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
       return `${minutesString}:${secondsString}`
     }
   }
-  const onSetIdsList = (id: string) => {
+  const onSetOpenIdsList = (id: string) => {
     openIdsList[id] = !openIdsList[id]
     setOpenIdsList({ ...openIdsList })
   }
@@ -120,7 +119,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                 key={index}
                 sx={{ marginTop: '15px' }}
                 onClick={() =>
-                  transcriptItem.id && onSetIdsList(transcriptItem.id)
+                  transcriptItem.id && onSetOpenIdsList(transcriptItem.id)
                 }
               >
                 <Button
@@ -130,7 +129,9 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                   }}
                   variant="contained"
                   size="small"
-                  onClick={() => clickLinkUrl(transcriptItem.start)}
+                  onClick={() =>
+                    clickYoutubeJumpTimestamp(transcriptItem.start)
+                  }
                 >
                   {formatSecondsAsTimestamp(transcriptItem.start)}
                 </Button>
@@ -185,7 +186,9 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                         minWidth: '30px',
                       }}
                       size="small"
-                      onClick={() => clickLinkUrl(transcriptChildren.start)}
+                      onClick={() =>
+                        clickYoutubeJumpTimestamp(transcriptChildren.start)
+                      }
                     >
                       {formatSecondsAsTimestamp(transcriptChildren.start)}
                     </Button>
@@ -193,7 +196,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
                       fontSize={15}
                       color="text.secondary"
                       onClick={() =>
-                        transcriptItem.id && onSetIdsList(transcriptItem.id)
+                        transcriptItem.id && onSetOpenIdsList(transcriptItem.id)
                       }
                       sx={{
                         p: 0,
@@ -230,12 +233,12 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
         </Typography>
       )}
       {TranscriptListView()}
-      {!transcriptIsError &&
-        transcriptLoadingLength > 0 &&
+      {!transcriptStatusIsError &&
+        transcriptLoadingsLength > 0 &&
         Array.from(
           {
             length:
-              transcriptLoadingLength >= 10 ? 10 : transcriptLoadingLength,
+              transcriptLoadingsLength >= 10 ? 10 : transcriptLoadingsLength,
           },
           (_, index) => (
             <Skeleton
@@ -247,7 +250,7 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
             />
           ),
         )}
-      {transcriptIsError && (
+      {transcriptStatusIsError && (
         <Typography
           fontSize={16}
           color="error"
@@ -263,4 +266,4 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
     </div>
   )
 }
-export default TranscriptView
+export default SidebarAImessageTimestampedSummary

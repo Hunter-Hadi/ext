@@ -3,14 +3,17 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
-import { stopActionMessage } from '../../common'
-import { TranscriptResponse, YoutubeTranscript } from './YoutubeTranscript'
+import { stopActionMessage } from '../../../common'
+import {
+  TranscriptResponse,
+  YoutubeTranscript,
+} from '../../ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 
 /**
  * @since 2024-03-17
  * @description youtube拿取时间文本TRANSCRIPT数据
  */
-export class ActionYoutubeGetTranscript extends Action {
+export class ActionGetYoutubeSocialMediaTranscripts extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT'
   constructor(
     id: string,
@@ -20,13 +23,8 @@ export class ActionYoutubeGetTranscript extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute(
-    params: ActionParameters,
-    engine: IShortcutEngineExternalEngine,
-  ) {
-    console.log('simply params', params.LAST_ACTION_OUTPUT, engine)
+  async execute() {
     try {
-      console.log('simply ', this.parameters.VariableName)
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''

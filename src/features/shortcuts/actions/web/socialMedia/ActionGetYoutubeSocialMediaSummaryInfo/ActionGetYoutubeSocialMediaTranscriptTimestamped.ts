@@ -4,6 +4,12 @@ import { v4 as uuidV4 } from 'uuid'
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
+import { stopActionMessage } from '@/features/shortcuts/actions/common'
+import {
+  TranscriptResponse,
+  YoutubeTranscript,
+} from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import { withLoadingDecorators } from '@/features/shortcuts/decorators'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
@@ -12,10 +18,6 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
-
-import generatePromptAdditionalText from '../../chat/ActionAskChatGPT/generatePromptAdditionalText'
-import { stopActionMessage } from '../../common'
-import { TranscriptResponse, YoutubeTranscript } from './YoutubeTranscript'
 
 type TranscriptTimestampedType = {
   title: string
@@ -42,7 +44,7 @@ type TranscriptTimestampedParamType = {
  * @since 2024-03-17
  * @description youtube拿取时间文本TRANSCRIPT数据进行TIMESTAMPED
  */
-export class ActionYoutubeGetTranscriptTimestamped extends Action {
+export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
   maxChapters = 20
   isStop = false
@@ -102,7 +104,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersInfoList, transcripts)
-        console.log('simply chapterTextList --', chapterTextList)
+        console.log('simply chapterTextList look tokens --', chapterTextList)
 
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
@@ -119,7 +121,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         const chaptersList = this.createChapters(transcripts)
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersList, transcripts)
-        console.log('simply chapterTextList --', chapterTextList)
+        console.log('simply chapterTextList look tokens --', chapterTextList)
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
@@ -235,11 +237,12 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       this.abortTaskIds.push(currentAbortTaskId)
       if (this.isStop) return false
       try {
+        // (chapterTextList.tokens || 0) > 1000 * 15
+        // ? 'gpt-3.5-turbo-1106'
+        // : 'gpt-3.5-turbo-1106'
         const askData = await clientAskMaxAIChatProvider(
           'OPENAI_API',
-          (chapterTextList.tokens || 0) > 1000 * 15
-            ? 'gpt-4-0125-preview'
-            : 'gpt-3.5-turbo-1106', //大于16k采用GPT4.0
+          'gpt-3.5-turbo-1106',
           {
             chat_history: [
               {

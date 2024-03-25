@@ -3,13 +3,13 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
-import { stopActionMessage } from '../../common'
+import { stopActionMessage } from '../../../common'
 
 /**
  * @since 2024-03-15
  * @description youtube拿取评论数据,需要根据这个class判断走if逻辑, 该class是否可优化掉
  */
-export class ActionYoutubeGetComments extends Action {
+export class ActionGetYoutubeSocialMediaComments extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_COMMENTS'
   constructor(
     id: string,

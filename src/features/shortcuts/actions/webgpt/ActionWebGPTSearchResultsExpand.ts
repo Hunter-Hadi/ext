@@ -66,9 +66,8 @@ export class ActionWebGPTSearchResultsExpand extends Action {
         this.parameters.SummarizeActionType || 'NO_SUMMARIZE'
       // 需要用来总结的prompt
       const summarizePrompt = this.parameters.template || ''
-      const searchResults: ICrawlingSearchResult[] = JSON.parse(
-        searchResultJson,
-      )
+      const searchResults: ICrawlingSearchResult[] =
+        JSON.parse(searchResultJson)
       let template = ``
       const addActions: ISetActionsType = []
       if (summarizeType === 'NO_SUMMARIZE') {
@@ -119,10 +118,11 @@ export class ActionWebGPTSearchResultsExpand extends Action {
                 searchResult.url,
               )
               if (youtubeVideoId) {
-                const postContextData = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
-                  youtubeVideoId,
-                  abortTaskId,
-                )
+                const postContextData =
+                  await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
+                    youtubeVideoId,
+                    abortTaskId,
+                  )
                 if (this.isTaskAbort(abortTaskId)) {
                   // 如果abort, 返回 fallbackData
                   return fallbackData

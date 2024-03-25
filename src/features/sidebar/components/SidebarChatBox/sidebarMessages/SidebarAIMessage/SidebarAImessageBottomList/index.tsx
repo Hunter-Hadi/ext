@@ -8,18 +8,19 @@ import { IAIResponseOriginalMessageMetaDeep } from '@/features/chatgpt/types'
 import { messageListContainerId } from '../../../SidebarChatBoxMessageListContainer'
 import { MetadataTitleRender } from '..'
 import { HeightUpdateScrolling } from '../HeightUpdateScrolling'
-import TranscriptView from './components/SidebarTimestampedSummary'
+import TranscriptView from './components/SidebarAImessageTimestampedSummary'
 
-interface IDeepDiveVIew {
+interface ISidebarAImessageBottomVIew {
   data:
     | IAIResponseOriginalMessageMetaDeep
     | IAIResponseOriginalMessageMetaDeep[]
   isDarkMode?: boolean
   loading: boolean
 }
-//DeepDiveVIew 名字需改变
-const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
-  const deepDiveList = useMemo(() => {
+const SidebarAImessageBottomList: FC<ISidebarAImessageBottomVIew> = (props) => {
+  const sidebarAIMessageBottomList = useMemo(() => {
+    //props.data 可以是字符串 或 数组
+    //目前只有在youtube summary 功能的时候是数组
     if (Array.isArray(props.data)) {
       return props.data
     } else {
@@ -28,21 +29,26 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
   }, [props.data])
   return (
     <React.Fragment>
-      {deepDiveList.map((deepDive, index) => (
+      {sidebarAIMessageBottomList.map((sidebarAIMessageBottomInfo, index) => (
         <Stack spacing={1} key={index}>
-          {deepDive.title && <MetadataTitleRender title={deepDive.title} />}
-          {(!deepDive.type || deepDive.type === 'text') && (
+          {sidebarAIMessageBottomInfo.title && (
+            <MetadataTitleRender title={sidebarAIMessageBottomInfo.title} />
+          )}
+          {(!sidebarAIMessageBottomInfo.type ||
+            sidebarAIMessageBottomInfo.type === 'text') && (
             <div
               className={`markdown-body ${
                 props.isDarkMode ? 'markdown-body-dark' : ''
               }`}
             >
               <AppSuspenseLoadingLayout>
-                <CustomMarkdown>{deepDive.value}</CustomMarkdown>
+                <CustomMarkdown>
+                  {sidebarAIMessageBottomInfo.value}
+                </CustomMarkdown>
               </AppSuspenseLoadingLayout>
             </div>
           )}
-          {deepDive.type === 'transcript' && (
+          {sidebarAIMessageBottomInfo.type === 'transcript' && (
             <HeightUpdateScrolling
               computeConfig={{
                 maxId: `#${messageListContainerId}`,
@@ -51,16 +57,16 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
             >
               <AppSuspenseLoadingLayout>
                 <TranscriptView
-                  transcriptList={deepDive.value}
+                  transcriptList={sidebarAIMessageBottomInfo.value}
                   loading={props.loading}
                 />
               </AppSuspenseLoadingLayout>
             </HeightUpdateScrolling>
           )}
-          {deepDive.type === 'timestampedSummary' && (
+          {sidebarAIMessageBottomInfo.type === 'timestampedSummary' && (
             <AppSuspenseLoadingLayout>
               <TranscriptView
-                transcriptList={deepDive.value}
+                transcriptList={sidebarAIMessageBottomInfo.value}
                 loading={props.loading}
               />
             </AppSuspenseLoadingLayout>
@@ -70,4 +76,4 @@ const DeepDiveVIew: FC<IDeepDiveVIew> = (props) => {
     </React.Fragment>
   )
 }
-export default DeepDiveVIew
+export default SidebarAImessageBottomList

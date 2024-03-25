@@ -302,13 +302,22 @@ export const MetadataTitleRender: FC<{
           width={16}
           height={16}
         >
-          <ContextMenuIcon
-            sx={{
-              color: 'primary.main',
-              fontSize: titleIconSize || 18,
-            }}
-            icon={titleIcon}
-          />
+          {titleIcon === 'SummaryInfo' ? (
+            <ReadIcon
+              sx={{
+                color: 'primary.main',
+                fontSize: titleIconSize,
+              }}
+            />
+          ) : (
+            <ContextMenuIcon
+              sx={{
+                color: 'primary.main',
+                fontSize: titleIconSize || 18,
+              }}
+              icon={titleIcon}
+            />
+          )}
         </Stack>
       )}
       <Typography

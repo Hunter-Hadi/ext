@@ -437,7 +437,7 @@ export const youTubeSummaryTranscriptTimestampedChangeTool = async (
                   type: 'timestampedSummary',
                   title: {
                     title: 'Summary',
-                    titleIcon: 'Menu',
+                    titleIcon: 'SummaryInfo',
                   },
                   value: `{{LAST_ACTION_OUTPUT}}`,
                 },

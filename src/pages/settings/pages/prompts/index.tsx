@@ -15,11 +15,11 @@ const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => <Stack
     const t = theme as Theme
     const isDark = t.palette.mode === 'dark'
     return {
-      background: isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 1)',
+      background: isDark ? 'rgb(32, 33, 36)' : 'rgba(255, 255, 255, 1)',
       padding: '16px',
       border: '1px solid',
-      borderColor: isDark ? 'rgba(0, 0, 0, 0.08)' : 'rgba(0, 0, 0, 0.08)',
-      borderRadius: '8px',
+      borderColor: t.palette?.customColor!.borderColor,
+      borderRadius: '0 0 8px 8px',
     }
   },
 )
@@ -50,4 +50,4 @@ const SettingsPromptsPage: FC = () => {
     </SettingsFeatureCardLayout>
   )
 }
-export default SettingsPromptsPage
+export default SettingsPromptsPage 

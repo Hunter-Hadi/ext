@@ -16,7 +16,10 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
-import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  getTextTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
 type TranscriptTimestampedType = {
@@ -49,6 +52,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   isStop = false
   requestIntervalTime = 1000 * 5
   requestExceptionIntervalTime = 1000 * 10
+  maxChatGptTokens = 13000
   abortTaskIds: string[] = [] //接口取消功能数据
   constructor(
     id: string,
@@ -105,13 +109,15 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersInfoList, transcripts)
-        console.log('simply chapterTextList look tokens --', chapterTextList)
+        const chapterSliceTextList = await this.chaptersSliceTextByTokens(
+          chapterTextList,
+        )
 
-        if (chapterTextList.length > 0) {
+        if (chapterSliceTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
             messageId,
-            chapterTextList,
+            chapterSliceTextList,
             youtubeVideoTitle,
           )
           this.output = JSON.stringify(chapterList)
@@ -140,23 +146,24 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       this.output = JSON.stringify([])
     }
   }
-  // async getYoutubeTranscriptList(getNumberOfLevels = 0) {
-  //   const currentUrl = window.location.href.includes('youtube.com')
-  //     ? window.location.href
-  //     : ''
-  //   const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
-  //   if (!youtubeLinkURL) {
-  //     this.error = 'Youtube URL is empty.'
-  //     return
-  //   }
-  //   const transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL) //获取youtube transcript 数据
-  //   if (!transcripts || transcripts.length === 0) {
-  //     await new Promise((resolve) => setTimeout(resolve, 1000)) // 出现异常等待时间后请求
-  //     return await this.getYoutubeTranscriptList(getNumberOfLevels)
-  //   } else {
-  //     return transcripts
-  //   }
-  // }
+  async chaptersSliceTextByTokens(
+    chapterTextList: TranscriptTimestampedTextType[],
+  ) {
+    try {
+      for (const index in chapterTextList) {
+        const sliceTextResult = await sliceTextByTokens(
+          chapterTextList[index].text,
+          this.maxChatGptTokens,
+        )
+        chapterTextList[index].text = sliceTextResult.text
+        chapterTextList[index].tokens = sliceTextResult.tokens
+      }
+      return chapterTextList
+    } catch (e) {
+      console.log('simply chaptersSliceTextByTokens', chapterTextList)
+      return chapterTextList
+    }
+  }
   async batchRequestUpdateMessage(
     conversationId: string,
     messageId: string,
@@ -460,10 +467,10 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       currentTokens = 1000
     } else if (systemPromptTokens < 10000) {
       currentTokens = 1200
-    } else if (systemPromptTokens < 130000) {
+    } else if (systemPromptTokens < this.maxChatGptTokens * 10) {
       currentTokens = systemPromptTokens / 10
     } else {
-      currentTokens = 13000
+      currentTokens = this.maxChatGptTokens
     } // 这里是Chapters根据tokens分章
 
     // 首先，计算最多1万tokens一章可以分出的章节数

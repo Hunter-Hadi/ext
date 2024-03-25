@@ -216,6 +216,8 @@ const SidebarAImessageTimestampedSummary: FC<
       })
     )
   }, [transcriptList, openIdsList, loading])
+  //Array.isArray 是因为transcriptList 数据有可能是字符串或者数组，并且transcript第一版是字符串输出。
+  //Array.isArray也是为了保证数据的正确性
   return (
     <div>
       {!transcriptList ||

@@ -980,8 +980,6 @@ export const getSummaryNavActions: (
       return action
     })
     if (params.messageId) {
-      // const isTranscript =
-      //   params.type === 'YOUTUBE_VIDEO_SUMMARY' && params.key === 'transcript'
       const defAction: ISetActionsType = [
         {
           type: 'CHAT_MESSAGE',
@@ -997,7 +995,7 @@ export const getSummaryNavActions: (
                   copilot: {
                     steps: [
                       {
-                        title: 'Analyzing video',
+                        title: getSummaryActionCopilotStepTitle(params.type),
                         status: 'loading',
                         icon: 'SmartToy',
                         value: '{{CURRENT_WEBPAGE_TITLE}}',
@@ -1038,6 +1036,18 @@ export const getSummaryNavActions: (
   } catch (e) {
     console.log(e)
     return []
+  }
+}
+export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
+  switch (type) {
+    case 'PAGE_SUMMARY':
+      return 'Summarize page'
+    case 'YOUTUBE_VIDEO_SUMMARY':
+      return 'Summarize video'
+    case 'PDF_CRX_SUMMARY':
+      return 'Summarize PDF'
+    case 'DEFAULT_EMAIL_SUMMARY':
+      return 'Summarize email'
   }
 }
 const getCurrentPageUrl = () => {

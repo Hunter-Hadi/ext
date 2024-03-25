@@ -44,16 +44,6 @@ export const stopActionMessage = async (params: {
                   sources: {
                     status: 'complete',
                   },
-                  copilot: {
-                    steps: [
-                      {
-                        title: 'Analyzing video',
-                        status: 'complete',
-                        icon: 'SmartToy',
-                        value: '',
-                      },
-                    ],
-                  },
                   isComplete: true,
                 },
               },

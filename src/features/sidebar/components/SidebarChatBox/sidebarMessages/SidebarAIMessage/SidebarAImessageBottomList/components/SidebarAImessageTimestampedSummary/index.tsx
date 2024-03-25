@@ -243,7 +243,7 @@ const SidebarAImessageTimestampedSummary: FC<
         Array.from(
           {
             length:
-              transcriptLoadingsLength >= 10 ? 10 : transcriptLoadingsLength,
+              transcriptLoadingsLength >= 8 ? 8 : transcriptLoadingsLength,
           },
           (_, index) => (
             <Skeleton
@@ -251,7 +251,7 @@ const SidebarAImessageTimestampedSummary: FC<
               variant="rounded"
               width="100%"
               height={15}
-              sx={{ marginTop: '2px' }}
+              sx={{ marginTop: '5px' }}
             />
           ),
         )}

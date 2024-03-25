@@ -1,3 +1,4 @@
+import JSON5 from 'json5'
 import { v4 as uuidV4 } from 'uuid'
 
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
@@ -293,9 +294,13 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           const transcriptData = this.getObjectFromString(askData.data)
           console.log('simply askData', askData)
           console.log('transcriptData', transcriptData)
-          return transcriptData
+          if (transcriptData) {
+            return transcriptData
+          } else {
+            throw new Error('error')
+          }
         } else {
-          throw new Error()
+          throw new Error('error')
         }
       } catch (e) {
         console.error('simply askData error', e)
@@ -544,7 +549,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     if (match) {
       jsonStr = match[0]
       try {
-        return JSON.parse(jsonStr)
+        return JSON5.parse(jsonStr)
       } catch (error) {
         match = null
       }
@@ -557,7 +562,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       jsonStr = match[1]
 
       try {
-        return JSON.parse(jsonStr)
+        return JSON5.parse(jsonStr)
       } catch (error) {
         match = null
       }
@@ -566,7 +571,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     // 直接尝试解析
     try {
       if (jsonStr) {
-        return JSON.parse(jsonStr)
+        return JSON5.parse(jsonStr)
       } else {
         return null
       }

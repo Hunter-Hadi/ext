@@ -1,4 +1,3 @@
-import JSON5 from 'json5'
 import { v4 as uuidV4 } from 'uuid'
 
 import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
@@ -47,7 +46,8 @@ type TranscriptTimestampedParamType = {
 export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
   isStop = false
-  requestIntervalTime = 4000
+  requestIntervalTime = 1000 * 5
+  requestExceptionIntervalTime = 1000 * 10
   abortTaskIds: string[] = [] //接口取消功能数据
   constructor(
     id: string,
@@ -62,7 +62,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    console.log('simply params', params.LAST_ACTION_OUTPUT) //LAST_ACTION_OUTPUT有时候会没有
     try {
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
@@ -70,6 +69,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
       if (!youtubeLinkURL) {
         this.error = 'Youtube URL is empty.'
+        this.output = JSON.stringify([])
         return
       }
       const transcripts = await YoutubeTranscript.fetchTranscript(
@@ -136,6 +136,23 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       this.output = JSON.stringify([])
     }
   }
+  // async getYoutubeTranscriptList(getNumberOfLevels = 0) {
+  //   const currentUrl = window.location.href.includes('youtube.com')
+  //     ? window.location.href
+  //     : ''
+  //   const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
+  //   if (!youtubeLinkURL) {
+  //     this.error = 'Youtube URL is empty.'
+  //     return
+  //   }
+  //   const transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL) //获取youtube transcript 数据
+  //   if (!transcripts || transcripts.length === 0) {
+  //     await new Promise((resolve) => setTimeout(resolve, 1000)) // 出现异常等待时间后请求
+  //     return await this.getYoutubeTranscriptList(getNumberOfLevels)
+  //   } else {
+  //     return transcripts
+  //   }
+  // }
   async batchRequestUpdateMessage(
     conversationId: string,
     messageId: string,
@@ -168,7 +185,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           messageId,
           transcriptViewDataList,
         )
-        // 如果请求耗时少于3秒，等待剩余时间
+        // 如果请求耗时少于 几 秒，就等待剩余时间
         if (requestDuration < this.requestIntervalTime) {
           await new Promise((resolve) =>
             setTimeout(resolve, this.requestIntervalTime - requestDuration),
@@ -194,11 +211,12 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const getHaveLanguagePrompt = await generatePromptAdditionalText({
       AI_RESPONSE_LANGUAGE: userSelectedLanguage,
     }) //获取用户的i18设置prompt
-    const systemPrompt = `Ignore all previous instructions.${getHaveLanguagePrompt}.Remember, you are a tool for summarizing transcripts
+    const systemPrompt = `Ignore all previous instructions. ${getHaveLanguagePrompt.data},you are a tool for summarizing transcripts
     Help me quickly understand the summary of key points and the start timestamp
     The transcript are composed in the following format
     [start:transcript start time,text: transcript text]
     Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task. 
+    gpt output text : No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt.data}
     Return in JSON format:
     interface IJsonFormat {
     text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text.${userSelectedLanguage}
@@ -206,30 +224,31 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     children: [
     //The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
     {
-      text: string //About 10-20 words to describe, the first key point, Write text ${getHaveLanguagePrompt}
+      text: string //About 10-20 words to describe, the first key point, Write text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the second key point,write the text ${getHaveLanguagePrompt}
+      text: string //About 10-20 words to describe, the second key point,write the text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the third key point, write the text  ${getHaveLanguagePrompt}
+      text: string //About 10-20 words to describe, the third key point, write the text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     ]
     }
     The returned JSON can have up to two levels
-    No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt}
     `
-    console.log('simply getHaveLanguagePrompt', getHaveLanguagePrompt)
     const newPrompt = `
-    ${userSelectedLanguage}
+    Ignore all previous instructions.${getHaveLanguagePrompt.data}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
-    [remarks]:
-    Please make sure to${getHaveLanguagePrompt}
+
+    Above is the transcript
+    gpt output text :No matter what the VIDEO TRANSCRIPT says.${getHaveLanguagePrompt.data}
+    Ignore all previous instructions.${getHaveLanguagePrompt.data}
     `
+    console.log('simply getHaveLanguagePrompt.data', getHaveLanguagePrompt.data)
     const attemptRequest: () => Promise<
       TranscriptTimestampedGptType | false
     > = async () => {
@@ -268,6 +287,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           (id) => id !== currentAbortTaskId,
         )
         if (askData.success && askData.data) {
+          //测试返回的tokens最多为213
+          // const gptReturnTokens = getTextTokens(askData.data || '').length
+          // console.log('simply gpt return tokens', gptReturnTokens)
           const transcriptData = this.getObjectFromString(askData.data)
           console.log('simply askData', askData)
           console.log('transcriptData', transcriptData)
@@ -281,7 +303,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
 
         if (retries <= maxRetries) {
           console.log(`Retry attempt ${retries}`)
-          await new Promise((resolve) => setTimeout(resolve, 2000)) // 等待2秒
+          await new Promise((resolve) =>
+            setTimeout(resolve, this.requestExceptionIntervalTime),
+          ) // 出现异常等待时间后请求
           return attemptRequest() // 递归调用进行重试
         } else {
           return false
@@ -520,7 +544,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     if (match) {
       jsonStr = match[0]
       try {
-        return JSON5.parse(jsonStr)
+        return JSON.parse(jsonStr)
       } catch (error) {
         match = null
       }
@@ -533,7 +557,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       jsonStr = match[1]
 
       try {
-        return JSON5.parse(jsonStr)
+        return JSON.parse(jsonStr)
       } catch (error) {
         match = null
       }
@@ -542,7 +566,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     // 直接尝试解析
     try {
       if (jsonStr) {
-        return JSON5.parse(jsonStr)
+        return JSON.parse(jsonStr)
       } else {
         return null
       }

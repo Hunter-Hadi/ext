@@ -237,7 +237,8 @@ const SidebarAImessageTimestampedSummary: FC<
           </Typography>
         ))}
       {TranscriptListView()}
-      {!transcriptStatusIsError &&
+      {loading &&
+        !transcriptStatusIsError &&
         transcriptLoadingsLength > 0 &&
         Array.from(
           {

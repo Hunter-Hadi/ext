@@ -10,14 +10,6 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
-import { I18nextKeysType } from '@/i18next'
-import {
-  getIframePageContent,
-  isNeedGetIframePageContent,
-} from '@/pages/content_script_iframe/iframePageContentHelper'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
-
 import {
   getSummaryEmailPrompt,
   getSummaryPagePrompt,
@@ -25,8 +17,15 @@ import {
   getSummaryYoutubeVideoPrompt,
   summaryGetPromptObject,
   SummaryParamsPromptType,
-} from './pageSummaryNavPrompt'
-import { youTubeSummaryChangeTool } from './summaryActionsChangeTool/youTubeSummaryChangeTool'
+} from '@/features/sidebar/utils/pageSummaryNavPrompt'
+import { youTubeSummaryChangeTool } from '@/features/sidebar/utils/summaryActionsChangeTool/youTubeSummaryChangeTool'
+import { I18nextKeysType } from '@/i18next'
+import {
+  getIframePageContent,
+  isNeedGetIframePageContent,
+} from '@/pages/content_script_iframe/iframePageContentHelper'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'

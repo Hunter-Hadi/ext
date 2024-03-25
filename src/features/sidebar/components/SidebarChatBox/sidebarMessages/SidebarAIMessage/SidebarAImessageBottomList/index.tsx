@@ -4,11 +4,10 @@ import React, { FC, useMemo } from 'react'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { IAIResponseOriginalMessageMetaDeep } from '@/features/chatgpt/types'
-
-import { messageListContainerId } from '../../../SidebarChatBoxMessageListContainer'
-import { MetadataTitleRender } from '..'
-import { HeightUpdateScrolling } from '../HeightUpdateScrolling'
-import TranscriptView from './components/SidebarAImessageTimestampedSummary'
+import { messageListContainerId } from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageListContainer'
+import { MetadataTitleRender } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage'
+import { HeightUpdateScrolling } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/HeightUpdateScrolling'
+import TranscriptView from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList/components/SidebarAImessageTimestampedSummary'
 
 interface ISidebarAImessageBottomVIew {
   data:

@@ -1,13 +1,12 @@
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import {
+  TranscriptResponse,
+  YoutubeTranscript,
+} from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-
-import {
-  TranscriptResponse,
-  YoutubeTranscript,
-} from '../../ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 
 /**
  * @since 2024-03-17

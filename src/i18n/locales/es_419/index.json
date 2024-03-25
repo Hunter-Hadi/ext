@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumir correo electrónico (Puntos clave)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumir correo electrónico (Acciones)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcripción",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Por favor, espera hasta que el anuncio de video termine de reproducirse y luego intenta nuevamente."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Por favor, espera hasta que el anuncio de video termine de reproducirse y luego intenta nuevamente.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Resumen con marcas de tiempo",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "No se puede generar el video sin subtítulos.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ocurrió una excepción, por favor inténtalo de nuevo más tarde."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

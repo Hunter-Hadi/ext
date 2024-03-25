@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Zhrnúť email (Kľúčové myšlienky)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Zhrnúť email (Akčné body)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobraziť prepis",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počkajte, kým sa video reklama dohraje a potom skúste znova."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počkajte, kým sa video reklama dohraje a potom skúste znova.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časové zhrnutie",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nie je možné vytvoriť video bez titulkov.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Vyskytla sa výnimka, skúste to prosím neskôr znova."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

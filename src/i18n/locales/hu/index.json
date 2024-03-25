@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Email összefoglalása (Kulcsfontosságú üzenetek)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Email összefoglalása (Cselekvési pontok)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transzkript megjelenítése",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Kérlek várj, amíg a videó hirdetés lejátszása befejeződik, majd próbáld újra."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Kérlek várj, amíg a videó hirdetés lejátszása befejeződik, majd próbáld újra.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Időbélyegzett összefoglaló",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nem lehet videót létrehozni felirat nélkül.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Kivétel történt, kérjük próbálja újra később."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

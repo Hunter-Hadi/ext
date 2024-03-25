@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ای میل خلاصہ کریں (مرکزی نتائج)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ای میل خلاصہ کریں (عملیاتی اقدامات)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ٹرانسکرپٹ دکھائیں",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "برائے مہربانی ویڈیو اشتہار کا انتظار کریں جب تک کہ ختم نہ ہوجائے اور پھر دوبارہ کوشش کریں۔"
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "برائے مہربانی ویڈیو اشتہار کا انتظار کریں جب تک کہ ختم نہ ہوجائے اور پھر دوبارہ کوشش کریں۔",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ٹائم سٹیمپ کی خلاصہ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "سب ٹائٹلز کے بغیر ویڈیو تشکیل نہیں کی جا سکتی ہے۔",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ایک استثناء پیش آیا ہے، براہ کرم بعد میں دوبارہ کوشش کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

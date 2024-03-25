@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumir email (Principais pontos)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumir email (Ações)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostrar transcrição",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Aguarde até que o anúncio em vídeo termine de ser reproduzido e tente novamente."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Aguarde até que o anúncio em vídeo termine de ser reproduzido e tente novamente.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Resumo com marcação temporal",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Não é possível gerar vídeo sem legendas.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ocorreu uma exceção, por favor tente novamente mais tarde."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

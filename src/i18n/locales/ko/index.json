@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "이메일 요약 (주요 내용)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "이메일 요약 (액션 아이템)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "자막 보기",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "동영상 광고가 재생을 마칠 때까지 기다려주세요. 그리고 다시 시도해주세요."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "동영상 광고가 재생을 마칠 때까지 기다려주세요. 그리고 다시 시도해주세요.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "요약에 타임스탬프가 표시됩니다.",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "자막이 없는 동영상은 생성할 수 없습니다.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "오류가 발생했습니다. 나중에 다시 시도해주세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Podsumuj e-mail (Najważniejsze wnioski)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Podsumuj e-mail (Zadania do wykonania)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Pokaż transkrypt",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Proszę poczekać, aż zakończy się odtwarzanie reklamy wideo, a następnie spróbuj ponownie."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Proszę poczekać, aż zakończy się odtwarzanie reklamy wideo, a następnie spróbuj ponownie.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Podsumowanie z oznaczonymi czasami",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nie można wygenerować filmu bez napisów.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Wystąpił wyjątek, spróbuj ponownie później."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "மின்னஞ்சலை சுருக்கம் செய் (முக்கிய பிரிவுகள்)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "மின்னஞ்சலை சுருக்கம் செய் (செயல்பாடுகள்)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "மொழிபெயர்க்கப்பட்டு காட்டு",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "வீடியோ விளம்பரத்தின் முடிவுக்கு காத்திருங்கள் மற்றும் பின்னர் மீண்டும் முயற்சிக்கவும்."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "வீடியோ விளம்பரத்தின் முடிவுக்கு காத்திருங்கள் மற்றும் பின்னர் மீண்டும் முயற்சிக்கவும்.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "நேரம் குறிப்புடன் சுருக்கம்",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "தலைப்புகள் இல்லாத வீடியோ உருவாக்க முடியாது.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ஒரு விதிவிலக்கு ஏற்பட்டது, பின்னர் மீண்டும் முயற்சிக்கவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

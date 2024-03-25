@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ईमेल संक्षेपित करा (मुख्य घटक)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ईमेल संक्षेपित करा (क्रियाकलाप)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ट्रांसक्रिप्ट दर्शवा",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "कृपया व्हिडिओ जाहीरात संपल्यानंतर प्रयत्न करा."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "कृपया व्हिडिओ जाहीरात संपल्यानंतर प्रयत्न करा.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "टाइमस्टॅम्प केलेली संक्षेपिका",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "उपशीर्षक नसलेले व्हिडिओ तयार करण्यास अक्षम.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "एक अप्रत्याशित घटना आली, कृपया नंतर पुन्हा प्रयत्न करा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

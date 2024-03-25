@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Tiivistä sähköposti (Tärkeimmät asiat)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Tiivistä sähköposti (Toimenpiteet)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Näytä tekstitys",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Odota, kunnes videomainos päättyy ja yritä sitten uudelleen."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Odota, kunnes videomainos päättyy ja yritä sitten uudelleen.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Aikaleimattu yhteenveto",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Videota ei voi luoda ilman tekstityksiä.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Tapahtui poikkeus, yritä myöhemmin uudelleen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

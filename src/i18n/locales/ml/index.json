@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രധാന പരമ്പരകള്‍)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രവര്‍ത്തന പദങ്ങള്‍)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ട്രാൻസ്ക്രിപ്റ്റ് കാണിക്കുക",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "ദയവായി വീഡിയോ പ്രവർത്തനം അവസാനിക്കുന്നത് കാത്തിരിക്കുകയും പിന്നെ വീഡിയോ പുതിയതായി ശ്രമിക്കുക."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "ദയവായി വീഡിയോ പ്രവർത്തനം അവസാനിക്കുന്നത് കാത്തിരിക്കുകയും പിന്നെ വീഡിയോ പുതിയതായി ശ്രമിക്കുക.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "സമയപ്പെടുത്തിയ സംഗ്രഹം",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "ഉപശീൽക്കാന്‍ വീഡിയോ ഉണ്ടാക്കാനായി സബ്ടൈറ്റിലുകള്‍ ഇല്ല.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ഒരു അസാധുവായ പിശക് സംഭവിച്ചു, പിന്നെ ശ്രമിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

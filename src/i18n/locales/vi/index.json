@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Tóm tắt email (Những điểm chính)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Tóm tắt email (Công việc cần làm)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Hiển thị bản ghi âm",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vui lòng đợi cho đến khi quảng cáo video kết thúc và sau đó thử lại."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vui lòng đợi cho đến khi quảng cáo video kết thúc và sau đó thử lại.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tóm tắt có dấu thời gian",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Không thể tạo video không có phụ đề.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Đã xảy ra ngoại lệ, vui lòng thử lại sau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

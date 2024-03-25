@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-mail samenvatten (Belangrijkste punten)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-mail samenvatten (Actiepunten)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Toon transcriptie",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Wacht even totdat de videoadvertentie is afgelopen en probeer het dan opnieuw."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Wacht even totdat de videoadvertentie is afgelopen en probeer het dan opnieuw.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Samengevat met tijdstempels",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan geen video genereren zonder ondertiteling.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Er is een uitzondering opgetreden, probeer het later opnieuw."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

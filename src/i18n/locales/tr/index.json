@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-postayı özetle (Ana noktalar)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-postayı özetle (Eylem maddeleri)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transkripti göster",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lütfen video reklamı tamamlanana kadar bekleyin ve sonra tekrar deneyin."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lütfen video reklamı tamamlanana kadar bekleyin ve sonra tekrar deneyin.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Zaman damgalı özet",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Altyazısız video oluşturulamıyor.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Bir istisna oluştu, lütfen daha sonra tekrar deneyin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

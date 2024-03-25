@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resum del correu electrònic (Idees principals)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resum del correu electrònic (Accions)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostra la transcripció",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Espereu fins que l'anunci de vídeo acabi de reproduir-se i torneu-ho a provar."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Espereu fins que l'anunci de vídeo acabi de reproduir-se i torneu-ho a provar.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Resum amb marques de temps",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "No es pot generar el vídeo sense subtítols.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "S'ha produït una excepció, si us plau, torna-ho a provar més tard."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

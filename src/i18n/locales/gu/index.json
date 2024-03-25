@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ઇમેઇલ સંક્ષેપિત કરો (મુખ્ય આપત્તિઓ)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ઇમેઇલ સંક્ષેપિત કરો (ક્રિયાઓ)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ટ્રાન્સક્રિપ્ટ બતાવો",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "કૃપા કરીને વિડિઓ એડ પ્લે થયા પછી રાહ જુઓ."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "કૃપા કરીને વિડિઓ એડ પ્લે થયા પછી રાહ જુઓ.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "સમયગાળો સંક્ષેપ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "સબટાઇટલ વગર વિડિઓ બનાવી શકતા નથી.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "એક અનુક્રમણિકામાં ભૂલ આવી, મહેરબાની કરીને પછી ફરી પ્રયાસ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

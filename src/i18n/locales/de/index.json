@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-Mail zusammenfassen (Haupterkenntnisse)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-Mail zusammenfassen (Aktionspunkte)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transkript anzeigen",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Bitte warten Sie, bis die Videoanzeige abgeschlossen ist, und versuchen Sie es dann erneut."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Bitte warten Sie, bis die Videoanzeige abgeschlossen ist, und versuchen Sie es dann erneut.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Zeitgesteuerte Zusammenfassung",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Video ohne Untertitel kann nicht generiert werden.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Es ist ein Fehler aufgetreten. Bitte versuchen Sie es später erneut."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Oppsummer e-post (Hovedpoeng)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Oppsummer e-post (Handlingselementer)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkripsjon",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vennligst vent til videoannonsen er ferdig å spille, og prøv igjen."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vennligst vent til videoannonsen er ferdig å spille, og prøv igjen.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tidsbestemt sammendrag",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan ikke generere video uten undertekster.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Det oppstod en feil, vennligst prøv igjen senere."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

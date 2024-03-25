@@ -659,7 +659,10 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-pasta kopsavilkums (Galvenie secinājumi)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-pasta kopsavilkums (Darbības vienumi)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rādīt transkriptu",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lūdzu, uzgaidiet, līdz beigsies video reklāma, un tad mēģiniet vēlreiz."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lūdzu, uzgaidiet, līdz beigsies video reklāma, un tad mēģiniet vēlreiz.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Laika zīmēts kopsavilkums",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nav iespējams ģenerēt video bez subtitriem.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Radās izņēmums, lūdzu, mēģiniet vēlreiz vēlāk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

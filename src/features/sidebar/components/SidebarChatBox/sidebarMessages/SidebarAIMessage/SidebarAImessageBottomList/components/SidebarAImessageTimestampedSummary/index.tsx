@@ -5,6 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { formatSecondsAsTimestamp } from '@/features/sidebar/utils/chatMessagesHelper'
 import globalSnackbar from '@/utils/globalSnackbar'
 
 interface ISidebarAImessageTimestampedSummary {
@@ -82,23 +83,7 @@ const SidebarAImessageTimestampedSummary: FC<
     textarea.innerHTML = str.trim().replace(/\n/g, '')
     return textarea.value
   }
-  const formatSecondsAsTimestamp = (seconds: string) => {
-    // 将字符串转换为浮点数并取整
-    const totalSeconds = Math.round(parseFloat(seconds))
-    const hours = Math.floor(totalSeconds / 3600)
-    const minutes = Math.floor((totalSeconds - hours * 3600) / 60)
-    const sec = totalSeconds - hours * 3600 - minutes * 60
 
-    // 使用padStart在个位数前添加0，格式化字符串为两位数
-    const hoursString = hours.toString().padStart(2, '0')
-    const minutesString = minutes.toString().padStart(2, '0')
-    const secondsString = sec.toString().padStart(2, '0')
-    if (hoursString !== '00') {
-      return `${hoursString}:${minutesString}:${secondsString}`
-    } else {
-      return `${minutesString}:${secondsString}`
-    }
-  }
   const onSetOpenIdsList = (id: string) => {
     openIdsList[id] = !openIdsList[id]
     setOpenIdsList({ ...openIdsList })
@@ -237,12 +222,13 @@ const SidebarAImessageTimestampedSummary: FC<
           </Typography>
         ))}
       {TranscriptListView()}
-      {!transcriptStatusIsError &&
+      {loading &&
+        !transcriptStatusIsError &&
         transcriptLoadingsLength > 0 &&
         Array.from(
           {
             length:
-              transcriptLoadingsLength >= 10 ? 10 : transcriptLoadingsLength,
+              transcriptLoadingsLength >= 8 ? 8 : transcriptLoadingsLength,
           },
           (_, index) => (
             <Skeleton
@@ -250,7 +236,7 @@ const SidebarAImessageTimestampedSummary: FC<
               variant="rounded"
               width="100%"
               height={15}
-              sx={{ marginTop: '2px' }}
+              sx={{ marginTop: '5px' }}
             />
           ),
         )}

@@ -14,6 +14,7 @@ import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/page
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
   originalInnerText: string = ''
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -32,6 +33,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      if (this.isStopAction) return
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getPageContentWithMozillaReadability())
@@ -46,6 +48,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     await stopActionMessageStatus(params)
     return true
   }

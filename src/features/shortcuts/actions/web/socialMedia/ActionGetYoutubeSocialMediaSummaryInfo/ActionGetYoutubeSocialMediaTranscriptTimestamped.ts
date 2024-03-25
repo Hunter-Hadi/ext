@@ -16,7 +16,10 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
-import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  getTextTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
 type TranscriptTimestampedType = {
@@ -46,8 +49,10 @@ type TranscriptTimestampedParamType = {
  */
 export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
-  isStop = false
-  requestIntervalTime = 4000
+  isStopAction = false
+  requestIntervalTime = 1000 * 5
+  requestExceptionIntervalTime = 1000 * 10
+  maxChatGptTokens = 13000
   abortTaskIds: string[] = [] //接口取消功能数据
   constructor(
     id: string,
@@ -62,20 +67,23 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     params: ActionParameters,
     engine: IShortcutEngineExternalEngine,
   ) {
-    console.log('simply params', params.LAST_ACTION_OUTPUT) //LAST_ACTION_OUTPUT有时候会没有
     try {
+      if (this.isStopAction) return
+      const youtubeVideoTitle = params.CURRENT_WEBPAGE_TITLE || ''
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''
       const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
       if (!youtubeLinkURL) {
         this.error = 'Youtube URL is empty.'
+        this.output = JSON.stringify([])
         return
       }
+      if (this.isStopAction) return
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       ) //获取youtube transcript 数据
-
+      if (this.isStopAction) return
       const conversationId =
         engine.clientConversationEngine?.currentConversationIdRef?.current
       const messageId = (params as { AI_RESPONSE_MESSAGE_ID?: string })
@@ -90,6 +98,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         this.output = JSON.stringify([])
         return
       }
+      if (this.isStopAction) return
 
       const chaptersInfoList = this.getChaptersInfoList()
       const transcriptsText = transcripts.map((item) => item.text).join('')
@@ -98,34 +107,48 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       if (
         chaptersInfoList &&
         chaptersInfoList.length !== 0 &&
-        transcriptsTokens > 2000
+        transcriptsTokens > 1000 //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试
       ) {
+        if (this.isStopAction) return
+
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersInfoList, transcripts)
-        console.log('simply chapterTextList look tokens --', chapterTextList)
+        if (this.isStopAction) return
 
-        if (chapterTextList.length > 0) {
+        const chapterSliceTextList = await this.chaptersSliceTextByTokens(
+          chapterTextList,
+        )
+        if (this.isStopAction) return
+
+        if (chapterSliceTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
             messageId,
-            chapterTextList,
+            chapterSliceTextList,
+            youtubeVideoTitle,
           )
+          if (this.isStopAction) return
+
           this.output = JSON.stringify(chapterList)
         } else {
           this.output = JSON.stringify([])
         }
       } else {
         //自己创建chapters逻辑
+        if (this.isStopAction) return
         const chaptersList = this.createChapters(transcripts)
+        if (this.isStopAction) return
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersList, transcripts)
         console.log('simply chapterTextList look tokens --', chapterTextList)
         if (chapterTextList.length > 0) {
+          if (this.isStopAction) return
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
             messageId,
             chapterTextList,
+            youtubeVideoTitle,
           )
           this.output = JSON.stringify(chapterList)
         } else {
@@ -136,31 +159,51 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       this.output = JSON.stringify([])
     }
   }
+  async chaptersSliceTextByTokens(
+    chapterTextList: TranscriptTimestampedTextType[],
+  ) {
+    try {
+      for (const index in chapterTextList) {
+        const sliceTextResult = await sliceTextByTokens(
+          chapterTextList[index].text,
+          this.maxChatGptTokens,
+        )
+        chapterTextList[index].text = sliceTextResult.text
+        chapterTextList[index].tokens = sliceTextResult.tokens
+      }
+      return chapterTextList
+    } catch (e) {
+      console.log('simply chaptersSliceTextByTokens', chapterTextList)
+      return chapterTextList
+    }
+  }
   async batchRequestUpdateMessage(
     conversationId: string,
     messageId: string,
     chapterTextList: TranscriptTimestampedTextType[],
+    youtubeVideoTitle: string,
   ) {
     try {
       const transcriptViewDataList: TranscriptTimestampedParamType[] =
         this.getPrepareViewData(chapterTextList)
       //创建更新transcript视图逻辑
       for (const index in chapterTextList) {
-        if (this.isStop) return transcriptViewDataList //用户取消直接返回
+        if (this.isStopAction) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
+          youtubeVideoTitle,
           chapterTextList[index],
         ) //请求GPT返回json
+        if (this.isStopAction) return transcriptViewDataList
         const endTime = Date.now() // 记录请求结束时间
         const requestDuration = endTime - startTime // 计算请求耗时
-        if (this.isStop) return transcriptViewDataList
         if (transcriptList) {
           transcriptViewDataList[index].text = transcriptList?.text
           transcriptViewDataList[index].children = transcriptList?.children
           transcriptViewDataList[index].status = 'complete'
         } else {
           //出现错误不在往下请求
-          this.isStop = true
+          this.isStopAction = true
           transcriptViewDataList[index].status = 'error'
         }
         this.updateConversationMessageInfo(
@@ -168,7 +211,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           messageId,
           transcriptViewDataList,
         )
-        // 如果请求耗时少于3秒，等待剩余时间
+        // 如果请求耗时少于 几 秒，就等待剩余时间
         if (requestDuration < this.requestIntervalTime) {
           await new Promise((resolve) =>
             setTimeout(resolve, this.requestIntervalTime - requestDuration),
@@ -180,11 +223,14 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       return []
     }
   }
-  async requestGptGetTranscriptJson(chapterTextList: {
-    text: string
-    start: string
-    tokens?: number
-  }) {
+  async requestGptGetTranscriptJson(
+    youtubeVideoTitle: string,
+    chapterTextList: {
+      text: string
+      start: string
+      tokens?: number
+    },
+  ) {
     const maxRetries = 2 // 最大尝试次数
     let retries = 0 // 当前尝试次数
     // 语言
@@ -194,11 +240,12 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const getHaveLanguagePrompt = await generatePromptAdditionalText({
       AI_RESPONSE_LANGUAGE: userSelectedLanguage,
     }) //获取用户的i18设置prompt
-    const systemPrompt = `Ignore all previous instructions.${getHaveLanguagePrompt}.Remember, you are a tool for summarizing transcripts
+    const systemPrompt = `Ignore all previous instructions. ${getHaveLanguagePrompt.data},you are a tool for summarizing transcripts
     Help me quickly understand the summary of key points and the start timestamp
     The transcript are composed in the following format
     [start:transcript start time,text: transcript text]
     Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task. 
+    gpt output text : No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt.data}
     Return in JSON format:
     interface IJsonFormat {
     text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text.${userSelectedLanguage}
@@ -206,36 +253,39 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     children: [
     //The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
     {
-      text: string //About 10-20 words to describe, the first key point, Write text ${getHaveLanguagePrompt}
+      text: string //About 10-20 words to describe, the first key point, Write text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the second key point,write the text ${getHaveLanguagePrompt}
+      text: string //About 10-20 words to describe, the second key point,write the text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the third key point, write the text  ${getHaveLanguagePrompt}
+      text: string //About 10-20 words to describe, the third key point, write the text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     ]
     }
     The returned JSON can have up to two levels
-    No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt}
     `
-    console.log('simply getHaveLanguagePrompt', getHaveLanguagePrompt)
     const newPrompt = `
-    ${userSelectedLanguage}
+    Ignore all previous instructions.${getHaveLanguagePrompt.data}
+    [VIDEO TRANSCRIPT TITLE]:
+    ${youtubeVideoTitle}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
-    [remarks]:
-    Please make sure to${getHaveLanguagePrompt}
+
+    Above is the transcript
+    gpt output text :No matter what the VIDEO TRANSCRIPT says.${getHaveLanguagePrompt.data}
+    Ignore all previous instructions.${getHaveLanguagePrompt.data}
     `
+    console.log('simply getHaveLanguagePrompt.data', getHaveLanguagePrompt.data)
     const attemptRequest: () => Promise<
       TranscriptTimestampedGptType | false
     > = async () => {
       const currentAbortTaskId = uuidV4()
       this.abortTaskIds.push(currentAbortTaskId)
-      if (this.isStop) return false
+      if (this.isStopAction) return false
       try {
         const askData = await clientAskMaxAIChatProvider(
           'OPENAI_API',
@@ -263,17 +313,24 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           },
           currentAbortTaskId,
         )
-        if (this.isStop) return false
+        if (this.isStopAction) return false
         this.abortTaskIds = this.abortTaskIds.filter(
           (id) => id !== currentAbortTaskId,
         )
         if (askData.success && askData.data) {
+          //测试返回的tokens最多为213
+          // const gptReturnTokens = getTextTokens(askData.data || '').length
+          // console.log('simply gpt return tokens', gptReturnTokens)
           const transcriptData = this.getObjectFromString(askData.data)
           console.log('simply askData', askData)
-          console.log('transcriptData', transcriptData)
-          return transcriptData
+          console.log('simply ok transcriptData', transcriptData)
+          if (transcriptData) {
+            return transcriptData
+          } else {
+            throw new Error('error')
+          }
         } else {
-          throw new Error()
+          throw new Error('error')
         }
       } catch (e) {
         console.error('simply askData error', e)
@@ -281,7 +338,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
 
         if (retries <= maxRetries) {
           console.log(`Retry attempt ${retries}`)
-          await new Promise((resolve) => setTimeout(resolve, 2000)) // 等待2秒
+          await new Promise((resolve) =>
+            setTimeout(resolve, this.requestExceptionIntervalTime),
+          ) // 出现异常等待时间后请求
           return attemptRequest() // 递归调用进行重试
         } else {
           return false
@@ -414,17 +473,17 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const systemPromptTokens = getTextTokens(allText || '').length
     const allDuration = dataArray[dataArray.length - 1].start
     if (systemPromptTokens < 2000) {
-      currentTokens = 600
+      currentTokens = 500
     } else if (systemPromptTokens < 4000) {
-      currentTokens = 800
+      currentTokens = 600
     } else if (systemPromptTokens < 5000) {
       currentTokens = 1000
     } else if (systemPromptTokens < 10000) {
       currentTokens = 1200
-    } else if (systemPromptTokens < 130000) {
+    } else if (systemPromptTokens < this.maxChatGptTokens * 10) {
       currentTokens = systemPromptTokens / 10
     } else {
-      currentTokens = 13000
+      currentTokens = this.maxChatGptTokens
     } // 这里是Chapters根据tokens分章
 
     // 首先，计算最多1万tokens一章可以分出的章节数
@@ -432,7 +491,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     console.log('simply chapterCount 1', chapterCount)
 
     // 检查是否有余数且余数大于设定的阈值（2000个tokens）
-    if (systemPromptTokens % currentTokens > 500 || chapterCount === 0) {
+    if (systemPromptTokens % currentTokens > 200 || chapterCount === 0) {
       chapterCount += 1 // 如果余数大于2000，则章节数进1
     }
     console.log('simply chapterCount 2', chapterCount)
@@ -527,7 +586,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     }
 
     // 尝试匹配 ```json ```包裹中匹配
-    const regex = /```json\s*([\s\S]*?)\s*```/
+    const regex = /```json\n([\s\S]*?)\n```/
     match = str.match(regex)
     if (match) {
       jsonStr = match[1]
@@ -607,7 +666,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     )
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    this.isStop = true
+    this.isStopAction = true
     this.abortTaskIds.forEach((id) => {
       clientAbortFetchAPI(id)
     })

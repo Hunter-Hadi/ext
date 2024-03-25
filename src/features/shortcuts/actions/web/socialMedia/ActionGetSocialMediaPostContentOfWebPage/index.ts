@@ -18,6 +18,7 @@ import {
 export class ActionGetSocialMediaPostContentOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE'
   originalSocialMediaPostContent: ISocialMediaPostContextData | null = null
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -40,7 +41,9 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
       params.OperationElementSelector ||
       ''
     try {
+      if (this.isStopAction) return
       let result = await getSocialMediaPostContent(OperationElementSelector)
+      if (this.isStopAction) return
       if (
         engine?.clientConversationEngine?.currentSidebarConversationType ===
           'Summary' &&
@@ -52,6 +55,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         if (haveCommentResults) {
           result = haveCommentResults
         }
+        if (this.isStopAction) return
       }
       console.log('simply result', result)
       this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
@@ -63,13 +67,17 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
         let SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT =
           result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
         // reply with keyPoints的逻辑
+        if (this.isStopAction) return
         const conversation =
           await clientConversationEngine.getCurrentConversation()
+        if (this.isStopAction) return
+
         const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
         const maxSocialMediaContextTokens =
           AIModelMaxTokens -
           calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
         // 先计算TargetContext的Tokens占用，剩下的再给FullContext
+        if (this.isStopAction) return
         const {
           isLimit,
           text: sliceOfTargetPostContext,
@@ -78,14 +86,17 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
           AIModelMaxTokens - maxSocialMediaContextTokens,
         )
+        if (this.isStopAction) return
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT = sliceOfTargetPostContext
         if (isLimit) {
           SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = ''
         } else {
+          if (this.isStopAction) return
           const { text: sliceOfFullPostContext } = await sliceTextByTokens(
             SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
             AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
           )
+          if (this.isStopAction) return
           SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = sliceOfFullPostContext
         }
         shortcutsEngine.pushActions(
@@ -140,6 +151,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     await stopActionMessageStatus(params)
     return true
   }

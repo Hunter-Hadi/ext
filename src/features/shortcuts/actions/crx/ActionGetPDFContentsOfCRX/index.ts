@@ -10,6 +10,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 export class ActionGetPDFContentsOfCRX extends Action {
   static type: ActionIdentifier = 'GET_PDF_CONTENTS_OF_CRX'
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -41,8 +42,11 @@ export class ActionGetPDFContentsOfCRX extends Action {
             console.log(`ActionGetPDFContentsOfCRX totalPages: \t`, totalPages)
             const getPDFPageContents = async (pageNum: number) => {
               try {
+                if (this.isStopAction) return ''
                 const pageInstance = await pdfInstance.getPage(pageNum)
+                if (this.isStopAction) return ''
                 const textContents = await pageInstance.getTextContent()
+                if (this.isStopAction) return ''
                 // https://mozilla.github.io/pdf.js/api/draft/module-pdfjsLib.html
                 // hasEOL: boolean - 是否有换行符
                 // str: string - 文本内容
@@ -69,7 +73,9 @@ export class ActionGetPDFContentsOfCRX extends Action {
               if (i > 0) {
                 PDFContent += '\n'
               }
+              if (this.isStopAction) return
               PDFContent += await getPDFPageContents(i + 1)
+              if (this.isStopAction) return
               // computed tokens
               const process = ((i + 1) / totalPages) * 100
               console.log(
@@ -82,6 +88,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
             return ''
           }
         }
+        if (this.isStopAction) return
         const PDFPageContent = await fetchPageContents()
         this.output = PDFPageContent
       }
@@ -90,6 +97,7 @@ export class ActionGetPDFContentsOfCRX extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     await stopActionMessageStatus(params)
     return true
   }

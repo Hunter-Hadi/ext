@@ -14,6 +14,7 @@ import ActionParameters from '@/features/shortcuts/types/ActionParameters'
  */
 export class ActionGetYoutubeSocialMediaTranscripts extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT'
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -32,18 +33,22 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
         this.error = 'Youtube URL is empty.'
         return
       }
+      if (this.isStopAction) return
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       )
+      if (this.isStopAction) return
       if (!transcripts || transcripts.length === 0) {
         this.output = JSON.stringify([])
         return
       }
       const sectionMaxCharsNum = this.computeSectionMaxChars(transcripts)
+      if (this.isStopAction) return
       const transcriptsProcessedData = this.splitTranscriptArrayByWordCount(
         transcripts,
         sectionMaxCharsNum,
       )
+      if (this.isStopAction) return
       this.output = JSON.stringify(transcriptsProcessedData)
     } catch (e) {
       this.output = JSON.stringify([])
@@ -157,6 +162,7 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     await stopActionMessageStatus(params)
     return true
   }

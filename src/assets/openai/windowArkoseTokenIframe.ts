@@ -109,6 +109,8 @@ class ArkoseTokenIframeGenerator {
             this.status = 'ready'
             this.isReady = true
             console.debug(`[${this.model}] enforcement.onReady`)
+            this.enforcement?.reset()
+            this.enforcement?.run()
           },
           onError: (r) => {
             console.debug(`[${this.model}] enforcement.onError`, r)
@@ -120,9 +122,10 @@ class ArkoseTokenIframeGenerator {
             })
           },
         })
+      } else {
+        this.enforcement?.reset()
+        this.enforcement?.run()
       }
-      this.enforcement?.reset()
-      this.enforcement?.run()
     })
   }
 }
@@ -186,7 +189,7 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
               : GPT4ArkoseTokenIframeGenerator
           const token = await Promise.race([
             GPT4ArkoseTokenIframeGenerator.generate(dx),
-            GPT35ArkoseTokenIframeGenerator.generate(dx),
+            // GPT35ArkoseTokenIframeGenerator.generate(dx),
           ])
           console.debug(`[${arkoseGenerator.model}] enforcement.result`, token)
           event.source.postMessage(

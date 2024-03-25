@@ -1,9 +1,8 @@
+import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-
-import { stopActionMessage } from '../../../common'
 
 /**
  * @since 2024-03-15

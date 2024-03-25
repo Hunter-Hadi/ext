@@ -4,12 +4,11 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-
-import { stopActionMessage } from '../../common'
 
 export class ActionGetYoutubeTranscriptOfURL extends Action {
   static type: ActionIdentifier = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'

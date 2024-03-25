@@ -1,4 +1,5 @@
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import {
   pushOutputToChat,
@@ -13,8 +14,6 @@ import {
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
-
-import { stopActionMessage } from '../../../common'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
   constructor(

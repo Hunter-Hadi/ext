@@ -1,4 +1,5 @@
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -10,8 +11,6 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
-
-import { stopActionMessage } from '../common'
 
 /**
  * @since 2023-09-11

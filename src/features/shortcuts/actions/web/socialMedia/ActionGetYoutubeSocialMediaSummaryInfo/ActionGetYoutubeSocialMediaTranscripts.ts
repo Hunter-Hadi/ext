@@ -1,9 +1,9 @@
+import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
-import { stopActionMessage } from '../../../common'
 import {
   TranscriptResponse,
   YoutubeTranscript,
@@ -33,7 +33,6 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
         this.error = 'Youtube URL is empty.'
         return
       }
-      console.log('youtubeLinkURL', youtubeLinkURL)
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       )
@@ -41,14 +40,17 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
         this.output = JSON.stringify([])
         return
       }
-      const maxChars = this.computeMaxChars(transcripts)
-      const timeTextList = this.splitArrayByWordCount(transcripts, maxChars)
+      const maxChars = this.computeSectionMaxChars(transcripts)
+      const timeTextList = this.splitTranscriptArrayByWordCount(
+        transcripts,
+        maxChars,
+      )
       this.output = JSON.stringify(timeTextList)
     } catch (e) {
       this.output = JSON.stringify([])
     }
   }
-  computeMaxChars(dataArray: TranscriptResponse[]) {
+  computeSectionMaxChars(dataArray: TranscriptResponse[]) {
     let totalLength = 0
 
     for (let i = 0; i < dataArray.length; i++) {
@@ -60,7 +62,10 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
       return 500
     }
   }
-  splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
+  splitTranscriptArrayByWordCount(
+    dataArray: TranscriptResponse[],
+    maxChars = 515,
+  ) {
     const result: TranscriptResponse[] = [] // 存储分割后的结果
     let currentItem = { start: '', duration: 0, text: '' }
     let currentTextList: string[] = [] // 当前文本暂存列表

@@ -5,12 +5,11 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import { stopActionMessage } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
-
-import { stopActionMessage } from '../../common'
 
 /**
  * 上传插件PDF viewer的文件到服务器

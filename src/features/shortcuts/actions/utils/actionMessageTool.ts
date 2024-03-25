@@ -3,7 +3,7 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 
 /**
  * @since 2024-03-20
- * @description 停止action的message 消息
+ * @description 停止action的message Status
  */
 export const stopActionMessageStatus = async (params: {
   engine: IShortcutEngineExternalEngine

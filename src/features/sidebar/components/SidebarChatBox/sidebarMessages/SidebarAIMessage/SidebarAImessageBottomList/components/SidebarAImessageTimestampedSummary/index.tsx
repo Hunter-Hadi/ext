@@ -229,7 +229,9 @@ const SidebarAImessageTimestampedSummary: FC<
               flex: 1,
             }}
           >
-            Unable to generate video without subtitles.
+            {t(
+              'client:sidebar__summary__nav__youtube_summary__not_have__transcript',
+            )}
           </Typography>
         ))}
       {TranscriptListView()}
@@ -259,8 +261,9 @@ const SidebarAImessageTimestampedSummary: FC<
             flex: 1,
           }}
         >
-          We haven&apos;t finished summarizing, An exception occurred, please
-          try again later
+          {t(
+            'client:sidebar__summary__nav__youtube_summary__transcript_timestamped_error',
+          )}
         </Typography>
       )}
     </div>

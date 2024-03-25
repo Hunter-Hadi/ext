@@ -40,16 +40,19 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
         this.output = JSON.stringify([])
         return
       }
-      const maxChars = this.computeSectionMaxChars(transcripts)
-      const timeTextList = this.splitTranscriptArrayByWordCount(
+      const sectionMaxCharsNum = this.computeSectionMaxChars(transcripts)
+      const transcriptsProcessedData = this.splitTranscriptArrayByWordCount(
         transcripts,
-        maxChars,
+        sectionMaxCharsNum,
       )
-      this.output = JSON.stringify(timeTextList)
+      this.output = JSON.stringify(transcriptsProcessedData)
     } catch (e) {
       this.output = JSON.stringify([])
     }
   }
+  /**
+   * @description 计算出当前一章最大多少字数
+   */
   computeSectionMaxChars(dataArray: TranscriptResponse[]) {
     let totalLength = 0
 
@@ -62,6 +65,9 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
       return 500
     }
   }
+  /**
+   * @description 根据maxChars 进行切片章节
+   */
   splitTranscriptArrayByWordCount(
     dataArray: TranscriptResponse[],
     maxChars = 515,

@@ -46,10 +46,9 @@ type TranscriptTimestampedParamType = {
  */
 export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
-  maxChapters = 20
   isStop = false
   requestIntervalTime = 4000
-  abortTaskIds: string[] = []
+  abortTaskIds: string[] = [] //接口取消功能数据
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -75,7 +74,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       }
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
-      )
+      ) //获取youtube transcript 数据
 
       const conversationId =
         engine.clientConversationEngine?.currentConversationIdRef?.current
@@ -145,12 +144,13 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     try {
       const transcriptViewDataList: TranscriptTimestampedParamType[] =
         this.getPrepareViewData(chapterTextList)
+      //创建更新transcript视图逻辑
       for (const index in chapterTextList) {
-        if (this.isStop) return transcriptViewDataList
+        if (this.isStop) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
           chapterTextList[index],
-        )
+        ) //请求GPT返回json
         const endTime = Date.now() // 记录请求结束时间
         const requestDuration = endTime - startTime // 计算请求耗时
         if (this.isStop) return transcriptViewDataList
@@ -193,7 +193,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
     const getHaveLanguagePrompt = await generatePromptAdditionalText({
       AI_RESPONSE_LANGUAGE: userSelectedLanguage,
-    })
+    }) //获取用户的i18设置prompt
     const systemPrompt = `Ignore all previous instructions.${getHaveLanguagePrompt}.Remember, you are a tool for summarizing transcripts
     Help me quickly understand the summary of key points and the start timestamp
     The transcript are composed in the following format
@@ -237,9 +237,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       this.abortTaskIds.push(currentAbortTaskId)
       if (this.isStop) return false
       try {
-        // (chapterTextList.tokens || 0) > 1000 * 15
-        // ? 'gpt-3.5-turbo-1106'
-        // : 'gpt-3.5-turbo-1106'
         const askData = await clientAskMaxAIChatProvider(
           'OPENAI_API',
           'gpt-3.5-turbo-1106',
@@ -298,6 +295,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       },
     )
   }
+
+  /**
+   * @since 2024-03-25
+   * @description 获取视图渲染的数据格式
+   */
   getPrepareViewData(list: { start: string }[]) {
     const newList: TranscriptTimestampedParamType[] = list.map((item) => ({
       id: uuidV4(),
@@ -308,6 +310,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     }))
     return newList
   }
+
+  /**
+   * @since 2024-03-25
+   * @description 注入transcriptList 文本 数据到chaptersList 官方章节数据中
+   */
   getChaptersAllTextList(
     chaptersList: TranscriptTimestampedType[],
     transcriptList: TranscriptResponse[],
@@ -355,6 +362,10 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         return { tokens: systemPromptTokens, ...item }
       })
   }
+  /**
+   * @since 2024-03-25
+   * @description 获取youtube Chapters 官方章节数据
+   */
   getChaptersInfoList() {
     const chapters: TranscriptTimestampedType[] = []
     const chaptersAllDom = document.querySelectorAll(
@@ -376,6 +387,10 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       return chapters
     }
   }
+  /**
+   * @since 2024-03-25
+   * @description 时间转为妙
+   */
   timestampToSeconds = (timestamp: string) => {
     const timeArray = timestamp.split(':').map(Number)
 
@@ -386,10 +401,14 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
 
     return totalSeconds
   }
+  /**
+   * @since 2024-03-25
+   * @description 
+    计算所有字幕文本的tokens总数
+    最多13000 tokens一章
+    最少600 tokens一章
+   */
   createChapters(dataArray: TranscriptResponse[]) {
-    //最多1万tokens一章
-    //最少1000tokens一章
-    // 计算所有字幕文本的tokens总数
     let currentTokens = 1000
     const allText = dataArray.map((item) => item.text).join('')
     const systemPromptTokens = getTextTokens(allText || '').length
@@ -434,8 +453,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     )
     return chapters
   }
+  /**
+   * @since 2024-03-25
+   * @description 这是一个合并章节数据，拿来进行gpt合并提问，但不稳定，暂时放这
+   */
   splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
-    //这是一个合并章节数据，拿来进行gpt合并提问，但不稳定，暂时放这
     const result: TranscriptResponse[] = [] // 存储分割后的结果
     let currentItem = { start: '', duration: 0, text: '' }
     let currentTextList: string[] = [] // 当前文本暂存列表
@@ -485,6 +507,10 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
 
     return result
   }
+  /**
+   * @since 2024-03-25
+   * @description 解析gpt返回的string json 数据
+   */
   getObjectFromString(str: string) {
     let jsonStr = null
 
@@ -524,7 +550,10 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       return null
     }
   }
-
+  /**
+   * @since 2024-03-25
+   * @description 更新Message消息，主要是deepDive
+   */
   async updateConversationMessageInfo(
     conversationId: string,
     messageId: string,

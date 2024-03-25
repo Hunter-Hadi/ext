@@ -6,6 +6,7 @@ export { ActionGetReadabilityContentsOfWebPage } from './ActionGetReadabilityCon
 export { ActionGetYoutubeTranscriptOfURL } from './ActionGetYoutubeTranscriptOfURL'
 export { ActionOpenURLs } from './ActionOpenURLs'
 export { ActionURL } from './ActionURL'
+export { ActionGetChatMessageContentsOfWebPage } from './chat/ActionGetChatMessageContentsOfWebPage'
 export { ActionGetEmailContentsOfWebPage } from './email/ActionGetEmailContentsOfWebPage'
 export { ActionGetEmailDraftOfWebPage } from './email/ActionGetEmailDraftOfWebPage'
 export { ActionGetSocialMediaPostContentOfWebPage } from './socialMedia/ActionGetSocialMediaPostContentOfWebPage'

@@ -11,6 +11,7 @@ import {
   ActionDate,
   ActionDateFormat,
   ActionFetchActions,
+  ActionGetChatMessageContentsOfWebPage,
   ActionGetContentsOfSearchEngine,
   ActionGetContentsOfURL,
   ActionGetContentsOfWebPage,
@@ -83,14 +84,12 @@ const ActionClassMap = {
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]:
-    ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
-  [ActionGetSocialMediaPostDraftOfWebPage.type]:
-    ActionGetSocialMediaPostDraftOfWebPage,
-  [ActionGetSocialMediaPostContentOfWebPage.type]:
-    ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetChatMessageContentsOfWebPage.type]: ActionGetChatMessageContentsOfWebPage,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
@@ -103,8 +102,7 @@ const ActionClassMap = {
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
   // maxai
   [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
-  [ActionMaxAIProcessBuiltInParameters.type]:
-    ActionMaxAIProcessBuiltInParameters,
+  [ActionMaxAIProcessBuiltInParameters.type]: ActionMaxAIProcessBuiltInParameters,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

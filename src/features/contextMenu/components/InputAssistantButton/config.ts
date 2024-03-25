@@ -72,21 +72,19 @@ export type InputAssistantButtonGroupConfigHostType =
   | 'studio.youtube.com'
   | 'instagram.com'
   | 'reddit.com'
+  | 'discord.com'
 
 export const getInputAssistantAction = (
   url: InputAssistantButtonGroupConfigHostType,
 ): ISetActionsType[number] => {
   switch (url) {
-    case 'mail.google.com':
-    case 'outlook.office.com':
-    case 'outlook.live.com':
-    case 'outlook.office365.com':
+    case 'discord.com':
       return {
-              type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-              parameters: {
-                isVariableMiddleOutEnabled: true,
-              },
-            }
+        type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+        parameters: {
+          isVariableMiddleOutEnabled: true,
+        },
+      }
 
     case 'twitter.com':
     case 'linkedin.com':
@@ -101,9 +99,13 @@ export const getInputAssistantAction = (
         },
       }
 
+    case 'mail.google.com':
+    case 'outlook.office.com':
+    case 'outlook.live.com':
+    case 'outlook.office365.com':
     default:
       return {
-        type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+        type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
         parameters: {
           isVariableMiddleOutEnabled: true,
         },
@@ -1056,6 +1058,64 @@ const InputAssistantButtonGroupConfig = {
       InputAssistantBoxSx: {},
     },
   ],
+  'discord.com': [{
+    enable: true,
+    rootSelectors: [
+      '[class^="channelTextArea"] [class^="buttons"]',
+    ],
+    appendPosition: 0,
+    rootParentDeep: 0,
+    rootWrapperTagName: 'div',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'DISCORD_REFINE_DRAFT_BUTTON',
+    },
+    CTAButtonStyle: {
+      padding: '5px 8px',
+      iconSize: 14,
+      borderRadius: '12px 0  0 12px',
+      margin: 'auto'
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 12px 12px 0',
+      padding: '2px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '12px',
+      marginLeft: '8px',
+      marginRight: '8px'
+    },
+  }, {
+    enable: true,
+    rootSelectors: [
+      '[class^="buttonsInner"]',
+    ],
+    appendPosition: 2,
+    rootParentDeep: 0,
+    rootWrapperTagName: 'div',
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
+    },
+    rootWrapperStyle: 'height: 100%;',
+    CTAButtonStyle: {
+      height: '100%',
+      borderRadius: 0,
+      iconSize: 18,
+      padding: '6.5px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 12px 12px 0',
+      padding: '2px',
+    },
+  }]
 } as {
   [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig

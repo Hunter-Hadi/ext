@@ -1462,4 +1462,242 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
     },
   },
 ] as IContextMenuItem[]
-export default [...emailPrompts, ...socialMediaPrompts] as IContextMenuItem[]
+
+const chatPrompts: IContextMenuItem[] = [
+  {
+    id: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    parent: 'root',
+    droppable: true,
+    text: 'Quick reply',
+    data: {
+      editable: false,
+      type: 'group',
+      actions: [],
+      visibility: {
+        whitelist: [
+          'discord.com',
+        ],
+        blacklist: [],
+        isWhitelistMode: true,
+      },
+      searchText: 'social media quick reply',
+      icon: 'Reply',
+    },
+  },
+  {
+    id: 'b5381aa7-5ba3-4f96-a696-c694da938ef2',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Reply with key points',
+    data: {
+      icon: 'DefaultIcon',
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+//         {
+//           type: 'RENDER_TEMPLATE',
+//           parameters: {
+//             template: '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
+//           },
+//         },
+//         {
+//           type: 'SCRIPTS_CONDITIONAL',
+//           parameters: {
+//             WFCondition: 'Equals',
+//             WFFormValues: {
+//               Value: '',
+//               WFSerializationType: 'WFDictionaryFieldValue',
+//             },
+//             WFConditionalIfTrueActions: [
+//               {
+//                 type: 'SET_VARIABLES_MODAL',
+//                 parameters: {
+//                   SetVariablesModalConfig: {
+//                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+//                     title: 'Reply with key points',
+//                     modelKey: 'Sidebar',
+//                     template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+// Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+// ---
+
+// The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+// <context>
+// {{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
+// </context>
+
+
+// Here's the text to reply to:
+// \`\`\`
+// {{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+// \`\`\`
+
+// ---
+
+// Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+// Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+// Do not use hashtags. Write the reply like a real person would. 
+
+// Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+// Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
+// {{KEY_POINTS}}`,
+//                     variables: [
+//                       {
+//                         label: 'Target post/comment',
+//                         VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+//                         valueType: 'Text',
+//                         placeholder: 'Enter target post/comment',
+//                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+//                         systemVariable: false,
+//                       },
+//                       {
+//                         label: 'Key points',
+//                         VariableName: 'KEY_POINTS',
+//                         valueType: 'Text',
+//                         placeholder: 'Enter key points',
+//                         systemVariable: true,
+//                       },
+//                     ],
+//                     systemVariables: [
+//                       {
+//                         VariableName: 'AI_RESPONSE_LANGUAGE',
+//                         defaultValue: 'English',
+//                         valueType: 'Select',
+//                         systemVariable: true,
+//                         label: 'AI Response language',
+//                       },
+//                       {
+//                         VariableName: 'AI_RESPONSE_TONE',
+//                         defaultValue: 'Default',
+//                         valueType: 'Select',
+//                         systemVariable: true,
+//                         label: 'Tone',
+//                       },
+//                       {
+//                         VariableName: 'AI_RESPONSE_WRITING_STYLE',
+//                         defaultValue: 'Default',
+//                         valueType: 'Select',
+//                         systemVariable: true,
+//                         label: 'Writing style',
+//                       },
+//                     ],
+//                   },
+//                 },
+//               },
+//             ],
+//             WFConditionalIfFalseActions: [
+//               {
+//                 type: 'SET_VARIABLES_MODAL',
+//                 parameters: {
+//                   SetVariablesModalConfig: {
+//                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+//                     title: 'Reply with key points',
+//                     modelKey: 'Sidebar',
+//                     template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+
+// Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+// ---
+
+// The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
+// <context>
+// {{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
+// </context>
+
+
+// Here's the text to reply to:
+// \`\`\`
+// {{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
+// \`\`\`
+
+// ---
+
+// Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+
+// Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+// Do not use hashtags. Write the reply like a real person would. 
+
+// Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+// Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
+// {{KEY_POINTS}}`,
+//                     variables: [
+//                       {
+//                         label: 'Context',
+//                         VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
+//                         valueType: 'Text',
+//                         placeholder: 'Enter context',
+//                         defaultValue:
+//                           '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
+//                         systemVariable: true,
+//                       },
+//                       {
+//                         label: 'Target post/comment',
+//                         VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
+//                         valueType: 'Text',
+//                         placeholder: 'Enter target post/comment',
+//                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
+//                         systemVariable: false,
+//                       },
+//                       {
+//                         label: 'Key points',
+//                         VariableName: 'KEY_POINTS',
+//                         valueType: 'Text',
+//                         placeholder: 'Enter key points',
+//                       },
+//                     ],
+//                     systemVariables: [
+//                       {
+//                         VariableName: 'AI_RESPONSE_LANGUAGE',
+//                         defaultValue: 'English',
+//                         valueType: 'Select',
+//                         systemVariable: true,
+//                         label: 'AI Response language',
+//                       },
+//                       {
+//                         VariableName: 'AI_RESPONSE_TONE',
+//                         defaultValue: 'Default',
+//                         valueType: 'Select',
+//                         systemVariable: true,
+//                         label: 'Tone',
+//                       },
+//                       {
+//                         VariableName: 'AI_RESPONSE_WRITING_STYLE',
+//                         defaultValue: 'Default',
+//                         valueType: 'Select',
+//                         systemVariable: true,
+//                         label: 'Writing style',
+//                       },
+//                     ],
+//                   },
+//                 },
+//               },
+//             ],
+//           },
+//         },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply reply with key points',
+    },
+  },
+]
+export default [
+  ...emailPrompts,
+  ...socialMediaPrompts,
+  ...chatPrompts,
+] as IContextMenuItem[]

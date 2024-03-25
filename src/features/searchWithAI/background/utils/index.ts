@@ -14,7 +14,7 @@ import {
   ClaudeWebappChat,
   MaxAIClaudeChat,
   MaxAIFreeChat,
-  OpenAiApiChat,
+  OpenAIApiChat,
   UseChatGPTPlusChat,
 } from '@/background/src/chat'
 
@@ -30,7 +30,7 @@ export const initProviderChatAdapters = () => {
     new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
   )
   const newOpenAIApiChatAdapter = new ChatAdapter(
-    new OpenAIApiChatProvider(new OpenAiApiChat()),
+    new OpenAIApiChatProvider(new OpenAIApiChat()),
   )
   const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
   const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))

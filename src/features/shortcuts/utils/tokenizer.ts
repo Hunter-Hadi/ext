@@ -116,7 +116,7 @@ export const getTextTokensWithThread = async (text: string, thread: number) => {
 }
 
 export const sliceTextByTokens = async (
-  text: string,
+  originalText: string,
   tokenLimit: number,
   options?: {
     thread?: number
@@ -136,8 +136,12 @@ export const sliceTextByTokens = async (
     startSlicePosition = 'end',
   } = options || {}
   if (
-    (await getTextTokensWithThread(text.slice(0, partOfTextLength), thread))
-      .length > tokenLimit
+    (
+      await getTextTokensWithThread(
+        originalText.slice(0, partOfTextLength),
+        thread,
+      )
+    ).length > tokenLimit
   ) {
     console.log('sliceTextByTokens 切割文本片段太大')
     // 如果片段的token数量大于限制的token数量, 则直接返回片段
@@ -145,144 +149,105 @@ export const sliceTextByTokens = async (
       isLimit: true,
       text:
         startSlicePosition === 'start'
-          ? text.slice(0, partOfTextLength)
-          : text.slice(-partOfTextLength),
-      origin: text,
+          ? originalText.slice(0, partOfTextLength)
+          : originalText.slice(-partOfTextLength),
+      origin: originalText,
       tokens: 0,
     }
   }
-  const textChunks: string[] = []
-  // 基于 [startSliceRate] * [partOfTextLength] 和 [endSliceRate] * [partOfTextLength] 填充textChunks
-  const fillTextChunks = () => {
-    // 从头部开始
-    const startSliceChunkSize = startSliceRate * partOfTextLength
-    // 从尾部开始
-    const endSliceChunkSize = endSliceRate * partOfTextLength
-    let startSlicePosition = 0
-    let endSlicePosition = text.length
+  /**
+   * 将文本按比率分割成头部和尾部块
+   * @description 基于 [startSliceRate] * [partOfTextLength] 和 [endSliceRate] * [partOfTextLength] 填充textChunks
+   * @returns {string[]} 分割后的文本块数组
+   */
+  const splitTextToChunks = () => {
     const startChunks = []
     const endChunks = []
-    while (startSlicePosition < endSlicePosition) {
-      if (startSliceChunkSize + startSlicePosition > endSlicePosition) {
-        // 如果剩余的长度不够一个chunk
-        startChunks.push(
-          text.slice(
-            startSlicePosition,
-            startSlicePosition + endSlicePosition - startSlicePosition,
-          ),
-        )
-        startSlicePosition += endSlicePosition - startSlicePosition
-      } else {
-        // 如果剩余的长度够一个chunk
-        startChunks.push(
-          text.slice(
-            startSlicePosition,
-            startSlicePosition + startSliceChunkSize,
-          ),
-        )
-        startSlicePosition += startSliceChunkSize
-      }
-      if (startSlicePosition >= endSlicePosition) {
+    let start = 0
+    let end = originalText.length
+    const startChunkSize = Math.floor(startSliceRate * partOfTextLength)
+    const endChunkSize = Math.floor(endSliceRate * partOfTextLength)
+
+    while (start < end) {
+      const remainingFromStart = end - start
+      if (remainingFromStart < startChunkSize) {
+        startChunks.push(originalText.slice(start, end))
         break
       }
-      if (endSlicePosition - endSliceChunkSize < startSlicePosition) {
-        // 如果剩余的长度不够一个chunk
-        endChunks.unshift(
-          text.slice(
-            endSlicePosition - (endSlicePosition - startSlicePosition),
-            endSlicePosition,
-          ),
-        )
-        endSlicePosition -= endSlicePosition - startSlicePosition
-      } else {
-        // 如果剩余的长度够一个chunk
-        endChunks.unshift(
-          text.slice(endSlicePosition - endSliceChunkSize, endSlicePosition),
-        )
-        endSlicePosition -= endSliceChunkSize
+      startChunks.push(originalText.slice(start, start + startChunkSize))
+      start += startChunkSize
+
+      const remainingFromEnd = end - start
+      if (remainingFromEnd < endChunkSize) {
+        endChunks.unshift(originalText.slice(start, end))
+        break
       }
+      endChunks.unshift(originalText.slice(end - endChunkSize, end))
+      end -= endChunkSize
     }
-    textChunks.push(...startChunks, ...endChunks)
+
+    return startChunks.concat(endChunks)
   }
-  fillTextChunks()
-  const totalChunks = textChunks.length
-  let currentDirection = startSlicePosition === 'end' ? 'end' : 'start'
-  // 基于 [thread] 从头尾获取本次计算的 chunks
-  const getChunksByThead = () => {
+  // 基于 [thread] 交替从头部和尾部获取chunk.
+  const textChunks = splitTextToChunks()
+  const getChunkDirection = startSlicePosition === 'start' ? 'start' : 'end'
+  let getChunksByThreadCurrentIndex =
+    getChunkDirection === 'start' ? 0 : textChunks.length - 1
+  const getChunksByThread = () => {
     const result: Array<{
-      start: boolean
+      isStart: boolean
       text: string
     }> = []
     let count = 0
     while (count < thread) {
-      if (textChunks.length === 0) {
+      const isAddFirst = getChunksByThreadCurrentIndex === 0
+      if (textChunks.length > 0) {
+        const partOfText =
+          (isAddFirst ? textChunks.shift() : textChunks.pop()) || ''
+        result.push({
+          isStart: isAddFirst,
+          text: partOfText,
+        })
+        count++
+        // 翻转startIndex
+        getChunksByThreadCurrentIndex = isAddFirst ? textChunks.length - 1 : 0
+      } else {
         break
       }
-      // 如果是从尾部开始
-      if (currentDirection === 'end') {
-        // 如果是偶数
-        if (count % 2 === 0) {
-          // 从尾部获取
-          result.push({
-            start: false,
-            text: textChunks.pop() || '',
-          })
-        } else {
-          // 从头部
-          result.push({
-            start: true,
-            text: textChunks.shift() || '',
-          })
-        }
-        currentDirection = 'start'
-      } else {
-        // 如果是从头部开始
-        // 如果是偶数
-        if (count % 2 === 0) {
-          // 从头部
-          result.push({
-            start: true,
-            text: textChunks.shift() || '',
-          })
-        } else {
-          // 从尾部获取
-          result.push({
-            start: false,
-            text: textChunks.pop() || '',
-          })
-        }
-        currentDirection = 'end'
-      }
-      count++
     }
     return result
   }
   // 最大token上限
   const maxTokenLimit = tokenLimit - bufferTokens
   let usage = 0
-  const startResults: string[] = []
-  const endResults: string[] = []
+  // 获取块并计算总token数,直到超过限制值或全部获取完毕
+  const startResults = []
+  const endResults = []
+
   while (textChunks.length > 0) {
-    const currentChunks = getChunksByThead()
-    const currentTokens = await Promise.all(
-      currentChunks.map(async (chunk) => {
+    const currentChunks = getChunksByThread()
+    const currentChunkWithTokens = await Promise.all(
+      currentChunks.map(async (chunk, index) => {
         const tokens = await getTextTokensWithThread(chunk.text, thread)
-        return {
-          start: chunk.start,
-          tokens: tokens.length,
-          text: chunk.text,
-        }
+        return { ...chunk, tokens: tokens.length }
       }),
     )
-    for (let i = 0; i < currentTokens.length; i++) {
-      console.log(
-        `sliceTextByTokens process ${Number(
-          ([...startResults, ...endResults].length / totalChunks) * 100,
-        ).toFixed(2)}%, usage [${usage}] / [${maxTokenLimit}]`,
-      )
-      const currentToken = currentTokens[i]
-      if (usage + currentToken.tokens > maxTokenLimit) {
-        console.log(`sliceTextByTokens result usage [${usage}]`)
+
+    const progress =
+      ((startResults.length + endResults.length) / textChunks.length) * 100
+    console.log(
+      `Processing ${progress.toFixed(
+        2,
+      )}%, usage [${usage}] / [${maxTokenLimit}]`,
+    )
+
+    for (const { isStart, tokens, text } of currentChunkWithTokens) {
+      if (usage + tokens > maxTokenLimit) {
+        console.log(
+          `sliceTextByTokens result usage [slice] [${usage}]`,
+          originalText.startsWith(startResults.join('')),
+          originalText.endsWith(endResults.join('')),
+        )
         return {
           isLimit: true,
           text: [...startResults, ...endResults].join(''),
@@ -290,24 +255,47 @@ export const sliceTextByTokens = async (
           tokens: usage,
         }
       }
-      usage += currentToken.tokens
-      if (currentToken.start) {
-        startResults.push(currentToken.text)
+
+      usage += tokens
+      if (isStart) {
+        startResults.push(text)
       } else {
-        endResults.unshift(currentToken.text)
+        endResults.unshift(text)
       }
     }
   }
 
   const results = [...startResults, ...endResults]
   console.log(
-    `sliceTextByTokens result usage [${usage}]`,
-    results.join('') === text,
+    `sliceTextByTokens result usage [full] [${usage}]`,
+    results.join('') === originalText,
   )
   return {
     isLimit: false,
     text: results.join(''),
-    origin: text,
+    origin: originalText,
     tokens: usage,
   }
+}
+
+/**
+ * Calculates the maximum number of tokens to allocate for history, question, and response.
+ * @param {number} maxAIModelTokens - The maximum number of tokens allowed by the AI model.
+ * @returns {number} The maximum number of tokens to allocate for history, question, and response.
+ * @description The returned value is the minimum of 8000 tokens and half of the AI model's maximum token limit.
+ */
+export const calculateMaxHistoryQuestionResponseTokens = (
+  maxAIModelTokens: number,
+) => {
+  return Math.min(8000, maxAIModelTokens / 2)
+}
+
+/**
+ * Calculates the maximum number of tokens to allocate for the response.
+ * @param {number} maxAIModelTokens - The maximum number of tokens allowed by the AI model.
+ * @returns {number} The maximum number of tokens to allocate for the response.
+ * @description The returned value is the minimum of 2000 tokens and one-fourth of the AI model's maximum token limit.
+ */
+export const calculateMaxResponseTokens = (maxAIModelTokens: number) => {
+  return Math.min(2000, maxAIModelTokens / 4)
 }

@@ -13,12 +13,12 @@ import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { hasData } from '@/utils'
 import Log from '@/utils/Log'
 
-const log = new Log('Background/Chat/OpenAiApiChat')
+const log = new Log('Background/Chat/OpenAIApiChat')
 
-class OpenAiApiChat extends BaseChat {
+class OpenAIApiChat extends BaseChat {
   status: ChatStatus = 'needAuth'
   constructor() {
-    super('OpenAiApiChat')
+    super('OpenAIApiChat')
     this.init()
   }
   private init() {
@@ -247,5 +247,5 @@ class OpenAiApiChat extends BaseChat {
     }
   }
 }
-export { OpenAiApiChat }
+export { OpenAIApiChat }
 export { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat/types'

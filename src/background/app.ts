@@ -32,7 +32,7 @@ import {
   MaxAIDALLEChat,
   MaxAIFreeChat,
   MaxAIGeminiChat,
-  OpenAiApiChat,
+  OpenAIApiChat,
   OpenAIChat,
   PoeChat,
   UseChatGPTPlusChat,
@@ -395,7 +395,7 @@ const initChromeExtensionMessage = () => {
     new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
   )
   const newOpenAIApiChatAdapter = new ChatAdapter(
-    new OpenAIApiChatProvider(new OpenAiApiChat()),
+    new OpenAIApiChatProvider(new OpenAIApiChat()),
   )
   const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
   const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
@@ -620,6 +620,10 @@ const initExternalMessageListener = () => {
     'idgpnmonknjnojddfkpgkljpfnnfcklj',
     //simplytends
     'kajbojdeijchbhbodifhaigbnbodjahj',
+    // opgbiafapkbbnbnjcdomjaghbckfkglc modeheader-edge
+    'opgbiafapkbbnbnjcdomjaghbckfkglc',
+    // flahobhjikkpnpohomeckhdjjkkkkmoc webchatgpt-edge
+    'flahobhjikkpnpohomeckhdjjkkkkmoc',
   ]
 
   Browser.runtime.onMessageExternal.addListener(async function (

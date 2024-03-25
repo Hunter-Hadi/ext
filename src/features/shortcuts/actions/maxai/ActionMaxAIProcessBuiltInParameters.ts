@@ -5,7 +5,10 @@ import {
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+import {
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 
 /**
  * 用于处理MaxAI shortcuts运行时的内置变量
@@ -40,7 +43,7 @@ export class ActionMaxAIProcessBuiltInParameters extends Action {
           const maxTokens = conversation?.meta.maxTokens || 4096
           const sliceTextResult = await sliceTextByTokens(
             params.SELECTED_TEXT,
-            maxTokens,
+            maxTokens - calculateMaxHistoryQuestionResponseTokens(maxTokens),
             {
               thread: 4,
             },

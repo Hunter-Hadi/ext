@@ -155,14 +155,13 @@ export class ActionAskChatGPT extends Action {
       // 如果用的是contextMenu，则直接使用contextMenu的名字
       if (contextMenu?.text) {
         if (askChatGPTType === 'ASK_CHAT_GPT_WITH_PREFIX') {
-          const contextMenuNameWithPrefix =
+          messageVisibleText =
             getContextMenuNamePrefixWithHost() + contextMenu.text
-          contextMenu.text = contextMenuNameWithPrefix
-          messageVisibleText = contextMenuNameWithPrefix
         } else {
           messageVisibleText = contextMenu.text
         }
       }
+      this.question.meta.messageVisibleText = messageVisibleText
       const {
         clientConversationEngine,
         shortcutsMessageChannelEngine,
@@ -210,12 +209,7 @@ export class ActionAskChatGPT extends Action {
             'add',
             conversationId,
             0,
-            [
-              {
-                ...this.question,
-                text: messageVisibleText,
-              },
-            ],
+            [this.question],
           )
         }
         // 开始提问

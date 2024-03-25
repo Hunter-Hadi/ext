@@ -37,15 +37,15 @@ class ChromeExtensionArkoseTokenGenerator {
     log.info('inject iframe fail')
     return false
   }
-  async generateToken(model: ArkoseTokenModelType) {
+  async generateToken(model: ArkoseTokenModelType, dx?: string) {
     // 第一步 注入iframe
     if (!(await this.injectIframe(model))) {
       return ''
     }
     // 第二步 获取arkoseToken和超时处理
     const token = await promiseTimeout(
-      this.postMessageGenerateToken(model),
-      10 * 1000,
+      this.postMessageGenerateToken(model, dx),
+      15 * 1000,
       '',
     )
     // 如果获取失败，移除iframe
@@ -143,7 +143,10 @@ class ChromeExtensionArkoseTokenGenerator {
       iframe.remove()
     }
   }
-  private async postMessageGenerateToken(model: ArkoseTokenModelType) {
+  private async postMessageGenerateToken(
+    model: ArkoseTokenModelType,
+    dx?: string,
+  ) {
     return new Promise<string>((resolve) => {
       const once = (event: any) => {
         if (
@@ -164,6 +167,7 @@ class ChromeExtensionArkoseTokenGenerator {
           type: 'get_token',
           data: {
             model,
+            dx,
           },
         },
         '*',
@@ -172,4 +176,5 @@ class ChromeExtensionArkoseTokenGenerator {
   }
 }
 
-export const chromeExtensionArkoseTokenGenerator = new ChromeExtensionArkoseTokenGenerator()
+export const chromeExtensionArkoseTokenGenerator =
+  new ChromeExtensionArkoseTokenGenerator()

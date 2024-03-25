@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "ಬಟನ್ ಒತ್ತಿದಾಗ ಮಾತ್ರ AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೋರಿಸಿ.",
     "feature_card__appearance__field_summarize_button__title": "ಸಂಗ್ರಹಿಸು ಬಟನ್",
     "feature_card__prompts__edit_prompt__field_advance__title": "ಮುಂದುವರಿ",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ಆಉಟ್‌ಪುಟ್ ಭಾಷೆ & ಧ್ವನಿ & ಬರವಣಿಗೆ ಶೈಲಿ"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ಆಉಟ್‌ಪುಟ್ ಭಾಷೆ & ಧ್ವನಿ & ಬರವಣಿಗೆ ಶೈಲಿ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "ಸಂದರ್ಭ ಮೆನು",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "ಬರವಣಿಗೆ ಸಹಾಯಕ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "ಸಾರಾಂಶ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "ಹುಡುಕು",
+    "feature_card__prompts__new_prompt__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್",
+    "feature_card__prompts__new_prompt_group__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್ ಗುಂಪು",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ತ್ವರಿತ ಉತ್ತರ",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ಡ್ರಾಫ್ಟ್ ಸಂಪಾದಿಸು ಅಥವಾ ಪರಿಶೀಲಿಸು",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ತ್ವರಿತ ರಚನೆ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

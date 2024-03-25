@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Mostrar respuesta de IA solo cuando hagas clic en un botón manualmente.",
     "feature_card__appearance__field_summarize_button__title": "Botón de resumen",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avanzado",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de salida y tono y estilo de escritura"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de salida y tono y estilo de escritura",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menú contextual",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Asistente de escritura",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Resumen",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Buscar",
+    "feature_card__prompts__new_prompt__title": "Nueva sugerencia",
+    "feature_card__prompts__new_prompt_group__title": "Nuevo grupo de sugerencias",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Respuesta rápida",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar o revisar borrador",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composición rápida"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",

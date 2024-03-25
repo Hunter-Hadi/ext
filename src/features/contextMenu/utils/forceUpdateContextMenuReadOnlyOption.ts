@@ -16,8 +16,10 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
  */
 const forceUpdateContextMenuReadOnlyOption = async () => {
   const updateContextButtonKeys: IChromeExtensionButtonSettingKey[] = [
-    'inputAssistantComposeReplyButton',
     'textSelectPopupButton',
+    'inputAssistantComposeReplyButton',
+    'inputAssistantRefineDraftButton',
+    'inputAssistantComposeNewButton',
   ]
   const updateButtonContextMenu = async (
     buttonKey: IChromeExtensionButtonSettingKey,
@@ -36,10 +38,10 @@ const forceUpdateContextMenuReadOnlyOption = async () => {
       })
       .filter(Boolean) as IContextMenuItem[]
     updateMenuList = uniqBy(updateMenuList, 'id')
-    if (buttonKey === 'inputAssistantComposeReplyButton') {
-      // NOTE gmail 目前没有编辑权限
-      updateMenuList = []
-    }
+    // if (buttonKey === 'inputAssistantComposeReplyButton') {
+    //   // NOTE gmail 目前没有编辑权限
+    //   updateMenuList = []
+    // }
     const contextMenuIdMap: {
       [key: string]: string
     } = {}

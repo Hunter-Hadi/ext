@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Paparkan respons AI hanya apabila anda mengklik butang secara manual.",
     "feature_card__appearance__field_summarize_button__title": "Butang Ringkaskan",
     "feature_card__prompts__edit_prompt__field_advance__title": "Maju",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Bahasa Output & Tone & Gaya Penulisan"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Bahasa Output & Tone & Gaya Penulisan",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu konteks",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Pembantu penulisan",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Ringkasan",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Carian",
+    "feature_card__prompts__new_prompt__title": "Prompt baru",
+    "feature_card__prompts__new_prompt_group__title": "Kumpulan prompt baru",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Balasan cepat",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Edit atau semak draf",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Tulis cepat"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

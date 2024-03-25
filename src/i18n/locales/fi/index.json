@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Näytä tekoälyn vastaus vain, kun napsautat painiketta manuaalisesti.",
     "feature_card__appearance__field_summarize_button__title": "Tiivistä-painike",
     "feature_card__prompts__edit_prompt__field_advance__title": "Edistynyt",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Tulostuskieli ja sävy ja kirjoitustyyli"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Tulostuskieli ja sävy ja kirjoitustyyli",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstivalikko",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Kirjoitusapuri",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Yhteenveto",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Haku",
+    "feature_card__prompts__new_prompt__title": "Uusi kehotus",
+    "feature_card__prompts__new_prompt_group__title": "Uusi kehotusryhmä",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Pikavastaus",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Muokkaa tai tarkista luonnos",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Nopea kirjoitus"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

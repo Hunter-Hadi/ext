@@ -1,6 +1,7 @@
 import { useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
+import { type IChromeExtensionButtonSettingKey } from '@/background/utils/chromeExtensionStorage/type'
 import { ShortcutActionEditorState } from '@/features/shortcuts/components/ShortcutsActionsEditor/store'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
 import { updateHtmlWithVariables } from '@/features/shortcuts/components/ShortcutsActionsEditor/utils'
@@ -18,6 +19,8 @@ export type IPresetVariableName =
   | 'AI_RESPONSE_LANGUAGE'
   | 'AI_RESPONSE_TONE'
   | 'AI_RESPONSE_WRITING_STYLE'
+  | 'EMAIL_CONTENT'
+  | 'SOCIAL_MEDIA_CONTENT'
 export interface IPresetActionSetVariable extends IActionSetVariable {
   VariableName: IPresetVariableName
 }
@@ -26,6 +29,7 @@ export type IPresetVariablesGroupItem = {
   variable: IPresetActionSetVariable
   description?: I18nextKeysType
   examples: I18nextKeysType[]
+  permissionKeys?: IChromeExtensionButtonSettingKey[]
 }
 
 export const PRESET_VARIABLE_MAP: {
@@ -119,6 +123,20 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Select',
     label: 'Writing style',
   },
+  EMAIL_CONTENT: {
+    VariableName: 'EMAIL_CONTENT',
+    defaultValue: '{{EMAIL_CONTENT}}',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'EMAIL_CONTENT',
+  },
+  SOCIAL_MEDIA_CONTENT: {
+    VariableName: 'SOCIAL_MEDIA_CONTENT',
+    defaultValue: '{{SOCIAL_MEDIA_CONTENT}}',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'SOCIAL_MEDIA_CONTENT',
+  },
 }
 
 export const PRESET_VARIABLES_GROUP_MAP: {
@@ -148,6 +166,28 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       description:
         'prompt_editor:preset_variables__system__system_current_date__description',
       examples: [],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.EMAIL_CONTENT,
+      description:
+        'prompt_editor:preset_variables__system__system_current_date__description',
+      examples: [],
+      permissionKeys: [
+        'inputAssistantComposeReplyButton',
+        'inputAssistantComposeNewButton',
+        'inputAssistantRefineDraftButton',
+      ],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.SOCIAL_MEDIA_CONTENT,
+      description:
+        'prompt_editor:preset_variables__system__system_current_date__description',
+      examples: [],
+      permissionKeys: [
+        'inputAssistantComposeReplyButton',
+        'inputAssistantComposeNewButton',
+        'inputAssistantRefineDraftButton',
+      ],
     },
   ],
   // 'prompt_editor:preset_variables__web_search__title': [

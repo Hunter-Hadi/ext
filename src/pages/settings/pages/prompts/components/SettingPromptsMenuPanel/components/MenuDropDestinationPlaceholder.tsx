@@ -1,13 +1,11 @@
 import { NodeModel } from '@minoru/react-dnd-treeview'
 import Box from '@mui/material/Box'
-import React from 'react'
+import React, { type FC } from 'react'
 
-type Props = {
+const MenuDropDestinationPlaceholder: FC<{
   node: NodeModel
   depth: number
-}
-
-const ContextMenuPlaceholder: React.FC<Props> = (props) => {
+}> = ({ node, depth }) => {
   return (
     <Box
       sx={{
@@ -19,8 +17,8 @@ const ContextMenuPlaceholder: React.FC<Props> = (props) => {
         top: 0,
         zIndex: 100,
       }}
-      style={{ left: props.depth * 24 }}
+      style={{ left: depth * 24 }}
     />
   )
 }
-export default ContextMenuPlaceholder
+export default MenuDropDestinationPlaceholder

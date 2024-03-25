@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Отображать ответ ИИ только при нажатии кнопки вручную.",
     "feature_card__appearance__field_summarize_button__title": "Кнопка суммирования",
     "feature_card__prompts__edit_prompt__field_advance__title": "Продвинутый",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Язык вывода и тональность и стиль письма"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Язык вывода и тональность и стиль письма",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Помощник по написанию",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Резюме",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Поиск",
+    "feature_card__prompts__new_prompt__title": "Новый подсказка",
+    "feature_card__prompts__new_prompt_group__title": "Новая группа подсказок",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Быстрый ответ",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редактировать или просмотреть черновик",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Быстрое составление"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",

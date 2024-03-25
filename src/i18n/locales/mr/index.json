@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "बटणावर क्लिक केल्यास फक्त AI प्रतिसाद दाखवा.",
     "feature_card__appearance__field_summarize_button__title": "संक्षेपित करा बटण",
     "feature_card__prompts__edit_prompt__field_advance__title": "अग्रिम",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा आणि टोन आणि लेखन स्टाइल"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा आणि टोन आणि लेखन स्टाइल",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "संदर्भ मेनू",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "लेखन सहाय्यक",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "संक्षेप",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "शोध",
+    "feature_card__prompts__new_prompt__title": "नवीन प्रॉम्प्ट",
+    "feature_card__prompts__new_prompt_group__title": "नवीन प्रॉम्प्ट गट",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "त्वरित प्रतिसाद",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ड्राफ्ट संपादित करा किंवा समीक्षा करा",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

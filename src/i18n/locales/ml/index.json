@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ മാത്രം AI പ്രതികരണം കാണിക്കുക.",
     "feature_card__appearance__field_summarize_button__title": "സംഗ്രഹിക്കുക ബട്ടൺ",
     "feature_card__prompts__edit_prompt__field_advance__title": "മുന്നോട്ട്",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "പ്രതിഫലം ഭാഷ & ശൈലം & രചനാ ശൈലി"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "പ്രതിഫലം ഭാഷ & ശൈലം & രചനാ ശൈലി",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "സന്ദർഭ മെനു",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "എഴുത്തു സഹായി",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "സംഗ്രഹം",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "തിരയൽ",
+    "feature_card__prompts__new_prompt__title": "പുതിയ പ്രോംപ്റ്റ്",
+    "feature_card__prompts__new_prompt_group__title": "പുതിയ പ്രോംപ്റ്റ് ഗ്രൂപ്പ്",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "വേഗത്തിൽ ഉത്തരം",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ഡ്രാഫ്റ്റ് എഡിറ്റുകൾ അല്ലെങ്കിൽ അവലോകനം",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "വേഗത്തിൽ രചന"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

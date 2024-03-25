@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "AI प्रतिक्रिया केवल तब दिखाएं जब आप मैन्युअल रूप से एक बटन पर क्लिक करें।",
     "feature_card__appearance__field_summarize_button__title": "संक्षेप बटन",
     "feature_card__prompts__edit_prompt__field_advance__title": "अग्रिम",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा और ध्वनि और लेखन शैली"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा और ध्वनि और लेखन शैली",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "संदर्भ मेनू",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "लेखन सहायक",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "सारांश",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "खोज",
+    "feature_card__prompts__new_prompt__title": "नया प्रॉम्प्ट",
+    "feature_card__prompts__new_prompt_group__title": "नया प्रॉम्प्ट समूह",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "त्वरित जवाब",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ड्राफ्ट संपादित करें या समीक्षा करें",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",

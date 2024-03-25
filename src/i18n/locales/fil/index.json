@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Ipakita ang tugon ng AI lamang kapag ikaw ay mag-click ng isang button manu-mano.",
     "feature_card__appearance__field_summarize_button__title": "Pindutin para sa Buod",
     "feature_card__prompts__edit_prompt__field_advance__title": "Abante",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Wika ng Output & Tonong Pagsusulat"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Wika ng Output & Tonong Pagsusulat",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu ng konteksto",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Asistente sa pagsusulat",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Buod",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Hanapin",
+    "feature_card__prompts__new_prompt__title": "Bagong prompt",
+    "feature_card__prompts__new_prompt_group__title": "Bagong grupo ng prompt",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Mabilis na tugon",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "I-edit o suriin ang draft",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Mabilis na komposisyon"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

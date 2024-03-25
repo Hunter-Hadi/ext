@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "বাটনে ক্লিক করলেই এইচটিএমএল উত্তর দেখান।",
     "feature_card__appearance__field_summarize_button__title": "সংক্ষেপ বোতাম",
     "feature_card__prompts__edit_prompt__field_advance__title": "অগ্রসর",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "আউটপুট ভাষা এবং ধ্বনি এবং লেখা শৈলী"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "আউটপুট ভাষা এবং ধ্বনি এবং লেখা শৈলী",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "সংদর্ভ মেনু",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "লেখা সহায়ক",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "সংক্ষিপ্ত",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "অনুসন্ধান",
+    "feature_card__prompts__new_prompt__title": "নতুন প্রম্পট",
+    "feature_card__prompts__new_prompt_group__title": "নতুন প্রম্পট গ্রুপ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "দ্রুত উত্তর",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ড্রাফট সম্পাদনা বা পর্যালোচনা করুন",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "দ্রুত রচনা"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

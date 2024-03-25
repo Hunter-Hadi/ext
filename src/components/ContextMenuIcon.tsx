@@ -146,7 +146,6 @@ export const CONTEXT_MENU_ICONS = [
   'ExpandMore',
   'ExpandLess',
   'Fullscreen',
-  'Lock',
   'TextSnippet',
   'ArrowDropUp',
   'ArrowDropDown',

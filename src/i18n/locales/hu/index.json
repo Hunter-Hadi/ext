@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Az AI választ csak akkor jeleníti meg, ha kézzel kattintasz egy gombra.",
     "feature_card__appearance__field_summarize_button__title": "Összefoglalás gomb",
     "feature_card__prompts__edit_prompt__field_advance__title": "Előrehaladás",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Kimeneti nyelv és hangnem és írási stílus"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Kimeneti nyelv és hangnem és írási stílus",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextus menü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Írási segéd",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Összefoglalás",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Keresés",
+    "feature_card__prompts__new_prompt__title": "Új prompt",
+    "feature_card__prompts__new_prompt_group__title": "Új prompt csoport",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Gyors válasz",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Szerkesztés vagy vázlat áttekintése",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Gyors szerkesztés"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

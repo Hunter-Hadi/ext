@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "صرف اس صورت میں AI جواب دکھائیں جب آپ مینوئلی بٹن پر کلک کریں۔",
     "feature_card__appearance__field_summarize_button__title": "خلاصہ کریں بٹن",
     "feature_card__prompts__edit_prompt__field_advance__title": "ترقی",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و طن و سبک نوشتار"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و طن و سبک نوشتار",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "منو کیا",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "لکھائی معاون",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "خلاصہ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "تلاش",
+    "feature_card__prompts__new_prompt__title": "نیا پرومپٹ",
+    "feature_card__prompts__new_prompt_group__title": "نیا پرومپٹ گروپ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "جلدی جواب دیں",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ڈرافٹ ترمیم یا جائزہ لیں",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "جلدی تحریر کریں"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Visa AI-svar endast när du klickar på en knapp manuellt.",
     "feature_card__appearance__field_summarize_button__title": "Sammanfatta knapp",
     "feature_card__prompts__edit_prompt__field_advance__title": "Framsteg",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Utmatningsspråk och ton och skrivstil"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Utmatningsspråk och ton och skrivstil",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextmeny",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Skrivassistent",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Sammanfattning",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Sök",
+    "feature_card__prompts__new_prompt__title": "Ny prompt",
+    "feature_card__prompts__new_prompt_group__title": "Ny promptgrupp",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Snabbt svar",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Redigera eller granska utkast",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Snabb komponering"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",

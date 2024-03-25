@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Zobraziť odpoveď AI iba po manuálnom kliknutí na tlačidlo.",
     "feature_card__appearance__field_summarize_button__title": "Tlačidlo zhrnutia",
     "feature_card__prompts__edit_prompt__field_advance__title": "Posunúť sa vpred",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupný jazyk a tón a štýl písania"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupný jazyk a tón a štýl písania",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextové menu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Pomocník pri písaní",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Súhrn",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Vyhľadávanie",
+    "feature_card__prompts__new_prompt__title": "Nový návrh",
+    "feature_card__prompts__new_prompt_group__title": "Nová skupina návrhov",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rýchla odpoveď",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upraviť alebo posúdiť koncept",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rýchle zostavenie"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",

@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Rādīt AI atbildi tikai tad, kad manuāli noklikšķiniet uz pogas.",
     "feature_card__appearance__field_summarize_button__title": "Apkopot pogu",
     "feature_card__prompts__edit_prompt__field_advance__title": "Uzlabot",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izvades valoda un tonis un rakstīšanas stils"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izvades valoda un tonis un rakstīšanas stils",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Konteksta izvēlne",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Rakstīšanas asistents",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Kopsavilkums",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Meklēt",
+    "feature_card__prompts__new_prompt__title": "Jauns ieteikums",
+    "feature_card__prompts__new_prompt_group__title": "Jauna ieteikumu grupa",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Ātra atbilde",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Rediģēt vai pārskatīt melnrakstu",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Ātra sastādīšana"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

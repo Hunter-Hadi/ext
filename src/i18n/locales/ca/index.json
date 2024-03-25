@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Mostra la resposta de l'IA només quan feu clic manualment en un botó.",
     "feature_card__appearance__field_summarize_button__title": "Botó de resum",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avançat",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de sortida i to i estil d'escriptura"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de sortida i to i estil d'escriptura",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menú contextual",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Assistent d'escriptura",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Resum",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Cerca",
+    "feature_card__prompts__new_prompt__title": "Nova indicació",
+    "feature_card__prompts__new_prompt_group__title": "Nou grup d'indicacions",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Resposta ràpida",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar o revisar esborrany",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composició ràpida"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",

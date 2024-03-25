@@ -1,5 +1,4 @@
 import dayjs from 'dayjs'
-import cloneDeep from 'lodash-es/cloneDeep'
 
 import {
   getChromeExtensionDBStorage,
@@ -42,7 +41,7 @@ export const syncLocalSettingsToServerSettings = async () => {
     await setChromeExtensionDBStorage({
       lastModified,
     })
-    const localSettings = cloneDeep(await getChromeExtensionDBStorage())
+    const localSettings = await getChromeExtensionDBStorage()
     const result = await post<{
       status: 'OK' | 'ERROR'
     }>('/user/save_user_settings', {

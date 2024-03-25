@@ -2,12 +2,12 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, memo, useMemo, useState } from 'react'
 
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
-const ContextMenuViewSource: FC<{
+const SettingPromptsViewSource: FC<{
   treeData: IContextMenuItem[]
 }> = ({ treeData }) => {
   const [expanded, setExpanded] = useState(false)
@@ -18,7 +18,7 @@ const ContextMenuViewSource: FC<{
     return ''
   }, [expanded, treeData])
   return (
-    <>
+    <Stack>
       <Button
         variant={'outlined'}
         onClick={() => setExpanded((prevState) => !prevState)}
@@ -57,7 +57,7 @@ const ContextMenuViewSource: FC<{
           </Box>
         </Stack>
       </Collapse>
-    </>
+    </Stack>
   )
 }
-export default ContextMenuViewSource
+export default memo(SettingPromptsViewSource)

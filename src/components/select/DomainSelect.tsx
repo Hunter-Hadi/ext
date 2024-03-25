@@ -2,28 +2,34 @@ import Autocomplete from '@mui/material/Autocomplete'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, memo, useMemo, useState } from 'react'
 
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 import { TOP_DOMAINS } from '@/utils/staticData'
 
 interface DomainSelectProps {
   label?: string
-  value?: string
+  value?: any[]
   defaultValue?: string
   disabled?: boolean
-  onChange?: (value: string) => void
+  onChange?: (values: string[]) => void
   sx?: SxProps
   popperIndex?: number
+  multiple?: boolean
+  options?: any[]
 }
 
 function filterOptions(options: any[], { inputValue }: any) {
-  const searchOptions = options.filter((option) => {
+  return options.filter((option) => {
     const label = option.label.toLowerCase()
     const value = option.value.toLowerCase()
     const input = inputValue.toLowerCase()
     return label.includes(input) || value.includes(input)
   })
+}
+
+function freeSolofilterOptions(options: any[], { inputValue }: any) {
+  const searchOptions = filterOptions(options, { inputValue })
   if (inputValue.length > 2) {
     if (!inputValue.split('.')[1]) {
       if (inputValue.endsWith('.')) {
@@ -58,50 +64,81 @@ function filterOptions(options: any[], { inputValue }: any) {
 const DomainSelect: FC<DomainSelectProps> = (props) => {
   const {
     label = 'Enter website URL',
-    onChange = (value: string) => {
-      console.log(value)
-    },
+    onChange,
     disabled,
     popperIndex = 2147483620,
     sx,
+    options = [],
+    multiple,
   } = props
-  const [open, setOpen] = React.useState(false)
-  const [selected, setSelected] = React.useState(null)
+  const [open, setOpen] = useState(false)
+  const [selected, setSelected] = useState(null)
   const memoOptions = useMemo(() => {
-    if (
-      props.value &&
-      !TOP_DOMAINS.find((domain) => domain.value === props.value)
-    ) {
-      return TOP_DOMAINS.concat({
-        label: props.value,
-        value: props.value,
-      })
-    } else {
-      return TOP_DOMAINS
+    if (options?.length > 0) {
+      return options
     }
-  }, [props.value])
+
+    if (props?.value?.[0]) {
+      if (multiple) {
+        const newOptions = [...TOP_DOMAINS]
+        props.value.forEach((value) => {
+          if (!newOptions.find((domain) => domain.value === value)) {
+            newOptions.push({
+              label: value,
+              value,
+            })
+          }
+        })
+        return newOptions
+      } else if (
+        !TOP_DOMAINS.find((domain) => domain.value === props.value![0])
+      ) {
+        return TOP_DOMAINS.concat({
+          label: props.value[0],
+          value: props.value[0],
+        } as any)
+      }
+    }
+    return TOP_DOMAINS
+  }, [props.value, options, multiple])
   const memoValue = useMemo(() => {
-    return memoOptions.find((option) => option.value === props.value)
-  }, [props.value, memoOptions])
+    if (multiple) {
+      const values: { label: any; value: any }[] = []
+      props?.value?.forEach((value) => {
+        const selectedValue = memoOptions.find(
+          (option) => option.value === value,
+        )
+        if (selectedValue) values.push(selectedValue)
+      })
+      return values
+    } else {
+      return memoOptions.find((option) => option.value === props?.value?.[0])
+    }
+  }, [props.value, memoOptions, multiple])
   return (
     <Autocomplete
+      multiple={multiple}
       onKeyDown={(event) => {
         if (event.key === 'Enter') {
           event.stopPropagation()
         }
       }}
       disabled={disabled}
-      open={open && !selected}
-      onInputChange={(_, value) => {
-        if (value !== props.value) {
-          setSelected(null)
-        }
-        if (value.length === 0) {
-          setOpen(false)
-        } else {
-          setOpen(true)
-        }
-      }}
+      open={options.length === 0 ? open && !selected : void 0}
+      onInputChange={
+        options.length === 0
+          ? (_, value) => {
+              if (value !== props?.value?.[0]) {
+                setSelected(null)
+              }
+              if (value.length === 0) {
+                setOpen(false)
+              } else {
+                setOpen(true)
+              }
+            }
+          : void 0
+      }
       slotProps={{
         popper: {
           sx: {
@@ -111,7 +148,7 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       }}
       value={memoValue}
       onClose={() => setOpen(false)}
-      freeSolo
+      freeSolo={options?.length === 0}
       disableClearable
       clearOnBlur
       blurOnSelect
@@ -122,9 +159,13 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
       options={memoOptions}
       onChange={(event: any, newValue) => {
         setSelected(newValue)
-        onChange(newValue.value)
+        onChange?.(
+          multiple ? newValue.map(({ value }: any) => value) : [newValue.value],
+        )
       }}
-      filterOptions={filterOptions}
+      filterOptions={
+        options?.length === 0 ? freeSolofilterOptions : filterOptions
+      }
       renderInput={(params) => (
         <TextField
           {...params}
@@ -150,8 +191,8 @@ const DomainSelect: FC<DomainSelectProps> = (props) => {
           </li>
         )
       }}
-    ></Autocomplete>
+    />
   )
 }
 
-export default DomainSelect
+export default memo(DomainSelect)

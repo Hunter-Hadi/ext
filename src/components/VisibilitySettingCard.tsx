@@ -15,10 +15,16 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import uniq from 'lodash-es/uniq'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 
 import { IVisibilitySetting } from '@/background/utils/chromeExtensionStorage/type'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DomainSelect from '@/components/select/DomainSelect'
+import { InputAssistantButtonGroupConfigHostKeys } from '@/features/contextMenu/components/InputAssistantButton/config'
+import {
+  SettingPromptsEditButtonKeyAtom,
+  specialInputAssistantButtonKeys,
+} from '@/pages/settings/pages/prompts/store'
 import { domain2Favicon } from '@/utils/dataHelper/websiteHelper'
 
 /**
@@ -37,13 +43,19 @@ const VisibilitySettingCard: FC<{
   mode: 'black' | 'white'
 }> = (props) => {
   const { defaultValue, onChange, disabled, mode } = props
+  const [settingPromptsEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom,
+  )
   const isBlackMode = mode === 'black'
+  const isEditingSpecialButtonKey =
+    settingPromptsEditButtonKey &&
+    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey)
   const { t } = useTranslation(['settings', 'common'])
-  const [newSite, setNewSite] = useState('')
+  const [newSite, setNewSite] = useState([''])
   const [open, setOpen] = useState(false)
   const BoxRef = useRef<HTMLDivElement>(null)
   const handleOpen = () => {
-    setNewSite('')
+    setNewSite(isBlackMode ? defaultValue.blacklist : defaultValue.whitelist)
     setOpen(true)
     setTimeout(() => {
       BoxRef.current?.querySelector('input')?.focus()
@@ -57,7 +69,7 @@ const VisibilitySettingCard: FC<{
       setVisibilitySetting({
         ...visibilitySetting,
         isWhitelistMode: false,
-        blacklist: uniq([newSite, ...visibilitySetting.blacklist]).filter(
+        blacklist: uniq([...newSite, ...visibilitySetting.blacklist]).filter(
           Boolean,
         ),
       })
@@ -65,9 +77,9 @@ const VisibilitySettingCard: FC<{
       setVisibilitySetting({
         ...visibilitySetting,
         isWhitelistMode: true,
-        whitelist: uniq([newSite, ...visibilitySetting.whitelist]).filter(
-          Boolean,
-        ),
+        whitelist: isEditingSpecialButtonKey
+          ? newSite
+          : uniq([...newSite, ...visibilitySetting.whitelist]).filter(Boolean),
       })
     }
     setOpen(false)
@@ -225,7 +237,7 @@ const VisibilitySettingCard: FC<{
         open={open}
         onClose={handleClose}
         onKeyDownCapture={(event) => {
-          if (event.key === 'Enter' && newSite) {
+          if (event.key === 'Enter' && newSite[0]) {
             handleSubmit()
           }
         }}
@@ -255,6 +267,20 @@ const VisibilitySettingCard: FC<{
                 }
                 setNewSite(value)
               }}
+              options={
+                isEditingSpecialButtonKey
+                  ? InputAssistantButtonGroupConfigHostKeys.map((url) => ({
+                      label: url,
+                      value: url,
+                    }))
+                  : void 0
+              }
+              // multiple={Boolean(
+              //   settingPromptsEditButtonKey &&
+              //     inputAssistantButtonKeys.includes(
+              //       settingPromptsEditButtonKey,
+              //     ),
+              // )}
             />
           </Stack>
         </DialogContent>
@@ -263,7 +289,7 @@ const VisibilitySettingCard: FC<{
             {t('common:cancel')}
           </Button>
           <Button
-            disabled={!newSite}
+            disabled={!newSite[0]}
             variant={'contained'}
             onClick={handleSubmit}
           >

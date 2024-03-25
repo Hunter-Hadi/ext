@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { FC, memo, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IContextMenuItem } from '@/features/contextMenu/types'
@@ -25,7 +25,7 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   },
 }))
 
-const ContextMenuItemPreviewTooltip: FC<{
+const SettingPromptsMenuItemPreviewTooltip: FC<{
   item: IContextMenuItem
   children: React.ReactNode
 }> = (props) => {
@@ -211,4 +211,4 @@ const ContextMenuItemPreviewTooltip: FC<{
     </LightTooltip>
   )
 }
-export default ContextMenuItemPreviewTooltip
+export default memo(SettingPromptsMenuItemPreviewTooltip)

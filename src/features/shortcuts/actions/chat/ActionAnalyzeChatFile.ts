@@ -22,6 +22,7 @@ export class ActionAnalyzeChatFile extends Action {
   static type: ActionIdentifier = 'ANALYZE_CHAT_FILE'
   // 后端最大上传文本上限
   MAX_UPLOAD_TEXT_FILE_TOKENS = 400 * 1000 // 400k
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -48,7 +49,9 @@ export class ActionAnalyzeChatFile extends Action {
       const conversationEngine = engine.clientConversationEngine
       const conversationId =
         conversationEngine?.currentConversationIdRef.current || ''
+      if (this.isStopAction) return
       const conversation = await conversationEngine?.getCurrentConversation()
+      if (this.isStopAction) return
       const maxAIModelTokens =
         this.parameters.AnalyzeChatFileSystemPromptTokenLimit ||
         conversation?.meta?.maxTokens ||
@@ -63,6 +66,7 @@ export class ActionAnalyzeChatFile extends Action {
           thread: 4,
           partOfTextLength: 20 * 1000,
         })
+      if (this.isStopAction) return
       // 如果触发了limit，就截取其中400k上传作为docId
       if (isLimit) {
         if (immediateUpdateConversation) {
@@ -84,6 +88,7 @@ export class ActionAnalyzeChatFile extends Action {
             conversationId,
             true,
           )
+          if (this.isStopAction) return
           // 异步通知LarkBot
           clientSendMaxAINotification(
             'SUMMARY',
@@ -129,6 +134,7 @@ export class ActionAnalyzeChatFile extends Action {
             )
               .then()
               .catch()
+            if (this.isStopAction) return
             stringConvertTxtUpload(uploadData.text, fileName).then(
               async (docId) => {
                 await conversationEngine?.updateConversation(
@@ -145,6 +151,7 @@ export class ActionAnalyzeChatFile extends Action {
           })
         }
       }
+      if (this.isStopAction) return
       await conversationEngine?.updateConversation(
         {
           meta: {
@@ -154,12 +161,14 @@ export class ActionAnalyzeChatFile extends Action {
         conversationId,
         true,
       )
+      if (this.isStopAction) return
       this.output = pageSummarySystemPrompt
     } catch (e) {
       this.error = (e as any).toString()
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     await stopActionMessageStatus(params)
     return true
   }

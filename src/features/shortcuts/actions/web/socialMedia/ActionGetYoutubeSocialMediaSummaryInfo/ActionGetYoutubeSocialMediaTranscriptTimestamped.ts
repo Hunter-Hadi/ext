@@ -49,7 +49,7 @@ type TranscriptTimestampedParamType = {
  */
 export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
-  isStop = false
+  isStopAction = false
   requestIntervalTime = 1000 * 5
   requestExceptionIntervalTime = 1000 * 10
   maxChatGptTokens = 13000
@@ -68,6 +68,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      if (this.isStopAction) return
       const youtubeVideoTitle = params.CURRENT_WEBPAGE_TITLE || ''
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
@@ -78,10 +79,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         this.output = JSON.stringify([])
         return
       }
+      if (this.isStopAction) return
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       ) //获取youtube transcript 数据
-
+      if (this.isStopAction) return
       const conversationId =
         engine.clientConversationEngine?.currentConversationIdRef?.current
       const messageId = (params as { AI_RESPONSE_MESSAGE_ID?: string })
@@ -96,6 +98,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         this.output = JSON.stringify([])
         return
       }
+      if (this.isStopAction) return
 
       const chaptersInfoList = this.getChaptersInfoList()
       const transcriptsText = transcripts.map((item) => item.text).join('')
@@ -106,12 +109,17 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         chaptersInfoList.length !== 0 &&
         transcriptsTokens > 1000 //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试
       ) {
+        if (this.isStopAction) return
+
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersInfoList, transcripts)
+        if (this.isStopAction) return
+
         const chapterSliceTextList = await this.chaptersSliceTextByTokens(
           chapterTextList,
         )
+        if (this.isStopAction) return
 
         if (chapterSliceTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
@@ -120,17 +128,22 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             chapterSliceTextList,
             youtubeVideoTitle,
           )
+          if (this.isStopAction) return
+
           this.output = JSON.stringify(chapterList)
         } else {
           this.output = JSON.stringify([])
         }
       } else {
         //自己创建chapters逻辑
+        if (this.isStopAction) return
         const chaptersList = this.createChapters(transcripts)
+        if (this.isStopAction) return
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersList, transcripts)
         console.log('simply chapterTextList look tokens --', chapterTextList)
         if (chapterTextList.length > 0) {
+          if (this.isStopAction) return
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
             messageId,
@@ -175,22 +188,22 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         this.getPrepareViewData(chapterTextList)
       //创建更新transcript视图逻辑
       for (const index in chapterTextList) {
-        if (this.isStop) return transcriptViewDataList //用户取消直接返回
+        if (this.isStopAction) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
           youtubeVideoTitle,
           chapterTextList[index],
         ) //请求GPT返回json
+        if (this.isStopAction) return transcriptViewDataList
         const endTime = Date.now() // 记录请求结束时间
         const requestDuration = endTime - startTime // 计算请求耗时
-        if (this.isStop) return transcriptViewDataList
         if (transcriptList) {
           transcriptViewDataList[index].text = transcriptList?.text
           transcriptViewDataList[index].children = transcriptList?.children
           transcriptViewDataList[index].status = 'complete'
         } else {
           //出现错误不在往下请求
-          this.isStop = true
+          this.isStopAction = true
           transcriptViewDataList[index].status = 'error'
         }
         this.updateConversationMessageInfo(
@@ -272,7 +285,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     > = async () => {
       const currentAbortTaskId = uuidV4()
       this.abortTaskIds.push(currentAbortTaskId)
-      if (this.isStop) return false
+      if (this.isStopAction) return false
       try {
         const askData = await clientAskMaxAIChatProvider(
           'OPENAI_API',
@@ -300,7 +313,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           },
           currentAbortTaskId,
         )
-        if (this.isStop) return false
+        if (this.isStopAction) return false
         this.abortTaskIds = this.abortTaskIds.filter(
           (id) => id !== currentAbortTaskId,
         )
@@ -310,7 +323,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           // console.log('simply gpt return tokens', gptReturnTokens)
           const transcriptData = this.getObjectFromString(askData.data)
           console.log('simply askData', askData)
-          console.log('transcriptData', transcriptData)
+          console.log('simply ok transcriptData', transcriptData)
           if (transcriptData) {
             return transcriptData
           } else {
@@ -573,7 +586,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     }
 
     // 尝试匹配 ```json ```包裹中匹配
-    const regex = /```json\s*([\s\S]*?)\s*```/
+    const regex = /```json\n([\s\S]*?)\n```/
     match = str.match(regex)
     if (match) {
       jsonStr = match[1]
@@ -653,7 +666,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     )
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    this.isStop = true
+    this.isStopAction = true
     this.abortTaskIds.forEach((id) => {
       clientAbortFetchAPI(id)
     })

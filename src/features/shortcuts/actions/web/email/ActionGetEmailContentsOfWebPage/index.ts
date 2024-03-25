@@ -16,6 +16,7 @@ import {
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 export class ActionGetEmailContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_EMAIL_CONTENTS_OF_WEBPAGE'
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -41,15 +42,18 @@ export class ActionGetEmailContentsOfWebPage extends Action {
     const isVariableMiddleOutEnabled =
       this.parameters.isVariableMiddleOutEnabled === true
     try {
+      if (this.isStopAction) return
       // 邮件上下文的全文
       let EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT =
         (await getIframeOrSpecialHostPageContent()) || ''
       // 邮件上下文的目标邮件
       let EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT = ''
       if (!EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT) {
+        if (this.isStopAction) return
         const result = await getEmailWebsitePageContentsOrDraft(
           OperationElementSelector,
         )
+        if (this.isStopAction) return
         EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT = result.emailContext
         EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT =
           result.targetReplyEmailContext
@@ -58,9 +62,12 @@ export class ActionGetEmailContentsOfWebPage extends Action {
       const { clientConversationEngine, shortcutsEngine } = engine
       if (clientConversationEngine && shortcutsEngine) {
         if (isVariableMiddleOutEnabled) {
+          if (this.isStopAction) return
+
           // reply with keyPoints的逻辑
           const conversation =
             await clientConversationEngine.getCurrentConversation()
+          if (this.isStopAction) return
           const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
           const maxEmailContextTokens =
             AIModelMaxTokens -
@@ -75,6 +82,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
             EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT,
             maxEmailContextTokens,
           )
+          if (this.isStopAction) return
           // 赋值给变量
           EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT =
             sliceOfTargetEmailContext
@@ -86,9 +94,11 @@ export class ActionGetEmailContentsOfWebPage extends Action {
               EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT,
               maxEmailContextTokens - sliceOfTargetEmailContextUsingTokens,
             )
+            if (this.isStopAction) return
             EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT =
               sliceOfFullEmailContext
           }
+          if (this.isStopAction) return
           shortcutsEngine.pushActions(
             [
               {
@@ -122,6 +132,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
             'after',
           )
         } else {
+          if (this.isStopAction) return
           shortcutsEngine.pushActions(
             [
               {
@@ -161,6 +172,7 @@ export class ActionGetEmailContentsOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    this.isStopAction = true
     await stopActionMessageStatus(params)
     return true
   }

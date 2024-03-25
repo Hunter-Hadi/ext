@@ -255,7 +255,7 @@ export const getChatGPTAccessToken = async (
   return data?.accessToken || ''
 }
 
-export const generateArkoseToken = async (model: string) => {
+export const generateArkoseToken = async (model: string, dx?: string) => {
   const needWaitArkoseToken = [
     'text-davinci-002-render-sha',
     // 'text-davinci-002-render-sha-mobile',
@@ -266,8 +266,12 @@ export const generateArkoseToken = async (model: string) => {
     'gpt-4-mobile',
   ].includes(model)
   if (needWaitArkoseToken) {
+    if (!dx) {
+      return ''
+    }
     const token = await chromeExtensionArkoseTokenGenerator.generateToken(
-      model.startsWith('gpt-4') ? 'gpt_4' : 'gpt_3_5',
+      'gpt_4',
+      dx,
     )
     if (!token) {
       throw Error(
@@ -414,8 +418,10 @@ export class ChatGPTConversation {
     let resultMessageId = ''
     const settings = await getAIProviderSettings('OPENAI')
     let arkoseToken = undefined
+    const { chatRequirementsToken, dx } =
+      await generateSentinelChatRequirementsToken(this.token)
     try {
-      arkoseToken = await generateArkoseToken(this.model)
+      arkoseToken = await generateArkoseToken(this.model, dx)
     } catch (e) {
       params.onEvent({
         type: 'error',
@@ -520,8 +526,7 @@ export class ChatGPTConversation {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
         'Openai-Sentinel-Arkose-Token': arkoseToken || '',
-        'Openai-Sentinel-Chat-Requirements-Token':
-          await generateSentinelChatRequirementsToken(this.token),
+        'Openai-Sentinel-Chat-Requirements-Token': chatRequirementsToken,
       } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: async (message: string) => {

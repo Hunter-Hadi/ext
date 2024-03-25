@@ -7,7 +7,8 @@ import { FC, useEffect } from 'react'
 import React from 'react'
 import { useRecoilState } from 'recoil'
 
-import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
+import { IAIForSearchStatus } from '@/features/searchWithAI/types'
+
 import { AutoTriggerAskEnableAtom } from '../store'
 import { endsWithQuestionMark } from '../utils'
 import { ISearchWithAISettings } from '../utils/searchWithAISettings'

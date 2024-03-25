@@ -218,20 +218,20 @@ const SidebarAImessageTimestampedSummary: FC<
   }, [transcriptList, openIdsList, loading])
   return (
     <div>
-      {(!transcriptList ||
+      {!transcriptList ||
         !Array.isArray(transcriptList) ||
-        (Array.isArray(transcriptList) && transcriptList.length === 0)) && (
-        <Typography
-          fontSize={16}
-          color="text.primary"
-          sx={{
-            p: 0,
-            flex: 1,
-          }}
-        >
-          Unable to generate video without subtitles.
-        </Typography>
-      )}
+        (transcriptList.length === 0 && (
+          <Typography
+            fontSize={16}
+            color="text.primary"
+            sx={{
+              p: 0,
+              flex: 1,
+            }}
+          >
+            Unable to generate video without subtitles.
+          </Typography>
+        ))}
       {TranscriptListView()}
       {!transcriptStatusIsError &&
         transcriptLoadingsLength > 0 &&

@@ -5,7 +5,7 @@ import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
-import { stopActionMessageStatus } from '@/features/shortcuts/actions/common'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import {
   TranscriptResponse,
   YoutubeTranscript,

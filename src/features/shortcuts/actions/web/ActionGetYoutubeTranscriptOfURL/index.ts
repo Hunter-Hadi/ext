@@ -28,7 +28,6 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
   @withLoadingDecorators()
   async execute() {
     try {
-      console.log('simply ', this.parameters.VariableName)
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''
@@ -41,10 +40,6 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       )
-      if (this.parameters.VariableName === 'GET_LIST_DATA') {
-        this.output = transcripts
-        return
-      }
       const isEmptyTranscriptText =
         transcripts.length <= 10
           ? transcripts

@@ -4,7 +4,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
 import { stopActionMessage } from '../../common'
-import { TranscriptResponse } from './YoutubeTranscript'
+import { TranscriptResponse, YoutubeTranscript } from './YoutubeTranscript'
 
 /**
  * @since 2024-03-17
@@ -26,13 +26,25 @@ export class ActionYoutubeGetTranscript extends Action {
   ) {
     console.log('simply params', params.LAST_ACTION_OUTPUT, engine)
     try {
-      const maxChars = this.computeMaxChars(
-        (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
+      console.log('simply ', this.parameters.VariableName)
+      const currentUrl = window.location.href.includes('youtube.com')
+        ? window.location.href
+        : ''
+      const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
+      if (!youtubeLinkURL) {
+        this.error = 'Youtube URL is empty.'
+        return
+      }
+      console.log('youtubeLinkURL', youtubeLinkURL)
+      const transcripts = await YoutubeTranscript.fetchTranscript(
+        youtubeLinkURL,
       )
-      const timeTextList = this.splitArrayByWordCount(
-        (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
-        maxChars,
-      )
+      if (!transcripts || transcripts.length === 0) {
+        this.output = JSON.stringify([])
+        return
+      }
+      const maxChars = this.computeMaxChars(transcripts)
+      const timeTextList = this.splitArrayByWordCount(transcripts, maxChars)
       this.output = JSON.stringify(timeTextList)
     } catch (e) {
       this.output = JSON.stringify([])

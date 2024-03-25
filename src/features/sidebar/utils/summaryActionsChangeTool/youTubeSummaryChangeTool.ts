@@ -293,12 +293,6 @@ export const youTubeSummaryTranscriptChangeTool = async (
       },
     },
     {
-      type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
-      parameters: {
-        VariableName: 'GET_LIST_DATA',
-      },
-    },
-    {
       type: 'YOUTUBE_GET_TRANSCRIPT',
       parameters: {},
     },

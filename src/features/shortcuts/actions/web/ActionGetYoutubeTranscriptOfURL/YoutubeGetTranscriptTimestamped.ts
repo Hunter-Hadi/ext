@@ -1,6 +1,7 @@
 import JSON5 from 'json5'
 import { v4 as uuidV4 } from 'uuid'
 
+import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import Action from '@/features/shortcuts/core/Action'
@@ -10,7 +11,9 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { clientAbortFetchAPI } from '@/features/shortcuts/utils'
 import { getTextTokens } from '@/features/shortcuts/utils/tokenizer'
+import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
+import generatePromptAdditionalText from '../../chat/ActionAskChatGPT/generatePromptAdditionalText'
 import { stopActionMessage } from '../../common'
 import { TranscriptResponse, YoutubeTranscript } from './YoutubeTranscript'
 
@@ -43,6 +46,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
   maxChapters = 20
   isStop = false
+  requestIntervalTime = 4000
   abortTaskIds: string[] = []
   constructor(
     id: string,
@@ -98,6 +102,8 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         //进入chapters逻辑判断
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersInfoList, transcripts)
+        console.log('simply chapterTextList --', chapterTextList)
+
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
@@ -113,6 +119,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
         const chaptersList = this.createChapters(transcripts)
         const chapterTextList: TranscriptTimestampedTextType[] =
           this.getChaptersAllTextList(chaptersList, transcripts)
+        console.log('simply chapterTextList --', chapterTextList)
         if (chapterTextList.length > 0) {
           const chapterList = await this.batchRequestUpdateMessage(
             conversationId,
@@ -160,9 +167,9 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
           transcriptViewDataList,
         )
         // 如果请求耗时少于3秒，等待剩余时间
-        if (requestDuration < 3000) {
+        if (requestDuration < this.requestIntervalTime) {
           await new Promise((resolve) =>
-            setTimeout(resolve, 3000 - requestDuration),
+            setTimeout(resolve, this.requestIntervalTime - requestDuration),
           )
         }
       }
@@ -176,38 +183,50 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     start: string
     tokens?: number
   }) {
-    const maxRetries = 2 // 最大尝试次数-1
+    const maxRetries = 2 // 最大尝试次数
     let retries = 0 // 当前尝试次数
-    const systemPrompt = `Remember, you are a tool for summarizing transcripts
+    // 语言
+    const userSelectedLanguage =
+      (await clientGetLiteChromeExtensionDBStorage()).userSettings?.language ||
+      DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    const getHaveLanguagePrompt = await generatePromptAdditionalText({
+      AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+    })
+    const systemPrompt = `Ignore all previous instructions.${getHaveLanguagePrompt}.Remember, you are a tool for summarizing transcripts
     Help me quickly understand the summary of key points and the start timestamp
     The transcript are composed in the following format
     [start:transcript start time,text: transcript text]
     Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task. 
     Return in JSON format:
     interface IJsonFormat {
-    text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text
+    text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text.${userSelectedLanguage}
     start: number //In seconds，User reference text start time
     children: [
     //The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
     {
-      text: string //About 10-20 words to describe, the first key point, Write text
+      text: string //About 10-20 words to describe, the first key point, Write text ${getHaveLanguagePrompt}
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the second key point is to write the text
+      text: string //About 10-20 words to describe, the second key point,write the text ${getHaveLanguagePrompt}
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the third key point, write the text
+      text: string //About 10-20 words to describe, the third key point, write the text  ${getHaveLanguagePrompt}
       start: number //In seconds，User reference text start time
     },
     ]
     }
     The returned JSON can have up to two levels
+    No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt}
     `
+    console.log('simply getHaveLanguagePrompt', getHaveLanguagePrompt)
     const newPrompt = `
+    ${userSelectedLanguage}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
+    [remarks]:
+    Please make sure to${getHaveLanguagePrompt}
     `
     const attemptRequest: () => Promise<
       TranscriptTimestampedGptType | false
@@ -384,7 +403,8 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
       currentTokens = systemPromptTokens / 10
     } else {
       currentTokens = 13000
-    }
+    } // 这里是Chapters根据tokens分章
+
     // 首先，计算最多1万tokens一章可以分出的章节数
     let chapterCount = Math.floor(systemPromptTokens / currentTokens)
     console.log('simply chapterCount 1', chapterCount)
@@ -412,6 +432,7 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     return chapters
   }
   splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
+    //这是一个合并章节数据，拿来进行gpt合并提问，但不稳定，暂时放这
     const result: TranscriptResponse[] = [] // 存储分割后的结果
     let currentItem = { start: '', duration: 0, text: '' }
     let currentTextList: string[] = [] // 当前文本暂存列表
@@ -460,42 +481,6 @@ export class ActionYoutubeGetTranscriptTimestamped extends Action {
     })
 
     return result
-  }
-  generateTimestampedLinks(dataArray: TranscriptResponse[]) {
-    // 对数组中的每个对象进行映射操作
-    const links: TranscriptResponse[] = dataArray.map((item) => {
-      // 从数据中取出start和text
-      const { start } = item
-      // 格式化start时间为"小时:分钟:秒"的格式
-      const timeString = this.formatSecondsAsTimestamp(start)
-      // 返回格式化后的字符串
-      return {
-        ...item,
-        start: timeString,
-      }
-    })
-
-    // 将所有的链接拼接成为一个长字符串，每个链接之间用换行符分隔
-    return links
-  }
-
-  // 将秒数格式化为"小时:分钟:秒"的格式
-  formatSecondsAsTimestamp(seconds: string) {
-    // 将字符串转换为浮点数并取整
-    const totalSeconds = Math.round(parseFloat(seconds))
-    const hours = Math.floor(totalSeconds / 3600)
-    const minutes = Math.floor((totalSeconds - hours * 3600) / 60)
-    const sec = totalSeconds - hours * 3600 - minutes * 60
-
-    // 使用padStart在个位数前添加0，格式化字符串为两位数
-    const hoursString = hours.toString().padStart(2, '0')
-    const minutesString = minutes.toString().padStart(2, '0')
-    const secondsString = sec.toString().padStart(2, '0')
-    if (hoursString !== '00') {
-      return `${hoursString}:${minutesString}:${secondsString}`
-    } else {
-      return `${minutesString}:${secondsString}`
-    }
   }
   getObjectFromString(str: string) {
     let jsonStr = null

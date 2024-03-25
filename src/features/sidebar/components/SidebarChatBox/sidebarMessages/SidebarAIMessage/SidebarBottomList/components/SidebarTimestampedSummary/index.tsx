@@ -234,15 +234,16 @@ const TranscriptView: FC<ITranscriptView> = ({ transcriptList, loading }) => {
         transcriptLoadingLength > 0 &&
         Array.from(
           {
-            length: transcriptLoadingLength,
+            length:
+              transcriptLoadingLength >= 10 ? 10 : transcriptLoadingLength,
           },
           (_, index) => (
             <Skeleton
               key={index}
               variant="rounded"
               width="100%"
-              height={10}
-              sx={{ marginTop: '5px' }}
+              height={15}
+              sx={{ marginTop: '2px' }}
             />
           ),
         )}

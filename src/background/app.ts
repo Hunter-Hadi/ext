@@ -32,7 +32,7 @@ import {
   MaxAIDALLEChat,
   MaxAIFreeChat,
   MaxAIGeminiChat,
-  OpenAiApiChat,
+  OpenAIApiChat,
   OpenAIChat,
   PoeChat,
   UseChatGPTPlusChat,
@@ -395,7 +395,7 @@ const initChromeExtensionMessage = () => {
     new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
   )
   const newOpenAIApiChatAdapter = new ChatAdapter(
-    new OpenAIApiChatProvider(new OpenAiApiChat()),
+    new OpenAIApiChatProvider(new OpenAIApiChat()),
   )
   const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
   const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
@@ -612,30 +612,34 @@ const developmentHotReload = () => {
 }
 
 const initExternalMessageListener = () => {
-  // // 可接收外部消息的插件id
-  // const extensionWhiteList = [
-  //   // webchatgpt
-  //   'lpfemeioodjbpieminkklglpmhlngfcn',
-
-  //   // modHeader
-  //   'idgpnmonknjnojddfkpgkljpfnnfcklj',
-  // ]
+  // 可接收外部消息的插件id
+  const extensionWhiteList = [
+    // webchatgpt
+    'lpfemeioodjbpieminkklglpmhlngfcn',
+    // modHeader
+    'idgpnmonknjnojddfkpgkljpfnnfcklj',
+    //simplytends
+    'kajbojdeijchbhbodifhaigbnbodjahj',
+    // opgbiafapkbbnbnjcdomjaghbckfkglc modeheader-edge
+    'opgbiafapkbbnbnjcdomjaghbckfkglc',
+    // flahobhjikkpnpohomeckhdjjkkkkmoc webchatgpt-edge
+    'flahobhjikkpnpohomeckhdjjkkkkmoc',
+  ]
 
   Browser.runtime.onMessageExternal.addListener(async function (
     message,
     sender,
   ) {
     // 测试环境跳过 插件白名单 检测
-    // 暂时不校验插件id - 20240321
-    // if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
-    if (message.event === 'GET_MAXAI_USERINFO') {
-      const userinfo = await getChromeExtensionUserInfo(false)
-      return {
-        isLogin: !!userinfo,
-        success: true,
+    if (!isProduction || extensionWhiteList.includes(sender.id ?? '')) {
+      if (message.event === 'GET_MAXAI_USERINFO') {
+        const userinfo = await getChromeExtensionUserInfo(false)
+        return {
+          isLogin: !!userinfo,
+          success: true,
+        }
       }
     }
-    // }
     return undefined
   })
 }

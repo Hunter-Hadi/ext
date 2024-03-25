@@ -4,6 +4,7 @@ import { getAIProviderSettings } from '@/background/src/chat/util'
 import { IChatGPTModelType, IChatGPTPluginType } from '@/background/utils'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import generateSentinelChatRequirementsToken from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 
 import { fetchSSE } from './fetch-sse'
@@ -373,7 +374,8 @@ export class ChatGPTConversation {
         'GET',
         `/backend-api/conversation/${this.conversationId}`,
       )
-      const chatGPTConversationRaw: IChatGPTConversationRaw = await result.json()
+      const chatGPTConversationRaw: IChatGPTConversationRaw =
+        await result.json()
       this.conversationInfo = {
         title: chatGPTConversationRaw.title,
         messages: mappingToMessages(
@@ -440,6 +442,13 @@ export class ChatGPTConversation {
       parent_message_id: parentMessageId,
       timezone_offset_min: new Date().getTimezoneOffset(),
       history_and_training_disabled: false,
+      force_paragen: false,
+      force_rate_limit: false,
+      conversation_mode: {
+        kind: 'primary_assistant',
+      },
+      websocket_request_id: uuidV4(),
+      suggestions: [],
     } as any
     if (this.conversationId) {
       postMessage.conversation_id = this.conversationId
@@ -451,7 +460,11 @@ export class ChatGPTConversation {
       // postMessage.arkose_token = null
     }
     if (params.meta) {
-      if (params.meta?.attachments && this.model === 'gpt-4') {
+      if (
+        params.meta?.attachments &&
+        params.meta.attachments.length > 0 &&
+        this.model === 'gpt-4'
+      ) {
         // gpt-4现在可以带图片聊天
         try {
           postMessage.messages[0].content.content_type = 'multimodal_text'
@@ -483,7 +496,7 @@ export class ChatGPTConversation {
         }
       } else {
         // NOTE: 目前只用在了gpt-4-code-interpreter
-        postMessage.messages[0].metadata = params.meta
+        postMessage.messages[0].metadata = params?.meta?.meta || {}
       }
     }
     if (
@@ -506,7 +519,10 @@ export class ChatGPTConversation {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
-      },
+        'Openai-Sentinel-Arkose-Token': arkoseToken || '',
+        'Openai-Sentinel-Chat-Requirements-Token':
+          await generateSentinelChatRequirementsToken(this.token),
+      } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: async (message: string) => {
         console.debug('sse message', message)
@@ -804,11 +820,9 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
           plugins: false,
         }
       })
-    const resp = await chatGptRequest(
-      token,
-      'GET',
-      '/backend-api/models',
-    ).then((r) => r.json())
+    const resp = await chatGptRequest(token, 'GET', '/backend-api/models').then(
+      (r) => r.json(),
+    )
     if (resp?.models && resp.models.length > 0) {
       this.models = resp.models.filter((model: any) => {
         // TODO 因为不知道chat_preferences对应的slug，所以暂时不处理

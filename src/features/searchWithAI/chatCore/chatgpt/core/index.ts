@@ -1,6 +1,7 @@
 // import Log from '@/util/Log'
 import { v4 as uuidV4 } from 'uuid'
 
+import generateSentinelChatRequirementsToken from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
 import {
   getSearchWithAISettings,
@@ -82,6 +83,7 @@ export interface GenerateAnswerParams {
   onEvent: (event: Event) => void
   signal?: AbortSignal
   meta?: any
+  streaming?: boolean
 }
 export interface IChatGPTConversationRawMappingData {
   id: string
@@ -289,7 +291,8 @@ export class ChatGPTConversation {
         'GET',
         `/backend-api/conversation/${this.conversationId}`,
       )
-      const chatGPTConversationRaw: IChatGPTConversationRaw = await result.json()
+      const chatGPTConversationRaw: IChatGPTConversationRaw =
+        await result.json()
       this.conversationInfo = {
         title: chatGPTConversationRaw.title,
         messages: mappingToMessages(
@@ -344,6 +347,13 @@ export class ChatGPTConversation {
       parent_message_id: parentMessageId,
       timezone_offset_min: new Date().getTimezoneOffset(),
       history_and_training_disabled: false,
+      force_paragen: false,
+      force_rate_limit: false,
+      conversation_mode: {
+        kind: 'primary_assistant',
+      },
+      websocket_request_id: uuidV4(),
+      suggestions: [],
     } as any
     if (this.conversationId) {
       postMessage.conversation_id = this.conversationId
@@ -373,7 +383,10 @@ export class ChatGPTConversation {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${this.token}`,
-      },
+        'Openai-Sentinel-Arkose-Token': searchWithAICacheArkoseToken || '',
+        'Openai-Sentinel-Chat-Requirements-Token':
+          await generateSentinelChatRequirementsToken(this.token),
+      } as any,
       body: JSON.stringify(Object.assign(postMessage)),
       onMessage: (message: string) => {
         console.debug('sse message', message)
@@ -541,11 +554,9 @@ export class ChatGPTDaemonProcess implements IChatGPTDaemonProcess {
     if (this.models.length > 0) {
       return this.models
     }
-    const resp = await chatGptRequest(
-      token,
-      'GET',
-      '/backend-api/models',
-    ).then((r) => r.json())
+    const resp = await chatGptRequest(token, 'GET', '/backend-api/models').then(
+      (r) => r.json(),
+    )
     if (resp?.models && resp.models.length > 0) {
       this.models = resp.models
     }

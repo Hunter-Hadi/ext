@@ -812,12 +812,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },
@@ -874,12 +874,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },
@@ -936,12 +936,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },
@@ -998,12 +998,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },
@@ -1060,12 +1060,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },
@@ -1122,12 +1122,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },
@@ -1184,12 +1184,12 @@ const emailPrompts = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: {
+            Variable: {
               key: 'SLICE_EMAIL_CONTEXT',
               value: `{{LAST_ACTION_OUTPUT}}`,
               label: 'Slice email context',
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             },
           },
         },

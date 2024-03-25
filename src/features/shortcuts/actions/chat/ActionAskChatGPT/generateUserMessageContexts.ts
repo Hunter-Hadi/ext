@@ -8,12 +8,10 @@ const generateUserMessageContexts = (
   shortCutsParameters: Record<string, IShortCutsParameter>,
   promptText: string,
 ): IUserChatMessageExtraMetaContextType[] => {
-  const contextMap: Map<
-    string,
-    IUserChatMessageExtraMetaContextType
-  > = new Map()
+  const contextMap: Map<string, IUserChatMessageExtraMetaContextType> =
+    new Map()
   const customVariables = Object.keys(shortCutsParameters).filter(
-    (key) => shortCutsParameters[key].isBuildIn !== true,
+    (key) => shortCutsParameters[key].isBuiltIn !== true,
   )
   customVariables.forEach((key) => {
     const value = shortCutsParameters[key]?.value

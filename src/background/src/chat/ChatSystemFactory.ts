@@ -22,7 +22,7 @@ import { MaxAIClaudeChat } from '@/background/src/chat/MaxAIClaudeChat'
 import { MaxAIDALLEChat } from '@/background/src/chat/MaxAIDALLEChat'
 import { MaxAIFreeChat } from '@/background/src/chat/MaxAIFreeChat'
 import { MaxAIGeminiChat } from '@/background/src/chat/MaxAIGeminiChat'
-import { OpenAiApiChat } from '@/background/src/chat/OpenAIApiChat'
+import { OpenAIApiChat } from '@/background/src/chat/OpenAIApiChat'
 import { OpenAIChat } from '@/background/src/chat/OpenAIChat'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import { PoeChat } from '@/background/src/chat/PoeChat'
@@ -49,7 +49,7 @@ export default class ChatSystemFactory {
       new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
     )
     const newOpenAIApiChatAdapter = new ChatAdapter(
-      new OpenAIApiChatProvider(new OpenAiApiChat()),
+      new OpenAIApiChatProvider(new OpenAIApiChat()),
     )
     const bardChatAdapter = new ChatAdapter(
       new BardChatProvider(new BardChat()),

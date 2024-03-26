@@ -57,6 +57,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   errorRequestOrder = 0 //接口异常情况请求次数记录
   errorMaxRequestOrder = 3 //接口异常情况请求最多次数记录
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
+  currentWebPageTitle = ''
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -73,7 +74,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     try {
       this.output = JSON.stringify([]) //设置初始值，翻译return 异常数据导致视图渲染错误
       if (this.isStopAction) return
-      const youtubeVideoTitle = params.CURRENT_WEBPAGE_TITLE || ''
+      this.currentWebPageTitle = params?.CURRENT_WEBPAGE_TITLE || ''
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''
@@ -133,7 +134,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             conversationId,
             messageId,
             chapterSliceTextList,
-            youtubeVideoTitle,
           )
           this.output = JSON.stringify(chapterList)
         } else {
@@ -153,7 +153,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             conversationId,
             messageId,
             chapterTextList,
-            youtubeVideoTitle,
           )
           this.output = JSON.stringify(chapterList)
         } else {
@@ -186,7 +185,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     conversationId: string,
     messageId: string,
     chapterTextList: TranscriptTimestampedTextType[],
-    youtubeVideoTitle: string,
   ) {
     try {
       const transcriptViewDataList: TranscriptTimestampedParamType[] =
@@ -196,7 +194,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         if (this.isStopAction) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
-          youtubeVideoTitle,
           chapterTextList[index],
         ) //请求GPT返回json
         if (this.isStopAction) return transcriptViewDataList
@@ -231,14 +228,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       return []
     }
   }
-  async requestGptGetTranscriptJson(
-    youtubeVideoTitle: string,
-    chapterTextList: {
-      text: string
-      start: string
-      tokens?: number
-    },
-  ) {
+  async requestGptGetTranscriptJson(chapterTextList: {
+    text: string
+    start: string
+    tokens?: number
+  }) {
     const maxRetries = 2 // 最大尝试次数
     let retries = 0 // 当前尝试次数
     // 语言
@@ -279,7 +273,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     const newPrompt = `
     Ignore all previous instructions.${getHaveLanguagePrompt.data}
     [VIDEO TRANSCRIPT TITLE]:
-    ${youtubeVideoTitle}
+    ${this.currentWebPageTitle}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
 
@@ -326,7 +320,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         this.abortTaskIds = this.abortTaskIds.filter(
           (id) => id !== currentAbortTaskId,
         )
-        if (askData.success && askData.data) {
+        if (askData && askData.success && askData.data) {
           //测试返回的tokens最多为213
           // const gptReturnTokens = getTextTokens(askData.data || '').length
           // console.log('simply gpt return tokens', gptReturnTokens)
@@ -658,7 +652,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
                     title: 'Analyzing video',
                     status: 'complete',
                     icon: 'SmartToy',
-                    value: '',
+                    value: this.currentWebPageTitle,
                   },
                 ],
               },

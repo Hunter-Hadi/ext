@@ -129,33 +129,34 @@ const SidebarAImessageTimestampedSummary: FC<
                     <Typography fontSize={16} color="text.primary">
                       {decodeHtmlEntity(transcriptItem.text || '')}
                     </Typography>
-                    {transcriptItem?.children && (
-                      <Stack direction="row" alignItems="center">
-                        <Typography fontSize={15} color="text.secondary">
-                          {openIdsList[transcriptItem.id || '']
-                            ? 'Collapse'
-                            : 'Expand'}
-                        </Typography>
-                        {openIdsList[transcriptItem.id || ''] ? (
-                          <ContextMenuIcon
-                            sx={{
-                              transform: 'rotate(180deg)',
-                              color: 'rgba(0, 0, 0, 0.6)',
-                            }}
-                            size={25}
-                            icon="KeyboardArrowDown"
-                          />
-                        ) : (
-                          <ContextMenuIcon
-                            sx={{
-                              color: 'rgba(0, 0, 0, 0.6)',
-                            }}
-                            size={25}
-                            icon="KeyboardArrowDown"
-                          />
-                        )}
-                      </Stack>
-                    )}
+                    {transcriptItem?.children &&
+                      transcriptItem?.children.length > 0 && (
+                        <Stack direction="row" alignItems="center">
+                          <Typography fontSize={15} color="text.secondary">
+                            {openIdsList[transcriptItem.id || '']
+                              ? 'Collapse'
+                              : 'Expand'}
+                          </Typography>
+                          {openIdsList[transcriptItem.id || ''] ? (
+                            <ContextMenuIcon
+                              sx={{
+                                transform: 'rotate(180deg)',
+                                color: 'rgba(0, 0, 0, 0.6)',
+                              }}
+                              size={25}
+                              icon="KeyboardArrowDown"
+                            />
+                          ) : (
+                            <ContextMenuIcon
+                              sx={{
+                                color: 'rgba(0, 0, 0, 0.6)',
+                              }}
+                              size={25}
+                              icon="KeyboardArrowDown"
+                            />
+                          )}
+                        </Stack>
+                      )}
                   </Stack>
                 )}
                 {transcriptItem.status === 'error' && (

@@ -262,20 +262,20 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     gpt output text : No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt.data}
     Return in JSON format:
     interface IJsonFormat {
-    text: string //About 10-20 words to describe, Text description of the main content of the entire chapter, write down the text.${userSelectedLanguage}
+    text: string //About 10-30 words to describe, Text description of the main content of the entire chapter, write down the text.${getHaveLanguagePrompt.data}
     start: number //In seconds，User reference text start time
     children: [
     //The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
     {
-      text: string //About 10-20 words to describe, the first key point, Write text.${getHaveLanguagePrompt.data}  
+      text: string //About 10-30 words to describe, the first key point, Write text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the second key point,write the text.${getHaveLanguagePrompt.data}  
+      text: string //About 10-30 words to describe, the second key point,write the text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-20 words to describe, the third key point, write the text.${getHaveLanguagePrompt.data}  
+      text: string //About 10-30 words to describe, the third key point, write the text.${getHaveLanguagePrompt.data}  
       start: number //In seconds，User reference text start time
     },
     ]
@@ -284,8 +284,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     `
     const newPrompt = `
     Ignore all previous instructions.${getHaveLanguagePrompt.data}
-    [VIDEO TITLE]:
-    ${this.currentWebPageTitle}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
 

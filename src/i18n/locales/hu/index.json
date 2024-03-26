@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Az AI választ csak akkor jeleníti meg, ha kézzel kattintasz egy gombra.",
     "feature_card__appearance__field_summarize_button__title": "Összefoglalás gomb",
     "feature_card__prompts__edit_prompt__field_advance__title": "Előrehaladás",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Kimeneti nyelv és hangnem és írási stílus"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Kimeneti nyelv és hangnem és írási stílus",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextus menü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Írási segéd",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Összefoglalás",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Keresés",
+    "feature_card__prompts__new_prompt__title": "Új prompt",
+    "feature_card__prompts__new_prompt_group__title": "Új prompt csoport",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Gyors válasz",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Szerkesztés vagy vázlat áttekintése",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Gyors szerkesztés"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Hozzáférés az Anthropic legújabb modelljéhez, amely egyensúlyt teremt az intelligencia és a sebesség között, miközben látási képességet is kínál.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` látással",
     "sidebar__promotion_dialog__content_item3__description": "Hozzáférés az Anthropic leggyorsabb modelljéhez az intelligencia osztályban, hogy hatékonyan kezelje a különféle mindennapi feladatokat.",
-    "sidebar__promotion_dialog__content_item4__title": "Immersive fordítás",
-    "sidebar__promotion_dialog__content_item4__description": "Kattintson egyszer a kétnyelvű olvasáshoz, és javítsa az információk visszakeresésének hatékonyságát.",
+    "sidebar__promotion_dialog__content_item4__title": "Időbélyegzett videó összefoglaló",
+    "sidebar__promotion_dialog__content_item4__description": "Navigáljon a YouTube videók között könnyedén összefoglaló bekezdésekkel és időbélyegekkel.",
     "sidebar__promotion_dialog__content_item5__title": "AI művészet és képek létrehozása",
     "sidebar__promotion_dialog__content_item5__description": "Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, átalakító.",
     "sidebar__promotion_dialog__cta_button": "Frissítés most - Az ajánlat hamarosan lejár!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Email összefoglalása (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Email összefoglalása (Kulcsfontosságú üzenetek)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Email összefoglalása (Cselekvési pontok)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transzkript megjelenítése"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transzkript megjelenítése",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Kérlek várj, amíg a videó hirdetés lejátszása befejeződik, majd próbáld újra.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Időbélyegzett összefoglaló",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nem lehet videót létrehozni felirat nélkül.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Kivétel történt, kérjük próbálja újra később."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

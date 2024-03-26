@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Показване на отговор от ИИ само когато щракнете ръчно върху бутон.",
     "feature_card__appearance__field_summarize_button__title": "Бутон за обобщение",
     "feature_card__prompts__edit_prompt__field_advance__title": "Напред",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Език на изхода и тона & Стил на писане"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Език на изхода и тона & Стил на писане",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню за контекст",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Помощник за писане",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Резюме",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Търсене",
+    "feature_card__prompts__new_prompt__title": "Ново предложение",
+    "feature_card__prompts__new_prompt_group__title": "Нова група с предложения",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Бърз отговор",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редактиране или преглед на чернова",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Бързо съставяне"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Достъп до последната модел на Anthropic, която постига баланс между интелигентност и скорост, като предлага и възможност за зрение.",
     "sidebar__promotion_dialog__content_item3__title": "`Клод-3-хайку` с визия",
     "sidebar__promotion_dialog__content_item3__description": "Достъп до най-бързия модел на Anthropic в класа на интелигентността, за ефективно справяне с различни ежедневни задачи.",
-    "sidebar__promotion_dialog__content_item4__title": "Иммерсивен превод",
-    "sidebar__promotion_dialog__content_item4__description": "Активирайте двуезично четене с едно щракване, за да подобрите ефективността на извличане на информация.",
+    "sidebar__promotion_dialog__content_item4__title": "Времеви видео резюме",
+    "sidebar__promotion_dialog__content_item4__description": "Навигирайте лесно в YouTube видеа, използвайки резюмирани параграфи с времеви разглеждания.",
     "sidebar__promotion_dialog__content_item5__title": "Създаване на AI изкуство и изображения",
     "sidebar__promotion_dialog__content_item5__description": "Бързо превръщайте вашите визии в изумителни изображения. Просто, мощно, трансформативно.",
     "sidebar__promotion_dialog__cta_button": "Надстройте сега - Офертата изтича скоро!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Обобщете имейла (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Обобщете имейла (Основни изводи)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Обобщете имейла (Елементи за действие)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Покажи транскрипцията"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Покажи транскрипцията",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Моля, изчакайте докато видео рекламата приключи и след това опитайте отново.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Резюме с времеви маркери",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Не може да се генерира видео без субтитри.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Възникна изключение, моля опитайте отново по-късно."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

@@ -39,7 +39,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     title: 'gpt-3.5-turbo',
     titleTag: '',
     value: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
-    maxTokens: 4096,
+    maxTokens: 16384,
     tags: [],
     poweredBy: 'OpenAI',
     description: (t) =>

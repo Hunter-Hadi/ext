@@ -62,10 +62,11 @@ export class ActionGetContentsOfURL extends Action {
         const youtubeVideoId = YoutubeTranscript.retrieveVideoId(currentUrl)
         // NOTE: 如果是youtube的视频，直接获取transcript和页面信息
         if (youtubeVideoId) {
-          const postContextData = await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
-            youtubeVideoId,
-            this.taskId,
-          )
+          const postContextData =
+            await YoutubeTranscript.fetchYoutubePageContentWithoutDocument(
+              youtubeVideoId,
+              this.taskId,
+            )
           if (postContextData.post?.content) {
             this.output = postContextData.SOCIAL_MEDIA_PAGE_CONTENT
             return

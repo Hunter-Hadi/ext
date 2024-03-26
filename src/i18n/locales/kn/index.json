@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "ಬಟನ್ ಒತ್ತಿದಾಗ ಮಾತ್ರ AI ಪ್ರತಿಕ್ರಿಯೆಯನ್ನು ತೋರಿಸಿ.",
     "feature_card__appearance__field_summarize_button__title": "ಸಂಗ್ರಹಿಸು ಬಟನ್",
     "feature_card__prompts__edit_prompt__field_advance__title": "ಮುಂದುವರಿ",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ಆಉಟ್‌ಪುಟ್ ಭಾಷೆ & ಧ್ವನಿ & ಬರವಣಿಗೆ ಶೈಲಿ"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ಆಉಟ್‌ಪುಟ್ ಭಾಷೆ & ಧ್ವನಿ & ಬರವಣಿಗೆ ಶೈಲಿ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "ಸಂದರ್ಭ ಮೆನು",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "ಬರವಣಿಗೆ ಸಹಾಯಕ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "ಸಾರಾಂಶ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "ಹುಡುಕು",
+    "feature_card__prompts__new_prompt__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್",
+    "feature_card__prompts__new_prompt_group__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್ ಗುಂಪು",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ತ್ವರಿತ ಉತ್ತರ",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ಡ್ರಾಫ್ಟ್ ಸಂಪಾದಿಸು ಅಥವಾ ಪರಿಶೀಲಿಸು",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ತ್ವರಿತ ರಚನೆ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "ಬುದ್ಧಿಶಕ್ತಿ ಮತ್ತು ವೇಗದ ನಡುವೆ ಸಮನ್ವಯ ಹೊಂದಿರುವ ಅಂಥ್ರೋಪಿಕ್‌ನ ಇತ್ತಿಚಂದಿಯ ಕ್ಲೋಡ್-3-ಸೊನ್ನೆಟ್ ಮಾಡಿಕೊಳ್ಳಿ. ಇದು ದೃಷ್ಟಿ ಸಾಮರ್ಥ್ಯವನ್ನೂ ಒದಗಿಸುತ್ತದೆ.",
     "sidebar__promotion_dialog__content_item3__title": "`ವಿಜಯದೊಂದಿಗೆ ಕ್ಲೋಡ್-3-ಹೈಕು`",
     "sidebar__promotion_dialog__content_item3__description": "ವಿವಿಧ ದೈನಂದಿನ ಕೆಲಸಗಳನ್ನು ತಾರತಮ್ಯದ ವರ್ಗದಲ್ಲಿ ಅತ್ಯಂತ ಕುಶಲವಾಗಿ ನಿರ್ವಹಿಸಲು ಆಂಥ್ರೋಪಿಕ್‌ನ ಅತ್ಯಾಧುನಿಕ ಮಾದರಿಯ ಮಾಡೆಲ್‌ಗೆ ಪ್ರವೇಶವನ್ನು ಪಡೆಯಿರಿ.",
-    "sidebar__promotion_dialog__content_item4__title": "ಮೂಲ್ಯಾಂಕನ ಭೂಮಿಕೆ",
-    "sidebar__promotion_dialog__content_item4__description": "ಒಂದು ಕ್ಲಿಕ್‌ನೊಂದಿಗೆ ಪ್ರಾಮುಖ್ಯತೆಯ ಮೂಲಕ ಎರಡು ಭಾಷಾಂತರ ಓದುವುದನ್ನು ಸಕ್ಷಮಗೊಳಿಸಿ ಮಾಹಿತಿ ಹುಡುಕಾಟದ ಕೌಶಲ್ಯವನ್ನು ಹೆಚ್ಚಿಸಿ.",
+    "sidebar__promotion_dialog__content_item4__title": "ಟೈಮ್‌ಸ್ಟ್ಯಾಂಪ್ ವೀಡಿಯೊ ಸಂಗ್ರಹ",
+    "sidebar__promotion_dialog__content_item4__description": "ಸಂಕ್ಷೇಪಿಸಲಾದ ಪ್ಯಾರಾಗ್ರಾಫ್‌ಗಳು ಮತ್ತು ಟೈಮ್‌ಸ್ಟ್ಯಾಂಪ್ ವಿಭಜನೆಗಳನ್ನು ಬಳಸಿ, ಯೂಟ್ಯೂಬ್ ವೀಡಿಯೊಗಳನ್ನು ಸುಲಭವಾಗಿ ನೇವಿಗೇಟ್ ಮಾಡಿ.",
     "sidebar__promotion_dialog__content_item5__title": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
     "sidebar__promotion_dialog__content_item5__description": "ನಿಮ್ಮ ದೃಷ್ಟಿಗಳನ್ನು ಅದ್ಭುತವಾದ ಚಿತ್ರಗಳಾಗಿ ಬದಲಾಯಿಸಲು ಹೊಸದಾಗಿ ತೀವ್ರವಾಗಿ ಮಾಡಿ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಬದಲಾವಣೆಯನ್ನು ತಂದುಕೊಳ್ಳಿ.",
     "sidebar__promotion_dialog__cta_button": "ಈಗ ಮೆಚ್ಚುಗೆ ಪಡೆಯಿರಿ - ಆಫರ್ ಬೇಗನೆ ಮುಗಿಯುತ್ತದೆ!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (ಮುಖ್ಯ ತಿಳುವಳಿಗಳು)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ಇಮೇಲ್ ಅನ್ನು ಸಂಗ್ರಹಿಸಿ (ಕ್ರಿಯಾ ವಿಚಾರಗಳು)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ಟ್ರಾನ್ಸ್ಕ್ರಿಪ್ಟ್ ತೋರಿಸು"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ಟ್ರಾನ್ಸ್ಕ್ರಿಪ್ಟ್ ತೋರಿಸು",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "ದಯವಿಟ್ಟು ವೀಡಿಯೊ ಜಾಹೀರಾತು ಪೂರ್ಣವಾಗುವವರೆಗೂ ನಿರೀಕ್ಷಿಸಿ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ಸಮಯಾವಕಾಶ ಸಾರಾಂಶ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "ಉಪಶೀರ್ಷಿಕೆಗಳಿಲ್ಲದ ವೀಡಿಯೊನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ಒಂದು ಅಪವಾದ ನಡೆದಿದೆ, ದಯವಿಟ್ಟು ನಂತರ ಪ್ರಯತ್ನಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "మీరు మాన్యువల్లో బటన్ నొక్కి మాత్రమే AI సమాధానాన్ని ప్రదర్శించండి.",
     "feature_card__appearance__field_summarize_button__title": "సంగ్రహించు బటన్",
     "feature_card__prompts__edit_prompt__field_advance__title": "ముందుకు వెళ్లండి",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ఔట్పుట్ భాష & శైలి & రచన శైలి"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "ఔట్పుట్ భాష & శైలి & రచన శైలి",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "కంటెక్స్ట్ మెనూ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "రచన సహాయకుడు",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "సారాంశం",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "శోధన",
+    "feature_card__prompts__new_prompt__title": "కొత్త ప్రాంప్ట్",
+    "feature_card__prompts__new_prompt_group__title": "కొత్త ప్రాంప్ట్ గ్రూప్",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "త్వరలో జవాబు ఇవ్వండి",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "డ్రాఫ్ట్ను సవరించండి లేదా సమీక్షించండి",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "త్వరలో రచన రచించండి"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "బుద్ధిమత్తత మరియు వేగం మధ్యం సంతృప్తిని సాధించే అంథ్రోపిక్ యొక్క తాజా మోడల్, విజన్ సాధ్యతను కూడా అందిస్తుంది.",
     "sidebar__promotion_dialog__content_item3__title": "`విజన్` తో `Claude-3-haiku`",
     "sidebar__promotion_dialog__content_item3__description": "ప్రతిదిన ఉంటే వివిధ కార్యాలను సులభంగా చేర్చడానికి అంత్రోపిక్‌కి తీవ్రతరంగా మోడల్‌ను ఆక్సెస్ చేయండి.",
-    "sidebar__promotion_dialog__content_item4__title": "మరింత ఆకర్షణీయంగా అనువదించండి",
-    "sidebar__promotion_dialog__content_item4__description": "ఒక నొక్కిని ఉపయోగించి ద్విభాషా పఠనం మూడు క్లిక్‌లుతో మెరుగుపరచడం వల్ల సమాచార పొందే యాంత్రికతను పెంచుకోండి.",
+    "sidebar__promotion_dialog__content_item4__title": "టైమ్‌స్టాంప్ వీడియో సారాంశం",
+    "sidebar__promotion_dialog__content_item4__description": "టైమ్‌స్టాంప్ బ్రేక్‌డౌన్‌లతో సంగీత వీడియోలను సులువుగా నావిగేట్ చేయండి.",
     "sidebar__promotion_dialog__content_item5__title": "AI కళాకారుడిగా చిత్రాలు మరియు చిత్రాలను సృష్టించండి",
     "sidebar__promotion_dialog__content_item5__description": "మీ దృష్టిని అద్భుతమైన చిత్రాలకు మార్చండి. సరళంగా, శక్తివంతంగా, మార్పులతో.",
     "sidebar__promotion_dialog__cta_button": "ఇప్పుడు అప్గ్రేడ్ చేయండి - ఆఫర్ త్వరలో ముగిసేది!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ఇమెయిల్ని సంగ్రహించండి (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ఇమెయిల్ని సంగ్రహించండి (ముఖ్య తెలుసుకొనుట)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ఇమెయిల్ని సంగ్రహించండి (చర్యల అంశాలు)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ట్రాన్స్క్రిప్ట్ చూపించు"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ట్రాన్స్క్రిప్ట్ చూపించు",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "దయచేసి వీడియో విజెట్ పూర్తి అవుతున్నప్పుడు వీడియో విజెట్ ముగిసిన తర్వాత మళ్లీ ప్రయత్నించండి.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "టైమ్‌స్టాంప్ సారాంశం",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "ఉపశీర్షికలు లేని వీడియోను సృష్టించలేరు.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ఒక అసాధారణం జరిగింది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Visa AI-svar endast när du klickar på en knapp manuellt.",
     "feature_card__appearance__field_summarize_button__title": "Sammanfatta knapp",
     "feature_card__prompts__edit_prompt__field_advance__title": "Framsteg",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Utmatningsspråk och ton och skrivstil"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Utmatningsspråk och ton och skrivstil",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextmeny",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Skrivassistent",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Sammanfattning",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Sök",
+    "feature_card__prompts__new_prompt__title": "Ny prompt",
+    "feature_card__prompts__new_prompt_group__title": "Ny promptgrupp",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Snabbt svar",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Redigera eller granska utkast",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Snabb komponering"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Få tillgång till Anthropics senaste modell som balanserar intelligens och hastighet, samtidigt som den erbjuder visionförmåga.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` med vision",
     "sidebar__promotion_dialog__content_item3__description": "Få tillgång till Anthropics snabbaste modell i intelligensklassen för att effektivt hantera olika vardagssysslor.",
-    "sidebar__promotion_dialog__content_item4__title": "Immersiv översättning",
-    "sidebar__promotion_dialog__content_item4__description": "Aktivera tvåspråkig läsning med ett enda klick för att förbättra informationsåtervinningseffektiviteten.",
+    "sidebar__promotion_dialog__content_item4__title": "Tidsstämplad videosammanfattning",
+    "sidebar__promotion_dialog__content_item4__description": "Navigera YouTube-videor smidigt med sammanfattade stycken med tidsstämplade avsnitt.",
     "sidebar__promotion_dialog__content_item5__title": "Skapa AI-konst och bilder",
     "sidebar__promotion_dialog__content_item5__description": "Omvandla snabbt dina visioner till fantastiska bilder. Enkelt, kraftfullt, transformerande.",
     "sidebar__promotion_dialog__cta_button": "Uppgradera nu - Erbjudandet slutar snart!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Sammanfatta e-post (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Sammanfatta e-post (Viktiga poänger)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Sammanfatta e-post (Åtgärder)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Visa transkript"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Visa transkript",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vänligen vänta tills videoreklamen är klar och försök sedan igen.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tidsstämplad sammanfattning",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan inte generera video utan undertexter.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ett undantag inträffade, försök igen senare."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

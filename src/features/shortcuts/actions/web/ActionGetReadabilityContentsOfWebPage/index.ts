@@ -4,17 +4,17 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getIframeOrSpecialHostPageContent } from '@/features/sidebar/utils/pageSummaryHelper'
 
-import { stopActionMessage } from '../../common'
-
 export class ActionGetReadabilityContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_READABILITY_CONTENTS_OF_WEBPAGE'
   originalInnerText: string = ''
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -33,6 +33,7 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      if (this.isStopAction) return
       const result =
         (await getIframeOrSpecialHostPageContent()) ||
         (await getPageContentWithMozillaReadability())
@@ -47,7 +48,8 @@ export class ActionGetReadabilityContentsOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    this.isStopAction = true
+    await stopActionMessageStatus(params)
     return true
   }
 }

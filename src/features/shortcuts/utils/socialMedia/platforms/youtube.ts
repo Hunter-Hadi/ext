@@ -56,12 +56,15 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       )
       const youTubeVideoMetaData = document.querySelector('ytd-watch-metadata')
       const title =
-        (youTubeVideoMetaData?.querySelector(
-          '#title > h1',
-        ) as HTMLHeadingElement)?.innerText || document.title
+        (
+          youTubeVideoMetaData?.querySelector(
+            '#title > h1',
+          ) as HTMLHeadingElement
+        )?.innerText || document.title
       const authorElement = document.querySelector('ytd-video-owner-renderer')
-      const userName = authorElement?.querySelector('yt-formatted-string')
-        ?.textContent
+      const userName = authorElement?.querySelector(
+        'yt-formatted-string',
+      )?.textContent
       const expandButton = youTubeVideoMetaData?.querySelector(
         'tp-yt-paper-button#expand',
       ) as HTMLButtonElement
@@ -76,13 +79,17 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           ?.includes('@') &&
         authorElement?.querySelector('a')?.getAttribute('href')?.split('/')[1]
       const date =
-        (youTubeVideoMetaData?.querySelector(
-          '#description #info-container yt-formatted-string > span:nth-child(3)',
-        ) as HTMLSpanElement)?.innerText || ''
+        (
+          youTubeVideoMetaData?.querySelector(
+            '#description #info-container yt-formatted-string > span:nth-child(3)',
+          ) as HTMLSpanElement
+        )?.innerText || ''
       const content =
-        (youTubeVideoMetaData?.querySelector(
-          '#description ytd-text-inline-expander yt-attributed-string',
-        ) as HTMLDivElement)?.innerText || ''
+        (
+          youTubeVideoMetaData?.querySelector(
+            '#description ytd-text-inline-expander yt-attributed-string',
+          ) as HTMLDivElement
+        )?.innerText || ''
       youTubeSocialMediaPostContext = new SocialMediaPostContext(
         {
           title,
@@ -112,13 +119,17 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       )
       if (ytdReelPlayerHeader) {
         const title =
-          (ytdReelPlayerHeader?.querySelector(
-            '.title > yt-formatted-string',
-          ) as HTMLDivElement)?.innerText || ''
+          (
+            ytdReelPlayerHeader?.querySelector(
+              '.title > yt-formatted-string',
+            ) as HTMLDivElement
+          )?.innerText || ''
         const author =
-          (ytdReelPlayerHeader?.querySelector(
-            'ytd-channel-name #text-container yt-formatted-string',
-          ) as HTMLDivElement)?.innerText || ''
+          (
+            ytdReelPlayerHeader?.querySelector(
+              'ytd-channel-name #text-container yt-formatted-string',
+            ) as HTMLDivElement
+          )?.innerText || ''
         youTubeSocialMediaPostContext = new SocialMediaPostContext(
           {
             title,
@@ -367,7 +378,7 @@ const getCommitList = async () => {
       for (let i = 0; i < commentThreadRenderers.length; i++) {
         const commentThreadRenderer = commentThreadRenderers[i]
         const data = await getYouTubeCommentContent(
-          (commentThreadRenderer as unknown) as HTMLElement,
+          commentThreadRenderer as unknown as HTMLElement,
         )
         list.push(data)
       }

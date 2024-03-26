@@ -552,7 +552,7 @@ const FloatingContextMenu: FC<{
                   key: 'SELECTED_TEXT',
                   value: selectionElement.selectionText,
                   label: 'Selected text',
-                  isBuildIn: true,
+                  isBuiltIn: true,
                   overwrite: true,
                 },
               ]

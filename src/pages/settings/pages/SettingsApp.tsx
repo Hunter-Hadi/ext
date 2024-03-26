@@ -1,6 +1,6 @@
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect, useRef, useState } from 'react'
+import React, { type FC, lazy, useEffect, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
@@ -34,37 +34,35 @@ export const SETTINGS_PAGE_CONTENT_WIDTH = {
   xl: 800,
 }
 
-const SettingsMePage = React.lazy(() => import('@/pages/settings/pages/me'))
-const SettingsHelpPage = React.lazy(() => import('@/pages/settings/pages/help'))
-const SettingsMyOwnPromptsPage = React.lazy(
+const SettingsMePage = lazy(() => import('@/pages/settings/pages/me'))
+const SettingsHelpPage = lazy(() => import('@/pages/settings/pages/help'))
+const SettingsMyOwnPromptsPage = lazy(
   () => import('@/pages/settings/pages/prompts'),
 )
-const SettingsOpenaiAPIKeyPage = React.lazy(
+const SettingsOpenaiAPIKeyPage = lazy(
   () => import('@/pages/settings/pages/openai_api_key'),
 )
 
-const SettingsShortcutPage = React.lazy(
+const SettingsShortcutPage = lazy(
   () => import('@/pages/settings/pages/shortcut'),
 )
-const SettingsAppearancePage = React.lazy(
+const SettingsAppearancePage = lazy(
   () => import('@/pages/settings/pages/appearance'),
 )
-const SettingsMiniMenuPage = React.lazy(
+const SettingsMiniMenuPage = lazy(
   () => import('@/pages/settings/pages/mini_menu'),
 )
-const SettingsHelpMeWritePage = React.lazy(
+const SettingsHelpMeWritePage = lazy(
   () => import('@/pages/settings/pages/help_me_write'),
 )
-const SettingsLanguagePage = React.lazy(
+const SettingsLanguagePage = lazy(
   () => import('@/pages/settings/pages/language'),
 )
-const SettingsChatGPTStableModePage = React.lazy(
+const SettingsChatGPTStableModePage = lazy(
   () => import('@/pages/settings/pages/chatgpt_stable_mode'),
 )
-const SettingsPerksPage = React.lazy(
-  () => import('@/pages/settings/pages/perks'),
-)
-const SettingsSearchWithAIPage = React.lazy(
+const SettingsPerksPage = lazy(() => import('@/pages/settings/pages/perks'))
+const SettingsSearchWithAIPage = lazy(
   () => import('@/pages/settings/pages/search_with_ai'),
 )
 const SettingsDevTestPrompt = React.lazy(

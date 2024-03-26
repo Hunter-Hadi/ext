@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "માન્યતાને ક્લિક કરીને ફક્ત જ્યારે એઆઈ પ્રતિસાદ બતાવો.",
     "feature_card__appearance__field_summarize_button__title": "સંક્ષેપ બટન",
     "feature_card__prompts__edit_prompt__field_advance__title": "એડવાન્સ",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "આઉટપુટ ભાષા અને ટોન અને લેખન શૈલી"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "આઉટપુટ ભાષા અને ટોન અને લેખન શૈલી",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "સંદર્ભ મેન્યુ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "લેખન સહાયક",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "સારાંશ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "શોધ",
+    "feature_card__prompts__new_prompt__title": "નવી પ્રોમ્પ્ટ",
+    "feature_card__prompts__new_prompt_group__title": "નવી પ્રોમ્પ્ટ ગ્રૂપ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ઝડપી જવાબ આપો",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ડ્રાફ્ટ સંપાદિત અથવા સમીક્ષા કરો",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ઝડપી રચના કરો"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -585,8 +594,8 @@
     "sidebar__promotion_dialog__content_item2__description": "બુદ્ધિમાનતા અને ઝડપથીની સાથે સામર્થ્યનું સંતુલન સ્થાપિત કરનાર Anthropic નું તાજેતરનું મોડેલ એક્સેસ કરો, જેમાં વિઝન ક્ષમતા પણ પૂરી કરે છે.",
     "sidebar__promotion_dialog__content_item3__title": "`વિચાર સાથે ક્લોડ-3-હાયકુ`",
     "sidebar__promotion_dialog__content_item3__description": "વિવિધ દૈનિક કાર્યોને અંતર્જાળમાં સરળતાથી સંચાલિત કરવા માટે એન્થ્રોપિકની સર્વાધિક ઝડપીથી કાર્યકર મોડેલનો ઉપયોગ કરો.",
-    "sidebar__promotion_dialog__content_item4__title": "મોહક અનુવાદ",
-    "sidebar__promotion_dialog__content_item4__description": "એક ક્લિક સાથે દ્વિભાષાયુક્ત વાંચન સક્ષમતાને વધારવા માટે દ્વિભાષી વાંચનને સક્ષમ બનાવો.",
+    "sidebar__promotion_dialog__content_item4__title": "ટાઇમસ્ટેમ્પ વિડિઓ સારાંશ",
+    "sidebar__promotion_dialog__content_item4__description": "સંક્ષિપ્ત પેરાગ્રાફ સાથે ટાઇમસ્ટેમ્પ બ્રેકડાઉનનો ઉપયોગ કરીને YouTube વિડિઓને આસાનીથી નેવિગેટ કરો.",
     "sidebar__promotion_dialog__content_item5__title": "એઆઈ આર્ટ અને છબીઓ બનાવો",
     "sidebar__promotion_dialog__content_item5__description": "તમારા દૃષ્ટિઓને ઝડપીથી આકર્ષક છબીઓમાં બદલો. સરળ, શક્તિશાળી, પરિવર્તનાત્મક.",
     "home_view_content_nav__summary_page__title": "પૃષ્ઠને સંક્ષેપિત કરો અને પુછો",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ઇમેઇલ સંક્ષેપિત કરો (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ઇમેઇલ સંક્ષેપિત કરો (મુખ્ય આપત્તિઓ)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ઇમેઇલ સંક્ષેપિત કરો (ક્રિયાઓ)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ટ્રાન્સક્રિપ્ટ બતાવો"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ટ્રાન્સક્રિપ્ટ બતાવો",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "કૃપા કરીને વિડિઓ એડ પ્લે થયા પછી રાહ જુઓ.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "સમયગાળો સંક્ષેપ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "સબટાઇટલ વગર વિડિઓ બનાવી શકતા નથી.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "એક અનુક્રમણિકામાં ભૂલ આવી, મહેરબાની કરીને પછી ફરી પ્રયાસ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

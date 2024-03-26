@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Zobraziť odpoveď AI iba po manuálnom kliknutí na tlačidlo.",
     "feature_card__appearance__field_summarize_button__title": "Tlačidlo zhrnutia",
     "feature_card__prompts__edit_prompt__field_advance__title": "Posunúť sa vpred",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupný jazyk a tón a štýl písania"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupný jazyk a tón a štýl písania",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextové menu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Pomocník pri písaní",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Súhrn",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Vyhľadávanie",
+    "feature_card__prompts__new_prompt__title": "Nový návrh",
+    "feature_card__prompts__new_prompt_group__title": "Nová skupina návrhov",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rýchla odpoveď",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upraviť alebo posúdiť koncept",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rýchle zostavenie"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Získajte prístup k najnovšiemu modelu Anthropic, ktorý dosahuje rovnováhu medzi inteligenciou a rýchlosťou, pričom ponúka aj schopnosť videnia.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` s videním",
     "sidebar__promotion_dialog__content_item3__description": "Pristupujte k najrýchlejšiemu modelu Anthropic v triede inteligencie na efektívne zvládanie rôznych každodenných úloh.",
-    "sidebar__promotion_dialog__content_item4__title": "Pohlcujúci preklad",
-    "sidebar__promotion_dialog__content_item4__description": "Aktivujte dvojjazyčné čítanie jediným kliknutím a zlepšite efektivitu vyhľadávania informácií.",
+    "sidebar__promotion_dialog__content_item4__title": "Časové zhrnutie videa",
+    "sidebar__promotion_dialog__content_item4__description": "Prehľadne prechádzajte YouTube videami pomocou zhrnutých odsekov s časovým rozkladom.",
     "sidebar__promotion_dialog__content_item5__title": "Vytvárajte umelecké diela a obrázky s pomocou AI",
     "sidebar__promotion_dialog__content_item5__description": "Rýchlo pretvorte svoje vízie do ohromujúcich obrázkov. Jednoduché, výkonné, transformačné.",
     "sidebar__promotion_dialog__cta_button": "Vylepšiť teraz - Ponuka končí čoskoro!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Zhrnúť email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Zhrnúť email (Kľúčové myšlienky)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Zhrnúť email (Akčné body)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobraziť prepis"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobraziť prepis",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počkajte, kým sa video reklama dohraje a potom skúste znova.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časové zhrnutie",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nie je možné vytvoriť video bez titulkov.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Vyskytla sa výnimka, skúste to prosím neskôr znova."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -10,12 +10,16 @@ import {
 interface ArkoseEnforcement {
   config: any
   setConfig(config: {
-    onCompleted: (result: any) => void
-    onReady: () => void
-    onError: (result: any) => void
-    onFailed: (result: any) => void
+    selector?: string
+    mode?: string
+    onCompleted?: (result: any) => void
+    onReady?: () => void
+    onError?: (result: any) => void
+    onFailed?: (result: any) => void
+    data?: any
   }): void
   run(): void
+  reset(): void
 }
 class ArkoseTokenIframeGenerator {
   model: ArkoseTokenModelType
@@ -25,57 +29,28 @@ class ArkoseTokenIframeGenerator {
     resolve: (value?: any) => void
     reject: (reason?: any) => void
   }[] = []
-  private cacheToken: string = ''
   isReady: boolean
   config: any
+  status: 'unSetConfig' | 'ready'
   constructor(model: ArkoseTokenModelType, apiLink: string) {
-    this.isReady = false
+    this.isReady = true
+    this.status = 'unSetConfig'
     this.model = model
     this.apiLink = apiLink
     this.enforcement = undefined
     this.pendingPromises = []
     if (this.model === 'gpt_3_5') {
-      (window as any).useArkoseSetupEnforcementgpt35 = this.useArkoseSetupEnforcement.bind(
-        this,
-      )
+      ;(window as any).useArkoseSetupEnforcementgpt35 =
+        this.useArkoseSetupEnforcement.bind(this)
     } else if (this.model === 'gpt_4') {
-      (window as any).useArkoseSetupEnforcementgpt4 = this.useArkoseSetupEnforcement.bind(
-        this,
-      )
+      ;(window as any)['useArkoseSetupEnforcementchatgpt-paid'] =
+        this.useArkoseSetupEnforcement.bind(this)
     }
     this.injectScript()
   }
 
   private useArkoseSetupEnforcement(enforcement: ArkoseEnforcement) {
     this.enforcement = enforcement
-    console.debug(`[${this.model}] bing config`)
-    enforcement.setConfig({
-      onCompleted: (r) => {
-        console.debug(`[${this.model}] enforcement.onCompleted`, r)
-        if (this.pendingPromises.length === 0) {
-          console.debug(`[${this.model}] enforcement.save Cached`)
-          this.cacheToken = r.token
-        }
-        this.pendingPromises.forEach((promise) => {
-          promise.resolve(r.token)
-        })
-        this.pendingPromises = []
-      },
-      onReady: () => {
-        this.isReady = true
-        console.debug(`[${this.model}] enforcement.onReady`)
-        enforcement.run()
-      },
-      onError: (r) => {
-        console.debug(`[${this.model}] enforcement.onError`, r)
-      },
-      onFailed: (r) => {
-        console.debug('enforcement.onFailed', r)
-        this.pendingPromises.forEach((promise) => {
-          promise.reject(new Error('Failed to generate arkose token'))
-        })
-      },
-    })
   }
 
   injectScript() {
@@ -86,24 +61,71 @@ class ArkoseTokenIframeGenerator {
       script.setAttribute('data-status', 'loading')
     } else if (this.model === 'gpt_4') {
       script.src = this.apiLink
-      script.setAttribute('data-callback', 'useArkoseSetupEnforcementgpt4')
+      script.setAttribute(
+        'data-callback',
+        'useArkoseSetupEnforcementchatgpt-paid',
+      )
       script.setAttribute('data-status', 'loading')
     }
     document.body.appendChild(script)
   }
 
-  async generate() {
+  async generate(dx?: string) {
+    for (let i = 12; i > 0; i--) {
+      if (this.enforcement) {
+        break
+      }
+      console.debug(`[${this.model}] waiting for enforcement`, i)
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+    }
     if (!this.enforcement) {
       return ''
     }
-    if (this.cacheToken) {
-      const cache = this.cacheToken
-      this.cacheToken = ''
-      return cache
-    }
     return new Promise((resolve, reject) => {
       this.pendingPromises = [{ resolve, reject }] // store only one promise for now.
-      this.enforcement?.run()
+      if (dx) {
+        this.enforcement?.setConfig({
+          data: {
+            blob: dx,
+          },
+        })
+      }
+      if (this.status !== 'ready') {
+        console.debug(`[${this.model}] bing config`)
+        this.enforcement?.setConfig({
+          selector: '#' + `useArkoseSetupEnforcementchatgpt-paid`,
+          mode: 'inline',
+          onCompleted: (r) => {
+            console.debug(`[${this.model}] enforcement.onCompleted`, r)
+            if (this.pendingPromises.length === 0) {
+              console.debug(`[${this.model}] enforcement.save Cached`)
+            }
+            this.pendingPromises.forEach((promise) => {
+              promise.resolve(r.token)
+            })
+            this.pendingPromises = []
+          },
+          onReady: () => {
+            this.status = 'ready'
+            this.isReady = true
+            console.debug(`[${this.model}] enforcement.onReady`)
+            this.enforcement?.reset()
+            this.enforcement?.run()
+          },
+          onError: (r) => {
+            console.debug(`[${this.model}] enforcement.onError`, r)
+          },
+          onFailed: (r) => {
+            console.debug('enforcement.onFailed', r)
+            this.pendingPromises.forEach((promise) => {
+              promise.reject(new Error('Failed to generate arkose token'))
+            })
+          },
+        })
+      } else {
+        this.enforcement?.reset()
+        this.enforcement?.run()
+      }
     })
   }
 }
@@ -123,16 +145,6 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
     'gpt_4',
     gpt4ScriptLink,
   )
-  // 判断是否Ready - 7s
-  for (let i = 0; i < 7; i++) {
-    if (
-      GPT35ArkoseTokenIframeGenerator.isReady ||
-      GPT4ArkoseTokenIframeGenerator.isReady
-    ) {
-      break
-    }
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-  }
   if (
     GPT35ArkoseTokenIframeGenerator.isReady ||
     GPT4ArkoseTokenIframeGenerator.isReady
@@ -170,13 +182,14 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
             event.origin,
           )
         } else if (event.data.type === 'get_token') {
+          const { dx } = event.data.data
           const arkoseGenerator =
             model === 'gpt_3_5'
               ? GPT35ArkoseTokenIframeGenerator
               : GPT4ArkoseTokenIframeGenerator
           const token = await Promise.race([
-            GPT4ArkoseTokenIframeGenerator.generate(),
-            GPT35ArkoseTokenIframeGenerator.generate(),
+            GPT4ArkoseTokenIframeGenerator.generate(dx),
+            // GPT35ArkoseTokenIframeGenerator.generate(dx),
           ])
           console.debug(`[${arkoseGenerator.model}] enforcement.result`, token)
           event.source.postMessage(
@@ -189,6 +202,11 @@ if (gpt35ScriptLink && gpt4ScriptLink) {
             },
             event.origin,
           )
+          if (token) {
+            // 每次都要重置 - 2024-03-25
+            GPT4ArkoseTokenIframeGenerator.isReady = false
+            GPT35ArkoseTokenIframeGenerator.isReady = false
+          }
         }
       }
     })

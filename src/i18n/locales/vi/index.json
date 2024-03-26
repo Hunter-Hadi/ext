@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Chỉ hiển thị câu trả lời AI khi bạn nhấp vào nút thủ công.",
     "feature_card__appearance__field_summarize_button__title": "Nút Tóm tắt",
     "feature_card__prompts__edit_prompt__field_advance__title": "Tiến bộ",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ngôn ngữ đầu ra & Tông & Phong cách viết"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ngôn ngữ đầu ra & Tông & Phong cách viết",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu ngữ cảnh",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Trợ lý viết",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Tóm tắt",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Tìm kiếm",
+    "feature_card__prompts__new_prompt__title": "Gợi ý mới",
+    "feature_card__prompts__new_prompt_group__title": "Nhóm gợi ý mới",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Trả lời nhanh",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Chỉnh sửa hoặc xem lại bản nháp",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Soạn nhanh"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Truy cập vào mô hình mới nhất của Anthropic, đạt được sự cân bằng giữa thông minh và tốc độ, đồng thời cung cấp khả năng nhìn.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` với tầm nhìn",
     "sidebar__promotion_dialog__content_item3__description": "Truy cập vào mô hình nhanh nhất của Anthropic trong lớp thông minh để xử lý hiệu quả nhiều tác vụ hàng ngày.",
-    "sidebar__promotion_dialog__content_item4__title": "Dịch thuật sâu sắc",
-    "sidebar__promotion_dialog__content_item4__description": "Cho phép đọc song ngữ chỉ bằng một cú nhấp chuột để cải thiện hiệu suất truy xuất thông tin.",
+    "sidebar__promotion_dialog__content_item4__title": "Tóm tắt video theo thời gian",
+    "sidebar__promotion_dialog__content_item4__description": "Dễ dàng điều hướng qua các video YouTube bằng cách sử dụng đoạn văn tóm tắt có thời gian chia nhỏ.",
     "sidebar__promotion_dialog__content_item5__title": "Tạo nghệ thuật và hình ảnh AI",
     "sidebar__promotion_dialog__content_item5__description": "Biến tưởng của bạn thành những hình ảnh tuyệt đẹp một cách nhanh chóng. Đơn giản, mạnh mẽ, biến đổi.",
     "sidebar__promotion_dialog__cta_button": "Nâng cấp ngay - Ưu đãi sẽ kết thúc sớm!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Tóm tắt email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Tóm tắt email (Những điểm chính)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Tóm tắt email (Công việc cần làm)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Hiển thị bản ghi âm"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Hiển thị bản ghi âm",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vui lòng đợi cho đến khi quảng cáo video kết thúc và sau đó thử lại.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tóm tắt có dấu thời gian",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Không thể tạo video không có phụ đề.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Đã xảy ra ngoại lệ, vui lòng thử lại sau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

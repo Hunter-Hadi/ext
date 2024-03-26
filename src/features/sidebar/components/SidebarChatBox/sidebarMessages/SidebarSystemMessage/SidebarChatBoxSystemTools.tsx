@@ -21,10 +21,8 @@ const SidebarChatBoxSystemTools: FC<{
 }> = (props) => {
   const { message, onSolutionToggle, solutionsShow } = props
   const { t } = useTranslation(['common', 'client'])
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationMessages, currentSidebarConversationType } =
+    useSidebarSettings()
   const lastMessage =
     currentSidebarConversationMessages.length > 0
       ? currentSidebarConversationMessages[
@@ -34,13 +32,13 @@ const SidebarChatBoxSystemTools: FC<{
   const { currentUserPlan, userInfo } = useUserInfo()
   const { regenerate } = useClientChat()
   const { regenerateSearchWithAI } = useSearchWithAI()
-  const chatMessageType =
+  const chatSystemMessageType =
     message.meta?.systemMessageType ||
     message.extra?.systemMessageType ||
     'normal'
   const permissionSceneType =
     message.meta?.permissionSceneType || message?.extra?.permissionSceneType
-  const chatMessageStatus =
+  const chatSystemMessageStatus =
     message.meta?.status || message.extra?.status || 'success'
   const permissionCardMap = usePermissionCardMap()
   const { currentAIProviderDetail } = useAIProviderModels()
@@ -52,7 +50,7 @@ const SidebarChatBoxSystemTools: FC<{
   }, [permissionCardMap, permissionSceneType, t])
   useEffect(() => {
     if (
-      chatMessageType === 'needUpgrade' &&
+      chatSystemMessageType === 'needUpgrade' &&
       (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite')
     ) {
       clientSendMaxAINotification(
@@ -67,11 +65,11 @@ const SidebarChatBoxSystemTools: FC<{
         },
       )
     }
-  }, [currentUserPlan.name, chatMessageType])
+  }, [currentUserPlan.name, chatSystemMessageType])
 
   return (
     <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
-      {chatMessageType === 'needUpgrade' && (
+      {chatSystemMessageType === 'needUpgrade' && (
         <Button
           fullWidth
           sx={{
@@ -84,7 +82,10 @@ const SidebarChatBoxSystemTools: FC<{
           target={'_blank'}
           href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
           onClick={(event) => {
-            if (chatMessageType === 'needUpgrade' && permissionSceneType) {
+            if (
+              chatSystemMessageType === 'needUpgrade' &&
+              permissionSceneType
+            ) {
               authEmitPricingHooksLog('click', permissionSceneType)
             }
           }}
@@ -92,25 +93,26 @@ const SidebarChatBoxSystemTools: FC<{
           {upgradeCardText}
         </Button>
       )}
-      {chatMessageStatus === 'error' && currentAIProviderDetail?.thirdParty && (
-        <Button
-          size={'small'}
-          variant={'outlined'}
-          color={'error'}
-          onClick={onSolutionToggle}
-          sx={{
-            border: '1px solid rgba(244, 67, 54, 0.5)',
-            color: '#f44336',
-          }}
-        >
-          {solutionsShow
-            ? t('client:provider__label__hide')
-            : t('client:provider__label__view_solutions')}
-        </Button>
-      )}
+      {chatSystemMessageStatus === 'error' &&
+        currentAIProviderDetail?.thirdParty && (
+          <Button
+            size={'small'}
+            variant={'outlined'}
+            color={'error'}
+            onClick={onSolutionToggle}
+            sx={{
+              border: '1px solid rgba(244, 67, 54, 0.5)',
+              color: '#f44336',
+            }}
+          >
+            {solutionsShow
+              ? t('client:provider__label__hide')
+              : t('client:provider__label__view_solutions')}
+          </Button>
+        )}
 
-      {message.meta.status !== 'success' &&
-        chatMessageType === 'normal' &&
+      {chatSystemMessageStatus !== 'success' &&
+        chatSystemMessageType === 'normal' &&
         lastMessage?.messageId === message.messageId &&
         message.parentMessageId && (
           <Button

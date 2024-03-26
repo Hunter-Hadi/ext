@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Rodyti dirbtinio intelekto atsakymą tik tada, kai rankiniu būdu paspausite mygtuką.",
     "feature_card__appearance__field_summarize_button__title": "Santrauka",
     "feature_card__prompts__edit_prompt__field_advance__title": "Pažanga",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Išvesties kalba ir tonas ir rašymo stilius"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Išvesties kalba ir tonas ir rašymo stilius",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstinis meniu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Rašymo asistentas",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Santrauka",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Paieška",
+    "feature_card__prompts__new_prompt__title": "Naujas užduoties aprašymas",
+    "feature_card__prompts__new_prompt_group__title": "Nauja užduočių grupė",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Greitas atsakymas",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Redaguoti arba peržiūrėti juodraštį",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Greitas sudarymas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Pasiekite naujausią Anthropic modelį, kuris subalansuoja intelektą ir greitį, taip pat siūlantį vizijos galimybę.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` su vizija",
     "sidebar__promotion_dialog__content_item3__description": "Pasiekite Anthropic greičiausią modelį intelekto klasėje, kad efektyviai tvarkytumėte įvairius kasdienius uždavinius.",
-    "sidebar__promotion_dialog__content_item4__title": "Įdomus vertimas",
-    "sidebar__promotion_dialog__content_item4__description": "Vieno paspaudimo funkcija, leidžianti dvikalbiam skaitymui ir pagerinti informacijos paieškos efektyvumą.",
+    "sidebar__promotion_dialog__content_item4__title": "Laiko žymėmis pažymėtas vaizdo įrašo santrauka",
+    "sidebar__promotion_dialog__content_item4__description": "Naršykite „YouTube“ vaizdo įrašus lengvai naudodami santraukas su laiko žymėmis.",
     "sidebar__promotion_dialog__content_item5__title": "Kurkite AI meną ir paveikslus",
     "sidebar__promotion_dialog__content_item5__description": "Greitai paverčia savo vizijas nuostabiais paveikslais. Paprasta, galinga, transformuojanti.",
     "sidebar__promotion_dialog__cta_button": "Atnaujinkite dabar - pasiūlymas baigiasi greitai!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Apibendrinkite el. laišką (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Apibendrinkite el. laišką (Pagrindiniai išvadai)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Apibendrinkite el. laišką (Veiksmų punktai)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rodyti transkriptą"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rodyti transkriptą",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Palaukite, kol baigsis vaizdo reklama, ir tada bandykite dar kartą.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Laiko žymėtas santrauka",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Negalima sugeneruoti vaizdo be subtitrų.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Įvyko išimtis, bandykite vėliau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

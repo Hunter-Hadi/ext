@@ -10,8 +10,10 @@ import {
 } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import { IAIForSearchStatus } from '@/features/searchWithAI/types'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
+import { clientFetchAPI } from '@/features/shortcuts/utils'
 import {
   crawlingSearchResults,
   ICrawlingSearchResult,
@@ -22,7 +24,6 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_APP_NAME,
-  // SEARCH_WITH_AI_DEFAULT_CRAWLING_LIMIT,
   SEARCH_WITH_AI_PROMPT,
 } from '../constants'
 import {
@@ -38,19 +39,6 @@ import useSearchWithAISources from './useSearchWithAISources'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
-export type IAIForSearchStatus =
-  // 初始化状态
-  | 'idle'
-  // 等待 AI 的回复
-  | 'waitingAnswer'
-  // AI 正在回复，但是还没有回复完毕
-  | 'answering'
-  // AI 回复完毕
-  | 'success'
-  // 报错
-  | 'error'
-  // 停止
-  | 'stop'
 
 // 不同 provider 的超时时间
 const PROVIDER_TIMEOUT_DURATION: Record<ISearchWithAIProviderType, number> = {
@@ -74,10 +62,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
   // 是否使用了缓存
   const [isUseCache, setIsUseCache] = useState(false)
 
-  const {
-    getSearchWithAICacheData,
-    setSearchWithAICacheData,
-  } = useSearchWithAICache()
+  const { getSearchWithAICacheData, setSearchWithAICacheData } =
+    useSearchWithAICache()
 
   const { searchWithAISettings } = useSearchWithAISettings()
 
@@ -87,11 +73,8 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
 
   const setAutoTriggerAskEnable = useSetRecoilState(AutoTriggerAskEnableAtom)
 
-  const {
-    startSourcesLoading,
-    clearSources,
-    setSources,
-  } = useSearchWithAISources()
+  const { startSourcesLoading, clearSources, setSources } =
+    useSearchWithAISources()
 
   const updateConversation = (
     newConversationData: Partial<ISearchWithAIConversationType>,
@@ -242,12 +225,43 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       })
     }
     if (searchWithAISettings.aiProvider === 'OPENAI') {
-      const arkoseToken = await chromeExtensionArkoseTokenGenerator.generateToken(
-        'gpt_3_5',
+      const result = await clientFetchAPI(
+        'https://chat.openai.com/api/auth/session',
+        {
+          method: 'GET',
+        },
       )
-      await setSearchWithAISettings({
-        arkoseToken,
-      })
+      if (result?.data?.accessToken) {
+        // 先调用chatRequirements
+        const chatRequirementsResult = await clientFetchAPI(
+          `https://chat.openai.com/backend-api/sentinel/chat-requirements`,
+          {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${result.data.accessToken}`,
+            },
+            body: JSON.stringify({
+              conversation_mode_kind: 'primary_assistant',
+            }),
+          },
+        )
+        const chatRequirementsToken = chatRequirementsResult?.data?.token || ''
+        const dx = chatRequirementsResult?.data?.arkose?.dx || ''
+        if (dx) {
+          const arkoseToken =
+            await chromeExtensionArkoseTokenGenerator.generateToken('gpt_4', dx)
+          await setSearchWithAISettings({
+            arkoseToken,
+            chatRequirementsToken,
+          })
+        } else {
+          await setSearchWithAISettings({
+            arkoseToken: '',
+            chatRequirementsToken,
+          })
+        }
+      }
     }
 
     timer.current && window.clearTimeout(timer.current)

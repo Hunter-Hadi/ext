@@ -182,16 +182,82 @@ export type ChatGPTSocketServiceMessageListener = (
   event: ChatGPTSocketServiceMessageListenerData,
 ) => void
 
+class SequenceAckTask {
+  private functionToExecute: () => Promise<void>
+  private abortController: AbortController
+  private interval: number
+
+  constructor(task: () => Promise<void>, interval: number) {
+    this.functionToExecute = task
+    this.abortController = new AbortController()
+    this.interval = interval
+    this.start()
+  }
+
+  abort() {
+    try {
+      this.abortController.abort()
+    } catch (e) {
+      // TODO
+    }
+  }
+
+  private async start() {
+    const signal = this.abortController.signal
+    while (!signal.aborted) {
+      try {
+        await this.functionToExecute()
+      } catch (e) {
+        // TODO
+      } finally {
+        await new Promise((resolve) => setTimeout(resolve, this.interval))
+      }
+    }
+  }
+}
+class SequenceIdTracker {
+  private currentSequenceId: number
+  private isUpdated: boolean
+
+  constructor() {
+    this.currentSequenceId = 0
+    this.isUpdated = false
+  }
+
+  tryUpdate(newSequenceId: number): boolean {
+    this.isUpdated = true
+    if (newSequenceId > this.currentSequenceId) {
+      this.currentSequenceId = newSequenceId
+      return true
+    }
+    return false
+  }
+
+  tryGetSequenceId(): [boolean, number | null] {
+    if (this.isUpdated) {
+      this.isUpdated = false
+      return [true, this.currentSequenceId]
+    }
+    return [false, null]
+  }
+
+  reset() {
+    this.currentSequenceId = 0
+    this.isUpdated = false
+  }
+}
+
+const chatGPTWebappSocketSequenceIdTracker = new SequenceIdTracker()
+
 class ChatGPTSocketService {
   private token: string | null = null
   private status: 'disconnected' | 'connecting' | 'connected' = 'disconnected'
   private socket: WebSocket | null = null
   private isDetected: boolean = false
   public isSocketService: boolean = false
-  private messageListeners: Map<
-    string,
-    ChatGPTSocketServiceMessageListener
-  > = new Map()
+  private messageListeners: Map<string, ChatGPTSocketServiceMessageListener> =
+    new Map()
+  private sequenceAckTask: SequenceAckTask | null = null
   private socketIdMessageMap: Map<
     string,
     {
@@ -254,13 +320,28 @@ class ChatGPTSocketService {
       this.socket.binaryType = 'arraybuffer'
       this.socket.onopen = () => {
         console.log('ChatGPTWebapp Socket opened')
+        this.sequenceAckTask = new SequenceAckTask(async () => {
+          const [isUpdated, sequenceId] =
+            chatGPTWebappSocketSequenceIdTracker.tryGetSequenceId()
+          if (isUpdated && sequenceId) {
+            this.socket?.send(
+              JSON.stringify({
+                sequenceId,
+                type: 'sequenceAck',
+              }),
+            )
+          }
+        }, 1000)
       }
       this.socket.onerror = (error) => {
         console.error('ChatGPTWebapp Socket error', error)
+        this.sequenceAckTask?.abort()
       }
       this.socket.onclose = () => {
         console.log('ChatGPTWebapp Socket closed')
         this.status = 'disconnected'
+        chatGPTWebappSocketSequenceIdTracker.reset()
+        this.sequenceAckTask?.abort()
       }
       this.socket.onmessage = async (event) => {
         try {
@@ -412,6 +493,11 @@ class ChatGPTSocketService {
       chatGPTSocketServiceMessage?.kind === 'groupData'
     ) {
       this.processMessage(chatGPTSocketServiceMessage, (message) => {
+        if (message?.ChatGPTSocketRawData?.sequenceId) {
+          chatGPTWebappSocketSequenceIdTracker.tryUpdate(
+            message.ChatGPTSocketRawData.sequenceId,
+          )
+        }
         console.log(
           'ChatGPTWebapp Socket message',
           this.messageListeners,
@@ -585,8 +671,9 @@ class ChatGPTSocketService {
         ) {
           text = 'Creating image'
           const assetPointer =
-            (rawMessage.message.content
-              .parts?.[0] as any)?.asset_pointer?.split('//')?.[1] || ''
+            (
+              rawMessage.message.content.parts?.[0] as any
+            )?.asset_pointer?.split('//')?.[1] || ''
           if (assetPointer) {
             if (cache.displayImages.find((item) => item === assetPointer)) {
               return

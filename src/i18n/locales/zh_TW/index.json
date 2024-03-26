@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "只有在手動點擊按鈕時才顯示AI回覆。",
     "feature_card__appearance__field_summarize_button__title": "摘要按鈕",
     "feature_card__prompts__edit_prompt__field_advance__title": "進階",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "輸出語言＆語氣＆寫作風格"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "輸出語言＆語氣＆寫作風格",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "上下文選單",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "寫作助手",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "摘要",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "搜尋",
+    "feature_card__prompts__new_prompt__title": "新提示",
+    "feature_card__prompts__new_prompt_group__title": "新提示群組",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "快速回覆",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "編輯或審查草稿",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "快速撰寫"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "使用Anthropic最新的模型，在智能和速度之间取得平衡，同时还提供视觉功能。",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-俳句`與視野",
     "sidebar__promotion_dialog__content_item3__description": "使用 Anthropic 最快的智能模型，高效處理各種日常任務。",
-    "sidebar__promotion_dialog__content_item4__title": "沉浸式翻譯",
-    "sidebar__promotion_dialog__content_item4__description": "單擊即可啟用雙語閱讀，提高信息檢索效率。",
+    "sidebar__promotion_dialog__content_item4__title": "時間軸式影片摘要",
+    "sidebar__promotion_dialog__content_item4__description": "使用帶有時間標記的摘要段落輕鬆瀏覽 YouTube 影片。",
     "sidebar__promotion_dialog__content_item5__title": "創作 AI 藝術和圖像",
     "sidebar__promotion_dialog__content_item5__description": "將您的想象迅速轉化為令人驚艷的圖像。簡單、強大、具有變革性。",
     "sidebar__promotion_dialog__cta_button": "立即升級-優惠即將結束！",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "總結郵件 (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "總結郵件 (重點摘要)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "總結郵件 (行動項目)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "顯示文字稿"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "顯示文字稿",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "請等待視頻廣告播放完畢，然後再試一次。",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "時間戳摘要",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "無法生成沒有字幕的視頻。",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "發生異常，請稍後再試。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

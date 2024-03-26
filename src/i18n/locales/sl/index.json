@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Prikaži odgovor AI samo, ko ročno kliknete gumb.",
     "feature_card__appearance__field_summarize_button__title": "Gumb za povzetek",
     "feature_card__prompts__edit_prompt__field_advance__title": "Napredek",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izhodni jezik in ton ter slog pisanja"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izhodni jezik in ton ter slog pisanja",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstni meni",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Pomočnik pri pisanju",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Povzetek",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Iskanje",
+    "feature_card__prompts__new_prompt__title": "Nov predlog",
+    "feature_card__prompts__new_prompt_group__title": "Nova skupina predlogov",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hitri odgovor",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Uredi ali pregledaj osnutek",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hitro sestavi"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Dostopajte do najnovejšega modela Anthropic, ki dosega ravnovesje med inteligenco in hitrostjo, hkrati pa ponuja tudi sposobnost vida.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` z vizijo",
     "sidebar__promotion_dialog__content_item3__description": "Dostopajte do najhitrejšega modela podjetja Anthropic v razredu inteligence za učinkovito obvladovanje različnih vsakodnevnih nalog.",
-    "sidebar__promotion_dialog__content_item4__title": "Globinsko prevajanje",
-    "sidebar__promotion_dialog__content_item4__description": "Omogočite dvojezično branje s samo enim klikom, da izboljšate učinkovitost iskanja informacij.",
+    "sidebar__promotion_dialog__content_item4__title": "Časovno označen povzetek videa",
+    "sidebar__promotion_dialog__content_item4__description": "Enostavno krmarite po YouTube videih s povzetimi odstavki in časovno označenimi razčlenitvami.",
     "sidebar__promotion_dialog__content_item5__title": "Ustvarjanje umetnosti in slik z AI",
     "sidebar__promotion_dialog__content_item5__description": "Hitro pretvorite svoje vizije v osupljive slike. Preprosto, močno, preoblikovalno.",
     "sidebar__promotion_dialog__cta_button": "Nadgradite zdaj - Ponudba se kmalu konča!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Povzetek e-pošte (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Povzetek e-pošte (Ključne ugotovitve)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Povzetek e-pošte (Naloge)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Prikaži prepis"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Prikaži prepis",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počakajte, da se video oglas konča in poskusite znova.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časovno označen povzetek",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Ni mogoče ustvariti videa brez podnapisov.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Prišlo je do napake, poskusite znova kasneje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

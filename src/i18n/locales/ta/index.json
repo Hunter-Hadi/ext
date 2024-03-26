@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "நீங்கள் கையேடு பொத்தானை அழுத்தியவுடன் மட்டுமே ஐய் முதலில் காட்டு.",
     "feature_card__appearance__field_summarize_button__title": "சுருக்கு பொத்தானை சுருக்குக",
     "feature_card__prompts__edit_prompt__field_advance__title": "முன்னேற்றம்",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "வெளிப்புற மொழி & தொடர்பு & எழுத்து பாணி"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "வெளிப்புற மொழி & தொடர்பு & எழுத்து பாணி",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "உள்ளடக்க மெனு",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "எழுத்து உதவி",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "சுருக்கம்",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "தேடல்",
+    "feature_card__prompts__new_prompt__title": "புதிய உண்மையான விடை",
+    "feature_card__prompts__new_prompt_group__title": "புதிய விடை குழு",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "விரைவு பதில்",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "திருத்தம் அல்லது முன்னுரிமையை மதிப்பிடு",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "விரைவு உருவாக்கு"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "புலனான அறிவியல் மற்றும் வேகத்தை ஒரு சந்தர்ப்பமாக வைத்துக் கொண்ட அந்த்ராபிக் மாதிரி அதிகாரபூர்வமான மாதிரியைப் பயன்படுத்தவும்.",
     "sidebar__promotion_dialog__content_item3__title": "`விருது கொடுப்பவர்-3-ஹைக்கு` மூலம் கண்ணோட்டம்",
     "sidebar__promotion_dialog__content_item3__description": "ஒவ்வொரு தினசரி பணிகளை வழங்க அற்புதமான மாதிரியில் ஆந்த்ரோபிக்ஸ் அதிவேக மாதிரியை பயன்படுத்துவதற்கு அனுமதிக்கும்.",
-    "sidebar__promotion_dialog__content_item4__title": "மெருகுபடி மொழிபெயர்ப்பு",
-    "sidebar__promotion_dialog__content_item4__description": "தகவல் பெறுதல் திறன் அதிகரிப்பதற்கான ஒரு கிளிக்கும் மூலம் இரண்டு மொழிகளில் படிக்க அனுமதிக்கும்.",
+    "sidebar__promotion_dialog__content_item4__title": "நேரம் குறிப்பிட்ட காணொளி சுருக்கம்",
+    "sidebar__promotion_dialog__content_item4__description": "நேரம் குறிப்பிட்ட பதிவுகளுடன் சுருக்கப்படுத்தப்பட்ட பகுப்புகளைப் பயன்படுத்தி YouTube வீடியோக்களை எளிதாக இயக்கவும்.",
     "sidebar__promotion_dialog__content_item5__title": "ஐயாவியாக AI கலை மற்றும் படங்களை உருவாக்கு",
     "sidebar__promotion_dialog__content_item5__description": "உங்கள் கண்ணே மிகுந்த படங்களாக மாற்ற வேகமாக உருவாக்குவது. எளிமையான, சக்திவாய்ந்த, மாற்றுத்திறனானது.",
     "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்து - சமயம் முடிந்தது!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "மின்னஞ்சலை சுருக்கம் செய் (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "மின்னஞ்சலை சுருக்கம் செய் (முக்கிய பிரிவுகள்)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "மின்னஞ்சலை சுருக்கம் செய் (செயல்பாடுகள்)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "மொழிபெயர்க்கப்பட்டு காட்டு"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "மொழிபெயர்க்கப்பட்டு காட்டு",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "வீடியோ விளம்பரத்தின் முடிவுக்கு காத்திருங்கள் மற்றும் பின்னர் மீண்டும் முயற்சிக்கவும்.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "நேரம் குறிப்புடன் சுருக்கம்",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "தலைப்புகள் இல்லாத வீடியோ உருவாக்க முடியாது.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ஒரு விதிவிலக்கு ஏற்பட்டது, பின்னர் மீண்டும் முயற்சிக்கவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

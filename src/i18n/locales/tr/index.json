@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Yalnızca manuel olarak bir düğmeye tıkladığınızda AI yanıtını göster.",
     "feature_card__appearance__field_summarize_button__title": "Özetle düğmesi",
     "feature_card__prompts__edit_prompt__field_advance__title": "Gelişmiş",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Çıktı dili ve Tonu ve Yazım stili"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Çıktı dili ve Tonu ve Yazım stili",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Bağlam menüsü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Yazma yardımcısı",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Özet",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Arama",
+    "feature_card__prompts__new_prompt__title": "Yeni ipucu",
+    "feature_card__prompts__new_prompt_group__title": "Yeni ipucu grubu",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hızlı yanıt",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Taslak düzenle veya gözden geçir",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hızlı oluştur"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Zeka ve hız arasında denge kuran Anthropic'in en son modeline erişin, aynı zamanda görme yeteneği sunar.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` ile vizyon",
     "sidebar__promotion_dialog__content_item3__description": "Çeşitli günlük görevleri etkili bir şekilde yönetmek için Anthropic'in en hızlı modeline erişin.",
-    "sidebar__promotion_dialog__content_item4__title": "Sürükleyici çeviri",
-    "sidebar__promotion_dialog__content_item4__description": "Bilgi alım verimliliğini artırmak için tek tıklamayla ikinci dilde okuma yapın.",
+    "sidebar__promotion_dialog__content_item4__title": "Zaman damgalı video özeti",
+    "sidebar__promotion_dialog__content_item4__description": "Zaman damgalı paragraflarla YouTube videolarında kolayca gezinin ve özetlenmiş bölümleri kullanın.",
     "sidebar__promotion_dialog__content_item5__title": "AI sanatı ve görüntüleri oluşturun",
     "sidebar__promotion_dialog__content_item5__description": "Vizyonlarınızı hızla etkileyici görüntülere dönüştürün. Basit, güçlü, dönüştürücü.",
     "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Teklif yakında sona eriyor!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "E-postayı özetle (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-postayı özetle (Ana noktalar)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-postayı özetle (Eylem maddeleri)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transkripti göster"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Transkripti göster",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lütfen video reklamı tamamlanana kadar bekleyin ve sonra tekrar deneyin.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Zaman damgalı özet",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Altyazısız video oluşturulamıyor.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Bir istisna oluştu, lütfen daha sonra tekrar deneyin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

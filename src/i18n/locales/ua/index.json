@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Відображати відповідь ШІ лише при натисканні кнопки вручну.",
     "feature_card__appearance__field_summarize_button__title": "Кнопка підсумування",
     "feature_card__prompts__edit_prompt__field_advance__title": "Розширений",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Мова виводу та стиль написання"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Мова виводу та стиль написання",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Меню контексту",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Помічник письма",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Зведення",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Пошук",
+    "feature_card__prompts__new_prompt__title": "Новий підказка",
+    "feature_card__prompts__new_prompt_group__title": "Нова група підказок",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Швидка відповідь",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редагувати або переглянути чернетку",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Швидке створення"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Отримайте доступ до останньої моделі Anthropic, яка забезпечує баланс між інтелектом та швидкістю, а також можливістю бачення.",
     "sidebar__promotion_dialog__content_item3__title": "`Клод-3-хайку` зі зором",
     "sidebar__promotion_dialog__content_item3__description": "Отримайте доступ до найшвидшої моделі Anthropic у класі інтелекту, щоб ефективно впоратися з різноманітними повсякденними завданнями.",
-    "sidebar__promotion_dialog__content_item4__title": "Занурюючий переклад",
-    "sidebar__promotion_dialog__content_item4__description": "Увімкніть двомовне читання одним кліком, щоб покращити ефективність пошуку інформації.",
+    "sidebar__promotion_dialog__content_item4__title": "Відео-резюме з вказівниками часу",
+    "sidebar__promotion_dialog__content_item4__description": "Легко навігуйте по відео на YouTube за допомогою узагальнених абзаців з вказівниками часу.",
     "sidebar__promotion_dialog__content_item5__title": "Створюйте мистецтво та зображення штучного інтелекту",
     "sidebar__promotion_dialog__content_item5__description": "Швидко перетворюйте свої бачення на захоплюючі зображення. Просто, потужно, трансформуюче.",
     "sidebar__promotion_dialog__cta_button": "Оновити зараз - Пропозиція закінчується незабаром!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Узагальнити електронного листа (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Узагальнити електронного листа (Основні висновки)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Узагальнити електронного листа (Пункти дій)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Показати транскрипцію"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Показати транскрипцію",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Будь ласка, зачекайте, поки закінчиться відеореклама, а потім спробуйте знову.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Зведений підсумок",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Неможливо створити відео без субтитрів.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Сталася помилка, спробуйте ще раз пізніше."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

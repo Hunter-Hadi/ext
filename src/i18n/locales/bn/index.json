@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "বাটনে ক্লিক করলেই এইচটিএমএল উত্তর দেখান।",
     "feature_card__appearance__field_summarize_button__title": "সংক্ষেপ বোতাম",
     "feature_card__prompts__edit_prompt__field_advance__title": "অগ্রসর",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "আউটপুট ভাষা এবং ধ্বনি এবং লেখা শৈলী"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "আউটপুট ভাষা এবং ধ্বনি এবং লেখা শৈলী",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "সংদর্ভ মেনু",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "লেখা সহায়ক",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "সংক্ষিপ্ত",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "অনুসন্ধান",
+    "feature_card__prompts__new_prompt__title": "নতুন প্রম্পট",
+    "feature_card__prompts__new_prompt_group__title": "নতুন প্রম্পট গ্রুপ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "দ্রুত উত্তর",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ড্রাফট সম্পাদনা বা পর্যালোচনা করুন",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "দ্রুত রচনা"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "বুদ্ধিমত্তা এবং দ্রুততার মধ্যে একটি সমন্বয় স্থাপন করে এন্থ্রোপিকের সর্বশেষ মডেলের অ্যাক্সেস পান, যা দৃষ্টিসহ সুবিধা ওফার করে।",
     "sidebar__promotion_dialog__content_item3__title": "`দৃষ্টিশক্তি সহ ক্লোড-৩-হাইকু`",
     "sidebar__promotion_dialog__content_item3__description": "প্রতিদিনের বিভিন্ন কাজ সহজে করতে এনথ্রোপিকের সবচেয়ে দ্রুত মডেলে অ্যাক্সেস করুন।",
-    "sidebar__promotion_dialog__content_item4__title": "মনোযোগসহকারে অনুবাদ করুন",
-    "sidebar__promotion_dialog__content_item4__description": "একটি ক্লিকে দ্বিভাষিক পঠন সক্ষম করে তথ্য প্রাপ্তির দক্ষতা উন্নত করুন।",
+    "sidebar__promotion_dialog__content_item4__title": "সময়সূচীযুক্ত ভিডিও সংক্ষেপ",
+    "sidebar__promotion_dialog__content_item4__description": "সংক্ষেপিত প্যারাগ্রাফ এবং সময়সূচীযুক্ত বিভাজন ব্যবহার করে ইউটিউব ভিডিওগুলি সহজেই ন্যাভিগেট করুন।",
     "sidebar__promotion_dialog__content_item5__title": "আই আর্ট এবং চিত্র তৈরি করুন",
     "sidebar__promotion_dialog__content_item5__description": "আপনার ভাবনাগুলি দ্রুত অসাধারণ চিত্রে পরিণত করুন। সহজ, শক্তিশালী, পরিবর্তনশীল।",
     "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - অফার শীঘ্রই শেষ!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ইমেল সংক্ষেপ করুন (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ইমেল সংক্ষেপ করুন (গুরুত্বপূর্ণ বিষয়সমূহ)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ইমেল সংক্ষেপ করুন (করনীয়াদি)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ট্রান্সক্রিপ্ট দেখান"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ট্রান্সক্রিপ্ট দেখান",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "দয়া করে ভিডিও বিজ্ঞাপন শেষ হওয়ার পরে আবার চেষ্টা করুন।",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "সময়সূচীয় সংক্ষেপ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "উপশিরোনাম ছাড়া ভিডিও তৈরি করা যায় না।",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "একটি ব্যতিক্রম ঘটেছে, দয়া করে পরে আবার চেষ্টা করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

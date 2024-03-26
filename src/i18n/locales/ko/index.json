@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "버튼을 수동으로 클릭할 때만 AI 응답 표시",
     "feature_card__appearance__field_summarize_button__title": "요약 버튼",
     "feature_card__prompts__edit_prompt__field_advance__title": "진행",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "출력 언어 및 톤 & 작성 스타일"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "출력 언어 및 톤 & 작성 스타일",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "컨텍스트 메뉴",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "글쓰기 도우미",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "요약",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "검색",
+    "feature_card__prompts__new_prompt__title": "새로운 프롬프트",
+    "feature_card__prompts__new_prompt_group__title": "새로운 프롬프트 그룹",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "빠른 답장",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "드래프트 편집 또는 검토",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "빠른 작성"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "지능과 속도 사이의 균형을 잡은 Anthropic의 최신 모델로 비전 기능도 제공합니다.",
     "sidebar__promotion_dialog__content_item3__title": "`비전을 가진 Claude-3 하이쿠`",
     "sidebar__promotion_dialog__content_item3__description": "다양한 일상 업무를 효율적으로 처리하기 위해 안트로픽의 가장 빠른 모델에 액세스하세요.",
-    "sidebar__promotion_dialog__content_item4__title": "몰입형 번역",
-    "sidebar__promotion_dialog__content_item4__description": "단 한 번의 클릭으로 양방향 독해를 가능하게 하여 정보 검색 효율성을 향상시킵니다.",
+    "sidebar__promotion_dialog__content_item4__title": "타임스탬프 비디오 요약",
+    "sidebar__promotion_dialog__content_item4__description": "시간별로 분할된 단락을 사용하여 YouTube 동영상을 손쉽게 탐색하세요.",
     "sidebar__promotion_dialog__content_item5__title": "AI 예술과 이미지 생성",
     "sidebar__promotion_dialog__content_item5__description": "비전을 아름다운 이미지로 신속하게 변환하세요. 간단하고 강력하며 혁신적입니다.",
     "sidebar__promotion_dialog__cta_button": "지금 업그레이드 - 제공 기간 종료 임박!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "이메일 요약 (간략하게)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "이메일 요약 (주요 내용)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "이메일 요약 (액션 아이템)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "자막 보기"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "자막 보기",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "동영상 광고가 재생을 마칠 때까지 기다려주세요. 그리고 다시 시도해주세요.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "요약에 타임스탬프가 표시됩니다.",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "자막이 없는 동영상은 생성할 수 없습니다.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "오류가 발생했습니다. 나중에 다시 시도해주세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

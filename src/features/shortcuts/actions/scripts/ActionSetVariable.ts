@@ -44,7 +44,7 @@ export class ActionSetVariable extends Action {
               '',
             overwrite: true,
             label: VariableLabel,
-            isBuildIn: false,
+            isBuiltIn: false,
           })
           this.output = params.LAST_ACTION_OUTPUT || ''
         } else {

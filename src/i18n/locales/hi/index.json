@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "AI प्रतिक्रिया केवल तब दिखाएं जब आप मैन्युअल रूप से एक बटन पर क्लिक करें।",
     "feature_card__appearance__field_summarize_button__title": "संक्षेप बटन",
     "feature_card__prompts__edit_prompt__field_advance__title": "अग्रिम",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा और ध्वनि और लेखन शैली"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "आउटपुट भाषा और ध्वनि और लेखन शैली",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "संदर्भ मेनू",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "लेखन सहायक",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "सारांश",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "खोज",
+    "feature_card__prompts__new_prompt__title": "नया प्रॉम्प्ट",
+    "feature_card__prompts__new_prompt_group__title": "नया प्रॉम्प्ट समूह",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "त्वरित जवाब",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ड्राफ्ट संपादित करें या समीक्षा करें",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "बुद्धिमानता और गति के बीच संतुलन स्थापित करने वाला Anthropic का नवीनतम मॉडल तक पहुंचें, जो विजन क्षमता भी प्रदान करता है।",
     "sidebar__promotion_dialog__content_item3__title": "`विजन के साथ Claude-3-haiku`",
     "sidebar__promotion_dialog__content_item3__description": "एक विविधता के लिए प्रभावी ढंग से संचालित करने के लिए एंथ्रोपिक के सबसे तेज मॉडल तक पहुंचें।",
-    "sidebar__promotion_dialog__content_item4__title": "इमर्सिव अनुवाद",
-    "sidebar__promotion_dialog__content_item4__description": "जानकारी प्राप्ति क्षमता को सुधारने के लिए एक क्लिक के साथ द्विभाषीय पठन को सक्षम करें।",
+    "sidebar__promotion_dialog__content_item4__title": "टाइमस्टैम्प वीडियो सारांश",
+    "sidebar__promotion_dialog__content_item4__description": "संक्षेपित पैराग्राफ के साथ टाइमस्टैम्प विभाजन का उपयोग करके YouTube वीडियो को आसानी से नेविगेट करें।",
     "sidebar__promotion_dialog__content_item5__title": "AI कला और छवियों को बनाएँ",
     "sidebar__promotion_dialog__content_item5__description": "अपने दृश्यों को तेजी से शानदार छवियों में बदलें। सरल, शक्तिशाली, परिवर्तनकारी।",
     "sidebar__promotion_dialog__cta_button": "अभी अपग्रेड करें - ऑफर जल्द ही समाप्त हो जाएगा!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ईमेल संक्षेपित करें (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ईमेल संक्षेपित करें (मुख्य बातें)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ईमेल संक्षेपित करें (कार्रवाई आइटम)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ट्रांसक्रिप्ट दिखाएं"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ट्रांसक्रिप्ट दिखाएं",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "कृपया वीडियो विज्ञापन पूरा होने तक प्रतीक्षा करें और फिर से प्रयास करें।",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "समय-चिह्नित सारांश",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "उपशीर्षक के बिना वीडियो उत्पन्न नहीं कर सकते।",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "एक अप्रत्याशितता हुई, कृपया बाद में पुनः प्रयास करें।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

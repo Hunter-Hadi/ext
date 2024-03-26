@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "הצג תשובת AI רק כאשר אתה לוחץ על כפתור באופן ידני.",
     "feature_card__appearance__field_summarize_button__title": "כפתור סיכום",
     "feature_card__prompts__edit_prompt__field_advance__title": "התקדמות",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "שפת פלט & טון & סגנון כתיבה"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "שפת פלט & טון & סגנון כתיבה",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "תפריט הקשר",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "עוזר כתיבה",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "סיכום",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "חיפוש",
+    "feature_card__prompts__new_prompt__title": "הצעה חדשה",
+    "feature_card__prompts__new_prompt_group__title": "קבוצת הצעות חדשה",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "תשובה מהירה",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "עריכה או ביקורת טיוטה",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "כתיבה מהירה"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "גישה לדגם העדכני ביותר של Anthropic שמאזן בין אינטיליגנציה למהירות, וכן יכולת ראייה.",
     "sidebar__promotion_dialog__content_item3__title": "`קלוד-3-האיקו` עם ראייה",
     "sidebar__promotion_dialog__content_item3__description": "גישה לדגם המהיר ביותר של Anthropic בקלאס המודעות לטפל ביעילות במגוון משימות יומיות.",
-    "sidebar__promotion_dialog__content_item4__title": "תרגום מוקפץ",
-    "sidebar__promotion_dialog__content_item4__description": "אפשר קריאה דו-לשונית בלחיצה אחת כדי לשפר את יעילות איחזור המידע.",
+    "sidebar__promotion_dialog__content_item4__title": "סיכום וידאו עם חותמת זמן",
+    "sidebar__promotion_dialog__content_item4__description": "נווט בקלות בסרטוני YouTube באמצעות פסקאות מסוכםות עם פירוט זמנים.",
     "sidebar__promotion_dialog__content_item5__title": "יצירת אמנות ותמונות באמצעות AI",
     "sidebar__promotion_dialog__content_item5__description": "הפיכת חזונותיך לתמונות מרהיבות במהירות. פשוט, עוצמתי, מהפכני.",
     "sidebar__promotion_dialog__cta_button": "שדרג עכשיו - הצעה תסתיים בקרוב!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "סיכום אימייל (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "סיכום אימייל (נקודות מרכזיות)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "סיכום אימייל (פריטי פעולה)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "הצג תמליל"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "הצג תמליל",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "נא המתן עד שהפרסומת בווידאו תסתיים ואז נסה שוב.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "סיכום עם חותמת זמן",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "לא ניתן ליצור וידאו ללא כתוביות.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "אירעה חריגה, אנא נסה שוב מאוחר יותר."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

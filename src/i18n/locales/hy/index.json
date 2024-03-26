@@ -233,7 +233,16 @@
     "feature__search_with_ai__trigger_mode__manual__name": "Ձևանմուշ",
     "feature__search_with_ai__trigger_mode__manual__desc": "Ցուցադրել AI պատասխանը, միայն երբ ձեզ համար կտտացված կոճակը սեղմեք:",
     "feature_card__prompts__edit_prompt__field_advance__title": "Առաջարկում",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ելքի լեզուն և տեսակը և գրանցման ոլորտը"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Ելքի լեզուն և տեսակը և գրանցման ոլորտը",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Հատկանիշատեր",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Գրադարան",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Հատուկություն",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Որոնում",
+    "feature_card__prompts__new_prompt__title": "Նոր հարցում",
+    "feature_card__prompts__new_prompt_group__title": "Նոր հարցումների խումբ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Արագ պատասխան",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Խմբագրել կամ վերանայել սևագրությունը",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Արագ կազմակերպում"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",
@@ -612,8 +621,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Դիտեք Anthropic-ի նորացված մոդելը, որը համապատասխանում է խելացիությանը և արագությանը, համարժեքության միջոցով։",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` համար տեսարժանությամբ",
     "sidebar__promotion_dialog__content_item3__description": "Առաջարկվում է Anthropic-ի արագացումների ամենաարագ մոդելը խոսքային դասում, որը թույլ է տալիս համապատասխանաբար հասանելի գործառույթների շարժումը:",
-    "sidebar__promotion_dialog__content_item4__title": "Բացատրելով թարգմանություն",
-    "sidebar__promotion_dialog__content_item4__description": "Թույլատրել երկլիներային ընթերցում միայն մեկ սեղմումով, բարելավելու տեղեկատվության գտնման արագությունը:",
+    "sidebar__promotion_dialog__content_item4__title": "Ժամանակավորված տեսահոլովակի ամփոփում",
+    "sidebar__promotion_dialog__content_item4__description": "Բավականին շատախոսությամբ նավարկեք YouTube տեսահոլովակները, օգտագործելով ամփոփումատարած պարագրականերով:",
     "sidebar__promotion_dialog__content_item5__title": "Ստեղծել AI արվեստ և պատկերներ",
     "sidebar__promotion_dialog__content_item5__description": "Արագությամբ վերադարձնեք ձեր տեսարժան պատկերները հոդվածներին: Պարզ, արագ, փոքրաթաթերթային:",
     "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Անցած է ավարտը!",
@@ -655,7 +664,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Էլ. փոստի ամփոփում (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Էլ. փոստի ամփոփում (Գլխավոր հարցեր)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Էլ. փոստի ամփոփում (Գործողություններ)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Ցուցադրել տեքստային համակարգը"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Ցուցադրել տեքստային համակարգը",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Խնդրում ենք սպասել, մինչև վիդեո գովազդը ավարտվի և ապա փորձեք կրկին:",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Ժամանակավորված ամփոփում",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Չհաջողվեց գեներացնել տեսանյութի առանց ենթաբառերի:",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Խափանվեց սխալ, խնդրում ենք փորձել նորից:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

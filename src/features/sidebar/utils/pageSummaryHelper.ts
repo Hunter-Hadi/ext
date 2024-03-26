@@ -10,14 +10,6 @@ import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYou
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
-import { I18nextKeysType } from '@/i18next'
-import {
-  getIframePageContent,
-  isNeedGetIframePageContent,
-} from '@/pages/content_script_iframe/iframePageContentHelper'
-import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
-import { md5TextEncrypt } from '@/utils/encryptionHelper'
-
 import {
   getSummaryEmailPrompt,
   getSummaryPagePrompt,
@@ -25,8 +17,15 @@ import {
   getSummaryYoutubeVideoPrompt,
   summaryGetPromptObject,
   SummaryParamsPromptType,
-} from './pageSummaryNavPrompt'
-import { youTubeSummaryChangeTool } from './summaryActionsChangeTool/youTubeSummaryChangeTool'
+} from '@/features/sidebar/utils/pageSummaryNavPrompt'
+import { youTubeSummaryChangeTool } from '@/features/sidebar/utils/summaryActionsChangeTool/youTubeSummaryChangeTool'
+import { I18nextKeysType } from '@/i18next'
+import {
+  getIframePageContent,
+  isNeedGetIframePageContent,
+} from '@/pages/content_script_iframe/iframePageContentHelper'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+import { md5TextEncrypt } from '@/utils/encryptionHelper'
 
 export type IPageSummaryType =
   | 'PAGE_SUMMARY'
@@ -779,6 +778,16 @@ export const allSummaryNavList: {
         'client:sidebar__summary__nav__youtube_summary__tooltip__default',
     },
     {
+      title: 'Timestamped summary',
+      titleIcon: 'Bulleted',
+      key: 'timestamped',
+      config: {
+        isAutoScroll: false,
+      },
+      tooltip:
+        'client:sidebar__summary__nav__youtube_summary__tooltip__timestamped',
+    },
+    {
       title: 'Summarize comments',
       titleIcon: 'CommentOutlined',
       key: 'comment',
@@ -858,9 +867,8 @@ export const getContextMenuActionsByPageSummaryType = async (
           pageSummaryType
         ] || 'all'
     }
-    const summaryNavPrompt = summaryGetPromptObject[pageSummaryType](
-      summaryNavKey,
-    )
+    const summaryNavPrompt =
+      summaryGetPromptObject[pageSummaryType](summaryNavKey)
     const summaryNaTitle = getSummaryNavItemByType(
       pageSummaryType,
       summaryNavKey,
@@ -941,9 +949,9 @@ export const getSummaryNavActions: (
         action.parameters.ActionChatMessageOperationType === 'add' &&
         params.title
       ) {
-        const actionTitle = (action.parameters
-          ?.ActionChatMessageConfig as IAIResponseMessage)?.originalMessage
-          ?.metadata?.title
+        const actionTitle = (
+          action.parameters?.ActionChatMessageConfig as IAIResponseMessage
+        )?.originalMessage?.metadata?.title
         if (actionTitle) {
           actionTitle.title = params.title
         }
@@ -971,8 +979,6 @@ export const getSummaryNavActions: (
       return action
     })
     if (params.messageId) {
-      // const isTranscript =
-      //   params.type === 'YOUTUBE_VIDEO_SUMMARY' && params.key === 'transcript'
       const defAction: ISetActionsType = [
         {
           type: 'CHAT_MESSAGE',
@@ -988,7 +994,7 @@ export const getSummaryNavActions: (
                   copilot: {
                     steps: [
                       {
-                        title: 'Analyzing video',
+                        title: getSummaryActionCopilotStepTitle(params.type),
                         status: 'loading',
                         icon: 'SmartToy',
                         value: '{{CURRENT_WEBPAGE_TITLE}}',
@@ -1029,6 +1035,18 @@ export const getSummaryNavActions: (
   } catch (e) {
     console.log(e)
     return []
+  }
+}
+export const getSummaryActionCopilotStepTitle = (type: IPageSummaryType) => {
+  switch (type) {
+    case 'PAGE_SUMMARY':
+      return 'Summarize page'
+    case 'YOUTUBE_VIDEO_SUMMARY':
+      return 'Summarize video'
+    case 'PDF_CRX_SUMMARY':
+      return 'Summarize PDF'
+    case 'DEFAULT_EMAIL_SUMMARY':
+      return 'Summarize email'
   }
 }
 const getCurrentPageUrl = () => {

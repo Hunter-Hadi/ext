@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Rādīt AI atbildi tikai tad, kad manuāli noklikšķiniet uz pogas.",
     "feature_card__appearance__field_summarize_button__title": "Apkopot pogu",
     "feature_card__prompts__edit_prompt__field_advance__title": "Uzlabot",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izvades valoda un tonis un rakstīšanas stils"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Izvades valoda un tonis un rakstīšanas stils",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Konteksta izvēlne",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Rakstīšanas asistents",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Kopsavilkums",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Meklēt",
+    "feature_card__prompts__new_prompt__title": "Jauns ieteikums",
+    "feature_card__prompts__new_prompt_group__title": "Jauna ieteikumu grupa",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Ātra atbilde",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Rediģēt vai pārskatīt melnrakstu",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Ātra sastādīšana"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Piekļūstiet Anthropic jaunākajam modeļam, kas panāk līdzsvaru starp inteliģenci un ātrumu, piedāvājot arī redzes spējas.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` ar redzējumu",
     "sidebar__promotion_dialog__content_item3__description": "Pieejiet Anthropic ātrāko modeli inteliģences klasē, lai efektīvi pārvaldītu dažādas ikdienas uzdevumus.",
-    "sidebar__promotion_dialog__content_item4__title": "Iespaidīga tulkošana",
-    "sidebar__promotion_dialog__content_item4__description": "Iespējojiet divvalodu lasīšanu ar vienu klikšķi, lai uzlabotu informācijas atgūšanas efektivitāti.",
+    "sidebar__promotion_dialog__content_item4__title": "Laika zīmju video kopsavilkums",
+    "sidebar__promotion_dialog__content_item4__description": "Vadīt YouTube video bez piepūles, izmantojot saīsinātas rindkopas ar laika zīmēm.",
     "sidebar__promotion_dialog__content_item5__title": "Radīt AI mākslu un attēlus",
     "sidebar__promotion_dialog__content_item5__description": "Ātri pārvērtiet savas redzes par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
     "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Piedāvājums beigsies drīz!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "E-pasta kopsavilkums (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-pasta kopsavilkums (Galvenie secinājumi)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-pasta kopsavilkums (Darbības vienumi)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rādīt transkriptu"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Rādīt transkriptu",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Lūdzu, uzgaidiet, līdz beigsies video reklāma, un tad mēģiniet vēlreiz.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Laika zīmēts kopsavilkums",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nav iespējams ģenerēt video bez subtitriem.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Radās izņēmums, lūdzu, mēģiniet vēlreiz vēlāk."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

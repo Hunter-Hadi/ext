@@ -2,6 +2,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 
 import PresetVariablesTag from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PresetVariables/PresetVariablesTag'
 import PresetVariablesTooltip from '@/features/shortcuts/components/ShortcutsActionsEditor/components/PromptVariableEditor/PresetVariables/PresetVariablesTooltip'
@@ -10,6 +11,7 @@ import useShortcutEditorActionsVariables, {
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
 import { IActionSetVariable } from '@/features/shortcuts/components/ShortcutsActionsEditor/types'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const PresetVariables: FC<{
   onClick?: (variable: IActionSetVariable) => void
@@ -17,6 +19,9 @@ const PresetVariables: FC<{
   const { onClick } = props
   const { t } = useTranslation(['common', 'prompt_editor'])
   const { addVariable } = useShortcutEditorActionsVariables()
+  const [settingPromptsEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom,
+  )
   return (
     <Stack>
       <Stack direction={'row'} alignItems={'center'} spacing={0.5} mb={1}>
@@ -71,20 +76,28 @@ const PresetVariables: FC<{
                   borderLeft="1px solid"
                   borderColor="inherit"
                 >
-                  {presetVariables.map(({ variable }) => (
-                    <PresetVariablesTag
-                      key={variable.VariableName}
-                      presetVariable={variable}
-                      onClick={(clickVariable) => {
-                        addVariable(clickVariable)
-                        onClick?.({
-                          VariableName: clickVariable.VariableName,
-                          label: clickVariable.VariableName,
-                          valueType: 'Text',
-                        })
-                      }}
-                    />
-                  ))}
+                  {presetVariables.map(({ variable, permissionKeys = [] }) => {
+                    if (
+                      permissionKeys.length === 0 ||
+                      permissionKeys.includes(settingPromptsEditButtonKey)
+                    ) {
+                      return (
+                        <PresetVariablesTag
+                          key={variable.VariableName}
+                          presetVariable={variable}
+                          onClick={(clickVariable) => {
+                            addVariable(clickVariable)
+                            onClick?.({
+                              VariableName: clickVariable.VariableName,
+                              label: clickVariable.VariableName,
+                              valueType: 'Text',
+                            })
+                          }}
+                        />
+                      )
+                    }
+                    return null
+                  })}
                 </Stack>
               </Stack>
             )

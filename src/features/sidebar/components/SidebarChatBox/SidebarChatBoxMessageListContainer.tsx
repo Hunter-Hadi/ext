@@ -9,8 +9,7 @@ import { useFocus } from '@/features/common/hooks/useFocus'
 import useInterval from '@/features/common/hooks/useInterval'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
-
-import useSidebarSettings from '../../hooks/useSidebarSettings'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export const messageListContainerId = 'message-list-scroll-container'
 

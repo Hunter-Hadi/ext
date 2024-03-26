@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Afișați răspunsul AI numai atunci când faceți clic manual pe un buton.",
     "feature_card__appearance__field_summarize_button__title": "Buton de rezumat",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avans",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Limba de ieșire și tonul și stilul de scriere"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Limba de ieșire și tonul și stilul de scriere",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Meniu contextual",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Asistent de scriere",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Rezumat",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Căutare",
+    "feature_card__prompts__new_prompt__title": "Prompt nou",
+    "feature_card__prompts__new_prompt_group__title": "Grup prompt nou",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Răspuns rapid",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editare sau revizuire proiect",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Compunere rapidă"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Accesați cel mai recent model Anthropic care găsește un echilibru între inteligență și viteză, oferind în același timp capacitatea de viziune.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` cu viziune",
     "sidebar__promotion_dialog__content_item3__description": "Accesați cel mai rapid model al Anthropic din clasa de inteligență pentru a gestiona eficient o varietate de sarcini zilnice.",
-    "sidebar__promotion_dialog__content_item4__title": "Traducere imersivă",
-    "sidebar__promotion_dialog__content_item4__description": "Permiteți citirea bilingvă cu un singur clic pentru a îmbunătăți eficiența recuperării informațiilor.",
+    "sidebar__promotion_dialog__content_item4__title": "Rezumat video cu marcaje temporale",
+    "sidebar__promotion_dialog__content_item4__description": "Navighează cu ușurință prin videoclipurile de pe YouTube folosind paragrafe rezumate cu diviziuni marcate în funcție de timp.",
     "sidebar__promotion_dialog__content_item5__title": "Creați artă și imagini AI",
     "sidebar__promotion_dialog__content_item5__description": "Transformați rapid viziunile în imagini uimitoare. Simplu, puternic, transformativ.",
     "sidebar__promotion_dialog__cta_button": "Faceți upgrade acum - Oferta se încheie curând!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Rezumat email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Rezumat email (Idei principale)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Rezumat email (Elemente de acțiune)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afișează transcrierea"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afișează transcrierea",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vă rugăm să așteptați până când reclama video se termină și apoi încercați din nou.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Rezumat cu marcaje de timp",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Imposibil de generat video fără subtitrări.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "A apărut o excepție, vă rugăm să încercați din nou mai târziu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

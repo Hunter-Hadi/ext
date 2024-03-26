@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Kuva tehisintellekti vastus ainult siis, kui klõpsate nuppu käsitsi.",
     "feature_card__appearance__field_summarize_button__title": "Kokkuvõtte nupp",
     "feature_card__prompts__edit_prompt__field_advance__title": "Edasijõudnud",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Väljundkeel ja toon ning kirjutamisstiil"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Väljundkeel ja toon ning kirjutamisstiil",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstimenüü",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Kirjutamise abiline",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Kokkuvõte",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Otsing",
+    "feature_card__prompts__new_prompt__title": "Uus vihje",
+    "feature_card__prompts__new_prompt_group__title": "Uus vihjegrupp",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Kiire vastus",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Redigeeri või vaata üle mustandit",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Kiire koostamine"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Pääse ligi Anthropicu uusimale mudelile, mis tasakaalustab intelligentsust ja kiirust, pakkudes samal ajal ka nägemisvõimalust.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` nägemusega",
     "sidebar__promotion_dialog__content_item3__description": "Pääse Anthropicu kiireimasse intelligentsusklassi mudelisse, et tõhusalt hallata mitmesuguseid igapäevaseid ülesandeid.",
-    "sidebar__promotion_dialog__content_item4__title": "Immersiivne tõlge",
-    "sidebar__promotion_dialog__content_item4__description": "Võimalda kakskeelset lugemist ühe klõpsuga, et parandada teabe hankimise efektiivsust.",
+    "sidebar__promotion_dialog__content_item4__title": "Ajatempliga video kokkuvõte",
+    "sidebar__promotion_dialog__content_item4__description": "Liigu YouTube'i videotel hõlpsalt kasutades kokkuvõtlikke lõike koos ajatemplitega.",
     "sidebar__promotion_dialog__content_item5__title": "Loo AI kunsti ja pilte",
     "sidebar__promotion_dialog__content_item5__description": "Muuda oma visioonid kiiresti hämmastavateks piltideks. Lihtne, võimas, muutlik.",
     "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Pakkumine lõpeb peagi!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "E-kirja kokkuvõte (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-kirja kokkuvõte (Peamised mõtted)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-kirja kokkuvõte (Tegevused)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Kuva transkript"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Kuva transkript",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Palun oodake, kuni videoreklaam lõpeb ja proovige seejärel uuesti.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Ajatempliga kokkuvõte",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Videot ei saa subtiitriteta luua.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Tekkis erand, palun proovige hiljem uuesti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

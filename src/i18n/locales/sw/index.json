@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Onyesha majibu ya AI tu wakati unapobofya kitufe kwa mkono.",
     "feature_card__appearance__field_summarize_button__title": "Kifungo cha Muhtasari",
     "feature_card__prompts__edit_prompt__field_advance__title": "Kuendelea",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Lugha ya Matokeo & Mtindo wa Kuandika"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Lugha ya Matokeo & Mtindo wa Kuandika",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menyu ya muktadha",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Msaidizi wa kuandika",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Muhtasari",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Tafuta",
+    "feature_card__prompts__new_prompt__title": "Fungua ombi jipya",
+    "feature_card__prompts__new_prompt_group__title": "Kikundi cha maombi mapya",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Jibu haraka",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Hariri au hakiki rasimu",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Andika haraka"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Pata mfano mpya zaidi wa Anthropic ambao unapata usawa kati ya akili na kasi, wakati pia unatoa uwezo wa kuona.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` na maono",
     "sidebar__promotion_dialog__content_item3__description": "Pata mfano wa haraka zaidi wa Anthropic katika darasa la akili ili kushughulikia kwa ufanisi aina mbalimbali za majukumu ya kila siku.",
-    "sidebar__promotion_dialog__content_item4__title": "Tafsiri inayovutia",
-    "sidebar__promotion_dialog__content_item4__description": "Wezesha kusoma kwa lugha mbili kwa kubofya moja ili kuongeza ufanisi wa kupata habari.",
+    "sidebar__promotion_dialog__content_item4__title": "Muhtasari wa video yenye muda",
+    "sidebar__promotion_dialog__content_item4__description": "Vinjari video za YouTube kwa urahisi ukitumia vipande vilivyohusishwa na muda.",
     "sidebar__promotion_dialog__content_item5__title": "Unda sanaa na picha za AI",
     "sidebar__promotion_dialog__content_item5__description": "Haraka geuza maono yako kuwa picha za kuvutia. Rahisi, yenye nguvu, yenye mabadiliko.",
     "sidebar__promotion_dialog__cta_button": "Nunua sasa - Ofa inamalizika hivi karibuni!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Weka muhtasari wa barua pepe (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Weka muhtasari wa barua pepe (Mambo muhimu)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Weka muhtasari wa barua pepe (Vitu vya kufanya)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Onyesha maelezo"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Onyesha maelezo",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Tafadhali subiri hadi tangazo la video litakapomalizika kucheza na kisha jaribu tena.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Muhtasari wenye muda",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Haiwezekani kuunda video bila maandishi ya sauti.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Kumetokea kosa, tafadhali jaribu tena baadaye."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -4,12 +4,11 @@ import {
   templateParserDecorator,
   withLoadingDecorators,
 } from '@/features/shortcuts'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-
-import { stopActionMessage } from '../../common'
 
 export class ActionGetYoutubeTranscriptOfURL extends Action {
   static type: ActionIdentifier = 'GET_YOUTUBE_TRANSCRIPT_OF_URL'
@@ -28,7 +27,6 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
   @withLoadingDecorators()
   async execute() {
     try {
-      console.log('simply ', this.parameters.VariableName)
       const currentUrl = window.location.href.includes('youtube.com')
         ? window.location.href
         : ''
@@ -41,10 +39,6 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
       const transcripts = await YoutubeTranscript.fetchTranscript(
         youtubeLinkURL,
       )
-      if (this.parameters.VariableName === 'GET_LIST_DATA') {
-        this.output = transcripts
-        return
-      }
       const isEmptyTranscriptText =
         transcripts.length <= 10
           ? transcripts
@@ -72,7 +66,7 @@ export class ActionGetYoutubeTranscriptOfURL extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

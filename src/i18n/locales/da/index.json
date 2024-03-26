@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Vis AI-svar kun, når du manuelt klikker på en knap.",
     "feature_card__appearance__field_summarize_button__title": "Opsummeringsknap",
     "feature_card__prompts__edit_prompt__field_advance__title": "Fremskridt",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Output sprog & Tone & Skrivestil"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Output sprog & Tone & Skrivestil",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontekstmenu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Skriveassistent",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Resumé",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Søg",
+    "feature_card__prompts__new_prompt__title": "Ny prompt",
+    "feature_card__prompts__new_prompt_group__title": "Ny promptgruppe",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hurtigt svar",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Rediger eller gennemse udkast",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hurtig komponering"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Få adgang til Anthropics nyeste model, der opnår en balance mellem intelligens og hastighed, samtidig med at der også tilbydes visionsevne.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` med vision",
     "sidebar__promotion_dialog__content_item3__description": "Få adgang til Anthropic's hurtigste model i intelligensklassen til effektiv håndtering af forskellige daglige opgaver.",
-    "sidebar__promotion_dialog__content_item4__title": "Immersiv oversættelse",
-    "sidebar__promotion_dialog__content_item4__description": "Aktivér tosproget læsning med et enkelt klik for at forbedre informationsindhentningseffektiviteten.",
+    "sidebar__promotion_dialog__content_item4__title": "Tidsstemplet videoresumé",
+    "sidebar__promotion_dialog__content_item4__description": "Naviger nemt i YouTube-videoer ved hjælp af resumerede afsnit med tidsstemplede opdelinger.",
     "sidebar__promotion_dialog__content_item5__title": "Skab AI-kunst og billeder",
     "sidebar__promotion_dialog__content_item5__description": "Omdan hurtigt dine visioner til fantastiske billeder. Enkelt, kraftfuldt, transformerende.",
     "sidebar__promotion_dialog__cta_button": "Opgrader nu - Tilbudet udløber snart!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Resumé af e-mail (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resumé af e-mail (Vigtigste punkter)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resumé af e-mail (Handlingspunkter)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkript"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Vis transkript",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vent venligst, indtil videoannoncen er færdig med at afspille, og prøv derefter igen.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tidsstemplet resumé",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan ikke generere video uden undertekster.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Der opstod en undtagelse, prøv igen senere."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

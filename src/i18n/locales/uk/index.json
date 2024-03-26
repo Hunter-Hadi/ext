@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "صرف اس صورت میں AI جواب دکھائیں جب آپ مینوئلی بٹن پر کلک کریں۔",
     "feature_card__appearance__field_summarize_button__title": "خلاصہ کریں بٹن",
     "feature_card__prompts__edit_prompt__field_advance__title": "ترقی",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و طن و سبک نوشتار"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و طن و سبک نوشتار",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "منو کیا",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "لکھائی معاون",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "خلاصہ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "تلاش",
+    "feature_card__prompts__new_prompt__title": "نیا پرومپٹ",
+    "feature_card__prompts__new_prompt_group__title": "نیا پرومپٹ گروپ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "جلدی جواب دیں",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ڈرافٹ ترمیم یا جائزہ لیں",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "جلدی تحریر کریں"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "انتھروپک کے تازہ ترین ماڈل تک رسائی حاصل کریں جو ذہانت اور رفتار کے درمیان توازن قائم کرتا ہے، جبکہ وژن کی صلاحیت بھی پیش کرتا ہے۔",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` کے ساتھ وژن",
     "sidebar__promotion_dialog__content_item3__description": "روزمرہ کے مختلف کاموں کو فوری طور پر انجام دینے کے لئے انٹھروپک کی سب سے تیز ماڈل تک رسائی حاصل کریں۔",
-    "sidebar__promotion_dialog__content_item4__title": "غوطہ خور ترجمہ",
-    "sidebar__promotion_dialog__content_item4__description": "معلومات کی بازیابی کی کارآمدی بہتر کرنے کے لئے ایک کلک کے ساتھ دو زبانی پڑھائی کو فعال کریں۔",
+    "sidebar__promotion_dialog__content_item4__title": "ٹائم سٹیمپ ویڈیو خلاصہ",
+    "sidebar__promotion_dialog__content_item4__description": "سمرایزڈ پیراگراف کے ساتھ ٹائم سٹیمپ بریک ڈاؤن کا استعمال کرتے ہوئے یوٹیوب ویڈیوز کو آسانی سے نیویگیشن کریں۔",
     "sidebar__promotion_dialog__content_item5__title": "AI آرٹ اور تصاویر بنائیں",
     "sidebar__promotion_dialog__content_item5__description": "اپنی تصاویر کو جلدی سے شگافوں میں تبدیل کریں۔ آسان، طاقتور، تحولیہ۔",
     "sidebar__promotion_dialog__cta_button": "اب اپگریڈ کریں - پیشکش جلد ختم ہوجائے گی!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ای میل خلاصہ کریں (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ای میل خلاصہ کریں (مرکزی نتائج)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ای میل خلاصہ کریں (عملیاتی اقدامات)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ٹرانسکرپٹ دکھائیں"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ٹرانسکرپٹ دکھائیں",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "برائے مہربانی ویڈیو اشتہار کا انتظار کریں جب تک کہ ختم نہ ہوجائے اور پھر دوبارہ کوشش کریں۔",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ٹائم سٹیمپ کی خلاصہ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "سب ٹائٹلز کے بغیر ویڈیو تشکیل نہیں کی جا سکتی ہے۔",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ایک استثناء پیش آیا ہے، براہ کرم بعد میں دوبارہ کوشش کریں۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

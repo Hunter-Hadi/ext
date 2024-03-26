@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Mostra la resposta de l'IA només quan feu clic manualment en un botó.",
     "feature_card__appearance__field_summarize_button__title": "Botó de resum",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avançat",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de sortida i to i estil d'escriptura"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Idioma de sortida i to i estil d'escriptura",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menú contextual",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Assistent d'escriptura",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Resum",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Cerca",
+    "feature_card__prompts__new_prompt__title": "Nova indicació",
+    "feature_card__prompts__new_prompt_group__title": "Nou grup d'indicacions",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Resposta ràpida",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar o revisar esborrany",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composició ràpida"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Accedeix al darrer model d'Anthropic que troba un equilibri entre intel·ligència i velocitat, i també ofereix capacitat de visió.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` amb visió",
     "sidebar__promotion_dialog__content_item3__description": "Accedeix al model més ràpid d'Anthropic a la classe d'intel·ligència per gestionar eficientment una varietat de tasques quotidianes.",
-    "sidebar__promotion_dialog__content_item4__title": "Traducció immersiva",
-    "sidebar__promotion_dialog__content_item4__description": "Permet la lectura bilingüe amb un sol clic per millorar l'eficiència en la recuperació d'informació.",
+    "sidebar__promotion_dialog__content_item4__title": "Resum de vídeo amb marques de temps",
+    "sidebar__promotion_dialog__content_item4__description": "Navegueu pels vídeos de YouTube sense esforç utilitzant paràgrafs resumits amb desglossaments marcats amb el temps.",
     "sidebar__promotion_dialog__content_item5__title": "Crea art i imatges d'IA",
     "sidebar__promotion_dialog__content_item5__description": "Converteix ràpidament les teves visions en imatges impressionants. Senzill, potent, transformador.",
     "sidebar__promotion_dialog__cta_button": "Millora ara - L'oferta acaba aviat!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Resum del correu electrònic (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Resum del correu electrònic (Idees principals)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Resum del correu electrònic (Accions)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostra la transcripció"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Mostra la transcripció",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Espereu fins que l'anunci de vídeo acabi de reproduir-se i torneu-ho a provar.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Resum amb marques de temps",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "No es pot generar el vídeo sense subtítols.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "S'ha produït una excepció, si us plau, torna-ho a provar més tard."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

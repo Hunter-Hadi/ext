@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Toon AI-reactie alleen wanneer je handmatig op een knop klikt.",
     "feature_card__appearance__field_summarize_button__title": "Samenvatten knop",
     "feature_card__prompts__edit_prompt__field_advance__title": "Vooruitgang",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Uitvoertaal & Toon & Schrijfstijl"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Uitvoertaal & Toon & Schrijfstijl",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Contextmenu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Schrijfassistent",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Samenvatting",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Zoeken",
+    "feature_card__prompts__new_prompt__title": "Nieuwe prompt",
+    "feature_card__prompts__new_prompt_group__title": "Nieuwe promptgroep",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Snelle reactie",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Bewerk of beoordeel concept",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Snel opstellen"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Toegang tot Anthropic's nieuwste model dat een balans vindt tussen intelligentie en snelheid, terwijl het ook visuele mogelijkheden biedt.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` met visie",
     "sidebar__promotion_dialog__content_item3__description": "Toegang tot het snelste model van Anthropic in de intelligentieklasse om efficiënt verschillende dagelijkse taken te kunnen uitvoeren.",
-    "sidebar__promotion_dialog__content_item4__title": "Meeslepend vertalen",
-    "sidebar__promotion_dialog__content_item4__description": "Schakel met één klik over naar tweetalig lezen om de efficiëntie van informatieopvraging te verbeteren.",
+    "sidebar__promotion_dialog__content_item4__title": "Video samenvatting met tijdsaanduiding",
+    "sidebar__promotion_dialog__content_item4__description": "Navigeer moeiteloos door YouTube-video's met samengevatte alinea's en tijdsaanduidingen.",
     "sidebar__promotion_dialog__content_item5__title": "Creëer AI-kunst en afbeeldingen",
     "sidebar__promotion_dialog__content_item5__description": "Verander je visies snel in verbluffende afbeeldingen. Eenvoudig, krachtig, transformerend.",
     "sidebar__promotion_dialog__cta_button": "Nu upgraden - Aanbieding eindigt binnenkort!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "E-mail samenvatten (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "E-mail samenvatten (Belangrijkste punten)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "E-mail samenvatten (Actiepunten)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Toon transcriptie"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Toon transcriptie",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Wacht even totdat de videoadvertentie is afgelopen en probeer het dan opnieuw.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Samengevat met tijdstempels",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan geen video genereren zonder ondertiteling.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Er is een uitzondering opgetreden, probeer het later opnieuw."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -4,15 +4,16 @@ import ExpandCircleDownIcon from '@mui/icons-material/ExpandCircleDown'
 import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { useMemo, useState } from 'react'
+import React, { memo, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IContextMenuItem } from '@/features/contextMenu/types'
-import { PRESET_PROMPT_ID } from '@/pages/settings/pages/prompts/ContextMenuEditCard'
-import ContextMenuItemPreviewTooltip from '@/pages/settings/pages/prompts/ContextMenuEditCard/components/editContextMenu/ContextMenuItemPreviewTooltip'
-const ContextMenuItem = (props: {
+import { PRESET_PROMPT_ID } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
+
+import SettingPromptsMenuItemPreviewTooltip from './SettingPromptsMenuItemPreviewTooltip'
+const SettingPromptsMenuItem = (props: {
   disabledDrag?: boolean
   isActive?: boolean
   node: IContextMenuItem
@@ -47,7 +48,7 @@ const ContextMenuItem = (props: {
     return node.text
   }, [node, t])
   return (
-    <ContextMenuItemPreviewTooltip item={node}>
+    <SettingPromptsMenuItemPreviewTooltip item={node}>
       <Stack
         direction={'row'}
         alignItems={'center'}
@@ -211,7 +212,7 @@ const ContextMenuItem = (props: {
           }
         </Stack>
       </Stack>
-    </ContextMenuItemPreviewTooltip>
+    </SettingPromptsMenuItemPreviewTooltip>
   )
 }
-export default ContextMenuItem
+export default memo(SettingPromptsMenuItem)

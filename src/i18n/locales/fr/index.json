@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Afficher la réponse de l'IA uniquement lorsque vous cliquez manuellement sur un bouton.",
     "feature_card__appearance__field_summarize_button__title": "Bouton de résumé",
     "feature_card__prompts__edit_prompt__field_advance__title": "Avancé",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Langue de sortie et tonalité et style d'écriture"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Langue de sortie et tonalité et style d'écriture",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Menu contextuel",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Assistant d'écriture",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Résumé",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Recherche",
+    "feature_card__prompts__new_prompt__title": "Nouvelle suggestion",
+    "feature_card__prompts__new_prompt_group__title": "Nouveau groupe de suggestions",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Réponse rapide",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Modifier ou revoir le brouillon",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composition rapide"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Accédez au dernier modèle d'Anthropic qui trouve un équilibre entre intelligence et vitesse, tout en offrant également une capacité de vision.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` avec vision",
     "sidebar__promotion_dialog__content_item3__description": "Accédez au modèle le plus rapide d'Anthropic dans la catégorie de l'intelligence pour gérer efficacement une variété de tâches quotidiennes.",
-    "sidebar__promotion_dialog__content_item4__title": "Traduction immersive",
-    "sidebar__promotion_dialog__content_item4__description": "Activez la lecture bilingue en un seul clic pour améliorer l'efficacité de la recherche d'informations.",
+    "sidebar__promotion_dialog__content_item4__title": "Résumé vidéo avec horodatage",
+    "sidebar__promotion_dialog__content_item4__description": "Naviguez facilement dans les vidéos YouTube en utilisant des paragraphes résumés avec des divisions horodatées.",
     "sidebar__promotion_dialog__content_item5__title": "Créez de l'art et des images IA",
     "sidebar__promotion_dialog__content_item5__description": "Transformez rapidement vos visions en images époustouflantes. Simple, puissant, transformateur.",
     "sidebar__promotion_dialog__cta_button": "Mettez à niveau maintenant - Offre se termine bientôt!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Résumer l'email (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Résumer l'email (Points clés)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Résumer l'email (Actions à entreprendre)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afficher la transcription"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Afficher la transcription",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Veuillez patienter jusqu'à la fin de la publicité vidéo, puis réessayez.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Résumé avec horodatage",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Impossible de générer la vidéo sans sous-titres.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Une exception s'est produite, veuillez réessayer ultérieurement."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

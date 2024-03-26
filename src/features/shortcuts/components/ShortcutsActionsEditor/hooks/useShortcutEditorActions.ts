@@ -169,6 +169,7 @@ const useShortcutEditorActions = () => {
       systemVariables.push(PRESET_VARIABLE_MAP.WEB_SEARCH_QUERY)
     }
     // 执行一些需要运行的操作：Current Date, live crawling、web search
+    // 24.03.22 新增：Email content, Social media content
     const specialActions: ISetActionsType = []
     // 设置的日期
     if (variableMap.get('SYSTEM_CURRENT_DATE')) {
@@ -317,6 +318,52 @@ const useShortcutEditorActions = () => {
         },
       ]
       specialActions.push(...searchWithAIActions)
+    }
+    // 获取 email 的内容
+    if (variableMap.get('EMAIL_CONTENT')) {
+      specialActions.push(
+        {
+          type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'EMAIL_CONTENT',
+          },
+        },
+      )
+    }
+    // 获取 social media 的内容
+    if (variableMap.get('SOCIAL_MEDIA_CONTENT')) {
+      specialActions.push(
+        {
+          type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SOCIAL_MEDIA_CONTENT',
+          },
+        },
+      )
     }
     if (
       customVariables.length > 0 ||

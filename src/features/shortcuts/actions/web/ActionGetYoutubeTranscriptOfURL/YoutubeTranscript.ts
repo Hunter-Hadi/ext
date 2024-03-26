@@ -4,12 +4,16 @@ import SocialMediaPostContext, {
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 
-const RE_YOUTUBE = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i
+const RE_YOUTUBE =
+  /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i
 
 export interface TranscriptResponse {
   start: string
   duration: string
   text: string
+  children?: TranscriptResponse[]
+  status?: string
+  id?: string
 }
 
 /**

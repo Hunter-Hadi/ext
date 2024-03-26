@@ -11,7 +11,7 @@ import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types
 import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { getRemoteAIProviderConfigCache } from '@/background/src/chat/OpenAiChat/utils'
+import { getRemoteAIProviderConfigCache } from '@/background/src/chat/OpenAIChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'

@@ -1,17 +1,20 @@
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
+import {
+  TranscriptResponse,
+  YoutubeTranscript,
+} from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import Action from '@/features/shortcuts/core/Action'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
-import { stopActionMessage } from '../../common'
-import { TranscriptResponse } from './YoutubeTranscript'
-
 /**
  * @since 2024-03-17
  * @description youtube拿取时间文本TRANSCRIPT数据
  */
-export class ActionYoutubeGetTranscript extends Action {
+export class ActionGetYoutubeSocialMediaTranscripts extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT'
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -20,25 +23,41 @@ export class ActionYoutubeGetTranscript extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute(
-    params: ActionParameters,
-    engine: IShortcutEngineExternalEngine,
-  ) {
-    console.log('simply params', params.LAST_ACTION_OUTPUT, engine)
+  async execute() {
     try {
-      const maxChars = this.computeMaxChars(
-        (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
+      const currentUrl = window.location.href.includes('youtube.com')
+        ? window.location.href
+        : ''
+      const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
+      if (!youtubeLinkURL) {
+        this.error = 'Youtube URL is empty.'
+        return
+      }
+      if (this.isStopAction) return
+      const transcripts = await YoutubeTranscript.fetchTranscript(
+        youtubeLinkURL,
       )
-      const timeTextList = this.splitArrayByWordCount(
-        (params.LAST_ACTION_OUTPUT as unknown) as TranscriptResponse[],
-        maxChars,
+      if (this.isStopAction) return
+      if (!transcripts || transcripts.length === 0) {
+        this.output = JSON.stringify([])
+        return
+      }
+      const sectionMaxCharsNum = this.computeSectionMaxChars(transcripts)
+      if (this.isStopAction) return
+      const transcriptsProcessedData = this.splitTranscriptArrayByWordCount(
+        transcripts,
+        sectionMaxCharsNum,
       )
-      this.output = JSON.stringify(timeTextList)
+      if (this.isStopAction) return
+      this.output = JSON.stringify(transcriptsProcessedData)
     } catch (e) {
-      this.output = []
+      this.output = JSON.stringify([])
     }
   }
-  computeMaxChars(dataArray: TranscriptResponse[]) {
+  /**
+   * @description 计算出当前一章最大多少字数
+   */
+  computeSectionMaxChars(dataArray: TranscriptResponse[]) {
     let totalLength = 0
 
     for (let i = 0; i < dataArray.length; i++) {
@@ -50,7 +69,13 @@ export class ActionYoutubeGetTranscript extends Action {
       return 500
     }
   }
-  splitArrayByWordCount(dataArray: TranscriptResponse[], maxChars = 515) {
+  /**
+   * @description 根据maxChars 进行切片章节
+   */
+  splitTranscriptArrayByWordCount(
+    dataArray: TranscriptResponse[],
+    maxChars = 515,
+  ) {
     const result: TranscriptResponse[] = [] // 存储分割后的结果
     let currentItem = { start: '', duration: 0, text: '' }
     let currentTextList: string[] = [] // 当前文本暂存列表
@@ -137,7 +162,8 @@ export class ActionYoutubeGetTranscript extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    this.isStopAction = true
+    await stopActionMessageStatus(params)
     return true
   }
 }

@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "نمایش پاسخ هوش مصنوعی فقط زمانی که به صورت دستی روی یک دکمه کلیک می‌کنید.",
     "feature_card__appearance__field_summarize_button__title": "دکمه خلاصه کردن",
     "feature_card__prompts__edit_prompt__field_advance__title": "پیشرفت",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و تن و سبک نوشتاری"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "زبان خروجی و تن و سبک نوشتاری",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "منوی متن",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "کمک نوشتاری",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "خلاصه",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "جستجو",
+    "feature_card__prompts__new_prompt__title": "پرسش جدید",
+    "feature_card__prompts__new_prompt_group__title": "گروه پرسش جدید",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "پاسخ سریع",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ویرایش یا بررسی پیش‌نویس",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ترکیب سریع"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "آخرین مدل آنتروپیک که تعادلی بین هوش و سرعت را به خوبی حفظ می‌کند، همچنین قابلیت دید را نیز ارائه می‌دهد.",
     "sidebar__promotion_dialog__content_item3__title": "«کلود-۳-هایکو» با دیدگاه",
     "sidebar__promotion_dialog__content_item3__description": "دسترسی به سریعترین مدل آنتروپیک در کلاس هوش برای کاربردهای روزمره به صورت کارآمد.",
-    "sidebar__promotion_dialog__content_item4__title": "ترجمه فراگیر",
-    "sidebar__promotion_dialog__content_item4__description": "با یک کلیک خواندن دو زبانه را فعال کنید تا بهبود کارایی بازیابی اطلاعات را تجربه کنید.",
+    "sidebar__promotion_dialog__content_item4__title": "خلاصه ویدیو با زمان بندی",
+    "sidebar__promotion_dialog__content_item4__description": "با استفاده از پاراگراف‌های خلاصه شده با زمان بندی، به راحتی در ویدیوهای YouTube جستجو کنید.",
     "sidebar__promotion_dialog__content_item5__title": "ایجاد هنر و تصاویر هوش مصنوعی",
     "sidebar__promotion_dialog__content_item5__description": "به سرعت تصاویر شگفت‌انگیز خود را به واقعیت تبدیل کنید. ساده، قدرتمند، تحول‌آفرین.",
     "sidebar__promotion_dialog__cta_button": "هم‌اکنون ارتقا دهید - پیشنهاد به زودی به پایان می‌رسد!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "خلاصه ایمیل (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "خلاصه ایمیل (نکات کلیدی)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "خلاصه ایمیل (موارد عملی)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "نمایش متن"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "نمایش متن",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "لطفاً صبر کنید تا تبلیغ ویدیو پخش شود و سپس دوباره امتحان کنید.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "خلاصه با زمان بندی",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "امکان تولید ویدئو بدون زیرنویس وجود ندارد.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "خطایی رخ داد، لطفا بعداً دوباره امتحان کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

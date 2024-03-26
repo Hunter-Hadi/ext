@@ -80,7 +80,8 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
   const { createConversation } = useClientConversation()
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
-  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+  const { AI_PROVIDER_MODEL_MAP, getAIProviderModelDetail } =
+    useAIProviderModelsMap()
   // 当前sidebarConversationType的AI provider
   const currentAIProvider =
     sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
@@ -200,9 +201,14 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         }}
       >
         {currentSidebarConversationTypeModels.map((AIModelOption) => {
+          const providerModelDetail = getAIProviderModelDetail(
+            AIModelOption.AIProvider,
+            AIModelOption.value,
+          )
           return (
             <MenuItem
               data-testid={`maxai--ai-model-selector--menu-item--${AIModelOption.value}`}
+              data-model-max-tokens={providerModelDetail?.maxTokens || 0}
               disabled={AIModelOption.disabled}
               onMouseEnter={() => {
                 setIsHoverThirdPartyModel(false)

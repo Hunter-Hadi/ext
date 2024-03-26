@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "AI መልዕክትን ለመፈለግ በአዝራር የሚሰጥ ሁኔታ ያሳውቁ።",
     "feature_card__appearance__field_summarize_button__title": "የግል አማራጭ አዝራር",
     "feature_card__prompts__edit_prompt__field_advance__title": "የተጠቃሚ",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "የእውነት ቋንቋ & ቀላል & የፊደል አስተካክል"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "የእውነት ቋንቋ & ቀላል & የፊደል አስተካክል",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "የማስተካከያ ምናሌ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "የፍላጎት መረጃ አስተዳደር",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "አጠቃላይ",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "ፈልግ",
+    "feature_card__prompts__new_prompt__title": "አዲስ ምልክት",
+    "feature_card__prompts__new_prompt_group__title": "አዲስ ምልክት ቡድን",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "በቀጥታ መልክት",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ማስተካከያ ወደ ማስተካከያ ማስተዳደር",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "በቀጥታ አስተካከያ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "የAnthropic መሳሪያ አገልግሎት እና በተለያዩ ስሜቶች ላይ የሚያስተምር ማሳወቂያን የሚገኘውን የተሰራው ስሜት ይጠቀሙበታል።",
     "sidebar__promotion_dialog__content_item3__title": "`ክላዩድ-3-ሃይኩ` በሥራ",
     "sidebar__promotion_dialog__content_item3__description": "በስርዓት የAnthropic ትርጉም ሞዴል በሚገኙ መሳሪያዎች ላይ የተሻለ የሆነ ስራዎችን በቀላሉ ይጠቀሙ።",
-    "sidebar__promotion_dialog__content_item4__title": "የትርጉም ተስተካክል",
-    "sidebar__promotion_dialog__content_item4__description": "በአንድ ከንቲባ በማንበብ የሚሰራውን በርግጥ የሚገኘውን የመረጃ ማዕከል የሚጠቀሙ።",
+    "sidebar__promotion_dialog__content_item4__title": "የቶኪሳውን ቪዲዮ መግለጫ",
+    "sidebar__promotion_dialog__content_item4__description": "በተጠቀሱት ፕሮግራሞች እና የቶኪሳውን ቪዲዮዎች በየአይነት ጥቅም የተሻለ የቪዲዮ ጽሑፍ በመጠቀም የተሳሳተ የቪዲዮ ጥቅም መልኩን በመጠቀም ያስተካክለው ይችላል።",
     "sidebar__promotion_dialog__content_item5__title": "የአስር ስጦታዎችን እና ምስሎችን ፍራፍሬ ማስተላለፍ",
     "sidebar__promotion_dialog__content_item5__description": "በቀላሉ የሚገኘውን የአስር ስጦታዎችን ለመቀየር በአንድ ከንቲባ የሚገኘውን የማስተላለፍ ማስተላለፍ።",
     "sidebar__promotion_dialog__cta_button": "አድስገን - በቀላሉ ይጠብቁ!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ኢሜል ጥቅም አልተጠቀሙም (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ኢሜል ጥቅም አልተጠቀሙም (የመልክት ጥቅሞች)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ኢሜል ጥቅም አልተጠቀሙም (የእንቅስቃሴ እይታዎች)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ትርጉም አሳይ"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ትርጉም አሳይ",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "እባክዎ በቪዲዮ የሚታዩ ጣቢያዎች መጨመር ይችላሉ፣ ከዚህ በፊት የተወሰኑትን ይጠቀሙ.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "የጊዜ መግለጫ",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "በስርጭት እንዴት ያለውን ቪዲዮ አልተጠበቀም።",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ስህተት ተፈጥሯል, እባክዎ በዚህ አጠቃላይ ይሞክሩ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

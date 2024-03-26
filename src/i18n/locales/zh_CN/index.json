@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "仅当您手动点击按钮时才显示AI回复。",
     "feature_card__appearance__field_summarize_button__title": "摘要按钮",
     "feature_card__prompts__edit_prompt__field_advance__title": "提前",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "输出语言和语气和写作风格"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "输出语言和语气和写作风格",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "上下文菜单",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "写作助手",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "摘要",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "搜索",
+    "feature_card__prompts__new_prompt__title": "新提示",
+    "feature_card__prompts__new_prompt_group__title": "新提示组",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "快速回复",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "编辑或审核草稿",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "快速撰写"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "使用Anthropic最新的模型，在智能和速度之间取得平衡，同时还提供视觉能力。",
     "sidebar__promotion_dialog__content_item3__title": "具有视觉的`Claude-3-haiku`",
     "sidebar__promotion_dialog__content_item3__description": "访问Anthropic最快的智能模型，高效处理各种日常任务。",
-    "sidebar__promotion_dialog__content_item4__title": "沉浸式翻译",
-    "sidebar__promotion_dialog__content_item4__description": "一键启用双语阅读，提高信息检索效率。",
+    "sidebar__promotion_dialog__content_item4__title": "视频摘要",
+    "sidebar__promotion_dialog__content_item4__description": "使用带有时间戳的摘要段落轻松浏览 YouTube 视频。",
     "sidebar__promotion_dialog__content_item5__title": "创作AI艺术和图像",
     "sidebar__promotion_dialog__content_item5__description": "将您的想象迅速转化为令人惊叹的图像。简单、强大、变革性。",
     "sidebar__promotion_dialog__cta_button": "立即升级 - 优惠即将结束！",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "总结电子邮件（简而言之）",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "总结电子邮件（要点）",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "总结电子邮件（行动项）",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "显示剧本"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "显示剧本",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "请等待视频广告播放完毕，然后再试一次。",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "时间戳摘要",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "无法生成没有字幕的视频。",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "发生异常，请稍后再试。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

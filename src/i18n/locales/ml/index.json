@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "ബട്ടൺ ക്ലിക്ക് ചെയ്യുമ്പോൾ മാത്രം AI പ്രതികരണം കാണിക്കുക.",
     "feature_card__appearance__field_summarize_button__title": "സംഗ്രഹിക്കുക ബട്ടൺ",
     "feature_card__prompts__edit_prompt__field_advance__title": "മുന്നോട്ട്",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "പ്രതിഫലം ഭാഷ & ശൈലം & രചനാ ശൈലി"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "പ്രതിഫലം ഭാഷ & ശൈലം & രചനാ ശൈലി",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "സന്ദർഭ മെനു",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "എഴുത്തു സഹായി",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "സംഗ്രഹം",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "തിരയൽ",
+    "feature_card__prompts__new_prompt__title": "പുതിയ പ്രോംപ്റ്റ്",
+    "feature_card__prompts__new_prompt_group__title": "പുതിയ പ്രോംപ്റ്റ് ഗ്രൂപ്പ്",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "വേഗത്തിൽ ഉത്തരം",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ഡ്രാഫ്റ്റ് എഡിറ്റുകൾ അല്ലെങ്കിൽ അവലോകനം",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "വേഗത്തിൽ രചന"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Akses model terbaru Anthropic yang mencapai keseimbangan antara kecerdasan dan kecepatan, sambil juga menawarkan kemampuan penglihatan.",
     "sidebar__promotion_dialog__content_item3__title": "`വിജ്ഞാനത്തോടുള്ള` ക്ലോഡ്-3-ഹൈക്കു",
     "sidebar__promotion_dialog__content_item3__description": "Akses model tercepat Anthropic dalam kelas kecerdasan untuk menangani berbagai tugas sehari-hari secara efisien.",
-    "sidebar__promotion_dialog__content_item4__title": "Terjemahan immersif",
-    "sidebar__promotion_dialog__content_item4__description": "Aktifkan pembacaan dwibahasa dengan sekali klik untuk meningkatkan efisiensi pengambilan informasi.",
+    "sidebar__promotion_dialog__content_item4__title": "സമയം ചുരുക്കപ്പെടുത്തിയ വീഡിയോ സംഗ്രഹം",
+    "sidebar__promotion_dialog__content_item4__description": "സമാഹാരിച്ച പഠനങ്ങൾക്ക് സമയം ചുരുക്കപ്പെടുത്തിയ ഭാഗങ്ങൾ ഉപയോഗിച്ച് YouTube വീഡിയോകൾ എളുപ്പത്തിൽ നാവിഗേറ്റുചെയ്യുക.",
     "sidebar__promotion_dialog__content_item5__title": "Buat seni dan gambar AI",
     "sidebar__promotion_dialog__content_item5__description": "Ubah visi Anda menjadi gambar yang menakjubkan dengan cepat. Sederhana, kuat, dan transformatif.",
     "sidebar__promotion_dialog__cta_button": "ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക - ഓഫർ ഇനിയും അവസാനിക്കുന്നു!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "ഇമെയില്‍ സംഗ്രഹിക്കുക (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രധാന പരമ്പരകള്‍)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "ഇമെയില്‍ സംഗ്രഹിക്കുക (പ്രവര്‍ത്തന പദങ്ങള്‍)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ട്രാൻസ്ക്രിപ്റ്റ് കാണിക്കുക"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "ട്രാൻസ്ക്രിപ്റ്റ് കാണിക്കുക",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "ദയവായി വീഡിയോ പ്രവർത്തനം അവസാനിക്കുന്നത് കാത്തിരിക്കുകയും പിന്നെ വീഡിയോ പുതിയതായി ശ്രമിക്കുക.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "സമയപ്പെടുത്തിയ സംഗ്രഹം",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "ഉപശീൽക്കാന്‍ വീഡിയോ ഉണ്ടാക്കാനായി സബ്ടൈറ്റിലുകള്‍ ഇല്ല.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ഒരു അസാധുവായ പിശക് സംഭവിച്ചു, പിന്നെ ശ്രമിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

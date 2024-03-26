@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "ボタンをクリックしたときにのみAIの回答を表示します。",
     "feature_card__appearance__field_summarize_button__title": "要約ボタン",
     "feature_card__prompts__edit_prompt__field_advance__title": "進む",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "出力言語＆トーン＆文章スタイル"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "出力言語＆トーン＆文章スタイル",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "コンテキストメニュー",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "ライティングアシスタント",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "サマリー",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "検索",
+    "feature_card__prompts__new_prompt__title": "新しいプロンプト",
+    "feature_card__prompts__new_prompt_group__title": "新しいプロンプトグループ",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "クイックリプライ",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ドラフトの編集またはレビュー",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "クイックコンポーズ"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "知能と速度のバランスを取ったAnthropicの最新モデルにアクセスし、ビジョン機能も提供しています。",
     "sidebar__promotion_dialog__content_item3__title": "`ビジョンを持つClaude-3ハイク`",
     "sidebar__promotion_dialog__content_item3__description": "さまざまな日常のタスクを効率的に処理するために、Anthropicの最速モデルであるClaude-3を利用してください。",
-    "sidebar__promotion_dialog__content_item4__title": "没入型翻訳",
-    "sidebar__promotion_dialog__content_item4__description": "1クリックでバイリンガル読書を可能にし、情報検索効率を向上させます。",
+    "sidebar__promotion_dialog__content_item4__title": "タイムスタンプ付きの動画サマリー",
+    "sidebar__promotion_dialog__content_item4__description": "タイムスタンプ付きの要約パラグラフを使用して、YouTubeの動画を簡単にナビゲートします。",
     "sidebar__promotion_dialog__content_item5__title": "AIアートと画像の作成",
     "sidebar__promotion_dialog__content_item5__description": "ビジョンを素晴らしい画像に素早く変換します。シンプルでパワフル、変革的です。",
     "sidebar__promotion_dialog__cta_button": "今すぐアップグレード - お得な期間は間もなく終了します！",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "メールを要約する（TL;DR）",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "メールを要約する（キーポイント）",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "メールを要約する（アクションアイテム）",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "トランスクリプトを表示"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "トランスクリプトを表示",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "動画広告が再生終了するまでお待ちください。その後、もう一度お試しください。",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "タイムスタンプ付きの概要",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "字幕なしでビデオを生成できません。",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "エラーが発生しました。後でもう一度お試しください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

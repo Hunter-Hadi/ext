@@ -236,7 +236,16 @@
     "feature__search_with_ai__trigger_mode__manual__desc": "Zobrazit odpověď AI pouze po kliknutí na tlačítko ručně.",
     "feature_card__appearance__field_summarize_button__title": "Tlačítko shrnutí",
     "feature_card__prompts__edit_prompt__field_advance__title": "Posunout",
-    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupní jazyk a tón a styl psaní"
+    "feature_card__prompts__edit_prompt__field_advance__system_select__title": "Výstupní jazyk a tón a styl psaní",
+    "feature_card__prompts__place_my_own_prompts__tab_title__context_menu": "Kontextové menu",
+    "feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant": "Psací asistent",
+    "feature_card__prompts__place_my_own_prompts__tab_title__summary": "Souhrn",
+    "feature_card__prompts__place_my_own_prompts__tab_title__search": "Hledat",
+    "feature_card__prompts__new_prompt__title": "Nový podnět",
+    "feature_card__prompts__new_prompt_group__title": "Nová skupina podnětů",
+    "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rychlá odpověď",
+    "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upravit nebo zkontrolovat koncept",
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rychlé psaní"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",
@@ -615,8 +624,8 @@
     "sidebar__promotion_dialog__content_item2__description": "Získejte přístup k nejnovějšímu modelu od Anthropic, který najde rovnováhu mezi inteligencí a rychlostí a zároveň nabízí schopnost vidění.",
     "sidebar__promotion_dialog__content_item3__title": "`Claude-3-haiku` s vizí",
     "sidebar__promotion_dialog__content_item3__description": "Přístup k nejrychlejšímu modelu Anthropic ve třídě inteligence pro efektivní zvládání různých každodenních úkolů.",
-    "sidebar__promotion_dialog__content_item4__title": "Ponořující překlad",
-    "sidebar__promotion_dialog__content_item4__description": "Zapněte dvojjazyčné čtení jedním kliknutím a zlepšete efektivitu vyhledávání informací.",
+    "sidebar__promotion_dialog__content_item4__title": "Časově označené shrnutí videa",
+    "sidebar__promotion_dialog__content_item4__description": "Snadno se navigujte v YouTube videích pomocí shrnutých odstavců s časovým rozpadem.",
     "sidebar__promotion_dialog__content_item5__title": "Vytvářejte umění a obrázky pomocí AI",
     "sidebar__promotion_dialog__content_item5__description": "Rychle proměňte své vize v ohromující obrázky. Jednoduché, výkonné, transformační.",
     "sidebar__promotion_dialog__cta_button": "Upgradujte nyní - Nabídka končí brzy!",
@@ -658,7 +667,11 @@
     "sidebar__summary__nav__email_summary__tooltip__tldr": "Shrnutí emailu (TL;DR)",
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "Shrnutí emailu (Hlavní myšlenky)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "Shrnutí emailu (Úkoly)",
-    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobrazit přepis"
+    "sidebar__summary__nav__youtube_summary__tooltip__transcript": "Zobrazit přepis",
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počkejte, až skončí reklama ve videu a poté to zkuste znovu.",
+    "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časově označený souhrn",
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nelze vytvořit video bez titulků.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Došlo k výjimce, zkuste to prosím znovu později."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

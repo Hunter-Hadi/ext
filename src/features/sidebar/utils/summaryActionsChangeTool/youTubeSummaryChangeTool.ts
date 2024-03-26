@@ -3,8 +3,7 @@ import { v4 as uuidV4 } from 'uuid'
 
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
-
-import { IGetSummaryNavActionsParams } from '../pageSummaryHelper'
+import { IGetSummaryNavActionsParams } from '@/features/sidebar/utils/pageSummaryHelper'
 
 export const youTubeSummaryCommentsChangeTool = async (
   actions: ISetActionsType,
@@ -280,9 +279,16 @@ export const youTubeSummaryTranscriptChangeTool = async (
       },
     },
     {
-      type: 'GET_YOUTUBE_TRANSCRIPT_OF_URL',
+      type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
       parameters: {
-        VariableName: 'GET_LIST_DATA',
+        OperationElementSelector: 'ytd-watch-metadata #title',
+      },
+    },
+    {
+      type: 'ANALYZE_CHAT_FILE',
+      parameters: {
+        AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+        AnalyzeChatFileImmediateUpdateConversation: false,
       },
     },
     {
@@ -338,6 +344,120 @@ export const youTubeSummaryTranscriptChangeTool = async (
   ]
   return cloneDeep(newActions)
 }
+export const youTubeSummaryTranscriptTimestampedChangeTool = async (
+  actions: ISetActionsType,
+  params: IGetSummaryNavActionsParams,
+) => {
+  const newActions: ISetActionsType = [
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'add',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: uuidV4(),
+          text: '',
+          originalMessage: {
+            metadata: {
+              sourceWebpage: {
+                url: `{{CURRENT_WEBPAGE_URL}}`,
+                title: `{{CURRENT_WEBPAGE_TITLE}}`,
+              },
+              shareType: 'summary',
+              title: {
+                title: `Show transcript`,
+              },
+              copilot: {
+                title: {
+                  title: 'Page insights',
+                  titleIcon: 'LaptopMac',
+                },
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'loading',
+                    icon: 'SmartToy',
+                  },
+                ],
+              },
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+    {
+      type: 'SET_VARIABLE',
+      parameters: {
+        VariableName: 'AI_RESPONSE_MESSAGE_ID',
+      },
+    },
+    {
+      type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
+      parameters: {
+        OperationElementSelector: 'ytd-watch-metadata #title',
+      },
+    },
+    {
+      type: 'ANALYZE_CHAT_FILE',
+      parameters: {
+        AnalyzeChatFileName: 'YouTubeSummaryContent.txt',
+        AnalyzeChatFileImmediateUpdateConversation: false,
+      },
+    },
+    {
+      type: 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED',
+      parameters: {},
+    },
+    {
+      type: 'CHAT_MESSAGE',
+      parameters: {
+        ActionChatMessageOperationType: 'update',
+        ActionChatMessageConfig: {
+          type: 'ai',
+          messageId: params.messageId || `{{AI_RESPONSE_MESSAGE_ID}}`,
+          text: '',
+          originalMessage: {
+            status: 'complete',
+            content: undefined,
+            metadata: {
+              isComplete: true,
+              copilot: {
+                steps: [
+                  {
+                    title: 'Analyzing video',
+                    status: 'complete',
+                    icon: 'SmartToy',
+                    value: '{{CURRENT_WEBPAGE_TITLE}}',
+                  },
+                ],
+              },
+              deepDive: [
+                {
+                  type: 'timestampedSummary',
+                  title: {
+                    title: 'Summary',
+                    titleIcon: 'SummaryInfo',
+                  },
+                  value: `{{LAST_ACTION_OUTPUT}}`,
+                },
+                {
+                  title: {
+                    title: 'Deep dive',
+                    titleIcon: 'TipsAndUpdates',
+                  },
+                  value: 'Ask AI anything about the video...',
+                },
+              ],
+            },
+            includeHistory: false,
+          },
+        } as IAIResponseMessage,
+      },
+    },
+  ]
+  return cloneDeep(newActions)
+}
 export const youTubeSummaryChangeTool = async (
   params: IGetSummaryNavActionsParams,
   actions: ISetActionsType,
@@ -346,6 +466,8 @@ export const youTubeSummaryChangeTool = async (
     return await youTubeSummaryCommentsChangeTool(actions, params)
   } else if (params.key === 'transcript') {
     return await youTubeSummaryTranscriptChangeTool(actions, params)
+  } else if (params.key === 'timestamped') {
+    return await youTubeSummaryTranscriptTimestampedChangeTool(actions, params)
   }
   return cloneDeep(actions)
 }

@@ -4,7 +4,7 @@ import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -19,14 +19,13 @@ import {
 } from '@/features/searchWithAI/components/SearchWithAIIcons'
 import { textHandler } from '@/features/shortcuts/utils/textHelper'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
+import SidebarAImessageBottomList from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAImessageBottomList'
 import SidebarAIMessageContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent'
 import SidebarAIMessageSkeletonContent from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageSkeletonContent'
 import SidebarAIMessageCopilotStep from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageCopilotStep'
 import SidebarAIMessageSourceLinks from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageSourceLinks'
 import SidebarAIMessageTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageTools'
-
-import DeepDiveVIew from './DeepDiveVIew'
-import { SwitchSummaryActionNav } from './SwitchSummaryActionNav'
+import { SwitchSummaryActionNav } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SwitchSummaryActionNav'
 
 const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 
@@ -46,14 +45,6 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
     () => message.originalMessage?.metadata?.shareType === 'summary',
     [message],
   )
-  useEffect(() => {
-    console.log(
-      'simply props BaseSidebarAIMessage',
-      isRichAIMessage,
-      message,
-      liteMode,
-    )
-  }, [isRichAIMessage, message, liteMode])
   const renderData = useMemo(() => {
     try {
       const currentRenderData = {
@@ -261,8 +252,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
                 </Stack>
               )}
             {renderData.deepDive && (
-              <DeepDiveVIew
+              <SidebarAImessageBottomList
                 data={renderData.deepDive}
+                loading={coverLoading}
                 isDarkMode={isDarkMode}
               />
             )}
@@ -302,13 +294,22 @@ export const MetadataTitleRender: FC<{
           width={16}
           height={16}
         >
-          <ContextMenuIcon
-            sx={{
-              color: 'primary.main',
-              fontSize: titleIconSize || 18,
-            }}
-            icon={titleIcon}
-          />
+          {titleIcon === 'SummaryInfo' ? (
+            <ReadIcon
+              sx={{
+                color: 'primary.main',
+                fontSize: titleIconSize,
+              }}
+            />
+          ) : (
+            <ContextMenuIcon
+              sx={{
+                color: 'primary.main',
+                fontSize: titleIconSize || 18,
+              }}
+              icon={titleIcon}
+            />
+          )}
         </Stack>
       )}
       <Typography

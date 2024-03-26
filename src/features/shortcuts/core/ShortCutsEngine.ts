@@ -22,6 +22,7 @@ import {
   ActionGetSocialMediaPostDraftOfWebPage,
   ActionGetYoutubeTranscriptOfURL,
   ActionInsertUserInput,
+  ActionMaxAIProcessBuiltInParameters,
   ActionOpenURLs,
   ActionOperationElement,
   ActionRenderChatGPTPrompt,
@@ -37,6 +38,9 @@ import {
   ActionURL,
   ActionWebGPTSearchResultsExpand,
 } from '@/features/shortcuts/actions'
+import { ActionGetYoutubeSocialMediaComments } from '@/features/shortcuts/actions/web/socialMedia/ActionGetYoutubeSocialMediaSummaryInfo/ActionGetYoutubeSocialMediaComments'
+import { ActionGetYoutubeSocialMediaTranscripts } from '@/features/shortcuts/actions/web/socialMedia/ActionGetYoutubeSocialMediaSummaryInfo/ActionGetYoutubeSocialMediaTranscripts'
+import { ActionGetYoutubeSocialMediaTranscriptTimestamped } from '@/features/shortcuts/actions/web/socialMedia/ActionGetYoutubeSocialMediaSummaryInfo/ActionGetYoutubeSocialMediaTranscriptTimestamped'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import {
   IShortcutEngine,
@@ -48,17 +52,18 @@ import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
-import { ActionYoutubeGetComments } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetComments'
-import { ActionYoutubeGetTranscript } from '../actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeGetTranscript'
-
 const ActionClassMap = {
   // 废弃
   [ActionRenderChatGPTPrompt.type]: ActionRenderChatGPTPrompt,
   //common
   [ActionRenderTemplate.type]: ActionRenderTemplate,
-  [ActionYoutubeGetComments.type]: ActionYoutubeGetComments,
-  [ActionYoutubeGetTranscript.type]: ActionYoutubeGetTranscript,
-
+  //youtube summary
+  [ActionGetYoutubeSocialMediaComments.type]:
+    ActionGetYoutubeSocialMediaComments,
+  [ActionGetYoutubeSocialMediaTranscripts.type]:
+    ActionGetYoutubeSocialMediaTranscripts,
+  [ActionGetYoutubeSocialMediaTranscriptTimestamped.type]:
+    ActionGetYoutubeSocialMediaTranscriptTimestamped,
   // chat
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAskChatGPT.type]: ActionAskChatGPT,
@@ -100,7 +105,10 @@ const ActionClassMap = {
   [ActionTextHandler.type]: ActionTextHandler,
   // webgpt插件
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
+  // maxai
   [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
+  [ActionMaxAIProcessBuiltInParameters.type]:
+    ActionMaxAIProcessBuiltInParameters,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
@@ -269,7 +277,7 @@ class ShortCutsEngine implements IShortcutEngine {
               key: 'LAST_ACTION_OUTPUT',
               value: output,
               overwrite: true,
-              isBuildIn: true,
+              isBuiltIn: true,
             })
             console.log('ShortCutEngine.run: output', output)
             const nextAction = this.getNextAction()

@@ -1,27 +1,28 @@
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import { templateParserDecorator } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { stringConvertTxtUpload } from '@/features/shortcuts/utils/stringConvertTxtUpload'
 import {
-  MAX_UPLOAD_TEXT_FILE_TOKENS,
-  stringConvertTxtUpload,
-} from '@/features/shortcuts/utils/stringConvertTxtUpload'
-import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
-
-import { stopActionMessage } from '../common'
 
 /**
  * @since 2023-09-11
  * @description 当用户聊天的内容超过12k的时候生成md5上传成docId, 并且切割12k给聊天的summary
  * @update 2023-11-30 当用户聊天的内容超过120k的时候生成md5上传成docId, 并且切割120k给聊天的summary
+ * @update 2024-03-22 maxSystemPromptTokens = modelMaxTokens - 8000((historyTokens + questionPromptTokens + responseTokens)
  */
 export class ActionAnalyzeChatFile extends Action {
   static type: ActionIdentifier = 'ANALYZE_CHAT_FILE'
   // 后端最大上传文本上限
   MAX_UPLOAD_TEXT_FILE_TOKENS = 400 * 1000 // 400k
+  isStopAction = false
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -48,29 +49,33 @@ export class ActionAnalyzeChatFile extends Action {
       const conversationEngine = engine.clientConversationEngine
       const conversationId =
         conversationEngine?.currentConversationIdRef.current || ''
+      if (this.isStopAction) return
       const conversation = await conversationEngine?.getCurrentConversation()
-      const systemPromptTokensLimit =
+      if (this.isStopAction) return
+      const maxAIModelTokens =
         this.parameters.AnalyzeChatFileSystemPromptTokenLimit ||
         conversation?.meta?.maxTokens ||
         4096
+      const systemPromptTokensLimit =
+        maxAIModelTokens -
+        calculateMaxHistoryQuestionResponseTokens(maxAIModelTokens)
       const text =
         this.parameters?.compliedTemplate || params.LAST_ACTION_OUTPUT || ''
-      const {
-        isLimit,
-        text: pageSummarySystemPrompt,
-      } = await sliceTextByTokens(text, systemPromptTokensLimit, {
-        thread: 4,
-        partOfTextLength: 80 * 1000,
-      })
+      const { isLimit, text: pageSummarySystemPrompt } =
+        await sliceTextByTokens(text, systemPromptTokensLimit, {
+          thread: 4,
+          partOfTextLength: 20 * 1000,
+        })
+      if (this.isStopAction) return
       // 如果触发了limit，就截取其中400k上传作为docId
       if (isLimit) {
         if (immediateUpdateConversation) {
           const uploadData = await sliceTextByTokens(
             text,
-            MAX_UPLOAD_TEXT_FILE_TOKENS,
+            systemPromptTokensLimit,
             {
               thread: 4,
-              partOfTextLength: 80 * 1000,
+              partOfTextLength: 20 * 1000,
             },
           )
           const docId = await stringConvertTxtUpload(uploadData.text, fileName)
@@ -83,6 +88,7 @@ export class ActionAnalyzeChatFile extends Action {
             conversationId,
             true,
           )
+          if (this.isStopAction) return
           // 异步通知LarkBot
           clientSendMaxAINotification(
             'SUMMARY',
@@ -128,6 +134,7 @@ export class ActionAnalyzeChatFile extends Action {
             )
               .then()
               .catch()
+            if (this.isStopAction) return
             stringConvertTxtUpload(uploadData.text, fileName).then(
               async (docId) => {
                 await conversationEngine?.updateConversation(
@@ -144,6 +151,7 @@ export class ActionAnalyzeChatFile extends Action {
           })
         }
       }
+      if (this.isStopAction) return
       await conversationEngine?.updateConversation(
         {
           meta: {
@@ -153,13 +161,15 @@ export class ActionAnalyzeChatFile extends Action {
         conversationId,
         true,
       )
+      if (this.isStopAction) return
       this.output = pageSummarySystemPrompt
     } catch (e) {
       this.error = (e as any).toString()
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    this.isStopAction = true
+    await stopActionMessageStatus(params)
     return true
   }
 }

@@ -123,6 +123,11 @@ export const formatTimestampedSummaryAIMessageContent = (
   message: IAIResponseMessage,
 ) => {
   try {
+    const decodeHtmlEntity = (str: string) => {
+      const textarea = document.createElement('textarea')
+      textarea.innerHTML = str.trim().replace(/\n/g, '')
+      return textarea.value
+    }
     if (
       message.originalMessage?.metadata?.title?.title ===
         'Timestamped summary' ||
@@ -137,19 +142,19 @@ export const formatTimestampedSummaryAIMessageContent = (
           const markdownTexts = (transcripts as TranscriptResponse[])
             ?.filter((transcript) => transcript.text)
             .map((transcript) => {
-              const itemText = `- ${
+              const firstStageText = `- ${
                 formatSecondsAsTimestamp(transcript.start) || ''
-              }: ${transcript.text || ''}`
+              }: ${decodeHtmlEntity(transcript.text || '')}`
               const childrenText = transcript.children
                 ?.filter((childrenTranscript) => childrenTranscript.text)
                 .map(
                   (childrenTranscript) =>
                     `    - ${
                       formatSecondsAsTimestamp(childrenTranscript.start) || ''
-                    }: ${childrenTranscript.text || ''}`,
+                    }: ${decodeHtmlEntity(childrenTranscript.text || '')}`,
                 )
                 .join('\n')
-              return `${itemText || ''}\n${childrenText || ''}`
+              return `${firstStageText || ''}\n${childrenText || ''}`
             })
             .join('\n\n')
           return markdownTexts

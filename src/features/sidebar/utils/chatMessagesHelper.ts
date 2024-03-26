@@ -137,19 +137,19 @@ export const formatTimestampedSummaryAIMessageContent = (
           const markdownTexts = (transcripts as TranscriptResponse[])
             ?.filter((transcript) => transcript.text)
             .map((transcript) => {
-              const itemText = `- ${formatSecondsAsTimestamp(
-                transcript.start,
-              )}: ${transcript.text}`
+              const itemText = `- ${
+                formatSecondsAsTimestamp(transcript.start) || ''
+              }: ${transcript.text || ''}`
               const childrenText = transcript.children
                 ?.filter((childrenTranscript) => childrenTranscript.text)
                 .map(
                   (childrenTranscript) =>
-                    `    - ${formatSecondsAsTimestamp(
-                      childrenTranscript.start,
-                    )}: ${childrenTranscript.text}`,
+                    `    - ${
+                      formatSecondsAsTimestamp(childrenTranscript.start) || ''
+                    }: ${childrenTranscript.text || ''}`,
                 )
                 .join('\n')
-              return `${itemText}\n${childrenText}`
+              return `${itemText || ''}\n${childrenText || ''}`
             })
             .join('\n\n')
           return markdownTexts

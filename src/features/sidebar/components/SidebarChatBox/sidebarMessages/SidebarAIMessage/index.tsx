@@ -286,20 +286,21 @@ export const MetadataTitleRender: FC<{
 }> = (props) => {
   const { fontSx } = props
   const { title, titleIcon, titleIconSize } = props.title
+  const titleIconSizeDefault = titleIcon === 'SummaryInfo' ? 20 : 16
   return (
     <Stack direction={'row'} alignItems="center" spacing={1}>
       {titleIcon && (
         <Stack
           alignItems={'center'}
           justifyContent={'center'}
-          width={16}
-          height={16}
+          width={titleIconSizeDefault}
+          height={titleIconSizeDefault}
         >
           {titleIcon === 'SummaryInfo' ? (
             <ReadIcon
               sx={{
                 color: 'primary.main',
-                fontSize: titleIconSize,
+                fontSize: titleIconSize || 20,
               }}
             />
           ) : (

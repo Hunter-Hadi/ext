@@ -75,18 +75,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       this.output = JSON.stringify([]) //设置初始值，翻译return 异常数据导致视图渲染错误
       if (this.isStopAction) return
       this.currentWebPageTitle = params?.CURRENT_WEBPAGE_TITLE || ''
-      const currentUrl = window.location.href.includes('youtube.com')
-        ? window.location.href
-        : ''
-      const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
-      if (!youtubeLinkURL) {
-        this.error = 'Youtube URL is empty.'
-        return
-      }
-      if (this.isStopAction) return
-      const transcripts = await YoutubeTranscript.fetchTranscript(
-        youtubeLinkURL,
-      ) //获取youtube transcript 数据
+
+      const transcripts = await this.getYoutubeTranscript() //获取youtube transcript 数据
+      console.log('simply transcripts', transcripts)
       if (this.isStopAction) return
       const conversationId =
         engine.clientConversationEngine?.currentConversationIdRef?.current
@@ -161,6 +152,27 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       }
     } catch (e) {
       this.output = JSON.stringify([])
+    }
+  }
+  async getYoutubeTranscript() {
+    const currentUrl = window.location.href.includes('youtube.com')
+      ? window.location.href
+      : ''
+    const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
+    if (!youtubeLinkURL) {
+      this.error = 'Youtube URL is empty.'
+      return false
+    }
+    if (this.isStopAction) return
+    let transcripts: TranscriptResponse[] = []
+    transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL) //获取youtube transcript 数据
+    if (transcripts && transcripts.length !== 0) {
+      return transcripts
+    } else {
+      //本地开发 发现会 有跨域异常问题，所以这里做一个重试请求
+      await new Promise((resolve) => setTimeout(resolve, 1000)) // 等待1秒重试请求
+      transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL) //获取youtube transcript 数据
+      return transcripts
     }
   }
   async chaptersSliceTextByTokens(
@@ -662,7 +674,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
                   status: 'complete',
                   title: {
                     title: 'Summary',
-                    titleIcon: 'Menu',
+                    titleIcon: 'SummaryInfo',
                   },
                   value: transcriptData,
                 },

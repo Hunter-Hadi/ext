@@ -25,18 +25,8 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
   }
   async execute() {
     try {
-      const currentUrl = window.location.href.includes('youtube.com')
-        ? window.location.href
-        : ''
-      const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
-      if (!youtubeLinkURL) {
-        this.error = 'Youtube URL is empty.'
-        return
-      }
       if (this.isStopAction) return
-      const transcripts = await YoutubeTranscript.fetchTranscript(
-        youtubeLinkURL,
-      )
+      const transcripts = await this.getYoutubeTranscript()
       if (this.isStopAction) return
       if (!transcripts || transcripts.length === 0) {
         this.output = JSON.stringify([])
@@ -124,6 +114,27 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
     })
 
     return result
+  }
+  async getYoutubeTranscript() {
+    const currentUrl = window.location.href.includes('youtube.com')
+      ? window.location.href
+      : ''
+    const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
+    if (!youtubeLinkURL) {
+      this.error = 'Youtube URL is empty.'
+      return false
+    }
+    if (this.isStopAction) return
+    let transcripts: TranscriptResponse[] = []
+    transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL) //获取youtube transcript 数据
+    if (transcripts && transcripts.length !== 0) {
+      return transcripts
+    } else {
+      //本地开发 发现会 有跨域异常问题，所以这里做一个重试请求
+      await new Promise((resolve) => setTimeout(resolve, 1000)) // 等待1秒重试请求
+      transcripts = await YoutubeTranscript.fetchTranscript(youtubeLinkURL) //获取youtube transcript 数据
+      return transcripts
+    }
   }
   generateTimestampedLinks(dataArray: TranscriptResponse[]) {
     // 对数组中的每个对象进行映射操作

@@ -40,6 +40,8 @@ const InputAssistantPortal: FC = () => {
     // whatsApp?: boolean
     // hubspot?: boolean
     const host = getCurrentDomainHost()
+
+    // mail
     if (host === 'mail.google.com') {
       return appSetting.userSettings?.inputAssistantButton?.gmail === true
     }
@@ -50,6 +52,8 @@ const InputAssistantPortal: FC = () => {
     ) {
       return appSetting.userSettings?.inputAssistantButton?.outlook === true
     }
+
+    // social media
     if (host === 'twitter.com') {
       return appSetting.userSettings?.inputAssistantButton?.twitter === true
     }
@@ -67,6 +71,11 @@ const InputAssistantPortal: FC = () => {
     }
     if (host === 'reddit.com') {
       return appSetting.userSettings?.inputAssistantButton?.reddit === true
+    }
+
+    // chat
+    if (host === 'discord.com') {
+      return appSetting.userSettings?.inputAssistantButton?.discord === true
     }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])

@@ -19,8 +19,13 @@ export type IPresetVariableName =
   | 'AI_RESPONSE_LANGUAGE'
   | 'AI_RESPONSE_TONE'
   | 'AI_RESPONSE_WRITING_STYLE'
-  | 'EMAIL_CONTENT'
-  | 'SOCIAL_MEDIA_CONTENT'
+  | 'EMAIL_CONTENTS'
+  | 'EMAIL_DRAFT'
+  | 'SOCIAL_MEDIA_POST_CONTENT'
+  | 'SOCIAL_MEDIA_COMMENT_DRAFT'
+  | 'CHAT_MESSAGES_CONTENT'
+  | 'CHAT_MESSAGE_DRAFT'
+
 export interface IPresetActionSetVariable extends IActionSetVariable {
   VariableName: IPresetVariableName
 }
@@ -123,19 +128,47 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Select',
     label: 'Writing style',
   },
-  EMAIL_CONTENT: {
-    VariableName: 'EMAIL_CONTENT',
-    defaultValue: '{{EMAIL_CONTENT}}',
+  EMAIL_CONTENTS: {
+    VariableName: 'EMAIL_CONTENTS',
+    defaultValue: '{{EMAIL_CONTENTS}}',
     systemVariable: true,
     valueType: 'Text',
-    label: 'EMAIL_CONTENT',
+    label: 'EMAIL_CONTENTS',
   },
-  SOCIAL_MEDIA_CONTENT: {
-    VariableName: 'SOCIAL_MEDIA_CONTENT',
-    defaultValue: '{{SOCIAL_MEDIA_CONTENT}}',
+  EMAIL_DRAFT: {
+    VariableName: 'EMAIL_DRAFT',
+    defaultValue: '{{EMAIL_DRAFT}}',
     systemVariable: true,
     valueType: 'Text',
-    label: 'SOCIAL_MEDIA_CONTENT',
+    label: 'EMAIL_DRAFT',
+  },
+  SOCIAL_MEDIA_POST_CONTENT: {
+    VariableName: 'SOCIAL_MEDIA_POST_CONTENT',
+    defaultValue: '{{SOCIAL_MEDIA_POST_CONTENT}}',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'SOCIAL_MEDIA_POST_CONTENT',
+  },
+  SOCIAL_MEDIA_COMMENT_DRAFT: {
+    VariableName: 'SOCIAL_MEDIA_COMMENT_DRAFT',
+    defaultValue: '{{SOCIAL_MEDIA_COMMENT_DRAFT}}',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'SOCIAL_MEDIA_COMMENT_DRAFT',
+  },
+  CHAT_MESSAGES_CONTENT: {
+    VariableName: 'CHAT_MESSAGES_CONTENT',
+    defaultValue: '{{CHAT_MESSAGES_CONTENT}}',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'CHAT_MESSAGES_CONTENT',
+  },
+  CHAT_MESSAGE_DRAFT: {
+    VariableName: 'CHAT_MESSAGE_DRAFT',
+    defaultValue: '{{CHAT_MESSAGE_DRAFT}}',
+    systemVariable: true,
+    valueType: 'Text',
+    label: 'CHAT_MESSAGE_DRAFT',
   },
 }
 
@@ -168,24 +201,56 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
     },
     {
-      variable: PRESET_VARIABLE_MAP.EMAIL_CONTENT,
+      variable: PRESET_VARIABLE_MAP.EMAIL_CONTENTS,
       description:
-        'prompt_editor:preset_variables__system__system_current_date__description',
+        'prompt_editor:preset_variables__system__email_contents__description',
       examples: [],
       permissionKeys: [
         'inputAssistantComposeReplyButton',
-        'inputAssistantComposeNewButton',
+      ],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.EMAIL_DRAFT,
+      description:
+        'prompt_editor:preset_variables__system__email_draft__description',
+      examples: [],
+      permissionKeys: [
         'inputAssistantRefineDraftButton',
       ],
     },
     {
-      variable: PRESET_VARIABLE_MAP.SOCIAL_MEDIA_CONTENT,
+      variable: PRESET_VARIABLE_MAP.SOCIAL_MEDIA_POST_CONTENT,
       description:
-        'prompt_editor:preset_variables__system__system_current_date__description',
+        'prompt_editor:preset_variables__system__social_media_post_content__description',
       examples: [],
       permissionKeys: [
         'inputAssistantComposeReplyButton',
-        'inputAssistantComposeNewButton',
+      ],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.SOCIAL_MEDIA_COMMENT_DRAFT,
+      description:
+        'prompt_editor:preset_variables__system__social_media_comment_draft__description',
+      examples: [],
+      permissionKeys: [
+        'inputAssistantRefineDraftButton',
+      ],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.CHAT_MESSAGES_CONTENT,
+      description:
+        'prompt_editor:preset_variables__system__chat_messsages_content__description',
+      examples: [],
+      permissionKeys: [
+        'inputAssistantComposeReplyButton',
+      ],
+    },
+    {
+      variable: PRESET_VARIABLE_MAP.CHAT_MESSAGE_DRAFT,
+      description:
+        'prompt_editor:preset_variables__system__chat_message_draft__description',
+      examples: [],
+      permissionKeys: [
         'inputAssistantRefineDraftButton',
       ],
     },

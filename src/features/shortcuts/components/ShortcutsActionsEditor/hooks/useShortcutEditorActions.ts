@@ -170,6 +170,7 @@ const useShortcutEditorActions = () => {
     }
     // 执行一些需要运行的操作：Current Date, live crawling、web search
     // 24.03.22 新增：Email content, Social media content
+    // 24.03.26 新增：Chat messages content, Email draft, Social media draft, Chat message draft
     const specialActions: ISetActionsType = []
     // 设置的日期
     if (variableMap.get('SYSTEM_CURRENT_DATE')) {
@@ -320,7 +321,7 @@ const useShortcutEditorActions = () => {
       specialActions.push(...searchWithAIActions)
     }
     // 获取 email 的内容
-    if (variableMap.get('EMAIL_CONTENT')) {
+    if (variableMap.get('EMAIL_CONTENTS')) {
       specialActions.push(
         {
           type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
@@ -337,13 +338,35 @@ const useShortcutEditorActions = () => {
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'EMAIL_CONTENT',
+            VariableName: 'EMAIL_CONTENTS',
           },
         },
       )
     }
-    // 获取 social media 的内容
-    if (variableMap.get('SOCIAL_MEDIA_CONTENT')) {
+    // 获取 email 的 draft 内容
+    if (variableMap.get('EMAIL_DRAFT')) {
+      specialActions.push(
+        {
+          type: 'GET_EMAIL_DRAFT_OF_WEBPAGE',
+          parameters: {},
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'EMAIL_DRAFT',
+            VariableLabel: 'Email draft',
+          },
+        },
+      )
+    }
+    // 获取 social media post 的内容
+    if (variableMap.get('SOCIAL_MEDIA_POST_CONTENT')) {
       specialActions.push(
         {
           type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
@@ -360,7 +383,74 @@ const useShortcutEditorActions = () => {
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'SOCIAL_MEDIA_CONTENT',
+            VariableName: 'SOCIAL_MEDIA_POST_CONTENT',
+          },
+        },
+      )
+    }
+    // 获取 social media 的 draft 内容
+    if (variableMap.get('SOCIAL_MEDIA_COMMENT_DRAFT')) {
+      specialActions.push(
+        {
+          type: 'GET_SOCIAL_MEDIA_POST_DRAFT_OF_WEBPAGE',
+          parameters: {},
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'SOCIAL_MEDIA_COMMENT_DRAFT',
+            VariableLabel: 'Social media comment draft',
+          },
+        },
+      )
+    }
+    // 获取 chat app website 的 messages 内容
+    if (variableMap.get('CHAT_MESSAGES_CONTENT')) {
+      specialActions.push(
+        {
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'CHAT_MESSAGES_CONTENT',
+          },
+        },
+      )
+    }
+    // 获取 chat app website 的 message draft 内容
+    if (variableMap.get('CHAT_MESSAGE_DRAFT')) {
+      specialActions.push(
+        {
+          type: 'GET_CHAT_MESSAGE_DRAFT_OF_WEBPAGE',
+          parameters: {},
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'CHAT_MESSAGE_DRAFT',
+            VariableLabel: 'Chat message draft',
           },
         },
       )

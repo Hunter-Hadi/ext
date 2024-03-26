@@ -19,6 +19,7 @@ const checkHostUsingButtonKeys = (
 ): IInputAssistantButton[] => {
   const host = getCurrentDomainHost()
   switch (host) {
+    // email
     case 'mail.google.com':
       return getGmailButtonGroup(config)
 
@@ -27,6 +28,7 @@ const checkHostUsingButtonKeys = (
     case 'outlook.office365.com':
       return getOutlookButtonGroup(config)
 
+    // social media
     case 'twitter.com':
       return getTwitterButtonGroup(config)
 
@@ -45,6 +47,10 @@ const checkHostUsingButtonKeys = (
 
     case 'reddit.com':
       return getRedditButtonGroup(config)
+
+    // chat
+    case 'discord.com':
+      return getDiscordButtonGroup(config)
 
     default:
       return [
@@ -297,4 +303,18 @@ const getRedditButtonGroup = (
     buttonGroupConfig.refineDraftButton,
   ]
 }
+
+const getDiscordButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (keyElement?.matches('[class^="buttonsInner"]')) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
 export default checkHostUsingButtonKeys

@@ -106,12 +106,13 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
         <DevMessageSourceData message={message} />
       </DevContent>
       <AppSuspenseLoadingLayout>
-        {isSystemMessage(message) && <SidebarSystemMessage message={message} />}
+        {isSystemMessage(message) && (
+          <SidebarSystemMessage loading={loading} message={message} />
+        )}
         {isAIMessage(message) && (
           <SidebarAIMessage
             isDarkMode={isDarkMode}
             message={message as IAIResponseMessage}
-            loading={loading}
             order={order}
           />
         )}

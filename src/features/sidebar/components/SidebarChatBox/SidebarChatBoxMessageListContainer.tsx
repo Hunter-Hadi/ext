@@ -207,7 +207,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
               key={message.messageId + '_sidebar_chat_message_' + String(index)}
               className={`use-chat-gpt-ai__message-item use-chat-gpt-ai__message-item--${message.type}`}
               message={message}
-              loading={false}
+              loading={loading}
               order={index + 1}
             />
           )

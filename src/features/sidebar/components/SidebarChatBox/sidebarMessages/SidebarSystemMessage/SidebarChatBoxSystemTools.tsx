@@ -18,13 +18,12 @@ const SidebarChatBoxSystemTools: FC<{
   solutionsShow: boolean
   onSolutionToggle: () => void
   message: ISystemChatMessage
+  loading?: boolean
 }> = (props) => {
-  const { message, onSolutionToggle, solutionsShow } = props
+  const { message, onSolutionToggle, solutionsShow, loading } = props
   const { t } = useTranslation(['common', 'client'])
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationMessages, currentSidebarConversationType } =
+    useSidebarSettings()
   const lastMessage =
     currentSidebarConversationMessages.length > 0
       ? currentSidebarConversationMessages[
@@ -117,6 +116,7 @@ const SidebarChatBoxSystemTools: FC<{
             size={'small'}
             variant={'outlined'}
             color={'error'}
+            disabled={loading}
             sx={{
               border: '1px solid rgba(244, 67, 54, 0.5)',
               color: '#f44336',

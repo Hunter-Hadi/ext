@@ -33,14 +33,14 @@ type TranscriptTimestampedTextType = {
 }
 type TranscriptTimestampedGptType = {
   children: TranscriptTimestampedParamType[]
-  start: number
+  start: string
   text: string
 }
 type TranscriptTimestampedParamType = {
   id: string
   children: TranscriptTimestampedParamType[]
   status: 'loading' | 'complete' | 'error'
-  start: number
+  start: string
   text: string
 }
 /**
@@ -381,7 +381,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   getPrepareViewData(list: { start: string }[]) {
     const newList: TranscriptTimestampedParamType[] = list.map((item) => ({
       id: uuidV4(),
-      start: this.timestampToSeconds(item.start),
+      start: this.timestampToSeconds(item.start).toString(),
       text: '',
       status: 'loading',
       children: [],

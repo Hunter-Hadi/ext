@@ -28,7 +28,7 @@ const SidebarAImessageTimestampedSummary: FC<
   }, [transcriptList])
   const clickYoutubeJumpTimestamp = (time: string) => {
     try {
-      if (time !== undefined) {
+      if (time) {
         const isAdvertisingTime = document.querySelector(
           '#container .ytp-ad-text.ytp-ad-preview-text-modern',
         )

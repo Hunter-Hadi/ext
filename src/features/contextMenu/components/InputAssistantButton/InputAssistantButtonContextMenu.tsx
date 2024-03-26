@@ -144,7 +144,7 @@ const InputAssistantButtonContextMenu: FC<
               'GET_CONTENTS_OF_WEBPAGE',
               'GET_EMAIL_CONTENTS_OF_WEBPAGE',
               'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-              'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+              'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
             ].includes(data?.type) &&
             data?.status === 'complete'
           ) {

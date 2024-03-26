@@ -1,7 +1,10 @@
 import ChatMessagesContext, {
   IChatMessageData,
 } from '@/features/shortcuts/utils/ChatMessagesContext'
-import { findParentEqualSelector } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 const discordGetChatMessageContentAndDate = (
   messageBox: HTMLElement | null,
@@ -138,4 +141,13 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
   }
 
   return ChatMessagesContext.emptyData
+}
+
+export const discordGetDraftContent = (inputAssistantButton: HTMLElement) => {
+  const discordDraftEditor = findSelectorParent(
+    '[class^="channelTextArea"] [class^="textArea"] div[role="textbox"]',
+    inputAssistantButton,
+    5,
+  )
+  return discordDraftEditor?.innerText || ''
 }

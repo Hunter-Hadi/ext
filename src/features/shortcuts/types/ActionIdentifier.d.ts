@@ -58,7 +58,7 @@ type ActionIdentifier =
   // 从各大社交媒体网站获取草稿
   | 'GET_SOCIAL_MEDIA_POST_DRAFT_OF_WEBPAGE'
   // 从各大聊天网站获取内容
-  | 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE'
+  | 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE'
   // 从各大聊天网站获取草稿
   | 'GET_CHAT_MESSAGE_DRAFT_OF_WEBPAGE'
   // 打开网页

@@ -1492,7 +1492,7 @@ const chatPrompts: IContextMenuItem[] = [
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1560,7 +1560,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1628,7 +1628,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1696,7 +1696,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1764,7 +1764,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1832,7 +1832,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1900,7 +1900,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -1968,7 +1968,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },
@@ -2037,7 +2037,7 @@ Output the answer without additional context, explanation, or extra wording, jus
       type: 'shortcuts',
       actions: [
         {
-          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
           parameters: {
             isVariableMiddleOutEnabled: true,
           },

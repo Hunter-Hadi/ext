@@ -1,5 +1,5 @@
 import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
-import { discordGetChatMessages } from '@/features/shortcuts/utils/chat/platforms/discord'
+import { discordGetChatMessages, discordGetDraftContent } from '@/features/shortcuts/utils/chat/platforms/discord'
 import ChatMessagesContext, {
   type IChatMessagesContextData,
 } from '@/features/shortcuts/utils/ChatMessagesContext'
@@ -24,10 +24,9 @@ export const getChatMessagesContent = async (
   return ChatMessagesContext.emptyData
 }
 
-export const getChatDraft = async (
+export const getChatMessageDraftContent = async (
   inputAssistantButtonElementSelector: string,
 ) => {
-  const host = getCurrentDomainHost()
   const inputAssistantButton = document.querySelector(
     inputAssistantButtonElementSelector,
   ) as HTMLButtonElement
@@ -35,7 +34,7 @@ export const getChatDraft = async (
   if (inputAssistantButton) {
     const host = getCurrentDomainHost()
     if (host === 'discord.com') {
-      //   return await discordGetChatMessages(inputAssistantButton)
+      return await discordGetDraftContent(inputAssistantButton)
     }
   }
   return ''

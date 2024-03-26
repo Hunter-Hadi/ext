@@ -15,8 +15,8 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 
 import { stopActionMessage } from '../../../common'
-export class ActionGetChatMessageContentsOfWebPage extends Action {
-  static type: ActionIdentifier = 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE'
+export class ActionGetChatMessagesContentOfWebPage extends Action {
+  static type: ActionIdentifier = 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE'
   originalChatMessagesContextData: IChatMessagesContextData | null = null
   constructor(
     id: string,

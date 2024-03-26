@@ -80,7 +80,7 @@ export const getInputAssistantAction = (
   switch (url) {
     case 'discord.com':
       return {
-        type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+        type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
         parameters: {
           isVariableMiddleOutEnabled: true,
         },

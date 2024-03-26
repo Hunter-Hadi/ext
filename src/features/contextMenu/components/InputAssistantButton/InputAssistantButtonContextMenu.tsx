@@ -27,6 +27,7 @@ import FloatingContextMenuList from '@/features/contextMenu/components/FloatingC
 import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
+import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -56,9 +57,10 @@ const InputAssistantButtonContextMenu: FC<
   const { currentSidebarConversationType, updateSidebarConversationType } =
     useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
+  const { shortCutsEngine } = useShortCutsEngine()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
-  const { smoothConversationLoading, } = useSmoothConversationLoading()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const { askAIWIthShortcuts } = useClientChat()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
@@ -128,13 +130,13 @@ const InputAssistantButtonContextMenu: FC<
   }, [currentSidebarConversationType])
 
   useEffect(() => {
+    let onSelectionEffectListener: IShortcutEngineListenerType | null = null
     if (
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
       sidebarSettingsTypeRef.current === 'Chat'
     ) {
-      let onSelectionEffectListener: IShortcutEngineListenerType | null = null
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
           if (
@@ -150,7 +152,7 @@ const InputAssistantButtonContextMenu: FC<
             onSelectionEffect()
           }
         }
-        shortCutsEngineRef.current?.addListener(onSelectionEffectListener)
+        shortCutsEngine?.addListener(onSelectionEffectListener)
       }
       isRunningRef.current = true
       setClickContextMenu(null)
@@ -162,15 +164,18 @@ const InputAssistantButtonContextMenu: FC<
           isRunningRef.current = false
 
           if (onSelectionEffectListener) {
-            shortCutsEngineRef.current?.removeListener(
-              onSelectionEffectListener,
-            )
+            shortCutsEngine?.removeListener(onSelectionEffectListener)
           }
           // temporary support onSelectionEffect
           // onSelectionEffect && onSelectionEffect();
         })
     }
-  }, [clickContextMenu])
+    return () => {
+      if (onSelectionEffectListener) {
+        shortCutsEngine?.removeListener(onSelectionEffectListener)
+      }
+    }
+  }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')

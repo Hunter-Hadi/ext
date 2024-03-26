@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Будь ласка, зачекайте, поки закінчиться відеореклама, а потім спробуйте знову.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Зведений підсумок",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Неможливо створити відео без субтитрів.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Упс! Виникла непередбачувана помилка. Будь ласка, спробуйте пізніше."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Упс! Виникла непередбачувана помилка. Будь ласка, спробуйте пізніше.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Оновлення для 1-клікового чату",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді у соціальних мережах за кілька секунд.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Оновлення для 1-клікового чату",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді у соціальних мережах за кілька секунд."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Відповісти ключовими моментами (тест)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Норвезька",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "Фінляндія",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Чеська"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Чеська",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "Швидка відповідь",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "Лайк",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "Люблю",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "Дякую",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "Турбота",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "Жарт",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "Вау",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "Сумно",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "Не подобається",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "Відповісти ключовими моментами",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "Редагувати або переглянути чернетку",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "Покращити написання",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "Виправити орфографію та граматику",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "Зробити коротше",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "Зробити довше",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "Змінити тон",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "Спростити мову",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "Професійний",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Дружній",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "Простий",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Впевнений",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Неформальний"
   },
   "prompt_editor": {
     "preset_variables__title": "Можливості",
@@ -898,7 +924,13 @@
     "template__error__title": "Необхідний шаблон",
     "ai_response_language__title": "Мова відповіді ШІ",
     "ai_response_language__settings__label_1": "Використовуйте",
-    "ai_response_language__settings__label_2": "налаштування мови"
+    "ai_response_language__settings__label_2": "налаштування мови",
+    "preset_variables__system__email_contents__description": "вміст електронної пошти",
+    "preset_variables__system__email_draft__description": "чернетка електронної пошти",
+    "preset_variables__system__social_media_post_content__description": "вміст повідомлення у соціальних мережах",
+    "preset_variables__system__social_media_comment_draft__description": "чернетка коментаря у соціальних мережах",
+    "preset_variables__system__chat_messsages_content__description": "вміст повідомлень у чаті",
+    "preset_variables__system__chat_message_draft__description": "чернетка повідомлення у чаті"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клік промпти",

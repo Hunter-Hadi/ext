@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vui lòng đợi cho đến khi quảng cáo video kết thúc và sau đó thử lại.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tóm tắt có dấu thời gian",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Không thể tạo video không có phụ đề.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Rất tiếc! Đã xảy ra sự cố không mong muốn. Vui lòng thử lại sau."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Rất tiếc! Đã xảy ra sự cố không mong muốn. Vui lòng thử lại sau.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Nâng cấp để chat chỉ với 1 cú nhấp chuột",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Nâng cấp để chat chỉ với 1 cú nhấp chuột",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Trả lời với điểm chính (thử nghiệm)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Tiếng Na Uy",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "Tiếng Việt",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tiếng Séc"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tiếng Séc",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "Trả lời nhanh",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "Thích",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "Yêu",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "Cảm ơn",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "Quan tâm",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "Đùa",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "Wow",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "Buồn",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "Không thích",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "Trả lời với điểm chính",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "Chỉnh sửa hoặc xem lại bản nháp",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "Cải thiện viết",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "Sửa chính tả và ngữ pháp",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "Rút ngắn",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "Kéo dài",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "Thay đổi thái độ",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "Đơn giản hóa ngôn ngữ",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "Chuyên nghiệp",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Thân thiện",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "Trực tiếp",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Tự tin",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Bình thường"
   },
   "prompt_editor": {
     "preset_variables__title": "Khả năng",
@@ -898,7 +924,13 @@
     "template__error__title": "Yêu cầu mẫu",
     "ai_response_language__title": "Ngôn ngữ phản hồi của AI",
     "ai_response_language__settings__label_1": "Sử dụng",
-    "ai_response_language__settings__label_2": "cài đặt ngôn ngữ"
+    "ai_response_language__settings__label_2": "cài đặt ngôn ngữ",
+    "preset_variables__system__email_contents__description": "nội dung email",
+    "preset_variables__system__email_draft__description": "bản nháp email",
+    "preset_variables__system__social_media_post_content__description": "nội dung bài viết mạng xã hội",
+    "preset_variables__system__social_media_comment_draft__description": "bản nháp bình luận mạng xã hội",
+    "preset_variables__system__chat_messsages_content__description": "nội dung tin nhắn chat",
+    "preset_variables__system__chat_message_draft__description": "bản nháp tin nhắn chat"
   },
   "prompt_library": {
     "use_prompt_library__title": "Gợi ý 1-click",

@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Wacht even totdat de videoadvertentie is afgelopen en probeer het dan opnieuw.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Samengevat met tijdstempels",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan geen video genereren zonder ondertiteling.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oeps! Er is iets onverwachts gebeurd. Probeer het later opnieuw."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oeps! Er is iets onverwachts gebeurd. Probeer het later opnieuw.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Upgrade voor 1-klik chat",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Upgrade voor 1-klik chat",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Antwoord met kernpunten (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Noors",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "Fins",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tsjechisch"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tsjechisch",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "Snelle reactie",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "Vind ik leuk",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "Love",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "Bedankt",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "Zorg",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "Grapje",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "Wow",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "Triest",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "Niet leuk",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "Antwoord met kernpunten",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "Bewerk of bekijk concept",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "Verbeter schrijven",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "Spelling en grammatica corrigeren",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "Maak korter",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "Maak langer",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "Verander toon",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "Vereenvoudig taalgebruik",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "Professioneel",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Vriendelijk",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "Duidelijk",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Zelfverzekerd",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informeel"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogelijkheden",
@@ -898,7 +924,13 @@
     "template__error__title": "Sjabloon is verplicht",
     "ai_response_language__title": "Taal van AI-reactie",
     "ai_response_language__settings__label_1": "Gebruik",
-    "ai_response_language__settings__label_2": "taalinstelling"
+    "ai_response_language__settings__label_2": "taalinstelling",
+    "preset_variables__system__email_contents__description": "e-mailinhoud",
+    "preset_variables__system__email_draft__description": "e-mailconcept",
+    "preset_variables__system__social_media_post_content__description": "inhoud van social media bericht",
+    "preset_variables__system__social_media_comment_draft__description": "concept van social media reactie",
+    "preset_variables__system__chat_messsages_content__description": "inhoud van chatberichten",
+    "preset_variables__system__chat_message_draft__description": "concept van chatbericht"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

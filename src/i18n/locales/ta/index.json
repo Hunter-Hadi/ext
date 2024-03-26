@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "வீடியோ விளம்பரத்தின் முடிவுக்கு காத்திருங்கள் மற்றும் பின்னர் மீண்டும் முயற்சிக்கவும்.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "நேரம் குறிப்புடன் சுருக்கம்",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "தலைப்புகள் இல்லாத வீடியோ உருவாக்க முடியாது.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "அய்யோ! ஏதோ என்னடா நிகழ்ச்சி நடந்துவிட்டது. பின்னர் மீண்டும் முயற்சி செய்க."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "அய்யோ! ஏதோ என்னடா நிகழ்ச்சி நடந்துவிட்டது. பின்னர் மீண்டும் முயற்சி செய்க.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-கிளிக் செய்து உரையாட",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "நொடிக்குள் உங்களுக்கு பிரதிநிதிப் பதில்களை உருவாக்கும் AI ஐ அனுபவிப்பதற்கு அனுமதி செய்யுங்கள்.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-கிளிக் செய்து உரையாட",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "நொடிக்குள் உங்களுக்கு பிரதிநிதிப் பதில்களை உருவாக்கும் AI ஐ அனுபவிப்பதற்கு அனுமதி செய்யுங்கள்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "முக்கிய அம்சங்களையுடன் பதிலளிக்கவும்(சோதனை)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "நோர்வேஜியன்",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "சுவீடன்",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "செக்"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "செக்",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "விரைவாக பதில் அனுப்பு",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "பிடிக்கும்",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "அன்பு",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "நன்றி",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "பார்வையாளர் பராமரிப்பு",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "ஜோக்",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "ஆர்வம்",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "மனது வருகிறது",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "விரும்பாதது",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "முக்கிய அம்சங்களுடன் பதில் அனுப்பு",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "திருத்தி அல்லது மீண்டும் பரிசீலிக்கவும்",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "எழுத்தாளரை மேம்படுத்துங்கள்",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "உரையை சரிசெய்யுங்கள் மற்றும் இழுத்துக்களை சரிபார்க்கவும்",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "குறுகியமாக்குங்கள்",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "நீளமாக்குங்கள்",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "ஒலியை மாற்று",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "மொழியை எளிதாக்குங்கள்",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "வல்லுனர்",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "நட்பாடு",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "திறந்தமான",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ஆதரவாளர்",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "இயல்புநிலை"
   },
   "prompt_editor": {
     "preset_variables__title": "திறன்கள்",
@@ -898,7 +924,13 @@
     "template__error__title": "வார்ப்புரு தேவைப்படுகின்றது",
     "ai_response_language__title": "ஏதேனும் மொழியில் பதில்",
     "ai_response_language__settings__label_1": "பயன்பாடு",
-    "ai_response_language__settings__label_2": "மொழி அமைப்பு"
+    "ai_response_language__settings__label_2": "மொழி அமைப்பு",
+    "preset_variables__system__email_contents__description": "மின்னஞ்சல் உள்ளடக்கம்",
+    "preset_variables__system__email_draft__description": "மின்னஞ்சல் வரைவு",
+    "preset_variables__system__social_media_post_content__description": "சமூக ஊடகப் பதிவு உள்ளடக்கம்",
+    "preset_variables__system__social_media_comment_draft__description": "சமூக ஊடகப் பதிவு வரைவு",
+    "preset_variables__system__chat_messsages_content__description": "உரையாடல் செய்திகள் உள்ளடக்கம்",
+    "preset_variables__system__chat_message_draft__description": "உரையாடல் செய்தி வரைவு"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-கிளிக் புரவலாக்கல்கள்",

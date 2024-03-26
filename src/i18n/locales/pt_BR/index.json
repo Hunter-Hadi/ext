@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Aguarde até o término do anúncio em vídeo e tente novamente.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Resumo com marcação de tempo",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Não é possível gerar vídeo sem legendas.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ops! Algo inesperado aconteceu. Por favor, tente novamente mais tarde."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ops! Algo inesperado aconteceu. Por favor, tente novamente mais tarde.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Atualize para bate-papo com 1 clique",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Deixe a IA gerar respostas personalizadas para mídias sociais em segundos.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Atualize para bate-papo com 1 clique",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Deixe a IA gerar respostas personalizadas para mídias sociais em segundos."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Responder com pontos-chave (teste)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norueguês",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "Finland",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tcheco"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Tcheco",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "Resposta rápida",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "Curtir",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "Amar",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "Obrigado",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "Cuidado",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "Piada",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "Uau",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "Triste",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "Não gostar",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "Responder com pontos-chave",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "Editar ou revisar rascunho",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "Melhorar a escrita",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "Corrigir ortografia e gramática",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "Tornar mais curto",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "Tornar mais longo",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "Mudar o tom",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "Simplificar a linguagem",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "Profissional",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Amigável",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "Direto",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Confiante",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informal"
   },
   "prompt_editor": {
     "preset_variables__title": "Recursos",
@@ -898,7 +924,13 @@
     "template__error__title": "O modelo é obrigatório",
     "ai_response_language__title": "Idioma da resposta do AI",
     "ai_response_language__settings__label_1": "Usar",
-    "ai_response_language__settings__label_2": "configuração de idioma"
+    "ai_response_language__settings__label_2": "configuração de idioma",
+    "preset_variables__system__email_contents__description": "conteúdo de e-mail",
+    "preset_variables__system__email_draft__description": "rascunho de e-mail",
+    "preset_variables__system__social_media_post_content__description": "conteúdo de postagem em mídia social",
+    "preset_variables__system__social_media_comment_draft__description": "rascunho de comentário em mídia social",
+    "preset_variables__system__chat_messsages_content__description": "conteúdo de mensagens de bate-papo",
+    "preset_variables__system__chat_message_draft__description": "rascunho de mensagem de bate-papo"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clique",

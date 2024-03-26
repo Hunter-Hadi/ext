@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "โปรดรอให้วิดีโอโฆษณาเล่นจบแล้วลองอีกครั้ง",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "สรุปที่มีเครื่องหมายเวลา",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "ไม่สามารถสร้างวิดีโอได้โดยไม่มีคำบรรยาย",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "อุ๊ปส์! เกิดข้อผิดพลาดที่ไม่คาดคิด โปรดลองอีกครั้งในภายหลัง"
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "อุ๊ปส์! เกิดข้อผิดพลาดที่ไม่คาดคิด โปรดลองอีกครั้งในภายหลัง",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "อัปเกรดสำหรับการแชทด้วยคลิก 1 ครั้ง",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "ให้ AI สร้างข้อความตอบกลับสื่อสังคมออนไลน์ส่วนตัวให้คุณภายในไม่กี่วินาที",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "อัปเกรดสำหรับการแชทด้วยคลิก 1 ครั้ง",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "ให้ AI สร้างข้อความตอบกลับสื่อสังคมออนไลน์ส่วนตัวให้คุณภายในไม่กี่วินาที"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ตอบด้วยจุดสำคัญ (ทดสอบ)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "นอร์เวย์",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "ฟินแลนด์",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "เช็ก"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "เช็ก",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "ตอบกลับด่วน",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "ถูกใจ",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "รัก",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "ขอบคุณ",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "ดูแล",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "ตลก",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "ว้าว",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "เศร้า",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "ไม่ชอบ",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "ตอบกลับด้วยจุดสำคัญ",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "แก้ไขหรือตรวจสอบแบบร่าง",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "ปรับปรุงการเขียน",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "แก้ไขการสะกดคำและไวยากรณ์",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "ทำให้สั้นลง",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "ทำให้ยาวขึ้น",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "เปลี่ยนโทน",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "ทำให้ภาษาเรียบง่าย",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "มืออาชีพ",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "เป็นมิตร",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "ตรงไปตรงมา",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "มั่นใจ",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "สบายๆ"
   },
   "prompt_editor": {
     "preset_variables__title": "ความสามารถ",
@@ -898,7 +924,13 @@
     "template__error__title": "ต้องระบุเทมเพลต",
     "ai_response_language__title": "ภาษาการตอบกลับของ AI",
     "ai_response_language__settings__label_1": "ใช้",
-    "ai_response_language__settings__label_2": "การตั้งค่าภาษา"
+    "ai_response_language__settings__label_2": "การตั้งค่าภาษา",
+    "preset_variables__system__email_contents__description": "เนื้อหาอีเมล",
+    "preset_variables__system__email_draft__description": "แบบร่างอีเมล",
+    "preset_variables__system__social_media_post_content__description": "เนื้อหาโพสต์สื่อสังคม",
+    "preset_variables__system__social_media_comment_draft__description": "แบบร่างความคิดเห็นสื่อสังคม",
+    "preset_variables__system__chat_messsages_content__description": "เนื้อหาข้อความแชท",
+    "preset_variables__system__chat_message_draft__description": "แบบร่างข้อความแชท"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-คลิกเพื่อใช้คำพูด",

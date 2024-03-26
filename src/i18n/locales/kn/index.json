@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "ದಯವಿಟ್ಟು ವೀಡಿಯೊ ಜಾಹೀರಾತು ಪೂರ್ಣವಾಗುವವರೆಗೂ ನಿರೀಕ್ಷಿಸಿ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ಸಮಯಾವಕಾಶ ಸಾರಾಂಶ",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "ಉಪಶೀರ್ಷಿಕೆಗಳಿಲ್ಲದ ವೀಡಿಯೊನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ಅದು ತಪ್ಪಾಗಿರಬಹುದು! ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ಅದು ತಪ್ಪಾಗಿರಬಹುದು! ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-ಕ್ಲಿಕ್ ಚಾಟ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-ಕ್ಲಿಕ್ ಚಾಟ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಉತ್ತರಿಸಿ (ಪರೀಕ್ಷೆ)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "ನಾರ್ವೇಜಿಯನ್",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "ಸುವೋಮಿ",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "ಚೆಕ್"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "ಚೆಕ್",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "ತ್ವರಿತ ಉತ್ತರ",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "ಇಷ್ಟ",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "ಪ್ರೀತಿ",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "ಧನ್ಯವಾದಗಳು",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "ಆಸ್ತಿ",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "ಜೋಕ್",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "ಅದ್ಭುತ",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "ದುಃಖ",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "ಅಸಂತೃಪ್ತಿ",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "ಮುಖ್ಯ ಅಂಶಗಳನ್ನು ಉತ್ತರಿಸಿ",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "ಡ್ರಾಫ್ಟ್ ಬದಲಾಯಿಸಿ ಅಥವಾ ಪರಿಶೀಲಿಸಿ",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "ಬರೆಯುವುದನ್ನು ಮೇಲ್ಮಾರ್ಗಗೊಳಿಸಿ",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "ವರ್ಣನೆ ಮತ್ತು ವ್ಯಾಕರಣವನ್ನು ಸರಿಪಡಿಸಿ",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "ಸಂಕುಚಿಸಿ",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "ಹೆಚ್ಚಿಸಿ",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "ಧ್ವನಿ ಬದಲಾಯಿಸಿ",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "ಭಾಷೆಯನ್ನು ಸರಳಗೊಳಿಸಿ",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "ಪ್ರೊಫೆಶನಲ್",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "ಸ್ನೇಹಿತ",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "ಸೋಜಿಗ",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ನಂಬಿಕೆಯುಳ್ಳ",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "ಸಾಮಾನ್ಯ"
   },
   "prompt_editor": {
     "preset_variables__title": "ಸಾಮರ್ಥ್ಯಗಳು",
@@ -898,7 +924,13 @@
     "template__error__title": "ಟೆಂಪ್ಲೇಟ್ ಅಗತ್ಯವಿದೆ",
     "ai_response_language__title": "ಏನು ಮಾಡಲಿ ಪ್ರತಿಕ್ರಿಯೆ ಭಾಷೆ",
     "ai_response_language__settings__label_1": "ಬಳಕೆ",
-    "ai_response_language__settings__label_2": "ಭಾಷಾ ಸೆಟ್ಟಿಂಗ್"
+    "ai_response_language__settings__label_2": "ಭಾಷಾ ಸೆಟ್ಟಿಂಗ್",
+    "preset_variables__system__email_contents__description": "ಇಮೇಲ್ ವಿಷಯಗಳು",
+    "preset_variables__system__email_draft__description": "ಇಮೇಲ್ ಕ್ರಾಫ್ಟ್",
+    "preset_variables__system__social_media_post_content__description": "ಸೋಷಲ್ ಮೀಡಿಯಾ ಪೋಸ್ಟ್ ವಿಷಯಗಳು",
+    "preset_variables__system__social_media_comment_draft__description": "ಸೋಷಲ್ ಮೀಡಿಯಾ ಕಾಮೆಂಟ್ ಕ್ರಾಫ್ಟ್",
+    "preset_variables__system__chat_messsages_content__description": "ಚಾಟ್ ಸಂದೇಶಗಳ ವಿಷಯಗಳು",
+    "preset_variables__system__chat_message_draft__description": "ಚಾಟ್ ಸಂದೇಶ ಕ್ರಾಫ್ಟ್"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",

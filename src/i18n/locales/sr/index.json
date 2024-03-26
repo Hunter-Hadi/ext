@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Molimo sačekajte dok se video oglas ne završi i zatim pokušajte ponovo.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Sažetak sa vremenom",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nemoguće generisati video bez titlova.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Došlo je do izuzetka, molimo pokušajte ponovo kasnije."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Došlo je do izuzetka, molimo pokušajte ponovo kasnije.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Nadogradite za chat sa jednim klikom",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Dozvolite veštačkoj inteligenciji da generiše personalizovane odgovore za društvene mreže u sekundama.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Nadogradite za chat sa jednim klikom",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Dozvolite veštačkoj inteligenciji da generiše personalizovane odgovore za društvene mreže u sekundama."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "Odgovori sa ključnim tačkama (test)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "Norveški",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "Srpski",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Češki"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Češki",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "Brzi odgovor",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "Sviđa mi se",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "Volim",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "Hvala",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "Briga",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "Šala",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "Wow",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "Tužno",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "Ne sviđa mi se",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "Odgovorite sa ključnim tačkama",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "Uredite ili pregledajte nacrt",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "Unapredite pisanje",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "Ispravite pravopis i gramatiku",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "Skraćivanje",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "Produžavanje",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "Promena tona",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "Pojednostavite jezik",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "Profesionalno",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Prijateljski",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "Direktno",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Samouvereno",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Opušteno"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogućnosti",
@@ -898,7 +924,13 @@
     "template__error__title": "Šablon je obavezan",
     "ai_response_language__title": "Jezik odgovora veštačke inteligencije",
     "ai_response_language__settings__label_1": "Koristi",
-    "ai_response_language__settings__label_2": "podešavanje jezika"
+    "ai_response_language__settings__label_2": "podešavanje jezika",
+    "preset_variables__system__email_contents__description": "sadržaj e-pošte",
+    "preset_variables__system__email_draft__description": "nacrt e-pošte",
+    "preset_variables__system__social_media_post_content__description": "sadržaj objave na društvenim mrežama",
+    "preset_variables__system__social_media_comment_draft__description": "nacrt komentara na društvenim mrežama",
+    "preset_variables__system__chat_messsages_content__description": "sadržaj poruka u četu",
+    "preset_variables__system__chat_message_draft__description": "nacrt poruke u četu"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik podsticaji",

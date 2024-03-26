@@ -671,7 +671,11 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "لطفاً صبر کنید تا تبلیغ ویدیو پخش شود و سپس دوباره امتحان کنید.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "خلاصه با زمان بندی",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "امکان تولید ویدئو بدون زیرنویس وجود ندارد.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "اوه! چیزی غیرمنتظره اتفاق افتاد. لطفا بعدا دوباره امتحان کنید."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "اوه! چیزی غیرمنتظره اتفاق افتاد. لطفا بعدا دوباره امتحان کنید.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "ارتقا برای چت با یک کلیک",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "ارتقا برای چت با یک کلیک",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -853,7 +857,29 @@
     "9a65c4c0-c2b8-4fe1-a85e-0e2d84qq2eb1": "پاسخ با نکات کلیدی (تست)",
     "2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6": "نروژی",
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "فنلاند",
-    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "چک"
+    "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "چک",
+    "d77238eb-7673-46c2-a019-5bab341815fe": "پاسخ سریع",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "لایک",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "عاشق",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "تشکر",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "مراقبت",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "شوخی",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "واو",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "غمگین",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "نارضایتی",
+    "b5381aa7-5ba3-4f96-a696-c694da938ef2": "پاسخ با نکات کلیدی",
+    "5962ed83-6526-4665-9d94-5c47bc0b931a": "ویرایش یا بررسی پیش نویس",
+    "497bdb9a-79fe-49f9-8071-1c57ff9dedfa": "بهبود نوشتار",
+    "dee850cf-f9bc-49f9-adba-f108a1d5dcf5": "اصلاح املایی و دستور زبان",
+    "f9014c9d-d855-45cf-afb3-d18da9a5db9c": "کوتاه‌تر کنید",
+    "ee7455db-3321-49ba-943b-6a028ab35a30": "طولانی‌تر کنید",
+    "b5535869-778d-45a5-818b-36863df2fe2e": "تغییر تن صدا",
+    "4502abad-c5cc-4c50-8e51-9d45e049ad84": "ساده‌سازی زبان",
+    "c42f469c-69e8-49df-9bbd-031ab9ca4ec6": "حرفه‌ای",
+    "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "دوستانه",
+    "82c62432-4f36-4604-95a6-352d7c39f68e": "ساده و روشن",
+    "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "مطمئن",
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیررسمی"
   },
   "prompt_editor": {
     "preset_variables__title": "قابلیت‌ها",
@@ -898,7 +924,13 @@
     "template__error__title": "قالب الزامی است",
     "ai_response_language__title": "زبان پاسخ هوش مصنوعی",
     "ai_response_language__settings__label_1": "استفاده",
-    "ai_response_language__settings__label_2": "تنظیمات زبان"
+    "ai_response_language__settings__label_2": "تنظیمات زبان",
+    "preset_variables__system__email_contents__description": "محتوای ایمیل",
+    "preset_variables__system__email_draft__description": "پیش نویس ایمیل",
+    "preset_variables__system__social_media_post_content__description": "محتوای پست شبکه‌های اجتماعی",
+    "preset_variables__system__social_media_comment_draft__description": "پیش نویس نظر شبکه‌های اجتماعی",
+    "preset_variables__system__chat_messsages_content__description": "محتوای پیام‌های چت",
+    "preset_variables__system__chat_message_draft__description": "پیش نویس پیام چت"
   },
   "prompt_library": {
     "use_prompt_library__title": "پیشنهادهای 1 کلیک",

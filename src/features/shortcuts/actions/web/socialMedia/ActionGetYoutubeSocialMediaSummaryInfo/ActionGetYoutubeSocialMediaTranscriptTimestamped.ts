@@ -50,10 +50,12 @@ type TranscriptTimestampedParamType = {
 export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT_TIMESTAMPED'
   isStopAction = false
-  requestIntervalTime = 1000 * 5
-  requestExceptionIntervalTime = 1000 * 10
-  maxChatGptTokens = 13000
+  requestIntervalTime = 1000 * 4 //一个接口更下一个接口的间隔时间，因为很短设置了时间限制，保守4秒
+  requestExceptionIntervalTime = 1000 * 5 //接口异常等待时间后执行
+  maxChatGptTokens = 13000 //一个切片 最多 的tokens储存量
   abortTaskIds: string[] = [] //接口取消功能数据
+  errorRequestOrder = 0 //接口异常情况请求次数记录
+  errorMaxRequestOrder = 3 //接口异常情况请求最多次数记录
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   constructor(
     id: string,
@@ -69,6 +71,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      this.output = JSON.stringify([]) //设置初始值，翻译return 异常数据导致视图渲染错误
       if (this.isStopAction) return
       const youtubeVideoTitle = params.CURRENT_WEBPAGE_TITLE || ''
       const currentUrl = window.location.href.includes('youtube.com')
@@ -77,7 +80,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       const youtubeLinkURL = this.parameters.URLActionURL || currentUrl || ''
       if (!youtubeLinkURL) {
         this.error = 'Youtube URL is empty.'
-        this.output = JSON.stringify([])
         return
       }
       if (this.isStopAction) return
@@ -120,6 +122,10 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         const chapterSliceTextList = await this.chaptersSliceTextByTokens(
           chapterTextList,
         )
+        console.log(
+          'simply chapterTextList look tokens --',
+          chapterSliceTextList,
+        )
         if (this.isStopAction) return
 
         if (chapterSliceTextList.length > 0) {
@@ -129,8 +135,6 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
             chapterSliceTextList,
             youtubeVideoTitle,
           )
-          if (this.isStopAction) return
-
           this.output = JSON.stringify(chapterList)
         } else {
           this.output = JSON.stringify([])
@@ -199,13 +203,16 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         const endTime = Date.now() // 记录请求结束时间
         const requestDuration = endTime - startTime // 计算请求耗时
         if (transcriptList) {
+          this.errorRequestOrder = 0
           transcriptViewDataList[index].text = transcriptList?.text
           transcriptViewDataList[index].children = transcriptList?.children
           transcriptViewDataList[index].status = 'complete'
         } else {
-          //出现错误不在往下请求
-          this.isStopAction = true
           transcriptViewDataList[index].status = 'error'
+          if (this.errorRequestOrder >= this.errorMaxRequestOrder - 1) {
+            this.isStopAction = true
+          }
+          this.errorRequestOrder += 1
         }
         this.updateConversationMessageInfo(
           conversationId,
@@ -314,6 +321,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           },
           currentAbortTaskId,
         )
+        console.log('simply askData', askData)
         if (this.isStopAction) return false
         this.abortTaskIds = this.abortTaskIds.filter(
           (id) => id !== currentAbortTaskId,
@@ -323,27 +331,31 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           // const gptReturnTokens = getTextTokens(askData.data || '').length
           // console.log('simply gpt return tokens', gptReturnTokens)
           const transcriptData = this.getObjectFromString(askData.data)
-          console.log('simply askData', askData)
           console.log('simply ok transcriptData', transcriptData)
           if (transcriptData) {
             return transcriptData
           } else {
-            throw new Error('error')
+            throw new Error('jsonError')
           }
         } else {
-          throw new Error('error')
+          throw new Error('requestError')
         }
-      } catch (e) {
-        console.error('simply askData error', e)
-        retries++
-
-        if (retries <= maxRetries) {
-          console.log(`Retry attempt ${retries}`)
-          await new Promise((resolve) =>
-            setTimeout(resolve, this.requestExceptionIntervalTime),
-          ) // 出现异常等待时间后请求
-          return attemptRequest() // 递归调用进行重试
+      } catch (error: any) {
+        if (error.message === 'jsonError') {
+          // 处理 jsonError
+          retries++
+          if (retries <= maxRetries) {
+            console.log(`Retry attempt ${retries}`)
+            await new Promise((resolve) =>
+              setTimeout(resolve, this.requestExceptionIntervalTime),
+            ) // 出现异常等待时间后请求
+            return attemptRequest() // 递归调用进行重试
+          } else {
+            return false
+          }
         } else {
+          // 处理其他可能的错误
+          console.log('发生了未知错误')
           return false
         }
       }

@@ -20,10 +20,11 @@ const SidebarAImessageTimestampedSummary: FC<
     {},
   )
   const transcriptLoadingsLength = useMemo(() => {
-    return transcriptList.filter((item) => item.status === 'loading').length
-  }, [transcriptList])
-  const transcriptStatusIsError = useMemo(() => {
-    return transcriptList.filter((item) => item.status === 'error').length > 0
+    if (transcriptList) {
+      return transcriptList.filter((item) => item.status === 'loading').length
+    } else {
+      return 0
+    }
   }, [transcriptList])
   const clickYoutubeJumpTimestamp = (time: string) => {
     if (time) {
@@ -93,7 +94,7 @@ const SidebarAImessageTimestampedSummary: FC<
       transcriptList &&
       Array.isArray(transcriptList) &&
       transcriptList.map((transcriptItem, index) => {
-        if (transcriptItem.status !== 'loading' && transcriptItem.text) {
+        if (transcriptItem.text || transcriptItem.status === 'error') {
           return (
             <Stack key={transcriptItem.start}>
               <Stack
@@ -121,38 +122,54 @@ const SidebarAImessageTimestampedSummary: FC<
                   {formatSecondsAsTimestamp(transcriptItem.start)}
                 </Button>
 
-                <Stack sx={{ flex: 1, cursor: 'pointer' }}>
-                  <Typography fontSize={16} color="text.primary">
-                    {decodeHtmlEntity(transcriptItem.text || '')}
+                {transcriptItem.status !== 'error' && (
+                  <Stack sx={{ flex: 1, cursor: 'pointer' }}>
+                    <Typography fontSize={16} color="text.primary">
+                      {decodeHtmlEntity(transcriptItem.text || '')}
+                    </Typography>
+                    {transcriptItem?.children && (
+                      <Stack direction="row" alignItems="center">
+                        <Typography fontSize={15} color="text.secondary">
+                          {openIdsList[transcriptItem.id || '']
+                            ? 'Collapse'
+                            : 'Expand'}
+                        </Typography>
+                        {openIdsList[transcriptItem.id || ''] ? (
+                          <ContextMenuIcon
+                            sx={{
+                              transform: 'rotate(180deg)',
+                              color: 'rgba(0, 0, 0, 0.6)',
+                            }}
+                            size={25}
+                            icon="KeyboardArrowDown"
+                          />
+                        ) : (
+                          <ContextMenuIcon
+                            sx={{
+                              color: 'rgba(0, 0, 0, 0.6)',
+                            }}
+                            size={25}
+                            icon="KeyboardArrowDown"
+                          />
+                        )}
+                      </Stack>
+                    )}
+                  </Stack>
+                )}
+                {transcriptItem.status === 'error' && (
+                  <Typography
+                    fontSize={16}
+                    color="error"
+                    sx={{
+                      p: 0,
+                      flex: 1,
+                    }}
+                  >
+                    {t(
+                      'client:sidebar__summary__nav__youtube_summary__transcript_timestamped_error',
+                    )}
                   </Typography>
-                  {transcriptItem?.children && (
-                    <Stack direction="row" alignItems="center">
-                      <Typography fontSize={15} color="text.secondary">
-                        {openIdsList[transcriptItem.id || '']
-                          ? 'Collapse'
-                          : 'Expand'}
-                      </Typography>
-                      {openIdsList[transcriptItem.id || ''] ? (
-                        <ContextMenuIcon
-                          sx={{
-                            transform: 'rotate(180deg)',
-                            color: 'rgba(0, 0, 0, 0.6)',
-                          }}
-                          size={25}
-                          icon="KeyboardArrowDown"
-                        />
-                      ) : (
-                        <ContextMenuIcon
-                          sx={{
-                            color: 'rgba(0, 0, 0, 0.6)',
-                          }}
-                          size={25}
-                          icon="KeyboardArrowDown"
-                        />
-                      )}
-                    </Stack>
-                  )}
-                </Stack>
+                )}
               </Stack>
               {transcriptItem?.children &&
                 openIdsList[transcriptItem.id || ''] &&
@@ -223,7 +240,6 @@ const SidebarAImessageTimestampedSummary: FC<
         ))}
       {TranscriptListView()}
       {loading &&
-        !transcriptStatusIsError &&
         transcriptLoadingsLength > 0 &&
         Array.from(
           {
@@ -240,7 +256,8 @@ const SidebarAImessageTimestampedSummary: FC<
             />
           ),
         )}
-      {transcriptStatusIsError && (
+      {/* 防止actions上的异常错误导致显示空白，比如transcriptList为undefined */}
+      {!transcriptList && (
         <Typography
           fontSize={16}
           color="error"

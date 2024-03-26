@@ -1058,91 +1058,91 @@ const InputAssistantButtonGroupConfig = {
       InputAssistantBoxSx: {},
     },
   ],
-  // 'discord.com': [
-  //   {
-  //     enable: true,
-  //     rootSelectors: ['[class^="channelTextArea"] [class^="buttons"]'],
-  //     appendPosition: 0,
-  //     rootParentDeep: 0,
-  //     rootWrapperTagName: 'div',
-  //     composeReplyButton: {
-  //       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-  //       buttonKey: 'inputAssistantComposeReplyButton',
-  //       permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
-  //       onSelectionEffect: ({ id: buttonId }) => {
-  //         const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-  //         const inputAssistantButton =
-  //           InputAssistantButtonElementRouteMap.get(
-  //             inputAssistantButtonSelector,
-  //           ) ||
-  //           document.querySelector<HTMLButtonElement>(
-  //             inputAssistantButtonSelector,
-  //           )
+  'discord.com': [
+    {
+      enable: true,
+      rootSelectors: ['[class^="channelTextArea"] [class^="buttons"]'],
+      appendPosition: 0,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
               
-  //         // it seems not to work
-  //         if (inputAssistantButton) {
-  //           findSelectorParent('[class^="channelTextArea"] div[class^="textArea"]', inputAssistantButton as HTMLElement)?.click()
-  //         }
-  //       },
-  //     },
-  //     refineDraftButton: {
-  //       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-  //       buttonKey: 'inputAssistantRefineDraftButton',
-  //       permissionWrapperCardSceneType: 'DISCORD_REFINE_DRAFT_BUTTON',
-  //     },
-  //     CTAButtonStyle: {
-  //       padding: '5px 8px',
-  //       iconSize: 14,
-  //       borderRadius: '12px 0  0 12px',
-  //       margin: 'auto',
-  //     },
-  //     DropdownButtonStyle: {
-  //       borderRadius: '0 12px 12px 0',
-  //       padding: '2px',
-  //     },
-  //     InputAssistantBoxSx: {
-  //       borderRadius: '12px',
-  //       marginLeft: '8px',
-  //       marginRight: '8px',
-  //     },
-  //   },
-  //   {
-  //     enable: true,
-  //     rootSelectors: ['[class^="buttonsInner"]'],
-  //     appendPosition: 2,
-  //     rootParentDeep: 0,
-  //     rootWrapperTagName: 'div',
-  //     composeReplyButton: {
-  //       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-  //       buttonKey: 'inputAssistantComposeReplyButton',
-  //       permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
-  //       onSelectionEffect: ({ id: buttonId }) => {
-  //         const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-  //         const inputAssistantButton =
-  //           InputAssistantButtonElementRouteMap.get(
-  //             inputAssistantButtonSelector,
-  //           ) ||
-  //           document.querySelector<HTMLButtonElement>(
-  //             inputAssistantButtonSelector,
-  //           )
+          // it seems not to work
+          if (inputAssistantButton) {
+            findSelectorParent('[class^="channelTextArea"] div[class^="textArea"]', inputAssistantButton as HTMLElement)?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'DISCORD_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '5px 8px',
+        iconSize: 14,
+        borderRadius: '12px 0  0 12px',
+        margin: 'auto',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 12px 12px 0',
+        padding: '2px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '12px',
+        marginLeft: '8px',
+        marginRight: '8px',
+      },
+    },
+    {
+      enable: true,
+      rootSelectors: ['[class^="buttonsInner"]'],
+      appendPosition: 2,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
               
-  //         ;(inputAssistantButton?.parentElement
-  //           ?.previousElementSibling as HTMLElement)?.click()
-  //       },
-  //     },
-  //     rootWrapperStyle: 'height: 100%;',
-  //     CTAButtonStyle: {
-  //       height: '100%',
-  //       borderRadius: 0,
-  //       iconSize: 18,
-  //       padding: '6.5px',
-  //     },
-  //     DropdownButtonStyle: {
-  //       borderRadius: '0 12px 12px 0',
-  //       padding: '2px',
-  //     },
-  //   },
-  // ],
+          ;(inputAssistantButton?.parentElement
+            ?.previousElementSibling as HTMLElement)?.click()
+        },
+      },
+      rootWrapperStyle: 'height: 100%;',
+      CTAButtonStyle: {
+        height: '100%',
+        borderRadius: 0,
+        iconSize: 18,
+        padding: '6.5px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 12px 12px 0',
+        padding: '2px',
+      },
+    },
+  ],
 } as {
   [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig

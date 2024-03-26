@@ -58,9 +58,8 @@ const discordGetChatMessagesFromNodeList = (
 
     // if doesn't have username, it means the data capture is not successful
     if (username) {
-      const { datetime, messageContent } = discordGetChatMessageContentAndDate(
-        messageBox,
-      )
+      const { datetime, messageContent } =
+        discordGetChatMessageContentAndDate(messageBox)
 
       const message: IChatMessageData = {
         user: username,
@@ -91,8 +90,17 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
     '[class^="panelTitleContainer"]',
   )?.innerText
 
+  const chatMessagesPanel = findSelectorParent(
+    'ol[class^="scrollerInner"]',
+    inputAssistantButton,
+  )
+
   const chatMessages = discordGetChatMessagesFromNodeList(
-    Array.from(document.querySelectorAll<HTMLElement>('[id^="chat-messages"]')),
+    Array.from(
+      chatMessagesPanel?.querySelectorAll<HTMLElement>(
+        '[id^="chat-messages"]:not([class^="container"])',
+      ) || [],
+    ),
   )
 
   if (chatMessages.length) {
@@ -117,7 +125,7 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
       channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')
     ) {
       replyMessage = discordGetChatMessageContentAndDate(
-        document.querySelector<HTMLElement>(
+        chatMessagesPanel.querySelector<HTMLElement>(
           '[id^="chat-messages"]:has(> [class*="replying"])',
         ),
       )

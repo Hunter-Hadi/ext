@@ -59,7 +59,8 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SIDEBAR_ART_AND_IMAGES',
 ] as const
 
-export type PermissionWrapperCardSceneType = typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST[number]
+export type PermissionWrapperCardSceneType =
+  (typeof PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST)[number]
 
 export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
@@ -845,7 +846,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Reddit dropdown button - refine draft
   REDDIT_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-social-media.png',
+      '/images/upgrade/input-assistant-chat-app-website.png',
     )}`,
     title: (t) =>
       t(
@@ -858,9 +859,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
+  // Discord cta button - compose reply
   DISCORD_COMPOSE_REPLY_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-social-media.png',
+      '/images/upgrade/input-assistant-chat-app-website.png',
     )}`,
     title: (t) =>
       t(
@@ -873,9 +875,10 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
+  // Discord dropdown button - refine draft
   DISCORD_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-social-media.png',
+      '/images/upgrade/input-assistant-chat-app-website.png',
     )}`,
     title: (t) =>
       t(

@@ -1,4 +1,5 @@
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
 import {
   pushOutputToChat,
@@ -13,8 +14,6 @@ import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-
-import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 export class ActionGetChatMessagesContentOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE'
   originalChatMessagesContextData: IChatMessagesContextData | null = null

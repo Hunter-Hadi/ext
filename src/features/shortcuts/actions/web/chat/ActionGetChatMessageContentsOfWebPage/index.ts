@@ -8,12 +8,16 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getChatMessagesContent } from '@/features/shortcuts/utils/chat/getChatMessages'
-import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
+import { type IChatMessagesContextData } from '@/features/shortcuts/utils/ChatMessagesContext'
+import {
+  calculateMaxHistoryQuestionResponseTokens,
+  sliceTextByTokens,
+} from '@/features/shortcuts/utils/tokenizer'
 
 import { stopActionMessage } from '../../../common'
-export class ActionGetChatMessageContentsOfWebPage extends Action { 
+export class ActionGetChatMessageContentsOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE'
-  originalSocialMediaPostContent: ISocialMediaPostContextData | null = null
+  originalChatMessagesContextData: IChatMessagesContextData | null = null
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -37,101 +41,74 @@ export class ActionGetChatMessageContentsOfWebPage extends Action {
       ''
     try {
       const result = await getChatMessagesContent(OperationElementSelector)
-      console.log(result)
-    //   if (
-    //     engine?.clientConversationEngine?.currentSidebarConversationType ===
-    //       'Summary' &&
-    //     params.CURRENT_WEBSITE_DOMAIN === 'www.youtube.com'
-    //   ) {
-    //     //为youtube添加评论prompt数据
-    //     const haveCommentResults =
-    //       await getYouTubeSocialMediaPostCommentsContent(result)
-    //     if (haveCommentResults) {
-    //       result = haveCommentResults
-    //     }
-    //   }
-    //   console.log('simply result', result)
-    //   this.output = result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
-    //   this.originalSocialMediaPostContent = result
-    //   const { shortcutsEngine, clientConversationEngine } = engine
-    //   if (shortcutsEngine && clientConversationEngine) {
-    //     let SOCIAL_MEDIA_TARGET_POST_OR_COMMENT =
-    //       result.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT
-    //     let SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT =
-    //       result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT
-    //     // reply with keyPoints的逻辑
-    //     const conversation =
-    //       await clientConversationEngine.getCurrentConversation()
-    //     const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
-    //     const maxSocialMediaContextTokens =
-    //       AIModelMaxTokens -
-    //       calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
-    //     // 先计算TargetContext的Tokens占用，剩下的再给FullContext
-    //     const {
-    //       isLimit,
-    //       text: sliceOfTargetPostContext,
-    //       tokens: sliceOfTargetPostContextUsingTokens,
-    //     } = await sliceTextByTokens(
-    //       SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
-    //       AIModelMaxTokens - maxSocialMediaContextTokens,
-    //     )
-    //     SOCIAL_MEDIA_TARGET_POST_OR_COMMENT = sliceOfTargetPostContext
-    //     if (isLimit) {
-    //       SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = ''
-    //     } else {
-    //       const { text: sliceOfFullPostContext } = await sliceTextByTokens(
-    //         SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
-    //         AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
-    //       )
-    //       SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = sliceOfFullPostContext
-    //     }
-    //     shortcutsEngine.pushActions(
-    //       [
-    //         {
-    //           type: 'SET_VARIABLE_MAP',
-    //           parameters: {
-    //             VariableMap: {
-    //               SOCIAL_MEDIA_TARGET_POST_OR_COMMENT: {
-    //                 key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-    //                 value: SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
-    //                 overwrite: true,
-    //                 isBuiltIn: false,
-    //                 label: 'Target post/comment',
-    //               },
-    //               SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT: {
-    //                 key: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-    //                 value: SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
-    //                 overwrite: true,
-    //                 isBuiltIn: true,
-    //                 label: 'Context',
-    //               },
-    //               SOCIAL_MEDIA_PAGE_CONTENT: {
-    //                 key: '',
-    //                 value: result.SOCIAL_MEDIA_PAGE_CONTENT,
-    //                 overwrite: true,
-    //                 isBuiltIn: true,
-    //                 label: 'Post content',
-    //               },
-    //               SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS: {
-    //                 key: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS',
-    //                 value: result.previousComments,
-    //                 overwrite: true,
-    //                 isBuiltIn: false,
-    //                 label: 'Comments',
-    //               },
-    //             },
-    //           },
-    //         },
-    //         {
-    //           type: 'RENDER_TEMPLATE',
-    //           parameters: {
-    //             template: result.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
-    //           },
-    //         },
-    //       ],
-    //       'after',
-    //     )
-    //   }
+      let {
+        MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
+        MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+      } = result
+      this.output = MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT
+      this.originalChatMessagesContextData = result
+      const { shortcutsEngine, clientConversationEngine } = engine
+      if (shortcutsEngine && clientConversationEngine) {
+        // reply with keyPoints的逻辑
+        const conversation = await clientConversationEngine.getCurrentConversation()
+        const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
+        const maxChatMessagesContextTokens =
+          AIModelMaxTokens -
+          calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
+        // 先计算TargetContext的Tokens占用，剩下的再给FullContext
+        const {
+          isLimit,
+          text: sliceOfTargetPostContext,
+          tokens: sliceOfTargetPostContextUsingTokens,
+        } = await sliceTextByTokens(
+          MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
+          AIModelMaxTokens - maxChatMessagesContextTokens,
+        )
+        MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT = sliceOfTargetPostContext
+        if (isLimit) {
+          MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT = ''
+        } else {
+          const { text: sliceOfFullPostContext } = await sliceTextByTokens(
+            MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+            AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
+          )
+          MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT = sliceOfFullPostContext
+        }
+        shortcutsEngine.pushActions(
+          [
+            {
+              type: 'SET_VARIABLE_MAP',
+              parameters: {
+                VariableMap: {
+                  MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT: {
+                    key: 'MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT',
+                    value: MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
+                    overwrite: true,
+                    isBuiltIn: false,
+                    label: 'Target message',
+                  },
+                  MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT: {
+                    key:
+                      'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                    value: MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                    overwrite: true,
+                    isBuiltIn: true,
+                    label: 'Context',
+                  },
+                },
+              },
+            },
+            {
+              type: 'RENDER_TEMPLATE',
+              parameters: {
+                template:
+                  result.MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+              },
+            },
+          ],
+          'after',
+        )
+      }
     } catch (e) {
       this.error = (e as Error).toString()
     }

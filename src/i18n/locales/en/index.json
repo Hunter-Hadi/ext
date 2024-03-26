@@ -486,6 +486,10 @@
     "permission__pricing_hook__input_assistant_button__social_media__compose_reply__description": "Let AI generate personalized social media replies for you in seconds.",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__title": "Upgrade to perfect your posts and replies in 1 click",
     "permission__pricing_hook__input_assistant_button__social_media__refine_draft__description": "Improve writing, fix spelling & grammar, or change tone instantly with AI.",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Upgrade for 1-click chat",
+    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Let AI generate personalized social media replies for you in seconds.",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Upgrade for 1-click chat",
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Let AI generate personalized social media replies for you in seconds.",
     "permission__pricing_hook__ai_response_language__title": "Upgrade to change AI response language",
     "permission__pricing_hook__ai_response_language__description": "Set AI to always reply in your chosen language.",
     "permission__pricing_hook__chatgpt_stable_mode__title": "Upgrade to personalize ChatGPT stable mode",
@@ -955,6 +959,14 @@
     "8f877635-6585-4de0-9a7d-812a2e987ab2": "Suomi",
     "bc8e3fbc-13ab-4150-b748-93c1bd60969d": "Czech",
     "d77238eb-7673-46c2-a019-5bab341815fe": "Quick reply",
+    "3e7f564c-505d-4441-a8bc-8ae59bfec52c": "Like",
+    "e6043507-dbc0-444e-8d50-b3875453054d": "Love",
+    "129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0": "Thanks",
+    "75eacdf2-ea75-4d18-9e7b-f3286a373aa0": "Care",
+    "75c2e1c4-f723-483e-a764-2a7a42a69ea8": "Joke",
+    "2ac76fc3-6330-4dee-9411-98687ed778ae": "Wow",
+    "2358037c-9e2c-4bed-b72f-69629d703e7b": "Sad",
+    "e72b2a5f-8b38-4ba7-a731-267f452bdfbb": "Dislike",
     "b5381aa7-5ba3-4f96-a696-c694da938ef2": "Reply with key points"
   }
 }

@@ -1,7 +1,7 @@
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
+// 社交媒体
 const socialMediaPrompts = [
-  // 社交媒体
   {
     id: '26f44f32-cbe8-4832-9049-7b64aa2198fb',
     parent: '3df7e144-272e-4e7e-9ba4-06cc3dd9584d',
@@ -786,8 +786,8 @@ Now, write a concise reply to the post/comment above by *writing a better versio
   },
 ] as IContextMenuItem[]
 
+// 邮件
 const emailPrompts = [
-  // 邮件
   {
     id: '55a875ba-c2a7-449a-8af8-36c361e8def0',
     parent: 'cf4e0b8e-a5da-4d4f-8244-c748466e7c35',
@@ -1474,14 +1474,556 @@ const chatPrompts: IContextMenuItem[] = [
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: [
-          'discord.com',
-        ],
+        whitelist: ['discord.com'],
         blacklist: [],
         isWhitelistMode: true,
       },
       searchText: 'social media quick reply',
       icon: 'Reply',
+    },
+  },
+  {
+    id: '3e7f564c-505d-4441-a8bc-8ae59bfec52c',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Like',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply like',
+    },
+  },
+  {
+    id: 'e6043507-dbc0-444e-8d50-b3875453054d',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Love',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply love',
+    },
+  },
+  {
+    id: '129ac9e5-ab42-40a7-aa3e-a00cbc0c17d0',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Thanks',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write an affectionate, grateful, and delighted reply to the message that responds 'thank you' for whatever the message is about. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply thanks',
+    },
+  },
+  {
+    id: '75eacdf2-ea75-4d18-9e7b-f3286a373aa0',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Care',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply care',
+    },
+  },
+  {
+    id: '75c2e1c4-f723-483e-a764-2a7a42a69ea8',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Joke',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write a humorous, entertaining, playful, and funny reply to the message joking about it. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply joke',
+    },
+  },
+  {
+    id: '2ac76fc3-6330-4dee-9411-98687ed778ae',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Wow',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply wow',
+    },
+  },
+  {
+    id: '2358037c-9e2c-4bed-b72f-69629d703e7b',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Sad',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply sad',
+    },
+  },
+  {
+    id: 'e72b2a5f-8b38-4ba7-a731-267f452bdfbb',
+    parent: 'd77238eb-7673-46c2-a019-5bab341815fe',
+    droppable: true,
+    text: 'Dislike',
+    data: {
+      editable: false,
+      type: 'shortcuts',
+      actions: [
+        {
+          type: 'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Your task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message. Keep the reply as short as possible.
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+
+Ensure the reply's word count is no more than 50 words.
+
+Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+          },
+        },
+        {
+          type: 'INSERT_USER_INPUT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+          },
+        },
+      ],
+      visibility: {
+        whitelist: [],
+        blacklist: [],
+        isWhitelistMode: false,
+      },
+      searchText: 'quick reply dislike',
     },
   },
   {
@@ -1500,192 +2042,198 @@ const chatPrompts: IContextMenuItem[] = [
             isVariableMiddleOutEnabled: true,
           },
         },
-//         {
-//           type: 'RENDER_TEMPLATE',
-//           parameters: {
-//             template: '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
-//           },
-//         },
-//         {
-//           type: 'SCRIPTS_CONDITIONAL',
-//           parameters: {
-//             WFCondition: 'Equals',
-//             WFFormValues: {
-//               Value: '',
-//               WFSerializationType: 'WFDictionaryFieldValue',
-//             },
-//             WFConditionalIfTrueActions: [
-//               {
-//                 type: 'SET_VARIABLES_MODAL',
-//                 parameters: {
-//                   SetVariablesModalConfig: {
-//                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
-//                     title: 'Reply with key points',
-//                     modelKey: 'Sidebar',
-//                     template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template:
+              '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
+          },
+        },
+        {
+          type: 'SCRIPTS_CONDITIONAL',
+          parameters: {
+            WFCondition: 'Equals',
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            WFConditionalIfTrueActions: [
+              {
+                type: 'SET_VARIABLES_MODAL',
+                parameters: {
+                  SetVariablesModalConfig: {
+                    contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+                    title: 'Reply with key points',
+                    modelKey: 'Sidebar',
+                    template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-// Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
-// ---
+---
 
-// The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-// <context>
-// {{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
-// </context>
-
-
-// Here's the text to reply to:
-// \`\`\`
-// {{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
-// \`\`\`
-
-// ---
-
-// Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
-
-// Choose simple words and phrases. Avoid ones that are too hard or confusing.
-
-// Do not use hashtags. Write the reply like a real person would. 
-
-// Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-
-// Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-// {{KEY_POINTS}}`,
-//                     variables: [
-//                       {
-//                         label: 'Target post/comment',
-//                         VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-//                         valueType: 'Text',
-//                         placeholder: 'Enter target post/comment',
-//                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-//                         systemVariable: false,
-//                       },
-//                       {
-//                         label: 'Key points',
-//                         VariableName: 'KEY_POINTS',
-//                         valueType: 'Text',
-//                         placeholder: 'Enter key points',
-//                         systemVariable: true,
-//                       },
-//                     ],
-//                     systemVariables: [
-//                       {
-//                         VariableName: 'AI_RESPONSE_LANGUAGE',
-//                         defaultValue: 'English',
-//                         valueType: 'Select',
-//                         systemVariable: true,
-//                         label: 'AI Response language',
-//                       },
-//                       {
-//                         VariableName: 'AI_RESPONSE_TONE',
-//                         defaultValue: 'Default',
-//                         valueType: 'Select',
-//                         systemVariable: true,
-//                         label: 'Tone',
-//                       },
-//                       {
-//                         VariableName: 'AI_RESPONSE_WRITING_STYLE',
-//                         defaultValue: 'Default',
-//                         valueType: 'Select',
-//                         systemVariable: true,
-//                         label: 'Writing style',
-//                       },
-//                     ],
-//                   },
-//                 },
-//               },
-//             ],
-//             WFConditionalIfFalseActions: [
-//               {
-//                 type: 'SET_VARIABLES_MODAL',
-//                 parameters: {
-//                   SetVariablesModalConfig: {
-//                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
-//                     title: 'Reply with key points',
-//                     modelKey: 'Sidebar',
-//                     template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
-
-// Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
-
-// ---
-
-// The following is the complete context of the post/comment, delimited by <context></context>, including the original post, and a series of comments of the post, if any:
-// <context>
-// {{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}
-// </context>
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
 
 
-// Here's the text to reply to:
-// \`\`\`
-// {{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}
-// \`\`\`
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
-// ---
+---
 
-// Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
 
-// Choose simple words and phrases. Avoid ones that are too hard or confusing.
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
 
-// Do not use hashtags. Write the reply like a real person would. 
+Do not use hashtags. Write the reply like a real person would. 
 
-// Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-// Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-// {{KEY_POINTS}}`,
-//                     variables: [
-//                       {
-//                         label: 'Context',
-//                         VariableName: 'SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT',
-//                         valueType: 'Text',
-//                         placeholder: 'Enter context',
-//                         defaultValue:
-//                           '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
-//                         systemVariable: true,
-//                       },
-//                       {
-//                         label: 'Target post/comment',
-//                         VariableName: 'SOCIAL_MEDIA_TARGET_POST_OR_COMMENT',
-//                         valueType: 'Text',
-//                         placeholder: 'Enter target post/comment',
-//                         defaultValue: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
-//                         systemVariable: false,
-//                       },
-//                       {
-//                         label: 'Key points',
-//                         VariableName: 'KEY_POINTS',
-//                         valueType: 'Text',
-//                         placeholder: 'Enter key points',
-//                       },
-//                     ],
-//                     systemVariables: [
-//                       {
-//                         VariableName: 'AI_RESPONSE_LANGUAGE',
-//                         defaultValue: 'English',
-//                         valueType: 'Select',
-//                         systemVariable: true,
-//                         label: 'AI Response language',
-//                       },
-//                       {
-//                         VariableName: 'AI_RESPONSE_TONE',
-//                         defaultValue: 'Default',
-//                         valueType: 'Select',
-//                         systemVariable: true,
-//                         label: 'Tone',
-//                       },
-//                       {
-//                         VariableName: 'AI_RESPONSE_WRITING_STYLE',
-//                         defaultValue: 'Default',
-//                         valueType: 'Select',
-//                         systemVariable: true,
-//                         label: 'Writing style',
-//                       },
-//                     ],
-//                   },
-//                 },
-//               },
-//             ],
-//           },
-//         },
+Now, write a concise reply to the message above by *writing a better version* of the following points:
+{{KEY_POINTS}}`,
+                    variables: [
+                      {
+                        label: 'Target message',
+                        VariableName:
+                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT',
+                        valueType: 'Text',
+                        placeholder: 'Enter target message',
+                        defaultValue:
+                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                        systemVariable: false,
+                      },
+                      {
+                        label: 'Key points',
+                        VariableName: 'KEY_POINTS',
+                        valueType: 'Text',
+                        placeholder: 'Enter key points',
+                        systemVariable: true,
+                      },
+                    ],
+                    systemVariables: [
+                      {
+                        VariableName: 'AI_RESPONSE_LANGUAGE',
+                        defaultValue: 'English',
+                        valueType: 'Select',
+                        systemVariable: true,
+                        label: 'AI Response language',
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_TONE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                        label: 'Tone',
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                        label: 'Writing style',
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+            WFConditionalIfFalseActions: [
+              {
+                type: 'SET_VARIABLES_MODAL',
+                parameters: {
+                  SetVariablesModalConfig: {
+                    contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+                    title: 'Reply with key points',
+                    modelKey: 'Sidebar',
+                    template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+
+Your task is to write a reply to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+
+---
+
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server, and a series of chat messages, if any:
+<context>
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+</context>
+
+
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
+
+---
+
+Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
+
+Do not use hashtags. Write the reply like a real person would. 
+
+Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+
+Now, write a concise reply to the message above by *writing a better version* of the following points:
+{{KEY_POINTS}}`,
+                    variables: [
+                      {
+                        label: 'Context',
+                        VariableName:
+                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                        valueType: 'Text',
+                        placeholder: 'Enter context',
+                        defaultValue:
+                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
+                        systemVariable: true,
+                      },
+                      {
+                        label: 'Target message',
+                        VariableName:
+                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT',
+                        valueType: 'Text',
+                        placeholder: 'Enter target message',
+                        defaultValue:
+                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                        systemVariable: false,
+                      },
+                      {
+                        label: 'Key points',
+                        VariableName: 'KEY_POINTS',
+                        valueType: 'Text',
+                        placeholder: 'Enter key points',
+                      },
+                    ],
+                    systemVariables: [
+                      {
+                        VariableName: 'AI_RESPONSE_LANGUAGE',
+                        defaultValue: 'English',
+                        valueType: 'Select',
+                        systemVariable: true,
+                        label: 'AI Response language',
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_TONE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                        label: 'Tone',
+                      },
+                      {
+                        VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                        defaultValue: 'Default',
+                        valueType: 'Select',
+                        systemVariable: true,
+                        label: 'Writing style',
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          },
+        },
       ],
       visibility: {
         whitelist: [],

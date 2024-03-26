@@ -622,7 +622,7 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = ["sidebar__summary__nav__youtube_summary__transcript_timestamped_error"]
+  const keys = []
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

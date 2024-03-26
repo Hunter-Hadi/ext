@@ -45,9 +45,9 @@ const discordGetChatMessagesFromNodeList = (
   let username = ''
   for (const messageBox of messageBoxList) {
     // `welcome new user` notification is not a message
-    if (messageBox.querySelector('[class^="welcomeCTA"]')) {
-      continue
-    }
+    // if (messageBox.querySelector('[class^="welcomeCTA"]')) {
+    //   continue
+    // }
 
     const usernameBlock = messageBox.querySelector<HTMLElement>(
       ':not([id^="message-reply-context"]) > [class^="username"]',

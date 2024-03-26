@@ -14,7 +14,7 @@ import {
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
 
-import { stopActionMessage } from '../../../common'
+import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 export class ActionGetChatMessagesContentOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE'
   originalChatMessagesContextData: IChatMessagesContextData | null = null
@@ -50,7 +50,8 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
       const { shortcutsEngine, clientConversationEngine } = engine
       if (shortcutsEngine && clientConversationEngine) {
         // reply with keyPoints的逻辑
-        const conversation = await clientConversationEngine.getCurrentConversation()
+        const conversation =
+          await clientConversationEngine.getCurrentConversation()
         const AIModelMaxTokens = conversation?.meta?.maxTokens || 4096
         const maxChatMessagesContextTokens =
           AIModelMaxTokens -
@@ -64,7 +65,8 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
           MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
           AIModelMaxTokens - maxChatMessagesContextTokens,
         )
-        MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT = sliceOfTargetPostContext
+        MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT =
+          sliceOfTargetPostContext
         if (isLimit) {
           MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT = ''
         } else {
@@ -72,7 +74,8 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
             MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
             AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
           )
-          MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT = sliceOfFullPostContext
+          MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT =
+            sliceOfFullPostContext
         }
         shortcutsEngine.pushActions(
           [
@@ -88,9 +91,9 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
                     label: 'Target message',
                   },
                   MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT: {
-                    key:
-                      'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
-                    value: MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                    key: 'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                    value:
+                      MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
                     overwrite: true,
                     isBuiltIn: true,
                     label: 'Context',
@@ -114,7 +117,7 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
     }
   }
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
-    await stopActionMessage(params)
+    await stopActionMessageStatus(params)
     return true
   }
 }

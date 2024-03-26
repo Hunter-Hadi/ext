@@ -58,6 +58,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   errorMaxRequestOrder = 3 //接口异常情况请求最多次数记录
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   currentWebPageTitle = ''
+  private currentMessageId?: string
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -81,8 +82,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       if (this.isStopAction) return
       const conversationId =
         engine.clientConversationEngine?.currentConversationIdRef?.current
-      const messageId = (params as { AI_RESPONSE_MESSAGE_ID?: string })
-        .AI_RESPONSE_MESSAGE_ID
+      const messageId =
+        (params as { AI_RESPONSE_MESSAGE_ID?: string })
+          .AI_RESPONSE_MESSAGE_ID || ''
+      // TODO 需要优化
+      this.currentMessageId = messageId
       if (
         !transcripts ||
         transcripts.length === 0 ||
@@ -683,37 +687,65 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       ],
     )
   }
+
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
     this.isStopAction = true
     this.abortTaskIds.forEach((id) => {
       clientAbortFetchAPI(id)
     })
-    await stopActionMessageStatus(params, {
-      metadata: {
-        sources: {
-          status: 'complete',
-        },
-        isComplete: true,
-        deepDive: [
+    const conversationId =
+      params.engine.clientConversationEngine?.currentConversationIdRef?.current
+    if (conversationId && this.currentMessageId) {
+      await clientChatConversationModifyChatMessages(
+        'update',
+        conversationId,
+        0,
+        [
           {
-            type: 'transcript',
-            title: {
-              title: 'Transcript',
-              titleIcon: 'Menu',
+            type: 'ai',
+            messageId: this.currentMessageId,
+            originalMessage: {
+              metadata: {
+                isComplete: false,
+                sources: {
+                  status: 'complete',
+                },
+                copilot: {
+                  steps: [
+                    {
+                      title: 'Analyzing video',
+                      status: 'complete',
+                      icon: 'SmartToy',
+                      value: this.currentWebPageTitle,
+                    },
+                  ],
+                },
+                deepDive: [
+                  {
+                    type: 'timestampedSummary',
+                    status: 'complete',
+                    title: {
+                      title: 'Summary',
+                      titleIcon: 'SummaryInfo',
+                    },
+                    value: this.viewLatestTranscriptData,
+                  },
+                  {
+                    title: {
+                      title: 'Deep dive',
+                      titleIcon: 'TipsAndUpdates',
+                    },
+                    value: 'Ask AI anything about the video...',
+                  },
+                ],
+              },
             },
-            value: this
-              .viewLatestTranscriptData as unknown as TranscriptResponse[],
-          },
-          {
-            title: {
-              title: 'Deep dive',
-              titleIcon: 'TipsAndUpdates',
-            },
-            value: 'Ask AI anything about the video...',
-          },
+          } as any,
         ],
-      },
-    })
-    return true
+      )
+      await stopActionMessageStatus(params)
+      return true
+    }
+    return false
   }
 }

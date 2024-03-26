@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počakajte, da se video oglas konča in poskusite znova.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časovno označen povzetek",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Ni mogoče ustvariti videa brez podnapisov.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Prišlo je do napake, poskusite znova kasneje."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Opa! Nekaj nepričakovanega se je zgodilo. Prosimo, poskusite znova kasneje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

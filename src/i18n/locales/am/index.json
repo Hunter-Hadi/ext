@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "እባክዎ በቪዲዮ የሚታዩ ጣቢያዎች መጨመር ይችላሉ፣ ከዚህ በፊት የተወሰኑትን ይጠቀሙ.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "የጊዜ መግለጫ",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "በስርጭት እንዴት ያለውን ቪዲዮ አልተጠበቀም።",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ስህተት ተፈጥሯል, እባክዎ በዚህ አጠቃላይ ይሞክሩ።"
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ውድ! አልተገኘም፡፡ እንዴት በአዲስ ቀጣይ ይጠቀሙ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

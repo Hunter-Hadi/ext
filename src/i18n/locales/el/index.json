@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Παρακαλώ περιμένετε μέχρι να τελειώσει η διαφήμιση του βίντεο και στη συνέχεια δοκιμάστε ξανά.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Χρονοσημασμένη περίληψη",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Δεν είναι δυνατή η δημιουργία βίντεο χωρίς υπότιτλους.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Παρουσιάστηκε μια εξαίρεση, παρακαλώ δοκιμάστε ξανά αργότερα."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ουπς! Συνέβη κάτι απρόσμενο. Παρακαλώ δοκιμάστε ξανά αργότερα."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

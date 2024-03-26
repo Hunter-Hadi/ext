@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vă rugăm să așteptați până când reclama video se termină și apoi încercați din nou.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Rezumat cu marcaje de timp",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Imposibil de generat video fără subtitrări.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "A apărut o excepție, vă rugăm să încercați din nou mai târziu."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! S-a întâmplat ceva neașteptat. Vă rugăm să încercați din nou mai târziu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

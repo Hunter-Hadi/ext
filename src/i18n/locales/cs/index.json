@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Počkejte, až skončí reklama ve videu a poté to zkuste znovu.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časově označený souhrn",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nelze vytvořit video bez titulků.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Došlo k výjimce, zkuste to prosím znovu později."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Něco nečekaného se stalo. Prosím, zkuste to znovu později."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "कृपया वीडियो विज्ञापन पूरा होने तक प्रतीक्षा करें और फिर से प्रयास करें।",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "समय-चिह्नित सारांश",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "उपशीर्षक के बिना वीडियो उत्पन्न नहीं कर सकते।",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "एक अप्रत्याशितता हुई, कृपया बाद में पुनः प्रयास करें।"
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "उफ़! कुछ अप्रत्याशित हो गया। कृपया बाद में पुन: प्रयास करें।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

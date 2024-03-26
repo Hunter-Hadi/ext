@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Vui lòng đợi cho đến khi quảng cáo video kết thúc và sau đó thử lại.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tóm tắt có dấu thời gian",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Không thể tạo video không có phụ đề.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Đã xảy ra ngoại lệ, vui lòng thử lại sau."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Rất tiếc! Đã xảy ra sự cố không mong muốn. Vui lòng thử lại sau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

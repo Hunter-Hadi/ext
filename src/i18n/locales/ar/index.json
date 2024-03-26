@@ -668,7 +668,8 @@
     "sidebar__summary__nav__email_summary__tooltip__key_takeaways": "تلخيص البريد الإلكتروني (أهم النقاط)",
     "sidebar__summary__nav__email_summary__tooltip__action_items": "تلخيص البريد الإلكتروني (عناصر العمل)",
     "sidebar__summary__nav__youtube_summary__tooltip__transcript": "عرض النص المكتوب",
-    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "يرجى الانتظار حتى ينتهي إعلان الفيديو ثم حاول مرة أخرى."
+    "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "يرجى الانتظار حتى ينتهي إعلان الفيديو ثم حاول مرة أخرى.",
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "عفوًا! حدث خطأ غير متوقع. يرجى المحاولة مرة أخرى في وقت لاحق."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

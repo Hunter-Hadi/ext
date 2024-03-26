@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Пожалуйста, подождите, пока завершится видеореклама, а затем попробуйте снова.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Резюме с временными метками",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Невозможно создать видео без субтитров.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Произошло исключение, пожалуйста, повторите попытку позже."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Упс! Что-то неожиданное произошло. Пожалуйста, попробуйте еще раз позже."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

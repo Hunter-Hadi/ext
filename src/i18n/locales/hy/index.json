@@ -668,7 +668,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Խնդրում ենք սպասել, մինչև վիդեո գովազդը ավարտվի և ապա փորձեք կրկին:",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Ժամանակավորված ամփոփում",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Չհաջողվեց գեներացնել տեսանյութի առանց ենթաբառերի:",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Խափանվեց սխալ, խնդրում ենք փորձել նորից:"
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ուպս! Ինչ-որ անսպասելի բան է տեղի ունեցել։ Խնդրում ենք փորձել կրկին հետո։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

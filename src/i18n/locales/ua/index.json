@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Будь ласка, зачекайте, поки закінчиться відеореклама, а потім спробуйте знову.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Зведений підсумок",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Неможливо створити відео без субтитрів.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Сталася помилка, спробуйте ще раз пізніше."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Упс! Виникла непередбачувана помилка. Будь ласка, спробуйте пізніше."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

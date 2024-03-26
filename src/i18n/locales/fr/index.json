@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Veuillez patienter jusqu'à la fin de la publicité vidéo, puis réessayez.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Résumé avec horodatage",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Impossible de générer la vidéo sans sous-titres.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Une exception s'est produite, veuillez réessayer ultérieurement."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Quelque chose d'inattendu s'est produit. Veuillez réessayer ultérieurement."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

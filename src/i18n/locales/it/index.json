@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Attendere fino al termine della pubblicità video e riprovare.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Sommario con timestamp",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Impossibile generare il video senza sottotitoli.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Si è verificata un'eccezione, riprova più tardi."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ops! Qualcosa di inaspettato è accaduto. Riprova più tardi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

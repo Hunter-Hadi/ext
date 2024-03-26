@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "โปรดรอให้วิดีโอโฆษณาเล่นจบแล้วลองอีกครั้ง",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "สรุปที่มีเครื่องหมายเวลา",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "ไม่สามารถสร้างวิดีโอได้โดยไม่มีคำบรรยาย",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "เกิดข้อผิดพลาด โปรดลองอีกครั้งในภายหลัง"
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "อุ๊ปส์! เกิดข้อผิดพลาดที่ไม่คาดคิด โปรดลองอีกครั้งในภายหลัง"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

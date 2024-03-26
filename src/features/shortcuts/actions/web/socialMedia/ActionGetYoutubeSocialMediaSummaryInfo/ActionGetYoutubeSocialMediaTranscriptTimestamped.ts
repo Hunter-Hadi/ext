@@ -54,6 +54,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   requestExceptionIntervalTime = 1000 * 10
   maxChatGptTokens = 13000
   abortTaskIds: string[] = [] //接口取消功能数据
+  viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -616,7 +617,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   async updateConversationMessageInfo(
     conversationId: string,
     messageId: string,
-    transcriptData: any,
+    transcriptData: TranscriptTimestampedParamType[],
   ) {
     console.log(
       'updateConversationMessageInfo',
@@ -624,6 +625,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       messageId,
       transcriptData,
     )
+    this.viewLatestTranscriptData = transcriptData
     await clientChatConversationModifyChatMessages(
       'update',
       conversationId,
@@ -670,7 +672,32 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     this.abortTaskIds.forEach((id) => {
       clientAbortFetchAPI(id)
     })
-    await stopActionMessageStatus(params)
+    await stopActionMessageStatus(params, {
+      metadata: {
+        sources: {
+          status: 'complete',
+        },
+        isComplete: true,
+        deepDive: [
+          {
+            type: 'transcript',
+            title: {
+              title: 'Transcript',
+              titleIcon: 'Menu',
+            },
+            value: this
+              .viewLatestTranscriptData as unknown as TranscriptResponse[],
+          },
+          {
+            title: {
+              title: 'Deep dive',
+              titleIcon: 'TipsAndUpdates',
+            },
+            value: 'Ask AI anything about the video...',
+          },
+        ],
+      },
+    })
     return true
   }
 }

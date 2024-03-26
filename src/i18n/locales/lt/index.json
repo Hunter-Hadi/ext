@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Palaukite, kol baigsis vaizdo reklama, ir tada bandykite dar kartą.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Laiko žymėtas santrauka",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Negalima sugeneruoti vaizdo be subtitrų.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Įvyko išimtis, bandykite vėliau."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Įvyko kažkas netikėto. Bandykite dar kartą vėliau."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

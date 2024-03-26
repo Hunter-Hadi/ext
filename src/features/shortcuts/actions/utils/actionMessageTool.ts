@@ -1,3 +1,4 @@
+import { IAIResponseOriginalMessage } from '@/features/chatgpt/types'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 
@@ -5,9 +6,12 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
  * @since 2024-03-20
  * @description 停止action的message Status
  */
-export const stopActionMessageStatus = async (params: {
-  engine: IShortcutEngineExternalEngine
-}) => {
+export const stopActionMessageStatus = async (
+  params: {
+    engine: IShortcutEngineExternalEngine
+  },
+  originalMessage?: IAIResponseOriginalMessage,
+) => {
   try {
     const currentConversation =
       await params.engine.clientConversationEngine?.getCurrentConversation()
@@ -31,6 +35,18 @@ export const stopActionMessageStatus = async (params: {
 
       //停止的消息状态变更
       if (currentConversation.id && lastUpdateMessageId) {
+        const originalMessageObject = Object.assign(
+          {},
+          {
+            metadata: {
+              sources: {
+                status: 'complete',
+              },
+              isComplete: true,
+            },
+          },
+          originalMessage,
+        )
         await clientChatConversationModifyChatMessages(
           'update',
           currentConversation.id,
@@ -39,14 +55,7 @@ export const stopActionMessageStatus = async (params: {
             {
               type: 'ai',
               messageId: lastUpdateMessageId,
-              originalMessage: {
-                metadata: {
-                  sources: {
-                    status: 'complete',
-                  },
-                  isComplete: true,
-                },
-              },
+              originalMessage: originalMessageObject,
             } as any,
           ],
         )

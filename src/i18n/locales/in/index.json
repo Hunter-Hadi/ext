@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Harap tunggu hingga iklan video selesai diputar, lalu coba lagi.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Ringkasan dengan Penanda Waktu",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Tidak dapat menghasilkan video tanpa teks terjemahan.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Terjadi kesalahan, silakan coba lagi nanti."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Ada sesuatu yang tidak terduga terjadi. Silakan coba lagi nanti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

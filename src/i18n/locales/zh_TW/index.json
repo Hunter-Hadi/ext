@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "請等待視頻廣告播放完畢，然後再試一次。",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "時間戳摘要",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "無法生成沒有字幕的視頻。",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "發生異常，請稍後再試。"
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "哎呀！發生了一些意外情況。請稍後再試。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

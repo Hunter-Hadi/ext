@@ -24,7 +24,7 @@ const getTextTokens = (text) => {
 
 const translateValue = async (translateJson, from, to, logPrefix) => {
   const runTranslate = async (prompt, times) => {
-    const agent = new HttpsProxyAgent('http://127.0.0.1:7890')
+    const agent = new HttpsProxyAgent('http://127.0.0.1:7897')
     const api = new ChatGPTAPI({
       apiKey: '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',
       completionParams: {
@@ -622,7 +622,7 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = []
+  const keys = ["sidebar__summary__nav__youtube_summary__transcript_timestamped_error"]
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

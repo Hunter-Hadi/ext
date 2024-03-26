@@ -671,7 +671,7 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Моля, изчакайте докато видео рекламата приключи и след това опитайте отново.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Резюме с времеви маркери",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Не може да се генерира видео без субтитри.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Възникна изключение, моля опитайте отново по-късно."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Опа! Нещо неочаквано се случи. Моля, опитайте отново по-късно."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

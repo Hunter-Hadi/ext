@@ -18,7 +18,6 @@ import {
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
 import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getInputMediator } from '@/store/InputMediator'
 
 export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   [key in ISidebarConversationType]: {
@@ -55,6 +54,7 @@ const useClientConversation = () => {
     createConversation,
     chatStatus,
     updateChatStatus,
+    resetConversation,
   } = useChatPanelContext()
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const clientConversation: IChatConversation | undefined =
@@ -80,36 +80,6 @@ const useClientConversation = () => {
     }
     return []
   }, [currentConversationId, clientConversationMap])
-  const cleanConversation = async () => {
-    if (clientWritingMessage.loading) {
-      return
-    }
-    getInputMediator('floatingMenuInputMediator').updateInputValue('')
-    getInputMediator('chatBoxInputMediator').updateInputValue('')
-    console.log(
-      '新版Conversation 清除conversation',
-      currentConversationTypeRef.current,
-      currentConversationIdRef.current,
-    )
-    const currentConversation = await getCurrentConversation()
-    if (currentConversation) {
-      await createConversation(
-        currentConversation.type,
-        currentConversation.meta.AIProvider!,
-        currentConversation.meta.AIModel!,
-      )
-    } else {
-      await createConversation(
-        'Chat',
-        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIProvider,
-        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel,
-      )
-    }
-    setClientWritingMessage({
-      writingMessage: null,
-      loading: false,
-    })
-  }
   const disposeBackgroundChatSystem = async (conversationId?: string) => {
     const port = new ContentScriptConnectionV2()
     // 复原background conversation
@@ -261,7 +231,7 @@ const useClientConversation = () => {
     updateChatStatus,
     authAIProvider,
     clientWritingMessage,
-    cleanConversation,
+    resetConversation,
     createConversation,
     disposeBackgroundChatSystem,
     updateConversation,

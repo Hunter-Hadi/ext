@@ -19,7 +19,11 @@ import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hoo
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { SidebarPageState } from '@/features/sidebar/store'
+import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import {
+  ClientWritingMessageStateFamily,
+  SidebarPageState,
+} from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import {
   getPageSummaryConversationId,
@@ -27,6 +31,7 @@ import {
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppLocalStorageState } from '@/store'
+import { getInputMediator } from '@/store/InputMediator'
 
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
@@ -71,6 +76,10 @@ const useSidebarSettings = () => {
     currentSummaryConversationId,
     currentArtConversationId,
   ])
+  const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
+    ClientWritingMessageStateFamily(currentSidebarConversationId || ''),
+  )
+
   const sidebarConversationTypeofConversationMap = useMemo(() => {
     return {
       Chat: clientConversationMap[currentChatConversationId || ''],
@@ -133,6 +142,48 @@ const useSidebarSettings = () => {
       }
     })
   }
+  const resetSidebarConversation = async () => {
+    if (clientWritingMessage.loading || !currentSidebarConversationId) {
+      return
+    }
+    getInputMediator('floatingMenuInputMediator').updateInputValue('')
+    getInputMediator('chatBoxInputMediator').updateInputValue('')
+    console.log('新版Conversation 清除conversation')
+    const currentConversation = await clientGetConversation(
+      currentSidebarConversationId,
+    )
+    if (currentConversation) {
+      if (currentConversation.type === 'Summary') {
+        // Summary有点不一样，需要清除所有的message
+        await clientChatConversationModifyChatMessages(
+          'delete',
+          currentConversation.id,
+          9999999,
+          [],
+        )
+        await updateSidebarSettings({
+          summary: {
+            conversationId: '',
+          },
+        })
+      }
+      await createSidebarConversation(
+        currentConversation.type,
+        currentConversation.meta.AIProvider!,
+        currentConversation.meta.AIModel!,
+      )
+    } else {
+      await createSidebarConversation(
+        'Chat',
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIProvider,
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel,
+      )
+    }
+    setClientWritingMessage({
+      writingMessage: null,
+      loading: false,
+    })
+  }
 
   const createSidebarConversation = async (
     conversationType: ISidebarConversationType,
@@ -175,7 +226,6 @@ const useSidebarSettings = () => {
         })
       }
     } else if (conversationType === 'Summary') {
-      debugger
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (conversationId && (await clientGetConversation(conversationId))) {
@@ -261,6 +311,7 @@ const useSidebarSettings = () => {
   }
   return {
     createSidebarConversation,
+    resetSidebarConversation,
     sidebarSettings: appLocalStorage.sidebarSettings,
     currentSidebarConversationType,
     currentSidebarAIProvider,

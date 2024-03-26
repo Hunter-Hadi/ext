@@ -29,7 +29,7 @@ const SidebarChatPanel = () => {
   const {
     clientWritingMessage,
     clientConversationMessages,
-    cleanConversation,
+    resetConversation,
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
@@ -67,7 +67,7 @@ const SidebarChatPanel = () => {
           await regenerate()
         }}
         onStopGenerate={stopGenerate}
-        onReset={cleanConversation}
+        onReset={resetConversation}
       />
       <SidebarFilesDropBox />
     </>

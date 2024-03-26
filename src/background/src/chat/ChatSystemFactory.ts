@@ -103,7 +103,6 @@ export default class ChatSystemFactory {
       if (runtime === 'client') {
         switch (event) {
           case 'Client_createChatGPTConversation': {
-            debugger
             const initConversationData = (data.initConversationData ||
               {}) as IChatConversation
             if (!initConversationData.id) {

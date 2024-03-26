@@ -20,8 +20,11 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // }
 
 const SidebarPage = () => {
-  const { currentSidebarConversationId, createSidebarConversation } =
-    useSidebarSettings()
+  const {
+    currentSidebarConversationId,
+    createSidebarConversation,
+    resetSidebarConversation,
+  } = useSidebarSettings()
 
   const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useSidebarDropEvent()
@@ -34,6 +37,7 @@ const SidebarPage = () => {
       },
       conversationId: currentSidebarConversationId,
       createConversation: createSidebarConversation,
+      resetConversation: resetSidebarConversation,
     }
   }, [currentSidebarConversationId, chatStatus])
 

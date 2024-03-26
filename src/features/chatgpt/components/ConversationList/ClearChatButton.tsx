@@ -22,7 +22,7 @@ const ClearChatButton: FC<{
 }> = (props) => {
   const { conversationTitle, conversationType, conversationId, onDelete } =
     props
-  const { cleanConversation } = useClientConversation()
+  const { resetConversation } = useClientConversation()
   const { t } = useTranslation(['client', 'common'])
 
   const removeButtonTitle = useMemo(() => {
@@ -137,7 +137,7 @@ const ClearChatButton: FC<{
                 variant={'contained'}
                 color={'error'}
                 onClick={async () => {
-                  await cleanConversation()
+                  await resetConversation()
                   await clientForceRemoveConversation(conversationId)
                   onDelete?.()
                 }}

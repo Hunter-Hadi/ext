@@ -1,10 +1,9 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
 import { ContentScriptConnectionV2, pingUntilLogin } from '@/features/chatgpt'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IShortcutEngine } from '@/features/shortcuts'
 import ShortCutsEngineFactory from '@/features/shortcuts/core/ShortCutsEngine'
 import { useShortCutsParameters } from '@/features/shortcuts/hooks'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -25,19 +24,12 @@ const useShortCutsEngine = () => {
   const { isLogin } = useAuthLogin()
   const getParams = useShortCutsParameters()
   const [shortCutsState, setShortsCutsState] = useRecoilState(ShortCutsState)
-  const { clientWritingMessage } = useClientConversation()
+  const { clientWritingMessage, currentConversationId } =
+    useClientConversation()
+  const shortCutsEngine = ShortCutsEngineFactory.getShortCutsEngine(
+    currentConversationId || '',
+  )
   const clientConversationEngine = useClientConversation()
-  const [shortCutsEngine, setShortCutsEngine] =
-    useState<IShortcutEngine | null>(ShortCutsEngineFactory.create(''))
-  useEffect(() => {
-    if (clientConversationEngine.currentConversationId) {
-      setShortCutsEngine(
-        ShortCutsEngineFactory.create(
-          clientConversationEngine.currentConversationId,
-        ),
-      )
-    }
-  }, [clientConversationEngine.currentConversationId])
   const setShortCuts = (actions: ISetActionsType) => {
     if (!shortCutsEngine) {
       return false

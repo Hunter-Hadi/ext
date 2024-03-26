@@ -4,7 +4,7 @@
  * @doc - https://ikjt09m6ta.larksuite.com/docx/LzzhdnFbsov11axfXwwuZGeasLg
  */
 import { cloneDeep } from 'lodash-es'
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import {
@@ -21,7 +21,6 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
@@ -31,11 +30,7 @@ import {
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const usePageSummary = () => {
-  const {
-    updateSidebarSettings,
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { updateSidebarSettings } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { updateClientConversationLoading } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
@@ -55,12 +50,10 @@ const usePageSummary = () => {
         return
       }
       isGeneratingPageSummaryRef.current = true
-      debugger
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')
       const pageSummaryConversationId = getPageSummaryConversationId()
       updateClientConversationLoading(true)
-
       if (pageSummaryConversationId) {
         // 看看有没有已经存在的conversation
         const pageSummaryConversation = await clientGetConversation(
@@ -153,7 +146,8 @@ const usePageSummary = () => {
               }
             })
             lastMessageIdRef.current = paramsPageSummaryTypeData.messageId
-            runPageSummaryActions(paramsPageSummaryTypeData.actions)
+            await askAIWIthShortcuts(paramsPageSummaryTypeData.actions)
+            isGeneratingPageSummaryRef.current = false
           }
         } catch (e) {
           console.log('创建Conversation失败', e)
@@ -164,31 +158,7 @@ const usePageSummary = () => {
     }
   }
 
-  const runPageSummaryActions = useCallback(
-    (actions: ISetActionsType) => {
-      if (
-        actions.length > 0 &&
-        currentSidebarConversationType === 'Summary' &&
-        currentSidebarConversationId
-      ) {
-        // debugger
-        askAIWIthShortcuts(actions)
-          .then()
-          .catch()
-          .finally(() => {
-            isGeneratingPageSummaryRef.current = false
-          })
-      }
-    },
-    [
-      askAIWIthShortcuts,
-      currentSidebarConversationType,
-      currentSidebarConversationId,
-    ],
-  )
-
   const resetPageSummary = () => {
-    debugger
     isGeneratingPageSummaryRef.current = false
   }
   return { resetPageSummary, createPageSummary, isGeneratingPageSummaryRef }

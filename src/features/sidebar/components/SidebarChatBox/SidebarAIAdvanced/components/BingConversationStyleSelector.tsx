@@ -38,7 +38,7 @@ const ArrowDropDownIconCustom = () => {
 
 const BingConversationStyleSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const { cleanConversation } = useClientConversation()
+  const { resetConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [bingConversationStyle, setBingConversationStyle] = useState(
     BingConversationStyle.Balanced,
@@ -112,7 +112,7 @@ const BingConversationStyleSelector: FC = () => {
             await setAIProviderSettings('BING', {
               conversationStyle: event.target.value as BingConversationStyle,
             })
-            await cleanConversation()
+            await resetConversation()
             setBingConversationStyle(
               event.target.value as BingConversationStyle,
             )

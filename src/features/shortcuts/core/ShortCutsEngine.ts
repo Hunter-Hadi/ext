@@ -385,7 +385,7 @@ class ShortCutsEngine implements IShortcutEngine {
 }
 export default class ShortCutsEngineFactory {
   static shortCutsEngineMap: Map<string, ShortCutsEngine> = new Map()
-  static create(conversationId: string) {
+  static getShortCutsEngine(conversationId: string) {
     ShortCutsEngineFactory.removeUnnecessaryShortcutsEngine()
     if (ShortCutsEngineFactory.shortCutsEngineMap.has(conversationId)) {
       return (

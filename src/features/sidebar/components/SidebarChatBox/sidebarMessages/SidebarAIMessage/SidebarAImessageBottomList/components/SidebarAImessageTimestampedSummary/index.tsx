@@ -27,8 +27,8 @@ const SidebarAImessageTimestampedSummary: FC<
     }
   }, [transcriptList])
   const clickYoutubeJumpTimestamp = (time: string) => {
-    if (time) {
-      try {
+    try {
+      if (time !== undefined) {
         const isAdvertisingTime = document.querySelector(
           '#container .ytp-ad-text.ytp-ad-preview-text-modern',
         )
@@ -74,9 +74,9 @@ const SidebarAImessageTimestampedSummary: FC<
             }, waitingTime)
           }
         }
-      } catch (e) {
-        console.log('clickLinkUrl error', e)
       }
+    } catch (e) {
+      console.log('clickLinkUrl error', e)
     }
   }
   const decodeHtmlEntity = (str: string) => {
@@ -104,9 +104,6 @@ const SidebarAImessageTimestampedSummary: FC<
                 spacing={1}
                 key={index}
                 sx={{ marginTop: '15px' }}
-                onClick={() =>
-                  transcriptItem.id && onSetOpenIdsList(transcriptItem.id)
-                }
               >
                 <Button
                   sx={{
@@ -123,7 +120,12 @@ const SidebarAImessageTimestampedSummary: FC<
                 </Button>
 
                 {transcriptItem.status !== 'error' && (
-                  <Stack sx={{ flex: 1, cursor: 'pointer' }}>
+                  <Stack
+                    sx={{ flex: 1, cursor: 'pointer' }}
+                    onClick={() =>
+                      transcriptItem.id && onSetOpenIdsList(transcriptItem.id)
+                    }
+                  >
                     <Typography fontSize={16} color="text.primary">
                       {decodeHtmlEntity(transcriptItem.text || '')}
                     </Typography>

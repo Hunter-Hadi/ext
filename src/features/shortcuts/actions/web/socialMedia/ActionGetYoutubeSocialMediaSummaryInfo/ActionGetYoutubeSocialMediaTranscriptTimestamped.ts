@@ -284,7 +284,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     `
     const newPrompt = `
     Ignore all previous instructions.${getHaveLanguagePrompt.data}
-    [VIDEO TRANSCRIPT TITLE]:
+    [VIDEO TITLE]:
     ${this.currentWebPageTitle}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}

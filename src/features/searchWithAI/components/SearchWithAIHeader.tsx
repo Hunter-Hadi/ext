@@ -8,7 +8,8 @@ import Typography from '@mui/material/Typography'
 import { FC, useMemo } from 'react'
 import React from 'react'
 
-import { IAIForSearchStatus } from '../hooks/useSearchWithAICore'
+import { IAIForSearchStatus } from '@/features/searchWithAI/types'
+
 import SearchWithAILogo from './SearchWithAILogo'
 import SearchWithAISettings from './SearchWithAISettings'
 import SearchWithAIWebAccessToggle from './SearchWithAIWebAccessToggle'

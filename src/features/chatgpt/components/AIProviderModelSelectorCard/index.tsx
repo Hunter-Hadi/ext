@@ -71,20 +71,17 @@ interface AIModelSelectorCardProps {
 const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
   const { sidebarConversationType, sx, onClose } = props
   const { t } = useTranslation(['common', 'client'])
-  const [
-    hoverModel,
-    setHoverModel,
-  ] = useState<AIProviderModelSelectorOption | null>(null)
+  const [hoverModel, setHoverModel] =
+    useState<AIProviderModelSelectorOption | null>(null)
   const [isHoverThirdPartyModel, setIsHoverThirdPartyModel] = useState(false)
-  const {
-    showThirdPartyAIProviderConfirmDialog,
-    isSelectedThirdAIProvider,
-  } = useThirdAIProviderModels()
+  const { showThirdPartyAIProviderConfirmDialog, isSelectedThirdAIProvider } =
+    useThirdAIProviderModels()
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
   const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   const { remoteAIProviderConfig } = useRemoteAIProviderConfig()
-  const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+  const { AI_PROVIDER_MODEL_MAP, getAIProviderModelDetail } =
+    useAIProviderModelsMap()
   // 当前sidebarConversationType的AI provider
   const currentAIProvider =
     sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
@@ -204,9 +201,14 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
         }}
       >
         {currentSidebarConversationTypeModels.map((AIModelOption) => {
+          const providerModelDetail = getAIProviderModelDetail(
+            AIModelOption.AIProvider,
+            AIModelOption.value,
+          )
           return (
             <MenuItem
               data-testid={`maxai--ai-model-selector--menu-item--${AIModelOption.value}`}
+              data-model-max-tokens={providerModelDetail?.maxTokens || 0}
               disabled={AIModelOption.disabled}
               onMouseEnter={() => {
                 setIsHoverThirdPartyModel(false)

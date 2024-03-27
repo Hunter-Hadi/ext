@@ -733,12 +733,11 @@ const InputAssistantButtonGroupConfig = {
     {
       enable: true,
       rootSelectors: [
-        'ytd-commentbox ytd-button-renderer button[aria-label="Reply"]',
-        'ytd-commentbox ytd-button-renderer button[aria-label="Comment"]',
+        'ytd-commentbox ytd-button-renderer#submit-button',
       ],
       rootStyle: '',
       appendPosition: 2,
-      rootParentDeep: 3,
+      rootParentDeep: 1,
       rootWrapperTagName: 'div',
       composeNewButton: {
         tooltip: 'client:input_assistant_button__compose_new__tooltip',
@@ -1078,7 +1077,7 @@ const InputAssistantButtonGroupConfig = {
   //           document.querySelector<HTMLButtonElement>(
   //             inputAssistantButtonSelector,
   //           )
-              
+
   //         // it seems not to work
   //         if (inputAssistantButton) {
   //           findSelectorParent('[class^="channelTextArea"] div[class^="textArea"]', inputAssistantButton as HTMLElement)?.click()
@@ -1125,7 +1124,7 @@ const InputAssistantButtonGroupConfig = {
   //           document.querySelector<HTMLButtonElement>(
   //             inputAssistantButtonSelector,
   //           )
-              
+
   //         ;(inputAssistantButton?.parentElement
   //           ?.previousElementSibling as HTMLElement)?.click()
   //       },
@@ -1144,10 +1143,10 @@ const InputAssistantButtonGroupConfig = {
   //   },
   // ],
 } as {
-  [key in InputAssistantButtonGroupConfigHostType]:
+    [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig
     | IInputAssistantButtonGroupConfig[]
-}
+  }
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
   InputAssistantButtonGroupConfig,
 ) as InputAssistantButtonGroupConfigHostType[]

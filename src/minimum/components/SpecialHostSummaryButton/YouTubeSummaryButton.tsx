@@ -41,7 +41,7 @@ const YouTubeSummaryButton: FC = () => {
           element.parentNode?.append(button)
         }
         setRenderElement(button)
-      }, 3000)
+      }, 0)
     } else {
       const prevButtons = Array.from(
         document.querySelectorAll(`.${MAXAI_YOUTUBE_SUMMARY_BUTTON}`),

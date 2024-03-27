@@ -847,7 +847,7 @@ const InputAssistantButtonGroupConfig = {
             )
 
           inputAssistantButton?.parentNode?.parentNode
-            ?.querySelector<HTMLElement>('button[aria-label="Reply"]')
+            ?.querySelector<HTMLElement>('button[aria-label]')
             ?.click()
 
           setTimeout(() => {

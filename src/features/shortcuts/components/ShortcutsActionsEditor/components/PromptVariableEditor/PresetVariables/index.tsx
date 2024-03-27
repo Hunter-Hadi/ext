@@ -79,7 +79,7 @@ const PresetVariables: FC<{
                   {presetVariables.map(({ variable, permissionKeys = [] }) => {
                     if (
                       permissionKeys.length === 0 ||
-                      permissionKeys.includes(settingPromptsEditButtonKey)
+                      permissionKeys.includes(settingPromptsEditButtonKey!)
                     ) {
                       return (
                         <PresetVariablesTag

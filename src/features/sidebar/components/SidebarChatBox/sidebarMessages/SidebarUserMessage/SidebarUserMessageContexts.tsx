@@ -106,6 +106,7 @@ const SidebarUserMessageContexts: FC<{
                             color={'primary'}
                             size="small"
                             sx={{
+                              fontSize: '14px',
                               width: 'max-content',
                               bgcolor: (t) =>
                                 t.palette.mode === 'dark'

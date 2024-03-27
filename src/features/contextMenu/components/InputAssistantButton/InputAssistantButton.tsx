@@ -242,6 +242,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0]?.onSelectionEffect &&
             (() => buttonGroup[0].onSelectionEffect!(observerData))
           }
+          disabled={loading}
         >
           <Box style={{ width: '100%', height: 'inherit' }} component="div">
             <TextOnlyTooltip
@@ -325,6 +326,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[1].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          disabled={loading}
         >
           <Box>
             <TextOnlyTooltip
@@ -349,9 +351,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                       position={'absolute'}
                       top={`-${DropdownButtonStyle?.transparentHeight || 0}px`}
                       width={'100%'}
-                      height={`${
-                        DropdownButtonStyle?.transparentHeight || 0
-                      }px`}
+                      height={`${DropdownButtonStyle?.transparentHeight || 0
+                        }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />
@@ -371,13 +372,11 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     </Button>
                     <Box
                       position={'absolute'}
-                      bottom={`-${
-                        DropdownButtonStyle?.transparentHeight || 0
-                      }px`}
+                      bottom={`-${DropdownButtonStyle?.transparentHeight || 0
+                        }px`}
                       width={'100%'}
-                      height={`${
-                        DropdownButtonStyle?.transparentHeight || 0
-                      }px`}
+                      height={`${DropdownButtonStyle?.transparentHeight || 0
+                        }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />

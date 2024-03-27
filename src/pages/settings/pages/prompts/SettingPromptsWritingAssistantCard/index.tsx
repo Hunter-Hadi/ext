@@ -264,7 +264,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
             if (editButtonKey) {
               try {
                 setLoading(true)
-                const buttonSettings = snapshot.settings.buttonSettings
+                const { buttonSettings } = snapshot.settings
                 if (!buttonSettings) return
                 const { contextMenu } = buttonSettings[editButtonKey!]
                 setOriginalTreeData(contextMenu)

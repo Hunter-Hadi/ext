@@ -55,7 +55,11 @@ const VisibilitySettingCard: FC<{
   const [open, setOpen] = useState(false)
   const BoxRef = useRef<HTMLDivElement>(null)
   const handleOpen = () => {
-    setNewSite(isBlackMode ? defaultValue.blacklist : defaultValue.whitelist)
+    if (isEditingSpecialButtonKey) {
+      setNewSite(isBlackMode ? defaultValue.blacklist : defaultValue.whitelist)
+    } else {
+      setNewSite([''])
+    }
     setOpen(true)
     setTimeout(() => {
       BoxRef.current?.querySelector('input')?.focus()
@@ -172,7 +176,7 @@ const VisibilitySettingCard: FC<{
               color: 'text.primary',
             }}
             onClick={handleOpen}
-            disabled={disabled}
+            disabled={disabled || Boolean(isEditingSpecialButtonKey && memoizedDomains.length)}
           >
             {t('common:add')}
           </Button>
@@ -270,17 +274,17 @@ const VisibilitySettingCard: FC<{
               options={
                 isEditingSpecialButtonKey
                   ? InputAssistantButtonGroupConfigHostKeys.map((url) => ({
-                      label: url,
-                      value: url,
-                    }))
+                    label: url,
+                    value: url,
+                  }))
                   : void 0
               }
-              // multiple={Boolean(
-              //   settingPromptsEditButtonKey &&
-              //     inputAssistantButtonKeys.includes(
-              //       settingPromptsEditButtonKey,
-              //     ),
-              // )}
+            // multiple={Boolean(
+            //   settingPromptsEditButtonKey &&
+            //     inputAssistantButtonKeys.includes(
+            //       settingPromptsEditButtonKey,
+            //     ),
+            // )}
             />
           </Stack>
         </DialogContent>

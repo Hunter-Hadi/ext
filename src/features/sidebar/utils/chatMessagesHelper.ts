@@ -12,6 +12,7 @@ import {
 } from '@/features/chatgpt/types'
 import {
   isAIMessage,
+  isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
@@ -375,20 +376,27 @@ export const formatMessagesToLiteHistory = async (
   const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {
-    if (message.type === 'ai') {
-      const originalQuestion = (message as IAIResponseMessage).originalMessage
-        ?.metadata?.title?.title
+    if (isAIMessage(message)) {
+      const originalQuestion = message.originalMessage?.metadata?.title?.title
       if (originalQuestion && conversationType === 'Search') {
         liteHistory.push(originalQuestion)
       }
+      liteHistory.push('AI: ' + formatAIMessageContent(message))
+    } else if (isUserMessage(message)) {
+      const userMessage = message
+      let userContextText = ''
+      if (userMessage.meta?.contexts?.length) {
+        // 添加上下文
+        userContextText = 'User contexts:\n'
+        for (const context of userMessage.meta.contexts) {
+          userContextText += `  • ${context.key}: ${context.value}\n`
+        }
+        userContextText += '\n'
+      }
       liteHistory.push(
-        'AI: ' + formatAIMessageContent(message as IAIResponseMessage),
+        userContextText + 'User: ' + formatUserMessageContent(userMessage),
       )
-    } else if (message.type === 'user') {
-      liteHistory.push(
-        'User: ' + formatUserMessageContent(message as IUserChatMessage),
-      )
-    } else if (message.type === 'system' || message.type === 'third') {
+    } else if (isSystemMessage(message) || message.type === 'third') {
       if (needSystemOrThirdMessage) {
         liteHistory.push(
           `${message.type === 'system' ? `System: ` : `Third: `}` +

@@ -1502,20 +1502,16 @@ const chatPrompts: IContextMenuItem[] = [
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1571,20 +1567,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1640,20 +1632,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1709,20 +1697,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1778,20 +1762,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1847,20 +1827,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1916,20 +1892,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -1985,20 +1957,16 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backt
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
-\`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
-\`\`\`
+Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
 
 ---
 
@@ -2075,17 +2043,16 @@ Output the answer without additional context, explanation, or extra wording, jus
                     modelKey: 'Sidebar',
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple b
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-
-Here's the message to reply to:
+Your task requires you to analyse the main topic of the complete context, and reply based on the following messages:
 \`\`\`
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
@@ -2103,6 +2070,16 @@ Output the reply without additional context, explanation, or extra wording, just
 Now, write a concise reply to the message above by *writing a better version* of the following points:
 {{KEY_POINTS}}`,
                     variables: [
+                      {
+                        label: 'Context',
+                        VariableName:
+                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                        valueType: 'Text',
+                        placeholder: 'Enter context',
+                        defaultValue:
+                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
+                        systemVariable: true,
+                      },
                       {
                         label: 'Target message',
                         VariableName:
@@ -2162,13 +2139,12 @@ Your task is to write a reply as my identity to the following chat messages, whi
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs. You need to differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-
-Here's the message to reply to:
+Your task requires you to analyse the main topic of the complete context, and reply based on the following messages:
 \`\`\`
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`

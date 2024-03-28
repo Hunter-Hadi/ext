@@ -1101,7 +1101,7 @@ const InputAssistantButtonGroupConfig = {
       },
       DropdownButtonStyle: {
         borderRadius: '0 12px 12px 0',
-        padding: '2px',
+        padding: '2px 0',
       },
       InputAssistantBoxSx: {
         borderRadius: '12px',

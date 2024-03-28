@@ -410,6 +410,9 @@ export const formatMessagesToLiteHistory = async (
   // Exploring Artificial Intelligence A Conversation with AI Assistant
   // ---------------------------------------------------------
   //
+  //User contexts:
+  //  • Selected text: Aucun texte sélectionné
+  //  • Key points: Améliorer mes compétences en rédaction
   //User: Hi there! How can you assist me today?
   //
   //AI: Hello! I'm an AI trained to help with a wide range of topics. Feel free to ask me anything or let me know what you need assistance with.

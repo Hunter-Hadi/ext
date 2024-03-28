@@ -77,6 +77,9 @@ const InputAssistantPortal: FC = () => {
     if (host === 'discord.com') {
       return appSetting.userSettings?.inputAssistantButton?.discord === true
     }
+    if (host === 'app.slack.com') {
+      return appSetting.userSettings?.inputAssistantButton?.slack === true
+    }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
   useEffect(() => {

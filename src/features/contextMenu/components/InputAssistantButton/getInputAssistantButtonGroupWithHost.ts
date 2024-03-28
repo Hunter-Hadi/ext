@@ -52,6 +52,9 @@ const checkHostUsingButtonKeys = (
     case 'discord.com':
       return getDiscordButtonGroup(config)
 
+    case 'app.slack.com':
+      return getSlackButtonGroup(config)
+
     default:
       return [
         config.buttonGroupConfig.composeReplyButton,
@@ -107,9 +110,11 @@ const getOutlookButtonGroup = (
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))
   const subject =
-    (editPanelElement.querySelector(
-      'input[maxlength="255"]',
-    ) as HTMLInputElement)?.value || ''
+    (
+      editPanelElement.querySelector(
+        'input[maxlength="255"]',
+      ) as HTMLInputElement
+    )?.value || ''
   // 1. 不在列表
   // 2. 没有toOrCC的用户
   // 3. 没有fwdMsg
@@ -145,9 +150,11 @@ const getTwitterButtonGroup = (
       buttonGroupConfig.refineDraftButton,
     ]
   }
-  const detailPostPage = (Array.from(
-    document.querySelectorAll('article[data-testid="tweet"]'),
-  ) as HTMLElement[]).find((post) => {
+  const detailPostPage = (
+    Array.from(
+      document.querySelectorAll('article[data-testid="tweet"]'),
+    ) as HTMLElement[]
+  ).find((post) => {
     return post.nextElementSibling?.contains(keyElement)
   })
   if (detailPostPage) {
@@ -309,6 +316,23 @@ const getDiscordButtonGroup = (
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (keyElement?.matches('[class^="buttonsInner"]')) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getSlackButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (
+    keyElement?.matches(
+      '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+    )
+  ) {
     return [buttonGroupConfig.composeReplyButton]
   }
   return [

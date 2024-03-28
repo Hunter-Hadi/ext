@@ -98,6 +98,7 @@ export default class ChatMessagesContext {
 **Chatroom Name:** ${chatroomName || 'N/A'}
 **My Username:** ${username || 'N/A'}
 
+==================
 ${chatMessageListData.map((message) => message.text).join('\n\n')}
 `
 
@@ -105,8 +106,10 @@ ${chatMessageListData.map((message) => message.text).join('\n\n')}
       ...this.config,
       replyMessage,
       chatMessages,
-      MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT:
-        chatMessageListData.at(-1)?.text || '',
+      MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT: chatMessageListData
+        .slice(-10)
+        .map((message) => message.text)
+        .join('\n\n'),
       MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
     }
   }

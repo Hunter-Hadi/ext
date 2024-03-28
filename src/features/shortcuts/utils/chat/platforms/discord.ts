@@ -13,24 +13,26 @@ const discordGetChatMessageContentAndDate = (
     messageBox?.querySelector<HTMLElement>('time')?.getAttribute('datetime') ||
     ''
   let content = ''
-  const messageContent = messageBox?.querySelector<HTMLElement>(
-    ':not([id^="message-reply-context"]) > * > [id^="message-content"]',
-  )
-  if (messageContent) {
-    content = messageContent?.innerText || ''
-    // if message just only contains emojis
-    if (!content) {
-      const emojiContainers = Array.from(
-        messageContent.querySelectorAll<HTMLElement>(
-          '[clastt^="emojiContainer"]',
-        ),
-      )
-      if (emojiContainers.length > 0) {
-        content = emojiContainers
-          .map((emojiContainer) =>
-            emojiContainer.querySelector('img')?.getAttribute('aria-label'),
-          )
-          .join('')
+  if (messageBox) {
+    const messageContentBox = messageBox.querySelector<HTMLElement>(
+      ':not([id^="message-reply-context"]) > * > [id^="message-content"]',
+    )
+    if (messageContentBox) {
+      content = messageContentBox?.innerText || ''
+      // if message just only contains emojis
+      if (!content) {
+        const emojiContainers = Array.from(
+          messageContentBox.querySelectorAll<HTMLElement>(
+            '[clastt^="emojiContainer"]',
+          ),
+        )
+        if (emojiContainers.length > 0) {
+          content = emojiContainers
+            .map((emojiContainer) =>
+              emojiContainer.querySelector('img')?.getAttribute('aria-label'),
+            )
+            .join('')
+        }
       }
     }
   }
@@ -40,7 +42,6 @@ const discordGetChatMessageContentAndDate = (
 const discordGetChatMessagesFromNodeList = (
   messageBoxList: HTMLElement[],
 ): IChatMessageData[] => {
-  //   debugger
   const messages: IChatMessageData[] = []
   let username = ''
   for (const messageBox of messageBoxList) {
@@ -56,7 +57,7 @@ const discordGetChatMessagesFromNodeList = (
       username = usernameBlock.innerText
     }
 
-    // if doesn't have username, it means the data capture is not successful
+    // if doesn't have username, it means the data capture is not successful, need to relocate the usernameBlock selector
     if (username) {
       const { datetime, messageContent } =
         discordGetChatMessageContentAndDate(messageBox)
@@ -142,7 +143,7 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
               message.datetime === replyMessage!.datetime &&
               message.content === replyMessage!.messageContent,
           )
-        : -1,
+        : chatMessages.findLastIndex((message) => message.user !== username),
     )
 
     return chatMessagesContext.data

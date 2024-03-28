@@ -1,5 +1,12 @@
 import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
-import { discordGetChatMessages, discordGetDraftContent } from '@/features/shortcuts/utils/chat/platforms/discord'
+import {
+  discordGetChatMessages,
+  discordGetDraftContent,
+} from '@/features/shortcuts/utils/chat/platforms/discord'
+import {
+  slackGetChatMessages,
+  slackGetDraftContent,
+} from '@/features/shortcuts/utils/chat/platforms/slack'
 import ChatMessagesContext, {
   type IChatMessagesContextData,
 } from '@/features/shortcuts/utils/ChatMessagesContext'
@@ -20,6 +27,9 @@ export const getChatMessagesContent = async (
     if (host === 'discord.com') {
       return await discordGetChatMessages(inputAssistantButton)
     }
+    if (host === 'app.slack.com') {
+      return await slackGetChatMessages(inputAssistantButton)
+    }
   }
   return ChatMessagesContext.emptyData
 }
@@ -35,6 +45,9 @@ export const getChatMessageDraftContent = async (
     const host = getCurrentDomainHost()
     if (host === 'discord.com') {
       return await discordGetDraftContent(inputAssistantButton)
+    }
+    if (host === 'app.slack.com') {
+      return await slackGetDraftContent(inputAssistantButton)
     }
   }
   return ''

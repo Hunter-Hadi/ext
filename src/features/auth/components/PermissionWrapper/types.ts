@@ -53,6 +53,8 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'REDDIT_REFINE_DRAFT_BUTTON',
   'DISCORD_COMPOSE_REPLY_BUTTON',
   'DISCORD_REFINE_DRAFT_BUTTON',
+  'SLACK_COMPOSE_REPLY_BUTTON',
+  'SLACK_REFINE_DRAFT_BUTTON',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SIDEBAR_SEARCH_WITH_AI',
@@ -877,6 +879,38 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Discord dropdown button - refine draft
   DISCORD_REFINE_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-chat-app-website.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Slack cta button - compose reply
+  SLACK_COMPOSE_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-chat-app-website.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Slack dropdown button - refine draft
+  SLACK_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/input-assistant-chat-app-website.png',
     )}`,

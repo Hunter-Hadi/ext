@@ -127,7 +127,7 @@ const SidebarTopBar: FC = () => {
                     currentUserPlan.name === 'new_user' ||
                     currentUserPlan.name === 'pro_gift'
                       ? '68'
-                      : '40',
+                      : '54',
                 })}
               </Typography>
             </Stack>

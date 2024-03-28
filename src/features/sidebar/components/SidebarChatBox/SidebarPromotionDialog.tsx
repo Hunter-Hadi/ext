@@ -174,11 +174,7 @@ const SidebarPromotionDialog = () => {
         >
           <ResponsiveImage
             src={getChromeExtensionAssetsURL(
-              currentUserPlan.name === 'free' ||
-                currentUserPlan.name === 'new_user' ||
-                currentUserPlan.name === 'pro_gift'
-                ? '/images/activity/promotion-dialog-banner-free.png'
-                : '/images/activity/promotion-dialog-banner.png',
+              '/images/activity/promotion-dialog-banner.png',
             )}
             width={832}
             height={468}

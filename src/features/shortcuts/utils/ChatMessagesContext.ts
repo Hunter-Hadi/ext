@@ -85,8 +85,13 @@ export default class ChatMessagesContext {
   }
   get data(): IChatMessagesContextData {
     const { serverName, chatroomName, username } = this.config
+    let replyMessageIndex =
+      this.chatMessages.length >= 30 ? 30 : this.chatMessages.length
     const chatMessages = this.chatMessages.slice(-30)
-    const replyMessage = chatMessages.at(this.replyMessageIndex)
+
+    replyMessageIndex =
+      this.replyMessageIndex - this.chatMessages.length + replyMessageIndex
+    const replyMessage = chatMessages.at(replyMessageIndex)
 
     const chatMessageListData = createChatMessageListData(chatMessages)
 
@@ -104,7 +109,7 @@ ${chatMessageListData.map((message) => message.text).join('\n\n')}
       replyMessage,
       chatMessages,
       MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT:
-        chatMessageListData.at(this.replyMessageIndex)?.text ?? '',
+        chatMessageListData.at(replyMessageIndex)?.text ?? '',
       MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
     }
   }

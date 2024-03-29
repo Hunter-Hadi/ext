@@ -20,6 +20,9 @@ const discordGetChatMessageContentAndDate = (
     const messageInlineEditTextBox = messageBox.querySelector<HTMLElement>(
       '[class^="channelTextArea"] [role="textbox"]',
     )
+    const embedWrappers = Array.from(
+      messageBox.querySelectorAll<HTMLElement>('[class^="embedWrapper"]') || [],
+    )
     if (messageContentBox) {
       content = messageContentBox?.innerText || ''
       // if message just only contains emojis
@@ -39,6 +42,16 @@ const discordGetChatMessageContentAndDate = (
       }
     } else if (messageInlineEditTextBox) {
       content = messageInlineEditTextBox?.innerText || ''
+    } else if (embedWrappers.length) {
+      for (const embedWrapper of embedWrappers) {
+        content += `${
+          embedWrapper.querySelector<HTMLElement>('[class^="embedTitle"]')
+            ?.innerText || ''
+        }${
+          embedWrapper.querySelector<HTMLElement>('[class^="embedDescription"]')
+            ?.innerText || ''
+        }\n`
+      }
     }
   }
   return { datetime, messageContent: content }
@@ -50,11 +63,6 @@ const discordGetChatMessagesFromNodeList = (
   const messages: IChatMessageData[] = []
   let username = ''
   for (const messageBox of messageBoxList) {
-    // `welcome new user` notification is not a message
-    // if (messageBox.querySelector('[class^="welcomeCTA"]')) {
-    //   continue
-    // }
-
     const usernameBlock = messageBox.querySelector<HTMLElement>(
       ':not([id^="message-reply-context"]) > [class^="username"]',
     )
@@ -106,6 +114,8 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
       '[id^="chat-messages"]:not([class^="container"])',
     ) || [],
   )
+
+  debugger
 
   if (chatMessagesNodeList.length) {
     const channelTextArea = findParentEqualSelector(

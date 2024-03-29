@@ -6,7 +6,8 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { MaxAIDALLEChat } from '@/background/src/chat'
-import { IMaxAIChatMessage } from '@/background/src/chat/UseChatGPTChat/types'
+import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
+import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
@@ -42,7 +43,7 @@ class MaxAIDALLEChatProvider implements ChatAdapterInterface {
     question,
   ) => {
     const messageId = uuidV4()
-    const chat_history: IMaxAIChatMessage[] = []
+    const chat_history: IMaxAIRequestHistoryMessage[] = []
     if (this.maxAIDALLEChat.conversation) {
       if (this.maxAIDALLEChat.conversation.meta.systemPrompt) {
         chat_history.push({
@@ -57,32 +58,15 @@ class MaxAIDALLEChatProvider implements ChatAdapterInterface {
       }
       if (question.meta) {
         question.meta.historyMessages?.forEach((message) => {
-          chat_history.push({
-            role:
-              message.type === 'ai'
-                ? 'ai'
-                : message.type === 'user'
-                ? 'human'
-                : 'system',
-            content: [
-              {
-                type: 'text',
-                text: message.text,
-              },
-            ],
-          })
+          chat_history.push(chatMessageToMaxAIRequestMessage(message))
         })
         question.meta.includeHistory = false
         question.meta.maxHistoryMessageCnt = 0
       }
     }
+    const questionMessage = chatMessageToMaxAIRequestMessage(question)
     await this.maxAIDALLEChat.askChatGPT(
-      [
-        {
-          type: 'text',
-          text: question.text,
-        },
-      ],
+      questionMessage.content,
       {
         taskId: question.messageId,
         chat_history,

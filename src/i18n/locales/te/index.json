@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "లేదా PDF ఇక్కడ వదలండి",
     "home_view_content_nav__image_uploader__choose_image": "చిత్రం ఎంచుకోండి",
     "home_view_content_nav__image_uploader__drop_image_here": "లేదా చిత్రం ఇక్కడ వదలండి",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF/చిత్రం ఇక్కడ వదలండి",
+    "home_view_content_nav__drop_pdf_and_image_here": "ఇక్కడ దస్త్రం/చిత్రాన్ని డ్రాప్ చేయండి",
     "home_view_content_nav__ai_search_placeholder": "వెబ్‌ను అడిగండి...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI మోడల్ మార్చు",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3వ పార్టీ AI ప్రొవైడర్‌లు",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-క్లిక్ చాట్ కోసం అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "మీకు సంబంధితమైన సోషల్ మీడియా సమాచారాన్ని సెకన్లుగా AI ఉత్పత్తి చేసేందుకు అనువర్తనం చేయండి.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-క్లిక్ చాట్ కోసం అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "మీకు సంబంధితమైన సోషల్ మీడియా సమాచారాన్ని సెకన్లుగా AI ఉత్పత్తి చేసేందుకు అనువర్తనం చేయండి."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "మీకు సంబంధితమైన సోషల్ మీడియా సమాచారాన్ని సెకన్లుగా AI ఉత్పత్తి చేసేందుకు అనువర్తనం చేయండి.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "మాక్స్‌ఎయికి పత్రాలు లేదా చిత్రాలను అప్‌లోడ్ చేయండి",
+    "provider__chatgpt__upload__accept_docs_tooltip": "మాక్స్‌ఐకి పత్రాలను అప్‌లోడ్ చేయండి",
+    "provider__chatgpt__upload_file_error__too_long__text": "అప్లోడ్ చేసిన ఫైల్ చాలా పెద్దదిగా ఉంది. మీరు ఒక పెద్ద కంటెక్స్ట్ విండోతో AI మోడల్ ఉపయోగించడం లేదా కనిపించిన సైజులో ఫైల్ అప్లోడ్ చేయడం పరిగణించండి."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

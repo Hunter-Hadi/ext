@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "અથવા PDF અહીં નાખો",
     "home_view_content_nav__image_uploader__choose_image": "છબી પસંદ કરો",
     "home_view_content_nav__image_uploader__drop_image_here": "અથવા છબી અહીં નાખો",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF/છબી અહીં નાખો",
+    "home_view_content_nav__drop_pdf_and_image_here": "અહીં દસ્તાવેજ / છબી નીચે મૂકો",
     "home_view_content_nav__ai_search_placeholder": "વેબ પૂછો...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI મોડલ બદલો",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3જી પક્ષ AI પ્રદાતાઓ",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-ક્લિક ચેટ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "AI તમારા માટે વ્યક્તિગત સોશિયલ મીડિયા જવાબો બનાવી શકે છે, જેને તમે સેકંડમાં પ્રાપ્ત કરી શકો છો.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-ક્લિક ચેટ માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI તમારા માટે વ્યક્તિગત સોશિયલ મીડિયા જવાબો બનાવી શકે છે, જેને તમે સેકંડમાં પ્રાપ્ત કરી શકો છો."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI તમારા માટે વ્યક્તિગત સોશિયલ મીડિયા જવાબો બનાવી શકે છે, જેને તમે સેકંડમાં પ્રાપ્ત કરી શકો છો.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI માટે દસ્તાવેજો અથવા છબીઓ અપલોડ કરો",
+    "provider__chatgpt__upload__accept_docs_tooltip": "મેક્સએઆઈ પર દસ્તાવેજો અપલોડ કરો",
+    "provider__chatgpt__upload_file_error__too_long__text": "અપલોડ કરેલી ફાઇલ ખૂબ મોટી છે. વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરવાની વાચક કરો, અથવા એક નાની સાઇઝની ફાઇલ અપલોડ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

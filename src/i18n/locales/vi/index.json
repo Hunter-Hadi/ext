@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "hoặc thả PDF vào đây",
     "home_view_content_nav__image_uploader__choose_image": "Chọn hình ảnh",
     "home_view_content_nav__image_uploader__drop_image_here": "hoặc thả hình ảnh vào đây",
-    "home_view_content_nav__drop_pdf_and_image_here": "Thả PDF/hình ảnh vào đây",
+    "home_view_content_nav__drop_pdf_and_image_here": "Thả tài liệu/hình ảnh vào đây",
     "home_view_content_nav__ai_search_placeholder": "Hỏi web...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Chuyển đổi mô hình AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Nhà cung cấp AI bên thứ ba",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Nâng cấp để chat chỉ với 1 cú nhấp chuột",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Nâng cấp để chat chỉ với 1 cú nhấp chuột",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Tải tài liệu hoặc hình ảnh lên MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Tải tài liệu lên MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Tệp tải lên quá lớn. Hãy xem xét sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên một tệp có kích thước nhỏ hơn."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

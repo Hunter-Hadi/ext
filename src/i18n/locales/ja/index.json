@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "またはここにPDFをドロップ",
     "home_view_content_nav__image_uploader__choose_image": "画像を選択",
     "home_view_content_nav__image_uploader__drop_image_here": "またはここに画像をドロップ",
-    "home_view_content_nav__drop_pdf_and_image_here": "ここにPDF/画像をドロップ",
+    "home_view_content_nav__drop_pdf_and_image_here": "ドキュメント/画像をここにドロップ",
     "home_view_content_nav__ai_search_placeholder": "ウェブに質問してください...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AIモデルの切り替え",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "サードパーティのAIプロバイダ",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1クリックでチャットをアップグレード",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "AIによるパーソナライズされたソーシャルメディアの返信を数秒で生成します。",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1クリックでチャットをアップグレード",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AIによるパーソナライズされたソーシャルメディアの返信を数秒で生成します。"
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AIによるパーソナライズされたソーシャルメディアの返信を数秒で生成します。",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAIへドキュメントまたは画像をアップロードする",
+    "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIへドキュメントをアップロード",
+    "provider__chatgpt__upload_file_error__too_long__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、サイズの小さいファイルをアップロードしてください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

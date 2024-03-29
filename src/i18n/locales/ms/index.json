@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "atau letakkan PDF di sini",
     "home_view_content_nav__image_uploader__choose_image": "Pilih imej",
     "home_view_content_nav__image_uploader__drop_image_here": "atau letakkan imej di sini",
-    "home_view_content_nav__drop_pdf_and_image_here": "Letakkan PDF/imej di sini",
+    "home_view_content_nav__drop_pdf_and_image_here": "Letakkan dokumen/gambar di sini",
     "home_view_content_nav__ai_search_placeholder": "Tanya web...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Tukar model AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Penyedia AI pihak ketiga",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Naik taraf untuk sembang 1-klik",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Biarkan AI menghasilkan balasan media sosial yang dipersonalisasi untuk anda dalam beberapa saat.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Naik taraf untuk sembang 1-klik",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Biarkan AI menghasilkan balasan media sosial yang dipersonalisasi untuk anda dalam beberapa saat."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Biarkan AI menghasilkan balasan media sosial yang dipersonalisasi untuk anda dalam beberapa saat.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Muat naik dokumen atau imej ke MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Muat naik dokumen ke MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Fail muat naik fail terlalu besar. Pertimbangkan menggunakan model AI dengan tetingkap konteks yang lebih besar, atau muat naik fail yang lebih kecil."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

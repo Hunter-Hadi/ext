@@ -73,7 +73,8 @@ export const AppSettingsInit = () => {
   useThemeUpdateListener()
   useEffect(() => {
     const updateAppSettings = async () => {
-      const liteChromeExtensionDBStorage = await clientGetLiteChromeExtensionDBStorage()
+      const liteChromeExtensionDBStorage =
+        await clientGetLiteChromeExtensionDBStorage()
       if (liteChromeExtensionDBStorage) {
         setAppDBStorage({
           ...liteChromeExtensionDBStorage,

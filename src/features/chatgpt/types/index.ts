@@ -216,6 +216,7 @@ export interface IChatUploadFile {
   uploadErrorMessage?: string
   uploadedUrl?: string
   uploadedFileId?: string
+  extractedContent?: string
   meta?: any
 }
 

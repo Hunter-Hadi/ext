@@ -14,6 +14,7 @@ import AutoHeightTextarea, {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
+import useListenAIProviderUploadError from '@/features/chatgpt/hooks/upload/useListenAIProviderUploadError'
 import {
   IAIResponseMessage,
   IChatMessage,
@@ -60,10 +61,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isSetVariables, setIsSetVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
-  const {
-    currentSidebarConversationType,
-    currentSidebarConversationId,
-  } = useSidebarSettings()
+  const { currentSidebarConversationType, currentSidebarConversationId } =
+    useSidebarSettings()
 
   const textareaPlaceholder = useMemo(() => {
     if (currentSidebarConversationType === 'Summary') {
@@ -136,6 +135,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
     }
   }, [messages])
+  useListenAIProviderUploadError()
 
   return (
     <Stack
@@ -160,8 +160,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           // 这么做条件渲染是为了，让点击事件在 isShowChatBoxHomeView 为 false 时，可以正常执行
           !isShowChatBoxHomeView
             ? {
-              display: 'none',
-            }
+                display: 'none',
+              }
             : null
         }
       />
@@ -188,7 +188,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         spacing={1}
         p={1}
         flexShrink={0}
-      // bgcolor={'#fff'}
+        // bgcolor={'#fff'}
       >
         <Stack width={'100%'} alignItems={'center'} justifyContent={'center'}>
           <Box

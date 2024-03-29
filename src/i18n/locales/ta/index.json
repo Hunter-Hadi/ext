@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "அல்லது PDF ஐ இங்கே விடுங்கள்",
     "home_view_content_nav__image_uploader__choose_image": "படத்தைத் தேர்ந்தெடுக்கவும்",
     "home_view_content_nav__image_uploader__drop_image_here": "அல்லது படத்தை இங்கே விடுங்கள்",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF/படத்தை இங்கே விடுங்கள்",
+    "home_view_content_nav__drop_pdf_and_image_here": "இங்கே ஆவணம்/படத்தை விடுங்கள்",
     "home_view_content_nav__ai_search_placeholder": "வலையில் கேள்வி செய்யுங்கள்...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI மாதிரி மாற்று",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3-ஆம் தரப்பு AI வழங்குநர்கள்",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-கிளிக் செய்து உரையாட",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "நொடிக்குள் உங்களுக்கு பிரதிநிதிப் பதில்களை உருவாக்கும் AI ஐ அனுபவிப்பதற்கு அனுமதி செய்யுங்கள்.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-கிளிக் செய்து உரையாட",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "நொடிக்குள் உங்களுக்கு பிரதிநிதிப் பதில்களை உருவாக்கும் AI ஐ அனுபவிப்பதற்கு அனுமதி செய்யுங்கள்."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "நொடிக்குள் உங்களுக்கு பிரதிநிதிப் பதில்களை உருவாக்கும் AI ஐ அனுபவிப்பதற்கு அனுமதி செய்யுங்கள்.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "மேக்ஸ் ஏஐக்கு ஆவணங்களை அல்லது படங்களை பதிவேற்றுங்கள்",
+    "provider__chatgpt__upload__accept_docs_tooltip": "மேலும் ஆவணங்களை மேம்படுத்துங்கள் MaxAI-க்கு பதிவேற்று",
+    "provider__chatgpt__upload_file_error__too_long__text": "பதிவேற்றப்பட்ட கோப்பு மிகப் பெரியது. ஒரு பெரிய சூழல் சாளரத்தைப் பயன்படுத்தி அதை மீண்டும் பதிவேற்றுவதை பார்க்கவும், அல்லது சிறிய அளவில் கோப்பை பதிவேற்றுங்கள்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

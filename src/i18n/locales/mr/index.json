@@ -575,7 +575,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "किंवा येथे PDF ड्रॉप करा",
     "home_view_content_nav__image_uploader__choose_image": "प्रतिमा निवडा",
     "home_view_content_nav__image_uploader__drop_image_here": "किंवा येथे प्रतिमा ड्रॉप करा",
-    "home_view_content_nav__drop_pdf_and_image_here": "येथे PDF/प्रतिमा ड्रॉप करा",
+    "home_view_content_nav__drop_pdf_and_image_here": "येथे दस्तावेज/प्रतिमा ड्रॉप करा",
     "home_view_content_nav__ai_search_placeholder": "वेबला प्रश्न करा...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI मॉडेल बदला",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3rd-पार्टी AI प्रदात्या",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "एक क्लिकमध्ये चॅटसाठी अपग्रेड करा",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "AI ने सेकंदात आपल्यासाठी वैयक्तिकृत सोशल मिडिया प्रतिसाद तयार करण्यास मदत करा.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "एक क्लिकमध्ये चॅटसाठी अपग्रेड करा",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI ने सेकंदात आपल्यासाठी वैयक्तिकृत सोशल मिडिया प्रतिसाद तयार करण्यास मदत करा."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI ने सेकंदात आपल्यासाठी वैयक्तिकृत सोशल मिडिया प्रतिसाद तयार करण्यास मदत करा.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI वर दस्तऐवज किंवा प्रतिमा अपलोड करा",
+    "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIवर दस्तऐवज अपलोड करा",
+    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड केलेली फाइल खूप मोठी आहे. एक AI मॉडेल वापरून एक मोठ्या संदर्भ विंडोसह वापरण्याचा विचार करा, किंवा एक लहान आकाराची फाइल अपलोड करा."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

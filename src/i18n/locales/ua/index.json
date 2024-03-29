@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "або перетягніть PDF сюди",
     "home_view_content_nav__image_uploader__choose_image": "Виберіть зображення",
     "home_view_content_nav__image_uploader__drop_image_here": "або перетягніть зображення сюди",
-    "home_view_content_nav__drop_pdf_and_image_here": "Перетягніть PDF/зображення сюди",
+    "home_view_content_nav__drop_pdf_and_image_here": "Перетягніть документ/зображення сюди",
     "home_view_content_nav__ai_search_placeholder": "Запитайте у веб...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Переключити модель штучного інтелекту",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Постачальники штучного інтелекту сторонніх розробників",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Оновлення для 1-клікового чату",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді у соціальних мережах за кілька секунд.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Оновлення для 1-клікового чату",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді у соціальних мережах за кілька секунд."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді у соціальних мережах за кілька секунд.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Завантажте документи або зображення до MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Завантажити документи до MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Завантажений файл занадто великий. Розгляньте можливість використання моделі штучного інтелекту з більшим вікном контексту або завантаження файлу меншого розміру."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -3,16 +3,18 @@ import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilValue } from 'recoil'
 
+import { checkFileTypeIsImage } from '@/background/utils/uplpadFileProcessHelper'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ChatIconFileList, {
   ChatIconFileListProps,
 } from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
-import useAIProviderUpload from '@/features/chatgpt/hooks/useAIProviderUpload'
+import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
+import FileExtractor from '@/features/sidebar/utils/FileExtractor'
 
 interface IChatIconFileItemProps extends Omit<ChatIconFileListProps, 'files'> {
   disabled?: boolean
@@ -46,18 +48,38 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     if (!selectedUploadFiles || canUploadCount === 0) {
       return
     }
-    let filesArray = Array.from(selectedUploadFiles)
+    let filesArray: File[] = Array.from(selectedUploadFiles)
     filesArray = filesArray.slice(0, canUploadCount)
     if (filesArray.length === 0) {
       return
     }
+    const waitExtractTextFiles: File[] = []
+    const extractedTextFiles: IChatUploadFile[] = []
+    filesArray = filesArray.filter((file) => {
+      if (FileExtractor.canExtractTextFromFileName(file.name)) {
+        waitExtractTextFiles.push(file)
+        return false
+      }
+      return checkFileTypeIsImage(file)
+    })
+    await Promise.all(
+      waitExtractTextFiles.map(async (waitExtractTextFile) => {
+        const extractedResult = await FileExtractor.extractFile(
+          waitExtractTextFile,
+        )
+        if (extractedResult.success) {
+          extractedTextFiles.push(extractedResult.chatUploadFile)
+        }
+      }),
+    )
+
     // upload
     const newUploadFiles = await formatClientUploadFiles(
       filesArray,
       maxFileSize,
     )
 
-    await aiProviderUploadFiles(newUploadFiles)
+    await aiProviderUploadFiles(extractedTextFiles.concat(newUploadFiles))
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''

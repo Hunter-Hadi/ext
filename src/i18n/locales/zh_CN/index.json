@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "或将PDF文件拖到此处",
     "home_view_content_nav__image_uploader__choose_image": "选择图像",
     "home_view_content_nav__image_uploader__drop_image_here": "或将图像拖到此处",
-    "home_view_content_nav__drop_pdf_and_image_here": "将PDF/图像拖到此处",
+    "home_view_content_nav__drop_pdf_and_image_here": "将文档/图片拖放到这里",
     "home_view_content_nav__ai_search_placeholder": "询问网络...",
     "sidebar__ai_provider__model_selector__button__tooltip": "切换AI模型",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "第三方AI提供商",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "升级为1键聊天",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "让AI在几秒钟内为您生成个性化的社交媒体回复。",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "升级为1键聊天",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "让AI在几秒钟内为您生成个性化的社交媒体回复。"
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "让AI在几秒钟内为您生成个性化的社交媒体回复。",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "上传文档或图片到MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "上传文档至MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "上传的文件太大。考虑使用具有更大上下文窗口的AI模型，或上传较小尺寸的文件。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "അല്ലെങ്കിൽ PDF ഇവിടെ ഡ്രോപ്പുചെയ്യുക",
     "home_view_content_nav__image_uploader__choose_image": "ചിത്രം തിരഞ്ഞെടുക്കുക",
     "home_view_content_nav__image_uploader__drop_image_here": "അല്ലെങ്കിൽ ചിത്രം ഇവിടെ ഡ്രോപ്പുചെയ്യുക",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF / ചിത്രം ഇവിടെ ഡ്രോപ്പുചെയ്യുക",
+    "home_view_content_nav__drop_pdf_and_image_here": "ഇവിടെ ഡോക്യുമെന്റ്/ചിത്രം ഇടുക",
     "home_view_content_nav__ai_search_placeholder": "വെബ്ബിൽ ചോദിക്കുക...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI മോഡൽ മാറ്റുക",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3-ാം പാർട്ടി AI പ്രൊവൈഡേഴ്സുകൾ",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "ഒരു ക്ലിക്ക് ചാറ്റിന് അപ്ഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "സെക്കന്റിൽ നിങ്ങളുടെ പ്രൊഫൈൽക്ക് പ്രത്യേകിച്ച് സോഷ്യൽ മീഡിയ ഉത്തരങ്ങൾ ജനറേറ്റ് ചെയ്യാൻ AI ഉപയോഗിക്കുക.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "ഒരു ക്ലിക്ക് ചാറ്റിന് അപ്ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "സെക്കന്റിൽ നിങ്ങളുടെ പ്രൊഫൈൽക്ക് പ്രത്യേകിച്ച് സോഷ്യൽ മീഡിയ ഉത്തരങ്ങൾ ജനറേറ്റ് ചെയ്യാൻ AI ഉപയോഗിക്കുക."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "സെക്കന്റിൽ നിങ്ങളുടെ പ്രൊഫൈൽക്ക് പ്രത്യേകിച്ച് സോഷ്യൽ മീഡിയ ഉത്തരങ്ങൾ ജനറേറ്റ് ചെയ്യാൻ AI ഉപയോഗിക്കുക.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "ഡോക്യുമെന്റുകൾ അല്ലെങ്കിൽ ചിത്രങ്ങൾ MaxAI-യിലേക്ക് അപ്‌ലോഡ് ചെയ്യുക",
+    "provider__chatgpt__upload__accept_docs_tooltip": "മാക്സ് എയിയിലേക്ക് ഡോക്യുമെന്റുകൾ അപ്‌ലോഡ് ചെയ്യുക",
+    "provider__chatgpt__upload_file_error__too_long__text": "അപ്‌ലോഡ് ചെയ്ത ഫയല്‍ വളരെ വലുതാണ്. ഒരു പ്രമാണം ഉപയോഗിക്കുന്നതിന് വലുതായ AI മോഡല്‍ ഉപയോഗിക്കുകയോ, ചെറിയ വലിപ്പത്തിലുള്ള ഒരു ഫയല്‍ അപ്‌ലോഡ് ചെയ്യുകയോ ആലോചിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

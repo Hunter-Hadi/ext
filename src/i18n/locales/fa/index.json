@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "یا فایل PDF را اینجا رها کنید",
     "home_view_content_nav__image_uploader__choose_image": "انتخاب تصویر",
     "home_view_content_nav__image_uploader__drop_image_here": "یا تصویر را اینجا رها کنید",
-    "home_view_content_nav__drop_pdf_and_image_here": "فایل PDF/تصویر را اینجا رها کنید",
+    "home_view_content_nav__drop_pdf_and_image_here": "فایل/تصویر را اینجا رها کنید",
     "home_view_content_nav__ai_search_placeholder": "از وب بپرسید...",
     "sidebar__ai_provider__model_selector__button__tooltip": "تغییر مدل هوش مصنوعی",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "ارائه دهنده های هوش مصنوعی شخص ثالث",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "ارتقا برای چت با یک کلیک",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "ارتقا برای چت با یک کلیک",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "بارگذاری سند یا تصویر به MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "بارگذاری اسناد به MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "فایل آپلود شده بیش از حد بزرگ است. در نظر داشته باشید که از یک مدل هوش مصنوعی با پنجره متن بزرگتر استفاده کنید یا یک فایل با اندازه کوچکتر آپلود کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

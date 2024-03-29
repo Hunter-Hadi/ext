@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "sau plasați PDF aici",
     "home_view_content_nav__image_uploader__choose_image": "Alegeți imaginea",
     "home_view_content_nav__image_uploader__drop_image_here": "sau plasați imaginea aici",
-    "home_view_content_nav__drop_pdf_and_image_here": "Plasați PDF/imagine aici",
+    "home_view_content_nav__drop_pdf_and_image_here": "Așezați documentul/imaginea aici",
     "home_view_content_nav__ai_search_placeholder": "Întrebați web-ul...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Comutați modelul AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Furnizori AI terți",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Upgradează pentru chat cu un singur clic",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Permiteți IA să genereze răspunsuri personalizate pentru rețelele sociale în câteva secunde.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Upgradează pentru chat cu un singur clic",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Permiteți IA să genereze răspunsuri personalizate pentru rețelele sociale în câteva secunde."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Permiteți IA să genereze răspunsuri personalizate pentru rețelele sociale în câteva secunde.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Încărcați documente sau imagini în MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Încărcați documente în MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Fișierul încărcat este prea mare. Luați în considerare utilizarea unui model AI cu o fereastră de context mai mare sau încărcați un fișier de dimensiuni mai mici."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

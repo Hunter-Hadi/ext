@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "tai pudota PDF-tiedosto tähän",
     "home_view_content_nav__image_uploader__choose_image": "Valitse kuva",
     "home_view_content_nav__image_uploader__drop_image_here": "tai pudota kuva tähän",
-    "home_view_content_nav__drop_pdf_and_image_here": "Pudota PDF/kuva tähän",
+    "home_view_content_nav__drop_pdf_and_image_here": "Pudota asiakirja/kuva tähän",
     "home_view_content_nav__ai_search_placeholder": "Kysy verkkoa...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Vaihda AI-malli",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Kolmannen osapuolen AI-palveluntarjoajat",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Päivitä 1 napsautuksella chat",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Anna tekoälyn luoda sinulle henkilökohtaisia sosiaalisen median vastauksia sekunneissa.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Päivitä 1 napsautuksella chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Anna tekoälyn luoda sinulle henkilökohtaisia sosiaalisen median vastauksia sekunneissa."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Anna tekoälyn luoda sinulle henkilökohtaisia sosiaalisen median vastauksia sekunneissa.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Lataa asiakirjoja tai kuvia MaxAI:hin",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Lataa asiakirjat MaxAI:hin",
+    "provider__chatgpt__upload_file_error__too_long__text": "Ladattu tiedosto on liian suuri. Harkitse suuremman kontekstiruudun omaavan tekoälymallin käyttämistä tai pienemmän kokoisen tiedoston lataamista."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

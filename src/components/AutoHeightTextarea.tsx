@@ -12,6 +12,7 @@ import React, {
 } from 'react'
 import { useRecoilValue } from 'recoil'
 
+import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
@@ -21,7 +22,6 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { throttle } from '@/features/common/hooks/useThrottle'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { useUploadImagesAndSwitchToMaxAIVisionModel } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -173,15 +173,11 @@ const AutoHeightTextarea: FC<{
   minLine?: number
 }> = (props) => {
   const appState = useRecoilValue(AppState)
-  const {
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationId, currentSidebarConversationType } =
+    useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
-  const {
-    isMaxAIVisionModel,
-    uploadImagesAndSwitchToMaxAIVisionModel,
-  } = useUploadImagesAndSwitchToMaxAIVisionModel()
+  const { uploadFilesToMaxAIModel, isContainMaxAIModelUploadFile } =
+    useMaxAIModelUploadFile()
   const {
     defaultValue,
     onChange,
@@ -489,25 +485,17 @@ const AutoHeightTextarea: FC<{
           }}
           onPaste={async (event) => {
             event.stopPropagation()
-            if (isMaxAIVisionModel) {
+            const clipboardData = event.clipboardData
+            const clipboardFiles: File[] = Array.from(
+              clipboardData?.items || [],
+            )
+              .map((clipboardDataItem) => clipboardDataItem.getAsFile?.())
+              .filter((file): file is File => file !== null)
+            if (isContainMaxAIModelUploadFile(clipboardFiles)) {
+              // 移除剪贴板的文本
+              event.preventDefault()
               // 粘贴处理
-              const clipboardData = event.clipboardData
-              const items = clipboardData?.items
-              const images = Array.from(items).filter((item) => {
-                return item.type.indexOf('image') !== -1
-              })
-              if (images.length) {
-                console.log('粘贴图片', images)
-                event.preventDefault()
-                const imageFiles = []
-                for (const image of images) {
-                  const file = image.getAsFile()
-                  if (file) {
-                    imageFiles.push(file)
-                  }
-                }
-                await uploadImagesAndSwitchToMaxAIVisionModel(imageFiles)
-              }
+              await uploadFilesToMaxAIModel(clipboardFiles)
             }
           }}
           // onKeyDownCapture={(event) => {

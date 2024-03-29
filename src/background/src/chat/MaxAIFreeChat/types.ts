@@ -1,3 +1,4 @@
+import { MAXAI_NORMAL_MODEL_UPLOAD_CONFIG } from '@/background/src/chat/constant'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 
 export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
@@ -14,6 +15,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
       t(`client:provider__free_ai__model__special__description`),
     // description: (t) =>
     //   t(`client:provider__free_ai__model__mistral_7b_instruct__description`),
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'openchat-7b',
@@ -24,6 +26,7 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Openchat',
     description: (t) =>
       t(`client:provider__free_ai__model__openchat_7b__description`),
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'mythomist-7b',
@@ -34,5 +37,6 @@ export const MAXAI_FREE_MODELS: IAIProviderModel[] = [
     poweredBy: 'MythoMist',
     description: (t) =>
       t(`client:provider__free_ai__model__mythomist_7b__description`),
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
 ]

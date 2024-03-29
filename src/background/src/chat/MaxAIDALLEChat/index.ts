@@ -3,8 +3,8 @@ import Browser from 'webextension-polyfill'
 import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
-  IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
@@ -79,7 +79,7 @@ class MaxAIDALLEChat extends BaseChat {
     options?: {
       taskId: string
       regenerate?: boolean
-      chat_history?: IMaxAIChatMessage[]
+      chat_history?: IMaxAIRequestHistoryMessage[]
       meta?: Record<string, any>
     },
     onMessage?: (message: {

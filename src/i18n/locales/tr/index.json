@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "veya PDF'yi buraya bırakın",
     "home_view_content_nav__image_uploader__choose_image": "Resim seçin",
     "home_view_content_nav__image_uploader__drop_image_here": "veya resmi buraya bırakın",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF/resim buraya bırakın",
+    "home_view_content_nav__drop_pdf_and_image_here": "Belge/resim buraya bırakın",
     "home_view_content_nav__ai_search_placeholder": "Web'e sorun...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI modelini değiştir",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3. taraf AI sağlayıcıları",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1 tıklamayla sohbet için yükseltme",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Saniyeler içinde AI tarafından kişiselleştirilmiş sosyal medya yanıtları oluşturun.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1 tıklamayla sohbet için yükseltme",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Saniyeler içinde AI tarafından kişiselleştirilmiş sosyal medya yanıtları oluşturun."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Saniyeler içinde AI tarafından kişiselleştirilmiş sosyal medya yanıtları oluşturun.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI'ya belge veya resim yükle",
+    "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI'ye belgeleri yükle",
+    "provider__chatgpt__upload_file_error__too_long__text": "Yüklenen dosya çok büyük. Daha geniş bir bağlam penceresine sahip bir AI modeli kullanmayı veya daha küçük bir boyutta bir dosya yüklemeyi düşünün."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

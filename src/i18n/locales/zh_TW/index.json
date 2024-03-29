@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "或將 PDF 放在此處",
     "home_view_content_nav__image_uploader__choose_image": "選擇圖像",
     "home_view_content_nav__image_uploader__drop_image_here": "或將圖像放在此處",
-    "home_view_content_nav__drop_pdf_and_image_here": "將 PDF/圖像放在此處",
+    "home_view_content_nav__drop_pdf_and_image_here": "在此處拖放文件/圖像",
     "home_view_content_nav__ai_search_placeholder": "問問網絡...",
     "sidebar__ai_provider__model_selector__button__tooltip": "切換 AI 模型",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "第三方 AI 提供商",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "升級為1鍵聊天",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "讓AI在幾秒內為您生成個性化的社交媒體回覆。",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "升級為1鍵聊天",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "讓AI在幾秒內為您生成個性化的社交媒體回覆。"
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "讓AI在幾秒內為您生成個性化的社交媒體回覆。",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "上傳文件或圖片至MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "上傳文件至MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "上傳的檔案太大。請考慮使用具有更大內容視窗的AI模型，或上傳較小的檔案。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

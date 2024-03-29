@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "vai nometiet PDF šeit",
     "home_view_content_nav__image_uploader__choose_image": "Izvēlieties attēlu",
     "home_view_content_nav__image_uploader__drop_image_here": "vai nometiet attēlu šeit",
-    "home_view_content_nav__drop_pdf_and_image_here": "Nometiet PDF/attēlu šeit",
+    "home_view_content_nav__drop_pdf_and_image_here": "Nometiet dokumentu/attēlu šeit",
     "home_view_content_nav__ai_search_placeholder": "Jautājiet tīmeklim...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Pārslēgt AI modeli",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3. pušu AI pakalpojumu sniedzēji",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Jaunināt, lai čatotu ar vienu klikšķi",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Atļaujiet AI ģenerēt personalizētas sociālo mediju atbildes jums sekundēs.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Jaunināt, lai čatotu ar vienu klikšķi",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Atļaujiet AI ģenerēt personalizētas sociālo mediju atbildes jums sekundēs."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Atļaujiet AI ģenerēt personalizētas sociālo mediju atbildes jums sekundēs.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Augšupielādēt dokumentus vai attēlus uz MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Augšupielādēt dokumentus uz MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Augšupielādētais fails ir pārāk liels. Izmantojiet AI modeli ar lielāku konteksta logu vai augšupielādējiet mazāka izmēra failu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

@@ -1,8 +1,8 @@
 import { useCallback } from 'react'
 import { atom, useRecoilState } from 'recoil'
 
+import useMaxAIModelUploadFile from '@/features/chatgpt/hooks/upload/useMaxAIModelUploadFile'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
-import { useUploadImagesAndSwitchToMaxAIVisionModel } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 
 const IsSidebarDragOverAtom = atom({
   key: 'SidebarDragOverAtom',
@@ -10,9 +10,8 @@ const IsSidebarDragOverAtom = atom({
 })
 
 const useSidebarDropEvent = () => {
-  const {
-    uploadImagesAndSwitchToMaxAIVisionModel,
-  } = useUploadImagesAndSwitchToMaxAIVisionModel()
+  const { isContainMaxAIModelUploadFile, uploadFilesToMaxAIModel } =
+    useMaxAIModelUploadFile()
 
   const [isSidebarDragOver, setIsSidebarDragOver] = useRecoilState(
     IsSidebarDragOverAtom,
@@ -48,22 +47,24 @@ const useSidebarDropEvent = () => {
     }
   }, [])
 
-  const handleDrop = async (event: any) => {
-    const { files } = event.dataTransfer
-
+  const handleDrop = async (event: DragEvent) => {
+    const { items } = event.dataTransfer || {}
+    if (!items || !items.length) {
+      return
+    }
+    const files = Array.from(items)
+      .map((item) => item?.getAsFile?.() || null)
+      .filter((file): file is File => file !== null)
     if (files.length > 0) {
-      const isImage = files[0].type.includes('image')
-      const isPDF = files[0].type.includes('pdf')
-
-      if (isImage) {
-        event.preventDefault()
-        uploadImagesAndSwitchToMaxAIVisionModel(
-          [...files].filter((file: File) => file.type.includes('image')),
-        )
-      } else if (isPDF) {
+      const isPDF = files[0]?.type.includes('pdf')
+      if (isPDF) {
         event.stopPropagation()
         // do nothing
         // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
+      }
+      if (isContainMaxAIModelUploadFile(files)) {
+        event.preventDefault()
+        await uploadFilesToMaxAIModel(files)
       }
     }
 

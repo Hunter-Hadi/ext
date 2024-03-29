@@ -163,6 +163,7 @@ const AutoHeightTextarea: FC<{
   onChange?: (value: string, options: IUserChatMessageExtraType) => void
   onEnter?: (value: string, options: IUserChatMessageExtraType) => void
   onKeydown?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => void
+  onKeydownCapture?: (e: React.KeyboardEvent<HTMLTextAreaElement>) => boolean
   children?: React.ReactNode
   sx?: SxProps
   InputId?: string
@@ -187,6 +188,7 @@ const AutoHeightTextarea: FC<{
     onChange,
     onEnter,
     onKeydown,
+    onKeydownCapture,
     loading,
     children,
     error = false,
@@ -473,6 +475,7 @@ const AutoHeightTextarea: FC<{
         >
           {expandNode}
         </Stack>
+
         <textarea
           id={InputId}
           placeholder={placeholder}
@@ -542,6 +545,7 @@ const AutoHeightTextarea: FC<{
           }}
           onKeyDown={(event) => {
             console.log('测试键盘 onKeyDown', event)
+            if (onKeydownCapture && onKeydownCapture(event)) return
             if (stopPropagation) {
               // 如果是方向键或者esc键，不阻止冒泡
               if (

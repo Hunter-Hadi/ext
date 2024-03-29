@@ -50,7 +50,7 @@ const slackGetChatMessageContentAndDate = (messageBox: HTMLElement | null) => {
   return { datetime, messageContent: content, extraLabel }
 }
 
-const slackGetChatMessagesFromNodeList = (
+const whatsAppGetChatMessagesFromNodeList = (
   messageBoxList: HTMLElement[],
 ): IChatMessageData[] => {
   const messages: IChatMessageData[] = []
@@ -79,56 +79,44 @@ const slackGetChatMessagesFromNodeList = (
   return messages
 }
 
-export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
-  const serverName = document.querySelector<HTMLElement>(
-    '[class$="sidebar_header__title"]',
-  )?.innerText
+export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
   const chatroomName = document.querySelector<HTMLElement>(
-    '[class$="p-channel_sidebar__channel--selected"]',
+    'header > [title="Profile Details"] + [role="button"] [aria-label]:not([title])',
   )?.innerText
-  const username = document
-    .querySelector<HTMLElement>('[data-qa="user-button"]')
-    ?.getAttribute('aria-label')
-    ?.replace('User: ', '')
+  const myAvatar = document.querySelector<HTMLElement>(
+    'header [role="button"][aria-label] > img',
+  )
 
   const chatMessagesPanel = findSelectorParent(
-    '[data-qa="slack_kit_list"][role="list"]',
+    '#main [role="application"]',
     inputAssistantButton,
   )
 
   const chatMessagesNodeList = Array.from(
     chatMessagesPanel?.querySelectorAll<HTMLElement>(
-      '[data-qa="message_container"]',
+      '[role="row"] > [data-id]:has(> [class*="message"])',
     ) || [],
-  )
+  ).filter((node) => node.querySelector('[data-pre-plain-text]'))
 
-  if (chatMessagesNodeList.length) {
-    const channelTextArea = findParentEqualSelector(
-      '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
+  if (chatMessagesNodeList) {
+    const channelTextArea = findSelectorParent(
+      'footer .copyable-area div:has(> button[aria-label] > [data-icon])',
       inputAssistantButton,
-      2,
+      5,
     )
+
     let replyMessageBox: HTMLElement | null = null
 
     if (
       channelTextArea &&
-      findSelectorParent(
-        '[data-qa="threads_footer_broadcast_controls"]',
-        channelTextArea,
-        2,
-      )
+      findSelectorParent('[aria-label="Quoted Message"]', channelTextArea, 6)
     ) {
-      replyMessageBox = chatMessagesPanel.querySelector<HTMLElement>(
-        '.c-message_kit__background--labels[data-qa="message_container"]',
-      )
+      // if dont have data-testid, it means the reply target is yourself
+      debugger
     } else {
-      replyMessageBox = findParentEqualSelector(
-        '[data-qa="message_container"]',
-        inputAssistantButton,
-      )
     }
 
-    const chatMessages = slackGetChatMessagesFromNodeList(
+    const chatMessages = whatsAppGetChatMessagesFromNodeList(
       chatMessagesNodeList.slice(
         0,
         chatMessagesNodeList.findIndex(
@@ -138,26 +126,24 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
     )
 
     if (chatMessages.length) {
-      const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-        serverName: serverName || '',
-        chatroomName: chatroomName || '',
-        username: username || '',
-      })
-
-      chatMessagesContext.replyMessage(
-        chatMessages.findLastIndex((message) => message.user !== username),
-      )
-
-      return chatMessagesContext.data
+      // const chatMessagesContext = new ChatMessagesContext(chatMessages, {
+      //   serverName: serverName || '',
+      //   chatroomName: chatroomName || '',
+      //   username: username || '',
+      // })
+      // chatMessagesContext.replyMessage(
+      //   chatMessages.findLastIndex((message) => message.user !== username),
+      // )
+      // return chatMessagesContext.data
     }
   }
 
   return ChatMessagesContext.emptyData
 }
 
-export const slackGetDraftContent = (inputAssistantButton: HTMLElement) => {
+export const whatsAppGetDraftContent = (inputAssistantButton: HTMLElement) => {
   const slackDraftEditor = findSelectorParent(
-    '[data-qa="message_input"] > .ql-editor',
+    'footer [role="textbox"][data-lexical-editor][contenteditable="true"]',
     inputAssistantButton,
     5,
   )

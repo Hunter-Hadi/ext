@@ -115,8 +115,6 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
     ) || [],
   )
 
-  debugger
-
   if (chatMessagesNodeList.length) {
     const channelTextArea = findParentEqualSelector(
       '[class^="channelTextArea"]',
@@ -163,59 +161,6 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
       return chatMessagesContext.data
     }
   }
-
-  // const chatMessages = discordGetChatMessagesFromNodeList(
-  //   Array.from(
-  //     chatMessagesPanel?.querySelectorAll<HTMLElement>(
-  //       '[id^="chat-messages"]:not([class^="container"])',
-  //     ) || [],
-  //   ),
-  // )
-
-  // if (chatMessages.length) {
-  //   const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-  //     serverName: serverName || '',
-  //     chatroomName: chatroomName || '',
-  //     username: username || '',
-  //   })
-
-  //   let replyMessage: ReturnType<
-  //     typeof discordGetChatMessageContentAndDate
-  //   > | null = null
-
-  //   const channelTextArea = findParentEqualSelector(
-  //     '[class^="channelTextArea"]',
-  //     inputAssistantButton,
-  //     6,
-  //   )
-
-  //   if (
-  //     channelTextArea &&
-  //     channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')
-  //   ) {
-  //     replyMessage = discordGetChatMessageContentAndDate(
-  //       chatMessagesPanel.querySelector<HTMLElement>(
-  //         '[id^="chat-messages"]:has(> [class*="replying"])',
-  //       ),
-  //     )
-  //   } else {
-  //     replyMessage = discordGetChatMessageContentAndDate(
-  //       findParentEqualSelector('[id^="chat-messages"]', inputAssistantButton),
-  //     )
-  //   }
-
-  //   chatMessagesContext.replyMessage(
-  //     replyMessage?.datetime && replyMessage?.messageContent
-  //       ? chatMessages.findIndex(
-  //           (message) =>
-  //             message.datetime === replyMessage!.datetime &&
-  //             message.content === replyMessage!.messageContent,
-  //         )
-  //       : chatMessages.findLastIndex((message) => message.user !== username),
-  //   )
-
-  //   return chatMessagesContext.data
-  // }
 
   return ChatMessagesContext.emptyData
 }

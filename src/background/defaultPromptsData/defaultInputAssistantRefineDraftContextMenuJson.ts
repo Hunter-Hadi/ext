@@ -1318,7 +1318,7 @@ const chatPrompts: IContextMenuItem[] = [
     data: {
       editable: false,
       visibility: {
-        whitelist: ['discord.com', 'app.slack.com'],
+        whitelist: ['discord.com', 'app.slack.com', 'web.whatsapp.com'],
         blacklist: [],
         isWhitelistMode: true,
       },

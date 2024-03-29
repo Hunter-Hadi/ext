@@ -55,6 +55,9 @@ const checkHostUsingButtonKeys = (
     case 'app.slack.com':
       return getSlackButtonGroup(config)
 
+    case 'web.whatsapp.com':
+      return getWhatsAppButtonGroup(config)
+
     default:
       return [
         config.buttonGroupConfig.composeReplyButton,
@@ -335,6 +338,23 @@ const getSlackButtonGroup = (
   ) {
     return [buttonGroupConfig.composeReplyButton]
   }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getWhatsAppButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  // if (
+  //   keyElement?.matches(
+  //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+  //   )
+  // ) {
+  //   return [buttonGroupConfig.composeReplyButton]
+  // }
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,

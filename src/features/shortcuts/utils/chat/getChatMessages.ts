@@ -7,6 +7,10 @@ import {
   slackGetChatMessages,
   slackGetDraftContent,
 } from '@/features/shortcuts/utils/chat/platforms/slack'
+import {
+  whatsAppGetChatMessages,
+  whatsAppGetDraftContent,
+} from '@/features/shortcuts/utils/chat/platforms/whatsApp'
 import ChatMessagesContext, {
   type IChatMessagesContextData,
 } from '@/features/shortcuts/utils/ChatMessagesContext'
@@ -30,6 +34,9 @@ export const getChatMessagesContent = async (
     if (host === 'app.slack.com') {
       return await slackGetChatMessages(inputAssistantButton)
     }
+    if (host === 'web.whatsapp.com') {
+      return await whatsAppGetChatMessages(inputAssistantButton)
+    }
   }
   return ChatMessagesContext.emptyData
 }
@@ -48,6 +55,9 @@ export const getChatMessageDraftContent = async (
     }
     if (host === 'app.slack.com') {
       return await slackGetDraftContent(inputAssistantButton)
+    }
+    if (host === 'web.whatsapp.com') {
+      return await whatsAppGetDraftContent(inputAssistantButton)
     }
   }
   return ''

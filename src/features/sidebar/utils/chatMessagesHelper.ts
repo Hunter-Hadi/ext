@@ -362,6 +362,20 @@ export const formatChatMessageContent = (message: IChatMessage) => {
     return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
   }
 }
+export const safeGetAttachmentExtractedContent = (
+  extractedContent: string | Record<string, any>,
+) => {
+  if (extractedContent) {
+    if (typeof extractedContent !== 'string') {
+      try {
+        return JSON.stringify(extractedContent, null, 2)
+      } catch (e) {
+        return 'Content is not a string'
+      }
+    }
+  }
+  return ''
+}
 /**
  * 格式化消息到文字版历史记录
  * @param conversation
@@ -387,26 +401,24 @@ export const formatMessagesToLiteHistory = async (
       let userAttachmentText = ''
       if (userMessage.meta?.attachments?.length) {
         // 添加附件
-        userAttachmentText = 'User attachments:\n'
+        userAttachmentText = '\nAttachments:\n'
         for (const attachment of userMessage.meta.attachments) {
           userAttachmentText += `  • <${attachment.fileName}>\n`
         }
-        userAttachmentText += '\n'
       }
       let userContextText = ''
       if (userMessage.meta?.contexts?.length) {
         // 添加上下文
-        userContextText = 'User contexts:\n'
+        userContextText = '\nContexts:\n'
         for (const context of userMessage.meta.contexts) {
           userContextText += `  • ${context.key}: ${context.value}\n`
         }
-        userContextText += '\n'
       }
       liteHistory.push(
-        userAttachmentText +
-          userContextText +
-          'User: ' +
-          formatUserMessageContent(userMessage),
+        'User: ' +
+          formatUserMessageContent(userMessage) +
+          userAttachmentText +
+          userContextText,
       )
     } else if (isSystemMessage(message) || message.type === 'third') {
       if (needSystemOrThirdMessage) {

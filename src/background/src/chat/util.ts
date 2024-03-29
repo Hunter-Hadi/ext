@@ -37,6 +37,7 @@ import {
   calculateMaxResponseTokens,
   getTextTokens,
 } from '@/features/shortcuts/utils/tokenizer'
+import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
@@ -379,7 +380,9 @@ export const chatMessageToMaxAIRequestMessage = (
               attachment.fileName
             }\n\nFile Size: ${filesizeFormatter(
               attachment.fileSize,
-            )}\n\nFile Content:\n${attachment.extractedContent}\n</file>\n\n`
+            )}\n\nFile Content:\n${safeGetAttachmentExtractedContent(
+              attachment.extractedContent,
+            )}\n</file>\n\n`
           } else if (
             attachment.uploadedUrl &&
             attachment.fileType.includes('image')

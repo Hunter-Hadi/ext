@@ -13,6 +13,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import { IUserChatMessage } from '@/features/chatgpt/types'
+import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -49,7 +50,7 @@ const SidebarUserMessageContexts: FC<{
   if (!attachments.length && !contexts?.length) {
     return null
   }
-  const extractedContentAttachements = attachments.filter(
+  const extractedContentAttachments = attachments.filter(
     (attachment) => attachment.extractedContent,
   )
   return (
@@ -79,6 +80,10 @@ const SidebarUserMessageContexts: FC<{
                       showDivider = true
                     }
                     if (attachment.extractedContent) {
+                      const extractedContent =
+                        safeGetAttachmentExtractedContent(
+                          attachment.extractedContent,
+                        )
                       return (
                         <Stack
                           width={384}
@@ -139,7 +144,7 @@ const SidebarUserMessageContexts: FC<{
                               lineHeight: '20px',
                             }}
                           >
-                            {attachment.extractedContent}
+                            {extractedContent}
                           </Stack>
                         </Stack>
                       )
@@ -297,7 +302,7 @@ const SidebarUserMessageContexts: FC<{
                     {contexts?.[0]?.value}
                   </Typography>
                 )}
-                {extractedContentAttachements.length === 0 && (
+                {extractedContentAttachments.length === 0 && (
                   <Stack flexShrink={0}>
                     <ArrowForwardIosOutlinedIcon
                       sx={{
@@ -314,7 +319,7 @@ const SidebarUserMessageContexts: FC<{
               </Stack>
               {attachments.length > 0 && (
                 <Stack gap={1} width={'100%'}>
-                  {extractedContentAttachements.map((attachment, index) => {
+                  {extractedContentAttachments.map((attachment, index) => {
                     return (
                       <Stack
                         key={attachment.id}
@@ -362,7 +367,7 @@ const SidebarUserMessageContexts: FC<{
                             {attachment.fileType}
                           </Typography>
                         </Stack>
-                        {extractedContentAttachements.length - 1 === index && (
+                        {extractedContentAttachments.length - 1 === index && (
                           <Stack flexShrink={0} mt={'auto'}>
                             <ArrowForwardIosOutlinedIcon
                               sx={{

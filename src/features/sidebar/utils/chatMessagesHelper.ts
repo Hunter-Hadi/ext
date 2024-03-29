@@ -417,6 +417,7 @@ export const formatMessagesToLiteHistory = async (
       liteHistory.push(
         'User: ' +
           formatUserMessageContent(userMessage) +
+          '\n' +
           userAttachmentText +
           userContextText,
       )

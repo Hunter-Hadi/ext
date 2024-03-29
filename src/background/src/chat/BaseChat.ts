@@ -72,8 +72,6 @@ class BaseChat {
   }
   async uploadFiles(files: IChatUploadFile[]) {
     files.map((file) => {
-      file.uploadStatus = 'success'
-      file.uploadProgress = 100
       this.chatFiles.push(file)
     })
   }

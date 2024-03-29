@@ -118,6 +118,7 @@ class MaxAIFreeChat extends BaseChat {
       meta,
     } = options || {}
     const userConfig = await getAIProviderSettings('MAXAI_FREE')
+    this.clearFiles()
     const postBody = Object.assign(
       {
         chat_history,

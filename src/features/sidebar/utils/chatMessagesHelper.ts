@@ -384,6 +384,15 @@ export const formatMessagesToLiteHistory = async (
       liteHistory.push('AI: ' + formatAIMessageContent(message))
     } else if (isUserMessage(message)) {
       const userMessage = message
+      let userAttachmentText = ''
+      if (userMessage.meta?.attachments?.length) {
+        // 添加附件
+        userAttachmentText = 'User attachments:\n'
+        for (const attachment of userMessage.meta.attachments) {
+          userAttachmentText += `  • <${attachment.fileName}>\n`
+        }
+        userAttachmentText += '\n'
+      }
       let userContextText = ''
       if (userMessage.meta?.contexts?.length) {
         // 添加上下文
@@ -394,7 +403,10 @@ export const formatMessagesToLiteHistory = async (
         userContextText += '\n'
       }
       liteHistory.push(
-        userContextText + 'User: ' + formatUserMessageContent(userMessage),
+        userAttachmentText +
+          userContextText +
+          'User: ' +
+          formatUserMessageContent(userMessage),
       )
     } else if (isSystemMessage(message) || message.type === 'third') {
       if (needSystemOrThirdMessage) {

@@ -107,7 +107,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       if (
         chaptersInfoList &&
         chaptersInfoList.length !== 0 &&
-        transcriptsTokens > 1000 //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试
+        //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试-laizeping
+        // @update - 临时改一下
+        transcriptsTokens > 100
       ) {
         if (this.isStopAction) return
 

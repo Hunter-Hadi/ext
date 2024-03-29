@@ -784,8 +784,8 @@ export const MenuComponent = React.forwardRef<
                 onClickReferenceElement?.(event)
               },
               onKeyDownCapture(event) {
-                // 如果是enter并且是根节点
-                if (event.key === 'Enter' && !parentId) {
+                // 如果是enter非shiftKey并且是根节点
+                if (event.key === 'Enter' && !event.shiftKey && !parentId) {
                   handleExecuteActions()
                   return
                 }

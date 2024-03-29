@@ -17,6 +17,9 @@ const discordGetChatMessageContentAndDate = (
     const messageContentBox = messageBox.querySelector<HTMLElement>(
       ':not([id^="message-reply-context"]) > * > [id^="message-content"]',
     )
+    const messageInlineEditTextBox = messageBox.querySelector<HTMLElement>(
+      '[class^="channelTextArea"] [role="textbox"]',
+    )
     if (messageContentBox) {
       content = messageContentBox?.innerText || ''
       // if message just only contains emojis
@@ -34,6 +37,8 @@ const discordGetChatMessageContentAndDate = (
             .join('')
         }
       }
+    } else if (messageInlineEditTextBox) {
+      content = messageInlineEditTextBox?.innerText || ''
     }
   }
   return { datetime, messageContent: content }
@@ -96,58 +101,111 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
     inputAssistantButton,
   )
 
-  const chatMessages = discordGetChatMessagesFromNodeList(
-    Array.from(
-      chatMessagesPanel?.querySelectorAll<HTMLElement>(
-        '[id^="chat-messages"]:not([class^="container"])',
-      ) || [],
-    ),
+  const chatMessagesNodeList = Array.from(
+    chatMessagesPanel?.querySelectorAll<HTMLElement>(
+      '[id^="chat-messages"]:not([class^="container"])',
+    ) || [],
   )
 
-  if (chatMessages.length) {
-    const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-      serverName: serverName || '',
-      chatroomName: chatroomName || '',
-      username: username || '',
-    })
-
+  if (chatMessagesNodeList.length) {
     const channelTextArea = findParentEqualSelector(
       '[class^="channelTextArea"]',
       inputAssistantButton,
       6,
     )
 
-    let replyMessage: ReturnType<
-      typeof discordGetChatMessageContentAndDate
-    > | null = null
+    let replyMessageBox: HTMLElement | null = null
 
     if (
       channelTextArea &&
       channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')
     ) {
-      replyMessage = discordGetChatMessageContentAndDate(
-        chatMessagesPanel.querySelector<HTMLElement>(
-          '[id^="chat-messages"]:has(> [class*="replying"])',
-        ),
+      replyMessageBox = chatMessagesPanel.querySelector<HTMLElement>(
+        '[id^="chat-messages"]:has(> [class*="replying"])',
       )
     } else {
-      replyMessage = discordGetChatMessageContentAndDate(
-        findParentEqualSelector('[id^="chat-messages"]', inputAssistantButton),
+      replyMessageBox = findParentEqualSelector(
+        '[id^="chat-messages"]',
+        inputAssistantButton,
       )
     }
 
-    chatMessagesContext.replyMessage(
-      replyMessage?.datetime && replyMessage?.messageContent
-        ? chatMessages.findIndex(
-            (message) =>
-              message.datetime === replyMessage!.datetime &&
-              message.content === replyMessage!.messageContent,
-          )
-        : chatMessages.findLastIndex((message) => message.user !== username),
+    const chatMessages = discordGetChatMessagesFromNodeList(
+      chatMessagesNodeList.slice(
+        0,
+        chatMessagesNodeList.findIndex(
+          (messageBox) => messageBox === replyMessageBox,
+        ) + 1,
+      ),
     )
 
-    return chatMessagesContext.data
+    if (chatMessages.length) {
+      const chatMessagesContext = new ChatMessagesContext(chatMessages, {
+        serverName: serverName || '',
+        chatroomName: chatroomName || '',
+        username: username || '',
+      })
+
+      chatMessagesContext.replyMessage(
+        chatMessages.findLastIndex((message) => message.user !== username),
+      )
+
+      return chatMessagesContext.data
+    }
   }
+
+  // const chatMessages = discordGetChatMessagesFromNodeList(
+  //   Array.from(
+  //     chatMessagesPanel?.querySelectorAll<HTMLElement>(
+  //       '[id^="chat-messages"]:not([class^="container"])',
+  //     ) || [],
+  //   ),
+  // )
+
+  // if (chatMessages.length) {
+  //   const chatMessagesContext = new ChatMessagesContext(chatMessages, {
+  //     serverName: serverName || '',
+  //     chatroomName: chatroomName || '',
+  //     username: username || '',
+  //   })
+
+  //   let replyMessage: ReturnType<
+  //     typeof discordGetChatMessageContentAndDate
+  //   > | null = null
+
+  //   const channelTextArea = findParentEqualSelector(
+  //     '[class^="channelTextArea"]',
+  //     inputAssistantButton,
+  //     6,
+  //   )
+
+  //   if (
+  //     channelTextArea &&
+  //     channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')
+  //   ) {
+  //     replyMessage = discordGetChatMessageContentAndDate(
+  //       chatMessagesPanel.querySelector<HTMLElement>(
+  //         '[id^="chat-messages"]:has(> [class*="replying"])',
+  //       ),
+  //     )
+  //   } else {
+  //     replyMessage = discordGetChatMessageContentAndDate(
+  //       findParentEqualSelector('[id^="chat-messages"]', inputAssistantButton),
+  //     )
+  //   }
+
+  //   chatMessagesContext.replyMessage(
+  //     replyMessage?.datetime && replyMessage?.messageContent
+  //       ? chatMessages.findIndex(
+  //           (message) =>
+  //             message.datetime === replyMessage!.datetime &&
+  //             message.content === replyMessage!.messageContent,
+  //         )
+  //       : chatMessages.findLastIndex((message) => message.user !== username),
+  //   )
+
+  //   return chatMessagesContext.data
+  // }
 
   return ChatMessagesContext.emptyData
 }

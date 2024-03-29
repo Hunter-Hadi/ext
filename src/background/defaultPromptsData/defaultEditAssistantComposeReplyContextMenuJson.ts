@@ -1502,22 +1502,27 @@ const chatPrompts: IContextMenuItem[] = [
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
-
+Your task is to write a reply as my identity to the following chat message, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1567,22 +1572,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1632,22 +1643,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write an affectionate, grateful, and delighted reply to the message that responds 'thank you' for whatever the message is about. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1697,22 +1714,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1762,22 +1785,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write a humorous, entertaining, playful, and funny reply to the message joking about it. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1827,22 +1856,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1892,22 +1927,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -1957,22 +1998,28 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}.
+Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the last 15 messages (or all if not enough).
+Here's the message to reply to:
+\`\`\`
+{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+\`\`\`
 
 ---
 
 Your task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message. Keep the reply as short as possible.
 
 Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+
+Do not use hashtags. Write the reply like a real person would. 
 
 Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
@@ -2047,12 +2094,13 @@ Your task is to write a reply as my identity to the following chat messages, whi
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the following messages:
+Here's the message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
@@ -2139,7 +2187,8 @@ Your task is to write a reply as my identity to the following chat messages, whi
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages, if any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>

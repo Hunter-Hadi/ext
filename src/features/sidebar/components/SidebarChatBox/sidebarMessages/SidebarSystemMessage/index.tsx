@@ -41,8 +41,9 @@ const permissionCardToChatMessageText = (
 
 const BaseSidebarSystemMessage: FC<{
   message: ISystemChatMessage
+  loading?: boolean
 }> = (props) => {
-  const { message } = props
+  const { message, loading } = props
   const { isDarkMode } = useCustomTheme()
   const [solutionsShow, setSolutionsShow] = useState(false)
   const permissionSceneType =
@@ -154,6 +155,7 @@ const BaseSidebarSystemMessage: FC<{
       </Alert>
       <SidebarChatBoxSystemTools
         solutionsShow={solutionsShow}
+        loading={loading}
         onSolutionToggle={() => {
           setSolutionsShow((pre) => !pre)
         }}

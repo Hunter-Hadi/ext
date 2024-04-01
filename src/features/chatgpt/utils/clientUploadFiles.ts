@@ -5,6 +5,7 @@ import {
   file2base64,
 } from '@/background/utils/uplpadFileProcessHelper'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 
 export const DEFAULT_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 // 5MB
 
@@ -40,9 +41,10 @@ export const formatClientUploadFiles = (
         uploadFile.uploadStatus = 'error'
         uploadFile.uploadErrorMessage = `Upload failed: ${
           uploadFile.fileName
-        } exceeds the ${(maxFileSize / 1024 / 1024).toFixed(
-          0,
-        )}MB limit. Please select a smaller file.`
+        } exceeds the ${filesizeFormatter(
+          maxFileSize,
+          2,
+        )} limit. Please select a smaller file.`
       }
       return uploadFile
     }),

@@ -1,9 +1,15 @@
 import { default as lodashGet } from 'lodash-es/get'
 import isNumber from 'lodash-es/isNumber'
 import { default as lodashSet } from 'lodash-es/set'
+import sum from 'lodash-es/sum'
 import Browser from 'webextension-polyfill'
 
 import { IAIProviderType } from '@/background/provider/chat'
+import {
+  IMaxAIChatMessageContent,
+  IMaxAIChatMessageContentType,
+  IMaxAIRequestHistoryMessage,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
 import {
   createClientMessageListener,
@@ -22,11 +28,17 @@ import {
   IUserChatMessage,
 } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
 import { requestIdleCallbackPolyfill } from '@/features/common/utils/polyfills'
 import {
   calculateMaxResponseTokens,
   getTextTokens,
 } from '@/features/shortcuts/utils/tokenizer'
+import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 // let lastBrowserWindowId: number | undefined = undefined
@@ -307,6 +319,100 @@ export const setAIProviderSettings = async <T extends IAIProviderType>(
 }
 
 /**
+ * 获取消息的token数
+ * @param message
+ */
+export const getMessageTokens = async (message: IChatMessage) => {
+  if (isUserMessage(message)) {
+    const attachments = message.meta?.attachments || []
+    const attachmentTokens = sum(
+      attachments.map((attachment) => {
+        if (attachment.extractedContent) {
+          return getTextTokens(attachment.extractedContent).length
+        }
+        return 0
+      }),
+    )
+    return getTextTokens(message.text).length + attachmentTokens
+  } else if (isAIMessage(message)) {
+    if (message.originalMessage?.content?.text) {
+      return getTextTokens(message.originalMessage.content.text).length
+    } else {
+      return getTextTokens(message.text).length
+    }
+  } else {
+    return getTextTokens(message.text).length
+  }
+}
+
+export const chatMessageToMaxAIRequestMessage = (
+  message: IChatMessage,
+): IMaxAIRequestHistoryMessage => {
+  const baseRequestMessage: IMaxAIRequestHistoryMessage = {
+    role:
+      message.type === 'ai'
+        ? 'ai'
+        : message.type === 'user'
+        ? 'human'
+        : 'system',
+    content: [],
+  }
+  if (isAIMessage(message)) {
+    baseRequestMessage.content.push({
+      type: 'text',
+      text: message.originalMessage?.content?.text || message.text || '',
+    })
+  } else if (isUserMessage(message)) {
+    const userMessageContent: IMaxAIChatMessageContent[] = []
+    const userMessageQuestion = {
+      type: 'text' as IMaxAIChatMessageContentType,
+      text: message.text,
+    }
+    let extractedContent = ''
+    // 需要拼接附件
+    if (message.meta?.attachments) {
+      message.meta.attachments.forEach((attachment) => {
+        if (attachment.uploadStatus === 'success') {
+          if (attachment.extractedContent) {
+            if (!extractedContent) {
+              extractedContent = `\n\n---\n\nBelow, you will find the information and content of the file(s) mentioned above. Each file is delimited by <file></file>:\n\n`
+            }
+            extractedContent += `<file>\nFile Name: ${
+              attachment.fileName
+            }\n\nFile Size: ${filesizeFormatter(
+              attachment.fileSize,
+            )}\n\nFile Content:\n${safeGetAttachmentExtractedContent(
+              attachment.extractedContent,
+            )}\n</file>\n\n`
+          } else if (
+            attachment.uploadedUrl &&
+            attachment.fileType.includes('image')
+          ) {
+            userMessageContent.push({
+              type: 'image_url',
+              image_url: {
+                url: attachment.uploadedUrl,
+              },
+            })
+          }
+        }
+      })
+    }
+    if (extractedContent) {
+      userMessageQuestion.text += `${extractedContent}`
+    }
+    userMessageContent.unshift(userMessageQuestion)
+    baseRequestMessage.content = userMessageContent
+  } else {
+    baseRequestMessage.content.push({
+      type: 'text',
+      text: message.text || '',
+    })
+  }
+  return baseRequestMessage
+}
+
+/**
  * 处理AI提问的参数
  */
 export const processAskAIParameters = async (
@@ -406,7 +512,7 @@ export const processAskAIParameters = async (
           break
         }
         if (message.type !== 'system' && message.type !== 'third') {
-          const messageToken = (await getTextTokens(message.text)).length
+          const messageToken = await getMessageTokens(message)
           // 如果当前消息的token数大于最大历史记录token数，那么不添加
           if (historyTokensUsed + messageToken > maxHistoryTokens) {
             break

@@ -1,7 +1,7 @@
 import { IAIProviderType } from '@/background/provider/chat'
 import {
-  IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
@@ -16,7 +16,7 @@ const clientAskMaxAIChatProvider = async (
     message_content: IMaxAIChatMessageContent[]
     prompt_name: string
     prompt_id: string
-    chat_history?: IMaxAIChatMessage[]
+    chat_history?: IMaxAIRequestHistoryMessage[]
     temperature?: number
     doc_id?: string
   },

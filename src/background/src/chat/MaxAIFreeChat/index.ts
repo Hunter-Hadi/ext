@@ -4,8 +4,8 @@ import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { MAXAI_FREE_MODELS } from '@/background/src/chat/MaxAIFreeChat/types'
 import {
-  IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
@@ -83,7 +83,7 @@ class MaxAIFreeChat extends BaseChat {
       taskId: string
       regenerate?: boolean
       streaming?: boolean
-      chat_history?: IMaxAIChatMessage[]
+      chat_history?: IMaxAIRequestHistoryMessage[]
       meta?: Record<string, any>
     },
     onMessage?: (message: {
@@ -118,6 +118,7 @@ class MaxAIFreeChat extends BaseChat {
       meta,
     } = options || {}
     const userConfig = await getAIProviderSettings('MAXAI_FREE')
+    this.clearFiles()
     const postBody = Object.assign(
       {
         chat_history,

@@ -26,6 +26,33 @@ export const numberFormatter = (number: number, digits = 1) => {
         item.symbol
     : '0'
 }
+export const filesizeFormatter = (size: number, digits = 1) => {
+  const lookup = [
+    { value: 1, symbol: 'B' },
+    { value: 1024, symbol: 'KB' },
+    { value: 1048576, symbol: 'MB' },
+    { value: 1073741824, symbol: 'GB' },
+    { value: 1099511627776, symbol: 'TB' },
+  ]
+
+  const isNegativeNumber = size < 0
+  const absSize = isNegativeNumber ? -size : size
+
+  const item = lookup
+    .slice()
+    .reverse()
+    .find(({ value }) => absSize >= value)
+
+  if (!item) {
+    return `${isNegativeNumber ? '-' : ''}${absSize.toFixed(digits)} B`
+  }
+
+  const formattedSize = (absSize / item.value).toFixed(digits)
+  const rx = /\.0+$|(\.[0-9]*[1-9])0+$/
+  const trimmedFormattedSize = formattedSize.replace(rx, '$1')
+
+  return `${isNegativeNumber ? '-' : ''}${trimmedFormattedSize} ${item.symbol}`
+}
 export const numberWithCommas = (number: number, digits = 2) => {
   return Number(number)
     .toFixed(digits)

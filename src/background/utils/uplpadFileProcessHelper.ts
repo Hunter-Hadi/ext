@@ -77,3 +77,7 @@ export const checkFileTypeIsImage = (file: File): boolean => {
   const type = file.type
   return type.startsWith('image/')
 }
+export const checkFileNameIsImage = (fileName: string): boolean => {
+  const type = fileName.split('.').pop()
+  return [`.jpg`, `.jpeg`, `.png`, `.gif`, `.webp`].includes(`.${type}`)
+}

@@ -6,7 +6,10 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { MaxAIGeminiChat } from '@/background/src/chat'
-import { IMaxAIChatMessage, type IMaxAIChatMessageContent } from '@/background/src/chat/UseChatGPTChat/types'
+import {
+  type IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
+} from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
@@ -43,7 +46,7 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
     question,
   ) => {
     const messageId = uuidV4()
-    const chat_history: IMaxAIChatMessage[] = []
+    const chat_history: IMaxAIRequestHistoryMessage[] = []
     if (this.maxAIGeminiChat.conversation) {
       if (this.maxAIGeminiChat.conversation.meta.systemPrompt) {
         chat_history.push({

@@ -47,7 +47,7 @@ class InputAssistantButtonManager {
   createInputAssistantButtonListener(
     listener: (allObserverData: IInputAssistantButtonObserverData[]) => void,
   ) {
-    this.timer = setInterval(() => {
+    const createInputAssistantButton = () => {
       if (this.stop) {
         return
       }
@@ -123,7 +123,9 @@ class InputAssistantButtonManager {
           }
         }
       }
-    }, this.interval)
+    }
+    setTimeout(createInputAssistantButton, 0);
+    this.timer = setInterval(createInputAssistantButton, this.interval)
   }
   attachInputAssistantButton(
     rootElement: HTMLElement,

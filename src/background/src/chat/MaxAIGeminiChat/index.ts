@@ -4,8 +4,8 @@ import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import {
-  IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
 import {
@@ -83,7 +83,7 @@ class MaxAIGeminiChat extends BaseChat {
       taskId: string
       regenerate?: boolean
       streaming?: boolean
-      chat_history?: IMaxAIChatMessage[]
+      chat_history?: IMaxAIRequestHistoryMessage[]
       meta?: Record<string, any>
     },
     onMessage?: (message: {

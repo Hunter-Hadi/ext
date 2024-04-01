@@ -1,21 +1,28 @@
 import { useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
+import { v4 as uuidV4 } from 'uuid'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIProviderModel, IUserChatMessage } from '@/features/chatgpt/types'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
+import {
+  calculateMaxHistoryQuestionResponseTokens,
+  getTextTokens,
+} from '@/features/shortcuts/utils/tokenizer'
+import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
-
 export interface IAskAIQuestion
   extends Omit<IUserChatMessage, 'messageId' | 'conversationId'> {
   conversationId?: string
@@ -23,6 +30,7 @@ export interface IAskAIQuestion
 }
 
 const useClientChat = () => {
+  const { t } = useTranslation(['client'])
   const { currentUserPlan } = useUserInfo()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
@@ -32,6 +40,7 @@ const useClientChat = () => {
     stopShortCuts,
     getParams,
   } = useShortCutsEngine()
+  const { aiProviderRemoveAllFiles } = useAIProviderUpload()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const runShortCutsRef = useRef(runShortCuts)
   const {
@@ -46,12 +55,19 @@ const useClientChat = () => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
   const askAIQuestion = async (question: IAskAIQuestion) => {
+    // 1.在所有对话之前，确保先有conversationId
+    let conversationId = currentConversationIdRef.current
+    if (conversationId && (await getConversation(conversationId))?.id) {
+      // 如果有conversationId && 如果conversationId存在
+    } else {
+      conversationId = await createConversation()
+    }
     if (!question.meta?.attachments) {
       // 获取attachments
       const port = new ContentScriptConnectionV2({
         runtime: 'client',
       })
-      const attachments =
+      const attachments: IChatUploadFile[] =
         (
           await port.postMessage({
             event: 'Client_chatGetFiles',
@@ -61,6 +77,45 @@ const useClientChat = () => {
             },
           })
         )?.data || []
+      if (attachments.length > 0) {
+        // 如果有文件类型的附件，需要计算文件内容tokens的长度
+        const extractText = attachments
+          .map((attachment) => attachment?.extractedContent || '')
+          .join('')
+        if (extractText) {
+          // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
+          const conversationMaxTokens =
+            (await getCurrentConversation())?.meta.maxTokens || 4096
+          const maxAttachmentTokens =
+            conversationMaxTokens -
+            calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
+          if (getTextTokens(extractText).length > maxAttachmentTokens) {
+            // 如果tokens长度超过限制
+            await clientChatConversationModifyChatMessages(
+              'add',
+              conversationId,
+              0,
+              [
+                {
+                  type: 'system',
+                  text: t(
+                    `client:provider__chatgpt__upload_file_error__too_long__text`,
+                  ),
+                  messageId: uuidV4(),
+                  conversationId,
+                  meta: {
+                    status: 'error',
+                  },
+                },
+              ],
+            )
+            await aiProviderRemoveAllFiles()
+            getInputMediator('chatBoxInputMediator').updateInputValue('')
+            getInputMediator('floatingMenuInputMediator').updateInputValue('')
+            return
+          }
+        }
+      }
       question = mergeWithObject([
         question,
         {

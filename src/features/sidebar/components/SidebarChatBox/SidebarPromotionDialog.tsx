@@ -27,8 +27,8 @@ const SidebarPromotionDialog = () => {
 
   const [open, setOpen] = useState(false)
 
-  const routerToAnniversary2024Page = () => {
-    window.open('https://app.maxai.me/anniversary2024')
+  const routerToPricing = () => {
+    window.open('https://app.maxai.me/pricing')
     handleClose()
   }
 
@@ -178,7 +178,7 @@ const SidebarPromotionDialog = () => {
             )}
             width={832}
             height={468}
-            onClick={routerToAnniversary2024Page}
+            onClick={routerToPricing}
             sx={{
               cursor: 'pointer',
             }}
@@ -227,7 +227,7 @@ const SidebarPromotionDialog = () => {
           <Button
             variant="contained"
             fullWidth
-            href={`https://app.maxai.me/anniversary2024`}
+            href={`https://app.maxai.me/pricing`}
             target={'_blank'}
             sx={{
               fontSize: 16,

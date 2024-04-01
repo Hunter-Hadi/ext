@@ -290,6 +290,9 @@ const throttleBuildFiles = (() => {
 })()
 
 async function main() {
+  if (!existsSync(releasesDir)) {
+    mkdirSync(releasesDir)
+  }
   if (!isProduction) {
     await hotReload()
     await reactDevtools()

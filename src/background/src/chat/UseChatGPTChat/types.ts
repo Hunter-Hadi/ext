@@ -1,5 +1,9 @@
 // @docs - https://platform.openai.com/docs/models/gpt-4
 
+import {
+  MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
+  MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+} from '@/background/src/chat/constant'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 // import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 // import dayjs from 'dayjs'
@@ -26,7 +30,7 @@ export interface IMaxAIChatMessageContent {
  * @description 2.0 版本的消息格式，将会支持多种类型的消息，例如：图片、视频、音频等
  */
 
-export interface IMaxAIChatMessage {
+export interface IMaxAIRequestHistoryMessage {
   role: 'human' | 'ai' | 'generic' | 'system' | 'function'
   content: IMaxAIChatMessageContent[]
 }
@@ -44,6 +48,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     poweredBy: 'OpenAI',
     description: (t) =>
       t(`client:provider__chatgpt__model__gpt_3_5__description`),
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   // {
   //   title: 'gpt-4-turbo',
@@ -72,6 +77,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_GPT3_5_16K',
       roles: ['pro', 'elite'],
     },
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'gpt-4',
@@ -86,6 +92,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_GPT4',
       roles: ['pro', 'elite'],
     },
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'gpt-4-turbo',
@@ -100,13 +107,7 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_GPT4_VISION',
       roles: ['pro', 'elite'],
     },
-    uploadFileConfig: {
-      maxFileSize: 20 * 1024 * 1024, // 20
-      accept: '.jpg,.jpeg,.png,.webp,.gif',
-      acceptTooltip: (t) =>
-        t('client:provider__chatgpt__upload__accept_tooltip'),
-      maxCount: 5,
-    },
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   // {
   //   title: 'gpt-4-32k',

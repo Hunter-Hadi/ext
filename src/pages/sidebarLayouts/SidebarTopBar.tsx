@@ -79,7 +79,7 @@ const SidebarTopBar: FC = () => {
       )}
       {isShowActivityBanner && (
         <Link
-          href={`https://app.maxai.me/anniversary2024`}
+          href={`https://app.maxai.me/pricing`}
           target={'_blank'}
           underline={'none'}
         >
@@ -127,7 +127,7 @@ const SidebarTopBar: FC = () => {
                     currentUserPlan.name === 'new_user' ||
                     currentUserPlan.name === 'pro_gift'
                       ? '68'
-                      : '40',
+                      : '54',
                 })}
               </Typography>
             </Stack>

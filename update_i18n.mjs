@@ -6,6 +6,7 @@ import * as _ from 'lodash-es'
 import nodeFetch from 'node-fetch'
 import { dirname, join } from 'path'
 import { fileURLToPath } from 'url'
+
 const { encode } = pkg
 const debug = false
 
@@ -59,16 +60,16 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
       const jsonText = res.text
       try {
         try {
-          console.log('1111')
+          debug && console.log('1111')
           data = JSON.parse(jsonText.replace(/^\n?```\n?|\n?```\n?$/g, ''))
         } catch (e) {
           try {
             // 第二次尝试, 去掉最后一个逗号
-            console.log('2222')
+            debug && console.log('2222')
             const jsonText2 = jsonText.replace(/,(?=[^,]*$)/, '')
             data = JSON.parse(jsonText2.replace(/^\n?```\n?|\n?```\n?$/g, ''))
           } catch (e) {
-            console.log('33333')
+            debug && console.log('33333')
             // 第三次尝试,替换文本中错误的冒号
             const errorColon = JSON.stringify(jsonText).match(
               /"(?<colon>.)\s?{/,
@@ -467,9 +468,9 @@ const updateI18nJson = async (
   )
   console.log(`翻译失败的语言包: \t[${errorLanguages.join(',')}]`)
   errorLanguages.length > 0 &&
-    console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
+  console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
   errorLanguages.length > 0 &&
-    console.log('下次执行参数建议: \t', updateKeys, forceUpdate, errorLanguages)
+  console.log('下次执行参数建议: \t', updateKeys, forceUpdate, errorLanguages)
   console.log('==================================')
 }
 
@@ -493,6 +494,7 @@ async function updateDefaultJson(forceUpdate = false) {
       systemPromptsDir,
       './allSystemPromptJson.mjs',
     )
+
     async function esbuildConfig() {
       await esbuild.build({
         entryPoints: [join(__dirname, './allSystemPromptJson.ts')],
@@ -523,6 +525,7 @@ async function updateDefaultJson(forceUpdate = false) {
         ],
       })
     }
+
     await esbuildConfig()
     import(systemPromptsFile)
       .then(({ default: systemPromptList }) => {
@@ -550,6 +553,7 @@ async function updateDefaultJson(forceUpdate = false) {
       })
   })
 }
+
 //
 // /**
 //  * 强制更新所有语言包, 会覆盖所有语言包的字段, 慎用

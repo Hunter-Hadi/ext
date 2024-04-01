@@ -1,3 +1,7 @@
+import {
+  MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
+  MAXAI_VISION_MODEL_UPLOAD_CONFIG,
+} from '@/background/src/chat/constant'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
@@ -17,6 +21,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
       roles: ['pro', 'elite'],
     },
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'claude-2-100k',
@@ -31,6 +36,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2',
       roles: ['pro', 'elite'],
     },
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'claude-2.1-200k',
@@ -45,6 +51,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2_1',
       roles: ['elite'],
     },
+    uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'claude-3-haiku',
@@ -59,13 +66,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
       roles: ['elite'],
     },
-    uploadFileConfig: {
-      maxFileSize: 20 * 1024 * 1024, // 20
-      accept: '.jpg,.jpeg,.png,.webp,.gif',
-      acceptTooltip: (t) =>
-        t('client:provider__chatgpt__upload__accept_tooltip'),
-      maxCount: 5,
-    },
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'claude-3-sonnet',
@@ -80,13 +81,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
       roles: ['elite'],
     },
-    uploadFileConfig: {
-      maxFileSize: 20 * 1024 * 1024, // 20
-      accept: '.jpg,.jpeg,.png,.webp,.gif',
-      acceptTooltip: (t) =>
-        t('client:provider__chatgpt__upload__accept_tooltip'),
-      maxCount: 5,
-    },
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
     title: 'claude-3-opus',
@@ -101,12 +96,6 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
       roles: ['elite'],
     },
-    uploadFileConfig: {
-      maxFileSize: 20 * 1024 * 1024, // 20
-      accept: '.jpg,.jpeg,.png,.webp,.gif',
-      acceptTooltip: (t) =>
-        t('client:provider__chatgpt__upload__accept_tooltip'),
-      maxCount: 5,
-    },
+    uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
 ]

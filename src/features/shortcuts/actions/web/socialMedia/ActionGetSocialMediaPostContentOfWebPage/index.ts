@@ -84,7 +84,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           tokens: sliceOfTargetPostContextUsingTokens,
         } = await sliceTextByTokens(
           SOCIAL_MEDIA_TARGET_POST_OR_COMMENT,
-          AIModelMaxTokens - maxSocialMediaContextTokens,
+          maxSocialMediaContextTokens,
         )
         if (this.isStopAction) return
         SOCIAL_MEDIA_TARGET_POST_OR_COMMENT = sliceOfTargetPostContext
@@ -94,7 +94,7 @@ export class ActionGetSocialMediaPostContentOfWebPage extends Action {
           if (this.isStopAction) return
           const { text: sliceOfFullPostContext } = await sliceTextByTokens(
             SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT,
-            AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
+            maxSocialMediaContextTokens - sliceOfTargetPostContextUsingTokens,
           )
           if (this.isStopAction) return
           SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT = sliceOfFullPostContext

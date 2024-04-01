@@ -1,4 +1,5 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
+import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Divider from '@mui/material/Divider'
@@ -8,10 +9,12 @@ import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, Fragment, useMemo, useState } from 'react'
 
+import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import { IUserChatMessage } from '@/features/chatgpt/types'
-
+import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
 ))(({ theme }) => ({
@@ -38,17 +41,18 @@ const SidebarUserMessageContexts: FC<{
   const { message } = props
   const [open, setOpen] = useState(false)
 
-  const attachmentImages = useMemo(() => {
+  const attachments = useMemo(() => {
     return (message.meta?.attachments || []).filter(
-      (attachment) =>
-        attachment.fileType.startsWith('image') &&
-        attachment.uploadStatus === 'success',
+      (attachment) => attachment.uploadStatus === 'success',
     )
   }, [message.meta?.attachments])
   const contexts = message.meta?.contexts
-  if (!attachmentImages.length && !contexts?.length) {
+  if (!attachments.length && !contexts?.length) {
     return null
   }
+  const extractedContentAttachments = attachments.filter(
+    (attachment) => attachment.extractedContent,
+  )
   return (
     <div>
       <ClickAwayListener
@@ -67,16 +71,89 @@ const SidebarUserMessageContexts: FC<{
                 overflow={'auto'}
               >
                 <Stack gap={1}>
-                  {attachmentImages.map((attachment, index) => {
+                  {attachments.map((attachment, index) => {
                     let showDivider = false
                     if (
-                      index !== attachmentImages.length - 1 ||
+                      index !== attachments.length - 1 ||
                       (contexts && contexts?.length > 0)
                     ) {
                       showDivider = true
                     }
+                    if (attachment.extractedContent) {
+                      const extractedContent =
+                        safeGetAttachmentExtractedContent(
+                          attachment.extractedContent,
+                        )
+                      return (
+                        <Stack
+                          width={384}
+                          height={384}
+                          p={1}
+                          borderRadius={1}
+                          key={attachment.id}
+                          border={'1px solid'}
+                          borderColor="customColor.borderColor"
+                        >
+                          <Typography
+                            textAlign={'left'}
+                            lineHeight={'22.5px'}
+                            color={'text.primary'}
+                            fontSize={'18px'}
+                            noWrap
+                            fontWeight={500}
+                            flexShrink={0}
+                          >
+                            {attachment.fileName}
+                          </Typography>
+                          <Typography
+                            textAlign={'left'}
+                            fontSize={'14px'}
+                            color={'text.secondary'}
+                            noWrap
+                            flexShrink={0}
+                          >
+                            {`${filesizeFormatter(
+                              attachment.fileSize || 0,
+                            )} • ${attachment.fileType}`}
+                          </Typography>
+                          <Typography
+                            textAlign={'left'}
+                            fontSize={'12px'}
+                            color={'text.secondary'}
+                            noWrap
+                            flexShrink={0}
+                            display={'flex'}
+                            alignItems={'center'}
+                            gap={1}
+                          >
+                            <ErrorOutlineOutlinedIcon
+                              sx={{ fontSize: '12px', color: 'inherit' }}
+                            />
+                            {`Formatting may be inconsistent from source.`}
+                          </Typography>
+                          <Stack
+                            flex={1}
+                            sx={{
+                              mt: 1,
+                              overflowY: 'auto',
+                              whiteSpace: 'pre-wrap',
+                              wordBreak: 'break-word',
+                              fontSize: '14px',
+                              color: 'text.primary',
+                              textAlign: 'left',
+                              lineHeight: '20px',
+                            }}
+                          >
+                            {extractedContent}
+                          </Stack>
+                        </Stack>
+                      )
+                    }
                     if (!attachment.uploadedUrl) {
                       return null
+                    }
+                    {
+                      /*// 图片展示*/
                     }
                     return (
                       <Fragment key={attachment.uploadedUrl}>
@@ -106,6 +183,7 @@ const SidebarUserMessageContexts: FC<{
                             color={'primary'}
                             size="small"
                             sx={{
+                              fontSize: '14px',
                               width: 'max-content',
                               bgcolor: (t) =>
                                 t.palette.mode === 'dark'
@@ -149,7 +227,7 @@ const SidebarUserMessageContexts: FC<{
           >
             <Stack
               onClick={() => setOpen(true)}
-              p={1}
+              gap={1}
               sx={{
                 borderRadius: '8px',
                 width: 'max-content',
@@ -159,75 +237,155 @@ const SidebarUserMessageContexts: FC<{
                 borderLeft: '4px solid #9065B0',
                 cursor: 'pointer',
               }}
+              p={1}
               ml={'auto'}
-              mb={0.5}
-              flexDirection={'row'}
-              gap={1}
-              alignItems={'flex-end'}
             >
-              {/*// 主要展示的内容，如果有附件则展示附件，如果有上下文则展示上下文*/}
-              {attachmentImages.length > 0 ? (
-                <Stack
-                  direction={'row'}
-                  alignItems={'center'}
-                  justifyContent={'flex-start'}
-                  width={'100%'}
-                  gap={0.5}
-                >
-                  {attachmentImages.map((attachment, index) => {
-                    if (!attachment.uploadedUrl) {
+              <Stack
+                ml={'auto'}
+                mb={0.5}
+                flexDirection={'row'}
+                gap={1}
+                alignItems={'flex-end'}
+              >
+                {/*// 主要展示的内容，如果有附件则展示附件，如果有上下文则展示上下文*/}
+                {attachments.length > 0 && (
+                  <Stack
+                    direction={'row'}
+                    alignItems={'center'}
+                    justifyContent={'flex-start'}
+                    width={'100%'}
+                    gap={0.5}
+                  >
+                    {attachments.map((attachment, index) => {
+                      if (attachment.fileType.startsWith('image')) {
+                        if (!attachment.uploadedUrl) {
+                          return null
+                        }
+                        return (
+                          <LazyLoadImage
+                            imgStyle={{
+                              borderRadius: '8px',
+                              objectFit: 'cover',
+                            }}
+                            key={attachment.uploadedUrl}
+                            src={attachment.uploadedUrl}
+                            alt={attachment.fileName}
+                            width={64}
+                            height={48}
+                          />
+                        )
+                      }
                       return null
-                    }
+                    })}
+                  </Stack>
+                )}
+                {attachments.length === 0 && (
+                  <Typography
+                    sx={{
+                      color: (t: any) =>
+                        t.palette.mode === 'dark'
+                          ? 'rgba(255, 255, 255, 0.38)'
+                          : 'rgba(0, 0, 0, 0.38)',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
+                      wordBreak: 'break-word',
+                      lineClamp: `2`,
+                      boxOrient: 'vertical',
+                      display: '-webkit-box',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                    }}
+                    fontSize={'14px'}
+                    variant={'body2'}
+                    lineHeight={'20px'}
+                  >
+                    {contexts?.[0]?.value}
+                  </Typography>
+                )}
+                {extractedContentAttachments.length === 0 && (
+                  <Stack flexShrink={0}>
+                    <ArrowForwardIosOutlinedIcon
+                      sx={{
+                        height: '20px',
+                        fontSize: '16px',
+                        color: (t: any) =>
+                          t.palette.mode === 'dark'
+                            ? 'rgba(255, 255, 255, 0.38)'
+                            : 'rgba(0, 0, 0, 0.38)',
+                      }}
+                    />
+                  </Stack>
+                )}
+              </Stack>
+              {attachments.length > 0 && (
+                <Stack gap={1} width={'100%'}>
+                  {extractedContentAttachments.map((attachment, index) => {
                     return (
-                      <LazyLoadImage
-                        imgStyle={{
-                          borderRadius: '8px',
-                          objectFit: 'cover',
-                        }}
-                        key={attachment.uploadedUrl}
-                        src={attachment.uploadedUrl}
-                        alt={attachment.fileName}
-                        width={64}
-                        height={48}
-                      />
+                      <Stack
+                        key={attachment.id}
+                        border={'1px solid'}
+                        borderColor="customColor.borderColor"
+                        direction={'row'}
+                        gap={1}
+                        width={240}
+                        borderRadius={1}
+                        p={1}
+                        ml={'auto'}
+                      >
+                        <Stack
+                          flexShrink={0}
+                          borderRadius={`8px`}
+                          width={40}
+                          height={40}
+                          alignItems={'center'}
+                          justifyContent={'center'}
+                          bgcolor={'primary.main'}
+                        >
+                          <ContextMenuIcon
+                            icon={'InsertDriveFile'}
+                            sx={{
+                              color: '#fff',
+                              fontSize: `${28}px`,
+                            }}
+                          />
+                        </Stack>
+                        <Stack width={0} flex={1}>
+                          <Typography
+                            lineHeight={`20px`}
+                            color={'text.primary'}
+                            fontSize={'14px'}
+                            noWrap
+                          >
+                            {attachment.fileName}
+                          </Typography>
+                          <Typography
+                            lineHeight={`20px`}
+                            color={'text.secondary'}
+                            fontSize={'14px'}
+                            noWrap
+                          >
+                            {attachment.fileType}
+                          </Typography>
+                        </Stack>
+                        {extractedContentAttachments.length - 1 === index && (
+                          <Stack flexShrink={0} mt={'auto'}>
+                            <ArrowForwardIosOutlinedIcon
+                              sx={{
+                                height: '20px',
+                                fontSize: '16px',
+                                color: (t: any) =>
+                                  t.palette.mode === 'dark'
+                                    ? 'rgba(255, 255, 255, 0.38)'
+                                    : 'rgba(0, 0, 0, 0.38)',
+                              }}
+                            />
+                          </Stack>
+                        )}
+                      </Stack>
                     )
                   })}
                 </Stack>
-              ) : (
-                <Typography
-                  sx={{
-                    color: (t: any) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgba(255, 255, 255, 0.38)'
-                        : 'rgba(0, 0, 0, 0.38)',
-                    WebkitLineClamp: 2,
-                    WebkitBoxOrient: 'vertical',
-                    wordBreak: 'break-word',
-                    lineClamp: `2`,
-                    boxOrient: 'vertical',
-                    display: '-webkit-box',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                  }}
-                  fontSize={'14px'}
-                  variant={'body2'}
-                  lineHeight={'20px'}
-                >
-                  {contexts?.[0]?.value}
-                </Typography>
               )}
-              <Stack flexShrink={0}>
-                <ArrowForwardIosOutlinedIcon
-                  sx={{
-                    height: '20px',
-                    fontSize: '16px',
-                    color: (t: any) =>
-                      t.palette.mode === 'dark'
-                        ? 'rgba(255, 255, 255, 0.38)'
-                        : 'rgba(0, 0, 0, 0.38)',
-                  }}
-                />
-              </Stack>
             </Stack>
           </LightTooltip>
         </div>

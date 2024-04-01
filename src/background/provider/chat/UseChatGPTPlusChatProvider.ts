@@ -8,18 +8,15 @@ import {
 import { UseChatGPTPlusChat } from '@/background/src/chat'
 import {
   IMaxAIChatGPTBackendAPIType,
-  IMaxAIChatMessage,
-  IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
+import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import {
-  isAIMessage,
-  isUserMessage,
-} from '@/features/chatgpt/utils/chatMessageUtils'
+import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
   private useChatGPTPlusChat: UseChatGPTPlusChat
@@ -54,10 +51,11 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
     question,
   ) => {
     const messageId = uuidV4()
-    const chat_history: IMaxAIChatMessage[] = []
-    const conversationDetail = await ConversationManager.conversationDB.getConversationById(
-      question.conversationId,
-    )
+    const chat_history: IMaxAIRequestHistoryMessage[] = []
+    const conversationDetail =
+      await ConversationManager.conversationDB.getConversationById(
+        question.conversationId,
+      )
     let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_chatgpt_response'
     const docId = conversationDetail?.meta?.docId
     if (conversationDetail) {
@@ -97,39 +95,7 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         })
       }
       question.meta?.historyMessages?.forEach((message) => {
-        const content: IMaxAIChatMessageContent[] = [
-          {
-            type: 'text',
-            text: message.text,
-          },
-        ]
-        // 插入附件
-        if (isUserMessage(message)) {
-          if (message?.meta?.attachments?.length) {
-            message.meta.attachments.forEach((attachment) => {
-              if (
-                attachment.uploadStatus === 'success' &&
-                attachment.uploadedUrl
-              ) {
-                content.push({
-                  type: 'image_url',
-                  image_url: {
-                    url: attachment.uploadedUrl,
-                  },
-                })
-              }
-            })
-          }
-        }
-        chat_history.push({
-          role:
-            message.type === 'ai'
-              ? 'ai'
-              : message.type === 'user'
-              ? 'human'
-              : 'system',
-          content,
-        })
+        chat_history.push(chatMessageToMaxAIRequestMessage(message))
       })
       if (docId && chat_history?.[0]?.role === 'ai') {
         // summary里面的chat history不包括页面的自动summary对话
@@ -138,26 +104,9 @@ class UseChatGPTPlusChatProvider implements ChatAdapterInterface {
         chat_history.splice(0, 1)
       }
     }
-    const content: IMaxAIChatMessageContent[] = [
-      {
-        type: 'text',
-        text: question.text,
-      },
-    ]
-    if (question.meta?.attachments) {
-      question.meta.attachments.forEach((attachment) => {
-        if (attachment.uploadStatus === 'success' && attachment.uploadedUrl) {
-          content.push({
-            type: 'image_url',
-            image_url: {
-              url: attachment.uploadedUrl,
-            },
-          })
-        }
-      })
-    }
+    const questionMessage = chatMessageToMaxAIRequestMessage(question)
     await this.useChatGPTPlusChat.askChatGPT(
-      content,
+      questionMessage.content,
       {
         doc_id: docId,
         backendAPI,

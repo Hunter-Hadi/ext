@@ -12,11 +12,13 @@ import TableRow from '@mui/material/TableRow'
 import Typography from '@mui/material/Typography'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 
 import {
   IPresetVariablesGroupItem,
   PRESET_VARIABLES_GROUP_MAP,
 } from '@/features/shortcuts/components/ShortcutsActionsEditor/hooks/useShortcutEditorActionsVariables'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const PresetVariablesTable: FC<{
   tableData: IPresetVariablesGroupItem[]
@@ -93,6 +95,9 @@ const PopperId = 'preset-variables-tooltip'
 const PresetVariablesTooltip = () => {
   const { t } = useTranslation(['prompt_editor'])
   const [anchorEl, setAnchorEl] = useState<HTMLButtonElement | null>(null)
+  const [settingPromptsEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom
+  )
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -137,7 +142,7 @@ const PresetVariablesTooltip = () => {
           {Object.keys(PRESET_VARIABLES_GROUP_MAP).map((groupKey) => {
             const variables = PRESET_VARIABLES_GROUP_MAP[
               groupKey
-            ] as IPresetVariablesGroupItem[]
+            ].filter(({ permissionKeys = [] }) => permissionKeys.length === 0 || permissionKeys.includes(settingPromptsEditButtonKey!))
             return (
               <Stack key={groupKey} spacing={2} mt={3}>
                 <Typography variant="body2">

@@ -12,6 +12,7 @@ import {
 } from '@/features/chatgpt/types'
 import {
   isAIMessage,
+  isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
@@ -115,15 +116,23 @@ export const formatAIMessageContent = (message: IAIResponseMessage) => {
   }
 }
 /**
- * 格式化AI消息的内容
+ * summary transcript 主动生成 文本 格式
+ * 因为 transcript 是 div 样式逻辑，所以需要转换为文本
  * @param message
  */
 export const formatTimestampedSummaryAIMessageContent = (
   message: IAIResponseMessage,
 ) => {
   try {
+    const decodeHtmlEntity = (str: string) => {
+      const textarea = document.createElement('textarea')
+      textarea.innerHTML = str.trim().replace(/\n/g, '')
+      return textarea.value
+    }
     if (
-      message.originalMessage?.metadata?.title?.title === 'Timestamped summary'
+      message.originalMessage?.metadata?.title?.title ===
+        'Timestamped summary' ||
+      message.originalMessage?.metadata?.title?.title === 'Show transcript'
     ) {
       if (isArray(message.originalMessage?.metadata?.deepDive)) {
         const transcripts = message.originalMessage?.metadata?.deepDive?.filter(
@@ -132,19 +141,21 @@ export const formatTimestampedSummaryAIMessageContent = (
         )?.[0]?.value
         if (isArray(transcripts)) {
           const markdownTexts = (transcripts as TranscriptResponse[])
-            .map((item) => {
-              const itemText = `- ${formatSecondsAsTimestamp(item.start)}: ${
-                item.text
-              }`
-              const childrenText = item.children
-                ?.map(
-                  (child) =>
-                    `    - ${formatSecondsAsTimestamp(item.start)}: ${
-                      child.text
-                    }`,
+            ?.filter((transcript) => transcript.text)
+            .map((transcript) => {
+              const firstStageText = `- ${
+                formatSecondsAsTimestamp(transcript.start) || ''
+              }: ${decodeHtmlEntity(transcript.text || '')}`
+              const childrenText = transcript.children
+                ?.filter((childrenTranscript) => childrenTranscript.text)
+                .map(
+                  (childrenTranscript) =>
+                    `    - ${
+                      formatSecondsAsTimestamp(childrenTranscript.start) || ''
+                    }: ${decodeHtmlEntity(childrenTranscript.text || '')}`,
                 )
                 .join('\n')
-              return `${itemText}\n${childrenText}`
+              return `${firstStageText || ''}\n${childrenText || ''}`
             })
             .join('\n\n')
           return markdownTexts
@@ -152,6 +163,8 @@ export const formatTimestampedSummaryAIMessageContent = (
           return false
         }
       }
+      return false
+    } else {
       return false
     }
   } catch (e) {
@@ -180,6 +193,13 @@ export const formatAIMessageContentForClipboard = (
         break
       case 'summary':
         {
+          const transcriptFormatText =
+            formatTimestampedSummaryAIMessageContent(message) //transcripts 数据 转为text
+          if (transcriptFormatText) {
+            const titleElement = doc.createElement('p')
+            titleElement.innerText = transcriptFormatText
+            doc.body.prepend(titleElement)
+          }
           // 添加标题
           if (originalMessage.metadata?.sourceWebpage?.title) {
             const title = originalMessage.metadata.sourceWebpage.title
@@ -342,6 +362,21 @@ export const formatChatMessageContent = (message: IChatMessage) => {
     return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
   }
 }
+export const safeGetAttachmentExtractedContent = (
+  extractedContent: string | Record<string, any>,
+) => {
+  if (extractedContent) {
+    if (typeof extractedContent !== 'string') {
+      try {
+        return JSON.stringify(extractedContent, null, 2)
+      } catch (e) {
+        return 'Content is not a string'
+      }
+    }
+    return extractedContent
+  }
+  return ''
+}
 /**
  * 格式化消息到文字版历史记录
  * @param conversation
@@ -356,20 +391,38 @@ export const formatMessagesToLiteHistory = async (
   const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {
-    if (message.type === 'ai') {
-      const originalQuestion = (message as IAIResponseMessage).originalMessage
-        ?.metadata?.title?.title
+    if (isAIMessage(message)) {
+      const originalQuestion = message.originalMessage?.metadata?.title?.title
       if (originalQuestion && conversationType === 'Search') {
         liteHistory.push(originalQuestion)
       }
+      liteHistory.push('AI: ' + formatAIMessageContent(message))
+    } else if (isUserMessage(message)) {
+      const userMessage = message
+      let userAttachmentText = ''
+      if (userMessage.meta?.attachments?.length) {
+        // 添加附件
+        userAttachmentText = '\nAttachments:\n'
+        for (const attachment of userMessage.meta.attachments) {
+          userAttachmentText += `  • <${attachment.fileName}>\n`
+        }
+      }
+      let userContextText = ''
+      if (userMessage.meta?.contexts?.length) {
+        // 添加上下文
+        userContextText = '\nContexts:\n'
+        for (const context of userMessage.meta.contexts) {
+          userContextText += `  • ${context.key}: ${context.value}\n`
+        }
+      }
       liteHistory.push(
-        'AI: ' + formatAIMessageContent(message as IAIResponseMessage),
+        'User: ' +
+          formatUserMessageContent(userMessage) +
+          '\n' +
+          userAttachmentText +
+          userContextText,
       )
-    } else if (message.type === 'user') {
-      liteHistory.push(
-        'User: ' + formatUserMessageContent(message as IUserChatMessage),
-      )
-    } else if (message.type === 'system' || message.type === 'third') {
+    } else if (isSystemMessage(message) || message.type === 'third') {
       if (needSystemOrThirdMessage) {
         liteHistory.push(
           `${message.type === 'system' ? `System: ` : `Third: `}` +
@@ -383,6 +436,9 @@ export const formatMessagesToLiteHistory = async (
   // Exploring Artificial Intelligence A Conversation with AI Assistant
   // ---------------------------------------------------------
   //
+  //User contexts:
+  //  • Selected text: Aucun texte sélectionné
+  //  • Key points: Améliorer mes compétences en rédaction
   //User: Hi there! How can you assist me today?
   //
   //AI: Hello! I'm an AI trained to help with a wide range of topics. Feel free to ask me anything or let me know what you need assistance with.

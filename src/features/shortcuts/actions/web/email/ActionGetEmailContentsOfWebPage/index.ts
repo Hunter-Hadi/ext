@@ -73,7 +73,6 @@ export class ActionGetEmailContentsOfWebPage extends Action {
             AIModelMaxTokens -
             calculateMaxHistoryQuestionResponseTokens(AIModelMaxTokens)
           // 先计算TargetContext的Tokens占用，剩下的再给FullContext
-          // 先计算TargetContext的Tokens占用，剩下的再给FullContext
           const {
             isLimit,
             text: sliceOfTargetEmailContext,

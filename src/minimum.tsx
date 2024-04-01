@@ -13,6 +13,7 @@ import {
 import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 
 import SPARootProtector from './utils/SPARootProtector'
+import '@/i18n'
 
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()

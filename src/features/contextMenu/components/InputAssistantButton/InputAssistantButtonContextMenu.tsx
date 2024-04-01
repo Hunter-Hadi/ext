@@ -39,6 +39,7 @@ interface InputAssistantButtonContextMenuProps {
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
+  disabled?: boolean
   onSelectionEffect?: IInputAssistantButton['onSelectionEffect']
 }
 const InputAssistantButtonContextMenu: FC<
@@ -50,6 +51,7 @@ const InputAssistantButtonContextMenu: FC<
     rootId,
     root,
     permissionWrapperCardSceneType,
+    disabled,
     onSelectionEffect,
   } = props
   const [clickContextMenu, setClickContextMenu] =
@@ -145,7 +147,7 @@ const InputAssistantButtonContextMenu: FC<
               'GET_CONTENTS_OF_WEBPAGE',
               'GET_EMAIL_CONTENTS_OF_WEBPAGE',
               'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-              'GET_CHAT_MESSAGE_CONTENTS_OF_WEBPAGE',
+              'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
             ].includes(data?.type) &&
             data?.status === 'complete'
           ) {
@@ -210,6 +212,8 @@ const InputAssistantButtonContextMenu: FC<
         hoverOpen={false}
         menuWidth={240}
         referenceElement={children}
+        // customOpen={disabled}
+        // referenceElementOpen={!disabled}
         onClickContextMenu={async (contextMenu) => {
           updateSidebarConversationType('Chat')
           setClickContextMenu(contextMenu)
@@ -217,6 +221,10 @@ const InputAssistantButtonContextMenu: FC<
         onClickReferenceElement={() => {
           // TODO
         }}
+        {...(disabled ? {
+          customOpen: true,
+          referenceElementOpen: false,
+        } : {})}
       />
     </CacheProvider>
   )

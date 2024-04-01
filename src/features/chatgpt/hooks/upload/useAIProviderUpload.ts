@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useCallback, useEffect, useMemo } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
@@ -10,12 +10,9 @@ import {
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientUploadedFilesState } from '@/features/chatgpt/store'
-import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
+import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 /**
  * AI Provider的上传文件处理
@@ -33,8 +30,6 @@ const useAIProviderUpload = () => {
 
   const { currentAIProviderModelDetail, currentAIProvider } =
     useAIProviderModels()
-  const { currentSidebarConversationMessages, currentSidebarConversationId } =
-    useSidebarSettings()
   const AIProviderConfig = useMemo(() => {
     return currentAIProviderModelDetail?.uploadFileConfig
   }, [currentAIProviderModelDetail])
@@ -78,23 +73,18 @@ const useAIProviderUpload = () => {
         }
         return item
       })
-      console.log(
-        'useAIProviderUpload [aiProviderUploadFiles]',
-        uploadingFiles,
-        currentConversationId,
-      )
+      await port.postMessage({
+        event: 'Client_chatUploadFiles',
+        data: {
+          files: uploadingFiles,
+          currentConversationId,
+        },
+      })
       setFiles(uploadingFiles, 'add')
       switch (currentAIProvider) {
         case 'OPENAI':
           {
             // 确保/pages/chatgpt/codeInterpreter.ts正确的注入了
-            await port.postMessage({
-              event: 'Client_chatUploadFiles',
-              data: {
-                conversationId: currentConversationId,
-                files: uploadingFiles,
-              },
-            })
           }
           break
         case 'BING':
@@ -112,7 +102,7 @@ const useAIProviderUpload = () => {
               }),
             )
             await port.postMessage({
-              event: 'Client_chatUploadFiles',
+              event: 'Client_chatUploadFilesChange',
               data: {
                 conversationId: currentConversationId,
                 files: newFiles,
@@ -123,9 +113,14 @@ const useAIProviderUpload = () => {
         case 'USE_CHAT_GPT_PLUS':
         case 'MAXAI_CLAUDE':
         case 'MAXAI_GEMINI':
+        case 'MAXAI_FREE':
           {
+            // 更新客户端显示上传中状态
             const newFiles = await Promise.all(
               newUploadFiles.map(async (chatUploadFile) => {
+                if (chatUploadFile.uploadStatus === 'success') {
+                  return chatUploadFile
+                }
                 if (!chatUploadFile.file) {
                   return undefined
                 }
@@ -148,7 +143,7 @@ const useAIProviderUpload = () => {
               }),
             )
             await port.postMessage({
-              event: 'Client_chatUploadFiles',
+              event: 'Client_chatUploadFilesChange',
               data: {
                 conversationId: currentConversationId,
                 files: newFiles,
@@ -168,7 +163,7 @@ const useAIProviderUpload = () => {
               }),
             )
             await port.postMessage({
-              event: 'Client_chatUploadFiles',
+              event: 'Client_chatUploadFilesChange',
               data: {
                 conversationId: currentConversationId,
                 files: newFiles,
@@ -198,6 +193,14 @@ const useAIProviderUpload = () => {
     },
     [AIProviderConfig],
   )
+  const aiProviderRemoveAllFiles = useCallback(async () => {
+    const result = await port.postMessage({
+      event: 'Client_chatClearFiles',
+      data: {},
+    })
+    setFiles(result.data || [])
+    return result.success
+  }, [AIProviderConfig])
   const aiProviderUploadingTooltip = useMemo(() => {
     switch (currentAIProvider) {
       case 'OPENAI':
@@ -207,80 +210,12 @@ const useAIProviderUpload = () => {
     }
   }, [currentAIProvider])
 
-  useEffect(() => {
-    const errorItem = files.find((item) => item.uploadStatus === 'error')
-    if (errorItem) {
-      switch (currentAIProvider) {
-        case 'OPENAI':
-          {
-            if (
-              currentSidebarConversationId &&
-              !listReverseFind(
-                currentSidebarConversationMessages,
-                (item) => item.messageId === errorItem.id,
-              )
-            ) {
-              clientChatConversationModifyChatMessages(
-                'add',
-                currentSidebarConversationId,
-                0,
-                [
-                  {
-                    messageId: errorItem.id,
-                    text:
-                      errorItem.uploadErrorMessage ||
-                      `File ${errorItem.fileName} upload error.`,
-                    type: 'system',
-                    meta: {
-                      status:
-                        errorItem.uploadErrorMessage ===
-                        `Your previous upload didn't go through as the Code Interpreter was initializing. It's now ready for your file. Please try uploading it again.`
-                          ? 'info'
-                          : 'error',
-                    },
-                  } as ISystemChatMessage,
-                ],
-              )
-            }
-          }
-          break
-        default: {
-          if (
-            currentSidebarConversationId &&
-            !listReverseFind(
-              currentSidebarConversationMessages,
-              (item) => item.messageId === errorItem.id,
-            )
-          ) {
-            clientChatConversationModifyChatMessages(
-              'add',
-              currentSidebarConversationId,
-              0,
-              [
-                {
-                  messageId: errorItem.id,
-                  text:
-                    errorItem.uploadErrorMessage ||
-                    `File ${errorItem.fileName} upload error.`,
-                  type: 'system',
-                  meta: {
-                    status: 'error',
-                  },
-                } as ISystemChatMessage,
-              ],
-            )
-          }
-        }
-      }
-      aiProviderRemoveFiles([errorItem])
-    }
-  }, [files, currentAIProvider])
-
   return {
     aiProviderUploadingTooltip,
     AIProviderConfig,
     aiProviderUploadFiles,
     aiProviderRemoveFiles,
+    aiProviderRemoveAllFiles,
     files,
   }
 }

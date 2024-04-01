@@ -49,7 +49,6 @@ const usePageSummary = () => {
       if (isGeneratingPageSummaryRef.current) {
         return
       }
-      debugger
       isGeneratingPageSummaryRef.current = true
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')

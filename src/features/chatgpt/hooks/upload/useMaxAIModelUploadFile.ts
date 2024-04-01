@@ -7,10 +7,7 @@ const useMaxAIModelUploadFile = () => {
   const { uploadImagesAndSwitchToMaxAIVisionModel } =
     useUploadImagesAndSwitchToMaxAIVisionModel()
   const { uploadDocAndTextExtraction } = useDocUploadAndTextExtraction()
-  const isContainMaxAIModelUploadFile = (
-    uploadFiles: File[],
-    showError = false,
-  ) => {
+  const isContainMaxAIModelUploadFile = (uploadFiles: File[]) => {
     return (
       uploadFiles &&
       uploadFiles.filter(

@@ -8,9 +8,13 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { IAIProviderModel, IUserChatMessage } from '@/features/chatgpt/types'
+import {
+  IAIProviderModel,
+  IChatUploadFile,
+  IUserChatMessage,
+} from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -56,12 +60,7 @@ const useClientChat = () => {
   }, [runShortCuts])
   const askAIQuestion = async (question: IAskAIQuestion) => {
     // 1.在所有对话之前，确保先有conversationId
-    let conversationId = currentConversationIdRef.current
-    if (conversationId && (await getConversation(conversationId))?.id) {
-      // 如果有conversationId && 如果conversationId存在
-    } else {
-      conversationId = await createConversation()
-    }
+    const conversationId = shortCutsEngine!.conversationId
     if (!question.meta?.attachments) {
       // 获取attachments
       const port = new ContentScriptConnectionV2({

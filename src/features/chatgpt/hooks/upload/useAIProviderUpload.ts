@@ -77,7 +77,7 @@ const useAIProviderUpload = () => {
         event: 'Client_chatUploadFiles',
         data: {
           files: uploadingFiles,
-          currentConversationId,
+          conversationId: currentConversationId,
         },
       })
       setFiles(uploadingFiles, 'add')

@@ -49,6 +49,7 @@ const usePageSummary = () => {
       if (isGeneratingPageSummaryRef.current) {
         return
       }
+      debugger
       isGeneratingPageSummaryRef.current = true
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')
@@ -101,7 +102,6 @@ const usePageSummary = () => {
             MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIProvider,
             MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Summary.AIModel,
           )
-          updateClientConversationLoading(false)
           // 如果是免费用户
           if (
             currentUserPlan.name !== 'pro' &&
@@ -128,6 +128,8 @@ const usePageSummary = () => {
               )
               await pushPricingHookMessage('PAGE_SUMMARY')
               authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
+              isGeneratingPageSummaryRef.current = false
+              updateClientConversationLoading(false)
               return
             }
           }

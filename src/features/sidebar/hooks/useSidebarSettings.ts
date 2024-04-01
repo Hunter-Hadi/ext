@@ -143,6 +143,7 @@ const useSidebarSettings = () => {
     })
   }
   const resetSidebarConversation = async () => {
+    debugger
     if (clientWritingMessage.loading || !currentSidebarConversationId) {
       return
     }

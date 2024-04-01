@@ -65,22 +65,19 @@ interface InputAssistantButtonProps {
   observerData: IInputAssistantButtonObserverData
 }
 const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
-  const {
-    observerData,
-    placement,
-  } = props
+  const { observerData, placement } = props
   const {
     id: rootId,
     config: buttonConfig,
-    buttonGroup,// 按钮组
+    buttonGroup, // 按钮组
     renderRootElement: root,
     shadowRootElement: shadowRoot,
-  } = observerData;
+  } = observerData
   const {
-    InputAssistantBoxSx,// 按钮容器样式
-    DropdownButtonStyle,// 按钮样式
-    CTAButtonStyle,// 按钮样式
-  } = buttonConfig;
+    InputAssistantBoxSx, // 按钮容器样式
+    DropdownButtonStyle, // 按钮样式
+    CTAButtonStyle, // 按钮样式
+  } = buttonConfig
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const { t } = useTranslation(['client'])
   const [contextMenuContainer, setContextMenuContainer] =
@@ -240,7 +237,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0]?.onSelectionEffect &&
             (() => buttonGroup[0].onSelectionEffect!(observerData))
           }
-          disabled={loading}
+          disabled={smoothConversationLoading}
         >
           <Box style={{ width: '100%', height: 'inherit' }} component="div">
             <TextOnlyTooltip
@@ -324,7 +321,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[1].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
-          disabled={loading}
+          disabled={smoothConversationLoading}
         >
           <Box>
             <TextOnlyTooltip
@@ -349,8 +346,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                       position={'absolute'}
                       top={`-${DropdownButtonStyle?.transparentHeight || 0}px`}
                       width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />
@@ -370,11 +368,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     </Button>
                     <Box
                       position={'absolute'}
-                      bottom={`-${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      bottom={`-${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />

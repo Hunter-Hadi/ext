@@ -238,27 +238,48 @@ const OutlookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       rootParentDeep: 0,
       rootStyle: 'overflow: unset;',
       rootParentStyle: 'overflow: unset;',
+      rootWrapperStyle: 'order: 1;',
       rootWrapperTagName: 'div',
+      appendPosition: 0,
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
-        onSelectionEffect: () => {
-          const replyButton =
-            document.querySelector<HTMLElement>('.th6py > button')
-          replyButton?.click()
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            debugger
+            let replyButton = inputAssistantButton.parentElement
+              ?.nextElementSibling as HTMLElement
+
+            if (
+              inputAssistantButton.parentElement?.parentElement
+                ?.childElementCount === 4
+            ) {
+              replyButton = replyButton?.nextElementSibling as HTMLElement
+            }
+
+            replyButton?.click()
+          }
         },
       },
-      appendPosition: 2,
       CTAButtonStyle: {
         padding: '6px 20px',
         borderWidth: 0,
         borderRadius: '4px',
       },
       InputAssistantBoxSx: {
-        margin: '4px 0 0 12px',
+        marginTop: '4px',
+        marginLeft: '4px',
       },
-    } as any,
+    } as IInputAssistantButtonGroupConfig,
   ]
 
 const TwitterInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =

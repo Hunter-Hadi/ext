@@ -100,19 +100,28 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
   if (chatMessagesNodeList) {
     const channelTextArea = findSelectorParent(
-      'footer .copyable-area div:has(> button[aria-label] > [data-icon])',
+      'footer .copyable-area div:has(> div > button[aria-label] > [data-icon])',
       inputAssistantButton,
+      5,
+    )
+    const quotedMention = findSelectorParent(
+      '.quoted-mention',
+      channelTextArea,
       5,
     )
 
     let replyMessageBox: HTMLElement | null = null
 
-    if (
-      channelTextArea &&
-      findSelectorParent('[aria-label="Quoted Message"]', channelTextArea, 6)
-    ) {
-      // if dont have data-testid, it means the reply target is yourself
-      debugger
+    if (channelTextArea && quotedMention) {
+      // if have testid, it means the reply target is someone else
+      const isOthersReply = findSelectorParent(
+        '[testid="author"]',
+        quotedMention,
+        2,
+      )
+      if (isOthersReply) {
+      } else {
+      }
     } else {
     }
 

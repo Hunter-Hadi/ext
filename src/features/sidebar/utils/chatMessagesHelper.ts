@@ -373,6 +373,7 @@ export const safeGetAttachmentExtractedContent = (
         return 'Content is not a string'
       }
     }
+    return extractedContent
   }
   return ''
 }

@@ -80,13 +80,15 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
 
   // 当 loading 变化为 true 时，强制滚动到底部
   useEffect(() => {
+    // TODO: need to resolve in YouTube summary
     if (currentSidebarConversationType === 'Summary' && !writingMessage) {
+      needScrollToBottomRef.current = true // 240401: 为了在 Summary 板块 chat 时能保证滚到到底部
       //加!writingMessage是因为为了summary nav切换的loading更新会滚动到最下面，应该保持在原来的位置
       //是因为 summary nav 功能切换的时候loading会为true而writingMessage为空
       return
     }
     if (loading) {
-      handleScrollToBottom(true)
+      handleScrollToBottom()
       setTimeout(() => {
         changePageNumber(1)
       }, 0)
@@ -214,9 +216,9 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         })}
         {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
         {writingMessage &&
-        !slicedMessageList.find(
-          (msg) => msg.messageId === writingMessage.messageId,
-        ) ? (
+          !slicedMessageList.find(
+            (msg) => msg.messageId === writingMessage.messageId,
+          ) ? (
           <SidebarChatBoxMessageItem
             className={'use-chat-gpt-ai__writing-message-item'}
             message={writingMessage}

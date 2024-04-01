@@ -1,21 +1,19 @@
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import LanguageSelect from '@/components/select/LanguageSelect'
-import SearchWithAIMaxSearchResultsSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAIMaxSearchResultsSelector'
-import SearchWithAISearchEngineSelector from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAISearchEngineSelector'
 import { useUserSettings } from '@/pages/settings/hooks/useUserSettings'
 
-const SearchAdvanced = () => {
+const SummaryAdvanced = () => {
   const { userSettings, setUserSettings } = useUserSettings()
   const { t } = useTranslation(['settings', 'client'])
   return (
     <Stack spacing={1}>
       <Stack direction={'row'} mb={1}>
         <Typography fontSize={'16px'} fontWeight={600} color={'text.primary'}>
-          {t('client:sidebar__search_with_ai__advanced__title')}
+          {t('client:sidebar__chat__advanced__title')}
         </Typography>
       </Stack>
       <Stack spacing={2} width={'100%'}>
@@ -35,11 +33,9 @@ const SearchAdvanced = () => {
             }}
           />
         )}
-        <SearchWithAISearchEngineSelector />
-        <SearchWithAIMaxSearchResultsSelector />
       </Stack>
     </Stack>
   )
 }
 
-export default SearchAdvanced
+export default memo(SummaryAdvanced)

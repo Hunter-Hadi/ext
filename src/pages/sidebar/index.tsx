@@ -52,13 +52,14 @@ const SidebarPage = () => {
       <SidebarTour />
       <SidebarPromotionDialog />
       <Stack
+        component={'div'}
         position={'relative'}
         flex={1}
         width={0}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
+        onDrop={handleDrop as any}
       >
         {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
         <ChatPanelContext.Provider value={sidebarContextValue}>

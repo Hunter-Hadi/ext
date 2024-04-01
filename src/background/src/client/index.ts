@@ -454,10 +454,15 @@ export const ClientMessageInit = () => {
         }
         case 'Client_getLiteConversation':
           {
+            const datetime = new Date().getTime()
             const { conversationId } = data
             const conversation =
               await ConversationManager.getClientConversation(conversationId)
             // console.log('新版Conversation，获取conversation', conversation)
+            console.log(
+              '[DB_Conversation] openDatabase using time [Client_getLiteConversation]:',
+              new Date().getTime() - datetime,
+            )
             return {
               success: conversation?.id ? true : false,
               data: conversation,

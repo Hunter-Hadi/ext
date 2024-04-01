@@ -52,107 +52,105 @@ const useInitSidebar = () => {
   useEffect(() => {
     sidebarSettingsRef.current = sidebarSettings
   }, [sidebarSettings])
+  const isUpdatingConversationRef = useRef(false)
   useEffect(() => {
-    let isExpired = false
+    if (isUpdatingConversationRef.current) {
+      return
+    }
     if (
       currentSidebarConversationType &&
       (appState.open || isMaxAIImmersiveChatPage())
     ) {
-      const switchSidebarConversation = async (conversationId?: string) => {
-        if (!conversationId) {
-          return
+      const handleUpdateConversationType = async () => {
+        const switchSidebarConversation = async (conversationId?: string) => {
+          if (!conversationId) {
+            return
+          }
+          const conversation = await clientGetConversation(conversationId)
+          if (
+            conversation &&
+            conversation.meta.AIProvider &&
+            conversation.meta.AIModel
+          ) {
+            await updateAIProviderModel(
+              conversation.meta.AIProvider,
+              conversation.meta.AIModel,
+            )
+          }
         }
-        const conversation = await clientGetConversation(conversationId)
-        if (
-          !isExpired &&
-          conversation &&
-          conversation.meta.AIProvider &&
-          conversation.meta.AIModel
-        ) {
-          await updateAIProviderModel(
-            conversation.meta.AIProvider,
-            conversation.meta.AIModel,
+        const createCurrentSidebarConversation = async () => {
+          await createConversation(
+            currentSidebarConversationType,
+            MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
+              .AIProvider,
+            MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
+              .AIModel,
           )
         }
+        switch (currentSidebarConversationType) {
+          case 'Chat':
+            {
+              if (sidebarSettingsRef.current?.chat?.conversationId) {
+                // 切换回cache中的conversation
+                await switchSidebarConversation(
+                  sidebarSettingsRef.current?.chat?.conversationId,
+                )
+              } else {
+                await createCurrentSidebarConversation()
+              }
+            }
+            break
+          case 'Summary':
+            {
+              if (
+                sidebarSettingsRef.current?.summary?.conversationId &&
+                sidebarSettingsRef.current?.summary?.conversationId !==
+                  getPageSummaryConversationId()
+              ) {
+                // do nothing
+              } else {
+                await createCurrentSidebarConversation()
+              }
+            }
+            break
+          case 'Search':
+            {
+              if (sidebarSettingsRef.current?.search?.conversationId) {
+                // 切换回cache中的conversation
+                await switchSidebarConversation(
+                  sidebarSettingsRef.current?.search?.conversationId,
+                )
+              } else {
+                await createCurrentSidebarConversation()
+              }
+            }
+            break
+          case 'Art':
+            {
+              if (sidebarSettingsRef.current?.art?.conversationId) {
+                // 切换回cache中的conversation
+                await switchSidebarConversation(
+                  sidebarSettingsRef.current?.art?.conversationId,
+                )
+              } else {
+                await createCurrentSidebarConversation()
+              }
+            }
+            break
+        }
       }
-      const createCurrentSidebarConversation = async () => {
-        await createConversation(
-          currentSidebarConversationType,
-          MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
-            .AIProvider,
-          MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
-            .AIModel,
-        )
-      }
-      console.log(
-        '新版Conversation currentSidebarConversationType',
-        currentSidebarConversationType,
-      )
-      switch (currentSidebarConversationType) {
-        case 'Chat':
-          {
-            if (sidebarSettingsRef.current?.chat?.conversationId) {
-              // 切换回cache中的conversation
-              switchSidebarConversation(
-                sidebarSettingsRef.current?.chat?.conversationId,
-              )
-            } else {
-              createCurrentSidebarConversation()
-            }
-          }
-          break
-        case 'Summary':
-          {
-            debugger
-            if (
-              sidebarSettingsRef.current?.summary?.conversationId &&
-              sidebarSettingsRef.current?.summary?.conversationId !==
-                getPageSummaryConversationId()
-            ) {
-              updateSidebarSettings({
-                summary: {
-                  conversationId: '',
-                },
-              }).then(() => {
-                createCurrentSidebarConversation()
-              })
-            } else {
-              createPageSummary().then().catch()
-            }
-          }
-          break
-        case 'Search':
-          {
-            if (sidebarSettingsRef.current?.search?.conversationId) {
-              // 切换回cache中的conversation
-              switchSidebarConversation(
-                sidebarSettingsRef.current?.search?.conversationId,
-              )
-            } else {
-              createCurrentSidebarConversation()
-            }
-          }
-          break
-        case 'Art':
-          {
-            if (sidebarSettingsRef.current?.art?.conversationId) {
-              // 切换回cache中的conversation
-              switchSidebarConversation(
-                sidebarSettingsRef.current?.art?.conversationId,
-              )
-            } else {
-              createCurrentSidebarConversation()
-            }
-          }
-          break
-      }
-    }
-    return () => {
-      isExpired = true
+      isUpdatingConversationRef.current = true
+      handleUpdateConversationType().then(() => {
+        isUpdatingConversationRef.current = false
+      })
     }
   }, [currentSidebarConversationType, appState.open])
   // summary 重新生成的逻辑
   useEffect(() => {
+    console.log(
+      'Tracking1 Tracking1 Tracking1',
+      sidebarSettings?.summary?.conversationId,
+    )
     if (
       currentSidebarConversationType === 'Summary' &&
       sidebarSettings?.summary?.conversationId &&

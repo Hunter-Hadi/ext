@@ -143,16 +143,15 @@ const useSidebarSettings = () => {
     })
   }
   const resetSidebarConversation = async () => {
-    debugger
-    if (clientWritingMessage.loading || !currentSidebarConversationId) {
+    if (clientWritingMessage.loading) {
       return
     }
     getInputMediator('floatingMenuInputMediator').updateInputValue('')
     getInputMediator('chatBoxInputMediator').updateInputValue('')
     console.log('新版Conversation 清除conversation')
-    const currentConversation = await clientGetConversation(
-      currentSidebarConversationId,
-    )
+    const currentConversation = currentSidebarConversationId
+      ? await clientGetConversation(currentSidebarConversationId)
+      : null
     if (currentConversation) {
       if (currentConversation.type === 'Summary') {
         // Summary有点不一样，需要清除所有的message
@@ -175,9 +174,11 @@ const useSidebarSettings = () => {
       )
     } else {
       await createSidebarConversation(
-        'Chat',
-        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIProvider,
-        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel,
+        currentSidebarConversationType,
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[currentSidebarConversationType]
+          .AIProvider,
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[currentSidebarConversationType]
+          .AIModel,
       )
     }
     setClientWritingMessage({
@@ -192,6 +193,7 @@ const useSidebarSettings = () => {
     AIModel: string,
   ): Promise<string> => {
     let conversationId: string = ''
+    debugger
     if (conversationType === 'Chat') {
       // 获取当前AIProvider
       // 获取当前AIProvider的model
@@ -230,6 +232,11 @@ const useSidebarSettings = () => {
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (conversationId && (await clientGetConversation(conversationId))) {
+        await updateSidebarSettings({
+          summary: {
+            conversationId,
+          },
+        })
         return conversationId
       }
       const conversationTitleMap: {

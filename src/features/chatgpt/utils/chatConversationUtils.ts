@@ -14,9 +14,9 @@ export const clientGetConversation = async (conversationId: string) => {
         conversationId,
       },
     })
-    return result.success ? (result.data as IChatConversation) : undefined
+    return result.success ? (result.data as IChatConversation) : null
   } catch (e) {
-    return undefined
+    return null
   }
 }
 /**

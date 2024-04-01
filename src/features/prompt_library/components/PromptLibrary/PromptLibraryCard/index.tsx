@@ -55,9 +55,18 @@ const PromptLibraryCard: FC<{
     )
       ? MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL
       : MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL
-    return prompt.type === 'private'
-      ? `${currentHost}/prompts/own/${prompt.id}`
-      : `${currentHost}/prompts/${prompt.id}`
+
+    if (currentHost === MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL) {
+      if (prompt.type === 'private') {
+        return `${MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL}/prompts/own/${prompt.id}`
+      }
+
+      return `${MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL}/prompts/${prompt.id}`
+    } else {
+      // WWW
+      // prompt 内容暂时不支持 i18n，所以这里直接跳转到 www 默认语言的 prompt library
+      return `${MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL}/prompt/library/${prompt.id}`
+    }
   }, [prompt])
 
   const actionBtnList = () => {

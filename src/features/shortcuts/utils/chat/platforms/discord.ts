@@ -135,16 +135,19 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
       replyMessageBox = findParentEqualSelector(
         '[id^="chat-messages"]',
         inputAssistantButton,
+        8,
       )
     }
 
     const chatMessages = discordGetChatMessagesFromNodeList(
-      chatMessagesNodeList.slice(
-        0,
-        chatMessagesNodeList.findIndex(
-          (messageBox) => messageBox === replyMessageBox,
-        ) + 1,
-      ),
+      replyMessageBox
+        ? chatMessagesNodeList.slice(
+            0,
+            chatMessagesNodeList.findIndex(
+              (messageBox) => messageBox === replyMessageBox,
+            ) + 1,
+          )
+        : chatMessagesNodeList,
     )
 
     if (chatMessages.length) {

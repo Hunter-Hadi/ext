@@ -47,13 +47,14 @@ export interface InputAssistantButtonStyle {
   hoverColor?: string // 按钮鼠标悬浮时文字颜色
   borderColor?: string // 按钮边框颜色
   hoverBorderColor?: string // 按钮鼠标悬浮时边框颜色
-  borderRadius?: string // 按钮圆角
-  borderWidth?: string // 按钮边框宽度
+  borderRadius?: string | number // 按钮圆角
+  borderWidth?: string | number // 按钮边框宽度
   iconSize?: number // 按钮文字大小
-  margin?: string // 按钮外边距
-  padding?: string // 按钮内边距
+  margin?: string | number // 按钮外边距
+  padding?: string | number // 按钮内边距
   icon?: IContextMenuIconKey // 按钮图标
   transparentHeight?: number // 透明的可点击高度
+  height?: string | number // 按钮高度
 }
 
 interface InputAssistantButtonProps {

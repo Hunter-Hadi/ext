@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "ή αποθέστε PDF εδώ",
     "home_view_content_nav__image_uploader__choose_image": "Επιλέξτε εικόνα",
     "home_view_content_nav__image_uploader__drop_image_here": "ή αποθέστε εικόνα εδώ",
-    "home_view_content_nav__drop_pdf_and_image_here": "Αποθέστε PDF/εικόνα εδώ",
+    "home_view_content_nav__drop_pdf_and_image_here": "Αποθέστε το έγγραφο/εικόνα εδώ",
     "home_view_content_nav__ai_search_placeholder": "Ρωτήστε τον ιστό...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Αλλαγή μοντέλου AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Πάροχοι AI τρίτων",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Αναβάθμιση για συνομιλία με ένα κλικ",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Επιτρέψτε στην AI να δημιουργήσει εξατομικευμένες απαντήσεις στα social media για εσάς σε δευτερόλεπτα.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Αναβάθμιση για συνομιλία με ένα κλικ",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Επιτρέψτε στην AI να δημιουργήσει εξατομικευμένες απαντήσεις στα social media για εσάς σε δευτερόλεπτα."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Επιτρέψτε στην AI να δημιουργήσει εξατομικευμένες απαντήσεις στα social media για εσάς σε δευτερόλεπτα.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Μεταφόρτωση εγγράφων ή εικόνων στο MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Μεταφόρτωση εγγράφων στο MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Το αρχείο που μεταφορτώθηκε είναι πολύ μεγάλο. Σκεφτείτε να χρησιμοποιήσετε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή να μεταφορτώσετε ένα μικρότερου μεγέθους αρχείο."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

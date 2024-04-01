@@ -78,9 +78,8 @@ class ChatSystem implements ChatSystemInterface {
           }
           case 'Client_AuthAIProvider': {
             const { provider } = data
-            const needAuthAIProvider = this.adapters[
-              provider as IAIProviderType
-            ]
+            const needAuthAIProvider =
+              this.adapters[provider as IAIProviderType]
             await needAuthAIProvider?.auth(sender.tab?.id || 0)
             console.log(
               'Client_AuthAIProvider',
@@ -136,9 +135,10 @@ class ChatSystem implements ChatSystemInterface {
           case 'Client_changeConversation': {
             const { conversationId } = data
             if (conversationId) {
-              const conversation = await ConversationManager.conversationDB.getConversationById(
-                conversationId,
-              )
+              const conversation =
+                await ConversationManager.conversationDB.getConversationById(
+                  conversationId,
+                )
               if (conversation) {
                 await this.switchAdapterWithConversation(conversation)
                 return {
@@ -163,9 +163,10 @@ class ChatSystem implements ChatSystemInterface {
               const question = data.question as IUserChatMessage
               console.log('新版Conversation 提问', question)
               if (question.conversationId) {
-                const conversation = await ConversationManager.conversationDB.getConversationById(
-                  question.conversationId,
-                )
+                const conversation =
+                  await ConversationManager.conversationDB.getConversationById(
+                    question.conversationId,
+                  )
                 if (conversation) {
                   // 如果会话存在，但是AIProvider不一致，需要切换AIProvider
                   if (
@@ -238,72 +239,66 @@ class ChatSystem implements ChatSystemInterface {
               message: '',
             }
           }
-          case 'Client_chatGetFiles':
-            {
-              return {
-                success: true,
-                data: this.chatFiles,
-                message: '',
-              }
+          case 'Client_chatGetFiles': {
+            return {
+              success: true,
+              data: this.chatFiles,
+              message: '',
             }
-          case 'Client_chatUploadFiles':
-            {
-              const { files } = data
-              await this.uploadFiles(files)
-              this.updateClientFiles()
-              return {
-                success: true,
-                data: this.chatFiles,
-                message: '',
-              }
+          }
+          case 'Client_chatUploadFiles': {
+            const { files } = data
+            await this.uploadFiles(files)
+            this.updateClientFiles()
+            return {
+              success: true,
+              data: this.chatFiles,
+              message: '',
             }
-          case 'Client_chatAbortUploadFiles':
-            {
-              const { files } = data
-              const success = await this.abortUploadFiles(
-                files.map((file: IChatUploadFile) => file.id),
-              )
-              this.updateClientFiles()
-              return {
-                success,
-                data: this.chatFiles,
-                message: '',
-              }
+          }
+          case 'Client_chatAbortUploadFiles': {
+            const { files } = data
+            const success = await this.abortUploadFiles(
+              files.map((file: IChatUploadFile) => file.id),
+            )
+            this.updateClientFiles()
+            return {
+              success,
+              data: this.chatFiles,
+              message: '',
             }
-          case 'Client_chatRemoveFiles':
-            {
-              const { files } = data
-              const success = await this.removeFiles(
-                files.map((file: IChatUploadFile) => file.id),
-              )
-              this.updateClientFiles()
-              return {
-                success,
-                data: this.chatFiles,
-                message: '',
-              }
+          }
+          case 'Client_chatRemoveFiles': {
+            const { files } = data
+            const success = await this.removeFiles(
+              files.map((file: IChatUploadFile) => file.id),
+            )
+            this.updateClientFiles()
+            return {
+              success,
+              data: this.chatFiles,
+              message: '',
             }
-          case 'Client_chatClearFiles':
-            {
-              const success = await this.clearFiles()
-              this.updateClientFiles()
-              return {
-                success,
-                data: this.chatFiles,
-                message: '',
-              }
+          }
+          case 'Client_chatClearFiles': {
+            const success = await this.clearFiles()
+            this.updateClientFiles()
+            return {
+              success,
+              data: this.chatFiles,
+              message: '',
             }
-          case 'Client_chatUploadFilesChange':
-            {
-              const { files } = data
-              await this.updateFiles(files)
-              await this.updateClientFiles()
-              return {
-                success: true,
-                data: {},
-                message: 'ok',
-              }
+          }
+          case 'Client_chatUploadFilesChange': {
+            const { files } = data
+            await this.updateFiles(files)
+            await this.updateClientFiles()
+            return {
+              success: true,
+              data: {},
+              message: 'ok',
             }
+          }
           case 'Client_chatGetUploadFileToken': {
             const token = await this.getUploadFileToken()
             return {

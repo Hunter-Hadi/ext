@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "lub upuść PDF tutaj",
     "home_view_content_nav__image_uploader__choose_image": "Wybierz obraz",
     "home_view_content_nav__image_uploader__drop_image_here": "lub upuść obraz tutaj",
-    "home_view_content_nav__drop_pdf_and_image_here": "Upuść PDF/obraz tutaj",
+    "home_view_content_nav__drop_pdf_and_image_here": "Upuść dokument/obraz tutaj",
     "home_view_content_nav__ai_search_placeholder": "Zapytaj sieć...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Przełącz model AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Dostawcy AI zewnętrznych",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Ulepsz do chatu jednym kliknięciem",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Pozwól, aby sztuczna inteligencja wygenerowała dla Ciebie spersonalizowane odpowiedzi na media społecznościowe w ciągu kilku sekund.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Ulepsz do chatu jednym kliknięciem",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Pozwól, aby sztuczna inteligencja wygenerowała dla Ciebie spersonalizowane odpowiedzi na media społecznościowe w ciągu kilku sekund."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Pozwól, aby sztuczna inteligencja wygenerowała dla Ciebie spersonalizowane odpowiedzi na media społecznościowe w ciągu kilku sekund.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Prześlij dokumenty lub obrazy do MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Prześlij dokumenty do MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Przesłany plik jest zbyt duży. Rozważ użycie modelu AI z większym oknem kontekstowym lub przesłanie mniejszego pliku."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

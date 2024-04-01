@@ -5,8 +5,8 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
+import useUploadImagesAndSwitchToMaxAIVisionModel from '@/features/chatgpt/hooks/upload/useUploadImagesAndSwitchToMaxAIVisionModel'
 import UploadButton from '@/features/common/components/UploadButton'
-import { useUploadImagesAndSwitchToMaxAIVisionModel } from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 import HomeViewAIScreenshotButton from './HomeViewAIScreenshotButton'

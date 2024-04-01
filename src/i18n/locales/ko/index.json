@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "또는 PDF 파일을 여기에 놓으세요",
     "home_view_content_nav__image_uploader__choose_image": "이미지 선택",
     "home_view_content_nav__image_uploader__drop_image_here": "또는 이미지를 여기에 놓으세요",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF/이미지를 여기에 놓으세요",
+    "home_view_content_nav__drop_pdf_and_image_here": "문서/이미지를 여기에 놓으세요",
     "home_view_content_nav__ai_search_placeholder": "웹에 질문하기...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI 모델 전환",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3rd-party AI 공급업체",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-클릭 채팅 업그레이드",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "AI가 당신을 위해 맞춤형 소셜 미디어 답변을 초 단위로 생성합니다.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-클릭 채팅 업그레이드",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI가 당신을 위해 맞춤형 소셜 미디어 초안을 초 단위로 생성합니다."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI가 당신을 위해 맞춤형 소셜 미디어 초안을 초 단위로 생성합니다.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI에 문서 또는 이미지 업로드",
+    "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI에 문서 업로드",
+    "provider__chatgpt__upload_file_error__too_long__text": "업로드한 파일이 너무 큽니다. 더 큰 컨텍스트 창을 가진 AI 모델을 사용하거나 더 작은 크기의 파일을 업로드해주세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

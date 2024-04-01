@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "ali spustite PDF tukaj",
     "home_view_content_nav__image_uploader__choose_image": "Izberite sliko",
     "home_view_content_nav__image_uploader__drop_image_here": "ali spustite sliko tukaj",
-    "home_view_content_nav__drop_pdf_and_image_here": "Spustite PDF/sliko tukaj",
+    "home_view_content_nav__drop_pdf_and_image_here": "Spustite dokument/sliko tukaj",
     "home_view_content_nav__ai_search_placeholder": "Vprašajte splet...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Preklopi AI model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Ponudniki AI tretjih oseb",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Nadgraditev za klepet s 1 klikom",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Omogočite, da umetna inteligenca v nekaj sekundah ustvari personalizirane odgovore za družabna omrežja.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Nadgraditev za klepet s 1 klikom",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Omogočite, da umetna inteligenca v nekaj sekundah ustvari personalizirane odgovore za družabna omrežja."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Omogočite, da umetna inteligenca v nekaj sekundah ustvari personalizirane odgovore za družabna omrežja.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Naložite dokumente ali slike v MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Naložite dokumente v MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Naložena datoteka je prevelika. Razmislite o uporabi modela AI z večjim kontekstnim oknom ali naložite manjšo datoteko."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

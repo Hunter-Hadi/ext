@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "of plaats hier een PDF",
     "home_view_content_nav__image_uploader__choose_image": "Kies afbeelding",
     "home_view_content_nav__image_uploader__drop_image_here": "of plaats hier een afbeelding",
-    "home_view_content_nav__drop_pdf_and_image_here": "Plaats hier een PDF/afbeelding",
+    "home_view_content_nav__drop_pdf_and_image_here": "Plaats document/afbeelding hier",
     "home_view_content_nav__ai_search_placeholder": "Vraag het web...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Wissel van AI-model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "AI-providers van derden",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Upgrade voor 1-klik chat",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Upgrade voor 1-klik chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload documenten of afbeeldingen naar MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Documenten uploaden naar MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Het geüploade bestand is te groot. Overweeg om een AI-model te gebruiken met een groter contextvenster of upload een kleiner bestand."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

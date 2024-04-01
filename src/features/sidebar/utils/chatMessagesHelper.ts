@@ -12,6 +12,7 @@ import {
 } from '@/features/chatgpt/types'
 import {
   isAIMessage,
+  isSystemMessage,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
@@ -361,6 +362,21 @@ export const formatChatMessageContent = (message: IChatMessage) => {
     return formatThirdOrSystemMessageContent(message as ISystemChatMessage)
   }
 }
+export const safeGetAttachmentExtractedContent = (
+  extractedContent: string | Record<string, any>,
+) => {
+  if (extractedContent) {
+    if (typeof extractedContent !== 'string') {
+      try {
+        return JSON.stringify(extractedContent, null, 2)
+      } catch (e) {
+        return 'Content is not a string'
+      }
+    }
+    return extractedContent
+  }
+  return ''
+}
 /**
  * 格式化消息到文字版历史记录
  * @param conversation
@@ -375,20 +391,38 @@ export const formatMessagesToLiteHistory = async (
   const conversationType = conversation.type
   const liteHistory: string[] = []
   messages.forEach((message) => {
-    if (message.type === 'ai') {
-      const originalQuestion = (message as IAIResponseMessage).originalMessage
-        ?.metadata?.title?.title
+    if (isAIMessage(message)) {
+      const originalQuestion = message.originalMessage?.metadata?.title?.title
       if (originalQuestion && conversationType === 'Search') {
         liteHistory.push(originalQuestion)
       }
+      liteHistory.push('AI: ' + formatAIMessageContent(message))
+    } else if (isUserMessage(message)) {
+      const userMessage = message
+      let userAttachmentText = ''
+      if (userMessage.meta?.attachments?.length) {
+        // 添加附件
+        userAttachmentText = '\nAttachments:\n'
+        for (const attachment of userMessage.meta.attachments) {
+          userAttachmentText += `  • <${attachment.fileName}>\n`
+        }
+      }
+      let userContextText = ''
+      if (userMessage.meta?.contexts?.length) {
+        // 添加上下文
+        userContextText = '\nContexts:\n'
+        for (const context of userMessage.meta.contexts) {
+          userContextText += `  • ${context.key}: ${context.value}\n`
+        }
+      }
       liteHistory.push(
-        'AI: ' + formatAIMessageContent(message as IAIResponseMessage),
+        'User: ' +
+          formatUserMessageContent(userMessage) +
+          '\n' +
+          userAttachmentText +
+          userContextText,
       )
-    } else if (message.type === 'user') {
-      liteHistory.push(
-        'User: ' + formatUserMessageContent(message as IUserChatMessage),
-      )
-    } else if (message.type === 'system' || message.type === 'third') {
+    } else if (isSystemMessage(message) || message.type === 'third') {
       if (needSystemOrThirdMessage) {
         liteHistory.push(
           `${message.type === 'system' ? `System: ` : `Third: `}` +
@@ -402,6 +436,9 @@ export const formatMessagesToLiteHistory = async (
   // Exploring Artificial Intelligence A Conversation with AI Assistant
   // ---------------------------------------------------------
   //
+  //User contexts:
+  //  • Selected text: Aucun texte sélectionné
+  //  • Key points: Améliorer mes compétences en rédaction
   //User: Hi there! How can you assist me today?
   //
   //AI: Hello! I'm an AI trained to help with a wide range of topics. Feel free to ask me anything or let me know what you need assistance with.

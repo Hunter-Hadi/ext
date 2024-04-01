@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "o i-drop ang PDF dito",
     "home_view_content_nav__image_uploader__choose_image": "Pumili ng imahe",
     "home_view_content_nav__image_uploader__drop_image_here": "o i-drop ang imahe dito",
-    "home_view_content_nav__drop_pdf_and_image_here": "I-drop ang PDF/imahe dito",
+    "home_view_content_nav__drop_pdf_and_image_here": "I-drop ang dok/image dito",
     "home_view_content_nav__ai_search_placeholder": "Tanungin ang web...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Palitan ang AI model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Mga 3rd-party AI provider",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Mag-upgrade para sa 1-click chat",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa social media para sa iyo sa loob ng ilang segundo.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Mag-upgrade para sa 1-click chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa social media para sa iyo sa loob ng ilang segundo."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa social media para sa iyo sa loob ng ilang segundo.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "I-upload ang mga dokumento o imahe sa MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "I-upload ang mga dokumento sa MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Ang na-upload na file ay masyadong malaki. Isipin ang paggamit ng isang AI model na may mas malaking bintana ng konteksto, o mag-upload ng isang mas maliit na file."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

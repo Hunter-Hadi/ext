@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "eller slip PDF her",
     "home_view_content_nav__image_uploader__choose_image": "Vælg billede",
     "home_view_content_nav__image_uploader__drop_image_here": "eller slip billede her",
-    "home_view_content_nav__drop_pdf_and_image_here": "Slip PDF/billede her",
+    "home_view_content_nav__drop_pdf_and_image_here": "Træk dokument/billede herhen",
     "home_view_content_nav__ai_search_placeholder": "Spørg nettet...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Skift AI-model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Tredjeparts AI-udbydere",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Opgrader til 1-klik chat",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Lad AI generere personlige svar til sociale medier for dig på få sekunder.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Opgrader til 1-klik chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Lad AI generere personlige svar til sociale medier for dig på få sekunder."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Lad AI generere personlige svar til sociale medier for dig på få sekunder.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload dokumenter eller billeder til MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Upload dokumenter til MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Den uploadede fil er for stor. Overvej at bruge en AI-model med et større kontekstvindue eller upload en fil af mindre størrelse."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

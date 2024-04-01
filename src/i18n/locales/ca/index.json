@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "o deixa caure el PDF aquí",
     "home_view_content_nav__image_uploader__choose_image": "Tria una imatge",
     "home_view_content_nav__image_uploader__drop_image_here": "o deixa caure la imatge aquí",
-    "home_view_content_nav__drop_pdf_and_image_here": "Deixa caure el PDF/imatge aquí",
+    "home_view_content_nav__drop_pdf_and_image_here": "Deixa caure el document/imatge aquí",
     "home_view_content_nav__ai_search_placeholder": "Pregunta a la web...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Canvia el model d'IA",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Proveïdors d'IA de tercers",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Millora per a xat d'un clic",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Permet que l'IA generi respostes personalitzades per a les xarxes socials en segons.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Millora per a xat d'un clic",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Permet que l'IA generi respostes personalitzades per a les xarxes socials en segons."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Permet que l'IA generi respostes personalitzades per a les xarxes socials en segons.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Pujar documents o imatges a MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Pujar documents a MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "El fitxer carregat és massa gran. Considera utilitzar un model d'IA amb una finestra de context més gran o carregar un fitxer de menor mida."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

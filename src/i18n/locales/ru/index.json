@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "или перетащите PDF сюда",
     "home_view_content_nav__image_uploader__choose_image": "Выберите изображение",
     "home_view_content_nav__image_uploader__drop_image_here": "или перетащите изображение сюда",
-    "home_view_content_nav__drop_pdf_and_image_here": "Перетащите PDF/изображение сюда",
+    "home_view_content_nav__drop_pdf_and_image_here": "Перетащите документ/изображение сюда",
     "home_view_content_nav__ai_search_placeholder": "Задайте вопрос вебу...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Переключить модель ИИ",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Сторонние провайдеры ИИ",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Обновление для чата с одним нажатием",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Позвольте ИИ создавать персонализированные ответы в социальных сетях за считанные секунды.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Обновление для чата с одним нажатием",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Позвольте ИИ создавать персонализированные ответы в социальных сетях за считанные секунды."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Позвольте ИИ создавать персонализированные ответы в социальных сетях за считанные секунды.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Загрузить документы или изображения в MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Загрузить документы в MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Загруженный файл слишком большой. Рассмотрите возможность использования модели искусственного интеллекта с более широким контекстным окном или загрузки файла меньшего размера."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

@@ -5,8 +5,8 @@ import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
   IMaxAIChatGPTBackendAPIType,
-  IMaxAIChatMessage,
   IMaxAIChatMessageContent,
+  IMaxAIRequestHistoryMessage,
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
@@ -88,7 +88,7 @@ class UseChatGPTPlusChat extends BaseChat {
       taskId: string
       doc_id?: string
       streaming?: boolean
-      chat_history?: IMaxAIChatMessage[]
+      chat_history?: IMaxAIRequestHistoryMessage[]
       backendAPI?: IMaxAIChatGPTBackendAPIType
       meta?: IChatMessageExtraMetaType
     },

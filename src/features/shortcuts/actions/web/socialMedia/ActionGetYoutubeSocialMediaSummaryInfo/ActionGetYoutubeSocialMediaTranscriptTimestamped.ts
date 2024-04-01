@@ -59,6 +59,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   currentWebPageTitle = ''
   private currentMessageId?: string
+  private transciptData: TranscriptResponse[] = []
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -98,7 +99,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         return
       }
       if (this.isStopAction) return
-
+      this.transciptData = transcripts
       const chaptersInfoList = this.getChaptersInfoList()
       const transcriptsText = transcripts.map((item) => item.text).join('')
       const transcriptsTokens = getTextTokens(transcriptsText || '').length
@@ -106,7 +107,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       if (
         chaptersInfoList &&
         chaptersInfoList.length !== 0 &&
-        transcriptsTokens > 1000 //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试
+        //tokens大于1000才进入chapters逻辑，因为怕官方切片过于多，这个功能后续要慢慢调试-laizeping
+        // @update - 临时改一下
+        transcriptsTokens > 100
       ) {
         if (this.isStopAction) return
 
@@ -205,12 +208,27 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     try {
       const transcriptViewDataList: TranscriptTimestampedParamType[] =
         this.getPrepareViewData(chapterTextList)
+      // 语言
+      const userSelectedLanguage =
+        (await clientGetLiteChromeExtensionDBStorage()).userSettings
+          ?.language || DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+      // 因为transcript不会存在多种语言，所以这里只需要获取一段去判断就行
+      const transcriptText = this.transciptData
+        .slice(0, 20)
+        .map((transcript) => transcript.text)
+        .filter(Boolean)
+        .join('\n')
+      const detectLanguageResult = await generatePromptAdditionalText({
+        AI_RESPONSE_LANGUAGE: userSelectedLanguage,
+        SELECTED_TEXT: transcriptText,
+      }) //获取用户的i18设置prompt
       //创建更新transcript视图逻辑
       for (const index in chapterTextList) {
         if (this.isStopAction) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
           chapterTextList[index],
+          detectLanguageResult.data,
         ) //请求GPT返回json
         if (this.isStopAction) return transcriptViewDataList
         const endTime = Date.now() // 记录请求结束时间
@@ -244,42 +262,41 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       return []
     }
   }
-  async requestGptGetTranscriptJson(chapterTextList: {
-    text: string
-    start: string
-    tokens?: number
-  }) {
+  async requestGptGetTranscriptJson(
+    chapterTextList: {
+      text: string
+      start: string
+      tokens?: number
+    },
+    outputLanguage: string,
+  ) {
     const maxRetries = 2 // 最大尝试次数
     let retries = 0 // 当前尝试次数
-    // 语言
-    const userSelectedLanguage =
-      (await clientGetLiteChromeExtensionDBStorage()).userSettings?.language ||
-      DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
-    const getHaveLanguagePrompt = await generatePromptAdditionalText({
-      AI_RESPONSE_LANGUAGE: userSelectedLanguage,
-    }) //获取用户的i18设置prompt
-    const systemPrompt = `Ignore all previous instructions. ${getHaveLanguagePrompt.data},you are a tool for summarizing transcripts
+    const systemPrompt = `Ignore all previous instructions. ${outputLanguage},you are a tool for summarizing transcripts
     Help me quickly understand the summary of key points and the start timestamp
-    The transcript are composed in the following format
-    [start:transcript start time,text: transcript text]
+    The transcript are composed in the following format:
+    {
+      "text": "transcript text"
+      "start": "transcript start time of number",
+    }
     Follow the required format, don't write anything extra, avoid generic phrases, and don't repeat my task. 
-    gpt output text : No matter what the script says,Returned summarizing text language is ${getHaveLanguagePrompt.data}
+    gpt output text : No matter what the script says,Returned summarizing text language is ${outputLanguage}
     Return in JSON format:
     interface IJsonFormat {
-    text: string //About 10-30 words to describe, Text description of the main content of the entire chapter, write down the text.${getHaveLanguagePrompt.data}
+    text: string //About 10-30 words to describe, Text description of the main content of the entire chapter, write down the text.${outputLanguage}
     start: number //In seconds，User reference text start time
     children: [
     //The 1-3 key points on VIDEO TRANSCRIPT, starting from low to high, allow me to quickly understand the details, and pay attention to all the VIDEO TRANSCRIPT 1-3 key points
     {
-      text: string //About 10-30 words to describe, the first key point, Write text.${getHaveLanguagePrompt.data}  
+      text: string //About 10-30 words to describe, the first key point, Write text.${outputLanguage}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-30 words to describe, the second key point,write the text.${getHaveLanguagePrompt.data}  
+      text: string //About 10-30 words to describe, the second key point,write the text.${outputLanguage}  
       start: number //In seconds，User reference text start time
     },
     {
-      text: string //About 10-30 words to describe, the third key point, write the text.${getHaveLanguagePrompt.data}  
+      text: string //About 10-30 words to describe, the third key point, write the text.${outputLanguage}  
       start: number //In seconds，User reference text start time
     },
     ]
@@ -287,15 +304,15 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     The returned JSON can have up to two levels
     `
     const newPrompt = `
-    Ignore all previous instructions.${getHaveLanguagePrompt.data}
+    Ignore all previous instructions.${outputLanguage}
     [VIDEO TRANSCRIPT]:
     ${chapterTextList.text}
 
     Above is the transcript
-    gpt output text :No matter what the VIDEO TRANSCRIPT says.${getHaveLanguagePrompt.data}
-    Ignore all previous instructions.${getHaveLanguagePrompt.data}
+    gpt output text :No matter what the VIDEO TRANSCRIPT says.${outputLanguage}
+    Ignore all previous instructions.${outputLanguage}
     `
-    console.log('simply getHaveLanguagePrompt.data', getHaveLanguagePrompt.data)
+    console.log('simply outputLanguage', outputLanguage)
     const attemptRequest: () => Promise<
       TranscriptTimestampedGptType | false
     > = async () => {
@@ -430,7 +447,14 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       // 将传录片段的文本加入到当前的章节文本中
       if (transcriptStartSeconds >= chaptersStartSeconds[currentChapterIndex]) {
         chaptersTextList[currentChapterIndex].text += transcript.text
-          ? `[start:${transcriptStartSeconds},text:${transcript.text}]`
+          ? JSON.stringify(
+              {
+                text: transcript.text,
+                start: transcript.start,
+              },
+              null,
+              2,
+            ) + '\n'
           : ''
       }
     })

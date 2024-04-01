@@ -113,21 +113,19 @@ const getOutlookButtonGroup = (
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))
   const subject =
-    (
-      editPanelElement.querySelector(
-        'input[maxlength="255"]',
-      ) as HTMLInputElement
-    )?.value || ''
+    editPanelElement.querySelector<HTMLInputElement>('input[maxlength="255"]')
+      ?.value || ''
   // 1. 不在列表
   // 2. 没有toOrCC的用户
   // 3. 没有fwdMsg
   // 4. 不在dialog中
+  // 240401: 满足上面4条情况但有有subject的情况下显示 reply button，所以去除了subject的判断
   if (
     !listContainer?.contains(keyElement) &&
     toOrCC === 0 &&
     !fwdMsg &&
-    !isDialog &&
-    !subject
+    !isDialog
+    // && !subject
   ) {
     return [
       buttonGroupConfig.composeNewButton,

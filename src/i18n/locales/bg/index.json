@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "или поставете PDF тук",
     "home_view_content_nav__image_uploader__choose_image": "Изберете изображение",
     "home_view_content_nav__image_uploader__drop_image_here": "или поставете изображение тук",
-    "home_view_content_nav__drop_pdf_and_image_here": "Поставете PDF/изображение тук",
+    "home_view_content_nav__drop_pdf_and_image_here": "Пусни документ/изображение тук",
     "home_view_content_nav__ai_search_placeholder": "Запитайте уеба...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Превключване на AI модел",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "AI доставчици от трета страна",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Надстройка за чат с едно щракване",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Нека ИИ генерира персонализирани отговори в социалните мрежи за вас за секунди.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Надстройка за чат с едно щракване",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Нека ИИ генерира персонализирани отговори в социалните мрежи за вас за секунди."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Нека ИИ генерира персонализирани отговори в социалните мрежи за вас за секунди.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Качете документи или изображения в MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Качете документи в MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Каченият файл е твърде голям. Разгледайте възможността да използвате модел на изкуствен интелект с по-голям контекст или качете по-малък файл."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поема...",

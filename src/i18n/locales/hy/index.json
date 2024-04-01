@@ -571,7 +571,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "կամ դրեք PDF-ը այստեղ",
     "home_view_content_nav__image_uploader__choose_image": "Ընտրեք պատկերը",
     "home_view_content_nav__image_uploader__drop_image_here": "կամ դրեք պատկերը այստեղ",
-    "home_view_content_nav__drop_pdf_and_image_here": "Դրեք PDF/պատկերը այստեղ",
+    "home_view_content_nav__drop_pdf_and_image_here": "Փոխարկեք փաստաթղթերը/պատկերները այստեղ",
     "home_view_content_nav__ai_search_placeholder": "Հարցերը վերաբերեք վեբին...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Փոխել AI մոդելը",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3-րդ անձնակազմի AI մատակարարներ",
@@ -672,7 +672,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Թարմացնել 1-կլիկով խոսել",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Թույլատրել AI-ին գեներացնել Ձեր հաշվին անհատականացված սոցիալական մեդիայի պատասխանները մի քանի վայրկյանում:",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Թարմացնել 1-կլիկով խոսել",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Թույլատրել AI-ին գեներացնել Ձեր հաշվին անհատականացված սոցիալական մեդիայի պատասխանները մի քանի վայրկյանում:"
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Թույլատրել AI-ին գեներացնել Ձեր հաշվին անհատականացված սոցիալական մեդիայի պատասխանները մի քանի վայրկյանում:",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Վերբեռնեք փաստաթղթեր կամ պատկերներ MaxAI-ին",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Վերբեռնեք փաստաթղթեր MaxAI-ին",
+    "provider__chatgpt__upload_file_error__too_long__text": "Վերբեռնված ֆայլը չի կարող ընդունել, քանի որ այն շատ մեծ է։ Փորձեք օգտագործել ավելի խոշոր համապատասխանող AI մոդել, կամ վերբեռնել ֆայլ փոքր չափով։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -81,12 +81,12 @@ const SettingPromptsPageHeader: FC<ISettingPromptsPageHeaderProps> = ({
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__context_menu',
           )}
         />
-        <Tab
+        {/* <Tab
           value={'WRITING_ASSISTANT'}
           label={t(
             'settings:feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant',
           )}
-        />
+        /> */}
         {/* <Tab
           value={'SUMMARY'}
           label={t(

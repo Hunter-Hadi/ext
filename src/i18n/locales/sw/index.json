@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "au buruta PDF hapa",
     "home_view_content_nav__image_uploader__choose_image": "Chagua picha",
     "home_view_content_nav__image_uploader__drop_image_here": "au buruta picha hapa",
-    "home_view_content_nav__drop_pdf_and_image_here": "Buruta PDF/picha hapa",
+    "home_view_content_nav__drop_pdf_and_image_here": "Weka hati/picha hapa",
     "home_view_content_nav__ai_search_placeholder": "Uliza wavu...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Badilisha mfano wa AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Watoa huduma wa AI wa tatu",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Sasisha kwa mazungumzo ya bonyeza 1",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Ruhusu AI kuunda majibu ya media ya kijamii ya kibinafsi kwa sekunde.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Sasisha kwa mazungumzo ya bonyeza 1",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Ruhusu AI kuunda majibu ya media ya kijamii ya kibinafsi kwa sekunde."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Ruhusu AI kuunda majibu ya media ya kijamii ya kibinafsi kwa sekunde.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Pakia hati au picha kwa MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Pakia hati kwa MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Faili iliyopakiwa ni kubwa sana. Fikiria kutumia mfano wa AI wenye dirisha kubwa la muktadha, au kupakia faili ndogo."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

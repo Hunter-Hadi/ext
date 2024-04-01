@@ -1,4 +1,7 @@
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_ID,
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+} from '@/constants'
 import { textGetLanguageName } from '@/features/common/utils/nlp'
 import { shortcutsRenderTemplate } from '@/features/shortcuts'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
@@ -27,7 +30,9 @@ const generatePromptAdditionalText = async (
   //  - 非Auto, 有CONTEXT -> Respond in "用户选择的"
   //  - 非Auto,没有CONTEXT -> 不处理
   const isAuto =
-    params.AI_RESPONSE_LANGUAGE === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE
+    params.AI_RESPONSE_LANGUAGE === DEFAULT_AI_OUTPUT_LANGUAGE_VALUE ||
+    // 历史遗留，不应该有这个值
+    params.AI_RESPONSE_LANGUAGE === DEFAULT_AI_OUTPUT_LANGUAGE_ID
   const CONTEXT =
     params.READABILITY_CONTENTS || //总结的上下文
     params.WEB_SEARCH_RESULTS || // 搜索的上下文

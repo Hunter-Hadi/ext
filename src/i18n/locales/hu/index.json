@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "vagy húzza ide a PDF-t",
     "home_view_content_nav__image_uploader__choose_image": "Kép kiválasztása",
     "home_view_content_nav__image_uploader__drop_image_here": "vagy húzza ide a képet",
-    "home_view_content_nav__drop_pdf_and_image_here": "Húzza ide a PDF-t/képet",
+    "home_view_content_nav__drop_pdf_and_image_here": "Dokumentum/kép ide helyezése",
     "home_view_content_nav__ai_search_placeholder": "Kérdezze meg a webet...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI-modell váltása",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Harmadik féltől származó AI-szolgáltatók",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Frissítés 1 kattintással történő csevegéshez",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Engedje, hogy az AI másodpercek alatt személyre szabott közösségi média válaszokat generáljon Önnek.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Frissítés 1 kattintással történő csevegéshez",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Engedje, hogy az AI másodpercek alatt személyre szabott közösségi média válaszokat generáljon Önnek."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Engedje, hogy az AI másodpercek alatt személyre szabott közösségi média válaszokat generáljon Önnek.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Dokumentumokat vagy képeket tölthet fel a MaxAI számára",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Dokumentumok feltöltése a MaxAI-hoz",
+    "provider__chatgpt__upload_file_error__too_long__text": "A feltöltött fájl túl nagy. Fontolja meg egy AI modell használatát, amelynek nagyobb a kontextus ablaka, vagy töltsön fel kisebb méretű fájlt."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

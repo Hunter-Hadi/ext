@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "ou déposez un PDF ici",
     "home_view_content_nav__image_uploader__choose_image": "Choisir une image",
     "home_view_content_nav__image_uploader__drop_image_here": "ou déposez une image ici",
-    "home_view_content_nav__drop_pdf_and_image_here": "Déposez un PDF/une image ici",
+    "home_view_content_nav__drop_pdf_and_image_here": "Déposez le doc/l'image ici",
     "home_view_content_nav__ai_search_placeholder": "Posez votre question au web...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Changer de modèle d'IA",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Fournisseurs d'IA tiers",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Mise à niveau pour le chat en un clic",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Laissez l'IA générer des réponses personnalisées pour les médias sociaux en quelques secondes.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Mise à niveau pour le chat en un clic",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laissez l'IA générer des réponses personnalisées pour les médias sociaux en quelques secondes."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laissez l'IA générer des réponses personnalisées pour les médias sociaux en quelques secondes.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Téléchargez des documents ou des images vers MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Télécharger des documents vers MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Le fichier téléchargé est trop volumineux. Considérez l'utilisation d'un modèle d'IA avec une fenêtre de contexte plus grande ou le téléchargement d'un fichier de taille plus petite."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

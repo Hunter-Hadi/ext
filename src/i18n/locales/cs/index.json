@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "nebo sem přetáhněte PDF",
     "home_view_content_nav__image_uploader__choose_image": "Vyberte obrázek",
     "home_view_content_nav__image_uploader__drop_image_here": "nebo sem přetáhněte obrázek",
-    "home_view_content_nav__drop_pdf_and_image_here": "Sem přetáhněte PDF/obrázek",
+    "home_view_content_nav__drop_pdf_and_image_here": "Sem přetáhněte dokument/obrázek",
     "home_view_content_nav__ai_search_placeholder": "Zeptejte se webu...",
     "sidebar__ai_provider__model_selector__button__tooltip": "Přepnout AI model",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "Poskytovatelé AI třetích stran",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Vylepšit pro chat s jedním kliknutím",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Nechejte AI generovat personalizované odpovědi na sociálních médiích za pár sekund.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Vylepšit pro chat s jedním kliknutím",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Nechejte AI generovat personalizované odpovědi na sociálních médiích za pár sekund."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Nechejte AI generovat personalizované odpovědi na sociálních médiích za pár sekund.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Nahrát dokumenty nebo obrázky do MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "Nahrát dokumenty do MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "Nahraný soubor je příliš velký. Zvažte použití modelu AI s větším kontextovým oknem nebo nahrajte soubor menší velikosti."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

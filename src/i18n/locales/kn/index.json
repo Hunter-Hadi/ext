@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "ಅಥವಾ PDF ಅನ್ನು ಇಲ್ಲಿ ಬಿಡಿ",
     "home_view_content_nav__image_uploader__choose_image": "ಚಿತ್ರವನ್ನು ಆಯ್ಕೆಮಾಡಿ",
     "home_view_content_nav__image_uploader__drop_image_here": "ಅಥವಾ ಚಿತ್ರವನ್ನು ಇಲ್ಲಿ ಬಿಡಿ",
-    "home_view_content_nav__drop_pdf_and_image_here": "PDF/ಚಿತ್ರವನ್ನು ಇಲ್ಲಿ ಬಿಡಿ",
+    "home_view_content_nav__drop_pdf_and_image_here": "ಡಾಕ್/ಚಿತ್ರ ಇಲ್ಲಿ ಹಾಕಿ",
     "home_view_content_nav__ai_search_placeholder": "ವೆಬ್‌ಗೆ ಕೇಳಿ...",
     "sidebar__ai_provider__model_selector__button__tooltip": "AI ಮಾದರಿ ಬದಲಾಯಿಸಿ",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "3ನೇ ಪಕ್ಷ AI ಪ್ರೊವೈಡರ್‌ಗಳು",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-ಕ್ಲಿಕ್ ಚಾಟ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-ಕ್ಲಿಕ್ ಚಾಟ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ."
+    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "ಮ್ಯಾಕ್ಸ್‌ಎಐಗೆ ದಾಖಲಿಸಿ ಅಥವಾ ಚಿತ್ರಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
+    "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI ಗೆ ದಾಖಲೆಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ",
+    "provider__chatgpt__upload_file_error__too_long__text": "ಅಪ್ಲೋಡ್ ಮಾಡಿದ ಕಡತ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಹೆಚ್ಚು ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಹೊಂದಿರುವ AI ಮಾದರಿಯನ್ನು ಬಳಸುವುದನ್ನು ಪರಿಗಣಿಸಿ ಅಥವಾ ಕಡತದ ಗಾತ್ರ ಕಡಿಮೆಯಾಗಿರುವ ಕಡತವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

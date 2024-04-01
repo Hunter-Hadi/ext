@@ -574,7 +574,7 @@
     "home_view_content_nav__pdf_uploader__drop_pdf_here": "أو أفلت PDF هنا",
     "home_view_content_nav__image_uploader__choose_image": "اختر صورة",
     "home_view_content_nav__image_uploader__drop_image_here": "أو أفلت الصورة هنا",
-    "home_view_content_nav__drop_pdf_and_image_here": "أفلت PDF/صورة هنا",
+    "home_view_content_nav__drop_pdf_and_image_here": "أفلت المستند/الصورة هنا",
     "home_view_content_nav__ai_search_placeholder": "اسأل الويب...",
     "sidebar__ai_provider__model_selector__button__tooltip": "تبديل نموذج AI",
     "sidebar__ai_provider__model_selector__third_party_ai_provider__title": "مُزودي AI من جهات خارجية",
@@ -675,7 +675,10 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "ترقية للدردشة بنقرة واحدة",
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "اسمح للذكاء الاصطناعي بإنشاء ردود شخصية على وسائل التواصل الاجتماعي لك في ثوانٍ.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ملخص مع الأوقات",
-    "sidebar__summary__nav__youtube_summary__not_have__transcript": "غير قادر على إنشاء فيديو بدون ترجمة."
+    "sidebar__summary__nav__youtube_summary__not_have__transcript": "غير قادر على إنشاء فيديو بدون ترجمة.",
+    "provider__chatgpt__upload__accept_docs_and_images_tooltip": "قم بتحميل المستندات أو الصور إلى MaxAI",
+    "provider__chatgpt__upload__accept_docs_tooltip": "تحميل المستندات إلى MaxAI",
+    "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

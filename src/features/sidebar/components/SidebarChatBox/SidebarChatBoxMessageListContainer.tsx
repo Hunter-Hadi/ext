@@ -80,13 +80,21 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
 
   // 当 loading 变化为 true 时，强制滚动到底部
   useEffect(() => {
-    // TODO: need to resolve in YouTube summary
-    if (currentSidebarConversationType === 'Summary' && !writingMessage) {
-      needScrollToBottomRef.current = true // 240401: 为了在 Summary 板块 chat 时能保证滚到到底部
-      //加!writingMessage是因为为了summary nav切换的loading更新会滚动到最下面，应该保持在原来的位置
-      //是因为 summary nav 功能切换的时候loading会为true而writingMessage为空
+    // 240401: 当用户输入信息后，此时 loading 为 true，writingMessage 为 null
+    // 为了保证能正常滚动到底部，需要设置 needScrollToBottomRef 为 true
+    // 在 writingMessage 更新后能够正常滚动到底部
+    if (!writingMessage) {
+      needScrollToBottomRef.current = true
+      // 这里 return 是为了避免设置 needScrollToBottomRef 为 true 后立即滚动到底部
+      // 因为用户有可能在 writingMessage 更新期间手动滚动导致 needScrollToBottomRef 变成 false
       return
     }
+    // if (currentSidebarConversationType === 'Summary' && !writingMessage) {
+    //   needScrollToBottomRef.current = true // 240401: 为了在 Summary 板块 chat 时能保证滚到到底部
+    //   //加!writingMessage是因为为了summary nav切换的loading更新会滚动到最下面，应该保持在原来的位置
+    //   //是因为 summary nav 功能切换的时候loading会为true而writingMessage为空
+    //   return
+    // }
     if (loading) {
       handleScrollToBottom()
       setTimeout(() => {

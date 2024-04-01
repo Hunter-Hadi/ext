@@ -255,7 +255,6 @@ const OutlookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
             )) as HTMLElement
 
           if (inputAssistantButton) {
-            debugger
             let replyButton = inputAssistantButton.parentElement
               ?.nextElementSibling as HTMLElement
 

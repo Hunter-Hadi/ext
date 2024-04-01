@@ -966,7 +966,9 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
   [
     {
       enable: true,
-      rootSelectors: ['[class^="channelTextArea"] :not([class*="innerDisabled"]) > [class^="buttons"]'],
+      rootSelectors: [
+        '[class^="channelTextArea"] :not([class*="innerDisabled"]) > [class^="buttons"]',
+      ],
       appendPosition: 0,
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
@@ -1052,6 +1054,134 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       DropdownButtonStyle: {
         borderRadius: '0 12px 12px 0',
         padding: '2px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const SlackInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: [
+        '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
+      ],
+      appendPosition: 0,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'SLACK_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[data-qa="message_input"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '6px 8px',
+        iconSize: 16,
+        borderRadius: '4px 0 0 4px',
+        margin: 'auto',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 4px 4px 0',
+        padding: '4px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '4px',
+        marginRight: '8px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+    // {
+    //   enable: true,
+    //   rootSelectors: [
+    //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+    //   ],
+    //   appendPosition: 5,
+    //   rootParentDeep: 0,
+    //   rootWrapperTagName: 'div',
+    //   composeReplyButton: {
+    //     tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+    //     buttonKey: 'inputAssistantComposeReplyButton',
+    //     permissionWrapperCardSceneType: 'SLACK_COMPOSE_REPLY_BUTTON',
+    //     onSelectionEffect: ({ id: buttonId }) => {},
+    //   },
+    //   rootWrapperStyle: 'height: 100%;',
+    //   CTAButtonStyle: {
+    //     height: '100%',
+    //     borderRadius: '4px',
+    //     iconSize: 16,
+    //     padding: '8px',
+    //   },
+    // } as IInputAssistantButtonGroupConfig,
+  ]
+
+const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: [
+        'footer .copyable-area div:has(> button[aria-label] > [data-icon])',
+      ],
+      appendPosition: 0,
+      rootParentDeep: 1,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'order: 1; align-self: center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'WHATSAPP_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[data-qa="message_input"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '6px',
+        iconSize: 14,
+        borderRadius: '4px 0 0 4px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 4px 4px 0',
+        padding: '3px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '4px',
+        marginLeft: '8px',
       },
     } as IInputAssistantButtonGroupConfig,
   ]
@@ -1207,131 +1337,9 @@ const InputAssistantButtonGroupConfig = {
     },
   },
   'reddit.com': RedditInputAssistantButtonGroupConfigs,
-  // 'discord.com': DiscordInputAssistantButtonGroupConfigs,
-//   'app.slack.com': [
-//     {
-//       enable: true,
-//       rootSelectors: [
-//         '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
-//       ],
-//       appendPosition: 0,
-//       rootParentDeep: 0,
-//       rootWrapperTagName: 'div',
-//       composeReplyButton: {
-//         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-//         buttonKey: 'inputAssistantComposeReplyButton',
-//         permissionWrapperCardSceneType: 'SLACK_COMPOSE_REPLY_BUTTON',
-//         onSelectionEffect: ({ id: buttonId }) => {
-//           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-//           const inputAssistantButton =
-//             InputAssistantButtonElementRouteMap.get(
-//               inputAssistantButtonSelector,
-//             ) ||
-//             document.querySelector<HTMLButtonElement>(
-//               inputAssistantButtonSelector,
-//             )
-//           if (inputAssistantButton) {
-//             findSelectorParent(
-//               '[data-qa="message_input"]',
-//               inputAssistantButton as HTMLElement,
-//             )?.click()
-//           }
-//         },
-//       },
-//       refineDraftButton: {
-//         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-//         buttonKey: 'inputAssistantRefineDraftButton',
-//         permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
-//       },
-//       CTAButtonStyle: {
-//         padding: '6px 8px',
-//         iconSize: 16,
-//         borderRadius: '4px 0 0 4px',
-//         margin: 'auto',
-//       },
-//       DropdownButtonStyle: {
-//         borderRadius: '0 4px 4px 0',
-//         padding: '4px 0',
-//       },
-//       InputAssistantBoxSx: {
-//         borderRadius: '4px',
-//         marginRight: '8px',
-//       },
-//     },
-//     {
-//       enable: true,
-//       rootSelectors: [
-//         '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
-//       ],
-//       appendPosition: 5,
-//       rootParentDeep: 0,
-//       rootWrapperTagName: 'div',
-//       composeReplyButton: {
-//         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-//         buttonKey: 'inputAssistantComposeReplyButton',
-//         permissionWrapperCardSceneType: 'SLACK_COMPOSE_REPLY_BUTTON',
-//         onSelectionEffect: ({ id: buttonId }) => {},
-//       },
-//       rootWrapperStyle: 'height: 100%;',
-//       CTAButtonStyle: {
-//         height: '100%',
-//         borderRadius: '4px',
-//         iconSize: 16,
-//         padding: '8px',
-//       },
-//     },
-//   ],
-//   'web.whatsapp.com': [
-//     {
-//       enable: true,
-//       rootSelectors: [
-//         'footer .copyable-area div:has(> button[aria-label] > [data-icon])',
-//       ],
-//       appendPosition: 0,
-//       rootParentDeep: 1,
-//       rootWrapperTagName: 'div',
-//       rootWrapperStyle: 'order: 1; align-self: center;',
-//       composeReplyButton: {
-//         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-//         buttonKey: 'inputAssistantComposeReplyButton',
-//         permissionWrapperCardSceneType: 'WHATSAPP_COMPOSE_REPLY_BUTTON',
-//         onSelectionEffect: ({ id: buttonId }) => {
-//           const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-//           const inputAssistantButton =
-//             InputAssistantButtonElementRouteMap.get(
-//               inputAssistantButtonSelector,
-//             ) ||
-//             document.querySelector<HTMLButtonElement>(
-//               inputAssistantButtonSelector,
-//             )
-//           if (inputAssistantButton) {
-//             findSelectorParent(
-//               '[data-qa="message_input"]',
-//               inputAssistantButton as HTMLElement,
-//             )?.click()
-//           }
-//         },
-//       },
-//       refineDraftButton: {
-//         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-//         buttonKey: 'inputAssistantRefineDraftButton',
-//         permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
-//       },
-//       CTAButtonStyle: {
-//         padding: '6px',
-//         iconSize: 14,
-//         borderRadius: '4px 0 0 4px',
-//       },
-//       DropdownButtonStyle: {
-//         borderRadius: '0 4px 4px 0',
-//         padding: '3px 0',
-//       },
-//       InputAssistantBoxSx: {
-//         borderRadius: '4px',
-//         marginLeft: '8px',
-//       },
-//     },
-//   ],
+  'discord.com': DiscordInputAssistantButtonGroupConfigs,
+  // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
+  // 'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
 } as {
   [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig

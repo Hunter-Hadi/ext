@@ -299,7 +299,10 @@ const getRedditButtonGroup = (
   config: getInputAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.querySelector('slot[name="submit-button"]')) {
+  if (
+    keyElement.querySelector('slot[name="submit-button"]') ||
+    keyElement.querySelector('button[type="submit"]') // for old reddit
+  ) {
     // reply
     return [
       buttonGroupConfig.composeReplyButton,

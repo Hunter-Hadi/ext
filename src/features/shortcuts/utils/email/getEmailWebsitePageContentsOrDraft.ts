@@ -1,3 +1,4 @@
+import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { removeEmailContentQuote } from '@/features/shortcuts/utils/email/removeEmailContentQuote'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
@@ -250,7 +251,7 @@ const fireClick = (node: any): void => {
 }
 
 export const getEmailWebsitePageContentsOrDraft = async (
-  inputAssistantButtonElementSelector?: string,
+  inputAssistantButtonElementSelector: string,
 ): Promise<{ targetReplyEmailContext: string; emailContext: string }> => {
   const delay = (ms: number) =>
     new Promise((resolve) => setTimeout(resolve, ms))
@@ -260,11 +261,12 @@ export const getEmailWebsitePageContentsOrDraft = async (
   let iframeSelector = ''
   let emailContextSelector = 'body'
   const inputAssistantButtonElement =
-    (inputAssistantButtonElementSelector &&
-      (document.querySelector(
+    ((InputAssistantButtonElementRouteMap.get(
+      inputAssistantButtonElementSelector,
+    ) ||
+      document.querySelector(
         inputAssistantButtonElementSelector,
-      ) as HTMLButtonElement)) ||
-    null
+      )) as HTMLButtonElement) || null
   if (host === 'mail.google.com') {
     // 邮件列表容器
     const rootElement = document.querySelector(
@@ -552,7 +554,8 @@ export const getEmailWebsitePageContentsOrDraft = async (
           count < 10
         ) {
           count++
-          currentOriginElement = currentOriginElement.parentElement as HTMLElement
+          currentOriginElement =
+            currentOriginElement.parentElement as HTMLElement
         }
         const emailContentElement = currentOriginElement.cloneNode(
           true,
@@ -563,16 +566,16 @@ export const getEmailWebsitePageContentsOrDraft = async (
             '#divRplyFwdMsg',
           ) as HTMLDivElement) ||
           (emailContentElement.querySelector('#RplyFwdMsg') as HTMLDivElement)
-        const emailQuoteElement = emailInfoElement?.nextElementSibling as HTMLDivElement
+        const emailQuoteElement =
+          emailInfoElement?.nextElementSibling as HTMLDivElement
         if (emailInfoElement && emailQuoteElement) {
           const textNodeList = Array.from(
             emailInfoElement.querySelector('font')?.childNodes || [],
           ).filter((item) => !(item as HTMLElement).tagName)
           // 顺序分别是 From, Sent, To, Subject
           if (textNodeList.length === 4) {
-            const fromEmail = textNodeList[0].textContent?.match(
-              emailRegex,
-            )?.[0]
+            const fromEmail =
+              textNodeList[0].textContent?.match(emailRegex)?.[0]
             const fromName = textNodeList[0].textContent?.replace(
               ` <${fromEmail}>`,
               '',
@@ -615,11 +618,11 @@ export const getEmailWebsitePageContentsOrDraft = async (
         (document.querySelector(
           'div[role="dialog"] div[id] > div[role="textbox"]',
         ) as HTMLDivElement)
-      const modalElement = (Array.from(
-        document.querySelectorAll('div[role="dialog"]'),
-      ) as HTMLDivElement[]).find((modalElement) =>
-        modalElement.contains(modalEmailContextElement),
-      )
+      const modalElement = (
+        Array.from(
+          document.querySelectorAll('div[role="dialog"]'),
+        ) as HTMLDivElement[]
+      ).find((modalElement) => modalElement.contains(modalEmailContextElement))
       if (modalElement && modalElement.contains(inputAssistantButtonElement)) {
         const emailContext = getSingleEmailText(modalEmailContextElement)
         if (emailContext) {
@@ -675,9 +678,9 @@ export const getEmailWebsitePageContentsOrDraft = async (
   }
   let documentElements: HTMLElement[] = [document.documentElement]
   if (iframeSelector) {
-    documentElements = (Array.from(
+    documentElements = Array.from(
       document.querySelectorAll(iframeSelector),
-    ) as any) as HTMLElement[]
+    ) as any as HTMLElement[]
   }
   try {
     const pageContent = (

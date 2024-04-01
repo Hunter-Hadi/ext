@@ -154,23 +154,36 @@ const InputAssistantButtonGroupConfig = {
       rootSelectors: ['.amn'],
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
+      rootWrapperStyle: 'order: 1;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
-        onSelectionEffect: () => {
-          const replyButton = document.querySelector('.amn')
-            ?.firstElementChild as HTMLElement
-          replyButton?.click()
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
 
-          // [Need to figure: Opening sidebar will seize the focus]
-          // setTimeout(() => {
-          //   const replyTextarea = document.querySelector('div[contenteditable="true"]')
-          //   replyTextarea?.focus();
-          // })
+          if (inputAssistantButton) {
+            const replyButton =
+              findSelectorParent('.amn .ams.bkI', inputAssistantButton) ||
+              findSelectorParent('.amn .ams.bkH', inputAssistantButton)
+
+            replyButton?.click()
+
+            // Need to figure: Opening sidebar will seize the focus
+            // setTimeout(() => {
+            //   const replyTextarea = findSelectorParent('div[contenteditable="true"]', inputAssistantButton)
+            //   replyTextarea?.focus();
+            // })
+          }
         },
       },
-      appendPosition: 4,
+      appendPosition: 0,
       CTAButtonStyle: {
         borderRadius: '18px',
         iconSize: 18,
@@ -263,9 +276,8 @@ const InputAssistantButtonGroupConfig = {
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: () => {
-          const replyButton = document.querySelector<HTMLElement>(
-            '.th6py > button',
-          )
+          const replyButton =
+            document.querySelector<HTMLElement>('.th6py > button')
           replyButton?.click()
         },
       },
@@ -732,9 +744,7 @@ const InputAssistantButtonGroupConfig = {
   'youtube.com': [
     {
       enable: true,
-      rootSelectors: [
-        'ytd-commentbox ytd-button-renderer#submit-button',
-      ],
+      rootSelectors: ['ytd-commentbox ytd-button-renderer#submit-button'],
       rootStyle: '',
       appendPosition: 2,
       rootParentDeep: 1,
@@ -770,9 +780,8 @@ const InputAssistantButtonGroupConfig = {
     },
     {
       enable: (rootElement) => {
-        const commentDialog = rootElement.parentElement.querySelector(
-          '#comment-dialog',
-        )
+        const commentDialog =
+          rootElement.parentElement.querySelector('#comment-dialog')
         if ((commentDialog as any).hidden || commentDialog.innerHTML === '') {
           return true
         }
@@ -1143,10 +1152,10 @@ const InputAssistantButtonGroupConfig = {
   //   },
   // ],
 } as {
-    [key in InputAssistantButtonGroupConfigHostType]:
+  [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig
     | IInputAssistantButtonGroupConfig[]
-  }
+}
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
   InputAssistantButtonGroupConfig,
 ) as InputAssistantButtonGroupConfigHostType[]

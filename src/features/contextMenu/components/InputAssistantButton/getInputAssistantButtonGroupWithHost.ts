@@ -52,6 +52,12 @@ const checkHostUsingButtonKeys = (
     case 'discord.com':
       return getDiscordButtonGroup(config)
 
+    case 'app.slack.com':
+      return getSlackButtonGroup(config)
+
+    case 'web.whatsapp.com':
+      return getWhatsAppButtonGroup(config)
+
     default:
       return [
         config.buttonGroupConfig.composeReplyButton,
@@ -313,6 +319,40 @@ const getDiscordButtonGroup = (
   if (keyElement?.matches('[class^="buttonsInner"]')) {
     return [buttonGroupConfig.composeReplyButton]
   }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getSlackButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (
+    keyElement?.matches(
+      '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+    )
+  ) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getWhatsAppButtonGroup = (
+  config: getInputAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  // if (
+  //   keyElement?.matches(
+  //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+  //   )
+  // ) {
+  //   return [buttonGroupConfig.composeReplyButton]
+  // }
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,

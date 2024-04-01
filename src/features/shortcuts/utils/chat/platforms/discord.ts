@@ -13,24 +13,44 @@ const discordGetChatMessageContentAndDate = (
     messageBox?.querySelector<HTMLElement>('time')?.getAttribute('datetime') ||
     ''
   let content = ''
-  const messageContent = messageBox?.querySelector<HTMLElement>(
-    ':not([id^="message-reply-context"]) > * > [id^="message-content"]',
-  )
-  if (messageContent) {
-    content = messageContent?.innerText || ''
-    // if message just only contains emojis
-    if (!content) {
-      const emojiContainers = Array.from(
-        messageContent.querySelectorAll<HTMLElement>(
-          '[clastt^="emojiContainer"]',
-        ),
-      )
-      if (emojiContainers.length > 0) {
-        content = emojiContainers
-          .map((emojiContainer) =>
-            emojiContainer.querySelector('img')?.getAttribute('aria-label'),
-          )
-          .join('')
+  if (messageBox) {
+    const messageContentBox = messageBox.querySelector<HTMLElement>(
+      ':not([id^="message-reply-context"]) > * > [id^="message-content"]',
+    )
+    const messageInlineEditTextBox = messageBox.querySelector<HTMLElement>(
+      '[class^="channelTextArea"] [role="textbox"]',
+    )
+    const embedWrappers = Array.from(
+      messageBox.querySelectorAll<HTMLElement>('[class^="embedWrapper"]') || [],
+    )
+    if (messageContentBox) {
+      content = messageContentBox?.innerText || ''
+      // if message just only contains emojis
+      if (!content) {
+        const emojiContainers = Array.from(
+          messageContentBox.querySelectorAll<HTMLElement>(
+            '[clastt^="emojiContainer"]',
+          ),
+        )
+        if (emojiContainers.length > 0) {
+          content = emojiContainers
+            .map((emojiContainer) =>
+              emojiContainer.querySelector('img')?.getAttribute('aria-label'),
+            )
+            .join('')
+        }
+      }
+    } else if (messageInlineEditTextBox) {
+      content = messageInlineEditTextBox?.innerText || ''
+    } else if (embedWrappers.length) {
+      for (const embedWrapper of embedWrappers) {
+        content += `${
+          embedWrapper.querySelector<HTMLElement>('[class^="embedTitle"]')
+            ?.innerText || ''
+        }${
+          embedWrapper.querySelector<HTMLElement>('[class^="embedDescription"]')
+            ?.innerText || ''
+        }\n`
       }
     }
   }
@@ -40,15 +60,9 @@ const discordGetChatMessageContentAndDate = (
 const discordGetChatMessagesFromNodeList = (
   messageBoxList: HTMLElement[],
 ): IChatMessageData[] => {
-  //   debugger
   const messages: IChatMessageData[] = []
   let username = ''
   for (const messageBox of messageBoxList) {
-    // `welcome new user` notification is not a message
-    // if (messageBox.querySelector('[class^="welcomeCTA"]')) {
-    //   continue
-    // }
-
     const usernameBlock = messageBox.querySelector<HTMLElement>(
       ':not([id^="message-reply-context"]) > [class^="username"]',
     )
@@ -56,7 +70,7 @@ const discordGetChatMessagesFromNodeList = (
       username = usernameBlock.innerText
     }
 
-    // if doesn't have username, it means the data capture is not successful
+    // if doesn't have username, it means the data capture is not successful, need to relocate the usernameBlock selector
     if (username) {
       const { datetime, messageContent } =
         discordGetChatMessageContentAndDate(messageBox)
@@ -95,57 +109,57 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
     inputAssistantButton,
   )
 
-  const chatMessages = discordGetChatMessagesFromNodeList(
-    Array.from(
-      chatMessagesPanel?.querySelectorAll<HTMLElement>(
-        '[id^="chat-messages"]:not([class^="container"])',
-      ) || [],
-    ),
+  const chatMessagesNodeList = Array.from(
+    chatMessagesPanel?.querySelectorAll<HTMLElement>(
+      '[id^="chat-messages"]:not([class^="container"])',
+    ) || [],
   )
 
-  if (chatMessages.length) {
-    const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-      serverName: serverName || '',
-      chatroomName: chatroomName || '',
-      username: username || '',
-    })
-
+  if (chatMessagesNodeList.length) {
     const channelTextArea = findParentEqualSelector(
       '[class^="channelTextArea"]',
       inputAssistantButton,
       6,
     )
 
-    let replyMessage: ReturnType<
-      typeof discordGetChatMessageContentAndDate
-    > | null = null
+    let replyMessageBox: HTMLElement | null = null
 
     if (
       channelTextArea &&
       channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')
     ) {
-      replyMessage = discordGetChatMessageContentAndDate(
-        chatMessagesPanel.querySelector<HTMLElement>(
-          '[id^="chat-messages"]:has(> [class*="replying"])',
-        ),
+      replyMessageBox = chatMessagesPanel.querySelector<HTMLElement>(
+        '[id^="chat-messages"]:has(> [class*="replying"])',
       )
     } else {
-      replyMessage = discordGetChatMessageContentAndDate(
-        findParentEqualSelector('[id^="chat-messages"]', inputAssistantButton),
+      replyMessageBox = findParentEqualSelector(
+        '[id^="chat-messages"]',
+        inputAssistantButton,
       )
     }
 
-    chatMessagesContext.replyMessage(
-      replyMessage?.datetime && replyMessage?.messageContent
-        ? chatMessages.findIndex(
-            (message) =>
-              message.datetime === replyMessage!.datetime &&
-              message.content === replyMessage!.messageContent,
-          )
-        : -1,
+    const chatMessages = discordGetChatMessagesFromNodeList(
+      chatMessagesNodeList.slice(
+        0,
+        chatMessagesNodeList.findIndex(
+          (messageBox) => messageBox === replyMessageBox,
+        ) + 1,
+      ),
     )
 
-    return chatMessagesContext.data
+    if (chatMessages.length) {
+      const chatMessagesContext = new ChatMessagesContext(chatMessages, {
+        serverName: serverName || '',
+        chatroomName: chatroomName || '',
+        username: username || '',
+      })
+
+      chatMessagesContext.replyMessage(
+        chatMessages.findLastIndex((message) => message.user !== username),
+      )
+
+      return chatMessagesContext.data
+    }
   }
 
   return ChatMessagesContext.emptyData

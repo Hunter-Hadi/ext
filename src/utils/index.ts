@@ -101,7 +101,7 @@ export const CLIENT_OPEN_PAGE_KEYS = [
 ] as const
 
 export const chromeExtensionClientOpenPage = async (params: {
-  key?: typeof CLIENT_OPEN_PAGE_KEYS[number]
+  key?: (typeof CLIENT_OPEN_PAGE_KEYS)[number]
   url?: string
   query?: string
   active?: boolean
@@ -235,7 +235,7 @@ export const clientRestartChromeExtension = async () => {
 
 export const clientRunBackgroundFunction = async <
   T extends IBackgroundRunCommandKey,
-  K extends IBackgroundRunCommandFunctionKey<T>
+  K extends IBackgroundRunCommandFunctionKey<T>,
 >(
   command: T,
   commandFunctionName: K,

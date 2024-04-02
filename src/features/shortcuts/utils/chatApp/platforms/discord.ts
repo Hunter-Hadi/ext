@@ -75,7 +75,7 @@ const discordGetChatMessagesFromNodeList = (
       const { datetime, messageContent } =
         discordGetChatMessageContentAndDate(messageBox)
 
-      const message: IChatMessageData = {
+      const messageData: IChatMessageData = {
         user: username,
         datetime,
         content: messageContent,
@@ -85,11 +85,11 @@ const discordGetChatMessagesFromNodeList = (
         '[id^="message-reply-context"]',
       )
       if (extraLabel) {
-        message.extraLabel = `${extraLabel.getAttribute('aria-label')}:: ${
+        messageData.extraLabel = `${extraLabel.getAttribute('aria-label')}:: ${
           extraLabel.innerText
         }`
       }
-      messages.push(message)
+      messages.push(messageData)
     }
   }
   return messages

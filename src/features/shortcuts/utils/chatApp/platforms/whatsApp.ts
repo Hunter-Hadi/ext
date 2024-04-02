@@ -6,86 +6,98 @@ import {
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
-const slackGetChatMessageContentAndDate = (messageBox: HTMLElement | null) => {
-  const datetime =
-    messageBox
-      ?.querySelector<HTMLElement>('a[class*="c-timestamp"]')
-      ?.getAttribute('aria-label') || ''
+const getDatetimeAndUserRegExp = /^\[(.*?)\] (.*?): $/
+
+const whatsAppGetDataFromQuotedMessage = (
+  quotedMessage: HTMLElement | null,
+) => {
+  let user = ''
   let content = ''
-  let extraLabel = ''
-
-  if (messageBox) {
-    const messageContentBox = messageBox.querySelector<HTMLElement>(
-      '[data-qa="message-text"]',
-    )
-    if (messageContentBox) {
-      content = messageContentBox?.innerText || ''
-
-      // // if message just only contains emojis
-      // if (!content) {
-      //   const emojiContainers = Array.from(
-      //     messageContentBox.querySelectorAll<HTMLElement>(
-      //       '[clastt^="emojiContainer"]',
-      //     ),
-      //   )
-      //   if (emojiContainers.length > 0) {
-      //     content = emojiContainers
-      //       .map((emojiContainer) =>
-      //         emojiContainer.querySelector('img')?.getAttribute('aria-label'),
-      //       )
-      //       .join('')
-      //   }
-      // }
+  if (quotedMessage) {
+    // if has testid, it means the reply target is not `me`
+    const isOthersReply =
+      quotedMessage.querySelector<HTMLElement>('[testid="author"]')
+    if (isOthersReply) {
+      user = isOthersReply?.innerText || ''
     }
-
-    const extraLabelBox =
-      messageBox.querySelector<HTMLElement>(
-        '.c-message__broadcast_preamble_outer',
-      ) || messageBox.querySelector<HTMLElement>('.c-message__body--automated')
-    if (extraLabelBox) {
-      extraLabel = extraLabelBox.innerText
-    }
+    content =
+      quotedMessage.querySelector<HTMLElement>('.quoted-mention')?.innerText ||
+      ''
   }
-
-  return { datetime, messageContent: content, extraLabel }
+  return { user, content }
 }
 
 const whatsAppGetChatMessagesFromNodeList = (
   messageBoxList: HTMLElement[],
+  configs: {
+    serverName: string
+    chatroomName: string
+    username: string
+  },
 ): IChatMessageData[] => {
   const messages: IChatMessageData[] = []
-  let username = ''
+
   for (const messageBox of messageBoxList) {
-    const usernameBlock = messageBox.querySelector<HTMLElement>(
-      '[data-qa="message_sender_name"]',
+    const message = messageBox.querySelector<HTMLElement>(
+      '[data-pre-plain-text]',
     )
-    if (usernameBlock) {
-      username = usernameBlock.innerText
-    }
 
-    // if doesn't have username, it means the data capture is not successful, need to relocate the usernameBlock selector
-    if (username) {
-      const { datetime, messageContent, extraLabel } =
-        slackGetChatMessageContentAndDate(messageBox)
+    if (message) {
+      const match = message
+        .getAttribute('data-pre-plain-text')
+        ?.match(getDatetimeAndUserRegExp)
 
-      messages.push({
-        user: username,
-        datetime,
-        content: messageContent,
-        extraLabel,
-      })
+      if (match) {
+        const [, datetime, username] = match
+
+        if (
+          !configs.username &&
+          messageBox.getAttribute('data-id')?.includes('true') // if includes 'true', it means this message was sent by `me`
+        ) {
+          configs.username = username
+          configs.serverName = `${username} in WhatsApp`
+        }
+
+        const messageData: IChatMessageData = {
+          user: username,
+          datetime,
+          content:
+            message.querySelector<HTMLElement>('.copyable-text')?.innerText ||
+            '',
+        }
+
+        const quotedMention =
+          message.querySelector<HTMLElement>('.quoted-mention')
+
+        if (quotedMention) {
+          const quotedMessage = whatsAppGetDataFromQuotedMessage(
+            findParentEqualSelector(
+              '[aria-label]',
+              quotedMention.parentElement!,
+            ),
+          )
+          messageData.extraLabel = `${username} is replying to ${
+            quotedMessage.user || configs.username
+          }'s message content: ${quotedMessage.content}`
+        }
+
+        messages.push(messageData)
+      }
     }
   }
   return messages
 }
 
 export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
-  const chatroomName = document.querySelector<HTMLElement>(
-    'header > [title="Profile Details"] + [role="button"] [aria-label]:not([title])',
-  )?.innerText
-  const myAvatar = document.querySelector<HTMLElement>(
-    'header [role="button"][aria-label] > img',
-  )
+  const chatroomName =
+    document.querySelector<HTMLElement>(
+      'header > [title="Profile Details"] + [role="button"] [aria-label]:not([title])',
+    )?.innerText || ''
+  const configs = {
+    serverName: '',
+    chatroomName,
+    username: '',
+  }
 
   const chatMessagesPanel = findSelectorParent(
     '#main [role="application"]',
@@ -96,9 +108,13 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
     chatMessagesPanel?.querySelectorAll<HTMLElement>(
       '[role="row"] > [data-id]:has(> [class*="message"])',
     ) || [],
-  ).filter((node) => node.querySelector('[data-pre-plain-text]'))
+  ).filter((node) => Boolean(node.querySelector('[data-pre-plain-text]')))
 
-  if (chatMessagesNodeList) {
+  if (chatMessagesNodeList.length) {
+    const chatMessages = whatsAppGetChatMessagesFromNodeList(
+      chatMessagesNodeList,
+      configs,
+    )
     const channelTextArea = findSelectorParent(
       'footer .copyable-area div:has(> div > button[aria-label] > [data-icon])',
       inputAssistantButton,
@@ -110,36 +126,28 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
       5,
     )
 
-    let replyMessageBox: HTMLElement | null = null
+    let replyMessageBoxIndex = -1
 
     if (channelTextArea && quotedMention) {
-      // if have testid, it means the reply target is someone else
-      const isOthersReply = findSelectorParent(
-        '[testid="author"]',
-        quotedMention,
-        2,
+      const quotedMessage = whatsAppGetDataFromQuotedMessage(
+        findParentEqualSelector('[aria-label]', quotedMention.parentElement!),
       )
-      if (isOthersReply) {
-      } else {
+      if (!quotedMessage.user) {
+        quotedMessage.user = configs.username
       }
-    } else {
+      replyMessageBoxIndex = chatMessages.findLastIndex(
+        (message) =>
+          message.user === quotedMessage.user &&
+          message.content === quotedMessage.content,
+      )
     }
-
-    const chatMessages = whatsAppGetChatMessagesFromNodeList(
-      chatMessagesNodeList.slice(
-        0,
-        chatMessagesNodeList.findIndex(
-          (messageBox) => messageBox === replyMessageBox,
-        ) + 1,
-      ),
-    )
+    // else {
+    // }
+    // } else {
+    // }
 
     if (chatMessages.length) {
-      // const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-      //   serverName: serverName || '',
-      //   chatroomName: chatroomName || '',
-      //   username: username || '',
-      // })
+      // const chatMessagesContext = new ChatMessagesContext(chatMessages, configs)
       // chatMessagesContext.replyMessage(
       //   chatMessages.findLastIndex((message) => message.user !== username),
       // )

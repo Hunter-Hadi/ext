@@ -1184,6 +1184,13 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
         marginLeft: '8px',
       },
     } as IInputAssistantButtonGroupConfig,
+    // {
+    //   enable: () => {
+    //     if (!document.querySelector('footer .copyable-area div:has(> button[aria-label] > [data-icon])')) {
+    //       return false
+    //     }
+    //   }
+    // }
   ]
 
 const InputAssistantButtonGroupConfig = {

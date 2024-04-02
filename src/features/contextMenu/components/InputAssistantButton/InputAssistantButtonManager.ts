@@ -37,7 +37,8 @@ class InputAssistantButtonManager {
   stop: boolean
   constructor() {
     this.stop = false
-    this.host = getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
+    this.host =
+      getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
     this.configs = (() => {
       const configs = inputAssistantButtonBaseConfig[this.host]
       return Array.isArray(configs) ? configs : [configs]
@@ -86,9 +87,8 @@ class InputAssistantButtonManager {
               let deep = rootParentDeep
               while (deep > 0) {
                 deep--
-                const topLevelElement = InputAssistantButtonElementRouteMap.get(
-                  rootElement,
-                )!
+                const topLevelElement =
+                  InputAssistantButtonElementRouteMap.get(rootElement)!
                 InputAssistantButtonElementRouteMap.delete(rootElement)
                 rootElement = rootElement.parentElement as HTMLElement
                 InputAssistantButtonElementRouteMap.set(
@@ -124,7 +124,7 @@ class InputAssistantButtonManager {
         }
       }
     }
-    setTimeout(createInputAssistantButton, 0);
+    setTimeout(createInputAssistantButton, 0)
     this.timer = setInterval(createInputAssistantButton, this.interval)
   }
   attachInputAssistantButton(
@@ -150,7 +150,8 @@ class InputAssistantButtonManager {
         rootPreviousElementSiblingStyle &&
         rootElement.previousElementSibling
       ) {
-        const previousElementSibling = rootElement.previousElementSibling as HTMLElement
+        const previousElementSibling =
+          rootElement.previousElementSibling as HTMLElement
         mergeElementCssText(
           previousElementSibling,
           rootPreviousElementSiblingStyle,
@@ -184,6 +185,7 @@ class InputAssistantButtonManager {
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',
     )
     webComponentRoot.setAttribute('maxai-input-assistant-button-id', id)
+    webComponentRoot.style.height = 'inherit'
     InputAssistantButtonElementRouteMap.set(
       `[maxai-input-assistant-button-id="${id}"]`,
       webComponentRoot,
@@ -216,7 +218,9 @@ class InputAssistantButtonManager {
         ? enable(rootElement)
         : enable)
       if (shouldDestroy) {
-        rootWrapperElement?.remove()
+        setTimeout(() => {
+          rootWrapperElement?.remove()
+        }, 0)
       }
     })
     observer.observe(rootElement, {
@@ -258,9 +262,9 @@ class InputAssistantButtonManager {
     let isClean = false
     this.observerMap.forEach((observer, rootElement) => {
       const emotionElement = Array.from(
-        (observer.shadowRootElement.querySelectorAll(
+        observer.shadowRootElement.querySelectorAll(
           'style[data-emotion]',
-        ) as any) as HTMLStyleElement[],
+        ) as any as HTMLStyleElement[],
       )
       const hasEmptyEmotion = emotionElement.find(
         (element) =>
@@ -273,9 +277,8 @@ class InputAssistantButtonManager {
       while (isContain && topLevelElement) {
         isContain = topLevelElement.contains(currentLevelElement)
         currentLevelElement = topLevelElement as HTMLElement
-        topLevelElement = InputAssistantButtonElementRouteMap.get(
-          topLevelElement,
-        )
+        topLevelElement =
+          InputAssistantButtonElementRouteMap.get(topLevelElement)
       }
       if (isContain && !hasEmptyEmotion) {
         return

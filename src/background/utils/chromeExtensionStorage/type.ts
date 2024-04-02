@@ -187,6 +187,15 @@ export interface IChromeExtensionLocalStorage {
       conversationId?: string
       isEnabledConversationalMode?: boolean
     }
+    faq?: {
+      conversationId?: string
+    }
+    memo?: {
+      conversationId?: string
+    }
+    contextMenu?: {
+      conversationId?: string
+    }
     common?: {
       currentAIProvider?: IAIProviderType
       chatBoxWidth?: number

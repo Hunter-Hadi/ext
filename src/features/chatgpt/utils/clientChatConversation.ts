@@ -1,20 +1,6 @@
-import { IAIProviderType } from '@/background/provider/chat'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
-import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
-import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
-import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
-import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
-import {
-  getChromeExtensionLocalStorage,
-  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
-  IAIProviderModel,
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
@@ -84,83 +70,5 @@ export const clientUpdateChatConversation = async (
     return result.success
   } catch (e) {
     return false
-  }
-}
-
-/**
- * 获取客户端目前使用的AIProvider和Model
- */
-export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
-  currentAIProvider: IAIProviderType
-  currentModel: IAIProviderModel | null
-  currentModelValue: string
-}> => {
-  const settings = await getChromeExtensionLocalStorage()
-  const currentAIProvider =
-    settings.sidebarSettings?.common?.currentAIProvider ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
-  const currentModelValue =
-    settings.thirdProviderSettings?.[currentAIProvider]?.model ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel
-  let currentModel: IAIProviderModel | null = null
-  const findModelDetail = (models: IAIProviderModel[]) => {
-    currentModel =
-      models.find((model) => model.value === currentModelValue) || models[0]
-  }
-  switch (currentAIProvider) {
-    case 'MAXAI_GEMINI':
-      findModelDetail(MAXAI_GENMINI_MODELS)
-      break
-    case 'MAXAI_CLAUDE':
-      findModelDetail(MAXAI_CLAUDE_MODELS)
-      break
-    case 'USE_CHAT_GPT_PLUS':
-      findModelDetail(USE_CHAT_GPT_PLUS_MODELS)
-      break
-    case 'CLAUDE':
-      findModelDetail(CLAUDE_MODELS)
-      break
-    case 'BING':
-      findModelDetail(BING_MODELS)
-      break
-    case 'BARD':
-      findModelDetail(BARD_MODELS)
-      break
-    case 'OPENAI':
-      findModelDetail(
-        (settings.thirdProviderSettings?.OPENAI?.modelOptions || []).map(
-          (OpenAIModel) => {
-            return {
-              title: OpenAIModel.title,
-              value: OpenAIModel.slug,
-              titleTag:
-                OpenAIModel.tags?.find((tag) =>
-                  tag.toLowerCase().includes('beta'),
-                ) ||
-                OpenAIModel.tags?.find((tag) =>
-                  tag.toLowerCase().includes('mobile'),
-                ) ||
-                '',
-              maxTokens: OpenAIModel.max_tokens,
-              tags: OpenAIModel.tags || [],
-              description: (t) => '',
-            }
-          },
-        ),
-      )
-      break
-    case 'OPENAI_API':
-      findModelDetail(OPENAI_API_MODELS)
-      break
-    case 'POE':
-      findModelDetail(POE_MODELS)
-      break
-    default:
-      findModelDetail(USE_CHAT_GPT_PLUS_MODELS)
-  }
-  return {
-    currentAIProvider,
-    currentModel,
-    currentModelValue,
   }
 }

@@ -24,12 +24,13 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
     AIProvider: IAIProviderType
     AIModel: string
     maxTokens: number
+    hidden?: boolean
   }
 } = {
   Chat: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
     AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
-    maxTokens: 4096,
+    maxTokens: 16384,
   },
   Summary: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
@@ -45,6 +46,24 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
     AIProvider: 'MAXAI_DALLE',
     AIModel: 'dall-e-3',
     maxTokens: 16384,
+  },
+  Memo: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 4096,
+    hidden: true,
+  },
+  FAQ: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 16384,
+    hidden: true,
+  },
+  ContextMenu: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 16384,
+    hidden: true,
   },
 }
 

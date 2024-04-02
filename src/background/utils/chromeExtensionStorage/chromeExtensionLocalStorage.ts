@@ -54,6 +54,18 @@ export const MAXAI_DEFAULT_AI_PROVIDER_CONFIG: {
     AIProvider: AI_PROVIDER_MAP.MAXAI_DALLE,
     AIModel: 'dall-e-3',
   },
+  FAQ: {
+    AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  },
+  Memo: {
+    AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  },
+  ContextMenu: {
+    AIProvider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+  },
 }
 
 export const defaultChromeExtensionLocalStorage =
@@ -83,6 +95,15 @@ export const defaultChromeExtensionLocalStorage =
         art: {
           conversationId: '',
           isEnabledConversationalMode: true,
+        },
+        faq: {
+          conversationId: '',
+        },
+        memo: {
+          conversationId: '',
+        },
+        contextMenu: {
+          conversationId: '',
         },
         common: {
           currentAIProvider: MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider,

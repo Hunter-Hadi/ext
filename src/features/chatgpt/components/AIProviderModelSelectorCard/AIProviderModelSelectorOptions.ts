@@ -116,5 +116,13 @@ export const getAIProviderModelSelectorOptions = (
       return []
     case 'Art':
       return ArtAIProviderModelSelectorOptions
+    case 'FAQ':
+      return []
+    case 'Memo':
+      return []
+    case 'ContextMenu':
+      return ChatAIProviderModelSelectorOptions
+    default:
+      return []
   }
 }

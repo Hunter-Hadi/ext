@@ -178,6 +178,9 @@ export class ActionAskChatGPT extends Action {
           Summary: 'summary_chat',
           Search: 'search_chat',
           Art: 'art',
+          FAQ: 'faq',
+          Memo: 'memo',
+          ContextMenu: 'context_menu',
         }[clientConversationEngine.currentSidebarConversationType]
         const { data: isDailyUsageLimit } =
           await clientMessageChannelEngine.postMessage({

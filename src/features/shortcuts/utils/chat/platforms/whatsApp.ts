@@ -1,10 +1,7 @@
 import ChatMessagesContext, {
   IChatMessageData,
 } from '@/features/shortcuts/utils/ChatMessagesContext'
-import {
-  findParentEqualSelector,
-  findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
 const slackGetChatMessageContentAndDate = (messageBox: HTMLElement | null) => {
   const datetime =
@@ -110,7 +107,7 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
       5,
     )
 
-    let replyMessageBox: HTMLElement | null = null
+    const replyMessageBox: HTMLElement | null = null
 
     if (channelTextArea && quotedMention) {
       // if have testid, it means the reply target is someone else

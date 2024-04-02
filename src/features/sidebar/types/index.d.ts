@@ -1,1 +1,8 @@
-export type ISidebarConversationType = 'Chat' | 'Summary' | 'Search' | 'Art'
+export type ISidebarConversationType =
+  | 'Chat'
+  | 'Summary'
+  | 'Search'
+  | 'Art'
+  | 'FAQ'
+  | 'Memo'
+  | 'ContextMenu'

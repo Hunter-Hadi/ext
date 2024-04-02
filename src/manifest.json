@@ -43,6 +43,12 @@
       "matches": ["<all_urls>"],
       "js": ["searchWithAI.js"],
       "run_at": "document_end"
+    },
+    {
+      "all_frames": false,
+      "js": ["injectGoogleDoc.js"],
+      "matches": ["*://docs.google.com/document/*"],
+      "run_at": "document_start"
     }
   ],
   "host_permissions": ["<all_urls>"],

@@ -11,52 +11,21 @@ import CustomMarkdown from '@/components/CustomMarkdown'
 import { useRangy } from '@/features/contextMenu'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
-  FloatingContextMenuDraftState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
-import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
 }> = (props) => {
   const theme = useCustomTheme()
   const { onChange } = props
-  const { currentSidebarConversationMessages, currentSidebarConversationType } =
-    useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
-  const [, setFloatingContextMenuDraft] = useRecoilState(
-    FloatingContextMenuDraftState,
-  )
   const floatingContextMenuDraftText = useFloatingContextMenuDraft()
-  const lastAIMessageIdRef = useRef('')
-  useEffect(() => {
-    if (currentSidebarConversationType === 'Chat') {
-      // 从后往前找到最近的一条AI消息
-      lastAIMessageIdRef.current =
-        listReverseFind(
-          currentSidebarConversationMessages,
-          (message) => message.type === 'ai',
-        )?.messageId || ''
-    }
-  }, [currentSidebarConversationMessages, currentSidebarConversationType])
-  useEffect(() => {
-    if (floatingDropdownMenu.open) {
-      console.log(
-        'AIInput update lastAIMessageIdRef: ',
-        floatingDropdownMenu.open,
-        lastAIMessageIdRef.current,
-      )
-      setFloatingContextMenuDraft({
-        lastAIMessageId: lastAIMessageIdRef.current,
-      })
-    }
-  }, [floatingDropdownMenu.open])
   useEffect(() => {
     console.log(
       'AIInput floatingContextMenuDraftText: ',

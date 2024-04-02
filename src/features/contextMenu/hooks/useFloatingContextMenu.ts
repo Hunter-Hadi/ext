@@ -49,9 +49,8 @@ const useFloatingContextMenu = () => {
       overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
       isCommandInsert?: boolean,
     ) => {
-      let virtualSelectionElement:
-        | IVirtualIframeSelectionElement
-        | undefined = element
+      let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
+        element
       /**
        * floating menu 展开逻辑:
        * 1. 如果当前在editable element中，展开
@@ -148,6 +147,7 @@ const useFloatingContextMenu = () => {
       if (isFloatingContextMenuOpen) {
         floatingContextMenuSaveDraftToChatBox()
       }
+      debugger
       hideRangy()
       setFloatingDropdownMenu({
         open: false,

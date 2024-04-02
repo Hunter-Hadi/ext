@@ -10,14 +10,20 @@ import {
 } from '@/features/common/constants'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
+
+export interface CustomPortalRenderProps {
+  rootContainer: HTMLElement | null
+}
+type CustomPortalRender = (
+  props: CustomPortalRenderProps,
+) => React.ReactNode | React.ReactNode[]
 
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()
   .replace(/_/g, '-')
-const Portal: FC<{
+const CustomPortal: FC<{
   containerId?: string
-  children: React.ReactNode
+  children: CustomPortalRender | React.ReactNode | React.ReactNode[]
 }> = ({ containerId = 'modal-root', children }) => {
   const [modalContainer, setModalContainer] = useState<HTMLDivElement | null>(
     null,
@@ -70,10 +76,11 @@ const Portal: FC<{
    */
   return createPortal(
     <CacheProvider value={emotionCacheRef.current}>
-      <FloatingContextMenu root={modalContainer} />
-      {children}
+      {typeof children === 'function'
+        ? (children as CustomPortalRender)({ rootContainer: modalContainer })
+        : children}
     </CacheProvider>,
     modalContainer,
   )
 }
-export default Portal
+export default CustomPortal

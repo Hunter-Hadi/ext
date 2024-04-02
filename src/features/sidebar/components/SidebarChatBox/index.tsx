@@ -151,7 +151,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       }}
     >
       <DevContent>
-        <DevConsole />
+        <DevConsole isSidebar />
       </DevContent>
       <SidebarHeader />
 

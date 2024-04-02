@@ -307,6 +307,31 @@ const useSidebarSettings = () => {
           },
         })
       }
+    } else if (conversationType === 'ContextMenu') {
+      const baseMetaConfig: Partial<IChatConversationMeta> = {
+        AIProvider: AIProvider,
+        AIModel: AIModel,
+        maxTokens:
+          getAIProviderModelDetail(AIProvider, AIModel)?.maxTokens || 4096,
+      }
+      const result = await port.postMessage({
+        event: 'Client_createChatGPTConversation',
+        data: {
+          initConversationData: {
+            type: 'ContextMenu',
+            title: 'AI-powered writing assistant',
+            meta: baseMetaConfig,
+          } as Partial<IChatConversation>,
+        },
+      })
+      if (result.success) {
+        conversationId = result.data.conversationId
+        await updateSidebarSettings({
+          contextMenu: {
+            conversationId,
+          },
+        })
+      }
     }
     return conversationId
   }

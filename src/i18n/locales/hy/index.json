@@ -55,7 +55,6 @@
     "left_menu__shortcut": "Շորտք",
     "left_menu__appearance": "Արտաքին տեսք",
     "left_menu__mini_menu": "Նախագծերի մենյու",
-    "left_menu__help_me_write": "Օգնեք գրել",
     "left_menu__search_with_ai": "Որոնել AI-ի միջոցով",
     "left_menu__languages": "Լեզուներ",
     "left_menu__chatgpt_stable_mode": "ChatGPT հաճախորդական ռեժիմ",
@@ -242,7 +241,8 @@
     "feature_card__prompts__new_prompt_group__title": "Նոր հարցումների խումբ",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Արագ պատասխան",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Խմբագրել կամ վերանայել սևագրությունը",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Արագ կազմակերպում"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Արագ կազմակերպում",
+    "left_menu__writing_assistant": "գրանցման օգնական"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",

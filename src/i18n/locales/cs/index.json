@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Zadejte URL webové stránky",
     "feature_card__prompts__place_my_own_prompts_switch": "Umístit vlastní podněty nahoru",
     "feature_card__appearance__field_quick_access__title": "Rychlý přístup",
-    "left_menu__help_me_write": "Pomozte mi psát",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Asistent Gmailu",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Asistent Outlooku",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X asistent",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nová skupina podnětů",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rychlá odpověď",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upravit nebo zkontrolovat koncept",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rychlé psaní"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rychlé psaní",
+    "left_menu__writing_assistant": "Psací asistent"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",

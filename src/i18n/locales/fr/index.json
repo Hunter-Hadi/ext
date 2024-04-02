@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Entrez l'URL du site Web",
     "feature_card__prompts__place_my_own_prompts_switch": "Placer mes propres invitations en haut",
     "feature_card__appearance__field_quick_access__title": "Accès rapide",
-    "left_menu__help_me_write": "Aidez-moi à écrire",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Assistant Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Assistant Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X assistant",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nouveau groupe de suggestions",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Réponse rapide",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Modifier ou revoir le brouillon",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composition rapide"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composition rapide",
+    "left_menu__writing_assistant": "Assistant d'écriture"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",

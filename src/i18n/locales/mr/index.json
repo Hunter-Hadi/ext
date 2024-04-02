@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "वेबसाइट URL प्रविष्ट करा",
     "feature_card__prompts__place_my_own_prompts_switch": "माझे स्वतःचे प्रॉम्प्ट वर ठेवा",
     "feature_card__appearance__field_quick_access__title": "त्वरित प्रवेश",
-    "left_menu__help_me_write": "मला लिहायला मदत करा",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail सहाय्यक",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook सहाय्यक",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X सहाय्यक",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "नवीन प्रॉम्प्ट गट",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "त्वरित प्रतिसाद",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ड्राफ्ट संपादित करा किंवा समीक्षा करा",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन",
+    "left_menu__writing_assistant": "लेखन सहाय्यक"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

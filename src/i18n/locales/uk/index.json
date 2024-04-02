@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ویب سائٹ کا URL درج کریں",
     "feature_card__prompts__place_my_own_prompts_switch": "اپنے خود کے پرومپٹس کو اوپر رکھیں",
     "feature_card__appearance__field_quick_access__title": "تیز رس",
-    "left_menu__help_me_write": "میری مدد کریں لکھنے میں",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "جی میل اسسٹنٹ",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "آؤٹ لک اسسٹنٹ",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X معاون",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "نیا پرومپٹ گروپ",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "جلدی جواب دیں",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ڈرافٹ ترمیم یا جائزہ لیں",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "جلدی تحریر کریں"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "جلدی تحریر کریں",
+    "left_menu__writing_assistant": "لکھائی معاون"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

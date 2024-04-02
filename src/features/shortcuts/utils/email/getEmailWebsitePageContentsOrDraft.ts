@@ -261,12 +261,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
   let iframeSelector = ''
   let emailContextSelector = 'body'
   const inputAssistantButtonElement =
-    ((InputAssistantButtonElementRouteMap.get(
-      inputAssistantButtonElementSelector,
-    ) ||
-      document.querySelector(
+    (inputAssistantButtonElementSelector &&
+      ((InputAssistantButtonElementRouteMap.get(
         inputAssistantButtonElementSelector,
-      )) as HTMLButtonElement) || null
+      ) ||
+        document.querySelector(
+          inputAssistantButtonElementSelector,
+        )) as HTMLButtonElement)) ||
+    null
   if (host === 'mail.google.com') {
     // 邮件列表容器
     const rootElement = document.querySelector(

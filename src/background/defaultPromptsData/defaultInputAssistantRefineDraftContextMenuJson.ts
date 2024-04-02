@@ -1309,7 +1309,7 @@ const emailPrompts = [
   },
 ] as IContextMenuItem[]
 
-const chatPrompts: IContextMenuItem[] = [
+const chatAppPrompts: IContextMenuItem[] = [
   {
     id: '5962ed83-6526-4665-9d94-5c47bc0b931a',
     parent: 'root',
@@ -1904,5 +1904,5 @@ const chatPrompts: IContextMenuItem[] = [
 export default [
   ...emailPrompts,
   ...socialMediaPrompts,
-  ...chatPrompts,
+  ...chatAppPrompts,
 ] as IContextMenuItem[]

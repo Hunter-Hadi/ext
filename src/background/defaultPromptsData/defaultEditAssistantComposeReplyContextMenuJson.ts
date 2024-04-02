@@ -1463,7 +1463,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
   },
 ] as IContextMenuItem[]
 
-const chatPrompts: IContextMenuItem[] = [
+const chatAppPrompts: IContextMenuItem[] = [
   {
     id: 'd77238eb-7673-46c2-a019-5bab341815fe',
     parent: 'root',
@@ -2298,5 +2298,5 @@ Now, write a concise reply to the message above by *writing a better version* of
 export default [
   ...emailPrompts,
   ...socialMediaPrompts,
-  ...chatPrompts,
+  ...chatAppPrompts,
 ] as IContextMenuItem[]

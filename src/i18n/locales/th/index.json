@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ตอบด่วน",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "แก้ไขหรือตรวจสอบร่าง",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "เขียนด่วน",
-    "left_menu__writing_assistant": "ผู้ช่วยเขียน"
+    "left_menu__help_me_write": "ช่วยฉันเขียน"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "ปรับปรุงการเขียน แก้ไขการสะกดคำและไวยากรณ์ หรือเปลี่ยนโทนได้ทันทีด้วย AI",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "อัปโหลดเอกสารหรือรูปภาพไปยัง MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "อัปโหลดเอกสารไปยัง MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "ไฟล์ที่อัปโหลดมีขนาดใหญ่เกินไป คิดจะใช้โมเดล AI ที่มีหน้าต่างบริบทของข้อมูลที่ใหญ่กว่าหรืออัปโหลดไฟล์ที่มีขนาดเล็กลง"
+    "provider__chatgpt__upload_file_error__too_long__text": "ไฟล์ที่อัปโหลดมีขนาดใหญ่เกินไป คิดจะใช้โมเดล AI ที่มีหน้าต่างบริบทของข้อมูลที่ใหญ่กว่าหรืออัปโหลดไฟล์ที่มีขนาดเล็กลง",
+    "sidebar__promotion_dialog__content_item6__title": "ผู้ช่วยเขียนข้อความ",
+    "sidebar__promotion_dialog__content_item6__description": "ให้ AI สร้างข้อความตอบกลับที่ปรับแต่งสำหรับคุณในไม่กี่วินาทีด้วยการคลิกเพียงครั้งเดียวบน Discord"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

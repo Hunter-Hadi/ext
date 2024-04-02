@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Pikavastaus",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Muokkaa tai tarkista luonnos",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Nopea kirjoitus",
-    "left_menu__writing_assistant": "Kirjoitusavustaja"
+    "left_menu__help_me_write": "Auttakaa minua kirjoittamaan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Paranna kirjoittamista, korjaa oikeinkirjoitus ja kielioppi tai muuta sävyä välittömästi tekoälyn avulla.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Lataa asiakirjoja tai kuvia MaxAI:hin",
     "provider__chatgpt__upload__accept_docs_tooltip": "Lataa asiakirjat MaxAI:hin",
-    "provider__chatgpt__upload_file_error__too_long__text": "Ladattu tiedosto on liian suuri. Harkitse suuremman kontekstiruudun omaavan tekoälymallin käyttämistä tai pienemmän kokoisen tiedoston lataamista."
+    "provider__chatgpt__upload_file_error__too_long__text": "Ladattu tiedosto on liian suuri. Harkitse suuremman kontekstiruudun omaavan tekoälymallin käyttämistä tai pienemmän kokoisen tiedoston lataamista.",
+    "sidebar__promotion_dialog__content_item6__title": "Viestien kirjoitusapuri",
+    "sidebar__promotion_dialog__content_item6__description": "Anna tekoälyn luoda sinulle henkilökohtaisia viestivastauksia sekunneissa yhdellä klikkauksella Discordissa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

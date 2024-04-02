@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "በቀጥታ መልክት",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ማስተካከያ ወደ ማስተካከያ ማስተዳደር",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "በቀጥታ አስተካከያ",
-    "left_menu__writing_assistant": "የፍላጎት አስመልክቶ"
+    "left_menu__help_me_write": "እባክዎ መጻፍ ያስፈልጋል"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI እንዴት በማሳየት የመጻፍዎን መልሶዎችን ያስተካክሉ, የምስል እና የግምት መሳሪያዎችን ማስተካከል, ለማስተካከል ይጠቀሙ.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "የMaxAI መረጃዎች ወደእይታ ሂድ",
     "provider__chatgpt__upload__accept_docs_tooltip": "የMaxAI መረጃን ለመስጠት ፎቶዎችን ይጫኑ",
-    "provider__chatgpt__upload_file_error__too_long__text": "የማብቃት የሚጠቀሙ ፋይል በጣም ነው። የተሳሳተ መልእክት የሚጠቀሙ AI ሞዴል ያለውን የካርታ ወኪል ይጠቀሙ፣ ወይም የተሳሳተ መጻፍ የፋይል መጠን ያለውን ፋይል ይጠቀሙ።"
+    "provider__chatgpt__upload_file_error__too_long__text": "የማብቃት የሚጠቀሙ ፋይል በጣም ነው። የተሳሳተ መልእክት የሚጠቀሙ AI ሞዴል ያለውን የካርታ ወኪል ይጠቀሙ፣ ወይም የተሳሳተ መጻፍ የፋይል መጠን ያለውን ፋይል ይጠቀሙ።",
+    "sidebar__promotion_dialog__content_item6__title": "መልእክት የመልዕክት መሰረታዊ መልዕክት",
+    "sidebar__promotion_dialog__content_item6__description": "የኤችአርክ በስተቀር የሚገኙ መልዕክቶችን በአንድ ከክሊክ የሚሰሩትን ጥቅሶችን በማስተላለፍ የሚገኘውን ፕሮግራምን ያስገቡ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

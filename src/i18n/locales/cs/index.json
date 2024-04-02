@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rychlá odpověď",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upravit nebo zkontrolovat koncept",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rychlé psaní",
-    "left_menu__writing_assistant": "Psací asistent"
+    "left_menu__help_me_write": "Pomozte mi psát"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Vylepšete psaní, opravte pravopis a gramatiku nebo okamžitě změňte tón s pomocí umělé inteligence.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Nahrát dokumenty nebo obrázky do MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Nahrát dokumenty do MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Nahraný soubor je příliš velký. Zvažte použití modelu AI s větším kontextovým oknem nebo nahrajte soubor menší velikosti."
+    "provider__chatgpt__upload_file_error__too_long__text": "Nahraný soubor je příliš velký. Zvažte použití modelu AI s větším kontextovým oknem nebo nahrajte soubor menší velikosti.",
+    "sidebar__promotion_dialog__content_item6__title": "Asistent pro psaní zpráv",
+    "sidebar__promotion_dialog__content_item6__description": "Nechejte AI generovat personalizované odpovědi na zprávy za vteřiny jedním kliknutím na Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

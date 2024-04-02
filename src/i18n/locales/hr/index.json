@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Brzi odgovor",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Uredi ili pregledaj skicu",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Brzo sastavi",
-    "left_menu__writing_assistant": "Pomoćnik za pisanje"
+    "left_menu__help_me_write": "Pomozi mi pisati"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Unaprijedite pisanje, ispravite pravopis i gramatiku ili trenutno promijenite ton uz pomoć AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Prenesite dokumente ili slike na MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Prenesi dokumente na MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Prijenosna datoteka je prevelika. Razmotrite upotrebu AI modela s većim prozorom konteksta ili prijenos datoteke manje veličine."
+    "provider__chatgpt__upload_file_error__too_long__text": "Prijenosna datoteka je prevelika. Razmotrite upotrebu AI modela s većim prozorom konteksta ili prijenos datoteke manje veličine.",
+    "sidebar__promotion_dialog__content_item6__title": "Asistent za pisanje poruka",
+    "sidebar__promotion_dialog__content_item6__description": "Neka AI generira personalizirane odgovore na poruke za vas u sekundama s jednim klikom na Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

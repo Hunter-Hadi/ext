@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hitri odgovor",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Uredi ali pregledaj osnutek",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hitro sestavi",
-    "left_menu__writing_assistant": "Pomočnik za pisanje"
+    "left_menu__help_me_write": "Pomoč pri pisanju"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Izboljšajte pisanje, popravite črkovanje in slovnico ali takoj spremenite ton z umetno inteligenco.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Naložite dokumente ali slike v MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Naložite dokumente v MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Naložena datoteka je prevelika. Razmislite o uporabi modela AI z večjim kontekstnim oknom ali naložite manjšo datoteko."
+    "provider__chatgpt__upload_file_error__too_long__text": "Naložena datoteka je prevelika. Razmislite o uporabi modela AI z večjim kontekstnim oknom ali naložite manjšo datoteko.",
+    "sidebar__promotion_dialog__content_item6__title": "Asistent za sporočila",
+    "sidebar__promotion_dialog__content_item6__description": "Omogočite, da umetna inteligenca v nekaj sekundah generira personalizirane odgovore na sporočila z enim klikom na Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

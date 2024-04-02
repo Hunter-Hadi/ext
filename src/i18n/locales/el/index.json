@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Γρήγορη απάντηση",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Επεξεργασία ή αναθεώρηση προσχεδίου",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Γρήγορη σύνθεση",
-    "left_menu__writing_assistant": "Βοηθός γραφής"
+    "left_menu__help_me_write": "Βοήθησέ με να γράψω"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Βελτιώστε τη γραφή, διορθώστε την ορθογραφία και τη γραμματική ή αλλάξτε αμέσως τον τόνο με την τεχνητή νοημοσύνη.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Μεταφόρτωση εγγράφων ή εικόνων στο MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Μεταφόρτωση εγγράφων στο MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Το αρχείο που μεταφορτώθηκε είναι πολύ μεγάλο. Σκεφτείτε να χρησιμοποιήσετε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή να μεταφορτώσετε ένα μικρότερου μεγέθους αρχείο."
+    "provider__chatgpt__upload_file_error__too_long__text": "Το αρχείο που μεταφορτώθηκε είναι πολύ μεγάλο. Σκεφτείτε να χρησιμοποιήσετε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή να μεταφορτώσετε ένα μικρότερου μεγέθους αρχείο.",
+    "sidebar__promotion_dialog__content_item6__title": "Γραφικός βοηθός συνομιλίας",
+    "sidebar__promotion_dialog__content_item6__description": "Αφήστε την AI να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ στο Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

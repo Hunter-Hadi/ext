@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Balasan cepat",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Edit atau tinjau draf",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Tulis cepat",
-    "left_menu__writing_assistant": "Asisten Menulis"
+    "left_menu__help_me_write": "Bantu saya menulis"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Perbaiki tulisan, perbaiki ejaan & tata bahasa, atau ubah nada secara instan dengan AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Unggah dokumen atau gambar ke MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Unggah dokumen ke MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "File yang diunggah terlalu besar. Pertimbangkan menggunakan model AI dengan jendela konteks yang lebih besar, atau unggah file dengan ukuran yang lebih kecil."
+    "provider__chatgpt__upload_file_error__too_long__text": "File yang diunggah terlalu besar. Pertimbangkan menggunakan model AI dengan jendela konteks yang lebih besar, atau unggah file dengan ukuran yang lebih kecil.",
+    "sidebar__promotion_dialog__content_item6__title": "Asisten penulisan pesan",
+    "sidebar__promotion_dialog__content_item6__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan hanya satu klik di Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Gyors válasz",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Szerkesztés vagy vázlat áttekintése",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Gyors szerkesztés",
-    "left_menu__writing_assistant": "Írástámogató"
+    "left_menu__help_me_write": "Segíts nekem írni"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Írás javítása, helyesírás és nyelvtan ellenőrzése vagy hangulat azonnali változtatása az AI segítségével.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Dokumentumokat vagy képeket tölthet fel a MaxAI számára",
     "provider__chatgpt__upload__accept_docs_tooltip": "Dokumentumok feltöltése a MaxAI-hoz",
-    "provider__chatgpt__upload_file_error__too_long__text": "A feltöltött fájl túl nagy. Fontolja meg egy AI modell használatát, amelynek nagyobb a kontextus ablaka, vagy töltsön fel kisebb méretű fájlt."
+    "provider__chatgpt__upload_file_error__too_long__text": "A feltöltött fájl túl nagy. Fontolja meg egy AI modell használatát, amelynek nagyobb a kontextus ablaka, vagy töltsön fel kisebb méretű fájlt.",
+    "sidebar__promotion_dialog__content_item6__title": "Üzenetíró segéd",
+    "sidebar__promotion_dialog__content_item6__description": "Engedd, hogy az AI személyre szabott üzenetválaszokat generáljon neked másodpercek alatt egyetlen kattintással a Discordon."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

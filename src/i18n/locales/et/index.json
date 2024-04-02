@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Kiire vastus",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Redigeeri või vaata üle mustandit",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Kiire koostamine",
-    "left_menu__writing_assistant": "Kirjutamise abiline"
+    "left_menu__help_me_write": "Aita mind kirjutada"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Paranda kirjutamist, paranda õigekirja ja grammatikat või muuda tooni kohe AI abil.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Laadige dokumente või pilte MaxAI-sse üles",
     "provider__chatgpt__upload__accept_docs_tooltip": "Laadige dokumendid üles MaxAI-sse",
-    "provider__chatgpt__upload_file_error__too_long__text": "Üles laaditud fail on liiga suur. Kaaluge AI mudeli kasutamist suurema kontekstakna või väiksema suurusega faili üleslaadimiseks."
+    "provider__chatgpt__upload_file_error__too_long__text": "Üles laaditud fail on liiga suur. Kaaluge AI mudeli kasutamist suurema kontekstakna või väiksema suurusega faili üleslaadimiseks.",
+    "sidebar__promotion_dialog__content_item6__title": "Sõnumite kirjutamise abiline",
+    "sidebar__promotion_dialog__content_item6__description": "Lase AI-l genereerida isikupärastatud sõnumivastuseid vaid mõne sekundiga, klõpsates Discordis üks kord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

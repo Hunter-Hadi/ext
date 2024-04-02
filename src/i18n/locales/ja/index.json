@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "クイックリプライ",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ドラフトの編集またはレビュー",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "クイックコンポーズ",
-    "left_menu__writing_assistant": "ライティングアシスタント"
+    "left_menu__help_me_write": "書き方を教えてください"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AIを使って文章を改善し、スペルや文法を修正したり、トーンを即座に変更したりできます。",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAIへドキュメントまたは画像をアップロードする",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIへドキュメントをアップロード",
-    "provider__chatgpt__upload_file_error__too_long__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、サイズの小さいファイルをアップロードしてください。"
+    "provider__chatgpt__upload_file_error__too_long__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、サイズの小さいファイルをアップロードしてください。",
+    "sidebar__promotion_dialog__content_item6__title": "メッセージ作成アシスタント",
+    "sidebar__promotion_dialog__content_item6__description": "DiscordでクリックひとつでAIが数秒でパーソナライズされたメッセージの返信を生成します。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

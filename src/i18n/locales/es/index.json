@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Respuesta rápida",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar o revisar borrador",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composición rápida",
-    "left_menu__writing_assistant": "Asistente de escritura"
+    "left_menu__help_me_write": "Ayúdame a escribir"
   },
   "client": {
     "sidebar__button__close_sidebar": "Cerrar barra lateral",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Mejora la escritura, corrige la ortografía y gramática, o cambia el tono al instante con la IA.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Cargar documentos o imágenes a MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Cargar documentos a MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "El archivo cargado es demasiado grande. Considere usar un modelo de IA con una ventana de contexto más grande o cargar un archivo de menor tamaño."
+    "provider__chatgpt__upload_file_error__too_long__text": "El archivo cargado es demasiado grande. Considere usar un modelo de IA con una ventana de contexto más grande o cargar un archivo de menor tamaño.",
+    "sidebar__promotion_dialog__content_item6__title": "Asistente de escritura de mensajes",
+    "sidebar__promotion_dialog__content_item6__description": "Permite que la IA genere respuestas de mensajes personalizadas para ti en segundos con solo un clic en Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

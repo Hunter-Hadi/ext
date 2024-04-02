@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hızlı yanıt",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Taslak düzenle veya gözden geçir",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hızlı oluştur",
-    "left_menu__writing_assistant": "Yazma yardımcısı"
+    "left_menu__help_me_write": "Yardım edin bana yazın"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Yazmayı iyileştirin, yazım ve dilbilgisi hatalarını düzeltin veya tonu anında değiştirin.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI'ya belge veya resim yükle",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI'ye belgeleri yükle",
-    "provider__chatgpt__upload_file_error__too_long__text": "Yüklenen dosya çok büyük. Daha geniş bir bağlam penceresine sahip bir AI modeli kullanmayı veya daha küçük bir boyutta bir dosya yüklemeyi düşünün."
+    "provider__chatgpt__upload_file_error__too_long__text": "Yüklenen dosya çok büyük. Daha geniş bir bağlam penceresine sahip bir AI modeli kullanmayı veya daha küçük bir boyutta bir dosya yüklemeyi düşünün.",
+    "sidebar__promotion_dialog__content_item6__title": "Mesaj yazma yardımcısı",
+    "sidebar__promotion_dialog__content_item6__description": "Discord'da sadece bir tıklama ile AI tarafından kişiselleştirilmiş mesaj yanıtları oluşturun."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Răspuns rapid",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editare sau revizuire proiect",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Compunere rapidă",
-    "left_menu__writing_assistant": "Asistent de scriere"
+    "left_menu__help_me_write": "Ajută-mă să scriu"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Îmbunătățiți scrierea, corectați greșelile de ortografie și gramatică sau schimbați tonul instantaneu cu ajutorul IA.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Încărcați documente sau imagini în MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Încărcați documente în MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Fișierul încărcat este prea mare. Luați în considerare utilizarea unui model AI cu o fereastră de context mai mare sau încărcați un fișier de dimensiuni mai mici."
+    "provider__chatgpt__upload_file_error__too_long__text": "Fișierul încărcat este prea mare. Luați în considerare utilizarea unui model AI cu o fereastră de context mai mare sau încărcați un fișier de dimensiuni mai mici.",
+    "sidebar__promotion_dialog__content_item6__title": "Asistent de scriere pentru mesaje",
+    "sidebar__promotion_dialog__content_item6__description": "Permiteți IA să genereze răspunsuri personalizate pentru mesaje în câteva secunde, cu doar un clic pe Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poemă...",

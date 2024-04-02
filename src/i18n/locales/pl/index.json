@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Szybka odpowiedź",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Edytuj lub przejrzyj szkic",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Szybkie komponowanie",
-    "left_menu__writing_assistant": "Asystent pisania"
+    "left_menu__help_me_write": "Pomóż mi pisać"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Poprawiaj pisanie, naprawiaj błędy ortograficzne i gramatyczne lub zmieniaj ton natychmiastowo za pomocą sztucznej inteligencji.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Prześlij dokumenty lub obrazy do MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Prześlij dokumenty do MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Przesłany plik jest zbyt duży. Rozważ użycie modelu AI z większym oknem kontekstowym lub przesłanie mniejszego pliku."
+    "provider__chatgpt__upload_file_error__too_long__text": "Przesłany plik jest zbyt duży. Rozważ użycie modelu AI z większym oknem kontekstowym lub przesłanie mniejszego pliku.",
+    "sidebar__promotion_dialog__content_item6__title": "Asystent do pisania wiadomości",
+    "sidebar__promotion_dialog__content_item6__description": "Niech sztuczna inteligencja generuje spersonalizowane odpowiedzi na wiadomości dla Ciebie w kilka sekund za pomocą jednego kliknięcia na Discordzie."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

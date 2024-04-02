@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Швидка відповідь",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редагувати або переглянути чернетку",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Швидке створення",
-    "left_menu__writing_assistant": "Помічник письменника"
+    "left_menu__help_me_write": "Допоможіть мені написати"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Покращуйте письмо, виправляйте помилки в написанні та граматиці або миттєво змінюйте тон за допомогою штучного інтелекту.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Завантажте документи або зображення до MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Завантажити документи до MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Завантажений файл занадто великий. Розгляньте можливість використання моделі штучного інтелекту з більшим вікном контексту або завантаження файлу меншого розміру."
+    "provider__chatgpt__upload_file_error__too_long__text": "Завантажений файл занадто великий. Розгляньте можливість використання моделі штучного інтелекту з більшим вікном контексту або завантаження файлу меншого розміру.",
+    "sidebar__promotion_dialog__content_item6__title": "Помічник з написання повідомлень",
+    "sidebar__promotion_dialog__content_item6__description": "Дозвольте штучному інтелекту створювати персоналізовані відповіді на повідомлення за кілька секунд одним кліком у Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

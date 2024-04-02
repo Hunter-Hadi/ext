@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Snelle reactie",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Bewerk of beoordeel concept",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Snel opstellen",
-    "left_menu__writing_assistant": "Schrijfassistent"
+    "left_menu__help_me_write": "Help me schrijven"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Verbeter het schrijven, corrigeer spelling en grammatica, of verander direct de toon met behulp van AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload documenten of afbeeldingen naar MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Documenten uploaden naar MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Het geüploade bestand is te groot. Overweeg om een AI-model te gebruiken met een groter contextvenster of upload een kleiner bestand."
+    "provider__chatgpt__upload_file_error__too_long__text": "Het geüploade bestand is te groot. Overweeg om een AI-model te gebruiken met een groter contextvenster of upload een kleiner bestand.",
+    "sidebar__promotion_dialog__content_item6__title": "Berichten schrijfassistent",
+    "sidebar__promotion_dialog__content_item6__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden met slechts één klik op Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

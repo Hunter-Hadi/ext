@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Réponse rapide",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Modifier ou revoir le brouillon",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composition rapide",
-    "left_menu__writing_assistant": "Assistant d'écriture"
+    "left_menu__help_me_write": "Aidez-moi à écrire"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Améliorez votre écriture, corrigez l'orthographe et la grammaire ou changez instantanément de ton avec l'IA.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Téléchargez des documents ou des images vers MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Télécharger des documents vers MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Le fichier téléchargé est trop volumineux. Considérez l'utilisation d'un modèle d'IA avec une fenêtre de contexte plus grande ou le téléchargement d'un fichier de taille plus petite."
+    "provider__chatgpt__upload_file_error__too_long__text": "Le fichier téléchargé est trop volumineux. Considérez l'utilisation d'un modèle d'IA avec une fenêtre de contexte plus grande ou le téléchargement d'un fichier de taille plus petite.",
+    "sidebar__promotion_dialog__content_item6__title": "Assistant d'écriture de messages",
+    "sidebar__promotion_dialog__content_item6__description": "Laissez l'IA générer des réponses de message personnalisées pour vous en quelques secondes avec un simple clic sur Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -72,9 +72,6 @@ const useInitRangy = () => {
     FloatingDropdownMenuState,
   )
   const { currentSidebarConversationMessages } = useSidebarSettings()
-  const [, setFloatingContextMenuDraft] = useRecoilState(
-    FloatingContextMenuDraftState,
-  )
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
@@ -555,9 +552,6 @@ const useInitRangy = () => {
             }
           }
           console.log('AIInput TRY_AGAIN', lastAIMessageId)
-          setFloatingContextMenuDraft({
-            lastAIMessageId,
-          })
         }
         break
       case 'COPY':

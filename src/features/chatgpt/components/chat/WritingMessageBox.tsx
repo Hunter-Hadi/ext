@@ -25,20 +25,20 @@ const WritingMessageBox: FC<{
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
-  const floatingContextMenuDraftText = useFloatingContextMenuDraft()
+  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   useEffect(() => {
     console.log(
-      'AIInput floatingContextMenuDraftText: ',
-      floatingContextMenuDraftText,
+      'AIInput currentFloatingContextMenuDraft: ',
+      currentFloatingContextMenuDraft,
     )
     setFloatingDropdownMenuSystemItems((prev) => {
       return {
         ...prev,
-        lastOutput: floatingContextMenuDraftText,
+        lastOutput: currentFloatingContextMenuDraft,
       }
     })
-    onChange?.(floatingContextMenuDraftText)
-  }, [floatingContextMenuDraftText, floatingDropdownMenu.open])
+    onChange?.(currentFloatingContextMenuDraft)
+  }, [currentFloatingContextMenuDraft, floatingDropdownMenu.open])
   const containerRef = useRef<HTMLDivElement>(null)
   const boxRef = React.useRef<HTMLDivElement>(null)
   const throttleUpdateHeight = useCallback(
@@ -76,7 +76,7 @@ const WritingMessageBox: FC<{
       throttleUpdateHeight()
       debounceUpdateHeight()
     }, 0)
-  }, [floatingContextMenuDraftText])
+  }, [currentFloatingContextMenuDraft])
   useEffect(() => {
     const keydownHandler = (e: KeyboardEvent) => {
       if (e.metaKey || e.ctrlKey) {
@@ -122,7 +122,7 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      {isEmpty(floatingContextMenuDraftText) ? <ContextText /> : null}
+      {isEmpty(currentFloatingContextMenuDraft) ? <ContextText /> : null}
       <div
         tabIndex={-1}
         ref={boxRef}
@@ -134,7 +134,7 @@ const WritingMessageBox: FC<{
         }`}
       >
         <CustomMarkdown>
-          {floatingContextMenuDraftText.replace(/^\s+/, '')}
+          {currentFloatingContextMenuDraft.replace(/^\s+/, '')}
         </CustomMarkdown>
       </div>
     </Stack>

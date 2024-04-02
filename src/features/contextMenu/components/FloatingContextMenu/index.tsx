@@ -110,7 +110,7 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const floatingContextMenuDraft = useFloatingContextMenuDraft()
+  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const { isLogin } = useAuthLogin()
   const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
@@ -339,7 +339,7 @@ const FloatingContextMenu: FC<{
   }, [clientWritingMessage.loading])
   const askChatGPT = async (inputValue: string) => {
     if (inputValue.trim()) {
-      const draft = floatingContextMenuDraft
+      const draft = currentFloatingContextMenuDraft
       let currentDraft = ''
       const selectionElement = currentSelectionRef.current?.selectionElement
       // 如果是可编辑元素

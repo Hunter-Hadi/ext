@@ -28,7 +28,7 @@ const useShortCutsParameters = () => {
   const { currentSelection } = useRangy()
   const { currentSidebarConversationMessages } = useSidebarSettings()
 
-  const floatingContextMenuDraftText = useFloatingContextMenuDraft()
+  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const appDBStorage = useRecoilValue(AppDBStorageState)
   return useCallback(() => {
     const GMAIL_DRAFT_CONTEXT =
@@ -80,7 +80,7 @@ const useShortCutsParameters = () => {
         typeof window !== 'undefined' ? window.location.href : '',
       CURRENT_WEBPAGE_TITLE:
         typeof window !== 'undefined' ? document.title : '',
-      POPUP_DRAFT: floatingContextMenuDraftText || '',
+      POPUP_DRAFT: currentFloatingContextMenuDraft || '',
     }
     const parameters: IShortCutsParameter[] = []
     Object.keys(builtInParameters).forEach((key) => {
@@ -104,7 +104,7 @@ const useShortCutsParameters = () => {
     appState.env,
     currentSelection,
     appDBStorage.userSettings,
-    floatingContextMenuDraftText,
+    currentFloatingContextMenuDraft,
   ])
 }
 export { useShortCutsParameters }

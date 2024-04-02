@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ತ್ವರಿತ ಉತ್ತರ",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ಡ್ರಾಫ್ಟ್ ಸಂಪಾದಿಸು ಅಥವಾ ಪರಿಶೀಲಿಸು",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ತ್ವರಿತ ರಚನೆ",
-    "left_menu__help_me_write": "ನನಗೆ ಬರೆಯುವ ಸಹಾಯ ಮಾಡಿ"
+    "left_menu__writing_assistant": "ಬರವಣಿಗೆ ಸಹಾಯಕ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

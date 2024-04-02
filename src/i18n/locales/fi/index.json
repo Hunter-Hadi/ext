@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Pikavastaus",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Muokkaa tai tarkista luonnos",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Nopea kirjoitus",
-    "left_menu__help_me_write": "Auttakaa minua kirjoittamaan"
+    "left_menu__writing_assistant": "Kirjoitusavustaja"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

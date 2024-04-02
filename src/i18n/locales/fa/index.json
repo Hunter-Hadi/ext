@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "پاسخ سریع",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ویرایش یا بررسی پیش‌نویس",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ترکیب سریع",
-    "left_menu__help_me_write": "کمک به من برای نوشتن"
+    "left_menu__writing_assistant": "معاون نوشتاری"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",

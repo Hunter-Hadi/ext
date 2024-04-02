@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Réponse rapide",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Modifier ou revoir le brouillon",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composition rapide",
-    "left_menu__help_me_write": "Aidez-moi à écrire"
+    "left_menu__writing_assistant": "Assistant d'écriture"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",

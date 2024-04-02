@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Γρήγορη απάντηση",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Επεξεργασία ή αναθεώρηση προσχεδίου",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Γρήγορη σύνθεση",
-    "left_menu__help_me_write": "Βοήθησέ με να γράψω"
+    "left_menu__writing_assistant": "Βοηθός γραφής"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Gyors válasz",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Szerkesztés vagy vázlat áttekintése",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Gyors szerkesztés",
-    "left_menu__help_me_write": "Segíts nekem írni"
+    "left_menu__writing_assistant": "Írástámogató"
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

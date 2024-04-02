@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Jibu haraka",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Hariri au hakiki rasimu",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Andika haraka",
-    "left_menu__help_me_write": "Nisaidie kuandika"
+    "left_menu__writing_assistant": "Msaidizi wa Kuandika"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

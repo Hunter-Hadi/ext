@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hızlı yanıt",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Taslak düzenle veya gözden geçir",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hızlı oluştur",
-    "left_menu__help_me_write": "Yardım edin bana yazın"
+    "left_menu__writing_assistant": "Yazma yardımcısı"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

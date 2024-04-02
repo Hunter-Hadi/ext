@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Resposta ràpida",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar o revisar esborrany",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composició ràpida",
-    "left_menu__help_me_write": "Ajuda'm a escriure"
+    "left_menu__writing_assistant": "Assistent d'escriptura"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",

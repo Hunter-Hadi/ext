@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hitri odgovor",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Uredi ali pregledaj osnutek",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hitro sestavi",
-    "left_menu__help_me_write": "Pomoč pri pisanju"
+    "left_menu__writing_assistant": "Pomočnik za pisanje"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

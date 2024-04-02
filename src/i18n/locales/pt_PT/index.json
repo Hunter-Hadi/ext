@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Resposta rápida",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar ou rever rascunho",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composição rápida",
-    "left_menu__help_me_write": "Ajude-me a escrever"
+    "left_menu__writing_assistant": "Assistente de escrita"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",

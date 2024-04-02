@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "クイックリプライ",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ドラフトの編集またはレビュー",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "クイックコンポーズ",
-    "left_menu__help_me_write": "書き方を教えてください"
+    "left_menu__writing_assistant": "ライティングアシスタント"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",

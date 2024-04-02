@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "빠른 답장",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "드래프트 편집 또는 검토",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "빠른 작성",
-    "left_menu__help_me_write": "글쓰기 도움"
+    "left_menu__writing_assistant": "글쓰기 도우미"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",

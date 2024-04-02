@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "விரைவு பதில்",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "திருத்தம் அல்லது முன்னுரிமையை மதிப்பிடு",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "விரைவு உருவாக்கு",
-    "left_menu__help_me_write": "எனக்கு உதவி செய்யுங்கள்"
+    "left_menu__writing_assistant": "எழுத்து உதவி"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",

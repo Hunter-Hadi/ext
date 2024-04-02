@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Швидка відповідь",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редагувати або переглянути чернетку",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Швидке створення",
-    "left_menu__help_me_write": "Допоможіть мені написати"
+    "left_menu__writing_assistant": "Помічник письменника"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ตอบด่วน",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "แก้ไขหรือตรวจสอบร่าง",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "เขียนด่วน",
-    "left_menu__help_me_write": "ช่วยฉันเขียน"
+    "left_menu__writing_assistant": "ผู้ช่วยเขียน"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

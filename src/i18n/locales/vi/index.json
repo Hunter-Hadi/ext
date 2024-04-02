@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Trả lời nhanh",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Chỉnh sửa hoặc xem lại bản nháp",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Soạn nhanh",
-    "left_menu__help_me_write": "Hãy giúp tôi viết"
+    "left_menu__writing_assistant": "Trợ lý viết"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",

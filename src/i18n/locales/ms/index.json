@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Balasan cepat",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Edit atau semak draf",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Tulis cepat",
-    "left_menu__help_me_write": "Bantu saya menulis"
+    "left_menu__writing_assistant": "Penolong penulisan"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

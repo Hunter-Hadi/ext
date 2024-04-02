@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rýchla odpoveď",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upraviť alebo posúdiť koncept",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rýchle zostavenie",
-    "left_menu__help_me_write": "Pomôžte mi písať"
+    "left_menu__writing_assistant": "Pomocník pri písaní"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",

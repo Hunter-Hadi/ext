@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Ātra atbilde",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Rediģēt vai pārskatīt melnrakstu",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Ātra sastādīšana",
-    "left_menu__help_me_write": "Palīdziet man rakstīt"
+    "left_menu__writing_assistant": "Rakstīšanas asistents"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

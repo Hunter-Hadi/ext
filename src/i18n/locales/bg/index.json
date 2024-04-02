@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Бърз отговор",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редактиране или преглед на чернова",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Бързо съставяне",
-    "left_menu__help_me_write": "Помогни ми да пиша"
+    "left_menu__writing_assistant": "Помощник за писане"
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",

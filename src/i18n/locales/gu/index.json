@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ઝડપી જવાબ આપો",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ડ્રાફ્ટ સંપાદિત અથવા સમીક્ષા કરો",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ઝડપી રચના કરો",
-    "left_menu__help_me_write": "મારી મદદ કરો લખવી"
+    "left_menu__writing_assistant": "લેખન સહાયક"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

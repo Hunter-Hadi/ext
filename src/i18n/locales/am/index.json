@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "በቀጥታ መልክት",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ማስተካከያ ወደ ማስተካከያ ማስተዳደር",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "በቀጥታ አስተካከያ",
-    "left_menu__help_me_write": "እባክዎ መጻፍ ያስፈልጋል"
+    "left_menu__writing_assistant": "የፊደል መረጃ አስተዳደር"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",

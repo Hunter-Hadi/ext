@@ -245,7 +245,7 @@
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "വേഗത്തിൽ ഉത്തരം",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ഡ്രാഫ്റ്റ് എഡിറ്റുകൾ അല്ലെങ്കിൽ അവലോകനം",
     "feature_card__prompts__writing_assistant__quick_compose_radio_title": "വേഗത്തിൽ രചന",
-    "left_menu__help_me_write": "എനിക്ക് എഴുതാൻ സഹായിക്കൂ"
+    "left_menu__writing_assistant": "എഴുത്തു സഹായക്രമം"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

@@ -94,7 +94,7 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
           .getElementsByTagName('head')[0]
           .appendChild(discordSpecialStyle)
       }
-      discordSpecialStyle.innerHTML = `html,#app-mount{width:calc(100vw-${chatBoxElementWidth}px)!important;}`
+      discordSpecialStyle.innerHTML = `html,#app-mount{width:calc(100vw - ${chatBoxElementWidth}px)!important;}`
     }
   }
   // 浏览器自带的pdf文件阅读器

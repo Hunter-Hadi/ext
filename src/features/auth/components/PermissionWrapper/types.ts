@@ -870,11 +870,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__title',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
       ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__description',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
@@ -886,11 +886,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__title',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
       ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__description',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
@@ -902,11 +902,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__title',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
       ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__description',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
@@ -918,11 +918,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__title',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
       ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__description',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
@@ -934,11 +934,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__title',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
       ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__compose_reply__description',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),
@@ -950,11 +950,11 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     )}`,
     title: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__title',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
       ),
     description: (t) =>
       t(
-        'client:permission__pricing_hook__input_assistant_button__chat__refine_draft__description',
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_pro'),

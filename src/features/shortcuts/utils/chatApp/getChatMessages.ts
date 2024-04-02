@@ -2,15 +2,15 @@ import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/comp
 import {
   discordGetChatMessages,
   discordGetDraftContent,
-} from '@/features/shortcuts/utils/chat/platforms/discord'
+} from '@/features/shortcuts/utils/chatApp/platforms/discord'
 import {
   slackGetChatMessages,
   slackGetDraftContent,
-} from '@/features/shortcuts/utils/chat/platforms/slack'
+} from '@/features/shortcuts/utils/chatApp/platforms/slack'
 import {
   whatsAppGetChatMessages,
   whatsAppGetDraftContent,
-} from '@/features/shortcuts/utils/chat/platforms/whatsApp'
+} from '@/features/shortcuts/utils/chatApp/platforms/whatsApp'
 import ChatMessagesContext, {
   type IChatMessagesContextData,
 } from '@/features/shortcuts/utils/ChatMessagesContext'

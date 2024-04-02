@@ -7,7 +7,7 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { getChatMessageDraftContent } from '@/features/shortcuts/utils/chat/getChatMessages'
+import { getChatMessageDraftContent } from '@/features/shortcuts/utils/chatApp/getChatMessages'
 
 export class ActionGetChatMessageDraftOfWebPage extends Action {
   static type: ActionIdentifier = 'GET_CHAT_MESSAGE_DRAFT_OF_WEBPAGE'

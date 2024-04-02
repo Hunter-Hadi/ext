@@ -48,7 +48,7 @@ const checkHostUsingButtonKeys = (
     case 'reddit.com':
       return getRedditButtonGroup(config)
 
-    // chat
+    // chat app
     case 'discord.com':
       return getDiscordButtonGroup(config)
 

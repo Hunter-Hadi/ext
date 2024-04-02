@@ -89,6 +89,11 @@ const whatsAppGetChatMessagesFromNodeList = (
         configs.serverName = `${messageData.user} in WhatsApp`
       }
 
+      // if the chatroomName is the same as the username, it means it's a private chat
+      if (configs.chatroomName === messageData.user) {
+        configs.chatroomName = `Chat with ${messageData.user}`
+      }
+
       messages.push(messageData)
     }
   }

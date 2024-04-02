@@ -81,6 +81,21 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
         }
       }
     }
+
+    // 24.04.02: handle Discord client resize
+    if (host === 'discord.com') {
+      let discordSpecialStyle = document.querySelector(
+        '#MAXAI__DISCORD_SPECIAL_STYLE',
+      )
+      if (!discordSpecialStyle) {
+        discordSpecialStyle = document.createElement('style')
+        discordSpecialStyle.id = 'MAXAI__DISCORD_SPECIAL_STYLE'
+        document
+          .getElementsByTagName('head')[0]
+          .appendChild(discordSpecialStyle)
+      }
+      discordSpecialStyle.innerHTML = `html,#app-mount{width:calc(100vw-${chatBoxElementWidth}px)!important;}`
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
@@ -157,6 +172,14 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
           facebookVideoViewerCommentsRoot.style.right = `0px`
         }
       }
+    }
+
+    // 24.04.02: handle Discord client resize
+    if (host === 'discord.com') {
+      const discordSpecialStyle = document.querySelector(
+        '#MAXAI__DISCORD_SPECIAL_STYLE',
+      )
+      discordSpecialStyle?.remove()
     }
   }
   // 浏览器自带的pdf文件阅读器

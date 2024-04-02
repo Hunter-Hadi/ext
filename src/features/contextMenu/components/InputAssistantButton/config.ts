@@ -428,7 +428,7 @@ const LinkedInInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
       rootSelectors: ['.feed-shared-social-action-bar'],
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
-      rootWrapperStyle: 'order: 1;',
+      rootWrapperStyle: 'order:1;height:100%;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
@@ -456,12 +456,12 @@ const LinkedInInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
       },
       appendPosition: 0,
       CTAButtonStyle: {
-        padding: '11px 32px',
+        height: 'inherit',
+        padding: '0 20px',
         iconSize: 26,
         borderRadius: '4px',
       },
       InputAssistantBoxSx: {
-        width: 'max-content',
         borderRadius: '4px',
       },
     } as IInputAssistantButtonGroupConfig,
@@ -972,6 +972,7 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       appendPosition: 0,
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
+      rootWrapperStyle: 'display:flex;align-items:center;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',

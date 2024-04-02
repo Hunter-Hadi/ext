@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Engedje, hogy az AI másodpercek alatt személyre szabott közösségi média válaszokat generáljon Önnek.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Dokumentumokat vagy képeket tölthet fel a MaxAI számára",
     "provider__chatgpt__upload__accept_docs_tooltip": "Dokumentumok feltöltése a MaxAI-hoz",
-    "provider__chatgpt__upload_file_error__too_long__text": "A feltöltött fájl túl nagy. Fontolja meg egy AI modell használatát, amelynek nagyobb a kontextus ablaka, vagy töltsön fel kisebb méretű fájlt."
+    "provider__chatgpt__upload_file_error__too_long__text": "A feltöltött fájl túl nagy. Fontolja meg egy AI modell használatát, amelynek nagyobb a kontextus ablaka, vagy töltsön fel kisebb méretű fájlt.",
+    "sidebar__promotion_dialog__content_item6__title": "Üzenetíró segéd",
+    "sidebar__promotion_dialog__content_item6__description": "Engedje, hogy az AI személyre szabott üzenetválaszokat generáljon Önnek másodpercek alatt egyetlen kattintással a Discordon."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI سیکنڈوں میں آپ کے لئے شخصیت پسندیدہ سوشل میڈیا جوابات تیار کرے گا۔",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "میکس اے آئی کو دستاویزات یا تصاویر اپ لوڈ کریں",
     "provider__chatgpt__upload__accept_docs_tooltip": "میکس اے آئی میں دستاویزات اپ لوڈ کریں",
-    "provider__chatgpt__upload_file_error__too_long__text": "آپلوڈ کیا گیا فائل بہت بڑی ہے۔ بڑے سائز کے ایک AI ماڈل استعمال کرنے یا کم سائز کی فائل آپلوڈ کرنے کو دیکھیں۔"
+    "provider__chatgpt__upload_file_error__too_long__text": "آپلوڈ کیا گیا فائل بہت بڑی ہے۔ بڑے سائز کے ایک AI ماڈل استعمال کرنے یا کم سائز کی فائل آپلوڈ کرنے کو دیکھیں۔",
+    "sidebar__promotion_dialog__content_item6__title": "میسج لکھنے والا معاون",
+    "sidebar__promotion_dialog__content_item6__description": "صرف ایک کلک پر ڈسکورڈ میں شخصیت پسندیدہ پیغام جوابات کو AI تیار کرے۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

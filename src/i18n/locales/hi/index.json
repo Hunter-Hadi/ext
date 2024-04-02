@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "सेकंड में आपके लिए व्यक्तिगत सोशल मीडिया जवाब उत्पन्न करने के लिए AI का उपयोग करें।",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI में दस्तावेज़ या छवियाँ अपलोड करें",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI पर दस्तावेज़ अपलोड करें",
-    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड की गई फ़ाइल बहुत बड़ी है। एक AI मॉडल का उपयोग करने का विचार करें जिसमें एक बड़ी संदर्भ विंडो हो, या एक छोटे साइज़ की फ़ाइल अपलोड करें।"
+    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड की गई फ़ाइल बहुत बड़ी है। एक AI मॉडल का उपयोग करने का विचार करें जिसमें एक बड़ी संदर्भ विंडो हो, या एक छोटे साइज़ की फ़ाइल अपलोड करें।",
+    "sidebar__promotion_dialog__content_item6__title": "मैसेज लेखन सहायक",
+    "sidebar__promotion_dialog__content_item6__description": "एक क्लिक पर AI द्वारा कुछ ही सेकंड में आपके लिए व्यक्तिगत संदेश उत्पन्न करें Discord पर।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

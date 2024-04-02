@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Nechajte AI generovať personalizované odpovede na sociálnych médiách za pár sekúnd.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Nahrať dokumenty alebo obrázky do MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Nahrať dokumenty do MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Nahraný súbor je príliš veľký. Zvážte použitie modelu AI s väčším kontextovým oknom alebo nahrajte súbor menšej veľkosti."
+    "provider__chatgpt__upload_file_error__too_long__text": "Nahraný súbor je príliš veľký. Zvážte použitie modelu AI s väčším kontextovým oknom alebo nahrajte súbor menšej veľkosti.",
+    "sidebar__promotion_dialog__content_item6__title": "Pomocník pri písaní správ",
+    "sidebar__promotion_dialog__content_item6__description": "Nechajte AI vygenerovať personalizované odpovede na správy za niekoľko sekúnd jediným kliknutím na Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

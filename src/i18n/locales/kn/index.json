@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "ಮ್ಯಾಕ್ಸ್‌ಎಐಗೆ ದಾಖಲಿಸಿ ಅಥವಾ ಚಿತ್ರಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI ಗೆ ದಾಖಲೆಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ",
-    "provider__chatgpt__upload_file_error__too_long__text": "ಅಪ್ಲೋಡ್ ಮಾಡಿದ ಕಡತ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಹೆಚ್ಚು ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಹೊಂದಿರುವ AI ಮಾದರಿಯನ್ನು ಬಳಸುವುದನ್ನು ಪರಿಗಣಿಸಿ ಅಥವಾ ಕಡತದ ಗಾತ್ರ ಕಡಿಮೆಯಾಗಿರುವ ಕಡತವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ."
+    "provider__chatgpt__upload_file_error__too_long__text": "ಅಪ್ಲೋಡ್ ಮಾಡಿದ ಕಡತ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಹೆಚ್ಚು ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಹೊಂದಿರುವ AI ಮಾದರಿಯನ್ನು ಬಳಸುವುದನ್ನು ಪರಿಗಣಿಸಿ ಅಥವಾ ಕಡತದ ಗಾತ್ರ ಕಡಿಮೆಯಾಗಿರುವ ಕಡತವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ.",
+    "sidebar__promotion_dialog__content_item6__title": "ಸಂದೇಶ ಬರವಣಿಗೆ ಸಹಾಯಕ",
+    "sidebar__promotion_dialog__content_item6__description": "ಒಂದು ಕ್ಲಿಕ್ ಮಾಡಿ ಡಿಸ್ಕಾರ್ಡ್‌ನಲ್ಲಿ ನೀವು ಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸಂದೇಶ ಪ್ರತಿಗಳನ್ನು ನಿರ್ಮಿಸಲು ಏನು ಬೇಕಾದರೂ ಅನುಮತಿಸಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

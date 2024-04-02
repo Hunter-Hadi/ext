@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI ने सेकंदात आपल्यासाठी वैयक्तिकृत सोशल मिडिया प्रतिसाद तयार करण्यास मदत करा.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI वर दस्तऐवज किंवा प्रतिमा अपलोड करा",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIवर दस्तऐवज अपलोड करा",
-    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड केलेली फाइल खूप मोठी आहे. एक AI मॉडेल वापरून एक मोठ्या संदर्भ विंडोसह वापरण्याचा विचार करा, किंवा एक लहान आकाराची फाइल अपलोड करा."
+    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड केलेली फाइल खूप मोठी आहे. एक AI मॉडेल वापरून एक मोठ्या संदर्भ विंडोसह वापरण्याचा विचार करा, किंवा एक लहान आकाराची फाइल अपलोड करा.",
+    "sidebar__promotion_dialog__content_item6__title": "संदेश लेखन सहाय्यक",
+    "sidebar__promotion_dialog__content_item6__description": "एक क्लिकवर डिस्कॉर्डवर आपल्यासाठी वैयक्तिकृत संदेश उत्पन्न करणारे AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Biarkan AI menghasilkan balasan media sosial yang dipersonalisasi untuk Anda dalam hitungan detik.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Unggah dokumen atau gambar ke MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Unggah dokumen ke MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "File yang diunggah terlalu besar. Pertimbangkan menggunakan model AI dengan jendela konteks yang lebih besar, atau unggah file dengan ukuran yang lebih kecil."
+    "provider__chatgpt__upload_file_error__too_long__text": "File yang diunggah terlalu besar. Pertimbangkan menggunakan model AI dengan jendela konteks yang lebih besar, atau unggah file dengan ukuran yang lebih kecil.",
+    "sidebar__promotion_dialog__content_item6__title": "Asisten Penulisan Pesan",
+    "sidebar__promotion_dialog__content_item6__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan hanya satu klik di Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

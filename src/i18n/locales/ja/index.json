@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AIによるパーソナライズされたソーシャルメディアの返信を数秒で生成します。",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAIへドキュメントまたは画像をアップロードする",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIへドキュメントをアップロード",
-    "provider__chatgpt__upload_file_error__too_long__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、サイズの小さいファイルをアップロードしてください。"
+    "provider__chatgpt__upload_file_error__too_long__text": "アップロードされたファイルが大きすぎます。より大きなコンテキストウィンドウを持つAIモデルを使用するか、サイズの小さいファイルをアップロードしてください。",
+    "sidebar__promotion_dialog__content_item6__title": "メッセージ作成アシスタント",
+    "sidebar__promotion_dialog__content_item6__description": "DiscordでクリックひとつでAIが数秒でパーソナライズされたメッセージの返信を生成します。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

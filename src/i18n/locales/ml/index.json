@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "സെക്കന്റിൽ നിങ്ങളുടെ പ്രൊഫൈൽക്ക് പ്രത്യേകിച്ച് സോഷ്യൽ മീഡിയ ഉത്തരങ്ങൾ ജനറേറ്റ് ചെയ്യാൻ AI ഉപയോഗിക്കുക.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "ഡോക്യുമെന്റുകൾ അല്ലെങ്കിൽ ചിത്രങ്ങൾ MaxAI-യിലേക്ക് അപ്‌ലോഡ് ചെയ്യുക",
     "provider__chatgpt__upload__accept_docs_tooltip": "മാക്സ് എയിയിലേക്ക് ഡോക്യുമെന്റുകൾ അപ്‌ലോഡ് ചെയ്യുക",
-    "provider__chatgpt__upload_file_error__too_long__text": "അപ്‌ലോഡ് ചെയ്ത ഫയല്‍ വളരെ വലുതാണ്. ഒരു പ്രമാണം ഉപയോഗിക്കുന്നതിന് വലുതായ AI മോഡല്‍ ഉപയോഗിക്കുകയോ, ചെറിയ വലിപ്പത്തിലുള്ള ഒരു ഫയല്‍ അപ്‌ലോഡ് ചെയ്യുകയോ ആലോചിക്കുക."
+    "provider__chatgpt__upload_file_error__too_long__text": "അപ്‌ലോഡ് ചെയ്ത ഫയല്‍ വളരെ വലുതാണ്. ഒരു പ്രമാണം ഉപയോഗിക്കുന്നതിന് വലുതായ AI മോഡല്‍ ഉപയോഗിക്കുകയോ, ചെറിയ വലിപ്പത്തിലുള്ള ഒരു ഫയല്‍ അപ്‌ലോഡ് ചെയ്യുകയോ ആലോചിക്കുക.",
+    "sidebar__promotion_dialog__content_item6__title": "സന്ദേശം രചന സഹായി",
+    "sidebar__promotion_dialog__content_item6__description": "ഒരു ക്ലിക്ക് മാത്രം ഡിസ്കോർഡിൽ നിങ്ങളുടെ വ്യക്തിപരമായ സന്ദേശങ്ങൾ സ്വയംഗണിക്കാൻ എയ്ഐ ഉപയോഗിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

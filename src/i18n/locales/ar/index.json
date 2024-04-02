@@ -678,7 +678,9 @@
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "غير قادر على إنشاء فيديو بدون ترجمة.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "قم بتحميل المستندات أو الصور إلى MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "تحميل المستندات إلى MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر."
+    "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر.",
+    "sidebar__promotion_dialog__content_item6__title": "مساعد كتابة الرسائل",
+    "sidebar__promotion_dialog__content_item6__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع عملة واحدة فقط على ديسكورد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

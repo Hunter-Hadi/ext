@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Tải tài liệu hoặc hình ảnh lên MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Tải tài liệu lên MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Tệp tải lên quá lớn. Hãy xem xét sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên một tệp có kích thước nhỏ hơn."
+    "provider__chatgpt__upload_file_error__too_long__text": "Tệp tải lên quá lớn. Hãy xem xét sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên một tệp có kích thước nhỏ hơn.",
+    "sidebar__promotion_dialog__content_item6__title": "Trợ lý viết tin nhắn",
+    "sidebar__promotion_dialog__content_item6__description": "Cho phép trí tuệ nhân tạo tạo ra các câu trả lời tin nhắn cá nhân chỉ trong vài giây với một cú nhấp chuột trên Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

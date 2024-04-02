@@ -675,7 +675,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Թույլատրել AI-ին գեներացնել Ձեր հաշվին անհատականացված սոցիալական մեդիայի պատասխանները մի քանի վայրկյանում:",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Վերբեռնեք փաստաթղթեր կամ պատկերներ MaxAI-ին",
     "provider__chatgpt__upload__accept_docs_tooltip": "Վերբեռնեք փաստաթղթեր MaxAI-ին",
-    "provider__chatgpt__upload_file_error__too_long__text": "Վերբեռնված ֆայլը չի կարող ընդունել, քանի որ այն շատ մեծ է։ Փորձեք օգտագործել ավելի խոշոր համապատասխանող AI մոդել, կամ վերբեռնել ֆայլ փոքր չափով։"
+    "provider__chatgpt__upload_file_error__too_long__text": "Վերբեռնված ֆայլը չի կարող ընդունել, քանի որ այն շատ մեծ է։ Փորձեք օգտագործել ավելի խոշոր համապատասխանող AI մոդել, կամ վերբեռնել ֆայլ փոքր չափով։",
+    "sidebar__promotion_dialog__content_item6__title": "Նամակային գրավորիչ",
+    "sidebar__promotion_dialog__content_item6__description": "Թույլատրել AI-ին գեներացնել հատուկ նամակային պատասխաններ՝ միացնելով Discord-ում մեկ կտորոնով։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Επιτρέψτε στην AI να δημιουργήσει εξατομικευμένες απαντήσεις στα social media για εσάς σε δευτερόλεπτα.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Μεταφόρτωση εγγράφων ή εικόνων στο MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Μεταφόρτωση εγγράφων στο MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Το αρχείο που μεταφορτώθηκε είναι πολύ μεγάλο. Σκεφτείτε να χρησιμοποιήσετε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή να μεταφορτώσετε ένα μικρότερου μεγέθους αρχείο."
+    "provider__chatgpt__upload_file_error__too_long__text": "Το αρχείο που μεταφορτώθηκε είναι πολύ μεγάλο. Σκεφτείτε να χρησιμοποιήσετε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή να μεταφορτώσετε ένα μικρότερου μεγέθους αρχείο.",
+    "sidebar__promotion_dialog__content_item6__title": "Βοηθός γραφής μηνυμάτων",
+    "sidebar__promotion_dialog__content_item6__description": "Αφήστε την τεχνητή νοημοσύνη να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ στο Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

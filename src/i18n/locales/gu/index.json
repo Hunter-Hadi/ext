@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI તમારા માટે વ્યક્તિગત સોશિયલ મીડિયા જવાબો બનાવી શકે છે, જેને તમે સેકંડમાં પ્રાપ્ત કરી શકો છો.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI માટે દસ્તાવેજો અથવા છબીઓ અપલોડ કરો",
     "provider__chatgpt__upload__accept_docs_tooltip": "મેક્સએઆઈ પર દસ્તાવેજો અપલોડ કરો",
-    "provider__chatgpt__upload_file_error__too_long__text": "અપલોડ કરેલી ફાઇલ ખૂબ મોટી છે. વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરવાની વાચક કરો, અથવા એક નાની સાઇઝની ફાઇલ અપલોડ કરો."
+    "provider__chatgpt__upload_file_error__too_long__text": "અપલોડ કરેલી ફાઇલ ખૂબ મોટી છે. વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરવાની વાચક કરો, અથવા એક નાની સાઇઝની ફાઇલ અપલોડ કરો.",
+    "sidebar__promotion_dialog__content_item6__title": "સંદેશ લેખન સહાયક",
+    "sidebar__promotion_dialog__content_item6__description": "ફક્ત એક ક્લિક પર ડિસ્કોર્ડ પર તમારા માટે વ્યક્તિગત સંદેશ જવાબો ઉત્પન્ન કરવા માટે AI નો ઉપયોગ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

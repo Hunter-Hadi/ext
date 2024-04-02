@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "La AI generere personlige sosiale medie-svar for deg på sekunder.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Last opp dokumenter eller bilder til MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Last opp dokumenter til MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Den opplastede filen er for stor. Vurder å bruke en AI-modell med et større kontekstvindu, eller last opp en fil av mindre størrelse."
+    "provider__chatgpt__upload_file_error__too_long__text": "Den opplastede filen er for stor. Vurder å bruke en AI-modell med et større kontekstvindu, eller last opp en fil av mindre størrelse.",
+    "sidebar__promotion_dialog__content_item6__title": "Meldingsassistent",
+    "sidebar__promotion_dialog__content_item6__description": "La AI generere personlige meldingssvar for deg på sekunder med bare ett klikk på Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

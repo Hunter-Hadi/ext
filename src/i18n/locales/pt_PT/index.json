@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Deixe a IA gerar respostas personalizadas para as redes sociais em segundos.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Carregar documentos ou imagens para o MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Carregar documentos para o MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "O ficheiro carregado é demasiado grande. Considere utilizar um modelo de IA com uma janela de contexto maior ou carregar um ficheiro de menor tamanho."
+    "provider__chatgpt__upload_file_error__too_long__text": "O ficheiro carregado é demasiado grande. Considere utilizar um modelo de IA com uma janela de contexto maior ou carregar um ficheiro de menor tamanho.",
+    "sidebar__promotion_dialog__content_item6__title": "Assistente de escrita de mensagens",
+    "sidebar__promotion_dialog__content_item6__description": "Deixe a IA gerar respostas personalizadas para suas mensagens em segundos com apenas um clique no Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

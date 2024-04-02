@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Ruhusu AI kuunda majibu ya media ya kijamii ya kibinafsi kwa sekunde.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Pakia hati au picha kwa MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Pakia hati kwa MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Faili iliyopakiwa ni kubwa sana. Fikiria kutumia mfano wa AI wenye dirisha kubwa la muktadha, au kupakia faili ndogo."
+    "provider__chatgpt__upload_file_error__too_long__text": "Faili iliyopakiwa ni kubwa sana. Fikiria kutumia mfano wa AI wenye dirisha kubwa la muktadha, au kupakia faili ndogo.",
+    "sidebar__promotion_dialog__content_item6__title": "Msaidizi wa kuandika ujumbe",
+    "sidebar__promotion_dialog__content_item6__description": "Acha AI itengeneze majibu ya ujumbe yaliyobinafsishwa kwako kwa sekunde moja tu kwenye Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

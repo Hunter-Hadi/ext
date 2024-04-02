@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laissez l'IA générer des réponses personnalisées pour les médias sociaux en quelques secondes.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Téléchargez des documents ou des images vers MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Télécharger des documents vers MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Le fichier téléchargé est trop volumineux. Considérez l'utilisation d'un modèle d'IA avec une fenêtre de contexte plus grande ou le téléchargement d'un fichier de taille plus petite."
+    "provider__chatgpt__upload_file_error__too_long__text": "Le fichier téléchargé est trop volumineux. Considérez l'utilisation d'un modèle d'IA avec une fenêtre de contexte plus grande ou le téléchargement d'un fichier de taille plus petite.",
+    "sidebar__promotion_dialog__content_item6__title": "Assistant d'écriture de messages",
+    "sidebar__promotion_dialog__content_item6__description": "Laissez l'IA générer des réponses de messages personnalisées en quelques secondes avec un simple clic sur Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "让AI在几秒钟内为您生成个性化的社交媒体回复。",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "上传文档或图片到MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "上传文档至MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "上传的文件太大。考虑使用具有更大上下文窗口的AI模型，或上传较小尺寸的文件。"
+    "provider__chatgpt__upload_file_error__too_long__text": "上传的文件太大。考虑使用具有更大上下文窗口的AI模型，或上传较小尺寸的文件。",
+    "sidebar__promotion_dialog__content_item6__title": "消息撰写助手",
+    "sidebar__promotion_dialog__content_item6__description": "通过在Discord上点击一次，让AI为您生成个性化的消息回复。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Leiskite dirbti sukuriant asmenines socialinių tinklų atsakymus per kelias sekundes.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Įkelti dokumentus arba vaizdus į MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Įkelti dokumentus į MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Įkeltas failas yra per didelis. Svarstykite naudoti AI modelį su didesniu konteksto langeliu arba įkelkite mažesnio dydžio failą."
+    "provider__chatgpt__upload_file_error__too_long__text": "Įkeltas failas yra per didelis. Svarstykite naudoti AI modelį su didesniu konteksto langeliu arba įkelkite mažesnio dydžio failą.",
+    "sidebar__promotion_dialog__content_item6__title": "Pranešimų rašymo asistentas",
+    "sidebar__promotion_dialog__content_item6__description": "Leiskite dirbti su Jūsų pranešimais ir generuoti personalizuotus atsakymus per kelias sekundes vienu paspaudimu Discord platformoje."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -91,7 +91,7 @@ const InputAssistantButtonContextMenu: FC<
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
-            await createConversation()
+            await createConversation('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
             return
           }
@@ -221,10 +221,12 @@ const InputAssistantButtonContextMenu: FC<
         onClickReferenceElement={() => {
           // TODO
         }}
-        {...(disabled ? {
-          customOpen: true,
-          referenceElementOpen: false,
-        } : {})}
+        {...(disabled
+          ? {
+              customOpen: true,
+              referenceElementOpen: false,
+            }
+          : {})}
       />
     </CacheProvider>
   )

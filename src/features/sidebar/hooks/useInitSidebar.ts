@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useRecoilValue, useSetRecoilState } from 'recoil'
 
-import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -15,10 +14,7 @@ import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import {
-  getPageSummaryConversationId,
-  getPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
+import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -32,13 +28,12 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
  */
 const useInitSidebar = () => {
   const appState = useRecoilValue(AppState)
-  const { createPageSummary, resetPageSummary, isGeneratingPageSummaryRef } =
-    usePageSummary()
+  const { createPageSummary, resetPageSummary } = usePageSummary()
   const { pageUrl, startListen } = usePageUrlChange()
   const {
+    sidebarSummaryConversationId,
     sidebarSettings,
     currentSidebarConversationType,
-    updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
   const { currentConversationIdRef, createConversation } =
@@ -76,16 +71,10 @@ const useInitSidebar = () => {
               conversation.meta.AIProvider,
               conversation.meta.AIModel,
             )
+          } else {
+            // 如果没有AIProvider和AIModel，那么就用默认的
+            await createConversation(currentSidebarConversationType)
           }
-        }
-        const createCurrentSidebarConversation = async () => {
-          await createConversation(
-            currentSidebarConversationType,
-            MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
-              .AIProvider,
-            MAXAI_DEFAULT_AI_PROVIDER_CONFIG[currentSidebarConversationType]
-              .AIModel,
-          )
         }
         switch (currentSidebarConversationType) {
           case 'Chat':
@@ -96,21 +85,13 @@ const useInitSidebar = () => {
                   sidebarSettingsRef.current?.chat?.conversationId,
                 )
               } else {
-                await createCurrentSidebarConversation()
+                await createConversation(currentSidebarConversationType)
               }
             }
             break
           case 'Summary':
             {
-              if (
-                sidebarSettingsRef.current?.summary?.conversationId &&
-                sidebarSettingsRef.current?.summary?.conversationId !==
-                  getPageSummaryConversationId()
-              ) {
-                // do nothing
-              } else {
-                await createCurrentSidebarConversation()
-              }
+              await createConversation(currentSidebarConversationType)
             }
             break
           case 'Search':
@@ -121,7 +102,7 @@ const useInitSidebar = () => {
                   sidebarSettingsRef.current?.search?.conversationId,
                 )
               } else {
-                await createCurrentSidebarConversation()
+                await createConversation(currentSidebarConversationType)
               }
             }
             break
@@ -133,7 +114,7 @@ const useInitSidebar = () => {
                   sidebarSettingsRef.current?.art?.conversationId,
                 )
               } else {
-                await createCurrentSidebarConversation()
+                await createConversation(currentSidebarConversationType)
               }
             }
             break
@@ -147,32 +128,14 @@ const useInitSidebar = () => {
   }, [currentSidebarConversationType, appState.open])
   // summary 重新生成的逻辑
   useEffect(() => {
-    console.log(
-      'Tracking1 Tracking1 Tracking1',
-      sidebarSettings?.summary?.conversationId,
-    )
     if (
       currentSidebarConversationType === 'Summary' &&
-      sidebarSettings?.summary?.conversationId &&
-      !isGeneratingPageSummaryRef.current
+      sidebarSummaryConversationId
     ) {
-      console.log(
-        'Tracking Tracking Tracking',
-        sidebarSettings?.summary?.conversationId,
-      )
+      console.log('Tracking Tracking Tracking', sidebarSummaryConversationId)
       createPageSummary().then().catch()
     }
-  }, [sidebarSettings?.summary?.conversationId, currentSidebarConversationType])
-  // summary 聚焦处理
-  useFocus(() => {
-    if (pageConversationTypeRef.current === 'Summary') {
-      updateSidebarSettings({
-        summary: {
-          conversationId: getPageSummaryConversationId(),
-        },
-      })
-    }
-  })
+  }, [sidebarSummaryConversationId, currentSidebarConversationType])
   // Summary的特殊逻辑
   // - 切换url的时候为了省下token，直接切换到chat
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
@@ -193,13 +156,7 @@ const useInitSidebar = () => {
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
         pageSummaryType === 'PDF_CRX_SUMMARY'
       ) {
-        updateSidebarSettings({
-          summary: {
-            conversationId: getPageSummaryConversationId(),
-          },
-        }).then(() => {
-          updateSidebarConversationType('Summary')
-        })
+        updateSidebarConversationType('Summary')
       } else if (pageConversationTypeRef.current === 'Summary') {
         updateSidebarConversationType('Chat')
       }

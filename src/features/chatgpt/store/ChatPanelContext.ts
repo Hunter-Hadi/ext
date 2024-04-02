@@ -9,8 +9,8 @@ import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export type ChatPanelCreateConversationFunction = (
   conversationType: ISidebarConversationType,
-  AIProvider: IAIProviderType,
-  AIModel: string,
+  AIProvider?: IAIProviderType,
+  AIModel?: string,
 ) => Promise<string>
 
 export interface ChatPanelContextValue {

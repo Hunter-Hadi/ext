@@ -23,6 +23,7 @@ import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/uti
 import {
   ClientWritingMessageStateFamily,
   SidebarPageState,
+  SidebarSummaryConversationIdState,
 } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import {
@@ -37,6 +38,8 @@ const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 const useSidebarSettings = () => {
+  const [sidebarSummaryConversationId, setSidebarSummaryConversationId] =
+    useRecoilState(SidebarSummaryConversationIdState)
   const [appLocalStorage, setAppLocalStorage] =
     useRecoilState(AppLocalStorageState)
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
@@ -47,8 +50,6 @@ const useSidebarSettings = () => {
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =
     appLocalStorage.sidebarSettings?.common?.currentAIProvider
-  const currentSummaryConversationId =
-    appLocalStorage.sidebarSettings?.summary?.conversationId
   const currentChatConversationId =
     appLocalStorage.sidebarSettings?.chat?.conversationId
   const currentSearchConversationId =
@@ -63,7 +64,7 @@ const useSidebarSettings = () => {
       case 'Search':
         return currentSearchConversationId
       case 'Summary':
-        return currentSummaryConversationId
+        return sidebarSummaryConversationId
       case 'Art':
         return currentArtConversationId
       default:
@@ -73,7 +74,7 @@ const useSidebarSettings = () => {
     currentSidebarConversationType,
     currentChatConversationId,
     currentSearchConversationId,
-    currentSummaryConversationId,
+    sidebarSummaryConversationId,
     currentArtConversationId,
   ])
   const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
@@ -84,7 +85,7 @@ const useSidebarSettings = () => {
     return {
       Chat: clientConversationMap[currentChatConversationId || ''],
       Search: clientConversationMap[currentSearchConversationId || ''],
-      Summary: clientConversationMap[getPageSummaryConversationId()],
+      Summary: clientConversationMap[sidebarSummaryConversationId],
       Art: clientConversationMap[currentArtConversationId || ''],
     } as {
       [key in ISidebarConversationType]: IChatConversation | null
@@ -93,7 +94,7 @@ const useSidebarSettings = () => {
     clientConversationMap,
     currentChatConversationId,
     currentSearchConversationId,
-    currentSummaryConversationId,
+    sidebarSummaryConversationId,
     currentArtConversationId,
   ])
   const sidebarConversationTypeMessageMap = useMemo(() => {
@@ -161,11 +162,7 @@ const useSidebarSettings = () => {
           9999999,
           [],
         )
-        await updateSidebarSettings({
-          summary: {
-            conversationId: '',
-          },
-        })
+        setSidebarSummaryConversationId('')
       }
       await createSidebarConversation(
         currentConversation.type,
@@ -173,13 +170,7 @@ const useSidebarSettings = () => {
         currentConversation.meta.AIModel!,
       )
     } else {
-      await createSidebarConversation(
-        currentSidebarConversationType,
-        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[currentSidebarConversationType]
-          .AIProvider,
-        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[currentSidebarConversationType]
-          .AIModel,
-      )
+      await createSidebarConversation(currentSidebarConversationType)
     }
     setClientWritingMessage({
       writingMessage: null,
@@ -189,11 +180,16 @@ const useSidebarSettings = () => {
 
   const createSidebarConversation = async (
     conversationType: ISidebarConversationType,
-    AIProvider: IAIProviderType,
-    AIModel: string,
+    AIProvider?: IAIProviderType,
+    AIModel?: string,
   ): Promise<string> => {
     let conversationId: string = ''
-    debugger
+    if (!AIProvider || !AIModel) {
+      AIProvider =
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[conversationType].AIProvider
+      AIModel =
+        SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[conversationType].AIModel
+    }
     if (conversationType === 'Chat') {
       // 获取当前AIProvider
       // 获取当前AIProvider的model
@@ -237,6 +233,7 @@ const useSidebarSettings = () => {
             conversationId,
           },
         })
+        setSidebarSummaryConversationId(conversationId)
         return conversationId
       }
       const conversationTitleMap: {
@@ -269,11 +266,7 @@ const useSidebarSettings = () => {
           } as Partial<IChatConversation>,
         },
       })
-      await updateSidebarSettings({
-        summary: {
-          conversationId,
-        },
-      })
+      setSidebarSummaryConversationId(getPageSummaryConversationId())
     } else if (conversationType === 'Search') {
       // 创建一个新的conversation
       const result = await port.postMessage({
@@ -330,7 +323,7 @@ const useSidebarSettings = () => {
     sidebarConversationTypeofConversationMap,
     updateSidebarSettings,
     updateSidebarConversationType,
-    currentSummaryConversationId,
+    sidebarSummaryConversationId,
   }
 }
 export default useSidebarSettings

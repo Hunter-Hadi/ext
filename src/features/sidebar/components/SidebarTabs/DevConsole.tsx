@@ -17,6 +17,7 @@ import {
 } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { SidebarSummaryConversationIdState } from '@/features/sidebar/store'
 
 const DevConsole: FC = () => {
   const {
@@ -25,6 +26,9 @@ const DevConsole: FC = () => {
     currentSidebarConversationType,
     sidebarSettings,
   } = useSidebarSettings()
+  const sidebarSummaryConversationId = useRecoilValue(
+    SidebarSummaryConversationIdState,
+  )
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
   const {
     clientWritingMessage,
@@ -138,7 +142,7 @@ const DevConsole: FC = () => {
           <p>currentSidebarAIMode: {currentAIProviderModel}</p>
           <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
           <p>Chat: {sidebarSettings?.chat?.conversationId}</p>
-          <p>Summary: {sidebarSettings?.summary?.conversationId}</p>
+          <p>Summary: {sidebarSummaryConversationId}</p>
           <p>Search: {sidebarSettings?.search?.conversationId}</p>
           <p>Art: {sidebarSettings?.art?.conversationId}</p>
           <Divider></Divider>

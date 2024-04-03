@@ -208,7 +208,7 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
  */
 const preprocessLaTeX = (content: string) => {
   // Replace block-level LaTeX delimiters \[ \] with $$ $$
-
+  return content
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,
     (_, equation) => `$$${equation}$$`,
@@ -237,7 +237,17 @@ const CustomMarkdown: FC<{
     () => (
       <>
         <ReactMarkdown
-          remarkPlugins={[supersub, remarkBreaks, remarkGfm, remarkMath]}
+          remarkPlugins={[
+            supersub,
+            remarkBreaks,
+            remarkGfm,
+            [
+              remarkMath,
+              {
+                singleDollarTextMath: false,
+              },
+            ],
+          ]}
           rehypePlugins={[rehypeKatex]}
           // disallowedElements={['br']}
           components={{

@@ -1345,7 +1345,7 @@ const InputAssistantButtonGroupConfig = {
     },
   },
   'reddit.com': RedditInputAssistantButtonGroupConfigs,
-  'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
+  // 'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
   // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
   'discord.com': DiscordInputAssistantButtonGroupConfigs,
 } as {

@@ -1018,11 +1018,20 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       },
     } as IInputAssistantButtonGroupConfig,
     {
-      enable: true,
+      enable: (rootElement) => {
+        if (
+          !rootElement.querySelector(
+            'svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"]',
+          )
+        ) {
+          return false
+        }
+        return true
+      },
       rootSelectors: [
         '[class^="buttonsInner"]:has(> div > svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
       ],
-      appendPosition: 2,
+      appendPosition: -1,
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
       composeReplyButton: {
@@ -1039,10 +1048,13 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )
 
-          ;(
-            inputAssistantButton?.parentElement
-              ?.previousElementSibling as HTMLElement
-          )?.click()
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[role=button]:has(> svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
+              inputAssistantButton as HTMLElement,
+              3,
+            )?.click()
+          }
         },
       },
       rootWrapperStyle: 'height: 100%;',

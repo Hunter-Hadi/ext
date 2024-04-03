@@ -1139,10 +1139,10 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     {
       enable: true,
       rootSelectors: [
-        'footer .copyable-area div:has(> button[aria-label] > [data-icon])',
+        'footer .copyable-area div:has(> .lexical-rich-text-input)',
       ],
       appendPosition: 0,
-      rootParentDeep: 1,
+      rootParentDeep: 0,
       rootWrapperTagName: 'div',
       rootWrapperStyle: 'order: 1; align-self: center;',
       composeReplyButton: {
@@ -1172,16 +1172,16 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
         permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
       },
       CTAButtonStyle: {
-        padding: '6px',
+        padding: '5px 6px',
         iconSize: 14,
-        borderRadius: '4px 0 0 4px',
+        borderRadius: '8px 0 0 8px',
       },
       DropdownButtonStyle: {
-        borderRadius: '0 4px 4px 0',
-        padding: '3px 0',
+        borderRadius: '0 8px 8px 0',
+        padding: '2px 0',
       },
       InputAssistantBoxSx: {
-        borderRadius: '4px',
+        borderRadius: '8px',
         marginLeft: '8px',
       },
     } as IInputAssistantButtonGroupConfig,
@@ -1345,9 +1345,9 @@ const InputAssistantButtonGroupConfig = {
     },
   },
   'reddit.com': RedditInputAssistantButtonGroupConfigs,
-  'discord.com': DiscordInputAssistantButtonGroupConfigs,
+  'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
   // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
-  // 'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
+  'discord.com': DiscordInputAssistantButtonGroupConfigs,
 } as {
   [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig

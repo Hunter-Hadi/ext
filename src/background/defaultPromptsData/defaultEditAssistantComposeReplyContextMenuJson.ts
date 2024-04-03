@@ -1502,13 +1502,14 @@ const chatAppPrompts: IContextMenuItem[] = [
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat message, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat message, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -1574,14 +1575,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -1647,14 +1649,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -1720,14 +1723,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -1793,14 +1797,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -1866,14 +1871,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -1939,14 +1945,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -2012,14 +2019,15 @@ Output the answer without additional context, explanation, or extra wording, jus
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -2106,12 +2114,15 @@ Output the answer without additional context, explanation, or extra wording, jus
                     modelKey: 'Sidebar',
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content. If any:
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
+
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
+
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
@@ -2199,14 +2210,15 @@ Now, write a concise reply to the message above by *writing a better version* of
                     modelKey: 'Sidebar',
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
 
-Your task is to write a reply as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
 
 ---
 
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs, you must differentiate my messages from other user's messages.
+The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
 
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages. If any:
+The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
+If any:
 <context>
 {{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>

@@ -20,7 +20,6 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
-import useInjectGoogleDoc from '@/features/contextMenu/hooks/useInjectGoogleDoc'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
@@ -144,7 +143,6 @@ const AppInit = () => {
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()
   useInitRangy()
-  useInjectGoogleDoc()
   return (
     <>
       <MaxAISubscriptionUpdate />

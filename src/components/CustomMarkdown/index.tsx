@@ -208,7 +208,6 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
  */
 const preprocessLaTeX = (content: string) => {
   // Replace block-level LaTeX delimiters \[ \] with $$ $$
-  return content
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,
     (_, equation) => `$$${equation}$$`,

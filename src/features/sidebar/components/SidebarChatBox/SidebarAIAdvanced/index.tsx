@@ -10,6 +10,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ArtAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/ArtAdvanced'
 import ChatAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/ChatAdvanced'
+import SummaryAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SummaryAdvanced'
 import SearchAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SearchAdvanced'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
@@ -30,10 +31,6 @@ const SidebarAIAdvanced: FC<{
     setAnchorEl(null)
   }
   const open = Boolean(anchorEl)
-
-  if (currentSidebarConversationType === 'Summary') {
-    return null
-  }
 
   return (
     <Box
@@ -121,6 +118,9 @@ const SidebarAIAdvanced: FC<{
             <Stack spacing={1} p={1} width={'100%'}>
               {currentSidebarConversationType === 'Search' && (
                 <SearchAdvanced />
+              )}
+              {currentSidebarConversationType === 'Summary' && (
+                <SummaryAdvanced />
               )}
               {currentSidebarConversationType === 'Art' && <ArtAdvanced />}
               {currentSidebarConversationType === 'Chat' && <ChatAdvanced />}

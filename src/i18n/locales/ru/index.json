@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Введите URL веб-сайта",
     "feature_card__prompts__place_my_own_prompts_switch": "Разместить свои подсказки вверху",
     "feature_card__appearance__field_quick_access__title": "Быстрый доступ",
-    "left_menu__help_me_write": "Помогите мне написать",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Помощник Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Помощник Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X помощник",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Новая группа подсказок",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Быстрый ответ",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Редактировать или просмотреть черновик",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Быстрое составление"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Быстрое составление",
+    "left_menu__writing_assistant": "Помощник по написанию"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Резюме с временными метками",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Невозможно создать видео без субтитров.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Упс! Что-то неожиданное произошло. Пожалуйста, попробуйте еще раз позже.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Обновление для чата с одним нажатием",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Позвольте ИИ создавать персонализированные ответы в социальных сетях за считанные секунды.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Обновление для чата с одним нажатием",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Позвольте ИИ создавать персонализированные ответы в социальных сетях за считанные секунды.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Обновление для однокликовых ответов на сообщения",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Позвольте ИИ создавать персонализированные ответы на сообщения за считанные секунды.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Улучшите свои сообщения в один клик",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Улучшайте письменность, исправляйте орфографию и грамматику или мгновенно меняйте тональность с помощью ИИ.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Загрузить документы или изображения в MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Загрузить документы в MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Загруженный файл слишком большой. Рассмотрите возможность использования модели искусственного интеллекта с более широким контекстным окном или загрузки файла меньшего размера.",
     "sidebar__promotion_dialog__content_item6__title": "Помощник по написанию сообщений",
-    "sidebar__promotion_dialog__content_item6__description": "Позвольте ИИ создавать персонализированные ответы на сообщения за секунды всего одним кликом в Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Позвольте ИИ генерировать персонализированные ответы на сообщения для вас всего за несколько секунд с одним щелчком мыши в Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стих...",

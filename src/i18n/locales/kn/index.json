@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ವೆಬ್‌ಸೈಟ್ URL ಅನ್ನು ನಮೂದಿಸಿ",
     "feature_card__prompts__place_my_own_prompts_switch": "ನನ್ನ ಪ್ರಮ್ಪ್ಟ್‌ಗಳನ್ನು ಮೇಲೆ ಇಡಿ",
     "feature_card__appearance__field_quick_access__title": "ತ್ವರಿತ ಪ್ರವೇಶ",
-    "left_menu__help_me_write": "ನನಗೆ ಬರೆಯುವುದಕ್ಕೆ ಸಹಾಯ ಮಾಡಿ",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "ಜಿಮೇಲ್ ಸಹಾಯಕ",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "ಔಟ್‌ಲುಕ್ ಸಹಾಯಕ",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X ಸಹಾಯಕ",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "ಹೊಸ ಪ್ರಾಂಪ್ಟ್ ಗುಂಪು",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ತ್ವರಿತ ಉತ್ತರ",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ಡ್ರಾಫ್ಟ್ ಸಂಪಾದಿಸು ಅಥವಾ ಪರಿಶೀಲಿಸು",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ತ್ವರಿತ ರಚನೆ"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ತ್ವರಿತ ರಚನೆ",
+    "left_menu__writing_assistant": "ಬರವಣಿಗೆ ಸಹಾಯಕ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ಸಮಯಾವಕಾಶ ಸಾರಾಂಶ",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "ಉಪಶೀರ್ಷಿಕೆಗಳಿಲ್ಲದ ವೀಡಿಯೊನ್ನು ರಚಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ಅದು ತಪ್ಪಾಗಿರಬಹುದು! ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-ಕ್ಲಿಕ್ ಚಾಟ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-ಕ್ಲಿಕ್ ಚಾಟ್ ಮಾಡಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "ಎಂಜಿನ್ ಸೆಕೆಂಡ್ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸೋಷಲ್ ಮೀಡಿಯಾ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "1-ಕ್ಲಿಕ್ ಸಂದೇಶ ಉತ್ತರಗಳನ್ನು ಮೆಚ್ಚಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "ಎರಡು ಸೆಕೆಂಡ್ಗಳಲ್ಲಿ ನೀವು ವೈಯಕ್ತಿಕವಾದ ಸಂದೇಶ ಉತ್ತರಗಳನ್ನು ನಿರ್ಮಿಸಲು AI ಬಳಸಿ.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "1 ಕ್ಲಿಕ್ ಮೂಲಕ ನಿಮ್ಮ ಸಂದೇಶಗಳನ್ನು ಸರಿಪಡಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI ಬಳಸಿ ಬರೆಯುವುದನ್ನು ಮೇಲ್ಮಟ್ಟಕ್ಕೆ ತಂದುಕೊಳ್ಳಿ, ವರ್ತಕಿ ಮತ್ತು ವ್ಯಾಕರಣವನ್ನು ಸರಿಪಡಿಸಿ ಅಥವಾ ಧ್ವನಿಯನ್ನು ಬದಲಾಯಿಸಿ.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "ಮ್ಯಾಕ್ಸ್‌ಎಐಗೆ ದಾಖಲಿಸಿ ಅಥವಾ ಚಿತ್ರಗಳನ್ನು ಅಪ್‌ಲೋಡ್ ಮಾಡಿ",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI ಗೆ ದಾಖಲೆಗಳನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ",
     "provider__chatgpt__upload_file_error__too_long__text": "ಅಪ್ಲೋಡ್ ಮಾಡಿದ ಕಡತ ತುಂಬಾ ದೊಡ್ಡದಾಗಿದೆ. ಹೆಚ್ಚು ಸಂದರ್ಭ ವಿಂಡೋವನ್ನು ಹೊಂದಿರುವ AI ಮಾದರಿಯನ್ನು ಬಳಸುವುದನ್ನು ಪರಿಗಣಿಸಿ ಅಥವಾ ಕಡತದ ಗಾತ್ರ ಕಡಿಮೆಯಾಗಿರುವ ಕಡತವನ್ನು ಅಪ್ಲೋಡ್ ಮಾಡಿ.",
-    "sidebar__promotion_dialog__content_item6__title": "ಸಂದೇಶ ಬರವಣಿಗೆ ಸಹಾಯಕ",
-    "sidebar__promotion_dialog__content_item6__description": "ಒಂದು ಕ್ಲಿಕ್ ಮಾಡಿ ಡಿಸ್ಕಾರ್ಡ್‌ನಲ್ಲಿ ನೀವು ಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸಂದೇಶ ಪ್ರತಿಗಳನ್ನು ನಿರ್ಮಿಸಲು ಏನು ಬೇಕಾದರೂ ಅನುಮತಿಸಿ."
+    "sidebar__promotion_dialog__content_item6__title": "ಸಂದೇಶ ಬರೆಯುವ ಸಹಾಯಕ",
+    "sidebar__promotion_dialog__content_item6__description": "ಒಂದು ಕ್ಲಿಕ್ ಮಾಡಿ ಡಿಸ್ಕಾರ್ಡ್‌ನಲ್ಲಿ ನೀವು ಸೆಕೆಂಡ್‌ಗಳಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸಂದೇಶ ಪ್ರತಿಗಳನ್ನು ತಯಾರಿಸಲು ಏಕೆಂದರೆ ಎನ್ನುವ ಜಾಣತನೆಯನ್ನು ನೀಡಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

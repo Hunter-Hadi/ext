@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "웹사이트 URL 입력",
     "feature_card__prompts__place_my_own_prompts_switch": "내가 만든 프롬프트를 맨 위에 배치",
     "feature_card__appearance__field_quick_access__title": "빠른 액세스",
-    "left_menu__help_me_write": "글쓰기 도움",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "지메일 어시스턴트",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "아웃룩 어시스턴트",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X 어시스턴트",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "새로운 프롬프트 그룹",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "빠른 답장",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "드래프트 편집 또는 검토",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "빠른 작성"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "빠른 작성",
+    "left_menu__writing_assistant": "글쓰기 도우미"
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "요약에 타임스탬프가 표시됩니다.",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "자막이 없는 동영상은 생성할 수 없습니다.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "이런! 예기치 않은 문제가 발생했습니다. 나중에 다시 시도해주세요.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-클릭 채팅 업그레이드",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "AI가 당신을 위해 맞춤형 소셜 미디어 답변을 초 단위로 생성합니다.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-클릭 채팅 업그레이드",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI가 당신을 위해 맞춤형 소셜 미디어 초안을 초 단위로 생성합니다.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "1 클릭 메시지 답장 업그레이드",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "AI가 몇 초 안에 개인화된 메시지 답장을 생성합니다.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "1 클릭으로 메시지를 완벽하게 업그레이드하세요",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI와 함께 글쓰기를 개선하고 맞춤법과 문법을 수정하거나 톤을 즉시 변경하세요.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI에 문서 또는 이미지 업로드",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI에 문서 업로드",
     "provider__chatgpt__upload_file_error__too_long__text": "업로드한 파일이 너무 큽니다. 더 큰 컨텍스트 창을 가진 AI 모델을 사용하거나 더 작은 크기의 파일을 업로드해주세요.",
-    "sidebar__promotion_dialog__content_item6__title": "메시지 작성 보조",
-    "sidebar__promotion_dialog__content_item6__description": "AI가 디스코드에서 클릭 한 번으로 당신을 위해 개인화된 메시지 응답을 초 단위로 생성합니다."
+    "sidebar__promotion_dialog__content_item6__title": "메시지 작성 어시스턴트",
+    "sidebar__promotion_dialog__content_item6__description": "디스코드에서 한 번 클릭으로 AI가 당신을 위한 맞춤형 메시지 응답을 초 단위로 생성해 드립니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시...",

@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "የድረገጽ URL ያስገቡ",
     "feature_card__prompts__place_my_own_prompts_switch": "የእኔ ምርጫዎችን በማድረግ ላይ አንድነት ይሰራ",
     "feature_card__appearance__field_quick_access__title": "በቀላሉ ማንበብ",
-    "left_menu__help_me_write": "እባክዎ መጻፍ ያስፈልጋል",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "ጋልም አሳሰቡ",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "ኦድስ አሳሰቡ",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X አስራር",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "አዲስ ምልክት ቡድን",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "በቀጥታ መልክት",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ማስተካከያ ወደ ማስተካከያ ማስተዳደር",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "በቀጥታ አስተካከያ"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "በቀጥታ አስተካከያ",
+    "left_menu__writing_assistant": "የፊደል መረጃ አስተዳደር"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "የጊዜ መግለጫ",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "በስርጭት እንዴት ያለውን ቪዲዮ አልተጠበቀም።",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "ውድ! አልተገኘም፡፡ እንዴት በአዲስ ቀጣይ ይጠቀሙ።",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "የ1-ጁን ስልክ ለተጠቃሚ ቀለም ይዘት ይደርስ",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "የማስታወቂያ የድርጅት መልእክትን በሚያስቡ AI የሚወጣውን የድርጅት መልእክትን በሚያስቡ ሶስት ሰከንዶች ያሳውቃል",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "የ1-ጁን ስልክ ለተጠቃሚ ቀለም ይዘት ይደርስ",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "የማስታወቂያ የድርጅት መልእክትን በሚያስቡ AI የሚወጣውን የድርጅት መልእክትን በሚያስቡ ሶስት ሰከንዶች ያሳውቃል",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "የ1-ጁል መልዕክት መልሶ ይጠቀሙ",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "የእርስዎን መልዕክት መልሶ AI የሚጠቀም መልዕክት መልሶዎችን በማሳየት ያስተካክሉ።",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "የመልስዎን መልሶ ይጠቀሙ",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI እንዴት በማሳየት የመጻፍዎን መልሶዎችን ያስተካክሉ, የምስል እና የግምት መሳሪያዎችን ማስተካከል, ለማስተካከል ይጠቀሙ.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "የMaxAI መረጃዎች ወደእይታ ሂድ",
     "provider__chatgpt__upload__accept_docs_tooltip": "የMaxAI መረጃን ለመስጠት ፎቶዎችን ይጫኑ",
     "provider__chatgpt__upload_file_error__too_long__text": "የማብቃት የሚጠቀሙ ፋይል በጣም ነው። የተሳሳተ መልእክት የሚጠቀሙ AI ሞዴል ያለውን የካርታ ወኪል ይጠቀሙ፣ ወይም የተሳሳተ መጻፍ የፋይል መጠን ያለውን ፋይል ይጠቀሙ።",
-    "sidebar__promotion_dialog__content_item6__title": "የመልእክት መጠቀሚያ መልስ",
-    "sidebar__promotion_dialog__content_item6__description": "የማስታወቂያ መልስዎን በከርሲስ በኩል ከተለያዩ መልእክቶች ውስጥ አንዱ በአንድ ከክሊክ ጥቅም ያስቀምጡት AI የመልእክት መልስዎን ይጠቀሙበታል."
+    "sidebar__promotion_dialog__content_item6__title": "መልእክት የመልዕክት መሰረታዊ መልዕክት",
+    "sidebar__promotion_dialog__content_item6__description": "የኤችአርክ በስተቀር የሚገኙ መልዕክቶችን በአንድ ከክሊክ የሚሰሩትን ጥቅሶችን በማስተላለፍ የሚገኘውን ፕሮግራምን ያስገቡ።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ግዕዝ...",

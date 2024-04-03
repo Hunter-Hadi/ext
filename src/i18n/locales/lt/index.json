@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Įveskite svetainės URL",
     "feature_card__prompts__place_my_own_prompts_switch": "Įdėti savo užduotis viršuje",
     "feature_card__appearance__field_quick_access__title": "Greitas prieiga",
-    "left_menu__help_me_write": "Padėk man parašyti",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail asistentas",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook asistentas",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X asistentas",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nauja užduočių grupė",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Greitas atsakymas",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Redaguoti arba peržiūrėti juodraštį",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Greitas sudarymas"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Greitas sudarymas",
+    "left_menu__writing_assistant": "Rašymo asistentas"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Laiko žymėtas santrauka",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Negalima sugeneruoti vaizdo be subtitrų.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Įvyko kažkas netikėto. Bandykite dar kartą vėliau.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Atnaujinti dėl 1 paspaudimo pokalbio",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Leiskite dirbti sukuriant asmenines socialinių tinklų atsakymus per kelias sekundes.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Atnaujinti dėl 1 paspaudimo pokalbio",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Leiskite dirbti sukuriant asmenines socialinių tinklų atsakymus per kelias sekundes.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Atnaujinti dėl vieno paspaudimo žinučių atsakymų",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Leiskite dirbti su Jumis asmeniškai pritaikytus žinučių atsakymus per kelias sekundes.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Atnaujinkite, kad tobulintumėte savo žinutes vienu paspaudimu",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Pagerinkite rašymą, ištaisykite rašybą ir gramatiką arba keiskite toną akimirksniu naudojant dirbtinį intelektą.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Įkelti dokumentus arba vaizdus į MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Įkelti dokumentus į MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Įkeltas failas yra per didelis. Svarstykite naudoti AI modelį su didesniu konteksto langeliu arba įkelkite mažesnio dydžio failą.",
     "sidebar__promotion_dialog__content_item6__title": "Pranešimų rašymo asistentas",
-    "sidebar__promotion_dialog__content_item6__description": "Leiskite dirbti su Jūsų pranešimais ir generuoti personalizuotus atsakymus per kelias sekundes vienu paspaudimu Discord platformoje."
+    "sidebar__promotion_dialog__content_item6__description": "Leiskite dirbtinei intelektai per kelias sekundes sugeneruoti jums pritaikytus pranešimo atsakymus vienu paspaudimu Discord'e."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

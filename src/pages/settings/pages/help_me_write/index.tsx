@@ -1,6 +1,9 @@
 import Stack from '@mui/material/Stack'
 import React, { FC } from 'react'
 
+// import FeatureWhatsAppAssistantCard from '@/pages/settings/pages/help_me_write/FeatureWhatsAppAssistantCard'
+// import FeatureSlackAssistantCard from '@/pages/settings/pages/help_me_write/FeatureSlackAssistantCard'
+import FeatureDiscordAssistantCard from '@/pages/settings/pages/help_me_write/FeatureDiscordAssistantCard'
 import FeatureFacebookAssistantCard from '@/pages/settings/pages/help_me_write/FeatureFacebookAssistantCard'
 import FeatureGmailAssistantCard from '@/pages/settings/pages/help_me_write/FeatureGmailAssistantCard'
 import FeatureInstagramAssistantCard from '@/pages/settings/pages/help_me_write/FeatureInstagramAssistantCard'
@@ -21,6 +24,9 @@ const SettingsHelpMeWritePage: FC = () => {
       <FeatureYouTubeAssistantCard />
       <FeatureInstagramAssistantCard />
       <FeatureRedditAssistantCard />
+      {/* <FeatureWhatsAppAssistantCard />
+      <FeatureSlackAssistantCard /> */}
+      <FeatureDiscordAssistantCard />
     </Stack>
   )
 }

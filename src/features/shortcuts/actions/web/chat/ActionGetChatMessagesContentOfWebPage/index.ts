@@ -8,7 +8,7 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { getChatMessagesContent } from '@/features/shortcuts/utils/chat/getChatMessages'
+import { getChatMessagesContent } from '@/features/shortcuts/utils/chatApp/getChatMessages'
 import { type IChatMessagesContextData } from '@/features/shortcuts/utils/ChatMessagesContext'
 import {
   calculateMaxHistoryQuestionResponseTokens,

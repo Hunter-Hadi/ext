@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Website-URL eingeben",
     "feature_card__prompts__place_my_own_prompts_switch": "Platziere meine eigenen Hinweise oben",
     "feature_card__appearance__field_quick_access__title": "Schneller Zugriff",
-    "left_menu__help_me_write": "Hilf mir beim Schreiben",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail-Assistent",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook-Assistent",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X-Assistent",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Neue Aufforderungsgruppe",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Schnelle Antwort",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Entwurf bearbeiten oder überprüfen",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Schnell verfassen"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Schnell verfassen",
+    "left_menu__writing_assistant": "Schreibassistent"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Zeitgesteuerte Zusammenfassung",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Video ohne Untertitel kann nicht generiert werden.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Etwas Unerwartetes ist passiert. Bitte versuchen Sie es später erneut.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Upgrade für 1-Klick-Chat",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Lassen Sie KI personalisierte Social-Media-Antworten in Sekundenschnelle generieren.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Upgrade für 1-Klick-Chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Lassen Sie KI personalisierte Social-Media-Antworten in Sekundenschnelle generieren.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Upgrade für 1-Klick-Nachrichtenantworten",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Lassen Sie KI personalisierte Nachrichtenantworten in Sekundenschnelle generieren.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Upgrade, um Ihre Nachrichten mit 1 Klick zu perfektionieren",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Verbessern Sie das Schreiben, korrigieren Sie Rechtschreib- und Grammatikfehler oder ändern Sie den Ton sofort mit KI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Dokumente oder Bilder zu MaxAI hochladen",
     "provider__chatgpt__upload__accept_docs_tooltip": "Dokumente zu MaxAI hochladen",
     "provider__chatgpt__upload_file_error__too_long__text": "Die hochgeladene Datei ist zu groß. Erwägen Sie die Verwendung eines KI-Modells mit einem größeren Kontextfenster oder das Hochladen einer kleineren Datei.",
     "sidebar__promotion_dialog__content_item6__title": "Messaging-Schreibassistent",
-    "sidebar__promotion_dialog__content_item6__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren - mit nur einem Klick auf Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren, indem Sie einfach auf Discord klicken."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

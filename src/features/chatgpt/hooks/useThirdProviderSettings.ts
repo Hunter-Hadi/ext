@@ -6,16 +6,21 @@ import {
   getAIProviderSettings,
   setAIProviderSettings,
 } from '@/background/src/chat/util'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  getChromeExtensionLocalStorage,
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { IThirdProviderSettings } from '@/background/utils/chromeExtensionStorage/type'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppLocalStorageState } from '@/store'
 
 const useThirdProviderSettings = () => {
-  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
-    AppLocalStorageState,
-  )
+  const [appLocalStorage, setAppLocalStorage] =
+    useRecoilState(AppLocalStorageState)
+  const { currentSidebarConversation } = useSidebarSettings()
   const currentProvider =
-    appLocalStorage.sidebarSettings?.common?.currentAIProvider
+    currentSidebarConversation?.meta.AIProvider ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
   const currentThirdProviderSettings = useMemo(() => {
     if (
       appLocalStorage.thirdProviderSettings &&
@@ -60,9 +65,8 @@ const useThirdProviderSettings = () => {
 export const useSingleThirdProviderSettings = <T extends IAIProviderType>(
   providerKey: T,
 ) => {
-  const [appLocalStorage, setAppLocalStorage] = useRecoilState(
-    AppLocalStorageState,
-  )
+  const [appLocalStorage, setAppLocalStorage] =
+    useRecoilState(AppLocalStorageState)
   const providerSettings = useMemo(() => {
     return appLocalStorage.thirdProviderSettings?.[providerKey] as
       | IThirdProviderSettings[T]

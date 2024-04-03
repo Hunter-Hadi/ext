@@ -75,7 +75,7 @@ const discordGetChatMessagesFromNodeList = (
       const { datetime, messageContent } =
         discordGetChatMessageContentAndDate(messageBox)
 
-      const message: IChatMessageData = {
+      const messageData: IChatMessageData = {
         user: username,
         datetime,
         content: messageContent,
@@ -85,11 +85,11 @@ const discordGetChatMessagesFromNodeList = (
         '[id^="message-reply-context"]',
       )
       if (extraLabel) {
-        message.extraLabel = `${extraLabel.getAttribute('aria-label')}:: ${
+        messageData.extraLabel = `${extraLabel.getAttribute('aria-label')}:: ${
           extraLabel.innerText
         }`
       }
-      messages.push(message)
+      messages.push(messageData)
     }
   }
   return messages
@@ -135,16 +135,19 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
       replyMessageBox = findParentEqualSelector(
         '[id^="chat-messages"]',
         inputAssistantButton,
+        8,
       )
     }
 
     const chatMessages = discordGetChatMessagesFromNodeList(
-      chatMessagesNodeList.slice(
-        0,
-        chatMessagesNodeList.findIndex(
-          (messageBox) => messageBox === replyMessageBox,
-        ) + 1,
-      ),
+      replyMessageBox
+        ? chatMessagesNodeList.slice(
+            0,
+            chatMessagesNodeList.findIndex(
+              (messageBox) => messageBox === replyMessageBox,
+            ) + 1,
+          )
+        : chatMessagesNodeList,
     )
 
     if (chatMessages.length) {

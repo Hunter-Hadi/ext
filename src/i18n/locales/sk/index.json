@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Zadajte URL webovej stránky",
     "feature_card__prompts__place_my_own_prompts_switch": "Umiestniť moje vlastné podnety na vrch",
     "feature_card__appearance__field_quick_access__title": "Rýchly prístup",
-    "left_menu__help_me_write": "Pomôžte mi písať",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Pomocník pre Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Pomocník pre Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X asistent",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nová skupina návrhov",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Rýchla odpoveď",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Upraviť alebo posúdiť koncept",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rýchle zostavenie"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Rýchle zostavenie",
+    "left_menu__writing_assistant": "Pomocník pri písaní"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -672,15 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Časové zhrnutie",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Nie je možné vytvoriť video bez titulkov.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Niečo neočakávané sa stalo. Skúste to prosím neskôr znova.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Vylepšite si chat s jedným kliknutím",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Nechajte AI generovať personalizované odpovede na sociálnych médiách za pár sekúnd.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Vylepšite si chat s jedným kliknutím",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Nechajte AI generovať personalizované odpovede na sociálnych médiách za pár sekúnd.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Vylepšite si správy jedným kliknutím",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Nechajte AI vygenerovať personalizované odpovede na správy za pár sekúnd.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Vylepšite si správy jedným kliknutím",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Vylepšite písanie, opravte pravopis a gramatiku alebo okamžite zmeňte tón s pomocou AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Nahrať dokumenty alebo obrázky do MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Nahrať dokumenty do MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Nahraný súbor je príliš veľký. Zvážte použitie modelu AI s väčším kontextovým oknom alebo nahrajte súbor menšej veľkosti.",
-    "sidebar__promotion_dialog__content_item6__title": "Pomocník pri písaní správ",
-    "sidebar__promotion_dialog__content_item6__description": "Nechajte AI vygenerovať personalizované odpovede na správy za niekoľko sekúnd jediným kliknutím na Discord."
+    "sidebar__promotion_dialog__content_item6__title": "Asistent pre písanie správ",
+    "sidebar__promotion_dialog__content_item6__description": "Nechajte AI generovať personalizované odpovede na správy za sekundy jedným kliknutím na Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -1,11 +1,12 @@
+import PanToolIcon from '@mui/icons-material/PanTool'
 import UnfoldLessIcon from '@mui/icons-material/UnfoldLess'
 import UnfoldMoreIcon from '@mui/icons-material/UnfoldMore'
 import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import cloneDeep from 'lodash-es/cloneDeep'
-import React, { FC, useMemo, useState } from 'react'
-import { useRecoilState, useRecoilValue } from 'recoil'
+import React, { FC, useEffect, useMemo, useState } from 'react'
+import { atomFamily, useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
@@ -18,11 +19,64 @@ import {
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarSummaryConversationIdState } from '@/features/sidebar/store'
+const DevConsolePositionState = atomFamily<
+  {
+    x: number
+    y: number
+  },
+  string
+>({
+  key: 'DevConsolePositionState',
+  default: {
+    x: 0,
+    y: 0,
+  },
+})
+const useDraggableDevConsole = (id: string) => {
+  const [position, setPosition] = useRecoilState(DevConsolePositionState(id))
+  const [isDragging, setIsDragging] = useState(false)
 
+  const [startPosition, setStartPosition] = useState({
+    x: 0,
+    y: 0,
+  })
+  const handleMouseDown = (event: React.MouseEvent) => {
+    setIsDragging(true)
+    setStartPosition({
+      x: event.clientX - position.x,
+      y: event.clientY - position.y,
+    })
+  }
+  const handleMouseMove = (event: MouseEvent) => {
+    if (isDragging) {
+      setPosition({
+        x: event.clientX - startPosition.x,
+        y: event.clientY - startPosition.y,
+      })
+    }
+  }
+  const handleMouseUp = () => {
+    setIsDragging(false)
+  }
+  useEffect(() => {
+    window.addEventListener('mousemove', handleMouseMove)
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove)
+    }
+  }, [handleMouseDown])
+  return {
+    position,
+    handleMouseDown,
+    handleMouseUp,
+  }
+}
 const DevConsole: FC<{
   isSidebar?: boolean
 }> = (props) => {
   const { isSidebar = false } = props
+  const { position, handleMouseDown, handleMouseUp } = useDraggableDevConsole(
+    isSidebar ? 'sidebar' : 'floatingContextMenu',
+  )
   const {
     currentSidebarAIProvider,
     currentSidebarConversationId,
@@ -51,14 +105,14 @@ const DevConsole: FC<{
     }
     return clonedConversation
   }, [clientConversation])
-
   return (
     <Stack
+      component={'div'}
       sx={
         isSidebar
           ? {
               position: 'absolute',
-              top: '0',
+              top: position.y,
               width: showDevContent ? '500px' : '32px',
               height: showDevContent ? '500px' : '32px',
               overflowX: 'auto',
@@ -72,9 +126,9 @@ const DevConsole: FC<{
               borderRadius: '4px',
             }
           : {
+              top: position.y,
+              left: position.x,
               position: 'fixed',
-              top: '0',
-              left: '0',
               width: showDevContent ? '500px' : '32px',
               height: showDevContent ? '500px' : '32px',
               overflowX: 'auto',
@@ -89,6 +143,26 @@ const DevConsole: FC<{
             }
       }
     >
+      {!isSidebar && (
+        <Button
+          component={'button'}
+          sx={{
+            zIndex: 11,
+            width: 32,
+            height: 32,
+            minWidth: 'unset',
+            position: 'absolute',
+            top: 0,
+            right: 40,
+            p: 1,
+          }}
+          variant={'contained'}
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+        >
+          <PanToolIcon />
+        </Button>
+      )}
       {showDevContent ? (
         <Button
           variant={'contained'}

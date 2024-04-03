@@ -32,7 +32,6 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
-import WritingMessageBox from '@/features/chatgpt/components/chat/WritingMessageBox'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -48,6 +47,8 @@ import {
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
+import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
+import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
 import {
   useContextMenuList,
   useDraftContextMenuList,
@@ -102,7 +103,11 @@ const FloatingContextMenu: FC<{
   const { askAIWIthShortcuts, askAIQuestion, regenerate } = useClientChat()
   const { currentConversationId, createConversation } = useClientConversation()
   const currentHostRef = useRef(getCurrentDomainHost())
-  const { clientWritingMessage } = useClientConversation()
+  const {
+    clientWritingMessage,
+    clientConversation,
+    updateClientWritingMessage,
+  } = useClientConversation()
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const { currentSidebarConversationType, updateSidebarConversationType } =
     useSidebarSettings()
@@ -294,7 +299,33 @@ const FloatingContextMenu: FC<{
    *    3. 更新contextMenuList
    * @version 2.0 - 关闭 dropdown menu
    *    1. 将用户输入的内容同步到sidebar chat box
+   * @version 3.0 - 关闭时需要重置floating dropdown menu的状态
    */
+  const isCreatingConversationRef = useRef(false)
+  useEffect(() => {
+    if (
+      clientConversation &&
+      !floatingDropdownMenu.open &&
+      !clientWritingMessage.loading &&
+      !isCreatingConversationRef.current
+    ) {
+      isCreatingConversationRef.current = true
+      createConversation(
+        clientConversation?.type,
+        clientConversation?.meta.AIProvider,
+        clientConversation?.meta.AIModel,
+      )
+        .then()
+        .catch()
+        .finally(() => {
+          isCreatingConversationRef.current = false
+        })
+    }
+  }, [
+    floatingDropdownMenu.open,
+    clientConversation,
+    clientWritingMessage.loading,
+  ])
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -686,82 +717,90 @@ const FloatingContextMenu: FC<{
               )}
               <WritingMessageBox />
               <Stack width={'100%'} gap={0.5}>
-                <Stack
-                  direction={'row'}
-                  width={'100%'}
-                  flex={1}
-                  alignItems={'center'}
-                  spacing={1}
-                  justifyContent={'left'}
-                >
-                  {loading ? (
-                    <>
-                      <Typography fontSize={'16px'} color={'primary.main'}>
-                        {t('client:floating_menu__input__running_placeholder')}
-                      </Typography>
-                      <CircularProgress size={'16px'} />
-                    </>
-                  ) : (
-                    <AutoHeightTextarea
-                      minLine={1}
-                      stopPropagation
-                      onKeydownCapture={(event) => {
-                        if (floatingDropdownMenu.open && memoMenuList.length) {
-                          // drop menu打开，不劫持组件内的onKeyDown行为
+                <Stack direction={'row'} alignItems={'end'} gap={1}>
+                  <Stack
+                    direction={'row'}
+                    width={0}
+                    flex={1}
+                    alignItems={'center'}
+                    spacing={1}
+                    justifyContent={'left'}
+                  >
+                    {loading ? (
+                      <>
+                        <Typography fontSize={'16px'} color={'primary.main'}>
+                          {t(
+                            'client:floating_menu__input__running_placeholder',
+                          )}
+                        </Typography>
+                        <CircularProgress size={'16px'} />
+                      </>
+                    ) : (
+                      <AutoHeightTextarea
+                        minLine={1}
+                        stopPropagation
+                        onKeydownCapture={(event) => {
+                          if (
+                            floatingDropdownMenu.open &&
+                            memoMenuList.length
+                          ) {
+                            // drop menu打开，不劫持组件内的onKeyDown行为
+                            return false
+                          }
+                          if (
+                            event.key === 'ArrowUp' ||
+                            event.key === 'ArrowDown'
+                          ) {
+                            // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
+                            event.stopPropagation()
+                            return true
+                          }
                           return false
+                        }}
+                        expandNode={
+                          floatingDropdownMenu.open && (
+                            <ChatIconFileUpload
+                              TooltipProps={{
+                                placement: safePlacement.contextMenuPlacement,
+                                floatingMenuTooltip: true,
+                              }}
+                              direction={'column'}
+                              size={'tiny'}
+                            />
+                          )
                         }
-                        if (
-                          event.key === 'ArrowUp' ||
-                          event.key === 'ArrowDown'
-                        ) {
-                          // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
-                          event.stopPropagation()
-                          return true
+                        placeholder={
+                          floatingDropdownMenu.open
+                            ? t('client:floating_menu__input__placeholder')
+                            : ''
                         }
-                        return false
-                      }}
-                      expandNode={
-                        floatingDropdownMenu.open && (
-                          <ChatIconFileUpload
-                            TooltipProps={{
-                              placement: safePlacement.contextMenuPlacement,
-                              floatingMenuTooltip: true,
-                            }}
-                            direction={'column'}
-                            size={'tiny'}
-                          />
-                        )
-                      }
-                      placeholder={
-                        floatingDropdownMenu.open
-                          ? t('client:floating_menu__input__placeholder')
-                          : ''
-                      }
-                      InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
-                      sx={{
-                        border: 'none',
-                        '& > div': {
-                          '& > div': { p: 0 },
-                          '& > textarea': { p: 0 },
-                          '& > .max-ai-user-input__expand': {
-                            '&:has(> div)': {
-                              pr: 1,
+                        InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
+                        sx={{
+                          border: 'none',
+                          '& > div': {
+                            '& > div': { p: 0 },
+                            '& > textarea': { p: 0 },
+                            '& > .max-ai-user-input__expand': {
+                              '&:has(> div)': {
+                                pr: 1,
+                              },
                             },
                           },
-                        },
-                        borderRadius: 0,
-                        minHeight: '24px',
-                      }}
-                      onEnter={(value) => {
-                        if (!haveContext && contextMenuList.length > 0) {
-                          return
-                        }
-                        askChatGPT(value)
-                      }}
-                    />
-                  )}
-                  {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
-                  <FloatingContextMenuShortcutButtonGroup />
+                          borderRadius: 0,
+                          minHeight: '24px',
+                        }}
+                        onEnter={(value) => {
+                          if (!haveContext && contextMenuList.length > 0) {
+                            return
+                          }
+                          askChatGPT(value)
+                        }}
+                      />
+                    )}
+                    {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
+                    <FloatingContextMenuShortcutButtonGroup />
+                  </Stack>
+                  <WritingMessageBoxPagination />
                 </Stack>
                 <Stack
                   direction={'row'}

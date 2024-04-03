@@ -192,6 +192,14 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
   }
 }
 
+export const getMaxAISidebarWidth = () => {
+  const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
+  return (
+    chatBoxElement?.offsetWidth ||
+    CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH
+  )
+}
+
 export const showChatBox = () => {
   const htmlElement = document.body.parentElement
   const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)

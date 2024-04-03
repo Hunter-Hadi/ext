@@ -1,5 +1,4 @@
 import React, { FC, useMemo, useState } from 'react'
-import { v4 as uuidV4 } from 'uuid'
 
 import { ChatStatus } from '@/background/provider/chat'
 import CustomPortal from '@/components/CustomPortal'
@@ -12,12 +11,14 @@ import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingC
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
 import FloatingMiniMenu from '@/features/contextMenu/components/FloatingMiniMenu'
 import InputAssistantButtonPortal from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonPortal'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ContextMenuRoot: FC = () => {
   const [conversationId, setConversationId] = useState<string>('')
   const [chatStatus, updateChatStatus] = useState<ChatStatus>('success')
   const { createSidebarConversation } = useSidebarSettings()
+  const { resetFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const ChatPanelContextValue = useMemo<ChatPanelContextValue>(() => {
     return {
       chatStatus,
@@ -32,7 +33,7 @@ const ContextMenuRoot: FC = () => {
         return newConversationId
       },
       resetConversation: async () => {
-        setConversationId(uuidV4())
+        resetFloatingContextMenuDraft()
       },
       conversationId,
       setConversationId,

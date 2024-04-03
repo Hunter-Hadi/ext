@@ -90,6 +90,12 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     clientState.status !== 'success' ||
     smoothConversationLoading
   ) {
+    console.log(
+      `ChatIconFileUpload:`,
+      AIProviderConfig,
+      clientState.status,
+      smoothConversationLoading,
+    )
     return <></>
   }
   return (

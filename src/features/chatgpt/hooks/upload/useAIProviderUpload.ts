@@ -24,7 +24,7 @@ const port = new ContentScriptConnectionV2({
 const useAIProviderUpload = () => {
   const { currentConversationId } = useClientConversation()
   const [clientUploadedState, setClientUploadedState] = useRecoilState(
-    ClientUploadedFilesState,
+    ClientUploadedFilesState(currentConversationId || ''),
   )
   const { files } = clientUploadedState
 

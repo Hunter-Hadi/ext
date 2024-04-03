@@ -2,8 +2,11 @@ import { useEffect, useMemo, useState } from 'react'
 import { atom, useRecoilState } from 'recoil'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
+import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
+import {
+  isAIMessage,
+  isUserMessage,
+} from '@/features/chatgpt/utils/chatMessageUtils'
 /**
  * AI持续生成的草稿和用户选择的答案
  * @description - 因为AI的regenerate会删除消息，所以需要一个历史消息记录去让用户选择需要的AI response
@@ -22,21 +25,7 @@ const useFloatingContextMenuDraft = () => {
   const [historyMessages, setHistoryMessages] = useState<IAIResponseMessage[]>(
     [],
   )
-  const goToNextMessage = () => {
-    setActiveMessageIndex((prev) => {
-      return prev + 1
-    })
-  }
-  const goToPreviousMessage = () => {
-    setActiveMessageIndex((prev) => {
-      return prev - 1
-    })
-  }
-
-  const resetFloatingContextMenuDraft = () => {
-    setHistoryMessages([])
-    setActiveMessageIndex(0)
-  }
+  const activeAIResponseMessage = historyMessages[activeMessageIndex]
 
   const currentFloatingContextMenuDraft = useMemo(() => {
     const activeMessage = historyMessages[activeMessageIndex]
@@ -64,6 +53,43 @@ const useFloatingContextMenuDraft = () => {
     }
     return draft.replace(/\n{2,}/, '\n\n')
   }, [clientWritingMessage.writingMessage, historyMessages, activeMessageIndex])
+  /**
+   * 当前的draft对应的用户消息
+   */
+  const selectedDraftUserMessage = useMemo(() => {
+    if (!activeAIResponseMessage) {
+      return null
+    }
+    const activeAIResponseMessageIndex = clientConversationMessages.findIndex(
+      (message) => message.messageId === activeAIResponseMessage?.messageId,
+    )
+    if (activeAIResponseMessageIndex === -1) {
+      return null
+    }
+    //从后往前找到用户的消息
+    for (let i = activeAIResponseMessageIndex - 1; i >= 0; i--) {
+      const message = clientConversationMessages[i]
+      if (isUserMessage(message)) {
+        return message as IUserChatMessage
+      }
+    }
+    return null
+  }, [activeAIResponseMessage, clientConversationMessages])
+  const goToNextMessage = () => {
+    setActiveMessageIndex((prev) => {
+      return prev + 1
+    })
+  }
+  const goToPreviousMessage = () => {
+    setActiveMessageIndex((prev) => {
+      return prev - 1
+    })
+  }
+
+  const resetFloatingContextMenuDraft = () => {
+    setHistoryMessages([])
+    setActiveMessageIndex(0)
+  }
 
   useEffect(() => {
     const newMessages = clientConversationMessages.filter(isAIMessage)
@@ -86,6 +112,8 @@ const useFloatingContextMenuDraft = () => {
   }, [historyMessages])
 
   return {
+    selectedDraftUserMessage,
+    activeAIResponseMessage,
     historyMessages,
     currentFloatingContextMenuDraft,
     activeMessageIndex,

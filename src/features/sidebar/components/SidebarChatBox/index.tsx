@@ -14,7 +14,6 @@ import AutoHeightTextarea, {
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DevContent from '@/components/DevContent'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
-import useListenAIProviderUploadError from '@/features/chatgpt/hooks/upload/useListenAIProviderUploadError'
 import {
   IAIResponseMessage,
   IChatMessage,
@@ -135,7 +134,6 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       setIsShowContinueButton(messages[messages.length - 1].type === 'ai')
     }
   }, [messages])
-  useListenAIProviderUploadError()
 
   return (
     <Stack

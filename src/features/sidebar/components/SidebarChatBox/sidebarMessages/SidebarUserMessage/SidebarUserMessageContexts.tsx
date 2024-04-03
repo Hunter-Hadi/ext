@@ -1,10 +1,11 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
+import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
-import { styled } from '@mui/material/styles'
+import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, Fragment, useMemo, useState } from 'react'
@@ -37,8 +38,9 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
  */
 const SidebarUserMessageContexts: FC<{
   message: IUserChatMessage
+  sx?: SxProps
 }> = (props) => {
-  const { message } = props
+  const { message, sx } = props
   const [open, setOpen] = useState(false)
 
   const attachments = useMemo(() => {
@@ -54,7 +56,12 @@ const SidebarUserMessageContexts: FC<{
     (attachment) => attachment.extractedContent,
   )
   return (
-    <div>
+    <Box
+      component={'div'}
+      sx={{
+        ...sx,
+      }}
+    >
       <ClickAwayListener
         onClickAway={() => {
           setOpen(false)
@@ -390,7 +397,7 @@ const SidebarUserMessageContexts: FC<{
           </LightTooltip>
         </div>
       </ClickAwayListener>
-    </div>
+    </Box>
   )
 }
 

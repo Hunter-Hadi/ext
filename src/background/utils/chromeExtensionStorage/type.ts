@@ -194,7 +194,7 @@ export interface IChromeExtensionLocalStorage {
       conversationId?: string
     }
     contextMenu?: {
-      conversationId?: string
+      currentAIModel?: string
     }
     common?: {
       currentAIProvider?: IAIProviderType

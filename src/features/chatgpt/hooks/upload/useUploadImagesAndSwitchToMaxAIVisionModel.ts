@@ -4,7 +4,6 @@ import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGP
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
@@ -15,12 +14,8 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     aiProviderUploadFiles,
     aiProviderRemoveFiles,
   } = useAIProviderUpload()
-  const { createConversation } = useClientConversation()
-  const {
-    updateSidebarConversationType,
-    currentSidebarConversationType,
-    sidebarSettings,
-  } = useSidebarSettings()
+  const { createConversation, clientConversation } = useClientConversation()
+  const { updateSidebarConversationType } = useSidebarSettings()
   const { updateAIProviderModel, currentAIProvider, currentAIProviderModel } =
     useAIProviderModels()
 
@@ -37,35 +32,45 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     if (imageFiles.length === 0) {
       return
     }
-    if (currentSidebarConversationType !== 'Chat') {
-      await updateSidebarConversationType('Chat')
+    debugger
+    const currentConversationType = clientConversation?.type
+    if (
+      !currentConversationType ||
+      !['Chat', 'ContextMenu'].includes(currentConversationType)
+    ) {
+      updateSidebarConversationType('Chat')
     }
-    if (sidebarSettings?.chat?.conversationId) {
-      const conversation = await clientGetConversation(
-        sidebarSettings.chat.conversationId,
-      )
+    if (clientConversation) {
       if (
-        !conversation?.meta?.AIModel ||
+        !clientConversation?.meta?.AIModel ||
         ![
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
           'claude-3-sonnet',
           'claude-3-opus',
           'claude-3-haiku',
           'gemini-pro',
-        ].includes(conversation?.meta?.AIModel)
+        ].includes(clientConversation?.meta?.AIModel)
       ) {
         await updateAIProviderModel(
           'USE_CHAT_GPT_PLUS',
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
         )
-        await createConversation('Chat')
+        await createConversation(
+          clientConversation.type,
+          'USE_CHAT_GPT_PLUS',
+          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+        )
       }
     } else {
       await updateAIProviderModel(
         'USE_CHAT_GPT_PLUS',
         MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       )
-      await createConversation('Chat')
+      await createConversation(
+        'Chat',
+        'USE_CHAT_GPT_PLUS',
+        MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+      )
     }
     const existFilesCount = files?.length || 0
     const maxFiles = AIProviderConfig?.maxCount || 1
@@ -81,6 +86,9 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     )
   }
   const isMaxAIVisionModel = useMemo(() => {
+    if (!currentAIProviderModel) {
+      return false
+    }
     if (
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
       currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO

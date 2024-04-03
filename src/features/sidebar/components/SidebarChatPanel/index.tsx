@@ -3,7 +3,7 @@ import React from 'react'
 
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
-import ClientChatGPTFilesFocusInit from '@/features/chatgpt/components/ClientChatGPTFilesFocusInit'
+import { useInitClientChatFiles } from '@/features/chatgpt/hooks/upload/useInitClientChatFiles'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useInitConversationUpdate from '@/features/chatgpt/hooks/useInitConversationUpdate'
@@ -35,9 +35,9 @@ const SidebarChatPanel = () => {
   const { startTextToImage } = useArtTextToImage()
   useInitSidebar()
   useInitConversationUpdate()
+  useInitClientChatFiles()
   return (
     <>
-      <ClientChatGPTFilesFocusInit />
       <Test />
       <ChatGPTStatusWrapper />
       <SidebarChatBox

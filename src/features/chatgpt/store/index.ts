@@ -1,4 +1,4 @@
-import { atom } from 'recoil'
+import { atom, atomFamily } from 'recoil'
 
 import { ChatStatus } from '@/background/provider/chat'
 import {
@@ -36,10 +36,13 @@ export const ThirdPartyAIProviderConfirmDialogState = atom<{
   },
 })
 
-export const ClientUploadedFilesState = atom<{
-  blurDelay: boolean
-  files: IChatUploadFile[]
-}>({
+export const ClientUploadedFilesState = atomFamily<
+  {
+    blurDelay: boolean
+    files: IChatUploadFile[]
+  },
+  string
+>({
   key: 'ClientUploadedFilesState',
   default: {
     files: [],

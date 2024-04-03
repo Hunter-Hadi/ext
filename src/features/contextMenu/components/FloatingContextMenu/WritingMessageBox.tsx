@@ -14,6 +14,7 @@ import {
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
+import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
 const WritingMessageBox: FC<{
@@ -25,7 +26,8 @@ const WritingMessageBox: FC<{
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
-  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
+  const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
+    useFloatingContextMenuDraft()
   useEffect(() => {
     console.log(
       'AIInput currentFloatingContextMenuDraft: ',
@@ -123,6 +125,13 @@ const WritingMessageBox: FC<{
       component={'div'}
     >
       {isEmpty(currentFloatingContextMenuDraft) ? <ContextText /> : null}
+      {/*// TODO 现在太丑了*/}
+      {selectedDraftUserMessage && (
+        <SidebarUserMessageContexts
+          sx={{ mt: 1 }}
+          message={selectedDraftUserMessage}
+        />
+      )}
       <div
         tabIndex={-1}
         ref={boxRef}

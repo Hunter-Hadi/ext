@@ -136,6 +136,11 @@ const useAIProviderModels = () => {
   const currentAIProviderModel = clientConversation?.meta?.AIModel
   // 当前选中的AI provider的models
   const currentAIProviderModelOptions = useMemo<IAIProviderModel[]>(() => {
+    console.log(
+      'ChatIconFileUpload currentAIProviderModelOptions',
+      currentAIProvider,
+      AI_PROVIDER_MODEL_MAP,
+    )
     let currentModels: IAIProviderModel[] = []
     if (!currentAIProvider) {
       return currentModels

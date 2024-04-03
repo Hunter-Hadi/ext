@@ -103,7 +103,7 @@ export const defaultChromeExtensionLocalStorage =
           conversationId: '',
         },
         contextMenu: {
-          conversationId: '',
+          currentAIModel: '',
         },
         common: {
           currentAIProvider: MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider,

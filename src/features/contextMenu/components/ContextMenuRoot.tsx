@@ -1,7 +1,12 @@
 import React, { FC, useMemo, useState } from 'react'
 
 import { ChatStatus } from '@/background/provider/chat'
+import {
+  getChromeExtensionLocalStorage,
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import CustomPortal from '@/components/CustomPortal'
+import { getModelOptionsForConversationType } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import {
   ChatPanelContext,
   ChatPanelContextValue,
@@ -15,6 +20,7 @@ import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatin
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ContextMenuRoot: FC = () => {
+  const { updateSidebarSettings } = useSidebarSettings()
   const [conversationId, setConversationId] = useState<string>('')
   const [chatStatus, updateChatStatus] = useState<ChatStatus>('success')
   const { createSidebarConversation } = useSidebarSettings()
@@ -24,15 +30,45 @@ const ContextMenuRoot: FC = () => {
       chatStatus,
       updateChatStatus,
       createConversation: async (conversationType, AIProvider, AIModel) => {
+        if (!AIProvider || !AIModel) {
+          // 说明要用默认的或者用户最后选择的
+          const settings = await getChromeExtensionLocalStorage()
+          const contextMenuAIModel =
+            settings.sidebarSettings?.contextMenu?.currentAIModel ||
+            MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType].AIModel
+          const contextMenuAIModelDetail = getModelOptionsForConversationType(
+            conversationType,
+          ).find((item) => item.value === contextMenuAIModel)
+          if (contextMenuAIModelDetail) {
+            AIProvider = contextMenuAIModelDetail.AIProvider
+            AIModel = contextMenuAIModelDetail.value
+          } else {
+            AIProvider =
+              MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType].AIProvider
+            AIModel = MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType].AIModel
+          }
+        }
+        console.log(
+          '新版ContextWindow 创建Conversation',
+          conversationType,
+          AIProvider,
+          AIModel,
+        )
         const newConversationId = await createSidebarConversation(
           conversationType,
           AIProvider,
           AIModel,
         )
         setConversationId(newConversationId)
+        await updateSidebarSettings({
+          contextMenu: {
+            currentAIModel: AIModel,
+          },
+        })
         return newConversationId
       },
       resetConversation: async () => {
+        debugger
         resetFloatingContextMenuDraft()
       },
       conversationId,

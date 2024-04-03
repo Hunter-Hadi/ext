@@ -44,7 +44,7 @@ const useFavoriteContextMenuList = (
     if (!favoriteContextMenuList?.length) {
       return undefined
     }
-    const group = {
+    return {
       id: FAVORITE_CONTEXT_MENU_GROUP_ID,
       text: t('client:prompt__group__suggested__title'),
       children: currentMenuList as IContextMenuItemWithChildren[],
@@ -63,7 +63,6 @@ const useFavoriteContextMenuList = (
         },
       },
     } as IContextMenuItemWithChildren
-    return group
   }, [currentMenuList, t])
   useFocus(() => {
     FavoriteMediatorFactory.getMediator(

@@ -26,12 +26,12 @@ const SettingPromptsRestorer: FC<{
             {t('settings:feature_card__prompts__restore_button')}
         </Button>
         {restoreDialogOpen && (
-        <SettingPromptsRestoreDialog
-          onRestore={onRestore}
-            onClose={() => {
-            setRestoreDialogOpen(false)
-            }}
-        />
+            <SettingPromptsRestoreDialog
+                onRestore={onRestore}
+                onClose={() => {
+                    setRestoreDialogOpen(false)
+                }}
+            />
         )}
     </>
 }

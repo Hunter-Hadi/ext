@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Indtast websteds-URL",
     "feature_card__prompts__place_my_own_prompts_switch": "Placer mine egne prompts øverst",
     "feature_card__appearance__field_quick_access__title": "Hurtig adgang",
-    "left_menu__help_me_write": "Hjælp mig med at skrive",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail-assistent",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook-assistent",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X assistent",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Ny promptgruppe",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Hurtigt svar",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Rediger eller gennemse udkast",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hurtig komponering"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Hurtig komponering",
+    "left_menu__writing_assistant": "Skriveassistent"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tidsstemplet resumé",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan ikke generere video uden undertekster.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Noget uventet skete. Prøv venligst igen senere.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Opgrader til 1-klik chat",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Lad AI generere personlige svar til sociale medier for dig på få sekunder.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Opgrader til 1-klik chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Lad AI generere personlige svar til sociale medier for dig på få sekunder.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Opgrader for at få 1-klik besked-svar",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Lad AI generere personlige besked-svar for dig på få sekunder.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Opgrader for at perfektionere dine beskeder med 1 klik",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Forbedr skrivning, ret stavefejl og grammatik eller ændre tone øjeblikkeligt med AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload dokumenter eller billeder til MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Upload dokumenter til MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Den uploadede fil er for stor. Overvej at bruge en AI-model med et større kontekstvindue eller upload en fil af mindre størrelse."
+    "provider__chatgpt__upload_file_error__too_long__text": "Den uploadede fil er for stor. Overvej at bruge en AI-model med et større kontekstvindue eller upload en fil af mindre størrelse.",
+    "sidebar__promotion_dialog__content_item6__title": "Beskedskrivningsassistent",
+    "sidebar__promotion_dialog__content_item6__description": "Lad AI generere personlige besked-svar til dig på sekunder med bare et klik på Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

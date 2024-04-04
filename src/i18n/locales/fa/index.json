@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "آدرس وبسایت را وارد کنید",
     "feature_card__prompts__place_my_own_prompts_switch": "قرار دادن پیشنهادهای خودم در بالا",
     "feature_card__appearance__field_quick_access__title": "دسترسی سریع",
-    "left_menu__help_me_write": "کمک به من برای نوشتن",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "کمک‌کننده Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "کمک‌کننده Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "دستیار X",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "گروه پرسش جدید",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "پاسخ سریع",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ویرایش یا بررسی پیش‌نویس",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ترکیب سریع"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ترکیب سریع",
+    "left_menu__writing_assistant": "معاون نوشتاری"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "خلاصه با زمان بندی",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "امکان تولید ویدئو بدون زیرنویس وجود ندارد.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "اوه! چیزی غیرمنتظره اتفاق افتاد. لطفا بعدا دوباره امتحان کنید.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "ارتقا برای چت با یک کلیک",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "ارتقا برای چت با یک کلیک",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "به هوش مصنوعی اجازه دهید پاسخ‌های شبکه‌های اجتماعی شخصی‌سازی شده را در عرض چند ثانیه تولید کند.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "ارتقا برای پاسخ‌های پیام یک کلیکی",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "بگذارید هوش مصنوعی در ثانیه پاسخ‌های شخصی‌سازی شده را برای شما تولید کند.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "ارتقا برای بهبود پیام‌های خود با یک کلیک",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "با استفاده از هوش مصنوعی، نوشتار خود را بهبود دهید، املایی و دستور زبان را تصحیح کنید یا لحن خود را به سرعت تغییر دهید.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "بارگذاری سند یا تصویر به MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "بارگذاری اسناد به MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "فایل آپلود شده بیش از حد بزرگ است. در نظر داشته باشید که از یک مدل هوش مصنوعی با پنجره متن بزرگتر استفاده کنید یا یک فایل با اندازه کوچکتر آپلود کنید."
+    "provider__chatgpt__upload_file_error__too_long__text": "فایل آپلود شده بیش از حد بزرگ است. در نظر داشته باشید که از یک مدل هوش مصنوعی با پنجره متن بزرگتر استفاده کنید یا یک فایل با اندازه کوچکتر آپلود کنید.",
+    "sidebar__promotion_dialog__content_item6__title": "دستیار نوشتن پیام",
+    "sidebar__promotion_dialog__content_item6__description": "با یک کلیک در دیسکورد، به شما کمک می‌کند تا پاسخ‌های پیام شخصی‌سازی شده را در عرض چند ثانیه تولید کنید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

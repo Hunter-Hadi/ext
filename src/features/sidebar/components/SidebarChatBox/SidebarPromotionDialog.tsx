@@ -110,6 +110,10 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item5__title'),
         description: t('sidebar__promotion_dialog__content_item5__description'),
       },
+      {
+        title: t('sidebar__promotion_dialog__content_item6__title'),
+        description: t('sidebar__promotion_dialog__content_item6__description'),
+      },
     ]
   }, [t])
 

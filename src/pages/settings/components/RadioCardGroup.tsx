@@ -2,7 +2,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Radio from '@mui/material/Radio'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
-import React, { FC, useState } from 'react'
+import React, { type FC, useState, type ReactElement } from 'react'
 
 export type RadioCardGroupOption = {
   label: string
@@ -16,10 +16,11 @@ export interface RadioCardGroupProps {
   defaultValue?: string
   onChange?: (value: string) => void
   sx?: SxProps
+  control?: ReactElement
 }
 
 const RadioCardGroup: FC<RadioCardGroupProps> = (props) => {
-  const { options, maxWidth, defaultValue, onChange, sx } = props
+  const { options, maxWidth, defaultValue, onChange, sx, control } = props
   const [selectedValue, setSelectedValue] = useState<string>(
     () => defaultValue || options[0].value,
   )
@@ -60,7 +61,7 @@ const RadioCardGroup: FC<RadioCardGroupProps> = (props) => {
             <FormControlLabel
               sx={{ m: 0 }}
               value={option.value}
-              control={<Radio checked={isSelected} sx={{ p: 1 }} />}
+              control={control || <Radio checked={isSelected} sx={{ p: 1 }} />}
               label={option.label}
             />
             {option.image && (

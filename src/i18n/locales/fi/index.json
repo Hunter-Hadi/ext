@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Kirjoita verkkosivun URL-osoite",
     "feature_card__prompts__place_my_own_prompts_switch": "Sijoita omat vihjeeni yläosaan",
     "feature_card__appearance__field_quick_access__title": "Nopea pääsy",
-    "left_menu__help_me_write": "Auta minua kirjoittamaan",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail avustaja",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook avustaja",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X avustaja",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Uusi kehotusryhmä",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Pikavastaus",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Muokkaa tai tarkista luonnos",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Nopea kirjoitus"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Nopea kirjoitus",
+    "left_menu__writing_assistant": "Kirjoitusavustaja"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Aikaleimattu yhteenveto",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Videota ei voi luoda ilman tekstityksiä.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ups! Jotain odottamatonta tapahtui. Yritä uudelleen myöhemmin.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Päivitä 1 napsautuksella chat",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Anna tekoälyn luoda sinulle henkilökohtaisia sosiaalisen median vastauksia sekunneissa.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Päivitä 1 napsautuksella chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Anna tekoälyn luoda sinulle henkilökohtaisia sosiaalisen median vastauksia sekunneissa.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Päivitä 1-napin viestivastauksiin",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Anna tekoälyn luoda sinulle henkilökohtaisia viestivastauksia sekunneissa.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Päivitä viestien täydellistämiseen 1 napilla",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Paranna kirjoittamista, korjaa oikeinkirjoitus ja kielioppi tai muuta sävyä välittömästi tekoälyn avulla.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Lataa asiakirjoja tai kuvia MaxAI:hin",
     "provider__chatgpt__upload__accept_docs_tooltip": "Lataa asiakirjat MaxAI:hin",
-    "provider__chatgpt__upload_file_error__too_long__text": "Ladattu tiedosto on liian suuri. Harkitse suuremman kontekstiruudun omaavan tekoälymallin käyttämistä tai pienemmän kokoisen tiedoston lataamista."
+    "provider__chatgpt__upload_file_error__too_long__text": "Ladattu tiedosto on liian suuri. Harkitse suuremman kontekstiruudun omaavan tekoälymallin käyttämistä tai pienemmän kokoisen tiedoston lataamista.",
+    "sidebar__promotion_dialog__content_item6__title": "Viestien kirjoitusapuri",
+    "sidebar__promotion_dialog__content_item6__description": "Anna tekoälyn luoda sinulle henkilökohtaisia viestivastauksia sekunneissa yhdellä klikkauksella Discordissa."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

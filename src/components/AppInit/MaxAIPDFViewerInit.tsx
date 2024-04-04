@@ -42,7 +42,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
       // Use MaxAI event to cover the native event
       const nativeFileInput = document.querySelector<HTMLInputElement>('#fileInput');
       if (nativeFileInput) {
-        const handleNativeDrop = (e: CustomEvent<{files: FileList}>) => {
+        const handleNativeDrop = (e: CustomEvent<{ files: FileList }>) => {
           const file = e.detail.files?.[0]
           if (file) {
             handleUploadPDF(file)

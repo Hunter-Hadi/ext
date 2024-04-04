@@ -41,7 +41,8 @@ const useInitSidebar = () => {
     updateSidebarSettings,
     updateSidebarConversationType,
   } = useSidebarSettings()
-  const { currentConversationIdRef } = useClientConversation()
+  const { currentConversationIdRef, createConversation } =
+    useClientConversation()
   const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
@@ -77,6 +78,8 @@ const useInitSidebar = () => {
             conversation.meta.AIProvider,
             conversation.meta.AIModel,
           )
+        } else {
+          await createConversation(currentSidebarConversationType)
         }
       }
       console.log(

@@ -11,7 +11,7 @@ interface FileInfo {
 
 class FileExtractor {
   private static supportedFileTypes = [
-    '.pdf',
+    // '.pdf',
     // '.doc',
     // '.docx',
     // '.rtf',
@@ -81,11 +81,7 @@ class FileExtractor {
       this.supportedFileTypes.includes('.' + fileName.split('.').pop()) ||
       this.supportedFileTypes.includes('.' + fileName) ||
       this.supportedFileTypes.includes(fileName)
-    if (
-      !result &&
-      !checkFileNameIsImage(fileName) &&
-      !fileName.includes('.pdf')
-    ) {
+    if (!result && !checkFileNameIsImage(fileName)) {
       globalSnackbar.error(
         `You may not upload files of the following format: (${
           '.' + fileName.split('.').pop()
@@ -98,6 +94,7 @@ class FileExtractor {
           },
         },
       )
+      return false
     }
     return result
   }

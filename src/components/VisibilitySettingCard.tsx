@@ -176,7 +176,7 @@ const VisibilitySettingCard: FC<{
               color: 'text.primary',
             }}
             onClick={handleOpen}
-            disabled={disabled}
+            disabled={disabled || Boolean(isEditingSpecialButtonKey && memoizedDomains.length)}
           >
             {t('common:add')}
           </Button>

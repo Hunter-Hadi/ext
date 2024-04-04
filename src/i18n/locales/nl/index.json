@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Voer de URL van de website in",
     "feature_card__prompts__place_my_own_prompts_switch": "Plaats mijn eigen prompts bovenaan",
     "feature_card__appearance__field_quick_access__title": "Snelle toegang",
-    "left_menu__help_me_write": "Help me schrijven",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail-assistent",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook-assistent",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X assistent",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nieuwe promptgroep",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Snelle reactie",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Bewerk of beoordeel concept",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Snel opstellen"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Snel opstellen",
+    "left_menu__writing_assistant": "Schrijfassistent"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Samengevat met tijdstempels",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Kan geen video genereren zonder ondertiteling.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oeps! Er is iets onverwachts gebeurd. Probeer het later opnieuw.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Upgrade voor 1-klik chat",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Upgrade voor 1-klik chat",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Laat AI gepersonaliseerde social media antwoorden genereren in enkele seconden.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Upgrade voor 1-klik berichtantwoorden",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Upgrade om je berichten in 1 klik te perfectioneren",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Verbeter het schrijven, corrigeer spelling en grammatica, of verander direct de toon met behulp van AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Upload documenten of afbeeldingen naar MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Documenten uploaden naar MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Het geüploade bestand is te groot. Overweeg om een AI-model te gebruiken met een groter contextvenster of upload een kleiner bestand."
+    "provider__chatgpt__upload_file_error__too_long__text": "Het geüploade bestand is te groot. Overweeg om een AI-model te gebruiken met een groter contextvenster of upload een kleiner bestand.",
+    "sidebar__promotion_dialog__content_item6__title": "Berichten schrijfassistent",
+    "sidebar__promotion_dialog__content_item6__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden met slechts één klik op Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Inserisci l'URL del sito web",
     "feature_card__prompts__place_my_own_prompts_switch": "Posiziona le mie promozioni in cima",
     "feature_card__appearance__field_quick_access__title": "Accesso rapido",
-    "left_menu__help_me_write": "Aiutami a scrivere",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Assistente Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Assistente Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X assistente",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nuovo gruppo di promozioni",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Risposta rapida",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Modifica o revisione bozza",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composizione rapida"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composizione rapida",
+    "left_menu__writing_assistant": "Assistente di scrittura"
   },
   "client": {
     "sidebar__button__close_sidebar": "Chiudi la barra laterale",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Sommario con timestamp",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Impossibile generare il video senza sottotitoli.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Ops! Qualcosa di inaspettato è accaduto. Riprova più tardi.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Aggiorna per chat con un clic",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Lascia che l'IA generi risposte personalizzate per i social media in pochi secondi.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Aggiorna per chat con un clic",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Lascia che l'IA generi risposte personalizzate per i social media in pochi secondi.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Aggiorna per risposte ai messaggi in un clic",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Lascia che l'IA generi risposte personalizzate ai messaggi in pochi secondi.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Aggiorna per perfezionare i tuoi messaggi in 1 clic",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Migliora la scrittura, correggi errori di ortografia e grammatica o cambia tono istantaneamente con l'IA.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Carica documenti o immagini su MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Carica documenti su MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Il file caricato è troppo grande. Considera l'utilizzo di un modello AI con una finestra di contesto più ampia o carica un file di dimensioni inferiori."
+    "provider__chatgpt__upload_file_error__too_long__text": "Il file caricato è troppo grande. Considera l'utilizzo di un modello AI con una finestra di contesto più ampia o carica un file di dimensioni inferiori.",
+    "sidebar__promotion_dialog__content_item6__title": "Assistente di scrittura per messaggi",
+    "sidebar__promotion_dialog__content_item6__description": "Lascia che l'IA generi risposte personalizzate per i tuoi messaggi in pochi secondi con un solo clic su Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Nhập URL trang web",
     "feature_card__prompts__place_my_own_prompts_switch": "Đặt những gợi ý của riêng tôi ở đầu",
     "feature_card__appearance__field_quick_access__title": "Truy cập nhanh",
-    "left_menu__help_me_write": "Hỗ trợ viết",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Trợ lý Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Trợ lý Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "Nút trợ giúp X",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nhóm gợi ý mới",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Trả lời nhanh",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Chỉnh sửa hoặc xem lại bản nháp",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Soạn nhanh"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Soạn nhanh",
+    "left_menu__writing_assistant": "Trợ lý viết"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Tóm tắt có dấu thời gian",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Không thể tạo video không có phụ đề.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Rất tiếc! Đã xảy ra sự cố không mong muốn. Vui lòng thử lại sau.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "Nâng cấp để chat chỉ với 1 cú nhấp chuột",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "Nâng cấp để chat chỉ với 1 cú nhấp chuột",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "Cho phép trí tuệ nhân tạo tạo ra câu trả lời cá nhân hóa cho mạng xã hội của bạn trong vài giây.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "Nâng cấp để trả lời tin nhắn bằng 1 cú nhấp chuột",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "Cho phép AI tạo ra các câu trả lời cá nhân hóa cho bạn trong vài giây.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "Nâng cấp để hoàn thiện tin nhắn của bạn bằng 1 cú nhấp chuột",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Cải thiện viết, sửa chính tả và ngữ pháp, hoặc thay đổi ngay lập tức với AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Tải tài liệu hoặc hình ảnh lên MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Tải tài liệu lên MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Tệp tải lên quá lớn. Hãy xem xét sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên một tệp có kích thước nhỏ hơn."
+    "provider__chatgpt__upload_file_error__too_long__text": "Tệp tải lên quá lớn. Hãy xem xét sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên một tệp có kích thước nhỏ hơn.",
+    "sidebar__promotion_dialog__content_item6__title": "Trợ lý viết tin nhắn",
+    "sidebar__promotion_dialog__content_item6__description": "Cho phép trí tuệ nhân tạo tạo ra các câu trả lời tin nhắn cá nhân hóa cho bạn chỉ trong vài giây với một cú nhấp chuột trên Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Thơ...",

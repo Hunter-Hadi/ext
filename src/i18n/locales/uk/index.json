@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "ویب سائٹ کا URL درج کریں",
     "feature_card__prompts__place_my_own_prompts_switch": "اپنے خود کے پرومپٹس کو اوپر رکھیں",
     "feature_card__appearance__field_quick_access__title": "تیز رس",
-    "left_menu__help_me_write": "میری مدد کریں لکھنے میں",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "جی میل اسسٹنٹ",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "آؤٹ لک اسسٹنٹ",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X معاون",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "نیا پرومپٹ گروپ",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "جلدی جواب دیں",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ڈرافٹ ترمیم یا جائزہ لیں",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "جلدی تحریر کریں"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "جلدی تحریر کریں",
+    "left_menu__writing_assistant": "لکھائی معاون"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "ٹائم سٹیمپ کی خلاصہ",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "سب ٹائٹلز کے بغیر ویڈیو تشکیل نہیں کی جا سکتی ہے۔",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "آپس میں کچھ غیر متوقع واقعہ پیش آیا ہے۔ براہ کرم بعد میں دوبارہ کوشش کریں۔",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-کلک کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "AI سیکنڈوں میں آپ کے لئے شخصیت پسندیدہ سوشل میڈیا جوابات تیار کرے گا۔",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-کلک کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "AI سیکنڈوں میں آپ کے لئے شخصیت پسندیدہ سوشل میڈیا جوابات تیار کرے گا۔",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "1 کلک پیغام جوابات کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "ثوانیوں میں AI آپ کے لئے شخصیت پسندیدہ پیغام جوابات تیار کرے گا۔",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "ایک کلک میں اپنے پیغامات کو مکمل کرنے کے لئے اپگریڈ کریں",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI کے ساتھ لکھائی کو بہتر بنائیں، املا، گرامر درست کریں یا فوری طور پر ٹون تبدیل کریں۔",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "میکس اے آئی کو دستاویزات یا تصاویر اپ لوڈ کریں",
     "provider__chatgpt__upload__accept_docs_tooltip": "میکس اے آئی میں دستاویزات اپ لوڈ کریں",
-    "provider__chatgpt__upload_file_error__too_long__text": "آپلوڈ کیا گیا فائل بہت بڑی ہے۔ بڑے سائز کے ایک AI ماڈل استعمال کرنے یا کم سائز کی فائل آپلوڈ کرنے کو دیکھیں۔"
+    "provider__chatgpt__upload_file_error__too_long__text": "آپلوڈ کیا گیا فائل بہت بڑی ہے۔ بڑے سائز کے ایک AI ماڈل استعمال کرنے یا کم سائز کی فائل آپلوڈ کرنے کو دیکھیں۔",
+    "sidebar__promotion_dialog__content_item6__title": "پیغام لکھنے والا معاون",
+    "sidebar__promotion_dialog__content_item6__description": "صرف ایک کلک پر ڈسکورڈ میں آپ کے لئے AI شخصیت پذیر پیغام جوابات تیار کرے۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

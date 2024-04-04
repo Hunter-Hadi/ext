@@ -6,12 +6,9 @@ import React, { FC, useMemo } from 'react'
 import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
 import reactNodeToString from 'react-node-to-string'
-import remarkBreaks from 'remark-breaks'
+import rehypeKatex from 'rehype-katex'
 // import rehypeHighlight from 'rehype-highlight'
-// import rehypeKatex from 'rehype-katex'
-import remarkGfm from 'remark-gfm'
-// import remarkMath from 'remark-math'
-import supersub from 'remark-supersub'
+import remarkMath from 'remark-math'
 import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -154,9 +151,10 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
   props,
 ) => {
   const { children, className } = props
-  const code = useMemo(() => reactNodeToString(props.children), [
-    props.children,
-  ])
+  const code = useMemo(
+    () => reactNodeToString(props.children),
+    [props.children],
+  )
   const lang = props.className?.match(/language-(\w+)/)?.[1] || 'code'
   return (
     <Stack
@@ -200,20 +198,55 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
     </Stack>
   )
 }
-
+/**
+ * 处理latex表达式
+ * @param content
+ * @link - https://github.com/remarkjs/react-markdown/issues/785
+ */
+const preprocessLaTeX = (content: string) => {
+  content = content.replaceAll('$', '\\$')
+  // Replace block-level LaTeX delimiters \[ \] with $$ $$
+  const blockProcessedContent = content.replace(
+    /\\\[(.*?)\\\]/gs,
+    (_, equation) => `$$${equation}$$`,
+  )
+  // Replace inline LaTeX delimiters \( \) with $ $
+  const inlineProcessedContent = blockProcessedContent.replace(
+    /\\\((.*?)\\\)/gs,
+    (_, equation) => `$${equation}$`,
+  )
+  return inlineProcessedContent
+}
 const CustomMarkdown: FC<{
   children: string
 }> = (props) => {
+  const formatMarkdownText = useMemo(() => {
+    try {
+      if (typeof props.children === 'string') {
+        return preprocessLaTeX(props.children)
+      }
+      return props.children
+    } catch (e) {
+      return props.children
+    }
+  }, [props.children])
   return useMemo(
     () => (
       <>
         <ReactMarkdown
-          remarkPlugins={[supersub, remarkBreaks, remarkGfm]}
-          // rehypePlugins={[
-          //   rehypeKatex,
-          //   [rehypeHighlight, { detect: true, ignoreMissing: true }],
-          // ]}
-          disallowedElements={['br']}
+          remarkPlugins={[
+            // supersub,
+            // remarkBreaks,
+            // remarkGfm,
+            [
+              remarkMath,
+              // {
+              //   singleDollarTextMath: false,
+              // },
+            ],
+          ]}
+          rehypePlugins={[rehypeKatex]}
+          // disallowedElements={['br']}
           components={{
             // eslint-disable-next-line react/display-name
             h1: (props: any) => {
@@ -306,7 +339,7 @@ const CustomMarkdown: FC<{
             },
           }}
         >
-          {props.children}
+          {formatMarkdownText}
         </ReactMarkdown>
       </>
     ),

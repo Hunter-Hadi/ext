@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "वेबसाइट URL दर्ज करें",
     "feature_card__prompts__place_my_own_prompts_switch": "अपने प्रॉम्प्ट्स को ऊपर रखें",
     "feature_card__appearance__field_quick_access__title": "त्वरित पहुँच",
-    "left_menu__help_me_write": "मेरी मदद करें",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "जीमेल सहायक",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "आउटलुक सहायक",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X सहायक",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "नया प्रॉम्प्ट समूह",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "त्वरित जवाब",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ड्राफ्ट संपादित करें या समीक्षा करें",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन",
+    "left_menu__writing_assistant": "लेखन सहायक"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "समय-चिह्नित सारांश",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "उपशीर्षक के बिना वीडियो उत्पन्न नहीं कर सकते।",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "उफ़! कुछ अप्रत्याशित हो गया। कृपया बाद में पुन: प्रयास करें।",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "1-क्लिक चैट के लिए अपग्रेड करें",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "सेकंड में आपके लिए व्यक्तिगत सोशल मीडिया जवाब उत्पन्न करने के लिए AI का उपयोग करें।",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "1-क्लिक चैट के लिए अपग्रेड करें",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "सेकंड में आपके लिए व्यक्तिगत सोशल मीडिया जवाब उत्पन्न करने के लिए AI का उपयोग करें।",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "1-क्लिक संदेश जवाब के लिए अपग्रेड करें",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "AI आपके लिए कुछ ही सेकंड में व्यक्तिगत संदेश जवाब उत्पन्न करेगा।",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "1 क्लिक में अपने संदेशों को परफेक्ट करने के लिए अपग्रेड करें",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI के साथ लेखन को बेहतर बनाएं, त्रुटि और व्याकरण को ठीक करें, या ताल में बदलाव करें।",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI में दस्तावेज़ या छवियाँ अपलोड करें",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI पर दस्तावेज़ अपलोड करें",
-    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड की गई फ़ाइल बहुत बड़ी है। एक AI मॉडल का उपयोग करने का विचार करें जिसमें एक बड़ी संदर्भ विंडो हो, या एक छोटे साइज़ की फ़ाइल अपलोड करें।"
+    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड की गई फ़ाइल बहुत बड़ी है। एक AI मॉडल का उपयोग करने का विचार करें जिसमें एक बड़ी संदर्भ विंडो हो, या एक छोटे साइज़ की फ़ाइल अपलोड करें।",
+    "sidebar__promotion_dialog__content_item6__title": "मैसेज लेखन सहायक",
+    "sidebar__promotion_dialog__content_item6__description": "AI द्वारा व्यक्तिगत संदेश जवाबों को सिर्फ एक क्लिक पर आपके लिए सेकंडों में उत्पन्न करें, सिर्फ एक क्लिक पर Discord पर।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -23,13 +23,8 @@ import { getEnv } from '@/utils/AppEnv'
 const SidebarPage = React.lazy(() => import('@/pages/sidebar'))
 const App: FC = () => {
   const appRef = React.useRef<HTMLDivElement>(null)
-  const {
-    visibleWidth,
-    maxWidth,
-    minWidth,
-    setLocalWidth,
-    resizeEnable,
-  } = useChatBoxWidth()
+  const { visibleWidth, maxWidth, minWidth, setLocalWidth, resizeEnable } =
+    useChatBoxWidth()
   const [appState, setAppState] = useRecoilState(AppState)
   useEffect(() => {
     const attrObserver = new MutationObserver((mutations) => {

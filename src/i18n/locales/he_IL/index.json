@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "הזן כתובת URL של האתר",
     "feature_card__prompts__place_my_own_prompts_switch": "שים את הפניות שלי בראש",
     "feature_card__appearance__field_quick_access__title": "גישה מהירה",
-    "left_menu__help_me_write": "עזרו לי לכתוב",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "עוזר Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "עוזר Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X עוזר",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "קבוצת הצעות חדשה",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "תשובה מהירה",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "עריכה או ביקורת טיוטה",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "כתיבה מהירה"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "כתיבה מהירה",
+    "left_menu__writing_assistant": "עוזר כתיבה"
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -672,13 +672,15 @@
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "סיכום עם חותמת זמן",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "לא ניתן ליצור וידאו ללא כתוביות.",
     "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "אירעה חריגה, אנא נסה שוב מאוחר יותר.",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__title": "שדרג לצ'אט בלחיצה אחת",
-    "permission__pricing_hook__input_assistant_button__chat__compose_reply__description": "תן לבינה מלאכותית ליצור תגובות אישיות לרשתות החברתיות שלך בשניות.",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__title": "שדרג לצ'אט בלחיצה אחת",
-    "permission__pricing_hook__input_assistant_button__chat__refine_draft__description": "תן לבינה מלאכותית ליצור תגובות אישיות לרשתות החברתיות שלך בשניות.",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title": "שדרגו לתגובות הודעה בלחיצה אחת",
+    "permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description": "תן למערכת הבינה המלאכותית ליצור תגובות אישיות עבורך בשניות.",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title": "שדרגו כדי לשפר את ההודעות שלכם בלחיצה אחת",
+    "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "שפרו את הכתיבה, תקנו איות ודקדוק או שנו את הטון באופן מיידי עם הבינה המלאכותית.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "העלה מסמכים או תמונות ל-MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "העלה מסמכים ל-MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "הקובץ שהועלה גדול מדי. שקול להשתמש בדגם AI עם חלון הקשר גדול יותר או להעלות קובץ בגודל קטן יותר."
+    "provider__chatgpt__upload_file_error__too_long__text": "הקובץ שהועלה גדול מדי. שקול להשתמש בדגם AI עם חלון הקשר גדול יותר או להעלות קובץ בגודל קטן יותר.",
+    "sidebar__promotion_dialog__content_item6__title": "עוזר כתיבת הודעות",
+    "sidebar__promotion_dialog__content_item6__description": "תן לבינה מלאכותית ליצור תשובות אישיות להודעות בשניות עם לחיצה אחת ב-Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

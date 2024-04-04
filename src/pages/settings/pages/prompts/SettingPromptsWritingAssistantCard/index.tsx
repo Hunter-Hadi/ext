@@ -1,5 +1,3 @@
-
-
 import Stack from '@mui/material/Stack'
 import cloneDeep from 'lodash-es/cloneDeep'
 import groupBy from 'lodash-es/groupBy'
@@ -181,7 +179,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
     if (editButtonKey) {
       const getList = async () => {
         const contextMenu = await getChromeExtensionDBStorageButtonContextMenu(
-            editButtonKey,
+          editButtonKey,
         )
         if (isDestroy) return
         setOriginalTreeData(contextMenu)
@@ -229,10 +227,10 @@ const SettingPromptsWritingAssistantCard: FC = () => {
 
   const filteredTreeData = useMemo(() => {
     if (position === 'start') {
-        return PRESET_PROMPT.concat(originalTreeData)
-      } else {
-        return originalTreeData.concat(PRESET_PROMPT)
-      }
+      return PRESET_PROMPT.concat(originalTreeData)
+    } else {
+      return originalTreeData.concat(PRESET_PROMPT)
+    }
   }, [
     originalTreeData,
     contextMenuSearchTextWithCurrentLanguage,
@@ -241,84 +239,85 @@ const SettingPromptsWritingAssistantCard: FC = () => {
 
   return <>
     <RadioCardGroup
-        onChange={async (key) => {
-            loadedRef.current = false;
-            setEditButtonKey(key as IChromeExtensionButtonSettingKey)
-        }}
-        options={radioCardOptions}
-        maxWidth={372}
-      />
+      control={<div style={{ paddingTop: '32px', paddingBottom: '8px', paddingLeft: '8px' }} />}
+      onChange={async (key) => {
+        loadedRef.current = false;
+        setEditButtonKey(key as IChromeExtensionButtonSettingKey)
+      }}
+      options={radioCardOptions}
+      maxWidth={372}
+    />
 
     <Stack sx={{ mt: '16px', p: '8px', border: '1px solid', borderColor: 'primary.main', borderRadius: '8px' }}>
-        <Stack direction={'row'} alignItems={'center'} spacing={2}>
-        <SettingPromptsUpdater 
-            disabled={loading}
-            node={editNode}
-            iconSetting={true}
-            onSave={handleOnSave}
-            onCancel={() => setEditNode(null)}
-            onDelete={(id) => handleActionConfirmOpen('delete', id)}
-            setEditNode={setEditNode}
+      <Stack direction={'row'} alignItems={'center'} spacing={2}>
+        <SettingPromptsUpdater
+          disabled={loading}
+          node={editNode}
+          iconSetting={true}
+          onSave={handleOnSave}
+          onCancel={() => setEditNode(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
+          setEditNode={setEditNode}
         />
-        <SettingPromptsRestorer 
-            onRestore={async (snapshot) => {
-              if(editButtonKey) {
-                try {
-                    setLoading(true)
-                    const buttonSettings = snapshot.settings.buttonSettings
-                    if (!buttonSettings) return
-                    const { contextMenu } = buttonSettings[editButtonKey!]
-                    setOriginalTreeData(contextMenu)
-                } catch (e) {
-                    console.error(e)
-                } finally {
-                    setLoading(false)
-                }
+        <SettingPromptsRestorer
+          onRestore={async (snapshot) => {
+            if (editButtonKey) {
+              try {
+                setLoading(true)
+                const { buttonSettings } = snapshot.settings
+                if (!buttonSettings) return
+                const { contextMenu } = buttonSettings[editButtonKey!]
+                setOriginalTreeData(contextMenu)
+              } catch (e) {
+                console.error(e)
+              } finally {
+                setLoading(false)
               }
-            }}
-        />
-        </Stack>
-        
-        <SettingPromptsPositionSwitch
-          checked={position === 'end'}
-          label={t(
-              'settings:feature_card__prompts__place_my_own_prompts_switch',
-          )} 
-          sx={{
-              my: '16px'
+            }
           }}
         />
-        
-        <Stack
+      </Stack>
+
+      <SettingPromptsPositionSwitch
+        checked={position === 'end'}
+        label={t(
+          'settings:feature_card__prompts__place_my_own_prompts_switch',
+        )}
+        sx={{
+          my: '16px'
+        }}
+      />
+
+      <Stack
         height={0}
         flex={1}
-        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
-        >
+      // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+      >
         <Stack height={'100%'}>
-            <DevContent>
+          <DevContent>
             <SettingPromptsViewSource treeData={originalTreeData} />
-            </DevContent>
-            <InputAssistantButtonExhibit highlight={editButtonKey === 'inputAssistantRefineDraftButton'} />
-            <SettingPromptsMenuPanel 
-                rootId={rootId}
-                initialOpen={openIds}
-                treeData={filteredTreeData}
-                editNode={editNode}
-                onChangeOpen={(newOpenIds) => {
-                    console.log('newOpenIds', newOpenIds)
-                    setOpenIds(newOpenIds as string[])
-                }}
-                onDrop={handleDrop}
-                onEditNode={setEditNode}
-                onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
-                sx={{
-                    width: editButtonKey === 'inputAssistantRefineDraftButton' ? 'calc(50% - 12px)' : 'calc(50% + 12px)',
-                    mt: '4px',
-                    ml: editButtonKey === 'inputAssistantRefineDraftButton' ? 'auto' : 0,
-                }}
-            />
+          </DevContent>
+          <InputAssistantButtonExhibit highlight={editButtonKey === 'inputAssistantRefineDraftButton'} />
+          <SettingPromptsMenuPanel
+            rootId={rootId}
+            initialOpen={openIds}
+            treeData={filteredTreeData}
+            editNode={editNode}
+            onChangeOpen={(newOpenIds) => {
+              console.log('newOpenIds', newOpenIds)
+              setOpenIds(newOpenIds as string[])
+            }}
+            onDrop={handleDrop}
+            onEditNode={setEditNode}
+            onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
+            sx={{
+              width: editButtonKey === 'inputAssistantRefineDraftButton' ? 'calc(50% - 12px)' : 'calc(50% + 12px)',
+              mt: '4px',
+              ml: editButtonKey === 'inputAssistantRefineDraftButton' ? 'auto' : 0,
+            }}
+          />
         </Stack>
-        </Stack>
+      </Stack>
     </Stack>
     {confirmOpen && confirmType && (
       <SettingPromptsActionConfirmModal

@@ -1,10 +1,30 @@
+import { EventEmitter } from '@/utils/eventEmitter'
 import Log from '@/utils/Log'
 
-const log = new Log('ContextMenu/GoogleDocContext')
+const log = new Log('ContextMenu/GoogleDocHelper')
+
+export enum IGoogleDocEventType {
+  SELECTION_CHANGE = 'selection-change',
+  CARET_CHANGE = 'caret-change',
+}
+
+export interface IGoogleDocRect {
+  x: number
+  y: number
+  top: number
+  left: number
+  right: number
+  bottom: number
+  width: number
+  height: number
+}
+
+export interface IGoogleDocLayout extends Exclude<IGoogleDocRect, 'x' | 'y'> {}
 
 export interface IGoogleDocParagraph {
   element: Element
   rect: IGoogleDocRect
+  layout: IGoogleDocLayout
   texts: IGoogleDocText[]
   style: {
     top: number
@@ -17,6 +37,7 @@ export interface IGoogleDocParagraph {
 export interface IGoogleDocText {
   element: Element
   rect: IGoogleDocRect
+  layout: IGoogleDocLayout
   content: string
   style: {
     top: number
@@ -29,26 +50,20 @@ export interface IGoogleDocText {
   }
 }
 
-export interface IGoogleDocRect {
-  // 基于适口位置
-  x: number
-  y: number
-  // 基于scrollElement的位置
-  top: number
-  left: number
-  right: number
-  bottom: number
-  // 大小
-  width: number
-  height: number
-}
-
 export interface IGoogleDocSelection {
+  elements: Element[]
   paragraphs: IGoogleDocParagraph[]
   rects: IGoogleDocRect[]
+  layouts: IGoogleDocLayout[]
 }
 
-export interface IGoogleDocCursor {}
+export interface IGoogleDocCaret {
+  element: Element
+  text: IGoogleDocText | null
+  rect: IGoogleDocRect
+  layout: IGoogleDocLayout
+  // index: number;
+}
 
 /**
  * 检测两个元素是否相交
@@ -59,18 +74,11 @@ export const isRectIntersect = (
   rect1: IGoogleDocRect,
   rect2: IGoogleDocRect,
 ) => {
-  // return !(
-  //   rect1.top > rect2.bottom ||
-  //   rect1.bottom < rect2.top ||
-  //   rect1.left > rect2.right ||
-  //   rect1.right < rect2.left
-  // )
-  return (
-    (rect1.top > rect2.top && rect1.top < rect2.top + rect2.height) ||
-    (rect1.bottom < rect2.bottom &&
-      rect1.bottom > rect2.bottom - rect2.height) ||
-    (rect1.left > rect2.left && rect1.left < rect2.left + rect2.width) ||
-    (rect1.right < rect2.right && rect1.right > rect2.right - rect2.width)
+  return !(
+    rect1.top >= rect2.bottom ||
+    rect1.bottom <= rect2.top ||
+    rect1.left >= rect2.right ||
+    rect1.right <= rect2.left
   )
 }
 
@@ -83,87 +91,124 @@ export const calculateRectLayout = (
   compare: IGoogleDocRect,
   target: IGoogleDocRect,
 ) => {
+  const offsetX = target.left - compare.left
+  const offsetY = target.top - compare.top
   return {
-    x: target.x,
-    y: target.y,
-    top: target.top - compare.top,
-    left: target.left - compare.left,
-    right: target.right - compare.right,
-    bottom: target.bottom - compare.bottom,
+    x: target.x - compare.x,
+    y: target.y - compare.y,
+    top: offsetY,
+    left: offsetX,
+    right: offsetX + target.width,
+    bottom: offsetY + target.height,
     width: target.width,
     height: target.height,
   }
 }
 
-export class GoogleDocControl {
-  log = log
+export const isPointInRect = (
+  x: number,
+  y: number,
+  rects: IGoogleDocRect[],
+) => {
+  for (const rect of rects) {
+    if (
+      x >= Math.floor(rect.left) &&
+      x <= Math.floor(rect.right) &&
+      y >= Math.floor(rect.top) &&
+      y <= Math.floor(rect.bottom)
+    ) {
+      return true
+    }
+  }
+  return false
+}
 
+export class GoogleDocControl extends EventEmitter {
+  disabled: boolean
+
+  styleElement?: HTMLStyleElement | null
+
+  // 编辑器
   editorElement?: HTMLDivElement | null
-
-  // 文档 包含多个canvas
-  docElement?: HTMLDivElement | null
 
   // 滚动容器
   scrollElement?: HTMLDivElement | null
 
-  // 选择框
-  selectionElement?: HTMLDivElement | null
-
-  // 注释画布 TODO 处理多页情况
-  annotateElement?: HTMLDivElement | null
+  // iframe元素
+  iframeElement?: HTMLIFrameElement | null
 
   // 输入框 通过此input触发粘贴事件
   inputElement?: HTMLDivElement | null
 
   // 光标
-  cursorElement?: HTMLDivElement | null
+  caretElement?: HTMLDivElement | null
 
   // 记录上一次光标
-  lastCursor: IGoogleDocCursor | null = null
+  lastCaret: IGoogleDocCaret | null = null
 
   // 记录上一次选区
   lastSelection: IGoogleDocSelection | null = null
 
   constructor() {
-    if (location.href.startsWith('https://docs.google.com/document')) {
-      this.initElement()
-    }
+    super()
+    this.disabled = !location.href.startsWith(
+      'https://docs.google.com/document',
+    )
+  }
+
+  init() {
+    if (this.disabled) return
+    this.initElement()
+    this.initListener()
   }
 
   initElement() {
     this.editorElement = document.querySelector('div.kix-appview-editor')
-    this.docElement = document.querySelector('div.kix-rotatingtilemanager')
     this.scrollElement = document.querySelector(
       'div.kix-scrollareadocumentplugin',
     )
-    this.selectionElement = document.querySelector('.kix-canvas-tile-selection')
-    this.annotateElement = document.querySelector(
-      'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection)',
+    // this.selectionElement = document.querySelector('.kix-canvas-tile-selection')
+    // this.annotateElement = document.querySelector(
+    //   'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection)',
+    // )
+    this.iframeElement = document.querySelector(
+      'iframe.docs-texteventtarget-iframe',
     )
-    this.inputElement = (
-      document.querySelector(
-        '.docs-texteventtarget-iframe',
-      ) as HTMLIFrameElement
-    )?.contentDocument?.querySelector('div[contenteditable="true"]')
-    this.cursorElement = document.querySelector('div.kix-cursor')
+    this.inputElement = this.iframeElement?.contentDocument?.querySelector(
+      'div[contenteditable="true"]',
+    )
+    this.caretElement = document.querySelector('#kix-current-user-cursor-caret')
+  }
+
+  _onSelectionOrCaretChange = () => {
+    this.lastSelection = this.getCurrentSelection()
+    this.emit(IGoogleDocEventType.SELECTION_CHANGE, this.lastSelection)
+
+    this.lastCaret = this.getCurrentCaret()
+    this.emit(IGoogleDocEventType.CARET_CHANGE, this.lastCaret)
   }
 
   initListener() {
-    this.selectionElement?.addEventListener('mouseup', this.onSelectionChange)
-    this.selectionElement?.addEventListener('keyup', this.onSelectionChange)
+    this.editorElement?.addEventListener(
+      'mouseup',
+      this._onSelectionOrCaretChange,
+    )
+    this.inputElement?.addEventListener('keyup', this._onSelectionOrCaretChange)
   }
 
   destroy() {
-    this.selectionElement?.removeEventListener(
+    this.editorElement?.removeEventListener(
       'mouseup',
-      this.onSelectionChange,
+      this._onSelectionOrCaretChange,
     )
-    this.selectionElement?.removeEventListener('keyup', this.onSelectionChange)
+    this.inputElement?.removeEventListener(
+      'keyup',
+      this._onSelectionOrCaretChange,
+    )
+    this.removeAllListeners()
   }
 
-  onSelectionChange() {}
-
-  calculateElementRect(element: Element) {
+  calculateRelativeLayout(rect: IGoogleDocRect) {
     if (!this.scrollElement) {
       return {
         x: 0,
@@ -178,7 +223,7 @@ export class GoogleDocControl {
     }
     return calculateRectLayout(
       this.scrollElement?.getBoundingClientRect(),
-      element.getBoundingClientRect(),
+      rect,
     )
   }
 
@@ -200,122 +245,195 @@ export class GoogleDocControl {
   }
 
   /**
+   * 拷贝当前选区内容
+   */
+  copySelection() {
+    this.inputElement?.focus()
+    this.inputElement?.dispatchEvent(
+      new ClipboardEvent('copy', {
+        bubbles: true,
+        cancelable: true,
+      }),
+    )
+    return this.inputElement?.innerText
+  }
+
+  async getSelectionContent(selection: IGoogleDocSelection) {
+    if (this.lastSelection === selection) {
+      return this.copySelection()
+    }
+    await this.selectRectBySelection(selection)
+    return this.copySelection()
+  }
+
+  /**
    * 选中某个选区
    * @param selection
    */
-  selectRectBySelection(selection: IGoogleDocSelection) {
-    const { rects } = selection
-    const first = rects[0]
-    const last = rects[rects.length - 1]
+  async selectRectBySelection(selection: IGoogleDocSelection): Promise<void> {
+    if (!this.editorElement || !this.scrollElement) return
 
-    const mouseEvents = [
+    const { layouts } = selection
+    const first = layouts[0]
+    const last = layouts[layouts.length - 1]
+
+    const scrollRect = this.scrollElement.getBoundingClientRect()
+
+    const start = {
+      bubbles: true,
+      clientX: scrollRect.left + first.left,
+      clientY: scrollRect.top + first.top + first.height / 2,
+    }
+
+    const end = {
+      bubbles: true,
+      clientX: scrollRect.left + last.right,
+      clientY: scrollRect.top + last.top + last.height / 2,
+    }
+
+    // 目前遇到个问题，如果选区在可视区上方会自动滚动上去，如果在下方则会失效
+    // 如果选区在可视区下方，先滚动到目标位置
+    const bottom = Math.max(first.bottom, last.bottom)
+    const top = Math.max(first.top, last.top)
+
+    if (
+      this.editorElement.scrollTop + this.editorElement.offsetHeight <
+      bottom
+    ) {
+      this.editorElement.scrollTo({ top, behavior: 'auto' })
+      await new Promise((resolve) => setTimeout(resolve, 50))
+      return this.selectRectBySelection(selection)
+    }
+
+    ;[
       // 先点击一次取消选区，防止在原位上直接点击拖拽的话会变成拖拽选区
-      new MouseEvent('mousedown', {
-        bubbles: true,
-        clientX: first.x,
-        clientY: first.y,
-      }),
-      new MouseEvent('mouseup', {
-        bubbles: true,
-        clientX: first.x,
-        clientY: first.y,
-      }),
+      new MouseEvent('click', start),
+      // new MouseEvent('mouseup', start),,
+      // new MouseEvent('mousedown', start),
       // 模拟点击选择操作
-      new MouseEvent('mousedown', {
-        bubbles: true,
-        clientX: first.x,
-        clientY: first.y,
+      new MouseEvent('mousedown', start),
+      new MouseEvent('mousemove', end),
+      new MouseEvent('mouseup', end),
+    ].forEach((e) => this.editorElement?.dispatchEvent(e))
+    await new Promise((resolve) => setTimeout(resolve, 50))
+    this.inputElement?.dispatchEvent(
+      new KeyboardEvent('keyup', {
+        shiftKey: true,
+        key: 'Shift',
+        code: 'ShiftLeft',
       }),
-      new MouseEvent('mousemove', {
-        bubbles: true,
-        clientX: last.x + last.width,
-        clientY: last.y + last.height,
-      }),
-      new MouseEvent('mouseup', {
-        bubbles: true,
-        clientX: last.x + last.width,
-        clientY: last.y + last.height,
-      }),
-    ]
-
-    mouseEvents.forEach((event) => this.editorElement?.dispatchEvent(event))
+    )
   }
 
-  getTextFromTextElement(element: Element): IGoogleDocText {
+  parseTextElement(element: Element): IGoogleDocText {
     const content = element.getAttribute('aria-label') || ''
     const css = element.getAttribute('data-font-css') || ''
     const [fontWeight, fontSize, fontFamily] = css.split(' ')
-    const rect = this.calculateElementRect(element)
+    const rect = element.getBoundingClientRect().toJSON()
+    const layout = this.calculateRelativeLayout(rect)
     return {
       element,
       content,
       rect,
+      layout,
       style: {
-        top: rect.top,
-        left: rect.left,
-        width: rect.width,
-        height: rect.height,
+        top: layout.top,
+        left: layout.left,
+        width: layout.width,
+        height: layout.height,
         fontWeight,
         fontSize,
-        fontFamily,
+        fontFamily: fontFamily.replaceAll('"', ''),
       },
     }
   }
 
-  getTextsFromParagraphElement(element: Element): IGoogleDocText[] {
-    return Array.from(element.querySelectorAll('rect'))
+  parseParagraphElement(element: Element): IGoogleDocParagraph {
+    const rect = element.getBoundingClientRect().toJSON()
+    const layout = this.calculateRelativeLayout(rect)
+    const texts = Array.from(element.querySelectorAll('rect'))
       .filter((item) => item.parentElement?.tagName !== 'clipPath')
-      .map((item) => this.getTextFromTextElement(item))
+      .map((item) => this.parseTextElement(item))
+    return {
+      element,
+      rect,
+      layout,
+      texts,
+      style: {
+        top: layout.top,
+        left: layout.left,
+        width: layout.width,
+        height: layout.height,
+      },
+    }
   }
 
   /**
    * 获取当前选区
    */
-  getCurrentSelection(): IGoogleDocSelection {
-    if (
-      !this.selectionElement ||
-      !this.annotateElement ||
-      !this.scrollElement
-    ) {
-      return { paragraphs: [], rects: [] }
-    }
+  getCurrentSelection(): IGoogleDocSelection | null {
+    if (!this.editorElement) return null
 
     // 找selection下的所有选择框
-    const rects = Array.from(this.selectionElement.querySelectorAll('rect'))
-      .filter(
-        (item) =>
-          item.parentElement?.tagName !== 'clipPath' &&
-          ['rgba(118,167,250,0.5)', 'rgba(0,0,0,0.15)'].includes(
-            item.getAttribute('fill') || '',
-          ),
-      )
-      .map((item) => this.calculateElementRect(item))
+    const layouts: IGoogleDocRect[] = []
+    const rects: IGoogleDocRect[] = []
+    const elements = Array.from(
+      this.editorElement.querySelectorAll('.kix-canvas-tile-selection rect'),
+    ).filter((item) => {
+      const flag =
+        item.parentElement?.tagName !== 'clipPath' &&
+        ['rgba(118,167,250,0.5)', 'rgba(0,0,0,0.15)'].includes(
+          item.getAttribute('fill') || '',
+        )
+      if (flag) {
+        const rect = item.getBoundingClientRect().toJSON()
+        layouts.push(this.calculateRelativeLayout(rect))
+        rects.push(rect)
+      }
+      return flag
+    })
 
     // 找画布下处于选择框内的段落和文字
     const paragraphs = Array.from(
-      this.annotateElement.querySelectorAll('g[role="paragraph"]'),
+      this.editorElement.querySelectorAll(
+        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"]',
+      ),
     )
       .filter((item) =>
         rects.some((rect) =>
-          isRectIntersect(rect, this.calculateElementRect(item)),
+          isRectIntersect(rect, item.getBoundingClientRect()),
         ),
       )
-      .map((item) => {
-        const rect = this.calculateElementRect(item)
-        return {
-          element: item,
-          rect,
-          texts: this.getTextsFromParagraphElement(item),
-          style: {
-            top: rect.top,
-            left: rect.left,
-            width: rect.width,
-            height: rect.height,
-          },
-        }
-      })
-    log.info('getCurrentSelection', { paragraphs, rects })
-    return { rects, paragraphs }
+      .map((item) => this.parseParagraphElement(item))
+
+    log.info({ paragraphs, rects, layouts })
+
+    return { elements, rects, paragraphs, layouts }
+  }
+
+  /**
+   * 获取当前光标
+   */
+  getCurrentCaret(): IGoogleDocCaret | null {
+    if (!this.editorElement || !this.caretElement) return null
+
+    const element = this.caretElement
+    const rect = this.caretElement.getBoundingClientRect()
+    const layout = this.calculateRelativeLayout(rect)
+    const { top, right } = rect
+    const x = Math.floor(right || 0)
+    const y = Math.floor(top || 0)
+    const textElement = this.getElementFromPoint(x, y)
+    const text = textElement ? this.parseTextElement(textElement) : null
+
+    log.info({ element, text, rect, layout })
+
+    return {
+      element,
+      text,
+      rect,
+      layout,
+    }
   }
 
   /**
@@ -323,18 +441,106 @@ export class GoogleDocControl {
    * @param selection
    */
   getTextsFromSelection(selection: IGoogleDocSelection): IGoogleDocText[] {
-    if (!this.annotateElement) {
-      return []
-    }
     const { paragraphs, rects } = selection
     const texts = paragraphs.flatMap((paragraph) =>
       paragraph.texts.filter((text) =>
-        rects.some((br) =>
-          isRectIntersect(br, text.element.getBoundingClientRect()),
-        ),
+        rects.some((br) => isRectIntersect(br, text.rect)),
       ),
     )
-    log.info('getRectsFromSelection', texts)
+    log.info(texts)
     return texts
+  }
+
+  getElementFromPoint(x: number, y: number) {
+    if (!this.styleElement) {
+      this.styleElement = document.createElement('style')
+      this.styleElement.id = 'enable-pointer-events-on-rect'
+      this.styleElement.textContent = [
+        `.kix-canvas-tile-content{pointer-events:none!important;}`,
+        `#kix-current-user-cursor-caret{pointer-events:none!important;}`,
+        `.kix-canvas-tile-content svg>g>rect{pointer-events:all!important; stroke-width:7px !important;}`,
+      ].join('\n')
+      ;(document.head || document.documentElement).appendChild(
+        this.styleElement,
+      )
+    }
+    this.styleElement.disabled = false
+    const element = document.elementFromPoint(x, y)
+    this.styleElement.disabled = true
+    return element
+  }
+
+  getCaretIndex(caret: IGoogleDocCaret) {
+    if (!caret.text) return null
+
+    const { rect, text } = caret
+    const { top, right } = rect
+    const x = Math.floor(right || 0)
+    const y = Math.floor(top || 0)
+    const { element, content } = text
+    const contentNode = document.createTextNode(content)
+    const textOverlay = this.createTextOverlay(element, contentNode)
+
+    if (!textOverlay) return null
+
+    const range = document.createRange()
+    let start = 0
+    let end = contentNode.nodeValue?.length || 0
+
+    while (end - start > 1) {
+      const mid = Math.floor((start + end) / 2)
+      range.setStart(contentNode, mid)
+      range.setEnd(contentNode, end)
+      const rects = Array.from(range.getClientRects())
+      if (isPointInRect(x, y, rects)) {
+        start = mid
+      } else {
+        if (x > rects[0].right) {
+          start = end
+        } else {
+          end = mid
+        }
+      }
+    }
+
+    const caretIndex = start
+    textOverlay.remove()
+    return caretIndex
+  }
+
+  createTextOverlay(element: Element, textNode: any) {
+    if (!element || element.tagName !== 'rect') return null
+
+    const textElement = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'text',
+    )
+    const transform = element.getAttribute('transform') || ''
+    const font = element.getAttribute('data-font-css') || ''
+
+    textElement.setAttribute('x', element.getAttribute('x') || '')
+    textElement.setAttribute('y', element.getAttribute('y') || '')
+    textElement.appendChild(textNode)
+    textElement.style.setProperty('all', 'initial', 'important')
+    textElement.style.setProperty('transform', transform, 'important')
+    textElement.style.setProperty('font', font, 'important')
+    textElement.style.setProperty('text-anchor', 'start', 'important')
+
+    element.parentNode?.appendChild(textElement)
+
+    const elementRect = element.getBoundingClientRect()
+    const textRect = textElement.getBoundingClientRect()
+    const yOffset =
+      (elementRect.top -
+        textRect.top +
+        (elementRect.bottom - textRect.bottom)) *
+      0.5
+    textElement.style.setProperty(
+      'transform',
+      `translate(0px,${yOffset}px) ${transform}`,
+      'important',
+    )
+
+    return textElement
   }
 }

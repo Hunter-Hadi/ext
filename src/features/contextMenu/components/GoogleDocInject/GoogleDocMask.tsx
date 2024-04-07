@@ -1,27 +1,39 @@
-import React, { FC, useLayoutEffect, useRef } from 'react'
+import React, { FC, useRef } from 'react'
 
+import { IChromeExtensionClientListenEvent } from '@/background/eventType'
+import { createClientMessageListener } from '@/background/utils'
 import { useGoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
 
 const GoogleDocMask: FC = () => {
-  const { selection, selectionTexts } = useGoogleDocContext()
+  const { control, selection, selectionTexts } = useGoogleDocContext()
 
   const containerRef = useRef<HTMLDivElement>(null)
   const ref = useRef<Record<number, HTMLElement | null>>({})
 
-  useLayoutEffect(() => {
-    if (!selection || !selectionTexts.length) return
-
-    // const windowSelection = window.getSelection()
-    // const range = document.createRange()
-    // range.setStart(startNode.firstChild, 1)
-    // range.setEnd(endNode.firstChild, 4)
-    //
-    // windowSelection?.removeAllRanges()
-    // windowSelection?.addRange(range)
-  }, [selection, selectionTexts])
+  createClientMessageListener(async (event, data, sender) => {
+    switch (event as IChromeExtensionClientListenEvent) {
+      case 'Client_listenUpdateIframeInput': {
+        const { value } = data
+        console.log('GoogleDoc', data)
+        control?.replaceSelection(value)
+        break
+      }
+    }
+    return undefined
+  })
 
   return (
-    <div ref={containerRef}>
+    <div
+      ref={containerRef}
+      // style={{
+      //   position: 'absolute',
+      // }}
+      // onMouseDown={(e) => e.stopPropagation()}
+      // onMouseMove={(e) => e.stopPropagation()}
+      // onMouseUp={(e) => e.stopPropagation()}
+      // onKeyDown={(e) => e.stopPropagation()}
+      // onKeyUp={(e) => e.stopPropagation()}
+    >
       {selectionTexts.map((item, i) => (
         <span
           ref={(e) => (ref.current[i] = e)}
@@ -35,20 +47,23 @@ const GoogleDocMask: FC = () => {
         </span>
       ))}
 
-      {selection?.rects.map((item, i) => (
-        <div
-          key={i}
-          style={{
-            position: 'absolute',
-            top: item.top,
-            left: item.left,
-            width: item.width,
-            height: item.height,
-            border: '1px solid red',
-            zIndex: 9999,
-          }}
-        />
-      ))}
+      {selection?.rects.map((item, i) => {
+        const layout = control?.calculateRelativeLayout(item)
+        return (
+          <div
+            key={i}
+            style={{
+              position: 'absolute',
+              top: layout?.top,
+              left: layout?.left,
+              width: item.width,
+              height: item.height,
+              border: '1px solid red',
+              zIndex: 9999,
+            }}
+          />
+        )
+      })}
     </div>
   )
 }

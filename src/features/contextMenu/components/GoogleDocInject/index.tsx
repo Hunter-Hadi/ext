@@ -6,86 +6,84 @@ import { GoogleDocContext } from '@/features/contextMenu/components/GoogleDocInj
 import GoogleDocMask from '@/features/contextMenu/components/GoogleDocInject/GoogleDocMask'
 import {
   GoogleDocControl,
+  IGoogleDocCaret,
+  IGoogleDocEventType,
   IGoogleDocSelection,
 } from '@/features/contextMenu/utils/googleDocHelper'
+import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 
 const GoogleDocInject: FC = () => {
   const control = useMemo(() => new GoogleDocControl(), [])
 
-  // const [maskContainer, setMaskContainer] = useState<HTMLDivElement | null>(
-  //   null,
-  // )
+  const [caret, setCaret] = useState<IGoogleDocCaret>()
   const [selection, setSelection] = useState<IGoogleDocSelection>()
   const [selectionTexts, setSelectionTexts] = useState<any[]>([])
 
-  // useEffectOnce(() => {
-  //   const { scrollElement } = control
-  //   if (!scrollElement) return
-  //
-  //   const maskRootElement = document.createElement('div')
-  //   maskRootElement.id = 'MAXAI_GOOGLE_DOC_MASK_CONTAINER'
-  //   maskRootElement.style.position = 'absolute'
-  //   const copyStyles = () => {
-  //     const styles = window.getComputedStyle(scrollElement)
-  //     ;['left', 'top', 'height', 'width'].forEach((propName) => {
-  //       maskRootElement.style.setProperty(
-  //         propName,
-  //         styles.getPropertyValue(propName),
-  //       )
-  //     })
-  //   }
-  //
-  //   copyStyles()
-  //   scrollElement.parentNode?.appendChild(maskRootElement)
-  //   setMaskContainer(maskRootElement)
-  //
-  //   const observer = new MutationObserver(copyStyles)
-  //   observer.observe(scrollElement, { attributes: true })
-  //
-  //   return () => {
-  //     observer.disconnect()
-  //     maskRootElement.remove()
-  //   }
-  // })
-
   useEffectOnce(() => {
-    const { selectionElement } = control
+    control.init()
 
-    if (!selectionElement) return
+    if (control.disabled) return
 
-    const mouseUpListener = (event: Event) => {
-      const gDocSelection = control.getCurrentSelection()
+    const onSelectionChange = (gDocSelection: IGoogleDocSelection) => {
       const gDocTexts = control.getTextsFromSelection(gDocSelection)
-      // control.lastSelection = gDocSelection;
-      if (!control.lastSelection && gDocSelection.rects.length) {
-        control.lastSelection = gDocSelection
-        control.log.info('first', gDocSelection)
-      }
+      const content = control.copySelection()
 
-      setTimeout(() => {
-        if (control.lastSelection) {
-          control.selectRectBySelection(control.lastSelection)
-        }
-      }, 1000)
+      // 触发context menu
+      window.postMessage(
+        {
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+          type: 'iframeSelection',
+          data: {
+            virtual: true,
+            iframeId: '~',
+            tagName: '',
+            id: '',
+            className: '',
+            windowRect: document.body.getBoundingClientRect().toJSON(),
+            targetRect: gDocSelection?.rects[0],
+            selectionRect: gDocSelection?.rects[0],
+            iframeSelectionRect: gDocSelection?.rects[0],
+            iframePosition: [0, 0],
+            selectionText: content,
+            selectionHTML: content,
+            editableElementSelectionText: content,
+            editableElementSelectionHTML: content,
+            eventType: 'mouseup',
+            isEmbedPage: false,
+            isEditableElement: true,
+            caretOffset: 2,
+            startMarkerId: '',
+            endMarkerId: '',
+          },
+        },
+        '*',
+      )
 
       setSelection(gDocSelection)
       setSelectionTexts(gDocTexts)
     }
 
-    const keyUpListener = (event: Event) => {}
+    const onCaretChange = (gDocCaret: IGoogleDocCaret) => {
+      setCaret(gDocCaret)
+    }
 
-    selectionElement.addEventListener('mouseup', mouseUpListener)
-    selectionElement.addEventListener('keyup', keyUpListener)
+    control.addListener(IGoogleDocEventType.SELECTION_CHANGE, onSelectionChange)
+    control.addListener(IGoogleDocEventType.CARET_CHANGE, onCaretChange)
+
     return () => {
-      selectionElement.removeEventListener('mouseup', mouseUpListener)
-      selectionElement.removeEventListener('keyup', keyUpListener)
+      control.removeListener(
+        IGoogleDocEventType.SELECTION_CHANGE,
+        onSelectionChange,
+      )
+      control.removeListener(IGoogleDocEventType.CARET_CHANGE, onCaretChange)
+      control.destroy()
     }
   })
 
-  if (!control.scrollElement) return null
+  if (!control || !control.scrollElement || control.disabled) return null
 
   return (
-    <GoogleDocContext.Provider value={{ control, selection, selectionTexts }}>
+    <GoogleDocContext.Provider value={{ control, caret, selection, selectionTexts }}>
       {createPortal(<GoogleDocMask />, control.scrollElement)}
     </GoogleDocContext.Provider>
   )

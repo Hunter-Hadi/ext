@@ -11,6 +11,7 @@ import Action from '@/features/shortcuts/core/Action'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export class ActionAssignCustomPromptWebPageContentContextVarible extends Action {
   static type: ActionIdentifier =
@@ -28,10 +29,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
     params: ActionParameters & ActionParameters['VariableMap'],
     engine: IShortcutEngineExternalEngine,
   ) {
-    const CURRENT_WEBSITE_DOMAIN =
-      this.parameters.OperationElementSelector ||
-      params.CURRENT_WEBSITE_DOMAIN ||
-      ''
+    const host = getCurrentDomainHost()
     const {
       CUSTOM_PROMPT_HAS_DRAFT_CONTEXT = false,
       CUSTOM_PROMPT_HAS_FULL_CONTEXT = false,
@@ -42,7 +40,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
       const actions: ISetActionsType = []
 
       // Email
-      if (EmailWebsites.includes(CURRENT_WEBSITE_DOMAIN as EmailWebsitesType)) {
+      if (EmailWebsites.includes(host as EmailWebsitesType)) {
         if (CUSTOM_PROMPT_HAS_DRAFT_CONTEXT) {
           actions.push(
             {
@@ -105,11 +103,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
         }
       }
       // Social media
-      else if (
-        SocialMediaWebsites.includes(
-          CURRENT_WEBSITE_DOMAIN as SocialMediaWebsitesType,
-        )
-      ) {
+      else if (SocialMediaWebsites.includes(host as SocialMediaWebsitesType)) {
         if (CUSTOM_PROMPT_HAS_DRAFT_CONTEXT) {
           actions.push(
             {
@@ -172,9 +166,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
         }
       }
       // Chat app website
-      else if (
-        ChatAppWebsites.includes(CURRENT_WEBSITE_DOMAIN as ChatAppWebsitesType)
-      ) {
+      else if (ChatAppWebsites.includes(host as ChatAppWebsitesType)) {
         if (CUSTOM_PROMPT_HAS_DRAFT_CONTEXT) {
           actions.push(
             {

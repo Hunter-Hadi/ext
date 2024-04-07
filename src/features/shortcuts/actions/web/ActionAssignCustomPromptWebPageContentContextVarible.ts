@@ -57,7 +57,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
               type: 'SET_VARIABLE',
               parameters: {
                 VariableName: 'DRAFT_CONTEXT',
-                VariableLabel: 'Draft Context',
+                VariableLabel: 'Draft context',
               },
             },
           )
@@ -74,7 +74,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
               value: '{{EMAIL_CONTEXTS_OF_WEBPAGE_FULL_EMAIL_CONTEXT}}',
               overwrite: true,
               isBuiltIn: true,
-              label: 'Full Context',
+              label: 'Full context',
             }
           }
           if (CUSTOM_PROMPT_HAS_TARGET_CONTEXT) {
@@ -83,7 +83,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
               value: '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
               overwrite: true,
               isBuiltIn: false,
-              label: 'Target Context',
+              label: 'Target context',
             }
           }
           actions.push(
@@ -120,7 +120,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
               type: 'SET_VARIABLE',
               parameters: {
                 VariableName: 'DRAFT_CONTEXT',
-                VariableLabel: 'Draft Context',
+                VariableLabel: 'Draft context',
               },
             },
           )
@@ -137,7 +137,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
               value: '{{SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT}}',
               overwrite: true,
               isBuiltIn: true,
-              label: 'Full Context',
+              label: 'Full context',
             }
           }
           if (CUSTOM_PROMPT_HAS_TARGET_CONTEXT) {
@@ -146,7 +146,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
               value: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
               overwrite: true,
               isBuiltIn: false,
-              label: 'Target Context',
+              label: 'Target context',
             }
           }
           actions.push(
@@ -201,7 +201,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
                 '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
               overwrite: true,
               isBuiltIn: true,
-              label: 'Full Context',
+              label: 'Full context',
             }
           }
           if (CUSTOM_PROMPT_HAS_TARGET_CONTEXT) {
@@ -211,7 +211,7 @@ export class ActionAssignCustomPromptWebPageContentContextVarible extends Action
                 '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
               overwrite: true,
               isBuiltIn: false,
-              label: 'Target Context',
+              label: 'Target context',
             }
           }
           actions.push(

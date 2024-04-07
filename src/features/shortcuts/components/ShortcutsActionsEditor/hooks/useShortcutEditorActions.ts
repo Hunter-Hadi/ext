@@ -350,7 +350,7 @@ const useShortcutEditorActions = () => {
         beforeModalOpenActions.push(...getContextActions)
         if (variableMap.has('FULL_CONTEXT')) {
           modalVariables.push({
-            label: 'Full Context',
+            label: 'Full context',
             VariableName: 'FULL_CONTEXT',
             valueType: 'Text',
             placeholder: 'Full context',
@@ -361,18 +361,18 @@ const useShortcutEditorActions = () => {
 
         if (variableMap.has('TARGET_CONTEXT')) {
           modalVariables.push({
-            label: 'Target Context',
+            label: 'Target context',
             VariableName: 'TARGET_CONTEXT',
             valueType: 'Text',
             placeholder: 'Target context',
             defaultValue: '{{TARGET_CONTEXT}}',
-            systemVariable: true,
+            systemVariable: false,
           })
         }
 
         if (variableMap.has('DRAFT_CONTEXT')) {
           modalVariables.push({
-            label: 'Draft Context',
+            label: 'Draft context',
             VariableName: 'DRAFT_CONTEXT',
             valueType: 'Text',
             placeholder: 'Draft context',

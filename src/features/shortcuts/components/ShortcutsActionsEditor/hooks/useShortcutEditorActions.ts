@@ -320,138 +320,27 @@ const useShortcutEditorActions = () => {
       ]
       specialActions.push(...searchWithAIActions)
     }
-    // 获取 email 的内容
-    if (variableMap.get('EMAIL_CONTENTS')) {
+    // 获取 (EMail | Social Media | Chat App website) 页面的上下文内容
+    if (
+      variableMap.get('FULL_CONTEXT') ||
+      variableMap.get('TARGET_CONTEXT') ||
+      variableMap.get('DRAFT_CONTEXT')
+    ) {
       specialActions.push(
         {
-          type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
+          type: 'SET_VARIABLE_MAP',
           parameters: {
-            isVariableMiddleOutEnabled: true,
+            VariableMap: {
+              CUSTOM_PROMPT_HAS_FULL_CONTEXT: variableMap.has('FULL_CONTEXT'),
+              CUSTOM_PROMPT_HAS_TARGET_CONTEXT:
+                variableMap.has('TARGET_CONTEXT'),
+              CUSTOM_PROMPT_HAS_DRAFT_CONTEXT: variableMap.has('DRAFT_CONTEXT'),
+            },
           },
         },
         {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'EMAIL_CONTENTS',
-          },
-        },
-      )
-    }
-    // 获取 email 的 draft 内容
-    if (variableMap.get('EMAIL_DRAFT')) {
-      specialActions.push(
-        {
-          type: 'GET_EMAIL_DRAFT_OF_WEBPAGE',
+          type: 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIBLE',
           parameters: {},
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'EMAIL_DRAFT',
-            VariableLabel: 'Email draft',
-          },
-        },
-      )
-    }
-    // 获取 social media post 的内容
-    if (variableMap.get('SOCIAL_MEDIA_POST_CONTENT')) {
-      specialActions.push(
-        {
-          type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-          parameters: {
-            isVariableMiddleOutEnabled: true,
-          },
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'SOCIAL_MEDIA_POST_CONTENT',
-          },
-        },
-      )
-    }
-    // 获取 social media 的 draft 内容
-    if (variableMap.get('SOCIAL_MEDIA_COMMENT_DRAFT')) {
-      specialActions.push(
-        {
-          type: 'GET_SOCIAL_MEDIA_POST_DRAFT_OF_WEBPAGE',
-          parameters: {},
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'SOCIAL_MEDIA_COMMENT_DRAFT',
-            VariableLabel: 'Social media comment draft',
-          },
-        },
-      )
-    }
-    // 获取 chat app website 的 messages 内容
-    if (variableMap.get('CHAT_MESSAGES_CONTENT')) {
-      specialActions.push(
-        {
-          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-          parameters: {
-            isVariableMiddleOutEnabled: true,
-          },
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'CHAT_MESSAGES_CONTENT',
-          },
-        },
-      )
-    }
-    // 获取 chat app website 的 message draft 内容
-    if (variableMap.get('CHAT_MESSAGE_DRAFT')) {
-      specialActions.push(
-        {
-          type: 'GET_CHAT_MESSAGE_DRAFT_OF_WEBPAGE',
-          parameters: {},
-        },
-        {
-          type: 'SLICE_OF_TEXT',
-          parameters: {
-            SliceTextActionType: 'TOKENS',
-          },
-        },
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            VariableName: 'CHAT_MESSAGE_DRAFT',
-            VariableLabel: 'Chat message draft',
-          },
         },
       )
     }

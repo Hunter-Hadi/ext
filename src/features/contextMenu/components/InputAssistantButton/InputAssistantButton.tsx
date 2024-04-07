@@ -89,9 +89,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     setContextMenuContainer,
   ] = useState<HTMLElement | null>(null)
   const { loading } = useRecoilValue(ClientWritingMessageState)
+  // const testloading = true
   const [isCTAHover, setIsCTAHover] = useState(false)
   const [isBoxHover, setIsBoxHover] = useState(false)
-  const memoButtonSx = useMemo(() => {
+  const memoButtonSx = useMemo<{
+    ctaButtonSx: SxProps
+    dropdownButtonSx: SxProps
+  }>(() => {
     let cloneCTAButtonStyle = cloneDeep(CTAButtonStyle)
     let cloneDropdownButtonStyle = cloneDeep(DropdownButtonStyle)
     let ctaButtonSx = {}
@@ -133,6 +137,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderStyle: 'solid',
         position: 'relative',
         padding,
+        iconSize,
         '&:hover': {
           color: hoverColor,
           backgroundColor: hoverBackgroundColor,
@@ -175,9 +180,6 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     return {
       ctaButtonSx,
       dropdownButtonSx,
-    } as {
-      ctaButtonSx: SxProps
-      dropdownButtonSx: SxProps
     }
   }, [CTAButtonStyle, DropdownButtonStyle, isCTAHover, buttonGroup])
   const inputAssistantBoxStyle = useMemo(() => {

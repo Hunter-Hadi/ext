@@ -6,7 +6,7 @@ import {
 } from '@/constants'
 import {
   InputAssistantButtonGroupConfigHostKeys,
-  InputAssistantButtonGroupConfigHostType,
+  WritingAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 
 export type OnBoardingKeyType =
@@ -26,7 +26,7 @@ export type OnBoardingKeyType =
   // summary 和 search 和  input assistant button free trial times
   | 'ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES'
   | 'ON_BOARDING_RECORD_SEARCH_FREE_TRIAL_TIMES'
-  | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${InputAssistantButtonGroupConfigHostType}_TIMES`
+  | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${WritingAssistantButtonGroupConfigHostType}_TIMES`
   // MaxAI 3.0版本OnBoarding
   | 'ON_BOARDING_MAXAI_3_0'
 
@@ -88,25 +88,26 @@ export const setChromeExtensionOnBoardingData = async (
  * 获取Chrome扩展onBoarding数据用于: onBoarding\一次性的flag\用户指引
  * @description - Get Chrome extension onBoarding data
  */
-export const getChromeExtensionOnBoardingData = async (): Promise<OnBoardingMapType> => {
-  const data = await Browser.storage.local.get(
-    CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
-  )
-  if (data[CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]) {
-    // 因为更新的时候有可能会增加新的Key，所以需要合并
-    return {
-      ...getDefaultOnBoardingMap(),
-      ...JSON.parse(data[CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]),
+export const getChromeExtensionOnBoardingData =
+  async (): Promise<OnBoardingMapType> => {
+    const data = await Browser.storage.local.get(
+      CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY,
+    )
+    if (data[CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]) {
+      // 因为更新的时候有可能会增加新的Key，所以需要合并
+      return {
+        ...getDefaultOnBoardingMap(),
+        ...JSON.parse(data[CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]),
+      }
+    } else {
+      await Browser.storage.local.set({
+        [CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]: JSON.stringify(
+          getDefaultOnBoardingMap(),
+        ),
+      })
+      return getDefaultOnBoardingMap()
     }
-  } else {
-    await Browser.storage.local.set({
-      [CHROME_EXTENSION_LOCAL_ON_BOARDING_SAVE_KEY]: JSON.stringify(
-        getDefaultOnBoardingMap(),
-      ),
-    })
-    return getDefaultOnBoardingMap()
   }
-}
 
 /** 重置Chrome扩展onBoarding数据用于: onBoarding\一次性的flag\用户指引
  * @description - Reset Chrome extension onBoarding data

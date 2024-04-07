@@ -1,6 +1,6 @@
 import { MAXAI_POST_MESSAGE_WITH_WEB_PAGE_ID } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils/index'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 export type MaxAIPostMessageWithWebPageType =
   | 'PING'

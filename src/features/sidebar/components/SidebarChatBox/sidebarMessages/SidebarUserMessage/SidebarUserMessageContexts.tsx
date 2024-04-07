@@ -1,8 +1,6 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
-import Box from '@mui/material/Box'
 import Chip from '@mui/material/Chip'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { styled, SxProps } from '@mui/material/styles'
@@ -13,6 +11,7 @@ import React, { FC, Fragment, useMemo, useState } from 'react'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import LazyLoadImage from '@/components/LazyLoadImage'
+import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { IUserChatMessage } from '@/features/chatgpt/types'
 import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
@@ -39,10 +38,10 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
 const SidebarUserMessageContexts: FC<{
   message: IUserChatMessage
   sx?: SxProps
+  container?: HTMLElement
 }> = (props) => {
-  const { message, sx } = props
+  const { message, sx, container } = props
   const [open, setOpen] = useState(false)
-
   const attachments = useMemo(() => {
     return (message.meta?.attachments || []).filter(
       (attachment) => attachment.uploadStatus === 'success',
@@ -56,20 +55,28 @@ const SidebarUserMessageContexts: FC<{
     (attachment) => attachment.extractedContent,
   )
   return (
-    <Box
+    <Stack
+      direction={'row'}
+      justifyContent={'end'}
       component={'div'}
       sx={{
         ...sx,
       }}
     >
-      <ClickAwayListener
+      <MaxAIClickAwayListener
         onClickAway={() => {
           setOpen(false)
         }}
       >
-        <div>
+        <Stack direction={'row'} maxWidth={'calc(100% - 16px)'}>
           <LightTooltip
             open={open}
+            PopperProps={{
+              container,
+              style: {
+                zIndex: 2147483647,
+              },
+            }}
             title={
               <Stack
                 py={0.5}
@@ -238,14 +245,12 @@ const SidebarUserMessageContexts: FC<{
               sx={{
                 borderRadius: '8px',
                 width: 'max-content',
-                maxWidth: 'calc(100% - 16px)',
                 bgcolor: (t) =>
                   t.palette.mode === 'dark' ? '#393743' : '#F6F2F9',
                 borderLeft: '4px solid #9065B0',
                 cursor: 'pointer',
               }}
               p={1}
-              ml={'auto'}
             >
               <Stack
                 ml={'auto'}
@@ -395,9 +400,9 @@ const SidebarUserMessageContexts: FC<{
               )}
             </Stack>
           </LightTooltip>
-        </div>
-      </ClickAwayListener>
-    </Box>
+        </Stack>
+      </MaxAIClickAwayListener>
+    </Stack>
   )
 }
 

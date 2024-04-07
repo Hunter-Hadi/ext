@@ -1,6 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
   IShortcutEngineExternalEngine,
@@ -15,6 +14,7 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { getMaxAISidebarRootElement } from '@/utils'
 // import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
@@ -102,14 +102,15 @@ export class ActionSetVariablesModal extends Action {
       }
       cloneConfig.template =
         config.template || this.parameters?.compliedTemplate || ''
-      const result: ActionSetVariablesConfirmData = await OneShotCommunicator.send(
-        'SetVariablesModal',
-        {
-          task: 'open',
-          config: cloneConfig,
-        },
-        5 * 60 * 1000,
-      )
+      const result: ActionSetVariablesConfirmData =
+        await OneShotCommunicator.send(
+          'SetVariablesModal',
+          {
+            task: 'open',
+            config: cloneConfig,
+          },
+          5 * 60 * 1000,
+        )
       if (result.success) {
         Object.keys(result.data).forEach((VariableName) => {
           if (result.data[VariableName] !== undefined) {

@@ -4,7 +4,7 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useRef } from 'react'
 import { v4 } from 'uuid'
 
-import { getAppContextMenuRootElement } from '@/utils'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 const PopperWrapper: FC<{
   children: React.ReactNode
@@ -15,7 +15,7 @@ const PopperWrapper: FC<{
   hoverOpen?: boolean
   stopEvent?: boolean
 }> = (props) => {
-  const container = getAppContextMenuRootElement() || document.body
+  const container = getMaxAIFloatingContextMenuRootElement() || document.body
   const {
     children,
     content,

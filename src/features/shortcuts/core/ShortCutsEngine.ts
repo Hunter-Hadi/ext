@@ -18,6 +18,7 @@ import {
   ActionGetContentsOfWebPage,
   ActionGetEmailContentsOfWebPage,
   ActionGetEmailDraftOfWebPage,
+  ActionGetLastAIMessageId,
   ActionGetPDFContentsOfCRX,
   ActionGetReadabilityContentsOfWebPage,
   ActionGetSocialMediaPostContentOfWebPage,
@@ -71,6 +72,7 @@ const ActionClassMap = {
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
   [ActionChatMessage.type]: ActionChatMessage,
+  [ActionGetLastAIMessageId.type]: ActionGetLastAIMessageId,
   // scripts
   [ActionInsertUserInput.type]: ActionInsertUserInput,
   [ActionSetVariable.type]: ActionSetVariable,

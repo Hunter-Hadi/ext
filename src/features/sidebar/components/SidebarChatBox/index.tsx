@@ -20,7 +20,6 @@ import {
   IUserChatMessageExtraType,
 } from '@/features/chatgpt/types'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SidebarAIAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced'
 import SidebarChatBoxChatSpeedDial from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxChatSpeedDial'
@@ -32,7 +31,10 @@ import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { clientRestartChromeExtension } from '@/utils'
+import {
+  clientRestartChromeExtension,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 
 interface IGmailChatBoxProps {
   sx?: SxProps

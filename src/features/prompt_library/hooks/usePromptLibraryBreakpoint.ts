@@ -2,8 +2,8 @@ import { useTheme } from '@mui/material/styles'
 import { useContext, useEffect, useMemo, useState } from 'react'
 
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 

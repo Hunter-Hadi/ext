@@ -3,7 +3,6 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
 } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
@@ -14,7 +13,11 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getInputMediator } from '@/store/InputMediator'
-import { getAppContextMenuRootElement, promiseRetry } from '@/utils'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+  promiseRetry,
+} from '@/utils'
 
 export class ActionInsertUserInput extends Action {
   static type: ActionIdentifier = 'INSERT_USER_INPUT'
@@ -41,7 +44,7 @@ export class ActionInsertUserInput extends Action {
         () => {
           let input: HTMLTextAreaElement | null = null
           if (isInsertToFloatingMenuInput) {
-            input = getAppContextMenuRootElement()?.querySelector(
+            input = getMaxAIFloatingContextMenuRootElement()?.querySelector(
               `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
             ) as HTMLTextAreaElement
           } else {

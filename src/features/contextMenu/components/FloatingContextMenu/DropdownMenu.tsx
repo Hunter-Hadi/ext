@@ -53,7 +53,7 @@ import {
   IContextMenuItem,
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
-import { getAppContextMenuRootElement } from '@/utils'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 interface LiteDropdownMenuItemProps {
   label?: string
@@ -459,9 +459,10 @@ export const MenuComponent = React.forwardRef<
       nested: isNested,
       onNavigate(index) {
         const focusTextarea = () => {
-          const textareaEl = getAppContextMenuRootElement()?.querySelector(
-            `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-          ) as HTMLTextAreaElement
+          const textareaEl =
+            getMaxAIFloatingContextMenuRootElement()?.querySelector(
+              `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+            ) as HTMLTextAreaElement
           if (textareaEl) {
             textareaEl?.focus()
           }
@@ -742,9 +743,10 @@ export const MenuComponent = React.forwardRef<
       const lastHoverId =
         floatingDropdownMenuSelectedItem.lastHoverContextMenuId
       if (lastHoverId) {
-        const menuItem = getAppContextMenuRootElement()?.querySelector(
-          `[data-id="${lastHoverId}"]`,
-        ) as HTMLDivElement
+        const menuItem =
+          getMaxAIFloatingContextMenuRootElement()?.querySelector(
+            `[data-id="${lastHoverId}"]`,
+          ) as HTMLDivElement
         if (menuItem) {
           menuItem.dispatchEvent(
             new KeyboardEvent('keydown', {
@@ -862,13 +864,15 @@ export const MenuComponent = React.forwardRef<
                     if (lastParentDropdownMenuItemRef.current) {
                       // aria-controls=":r2m:" aria-activedescendant=":r2v:"
                       // 寻找二级菜单控制的第三集菜单的根节点
-                      const lastDropdownMenuId = lastParentDropdownMenuItemRef.current
-                        ?.getAttribute('aria-controls')
-                        ?.replace(/:/g, '\\:')
+                      const lastDropdownMenuId =
+                        lastParentDropdownMenuItemRef.current
+                          ?.getAttribute('aria-controls')
+                          ?.replace(/:/g, '\\:')
                       // 第三级菜单的容器
-                      const lastDropdownMenu = getAppContextMenuRootElement()?.querySelector(
-                        `#${lastDropdownMenuId}`,
-                      ) as HTMLDivElement
+                      const lastDropdownMenu =
+                        getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                          `#${lastDropdownMenuId}`,
+                        ) as HTMLDivElement
                       if (lastDropdownMenu) {
                         // 第三级菜单的选中项
                         const itemId = lastDropdownMenu
@@ -908,9 +912,10 @@ export const MenuComponent = React.forwardRef<
                     )
                     return
                   }
-                  const textareaEl = getAppContextMenuRootElement()?.querySelector(
-                    `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-                  ) as HTMLTextAreaElement
+                  const textareaEl =
+                    getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                      `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+                    ) as HTMLTextAreaElement
                   textareaEl?.focus()
                   // console.log(
                   //   `${
@@ -1046,9 +1051,8 @@ export const MenuComponent = React.forwardRef<
                           const target = event.currentTarget as HTMLDivElement
                           if (target.getAttribute('data-id')) {
                             lastParentDropdownMenuItemRef.current = target
-                            const nodeDetail = getFloatingUIDropdownItemDetail(
-                              target,
-                            )
+                            const nodeDetail =
+                              getFloatingUIDropdownItemDetail(target)
                             if (nodeDetail?.id || nodeDetail?.contextMenuId) {
                               // 关闭开着的group
                               if (nodeDetail.expandedSiblingMenuItem) {
@@ -1060,9 +1064,10 @@ export const MenuComponent = React.forwardRef<
                                 ) {
                                   return
                                 }
-                                const expandDropdownItemDetail = getFloatingUIDropdownItemDetail(
-                                  nodeDetail.expandedSiblingMenuItem,
-                                )
+                                const expandDropdownItemDetail =
+                                  getFloatingUIDropdownItemDetail(
+                                    nodeDetail.expandedSiblingMenuItem,
+                                  )
                                 if (
                                   expandDropdownItemDetail?.dropdownSelectedItem
                                 ) {
@@ -1206,7 +1211,7 @@ type FloatingUIDropdownItemDetail = {
 const getFloatingUIDropdownItemDetail = (
   node: HTMLDivElement,
 ): FloatingUIDropdownItemDetail | null => {
-  const root = getAppContextMenuRootElement() as HTMLDivElement
+  const root = getMaxAIFloatingContextMenuRootElement() as HTMLDivElement
   if (!node || !root) {
     return null
   }

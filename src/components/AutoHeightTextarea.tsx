@@ -26,8 +26,8 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 import {
-  getAppActiveElement,
-  getFloatingContextMenuActiveElement,
+  getMaxAIFloatingContextMenuActiveElement,
+  getMaxAISidebarActiveElement,
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -143,8 +143,8 @@ export const autoFocusWithAllWebsite = (
     }
   }
   if (
-    textareaElement.isSameNode(getAppActiveElement()) ||
-    textareaElement.isSameNode(getFloatingContextMenuActiveElement())
+    textareaElement.isSameNode(getMaxAISidebarActiveElement()) ||
+    textareaElement.isSameNode(getMaxAIFloatingContextMenuActiveElement())
   ) {
     return
   }

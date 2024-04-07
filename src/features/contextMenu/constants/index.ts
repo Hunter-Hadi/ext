@@ -64,9 +64,56 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
       icon: 'DefaultIcon',
       actions: [
         {
-          type: 'FETCH_ACTIONS',
+          type: 'GET_LAST_AI_MESSAGE_ID',
+          parameters: {},
+        },
+        {
+          type: 'SET_VARIABLE',
           parameters: {
-            template: 'c0f7a642-9e34-4b1f-a2ee-1c4c5e93fa23',
+            VariableName: 'LAST_AI_MESSAGE_ID',
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template: '{{SELECTED_TEXT}}\n{{POPUP_DRAFT}}',
+          },
+        },
+        {
+          type: 'SLICE_OF_TEXT',
+          parameters: {
+            SliceTextActionType: 'TOKENS',
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            Variable: {
+              key: `MAXAI_CONTINUE_WRITING_TEXT_DRAFT`,
+              value: `{{LAST_ACTION_OUTPUT}}`,
+              isBuiltIn: true,
+              overwrite: true,
+              label: 'Continue writing text draft',
+            },
+          },
+        },
+        {
+          type: 'RENDER_TEMPLATE',
+          parameters: {
+            template:
+              "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{MAXAI_CONTINUE_WRITING_TEXT_DRAFT}}\n```",
+          },
+        },
+        {
+          type: 'ASK_CHATGPT',
+          parameters: {
+            template: '{{LAST_ACTION_OUTPUT}}',
+            AskChatGPTActionQuestion: {
+              text: `{{MAXAI_CONTINUE_WRITING_TEXT_DRAFT}}`,
+              meta: {
+                outputMessageId: `{{LAST_AI_MESSAGE_ID}}`,
+              },
+            },
           },
         },
       ],

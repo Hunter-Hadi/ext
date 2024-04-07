@@ -7,8 +7,8 @@ import TablePagination, {
 } from '@mui/material/TablePagination'
 import React, { FC, useContext } from 'react'
 
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { PromptLibraryRuntimeContext } from '@/features/prompt_library/store'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 interface ICustomTablePaginationProps {
   /**

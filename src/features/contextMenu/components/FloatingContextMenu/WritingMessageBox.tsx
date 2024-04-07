@@ -16,6 +16,7 @@ import {
 } from '@/features/contextMenu/store'
 import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 const WritingMessageBox: FC<{
   onChange?: (value: string) => void
@@ -125,10 +126,21 @@ const WritingMessageBox: FC<{
       component={'div'}
     >
       {isEmpty(currentFloatingContextMenuDraft) ? <ContextText /> : null}
-      {/*// TODO 现在太丑了*/}
       {selectedDraftUserMessage && (
         <SidebarUserMessageContexts
-          sx={{ mt: 1 }}
+          container={
+            getMaxAIFloatingContextMenuRootElement() || document.documentElement
+          }
+          sx={{
+            mt: 1,
+            '& > div': {
+              maxWidth: '100%',
+              width: '100%',
+              '& > div': {
+                width: '100%',
+              },
+            },
+          }}
           message={selectedDraftUserMessage}
         />
       )}

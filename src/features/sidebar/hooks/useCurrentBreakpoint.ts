@@ -2,7 +2,7 @@ import { useTheme } from '@mui/material/styles'
 import { useEffect, useMemo, useState } from 'react'
 
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'

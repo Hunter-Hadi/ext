@@ -4,12 +4,10 @@ import { v4 as uuidV4 } from 'uuid'
 import { clientAskAIQuestion } from '@/background/src/chat/util'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import {
-  ContentScriptConnectionV2,
-  getAIProviderChatFiles,
-} from '@/features/chatgpt'
+import { getAIProviderChatFiles } from '@/features/chatgpt'
 import {
   IAIResponseMessage,
+  IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
@@ -227,6 +225,17 @@ export class ActionAskChatGPT extends Action {
         // 第三方AI provider的conversationId
         let AIConversationId = ''
         let errorMessage = ''
+        // 需要更新的AI response的消息
+        let outputMessage: IChatMessage | null = null
+        if (outputMessageId) {
+          const messages = (
+            await clientGetConversation(this.question.conversationId)
+          )?.messages
+          outputMessage =
+            messages?.find(
+              (message) => message.messageId === outputMessageId,
+            ) || null
+        }
         try {
           await clientAskAIQuestion(this.question!, {
             onMessage: async (message) => {
@@ -244,27 +253,46 @@ export class ActionAskChatGPT extends Action {
               }
               this.output = this.answer.text
               // 如果有AI response的消息Id，则需要把AI response添加到指定的Message
-              if (outputMessageId && this.status === 'running') {
-                await clientChatConversationModifyChatMessages(
-                  'update',
-                  conversationId,
-                  0,
-                  isAIMessage(this.answer)
-                    ? [
-                        mergeWithObject([
-                          message,
-                          {
-                            messageId: outputMessageId,
-                            originalMessage: {
-                              content: {
-                                text: message.text,
-                              },
+              if (outputMessage && this.status === 'running') {
+                // 如果是AI response的消息，并且有originalMessage，则更新originalMessage.content.text
+                if (
+                  isAIMessage(outputMessage) &&
+                  outputMessage.originalMessage
+                ) {
+                  await clientChatConversationModifyChatMessages(
+                    'update',
+                    conversationId,
+                    0,
+                    [
+                      mergeWithObject([
+                        outputMessage,
+                        {
+                          messageId: outputMessageId,
+                          originalMessage: {
+                            content: {
+                              text: message.text,
                             },
-                          } as IAIResponseMessage,
-                        ]),
-                      ]
-                    : [message],
-                )
+                          },
+                        } as IAIResponseMessage,
+                      ]),
+                    ],
+                  )
+                } else {
+                  await clientChatConversationModifyChatMessages(
+                    'update',
+                    conversationId,
+                    0,
+                    [
+                      mergeWithObject([
+                        outputMessage,
+                        {
+                          messageId: outputMessageId,
+                          text: message.text,
+                        } as IChatMessage,
+                      ]),
+                    ],
+                  )
+                }
               } else if (
                 askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
                 askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER' &&
@@ -385,68 +413,47 @@ export class ActionAskChatGPT extends Action {
       this.error = chatGPTCommonErrorInterceptor((e as any).toString())
     }
   }
-  async stop() {
-    const port = new ContentScriptConnectionV2({
-      runtime: 'client',
-    })
 
-    if (this.question?.conversationId && this.question.meta?.outputMessageId) {
-      await port.postMessage({
-        event: 'Client_abortAskChatGPTQuestion',
-        data: {
-          messageId: this.question?.messageId,
-          conversationId: this.question?.conversationId,
-        },
-      })
-      // 因为整个过程不一定是成功的
-      // 更新消息的isComplete/sources.status
-      await clientChatConversationModifyChatMessages(
-        'update',
-        this.question?.conversationId,
-        0,
-        [
-          {
-            type: 'ai',
-            messageId: this.question.meta.outputMessageId,
-            originalMessage: {
-              metadata: {
-                sources: {
-                  status: 'complete',
-                },
-                isComplete: true,
-              },
-            },
-          } as any,
-        ],
-      )
-    } else if (this.question?.conversationId) {
+  async stop() {
+    if (this.question?.conversationId) {
       const messages = (
         await clientGetConversation(this.question?.conversationId)
       )?.messages
-      if (messages) {
-        const lastMessage = messages[messages.length - 1]
-        if (isAIMessage(lastMessage)) {
-          if (lastMessage.originalMessage) {
-            await clientChatConversationModifyChatMessages(
-              'update',
-              this.question?.conversationId,
-              0,
-              [
-                {
-                  type: 'ai',
-                  messageId: lastMessage.messageId,
-                  originalMessage: {
-                    metadata: {
-                      sources: {
-                        status: 'complete',
-                      },
-                      isComplete: true,
-                    },
-                  },
-                } as any,
-              ],
-            )
+      if (messages && messages.length > 0) {
+        // 找到最后一条AI消息
+        let needStopAIMessage = messages[messages.length - 1]
+        // 如果有outputMessageId，则找到outputMessage
+        if (this.question.meta?.outputMessageId) {
+          const outputMessage = messages.find(
+            (message) =>
+              message.messageId === this.question!.meta!.outputMessageId,
+          )
+          if (outputMessage) {
+            needStopAIMessage = outputMessage
           }
+        }
+        // 如果是originalMessage更新消息的isComplete/sources.status
+        if (
+          isAIMessage(needStopAIMessage) &&
+          needStopAIMessage.originalMessage
+        ) {
+          // 更新消息的isComplete/sources.status
+          await clientChatConversationModifyChatMessages(
+            'update',
+            this.question?.conversationId,
+            0,
+            [
+              {
+                type: 'ai',
+                messageId: needStopAIMessage.messageId,
+                originalMessage: {
+                  metadata: {
+                    isComplete: true,
+                  },
+                },
+              } as any,
+            ],
+          )
         }
       }
     }

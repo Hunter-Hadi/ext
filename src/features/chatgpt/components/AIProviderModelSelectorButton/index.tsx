@@ -23,9 +23,11 @@ import {
   useClientConversation,
 } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getAppContextMenuRootElement } from '@/utils'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 
 const AIProviderModelSelectorButton: FC<{
   disabled?: boolean
@@ -137,7 +139,7 @@ const AIProviderModelSelectorButton: FC<{
     const mouseEventHandler = (event: MouseEvent) => {
       const aiProviderCard =
         size === 'small'
-          ? (getAppContextMenuRootElement()?.querySelector(
+          ? (getMaxAIFloatingContextMenuRootElement()?.querySelector(
               '#MaxAIProviderSelectorCard',
             ) as HTMLElement)
           : (getMaxAISidebarRootElement()?.querySelector(
@@ -250,7 +252,7 @@ const AIProviderModelSelectorButton: FC<{
         modifiers={AIModelPopperModifiers}
         container={
           size === 'small'
-            ? getAppContextMenuRootElement()
+            ? getMaxAIFloatingContextMenuRootElement()
             : getMaxAISidebarRootElement()
         }
       >

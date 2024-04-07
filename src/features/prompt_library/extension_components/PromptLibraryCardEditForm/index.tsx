@@ -14,7 +14,6 @@ import { useTranslation } from 'react-i18next'
 import CustomConfirm from '@/components/CustomConfirm'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import CustomModal from '@/features/common/components/CustomModal'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ReactHookFormSelect from '@/features/prompt_library/extension_components/PromptLibraryCardEditForm/ReactHookFormSelect'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
 import usePromptLibraryBreakpoint from '@/features/prompt_library/hooks/usePromptLibraryBreakpoint'
@@ -29,6 +28,7 @@ import {
   actionsToPromptLibraryCardDetailData,
   promptLibraryCardDetailDataToActions,
 } from '@/features/shortcuts/utils/promptInterpreter'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 const inputProps = {
   sx: {
@@ -87,11 +87,8 @@ const PromptLibraryCardEditForm: FC = () => {
     editPromptLibraryCardMutation,
   } = usePromptActions()
   const isAddNewPrompt = editPromptId === 'NEW_PROMPT'
-  const {
-    categoryOptions,
-    useCaseOptions,
-    loading,
-  } = usePromptLibraryCategory()
+  const { categoryOptions, useCaseOptions, loading } =
+    usePromptLibraryCategory()
   const [errorText, setErrorText] = useState({
     prompt_template: '',
     author_url: '',
@@ -386,7 +383,8 @@ const PromptLibraryCardEditForm: FC = () => {
                   InputProps={inputProps}
                   disabled={formDisabled}
                   {...register('author_url', {
-                    pattern: /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/,
+                    pattern:
+                      /^(((ht|f)tps?):\/\/)?([^!@#$%^&*?.\s-]([^!@#$%^&*?.\s]{0,63}[^!@#$%^&*?.\s])?\.)+[a-z]{2,6}\/?/,
                     validate: (value) => {
                       if (!value) return true
                       const flag =

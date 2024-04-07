@@ -5,10 +5,12 @@ import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import React, { useEffect, useRef, useState } from 'react'
 import { v4 as uuidV4 } from 'uuid'
 
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { getSearchWithAIRootElement } from '@/features/searchWithAI/utils'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
-import { getAppContextMenuRootElement } from '@/utils'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 
 const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -103,9 +105,11 @@ const LazyLoadImage: React.FC<LazyLoadImageProps> = (props) => {
       target = getMaxAISidebarRootElement()?.querySelector(
         lazyImageId,
       ) as HTMLElement
-    } else if (getAppContextMenuRootElement()?.querySelector(lazyImageId)) {
-      setContainer(getAppContextMenuRootElement() as HTMLElement)
-      target = getAppContextMenuRootElement()?.querySelector(
+    } else if (
+      getMaxAIFloatingContextMenuRootElement()?.querySelector(lazyImageId)
+    ) {
+      setContainer(getMaxAIFloatingContextMenuRootElement() as HTMLElement)
+      target = getMaxAIFloatingContextMenuRootElement()?.querySelector(
         lazyImageId,
       ) as HTMLElement
     } else if (getSearchWithAIRootElement()?.querySelector(lazyImageId)) {

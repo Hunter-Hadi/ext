@@ -2,7 +2,6 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useCallback, useMemo } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
@@ -19,6 +18,7 @@ import {
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppState } from '@/store'
+import { getMaxAISidebarRootElement } from '@/utils'
 import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/useFloatingContextMenu')

@@ -2,7 +2,7 @@ import {
   ARKOSE_TOKEN_GENERATOR_POST_MESSAGE_ID,
   ArkoseTokenModelType,
 } from '@/assets/openai/arkoseTokenIframeId'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/utils'
 import Log from '@/utils/Log'
 import { promiseTimeout } from '@/utils/promiseUtils'
 

@@ -8,7 +8,6 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
   MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID,
 } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   CONTEXT_MENU_DRAFT_LIST,
   CONTEXT_MENU_DRAFT_TYPES,
@@ -21,7 +20,10 @@ import {
 } from '@/features/contextMenu/types'
 import { ContextMenuSearchTextStoreI18nStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
 import { getInputMediator } from '@/store/InputMediator'
-import { getAppContextMenuRootElement } from '@/utils'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 
 export const groupByContextMenuItem = (
   items: IContextMenuItem[],
@@ -295,11 +297,9 @@ export const fuzzySearchContextMenuList = (
   const groupByParent = groupBy(uniqBy(filterResult, 'id'), 'parent')
   console.log(groupByParent)
   Object.keys(groupByParent).forEach((parent) => {
-    const children = (groupByParent[
-      parent
-    ] as IContextMenuItemWithChildren[]).filter(
-      (item) => item.data.type !== 'group',
-    )
+    const children = (
+      groupByParent[parent] as IContextMenuItemWithChildren[]
+    ).filter((item) => item.data.type !== 'group')
     if (children.length > 0) {
       if (parent === 'root') {
         results.push(...children)
@@ -456,7 +456,7 @@ export const computedIframeSelection = (iframeElement: HTMLIFrameElement) => {
 }
 
 export const isFloatingContextMenuVisible = () => {
-  const floatingMenu = getAppContextMenuRootElement()?.querySelector(
+  const floatingMenu = getMaxAIFloatingContextMenuRootElement()?.querySelector(
     `#${MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID}`,
   )
   return floatingMenu && floatingMenu.getAttribute('aria-hidden') === 'false'

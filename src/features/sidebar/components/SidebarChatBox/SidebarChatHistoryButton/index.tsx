@@ -19,8 +19,8 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -37,10 +37,8 @@ const SidebarChatHistoryButton: FC<{
   const isImmersiveChatPage = isMaxAIImmersiveChatPage()
   const paperRef = useRef<HTMLDivElement>()
 
-  const {
-    setPaginationConversations,
-    fetchPaginationConversations,
-  } = usePaginationConversations()
+  const { setPaginationConversations, fetchPaginationConversations } =
+    usePaginationConversations()
 
   const {
     currentSidebarConversationType,
@@ -82,42 +80,42 @@ const SidebarChatHistoryButton: FC<{
     setAnchorEl(null)
   }
 
-  const handleClick = (newPlacement: PopperPlacementType) => (
-    event: React.MouseEvent<HTMLButtonElement>,
-  ) => {
-    const containerElement = (getMaxAISidebarRootElement()?.querySelector(
-      '#maxAISidebarChatBox',
-    ) || document.body) as HTMLDivElement
-    const targetElement = event.currentTarget as HTMLButtonElement
-    // 高度取决于targetElement的高度
-    // 宽度取决于containerElement的中心
-    const rect = targetElement.getBoundingClientRect()
-    const containerRect = containerElement.getBoundingClientRect()
-    setAnchorEl({
-      getBoundingClientRect: () => {
-        const left = isImmersiveChatPage
-          ? document.body.offsetWidth / 2 + 8
-          : containerRect.x + containerRect.width / 2
-        const virtualRect = {
-          x: left,
-          y: rect.y - 8,
-          width: isImmersiveChatPage ? 1 : 58,
-          height: 1,
-          top: rect.top - 8,
-          left: left,
-          bottom: rect.top + 1,
-          right: left + 1,
-        } as DOMRect
-        return virtualRect
-      },
-    } as any)
-    setTimeout(() => {
-      paperRef.current?.focus()
-    }, 100)
-    setIsClickOpenOnce(true)
-    handleOpenModal()
-    setPlacement(newPlacement)
-  }
+  const handleClick =
+    (newPlacement: PopperPlacementType) =>
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      const containerElement = (getMaxAISidebarRootElement()?.querySelector(
+        '#maxAISidebarChatBox',
+      ) || document.body) as HTMLDivElement
+      const targetElement = event.currentTarget as HTMLButtonElement
+      // 高度取决于targetElement的高度
+      // 宽度取决于containerElement的中心
+      const rect = targetElement.getBoundingClientRect()
+      const containerRect = containerElement.getBoundingClientRect()
+      setAnchorEl({
+        getBoundingClientRect: () => {
+          const left = isImmersiveChatPage
+            ? document.body.offsetWidth / 2 + 8
+            : containerRect.x + containerRect.width / 2
+          const virtualRect = {
+            x: left,
+            y: rect.y - 8,
+            width: isImmersiveChatPage ? 1 : 58,
+            height: 1,
+            top: rect.top - 8,
+            left: left,
+            bottom: rect.top + 1,
+            right: left + 1,
+          } as DOMRect
+          return virtualRect
+        },
+      } as any)
+      setTimeout(() => {
+        paperRef.current?.focus()
+      }, 100)
+      setIsClickOpenOnce(true)
+      handleOpenModal()
+      setPlacement(newPlacement)
+    }
 
   useEffect(() => {
     if (modalOpen) {
@@ -235,7 +233,8 @@ const SidebarChatHistoryButton: FC<{
                           fetchPaginationConversations().then(
                             (conversations) => {
                               setPaginationConversations(conversations)
-                              const needCleanConversationType = currentSidebarConversationType.toLowerCase()
+                              const needCleanConversationType =
+                                currentSidebarConversationType.toLowerCase()
                               updateSidebarSettings({
                                 [needCleanConversationType]: {
                                   conversationId: '',

@@ -11,7 +11,7 @@ import {
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
+  getMaxAIFloatingContextMenuRootElement,
 } from '@/utils'
 
 /**
@@ -139,7 +139,7 @@ const useInitWebPageMessageChannel = () => {
           }
           case 'CLOSE_SIDEBAR': {
             const closeModalButton =
-              getAppContextMenuRootElement()?.querySelector(
+              getMaxAIFloatingContextMenuRootElement()?.querySelector(
                 '.max-ai__action__set_variables_modal button[data-test-id="close-modal-button"]',
               ) as HTMLButtonElement
             if (closeModalButton) {

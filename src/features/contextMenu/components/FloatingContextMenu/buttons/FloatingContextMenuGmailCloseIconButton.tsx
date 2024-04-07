@@ -11,7 +11,7 @@ import {
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
+  getMaxAIFloatingContextMenuRootElement,
 } from '@/utils'
 
 const FloatingContextMenuGmailCloseIconButton: FC<{
@@ -25,7 +25,7 @@ const FloatingContextMenuGmailCloseIconButton: FC<{
     if (root) {
       return
     }
-    const rootEl = getAppContextMenuRootElement()
+    const rootEl = getMaxAIFloatingContextMenuRootElement()
     if (rootEl) {
       setRoot(rootEl)
     }

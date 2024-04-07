@@ -41,7 +41,6 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
 } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import {
   FloatingContextMenuOpenSidebarButton,
   FloatingContextMenuPopupSettingButton,
@@ -86,7 +85,10 @@ import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
-import { getAppContextMenuRootElement } from '@/utils'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -328,9 +330,10 @@ const FloatingContextMenu: FC<{
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
-      const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-      ) as HTMLTextAreaElement
+      const textareaEl =
+        getMaxAIFloatingContextMenuRootElement()?.querySelector(
+          `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+        ) as HTMLTextAreaElement
       if (textareaEl) {
         setTimeout(() => {
           textareaEl?.focus()
@@ -341,9 +344,10 @@ const FloatingContextMenu: FC<{
         setAppDBStorage(settings)
       })
     } else {
-      const textareaEl = getAppContextMenuRootElement()?.querySelector(
-        `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-      ) as HTMLTextAreaElement
+      const textareaEl =
+        getMaxAIFloatingContextMenuRootElement()?.querySelector(
+          `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+        ) as HTMLTextAreaElement
       const userInputDraft = textareaEl?.value
       if (userInputDraft) {
         getInputMediator('chatBoxInputMediator').updateInputValue(
@@ -389,9 +393,10 @@ const FloatingContextMenu: FC<{
   useEffect(() => {
     if (!clientWritingMessage.loading) {
       if (isFloatingContextMenuVisible()) {
-        const textareaEl = getAppContextMenuRootElement()?.querySelector(
-          `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
-        ) as HTMLTextAreaElement
+        const textareaEl =
+          getMaxAIFloatingContextMenuRootElement()?.querySelector(
+            `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
+          ) as HTMLTextAreaElement
         if (textareaEl) {
           setTimeout(() => {
             textareaEl?.focus()
@@ -578,7 +583,8 @@ const FloatingContextMenu: FC<{
     }
     const runActions = cloneDeep(actions)
     // 如果有动作，并且sidebar是Chat或者是从Sidebar触发的prompt才运行
-    if (actions.length > 0 && isContextMenuFromSidebar()) {
+    console.log(`isContextMenuFromSidebar`, isContextMenuFromSidebar())
+    if (actions.length > 0) {
       isRunningActionsRef.current = true
       setActions([])
       const lastRecordContextMenu = lastRecordContextMenuRef.current
@@ -805,7 +811,7 @@ const FloatingContextMenu: FC<{
                   justifyContent="space-between"
                   onClick={() => {
                     const textareaEl =
-                      getAppContextMenuRootElement()?.querySelector(
+                      getMaxAIFloatingContextMenuRootElement()?.querySelector(
                         `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
                       ) as HTMLTextAreaElement
                     if (textareaEl) {

@@ -13,7 +13,7 @@ import {
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
+  getMaxAIFloatingContextMenuRootElement,
 } from '@/utils'
 
 const FloatingContextMenuPopupSettingButton: FC<{
@@ -27,7 +27,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
     if (root) {
       return
     }
-    const rootEl = getAppContextMenuRootElement()
+    const rootEl = getMaxAIFloatingContextMenuRootElement()
     if (rootEl) {
       setRoot(rootEl)
     }

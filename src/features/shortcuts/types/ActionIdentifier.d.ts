@@ -82,6 +82,8 @@ type ActionIdentifier =
   | 'MAXAI_SUMMARY_LOG'
   //MaxAI 处理内置的变量
   | 'MAXAI_PROCESS_BUILT_IN_PARAMETERS'
+  // 获取最后一条AI消息的ID
+  | 'GET_LAST_AI_MESSAGE_ID'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

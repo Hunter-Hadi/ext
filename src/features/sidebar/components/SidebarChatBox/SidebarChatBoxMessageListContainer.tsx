@@ -7,9 +7,9 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useInterval from '@/features/common/hooks/useInterval'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 export const messageListContainerId = 'message-list-scroll-container'
 
@@ -224,9 +224,9 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         })}
         {/* 如果 writingMessage.messageId 在 slicedMessageList 中存在，则不渲染 */}
         {writingMessage &&
-          !slicedMessageList.find(
-            (msg) => msg.messageId === writingMessage.messageId,
-          ) ? (
+        !slicedMessageList.find(
+          (msg) => msg.messageId === writingMessage.messageId,
+        ) ? (
           <SidebarChatBoxMessageItem
             className={'use-chat-gpt-ai__writing-message-item'}
             message={writingMessage}

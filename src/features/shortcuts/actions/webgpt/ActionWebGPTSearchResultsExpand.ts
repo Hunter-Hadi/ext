@@ -271,7 +271,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
           },
         ],
         prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',
-        prompt_name: '[Search] smart page',
+        prompt_name: '[Search] read page',
       },
       abortTaskId,
     )

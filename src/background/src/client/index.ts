@@ -244,7 +244,8 @@ export const ClientMessageInit = () => {
               if (tab.windowId) {
                 const window = await Browser.windows.get(tab.windowId)
                 if (window.id && window.id !== Browser.windows.WINDOW_ID_NONE) {
-                  const lastWindowIdOfChatGPTTab = await getWindowIdOfChatGPTTab()
+                  const lastWindowIdOfChatGPTTab =
+                    await getWindowIdOfChatGPTTab()
                   // 如果 sender 的 windowid 不是创建的 chatgpt tab 时的 windowid，就不最小化
                   const state =
                     lastWindowIdOfChatGPTTab !== window.id || windowVisible
@@ -416,7 +417,8 @@ export const ClientMessageInit = () => {
           }
         }
         case 'Client_getAllPaginationConversation': {
-          const allPaginationConversations = await ConversationManager.getAllPaginationConversations()
+          const allPaginationConversations =
+            await ConversationManager.getAllPaginationConversations()
           return {
             success: true,
             data: allPaginationConversations,
@@ -453,9 +455,8 @@ export const ClientMessageInit = () => {
         case 'Client_getLiteConversation':
           {
             const { conversationId } = data
-            const conversation = await ConversationManager.getClientConversation(
-              conversationId,
-            )
+            const conversation =
+              await ConversationManager.getClientConversation(conversationId)
             // console.log('新版Conversation，获取conversation', conversation)
             return {
               success: conversation?.id ? true : false,
@@ -471,9 +472,10 @@ export const ClientMessageInit = () => {
               updateConversationData,
               syncConversationToDB,
             } = data
-            const oldConversation = await ConversationManager.conversationDB.getConversationById(
-              conversationId,
-            )
+            const oldConversation =
+              await ConversationManager.conversationDB.getConversationById(
+                conversationId,
+              )
             if (oldConversation) {
               await ConversationManager.conversationDB.addOrUpdateConversation(
                 mergeWithObject([oldConversation, updateConversationData]),
@@ -482,9 +484,8 @@ export const ClientMessageInit = () => {
                   reason: 'Client_updateConversation',
                 },
               )
-              const newConversationData = await ConversationManager.getClientConversation(
-                conversationId,
-              )
+              const newConversationData =
+                await ConversationManager.getClientConversation(conversationId)
               sender.tab?.id &&
                 (await Browser.tabs.sendMessage(sender.tab.id, {
                   event: 'Client_listenUpdateConversationMessages',
@@ -628,7 +629,8 @@ export const ClientMessageInit = () => {
             if (sender.tab?.id && taskId) {
               // send to tab
               await Browser.tabs.sendMessage(sender.tab.id, {
-                event: 'Iframe_ListenGetPageContent' as IChromeExtensionClientSendEvent,
+                event:
+                  'Iframe_ListenGetPageContent' as IChromeExtensionClientSendEvent,
                 id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
                 data: {
                   taskId,
@@ -654,7 +656,8 @@ export const ClientMessageInit = () => {
           if (taskId && sender.tab?.id) {
             // send to tab
             await Browser.tabs.sendMessage(sender.tab.id, {
-              event: 'Client_ListenGetIframePageContentResponse' as IChromeExtensionClientSendEvent,
+              event:
+                'Client_ListenGetIframePageContentResponse' as IChromeExtensionClientSendEvent,
               id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
               data: {
                 taskId,
@@ -742,9 +745,8 @@ export const ClientMessageInit = () => {
           const { websiteContext } = data as {
             websiteContext: Partial<IWebsiteContext>
           }
-          const newWebsiteContext = await WebsiteContextManager.createWebsiteContext(
-            websiteContext,
-          )
+          const newWebsiteContext =
+            await WebsiteContextManager.createWebsiteContext(websiteContext)
           return {
             success: true,
             data: newWebsiteContext,

@@ -7,7 +7,7 @@ import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
-import { ISetActionsType } from '@/features/shortcuts/types/Action'
+import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import { isEmailWebsite } from '@/features/shortcuts/utils/email/getEmailWebsitePageContentsOrDraft'
 import {
@@ -40,7 +40,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     id: 'f734efe5-c63e-490e-a0f1-ae5a248e0f16',
     parent: 'root',
     droppable: false,
-    text: 'Summarize page',
+    text: '[Summary] Summarize page',
     data: {
       editable: false,
       type: 'shortcuts',
@@ -207,7 +207,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     id: '8ed1bf33-efc9-4714-8b21-09ceede3e2a8',
     parent: 'root',
     droppable: false,
-    text: 'Summarize email',
+    text: '[Summary] Summarize email',
     data: {
       editable: false,
       type: 'shortcuts',
@@ -374,7 +374,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     id: '0c8c8bd7-1072-4fb7-9fad-cf6447b33896',
     parent: 'root',
     droppable: false,
-    text: 'Summarize PDF',
+    text: '[Summary] Summarize PDF',
     data: {
       editable: false,
       type: 'shortcuts',
@@ -545,7 +545,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     id: '215bf574-3a68-4ac8-8fff-ccdd19150cb9',
     parent: 'root',
     droppable: false,
-    text: 'Summarize video',
+    text: '[Summary] Summarize video',
     data: {
       editable: false,
       type: 'shortcuts',
@@ -880,13 +880,9 @@ export const getContextMenuActionsByPageSummaryType = async (
       title: summaryNaTitle,
       key: summaryNavKey,
     })
-    const contextMenu = cloneDeep(
-      PAGE_SUMMARY_CONTEXT_MENU_MAP[pageSummaryType],
-    )
-    contextMenu.data.actions = cloneDeep(summaryNavActions)
 
     let messageId = ''
-    const actions = (contextMenu.data.actions || []).map((action, index) => {
+    const actions = summaryNavActions.map((action, index) => {
       if (index === 0) {
         messageId = action.parameters.ActionChatMessageConfig?.messageId || ''
       }
@@ -898,7 +894,6 @@ export const getContextMenuActionsByPageSummaryType = async (
           ...action.parameters.AskChatGPTActionQuestion,
           meta: {
             ...action.parameters.AskChatGPTActionQuestion.meta,
-            contextMenu: cloneDeep(contextMenu),
           },
         }
       }
@@ -914,6 +909,78 @@ export const getContextMenuActionsByPageSummaryType = async (
     return undefined
   }
 }
+//   | 'all'
+//   | 'summary'
+//   | 'keyTakeaways'
+//   | 'comment'
+//   | 'transcript'
+//   | 'actions'
+//   | 'timestamped'
+export const SummaryContextMenuOverwriteMap: Record<
+  IPageSummaryType,
+  Partial<
+    Record<
+      SummaryParamsPromptType,
+      {
+        id: string
+        text: string
+      }
+    >
+  >
+> = {
+  PAGE_SUMMARY: {
+    summary: {
+      id: '4df133ba-b4f5-421c-989c-a2e0f0340061',
+      text: `[Summary] Summarize page (TL:DR)`,
+    },
+    keyTakeaways: {
+      id: 'f46cd57b-8f9d-4c66-9f8a-d9631068f61a',
+      text: `[Summary] Summarize page (Key takeaways)`,
+    },
+  },
+  PDF_CRX_SUMMARY: {
+    summary: {
+      id: '45ea67db-695b-4870-b467-981f137b2378',
+      text: `[Summary] Summarize PDF (TL:DR)`,
+    },
+    keyTakeaways: {
+      id: '2d1dd5aa-1809-4aac-952d-ff07903eb7c5',
+      text: `[Summary] Summarize PDF (Key takeaways)`,
+    },
+  },
+  DEFAULT_EMAIL_SUMMARY: {
+    summary: {
+      id: '71a59198-b0d8-4d5a-ba4f-42795b7e3318',
+      text: `[Summary] Summarize email (TL:DR)`,
+    },
+    keyTakeaways: {
+      id: '2b754799-5704-4703-b533-ba4add9614aa',
+      text: `[Summary] Summarize email (Key takeaways)`,
+    },
+    actions: {
+      id: '5d4f32d1-450d-4412-a8ea-a6c64c43988c',
+      text: '[Summary] Summarize email (Action items)',
+    },
+  },
+  YOUTUBE_VIDEO_SUMMARY: {
+    summary: {
+      id: '19c361b7-c4b3-496e-8339-fc8384726759',
+      text: `[Summary] Summarize video`,
+    },
+    timestamped: {
+      id: '2cb58619-3822-4d6a-8f7f-0c38d01f231e',
+      text: '[Summary] Timestamped summary',
+    },
+    comment: {
+      id: '5278969d-1d86-4df2-a3e8-48e50dbbd86e',
+      text: '[Summary] Summarize comments',
+    },
+    transcript: {
+      id: '029d848d-7c28-4a3a-baae-353292ea7691',
+      text: `[Summary] Show transcript`,
+    },
+  },
+}
 
 export interface IGetSummaryNavActionsParams {
   type: IPageSummaryType
@@ -927,10 +994,10 @@ export const getSummaryNavActions: (
   params: IGetSummaryNavActionsParams,
 ) => Promise<ISetActionsType> = async (params) => {
   try {
-    let currentActions = cloneDeep(
-      PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type].data.actions || [],
-    )
-
+    const contextMenu = cloneDeep(PAGE_SUMMARY_CONTEXT_MENU_MAP[params.type])
+    let currentActions = cloneDeep(contextMenu.data.actions || [])
+    // 减少message的大小
+    contextMenu.data.actions = []
     if (params.type === 'YOUTUBE_VIDEO_SUMMARY') {
       currentActions = await youTubeSummaryChangeTool(params, currentActions) //进行actions增改
     }
@@ -969,12 +1036,51 @@ export const getSummaryNavActions: (
         action.parameters.AskChatGPTActionQuestion.meta.outputMessageId =
           params.messageId
       }
+      // TODO 临时的处理，需要重构
+      const processAskChatGPTAction = (action: IAction) => {
+        if (
+          action.type === 'ASK_CHATGPT' &&
+          action.parameters.AskChatGPTActionQuestion
+        ) {
+          if (!action.parameters.AskChatGPTActionQuestion.meta) {
+            action.parameters.AskChatGPTActionQuestion.meta = {}
+          }
+
+          const contextMenuOverwriteData =
+            SummaryContextMenuOverwriteMap?.[params.type]?.[params.key]
+          if (contextMenuOverwriteData) {
+            contextMenu.id = contextMenuOverwriteData.id
+            contextMenu.text = contextMenuOverwriteData.text
+          }
+          console.log(
+            `contextMenu show Text: [${contextMenu.text}]-[${contextMenu.id}]`,
+          )
+          action.parameters.AskChatGPTActionQuestion.meta.contextMenu =
+            contextMenu
+        }
+        return action
+      }
       if (
         params.prompt &&
         action.type === 'ASK_CHATGPT' &&
         action.parameters.AskChatGPTActionQuestion
       ) {
         action.parameters.AskChatGPTActionQuestion.text = params.prompt
+        action = processAskChatGPTAction(action as IAction)
+      }
+      if (action.type === 'SCRIPTS_CONDITIONAL') {
+        if (action.parameters.WFConditionalIfTrueActions) {
+          action.parameters.WFConditionalIfTrueActions =
+            action.parameters.WFConditionalIfTrueActions.map((action) =>
+              processAskChatGPTAction(action as IAction),
+            )
+        }
+        if (action.parameters.WFConditionalIfFalseActions) {
+          action.parameters.WFConditionalIfFalseActions =
+            action.parameters.WFConditionalIfFalseActions.map((action) =>
+              processAskChatGPTAction(action as IAction),
+            )
+        }
       }
       return action
     })

@@ -185,15 +185,16 @@ class InputAssistantButtonManager {
       isSupportWebComponent ? 'maxai-input-assistant-button' : 'div',
     )
     webComponentRoot.setAttribute('maxai-input-assistant-button-id', id)
+    webComponentRoot.style.height = 'inherit'
     InputAssistantButtonElementRouteMap.set(
       `[maxai-input-assistant-button-id="${id}"]`,
       webComponentRoot,
     )
     rootWrapperElement.appendChild(webComponentRoot)
     if (isNumber(appendPosition)) {
-      const referenceElement = rootElement.childNodes[
-        appendPosition
-      ] as HTMLElement
+      const referenceElement = Array.from(rootElement.childNodes).at(
+        appendPosition,
+      ) as HTMLElement
       referenceElement
         ? rootElement.insertBefore(rootWrapperElement, referenceElement)
         : rootElement.appendChild(rootWrapperElement)
@@ -217,7 +218,9 @@ class InputAssistantButtonManager {
         ? enable(rootElement)
         : enable)
       if (shouldDestroy) {
-        rootWrapperElement?.remove()
+        setTimeout(() => {
+          rootWrapperElement?.remove()
+        }, 0)
       }
     })
     observer.observe(rootElement, {

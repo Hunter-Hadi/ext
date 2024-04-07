@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "वेबसाइट URL प्रविष्ट करा",
     "feature_card__prompts__place_my_own_prompts_switch": "माझे स्वतःचे प्रॉम्प्ट वर ठेवा",
     "feature_card__appearance__field_quick_access__title": "त्वरित प्रवेश",
-    "left_menu__help_me_write": "मला लिहायला मदत करा",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail सहाय्यक",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook सहाय्यक",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X सहाय्यक",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "नवीन प्रॉम्प्ट गट",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "त्वरित प्रतिसाद",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ड्राफ्ट संपादित करा किंवा समीक्षा करा",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "त्वरित संयोजन",
+    "left_menu__writing_assistant": "लेखन सहाय्यक"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI द्वारे लेखन सुधारणा, वर्तनी आणि व्याकरण सुधारणा करा किंवा तोन त्वरितपणे बदला.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI वर दस्तऐवज किंवा प्रतिमा अपलोड करा",
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIवर दस्तऐवज अपलोड करा",
-    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड केलेली फाइल खूप मोठी आहे. एक AI मॉडेल वापरून एक मोठ्या संदर्भ विंडोसह वापरण्याचा विचार करा, किंवा एक लहान आकाराची फाइल अपलोड करा."
+    "provider__chatgpt__upload_file_error__too_long__text": "अपलोड केलेली फाइल खूप मोठी आहे. एक AI मॉडेल वापरून एक मोठ्या संदर्भ विंडोसह वापरण्याचा विचार करा, किंवा एक लहान आकाराची फाइल अपलोड करा.",
+    "sidebar__promotion_dialog__content_item6__title": "संदेश लेखन सहाय्यक",
+    "sidebar__promotion_dialog__content_item6__description": "एक क्लिकवर डिस्कॉर्डवर आपल्याला तुमच्या व्यक्तिगत संदेशांचे उत्तर त्वरीत जनरेट करणारे AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

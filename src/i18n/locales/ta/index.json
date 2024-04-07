@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "வலைத்தள வருவாய் உள்ளிடவும்",
     "feature_card__prompts__place_my_own_prompts_switch": "எனது தனிப்பட்ட விருப்பங்களை மேல் வைக்கவும்",
     "feature_card__appearance__field_quick_access__title": "விரைவு அணுகல்",
-    "left_menu__help_me_write": "எனக்கு உதவி செய்யுங்கள்",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "ஜிமெயில் உதவி",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "ஆவ்ட்லுக் உதவி",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X உதவி",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "புதிய விடை குழு",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "விரைவு பதில்",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "திருத்தம் அல்லது முன்னுரிமையை மதிப்பிடு",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "விரைவு உருவாக்கு"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "விரைவு உருவாக்கு",
+    "left_menu__writing_assistant": "எழுத்து உதவி"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI உதவி மூலம் எழுத்துக்களை மேம்படுத்துவதன் மூலம், தப்புக்களை சரிசெய்வதன் மூலம் அல்லது ஒலி மாற்றத்தின் மூலம் எளிதாக மாற்றவும்.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "மேக்ஸ் ஏஐக்கு ஆவணங்களை அல்லது படங்களை பதிவேற்றுங்கள்",
     "provider__chatgpt__upload__accept_docs_tooltip": "மேலும் ஆவணங்களை மேம்படுத்துங்கள் MaxAI-க்கு பதிவேற்று",
-    "provider__chatgpt__upload_file_error__too_long__text": "பதிவேற்றப்பட்ட கோப்பு மிகப் பெரியது. ஒரு பெரிய சூழல் சாளரத்தைப் பயன்படுத்தி அதை மீண்டும் பதிவேற்றுவதை பார்க்கவும், அல்லது சிறிய அளவில் கோப்பை பதிவேற்றுங்கள்."
+    "provider__chatgpt__upload_file_error__too_long__text": "பதிவேற்றப்பட்ட கோப்பு மிகப் பெரியது. ஒரு பெரிய சூழல் சாளரத்தைப் பயன்படுத்தி அதை மீண்டும் பதிவேற்றுவதை பார்க்கவும், அல்லது சிறிய அளவில் கோப்பை பதிவேற்றுங்கள்.",
+    "sidebar__promotion_dialog__content_item6__title": "செய்திப்பு எழுத்து உதவி",
+    "sidebar__promotion_dialog__content_item6__description": "ஒரு கிளிக் மேல் டிஸ்கார்டில் நீங்கள் விருப்பமான செய்திகளுக்கு தனிப்பட்ட செய்திப்பு பதில்களை ஐஏ அடிப்படையில் உருவாக்குகிறது."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

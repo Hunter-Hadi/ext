@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "വെബ്സൈറ്റ് URL നൽകുക",
     "feature_card__prompts__place_my_own_prompts_switch": "എന്റെ പ്രോംപ്റ്റുകൾ മുകളിൽ അടയാളപ്പെടുത്തുക",
     "feature_card__appearance__field_quick_access__title": "വേഗത്തിൽ പ്രവർത്തിക്കുന്നു",
-    "left_menu__help_me_write": "എനിക്ക് എഴുതാൻ സഹായിക്കൂ",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "ജിമെയിൽ അസിസ്റ്റന്റ്",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "ഔട്ലൂക്ക് അസിസ്റ്റന്റ്",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X സഹായി",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "പുതിയ പ്രോംപ്റ്റ് ഗ്രൂപ്പ്",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "വേഗത്തിൽ ഉത്തരം",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ഡ്രാഫ്റ്റ് എഡിറ്റുകൾ അല്ലെങ്കിൽ അവലോകനം",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "വേഗത്തിൽ രചന"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "വേഗത്തിൽ രചന",
+    "left_menu__writing_assistant": "എഴുത്തു സഹായക്രമം"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI-യുടെ സഹായത്തോടെ എഴുത്ത് മോശംചെയ്യൽ, വർണ്ണനാ പിശകുകൾ പരിഹരിക്കുക, അല്ലെങ്കിൽ ടോൺ മാറ്റം ചെയ്യുക.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "ഡോക്യുമെന്റുകൾ അല്ലെങ്കിൽ ചിത്രങ്ങൾ MaxAI-യിലേക്ക് അപ്‌ലോഡ് ചെയ്യുക",
     "provider__chatgpt__upload__accept_docs_tooltip": "മാക്സ് എയിയിലേക്ക് ഡോക്യുമെന്റുകൾ അപ്‌ലോഡ് ചെയ്യുക",
-    "provider__chatgpt__upload_file_error__too_long__text": "അപ്‌ലോഡ് ചെയ്ത ഫയല്‍ വളരെ വലുതാണ്. ഒരു പ്രമാണം ഉപയോഗിക്കുന്നതിന് വലുതായ AI മോഡല്‍ ഉപയോഗിക്കുകയോ, ചെറിയ വലിപ്പത്തിലുള്ള ഒരു ഫയല്‍ അപ്‌ലോഡ് ചെയ്യുകയോ ആലോചിക്കുക."
+    "provider__chatgpt__upload_file_error__too_long__text": "അപ്‌ലോഡ് ചെയ്ത ഫയല്‍ വളരെ വലുതാണ്. ഒരു പ്രമാണം ഉപയോഗിക്കുന്നതിന് വലുതായ AI മോഡല്‍ ഉപയോഗിക്കുകയോ, ചെറിയ വലിപ്പത്തിലുള്ള ഒരു ഫയല്‍ അപ്‌ലോഡ് ചെയ്യുകയോ ആലോചിക്കുക.",
+    "sidebar__promotion_dialog__content_item6__title": "സന്ദേശം എഴുതുന്ന സഹായി",
+    "sidebar__promotion_dialog__content_item6__description": "ഒരു ക്ലിക്ക് മാത്രം ഡിസ്കോർഡിൽ നിങ്ങളുടെ വ്യക്തിപരമായ സന്ദേശങ്ങൾ സൃഷ്ടിക്കാൻ AI ഉപയോഗിക്കുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

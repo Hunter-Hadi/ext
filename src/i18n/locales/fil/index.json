@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Ilagay ang URL ng website",
     "feature_card__prompts__place_my_own_prompts_switch": "Ilagay ang aking sariling mga prompt sa tuktok",
     "feature_card__appearance__field_quick_access__title": "Mabilis na pag-access",
-    "left_menu__help_me_write": "Tulungan ako sa pagsusulat",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Asistente ng Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Asistente ng Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X assistant",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Bagong grupo ng prompt",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Mabilis na tugon",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "I-edit o suriin ang draft",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Mabilis na komposisyon"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Mabilis na komposisyon",
+    "left_menu__writing_assistant": "Asistente sa Pagsusulat"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Mapabuti ang pagsusulat, ayusin ang pagbaybay at gramatika, o baguhin ang tono nang agad gamit ang AI.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "I-upload ang mga dokumento o imahe sa MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "I-upload ang mga dokumento sa MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Ang na-upload na file ay masyadong malaki. Isipin ang paggamit ng isang AI model na may mas malaking bintana ng konteksto, o mag-upload ng isang mas maliit na file."
+    "provider__chatgpt__upload_file_error__too_long__text": "Ang na-upload na file ay masyadong malaki. Isipin ang paggamit ng isang AI model na may mas malaking bintana ng konteksto, o mag-upload ng isang mas maliit na file.",
+    "sidebar__promotion_dialog__content_item6__title": "Messaging writing assistant",
+    "sidebar__promotion_dialog__content_item6__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa mensahe para sa iyo sa loob lamang ng ilang segundo gamit ang isang click sa Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

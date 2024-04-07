@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Wprowadź adres URL strony",
     "feature_card__prompts__place_my_own_prompts_switch": "Umieść moje własne podpowiedzi na górze",
     "feature_card__appearance__field_quick_access__title": "Szybki dostęp",
-    "left_menu__help_me_write": "Pomóż mi pisać",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Asystent Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Asystent Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X asystent",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nowa grupa promptów",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Szybka odpowiedź",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Edytuj lub przejrzyj szkic",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Szybkie komponowanie"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Szybkie komponowanie",
+    "left_menu__writing_assistant": "Asystent pisania"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Poprawiaj pisanie, naprawiaj błędy ortograficzne i gramatyczne lub zmieniaj ton natychmiastowo za pomocą sztucznej inteligencji.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Prześlij dokumenty lub obrazy do MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Prześlij dokumenty do MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "Przesłany plik jest zbyt duży. Rozważ użycie modelu AI z większym oknem kontekstowym lub przesłanie mniejszego pliku."
+    "provider__chatgpt__upload_file_error__too_long__text": "Przesłany plik jest zbyt duży. Rozważ użycie modelu AI z większym oknem kontekstowym lub przesłanie mniejszego pliku.",
+    "sidebar__promotion_dialog__content_item6__title": "Asystent do pisania wiadomości",
+    "sidebar__promotion_dialog__content_item6__description": "Niech sztuczna inteligencja generuje spersonalizowane odpowiedzi na wiadomości dla Ciebie w kilka sekund za pomocą jednego kliknięcia na Discordzie."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

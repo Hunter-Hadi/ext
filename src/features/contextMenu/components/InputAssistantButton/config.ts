@@ -402,7 +402,7 @@ const LinkedInInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
       rootSelectors: ['.feed-shared-social-action-bar'],
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
-      rootWrapperStyle: 'order: 1;',
+      rootWrapperStyle: 'order:1;height:100%;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
@@ -430,12 +430,12 @@ const LinkedInInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
       },
       appendPosition: 0,
       CTAButtonStyle: {
-        padding: '11px 32px',
+        height: 'inherit',
+        padding: '0 20px',
         iconSize: 26,
         borderRadius: '4px',
       },
       InputAssistantBoxSx: {
-        width: 'max-content',
         borderRadius: '4px',
       },
     } as IInputAssistantButtonGroupConfig,
@@ -946,6 +946,7 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       appendPosition: 0,
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
+      rootWrapperStyle: 'display:flex;align-items:center;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
@@ -991,11 +992,20 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       },
     } as IInputAssistantButtonGroupConfig,
     {
-      enable: true,
+      enable: (rootElement) => {
+        if (
+          !rootElement.querySelector(
+            'svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"]',
+          )
+        ) {
+          return false
+        }
+        return true
+      },
       rootSelectors: [
         '[class^="buttonsInner"]:has(> div > svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
       ],
-      appendPosition: 2,
+      appendPosition: -1,
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
       composeReplyButton: {
@@ -1012,10 +1022,13 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )
 
-          ;(
-            inputAssistantButton?.parentElement
-              ?.previousElementSibling as HTMLElement
-          )?.click()
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[role=button]:has(> svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
+              inputAssistantButton as HTMLElement,
+              3,
+            )?.click()
+          }
         },
       },
       rootWrapperStyle: 'height: 100%;',

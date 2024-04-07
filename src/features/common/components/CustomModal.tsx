@@ -4,7 +4,7 @@ import Fade from '@mui/material/Fade'
 import IconButton from '@mui/material/IconButton'
 import Modal, { ModalProps } from '@mui/material/Modal'
 import Paper from '@mui/material/Paper'
-import { lighten,SxProps } from '@mui/material/styles'
+import { lighten, SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
 interface IProps extends Omit<ModalProps, 'children' | 'onClose' | 'open'> {
@@ -69,6 +69,7 @@ const CustomModal: FC<IProps> = ({
           >
             <Box sx={{ position: 'fixed', top: 16, left: 16 }}>
               <IconButton
+                data-testid="maxai-custom-modal-close-btn"
                 onClick={() => {
                   onClose && onClose('closeBtn')
                 }}

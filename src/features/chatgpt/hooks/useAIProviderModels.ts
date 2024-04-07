@@ -14,18 +14,23 @@ import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { getRemoteAIProviderConfigCache } from '@/background/src/chat/OpenAIChat/utils'
 import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { setChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+  setChromeExtensionLocalStorage,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppLocalStorageState } from '@/store'
 
 export const useAIProviderModelsMap = () => {
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const currentProvider =
-    appLocalStorage.sidebarSettings?.common?.currentAIProvider
+    appLocalStorage.sidebarSettings?.common?.currentAIProvider ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
   // ===chatgpt 特殊处理开始===
   const [whiteListModels, setWhiteListModels] = useState<string[]>([])
   useEffect(() => {
@@ -133,8 +138,10 @@ export const useAIProviderModelsMap = () => {
 const useAIProviderModels = () => {
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
+  const { currentSidebarConversation } = useSidebarSettings()
   const currentProvider =
-    appLocalStorage.sidebarSettings?.common?.currentAIProvider
+    currentSidebarConversation?.meta.AIProvider ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
   const { currentThirdProviderSettings } = useThirdProviderSettings()
   const aiProviderModels = useMemo<IAIProviderModel[]>(() => {
     let currentModels: IAIProviderModel[] = []

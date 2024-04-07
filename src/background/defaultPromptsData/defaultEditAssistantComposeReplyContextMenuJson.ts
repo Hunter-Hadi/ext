@@ -1500,38 +1500,42 @@ const chatAppPrompts: IContextMenuItem[] = [
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat message, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message. Keep the reply as short as possible.
+Your task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and the most importantly expressing your like reply to the message, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -1543,7 +1547,8 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            template: `
+            {{LAST_ACTION_OUTPUT}}`,
           },
         },
       ],
@@ -1573,39 +1578,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message. Keep the reply as short as possible.
+Your task requires you to write an affectionate, passionate, fond, admiring, adoring, joyful, enamored, and the most importantly expressing your love reply to the message, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing.
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -1647,39 +1655,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write an affectionate, grateful, and delighted reply to the message that responds 'thank you' for whatever the message is about. Keep the reply as short as possible.
+Your task requires you to write an affectionate, grateful, delighted reply to the message that responds gratitude and the most importantly expressing 'thank you' for whatever the message is about, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -1721,39 +1732,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message. Keep the reply as short as possible.
+Your task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and the most importantly expressing your caring reply to the message, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -1795,39 +1809,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write a humorous, entertaining, playful, and funny reply to the message joking about it. Keep the reply as short as possible.
+Your task requires you to write a humorous, entertaining, playful, and funny reply to the message joking about it, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -1869,39 +1886,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message. Keep the reply as short as possible.
+Your task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -1943,39 +1963,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message. Keep the reply as short as possible.
+Your task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and the most importantly expressing your sadness reply to the message, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -2017,39 +2040,42 @@ Output the answer without additional context, explanation, or extra wording, jus
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+            template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
+If the **user** in the message to be replied on above is the same as **my username**, the reply should be a supplement or continuation of the content of this message based on the context.
+
 ---
 
-Your task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message. Keep the reply as short as possible.
+Your task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and the most importantly expressing your dislike reply to the message, don't use second person perspective but my perspective.
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Do not use hashtags. Write the reply like a real person would. 
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
 Ensure the reply's word count is no more than 50 words.
 
-Output the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.`,
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+`,
           },
         },
         {
@@ -2112,37 +2138,37 @@ Output the answer without additional context, explanation, or extra wording, jus
                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
                     title: 'Reply with key points',
                     modelKey: 'Sidebar',
-                    template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+                    template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Here's the message to reply to:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing.
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
 
-Do not use hashtags. Write the reply like a real person would. 
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
-Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a concise reply to the message above by *writing a better version* of the following points:
+Now, write a reply to the chat message above by *writing a better version* of the following points:
 {{KEY_POINTS}}`,
                     variables: [
                       {
@@ -2208,37 +2234,37 @@ Now, write a concise reply to the message above by *writing a better version* of
                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
                     title: 'Reply with key points',
                     modelKey: 'Sidebar',
-                    template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} messages in an appropriate manner.
+                    template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply as first person perspective, which is me, as my identity to the following chat messages, which is a collection of chat messages on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+
+The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
-
-The following is the complete context of the chat messages, delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages, they are separated by a line of equal signs.
-
-The structure of a single chat message is includes the senders's username, date sent, extra label(optional, if present, you must analyze whether this is strongly related to the context and respond based on the result) and message content, you must differentiate my messages from other user's messages, if the message is about to reply to was sent by me, you must analyze who I am chatting with, and then write a reply or supplement based on this result.
 
 If any:
 <context>
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
-Your task requires you to analyse the main topic of the complete context, and reply based on the following messages:
+Here's the chat message to reply to:
 \`\`\`
 {{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
 
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
+Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
 
-Choose simple words and phrases. Avoid ones that are too hard or confusing.
+Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the chat session and the purpose of your reply.
 
-Do not use hashtags. Write the reply like a real person would. 
+Choose simple words and phrases. Avoid ones that are too hard or confusing. 
 
-Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
+Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a concise reply to the message above by *writing a better version* of the following points:
+Now, write a reply to the chat message above by *writing a better version* of the following points:
 {{KEY_POINTS}}`,
                     variables: [
                       {

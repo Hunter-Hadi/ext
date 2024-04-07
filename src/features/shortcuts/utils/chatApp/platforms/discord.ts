@@ -85,9 +85,7 @@ const discordGetChatMessagesFromNodeList = (
         '[id^="message-reply-context"]',
       )
       if (extraLabel) {
-        messageData.extraLabel = `${extraLabel.getAttribute('aria-label')}:: ${
-          extraLabel.innerText
-        }`
+        messageData.extraLabel = `${extraLabel.getAttribute('aria-label')}`
       }
       messages.push(messageData)
     }
@@ -97,8 +95,10 @@ const discordGetChatMessagesFromNodeList = (
 
 export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
   const serverName = document.querySelector<HTMLElement>('header')?.innerText
-  const chatroomName = document.querySelector<HTMLElement>(
-    'li[class^="containerDefault"][class*="selected"]',
+  const chatroomName = (
+    document.querySelector<HTMLElement>(
+      'li[class^="containerDefault"][class*="selected"]',
+    ) || document.querySelector<HTMLElement>('h1[class*="title"]')
   )?.innerText
   const username = document.querySelector<HTMLElement>(
     '[class^="panelTitleContainer"]',
@@ -116,50 +116,54 @@ export const discordGetChatMessages = (inputAssistantButton: HTMLElement) => {
   )
 
   if (chatMessagesNodeList.length) {
+    const chatMessages =
+      discordGetChatMessagesFromNodeList(chatMessagesNodeList)
+
     const channelTextArea = findParentEqualSelector(
       '[class^="channelTextArea"]',
       inputAssistantButton,
       6,
     )
 
-    let replyMessageBox: HTMLElement | null = null
+    let replyMessageBoxIndex = -1
 
-    if (
-      channelTextArea &&
-      channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')
-    ) {
-      replyMessageBox = chatMessagesPanel.querySelector<HTMLElement>(
-        '[id^="chat-messages"]:has(> [class*="replying"])',
-      )
+    if (channelTextArea) {
+      if (channelTextArea.querySelector<HTMLElement>('[class^="replyBar"]')) {
+        replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+          (messageBox) =>
+            messageBox.matches(
+              '[id^="chat-messages"]:has(> [class*="replying"])',
+            ),
+        )
+      } else {
+        replyMessageBoxIndex = chatMessages.findLastIndex(
+          (message) => message.user !== username,
+        )
+      }
     } else {
-      replyMessageBox = findParentEqualSelector(
+      const replyMessageBox = findParentEqualSelector(
         '[id^="chat-messages"]',
         inputAssistantButton,
         8,
       )
+      replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+        (messageBox) => messageBox === replyMessageBox,
+      )
     }
 
-    const chatMessages = discordGetChatMessagesFromNodeList(
-      replyMessageBox
-        ? chatMessagesNodeList.slice(
-            0,
-            chatMessagesNodeList.findIndex(
-              (messageBox) => messageBox === replyMessageBox,
-            ) + 1,
-          )
-        : chatMessagesNodeList,
-    )
-
     if (chatMessages.length) {
-      const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-        serverName: serverName || '',
-        chatroomName: chatroomName || '',
-        username: username || '',
-      })
-
-      chatMessagesContext.replyMessage(
-        chatMessages.findLastIndex((message) => message.user !== username),
+      const chatMessagesContext = new ChatMessagesContext(
+        replyMessageBoxIndex !== -1
+          ? chatMessages.slice(0, replyMessageBoxIndex + 1)
+          : chatMessages,
+        {
+          serverName: serverName || '',
+          chatroomName: chatroomName || '',
+          username: username || '',
+        },
       )
+
+      chatMessagesContext.replyMessage(replyMessageBoxIndex)
 
       return chatMessagesContext.data
     }

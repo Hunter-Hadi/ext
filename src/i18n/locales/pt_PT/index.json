@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Insira o URL do site",
     "feature_card__prompts__place_my_own_prompts_switch": "Colocar as minhas próprias sugestões no topo",
     "feature_card__appearance__field_quick_access__title": "Acesso rápido",
-    "left_menu__help_me_write": "Ajude-me a escrever",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Assistente do Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Assistente do Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "Assistente X",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Novo grupo de sugestões",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Resposta rápida",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar ou rever rascunho",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composição rápida"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composição rápida",
+    "left_menu__writing_assistant": "Assistente de escrita"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Melhore a escrita, corrija erros ortográficos e gramaticais ou mude o tom instantaneamente com a IA.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Carregar documentos ou imagens para o MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Carregar documentos para o MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "O ficheiro carregado é demasiado grande. Considere utilizar um modelo de IA com uma janela de contexto maior ou carregar um ficheiro de menor tamanho."
+    "provider__chatgpt__upload_file_error__too_long__text": "O ficheiro carregado é demasiado grande. Considere utilizar um modelo de IA com uma janela de contexto maior ou carregar um ficheiro de menor tamanho.",
+    "sidebar__promotion_dialog__content_item6__title": "Assistente de escrita de mensagens",
+    "sidebar__promotion_dialog__content_item6__description": "Deixe a IA gerar respostas de mensagens personalizadas para você em segundos com apenas um clique no Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

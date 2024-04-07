@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "أدخل عنوان URL للموقع",
     "feature_card__prompts__place_my_own_prompts_switch": "ضع تلميحاتي الخاصة في الأعلى",
     "feature_card__appearance__field_quick_access__title": "الوصول السريع",
-    "left_menu__help_me_write": "ساعدني في الكتابة",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "مساعد Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "مساعد Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "مساعد X",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "إنشاء مجموعة تلميحات جديدة",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "الرد السريع",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "تحرير أو مراجعة المسودة",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "إنشاء سريع"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "إنشاء سريع",
+    "left_menu__writing_assistant": "مساعد الكتابة"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -678,7 +678,9 @@
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "غير قادر على إنشاء فيديو بدون ترجمة.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "قم بتحميل المستندات أو الصور إلى MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "تحميل المستندات إلى MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر."
+    "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر.",
+    "sidebar__promotion_dialog__content_item6__title": "مساعد كتابة الرسائل",
+    "sidebar__promotion_dialog__content_item6__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع وجود نقرة واحدة فقط على ديسكورد."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

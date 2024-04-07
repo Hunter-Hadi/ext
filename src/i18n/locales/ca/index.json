@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "Introduïu l'URL del lloc web",
     "feature_card__prompts__place_my_own_prompts_switch": "Col·loca les meves pròpies indicacions a dalt",
     "feature_card__appearance__field_quick_access__title": "Accés ràpid",
-    "left_menu__help_me_write": "Ajuda'm a escriure",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Assistent de Gmail",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Assistent d'Outlook",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "Assistent de X",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "Nou grup d'indicacions",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "Resposta ràpida",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "Editar o revisar esborrany",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composició ràpida"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "Composició ràpida",
+    "left_menu__writing_assistant": "Assistent d'escriptura"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "Millora l'escriptura, corregeix ortografia i gramàtica o canvia el to al moment amb l'IA.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "Pujar documents o imatges a MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "Pujar documents a MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "El fitxer carregat és massa gran. Considera utilitzar un model d'IA amb una finestra de context més gran o carregar un fitxer de menor mida."
+    "provider__chatgpt__upload_file_error__too_long__text": "El fitxer carregat és massa gran. Considera utilitzar un model d'IA amb una finestra de context més gran o carregar un fitxer de menor mida.",
+    "sidebar__promotion_dialog__content_item6__title": "Assistent d'escriptura de missatges",
+    "sidebar__promotion_dialog__content_item6__description": "Deixa que l'IA generi respostes de missatges personalitzades per a tu en segons amb només un clic a Discord."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

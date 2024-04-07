@@ -208,7 +208,6 @@
     "feature_card__prompts__prompt_template__variable_user_input__description": "使用者輸入",
     "feature_card__prompts__place_my_own_prompts_switch": "將我的提示放在頂部",
     "feature_card__appearance__field_quick_access__title": "快速存取",
-    "left_menu__help_me_write": "幫我寫",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "Gmail 助手",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "Outlook 助手",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X 助理",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "新提示群組",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "快速回覆",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "編輯或審查草稿",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "快速撰寫"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "快速撰寫",
+    "left_menu__writing_assistant": "寫作助手"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "使用 AI 改進寫作、修正拼寫和文法錯誤，或即時改變語氣。",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "上傳文件或圖片至MaxAI",
     "provider__chatgpt__upload__accept_docs_tooltip": "上傳文件至MaxAI",
-    "provider__chatgpt__upload_file_error__too_long__text": "上傳的檔案太大。請考慮使用具有更大內容視窗的AI模型，或上傳較小的檔案。"
+    "provider__chatgpt__upload_file_error__too_long__text": "上傳的檔案太大。請考慮使用具有更大內容視窗的AI模型，或上傳較小的檔案。",
+    "sidebar__promotion_dialog__content_item6__title": "訊息撰寫助手",
+    "sidebar__promotion_dialog__content_item6__description": "在Discord上點擊一下，AI將在幾秒鐘內為您生成個性化的消息回覆。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩集...",

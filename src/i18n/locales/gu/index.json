@@ -208,7 +208,6 @@
     "visibility_card__add_a_site_dialog__field_site__placeholder": "વેબસાઇટ URL દાખલ કરો",
     "feature_card__prompts__place_my_own_prompts_switch": "મારા પ્રોમ્પ્ટ્સ ટોચપડવા",
     "feature_card__appearance__field_quick_access__title": "ઝડપી ઍક્સેસ",
-    "left_menu__help_me_write": "મારી મદદ કરો",
     "feature_card__help_me_write__field__gmail_input_assistant_button__title": "જીમેલ સહાયક",
     "feature_card__help_me_write__field__outlook_input_assistant_button__title": "આઉટલુક સહાયક",
     "feature_card__help_me_write__field__twitter_input_assistant_button__title": "X સહાયક",
@@ -245,7 +244,8 @@
     "feature_card__prompts__new_prompt_group__title": "નવી પ્રોમ્પ્ટ ગ્રૂપ",
     "feature_card__prompts__writing_assistant__quick_reply_radio_title": "ઝડપી જવાબ આપો",
     "feature_card__prompts__writing_assistant__edit_or_review_draft_radio_title": "ડ્રાફ્ટ સંપાદિત અથવા સમીક્ષા કરો",
-    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ઝડપી રચના કરો"
+    "feature_card__prompts__writing_assistant__quick_compose_radio_title": "ઝડપી રચના કરો",
+    "left_menu__writing_assistant": "લેખન સહાયક"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -678,7 +678,9 @@
     "permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description": "AI સાથે લેખન સુધારો, શબ્દાંશ અને વ્યાકરણ સુધારો, અથવા તોન ફેરફાર કરો.",
     "provider__chatgpt__upload__accept_docs_and_images_tooltip": "MaxAI માટે દસ્તાવેજો અથવા છબીઓ અપલોડ કરો",
     "provider__chatgpt__upload__accept_docs_tooltip": "મેક્સએઆઈ પર દસ્તાવેજો અપલોડ કરો",
-    "provider__chatgpt__upload_file_error__too_long__text": "અપલોડ કરેલી ફાઇલ ખૂબ મોટી છે. વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરવાની વાચક કરો, અથવા એક નાની સાઇઝની ફાઇલ અપલોડ કરો."
+    "provider__chatgpt__upload_file_error__too_long__text": "અપલોડ કરેલી ફાઇલ ખૂબ મોટી છે. વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરવાની વાચક કરો, અથવા એક નાની સાઇઝની ફાઇલ અપલોડ કરો.",
+    "sidebar__promotion_dialog__content_item6__title": "સંદેશ લખવાની સહાયક એપ",
+    "sidebar__promotion_dialog__content_item6__description": "ફક્ત એક ક્લિક પર ડિસ્કોર્ડ પર તમારા માટે વ્યક્તિગત સંદેશ જવાબો ઉત્પન્ન કરવા માટે AI નો ઉપયોગ કરો."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

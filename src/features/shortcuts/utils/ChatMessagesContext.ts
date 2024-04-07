@@ -86,8 +86,8 @@ export default class ChatMessagesContext {
   get data(): IChatMessagesContextData {
     const { serverName, chatroomName, username } = this.config
     let replyMessageIndex =
-      this.chatMessages.length >= 30 ? 30 : this.chatMessages.length
-    const chatMessages = this.chatMessages.slice(-30)
+      this.chatMessages.length >= 8 ? 8 : this.chatMessages.length
+    const chatMessages = this.chatMessages.slice(-8)
 
     replyMessageIndex =
       this.replyMessageIndex - this.chatMessages.length + replyMessageIndex

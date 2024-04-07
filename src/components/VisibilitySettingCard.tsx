@@ -55,11 +55,7 @@ const VisibilitySettingCard: FC<{
   const [open, setOpen] = useState(false)
   const BoxRef = useRef<HTMLDivElement>(null)
   const handleOpen = () => {
-    if (isEditingSpecialButtonKey) {
-      setNewSite(isBlackMode ? defaultValue.blacklist : defaultValue.whitelist)
-    } else {
-      setNewSite([''])
-    }
+    setNewSite([''])
     setOpen(true)
     setTimeout(() => {
       BoxRef.current?.querySelector('input')?.focus()
@@ -81,9 +77,7 @@ const VisibilitySettingCard: FC<{
       setVisibilitySetting({
         ...visibilitySetting,
         isWhitelistMode: true,
-        whitelist: isEditingSpecialButtonKey
-          ? newSite
-          : uniq([...newSite, ...visibilitySetting.whitelist]).filter(Boolean),
+        whitelist: uniq([...newSite, ...visibilitySetting.whitelist]).filter(Boolean),
       })
     }
     setOpen(false)
@@ -176,7 +170,7 @@ const VisibilitySettingCard: FC<{
               color: 'text.primary',
             }}
             onClick={handleOpen}
-            disabled={disabled || Boolean(isEditingSpecialButtonKey && memoizedDomains.length)}
+            disabled={disabled}
           >
             {t('common:add')}
           </Button>

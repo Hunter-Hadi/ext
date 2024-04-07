@@ -16,7 +16,6 @@ import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingC
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
 import FloatingMiniMenu from '@/features/contextMenu/components/FloatingMiniMenu'
 import InputAssistantButtonPortal from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonPortal'
-import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ContextMenuRoot: FC = () => {
@@ -24,7 +23,6 @@ const ContextMenuRoot: FC = () => {
   const [conversationId, setConversationId] = useState<string>('')
   const [chatStatus, updateChatStatus] = useState<ChatStatus>('success')
   const { createSidebarConversation } = useSidebarSettings()
-  const { resetFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const ChatPanelContextValue = useMemo<ChatPanelContextValue>(() => {
     return {
       chatStatus,
@@ -48,13 +46,15 @@ const ContextMenuRoot: FC = () => {
             AIModel = MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType].AIModel
           }
         }
-        console.log(
-          '新版ContextWindow 创建Conversation',
-          conversationType,
+
+        const newConversationId = await createSidebarConversation(
+          'ContextMenu',
           AIProvider,
           AIModel,
         )
-        const newConversationId = await createSidebarConversation(
+        console.log(
+          '新版ContextWindow 创建Conversation',
+          newConversationId,
           conversationType,
           AIProvider,
           AIModel,
@@ -67,10 +67,7 @@ const ContextMenuRoot: FC = () => {
         })
         return newConversationId
       },
-      resetConversation: async () => {
-        debugger
-        resetFloatingContextMenuDraft()
-      },
+      resetConversation: async () => {},
       conversationId,
       setConversationId,
     }

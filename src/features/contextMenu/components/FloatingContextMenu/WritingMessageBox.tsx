@@ -125,7 +125,9 @@ const WritingMessageBox: FC<{
       }}
       component={'div'}
     >
-      {isEmpty(currentFloatingContextMenuDraft) ? <ContextText /> : null}
+      {isEmpty(currentFloatingContextMenuDraft) && !selectedDraftUserMessage ? (
+        <ContextText />
+      ) : null}
       {selectedDraftUserMessage && (
         <SidebarUserMessageContexts
           container={

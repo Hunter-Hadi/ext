@@ -70,7 +70,13 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            VariableName: 'LAST_AI_MESSAGE_ID',
+            Variable: {
+              key: 'LAST_AI_MESSAGE_ID',
+              value: '{{LAST_ACTION_OUTPUT}}',
+              isBuiltIn: true,
+              overwrite: true,
+              label: 'Last AI message ID',
+            },
           },
         },
         {
@@ -107,9 +113,10 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
         {
           type: 'ASK_CHATGPT',
           parameters: {
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
             template: '{{LAST_ACTION_OUTPUT}}',
             AskChatGPTActionQuestion: {
-              text: `{{MAXAI_CONTINUE_WRITING_TEXT_DRAFT}}`,
+              text: `{{LAST_ACTION_OUTPUT}}`,
               meta: {
                 outputMessageId: `{{LAST_AI_MESSAGE_ID}}`,
               },

@@ -278,6 +278,7 @@ export class ActionAskChatGPT extends Action {
                     ],
                   )
                 } else {
+                  // TODO 这里只有更新，其实要区别更新/覆盖
                   await clientChatConversationModifyChatMessages(
                     'update',
                     conversationId,
@@ -287,7 +288,7 @@ export class ActionAskChatGPT extends Action {
                         outputMessage,
                         {
                           messageId: outputMessageId,
-                          text: message.text,
+                          text: outputMessage.text + '\n\n' + message.text,
                         } as IChatMessage,
                       ]),
                     ],
@@ -331,7 +332,11 @@ export class ActionAskChatGPT extends Action {
           if (this.status !== 'running') {
             return
           }
-          if (outputMessageId) {
+          if (
+            outputMessage &&
+            isAIMessage(outputMessage) &&
+            outputMessage.originalMessage
+          ) {
             await clientChatConversationModifyChatMessages(
               'update',
               conversationId,

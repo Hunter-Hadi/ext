@@ -19,8 +19,11 @@ const useFloatingContextMenuDraft = () => {
   const [activeMessageIndex, setActiveMessageIndex] = useRecoilState(
     FloatingContextMenuDraftActiveIndexState,
   )
-  const { clientWritingMessage, clientConversationMessages } =
-    useClientConversation()
+  const {
+    clientWritingMessage,
+    clientConversationMessages,
+    currentConversationId,
+  } = useClientConversation()
 
   const [historyMessages, setHistoryMessages] = useState<IAIResponseMessage[]>(
     [],
@@ -57,17 +60,17 @@ const useFloatingContextMenuDraft = () => {
    * 当前的draft对应的用户消息
    */
   const selectedDraftUserMessage = useMemo(() => {
-    if (!activeAIResponseMessage) {
-      return null
-    }
-    const activeAIResponseMessageIndex = clientConversationMessages.findIndex(
-      (message) => message.messageId === activeAIResponseMessage?.messageId,
-    )
-    if (activeAIResponseMessageIndex === -1) {
-      return null
-    }
+    // if (!activeAIResponseMessage) {
+    //   return null
+    // }
+    // const activeAIResponseMessageIndex = clientConversationMessages.findIndex(
+    //   (message) => message.messageId === activeAIResponseMessage?.messageId,
+    // )
+    // if (activeAIResponseMessageIndex === -1) {
+    //   return null
+    // }
     //从后往前找到用户的消息
-    for (let i = activeAIResponseMessageIndex - 1; i >= 0; i--) {
+    for (let i = clientConversationMessages.length - 1; i >= 0; i--) {
       const message = clientConversationMessages[i]
       if (isUserMessage(message)) {
         return message as IUserChatMessage
@@ -93,14 +96,25 @@ const useFloatingContextMenuDraft = () => {
 
   useEffect(() => {
     const newMessages = clientConversationMessages.filter(isAIMessage)
-    const historyMessageKeys = historyMessages.map(
-      (historyMessage) => historyMessage.messageId,
-    )
-    newMessages.forEach((newMessage) => {
-      if (historyMessageKeys.includes(newMessage.messageId)) {
-        return
-      }
-      setHistoryMessages((prev) => [...prev, newMessage])
+    setHistoryMessages((prev) => {
+      // 找得到messageId的更新，找不到的添加
+      const newMessagesMap = newMessages.reduce((messageMap, message) => {
+        messageMap[message.messageId] = message
+        return messageMap
+      }, {} as Record<string, IAIResponseMessage>)
+      const oldHistory = prev.map((message) => {
+        if (newMessagesMap[message.messageId]) {
+          return newMessagesMap[message.messageId]
+        }
+        return message
+      })
+      const newHistory = newMessages.filter(
+        (message) =>
+          !oldHistory.find(
+            (oldMessage) => oldMessage.messageId === message.messageId,
+          ),
+      )
+      return [...oldHistory, ...newHistory]
     })
   }, [clientConversationMessages])
 
@@ -111,6 +125,9 @@ const useFloatingContextMenuDraft = () => {
     setActiveMessageIndex(historyMessages.length - 1)
   }, [historyMessages])
 
+  useEffect(() => {
+    resetFloatingContextMenuDraft()
+  }, [currentConversationId])
   return {
     selectedDraftUserMessage,
     activeAIResponseMessage,

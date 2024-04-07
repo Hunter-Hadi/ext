@@ -102,7 +102,8 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef, hideRangy } = useRangy()
-  const { askAIWIthShortcuts, askAIQuestion, regenerate } = useClientChat()
+  const { askAIWIthShortcuts, askAIQuestion, regenerate, stopGenerate } =
+    useClientChat()
   const {
     currentConversationId,
     createConversation,
@@ -301,8 +302,6 @@ const FloatingContextMenu: FC<{
    *    3. 更新contextMenuList
    * @version 2.0 - 关闭 dropdown menu
    *    1. 将用户输入的内容同步到sidebar chat box
-   * @version 3.0 - 关闭时需要重置floating contextmenu menu的状态
-   *    1. 关闭的时候尝试重新生成floating contextmenu的conversation
    */
   const isCreatingConversationRef = useRef(false)
   const isAIRespondingRef = useRef(false)
@@ -311,22 +310,6 @@ const FloatingContextMenu: FC<{
   useEffect(() => {
     isAIRespondingRef.current = clientWritingMessage.loading
   }, [clientWritingMessage.loading])
-  useEffect(() => {
-    // 如果AI正在运行，则跳出
-    if (isRunningActionsRef.current) {
-      return
-    }
-    // 展开时，如果没有conversationId，则创建一个
-    if (floatingDropdownMenu.open && !currentConversationId) {
-      isRunningActionsRef.current = true
-      createConversation('ContextMenu')
-        .then()
-        .catch()
-        .finally(() => {
-          isRunningActionsRef.current = false
-        })
-    }
-  }, [floatingDropdownMenu.open, currentConversationId])
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       getInputMediator('floatingMenuInputMediator').updateInputValue('')
@@ -372,20 +355,16 @@ const FloatingContextMenu: FC<{
             .finally(() => {
               isCreatingConversationRef.current = false
             })
-        } else {
-          await createConversation('ContextMenu')
-            .catch()
-            .finally(() => {
-              isCreatingConversationRef.current = false
-            })
+          return
         }
       }
+      await createConversation('ContextMenu')
+        .catch()
+        .finally(() => {
+          isCreatingConversationRef.current = false
+        })
     }
-    if (
-      !isAIRespondingRef.current &&
-      !floatingDropdownMenu.open &&
-      !currentConversationIdRef.current
-    ) {
+    if (!isAIRespondingRef.current && !floatingDropdownMenu.open) {
       createContextMenuConversation().catch()
     }
     console.log('AIInput remove', floatingDropdownMenu.open)
@@ -452,9 +431,11 @@ const FloatingContextMenu: FC<{
     }
   }
   const regenerateRef = useRef(regenerate)
+  const stopGenerateRef = useRef(stopGenerate)
   useEffect(() => {
     regenerateRef.current = regenerate
-  }, [regenerate])
+    stopGenerateRef.current = stopGenerate
+  }, [regenerate, stopGenerate])
   useEffect(() => {
     /**
      * @description - 运行快捷指令
@@ -551,7 +532,9 @@ const FloatingContextMenu: FC<{
             if (
               getDraftContextMenuTypeById(currentContextMenuId) === 'TRY_AGAIN'
             ) {
-              regenerateRef.current()
+              stopGenerateRef.current().then(() => {
+                regenerateRef.current()
+              })
             }
             setTimeout(() => {
               setFloatingDropdownMenuSystemItems((prev) => {

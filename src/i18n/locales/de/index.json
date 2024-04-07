@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI-Antwortsprache",
     "ai_response_language__settings__label_1": "Verwenden",
     "ai_response_language__settings__label_2": "Spracheinstellung",
-    "preset_variables__system__email_contents__description": "E-Mail-Inhalt",
-    "preset_variables__system__email_draft__description": "E-Mail-Entwurf",
-    "preset_variables__system__social_media_post_content__description": "Inhalt des Social-Media-Beitrags",
-    "preset_variables__system__social_media_comment_draft__description": "Entwurf des Social-Media-Kommentars",
-    "preset_variables__system__chat_messsages_content__description": "Inhalt der Chat-Nachrichten",
-    "preset_variables__system__chat_message_draft__description": "Entwurf der Chat-Nachricht"
+    "preset_variables__system__full_context__description": "vollständiger Kontextinhalt",
+    "preset_variables__system__target_context__description": "Zielkontextinhalt",
+    "preset_variables__system__draft_context__description": "Entwurfskontextinhalt"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-Klick-Prompts",

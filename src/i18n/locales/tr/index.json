@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI yanıt dili",
     "ai_response_language__settings__label_1": "Kullan",
     "ai_response_language__settings__label_2": "dil ayarı",
-    "preset_variables__system__email_contents__description": "e-posta içeriği",
-    "preset_variables__system__email_draft__description": "e-posta taslağı",
-    "preset_variables__system__social_media_post_content__description": "sosyal medya gönderi içeriği",
-    "preset_variables__system__social_media_comment_draft__description": "sosyal medya yorum taslağı",
-    "preset_variables__system__chat_messsages_content__description": "sohbet mesajları içeriği",
-    "preset_variables__system__chat_message_draft__description": "sohbet mesajı taslağı"
+    "preset_variables__system__full_context__description": "tam bağlam içeriği",
+    "preset_variables__system__target_context__description": "hedef bağlam içeriği",
+    "preset_variables__system__draft_context__description": "taslak bağlam içeriği"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 tıklamayla ipuçları",

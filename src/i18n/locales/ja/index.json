@@ -930,12 +930,9 @@
     "ai_response_language__title": "AIの応答言語",
     "ai_response_language__settings__label_1": "使用する",
     "ai_response_language__settings__label_2": "言語設定",
-    "preset_variables__system__email_contents__description": "メールの内容",
-    "preset_variables__system__email_draft__description": "メールの下書き",
-    "preset_variables__system__social_media_post_content__description": "ソーシャルメディアの投稿内容",
-    "preset_variables__system__social_media_comment_draft__description": "ソーシャルメディアのコメントの下書き",
-    "preset_variables__system__chat_messsages_content__description": "チャットメッセージの内容",
-    "preset_variables__system__chat_message_draft__description": "チャットメッセージの下書き"
+    "preset_variables__system__full_context__description": "フルコンテキストの内容",
+    "preset_variables__system__target_context__description": "ターゲットコンテキストの内容",
+    "preset_variables__system__draft_context__description": "ドラフトコンテキストの内容"
   },
   "prompt_library": {
     "use_prompt_library__title": "1クリックのプロンプト",

@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI válasz nyelve",
     "ai_response_language__settings__label_1": "Használat",
     "ai_response_language__settings__label_2": "nyelvi beállítás",
-    "preset_variables__system__email_contents__description": "e-mail tartalom",
-    "preset_variables__system__email_draft__description": "e-mail vázlat",
-    "preset_variables__system__social_media_post_content__description": "közösségi média bejegyzés tartalom",
-    "preset_variables__system__social_media_comment_draft__description": "közösségi média komment vázlat",
-    "preset_variables__system__chat_messsages_content__description": "csevegés üzenetek tartalma",
-    "preset_variables__system__chat_message_draft__description": "csevegés üzenet vázlat"
+    "preset_variables__system__full_context__description": "teljes kontextus tartalom",
+    "preset_variables__system__target_context__description": "cél kontextus tartalom",
+    "preset_variables__system__draft_context__description": "vázlat kontextus tartalom"
   },
   "prompt_library": {
     "use_prompt_library__title": "1 kattintásos segédletek",

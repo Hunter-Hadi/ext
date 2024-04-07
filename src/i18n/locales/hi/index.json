@@ -930,12 +930,9 @@
     "ai_response_language__title": "एआई प्रतिक्रिया भाषा",
     "ai_response_language__settings__label_1": "उपयोग करें",
     "ai_response_language__settings__label_2": "भाषा सेटिंग",
-    "preset_variables__system__email_contents__description": "ईमेल सामग्री",
-    "preset_variables__system__email_draft__description": "ईमेल ड्राफ्ट",
-    "preset_variables__system__social_media_post_content__description": "सोशल मीडिया पोस्ट सामग्री",
-    "preset_variables__system__social_media_comment_draft__description": "सोशल मीडिया टिप्पणी ड्राफ्ट",
-    "preset_variables__system__chat_messsages_content__description": "चैट संदेश सामग्री",
-    "preset_variables__system__chat_message_draft__description": "चैट संदेश ड्राफ्ट"
+    "preset_variables__system__full_context__description": "पूर्ण संदर्भ सामग्री",
+    "preset_variables__system__target_context__description": "लक्षित संदर्भ सामग्री",
+    "preset_variables__system__draft_context__description": "मसौदे का संदर्भ सामग्री"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-क्लिक प्रॉम्प्ट",

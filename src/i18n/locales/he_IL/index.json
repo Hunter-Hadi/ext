@@ -930,12 +930,9 @@
     "ai_response_language__title": "שפת תגובת AI",
     "ai_response_language__settings__label_1": "השתמש",
     "ai_response_language__settings__label_2": "הגדרות שפה",
-    "preset_variables__system__email_contents__description": "תוכן האימייל",
-    "preset_variables__system__email_draft__description": "טיוטת האימייל",
-    "preset_variables__system__social_media_post_content__description": "תוכן פוסט ברשתות החברתיות",
-    "preset_variables__system__social_media_comment_draft__description": "טיוטת תגובה ברשתות החברתיות",
-    "preset_variables__system__chat_messsages_content__description": "תוכן הודעות צ'אט",
-    "preset_variables__system__chat_message_draft__description": "טיוטת הודעת צ'אט"
+    "preset_variables__system__full_context__description": "תוכן ההקשר המלא",
+    "preset_variables__system__target_context__description": "תוכן הקשר היעד",
+    "preset_variables__system__draft_context__description": "תוכן הקשר הטיוטה"
   },
   "prompt_library": {
     "use_prompt_library__title": "פרומטים בלחיצה אחת",

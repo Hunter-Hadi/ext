@@ -930,12 +930,9 @@
     "ai_response_language__title": "ஏதேனும் மொழியில் பதில்",
     "ai_response_language__settings__label_1": "பயன்பாடு",
     "ai_response_language__settings__label_2": "மொழி அமைப்பு",
-    "preset_variables__system__email_contents__description": "மின்னஞ்சல் உள்ளடக்கம்",
-    "preset_variables__system__email_draft__description": "மின்னஞ்சல் வரைவு",
-    "preset_variables__system__social_media_post_content__description": "சமூக ஊடகப் பதிவு உள்ளடக்கம்",
-    "preset_variables__system__social_media_comment_draft__description": "சமூக ஊடகப் பதிவு வரைவு",
-    "preset_variables__system__chat_messsages_content__description": "உரையாடல் செய்திகள் உள்ளடக்கம்",
-    "preset_variables__system__chat_message_draft__description": "உரையாடல் செய்தி வரைவு"
+    "preset_variables__system__full_context__description": "முழு சூழல் உள்ளடக்கம்",
+    "preset_variables__system__target_context__description": "இலக்கு சூழல் உள்ளடக்கம்",
+    "preset_variables__system__draft_context__description": "வரைவு சூழல் உள்ளடக்கம்"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-கிளிக் புரவலாக்கல்கள்",

@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI-vastauksen kieli",
     "ai_response_language__settings__label_1": "Käytä",
     "ai_response_language__settings__label_2": "kielen asetusta",
-    "preset_variables__system__email_contents__description": "sähköpostin sisältö",
-    "preset_variables__system__email_draft__description": "sähköpostin luonnos",
-    "preset_variables__system__social_media_post_content__description": "sosiaalisen median julkaisun sisältö",
-    "preset_variables__system__social_media_comment_draft__description": "sosiaalisen median kommentin luonnos",
-    "preset_variables__system__chat_messsages_content__description": "chat-viestien sisältö",
-    "preset_variables__system__chat_message_draft__description": "chat-viestin luonnos"
+    "preset_variables__system__full_context__description": "koko kontekstin sisältö",
+    "preset_variables__system__target_context__description": "kohdekontekstin sisältö",
+    "preset_variables__system__draft_context__description": "luonnoskontekstin sisältö"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikkaus vihjeet",

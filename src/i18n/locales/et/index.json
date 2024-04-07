@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI vastuse keel",
     "ai_response_language__settings__label_1": "Kasuta",
     "ai_response_language__settings__label_2": "keele seadistust",
-    "preset_variables__system__email_contents__description": "e-posti sisu",
-    "preset_variables__system__email_draft__description": "e-posti mustand",
-    "preset_variables__system__social_media_post_content__description": "sotsiaalmeedia postituse sisu",
-    "preset_variables__system__social_media_comment_draft__description": "sotsiaalmeedia kommentaari mustand",
-    "preset_variables__system__chat_messsages_content__description": "vestluse sõnumite sisu",
-    "preset_variables__system__chat_message_draft__description": "vestluse sõnumi mustand"
+    "preset_variables__system__full_context__description": "täielik konteksti sisu",
+    "preset_variables__system__target_context__description": "sihtkonteksti sisu",
+    "preset_variables__system__draft_context__description": "mustandi konteksti sisu"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klõpsuga vihjed",

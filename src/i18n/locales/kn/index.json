@@ -930,12 +930,9 @@
     "ai_response_language__title": "ಏನು ಮಾಡಲಿ ಪ್ರತಿಕ್ರಿಯೆ ಭಾಷೆ",
     "ai_response_language__settings__label_1": "ಬಳಕೆ",
     "ai_response_language__settings__label_2": "ಭಾಷಾ ಸೆಟ್ಟಿಂಗ್",
-    "preset_variables__system__email_contents__description": "ಇಮೇಲ್ ವಿಷಯಗಳು",
-    "preset_variables__system__email_draft__description": "ಇಮೇಲ್ ಕ್ರಾಫ್ಟ್",
-    "preset_variables__system__social_media_post_content__description": "ಸೋಷಲ್ ಮೀಡಿಯಾ ಪೋಸ್ಟ್ ವಿಷಯಗಳು",
-    "preset_variables__system__social_media_comment_draft__description": "ಸೋಷಲ್ ಮೀಡಿಯಾ ಕಾಮೆಂಟ್ ಕ್ರಾಫ್ಟ್",
-    "preset_variables__system__chat_messsages_content__description": "ಚಾಟ್ ಸಂದೇಶಗಳ ವಿಷಯಗಳು",
-    "preset_variables__system__chat_message_draft__description": "ಚಾಟ್ ಸಂದೇಶ ಕ್ರಾಫ್ಟ್"
+    "preset_variables__system__full_context__description": "ಪೂರ್ಣ ಸಂದರ್ಭ ವಿಷಯವನ್ನು ವಿವರಿಸುವ ವಿಷಯವನ್ನು",
+    "preset_variables__system__target_context__description": "ಲಕ್ಷಿತ ಸಂದರ್ಭ ವಿಷಯವನ್ನು ವಿವರಿಸುವ ವಿಷಯವನ್ನು",
+    "preset_variables__system__draft_context__description": "ಡ್ರಾಫ್ಟ್ ಸಂದರ್ಭ ವಿಷಯವನ್ನು ವಿವರಿಸುವ ವಿಷಯವನ್ನು"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",

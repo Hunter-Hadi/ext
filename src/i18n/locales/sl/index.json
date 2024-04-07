@@ -930,12 +930,9 @@
     "ai_response_language__title": "Jezik odziva AI",
     "ai_response_language__settings__label_1": "Uporabi",
     "ai_response_language__settings__label_2": "jezikovne nastavitve",
-    "preset_variables__system__email_contents__description": "vsebina e-pošte",
-    "preset_variables__system__email_draft__description": "osnutek e-pošte",
-    "preset_variables__system__social_media_post_content__description": "vsebina objave na družbenih omrežjih",
-    "preset_variables__system__social_media_comment_draft__description": "osnutek komentarja na družbenih omrežjih",
-    "preset_variables__system__chat_messsages_content__description": "vsebina klepeta",
-    "preset_variables__system__chat_message_draft__description": "osnutek sporočila v klepetu"
+    "preset_variables__system__full_context__description": "vsebina celotnega konteksta",
+    "preset_variables__system__target_context__description": "vsebina ciljnega konteksta",
+    "preset_variables__system__draft_context__description": "vsebina osnutka konteksta"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klikni spodbude",

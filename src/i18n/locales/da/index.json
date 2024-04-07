@@ -930,12 +930,9 @@
     "ai_response_language__title": "Sprog til AI-svar",
     "ai_response_language__settings__label_1": "Brug",
     "ai_response_language__settings__label_2": "sprogindstilling",
-    "preset_variables__system__email_contents__description": "e-mailindhold",
-    "preset_variables__system__email_draft__description": "e-mailkladde",
-    "preset_variables__system__social_media_post_content__description": "indhold af sociale medieopslag",
-    "preset_variables__system__social_media_comment_draft__description": "kladde til kommentar på sociale medier",
-    "preset_variables__system__chat_messsages_content__description": "indhold af chatbeskeder",
-    "preset_variables__system__chat_message_draft__description": "kladde til chatbesked"
+    "preset_variables__system__full_context__description": "fuld kontekst indhold",
+    "preset_variables__system__target_context__description": "målrettet kontekst indhold",
+    "preset_variables__system__draft_context__description": "kladde kontekst indhold"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompts",

@@ -930,12 +930,9 @@
     "ai_response_language__title": "Мова відповіді ШІ",
     "ai_response_language__settings__label_1": "Використовуйте",
     "ai_response_language__settings__label_2": "налаштування мови",
-    "preset_variables__system__email_contents__description": "вміст електронної пошти",
-    "preset_variables__system__email_draft__description": "чернетка електронної пошти",
-    "preset_variables__system__social_media_post_content__description": "вміст повідомлення у соціальних мережах",
-    "preset_variables__system__social_media_comment_draft__description": "чернетка коментаря у соціальних мережах",
-    "preset_variables__system__chat_messsages_content__description": "вміст повідомлень у чаті",
-    "preset_variables__system__chat_message_draft__description": "чернетка повідомлення у чаті"
+    "preset_variables__system__full_context__description": "вміст повного контексту",
+    "preset_variables__system__target_context__description": "вміст цільового контексту",
+    "preset_variables__system__draft_context__description": "вміст чернетки контексту"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-клік промпти",

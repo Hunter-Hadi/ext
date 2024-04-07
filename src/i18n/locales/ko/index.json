@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI 응답 언어",
     "ai_response_language__settings__label_1": "사용",
     "ai_response_language__settings__label_2": "언어 설정",
-    "preset_variables__system__email_contents__description": "이메일 내용",
-    "preset_variables__system__email_draft__description": "이메일 초안",
-    "preset_variables__system__social_media_post_content__description": "소셜 미디어 게시물 내용",
-    "preset_variables__system__social_media_comment_draft__description": "소셜 미디어 댓글 초안",
-    "preset_variables__system__chat_messsages_content__description": "채팅 메시지 내용",
-    "preset_variables__system__chat_message_draft__description": "채팅 메시지 초안"
+    "preset_variables__system__full_context__description": "전체 컨텍스트 내용",
+    "preset_variables__system__target_context__description": "대상 컨텍스트 내용",
+    "preset_variables__system__draft_context__description": "드래프트 컨텍스트 내용"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-클릭 프롬프트",

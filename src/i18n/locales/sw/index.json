@@ -930,12 +930,9 @@
     "ai_response_language__title": "Lugha ya majibu ya AI",
     "ai_response_language__settings__label_1": "Tumia",
     "ai_response_language__settings__label_2": "mpangilio wa lugha",
-    "preset_variables__system__email_contents__description": "maudhui ya barua pepe",
-    "preset_variables__system__email_draft__description": "rasimu ya barua pepe",
-    "preset_variables__system__social_media_post_content__description": "maudhui ya chapisho la media ya kijamii",
-    "preset_variables__system__social_media_comment_draft__description": "rasimu ya maoni ya media ya kijamii",
-    "preset_variables__system__chat_messsages_content__description": "maudhui ya ujumbe wa mazungumzo",
-    "preset_variables__system__chat_message_draft__description": "rasimu ya ujumbe wa mazungumzo"
+    "preset_variables__system__full_context__description": "maudhui kamili ya muktadha",
+    "preset_variables__system__target_context__description": "maudhui ya lengo la muktadha",
+    "preset_variables__system__draft_context__description": "maudhui ya rasimu ya muktadha"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vidhibiti vya 1-click",

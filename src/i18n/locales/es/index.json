@@ -930,12 +930,9 @@
     "ai_response_language__title": "Idioma de respuesta de IA",
     "ai_response_language__settings__label_1": "Utilizar",
     "ai_response_language__settings__label_2": "configuración de idioma",
-    "preset_variables__system__email_contents__description": "contenido del correo electrónico",
-    "preset_variables__system__email_draft__description": "borrador del correo electrónico",
-    "preset_variables__system__social_media_post_content__description": "contenido de la publicación en redes sociales",
-    "preset_variables__system__social_media_comment_draft__description": "borrador del comentario en redes sociales",
-    "preset_variables__system__chat_messsages_content__description": "contenido de los mensajes de chat",
-    "preset_variables__system__chat_message_draft__description": "borrador del mensaje de chat"
+    "preset_variables__system__full_context__description": "contenido de contexto completo",
+    "preset_variables__system__target_context__description": "contenido de contexto objetivo",
+    "preset_variables__system__draft_context__description": "contenido de contexto de borrador"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts de 1 clic",

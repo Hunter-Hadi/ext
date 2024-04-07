@@ -930,12 +930,9 @@
     "ai_response_language__title": "એઆઈ પ્રતિસાદ ભાષા",
     "ai_response_language__settings__label_1": "વપરો",
     "ai_response_language__settings__label_2": "ભાષા સેટિંગ",
-    "preset_variables__system__email_contents__description": "ઇમેઇલ સામગ્રી",
-    "preset_variables__system__email_draft__description": "ઇમેઇલ ડ્રાફ્ટ",
-    "preset_variables__system__social_media_post_content__description": "સોશિયલ મીડિયા પોસ્ટ સામગ્રી",
-    "preset_variables__system__social_media_comment_draft__description": "સોશિયલ મીડિયા કૉમેન્ટ ડ્રાફ્ટ",
-    "preset_variables__system__chat_messsages_content__description": "ચેટ સંદેશ સામગ્રી",
-    "preset_variables__system__chat_message_draft__description": "ચેટ સંદેશ ડ્રાફ્ટ"
+    "preset_variables__system__full_context__description": "પૂર્ણ સંદર્ભ સામગ્રી",
+    "preset_variables__system__target_context__description": "લક્ષ્ય સંદર્ભ સામગ્રી",
+    "preset_variables__system__draft_context__description": "ડ્રાફ્ટ સંદર્ભ સામગ્રી"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",

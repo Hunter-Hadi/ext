@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI సమాధాన భాష",
     "ai_response_language__settings__label_1": "ఉపయోగించు",
     "ai_response_language__settings__label_2": "భాషా సెట్టింగ్",
-    "preset_variables__system__email_contents__description": "ఇమెయిల్ కంటెంట్స్",
-    "preset_variables__system__email_draft__description": "ఇమెయిల్ డ్రాఫ్ట్",
-    "preset_variables__system__social_media_post_content__description": "సోషల్ మీడియా పోస్ట్ కంటెంట్",
-    "preset_variables__system__social_media_comment_draft__description": "సోషల్ మీడియా వ్యాఖ్యానం డ్రాఫ్ట్",
-    "preset_variables__system__chat_messsages_content__description": "చాట్ సందేశాల కంటెంట్",
-    "preset_variables__system__chat_message_draft__description": "చాట్ సందేశం డ్రాఫ్ట్"
+    "preset_variables__system__full_context__description": "పూర్తి సందర్భ విషయం",
+    "preset_variables__system__target_context__description": "లక్ష్య సందర్భ విషయం",
+    "preset_variables__system__draft_context__description": "డ్రాఫ్ట్ సందర్భ విషయం"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-క్లిక్ ప్రాంప్టులు",

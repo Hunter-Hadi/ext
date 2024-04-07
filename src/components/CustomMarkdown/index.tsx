@@ -7,8 +7,11 @@ import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
 import reactNodeToString from 'react-node-to-string'
 import rehypeKatex from 'rehype-katex'
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
 // import rehypeHighlight from 'rehype-highlight'
 import remarkMath from 'remark-math'
+import supersub from 'remark-supersub'
 import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -235,9 +238,9 @@ const CustomMarkdown: FC<{
       <>
         <ReactMarkdown
           remarkPlugins={[
-            // supersub,
-            // remarkBreaks,
-            // remarkGfm,
+            supersub,
+            remarkBreaks,
+            remarkGfm,
             [
               remarkMath,
               // {

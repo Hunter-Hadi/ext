@@ -26,19 +26,36 @@ const getArgs = () => {
 }
 // const args = getArgs()
 
-const isProduction = String(process.env.NODE_ENV) === 'production'
+const node_env = String(process.env.NODE_ENV || 'development')
 
-const WWW_PROJECT_HOST = isProduction
-  ? 'https://www.maxai.me'
-  : 'https://main.d35dysdwr52gaf.amplifyapp.com'
 
-const APP_USE_CHAT_GPT_HOST = isProduction
-  ? 'https://app.maxai.me'
-  : 'https://main.d3bohqvl407i44.amplifyapp.com'
+const isProduction = node_env === 'production'
 
-const APP_USE_CHAT_GPT_API_HOST = isProduction
-  ? 'https://api.maxai.me'
-  : 'https://dev.maxai.me'
+const HostConfig = {
+  development: {
+    wwwProjectHost: 'https://main.d35dysdwr52gaf.amplifyapp.com',
+    appProjectHost: 'https://main.d3bohqvl407i44.amplifyapp.com',
+    appProjectAPIHost: 'https://dev.maxai.me',
+  },
+  test: {
+    wwwProjectHost: 'https://main.d35dysdwr52gaf.amplifyapp.com',
+    appProjectHost: 'https://test.d3kf9o74pc4m0c.amplifyapp.com',
+    appProjectAPIHost: 'https://test.maxai.me',
+  },
+  production: {
+    wwwProjectHost: 'https://www.maxai.me',
+    appProjectHost: 'https://app.maxai.me',
+    appProjectAPIHost: 'https://api.maxai.me',
+  },
+}
+console.log(`Running in ${node_env} mode`)
+console.log(`config:\n`, HostConfig[node_env])
+
+const WWW_PROJECT_HOST = HostConfig[node_env].wwwProjectHost
+
+const APP_USE_CHAT_GPT_HOST = HostConfig[node_env].appProjectHost
+
+const APP_USE_CHAT_GPT_API_HOST = HostConfig[node_env].appProjectAPIHost
 
 const APP_NAME = 'MaxAI.me'
 const NODE_ENV = isProduction ? 'production' : 'development'

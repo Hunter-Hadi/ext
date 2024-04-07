@@ -41,10 +41,10 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
     try {
       const result = await getChatMessagesContent(OperationElementSelector)
       let {
-        MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
-        MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
       } = result
-      this.output = MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT
+      this.output = MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT
       this.originalChatMessagesContextData = result
       const { shortcutsEngine, clientConversationEngine } = engine
       if (shortcutsEngine && clientConversationEngine) {
@@ -61,19 +61,19 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
           text: sliceOfTargetPostContext,
           tokens: sliceOfTargetPostContextUsingTokens,
         } = await sliceTextByTokens(
-          MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
+          MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
           AIModelMaxTokens - maxChatMessagesContextTokens,
         )
-        MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT =
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT =
           sliceOfTargetPostContext
         if (isLimit) {
-          MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT = ''
+          MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT = ''
         } else {
           const { text: sliceOfFullPostContext } = await sliceTextByTokens(
-            MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+            MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
             AIModelMaxTokens - sliceOfTargetPostContextUsingTokens,
           )
-          MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT =
+          MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT =
             sliceOfFullPostContext
         }
         shortcutsEngine.pushActions(
@@ -82,17 +82,18 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
               type: 'SET_VARIABLE_MAP',
               parameters: {
                 VariableMap: {
-                  MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT: {
-                    key: 'MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT',
-                    value: MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT,
+                  MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT: {
+                    key: 'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
+                    value:
+                      MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT,
                     overwrite: true,
                     isBuiltIn: false,
                     label: 'Target message',
                   },
-                  MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT: {
-                    key: 'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                  MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT: {
+                    key: 'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
                     value:
-                      MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                      MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
                     overwrite: true,
                     isBuiltIn: true,
                     label: 'Context',
@@ -104,7 +105,7 @@ export class ActionGetChatMessagesContentOfWebPage extends Action {
               type: 'RENDER_TEMPLATE',
               parameters: {
                 template:
-                  result.MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+                  result.MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
               },
             },
           ],

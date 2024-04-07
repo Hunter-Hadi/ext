@@ -192,9 +192,9 @@ class InputAssistantButtonManager {
     )
     rootWrapperElement.appendChild(webComponentRoot)
     if (isNumber(appendPosition)) {
-      const referenceElement = rootElement.childNodes[
-        appendPosition
-      ] as HTMLElement
+      const referenceElement = Array.from(rootElement.childNodes).at(
+        appendPosition,
+      ) as HTMLElement
       referenceElement
         ? rootElement.insertBefore(rootWrapperElement, referenceElement)
         : rootElement.appendChild(rootWrapperElement)

@@ -1018,11 +1018,20 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       },
     } as IInputAssistantButtonGroupConfig,
     {
-      enable: true,
+      enable: (rootElement) => {
+        if (
+          !rootElement.querySelector(
+            'svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"]',
+          )
+        ) {
+          return false
+        }
+        return true
+      },
       rootSelectors: [
         '[class^="buttonsInner"]:has(> div > svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
       ],
-      appendPosition: 2,
+      appendPosition: -1,
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
       composeReplyButton: {
@@ -1039,10 +1048,13 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
               inputAssistantButtonSelector,
             )
 
-          ;(
-            inputAssistantButton?.parentElement
-              ?.previousElementSibling as HTMLElement
-          )?.click()
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[role=button]:has(> svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
+              inputAssistantButton as HTMLElement,
+              3,
+            )?.click()
+          }
         },
       },
       rootWrapperStyle: 'height: 100%;',
@@ -1139,10 +1151,10 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     {
       enable: true,
       rootSelectors: [
-        'footer .copyable-area div:has(> button[aria-label] > [data-icon])',
+        'footer .copyable-area div:has(> .lexical-rich-text-input)',
       ],
       appendPosition: 0,
-      rootParentDeep: 1,
+      rootParentDeep: 0,
       rootWrapperTagName: 'div',
       rootWrapperStyle: 'order: 1; align-self: center;',
       composeReplyButton: {
@@ -1172,16 +1184,16 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
         permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
       },
       CTAButtonStyle: {
-        padding: '6px',
+        padding: '5px 6px',
         iconSize: 14,
-        borderRadius: '4px 0 0 4px',
+        borderRadius: '8px 0 0 8px',
       },
       DropdownButtonStyle: {
-        borderRadius: '0 4px 4px 0',
-        padding: '3px 0',
+        borderRadius: '0 8px 8px 0',
+        padding: '2px 0',
       },
       InputAssistantBoxSx: {
-        borderRadius: '4px',
+        borderRadius: '8px',
         marginLeft: '8px',
       },
     } as IInputAssistantButtonGroupConfig,
@@ -1345,9 +1357,9 @@ const InputAssistantButtonGroupConfig = {
     },
   },
   'reddit.com': RedditInputAssistantButtonGroupConfigs,
-  'discord.com': DiscordInputAssistantButtonGroupConfigs,
-  // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
   // 'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
+  // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
+  'discord.com': DiscordInputAssistantButtonGroupConfigs,
 } as {
   [key in InputAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig

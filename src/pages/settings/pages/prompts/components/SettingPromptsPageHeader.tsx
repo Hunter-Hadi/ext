@@ -23,37 +23,37 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
     const t = theme as Theme
     const isDark = t.palette.mode === 'dark'
     return {
-        marginBottom: '-1px',
-        [`.${tabClasses.root}`]: {
-          padding: '16px 12px',
-          color: isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0.6)',
-          border: '1px solid',
-          borderBottom: '0',
+      marginBottom: '-1px',
+      [`.${tabClasses.root}`]: {
+        padding: '16px 12px',
+        color: isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0.6)',
+        border: '1px solid',
+        borderBottom: '0',
+        borderColor: isDark
+          ? 'rgb(0, 0, 0, 0)'
+          : 'rgba(245,246,247, 1)',
+        borderRadius: '8px 8px 0px 0px',
+        minHeight: 52,
+
+        [`&.${tabClasses.selected}`]: {
+          background: isDark ? 'rgb(32, 33, 36)' : 'rgba(255, 255, 255, 1)',
+          color: isDark ? '#fff' : 'rgba(0, 0, 0, 0.87)',
           borderColor: isDark
-            ? 'rgb(0, 0, 0, 0)'
-            : 'rgba(245,246,247, 1)',
-          borderRadius: '8px 8px 0px 0px',
-          minHeight: 52,
+            ? t.palette?.customColor!.borderColor
+            : 'rgba(0, 0, 0, 0.08)',
+        },
 
-          [`&.${tabClasses.selected}`]: {
-            background: isDark ? 'rgb(32, 33, 36)' : 'rgba(255, 255, 255, 1)',
-            color: isDark ? '#fff' : 'rgba(0, 0, 0, 0.87)',
-            borderColor: isDark
-              ? t.palette?.customColor!.borderColor
-              : 'rgba(0, 0, 0, 0.08)',
-          },
-
-          [`& + .${tabClasses.root}`]: {
-            marginLeft: '8px',
-          }
-        },
-        [`.${tabsClasses.indicator}`]: {
-          backgroundColor: 'rgba(255, 255, 255, 1)',
-          display: 'none'
-        },
-        [`.${buttonBaseClasses.root}`]: {
-          fontSize: '18px',
-        },
+        [`& + .${tabClasses.root}`]: {
+          marginLeft: '8px',
+        }
+      },
+      [`.${tabsClasses.indicator}`]: {
+        backgroundColor: 'rgba(255, 255, 255, 1)',
+        display: 'none'
+      },
+      [`.${buttonBaseClasses.root}`]: {
+        fontSize: '18px',
+      },
     }
   },
 )

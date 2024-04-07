@@ -7,11 +7,8 @@ import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
 import reactNodeToString from 'react-node-to-string'
 import rehypeKatex from 'rehype-katex'
-import remarkBreaks from 'remark-breaks'
-import remarkGfm from 'remark-gfm'
 // import rehypeHighlight from 'rehype-highlight'
 import remarkMath from 'remark-math'
-import supersub from 'remark-supersub'
 import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -207,8 +204,8 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
  * @link - https://github.com/remarkjs/react-markdown/issues/785
  */
 const preprocessLaTeX = (content: string) => {
+  content = content.replaceAll('$', '\\$')
   // Replace block-level LaTeX delimiters \[ \] with $$ $$
-
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,
     (_, equation) => `$$${equation}$$`,
@@ -237,7 +234,17 @@ const CustomMarkdown: FC<{
     () => (
       <>
         <ReactMarkdown
-          remarkPlugins={[supersub, remarkBreaks, remarkGfm, remarkMath]}
+          remarkPlugins={[
+            // supersub,
+            // remarkBreaks,
+            // remarkGfm,
+            [
+              remarkMath,
+              // {
+              //   singleDollarTextMath: false,
+              // },
+            ],
+          ]}
           rehypePlugins={[rehypeKatex]}
           // disallowedElements={['br']}
           components={{

@@ -1,12 +1,13 @@
 {
   "name": "MaxAI",
-  "version": "3.1.6",
+  "version": "3.1.7",
   "description": ".",
   "author": "",
   "scripts": {
     "pdf": "node ./build/pdf.js",
-    "usechatgpt": "node ./build/esbuild.config.mjs --app=usechatgpt",
-    "release:usechatgpt": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
+    "dev": "node ./build/esbuild.config.mjs --app=usechatgpt",
+    "test": "cross-env NODE_ENV=test node ./build/esbuild.config.mjs --app=usechatgpt",
+    "release": "cross-env NODE_ENV=production node ./build/esbuild.config.mjs --app=usechatgpt"
   },
   "dependencies": {
     "@emotion/cache": "^11.10.5",

@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -207,7 +208,10 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
  * @link - https://github.com/remarkjs/react-markdown/issues/785
  */
 const preprocessLaTeX = (content: string) => {
-  content = content.replaceAll('$', '\\$')
+  content = content
+    .split('$')
+    .join('\\$')
+    .replace(/\\\$\\\$/g, '$$')
   // Replace block-level LaTeX delimiters \[ \] with $$ $$
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,
@@ -288,9 +292,21 @@ const CustomMarkdown: FC<{
             code: ({ node, inline, className, children, ...props }) => {
               if (inline) {
                 return (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
+                  <Chip
+                    className={className}
+                    label={children as string}
+                    sx={{
+                      padding: '.2em .4em',
+                      fontSize: '85%',
+                      lineHeight: '1.5',
+                      borderRadius: '.25em',
+                      whiteSpace: 'break-spaces',
+                      height: 'auto',
+                      '& > span': {
+                        p: 0,
+                      },
+                    }}
+                  />
                 )
               }
               return (

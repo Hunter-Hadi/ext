@@ -3,6 +3,17 @@ import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/GoogleDocHelper')
 
+const emptyRect = {
+  x: 0,
+  y: 0,
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  width: 0,
+  height: 0,
+}
+
 export enum IGoogleDocEventType {
   SELECTION_CHANGE = 'selection-change',
   CARET_CHANGE = 'caret-change',
@@ -105,6 +116,12 @@ export const calculateRectLayout = (
   }
 }
 
+/**
+ * 检测坐标是否位于元素内
+ * @param x
+ * @param y
+ * @param rects
+ */
 export const isPointInRect = (
   x: number,
   y: number,
@@ -121,6 +138,22 @@ export const isPointInRect = (
     }
   }
   return false
+}
+
+export const mergeRects = (rects: IGoogleDocRect[]) => {
+  if (!rects.length) return emptyRect
+  const rect = { ...rects[0] }
+  rects.forEach((item) => {
+    rect.top = Math.min(rect.top, item.top)
+    rect.left = Math.min(rect.left, item.left)
+    rect.right = Math.max(rect.right, item.right)
+    rect.bottom = Math.max(rect.bottom, item.bottom)
+  })
+  rect.x = rect.left
+  rect.y = rect.top
+  rect.width = Math.abs(rect.right - rect.left)
+  rect.height = Math.abs(rect.bottom - rect.top)
+  return rect
 }
 
 export class GoogleDocControl extends EventEmitter {
@@ -210,16 +243,7 @@ export class GoogleDocControl extends EventEmitter {
 
   calculateRelativeLayout(rect: IGoogleDocRect) {
     if (!this.scrollElement) {
-      return {
-        x: 0,
-        y: 0,
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: 0,
-        height: 0,
-      }
+      return emptyRect
     }
     return calculateRectLayout(
       this.scrollElement?.getBoundingClientRect(),
@@ -305,7 +329,7 @@ export class GoogleDocControl extends EventEmitter {
       return this.selectRectBySelection(selection)
     }
 
-    ;[
+    const events = [
       // 先点击一次取消选区，防止在原位上直接点击拖拽的话会变成拖拽选区
       new MouseEvent('click', start),
       // new MouseEvent('mouseup', start),,
@@ -314,7 +338,9 @@ export class GoogleDocControl extends EventEmitter {
       new MouseEvent('mousedown', start),
       new MouseEvent('mousemove', end),
       new MouseEvent('mouseup', end),
-    ].forEach((e) => this.editorElement?.dispatchEvent(e))
+    ]
+
+    events.forEach((e) => this.editorElement?.dispatchEvent(e))
     await new Promise((resolve) => setTimeout(resolve, 50))
     this.inputElement?.dispatchEvent(
       new KeyboardEvent('keyup', {
@@ -343,7 +369,7 @@ export class GoogleDocControl extends EventEmitter {
         height: layout.height,
         fontWeight,
         fontSize,
-        fontFamily: fontFamily.replaceAll('"', ''),
+        fontFamily: fontFamily?.replaceAll('"', ''),
       },
     }
   }
@@ -424,7 +450,10 @@ export class GoogleDocControl extends EventEmitter {
     const x = Math.floor(right || 0)
     const y = Math.floor(top || 0)
     const textElement = this.getElementFromPoint(x, y)
-    const text = textElement ? this.parseTextElement(textElement) : null
+    const text =
+      textElement && textElement.tagName === 'rect'
+        ? this.parseTextElement(textElement)
+        : null
 
     log.info({ element, text, rect, layout })
 

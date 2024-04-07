@@ -269,6 +269,60 @@ export class GoogleDocControl extends EventEmitter {
   }
 
   /**
+   * 选区下方插入内容
+   * @param value
+   */
+  insertBelowSelection(value: string) {
+    log.info(value, this.lastSelection)
+
+    this.inputElement?.focus()
+    if (this.lastSelection) {
+      const keyData = {
+        code: 'ArrowRight',
+        key: 'ArrowRight',
+        keyCode: 39,
+        bubbles: true,
+        repeat: false,
+      }
+      this.inputElement?.dispatchEvent(new KeyboardEvent('keydown', keyData))
+      setTimeout(() => {
+        this.replaceSelection(`\n${value}`)
+        this._onSelectionOrCaretChange()
+      }, 10)
+    } else {
+      this.replaceSelection(`\n${value}`)
+    }
+  }
+
+  /**
+   * 选区上方插入内容
+   * @param value
+   */
+  insertAboveSelection(value: string) {
+    log.info(value)
+
+    this.inputElement?.focus()
+    if (this.lastSelection) {
+      const keyData = {
+        charCode: 0,
+        code: 'ArrowLeft',
+        key: 'ArrowLeft',
+        keyCode: 37,
+        bubbles: true,
+        isComposing: false,
+        repeat: false,
+      }
+      this.inputElement?.dispatchEvent(new KeyboardEvent('keydown', keyData))
+      setTimeout(() => {
+        this.replaceSelection(`${value}\n`)
+        this._onSelectionOrCaretChange()
+      }, 10)
+    } else {
+      this.replaceSelection(`${value}\n`)
+    }
+  }
+
+  /**
    * 拷贝当前选区内容
    */
   copySelection() {

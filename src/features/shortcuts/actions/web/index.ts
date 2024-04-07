@@ -1,3 +1,4 @@
+export { ActionAssignCustomPromptWebPageContentContextVarible } from './ActionAssignCustomPromptWebPageContentContextVarible'
 export { ActionCloseURLS } from './ActionCloseURLS'
 export { ActionFetchActions } from './ActionFetchActions'
 export { ActionGetContentsOfSearchEngine } from './ActionGetContentsOfSearchEngine'

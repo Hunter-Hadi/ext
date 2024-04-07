@@ -177,7 +177,7 @@ interface ActionParameters {
   VariableName?: string
   VariableLabel?: string
   VariableMap?: {
-    [key in string]: string | number | IShortCutsParameter | undefined
+    [key in string]: string | number | boolean | IShortCutsParameter | undefined
   }
   WFVolume?: number
   WFWorkflowName?: string
@@ -210,7 +210,7 @@ interface ActionParameters {
   ActionChatMessageConfig?: IChatMessage
   // 是否需要Action产生的变量进行MiddleOut:GET_EMAIL_CONTENTS_OF_WEBPAGE\GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE
   isVariableMiddleOutEnabled?: boolean
-  SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS?:ICommentData[]|undefined
+  SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS?: ICommentData[] | undefined
 }
 
 export default ActionParameters

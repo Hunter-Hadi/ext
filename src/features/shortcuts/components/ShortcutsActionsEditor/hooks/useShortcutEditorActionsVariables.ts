@@ -19,12 +19,9 @@ export type IPresetVariableName =
   | 'AI_RESPONSE_LANGUAGE'
   | 'AI_RESPONSE_TONE'
   | 'AI_RESPONSE_WRITING_STYLE'
-  | 'EMAIL_CONTENTS'
-  | 'EMAIL_DRAFT'
-  | 'SOCIAL_MEDIA_POST_CONTENT'
-  | 'SOCIAL_MEDIA_COMMENT_DRAFT'
-  | 'CHAT_MESSAGES_CONTENT'
-  | 'CHAT_MESSAGE_DRAFT'
+  | 'FULL_CONTEXT'
+  | 'TARGET_CONTEXT'
+  | 'DRAFT_CONTEXT'
 
 export interface IPresetActionSetVariable extends IActionSetVariable {
   VariableName: IPresetVariableName
@@ -128,47 +125,26 @@ export const PRESET_VARIABLE_MAP: {
     valueType: 'Select',
     label: 'Writing style',
   },
-  EMAIL_CONTENTS: {
-    VariableName: 'EMAIL_CONTENTS',
-    defaultValue: '{{EMAIL_CONTENTS}}',
+  FULL_CONTEXT: {
+    VariableName: 'FULL_CONTEXT',
+    defaultValue: '{{FULL_CONTEXT}}',
     systemVariable: true,
     valueType: 'Text',
-    label: 'EMAIL_CONTENTS',
+    label: 'FULL_CONTEXT',
   },
-  EMAIL_DRAFT: {
-    VariableName: 'EMAIL_DRAFT',
-    defaultValue: '{{EMAIL_DRAFT}}',
+  TARGET_CONTEXT: {
+    VariableName: 'TARGET_CONTEXT',
+    defaultValue: '{{TARGET_CONTEXT}}',
     systemVariable: true,
     valueType: 'Text',
-    label: 'EMAIL_DRAFT',
+    label: 'TARGET_CONTEXT',
   },
-  SOCIAL_MEDIA_POST_CONTENT: {
-    VariableName: 'SOCIAL_MEDIA_POST_CONTENT',
-    defaultValue: '{{SOCIAL_MEDIA_POST_CONTENT}}',
+  DRAFT_CONTEXT: {
+    VariableName: 'DRAFT_CONTEXT',
+    defaultValue: '{{DRAFT_CONTEXT}}',
     systemVariable: true,
     valueType: 'Text',
-    label: 'SOCIAL_MEDIA_POST_CONTENT',
-  },
-  SOCIAL_MEDIA_COMMENT_DRAFT: {
-    VariableName: 'SOCIAL_MEDIA_COMMENT_DRAFT',
-    defaultValue: '{{SOCIAL_MEDIA_COMMENT_DRAFT}}',
-    systemVariable: true,
-    valueType: 'Text',
-    label: 'SOCIAL_MEDIA_COMMENT_DRAFT',
-  },
-  CHAT_MESSAGES_CONTENT: {
-    VariableName: 'CHAT_MESSAGES_CONTENT',
-    defaultValue: '{{CHAT_MESSAGES_CONTENT}}',
-    systemVariable: true,
-    valueType: 'Text',
-    label: 'CHAT_MESSAGES_CONTENT',
-  },
-  CHAT_MESSAGE_DRAFT: {
-    VariableName: 'CHAT_MESSAGE_DRAFT',
-    defaultValue: '{{CHAT_MESSAGE_DRAFT}}',
-    systemVariable: true,
-    valueType: 'Text',
-    label: 'CHAT_MESSAGE_DRAFT',
+    label: 'DRAFT_CONTEXT',
   },
 }
 
@@ -201,58 +177,25 @@ export const PRESET_VARIABLES_GROUP_MAP: {
       examples: [],
     },
     {
-      variable: PRESET_VARIABLE_MAP.EMAIL_CONTENTS,
+      variable: PRESET_VARIABLE_MAP.FULL_CONTEXT,
       description:
-        'prompt_editor:preset_variables__system__email_contents__description',
+        'prompt_editor:preset_variables__system__full_context__description',
       examples: [],
-      permissionKeys: [
-        'inputAssistantComposeReplyButton',
-      ],
+      permissionKeys: ['inputAssistantComposeReplyButton'],
     },
     {
-      variable: PRESET_VARIABLE_MAP.EMAIL_DRAFT,
+      variable: PRESET_VARIABLE_MAP.TARGET_CONTEXT,
       description:
-        'prompt_editor:preset_variables__system__email_draft__description',
+        'prompt_editor:preset_variables__system__target_context__description',
       examples: [],
-      permissionKeys: [
-        'inputAssistantRefineDraftButton',
-      ],
+      permissionKeys: ['inputAssistantComposeReplyButton'],
     },
     {
-      variable: PRESET_VARIABLE_MAP.SOCIAL_MEDIA_POST_CONTENT,
+      variable: PRESET_VARIABLE_MAP.DRAFT_CONTEXT,
       description:
-        'prompt_editor:preset_variables__system__social_media_post_content__description',
+        'prompt_editor:preset_variables__system__draft_context__description',
       examples: [],
-      permissionKeys: [
-        'inputAssistantComposeReplyButton',
-      ],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.SOCIAL_MEDIA_COMMENT_DRAFT,
-      description:
-        'prompt_editor:preset_variables__system__social_media_comment_draft__description',
-      examples: [],
-      permissionKeys: [
-        'inputAssistantRefineDraftButton',
-      ],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.CHAT_MESSAGES_CONTENT,
-      description:
-        'prompt_editor:preset_variables__system__chat_messsages_content__description',
-      examples: [],
-      permissionKeys: [
-        'inputAssistantComposeReplyButton',
-      ],
-    },
-    {
-      variable: PRESET_VARIABLE_MAP.CHAT_MESSAGE_DRAFT,
-      description:
-        'prompt_editor:preset_variables__system__chat_message_draft__description',
-      examples: [],
-      permissionKeys: [
-        'inputAssistantRefineDraftButton',
-      ],
+      permissionKeys: ['inputAssistantRefineDraftButton'],
     },
   ],
   // 'prompt_editor:preset_variables__web_search__title': [

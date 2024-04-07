@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from 'uuid'
 import inputAssistantButtonBaseConfig, {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
-  InputAssistantButtonGroupConfigHostType,
+  WritingAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
 import { mergeElementCssText } from '@/features/contextMenu/utils'
@@ -29,7 +29,7 @@ export const InputAssistantButtonElementRouteMap = new Map<
 >()
 
 class InputAssistantButtonManager {
-  host: InputAssistantButtonGroupConfigHostType
+  host: WritingAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
   interval = 1000
   configs: IInputAssistantButtonGroupConfig[] | null
@@ -37,7 +37,8 @@ class InputAssistantButtonManager {
   stop: boolean
   constructor() {
     this.stop = false
-    this.host = getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
+    this.host =
+      getCurrentDomainHost() as WritingAssistantButtonGroupConfigHostType
     this.configs = (() => {
       const configs = inputAssistantButtonBaseConfig[this.host]
       return Array.isArray(configs) ? configs : [configs]
@@ -86,9 +87,8 @@ class InputAssistantButtonManager {
               let deep = rootParentDeep
               while (deep > 0) {
                 deep--
-                const topLevelElement = InputAssistantButtonElementRouteMap.get(
-                  rootElement,
-                )!
+                const topLevelElement =
+                  InputAssistantButtonElementRouteMap.get(rootElement)!
                 InputAssistantButtonElementRouteMap.delete(rootElement)
                 rootElement = rootElement.parentElement as HTMLElement
                 InputAssistantButtonElementRouteMap.set(
@@ -124,7 +124,7 @@ class InputAssistantButtonManager {
         }
       }
     }
-    setTimeout(createInputAssistantButton, 0);
+    setTimeout(createInputAssistantButton, 0)
     this.timer = setInterval(createInputAssistantButton, this.interval)
   }
   attachInputAssistantButton(
@@ -150,7 +150,8 @@ class InputAssistantButtonManager {
         rootPreviousElementSiblingStyle &&
         rootElement.previousElementSibling
       ) {
-        const previousElementSibling = rootElement.previousElementSibling as HTMLElement
+        const previousElementSibling =
+          rootElement.previousElementSibling as HTMLElement
         mergeElementCssText(
           previousElementSibling,
           rootPreviousElementSiblingStyle,
@@ -258,9 +259,9 @@ class InputAssistantButtonManager {
     let isClean = false
     this.observerMap.forEach((observer, rootElement) => {
       const emotionElement = Array.from(
-        (observer.shadowRootElement.querySelectorAll(
+        observer.shadowRootElement.querySelectorAll(
           'style[data-emotion]',
-        ) as any) as HTMLStyleElement[],
+        ) as any as HTMLStyleElement[],
       )
       const hasEmptyEmotion = emotionElement.find(
         (element) =>
@@ -273,9 +274,8 @@ class InputAssistantButtonManager {
       while (isContain && topLevelElement) {
         isContain = topLevelElement.contains(currentLevelElement)
         currentLevelElement = topLevelElement as HTMLElement
-        topLevelElement = InputAssistantButtonElementRouteMap.get(
-          topLevelElement,
-        )
+        topLevelElement =
+          InputAssistantButtonElementRouteMap.get(topLevelElement)
       }
       if (isContain && !hasEmptyEmotion) {
         return

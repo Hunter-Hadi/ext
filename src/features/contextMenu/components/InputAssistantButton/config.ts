@@ -3,7 +3,6 @@ import { SxProps } from '@mui/material/styles'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
-import { type ISetActionsType } from '@/features/shortcuts/types/Action'
 import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import { I18nextKeysType } from '@/i18next'
 
@@ -60,62 +59,37 @@ export interface IInputAssistantButtonGroupConfig
   DropdownButtonStyle?: InputAssistantButtonStyle
 }
 
-export type InputAssistantButtonGroupConfigHostType =
-  | 'mail.google.com'
-  | 'outlook.office.com'
-  | 'outlook.live.com'
-  | 'outlook.office365.com'
-  | 'twitter.com'
-  | 'linkedin.com'
-  | 'facebook.com'
-  | 'youtube.com'
-  | 'studio.youtube.com'
-  | 'instagram.com'
-  | 'reddit.com'
-  | 'discord.com'
-  | 'app.slack.com'
-  | 'web.whatsapp.com'
+export const EmailWebsites = [
+  'mail.google.com',
+  'outlook.office.com',
+  'outlook.live.com',
+  'outlook.office365.com',
+] as const
 
-export const getInputAssistantAction = (
-  url: InputAssistantButtonGroupConfigHostType,
-): ISetActionsType[number] => {
-  switch (url) {
-    case 'discord.com':
-    case 'app.slack.com':
-    case 'web.whatsapp.com':
-      return {
-        type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-        parameters: {
-          isVariableMiddleOutEnabled: true,
-        },
-      }
+export const SocialMediaWebsites = [
+  'facebook.com',
+  'twitter.com',
+  'linkedin.com',
+  'youtube.com',
+  'studio.youtube.com',
+  'instagram.com',
+  'reddit.com',
+] as const
 
-    case 'twitter.com':
-    case 'linkedin.com':
-    case 'youtube.com':
-    case 'studio.youtube.com':
-    case 'instagram.com':
-    case 'reddit.com':
-      return {
-        type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-        parameters: {
-          isVariableMiddleOutEnabled: true,
-        },
-      }
+export const ChatAppWebsites = [
+  'web.whatsapp.com',
+  'app.slack.com',
+  'discord.com',
+] as const
 
-    case 'mail.google.com':
-    case 'outlook.office.com':
-    case 'outlook.live.com':
-    case 'outlook.office365.com':
-    default:
-      return {
-        type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-        parameters: {
-          isVariableMiddleOutEnabled: true,
-        },
-      }
-  }
-}
+export type EmailWebsitesType = (typeof EmailWebsites)[number]
+export type SocialMediaWebsitesType = (typeof SocialMediaWebsites)[number]
+export type ChatAppWebsitesType = (typeof ChatAppWebsites)[number]
+
+export type WritingAssistantButtonGroupConfigHostType =
+  | EmailWebsitesType
+  | SocialMediaWebsitesType
+  | ChatAppWebsitesType
 
 const GmailInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
@@ -1193,7 +1167,11 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     // }
   ]
 
-const InputAssistantButtonGroupConfig = {
+const InputAssistantButtonGroupConfig: {
+  [key in WritingAssistantButtonGroupConfigHostType]?:
+    | IInputAssistantButtonGroupConfig
+    | IInputAssistantButtonGroupConfig[]
+} = {
   'mail.google.com': GmailInputAssistantButtonGroupConfigs,
   'outlook.office.com': {
     enable: true,
@@ -1344,17 +1322,13 @@ const InputAssistantButtonGroupConfig = {
     },
   },
   'reddit.com': RedditInputAssistantButtonGroupConfigs,
-  'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
+  // 'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
   // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
   'discord.com': DiscordInputAssistantButtonGroupConfigs,
-} as {
-  [key in InputAssistantButtonGroupConfigHostType]:
-    | IInputAssistantButtonGroupConfig
-    | IInputAssistantButtonGroupConfig[]
 }
 
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
   InputAssistantButtonGroupConfig,
-) as InputAssistantButtonGroupConfigHostType[]
+) as WritingAssistantButtonGroupConfigHostType[]
 
 export default InputAssistantButtonGroupConfig

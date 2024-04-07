@@ -1511,12 +1511,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -1585,12 +1585,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -1659,12 +1659,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -1733,12 +1733,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -1807,12 +1807,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -1881,12 +1881,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -1955,12 +1955,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -2029,12 +2029,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -2093,7 +2093,7 @@ Output the answer without additional context, explanation, or extra wording, jus
           type: 'RENDER_TEMPLATE',
           parameters: {
             template:
-              '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
+              '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
           },
         },
         {
@@ -2124,12 +2124,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Here's the message to reply to:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -2148,21 +2148,21 @@ Now, write a concise reply to the message above by *writing a better version* of
                       {
                         label: 'Context',
                         VariableName:
-                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
                         valueType: 'Text',
                         placeholder: 'Enter context',
                         defaultValue:
-                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
+                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
                         systemVariable: true,
                       },
                       {
                         label: 'Target message',
                         VariableName:
-                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT',
+                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
                         valueType: 'Text',
                         placeholder: 'Enter target message',
                         defaultValue:
-                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
                         systemVariable: false,
                       },
                       {
@@ -2220,12 +2220,12 @@ The structure of a single chat message is includes the senders's username, date 
 
 If any:
 <context>
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}
 </context>
 
 Your task requires you to analyse the main topic of the complete context, and reply based on the following messages:
 \`\`\`
-{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}
+{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}
 \`\`\`
 
 ---
@@ -2244,21 +2244,21 @@ Now, write a concise reply to the message above by *writing a better version* of
                       {
                         label: 'Context',
                         VariableName:
-                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT',
+                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT',
                         valueType: 'Text',
                         placeholder: 'Enter context',
                         defaultValue:
-                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
+                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT}}',
                         systemVariable: true,
                       },
                       {
                         label: 'Target message',
                         VariableName:
-                          'MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT',
+                          'MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT',
                         valueType: 'Text',
                         placeholder: 'Enter target message',
                         defaultValue:
-                          '{{MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT}}',
+                          '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
                         systemVariable: false,
                       },
                       {

@@ -366,7 +366,7 @@ const useShortcutEditorActions = () => {
             valueType: 'Text',
             placeholder: 'Target context',
             defaultValue: '{{TARGET_CONTEXT}}',
-            systemVariable: false,
+            systemVariable: true,
           })
         }
 

@@ -95,14 +95,18 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           await getLinkedInCommentDetail(mainCommentContainer),
         )
 
+        const replyTextEditor = findSelectorParent(
+          '.comments-comment-texteditor',
+          inputAssistantButton,
+          5,
+        )
+
         // the mention of the main comment
-        const mention =
-          findSelectorParent(
-            '.comments-comment-texteditor',
-            inputAssistantButton,
-          )?.querySelector<HTMLElement>(
-            '.comments-comment-box-comment__text-editor .ql-mention',
-          )?.innerText || ''
+        const mention = replyTextEditor?.contains(inputAssistantButton)
+          ? replyTextEditor?.querySelector<HTMLElement>(
+              '.comments-comment-box-comment__text-editor .ql-mention',
+            )?.innerText || ''
+          : ''
 
         // the comment from the main comment (AKA secondary comment)
         const secondaryComment = findParentEqualSelector(

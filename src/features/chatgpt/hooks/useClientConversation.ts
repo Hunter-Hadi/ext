@@ -71,8 +71,8 @@ const useClientConversation = () => {
   const {
     conversationId: currentConversationId,
     createConversation,
-    chatStatus,
-    updateChatStatus,
+    conversationStatus,
+    updateConversationStatus,
     resetConversation,
   } = useChatPanelContext()
   const clientConversationMap = useRecoilValue(ClientConversationMapState)
@@ -240,14 +240,13 @@ const useClientConversation = () => {
         conversationId: currentConversationId,
       },
     })
-
     return result.success
   }
 
   return {
+    conversationStatus,
+    updateConversationStatus,
     clientConversationMessages,
-    chatStatus,
-    updateChatStatus,
     authAIProvider,
     clientWritingMessage,
     resetConversation,

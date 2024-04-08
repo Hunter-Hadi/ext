@@ -4,7 +4,6 @@ import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -14,7 +13,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import { MagicBookIcon, UseChatGptIcon } from '@/components/CustomIcon'
 import LanguageCodeSelect from '@/components/select/LanguageCodeSelect'
 import { useAuthLogin } from '@/features/auth'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import Tour from '@/features/common/components/Tour'
 import { TourStepInfo } from '@/features/common/components/Tour/TourStep'
 import { useFocus } from '@/features/common/hooks/useFocus'
@@ -269,9 +268,7 @@ const SidebarTour: FC = () => {
   const [chatBoxContainer, setChatBoxContainer] = useState<HTMLElement | null>(
     null,
   )
-  const chatGPTClientState = useRecoilValue(ChatGPTClientState)
-
-  const { status } = chatGPTClientState
+  const { conversationStatus } = useClientConversation()
 
   useEffect(() => {
     const root = getMaxAISidebarRootElement() as HTMLElement
@@ -414,7 +411,8 @@ const SidebarTour: FC = () => {
     return steps
   }, [t, appContainer])
 
-  if (!container || !loaded || !isLogin || status !== 'success') return null
+  if (!container || !loaded || !isLogin || conversationStatus !== 'success')
+    return null
 
   return (
     <Tour

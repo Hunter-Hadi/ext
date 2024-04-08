@@ -32,7 +32,6 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     if (imageFiles.length === 0) {
       return
     }
-    debugger
     const currentConversationType = clientConversation?.type
     if (
       !currentConversationType ||

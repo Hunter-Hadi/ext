@@ -1,24 +1,10 @@
 import { atom, atomFamily } from 'recoil'
 
-import { ChatStatus } from '@/background/provider/chat'
 import {
   IChatConversation,
   PaginationConversation,
 } from '@/background/src/chatConversations'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-
-export const ChatGPTClientState = atom<{
-  loaded: boolean
-  status: ChatStatus
-  aborts: Array<() => void>
-}>({
-  key: 'ChatGPTClientState',
-  default: {
-    loaded: false,
-    status: 'success',
-    aborts: [],
-  },
-})
 
 export const ClientConversationMapState = atom<{
   [key: string]: IChatConversation

@@ -19,7 +19,7 @@ import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
-import { pingDaemonProcess } from '@/features/chatgpt/utils'
+import { clientGetConversationStatus } from '@/features/chatgpt/utils'
 import { usePrevious } from '@/features/common/hooks/usePrevious'
 import { AppDBStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -29,7 +29,7 @@ const ChatGPTStatusWrapper: FC = () => {
   const { currentConversationId } = useClientConversation()
   const [authLogin] = useRecoilState(AuthState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const { chatStatus, updateChatStatus } = useClientConversation()
+  const { chatStatus, updateConversationStatus } = useClientConversation()
   const prevStatus = usePrevious(chatStatus)
 
   const { open: providerConfirmDialogOpen } = useRecoilValue(
@@ -49,10 +49,10 @@ const ChatGPTStatusWrapper: FC = () => {
       if (!currentConversationId) {
         return
       }
-      pingDaemonProcess(currentConversationId).then((res) => {
+      clientGetConversationStatus(currentConversationId).then((res) => {
         // 如果没有连接上，就需要重新加载
-        if (!res) {
-          updateChatStatus('needReload')
+        if (!res.success) {
+          updateConversationStatus('needReload')
         }
       })
     }

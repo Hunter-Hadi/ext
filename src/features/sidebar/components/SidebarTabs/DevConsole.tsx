@@ -12,10 +12,7 @@ import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import {
-  ChatGPTClientState,
-  ClientConversationMapState,
-} from '@/features/chatgpt/store'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { SidebarSummaryConversationIdState } from '@/features/sidebar/store'
@@ -90,11 +87,10 @@ const DevConsole: FC<{
   const {
     clientWritingMessage,
     currentConversationId,
-    chatStatus,
+    conversationStatus,
     clientConversation,
   } = useClientConversation()
   const { currentAIProviderModel } = useAIProviderModels()
-  const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
   const renderConversation = useMemo(() => {
     const clonedConversation: any = cloneDeep(
@@ -227,7 +223,7 @@ const DevConsole: FC<{
                 Reset OnBoarding
               </Button>
             </Stack>
-            <p>authStatus: {chatGPTClientState.status}</p>
+            <p>authStatus: {conversationStatus}</p>
             <p>loading: {clientWritingMessage.loading ? 'loading' : 'done'}</p>
             <p>
               currentSidebarConversationType: {currentSidebarConversationType}

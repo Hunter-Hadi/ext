@@ -15,7 +15,7 @@ import {
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionOnboardingStorage'
 import { APP_VERSION } from '@/constants'
 import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/features/activity/constants'
-import { useUserInfo } from '@/features/chatgpt'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'

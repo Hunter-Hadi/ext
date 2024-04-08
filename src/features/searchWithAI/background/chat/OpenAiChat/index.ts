@@ -1,14 +1,14 @@
-import { ChatStatus } from '@/background/provider/chat'
+import { v4 as uuidV4 } from 'uuid'
+
+import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
-import { backgroundSendAllClientMessage } from '@/background/utils'
+import ChatGPTSocketManager from '@/background/src/chat/OpenAIChat/socket'
 import {
   ChatGPTConversation,
   ChatGPTDaemonProcess,
 } from '@/features/searchWithAI/chatCore/chatgpt/core'
 // import { ChatGPTConversation } from '@/features/chatgpt/coreBackup'
 import Log from '@/utils/Log'
-import ChatGPTSocketManager from '@/background/src/chat/OpenAIChat/socket'
-import { v4 as uuidV4 } from 'uuid'
 
 const log = new Log('SearchWithAI/OpenAIChat')
 
@@ -16,7 +16,7 @@ const CHAT_TITLE = 'MAXAI'
 
 class OpenAIChat extends BaseChat {
   openAILib: ChatGPTDaemonProcess
-  status: ChatStatus = 'success'
+  status: ConversationStatusType = 'success'
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   conversation?: ChatGPTConversation
@@ -36,10 +36,11 @@ class OpenAIChat extends BaseChat {
   async auth(authTabId: number) {
     this.active = true
     this.status = 'success'
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
   async createConversation() {
-    this.conversation = (await this.openAILib.createConversation()) as ChatGPTConversation
+    this.conversation =
+      (await this.openAILib.createConversation()) as ChatGPTConversation
     return this.conversation?.id || ''
   }
   async removeConversation(conversationId: string) {
@@ -237,13 +238,6 @@ class OpenAIChat extends BaseChat {
   }
   async destroy() {
     this.openAILib.removeCacheConversation()
-  }
-  async updateClientStatus() {
-    if (this.active) {
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
   }
 }
 

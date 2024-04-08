@@ -1,6 +1,6 @@
 import React, { FC, useMemo, useState } from 'react'
 
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import {
   getChromeExtensionLocalStorage,
   MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
@@ -21,12 +21,13 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 const ContextMenuRoot: FC = () => {
   const { updateSidebarSettings } = useSidebarSettings()
   const [conversationId, setConversationId] = useState<string>('')
-  const [chatStatus, updateChatStatus] = useState<ChatStatus>('success')
+  const [conversationStatus, updateConversationStatus] =
+    useState<ConversationStatusType>('success')
   const { createSidebarConversation } = useSidebarSettings()
   const ChatPanelContextValue = useMemo<ChatPanelContextValue>(() => {
     return {
-      chatStatus,
-      updateChatStatus,
+      conversationStatus: conversationStatus,
+      updateConversationStatus: updateConversationStatus,
       createConversation: async (conversationType, AIProvider, AIModel) => {
         if (!AIProvider || !AIModel) {
           // 说明要用默认的或者用户最后选择的

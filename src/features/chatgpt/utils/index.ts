@@ -5,13 +5,21 @@ import {
   IChromeExtensionClientSendEvent,
   IOpenAIChatSendEvent,
 } from '@/background/eventType'
-import { IAIProviderType } from '@/background/provider/chat'
+import {
+  ConversationStatusType,
+  IAIProviderType,
+} from '@/background/provider/chat'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 
-export const pingDaemonProcess = async (conversationId: string) => {
+export const clientGetConversationStatus = async (
+  conversationId: string,
+): Promise<{
+  success: boolean
+  status: ConversationStatusType
+}> => {
   const port = new ContentScriptConnectionV2()
   const result = await port.postMessage({
     event: 'Client_checkChatGPTStatus',
@@ -19,7 +27,10 @@ export const pingDaemonProcess = async (conversationId: string) => {
       conversationId,
     },
   })
-  return result.success
+  return {
+    success: result.success,
+    status: result.data.status || 'success',
+  }
 }
 
 export const pingUntilLogin = (conversationId: string) => {

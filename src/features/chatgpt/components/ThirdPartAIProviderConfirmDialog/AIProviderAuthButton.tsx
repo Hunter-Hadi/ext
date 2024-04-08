@@ -5,31 +5,25 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import TooltipButton from '@/components/TooltipButton'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { AIProviderOptionType } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
 
 const AIProviderAuthButton: FC<{
   aiProviderOption: AIProviderOptionType
 }> = (props) => {
   const { aiProviderOption } = props
-  const { authAIProvider } = useClientConversation()
+  const { authAIProvider, conversationStatus } = useClientConversation()
   const { t } = useTranslation(['common', 'client'])
-  const chatGPTClientState = useRecoilValue(ChatGPTClientState)
   const [showJumpToChatGPT, setShowJumpToChatGPT] = useState(false)
 
   useEffect(() => {
     let timer: any | null = null
-    if (
-      chatGPTClientState.status === 'loading' ||
-      chatGPTClientState.status === 'complete'
-    ) {
+    if (conversationStatus === 'loading' || conversationStatus === 'complete') {
       timer = setTimeout(() => {
         setShowJumpToChatGPT(true)
       }, 10 * 1000)
@@ -40,15 +34,15 @@ const AIProviderAuthButton: FC<{
         clearTimeout(timer)
       }
     }
-  }, [chatGPTClientState.status])
+  }, [conversationStatus])
   return (
     <Stack
       sx={{
         width: '100%',
       }}
     >
-      {(chatGPTClientState.status === 'loading' ||
-        chatGPTClientState.status === 'complete') && (
+      {(conversationStatus === 'loading' ||
+        conversationStatus === 'complete') && (
         <Stack>
           {aiProviderOption.value === AI_PROVIDER_MAP.OPENAI && (
             <TextOnlyTooltip
@@ -125,7 +119,7 @@ const AIProviderAuthButton: FC<{
           )}
         </Stack>
       )}
-      {chatGPTClientState.status === 'needAuth' && (
+      {conversationStatus === 'needAuth' && (
         <Stack spacing={2}>
           <TooltipButton
             TooltipProps={{

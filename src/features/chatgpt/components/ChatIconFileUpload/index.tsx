@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button'
 import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import { checkFileTypeIsImage } from '@/background/utils/uplpadFileProcessHelper'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -10,8 +9,8 @@ import ChatIconFileList, {
   ChatIconFileListProps,
 } from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import FileExtractor from '@/features/sidebar/utils/FileExtractor'
@@ -32,7 +31,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
   } = useAIProviderUpload()
-  const clientState = useRecoilValue(ChatGPTClientState)
+  const { conversationStatus } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
@@ -87,13 +86,13 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   }
   if (
     !AIProviderConfig ||
-    clientState.status !== 'success' ||
+    conversationStatus !== 'success' ||
     smoothConversationLoading
   ) {
     console.log(
       `ChatIconFileUpload:`,
       AIProviderConfig,
-      clientState.status,
+      conversationStatus,
       smoothConversationLoading,
     )
     return <></>

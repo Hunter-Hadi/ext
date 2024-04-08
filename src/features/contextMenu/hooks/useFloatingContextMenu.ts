@@ -147,7 +147,6 @@ const useFloatingContextMenu = () => {
       if (isFloatingContextMenuOpen) {
         floatingContextMenuSaveDraftToChatBox()
       }
-      debugger
       hideRangy()
       setFloatingDropdownMenu({
         open: false,

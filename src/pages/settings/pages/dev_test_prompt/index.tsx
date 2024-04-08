@@ -2,7 +2,10 @@ import Stack from '@mui/material/Stack'
 import React, { FC, useEffect, useMemo } from 'react'
 import { atomFamily, useRecoilState } from 'recoil'
 
-import { ChatStatus, IAIProviderType } from '@/background/provider/chat'
+import {
+  ConversationStatusType,
+  IAIProviderType,
+} from '@/background/provider/chat'
 import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
 import {
   IChatConversation,
@@ -22,7 +25,7 @@ const port = new ContentScriptConnectionV2()
 const ChatPanelStateFamily = atomFamily<
   {
     conversationId: string
-    status: ChatStatus
+    status: ConversationStatusType
   },
   number
 >({
@@ -96,8 +99,8 @@ const ChatPanelItem: FC<{
     return {
       conversationId: state.conversationId,
       createConversation,
-      chatStatus: state.status,
-      updateChatStatus: (status) => {
+      conversationStatus: state.status,
+      updateConversationStatus: (status) => {
         setState((prevState) => {
           return {
             ...prevState,

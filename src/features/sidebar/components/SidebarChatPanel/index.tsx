@@ -3,9 +3,9 @@ import React, { useEffect } from 'react'
 
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
-import { useInitClientChatFiles } from '@/features/chatgpt/hooks/upload/useInitClientChatFiles'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { useClientConversationListener } from '@/features/chatgpt/hooks/useClientConversationListener'
 import useInitConversationUpdate from '@/features/chatgpt/hooks/useInitConversationUpdate'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
@@ -36,7 +36,7 @@ const SidebarChatPanel = () => {
   const { startTextToImage } = useArtTextToImage()
   useInitSidebar()
   useInitConversationUpdate()
-  useInitClientChatFiles()
+  useClientConversationListener()
   useEffect(() => {
     return OneShotCommunicator.receive(
       'QuickSearchSelectedText',

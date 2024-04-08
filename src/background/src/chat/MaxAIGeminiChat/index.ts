@@ -1,6 +1,6 @@
 import Browser from 'webextension-polyfill'
 
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import {
@@ -8,10 +8,7 @@ import {
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
-import {
-  backgroundSendAllClientMessage,
-  chromeExtensionLogout,
-} from '@/background/utils'
+import { chromeExtensionLogout } from '@/background/utils'
 import {
   AI_PROVIDER_MAP,
   APP_USE_CHAT_GPT_API_HOST,
@@ -27,7 +24,7 @@ import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/b
 const log = new Log('Background/Chat/MaxAIGeminiChat')
 
 class MaxAIGeminiChat extends BaseChat {
-  status: ChatStatus = 'success'
+  status: ConversationStatusType = 'success'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
@@ -40,7 +37,7 @@ class MaxAIGeminiChat extends BaseChat {
   async preAuth() {
     this.active = true
     this.status = 'success'
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
     // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
@@ -54,7 +51,7 @@ class MaxAIGeminiChat extends BaseChat {
         url: APP_USE_CHAT_GPT_HOST,
       })
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
   private async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
@@ -65,7 +62,7 @@ class MaxAIGeminiChat extends BaseChat {
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
 
   /**
@@ -277,7 +274,7 @@ class MaxAIGeminiChat extends BaseChat {
       log.info('user token expired')
       this.status = 'needAuth'
       await chromeExtensionLogout()
-      await this.updateClientStatus()
+      await this.updateClientConversationChatStatus()
     }
   }
   async abortTask(taskId: string) {
@@ -296,13 +293,6 @@ class MaxAIGeminiChat extends BaseChat {
   }
   private async getToken() {
     return await getMaxAIChromeExtensionAccessToken()
-  }
-  async updateClientStatus() {
-    if (this.active) {
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
   }
 }
 export { MaxAIGeminiChat }

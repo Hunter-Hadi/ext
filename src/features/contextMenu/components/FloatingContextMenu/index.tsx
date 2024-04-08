@@ -23,7 +23,7 @@ import React, {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 
 import AutoHeightTextarea from '@/components/AutoHeightTextarea'
 import DevContent from '@/components/DevContent'
@@ -32,11 +32,10 @@ import { CHROME_EXTENSION_FLOATING_CONTEXT_MENU_MIN_WIDTH } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import ChatIconFileUpload from '@/features/chatgpt/components/ChatIconFileUpload'
-import useInitClientChatFiles from '@/features/chatgpt/hooks/upload/useInitClientChatFiles'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useClientConversationListener from '@/features/chatgpt/hooks/useClientConversationListener'
 import useInitConversationUpdate from '@/features/chatgpt/hooks/useInitConversationUpdate'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import {
   MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID,
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
@@ -105,6 +104,7 @@ const FloatingContextMenu: FC<{
   const { askAIWIthShortcuts, askAIQuestion, regenerate, stopGenerate } =
     useClientChat()
   const {
+    conversationStatus,
     currentConversationId,
     createConversation,
     currentConversationIdRef,
@@ -120,7 +120,6 @@ const FloatingContextMenu: FC<{
   )
   const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const { isLogin } = useAuthLogin()
-  const chatGPTClient = useRecoilValue(ChatGPTClientState)
   // ai输出后，系统系统的建议菜单状态
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
@@ -469,7 +468,7 @@ const FloatingContextMenu: FC<{
         isSuggestedContextMenu = true
       }
       // 如果没登录，或者chatGPTClient没有成功初始化，则需要打开chatbox
-      if (!isLogin || chatGPTClient.status !== 'success') {
+      if (!isLogin || conversationStatus !== 'success') {
         needOpenChatBox = true
       }
       isDraftContextMenu = checkIsDraftContextMenuId(currentSelectedId)
@@ -553,7 +552,7 @@ const FloatingContextMenu: FC<{
     originContextMenuList,
     floatingDropdownMenu.open,
     loading,
-    chatGPTClient.status,
+    conversationStatus,
     isLogin,
   ])
   const isRunningActionsRef = useRef(false)
@@ -581,7 +580,7 @@ const FloatingContextMenu: FC<{
       }
       // 判断是否可以运行
       let needOpenChatBox = false
-      if (!isLogin || chatGPTClient.status !== 'success') {
+      if (!isLogin || conversationStatus !== 'success') {
         needOpenChatBox = true
       }
       if (needOpenChatBox) {
@@ -639,7 +638,7 @@ const FloatingContextMenu: FC<{
     }
   }, [setInputValue])
   useInitConversationUpdate()
-  useInitClientChatFiles()
+  useClientConversationListener()
   return (
     <FloatingPortal root={root}>
       <div

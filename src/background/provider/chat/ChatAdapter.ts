@@ -10,7 +10,7 @@ import { IChatUploadFile, IUserChatMessage } from '@/features/chatgpt/types'
  * complete: 加载完成
  * success: 授权成功
  */
-export type ChatStatus =
+export type ConversationStatusType =
   | 'needAuth'
   | 'loading'
   | 'complete'
@@ -29,7 +29,7 @@ export type IChatGPTAskQuestionFunctionType = (
 export interface ChatSystemInterface {
   conversation?: IChatConversation
   chatFiles: IChatUploadFile[]
-  status: ChatStatus
+  status: ConversationStatusType
   preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
   destroy: () => Promise<void>
@@ -52,7 +52,7 @@ export interface ChatSystemInterface {
 export interface ChatAdapterInterface {
   conversation?: IChatConversation
   chatFiles: IChatUploadFile[]
-  status: ChatStatus
+  status: ConversationStatusType
   preAuth: () => Promise<void>
   auth: (authTabId: number) => Promise<void>
   destroy: () => Promise<void>

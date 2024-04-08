@@ -3,8 +3,8 @@ import Browser from 'webextension-polyfill'
 import {
   ChatAdapter,
   ChatAdapterInterface,
-  ChatStatus,
   ChatSystemInterface,
+  ConversationStatusType,
   IAIProviderType,
 } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
@@ -36,7 +36,7 @@ class ChatSystem implements ChatSystemInterface {
   get conversation() {
     return this.currentAdapter?.conversation
   }
-  get status(): ChatStatus {
+  get status(): ConversationStatusType {
     if (this.currentAdapter) {
       if (this.currentAdapter.status === 'needAuth') {
         // do nothing

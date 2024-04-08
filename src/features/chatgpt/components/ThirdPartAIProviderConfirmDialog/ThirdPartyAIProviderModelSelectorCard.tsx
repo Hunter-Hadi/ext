@@ -6,7 +6,6 @@ import Typography from '@mui/material/Typography'
 import last from 'lodash-es/last'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { AIChipIcon } from '@/components/CustomIcon'
@@ -18,9 +17,9 @@ import AIProviderOptions, {
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import AIProviderAuthButton from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/AIProviderAuthButton'
 import AIProviderInfoCard from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/AIProviderInfoCard'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { list2Options } from '@/utils/dataHelper/arrayHelper'
@@ -38,14 +37,12 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
 }> = (props) => {
   const { sx } = props
   const { t } = useTranslation(['client'])
-  const chatGPTClientState = useRecoilValue(ChatGPTClientState)
-  const [
-    userSelectAIProvider,
-    setUserSelectAIProvider,
-  ] = useState<IAIProviderType | null>(null)
+  const [userSelectAIProvider, setUserSelectAIProvider] =
+    useState<IAIProviderType | null>(null)
   const [useSelectAIProviderModel, setUserSelectAIProviderModel] = useState<
     string | null
   >(null)
+  const { conversationStatus } = useClientConversation()
   const [isContinue, setIsContinue] = useState(false)
   const {
     currentThirdAIProvider,
@@ -65,9 +62,8 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
         return option
       }
       if (option.origin.disabled !== true) {
-        option.origin.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
-          option.value,
-        )
+        option.origin.disabled =
+          remoteAIProviderConfig.disabledAIProviders.includes(option.value)
       }
       return option
     })
@@ -104,10 +100,10 @@ const ThirdPartyAIProviderModelSelectorCard: FC<{
     memoizedThirdAIProviderModelOptions,
   ])
   useEffect(() => {
-    if (isContinue && chatGPTClientState.status === 'success') {
+    if (isContinue && conversationStatus === 'success') {
       hideThirdPartyAIProviderConfirmDialog()
     }
-  }, [chatGPTClientState.status, isContinue])
+  }, [conversationStatus, isContinue])
   return (
     <Stack
       sx={{

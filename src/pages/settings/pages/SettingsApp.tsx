@@ -4,8 +4,8 @@ import React, { type FC, lazy, useEffect, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
-import { useInitChatGPTClient } from '@/features/chatgpt'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import PageHelp from '@/pages/settings/components/pageHelp'
 import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
@@ -116,7 +116,7 @@ const SettingsApp: FC = () => {
       // do nothing
     }
   }, [route, isLogin])
-  useInitChatGPTClient()
+  useClientMessageListenerForBackground()
   return (
     <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
       <Stack height={'100vh'}>

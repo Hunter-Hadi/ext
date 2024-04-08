@@ -1,4 +1,5 @@
 // hooks/useClientChatGPTFiles.ts
+import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
 import { useCallback, useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
@@ -8,7 +9,10 @@ import { useCreateClientMessageListener } from '@/background/utils'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ClientUploadedFilesState } from '@/features/chatgpt/store'
+import {
+  ClientConversationMapState,
+  ClientUploadedFilesState,
+} from '@/features/chatgpt/store'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
@@ -21,14 +25,22 @@ const port = new ContentScriptConnectionV2({
 /**
  * 初始化客户端聊天GPT文件
  */
-export const useInitClientChatFiles = () => {
+export const useClientConversationListener = () => {
+  const [, setClientConversationMap] = useRecoilState(
+    ClientConversationMapState,
+  )
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
   const {
+    updateConversationStatus,
     currentConversationId,
     clientConversationMessages,
     currentConversationIdRef,
   } = useClientConversation()
+  const updateConversationStatusRef = useRef(updateConversationStatus)
+  useEffect(() => {
+    updateConversationStatusRef.current = updateConversationStatus
+  }, [updateConversationStatus])
   const [clientUploadedState, setClientUploadedState] = useRecoilState(
     ClientUploadedFilesState(currentConversationId || ''),
   )
@@ -97,6 +109,40 @@ export const useInitClientChatFiles = () => {
           success: true,
           data: {},
           message: '',
+        }
+      }
+      case 'Client_ChatGPTStatusUpdate': {
+        const { status, conversationId } = data
+        if (conversationId !== currentConversationIdRef.current) {
+          return undefined
+        }
+        console.log(`Client_ChatGPTStatusUpdate ${status} [${conversationId}]`)
+        updateConversationStatusRef.current(status)
+        return {
+          success: true,
+          message: '',
+          data: {},
+        }
+      }
+      case 'Client_listenUpdateConversationMessages': {
+        const { conversation, conversationId } = data
+        if (conversation?.id) {
+          setClientConversationMap((prevState) => {
+            return {
+              ...prevState,
+              [conversation.id]: conversation,
+            }
+          })
+        } else if (!conversation) {
+          // 如果是删除的话，就不会有conversation
+          setClientConversationMap((prevState) => {
+            const newState = cloneDeep(prevState)
+            delete newState[conversationId]
+            return newState
+          })
+        }
+        return {
+          success: true,
         }
       }
       default:
@@ -191,4 +237,4 @@ export const useInitClientChatFiles = () => {
   ])
 }
 
-export default useInitClientChatFiles
+export default useClientConversationListener

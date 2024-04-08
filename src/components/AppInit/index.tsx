@@ -13,7 +13,7 @@ import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMes
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { useInitChatGPTClient, useUserInfo } from '@/features/chatgpt'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
@@ -21,6 +21,7 @@ import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateL
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
+import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { useInitI18n } from '@/i18n/hooks'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
@@ -119,7 +120,7 @@ const MaxAISubscriptionUpdate = () => {
 
 const AppInit = () => {
   useHideInHost()
-  useInitChatGPTClient()
+  useClientMessageListenerForBackground()
   useAuthLogin()
   userInitUserInfo()
   useInitI18n()

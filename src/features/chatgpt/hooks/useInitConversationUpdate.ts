@@ -15,7 +15,11 @@ const useInitConversationUpdate = () => {
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
   )
-  const { currentConversationId, updateChatStatus } = useClientConversation()
+  const {
+    currentConversationIdRef,
+    currentConversationId,
+    updateConversationStatus,
+  } = useClientConversation()
   useEffect(() => {
     if (currentConversationId) {
       const port = new ContentScriptConnectionV2({
@@ -50,9 +54,11 @@ const useInitConversationUpdate = () => {
         console.log(
           `新版Conversation [${currentConversationId}]status更新`,
           result.data,
+          currentConversationIdRef.current,
+          currentConversationId,
         )
         if (result.success && result.data.status) {
-          updateChatStatus(result.data.status)
+          updateConversationStatus(result.data.status)
         }
       }
       window.addEventListener('focus', checkChatGPTStatus)

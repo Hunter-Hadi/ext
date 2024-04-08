@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import useActivity from '@/features/auth/hooks/useActivity'
-import { useUserInfo } from '@/features/chatgpt/hooks'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 
 const SidebarTopBar: FC = () => {
   const { t } = useTranslation(['client'])

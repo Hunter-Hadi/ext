@@ -4,7 +4,10 @@
  */
 import { createContext, useContext } from 'react'
 
-import { ChatStatus, IAIProviderType } from '@/background/provider/chat'
+import {
+  ConversationStatusType,
+  IAIProviderType,
+} from '@/background/provider/chat'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 
 export type ChatPanelCreateConversationFunction = (
@@ -20,16 +23,16 @@ export interface ChatPanelContextValue {
   conversationId?: string
   createConversation: ChatPanelCreateConversationFunction
   resetConversation: () => Promise<void>
-  chatStatus: ChatStatus
-  updateChatStatus: (status: ChatStatus) => void
+  conversationStatus: ConversationStatusType
+  updateConversationStatus: (status: ConversationStatusType) => void
 }
 
 const ChatPanelContext = createContext<ChatPanelContextValue>({
   conversationId: undefined,
   createConversation: () => Promise.resolve(''),
   resetConversation: () => Promise.resolve(),
-  chatStatus: 'success',
-  updateChatStatus: () => {},
+  conversationStatus: 'success',
+  updateConversationStatus: () => {},
 })
 
 export function useChatPanelContext() {

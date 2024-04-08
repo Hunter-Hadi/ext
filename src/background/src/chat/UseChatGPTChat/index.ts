@@ -1,7 +1,7 @@
 import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
 
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
   IMaxAIChatGPTBackendAPIType,
@@ -10,10 +10,7 @@ import {
   USE_CHAT_GPT_PLUS_MODELS,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
-import {
-  backgroundSendAllClientMessage,
-  chromeExtensionLogout,
-} from '@/background/utils'
+import { chromeExtensionLogout } from '@/background/utils'
 import {
   AI_PROVIDER_MAP,
   APP_USE_CHAT_GPT_API_HOST,
@@ -30,7 +27,7 @@ import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/b
 const log = new Log('Background/Chat/UseChatGPTPlusChat')
 
 class UseChatGPTPlusChat extends BaseChat {
-  status: ChatStatus = 'success'
+  status: ConversationStatusType = 'success'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
@@ -43,7 +40,7 @@ class UseChatGPTPlusChat extends BaseChat {
   async preAuth() {
     this.active = true
     this.status = 'success'
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
     // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
@@ -57,7 +54,7 @@ class UseChatGPTPlusChat extends BaseChat {
         url: APP_USE_CHAT_GPT_HOST,
       })
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
   private async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
@@ -68,7 +65,7 @@ class UseChatGPTPlusChat extends BaseChat {
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
 
   /**
@@ -398,7 +395,7 @@ class UseChatGPTPlusChat extends BaseChat {
       log.info('user token expired')
       this.status = 'needAuth'
       await chromeExtensionLogout()
-      await this.updateClientStatus()
+      await this.updateClientConversationChatStatus()
     }
   }
   async abortTask(taskId: string) {
@@ -417,13 +414,6 @@ class UseChatGPTPlusChat extends BaseChat {
   }
   private async getToken() {
     return await getMaxAIChromeExtensionAccessToken()
-  }
-  async updateClientStatus() {
-    if (this.active) {
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
   }
 }
 export { UseChatGPTPlusChat }

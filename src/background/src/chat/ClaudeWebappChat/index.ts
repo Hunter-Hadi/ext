@@ -32,7 +32,7 @@ class ClaudeWebappChat extends BaseChat {
       this.claude.organizationId = cache[cacheTokenKey]
     }
     this.status = this.claude.organizationId ? 'success' : 'needAuth'
-    await this.updateClientStatus(this.status)
+    await this.updateStatus(this.status)
   }
   async auth() {
     this.active = true
@@ -44,7 +44,7 @@ class ClaudeWebappChat extends BaseChat {
       await Browser.storage.local.set({
         [cacheTokenKey]: this.claude.organizationId,
       })
-      await this.updateClientStatus('success')
+      await this.updateStatus('success')
     } else {
       // 打开claude.ai网页
       await Browser.tabs.create({
@@ -75,7 +75,7 @@ class ClaudeWebappChat extends BaseChat {
       await Browser.storage.local.remove(cacheTokenKey)
       // 重新登录
       this.status = 'needAuth'
-      await this.updateClientStatus('needAuth')
+      await this.updateStatus('needAuth')
     }
     if (this.conversation) {
       this.conversation.meta.AIConversationId = conversationId
@@ -246,7 +246,7 @@ class ClaudeWebappChat extends BaseChat {
     await this.clearFiles()
     this.claude.resetAttachments()
     this.status = 'needAuth'
-    await this.updateClientStatus('needAuth')
+    await this.updateStatus('needAuth')
     this.active = false
   }
 }

@@ -5,7 +5,6 @@ import {
   BingChatProvider,
   ChatAdapter,
   ClaudeChatProvider,
-  IAIProviderType,
   MaxAIClaudeChatProvider,
   MaxAIDALLEChatProvider,
   MaxAIFreeChatProvider,
@@ -172,10 +171,7 @@ export default class ChatSystemFactory {
         const currentChatSystem = this.getChatSystem(data.conversationId)
         switch (event) {
           case 'Client_AuthAIProvider': {
-            const { provider } = data
-            const needAuthAIProvider =
-              currentChatSystem.adapters[provider as IAIProviderType]
-            await needAuthAIProvider?.auth(sender.tab?.id || 0)
+            await currentChatSystem?.auth(sender.tab?.id || 0)
             return {
               success: true,
               data: {},

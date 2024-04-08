@@ -1,8 +1,11 @@
 import Stack from '@mui/material/Stack'
 import React, { useMemo, useState } from 'react'
 
-import { ChatStatus } from '@/background/provider/chat'
-import { ChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
+import { ConversationStatusType } from '@/background/provider/chat'
+import {
+  ChatPanelContext,
+  ChatPanelContextValue,
+} from '@/features/chatgpt/store/ChatPanelContext'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
 import SidebarChatPanel from '@/features/sidebar/components/SidebarChatPanel'
@@ -28,18 +31,19 @@ const SidebarPage = () => {
 
   const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useSidebarDropEvent()
-  const [chatStatus, setChatStatus] = useState<ChatStatus>('success')
-  const sidebarContextValue = useMemo(() => {
+  const [conversationStatus, setConversationStatus] =
+    useState<ConversationStatusType>('success')
+  const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
     return {
-      chatStatus,
-      updateChatStatus: (newStatus: ChatStatus) => {
-        setChatStatus(newStatus)
+      conversationStatus,
+      updateConversationStatus: (newStatus: ConversationStatusType) => {
+        setConversationStatus(newStatus)
       },
       conversationId: currentSidebarConversationId,
       createConversation: createSidebarConversation,
       resetConversation: resetSidebarConversation,
     }
-  }, [currentSidebarConversationId, chatStatus])
+  }, [currentSidebarConversationId, conversationStatus])
 
   return (
     <Stack

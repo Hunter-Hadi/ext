@@ -1,13 +1,10 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { IOpenAIApiChatMessage } from '@/background/src/chat/OpenAIApiChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
-import {
-  backgroundSendAllClientMessage,
-  createChromeExtensionOptionsPage,
-} from '@/background/utils'
+import { createChromeExtensionOptionsPage } from '@/background/utils'
 import { AI_PROVIDER_MAP } from '@/constants'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
 import { hasData } from '@/utils'
@@ -16,7 +13,7 @@ import Log from '@/utils/Log'
 const log = new Log('Background/Chat/OpenAIApiChat')
 
 class OpenAIApiChat extends BaseChat {
-  status: ChatStatus = 'needAuth'
+  status: ConversationStatusType = 'needAuth'
   constructor() {
     super('OpenAIApiChat')
     this.init()
@@ -66,10 +63,11 @@ class OpenAIApiChat extends BaseChat {
       history,
     } = options || {}
     const chatGPTApiSettings = await this.getChatGPTAPISettings()
+    debugger
     if (!chatGPTApiSettings) {
       // need Auth
       this.status = 'needAuth'
-      await this.updateClientStatus()
+      await this.updateStatus()
       return
     }
     const controller = new AbortController()
@@ -213,11 +211,11 @@ class OpenAIApiChat extends BaseChat {
     const settings = await getAIProviderSettings('OPENAI_API')
     if (!settings?.apiKey || !settings.apiHost) {
       this.status = 'needAuth'
-      await this.updateClientStatus()
+      await this.updateStatus()
       return false
     } else {
       this.status = 'success'
-      await this.updateClientStatus()
+      await this.updateStatus()
       return true
     }
   }
@@ -236,14 +234,12 @@ class OpenAIApiChat extends BaseChat {
   async destroy() {
     log.info('destroy')
     this.status = 'needAuth'
-    await this.updateClientStatus()
+    await this.updateStatus()
     this.active = false
   }
-  async updateClientStatus() {
+  async updateStatus() {
     if (this.active) {
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
+      await this.updateClientConversationChatStatus()
     }
   }
 }

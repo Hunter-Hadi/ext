@@ -4,7 +4,7 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import {
   ActionAnalyzeChatFile,
   ActionAskChatGPT,
-  ActionAssignCustomPromptWebPageContentContextVarible,
+  ActionAssignCustomPromptWebPageContentContextVariable,
   ActionChatMessage,
   ActionCloseURLS,
   ActionConditional,
@@ -101,8 +101,8 @@ const ActionClassMap = {
   [ActionGetChatMessagesContentOfWebPage.type]:
     ActionGetChatMessagesContentOfWebPage,
   [ActionGetChatMessageDraftOfWebPage.type]: ActionGetChatMessageDraftOfWebPage,
-  [ActionAssignCustomPromptWebPageContentContextVarible.type]:
-    ActionAssignCustomPromptWebPageContentContextVarible,
+  [ActionAssignCustomPromptWebPageContentContextVariable.type]:
+    ActionAssignCustomPromptWebPageContentContextVariable,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,

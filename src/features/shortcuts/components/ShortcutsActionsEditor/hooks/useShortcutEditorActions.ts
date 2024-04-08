@@ -342,7 +342,7 @@ const useShortcutEditorActions = () => {
           },
         },
         {
-          type: 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIBLE',
+          type: 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE',
           parameters: {},
         },
       ]

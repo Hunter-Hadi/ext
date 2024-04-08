@@ -544,6 +544,7 @@ const FacebookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
             findSelectorParent(
               'div > div > div > #focused-state-composer-submit > span > div > i',
               rootElement,
+              5,
             )
           ) {
             return false

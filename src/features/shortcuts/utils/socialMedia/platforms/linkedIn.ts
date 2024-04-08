@@ -90,7 +90,6 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           inputAssistantButton,
         )
       if (mainCommentContainer) {
-        debugger
         const linkedInPostComments: ICommentData[] = []
         linkedInPostComments.push(
           await getLinkedInCommentDetail(mainCommentContainer),

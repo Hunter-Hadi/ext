@@ -930,12 +930,9 @@
     "ai_response_language__title": "Γλώσσα απάντησης AI",
     "ai_response_language__settings__label_1": "Χρήση",
     "ai_response_language__settings__label_2": "ρύθμιση γλώσσας",
-    "preset_variables__system__email_contents__description": "περιεχόμενο email",
-    "preset_variables__system__email_draft__description": "πρόχειρο email",
-    "preset_variables__system__social_media_post_content__description": "περιεχόμενο ανάρτησης στα social media",
-    "preset_variables__system__social_media_comment_draft__description": "πρόχειρο σχολίου στα social media",
-    "preset_variables__system__chat_messsages_content__description": "περιεχόμενο μηνυμάτων συνομιλίας",
-    "preset_variables__system__chat_message_draft__description": "πρόχειρο μηνύματος συνομιλίας"
+    "preset_variables__system__full_context__description": "πλήρες περιεχόμενο πλαισίου",
+    "preset_variables__system__target_context__description": "περιεχόμενο στόχου πλαισίου",
+    "preset_variables__system__draft_context__description": "περιεχόμενο προσχέδιου πλαισίου"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-κλικ προτροπές",

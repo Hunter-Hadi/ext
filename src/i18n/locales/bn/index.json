@@ -930,12 +930,9 @@
     "ai_response_language__title": "এইআই প্রতিক্রিয়ার ভাষা",
     "ai_response_language__settings__label_1": "ব্যবহার করুন",
     "ai_response_language__settings__label_2": "ভাষা সেটিং",
-    "preset_variables__system__email_contents__description": "ইমেল সামগ্রী",
-    "preset_variables__system__email_draft__description": "ইমেল খসড়া",
-    "preset_variables__system__social_media_post_content__description": "সামাজিক মিডিয়া পোস্টের সামগ্রী",
-    "preset_variables__system__social_media_comment_draft__description": "সামাজিক মিডিয়া মন্তব্য খসড়া",
-    "preset_variables__system__chat_messsages_content__description": "চ্যাট বার্তার সামগ্রী",
-    "preset_variables__system__chat_message_draft__description": "চ্যাট বার্তার খসড়া"
+    "preset_variables__system__full_context__description": "সম্পূর্ণ প্রসঙ্গ বিষয়বস্তু",
+    "preset_variables__system__target_context__description": "লক্ষ্য প্রসঙ্গ বিষয়বস্তু",
+    "preset_variables__system__draft_context__description": "খসড়া প্রসঙ্গ বিষয়বস্তু"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-ক্লিক প্রম্পট",

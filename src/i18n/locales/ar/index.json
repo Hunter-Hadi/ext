@@ -930,12 +930,9 @@
     "ai_response_language__title": "لغة استجابة الذكاء الاصطناعي",
     "ai_response_language__settings__label_1": "استخدم",
     "ai_response_language__settings__label_2": "إعداد اللغة",
-    "preset_variables__system__email_contents__description": "محتوى البريد الإلكتروني",
-    "preset_variables__system__email_draft__description": "مسودة البريد الإلكتروني",
-    "preset_variables__system__social_media_post_content__description": "محتوى منشور وسائل التواصل الاجتماعي",
-    "preset_variables__system__social_media_comment_draft__description": "مسودة تعليق وسائل التواصل الاجتماعي",
-    "preset_variables__system__chat_messsages_content__description": "محتوى رسائل الدردشة",
-    "preset_variables__system__chat_message_draft__description": "مسودة رسالة الدردشة"
+    "preset_variables__system__full_context__description": "محتوى السياق الكامل",
+    "preset_variables__system__target_context__description": "محتوى السياق المستهدف",
+    "preset_variables__system__draft_context__description": "محتوى السياق المسودة"
   },
   "prompt_library": {
     "use_prompt_library__title": "التعليمات بنقرة واحدة",

@@ -4,7 +4,7 @@ import { v4 as uuidV4 } from 'uuid'
 import inputAssistantButtonBaseConfig, {
   IInputAssistantButton,
   IInputAssistantButtonGroupConfig,
-  InputAssistantButtonGroupConfigHostType,
+  WritingAssistantButtonGroupConfigHostType,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import getInputAssistantButtonGroupWithHost from '@/features/contextMenu/components/InputAssistantButton/getInputAssistantButtonGroupWithHost'
 import { mergeElementCssText } from '@/features/contextMenu/utils'
@@ -29,7 +29,7 @@ export const InputAssistantButtonElementRouteMap = new Map<
 >()
 
 class InputAssistantButtonManager {
-  host: InputAssistantButtonGroupConfigHostType
+  host: WritingAssistantButtonGroupConfigHostType
   timer?: ReturnType<typeof setInterval>
   interval = 1000
   configs: IInputAssistantButtonGroupConfig[] | null
@@ -38,7 +38,7 @@ class InputAssistantButtonManager {
   constructor() {
     this.stop = false
     this.host =
-      getCurrentDomainHost() as InputAssistantButtonGroupConfigHostType
+      getCurrentDomainHost() as WritingAssistantButtonGroupConfigHostType
     this.configs = (() => {
       const configs = inputAssistantButtonBaseConfig[this.host]
       return Array.isArray(configs) ? configs : [configs]

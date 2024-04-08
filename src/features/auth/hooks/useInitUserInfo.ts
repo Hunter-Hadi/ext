@@ -130,8 +130,13 @@ const userInitUserInfo = (isInit = true) => {
       })
     }
   }
+  const isPushUpgradeMessageRef = useRef(false)
   useEffect(() => {
-    if (!needPushUpgradeMessage.current || !upgradeTextRef.current) {
+    if (
+      !needPushUpgradeMessage.current ||
+      !upgradeTextRef.current ||
+      isPushUpgradeMessageRef.current
+    ) {
       return
     }
     // 如果是升级，需要在侧边栏显示升级消息
@@ -162,6 +167,7 @@ const userInitUserInfo = (isInit = true) => {
           } as ISystemChatMessage,
         ],
       )
+      isPushUpgradeMessageRef.current = true
     }
   }, [currentSidebarConversationId, currentSidebarConversationMessages])
   useEffectOnce(() => {

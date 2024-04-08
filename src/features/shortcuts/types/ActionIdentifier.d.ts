@@ -84,6 +84,8 @@ type ActionIdentifier =
   | 'MAXAI_PROCESS_BUILT_IN_PARAMETERS'
   // 获取最后一条AI消息的ID
   | 'GET_LAST_AI_MESSAGE_ID'
+  // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量
+  | 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

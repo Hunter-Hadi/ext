@@ -930,12 +930,9 @@
     "ai_response_language__title": "Bahasa Balasan AI",
     "ai_response_language__settings__label_1": "Guna",
     "ai_response_language__settings__label_2": "tetapan bahasa",
-    "preset_variables__system__email_contents__description": "kandungan e-mel",
-    "preset_variables__system__email_draft__description": "draf e-mel",
-    "preset_variables__system__social_media_post_content__description": "kandungan pos media sosial",
-    "preset_variables__system__social_media_comment_draft__description": "draf komen media sosial",
-    "preset_variables__system__chat_messsages_content__description": "kandungan mesej sembang",
-    "preset_variables__system__chat_message_draft__description": "draf mesej sembang"
+    "preset_variables__system__full_context__description": "kandungan konteks penuh",
+    "preset_variables__system__target_context__description": "kandungan konteks sasaran",
+    "preset_variables__system__draft_context__description": "kandungan konteks draf"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik promp",

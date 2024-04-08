@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI svarspråk",
     "ai_response_language__settings__label_1": "Använd",
     "ai_response_language__settings__label_2": "språkinställning",
-    "preset_variables__system__email_contents__description": "e-postinnehåll",
-    "preset_variables__system__email_draft__description": "e-postutkast",
-    "preset_variables__system__social_media_post_content__description": "innehåll för sociala medier-inlägg",
-    "preset_variables__system__social_media_comment_draft__description": "utkast för sociala medier-kommentar",
-    "preset_variables__system__chat_messsages_content__description": "innehåll för chattmeddelanden",
-    "preset_variables__system__chat_message_draft__description": "utkast för chattmeddelande"
+    "preset_variables__system__full_context__description": "hela sammanhanget innehåll",
+    "preset_variables__system__target_context__description": "mål sammanhanget innehåll",
+    "preset_variables__system__draft_context__description": "utkast sammanhanget innehåll"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klicka-promptar",

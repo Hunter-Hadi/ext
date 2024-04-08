@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -7,8 +8,11 @@ import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
 import reactNodeToString from 'react-node-to-string'
 import rehypeKatex from 'rehype-katex'
+import remarkBreaks from 'remark-breaks'
+import remarkGfm from 'remark-gfm'
 // import rehypeHighlight from 'rehype-highlight'
 import remarkMath from 'remark-math'
+import supersub from 'remark-supersub'
 import Browser from 'webextension-polyfill'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
@@ -204,7 +208,10 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
  * @link - https://github.com/remarkjs/react-markdown/issues/785
  */
 const preprocessLaTeX = (content: string) => {
-  content = content.replaceAll('$', '\\$')
+  content = content
+    .split('$')
+    .join('\\$')
+    .replace(/\\\$\\\$/g, '$$')
   // Replace block-level LaTeX delimiters \[ \] with $$ $$
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,
@@ -235,9 +242,9 @@ const CustomMarkdown: FC<{
       <>
         <ReactMarkdown
           remarkPlugins={[
-            // supersub,
-            // remarkBreaks,
-            // remarkGfm,
+            supersub,
+            remarkBreaks,
+            remarkGfm,
             [
               remarkMath,
               // {
@@ -285,9 +292,21 @@ const CustomMarkdown: FC<{
             code: ({ node, inline, className, children, ...props }) => {
               if (inline) {
                 return (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
+                  <Chip
+                    className={className}
+                    label={children as string}
+                    sx={{
+                      padding: '.2em .4em',
+                      fontSize: '85%',
+                      lineHeight: '1.5',
+                      borderRadius: '.25em',
+                      whiteSpace: 'break-spaces',
+                      height: 'auto',
+                      '& > span': {
+                        p: 0,
+                      },
+                    }}
+                  />
                 )
               }
               return (

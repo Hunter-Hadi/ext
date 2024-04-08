@@ -30,7 +30,7 @@ const SettingsPromptsPage: FC = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search)
     switch (searchParams.get('tab')) {
-      // case 'writing-assistant': setActiveTab('WRITING_ASSISTANT'); break;
+      case 'writing-assistant': setActiveTab('WRITING_ASSISTANT'); break;
       // case 'summary': setActiveTab('SUMMARY'); break;
       // case 'search': setActiveTab('SEARCH'); break;
       case 'context-menu':

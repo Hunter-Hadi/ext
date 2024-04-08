@@ -1291,7 +1291,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                     modelKey: 'Sidebar',
                     variables: [
                       {
-                        label: 'Target Email',
+                        label: 'Target email',
                         VariableName:
                           'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
                         valueType: 'Text',
@@ -1384,7 +1384,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
                         systemVariable: true,
                       },
                       {
-                        label: 'Target Email',
+                        label: 'Target email',
                         VariableName:
                           'EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT',
                         valueType: 'Text',

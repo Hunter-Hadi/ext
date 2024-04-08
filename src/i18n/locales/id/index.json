@@ -930,12 +930,9 @@
     "ai_response_language__title": "Bahasa respons AI",
     "ai_response_language__settings__label_1": "Gunakan",
     "ai_response_language__settings__label_2": "pengaturan bahasa",
-    "preset_variables__system__email_contents__description": "konten email",
-    "preset_variables__system__email_draft__description": "draf email",
-    "preset_variables__system__social_media_post_content__description": "konten posting media sosial",
-    "preset_variables__system__social_media_comment_draft__description": "draf komentar media sosial",
-    "preset_variables__system__chat_messsages_content__description": "konten pesan obrolan",
-    "preset_variables__system__chat_message_draft__description": "draf pesan obrolan"
+    "preset_variables__system__full_context__description": "konten konteks lengkap",
+    "preset_variables__system__target_context__description": "konten konteks target",
+    "preset_variables__system__draft_context__description": "konten konteks draf"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

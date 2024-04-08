@@ -930,12 +930,9 @@
     "ai_response_language__title": "Langue de réponse de l'IA",
     "ai_response_language__settings__label_1": "Utiliser",
     "ai_response_language__settings__label_2": "paramètre de langue",
-    "preset_variables__system__email_contents__description": "contenu de l'e-mail",
-    "preset_variables__system__email_draft__description": "brouillon d'e-mail",
-    "preset_variables__system__social_media_post_content__description": "contenu de la publication sur les médias sociaux",
-    "preset_variables__system__social_media_comment_draft__description": "brouillon de commentaire sur les médias sociaux",
-    "preset_variables__system__chat_messsages_content__description": "contenu des messages de chat",
-    "preset_variables__system__chat_message_draft__description": "brouillon de message de chat"
+    "preset_variables__system__full_context__description": "contenu du contexte complet",
+    "preset_variables__system__target_context__description": "contenu du contexte cible",
+    "preset_variables__system__draft_context__description": "contenu du brouillon"
   },
   "prompt_library": {
     "use_prompt_library__title": "Prompts en 1 clic",

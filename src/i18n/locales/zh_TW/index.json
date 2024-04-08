@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI 回應語言",
     "ai_response_language__settings__label_1": "使用",
     "ai_response_language__settings__label_2": "語言設定",
-    "preset_variables__system__email_contents__description": "電子郵件內容",
-    "preset_variables__system__email_draft__description": "電子郵件草稿",
-    "preset_variables__system__social_media_post_content__description": "社交媒體帖子內容",
-    "preset_variables__system__social_media_comment_draft__description": "社交媒體評論草稿",
-    "preset_variables__system__chat_messsages_content__description": "聊天消息內容",
-    "preset_variables__system__chat_message_draft__description": "聊天消息草稿"
+    "preset_variables__system__full_context__description": "完整內容",
+    "preset_variables__system__target_context__description": "目標內容",
+    "preset_variables__system__draft_context__description": "草稿內容"
   },
   "prompt_library": {
     "use_prompt_library__title": "1點擊提示",

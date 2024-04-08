@@ -153,7 +153,7 @@ const useArtTextToImage = () => {
                   id: '816e3fe0-bd04-418e-8f6e-d33d8c4dba67',
                   droppable: false,
                   parent: '',
-                  text: '[Art] natural language to DALL·E 3 prompt',
+                  text: '[Art] dalle3 prompt optimization',
                   data: {
                     editable: false,
                     type: 'shortcuts',

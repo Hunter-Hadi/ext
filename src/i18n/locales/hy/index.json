@@ -930,12 +930,9 @@
     "ai_response_language__title": "Այստեղ կարող եք նշել AI-ի պատասխանի լեզուն",
     "ai_response_language__settings__label_1": "Օգտագործել",
     "ai_response_language__settings__label_2": "լեզվի կարգավորում",
-    "preset_variables__system__email_contents__description": "Էլ. փոստի բովանդակություն",
-    "preset_variables__system__email_draft__description": "Էլ. փոստի սևագրություն",
-    "preset_variables__system__social_media_post_content__description": "Սոցիալական մեդիայի գրառումների բովանդակություն",
-    "preset_variables__system__social_media_comment_draft__description": "Սոցիալական մեդիայի մեկնաբանության սևագրություն",
-    "preset_variables__system__chat_messsages_content__description": "Խոսակցության նամակների բովանդակություն",
-    "preset_variables__system__chat_message_draft__description": "Խոսակցության նամակի սևագրություն"
+    "preset_variables__system__full_context__description": "լրիվ համատեքստի բովանդակություն",
+    "preset_variables__system__target_context__description": "նպատակային համատեքստի բովանդակություն",
+    "preset_variables__system__draft_context__description": "սևագրի համատեքստի բովանդակություն"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-կլիք հարցեր",

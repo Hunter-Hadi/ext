@@ -930,12 +930,9 @@
     "ai_response_language__title": "Wika ng tugon ng AI",
     "ai_response_language__settings__label_1": "Gamitin",
     "ai_response_language__settings__label_2": "setting ng wika",
-    "preset_variables__system__email_contents__description": "mga nilalaman ng email",
-    "preset_variables__system__email_draft__description": "draft ng email",
-    "preset_variables__system__social_media_post_content__description": "nilalaman ng post sa social media",
-    "preset_variables__system__social_media_comment_draft__description": "draft ng komento sa social media",
-    "preset_variables__system__chat_messsages_content__description": "nilalaman ng mga mensahe sa chat",
-    "preset_variables__system__chat_message_draft__description": "draft ng mensahe sa chat"
+    "preset_variables__system__full_context__description": "nilalaman ng buong konteksto",
+    "preset_variables__system__target_context__description": "nilalaman ng target na konteksto",
+    "preset_variables__system__draft_context__description": "nilalaman ng draft na konteksto"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-click mga prompt",

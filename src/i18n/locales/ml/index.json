@@ -930,12 +930,9 @@
     "ai_response_language__title": "എന്റെ പ്രതികരണ ഭാഷ",
     "ai_response_language__settings__label_1": "ഉപയോഗിക്കുക",
     "ai_response_language__settings__label_2": "ഭാഷ ക്രമീകരണം",
-    "preset_variables__system__email_contents__description": "ഇമെയിൽ ഉള്ളടക്കം",
-    "preset_variables__system__email_draft__description": "ഇമെയിൽ ഡ്രാഫ്റ്റ്",
-    "preset_variables__system__social_media_post_content__description": "സോഷ്യൽ മീഡിയ പോസ്റ്റ് ഉള്ളടക്കം",
-    "preset_variables__system__social_media_comment_draft__description": "സോഷ്യൽ മീഡിയ അഭിപ്രായ ഡ്രാഫ്റ്റ്",
-    "preset_variables__system__chat_messsages_content__description": "ചാറ്റ് സന്ദേശങ്ങളുടെ ഉള്ളടക്കം",
-    "preset_variables__system__chat_message_draft__description": "ചാറ്റ് സന്ദേശം ഡ്രാഫ്റ്റ്"
+    "preset_variables__system__full_context__description": "പൂർണ്ണ സംദേശം ഉള്ളടക്കം",
+    "preset_variables__system__target_context__description": "ലക്ഷ്യ സംദേശം ഉള്ളടക്കം",
+    "preset_variables__system__draft_context__description": "ഡ്രാഫ്റ്റ് സംദേശം ഉള്ളടക്കം"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-klik prompt",

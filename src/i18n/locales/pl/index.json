@@ -930,12 +930,9 @@
     "ai_response_language__title": "Język odpowiedzi AI",
     "ai_response_language__settings__label_1": "Użyj",
     "ai_response_language__settings__label_2": "ustawienia języka",
-    "preset_variables__system__email_contents__description": "treść e-maila",
-    "preset_variables__system__email_draft__description": "szkic e-maila",
-    "preset_variables__system__social_media_post_content__description": "treść posta na mediach społecznościowych",
-    "preset_variables__system__social_media_comment_draft__description": "szkic komentarza na mediach społecznościowych",
-    "preset_variables__system__chat_messsages_content__description": "treść wiadomości czatu",
-    "preset_variables__system__chat_message_draft__description": "szkic wiadomości czatu"
+    "preset_variables__system__full_context__description": "pełna treść kontekstu",
+    "preset_variables__system__target_context__description": "treść docelowego kontekstu",
+    "preset_variables__system__draft_context__description": "treść roboczego kontekstu"
   },
   "prompt_library": {
     "use_prompt_library__title": "1-kliknięcie na podpowiedzi",

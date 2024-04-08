@@ -930,12 +930,9 @@
     "ai_response_language__title": "AI atsakymo kalba",
     "ai_response_language__settings__label_1": "Naudoti",
     "ai_response_language__settings__label_2": "kalbos nustatymą",
-    "preset_variables__system__email_contents__description": "el. pašto turinys",
-    "preset_variables__system__email_draft__description": "el. pašto juodraštis",
-    "preset_variables__system__social_media_post_content__description": "socialinių tinklų įrašo turinys",
-    "preset_variables__system__social_media_comment_draft__description": "socialinių tinklų komentaro juodraštis",
-    "preset_variables__system__chat_messsages_content__description": "pokalbių žinučių turinys",
-    "preset_variables__system__chat_message_draft__description": "pokalbių žinutės juodraštis"
+    "preset_variables__system__full_context__description": "visas kontekstas",
+    "preset_variables__system__target_context__description": "tikslinis kontekstas",
+    "preset_variables__system__draft_context__description": "juodraštis"
   },
   "prompt_library": {
     "use_prompt_library__title": "Vieno paspaudimo užklausos",

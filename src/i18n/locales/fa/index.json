@@ -930,12 +930,9 @@
     "ai_response_language__title": "زبان پاسخ هوش مصنوعی",
     "ai_response_language__settings__label_1": "استفاده",
     "ai_response_language__settings__label_2": "تنظیمات زبان",
-    "preset_variables__system__email_contents__description": "محتوای ایمیل",
-    "preset_variables__system__email_draft__description": "پیش نویس ایمیل",
-    "preset_variables__system__social_media_post_content__description": "محتوای پست شبکه‌های اجتماعی",
-    "preset_variables__system__social_media_comment_draft__description": "پیش نویس نظر شبکه‌های اجتماعی",
-    "preset_variables__system__chat_messsages_content__description": "محتوای پیام‌های چت",
-    "preset_variables__system__chat_message_draft__description": "پیش نویس پیام چت"
+    "preset_variables__system__full_context__description": "محتوای متن کامل",
+    "preset_variables__system__target_context__description": "محتوای متن هدف",
+    "preset_variables__system__draft_context__description": "محتوای متن پیش‌نویس"
   },
   "prompt_library": {
     "use_prompt_library__title": "پیشنهادهای 1 کلیک",

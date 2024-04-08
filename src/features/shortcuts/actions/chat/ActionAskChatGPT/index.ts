@@ -180,6 +180,11 @@ export class ActionAskChatGPT extends Action {
           Memo: 'memo',
           ContextMenu: 'context_menu',
         }[clientConversationEngine.currentSidebarConversationType]
+        console.log(
+          `contextMenu show Text finally: [${
+            contextMenu?.text || fallbackId
+          }]-[${contextMenu?.id || fallbackId}]`,
+        )
         const { data: isDailyUsageLimit } =
           await clientMessageChannelEngine.postMessage({
             event: 'Client_logCallApiRequest',

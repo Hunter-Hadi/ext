@@ -96,7 +96,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
       } else {
         // 240323: yangger 说 template 中没有对应的 capability context 就不需要抓取页面内容
         // newNode.data.actions?.unshift(
-        //   getInputAssistantAction(newNode.data.visibility?.whitelist[0] as InputAssistantButtonGroupConfigHostType),
+        //   getInputAssistantAction(newNode.data.visibility?.whitelist[0] as WritingAssistantButtonGroupConfigHostType),
         // )
         updateMenuItem(newNode)
       }

@@ -145,8 +145,9 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
     }
     if (youTubeSocialMediaPostContext) {
       // comment box
+      const youtubeCommentBoxSelector = '#body.ytd-comment-view-model'
       const ytdCommentBox = findParentEqualSelector(
-        '#body.ytd-comment-renderer',
+        youtubeCommentBoxSelector,
         inputAssistantButton,
       )
       if (ytdCommentBox) {
@@ -173,7 +174,7 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
               'ytd-comment-thread-renderer',
               ytdCommentBox,
             )?.querySelector<HTMLElement>(
-              '& > ytd-comment-renderer#comment #body.ytd-comment-renderer',
+              `& > ytd-comment-view-model#comment ${youtubeCommentBoxSelector}`,
             )
             commentList.push(await getYouTubeCommentContent(ytdRootComment!))
           }

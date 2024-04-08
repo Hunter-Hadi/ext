@@ -53,9 +53,13 @@ const getFacebookPostData = async (
     const postMetadata = postDataContainer.querySelector<HTMLElement>(
       '& > div:nth-child(2)',
     )
-    const postContent = postDataContainer.querySelector<HTMLElement>(
-      '& > div:nth-child(3) div[id] > div:nth-child(1):not(a) > :not(a) span[dir]',
-    )
+    const postContent =
+      postDataContainer.querySelector<HTMLElement>(
+        '& > div:nth-child(3) div[id] > div:nth-child(1):not(a) > :not(a) span[dir]',
+      ) ||
+      postDataContainer.querySelector<HTMLElement>(
+        '& > div:nth-child(3):has([id])',
+      )
     if (postMetadata) {
       if (postContent) {
         const facebookExpandButton =

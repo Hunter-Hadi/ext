@@ -256,6 +256,8 @@ export class GoogleDocControl extends EventEmitter {
    * @param value
    */
   replaceSelection(value: string) {
+    log.info(value)
+
     const clipboardData = new DataTransfer()
     clipboardData.setData('text/plain', value)
     this.inputElement?.focus()

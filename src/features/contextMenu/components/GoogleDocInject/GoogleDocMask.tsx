@@ -1,6 +1,6 @@
 import { debounce } from 'lodash-es'
 import React, { FC, useEffect, useRef } from 'react'
-import { useRecoilValue } from 'recoil'
+import { useRecoilValue, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { IChromeExtensionSendEvent } from '@/background/eventType'
@@ -9,7 +9,11 @@ import {
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
-import { FloatingDropdownMenuSystemItemsState } from '@/features/contextMenu'
+import {
+  FloatingDropdownMenuState,
+  FloatingDropdownMenuSystemItemsState,
+  useRangy,
+} from '@/features/contextMenu'
 import { useGoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
 import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
 import { mergeRects } from '@/features/contextMenu/utils/googleDocHelper'
@@ -21,9 +25,9 @@ const GoogleDocMask: FC = () => {
 
   const selectionRef = useRef<Record<string, HTMLElement | null>>({})
 
-  // const setFloatingDropdownMenu = useSetRecoilState(
-  //   FloatingDropdownMenuState,
-  // )
+  const { tempSelectionRef, hideRangy, saveTempSelection } = useRangy()
+
+  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
   const floatingDropdownMenuSystemItems = useRecoilValue(
     FloatingDropdownMenuSystemItemsState,
   )
@@ -32,18 +36,20 @@ const GoogleDocMask: FC = () => {
     const selectedDraftContextMenuType = getDraftContextMenuTypeById(
       floatingDropdownMenuSystemItems.selectContextMenuId || '',
     )
+    console.log('GoogleDoc', selectedDraftContextMenuType)
     if (!selectedDraftContextMenuType) return
     if (['DISCARD', 'COPY'].includes(selectedDraftContextMenuType)) {
-      control?.inputElement?.focus()
+      setTimeout(() => control?.inputElement?.focus(), 0)
     }
   }, [floatingDropdownMenuSystemItems.selectContextMenuId])
 
   useEffect(() => {
-    if (!selection || !selection.rects.length) return
+    const content = control?.copySelection()?.trim()
 
-    const content = control?.copySelection()
-
-    if (!content) return
+    if (!selection || !selection.rects.length || !content) {
+      hideRangy()
+      return
+    }
 
     const rect = mergeRects(
       selection.elements.map((item) => item.getBoundingClientRect().toJSON()),
@@ -82,37 +88,29 @@ const GoogleDocMask: FC = () => {
       return
     }
 
-    // TODO 每次滚动时重新计算context menu位置
-    const menuRoot = document.querySelector(
-      '#USE_CHAT_GPT_AI_ROOT_Context_Menu',
-    )?.shadowRoot
-    const miniMenu = menuRoot?.querySelector(
-      'div.max-ai__click-context-menu',
-    ) as HTMLDivElement
+    // 每次滚动时重新计算context menu位置
     const onScroll = debounce(() => {
-      // setFloatingDropdownMenu(prev => ({
-      //   ...prev,
-      //   rootRect: mergeRects(
-      //     selection.elements.map((item) => item.getBoundingClientRect().toJSON()),
-      //   )
-      // }))
       const rootRect = mergeRects(
         Object.values(selectionRef.current)
           .filter(Boolean)
           .map((item) => item!.getBoundingClientRect().toJSON()),
       )
-      if (miniMenu) {
-        miniMenu.style.top = `${rootRect.top + rootRect.height + 8}px`
-        miniMenu.style.left = `${rootRect.left}px`
+      setFloatingDropdownMenu((prev) => ({
+        ...prev,
+        rootRect,
+      }))
+      if (tempSelectionRef.current) {
+        saveTempSelection({
+          ...tempSelectionRef.current,
+          selectionRect: rootRect,
+        })
       }
     }, 200)
-
     control.editorElement.addEventListener('scroll', onScroll)
 
     return () => {
       control.editorElement?.removeEventListener('scroll', onScroll)
-      miniMenu?.style.removeProperty('top')
-      miniMenu?.style.removeProperty('left')
+      onScroll.cancel()
     }
   }, [selection])
 

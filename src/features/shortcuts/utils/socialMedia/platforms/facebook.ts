@@ -23,9 +23,8 @@ const getFacebookCommentDetail = async (
     'span[lang][dir]',
   ) as HTMLSpanElement
   if (commentContent) {
-    const expandButton = commentContent.querySelector<HTMLElement>(
-      '[role="button"]',
-    )
+    const expandButton =
+      commentContent.querySelector<HTMLElement>('[role="button"]')
     if (expandButton) {
       expandButton.click()
       await delayAndScrollToInputAssistantButton(100)
@@ -59,9 +58,8 @@ const getFacebookPostData = async (
     )
     if (postMetadata) {
       if (postContent) {
-        const facebookExpandButton = postContent?.querySelector<HTMLElement>(
-          '[role="button"]',
-        )
+        const facebookExpandButton =
+          postContent?.querySelector<HTMLElement>('[role="button"]')
         if (facebookExpandButton) {
           facebookExpandButton.click()
           await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
@@ -83,10 +81,7 @@ const getFacebookPostData = async (
       const date = correctMetadata?.pop()?.innerText
       return {
         author: postAuthor || '',
-        date:
-          correctMetadata[0]?.innerText && date && date.length <= 30
-            ? date
-            : '',
+        date: date && date.length <= 30 ? date : '',
         content: postContent?.innerText || '',
         title: '',
       }
@@ -104,17 +99,15 @@ const getFacebookVideoPostData = async (
     if (postMetadata) {
       const postContent = postContainer?.lastElementChild as HTMLElement
       if (postContent) {
-        const facebookExpandButton = postContent?.querySelector<HTMLElement>(
-          '[role="button"]',
-        )
+        const facebookExpandButton =
+          postContent?.querySelector<HTMLElement>('[role="button"]')
         if (facebookExpandButton) {
           facebookExpandButton.click()
           await delayAndScrollToInputAssistantButton(100)
         }
       }
-      const postAuthor = postMetadata?.querySelector<HTMLElement>(
-        'h2 [role="link"]',
-      )?.innerText
+      const postAuthor =
+        postMetadata?.querySelector<HTMLElement>('h2 [role="link"]')?.innerText
       const postDate = (
         postMetadata?.querySelector<HTMLElement>(
           'span > span > span [aria-label][role="link"]',
@@ -140,15 +133,15 @@ const getFacebookReelPostData = async (
   inputAssistantButton: HTMLElement,
 ): Promise<ISocialMediaPost | null> => {
   if (postContainer) {
-    const postAuthor = postContainer?.firstElementChild?.querySelector<HTMLElement>(
-      'h2 [role="link"][aria-label]',
-    )?.innerText
+    const postAuthor =
+      postContainer?.firstElementChild?.querySelector<HTMLElement>(
+        'h2 [role="link"][aria-label]',
+      )?.innerText
     const postContent = postContainer?.children?.[1] as HTMLElement
     if (postContent) {
       // need to fix: when get reel post data again, at that time it becomes a collapse button
-      const facebookExpandButton = postContent?.querySelector<HTMLElement>(
-        '[role="button"]',
-      )
+      const facebookExpandButton =
+        postContent?.querySelector<HTMLElement>('[role="button"]')
       if (facebookExpandButton) {
         facebookExpandButton.click()
         await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
@@ -240,9 +233,8 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       'form[role="presentation"]',
       inputAssistantButton,
     )
-    const isClickingOnButtonOfFormTextarea = facebookReplyForm?.contains(
-      inputAssistantButton,
-    )
+    const isClickingOnButtonOfFormTextarea =
+      facebookReplyForm?.contains(inputAssistantButton)
 
     // if clicking the quick reply button in the surface is only to get the post data
     let shouldGetComment = true

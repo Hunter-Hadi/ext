@@ -294,6 +294,7 @@ const SidebarUserMessageContexts: FC<{
                 {attachments.length === 0 && (
                   <Typography
                     sx={{
+                      textAlign: 'left',
                       color: (t: any) =>
                         t.palette.mode === 'dark'
                           ? 'rgba(255, 255, 255, 0.38)'

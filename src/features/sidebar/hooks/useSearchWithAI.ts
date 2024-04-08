@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import {
@@ -30,14 +30,15 @@ const useSearchWithAI = () => {
     updateSidebarConversationType,
   } = useSidebarSettings()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-
-  const { updateClientConversationLoading } = useClientConversation()
+  const { updateClientConversationLoading, clientConversation } =
+    useClientConversation()
   const { currentUserPlan } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
     useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
+  const [waitRunActions, setWaitRunActions] = useState<ISetActionsType>([])
   const memoPrevQuestions = useMemo(() => {
     const memoQuestions = []
     // 从后往前，直到include_history为false
@@ -64,8 +65,10 @@ const useSearchWithAI = () => {
       showChatBox()
     }
     if (currentSidebarConversationType !== 'Search') {
-      await updateSidebarConversationType('Search')
+      updateSidebarConversationType('Search')
     }
+    // 进入loading
+    updateClientConversationLoading(true)
     if (
       appLocalStorage.sidebarSettings?.search?.conversationId &&
       (await getConversation(
@@ -78,11 +81,8 @@ const useSearchWithAI = () => {
       // conversation不存在
       await createConversation('Search')
     }
-    updateClientConversationLoading(true)
     try {
       console.log('新版Conversation search with AI 开始创建')
-      // 进入loading
-      updateClientConversationLoading(false)
       // 如果是免费用户
       if (currentUserPlan.name !== 'pro' && currentUserPlan.name !== 'elite') {
         // 判断lifetimes free trial是否已经用完
@@ -100,6 +100,7 @@ const useSearchWithAI = () => {
         } else {
           await pushPricingHookMessage('SIDEBAR_SEARCH_WITH_AI')
           authEmitPricingHooksLog('show', 'SIDEBAR_SEARCH_WITH_AI')
+          updateClientConversationLoading(false)
           return
         }
       }
@@ -109,7 +110,7 @@ const useSearchWithAI = () => {
         includeHistory,
       )
       lastMessageIdRef.current = messageId
-      runSearchWithAIActions(actions)
+      setWaitRunActions(actions)
     } catch (e) {
       console.log('创建Conversation失败', e)
     }
@@ -201,22 +202,26 @@ const useSearchWithAI = () => {
     }
   }
 
-  const runSearchWithAIActions = useCallback(
-    (actions: ISetActionsType) => {
-      if (actions.length > 0 && !isFetchingRef.current) {
-        isFetchingRef.current = true
-        askAIWIthShortcuts(actions)
-          .then()
-          .catch()
-          .finally(async () => {
-            isFetchingRef.current = false
-          })
-      }
-    },
-    [askAIWIthShortcuts],
-  )
+  useEffect(() => {
+    // 等到了Search板块再开始请求
+    if (
+      waitRunActions.length > 0 &&
+      !isFetchingRef.current &&
+      clientConversation?.type === 'Search'
+    ) {
+      isFetchingRef.current = true
+      askAIWIthShortcuts(waitRunActions)
+        .then()
+        .catch()
+        .finally(async () => {
+          setWaitRunActions([])
+          isFetchingRef.current = false
+        })
+    }
+  }, [askAIWIthShortcuts, clientConversation, waitRunActions])
 
   return {
+    createSearchWithAIRef,
     createSearchWithAI,
     regenerateSearchWithAI,
     continueInSearchWithAI,

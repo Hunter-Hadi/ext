@@ -1,5 +1,5 @@
 import Typography from '@mui/material/Typography'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt'
@@ -13,6 +13,7 @@ import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/Si
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 const Test = () => {
   const { clientConversation } = useClientConversation()
   return (
@@ -36,6 +37,14 @@ const SidebarChatPanel = () => {
   useInitSidebar()
   useInitConversationUpdate()
   useInitClientChatFiles()
+  useEffect(() => {
+    return OneShotCommunicator.receive(
+      'QuickSearchSelectedText',
+      async (data) => {
+        await createSearchWithAI(data.question, data.includeHistory || false)
+      },
+    )
+  }, [createSearchWithAI])
   return (
     <>
       <Test />

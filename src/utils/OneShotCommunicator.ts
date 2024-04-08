@@ -1,6 +1,8 @@
 import { v4 as uuidV4 } from 'uuid'
 
-export type IOneShotCommunicatorCustomEventNameType = 'SetVariablesModal'
+export type IOneShotCommunicatorCustomEventNameType =
+  | 'SetVariablesModal'
+  | 'QuickSearchSelectedText'
 /**
  * 一次性通信器
  */
@@ -48,7 +50,7 @@ class OneShotCommunicator {
     customEventName: IOneShotCommunicatorCustomEventNameType,
     callback: (data: any) => any,
   ) {
-    window.addEventListener(customEventName, async (event: Event) => {
+    const listener = async (event: Event) => {
       if (event instanceof CustomEvent && event.detail && event.detail.uuid) {
         const { uuid, ...data } = event.detail
         let response: any
@@ -67,7 +69,11 @@ class OneShotCommunicator {
           this.pending.delete(uuid)
         }
       }
-    })
+    }
+    window.addEventListener(customEventName, listener)
+    return () => {
+      window.removeEventListener(customEventName, listener)
+    }
   }
 }
 //

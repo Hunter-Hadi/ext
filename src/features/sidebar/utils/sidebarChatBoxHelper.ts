@@ -193,8 +193,6 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
 }
 
 export const showChatBox = () => {
-  console.error(1)
-  debugger
   const htmlElement = document.body.parentElement
   const chatBoxElement = document.getElementById(MAXAI_SIDEBAR_ID)
   if (htmlElement && chatBoxElement) {

@@ -17,7 +17,6 @@ const ArtConversationalModeToggle: FC = () => {
   const { updateSidebarSettings, sidebarSettings } = useSidebarSettings()
   return (
     <TextOnlyTooltip
-      open
       title={
         <Stack>
           <Stack gap={0.5} direction={'row'}>

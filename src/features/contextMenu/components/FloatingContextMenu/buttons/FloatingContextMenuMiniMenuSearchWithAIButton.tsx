@@ -6,8 +6,12 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipButton from '@/components/TooltipButton'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import { useRangy } from '@/features/contextMenu'
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
   placement?: TooltipProps['placement']
@@ -16,8 +20,7 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
 }> = (props) => {
   const { sx, placement, TooltipProps } = props
   const { t } = useTranslation(['common', 'client'])
-  const { createConversation } = useClientConversation()
-  const { createSearchWithAI } = useSearchWithAI()
+  const { hideRangy } = useRangy()
   return (
     <Stack
       direction={'row'}
@@ -57,10 +60,20 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
         onClick={async (event) => {
           event.stopPropagation()
           event.preventDefault()
-          await createConversation('Search')
-          const selectedText = window.getSelection()?.toString()
-          if (selectedText) {
-            await createSearchWithAI(selectedText, false)
+          const question = window.getSelection()?.toString()
+          hideRangy()
+          showChatBox()
+          for (let i = 0; i < 5; i++) {
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+            if (isShowChatBox()) {
+              break
+            }
+          }
+          if (question) {
+            await OneShotCommunicator.send('QuickSearchSelectedText', {
+              question,
+              includeHistory: false,
+            })
           }
         }}
       >

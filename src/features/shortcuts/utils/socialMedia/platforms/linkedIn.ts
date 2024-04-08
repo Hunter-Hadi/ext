@@ -86,10 +86,11 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
           inputAssistantButton,
         ) ||
         findParentEqualSelector(
-          '.comments-comment-item[data-id]',
+          '.comments-comment-item[data-id]:not(.comments-reply-item)',
           inputAssistantButton,
         )
       if (mainCommentContainer) {
+        debugger
         const linkedInPostComments: ICommentData[] = []
         linkedInPostComments.push(
           await getLinkedInCommentDetail(mainCommentContainer),
@@ -119,10 +120,17 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
         // or if exists mention, it means it's a reply for secondary comment
         // need to fix: this way can not find the correct secondary comment precisely
         else if (mention) {
-          const secondaryComments =
+          let secondaryComments =
             mainCommentContainer.querySelectorAll<HTMLElement>(
               '.comments-comment-item__nested-items .comments-comment-item',
             )
+          // if the secondary comments are not found, try to find the secondary comments in the social-activity container
+          if (secondaryComments.length === 0) {
+            secondaryComments =
+              mainCommentContainer.querySelectorAll<HTMLElement>(
+                '.comments-social-activity__nested-items .comments-comment-item',
+              )
+          }
           for (let i = 0; i < secondaryComments.length; i++) {
             const secondaryCommentDetail = await getLinkedInCommentDetail(
               secondaryComments[i],

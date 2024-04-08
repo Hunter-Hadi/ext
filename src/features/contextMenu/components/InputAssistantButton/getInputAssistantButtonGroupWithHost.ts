@@ -9,13 +9,13 @@ import {
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-type getInputAssistantButtonGroupWithHostConfig = {
+type getWritingAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement
   buttonGroupConfig: IInputAssistantButtonGroupConfig
 }
 
 const checkHostUsingButtonKeys = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const host = getCurrentDomainHost()
   switch (host) {
@@ -39,8 +39,10 @@ const checkHostUsingButtonKeys = (
       return getFacebookButtonGroup(config)
 
     case 'youtube.com':
-    case 'studio.youtube.com':
       return getYouTubeButtonGroup(config)
+
+    case 'studio.youtube.com':
+      return getYouTubeStudioButtonGroup(config)
 
     case 'instagram.com':
       return getInstagramButtonGroup(config)
@@ -67,7 +69,7 @@ const checkHostUsingButtonKeys = (
 }
 
 const getGmailButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // temp fix for gmail
@@ -90,7 +92,7 @@ const getGmailButtonGroup = (
   ]
 }
 const getOutlookButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // temp fix for outlook mail
@@ -138,7 +140,7 @@ const getOutlookButtonGroup = (
   ]
 }
 const getTwitterButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   const rootContainer = getTwitterInputAssistantButtonRootContainer(keyElement)
@@ -171,7 +173,7 @@ const getTwitterButtonGroup = (
 }
 
 const getLinkedInButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (
@@ -193,7 +195,7 @@ const getLinkedInButtonGroup = (
 }
 
 const getFacebookButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // Facebook Reels
@@ -255,7 +257,7 @@ const getFacebookButtonGroup = (
 }
 
 const getYouTubeButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (
@@ -270,8 +272,21 @@ const getYouTubeButtonGroup = (
   ]
 }
 
+const getYouTubeStudioButtonGroup = (
+  config: getWritingAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (keyElement.matches('#toolbar:has(> #reply-button)')) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
 const getInstagramButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   const inTheForm = findSelectorParent(
@@ -296,7 +311,7 @@ const getInstagramButtonGroup = (
 }
 
 const getRedditButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (
@@ -316,7 +331,7 @@ const getRedditButtonGroup = (
 }
 
 const getDiscordButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (keyElement?.matches('[class^="buttonsInner"]')) {
@@ -329,7 +344,7 @@ const getDiscordButtonGroup = (
 }
 
 const getSlackButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (
@@ -346,7 +361,7 @@ const getSlackButtonGroup = (
 }
 
 const getWhatsAppButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // if (

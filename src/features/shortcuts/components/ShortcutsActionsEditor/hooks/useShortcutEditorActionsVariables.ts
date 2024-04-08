@@ -31,6 +31,7 @@ export type IPresetVariablesGroupItem = {
   variable: IPresetActionSetVariable
   description?: I18nextKeysType
   examples: I18nextKeysType[]
+  // 限制 System variables 在哪些场景下可用
   permissionKeys?: IChromeExtensionButtonSettingKey[]
 }
 

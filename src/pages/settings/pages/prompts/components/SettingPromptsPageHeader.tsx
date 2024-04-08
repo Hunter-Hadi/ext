@@ -29,9 +29,7 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
         color: isDark ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0.6)',
         border: '1px solid',
         borderBottom: '0',
-        borderColor: isDark
-          ? 'rgb(0, 0, 0, 0)'
-          : 'rgba(245,246,247, 1)',
+        borderColor: isDark ? 'rgb(0, 0, 0, 0)' : 'rgba(245,246,247, 1)',
         borderRadius: '8px 8px 0px 0px',
         minHeight: 52,
 
@@ -45,11 +43,11 @@ const CustomTabs = styled(({ ...props }: TabsProps) => <Tabs {...props} />)(
 
         [`& + .${tabClasses.root}`]: {
           marginLeft: '8px',
-        }
+        },
       },
       [`.${tabsClasses.indicator}`]: {
         backgroundColor: 'rgba(255, 255, 255, 1)',
-        display: 'none'
+        display: 'none',
       },
       [`.${buttonBaseClasses.root}`]: {
         fontSize: '18px',
@@ -84,7 +82,7 @@ const SettingPromptsPageHeader: FC<ISettingPromptsPageHeaderProps> = ({
         <Tab
           value={'WRITING_ASSISTANT'}
           label={t(
-            'settings:feature_card__prompts__place_my_own_prompts__tab_title__writing_assistant',
+            'settings:feature_card__prompts__place_my_own_prompts__tab_title__instant_reply',
           )}
         />
         {/* <Tab

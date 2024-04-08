@@ -109,7 +109,7 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
     customStyle: {
       margin: '0 -20px 20px',
     },
-    isDarkMode: () => false,
+    isDarkMode: () => !!document.querySelector('body.b_dark'),
   },
   baidu: {
     ref: 'baidu',

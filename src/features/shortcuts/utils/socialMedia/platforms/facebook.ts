@@ -96,7 +96,10 @@ const getFacebookVideoPostData = async (
         author: postAuthor || '',
         date: postDate && postDate.length <= 30 ? postDate : '',
         content: postContent?.querySelector?.('div')?.innerText || '',
-        title: '',
+        title:
+          document.querySelector<HTMLElement>(
+            '#watch_feed > div > div:nth-child(1) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)',
+          )?.innerText || '',
       }
     }
   }
@@ -242,28 +245,36 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
 
     // if clicking the quick reply button in the surface is only to get the post data
     let shouldGetComment = true
-    if (!videoPagePostBox && !reelPagePostBox && !postDialog) {
-      const surfaceActionBar =
-        findParentEqualSelector(
-          'div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)',
-          inputAssistantButton,
-        ) ||
-        findParentEqualSelector(
-          'div[aria-describedby][aria-labelledby] div[data-visualcompletion="ignore-dynamic"] > div > div:nth-child(1) > div:nth-child(1) div:has(>div>div[aria-label][role="button"])',
-          inputAssistantButton,
+    if (!reelPagePostBox && !postDialog) {
+      let facebookReplyFormNodes: HTMLElement[] = []
+      if (postBox) {
+        const surfaceActionBar =
+          findParentEqualSelector(
+            'div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)',
+            inputAssistantButton,
+          ) ||
+          findParentEqualSelector(
+            'div[aria-describedby][aria-labelledby] div[data-visualcompletion="ignore-dynamic"] > div > div:nth-child(1) > div:nth-child(1) div:has(>div>div[aria-label][role="button"])',
+            inputAssistantButton,
+          )
+        if (surfaceActionBar?.contains(inputAssistantButton)) {
+          shouldGetComment = false
+        }
+        facebookReplyFormNodes = Array.from(
+          postBox?.querySelectorAll<HTMLElement>('form[role="presentation"]') ||
+            [],
         )
-      if (surfaceActionBar?.contains(inputAssistantButton)) {
-        shouldGetComment = false
+      } else if (videoPagePostBox && isClickingOnButtonOfFormTextarea) {
+        facebookReplyFormNodes = Array.from(
+          videoPagePostBox?.parentElement?.querySelectorAll<HTMLElement>(
+            'form[role="presentation"]',
+          ) || [],
+        )
       }
       if (
         shouldGetComment &&
         isClickingOnButtonOfFormTextarea &&
-        Array.from(
-          postBox?.querySelectorAll<HTMLElement>('form[role="presentation"]') ||
-            [],
-        )
-          ?.at(-1)
-          ?.contains(inputAssistantButton)
+        facebookReplyFormNodes?.at(-1)?.contains(inputAssistantButton)
       ) {
         shouldGetComment = false
       }

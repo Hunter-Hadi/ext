@@ -15,16 +15,24 @@ const getLinkedInCommentDetail = async (
   root: HTMLElement,
 ): Promise<ICommentData> => {
   const commentAuthor = (
-    (root.querySelector(
-      'span.comments-post-meta__name span:not(.visually-hidden)',
-    ) as HTMLSpanElement)?.innerText || ''
+    (
+      root.querySelector(
+        'span.comments-post-meta__name span:not(.visually-hidden)',
+      ) as HTMLSpanElement
+    )?.innerText || ''
   ).split('\n')[0]
   const commentDate =
     (root.querySelector('time') as HTMLTimeElement)?.innerText || ''
 
   const commentContent =
-    root.querySelector<HTMLDivElement>('.comments-comment-item__main-content')
-      ?.textContent || ''
+    (
+      root.querySelector<HTMLDivElement>(
+        '.comments-comment-item__main-content',
+      ) ||
+      root.querySelector<HTMLDivElement>(
+        '.comments-highlighted-comment-item-content-body',
+      )
+    )?.innerText || ''
 
   const commentLike =
     root.querySelector<HTMLElement>(
@@ -72,10 +80,15 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
       })
 
       // if exists main comment container, it means it's a reply for comments
-      const mainCommentContainer = findParentEqualSelector(
-        '.comments-comments-list__comment-item[data-id]',
-        inputAssistantButton,
-      )
+      const mainCommentContainer =
+        findParentEqualSelector(
+          '.comments-comments-list__comment-item[data-id]',
+          inputAssistantButton,
+        ) ||
+        findParentEqualSelector(
+          '.comments-comment-item[data-id]',
+          inputAssistantButton,
+        )
       if (mainCommentContainer) {
         const linkedInPostComments: ICommentData[] = []
         linkedInPostComments.push(
@@ -106,9 +119,10 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
         // or if exists mention, it means it's a reply for secondary comment
         // need to fix: this way can not find the correct secondary comment precisely
         else if (mention) {
-          const secondaryComments = mainCommentContainer.querySelectorAll<HTMLElement>(
-            '.comments-comment-item__nested-items .comments-comment-item',
-          )
+          const secondaryComments =
+            mainCommentContainer.querySelectorAll<HTMLElement>(
+              '.comments-comment-item__nested-items .comments-comment-item',
+            )
           for (let i = 0; i < secondaryComments.length; i++) {
             const secondaryCommentDetail = await getLinkedInCommentDetail(
               secondaryComments[i],
@@ -118,7 +132,7 @@ export const linkedInGetPostContent: GetSocialMediaPostContentFunction = async (
             }
           }
         }
-        
+
         socialMediaPostContext.addCommentList(linkedInPostComments)
       }
       return socialMediaPostContext.data

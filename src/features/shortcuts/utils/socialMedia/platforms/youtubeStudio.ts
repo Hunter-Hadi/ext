@@ -148,5 +148,9 @@ export const youTubeStudioGetDraftContent: GetSocialMediaPostDraftFunction = (
     inputAssistantButton,
     30,
   )
-  return youTubeDraftEditor?.innerText || ''
+  return (
+    youTubeDraftEditor?.innerText ||
+    (youTubeDraftEditor as HTMLTextAreaElement)?.value ||
+    ''
+  )
 }

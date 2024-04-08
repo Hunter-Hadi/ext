@@ -13,34 +13,6 @@ import SocialMediaPostContext, {
   ISocialMediaPost,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 
-// 获取Facebook评论的作者，日期，内容
-const getFacebookCommentDetail = async (
-  root: HTMLElement,
-): Promise<ICommentData> => {
-  const commentAuthor =
-    (root?.querySelector('a > span > span') as HTMLSpanElement)?.innerText || ''
-  const commentContent = root?.querySelector(
-    'span[lang][dir]',
-  ) as HTMLSpanElement
-  if (commentContent) {
-    const expandButton =
-      commentContent.querySelector<HTMLElement>('[role="button"]')
-    if (expandButton) {
-      expandButton.click()
-      await delayAndScrollToInputAssistantButton(100)
-    }
-  }
-  const links = Array.from(
-    root?.querySelectorAll('a > span'),
-  ) as HTMLSpanElement[]
-  const commentDate = links[links.length - 1]?.innerText
-  return {
-    content: commentContent?.innerText || '',
-    author: commentAuthor,
-    date: commentDate && commentDate.length <= 30 ? commentDate : '',
-  }
-}
-
 // 获取Facebook帖子的作者，日期，内容
 const getFacebookPostData = async (
   postContainer: HTMLElement | null,
@@ -53,9 +25,13 @@ const getFacebookPostData = async (
     const postMetadata = postDataContainer.querySelector<HTMLElement>(
       '& > div:nth-child(2)',
     )
-    const postContent = postDataContainer.querySelector<HTMLElement>(
-      '& > div:nth-child(3) div[id] > div:nth-child(1):not(a) > :not(a) span[dir]',
-    )
+    const postContent =
+      postDataContainer.querySelector<HTMLElement>(
+        '& > div:nth-child(3) div[id] > div:nth-child(1):not(a) > :not(a) span[dir]',
+      ) ||
+      postDataContainer.querySelector<HTMLElement>(
+        '& > div:nth-child(3):has([id])',
+      )
     if (postMetadata) {
       if (postContent) {
         const facebookExpandButton =
@@ -156,6 +132,34 @@ const getFacebookReelPostData = async (
     }
   }
   return null
+}
+
+// 获取Facebook评论的作者，日期，内容
+const getFacebookCommentDetail = async (
+  root: HTMLElement,
+): Promise<ICommentData> => {
+  const commentAuthor =
+    (root?.querySelector('a > span > span') as HTMLSpanElement)?.innerText || ''
+  const commentContent = root?.querySelector(
+    'span[lang][dir]',
+  ) as HTMLSpanElement
+  if (commentContent) {
+    const expandButton =
+      commentContent.querySelector<HTMLElement>('[role="button"]')
+    if (expandButton) {
+      expandButton.click()
+      await delayAndScrollToInputAssistantButton(100)
+    }
+  }
+  const links = Array.from(
+    root?.querySelectorAll('a > span'),
+  ) as HTMLSpanElement[]
+  const commentDate = links[links.length - 1]?.innerText
+  return {
+    content: commentContent?.innerText || '',
+    author: commentAuthor,
+    date: commentDate && commentDate.length <= 30 ? commentDate : '',
+  }
 }
 
 // get the previous level comment

@@ -603,6 +603,18 @@ const FacebookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     } as IInputAssistantButtonGroupConfig,
     {
       enable: (rootElement) => {
+        const commentContentBox = findSelectorParent(
+          'span[lang][dir]',
+          rootElement,
+          3,
+        )
+        if (
+          !commentContentBox ||
+          (commentContentBox.innerText === '' &&
+            commentContentBox.querySelector('img'))
+        ) {
+          return false
+        }
         return true
       },
       rootSelectors: [

@@ -651,9 +651,6 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                   event.stopPropagation()
                   event.preventDefault()
                   await confirmModal(index)
-                } else if (event.code === 'Space') {
-                  event.stopPropagation()
-                  return
                 } else {
                   event.stopPropagation()
                 }

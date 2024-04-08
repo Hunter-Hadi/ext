@@ -17,6 +17,8 @@ const emptyRect = {
 export enum IGoogleDocEventType {
   SELECTION_CHANGE = 'selection-change',
   CARET_CHANGE = 'caret-change',
+  FOCUS = 'focus',
+  BLUR = 'blur',
 }
 
 export interface IGoogleDocRect {
@@ -90,6 +92,20 @@ export const isRectIntersect = (
     rect1.bottom <= rect2.top ||
     rect1.left >= rect2.right ||
     rect1.right <= rect2.left
+  )
+}
+
+/**
+ * 判断两个位置是否不同
+ * @param rect1
+ * @param rect2
+ */
+export const isRectChange = (rect1: IGoogleDocRect, rect2: IGoogleDocRect) => {
+  return (
+    rect1.top !== rect2.top ||
+    rect1.bottom !== rect2.bottom ||
+    rect1.left !== rect2.left ||
+    rect1.right !== rect2.right
   )
 }
 
@@ -182,6 +198,8 @@ export class GoogleDocControl extends EventEmitter {
   // 记录上一次选区
   lastSelection: IGoogleDocSelection | null = null
 
+  observer: MutationObserver | null = null
+
   constructor() {
     super()
     this.disabled = !location.href.startsWith(
@@ -200,10 +218,6 @@ export class GoogleDocControl extends EventEmitter {
     this.scrollElement = document.querySelector(
       'div.kix-scrollareadocumentplugin',
     )
-    // this.selectionElement = document.querySelector('.kix-canvas-tile-selection')
-    // this.annotateElement = document.querySelector(
-    //   'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection)',
-    // )
     this.iframeElement = document.querySelector(
       'iframe.docs-texteventtarget-iframe',
     )
@@ -213,32 +227,115 @@ export class GoogleDocControl extends EventEmitter {
     this.caretElement = document.querySelector('#kix-current-user-cursor-caret')
   }
 
-  _onSelectionOrCaretChange = () => {
-    this.lastSelection = this.getCurrentSelection()
+  checkSelectionChange() {
+    const selection = this.getCurrentSelection()
+    if (selection === this.lastSelection) return
+    if (selection && this.lastSelection) {
+      if (
+        selection.layouts.length === this.lastSelection.layouts.length &&
+        selection.layouts.every(
+          (item, i) => !isRectChange(item, this.lastSelection!.layouts[i]),
+        )
+      ) {
+        return
+      }
+    }
+    this.lastSelection = selection
     this.emit(IGoogleDocEventType.SELECTION_CHANGE, this.lastSelection)
+  }
 
-    this.lastCaret = this.getCurrentCaret()
+  checkCaretChange() {
+    const caret = this.getCurrentCaret()
+    if (caret === this.lastCaret) return
+    if (
+      caret &&
+      this.lastCaret &&
+      !isRectChange(caret.layout, this.lastCaret.layout)
+    ) {
+      return
+    }
+    this.lastCaret = caret
     this.emit(IGoogleDocEventType.CARET_CHANGE, this.lastCaret)
   }
 
+  _onMouseUpOrKeyUp = (event: MouseEvent | KeyboardEvent) => {
+    if (!(event instanceof KeyboardEvent && event.key === 'Escape')) {
+      (event as any).MAX_AI_IGNORE = true
+    }
+
+    this.checkSelectionChange()
+    this.checkCaretChange()
+  }
+
+  _onFocus = () => {
+    this.emit(IGoogleDocEventType.FOCUS)
+  }
+
+  _onBlur = () => {
+    this.emit(IGoogleDocEventType.BLUR)
+  }
+
   initListener() {
-    this.editorElement?.addEventListener(
-      'mouseup',
-      this._onSelectionOrCaretChange,
-    )
-    this.inputElement?.addEventListener('keyup', this._onSelectionOrCaretChange)
+    // const contentElement = document.querySelector(
+    //   '.kix-rotatingtilemanager-content',
+    // )
+    // const cursorElement = document.querySelector('div.kix-cursor')
+    // this.observer = new MutationObserver((mutations) => {
+    //   if (
+    //     mutations.some((item) =>
+    //       (item.target as HTMLElement).classList?.contains('kix-cursor'),
+    //     )
+    //   ) {
+    //     log.info('光标移动')
+    //     this.lastCaret = this.getCurrentCaret()
+    //     this.emit(IGoogleDocEventType.CARET_CHANGE, this.lastCaret)
+    //   }
+    //   if (
+    //     mutations.find((item) =>
+    //       item.target.parentElement?.classList.contains(
+    //         'kix-canvas-tile-selection',
+    //       ),
+    //     )
+    //   ) {
+    //     log.info('选区变化')
+    //     this.lastSelection = this.getCurrentSelection()
+    //     this.emit(IGoogleDocEventType.SELECTION_CHANGE, this.lastSelection)
+    //   }
+    // })
+    // if (contentElement) {
+    //   this.observer.observe(contentElement, {
+    //     attributes: false,
+    //     childList: true,
+    //     characterData: true,
+    //     subtree: true,
+    //   })
+    // }
+    // if (cursorElement) {
+    //   this.observer.observe(cursorElement, {
+    //     attributes: true,
+    //     attributeFilter: ['style'],
+    //     childList: false,
+    //     characterData: false,
+    //     subtree: false,
+    //   })
+    // }
+    this.editorElement?.addEventListener('mouseup', this._onMouseUpOrKeyUp)
+    this.inputElement?.addEventListener('keyup', this._onMouseUpOrKeyUp)
+    this.inputElement?.addEventListener('focus', this._onFocus)
+    this.inputElement?.addEventListener('blur', this._onBlur)
   }
 
   destroy() {
-    this.editorElement?.removeEventListener(
-      'mouseup',
-      this._onSelectionOrCaretChange,
-    )
-    this.inputElement?.removeEventListener(
-      'keyup',
-      this._onSelectionOrCaretChange,
-    )
+    // this.observer?.disconnect()
+    this.editorElement?.removeEventListener('mouseup', this._onMouseUpOrKeyUp)
+    this.inputElement?.removeEventListener('keyup', this._onMouseUpOrKeyUp)
+    this.inputElement?.removeEventListener('focus', this._onFocus)
+    this.inputElement?.removeEventListener('blur', this._onBlur)
     this.removeAllListeners()
+  }
+
+  isFocus() {
+    return document.activeElement === this.iframeElement
   }
 
   calculateRelativeLayout(rect: IGoogleDocRect) {
@@ -268,6 +365,8 @@ export class GoogleDocControl extends EventEmitter {
         cancelable: true,
       }),
     )
+    this.checkSelectionChange()
+    this.checkCaretChange()
   }
 
   /**
@@ -289,7 +388,6 @@ export class GoogleDocControl extends EventEmitter {
       this.inputElement?.dispatchEvent(new KeyboardEvent('keydown', keyData))
       setTimeout(() => {
         this.replaceSelection(`\n${value}`)
-        this._onSelectionOrCaretChange()
       }, 10)
     } else {
       this.replaceSelection(`\n${value}`)
@@ -317,7 +415,6 @@ export class GoogleDocControl extends EventEmitter {
       this.inputElement?.dispatchEvent(new KeyboardEvent('keydown', keyData))
       setTimeout(() => {
         this.replaceSelection(`${value}\n`)
-        this._onSelectionOrCaretChange()
       }, 10)
     } else {
       this.replaceSelection(`${value}\n`)
@@ -474,6 +571,8 @@ export class GoogleDocControl extends EventEmitter {
       }
       return flag
     })
+
+    if (!elements.length) return null
 
     // 找画布下处于选择框内的段落和文字
     const paragraphs = Array.from(

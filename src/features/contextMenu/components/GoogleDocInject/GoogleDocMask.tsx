@@ -1,10 +1,9 @@
 import { debounce } from 'lodash-es'
-import React, { FC, useEffect, useRef } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { v4 } from 'uuid'
 
-import { IChromeExtensionSendEvent } from '@/background/eventType'
-import { createClientMessageListener } from '@/background/utils'
+import { useCreateClientMessageListener } from '@/background/utils'
 import {
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -17,26 +16,59 @@ import {
 import { useGoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
 import { getDraftContextMenuTypeById } from '@/features/contextMenu/utils'
 import { mergeRects } from '@/features/contextMenu/utils/googleDocHelper'
+import { IRangyRect } from '@/features/contextMenu/types'
 
 const id = v4()
 
 const GoogleDocMask: FC = () => {
-  const { control, selection, selectionTexts } = useGoogleDocContext()
+  const { control, caret, selection } = useGoogleDocContext()
 
   const selectionRef = useRef<Record<string, HTMLElement | null>>({})
 
-  const { tempSelectionRef, hideRangy, saveTempSelection } = useRangy()
+  const { tempSelectionRef, saveTempSelection } = useRangy()
 
-  const setFloatingDropdownMenu = useSetRecoilState(FloatingDropdownMenuState)
+  const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
+    FloatingDropdownMenuState,
+  )
   const floatingDropdownMenuSystemItems = useRecoilValue(
     FloatingDropdownMenuSystemItemsState,
   )
+
+  console.log('GoogleDoc', 'open', floatingDropdownMenu.open)
+
+  const selectionContent = useMemo(
+    () => (selection ? control?.copySelection()?.trim() : null),
+    [selection],
+  )
+
+  const scrollListener = useCallback((getRect: () => IRangyRect) => {
+    if (!control?.editorElement) return
+
+    const onScroll = debounce(() => {
+      const rootRect = getRect()
+      setFloatingDropdownMenu((prev) => ({
+        ...prev,
+        rootRect,
+      }))
+      if (tempSelectionRef.current) {
+        saveTempSelection({
+          ...tempSelectionRef.current,
+          selectionRect: rootRect,
+        })
+      }
+    }, 200)
+    control.editorElement.addEventListener('scroll', onScroll)
+
+    return () => {
+      control.editorElement?.removeEventListener('scroll', onScroll)
+      onScroll.cancel()
+    }
+  }, [])
 
   useEffect(() => {
     const selectedDraftContextMenuType = getDraftContextMenuTypeById(
       floatingDropdownMenuSystemItems.selectContextMenuId || '',
     )
-    console.log('GoogleDoc', selectedDraftContextMenuType)
     if (!selectedDraftContextMenuType) return
     if (['DISCARD', 'COPY'].includes(selectedDraftContextMenuType)) {
       setTimeout(() => control?.inputElement?.focus(), 0)
@@ -44,10 +76,8 @@ const GoogleDocMask: FC = () => {
   }, [floatingDropdownMenuSystemItems.selectContextMenuId])
 
   useEffect(() => {
-    const content = control?.copySelection()?.trim()
-
-    if (!selection || !selection.rects.length || !content) {
-      hideRangy()
+    if (!selection || !selectionContent) {
+      // hideRangy()
       return
     }
 
@@ -69,11 +99,11 @@ const GoogleDocMask: FC = () => {
           selectionRect: rect,
           iframeSelectionRect: rect,
           iframePosition: [0, 0],
-          selectionText: content,
-          selectionHTML: content,
-          editableElementSelectionText: content,
-          editableElementSelectionHTML: content,
-          eventType: 'mouseup',
+          selectionText: selectionContent,
+          selectionHTML: selectionContent,
+          editableElementSelectionText: selectionContent,
+          editableElementSelectionHTML: selectionContent,
+          eventType: 'keyup',
           isEmbedPage: false,
           isEditableElement: true,
           caretOffset: 1,
@@ -88,69 +118,73 @@ const GoogleDocMask: FC = () => {
       return
     }
 
-    // 每次滚动时重新计算context menu位置
-    const onScroll = debounce(() => {
-      const rootRect = mergeRects(
+    return scrollListener(() =>
+      mergeRects(
         Object.values(selectionRef.current)
           .filter(Boolean)
           .map((item) => item!.getBoundingClientRect().toJSON()),
-      )
-      setFloatingDropdownMenu((prev) => ({
-        ...prev,
-        rootRect,
-      }))
-      if (tempSelectionRef.current) {
-        saveTempSelection({
-          ...tempSelectionRef.current,
-          selectionRect: rootRect,
-        })
-      }
-    }, 200)
-    control.editorElement.addEventListener('scroll', onScroll)
-
-    return () => {
-      control.editorElement?.removeEventListener('scroll', onScroll)
-      onScroll.cancel()
-    }
-  }, [selection])
+      ),
+    )
+  }, [selection, selectionContent])
 
   useEffect(() => {
-    return createClientMessageListener(
-      async (event: IChromeExtensionSendEvent, data, sender) => {
-        console.log('GoogleDocClientMessage', event, data)
-        if (event !== 'Client_listenUpdateIframeInput') return undefined
-        const { type, value } = data
-        switch (type) {
-          case 'INSERT_BELOW':
-            control?.insertBelowSelection(value)
-            break
-          case 'INSERT':
-            control?.replaceSelection(value)
-            break
-          case 'INSERT_ABOVE':
-            control?.insertAboveSelection(value)
-            break
-          case 'REPLACE_SELECTION':
-            control?.replaceSelection(value)
-            break
-        }
+    console.log('GoogleDocCaret', caret)
+    if (selection && selectionContent) return
+    if (!caret) return
+    window.postMessage(
+      {
+        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+        type: 'iframeSelection',
+        data: {
+          virtual: true,
+          iframeId: id,
+          tagName: '',
+          id: id,
+          className: '',
+          windowRect: document.body.getBoundingClientRect().toJSON(),
+          targetRect: caret.rect,
+          selectionRect: caret.rect,
+          iframeSelectionRect: caret.rect,
+          iframePosition: [0, 0],
+          selectionText: '',
+          selectionHTML: '',
+          editableElementSelectionText: '',
+          editableElementSelectionHTML: '',
+          eventType: 'keyup',
+          isEmbedPage: false,
+          isEditableElement: true,
+          caretOffset: 1,
+          startMarkerId: '',
+          endMarkerId: '',
+        },
       },
+      '*',
     )
-  }, [])
+    // return scrollListener(() => caret.element.getBoundingClientRect().toJSON())
+  }, [selection, selectionContent, caret])
+
+  useCreateClientMessageListener(async (event, data, sender) => {
+    console.log('GoogleDocClientMessage', event, data)
+    if (event !== 'Client_listenUpdateIframeInput') return undefined
+    const { type, value } = data
+    switch (type) {
+      case 'INSERT_BELOW':
+        control?.insertBelowSelection(value)
+        break
+      case 'INSERT':
+        control?.replaceSelection(value)
+        break
+      case 'INSERT_ABOVE':
+        control?.insertAboveSelection(value)
+        break
+      case 'REPLACE_SELECTION':
+        control?.replaceSelection(value)
+        break
+    }
+  })
+
   return (
     <div>
-      {selectionTexts.map((item, i) => (
-        <span
-          key={i}
-          style={{
-            position: 'absolute',
-            ...item.style,
-          }}
-        >
-          {item.content}
-        </span>
-      ))}
-
       {selection?.layouts.map((item, i) => (
         <div
           ref={(e) => (selectionRef.current[`${i}`] = e)}

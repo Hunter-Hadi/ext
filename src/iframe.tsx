@@ -46,6 +46,10 @@ const isInIframe = () => {
   }
 }
 const isBlockUrlList = () => {
+  if (window.frameElement?.classList.contains('docs-texteventtarget-iframe')) {
+    // google doc的inputElement元素所在的iframe下禁止发送message
+    return true;
+  }
   return [
     // github的react-code-view的pdf reader会响应插件发送的message并认为是异常
     'https://viewscreen.githubusercontent.com/view/pdf',

@@ -4,18 +4,17 @@ import {
   GoogleDocControl,
   IGoogleDocCaret,
   IGoogleDocSelection,
-  IGoogleDocText,
 } from '@/features/contextMenu/utils/googleDocHelper'
 
 export interface IGoogleDocContext {
   control?: GoogleDocControl
-  caret?: IGoogleDocCaret
-  selection?: IGoogleDocSelection
-  selectionTexts: IGoogleDocText[]
+  caret: IGoogleDocCaret | null
+  selection: IGoogleDocSelection | null
 }
 
 export const GoogleDocContext = createContext<IGoogleDocContext>({
-  selectionTexts: [],
+  caret: null,
+  selection: null
 })
 
 export const useGoogleDocContext = () => useContext(GoogleDocContext)

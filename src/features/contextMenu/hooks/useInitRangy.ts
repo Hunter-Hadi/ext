@@ -140,6 +140,11 @@ const useInitRangy = () => {
             return
           }
         }
+        if ((event as any).MAX_AI_IGNORE) {
+          // 针对google doc或者其他页面的处理
+          // 过滤对此元素事件的处理
+          return;
+        }
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
         const nativeSelectionElement = getSelectionBoundaryElement()

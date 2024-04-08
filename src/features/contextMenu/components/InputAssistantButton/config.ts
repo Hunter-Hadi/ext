@@ -42,7 +42,7 @@ export interface IInputAssistantButtonGroupConfig
   // 渲染根节点的TagName
   rootWrapperTagName: string
   // 添加到root容器的第几个位置
-  appendPosition: number
+  appendPosition?: number
   // 给rootSelector添加的样式
   rootSelectorStyle?: string
   // 给root添加的样式
@@ -830,7 +830,6 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
     {
       enable: true,
       rootSelectors: ['ytcp-commentbox #submit-button'],
-      appendPosition: 2,
       rootParentDeep: 2,
       rootStyle: 'display: flex;align-items: center;margin-top: 8px',
       rootWrapperTagName: 'div',
@@ -860,7 +859,7 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
       },
       InputAssistantBoxSx: {
         borderRadius: '18px',
-        marginLeft: '8px',
+        marginLeft: '24px',
       },
     },
     {
@@ -881,7 +880,7 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
       },
       rootSelectors: ['#toolbar:has(> #reply-button)'],
       rootParentDeep: 0,
-      appendPosition: 2,
+      appendPosition: -1,
       rootWrapperTagName: 'div',
       rootStyle: 'display: flex; align-items: center;',
       composeReplyButton: {
@@ -898,10 +897,8 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
               inputAssistantButtonSelector,
             )
 
-          debugger
-
           findSelectorParent(
-            '#reply-button',
+            '#reply-button [role="button"]',
             inputAssistantButton as HTMLElement,
             2,
           )?.click()

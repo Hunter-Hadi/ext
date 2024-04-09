@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Įkelti dokumentus į MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Įkeltas failas yra per didelis. Svarstykite naudoti AI modelį su didesniu konteksto langeliu arba įkelkite mažesnio dydžio failą.",
     "sidebar__promotion_dialog__content_item6__title": "Pranešimų rašymo asistentas",
-    "sidebar__promotion_dialog__content_item6__description": "Leiskite dirbtinei intelektai per kelias sekundes sugeneruoti jums pritaikytus pranešimo atsakymus vienu paspaudimu Discord'e."
+    "sidebar__promotion_dialog__content_item6__description": "Leiskite dirbtinei intelektai per kelias sekundes sugeneruoti jums pritaikytus pranešimo atsakymus vienu paspaudimu Discord'e.",
+    "immersive_chat__more_actions_button__title": "Daugiau",
+    "immersive_chat__rename_chat__button__title": "Pervadinti"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

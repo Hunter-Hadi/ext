@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "የMaxAI መረጃን ለመስጠት ፎቶዎችን ይጫኑ",
     "provider__chatgpt__upload_file_error__too_long__text": "የማብቃት የሚጠቀሙ ፋይል በጣም ነው። የተሳሳተ መልእክት የሚጠቀሙ AI ሞዴል ያለውን የካርታ ወኪል ይጠቀሙ፣ ወይም የተሳሳተ መጻፍ የፋይል መጠን ያለውን ፋይል ይጠቀሙ።",
     "sidebar__promotion_dialog__content_item6__title": "መልእክት የመልዕክት መሰረታዊ መልዕክት",
-    "sidebar__promotion_dialog__content_item6__description": "የኤችአርክ በስተቀር የሚገኙ መልዕክቶችን በአንድ ከክሊክ የሚሰሩትን ጥቅሶችን በማስተላለፍ የሚገኘውን ፕሮግራምን ያስገቡ።"
+    "sidebar__promotion_dialog__content_item6__description": "የኤችአርክ በስተቀር የሚገኙ መልዕክቶችን በአንድ ከክሊክ የሚሰሩትን ጥቅሶችን በማስተላለፍ የሚገኘውን ፕሮግራምን ያስገቡ።",
+    "immersive_chat__more_actions_button__title": "ተጨማሪ",
+    "immersive_chat__rename_chat__button__title": "ስም ቀይር"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

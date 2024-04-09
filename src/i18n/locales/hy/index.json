@@ -673,7 +673,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Վերբեռնեք փաստաթղթեր MaxAI-ին",
     "provider__chatgpt__upload_file_error__too_long__text": "Վերբեռնված ֆայլը չի կարող ընդունել, քանի որ այն շատ մեծ է։ Փորձեք օգտագործել ավելի խոշոր համապատասխանող AI մոդել, կամ վերբեռնել ֆայլ փոքր չափով։",
     "sidebar__promotion_dialog__content_item6__title": "Նամակատարածքների գրավոր օգնիչ",
-    "sidebar__promotion_dialog__content_item6__description": "Թույլատրելով AI-ին ստեղծել անհատական նամակատարածքներ՝ միացնելով Discord-ում մեկ կտորոնով։"
+    "sidebar__promotion_dialog__content_item6__description": "Թույլատրելով AI-ին ստեղծել անհատական նամակատարածքներ՝ միացնելով Discord-ում մեկ կտորոնով։",
+    "immersive_chat__more_actions_button__title": "Ավելին",
+    "immersive_chat__rename_chat__button__title": "Վերանվանել"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

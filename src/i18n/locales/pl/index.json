@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Prześlij dokumenty do MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Przesłany plik jest zbyt duży. Rozważ użycie modelu AI z większym oknem kontekstowym lub przesłanie mniejszego pliku.",
     "sidebar__promotion_dialog__content_item6__title": "Asystent do pisania wiadomości",
-    "sidebar__promotion_dialog__content_item6__description": "Niech sztuczna inteligencja generuje spersonalizowane odpowiedzi na wiadomości dla Ciebie w kilka sekund za pomocą jednego kliknięcia na Discordzie."
+    "sidebar__promotion_dialog__content_item6__description": "Niech sztuczna inteligencja generuje spersonalizowane odpowiedzi na wiadomości dla Ciebie w kilka sekund za pomocą jednego kliknięcia na Discordzie.",
+    "immersive_chat__more_actions_button__title": "Więcej",
+    "immersive_chat__rename_chat__button__title": "Zmień nazwę"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

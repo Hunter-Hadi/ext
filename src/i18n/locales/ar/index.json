@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "تحميل المستندات إلى MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "الملف المرفوع كبير جدًا. يُرجى النظر في استخدام نموذج AI يحتوي على نافذة سياق أكبر أو تحميل ملف بحجم أصغر.",
     "sidebar__promotion_dialog__content_item6__title": "مساعد كتابة الرسائل",
-    "sidebar__promotion_dialog__content_item6__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع وجود نقرة واحدة فقط على ديسكورد."
+    "sidebar__promotion_dialog__content_item6__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع وجود نقرة واحدة فقط على ديسكورد.",
+    "immersive_chat__more_actions_button__title": "المزيد",
+    "immersive_chat__rename_chat__button__title": "إعادة تسمية"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

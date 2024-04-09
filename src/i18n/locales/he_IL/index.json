@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "העלה מסמכים ל-MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "הקובץ שהועלה גדול מדי. שקול להשתמש בדגם AI עם חלון הקשר גדול יותר או להעלות קובץ בגודל קטן יותר.",
     "sidebar__promotion_dialog__content_item6__title": "עוזר כתיבת הודעות",
-    "sidebar__promotion_dialog__content_item6__description": "תן לבינה מלאכותית ליצור תשובות אישיות להודעות בשניות עם לחיצה אחת ב-Discord."
+    "sidebar__promotion_dialog__content_item6__description": "תן לבינה מלאכותית ליצור תשובות אישיות להודעות בשניות עם לחיצה אחת ב-Discord.",
+    "immersive_chat__more_actions_button__title": "יותר",
+    "immersive_chat__rename_chat__button__title": "שנה שם"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

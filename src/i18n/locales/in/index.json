@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Unggah dokumen ke MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "File yang diunggah terlalu besar. Pertimbangkan menggunakan model AI dengan jendela konteks yang lebih besar, atau unggah file dengan ukuran yang lebih kecil.",
     "sidebar__promotion_dialog__content_item6__title": "Asisten penulisan pesan",
-    "sidebar__promotion_dialog__content_item6__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan hanya satu klik di Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan hanya satu klik di Discord.",
+    "immersive_chat__more_actions_button__title": "Lebih",
+    "immersive_chat__rename_chat__button__title": "Ubah Nama"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

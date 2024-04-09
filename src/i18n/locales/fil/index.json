@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "I-upload ang mga dokumento sa MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Ang na-upload na file ay masyadong malaki. Isipin ang paggamit ng isang AI model na may mas malaking bintana ng konteksto, o mag-upload ng isang mas maliit na file.",
     "sidebar__promotion_dialog__content_item6__title": "Messaging writing assistant",
-    "sidebar__promotion_dialog__content_item6__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa mensahe para sa iyo sa loob lamang ng ilang segundo gamit ang isang click sa Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa mensahe para sa iyo sa loob lamang ng ilang segundo gamit ang isang click sa Discord.",
+    "immersive_chat__more_actions_button__title": "Higit pa",
+    "immersive_chat__rename_chat__button__title": "Palitan ang Pangalan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

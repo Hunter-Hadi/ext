@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "میکس اے آئی میں دستاویزات اپ لوڈ کریں",
     "provider__chatgpt__upload_file_error__too_long__text": "آپلوڈ کیا گیا فائل بہت بڑی ہے۔ بڑے سائز کے ایک AI ماڈل استعمال کرنے یا کم سائز کی فائل آپلوڈ کرنے کو دیکھیں۔",
     "sidebar__promotion_dialog__content_item6__title": "پیغام لکھنے والا معاون",
-    "sidebar__promotion_dialog__content_item6__description": "صرف ایک کلک پر ڈسکورڈ میں آپ کے لئے AI شخصیت پذیر پیغام جوابات تیار کرے۔"
+    "sidebar__promotion_dialog__content_item6__description": "صرف ایک کلک پر ڈسکورڈ میں آپ کے لئے AI شخصیت پذیر پیغام جوابات تیار کرے۔",
+    "immersive_chat__more_actions_button__title": "مزید",
+    "immersive_chat__rename_chat__button__title": "تبدیل نام"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

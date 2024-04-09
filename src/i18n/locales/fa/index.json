@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "بارگذاری اسناد به MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "فایل آپلود شده بیش از حد بزرگ است. در نظر داشته باشید که از یک مدل هوش مصنوعی با پنجره متن بزرگتر استفاده کنید یا یک فایل با اندازه کوچکتر آپلود کنید.",
     "sidebar__promotion_dialog__content_item6__title": "دستیار نوشتن پیام",
-    "sidebar__promotion_dialog__content_item6__description": "با یک کلیک در دیسکورد، به شما کمک می‌کند تا پاسخ‌های پیام شخصی‌سازی شده را در عرض چند ثانیه تولید کنید."
+    "sidebar__promotion_dialog__content_item6__description": "با یک کلیک در دیسکورد، به شما کمک می‌کند تا پاسخ‌های پیام شخصی‌سازی شده را در عرض چند ثانیه تولید کنید.",
+    "immersive_chat__more_actions_button__title": "بیشتر",
+    "immersive_chat__rename_chat__button__title": "تغییر نام"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

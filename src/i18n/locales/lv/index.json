@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Augšupielādēt dokumentus uz MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Augšupielādētais fails ir pārāk liels. Izmantojiet AI modeli ar lielāku konteksta logu vai augšupielādējiet mazāka izmēra failu.",
     "sidebar__promotion_dialog__content_item6__title": "Ziņojumu rakstīšanas asistents",
-    "sidebar__promotion_dialog__content_item6__description": "Atļaujiet AI ģenerēt personalizētus ziņojumu atbildes jums sekundēs ar vienu klikšķi Discordā."
+    "sidebar__promotion_dialog__content_item6__description": "Atļaujiet AI ģenerēt personalizētus ziņojumu atbildes jums sekundēs ar vienu klikšķi Discordā.",
+    "immersive_chat__more_actions_button__title": "Vairāk",
+    "immersive_chat__rename_chat__button__title": "Pārdēvēt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

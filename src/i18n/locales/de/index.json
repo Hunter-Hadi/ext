@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Dokumente zu MaxAI hochladen",
     "provider__chatgpt__upload_file_error__too_long__text": "Die hochgeladene Datei ist zu groß. Erwägen Sie die Verwendung eines KI-Modells mit einem größeren Kontextfenster oder das Hochladen einer kleineren Datei.",
     "sidebar__promotion_dialog__content_item6__title": "Messaging-Schreibassistent",
-    "sidebar__promotion_dialog__content_item6__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren, indem Sie einfach auf Discord klicken."
+    "sidebar__promotion_dialog__content_item6__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren, indem Sie einfach auf Discord klicken.",
+    "immersive_chat__more_actions_button__title": "Mehr",
+    "immersive_chat__rename_chat__button__title": "Umbenennen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "మాక్స్‌ఐకి పత్రాలను అప్‌లోడ్ చేయండి",
     "provider__chatgpt__upload_file_error__too_long__text": "అప్లోడ్ చేసిన ఫైల్ చాలా పెద్దదిగా ఉంది. మీరు ఒక పెద్ద కంటెక్స్ట్ విండోతో AI మోడల్ ఉపయోగించడం లేదా కనిపించిన సైజులో ఫైల్ అప్లోడ్ చేయడం పరిగణించండి.",
     "sidebar__promotion_dialog__content_item6__title": "సందేశం రాయడానికి సహాయం చేసే సహాయకం",
-    "sidebar__promotion_dialog__content_item6__description": "ఒక్క క్లిక్‌తో మీకు వెలుపలి సందేశాలను మొత్తం సెకన్లుగా జనరేట్ చేసేందుకు AI ఉపయోగించండి."
+    "sidebar__promotion_dialog__content_item6__description": "ఒక్క క్లిక్‌తో మీకు వెలుపలి సందేశాలను మొత్తం సెకన్లుగా జనరేట్ చేసేందుకు AI ఉపయోగించండి.",
+    "immersive_chat__more_actions_button__title": "మరింత",
+    "immersive_chat__rename_chat__button__title": "పేరు మార్చు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

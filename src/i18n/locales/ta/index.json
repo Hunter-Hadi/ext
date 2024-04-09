@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "மேலும் ஆவணங்களை மேம்படுத்துங்கள் MaxAI-க்கு பதிவேற்று",
     "provider__chatgpt__upload_file_error__too_long__text": "பதிவேற்றப்பட்ட கோப்பு மிகப் பெரியது. ஒரு பெரிய சூழல் சாளரத்தைப் பயன்படுத்தி அதை மீண்டும் பதிவேற்றுவதை பார்க்கவும், அல்லது சிறிய அளவில் கோப்பை பதிவேற்றுங்கள்.",
     "sidebar__promotion_dialog__content_item6__title": "செய்திப்பு எழுத்து உதவி",
-    "sidebar__promotion_dialog__content_item6__description": "ஒரு கிளிக் மேல் டிஸ்கார்டில் நீங்கள் விருப்பமான செய்திகளுக்கு தனிப்பட்ட செய்திப்பு பதில்களை ஐஏ அடிப்படையில் உருவாக்குகிறது."
+    "sidebar__promotion_dialog__content_item6__description": "ஒரு கிளிக் மேல் டிஸ்கார்டில் நீங்கள் விருப்பமான செய்திகளுக்கு தனிப்பட்ட செய்திப்பு பதில்களை ஐஏ அடிப்படையில் உருவாக்குகிறது.",
+    "immersive_chat__more_actions_button__title": "மேலும்",
+    "immersive_chat__rename_chat__button__title": "மறுபெயரிடு"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

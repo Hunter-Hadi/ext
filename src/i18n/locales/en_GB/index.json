@@ -564,6 +564,8 @@
     "input_assistant_button__refine_draft__tooltip": "Edit or review draft",
     "youtube_summary_button__text": "Summarize",
     "social_media_summary_button__text": "Summarize",
+    "immersive_chat__more_actions_button__title": "More",
+    "immersive_chat__rename_chat__button__title": "Rename",
     "immersive_chat__delete_chat__title": "Delete chat?",
     "immersive_chat__delete_summary__title": "Delete summary?",
     "immersive_chat__delete_search__title": "Delete search?",

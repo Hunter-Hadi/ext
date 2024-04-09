@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Upload dokumenter til MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Den uploadede fil er for stor. Overvej at bruge en AI-model med et større kontekstvindue eller upload en fil af mindre størrelse.",
     "sidebar__promotion_dialog__content_item6__title": "Beskedskrivningsassistent",
-    "sidebar__promotion_dialog__content_item6__description": "Lad AI generere personlige besked-svar til dig på sekunder med bare et klik på Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Lad AI generere personlige besked-svar til dig på sekunder med bare et klik på Discord.",
+    "immersive_chat__more_actions_button__title": "Mere",
+    "immersive_chat__rename_chat__button__title": "Omdøb"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

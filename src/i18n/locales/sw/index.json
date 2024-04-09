@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Pakia hati kwa MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Faili iliyopakiwa ni kubwa sana. Fikiria kutumia mfano wa AI wenye dirisha kubwa la muktadha, au kupakia faili ndogo.",
     "sidebar__promotion_dialog__content_item6__title": "Msaidizi wa kuandika ujumbe",
-    "sidebar__promotion_dialog__content_item6__description": "Acha AI itengeneze majibu ya ujumbe yaliyobinafsishwa kwako kwa sekunde moja tu kwenye Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Acha AI itengeneze majibu ya ujumbe yaliyobinafsishwa kwako kwa sekunde moja tu kwenye Discord.",
+    "immersive_chat__more_actions_button__title": "Zaidi",
+    "immersive_chat__rename_chat__button__title": "Badilisha Jina"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

@@ -1,10 +1,14 @@
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemText from '@mui/material/ListItemText'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { type FC, type MouseEvent, useMemo, useState } from 'react'
+import React, { FC, memo, MouseEvent, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -14,22 +18,28 @@ import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitC
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
-const ClearChatButton: FC<{
+const MoreActionsButton: FC<{
   conversationId: string
-  conversationTitle: string
+  conversationDisplaysText: string
   conversationType: ISidebarConversationType
+  onRename?: () => void
   onDelete?: () => void
 }> = (props) => {
   const {
-    conversationTitle,
+    conversationDisplaysText,
     conversationType,
     conversationId,
+    onRename,
     onDelete,
   } = props
   const { cleanConversation } = useClientConversation()
-  const { t } = useTranslation(['client', 'common'])
+  const { t } = useTranslation(['client'])
 
-  const removeButtonTitle = useMemo(() => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const moreActionsMenuOpen = Boolean(anchorEl);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+
+  const deleteModalTitle = useMemo(() => {
     if (conversationType === 'Summary') {
       return t('client:immersive_chat__delete_summary__title')
     }
@@ -41,7 +51,8 @@ const ClearChatButton: FC<{
     }
     return t('client:immersive_chat__delete_chat__title')
   }, [conversationType, t])
-  const removeButtonTooltip = useMemo(() => {
+
+  const deleteButtonTitle = useMemo(() => {
     if (conversationType === 'Summary') {
       return t('client:immersive_chat__delete_summary__button__title')
     }
@@ -53,31 +64,101 @@ const ClearChatButton: FC<{
     }
     return t('client:immersive_chat__delete_chat__button__title')
   }, [conversationType, t])
-  const [open, setOpen] = useState(false)
+
+  const handleClose = (event: MouseEvent<HTMLElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    setAnchorEl(null);
+  };
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
   return (
     <>
-      <TextOnlyTooltip placement={'top'} title={removeButtonTooltip}>
+      <TextOnlyTooltip placement={'top'} title={t('client:immersive_chat__more_actions_button__title')}>
         <IconButton
-          onClick={(e: MouseEvent) => {
-            e.stopPropagation()
-            setOpen(true)
+          onClick={(event: MouseEvent<HTMLElement>) => {
+            event.preventDefault();
+            event.stopPropagation();
+            setAnchorEl(event.currentTarget);
           }}
           sx={{
             p: 0.5,
           }}
         >
-          <ContextMenuIcon icon={'Delete'} size={16} />
+          <ContextMenuIcon icon={'More'} size={16} />
         </IconButton>
       </TextOnlyTooltip>
 
+      <Menu
+        anchorEl={anchorEl}
+        id={`${conversationId}_MORE_ACTIONS_MENU`}
+        open={moreActionsMenuOpen}
+        onClose={handleClose}
+        onClick={handleClose}
+        slotProps={{
+          paper: {
+            elevation: 0,
+            sx: {
+              overflow: 'visible',
+              filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+              mt: 1,
+            },
+          }
+        }}
+        transformOrigin={{ horizontal: 'left', vertical: 'top' }}
+        anchorOrigin={{ horizontal: 'left', vertical: 'center' }}
+      >
+        <MenuItem onClick={(event) => {
+          onRename?.()
+          handleClose(event)
+        }}>
+          <ListItemIcon>
+            <ContextMenuIcon icon={'DefaultIcon'} size={16} />
+          </ListItemIcon>
+          <ListItemText sx={{ fontSize: '14px', color: 'text.primary' }}>
+            <Typography
+              sx={{
+                fontSize: '14px',
+                color: 'text.primary',
+              }}
+              component={'span'}
+            >
+              {t('client:immersive_chat__rename_chat__button__title')}
+            </Typography>
+          </ListItemText>
+        </MenuItem>
+        <MenuItem onClick={(event) => {
+          setDeleteModalOpen(true)
+          handleClose(event)
+        }}
+          sx={{
+            color: '#f44336'
+          }}
+        >
+          <ListItemIcon>
+            <ContextMenuIcon icon={'Delete'} size={16} sx={{
+              color: '#f44336'
+            }} />
+          </ListItemIcon>
+          <ListItemText>
+            <Typography
+              sx={{
+                fontSize: '14px',
+              }}
+              component={'span'}
+            >
+              {deleteButtonTitle}
+            </Typography>
+          </ListItemText>
+        </MenuItem>
+      </Menu >
+
       <Modal
-        open={open}
+        open={deleteModalOpen}
         onClose={(e: MouseEvent) => {
           e.stopPropagation()
-          setOpen(false)
+          setDeleteModalOpen(false)
         }}
         sx={{
           position: isInImmersiveChat ? 'fixed' : 'absolute',
@@ -107,7 +188,7 @@ const ClearChatButton: FC<{
             width: isInImmersiveChat ? '100%' : '448px',
             p: 2,
           }}
-          onClick={(e: React.MouseEvent) => {
+          onClick={(e: MouseEvent) => {
             e.stopPropagation()
           }}
         >
@@ -118,13 +199,13 @@ const ClearChatButton: FC<{
               lineHeight={'24px'}
               color={'text.primary'}
             >
-              {removeButtonTitle}
+              {deleteModalTitle}
             </Typography>
             <Typography fontSize={'16px'} color={'text.primary'}>
               {`${t('client:immersive_chat__delete_chat__description1')} `}
               <b>
-                {conversationTitle.slice(0, 30)}
-                {conversationTitle.length > 30 ? '...' : ''}
+                {conversationDisplaysText.slice(0, 30)}
+                {conversationDisplaysText.length > 30 ? '...' : ''}
               </b>
               {t('client:immersive_chat__delete_chat__description2')}
             </Typography>
@@ -132,7 +213,7 @@ const ClearChatButton: FC<{
               <Button
                 variant={'outlined'}
                 onClick={() => {
-                  setOpen(false)
+                  setDeleteModalOpen(false)
                 }}
               >
                 {t('client:immersive_chat__delete_chat__button__cancel__title')}
@@ -161,4 +242,4 @@ const ClearChatButton: FC<{
     </>
   )
 }
-export default ClearChatButton
+export default memo(MoreActionsButton)

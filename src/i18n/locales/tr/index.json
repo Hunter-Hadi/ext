@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAI'ye belgeleri yükle",
     "provider__chatgpt__upload_file_error__too_long__text": "Yüklenen dosya çok büyük. Daha geniş bir bağlam penceresine sahip bir AI modeli kullanmayı veya daha küçük bir boyutta bir dosya yüklemeyi düşünün.",
     "sidebar__promotion_dialog__content_item6__title": "Mesaj yazma yardımcısı",
-    "sidebar__promotion_dialog__content_item6__description": "Discord'da sadece bir tıklama ile AI tarafından kişiselleştirilmiş mesaj yanıtları oluşturun."
+    "sidebar__promotion_dialog__content_item6__description": "Discord'da sadece bir tıklama ile AI tarafından kişiselleştirilmiş mesaj yanıtları oluşturun.",
+    "immersive_chat__more_actions_button__title": "Daha Fazla",
+    "immersive_chat__rename_chat__button__title": "Yeniden Adlandır"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

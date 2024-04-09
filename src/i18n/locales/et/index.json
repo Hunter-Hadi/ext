@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Laadige dokumendid üles MaxAI-sse",
     "provider__chatgpt__upload_file_error__too_long__text": "Üles laaditud fail on liiga suur. Kaaluge AI mudeli kasutamist suurema kontekstakna või väiksema suurusega faili üleslaadimiseks.",
     "sidebar__promotion_dialog__content_item6__title": "Sõnumite kirjutamise abiline",
-    "sidebar__promotion_dialog__content_item6__description": "Lase AI-l genereerida isikupärastatud sõnumivastuseid vaid mõne sekundiga, klõpsates Discordis üks kord."
+    "sidebar__promotion_dialog__content_item6__description": "Lase AI-l genereerida isikupärastatud sõnumivastuseid vaid mõne sekundiga, klõpsates Discordis üks kord.",
+    "immersive_chat__more_actions_button__title": "Rohkem",
+    "immersive_chat__rename_chat__button__title": "Nimeta ümber"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

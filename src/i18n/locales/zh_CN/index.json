@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "上传文档至MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "上传的文件太大。考虑使用具有更大上下文窗口的AI模型，或上传较小尺寸的文件。",
     "sidebar__promotion_dialog__content_item6__title": "消息写作助手",
-    "sidebar__promotion_dialog__content_item6__description": "在Discord上点击一下，让AI在几秒钟内为您生成个性化的消息回复。"
+    "sidebar__promotion_dialog__content_item6__description": "在Discord上点击一下，让AI在几秒钟内为您生成个性化的消息回复。",
+    "immersive_chat__more_actions_button__title": "更多",
+    "immersive_chat__rename_chat__button__title": "重命名"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

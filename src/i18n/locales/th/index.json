@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "อัปโหลดเอกสารไปยัง MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "ไฟล์ที่อัปโหลดมีขนาดใหญ่เกินไป คิดจะใช้โมเดล AI ที่มีหน้าต่างบริบทของข้อมูลที่ใหญ่กว่าหรืออัปโหลดไฟล์ที่มีขนาดเล็กลง",
     "sidebar__promotion_dialog__content_item6__title": "ผู้ช่วยเขียนข้อความ",
-    "sidebar__promotion_dialog__content_item6__description": "ให้ AI สร้างข้อความตอบกลับที่ปรับแต่งสำหรับคุณในไม่กี่วินาทีด้วยการคลิกเพียงครั้งเดียวบน Discord"
+    "sidebar__promotion_dialog__content_item6__description": "ให้ AI สร้างข้อความตอบกลับที่ปรับแต่งสำหรับคุณในไม่กี่วินาทีด้วยการคลิกเพียงครั้งเดียวบน Discord",
+    "immersive_chat__more_actions_button__title": "เพิ่มเติม",
+    "immersive_chat__rename_chat__button__title": "เปลี่ยนชื่อ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

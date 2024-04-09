@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Încărcați documente în MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Fișierul încărcat este prea mare. Luați în considerare utilizarea unui model AI cu o fereastră de context mai mare sau încărcați un fișier de dimensiuni mai mici.",
     "sidebar__promotion_dialog__content_item6__title": "Asistent de scriere pentru mesaje",
-    "sidebar__promotion_dialog__content_item6__description": "Permiteți IA să genereze răspunsuri personalizate pentru mesaje în câteva secunde, cu doar un clic pe Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Permiteți IA să genereze răspunsuri personalizate pentru mesaje în câteva secunde, cu doar un clic pe Discord.",
+    "immersive_chat__more_actions_button__title": "Mai multe",
+    "immersive_chat__rename_chat__button__title": "Redenumire"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

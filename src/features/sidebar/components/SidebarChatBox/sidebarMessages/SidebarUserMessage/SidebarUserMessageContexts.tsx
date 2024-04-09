@@ -241,6 +241,7 @@ const SidebarUserMessageContexts: FC<{
               ml={'auto'}
             >
               <Stack
+                width={'100%'}
                 ml={'auto'}
                 mb={0.5}
                 flexDirection={'row'}

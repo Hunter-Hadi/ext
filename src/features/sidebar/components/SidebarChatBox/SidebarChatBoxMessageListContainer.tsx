@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import throttle from 'lodash-es/throttle'
-import React, { FC, useEffect, useRef } from 'react'
+import React, { FC, lazy, useEffect, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
@@ -13,7 +13,7 @@ import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 export const messageListContainerId = 'message-list-scroll-container'
 
-const SidebarChatBoxMessageItem = React.lazy(
+const SidebarChatBoxMessageItem = lazy(
   () =>
     import(
       '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
@@ -38,7 +38,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   // 用于判断 当前触发的 effect 时是否需要滚动到底部
   const needScrollToBottomRef = useRef(true)
 
-  const [messageItemIsReady, setMessageItemIsReady] = React.useState(false)
+  const [messageItemIsReady, setMessageItemIsReady] = useState(false)
   const { currentSidebarConversationType } = useSidebarSettings()
 
   const { slicedMessageList, changePageNumber } = useMessageListPaginator(

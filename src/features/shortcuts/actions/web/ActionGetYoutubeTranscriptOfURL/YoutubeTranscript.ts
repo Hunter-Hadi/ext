@@ -104,6 +104,90 @@ export class YoutubeTranscript {
       return []
     }
   }
+
+  /**
+   * Fetch transcript from YTB Video
+   * @param videoId Video url or video identifier
+   * @param abortTaskId Abort task id
+   */
+  public static async fetchYouTubeVideoInfo(
+    videoId: string,
+    abortTaskId?: string,
+  ) {
+    let youTubeVideoInfo = null
+    const pageContent = await clientFetchAPI(
+      'https://www.youtube.com/watch?v=' + videoId,
+      {
+        parse: 'text',
+      },
+      abortTaskId,
+    )
+    if (pageContent.success) {
+      youTubeVideoInfo = {
+        title: '',
+        author: '',
+        account: '',
+        date: '',
+        content: '',
+        transcriptText: '',
+      }
+      // youTube transcript
+      youTubeVideoInfo.transcriptText =
+        await YoutubeTranscript.transcriptFormat(
+          await YoutubeTranscript.fetchTranscript(videoId, pageContent.data),
+        )
+      const doc = new DOMParser().parseFromString(pageContent.data, 'text/html')
+      youTubeVideoInfo.title =
+        doc.querySelector('meta[itemprop="name"]')?.getAttribute('content') ||
+        ''
+      youTubeVideoInfo.author =
+        doc
+          .querySelector('span[itemprop="author"] link[itemprop="name"]')
+          ?.getAttribute('content') || ''
+      youTubeVideoInfo.account =
+        doc
+          .querySelector('span[itemprop="author"] link[itemprop="url"]')
+          ?.getAttribute('href')
+          ?.split('@')?.[1] || ''
+      youTubeVideoInfo.date =
+        doc
+          .querySelector('meta[itemprop="datePublished"]')
+          ?.getAttribute('content') || ''
+      youTubeVideoInfo.content =
+        doc
+          .querySelector('meta[itemprop="description"]')
+          ?.getAttribute('content') || ''
+
+      try {
+        if (doc.body.innerHTML) {
+          const json = doc.body.innerHTML
+            .split('"videoDetails":')?.[1]
+            ?.split(',"thumbnail":')?.[0]
+          if (json) {
+            // channelId
+            // isCrawlable
+            // isOwnerViewing
+            // keywords
+            // lengthSeconds
+            // shortDescription
+            // title
+            // videoId
+            const videoDetail = JSON.parse(json + '}')
+            if (videoDetail.title) {
+              youTubeVideoInfo.title = videoDetail.title
+            }
+            if (videoDetail.shortDescription) {
+              youTubeVideoInfo.content = videoDetail.shortDescription
+            }
+          }
+        }
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    return youTubeVideoInfo
+  }
+
   /**
    * Fetch transcript from YTB Video
    * @param videoId Video url or video identifier
@@ -114,69 +198,13 @@ export class YoutubeTranscript {
     abortTaskId?: string,
   ): Promise<ISocialMediaPostContextData> {
     try {
-      const pageContent = await clientFetchAPI(
-        'https://www.youtube.com/watch?v=' + videoId,
-        {
-          parse: 'text',
-        },
+      const youTubeVideoInfo = await YoutubeTranscript.fetchYouTubeVideoInfo(
+        videoId,
         abortTaskId,
       )
-      if (pageContent.success) {
-        // youTube transcript
-        const youTubeTranscriptText = await YoutubeTranscript.transcriptFormat(
-          await YoutubeTranscript.fetchTranscript(videoId, pageContent.data),
-        )
-        const doc = new DOMParser().parseFromString(
-          pageContent.data,
-          'text/html',
-        )
-        let title =
-          doc.querySelector('meta[itemprop="name"]')?.getAttribute('content') ||
-          ''
-        const author =
-          doc
-            .querySelector('span[itemprop="author"] link[itemprop="name"]')
-            ?.getAttribute('content') || ''
-        const account =
-          doc
-            .querySelector('span[itemprop="author"] link[itemprop="url"]')
-            ?.getAttribute('href')
-            ?.split('@')?.[1] || ''
-        const date =
-          doc
-            .querySelector('meta[itemprop="datePublished"]')
-            ?.getAttribute('content') || ''
-        let content =
-          doc
-            .querySelector('meta[itemprop="description"]')
-            ?.getAttribute('content') || ''
-
-        try {
-          if (doc.body.innerHTML) {
-            const json = doc.body.innerHTML
-              .split('"videoDetails":')?.[1]
-              ?.split(',"thumbnail":')?.[0]
-            if (json) {
-              // channelId
-              // isCrawlable
-              // isOwnerViewing
-              // keywords
-              // lengthSeconds
-              // shortDescription
-              // title
-              // videoId
-              const videoDetail = JSON.parse(json + '}')
-              if (videoDetail.title) {
-                title = videoDetail.title
-              }
-              if (videoDetail.shortDescription) {
-                content = videoDetail.shortDescription
-              }
-            }
-          }
-        } catch (e) {
-          console.log(e)
-        }
+      if (youTubeVideoInfo) {
+        const { title, author, account, date, content, transcriptText } =
+          youTubeVideoInfo
         const youtubePostContent = new SocialMediaPostContext(
           {
             title,
@@ -187,7 +215,7 @@ export class YoutubeTranscript {
           {
             postTitle: 'Video post',
             meta: {
-              'Video transcript': youTubeTranscriptText,
+              'Video transcript': transcriptText,
             },
           },
         )

@@ -868,11 +868,6 @@ const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGrou
           'ytcp-comment',
           rootElement,
         )?.querySelector('#reply-dialog-container')
-        console.log(
-          commentDialog,
-          'testestcommentDialog',
-          commentDialog?.innerHTML,
-        )
         if (commentDialog?.innerHTML === '') {
           return true
         }

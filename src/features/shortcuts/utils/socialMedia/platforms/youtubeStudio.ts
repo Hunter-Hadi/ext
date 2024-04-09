@@ -1,4 +1,5 @@
 import { HTMLDivElement } from 'linkedom'
+import { v4 as uuidV4 } from 'uuid'
 
 import { YoutubeTranscript } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
 import {
@@ -47,7 +48,6 @@ const getYouTubeStudioCommentContent = async (
 
 export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
   async (inputAssistantButton) => {
-    debugger
     try {
       // comment box
       const ytcpCommentBox = findParentEqualSelector(
@@ -65,75 +65,79 @@ export const youTubeStudioGetPostContent: GetSocialMediaPostContentFunction =
         const youTubeVideoId = YoutubeTranscript.retrieveVideoId(
           sourceVideoLink?.href || '',
         )
-        // 上下文
-        let youTubeSocialMediaPostContext: SocialMediaPostContext | null = null
         if (youTubeVideoId) {
-          // youTube transcript
-          const youTubeTranscriptText =
-            await YoutubeTranscript.transcriptFormat(
-              await YoutubeTranscript.fetchTranscript(window.location.href),
+          const youTubeVideoInfo =
+            await YoutubeTranscript.fetchYouTubeVideoInfo(
+              youTubeVideoId,
+              uuidV4(),
             )
           const title =
-            (
-              commentBoxRoot?.querySelector(
-                '#video-title > yt-formatted-string',
-              ) as HTMLHeadingElement
-            )?.innerText || ''
-          const userName = (
-            document.querySelector('#entity-name') as any as HTMLDivElement
-          )?.innerText
-          const date = ''
-          youTubeSocialMediaPostContext = new SocialMediaPostContext(
+            youTubeVideoInfo?.title ||
+            (document.querySelector('#back-button')
+              ? document.querySelector<HTMLElement>('#entity-name')
+              : commentBoxRoot?.querySelector<HTMLHeadingElement>(
+                  '#video-title > yt-formatted-string',
+                )
+            )?.innerText ||
+            ''
+          const author =
+            youTubeVideoInfo?.author ||
+            (!document.querySelector('#back-button') &&
+              document.querySelector<HTMLElement>('#entity-name')?.innerText) ||
+            ''
+          const date = youTubeVideoInfo?.date || ''
+          // 上下文
+          const youTubeSocialMediaPostContext = new SocialMediaPostContext(
             {
               title,
-              author: `${userName}`,
+              author,
               date,
               content: '',
             },
             {
               postTitle: 'Video post',
               meta: {
-                'Post video transcript': youTubeTranscriptText,
+                'Post video transcript': youTubeVideoInfo?.transcriptText || '',
               },
             },
           )
-        }
-        if (ytcpCommentBox && youTubeSocialMediaPostContext) {
-          const ytcpRootComment = findParentEqualSelector(
-            'ytcp-comment-thread',
-            ytcpCommentBox,
-          )?.querySelector('& > ytcp-comment' as any) as HTMLElement
-          // 第一层评论
-          if (ytcpRootComment) {
-            const currenYtcpCommentBox = findParentEqualSelector(
-              'ytcp-comment',
+          if (ytcpCommentBox) {
+            const ytcpRootComment = findParentEqualSelector(
+              'ytcp-comment-thread',
               ytcpCommentBox,
-            )
-            if (currenYtcpCommentBox) {
-              // 判断是不是回复别人的评论
-              const ytdCommentRepliesRenderer = findSelectorParent(
-                'ytcp-comment-replies',
-                currenYtcpCommentBox,
-                5,
+            )?.querySelector('& > ytcp-comment' as any) as HTMLElement
+            // 第一层评论
+            if (ytcpRootComment) {
+              const currenYtcpCommentBox = findParentEqualSelector(
+                'ytcp-comment',
+                ytcpCommentBox,
               )
-              // youtube只有两层评论
-              if (
-                ytdCommentRepliesRenderer?.contains(currenYtcpCommentBox) &&
-                !currenYtcpCommentBox.isSameNode(ytcpRootComment)
-              ) {
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeStudioCommentContent(ytcpRootComment),
-                  await getYouTubeStudioCommentContent(currenYtcpCommentBox),
-                ])
-              } else {
-                // 只有一层评论
-                youTubeSocialMediaPostContext.addCommentList([
-                  await getYouTubeStudioCommentContent(ytcpRootComment),
-                ])
+              if (currenYtcpCommentBox) {
+                // 判断是不是回复别人的评论
+                const ytdCommentRepliesRenderer = findSelectorParent(
+                  'ytcp-comment-replies',
+                  currenYtcpCommentBox,
+                  5,
+                )
+                // youtube只有两层评论
+                if (
+                  ytdCommentRepliesRenderer?.contains(currenYtcpCommentBox) &&
+                  !currenYtcpCommentBox.isSameNode(ytcpRootComment)
+                ) {
+                  youTubeSocialMediaPostContext.addCommentList([
+                    await getYouTubeStudioCommentContent(ytcpRootComment),
+                    await getYouTubeStudioCommentContent(currenYtcpCommentBox),
+                  ])
+                } else {
+                  // 只有一层评论
+                  youTubeSocialMediaPostContext.addCommentList([
+                    await getYouTubeStudioCommentContent(ytcpRootComment),
+                  ])
+                }
               }
             }
+            return youTubeSocialMediaPostContext.data
           }
-          return youTubeSocialMediaPostContext.data
         }
       }
     } catch (e) {

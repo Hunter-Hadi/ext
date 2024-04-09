@@ -13,9 +13,9 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-export class ActionAssignCustomPromptWebPageContentContextVarible extends Action {
+export class ActionAssignCustomPromptWebPageContentContextVariable extends Action {
   static type: ActionIdentifier =
-    'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIBLE'
+    'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
   constructor(
     id: string,
     type: ActionIdentifier,

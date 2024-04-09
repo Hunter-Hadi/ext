@@ -43,21 +43,20 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
       return searchInput?.value || ''
     },
     sidebarContainerFinder: () => {
-      const googleSidebarElement = document.querySelector<HTMLDivElement>(
-        '#rcnt',
-      )
+      const googleSidebarElement =
+        document.querySelector<HTMLDivElement>('#rcnt')
       if (googleSidebarElement) {
-        const complementaryBarOriginal = googleSidebarElement.querySelector<HTMLElement>(
-          'div#rhs[role=complementary]',
-        )
+        const complementaryBarOriginal =
+          googleSidebarElement.querySelector<HTMLElement>(
+            'div#rhs[role=complementary]',
+          )
         if (complementaryBarOriginal) {
           return complementaryBarOriginal
         }
 
         // 兼容下 google for search 插件创建的 rhs
-        const googleForSearchExtensionBar = googleSidebarElement.querySelector<HTMLElement>(
-          'div#rhs',
-        )
+        const googleForSearchExtensionBar =
+          googleSidebarElement.querySelector<HTMLElement>('div#rhs')
         if (googleForSearchExtensionBar) {
           return googleForSearchExtensionBar
         }
@@ -85,7 +84,8 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
     },
     isDarkMode: () =>
       !!document.querySelector('meta[content=dark]') ||
-      !!document.querySelector('*[data-darkmode=true]'),
+      !!document.querySelector('*[data-darkmode=true]') ||
+      !!document.querySelector('meta[content="dark light"]'),
   },
   bing: {
     ref: 'bing',
@@ -109,7 +109,7 @@ const SearchPageAdapter: Record<ISearchPageKey, ISearchPageAdapter> = {
     customStyle: {
       margin: '0 -20px 20px',
     },
-    isDarkMode: () => false,
+    isDarkMode: () => !!document.querySelector('body.b_dark'),
   },
   baidu: {
     ref: 'baidu',

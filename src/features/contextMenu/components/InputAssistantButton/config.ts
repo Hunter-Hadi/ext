@@ -544,6 +544,7 @@ const FacebookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
             findSelectorParent(
               'div > div > div > #focused-state-composer-submit > span > div > i',
               rootElement,
+              5,
             )
           ) {
             return false
@@ -602,6 +603,18 @@ const FacebookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     } as IInputAssistantButtonGroupConfig,
     {
       enable: (rootElement) => {
+        const commentContentBox = findSelectorParent(
+          'span[lang][dir]',
+          rootElement,
+          3,
+        )
+        if (
+          !commentContentBox ||
+          (commentContentBox.innerText === '' &&
+            commentContentBox.querySelector('img'))
+        ) {
+          return false
+        }
         return true
       },
       rootSelectors: [

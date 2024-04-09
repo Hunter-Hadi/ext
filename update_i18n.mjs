@@ -536,6 +536,7 @@ async function updateDefaultJson(forceUpdate = false) {
           forceUpdate ? '[强制更新]' : '[增量更新]',
         )
         systemPromptList.forEach((systemPrompt) => {
+          console.log(systemPrompt)
           //   { '80e6d17b-2cf5-456b-944b-5f645f0e12de': 'Generate from selection' }
           const key = `prompt.${Object.keys(systemPrompt)[0]}`
           const value = Object.values(systemPrompt)[0]

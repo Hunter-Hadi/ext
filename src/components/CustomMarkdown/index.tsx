@@ -211,7 +211,7 @@ const preprocessLaTeX = (content: string) => {
   content = content
     .split('$')
     .join('\\$')
-    .replace(/\\\$\\\$/g, '$$')
+    .replace(/\\\$\\\$/g, '$$$$')
   // Replace block-level LaTeX delimiters \[ \] with $$ $$
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,

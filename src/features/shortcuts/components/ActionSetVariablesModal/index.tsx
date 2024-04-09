@@ -523,12 +523,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       onKeyPress={(event) => {
         event.stopPropagation()
       }}
-      // onKeyUpCapture={(event) => {
-      //   event.stopPropagation()
-      // }}
-      // onKeyUp={(event) => {
-      //   event.stopPropagation()
-      // }}
+    // onKeyUpCapture={(event) => {
+    //   event.stopPropagation()
+    // }}
+    // onKeyUp={(event) => {
+    //   event.stopPropagation()
+    // }}
     >
       {/*Header*/}
       <Stack
@@ -632,7 +632,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
           const width =
             (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
-            currentModalConfig.textTypeVariables.length > 1
+              currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
           const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17
@@ -643,6 +643,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
               key={textTypeVariable.VariableName}
               label={textTypeVariable.label || 'Label'}
               {...form[textTypeVariable.VariableName]}
+              onKeyUp={(event) => {
+                event.stopPropagation()
+              }}
               onKeyDown={async (event) => {
                 if (event.key === 'Enter' && !event.shiftKey) {
                   event.stopPropagation()

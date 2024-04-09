@@ -1,4 +1,4 @@
-export { ActionAssignCustomPromptWebPageContentContextVarible } from './ActionAssignCustomPromptWebPageContentContextVarible'
+export { ActionAssignCustomPromptWebPageContentContextVariable } from './ActionAssignCustomPromptWebPageContentContextVariable'
 export { ActionCloseURLS } from './ActionCloseURLS'
 export { ActionFetchActions } from './ActionFetchActions'
 export { ActionGetContentsOfSearchEngine } from './ActionGetContentsOfSearchEngine'

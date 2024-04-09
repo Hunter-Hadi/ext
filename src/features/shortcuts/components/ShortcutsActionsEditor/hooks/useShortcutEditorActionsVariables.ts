@@ -31,6 +31,7 @@ export type IPresetVariablesGroupItem = {
   variable: IPresetActionSetVariable
   description?: I18nextKeysType
   examples: I18nextKeysType[]
+  // 限制 System variables 在哪些场景下可用
   permissionKeys?: IChromeExtensionButtonSettingKey[]
 }
 
@@ -160,6 +161,7 @@ export const PRESET_VARIABLES_GROUP_MAP: {
         'prompt_editor:preset_variables__system__selected_text__description__example1',
         'prompt_editor:preset_variables__system__selected_text__description__example2',
       ],
+      permissionKeys: ['textSelectPopupButton'],
     },
     {
       variable: PRESET_VARIABLE_MAP.CURRENT_WEBSITE_DOMAIN,

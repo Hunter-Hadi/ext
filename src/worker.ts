@@ -1,4 +1,4 @@
-// web worker
+// web worker.
 import cl100k_base from 'gpt-tokenizer/esm/encoding/cl100k_base'
 
 import { WebWorkerEventType } from '@/utils/webWorkerClient'

@@ -56,6 +56,7 @@ export class ActionSetVariablesModal extends Action {
               .data || ''
         }
         if (
+          !needUserInput &&
           variable.valueType === 'Text' &&
           !variable.defaultValue &&
           !variable.hidden
@@ -81,6 +82,7 @@ export class ActionSetVariablesModal extends Action {
               .data || ''
         }
         if (
+          !needUserInput &&
           variable.valueType === 'Text' &&
           !variable.defaultValue &&
           !variable.hidden

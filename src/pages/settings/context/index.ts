@@ -43,7 +43,7 @@ export const settingsPageRouterList: Array<{
   },
   {
     route: '/help-me-write',
-    label: 'left_menu__writing_assistant',
+    label: 'left_menu__instant_reply',
     divider: false,
   },
   {

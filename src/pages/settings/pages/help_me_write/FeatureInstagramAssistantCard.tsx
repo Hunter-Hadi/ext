@@ -12,7 +12,7 @@ const FeatureInstagramAssistantCard: FC = () => {
   return (
     <SettingsFeatureCardLayout
       title={t(
-        'settings:feature_card__help_me_write__field__instagram_input_assistant_button__title',
+        'settings:feature_card__help_me_write__field__instagram_instant_reply_button__title',
       )}
       id={'instagram-assistant'}
     >

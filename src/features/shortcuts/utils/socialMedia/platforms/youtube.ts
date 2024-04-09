@@ -68,7 +68,8 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
       const expandButton = youTubeVideoMetaData?.querySelector(
         'tp-yt-paper-button#expand',
       ) as HTMLButtonElement
-      if (expandButton) {
+      if (expandButton && !expandButton.hidden) {
+        // 如果点击过该元素隐藏了就跳过，否则会出每次重新执行时滚动条都会跳转到inputAssistantButton元素
         expandButton.click()
         await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
       }
@@ -104,7 +105,6 @@ export const youTubeGetPostContent: GetSocialMediaPostContentFunction = async (
           },
         },
       )
-      window?.scrollTo({ top: 0 }) //点击 show more 展开更多，会置顶然后再滚下去一点，导致后面的拿评论滚动视图没有铺满
     } else if (
       window.location.href.startsWith('https://www.youtube.com/shorts')
     ) {

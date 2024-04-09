@@ -41,7 +41,8 @@ const SettingPromptsUpdateFormModal: FC<{
   )
   const isEditingSpecialButtonKey =
     settingPromptsEditButtonKey &&
-    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey)
+    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey) &&
+    false
 
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),
@@ -76,14 +77,14 @@ const SettingPromptsUpdateFormModal: FC<{
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt_group__title')
         : editNode.id === ''
-          ? t('settings:feature_card__prompts__new_prompt_group__title')
-          : t('settings:feature_card__prompts__edit_prompt_group__title')
+        ? t('settings:feature_card__prompts__new_prompt_group__title')
+        : t('settings:feature_card__prompts__edit_prompt_group__title')
     } else {
       return isDisabled
         ? t('settings:feature_card__prompts__read_prompt__title')
         : editNode.id === ''
-          ? t('settings:feature_card__prompts__new_prompt__title')
-          : t('settings:feature_card__prompts__edit_prompt__title')
+        ? t('settings:feature_card__prompts__new_prompt__title')
+        : t('settings:feature_card__prompts__edit_prompt__title')
     }
   }, [isDisabled, editNode.data.type, t])
 

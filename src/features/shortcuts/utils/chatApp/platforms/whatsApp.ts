@@ -179,10 +179,10 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
 }
 
 export const whatsAppGetDraftContent = (inputAssistantButton: HTMLElement) => {
-  const slackDraftEditor = findSelectorParent(
+  const whatsAppDraftEditor = findSelectorParent(
     'footer [role="textbox"][data-lexical-editor][contenteditable="true"]',
     inputAssistantButton,
     5,
   )
-  return slackDraftEditor?.innerText || ''
+  return whatsAppDraftEditor?.innerText || ''
 }

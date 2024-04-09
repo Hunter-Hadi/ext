@@ -1407,7 +1407,7 @@ const WritingAssistantButtonGroupConfigs: {
   },
   'reddit.com': RedditWritingAssistantButtonGroupConfigs,
   // 'web.whatsapp.com': WhatsAppWritingAssistantButtonGroupConfigs,
-  // 'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
+  'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
   'discord.com': DiscordWritingAssistantButtonGroupConfigs,
 }
 

@@ -54,7 +54,6 @@ import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeEx
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
-  syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import {
   AI_PROVIDER_MAP,
@@ -124,7 +123,6 @@ const initChromeExtensionInstalled = () => {
       if (!(await isSettingsLastModifiedEqual())) {
         await checkSettingsSync()
       }
-      await syncLocalSettingsToServerSettings()
       // 更新i18n
       await updateContextMenuSearchTextStore('textSelectPopupButton')
     }

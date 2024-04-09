@@ -23,7 +23,6 @@ import getLiteChromeExtensionDBStorage from '@/background/utils/chromeExtensionS
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
-  syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import {
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
@@ -345,7 +344,6 @@ export const ClientMessageInit = () => {
               if (!(await isSettingsLastModifiedEqual())) {
                 await checkSettingsSync()
               }
-              await syncLocalSettingsToServerSettings()
             }
             // 因为会打开新的optionsTab，所以需要再切换回去
             await Browser.tabs.update(sender.tab?.id, {

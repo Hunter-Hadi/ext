@@ -445,8 +445,7 @@ const useShortcutEditorActions = () => {
       })
     } else {
       // 添加specialActions
-      actions.push(...specialActions)
-      actions.push({
+      actions.push(...specialActions, {
         type: 'ASK_CHATGPT',
         parameters: {
           template,

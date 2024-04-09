@@ -8,6 +8,7 @@ import {
   DropdownMenuItem,
   MenuProps,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
+import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 // import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
@@ -180,6 +181,25 @@ const FloatingContextMenuList: FC<
             />,
           )
         })
+        if (index === 0 && menuItem.id === FAVORITE_CONTEXT_MENU_GROUP_ID && menuList[index + 1].data.type === 'shortcuts') {
+          nodeList.push(
+            <Box
+              key={menuItem.id + '_group_spector'}
+              aria-disabled={true}
+              onClick={(event: any) => {
+                event.stopPropagation()
+                event.preventDefault()
+              }}
+              component={'div'}
+              sx={{
+                pointerEvents: 'none',
+                borderTop: '1px solid',
+                borderColor: 'customColor.borderColor',
+                my: 1,
+              }}
+            />,
+          )
+        }
       } else {
         nodeList.push(
           <RenderDropdownItem

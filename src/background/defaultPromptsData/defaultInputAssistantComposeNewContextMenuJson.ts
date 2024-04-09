@@ -17,7 +17,7 @@ export default [
             SetVariablesModalConfig: {
               contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
               title: 'Compose with key points',
-              modelKey: 'Sidebar',
+
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at composing all types of emails in an appropriate manner. Your task is to write a new email.
 
 Make the email clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email content.
@@ -107,7 +107,7 @@ Now, write a new email, mentioning these points:
             SetVariablesModalConfig: {
               contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
               title: 'Compose with key points',
-              modelKey: 'Sidebar',
+
               template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}} posting, adept at composing all types of {{CURRENT_WEBSITE_DOMAIN}} posts in an appropriate manner. Your task is to write a new post on {{CURRENT_WEBSITE_DOMAIN}}.
 
 Ensure that the post is in line with the widely observed length, style, inclusion or omission of emojis and hashtags, and format of the highest performing post on {{CURRENT_WEBSITE_DOMAIN}}.

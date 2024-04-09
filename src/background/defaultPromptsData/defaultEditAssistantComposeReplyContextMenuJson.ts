@@ -584,7 +584,7 @@ Output the answer without additional context, explanation, or extra wording, jus
                   SetVariablesModalConfig: {
                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
                     title: 'Reply with key points',
-                    modelKey: 'Sidebar',
+
                     template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
@@ -665,7 +665,7 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                   SetVariablesModalConfig: {
                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
                     title: 'Reply with key points',
-                    modelKey: 'Sidebar',
+
                     template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and comments in an appropriate manner.
 
 Your task is to write a reply to the following text, which is a post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
@@ -1288,7 +1288,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
 </keypoints>
 `,
                     title: 'Reply with key points',
-                    modelKey: 'Sidebar',
+
                     variables: [
                       {
                         label: 'Target email',
@@ -1371,7 +1371,7 @@ Now, write the email reply, mentioning these key points, delimited by <keypoints
 </keypoints>
 `,
                     title: 'Reply with key points',
-                    modelKey: 'Sidebar',
+
                     variables: [
                       {
                         label: 'Email context',
@@ -2137,7 +2137,7 @@ Output the answer without any additional context, explanation, or extra wording,
                   SetVariablesModalConfig: {
                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
                     title: 'Reply with key points',
-                    modelKey: 'Sidebar',
+
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
 Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
@@ -2233,7 +2233,7 @@ Now, write a reply to the chat message above by *writing a better version* of th
                   SetVariablesModalConfig: {
                     contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
                     title: 'Reply with key points',
-                    modelKey: 'Sidebar',
+
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
 Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.

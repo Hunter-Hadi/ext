@@ -262,7 +262,7 @@ export const promptLibraryCardDetailDataToActions = (
           template,
           contextMenuId: uuidV4(),
           title: promptLibraryCard.prompt_title,
-          modelKey: 'Sidebar',
+
           variables: customVariables,
           systemVariables,
           actions: specialActions,
@@ -391,8 +391,7 @@ export const actionsToPromptLibraryCardDetailData = (
       type: 'livecrawling',
     })
     variables.push({
-      hint:
-        'This variable will be automatically updated with text extracted from the target URL',
+      hint: 'This variable will be automatically updated with text extracted from the target URL',
       name: 'Live Crawling Crawled Text',
       type: 'livecrawling',
     })
@@ -409,8 +408,7 @@ export const actionsToPromptLibraryCardDetailData = (
       type: 'websearch',
     })
     variables.push({
-      hint:
-        'This variable will be automatically updated with the search results',
+      hint: 'This variable will be automatically updated with the search results',
       name: 'Web Search Results',
       type: 'websearch',
     })

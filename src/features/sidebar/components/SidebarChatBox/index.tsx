@@ -59,7 +59,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReset,
     loading,
   } = props
-  const [isSetVariables, setIsSetVariables] = useState(false)
+  const [isSettingVariables, setIsSettingVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   const [isShowContinueButton, setIsShowContinueButton] = React.useState(false)
   const { currentSidebarConversationType, currentSidebarConversationId } =
@@ -281,21 +281,22 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             )}
           </Box>
           <ActionSetVariablesModal
+            showModelSelector
             onClose={() => {
-              setIsSetVariables(false)
+              setIsSettingVariables(false)
             }}
-            onShow={() => setIsSetVariables(true)}
+            onShow={() => setIsSettingVariables(true)}
             modelKey={'Sidebar'}
           />
           <AutoHeightTextarea
             placeholder={textareaPlaceholder}
             minLine={3}
             sx={{
-              minHeight: isSetVariables
+              minHeight: isSettingVariables
                 ? 0
                 : LINE_HEIGHT * 3 + TEXTAREA_PADDING_Y * 2 + 40, // AutoHeightTextarea 最小高度 = 一行的高度 * 最小行数 + 上下的 padding + SidebarChatBoxInputActions 的高度（40）
-              height: isSetVariables ? '0!important' : 'unset',
-              visibility: isSetVariables ? 'hidden' : 'visible',
+              height: isSettingVariables ? '0!important' : 'unset',
+              visibility: isSettingVariables ? 'hidden' : 'visible',
             }}
             stopPropagation
             loading={loading}

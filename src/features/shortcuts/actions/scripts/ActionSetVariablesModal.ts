@@ -38,14 +38,23 @@ export class ActionSetVariablesModal extends Action {
   ) {
     try {
       const config = this.parameters.SetVariablesModalConfig
-      if (!config) {
-        this.error = 'No config!'
-        return
-      }
       // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
       let needUserInput = false
       const shortCutsVariables = engine.shortcutsEngine?.getVariablesValue()
       const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
+      const conversation = engine.clientConversationEngine?.clientConversation
+      if (conversation) {
+        // 基于type更新config的modelKey
+        if (conversation.type === 'Chat') {
+          cloneConfig.modelKey = 'Sidebar'
+        } else if (conversation.type === 'ContextMenu') {
+          cloneConfig.modelKey = 'FloatingContextMenu'
+        }
+      }
+      if (!config) {
+        this.error = 'No config!'
+        return
+      }
       cloneConfig.variables.map((variable) => {
         if (
           variable.defaultValue &&

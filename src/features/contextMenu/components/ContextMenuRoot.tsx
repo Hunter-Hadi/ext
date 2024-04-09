@@ -74,20 +74,20 @@ const ContextMenuRoot: FC = () => {
     }
   }, [conversationId])
   return (
-    <>
+    <ChatPanelContext.Provider value={ChatPanelContextValue}>
       <CustomPortal containerId={MAXAI_CONTEXT_MENU_ID}>
         {(props) => {
           return (
-            <ChatPanelContext.Provider value={ChatPanelContextValue}>
+            <>
               <FloatingContextMenu root={props.rootContainer} />
               <FloatingShortCutsTip />
               <FloatingMiniMenu />
-            </ChatPanelContext.Provider>
+            </>
           )
         }}
       </CustomPortal>
       <InputAssistantButtonPortal />
-    </>
+    </ChatPanelContext.Provider>
   )
 }
 

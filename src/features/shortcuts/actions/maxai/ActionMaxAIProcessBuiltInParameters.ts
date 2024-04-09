@@ -1,6 +1,7 @@
 import {
   IShortcutEngineExternalEngine,
   pushOutputToChat,
+  withLoadingDecorators,
 } from '@/features/shortcuts'
 import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
@@ -25,6 +26,7 @@ export class ActionMaxAIProcessBuiltInParameters extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
+  @withLoadingDecorators()
   @pushOutputToChat({
     onlyError: true,
   })
@@ -33,6 +35,21 @@ export class ActionMaxAIProcessBuiltInParameters extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      // 为了防止后面的逻辑出错，先检查一下当前的conversation是否存在
+      if (engine.clientConversationEngine?.clientConversation) {
+        const conversation =
+          await engine.clientConversationEngine.getCurrentConversation()
+        if (!conversation) {
+          // 说明indexedDB的conversation被清空了
+          await engine.clientMessageChannelEngine?.postMessage({
+            event: 'Client_createChatGPTConversation',
+            data: {
+              initConversationData:
+                engine.clientConversationEngine.clientConversation,
+            },
+          })
+        }
+      }
       const start = new Date().getTime()
       const { clientConversationEngine, shortcutsEngine } = engine
       if (clientConversationEngine && shortcutsEngine) {

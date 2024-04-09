@@ -51,18 +51,7 @@ const useFloatingContextMenu = () => {
     ) => {
       let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
         element
-      /**
-       * floating menu 展开逻辑:
-       * 1. 如果当前在editable element中，展开
-       * 2. 如果当前有选中的文本，展开
-       * 3. 如果都不符合，展开chat box
-       */
-      if (
-        !isFloatingContextMenuVisible() &&
-        virtualSelectionElement &&
-        (virtualSelectionElement?.selectionText ||
-          virtualSelectionElement?.isEditableElement)
-      ) {
+      if (!isFloatingContextMenuVisible() && virtualSelectionElement) {
         log.info('open', virtualSelectionElement)
         // 1. 如果是可编辑元素，设置marker和获取实际的selection text
         if (
@@ -107,12 +96,7 @@ const useFloatingContextMenu = () => {
         ) {
           showModelSelector = false
         }
-        if (
-          (!virtualSelectionElement?.isEditableElement &&
-            virtualSelectionElement.selectionText) ||
-          virtualSelectionElement?.editableElementSelectionText ||
-          isCommandInsert
-        ) {
+        if (virtualSelectionElement || isCommandInsert) {
           saveCurrentSelection({
             selectionText:
               virtualSelectionElement.editableElementSelectionText ||

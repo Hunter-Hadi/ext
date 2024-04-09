@@ -79,6 +79,7 @@ import {
   getDraftContextMenuTypeById,
   isFloatingContextMenuVisible,
 } from '@/features/contextMenu/utils'
+import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
@@ -120,6 +121,28 @@ const FloatingContextMenu: FC<{
   )
   const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const { isLogin } = useAuthLogin()
+  const [isSettingVariables, setIsSettingVariables] = useState(false)
+
+  /**
+   * 因为在设置完Variables之后，不会立刻loading,这样会导致ContextMenu闪烁
+   * 所以要延迟一下等待loading变成true
+   */
+  const [isSettingVariablesMemo, setIsSettingVariablesMemo] = useState(false)
+  useEffect(() => {
+    let timer: null | ReturnType<typeof setTimeout> = null
+    if (isSettingVariables) {
+      setIsSettingVariablesMemo(true)
+    } else {
+      timer = setTimeout(() => {
+        setIsSettingVariablesMemo(false)
+      }, 200)
+    }
+    return () => {
+      if (timer) {
+        clearTimeout(timer)
+      }
+    }
+  }, [isSettingVariables])
   // ai输出后，系统系统的建议菜单状态
   const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
     useRecoilState(FloatingDropdownMenuSystemItemsState)
@@ -226,14 +249,20 @@ const FloatingContextMenu: FC<{
   const draftContextMenuList = useDraftContextMenuList()
   // 渲染的菜单列表
   const memoMenuList = useMemo(() => {
-    if (loading) {
+    if (loading || isSettingVariablesMemo) {
       return EMPTY_ARRAY
     }
     if (haveContext) {
       return draftContextMenuList
     }
     return contextMenuList
-  }, [loading, contextMenuList, haveContext, draftContextMenuList])
+  }, [
+    isSettingVariablesMemo,
+    loading,
+    contextMenuList,
+    haveContext,
+    draftContextMenuList,
+  ])
   const haveDraft = useMemo(() => {
     return inputValue.length > 0
   }, [inputValue])
@@ -702,6 +731,13 @@ const FloatingContextMenu: FC<{
                 </DevContent>
               )}
               <WritingMessageBox />
+              <ActionSetVariablesModal
+                onClose={() => {
+                  setIsSettingVariables(false)
+                }}
+                onShow={() => setIsSettingVariables(true)}
+                modelKey={'FloatingContextMenu'}
+              />
               <Stack width={'100%'} gap={0.5}>
                 <Stack direction={'row'} alignItems={'end'} gap={1}>
                   <Stack
@@ -722,66 +758,74 @@ const FloatingContextMenu: FC<{
                         <CircularProgress size={'16px'} />
                       </>
                     ) : (
-                      <AutoHeightTextarea
-                        minLine={1}
-                        stopPropagation
-                        onKeydownCapture={(event) => {
-                          if (
-                            floatingDropdownMenu.open &&
-                            memoMenuList.length
-                          ) {
-                            // drop menu打开，不劫持组件内的onKeyDown行为
+                      <>
+                        <AutoHeightTextarea
+                          minLine={1}
+                          stopPropagation
+                          onKeydownCapture={(event) => {
+                            if (
+                              floatingDropdownMenu.open &&
+                              memoMenuList.length
+                            ) {
+                              // drop menu打开，不劫持组件内的onKeyDown行为
+                              return false
+                            }
+                            if (
+                              event.key === 'ArrowUp' ||
+                              event.key === 'ArrowDown'
+                            ) {
+                              // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
+                              event.stopPropagation()
+                              return true
+                            }
                             return false
+                          }}
+                          expandNode={
+                            floatingDropdownMenu.open && (
+                              <ChatIconFileUpload
+                                TooltipProps={{
+                                  placement: safePlacement.contextMenuPlacement,
+                                  floatingMenuTooltip: true,
+                                }}
+                                direction={'column'}
+                                size={'tiny'}
+                              />
+                            )
                           }
-                          if (
-                            event.key === 'ArrowUp' ||
-                            event.key === 'ArrowDown'
-                          ) {
-                            // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
-                            event.stopPropagation()
-                            return true
+                          placeholder={
+                            floatingDropdownMenu.open
+                              ? t('client:floating_menu__input__placeholder')
+                              : ''
                           }
-                          return false
-                        }}
-                        expandNode={
-                          floatingDropdownMenu.open && (
-                            <ChatIconFileUpload
-                              TooltipProps={{
-                                placement: safePlacement.contextMenuPlacement,
-                                floatingMenuTooltip: true,
-                              }}
-                              direction={'column'}
-                              size={'tiny'}
-                            />
-                          )
-                        }
-                        placeholder={
-                          floatingDropdownMenu.open
-                            ? t('client:floating_menu__input__placeholder')
-                            : ''
-                        }
-                        InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
-                        sx={{
-                          border: 'none',
-                          '& > div': {
-                            '& > div': { p: 0 },
-                            '& > textarea': { p: 0 },
-                            '& > .max-ai-user-input__expand': {
-                              '&:has(> div)': {
-                                pr: 1,
+                          InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
+                          sx={{
+                            border: 'none',
+                            '& > div': {
+                              '& > div': { p: 0 },
+                              '& > textarea': { p: 0 },
+                              '& > .max-ai-user-input__expand': {
+                                '&:has(> div)': {
+                                  pr: 1,
+                                },
                               },
                             },
-                          },
-                          borderRadius: 0,
-                          minHeight: '24px',
-                        }}
-                        onEnter={(value) => {
-                          if (!haveContext && contextMenuList.length > 0) {
-                            return
-                          }
-                          askChatGPT(value)
-                        }}
-                      />
+                            borderRadius: 0,
+                            minHeight: isSettingVariables ? 0 : '24px',
+                            height: isSettingVariables
+                              ? '0!important'
+                              : 'unset',
+                            visibility: isSettingVariables
+                              ? 'hidden'
+                              : 'visible',
+                          }}
+                          onEnter={(value) => {
+                            if (!haveContext && contextMenuList.length > 0) {
+                              return
+                            }
+                            askChatGPT(value)
+                          }}
+                        />
+                      </>
                     )}
                     {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
                     <FloatingContextMenuShortcutButtonGroup />

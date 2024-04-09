@@ -35,7 +35,7 @@ import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
 export interface ActionSetVariablesModalConfig {
-  modelKey: 'Sidebar' | 'FloatingContextMenu'
+  modelKey?: 'Sidebar' | 'FloatingContextMenu'
   variables: IActionSetVariable[]
   systemVariables: IActionSetVariable[]
   title: string
@@ -61,6 +61,7 @@ export interface ActionSetVariablesConfirmData {
 interface ActionSetVariablesModalProps
   extends Partial<ActionSetVariablesModalConfig> {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
+  showModelSelector?: boolean
   onShow?: () => void
   onClose?: () => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
@@ -77,6 +78,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     actions,
     answerInsertMessageId,
     askChatGPTActionParameters,
+    showModelSelector = false,
   } = props
   const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
@@ -531,12 +533,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       onKeyPress={(event) => {
         event.stopPropagation()
       }}
-    // onKeyUpCapture={(event) => {
-    //   event.stopPropagation()
-    // }}
-    // onKeyUp={(event) => {
-    //   event.stopPropagation()
-    // }}
+      // onKeyUpCapture={(event) => {
+      //   event.stopPropagation()
+      // }}
+      // onKeyUp={(event) => {
+      //   event.stopPropagation()
+      // }}
     >
       {/*Header*/}
       <Stack
@@ -640,7 +642,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
           const width =
             (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
-              currentModalConfig.textTypeVariables.length > 1
+            currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
           const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17
@@ -691,8 +693,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         gap={1}
         flexShrink={0}
       >
-        <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
-
+        {showModelSelector && (
+          <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
+        )}
         <Button
           sx={{
             height: '32px',

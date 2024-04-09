@@ -331,7 +331,7 @@ export default [
             SetVariablesModalConfig: {
               contextMenuId: '32f31576-0ab8-4fc8-966d-426970abede6',
               title: 'Reply with key points',
-              modelKey: 'Sidebar',
+
               template:
                 "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{CONTEXT}}\n``` \n\nInclude the following aspects in the reply:\n{{KEY_POINTS}}",
               variables: [
@@ -659,7 +659,7 @@ export default [
             SetVariablesModalConfig: {
               contextMenuId: '0815c986-5bd2-49a7-a62f-eeb2c49907da',
               title: 'Reply with key points',
-              modelKey: 'Sidebar',
+
               template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
 
 Text:
@@ -1081,7 +1081,7 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
             SetVariablesModalConfig: {
               contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
               title: 'Reply with key points',
-              modelKey: 'Sidebar',
+
               template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and messages in an appropriate manner. 
 
 Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.

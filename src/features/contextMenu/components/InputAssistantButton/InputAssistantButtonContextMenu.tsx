@@ -22,7 +22,10 @@ import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { useContextMenuList } from '@/features/contextMenu'
+import {
+  useContextMenuList,
+  useFloatingContextMenu,
+} from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
@@ -54,6 +57,7 @@ const InputAssistantButtonContextMenu: FC<
     disabled,
     onSelectionEffect,
   } = props
+  const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType, updateSidebarConversationType } =
@@ -109,9 +113,7 @@ const InputAssistantButtonContextMenu: FC<
             },
           },
         })
-        await askAIWIthShortcuts(actions, {
-          isOpenSidebarChatBox: true,
-        })
+        await askAIWIthShortcuts(actions)
       }
     },
     [
@@ -158,6 +160,12 @@ const InputAssistantButtonContextMenu: FC<
       }
       isRunningRef.current = true
       setClickContextMenu(null)
+      const buttonElement = document.querySelector(
+        `[maxai-input-assistant-button-id="${rootId}"]`,
+      ) as HTMLElement
+      if (buttonElement) {
+        showFloatingContextMenuWithElement(buttonElement, '')
+      }
       runContextMenuRef
         .current(clickContextMenu)
         .then()

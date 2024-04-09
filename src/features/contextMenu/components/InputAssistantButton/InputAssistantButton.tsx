@@ -95,14 +95,17 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     let dropdownButtonSx = {}
     buttonGroup.forEach((button) => {
       if (button.CTAButtonStyle) {
-        cloneCTAButtonStyle = Object.assign(cloneCTAButtonStyle, {
+        cloneCTAButtonStyle = Object.assign(cloneCTAButtonStyle || {}, {
           ...button.CTAButtonStyle,
         })
       }
       if (button.DropdownButtonStyle) {
-        cloneDropdownButtonStyle = Object.assign(cloneDropdownButtonStyle, {
-          ...button.DropdownButtonStyle,
-        })
+        cloneDropdownButtonStyle = Object.assign(
+          cloneDropdownButtonStyle || {},
+          {
+            ...button.DropdownButtonStyle,
+          },
+        )
       }
     })
     if (ctaButtonSx) {

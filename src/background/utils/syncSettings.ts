@@ -37,10 +37,6 @@ export const syncLocalSettingsToServerSettings = async () => {
   try {
     console.log('同步本地设置到服务器')
     const lastModified = dayjs().utc().valueOf()
-    // 更新本地设置的最后修改时间
-    await setChromeExtensionDBStorage({
-      lastModified,
-    })
     const localSettings = await getChromeExtensionDBStorage()
     const result = await post<{
       status: 'OK' | 'ERROR'
@@ -50,6 +46,12 @@ export const syncLocalSettingsToServerSettings = async () => {
         lastModified,
       },
     })
+    if (result?.status === 'OK') {
+      // 更新本地设置的最后修改时间
+      await setChromeExtensionDBStorage({
+        lastModified,
+      })
+    }
     return result?.status === 'OK'
   } catch (e) {
     console.error(e)

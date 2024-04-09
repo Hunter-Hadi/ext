@@ -10,11 +10,13 @@ export interface IGoogleDocContext {
   control?: GoogleDocControl
   caret: IGoogleDocCaret | null
   selection: IGoogleDocSelection | null
+  focus: boolean
 }
 
 export const GoogleDocContext = createContext<IGoogleDocContext>({
   caret: null,
-  selection: null
+  selection: null,
+  focus: false,
 })
 
 export const useGoogleDocContext = () => useContext(GoogleDocContext)

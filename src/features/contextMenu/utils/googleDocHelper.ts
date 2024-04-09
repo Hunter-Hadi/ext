@@ -1,3 +1,5 @@
+import { debounce } from 'lodash-es'
+
 import { EventEmitter } from '@/utils/eventEmitter'
 import Log from '@/utils/Log'
 
@@ -68,6 +70,7 @@ export interface IGoogleDocSelection {
   paragraphs: IGoogleDocParagraph[]
   rects: IGoogleDocRect[]
   layouts: IGoogleDocLayout[]
+  content: string
 }
 
 export interface IGoogleDocCaret {
@@ -227,44 +230,9 @@ export class GoogleDocControl extends EventEmitter {
     this.caretElement = document.querySelector('#kix-current-user-cursor-caret')
   }
 
-  checkSelectionChange() {
-    const selection = this.getCurrentSelection()
-    if (selection === this.lastSelection) return
-    if (selection && this.lastSelection) {
-      if (
-        selection.layouts.length === this.lastSelection.layouts.length &&
-        selection.layouts.every(
-          (item, i) => !isRectChange(item, this.lastSelection!.layouts[i]),
-        )
-      ) {
-        return
-      }
-    }
-    this.lastSelection = selection
-    this.emit(IGoogleDocEventType.SELECTION_CHANGE, this.lastSelection)
-  }
-
-  checkCaretChange() {
-    const caret = this.getCurrentCaret()
-    if (caret === this.lastCaret) return
-    if (
-      caret &&
-      this.lastCaret &&
-      !isRectChange(caret.layout, this.lastCaret.layout)
-    ) {
-      return
-    }
-    this.lastCaret = caret
-    this.emit(IGoogleDocEventType.CARET_CHANGE, this.lastCaret)
-  }
-
   _onMouseUpOrKeyUp = (event: MouseEvent | KeyboardEvent) => {
-    if (!(event instanceof KeyboardEvent && event.key === 'Escape')) {
-      (event as any).MAX_AI_IGNORE = true
-    }
-
-    this.checkSelectionChange()
-    this.checkCaretChange()
+    // 标记过滤useInitRang.ts里saveHighlightedRangeAndShowContextMenu的处理
+    (event as any).MAX_AI_IGNORE = true
   }
 
   _onFocus = () => {
@@ -279,29 +247,31 @@ export class GoogleDocControl extends EventEmitter {
     // const contentElement = document.querySelector(
     //   '.kix-rotatingtilemanager-content',
     // )
-    // const cursorElement = document.querySelector('div.kix-cursor')
-    // this.observer = new MutationObserver((mutations) => {
-    //   if (
-    //     mutations.some((item) =>
-    //       (item.target as HTMLElement).classList?.contains('kix-cursor'),
-    //     )
-    //   ) {
-    //     log.info('光标移动')
-    //     this.lastCaret = this.getCurrentCaret()
-    //     this.emit(IGoogleDocEventType.CARET_CHANGE, this.lastCaret)
-    //   }
-    //   if (
-    //     mutations.find((item) =>
-    //       item.target.parentElement?.classList.contains(
-    //         'kix-canvas-tile-selection',
-    //       ),
-    //     )
-    //   ) {
-    //     log.info('选区变化')
-    //     this.lastSelection = this.getCurrentSelection()
-    //     this.emit(IGoogleDocEventType.SELECTION_CHANGE, this.lastSelection)
-    //   }
-    // })
+    const cursorElement = document.querySelector('div.kix-cursor')
+    const debounceCaretOrSelectionChange = debounce(() => {
+      this.checkCaretChange()
+      this.checkSelectionChange()
+    }, 20);
+    this.observer = new MutationObserver((mutations) => {
+      if (
+        mutations.some((item) =>
+          (item.target as HTMLElement).classList?.contains('kix-cursor'),
+        )
+      ) {
+        log.info('光标移动')
+        debounceCaretOrSelectionChange()
+      }
+      // if (
+      //   mutations.find((item) =>
+      //     item.target.parentElement?.classList.contains(
+      //       'kix-canvas-tile-selection',
+      //     ),
+      //   )
+      // ) {
+      //   log.info('选区变化')
+      //   this.debounceCaretOrSelectionChange()
+      // }
+    })
     // if (contentElement) {
     //   this.observer.observe(contentElement, {
     //     attributes: false,
@@ -310,15 +280,15 @@ export class GoogleDocControl extends EventEmitter {
     //     subtree: true,
     //   })
     // }
-    // if (cursorElement) {
-    //   this.observer.observe(cursorElement, {
-    //     attributes: true,
-    //     attributeFilter: ['style'],
-    //     childList: false,
-    //     characterData: false,
-    //     subtree: false,
-    //   })
-    // }
+    if (cursorElement) {
+      this.observer.observe(cursorElement, {
+        attributes: true,
+        attributeFilter: ['style'],
+        childList: false,
+        characterData: false,
+        subtree: false,
+      })
+    }
     this.editorElement?.addEventListener('mouseup', this._onMouseUpOrKeyUp)
     this.inputElement?.addEventListener('keyup', this._onMouseUpOrKeyUp)
     this.inputElement?.addEventListener('focus', this._onFocus)
@@ -334,8 +304,54 @@ export class GoogleDocControl extends EventEmitter {
     this.removeAllListeners()
   }
 
+  isSelectionChange(
+    selection1: IGoogleDocSelection | null,
+    selection2: IGoogleDocSelection | null,
+  ) {
+    log.info(selection1, selection2)
+    if (selection1 === selection2) return false
+    if (selection1 && selection2) {
+      if (
+        selection1.layouts.length === selection2.layouts.length &&
+        selection1.layouts.every(
+          (item, i) => !isRectChange(item, selection2.layouts[i]),
+        )
+      ) {
+        return false
+      }
+    }
+    return true
+  }
+
+  isCaretChange(
+    caret1: IGoogleDocCaret | null,
+    caret2: IGoogleDocCaret | null,
+  ) {
+    if (caret1 === caret2) return false
+    if (caret1 && caret2 && !isRectChange(caret1.layout, caret2.layout)) {
+      return
+    }
+    return true
+  }
+
   isFocus() {
     return document.activeElement === this.iframeElement
+  }
+
+  checkSelectionChange() {
+    const selection = this.getCurrentSelection()
+    if (this.isSelectionChange(selection, this.lastSelection)) {
+      this.lastSelection = selection
+      this.emit(IGoogleDocEventType.SELECTION_CHANGE, this.lastSelection)
+    }
+  }
+
+  checkCaretChange() {
+    const caret = this.getCurrentCaret()
+    if (this.isCaretChange(caret, this.lastCaret)) {
+      this.lastCaret = caret
+      this.emit(IGoogleDocEventType.CARET_CHANGE, this.lastCaret)
+    }
   }
 
   calculateRelativeLayout(rect: IGoogleDocRect) {
@@ -365,16 +381,15 @@ export class GoogleDocControl extends EventEmitter {
         cancelable: true,
       }),
     )
-    this.checkSelectionChange()
-    this.checkCaretChange()
   }
 
   /**
    * 选区下方插入内容
    * @param value
+   * @param select
    */
-  insertBelowSelection(value: string) {
-    log.info(value, this.lastSelection)
+  insertBelowSelection(value: string, select = false) {
+    log.info(value)
 
     this.inputElement?.focus()
     if (this.lastSelection) {
@@ -386,19 +401,16 @@ export class GoogleDocControl extends EventEmitter {
         repeat: false,
       }
       this.inputElement?.dispatchEvent(new KeyboardEvent('keydown', keyData))
-      setTimeout(() => {
-        this.replaceSelection(`\n${value}`)
-      }, 10)
-    } else {
-      this.replaceSelection(`\n${value}`)
     }
+    this.replaceSelection(`\n${value}`)
   }
 
   /**
    * 选区上方插入内容
    * @param value
+   * @param select
    */
-  insertAboveSelection(value: string) {
+  insertAboveSelection(value: string, select = false) {
     log.info(value)
 
     this.inputElement?.focus()
@@ -409,45 +421,41 @@ export class GoogleDocControl extends EventEmitter {
         key: 'ArrowLeft',
         keyCode: 37,
         bubbles: true,
-        isComposing: false,
         repeat: false,
       }
       this.inputElement?.dispatchEvent(new KeyboardEvent('keydown', keyData))
-      setTimeout(() => {
-        this.replaceSelection(`${value}\n`)
-      }, 10)
-    } else {
-      this.replaceSelection(`${value}\n`)
     }
+    this.replaceSelection(`${value}\n`)
   }
 
   /**
    * 拷贝当前选区内容
+   * @param command
    */
-  copySelection() {
+  copySelection(command = false) {
     this.inputElement?.focus()
-    this.inputElement?.dispatchEvent(
-      new ClipboardEvent('copy', {
-        bubbles: true,
-        cancelable: true,
-      }),
-    )
-    return this.inputElement?.innerText
+    if (command) {
+      this.iframeElement?.contentDocument?.execCommand('copy')
+    } else {
+      this.inputElement?.dispatchEvent(
+        new ClipboardEvent('copy', {
+          bubbles: true,
+          cancelable: true,
+        }),
+      )
+    }
+    return this.inputElement?.innerText || ''
   }
 
-  async getSelectionContent(selection: IGoogleDocSelection) {
-    if (this.lastSelection === selection) {
-      return this.copySelection()
-    }
-    await this.selectRectBySelection(selection)
-    return this.copySelection()
+  async getCaretBeforeContent(caret: IGoogleDocCaret) {
+
   }
 
   /**
    * 选中某个选区
    * @param selection
    */
-  async selectRectBySelection(selection: IGoogleDocSelection): Promise<void> {
+  async selectSelection(selection: IGoogleDocSelection): Promise<void> {
     if (!this.editorElement || !this.scrollElement) return
 
     const { layouts } = selection
@@ -479,7 +487,7 @@ export class GoogleDocControl extends EventEmitter {
     ) {
       this.editorElement.scrollTo({ top, behavior: 'auto' })
       await new Promise((resolve) => setTimeout(resolve, 50))
-      return this.selectRectBySelection(selection)
+      return this.selectSelection(selection)
     }
 
     const events = [
@@ -587,9 +595,11 @@ export class GoogleDocControl extends EventEmitter {
       )
       .map((item) => this.parseParagraphElement(item))
 
-    log.info({ paragraphs, rects, layouts })
+    const content = this.copySelection()
 
-    return { elements, rects, paragraphs, layouts }
+    log.info({ paragraphs, rects, layouts, content })
+
+    return { elements, rects, paragraphs, layouts, content }
   }
 
   /**

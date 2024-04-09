@@ -615,16 +615,19 @@ const useInitRangy = () => {
             inputEl.focus()
             inputEl.setSelectionRange(startIndex, endIndex)
           }
+          // 这里每次关闭后触发了一个keyup事件
+          // 在google doc下导致上方的saveHighlightedRangeAndShowContextMenu里清除了selectionElementRef.current
+          // 尽量不修改原有的逻辑，这里注释一下记录
           setTimeout(() => {
             // mock space keyup
             const keyupEvent = new KeyboardEvent('keyup', {
-              key: ' ',
-              code: 'Space',
-              location: 0,
-              bubbles: true,
-              cancelable: true,
-              shiftKey: false,
-            })
+                key: ' ',
+                code: 'Space',
+                location: 0,
+                bubbles: true,
+                cancelable: true,
+                shiftKey: false,
+              })
             ;(el || document.body).focus()
             ;(el || document.body).dispatchEvent(keyupEvent)
           }, 0)

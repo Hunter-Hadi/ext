@@ -14,8 +14,9 @@ import {
 const GoogleDocInject: FC = () => {
   const control = useMemo(() => new GoogleDocControl(), [])
 
-  const [caret, setCaret] = useState<IGoogleDocCaret | null>(control.lastCaret)
-  const [selection, setSelection] = useState<IGoogleDocSelection | null>(control.lastSelection)
+  const [caret, setCaret] = useState(control.lastCaret)
+  const [selection, setSelection] = useState(control.lastSelection)
+  const [focus, setFocus] = useState(false)
 
   useEffectOnce(() => {
     control.init()
@@ -30,12 +31,23 @@ const GoogleDocInject: FC = () => {
       setCaret(gDocCaret)
     }
 
+    const onFocus = () => {
+      setFocus(true)
+    }
+
+    const onBlur = () => {
+      setFocus(false)
+    }
+
     control.addListener(IGoogleDocEventType.SELECTION_CHANGE, onSelectionChange)
     control.addListener(IGoogleDocEventType.CARET_CHANGE, onCaretChange)
+    // control.addListener(IGoogleDocEventType.FOCUS, onFocus)
+    // control.addListener(IGoogleDocEventType.BLUR, onBlur)
 
     if (control.isFocus()) {
       control.checkSelectionChange()
       control.checkCaretChange()
+      setFocus(true)
     }
 
     return () => {
@@ -44,6 +56,8 @@ const GoogleDocInject: FC = () => {
         onSelectionChange,
       )
       control.removeListener(IGoogleDocEventType.CARET_CHANGE, onCaretChange)
+      control.removeListener(IGoogleDocEventType.FOCUS, onFocus)
+      control.removeListener(IGoogleDocEventType.BLUR, onBlur)
       control.destroy()
     }
   })
@@ -51,7 +65,7 @@ const GoogleDocInject: FC = () => {
   if (!control || !control.scrollElement || control.disabled) return null
 
   return (
-    <GoogleDocContext.Provider value={{ control, caret, selection }}>
+    <GoogleDocContext.Provider value={{ control, caret, selection, focus }}>
       {createPortal(<GoogleDocMask />, control.scrollElement)}
     </GoogleDocContext.Provider>
   )

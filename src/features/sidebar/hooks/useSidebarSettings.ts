@@ -326,11 +326,6 @@ const useSidebarSettings = () => {
       })
       if (result.success) {
         conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          contextMenu: {
-            conversationId,
-          },
-        })
       }
     }
     return conversationId

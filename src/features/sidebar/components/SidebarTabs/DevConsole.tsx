@@ -259,7 +259,7 @@ const DevConsole: FC<{
             }}
           >
             <p>
-              {chatStatus}:{currentConversationId}
+              {conversationStatus}:{currentConversationId}
             </p>
             <p>loading: {clientWritingMessage.loading ? 'loading' : 'done'}</p>
             <Divider></Divider>

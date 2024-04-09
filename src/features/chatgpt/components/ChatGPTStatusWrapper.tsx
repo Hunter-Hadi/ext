@@ -29,20 +29,21 @@ const ChatGPTStatusWrapper: FC = () => {
   const { currentConversationId } = useClientConversation()
   const [authLogin] = useRecoilState(AuthState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const { chatStatus, updateConversationStatus } = useClientConversation()
-  const prevStatus = usePrevious(chatStatus)
+  const { conversationStatus, updateConversationStatus } =
+    useClientConversation()
+  const prevStatus = usePrevious(conversationStatus)
 
   const { open: providerConfirmDialogOpen } = useRecoilValue(
     ThirdPartyAIProviderConfirmDialogState,
   )
 
   useEffect(() => {
-    if (prevStatus !== chatStatus && chatStatus === 'success') {
+    if (prevStatus !== conversationStatus && conversationStatus === 'success') {
       // get latest settings
       console.log('get latest settings')
       getLiteChromeExtensionDBStorage().then(setAppDBStorage)
     }
-  }, [chatStatus, prevStatus])
+  }, [conversationStatus, prevStatus])
 
   useEffect(() => {
     const onFocused = () => {
@@ -94,7 +95,7 @@ const ChatGPTStatusWrapper: FC = () => {
     return null
   }, [memoMaskSx])
 
-  if (chatStatus === 'needReload') {
+  if (conversationStatus === 'needReload') {
     return (
       <Box sx={memoMaskSx}>
         <Stack spacing={2} width={'calc(100% - 16px)'}>
@@ -292,9 +293,9 @@ const ChatGPTStatusWrapper: FC = () => {
     )
   }
   if (
-    chatStatus === 'needAuth' ||
-    chatStatus === 'loading' ||
-    chatStatus === 'complete' ||
+    conversationStatus === 'needAuth' ||
+    conversationStatus === 'loading' ||
+    conversationStatus === 'complete' ||
     providerConfirmDialogOpen
   ) {
     return (

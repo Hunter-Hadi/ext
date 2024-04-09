@@ -63,7 +63,6 @@ class OpenAIApiChat extends BaseChat {
       history,
     } = options || {}
     const chatGPTApiSettings = await this.getChatGPTAPISettings()
-    debugger
     if (!chatGPTApiSettings) {
       // need Auth
       this.status = 'needAuth'

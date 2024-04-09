@@ -32,12 +32,6 @@ const useFloatingContextMenuDraft = () => {
 
   const currentFloatingContextMenuDraft = useMemo(() => {
     const activeMessage = historyMessages[activeMessageIndex]
-    console.log(
-      'useFloatingContextMenuDraft activeMessage: ',
-      activeMessage?.messageId,
-      clientWritingMessage.writingMessage?.messageId,
-      activeMessage?.text,
-    )
     let draft = ''
     if (activeMessage) {
       draft = activeMessage.text

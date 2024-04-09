@@ -22,7 +22,8 @@ import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 export interface IChatConversation {
   authorId: string // 作者ID
   id: string // 对话ID
-  title: string // 对话标题
+  name: string // 对话名称
+  title: string // 对话类型标题
   created_at: string // 创建时间
   updated_at: string // 更新时间
   messages: IChatMessage[] // 对话中的消息列表
@@ -59,7 +60,8 @@ export interface IChatConversationMeta {
 }
 export interface PaginationConversation {
   id: string // 对话ID
-  title: string // 对话标题
+  name: string // 对话名称
+  title: string // 对话类型标题
   created_at: string // 创建时间
   updated_at: string // 更新时间
   lastMessage: IChatMessage
@@ -318,15 +320,14 @@ class ConversationDB {
     filterConversationType: ISidebarConversationType,
   ): Promise<void> {
     const allConversations = await this.getAllConversations()
-    const waitDeleteConversations: IChatConversation[] = allConversations.filter(
-      (conversation) => {
+    const waitDeleteConversations: IChatConversation[] =
+      allConversations.filter((conversation) => {
         return (
           conversation.messages.length === 0 &&
           conversation.type === filterConversationType &&
           conversation.id !== filterConversationId
         )
-      },
-    )
+      })
     await Promise.all(
       waitDeleteConversations.map((conversation) =>
         this.deleteConversation(conversation.id),
@@ -346,6 +347,7 @@ export default class ConversationManager {
     const defaultConversation: IChatConversation = {
       authorId: await getMaxAIChromeExtensionUserId(),
       id: uuidV4(),
+      name: '',
       title: 'Chat',
       type: 'Chat',
       created_at: new Date().toISOString(),
@@ -474,6 +476,7 @@ export default class ConversationManager {
         }
         return {
           id: conversation.id,
+          name: conversation.name,
           title,
           created_at: conversation.created_at,
           updated_at: conversation.updated_at,

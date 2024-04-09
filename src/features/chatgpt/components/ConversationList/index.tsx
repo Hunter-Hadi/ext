@@ -1,14 +1,15 @@
 import { Divider } from '@mui/material'
 import Chip from '@mui/material/Chip'
+import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
+import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React, { FC, useCallback, useEffect, useMemo } from 'react'
+import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { PaginationConversation } from '@/background/src/chatConversations'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
-import ClearChatButton from '@/features/chatgpt/components/ConversationList/ClearChatButton'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import useAIProviderModels, {
   useAIProviderModelsMap,
@@ -16,8 +17,11 @@ import useAIProviderModels, {
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIProviderModel } from '@/features/chatgpt/types'
+import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+
+import MoreActionsButton from './MoreActionsButton'
 
 interface IProps {
   sx?: SxProps
@@ -50,6 +54,10 @@ const ConversationList: FC<IProps> = ({
     fetchPaginationConversations,
   } = usePaginationConversations()
 
+  const [editingConversationId, setEditingConversationId] = useState('')
+  const [hoveringConversationId, setHoveringConversationId] = useState('')
+  const editingConversationName = useRef('')
+
   const modelLabelMap = useMemo(() => {
     const map: {
       [key in IAIProviderType]: {
@@ -80,6 +88,25 @@ const ConversationList: FC<IProps> = ({
 
     return <></>
   }, [emptyFeedback])
+
+  const handleConversationRename = useCallback((conversation: PaginationConversation, index: number) => {
+    (async () => {
+      setEditingConversationId('')
+      if (editingConversationName.current !== conversation.name) {
+        console.log('testesteditingConversationName', editingConversationName.current, '|', conversation.name)
+        await clientUpdateChatConversation(
+          conversation.id,
+          {
+            name: editingConversationName.current,
+          },
+          false,
+        )
+        editingConversationName.current = ''
+        const conversations = await fetchPaginationConversations();
+        setPaginationConversations(conversations)
+      }
+    })()
+  }, [paginationConversations, editingConversationName.current])
 
   useEffect(() => {
     let destroy = false
@@ -116,9 +143,10 @@ const ConversationList: FC<IProps> = ({
         {filteredPaginationConversations.map((conversation, index) => {
           const isSelected = conversation.id === currentSidebarConversationId
           // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
-          if (typeof conversation.title !== 'string') {
-            conversation.title = JSON.stringify(conversation.title)
+          if (typeof conversation.lastMessage.text !== 'string') {
+            conversation.lastMessage.text = JSON.stringify(conversation.lastMessage.text)
           }
+          const conversationDisplaysText = conversation.name || conversation.lastMessage?.text || conversation.title
           return (
             <Stack
               key={conversation.id}
@@ -166,25 +194,31 @@ const ConversationList: FC<IProps> = ({
                   }
                   onSelectConversation?.(conversation)
                 }}
+                onMouseOver={() => {
+                  setHoveringConversationId(conversation.id)
+                }}
+                onMouseOut={() => {
+                  setHoveringConversationId('')
+                }}
                 sx={{
                   cursor: 'pointer',
                   backgroundColor: 'background.paper',
                   borderRadius: '4px',
-                  ...(isSelected
+                  ...((isSelected || editingConversationId === conversation.id)
                     ? {
+                      bgcolor: (theme) =>
+                        theme.palette.mode === 'dark'
+                          ? 'rgba(255, 255, 255, 0.16)'
+                          : 'rgba(144, 101, 176, 0.16)',
+                    }
+                    : {
+                      '&:hover': {
                         bgcolor: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.16)'
-                            : 'rgba(144, 101, 176, 0.16)',
-                      }
-                    : {
-                        '&:hover': {
-                          bgcolor: (theme) =>
-                            theme.palette.mode === 'dark'
-                              ? 'rgba(255, 255, 255, 0.06)'
-                              : 'rgba(144, 101, 176, 0.06)',
-                        },
-                      }),
+                            ? 'rgba(255, 255, 255, 0.06)'
+                            : 'rgba(144, 101, 176, 0.06)',
+                      },
+                    }),
                 }}
                 spacing={2}
               >
@@ -254,47 +288,81 @@ const ConversationList: FC<IProps> = ({
                     </Typography>
                   </Stack>
                   <Stack direction={'row'} alignItems={'center'}>
-                    <Typography
-                      color={'text.primary'}
-                      fontSize={'14px'}
-                      lineHeight={'20px'}
-                      noWrap
-                      width={0}
-                      flex={1}
-                    >
-                      {conversation.title || conversation.lastMessage?.text}
-                    </Typography>
-                    {isSelected && (
-                      <Stack
-                        direction={'row'}
-                        alignItems={'center'}
-                        flexShrink={0}
-                        height={20}
-                        gap={0.5}
-                      >
-                        <ClearChatButton
-                          onDelete={() => {
-                            fetchPaginationConversations().then(
-                              (conversations) => {
-                                setPaginationConversations(conversations)
-                                updateSidebarSettings({
-                                  chat: {
-                                    conversationId: '',
+                    {
+                      editingConversationId === conversation.id ? (
+                        <ClickAwayListener
+                          mouseEvent={'onMouseDown'}
+                          onClickAway={() => handleConversationRename(conversation, index)}
+                        >
+                          <TextField
+                            size={'small'}
+                            autoFocus
+                            defaultValue={conversation.name}
+                            onChange={(event) => {
+                              editingConversationName.current = event.target.value
+                            }}
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter') { handleConversationRename(conversation, index) }
+                            }}
+                            sx={{
+                              width: '100%',
+                              mt: '1.5px',
+                              mb: '-5.625px',
+                              '& input': {
+                                p: '2px 2px 2px 4px',
+                                fontSize: '14px',
+                              }
+                            }}
+                          />
+                        </ClickAwayListener>
+                      ) : <>
+                        <Typography
+                          color={'text.primary'}
+                          fontSize={'14px'}
+                          lineHeight={'20px'}
+                          noWrap
+                          width={0}
+                          flex={1}
+                        >
+                          {conversationDisplaysText}
+                        </Typography>
+                        {(isSelected || hoveringConversationId === conversation.id) && (
+                          <Stack
+                            direction={'row'}
+                            alignItems={'center'}
+                            flexShrink={0}
+                            height={20}
+                            gap={0.5}
+                          >
+                            <MoreActionsButton
+                              onRename={() => {
+                                editingConversationName.current = conversation.name
+                                setEditingConversationId(conversation.id)
+                              }}
+                              onDelete={() => {
+                                fetchPaginationConversations().then(
+                                  (conversations) => {
+                                    setPaginationConversations(conversations)
+                                    updateSidebarSettings({
+                                      chat: {
+                                        conversationId: '',
+                                      },
+                                    }).then(() => {
+                                      updateSidebarConversationType('Chat')
+                                    })
                                   },
-                                }).then(() => {
-                                  updateSidebarConversationType('Chat')
-                                })
-                              },
-                            )
-                          }}
-                          conversationType={conversation.type}
-                          conversationId={conversation.id}
-                          conversationTitle={
-                            conversation.title || conversation.lastMessage?.text
-                          }
-                        />
-                      </Stack>
-                    )}
+                                )
+                              }}
+                              conversationType={conversation.type}
+                              conversationId={conversation.id}
+                              conversationDisplaysText={
+                                conversationDisplaysText
+                              }
+                            />
+                          </Stack>
+                        )}
+                      </>
+                    }
                   </Stack>
                 </Stack>
               </Stack>

@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Качете документи в MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Каченият файл е твърде голям. Разгледайте възможността да използвате модел на изкуствен интелект с по-голям контекст или качете по-малък файл.",
     "sidebar__promotion_dialog__content_item6__title": "Помощник за писане на съобщения",
-    "sidebar__promotion_dialog__content_item6__description": "Нека ИИ генерира персонализирани отговори на съобщения за вас за секунди с едно щракване върху Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Нека ИИ генерира персонализирани отговори на съобщения за вас за секунди с едно щракване върху Discord.",
+    "immersive_chat__more_actions_button__title": "Още",
+    "immersive_chat__rename_chat__button__title": "Преименувай"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Naložite dokumente v MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Naložena datoteka je prevelika. Razmislite o uporabi modela AI z večjim kontekstnim oknom ali naložite manjšo datoteko.",
     "sidebar__promotion_dialog__content_item6__title": "Asistent za sporočila",
-    "sidebar__promotion_dialog__content_item6__description": "Omogočite, da umetna inteligenca v nekaj sekundah generira personalizirane odgovore na sporočila z enim klikom na Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Omogočite, da umetna inteligenca v nekaj sekundah generira personalizirane odgovore na sporočila z enim klikom na Discord.",
+    "immersive_chat__more_actions_button__title": "Več",
+    "immersive_chat__rename_chat__button__title": "Preimenuj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

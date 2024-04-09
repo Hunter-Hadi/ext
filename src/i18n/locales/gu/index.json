@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "મેક્સએઆઈ પર દસ્તાવેજો અપલોડ કરો",
     "provider__chatgpt__upload_file_error__too_long__text": "અપલોડ કરેલી ફાઇલ ખૂબ મોટી છે. વધુ સંદર્ભ વિંડો સાથે AI મોડેલનો ઉપયોગ કરવાની વાચક કરો, અથવા એક નાની સાઇઝની ફાઇલ અપલોડ કરો.",
     "sidebar__promotion_dialog__content_item6__title": "સંદેશ લખવાની સહાયક એપ",
-    "sidebar__promotion_dialog__content_item6__description": "ફક્ત એક ક્લિક પર ડિસ્કોર્ડ પર તમારા માટે વ્યક્તિગત સંદેશ જવાબો ઉત્પન્ન કરવા માટે AI નો ઉપયોગ કરો."
+    "sidebar__promotion_dialog__content_item6__description": "ફક્ત એક ક્લિક પર ડિસ્કોર્ડ પર તમારા માટે વ્યક્તિગત સંદેશ જવાબો ઉત્પન્ન કરવા માટે AI નો ઉપયોગ કરો.",
+    "immersive_chat__more_actions_button__title": "વધુ",
+    "immersive_chat__rename_chat__button__title": "નામ બદલો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

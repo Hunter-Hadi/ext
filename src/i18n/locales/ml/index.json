@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "മാക്സ് എയിയിലേക്ക് ഡോക്യുമെന്റുകൾ അപ്‌ലോഡ് ചെയ്യുക",
     "provider__chatgpt__upload_file_error__too_long__text": "അപ്‌ലോഡ് ചെയ്ത ഫയല്‍ വളരെ വലുതാണ്. ഒരു പ്രമാണം ഉപയോഗിക്കുന്നതിന് വലുതായ AI മോഡല്‍ ഉപയോഗിക്കുകയോ, ചെറിയ വലിപ്പത്തിലുള്ള ഒരു ഫയല്‍ അപ്‌ലോഡ് ചെയ്യുകയോ ആലോചിക്കുക.",
     "sidebar__promotion_dialog__content_item6__title": "സന്ദേശം എഴുതുന്ന സഹായി",
-    "sidebar__promotion_dialog__content_item6__description": "ഒരു ക്ലിക്ക് മാത്രം ഡിസ്കോർഡിൽ നിങ്ങളുടെ വ്യക്തിപരമായ സന്ദേശങ്ങൾ സൃഷ്ടിക്കാൻ AI ഉപയോഗിക്കുക."
+    "sidebar__promotion_dialog__content_item6__description": "ഒരു ക്ലിക്ക് മാത്രം ഡിസ്കോർഡിൽ നിങ്ങളുടെ വ്യക്തിപരമായ സന്ദേശങ്ങൾ സൃഷ്ടിക്കാൻ AI ഉപയോഗിക്കുക.",
+    "immersive_chat__more_actions_button__title": "കൂടുതൽ",
+    "immersive_chat__rename_chat__button__title": "പേര് മാറ്റുക"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

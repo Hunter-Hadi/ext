@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Μεταφόρτωση εγγράφων στο MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Το αρχείο που μεταφορτώθηκε είναι πολύ μεγάλο. Σκεφτείτε να χρησιμοποιήσετε ένα μοντέλο AI με μεγαλύτερο παράθυρο περιβάλλοντος ή να μεταφορτώσετε ένα μικρότερου μεγέθους αρχείο.",
     "sidebar__promotion_dialog__content_item6__title": "Γραφικός βοηθός συνομιλίας",
-    "sidebar__promotion_dialog__content_item6__description": "Αφήστε την AI να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ στο Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Αφήστε την AI να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ στο Discord.",
+    "immersive_chat__more_actions_button__title": "Περισσότερα",
+    "immersive_chat__rename_chat__button__title": "Μετονομασία"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Dokumentumok feltöltése a MaxAI-hoz",
     "provider__chatgpt__upload_file_error__too_long__text": "A feltöltött fájl túl nagy. Fontolja meg egy AI modell használatát, amelynek nagyobb a kontextus ablaka, vagy töltsön fel kisebb méretű fájlt.",
     "sidebar__promotion_dialog__content_item6__title": "Üzenetíró segéd",
-    "sidebar__promotion_dialog__content_item6__description": "Engedd, hogy az AI személyre szabott üzenetválaszokat generáljon neked másodpercek alatt egyetlen kattintással a Discordon."
+    "sidebar__promotion_dialog__content_item6__description": "Engedd, hogy az AI személyre szabott üzenetválaszokat generáljon neked másodpercek alatt egyetlen kattintással a Discordon.",
+    "immersive_chat__more_actions_button__title": "Több",
+    "immersive_chat__rename_chat__button__title": "Átnevezés"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

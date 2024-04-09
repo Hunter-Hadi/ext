@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Cargar documentos a MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "El archivo cargado es demasiado grande. Considere usar un modelo de IA con una ventana de contexto más grande o cargar un archivo de menor tamaño.",
     "sidebar__promotion_dialog__content_item6__title": "Asistente de escritura de mensajes",
-    "sidebar__promotion_dialog__content_item6__description": "Permite que la IA genere respuestas de mensajes personalizadas para ti en segundos con solo un clic en Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Permite que la IA genere respuestas de mensajes personalizadas para ti en segundos con solo un clic en Discord.",
+    "immersive_chat__more_actions_button__title": "Más",
+    "immersive_chat__rename_chat__button__title": "Cambiar nombre"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

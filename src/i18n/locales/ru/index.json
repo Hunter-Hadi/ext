@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Загрузить документы в MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Загруженный файл слишком большой. Рассмотрите возможность использования модели искусственного интеллекта с более широким контекстным окном или загрузки файла меньшего размера.",
     "sidebar__promotion_dialog__content_item6__title": "Помощник по написанию сообщений",
-    "sidebar__promotion_dialog__content_item6__description": "Позвольте ИИ генерировать персонализированные ответы на сообщения для вас всего за несколько секунд с одним щелчком мыши в Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Позвольте ИИ генерировать персонализированные ответы на сообщения для вас всего за несколько секунд с одним щелчком мыши в Discord.",
+    "immersive_chat__more_actions_button__title": "Больше",
+    "immersive_chat__rename_chat__button__title": "Переименовать"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

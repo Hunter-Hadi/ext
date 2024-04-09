@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "MaxAIवर दस्तऐवज अपलोड करा",
     "provider__chatgpt__upload_file_error__too_long__text": "अपलोड केलेली फाइल खूप मोठी आहे. एक AI मॉडेल वापरून एक मोठ्या संदर्भ विंडोसह वापरण्याचा विचार करा, किंवा एक लहान आकाराची फाइल अपलोड करा.",
     "sidebar__promotion_dialog__content_item6__title": "संदेश लेखन सहाय्यक",
-    "sidebar__promotion_dialog__content_item6__description": "एक क्लिकवर डिस्कॉर्डवर आपल्याला तुमच्या व्यक्तिगत संदेशांचे उत्तर त्वरीत जनरेट करणारे AI."
+    "sidebar__promotion_dialog__content_item6__description": "एक क्लिकवर डिस्कॉर्डवर आपल्याला तुमच्या व्यक्तिगत संदेशांचे उत्तर त्वरीत जनरेट करणारे AI.",
+    "immersive_chat__more_actions_button__title": "अधिक",
+    "immersive_chat__rename_chat__button__title": "नाव बदला"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Télécharger des documents vers MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Le fichier téléchargé est trop volumineux. Considérez l'utilisation d'un modèle d'IA avec une fenêtre de contexte plus grande ou le téléchargement d'un fichier de taille plus petite.",
     "sidebar__promotion_dialog__content_item6__title": "Assistant d'écriture de messages",
-    "sidebar__promotion_dialog__content_item6__description": "Laissez l'IA générer des réponses de message personnalisées pour vous en quelques secondes avec un simple clic sur Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Laissez l'IA générer des réponses de message personnalisées pour vous en quelques secondes avec un simple clic sur Discord.",
+    "immersive_chat__more_actions_button__title": "Plus",
+    "immersive_chat__rename_chat__button__title": "Renommer"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

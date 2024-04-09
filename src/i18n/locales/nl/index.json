@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Documenten uploaden naar MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Het geüploade bestand is te groot. Overweeg om een AI-model te gebruiken met een groter contextvenster of upload een kleiner bestand.",
     "sidebar__promotion_dialog__content_item6__title": "Berichten schrijfassistent",
-    "sidebar__promotion_dialog__content_item6__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden met slechts één klik op Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden met slechts één klik op Discord.",
+    "immersive_chat__more_actions_button__title": "Meer",
+    "immersive_chat__rename_chat__button__title": "Hernoemen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

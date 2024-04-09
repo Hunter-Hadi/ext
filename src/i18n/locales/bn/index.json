@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "ম্যাক্সএআইতে ডকুমেন্ট আপলোড করুন",
     "provider__chatgpt__upload_file_error__too_long__text": "আপলোড করা ফাইলটি অনেক বড়। একটি আরও বড় সংদর্ভ উইন্ডো সহ একটি AI মডেল ব্যবহার করতে বিবেচনা করুন, অথবা একটি ছোট আকারের ফাইল আপলোড করুন।",
     "sidebar__promotion_dialog__content_item6__title": "বার্তা লেখার সহায়ক",
-    "sidebar__promotion_dialog__content_item6__description": "এক ক্লিকে ডিসকর্ডে আপনার জন্য ব্যক্তিগত বার্তা উত্পন্ন করতে এই এআই ব্যবহার করুন।"
+    "sidebar__promotion_dialog__content_item6__description": "এক ক্লিকে ডিসকর্ডে আপনার জন্য ব্যক্তিগত বার্তা উত্পন্ন করতে এই এআই ব্যবহার করুন।",
+    "immersive_chat__more_actions_button__title": "আরও",
+    "immersive_chat__rename_chat__button__title": "পুনঃনামকরণ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Pujar documents a MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "El fitxer carregat és massa gran. Considera utilitzar un model d'IA amb una finestra de context més gran o carregar un fitxer de menor mida.",
     "sidebar__promotion_dialog__content_item6__title": "Assistent d'escriptura de missatges",
-    "sidebar__promotion_dialog__content_item6__description": "Deixa que l'IA generi respostes de missatges personalitzades per a tu en segons amb només un clic a Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Deixa que l'IA generi respostes de missatges personalitzades per a tu en segons amb només un clic a Discord.",
+    "immersive_chat__more_actions_button__title": "Més",
+    "immersive_chat__rename_chat__button__title": "Canvia el nom"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

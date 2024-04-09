@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Last opp dokumenter til MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Den opplastede filen er for stor. Vurder å bruke en AI-modell med et større kontekstvindu, eller last opp en fil av mindre størrelse.",
     "sidebar__promotion_dialog__content_item6__title": "Meldingsassistent",
-    "sidebar__promotion_dialog__content_item6__description": "La AI generere personlige meldingssvar for deg på sekunder med bare ett klikk på Discord."
+    "sidebar__promotion_dialog__content_item6__description": "La AI generere personlige meldingssvar for deg på sekunder med bare ett klikk på Discord.",
+    "immersive_chat__more_actions_button__title": "Mer",
+    "immersive_chat__rename_chat__button__title": "Endre navn"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

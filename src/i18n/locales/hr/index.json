@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Prenesi dokumente na MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Prijenosna datoteka je prevelika. Razmotrite upotrebu AI modela s većim prozorom konteksta ili prijenos datoteke manje veličine.",
     "sidebar__promotion_dialog__content_item6__title": "Asistent za pisanje poruka",
-    "sidebar__promotion_dialog__content_item6__description": "Neka AI generira personalizirane odgovore na poruke za vas u sekundama s jednim klikom na Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Neka AI generira personalizirane odgovore na poruke za vas u sekundama s jednim klikom na Discord.",
+    "immersive_chat__more_actions_button__title": "Više",
+    "immersive_chat__rename_chat__button__title": "Preimenuj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

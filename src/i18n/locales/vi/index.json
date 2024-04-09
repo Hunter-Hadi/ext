@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Tải tài liệu lên MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Tệp tải lên quá lớn. Hãy xem xét sử dụng một mô hình AI với cửa sổ ngữ cảnh lớn hơn hoặc tải lên một tệp có kích thước nhỏ hơn.",
     "sidebar__promotion_dialog__content_item6__title": "Trợ lý viết tin nhắn",
-    "sidebar__promotion_dialog__content_item6__description": "Cho phép trí tuệ nhân tạo tạo ra các câu trả lời tin nhắn cá nhân hóa cho bạn chỉ trong vài giây với một cú nhấp chuột trên Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Cho phép trí tuệ nhân tạo tạo ra các câu trả lời tin nhắn cá nhân hóa cho bạn chỉ trong vài giây với một cú nhấp chuột trên Discord.",
+    "immersive_chat__more_actions_button__title": "Thêm",
+    "immersive_chat__rename_chat__button__title": "Đổi tên"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

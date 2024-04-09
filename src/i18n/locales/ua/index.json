@@ -676,7 +676,9 @@
     "provider__chatgpt__upload__accept_docs_tooltip": "Завантажити документи до MaxAI",
     "provider__chatgpt__upload_file_error__too_long__text": "Завантажений файл занадто великий. Розгляньте можливість використання моделі штучного інтелекту з більшим вікном контексту або завантаження файлу меншого розміру.",
     "sidebar__promotion_dialog__content_item6__title": "Помічник з написання повідомлень",
-    "sidebar__promotion_dialog__content_item6__description": "Дозвольте штучному інтелекту створювати персоналізовані відповіді на повідомлення за кілька секунд одним кліком у Discord."
+    "sidebar__promotion_dialog__content_item6__description": "Дозвольте штучному інтелекту створювати персоналізовані відповіді на повідомлення за кілька секунд одним кліком у Discord.",
+    "immersive_chat__more_actions_button__title": "Більше",
+    "immersive_chat__rename_chat__button__title": "Перейменувати"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

@@ -103,50 +103,56 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
   )
 
   if (chatMessagesNodeList.length) {
+    const chatMessages = slackGetChatMessagesFromNodeList(chatMessagesNodeList)
     const channelTextArea = findParentEqualSelector(
       '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
       inputAssistantButton,
       2,
     )
-    let replyMessageBox: HTMLElement | null = null
+    let replyMessageBoxIndex = -1
 
-    if (
-      channelTextArea &&
-      findSelectorParent(
-        '[data-qa="threads_footer_broadcast_controls"]',
-        channelTextArea,
-        2,
-      )
-    ) {
-      replyMessageBox = chatMessagesPanel.querySelector<HTMLElement>(
-        '.c-message_kit__background--labels[data-qa="message_container"]',
-      )
+    if (channelTextArea) {
+      if (
+        findSelectorParent(
+          '[data-qa="threads_footer_broadcast_controls"]',
+          channelTextArea,
+          2,
+        )
+      ) {
+        replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+          (messageBox) =>
+            messageBox.matches(
+              '.c-message_kit__background--labels[data-qa="message_container"]',
+            ),
+        )
+      } else {
+        replyMessageBoxIndex = chatMessages.findLastIndex(
+          (message) => message.user !== username,
+        )
+      }
     } else {
-      replyMessageBox = findParentEqualSelector(
+      const replyMessageBox = findParentEqualSelector(
         '[data-qa="message_container"]',
         inputAssistantButton,
       )
+      replyMessageBoxIndex = chatMessagesNodeList.findLastIndex(
+        (messageBox) => messageBox !== replyMessageBox,
+      )
     }
 
-    const chatMessages = slackGetChatMessagesFromNodeList(
-      chatMessagesNodeList.slice(
-        0,
-        chatMessagesNodeList.findIndex(
-          (messageBox) => messageBox === replyMessageBox,
-        ) + 1,
-      ),
-    )
-
     if (chatMessages.length) {
-      const chatMessagesContext = new ChatMessagesContext(chatMessages, {
-        serverName: serverName || '',
-        chatroomName: chatroomName || '',
-        username: username || '',
-      })
-
-      chatMessagesContext.replyMessage(
-        chatMessages.findLastIndex((message) => message.user !== username),
+      const chatMessagesContext = new ChatMessagesContext(
+        replyMessageBoxIndex !== -1
+          ? chatMessages.slice(0, replyMessageBoxIndex + 1)
+          : chatMessages,
+        {
+          serverName: serverName || '',
+          chatroomName: chatroomName || '',
+          username: username || '',
+        },
       )
+
+      chatMessagesContext.replyMessage(replyMessageBoxIndex)
 
       return chatMessagesContext.data
     }

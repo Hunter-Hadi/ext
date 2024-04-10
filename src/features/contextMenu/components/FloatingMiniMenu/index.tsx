@@ -308,7 +308,7 @@ const FloatingMiniMenu: FC<{
             />
           </TooltipButton>
         </Box>
-        <FloatingContextMenuMiniMenuSearchWithAIButton placement={placement} />
+        <FloatingContextMenuMiniMenuSearchWithAIButton placement={placement} selectionText={tempSelection?.selectionText} />
         <FavoriteContextMenuGroup
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}

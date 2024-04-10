@@ -6,7 +6,12 @@ import {
   findSelectorParent,
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 
-const slackGetChatMessageContentAndDate = (messageBox: HTMLElement | null) => {
+const getDirectMessageUserRegExp = /^(.*?) \(.*\)$/
+
+const slackGetChatMessageContentAndDate = (
+  messageBox: HTMLElement | null,
+  username: string,
+) => {
   const datetime =
     messageBox
       ?.querySelector<HTMLElement>('a[class*="c-timestamp"]')
@@ -21,29 +26,45 @@ const slackGetChatMessageContentAndDate = (messageBox: HTMLElement | null) => {
     if (messageContentBox) {
       content = messageContentBox?.innerText || ''
 
-      // // if message just only contains emojis
-      // if (!content) {
-      //   const emojiContainers = Array.from(
-      //     messageContentBox.querySelectorAll<HTMLElement>(
-      //       '[clastt^="emojiContainer"]',
-      //     ),
-      //   )
-      //   if (emojiContainers.length > 0) {
-      //     content = emojiContainers
-      //       .map((emojiContainer) =>
-      //         emojiContainer.querySelector('img')?.getAttribute('aria-label'),
-      //       )
-      //       .join('')
-      //   }
-      // }
+      // if message just only contains emojis
+      if (!content) {
+        content = Array.from(
+          messageContentBox.querySelectorAll<HTMLElement>('[data-qa="emoji"]'),
+        )
+          .map((emoji) => emoji.getAttribute('data-stringify-emoji'))
+          .join('')
+      }
     }
 
     const extraLabelBox =
       messageBox.querySelector<HTMLElement>(
         '.c-message__broadcast_preamble_outer',
       ) || messageBox.querySelector<HTMLElement>('.c-message__body--automated')
+    const messageAttachment = messageBox.querySelector<HTMLElement>(
+      '[data-qa="message_attachment_default"]',
+    )
     if (extraLabelBox) {
       extraLabel = extraLabelBox.innerText
+    } else if (messageAttachment) {
+      const attachmentAuthor =
+        messageAttachment.querySelector<HTMLElement>(
+          '.c-message_attachment__author--distinct[data-qa="message_attachment_author"]',
+        )?.innerText || ''
+      if (attachmentAuthor) {
+        const attachmentContentBox =
+          messageAttachment.querySelector<HTMLElement>(
+            '[data-qa="message_attachment_slack_msg_text"]',
+          )
+        const expandButton = attachmentContentBox?.querySelector<HTMLElement>(
+          'button.c-rich_text_expand_button',
+        )
+        if (expandButton) {
+          expandButton.click()
+        }
+        extraLabel = `${username} is forwarding a message by ${attachmentAuthor}: ${
+          attachmentContentBox?.innerText || ''
+        }`
+      }
     }
   }
 
@@ -52,9 +73,9 @@ const slackGetChatMessageContentAndDate = (messageBox: HTMLElement | null) => {
 
 const slackGetChatMessagesFromNodeList = (
   messageBoxList: HTMLElement[],
+  username: string,
 ): IChatMessageData[] => {
   const messages: IChatMessageData[] = []
-  let username = ''
   for (const messageBox of messageBoxList) {
     const usernameBlock = messageBox.querySelector<HTMLElement>(
       '[data-qa="message_sender_name"]',
@@ -66,7 +87,7 @@ const slackGetChatMessagesFromNodeList = (
     // if doesn't have username, it means the data capture is not successful, need to relocate the usernameBlock selector
     if (username) {
       const { datetime, messageContent, extraLabel } =
-        slackGetChatMessageContentAndDate(messageBox)
+        slackGetChatMessageContentAndDate(messageBox, username)
 
       messages.push({
         user: username,
@@ -83,9 +104,19 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
   const serverName = document.querySelector<HTMLElement>(
     '[class$="sidebar_header__title"]',
   )?.innerText
-  const chatroomName = document.querySelector<HTMLElement>(
+  const currentChannel = document.querySelector<HTMLElement>(
     '[class$="p-channel_sidebar__channel--selected"]',
-  )?.innerText
+  )
+  const isDirectMessage =
+    currentChannel &&
+    document
+      .querySelector(
+        '[data-qa-channel-sidebar-section-heading="direct_messages"]',
+      )
+      ?.compareDocumentPosition(currentChannel) === 4
+  const chatroomName = `${isDirectMessage ? 'Chatting with ' : ''}${
+    currentChannel?.innerText || ''
+  }`
   const username = document
     .querySelector<HTMLElement>('[data-qa="user-button"]')
     ?.getAttribute('aria-label')
@@ -103,7 +134,17 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
   )
 
   if (chatMessagesNodeList.length) {
-    const chatMessages = slackGetChatMessagesFromNodeList(chatMessagesNodeList)
+    const chatMessages = slackGetChatMessagesFromNodeList(
+      chatMessagesNodeList,
+      (isDirectMessage
+        ? document
+            .querySelector<HTMLElement>(
+              '[data-qa="slack_kit_list"][role="list"]',
+            )
+            ?.getAttribute('aria-label')
+        : ''
+      )?.match(getDirectMessageUserRegExp)?.[1] || '',
+    )
     const channelTextArea = findParentEqualSelector(
       '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
       inputAssistantButton,

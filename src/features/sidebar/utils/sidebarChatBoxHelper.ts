@@ -107,7 +107,7 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
         slackSpecialStyle.id = 'MAXAI__SLACK_SPECIAL_STYLE'
         document.getElementsByTagName('head')[0].appendChild(slackSpecialStyle)
       }
-      slackSpecialStyle.innerHTML = `.p-client,.p-ia4_client,.p-ia4_client_container,.p-theme_background,.p-client_workspace_wrapper{width:100%!important;}`
+      slackSpecialStyle.innerHTML = `.p-client,.p-ia4_client,.p-ia4_client_container,.p-theme_background,.p-client_workspace_wrapper{width:100%!important;} .c-popover--z_above_fs{z-index:2147483502!important;}`
     }
   }
   // 浏览器自带的pdf文件阅读器

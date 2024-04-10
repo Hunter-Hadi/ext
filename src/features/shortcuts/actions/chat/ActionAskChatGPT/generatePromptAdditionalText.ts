@@ -20,6 +20,9 @@ const generatePromptAdditionalText = async (
     SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT?: string
     EMAIL_DRAFT?: string
     POST_DRAFT?: string
+    MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT?: string
+    MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT?: string
+    MESSAGE_DRAFT?: string
   },
 ) => {
   const addPosition = 'end'
@@ -37,10 +40,13 @@ const generatePromptAdditionalText = async (
     params.READABILITY_CONTENTS || //总结的上下文
     params.WEB_SEARCH_RESULTS || // 搜索的上下文
     params.PAGE_CONTENT || // 搜索的上下文
-    params.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT || // quick reply的上下文
-    params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // quick reply的上下文
-    params.EMAIL_DRAFT || // quick reply的上下文
-    params.POST_DRAFT || // quick reply的上下文
+    params.SOCIAL_MEDIA_POST_OR_COMMENT_CONTEXT || // Social media instant reply 的完整上下文
+    params.SOCIAL_MEDIA_TARGET_POST_OR_COMMENT || // Social media instant reply target 的上下文
+    params.MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT || // Chat app website instant reply 的完整上下文
+    params.MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT || // Chat app website instant reply target 的上下文
+    params.EMAIL_DRAFT || //  Email draft
+    params.POST_DRAFT || // Social media draft
+    params.MESSAGE_DRAFT || // Chat app website message draft
     params.SELECTED_TEXT || // 选中的内容
     ''
   // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言

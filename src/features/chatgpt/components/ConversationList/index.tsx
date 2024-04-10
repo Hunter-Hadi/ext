@@ -299,9 +299,11 @@ const ConversationList: FC<IProps> = ({
                             autoFocus
                             defaultValue={conversation.name}
                             onChange={(event) => {
+                              event.stopPropagation();
                               editingConversationName.current = event.target.value
                             }}
                             onKeyDown={(event) => {
+                              event.stopPropagation();
                               if (event.key === 'Enter') { handleConversationRename(conversation, index) }
                             }}
                             sx={{

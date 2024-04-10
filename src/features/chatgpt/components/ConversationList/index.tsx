@@ -300,7 +300,7 @@ const ConversationList: FC<IProps> = ({
                             defaultValue={conversation.name}
                             onChange={(event) => {
                               event.stopPropagation();
-                              editingConversationName.current = event.target.value
+                              editingConversationName.current = event.target.value.trim()
                             }}
                             onKeyDown={(event) => {
                               event.stopPropagation();

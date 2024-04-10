@@ -175,8 +175,12 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
       getOptionLabel={(option) => option.label}
       options={LANGUAGES_OPTIONS}
       onChange={(event: any, newValue) => {
+        event.stopPropagation()
         setValue(newValue)
         onChange(newValue.value)
+      }}
+      onKeyDown={(event) => {
+        event.stopPropagation()
       }}
       filterOptions={filterOptions}
       renderInput={(params) => (

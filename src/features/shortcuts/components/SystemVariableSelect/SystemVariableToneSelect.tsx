@@ -83,8 +83,12 @@ const SystemVariableToneSelect: FC<toneSelectProps> = (props) => {
       getOptionLabel={(option) => option.label}
       options={TONE_OPTIONS}
       onChange={(event: any, newValue) => {
+        event.stopPropagation()
         setValue(newValue)
         onChange(newValue.value)
+      }}
+      onKeyDown={(event) => {
+        event.stopPropagation()
       }}
       filterOptions={filterOptions}
       renderInput={(params) => (

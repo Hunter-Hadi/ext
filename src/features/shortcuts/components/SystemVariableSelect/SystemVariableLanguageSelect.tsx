@@ -182,6 +182,9 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
       onKeyDown={(event) => {
         event.stopPropagation()
       }}
+      onPaste={(event) => {
+        event.stopPropagation()
+      }}
       filterOptions={filterOptions}
       renderInput={(params) => (
         <TextField

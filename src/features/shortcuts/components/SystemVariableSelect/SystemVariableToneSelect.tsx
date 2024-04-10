@@ -90,6 +90,9 @@ const SystemVariableToneSelect: FC<toneSelectProps> = (props) => {
       onKeyDown={(event) => {
         event.stopPropagation()
       }}
+      onPaste={(event) => {
+        event.stopPropagation()
+      }}
       filterOptions={filterOptions}
       renderInput={(params) => (
         <TextField

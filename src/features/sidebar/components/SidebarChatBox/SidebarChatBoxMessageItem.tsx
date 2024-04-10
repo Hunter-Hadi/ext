@@ -17,6 +17,7 @@ import {
 } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
 import useChatMessageExpiredFileUpdater from '@/features/sidebar/hooks/useChatMessageExpiredFileUpdater'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 interface IProps {
   message: IChatMessage
@@ -29,21 +30,22 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
   const { message, className, loading, order } = props
   const { isDarkMode } = useCustomTheme()
   useChatMessageExpiredFileUpdater(message)
+  const isInImmersiveChat = isMaxAIImmersiveChatPage()
   const [isHover, setIsHover] = useState(false)
   const hoverTimer = useRef<any>(null)
   const hoverSx = useMemo(() => {
     return {
       ...(isHover
         ? {
-            '& *': {
-              userSelect: 'text!important',
-            },
-          }
+          '& *': {
+            userSelect: 'text!important',
+          },
+        }
         : {
-            '& *': {
-              userSelect: 'none!important',
-            },
-          }),
+          '& *': {
+            userSelect: 'none!important',
+          },
+        }),
     }
   }, [isHover])
 
@@ -51,7 +53,9 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
     <Stack
       className={className}
       sx={{
+        maxWidth: isInImmersiveChat ? '768px' : 'initial',
         width: '100%',
+        mx: isInImmersiveChat ? 'auto' : 'initial',
         p: 1,
         color: 'text.primary',
         position: 'relative',

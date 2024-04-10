@@ -92,7 +92,7 @@ const App: FC = () => {
                 }}
               />
 
-              <Stack mx={'auto'} height={'100%'} maxWidth={768} width={'100vw'}>
+              <Stack height={'100%'} width={'100vw'}>
                 <NormalChatPage />
               </Stack>
             </Stack>

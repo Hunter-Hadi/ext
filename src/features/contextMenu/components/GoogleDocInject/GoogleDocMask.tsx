@@ -18,11 +18,7 @@ import {
   IRangyRect,
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
-import {
-  IGoogleDocRect,
-  isRectChange,
-  mergeRects,
-} from '@/features/contextMenu/utils/googleDocHelper'
+import { IRect, isRectChange, mergeRects } from '@/utils/rectUtils'
 
 const id = v4()
 
@@ -47,38 +43,41 @@ const GoogleDocMask: FC = () => {
   /**
    * 模拟iframe.tsx里的事件，触发context menu的功能
    */
-  const postMessage = useCallback((rect: IGoogleDocRect, content: string) => {
-    messageRef.current = {
-      virtual: true,
-      iframeId: id,
-      tagName: '',
-      id: id,
-      className: '',
-      windowRect: document.body.getBoundingClientRect().toJSON(),
-      targetRect: rect,
-      selectionRect: rect,
-      iframeSelectionRect: rect,
-      iframePosition: [0, 0],
-      selectionText: content,
-      selectionHTML: content,
-      editableElementSelectionText: content,
-      editableElementSelectionHTML: content,
-      eventType: 'keyup',
-      isEmbedPage: false,
-      isEditableElement: true,
-      caretOffset: 1,
-      startMarkerId: '',
-      endMarkerId: '',
-    }
-    window.postMessage(
-      {
-        id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-        type: 'iframeSelection',
-        data: messageRef.current,
-      },
-      '*',
-    )
-  }, [])
+  const postMessage = useCallback(
+    (rect: IRect, content: string, editableContent = content) => {
+      messageRef.current = {
+        virtual: true,
+        iframeId: id,
+        tagName: '',
+        id: id,
+        className: '',
+        windowRect: document.body.getBoundingClientRect().toJSON(),
+        targetRect: rect,
+        selectionRect: rect,
+        iframeSelectionRect: rect,
+        iframePosition: [0, 0],
+        selectionText: content,
+        selectionHTML: content,
+        editableElementSelectionText: editableContent,
+        editableElementSelectionHTML: editableContent,
+        eventType: 'keyup',
+        isEmbedPage: false,
+        isEditableElement: true,
+        caretOffset: 1,
+        startMarkerId: '',
+        endMarkerId: '',
+      }
+      window.postMessage(
+        {
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+          type: 'iframeSelection',
+          data: messageRef.current,
+        },
+        '*',
+      )
+    },
+    [],
+  )
 
   /**
    * menu隐藏时编辑框重新获得焦点
@@ -86,12 +85,18 @@ const GoogleDocMask: FC = () => {
   useEffect(() => {
     if (floatingDropdownMenu.open) {
       // 针对快捷键触发的draft text，这里以位置判断是否是由google doc里触发
-      // 处理滚动重新计算位置
+      // TODO 此处应该改成从RangyState的tempSelection.selectionElement.id去判断是否是google doc里触发
       if (getRectRef.current || !messageRef.current || !caretRef.current) {
-        return;
+        return
       }
-      if (!isRectChange(floatingDropdownMenuRef.current.rootRect!, messageRef.current?.targetRect)) {
-        getRectRef.current = () => caretRef.current?.element.getBoundingClientRect().toJSON()
+      if (
+        !isRectChange(
+          floatingDropdownMenuRef.current.rootRect!,
+          messageRef.current?.targetRect,
+        )
+      ) {
+        getRectRef.current = () =>
+          caretRef.current?.element.getBoundingClientRect().toJSON()
       }
     } else {
       messageRef.current = undefined
@@ -129,8 +134,6 @@ const GoogleDocMask: FC = () => {
     if (!control?.editorElement) return
 
     const onScroll = debounce(() => {
-      console.log(111, getRectRef.current)
-
       if (!getRectRef.current) return
 
       const rootRect = getRectRef.current()
@@ -170,10 +173,7 @@ const GoogleDocMask: FC = () => {
    * 处理选区/光标变化
    */
   useEffect(() => {
-    console.log(1112, selection, caret, focus)
     getRectRef.current = undefined
-
-    console.log('GoogleDoc', selection, caret, focus)
 
     // 有选区内容
     if (selection && selection.content) {
@@ -202,6 +202,12 @@ const GoogleDocMask: FC = () => {
     // 获取到焦点，准备好快捷键触发draft new text
     if (caret) {
       postMessage(caret.rect, '')
+      const timer = setTimeout(() => {
+        postMessage(caret.rect, control?.getCaretBeforeContent(caret) || '', '')
+      }, 100)
+      return () => {
+        clearTimeout(timer)
+      }
     }
   }, [selection, caret])
 
@@ -217,6 +223,9 @@ const GoogleDocMask: FC = () => {
         break
       case 'INSERT':
         control?.replaceSelection(value)
+        // setTimeout(() => {
+        //   control?.selectContent(-value.length)
+        // }, 0)
         break
       case 'INSERT_ABOVE':
         control?.insertAboveSelection(value)

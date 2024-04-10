@@ -2,19 +2,16 @@ import { debounce } from 'lodash-es'
 
 import { EventEmitter } from '@/utils/eventEmitter'
 import Log from '@/utils/Log'
+import {
+  calculateRectLayout,
+  emptyRect,
+  IRect,
+  isPointInRects,
+  isRectChange,
+  isRectIntersect,
+} from '@/utils/rectUtils'
 
 const log = new Log('ContextMenu/GoogleDocHelper')
-
-const emptyRect = {
-  x: 0,
-  y: 0,
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  width: 0,
-  height: 0,
-}
 
 export enum IGoogleDocEventType {
   SELECTION_CHANGE = 'selection-change',
@@ -23,16 +20,7 @@ export enum IGoogleDocEventType {
   BLUR = 'blur',
 }
 
-export interface IGoogleDocRect {
-  x: number
-  y: number
-  top: number
-  left: number
-  right: number
-  bottom: number
-  width: number
-  height: number
-}
+export interface IGoogleDocRect extends IRect {}
 
 export interface IGoogleDocLayout extends Exclude<IGoogleDocRect, 'x' | 'y'> {}
 
@@ -75,108 +63,16 @@ export interface IGoogleDocSelection {
 
 export interface IGoogleDocCaret {
   element: Element
-  text: IGoogleDocText | null
   rect: IGoogleDocRect
   layout: IGoogleDocLayout
-  // index: number;
-}
-
-/**
- * 检测两个元素是否相交
- * @param rect1
- * @param rect2
- */
-export const isRectIntersect = (
-  rect1: IGoogleDocRect,
-  rect2: IGoogleDocRect,
-) => {
-  return !(
-    rect1.top >= rect2.bottom ||
-    rect1.bottom <= rect2.top ||
-    rect1.left >= rect2.right ||
-    rect1.right <= rect2.left
-  )
-}
-
-/**
- * 判断两个位置是否不同
- * @param rect1
- * @param rect2
- */
-export const isRectChange = (rect1: IGoogleDocRect, rect2: IGoogleDocRect) => {
-  return (
-    rect1.top !== rect2.top ||
-    rect1.bottom !== rect2.bottom ||
-    rect1.left !== rect2.left ||
-    rect1.right !== rect2.right
-  )
-}
-
-/**
- * 计算目标元素相对于compare元素位置和大小
- * @param compare
- * @param target
- */
-export const calculateRectLayout = (
-  compare: IGoogleDocRect,
-  target: IGoogleDocRect,
-) => {
-  const offsetX = target.left - compare.left
-  const offsetY = target.top - compare.top
-  return {
-    x: target.x - compare.x,
-    y: target.y - compare.y,
-    top: offsetY,
-    left: offsetX,
-    right: offsetX + target.width,
-    bottom: offsetY + target.height,
-    width: target.width,
-    height: target.height,
-  }
-}
-
-/**
- * 检测坐标是否位于元素内
- * @param x
- * @param y
- * @param rects
- */
-export const isPointInRect = (
-  x: number,
-  y: number,
-  rects: IGoogleDocRect[],
-) => {
-  for (const rect of rects) {
-    if (
-      x >= Math.floor(rect.left) &&
-      x <= Math.floor(rect.right) &&
-      y >= Math.floor(rect.top) &&
-      y <= Math.floor(rect.bottom)
-    ) {
-      return true
-    }
-  }
-  return false
-}
-
-export const mergeRects = (rects: IGoogleDocRect[]) => {
-  if (!rects.length) return emptyRect
-  const rect = { ...rects[0] }
-  rects.forEach((item) => {
-    rect.top = Math.min(rect.top, item.top)
-    rect.left = Math.min(rect.left, item.left)
-    rect.right = Math.max(rect.right, item.right)
-    rect.bottom = Math.max(rect.bottom, item.bottom)
-  })
-  rect.x = rect.left
-  rect.y = rect.top
-  rect.width = Math.abs(rect.right - rect.left)
-  rect.height = Math.abs(rect.bottom - rect.top)
-  return rect
+  // text: IGoogleDocText | null
+  // index: number
 }
 
 export class GoogleDocControl extends EventEmitter {
-  disabled: boolean
+  disabled = false
+
+  initialized = false
 
   styleElement?: HTMLStyleElement | null
 
@@ -212,6 +108,7 @@ export class GoogleDocControl extends EventEmitter {
 
   init() {
     if (this.disabled) return
+    if (this.initialized) return
     this.initElement()
     this.initListener()
   }
@@ -251,7 +148,7 @@ export class GoogleDocControl extends EventEmitter {
     const debounceCaretOrSelectionChange = debounce(() => {
       this.checkCaretChange()
       this.checkSelectionChange()
-    }, 20);
+    }, 20)
     this.observer = new MutationObserver((mutations) => {
       if (
         mutations.some((item) =>
@@ -296,7 +193,8 @@ export class GoogleDocControl extends EventEmitter {
   }
 
   destroy() {
-    // this.observer?.disconnect()
+    this.initialized = false
+    this.observer?.disconnect()
     this.editorElement?.removeEventListener('mouseup', this._onMouseUpOrKeyUp)
     this.inputElement?.removeEventListener('keyup', this._onMouseUpOrKeyUp)
     this.inputElement?.removeEventListener('focus', this._onFocus)
@@ -386,9 +284,8 @@ export class GoogleDocControl extends EventEmitter {
   /**
    * 选区下方插入内容
    * @param value
-   * @param select
    */
-  insertBelowSelection(value: string, select = false) {
+  insertBelowSelection(value: string) {
     log.info(value)
 
     this.inputElement?.focus()
@@ -408,9 +305,8 @@ export class GoogleDocControl extends EventEmitter {
   /**
    * 选区上方插入内容
    * @param value
-   * @param select
    */
-  insertAboveSelection(value: string, select = false) {
+  insertAboveSelection(value: string) {
     log.info(value)
 
     this.inputElement?.focus()
@@ -447,8 +343,87 @@ export class GoogleDocControl extends EventEmitter {
     return this.inputElement?.innerText || ''
   }
 
-  async getCaretBeforeContent(caret: IGoogleDocCaret) {
+  /**
+   * 选择当前光标附近的内容
+   * @param length
+   */
+  selectContent(length: number) {
+    if (!this.editorElement || !this.inputElement) return
+    const key = length < 0 ? 'ArrowLeft' : 'ArrowRight'
+    const keyCode = length < 0 ? 37 : 39
+    this.inputElement.focus()
+    for (let i = 0; i < Math.abs(length); i++) {
+      this.inputElement.dispatchEvent(
+        new KeyboardEvent('keydown', {
+          charCode: 0,
+          code: key,
+          key,
+          keyCode,
+          bubbles: true,
+          repeat: false,
+          shiftKey: true,
+        }),
+      )
+    }
+  }
 
+  /**
+   * 获取当前光标之前的所有内容
+   * @param caret
+   */
+  getCaretBeforeContent(caret: IGoogleDocCaret) {
+    if (!this.editorElement || !this.inputElement) return ''
+    const x = caret.rect.left + caret.rect.width / 2
+    const y = caret.rect.top + caret.rect.height / 2
+
+    let content = ''
+
+    // 查找所有段落
+    this.getParagraphElements()
+      .sort(
+        (a, b) =>
+          a.getBoundingClientRect().bottom - b.getBoundingClientRect().bottom,
+      )
+      .some((paragraphEle) => {
+        let paragraphContent = ''
+
+        let lastText: IGoogleDocText | null = null
+
+        this.getTextElements(paragraphEle).some((textEle) => {
+          const text = this.parseTextElement(textEle)
+          if (
+            text.rect.bottom < y || // 位于光标上方
+            (text.rect.top < y && text.rect.right < x) // 同行位于光标左侧
+          ) {
+            if (lastText && text.rect.top >= lastText.rect.bottom) {
+              // 同段落文字换行
+              paragraphContent += `\n${text.content}`
+            } else {
+              // 同一行文字
+              paragraphContent += text.content
+            }
+            lastText = text
+          } else if (isPointInRects(x, y, [text.rect])) {
+            // 光标位于当前文本内
+            const index = this.getCaretIndex(text, caret.rect)
+            if (index > 0) {
+              const content = text.content.slice(0, index)
+              paragraphContent += content
+            }
+            return true
+          }
+        })
+        if (paragraphContent) {
+          if (!content) {
+            content = paragraphContent
+          } else {
+            content += `\n\n${paragraphContent}`
+          }
+        }
+        return paragraphEle.getBoundingClientRect().bottom > y
+      })
+
+    return content
   }
 
   /**
@@ -538,9 +513,9 @@ export class GoogleDocControl extends EventEmitter {
   parseParagraphElement(element: Element): IGoogleDocParagraph {
     const rect = element.getBoundingClientRect().toJSON()
     const layout = this.calculateRelativeLayout(rect)
-    const texts = Array.from(element.querySelectorAll('rect'))
-      .filter((item) => item.parentElement?.tagName !== 'clipPath')
-      .map((item) => this.parseTextElement(item))
+    const texts = this.getTextElements(element).map((item) =>
+      this.parseTextElement(item),
+    )
     return {
       element,
       rect,
@@ -555,6 +530,42 @@ export class GoogleDocControl extends EventEmitter {
     }
   }
 
+  getSelectionElements() {
+    if (!this.editorElement) return []
+    return Array.from(
+      this.editorElement.querySelectorAll('.kix-canvas-tile-selection rect'),
+    ).filter(
+      (item) =>
+        item.parentElement?.tagName !== 'clipPath' &&
+        ['rgba(118,167,250,0.5)', 'rgba(0,0,0,0.15)'].includes(
+          item.getAttribute('fill') || '',
+        ),
+    )
+  }
+
+  getParagraphElements() {
+    if (!this.editorElement) return []
+    return Array.from(
+      this.editorElement.querySelectorAll(
+        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"]',
+      ),
+    )
+  }
+
+  getTextElements(paragraphElement?: Element): Element[] {
+    if (paragraphElement) {
+      return Array.from(paragraphElement.querySelectorAll('rect')).filter(
+        (item) => item.parentElement?.tagName !== 'clipPath',
+      )
+    }
+    if (!this.editorElement) return []
+    return Array.from(
+      this.editorElement.querySelectorAll(
+        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"] rect',
+      ),
+    ).filter((item) => item.parentElement?.tagName !== 'clipPath')
+  }
+
   /**
    * 获取当前选区
    */
@@ -564,30 +575,17 @@ export class GoogleDocControl extends EventEmitter {
     // 找selection下的所有选择框
     const layouts: IGoogleDocRect[] = []
     const rects: IGoogleDocRect[] = []
-    const elements = Array.from(
-      this.editorElement.querySelectorAll('.kix-canvas-tile-selection rect'),
-    ).filter((item) => {
-      const flag =
-        item.parentElement?.tagName !== 'clipPath' &&
-        ['rgba(118,167,250,0.5)', 'rgba(0,0,0,0.15)'].includes(
-          item.getAttribute('fill') || '',
-        )
-      if (flag) {
-        const rect = item.getBoundingClientRect().toJSON()
-        layouts.push(this.calculateRelativeLayout(rect))
-        rects.push(rect)
-      }
-      return flag
+    const elements = this.getSelectionElements()
+    elements.forEach((item) => {
+      const rect = item.getBoundingClientRect().toJSON()
+      layouts.push(this.calculateRelativeLayout(rect))
+      rects.push(rect)
     })
 
     if (!elements.length) return null
 
     // 找画布下处于选择框内的段落和文字
-    const paragraphs = Array.from(
-      this.editorElement.querySelectorAll(
-        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"]',
-      ),
-    )
+    const paragraphs = this.getParagraphElements()
       .filter((item) =>
         rects.some((rect) =>
           isRectIntersect(rect, item.getBoundingClientRect()),
@@ -611,38 +609,33 @@ export class GoogleDocControl extends EventEmitter {
     const element = this.caretElement
     const rect = this.caretElement.getBoundingClientRect()
     const layout = this.calculateRelativeLayout(rect)
-    const { top, right } = rect
-    const x = Math.floor(right || 0)
-    const y = Math.floor(top || 0)
-    const textElement = this.getElementFromPoint(x, y)
-    const text =
-      textElement && textElement.tagName === 'rect'
-        ? this.parseTextElement(textElement)
-        : null
+    // const { left, top, width, height } = rect
+    // const x = left + width / 2
+    // const y = top + height / 2
+    // const textElement = this.getTextElementFromPoint(x, y)
+    // const text =
+    //   textElement && textElement.tagName === 'rect'
+    //     ? this.parseTextElement(textElement)
+    //     : null
 
-    log.info({ element, text, rect, layout })
+    log.info({ element, rect, layout })
 
     return {
       element,
-      text,
       rect,
       layout,
+      // text,
     }
   }
 
-  /**
-   * 获取选取内的文字
-   * @param selection
-   */
-  getTextsFromSelection(selection: IGoogleDocSelection): IGoogleDocText[] {
-    const { paragraphs, rects } = selection
-    const texts = paragraphs.flatMap((paragraph) =>
-      paragraph.texts.filter((text) =>
-        rects.some((br) => isRectIntersect(br, text.rect)),
-      ),
+  getTextElementFromPoint(x: number, y: number) {
+    const paragraphElement = this.getParagraphElements().find((item) =>
+      isPointInRects(x, y, [item.getBoundingClientRect()]),
     )
-    log.info(texts)
-    return texts
+    if (!paragraphElement) return null
+    return this.getTextElements(paragraphElement).find((item) =>
+      isPointInRects(x, y, [item.getBoundingClientRect()]),
+    )
   }
 
   getElementFromPoint(x: number, y: number) {
@@ -664,77 +657,96 @@ export class GoogleDocControl extends EventEmitter {
     return element
   }
 
-  getCaretIndex(caret: IGoogleDocCaret) {
-    if (!caret.text) return null
+  getCaretIndex(text: IGoogleDocText, caretRect: IGoogleDocRect) {
+    const { left, top, width, height } = caretRect
+    const x = left + width / 2
+    const y = top + height / 2
+    if (x < text.rect.left || y < text.rect.top) {
+      return 0
+    }
+    if (x > text.rect.right || y > text.rect.bottom) {
+      return text.content.length
+    }
 
-    const { rect, text } = caret
-    const { top, right } = rect
-    const x = Math.floor(right || 0)
-    const y = Math.floor(top || 0)
     const { element, content } = text
     const contentNode = document.createTextNode(content)
     const textOverlay = this.createTextOverlay(element, contentNode)
 
-    if (!textOverlay) return null
+    if (!textOverlay) return 0
 
+    const { width: textWidth, left: textLeft } =
+      textOverlay.getBoundingClientRect()
     const range = document.createRange()
-    let start = 0
-    let end = contentNode.nodeValue?.length || 0
+    const length = contentNode.nodeValue?.length || 0
+    const charWidth = textWidth / length
 
-    while (end - start > 1) {
-      const mid = Math.floor((start + end) / 2)
-      range.setStart(contentNode, mid)
-      range.setEnd(contentNode, end)
-      const rects = Array.from(range.getClientRects())
-      if (isPointInRect(x, y, rects)) {
-        start = mid
-      } else {
-        if (x > rects[0].right) {
-          start = end
+    const selectionRects: Record<string, DOMRect> = {}
+
+    // 先计算光标在平均宽度的下标位置，减少循环次数
+    let offset = Math.floor((x - textLeft) / charWidth)
+
+    // 计算光标的位置，去计算当前获取的文本区域内容的位置
+    // 假设文本内容为'123'，如果光标位于'2''3'之间很难计算准确
+    // 所以计算位置以上一次选择的宽度，比如'12'的宽度加上'3'宽度的一半去对比计算
+    while (offset <= length) {
+      range.setStart(contentNode, 0)
+      range.setEnd(contentNode, offset)
+      const rect = range.getClientRects()[0].toJSON()
+      const last = selectionRects[offset - 1]
+      const currentRight = last
+        ? last.right + (rect.right - last.right) / 2
+        : rect.left + rect.width
+
+      if (x < currentRight) {
+        if (last) {
+          offset = Math.max(offset - 1, 0)
+          break
         } else {
-          end = mid
+          offset--
+          continue
         }
       }
+
+      selectionRects[offset] = rect
+      offset++
     }
 
-    const caretIndex = start
     textOverlay.remove()
-    return caretIndex
+    return offset
   }
 
   createTextOverlay(element: Element, textNode: any) {
     if (!element || element.tagName !== 'rect') return null
 
-    const textElement = document.createElementNS(
+    const textOverlay = document.createElementNS(
       'http://www.w3.org/2000/svg',
       'text',
     )
     const transform = element.getAttribute('transform') || ''
     const font = element.getAttribute('data-font-css') || ''
 
-    textElement.setAttribute('x', element.getAttribute('x') || '')
-    textElement.setAttribute('y', element.getAttribute('y') || '')
-    textElement.appendChild(textNode)
-    textElement.style.setProperty('all', 'initial', 'important')
-    textElement.style.setProperty('transform', transform, 'important')
-    textElement.style.setProperty('font', font, 'important')
-    textElement.style.setProperty('text-anchor', 'start', 'important')
-
-    element.parentNode?.appendChild(textElement)
+    textOverlay.setAttribute('x', element.getAttribute('x') || '')
+    textOverlay.setAttribute('y', element.getAttribute('y') || '')
+    textOverlay.appendChild(textNode)
+    textOverlay.style.setProperty('all', 'initial', 'important')
+    textOverlay.style.setProperty('transform', transform, 'important')
+    textOverlay.style.setProperty('font', font, 'important')
+    textOverlay.style.setProperty('text-anchor', 'start', 'important')
+    element.parentNode?.appendChild(textOverlay)
 
     const elementRect = element.getBoundingClientRect()
-    const textRect = textElement.getBoundingClientRect()
+    const textRect = textOverlay.getBoundingClientRect()
     const yOffset =
       (elementRect.top -
         textRect.top +
         (elementRect.bottom - textRect.bottom)) *
       0.5
-    textElement.style.setProperty(
+    textOverlay.style.setProperty(
       'transform',
       `translate(0px,${yOffset}px) ${transform}`,
       'important',
     )
 
-    return textElement
+    return textOverlay
   }
 }

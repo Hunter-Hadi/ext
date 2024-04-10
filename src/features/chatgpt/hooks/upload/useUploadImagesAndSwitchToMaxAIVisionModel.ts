@@ -16,8 +16,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
   } = useAIProviderUpload()
   const { createConversation, clientConversation } = useClientConversation()
   const { updateSidebarConversationType } = useSidebarSettings()
-  const { updateAIProviderModel, currentAIProvider, currentAIProviderModel } =
-    useAIProviderModels()
+  const { currentAIProvider, currentAIProviderModel } = useAIProviderModels()
 
   // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
   // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
@@ -26,6 +25,42 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     aiProviderUploadFilesRef.current = aiProviderUploadFiles
   }, [aiProviderUploadFiles])
 
+  const resolveRef = useRef<(value: unknown) => void>()
+  useEffect(() => {
+    if (clientConversation?.id) {
+      console.log(
+        'clientConversation?.id',
+        clientConversation?.id,
+        clientConversation?.meta.AIModel,
+        resolveRef.current,
+        clientConversation.type === 'Chat' &&
+          clientConversation?.meta?.AIModel &&
+          [
+            MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            'claude-3-sonnet',
+            'claude-3-opus',
+            'claude-3-haiku',
+            'gemini-pro',
+          ].includes(clientConversation.meta.AIModel),
+      )
+      if (
+        clientConversation.type === 'Chat' &&
+        clientConversation?.meta?.AIModel &&
+        [
+          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+          'claude-3-sonnet',
+          'claude-3-opus',
+          'claude-3-haiku',
+          'gemini-pro',
+        ].includes(clientConversation.meta.AIModel)
+      ) {
+        if (resolveRef.current) {
+          resolveRef.current(true)
+          resolveRef.current = undefined
+        }
+      }
+    }
+  }, [clientConversation?.id])
   const uploadImagesAndSwitchToMaxAIVisionModel = async (
     imageFiles: File[],
   ) => {
@@ -39,6 +74,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     ) {
       updateSidebarConversationType('Chat')
     }
+    let needWaitCreateConversation = false
     if (clientConversation) {
       if (
         !clientConversation?.meta?.AIModel ||
@@ -50,10 +86,8 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           'gemini-pro',
         ].includes(clientConversation?.meta?.AIModel)
       ) {
-        await updateAIProviderModel(
-          'USE_CHAT_GPT_PLUS',
-          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-        )
+        needWaitCreateConversation = true
+
         await createConversation(
           clientConversation.type,
           'USE_CHAT_GPT_PLUS',
@@ -61,16 +95,23 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         )
       }
     } else {
-      await updateAIProviderModel(
-        'USE_CHAT_GPT_PLUS',
-        MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-      )
+      needWaitCreateConversation = true
       await createConversation(
         'Chat',
         'USE_CHAT_GPT_PLUS',
         MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
       )
     }
+    debugger
+    if (needWaitCreateConversation) {
+      await new Promise((resolve) => {
+        if (resolveRef.current) {
+          resolveRef.current(true)
+        }
+        resolveRef.current = resolve
+      })
+    }
+    debugger
     const existFilesCount = files?.length || 0
     const maxFiles = AIProviderConfig?.maxCount || 1
     const canUploadCount = maxFiles - existFilesCount

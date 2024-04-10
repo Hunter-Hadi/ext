@@ -90,7 +90,12 @@ const TextOnlyTooltip: FC<TextOnlyTooltipProps> = ({
       title={
         title ? (
           <Stack>
-            <Typography fontSize={'14px'} textAlign={'left'} color="inherit">
+            <Typography
+              fontSize={'14px'}
+              textAlign={'left'}
+              color="inherit"
+              component={'div'}
+            >
               {title}
             </Typography>
             {description && (

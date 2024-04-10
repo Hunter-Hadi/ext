@@ -19,7 +19,9 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarScreenshotButton: FC<{
   sx?: SxProps
-}> = ({ sx }) => {
+  enabled?: boolean
+}> = (props) => {
+  const { sx, enabled = true } = props
   const { t } = useTranslation(['common'])
   const [rootEl, setRootEl] = useState<HTMLDivElement | null>(null)
   const { isContainMaxAIModelUploadFile, uploadFilesToMaxAIModel } =
@@ -77,7 +79,7 @@ const SidebarScreenshotButton: FC<{
           />
         </Button>
       </TextOnlyTooltip>
-      {rootEl && (
+      {rootEl && enabled && (
         <DynamicComponent
           customElementName={'max-ai-screenshot'}
           rootContainer={rootEl}

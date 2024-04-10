@@ -293,6 +293,7 @@ const CustomMarkdown: FC<{
               if (inline) {
                 return (
                   <Chip
+                    component={'span'}
                     className={className}
                     label={children as string}
                     sx={{

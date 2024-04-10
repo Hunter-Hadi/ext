@@ -6,11 +6,9 @@ import { ChatGPTStatusWrapper } from '@/features/chatgpt'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { useClientConversationListener } from '@/features/chatgpt/hooks/useClientConversationListener'
-import useInitConversationUpdate from '@/features/chatgpt/hooks/useInitConversationUpdate'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
 import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarFilesDropBox'
-import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
@@ -34,8 +32,6 @@ const SidebarChatPanel = () => {
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
-  useInitSidebar()
-  useInitConversationUpdate()
   useClientConversationListener()
   useEffect(() => {
     return OneShotCommunicator.receive(

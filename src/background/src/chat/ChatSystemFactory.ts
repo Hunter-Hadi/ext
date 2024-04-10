@@ -187,54 +187,52 @@ export default class ChatSystemFactory {
               message: '',
             }
           }
-          case 'Client_askChatGPTQuestion':
-            {
-              const { taskId, question } = data
-              // 每次提问的时候尝试更新一下model的白名单
-              updateRemoteAIProviderConfigAsync().then().catch()
-              console.log('[Background]新版Conversation 提问', question)
-              if (question.conversationId) {
-                const conversation =
-                  await ConversationManager.conversationDB.getConversationById(
-                    question.conversationId,
-                  )
-                if (
-                  conversation &&
-                  currentChatSystem.conversation?.id !== conversation.id
-                ) {
-                  await currentChatSystem.switchAdapterWithConversation(
-                    conversation,
-                  )
-                  // 处理AIProvider的参数
-                  await processAskAIParameters(conversation, question)
-                  // 处理attachments
-                  if (currentChatSystem.currentAdapter) {
-                    if (
-                      currentChatSystem.currentAdapter.chatFiles.length === 0 &&
-                      question.meta?.regenerate &&
-                      question.meta.attachments?.length
-                    ) {
-                      await currentChatSystem.currentAdapter.clearFiles()
-                      await currentChatSystem.currentAdapter.updateFiles(
-                        question.meta.attachments,
-                      )
-                    }
+          case 'Client_askChatGPTQuestion': {
+            const { taskId, question } = data
+            // 每次提问的时候尝试更新一下model的白名单
+            updateRemoteAIProviderConfigAsync().then().catch()
+            console.log('[Background]新版Conversation 提问', question)
+            if (question.conversationId) {
+              const conversation =
+                await ConversationManager.conversationDB.getConversationById(
+                  question.conversationId,
+                )
+              if (
+                conversation &&
+                currentChatSystem.conversation?.id !== conversation.id
+              ) {
+                await currentChatSystem.switchAdapterWithConversation(
+                  conversation,
+                )
+                // 处理AIProvider的参数
+                await processAskAIParameters(conversation, question)
+                // 处理attachments
+                if (currentChatSystem.currentAdapter) {
+                  if (
+                    currentChatSystem.currentAdapter.chatFiles.length === 0 &&
+                    question.meta?.regenerate &&
+                    question.meta.attachments?.length
+                  ) {
+                    await currentChatSystem.currentAdapter.clearFiles()
+                    await currentChatSystem.currentAdapter.updateFiles(
+                      question.meta.attachments,
+                    )
                   }
-                  // 更新客户端的聊天记录
-                  await currentChatSystem.updateClientConversationMessages(
-                    conversation.id,
-                  )
                 }
-              }
-              await currentChatSystem.sendQuestion(taskId, sender, question)
-              currentChatSystem.updateClientFiles()
-              return {
-                success: true,
-                data: {},
-                message: '',
+                // 更新客户端的聊天记录
+                await currentChatSystem.updateClientConversationMessages(
+                  conversation.id,
+                )
               }
             }
-            break
+            await currentChatSystem.sendQuestion(taskId, sender, question)
+            currentChatSystem.updateClientFiles()
+            return {
+              success: true,
+              data: {},
+              message: '',
+            }
+          }
           case 'Client_removeChatGPTConversation': {
             const { conversationId, isForceRemove = false } = data
             if (isForceRemove && conversationId) {
@@ -269,91 +267,82 @@ export default class ChatSystemFactory {
               message: '',
             }
           }
-          case 'Client_chatGetFiles':
-            {
-              return {
-                success: true,
-                data: currentChatSystem.chatFiles,
-                message: '',
+          case 'Client_chatGetFiles': {
+            return {
+              success: true,
+              data: currentChatSystem.chatFiles,
+              message: '',
+            }
+          }
+          case 'Client_chatUploadFiles': {
+            const { files } = data
+            // 如果没提问直接上传文件, 则需要先切换adapter
+            if (!currentChatSystem.currentAdapter) {
+              const conversation =
+                await ConversationManager.conversationDB.getConversationById(
+                  currentChatSystem.conversationId,
+                )
+              if (conversation) {
+                await currentChatSystem.switchAdapterWithConversation(
+                  conversation,
+                )
               }
             }
-            break
-          case 'Client_chatUploadFiles':
-            {
-              const { files } = data
-              // 如果没提问直接上传文件, 则需要先切换adapter
-              if (!currentChatSystem.currentAdapter) {
-                const conversation =
-                  await ConversationManager.conversationDB.getConversationById(
-                    currentChatSystem.conversationId,
-                  )
-                if (conversation) {
-                  await currentChatSystem.switchAdapterWithConversation(
-                    conversation,
-                  )
-                }
-              }
-              await currentChatSystem.uploadFiles(files)
-              currentChatSystem.updateClientFiles()
-              return {
-                success: true,
-                data: currentChatSystem.chatFiles,
-                message: '',
-              }
+            await currentChatSystem.uploadFiles(files)
+            currentChatSystem.updateClientFiles()
+            return {
+              success: true,
+              data: currentChatSystem.chatFiles,
+              message: '',
             }
-            break
-          case 'Client_chatAbortUploadFiles':
-            {
-              // TODO: 上传文件的取消, 好像没有用到
-              const { files } = data
-              const success = await currentChatSystem.abortUploadFiles(
-                files.map((file: IChatUploadFile) => file.id),
-              )
-              currentChatSystem.updateClientFiles()
-              return {
-                success,
-                data: currentChatSystem.chatFiles,
-                message: '',
-              }
+          }
+          case 'Client_chatAbortUploadFiles': {
+            // TODO: 上传文件的取消, 好像没有用到
+            const { files } = data
+            const success = await currentChatSystem.abortUploadFiles(
+              files.map((file: IChatUploadFile) => file.id),
+            )
+            currentChatSystem.updateClientFiles()
+            return {
+              success,
+              data: currentChatSystem.chatFiles,
+              message: '',
             }
-            break
-          case 'Client_chatRemoveFiles':
-            {
-              const { files } = data
-              const success = await currentChatSystem.removeFiles(
-                files.map((file: IChatUploadFile) => file.id),
-              )
-              currentChatSystem.updateClientFiles()
-              return {
-                success,
-                data: currentChatSystem.chatFiles,
-                message: '',
-              }
+          }
+
+          case 'Client_chatRemoveFiles': {
+            const { files } = data
+            const success = await currentChatSystem.removeFiles(
+              files.map((file: IChatUploadFile) => file.id),
+            )
+            currentChatSystem.updateClientFiles()
+            return {
+              success,
+              data: currentChatSystem.chatFiles,
+              message: '',
             }
-            break
-          case 'Client_chatClearFiles':
-            {
-              const success = await currentChatSystem.clearFiles()
-              currentChatSystem.updateClientFiles()
-              return {
-                success,
-                data: currentChatSystem.chatFiles,
-                message: '',
-              }
+          }
+
+          case 'Client_chatClearFiles': {
+            const success = await currentChatSystem.clearFiles()
+            currentChatSystem.updateClientFiles()
+            return {
+              success,
+              data: currentChatSystem.chatFiles,
+              message: '',
             }
-            break
-          case 'Client_chatUploadFilesChange':
-            {
-              const { files } = data
-              await currentChatSystem.updateFiles(files)
-              await currentChatSystem.updateClientFiles()
-              return {
-                success: true,
-                data: {},
-                message: 'ok',
-              }
+          }
+
+          case 'Client_chatUploadFilesChange': {
+            const { files } = data
+            await currentChatSystem.updateFiles(files)
+            await currentChatSystem.updateClientFiles()
+            return {
+              success: true,
+              data: {},
+              message: 'ok',
             }
-            break
+          }
           case 'Client_chatGetUploadFileToken': {
             // TODO: 上传文件的令牌, 好像没有用到
             const token = await currentChatSystem.getUploadFileToken()

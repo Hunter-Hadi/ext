@@ -9,7 +9,6 @@ import {
   MAXAIPDFAIViewerErrorAlert,
   MaxAIPDFAIViewerTopBarButtonGroup,
 } from '@/components/AppInit/MaxAIPDFViewerInit'
-import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
@@ -125,7 +124,6 @@ const AppInit = () => {
   userInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
-  useInitWebPageMessageChannel()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()

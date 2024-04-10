@@ -12,6 +12,7 @@ import {
 import {
   chromeExtensionClientOpenPage,
   getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
 } from '@/utils'
 
 /**
@@ -53,12 +54,11 @@ const useInitWebPageMessageChannel = () => {
     if (
       waitRunActionsConfig.taskId &&
       currentSidebarConversationType === 'Chat' &&
-      !isRunningActionsRef.current
+      !isRunningActionsRef.current &&
+      shortCutsEngine?.conversationId
     ) {
       isRunningActionsRef.current = true
-      askAIWIthShortcuts(waitRunActionsConfig.actions, {
-        isOpenSidebarChatBox: true,
-      })
+      askAIWIthShortcuts(waitRunActionsConfig.actions)
         .then((result) => {
           console.log(shortCutsEngine)
           responseDataToPage(
@@ -91,7 +91,12 @@ const useInitWebPageMessageChannel = () => {
           isRunningActionsRef.current = false
         })
     }
-  }, [currentSidebarConversationType, waitRunActionsConfig, askAIWIthShortcuts])
+  }, [
+    currentSidebarConversationType,
+    waitRunActionsConfig,
+    askAIWIthShortcuts,
+    shortCutsEngine,
+  ])
 
   useEffect(() => {
     const listener = async (event: MessageEvent) => {
@@ -139,9 +144,12 @@ const useInitWebPageMessageChannel = () => {
           }
           case 'CLOSE_SIDEBAR': {
             const closeModalButton =
-              getMaxAIFloatingContextMenuRootElement()?.querySelector(
-                '.max-ai__action__set_variables_modal button[data-test-id="close-modal-button"]',
-              ) as HTMLButtonElement
+              (getMaxAISidebarRootElement()?.querySelector(
+                '.max-ai__action__set_variables_modal button[data-testid="close-modal-button"]',
+              ) as HTMLButtonElement) ||
+              (getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                '.max-ai__action__set_variables_modal button[data-testid="close-modal-button"]',
+              ) as HTMLButtonElement)
             if (closeModalButton) {
               closeModalButton.click()
             }

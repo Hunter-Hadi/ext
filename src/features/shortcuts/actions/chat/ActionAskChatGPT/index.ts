@@ -424,7 +424,22 @@ export class ActionAskChatGPT extends Action {
     }
   }
 
-  async stop() {
+  async stop(params: { engine: IShortcutEngineExternalEngine }) {
+    if (
+      params.engine.clientMessageChannelEngine &&
+      this.question?.conversationId
+    ) {
+      await Promise.race([
+        await params.engine.clientMessageChannelEngine.postMessage({
+          event: 'Client_abortAskChatGPTQuestion',
+          data: {
+            conversationId: this.question?.conversationId,
+            messageId: this.question?.messageId,
+          },
+        }),
+        new Promise((resolve) => setTimeout(resolve, 3 * 1000)),
+      ])
+    }
     if (this.question?.conversationId) {
       const messages = (
         await clientGetConversation(this.question?.conversationId)

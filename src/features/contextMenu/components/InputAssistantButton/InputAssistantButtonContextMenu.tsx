@@ -164,7 +164,7 @@ const InputAssistantButtonContextMenu: FC<
         `[maxai-input-assistant-button-id="${rootId}"]`,
       ) as HTMLElement
       if (buttonElement) {
-        showFloatingContextMenuWithElement(buttonElement, '')
+        showFloatingContextMenuWithElement(buttonElement, '', true)
       }
       runContextMenuRef
         .current(clickContextMenu)

@@ -15,6 +15,7 @@ import {
 } from '@/features/chatgpt/store'
 import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
@@ -23,7 +24,10 @@ const port = new ContentScriptConnectionV2({
 })
 
 /**
- * 初始化客户端聊天GPT文件
+ * 初始化客户端聊天
+ * - 监听客户端聊天事件
+ * - 监听客户端聊天文件上传事件
+ * - 监听客户端聊天状态更新事件
  */
 export const useClientConversationListener = () => {
   const [, setClientConversationMap] = useRecoilState(
@@ -235,6 +239,62 @@ export const useClientConversationListener = () => {
     clientConversationMessages,
     currentConversationIdRef,
   ])
+  /**
+   * 在focus的时候
+   * - 检查是否有上传失败的文件
+   * - 更新最新的status
+   */
+  useEffect(() => {
+    if (currentConversationId) {
+      const port = new ContentScriptConnectionV2({
+        runtime: 'client',
+      })
+      /**
+       * 检查Chat状态
+       */
+      const checkChatGPTStatus = async () => {
+        clientGetConversation(currentConversationId).then(
+          async (conversation) => {
+            if (conversation) {
+              console.log(
+                `新版Conversation [${currentConversationId}]effect更新`,
+                conversation.messages,
+              )
+              setClientConversationMap((prevState) => {
+                return {
+                  ...prevState,
+                  [conversation.id]: conversation,
+                }
+              })
+            }
+          },
+        )
+        const result = await port.postMessage({
+          event: 'Client_checkChatGPTStatus',
+          data: {
+            conversationId: currentConversationId,
+          },
+        })
+        console.log(
+          `新版Conversation [${currentConversationId}]status更新`,
+          result.data,
+          currentConversationIdRef.current,
+          currentConversationId,
+        )
+        if (result.success && result.data.status) {
+          updateConversationStatus(result.data.status)
+        }
+      }
+      window.addEventListener('focus', checkChatGPTStatus)
+      checkChatGPTStatus()
+      // 获取当前的conversation的数据
+      return () => {
+        port.destroy()
+        window.removeEventListener('focus', checkChatGPTStatus)
+      }
+    }
+    return () => {}
+  }, [currentConversationId])
 }
 
 export default useClientConversationListener

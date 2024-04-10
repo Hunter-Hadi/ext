@@ -47,11 +47,24 @@ const useFloatingContextMenu = () => {
     (
       element?: IVirtualIframeSelectionElement,
       overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
-      isCommandInsert?: boolean,
+      openFloatingContextMenu?: boolean,
     ) => {
       let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
         element
-      if (!isFloatingContextMenuVisible() && virtualSelectionElement) {
+      /**
+       * floating menu 展开逻辑:
+       * 1. 如果当前在editable element中，展开
+       * 2. 如果当前有选中的文本，展开
+       * 3. 如果openFloatingContextMenu为true，展开
+       * 4. 如果都不符合，展开chat box
+       */
+      if (
+        !isFloatingContextMenuVisible() &&
+        virtualSelectionElement &&
+        (virtualSelectionElement?.selectionText ||
+          virtualSelectionElement?.isEditableElement ||
+          openFloatingContextMenu)
+      ) {
         log.info('open', virtualSelectionElement)
         // 1. 如果是可编辑元素，设置marker和获取实际的selection text
         if (
@@ -96,7 +109,12 @@ const useFloatingContextMenu = () => {
         ) {
           showModelSelector = false
         }
-        if (virtualSelectionElement || isCommandInsert) {
+        if (
+          (!virtualSelectionElement?.isEditableElement &&
+            virtualSelectionElement.selectionText) ||
+          virtualSelectionElement?.editableElementSelectionText ||
+          openFloatingContextMenu
+        ) {
           saveCurrentSelection({
             selectionText:
               virtualSelectionElement.editableElementSelectionText ||
@@ -172,6 +190,7 @@ const useFloatingContextMenu = () => {
   const showFloatingContextMenuWithElement = (
     element: HTMLElement,
     text: string,
+    openFloatingContextMenu?: boolean,
   ) => {
     const rect = cloneRect(element.getBoundingClientRect())
     const virtualSelection = {
@@ -185,6 +204,8 @@ const useFloatingContextMenu = () => {
     }
     showFloatingContextMenuWithVirtualElement(
       virtualSelection as IVirtualIframeSelectionElement,
+      {},
+      openFloatingContextMenu,
     )
   }
   const showFloatingContextMenu = () => {

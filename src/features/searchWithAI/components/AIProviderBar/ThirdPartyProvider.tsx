@@ -34,10 +34,8 @@ const thirdPartyProviderList = SearchWithAIProviderOptions.filter(
 
 const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
   // 最近一次使用的 third part provider
-  const [
-    lastUsedThirdPartyProvider,
-    setLastUsedThirdPartyProvider,
-  ] = React.useState<ISearchWithAIProviderType | null>(null)
+  const [lastUsedThirdPartyProvider, setLastUsedThirdPartyProvider] =
+    React.useState<ISearchWithAIProviderType | null>(null)
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
@@ -138,7 +136,10 @@ const ThirdPartyProvider: FC<IProps> = ({ onProviderChange, disabled }) => {
 
     if (thirdPartyProvider.preChangeChecker) {
       return (
-        <PreChangeCheckerTooltip {...thirdPartyProvider.preChangeChecker}>
+        <PreChangeCheckerTooltip
+          key={thirdPartyProvider.value}
+          {...thirdPartyProvider.preChangeChecker}
+        >
           {thirdPartyProviderMenuItem}
         </PreChangeCheckerTooltip>
       )

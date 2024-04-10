@@ -30,8 +30,8 @@ const useMaxAIModelUploadFile = () => {
         uploadDocs.push(uploadFile)
       }
     })
-    await uploadDocAndTextExtraction(uploadDocs)
     await uploadImagesAndSwitchToMaxAIVisionModel(uploadImages)
+    await uploadDocAndTextExtraction(uploadDocs)
   }
   return {
     isContainMaxAIModelUploadFile,

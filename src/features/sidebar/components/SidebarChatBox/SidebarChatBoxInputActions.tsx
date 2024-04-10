@@ -179,7 +179,7 @@ const SidebarChatBoxInputActions: FC<{
               sx={actionsBtnColorSxMemo}
               onBeforeShowContextMenu={() => {
                 return {
-                  template: inputValue || ' ',
+                  template: inputValue || '',
                   target:
                     getMaxAISidebarRootElement()?.querySelector(
                       `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,

@@ -16,8 +16,11 @@ const log = new Log('ContextMenu/GoogleDocHelper')
 export enum IGoogleDocEventType {
   SELECTION_CHANGE = 'selection-change',
   CARET_CHANGE = 'caret-change',
+  MOUSEUP = 'mouseup',
+  KEYUP = 'keyup',
   FOCUS = 'focus',
   BLUR = 'blur',
+  SCROLL = 'scroll'
 }
 
 export interface IGoogleDocRect extends IRect {}
@@ -72,6 +75,8 @@ export interface IGoogleDocCaret {
 export class GoogleDocControl extends EventEmitter {
   disabled = false
 
+  editable = true
+
   initialized = false
 
   styleElement?: HTMLStyleElement | null
@@ -104,6 +109,7 @@ export class GoogleDocControl extends EventEmitter {
     this.disabled = !location.href.startsWith(
       'https://docs.google.com/document',
     )
+    this.editable = !!document.querySelector('#docs-insert-menu')
   }
 
   init() {
@@ -127,16 +133,24 @@ export class GoogleDocControl extends EventEmitter {
     this.caretElement = document.querySelector('#kix-current-user-cursor-caret')
   }
 
+  _onScroll = () => {
+    log.info('onScroll')
+    this.emit(IGoogleDocEventType.SCROLL)
+  }
+
   _onMouseUpOrKeyUp = (event: MouseEvent | KeyboardEvent) => {
+    log.info('onMouseUpOrKeyUp', event)
     // 标记过滤useInitRang.ts里saveHighlightedRangeAndShowContextMenu的处理
-    (event as any).MAX_AI_IGNORE = true
+    ;(event as any).MAX_AI_IGNORE = true
   }
 
   _onFocus = () => {
+    log.info('onFocus')
     this.emit(IGoogleDocEventType.FOCUS)
   }
 
   _onBlur = () => {
+    log.info('onBlur')
     this.emit(IGoogleDocEventType.BLUR)
   }
 
@@ -186,6 +200,7 @@ export class GoogleDocControl extends EventEmitter {
         subtree: false,
       })
     }
+    this.editorElement?.addEventListener('scroll', this._onScroll)
     this.editorElement?.addEventListener('mouseup', this._onMouseUpOrKeyUp)
     this.inputElement?.addEventListener('keyup', this._onMouseUpOrKeyUp)
     this.inputElement?.addEventListener('focus', this._onFocus)
@@ -195,6 +210,7 @@ export class GoogleDocControl extends EventEmitter {
   destroy() {
     this.initialized = false
     this.observer?.disconnect()
+    this.editorElement?.addEventListener('scroll', this._onScroll)
     this.editorElement?.removeEventListener('mouseup', this._onMouseUpOrKeyUp)
     this.inputElement?.removeEventListener('keyup', this._onMouseUpOrKeyUp)
     this.inputElement?.removeEventListener('focus', this._onFocus)
@@ -206,7 +222,6 @@ export class GoogleDocControl extends EventEmitter {
     selection1: IGoogleDocSelection | null,
     selection2: IGoogleDocSelection | null,
   ) {
-    log.info(selection1, selection2)
     if (selection1 === selection2) return false
     if (selection1 && selection2) {
       if (
@@ -329,6 +344,8 @@ export class GoogleDocControl extends EventEmitter {
    * @param command
    */
   copySelection(command = false) {
+    log.info(command)
+
     this.inputElement?.focus()
     if (command) {
       this.iframeElement?.contentDocument?.execCommand('copy')

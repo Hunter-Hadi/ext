@@ -41,8 +41,8 @@ const GoogleDocInject: FC = () => {
 
     control.addListener(IGoogleDocEventType.SELECTION_CHANGE, onSelectionChange)
     control.addListener(IGoogleDocEventType.CARET_CHANGE, onCaretChange)
-    // control.addListener(IGoogleDocEventType.FOCUS, onFocus)
-    // control.addListener(IGoogleDocEventType.BLUR, onBlur)
+    control.addListener(IGoogleDocEventType.FOCUS, onFocus)
+    control.addListener(IGoogleDocEventType.BLUR, onBlur)
 
     if (control.isFocus()) {
       control.checkSelectionChange()

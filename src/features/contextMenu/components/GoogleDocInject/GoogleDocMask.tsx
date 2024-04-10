@@ -1,6 +1,6 @@
 import { debounce } from 'lodash-es'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
-import { useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilCallback, useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { useCreateClientMessageListener } from '@/background/utils'
@@ -14,64 +14,82 @@ import {
   RangyState,
 } from '@/features/contextMenu'
 import { useGoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
-import {
-  IRangyRect,
-  IVirtualIframeSelectionElement,
-} from '@/features/contextMenu/types'
-import { IRect, isRectChange, mergeRects } from '@/utils/rectUtils'
+import { IGoogleDocEventType } from '@/features/contextMenu/utils/googleDocHelper'
+import { AppState } from '@/store'
+import { IRect, mergeRects } from '@/utils/rectUtils'
 
 const id = v4()
 
 const GoogleDocMask: FC = () => {
-  const { control, caret, selection } = useGoogleDocContext()
+  const { control, focus, caret, selection } = useGoogleDocContext()
 
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
+  const [rangy, setRangy] = useRecoilState(RangyState)
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
   )
-  const setRangy = useSetRecoilState(RangyState)
-  const selectionRef = useRef<Record<string, HTMLElement | null>>({})
-  const getRectRef = useRef<() => IRangyRect>()
-  const messageRef = useRef<IVirtualIframeSelectionElement>()
-  const caretRef = useRef(caret)
-  caretRef.current = caret
+  const selectionNodeRef = useRef<Record<string, HTMLDivElement | null>>({})
+  const caretNodeRef = useRef<HTMLDivElement>(null)
   const floatingDropdownMenuRef = useRef(floatingDropdownMenu)
   floatingDropdownMenuRef.current = floatingDropdownMenu
+  const rangyRef = useRef(rangy)
+  rangyRef.current = rangy
+  const selectionRef = useRef(selection)
+  selectionRef.current = selection
+
+  const setFocus = useRecoilCallback(({ snapshot }) => () => {
+    const appState = snapshot.getInfo_UNSTABLE(AppState).loadable?.getValue()
+    // TODO 点击展示sidebar时应该不获取焦点，否则会闪烁一下
+    if (!appState?.loadedAppSidebar) {
+      control?.inputElement?.focus()
+    }
+  })
+
+  const getSelectionRect = useCallback(() => {
+    return mergeRects(
+      Object.values(selectionNodeRef.current)
+        .filter(Boolean)
+        .map((item) => item!.getBoundingClientRect().toJSON()),
+    )
+  }, [])
+
+  const getCaretRect = useCallback(() => {
+    return caretNodeRef.current?.getBoundingClientRect().toJSON()
+  }, [])
 
   /**
    * 模拟iframe.tsx里的事件，触发context menu的功能
    */
   const postMessage = useCallback(
     (rect: IRect, content: string, editableContent = content) => {
-      messageRef.current = {
-        virtual: true,
-        iframeId: id,
-        tagName: '',
-        id: id,
-        className: '',
-        windowRect: document.body.getBoundingClientRect().toJSON(),
-        targetRect: rect,
-        selectionRect: rect,
-        iframeSelectionRect: rect,
-        iframePosition: [0, 0],
-        selectionText: content,
-        selectionHTML: content,
-        editableElementSelectionText: editableContent,
-        editableElementSelectionHTML: editableContent,
-        eventType: 'keyup',
-        isEmbedPage: false,
-        isEditableElement: true,
-        caretOffset: 1,
-        startMarkerId: '',
-        endMarkerId: '',
-      }
       window.postMessage(
         {
           id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
           type: 'iframeSelection',
-          data: messageRef.current,
+          data: {
+            virtual: true,
+            iframeId: id,
+            tagName: '',
+            id: id,
+            className: '',
+            windowRect: document.body.getBoundingClientRect().toJSON(),
+            targetRect: rect,
+            selectionRect: rect,
+            iframeSelectionRect: rect,
+            iframePosition: [0, 0],
+            selectionText: content,
+            selectionHTML: content,
+            editableElementSelectionText: editableContent,
+            editableElementSelectionHTML: editableContent,
+            eventType: 'keyup',
+            isEmbedPage: false,
+            isEditableElement: !!control?.editable,
+            caretOffset: 1,
+            startMarkerId: '',
+            endMarkerId: '',
+          },
         },
         '*',
       )
@@ -83,46 +101,34 @@ const GoogleDocMask: FC = () => {
    * menu隐藏时编辑框重新获得焦点
    */
   useEffect(() => {
-    if (floatingDropdownMenu.open) {
-      // 针对快捷键触发的draft text，这里以位置判断是否是由google doc里触发
-      // TODO 此处应该改成从RangyState的tempSelection.selectionElement.id去判断是否是google doc里触发
-      if (getRectRef.current || !messageRef.current || !caretRef.current) {
-        return
-      }
-      if (
-        !isRectChange(
-          floatingDropdownMenuRef.current.rootRect!,
-          messageRef.current?.targetRect,
-        )
-      ) {
-        getRectRef.current = () =>
-          caretRef.current?.element.getBoundingClientRect().toJSON()
-      }
-    } else {
-      messageRef.current = undefined
-      control?.inputElement?.focus()
-
+    if (!floatingDropdownMenu.open) {
       // 每次hide时触发一个MAX_AI_IGNORE的event去覆盖掉useInitRangy.ts里触发的mock space up，否则会导致一些意外的bug
       // saveHighlightedRangeAndShowContextMenu是防抖函数，设置成timeout为1即可覆盖
-      let timer: ReturnType<typeof setTimeout> | null = null
+      const timers: ReturnType<typeof setTimeout>[] = []
       setFloatingDropdownMenuLastFocusRange((prev) => {
         if (prev.range) {
-          timer = setTimeout(() => {
-            const keyupEvent = new KeyboardEvent('keyup', {
-              key: ' ',
-              code: 'Space',
-              bubbles: true,
-              cancelable: true,
-            })
-            ;(keyupEvent as any).MAX_AI_IGNORE = true
-            document.body.dispatchEvent(keyupEvent)
-          }, 1)
+          timers.push(
+            setTimeout(() => {
+              const keyupEvent = new KeyboardEvent('keyup', {
+                key: ' ',
+                code: 'Space',
+                bubbles: true,
+                cancelable: true,
+              })
+              ;(keyupEvent as any).MAX_AI_IGNORE = true
+              document.body.dispatchEvent(keyupEvent)
+            }, 1),
+          )
         }
         return prev
       })
 
+      // 重新获取光标
+      // timers.push(setTimeout(() => setFocus(), 1))
+      control?.inputElement?.focus()
+
       return () => {
-        timer && clearTimeout(timer)
+        timers.forEach((item) => clearTimeout(item))
       }
     }
   }, [floatingDropdownMenu.open])
@@ -131,40 +137,46 @@ const GoogleDocMask: FC = () => {
    * google doc的滚动容器监听事件，重置menu区域
    */
   useEffect(() => {
-    if (!control?.editorElement) return
+    if (!control) return
 
     const onScroll = debounce(() => {
-      if (!getRectRef.current) return
+      const selectionElement =
+        rangyRef.current.currentSelection?.selectionElement ||
+        rangyRef.current.tempSelection?.selectionElement
 
-      const rootRect = getRectRef.current()
+      if (selectionElement?.id !== id) {
+        return
+      }
+
+      const rootRect = selectionRef.current?.content
+        ? getSelectionRect()
+        : getCaretRect()
+
+      // 修改悬浮输入菜单位置
       setFloatingDropdownMenu((prev) => {
-        if (prev.open) {
-          return {
-            ...prev,
-            rootRect,
-          }
+        return {
+          ...prev,
+          rootRect,
         }
-        return prev
       })
+
+      // 修改悬浮菜单按钮位置
       setRangy((prev) => {
-        if (prev.show) {
-          return {
-            ...prev,
-            tempSelection: prev.tempSelection
-              ? {
-                  ...prev.tempSelection,
-                  selectionRect: rootRect,
-                }
-              : prev.tempSelection,
-          }
+        return {
+          ...prev,
+          tempSelection: prev.tempSelection
+            ? {
+                ...prev.tempSelection,
+                selectionRect: rootRect,
+              }
+            : prev.tempSelection,
         }
-        return prev
       })
     }, 200)
 
-    control.editorElement.addEventListener('scroll', onScroll)
+    control.addListener(IGoogleDocEventType.SCROLL, onScroll)
     return () => {
-      control.editorElement?.removeEventListener('scroll', onScroll)
+      control.removeListener(IGoogleDocEventType.SCROLL, onScroll)
       onScroll.cancel()
     }
   }, [control])
@@ -173,43 +185,34 @@ const GoogleDocMask: FC = () => {
    * 处理选区/光标变化
    */
   useEffect(() => {
-    getRectRef.current = undefined
-
     // 有选区内容
     if (selection && selection.content) {
-      getRectRef.current = () =>
-        mergeRects(
-          Object.values(selectionRef.current)
-            .filter(Boolean)
-            .map((item) => item!.getBoundingClientRect().toJSON()),
-        )
-      postMessage(getRectRef.current(), selection.content)
+      postMessage(getSelectionRect(), selection.content)
+      return
+      // const timer = setTimeout(() => {
+      //   postMessage(getSelectionRect(), selection.content)
+      // }, 0)
+      // return () => clearTimeout(timer)
+    }
+
+    // 获取到焦点，准备好快捷键触发draft new text
+    if (caret && focus && control?.editable) {
+      postMessage(caret.rect, control?.getCaretBeforeContent(caret) || '', '')
       return
     }
 
     // 无选区内容判断是否需要清空
-    setRangy((prev) => {
-      if (prev.show) {
-        return {
-          show: false,
-          tempSelection: null,
-          currentSelection: null,
-        }
+    if (rangyRef.current.show) {
+      if (!control?.editable) {
+        postMessage(getSelectionRect(), '', '')
       }
-      return prev
-    })
-
-    // 获取到焦点，准备好快捷键触发draft new text
-    if (caret) {
-      postMessage(caret.rect, '')
-      const timer = setTimeout(() => {
-        postMessage(caret.rect, control?.getCaretBeforeContent(caret) || '', '')
-      }, 100)
-      return () => {
-        clearTimeout(timer)
-      }
+      setRangy({
+        show: false,
+        tempSelection: null,
+        currentSelection: null,
+      })
     }
-  }, [selection, caret])
+  }, [selection, caret, focus])
 
   /**
    * 模拟iframe触发context menu功能，此处添加监听处理各个insert事件
@@ -223,9 +226,6 @@ const GoogleDocMask: FC = () => {
         break
       case 'INSERT':
         control?.replaceSelection(value)
-        // setTimeout(() => {
-        //   control?.selectContent(-value.length)
-        // }, 0)
         break
       case 'INSERT_ABOVE':
         control?.insertAboveSelection(value)
@@ -240,7 +240,7 @@ const GoogleDocMask: FC = () => {
     <div>
       {selection?.layouts.map((item, i) => (
         <div
-          ref={(e) => (selectionRef.current[`${i}`] = e)}
+          ref={(e) => (selectionNodeRef.current[`${i}`] = e)}
           key={i}
           style={{
             position: 'absolute',
@@ -252,6 +252,7 @@ const GoogleDocMask: FC = () => {
       ))}
       {caret && (
         <div
+          ref={caretNodeRef}
           style={{
             position: 'absolute',
             border: '1px solid blue',

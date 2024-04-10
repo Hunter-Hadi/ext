@@ -8,9 +8,9 @@ import FeatureInstagramAssistantCard from '@/pages/settings/pages/help_me_write/
 import FeatureLinkedInAssistantCard from '@/pages/settings/pages/help_me_write/FeatureLinkedInAssistantCard'
 import FeatureOutlookAssistantCard from '@/pages/settings/pages/help_me_write/FeatureOutlookAssistantCard'
 import FeatureRedditAssistantCard from '@/pages/settings/pages/help_me_write/FeatureRedditAssistantCard'
-// import FeatureWhatsAppAssistantCard from '@/pages/settings/pages/help_me_write/FeatureWhatsAppAssistantCard'
 import FeatureSlackAssistantCard from '@/pages/settings/pages/help_me_write/FeatureSlackAssistantCard'
 import FeatureTwitterAssistantCard from '@/pages/settings/pages/help_me_write/FeatureTwitterAssistantCard'
+import FeatureWhatsAppAssistantCard from '@/pages/settings/pages/help_me_write/FeatureWhatsAppAssistantCard'
 import FeatureYouTubeAssistantCard from '@/pages/settings/pages/help_me_write/FeatureYouTubeAssistantCard'
 
 const SettingsHelpMeWritePage: FC = () => {
@@ -24,7 +24,7 @@ const SettingsHelpMeWritePage: FC = () => {
       <FeatureYouTubeAssistantCard />
       <FeatureInstagramAssistantCard />
       <FeatureRedditAssistantCard />
-      {/* <FeatureWhatsAppAssistantCard /> */}
+      <FeatureWhatsAppAssistantCard />
       <FeatureSlackAssistantCard />
       <FeatureDiscordAssistantCard />
     </Stack>

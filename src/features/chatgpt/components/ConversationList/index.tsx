@@ -306,6 +306,9 @@ const ConversationList: FC<IProps> = ({
                               event.stopPropagation();
                               if (event.key === 'Enter') { handleConversationRename(conversation, index) }
                             }}
+                            onPaste={(event) => {
+                              event.stopPropagation();
+                            }}
                             sx={{
                               width: '100%',
                               mt: '1.5px',

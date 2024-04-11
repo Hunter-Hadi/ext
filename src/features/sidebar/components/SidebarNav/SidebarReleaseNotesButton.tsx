@@ -18,6 +18,7 @@ const SidebarReleaseNotesButton = () => {
   const { t } = useTranslation(['common'])
 
   const [releaseModalOpen, setReleaseModalOpen] = React.useState(false)
+  const [firstLoadIframe, setFirstLoadIframe] = React.useState(false)
 
   const releaseNotesSrc = useMemo(() => {
     const colorParams = {
@@ -46,6 +47,7 @@ const SidebarReleaseNotesButton = () => {
           sx={{ flexShrink: 0, width: 'max-content' }}
           onClick={() => {
             setReleaseModalOpen(true)
+            setFirstLoadIframe(true)
           }}
         >
           <NotificationsNoneOutlinedIcon
@@ -57,7 +59,7 @@ const SidebarReleaseNotesButton = () => {
       </TextOnlyTooltip>
 
       <Drawer
-        keepMounted
+        keepMounted={firstLoadIframe}
         anchor={'bottom'}
         open={releaseModalOpen}
         onClose={handleReleaseModalClose}

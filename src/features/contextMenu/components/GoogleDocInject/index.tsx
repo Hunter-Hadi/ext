@@ -23,12 +23,12 @@ const GoogleDocInject: FC = () => {
 
     if (control.disabled) return
 
-    const onSelectionChange = (gDocSelection: IGoogleDocSelection | null) => {
-      setSelection(gDocSelection)
+    const onSelectionChange = (lastSelection: IGoogleDocSelection | null) => {
+      setSelection(lastSelection)
     }
 
-    const onCaretChange = (gDocCaret: IGoogleDocCaret | null) => {
-      setCaret(gDocCaret)
+    const onCaretChange = (lastCaret: IGoogleDocCaret | null) => {
+      setCaret(lastCaret)
     }
 
     const onFocus = () => {

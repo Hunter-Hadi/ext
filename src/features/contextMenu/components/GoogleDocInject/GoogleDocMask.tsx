@@ -1,6 +1,6 @@
 import { debounce } from 'lodash-es'
 import React, { FC, useCallback, useEffect, useRef } from 'react'
-import { useRecoilCallback, useRecoilState, useSetRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 } from 'uuid'
 
 import { useCreateClientMessageListener } from '@/background/utils'
@@ -15,7 +15,6 @@ import {
 } from '@/features/contextMenu'
 import { useGoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
 import { IGoogleDocEventType } from '@/features/contextMenu/utils/googleDocHelper'
-import { AppState } from '@/store'
 import { IRect, mergeRects } from '@/utils/rectUtils'
 
 const id = v4()
@@ -39,13 +38,13 @@ const GoogleDocMask: FC = () => {
   const selectionRef = useRef(selection)
   selectionRef.current = selection
 
-  const setFocus = useRecoilCallback(({ snapshot }) => () => {
-    const appState = snapshot.getInfo_UNSTABLE(AppState).loadable?.getValue()
-    // TODO 点击展示sidebar时应该不获取焦点，否则会闪烁一下
-    if (!appState?.loadedAppSidebar) {
-      control?.inputElement?.focus()
-    }
-  })
+  // const setFocus = useRecoilCallback(({ snapshot }) => () => {
+  //   const appState = snapshot.getInfo_UNSTABLE(AppState).loadable?.getValue()
+  //   // TODO 点击展示sidebar时应该不获取焦点，否则会闪烁一下
+  //   if (!appState?.loadedAppSidebar) {
+  //     control?.inputElement?.focus()
+  //   }
+  // })
 
   const getSelectionRect = useCallback(() => {
     return mergeRects(
@@ -185,14 +184,14 @@ const GoogleDocMask: FC = () => {
    * 处理选区/光标变化
    */
   useEffect(() => {
+    if (!focus) {
+      return
+    }
+
     // 有选区内容
     if (selection && selection.content) {
-      postMessage(getSelectionRect(), selection.content)
+      postMessage(mergeRects(selection.rects), selection.content)
       return
-      // const timer = setTimeout(() => {
-      //   postMessage(getSelectionRect(), selection.content)
-      // }, 0)
-      // return () => clearTimeout(timer)
     }
 
     // 获取到焦点，准备好快捷键触发draft new text

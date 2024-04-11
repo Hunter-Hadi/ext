@@ -69,7 +69,7 @@ export interface IGoogleDocCaret {
   rect: IGoogleDocRect
   layout: IGoogleDocLayout
   // text: IGoogleDocText | null
-  // index: number
+  // offset: number
 }
 
 export class GoogleDocControl extends EventEmitter {
@@ -104,6 +104,11 @@ export class GoogleDocControl extends EventEmitter {
 
   observer: MutationObserver | null = null
 
+  debounceCaretOrSelectionChange = debounce(() => {
+    this.checkCaretChange()
+    this.checkSelectionChange()
+  }, 20)
+
   constructor() {
     super()
     this.disabled = !location.href.startsWith(
@@ -133,25 +138,33 @@ export class GoogleDocControl extends EventEmitter {
     this.caretElement = document.querySelector('#kix-current-user-cursor-caret')
   }
 
-  _onScroll = () => {
+  _onScroll = (event: Event) => {
     log.info('onScroll')
-    this.emit(IGoogleDocEventType.SCROLL)
+    this.emit(IGoogleDocEventType.SCROLL, event)
   }
 
-  _onMouseUpOrKeyUp = (event: MouseEvent | KeyboardEvent) => {
-    log.info('onMouseUpOrKeyUp', event)
+  _onMouseUp = (event: MouseEvent) => {
+    log.info('onMouseUp')
     // 标记过滤useInitRang.ts里saveHighlightedRangeAndShowContextMenu的处理
     ;(event as any).MAX_AI_IGNORE = true
+    this.emit(IGoogleDocEventType.MOUSEUP, event)
   }
 
-  _onFocus = () => {
+  onKeyUp = (event: KeyboardEvent) => {
+    log.info('onKeyUp')
+    // 标记过滤useInitRang.ts里saveHighlightedRangeAndShowContextMenu的处理
+    ;(event as any).MAX_AI_IGNORE = true
+    this.emit(IGoogleDocEventType.KEYUP, event)
+  }
+
+  _onFocus = (event: FocusEvent) => {
     log.info('onFocus')
-    this.emit(IGoogleDocEventType.FOCUS)
+    this.emit(IGoogleDocEventType.FOCUS, event)
   }
 
-  _onBlur = () => {
+  _onBlur = (event: FocusEvent) => {
     log.info('onBlur')
-    this.emit(IGoogleDocEventType.BLUR)
+    this.emit(IGoogleDocEventType.BLUR, event)
   }
 
   initListener() {
@@ -159,10 +172,6 @@ export class GoogleDocControl extends EventEmitter {
     //   '.kix-rotatingtilemanager-content',
     // )
     const cursorElement = document.querySelector('div.kix-cursor')
-    const debounceCaretOrSelectionChange = debounce(() => {
-      this.checkCaretChange()
-      this.checkSelectionChange()
-    }, 20)
     this.observer = new MutationObserver((mutations) => {
       if (
         mutations.some((item) =>
@@ -170,7 +179,7 @@ export class GoogleDocControl extends EventEmitter {
         )
       ) {
         log.info('光标移动')
-        debounceCaretOrSelectionChange()
+        this.debounceCaretOrSelectionChange()
       }
       // if (
       //   mutations.find((item) =>
@@ -201,8 +210,8 @@ export class GoogleDocControl extends EventEmitter {
       })
     }
     this.editorElement?.addEventListener('scroll', this._onScroll)
-    this.editorElement?.addEventListener('mouseup', this._onMouseUpOrKeyUp)
-    this.inputElement?.addEventListener('keyup', this._onMouseUpOrKeyUp)
+    this.editorElement?.addEventListener('mouseup', this._onMouseUp)
+    this.inputElement?.addEventListener('keyup', this.onKeyUp)
     this.inputElement?.addEventListener('focus', this._onFocus)
     this.inputElement?.addEventListener('blur', this._onBlur)
   }
@@ -211,13 +220,18 @@ export class GoogleDocControl extends EventEmitter {
     this.initialized = false
     this.observer?.disconnect()
     this.editorElement?.addEventListener('scroll', this._onScroll)
-    this.editorElement?.removeEventListener('mouseup', this._onMouseUpOrKeyUp)
-    this.inputElement?.removeEventListener('keyup', this._onMouseUpOrKeyUp)
+    this.editorElement?.removeEventListener('mouseup', this._onMouseUp)
+    this.inputElement?.removeEventListener('keyup', this.onKeyUp)
     this.inputElement?.removeEventListener('focus', this._onFocus)
     this.inputElement?.removeEventListener('blur', this._onBlur)
     this.removeAllListeners()
   }
 
+  /**
+   * 判断两个选区位置是否有变化
+   * @param selection1
+   * @param selection2
+   */
   isSelectionChange(
     selection1: IGoogleDocSelection | null,
     selection2: IGoogleDocSelection | null,
@@ -236,6 +250,11 @@ export class GoogleDocControl extends EventEmitter {
     return true
   }
 
+  /**
+   * 判断两个光标位置是否有变化
+   * @param caret1
+   * @param caret2
+   */
   isCaretChange(
     caret1: IGoogleDocCaret | null,
     caret2: IGoogleDocCaret | null,
@@ -247,10 +266,16 @@ export class GoogleDocControl extends EventEmitter {
     return true
   }
 
+  /**
+   * 是否获取焦点
+   */
   isFocus() {
     return document.activeElement === this.iframeElement
   }
 
+  /**
+   * 检测当前选区变化
+   */
   checkSelectionChange() {
     const selection = this.getCurrentSelection()
     if (this.isSelectionChange(selection, this.lastSelection)) {
@@ -259,6 +284,9 @@ export class GoogleDocControl extends EventEmitter {
     }
   }
 
+  /**
+   * 检测当前光标变化
+   */
   checkCaretChange() {
     const caret = this.getCurrentCaret()
     if (this.isCaretChange(caret, this.lastCaret)) {
@@ -267,6 +295,10 @@ export class GoogleDocControl extends EventEmitter {
     }
   }
 
+  /**
+   * 计算相对于scrollElement的位置
+   * @param rect
+   */
   calculateRelativeLayout(rect: IGoogleDocRect) {
     if (!this.scrollElement) {
       return emptyRect
@@ -362,7 +394,7 @@ export class GoogleDocControl extends EventEmitter {
 
   /**
    * 选择当前光标附近的内容
-   * @param length
+   * @param length 负数为选择之前 正数为选择之后
    */
   selectContent(length: number) {
     if (!this.editorElement || !this.inputElement) return
@@ -422,9 +454,9 @@ export class GoogleDocControl extends EventEmitter {
             lastText = text
           } else if (isPointInRects(x, y, [text.rect])) {
             // 光标位于当前文本内
-            const index = this.getCaretIndex(text, caret.rect)
-            if (index > 0) {
-              const content = text.content.slice(0, index)
+            const offset = this.getCaretOffset(text, caret.rect)
+            if (offset > 0) {
+              const content = text.content.slice(0, offset)
               paragraphContent += content
             }
             return true
@@ -504,85 +536,6 @@ export class GoogleDocControl extends EventEmitter {
     )
   }
 
-  parseTextElement(element: Element): IGoogleDocText {
-    const content = element.getAttribute('aria-label') || ''
-    const css = element.getAttribute('data-font-css') || ''
-    const [fontWeight, fontSize, fontFamily] = css.split(' ')
-    const rect = element.getBoundingClientRect().toJSON()
-    const layout = this.calculateRelativeLayout(rect)
-    return {
-      element,
-      content,
-      rect,
-      layout,
-      style: {
-        top: layout.top,
-        left: layout.left,
-        width: layout.width,
-        height: layout.height,
-        fontWeight,
-        fontSize,
-        fontFamily: fontFamily?.replaceAll('"', ''),
-      },
-    }
-  }
-
-  parseParagraphElement(element: Element): IGoogleDocParagraph {
-    const rect = element.getBoundingClientRect().toJSON()
-    const layout = this.calculateRelativeLayout(rect)
-    const texts = this.getTextElements(element).map((item) =>
-      this.parseTextElement(item),
-    )
-    return {
-      element,
-      rect,
-      layout,
-      texts,
-      style: {
-        top: layout.top,
-        left: layout.left,
-        width: layout.width,
-        height: layout.height,
-      },
-    }
-  }
-
-  getSelectionElements() {
-    if (!this.editorElement) return []
-    return Array.from(
-      this.editorElement.querySelectorAll('.kix-canvas-tile-selection rect'),
-    ).filter(
-      (item) =>
-        item.parentElement?.tagName !== 'clipPath' &&
-        ['rgba(118,167,250,0.5)', 'rgba(0,0,0,0.15)'].includes(
-          item.getAttribute('fill') || '',
-        ),
-    )
-  }
-
-  getParagraphElements() {
-    if (!this.editorElement) return []
-    return Array.from(
-      this.editorElement.querySelectorAll(
-        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"]',
-      ),
-    )
-  }
-
-  getTextElements(paragraphElement?: Element): Element[] {
-    if (paragraphElement) {
-      return Array.from(paragraphElement.querySelectorAll('rect')).filter(
-        (item) => item.parentElement?.tagName !== 'clipPath',
-      )
-    }
-    if (!this.editorElement) return []
-    return Array.from(
-      this.editorElement.querySelectorAll(
-        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"] rect',
-      ),
-    ).filter((item) => item.parentElement?.tagName !== 'clipPath')
-  }
-
   /**
    * 获取当前选区
    */
@@ -645,36 +598,12 @@ export class GoogleDocControl extends EventEmitter {
     }
   }
 
-  getTextElementFromPoint(x: number, y: number) {
-    const paragraphElement = this.getParagraphElements().find((item) =>
-      isPointInRects(x, y, [item.getBoundingClientRect()]),
-    )
-    if (!paragraphElement) return null
-    return this.getTextElements(paragraphElement).find((item) =>
-      isPointInRects(x, y, [item.getBoundingClientRect()]),
-    )
-  }
-
-  getElementFromPoint(x: number, y: number) {
-    if (!this.styleElement) {
-      this.styleElement = document.createElement('style')
-      this.styleElement.id = 'enable-pointer-events-on-rect'
-      this.styleElement.textContent = [
-        `.kix-canvas-tile-content{pointer-events:none!important;}`,
-        `#kix-current-user-cursor-caret{pointer-events:none!important;}`,
-        `.kix-canvas-tile-content svg>g>rect{pointer-events:all!important; stroke-width:7px !important;}`,
-      ].join('\n')
-      ;(document.head || document.documentElement).appendChild(
-        this.styleElement,
-      )
-    }
-    this.styleElement.disabled = false
-    const element = document.elementFromPoint(x, y)
-    this.styleElement.disabled = true
-    return element
-  }
-
-  getCaretIndex(text: IGoogleDocText, caretRect: IGoogleDocRect) {
+  /**
+   * 获取光标位于当前文本节点的位置
+   * @param text
+   * @param caretRect
+   */
+  getCaretOffset(text: IGoogleDocText, caretRect: IGoogleDocRect) {
     const { left, top, width, height } = caretRect
     const x = left + width / 2
     const y = top + height / 2
@@ -732,6 +661,148 @@ export class GoogleDocControl extends EventEmitter {
     return offset
   }
 
+  /**
+   * 构造IGoogleDocText
+   * @param element
+   */
+  parseTextElement(element: Element): IGoogleDocText {
+    const content = element.getAttribute('aria-label') || ''
+    const css = element.getAttribute('data-font-css') || ''
+    const [fontWeight, fontSize, fontFamily] = css.split(' ')
+    const rect = element.getBoundingClientRect().toJSON()
+    const layout = this.calculateRelativeLayout(rect)
+    return {
+      element,
+      content,
+      rect,
+      layout,
+      style: {
+        top: layout.top,
+        left: layout.left,
+        width: layout.width,
+        height: layout.height,
+        fontWeight,
+        fontSize,
+        fontFamily: fontFamily?.replaceAll('"', ''),
+      },
+    }
+  }
+
+  /**
+   * 构造IGoogleDocParagraph
+   * @param element
+   */
+  parseParagraphElement(element: Element): IGoogleDocParagraph {
+    const rect = element.getBoundingClientRect().toJSON()
+    const layout = this.calculateRelativeLayout(rect)
+    const texts = this.getTextElements(element).map((item) =>
+      this.parseTextElement(item),
+    )
+    return {
+      element,
+      rect,
+      layout,
+      texts,
+      style: {
+        top: layout.top,
+        left: layout.left,
+        width: layout.width,
+        height: layout.height,
+      },
+    }
+  }
+
+  /**
+   * 获取当前画布下的注释选区元素
+   */
+  getSelectionElements() {
+    if (!this.editorElement) return []
+    return Array.from(
+      this.editorElement.querySelectorAll('.kix-canvas-tile-selection rect'),
+    ).filter(
+      (item) =>
+        item.parentElement?.tagName !== 'clipPath' &&
+        ['rgba(118,167,250,0.5)', 'rgba(0,0,0,0.15)'].includes(
+          item.getAttribute('fill') || '',
+        ),
+    )
+  }
+
+  /**
+   * 获取当前画布下的注释段落元素
+   */
+  getParagraphElements() {
+    if (!this.editorElement) return []
+    return Array.from(
+      this.editorElement.querySelectorAll(
+        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"]',
+      ),
+    )
+  }
+
+  /**
+   * 获取当前画布/段落下的注释文本元素
+   * @param paragraphElement
+   */
+  getTextElements(paragraphElement?: Element): Element[] {
+    if (paragraphElement) {
+      return Array.from(paragraphElement.querySelectorAll('rect')).filter(
+        (item) => item.parentElement?.tagName !== 'clipPath',
+      )
+    }
+    if (!this.editorElement) return []
+    return Array.from(
+      this.editorElement.querySelectorAll(
+        'canvas ~ .kix-canvas-tile-content:not(.kix-canvas-tile-selection) g[role="paragraph"] rect',
+      ),
+    ).filter((item) => item.parentElement?.tagName !== 'clipPath')
+  }
+
+  /**
+   * 根据坐标获取当前的注释文本元素
+   * @param x
+   * @param y
+   */
+  getTextElementFromPoint(x: number, y: number) {
+    const paragraphElement = this.getParagraphElements().find((item) =>
+      isPointInRects(x, y, [item.getBoundingClientRect()]),
+    )
+    if (!paragraphElement) return null
+    return this.getTextElements(paragraphElement).find((item) =>
+      isPointInRects(x, y, [item.getBoundingClientRect()]),
+    )
+  }
+
+  /**
+   * 根据坐标获取当前元素
+   * @deprecated 此方法不再使用，如果元素上方有其他元素遮挡没法获取
+   * @param x
+   * @param y
+   */
+  getElementFromPoint(x: number, y: number) {
+    if (!this.styleElement) {
+      this.styleElement = document.createElement('style')
+      this.styleElement.id = 'enable-pointer-events-on-rect'
+      this.styleElement.textContent = [
+        `.kix-canvas-tile-content{pointer-events:none!important;}`,
+        `#kix-current-user-cursor-caret{pointer-events:none!important;}`,
+        `.kix-canvas-tile-content svg>g>rect{pointer-events:all!important; stroke-width:7px !important;}`,
+      ].join('\n')
+      ;(document.head || document.documentElement).appendChild(
+        this.styleElement,
+      )
+    }
+    this.styleElement.disabled = false
+    const element = document.elementFromPoint(x, y)
+    this.styleElement.disabled = true
+    return element
+  }
+
+  /**
+   * 创建一个注释文本元素的dom节点，利用document.createRange去计算光标位置
+   * @param element
+   * @param textNode
+   */
   createTextOverlay(element: Element, textNode: any) {
     if (!element || element.tagName !== 'rect') return null
 

@@ -4,7 +4,7 @@ import ChatMessagesContext, {
 import {
   findParentEqualSelector,
   findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+} from '@/utils/dataHelper/elementHelper'
 
 const getDirectMessageUserRegExp = /^(.*?) \(.*\)$/
 

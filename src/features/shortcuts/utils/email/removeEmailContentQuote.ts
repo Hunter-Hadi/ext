@@ -5,7 +5,7 @@
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const removeEmailContentQuote = (
-  emailContentHtmlElement: HTMLElement,
+  emailContentHtmlElement: HTMLElement | null,
 ) => {
   if (!emailContentHtmlElement) {
     return ''

@@ -2,16 +2,16 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import {
-  delayAndScrollToInputAssistantButton,
-  findParentEqualSelector,
-  findSelectorParent,
-  findSelectorParentStrict,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import { delayAndScrollToInputAssistantButton } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ICommentData,
   ISocialMediaPost,
 } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+  findSelectorParentStrict,
+} from '@/utils/dataHelper/elementHelper'
 
 // 获取Facebook帖子的作者，日期，内容
 const getFacebookPostData = async (

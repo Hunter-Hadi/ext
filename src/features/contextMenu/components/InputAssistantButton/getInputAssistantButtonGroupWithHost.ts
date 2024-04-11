@@ -6,7 +6,7 @@ import { getTwitterInputAssistantButtonRootContainer } from '@/features/shortcut
 import {
   findParentEqualSelector,
   findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+} from '@/utils/dataHelper/elementHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 type getWritingAssistantButtonGroupWithHostConfig = {

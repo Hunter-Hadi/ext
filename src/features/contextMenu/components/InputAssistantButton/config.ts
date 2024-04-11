@@ -3,11 +3,11 @@ import { SxProps } from '@mui/material/styles'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
+import { I18nextKeysType } from '@/i18next'
 import {
   findParentEqualSelector,
   findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
-import { I18nextKeysType } from '@/i18next'
+} from '@/utils/dataHelper/elementHelper'
 
 import {
   type IInputAssistantButtonObserverData,

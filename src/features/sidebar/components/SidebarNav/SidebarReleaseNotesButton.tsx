@@ -29,10 +29,8 @@ const SidebarReleaseNotesButton = () => {
 
     const colorParamsStr = new URLSearchParams(colorParams).toString()
 
-    return `${WWW_PROJECT_HOST}/release-notes?${colorParamsStr}`
+    return `${WWW_PROJECT_HOST}/release-notes/?${colorParamsStr}`
   }, [theme])
-
-  console.log(`releaseNotesSrc`, releaseNotesSrc)
 
   const handleReleaseModalClose = () => {
     setReleaseModalOpen(false)

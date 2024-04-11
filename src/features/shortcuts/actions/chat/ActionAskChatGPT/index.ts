@@ -3,7 +3,7 @@ import last from 'lodash-es/last'
 import { v4 as uuidV4 } from 'uuid'
 
 import {
-  checkISMaxAIInHouseAIProvider,
+  checkISThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
@@ -256,7 +256,7 @@ export class ActionAskChatGPT extends Action {
           if (conversation) {
             const AIModel = conversation.meta?.AIModel
             const AIProvider = conversation.meta?.AIProvider
-            if (!AIProvider || checkISMaxAIInHouseAIProvider(AIProvider)) {
+            if (!AIProvider || checkISThirdPartyAIProvider(AIProvider)) {
               // 确认是third-party AI provider, 需要获取默认的prompt
               const result = await clientFetchMaxAIAPI<{
                 data?: {

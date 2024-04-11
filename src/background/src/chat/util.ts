@@ -552,14 +552,11 @@ export const processAskAIParameters = async (
   }
 }
 /**
- * 判断是否是MaxAI的AIProvider
+ * 判断是否是第三方的AI provider
  * @param AIProvider
  */
-export const checkISMaxAIInHouseAIProvider = (AIProvider: IAIProviderType) => {
-  if (!AIProvider) {
-    return false
-  }
-  return ![
+export const checkISThirdPartyAIProvider = (AIProvider: IAIProviderType) => {
+  return [
     'OPENAI',
     'OPENAI_API',
     'BING',

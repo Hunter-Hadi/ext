@@ -64,7 +64,7 @@ const SidebarPromotionDialog = () => {
       // 弹过了，不弹窗
       if (
         onBoardingData[
-          ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY
+        ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY
         ]
       ) {
         return
@@ -106,14 +106,14 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item4__title'),
         description: t('sidebar__promotion_dialog__content_item4__description'),
       },
-      {
-        title: t('sidebar__promotion_dialog__content_item5__title'),
-        description: t('sidebar__promotion_dialog__content_item5__description'),
-      },
-      {
-        title: t('sidebar__promotion_dialog__content_item6__title'),
-        description: t('sidebar__promotion_dialog__content_item6__description'),
-      },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item5__title'),
+      //   description: t('sidebar__promotion_dialog__content_item5__description'),
+      // },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item6__title'),
+      //   description: t('sidebar__promotion_dialog__content_item6__description'),
+      // },
     ]
   }, [t])
 

@@ -44,7 +44,8 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           ].includes(clientConversation.meta.AIModel),
       )
       if (
-        clientConversation.type === 'Chat' &&
+        (clientConversation.type === 'Chat' ||
+          clientConversation.type === 'ContextMenu') &&
         clientConversation?.meta?.AIModel &&
         [
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
@@ -55,6 +56,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         ].includes(clientConversation.meta.AIModel)
       ) {
         if (resolveRef.current) {
+          debugger
           resolveRef.current(true)
           resolveRef.current = undefined
         }
@@ -74,43 +76,45 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     ) {
       updateSidebarConversationType('Chat')
     }
-    let needWaitCreateConversation = false
-    if (clientConversation) {
-      if (
-        !clientConversation?.meta?.AIModel ||
-        ![
-          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-          'claude-3-sonnet',
-          'claude-3-opus',
-          'claude-3-haiku',
-          'gemini-pro',
-        ].includes(clientConversation?.meta?.AIModel)
-      ) {
-        needWaitCreateConversation = true
-
+    // eslint-disable-next-line no-async-promise-executor
+    await new Promise(async (resolve) => {
+      if (resolveRef.current) {
+        resolveRef.current(true)
+      }
+      resolveRef.current = resolve
+      debugger
+      if (clientConversation) {
+        if (
+          !clientConversation?.meta?.AIModel ||
+          ![
+            MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            'claude-3-sonnet',
+            'claude-3-opus',
+            'claude-3-haiku',
+            'gemini-pro',
+          ].includes(clientConversation?.meta?.AIModel)
+        ) {
+          await createConversation(
+            clientConversation.type,
+            'USE_CHAT_GPT_PLUS',
+            MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+          )
+          return
+        }
+      } else {
         await createConversation(
-          clientConversation.type,
+          'Chat',
           'USE_CHAT_GPT_PLUS',
           MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
         )
+        return
       }
-    } else {
-      needWaitCreateConversation = true
-      await createConversation(
-        'Chat',
-        'USE_CHAT_GPT_PLUS',
-        MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-      )
-    }
-    debugger
-    if (needWaitCreateConversation) {
-      await new Promise((resolve) => {
-        if (resolveRef.current) {
-          resolveRef.current(true)
-        }
-        resolveRef.current = resolve
-      })
-    }
+      if (resolveRef.current) {
+        debugger
+        resolveRef.current(true)
+        resolveRef.current = undefined
+      }
+    })
     debugger
     const existFilesCount = files?.length || 0
     const maxFiles = AIProviderConfig?.maxCount || 1

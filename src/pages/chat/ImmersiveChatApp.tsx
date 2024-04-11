@@ -12,10 +12,10 @@ import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
+import SidebarPage from '@/pages/sidebar'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
-const NormalChatPage = React.lazy(() => import('@/pages/sidebar'))
 const App: FC = () => {
   const { isShowActivityBanner } = useActivity()
   return (
@@ -93,7 +93,7 @@ const App: FC = () => {
               />
 
               <Stack mx={'auto'} height={'100%'} maxWidth={768} width={'100vw'}>
-                <NormalChatPage />
+                <SidebarPage isImmersiveChat open />
               </Stack>
             </Stack>
           </AppSuspenseLoadingLayout>

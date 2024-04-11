@@ -10,6 +10,7 @@ import { atomFamily, useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { resetChromeExtensionOnBoardingData } from '@/background/utils'
+import { resetChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
@@ -221,6 +222,13 @@ const DevConsole: FC<{
                 }}
               >
                 Reset OnBoarding
+              </Button>
+              <Button
+                onClick={async (event) => {
+                  await resetChromeExtensionLocalStorage()
+                }}
+              >
+                Reset Default
               </Button>
             </Stack>
             <p>authStatus: {conversationStatus}</p>

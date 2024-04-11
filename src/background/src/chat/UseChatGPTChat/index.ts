@@ -1,3 +1,4 @@
+import cloneDeep from 'lodash-es/cloneDeep'
 import isNumber from 'lodash-es/isNumber'
 import Browser from 'webextension-polyfill'
 
@@ -117,11 +118,10 @@ class UseChatGPTPlusChat extends BaseChat {
         })
       return
     }
-
+    let backendAPI = options?.backendAPI || 'get_chatgpt_response'
     const {
       taskId,
       doc_id,
-      backendAPI = 'get_chatgpt_response',
       streaming = true,
       chat_history = [],
       meta,
@@ -139,7 +139,7 @@ class UseChatGPTPlusChat extends BaseChat {
       temperature = meta.temperature
     }
     temperature = Math.min(temperature, 1.2)
-    const postBody = Object.assign(
+    let postBody = Object.assign(
       {
         chat_history,
         streaming,
@@ -201,6 +201,28 @@ class UseChatGPTPlusChat extends BaseChat {
     if (backendAPI === 'get_summarize_response') {
       // 后端会自动调整model
       delete (postBody as any).model_name
+    }
+    // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
+    // TODO 暂时关闭
+    const go = false
+    if (options?.meta?.MaxAIPromptActionConfig && go) {
+      backendAPI = 'use_prompt_action'
+      const clonePostBody: any = cloneDeep(postBody)
+      // 去掉message_content
+      delete clonePostBody.message_content
+      clonePostBody.prompt_id = options.meta.MaxAIPromptActionConfig.promptId
+      clonePostBody.prompt_name =
+        options.meta.MaxAIPromptActionConfig.promptName
+      clonePostBody.prompt_inputs =
+        options.meta.MaxAIPromptActionConfig.variables.reduce<
+          Record<string, string>
+        >((variableMap, variable) => {
+          if (variable.VariableName && variable.defaultValue) {
+            variableMap[variable.VariableName] = variable.defaultValue
+          }
+          return variableMap
+        }, {})
+      postBody = clonePostBody
     }
     const controller = new AbortController()
     const signal = controller.signal

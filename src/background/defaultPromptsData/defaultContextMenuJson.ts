@@ -29,22 +29,47 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '0607ffb9-e0fb-41b5-9e02-afabff22acb6',
+              promptName: 'Like',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'Text',
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'Text',
+                },
+                {
+                  label: 'The language preference',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'Text',
+                },
+                {
+                  label: 'The writing style preference',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'Text',
+                },
+                {
+                  label: 'The writing tone preference',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'Text',
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'Text',
+                },
+              ],
+            },
           },
         },
       ],

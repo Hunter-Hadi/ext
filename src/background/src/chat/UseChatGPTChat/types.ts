@@ -12,6 +12,11 @@ export type IMaxAIChatGPTBackendAPIType =
   | 'chat_with_document'
   | 'get_chatgpt_response'
   | 'get_summarize_response'
+  | 'get_gemini_response'
+  | 'get_freeai_chat_response'
+  | 'get_claude_response'
+  | 'get_image_generate_response'
+  | 'use_prompt_action'
 
 export type IMaxAIChatMessageContentType = 'text' | 'image_url'
 

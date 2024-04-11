@@ -1,7 +1,11 @@
+import lodashGet from 'lodash-es/get'
 import last from 'lodash-es/last'
 import { v4 as uuidV4 } from 'uuid'
 
-import { clientAskAIQuestion } from '@/background/src/chat/util'
+import {
+  checkISMaxAIInHouseAIProvider,
+  clientAskAIQuestion,
+} from '@/background/src/chat/util'
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import {
@@ -31,7 +35,10 @@ import {
 } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
-import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
+import {
+  chatGPTCommonErrorInterceptor,
+  clientFetchMaxAIAPI,
+} from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
@@ -59,6 +66,11 @@ export class ActionAskChatGPT extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      const {
+        clientConversationEngine,
+        shortcutsMessageChannelEngine,
+        clientMessageChannelEngine,
+      } = engine
       const askChatGPTType =
         this.parameters.AskChatGPTActionType || 'ASK_CHAT_GPT'
       // 是否启用了Response指定语言语言
@@ -66,7 +78,7 @@ export class ActionAskChatGPT extends Action {
         this.parameters.isEnabledDetectAIResponseLanguage !== false
       const conversationId =
         this.parameters.AskChatGPTActionQuestion?.conversationId ||
-        engine.clientConversationEngine?.currentConversationIdRef?.current ||
+        clientConversationEngine?.currentConversationIdRef?.current ||
         ''
       const text = String(
         this.parameters.AskChatGPTActionQuestion?.text ||
@@ -162,11 +174,6 @@ export class ActionAskChatGPT extends Action {
         }
       }
       this.question.meta.messageVisibleText = messageVisibleText
-      const {
-        clientConversationEngine,
-        shortcutsMessageChannelEngine,
-        clientMessageChannelEngine,
-      } = engine
       if (
         clientConversationEngine &&
         clientMessageChannelEngine &&
@@ -218,6 +225,63 @@ export class ActionAskChatGPT extends Action {
           )
         }
         // 开始提问
+        const MaxAIPromptActionConfig =
+          this.parameters.MaxAIPromptActionConfig ||
+          this.question?.meta?.MaxAIPromptActionConfig
+        // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider
+        if (MaxAIPromptActionConfig) {
+          // 更新variables和output的值
+          MaxAIPromptActionConfig.variables =
+            MaxAIPromptActionConfig.variables.map((variable) => {
+              variable.defaultValue = lodashGet(
+                params,
+                variable.VariableName,
+                variable.defaultValue || '',
+              )
+              return variable
+            })
+          MaxAIPromptActionConfig.output = MaxAIPromptActionConfig.output.map(
+            (variable) => {
+              variable.defaultValue = lodashGet(
+                params,
+                variable.VariableName,
+                variable.defaultValue || '',
+              )
+              return variable
+            },
+          )
+          this.question.meta.MaxAIPromptActionConfig = MaxAIPromptActionConfig
+          const conversation =
+            await clientConversationEngine.getCurrentConversation()
+          if (conversation) {
+            const AIModel = conversation.meta?.AIModel
+            const AIProvider = conversation.meta?.AIProvider
+            if (!AIProvider || checkISMaxAIInHouseAIProvider(AIProvider)) {
+              // 确认是third-party AI provider, 需要获取默认的prompt
+              const result = await clientFetchMaxAIAPI<{
+                data?: {
+                  prompt_template: string
+                }
+                status: string
+              }>(`/gpt/render_prompt_action`, {
+                prompt_id: MaxAIPromptActionConfig.promptId,
+                model_name: 'webapp-chatgpt-3.5' || AIModel,
+              })
+              if (
+                result.data?.status === 'OK' &&
+                result.data.data?.prompt_template
+              ) {
+                // 更新提问的prompt
+                this.question.text = (
+                  await this.parseTemplate(
+                    result.data.data.prompt_template,
+                    params,
+                  )
+                ).data
+              }
+            }
+          }
+        }
         // 发消息之前记录总数
         await increaseChatGPTRequestCount('total')
         // 发消息之前记录prompt/chat

@@ -1,8 +1,10 @@
+import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
 import { ChatStatus } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
+  IMaxAIChatGPTBackendAPIType,
   IMaxAIChatMessageContent,
   IMaxAIRequestHistoryMessage,
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
@@ -19,7 +21,10 @@ import {
 } from '@/constants'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
-import { IChatUploadFile } from '@/features/chatgpt/types'
+import {
+  IChatMessageExtraMetaType,
+  IChatUploadFile,
+} from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 
 const log = new Log('Background/Chat/MaxAIDALLEChat')
@@ -80,7 +85,7 @@ class MaxAIDALLEChat extends BaseChat {
       taskId: string
       regenerate?: boolean
       chat_history?: IMaxAIRequestHistoryMessage[]
-      meta?: Record<string, any>
+      meta?: IChatMessageExtraMetaType
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -92,6 +97,7 @@ class MaxAIDALLEChat extends BaseChat {
       }
     }) => void,
   ) {
+    let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_image_generate_response'
     await this.checkTokenAndUpdateStatus()
     if (this.status !== 'success') {
       onMessage &&
@@ -116,9 +122,40 @@ class MaxAIDALLEChat extends BaseChat {
     }
     try {
       if (chat_history?.find((history) => history.role === 'system')) {
+        backendAPI = 'get_chatgpt_response'
+        let postBody = {
+          streaming: false,
+          chat_history,
+          message_content,
+          chrome_extension_version: APP_VERSION,
+          model_name: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+          prompt_id: meta?.contextMenu?.id || 'chat',
+          prompt_name: meta?.contextMenu?.text || 'chat',
+        }
+        // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
+        if (options?.meta?.MaxAIPromptActionConfig) {
+          backendAPI = 'use_prompt_action'
+          const clonePostBody: any = cloneDeep(postBody)
+          // 去掉message_content
+          delete clonePostBody.message_content
+          clonePostBody.prompt_id =
+            options.meta.MaxAIPromptActionConfig.promptId
+          clonePostBody.prompt_name =
+            options.meta.MaxAIPromptActionConfig.promptName
+          clonePostBody.prompt_inputs =
+            options.meta.MaxAIPromptActionConfig.variables.reduce<
+              Record<string, string>
+            >((variableMap, variable) => {
+              if (variable.VariableName && variable.defaultValue) {
+                variableMap[variable.VariableName] = variable.defaultValue
+              }
+              return variableMap
+            }, {})
+          postBody = clonePostBody
+        }
         // 说明需要转换自然语言为prompt
         const result = await fetch(
-          `${APP_USE_CHAT_GPT_API_HOST}/gpt/get_chatgpt_response`,
+          `${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`,
           {
             method: 'POST',
             signal,
@@ -126,15 +163,7 @@ class MaxAIDALLEChat extends BaseChat {
               'Content-Type': 'application/json',
               Authorization: `Bearer ${this.token}`,
             },
-            body: JSON.stringify({
-              streaming: false,
-              chat_history,
-              message_content,
-              chrome_extension_version: APP_VERSION,
-              model_name: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
-              prompt_id: meta?.contextMenu?.id || 'chat',
-              prompt_name: meta?.contextMenu?.text || 'chat',
-            }),
+            body: JSON.stringify(postBody),
           },
         ).then((res) => res.json())
         if (result.status === 'OK') {

@@ -551,3 +551,21 @@ export const processAskAIParameters = async (
     }
   }
 }
+/**
+ * 判断是否是MaxAI的AIProvider
+ * @param AIProvider
+ */
+export const checkISMaxAIInHouseAIProvider = (AIProvider: IAIProviderType) => {
+  if (!AIProvider) {
+    return false
+  }
+  return ![
+    'OPENAI',
+    'OPENAI_API',
+    'BING',
+    'BARD',
+    'CLAUDE',
+    'POE',
+    'USE_CHAT_GPT_PLUS',
+  ].includes(AIProvider)
+}

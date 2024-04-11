@@ -328,6 +328,7 @@ const ConversationList: FC<IProps> = ({
                           noWrap
                           width={0}
                           flex={1}
+                          textAlign={'left'}
                         >
                           {conversationDisplaysText}
                         </Typography>

@@ -15,8 +15,11 @@ const whatsAppGetDataFromQuotedMessage = (
   let content = ''
   if (quotedMessage) {
     // if has testid, it means the reply target is not `me`
-    const isOthersReply =
-      quotedMessage.querySelector<HTMLElement>('[testid="author"]')
+    // 24.04.10 update: the testid is not reliable
+    // quotedMessage.querySelector<HTMLElement>('[testid="author"]')
+    const isOthersReply = quotedMessage.querySelector<HTMLElement>(
+      '[role]:has(+ div > .quoted-mention) > span:nth-child(1):not([aria-label])',
+    )
     if (isOthersReply) {
       user = isOthersReply?.innerText || ''
     }
@@ -55,9 +58,9 @@ const whatsAppGetMessageData = (
         const quotedMessage = whatsAppGetDataFromQuotedMessage(
           findParentEqualSelector('[aria-label]', quotedMention.parentElement!),
         )
-        messageData.extraLabel = `${username} is replying to ${
+        messageData.extraLabel = `this message is replying to ${
           quotedMessage.user || myUsername
-        }'s message content: ${quotedMessage.content}`
+        }'s message: ${quotedMessage.content}`
       }
 
       return messageData
@@ -91,7 +94,7 @@ const whatsAppGetChatMessagesFromNodeList = (
 
       // if the chatroomName is the same as the username, it means it's a private chat
       if (configs.chatroomName === messageData.user) {
-        configs.chatroomName = `Chat with ${messageData.user}`
+        configs.chatroomName = `Chatting with ${messageData.user}`
       }
 
       messages.push(messageData)
@@ -103,7 +106,7 @@ const whatsAppGetChatMessagesFromNodeList = (
 export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
   const chatroomName =
     document.querySelector<HTMLElement>(
-      'header > [title="Profile Details"] + [role="button"] [aria-label]:not([title])',
+      '#main header > [title] + [role="button"] [aria-label]:not([title])',
     )?.innerText || ''
   const configs = {
     serverName: '',

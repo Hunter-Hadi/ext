@@ -214,7 +214,15 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       },
     },
     {
-      enable: true,
+      enable: (rootElement) => {
+        const replyButtonDisabled = rootElement
+          .querySelector('button')
+          ?.getAttribute('disabled')
+        if (replyButtonDisabled === '' || replyButtonDisabled) {
+          return false
+        }
+        return true
+      },
       rootSelectors: ['.th6py'],
       rootParentDeep: 0,
       rootStyle: 'overflow: unset;',

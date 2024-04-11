@@ -71,9 +71,8 @@ const translateValue = async (translateJson, from, to, logPrefix) => {
           } catch (e) {
             debug && console.log('33333')
             // 第三次尝试,替换文本中错误的冒号
-            const errorColon = JSON.stringify(jsonText).match(
-              /"(?<colon>.)\s?{/,
-            )?.groups?.colon
+            const errorColon =
+              JSON.stringify(jsonText).match(/"(?<colon>.)\s?{/)?.groups?.colon
             if (errorColon) {
               const jsonText3 = jsonText.replaceAll(errorColon, ':')
               data = JSON.parse(jsonText3.replace(/^\n?```\n?|\n?```\n?$/g, ''))
@@ -468,9 +467,9 @@ const updateI18nJson = async (
   )
   console.log(`翻译失败的语言包: \t[${errorLanguages.join(',')}]`)
   errorLanguages.length > 0 &&
-  console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
+    console.log('请手动处理翻译失败的语言包, 并重新执行脚本')
   errorLanguages.length > 0 &&
-  console.log('下次执行参数建议: \t', updateKeys, forceUpdate, errorLanguages)
+    console.log('下次执行参数建议: \t', updateKeys, forceUpdate, errorLanguages)
   console.log('==================================')
 }
 
@@ -591,7 +590,6 @@ async function updateKeys(keys, forceUpdate, retryLanguageCodes = []) {
   await updateI18nJson(keys, forceUpdate, retryLanguageCodes)
 }
 
-
 async function fixManifestTooLongName() {
   const sourceJson = JSON.parse(fs.readFileSync(sourceJsonPath, 'utf-8'))
   const enName = sourceJson.name
@@ -606,10 +604,7 @@ async function fixManifestTooLongName() {
         `修复[${name}]语言包的name字段长度: ${json.name.length} => ${enName.length}`,
       )
       json.name = enName
-      fs.writeFileSync(
-        filePath,
-        JSON.stringify(json, null, 2),
-      )
+      fs.writeFileSync(filePath, JSON.stringify(json, null, 2))
     }
     // https://developer.chrome.com/docs/extensions/reference/manifest/description
     if (json.description.length >= 130) {
@@ -617,10 +612,7 @@ async function fixManifestTooLongName() {
         `修复[${name}]语言包的description字段长度: ${json.description.length} => ${enDescription.length}`,
       )
       json.description = enDescription
-      fs.writeFileSync(
-        filePath,
-        JSON.stringify(json, null, 2),
-      )
+      fs.writeFileSync(filePath, JSON.stringify(json, null, 2))
     }
   })
 }

@@ -47,7 +47,7 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       label: 'claude-3-haiku',
       value: 'claude-3-haiku',
       AIProvider: 'MAXAI_CLAUDE',
-      tag: 'Beta',
+      tag: 'Vision',
     },
     {
       tag: 'Beta',

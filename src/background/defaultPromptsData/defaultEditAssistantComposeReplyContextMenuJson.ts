@@ -2168,8 +2168,15 @@ Choose simple words and phrases. Avoid ones that are too hard or confusing.
 
 Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a reply to the chat message above by *writing a better version* of the following points:
-{{KEY_POINTS}}`,
+Now, write a reply to the chat message, by *writing a better version* of the following points delimited by <keypoints></keypoints>:
+
+---
+
+<keypoints>
+{{KEY_POINTS}}
+</keypoints>
+
+---`,
                     variables: [
                       {
                         label: 'Context',
@@ -2264,8 +2271,15 @@ Choose simple words and phrases. Avoid ones that are too hard or confusing.
 
 Output the answer without any additional context, explanation, or extra wording, just output the reply text itself. Don't use any punctuation, especially no quotes or backticks, around the text.
 
-Now, write a reply to the chat message above by *writing a better version* of the following points:
-{{KEY_POINTS}}`,
+Now, write a reply to the chat message, by *writing a better version* of the following points delimited by <keypoints></keypoints>:
+
+---
+
+<keypoints>
+{{KEY_POINTS}}
+</keypoints>
+
+---`,
                     variables: [
                       {
                         label: 'Context',

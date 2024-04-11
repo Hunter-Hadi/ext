@@ -11,7 +11,7 @@ import {
 import SocialMediaPostContext, {
   ICommentData,
   ISocialMediaPost,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 
 // 获取Facebook帖子的作者，日期，内容
 const getFacebookPostData = async (

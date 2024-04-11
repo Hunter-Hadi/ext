@@ -10,7 +10,7 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getSocialMediaPostContent } from '@/features/shortcuts/utils/socialMedia/getSocialMediaPostContentOrDraft'
 import { getYouTubeSocialMediaPostCommentsContent } from '@/features/shortcuts/utils/socialMedia/platforms/youtube'
-import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
+import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,

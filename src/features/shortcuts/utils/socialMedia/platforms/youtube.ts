@@ -15,7 +15,7 @@ import SocialMediaPostContext, {
   ICommentData,
   ICreateCommentListData,
   ISocialMediaPostContextData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 
 const getYouTubeCommentContent = async (
   ytdCommentBox: HTMLElement,

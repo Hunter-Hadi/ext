@@ -1,6 +1,6 @@
 import ChatMessagesContext, {
   IChatMessageData,
-} from '@/features/shortcuts/utils/ChatMessagesContext'
+} from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import {
   findParentEqualSelector,
   findSelectorParent,

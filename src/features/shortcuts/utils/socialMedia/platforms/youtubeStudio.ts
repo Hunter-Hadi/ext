@@ -13,7 +13,7 @@ import {
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ICommentData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 
 const getYouTubeStudioCommentContent = async (
   ytcpCommentBox: HTMLElement,

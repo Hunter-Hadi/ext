@@ -10,7 +10,7 @@ import {
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ISocialMediaPost,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 
 /**
  * 获取Twitter消息详情
@@ -27,9 +27,11 @@ const getTweetDetail = (tweetElement: HTMLElement): ISocialMediaPost => {
   )
   const date = tweetElement.querySelector('time')?.dateTime || ''
   const tweetText =
-    (tweetElement.querySelector(
-      'div[data-testid="tweetText"]',
-    ) as HTMLDivElement)?.innerText || ''
+    (
+      tweetElement.querySelector(
+        'div[data-testid="tweetText"]',
+      ) as HTMLDivElement
+    )?.innerText || ''
   return {
     author: `${nickName}(${userName})`,
     date,

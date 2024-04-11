@@ -19,6 +19,7 @@ import {
 import { cloneRect } from '@/features/contextMenu/utils/index'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
+import { wait } from '@/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
@@ -263,10 +264,8 @@ export const createSelectionMarker = (
              * 2. [废弃] 选区的innerText[可编辑元素开头 - 光标位置]的内容
              * 3. [废弃] 选区的innerText内容
              */
-            const {
-              selectionText,
-              partOfStartToCaretText,
-            } = getEditableElementSelectionText(editableElement)
+            const { selectionText, partOfStartToCaretText } =
+              getEditableElementSelectionText(editableElement)
             let contextText = (
               selectionText ||
               partOfStartToCaretText ||
@@ -395,9 +394,8 @@ export const getEditableElementSelectionText = (
                   const lineContentElements: HTMLElement[] = []
                   if (overlays.length > 0) {
                     overlays.forEach((overlay) => {
-                      const overlayPrevLineContent = overlay.parentElement?.querySelector(
-                        '.zw-line-content',
-                      )
+                      const overlayPrevLineContent =
+                        overlay.parentElement?.querySelector('.zw-line-content')
                       if (overlayPrevLineContent) {
                         if (
                           lineContentElements.find(
@@ -422,9 +420,8 @@ export const getEditableElementSelectionText = (
                     }
                   }
                   if (!selectionText) {
-                    hostSpecialCursor = pageContentRoot.querySelector(
-                      `div.cursor[id]`,
-                    )
+                    hostSpecialCursor =
+                      pageContentRoot.querySelector(`div.cursor[id]`)
                   }
                 }
               }
@@ -860,7 +857,8 @@ export const replaceMarkerContent = async (
       doc.getSelection()?.removeAllRanges()
       doc.getSelection()?.addRange(newRange)
     }
-    const host = getCurrentDomainHost() as typeof CREATE_SELECTION_MARKER_WHITE_LIST_HOST[number]
+    const host =
+      getCurrentDomainHost() as (typeof CREATE_SELECTION_MARKER_WHITE_LIST_HOST)[number]
     switch (host) {
       case 'mail.google.com':
         {
@@ -1090,9 +1088,9 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
     if (range) {
       container = range[startContainer ? 'startContainer' : 'endContainer']
       // Check if the container is a text node and return its parent if so
-      const element = (container.nodeType === 3
-        ? container.parentNode
-        : container) as HTMLElement
+      const element = (
+        container.nodeType === 3 ? container.parentNode : container
+      ) as HTMLElement
       if (
         element.tagName === 'BODY' ||
         element.tagName === 'HTML' ||
@@ -1335,15 +1333,13 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       // editableElement?.focus()
       finallySelection.removeAllRanges()
       finallySelection.addRange(originalRange)
-      const delay = (ms: number) =>
-        new Promise((resolve) => setTimeout(resolve, ms))
       selection?.removeAllRanges()
       selection?.addRange(restoreRange)
       if (currentHost === 'evernote.com') {
         // 如果在 evernote.com 上，则不需要 delay
         // nothing
       } else {
-        await delay(0)
+        await wait(0)
       }
 
       if (
@@ -1377,7 +1373,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           //
           // do nothing
         } else if (currentHost === 'notion.so') {
-          await delay(300)
+          await wait(300)
           doc.execCommand('paste', false, '')
         } else {
           doc.execCommand('insertText', false, pastedText)
@@ -1557,9 +1553,8 @@ export const getRichTextEditorLineText = (
                 }
               }
               const role = editableElement.getAttribute('role')
-              const contenteditable = editableElement.getAttribute(
-                'contenteditable',
-              )
+              const contenteditable =
+                editableElement.getAttribute('contenteditable')
               if (role === 'textbox' && contenteditable === 'true') {
                 // 如果是空行,直接返回空字符串
                 if (isNewLine) {
@@ -1646,9 +1641,10 @@ export const showRichEditorLineTextPlaceholder = (
   if (host === 'larksuite.com') {
     placeholder.style.lineHeight = '18px'
   } else if (host === 'writer.zoho.com') {
-    const fontConfig = richTextEditorLineElement?.parentElement?.parentElement?.getAttribute(
-      'data-textformat',
-    )
+    const fontConfig =
+      richTextEditorLineElement?.parentElement?.parentElement?.getAttribute(
+        'data-textformat',
+      )
     try {
       const size = JSON.parse(fontConfig || '{}').size || 12
       placeholder.style.fontSize = `${Number(size)}pt`
@@ -1683,10 +1679,8 @@ export const useBindRichTextEditorLineTextPlaceholder = () => {
   useEffect(() => {
     const richTextEditorHandle = (event: MouseEvent | KeyboardEvent) => {
       console.log('lineText', event)
-      const {
-        richTextEditorLineText,
-        richTextEditorLineTextElement,
-      } = getRichTextEditorLineText(event)
+      const { richTextEditorLineText, richTextEditorLineTextElement } =
+        getRichTextEditorLineText(event)
       if (!richTextEditorLineText && richTextEditorLineTextElement) {
         const placeholderText =
           floatingMenuShortCutKey &&
@@ -1775,9 +1769,8 @@ export const createSandboxIframeClickAndKeydownEvent = (
         const target = mouseDownElement || (event.target as HTMLElement)
         let selectionText = computedSelectionString(iframeDocument)
         let editableElementSelectionString = ''
-        const { isEditableElement, editableElement } = getEditableElement(
-          target,
-        )
+        const { isEditableElement, editableElement } =
+          getEditableElement(target)
         let startMarkerId = ''
         let endMarkerId = ''
         let caretOffset = 0

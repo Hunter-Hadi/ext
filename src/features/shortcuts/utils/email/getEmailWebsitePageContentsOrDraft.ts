@@ -1,6 +1,7 @@
 import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
 import { removeEmailContentQuote } from '@/features/shortcuts/utils/email/removeEmailContentQuote'
+import { wait } from '@/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const emailWebsiteTrafficRankings = [
@@ -253,8 +254,6 @@ const fireClick = (node: any): void => {
 export const getEmailWebsitePageContentsOrDraft = async (
   inputAssistantButtonElementSelector: string,
 ): Promise<{ targetReplyEmailContext: string; emailContext: string }> => {
-  const delay = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms))
   const host = getCurrentDomainHost()
   const emailRegex = /[\w.-]+@[\w.-]+\.[A-Za-z]{2,}/g
   let hasMore = false
@@ -282,7 +281,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
       ) as HTMLButtonElement
       if (expandEmailButton) {
         expandEmailButton.click()
-        await delay(3000)
+        await wait(3000)
       }
       const messageItems: Element[] = []
       //如果发现了inputAssistantButtonElementSelector，就不用再找了
@@ -441,7 +440,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
         ) as HTMLButtonElement
         while (!document.querySelector('#mectrl_currentAccount_primary')) {
           profileButton.click()
-          await delay(2000)
+          await wait(2000)
         }
         const userName =
           document.querySelector('#mectrl_currentAccount_primary')
@@ -676,7 +675,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
     emailContextSelector = 'div.zmPVContent'
   }
   if (hasMore) {
-    await delay(3000)
+    await wait(3000)
   }
   let documentElements: HTMLElement[] = [document.documentElement]
   if (iframeSelector) {

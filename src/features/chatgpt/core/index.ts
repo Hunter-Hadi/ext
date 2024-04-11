@@ -6,6 +6,7 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
 import generateSentinelChatRequirementsToken from '@/features/chatgpt/core/generateSentinelChatRequirementsToken'
 import { mappingToMessages } from '@/features/chatgpt/core/util'
+import { wait } from '@/utils'
 
 import { fetchSSE } from './fetch-sse'
 
@@ -762,7 +763,6 @@ export class ChatGPTConversation {
         return
       }
       this.isCleaningCache = true
-      const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
       for (let i = 0; i < cacheConversations.length; i++) {
         try {
           console.log(
@@ -773,7 +773,7 @@ export class ChatGPTConversation {
           await setConversationProperty(this.token, cacheConversations[i].id, {
             is_visible: false,
           })
-          await delay(3000)
+          await wait(3000)
         } catch (e) {
           console.error(e)
         }

@@ -389,7 +389,12 @@ export class GoogleDocControl extends EventEmitter {
         }),
       )
     }
-    return this.inputElement?.innerText || ''
+    const content = this.inputElement?.innerText || ''
+    if (content.endsWith('\n')) {
+      // inputElement里总是在最后会加入一个br换行符
+      return content.slice(0, -1)
+    }
+    return content;
   }
 
   /**

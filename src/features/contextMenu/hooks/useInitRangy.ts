@@ -38,7 +38,7 @@ import {
 } from '@/features/contextMenu/utils/selectionHelper'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
-import { listenIframeMessage } from '@/iframe'
+import { listenIframeMessage } from '@/iframeDocumentEnd'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import rangyLib from '@/lib/rangy/rangy-core'

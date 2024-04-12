@@ -616,7 +616,7 @@
     "sidebar__promotion_dialog__title": "Nouvelles fonctionnalités premium dans {{VERSION}}",
     "sidebar__promotion_dialog__content_item1__title": "`Claude-3` avec vision",
     "sidebar__promotion_dialog__content_item1__description": "Accédez aux modèles de nouvelle génération d'Anthropic, tous réunis en un seul endroit dans MaxAI : Opus, l'option la plus intelligente ; Sonnet, le choix le plus équilibré ; et Haiku, le modèle le plus rapide.",
-    "sidebar__promotion_dialog__content_item2__title": "Réponse instantanée de messagerie",
+    "sidebar__promotion_dialog__content_item2__title": "Réponse instantanée aux messages",
     "sidebar__promotion_dialog__content_item2__description": "Laissez l'IA générer des réponses de message personnalisées pour vous en quelques secondes en un seul clic sur Discord et Slack.",
     "sidebar__promotion_dialog__content_item3__title": "Résumé vidéo avec horodatage",
     "sidebar__promotion_dialog__content_item3__description": "Naviguez facilement dans les vidéos YouTube à l'aide de paragraphes résumés avec des décomptes horodatés.",

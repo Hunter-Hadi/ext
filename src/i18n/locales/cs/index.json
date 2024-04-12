@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Asistent pro psaní zpráv",
     "sidebar__promotion_dialog__content_item6__description": "Nechejte AI generovat personalizované odpovědi na zprávy za vteřiny jedním kliknutím na Discord.",
     "immersive_chat__more_actions_button__title": "Více",
-    "immersive_chat__rename_chat__button__title": "Přejmenovat"
+    "immersive_chat__rename_chat__button__title": "Přejmenovat",
+    "provider__gemini__model__gemini_1_5_pro__description": "Jedním z nejsilnějších modelů v rodině Gemini od Googlu. S nevídaným kontextovým oknem až 1 milion tokenů, Gemini 1.5 Pro odemyká průlomové schopnosti \"učení v kontextu\", umožňující ovládnout nové dovednosti z jediného zadání bez potřeby jemného doladění. Také předvádí úžasné multimodální schopnosti s průlomovými poznatky v porozumění a analýze dlouhých kontextů v textu, obrázcích, videu a zvuku.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgradujte pro přístup k gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 je nejnovější AI model z rodiny Gemini od Googlu. S nevídaným kontextovým oknem až 1 milion tokenů odemyká průlomové schopnosti \"učení v kontextu\", ovládající nové dovednosti z jediného zadání bez jemného doladění. Zažijte budoucnost multimodální AI, když Gemini 1.5 Pro bezproblémově rozumí a analyzuje text, obrázky, video a zvuk s nepřekonatelným porozuměním dlouhým kontextům."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

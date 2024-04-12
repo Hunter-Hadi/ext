@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Msaidizi wa kuandika ujumbe",
     "sidebar__promotion_dialog__content_item6__description": "Acha AI itengeneze majibu ya ujumbe yaliyobinafsishwa kwako kwa sekunde moja tu kwenye Discord.",
     "immersive_chat__more_actions_button__title": "Zaidi",
-    "immersive_chat__rename_chat__button__title": "Badilisha Jina"
+    "immersive_chat__rename_chat__button__title": "Badilisha Jina",
+    "provider__gemini__model__gemini_1_5_pro__description": "Moja ya mifano yenye nguvu zaidi katika familia ya Gemini ya Google. Kwa dirisha la muktadha lisilokuwa na kifani hadi herufi milioni 1, Gemini 1.5 Pro inafungua uwezo wa kipekee wa ujifunzaji \"katika muktadha\", ikimuwezesha kumudu uwezo mpya kutoka kwa onyo moja bila haja ya kurekebisha. Pia inaonyesha uwezo mkubwa wa multimodal, na uvumbuzi katika uelewa na uchambuzi wa muda mrefu kote katika maandishi, picha, video, na sauti.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nunua ili kupata gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 ni mfano wa hivi karibuni wa AI kutoka familia ya Gemini ya Google. Kwa dirisha la muktadha lisilokuwa na kifani hadi herufi milioni 1, inafungua ujuzi wa kipekee wa ujifunzaji \"katika muktadha\", ikimudu uwezo mpya kutoka kwa onyo moja bila kurekebisha. Jisikie uzoefu wa baadaye wa AI ya multimodal wakati Gemini 1.5 Pro inaelewa na kuchambua maandishi, picha, video, na sauti kwa ufahamu usio na kifani wa muktadha mrefu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

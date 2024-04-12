@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Berichten schrijfassistent",
     "sidebar__promotion_dialog__content_item6__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden met slechts één klik op Discord.",
     "immersive_chat__more_actions_button__title": "Meer",
-    "immersive_chat__rename_chat__button__title": "Hernoemen"
+    "immersive_chat__rename_chat__button__title": "Hernoemen",
+    "provider__gemini__model__gemini_1_5_pro__description": "Een van de krachtigste modellen in de Gemini-familie van Google. Met een ongekend contextvenster van maximaal 1 miljoen tokens, ontgrendelt Gemini 1.5 Pro baanbrekende mogelijkheden voor 'in-context learning'-vaardigheden, waardoor het nieuwe vaardigheden kan beheersen vanuit een enkele prompt zonder dat finetuning nodig is. Het toont ook indrukwekkende multimodale mogelijkheden, met doorbraken op het gebied van langdurige contextbegrip en analyse van tekst, afbeeldingen, video en audio.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade om toegang te krijgen tot gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 is het nieuwste AI-model uit de Gemini-familie van Google. Met een ongekend contextvenster van maximaal 1 miljoen tokens, ontgrendelt het baanbrekende 'in-context learning'-vaardigheden, waarbij nieuwe vaardigheden worden beheerst vanuit een enkele prompt zonder finetuning. Ervaar de toekomst van multimodale AI terwijl Gemini 1.5 Pro naadloos tekst, afbeeldingen, video en audio begrijpt en analyseert met ongeëvenaarde langdurige contextbegrip."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

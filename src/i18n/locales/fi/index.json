@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Viestien kirjoitusapuri",
     "sidebar__promotion_dialog__content_item6__description": "Anna tekoälyn luoda sinulle henkilökohtaisia viestivastauksia sekunneissa yhdellä klikkauksella Discordissa.",
     "immersive_chat__more_actions_button__title": "Lisää",
-    "immersive_chat__rename_chat__button__title": "Nimeä uudelleen"
+    "immersive_chat__rename_chat__button__title": "Nimeä uudelleen",
+    "provider__gemini__model__gemini_1_5_pro__description": "Yksi voimakkaimmista malleista Googlen Gemini-perheessä. Ennenkuulumattoman kontekstiruudun ansiosta jopa 1 miljoonaan merkkiin asti, Gemini 1.5 Pro avaa mullistavia \"kontekstissa oppimisen\" taitoja, mahdollistaen uusien kykyjen hallinnan yhdestä vihjeestä ilman hienosäätöä. Se osoittaa myös vaikuttavia multimodaalisia kykyjä, joissa on läpimurtoja pitkän kontekstin ymmärtämisessä ja analysoinnissa tekstissä, kuvissa, videoissa ja äänissä.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Päivitä pääsy gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 on uusin tekoälymalli Googlen Gemini-perheestä. Ennenkuulumattoman kontekstiruudun ansiosta jopa 1 miljoonaan merkkiin asti, se avaa mullistavia \"kontekstissa oppimisen\" taitoja, halliten uusia kykyjä yhdestä vihjeestä ilman hienosäätöä. Koe multimodaalisen tekoälyn tulevaisuus, kun Gemini 1.5 Pro ymmärtää ja analysoi tekstiä, kuvia, videoita ja ääntä vertaansa vailla olevalla pitkän kontekstin ymmärtämisellä."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

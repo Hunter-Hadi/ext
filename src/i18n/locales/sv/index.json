@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Meddelande skrivassistent",
     "sidebar__promotion_dialog__content_item6__description": "Låt AI generera personliga meddelandesvar åt dig på några sekunder med bara ett klick på Discord.",
     "immersive_chat__more_actions_button__title": "Mer",
-    "immersive_chat__rename_chat__button__title": "Byt namn"
+    "immersive_chat__rename_chat__button__title": "Byt namn",
+    "provider__gemini__model__gemini_1_5_pro__description": "En av de mest kraftfulla modellerna i Googles Gemini-familj. Med ett oöverträffat sammanhangsfönster på upp till 1 miljon token låser Gemini 1.5 Pro upp banbrytande förmågor inom \"in-context learning\", vilket gör det möjligt att behärska nya färdigheter från en enda prompt utan finjustering. Den visar också imponerande multimodala förmågor med genombrott inom förståelse och analys av långt sammanhang över text, bilder, video och ljud.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uppgradera för att få tillgång till gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 är den senaste AI-modellen från Googles Gemini-familj. Med ett oöverträffat sammanhangsfönster på upp till 1 miljon token låser den upp banbrytande \"in-context learning\"-färdigheter och behärskar nya förmågor från en enda prompt utan finjustering. Upplev framtiden för multimodal AI när Gemini 1.5 Pro sömlöst förstår och analyserar text, bilder, video och ljud med enastående förståelse för långt sammanhang."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

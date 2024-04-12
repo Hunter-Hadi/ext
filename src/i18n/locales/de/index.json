@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Messaging-Schreibassistent",
     "sidebar__promotion_dialog__content_item6__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren, indem Sie einfach auf Discord klicken.",
     "immersive_chat__more_actions_button__title": "Mehr",
-    "immersive_chat__rename_chat__button__title": "Umbenennen"
+    "immersive_chat__rename_chat__button__title": "Umbenennen",
+    "provider__gemini__model__gemini_1_5_pro__description": "Eines der leistungsstärksten Modelle in Googles Gemini-Familie. Mit einem beispiellosen Kontextfenster von bis zu 1 Million Tokens ermöglicht Gemini 1.5 Pro bahnbrechende Fähigkeiten des \"kontextbezogenen Lernens\", indem es neue Fähigkeiten aus einer einzigen Anweisung beherrscht, ohne dass eine Feinabstimmung erforderlich ist. Es zeigt auch beeindruckende multimodale Fähigkeiten mit Durchbrüchen im Verständnis und der Analyse von langem Kontext über Text, Bilder, Video und Audio.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade für den Zugriff auf gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 ist das neueste KI-Modell aus Googles Gemini-Familie. Mit einem beispiellosen Kontextfenster von bis zu 1 Million Tokens ermöglicht es bahnbrechende Fähigkeiten des \"kontextbezogenen Lernens\", indem es neue Fähigkeiten aus einer einzigen Anweisung beherrscht, ohne dass eine Feinabstimmung erforderlich ist. Erleben Sie die Zukunft der multimodalen KI, während Gemini 1.5 Pro Text, Bilder, Video und Audio nahtlos versteht und analysiert und dabei eine unvergleichliche Langzeitkontext-Kompetenz bietet."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

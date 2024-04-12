@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Asistent za pisanje poruka",
     "sidebar__promotion_dialog__content_item6__description": "Neka AI generira personalizirane odgovore na poruke za vas u sekundama s jednim klikom na Discord.",
     "immersive_chat__more_actions_button__title": "Više",
-    "immersive_chat__rename_chat__button__title": "Preimenuj"
+    "immersive_chat__rename_chat__button__title": "Preimenuj",
+    "provider__gemini__model__gemini_1_5_pro__description": "Jedan od najmoćnijih modela u Google-ovoj Gemini obitelji. S neviđenim kontekstualnim prozorom do 1 milijun tokena, Gemini 1.5 Pro otključava revolucionarne sposobnosti \"u-kontekstu učenja\", omogućujući mu da savlada nove vještine iz jednog upita bez potrebe za fino podešavanjem. Također pokazuje impresivne multimodalne sposobnosti, s napretkom u razumijevanju i analizi dugog konteksta putem teksta, slika, videozapisa i zvuka.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadogradite za pristup gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 je najnoviji AI model iz Google-ove Gemini obitelji. S neviđenim kontekstualnim prozorom do 1 milijun tokena, otključava revolucionarne sposobnosti \"u-kontekstu učenja\", savladavajući nove vještine iz jednog upita bez fino podešavanja. Iskusite budućnost multimodalne AI dok Gemini 1.5 Pro besprijekorno razumije i analizira tekst, slike, videozapise i zvuk s neusporedivim razumijevanjem dugog konteksta."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

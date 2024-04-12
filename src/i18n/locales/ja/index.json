@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "メッセージ作成アシスタント",
     "sidebar__promotion_dialog__content_item6__description": "DiscordでクリックひとつでAIが数秒でパーソナライズされたメッセージの返信を生成します。",
     "immersive_chat__more_actions_button__title": "もっと",
-    "immersive_chat__rename_chat__button__title": "名前変更"
+    "immersive_chat__rename_chat__button__title": "名前変更",
+    "provider__gemini__model__gemini_1_5_pro__description": "GoogleのGeminiファミリーで最も強力なモデルの1つです。最大100万トークンの前例のないコンテキストウィンドウを持ち、Gemini 1.5 Proは「コンテキスト内学習」の能力を解き放ち、微調整なしで新しい能力を単一のプロンプトからマスターすることができます。また、テキスト、画像、ビデオ、オーディオの長文脈理解と分析においても驚異的なマルチモーダル能力を示します。",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "gemini-1.5-proへのアップグレード",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5はGoogleのGeminiファミリーから最新のAIモデルです。最大100万トークンの前例のないコンテキストウィンドウを持ち、微調整なしで新しい能力を単一のプロンプトからマスターする「コンテキスト内学習」の能力を解き放ちます。Gemini 1.5 Proでは、テキスト、画像、ビデオ、オーディオを優れた長文脈理解でシームレスに理解し、分析するマルチモーダルAIの未来を体験してください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

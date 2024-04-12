@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Messaging writing assistant",
     "sidebar__promotion_dialog__content_item6__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa mensahe para sa iyo sa loob lamang ng ilang segundo gamit ang isang click sa Discord.",
     "immersive_chat__more_actions_button__title": "Higit pa",
-    "immersive_chat__rename_chat__button__title": "Palitan ang Pangalan"
+    "immersive_chat__rename_chat__button__title": "Palitan ang Pangalan",
+    "provider__gemini__model__gemini_1_5_pro__description": "Isa sa pinakamalakas na mga modelo sa pamilya ng Gemini ng Google. Sa isang walang kapantay na bintana ng konteksto na hanggang sa 1 milyong mga token, ang Gemini 1.5 Pro ay nagbubukas ng mga kakayahang panggigiba ng \"in-context learning\" skills, pinapahintulutan itong masanay sa mga bagong kakayahan mula sa isang solong prompt nang hindi kailangan ng fine-tuning. Ipinapakita rin nito ang kamangha-manghang mga kakayahan sa multimodal, may mga pagbabago sa pang-unawa at pagsusuri ng mahabang konteksto sa teksto, imahe, bidyo, at tunog.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Mag-upgrade upang ma-access ang gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Ang Gemini 1.5 ang pinakabagong AI model mula sa pamilya ng Gemini ng Google. Sa isang walang kapantay na bintana ng konteksto na hanggang sa 1 milyong mga token, ito ay nagbubukas ng mga kakayahang panggigiba ng \"in-context learning\" skills, pinapahintulutan itong masanay sa mga bagong kakayahan mula sa isang solong prompt nang hindi kailangan ng fine-tuning. Maranasan ang kinabukasan ng multimodal na AI habang ang Gemini 1.5 Pro ay walang kahirap-hirap na nauunawaan at sinusuri ang teksto, imahe, bidyo, at tunog na may walang kapantay na pang-unawang mahabang konteksto."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

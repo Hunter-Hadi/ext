@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Penolong penulisan pesanan",
     "sidebar__promotion_dialog__content_item6__description": "Biarkan AI menghasilkan balasan pesanan yang dipersonalisasi untuk Anda dalam beberapa detik dengan hanya satu klik di Discord.",
     "immersive_chat__more_actions_button__title": "Lebih",
-    "immersive_chat__rename_chat__button__title": "Namakan Semula"
+    "immersive_chat__rename_chat__button__title": "Namakan Semula",
+    "provider__gemini__model__gemini_1_5_pro__description": "Salah satu model yang paling kuat dalam keluarga Gemini Google. Dengan jendela konteks yang belum pernah terjadi sebelumnya hingga 1 juta token, Gemini 1.5 Pro membuka kemampuan revolusioner dari keterampilan \"pembelajaran dalam konteks\", memungkinkannya menguasai kemampuan baru dari satu prompt tanpa perlu penyetelan halus. Ini juga menunjukkan kemampuan multimodal yang mengesankan, dengan terobosan dalam pemahaman dan analisis konteks panjang melintasi teks, gambar, video, dan audio.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Tingkatkan untuk mengakses gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 adalah model AI terbaru dari keluarga Gemini Google. Dengan jendela konteks yang belum pernah terjadi sebelumnya hingga 1 juta token, ia membuka keterampilan revolusioner \"pembelajaran dalam konteks\", menguasai kemampuan baru dari satu prompt tanpa penyetelan halus. Rasakan masa depan AI multimodal saat Gemini 1.5 Pro dengan lancar memahami dan menganalisis teks, gambar, video, dan audio dengan pemahaman konteks panjang yang tak tertandingi."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

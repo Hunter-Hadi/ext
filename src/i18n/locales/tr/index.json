@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Mesaj yazma yardımcısı",
     "sidebar__promotion_dialog__content_item6__description": "Discord'da sadece bir tıklama ile AI tarafından kişiselleştirilmiş mesaj yanıtları oluşturun.",
     "immersive_chat__more_actions_button__title": "Daha Fazla",
-    "immersive_chat__rename_chat__button__title": "Yeniden Adlandır"
+    "immersive_chat__rename_chat__button__title": "Yeniden Adlandır",
+    "provider__gemini__model__gemini_1_5_pro__description": "Google'un Gemini ailesinin en güçlü modellerinden biri. 1 milyon jetona kadar benzersiz bir bağlam penceresiyle, Gemini 1.5 Pro, ince ayar yapmadan tek bir ipucundan yeni yetenekleri öğrenme becerisini kilitleyerek çığır açan yetenekler sunar. Ayrıca, metin, görüntü, video ve ses üzerinde uzun bağlam anlama ve analizde çığır açan multimodal yetenekler sergiler.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Gemini-1.5-pro'ya erişimi yükseltin",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5, Google'ın Gemini ailesinin en son yapay zeka modelidir. 1 milyon jetona kadar benzersiz bir bağlam penceresiyle, ince ayar yapmadan tek bir ipucundan yeni yetenekleri öğrenme becerisini kilitleyerek çığır açar. Gemini 1.5 Pro ile metin, görüntü, video ve sesi eşsiz uzun bağlam anlama yeteneğiyle sorunsuz bir şekilde anlayın ve analiz edin."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

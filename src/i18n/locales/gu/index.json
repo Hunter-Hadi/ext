@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "સંદેશ લખવાની સહાયક એપ",
     "sidebar__promotion_dialog__content_item6__description": "ફક્ત એક ક્લિક પર ડિસ્કોર્ડ પર તમારા માટે વ્યક્તિગત સંદેશ જવાબો ઉત્પન્ન કરવા માટે AI નો ઉપયોગ કરો.",
     "immersive_chat__more_actions_button__title": "વધુ",
-    "immersive_chat__rename_chat__button__title": "નામ બદલો"
+    "immersive_chat__rename_chat__button__title": "નામ બદલો",
+    "provider__gemini__model__gemini_1_5_pro__description": "Googleની જેમિની પરિવારની સૌથી શક્તિશાળી મોડલમાંથી એક. અનુપમ સંદર્ભ વિંડો સાથે એક મિલિયન ટોકનની સંદર્ભ વિંડો સાથે, જેમિની 1.5 Pro આપણા નવા ક્ષમતાઓને \"સંદર્ભમાં શીખવાની\" કૌશલ્યોને ખોલી દેવે છે, જેમાં ફાઇન-ટ્યૂનિંગની જરૂર નથી. તે પણ લંબા સંદર્ભમાં સમજણ અને વિશ્લેષણમાં અદ્ભુત બહુમોડલ કૌશલ્યો દર્શાવે છે, જેમાં ટેક્સ્ટ, ચિત્રો, વિડિઓ અને ઓડિયોની આવર્યતામાં પરાકાશમાં પરિણતિ છે.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "એક્સેસ કરવા માટે અપગ્રેડ કરો gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "જેમિની 1.5 Googleની જેમિની પરિવારની નવીનતમ AI મોડલ છે. એક મિલિયન ટોકનની સંદર્ભ વિંડો સાથે, તે \"સંદર્ભમાં શીખવાની\" કૌશલ્યોને ખોલી દેવે છે, જેમાં ફાઇન-ટ્યૂનિંગની જરૂર નથી. જેમિની 1.5 Pro સાથે ટેક્સ્ટ, ચિત્રો, વિડિઓ અને ઓડિયોને અપરિમિત લંબા સંદર્ભમાં સમજી શકે છે."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

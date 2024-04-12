@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "訊息撰寫助手",
     "sidebar__promotion_dialog__content_item6__description": "在Discord上點擊一下，AI將在幾秒鐘內為您生成個性化的消息回覆。",
     "immersive_chat__more_actions_button__title": "更多",
-    "immersive_chat__rename_chat__button__title": "重新命名"
+    "immersive_chat__rename_chat__button__title": "重新命名",
+    "provider__gemini__model__gemini_1_5_pro__description": "Google Gemini 家族中最強大的模型之一。擁有高達 1 百萬個 tokens 的前所未有的上下文窗口，Gemini 1.5 Pro 解鎖了「上下文學習」技能的突破性能力，使其能夠從單個提示中掌握新的能力，而無需進行微調。它還展示了令人印象深刻的多模態能力，在文本、圖像、視頻和音頻的長篇理解和分析方面取得了突破性進展。",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升級以訪問 gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 是 Google Gemini 家族的最新 AI 模型。擁有高達 1 百萬個 tokens 的前所未有的上下文窗口，它解鎖了「上下文學習」技能的突破性能力，從單個提示中掌握新的能力，而無需進行微調。體驗多模態 AI 的未來，Gemini 1.5 Pro 能夠無縫地理解和分析文本、圖像、視頻和音頻，具有無與倫比的長篇理解能力。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

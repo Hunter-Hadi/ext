@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "مساعد كتابة الرسائل",
     "sidebar__promotion_dialog__content_item6__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع وجود نقرة واحدة فقط على ديسكورد.",
     "immersive_chat__more_actions_button__title": "المزيد",
-    "immersive_chat__rename_chat__button__title": "إعادة تسمية"
+    "immersive_chat__rename_chat__button__title": "إعادة تسمية",
+    "provider__gemini__model__gemini_1_5_pro__description": "واحدة من أقوى النماذج في عائلة جيميني من Google. بفضل نافذة سياق فريدة تصل إلى مليون رمز، يتمكن Gemini 1.5 Pro من فتح قدرات ثورية لمهارات \"التعلم في السياق\"، مما يمكّنه من اتقان قدرات جديدة من مؤشر واحد دون الحاجة إلى ضبط دقيق. كما يظهر قدرات متعددة الوسائط مثيرة للإعجاب، مع اختراقات في فهم وتحليل السياق الطويل عبر النصوص والصور والفيديو والصوت.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "الترقية للوصول إلى gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 هو أحدث نموذج AI من عائلة جيميني من Google. بفضل نافذة سياق فريدة تصل إلى مليون رمز، يتمكن من فتح قدرات ثورية لمهارات \"التعلم في السياق\"، مما يتقن قدرات جديدة من مؤشر واحد دون الحاجة إلى ضبط دقيق. اكتشف مستقبل AI متعدد الوسائط حيث يفهم Gemini 1.5 Pro بسلاسة ويحلل النصوص والصور والفيديو والصوت بفهم لا مثيل له للسياق الطويل."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

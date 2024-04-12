@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Asistente de escritura de mensajes",
     "sidebar__promotion_dialog__content_item6__description": "Permite que la IA genere respuestas de mensajes personalizadas para ti en segundos con solo un clic en Discord.",
     "immersive_chat__more_actions_button__title": "Más",
-    "immersive_chat__rename_chat__button__title": "Cambiar nombre"
+    "immersive_chat__rename_chat__button__title": "Cambiar nombre",
+    "provider__gemini__model__gemini_1_5_pro__description": "Uno de los modelos más poderosos de la familia Gemini de Google. Con una ventana de contexto sin precedentes de hasta 1 millón de tokens, Gemini 1.5 Pro desbloquea capacidades revolucionarias de habilidades de \"aprendizaje en contexto\", lo que le permite dominar nuevas habilidades a partir de una sola indicación sin necesidad de ajustes finos. También demuestra impresionantes capacidades multimodales, con avances en la comprensión y análisis de largo contexto en texto, imágenes, video y audio.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Actualiza para acceder a gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 es el último modelo de IA de la familia Gemini de Google. Con una ventana de contexto sin precedentes de hasta 1 millón de tokens, desbloquea habilidades revolucionarias de \"aprendizaje en contexto\", dominando nuevas habilidades a partir de una sola indicación sin necesidad de ajustes finos. Experimenta el futuro de la IA multimodal mientras Gemini 1.5 Pro comprende y analiza texto, imágenes, video y audio con una comprensión de largo contexto incomparable."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Asistent de scriere pentru mesaje",
     "sidebar__promotion_dialog__content_item6__description": "Permiteți IA să genereze răspunsuri personalizate pentru mesaje în câteva secunde, cu doar un clic pe Discord.",
     "immersive_chat__more_actions_button__title": "Mai multe",
-    "immersive_chat__rename_chat__button__title": "Redenumire"
+    "immersive_chat__rename_chat__button__title": "Redenumire",
+    "provider__gemini__model__gemini_1_5_pro__description": "Unul dintre cele mai puternice modele din familia Gemini a Google. Cu o fereastră de context fără precedent de până la 1 milion de tokeni, Gemini 1.5 Pro deblochează capacități revoluționare de învățare \"în context\", permițându-i să stăpânească noi abilități pornind de la o singură sugestie fără a fi nevoie de ajustări fine. De asemenea, demonstrează capacități impresionante multimodale, cu avansuri în înțelegerea și analiza contextului lung pentru text, imagini, video și audio.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade pentru a accesa gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 este cel mai recent model AI din familia Gemini a Google. Cu o fereastră de context fără precedent de până la 1 milion de tokeni, deblochează abilități revoluționare de învățare \"în context\", stăpânind noi abilități pornind de la o singură sugestie fără ajustări fine. Experimentați viitorul AI multimodal pe măsură ce Gemini 1.5 Pro înțelege și analizează text, imagini, video și audio cu o înțelegere a contextului lung fără egal."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

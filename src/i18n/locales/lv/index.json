@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Ziņojumu rakstīšanas asistents",
     "sidebar__promotion_dialog__content_item6__description": "Atļaujiet AI ģenerēt personalizētus ziņojumu atbildes jums sekundēs ar vienu klikšķi Discordā.",
     "immersive_chat__more_actions_button__title": "Vairāk",
-    "immersive_chat__rename_chat__button__title": "Pārdēvēt"
+    "immersive_chat__rename_chat__button__title": "Pārdēvēt",
+    "provider__gemini__model__gemini_1_5_pro__description": "Viens no spēcīgākajiem modeļiem Google Gemini ģimenē. Ar līdz pat 1 miljonam simbolu konteksta logu, Gemini 1.5 Pro atklāj jaunievedumus \"kontekstā mācīšanās\" prasmēs, ļaujot tai apgūt jaunas spējas no vienas norādes bez nepieciešamības veikt precīzu pielāgošanu. Tā arī demonstrē iespaidīgas multimodālas spējas, sasniedzot caurspīdīgus pārtrūkumus garā konteksta izpratnē un analīzē, ietverot tekstu, attēlus, video un audio.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Jauniniet, lai piekļūtu gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 ir jaunākais AI modelis no Google Gemini ģimenes. Ar līdz pat 1 miljonam simbolu konteksta logu, tas atklāj jaunievedumus \"kontekstā mācīšanās\" prasmēs, apgūstot jaunas spējas no vienas norādes bez precīzas pielāgošanas. Izbaudi multimodālās AI nākotni, kad Gemini 1.5 Pro bez problēmām saprot un analizē tekstu, attēlus, video un audio ar nevienlīdzīgu garā konteksta izpratni."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

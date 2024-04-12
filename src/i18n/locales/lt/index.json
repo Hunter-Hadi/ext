@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Pranešimų rašymo asistentas",
     "sidebar__promotion_dialog__content_item6__description": "Leiskite dirbtinei intelektai per kelias sekundes sugeneruoti jums pritaikytus pranešimo atsakymus vienu paspaudimu Discord'e.",
     "immersive_chat__more_actions_button__title": "Daugiau",
-    "immersive_chat__rename_chat__button__title": "Pervadinti"
+    "immersive_chat__rename_chat__button__title": "Pervadinti",
+    "provider__gemini__model__gemini_1_5_pro__description": "Vienas iš galingiausių modelių „Gemini“ šeimoje. Su beprecedentiu konteksto langeliu, kuris siekia net iki 1 mln. ženklų, „Gemini 1.5 Pro“ atrakina revoliucingas „kontekstinio mokymosi“ gebėjimus, leidžiančius jai įvaldyti naujas savybes iš vieno užrašo be būtinybės atlikti smulkią derinimą. Ji taip pat demonstruoja įspūdingus multimodalumo gebėjimus, su permainomis ilgojo konteksto supratime ir analizėje, apimančio teksto, vaizdų, vaizdo įrašų ir garso medžiagų.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atnaujinkite, kad gautumėte prieigą prie gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "„Gemini 1.5“ yra naujausias dirbtinio intelekto modelis iš „Gemini“ šeimos. Su beprecedentiu konteksto langeliu, kuris siekia net iki 1 mln. ženklų, ji atrakina revoliucingas „kontekstinio mokymosi“ gebėjimus, įvaldydama naujas savybes iš vieno užrašo be smulkio derinimo. Patirkite multimodalinio dirbtinio intelekto ateitį, kai „Gemini 1.5 Pro“ be jokių problemų supranta ir analizuoja tekstą, vaizdus, vaizdo įrašus ir garso medžiagas su nepalyginamu ilgojo konteksto supratimu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "עוזר כתיבת הודעות",
     "sidebar__promotion_dialog__content_item6__description": "תן לבינה מלאכותית ליצור תשובות אישיות להודעות בשניות עם לחיצה אחת ב-Discord.",
     "immersive_chat__more_actions_button__title": "יותר",
-    "immersive_chat__rename_chat__button__title": "שנה שם"
+    "immersive_chat__rename_chat__button__title": "שנה שם",
+    "provider__gemini__model__gemini_1_5_pro__description": "אחד מהדגמים המתקדמים ביותר במשפחת ג'מיני של Google. עם חלון ההקשר הלא מוגבל של עד מיליון טוקנים, Gemini 1.5 Pro מפתח יכולות חדשניות של \"למידה בהקשר\", מאפשר לו לשלוט ביכולות חדשות מהקלט היחידי בלי צורך בכיווץ מדויק. הוא מציג גם יכולות מרהיבות במצב רב-מודל, עם פריצות דרך בהבנה וניתוח של טקסט, תמונות, וידאו ושמע בהקשר ארוך.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "שדרג כדי לקבל גישה ל-gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 הוא הדגם המתקדם ביותר של AI ממשפחת ג'מיני של Google. עם חלון ההקשר הלא מוגבל של עד מיליון טוקנים, הוא מפתח יכולות חדשניות של \"למידה בהקשר\", משליט ביכולות חדשות מהקלט היחידי בלי צורך בכיווץ מדויק. חוו את עתיד ה- AI מרבית המודלים עם Gemini 1.5 Pro שמבין ומנתח טקסט, תמונות, וידאו ושמע בהבנה ארוכה ללא תקדים."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

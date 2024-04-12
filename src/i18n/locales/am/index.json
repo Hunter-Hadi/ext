@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "መልእክት የመልዕክት መሰረታዊ መልዕክት",
     "sidebar__promotion_dialog__content_item6__description": "የኤችአርክ በስተቀር የሚገኙ መልዕክቶችን በአንድ ከክሊክ የሚሰሩትን ጥቅሶችን በማስተላለፍ የሚገኘውን ፕሮግራምን ያስገቡ።",
     "immersive_chat__more_actions_button__title": "ተጨማሪ",
-    "immersive_chat__rename_chat__button__title": "ስም ቀይር"
+    "immersive_chat__rename_chat__button__title": "ስም ቀይር",
+    "provider__gemini__model__gemini_1_5_pro__description": "አዲስ በጋራ የGoogle ጂሚኒ ቡድን የተጠቀሰው ሞዴል። በአሁኑ የመታወቂያ ቆሻሻ የ1 ሜሊደር ቶክን የGemini 1.5 Pro የ\"በአንድ ማስተማር\" በማስተማር እውቅና አስተዋይነትን ይጠቀሙ፣ አንድ ማስተማር አይደለም። ይህንን ምልክት በማስተማር የተለመደውን የሚስተናገድ እውቅና አስተዋይነትን ያሳየውን በእርስዎ የተሻለ ማስተማር እና በተለመደው የሚስተናገድ እውቀት ይጠቀሙ፣ በጽሁፍ፣ ምስል፣ ቪዲዮና ድምፅ የሚያስተማርና የሚያደርግ የGemini 1.5 Pro የተሻለ ማስተማር ይጠቀሙ።",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 የGoogle ጂሚኒ ቡድን የተጠቀሰው ሞዴል። በአሁኑ የመታወቂያ ቆሻሻ የ1 ሜሊደር ቶክን የGemini 1.5 Pro የ\"በአንድ ማስተማር\" በማስተማር እውቅና አስተዋይነትን ይጠቀሙ፣ አንድ ማስተማር አይደለም። Gemini 1.5 Pro በማስተማር የተለመደውን የሚስተናገድ እውቅና አስተዋይነትን ያሳየውን በእርስዎ የተሻለ ማስተማር እና በተለመደው የሚስተናገድ እውቀት ይጠቀሙ፣ በጽሁፍ፣ ምስል፣ ቪዲዮና ድምፅ የሚያስተማርና የሚያደርግ የGemini 1.5 Pro የተሻለ ማስተማር ይጠቀሙ።",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "የ gemini-1.5-pro ይሁኑን ይጠቀሙ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Üzenetíró segéd",
     "sidebar__promotion_dialog__content_item6__description": "Engedd, hogy az AI személyre szabott üzenetválaszokat generáljon neked másodpercek alatt egyetlen kattintással a Discordon.",
     "immersive_chat__more_actions_button__title": "Több",
-    "immersive_chat__rename_chat__button__title": "Átnevezés"
+    "immersive_chat__rename_chat__button__title": "Átnevezés",
+    "provider__gemini__model__gemini_1_5_pro__description": "Az egyik legerősebb modell a Google Gemini családban. Az akár 1 millió token hosszúságú páratlan kontextusablaknak köszönhetően a Gemini 1.5 Pro forradalmi képességeket nyit meg az „összefüggésben tanulás” terén, lehetővé téve az új képességek elsajátítását egyetlen utasításból anélkül, hogy finomhangolásra lenne szükség. Ezenkívül lenyűgöző multimodális képességeket mutat be, áttöréseket ér el a hosszú kontextus megértésében és elemzésében a szöveg, képek, videók és hangok terén.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Frissítés a gemini-1.5-pro-hoz",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Gemini 1.5 a Google Gemini család legújabb AI modellje. Az akár 1 millió token hosszúságú páratlan kontextusablaknak köszönhetően forradalmi „összefüggésben tanulás” képességeket nyit meg, új képességek elsajátítását teszi lehetővé egyetlen utasításból finomhangolás nélkül. Tapasztald meg a multimodális AI jövőjét, amint a Gemini 1.5 Pro páratlan hosszú kontextus megértéssel értelmezi és elemzi a szöveget, képeket, videókat és hangokat."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

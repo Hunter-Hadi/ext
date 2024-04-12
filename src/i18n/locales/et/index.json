@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Sõnumite kirjutamise abiline",
     "sidebar__promotion_dialog__content_item6__description": "Lase AI-l genereerida isikupärastatud sõnumivastuseid vaid mõne sekundiga, klõpsates Discordis üks kord.",
     "immersive_chat__more_actions_button__title": "Rohkem",
-    "immersive_chat__rename_chat__button__title": "Nimeta ümber"
+    "immersive_chat__rename_chat__button__title": "Nimeta ümber",
+    "provider__gemini__model__gemini_1_5_pro__description": "Üks võimsamaid mudeleid Google'i Gemini perekonnas. Kuni 1 miljoni märguande kontekstakna abil avab Gemini 1.5 Pro läbimurdelised \"kontekstis õppimise\" oskused, võimaldades tal omandada uusi võimeid ühest vihjest ilma häälestamise vajaduseta. See näitab ka muljetavaldavaid multimodaalseid võimeid, tehes läbimurdeid pika konteksti mõistmises ja analüüsis teksti, piltide, video ja heli osas.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uuenda juurdepääsu saamiseks gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 on Google'i Gemini perekonna viimane AI mudel. Kuni 1 miljoni märguande kontekstakna abil avab see läbimurdelised \"kontekstis õppimise\" oskused, omandades uusi võimeid ühest vihjest ilma häälestamise vajaduseta. Kogege multimodaalse AI tulevikku, kui Gemini 1.5 Pro sujuvalt mõistab ja analüüsib teksti, pilte, videot ja heli enneolematu pika konteksti mõistmisega."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

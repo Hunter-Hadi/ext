@@ -678,7 +678,10 @@
     "sidebar__promotion_dialog__content_item6__title": "Trợ lý viết tin nhắn",
     "sidebar__promotion_dialog__content_item6__description": "Cho phép trí tuệ nhân tạo tạo ra các câu trả lời tin nhắn cá nhân hóa cho bạn chỉ trong vài giây với một cú nhấp chuột trên Discord.",
     "immersive_chat__more_actions_button__title": "Thêm",
-    "immersive_chat__rename_chat__button__title": "Đổi tên"
+    "immersive_chat__rename_chat__button__title": "Đổi tên",
+    "provider__gemini__model__gemini_1_5_pro__description": "Một trong những mô hình mạnh mẽ nhất trong gia đình Gemini của Google. Với khả năng cửa sổ ngữ cảnh chưa từng có lên đến 1 triệu mã thông báo, Gemini 1.5 Pro mở khóa khả năng đột phá của kỹ năng \"học trong ngữ cảnh\", cho phép nó làm chủ các khả năng mới từ một lời nhắc duy nhất mà không cần điều chỉnh tinh chỉnh. Nó cũng thể hiện khả năng đa phương thức ấn tượng, với những đột phá trong việc hiểu và phân tích ngữ cảnh dài qua văn bản, hình ảnh, video và âm thanh.",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nâng cấp để truy cập gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Gemini 1.5 là mô hình AI mới nhất từ gia đình Gemini của Google. Với khả năng cửa sổ ngữ cảnh chưa từng có lên đến 1 triệu mã thông báo, nó mở khóa kỹ năng \"học trong ngữ cảnh\" đột phá, làm chủ các khả năng mới từ một lời nhắc duy nhất mà không cần điều chỉnh tinh chỉnh. Trải nghiệm tương lai của AI đa phương thức khi Gemini 1.5 Pro dễ dàng hiểu và phân tích văn bản, hình ảnh, video và âm thanh với khả năng hiểu biết ngữ cảnh dài chưa từng có."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

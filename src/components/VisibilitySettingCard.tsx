@@ -55,11 +55,7 @@ const VisibilitySettingCard: FC<{
   const [open, setOpen] = useState(false)
   const BoxRef = useRef<HTMLDivElement>(null)
   const handleOpen = () => {
-    if (isEditingSpecialButtonKey) {
-      setNewSite(isBlackMode ? defaultValue.blacklist : defaultValue.whitelist)
-    } else {
-      setNewSite([''])
-    }
+    setNewSite([''])
     setOpen(true)
     setTimeout(() => {
       BoxRef.current?.querySelector('input')?.focus()
@@ -81,9 +77,9 @@ const VisibilitySettingCard: FC<{
       setVisibilitySetting({
         ...visibilitySetting,
         isWhitelistMode: true,
-        whitelist: isEditingSpecialButtonKey
-          ? newSite
-          : uniq([...newSite, ...visibilitySetting.whitelist]).filter(Boolean),
+        whitelist: uniq([...newSite, ...visibilitySetting.whitelist]).filter(
+          Boolean,
+        ),
       })
     }
     setOpen(false)
@@ -92,12 +88,10 @@ const VisibilitySettingCard: FC<{
     }, 0)
   }
   const isInitial = useRef(false)
-  const [
-    visibilitySetting,
-    setVisibilitySetting,
-  ] = useState<IVisibilitySetting>(() => {
-    return cloneDeep(defaultValue)
-  })
+  const [visibilitySetting, setVisibilitySetting] =
+    useState<IVisibilitySetting>(() => {
+      return cloneDeep(defaultValue)
+    })
   useEffect(() => {
     if (!isInitial.current) {
       if (!isEqual(defaultValue, visibilitySetting)) {
@@ -274,17 +268,17 @@ const VisibilitySettingCard: FC<{
               options={
                 isEditingSpecialButtonKey
                   ? InputAssistantButtonGroupConfigHostKeys.map((url) => ({
-                    label: url,
-                    value: url,
-                  }))
+                      label: url,
+                      value: url,
+                    }))
                   : void 0
               }
-            // multiple={Boolean(
-            //   settingPromptsEditButtonKey &&
-            //     inputAssistantButtonKeys.includes(
-            //       settingPromptsEditButtonKey,
-            //     ),
-            // )}
+              // multiple={Boolean(
+              //   settingPromptsEditButtonKey &&
+              //     inputAssistantButtonKeys.includes(
+              //       settingPromptsEditButtonKey,
+              //     ),
+              // )}
             />
           </Stack>
         </DialogContent>

@@ -34,6 +34,7 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   host: string
   provider?: IAIProviderType
 }): Promise<boolean> => {
+  console.log('[CALL_API] promptDetail', promptDetail)
   const logApiAndConfirmIsLimited = async () => {
     try {
       const appLocalStorage = await getChromeExtensionLocalStorage()

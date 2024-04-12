@@ -124,6 +124,7 @@ const useClientConversation = () => {
         data: {
           initConversationData: {
             type: 'Chat',
+            name: '',
             title: 'Ask AI anything',
             meta: baseMetaConfig,
           } as Partial<IChatConversation>,
@@ -159,6 +160,7 @@ const useClientConversation = () => {
           initConversationData: {
             id: conversationId,
             type: 'Summary',
+            name: '',
             title: conversationTitleMap[pageSummaryType],
             meta: merge({
               ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
@@ -185,6 +187,7 @@ const useClientConversation = () => {
         data: {
           initConversationData: {
             type: 'Search',
+            name: '',
             title: 'AI-powered search',
             meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
           } as Partial<IChatConversation>,
@@ -205,6 +208,7 @@ const useClientConversation = () => {
         data: {
           initConversationData: {
             type: 'Art',
+            name: '',
             title: 'AI-powered image generate',
             meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art),
           } as Partial<IChatConversation>,

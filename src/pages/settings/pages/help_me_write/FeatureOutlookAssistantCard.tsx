@@ -12,7 +12,7 @@ const FeatureOutlookAssistantCard: FC = () => {
   return (
     <SettingsFeatureCardLayout
       title={t(
-        'settings:feature_card__help_me_write__field__outlook_input_assistant_button__title',
+        'settings:feature_card__help_me_write__field__outlook_instant_reply_button__title',
       )}
       id={'outlook-assistant'}
     >

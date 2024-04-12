@@ -40,9 +40,10 @@ export const openPDFViewer = async (
   newTab = false,
 ) => {
   const settings = await getChromeExtensionDBStorage()
-  if (settings.userSettings?.pdf?.enabled) {
+  const file = encodeURIComponent(url)
+  if (settings.userSettings?.pdf?.enabled || !file) {
     const redirectUrl = Browser.runtime.getURL(
-      `/pages/pdf/web/viewer.html?file=${encodeURIComponent(url)}`,
+      `/pages/pdf/web/viewer.html?file=${file}`,
     )
     log.info('pdfSnifferStartListener success', url, redirectUrl)
     if (newTab) {

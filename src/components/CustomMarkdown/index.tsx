@@ -1,4 +1,5 @@
 import Box from '@mui/material/Box'
+import Chip from '@mui/material/Chip'
 import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -6,11 +7,11 @@ import React, { FC, useMemo } from 'react'
 import Highlight from 'react-highlight'
 import ReactMarkdown from 'react-markdown'
 import reactNodeToString from 'react-node-to-string'
+import rehypeKatex from 'rehype-katex'
 import remarkBreaks from 'remark-breaks'
-// import rehypeHighlight from 'rehype-highlight'
-// import rehypeKatex from 'rehype-katex'
 import remarkGfm from 'remark-gfm'
-// import remarkMath from 'remark-math'
+// import rehypeHighlight from 'rehype-highlight'
+import remarkMath from 'remark-math'
 import supersub from 'remark-supersub'
 import Browser from 'webextension-polyfill'
 
@@ -154,9 +155,10 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
   props,
 ) => {
   const { children, className } = props
-  const code = useMemo(() => reactNodeToString(props.children), [
-    props.children,
-  ])
+  const code = useMemo(
+    () => reactNodeToString(props.children),
+    [props.children],
+  )
   const lang = props.className?.match(/language-(\w+)/)?.[1] || 'code'
   return (
     <Stack
@@ -200,20 +202,58 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
     </Stack>
   )
 }
-
+/**
+ * 处理latex表达式
+ * @param content
+ * @link - https://github.com/remarkjs/react-markdown/issues/785
+ */
+const preprocessLaTeX = (content: string) => {
+  content = content
+    .split('$')
+    .join('\\$')
+    .replace(/\\\$\\\$/g, '$$$$')
+  // Replace block-level LaTeX delimiters \[ \] with $$ $$
+  const blockProcessedContent = content.replace(
+    /\\\[(.*?)\\\]/gs,
+    (_, equation) => `$$${equation}$$`,
+  )
+  // Replace inline LaTeX delimiters \( \) with $ $
+  const inlineProcessedContent = blockProcessedContent.replace(
+    /\\\((.*?)\\\)/gs,
+    (_, equation) => `$${equation}$`,
+  )
+  return inlineProcessedContent
+}
 const CustomMarkdown: FC<{
   children: string
 }> = (props) => {
+  const formatMarkdownText = useMemo(() => {
+    try {
+      if (typeof props.children === 'string') {
+        return preprocessLaTeX(props.children)
+      }
+      return props.children
+    } catch (e) {
+      return props.children
+    }
+  }, [props.children])
   return useMemo(
     () => (
       <>
         <ReactMarkdown
-          remarkPlugins={[supersub, remarkBreaks, remarkGfm]}
-          // rehypePlugins={[
-          //   rehypeKatex,
-          //   [rehypeHighlight, { detect: true, ignoreMissing: true }],
-          // ]}
-          disallowedElements={['br']}
+          remarkPlugins={[
+            supersub,
+            remarkBreaks,
+            remarkGfm,
+            [
+              remarkMath,
+              // {
+              //   singleDollarTextMath: false,
+              // },
+            ],
+          ]}
+          rehypePlugins={[rehypeKatex]}
+          // disallowedElements={['br']}
           components={{
             // eslint-disable-next-line react/display-name
             h1: (props: any) => {
@@ -252,9 +292,21 @@ const CustomMarkdown: FC<{
             code: ({ node, inline, className, children, ...props }) => {
               if (inline) {
                 return (
-                  <code className={className} {...props}>
-                    {children}
-                  </code>
+                  <Chip
+                    className={className}
+                    label={children as string}
+                    sx={{
+                      padding: '.2em .4em',
+                      fontSize: '85%',
+                      lineHeight: '1.5',
+                      borderRadius: '.25em',
+                      whiteSpace: 'break-spaces',
+                      height: 'auto',
+                      '& > span': {
+                        p: 0,
+                      },
+                    }}
+                  />
                 )
               }
               return (
@@ -306,7 +358,7 @@ const CustomMarkdown: FC<{
             },
           }}
         >
-          {props.children}
+          {formatMarkdownText}
         </ReactMarkdown>
       </>
     ),

@@ -20,7 +20,9 @@ import {
   getTextTokens,
   sliceTextByTokens,
 } from '@/features/shortcuts/utils/tokenizer'
+import { SummaryContextMenuOverwriteMap } from '@/features/sidebar/utils/pageSummaryHelper'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 type TranscriptTimestampedType = {
   title: string
@@ -74,6 +76,25 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      const { clientMessageChannelEngine } = engine
+      // TODO 需要重构,临时记录call-api
+      if (clientMessageChannelEngine) {
+        const recordContextMenuData =
+          SummaryContextMenuOverwriteMap['YOUTUBE_VIDEO_SUMMARY']?.[
+            'timestamped'
+          ]
+        await clientMessageChannelEngine
+          .postMessage({
+            event: 'Client_logCallApiRequest',
+            data: {
+              name: recordContextMenuData?.text || 'UNKNOWN',
+              id: recordContextMenuData?.id || 'UNKNOWN',
+              host: getCurrentDomainHost(),
+            },
+          })
+          .then()
+          .catch()
+      }
       this.output = JSON.stringify([]) //设置初始值，翻译return 异常数据导致视图渲染错误
       if (this.isStopAction) return
       this.currentWebPageTitle = params?.CURRENT_WEBPAGE_TITLE || ''
@@ -341,8 +362,8 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
                 text: newPrompt,
               },
             ],
-            prompt_id: uuidV4(),
-            prompt_name: 'Timestamped summary',
+            prompt_id: 'f6177317-8773-4036-be9b-5905116c855f',
+            prompt_name: '[Summary] Sliced timestamped summary',
           },
           currentAbortTaskId,
         )

@@ -3,8 +3,10 @@ import { SxProps } from '@mui/material/styles'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
-import { type ISetActionsType } from '@/features/shortcuts/types/Action'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import { I18nextKeysType } from '@/i18next'
 
 import {
@@ -40,7 +42,7 @@ export interface IInputAssistantButtonGroupConfig
   // 渲染根节点的TagName
   rootWrapperTagName: string
   // 添加到root容器的第几个位置
-  appendPosition: number
+  appendPosition?: number
   // 给rootSelector添加的样式
   rootSelectorStyle?: string
   // 给root添加的样式
@@ -60,61 +62,40 @@ export interface IInputAssistantButtonGroupConfig
   DropdownButtonStyle?: InputAssistantButtonStyle
 }
 
-export type InputAssistantButtonGroupConfigHostType =
-  | 'mail.google.com'
-  | 'outlook.office.com'
-  | 'outlook.live.com'
-  | 'outlook.office365.com'
-  | 'twitter.com'
-  | 'linkedin.com'
-  | 'facebook.com'
-  | 'youtube.com'
-  | 'studio.youtube.com'
-  | 'instagram.com'
-  | 'reddit.com'
-  | 'discord.com'
+export const EmailWebsites = [
+  'mail.google.com',
+  'outlook.office.com',
+  'outlook.live.com',
+  'outlook.office365.com',
+] as const
 
-export const getInputAssistantAction = (
-  url: InputAssistantButtonGroupConfigHostType,
-): ISetActionsType[number] => {
-  switch (url) {
-    case 'discord.com':
-      return {
-        type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
-        parameters: {
-          isVariableMiddleOutEnabled: true,
-        },
-      }
+export const SocialMediaWebsites = [
+  'facebook.com',
+  'twitter.com',
+  'linkedin.com',
+  'youtube.com',
+  'studio.youtube.com',
+  'instagram.com',
+  'reddit.com',
+] as const
 
-    case 'twitter.com':
-    case 'linkedin.com':
-    case 'youtube.com':
-    case 'studio.youtube.com':
-    case 'instagram.com':
-    case 'reddit.com':
-      return {
-        type: 'GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE',
-        parameters: {
-          isVariableMiddleOutEnabled: true,
-        },
-      }
+export const ChatAppWebsites = [
+  'web.whatsapp.com',
+  'app.slack.com',
+  'discord.com',
+] as const
 
-    case 'mail.google.com':
-    case 'outlook.office.com':
-    case 'outlook.live.com':
-    case 'outlook.office365.com':
-    default:
-      return {
-        type: 'GET_EMAIL_CONTENTS_OF_WEBPAGE',
-        parameters: {
-          isVariableMiddleOutEnabled: true,
-        },
-      }
-  }
-}
+export type EmailWebsitesType = (typeof EmailWebsites)[number]
+export type SocialMediaWebsitesType = (typeof SocialMediaWebsites)[number]
+export type ChatAppWebsitesType = (typeof ChatAppWebsites)[number]
 
-const InputAssistantButtonGroupConfig = {
-  'mail.google.com': [
+export type WritingAssistantButtonGroupConfigHostType =
+  | EmailWebsitesType
+  | SocialMediaWebsitesType
+  | ChatAppWebsitesType
+
+const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: ['.btC'],
@@ -188,49 +169,17 @@ const InputAssistantButtonGroupConfig = {
         borderRadius: '18px',
         iconSize: 18,
         padding: '9px 27px',
-        borderWidth: 0,
+        borderWidth: '0',
       },
       InputAssistantBoxSx: {
         borderRadius: '18px',
         margin: '0 0 0 12px',
       },
-    },
-  ],
-  'outlook.office.com': {
-    enable: true,
-    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
-    rootParentDeep: 1,
-    rootStyle: 'overflow: unset;',
-    rootParentStyle: 'overflow: unset;',
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
-    },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
-    },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
-    },
-    appendPosition: 1,
-    CTAButtonStyle: {
-      iconSize: 16,
-      padding: '8px 20px',
-    },
-    DropdownButtonStyle: {
-      padding: '6px',
-    },
-    InputAssistantBoxSx: {
-      margin: '0 0 0 12px',
-    },
-  },
-  'outlook.live.com': [
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -270,62 +219,51 @@ const InputAssistantButtonGroupConfig = {
       rootParentDeep: 0,
       rootStyle: 'overflow: unset;',
       rootParentStyle: 'overflow: unset;',
+      rootWrapperStyle: 'order: 1;',
       rootWrapperTagName: 'div',
+      appendPosition: 0,
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
-        onSelectionEffect: () => {
-          const replyButton =
-            document.querySelector<HTMLElement>('.th6py > button')
-          replyButton?.click()
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton = (InputAssistantButtonElementRouteMap.get(
+            inputAssistantButtonSelector,
+          ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )) as HTMLElement
+
+          if (inputAssistantButton) {
+            let replyButton = inputAssistantButton.parentElement
+              ?.nextElementSibling as HTMLElement
+
+            if (
+              inputAssistantButton.parentElement?.parentElement
+                ?.childElementCount === 4
+            ) {
+              replyButton = replyButton?.nextElementSibling as HTMLElement
+            }
+
+            replyButton?.click()
+          }
         },
       },
-      appendPosition: 2,
       CTAButtonStyle: {
         padding: '6px 20px',
         borderWidth: 0,
         borderRadius: '4px',
       },
       InputAssistantBoxSx: {
-        margin: '4px 0 0 12px',
+        marginTop: '4px',
+        marginLeft: '4px',
       },
-    },
-  ],
-  'outlook.office365.com': {
-    enable: true,
-    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
-    rootParentDeep: 1,
-    rootStyle: 'overflow: unset;',
-    rootParentStyle: 'overflow: unset;',
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
-    },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
-    },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
-    },
-    appendPosition: 1,
-    CTAButtonStyle: {
-      padding: '6px 20px',
-    },
-    DropdownButtonStyle: {
-      padding: '6px',
-    },
-    InputAssistantBoxSx: {
-      margin: '0 0 0 12px',
-    },
-  },
-  'twitter.com': [
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: [
@@ -367,7 +305,9 @@ const InputAssistantButtonGroupConfig = {
     },
     {
       enable: () => {
-        if (document.querySelector('div[data-testid="toolBar"]')) return false
+        if (document.querySelector('div[data-testid="toolBar"]')) {
+          return false
+        }
         return true
       },
       rootSelectors: [
@@ -397,9 +337,11 @@ const InputAssistantButtonGroupConfig = {
         borderRadius: '18px',
         margin: '0 0 0 12px',
       },
-    },
-  ],
-  'linkedin.com': [
+    } as any,
+  ]
+
+const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: [
@@ -463,7 +405,7 @@ const InputAssistantButtonGroupConfig = {
       rootSelectors: ['.feed-shared-social-action-bar'],
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
-      rootWrapperStyle: 'order: 1;',
+      rootWrapperStyle: 'order:1;height:100%;',
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
@@ -491,15 +433,15 @@ const InputAssistantButtonGroupConfig = {
       },
       appendPosition: 0,
       CTAButtonStyle: {
-        padding: '11px 32px',
+        height: 'inherit',
+        padding: '0 20px',
         iconSize: 26,
         borderRadius: '4px',
       },
       InputAssistantBoxSx: {
-        width: 'max-content',
         borderRadius: '4px',
       },
-    },
+    } as IInputAssistantButtonGroupConfig,
     {
       enable: true,
       rootSelectors: ['.comments-comment-social-bar'],
@@ -539,9 +481,11 @@ const InputAssistantButtonGroupConfig = {
         marginBottom: '-4px',
         transform: 'translateY(-2px)',
       },
-    },
-  ],
-  'facebook.com': [
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const FacebookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: [
@@ -578,7 +522,7 @@ const InputAssistantButtonGroupConfig = {
       },
       DropdownButtonStyle: {
         borderRadius: '0 16px 16px 0',
-        padding: '0px',
+        padding: 0,
         transparentHeight: 6,
       },
       InputAssistantBoxSx: {
@@ -603,6 +547,7 @@ const InputAssistantButtonGroupConfig = {
             findSelectorParent(
               'div > div > div > #focused-state-composer-submit > span > div > i',
               rootElement,
+              5,
             )
           ) {
             return false
@@ -658,9 +603,21 @@ const InputAssistantButtonGroupConfig = {
       InputAssistantBoxSx: {
         borderRadius: '4px',
       },
-    },
+    } as IInputAssistantButtonGroupConfig,
     {
       enable: (rootElement) => {
+        const commentContentBox = findSelectorParent(
+          'span[lang][dir]',
+          rootElement,
+          3,
+        )
+        if (
+          !commentContentBox ||
+          (commentContentBox.innerText === '' &&
+            commentContentBox.querySelector('img'))
+        ) {
+          return false
+        }
         return true
       },
       rootSelectors: [
@@ -700,7 +657,7 @@ const InputAssistantButtonGroupConfig = {
       InputAssistantBoxSx: {
         borderRadius: '24px',
       },
-    },
+    } as IInputAssistantButtonGroupConfig,
     // {
     //   enable: (rootElement) => {
     //     return true
@@ -740,8 +697,10 @@ const InputAssistantButtonGroupConfig = {
     //     margin: '8px 0'
     //   },
     // }
-  ],
-  'youtube.com': [
+  ]
+
+const YouTubeWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: ['ytd-commentbox ytd-button-renderer#submit-button'],
@@ -828,7 +787,7 @@ const InputAssistantButtonGroupConfig = {
         marginBottom: '-12px',
         transform: 'translateY(-12px)',
       },
-    },
+    } as IInputAssistantButtonGroupConfig,
     {
       enable: (rootElement) => {
         const replyDialog = rootElement.parentElement.nextElementSibling
@@ -875,85 +834,101 @@ const InputAssistantButtonGroupConfig = {
         borderRadius: '18px',
         marginLeft: '8px',
       },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: ['ytcp-commentbox #submit-button'],
+      rootParentDeep: 2,
+      rootStyle: 'display: flex;align-items: center;margin-top: 8px',
+      rootWrapperTagName: 'div',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '10px 9px',
+        iconSize: 16,
+        borderRadius: '18px 0 0 18px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 18px 18px 0',
+        padding: '8px 3px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginLeft: '24px',
+      },
     },
-  ],
-  'studio.youtube.com': {
-    enable: true,
-    rootSelectors: ['ytcp-commentbox #submit-button'],
-    appendPosition: 2,
-    rootParentDeep: 2,
-    rootStyle: 'display: flex;align-items: center;margin-top: 8px',
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
-    },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
-    },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
-    },
-    CTAButtonStyle: {
-      padding: '10px 9px',
-      iconSize: 16,
-      borderRadius: '18px 0 0 18px',
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 18px 18px 0',
-      padding: '8px 3px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '18px',
-      marginLeft: '8px',
-    },
-  },
-  'instagram.com': {
-    enable: true,
-    rootSelectors: [
-      'form textarea',
-      'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > button > div',
-      // TODO: Reels暂时不支持，因为展开sidebar会让Comments收起来
-      // 'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > div',
-    ],
-    appendPosition: 1,
-    rootParentDeep: 1,
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'INSTAGRAM_COMPOSE_NEW_BUTTON',
-    },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'INSTAGRAM_COMPOSE_REPLY_BUTTON',
-    },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'INSTAGRAM_REFINE_DRAFT_BUTTON',
-    },
-    rootWrapperStyle: 'order:2;margin-right: 8px;margin-left: 8px;',
-    CTAButtonStyle: {
-      padding: '5px 12px',
-      iconSize: 14,
-      borderRadius: '12px 0  0 12px',
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 12px 12px 0',
-      padding: '2px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '12px',
-    },
-  },
-  'reddit.com': [
+    {
+      enable: (rootElement) => {
+        const commentDialog = findParentEqualSelector(
+          'ytcp-comment',
+          rootElement,
+        )?.querySelector('#reply-dialog-container')
+        if (commentDialog?.innerHTML === '') {
+          return true
+        }
+        return false
+      },
+      rootSelectors: ['#toolbar:has(> #reply-button)'],
+      rootParentDeep: 0,
+      appendPosition: -1,
+      rootWrapperTagName: 'div',
+      rootStyle: 'display: flex; align-items: center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+
+          findSelectorParent(
+            '#reply-button [role="button"]',
+            inputAssistantButton as HTMLElement,
+            2,
+          )?.click()
+
+          setTimeout(() => {
+            inputAssistantButton?.parentElement?.remove()
+          })
+        },
+      },
+      CTAButtonStyle: {
+        padding: '8px 16px',
+        iconSize: 16,
+        borderRadius: '18px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginRight: '26px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const RedditWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
     {
       enable: true,
       rootSelectors: [
@@ -1065,99 +1040,379 @@ const InputAssistantButtonGroupConfig = {
       DropdownButtonStyle: {},
       InputAssistantBoxSx: {},
     },
-  ],
-  // 'discord.com': [
-  //   {
-  //     enable: true,
-  //     rootSelectors: ['[class^="channelTextArea"] [class^="buttons"]'],
-  //     appendPosition: 0,
-  //     rootParentDeep: 0,
-  //     rootWrapperTagName: 'div',
-  //     composeReplyButton: {
-  //       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-  //       buttonKey: 'inputAssistantComposeReplyButton',
-  //       permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
-  //       onSelectionEffect: ({ id: buttonId }) => {
-  //         const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-  //         const inputAssistantButton =
-  //           InputAssistantButtonElementRouteMap.get(
-  //             inputAssistantButtonSelector,
-  //           ) ||
-  //           document.querySelector<HTMLButtonElement>(
-  //             inputAssistantButtonSelector,
-  //           )
+  ]
 
-  //         // it seems not to work
-  //         if (inputAssistantButton) {
-  //           findSelectorParent('[class^="channelTextArea"] div[class^="textArea"]', inputAssistantButton as HTMLElement)?.click()
-  //         }
-  //       },
-  //     },
-  //     refineDraftButton: {
-  //       tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-  //       buttonKey: 'inputAssistantRefineDraftButton',
-  //       permissionWrapperCardSceneType: 'DISCORD_REFINE_DRAFT_BUTTON',
-  //     },
-  //     CTAButtonStyle: {
-  //       padding: '5px 8px',
-  //       iconSize: 14,
-  //       borderRadius: '12px 0  0 12px',
-  //       margin: 'auto',
-  //     },
-  //     DropdownButtonStyle: {
-  //       borderRadius: '0 12px 12px 0',
-  //       padding: '2px',
-  //     },
-  //     InputAssistantBoxSx: {
-  //       borderRadius: '12px',
-  //       marginLeft: '8px',
-  //       marginRight: '8px',
-  //     },
-  //   },
-  //   {
-  //     enable: true,
-  //     rootSelectors: ['[class^="buttonsInner"]'],
-  //     appendPosition: 2,
-  //     rootParentDeep: 0,
-  //     rootWrapperTagName: 'div',
-  //     composeReplyButton: {
-  //       tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-  //       buttonKey: 'inputAssistantComposeReplyButton',
-  //       permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
-  //       onSelectionEffect: ({ id: buttonId }) => {
-  //         const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-  //         const inputAssistantButton =
-  //           InputAssistantButtonElementRouteMap.get(
-  //             inputAssistantButtonSelector,
-  //           ) ||
-  //           document.querySelector<HTMLButtonElement>(
-  //             inputAssistantButtonSelector,
-  //           )
+const DiscordWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: [
+        '[class^="channelTextArea"] :not([class*="innerDisabled"]) > [class^="buttons"]',
+      ],
+      appendPosition: 0,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'display:flex;align-items:center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
 
-  //         ;(inputAssistantButton?.parentElement
-  //           ?.previousElementSibling as HTMLElement)?.click()
-  //       },
-  //     },
-  //     rootWrapperStyle: 'height: 100%;',
-  //     CTAButtonStyle: {
-  //       height: '100%',
-  //       borderRadius: 0,
-  //       iconSize: 18,
-  //       padding: '6.5px',
-  //     },
-  //     DropdownButtonStyle: {
-  //       borderRadius: '0 12px 12px 0',
-  //       padding: '2px',
-  //     },
-  //   },
-  // ],
-} as {
-  [key in InputAssistantButtonGroupConfigHostType]:
+          // it seems not to work
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[class^="channelTextArea"] div[class^="textArea"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'DISCORD_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '5px 8px',
+        iconSize: 14,
+        borderRadius: '12px 0  0 12px',
+        margin: 'auto',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 12px 12px 0',
+        padding: '2px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '12px',
+        marginLeft: '8px',
+        marginRight: '8px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+    {
+      enable: (rootElement) => {
+        if (
+          !rootElement.querySelector(
+            'svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"]',
+          )
+        ) {
+          return false
+        }
+        return true
+      },
+      rootSelectors: [
+        '[class^="buttonsInner"]:has(> div > svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
+      ],
+      appendPosition: -1,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'DISCORD_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[role=button]:has(> svg > [d="M2.3 7.3a1 1 0 0 0 0 1.4l5 5a1 1 0 0 0 1.4-1.4L5.42 9H11a7 7 0 0 1 7 7v4a1 1 0 1 0 2 0v-4a9 9 0 0 0-9-9H5.41l3.3-3.3a1 1 0 0 0-1.42-1.4l-5 5Z"])',
+              inputAssistantButton as HTMLElement,
+              3,
+            )?.click()
+          }
+        },
+      },
+      rootWrapperStyle: 'height: 100%;',
+      CTAButtonStyle: {
+        height: '100%',
+        borderRadius: 0,
+        iconSize: 18,
+        padding: '6.5px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 12px 12px 0',
+        padding: '2px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: [
+        '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
+      ],
+      appendPosition: 0,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'SLACK_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[data-qa="message_input"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '6px 8px',
+        iconSize: 16,
+        borderRadius: '4px 0 0 4px',
+        margin: 'auto',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 4px 4px 0',
+        padding: '4px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '4px',
+        marginRight: '8px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+    // {
+    //   enable: true,
+    //   rootSelectors: [
+    //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+    //   ],
+    //   appendPosition: 5,
+    //   rootParentDeep: 0,
+    //   rootWrapperTagName: 'div',
+    //   composeReplyButton: {
+    //     tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+    //     buttonKey: 'inputAssistantComposeReplyButton',
+    //     permissionWrapperCardSceneType: 'SLACK_COMPOSE_REPLY_BUTTON',
+    //     onSelectionEffect: ({ id: buttonId }) => {},
+    //   },
+    //   rootWrapperStyle: 'height: 100%;',
+    //   CTAButtonStyle: {
+    //     height: '100%',
+    //     borderRadius: '4px',
+    //     iconSize: 16,
+    //     padding: '8px',
+    //   },
+    // } as IInputAssistantButtonGroupConfig,
+  ]
+
+const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: [
+        'footer .copyable-area div:has(> .lexical-rich-text-input)',
+      ],
+      appendPosition: 0,
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'order: 1; align-self: center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'WHATSAPP_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[data-qa="message_input"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '5px 6px',
+        iconSize: 14,
+        borderRadius: '8px 0 0 8px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 8px 8px 0',
+        padding: '2px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '8px',
+        marginLeft: '8px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+    // {
+    //   enable: () => {
+    //     if (!document.querySelector('footer .copyable-area div:has(> button[aria-label] > [data-icon])')) {
+    //       return false
+    //     }
+    //   }
+    // }
+  ]
+
+const WritingAssistantButtonGroupConfigs: {
+  [key in WritingAssistantButtonGroupConfigHostType]?:
     | IInputAssistantButtonGroupConfig
     | IInputAssistantButtonGroupConfig[]
+} = {
+  'mail.google.com': GmailWritingAssistantButtonGroupConfigs,
+  'outlook.office.com': {
+    enable: true,
+    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
+    rootParentDeep: 1,
+    rootStyle: 'overflow: unset;',
+    rootParentStyle: 'overflow: unset;',
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
+    },
+    appendPosition: 1,
+    CTAButtonStyle: {
+      iconSize: 16,
+      padding: '8px 20px',
+    },
+    DropdownButtonStyle: {
+      padding: '6px',
+    },
+    InputAssistantBoxSx: {
+      margin: '0 0 0 12px',
+    },
+  },
+  'outlook.live.com': OutlookWritingAssistantButtonGroupConfigs,
+  'outlook.office365.com': {
+    enable: true,
+    rootSelectors: ['div[data-testid="ComposeSendButton"]'],
+    rootParentDeep: 1,
+    rootStyle: 'overflow: unset;',
+    rootParentStyle: 'overflow: unset;',
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'OUTLOOK_REFINE_DRAFT_BUTTON',
+    },
+    appendPosition: 1,
+    CTAButtonStyle: {
+      padding: '6px 20px',
+    },
+    DropdownButtonStyle: {
+      padding: '6px',
+    },
+    InputAssistantBoxSx: {
+      margin: '0 0 0 12px',
+    },
+  },
+  'twitter.com': TwitterWritingAssistantButtonGroupConfigs,
+  'linkedin.com': LinkedInWritingAssistantButtonGroupConfigs,
+  'facebook.com': FacebookWritingAssistantButtonGroupConfigs,
+  'youtube.com': YouTubeWritingAssistantButtonGroupConfigs,
+  'studio.youtube.com': YouTubeStudioWritingAssistantButtonGroupConfigs,
+  'instagram.com': {
+    enable: true,
+    rootSelectors: [
+      'form textarea',
+      'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > button > div',
+      // TODO: Reels暂时不支持，因为展开sidebar会让Comments收起来
+      // 'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > div',
+    ],
+    appendPosition: 1,
+    rootParentDeep: 1,
+    rootWrapperTagName: 'div',
+    composeNewButton: {
+      tooltip: 'client:input_assistant_button__compose_new__tooltip',
+      buttonKey: 'inputAssistantComposeNewButton',
+      permissionWrapperCardSceneType: 'INSTAGRAM_COMPOSE_NEW_BUTTON',
+    },
+    composeReplyButton: {
+      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+      buttonKey: 'inputAssistantComposeReplyButton',
+      permissionWrapperCardSceneType: 'INSTAGRAM_COMPOSE_REPLY_BUTTON',
+    },
+    refineDraftButton: {
+      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+      buttonKey: 'inputAssistantRefineDraftButton',
+      permissionWrapperCardSceneType: 'INSTAGRAM_REFINE_DRAFT_BUTTON',
+    },
+    rootWrapperStyle: 'order:2;margin-right: 8px;margin-left: 8px;',
+    CTAButtonStyle: {
+      padding: '5px 12px',
+      iconSize: 14,
+      borderRadius: '12px 0  0 12px',
+    },
+    DropdownButtonStyle: {
+      borderRadius: '0 12px 12px 0',
+      padding: '2px',
+    },
+    InputAssistantBoxSx: {
+      borderRadius: '12px',
+    },
+  },
+  'reddit.com': RedditWritingAssistantButtonGroupConfigs,
+  // 'web.whatsapp.com': WhatsAppWritingAssistantButtonGroupConfigs,
+  'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
+  'discord.com': DiscordWritingAssistantButtonGroupConfigs,
 }
-export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
-  InputAssistantButtonGroupConfig,
-) as InputAssistantButtonGroupConfigHostType[]
 
-export default InputAssistantButtonGroupConfig
+export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
+  WritingAssistantButtonGroupConfigs,
+) as WritingAssistantButtonGroupConfigHostType[]
+
+export default WritingAssistantButtonGroupConfigs

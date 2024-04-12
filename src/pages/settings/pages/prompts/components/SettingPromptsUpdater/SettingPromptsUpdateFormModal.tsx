@@ -41,7 +41,8 @@ const SettingPromptsUpdateFormModal: FC<{
   )
   const isEditingSpecialButtonKey =
     settingPromptsEditButtonKey &&
-    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey)
+    specialInputAssistantButtonKeys.includes(settingPromptsEditButtonKey) &&
+    false
 
   const [editNode, setEditNode] = useState<IContextMenuItem>(() =>
     cloneDeep(node),

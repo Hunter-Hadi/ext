@@ -9,13 +9,13 @@ import {
 } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-type getInputAssistantButtonGroupWithHostConfig = {
+type getWritingAssistantButtonGroupWithHostConfig = {
   keyElement: HTMLElement
   buttonGroupConfig: IInputAssistantButtonGroupConfig
 }
 
 const checkHostUsingButtonKeys = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const host = getCurrentDomainHost()
   switch (host) {
@@ -39,8 +39,10 @@ const checkHostUsingButtonKeys = (
       return getFacebookButtonGroup(config)
 
     case 'youtube.com':
-    case 'studio.youtube.com':
       return getYouTubeButtonGroup(config)
+
+    case 'studio.youtube.com':
+      return getYouTubeStudioButtonGroup(config)
 
     case 'instagram.com':
       return getInstagramButtonGroup(config)
@@ -48,9 +50,15 @@ const checkHostUsingButtonKeys = (
     case 'reddit.com':
       return getRedditButtonGroup(config)
 
-    // chat
+    // chat app
     case 'discord.com':
       return getDiscordButtonGroup(config)
+
+    case 'app.slack.com':
+      return getSlackButtonGroup(config)
+
+    case 'web.whatsapp.com':
+      return getWhatsAppButtonGroup(config)
 
     default:
       return [
@@ -61,7 +69,7 @@ const checkHostUsingButtonKeys = (
 }
 
 const getGmailButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // temp fix for gmail
@@ -84,7 +92,7 @@ const getGmailButtonGroup = (
   ]
 }
 const getOutlookButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // temp fix for outlook mail
@@ -107,19 +115,19 @@ const getOutlookButtonGroup = (
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))
   const subject =
-    (editPanelElement.querySelector(
-      'input[maxlength="255"]',
-    ) as HTMLInputElement)?.value || ''
+    editPanelElement.querySelector<HTMLInputElement>('input[maxlength="255"]')
+      ?.value || ''
   // 1. 不在列表
   // 2. 没有toOrCC的用户
   // 3. 没有fwdMsg
   // 4. 不在dialog中
+  // 240401: 满足上面4条情况但有有subject的情况下显示 reply button，所以去除了subject的判断
   if (
     !listContainer?.contains(keyElement) &&
     toOrCC === 0 &&
     !fwdMsg &&
-    !isDialog &&
-    !subject
+    !isDialog
+    // && !subject
   ) {
     return [
       buttonGroupConfig.composeNewButton,
@@ -132,7 +140,7 @@ const getOutlookButtonGroup = (
   ]
 }
 const getTwitterButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   const rootContainer = getTwitterInputAssistantButtonRootContainer(keyElement)
@@ -145,9 +153,11 @@ const getTwitterButtonGroup = (
       buttonGroupConfig.refineDraftButton,
     ]
   }
-  const detailPostPage = (Array.from(
-    document.querySelectorAll('article[data-testid="tweet"]'),
-  ) as HTMLElement[]).find((post) => {
+  const detailPostPage = (
+    Array.from(
+      document.querySelectorAll('article[data-testid="tweet"]'),
+    ) as HTMLElement[]
+  ).find((post) => {
     return post.nextElementSibling?.contains(keyElement)
   })
   if (detailPostPage) {
@@ -163,7 +173,7 @@ const getTwitterButtonGroup = (
 }
 
 const getLinkedInButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (
@@ -185,7 +195,7 @@ const getLinkedInButtonGroup = (
 }
 
 const getFacebookButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   // Facebook Reels
@@ -247,7 +257,7 @@ const getFacebookButtonGroup = (
 }
 
 const getYouTubeButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (
@@ -262,8 +272,21 @@ const getYouTubeButtonGroup = (
   ]
 }
 
+const getYouTubeStudioButtonGroup = (
+  config: getWritingAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (keyElement.matches('#toolbar:has(> #reply-button)')) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
 const getInstagramButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   const inTheForm = findSelectorParent(
@@ -288,10 +311,13 @@ const getInstagramButtonGroup = (
 }
 
 const getRedditButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  if (keyElement.querySelector('slot[name="submit-button"]')) {
+  if (
+    keyElement.querySelector('slot[name="submit-button"]') ||
+    keyElement.querySelector('button[type="submit"]') // for old reddit
+  ) {
     // reply
     return [
       buttonGroupConfig.composeReplyButton,
@@ -305,12 +331,46 @@ const getRedditButtonGroup = (
 }
 
 const getDiscordButtonGroup = (
-  config: getInputAssistantButtonGroupWithHostConfig,
+  config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
   if (keyElement?.matches('[class^="buttonsInner"]')) {
     return [buttonGroupConfig.composeReplyButton]
   }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getSlackButtonGroup = (
+  config: getWritingAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  if (
+    keyElement?.matches(
+      '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+    )
+  ) {
+    return [buttonGroupConfig.composeReplyButton]
+  }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getWhatsAppButtonGroup = (
+  config: getWritingAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
+  // if (
+  //   keyElement?.matches(
+  //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+  //   )
+  // ) {
+  //   return [buttonGroupConfig.composeReplyButton]
+  // }
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,

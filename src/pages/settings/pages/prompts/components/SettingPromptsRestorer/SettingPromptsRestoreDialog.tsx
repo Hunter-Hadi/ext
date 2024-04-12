@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
 import React, { type FC, memo, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilState } from 'recoil'
 
 import {
   ChromeExtensionDBStorageSnapshot,
@@ -19,12 +20,14 @@ import {
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorageSnapshot'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import SettingPromptsActionConfirmModal from '@/pages/settings/pages/prompts/components/SettingPromptsActionConfirmModal'
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 const SettingPromptsRestoreDialog: FC<{
   onClose: () => void
   onRestore: (snapshot: ChromeExtensionDBStorageSnapshot) => void
 }> = (props) => {
   const { t } = useTranslation(['settings', 'common'])
+  const [editButtonKey] = useRecoilState(SettingPromptsEditButtonKeyAtom)
   const [open, setOpen] = useState(true)
   const [confirmOpen, setConfirmOpen] = useState(false)
   const [confirmType, setConfirmType] = useState<
@@ -87,10 +90,10 @@ const SettingPromptsRestoreDialog: FC<{
               },
             }}
           >
-            {filterSnapshotList.map((snapshot) => {
+            {editButtonKey && filterSnapshotList.map((snapshot) => {
               const isSelected = snapshot.version === selectedSnapshot?.version
               const ownPrompts =
-                snapshot.settings.buttonSettings?.textSelectPopupButton.contextMenu.filter(
+                snapshot.settings.buttonSettings?.[editButtonKey]?.contextMenu.filter(
                   (item) => item.data.editable,
                 )?.length || 0
               return (

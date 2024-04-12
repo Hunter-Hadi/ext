@@ -73,9 +73,15 @@ const InputAssistantPortal: FC = () => {
       return appSetting.userSettings?.inputAssistantButton?.reddit === true
     }
 
-    // chat
+    // chat app
     if (host === 'discord.com') {
       return appSetting.userSettings?.inputAssistantButton?.discord === true
+    }
+    if (host === 'app.slack.com') {
+      return appSetting.userSettings?.inputAssistantButton?.slack === true
+    }
+    if (host === 'web.whatsapp.com') {
+      return appSetting.userSettings?.inputAssistantButton?.whatsApp === true
     }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])

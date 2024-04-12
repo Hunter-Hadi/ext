@@ -82,6 +82,8 @@ type ActionIdentifier =
   | 'MAXAI_SUMMARY_LOG'
   //MaxAI 处理内置的变量
   | 'MAXAI_PROCESS_BUILT_IN_PARAMETERS'
+  // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量
+  | 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
 
 // webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'

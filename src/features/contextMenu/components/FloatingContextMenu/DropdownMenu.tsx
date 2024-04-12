@@ -556,9 +556,8 @@ export const MenuComponent = React.forwardRef<
 
             const keydownArrowLeftBackSelectItem = lastKeydownEvent.current
               ?.target as HTMLDivElement
-            const keydownArrowLeftBackSelectId = keydownArrowLeftBackSelectItem?.getAttribute(
-              'data-lastid',
-            )
+            const keydownArrowLeftBackSelectId =
+              keydownArrowLeftBackSelectItem?.getAttribute('data-lastid')
             if (keydownArrowLeftBackSelectId) {
               currentIndex = contextMenuIdList.findIndex(
                 (item) => item.floatingUIId === keydownArrowLeftBackSelectId,
@@ -636,18 +635,20 @@ export const MenuComponent = React.forwardRef<
       onMatch: isOpen ? setActiveIndex : undefined,
       activeIndex,
     })
-    const {
-      getReferenceProps,
-      getFloatingProps,
-      getItemProps,
-    } = useInteractions([
-      hover,
-      click,
-      role,
-      dismiss,
-      listNavigation,
-      typeahead,
-    ])
+    const { getReferenceProps, getFloatingProps, getItemProps } =
+      useInteractions([
+        hover,
+        click,
+        role,
+        dismiss,
+        /**
+         * useListNavigation.ts的源码第703行，合并后的referenceProps的onKeyDown方法里对垂直方向上下键调用了stopEvent(event)，
+         * 所以会导致AutoHeightTextarea组件在多行输入的时候，按上下键无效，默认事件被禁止
+         * 目前先更改AutoHeightTextarea组件的onKeyDown，MenuList是隐藏状态下就禁止方向键的冒泡
+         */
+        listNavigation,
+        typeahead,
+      ])
     // Event emitter allows you to communicate across tree components.
     // This effect closes all menus when an item gets clicked anywhere
     // in the tree.
@@ -769,6 +770,7 @@ export const MenuComponent = React.forwardRef<
         })
       }
     }, [floatingDropdownMenu.open])
+
     return (
       <FloatingNode id={nodeId}>
         {referenceElement ? (
@@ -782,8 +784,8 @@ export const MenuComponent = React.forwardRef<
                 onClickReferenceElement?.(event)
               },
               onKeyDownCapture(event) {
-                // 如果是enter并且是根节点
-                if (event.key === 'Enter' && !parentId) {
+                // 如果是enter非shiftKey并且是根节点
+                if (event.key === 'Enter' && !event.shiftKey && !parentId) {
                   handleExecuteActions()
                   return
                 }

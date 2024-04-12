@@ -1,6 +1,6 @@
 {
   "name": "__MSG_name__",
-  "version": "3.1.6",
+  "version": "3.1.9",
   "short_name": "__MSG_sn__",
   "description": "__MSG_desc__",
   "default_locale": "en",
@@ -21,7 +21,10 @@
       "run_at": "document_end"
     },
     {
-      "matches": ["https://main.d3bohqvl407i44.amplifyapp.com/*"],
+      "matches": [
+        "https://main.d3bohqvl407i44.amplifyapp.com/*",
+        "https://test.d3kf9o74pc4m0c.amplifyapp.com/*"
+      ],
       "js": ["check_status.js"],
       "run_at": "document_end"
     },

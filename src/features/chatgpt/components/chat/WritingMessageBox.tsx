@@ -24,10 +24,8 @@ const WritingMessageBox: FC<{
 }> = (props) => {
   const theme = useCustomTheme()
   const { onChange } = props
-  const {
-    currentSidebarConversationMessages,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentSidebarConversationMessages, currentSidebarConversationType } =
+    useSidebarSettings()
   const floatingDropdownMenu = useRecoilValue(FloatingDropdownMenuState)
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
@@ -101,7 +99,9 @@ const WritingMessageBox: FC<{
         boxRef.current?.offsetHeight,
         boxRef.current?.getBoundingClientRect().height,
       )
-      container.style.minHeight = `${(boxRef.current?.offsetHeight || 0) + 1}px`
+      container.style.minHeight = `${
+        (boxRef.current?.offsetHeight || 0) + 0.01
+      }px`
     }, 100),
     [],
   )

@@ -674,6 +674,18 @@ const FloatingContextMenu: FC<{
                     <AutoHeightTextarea
                       minLine={1}
                       stopPropagation
+                      onKeydownCapture={event => {
+                        if (floatingDropdownMenu.open && memoMenuList.length) {
+                          // drop menu打开，不劫持组件内的onKeyDown行为
+                          return false;
+                        }
+                        if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+                          // drop menu关闭，上下按键禁止冒泡处理，具体原因在DropdownMenu.tsx文件useInteractions方法注释
+                          event.stopPropagation();
+                          return true;
+                        }
+                        return false;
+                      }}
                       expandNode={
                         floatingDropdownMenu.open && (
                           <ChatIconFileUpload

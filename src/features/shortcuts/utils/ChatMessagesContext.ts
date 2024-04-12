@@ -12,9 +12,9 @@ export interface IChatMessagesContextData {
   replyMessage?: IChatMessageData
   chatMessages: IChatMessageData[]
   // 要回复的对象信息
-  MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT: string
+  MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT: string
   // 用到的 chat messages 上下文
-  MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT: string
+  MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT: string
 }
 
 export interface ICreateChatMessageListData {
@@ -72,8 +72,8 @@ export default class ChatMessagesContext {
       chatroomName: '',
       username: '',
       chatMessages: [],
-      MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT: '',
-      MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT: '',
+      MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT: '',
+      MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT: '',
     }
   }
   replyMessage(messageIndex: number) {
@@ -85,19 +85,22 @@ export default class ChatMessagesContext {
   }
   get data(): IChatMessagesContextData {
     const { serverName, chatroomName, username } = this.config
-    const chatMessages =
-      this.replyMessageIndex === -1
-        ? this.chatMessages
-        : this.chatMessages.slice(0, this.replyMessageIndex + 1)
-    const replyMessage = chatMessages.at(-1)
+    let replyMessageIndex =
+      this.chatMessages.length >= 8 ? 8 : this.chatMessages.length
+    const chatMessages = this.chatMessages.slice(-8)
+
+    replyMessageIndex =
+      this.replyMessageIndex - this.chatMessages.length + replyMessageIndex
+    const replyMessage = chatMessages.at(replyMessageIndex)
 
     const chatMessageListData = createChatMessageListData(chatMessages)
 
-    const MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT = `[Chat Server Info]
+    const MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT = `[Chat Server Info]
 **Server Name:** ${serverName || 'N/A'}
 **Chatroom Name:** ${chatroomName || 'N/A'}
 **My Username:** ${username || 'N/A'}
 
+==================
 ${chatMessageListData.map((message) => message.text).join('\n\n')}
 `
 
@@ -105,9 +108,9 @@ ${chatMessageListData.map((message) => message.text).join('\n\n')}
       ...this.config,
       replyMessage,
       chatMessages,
-      MAXAI__CHAT_APP_INPUT_ASSISTANT_REPLY_TARGET_CONTENT:
-        chatMessageListData.at(-1)?.text || '',
-      MAXAI__CHAT_APP_INPUT_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+      MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT:
+        chatMessageListData.at(replyMessageIndex)?.text ?? '',
+      MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
     }
   }
 }

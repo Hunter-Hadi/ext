@@ -4,6 +4,7 @@ import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import {
   ActionAnalyzeChatFile,
   ActionAskChatGPT,
+  ActionAssignCustomPromptWebPageContentContextVariable,
   ActionChatMessage,
   ActionCloseURLS,
   ActionConditional,
@@ -66,7 +67,7 @@ const ActionClassMap = {
     ActionGetYoutubeSocialMediaTranscripts,
   [ActionGetYoutubeSocialMediaTranscriptTimestamped.type]:
     ActionGetYoutubeSocialMediaTranscriptTimestamped,
-  // chat
+  // chat app
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
@@ -89,13 +90,19 @@ const ActionClassMap = {
   [ActionUploadPDFOfCRX.type]: ActionUploadPDFOfCRX,
   [ActionOpenURLs.type]: ActionOpenURLs,
   [ActionCloseURLS.type]: ActionCloseURLS,
-  [ActionGetReadabilityContentsOfWebPage.type]: ActionGetReadabilityContentsOfWebPage,
+  [ActionGetReadabilityContentsOfWebPage.type]:
+    ActionGetReadabilityContentsOfWebPage,
   [ActionGetEmailContentsOfWebPage.type]: ActionGetEmailContentsOfWebPage,
   [ActionGetEmailDraftOfWebPage.type]: ActionGetEmailDraftOfWebPage,
-  [ActionGetSocialMediaPostDraftOfWebPage.type]: ActionGetSocialMediaPostDraftOfWebPage,
-  [ActionGetSocialMediaPostContentOfWebPage.type]: ActionGetSocialMediaPostContentOfWebPage,
-  [ActionGetChatMessagesContentOfWebPage.type]: ActionGetChatMessagesContentOfWebPage,
+  [ActionGetSocialMediaPostDraftOfWebPage.type]:
+    ActionGetSocialMediaPostDraftOfWebPage,
+  [ActionGetSocialMediaPostContentOfWebPage.type]:
+    ActionGetSocialMediaPostContentOfWebPage,
+  [ActionGetChatMessagesContentOfWebPage.type]:
+    ActionGetChatMessagesContentOfWebPage,
   [ActionGetChatMessageDraftOfWebPage.type]: ActionGetChatMessageDraftOfWebPage,
+  [ActionAssignCustomPromptWebPageContentContextVariable.type]:
+    ActionAssignCustomPromptWebPageContentContextVariable,
   //calendar
   [ActionDate.type]: ActionDate,
   [ActionDateFormat.type]: ActionDateFormat,
@@ -108,7 +115,8 @@ const ActionClassMap = {
   [ActionWebGPTSearchResultsExpand.type]: ActionWebGPTSearchResultsExpand,
   // maxai
   [ActionsMaxAISummaryLog.type]: ActionsMaxAISummaryLog,
-  [ActionMaxAIProcessBuiltInParameters.type]: ActionMaxAIProcessBuiltInParameters,
+  [ActionMaxAIProcessBuiltInParameters.type]:
+    ActionMaxAIProcessBuiltInParameters,
 }
 
 const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))

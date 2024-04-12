@@ -38,7 +38,7 @@ export const settingsPageRouterList = [
   },
   {
     route: '/help-me-write',
-    label: 'left_menu__help_me_write',
+    label: 'left_menu__instant_reply',
     divider: false,
   },
   {

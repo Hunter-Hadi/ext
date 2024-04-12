@@ -48,13 +48,14 @@ export interface InputAssistantButtonStyle {
   hoverColor?: string // 按钮鼠标悬浮时文字颜色
   borderColor?: string // 按钮边框颜色
   hoverBorderColor?: string // 按钮鼠标悬浮时边框颜色
-  borderRadius?: string // 按钮圆角
-  borderWidth?: string // 按钮边框宽度
+  borderRadius?: string | number // 按钮圆角
+  borderWidth?: string | number // 按钮边框宽度
   iconSize?: number // 按钮文字大小
-  margin?: string // 按钮外边距
-  padding?: string // 按钮内边距
+  margin?: string | number // 按钮外边距
+  padding?: string | number // 按钮内边距
   icon?: IContextMenuIconKey // 按钮图标
   transparentHeight?: number // 透明的可点击高度
+  height?: string | number // 按钮高度
 }
 
 interface InputAssistantButtonProps {
@@ -88,9 +89,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     setContextMenuContainer,
   ] = useState<HTMLElement | null>(null)
   const { loading } = useRecoilValue(ClientWritingMessageState)
+  // const testloading = true
   const [isCTAHover, setIsCTAHover] = useState(false)
   const [isBoxHover, setIsBoxHover] = useState(false)
-  const memoButtonSx = useMemo(() => {
+  const memoButtonSx = useMemo<{
+    ctaButtonSx: SxProps
+    dropdownButtonSx: SxProps
+  }>(() => {
     let cloneCTAButtonStyle = cloneDeep(CTAButtonStyle)
     let cloneDropdownButtonStyle = cloneDeep(DropdownButtonStyle)
     let ctaButtonSx = {}
@@ -132,6 +137,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
         borderStyle: 'solid',
         position: 'relative',
         padding,
+        iconSize,
         '&:hover': {
           color: hoverColor,
           backgroundColor: hoverBackgroundColor,
@@ -174,9 +180,6 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     return {
       ctaButtonSx,
       dropdownButtonSx,
-    } as {
-      ctaButtonSx: SxProps
-      dropdownButtonSx: SxProps
     }
   }, [CTAButtonStyle, DropdownButtonStyle, isCTAHover, buttonGroup])
   const inputAssistantBoxStyle = useMemo(() => {

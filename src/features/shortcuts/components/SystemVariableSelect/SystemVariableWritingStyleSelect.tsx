@@ -75,8 +75,15 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
       getOptionLabel={(option) => option.label}
       options={WRITING_STYLES_OPTIONS}
       onChange={(event: any, newValue) => {
+        event.stopPropagation
         setValue(newValue)
         onChange(newValue.value)
+      }}
+      onKeyDown={(event) => {
+        event.stopPropagation()
+      }}
+      onPaste={(event) => {
+        event.stopPropagation()
       }}
       filterOptions={filterOptions}
       renderInput={(params) => (

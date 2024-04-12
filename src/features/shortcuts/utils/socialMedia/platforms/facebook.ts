@@ -13,35 +13,6 @@ import SocialMediaPostContext, {
   ISocialMediaPost,
 } from '@/features/shortcuts/utils/SocialMediaPostContext'
 
-// 获取Facebook评论的作者，日期，内容
-const getFacebookCommentDetail = async (
-  root: HTMLElement,
-): Promise<ICommentData> => {
-  const commentAuthor =
-    (root?.querySelector('a > span > span') as HTMLSpanElement)?.innerText || ''
-  const commentContent = root?.querySelector(
-    'span[lang][dir]',
-  ) as HTMLSpanElement
-  if (commentContent) {
-    const expandButton = commentContent.querySelector<HTMLElement>(
-      '[role="button"]',
-    )
-    if (expandButton) {
-      expandButton.click()
-      await delayAndScrollToInputAssistantButton(100)
-    }
-  }
-  const links = Array.from(
-    root?.querySelectorAll('a > span'),
-  ) as HTMLSpanElement[]
-  const commentDate = links[links.length - 1]?.innerText
-  return {
-    content: commentContent?.innerText || '',
-    author: commentAuthor,
-    date: commentDate && commentDate.length <= 30 ? commentDate : '',
-  }
-}
-
 // 获取Facebook帖子的作者，日期，内容
 const getFacebookPostData = async (
   postContainer: HTMLElement | null,
@@ -54,14 +25,17 @@ const getFacebookPostData = async (
     const postMetadata = postDataContainer.querySelector<HTMLElement>(
       '& > div:nth-child(2)',
     )
-    const postContent = postDataContainer.querySelector<HTMLElement>(
-      '& > div:nth-child(3) div[id] > div:nth-child(1):not(a) > :not(a) span[dir]',
-    )
+    const postContent =
+      postDataContainer.querySelector<HTMLElement>(
+        '& > div:nth-child(3) div[id] > div:nth-child(1):not(a) > :not(a) span[dir]',
+      ) ||
+      postDataContainer.querySelector<HTMLElement>(
+        '& > div:nth-child(3):has([id])',
+      )
     if (postMetadata) {
       if (postContent) {
-        const facebookExpandButton = postContent?.querySelector<HTMLElement>(
-          '[role="button"]',
-        )
+        const facebookExpandButton =
+          postContent?.querySelector<HTMLElement>('[role="button"]')
         if (facebookExpandButton) {
           facebookExpandButton.click()
           await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
@@ -83,10 +57,7 @@ const getFacebookPostData = async (
       const date = correctMetadata?.pop()?.innerText
       return {
         author: postAuthor || '',
-        date:
-          correctMetadata[0]?.innerText && date && date.length <= 30
-            ? date
-            : '',
+        date: date && date.length <= 30 ? date : '',
         content: postContent?.innerText || '',
         title: '',
       }
@@ -104,17 +75,15 @@ const getFacebookVideoPostData = async (
     if (postMetadata) {
       const postContent = postContainer?.lastElementChild as HTMLElement
       if (postContent) {
-        const facebookExpandButton = postContent?.querySelector<HTMLElement>(
-          '[role="button"]',
-        )
+        const facebookExpandButton =
+          postContent?.querySelector<HTMLElement>('[role="button"]')
         if (facebookExpandButton) {
           facebookExpandButton.click()
           await delayAndScrollToInputAssistantButton(100)
         }
       }
-      const postAuthor = postMetadata?.querySelector<HTMLElement>(
-        'h2 [role="link"]',
-      )?.innerText
+      const postAuthor =
+        postMetadata?.querySelector<HTMLElement>('h2 [role="link"]')?.innerText
       const postDate = (
         postMetadata?.querySelector<HTMLElement>(
           'span > span > span [aria-label][role="link"]',
@@ -127,7 +96,10 @@ const getFacebookVideoPostData = async (
         author: postAuthor || '',
         date: postDate && postDate.length <= 30 ? postDate : '',
         content: postContent?.querySelector?.('div')?.innerText || '',
-        title: '',
+        title:
+          document.querySelector<HTMLElement>(
+            '#watch_feed > div > div:nth-child(1) > div > div > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)',
+          )?.innerText || '',
       }
     }
   }
@@ -140,15 +112,15 @@ const getFacebookReelPostData = async (
   inputAssistantButton: HTMLElement,
 ): Promise<ISocialMediaPost | null> => {
   if (postContainer) {
-    const postAuthor = postContainer?.firstElementChild?.querySelector<HTMLElement>(
-      'h2 [role="link"][aria-label]',
-    )?.innerText
+    const postAuthor =
+      postContainer?.firstElementChild?.querySelector<HTMLElement>(
+        'h2 [role="link"][aria-label]',
+      )?.innerText
     const postContent = postContainer?.children?.[1] as HTMLElement
     if (postContent) {
       // need to fix: when get reel post data again, at that time it becomes a collapse button
-      const facebookExpandButton = postContent?.querySelector<HTMLElement>(
-        '[role="button"]',
-      )
+      const facebookExpandButton =
+        postContent?.querySelector<HTMLElement>('[role="button"]')
       if (facebookExpandButton) {
         facebookExpandButton.click()
         await delayAndScrollToInputAssistantButton(100, inputAssistantButton)
@@ -163,6 +135,34 @@ const getFacebookReelPostData = async (
     }
   }
   return null
+}
+
+// 获取Facebook评论的作者，日期，内容
+const getFacebookCommentDetail = async (
+  root: HTMLElement,
+): Promise<ICommentData> => {
+  const commentAuthor =
+    (root?.querySelector('a > span > span') as HTMLSpanElement)?.innerText || ''
+  const commentContent = root?.querySelector(
+    'span[lang][dir]',
+  ) as HTMLSpanElement
+  if (commentContent) {
+    const expandButton =
+      commentContent.querySelector<HTMLElement>('[role="button"]')
+    if (expandButton) {
+      expandButton.click()
+      await delayAndScrollToInputAssistantButton(100)
+    }
+  }
+  const links = Array.from(
+    root?.querySelectorAll('a > span'),
+  ) as HTMLSpanElement[]
+  const commentDate = links[links.length - 1]?.innerText
+  return {
+    content: commentContent?.innerText || '',
+    author: commentAuthor,
+    date: commentDate && commentDate.length <= 30 ? commentDate : '',
+  }
 }
 
 // get the previous level comment
@@ -240,34 +240,41 @@ export const facebookGetPostContent: GetSocialMediaPostContentFunction = async (
       'form[role="presentation"]',
       inputAssistantButton,
     )
-    const isClickingOnButtonOfFormTextarea = facebookReplyForm?.contains(
-      inputAssistantButton,
-    )
+    const isClickingOnButtonOfFormTextarea =
+      facebookReplyForm?.contains(inputAssistantButton)
 
     // if clicking the quick reply button in the surface is only to get the post data
     let shouldGetComment = true
-    if (!videoPagePostBox && !reelPagePostBox && !postDialog) {
-      const surfaceActionBar =
-        findParentEqualSelector(
-          'div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)',
-          inputAssistantButton,
-        ) ||
-        findParentEqualSelector(
-          'div[aria-describedby][aria-labelledby] div[data-visualcompletion="ignore-dynamic"] > div > div:nth-child(1) > div:nth-child(1) div:has(>div>div[aria-label][role="button"])',
-          inputAssistantButton,
+    if (!reelPagePostBox && !postDialog) {
+      let facebookReplyFormNodes: HTMLElement[] = []
+      if (postBox) {
+        const surfaceActionBar =
+          findParentEqualSelector(
+            'div[role="article"] div[data-visualcompletion="ignore-dynamic"] > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1)',
+            inputAssistantButton,
+          ) ||
+          findParentEqualSelector(
+            'div[aria-describedby][aria-labelledby] div[data-visualcompletion="ignore-dynamic"] > div > div:nth-child(1) > div:nth-child(1) div:has(>div>div[aria-label][role="button"])',
+            inputAssistantButton,
+          )
+        if (surfaceActionBar?.contains(inputAssistantButton)) {
+          shouldGetComment = false
+        }
+        facebookReplyFormNodes = Array.from(
+          postBox?.querySelectorAll<HTMLElement>('form[role="presentation"]') ||
+            [],
         )
-      if (surfaceActionBar?.contains(inputAssistantButton)) {
-        shouldGetComment = false
+      } else if (videoPagePostBox && isClickingOnButtonOfFormTextarea) {
+        facebookReplyFormNodes = Array.from(
+          videoPagePostBox?.parentElement?.querySelectorAll<HTMLElement>(
+            'form[role="presentation"]',
+          ) || [],
+        )
       }
       if (
         shouldGetComment &&
         isClickingOnButtonOfFormTextarea &&
-        Array.from(
-          postBox?.querySelectorAll<HTMLElement>('form[role="presentation"]') ||
-            [],
-        )
-          ?.at(-1)
-          ?.contains(inputAssistantButton)
+        facebookReplyFormNodes?.at(-1)?.contains(inputAssistantButton)
       ) {
         shouldGetComment = false
       }

@@ -4,7 +4,7 @@ import IconButton from '@mui/material/IconButton'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useMemo } from 'react'
+import React, { type FC, type MouseEvent, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -53,7 +53,7 @@ const ClearChatButton: FC<{
     }
     return t('client:immersive_chat__delete_chat__button__title')
   }, [conversationType, t])
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
@@ -61,7 +61,7 @@ const ClearChatButton: FC<{
     <>
       <TextOnlyTooltip placement={'top'} title={removeButtonTooltip}>
         <IconButton
-          onClick={(e: React.MouseEvent) => {
+          onClick={(e: MouseEvent) => {
             e.stopPropagation()
             setOpen(true)
           }}
@@ -75,7 +75,7 @@ const ClearChatButton: FC<{
 
       <Modal
         open={open}
-        onClose={(e: React.MouseEvent) => {
+        onClose={(e: MouseEvent) => {
           e.stopPropagation()
           setOpen(false)
         }}
@@ -84,7 +84,7 @@ const ClearChatButton: FC<{
         }}
         slotProps={{
           root: {
-            onClick: (e: React.MouseEvent) => {
+            onClick: (e: MouseEvent) => {
               e.stopPropagation()
             },
           },

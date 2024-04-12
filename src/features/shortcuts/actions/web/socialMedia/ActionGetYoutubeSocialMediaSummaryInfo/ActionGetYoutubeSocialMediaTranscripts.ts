@@ -7,10 +7,13 @@ import Action from '@/features/shortcuts/core/Action'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts/types'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { SummaryContextMenuOverwriteMap } from '@/features/sidebar/utils/pageSummaryHelper'
+import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * @since 2024-03-17
  * @description youtube拿取时间文本TRANSCRIPT数据
+ * @deprecated - TODO 需要重构，这个多余了. 已经有-> src/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL
  */
 export class ActionGetYoutubeSocialMediaTranscripts extends Action {
   static type: ActionIdentifier = 'YOUTUBE_GET_TRANSCRIPT'
@@ -23,8 +26,30 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
   ) {
     super(id, type, parameters, autoExecute)
   }
-  async execute() {
+  async execute(
+    params: ActionParameters,
+    engine: IShortcutEngineExternalEngine,
+  ) {
     try {
+      const { clientMessageChannelEngine } = engine
+      // TODO 需要重构,临时记录call-api
+      if (clientMessageChannelEngine) {
+        const recordContextMenuData =
+          SummaryContextMenuOverwriteMap['YOUTUBE_VIDEO_SUMMARY']?.[
+            'transcript'
+          ]
+        await clientMessageChannelEngine
+          .postMessage({
+            event: 'Client_logCallApiRequest',
+            data: {
+              name: recordContextMenuData?.text || 'UNKNOWN',
+              id: recordContextMenuData?.id || 'UNKNOWN',
+              host: getCurrentDomainHost(),
+            },
+          })
+          .then()
+          .catch()
+      }
       if (this.isStopAction) return
       const transcripts = await this.getYoutubeTranscript()
       if (this.isStopAction) return

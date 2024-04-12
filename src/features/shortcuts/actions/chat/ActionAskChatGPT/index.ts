@@ -179,6 +179,11 @@ export class ActionAskChatGPT extends Action {
           Search: 'search_chat',
           Art: 'art',
         }[clientConversationEngine.currentSidebarConversationType]
+        console.log(
+          `contextMenu show Text finally: [${
+            contextMenu?.text || fallbackId
+          }]-[${contextMenu?.id || fallbackId}]`,
+        )
         const { data: isDailyUsageLimit } =
           await clientMessageChannelEngine.postMessage({
             event: 'Client_logCallApiRequest',

@@ -14,6 +14,7 @@ import { ChatGPTClientState } from '@/features/chatgpt/store'
 import DevShortcutsLog from '@/features/sidebar/components/SidebarTabs/DevShortcutsLog'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ClientWritingMessageState } from '@/features/sidebar/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const DevConsole: FC = () => {
   const {
@@ -24,6 +25,7 @@ const DevConsole: FC = () => {
     sidebarSettings,
   } = useSidebarSettings()
   const { currentAIProviderModel } = useAIProviderModels()
+  const isInImmersiveChat = isMaxAIImmersiveChatPage()
   const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
   const [chatGPTClientState] = useRecoilState(ChatGPTClientState)
   const [showDevContent, setShowDevContent] = useState(true)
@@ -49,7 +51,7 @@ const DevConsole: FC = () => {
         zIndex: 1,
         bgcolor: 'background.paper',
         color: 'text.primary',
-        right: '100%',
+        right: isInImmersiveChat ? 'calc((100% - 768px) / 2 + 768px)' : '100%',
         border: '1px solid',
         borderColor: 'customColor.borderColor',
         borderRadius: '4px',

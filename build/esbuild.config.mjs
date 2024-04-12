@@ -1,20 +1,19 @@
-import fs from 'fs-extra'
-import esbuild from 'esbuild'
-import postcssPlugin from 'esbuild-style-plugin'
+import archiver from 'archiver'
 import autoprefixer from 'autoprefixer'
-import graphqlLoaderPlugin from '@luckycatfactory/esbuild-graphql-loader'
-import copyStaticFilesPlugin from 'esbuild-copy-files-plugin'
-import * as buildEnv from './env.mjs'
-import localesCreator from './i18n.mjs'
 import { spawn } from 'child_process'
 import chokidar from 'chokidar'
-import path from 'path'
-import archiver from 'archiver'
 import dayjs from 'dayjs'
-
+import esbuild from 'esbuild'
+import copyStaticFilesPlugin from 'esbuild-copy-files-plugin'
 // import eslint from 'esbuild-plugin-eslint';;
 import resolve from 'esbuild-plugin-resolve'
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'fs'
+import postcssPlugin from 'esbuild-style-plugin'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'fs'
+import fs from 'fs-extra'
+import path from 'path'
+
+import * as buildEnv from './env.mjs'
+import localesCreator from './i18n.mjs'
 
 const replaceEnv = buildEnv.getReplaceEnv()
 const isProduction = buildEnv.isProduction
@@ -99,10 +98,12 @@ async function esbuildConfig() {
       '.graphql': 'text',
     },
     plugins: [
-      // resolve({
-      //   '@postlight/parser':
-      //     'node_modules/@postlight/parser/dist/mercury.web.js',
-      // }),
+      resolve({
+        // 为了统一 close btn 都使用 CloseOutlined（自动化测试需求）
+        '@mui/icons-material/Close': '@mui/icons-material/CloseOutlined',
+        // '@postlight/parser':
+        //   'node_modules/@postlight/parser/dist/mercury.web.js',
+      }),
       // eslint({ /* config */ }),
       postcssPlugin({
         postcss: {

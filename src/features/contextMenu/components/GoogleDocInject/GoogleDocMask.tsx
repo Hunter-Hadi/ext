@@ -216,8 +216,9 @@ const GoogleDocMask: FC = () => {
   /**
    * 模拟iframe触发context menu功能，此处添加监听处理各个insert事件
    */
-  useCreateClientMessageListener(async (event, data, sender) => {
-    if (event !== 'Client_listenUpdateIframeInput') return undefined
+  useCreateClientMessageListener(async (event, data, sender): Promise<undefined> => {
+    if (event !== 'Client_listenUpdateIframeInput') return
+    if (data.id !== id) return
     const { type, value } = data
     switch (type) {
       case 'INSERT_BELOW':

@@ -533,6 +533,7 @@ const useInitRangy = () => {
               data: {
                 value: lastOutputRef.current,
                 type: selectedDraftContextMenuType,
+                id: target.id,
                 startMarkerId: target.startMarkerId,
                 endMarkerId: target.endMarkerId,
                 caretOffset: target.caretOffset,

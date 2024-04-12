@@ -64,7 +64,7 @@ const SidebarPromotionDialog = () => {
       // 弹过了，不弹窗
       if (
         onBoardingData[
-        ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY
+          ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY
         ]
       ) {
         return
@@ -229,7 +229,7 @@ const SidebarPromotionDialog = () => {
         {/* cta button */}
         <Box flexShrink={0}>
           <Button
-            variant="contained"
+            variant="promotionContained"
             fullWidth
             href={`https://app.maxai.me/pricing`}
             target={'_blank'}

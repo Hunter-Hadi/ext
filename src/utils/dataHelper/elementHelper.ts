@@ -26,10 +26,10 @@ export const isSupportWebComponent = () => {
  */
 export const findSelectorParent = (
   selector: string,
-  startElement: HTMLElement,
+  startElement: HTMLElement | null,
   maxDeep = 20,
 ) => {
-  let parent: HTMLElement = startElement
+  let parent = startElement
   let deep = 0
   while (deep < maxDeep && !parent?.querySelector(selector)) {
     parent = parent?.parentElement as HTMLElement

@@ -29,6 +29,8 @@ const createEmailListData = (emails: IEmailData[]): ICreateEmailListData[] => {
 **Date:** ${date}
 **Subject:** ${subject}
 
+${content}
+
 ---
 `,
       data: email,
@@ -38,9 +40,12 @@ const createEmailListData = (emails: IEmailData[]): ICreateEmailListData[] => {
 }
 
 export default class EmailCorrespondence {
+  emailAddress: string
   emails: IEmailData[] = []
   receivers: Set<string> = new Set()
-  constructor() {}
+  constructor(emailAddress: string) {
+    this.emailAddress = emailAddress
+  }
   addEmail(email: IEmailData) {
     this.emails.push(email)
   }
@@ -54,37 +59,22 @@ export default class EmailCorrespondence {
   }
   get emailContext() {
     const emailListData = createEmailListData(this.emails)
-    const targetReplyEmailContext = emailListData
-      .filter(({ data }) => this.receivers.has(data.from.email))
-      .map(({ text }) => text)
-      .join('\n')
-    // const emailContext = this.emails
-    //   .map((email, index) => {
-    //     // ## Email #1
-    //     // **From:** Sender Name<sender@domain.com>
-    //     // **To:** Receiver1 Name<receiver1@domain.com>, Receiver2 Name<receiver2@domain.com>
-    //     // **Date:** YYYY-MM-DD
-    //     // **Subject:** Email Subject
-    //     //
-    //     // Email content goes here.
-    //     //
-    //     // ---
-    //     const emailContext = `## Email #${index + 1}\n**From:** ${
-    //       email.from.name
-    //     }<${email.from.email}>\n**To:** ${email.to
-    //       .map((receiver) => `${receiver.name}<${receiver.email}>`)
-    //       .join(', ')}\n**Date:** ${email.date}\n**Subject:** ${
-    //       email.subject
-    //     }\n\n${email.content}\n\n---\n`
-    //     if (index === this.emails.length - 1) {
-    //       // 这里是为了防止出现多个空行
-    //       targetReplyEmailContext = emailContext.replace(/\n{2,}/g, '\n\n')
-    //     }
-    //     return emailContext
-    //   })
-    //   .join('\n')
-    //   // 这里是为了防止出现多个空行
-    //   .replace(/\n{2,}/g, '\n\n')
+    const targetReplyEmailContext =
+      emailListData
+        .filter(({ data }) => this.receivers.has(data.from.email))
+        .map(({ text }) => text)
+        .join('\n') ||
+      // // if doesnt have target, make the last email that not sent by me as target?
+      // emailListData.at(
+      //   emailListData.findLastIndex(
+      //     ({ data }) => data.from.email !== this.emailAddress,
+      //   ),
+      // )?.text ||
+      // // or make the last email as target?
+      // emailListData.at(-1)?.text ||
+      // // or just return empty string?
+      ''
+
     return {
       targetReplyEmailContext,
       emailContext: emailListData.map(({ text }) => text).join('\n'),

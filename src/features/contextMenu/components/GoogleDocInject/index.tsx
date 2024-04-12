@@ -5,14 +5,14 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { GoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
 import GoogleDocMask from '@/features/contextMenu/components/GoogleDocInject/GoogleDocMask'
 import {
-  GoogleDocControl,
+  GoogleDocController,
   IGoogleDocCaret,
   IGoogleDocEventType,
   IGoogleDocSelection,
-} from '@/features/contextMenu/utils/googleDocHelper'
+} from '@/features/contextMenu/utils/googleDocController'
 
 const GoogleDocInject: FC = () => {
-  const control = useMemo(() => new GoogleDocControl(), [])
+  const control = useMemo(() => new GoogleDocController(), [])
 
   const [caret, setCaret] = useState(control.lastCaret)
   const [selection, setSelection] = useState(control.lastSelection)

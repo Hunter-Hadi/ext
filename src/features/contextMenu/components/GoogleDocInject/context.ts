@@ -1,13 +1,13 @@
 import { createContext, useContext } from 'react'
 
 import {
-  GoogleDocControl,
+  GoogleDocController,
   IGoogleDocCaret,
   IGoogleDocSelection,
-} from '@/features/contextMenu/utils/googleDocHelper'
+} from '@/features/contextMenu/utils/googleDocController'
 
 export interface IGoogleDocContext {
-  control?: GoogleDocControl
+  control?: GoogleDocController
   caret: IGoogleDocCaret | null
   selection: IGoogleDocSelection | null
   focus: boolean

@@ -14,8 +14,9 @@ import {
   RangyState,
 } from '@/features/contextMenu'
 import { useGoogleDocContext } from '@/features/contextMenu/components/GoogleDocInject/context'
-import { IGoogleDocEventType } from '@/features/contextMenu/utils/googleDocHelper'
-import { IRect, mergeRects } from '@/utils/rectUtils'
+import { IRangyRect } from '@/features/contextMenu/types'
+import { mergeRects } from '@/features/contextMenu/utils'
+import { IGoogleDocEventType } from '@/features/contextMenu/utils/googleDocController'
 
 const id = v4()
 
@@ -62,7 +63,7 @@ const GoogleDocMask: FC = () => {
    * 模拟iframe.tsx里的事件，触发context menu的功能
    */
   const postMessage = useCallback(
-    (rect: IRect, content: string, editableContent = content) => {
+    (rect: IRangyRect, content: string, editableContent = content) => {
       window.postMessage(
         {
           id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,

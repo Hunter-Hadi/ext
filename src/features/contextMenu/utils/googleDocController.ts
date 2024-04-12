@@ -1,15 +1,15 @@
 import { debounce } from 'lodash-es'
 
-import { EventEmitter } from '@/utils/eventEmitter'
-import Log from '@/utils/Log'
+import { IRangyRect } from '@/features/contextMenu/types'
 import {
   calculateRectLayout,
   emptyRect,
-  IRect,
   isPointInRects,
   isRectChange,
   isRectIntersect,
-} from '@/utils/rectUtils'
+} from '@/features/contextMenu/utils'
+import { EventEmitter } from '@/utils/eventEmitter'
+import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/GoogleDocHelper')
 
@@ -23,7 +23,7 @@ export enum IGoogleDocEventType {
   SCROLL = 'scroll'
 }
 
-export interface IGoogleDocRect extends IRect {}
+export interface IGoogleDocRect extends IRangyRect {}
 
 export interface IGoogleDocLayout extends Exclude<IGoogleDocRect, 'x' | 'y'> {}
 
@@ -72,7 +72,7 @@ export interface IGoogleDocCaret {
   // offset: number
 }
 
-export class GoogleDocControl extends EventEmitter {
+export class GoogleDocController extends EventEmitter {
   disabled = false
 
   editable = true

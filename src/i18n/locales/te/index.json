@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "మరింత",
     "immersive_chat__rename_chat__button__title": "పేరు మార్చు",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 గూగుల్ యొక్క తదుపరి మోడల్, పెర్ఫార్మన్స్ ను అభ్యంతరపరచేసే, ఒక ఎఫిషియంట్ MoE ఆర్కిటెక్చర్, మీలియన్ టోకెన్ విండోలతో దీర్ఘ-సందర్భ అర్థం అర్ధం చేసే బ్రేక్త్రూ నిర్ణయం కలిగి ఉంది, టెక్స్ట్, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్ లో అభివృద్ధి సాధ్యతలను మరియు ఉన్నత సామర్థ్యాలను అందిస్తుంది.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "జెమిని-1.5-ప్రొ కోసం నవీకరణ",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "జెమిని-1.5-ప్రొ కనుగొనడానికి అప్గ్రేడ్ చేయండి",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది."
   },
   "prompt": {

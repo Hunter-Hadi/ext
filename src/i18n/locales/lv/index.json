@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Vairāk",
     "immersive_chat__rename_chat__button__title": "Pārdēvēt",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ir Google nākamās paaudzes modelis, kas piedāvā uzlabotu veiktspēju, efektīvu MoE arhitektūru un caurspīdīgu sapratni par ilgāku kontekstu ar līdz pat 1 miljonu simbolu logiem, ļaujot izmantot uzlabotas iespējas teksta, koda, attēlu, audio un video apstrādē.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Jauniniet, lai piekļūtu gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Jauninājiet, lai piekļūtu gemini-1.5-pro ar redzi",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google jaunākais un visvarenākais modelis. Tas piedāvā ātrāku ātrumu, caurspīdīgu 1M simbolu konteksta logu, uzlabotu drošību un papildu iespējas teksta, koda, attēlu, audio un video apstrādē."
   },
   "prompt": {

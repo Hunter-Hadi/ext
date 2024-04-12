@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "കൂടുതൽ",
     "immersive_chat__rename_chat__button__title": "പേര് മാറ്റുക",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 അടുത്ത പീഢനിലയാണ് Google-ന്റെ പുതിയ മോഡൽ, പെരുക്കമുള്ള പ്രകടനം, എഫിഷന്റ് MoE ആർക്കിറ്റെക്ച്ചർ, 1 മില്യൺ ടോക്കൺ വിൻഡോകൾക്കുള്ള ദീർഘസംബന്ധമായ പഠനത്തിനുള്ള ഒരു പരിഹാരം, ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങുകൾക്ക് ഉയർന്ന സാധ്യതകൾ നൽകുന്നു.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ജെമിനി-1.5-പ്രോ ആക്സസ് അപ്ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ജ്യോതി-1.5-പ്രോ സങ്കല്‍പ്പത്തിന് പ്രവേശനം നേടുക",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ഗൂഗിളിന്റെ പുതിയതും അത്യാധുനികവുമായ മോഡൽ ആണ് `Gemini-1.5 Pro`. ഇത് വേഗത്തിൽ നടക്കുന്നു, 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോ, മുന്നേറ്റത്തെ സുരക്ഷ, അടിസ്ഥാനമായി ഉള്ള സാധ്യതകൾ എന്നിവ നൽകുന്നു - ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ശബ്ദം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങിൽ അടുത്തകാലത്ത്."
   },
   "prompt": {

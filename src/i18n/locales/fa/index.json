@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "بیشتر",
     "immersive_chat__rename_chat__button__title": "تغییر نام",
     "provider__gemini__model__gemini_1_5_pro__description": "جمینی 1.5 مدل نسل بعدی گوگل است که عملکرد بهبود یافته، معماری MoE کارآمد و پیشرفتی در درک متن با محیط تا 1 میلیون توکن را فراهم می کند و قابلیت های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدیو را فراهم می کند.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ارتقا برای دسترسی به جمینی-۱.۵-پرو",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ارتقا برای دسترسی به gemini-1.5-pro با دید",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "مدل جدیدترین و پیشرفته ترین گوگل. سرعت بالاتر، پنجره متن حاکم بر 1 میلیون توکن، ایمنی پیشرفته و قابلیت های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدئو را ارائه می دهد."
   },
   "prompt": {

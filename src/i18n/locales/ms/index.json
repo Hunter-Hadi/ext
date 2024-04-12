@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Lebih",
     "immersive_chat__rename_chat__button__title": "Namakan Semula",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 adalah model generasi seterusnya Google yang menawarkan prestasi yang ditingkatkan, senibina MoE yang cekap, dan terobosan dalam pemahaman konteks panjang dengan jendela token sehingga 1 juta, membolehkan keupayaan canggih dalam pemprosesan teks, kod, imej, audio, dan video.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Tingkatkan untuk mengakses gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Naik taraf untuk mengakses gemini-1.5-pro dengan visi",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks 1 juta token yang terobosan, keselamatan yang ditingkatkan, dan kemampuan canggih dalam pemprosesan teks, kod, imej, audio, dan video."
   },
   "prompt": {

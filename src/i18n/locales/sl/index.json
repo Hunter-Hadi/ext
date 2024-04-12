@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Več",
     "immersive_chat__rename_chat__button__title": "Preimenuj",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je naslednja generacija Googlovega modela, ki ponuja izboljšano zmogljivost, učinkovito arhitekturo MoE in preboj pri razumevanju dolgega konteksta z do 1 milijon okenskih žetonov, kar omogoča napredne funkcionalnosti pri obdelavi besedila, kode, slik, zvoka in videa.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadgradite za dostop do gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadgradite za dostop do gemini-1.5-pro z vizijo",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovejši in najnaprednejši model Googla. Ponuja hitrejšo hitrost, prebojno okno konteksta s 1M žetoni, izboljšano varnost in napredne zmogljivosti pri obdelavi besedila, kode, slik, zvoka in videa."
   },
   "prompt": {

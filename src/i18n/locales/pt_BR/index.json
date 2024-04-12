@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Mais",
     "immersive_chat__rename_chat__button__title": "Renomear",
     "provider__gemini__model__gemini_1_5_pro__description": "O Gemini 1.5 é o modelo de próxima geração do Google que oferece desempenho aprimorado, uma arquitetura MoE eficiente e um avanço na compreensão de contexto longo com janelas de até 1 milhão de tokens, permitindo capacidades avançadas em processamento de texto, código, imagem, áudio e vídeo.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atualize para acessar gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atualize para acessar gemini-1.5-pro com visão",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "O modelo mais novo e avançado do Google. Ele oferece velocidade mais rápida, uma janela de contexto de 1 milhão de tokens inovadora, segurança aprimorada e recursos avançados em processamento de texto, código, imagem, áudio e vídeo."
   },
   "prompt": {

@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Rohkem",
     "immersive_chat__rename_chat__button__title": "Nimeta ümber",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 on Google'i järgmise põlvkonna mudel, mis pakub paremat jõudlust, tõhusat MoE arhitektuuri ja läbimurret pikas kontekstis mõistmises kuni 1 miljoni märgiakna abil, võimaldades edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uuenda juurdepääsu saamiseks gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Täiusta juurdepääsuks gemini-1.5-pro'le nägemisega",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'i uusim ja kõige arenenum mudel. See pakub kiiremat kiirust, läbimurret 1M märgi kontekstakendes, täiustatud turvalisust ning edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel."
   },
   "prompt": {

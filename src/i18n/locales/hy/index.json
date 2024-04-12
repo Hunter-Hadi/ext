@@ -677,7 +677,7 @@
     "immersive_chat__more_actions_button__title": "Ավելին",
     "immersive_chat__rename_chat__button__title": "Վերանվանել",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5-ը է Google-ի հաջորդական մոդելն է, որը առավելագույն արագությամբ, զեղչայնացված MoE ճարտարապետական շերտերով և երկարագույն համապատասխանատու պարտադիրության համար նորացված է երկարագույն հատկությունները տեքստի, ծածկագիրների, պատկերի, ձայնի և վիդեոի մշակման համար:",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Թարմացնել gemini-1.5-pro-ին մասնակցելու համար",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Զեղչի մասին բարելավելումը gemini-1.5-pro-ին մատչելի դարձնելու համար",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ի նորացված և ամենակարևոր մոդելը: Այն առաջարկում է արագացում, հատկացված 1M տոկենային պարտադիրություն, բարելավված անվտանգություն և բարդացվածություններ տեքստի, ծածկագիր՝ պատկերագրությունից, ձայնից, տեսանյութից և վիդեոից հետո:"
   },
   "prompt": {

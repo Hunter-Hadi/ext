@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "更多",
     "immersive_chat__rename_chat__button__title": "重新命名",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 是 Google 的下一代模型，提供了增強的性能、高效的 MoE 架構，以及長篇內容理解的突破，支持多達 1 百萬個詞彙的窗口，實現了在文本、代碼、圖像、音頻和視頻處理方面的先進功能。",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升級以訪問 gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升級以獲取具有視覺功能的gemini-1.5-pro",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。"
   },
   "prompt": {

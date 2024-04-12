@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Daugiau",
     "immersive_chat__rename_chat__button__title": "Pervadinti",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 yra Google naujos kartos modelis, kuris siūlo pagerintą veikimą, efektyvią MoE architektūrą ir permainas ilgo konteksto supratime su iki 1 mln. ženklų langais, suteikiantis pažangias galimybes teksto, kodo, vaizdo, garso ir vaizdo apdorojime.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atnaujinkite, kad gautumėte prieigą prie gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atnaujinkite, kad gautumėte prieigą prie gemini-1.5-pro su vizija",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google naujausias ir pažangiausias modelis. Jis siūlo greitesnį greitį, revoliucinį 1M žetonų konteksto langą, patobulintą saugumą ir pažangias galimybes teksto, kodo, vaizdo, garso ir vaizdo apdorojime."
   },
   "prompt": {

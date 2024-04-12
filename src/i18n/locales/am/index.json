@@ -681,7 +681,7 @@
     "immersive_chat__rename_chat__button__title": "ስም ቀይር",
     "provider__gemini__model__gemini_1_5_pro__description": "ገሚኒ 1.5 የGoogle የቀጥታ ማስተዋል ነው፣ የተለመደውን አስተካክል የMoE አርእስትን እና የምርት-ማስተላል ማስተላለፍን በማስተላለፍ የተለመደውን የ1 ሜትኖን ቶክን የሚያስተላልፍ የሚሆን የማስተላለፍ እንዲሁም የጽሑፍ፣ የኮድ፣ የምርት፣ የድም፣ እና የቪዲዮ እቃዎች አሁን ያግኙ።",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "የGoogle የቅርብ እና የተስፋ ሞዴሎችን ያግኙ፣ በቀጥታ 1M ቶክን የሚያስፈልገውን ምልክትንና የተስፋ ቁልፍን የሚያስፈልገውን መስራት እንዲሆን ይጠቀሙ።",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "የ gemini-1.5-pro ይሁኑን ይጠቀሙ"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "የገሚኒ-1.5-ፕሮፕ እንዴት ይሁኑ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

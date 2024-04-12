@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Daha Fazla",
     "immersive_chat__rename_chat__button__title": "Yeniden Adlandır",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5, Google'ın gelişmiş performans sunan, verimli bir MoE mimarisi ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sağlayan, 1 milyon token pencereye kadar uzanan uzun bağlam anlama konusunda çığır açan bir sonraki nesil modelidir.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Gemini-1.5-pro'ya erişimi yükseltin",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Gemini-1.5-Pro'ya erişmek için yükseltin",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar."
   },
   "prompt": {

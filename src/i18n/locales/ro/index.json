@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Mai multe",
     "immersive_chat__rename_chat__button__title": "Redenumire",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 este modelul de ultimă generație al Google care oferă performanțe îmbunătățite, o arhitectură MoE eficientă și o inovație în înțelegerea contextului lung cu ferestre de până la 1 milion de tokeni, permițând capacități avansate în procesarea textului, codului, imaginilor, audio și video.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade pentru a accesa gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgradează pentru a accesa gemini-1.5-pro cu viziune",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Cel mai nou și avansat model de la Google. Oferă o viteză mai rapidă, o fereastră de context de 1M de tokeni, siguranță sporită și capabilități avansate în procesarea textului, codului, imaginilor, audio și video."
   },
   "prompt": {

@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Thêm",
     "immersive_chat__rename_chat__button__title": "Đổi tên",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 là mô hình tiếp theo của Google mang lại hiệu suất tăng cường, kiến trúc MoE hiệu quả và đột phá trong việc hiểu ngữ cảnh dài với cửa sổ token lên đến 1 triệu, cho phép các khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nâng cấp để truy cập gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nâng cấp để truy cập gemini-1.5-pro với tầm nhìn",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ đột phá, tính an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video."
   },
   "prompt": {

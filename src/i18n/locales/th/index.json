@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "เพิ่มเติม",
     "immersive_chat__rename_chat__button__title": "เปลี่ยนชื่อ",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 เป็นรุ่นที่มีประสิทธิภาพเพิ่มขึ้นของ Google ที่มีโครงสร้าง MoE ที่มีประสิทธิภาพและการเข้าใจความหมายในบริบทยาวได้ถึง 1 ล้านโทเค็น ทำให้สามารถใช้งานความสามารถขั้นสูงในการประมวลผลข้อความ โค้ด รูปภาพ เสียง และวิดีโอได้",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "อัปเกรดเพื่อเข้าถึง gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "อัปเกรดเพื่อเข้าถึง gemini-1.5-pro พร้อมวิสัยทัศน์",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "โมเดลล่าสุดและทันสมัยของ Google ซึ่งมีความเร็วสูงขึ้น, หน้าต่างความสัมพันธ์ของโทเค็น 1 ล้านตัวอักษร, ความปลอดภัยที่เพิ่มขึ้น, และความสามารถขั้นสูงในการประมวลผลข้อความ, โค้ด, ภาพ, เสียง, และวิดีโอ"
   },
   "prompt": {

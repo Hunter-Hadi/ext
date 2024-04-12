@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Viac",
     "immersive_chat__rename_chat__button__title": "Premenovať",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je nasledujúci model od Googlu, ktorý ponúka vylepšený výkon, efektívnu architektúru MoE a prelomové porozumenie dlhého kontextu s oknami až do 1 milióna tokenov, čo umožňuje pokročilé schopnosti pri spracovaní textu, kódu, obrázkov, zvuku a videa.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Aktualizujte pre prístup k gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Aktualizujte pre prístup k gemini-1.5-pro s videním",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, prelomové kontextové okno s 1 miliónom tokenov, vylepšenú bezpečnosť a pokročilé schopnosti v spracovaní textu, kódu, obrázkov, zvuku a videa."
   },
   "prompt": {

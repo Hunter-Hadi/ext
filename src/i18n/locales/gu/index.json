@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "વધુ",
     "immersive_chat__rename_chat__button__title": "નામ બદલો",
     "provider__gemini__model__gemini_1_5_pro__description": "જેમિની 1.5 ગૂગલનો આગામી મોડલ છે જે પ્રદર્શનને સુધારે છે, એક અદ્યતન MoE આર્કિટેક્ચર છે અને લાંબા સંદર્ભ સમજણમાં એક પરાવર્તન છે જેથી 1 મિલિયન ટોકન વિંડોઝમાં લંબા સંદર્ભ સમજણની સાધનસામર્થ્ય મળે છે, જે ટેક્સ્ટ, કોડ, ઇમેજ, ઓડિયો અને વિડિઓ પ્રક્રિયાઓ પર આગળની સામર્થ્યો પૂરી કરે છે.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "એક્સેસ કરવા માટે અપગ્રેડ કરો gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "જેમિની-1.5-પ્રો સાથે વિઝન એક્સેસ માટે અપગ્રેડ કરો",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleનું નવુંતમ અને સૌથી આગ્રહી મોડેલ. તે ઝડપી સ્પીડ, એક પરાવર્તનકારી 1M ટોકન સંદર્ભ વિંડો, સુધારેલી સુરક્ષા અને પાઠ, કોડ, છબી, આવાજ અને વિડિઓ પ્રક્રિયાઓમાં એડવાન્સ ક્ષમતાઓ પૂરી પાડે છે."
   },
   "prompt": {

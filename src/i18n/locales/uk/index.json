@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "مزید",
     "immersive_chat__rename_chat__button__title": "تبدیل نام",
     "provider__gemini__model__gemini_1_5_pro__description": "جمنی 1.5 گوگل کا اگلے جنریشن ماڈل ہے جو بہتر کارکردگی، ایک مؤثر MoE ایکیٹیکچر اور لمبے کنٹیکسٹ سمجھنے میں ایک تقریباً ناقابل یقین کامیابی حاصل کرتا ہے جس میں 1 ملین ٹوکن ونڈوز کی صلاحیت شامل ہے، جو متن، کوڈ، تصویر، آڈیو اور ویڈیو پروسیسنگ میں ترقی یافتہ صلاحیتوں کو ممکن بناتی ہے.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "جیمنی-1.5-پرو تک رسائی حاصل کریں",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "جیمنی-1.5 پرو کو دیکھنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔ یہ تیز رفتار، ایک بریکتھرو 1M ٹوکن کنٹیکسٹ ونڈو، بہترین سلامتی، اور متن، کوڈ، تصویر، آڈیو، اور ویڈیو پروسیسنگ میں ایڈوانس کپیبلٹیز پیش کرتا ہے۔"
   },
   "prompt": {

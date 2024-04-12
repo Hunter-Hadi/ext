@@ -680,7 +680,7 @@
     "immersive_chat__more_actions_button__title": "Більше",
     "immersive_chat__rename_chat__button__title": "Перейменувати",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 - це наступне покоління моделі від Google, яке пропонує покращену продуктивність, ефективну архітектуру MoE та прорив у розумінні довгих контекстів з використанням вікон до 1 мільйона токенів, що дозволяє розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці.",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Оновлення для доступу до gemini-1.5-pro",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Оновіться, щоб отримати доступ до gemini-1.5-pro з візією",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Найновіша та найпродуктивніша модель від Google. Вона пропонує швидкість, проривне контекстне вікно з 1 млн токенів, покращену безпеку та розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці."
   },
   "prompt": {

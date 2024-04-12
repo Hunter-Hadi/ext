@@ -25,9 +25,9 @@ export const MAXAI_GENMINI_MODELS: IAIProviderModel[] = [
     tags: ['Beta', 'Vision'],
     poweredBy: 'Google',
     description: (t) =>
-      t(`client:provider__gemini__model__gemini_pro__description`),
+      t(`client:provider__gemini__model__gemini_pro_1_5__description`),
     permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
+      sceneType: 'MAXAI_PAID_MODEL_GEMINI_1_5_PRO',
       roles: ['elite'],
     },
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,

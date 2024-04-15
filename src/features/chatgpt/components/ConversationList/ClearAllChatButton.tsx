@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
@@ -10,6 +11,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
+import ClearAllChatButtonMoreActions from '@/features/chatgpt/components/ConversationList/ClearAllChatButtonMoreActions'
 import { removeConversationsByType } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -58,36 +60,39 @@ const ClearAllChatButton: FC<IProps> = (props) => {
   return (
     <>
       {variant === 'buttonText' && (
-        <Button
-          variant={'text'}
-          sx={{
-            width: '100%',
-            color: 'text.primary',
-            padding: '12px 16px',
-            ...sx,
-          }}
-          data-testid={testid}
-          onClick={(e: React.MouseEvent) => {
-            e.stopPropagation()
-            setOpen(true)
-          }}
-        >
-          <Stack
-            direction={'row'}
-            justifyContent={'start'}
-            gap={2}
-            width={'100%'}
+        <Box position={'relative'}>
+          <Button
+            variant={'text'}
+            sx={{
+              width: '100%',
+              color: 'text.primary',
+              padding: '12px 16px',
+              ...sx,
+            }}
+            data-testid={testid}
+            onClick={(e: React.MouseEvent) => {
+              e.stopPropagation()
+              setOpen(true)
+            }}
           >
-            <ContextMenuIcon icon={'Delete'} size={24} />
-            <Typography
-              fontSize={'16px'}
-              color={'text.primary'}
-              lineHeight={'24px'}
+            <Stack
+              direction={'row'}
+              justifyContent={'start'}
+              gap={2}
+              width={'100%'}
             >
-              {currentDeleteAllButtonTitle}
-            </Typography>
-          </Stack>
-        </Button>
+              <ContextMenuIcon icon={'Delete'} size={24} />
+              <Typography
+                fontSize={'16px'}
+                color={'text.primary'}
+                lineHeight={'24px'}
+              >
+                {currentDeleteAllButtonTitle}
+              </Typography>
+            </Stack>
+          </Button>
+          <ClearAllChatButtonMoreActions />
+        </Box>
       )}
 
       {variant === 'icon' && (

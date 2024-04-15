@@ -13,8 +13,9 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
   placement?: TooltipProps['placement']
   TooltipProps?: TooltipProps
   sx?: SxProps
+  selectionText?: string
 }> = (props) => {
-  const { sx, placement, TooltipProps } = props
+  const { sx, placement, TooltipProps, selectionText } = props
   const { t } = useTranslation(['common', 'client'])
   const { createConversation } = useClientConversation()
   const { createSearchWithAI } = useSearchWithAI()
@@ -61,6 +62,9 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
           const selectedText = window.getSelection()?.toString()
           if (selectedText) {
             await createSearchWithAI(selectedText, false)
+          } else if (selectionText) {
+            // google doc下的ai助力搜索
+            await createSearchWithAI(selectionText, false)
           }
         }}
       >

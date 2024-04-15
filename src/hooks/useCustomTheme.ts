@@ -41,10 +41,22 @@ declare module '@mui/material/styles' {
   interface Palette {
     customColor: CustomColor
     neutral: Palette['primary']
+    promotionColor: {
+      fontMain: React.CSSProperties['color']
+      backgroundMain: React.CSSProperties['color']
+      backgroundSecondary: React.CSSProperties['color']
+      backgroundThird: React.CSSProperties['color']
+    }
   }
   interface PaletteOptions {
     customColor: CustomColor
     neutral: PaletteOptions['primary']
+    promotionColor: {
+      fontMain: React.CSSProperties['color']
+      backgroundMain: React.CSSProperties['color']
+      backgroundSecondary: React.CSSProperties['color']
+      backgroundThird: React.CSSProperties['color']
+    }
   }
   interface TypographyVariants {
     custom: React.CSSProperties
@@ -64,6 +76,7 @@ declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     secondary: true
     normalOutlined: true
+    promotionContained: true
   }
 }
 
@@ -153,6 +166,16 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
                     borderColor: isDarkMode
                       ? 'rgba(255, 255, 255, 1)'
                       : 'rgba(0, 0, 0, 0.87)',
+                  },
+                },
+              },
+              {
+                props: { variant: 'promotionContained' },
+                style: {
+                  backgroundColor: '#ff8800',
+                  color: '#ffffff',
+                  '&:hover': {
+                    backgroundColor: '#B54708',
                   },
                 },
               },
@@ -258,6 +281,12 @@ export const useCustomTheme = (props?: IProps): IUseCustomThemeReturn => {
             hoverColor: isDarkMode
               ? customColor.darkHoverColor
               : customColor.hoverColor,
+          },
+          promotionColor: {
+            fontMain: '#B54708',
+            backgroundMain: '#ff8800',
+            backgroundSecondary: '#FFE7CD',
+            backgroundThird: '#FFF4E8',
           },
           neutral: {
             main: 'rgba(0, 0, 0, 0.4)',

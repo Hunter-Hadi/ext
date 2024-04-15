@@ -1,11 +1,16 @@
-
-
 import Stack from '@mui/material/Stack'
 import cloneDeep from 'lodash-es/cloneDeep'
 import groupBy from 'lodash-es/groupBy'
-import React, { type FC, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, {
+  type FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilState } from 'recoil';
+import { useRecoilState } from 'recoil'
 
 import { type IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { useChromeExtensionButtonSettings } from '@/background/utils/buttonSettings'
@@ -21,13 +26,18 @@ import {
 import { fuzzySearchContextMenuList } from '@/features/contextMenu/utils'
 import useContextMenuSearchTextStore from '@/features/sidebar/hooks/useContextMenuSearchTextStore'
 import useSyncSettingsChecker from '@/pages/settings/hooks/useSyncSettingsChecker'
-import SettingPromptsActionConfirmModal, { type IConfirmActionType } from '@/pages/settings/pages/prompts/components/SettingPromptsActionConfirmModal'
-import SettingPromptsMenuPanel, { PRESET_PROMPT, PRESET_PROMPT_ID, rootId } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
-import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel/components/SettingPromptsViewSource';
+import SettingPromptsActionConfirmModal, {
+  type IConfirmActionType,
+} from '@/pages/settings/pages/prompts/components/SettingPromptsActionConfirmModal'
+import SettingPromptsMenuPanel, {
+  PRESET_PROMPT,
+  PRESET_PROMPT_ID,
+  rootId,
+} from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
+import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel/components/SettingPromptsViewSource'
 import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
-import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
-import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store';
+import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 
 import ContextMenuMockTextarea from './ContextMenuMockTextarea'
 
@@ -56,15 +66,14 @@ const saveTreeData = async (
 }
 
 const SettingPromptsContextMenuCard: FC = () => {
-  const [editButtonKey, setEditButtonKey] = useRecoilState(SettingPromptsEditButtonKeyAtom)
+  const [editButtonKey, setEditButtonKey] = useRecoilState(
+    SettingPromptsEditButtonKeyAtom,
+  )
   const { syncLocalToServer } = useSyncSettingsChecker()
   const { t } = useTranslation(['settings'])
-  const {
-    contextMenuSearchTextWithCurrentLanguage,
-  } = useContextMenuSearchTextStore()
-  const {
-    buttonSettings,
-  } = useChromeExtensionButtonSettings()
+  const { contextMenuSearchTextWithCurrentLanguage } =
+    useContextMenuSearchTextStore()
+  const { buttonSettings } = useChromeExtensionButtonSettings()
 
   const loadedRef = useRef(false)
   const defaultTreeDataRef = useRef<null | IContextMenuItem[]>(null)
@@ -83,8 +92,10 @@ const SettingPromptsContextMenuCard: FC = () => {
   )
   const [inputValue, setInputValue] = useState<string>('')
   const [openIds, setOpenIds] = useState<string[]>([])
-  
-  const position = editButtonKey ? buttonSettings?.[editButtonKey]?.contextMenuPosition : 'end';
+
+  const position = editButtonKey
+    ? buttonSettings?.[editButtonKey]?.contextMenuPosition
+    : 'end'
   const currentConfirmNode = useMemo(() => {
     return originalTreeData.find((item) => item.id === confirmId)
   }, [confirmId, originalTreeData])
@@ -94,17 +105,14 @@ const SettingPromptsContextMenuCard: FC = () => {
       .map((item) => item.id)
   }, [originalTreeData])
 
-  const handleOnSave = useCallback(
-    (newNode: IContextMenuItem) => {
-      if (newNode.data.type === 'group') {
-        updateMenuItem(newNode)
-      } else {
-        updateMenuItem(newNode)
-      }
-      setEditNode(null)
-    },
-    [],
-  )
+  const handleOnSave = useCallback((newNode: IContextMenuItem) => {
+    if (newNode.data.type === 'group') {
+      updateMenuItem(newNode)
+    } else {
+      updateMenuItem(newNode)
+    }
+    setEditNode(null)
+  }, [])
 
   const updateMenuItem = (newNode: IContextMenuItem) => {
     setOriginalTreeData((prev) => {
@@ -225,7 +233,7 @@ const SettingPromptsContextMenuCard: FC = () => {
       })
     }
   }, [originalTreeData])
-  
+
   const filteredTreeData = useMemo(() => {
     if (!inputValue) {
       if (position === 'start') {
@@ -265,92 +273,74 @@ const SettingPromptsContextMenuCard: FC = () => {
     position,
   ])
 
-  return <>
-    <Stack direction={'row'} alignItems={'center'} spacing={2}>
-      <SettingPromptsUpdater 
-        disabled={loading}
-        node={editNode}
-        iconSetting={true}
-        onSave={handleOnSave}
-        onCancel={() => setEditNode(null)}
-        onDelete={(id) => handleActionConfirmOpen('delete', id)}
-        setEditNode={setEditNode}
-      />
-      <SettingPromptsRestorer 
-        onRestore={async (snapshot) => {
-          if (editButtonKey) {
-            try {
-              setLoading(true)
-              setInputValue('')
-              const buttonSettings = snapshot.settings.buttonSettings
-              if (!buttonSettings) return
-              const { contextMenu } = buttonSettings[editButtonKey]
-              setOriginalTreeData(contextMenu)
-            } catch (e) {
-              console.error(e)
-            } finally {
-              setLoading(false)
-            }
-          }
-        }}
-      />
-    </Stack>
-      
-    <SettingPromptsPositionSwitch
-      checked={position === 'end'}
-      label={t(
-        'settings:feature_card__prompts__place_my_own_prompts_switch',
-      )} 
-      sx={{
-        my: '16px'
-      }}
-    />
-      
-    <Stack
-      height={0}
-      flex={1}
-      // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
-    >
-      <Stack height={'100%'}>
-        <DevContent>
-          <SettingPromptsViewSource treeData={originalTreeData} />
-        </DevContent>
-        <ContextMenuMockTextarea
-          defaultValue={inputValue}
-          onChange={setInputValue}
-          placeholder={t(
-            'feature_card__prompts__edit_prompt__mock_input__placeholder',
-          )}
-        />
-        <SettingPromptsMenuPanel 
-          rootId={rootId}
-          initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}
-          treeData={filteredTreeData}
-          editNode={editNode}
-          onChangeOpen={(newOpenIds) => {
-            if (inputValue.trim()) {
-              return
-            }
-            console.log('newOpenIds', newOpenIds)
-            setOpenIds(newOpenIds as string[])
-          }}
-          onDrop={handleDrop}
-          onEditNode={setEditNode}
-          onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
-          disabledDrag={inputValue !== ''} 
+  return (
+    <>
+      <Stack direction={'row'} alignItems={'center'} spacing={2}>
+        <SettingPromptsUpdater
+          disabled={loading}
+          node={editNode}
+          iconSetting={true}
+          onSave={handleOnSave}
+          onCancel={() => setEditNode(null)}
+          onDelete={(id) => handleActionConfirmOpen('delete', id)}
+          setEditNode={setEditNode}
         />
       </Stack>
-    </Stack>
-    {confirmOpen && confirmType && (
-      <SettingPromptsActionConfirmModal
-        open={confirmOpen}
-        actionType={confirmType}
-        nodeType={currentConfirmNode?.data?.type || 'shortcuts'}
-        onClose={handleActionConfirmClose}
-        onConfirm={handleActionConfirmOnConfirm}
+
+      <SettingPromptsPositionSwitch
+        checked={position === 'end'}
+        label={t('settings:feature_card__prompts__place_my_own_prompts_switch')}
+        sx={{
+          my: '16px',
+        }}
       />
-    )}
-  </>
+
+      <Stack
+        height={0}
+        flex={1}
+        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+      >
+        <Stack height={'100%'}>
+          <DevContent>
+            <SettingPromptsViewSource treeData={originalTreeData} />
+          </DevContent>
+          <ContextMenuMockTextarea
+            defaultValue={inputValue}
+            onChange={setInputValue}
+            placeholder={t(
+              'feature_card__prompts__edit_prompt__mock_input__placeholder',
+            )}
+          />
+          <SettingPromptsMenuPanel
+            rootId={rootId}
+            initialOpen={inputValue.trim() ? memoAllGroupIds : openIds}
+            treeData={filteredTreeData}
+            editNode={editNode}
+            onChangeOpen={(newOpenIds) => {
+              if (inputValue.trim()) {
+                return
+              }
+              console.log('newOpenIds', newOpenIds)
+              setOpenIds(newOpenIds as string[])
+            }}
+            onDrop={handleDrop}
+            onEditNode={setEditNode}
+            onDeleteNode={(id) => handleActionConfirmOpen('delete', id)}
+            disabledDrag={inputValue !== ''}
+          />
+        </Stack>
+      </Stack>
+      {confirmOpen && confirmType && (
+        <SettingPromptsActionConfirmModal
+          open={confirmOpen}
+          actionType={confirmType}
+          nodeType={currentConfirmNode?.data?.type || 'shortcuts'}
+          onClose={handleActionConfirmClose}
+          onConfirm={handleActionConfirmOnConfirm}
+        />
+      )}
+    </>
+  )
 }
 
-export default SettingPromptsContextMenuCard;
+export default SettingPromptsContextMenuCard

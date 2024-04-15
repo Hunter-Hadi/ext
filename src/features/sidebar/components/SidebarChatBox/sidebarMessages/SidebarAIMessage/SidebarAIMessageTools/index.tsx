@@ -6,10 +6,10 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
 import SidebarAIMessageAttachmentsDownloadButton from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarAIMessage/SidebarAIMessageContent/SidebarAIMessageImageContent/SidebarAIMessageAttachmentsDownloadButton'
 import { formatAIMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const SidebarAIMessageTools: FC<{
   useChatGPTAble?: boolean
@@ -74,7 +74,7 @@ const SidebarAIMessageTools: FC<{
                               )
                               resolve(false)
                             })
-                            .finally(() => {})
+                            .finally(() => { })
                         } else {
                           resolve(false)
                         }

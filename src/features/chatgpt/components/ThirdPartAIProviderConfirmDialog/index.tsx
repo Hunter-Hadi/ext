@@ -18,6 +18,7 @@ import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 import ThirdPartyAIProviderRecommendations from './ThirdPartyAIProviderRecommendations'
 
@@ -25,13 +26,14 @@ interface ThirdPartAIProviderConfirmDialogProps {
   sx?: SxProps
 }
 
-const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps> = ({
-  sx,
-}) => {
+const ThirdPartAIProviderConfirmDialog: FC<
+  ThirdPartAIProviderConfirmDialogProps
+> = ({ sx }) => {
   const { t } = useTranslation(['client', 'common'])
   const [dialogState, setDialogState] = useRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )
+  const { sidebarSettings } = useSidebarSettings()
   const { isSelectedThirdAIProvider } = useThirdAIProviderModels()
   const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
@@ -39,7 +41,12 @@ const ThirdPartAIProviderConfirmDialog: FC<ThirdPartAIProviderConfirmDialogProps
 
   const handleClose = async () => {
     // 如果点击了关闭按钮， 并且当前选中的已经是第三方AI provider， 则切换回默认的AI provider和AI model
-    if (isSelectedThirdAIProvider) {
+    // 重新登陆之后，如果当前选中的AIProvider是默认的AIProvider， 则创建一个新的对话
+    if (
+      isSelectedThirdAIProvider ||
+      sidebarSettings?.common?.currentAIProvider ===
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
+    ) {
       await updateAIProviderModel(
         MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider,
         MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel,

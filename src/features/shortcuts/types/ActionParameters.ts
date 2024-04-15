@@ -11,10 +11,10 @@ import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/Ope
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import { ICommentData } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import { ITextHandlerParameters } from '@/features/shortcuts/utils/textHelper'
 import { IWebsiteContext } from '@/features/websiteContext/background'
 
-import { ICommentData } from '../utils/SocialMediaPostContext'
 import AssertionType from './IOS_WF/AssertionType'
 import FaceTimeType from './IOS_WF/FaceTimeType'
 import WFArchiveFormat from './IOS_WF/WFArchiveFormat'

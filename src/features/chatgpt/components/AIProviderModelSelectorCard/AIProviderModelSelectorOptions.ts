@@ -52,6 +52,13 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
     {
       tag: 'Beta',
       mainPart: true,
+      label: 'gemini-1.5-pro',
+      value: 'gemini-1.5-pro',
+      AIProvider: 'MAXAI_GEMINI',
+    },
+    {
+      tag: 'Beta',
+      mainPart: true,
       label: 'gemini-pro',
       value: 'gemini-pro',
       AIProvider: 'MAXAI_GEMINI',

@@ -47,9 +47,9 @@ export const clientForceRemoveConversation = async (conversationId: string) => {
   }
 }
 /**
- * 获取所有的conversation
+ * 获取登陆用户所有的conversation
  */
-export const clientGetAllConversations = async () => {
+export const clientGetUserAllConversations = async () => {
   try {
     const port = new ContentScriptConnectionV2()
     const result = await port.postMessage({

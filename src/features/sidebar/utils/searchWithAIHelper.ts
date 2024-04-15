@@ -2,6 +2,10 @@ import dayjs from 'dayjs'
 import { v4 as uuidV4 } from 'uuid'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  SEARCH__ANSWER__PROMPT_ID,
+  SEARCH__SMART_QUERY__PROMPT_ID,
+} from '@/constants'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { SEARCH_WITH_AI_PROMPT } from '@/features/searchWithAI/constants'
@@ -102,8 +106,11 @@ export const generateSearchWithAIActions = async (
   prevQuestions: string[],
   includeHistory: boolean,
 ) => {
-  const { searchEngine = 'google', maxResultsCount = 6, copilot = false } =
-    (await getChromeExtensionLocalStorage()).sidebarSettings?.search || {}
+  const {
+    searchEngine = 'google',
+    maxResultsCount = 6,
+    copilot = false,
+  } = (await getChromeExtensionLocalStorage()).sidebarSettings?.search || {}
   const messageId = uuidV4()
   // search with AI 开始
   let currentQuestion = query
@@ -200,7 +207,7 @@ export const generateSearchWithAIActions = async (
             temperature: 0,
             messageVisibleText: query,
             contextMenu: {
-              id: 'b481731b-19e3-4713-8f0b-81fd7b2d5169',
+              id: SEARCH__SMART_QUERY__PROMPT_ID,
               droppable: false,
               parent: '',
               text: '[Search] smart query',
@@ -383,7 +390,7 @@ The text is sourced from the main content of the webpage at {{WEBPAGE_URL}}.
             outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
             includeHistory,
             contextMenu: {
-              id: '73361add-2d6a-4bf3-b2a7-5097551653e7',
+              id: SEARCH__ANSWER__PROMPT_ID,
               droppable: false,
               parent: '',
               text: '[Search] answer',

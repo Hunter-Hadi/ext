@@ -17,8 +17,14 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
+import {
+  getOfficeWordSelectedElements,
+  isOfficeWordEditing,
+  isOfficeWordEditorFrame,
+} from '@/features/contextMenu/utils/microsoftWordHelper'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
+import { wait } from '@/utils'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 const CREATE_SELECTION_MARKER_WHITE_LIST_HOST = ['mail.google.com'] as const
@@ -263,10 +269,8 @@ export const createSelectionMarker = (
              * 2. [废弃] 选区的innerText[可编辑元素开头 - 光标位置]的内容
              * 3. [废弃] 选区的innerText内容
              */
-            const {
-              selectionText,
-              partOfStartToCaretText,
-            } = getEditableElementSelectionText(editableElement)
+            const { selectionText, partOfStartToCaretText } =
+              getEditableElementSelectionText(editableElement)
             let contextText = (
               selectionText ||
               partOfStartToCaretText ||
@@ -395,9 +399,8 @@ export const getEditableElementSelectionText = (
                   const lineContentElements: HTMLElement[] = []
                   if (overlays.length > 0) {
                     overlays.forEach((overlay) => {
-                      const overlayPrevLineContent = overlay.parentElement?.querySelector(
-                        '.zw-line-content',
-                      )
+                      const overlayPrevLineContent =
+                        overlay.parentElement?.querySelector('.zw-line-content')
                       if (overlayPrevLineContent) {
                         if (
                           lineContentElements.find(
@@ -422,10 +425,23 @@ export const getEditableElementSelectionText = (
                     }
                   }
                   if (!selectionText) {
-                    hostSpecialCursor = pageContentRoot.querySelector(
-                      `div.cursor[id]`,
-                    )
+                    hostSpecialCursor =
+                      pageContentRoot.querySelector(`div.cursor[id]`)
                   }
+                }
+              }
+              break
+            case 'word-edit.officeapps.live.com':
+              {
+                pageContentRoot = doc.querySelector('#PagesContainer')
+                if (pageContentRoot) {
+                  // office word下获取到焦点的段落会把当前段落class设置为HiddenParagraph
+                  // 并把当前段落内容和位置放置在#WACViewPanel_EditingElement contenteditable="true"的元素内覆盖在原位置上进行编辑
+                  // <PageContentContainer>
+                  //   <WACViewPanel_EditingElement />
+                  //   <PagesContainer>{...所有页面和段落}</PagesContainer>
+                  // </PageContentContainer>
+                  hostSpecialCursor = doc.querySelector('.HiddenParagraph')
                 }
               }
               break
@@ -469,6 +485,16 @@ export const getEditableElementSelectionText = (
                 .replaceAll('Header OptionsExitDouble click to edit header', '')
                 .replaceAll('Footer OptionsExitDouble click to edit footer', '')
                 .trim()
+            } else if (host === 'word-edit.officeapps.live.com') {
+              // 先重置一下，保留换行
+              partOfStartToCaretText = partOfStartToCaret.toString();
+              // 获取当前可编辑元素的内容
+              partOfStartToCaret.selectNodeContents(editableElement)
+              partOfStartToCaret.setEnd(range.endContainer, range.endOffset)
+              partOfStartToCaretText += partOfStartToCaret.toString()
+              partOfStartToCaretText = partOfStartToCaretText
+                .trim()
+                .replace(/\u200B/g, '')
             }
           }
         }
@@ -697,7 +723,7 @@ export const replaceMarkerContent = async (
         cloneRange.setStart(cacheRange.startContainer, cacheRange.startOffset)
         cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
-      await replaceWithClipboard(cloneRange, value)
+      await replaceWithClipboard(cloneRange, value, type)
       console.log('paste editableElementSelectionText', value, type)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
@@ -860,7 +886,8 @@ export const replaceMarkerContent = async (
       doc.getSelection()?.removeAllRanges()
       doc.getSelection()?.addRange(newRange)
     }
-    const host = getCurrentDomainHost() as typeof CREATE_SELECTION_MARKER_WHITE_LIST_HOST[number]
+    const host =
+      getCurrentDomainHost() as (typeof CREATE_SELECTION_MARKER_WHITE_LIST_HOST)[number]
     switch (host) {
       case 'mail.google.com':
         {
@@ -881,7 +908,7 @@ export const replaceMarkerContent = async (
         console.log('default paste value', value, startMarker, endMarker)
         focusEditableElement()
         highlightSelection()
-        await replaceWithClipboard(range, value)
+        await replaceWithClipboard(range, value, type)
       }
     }
     // dispatch keyup event with original target
@@ -1090,9 +1117,9 @@ export const getSelectionBoundaryElement = (startContainer = true) => {
     if (range) {
       container = range[startContainer ? 'startContainer' : 'endContainer']
       // Check if the container is a text node and return its parent if so
-      const element = (container.nodeType === 3
-        ? container.parentNode
-        : container) as HTMLElement
+      const element = (
+        container.nodeType === 3 ? container.parentNode : container
+      ) as HTMLElement
       if (
         element.tagName === 'BODY' ||
         element.tagName === 'HTML' ||
@@ -1235,8 +1262,13 @@ export const isElementCanEditable = (element: HTMLElement) => {
  *  7. 还原最初选区
  * @param range
  * @param value
+ * @param type
  */
-export const replaceWithClipboard = async (range: Range, value: string) => {
+export const replaceWithClipboard = async (
+  range: Range,
+  value: string,
+  type?: ContextMenuDraftType,
+) => {
   const originalRange: Range | null = range.cloneRange()
   const restoreRange: Range | null = range.cloneRange()
   const doc =
@@ -1332,18 +1364,51 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       if (['discord.com'].includes(getCurrentDomainHost())) {
         await navigator.clipboard.writeText(pastedText)
       }
-      // editableElement?.focus()
-      finallySelection.removeAllRanges()
-      finallySelection.addRange(originalRange)
-      const delay = (ms: number) =>
-        new Promise((resolve) => setTimeout(resolve, ms))
-      selection?.removeAllRanges()
-      selection?.addRange(restoreRange)
+
+      if (isOfficeWordEditorFrame() && isOfficeWordEditing(editableElement) && getOfficeWordSelectedElements().length) {
+        // Microsoft Office docs下如果已有选区调用removeAllRanges和addRange无效
+        // 只有先点击一次清除选中后，调用removeAllRange和addRange才有效
+        // 但是每次修改选区后，dom节点会变换成新的节点，导致先前获取的range里的节点都丢失了
+
+        // 以下代码为模拟鼠标操作选择新选区，从上往下选区时可编辑元素位置处于靠下的位置
+        // 位置获取不准确，所以改为判断type和当前是否有选区去进行模拟键盘左键右键操作
+        // selectOfficeWordRange(restoreRange)
+
+        if (type === 'INSERT' || type === 'INSERT_BELOW') {
+          editableElement?.dispatchEvent(new KeyboardEvent('keydown', {
+            code: 'ArrowRight',
+            key: 'ArrowRight',
+            keyCode: 39,
+            bubbles: true,
+            repeat: false,
+          }))
+        } else if (type === 'INSERT_ABOVE') {
+          editableElement?.dispatchEvent(new KeyboardEvent('keydown', {
+            code: 'ArrowLeft',
+            key: 'ArrowLeft',
+            keyCode: 37,
+            bubbles: true,
+            repeat: false,
+          }))
+        } else {
+          finallySelection.removeAllRanges()
+          finallySelection.addRange(originalRange)
+          selection?.removeAllRanges()
+          selection?.addRange(restoreRange)
+        }
+      } else {
+        // editableElement?.focus()
+        finallySelection.removeAllRanges()
+        finallySelection.addRange(originalRange)
+        selection?.removeAllRanges()
+        selection?.addRange(restoreRange)
+      }
+
       if (currentHost === 'evernote.com') {
         // 如果在 evernote.com 上，则不需要 delay
         // nothing
       } else {
-        await delay(0)
+        await wait(0)
       }
 
       if (
@@ -1377,7 +1442,7 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
           //
           // do nothing
         } else if (currentHost === 'notion.so') {
-          await delay(300)
+          await wait(300)
           doc.execCommand('paste', false, '')
         } else {
           doc.execCommand('insertText', false, pastedText)
@@ -1557,9 +1622,8 @@ export const getRichTextEditorLineText = (
                 }
               }
               const role = editableElement.getAttribute('role')
-              const contenteditable = editableElement.getAttribute(
-                'contenteditable',
-              )
+              const contenteditable =
+                editableElement.getAttribute('contenteditable')
               if (role === 'textbox' && contenteditable === 'true') {
                 // 如果是空行,直接返回空字符串
                 if (isNewLine) {
@@ -1646,9 +1710,10 @@ export const showRichEditorLineTextPlaceholder = (
   if (host === 'larksuite.com') {
     placeholder.style.lineHeight = '18px'
   } else if (host === 'writer.zoho.com') {
-    const fontConfig = richTextEditorLineElement?.parentElement?.parentElement?.getAttribute(
-      'data-textformat',
-    )
+    const fontConfig =
+      richTextEditorLineElement?.parentElement?.parentElement?.getAttribute(
+        'data-textformat',
+      )
     try {
       const size = JSON.parse(fontConfig || '{}').size || 12
       placeholder.style.fontSize = `${Number(size)}pt`
@@ -1683,10 +1748,8 @@ export const useBindRichTextEditorLineTextPlaceholder = () => {
   useEffect(() => {
     const richTextEditorHandle = (event: MouseEvent | KeyboardEvent) => {
       console.log('lineText', event)
-      const {
-        richTextEditorLineText,
-        richTextEditorLineTextElement,
-      } = getRichTextEditorLineText(event)
+      const { richTextEditorLineText, richTextEditorLineTextElement } =
+        getRichTextEditorLineText(event)
       if (!richTextEditorLineText && richTextEditorLineTextElement) {
         const placeholderText =
           floatingMenuShortCutKey &&
@@ -1775,9 +1838,8 @@ export const createSandboxIframeClickAndKeydownEvent = (
         const target = mouseDownElement || (event.target as HTMLElement)
         let selectionText = computedSelectionString(iframeDocument)
         let editableElementSelectionString = ''
-        const { isEditableElement, editableElement } = getEditableElement(
-          target,
-        )
+        const { isEditableElement, editableElement } =
+          getEditableElement(target)
         let startMarkerId = ''
         let endMarkerId = ''
         let caretOffset = 0

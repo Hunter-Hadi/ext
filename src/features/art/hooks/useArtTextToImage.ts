@@ -2,6 +2,10 @@ import { useRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { getAIProviderSettings } from '@/background/src/chat/util'
+import {
+  ART__DALLE3_PROMPT_OPTIMIZATION__PROMPT_ID,
+  ART__TEXT_TO_IMAGE__PROMPT_ID,
+} from '@/constants'
 import { ART_NATURAL_LANGUAGE_TO_DALL_E_3_PROMPT } from '@/features/art/constant'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
@@ -150,7 +154,7 @@ const useArtTextToImage = () => {
                 historyMessages,
                 messageVisibleText: text,
                 contextMenu: {
-                  id: '816e3fe0-bd04-418e-8f6e-d33d8c4dba67',
+                  id: ART__DALLE3_PROMPT_OPTIMIZATION__PROMPT_ID,
                   droppable: false,
                   parent: '',
                   text: '[Art] dalle3 prompt optimization',
@@ -226,7 +230,7 @@ const useArtTextToImage = () => {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
                 messageVisibleText: `{{IMAGE_PROMPT}}`,
                 contextMenu: {
-                  id: 'f19e862d-e8bb-4b09-9220-6a9a395deb6f',
+                  id: ART__TEXT_TO_IMAGE__PROMPT_ID,
                   droppable: false,
                   parent: '',
                   text: '[Art] text to image',
@@ -339,7 +343,7 @@ const useArtTextToImage = () => {
                 outputMessageId: `{{AI_RESPONSE_MESSAGE_ID}}`,
                 messageVisibleText: text,
                 contextMenu: {
-                  id: 'f19e862d-e8bb-4b09-9220-6a9a395deb6f',
+                  id: ART__TEXT_TO_IMAGE__PROMPT_ID,
                   droppable: false,
                   parent: '',
                   text: '[Art] text to image',

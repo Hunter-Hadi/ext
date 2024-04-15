@@ -2,7 +2,7 @@ import { flip, offset, shift, useFloating } from '@floating-ui/react'
 import Box from '@mui/material/Box'
 import Paper from '@mui/material/Paper'
 import Stack from '@mui/material/Stack'
-import React, { FC, useCallback, useEffect, useMemo } from 'react'
+import React, { FC, useCallback, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil'
 
@@ -23,7 +23,6 @@ import {
 } from '@/features/contextMenu/store'
 import { IRangyRect } from '@/features/contextMenu/types'
 import {
-  cloneRect,
   computedRectPosition,
   isRectangleCollidingWithBoundary,
 } from '@/features/contextMenu/utils'
@@ -36,13 +35,12 @@ import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
   onClick?: (event: MouseEvent, Rect: IRangyRect) => void
-}> = (props) => {
+}> = () => {
   const { t } = useTranslation(['common', 'client'])
   const { tempSelection, show, hideRangy } = useRangy()
   const { chatBoxShortCutKey } = useCommands()
-  const textSelectPopupButtonSettings = useChromeExtensionButtonSettingsWithVisibility(
-    'textSelectPopupButton',
-  )
+  const textSelectPopupButtonSettings =
+    useChromeExtensionButtonSettingsWithVisibility('textSelectPopupButton')
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )
@@ -54,24 +52,12 @@ const FloatingMiniMenu: FC<{
   const { closeBeforeRefresh } = useRecoilValue(ContextMenuSettingsState)
   const { showFloatingContextMenu } = useFloatingContextMenu()
   const [floatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
-  const memoShow = useMemo(() => {
-    console.log(
-      show,
-      textSelectPopupButtonSettings?.buttonVisible,
-      'textSelectPopupButtonSettings',
-    )
-    return (
-      show &&
+  const [finalShow, setFinalShow] = useState(
+    show &&
       textSelectPopupButtonSettings?.buttonVisible &&
       !closeBeforeRefresh &&
-      !floatingDropdownMenu.open
-    )
-  }, [
-    closeBeforeRefresh,
-    show,
-    textSelectPopupButtonSettings,
-    floatingDropdownMenu,
-  ])
+      !floatingDropdownMenu.open,
+  )
   const { x, y, strategy, refs, placement } = useFloating({
     placement: 'bottom-start',
     middleware: [
@@ -117,42 +103,47 @@ const FloatingMiniMenu: FC<{
     ],
   })
   useEffect(() => {
-    if (!tempSelection || !memoShow) {
-      return
+    const isShow =
+      show &&
+      textSelectPopupButtonSettings?.buttonVisible &&
+      !closeBeforeRefresh &&
+      !floatingDropdownMenu.open
+    setFinalShow(isShow)
+    if (!tempSelection?.selectionRect || !isShow) {
+      return;
     }
-    let rect = cloneRect(tempSelection.selectionRect)
-    console.log(
-      `[ContextMenu Module]: [button] [${memoShow}]`,
-      tempSelection.selectionRect,
-    )
-    if (memoShow && rect) {
-      rect = computedRectPosition(rect)
-      if (!isProduction) {
-        // render rect
-        document.querySelector('#rangeBorderBox')?.remove()
-        const div = document.createElement('div')
-        div.id = 'rangeBorderBox'
-        div.style.position = 'absolute'
-        div.style.left = rect.left + 'px'
-        div.style.top = rect.top + window.scrollY + 'px'
-        div.style.width = rect.width + 'px'
-        div.style.height = rect.height + 'px'
-        div.style.border = '2px solid red'
-        div.style.zIndex = '9999'
-        div.style.pointerEvents = 'none'
-        document.body.appendChild(div)
-      }
-      refs.setPositionReference({
-        getBoundingClientRect() {
-          return {
-            ...rect,
-            x: rect.left,
-            y: rect.top,
-          }
-        },
-      })
+    const rect = computedRectPosition(tempSelection.selectionRect)
+    if (!isProduction) {
+      // render rect
+      document.querySelector('#rangeBorderBox')?.remove()
+      const div = document.createElement('div')
+      div.id = 'rangeBorderBox'
+      div.style.position = 'absolute'
+      div.style.left = rect.left + 'px'
+      div.style.top = rect.top + window.scrollY + 'px'
+      div.style.width = rect.width + 'px'
+      div.style.height = rect.height + 'px'
+      div.style.border = '2px solid red'
+      div.style.zIndex = '9999'
+      div.style.pointerEvents = 'none'
+      document.body.appendChild(div)
     }
-  }, [tempSelection, memoShow])
+    refs.setPositionReference({
+      getBoundingClientRect() {
+        return {
+          ...rect,
+          x: rect.left,
+          y: rect.top,
+        }
+      },
+    })
+  }, [
+    show,
+    textSelectPopupButtonSettings?.buttonVisible,
+    closeBeforeRefresh,
+    floatingDropdownMenu.open,
+    tempSelection,
+  ])
   const handleCloseClickContextMenuButton = useCallback(() => {
     if (refs.floating.current) {
       if (getComputedStyle(refs.floating.current).opacity === '0') {
@@ -188,13 +179,13 @@ const FloatingMiniMenu: FC<{
       elevation={3}
       component={'div'}
       ref={refs.setFloating}
-      className={`max-ai__click-context-menu ${memoShow ? 'open' : 'close'}`}
+      className={`max-ai__click-context-menu ${finalShow ? 'open' : 'close'}`}
       sx={{
         bgcolor: 'transparent',
         borderRadius: '14px',
-        zIndex: memoShow ? 2147483600 : -1,
+        zIndex: finalShow ? 2147483600 : -1,
         position: strategy,
-        opacity: memoShow ? 1 : 0,
+        opacity: finalShow ? 1 : 0,
         top: y ?? 0,
         left: x ?? 0,
         width: 'max-content',
@@ -308,7 +299,10 @@ const FloatingMiniMenu: FC<{
             />
           </TooltipButton>
         </Box>
-        <FloatingContextMenuMiniMenuSearchWithAIButton placement={placement} />
+        <FloatingContextMenuMiniMenuSearchWithAIButton
+          placement={placement}
+          selectionText={tempSelection?.selectionText}
+        />
         <FavoriteContextMenuGroup
           placement={placement}
           buttonSettingKey={'textSelectPopupButton'}

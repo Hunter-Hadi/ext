@@ -2,13 +2,13 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
+import SocialMediaPostContext, {
+  ICommentData,
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import {
   findParentEqualSelector,
   findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
-import SocialMediaPostContext, {
-  ICommentData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/utils/dataHelper/elementHelper'
 
 // 获取linkedin评论的作者，日期，内容
 const getLinkedInCommentDetail = async (

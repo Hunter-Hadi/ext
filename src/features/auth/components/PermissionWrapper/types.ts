@@ -21,6 +21,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
   'MAXAI_PAID_MODEL_CLAUDE_V2',
   'MAXAI_PAID_MODEL_GEMINI_PRO',
+  'MAXAI_PAID_MODEL_GEMINI_1_5_PRO',
   'MAXAI_PAID_MODEL_CLAUDE_V2_1',
   'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
   'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
@@ -463,6 +464,21 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     description: (t) =>
       t(
         'client:permission__pricing_hook__max_ai_paid_model__gemini_pro__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_elite'),
+  },
+  MAXAI_PAID_MODEL_GEMINI_1_5_PRO: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/max-ai-paid-model-gemini-1-5-pro.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description',
       ),
     ctaButtonText: (t) =>
       t('client:permission__pricing_hook__button__upgrade_to_elite'),

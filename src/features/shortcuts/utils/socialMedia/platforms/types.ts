@@ -1,4 +1,4 @@
-import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/SocialMediaPostContext'
+import { ISocialMediaPostContextData } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 
 export type GetSocialMediaPostContentFunction = (
   inputAssistantButton: HTMLElement,

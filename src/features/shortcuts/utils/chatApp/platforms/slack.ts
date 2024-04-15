@@ -1,10 +1,10 @@
 import ChatMessagesContext, {
   IChatMessageData,
-} from '@/features/shortcuts/utils/ChatMessagesContext'
+} from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import {
   findParentEqualSelector,
   findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+} from '@/utils/dataHelper/elementHelper'
 
 const getDirectMessageUserRegExp = /^(.*?) \(.*\)$/
 

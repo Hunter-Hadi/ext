@@ -49,7 +49,8 @@
     "ai_screenshot": "AI 截圖",
     "release_notes": "發行說明",
     "web_translation": "翻譯此頁面",
-    "show_original_text": "顯示原文"
+    "show_original_text": "顯示原文",
+    "more": "更多"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "重新命名",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 是 Google 的下一代模型，提供了增強的性能、高效的 MoE 架構，以及長篇內容理解的突破，支持多達 1 百萬個詞彙的窗口，實現了在文本、代碼、圖像、音頻和視頻處理方面的先進功能。",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升級以獲取具有視覺功能的gemini-1.5-pro",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。",
+    "immersive_chat__chat_history__restore_button__title": "還原聊天記錄",
+    "immersive_chat__chat_history__restore_modal__title": "您確定要將所有聊天、搜索和藝術歷史記錄還原到本地版本嗎？請注意，一旦您繼續進行，此操作將無法撤銷。",
+    "immersive_chat__chat_history__restore_modal__description": "還原後的聊天、搜索和藝術轉換：",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，還原",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

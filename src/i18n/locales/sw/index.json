@@ -49,7 +49,8 @@
     "ai_screenshot": "Picha ya AI",
     "release_notes": "Maelezo ya toleo",
     "web_translation": "Tafsiri ukurasa huu",
-    "show_original_text": "Onyesha maandishi ya awali"
+    "show_original_text": "Onyesha maandishi ya awali",
+    "more": "Zaidi"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Badilisha Jina",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ni mfano wa kizazi kijacho wa Google unaoongeza utendaji ulioboreshwa, muundo wa MoE wenye ufanisi, na uvumbuzi katika uelewa wa muktadha mrefu na madirisha ya alama milioni 1, kuruhusu uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Sasisha ili kupata gemini-1.5-pro na uwezo wa kuona",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mfano mpya na wa kisasa zaidi wa Google. Inatoa kasi ya haraka, dirisha la muktadha lenye alama za 1M, usalama ulioboreshwa, na uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mfano mpya na wa kisasa zaidi wa Google. Inatoa kasi ya haraka, dirisha la muktadha lenye alama za 1M, usalama ulioboreshwa, na uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video.",
+    "immersive_chat__chat_history__restore_button__title": "Rejesha mazungumzo",
+    "immersive_chat__chat_history__restore_modal__title": "Je, una uhakika unataka kurejesha historia yako yote ya Mazungumzo, Tafuta, na Sanaa kwenye toleo la ndani? Tafadhali kumbuka kuwa mara tu utakapoendelea, hatua haiwezi kufutwa.",
+    "immersive_chat__chat_history__restore_modal__description": "Mazungumzo & Tafuta & Mabadiliko ya Sanaa baada ya kurejeshwa:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ndiyo, rejesha",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ghairi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

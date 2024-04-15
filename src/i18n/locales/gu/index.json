@@ -49,7 +49,8 @@
     "ai_screenshot": "AI સ્ક્રીનશોટ",
     "release_notes": "રિલીઝ નોંધ",
     "web_translation": "આ પેજ અનુવાદ કરો",
-    "show_original_text": "ઓરિજિનલ ટેક્સ્ટ બતાવો"
+    "show_original_text": "ઓરિજિનલ ટેક્સ્ટ બતાવો",
+    "more": "વધુ"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "નામ બદલો",
     "provider__gemini__model__gemini_1_5_pro__description": "જેમિની 1.5 ગૂગલનો આગામી મોડલ છે જે પ્રદર્શનને સુધારે છે, એક અદ્યતન MoE આર્કિટેક્ચર છે અને લાંબા સંદર્ભ સમજણમાં એક પરાવર્તન છે જેથી 1 મિલિયન ટોકન વિંડોઝમાં લંબા સંદર્ભ સમજણની સાધનસામર્થ્ય મળે છે, જે ટેક્સ્ટ, કોડ, ઇમેજ, ઓડિયો અને વિડિઓ પ્રક્રિયાઓ પર આગળની સામર્થ્યો પૂરી કરે છે.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "જેમિની-1.5-પ્રો સાથે વિઝન એક્સેસ માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleનું નવુંતમ અને સૌથી આગ્રહી મોડેલ. તે ઝડપી સ્પીડ, એક પરાવર્તનકારી 1M ટોકન સંદર્ભ વિંડો, સુધારેલી સુરક્ષા અને પાઠ, કોડ, છબી, આવાજ અને વિડિઓ પ્રક્રિયાઓમાં એડવાન્સ ક્ષમતાઓ પૂરી પાડે છે."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleનું નવુંતમ અને સૌથી આગ્રહી મોડેલ. તે ઝડપી સ્પીડ, એક પરાવર્તનકારી 1M ટોકન સંદર્ભ વિંડો, સુધારેલી સુરક્ષા અને પાઠ, કોડ, છબી, આવાજ અને વિડિઓ પ્રક્રિયાઓમાં એડવાન્સ ક્ષમતાઓ પૂરી પાડે છે.",
+    "immersive_chat__chat_history__restore_button__title": "ચેટ પુનઃસ્થાપિત કરો",
+    "immersive_chat__chat_history__restore_modal__title": "શું તમે ખરેખર તમામ ચેટ, શોધ અને આર્ટ હિસ્ટરીને સ્થાનિક આવૃત્તિમાં પુનઃસ્થાપિત કરવા માંગો છો? કૃપા કરીને ધ્યાન આપો કે એકવાર જ્યારે તમે આગળ વધવા માંગો છો, ત્યાં પછી ક્રિયા પૂર્ણ થઈ શકશે નહીં.",
+    "immersive_chat__chat_history__restore_modal__description": "પુનઃસ્થાપિત પછી ચેટ અને શોધ અને આર્ટ રૂપાંતરો:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "હા, પુનઃસ્થાપિત કરો",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "રદ કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

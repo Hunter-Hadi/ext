@@ -49,7 +49,8 @@
     "ai_screenshot": "AI snimak ekrana",
     "release_notes": "Napomene o izdanju",
     "web_translation": "Prevedi ovu stranicu",
-    "show_original_text": "Prikaži originalni tekst"
+    "show_original_text": "Prikaži originalni tekst",
+    "more": "Više"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Preimenuj",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je sledeća generacija modela kompanije Google koja nudi unapređene performanse, efikasnu MoE arhitekturu i proboj u razumevanju dugog konteksta sa do 1 milion tokena, omogućavajući napredne mogućnosti u obradi teksta, koda, slike, zvuka i video zapisa.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadogradite da biste pristupili gemini-1.5-pro sa vizijom",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model kompanije Google. Pruža bržu brzinu, proboj prozora konteksta od 1M tokena, unapređenu sigurnost i napredne mogućnosti u obradi teksta, koda, slike, zvuka i video zapisa."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model kompanije Google. Pruža bržu brzinu, proboj prozora konteksta od 1M tokena, unapređenu sigurnost i napredne mogućnosti u obradi teksta, koda, slike, zvuka i video zapisa.",
+    "immersive_chat__chat_history__restore_button__title": "Obnovi četove",
+    "immersive_chat__chat_history__restore_modal__title": "Da li ste sigurni da želite da obnovite sve svoje četove, pretrage i istoriju umetnosti na lokalnoj verziji? Imajte na umu da jednom kada nastavite, ova radnja ne može biti poništena.",
+    "immersive_chat__chat_history__restore_modal__description": "Konverzije četova, pretraga i umetnosti nakon obnove:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, obnovi",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Otkaži"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

@@ -49,7 +49,8 @@
     "ai_screenshot": "AI স্ক্রিনশট",
     "release_notes": "রিলিজ নোট",
     "web_translation": "এই পৃষ্ঠাটি অনুবাদ করুন",
-    "show_original_text": "মূল পাঠ্য দেখান"
+    "show_original_text": "মূল পাঠ্য দেখান",
+    "more": "আরও"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -680,8 +681,13 @@
     "immersive_chat__more_actions_button__title": "আরও",
     "immersive_chat__rename_chat__button__title": "পুনঃনামকরণ",
     "provider__gemini__model__gemini_1_5_pro__description": "জেমিনি 1.5 হলো গুগলের পরবর্তী প্রজন্মের মডেল, যা উন্নত কর্মক্ষমতা, একটি দক্ষ মোই সংস্কারণ, এবং দীর্ঘ-সংক্ষেপ বোঝার জন্য এক মিলিয়ন টোকেন উইন্ডো সহ দীর্ঘ সংকেত বোঝার সাথে সুপারিশক্তি প্রদান করে, যা পাঠ্য, কোড, চিত্র, শব্দ এবং ভিডিও প্রসেসিং এর জন্য উন্নত সুযোগ সৃষ্টি করে।",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "গেমিনি-1.5-প্রো এর দৃষ্টিতে অ্যাক্সেস পেতে আপগ্রেড করুন",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "গুগলের সর্বনতম এবং সর্বাধিক উন্নত মডেল `জেমিনি-১.৫`। এটি দ্রুত গতি, একটি প্রচ্ছদ 1M টোকেন সংকেতপট, উন্নত নিরাপত্তা এবং পাঠ্য, কোড, ইমেজ, অডিও এবং ভিডিও প্রসেসিং সহ উন্নত সুবিধা প্রদান করে।"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ভিশন সহ জেমিনি-১.৫-প্রো এক্সেস করতে আপগ্রেড করুন",
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "গুগলের সর্বনতম এবং সর্বাধিক উন্নত মডেল `জেমিনি-১.৫`। এটি দ্রুত গতি, একটি প্রচ্ছদ 1M টোকেন সংকেতপট, উন্নত নিরাপত্তা এবং পাঠ্য, কোড, ইমেজ, অডিও এবং ভিডিও প্রসেসিং সহ উন্নত সুবিধা প্রদান করে।",
+    "immersive_chat__chat_history__restore_button__title": "চ্যাট পুনরুদ্ধার করুন",
+    "immersive_chat__chat_history__restore_modal__title": "আপনি কি নিশ্চিত যে আপনি সমস্ত চ্যাট, অনুসন্ধান এবং শিল্প ইতিহাসটি স্থানীয় সংস্করণে পুনরুদ্ধার করতে চান? দয়া করে মনে রাখবেন যে, একবার আগামীতে করলে কার্যকর হয় না।",
+    "immersive_chat__chat_history__restore_modal__description": "পুনরুদ্ধারের পরে চ্যাট এবং অনুসন্ধান এবং শিল্প রূপান্তরগুলি:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "হ্যাঁ, পুনরুদ্ধার করুন",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "বাতিল"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

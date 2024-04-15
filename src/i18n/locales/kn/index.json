@@ -49,7 +49,8 @@
     "ai_screenshot": "AI ಸ್ಕ್ರೀನ್‌ಷಾಟ್",
     "release_notes": "ಬಿಡುಗಡೆ ನೋಟಿಗಳು",
     "web_translation": "ಈ ಪುಟವನ್ನು ಭಾಷಾಂತರಿಸಿ",
-    "show_original_text": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸು"
+    "show_original_text": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸು",
+    "more": "ಹೆಚ್ಚು"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "ಮರುಹೆಸರಿಸು",
     "provider__gemini__model__gemini_1_5_pro__description": "ಜೆಮಿನಿ 1.5 ಗೂಗಲ್ ನಿಯೋಜಿತ ಮಾದರಿಯ ಮೇಲ್ಮೆಗೆ, ಕುಶಲತೆಯ ಮೊದಲನೆಯ ಪೀಠಿಕೆಯ ಸಲುವಾಗಿ, ಹೆಚ್ಚಿನ ಕ್ರಿಯಾಶೀಲತೆ, ಅಧಿಕ ಪರಿಚಯ ಬಳಕೆದಾರರ ಅರಿವುಗಳು ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳ ಮೂಲಕ ಮುನ್ನಡೆಯುವ ಅಭಿವೃದ್ಧಿಯನ್ನು ನೀಡುತ್ತದೆ.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ವಿಜನ್ ಜೊತೆಗೆ ಜೆಮಿನಿ-1.5-ಪ್ರೊ ಅನುಸರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ಗೂಗಲ್ ಯಾವುದೇ ಹೊಸತು ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಒಂದು ಪರಿಹಾರಕಾರಿ 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ, ಮೇಲ್ಮೈಯ ಸುರಕ್ಷತೆ ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಮುಂದಿನ ಸುಗಮತೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ಗೂಗಲ್ ಯಾವುದೇ ಹೊಸತು ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಒಂದು ಪರಿಹಾರಕಾರಿ 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ, ಮೇಲ್ಮೈಯ ಸುರಕ್ಷತೆ ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಮುಂದಿನ ಸುಗಮತೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ.",
+    "immersive_chat__chat_history__restore_button__title": "ಚಾಟ್‌ಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ",
+    "immersive_chat__chat_history__restore_modal__title": "ನೀವು ಎಲ್ಲಾ ಚಾಟ್, ಹುಡುಕಾಟ ಮತ್ತು ಕಲೆ ಇತಿಹಾಸವನ್ನು ಸ್ಥಳೀಯ ಆವೃತ್ತಿಗೆ ಮರುಸ್ಥಾಪಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ? ಮುಂದುವರಿದರೆ, ಕ್ರಿಯೆಯನ್ನು ಮರುಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ.",
+    "immersive_chat__chat_history__restore_modal__description": "ಮರುಸ್ಥಾಪನೆ ನಂತರ ಚಾಟ್, ಹುಡುಕಾಟ ಮತ್ತು ಕಲೆ ಪರಿವರ್ತನೆಗಳು:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "ಹೌದು, ಮರುಸ್ಥಾಪಿಸಿ",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ರದ್ದು ಮಾಡಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

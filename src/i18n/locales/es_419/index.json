@@ -49,7 +49,8 @@
     "ai_screenshot": "Captura de IA",
     "release_notes": "Notas de la versión",
     "web_translation": "Traducir esta página",
-    "show_original_text": "Mostrar texto original"
+    "show_original_text": "Mostrar texto original",
+    "more": "Más"
   },
   "settings": {
     "left_menu__me": "Yo y MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Cambiar nombre",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 es el modelo de próxima generación de Google que ofrece un rendimiento mejorado, una arquitectura MoE eficiente y un avance en la comprensión de contextos largos con ventanas de hasta 1 millón de tokens, lo que permite capacidades avanzadas en el procesamiento de texto, código, imágenes, audio y video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Actualiza para acceder a gemini-1.5-pro con visión",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El modelo más nuevo y avanzado de Google. Ofrece mayor velocidad, una ventana de contexto de 1 millón de tokens, seguridad mejorada y capacidades avanzadas en el procesamiento de texto, código, imágenes, audio y video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El modelo más nuevo y avanzado de Google. Ofrece mayor velocidad, una ventana de contexto de 1 millón de tokens, seguridad mejorada y capacidades avanzadas en el procesamiento de texto, código, imágenes, audio y video.",
+    "immersive_chat__chat_history__restore_button__title": "Restaurar chats",
+    "immersive_chat__chat_history__restore_modal__title": "¿Estás seguro de que quieres restaurar todo tu historial de Chat, Búsqueda y Arte a la versión local? Ten en cuenta que una vez que procedas, la acción no se puede deshacer.",
+    "immersive_chat__chat_history__restore_modal__description": "Conversaciones de chat, búsqueda y arte después de la restauración:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sí, restaurar",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancelar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

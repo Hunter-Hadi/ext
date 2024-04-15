@@ -49,7 +49,8 @@
     "ai_screenshot": "AI स्क्रीनशॉट",
     "release_notes": "रिलीज नोट्स",
     "web_translation": "इस पेज को अनुवाद करें",
-    "show_original_text": "मूल पाठ दिखाएं"
+    "show_original_text": "मूल पाठ दिखाएं",
+    "more": "अधिक"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "नाम बदलें",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 गूगल का अगली पीढ़ी मॉडल है जो सुधारित प्रदर्शन, एक कुशल MoE आर्किटेक्चर, और लंबे संदर्भ की समझ में एक ब्रेकथ्रू प्रदान करता है जिसमें 1 मिलियन टोकन विंडो के साथ उन्नत क्षमताएं होती हैं, पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए।",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ज्योति के साथ जेमिनी-1.5-प्रो तक पहुंच के लिए अपग्रेड करें",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।",
+    "immersive_chat__chat_history__restore_button__title": "चैट बहाल करें",
+    "immersive_chat__chat_history__restore_modal__title": "क्या आप सुनिश्चित हैं कि आप सभी चैट, खोज और कला इतिहास को स्थानीय संस्करण में बहाल करना चाहते हैं? कृपया ध्यान दें कि एक बार प्रक्रिया शुरू करने के बाद, कार्रवाई को पूर्ववत नहीं किया जा सकता है।",
+    "immersive_chat__chat_history__restore_modal__description": "बहाली के बाद चैट और खोज और कला परिवर्तन:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "हाँ, बहाल करें",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

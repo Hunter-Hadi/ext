@@ -49,7 +49,8 @@
     "ai_screenshot": "AI స్క్రీన్‌షాట్",
     "release_notes": "విడుదల మంచిపత్రాలు",
     "web_translation": "ఈ పేజీని అనువదించండి",
-    "show_original_text": "మూల పఠనం చూపించు"
+    "show_original_text": "మూల పఠనం చూపించు",
+    "more": "మరింత"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "పేరు మార్చు",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 గూగుల్ యొక్క తదుపరి మోడల్, పెర్ఫార్మన్స్ ను అభ్యంతరపరచేసే, ఒక ఎఫిషియంట్ MoE ఆర్కిటెక్చర్, మీలియన్ టోకెన్ విండోలతో దీర్ఘ-సందర్భ అర్థం అర్ధం చేసే బ్రేక్త్రూ నిర్ణయం కలిగి ఉంది, టెక్స్ట్, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్ లో అభివృద్ధి సాధ్యతలను మరియు ఉన్నత సామర్థ్యాలను అందిస్తుంది.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "జెమిని-1.5-ప్రొ కనుగొనడానికి అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది.",
+    "immersive_chat__chat_history__restore_button__title": "చాట్లను పునఃస్థాపించండి",
+    "immersive_chat__chat_history__restore_modal__title": "మీరు అన్ని మీ చాట్, శోధన, మరియు కళా చరిత్రను స్థానిక వెర్షన్‌కు పునఃస్థాపించాలని మీరు ఖచ్చితంగా కోరుకుంటున్నారా? దయచేసి గమనిక చేయండి, మీరు ముందుగా ముగింపు చేసే తర్వాత ఈ చర్య మరియునిపించడం కాదు.",
+    "immersive_chat__chat_history__restore_modal__description": "పునఃస్థాపన తర్వాత చాట్ & శోధన & కళా మార్పులు:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "అవును, పునఃస్థాపించండి",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "రద్దు చేయండి"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

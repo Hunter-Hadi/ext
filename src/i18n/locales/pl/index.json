@@ -49,7 +49,8 @@
     "ai_screenshot": "Zrzut ekranu AI",
     "release_notes": "Notatki wydania",
     "web_translation": "Przetłumacz tę stronę",
-    "show_original_text": "Pokaż oryginalny tekst"
+    "show_original_text": "Pokaż oryginalny tekst",
+    "more": "Więcej"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Zmień nazwę",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 to nowoczesny model Google oferujący zwiększoną wydajność, efektywną architekturę MoE oraz przełom w rozumieniu długiego kontekstu dzięki oknom o długości do 1 miliona tokenów, umożliwiający zaawansowane możliwości przetwarzania tekstu, kodu, obrazów, dźwięku i wideo.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uaktualnij, aby uzyskać dostęp do gemini-1.5-pro z wizją",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, przełomowe okno kontekstowe o pojemności 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości w zakresie przetwarzania tekstu, kodu, obrazu, dźwięku i wideo."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, przełomowe okno kontekstowe o pojemności 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości w zakresie przetwarzania tekstu, kodu, obrazu, dźwięku i wideo.",
+    "immersive_chat__chat_history__restore_button__title": "Przywróć czaty",
+    "immersive_chat__chat_history__restore_modal__title": "Czy na pewno chcesz przywrócić całą historię czatów, wyszukiwania i sztuki do wersji lokalnej? Prosimy zauważyć, że po wykonaniu tej operacji nie będzie możliwości cofnięcia.",
+    "immersive_chat__chat_history__restore_modal__description": "Konwersje czatów, wyszukiwania i sztuki po przywróceniu:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Tak, przywróć",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Anuluj"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

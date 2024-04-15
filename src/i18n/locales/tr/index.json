@@ -49,7 +49,8 @@
     "ai_screenshot": "AI ekran görüntüsü",
     "release_notes": "Sürüm notları",
     "web_translation": "Bu sayfayı çevir",
-    "show_original_text": "Orijinal metni göster"
+    "show_original_text": "Orijinal metni göster",
+    "more": "Daha Fazla"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Yeniden Adlandır",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5, Google'ın gelişmiş performans sunan, verimli bir MoE mimarisi ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sağlayan, 1 milyon token pencereye kadar uzanan uzun bağlam anlama konusunda çığır açan bir sonraki nesil modelidir.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Gemini-1.5-Pro'ya erişmek için yükseltin",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar.",
+    "immersive_chat__chat_history__restore_button__title": "Sohbetleri Geri Yükle",
+    "immersive_chat__chat_history__restore_modal__title": "Tüm Sohbet, Arama ve Sanat geçmişinizi yerel sürüme geri yüklemek istediğinizden emin misiniz? Lütfen devam ettiğinizde işlem geri alınamaz.",
+    "immersive_chat__chat_history__restore_modal__description": "Geri yükleme sonrası Sohbet & Arama & Sanat dönüşümleri:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Evet, geri yükle",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "İptal"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

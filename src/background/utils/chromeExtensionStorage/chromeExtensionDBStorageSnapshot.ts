@@ -10,7 +10,6 @@ import {
   getChromeExtensionDBStorage,
   setChromeExtensionDBStorage,
 } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
-import forceUpdateContextMenuReadOnlyOption from '@/features/contextMenu/utils/forceUpdateContextMenuReadOnlyOption'
 
 export interface ChromeExtensionDBStorageSnapshot {
   isDefault: boolean
@@ -102,23 +101,19 @@ export const removeChromeExtensionSettingsSnapshot = async (
 
 /**
  * 还原快照
- * @param version 版本号
+ * @param snapshot 快照
  * @description 还原指定版本的快照
  * @version 1.0.0 - 只还原buttonSettings
  */
 export const restoreChromeExtensionSettingsSnapshot = async (
-  version: string,
+  snapshot: ChromeExtensionDBStorageSnapshot,
 ) => {
-  const snapshotList = await getChromeExtensionDBStorageSnapshotList()
-  const snapshot = snapshotList.find((snapshot) => snapshot.version === version)
   if (snapshot?.settings && snapshot.settings.buttonSettings) {
     await setChromeExtensionDBStorage((settings) => {
       // 只还原buttonSettings
       settings.buttonSettings = snapshot.settings.buttonSettings
       return settings
     })
-    // 更新系统提供的默认prompt
-    await forceUpdateContextMenuReadOnlyOption()
     return true
   }
   return false

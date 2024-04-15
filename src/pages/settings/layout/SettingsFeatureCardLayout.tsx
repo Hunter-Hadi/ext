@@ -1,20 +1,28 @@
 import Stack from '@mui/material/Stack'
+import { SxProps } from '@mui/material/styles'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
 const SettingsFeatureCardLayout: FC<{
-  title: string
+  title: React.ReactNode
   tooltip?: React.ReactNode
   id: string
   children: React.ReactNode
+  sx?: SxProps
 }> = (props) => {
-  const { id, title, children, tooltip } = props
+  const { id, title, children, tooltip, sx } = props
   return (
-    <Stack spacing={2}>
+    <Stack
+      spacing={2}
+      sx={{
+        ...sx,
+      }}
+    >
       <Stack direction={'row'} alignItems="center">
         <Typography
+          className={'maxai-settings--feature-card--title'}
           id={id}
-          component={'h2'}
+          component={'div'}
           fontSize={'24px'}
           lineHeight={'28px'}
           fontWeight={800}

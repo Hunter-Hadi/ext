@@ -49,7 +49,8 @@
     "ai_screenshot": "Screenshot AI",
     "release_notes": "Note sulla versione",
     "web_translation": "Traduci questa pagina",
-    "show_original_text": "Mostra testo originale"
+    "show_original_text": "Mostra testo originale",
+    "more": "Di più"
   },
   "settings": {
     "left_menu__me": "Io e MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Rinomina",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 è il modello di prossima generazione di Google che offre prestazioni migliorate, un'architettura MoE efficiente e una svolta nella comprensione del contesto lungo con finestre fino a 1 milione di token, consentendo funzionalità avanzate nel trattamento di testi, codice, immagini, audio e video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Aggiorna per accedere a gemini-1.5-pro con visione",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Il modello più recente e avanzato di Google. Offre una velocità più veloce, una finestra di contesto di 1M token, sicurezza avanzata e funzionalità avanzate per l'elaborazione di testi, codici, immagini, audio e video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Il modello più recente e avanzato di Google. Offre una velocità più veloce, una finestra di contesto di 1M token, sicurezza avanzata e funzionalità avanzate per l'elaborazione di testi, codici, immagini, audio e video.",
+    "immersive_chat__chat_history__restore_button__title": "Ripristina chat",
+    "immersive_chat__chat_history__restore_modal__title": "Sei sicuro di voler ripristinare tutta la tua cronologia Chat, Ricerca e Arte alla versione locale? Nota che una volta proceduto, l'azione non può essere annullata.",
+    "immersive_chat__chat_history__restore_modal__description": "Conversioni Chat & Ricerca & Arte dopo il ripristino:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sì, ripristina",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annulla"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

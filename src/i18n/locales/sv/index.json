@@ -49,7 +49,8 @@
     "ai_screenshot": "AI-skärmbild",
     "release_notes": "Versionsanteckningar",
     "web_translation": "Översätt denna sida",
-    "show_original_text": "Visa originaltext"
+    "show_original_text": "Visa originaltext",
+    "more": "Mer"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Byt namn",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 är Googles nästa generations modell som erbjuder förbättrad prestanda, en effektiv MoE-arkitektur och en genombrott inom långkontextförståelse med upp till 1 miljon tokenfönster, vilket möjliggör avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uppgradera för att få tillgång till gemini-1.5-pro med vision",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott med 1M tokens kontextfönster, förstärkt säkerhet och avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott med 1M tokens kontextfönster, förstärkt säkerhet och avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling.",
+    "immersive_chat__chat_history__restore_button__title": "Återställ chattar",
+    "immersive_chat__chat_history__restore_modal__title": "Är du säker på att du vill återställa all din Chatt-, Sök- och Konsthistorik till den lokala versionen? Observera att åtgärden inte kan ångras när du har fortsatt.",
+    "immersive_chat__chat_history__restore_modal__description": "Chatt- & Sök- & Konstkonverteringar efter återställning:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, återställ",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

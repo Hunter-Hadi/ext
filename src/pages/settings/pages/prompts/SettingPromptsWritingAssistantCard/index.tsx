@@ -31,7 +31,6 @@ import SettingPromptsMenuPanel, {
 } from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel'
 import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel/components/SettingPromptsViewSource'
 import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
-import SettingPromptsRestorer from '@/pages/settings/pages/prompts/components/SettingPromptsRestorer'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
@@ -294,23 +293,6 @@ const SettingPromptsWritingAssistantCard: FC = () => {
             onCancel={() => setEditNode(null)}
             onDelete={(id) => handleActionConfirmOpen('delete', id)}
             setEditNode={setEditNode}
-          />
-          <SettingPromptsRestorer
-            onRestore={async (snapshot) => {
-              if (editButtonKey) {
-                try {
-                  setLoading(true)
-                  const { buttonSettings } = snapshot.settings
-                  if (!buttonSettings) return
-                  const { contextMenu } = buttonSettings[editButtonKey!]
-                  setOriginalTreeData(contextMenu)
-                } catch (e) {
-                  console.error(e)
-                } finally {
-                  setLoading(false)
-                }
-              }
-            }}
           />
         </Stack>
 

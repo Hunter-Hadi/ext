@@ -49,7 +49,8 @@
     "ai_screenshot": "Captura d'AI",
     "release_notes": "Notes de la versió",
     "web_translation": "Tradueix aquesta pàgina",
-    "show_original_text": "Mostra el text original"
+    "show_original_text": "Mostra el text original",
+    "more": "Més"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Canvia el nom",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 és el model de nova generació de Google que ofereix un rendiment millorat, una arquitectura MoE eficient i una avançada comprensió de context llarg amb finestres de fins a 1 milió de tokens, permetent capacitats avançades en el processament de text, codi, imatge, àudio i vídeo.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Actualitza per accedir a gemini-1.5-pro amb visió",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El model més nou i avançat de Google. Ofereix una velocitat més ràpida, una finestra de context de 1M de tokens, seguretat millorada i capacitats avançades en el processament de text, codi, imatge, àudio i vídeo."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El model més nou i avançat de Google. Ofereix una velocitat més ràpida, una finestra de context de 1M de tokens, seguretat millorada i capacitats avançades en el processament de text, codi, imatge, àudio i vídeo.",
+    "immersive_chat__chat_history__restore_button__title": "Restaura xats",
+    "immersive_chat__chat_history__restore_modal__title": "Esteu segur que voleu restaurar tot el vostre historial de Xat, Cerca i Art a la versió local? Tingueu en compte que un cop procediu, l'acció no es pot desfer.",
+    "immersive_chat__chat_history__restore_modal__description": "Converses de Xat & Cerca & Art després de la restauració:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sí, restaura",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancel·la"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -31,6 +31,7 @@ import {
 import {
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionAccessToken,
+  getMaxAIChromeExtensionUserId,
 } from '@/features/auth/utils'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import WebsiteContextManager, {
@@ -408,9 +409,16 @@ export const ClientMessageInit = () => {
         }
         case 'Client_getAllConversation': {
           const conversations = await ConversationManager.getAllConversation()
+          const userId = await getMaxAIChromeExtensionUserId()
+          const filterConversations = conversations.filter((conversation) => {
+            if (!conversation.authorId || conversation.authorId === userId) {
+              return true
+            }
+            return false
+          })
           return {
             success: true,
-            data: conversations,
+            data: filterConversations,
             message: 'ok',
           }
         }

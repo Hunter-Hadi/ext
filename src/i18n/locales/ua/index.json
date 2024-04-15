@@ -49,7 +49,8 @@
     "ai_screenshot": "AI знімок екрану",
     "release_notes": "Примітки до випуску",
     "web_translation": "Перекласти цю сторінку",
-    "show_original_text": "Показати оригінальний текст"
+    "show_original_text": "Показати оригінальний текст",
+    "more": "Більше"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Перейменувати",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 - це наступне покоління моделі від Google, яке пропонує покращену продуктивність, ефективну архітектуру MoE та прорив у розумінні довгих контекстів з використанням вікон до 1 мільйона токенів, що дозволяє розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Оновіться, щоб отримати доступ до gemini-1.5-pro з візією",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Найновіша та найпродуктивніша модель від Google. Вона пропонує швидкість, проривне контекстне вікно з 1 млн токенів, покращену безпеку та розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Найновіша та найпродуктивніша модель від Google. Вона пропонує швидкість, проривне контекстне вікно з 1 млн токенів, покращену безпеку та розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці.",
+    "immersive_chat__chat_history__restore_button__title": "Відновити чати",
+    "immersive_chat__chat_history__restore_modal__title": "Ви впевнені, що хочете відновити всю історію вашого чату, пошуку та мистецтва до локальної версії? Зверніть увагу, що після продовження дії не можна скасувати.",
+    "immersive_chat__chat_history__restore_modal__description": "Конвертації чату, пошуку та мистецтва після відновлення:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Так, відновити",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Скасувати"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

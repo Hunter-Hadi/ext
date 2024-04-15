@@ -49,7 +49,8 @@
     "ai_screenshot": "AI снимка",
     "release_notes": "Забележки за версията",
     "web_translation": "Преведете тази страница",
-    "show_original_text": "Покажи оригиналния текст"
+    "show_original_text": "Покажи оригиналния текст",
+    "more": "Още"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Преименувай",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 е следващото поколение модел на Google, което предлага подобрена производителност, ефективна архитектура MoE и прорыв в разбирането на дълги контексти с до 1 милион токена, позволяващи напреднали възможности в текстова, кодова, изображения, аудио и видео обработка.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Надстройка за достъп до gemini-1.5-pro с визия",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Най-новият и най-развит модел на Google. Предлага по-бърза скорост, проривен контекстен прозорец от 1 милион токена, подобрена безопасност и разширени възможности в текстово, кодово, изображенско, аудио и видео обработване."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Най-новият и най-развит модел на Google. Предлага по-бърза скорост, проривен контекстен прозорец от 1 милион токена, подобрена безопасност и разширени възможности в текстово, кодово, изображенско, аудио и видео обработване.",
+    "immersive_chat__chat_history__restore_button__title": "Възстановяване на чатовете",
+    "immersive_chat__chat_history__restore_modal__title": "Сигурни ли сте, че искате да възстановите всичките си чатове, търсения и художествена история към локалната версия? Моля, имайте предвид, че след като продължите, действието не може да бъде отменено.",
+    "immersive_chat__chat_history__restore_modal__description": "Чатове и търсения и художествени конверсии след възстановяването:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Да, възстанови",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Отказ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

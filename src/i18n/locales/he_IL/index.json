@@ -49,7 +49,8 @@
     "ai_screenshot": "צילום מסך באמצעות AI",
     "release_notes": "הערות גרסה",
     "web_translation": "תרגם את הדף הזה",
-    "show_original_text": "הצג טקסט מקור"
+    "show_original_text": "הצג טקסט מקור",
+    "more": "עוד"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "שנה שם",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 היא הדור הבא של Google המציע ביצועים משופרים, ארכיטקטורת MoE יעילה ושימוש בהבנה ארוכה-התקשורת עם חלונות של עד 1 מיליון טוקנים, המאפשרים יכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "שדרג כדי לקבל גימיני-1.5-פרו עם ראייה",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, בטיחות משופרת ויכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, בטיחות משופרת ויכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו.",
+    "immersive_chat__chat_history__restore_button__title": "שחזר צ'אטים",
+    "immersive_chat__chat_history__restore_modal__title": "האם אתה בטוח שברצונך לשחזר את כל הצ'אטים, החיפושים וההיסטוריה של האמנות לגרסה המקומית? שים לב שפעם שתמשיך, הפעולה לא תוכל להיבטל.",
+    "immersive_chat__chat_history__restore_modal__description": "שיחות צ'אט, חיפושים והמרות אמנות לאחר השחזור:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "כן, שחזר",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ביטול"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

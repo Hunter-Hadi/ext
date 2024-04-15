@@ -49,7 +49,8 @@
     "ai_screenshot": "AI ekrānuzņēmums",
     "release_notes": "Izdevuma piezīmes",
     "web_translation": "Tulkot šo lapu",
-    "show_original_text": "Rādīt oriģinālo tekstu"
+    "show_original_text": "Rādīt oriģinālo tekstu",
+    "more": "Vairāk"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "Pārdēvēt",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ir Google nākamās paaudzes modelis, kas piedāvā uzlabotu veiktspēju, efektīvu MoE arhitektūru un caurspīdīgu sapratni par ilgāku kontekstu ar līdz pat 1 miljonu simbolu logiem, ļaujot izmantot uzlabotas iespējas teksta, koda, attēlu, audio un video apstrādē.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Jauninājiet, lai piekļūtu gemini-1.5-pro ar redzi",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google jaunākais un visvarenākais modelis. Tas piedāvā ātrāku ātrumu, caurspīdīgu 1M simbolu konteksta logu, uzlabotu drošību un papildu iespējas teksta, koda, attēlu, audio un video apstrādē."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google jaunākais un visvarenākais modelis. Tas piedāvā ātrāku ātrumu, caurspīdīgu 1M simbolu konteksta logu, uzlabotu drošību un papildu iespējas teksta, koda, attēlu, audio un video apstrādē.",
+    "immersive_chat__chat_history__restore_button__title": "Atjaunot čatus",
+    "immersive_chat__chat_history__restore_modal__title": "Vai tiešām vēlaties atjaunot visu savu Čatu, Meklēšanas un Mākslas vēsturi vietējā versijā? Lūdzu, ņemiet vērā, ka pēc turpmākās darbības veikšanas to nevar atcelt.",
+    "immersive_chat__chat_history__restore_modal__description": "Čatu, Meklēšanas un Mākslas pārveidojumi pēc atjaunošanas:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "Jā, atjaunot",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Atcelt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

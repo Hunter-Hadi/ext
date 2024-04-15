@@ -49,7 +49,8 @@
     "ai_screenshot": "لقطة شاشة AI",
     "release_notes": "ملاحظات الإصدار",
     "web_translation": "ترجمة هذه الصفحة",
-    "show_original_text": "عرض النص الأصلي"
+    "show_original_text": "عرض النص الأصلي",
+    "more": "المزيد"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -681,7 +682,12 @@
     "immersive_chat__rename_chat__button__title": "إعادة تسمية",
     "provider__gemini__model__gemini_1_5_pro__description": "جيميني 1.5 هو نموذج الجيل التالي من Google الذي يقدم أداءً محسّنًا وهندسة MoE فعالة واختراقًا في فهم السياق الطويل بنوافذ تصل إلى 1 مليون رمز، مما يمكّن قدرات متقدمة في معالجة النصوص والشفرة والصور والصوت والفيديو.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ترقية للوصول إلى gemini-1.5-pro مع الرؤية",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "أحدث وأكثر النماذج تقدمًا من Google. يوفر سرعة أسرع ، نافذة سياق بطاقة 1 مليون مترابعة ، سلامة محسنة ، وقدرات متقدمة في معالجة النص والشفرة والصور والصوت والفيديو."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "أحدث وأكثر النماذج تقدمًا من Google. يوفر سرعة أسرع ، نافذة سياق بطاقة 1 مليون مترابعة ، سلامة محسنة ، وقدرات متقدمة في معالجة النص والشفرة والصور والصوت والفيديو.",
+    "immersive_chat__chat_history__restore_button__title": "استعادة المحادثات",
+    "immersive_chat__chat_history__restore_modal__title": "هل أنت متأكد أنك تريد استعادة جميع سجلات المحادثات والبحث والفن إلى النسخة المحلية؟ يرجى ملاحظة أنه بمجرد المتابعة، لا يمكن التراجع عن الإجراء.",
+    "immersive_chat__chat_history__restore_modal__description": "تحويلات المحادثات والبحث والفن بعد الاستعادة:",
+    "immersive_chat__chat_history__restore_modal__confirm_button__title": "نعم، استعادة",
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "إلغاء"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

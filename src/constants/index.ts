@@ -77,3 +77,16 @@ export const RELEASE_LOG_URL = 'https://twitter.com/MaxAI_HQ'
 // context menu search text generate save key
 export const CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY =
   'CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY'
+
+// 240415: Set `Search` prompt_id to constants
+export const ART__DALLE3_PROMPT_OPTIMIZATION__PROMPT_ID =
+  '816e3fe0-bd04-418e-8f6e-d33d8c4dba67' // [Art] dalle3 prompt optimization
+export const ART__TEXT_TO_IMAGE__PROMPT_ID =
+  'f19e862d-e8bb-4b09-9220-6a9a395deb6f' // [Art] text to image（最终记录）
+export const SEARCH__SMART_QUERY__PROMPT_ID =
+  'b481731b-19e3-4713-8f0b-81fd7b2d5169' // [Search] smart query
+export const SEARCH__READ_PAGE__PROMPT_ID =
+  'cae761b7-3703-4ff9-83ab-527b7a24e53b' // [Search] smart query
+export const SEARCH__ANSWER__PROMPT_ID = '73361add-2d6a-4bf3-b2a7-5097551653e7' // [Search] answer（最终记录）
+export const SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID =
+  'f6177317-8773-4036-be9b-5905116c855f' // [Summary] Sliced timestamped summary

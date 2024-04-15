@@ -1,7 +1,10 @@
 import JSON5 from 'json5'
 import { v4 as uuidV4 } from 'uuid'
 
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+  SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID,
+} from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
@@ -362,7 +365,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
                 text: newPrompt,
               },
             ],
-            prompt_id: 'f6177317-8773-4036-be9b-5905116c855f',
+            prompt_id: SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID,
             prompt_name: '[Summary] Sliced timestamped summary',
           },
           currentAbortTaskId,

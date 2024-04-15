@@ -203,9 +203,7 @@ class UseChatGPTPlusChat extends BaseChat {
       delete (postBody as any).model_name
     }
     // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
-    // TODO 暂时关闭
-    const go = false
-    if (options?.meta?.MaxAIPromptActionConfig && go) {
+    if (options?.meta?.MaxAIPromptActionConfig) {
       backendAPI = 'use_prompt_action'
       const clonePostBody: any = cloneDeep(postBody)
       // 去掉message_content

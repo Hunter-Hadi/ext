@@ -503,10 +503,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
       }
 
-      return emailCorrespondence.emailContext
-    } else {
-      emailContextSelector = 'div[role="list"]'
+      // if have receivers, it means it is performing `Instant reply` action
+      if (emailCorrespondence.receivers.size > 0) {
+        return emailCorrespondence.emailContext
+      }
     }
+
+    // if doesnt have receivers, it means it is performing `Summary` action
+    emailContextSelector = 'div[role="list"]'
   } else if (host === 'outlook.live.com') {
     // outlook 有3种回复邮件的UI: 列表框展开回复 | 邮件详情页回复 | 弹窗邮件详情页回复 | 弹窗邮件详情页回复新邮件
     // 1. 列表框展开回复判断条件:
@@ -743,9 +747,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
               }
             }
           }
-          console.log('testestemailCorrespondence', emailCorrespondence)
-          return emailCorrespondence.emailContext
+
+          // if have receivers, it means it is performing `Instant reply` action
+          if (emailCorrespondence.receivers.size > 0) {
+            return emailCorrespondence.emailContext
+          }
         }
+
+        // if doesnt have receivers, it means it is performing `Summary` action
         emailContextSelector = 'div[data-app-section="ConversationContainer"]'
       }
 

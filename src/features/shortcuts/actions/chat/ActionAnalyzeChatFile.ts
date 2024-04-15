@@ -1,4 +1,4 @@
-import { SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__PROMPT_ID } from '@/constants'
+import { NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID } from '@/constants'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
@@ -105,7 +105,7 @@ export class ActionAnalyzeChatFile extends Action {
               4,
             )}`,
             {
-              uuid: SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__PROMPT_ID,
+              uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
             },
           )
             .then()
@@ -130,7 +130,7 @@ export class ActionAnalyzeChatFile extends Action {
                 4,
               )}`,
               {
-                uuid: SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__PROMPT_ID,
+                uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
               },
             )
               .then()

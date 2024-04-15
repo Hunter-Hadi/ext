@@ -5,17 +5,17 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import {
-  delayAndScrollToInputAssistantButton,
-  findParentEqualSelector,
-  findSelectorParent,
-} from '@/features/shortcuts/utils/socialMedia/platforms/utils'
+import { delayAndScrollToInputAssistantButton } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   createCommentListData,
   ICommentData,
   ICreateCommentListData,
   ISocialMediaPostContextData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+} from '@/utils/dataHelper/elementHelper'
 
 const getYouTubeCommentContent = async (
   ytdCommentBox: HTMLElement,

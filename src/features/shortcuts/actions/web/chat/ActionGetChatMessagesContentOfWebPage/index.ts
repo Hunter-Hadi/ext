@@ -9,7 +9,7 @@ import {
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { getChatMessagesContent } from '@/features/shortcuts/utils/chatApp/getChatMessages'
-import { type IChatMessagesContextData } from '@/features/shortcuts/utils/ChatMessagesContext'
+import { type IChatMessagesContextData } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import {
   calculateMaxHistoryQuestionResponseTokens,
   sliceTextByTokens,

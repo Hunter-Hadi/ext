@@ -10,6 +10,7 @@ import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
+import { wait } from '@/utils'
 
 export const pingDaemonProcess = async () => {
   const port = new ContentScriptConnectionV2()
@@ -25,8 +26,6 @@ export const pingUntilLogin = () => {
   return new Promise<boolean>((resolve) => {
     console.log('start pingUntilLogin')
     let maxRetry = 120
-    const delay = (t: number) =>
-      new Promise((resolve) => setTimeout(resolve, t))
     const checkStatus = async () => {
       const result = await port.postMessage({
         event: 'Client_checkChatGPTStatus',
@@ -38,7 +37,7 @@ export const pingUntilLogin = () => {
           if (maxRetry <= 0) {
             resolve(false)
           }
-          await delay(1000)
+          await wait(1000)
           await checkStatus()
         } else {
           resolve(true)

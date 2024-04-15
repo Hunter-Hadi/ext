@@ -54,6 +54,7 @@ import {
 import { IAction } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { wait } from '@/utils'
 
 const ActionClassMap = {
   // 废弃
@@ -118,8 +119,6 @@ const ActionClassMap = {
   [ActionMaxAIProcessBuiltInParameters.type]:
     ActionMaxAIProcessBuiltInParameters,
 }
-
-const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
 
 class ShortCutsEngine implements IShortcutEngine {
   status: IShortcutEngine['status'] = 'idle'
@@ -288,7 +287,7 @@ class ShortCutsEngine implements IShortcutEngine {
               continue
             }
           }
-          await delay(100)
+          await wait(100)
         }
       } else {
         console.log('ShortCutEngine.run: already running')

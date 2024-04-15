@@ -14,12 +14,12 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import {
   formatAIMessageContent,
   formatAIMessageContentForClipboard,
 } from '@/features/sidebar/utils/chatMessagesHelper'
 import { hideChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 const AFTER_COPIED_CLOSE_HOSTS = ['www.linkedin.com']
 
 const SidebarCopyButton: FC<{
@@ -77,7 +77,7 @@ const SidebarCopyButton: FC<{
       setDelayIsHover(false)
       clearTimeout(copySuccessTimer.current)
       setCopyButtonKey('')
-      return () => {}
+      return () => { }
     }
   }, [isHover])
   return (

@@ -5,6 +5,7 @@ import Browser from 'webextension-polyfill'
 import { IChromeExtensionSendEvent } from '@/background/eventType'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
+import { wait } from '@/utils'
 
 export interface IExecuteOperationResult {
   success: boolean
@@ -67,7 +68,8 @@ export const backgroundSendClientToExecuteOperationElement = (
       Browser.runtime.onMessage.addListener(onceListener)
       await Browser.tabs.sendMessage(tabId, {
         id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-        event: 'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
+        event:
+          'ShortCuts_ClientExecuteOperationPageElement' as IChromeExtensionSendEvent,
         data: {
           taskId,
           OperationElementConfig,
@@ -81,8 +83,6 @@ export const backgroundSendClientToExecuteOperationElement = (
     }
   })
 }
-
-const delay = (t: number) => new Promise((resolve) => setTimeout(resolve, t))
 
 export const clientExecuteOperationElement = async (
   taskId: number,
@@ -126,7 +126,7 @@ export const clientExecuteOperationElement = async (
   }
   if (rootElement) {
     const execute = async () => {
-      await delay(beforeDelay)
+      await wait(beforeDelay)
       let elements: HTMLElement[] = []
       let rotationUsageTimes = 0
       while (elements.length === 0 && rotationUsageTimes < rotationTimes) {
@@ -139,7 +139,7 @@ export const clientExecuteOperationElement = async (
         )
         if (elements.length === 0) {
           rotationUsageTimes += rotationInterval
-          await delay(rotationInterval)
+          await wait(rotationInterval)
         }
       }
       // 找不到元素
@@ -235,10 +235,10 @@ export const clientExecuteOperationElement = async (
         }
       })
       executeResult.success = true
-      await delay(afterDelay)
+      await wait(afterDelay)
       return executeResult
     }
-    await Promise.race([execute(), delay(durationTimes)])
+    await Promise.race([execute(), wait(durationTimes)])
     Browser.runtime.sendMessage({
       event: 'ShortCuts_OperationPageElementResponse',
       data: {

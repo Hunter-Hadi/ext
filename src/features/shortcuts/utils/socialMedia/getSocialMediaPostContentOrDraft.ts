@@ -29,7 +29,7 @@ import {
 } from '@/features/shortcuts/utils/socialMedia/platforms/youtubeStudio'
 import SocialMediaPostContext, {
   ISocialMediaPostContextData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getSocialMediaPostContent = async (

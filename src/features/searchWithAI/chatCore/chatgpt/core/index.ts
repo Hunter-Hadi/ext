@@ -6,6 +6,7 @@ import {
   getSearchWithAISettings,
   setSearchWithAISettings,
 } from '@/features/searchWithAI/utils/searchWithAISettings'
+import { wait } from '@/utils'
 
 import { CHATGPT_3_5_MODEL_NAME } from '../constants'
 import { fetchSSE } from './fetch-sse'
@@ -510,7 +511,6 @@ export class ChatGPTConversation {
         return
       }
       this.isCleaningCache = true
-      const delay = (ms: number) => new Promise((res) => setTimeout(res, ms))
       for (let i = 0; i < cacheConversations.length; i++) {
         try {
           console.log(
@@ -521,7 +521,7 @@ export class ChatGPTConversation {
           await setConversationProperty(this.token, cacheConversations[i].id, {
             is_visible: false,
           })
-          await delay(3000)
+          await wait(3000)
         } catch (e) {
           console.error(e)
         }

@@ -8,6 +8,7 @@ import {
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import { backgroundSendClientToExecuteOperationElement } from '@/features/shortcuts/utils/OperationElementHelper'
+import { wait } from '@/utils'
 
 // const log = new Log('Background/ShortCut')
 
@@ -17,7 +18,8 @@ export const ShortcutMessageBackgroundInit = () => {
       switch (event as IShortCutsSendEvent) {
         case 'ShortCuts_OperationPageElement':
           {
-            const OperationElementConfig = data.OperationElementConfig as OperationElementConfigType
+            const OperationElementConfig =
+              data.OperationElementConfig as OperationElementConfigType
             let executePageTabId =
               (data.OperationElementTabID as number) || sender.tab?.id
             let currentTab: Browser.Tabs.Tab | null = null
@@ -36,8 +38,6 @@ export const ShortcutMessageBackgroundInit = () => {
               // wait page loaded
               const interval = 500
               const maxCount = (10 * 1000) / interval
-              const delay = (t: number) =>
-                new Promise((resolve) => setTimeout(resolve, t))
               let isLoaded = false
               let count = 0
               while (!isLoaded && count < maxCount) {
@@ -50,13 +50,14 @@ export const ShortcutMessageBackgroundInit = () => {
                   isLoaded = true
                 }
                 count++
-                await delay(interval)
+                await wait(interval)
               }
               if (isLoaded) {
-                const response = await backgroundSendClientToExecuteOperationElement(
-                  executePageTabId,
-                  OperationElementConfig,
-                )
+                const response =
+                  await backgroundSendClientToExecuteOperationElement(
+                    executePageTabId,
+                    OperationElementConfig,
+                  )
                 return {
                   data: response,
                   success: response.success,

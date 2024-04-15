@@ -1,7 +1,7 @@
 import { clientFetchAPI } from '@/features/shortcuts/utils'
 import SocialMediaPostContext, {
   ISocialMediaPostContextData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import { sliceTextByTokens } from '@/features/shortcuts/utils/tokenizer'
 
 const RE_YOUTUBE =

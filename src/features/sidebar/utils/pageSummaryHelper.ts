@@ -3,6 +3,22 @@ import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import {
+  SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
+  SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
+  SUMMARY__SUMMARIZE_EMAIL__ACTION_ITEMS__PROMPT_ID,
+  SUMMARY__SUMMARIZE_EMAIL__KEY_TAKEAWAYS__PROMPT_ID,
+  SUMMARY__SUMMARIZE_EMAIL__PROMPT_ID,
+  SUMMARY__SUMMARIZE_EMAIL__TL_DR__PROMPT_ID,
+  SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
+  SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
+  SUMMARY__SUMMARIZE_PAGE__TL_DR__PROMPT_ID,
+  SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
+  SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
+  SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
+  SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
+  SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
+} from '@/constants'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import getPageContentWithMozillaReadability from '@/features/shortcuts/actions/web/ActionGetReadabilityContentsOfWebPage/getPageContentWithMozillaReadability'
@@ -37,7 +53,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
   [key in IPageSummaryType]: IContextMenuItem
 } = {
   PAGE_SUMMARY: {
-    id: 'f734efe5-c63e-490e-a0f1-ae5a248e0f16',
+    id: SUMMARY__SUMMARIZE_PAGE__PROMPT_ID,
     parent: 'root',
     droppable: false,
     text: '[Summary] Summarize page',
@@ -204,7 +220,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     },
   },
   DEFAULT_EMAIL_SUMMARY: {
-    id: '8ed1bf33-efc9-4714-8b21-09ceede3e2a8',
+    id: SUMMARY__SUMMARIZE_EMAIL__PROMPT_ID,
     parent: 'root',
     droppable: false,
     text: '[Summary] Summarize email',
@@ -371,7 +387,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     },
   },
   PDF_CRX_SUMMARY: {
-    id: '0c8c8bd7-1072-4fb7-9fad-cf6447b33896',
+    id: SUMMARY__SUMMARIZE_PDF__PROMPT_ID,
     parent: 'root',
     droppable: false,
     text: '[Summary] Summarize PDF',
@@ -542,7 +558,7 @@ export const PAGE_SUMMARY_CONTEXT_MENU_MAP: {
     },
   },
   YOUTUBE_VIDEO_SUMMARY: {
-    id: '215bf574-3a68-4ac8-8fff-ccdd19150cb9',
+    id: SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
     parent: 'root',
     droppable: false,
     text: '[Summary] Summarize video',
@@ -930,53 +946,53 @@ export const SummaryContextMenuOverwriteMap: Record<
 > = {
   PAGE_SUMMARY: {
     summary: {
-      id: '4df133ba-b4f5-421c-989c-a2e0f0340061',
+      id: SUMMARY__SUMMARIZE_PAGE__TL_DR__PROMPT_ID,
       text: `[Summary] Summarize page (TL:DR)`,
     },
     keyTakeaways: {
-      id: 'f46cd57b-8f9d-4c66-9f8a-d9631068f61a',
+      id: SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID,
       text: `[Summary] Summarize page (Key takeaways)`,
     },
   },
   PDF_CRX_SUMMARY: {
     summary: {
-      id: '45ea67db-695b-4870-b467-981f137b2378',
+      id: SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID,
       text: `[Summary] Summarize PDF (TL:DR)`,
     },
     keyTakeaways: {
-      id: '2d1dd5aa-1809-4aac-952d-ff07903eb7c5',
+      id: SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID,
       text: `[Summary] Summarize PDF (Key takeaways)`,
     },
   },
   DEFAULT_EMAIL_SUMMARY: {
     summary: {
-      id: '71a59198-b0d8-4d5a-ba4f-42795b7e3318',
+      id: SUMMARY__SUMMARIZE_EMAIL__TL_DR__PROMPT_ID,
       text: `[Summary] Summarize email (TL:DR)`,
     },
     keyTakeaways: {
-      id: '2b754799-5704-4703-b533-ba4add9614aa',
+      id: SUMMARY__SUMMARIZE_EMAIL__KEY_TAKEAWAYS__PROMPT_ID,
       text: `[Summary] Summarize email (Key takeaways)`,
     },
     actions: {
-      id: '5d4f32d1-450d-4412-a8ea-a6c64c43988c',
+      id: SUMMARY__SUMMARIZE_EMAIL__ACTION_ITEMS__PROMPT_ID,
       text: '[Summary] Summarize email (Action items)',
     },
   },
   YOUTUBE_VIDEO_SUMMARY: {
-    summary: {
-      id: '19c361b7-c4b3-496e-8339-fc8384726759',
+    all: {
+      id: SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID,
       text: `[Summary] Summarize video`,
     },
     timestamped: {
-      id: '2cb58619-3822-4d6a-8f7f-0c38d01f231e',
+      id: SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
       text: '[Summary] Timestamped summary',
     },
     comment: {
-      id: '5278969d-1d86-4df2-a3e8-48e50dbbd86e',
+      id: SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID,
       text: '[Summary] Summarize comments',
     },
     transcript: {
-      id: '029d848d-7c28-4a3a-baae-353292ea7691',
+      id: SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID,
       text: `[Summary] Show transcript`,
     },
   },

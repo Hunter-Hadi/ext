@@ -92,60 +92,62 @@ const DevConsole: FC = () => {
           <UnfoldMoreIcon />
         </Button>
       )}
-      <Stack
-        width={'100%'}
-        flexDirection={'row'}
-        sx={{
-          visibility: showDevContent ? 'visible' : 'hidden',
-        }}
-      >
+      {showDevContent && (
         <Stack
+          width={'100%'}
+          flexDirection={'row'}
           sx={{
-            width: 0,
-            flex: 1,
-            overflow: 'auto',
-            '& > pre, & > p': {
-              p: 0,
-              m: 0,
-              fontSize: '12px',
-            },
+            visibility: showDevContent ? 'visible' : 'hidden',
           }}
         >
-          <Stack direction={'row'} spacing={1}>
-            <Button
-              onClick={async (event) => {
-                await resetChromeExtensionOnBoardingData()
-              }}
-            >
-              Reset OnBoarding
-            </Button>
+          <Stack
+            sx={{
+              width: 0,
+              flex: 1,
+              overflow: 'auto',
+              '& > pre, & > p': {
+                p: 0,
+                m: 0,
+                fontSize: '12px',
+              },
+            }}
+          >
+            <Stack direction={'row'} spacing={1}>
+              <Button
+                onClick={async (event) => {
+                  await resetChromeExtensionOnBoardingData()
+                }}
+              >
+                Reset OnBoarding
+              </Button>
+            </Stack>
+            <p>authStatus: {chatGPTClientState.status}</p>
+            <p>loading: {clientWritingMessage.loading ? 'loading' : 'done'}</p>
+            <p>
+              currentSidebarConversationType: {currentSidebarConversationType}
+            </p>
+            <p>
+              currentSidebarAIProvider: {currentSidebarAIProvider} - [
+              {currentSidebarConversation?.messages.length}]
+            </p>
+            <p>currentSidebarAIMode: {currentAIProviderModel}</p>
+            <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
+            <p>Chat: {sidebarSettings?.chat?.conversationId}</p>
+            <p>Summary: {sidebarSettings?.summary?.conversationId}</p>
+            <p>Search: {sidebarSettings?.search?.conversationId}</p>
+            <p>Art: {sidebarSettings?.art?.conversationId}</p>
+            <Divider></Divider>
+            <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
+            {/*<pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>*/}
+            {/*<pre>*/}
+            {/*  {JSON.stringify(appLocalStorage.thirdProviderSettings, null, 2)}*/}
+            {/*</pre>*/}
           </Stack>
-          <p>authStatus: {chatGPTClientState.status}</p>
-          <p>loading: {clientWritingMessage.loading ? 'loading' : 'done'}</p>
-          <p>
-            currentSidebarConversationType: {currentSidebarConversationType}
-          </p>
-          <p>
-            currentSidebarAIProvider: {currentSidebarAIProvider} - [
-            {currentSidebarConversation?.messages.length}]
-          </p>
-          <p>currentSidebarAIMode: {currentAIProviderModel}</p>
-          <p>currentSidebarConversationId: {currentSidebarConversationId}</p>
-          <p>Chat: {sidebarSettings?.chat?.conversationId}</p>
-          <p>Summary: {sidebarSettings?.summary?.conversationId}</p>
-          <p>Search: {sidebarSettings?.search?.conversationId}</p>
-          <p>Art: {sidebarSettings?.art?.conversationId}</p>
-          <Divider></Divider>
-          <pre>{JSON.stringify(renderConversation, null, 2)}</pre>
-          {/*<pre>{JSON.stringify(sidebarSettings, null, 2)}</pre>*/}
-          {/*<pre>*/}
-          {/*  {JSON.stringify(appLocalStorage.thirdProviderSettings, null, 2)}*/}
-          {/*</pre>*/}
+          <Stack width={200} flexShrink={0}>
+            <DevShortcutsLog />
+          </Stack>
         </Stack>
-        <Stack width={200} flexShrink={0}>
-          <DevShortcutsLog />
-        </Stack>
-      </Stack>
+      )}
     </Stack>
   )
 }

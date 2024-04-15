@@ -265,7 +265,7 @@ export class ActionAskChatGPT extends Action {
                 status: string
               }>(`/gpt/render_prompt_action`, {
                 prompt_id: MaxAIPromptActionConfig.promptId,
-                model_name: 'webapp-chatgpt-3.5' || AIModel,
+                model_name: AIModel,
               })
               if (
                 result.data?.status === 'OK' &&

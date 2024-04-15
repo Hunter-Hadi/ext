@@ -556,13 +556,7 @@ export const processAskAIParameters = async (
  * @param AIProvider
  */
 export const checkISThirdPartyAIProvider = (AIProvider: IAIProviderType) => {
-  return [
-    'OPENAI',
-    'OPENAI_API',
-    'BING',
-    'BARD',
-    'CLAUDE',
-    'POE',
-    'USE_CHAT_GPT_PLUS',
-  ].includes(AIProvider)
+  return ['OPENAI', 'OPENAI_API', 'BING', 'BARD', 'CLAUDE', 'POE'].includes(
+    AIProvider,
+  )
 }

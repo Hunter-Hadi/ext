@@ -262,8 +262,16 @@ const getGmailUsers = (
   emailUserBoxes: NodeListOf<HTMLElement>,
 ): IEmailUserData[] =>
   Array.from(emailUserBoxes || []).map((userBox) => ({
-    email: userBox.getAttribute('email') || '',
-    name: userBox.getAttribute('name') || userBox.textContent || '',
+    email: (
+      userBox.getAttribute('email') ||
+      userBox.getAttribute('data-hovercard-id') ||
+      ''
+    ).toLowerCase(),
+    name:
+      userBox.getAttribute('name') ||
+      userBox.getAttribute('data-name') ||
+      userBox.textContent ||
+      '',
   }))
 
 // 因为接下来对单个邮件的处理都一样，这里封装一下
@@ -467,7 +475,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
           findSelectorParent(
             'form[id][method="POST"]',
             inputAssistantButtonElement!,
-          )?.querySelectorAll('span[email]'),
+          )?.querySelectorAll('[role="option"][data-hovercard-id]'),
         ).forEach((receiver) => emailCorrespondence.addReceiver(receiver))
       }
       // 显式 instant reply button
@@ -667,7 +675,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
             let emailAddress = myEmailAddress
             if (index === 0) {
               const highlightEmail = document.querySelector<HTMLElement>(
-                '[role="listbox"] .epBmH span[title]',
+                '[role="listbox"] .epBmH span[title*="@"]',
               )
               if (highlightEmail?.textContent === from.name) {
                 emailAddress =
@@ -687,33 +695,33 @@ export const getEmailWebsitePageContentsOrDraft = async (
         if (emailCorrespondence.emails.length > 0) {
           if (detailEmailContextElement) {
             findSelectorParent(
-              'div[role]:has(span[data-lpc-hover-target-id]:not([class*="undefined"]))',
-              detailEmailContextElement,
+              'div[tabindex] div[role][contenteditable]:not([id])',
+              inputAssistantButtonElement,
             )
               .querySelectorAll<HTMLElement>(
                 'span[data-lpc-hover-target-id]:not([class*="undefined"])',
               )
               .forEach((emailElement) => {
                 const emailElementContext = emailElement.textContent || ''
-                let emailAddress =
+                const emailAddress =
                   emailElement
                     ?.getAttribute('aria-label')
                     ?.match(emailRegex)?.[0] ||
-                  emailElementContext.match(emailRegex)?.[0]
-                if (!emailAddress) {
-                  emailAddress = myEmailAddress
-                }
-                const name = emailElementContext
-                  .replace(` <${emailAddress}>`, '')
-                  .replace(`;`, '')
+                  emailElementContext.match(emailRegex)?.[0] ||
+                  ''
                 if (emailAddress) {
+                  const name = emailElementContext
+                    .replace(` <${emailAddress}>`, '')
+                    .replace(`;`, '')
                   emailCorrespondence.addReceiver({
                     email: emailAddress,
                     name,
                   })
                 }
               })
-          } else if (replyActionEmail) {
+          }
+
+          if (emailCorrespondence.receivers.size === 0 && replyActionEmail) {
             if (replyActionEmail.from.email === myEmailAddress) {
               replyActionEmail.to.forEach((receiver) =>
                 emailCorrespondence.addReceiver(receiver),

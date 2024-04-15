@@ -17,6 +17,11 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import { cloneRect } from '@/features/contextMenu/utils/index'
+import {
+  getOfficeWordSelectedElements,
+  isOfficeWordEditing,
+  isOfficeWordEditorFrame,
+} from '@/features/contextMenu/utils/microsoftWordHelper'
 import useCommands from '@/hooks/useCommands'
 import { AppDBStorageState } from '@/store'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
@@ -429,6 +434,20 @@ export const getEditableElementSelectionText = (
                 }
               }
               break
+            case 'word-edit.officeapps.live.com':
+              {
+                pageContentRoot = doc.querySelector('#PagesContainer')
+                if (pageContentRoot) {
+                  // office word下获取到焦点的段落会把当前段落class设置为HiddenParagraph
+                  // 并把当前段落内容和位置放置在#WACViewPanel_EditingElement contenteditable="true"的元素内覆盖在原位置上进行编辑
+                  // <PageContentContainer>
+                  //   <WACViewPanel_EditingElement />
+                  //   <PagesContainer>{...所有页面和段落}</PagesContainer>
+                  // </PageContentContainer>
+                  hostSpecialCursor = doc.querySelector('.HiddenParagraph')
+                }
+              }
+              break
             case 'notion.so':
               {
                 pageContentRoot =
@@ -469,6 +488,16 @@ export const getEditableElementSelectionText = (
                 .replaceAll('Header OptionsExitDouble click to edit header', '')
                 .replaceAll('Footer OptionsExitDouble click to edit footer', '')
                 .trim()
+            } else if (host === 'word-edit.officeapps.live.com') {
+              // 先重置一下，保留换行
+              partOfStartToCaretText = partOfStartToCaret.toString();
+              // 获取当前可编辑元素的内容
+              partOfStartToCaret.selectNodeContents(editableElement)
+              partOfStartToCaret.setEnd(range.endContainer, range.endOffset)
+              partOfStartToCaretText += partOfStartToCaret.toString()
+              partOfStartToCaretText = partOfStartToCaretText
+                .trim()
+                .replace(/\u200B/g, '')
             }
           }
         }
@@ -697,7 +726,7 @@ export const replaceMarkerContent = async (
         cloneRange.setStart(cacheRange.startContainer, cacheRange.startOffset)
         cloneRange.setEnd(cacheRange.startContainer, cacheRange.startOffset)
       }
-      await replaceWithClipboard(cloneRange, value)
+      await replaceWithClipboard(cloneRange, value, type)
       console.log('paste editableElementSelectionText', value, type)
     } catch (e) {
       console.error('defaultPasteValue error: \t', e)
@@ -881,7 +910,7 @@ export const replaceMarkerContent = async (
         console.log('default paste value', value, startMarker, endMarker)
         focusEditableElement()
         highlightSelection()
-        await replaceWithClipboard(range, value)
+        await replaceWithClipboard(range, value, type)
       }
     }
     // dispatch keyup event with original target
@@ -1235,8 +1264,13 @@ export const isElementCanEditable = (element: HTMLElement) => {
  *  7. 还原最初选区
  * @param range
  * @param value
+ * @param type
  */
-export const replaceWithClipboard = async (range: Range, value: string) => {
+export const replaceWithClipboard = async (
+  range: Range,
+  value: string,
+  type?: ContextMenuDraftType,
+) => {
   const originalRange: Range | null = range.cloneRange()
   const restoreRange: Range | null = range.cloneRange()
   const doc =
@@ -1332,13 +1366,49 @@ export const replaceWithClipboard = async (range: Range, value: string) => {
       if (['discord.com'].includes(getCurrentDomainHost())) {
         await navigator.clipboard.writeText(pastedText)
       }
-      // editableElement?.focus()
-      finallySelection.removeAllRanges()
-      finallySelection.addRange(originalRange)
+
+      if (isOfficeWordEditorFrame() && isOfficeWordEditing(editableElement) && getOfficeWordSelectedElements().length) {
+        // Microsoft Office docs下如果已有选区调用removeAllRanges和addRange无效
+        // 只有先点击一次清除选中后，调用removeAllRange和addRange才有效
+        // 但是每次修改选区后，dom节点会变换成新的节点，导致先前获取的range里的节点都丢失了
+
+        // 以下代码为模拟鼠标操作选择新选区，从上往下选区时可编辑元素位置处于靠下的位置
+        // 位置获取不准确，所以改为判断type和当前是否有选区去进行模拟键盘左键右键操作
+        // selectOfficeWordRange(restoreRange)
+
+        if (type === 'INSERT' || type === 'INSERT_BELOW') {
+          editableElement?.dispatchEvent(new KeyboardEvent('keydown', {
+            code: 'ArrowRight',
+            key: 'ArrowRight',
+            keyCode: 39,
+            bubbles: true,
+            repeat: false,
+          }))
+        } else if (type === 'INSERT_ABOVE') {
+          editableElement?.dispatchEvent(new KeyboardEvent('keydown', {
+            code: 'ArrowLeft',
+            key: 'ArrowLeft',
+            keyCode: 37,
+            bubbles: true,
+            repeat: false,
+          }))
+        } else {
+          finallySelection.removeAllRanges()
+          finallySelection.addRange(originalRange)
+          selection?.removeAllRanges()
+          selection?.addRange(restoreRange)
+        }
+      } else {
+        // editableElement?.focus()
+        finallySelection.removeAllRanges()
+        finallySelection.addRange(originalRange)
+        selection?.removeAllRanges()
+        selection?.addRange(restoreRange)
+      }
+
       const delay = (ms: number) =>
         new Promise((resolve) => setTimeout(resolve, ms))
-      selection?.removeAllRanges()
-      selection?.addRange(restoreRange)
+
       if (currentHost === 'evernote.com') {
         // 如果在 evernote.com 上，则不需要 delay
         // nothing

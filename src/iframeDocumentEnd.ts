@@ -12,6 +12,12 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import {
+  getOfficeWordSelectedElements,
+  getOfficeWordSelectionRect,
+  isOfficeWordEditing,
+  isOfficeWordEditorFrame,
+} from '@/features/contextMenu/utils/microsoftWordHelper'
+import {
   computedSelectionString,
   createSelectionMarker,
   getCaretCharacterOffsetWithin,
@@ -48,7 +54,7 @@ const isInIframe = () => {
 const isBlockUrlList = () => {
   if (window.frameElement?.classList.contains('docs-texteventtarget-iframe')) {
     // google doc的inputElement元素所在的iframe下禁止发送message
-    return true;
+    return true
   }
   return [
     // github的react-code-view的pdf reader会响应插件发送的message并认为是异常
@@ -100,7 +106,7 @@ const initIframe = async () => {
       mouseDownElement = null
       const windowRect = cloneRect(document.body.getBoundingClientRect())
       const targetRect = cloneRect(target.getBoundingClientRect())
-      const selectionRect = window
+      let selectionRect = window
         .getSelection()
         ?.getRangeAt(0)
         ?.getBoundingClientRect()
@@ -111,7 +117,11 @@ const initIframe = async () => {
       // log.info('iframe iframeSelectionString: ', iframeSelectionString)
       // log.info('iframe screen', window.screenLeft, window.screenTop)
       let iframeSelectionRect: IRangyRect | null = null
-      console.log(iframeId, selectionText)
+      if (isOfficeWordEditorFrame()) {
+        // office docs 从上往下选择时，位置获取错误整体往下偏移，此处以selected元素为准
+        selectionRect =
+          (getOfficeWordSelectionRect() as DOMRect) || selectionRect
+      }
       if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
         const minLeft = Math.max(targetRect.left, 0)
         const minTop = Math.max(targetRect.top, 0)
@@ -272,6 +282,34 @@ const initIframe = async () => {
     document.body.appendChild(inVisibleDiv)
     isEmbedPage = true
   }
+  // office docs页面初始化
+  if (isOfficeWordEditorFrame()) {
+    const editPanel = document.querySelector('#WACViewPanel') as HTMLDivElement
+    editPanel?.addEventListener('mousedown', handleMouseDown)
+    editPanel?.addEventListener('mouseup', (event) => {
+      const target = event.target as HTMLDivElement
+      const rect = target.getBoundingClientRect()
+
+      setTimeout(() => {
+        if (isOfficeWordEditing()) {
+          if (getOfficeWordSelectedElements().length) {
+            // 有选区
+            handleClickOrKeyUp({
+              ...event,
+              target: document.activeElement,
+            })
+          } else {
+            // 无选区，切换光标，获取当前坐标的元素
+            // TODO show input menu时，点击页面其他地方应该隐藏input menu
+            handleClickOrKeyUp({
+              ...event,
+              target: document.elementFromPoint(rect.x, rect.y),
+            })
+          }
+        }
+      }, 50)
+    })
+  }
   Browser.runtime.onMessage.addListener((message, sender) => {
     if (sender.id === Browser.runtime.id) {
       if (message.event === 'Client_listenUpdateIframeInput') {
@@ -297,11 +335,8 @@ export const listenIframeMessage = (onMessage?: IframeMessageType) => {
     const { id, type, data } = event.data
     if (id === MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID) {
       if (type === 'iframeSelection') {
-        const {
-          selectionText,
-          iframeSelectionRect,
-          iframePosition,
-        } = data as IVirtualIframeSelectionElement
+        const { selectionText, iframeSelectionRect, iframePosition } =
+          data as IVirtualIframeSelectionElement
         if (isInIframe()) {
           // TODO
           // 如果是iframe，需要继续透传

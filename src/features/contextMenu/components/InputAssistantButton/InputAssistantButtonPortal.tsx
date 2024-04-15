@@ -83,6 +83,9 @@ const InputAssistantPortal: FC = () => {
     if (host === 'web.whatsapp.com') {
       return appSetting.userSettings?.inputAssistantButton?.whatsApp === true
     }
+    if (host === 'web.telegram.org') {
+      return appSetting.userSettings?.inputAssistantButton?.telegram === true
+    }
     return false
   }, [appSetting.userSettings?.inputAssistantButton])
   useEffect(() => {

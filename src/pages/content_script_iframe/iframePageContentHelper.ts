@@ -43,9 +43,24 @@ export const iframePageContentHelper = () => {
             'word-edit.officeapps.live.com/we/wordeditorframe.aspx',
           )
         ) {
+          const editElement = doc.querySelector('#WACViewPanel_EditingElement_WrappingDiv') as HTMLDivElement
+          const hiddenParagraph = doc.querySelector('#PagesContainer .HiddenParagraph') as HTMLDivElement
+          const beforeDisplay = editElement?.style.display
+          if (editElement) {
+            editElement.style.display = 'none'
+          }
+          if (hiddenParagraph) {
+            hiddenParagraph.classList.remove('HiddenParagraph')
+          }
           pageContent =
             (doc.querySelector('#PageContentContainer') as HTMLDivElement)
               ?.innerText || ''
+          if (editElement) {
+            editElement.style.display = beforeDisplay
+          }
+          if (hiddenParagraph) {
+            hiddenParagraph.classList.add('HiddenParagraph')
+          }
         }
         // iCloud mail
         // https://www-mail.icloud-sandbox.com/applications/mail2-message/current/zh-cn/index.html

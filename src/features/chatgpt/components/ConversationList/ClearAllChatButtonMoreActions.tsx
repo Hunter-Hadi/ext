@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { IChatConversation } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DropdownIconButton from '@/components/DropdownIconButton'
 import { clientGetUserAllConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
@@ -19,7 +20,7 @@ const ClearAllChatButtonMoreActions: FC = () => {
     usePaginationConversations()
   const { t } = useTranslation(['common', 'client'])
   const [open, setOpen] = useState(false)
-  const [conversations, setConversations] = useState([])
+  const [conversations, setConversations] = useState<IChatConversation[]>([])
   const [loading, setLoading] = useState(false)
   const handleOpen = async () => {
     setConversations(await clientGetUserAllConversations())
@@ -111,10 +112,14 @@ const ClearAllChatButtonMoreActions: FC = () => {
                   setLoading(true)
                   for (const conversation of conversations) {
                     try {
-                      await clientUpdateChatConversation(conversation.id, {
-                        ...conversation,
-                        isDelete: false,
-                      })
+                      await clientUpdateChatConversation(
+                        conversation.id,
+                        {
+                          ...conversation,
+                          isDelete: false,
+                        },
+                        false,
+                      )
                     } catch (e) {
                       console.error(e)
                     }

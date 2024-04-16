@@ -55,7 +55,7 @@ export const clientGetUserAllConversations = async () => {
     const result = await port.postMessage({
       event: 'Client_getAllConversation',
     })
-    return result.success ? (result.data as IChatConversation[]) : undefined
+    return result.success ? (result.data as IChatConversation[]) : []
   } catch (e) {
     return []
   }

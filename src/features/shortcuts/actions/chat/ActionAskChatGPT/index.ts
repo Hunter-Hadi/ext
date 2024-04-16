@@ -136,6 +136,64 @@ export class ActionAskChatGPT extends Action {
           this.question.text,
         )
       }
+      // 设置请求的Prompt
+      const MaxAIPromptActionConfig =
+        this.parameters.MaxAIPromptActionConfig ||
+        this.question?.meta?.MaxAIPromptActionConfig
+      // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider
+      if (MaxAIPromptActionConfig) {
+        // 更新variables和output的值
+        MaxAIPromptActionConfig.variables =
+          MaxAIPromptActionConfig.variables.map((variable) => {
+            variable.defaultValue = lodashGet(
+              params,
+              variable.VariableName,
+              variable.defaultValue || '',
+            )
+            return variable
+          })
+        MaxAIPromptActionConfig.output = MaxAIPromptActionConfig.output.map(
+          (variable) => {
+            variable.defaultValue = lodashGet(
+              params,
+              variable.VariableName,
+              variable.defaultValue || '',
+            )
+            return variable
+          },
+        )
+        this.question.meta.MaxAIPromptActionConfig = MaxAIPromptActionConfig
+        const conversation =
+          (await clientConversationEngine?.getCurrentConversation()) || null
+        if (conversation) {
+          const AIModel = conversation.meta?.AIModel
+          const AIProvider = conversation.meta?.AIProvider
+          if (!AIProvider || checkISThirdPartyAIProvider(AIProvider)) {
+            // 确认是third-party AI provider, 需要获取默认的prompt
+            const result = await clientFetchMaxAIAPI<{
+              data?: {
+                prompt_template: string
+              }
+              status: string
+            }>(`/gpt/render_prompt_action`, {
+              prompt_id: MaxAIPromptActionConfig.promptId,
+              model_name: AIModel,
+            })
+            if (
+              result.data?.status === 'OK' &&
+              result.data.data?.prompt_template
+            ) {
+              // 更新提问的prompt
+              this.question.text = (
+                await this.parseTemplate(
+                  result.data.data.prompt_template,
+                  params,
+                )
+              ).data
+            }
+          }
+        }
+      }
       // 末尾加上的和AI response language有关的信息，比如说写作风格，语气等需要隐藏
       // 用于用户看到的信息
       let messageVisibleText = this.question.text
@@ -225,63 +283,6 @@ export class ActionAskChatGPT extends Action {
           )
         }
         // 开始提问
-        const MaxAIPromptActionConfig =
-          this.parameters.MaxAIPromptActionConfig ||
-          this.question?.meta?.MaxAIPromptActionConfig
-        // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider
-        if (MaxAIPromptActionConfig) {
-          // 更新variables和output的值
-          MaxAIPromptActionConfig.variables =
-            MaxAIPromptActionConfig.variables.map((variable) => {
-              variable.defaultValue = lodashGet(
-                params,
-                variable.VariableName,
-                variable.defaultValue || '',
-              )
-              return variable
-            })
-          MaxAIPromptActionConfig.output = MaxAIPromptActionConfig.output.map(
-            (variable) => {
-              variable.defaultValue = lodashGet(
-                params,
-                variable.VariableName,
-                variable.defaultValue || '',
-              )
-              return variable
-            },
-          )
-          this.question.meta.MaxAIPromptActionConfig = MaxAIPromptActionConfig
-          const conversation =
-            await clientConversationEngine.getCurrentConversation()
-          if (conversation) {
-            const AIModel = conversation.meta?.AIModel
-            const AIProvider = conversation.meta?.AIProvider
-            if (!AIProvider || checkISThirdPartyAIProvider(AIProvider)) {
-              // 确认是third-party AI provider, 需要获取默认的prompt
-              const result = await clientFetchMaxAIAPI<{
-                data?: {
-                  prompt_template: string
-                }
-                status: string
-              }>(`/gpt/render_prompt_action`, {
-                prompt_id: MaxAIPromptActionConfig.promptId,
-                model_name: AIModel,
-              })
-              if (
-                result.data?.status === 'OK' &&
-                result.data.data?.prompt_template
-              ) {
-                // 更新提问的prompt
-                this.question.text = (
-                  await this.parseTemplate(
-                    result.data.data.prompt_template,
-                    params,
-                  )
-                ).data
-              }
-            }
-          }
-        }
         // 发消息之前记录总数
         await increaseChatGPTRequestCount('total')
         // 发消息之前记录prompt/chat

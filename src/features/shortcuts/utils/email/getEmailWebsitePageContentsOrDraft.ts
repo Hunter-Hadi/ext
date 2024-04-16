@@ -260,8 +260,8 @@ const emailRegex = /[\w.-]+@[\w.-]+\.[A-Za-z]{2,}/g
 
 const getGmailUsers = (
   emailUserBoxes: NodeListOf<HTMLElement>,
-): IEmailUserData[] =>
-  Array.from(emailUserBoxes || []).map((userBox) => ({
+): IEmailUserData[] => {
+  let emails = Array.from(emailUserBoxes || []).map((userBox) => ({
     email: (
       userBox.getAttribute('email') ||
       userBox.getAttribute('data-hovercard-id') ||
@@ -273,6 +273,17 @@ const getGmailUsers = (
       userBox.textContent ||
       '',
   }))
+  // TODO - 只是为了代码能正常执行，原因是因为没有获取到正确的email和name
+  if (emails.length === 0) {
+    emails = [
+      {
+        email: '',
+        name: '',
+      },
+    ]
+  }
+  return emails
+}
 
 // 因为接下来对单个邮件的处理都一样，这里封装一下
 const outlookGetSingleEmailText = (originElement: HTMLElement | null) => {

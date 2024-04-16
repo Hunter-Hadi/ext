@@ -58,7 +58,6 @@ export default class EmailCorrespondence {
     })
   }
   get emailContext() {
-    debugger
     const emailListData = createEmailListData(this.emails)
     const targetReplyEmailContext =
       emailListData

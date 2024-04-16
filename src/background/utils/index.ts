@@ -17,6 +17,7 @@ import {
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { clearContextMenuSearchTextStore } from '@/features/sidebar/store/contextMenuSearchTextStore'
+import { wait } from '@/utils'
 
 export {
   getChromeExtensionOnBoardingData,
@@ -31,8 +32,6 @@ export const backgroundSendAllClientMessage = async (
   data: any,
 ) => {
   const tabs = await Browser.tabs.query({})
-  const delay = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms))
   await Promise.race([
     ...tabs.map(async (tab) => {
       if (tab.id) {
@@ -52,7 +51,7 @@ export const backgroundSendAllClientMessage = async (
         }
       }
     }),
-    delay(1000),
+    wait(1000),
   ])
 }
 export const backgroundSendClientMessage = async (

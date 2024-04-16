@@ -8,6 +8,7 @@ import { PermissionWrapperCardSceneType } from '@/features/auth/components/Permi
 import { IUserRoleType } from '@/features/auth/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { TranscriptResponse } from '@/features/shortcuts/actions/web/ActionGetYoutubeTranscriptOfURL/YoutubeTranscript'
+import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 
 export type IChatMessagePublishStatus = 'unpublished' | 'success' | 'error'
 
@@ -73,6 +74,8 @@ export type IChatMessageExtraMetaType = {
   quoteMessage?: IChatMessage
   // 上下文
   contexts?: IUserChatMessageExtraMetaContextType[]
+  // MaxAI prompt Action Config
+  MaxAIPromptActionConfig?: MaxAIPromptActionConfig
   [key: string]: any
 }
 

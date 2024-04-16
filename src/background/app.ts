@@ -28,7 +28,6 @@ import { setChromeExtensionDBStorageSnapshot } from '@/background/utils/chromeEx
 import {
   checkSettingsSync,
   isSettingsLastModifiedEqual,
-  syncLocalSettingsToServerSettings,
 } from '@/background/utils/syncSettings'
 import {
   APP_VERSION,
@@ -91,15 +90,6 @@ const initChromeExtensionInstalled = () => {
       })
     } else {
       await initChromeExtensionUpdated()
-      // 保存本地快照
-      await setChromeExtensionDBStorageSnapshot()
-      // 更新插件
-      if (!(await isSettingsLastModifiedEqual())) {
-        await checkSettingsSync()
-      }
-      await syncLocalSettingsToServerSettings()
-      // 更新i18n
-      await updateContextMenuSearchTextStore('textSelectPopupButton')
     }
     try {
       await Browser.contextMenus.remove('use-chatgpt-ai-context-menu-button')
@@ -128,6 +118,15 @@ const initChromeExtensionUpdated = async () => {
   Browser.action.setBadgeTextColor({
     color: '#FFFFFF',
   })
+  // 保存本地快照
+  await setChromeExtensionDBStorageSnapshot()
+  // 更新插件
+  if (!(await isSettingsLastModifiedEqual())) {
+    await checkSettingsSync()
+  }
+  // 更新i18n
+  await updateContextMenuSearchTextStore('textSelectPopupButton')
+
   // @since - 2023-11-20
   // @description 黑五
   const executeBlackFridayPromotion = async () => {

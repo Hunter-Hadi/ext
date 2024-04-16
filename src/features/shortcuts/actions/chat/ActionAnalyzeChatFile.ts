@@ -1,3 +1,4 @@
+import { NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID } from '@/constants'
 import { IShortcutEngineExternalEngine } from '@/features/shortcuts'
 import { stopActionMessageStatus } from '@/features/shortcuts/actions/utils/actionMessageTool'
 import Action from '@/features/shortcuts/core/Action'
@@ -92,7 +93,7 @@ export class ActionAnalyzeChatFile extends Action {
           // 异步通知LarkBot
           clientSendMaxAINotification(
             'SUMMARY',
-            `[Summary] tokens has reached maximum limit.`,
+            `[Summary] tokens have reached maximum limit.`,
             `${JSON.stringify(
               {
                 summary_type: getPageSummaryType(),
@@ -104,7 +105,7 @@ export class ActionAnalyzeChatFile extends Action {
               4,
             )}`,
             {
-              uuid: '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a',
+              uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
             },
           )
             .then()
@@ -129,7 +130,7 @@ export class ActionAnalyzeChatFile extends Action {
                 4,
               )}`,
               {
-                uuid: '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a',
+                uuid: NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID,
               },
             )
               .then()

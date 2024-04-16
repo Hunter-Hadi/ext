@@ -48,12 +48,16 @@ const SidebarUserMessageContexts: FC<{
     )
   }, [message.meta?.attachments])
   const contexts = message.meta?.contexts
+  const renderShortContent = useMemo(() => {
+    return contexts?.[0]?.value?.slice(0, 500) || ''
+  }, [contexts])
   if (!attachments.length && !contexts?.length) {
     return null
   }
   const extractedContentAttachments = attachments.filter(
     (attachment) => attachment.extractedContent,
   )
+
   return (
     <Stack
       direction={'row'}
@@ -253,6 +257,7 @@ const SidebarUserMessageContexts: FC<{
               p={1}
             >
               <Stack
+                width={'100%'}
                 ml={'auto'}
                 mb={0.5}
                 flexDirection={'row'}
@@ -312,7 +317,7 @@ const SidebarUserMessageContexts: FC<{
                     variant={'body2'}
                     lineHeight={'20px'}
                   >
-                    {contexts?.[0]?.value}
+                    {renderShortContent}
                   </Typography>
                 )}
                 {extractedContentAttachments.length === 0 && (

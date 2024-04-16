@@ -3,8 +3,11 @@ import { SxProps } from '@mui/material/styles'
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { InputAssistantButtonStyle } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButton'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import { I18nextKeysType } from '@/i18next'
+import {
+  findParentEqualSelector,
+  findSelectorParent,
+} from '@/utils/dataHelper/elementHelper'
 
 import {
   type IInputAssistantButtonObserverData,
@@ -39,7 +42,7 @@ export interface IInputAssistantButtonGroupConfig
   // 渲染根节点的TagName
   rootWrapperTagName: string
   // 添加到root容器的第几个位置
-  appendPosition: number
+  appendPosition?: number
   // 给rootSelector添加的样式
   rootSelectorStyle?: string
   // 给root添加的样式
@@ -91,7 +94,7 @@ export type WritingAssistantButtonGroupConfigHostType =
   | SocialMediaWebsitesType
   | ChatAppWebsitesType
 
-const GmailInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -175,7 +178,7 @@ const GmailInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] 
     } as IInputAssistantButtonGroupConfig,
   ]
 
-const OutlookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -211,7 +214,15 @@ const OutlookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       },
     },
     {
-      enable: true,
+      enable: (rootElement) => {
+        const replyButtonDisabled = rootElement
+          .querySelector('button')
+          ?.getAttribute('disabled')
+        if (replyButtonDisabled === '' || replyButtonDisabled) {
+          return false
+        }
+        return true
+      },
       rootSelectors: ['.th6py'],
       rootParentDeep: 0,
       rootStyle: 'overflow: unset;',
@@ -259,7 +270,7 @@ const OutlookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
     } as IInputAssistantButtonGroupConfig,
   ]
 
-const TwitterInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const TwitterWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -337,7 +348,7 @@ const TwitterInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
     } as any,
   ]
 
-const LinkedInInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const LinkedInWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -481,7 +492,7 @@ const LinkedInInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     } as IInputAssistantButtonGroupConfig,
   ]
 
-const FacebookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const FacebookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -696,7 +707,7 @@ const FacebookInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     // }
   ]
 
-const YouTubeInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const YouTubeWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -834,7 +845,97 @@ const YouTubeInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
     } as IInputAssistantButtonGroupConfig,
   ]
 
-const RedditInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const YouTubeStudioWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: true,
+      rootSelectors: ['ytcp-commentbox #submit-button'],
+      rootParentDeep: 2,
+      rootStyle: 'display: flex;align-items: center;margin-top: 8px',
+      rootWrapperTagName: 'div',
+      composeNewButton: {
+        tooltip: 'client:input_assistant_button__compose_new__tooltip',
+        buttonKey: 'inputAssistantComposeNewButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
+      },
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '10px 9px',
+        iconSize: 16,
+        borderRadius: '18px 0 0 18px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 18px 18px 0',
+        padding: '8px 3px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginLeft: '24px',
+      },
+    },
+    {
+      enable: (rootElement) => {
+        const commentDialog = findParentEqualSelector(
+          'ytcp-comment',
+          rootElement,
+        )?.querySelector('#reply-dialog-container')
+        if (commentDialog?.innerHTML === '') {
+          return true
+        }
+        return false
+      },
+      rootSelectors: ['#toolbar:has(> #reply-button)'],
+      rootParentDeep: 0,
+      appendPosition: -1,
+      rootWrapperTagName: 'div',
+      rootStyle: 'display: flex; align-items: center;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+
+          findSelectorParent(
+            '#reply-button [role="button"]',
+            inputAssistantButton as HTMLElement,
+            2,
+          )?.click()
+
+          setTimeout(() => {
+            inputAssistantButton?.parentElement?.remove()
+          })
+        },
+      },
+      CTAButtonStyle: {
+        padding: '8px 16px',
+        iconSize: 16,
+        borderRadius: '18px',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '18px',
+        marginRight: '26px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const RedditWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -949,7 +1050,7 @@ const RedditInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[]
     },
   ]
 
-const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const DiscordWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -1058,7 +1159,7 @@ const DiscordInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
     } as IInputAssistantButtonGroupConfig,
   ]
 
-const SlackInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -1133,7 +1234,7 @@ const SlackInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] 
     // } as IInputAssistantButtonGroupConfig,
   ]
 
-const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
       enable: true,
@@ -1193,12 +1294,12 @@ const WhatsAppInputAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig
     // }
   ]
 
-const InputAssistantButtonGroupConfig: {
+const WritingAssistantButtonGroupConfigs: {
   [key in WritingAssistantButtonGroupConfigHostType]?:
     | IInputAssistantButtonGroupConfig
     | IInputAssistantButtonGroupConfig[]
 } = {
-  'mail.google.com': GmailInputAssistantButtonGroupConfigs,
+  'mail.google.com': GmailWritingAssistantButtonGroupConfigs,
   'outlook.office.com': {
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -1233,7 +1334,7 @@ const InputAssistantButtonGroupConfig: {
       margin: '0 0 0 12px',
     },
   },
-  'outlook.live.com': OutlookInputAssistantButtonGroupConfigs,
+  'outlook.live.com': OutlookWritingAssistantButtonGroupConfigs,
   'outlook.office365.com': {
     enable: true,
     rootSelectors: ['div[data-testid="ComposeSendButton"]'],
@@ -1267,46 +1368,11 @@ const InputAssistantButtonGroupConfig: {
       margin: '0 0 0 12px',
     },
   },
-  'twitter.com': TwitterInputAssistantButtonGroupConfigs,
-  'linkedin.com': LinkedInInputAssistantButtonGroupConfigs,
-  'facebook.com': FacebookInputAssistantButtonGroupConfigs,
-  'youtube.com': YouTubeInputAssistantButtonGroupConfigs,
-  'studio.youtube.com': {
-    enable: true,
-    rootSelectors: ['ytcp-commentbox #submit-button'],
-    appendPosition: 2,
-    rootParentDeep: 2,
-    rootStyle: 'display: flex;align-items: center;margin-top: 8px',
-    rootWrapperTagName: 'div',
-    composeNewButton: {
-      tooltip: 'client:input_assistant_button__compose_new__tooltip',
-      buttonKey: 'inputAssistantComposeNewButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_NEW_BUTTON',
-    },
-    composeReplyButton: {
-      tooltip: 'client:input_assistant_button__compose_reply__tooltip',
-      buttonKey: 'inputAssistantComposeReplyButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_COMPOSE_REPLY_BUTTON',
-    },
-    refineDraftButton: {
-      tooltip: 'client:input_assistant_button__refine_draft__tooltip',
-      buttonKey: 'inputAssistantRefineDraftButton',
-      permissionWrapperCardSceneType: 'YOUTUBE_REFINE_DRAFT_BUTTON',
-    },
-    CTAButtonStyle: {
-      padding: '10px 9px',
-      iconSize: 16,
-      borderRadius: '18px 0 0 18px',
-    },
-    DropdownButtonStyle: {
-      borderRadius: '0 18px 18px 0',
-      padding: '8px 3px',
-    },
-    InputAssistantBoxSx: {
-      borderRadius: '18px',
-      marginLeft: '8px',
-    },
-  },
+  'twitter.com': TwitterWritingAssistantButtonGroupConfigs,
+  'linkedin.com': LinkedInWritingAssistantButtonGroupConfigs,
+  'facebook.com': FacebookWritingAssistantButtonGroupConfigs,
+  'youtube.com': YouTubeWritingAssistantButtonGroupConfigs,
+  'studio.youtube.com': YouTubeStudioWritingAssistantButtonGroupConfigs,
   'instagram.com': {
     enable: true,
     rootSelectors: [
@@ -1347,14 +1413,14 @@ const InputAssistantButtonGroupConfig: {
       borderRadius: '12px',
     },
   },
-  'reddit.com': RedditInputAssistantButtonGroupConfigs,
-  // 'web.whatsapp.com': WhatsAppInputAssistantButtonGroupConfigs,
-  // 'app.slack.com': SlackInputAssistantButtonGroupConfigs,
-  'discord.com': DiscordInputAssistantButtonGroupConfigs,
+  'reddit.com': RedditWritingAssistantButtonGroupConfigs,
+  'web.whatsapp.com': WhatsAppWritingAssistantButtonGroupConfigs,
+  'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
+  'discord.com': DiscordWritingAssistantButtonGroupConfigs,
 }
 
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(
-  InputAssistantButtonGroupConfig,
+  WritingAssistantButtonGroupConfigs,
 ) as WritingAssistantButtonGroupConfigHostType[]
 
-export default InputAssistantButtonGroupConfig
+export default WritingAssistantButtonGroupConfigs

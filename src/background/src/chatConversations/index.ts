@@ -23,7 +23,8 @@ import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 export interface IChatConversation {
   authorId: string // 作者ID
   id: string // 对话ID
-  title: string // 对话标题
+  name: string // 对话名称
+  title: string // 对话类型标题
   created_at: string // 创建时间
   updated_at: string // 更新时间
   messages: IChatMessage[] // 对话中的消息列表
@@ -60,7 +61,8 @@ export interface IChatConversationMeta {
 }
 export interface PaginationConversation {
   id: string // 对话ID
-  title: string // 对话标题
+  name: string // 对话名称
+  title: string // 对话类型标题
   created_at: string // 创建时间
   updated_at: string // 更新时间
   lastMessage: IChatMessage
@@ -73,7 +75,6 @@ class ConversationDB {
   private databaseName: string // 数据库名称
   private databaseVersion: number // 数据库版本
   private objectStoreName: string // 对象存储名称
-  private dbInstance: IDBDatabase | null = null // 数据库实例
 
   /**
    * 创建一个 ConversationDB 实例。
@@ -87,7 +88,6 @@ class ConversationDB {
     databaseVersion: number,
     objectStoreName: string,
   ) {
-    this.dbInstance = null
     this.databaseName = databaseName
     this.databaseVersion = databaseVersion
     this.objectStoreName = objectStoreName
@@ -99,21 +99,7 @@ class ConversationDB {
    * @returns Promise 对象，解析为 IDBDatabase 实例
    */
   private openDatabase(): Promise<IDBDatabase> {
-    // try {
-    //   if (this.dbInstance) {
-    //     // @description - 因为Chrome的IndexedDB的打开在onsuccess的时候需要很长时间.
-    //     // 所以这里持久化了dbInstance
-    //     // 使用最快速的方式确认数据库是否已经打开
-    //     const transaction = this.dbInstance.transaction(this.objectStoreName)
-    //     transaction.abort()
-    //     return Promise.resolve(this.dbInstance)
-    //   }
-    // } catch (e) {
-    //   this.dbInstance = null
-    //   console.error(e)
-    // }
     return new Promise((resolve, reject) => {
-      const newDate = new Date().getTime()
       const request = indexedDB.open(this.databaseName, this.databaseVersion)
 
       request.onerror = (event) => {
@@ -122,12 +108,6 @@ class ConversationDB {
 
       request.onsuccess = (event) => {
         const db = (event.target as any)?.result as IDBDatabase
-        console.log(
-          `[DB_Conversation] openDatabase using time: ${
-            new Date().getTime() - newDate
-          }ms`,
-        )
-        this.dbInstance = db
         resolve(db) // 解析 Promise 为打开的数据库实例
       }
 
@@ -372,6 +352,7 @@ export default class ConversationManager {
     const defaultConversation: IChatConversation = {
       authorId: await getMaxAIChromeExtensionUserId(),
       id: uuidV4(),
+      name: '',
       title: 'Chat',
       type: 'Chat',
       created_at: new Date().toISOString(),
@@ -500,6 +481,7 @@ export default class ConversationManager {
         }
         return {
           id: conversation.id,
+          name: conversation.name,
           title,
           created_at: conversation.created_at,
           updated_at: conversation.updated_at,

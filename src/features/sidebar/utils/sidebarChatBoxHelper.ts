@@ -95,6 +95,19 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxShow = () => {
       }
       discordSpecialStyle.innerHTML = `html,#app-mount{width:calc(100vw - ${chatBoxElementWidth}px)!important;}`
     }
+
+    // 24.04.10: handle Slack client width 100vw
+    if (host === 'app.slack.com') {
+      let slackSpecialStyle = document.querySelector(
+        '#MAXAI__SLACK_SPECIAL_STYLE',
+      )
+      if (!slackSpecialStyle) {
+        slackSpecialStyle = document.createElement('style')
+        slackSpecialStyle.id = 'MAXAI__SLACK_SPECIAL_STYLE'
+        document.getElementsByTagName('head')[0].appendChild(slackSpecialStyle)
+      }
+      slackSpecialStyle.innerHTML = `.p-client,.p-ia4_client,.p-ia4_client_container,.p-theme_background,.p-client_workspace_wrapper{width:100%!important;} .c-popover--z_above_fs{z-index:2147483502!important;}`
+    }
   }
   // 浏览器自带的pdf文件阅读器
   if (document.querySelector('embed[type="application/pdf"]')) {
@@ -179,6 +192,13 @@ const modifyHTMLStyleForSpecialWebsiteOnChatBoxHide = () => {
         '#MAXAI__DISCORD_SPECIAL_STYLE',
       )
       discordSpecialStyle?.remove()
+    }
+    // 24.04.10: handle Slack client width 100vw
+    if (host === 'app.slack.com') {
+      const slackSpecialStyle = document.querySelector(
+        '#MAXAI__SLACK_SPECIAL_STYLE',
+      )
+      slackSpecialStyle?.remove()
     }
   }
   // 浏览器自带的pdf文件阅读器

@@ -2,10 +2,10 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import { findSelectorParent } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   ICommentData,
-} from '@/features/shortcuts/utils/SocialMediaPostContext'
+} from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
+import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 // 获取Reddit评论的作者，日期，内容
 const getRedditCommentDetail = async (
@@ -42,9 +42,11 @@ export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
   )
   if (postContainer) {
     const postTitle =
-      (postContainer.querySelector(
-        'div[data-adclicklocation="title"]',
-      ) as HTMLDivElement).innerText ||
+      (
+        postContainer.querySelector(
+          'div[data-adclicklocation="title"]',
+        ) as HTMLDivElement
+      ).innerText ||
       postContainer.querySelector('h1')?.innerText ||
       ''
     const author =
@@ -59,11 +61,11 @@ export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
       title: postTitle,
       date: '',
     })
-    const commentRoot = (Array.from(
-      document.querySelectorAll('div:has( > div[data-scroller-first])'),
-    ) as HTMLDivElement[]).find((element) =>
-      element.contains(inputAssistantButton),
-    )
+    const commentRoot = (
+      Array.from(
+        document.querySelectorAll('div:has( > div[data-scroller-first])'),
+      ) as HTMLDivElement[]
+    ).find((element) => element.contains(inputAssistantButton))
     // 说明有注释
     if (commentRoot) {
       // 因为reddit的评论是按照padding-left的距离来测算的，首先找到commentRoot这个列表下的根级div
@@ -81,27 +83,34 @@ export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
         comments.push(await getRedditCommentDetail(currentCommentRoot))
         let paddingLeft =
           Number(
-            (currentCommentRoot.querySelector(
-              'div[id][style][tabindex]',
-            ) as HTMLDivElement)?.style?.paddingLeft?.replace('px', ''),
+            (
+              currentCommentRoot.querySelector(
+                'div[id][style][tabindex]',
+              ) as HTMLDivElement
+            )?.style?.paddingLeft?.replace('px', ''),
           ) || 0
-        let prevCommentDiv: HTMLElement = currentCommentRoot.previousElementSibling as HTMLDivElement
+        let prevCommentDiv: HTMLElement =
+          currentCommentRoot.previousElementSibling as HTMLDivElement
         // 因为Reddit的评论是按照padding-left的距离来测算的，所以要找到padding-left比当前评论小的评论
         //获取最小paddingLeft
         const minPaddingLeft =
           Number(
-            (commentRoot.querySelector(
-              'div[data-scroller-first]',
-            ) as HTMLDivElement)?.style?.paddingLeft?.replace('px', ''),
+            (
+              commentRoot.querySelector(
+                'div[data-scroller-first]',
+              ) as HTMLDivElement
+            )?.style?.paddingLeft?.replace('px', ''),
           ) || 16
         // 如果当前评论的paddingLeft比最小的还小，那么就不用找了
         while (prevCommentDiv && paddingLeft > minPaddingLeft) {
           // 获取上一个评论的paddingLeft
           const prevCommentPaddingLeft =
             Number(
-              (prevCommentDiv.querySelector(
-                'div[id][style][tabindex]',
-              ) as HTMLDivElement)?.style?.paddingLeft?.replace('px', ''),
+              (
+                prevCommentDiv.querySelector(
+                  'div[id][style][tabindex]',
+                ) as HTMLDivElement
+              )?.style?.paddingLeft?.replace('px', ''),
             ) || 0
           // 如果上一个评论的paddingLeft比当前评论的paddingLeft小，那么就是当前评论的父级评论
           if (paddingLeft > prevCommentPaddingLeft) {
@@ -112,7 +121,8 @@ export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
             // 更新当前评论
             if (prevCommentDiv.previousElementSibling) {
               // 如果上一个评论还有上一个评论，那么就继续循环
-              prevCommentDiv = prevCommentDiv.previousElementSibling as HTMLDivElement
+              prevCommentDiv =
+                prevCommentDiv.previousElementSibling as HTMLDivElement
             } else {
               // 如果上一个评论没有上一个评论，那么就是根级评论了，
               break
@@ -123,7 +133,8 @@ export const redditGetPostContent: GetSocialMediaPostContentFunction = async (
             prevCommentDiv.previousElementSibling
           ) {
             // 如果上一个评论还有上一个评论，那么就继续循环
-            prevCommentDiv = prevCommentDiv.previousElementSibling as HTMLDivElement
+            prevCommentDiv =
+              prevCommentDiv.previousElementSibling as HTMLDivElement
           } else {
             break
           }
@@ -148,11 +159,13 @@ export const redditGetDraftContent: GetSocialMediaPostDraftFunction = (
     return (redditDraftEditor as HTMLDivElement)?.innerText || ''
   } else {
     return (
-      (findSelectorParent(
-        'textarea[rows="1"]:has( + span[id])',
-        inputAssistantButton,
-        15,
-      ) as HTMLTextAreaElement)?.value || ''
+      (
+        findSelectorParent(
+          'textarea[rows="1"]:has( + span[id])',
+          inputAssistantButton,
+          15,
+        ) as HTMLTextAreaElement
+      )?.value || ''
     )
   }
 }

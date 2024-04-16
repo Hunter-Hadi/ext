@@ -282,12 +282,12 @@ export const sliceTextByTokens = async (
  * Calculates the maximum number of tokens to allocate for history, question, and response.
  * @param {number} maxAIModelTokens - The maximum number of tokens allowed by the AI model.
  * @returns {number} The maximum number of tokens to allocate for history, question, and response.
- * @description The returned value is the minimum of 8000 tokens and half of the AI model's maximum token limit.
+ * @description The returned value is the minimum of 12000 tokens and half of the AI model's maximum token limit.
  */
 export const calculateMaxHistoryQuestionResponseTokens = (
   maxAIModelTokens: number,
 ) => {
-  return Math.min(8000, maxAIModelTokens / 2)
+  return Math.min(12000, maxAIModelTokens / 2)
 }
 
 /**

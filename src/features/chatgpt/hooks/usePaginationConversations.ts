@@ -34,11 +34,6 @@ const usePaginationConversations = () => {
               } else {
                 updated_at = dayjs(conversation.updated_at).format('HH:mm')
               }
-              // TODO: 本来是直接渲染title的，但是因为现在Chat没有生成title的逻辑，所以先用text代替
-              if (conversation.type === 'Chat') {
-                conversation.title =
-                  conversation.lastMessage.text || conversation.title
-              }
               return {
                 ...conversation,
                 updated_at,

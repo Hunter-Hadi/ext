@@ -5,7 +5,7 @@
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const removeEmailContentQuote = (
-  emailContentHtmlElement: HTMLElement,
+  emailContentHtmlElement: HTMLElement | null,
 ) => {
   if (!emailContentHtmlElement) {
     return ''
@@ -57,6 +57,10 @@ export const removeEmailContentQuote = (
       return
     }
   })
+  // 24.04.12: remove style tag because it may bring some style text
+  cloneElement.querySelectorAll('style').forEach((style) => {
+    needRemoveElements.push(style)
+  })
   console.log('removeEmailContentQuote needRemoveElements', needRemoveElements)
   needRemoveElements.forEach((element) => {
     try {
@@ -70,6 +74,8 @@ export const removeEmailContentQuote = (
   Array.from(cloneElement.querySelectorAll('br')).forEach((br) => {
     br.replaceWith('\n')
   })
+  return cloneElement.outerText.trim()
+
   // inject to body
   const root = document.createElement('div')
   root.style.position = 'absolute'
@@ -80,7 +86,6 @@ export const removeEmailContentQuote = (
   root.style.height = '1px'
   root.style.overflow = 'hidden'
   root.appendChild(cloneElement)
-  document.body.appendChild(root)
   const innerText = root.innerText
   root.remove()
   return innerText

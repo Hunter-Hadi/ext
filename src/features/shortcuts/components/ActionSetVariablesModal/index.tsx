@@ -665,6 +665,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                   event.stopPropagation()
                 }
               }}
+              onPaste={(event) => {
+                event.stopPropagation()
+              }}
               InputProps={{
                 sx: {
                   fontSize: '16px',

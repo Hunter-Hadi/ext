@@ -11,7 +11,7 @@ import {
   IContextMenuItemWithChildren,
 } from '@/features/contextMenu/types'
 
-export const FAVORITE_CONTEXT_MENU_GROUP_ID = 'SUGGESTE'
+export const FAVORITE_CONTEXT_MENU_GROUP_ID = 'SUGGESTED'
 
 export const contextMenuIsFavoriteContextMenu = (contextMenuId: string) => {
   return contextMenuId.startsWith(FAVORITE_CONTEXT_MENU_GROUP_ID)

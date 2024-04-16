@@ -21,6 +21,7 @@ import {
 } from '@/background/utils'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import { wait } from '@/utils'
 import Log from '@/utils/Log'
 
 const log = new Log('ChatGPT/OpenAIChat')
@@ -489,9 +490,7 @@ class OpenAIChat extends BaseChat {
         })
       }
     }
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms))
-    await delay(20 * 1000)
+    await wait(20 * 1000)
     if (this.active) {
       await this.keepAlive()
     }
@@ -562,8 +561,6 @@ class OpenAIChat extends BaseChat {
     }
   }
   async pingAwaitSuccess() {
-    const delay = (ms: number) =>
-      new Promise((resolve) => setTimeout(resolve, ms))
     if (this.chatGPTProxyInstance?.id && this.active) {
       log.info('start ping await success')
       let isOk = false
@@ -587,7 +584,7 @@ class OpenAIChat extends BaseChat {
               isOk = true
             }
           })
-        await delay(1000)
+        await wait(1000)
       }
     }
   }

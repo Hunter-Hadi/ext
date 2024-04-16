@@ -58,16 +58,19 @@ const useSyncSettingsChecker = () => {
           await setChromeExtensionDBStorage(saveSettings)
         }
         if (!(await isSettingsLastModifiedEqual())) {
-          await checkSettingsSync()
+          const checkResult = await checkSettingsSync()
+          if (!checkResult.success) {
+            return false
+          }
         }
-        const success = await syncLocalSettingsToServerSettings()
-        if (success) {
+        const isSuccess = await syncLocalSettingsToServerSettings()
+        if (isSuccess) {
           debounceEnqueueSnackbar(t('settings:sync__save_success'), {
             variant: 'success',
             autoHideDuration: 1000,
           })
         }
-        return success
+        return isSuccess
       } catch (e) {
         enqueueSnackbar(t('settings:sync__sync_failed'), {
           variant: 'error',

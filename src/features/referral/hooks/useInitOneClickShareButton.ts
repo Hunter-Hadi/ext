@@ -5,6 +5,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useAutoFacebookReferral from '@/features/referral/hooks/useAutoFacebookReferral'
 import useAutoLinkedinReferral from '@/features/referral/hooks/useAutoLinkedinReferral'
 import useAutoTwitterReferral from '@/features/referral/hooks/useAutoTwitterReferral'
+import { wait } from '@/utils'
 
 /**
  * 初始化one-click referral, https://app.maxai.me/referral
@@ -35,9 +36,8 @@ const useInitOneClickShareButton = () => {
         const oneClickShareButtonContainer = document.querySelector(
           '#appMaxAIReferralShareOneClickContainer',
         ) as HTMLDivElement
-        const oneClickShareButton: HTMLButtonElement | null = document.querySelector(
-          '#appMaxAIReferralShareOneClickButton',
-        )
+        const oneClickShareButton: HTMLButtonElement | null =
+          document.querySelector('#appMaxAIReferralShareOneClickButton')
         console.log(
           'useInitOneClickShareButton oneClickShareButtonContainer',
           oneClickShareButtonContainer,
@@ -58,18 +58,15 @@ const useInitOneClickShareButton = () => {
             for (let i = 0; i < needReferralSocialMediaElements.length; i++) {
               const needReferralSocialMediaElement =
                 needReferralSocialMediaElements[i]
-              const socialMediaName = needReferralSocialMediaElement.getAttribute(
-                'data-name',
-              )
+              const socialMediaName =
+                needReferralSocialMediaElement.getAttribute('data-name')
               const runFn =
                 ReferralActionsRef.current?.[socialMediaName as 'twitter']
               if (runFn) {
                 await runFn()
               }
             }
-            const delay = (t: number) =>
-              new Promise((resolve) => setTimeout(resolve, t))
-            await delay(3000)
+            await wait(3000)
             // 获取当前页面的 URL
             const url = new URL(window.location.href)
             // 创建 URLSearchParams 对象，用于处理查询参数

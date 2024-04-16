@@ -1,9 +1,11 @@
+import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
 import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
 import {
+  IMaxAIChatGPTBackendAPIType,
   IMaxAIChatMessageContent,
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
@@ -18,6 +20,7 @@ import {
 import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import { fetchSSE } from '@/features/chatgpt/core/fetch-sse'
+import { IChatMessageExtraMetaType } from '@/features/chatgpt/types'
 import Log from '@/utils/Log'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
 
@@ -81,7 +84,7 @@ class MaxAIGeminiChat extends BaseChat {
       regenerate?: boolean
       streaming?: boolean
       chat_history?: IMaxAIRequestHistoryMessage[]
-      meta?: Record<string, any>
+      meta?: IChatMessageExtraMetaType
     },
     onMessage?: (message: {
       type: 'error' | 'message'
@@ -93,6 +96,7 @@ class MaxAIGeminiChat extends BaseChat {
       }
     }) => void,
   ) {
+    let backendAPI: IMaxAIChatGPTBackendAPIType = 'get_gemini_response'
     await this.checkTokenAndUpdateStatus()
     if (this.status !== 'success') {
       onMessage &&
@@ -116,7 +120,7 @@ class MaxAIGeminiChat extends BaseChat {
     } = options || {}
     const userConfig = await getAIProviderSettings('MAXAI_GEMINI')
     this.clearFiles()
-    const postBody = Object.assign(
+    let postBody = Object.assign(
       {
         chat_history,
         regenerate,
@@ -136,6 +140,26 @@ class MaxAIGeminiChat extends BaseChat {
       },
       // { conversation_id: this.conversation?.id || '' },
     )
+    // 如果有meta.MaxAIPromptActionConfig，就需要用/use_prompt_action
+    if (options?.meta?.MaxAIPromptActionConfig) {
+      backendAPI = 'use_prompt_action'
+      const clonePostBody: any = cloneDeep(postBody)
+      // 去掉message_content
+      delete clonePostBody.message_content
+      clonePostBody.prompt_id = options.meta.MaxAIPromptActionConfig.promptId
+      clonePostBody.prompt_name =
+        options.meta.MaxAIPromptActionConfig.promptName
+      clonePostBody.prompt_inputs =
+        options.meta.MaxAIPromptActionConfig.variables.reduce<
+          Record<string, string>
+        >((variableMap, variable) => {
+          if (variable.VariableName && variable.defaultValue) {
+            variableMap[variable.VariableName] = variable.defaultValue
+          }
+          return variableMap
+        }, {})
+      postBody = clonePostBody
+    }
     const controller = new AbortController()
     const signal = controller.signal
     if (taskId) {
@@ -148,7 +172,7 @@ class MaxAIGeminiChat extends BaseChat {
     let hasError = false
     let conversationId = this.conversation?.id || ''
     let isTokenExpired = false
-    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/get_gemini_response`, {
+    await fetchSSE(`${APP_USE_CHAT_GPT_API_HOST}/gpt/${backendAPI}`, {
       provider: AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
       method: 'POST',
       signal,

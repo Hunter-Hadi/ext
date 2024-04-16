@@ -1,6 +1,9 @@
 import { v4 as uuidV4 } from 'uuid'
 
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+  SEARCH__READ_PAGE__PROMPT_ID,
+} from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import {
   completeLastAIMessageOnError,
@@ -270,7 +273,7 @@ export class ActionWebGPTSearchResultsExpand extends Action {
             text: messageContent,
           },
         ],
-        prompt_id: 'cae761b7-3703-4ff9-83ab-527b7a24e53b',
+        prompt_id: SEARCH__READ_PAGE__PROMPT_ID,
         prompt_name: '[Search] read page',
       },
       abortTaskId,

@@ -6,14 +6,11 @@ import {
   IChatGPTAskQuestionFunctionType,
 } from '@/background/provider/chat/ChatAdapter'
 import { MaxAIGeminiChat } from '@/background/src/chat'
-import {
-  type IMaxAIChatMessageContent,
-  IMaxAIRequestHistoryMessage,
-} from '@/background/src/chat/UseChatGPTChat/types'
+import { IMaxAIRequestHistoryMessage } from '@/background/src/chat/UseChatGPTChat/types'
+import { chatMessageToMaxAIRequestMessage } from '@/background/src/chat/util'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { isUserMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 
 class MaxAIGeminiChatProvider implements ChatAdapterInterface {
   private maxAIGeminiChat: MaxAIGeminiChat
@@ -61,39 +58,7 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
       }
       if (question.meta) {
         question.meta.historyMessages?.forEach((message) => {
-          const content: IMaxAIChatMessageContent[] = [
-            {
-              type: 'text',
-              text: message.text,
-            },
-          ]
-          // 插入附件
-          if (isUserMessage(message)) {
-            if (message?.meta?.attachments?.length) {
-              message.meta.attachments.forEach((attachment) => {
-                if (
-                  attachment.uploadStatus === 'success' &&
-                  attachment.uploadedUrl
-                ) {
-                  content.push({
-                    type: 'image_url',
-                    image_url: {
-                      url: attachment.uploadedUrl,
-                    },
-                  })
-                }
-              })
-            }
-          }
-          chat_history.push({
-            role:
-              message.type === 'ai'
-                ? 'ai'
-                : message.type === 'user'
-                ? 'human'
-                : 'system',
-            content,
-          })
+          chat_history.push(chatMessageToMaxAIRequestMessage(message))
         })
         question.meta.includeHistory = false
         question.meta.maxHistoryMessageCnt = 0
@@ -110,26 +75,9 @@ class MaxAIGeminiChatProvider implements ChatAdapterInterface {
         }
       }
     }
-    const content: IMaxAIChatMessageContent[] = [
-      {
-        type: 'text',
-        text: question.text,
-      },
-    ]
-    if (question.meta?.attachments) {
-      question.meta.attachments.forEach((attachment) => {
-        if (attachment.uploadStatus === 'success' && attachment.uploadedUrl) {
-          content.push({
-            type: 'image_url',
-            image_url: {
-              url: attachment.uploadedUrl,
-            },
-          })
-        }
-      })
-    }
+    const questionMessage = chatMessageToMaxAIRequestMessage(question)
     await this.maxAIGeminiChat.askChatGPT(
-      content,
+      questionMessage.content,
       {
         taskId: question.messageId,
         chat_history,

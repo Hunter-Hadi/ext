@@ -213,7 +213,11 @@ const SidebarChatHistoryButton: FC<{
                       position="relative"
                     >
                       <IconButton onClick={handleCloseModal} size="small">
-                        <CloseIcon />
+                        <CloseIcon
+                          sx={{
+                            fontSize: '24px',
+                          }}
+                        />
                       </IconButton>
                       <Typography
                         fontSize={16}

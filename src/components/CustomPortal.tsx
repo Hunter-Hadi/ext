@@ -59,6 +59,13 @@ const CustomPortal: FC<{
         container: emotionRoot,
       })
       setModalContainer(shadowRootElement)
+      return () => {
+        // 开发环境StrictMode下useEffect会调用两次
+        // 这里添加移除，防止创建重复节点
+        shadowRootElement.remove()
+        emotionRoot.remove()
+        contentStyle.remove()
+      }
     }
   }, [containerId])
 

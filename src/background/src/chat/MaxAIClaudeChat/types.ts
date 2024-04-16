@@ -58,7 +58,7 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     titleTag: '',
     value: 'claude-3-haiku',
     maxTokens: 200000,
-    tags: ['Beta', 'Vision'],
+    tags: ['Vision'],
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_haiku__description`),

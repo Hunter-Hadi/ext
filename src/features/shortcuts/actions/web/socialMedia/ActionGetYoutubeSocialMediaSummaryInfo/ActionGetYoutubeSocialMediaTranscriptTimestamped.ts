@@ -1,7 +1,11 @@
 import JSON5 from 'json5'
 import { v4 as uuidV4 } from 'uuid'
 
-import { DEFAULT_AI_OUTPUT_LANGUAGE_VALUE } from '@/constants'
+import {
+  DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
+  SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID,
+  SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
+} from '@/constants'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
@@ -244,12 +248,13 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         SELECTED_TEXT: transcriptText,
       }) //获取用户的i18设置prompt
       //创建更新transcript视图逻辑
-      for (const index in chapterTextList) {
+      for (let index = 0; index < chapterTextList.length; index++) {
         if (this.isStopAction) return transcriptViewDataList //用户取消直接返回
         const startTime = Date.now() // 记录请求开始时间
         const transcriptList = await this.requestGptGetTranscriptJson(
           chapterTextList[index],
           detectLanguageResult.data,
+          index,
         ) //请求GPT返回json
         if (this.isStopAction) return transcriptViewDataList
         const endTime = Date.now() // 记录请求结束时间
@@ -290,6 +295,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       tokens?: number
     },
     outputLanguage: string,
+    index: number,
   ) {
     const maxRetries = 2 // 最大尝试次数
     let retries = 0 // 当前尝试次数
@@ -334,6 +340,12 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     Ignore all previous instructions.${outputLanguage}
     `
     console.log('simply outputLanguage', outputLanguage)
+    let prompt_id = SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID
+    let prompt_name = '[Summary] Sliced timestamped summary'
+    if (index === 0) {
+      prompt_id = SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID
+      prompt_name = '[Summary] Timestamped summary'
+    }
     const attemptRequest: () => Promise<
       TranscriptTimestampedGptType | false
     > = async () => {
@@ -362,8 +374,8 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
                 text: newPrompt,
               },
             ],
-            prompt_id: 'f6177317-8773-4036-be9b-5905116c855f',
-            prompt_name: '[Summary] Sliced timestamped summary',
+            prompt_id,
+            prompt_name,
           },
           currentAbortTaskId,
         )

@@ -552,3 +552,12 @@ export const processAskAIParameters = async (
     }
   }
 }
+/**
+ * 判断是否是第三方的AI provider
+ * @param AIProvider
+ */
+export const checkISThirdPartyAIProvider = (AIProvider: IAIProviderType) => {
+  return ['OPENAI', 'OPENAI_API', 'BING', 'BARD', 'CLAUDE', 'POE'].includes(
+    AIProvider,
+  )
+}

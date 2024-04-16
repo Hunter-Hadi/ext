@@ -17,8 +17,9 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
   placement?: TooltipProps['placement']
   TooltipProps?: TooltipProps
   sx?: SxProps
+  selectionText?: string
 }> = (props) => {
-  const { sx, placement, TooltipProps } = props
+  const { sx, placement, TooltipProps, selectionText } = props
   const { t } = useTranslation(['common', 'client'])
   const { hideRangy } = useRangy()
   return (
@@ -69,9 +70,9 @@ const FloatingContextMenuMiniMenuSearchWithAIButton: FC<{
               break
             }
           }
-          if (question) {
+          if (question||selectionText) {
             await OneShotCommunicator.send('QuickSearchSelectedText', {
-              question,
+              question:question||selectionText,
               includeHistory: false,
             })
           }

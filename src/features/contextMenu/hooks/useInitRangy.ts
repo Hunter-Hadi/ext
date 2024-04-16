@@ -37,7 +37,7 @@ import {
 } from '@/features/contextMenu/utils/selectionHelper'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import useCommands from '@/hooks/useCommands'
-import { listenIframeMessage } from '@/iframe'
+import { listenIframeMessage } from '@/iframeDocumentEnd'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import rangyLib from '@/lib/rangy/rangy-core'
@@ -133,6 +133,11 @@ const useInitRangy = () => {
             removeAllRange()
             return
           }
+        }
+        if ((event as any).MAX_AI_IGNORE) {
+          // 针对google doc或者其他页面的处理
+          // 过滤对此元素事件的处理
+          return;
         }
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
@@ -522,6 +527,7 @@ const useInitRangy = () => {
               data: {
                 value: lastOutputRef.current,
                 type: selectedDraftContextMenuType,
+                id: target.id,
                 startMarkerId: target.startMarkerId,
                 endMarkerId: target.endMarkerId,
                 caretOffset: target.caretOffset,
@@ -601,16 +607,19 @@ const useInitRangy = () => {
             inputEl.focus()
             inputEl.setSelectionRange(startIndex, endIndex)
           }
+          // 这里每次关闭后触发了一个keyup事件
+          // 在google doc下导致上方的saveHighlightedRangeAndShowContextMenu里清除了selectionElementRef.current
+          // 尽量不修改原有的逻辑，这里注释一下记录
           setTimeout(() => {
             // mock space keyup
             const keyupEvent = new KeyboardEvent('keyup', {
-              key: ' ',
-              code: 'Space',
-              location: 0,
-              bubbles: true,
-              cancelable: true,
-              shiftKey: false,
-            })
+                key: ' ',
+                code: 'Space',
+                location: 0,
+                bubbles: true,
+                cancelable: true,
+                shiftKey: false,
+              })
             ;(el || document.body).focus()
             ;(el || document.body).dispatchEvent(keyupEvent)
           }, 0)

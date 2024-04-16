@@ -78,3 +78,53 @@ export const RELEASE_LOG_URL = 'https://twitter.com/MaxAI_HQ'
 // context menu search text generate save key
 export const CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY =
   'CONTEXT_MENU_SEARCH_TEXT_LOCAL_STORAGE_KEY'
+
+// 240415: Set `Search` prompt_id to constants
+// [Art]
+export const ART__DALLE3_PROMPT_OPTIMIZATION__PROMPT_ID =
+  '816e3fe0-bd04-418e-8f6e-d33d8c4dba67' // [Art] dalle3 prompt optimization
+export const ART__TEXT_TO_IMAGE__PROMPT_ID =
+  'f19e862d-e8bb-4b09-9220-6a9a395deb6f' // [Art] text to image（最终记录）
+
+// [Search]
+export const SEARCH__SMART_QUERY__PROMPT_ID =
+  'b481731b-19e3-4713-8f0b-81fd7b2d5169' // [Search] smart query
+export const SEARCH__READ_PAGE__PROMPT_ID =
+  'cae761b7-3703-4ff9-83ab-527b7a24e53b' // [Search] read page
+export const SEARCH__ANSWER__PROMPT_ID = '73361add-2d6a-4bf3-b2a7-5097551653e7' // [Search] answer（最终记录）
+
+// [Summary]
+export const SUMMARY__SUMMARIZE_PAGE__PROMPT_ID =
+  'f734efe5-c63e-490e-a0f1-ae5a248e0f16' // [Summary] Summarize page
+export const SUMMARY__SUMMARIZE_PAGE__TL_DR__PROMPT_ID =
+  '4df133ba-b4f5-421c-989c-a2e0f0340061' // [Summary] Summarize page (TL:DR)
+export const SUMMARY__SUMMARIZE_PAGE__KEY_TAKEAWAYS__PROMPT_ID =
+  'f46cd57b-8f9d-4c66-9f8a-d9631068f61a' // [Summary] Summarize page (Key takeaways)
+export const SUMMARY__SUMMARIZE_EMAIL__PROMPT_ID =
+  '8ed1bf33-efc9-4714-8b21-09ceede3e2a8' // [Summary] Summarize email
+export const SUMMARY__SUMMARIZE_EMAIL__TL_DR__PROMPT_ID =
+  '71a59198-b0d8-4d5a-ba4f-42795b7e3318' // [Summary] Summarize email (TL:DR)
+export const SUMMARY__SUMMARIZE_EMAIL__KEY_TAKEAWAYS__PROMPT_ID =
+  '2b754799-5704-4703-b533-ba4add9614aa' // [Summary] Summarize email (Key takeaways)
+export const SUMMARY__SUMMARIZE_EMAIL__ACTION_ITEMS__PROMPT_ID =
+  '5d4f32d1-450d-4412-a8ea-a6c64c43988c' // [Summary] Summarize email (Action items)
+export const SUMMARY__SUMMARIZE_PDF__PROMPT_ID =
+  '0c8c8bd7-1072-4fb7-9fad-cf6447b33896' // [Summary] Summarize PDF
+export const SUMMARY__SUMMARIZE_PDF__TL_DR__PROMPT_ID =
+  '45ea67db-695b-4870-b467-981f137b2378' // [Summary] Summarize PDF (TL:DR)
+export const SUMMARY__SUMMARIZE_PDF__KEY_TAKEAWAYS__PROMPT_ID =
+  '2d1dd5aa-1809-4aac-952d-ff07903eb7c5' // `[Summary] Summarize PDF (Key takeaways)`
+export const SUMMARY__SUMMARIZE_VIDEO__PROMPT_ID =
+  '215bf574-3a68-4ac8-8fff-ccdd19150cb9' // [Summary] Summarize video
+export const SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID =
+  '2cb58619-3822-4d6a-8f7f-0c38d01f231e' // [Summary] Timestamped summary
+export const SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID =
+  'f6177317-8773-4036-be9b-5905116c855f' // [Summary] Sliced timestamped summary
+export const SUMMARY__SUMMARIZE_COMMENTS__PROMPT_ID =
+  '5278969d-1d86-4df2-a3e8-48e50dbbd86e' // [Summary] Summarize comments
+export const SUMMARY__SHOW_TRANSCRIPT__PROMPT_ID =
+  '029d848d-7c28-4a3a-baae-353292ea7691' // [Summary] Show transcript
+
+// Send notification
+export const NOTIFICATION__SUMMARY__TOKENS_HAVE_REACHED_MAXIMUM_LIMIT__UUID =
+  '95fbacd5-f4a6-4fca-9d77-ac109ae4a94a' // [Summary] tokens have reached maximum limit

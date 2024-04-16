@@ -268,3 +268,6 @@ export const clientRunBackgroundFunction = async <
     return null
   }
 }
+
+export const wait = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms))

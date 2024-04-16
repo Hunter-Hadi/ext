@@ -1,4 +1,7 @@
 import { InputAssistantButtonElementRouteMap } from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonManager'
+import ChatMessagesContext, {
+  type IChatMessagesContextData,
+} from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import {
   discordGetChatMessages,
   discordGetDraftContent,
@@ -11,9 +14,6 @@ import {
   whatsAppGetChatMessages,
   whatsAppGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/whatsApp'
-import ChatMessagesContext, {
-  type IChatMessagesContextData,
-} from '@/features/shortcuts/utils/ChatMessagesContext'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getChatMessagesContent = async (

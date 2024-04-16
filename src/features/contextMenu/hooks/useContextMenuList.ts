@@ -34,17 +34,17 @@ const useContextMenuList = (
       'id',
     )
     originContextMenuListRef.current = originContextMenuList
-    let groupByContextMenuList = groupByContextMenuItem(originContextMenuList)
-    groupByContextMenuList = sortBy(groupByContextMenuList, (group) => {
+    let menuList = groupByContextMenuItem(originContextMenuList)
+    menuList = sortBy(menuList, (group) => {
       if (group.data.editable) {
         return buttonSettings?.contextMenuPosition === 'end' ? 0 : 2
       }
       return 1
     })
     if (favoriteContextMenuGroup && needFavoriteContextMenu) {
-      groupByContextMenuList.unshift(favoriteContextMenuGroup)
+      menuList.unshift(favoriteContextMenuGroup)
     }
-    return groupByContextMenuList
+    return menuList
   }, [buttonSettings, favoriteContextMenuGroup])
   const contextMenuList = useMemo(() => {
     if (query?.trim()) {

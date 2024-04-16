@@ -6,14 +6,15 @@ import { ActionSetVariablesModalConfig } from '@/features/shortcuts/components/A
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import { AskChatGPTActionType } from '@/features/shortcuts/types/Extra/AskChatGPTActionType'
+import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 import { OperationElementConfigType } from '@/features/shortcuts/types/Extra/OperationElementConfigType'
 import SliceTextActionType from '@/features/shortcuts/types/Extra/SliceTextActionType'
 import SummarizeActionType from '@/features/shortcuts/types/Extra/SummarizeActionType'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import { ICommentData } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import { ITextHandlerParameters } from '@/features/shortcuts/utils/textHelper'
 import { IWebsiteContext } from '@/features/websiteContext/background'
 
-import { ICommentData } from '../utils/SocialMediaPostContext'
 import AssertionType from './IOS_WF/AssertionType'
 import FaceTimeType from './IOS_WF/FaceTimeType'
 import WFArchiveFormat from './IOS_WF/WFArchiveFormat'
@@ -211,6 +212,8 @@ interface ActionParameters {
   // 是否需要Action产生的变量进行MiddleOut:GET_EMAIL_CONTENTS_OF_WEBPAGE\GET_SOCIAL_MEDIA_POST_CONTENT_OF_WEBPAGE
   isVariableMiddleOutEnabled?: boolean
   SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS?: ICommentData[] | undefined
+  // 后端调用Action需要的参数
+  MaxAIPromptActionConfig?: MaxAIPromptActionConfig
 }
 
 export default ActionParameters

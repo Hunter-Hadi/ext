@@ -106,14 +106,14 @@ const SidebarPromotionDialog = () => {
         title: t('sidebar__promotion_dialog__content_item4__title'),
         description: t('sidebar__promotion_dialog__content_item4__description'),
       },
-      {
-        title: t('sidebar__promotion_dialog__content_item5__title'),
-        description: t('sidebar__promotion_dialog__content_item5__description'),
-      },
-      {
-        title: t('sidebar__promotion_dialog__content_item6__title'),
-        description: t('sidebar__promotion_dialog__content_item6__description'),
-      },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item5__title'),
+      //   description: t('sidebar__promotion_dialog__content_item5__description'),
+      // },
+      // {
+      //   title: t('sidebar__promotion_dialog__content_item6__title'),
+      //   description: t('sidebar__promotion_dialog__content_item6__description'),
+      // },
     ]
   }, [t])
 
@@ -229,7 +229,7 @@ const SidebarPromotionDialog = () => {
         {/* cta button */}
         <Box flexShrink={0}>
           <Button
-            variant="contained"
+            variant="promotionContained"
             fullWidth
             href={`https://app.maxai.me/pricing`}
             target={'_blank'}

@@ -208,11 +208,6 @@ const OverrideCode: FC<{ children: React.ReactNode; className?: string }> = (
  * @link - https://github.com/remarkjs/react-markdown/issues/785
  */
 const preprocessLaTeX = (content: string) => {
-  content = content
-    .split('$')
-    .join('\\$')
-    .replace(/\\\$\\\$/g, '$$$$')
-  // Replace block-level LaTeX delimiters \[ \] with $$ $$
   const blockProcessedContent = content.replace(
     /\\\[(.*?)\\\]/gs,
     (_, equation) => `$$${equation}$$`,
@@ -247,9 +242,9 @@ const CustomMarkdown: FC<{
             remarkGfm,
             [
               remarkMath,
-              // {
-              //   singleDollarTextMath: false,
-              // },
+              {
+                singleDollarTextMath: false,
+              },
             ],
           ]}
           rehypePlugins={[rehypeKatex]}

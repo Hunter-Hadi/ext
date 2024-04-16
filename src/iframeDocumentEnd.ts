@@ -1,5 +1,6 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
+import { debounce } from 'lodash-es'
 import { v4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
@@ -12,6 +13,7 @@ import {
   IVirtualIframeSelectionElement,
 } from '@/features/contextMenu/types'
 import {
+  getOfficeWordEditElement,
   getOfficeWordSelectedElements,
   getOfficeWordSelectionRect,
   isOfficeWordEditing,
@@ -117,7 +119,7 @@ const initIframe = async () => {
       // log.info('iframe iframeSelectionString: ', iframeSelectionString)
       // log.info('iframe screen', window.screenLeft, window.screenTop)
       let iframeSelectionRect: IRangyRect | null = null
-      if (isOfficeWordEditorFrame()) {
+      if (isOfficeWordEditorFrame() && isOfficeWordEditing()) {
         // office docs 从上往下选择时，位置获取错误整体往下偏移，此处以selected元素为准
         selectionRect =
           (getOfficeWordSelectionRect() as DOMRect) || selectionRect
@@ -285,7 +287,47 @@ const initIframe = async () => {
   // office docs页面初始化
   if (isOfficeWordEditorFrame()) {
     const editPanel = document.querySelector('#WACViewPanel') as HTMLDivElement
-    editPanel?.addEventListener('mousedown', handleMouseDown)
+    const editElement = getOfficeWordEditElement()
+    editElement?.addEventListener('focus', (event) => {
+      // 获取到焦点
+      handleClickOrKeyUp({
+        target: event.target,
+      } as KeyboardEvent)
+    })
+    editPanel?.addEventListener('mousedown', (event) => {
+      handleMouseDown(event)
+      // mousedown的时候hide menu
+      const rect = document.body.getBoundingClientRect().toJSON()
+      window.parent.postMessage(
+        {
+          id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+          type: 'iframeSelection',
+          data: {
+            virtual: true,
+            iframeId,
+            tagName: '',
+            id: '',
+            className: '',
+            windowRect: rect,
+            targetRect: rect,
+            selectionRect: rect,
+            iframeSelectionRect: rect,
+            iframePosition: [0, 0],
+            selectionText: '',
+            selectionHTML: '',
+            editableElementSelectionText: '',
+            editableElementSelectionHTML: '',
+            eventType: event instanceof MouseEvent ? 'mouseup' : 'keyup',
+            isEmbedPage: false,
+            isEditableElement: true,
+            caretOffset: 0,
+            startMarkerId: '',
+            endMarkerId: '',
+          } as IVirtualIframeSelectionElement,
+        },
+        '*',
+      )
+    })
     editPanel?.addEventListener('mouseup', (event) => {
       const target = event.target as HTMLDivElement
       const rect = target.getBoundingClientRect()
@@ -300,7 +342,6 @@ const initIframe = async () => {
             })
           } else {
             // 无选区，切换光标，获取当前坐标的元素
-            // TODO show input menu时，点击页面其他地方应该隐藏input menu
             handleClickOrKeyUp({
               ...event,
               target: document.elementFromPoint(rect.x, rect.y),
@@ -309,6 +350,17 @@ const initIframe = async () => {
         }
       }, 50)
     })
+    editPanel?.addEventListener('scroll', debounce(event => {
+      if (isOfficeWordEditing()) {
+        if (getOfficeWordSelectedElements().length) {
+          // 有选区，重置下位置
+          handleClickOrKeyUp({
+            ...event,
+            target: document.activeElement
+          })
+        }
+      }
+    }, 200))
   }
   Browser.runtime.onMessage.addListener((message, sender) => {
     if (sender.id === Browser.runtime.id) {

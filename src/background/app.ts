@@ -316,6 +316,32 @@ const initChromeExtensionUpdated = async () => {
       })
     }
   }
+  /**
+   * @since 2024-04-16
+   * @description 3.2.1版本插件升级的时候针对free users弹出updated页面
+   */
+  const executeMaxAIUpdatedPromotion = async () => {
+    const onBoardingData = await getChromeExtensionOnBoardingData()
+    // 如果已经弹窗过了，就不再弹窗
+    if (onBoardingData.ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK) {
+      return
+    }
+    const result = await getChromeExtensionUserInfo(true)
+    await setChromeExtensionOnBoardingData(
+      'ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK',
+      true,
+    )
+    const url = 'https://app.maxai.me/updated'
+    if (result?.role) {
+      // 只针对免费用户
+      if (result.role.name === 'free') {
+        await Browser.tabs.create({ url })
+      }
+    } else {
+      // 没登录也跳转
+      await Browser.tabs.create({ url })
+    }
+  }
   if (APP_VERSION === '2.4.3') {
     setTimeout(
       executeBlackFridayPromotion,
@@ -337,6 +363,14 @@ const initChromeExtensionUpdated = async () => {
   if (APP_VERSION === '3.0.6') {
     setTimeout(
       () => executeMaxAIOneYearPromotion(true),
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
+  }
+
+  // 3.2.1这一版，对于free users弹出促销页面
+  if (APP_VERSION === '3.2.1') {
+    setTimeout(
+      () => executeMaxAIUpdatedPromotion(),
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }

@@ -29,6 +29,8 @@ export type OnBoardingKeyType =
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${WritingAssistantButtonGroupConfigHostType}_TIMES`
   // MaxAI 3.0版本OnBoarding
   | 'ON_BOARDING_MAXAI_3_0'
+  //MaxAI 3.2.1版本
+  | 'ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK'
 
 export type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number

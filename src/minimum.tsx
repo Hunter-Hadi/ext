@@ -1,3 +1,5 @@
+import '@/i18n'
+
 import createCache from '@emotion/cache'
 import { CacheProvider } from '@emotion/react'
 import React from 'react'
@@ -13,7 +15,6 @@ import {
 import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 
 import SPARootProtector from './utils/SPARootProtector'
-import '@/i18n'
 
 const AppNameToClassName = String(MAXAI_CHROME_EXTENSION_ID)
   .toLowerCase()

@@ -31,6 +31,6 @@ export const UserQuotaUsageState = atom<
     advancedText: 0,
     imageGenerate: 0,
     loading: false,
-    updateAt: 0,
+    updateAt: Date.now(),
   },
 })

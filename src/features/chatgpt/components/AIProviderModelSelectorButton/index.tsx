@@ -15,7 +15,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isThirdPartyAIProvider } from '@/features/chatgpt'
 import AIModelSelectorCard from '@/features/chatgpt/components/AIProviderModelSelectorCard'
 import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
-import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
@@ -214,7 +214,7 @@ const AIProviderModelSelectorButton: FC<{
                 }}
               />
             ) : (
-              <AIProviderIcon aiProviderType={currentChatAIProvider} />
+              <AIModelIcons aiModelValue={currentChatModel} />
             )}
             {currentModelDetail?.label && (
               <Typography

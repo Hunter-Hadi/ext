@@ -73,10 +73,10 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     poweredBy: 'OpenAI',
     description: (t) =>
       t(`client:provider__chatgpt__model__gpt_3_5_16k__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT3_5_16K',
-      roles: ['pro', 'elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_GPT3_5_16K',
+    //   roles: ['pro', 'elite'],
+    // },
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -88,10 +88,10 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     description: (t) =>
       t('client:provider__openai_api__model__gpt_4__description'),
     maxTokens: 8192,
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4',
-      roles: ['pro', 'elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_GPT4',
+    //   roles: ['pro', 'elite'],
+    // },
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -103,10 +103,10 @@ export const USE_CHAT_GPT_PLUS_MODELS: IAIProviderModel[] = [
     description: (t) =>
       t('client:provider__chatgpt__model__gpt_4_vision__description'),
     maxTokens: 128000,
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GPT4_VISION',
-      roles: ['pro', 'elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_GPT4_VISION',
+    //   roles: ['pro', 'elite'],
+    // },
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   // {

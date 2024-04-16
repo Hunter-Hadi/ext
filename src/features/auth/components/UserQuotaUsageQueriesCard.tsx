@@ -1,9 +1,12 @@
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
+import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItem, { listItemClasses } from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
+import Stack from '@mui/material/Stack'
+import Typography from '@mui/material/Typography'
 import dayjs from 'dayjs'
 import startCase from 'lodash-es/startCase'
 import React from 'react'
@@ -85,22 +88,32 @@ const UserQuotaUsageQueriesCard = () => {
               textAlign: 'right',
             }}
             primary={
-              <Box component={'span'}>
-                <TextOnlyTooltip
-                  placement={'top'}
-                  title={dayjs(userQuotaUsage.updateAt).format(
-                    'YYYY-MM-DD HH:mm:ss',
-                  )}
+              <TextOnlyTooltip
+                placement={'top'}
+                title={dayjs(userQuotaUsage.updateAt).format(
+                  'YYYY-MM-DD HH:mm:ss',
+                )}
+              >
+                <Stack
+                  direction="row"
+                  alignItems="center"
+                  spacing={1}
+                  ml="auto"
+                  justifyContent={'flex-end'}
+                  width="max-content"
                 >
-                  <span>
+                  {userQuotaUsage.loading ? (
+                    <CircularProgress size={16} />
+                  ) : null}
+                  <Typography fontSize={14} lineHeight={1.5}>
                     {t('quota_usage_card:reset_on_date', {
                       DATE: dayjs(userQuotaUsage.updateAt).format(
                         'MMM D, YYYY',
                       ),
                     })}
-                  </span>
-                </TextOnlyTooltip>
-              </Box>
+                  </Typography>
+                </Stack>
+              </TextOnlyTooltip>
             }
           />
         </ListItem>
@@ -143,7 +156,7 @@ const UserQuotaUsageQueriesCard = () => {
         <Divider />
         <ListItem>
           <ListItemText
-            primary={t('quota_usage_card:category__image')}
+            primary={t('quota_usage_card:category__image_generate')}
             secondary={'DALL·E 3'}
           />
 

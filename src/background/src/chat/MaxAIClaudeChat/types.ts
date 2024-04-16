@@ -17,10 +17,10 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
       `${numberWithCommas(100000, 0)} ${t(
         'client:provider__model__tooltip_card__label__max_token__suffix',
       )}`,
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
-      roles: ['pro', 'elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
+    //   roles: ['pro', 'elite'],
+    // },
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -32,10 +32,10 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_2_100k__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2',
-      roles: ['pro', 'elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2',
+    //   roles: ['pro', 'elite'],
+    // },
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -47,10 +47,10 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_2_1_200k__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2_1',
-      roles: ['elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V2_1',
+    //   roles: ['elite'],
+    // },
     uploadFileConfig: MAXAI_NORMAL_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -62,10 +62,10 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_haiku__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
-      roles: ['elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
+    //   roles: ['elite'],
+    // },
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -77,10 +77,10 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_sonnet__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
-      roles: ['elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
+    //   roles: ['elite'],
+    // },
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
   {
@@ -92,10 +92,10 @@ export const MAXAI_CLAUDE_MODELS: IAIProviderModel[] = [
     poweredBy: 'Anthropic',
     description: (t) =>
       t(`client:provider__claude__model__claude_3_opus__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
-      roles: ['elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
+    //   roles: ['elite'],
+    // },
     uploadFileConfig: MAXAI_VISION_MODEL_UPLOAD_CONFIG,
   },
 ]

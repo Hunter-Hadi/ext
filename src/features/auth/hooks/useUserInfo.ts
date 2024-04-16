@@ -84,6 +84,16 @@ const useUserInfo = () => {
       isOneTimePayUser: userInfo?.role?.is_one_times_pay_user || false,
     }
   }, [userInfo])
+
+  // 是否是付费用户
+  const isPayingUser = useMemo(() => {
+    return (
+      currentUserPlan.name === 'pro' ||
+      currentUserPlan.name === 'elite' ||
+      currentUserPlan.name === 'basic'
+    )
+  }, [currentUserPlan])
+
   return {
     currentUserPlan,
     quotaLeftText,
@@ -94,6 +104,8 @@ const useUserInfo = () => {
 
     userQuotaUsage,
     syncUserQuotaUsageInfo,
+
+    isPayingUser,
   }
 }
 export { useUserInfo }

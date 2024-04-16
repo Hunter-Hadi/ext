@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next'
 import Browser from 'webextension-polyfill'
 
 import { CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY } from '@/constants'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import SettingsFeatureCardLayout from '@/pages/settings/layout/SettingsFeatureCardLayout'
@@ -45,9 +44,7 @@ const useCountDown = (duration: number) => {
   const minutes = Math.floor((timeLeft / (1000 * 60)) % 60)
   const seconds = Math.floor((timeLeft / 1000) % 60)
 
-  const formattedTime = `${hours
-    .toString()
-    .padStart(2, '0')}:${minutes
+  const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes
     .toString()
     .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
   const showHoursOrMinutes =
@@ -86,21 +83,16 @@ const FeatureChatGPTStableModeCard: FC = () => {
   const [value, setValue] = useState(30) // 默认30分钟
   const [leftDuration, setLeftDuration] = useState(0) // 毫秒
   const [duration, setDuration] = useState(0) // 毫秒
-  const {
-    isRunning,
-    formattedTime,
-    timeLeft,
-    showHoursOrMinutes,
-  } = useCountDown(leftDuration)
+  const { isRunning, formattedTime, timeLeft, showHoursOrMinutes } =
+    useCountDown(leftDuration)
   const setStopTime = async () => {
     const durationValue = value
     await Browser.storage.local.set({
-      [CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY]: JSON.stringify(
-        {
+      [CHROME_EXTENSION_LOCAL_STOP_KEEP_CHAT_IFRAME_TIME_STAMP_SAVE_KEY]:
+        JSON.stringify({
           start: dayjs().utc(),
           end: dayjs().utc().add(durationValue, 'minutes'),
-        },
-      ),
+        }),
     })
     setDuration(durationValue * 60 * 1000)
     setLeftDuration(durationValue * 60 * 1000)
@@ -334,40 +326,20 @@ const MinutesSlider: FC<{
   const { defaultValue, onChange, disabled } = props
   const [value, setValue] = useState<number>(defaultValue || 30)
   return (
-    <PermissionWrapper
-      allowedRoles={['elite', 'pro', 'pro_gift', 'new_user']}
-      sceneType={'CHATGPT_STABLE_MODE'}
-      onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
-        if (newValue > 30) {
-          if (value > 30) {
-            // 重置回30分钟
-            setValue(30)
-            onChange && onChange(30)
-          }
-          return {
-            success: false,
-          }
-        }
-        return {
-          success: true,
-        }
+    <Slider
+      valueLabelFormat={(value) => (value > 0 ? `${value} minutes` : '0')}
+      disabled={disabled}
+      value={value}
+      onChange={(event, newValue) => {
+        setValue(newValue as number)
+        onChange && onChange(newValue as number)
       }}
-    >
-      <Slider
-        valueLabelFormat={(value) => (value > 0 ? `${value} minutes` : '0')}
-        disabled={disabled}
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue as number)
-          onChange && onChange(newValue as number)
-        }}
-        valueLabelDisplay="auto"
-        step={30}
-        marks={marks}
-        min={30}
-        max={480}
-      />
-    </PermissionWrapper>
+      valueLabelDisplay="auto"
+      step={30}
+      marks={marks}
+      min={30}
+      max={480}
+    />
   )
 }
 export default FeatureChatGPTStableModeCard

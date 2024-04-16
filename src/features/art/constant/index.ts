@@ -11,10 +11,10 @@ export const MAXAI_IMAGE_GENERATE_MODELS: IArtTextToImageModel[] = [
     exampleImage: '',
     poweredBy: 'OpenAI',
     description: (t) => t(`client:art__model__dalle3__description`),
-    permission: {
-      sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
-      roles: ['elite'],
-    },
+    // permission: {
+    //   sceneType: 'MAXAI_PAID_MODEL_GEMINI_PRO',
+    //   roles: ['elite'],
+    // },
     maxGenerateCount: 1,
     aspectRatios: [
       {

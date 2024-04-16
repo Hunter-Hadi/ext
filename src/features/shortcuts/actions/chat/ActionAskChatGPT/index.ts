@@ -2,8 +2,10 @@ import last from 'lodash-es/last'
 import { v4 as uuidV4 } from 'uuid'
 
 import { clientAskAIQuestion } from '@/background/src/chat/util'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import {
+  isPermissionCardSceneType,
+  isUsageLimitPermissionSceneType,
+} from '@/features/auth/components/PermissionWrapper/types'
 import {
   ContentScriptConnectionV2,
   getAIProviderChatFiles,
@@ -33,7 +35,6 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { chatGPTCommonErrorInterceptor } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -172,39 +173,39 @@ export class ActionAskChatGPT extends Action {
         clientMessageChannelEngine &&
         shortcutsMessageChannelEngine
       ) {
-        // 判断是否触达dailyUsageLimited开始:
-        const fallbackId = {
-          Chat: 'chat',
-          Summary: 'summary_chat',
-          Search: 'search_chat',
-          Art: 'art',
-        }[clientConversationEngine.currentSidebarConversationType]
-        console.log(
-          `contextMenu show Text finally: [${
-            contextMenu?.text || fallbackId
-          }]-[${contextMenu?.id || fallbackId}]`,
-        )
-        const { data: isDailyUsageLimit } =
-          await clientMessageChannelEngine.postMessage({
-            event: 'Client_logCallApiRequest',
-            data: {
-              name: contextMenu?.text || fallbackId,
-              id: contextMenu?.id || fallbackId,
-              host: getCurrentDomainHost(),
-            },
-          })
-        if (isDailyUsageLimit) {
-          // 触达dailyUsageLimited，向用户展示提示信息
-          await clientConversationEngine.pushPricingHookMessage(
-            'TOTAL_CHAT_DAILY_LIMIT',
-          )
-          // 记录日志
-          authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
-          // 展示sidebar
-          showChatBox()
-          this.error = 'TOTAL_CHAT_DAILY_LIMIT'
-          return
-        }
+        // // 判断是否触达dailyUsageLimited开始:
+        // const fallbackId = {
+        //   Chat: 'chat',
+        //   Summary: 'summary_chat',
+        //   Search: 'search_chat',
+        //   Art: 'art',
+        // }[clientConversationEngine.currentSidebarConversationType]
+        // console.log(
+        //   `contextMenu show Text finally: [${
+        //     contextMenu?.text || fallbackId
+        //   }]-[${contextMenu?.id || fallbackId}]`,
+        // )
+        // const { data: isDailyUsageLimit } =
+        //   await clientMessageChannelEngine.postMessage({
+        //     event: 'Client_logCallApiRequest',
+        //     data: {
+        //       name: contextMenu?.text || fallbackId,
+        //       id: contextMenu?.id || fallbackId,
+        //       host: getCurrentDomainHost(),
+        //     },
+        //   })
+        // if (isDailyUsageLimit) {
+        //   // 触达dailyUsageLimited，向用户展示提示信息
+        //   await clientConversationEngine.pushPricingHookMessage(
+        //     'TOTAL_CHAT_DAILY_LIMIT',
+        //   )
+        //   // 记录日志
+        //   authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+        //   // 展示sidebar
+        //   showChatBox()
+        //   this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+        //   return
+        // }
         // 插入用户消息
         if (
           askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
@@ -348,9 +349,10 @@ export class ActionAskChatGPT extends Action {
 
           if (errorMessage) {
             if (isPermissionCardSceneType(errorMessage)) {
-              await clientConversationEngine.pushPricingHookMessage(
-                errorMessage,
-              )
+              const sceneType = isUsageLimitPermissionSceneType(errorMessage)
+                ? 'TOTAL_CHAT_DAILY_LIMIT'
+                : errorMessage
+              await clientConversationEngine.pushPricingHookMessage(sceneType)
             } else {
               await clientConversationEngine.pushMessage({
                 type: 'system',

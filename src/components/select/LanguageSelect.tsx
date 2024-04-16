@@ -1,4 +1,5 @@
 import Autocomplete from '@mui/material/Autocomplete'
+import Box from '@mui/material/Box'
 import { inputBaseClasses } from '@mui/material/InputBase'
 import { inputLabelClasses } from '@mui/material/InputLabel'
 import { SxProps } from '@mui/material/styles'
@@ -6,8 +7,6 @@ import TextField from '@mui/material/TextField'
 import React, { FC, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { DEFAULT_AI_OUTPUT_LANGUAGE_ID } from '@/constants'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 import { LANGUAGES_OPTIONS } from '@/utils/staticData'
 
@@ -72,29 +71,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
   }, [open])
 
   return (
-    <PermissionWrapper
-      sceneType={'AI_RESPONSE_LANGUAGE'}
-      allowedRoles={['elite', 'pro', 'pro_gift', 'new_user']}
-      onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
-        if (newValue.value !== DEFAULT_AI_OUTPUT_LANGUAGE_ID) {
-          // 重置回默认语言
-          setValue(LANGUAGES_OPTIONS[0])
-          onChange(LANGUAGES_OPTIONS[0].value)
-        }
-        return {
-          success: false,
-        }
-      }}
-      TooltipProps={{
-        placement: 'right',
-      }}
-      BoxProps={{
-        sx: {
-          maxWidth: 'fit-content',
-          ...boxSx,
-        },
-      }}
-    >
+    <Box sx={boxSx}>
       <Autocomplete
         open={open}
         onOpen={() => {
@@ -146,7 +123,7 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
           />
         )}
       />
-    </PermissionWrapper>
+    </Box>
   )
 }
 

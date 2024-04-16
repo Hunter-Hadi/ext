@@ -26,7 +26,6 @@ import {
 } from '@/features/shortcuts/utils/tokenizer'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
-import { isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
 export interface IAskAIQuestion
   extends Omit<IUserChatMessage, 'messageId' | 'conversationId'> {
   conversationId?: string
@@ -170,21 +169,21 @@ const useClientChat = () => {
     } else {
       conversationId = await createConversation()
     }
-    // 2.付费卡点判断
-    // PDF付费卡点
-    if (
-      isMaxAIPDFPage() &&
-      currentUserPlan.name === 'free' &&
-      !currentUserPlan.isNewUser
-    ) {
-      // 如果是PDF页面 &&
-      // 如果是免费用户 &&
-      // 如果不是新用户 &&
-      // 如果有contextMenu
-      // 则提示用户付费
-      await pushPricingHookMessage('PDF_AI_VIEWER')
-      return
-    }
+    // // 2.付费卡点判断
+    // // PDF付费卡点
+    // if (
+    //   isMaxAIPDFPage() &&
+    //   currentUserPlan.name === 'free' &&
+    //   !currentUserPlan.isNewUser
+    // ) {
+    //   // 如果是PDF页面 &&
+    //   // 如果是免费用户 &&
+    //   // 如果不是新用户 &&
+    //   // 如果有contextMenu
+    //   // 则提示用户付费
+    //   await pushPricingHookMessage('PDF_AI_VIEWER')
+    //   return
+    // }
     // 3. Model - 付费卡点
     const currentConversation = await getCurrentConversation()
     // 如果 执行的 actions 中有 ASK_CHATGPT 的话，就判断是否有 付费卡点

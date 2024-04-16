@@ -349,8 +349,8 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
       if (result.status === 'OK' && result?.msg === 'success') {
         const data = result.data
         return {
-          fastText: data.advanced_text,
-          advancedText: data.fast_text,
+          fastText: data.fast_text,
+          advancedText: data.advanced_text,
           imageGenerate: data.image_generate,
         } as IUserQuotaUsageInfo
       }

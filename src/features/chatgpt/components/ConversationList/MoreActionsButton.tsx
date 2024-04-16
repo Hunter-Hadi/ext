@@ -15,6 +15,7 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientForceRemoveConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -32,11 +33,12 @@ const MoreActionsButton: FC<{
     onRename,
     onDelete,
   } = props
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const { cleanConversation } = useClientConversation()
   const { t } = useTranslation(['client'])
 
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const moreActionsMenuOpen = Boolean(anchorEl);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const moreActionsMenuOpen = Boolean(anchorEl)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
 
   const deleteModalTitle = useMemo(() => {
@@ -66,21 +68,25 @@ const MoreActionsButton: FC<{
   }, [conversationType, t])
 
   const handleClose = (event: MouseEvent<HTMLElement>) => {
-    event.preventDefault();
-    event.stopPropagation();
-    setAnchorEl(null);
-  };
+    event.preventDefault()
+    event.stopPropagation()
+    setAnchorEl(null)
+  }
 
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
   return (
     <>
-      <TextOnlyTooltip placement={'top'} title={t('client:immersive_chat__more_actions_button__title')}>
+      <TextOnlyTooltip
+        placement={'top'}
+        title={t('client:immersive_chat__more_actions_button__title')}
+      >
         <IconButton
+          disabled={smoothConversationLoading}
           onClick={(event: MouseEvent<HTMLElement>) => {
-            event.preventDefault();
-            event.stopPropagation();
-            setAnchorEl(event.currentTarget);
+            event.preventDefault()
+            event.stopPropagation()
+            setAnchorEl(event.currentTarget)
           }}
           sx={{
             p: 0.5,
@@ -104,15 +110,17 @@ const MoreActionsButton: FC<{
               filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
               mt: 1,
             },
-          }
+          },
         }}
         transformOrigin={{ horizontal: 'left', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'left', vertical: 'center' }}
       >
-        <MenuItem onClick={(event) => {
-          onRename?.()
-          handleClose(event)
-        }}>
+        <MenuItem
+          onClick={(event) => {
+            onRename?.()
+            handleClose(event)
+          }}
+        >
           <ListItemIcon>
             <ContextMenuIcon icon={'DefaultIcon'} size={16} />
           </ListItemIcon>
@@ -128,18 +136,23 @@ const MoreActionsButton: FC<{
             </Typography>
           </ListItemText>
         </MenuItem>
-        <MenuItem onClick={(event) => {
-          setDeleteModalOpen(true)
-          handleClose(event)
-        }}
+        <MenuItem
+          onClick={(event) => {
+            setDeleteModalOpen(true)
+            handleClose(event)
+          }}
           sx={{
-            color: '#f44336'
+            color: '#f44336',
           }}
         >
           <ListItemIcon>
-            <ContextMenuIcon icon={'Delete'} size={16} sx={{
-              color: '#f44336'
-            }} />
+            <ContextMenuIcon
+              icon={'Delete'}
+              size={16}
+              sx={{
+                color: '#f44336',
+              }}
+            />
           </ListItemIcon>
           <ListItemText>
             <Typography
@@ -152,7 +165,7 @@ const MoreActionsButton: FC<{
             </Typography>
           </ListItemText>
         </MenuItem>
-      </Menu >
+      </Menu>
 
       <Modal
         open={deleteModalOpen}

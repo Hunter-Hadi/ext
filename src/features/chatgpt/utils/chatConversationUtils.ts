@@ -42,13 +42,15 @@ export const clientForceRemoveConversation = async (conversationId: string) => {
 /**
  * 获取登陆用户所有的conversation
  */
-export const clientGetUserAllConversations = async () => {
+export const clientGetUserAllConversations = async (): Promise<
+  IChatConversation[]
+> => {
   try {
     const port = new ContentScriptConnectionV2()
     const result = await port.postMessage({
       event: 'Client_getAllConversation',
     })
-    return result.success ? (result.data as IChatConversation[]) : undefined
+    return result.success ? (result.data as IChatConversation[]) : []
   } catch (e) {
     return []
   }

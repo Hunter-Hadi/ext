@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Het nieuwste en meest geavanceerde model van Google. Het biedt snellere snelheid, een baanbrekend contextvenster van 1M tokens, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videoverwerking.",
     "immersive_chat__chat_history__restore_button__title": "Chats herstellen",
     "immersive_chat__chat_history__restore_modal__title": "Weet je zeker dat je al je Chat-, Zoek- en Kunstgeschiedenis wilt herstellen naar de lokale versie? Houd er rekening mee dat deze actie niet ongedaan kan worden gemaakt.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Zoek & Kunst conversies na herstel:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat- en zoekgeschiedenis om te herstellen:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, herstellen",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuleren"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuleren",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 gesprek hersteld",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} gesprekken hersteld"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

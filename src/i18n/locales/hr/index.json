@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model tvrtke Google. Nudi bržu brzinu, probojni prozor konteksta od 1M tokena, poboljšanu sigurnost i napredne mogućnosti obrade teksta, koda, slika, zvuka i videozapisa.",
     "immersive_chat__chat_history__restore_button__title": "Vrati razgovore",
     "immersive_chat__chat_history__restore_modal__title": "Jeste li sigurni da želite vratiti sve svoje povijesti razgovora, pretraživanja i umjetnosti na lokalnu verziju? Imajte na umu da jednom kada nastavite, radnju ne možete poništiti.",
-    "immersive_chat__chat_history__restore_modal__description": "Razgovori i pretvorbe pretraživanja i umjetnosti nakon vraćanja:",
+    "immersive_chat__chat_history__restore_modal__description": "Razgovori u chatu, pretraživanje i umjetnički razgovori koji će biti obnovljeni:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, vrati",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Odustani"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Odustani",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovljen je 1 razgovor",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljeno je {{CONVERSATION_COUNT}} razgovora"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

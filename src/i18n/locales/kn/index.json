@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ಗೂಗಲ್ ಯಾವುದೇ ಹೊಸತು ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಒಂದು ಪರಿಹಾರಕಾರಿ 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ, ಮೇಲ್ಮೈಯ ಸುರಕ್ಷತೆ ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಮುಂದಿನ ಸುಗಮತೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ.",
     "immersive_chat__chat_history__restore_button__title": "ಚಾಟ್‌ಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಿ",
     "immersive_chat__chat_history__restore_modal__title": "ನೀವು ಎಲ್ಲಾ ಚಾಟ್, ಹುಡುಕಾಟ ಮತ್ತು ಕಲೆ ಇತಿಹಾಸವನ್ನು ಸ್ಥಳೀಯ ಆವೃತ್ತಿಗೆ ಮರುಸ್ಥಾಪಿಸಲು ಖಚಿತವಾಗಿ ಬಯಸುತ್ತೀರಾ? ಮುಂದುವರಿದರೆ, ಕ್ರಿಯೆಯನ್ನು ಮರುಪಡೆಯಲು ಸಾಧ್ಯವಿಲ್ಲ.",
-    "immersive_chat__chat_history__restore_modal__description": "ಮರುಸ್ಥಾಪನೆ ನಂತರ ಚಾಟ್, ಹುಡುಕಾಟ ಮತ್ತು ಕಲೆ ಪರಿವರ್ತನೆಗಳು:",
+    "immersive_chat__chat_history__restore_modal__description": "ಚಾಟ್ ಮತ್ತು ಹುಡುಕು & ಕಲಾ ಸಂಭಾಷಣೆಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗುತ್ತದೆ:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ಹೌದು, ಮರುಸ್ಥಾಪಿಸಿ",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ರದ್ದು ಮಾಡಿ"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ರದ್ದು ಮಾಡಿ",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 ಸಂಭಾಷಣೆ ಮರುಸ್ಥಾಪಿತವಾಗಿದೆ",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} ಸಂಭಾಷಣೆಗಳು ಮರುಸ್ಥಾಪಿತವಾಗಿವೆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

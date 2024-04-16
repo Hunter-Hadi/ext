@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avancerede model. Den tilbyder hurtigere hastighed, et gennembrud med 1M token kontekstvindue, forbedret sikkerhed og avancerede funktioner inden for tekst, kode, billede, lyd og video behandling.",
     "immersive_chat__chat_history__restore_button__title": "Gendan chats",
     "immersive_chat__chat_history__restore_modal__title": "Er du sikker på, at du vil gendanne al din Chat, Søgning og Kunst historik til den lokale version? Bemærk venligst, at handlingen ikke kan fortrydes, når du har fortsat.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Søgning & Kunst konverteringer efter gendannelse:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat & Søg & Kunst samtaler der skal genoprettes:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, gendan",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuller"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuller",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 samtale genoprettet",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} samtaler genoprettet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

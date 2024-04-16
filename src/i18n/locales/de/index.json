@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Das neueste und fortschrittlichste Modell von Google. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Fähigkeiten in den Bereichen Text-, Code-, Bild-, Audio- und Videobearbeitung.",
     "immersive_chat__chat_history__restore_button__title": "Chats wiederherstellen",
     "immersive_chat__chat_history__restore_modal__title": "Möchten Sie wirklich alle Ihre Chat-, Such- und Kunstverlaufsinformationen zur lokalen Version wiederherstellen? Bitte beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat-, Such- und Kunstkonversationen nach der Wiederherstellung:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat- und Such- sowie Kunstunterhaltungen, die wiederhergestellt werden sollen:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, wiederherstellen",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 Unterhaltung wiederhergestellt",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} Unterhaltungen wiederhergestellt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ đột phá, tính an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
     "immersive_chat__chat_history__restore_button__title": "Khôi phục cuộc trò chuyện",
     "immersive_chat__chat_history__restore_modal__title": "Bạn có chắc chắn muốn khôi phục toàn bộ Lịch sử Trò chuyện, Tìm kiếm và Nghệ thuật của bạn vào phiên bản cục bộ không? Vui lòng lưu ý rằng sau khi tiến hành, hành động này không thể hoàn tác.",
-    "immersive_chat__chat_history__restore_modal__description": "Cuộc trò chuyện & Tìm kiếm & Chuyển đổi Nghệ thuật sau khi khôi phục:",
+    "immersive_chat__chat_history__restore_modal__description": "Các cuộc trò chuyện & Tìm kiếm & Cuộc trò chuyện nghệ thuật để khôi phục:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Có, khôi phục",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Hủy"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Hủy",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Đã khôi phục 1 cuộc trò chuyện",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Đã khôi phục {{CONVERSATION_COUNT}} cuộc trò chuyện"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google naujausias ir pažangiausias modelis. Jis siūlo greitesnį greitį, revoliucinį 1M žetonų konteksto langą, patobulintą saugumą ir pažangias galimybes teksto, kodo, vaizdo, garso ir vaizdo apdorojime.",
     "immersive_chat__chat_history__restore_button__title": "Atkurti pokalbius",
     "immersive_chat__chat_history__restore_modal__title": "Ar tikrai norite atkurti visą savo pokalbių, paieškos ir meno istoriją vietinėje versijoje? Atkreipkite dėmesį, kad kai pradedate, veiksmo negalima atšaukti.",
-    "immersive_chat__chat_history__restore_modal__description": "Pokalbiai ir paieškos bei meno konversijos po atkūrimo:",
+    "immersive_chat__chat_history__restore_modal__description": "Atkurti pokalbiai ir paieškos rezultatai:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Taip, atkurti",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Atšaukti"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Atšaukti",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Atkurtas 1 pokalbis",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Atkurti {{CONVERSATION_COUNT}} pokalbiai"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

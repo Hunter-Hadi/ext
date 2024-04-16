@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ini menawarkan kecepatan yang lebih cepat, jendela konteks token 1M yang revolusioner, keamanan yang ditingkatkan, dan kemampuan canggih dalam pemrosesan teks, kode, gambar, audio, dan video.",
     "immersive_chat__chat_history__restore_button__title": "Pulihkan percakapan",
     "immersive_chat__chat_history__restore_modal__title": "Apakah Anda yakin ingin memulihkan semua Riwayat Chat, Pencarian, dan Seni ke versi lokal? Harap dicatat bahwa setelah Anda melanjutkan, tindakan tersebut tidak dapat dibatalkan.",
-    "immersive_chat__chat_history__restore_modal__description": "Konversi Percakapan & Pencarian & Seni setelah pemulihan:",
+    "immersive_chat__chat_history__restore_modal__description": "Percakapan Chat & Pencarian & Seni yang akan dipulihkan:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ya, pulihkan",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 percakapan dipulihkan",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} percakapan dipulihkan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovejši in najnaprednejši model Googla. Ponuja hitrejšo hitrost, prebojno okno konteksta s 1M žetoni, izboljšano varnost in napredne zmogljivosti pri obdelavi besedila, kode, slik, zvoka in videa.",
     "immersive_chat__chat_history__restore_button__title": "Obnovi klepete",
     "immersive_chat__chat_history__restore_modal__title": "Ali ste prepričani, da želite obnoviti vse svoje klepete, iskanja in zgodovino umetnosti na lokalno različico? Upoštevajte, da ko nadaljujete, dejanja ni mogoče razveljaviti.",
-    "immersive_chat__chat_history__restore_modal__description": "Klepeti in pretvorbe iskanja in umetnosti po obnovi:",
+    "immersive_chat__chat_history__restore_modal__description": "Obnovljene bodo pogovori o klepetu, iskanju in umetnosti:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, obnovi",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Prekliči"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Prekliči",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovljen je 1 pogovor",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljenih je {{CONVERSATION_COUNT}} pogovorov"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, ένα επαναστατικό παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
     "immersive_chat__chat_history__restore_button__title": "Επαναφορά συνομιλιών",
     "immersive_chat__chat_history__restore_modal__title": "Είστε βέβαιος ότι θέλετε να επαναφέρετε όλο το ιστορικό συνομιλιών, αναζήτησης και τέχνης στην τοπική έκδοση; Σημειώστε ότι μόλις προχωρήσετε, η ενέργεια δεν μπορεί να αναιρεθεί.",
-    "immersive_chat__chat_history__restore_modal__description": "Συνομιλίες & Αναζήτηση & Μετατροπές τέχνης μετά την επαναφορά:",
+    "immersive_chat__chat_history__restore_modal__description": "Συνομιλίες & Αναζήτηση & Συζητήσεις τέχνης προς αποκατάσταση:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ναι, επαναφορά",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 συνομιλία αποκαταστάθηκε",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} συνομιλίες αποκαταστάθηκαν"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

@@ -14,16 +14,26 @@ import DropdownIconButton from '@/components/DropdownIconButton'
 import { clientGetUserAllConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
+import globalSnackbar from '@/utils/globalSnackbar'
 
 const ClearAllChatButtonMoreActions: FC = () => {
   const { fetchPaginationConversations, setPaginationConversations } =
     usePaginationConversations()
   const { t } = useTranslation(['common', 'client'])
   const [open, setOpen] = useState(false)
-  const [conversations, setConversations] = useState<IChatConversation[]>([])
+  const [deletedConversations, setDeletedConversations] = useState<
+    IChatConversation[]
+  >([])
   const [loading, setLoading] = useState(false)
   const handleOpen = async () => {
-    setConversations(await clientGetUserAllConversations())
+    const userAllConversations = await clientGetUserAllConversations()
+    setDeletedConversations(
+      // 过滤出已删除且消息数量大于0的会话
+      userAllConversations.filter(
+        (conversation) =>
+          conversation.isDelete && conversation.messages.length > 0,
+      ),
+    )
     setOpen(true)
   }
   return (
@@ -102,15 +112,18 @@ const ClearAllChatButtonMoreActions: FC = () => {
             >
               {`${t(
                 'client:immersive_chat__chat_history__restore_modal__description',
-              )} ${conversations.length}`}
+              )} ${deletedConversations.length}`}
             </Typography>
             <Stack direction={'row'} spacing={1} justifyContent={'end'}>
               <LoadingButton
+                disabled={deletedConversations.length === 0}
                 loading={loading}
                 variant={'outlined'}
                 onClick={async () => {
                   setLoading(true)
-                  for (const conversation of conversations) {
+                  let successCount = 0
+
+                  for (const conversation of deletedConversations) {
                     try {
                       await clientUpdateChatConversation(
                         conversation.id,
@@ -120,12 +133,33 @@ const ClearAllChatButtonMoreActions: FC = () => {
                         },
                         false,
                       )
+                      successCount++
                     } catch (e) {
                       console.error(e)
                     }
                   }
                   const newConversations = await fetchPaginationConversations()
                   setPaginationConversations(newConversations)
+                  globalSnackbar.success(
+                    successCount > 1
+                      ? t(
+                          'client:immersive_chat__chat_history__restore_modal__toast2__title',
+                          {
+                            CONVERSATION_COUNT: successCount,
+                          },
+                        )
+                      : t(
+                          'client:immersive_chat__chat_history__restore_modal__toast1__title',
+                        ),
+                    {
+                      autoHideDuration: 3000,
+                      // 居中显示
+                      anchorOrigin: {
+                        vertical: 'top',
+                        horizontal: 'center',
+                      },
+                    },
+                  )
                   setLoading(false)
                   setOpen(false)
                 }}

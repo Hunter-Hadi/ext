@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fejlett biztonsági funkciókat és haladó képességeket kínál a szöveg-, kód-, kép-, hang- és videofeldolgozás területén.",
     "immersive_chat__chat_history__restore_button__title": "Chatok helyreállítása",
     "immersive_chat__chat_history__restore_modal__title": "Biztosan helyre szeretnéd állítani az összes Chat, Keresés és Művészeti előzményt a helyi verzióra? Kérlek vedd figyelembe, hogy miután folytatod, a művelet nem vonható vissza.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Keresés & Művészeti átalakítások helyreállítása után:",
+    "immersive_chat__chat_history__restore_modal__description": "Visszaállítandó csevegési és keresési beszélgetések:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Igen, helyreállítás",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 beszélgetés visszaállítva",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} beszélgetés visszaállítva"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

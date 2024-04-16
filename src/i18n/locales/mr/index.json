@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleचे नवीनतम आणि सर्वोच्च मॉडेल प्रयत्न करा. ती जलद गती, एक अद्वितीय 1M टोकन संदर्भ विंडो, वाढवलेली सुरक्षा, आणि पाठ, कोड, छायाचित्र, ऑडिओ, आणि व्हिडिओ प्रसंस्करणांच्या विकसित क्षमतांसह उन्नत क्षमता देते.",
     "immersive_chat__chat_history__restore_button__title": "चॅट्स पुनर्स्थापित करा",
     "immersive_chat__chat_history__restore_modal__title": "तुम्ही सगळ्या चॅट, शोध आणि कला इतिहासाचे स्थानिक संस्करणावर पुनर्स्थापित करायला खात्री आहे का? कृपया लक्षात घ्या की एकदा तुम्ही पुढे जाता, क्रिया परत आणि केली जाऊ शकत नाही.",
-    "immersive_chat__chat_history__restore_modal__description": "पुनर्स्थापनानंतर चॅट आणि शोध आणि कला रूपांतरण:",
+    "immersive_chat__chat_history__restore_modal__description": "बातचीत आणि शोध आणि कला चर्चा पुनर्स्थापित केली जाईल:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "होय, पुनर्स्थापित करा",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करा"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करा",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 बातचीत पुनर्स्थापित",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} बातचीत पुनर्स्थापित"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "O modelo mais recente e avançado do Google. Oferece velocidade mais rápida, uma janela de contexto de 1 milhão de tokens inovadora, segurança aprimorada e recursos avançados em processamento de texto, código, imagem, áudio e vídeo.",
     "immersive_chat__chat_history__restore_button__title": "Restaurar conversas",
     "immersive_chat__chat_history__restore_modal__title": "Tem a certeza de que pretende restaurar todo o seu histórico de Chat, Pesquisa e Arte para a versão local? Tenha em atenção que, uma vez concluída a ação, não poderá ser desfeita.",
-    "immersive_chat__chat_history__restore_modal__description": "Conversões de Chat, Pesquisa e Arte após a restauração:",
+    "immersive_chat__chat_history__restore_modal__description": "Conversas de Chat & Pesquisa & Arte a serem restauradas:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sim, restaurar",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancelar"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancelar",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversa restaurada",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversas restauradas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

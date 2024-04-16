@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।",
     "immersive_chat__chat_history__restore_button__title": "चैट बहाल करें",
     "immersive_chat__chat_history__restore_modal__title": "क्या आप सुनिश्चित हैं कि आप सभी चैट, खोज और कला इतिहास को स्थानीय संस्करण में बहाल करना चाहते हैं? कृपया ध्यान दें कि एक बार प्रक्रिया शुरू करने के बाद, कार्रवाई को पूर्ववत नहीं किया जा सकता है।",
-    "immersive_chat__chat_history__restore_modal__description": "बहाली के बाद चैट और खोज और कला परिवर्तन:",
+    "immersive_chat__chat_history__restore_modal__description": "बातचीत और खोज और कला संवाद पुनर्स्थापित होने के लिए:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "हाँ, बहाल करें",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 संवाद पुनर्स्थापित",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} संवाद पुनर्स्थापित"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

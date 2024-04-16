@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。",
     "immersive_chat__chat_history__restore_button__title": "還原聊天記錄",
     "immersive_chat__chat_history__restore_modal__title": "您確定要將所有聊天、搜索和藝術歷史記錄還原到本地版本嗎？請注意，一旦您繼續進行，此操作將無法撤銷。",
-    "immersive_chat__chat_history__restore_modal__description": "還原後的聊天、搜索和藝術轉換：",
+    "immersive_chat__chat_history__restore_modal__description": "待恢復的聊天、搜索和藝術對話：",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，還原",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "已恢復 1 個對話",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "已恢復 {{CONVERSATION_COUNT}} 個對話"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

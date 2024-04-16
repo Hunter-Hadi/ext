@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'i uusim ja kõige arenenum mudel. See pakub kiiremat kiirust, läbimurret 1M märgi kontekstakendes, täiustatud turvalisust ning edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
     "immersive_chat__chat_history__restore_button__title": "Taasta vestlused",
     "immersive_chat__chat_history__restore_modal__title": "Kas olete kindel, et soovite kõik oma vestluste, otsingute ja kunstiajaloo taastada kohalikku versiooni? Pange tähele, et pärast jätkamist ei saa toimingut tagasi võtta.",
-    "immersive_chat__chat_history__restore_modal__description": "Vestlus- ja otsingukonversioonid pärast taastamist:",
+    "immersive_chat__chat_history__restore_modal__description": "Vestlused, otsingud ja kunstvestlused taastamiseks:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Jah, taasta",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Tühista"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Tühista",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 vestlus taastatud",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} vestlust taastatud"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

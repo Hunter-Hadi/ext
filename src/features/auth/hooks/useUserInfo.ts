@@ -61,7 +61,9 @@ const useUserInfo = () => {
         name === 'free' &&
         new Date(userInfo.chatgpt_expires_at).getTime() > new Date().getTime()
       ) {
-        name = 'pro_gift'
+        // name = 'pro_gift'
+        // 前端认知 将 pro_gift 改为 free - 2024-04-16 - @huangsong
+        name = 'free'
       }
     }
     // 判断是否是新用户 - 7天内注册的用户

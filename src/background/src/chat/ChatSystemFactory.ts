@@ -197,13 +197,12 @@ export default class ChatSystemFactory {
                 await ConversationManager.conversationDB.getConversationById(
                   question.conversationId,
                 )
-              if (
-                conversation &&
-                currentChatSystem.conversation?.id !== conversation.id
-              ) {
-                await currentChatSystem.switchAdapterWithConversation(
-                  conversation,
-                )
+              if (conversation) {
+                if (currentChatSystem.conversation?.id !== conversation.id) {
+                  await currentChatSystem.switchAdapterWithConversation(
+                    conversation,
+                  )
+                }
                 // 处理AIProvider的参数
                 await processAskAIParameters(conversation, question)
                 // 处理attachments

@@ -69,6 +69,7 @@ const SidebarUserMessageContexts: FC<{
     >
       <MaxAIClickAwayListener
         onClickAway={() => {
+          debugger
           setOpen(false)
         }}
       >
@@ -244,7 +245,9 @@ const SidebarUserMessageContexts: FC<{
             onClose={() => setOpen(false)}
           >
             <Stack
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setOpen(true)
+              }}
               gap={1}
               sx={{
                 borderRadius: '8px',
@@ -263,6 +266,7 @@ const SidebarUserMessageContexts: FC<{
                 flexDirection={'row'}
                 gap={1}
                 alignItems={'flex-end'}
+                justifyContent={'flex-end'}
               >
                 {/*// 主要展示的内容，如果有附件则展示附件，如果有上下文则展示上下文*/}
                 {attachments.length > 0 && (

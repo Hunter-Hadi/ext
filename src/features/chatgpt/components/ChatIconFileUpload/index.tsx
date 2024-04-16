@@ -135,8 +135,9 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
             }}
           >
             <ContextMenuIcon
-              icon={'AddCircle'}
+              icon={'Attachment'}
               sx={{
+                transform: 'rotate(-45deg)',
                 color: 'inherit',
               }}
             />

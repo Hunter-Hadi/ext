@@ -78,6 +78,7 @@ import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
+import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined'
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -173,6 +174,7 @@ export const CONTEXT_MENU_ICONS = [
   'ClosedCaptionOffOutlined',
   'SubjectOutlined',
   'KeyboardArrowDownIcon',
+  'Attachment',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -485,6 +487,8 @@ const ContextMenuIcon: FC<{
       return <SubjectOutlinedIcon sx={sxMemo} />
     case 'KeyboardArrowDown':
       return <KeyboardArrowDownIcon sx={sxMemo} />
+    case 'Attachment':
+      return <AttachmentOutlinedIcon sx={sxMemo} />
     default:
       if (icon.toString().startsWith('http')) {
         return (

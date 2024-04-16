@@ -1376,7 +1376,7 @@ const WritingAssistantButtonGroupConfigs: {
   'instagram.com': {
     enable: true,
     rootSelectors: [
-      'form textarea',
+      'form textarea:not([id])',
       'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > button > div',
       // TODO: Reels暂时不支持，因为展开sidebar会让Comments收起来
       // 'div:has( > div[contenteditable="true"]) + div > div:nth-child(1) > div',

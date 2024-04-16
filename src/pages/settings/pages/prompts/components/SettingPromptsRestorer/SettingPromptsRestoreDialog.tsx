@@ -292,19 +292,20 @@ const SettingPromptsRestoreDialog: FC<{
           <Button variant={'outlined'} onClick={handleClose}>
             {t('common:cancel')}
           </Button>
-          <Button
-            variant={'outlined'}
-            color={'error'}
-            onClick={() => {
-              setConfirmType('deleteAll')
-              setConfirmOpen(true)
-            }}
-            sx={{ ml: 'auto!important' }}
-          >
-            {t(
-              'settings:feature_card__prompts__restore__dialog__delete_all_button',
-            )}
-          </Button>
+          {/* TODO 理论上这个场景不会出现，因为用户的自定义prompt数据没有理由需要全部删除*/}
+          {/*<Button*/}
+          {/*  variant={'outlined'}*/}
+          {/*  color={'error'}*/}
+          {/*  onClick={() => {*/}
+          {/*    setConfirmType('deleteAll')*/}
+          {/*    setConfirmOpen(true)*/}
+          {/*  }}*/}
+          {/*  sx={{ ml: 'auto!important' }}*/}
+          {/*>*/}
+          {/*  {t(*/}
+          {/*    'settings:feature_card__prompts__restore__dialog__delete_all_button',*/}
+          {/*  )}*/}
+          {/*</Button>*/}
         </Stack>
         <SettingPromptsActionConfirmModal
           open={confirmOpen}

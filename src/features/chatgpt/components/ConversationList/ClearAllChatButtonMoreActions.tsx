@@ -122,16 +122,15 @@ const ClearAllChatButtonMoreActions: FC = () => {
                 onClick={async () => {
                   setLoading(true)
                   let successCount = 0
-
-                  for (const conversation of deletedConversations) {
+                  for (const deletedConversation of deletedConversations) {
                     try {
                       await clientUpdateChatConversation(
-                        conversation.id,
+                        deletedConversation.id,
                         {
-                          ...conversation,
+                          ...deletedConversation,
                           isDelete: false,
                         },
-                        false,
+                        true,
                       )
                       successCount++
                     } catch (e) {

@@ -40,6 +40,7 @@ const useInitSidebar = () => {
     currentSidebarConversationType,
     updateSidebarSettings,
     updateSidebarConversationType,
+    updateSidebarPageUrl
   } = useSidebarSettings()
   const { currentConversationIdRef, createConversation } =
     useClientConversation()
@@ -165,6 +166,7 @@ const useInitSidebar = () => {
   const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
     resetPageSummary()
+    updateSidebarPageUrl(pageUrl)
     pageUrlIsUsedRef.current = false
   }, [pageUrl])
   useEffect(() => {

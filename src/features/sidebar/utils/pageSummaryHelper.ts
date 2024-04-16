@@ -1163,12 +1163,10 @@ const getCurrentPageUrl = () => {
 const PAGE_SUMMARY_CONVERSATION_ID_MAP: {
   [key in string]: string
 } = {}
-export const getPageSummaryConversationId = () => {
-  const pageUrl = getCurrentPageUrl()
+export const getPageSummaryConversationId = (url?: string) => {
+  const pageUrl = url || getCurrentPageUrl()
   if (!PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]) {
-    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(
-      getCurrentPageUrl(),
-    )
+    PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl] = md5TextEncrypt(pageUrl)
   }
   return PAGE_SUMMARY_CONVERSATION_ID_MAP[pageUrl]
 }

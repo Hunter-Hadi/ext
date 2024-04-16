@@ -11,8 +11,8 @@ const getDatetimeAndUserRegExp = /^\[(.*?)\] (.*?): $/
 const whatsAppGetDataFromQuotedMessage = (
   quotedMessage: HTMLElement | null,
 ) => {
-  let user = ''
-  let content = ''
+  let user = '',
+    content = ''
   if (quotedMessage) {
     // if has testid, it means the reply target is not `me`
     // 24.04.10 update: the testid is not reliable

@@ -3,12 +3,29 @@ import ChatMessagesContext, {
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
-const telegramGetMessageData = (messageBox: HTMLElement) => {
+const telegramGetDataFromQuotedMessage = (
+  quotedMessage: HTMLElement | null,
+) => {
+  let user = '',
+    content = ''
+  if (quotedMessage) {
+    user =
+      quotedMessage.querySelector<HTMLElement>(
+        '.reply-title .peer-title[data-peer-id]',
+      )?.innerText || ''
+    content =
+      quotedMessage.querySelector<HTMLElement>('.reply-subtitle')?.innerText ||
+      ''
+  }
+  return { user, content }
+}
+
+const telegramGetMessageData = (messageBox: HTMLElement, username: string) => {
   if (messageBox) {
-    const username =
+    username =
       messageBox.querySelector<HTMLElement>(
-        '.bubble-content > .name[data-peer-id] > .peer-title[data-peer-id]',
-      )?.textContent || ''
+        '.bubble-content > .name[data-peer-id] .peer-title[data-peer-id]',
+      )?.textContent || username
 
     const messageData: IChatMessageData = {
       user: username,
@@ -16,24 +33,47 @@ const telegramGetMessageData = (messageBox: HTMLElement) => {
       content: '',
     }
 
-    messageBox
-      .querySelector<HTMLElement>('.message')
-      ?.childNodes.forEach((node) => {
-        if (node.nodeType === node.TEXT_NODE) {
-          messageData.content = node.textContent || ''
-        } else if ((node as HTMLElement).matches('.time')) {
-          messageData.datetime =
-            (node as HTMLElement)
-              .querySelector('.time-inner')
-              ?.getAttribute('title') || ''
-        } else if ((node as HTMLElement).matches('.reply')) {
-          messageData.extraLabel = `${username} is replying to ${
-            (node as HTMLElement).querySelector<HTMLElement>(
-              '.reply-title .peer-title[data-peer-id]',
-            )?.innerText || ''
-          }`
-        }
-      })
+    if (messageBox.matches('.sticker')) {
+      messageData.extraLabel = `${username} sent a sticker`
+      messageData.datetime =
+        messageBox
+          .querySelector<HTMLElement>('.message .time-inner')
+          ?.getAttribute('title') || ''
+    } else {
+      messageBox
+        .querySelector<HTMLElement>('.message')
+        ?.childNodes.forEach((node) => {
+          // content
+          if (node.nodeType === node.TEXT_NODE) {
+            messageData.content = node.textContent || ''
+          }
+          // datetime
+          else if ((node as HTMLElement).matches('.time')) {
+            messageData.datetime =
+              (node as HTMLElement)
+                .querySelector('.time-inner')
+                ?.getAttribute('title') || ''
+          }
+          // replying to quoted message
+          else if ((node as HTMLElement).matches('.reply')) {
+            const quotedMessage = telegramGetDataFromQuotedMessage(
+              node as HTMLElement,
+            )
+            messageData.extraLabel = `${username} is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
+          }
+          // document
+          else if ((node as HTMLElement).matches('.document-container')) {
+            messageData.extraLabel = `${username} sent a document: ${
+              (node as HTMLElement).querySelector('.document-name')
+                ?.textContent || ''
+            }`
+            messageData.datetime =
+              (node as HTMLElement)
+                .querySelector('.time-inner')
+                ?.getAttribute('title') || ''
+          }
+        })
+    }
 
     return messageData
   }
@@ -60,17 +100,22 @@ const telegramGetChatMessagesFromNodeList = (
 
   const messages: IChatMessageData[] = []
   for (const messageBox of messageBoxList) {
-    const messageData = telegramGetMessageData(messageBox)
+    const messageData = telegramGetMessageData(
+      messageBox,
+      messageBox.matches('.is-out') ? configs.username : chattingWith,
+    )
 
     if (messageData) {
-      messageData.user ||= chattingWith
       messages.push(messageData)
     }
   }
   return messages
 }
 
-export const telegramGetChatMessages = (inputAssistantButton: HTMLElement) => {
+export const telegramGetChatMessages = async (
+  inputAssistantButton: HTMLElement,
+) => {
+  debugger
   const serverName =
     document.querySelector<HTMLElement>(
       '.chat-info .content > .bottom > .info .peer-title[data-peer-id]',
@@ -80,19 +125,62 @@ export const telegramGetChatMessages = (inputAssistantButton: HTMLElement) => {
       '.chat-info .content > .top > .user-title > .peer-title[data-peer-id]',
     )?.innerText || ''
 
+  let temporarySpecialStyle: HTMLStyleElement | null = null
+  if (
+    !document.querySelector<HTMLElement>(
+      '.settings-container.profile-container.active .sidebar-content .profile-content.is-me',
+    )
+  ) {
+    temporarySpecialStyle = document.createElement('style')
+    temporarySpecialStyle.innerHTML = `.tabs-container .sidebar-left .tabs-tab:not(.settings-container.profile-container){display:flex!important;transform:none!important;} .sidebar-header>.sidebar-header__btn-container button>.btn-menu{display:none!important;} .settings-container.profile-container{display:none!important;}`
+    document.getElementsByTagName('head')[0].appendChild(temporarySpecialStyle)
+    const menuButton = document.querySelector<HTMLElement>(
+      '.sidebar-header > .sidebar-header__btn-container button:not(.menu-open)',
+    )
+    if (menuButton) {
+      await new Promise<void>((resolve) => {
+        new MutationObserver((mutations, observer) => {
+          menuButton
+            ?.querySelectorAll<HTMLElement>(
+              '.btn-menu.was-open > .btn-menu-item',
+            )
+            .item(3)
+            ?.click()
+          observer.disconnect()
+          resolve()
+        }).observe(menuButton, {
+          childList: true,
+        })
+        menuButton?.click()
+      })
+    }
+  }
+
   const configs = {
     serverName,
     chatroomName,
-    username: '', // Telegram can't get the username
+    username:
+      document.querySelector<HTMLElement>(
+        '.settings-container.profile-container.active .sidebar-content .profile-content.is-me .profile-name .peer-title[data-peer-id]',
+      )?.textContent || '',
+  }
+
+  if (temporarySpecialStyle) {
+    document
+      .querySelector<HTMLElement>(
+        '.settings-container.profile-container.active .sidebar-header button.sidebar-close-button',
+      )
+      ?.click()
+    temporarySpecialStyle?.remove()
   }
 
   const chatMessagesPanel = document.querySelector(
-    '.bubbles .bubbles-date-group',
+    '.bubbles .scrollable > .bubbles-inner',
   )
 
   const chatMessagesNodeList = Array.from(
     chatMessagesPanel?.querySelectorAll<HTMLElement>(
-      '.bubbles-group .bubble[data-peer-id]',
+      '.bubbles-date-group .bubbles-group .bubble[data-peer-id]',
     ) || [],
   )
 
@@ -108,7 +196,7 @@ export const telegramGetChatMessages = (inputAssistantButton: HTMLElement) => {
       2,
     )
     const quotedMention = findSelectorParent(
-      '.is-helper-active .chat-input-main .reply-wrapper',
+      '.is-helper-active .chat-input-main .reply-wrapper .reply',
       chatTextArea,
       3,
     )
@@ -116,7 +204,12 @@ export const telegramGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
     if (chatTextArea) {
       if (quotedMention) {
-        //
+        const quotedMessage = telegramGetDataFromQuotedMessage(quotedMention)
+        replyMessageBoxIndex = chatMessages.findIndex(
+          (message) =>
+            message.user === quotedMessage.user &&
+            message.content === quotedMessage.content,
+        )
       } else {
         replyMessageBoxIndex = chatMessages.findLastIndex(
           (message) => message.user !== configs.username,

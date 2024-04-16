@@ -77,7 +77,7 @@ const whatsAppGetChatMessagesFromNodeList = (
     chatroomName: string
     username: string
   },
-): IChatMessageData[] => {
+) => {
   const messages: IChatMessageData[] = []
 
   for (const messageBox of messageBoxList) {

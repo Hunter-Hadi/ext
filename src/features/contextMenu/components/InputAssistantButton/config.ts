@@ -1298,7 +1298,16 @@ const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
 const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
-      enable: true,
+      enable: (rootElement) => {
+        return Boolean(
+          findParentEqualSelector(
+            '.chats-container > .chat',
+            rootElement,
+          )?.querySelector(
+            '.bubbles .scrollable > .bubbles-inner .bubbles-date-group .bubbles-group .bubble[data-peer-id].is-in',
+          ),
+        )
+      },
       rootSelectors: ['.input-message-container'],
       rootParentDeep: 0,
       rootWrapperTagName: 'div',

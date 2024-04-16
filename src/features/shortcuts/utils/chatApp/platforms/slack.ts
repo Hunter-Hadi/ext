@@ -74,7 +74,7 @@ const slackGetChatMessageContentAndDate = (
 const slackGetChatMessagesFromNodeList = (
   messageBoxList: HTMLElement[],
   username: string,
-): IChatMessageData[] => {
+) => {
   const messages: IChatMessageData[] = []
   for (const messageBox of messageBoxList) {
     const usernameBlock = messageBox.querySelector<HTMLElement>(

@@ -278,6 +278,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `maxai_tour.${key}`)) {
       return `maxai_tour.${key}`
     }
+    if (_.get(sourceJson, `quota_usage_card.${key}`)) {
+      return `quota_usage_card.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs
@@ -619,9 +622,7 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = [
-    'permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title'
-  ]
+  const keys = []
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

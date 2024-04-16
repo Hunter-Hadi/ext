@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { AuthUserInfoState } from '@/features/auth/store'
+import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
 import { IUserPlanNameType, IUserRoleType } from '@/features/auth/types'
 
 export type IUserCurrentPlan = {
@@ -15,7 +15,9 @@ export type IUserCurrentPlan = {
 
 const useUserInfo = () => {
   const { user: userInfo, loading } = useRecoilValue(AuthUserInfoState)
-  const { syncUserInfo, syncUserSubscriptionInfo } = useInitUserInfo(false)
+  const userQuotaUsage = useRecoilValue(UserQuotaUsageState)
+  const { syncUserInfo, syncUserSubscriptionInfo, syncUserQuotaUsageInfo } =
+    useInitUserInfo(false)
   const quotaLeftText = useMemo(() => {
     if (userInfo?.chatgpt_expires_at) {
       const expiresAt = new Date(userInfo.chatgpt_expires_at)
@@ -89,6 +91,9 @@ const useUserInfo = () => {
     loading,
     syncUserInfo,
     syncUserSubscriptionInfo,
+
+    userQuotaUsage,
+    syncUserQuotaUsageInfo,
   }
 }
 export { useUserInfo }

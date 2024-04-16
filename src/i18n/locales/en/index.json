@@ -49,7 +49,9 @@
     "ai_screenshot": "AI screenshot",
     "release_notes": "Release notes",
     "web_translation": "Translate this page",
-    "show_original_text": "Show original text"
+    "show_original_text": "Show original text",
+    "upgrade": "Upgrade",
+    "unlimited": "Unlimited"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -788,6 +790,14 @@
     "sidebar_tour__step__5__feature_4__title": "AI screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
+  },
+  "quota_usage_card" :{
+    "category__fast_text": "Fast text",
+    "category__advanced_text": "Advanced text",
+    "category__image": "Image",
+    "role_label": "Current plan: {{ROLE}}",
+    "queries": "Queries",
+    "reset_on_date": "Reset on {{DATE}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

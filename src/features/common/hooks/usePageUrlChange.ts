@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react'
 
 export const usePageUrlChange = () => {
-  const [pageUrl, setPageUrl] = useState('')
+  const [pageUrl, setPageUrl] = useState(() => {
+    return window.location.href
+  })
   const prevPageUrlRef = useRef('')
   const prevPageTitleRef = useRef(document.title)
   const countRef = useRef(0)

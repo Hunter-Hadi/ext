@@ -50,7 +50,7 @@ const useSidebarSettings = () => {
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =
     appLocalStorage.sidebarSettings?.common?.currentAIProvider
-  const currentChatConversationId =
+  const sidebarChatConversationId =
     appLocalStorage.sidebarSettings?.chat?.conversationId
   const currentSearchConversationId =
     appLocalStorage.sidebarSettings?.search?.conversationId
@@ -60,7 +60,7 @@ const useSidebarSettings = () => {
   const currentSidebarConversationId = useMemo(() => {
     switch (currentSidebarConversationType) {
       case 'Chat':
-        return currentChatConversationId
+        return sidebarChatConversationId
       case 'Search':
         return currentSearchConversationId
       case 'Summary':
@@ -72,7 +72,7 @@ const useSidebarSettings = () => {
     }
   }, [
     currentSidebarConversationType,
-    currentChatConversationId,
+    sidebarChatConversationId,
     currentSearchConversationId,
     sidebarSummaryConversationId,
     currentArtConversationId,
@@ -83,7 +83,7 @@ const useSidebarSettings = () => {
 
   const sidebarConversationTypeofConversationMap = useMemo(() => {
     return {
-      Chat: clientConversationMap[currentChatConversationId || ''],
+      Chat: clientConversationMap[sidebarChatConversationId || ''],
       Search: clientConversationMap[currentSearchConversationId || ''],
       Summary: clientConversationMap[sidebarSummaryConversationId],
       Art: clientConversationMap[currentArtConversationId || ''],
@@ -92,7 +92,7 @@ const useSidebarSettings = () => {
     }
   }, [
     clientConversationMap,
-    currentChatConversationId,
+    sidebarChatConversationId,
     currentSearchConversationId,
     sidebarSummaryConversationId,
     currentArtConversationId,
@@ -343,6 +343,7 @@ const useSidebarSettings = () => {
     sidebarConversationTypeofConversationMap,
     updateSidebarSettings,
     updateSidebarConversationType,
+    sidebarChatConversationId,
     sidebarSummaryConversationId,
   }
 }

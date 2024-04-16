@@ -93,7 +93,8 @@ const usePageSummary = () => {
         }
       }
       try {
-        console.log('新版Conversation pageSummary开始创建')
+        console.error('新版Conversation pageSummary开始创建')
+        debugger
         // 进入loading
         await createConversation('Summary')
         // 如果是免费用户

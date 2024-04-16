@@ -32,6 +32,7 @@ const useInitSidebar = () => {
   const { pageUrl, startListen } = usePageUrlChange()
   const {
     sidebarSummaryConversationId,
+    sidebarChatConversationId,
     sidebarSettings,
     currentSidebarConversationType,
     updateSidebarConversationType,
@@ -126,16 +127,31 @@ const useInitSidebar = () => {
       })
     }
   }, [currentSidebarConversationType, appState.open])
+  // chat重新生成的逻辑
+  useEffect(() => {
+    if (
+      currentSidebarConversationType === 'Chat' &&
+      !sidebarChatConversationId &&
+      appState.open
+    ) {
+      createConversation(currentSidebarConversationType).then().catch()
+    }
+  }, [sidebarChatConversationId, currentSidebarConversationType, appState.open])
   // summary 重新生成的逻辑
   useEffect(() => {
     if (
       currentSidebarConversationType === 'Summary' &&
-      sidebarSummaryConversationId
+      sidebarSummaryConversationId &&
+      appState.open
     ) {
       console.log('Tracking Tracking Tracking', sidebarSummaryConversationId)
       createPageSummary().then().catch()
     }
-  }, [sidebarSummaryConversationId, currentSidebarConversationType])
+  }, [
+    sidebarSummaryConversationId,
+    currentSidebarConversationType,
+    appState.open,
+  ])
   // Summary的特殊逻辑
   // - 切换url的时候为了省下token，直接切换到chat
   // - 在每个YouTube/PDF URL 第一次打开Sidebar的情况下，第一次打开Chat自动切换到Summary
@@ -156,10 +172,13 @@ const useInitSidebar = () => {
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
         pageSummaryType === 'PDF_CRX_SUMMARY'
       ) {
-        updateSidebarConversationType('Summary')
-      } else if (pageConversationTypeRef.current === 'Summary') {
-        updateSidebarConversationType('Chat')
+        if (pageConversationTypeRef.current !== 'Summary') {
+          updateSidebarConversationType('Summary')
+        }
+        createConversation('Summary')
+        return
       }
+      updateSidebarConversationType('Chat')
     }
   }, [pageUrl])
   // 监听搜索引擎的continue search with ai

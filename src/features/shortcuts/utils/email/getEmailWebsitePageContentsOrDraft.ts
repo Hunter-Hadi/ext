@@ -349,6 +349,7 @@ const outlookGetSingleEmailText = (originElement: HTMLElement | null) => {
   return ''
 }
 
+// optimize WIP: need to test and cover all the cases
 export const getEmailWebsitePageContentsOrDraft = async (
   inputAssistantButtonElementSelector: string,
 ): Promise<{ targetReplyEmailContext: string; emailContext: string }> => {
@@ -528,7 +529,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
       }
     } catch (err) {
-      // 如果新版逻辑报错了，走旧版的逻辑
+      // 如果 Gmail 新版逻辑报错了，走旧版的逻辑
       console.error(err)
 
       // 邮件列表容器
@@ -639,10 +640,9 @@ export const getEmailWebsitePageContentsOrDraft = async (
       }
     }
 
-    // if doesnt have receivers, it means it is performing `Summary` action
+    // if doesnt have emails, it means it is performing `Summary` action
     emailContextSelector = 'div[role="list"]'
   } else if (host === 'outlook.live.com') {
-    debugger
     // outlook 有3种回复邮件的UI: 列表框展开回复 | 邮件详情页回复 | 弹窗邮件详情页回复 | 弹窗邮件详情页回复新邮件
     // 1. 列表框展开回复判断条件:
     //    1.1 列表容器document.querySelector('div[data-app-section="ConversationContainer"]')存在
@@ -819,7 +819,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
           return emailCorrespondence.emailContext
         }
 
-        // if doesnt have receivers, it means it is performing `Summary` action
+        // if doesnt have emails, it means it is performing `Summary` action
         emailContextSelector = 'div[data-app-section="ConversationContainer"]'
       }
 
@@ -858,6 +858,166 @@ export const getEmailWebsitePageContentsOrDraft = async (
         emailContextSelector = '#ReadingPaneContainerId'
       }
     } catch (e) {
+      emailContextSelector = 'div[data-app-section="ConversationContainer"]'
+    }
+
+    // 如果 Outlook 新版逻辑报错了，走旧版的逻辑
+    try {
+      const subject =
+        document.querySelector(
+          '#ReadingPaneContainerId div[role="heading"][aria-level="2"]',
+        )?.textContent || document.title
+
+      const expandMoreButton = document.querySelector(
+        'div[role="button"][aria-label="See more messages"]',
+      ) as HTMLButtonElement
+      expandMoreButton?.click()
+      // ======================== 1.列表框展开回复 ========================
+      // 邮件列表容器
+      const rootElement = document.querySelector(
+        'div[data-app-section="ConversationContainer"]',
+      ) as HTMLDivElement
+      if (rootElement && rootElement.contains(inputAssistantButtonElement)) {
+        const emailCorrespondence = new DeprecatedEmailCorrespondence()
+        const messageItems: Element[] = []
+        const totalMessageItems = Array.from(
+          rootElement.querySelectorAll('& > div > div'),
+        ) as HTMLElement[]
+        // 因为outlook可以修改邮件顺序，所以要先拿到邮件的date
+        const replyMessageDate =
+          totalMessageItems
+            .find((messageItem) =>
+              messageItem.contains(inputAssistantButtonElement),
+            )
+            ?.querySelector('div[data-testid="SentReceivedSavedTime"]')
+            ?.textContent || ''
+        // 插入时间比replyMessageDate小的message
+        totalMessageItems.forEach((messageItem) => {
+          const messageDate =
+            messageItem.querySelector(
+              'div[data-testid="SentReceivedSavedTime"]',
+            )?.textContent || ''
+          if (
+            new Date(messageDate).getTime() <=
+            new Date(replyMessageDate).getTime()
+          ) {
+            messageItems.push(messageItem)
+          }
+          const expandMessages = messageItem.querySelectorAll('& > div > div')
+          expandMessages.forEach((expandMessage) => fireClick(expandMessage))
+        })
+        const profileButton = document.querySelector(
+          '#meInitialsButton',
+        ) as HTMLButtonElement
+        while (!document.querySelector('#mectrl_currentAccount_primary')) {
+          profileButton.click()
+          await wait(2000)
+        }
+        const userName =
+          document.querySelector('#mectrl_currentAccount_primary')
+            ?.textContent || ''
+        const userEmail =
+          document.querySelector('#mectrl_currentAccount_secondary')
+            ?.textContent || ''
+        // 寻找sender和receiver
+        for (let i = 0; i < messageItems.length; i++) {
+          const emailEmailElements = Array.from(
+            messageItems[i].querySelectorAll('span[data-lpc-hover-target-id]'),
+          )
+          const receiverElement = messageItems[i].querySelector(
+            'div[data-testid="RecipientWell"]',
+          )
+          if (!receiverElement || emailEmailElements.length === 0) {
+            continue
+          }
+          const date =
+            messageItems[i].querySelector(
+              'div[data-testid="SentReceivedSavedTime"]',
+            )?.textContent || ''
+          const content = removeEmailContentQuote(
+            (messageItems[i].querySelector('#UniqueMessageBody') ||
+              messageItems[i].querySelector(
+                'div[role="document"]',
+              )) as HTMLDivElement,
+          )
+          // 因为outlook的html中，用户本身的邮件是不带邮件地址的，所以只能先判断有没有邮件，再判断是不是接受者
+          emailEmailElements.find((emailElement) => {
+            const emailElementContext = emailElement.textContent || ''
+            let email = emailElementContext.match(emailRegex)?.[0]
+            if (
+              !email &&
+              emailElementContext === emailCorrespondence.sender?.name
+            ) {
+              email = emailCorrespondence.sender.email
+            } else if (
+              !email &&
+              emailElementContext === emailCorrespondence.receiver?.name
+            ) {
+              email = emailCorrespondence.receiver.email
+            }
+            if (email) {
+              let isReceiver = false
+              if (receiverElement?.contains(emailElement)) {
+                isReceiver = true
+              }
+              const name = emailElementContext.replace(` <${email}>`, '')
+              if (name && email) {
+                // 如果没有设置sender和receiver，就设置
+                if (
+                  !emailCorrespondence.receiver ||
+                  !emailCorrespondence.sender
+                ) {
+                  if (isReceiver) {
+                    emailCorrespondence.addReceiver({
+                      name,
+                      email,
+                    })
+                    emailCorrespondence.addSender({
+                      name: userName,
+                      email: userEmail,
+                    })
+                  } else {
+                    emailCorrespondence.addSender({
+                      name,
+                      email,
+                    })
+                    emailCorrespondence.addReceiver({
+                      name: userName,
+                      email: userEmail,
+                    })
+                  }
+                }
+                if (isReceiver) {
+                  const theMessageSenderEmail =
+                    emailCorrespondence.sender?.email === email
+                      ? emailCorrespondence.receiver!.email
+                      : emailCorrespondence.sender!.email
+                  emailCorrespondence.addEmail(theMessageSenderEmail, {
+                    date,
+                    subject,
+                    content,
+                  })
+                } else {
+                  emailCorrespondence.addEmail(email, {
+                    date,
+                    subject,
+                    content,
+                  })
+                }
+                return true
+              }
+            }
+            return false
+          })
+        }
+        emailCorrespondence.sortEmails()
+        if (emailCorrespondence.emails.length > 0) {
+          return emailCorrespondence.emailContext
+        }
+        emailContextSelector = 'div[data-app-section="ConversationContainer"]'
+      }
+    } catch (err) {
+      console.error(err)
       emailContextSelector = 'div[data-app-section="ConversationContainer"]'
     }
   } else if (

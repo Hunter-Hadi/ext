@@ -266,7 +266,7 @@ const useSidebarSettings = () => {
           } as Partial<IChatConversation>,
         },
       })
-      setSidebarSummaryConversationId(getPageSummaryConversationId())
+      setSidebarSummaryConversationId(conversationId)
     } else if (conversationType === 'Search') {
       // 创建一个新的conversation
       const result = await port.postMessage({
@@ -330,6 +330,9 @@ const useSidebarSettings = () => {
     }
     return conversationId
   }
+  const updateSidebarSummaryConversationId = (id?: string) => {
+    setSidebarSummaryConversationId(id || getPageSummaryConversationId())
+  }
   return {
     createSidebarConversation,
     resetSidebarConversation,
@@ -345,6 +348,7 @@ const useSidebarSettings = () => {
     updateSidebarConversationType,
     sidebarChatConversationId,
     sidebarSummaryConversationId,
+    updateSidebarSummaryConversationId
   }
 }
 export default useSidebarSettings

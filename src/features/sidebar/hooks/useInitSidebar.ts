@@ -13,8 +13,7 @@ import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import { getPageSummaryConversationId, getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -36,6 +35,7 @@ const useInitSidebar = () => {
     sidebarSettings,
     currentSidebarConversationType,
     updateSidebarConversationType,
+    updateSidebarSummaryConversationId,
   } = useSidebarSettings()
   const { currentConversationIdRef, createConversation } =
     useClientConversation()
@@ -43,11 +43,12 @@ const useInitSidebar = () => {
   const { updateAIProviderModel } = useAIProviderModels()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
-  const pageConversationTypeRef = useRef<ISidebarConversationType>('Chat')
+  const pageConversationTypeRef = useRef(currentSidebarConversationType)
+  pageConversationTypeRef.current = currentSidebarConversationType
+  const pageSummaryConversationIdRef = useRef(sidebarSummaryConversationId)
+  pageSummaryConversationIdRef.current = sidebarSummaryConversationId
   const sidebarSettingsRef = useRef(sidebarSettings)
-  useEffect(() => {
-    sidebarSettingsRef.current = sidebarSettings
-  }, [sidebarSettings])
+  sidebarSettingsRef.current = sidebarSettings
   const isUpdatingConversationRef = useRef(false)
   useEffect(() => {
     if (isUpdatingConversationRef.current) {
@@ -158,8 +159,9 @@ const useInitSidebar = () => {
   const pageUrlIsUsedRef = useRef(false)
   useEffect(() => {
     if (pageUrl) {
-      stopGenerate()
+      // 页面变化重置page summary和summary conversation id
       resetPageSummary()
+      updateSidebarSummaryConversationId()
       pageUrlIsUsedRef.current = false
     }
   }, [pageUrl])
@@ -177,8 +179,13 @@ const useInitSidebar = () => {
         }
         createConversation('Summary')
         return
+      } else if (pageConversationTypeRef.current === 'Summary') {
+        // 页面变化切换至Chat并停止当前对话
+        if (pageSummaryConversationIdRef.current !== getPageSummaryConversationId()) {
+          updateSidebarConversationType('Chat')
+          stopGenerate()
+        }
       }
-      updateSidebarConversationType('Chat')
     }
   }, [pageUrl])
   // 监听搜索引擎的continue search with ai

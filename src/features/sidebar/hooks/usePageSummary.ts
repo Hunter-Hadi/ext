@@ -29,7 +29,7 @@ import {
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const usePageSummary = () => {
-  const { updateSidebarSettings } = useSidebarSettings()
+  const { updateSidebarSettings, updateSidebarSummaryConversationId } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { updateClientConversationLoading } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
@@ -51,6 +51,7 @@ const usePageSummary = () => {
     console.log('新版Conversation 创建pageSummary')
     console.log('simply createPageSummary')
     const pageSummaryConversationId = getPageSummaryConversationId()
+    updateSidebarSummaryConversationId(pageSummaryConversationId)
     updateClientConversationLoading(true)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation

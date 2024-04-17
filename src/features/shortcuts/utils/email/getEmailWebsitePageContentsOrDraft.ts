@@ -407,21 +407,22 @@ export const getEmailWebsitePageContentsOrDraft = async (
             inputAssistantButtonElement,
           )
 
-          const emailFullContentBox =
+          const emailFullContentBoxExists = Boolean(
             emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
-            emailItemBox.querySelector<HTMLElement>(
-              'div[data-legacy-message-id]',
-            )
+              emailItemBox.querySelector<HTMLElement>(
+                'div[data-legacy-message-id]',
+              ),
+          )
 
           const retrieveEmailDataThenAdd = () => {
-            const retrieveEmailFullContentBox =
+            const emailFullContentBox =
               emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
               emailItemBox.querySelector<HTMLElement>(
                 'div[data-legacy-message-id]',
               )
-            if (retrieveEmailFullContentBox) {
+            if (emailFullContentBox) {
               const gmailUsers =
-                retrieveEmailFullContentBox.querySelectorAll<HTMLElement>(
+                emailFullContentBox.querySelectorAll<HTMLElement>(
                   'table span[email]',
                 )
               if (gmailUsers.length > 0) {
@@ -435,7 +436,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
                     emailItemBox.querySelector('span[tabindex="-1"][alt]')
                       ?.textContent || '',
                   content: removeEmailContentQuote(
-                    retrieveEmailFullContentBox.querySelector<HTMLElement>(
+                    emailFullContentBox.querySelector<HTMLElement>(
                       'div[id][jslog] > div[id]',
                     ),
                   ),
@@ -446,7 +447,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
             return false
           }
 
-          if (emailFullContentBox) {
+          if (emailFullContentBoxExists) {
             retrieveEmailDataThenAdd()
           } else {
             if (!temporarySpecialStyle) {
@@ -481,7 +482,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
             })
           }
 
-          if (!emailFullContentBox) {
+          if (!emailFullContentBoxExists) {
             emailItemBox
               .querySelector<HTMLElement>(
                 '& > div:nth-child(2) [data-message-id] > div:nth-child(2) > div > table',

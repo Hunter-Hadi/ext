@@ -180,19 +180,19 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
             replyMessageBoxIndex = chatMessages.findLastIndex((message) => {
               // 因为获取到的message.content可能会用`…`，所以需要处理一下
               if (
-                message.content === '…' &&
+                message.content.match(/…$/) &&
                 quotedMessage.content.length === message.content.length - 1
               ) {
                 // 如果message被省略了，就用startsWith来判断
                 return (
-                  message.user === quotedMessage.user &&
+                  configs.username === configs.username &&
                   quotedMessage.content.startsWith(
                     message.content.replace(/…$/, ''),
                   )
                 )
               }
               return (
-                message.user === quotedMessage.user &&
+                message.user === configs.username &&
                 message.content === quotedMessage.content
               )
             })

@@ -1,18 +1,13 @@
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import React, { FC, useEffect, useMemo } from 'react'
+import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
 const SidebarChatBoxSystemTools: FC<{
   solutionsShow: boolean
@@ -30,47 +25,41 @@ const SidebarChatBoxSystemTools: FC<{
           currentSidebarConversationMessages.length - 1
         ]
       : undefined
-  const { currentUserPlan, userInfo } = useUserInfo()
+  // const { currentUserPlan, userInfo } = useUserInfo()
   const { regenerate } = useClientChat()
   const { regenerateSearchWithAI } = useSearchWithAI()
   const chatSystemMessageType =
     message.meta?.systemMessageType ||
     message.extra?.systemMessageType ||
     'normal'
-  const permissionSceneType =
-    message.meta?.permissionSceneType || message?.extra?.permissionSceneType
   const chatSystemMessageStatus =
     message.meta?.status || message.extra?.status || 'success'
-  const permissionCardMap = usePermissionCardMap()
   const { currentAIProviderDetail } = useAIProviderModels()
-  const upgradeCardText = useMemo(() => {
-    if (permissionSceneType && permissionCardMap[permissionSceneType]) {
-      return permissionCardMap[permissionSceneType].ctaButtonText
-    }
-    return t('client:sidebar__button__upgrade_to_pro')
-  }, [permissionCardMap, permissionSceneType, t])
-  useEffect(() => {
-    if (
-      chatSystemMessageType === 'needUpgrade' &&
-      (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite')
-    ) {
-      clientSendMaxAINotification(
-        'PRICING',
-        `[Pricing] Pro show pricing card`,
-        JSON.stringify({
-          user: userInfo,
-          plan: currentUserPlan,
-        }),
-        {
-          uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
-        },
-      )
-    }
-  }, [currentUserPlan.name, chatSystemMessageType])
+
+  // Pro show pricing card 移到 SidebarSystemPricingHookMessageCard 组件了
+  // useEffect(() => {
+  //   if (
+  //     chatSystemMessageType === 'needUpgrade' &&
+  //     (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite')
+  //   ) {
+  //     clientSendMaxAINotification(
+  //       'PRICING',
+  //       `[Pricing] Pro show pricing card`,
+  //       JSON.stringify({
+  //         user: userInfo,
+  //         plan: currentUserPlan,
+  //       }),
+  //       {
+  //         uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+  //       },
+  //     )
+  //   }
+  // }, [currentUserPlan.name, chatSystemMessageType])
 
   return (
     <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
-      {chatSystemMessageType === 'needUpgrade' && (
+      {/* Upgrade button 移到 SidebarSystemPricingHookMessageCard 组件渲染了 */}
+      {/* {chatSystemMessageType === 'needUpgrade' && (
         <Button
           fullWidth
           sx={{
@@ -93,7 +82,7 @@ const SidebarChatBoxSystemTools: FC<{
         >
           {upgradeCardText}
         </Button>
-      )}
+      )} */}
       {chatSystemMessageStatus === 'error' &&
         currentAIProviderDetail?.thirdParty && (
           <Button

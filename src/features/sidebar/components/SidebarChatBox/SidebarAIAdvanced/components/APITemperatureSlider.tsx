@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box'
 import FormControl from '@mui/material/FormControl'
 import InputLabel from '@mui/material/InputLabel'
 import Select from '@mui/material/Select'
@@ -8,20 +9,15 @@ import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { getAIProviderSettings } from '@/background/src/chat/util'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
-import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import useThirdProviderSettings from '@/features/chatgpt/hooks/useThirdProviderSettings'
 
 const APITemperatureSlider: FC<{
-  authSceneType?: PermissionWrapperCardSceneType
   provider: IAIProviderType
 }> = (props) => {
-  const { provider, authSceneType } = props
+  const { provider } = props
   const { t } = useTranslation(['common', 'client'])
-  const {
-    saveThirdProviderSettings,
-    currentThirdProviderSettings,
-  } = useThirdProviderSettings()
+  const { saveThirdProviderSettings, currentThirdProviderSettings } =
+    useThirdProviderSettings()
   const [temperature, setTemperature] = React.useState<number>(1)
   const once = React.useRef<boolean>(false)
   useEffect(() => {
@@ -77,32 +73,13 @@ const APITemperatureSlider: FC<{
         label={`${t('client:provider__temperature__label')}: ${temperature}`}
         renderValue={(value) => {
           return (
-            <PermissionWrapper
-              sceneType={authSceneType || 'MAXAI_CHATGPT_TEMPERATURE'}
-              allowedRoles={
-                authSceneType
-                  ? ['elite', 'pro', 'pro_gift', 'new_user']
-                  : ['free', 'elite', 'pro', 'pro_gift', 'new_user']
-              }
-              BoxProps={{
-                sx: {
-                  '& > div': {
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: '100%',
-                  },
+            <Box
+              sx={{
+                '& > div': {
+                  display: 'flex',
+                  flexDirection: 'column',
+                  width: '100%',
                 },
-              }}
-              onPermission={async (currentPlan) => {
-                if (currentPlan.name === 'free') {
-                  setTemperature(1)
-                  return {
-                    success: false,
-                  }
-                }
-                return {
-                  success: true,
-                }
               }}
             >
               <Slider
@@ -148,7 +125,7 @@ const APITemperatureSlider: FC<{
                   },
                 }}
               />
-            </PermissionWrapper>
+            </Box>
           )
         }}
       ></Select>

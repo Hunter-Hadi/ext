@@ -3,7 +3,7 @@ import { useMemo } from 'react'
 import { useRecoilValue } from 'recoil'
 
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { AuthUserInfoState } from '@/features/auth/store'
+import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
 import { IUserPlanNameType, IUserRoleType } from '@/features/auth/types'
 
 export type IUserCurrentPlan = {
@@ -15,7 +15,9 @@ export type IUserCurrentPlan = {
 
 const useUserInfo = () => {
   const { user: userInfo, loading } = useRecoilValue(AuthUserInfoState)
-  const { syncUserInfo, syncUserSubscriptionInfo } = useInitUserInfo(false)
+  const userQuotaUsage = useRecoilValue(UserQuotaUsageState)
+  const { syncUserInfo, syncUserSubscriptionInfo, syncUserQuotaUsageInfo } =
+    useInitUserInfo(false)
   const quotaLeftText = useMemo(() => {
     if (userInfo?.chatgpt_expires_at) {
       const expiresAt = new Date(userInfo.chatgpt_expires_at)
@@ -59,7 +61,9 @@ const useUserInfo = () => {
         name === 'free' &&
         new Date(userInfo.chatgpt_expires_at).getTime() > new Date().getTime()
       ) {
-        name = 'pro_gift'
+        // name = 'pro_gift'
+        // 前端认知 将 pro_gift 改为 free - 2024-04-16 - @huangsong
+        name = 'free'
       }
     }
     // 判断是否是新用户 - 7天内注册的用户
@@ -82,6 +86,16 @@ const useUserInfo = () => {
       isOneTimePayUser: userInfo?.role?.is_one_times_pay_user || false,
     }
   }, [userInfo])
+
+  // 是否是付费用户
+  const isPayingUser = useMemo(() => {
+    return (
+      currentUserPlan.name === 'pro' ||
+      currentUserPlan.name === 'elite' ||
+      currentUserPlan.name === 'basic'
+    )
+  }, [currentUserPlan])
+
   return {
     currentUserPlan,
     quotaLeftText,
@@ -89,6 +103,11 @@ const useUserInfo = () => {
     loading,
     syncUserInfo,
     syncUserSubscriptionInfo,
+
+    userQuotaUsage,
+    syncUserQuotaUsageInfo,
+
+    isPayingUser,
   }
 }
 export { useUserInfo }

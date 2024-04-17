@@ -32,6 +32,7 @@ import {
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionAccessToken,
   getMaxAIChromeExtensionUserId,
+  getMaxAIChromeExtensionUserQuotaUsage,
 } from '@/features/auth/utils'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import WebsiteContextManager, {
@@ -363,6 +364,18 @@ export const ClientMessageInit = () => {
             return {
               success: true,
               data: userInfo,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_getMaxAIUserQuotaUsageInfo':
+          {
+            const quotaUsageInfo = await getMaxAIChromeExtensionUserQuotaUsage(
+              data.forceUpdate ?? false,
+            )
+            return {
+              success: true,
+              data: quotaUsageInfo,
               message: 'ok',
             }
           }

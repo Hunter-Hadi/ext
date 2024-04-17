@@ -1,16 +1,23 @@
-import { Divider } from '@mui/material'
 import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
-import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { PaginationConversation } from '@/background/src/chatConversations'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
-import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -89,11 +96,10 @@ const ConversationList: FC<IProps> = ({
     return <></>
   }, [emptyFeedback])
 
-  const handleConversationRename = useCallback((conversation: PaginationConversation, index: number) => {
-    (async () => {
+  const handleConversationRename = useCallback(
+    async (conversation: PaginationConversation, index: number) => {
       setEditingConversationId('')
       if (editingConversationName.current !== conversation.name) {
-        console.log('testesteditingConversationName', editingConversationName.current, '|', conversation.name)
         await clientUpdateChatConversation(
           conversation.id,
           {
@@ -102,11 +108,12 @@ const ConversationList: FC<IProps> = ({
           false,
         )
         editingConversationName.current = ''
-        const conversations = await fetchPaginationConversations();
+        const conversations = await fetchPaginationConversations()
         setPaginationConversations(conversations)
       }
-    })()
-  }, [paginationConversations, editingConversationName.current])
+    },
+    [paginationConversations, editingConversationName.current],
+  )
 
   useEffect(() => {
     let destroy = false
@@ -144,9 +151,14 @@ const ConversationList: FC<IProps> = ({
           const isSelected = conversation.id === currentSidebarConversationId
           // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
           if (typeof conversation.lastMessage.text !== 'string') {
-            conversation.lastMessage.text = JSON.stringify(conversation.lastMessage.text)
+            conversation.lastMessage.text = JSON.stringify(
+              conversation.lastMessage.text,
+            )
           }
-          const conversationDisplaysText = conversation.name || conversation.lastMessage?.text || conversation.title
+          const conversationDisplaysText =
+            conversation.name ||
+            conversation.lastMessage?.text ||
+            conversation.title
           return (
             <Stack
               key={conversation.id}
@@ -204,37 +216,37 @@ const ConversationList: FC<IProps> = ({
                   cursor: 'pointer',
                   backgroundColor: 'background.paper',
                   borderRadius: '4px',
-                  ...((isSelected || editingConversationId === conversation.id)
+                  ...(isSelected || editingConversationId === conversation.id
                     ? {
-                      bgcolor: (theme) =>
-                        theme.palette.mode === 'dark'
-                          ? 'rgba(255, 255, 255, 0.16)'
-                          : 'rgba(144, 101, 176, 0.16)',
-                    }
-                    : {
-                      '&:hover': {
                         bgcolor: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.06)'
-                            : 'rgba(144, 101, 176, 0.06)',
-                      },
-                    }),
+                            ? 'rgba(255, 255, 255, 0.16)'
+                            : 'rgba(144, 101, 176, 0.16)',
+                      }
+                    : {
+                        '&:hover': {
+                          bgcolor: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(255, 255, 255, 0.06)'
+                              : 'rgba(144, 101, 176, 0.06)',
+                        },
+                      }),
                 }}
                 spacing={2}
               >
-                <Stack
-                  width={'24px'}
-                  height={'24px'}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                >
-                  <AIProviderIcon
-                    size={24}
-                    aiProviderType={
-                      conversation!.AIProvider || 'USE_CHAT_GPT_PLUS'
-                    }
-                  />
-                </Stack>
+                {conversation.AIModel && (
+                  <Stack
+                    width={'24px'}
+                    height={'24px'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                  >
+                    <AIModelIcons
+                      size={24}
+                      aiModelValue={conversation.AIModel}
+                    />
+                  </Stack>
+                )}
                 <Stack width={0} flex={1}>
                   <Stack
                     direction={'row'}
@@ -288,39 +300,44 @@ const ConversationList: FC<IProps> = ({
                     </Typography>
                   </Stack>
                   <Stack direction={'row'} alignItems={'center'}>
-                    {
-                      editingConversationId === conversation.id ? (
-                        <ClickAwayListener
-                          mouseEvent={'onMouseDown'}
-                          onClickAway={() => handleConversationRename(conversation, index)}
-                        >
-                          <TextField
-                            size={'small'}
-                            autoFocus
-                            defaultValue={conversation.name}
-                            onChange={(event) => {
-                              event.stopPropagation();
-                              editingConversationName.current = event.target.value.trim()
-                            }}
-                            onKeyDown={(event) => {
-                              event.stopPropagation();
-                              if (event.key === 'Enter') { handleConversationRename(conversation, index) }
-                            }}
-                            onPaste={(event) => {
-                              event.stopPropagation();
-                            }}
-                            sx={{
-                              width: '100%',
-                              mt: '1.5px',
-                              mb: '-5.625px',
-                              '& input': {
-                                p: '2px 2px 2px 4px',
-                                fontSize: '14px',
-                              }
-                            }}
-                          />
-                        </ClickAwayListener>
-                      ) : <>
+                    {editingConversationId === conversation.id ? (
+                      <ClickAwayListener
+                        mouseEvent={'onMouseDown'}
+                        onClickAway={() =>
+                          handleConversationRename(conversation, index)
+                        }
+                      >
+                        <TextField
+                          size={'small'}
+                          autoFocus
+                          defaultValue={conversation.name}
+                          onChange={(event) => {
+                            event.stopPropagation()
+                            editingConversationName.current =
+                              event.target.value.trim()
+                          }}
+                          onKeyDown={(event) => {
+                            event.stopPropagation()
+                            if (event.key === 'Enter') {
+                              handleConversationRename(conversation, index)
+                            }
+                          }}
+                          onPaste={(event) => {
+                            event.stopPropagation()
+                          }}
+                          sx={{
+                            width: '100%',
+                            mt: '1.5px',
+                            mb: '-5.625px',
+                            '& input': {
+                              p: '2px 2px 2px 4px',
+                              fontSize: '14px',
+                            },
+                          }}
+                        />
+                      </ClickAwayListener>
+                    ) : (
+                      <>
                         <Typography
                           color={'text.primary'}
                           fontSize={'14px'}
@@ -332,7 +349,8 @@ const ConversationList: FC<IProps> = ({
                         >
                           {conversationDisplaysText}
                         </Typography>
-                        {(isSelected || hoveringConversationId === conversation.id) && (
+                        {(isSelected ||
+                          hoveringConversationId === conversation.id) && (
                           <Stack
                             direction={'row'}
                             alignItems={'center'}
@@ -342,7 +360,8 @@ const ConversationList: FC<IProps> = ({
                           >
                             <MoreActionsButton
                               onRename={() => {
-                                editingConversationName.current = conversation.name
+                                editingConversationName.current =
+                                  conversation.name
                                 setEditingConversationId(conversation.id)
                               }}
                               onDelete={() => {
@@ -368,7 +387,7 @@ const ConversationList: FC<IProps> = ({
                           </Stack>
                         )}
                       </>
-                    }
+                    )}
                   </Stack>
                 </Stack>
               </Stack>
@@ -391,7 +410,8 @@ const ConversationList: FC<IProps> = ({
             onDelete={() => {
               fetchPaginationConversations().then((conversations) => {
                 setPaginationConversations(conversations)
-                const needCleanConversationType = currentSidebarConversationType.toLowerCase()
+                const needCleanConversationType =
+                  currentSidebarConversationType.toLowerCase()
                 updateSidebarSettings({
                   [needCleanConversationType]: {
                     conversationId: '',

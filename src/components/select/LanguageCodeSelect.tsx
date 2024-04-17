@@ -105,7 +105,7 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
     <PermissionWrapper
       sceneType={'PREFERRED_LANGUAGE'}
       // TODO 暂时不锁，因为language code没有统一的标准，无法让pricing hooks的card 单独i18n, 2023-08-03
-      allowedRoles={['elite', 'pro', 'pro_gift', 'new_user', 'free']}
+      allowedRoles={['basic', 'elite', 'pro', 'pro_gift', 'new_user', 'free']}
       onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
         if (newValue.value !== defaultLanguageCodeOption.value) {
           // 重置回默认语言

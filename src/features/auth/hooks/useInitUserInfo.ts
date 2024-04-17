@@ -1,9 +1,10 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
-import { AuthUserInfoState } from '@/features/auth/store'
+import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
+import { IUserQuotaUsageInfo } from '@/features/auth/types'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
@@ -17,6 +18,7 @@ const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
 const userInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
+  const setUserQuotaUsageInfo = useSetRecoilState(UserQuotaUsageState)
   const { currentSidebarConversationMessages, currentSidebarConversationId } =
     useSidebarSettings()
   const needPushUpgradeMessage = useRef(false)
@@ -130,6 +132,36 @@ const userInitUserInfo = (isInit = true) => {
       })
     }
   }
+
+  const syncUserQuotaUsageInfo = async () => {
+    try {
+      setUserQuotaUsageInfo((prevState) => {
+        return {
+          ...prevState,
+          loading: true,
+        }
+      })
+      const result = await port.postMessage({
+        event: 'Client_getMaxAIUserQuotaUsageInfo',
+        data: {
+          forceUpdate: true,
+        },
+      })
+      if (result && result.data) {
+        setUserQuotaUsageInfo({
+          loading: false,
+          updateAt: Date.now(),
+          ...(result.data as IUserQuotaUsageInfo),
+        })
+        return true
+      }
+      return false
+    } catch (e) {
+      log.error(e)
+      return false
+    }
+  }
+
   const isPushUpgradeMessageRef = useRef(false)
   useEffect(() => {
     if (
@@ -184,6 +216,7 @@ const userInitUserInfo = (isInit = true) => {
     userInfo,
     syncUserInfo,
     syncUserSubscriptionInfo,
+    syncUserQuotaUsageInfo,
   }
 }
 export default userInitUserInfo

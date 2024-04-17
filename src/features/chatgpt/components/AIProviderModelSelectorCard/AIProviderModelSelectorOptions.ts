@@ -12,6 +12,8 @@ export type AIProviderModelSelectorOption = {
   label: string
   value: string
   AIProvider: IAIProviderType
+  // 隐藏，不在页面用显示
+  hidden?: boolean
 }
 export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[] =
   [
@@ -68,24 +70,28 @@ export const ChatAIProviderModelSelectorOptions: AIProviderModelSelectorOption[]
       label: 'claude-2.1-200k',
       value: 'claude-v2:1',
       AIProvider: 'MAXAI_CLAUDE',
+      hidden: true,
     },
     {
       mainPart: true,
       label: 'claude-2-100k',
       value: 'claude-2',
       AIProvider: 'MAXAI_CLAUDE',
+      hidden: true,
     },
     {
       mainPart: true,
       label: 'claude-instant-100k',
       value: 'claude-instant-v1',
       AIProvider: 'MAXAI_CLAUDE',
+      hidden: true,
     },
     {
       mainPart: true,
       label: 'gpt-3.5-turbo-16k',
       value: 'gpt-3.5-turbo-16k',
       AIProvider: 'USE_CHAT_GPT_PLUS',
+      hidden: true,
     },
     {
       mainPart: true,

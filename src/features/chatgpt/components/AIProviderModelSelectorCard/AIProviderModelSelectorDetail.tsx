@@ -4,7 +4,7 @@ import React, { FC, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import EllipsisTextWithTooltip from '@/features/common/components/EllipsisTextWithTooltip'
@@ -32,8 +32,8 @@ const AIProviderModelSelectorDetail: FC<{
         <Stack gap={1}>
           <Stack direction={'row'} alignItems={'start'} gap={1}>
             {!hideAIProviderIcon && (
-              <AIProviderIcon
-                aiProviderType={AIProvider}
+              <AIModelIcons
+                aiModelValue={AIProviderModel}
                 sx={{
                   fontSize: '24px',
                 }}

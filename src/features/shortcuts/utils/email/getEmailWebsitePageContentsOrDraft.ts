@@ -462,6 +462,11 @@ export const getEmailWebsitePageContentsOrDraft = async (
                 emailItemBox
                   .querySelector<HTMLElement>('& > div:nth-child(1)')
                   ?.click()
+                // in case the dom is not updated
+                setTimeout(() => {
+                  observer.disconnect()
+                  resolve()
+                }, 3000)
               })
             }
 

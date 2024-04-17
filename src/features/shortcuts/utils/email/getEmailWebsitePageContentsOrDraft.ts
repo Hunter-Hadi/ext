@@ -367,7 +367,6 @@ export const getEmailWebsitePageContentsOrDraft = async (
         )) as HTMLButtonElement)) ||
     null
   if (host === 'mail.google.com') {
-    debugger
     try {
       // 邮件列表容器
       const rootElement = document.querySelector(
@@ -459,6 +458,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
             }
             await new Promise<void>((resolve) => {
               let tryLimit = 0
+              // 用 MutationObserver 来检测邮件内容是否加载完成
               const observer = new MutationObserver(() => {
                 tryLimit++
                 if (retrieveEmailDataThenAdd() || tryLimit === 30) {

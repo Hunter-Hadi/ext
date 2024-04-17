@@ -511,6 +511,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
 
         if (emailCorrespondence.emails.length > 0) {
+          emailCorrespondence.sortEmails()
           return emailCorrespondence.emailContext
         }
       }

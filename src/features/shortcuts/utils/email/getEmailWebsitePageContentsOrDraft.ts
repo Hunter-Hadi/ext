@@ -452,6 +452,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
           if (emailFullContentBoxExists) {
             retrieveEmailDataThenAdd()
           } else {
+            // 为了获取到邮件内容，需要展开邮件，需要添加样式让用户感知不到展开的过程
             if (!temporarySpecialStyle) {
               temporarySpecialStyle = document.createElement('style')
               temporarySpecialStyle.innerHTML = `div[role="listitem"]>div>div>div>[id]>div:nth-child(1){display:flex!important;} div[role="listitem"]>div>div>div>[id]>div:nth-child(2){display:none!important;}`

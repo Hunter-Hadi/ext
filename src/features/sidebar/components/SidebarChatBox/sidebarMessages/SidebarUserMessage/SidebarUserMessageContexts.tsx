@@ -302,6 +302,7 @@ const SidebarUserMessageContexts: FC<{
                 )}
                 {attachments.length === 0 && (
                   <Typography
+                    data-testid={'user-message-short-contexts'}
                     sx={{
                       textAlign: 'left',
                       color: (t: any) =>

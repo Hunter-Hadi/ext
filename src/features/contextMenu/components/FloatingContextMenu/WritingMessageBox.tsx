@@ -143,6 +143,9 @@ const WritingMessageBox: FC<{
               '& > div': {
                 width: '100%',
               },
+              '& p[data-testid="user-message-short-contexts"]': {
+                width: '100%',
+              },
             },
           }}
           message={selectedDraftUserMessage}

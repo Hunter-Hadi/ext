@@ -410,6 +410,10 @@ export const MenuComponent = React.forwardRef<
       lastHoverDropdownMenuItemRef.current = null
       lastParentDropdownMenuItemRef.current = null
     }
+    const floatingDropdownMenuOpenRef = useRef(floatingDropdownMenu.open)
+    useEffect(() => {
+      floatingDropdownMenuOpenRef.current = floatingDropdownMenu.open
+    }, [floatingDropdownMenu.open])
     const { x, y, strategy, refs, context } = useFloating<any>({
       nodeId,
       open: isOpen,
@@ -459,6 +463,9 @@ export const MenuComponent = React.forwardRef<
       nested: isNested,
       onNavigate(index) {
         const focusTextarea = () => {
+          if (!floatingDropdownMenuOpenRef.current) {
+            return
+          }
           const textareaEl =
             getMaxAIFloatingContextMenuRootElement()?.querySelector(
               `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,

@@ -37,6 +37,7 @@ const useInitSidebar = () => {
   const {
     currentSidebarConversation,
     sidebarSettings,
+    sidebarPageState,
     currentSidebarConversationType,
     updateSidebarSettings,
     updateSidebarConversationType,
@@ -53,6 +54,8 @@ const useInitSidebar = () => {
   useEffect(() => {
     currentSidebarConversationTypeRef.current = currentSidebarConversationType
   }, [currentSidebarConversationType])
+  const currentSidebarPageUrlRef = useRef(sidebarPageState.pageUrl)
+  currentSidebarPageUrlRef.current = sidebarPageState.pageUrl
   const sidebarSettingsRef = useRef(sidebarSettings)
   useEffect(() => {
     sidebarSettingsRef.current = sidebarSettings
@@ -155,7 +158,7 @@ const useInitSidebar = () => {
     if (currentSidebarConversationTypeRef.current === 'Summary') {
       updateSidebarSettings({
         summary: {
-          conversationId: getPageSummaryConversationId(),
+          conversationId: getPageSummaryConversationId(currentSidebarPageUrlRef.current),
         },
       })
     }
@@ -173,14 +176,14 @@ const useInitSidebar = () => {
     if (!pageUrlIsUsedRef.current) {
       const pageSummaryType = getPageSummaryType()
       pageUrlIsUsedRef.current = true
-      console.log('special pageSummaryType', pageSummaryType)
+      console.log('special pageSummaryType', pageSummaryType, pageUrl)
       if (
         pageSummaryType === 'YOUTUBE_VIDEO_SUMMARY' ||
         pageSummaryType === 'PDF_CRX_SUMMARY'
       ) {
         updateSidebarSettings({
           summary: {
-            conversationId: getPageSummaryConversationId(),
+            conversationId: getPageSummaryConversationId(pageUrl),
           },
         }).then(() => {
           updateSidebarConversationType('Summary')

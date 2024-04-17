@@ -34,6 +34,7 @@ import {
 
 const usePageSummary = () => {
   const {
+    sidebarPageState,
     updateSidebarSettings,
     currentSidebarConversationId,
     currentSidebarConversationType,
@@ -60,7 +61,7 @@ const usePageSummary = () => {
       }
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')
-      const pageSummaryConversationId = getPageSummaryConversationId()
+      const pageSummaryConversationId = getPageSummaryConversationId(sidebarPageState.pageUrl)
       updateClientWritingMessage((prevState) => {
         return {
           ...prevState,

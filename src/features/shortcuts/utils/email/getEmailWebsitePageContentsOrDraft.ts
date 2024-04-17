@@ -382,7 +382,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
             ?.match(emailRegex)?.[0] || ''
         const emailCorrespondence = new EmailCorrespondence(myEmailAddress)
         const expandEmailButton = rootElement.querySelector<HTMLButtonElement>(
-          'span[role="button"][aria-expanded][tabindex="-1"]',
+          'span[role="button"][aria-expanded][aria-label][tabindex]',
         )
         if (expandEmailButton) {
           expandEmailButton.click()
@@ -405,15 +405,23 @@ export const getEmailWebsitePageContentsOrDraft = async (
             inputAssistantButtonElement,
           )
 
-          if (!isCurrentEmail) {
-            const emailFullContentBoxExists = Boolean(
-              emailItemBox.querySelector<HTMLElement>('& > div:nth-child(2)'),
+          const emailFullContentBox =
+            emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
+            emailItemBox.querySelector<HTMLElement>(
+              'div[data-legacy-message-id]',
             )
 
-            const retrieveEmailDataThenAdd = () => {
-              const gmailUsers = emailItemBox.querySelectorAll<HTMLElement>(
-                '& > div:nth-child(2) table span[email]',
+          const retrieveEmailDataThenAdd = () => {
+            const retrieveEmailFullContentBox =
+              emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
+              emailItemBox.querySelector<HTMLElement>(
+                'div[data-legacy-message-id]',
               )
+            if (retrieveEmailFullContentBox) {
+              const gmailUsers =
+                retrieveEmailFullContentBox.querySelectorAll<HTMLElement>(
+                  'table span[email]',
+                )
               if (gmailUsers.length > 0) {
                 const [sender, ...receivers] = getGmailUsers(gmailUsers)
 
@@ -425,91 +433,71 @@ export const getEmailWebsitePageContentsOrDraft = async (
                     emailItemBox.querySelector('span[tabindex="-1"][alt]')
                       ?.textContent || '',
                   content: removeEmailContentQuote(
-                    emailItemBox.querySelector<HTMLElement>(
-                      '& > div:nth-child(2) div[id][jslog] > div[id]',
+                    retrieveEmailFullContentBox.querySelector<HTMLElement>(
+                      'div[id][jslog] > div[id]',
                     ),
                   ),
                 })
                 return true
               }
-              return false
             }
+            return false
+          }
 
-            if (emailFullContentBoxExists) {
-              retrieveEmailDataThenAdd()
-            } else {
-              if (!temporarySpecialStyle) {
-                temporarySpecialStyle = document.createElement('style')
-                temporarySpecialStyle.innerHTML = `div[role="listitem"]>div>div>div>[id]>div:nth-child(1){display:flex!important;} div[role="listitem"]>div>div>div>[id]>div:nth-child(2){display:none!important;}`
-                document
-                  .getElementsByTagName('head')[0]
-                  .appendChild(temporarySpecialStyle)
-              }
-              await new Promise<void>((resolve) => {
-                let tryLimit = 0
-                // const observer = new MutationObserver(() => {
-                //   tryLimit++
-                //   if (tryLimit === 30) {
-                //     observer.disconnect()
-                //     resolve()
-                //   } else if (retrieveEmailDataThenAdd()) {
-                //     observer.disconnect()
-                //     resolve()
-                //   }
-                // })
-                // observer.observe(emailItemBox, {
-                //   childList: true,
-                //   subtree: true,
-                // })
-                emailItemBox
-                  .querySelector<HTMLElement>('& > div:nth-child(1)')
-                  ?.click()
-                // // in case the dom is not updated
-                // setTimeout(() => {
-                //   observer.disconnect()
-                //   resolve()
-                // }, 2000)
-
-                let timer: ReturnType<typeof setTimeout> | null = null
-                const retrieveEmail = () => {
-                  if (retrieveEmailDataThenAdd() || tryLimit === 10) {
-                    clearInterval(timer!)
-                    resolve()
-                  }
-                  tryLimit++
-                }
-                retrieveEmail()
-                timer = setInterval(retrieveEmail, 500)
-              })
-            }
-
-            if (!emailFullContentBoxExists) {
-              emailItemBox
-                .querySelector<HTMLElement>(
-                  '& > div:nth-child(2) [data-message-id] > div:nth-child(2) > div > table',
-                )
-                ?.click()
-            }
+          if (emailFullContentBox) {
+            retrieveEmailDataThenAdd()
           } else {
-            const [sender, ...receivers] = getGmailUsers(
-              emailItemBox.querySelectorAll(
-                'div[data-message-id] table span[email]',
-              ),
-            )
+            if (!temporarySpecialStyle) {
+              temporarySpecialStyle = document.createElement('style')
+              temporarySpecialStyle.innerHTML = `div[role="listitem"]>div>div>div>[id]>div:nth-child(1){display:flex!important;} div[role="listitem"]>div>div>div>[id]>div:nth-child(2){display:none!important;}`
+              document
+                .getElementsByTagName('head')[0]
+                .appendChild(temporarySpecialStyle)
+            }
+            await new Promise<void>((resolve) => {
+              let tryLimit = 0
+              const observer = new MutationObserver(() => {
+                tryLimit++
+                if (retrieveEmailDataThenAdd() || tryLimit === 30) {
+                  observer.disconnect()
+                  resolve()
+                }
+              })
+              observer.observe(emailItemBox, {
+                childList: true,
+                subtree: true,
+              })
+              emailItemBox
+                .querySelector<HTMLElement>('& > div:nth-child(1)')
+                ?.click()
+              // // in case the dom is not updated
+              setTimeout(() => {
+                observer.disconnect()
+                resolve()
+              }, 2000)
 
-            emailCorrespondence.addEmail({
-              from: sender,
-              to: receivers,
-              subject,
-              date:
-                emailItemBox.querySelector('span[tabindex="-1"][alt]')
-                  ?.textContent || '',
-              content: removeEmailContentQuote(
-                emailItemBox.querySelector<HTMLElement>(
-                  'div[id][jslog] > div[id]',
-                ),
-              ),
+              // let timer: ReturnType<typeof setTimeout> | null = null
+              // const retrieveEmail = () => {
+              //   if (retrieveEmailDataThenAdd() || tryLimit === 10) {
+              //     clearInterval(timer!)
+              //     resolve()
+              //   }
+              //   tryLimit++
+              // }
+              // retrieveEmail()
+              // timer = setInterval(retrieveEmail, 500)
             })
+            console.log('testest', emailItemBox, [
+              ...emailCorrespondence.emails,
+            ])
+          }
+
+          if (!emailFullContentBox) {
+            emailItemBox
+              .querySelector<HTMLElement>(
+                '& > div:nth-child(2) [data-message-id] > div:nth-child(2) > div > table',
+              )
+              ?.click()
           }
 
           //如果发现了inputAssistantButtonElement, 说明是在这个邮件上操作的, 就不用再找了

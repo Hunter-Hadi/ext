@@ -644,7 +644,7 @@ const FloatingContextMenu: FC<{
           .catch()
           .finally(() => {
             isRunningActionsRef.current = false
-            hideRangy(true)
+            hideRangy(false)
           })
       }
     }

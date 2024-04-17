@@ -5,7 +5,6 @@ import {
   GetSocialMediaPostContentFunction,
   GetSocialMediaPostDraftFunction,
 } from '@/features/shortcuts/utils/socialMedia/platforms/types'
-import { delayAndScrollToInputAssistantButton } from '@/features/shortcuts/utils/socialMedia/platforms/utils'
 import SocialMediaPostContext, {
   createCommentListData,
   ICommentData,
@@ -13,6 +12,7 @@ import SocialMediaPostContext, {
   ISocialMediaPostContextData,
 } from '@/features/shortcuts/utils/socialMedia/SocialMediaPostContext'
 import {
+  delayAndScrollToInputAssistantButton,
   findParentEqualSelector,
   findSelectorParent,
 } from '@/utils/dataHelper/elementHelper'

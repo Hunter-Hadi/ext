@@ -6,7 +6,7 @@ import EmailCorrespondence, {
 } from '@/features/shortcuts/utils/email/EmailContext'
 import { removeEmailContentQuote } from '@/features/shortcuts/utils/email/removeEmailContentQuote'
 import { wait } from '@/utils'
-import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
+import { delayAndScrollToInputAssistantButton } from '@/utils/dataHelper/elementHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const emailWebsiteTrafficRankings = [
@@ -386,7 +386,10 @@ export const getEmailWebsitePageContentsOrDraft = async (
         )
         if (expandEmailButton) {
           expandEmailButton.click()
-          await wait(3000)
+          await delayAndScrollToInputAssistantButton(
+            3000,
+            inputAssistantButtonElement,
+          )
         }
         const subject =
           document.querySelector('h2[data-thread-perm-id]')?.textContent ||
@@ -470,26 +473,12 @@ export const getEmailWebsitePageContentsOrDraft = async (
               emailItemBox
                 .querySelector<HTMLElement>('& > div:nth-child(1)')
                 ?.click()
-              // // in case the dom is not updated
+              // in case the dom is not updated
               setTimeout(() => {
                 observer.disconnect()
                 resolve()
               }, 2000)
-
-              // let timer: ReturnType<typeof setTimeout> | null = null
-              // const retrieveEmail = () => {
-              //   if (retrieveEmailDataThenAdd() || tryLimit === 10) {
-              //     clearInterval(timer!)
-              //     resolve()
-              //   }
-              //   tryLimit++
-              // }
-              // retrieveEmail()
-              // timer = setInterval(retrieveEmail, 500)
             })
-            console.log('testest', emailItemBox, [
-              ...emailCorrespondence.emails,
-            ])
           }
 
           if (!emailFullContentBox) {

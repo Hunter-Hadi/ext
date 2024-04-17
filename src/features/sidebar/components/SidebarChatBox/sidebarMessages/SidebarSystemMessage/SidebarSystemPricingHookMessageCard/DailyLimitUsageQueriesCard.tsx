@@ -6,16 +6,8 @@ import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-
 const DailyLimitUsageQueriesCard = () => {
   const { t } = useTranslation()
-
-  useEffectOnce(() => {
-    // 记录日志
-    authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
-  })
 
   return (
     <Stack

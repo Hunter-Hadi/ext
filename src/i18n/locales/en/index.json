@@ -53,7 +53,7 @@
     "show_original_text": "Show original text",
     "upgrade": "Upgrade",
     "unlimited": "Unlimited",
-    "cancel_anytime":"Cancel anytime"
+    "cancel_anytime": "Cancel anytime"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -472,8 +472,8 @@
     "pdf_ai_viewer__share_button__title": "Copy original PDF URL",
     "permission__pricing_hook__button__upgrade_to_pro": "Upgrade to Pro",
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade to Elite",
-    "permission__pricing_hook__daily_limit__title": "Upgrade for unlimited usage",
-    "permission__pricing_hook__daily_limit__description1": "You've reached the current daily usage cap for all AI Providers.\nYou can upgrade to Elite now for unlimited usage, or try again later.",
+    "permission__pricing_hook__daily_limit__title": "Unlock unlimited times of {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, optimized for speed and efficiency, excels in real-time applications requiring creativity and advanced reasoning with enhanced response times and consistent output.",
     "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Access to fast AI models:",
     "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Access to advanced AI models:",
     "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Access to create AI art & images AI models:",
@@ -803,7 +803,7 @@
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
   },
-  "quota_usage_card" :{
+  "quota_usage_card": {
     "category__fast_text": "Fast text",
     "category__advanced_text": "Advanced text",
     "category__image_generate": "Image",

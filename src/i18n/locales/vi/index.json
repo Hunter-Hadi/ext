@@ -50,7 +50,10 @@
     "release_notes": "Ghi chú phát hành",
     "web_translation": "Dịch trang này",
     "show_original_text": "Hiển thị văn bản gốc",
-    "more": "Thêm"
+    "more": "Thêm",
+    "upgrade": "Nâng cấp",
+    "unlimited": "Không giới hạn",
+    "cancel_anytime": "Hủy bất kỳ lúc nào"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Tiếp tục",
     "sidebar__button__insert": "Chèn",
     "sidebar__button__replace": "Thay thế",
-    "sidebar__button__upgrade_to_pro": "Nâng cấp lên Pro",
     "sidebar__button__retry": "Thử lại",
     "sidebar__button__set_up_shortcut": "Thiết lập phím tắt",
     "sidebar__speed_dial__one_click_prompts__button": "Gợi ý 1 nhấp chuột",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Có, khôi phục",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Hủy",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Đã khôi phục 1 cuộc trò chuyện",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Đã khôi phục {{CONVERSATION_COUNT}} cuộc trò chuyện"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Đã khôi phục {{CONVERSATION_COUNT}} cuộc trò chuyện",
+    "sidebar__button__upgrade_to_plan": "Nâng cấp lên {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Truy cập vào mô hình trí tuệ nhân tạo nhanh:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Truy cập vào mô hình trí tuệ nhân tạo tiên tiến:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Truy cập vào tạo nghệ thuật và mô hình trí tuệ nhân tạo hình ảnh:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Ảnh chụp màn hình AI",
     "sidebar_tour__step__5__feature_5__title": "Gợi ý 1-click",
     "sidebar_tour__step__5__feature_6__title": "Sử dụng gợi ý"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Văn bản nhanh",
+    "category__advanced_text": "Văn bản tiên tiến",
+    "category__image_generate": "Hình ảnh",
+    "role_label": "Gói hiện tại: {{ROLE}}",
+    "queries": "Truy vấn",
+    "reset_on_date": "Đặt lại vào ngày {{DATE}}"
   }
 }

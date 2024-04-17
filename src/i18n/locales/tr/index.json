@@ -50,7 +50,10 @@
     "release_notes": "Sürüm notları",
     "web_translation": "Bu sayfayı çevir",
     "show_original_text": "Orijinal metni göster",
-    "more": "Daha Fazla"
+    "more": "Daha Fazla",
+    "upgrade": "Yükselt",
+    "unlimited": "Sınırsız",
+    "cancel_anytime": "Her zaman iptal et"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Devam et",
     "sidebar__button__insert": "Ekle",
     "sidebar__button__replace": "Değiştir",
-    "sidebar__button__upgrade_to_pro": "Pro'ya Yükselt",
     "sidebar__button__retry": "Tekrar dene",
     "sidebar__button__set_up_shortcut": "Kısayolu ayarla",
     "sidebar__speed_dial__one_click_prompts__button": "1 tıklama ipuçları",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Evet, geri yükle",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "İptal",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 konuşma geri yüklendi",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} konuşma geri yüklendi"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} konuşma geri yüklendi",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}}'a yükselt",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Hızlı AI modellerine erişim:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Gelişmiş AI modellerine erişim:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI sanatı ve görüntüleri oluşturma AI modellerine erişim:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ekran görüntüsü",
     "sidebar_tour__step__5__feature_5__title": "1 tıklamayla ipuçları",
     "sidebar_tour__step__5__feature_6__title": "İpucu kullan"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Hızlı metin",
+    "category__advanced_text": "Gelişmiş metin",
+    "category__image_generate": "Görüntü",
+    "role_label": "Geçerli plan: {{ROLE}}",
+    "queries": "Sorgular",
+    "reset_on_date": "{{DATE}} tarihinde sıfırlanacak"
   }
 }

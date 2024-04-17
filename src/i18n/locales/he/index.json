@@ -50,7 +50,10 @@
     "release_notes": "הערות גרסה",
     "web_translation": "תרגם את הדף הזה",
     "show_original_text": "הצג טקסט מקור",
-    "more": "עוד"
+    "more": "עוד",
+    "upgrade": "שדרג",
+    "unlimited": "ללא הגבלה",
+    "cancel_anytime": "בטל בכל עת"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "המשך",
     "sidebar__button__insert": "הכנס",
     "sidebar__button__replace": "החלף",
-    "sidebar__button__upgrade_to_pro": "שדרג לגרסה Pro",
     "sidebar__button__retry": "נסה שוב",
     "sidebar__button__set_up_shortcut": "הגדר קיצור דרך",
     "sidebar__speed_dial__one_click_prompts__button": "קליק אחד",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "כן, שחזר",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ביטול",
     "immersive_chat__chat_history__restore_modal__toast1__title": "שיחה אחת שוחזרה",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} שיחות שוחזרו"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} שיחות שוחזרו",
+    "sidebar__button__upgrade_to_plan": "שדרג ל{{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "גישה למודלי AI מהירים:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "גישה למודלי AI מתקדמים:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "גישה ליצירת אמנות AI ומודלים של תמונות:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "צילום מסך AI",
     "sidebar_tour__step__5__feature_5__title": "פרומטים בלחיצה אחת",
     "sidebar_tour__step__5__feature_6__title": "שימוש בפרומט"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "טקסט מהיר",
+    "category__advanced_text": "טקסט מתקדם",
+    "category__image_generate": "תמונה",
+    "role_label": "תוכנית נוכחית: {{ROLE}}",
+    "queries": "שאילתות",
+    "reset_on_date": "איפוס בתאריך {{DATE}}"
   }
 }

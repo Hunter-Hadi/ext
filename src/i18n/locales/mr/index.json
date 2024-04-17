@@ -50,7 +50,10 @@
     "release_notes": "रिलीज नोट्स",
     "web_translation": "या पृष्ठाचे भाषांतर करा",
     "show_original_text": "मूळ मजकूर दाखवा",
-    "more": "अधिक"
+    "more": "अधिक",
+    "upgrade": "अपग्रेड करा",
+    "unlimited": "अमर्यादित",
+    "cancel_anytime": "कोणतेही वेळेस रद्द करा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "सुरू ठेवा",
     "sidebar__button__insert": "समाविष्ट करा",
     "sidebar__button__replace": "बदला",
-    "sidebar__button__upgrade_to_pro": "प्रोच्या वर्गात अपग्रेड करा",
     "sidebar__button__retry": "पुन्हा प्रयत्न करा",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करा",
     "sidebar__speed_dial__one_click_prompts__button": "1-क्लिक प्रॉम्प्ट",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "होय, पुनर्स्थापित करा",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करा",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 बातचीत पुनर्स्थापित",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} बातचीत पुनर्स्थापित"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} बातचीत पुनर्स्थापित",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}}ला अपग्रेड करा",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "फास्ट AI मॉडेलसाठी प्रवेश:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "एडव्हान्स्ड AI मॉडेलसाठी प्रवेश:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI कला आणि इमेजेस AI मॉडेल सृजनासाठी प्रवेश:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI स्क्रीनशॉट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
     "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट वापरा"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "फास्ट टेक्स्ट",
+    "category__advanced_text": "एडव्हान्स्ड टेक्स्ट",
+    "category__image_generate": "इमेज",
+    "role_label": "वर्तमान योजना: {{ROLE}}",
+    "queries": "क्वेरी",
+    "reset_on_date": "{{DATE}} रोजी रीसेट करा"
   }
 }

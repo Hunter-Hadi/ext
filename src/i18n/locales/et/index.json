@@ -50,7 +50,10 @@
     "release_notes": "Väljalaske märkused",
     "web_translation": "Tõlgi see leht",
     "show_original_text": "Näita algset teksti",
-    "more": "Rohkem"
+    "more": "Rohkem",
+    "upgrade": "Täiusta",
+    "unlimited": "Piiramatu",
+    "cancel_anytime": "Tühista igal ajal"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Jätka",
     "sidebar__button__insert": "Sisesta",
     "sidebar__button__replace": "Asenda",
-    "sidebar__button__upgrade_to_pro": "Tõsta Pro tasemele",
     "sidebar__button__retry": "Proovi uuesti",
     "sidebar__button__set_up_shortcut": "Seadista otsetee",
     "sidebar__speed_dial__one_click_prompts__button": "1-kliki vihjed",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Jah, taasta",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Tühista",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 vestlus taastatud",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} vestlust taastatud"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} vestlust taastatud",
+    "sidebar__button__upgrade_to_plan": "Täiusta plaani {{PLAN}}-le",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Juurdepääs kiiretele AI mudelitele:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Juurdepääs edasijõudnud AI mudelitele:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Juurdepääs AI kunsti ja piltide loomisele:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tehisintellekti ekraanipilt",
     "sidebar_tour__step__5__feature_5__title": "1-kliki vihjed",
     "sidebar_tour__step__5__feature_6__title": "Kasuta vihjet"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Kiire tekst",
+    "category__advanced_text": "Edasijõudnud tekst",
+    "category__image_generate": "Pilt",
+    "role_label": "Praegune plaan: {{ROLE}}",
+    "queries": "Päringud",
+    "reset_on_date": "Lähtestamine kuupäeval {{DATE}}"
   }
 }

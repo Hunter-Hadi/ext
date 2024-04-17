@@ -50,7 +50,10 @@
     "release_notes": "रिलीज नोट्स",
     "web_translation": "इस पेज को अनुवाद करें",
     "show_original_text": "मूल पाठ दिखाएं",
-    "more": "अधिक"
+    "more": "अधिक",
+    "upgrade": "अपग्रेड करें",
+    "unlimited": "असीमित",
+    "cancel_anytime": "कभी भी रद्द करें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "जारी रखें",
     "sidebar__button__insert": "सम्मिलित करें",
     "sidebar__button__replace": "प्रतिस्थापित करें",
-    "sidebar__button__upgrade_to_pro": "प्रो में अपग्रेड करें",
     "sidebar__button__retry": "पुनः प्रयास करें",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करें",
     "sidebar__speed_dial__one_click_prompts__button": "1-क्लिक प्रॉम्प्ट",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "हाँ, बहाल करें",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 संवाद पुनर्स्थापित",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} संवाद पुनर्स्थापित"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} संवाद पुनर्स्थापित",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} में अपग्रेड करें",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "तेज AI मॉडलों तक पहुंच:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "उन्नत AI मॉडलों तक पहुंच:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI कला और छवि AI मॉडल बनाने की पहुंच:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI स्क्रीनशॉट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
     "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट का उपयोग करें"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "तेज टेक्स्ट",
+    "category__advanced_text": "उन्नत टेक्स्ट",
+    "category__image_generate": "छवि",
+    "role_label": "वर्तमान योजना: {{ROLE}}",
+    "queries": "प्रश्न",
+    "reset_on_date": "{{DATE}} को रीसेट होगा"
   }
 }

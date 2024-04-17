@@ -50,7 +50,10 @@
     "release_notes": "Julkaisutiedot",
     "web_translation": "Käännä tämä sivu",
     "show_original_text": "Näytä alkuperäinen teksti",
-    "more": "Lisää"
+    "more": "Lisää",
+    "upgrade": "Päivitä",
+    "unlimited": "Rajaton",
+    "cancel_anytime": "Peruuta milloin tahansa"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Jatka",
     "sidebar__button__insert": "Lisää",
     "sidebar__button__replace": "Korvaa",
-    "sidebar__button__upgrade_to_pro": "Päivitä Pro-tilaan",
     "sidebar__button__retry": "Yritä uudelleen",
     "sidebar__button__set_up_shortcut": "Määritä pikanäppäin",
     "sidebar__speed_dial__one_click_prompts__button": "1 napsautus",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Kyllä, palauta",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Peruuta",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 keskustelu palautettu",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} keskustelua palautettu"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} keskustelua palautettu",
+    "sidebar__button__upgrade_to_plan": "Päivitä {{PLAN}}:iin",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Pääsy nopeisiin AI-malleihin:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Pääsy kehittyneisiin AI-malleihin:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Pääsy luoda AI-taidetta ja kuvia AI-malleilla:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tekoälynäyttökuva",
     "sidebar_tour__step__5__feature_5__title": "1-klikkausvihjeet",
     "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Nopea teksti",
+    "category__advanced_text": "Kehittynyt teksti",
+    "category__image_generate": "Kuva",
+    "role_label": "Nykyinen suunnitelma: {{ROLE}}",
+    "queries": "Kyselyt",
+    "reset_on_date": "Nollaa päivämäärään {{DATE}}"
   }
 }

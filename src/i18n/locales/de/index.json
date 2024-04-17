@@ -50,7 +50,10 @@
     "release_notes": "Versionshinweise",
     "web_translation": "Diese Seite übersetzen",
     "show_original_text": "Originaltext anzeigen",
-    "more": "Mehr"
+    "more": "Mehr",
+    "upgrade": "Aktualisieren",
+    "unlimited": "Unbegrenzt",
+    "cancel_anytime": "Jederzeit kündigen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Weiter",
     "sidebar__button__insert": "Einfügen",
     "sidebar__button__replace": "Ersetzen",
-    "sidebar__button__upgrade_to_pro": "Auf Pro upgraden",
     "sidebar__button__retry": "Erneut versuchen",
     "sidebar__button__set_up_shortcut": "Verknüpfung einrichten",
     "sidebar__speed_dial__one_click_prompts__button": "1-Klick-Anfragen",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, wiederherstellen",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 Unterhaltung wiederhergestellt",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} Unterhaltungen wiederhergestellt"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} Unterhaltungen wiederhergestellt",
+    "sidebar__button__upgrade_to_plan": "Auf {{PLAN}} aktualisieren",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Zugriff auf schnelle KI-Modelle:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Zugriff auf fortgeschrittene KI-Modelle:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Zugriff auf Erstellung von KI-Kunst und Bildern:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "KI-Bildschirmfoto",
     "sidebar_tour__step__5__feature_5__title": "1-Klick-Anregungen",
     "sidebar_tour__step__5__feature_6__title": "Verwenden Sie die Anregung"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Schneller Text",
+    "category__advanced_text": "Fortgeschrittener Text",
+    "category__image_generate": "Bild",
+    "role_label": "Aktueller Plan: {{ROLE}}",
+    "queries": "Abfragen",
+    "reset_on_date": "Zurücksetzen am {{DATE}}"
   }
 }

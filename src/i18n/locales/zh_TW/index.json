@@ -50,7 +50,10 @@
     "release_notes": "發行說明",
     "web_translation": "翻譯此頁面",
     "show_original_text": "顯示原文",
-    "more": "更多"
+    "more": "更多",
+    "upgrade": "升級",
+    "unlimited": "無限制",
+    "cancel_anytime": "隨時取消"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "繼續",
     "sidebar__button__insert": "插入",
     "sidebar__button__replace": "替換",
-    "sidebar__button__upgrade_to_pro": "升級至專業版",
     "sidebar__button__retry": "重試",
     "sidebar__button__set_up_shortcut": "設置快捷方式",
     "sidebar__speed_dial__one_click_prompts__button": "一鍵提示",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，還原",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消",
     "immersive_chat__chat_history__restore_modal__toast1__title": "已恢復 1 個對話",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "已恢復 {{CONVERSATION_COUNT}} 個對話"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "已恢復 {{CONVERSATION_COUNT}} 個對話",
+    "sidebar__button__upgrade_to_plan": "升級至{{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "使用快速AI模型：",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "使用高級AI模型：",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "創建AI藝術和圖像AI模型的訪問權限："
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI 截圖",
     "sidebar_tour__step__5__feature_5__title": "一鍵提示",
     "sidebar_tour__step__5__feature_6__title": "使用提示"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "快速文本",
+    "category__advanced_text": "高級文本",
+    "category__image_generate": "圖像",
+    "role_label": "當前計劃：{{ROLE}}",
+    "queries": "查詢",
+    "reset_on_date": "重置於{{DATE}}"
   }
 }

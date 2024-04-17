@@ -50,7 +50,10 @@
     "release_notes": "Release-opmerkingen",
     "web_translation": "Vertaal deze pagina",
     "show_original_text": "Toon oorspronkelijke tekst",
-    "more": "Meer"
+    "more": "Meer",
+    "upgrade": "Upgraden",
+    "unlimited": "Onbeperkt",
+    "cancel_anytime": "Altijd annuleren"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Doorgaan",
     "sidebar__button__insert": "Invoegen",
     "sidebar__button__replace": "Vervangen",
-    "sidebar__button__upgrade_to_pro": "Upgrade naar Pro",
     "sidebar__button__retry": "Opnieuw proberen",
     "sidebar__button__set_up_shortcut": "Snelkoppeling instellen",
     "sidebar__speed_dial__one_click_prompts__button": "1-klik prompts",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, herstellen",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuleren",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 gesprek hersteld",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} gesprekken hersteld"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} gesprekken hersteld",
+    "sidebar__button__upgrade_to_plan": "Upgrade naar {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Toegang tot snelle AI-modellen:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Toegang tot geavanceerde AI-modellen:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Toegang tot het maken van AI-kunst en afbeeldingen:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI-screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
     "sidebar_tour__step__5__feature_6__title": "Gebruik prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Snelle tekst",
+    "category__advanced_text": "Geavanceerde tekst",
+    "category__image_generate": "Afbeelding",
+    "role_label": "Huidig plan: {{ROLE}}",
+    "queries": "Vragen",
+    "reset_on_date": "Reset op {{DATE}}"
   }
 }

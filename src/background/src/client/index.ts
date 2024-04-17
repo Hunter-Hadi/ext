@@ -29,12 +29,14 @@ import {
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import {
+  fetchUserSubscriptionInfo,
   getChromeExtensionUserInfo,
   getMaxAIChromeExtensionAccessToken,
   getMaxAIChromeExtensionUserId,
   getMaxAIChromeExtensionUserQuotaUsage,
 } from '@/features/auth/utils'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
+import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
 import WebsiteContextManager, {
   IWebsiteContext,
 } from '@/features/websiteContext/background'
@@ -312,6 +314,26 @@ export const ClientMessageInit = () => {
             }
           }
           break
+        case 'Client_logThirdPartyDailyUsage':
+          {
+            const result = await logThirdPartyDailyUsage()
+            return {
+              data: result,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
+        case 'Client_updateUserSubscriptionInfo':
+          {
+            const result = await fetchUserSubscriptionInfo()
+            return {
+              data: result,
+              success: true,
+              message: 'ok',
+            }
+          }
+          break
         case 'Client_updateUseChatGPTAuthInfo':
           {
             const prevToken = await getMaxAIChromeExtensionAccessToken()
@@ -392,11 +414,16 @@ export const ClientMessageInit = () => {
           break
         case 'Client_emitPricingHooks': {
           const { action, name } = data
+          const userInfo = await getChromeExtensionUserInfo(false)
           if (name) {
-            await backendApiReportPricingHooks({
+            const data: Record<string, string> = {
               action,
               name,
-            })
+            }
+            if (userInfo?.role?.name) {
+              data.role = userInfo.role.name
+            }
+            await backendApiReportPricingHooks(data)
           }
           return {
             success: true,

@@ -50,7 +50,10 @@
     "release_notes": "Versionsnoter",
     "web_translation": "Oversæt denne side",
     "show_original_text": "Vis original tekst",
-    "more": "Mere"
+    "more": "Mere",
+    "upgrade": "Opgrader",
+    "unlimited": "Ubegrænset",
+    "cancel_anytime": "Annuller når som helst"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Fortsæt",
     "sidebar__button__insert": "Indsæt",
     "sidebar__button__replace": "Erstat",
-    "sidebar__button__upgrade_to_pro": "Opgrader til Pro",
     "sidebar__button__retry": "Prøv igen",
     "sidebar__button__set_up_shortcut": "Opsæt genvej",
     "sidebar__speed_dial__one_click_prompts__button": "1-klik prompts",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, gendan",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuller",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 samtale genoprettet",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} samtaler genoprettet"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} samtaler genoprettet",
+    "sidebar__button__upgrade_to_plan": "Opgrader til {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Adgang til hurtige AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Adgang til avancerede AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Adgang til at skabe AI-kunst og billeder:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI-skærmbillede",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
     "sidebar_tour__step__5__feature_6__title": "Brug prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Hurtig tekst",
+    "category__advanced_text": "Avanceret tekst",
+    "category__image_generate": "Billede",
+    "role_label": "Nuværende plan: {{ROLE}}",
+    "queries": "Forespørgsler",
+    "reset_on_date": "Nulstil den {{DATE}}"
   }
 }

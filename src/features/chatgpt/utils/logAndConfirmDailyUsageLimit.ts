@@ -6,20 +6,14 @@ import Browser from 'webextension-polyfill'
 import { IAIProviderType } from '@/background/provider/chat'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
-import {
-  fetchUserSubscriptionInfo,
-  getChromeExtensionUserInfo,
-} from '@/features/auth/utils'
+import { fetchUserSubscriptionInfo } from '@/features/auth/utils'
 import {
   contextMenuIsFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { getFingerPrint } from '@/utils/fingerPrint'
 import { getAccessToken } from '@/utils/request'
-import {
-  backgroundGetBrowserUAInfo,
-  backgroundSendMaxAINotification,
-} from '@/utils/sendMaxAINotification/background'
+import { backgroundGetBrowserUAInfo } from '@/utils/sendMaxAINotification/background'
 dayjs.extend(utc)
 
 export const CHROME_EXTENSION_LOG_DAILY_USAGE_LIMIT_KEY =
@@ -33,7 +27,8 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   name: string
   host: string
   provider?: IAIProviderType
-}): Promise<boolean> => {
+}): Promise<void> => {
+  // 不再需要去判断 has_reached_limit，因为前端不再依赖call_api来触发paywall付费卡点 - 2024-04-17 - @huangsong
   console.log('[CALL_API] promptDetail', promptDetail)
   const logApiAndConfirmIsLimited = async () => {
     try {
@@ -98,12 +93,12 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
         console.log('logApiAndConfirmIsLimited api result', body.data)
         // 更新本地的缓存
         await setDailyUsageLimitData(body.data)
-        // 更新用户的SubscriptionInfo
-        if (body.data.has_reached_limit) {
-          getChromeExtensionUserInfo(true).then().catch()
-        }
+        // // 更新用户的SubscriptionInfo
+        // if (body.data.has_reached_limit) {
+        //   getChromeExtensionUserInfo(true).then().catch()
+        // }
         // 如果没有达到限制，就返回false
-        return body.data.has_reached_limit
+        return body?.data?.has_reached_limit
       }
       return false
     } catch (e) {
@@ -121,71 +116,72 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       return false
     }
   }
+  logApiAndConfirmIsLimited().then().catch()
   // eslint-disable-next-line no-async-promise-executor
-  return new Promise(async (resolve) => {
-    try {
-      let cache = await getDailyUsageLimitData()
-      if (cache) {
-        // 说明没有达到限制，可以继续调用
-        if (!cache.has_reached_limit) {
-          logApiAndConfirmIsLimited().then().catch()
-          resolve(false)
-        } else {
-          // 说明达到限制了
-          // TODO 校验身份 pro不拦截，但是发larkbot
-          const userInfo = await getChromeExtensionUserInfo(false)
-          if (
-            userInfo?.role?.name === 'pro' ||
-            userInfo?.role?.name === 'elite'
-          ) {
-            // pro用户没过期, 不拦截
-            if (
-              userInfo.role.exp_time &&
-              dayjs(userInfo.role.exp_time).diff(dayjs().utc()) > 0
-            ) {
-              backgroundSendMaxAINotification(
-                'PRICING',
-                `[Pricing] Pro [cache] has reached the limit`,
-                `Pro user ${
-                  userInfo?.email
-                } use has reached the limit.\n${JSON.stringify({
-                  role: userInfo?.role,
-                  usage: cache.usage,
-                })}`,
-                {
-                  uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
-                },
-              )
-              resolve(false)
-              return
-            } else {
-              // pro 用户过期了，就拦截
-              await fetchUserSubscriptionInfo()
-              // 更新本地的缓存
-              cache = await getDailyUsageLimitData()
-              resolve(cache.has_reached_limit)
-            }
-          }
-          // 已经到达了限制，但是普通用户刷新时间到了，就更新
-          if (new Date() > new Date(cache.next_reset_timestamp * 1000)) {
-            await fetchUserSubscriptionInfo()
-            cache = await getDailyUsageLimitData()
-            resolve(cache.has_reached_limit)
-            return
-          }
-          // 普通用户，到达了限制，但是还没有到刷新时间，就不更新
-          resolve(true)
-        }
-      } else {
-        // 理论上不可能走到这里
-        const result = await logApiAndConfirmIsLimited()
-        resolve(result)
-      }
-    } catch (e) {
-      // 其实不应该返回可以调用，但是接口应该可以正确的处理
-      resolve(false)
-    }
-  })
+  // return new Promise(async (resolve) => {
+  //   try {
+  //     let cache = await getDailyUsageLimitData()
+  //     if (cache) {
+  //       // 说明没有达到限制，可以继续调用
+  //       if (!cache.has_reached_limit) {
+  //         logApiAndConfirmIsLimited().then().catch()
+  //         resolve(false)
+  //       } else {
+  //         // 说明达到限制了
+  //         // TODO 校验身份 pro不拦截，但是发larkbot
+  //         const userInfo = await getChromeExtensionUserInfo(false)
+  //         if (
+  //           userInfo?.role?.name === 'pro' ||
+  //           userInfo?.role?.name === 'elite'
+  //         ) {
+  //           // pro用户没过期, 不拦截
+  //           if (
+  //             userInfo.role.exp_time &&
+  //             dayjs(userInfo.role.exp_time).diff(dayjs().utc()) > 0
+  //           ) {
+  //             backgroundSendMaxAINotification(
+  //               'PRICING',
+  //               `[Pricing] Pro [cache] has reached the limit`,
+  //               `Pro user ${
+  //                 userInfo?.email
+  //               } use has reached the limit.\n${JSON.stringify({
+  //                 role: userInfo?.role,
+  //                 usage: cache.usage,
+  //               })}`,
+  //               {
+  //                 uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
+  //               },
+  //             )
+  //             resolve(false)
+  //             return
+  //           } else {
+  //             // pro 用户过期了，就拦截
+  //             await fetchUserSubscriptionInfo()
+  //             // 更新本地的缓存
+  //             cache = await getDailyUsageLimitData()
+  //             resolve(cache.has_reached_limit)
+  //           }
+  //         }
+  //         // 已经到达了限制，但是普通用户刷新时间到了，就更新
+  //         if (new Date() > new Date(cache.next_reset_timestamp * 1000)) {
+  //           await fetchUserSubscriptionInfo()
+  //           cache = await getDailyUsageLimitData()
+  //           resolve(cache.has_reached_limit)
+  //           return
+  //         }
+  //         // 普通用户，到达了限制，但是还没有到刷新时间，就不更新
+  //         resolve(true)
+  //       }
+  //     } else {
+  //       // 理论上不可能走到这里
+  //       const result = await logApiAndConfirmIsLimited()
+  //       resolve(result)
+  //     }
+  //   } catch (e) {
+  //     // 其实不应该返回可以调用，但是接口应该可以正确的处理
+  //     resolve(false)
+  //   }
+  // })
 }
 
 /**

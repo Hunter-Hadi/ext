@@ -50,7 +50,10 @@
     "release_notes": "የማስታወቂያ ጥቅሞች",
     "web_translation": "ይህ ገጽ ትርጉም",
     "show_original_text": "የነጻ ጽሑፍ አሳይ",
-    "more": "ተጨማሪ"
+    "more": "ተጨማሪ",
+    "upgrade": "የመጠን ይዘት",
+    "unlimited": "ያልተወሰነ",
+    "cancel_anytime": "ማንቂያ ሰርዝ"
   },
   "settings": {
     "left_menu__me": "እኔ እና MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "በቀላሉ ይቀጥል",
     "sidebar__button__insert": "አስገቡ",
     "sidebar__button__replace": "ቀይር",
-    "sidebar__button__upgrade_to_pro": "ወደ Pro እንዲሁም የተዘጋጀውን ይጫኑ",
     "sidebar__button__retry": "ድግሪ",
     "sidebar__button__set_up_shortcut": "የተጠቃሚ መቀጠል ይንከባከቡ",
     "sidebar__speed_dial__one_click_prompts__button": "የ1-ጁን መልእክት",
@@ -383,8 +385,8 @@
     "popup__set_shortcut__description4": "በማስተካከያው የሚጠቀሙ ይጠቀሙ።",
     "temp__rebrand__is_now": "ከሚሰጥ ወደ ሚስጥ ይሆናል",
     "permission__pricing_hook__button__upgrade_to_pro": "ወደ Pro እንዲሁም የተዘጋጀውን ይጫኑ",
-    "permission__pricing_hook__daily_limit__title": "ለውጥ የተወሰነ ጠቅላላ ይጠቀሙ",
-    "permission__pricing_hook__daily_limit__description1": "ለሁሉም AI የሚጠቀሙ የቀንድ የጠቅላላ ውጤት ተወሰነች።\nየተወሰኑትን ለመውጣት አሁንም Pro ይጠቀሙ፣ ወደጥቅማቸው አገልግሎት ይመልከቱ።",
+    "permission__pricing_hook__daily_limit__title": "የ{{MODEL_NAME}} የቀን መጠን አስጀምሩን ነገርን ያክላል",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, በቀጥታዊና በአማርኛ ማስተላለፊያ የተሰጠው በስፋትና በማስተላለፍ የሚቆጠሩት የሚገኙ የህይወት እና የተሻለ የሚሰጥ የተሰጠው የሚገኙ የሚገኘውን የሚያስተላልፉ አገልግሎቶችን ይቀየሩ።",
     "permission__pricing_hook__custom_prompt__title": "ወደ የተጠቀምነው የተጠቃሚ ጥቅም ይግዙ",
     "permission__pricing_hook__custom_prompt__description": "ለማስተካከያ በጥቅም የተሰጡ ማስታወቂያዎችን ያክሉ እንዲሁም በስልክ ላይ የተሰጡ ማስተካከያዎችን ያክሉ።",
     "permission__pricing_hook__custom_prompt_group__title": "ወደ የተጠቀምነው የተጠቃሚ ጥቅም ቡድን ይግዙ",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "አዎ, መስጠት",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ይቅር",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 የነጻ የቀረበ የአስተዳደር",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} የነጻ የቀረበ የአስተዳደር"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} የነጻ የቀረበ የአስተዳደር",
+    "sidebar__button__upgrade_to_plan": "ወደ {{PLAN}} እይታውን ይግዙ",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "የብልፅግና ማሳወቂያዎችን ይለያዩ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "የተሻለ ብልፅግና ማሳወቂያዎችን ይለያዩ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "የአርት & ምስል ብልፅግና ማሳወቂያዎችን ይለያዩ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ስኮልስሌት",
     "sidebar_tour__step__5__feature_5__title": "1-ጁል መልዕክት",
     "sidebar_tour__step__5__feature_6__title": "መልዕክት አጠቃላይ"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ብልፅግና ጽሑፍ",
+    "category__advanced_text": "ተሻለ ጽሑፍ",
+    "category__image_generate": "ምስል",
+    "role_label": "የአገልግሎት አገልግሎት: {{ROLE}}",
+    "queries": "ጥያቄዎች",
+    "reset_on_date": "{{DATE}} ለመጀመሪያ ይዘት"
   }
 }

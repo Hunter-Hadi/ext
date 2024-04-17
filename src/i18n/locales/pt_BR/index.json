@@ -50,7 +50,10 @@
     "release_notes": "Notas de lançamento",
     "web_translation": "Traduzir esta página",
     "show_original_text": "Mostrar texto original",
-    "more": "Mais"
+    "more": "Mais",
+    "upgrade": "Atualizar",
+    "unlimited": "Ilimitado",
+    "cancel_anytime": "Cancelar a qualquer momento"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Continuar",
     "sidebar__button__insert": "Inserir",
     "sidebar__button__replace": "Substituir",
-    "sidebar__button__upgrade_to_pro": "Atualizar para Pro",
     "sidebar__button__retry": "Tentar novamente",
     "sidebar__button__set_up_shortcut": "Configurar atalho",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts de 1 clique",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sim, restaurar",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Cancelar",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversa restaurada",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversas restauradas"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversas restauradas",
+    "sidebar__button__upgrade_to_plan": "Atualizar para {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Acesso a modelos de IA rápidos:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Acesso a modelos de IA avançados:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Acesso para criar arte e imagens com modelos de IA:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Captura de tela com IA",
     "sidebar_tour__step__5__feature_5__title": "Prompts de 1 clique",
     "sidebar_tour__step__5__feature_6__title": "Usar prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Texto rápido",
+    "category__advanced_text": "Texto avançado",
+    "category__image_generate": "Imagem",
+    "role_label": "Plano atual: {{ROLE}}",
+    "queries": "Consultas",
+    "reset_on_date": "Redefinir em {{DATE}}"
   }
 }

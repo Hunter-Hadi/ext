@@ -50,7 +50,10 @@
     "release_notes": "Atnaujinimo pastabos",
     "web_translation": "Išversti šį puslapį",
     "show_original_text": "Rodyti originalų tekstą",
-    "more": "Daugiau"
+    "more": "Daugiau",
+    "upgrade": "Atnaujinti",
+    "unlimited": "Neribotas",
+    "cancel_anytime": "Atšaukti bet kada"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Tęsti",
     "sidebar__button__insert": "Įterpti",
     "sidebar__button__replace": "Pakeisti",
-    "sidebar__button__upgrade_to_pro": "Naujinti iki Pro",
     "sidebar__button__retry": "Bandyti dar kartą",
     "sidebar__button__set_up_shortcut": "Nustatyti spartųjį klavišą",
     "sidebar__speed_dial__one_click_prompts__button": "Vieno paspaudimo užklausos",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Taip, atkurti",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Atšaukti",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Atkurtas 1 pokalbis",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Atkurti {{CONVERSATION_COUNT}} pokalbiai"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Atkurti {{CONVERSATION_COUNT}} pokalbiai",
+    "sidebar__button__upgrade_to_plan": "Atnaujinti į {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Prieiga prie greitųjų AI modelių:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Prieiga prie pažangios AI modelių:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Prieiga kurti AI meną ir paveikslus:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ekrano kopija",
     "sidebar_tour__step__5__feature_5__title": "Vieno paspaudimo užduotys",
     "sidebar_tour__step__5__feature_6__title": "Naudoti užduotį"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Greitas tekstas",
+    "category__advanced_text": "Pažangus tekstas",
+    "category__image_generate": "Paveikslas",
+    "role_label": "Dabartinis planas: {{ROLE}}",
+    "queries": "Užklausos",
+    "reset_on_date": "Atstatyti {{DATE}}"
   }
 }

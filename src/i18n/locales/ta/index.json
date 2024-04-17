@@ -50,7 +50,10 @@
     "release_notes": "வெளியீட்டு குறிப்புகள்",
     "web_translation": "இந்த பக்கத்தை மொழிபெயர்க்கவும்",
     "show_original_text": "மூல உரையைக் காட்டு",
-    "more": "மேலும்"
+    "more": "மேலும்",
+    "upgrade": "மேம்படுத்து",
+    "unlimited": "வரம்பற்றது",
+    "cancel_anytime": "எப்போதும் ரத்து செய்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "தொடர்க",
     "sidebar__button__insert": "செருகுக",
     "sidebar__button__replace": "மாற்றுக",
-    "sidebar__button__upgrade_to_pro": "ப்ரோ க்கு மேம்படுத்து",
     "sidebar__button__retry": "மீண்டும் முயற்சி செய்",
     "sidebar__button__set_up_shortcut": "குறுக்குவழியை அமைக்கவும்",
     "sidebar__speed_dial__one_click_prompts__button": "ஒரு கிளிக் புரோம்ப்டுகள்",
@@ -687,7 +689,13 @@
     "immersive_chat__chat_history__restore_modal__title": "அனைத்து உங்கள் உரைகளையும், தேடல்களையும், கலை வரலாற்றையும் உள்ளீட்டின் பதிப்பிற்கு மீட்டமைக்க விரும்புகிறீர்களா? முன்னர் முடிக்கப்பட்டால், நடவடிக்கை மீண்டும் செய்ய முடியாது.",
     "immersive_chat__chat_history__restore_modal__description": "மீட்டமைப்பு பின்னர் உரைகள், தேடல்கள் மற்றும் கலை மாற்றங்கள்:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ஆமாம், மீட்டமை",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ரத்து செய்"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ரத்து செய்",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} க்கு மேம்படுத்து",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "விரைவு ஐஏ மாதிரிகளுக்கு அணுகல்:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "மேம்பட்ட ஐஏ மாதிரிகளுக்கு அணுகல்:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "ஐஏ கலை மற்றும் படங்கள் உருவாக்க அணுகல்:",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 உரையாடல் மீட்டமைக்கப்பட்டது",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} உரையாடல்கள் மீட்டமைக்கப்பட்டன"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -998,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "ஐய் திரைப்படம்",
     "sidebar_tour__step__5__feature_5__title": "1-கிளிக் உதவிகள்",
     "sidebar_tour__step__5__feature_6__title": "உதவி பயன்படுத்து"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "விரைவு உரை",
+    "category__advanced_text": "மேம்பட்ட உரை",
+    "category__image_generate": "படம்",
+    "role_label": "தற்போதைய திட்டம்: {{ROLE}}",
+    "queries": "வினாக்கள்",
+    "reset_on_date": "{{DATE}} அன்று மீட்டமைக்கப்படும்"
   }
 }

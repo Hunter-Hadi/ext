@@ -50,7 +50,10 @@
     "release_notes": "Utgivelsesnotater",
     "web_translation": "Oversett denne siden",
     "show_original_text": "Vis originaltekst",
-    "more": "Mer"
+    "more": "Mer",
+    "upgrade": "Oppgrader",
+    "unlimited": "Ubegrenset",
+    "cancel_anytime": "Kanseller når som helst"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Fortsett",
     "sidebar__button__insert": "Sett inn",
     "sidebar__button__replace": "Erstatt",
-    "sidebar__button__upgrade_to_pro": "Oppgrader til Pro",
     "sidebar__button__retry": "Prøv igjen",
     "sidebar__button__set_up_shortcut": "Sett opp snarvei",
     "sidebar__speed_dial__one_click_prompts__button": "1-klikk-prompter",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, gjenopprett",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 samtale gjenopprettet",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} samtaler gjenopprettet"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} samtaler gjenopprettet",
+    "sidebar__button__upgrade_to_plan": "Oppgrader til {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Tilgang til raske AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Tilgang til avanserte AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Tilgang til å lage AI-kunst og bilder med AI-modeller:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI-skjermbilde",
     "sidebar_tour__step__5__feature_5__title": "1-klikks forslag",
     "sidebar_tour__step__5__feature_6__title": "Bruk forslag"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Rask tekst",
+    "category__advanced_text": "Avansert tekst",
+    "category__image_generate": "Bilde",
+    "role_label": "Nåværende plan: {{ROLE}}",
+    "queries": "Forespørsler",
+    "reset_on_date": "Tilbakestilles den {{DATE}}"
   }
 }

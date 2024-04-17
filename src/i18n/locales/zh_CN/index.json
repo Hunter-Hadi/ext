@@ -50,7 +50,10 @@
     "release_notes": "发布说明",
     "web_translation": "翻译此页面",
     "show_original_text": "显示原文",
-    "more": "更多"
+    "more": "更多",
+    "upgrade": "升级",
+    "unlimited": "无限制",
+    "cancel_anytime": "随时取消"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "继续",
     "sidebar__button__insert": "插入",
     "sidebar__button__replace": "替换",
-    "sidebar__button__upgrade_to_pro": "升级到专业版",
     "sidebar__button__retry": "重试",
     "sidebar__button__set_up_shortcut": "设置快捷方式",
     "sidebar__speed_dial__one_click_prompts__button": "一键提示",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，恢复",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消",
     "immersive_chat__chat_history__restore_modal__toast1__title": "已恢复 1 个对话",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "已恢复 {{CONVERSATION_COUNT}} 个对话"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "已恢复 {{CONVERSATION_COUNT}} 个对话",
+    "sidebar__button__upgrade_to_plan": "升级到{{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "访问快速AI模型：",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "访问高级AI模型：",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "访问创建AI艺术和图像AI模型："
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI截图",
     "sidebar_tour__step__5__feature_5__title": "1键提示",
     "sidebar_tour__step__5__feature_6__title": "使用提示"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "快速文本",
+    "category__advanced_text": "高级文本",
+    "category__image_generate": "图像",
+    "role_label": "当前计划：{{ROLE}}",
+    "queries": "查询",
+    "reset_on_date": "重置日期：{{DATE}}"
   }
 }

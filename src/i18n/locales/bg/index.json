@@ -50,7 +50,10 @@
     "release_notes": "Забележки за версията",
     "web_translation": "Преведете тази страница",
     "show_original_text": "Покажи оригиналния текст",
-    "more": "Още"
+    "more": "Още",
+    "upgrade": "Надстройка",
+    "unlimited": "Неограничено",
+    "cancel_anytime": "Отказ по всяко време"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Продължи",
     "sidebar__button__insert": "Вмъкни",
     "sidebar__button__replace": "Замени",
-    "sidebar__button__upgrade_to_pro": "Надстройте до Про",
     "sidebar__button__retry": "Опитай отново",
     "sidebar__button__set_up_shortcut": "Настройка на прекия път",
     "sidebar__speed_dial__one_click_prompts__button": "1-клик подсказки",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Да, възстанови",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Отказ",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Възстановен е 1 разговор",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Възстановени са {{CONVERSATION_COUNT}} разговора"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Възстановени са {{CONVERSATION_COUNT}} разговора",
+    "sidebar__button__upgrade_to_plan": "Надстройка до {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Достъп до бързи AI модели:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Достъп до напреднали AI модели:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Достъп за създаване на AI изкуство и изображения:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI снимка",
     "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
     "sidebar_tour__step__5__feature_6__title": "Използване на подсказка"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Бърз текст",
+    "category__advanced_text": "Напреден текст",
+    "category__image_generate": "Изображение",
+    "role_label": "Текущ план: {{ROLE}}",
+    "queries": "Заявки",
+    "reset_on_date": "Нулиране на {{DATE}}"
   }
 }

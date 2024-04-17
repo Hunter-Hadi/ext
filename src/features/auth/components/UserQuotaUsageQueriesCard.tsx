@@ -18,7 +18,7 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
 
-// 100000以上表示无限，前端不用显示具体的数; 这个值是后端定的
+// 大于等于 100000 表示无限，前端不用显示具体的数; 这个值是后端定的
 const IS_UNLIMITED_FLAG = 100000
 
 // 用户 quota 使用量 卡片
@@ -129,7 +129,8 @@ const UserQuotaUsageQueriesCard = () => {
               textAlign: 'right',
             }}
             primary={
-              userQuotaUsage.fastText > IS_UNLIMITED_FLAG
+              userQuotaUsage.fastText >= IS_UNLIMITED_FLAG ||
+              currentUserPlan.name === 'elite'
                 ? t('common:unlimited')
                 : numberWithCommas(userQuotaUsage.fastText, 0)
             }
@@ -147,7 +148,8 @@ const UserQuotaUsageQueriesCard = () => {
               textAlign: 'right',
             }}
             primary={
-              userQuotaUsage.advancedText > IS_UNLIMITED_FLAG
+              userQuotaUsage.advancedText >= IS_UNLIMITED_FLAG ||
+              currentUserPlan.name === 'elite'
                 ? t('common:unlimited')
                 : numberWithCommas(userQuotaUsage.advancedText, 0)
             }
@@ -165,7 +167,8 @@ const UserQuotaUsageQueriesCard = () => {
               textAlign: 'right',
             }}
             primary={
-              userQuotaUsage.imageGenerate > IS_UNLIMITED_FLAG
+              userQuotaUsage.imageGenerate >= IS_UNLIMITED_FLAG ||
+              currentUserPlan.name === 'elite'
                 ? t('common:unlimited')
                 : numberWithCommas(userQuotaUsage.imageGenerate, 0)
             }

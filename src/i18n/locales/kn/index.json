@@ -50,7 +50,10 @@
     "release_notes": "ಬಿಡುಗಡೆ ನೋಟಿಗಳು",
     "web_translation": "ಈ ಪುಟವನ್ನು ಭಾಷಾಂತರಿಸಿ",
     "show_original_text": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸು",
-    "more": "ಹೆಚ್ಚು"
+    "more": "ಹೆಚ್ಚು",
+    "upgrade": "ಮೆಚ್ಚುಗೆ",
+    "unlimited": "ಅಸಂಖ್ಯಾತ",
+    "cancel_anytime": "ಯಾವಾಗಲೂ ರದ್ದು ಮಾಡಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "ಮುಂದುವರಿಸಿ",
     "sidebar__button__insert": "ಸೇರಿಸಿ",
     "sidebar__button__replace": "ಬದಲಾಯಿಸಿ",
-    "sidebar__button__upgrade_to_pro": "ಪ್ರೊ ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "sidebar__button__retry": "ಮರುಪ್ರಯತ್ನಿಸಿ",
     "sidebar__button__set_up_shortcut": "ಶಾರ್ಟ್‌ಕಟ್ ಹೊಂದಿಸಿ",
     "sidebar__speed_dial__one_click_prompts__button": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ಹೌದು, ಮರುಸ್ಥಾಪಿಸಿ",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ರದ್ದು ಮಾಡಿ",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 ಸಂಭಾಷಣೆ ಮರುಸ್ಥಾಪಿತವಾಗಿದೆ",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} ಸಂಭಾಷಣೆಗಳು ಮರುಸ್ಥಾಪಿತವಾಗಿವೆ"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} ಸಂಭಾಷಣೆಗಳು ಮರುಸ್ಥಾಪಿತವಾಗಿವೆ",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} ಗೆ ಮೆಚ್ಚುಗೆ ನೀಡಿ",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "ಫಾಸ್ಟ್ AI ಮಾದರಿಗಳಿಗೆ ಪ್ರವೇಶ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "ಆಧುನಿಕ AI ಮಾದರಿಗಳಿಗೆ ಪ್ರವೇಶ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸುವ ಮಾದರಿಗಳಿಗೆ ಪ್ರವೇಶ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ಸ್ಕ್ರೀನ್‌ಶಾಟ್",
     "sidebar_tour__step__5__feature_5__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
     "sidebar_tour__step__5__feature_6__title": "ಪ್ರಾಂಪ್ಟ್ ಬಳಸಿ"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ಫಾಸ್ಟ್ ಪಠ್ಯ",
+    "category__advanced_text": "ಆಧುನಿಕ ಪಠ್ಯ",
+    "category__image_generate": "ಚಿತ್ರ",
+    "role_label": "ಪ್ರಸ್ತುತ ಯೋಜನೆ: {{ROLE}}",
+    "queries": "ಪ್ರಶ್ನೆಗಳು",
+    "reset_on_date": "{{DATE}} ನೇರಕ್ಕೆ ಮರುಹೊಂದಿಸಲಾಗುವುದು"
   }
 }

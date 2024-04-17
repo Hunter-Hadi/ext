@@ -50,7 +50,10 @@
     "release_notes": "విడుదల మంచిపత్రాలు",
     "web_translation": "ఈ పేజీని అనువదించండి",
     "show_original_text": "మూల పఠనం చూపించు",
-    "more": "మరింత"
+    "more": "మరింత",
+    "upgrade": "అప్గ్రేడ్",
+    "unlimited": "అనివార్యం లేదు",
+    "cancel_anytime": "ఏటీమ్ రద్దు చేయండి"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "కొనసాగండి",
     "sidebar__button__insert": "చేర్చండి",
     "sidebar__button__replace": "మార్చండి",
-    "sidebar__button__upgrade_to_pro": "ప్రొ కు అప్గ్రేడ్ చేయండి",
     "sidebar__button__retry": "మళ్ళీ ప్రయత్నించండి",
     "sidebar__button__set_up_shortcut": "షార్ట్‌కట్ సెట్ అప్ చేయండి",
     "sidebar__speed_dial__one_click_prompts__button": "ఒక నొక్కిన ప్రాంప్టులు",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "అవును, పునఃస్థాపించండి",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "రద్దు చేయండి",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 సంభాషణ పునరుద్ధరించబడింది",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} సంభాషణలు పునరుద్ధరించబడింది"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} సంభాషణలు పునరుద్ధరించబడింది",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} కు అప్గ్రేడ్ చేయండి",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "త్వరగత AI మోడల్స్ ప్రవేశం:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "ఆధ్యాత్మిక AI మోడల్స్ ప్రవేశం:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI కళాకారత్వం & చిత్రాలు సృష్టించడానికి ప్రవేశం:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI స్క్రీన్‌షాట్",
     "sidebar_tour__step__5__feature_5__title": "1-క్లిక్ ప్రాంప్ట్‌లు",
     "sidebar_tour__step__5__feature_6__title": "ప్రాంప్ట్‌ను ఉపయోగించు"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "త్వరగత టెక్స్ట్",
+    "category__advanced_text": "ఆధ్యాత్మిక టెక్స్ట్",
+    "category__image_generate": "చిత్రం",
+    "role_label": "ప్రస్తుత ప్లాన్: {{ROLE}}",
+    "queries": "ప్రశ్నలు",
+    "reset_on_date": "{{DATE}} న రీసెట్ అవుతుంది"
   }
 }

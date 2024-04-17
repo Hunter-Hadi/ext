@@ -50,7 +50,10 @@
     "release_notes": "Примітки до випуску",
     "web_translation": "Перекласти цю сторінку",
     "show_original_text": "Показати оригінальний текст",
-    "more": "Більше"
+    "more": "Більше",
+    "upgrade": "Оновити",
+    "unlimited": "Необмежено",
+    "cancel_anytime": "Скасувати в будь-який час"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Продовжити",
     "sidebar__button__insert": "Вставити",
     "sidebar__button__replace": "Замінити",
-    "sidebar__button__upgrade_to_pro": "Оновити до Pro",
     "sidebar__button__retry": "Повторити спробу",
     "sidebar__button__set_up_shortcut": "Налаштувати ярлик",
     "sidebar__speed_dial__one_click_prompts__button": "1-клік пропозиції",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Так, відновити",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Скасувати",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Відновлено 1 розмову",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Відновлено {{CONVERSATION_COUNT}} розмови"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Відновлено {{CONVERSATION_COUNT}} розмови",
+    "sidebar__button__upgrade_to_plan": "Оновити до {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Доступ до швидких моделей ШІ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Доступ до розширених моделей ШІ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Доступ до створення мистецтва та зображень за допомогою моделей ШІ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Скріншот штучного інтелекту",
     "sidebar_tour__step__5__feature_5__title": "Підказки за 1 кліком",
     "sidebar_tour__step__5__feature_6__title": "Використовуйте підказку"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Швидкий текст",
+    "category__advanced_text": "Розширений текст",
+    "category__image_generate": "Зображення",
+    "role_label": "Поточний план: {{ROLE}}",
+    "queries": "Запити",
+    "reset_on_date": "Скидається {{DATE}}"
   }
 }

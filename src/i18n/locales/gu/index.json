@@ -50,7 +50,10 @@
     "release_notes": "રિલીઝ નોંધ",
     "web_translation": "આ પેજ અનુવાદ કરો",
     "show_original_text": "ઓરિજિનલ ટેક્સ્ટ બતાવો",
-    "more": "વધુ"
+    "more": "વધુ",
+    "upgrade": "અપગ્રેડ કરો",
+    "unlimited": "અમર્યાદિત",
+    "cancel_anytime": "કોઈપણ સમયે રદ કરો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "ચાલુ રાખો",
     "sidebar__button__insert": "ઉમેરો",
     "sidebar__button__replace": "બદલો",
-    "sidebar__button__upgrade_to_pro": "પ્રો માટે અપગ્રેડ કરો",
     "sidebar__button__retry": "ફરીથી પ્રયાસ કરો",
     "sidebar__button__set_up_shortcut": "શૉર્ટકટ સેટ કરો",
     "sidebar__speed_dial__one_click_prompts__button": "1-ક્લિક પ્રોમ્પ્ટ્સ",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "હા, પુનઃસ્થાપિત કરો",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "રદ કરો",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 વાતચીત પુનઃસ્થાપિત થઈ",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} વાતચીતો પુનઃસ્થાપિત થઈ"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} વાતચીતો પુનઃસ્થાપિત થઈ",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} પર અપગ્રેડ કરો",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "ઝડપી AI મોડેલોનું ઍક્સેસ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "એડવાન્સ એઆઈ મોડેલોનું ઍક્સેસ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI આર્ટ અને છબીઓ બનાવવાનું ઍક્સેસ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI સ્ક્રીનશોટ",
     "sidebar_tour__step__5__feature_5__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
     "sidebar_tour__step__5__feature_6__title": "પ્રોમ્પ્ટ ઉપયોગ કરો"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ઝડપી ટેક્સ્ટ",
+    "category__advanced_text": "એડવાન્સ ટેક્સ્ટ",
+    "category__image_generate": "છબી",
+    "role_label": "વર્તમાન પ્લાન: {{ROLE}}",
+    "queries": "પ્રશ્નો",
+    "reset_on_date": "{{DATE}} પર રીસેટ થશે"
   }
 }

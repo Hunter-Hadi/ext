@@ -50,7 +50,10 @@
     "release_notes": "Σημειώσεις έκδοσης",
     "web_translation": "Μεταφράστε αυτήν τη σελίδα",
     "show_original_text": "Εμφάνιση αρχικού κειμένου",
-    "more": "Περισσότερα"
+    "more": "Περισσότερα",
+    "upgrade": "Αναβάθμιση",
+    "unlimited": "Απεριόριστο",
+    "cancel_anytime": "Ακύρωση οποιαδήποτε στιγμή"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Συνέχεια",
     "sidebar__button__insert": "Εισαγωγή",
     "sidebar__button__replace": "Αντικατάσταση",
-    "sidebar__button__upgrade_to_pro": "Αναβάθμιση σε Pro",
     "sidebar__button__retry": "Επανάληψη",
     "sidebar__button__set_up_shortcut": "Ρύθμιση συντόμευσης",
     "sidebar__speed_dial__one_click_prompts__button": "1-κλικ προτροπές",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ναι, επαναφορά",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 συνομιλία αποκαταστάθηκε",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} συνομιλίες αποκαταστάθηκαν"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} συνομιλίες αποκαταστάθηκαν",
+    "sidebar__button__upgrade_to_plan": "Αναβάθμιση σε {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Πρόσβαση σε γρήγορα μοντέλα AI:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Πρόσβαση σε προηγμένα μοντέλα AI:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Πρόσβαση για δημιουργία τέχνης και εικόνων με μοντέλα AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Στιγμιότυπο Τεχνητής Νοημοσύνης",
     "sidebar_tour__step__5__feature_5__title": "1-κλικ προτροπές",
     "sidebar_tour__step__5__feature_6__title": "Χρήση προτροπής"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Γρήγορο κείμενο",
+    "category__advanced_text": "Προηγμένο κείμενο",
+    "category__image_generate": "Εικόνα",
+    "role_label": "Τρέχον πλάνο: {{ROLE}}",
+    "queries": "Ερωτήματα",
+    "reset_on_date": "Επαναφορά στις {{DATE}}"
   }
 }

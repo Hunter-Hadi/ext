@@ -50,7 +50,10 @@
     "release_notes": "ملاحظات الإصدار",
     "web_translation": "ترجمة هذه الصفحة",
     "show_original_text": "عرض النص الأصلي",
-    "more": "المزيد"
+    "more": "المزيد",
+    "upgrade": "ترقية",
+    "unlimited": "غير محدود",
+    "cancel_anytime": "إلغاء في أي وقت"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "استمر",
     "sidebar__button__insert": "إدراج",
     "sidebar__button__replace": "استبدال",
-    "sidebar__button__upgrade_to_pro": "الترقية إلى النسخة المحترفة",
     "sidebar__button__retry": "إعادة المحاولة",
     "sidebar__button__set_up_shortcut": "إعداد اختصار",
     "sidebar__speed_dial__one_click_prompts__button": "تلميحات بنقرة واحدة",
@@ -383,8 +385,8 @@
     "popup__set_shortcut__description4": "في أي وقت.",
     "temp__rebrand__is_now": "الآن",
     "permission__pricing_hook__button__upgrade_to_pro": "الترقية إلى النسخة المحترفة",
-    "permission__pricing_hook__daily_limit__title": "ترقية للاستخدام غير المحدود",
-    "permission__pricing_hook__daily_limit__description1": "لقد وصلت إلى الحد اليومي الحالي لجميع مزودي الذكاء الاصطناعي.\nيمكنك الترقية إلى النسخة المحترفة الآن للاستخدام غير المحدود، أو حاول مرة أخرى في وقت لاحق.",
+    "permission__pricing_hook__daily_limit__title": "فتح عدد غير محدود من مرات {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "يتميز GPT-4 من OpenAI بالأداء السريع والكفاءة، ويبرع في التطبيقات الحية التي تتطلب الإبداع والاستدلال المتقدم مع أوقات استجابة محسنة وإخراج متسق.",
     "permission__pricing_hook__custom_prompt__title": "الترقية لإضافة تلميحات مخصصة غير محدودة",
     "permission__pricing_hook__custom_prompt__description": "أضف تلميحاتك الخاصة لتسريع المهام المتكررة أثناء العمل.",
     "permission__pricing_hook__custom_prompt_group__title": "الترقية لإضافة مجموعات تلميحات مخصصة غير محدودة",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "نعم، استعادة",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "إلغاء",
     "immersive_chat__chat_history__restore_modal__toast1__title": "تم استعادة محادثة واحدة",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "تم استعادة {{CONVERSATION_COUNT}} محادثة"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "تم استعادة {{CONVERSATION_COUNT}} محادثة",
+    "sidebar__button__upgrade_to_plan": "ترقية إلى {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "الوصول إلى نماذج الذكاء الاصطناعي السريعة:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "الوصول إلى نماذج الذكاء الاصطناعي المتقدمة:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "الوصول لإنشاء فن الذكاء الاصطناعي ونماذج الصور:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "لقطة شاشة الذكاء الاصطناعي",
     "sidebar_tour__step__5__feature_5__title": "تلميحات بنقرة واحدة",
     "sidebar_tour__step__5__feature_6__title": "استخدام التلميح"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "نص سريع",
+    "category__advanced_text": "نص متقدم",
+    "category__image_generate": "صورة",
+    "role_label": "الخطة الحالية: {{ROLE}}",
+    "queries": "الاستفسارات",
+    "reset_on_date": "إعادة التعيين في {{DATE}}"
   }
 }

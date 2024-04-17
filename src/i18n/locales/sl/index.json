@@ -50,7 +50,10 @@
     "release_notes": "Opombe o izdaji",
     "web_translation": "Prevedi to stran",
     "show_original_text": "Pokaži izvirno besedilo",
-    "more": "Več"
+    "more": "Več",
+    "upgrade": "Nadgradnja",
+    "unlimited": "Neomejeno",
+    "cancel_anytime": "Prekliči kadarkoli"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Nadaljuj",
     "sidebar__button__insert": "Vstavi",
     "sidebar__button__replace": "Zamenjaj",
-    "sidebar__button__upgrade_to_pro": "Nadgradite na Pro",
     "sidebar__button__retry": "Poskusite znova",
     "sidebar__button__set_up_shortcut": "Nastavite bližnjico",
     "sidebar__speed_dial__one_click_prompts__button": "1-klikovna sporočila",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, obnovi",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Prekliči",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovljen je 1 pogovor",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljenih je {{CONVERSATION_COUNT}} pogovorov"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljenih je {{CONVERSATION_COUNT}} pogovorov",
+    "sidebar__button__upgrade_to_plan": "Nadgradi na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Dostop do hitrih AI modelov:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Dostop do naprednih AI modelov:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Dostop za ustvarjanje umetnosti in slik z AI modeli:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Posnetek zaslona AI",
     "sidebar_tour__step__5__feature_5__title": "1-klikni namigi",
     "sidebar_tour__step__5__feature_6__title": "Uporabite namig"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Hitro besedilo",
+    "category__advanced_text": "Napredno besedilo",
+    "category__image_generate": "Slika",
+    "role_label": "Trenutni načrt: {{ROLE}}",
+    "queries": "Poizvedbe",
+    "reset_on_date": "Ponastavi se na {{DATE}}"
   }
 }

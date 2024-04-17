@@ -50,7 +50,10 @@
     "release_notes": "പുറത്തിറക്കം വിവരങ്ങൾ",
     "web_translation": "ഈ പേജ് പരിഭാഷപ്പെടുത്തുക",
     "show_original_text": "ഓരിജിനൽ ടെക്സ്റ്റ് കാണിക്കുക",
-    "more": "കൂടുതൽ"
+    "more": "കൂടുതൽ",
+    "upgrade": "അപ്‌ഗ്രേഡ്",
+    "unlimited": "അനന്തമായ",
+    "cancel_anytime": "ഏത് സമയത്തെയും റദ്ദാക്കാൻ"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "തുടരുക",
     "sidebar__button__insert": "ചേർക്കുക",
     "sidebar__button__replace": "മാറ്റുക",
-    "sidebar__button__upgrade_to_pro": "പ്രോയിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "sidebar__button__retry": "വീണ്ടും ശ്രമിക്കുക",
     "sidebar__button__set_up_shortcut": "ഷോർട്ട്കട് സജ്ജമാക്കുക",
     "sidebar__speed_dial__one_click_prompts__button": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "അതെ, പുനഃസ്ഥാപിക്കുക",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "റദ്ദാക്കുക",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 സംഭാഷണം പുനരുദ്ധരിച്ചു",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} സംഭാഷണങ്ങൾ പുനരുദ്ധരിച്ചു"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} സംഭാഷണങ്ങൾ പുനരുദ്ധരിച്ചു",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} ലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "ഫാസ്റ്റ് AI മോഡലുകൾ ആക്‌സസ്:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "അട്വാൻസ്ഡ് AI മോഡലുകൾ ആക്‌സസ്:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI കലാപങ്ങൾ & ചിത്രങ്ങൾ സൃഷ്ടിക്കാൻ ആക്‌സസ്:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI സ്ക്രീൻഷോട്ട്",
     "sidebar_tour__step__5__feature_5__title": "1-ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
     "sidebar_tour__step__5__feature_6__title": "പ്രോംപ്റ്റ് ഉപയോഗിക്കുക"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ഫാസ്റ്റ് ടെക്സ്റ്റ്",
+    "category__advanced_text": "അട്വാൻസ്ഡ് ടെക്സ്റ്റ്",
+    "category__image_generate": "ചിത്രം",
+    "role_label": "നിലവിലുള്ള പ്ലാൻ: {{ROLE}}",
+    "queries": "ചോദ്യങ്ങൾ",
+    "reset_on_date": "{{DATE}} ന് മറുപടിയാക്കുക"
   }
 }

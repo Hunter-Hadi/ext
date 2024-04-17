@@ -50,7 +50,10 @@
     "release_notes": "Catatan pelepasan",
     "web_translation": "Terjemahkan halaman ini",
     "show_original_text": "Tunjukkan teks asal",
-    "more": "Lebih"
+    "more": "Lebih",
+    "upgrade": "Naik taraf",
+    "unlimited": "Tidak terhad",
+    "cancel_anytime": "Batal pada bila-bila masa"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Teruskan",
     "sidebar__button__insert": "Sisip",
     "sidebar__button__replace": "Gantikan",
-    "sidebar__button__upgrade_to_pro": "Naik taraf ke Pro",
     "sidebar__button__retry": "Cuba semula",
     "sidebar__button__set_up_shortcut": "Tetapkan pintasan",
     "sidebar__speed_dial__one_click_prompts__button": "Petunjuk 1-klik",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ya, pulihkan",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 perbualan dipulihkan",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} perbualan dipulihkan"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} perbualan dipulihkan",
+    "sidebar__button__upgrade_to_plan": "Naik taraf ke {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Akses kepada model AI pantas:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Akses kepada model AI lanjutan:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Akses untuk mencipta seni AI & model AI imej:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tangkapan skrin AI",
     "sidebar_tour__step__5__feature_5__title": "Panduan 1-klik",
     "sidebar_tour__step__5__feature_6__title": "Gunakan panduan"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Teks pantas",
+    "category__advanced_text": "Teks lanjutan",
+    "category__image_generate": "Imej",
+    "role_label": "Pelan semasa: {{ROLE}}",
+    "queries": "Pertanyaan",
+    "reset_on_date": "Set semula pada {{DATE}}"
   }
 }

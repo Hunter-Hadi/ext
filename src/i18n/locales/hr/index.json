@@ -50,7 +50,10 @@
     "release_notes": "Bilješke o izdanju",
     "web_translation": "Prevedi ovu stranicu",
     "show_original_text": "Prikaži izvorni tekst",
-    "more": "Više"
+    "more": "Više",
+    "upgrade": "Nadogradnja",
+    "unlimited": "Neograničeno",
+    "cancel_anytime": "Otkazivanje u bilo koje vrijeme"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Nastavi",
     "sidebar__button__insert": "Umetni",
     "sidebar__button__replace": "Zamijeni",
-    "sidebar__button__upgrade_to_pro": "Nadogradite na Pro",
     "sidebar__button__retry": "Pokušaj ponovno",
     "sidebar__button__set_up_shortcut": "Postavi prečac",
     "sidebar__speed_dial__one_click_prompts__button": "Jednostavni prijedlozi",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, vrati",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Odustani",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovljen je 1 razgovor",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljeno je {{CONVERSATION_COUNT}} razgovora"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljeno je {{CONVERSATION_COUNT}} razgovora",
+    "sidebar__button__upgrade_to_plan": "Nadogradite na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Pristup brzim AI modelima:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Pristup naprednim AI modelima:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Pristup stvaranju AI umjetnosti i slika:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI snimka zaslona",
     "sidebar_tour__step__5__feature_5__title": "1-klik upute",
     "sidebar_tour__step__5__feature_6__title": "Koristite uputu"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Brzi tekst",
+    "category__advanced_text": "Napredni tekst",
+    "category__image_generate": "Slika",
+    "role_label": "Trenutni plan: {{ROLE}}",
+    "queries": "Upiti",
+    "reset_on_date": "Resetiranje {{DATE}}"
   }
 }

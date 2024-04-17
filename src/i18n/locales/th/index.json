@@ -50,7 +50,10 @@
     "release_notes": "บันทึกการอัปเดต",
     "web_translation": "แปลหน้านี้",
     "show_original_text": "แสดงข้อความเดิม",
-    "more": "เพิ่มเติม"
+    "more": "เพิ่มเติม",
+    "upgrade": "อัพเกรด",
+    "unlimited": "ไม่จำกัด",
+    "cancel_anytime": "ยกเลิกได้ทุกเมื่อ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "ดำเนินการต่อ",
     "sidebar__button__insert": "แทรก",
     "sidebar__button__replace": "แทนที่",
-    "sidebar__button__upgrade_to_pro": "อัปเกรดเป็น Pro",
     "sidebar__button__retry": "ลองใหม่",
     "sidebar__button__set_up_shortcut": "ตั้งค่าทางลัด",
     "sidebar__speed_dial__one_click_prompts__button": "คำแนะนำด้วยการคลิกเพียงครั้งเดียว",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ใช่, กู้คืน",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ยกเลิก",
     "immersive_chat__chat_history__restore_modal__toast1__title": "กู้คืน 1 บทสนทนา",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "กู้คืน {{CONVERSATION_COUNT}} บทสนทนา"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "กู้คืน {{CONVERSATION_COUNT}} บทสนทนา",
+    "sidebar__button__upgrade_to_plan": "อัพเกรดเป็น {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "เข้าถึงโมเดล AI ที่เร็ว:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "เข้าถึงโมเดล AI ที่ล้ำสมัย:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "เข้าถึงการสร้างศิลปะและภาพ AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "ภาพหน้าจอ AI",
     "sidebar_tour__step__5__feature_5__title": "คำใบ้ด้วยคลิกเดียว",
     "sidebar_tour__step__5__feature_6__title": "ใช้คำใบ้"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ข้อความเร็ว",
+    "category__advanced_text": "ข้อความล้ำสมัย",
+    "category__image_generate": "ภาพ",
+    "role_label": "แผนปัจจุบัน: {{ROLE}}",
+    "queries": "คำถาม",
+    "reset_on_date": "รีเซ็ตเมื่อ {{DATE}}"
   }
 }

@@ -50,7 +50,10 @@
     "release_notes": "Notes de version",
     "web_translation": "Traduire cette page",
     "show_original_text": "Afficher le texte original",
-    "more": "Plus"
+    "more": "Plus",
+    "upgrade": "Mettre à niveau",
+    "unlimited": "Illimité",
+    "cancel_anytime": "Annuler à tout moment"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Continuer",
     "sidebar__button__insert": "Insérer",
     "sidebar__button__replace": "Remplacer",
-    "sidebar__button__upgrade_to_pro": "Passer à la version Pro",
     "sidebar__button__retry": "Réessayer",
     "sidebar__button__set_up_shortcut": "Configurer un raccourci",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts en un clic",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Oui, restaurer",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuler",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversation restaurée",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversations restaurées"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversations restaurées",
+    "sidebar__button__upgrade_to_plan": "Mettre à niveau vers {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Accès aux modèles d'IA rapides :",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Accès aux modèles d'IA avancés :",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Accès à la création d'art et d'images avec des modèles d'IA :"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Capture d'écran de l'IA",
     "sidebar_tour__step__5__feature_5__title": "Suggestions en 1 clic",
     "sidebar_tour__step__5__feature_6__title": "Utiliser une suggestion"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Texte rapide",
+    "category__advanced_text": "Texte avancé",
+    "category__image_generate": "Image",
+    "role_label": "Plan actuel : {{ROLE}}",
+    "queries": "Requêtes",
+    "reset_on_date": "Réinitialisation le {{DATE}}"
   }
 }

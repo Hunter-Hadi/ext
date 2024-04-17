@@ -50,7 +50,10 @@
     "release_notes": "ریلیز نوٹس",
     "web_translation": "اس صفحے کو ترجمہ کریں",
     "show_original_text": "اصل متن دکھائیں",
-    "more": "مزید"
+    "more": "مزید",
+    "upgrade": "ترقی کریں",
+    "unlimited": "لامحدود",
+    "cancel_anytime": "ہر وقت منسوخ کریں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "جاری رکھیں",
     "sidebar__button__insert": "درج کریں",
     "sidebar__button__replace": "تبدیل کریں",
-    "sidebar__button__upgrade_to_pro": "پرو میں اپگریڈ کریں",
     "sidebar__button__retry": "دوبارہ کوشش کریں",
     "sidebar__button__set_up_shortcut": "شارٹکٹ تشکیل دیں",
     "sidebar__speed_dial__one_click_prompts__button": "1-کلک پرامپٹس",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "جی ہاں، بحال کریں",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "منسوخ کریں",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 گفتگو بحال",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} گفتگو بحال"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} گفتگو بحال",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}} پر اپگریڈ کریں",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "تیز AI ماڈل تک رسائی:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "اعلی AI ماڈل تک رسائی:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI آرٹ اور تصاویر بنانے کی رسائی:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI سکرین شاٹ",
     "sidebar_tour__step__5__feature_5__title": "1-کلک پرومپٹس",
     "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "تیز متن",
+    "category__advanced_text": "اعلی متن",
+    "category__image_generate": "تصویر",
+    "role_label": "موجودہ پلان: {{ROLE}}",
+    "queries": "سوالات",
+    "reset_on_date": "{{DATE}} کو ری سیٹ ہوگا"
   }
 }

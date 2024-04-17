@@ -50,7 +50,10 @@
     "release_notes": "Verzióinformációk",
     "web_translation": "Fordítsa le ezt az oldalt",
     "show_original_text": "Eredeti szöveg megjelenítése",
-    "more": "Több"
+    "more": "Több",
+    "upgrade": "Frissítés",
+    "unlimited": "Korlátlan",
+    "cancel_anytime": "Bármikor lemondható"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Folytatás",
     "sidebar__button__insert": "Beszúrás",
     "sidebar__button__replace": "Csere",
-    "sidebar__button__upgrade_to_pro": "Frissítés Pro változatra",
     "sidebar__button__retry": "Újra",
     "sidebar__button__set_up_shortcut": "Parancsikon beállítása",
     "sidebar__speed_dial__one_click_prompts__button": "1 kattintásos útmutatók",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Igen, helyreállítás",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 beszélgetés visszaállítva",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} beszélgetés visszaállítva"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} beszélgetés visszaállítva",
+    "sidebar__button__upgrade_to_plan": "Frissítés erre: {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Hozzáférés a gyors AI modellekhez:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Hozzáférés az előrehaladott AI modellekhez:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Hozzáférés az AI művészeti és kép generáló modellekhez:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI képernyőkép",
     "sidebar_tour__step__5__feature_5__title": "1 kattintásos promptok",
     "sidebar_tour__step__5__feature_6__title": "Használjon promptot"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Gyors szöveg",
+    "category__advanced_text": "Előrehaladott szöveg",
+    "category__image_generate": "Kép",
+    "role_label": "Jelenlegi terv: {{ROLE}}",
+    "queries": "Lekérdezések",
+    "reset_on_date": "Visszaállítás ekkor: {{DATE}}"
   }
 }

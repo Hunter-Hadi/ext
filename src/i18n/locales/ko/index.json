@@ -50,7 +50,10 @@
     "release_notes": "릴리즈 노트",
     "web_translation": "이 페이지 번역하기",
     "show_original_text": "원본 텍스트 보기",
-    "more": "더 보기"
+    "more": "더 보기",
+    "upgrade": "업그레이드",
+    "unlimited": "무제한",
+    "cancel_anytime": "언제든지 취소"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "계속하기",
     "sidebar__button__insert": "삽입",
     "sidebar__button__replace": "교체",
-    "sidebar__button__upgrade_to_pro": "프로로 업그레이드",
     "sidebar__button__retry": "다시 시도",
     "sidebar__button__set_up_shortcut": "바로 가기 설정",
     "sidebar__speed_dial__one_click_prompts__button": "1-클릭 프롬프트",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "예, 복원",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "취소",
     "immersive_chat__chat_history__restore_modal__toast1__title": "복원된 대화 1개",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}개의 대화 복원됨"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}개의 대화 복원됨",
+    "sidebar__button__upgrade_to_plan": "{{PLAN}}으로 업그레이드",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "빠른 AI 모델에 액세스:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "고급 AI 모델에 액세스:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI 예술 및 이미지 생성에 액세스:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI 스크린샷",
     "sidebar_tour__step__5__feature_5__title": "1-클릭 프롬프트",
     "sidebar_tour__step__5__feature_6__title": "프롬프트 사용"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "빠른 텍스트",
+    "category__advanced_text": "고급 텍스트",
+    "category__image_generate": "이미지",
+    "role_label": "현재 요금제: {{ROLE}}",
+    "queries": "쿼리",
+    "reset_on_date": "{{DATE}}에 초기화"
   }
 }

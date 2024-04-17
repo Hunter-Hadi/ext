@@ -94,6 +94,7 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   currentAIProvider: IAIProviderType
   currentModel: IAIProviderModel | null
   currentModelValue: string
+  isThirdPartyProvider: boolean
 }> => {
   const settings = await getChromeExtensionLocalStorage()
   const currentAIProvider =
@@ -103,6 +104,7 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
     settings.thirdProviderSettings?.[currentAIProvider]?.model ||
     MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel
   let currentModel: IAIProviderModel | null = null
+  let isThirdPartyProvider = false
   const findModelDetail = (models: IAIProviderModel[]) => {
     currentModel =
       models.find((model) => model.value === currentModelValue) || models[0]
@@ -110,21 +112,27 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   switch (currentAIProvider) {
     case 'MAXAI_GEMINI':
       findModelDetail(MAXAI_GENMINI_MODELS)
+      isThirdPartyProvider = false
       break
     case 'MAXAI_CLAUDE':
       findModelDetail(MAXAI_CLAUDE_MODELS)
+      isThirdPartyProvider = false
       break
     case 'USE_CHAT_GPT_PLUS':
       findModelDetail(USE_CHAT_GPT_PLUS_MODELS)
+      isThirdPartyProvider = false
       break
     case 'CLAUDE':
       findModelDetail(CLAUDE_MODELS)
+      isThirdPartyProvider = true
       break
     case 'BING':
       findModelDetail(BING_MODELS)
+      isThirdPartyProvider = true
       break
     case 'BARD':
       findModelDetail(BARD_MODELS)
+      isThirdPartyProvider = true
       break
     case 'OPENAI':
       findModelDetail(
@@ -148,12 +156,15 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
           },
         ),
       )
+      isThirdPartyProvider = true
       break
     case 'OPENAI_API':
       findModelDetail(OPENAI_API_MODELS)
+      isThirdPartyProvider = true
       break
     case 'POE':
       findModelDetail(POE_MODELS)
+      isThirdPartyProvider = true
       break
     default:
       findModelDetail(USE_CHAT_GPT_PLUS_MODELS)
@@ -162,5 +173,6 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
     currentAIProvider,
     currentModel,
     currentModelValue,
+    isThirdPartyProvider,
   }
 }

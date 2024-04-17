@@ -50,7 +50,10 @@
     "release_notes": "Catatan rilis",
     "web_translation": "Terjemahkan halaman ini",
     "show_original_text": "Tampilkan teks asli",
-    "more": "Lebih Banyak"
+    "more": "Lebih Banyak",
+    "upgrade": "Tingkatkan",
+    "unlimited": "Tak Terbatas",
+    "cancel_anytime": "Batal kapan saja"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Lanjutkan",
     "sidebar__button__insert": "Sisipkan",
     "sidebar__button__replace": "Ganti",
-    "sidebar__button__upgrade_to_pro": "Tingkatkan ke Pro",
     "sidebar__button__retry": "Coba lagi",
     "sidebar__button__set_up_shortcut": "Atur pintasan",
     "sidebar__speed_dial__one_click_prompts__button": "Promp 1-klik",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ya, pulihkan",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 percakapan dipulihkan",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} percakapan dipulihkan"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} percakapan dipulihkan",
+    "sidebar__button__upgrade_to_plan": "Tingkatkan ke {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Akses ke model AI cepat:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Akses ke model AI lanjutan:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Akses untuk membuat seni & gambar AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tangkapan layar AI",
     "sidebar_tour__step__5__feature_5__title": "Promp 1-klik",
     "sidebar_tour__step__5__feature_6__title": "Gunakan promp"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Teks Cepat",
+    "category__advanced_text": "Teks Lanjutan",
+    "category__image_generate": "Gambar",
+    "role_label": "Paket saat ini: {{ROLE}}",
+    "queries": "Permintaan",
+    "reset_on_date": "Reset pada {{DATE}}"
   }
 }

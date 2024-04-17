@@ -50,7 +50,10 @@
     "release_notes": "Mga release notes",
     "web_translation": "Isalin ang pahinang ito",
     "show_original_text": "Ipakita ang orihinal na teksto",
-    "more": "Higit pa"
+    "more": "Higit pa",
+    "upgrade": "Mag-upgrade",
+    "unlimited": "Walang limitasyon",
+    "cancel_anytime": "Bumalik sa anumang oras"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -258,7 +261,6 @@
     "sidebar__button__continue": "Magpatuloy",
     "sidebar__button__insert": "Isingit",
     "sidebar__button__replace": "Palitan",
-    "sidebar__button__upgrade_to_pro": "Mag-upgrade sa Pro",
     "sidebar__button__retry": "Subukan muli",
     "sidebar__button__set_up_shortcut": "Itakda ang shortcut",
     "sidebar__speed_dial__one_click_prompts__button": "Mga Prompt sa 1-click",
@@ -689,7 +691,11 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Oo, ibalik",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Kanselahin",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 usapan na ibinalik",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} mga usapan ang ibinalik"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} mga usapan ang ibinalik",
+    "sidebar__button__upgrade_to_plan": "Mag-upgrade sa {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Access sa mabilis na AI models:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Access sa advanced na AI models:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Access sa paglikha ng sining at mga imahe gamit ang AI models:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -1000,5 +1006,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
     "sidebar_tour__step__5__feature_6__title": "Gamitin ang prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Mabilis na teksto",
+    "category__advanced_text": "Advanced na teksto",
+    "category__image_generate": "Imahe",
+    "role_label": "Kasalukuyang plano: {{ROLE}}",
+    "queries": "Mga Query",
+    "reset_on_date": "I-reset sa {{DATE}}"
   }
 }

@@ -479,7 +479,6 @@ export const getEmailWebsitePageContentsOrDraft = async (
                 }
                 retrieveEmail()
                 timer = setInterval(retrieveEmail, 500)
-                console.log('timer', timer)
               })
             }
 

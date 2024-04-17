@@ -4,7 +4,7 @@ import { useSetRecoilState } from 'recoil'
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { AppSettingsInit } from '@/components/AppInit'
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitI18n } from '@/i18n/hooks'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
 
@@ -12,7 +12,7 @@ const OptionPagesInit = () => {
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
   const setAppLocalStorage = useSetRecoilState(AppLocalStorageState)
   useInitI18n()
-  userInitUserInfo()
+  useInitUserInfo()
   useEffect(() => {
     const updateSettings = async () => {
       setAppDBStorage(await getChromeExtensionDBStorage())

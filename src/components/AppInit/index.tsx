@@ -13,7 +13,7 @@ import {
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useInitChatGPTClient, useUserInfo } from '@/features/chatgpt'
 import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
@@ -124,7 +124,7 @@ const AppInit = () => {
   useHideInHost()
   useInitChatGPTClient()
   useAuthLogin()
-  userInitUserInfo()
+  useInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
   useInitWebPageMessageChannel()

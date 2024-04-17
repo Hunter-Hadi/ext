@@ -16,7 +16,7 @@ import Log from '@/utils/Log'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
-const userInitUserInfo = (isInit = true) => {
+const useInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
   const setUserQuotaUsageInfo = useSetRecoilState(UserQuotaUsageState)
   const { currentSidebarConversationMessages, currentSidebarConversationId } =
@@ -219,4 +219,4 @@ const userInitUserInfo = (isInit = true) => {
     syncUserQuotaUsageInfo,
   }
 }
-export default userInitUserInfo
+export default useInitUserInfo

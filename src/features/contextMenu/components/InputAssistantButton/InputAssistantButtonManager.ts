@@ -39,10 +39,10 @@ class InputAssistantButtonManager {
     this.stop = false
     this.host =
       getCurrentDomainHost() as WritingAssistantButtonGroupConfigHostType
-    this.configs = (() => {
-      const configs = inputAssistantButtonBaseConfig[this.host]
-      return Array.isArray(configs) ? configs : [configs]
-    })()
+    this.configs = inputAssistantButtonBaseConfig[this.host]
+    if (!Array.isArray(this.configs)) {
+      this.configs = [this.configs]
+    }
     this.observerMap = new Map()
   }
   createInputAssistantButtonListener(
@@ -54,6 +54,9 @@ class InputAssistantButtonManager {
       }
       if (this.configs) {
         for (const config of this.configs) {
+          if (!config) {
+            break
+          }
           const {
             enable,
             rootSelectors,

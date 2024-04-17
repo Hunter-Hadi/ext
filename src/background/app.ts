@@ -647,11 +647,11 @@ const initChromeExtensionTabUrlChangeListener = () => {
     pdfSnifferStartListener(tabId, changeInfo, tab)
     // 页面的url变化后，要触发页面的特殊网页的element更新
     if (tab.active && tab.id && tab.url) {
-      backgroundSendClientMessage(
-        tab.id,
-        'Client_updateSidebarChatBoxStyle',
-        {},
-      )
+      console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
+      backgroundSendClientMessage(tab.id, 'Client_updateSidebarChatBoxStyle', {
+        url: tab.url,
+        status: tab.status,
+      })
         .then()
         .catch()
       backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})

@@ -11,6 +11,7 @@ import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import DailyLimitUsageQueriesCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/DailyLimitUsageQueriesCard'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
@@ -30,6 +31,17 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   const { currentUserPlan, userInfo, isPayingUser } = useUserInfo()
   const permissionCard = usePermissionCard(permissionSceneType)
   const permissionCardMap = usePermissionCardMap()
+
+  const { currentAIProviderModel } = useAIProviderModels()
+
+  const AIModelName = useMemo(() => {
+    // 针对 ai model name 的美化处理
+    if (currentAIProviderModel.includes('gpt-3.5')) {
+      return 'GPT-3.5'
+    }
+
+    return currentAIProviderModel.replace(/gpt/g, 'GPT')
+  }, [])
 
   const chatSystemMessageType =
     message.meta?.systemMessageType ||
@@ -54,33 +66,63 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   }, [permissionCardMap, permissionSceneType, t])
 
   useEffect(() => {
-    if (chatSystemMessageType === 'needUpgrade' && isPayingUser) {
+    // 付费卡点如果对不符合当前角色的用户展示，则发送 lark bot 通知
+    // 由于目前的 pricing 内容是 只要是 付费用户（basic、pro、elite）都可以使用所有功能、只有 不同模型 使用量的限制
+    // 所以这里 判断 是付费用户 就不应该出现 pricing hook，出现了就需要发送 lark bot 通知
+    if (
+      chatSystemMessageType === 'needUpgrade' &&
+      isPayingUser &&
+      permissionSceneType !== 'TOTAL_CHAT_DAILY_LIMIT'
+    ) {
+      // TODO: TOTAL_CHAT_DAILY_LIMIT 的 pricing hook 的出现，完全是后端控制的，需要想法判断 TOTAL_CHAT_DAILY_LIMIT 出现的时机是否正确
       clientSendMaxAINotification(
         'PRICING',
         `[Pricing] Pro show pricing card`,
         JSON.stringify({
           user: userInfo,
           plan: currentUserPlan,
+          sceneType: permissionSceneType,
         }),
         {
           uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
         },
       )
     }
-  }, [isPayingUser, currentUserPlan.name, chatSystemMessageType])
+  }, [
+    isPayingUser,
+    currentUserPlan,
+    chatSystemMessageType,
+    permissionSceneType,
+  ])
+
+  const renderTitle = () => {
+    if (permissionSceneType === 'TOTAL_CHAT_DAILY_LIMIT') {
+      // 由于 TOTAL_CHAT_DAILY_LIMIT 的 title 是动态的（需要显示当前model name）
+      // 所以这里单独渲染
+      return (
+        <Typography fontSize={22} fontWeight={700} lineHeight={1.4}>
+          {t('client:permission__pricing_hook__daily_limit__title', {
+            MODEL_NAME: AIModelName,
+          })}
+        </Typography>
+      )
+    }
+
+    return typeof permissionCard?.title === 'string' ? (
+      <Typography fontSize={22} fontWeight={700} lineHeight={1.4}>
+        {permissionCard?.title}
+      </Typography>
+    ) : (
+      permissionCard?.title
+    )
+  }
 
   return (
     <Stack spacing={1.5}>
       {permissionCard ? (
         <>
           {/* title */}
-          {typeof permissionCard.title === 'string' ? (
-            <Typography fontSize={22} fontWeight={700} lineHeight={1.4}>
-              {permissionCard.title}
-            </Typography>
-          ) : (
-            permissionCard.title
-          )}
+          {renderTitle()}
           {/* image */}
           {permissionCard.imageUrl && (
             <img

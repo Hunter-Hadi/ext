@@ -359,3 +359,14 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
     return undefined
   }
 }
+
+export const checkPayingUser = (
+  currentUserInfo: IUseChatGPTUserInfo | null | undefined,
+): boolean => {
+  const role = currentUserInfo?.role
+  return !!(
+    role?.name === 'pro' ||
+    role?.name === 'elite' ||
+    role?.name === 'basic'
+  )
+}

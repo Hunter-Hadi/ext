@@ -108,12 +108,12 @@ export const formatTimeStampToHoursAndMinutes = (timestamp?: number) => {
   return `${hours} hours and ${minutes} minutes`
 }
 
-const API_RESPONSE_USAGE_LIMIT_SCENE_TYPES = [
-  'MAXAI_ADVANCED_MODEL',
-  'MAXAI_FAST_TEXT_MODEL',
-  'MAXAI_IMAGE_MODEL',
-]
 export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
+  const API_RESPONSE_USAGE_LIMIT_SCENE_TYPES = [
+    'MAXAI_ADVANCED_MODEL',
+    'MAXAI_FAST_TEXT_MODEL',
+    'MAXAI_IMAGE_MODEL',
+  ]
   if (API_RESPONSE_USAGE_LIMIT_SCENE_TYPES.includes(sceneType)) {
     // 由于 不同模型的用量上限卡点的报错值 是后端直接返回的
     // 需要前端统一成 TOTAL_CHAT_DAILY_LIMIT

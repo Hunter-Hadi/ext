@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Probeer het nieuwste en meest geavanceerde model van Google. Het biedt snellere snelheid, een contextvenster van 1M tokens, verbeterde modaliteiten en verbeterde veiligheidsfuncties.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` met visie",
     "sidebar__promotion_dialog__content_item2__description": "Toegang tot de next-generation modellen van Anthropic, allemaal op één plek in MaxAI: Opus, de meest intelligente optie; Sonnet, de meest gebalanceerde keuze; en Haiku, het snelste model.",
-    "sidebar__promotion_dialog__content_item3__title": "Contextvenster op Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "U kunt nu elke tekst op Google Doc selecteren om uw schrijven te perfectioneren - Verbeter het schrijven, corrigeer spelling en grammatica, maak elke tekst korter/langer, vereenvoudig de taal, parafraseer, verander de toon en meer!",
+    "sidebar__promotion_dialog__content_item3__title": "Context venster op Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "U kunt nu elke tekst selecteren op Google Doc of Microsoft Word om uw schrijven te perfectioneren - Verbeter het schrijven, corrigeer spelling en grammatica, maak een tekst korter/langer, vereenvoudig de taal, parafraseer, verander de toon en meer!",
     "sidebar__promotion_dialog__content_item4__title": "Directe berichtreactie",
     "sidebar__promotion_dialog__content_item4__description": "Laat AI gepersonaliseerde berichtreacties voor u genereren in seconden met slechts één klik op WhatsApp, Discord en Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Creëer AI-kunst en afbeeldingen",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Het nieuwste en meest geavanceerde model van Google. Het biedt snellere snelheid, een baanbrekend contextvenster van 1M tokens, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videoverwerking.",
     "immersive_chat__chat_history__restore_button__title": "Chats herstellen",
     "immersive_chat__chat_history__restore_modal__title": "Weet je zeker dat je al je Chat-, Zoek- en Kunstgeschiedenis wilt herstellen naar de lokale versie? Houd er rekening mee dat deze actie niet ongedaan kan worden gemaakt.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Zoek & Kunst conversies na herstel:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat- en zoekgeschiedenis om te herstellen:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, herstellen",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuleren"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuleren",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 gesprek hersteld",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} gesprekken hersteld"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

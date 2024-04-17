@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Prova Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, 1M tokens kontextfönster, förbättrade modaliteter och förstärkta säkerhetsfunktioner.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` med vision",
     "sidebar__promotion_dialog__content_item2__description": "Få tillgång till Anthropics nästa generations modeller, allt på ett ställe i MaxAI: Opus, det mest intelligenta alternativet; Sonnet, det mest balanserade valet; och Haiku, den snabbaste modellen.",
-    "sidebar__promotion_dialog__content_item3__title": "Kontextfönster på Google Dokument",
-    "sidebar__promotion_dialog__content_item3__description": "Du kan nu markera valfri text på Google Dokument för att förbättra ditt skrivande - Förbättra skrivandet, fixa stavning och grammatik, göra texten kortare/längre, förenkla språket, parafrasera, ändra ton och mer!",
+    "sidebar__promotion_dialog__content_item3__title": "Kontextfönster på Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Du kan nu markera valfri text på Google Doc eller Microsoft Word för att förbättra din skrivning - Förbättra skrivandet, fixa stavfel och grammatik, göra texten kortare/längre, förenkla språket, parafrasera, ändra ton och mer!",
     "sidebar__promotion_dialog__content_item4__title": "Snabbmeddelande-svar",
     "sidebar__promotion_dialog__content_item4__description": "Låt AI generera personliga meddelandesvar åt dig på några sekunder med bara ett klick på WhatsApp, Discord och Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Skapa AI-konst och bilder",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyaste och mest avancerade modell. Den erbjuder snabbare hastighet, ett genombrott med 1M tokens kontextfönster, förstärkt säkerhet och avancerade funktioner inom text-, kod-, bild-, ljud- och videobehandling.",
     "immersive_chat__chat_history__restore_button__title": "Återställ chattar",
     "immersive_chat__chat_history__restore_modal__title": "Är du säker på att du vill återställa all din Chatt-, Sök- och Konsthistorik till den lokala versionen? Observera att åtgärden inte kan ångras när du har fortsatt.",
-    "immersive_chat__chat_history__restore_modal__description": "Chatt- & Sök- & Konstkonverteringar efter återställning:",
+    "immersive_chat__chat_history__restore_modal__description": "Chatt & Sök & Konstkonversationer att återställa:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, återställ",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Avbryt",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 konversation återställd",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} konversationer återställda"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

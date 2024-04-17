@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل آزمائیں۔ یہ تیز رفتار، 1M ٹوکن کنٹیکسٹ ونڈو، بہترین موڈالٹیز اور بہتر بہترین سلامتی فیچرز پیش کرتا ہے۔",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` کے ساتھ وژن",
     "sidebar__promotion_dialog__content_item2__description": "انتھروپک کے نیکسٹ جنریشن ماڈلز، میکس اے آئی میں ایک ہی جگہ پر دستیاب ہیں: اوپس، سب سے ذہین اختیار؛ سونیٹ، سب سے متوازن انتخاب؛ اور ہائکو، سب سے تیز ماڈل۔",
-    "sidebar__promotion_dialog__content_item3__title": "گوگل ڈاک پر کنٹیکسٹ ونڈو",
-    "sidebar__promotion_dialog__content_item3__description": "آپ اب گوگل ڈاک پر کسی بھی متن کو منتخب کر سکتے ہیں تاکہ آپ اپنی تحریر کو مکمل کر سکیں - تحریر میں بہتری، املا، گرامر درست کریں، کسی بھی متن کو کم/زیادہ کریں، زبان کو آسان بنائیں، پیرافریز کریں، ٹون تبدیل کریں، اور مزید!",
+    "sidebar__promotion_dialog__content_item3__title": "Google Doc اور Microsoft Word پر کنٹیکسٹ ونڈو",
+    "sidebar__promotion_dialog__content_item3__description": "آپ اب Google Doc یا Microsoft Word پر کسی بھی متن کو منتخب کر سکتے ہیں تاکہ آپ اپنی تحریر کو بہتر بنا سکیں - تحریر میں ترتیب، املا، گرامر درست کریں، متن کو مختصر/طویل کریں، زبان کو آسان بنائیں، پیرافریز کریں، طنز تبدیل کریں، اور مزید!",
     "sidebar__promotion_dialog__content_item4__title": "فوری پیغام جواب",
     "sidebar__promotion_dialog__content_item4__description": "AI کو صرف ایک کلک پر WhatsApp، Discord، اور Slack پر آپ کے لئے شخصیت پر مبنی پیغام جوابات تیار کروائیں۔",
     "sidebar__promotion_dialog__content_item5__title": "AI آرٹ اور تصاویر بنائیں",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔ یہ تیز رفتار، ایک بریکتھرو 1M ٹوکن کنٹیکسٹ ونڈو، بہترین سلامتی، اور متن، کوڈ، تصویر، آڈیو، اور ویڈیو پروسیسنگ میں ایڈوانس کپیبلٹیز پیش کرتا ہے۔",
     "immersive_chat__chat_history__restore_button__title": "چیٹ کو بحال کریں",
     "immersive_chat__chat_history__restore_modal__title": "کیا آپ واقعی تمام چیٹ، تلاش اور آرٹ کی تاریخ کو مقامی ورژن پر بحال کرنا چاہتے ہیں؟ براہ کرم نوٹ کریں کہ جب آپ آگے بڑھیں گے تو کوئی کارروائی واپس نہیں لی جاسکتی ہے۔",
-    "immersive_chat__chat_history__restore_modal__description": "بحالی کے بعد چیٹ اور تلاش اور آرٹ تبادلے:",
+    "immersive_chat__chat_history__restore_modal__description": "چیٹ اور تلاش اور آرٹ کے گفتگو بحال کرنے کے لئے:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "جی ہاں، بحال کریں",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "منسوخ کریں"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "منسوخ کریں",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 گفتگو بحال",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} گفتگو بحال"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

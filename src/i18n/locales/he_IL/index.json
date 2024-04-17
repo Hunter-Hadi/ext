@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "נסו את הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, מודליות משופרת ותכונות בטיחות משופרות.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` עם ראייה",
     "sidebar__promotion_dialog__content_item2__description": "גישה לדגמים מדור הבא של Anthropic, כולם במקום אחד ב-MaxAI: Opus, האפשרות החכמה ביותר; Sonnet, הבחירה המאוזנת ביותר; ו-Haiku, הדגם המהיר ביותר.",
-    "sidebar__promotion_dialog__content_item3__title": "חלון קונטקסט ב-Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "עכשיו ניתן לבחור טקסט ב-Google Doc כדי לשפר את הכתיבה שלך - לשפר את הכתיבה, לתקן איות ודקדוק, לקצר/לארך טקסט, לפשט שפה, לפרפרז, לשנות גוון ועוד!",
+    "sidebar__promotion_dialog__content_item3__title": "חלון הקשר ב-Google Doc וב-Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "עכשיו תוכל לבחור טקסט ב-Google Doc או ב-Microsoft Word כדי לשפר את הכתיבה שלך - לשפר את הכתיבה, לתקן איות ודקדוק, לקצר או להאריך טקסט, לפשט שפה, לפרפרז, לשנות גוון ועוד!",
     "sidebar__promotion_dialog__content_item4__title": "תשובה מיידית להודעות",
     "sidebar__promotion_dialog__content_item4__description": "תן למערכת AI ליצור תשובות מותאמות אישית עבורך בשניות עם לחיצה אחת ב-WhatsApp, Discord ו-Slack.",
     "sidebar__promotion_dialog__content_item5__title": "יצירת אמנות ותמונות באמצעות AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, בטיחות משופרת ויכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו.",
     "immersive_chat__chat_history__restore_button__title": "שחזר צ'אטים",
     "immersive_chat__chat_history__restore_modal__title": "האם אתה בטוח שברצונך לשחזר את כל הצ'אטים, החיפושים וההיסטוריה של האמנות לגרסה המקומית? שים לב שפעם שתמשיך, הפעולה לא תוכל להיבטל.",
-    "immersive_chat__chat_history__restore_modal__description": "שיחות צ'אט, חיפושים והמרות אמנות לאחר השחזור:",
+    "immersive_chat__chat_history__restore_modal__description": "שיחות צ'אט, חיפוש ושיחות אמנות לשחזור:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "כן, שחזר",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ביטול"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ביטול",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "שיחה אחת שוחזרה",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} שיחות שוחזרו"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

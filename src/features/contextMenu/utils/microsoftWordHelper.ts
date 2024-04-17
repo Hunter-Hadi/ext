@@ -24,7 +24,16 @@ export const getOfficeWordEditElement = () =>
  * 获取当前以选中的元素
  */
 export const getOfficeWordSelectedElements = () =>
-  Array.from(document.querySelectorAll('#PagesContainer .Selected'))
+  Array.from(document.querySelectorAll(
+    [
+      // 普通文本选择
+      '#PagesContainer .Selected:not(.OnlyImageSelected)',
+      // 表格行选择
+      '#PagesContainer .TableRowSelectedThemed',
+      // 表格单元格选择
+      '#PagesContainer .TableCellSelectedThemed',
+    ].join(', ')
+  ))
 
 /**
  * 获取当前选中元素的rect

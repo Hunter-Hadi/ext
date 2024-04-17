@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్‌ను ప్రయాసం చేయండి. ఇది త్వరిత వేగం, 1M టోకెన్ కంటెక్స్ట్ విండో, మెరుగైన మోడాలిటీలు మరియు మెరుగైన భద్రత లక్షణాలను అందిస్తుంది.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` తో విజన్",
     "sidebar__promotion_dialog__content_item2__description": "అంథ్రోపిక్‌ను యాక్సెస్ చేసే తదుపరి మోడల్‌లను ఒక స్థలంలో మాత్రమే మాక్స్‌ఎయి: ఓపస్, అత్యంత తెలివైన ఎంపిక; సానెట్, అత్యంత సమతుల్య ఎంపిక; మరియు హైకూ, త్వరిత మోడల్.",
-    "sidebar__promotion_dialog__content_item3__title": "Google డాక్‌లో కంటెక్స్ట్ విండో",
-    "sidebar__promotion_dialog__content_item3__description": "మీరు ఇప్పుడు Google డాక్‌లో ఏ టెక్స్ట్‌ను ఎంచుకోవచ్చు, మీ రచనాను పూర్తిగా సవరించడానికి - రచన మెరుగైనపుడు, అక్షరాల మరియు వ్యాకరణాన్ని సరిచేయండి, ఏ టెక్స్ట్‌ను చిన్నగా / పెద్దగా చేయండి, భాషను సరళీకరించండి, పరామర్శించండి, టోన్‌ను మార్చండి, మరియు మరింత చేయండి!",
+    "sidebar__promotion_dialog__content_item3__title": "Google Doc & Microsoft Word లో కంటెంట్ విండో",
+    "sidebar__promotion_dialog__content_item3__description": "మీరు ఇప్పుడు Google Doc లేదా Microsoft Word లో ఏ టెక్స్ట్‌ను ఎంచుకోవచ్చు - రచన మెరుగైనప్పుడు, అక్షరమాల మరియు వ్యాకరణం సరిచేయండి, ఏ టెక్స్ట్‌ను చిన్నగా / పెద్దగా చేయండి, భాషను సరళీకరించండి, పరిభాషానుసారంగా మార్చండి, టోన్‌ను మార్చండి మరియు ఇంకా చేయండి!",
     "sidebar__promotion_dialog__content_item4__title": "త్వరిత సందేశం జవాబు",
     "sidebar__promotion_dialog__content_item4__description": "AI మీకు వెలుపలి సందేశం జవాబులను సెకన్లోకి ఉత్పత్తించడంలో సహాయపడుతుంది - WhatsApp, Discord మరియు Slack లో ఒక క్లిక్‌తో.",
     "sidebar__promotion_dialog__content_item5__title": "AI కళాకారుడిగా చిత్రాలు మరియు చిత్రాలను సృష్టించండి",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది.",
     "immersive_chat__chat_history__restore_button__title": "చాట్లను పునఃస్థాపించండి",
     "immersive_chat__chat_history__restore_modal__title": "మీరు అన్ని మీ చాట్, శోధన, మరియు కళా చరిత్రను స్థానిక వెర్షన్‌కు పునఃస్థాపించాలని మీరు ఖచ్చితంగా కోరుకుంటున్నారా? దయచేసి గమనిక చేయండి, మీరు ముందుగా ముగింపు చేసే తర్వాత ఈ చర్య మరియునిపించడం కాదు.",
-    "immersive_chat__chat_history__restore_modal__description": "పునఃస్థాపన తర్వాత చాట్ & శోధన & కళా మార్పులు:",
+    "immersive_chat__chat_history__restore_modal__description": "చాట్ & శోధన & కళ సంభాషణలు పునరుద్ధరించబడవలసినవి:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "అవును, పునఃస్థాపించండి",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "రద్దు చేయండి"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "రద్దు చేయండి",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 సంభాషణ పునరుద్ధరించబడింది",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} సంభాషణలు పునరుద్ధరించబడింది"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

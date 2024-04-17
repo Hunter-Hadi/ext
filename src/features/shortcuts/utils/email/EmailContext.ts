@@ -42,15 +42,11 @@ ${content}
 export default class EmailCorrespondence {
   emailAddress: string
   emails: IEmailData[] = []
-  receivers: Set<string> = new Set()
   constructor(emailAddress: string) {
     this.emailAddress = emailAddress
   }
   addEmail(email: IEmailData) {
     this.emails.push(email)
-  }
-  addReceiver(receiver: IEmailUserData) {
-    this.receivers.add(receiver.email)
   }
   sortEmails() {
     this.emails.sort((a, b) => {
@@ -58,27 +54,23 @@ export default class EmailCorrespondence {
     })
   }
   get emailContext() {
-    debugger
     const emailListData = createEmailListData(this.emails)
-    const targetReplyEmailContext =
-      emailListData
-        .filter(({ data }) => this.receivers.has(data.from.email))
-        .map(({ text }) => text)
-        .join('\n') ||
-      // // if doesnt have target, make the last email that not sent by me as target?
-      // emailListData.at(
-      //   emailListData.findLastIndex(
-      //     ({ data }) => data.from.email !== this.emailAddress,
-      //   ),
-      // )?.text ||
-      // // or make the last email as target?
-      // emailListData.at(-1)?.text ||
-      // // or just return empty string?
-      ''
+    let targetReplyEmailContext = ''
+    const emailContext = emailListData
+      .map(({ data, text }) => {
+        if (data.from.email !== this.emailAddress) {
+          targetReplyEmailContext = text
+        }
+        return text
+      })
+      .join('\n')
+    if (!targetReplyEmailContext) {
+      targetReplyEmailContext = emailListData.at(-1)?.text || ''
+    }
 
     return {
       targetReplyEmailContext,
-      emailContext: emailListData.map(({ text }) => text).join('\n'),
+      emailContext,
     }
   }
 }

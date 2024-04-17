@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Wypróbuj najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, okno kontekstowe o pojemności 1M tokenów, ulepszone modalności i zwiększone funkcje bezpieczeństwa.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` z wizją",
     "sidebar__promotion_dialog__content_item2__description": "Dostęp do następnej generacji modeli Anthropic, wszystko w jednym miejscu w MaxAI: Opus, najinteligentniejsza opcja; Sonnet, najbardziej zrównoważony wybór; i Haiku, najszybszy model.",
-    "sidebar__promotion_dialog__content_item3__title": "Okno kontekstowe w Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Teraz możesz wybrać dowolny tekst w Google Doc, aby doskonalić swoje pisanie - Poprawiaj pisanie, naprawiaj błędy ortograficzne i gramatyczne, skracaj/dłużysz dowolny tekst, upraszczaj język, parafrazuj, zmieniaj ton i wiele więcej!",
+    "sidebar__promotion_dialog__content_item3__title": "Okno kontekstowe w Google Doc i Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Teraz możesz zaznaczyć dowolny tekst w Google Doc lub Microsoft Word, aby doskonalić swoje pisanie - Poprawiaj pisownię i gramatykę, skracaj/dłużysz tekst, upraszczaj język, parafrazuj, zmieniaj ton i wiele więcej!",
     "sidebar__promotion_dialog__content_item4__title": "Szybka odpowiedź na wiadomości",
     "sidebar__promotion_dialog__content_item4__description": "Pozwól, żeby sztuczna inteligencja w ciągu kilku sekund wygenerowała dla Ciebie spersonalizowane odpowiedzi na wiadomości - wystarczy jedno kliknięcie na WhatsApp, Discordzie i Slacku.",
     "sidebar__promotion_dialog__content_item5__title": "Twórz sztukę i obrazy AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, przełomowe okno kontekstowe o pojemności 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości w zakresie przetwarzania tekstu, kodu, obrazu, dźwięku i wideo.",
     "immersive_chat__chat_history__restore_button__title": "Przywróć czaty",
     "immersive_chat__chat_history__restore_modal__title": "Czy na pewno chcesz przywrócić całą historię czatów, wyszukiwania i sztuki do wersji lokalnej? Prosimy zauważyć, że po wykonaniu tej operacji nie będzie możliwości cofnięcia.",
-    "immersive_chat__chat_history__restore_modal__description": "Konwersje czatów, wyszukiwania i sztuki po przywróceniu:",
+    "immersive_chat__chat_history__restore_modal__description": "Przywróć rozmowy czatu, wyszukiwania i rozmowy o sztuce:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Tak, przywróć",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Anuluj"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Anuluj",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Przywrócono 1 rozmowę",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Przywrócono {{CONVERSATION_COUNT}} rozmowy"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

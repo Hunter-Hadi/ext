@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "구글의 최신 및 가장 고급 모델인 Gemini-1.5을 시도해보세요. 더 빠른 속도, 1백만 토큰 컨텍스트 창, 개선된 모달리티 및 향상된 안전 기능을 제공합니다.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3`와 함께하는 비전",
     "sidebar__promotion_dialog__content_item2__description": "Anthropic의 차세대 모델을 MaxAI에서 한 곳에서 액세스하세요: Opus는 가장 지능적인 옵션, Sonnet은 가장 균형 잡힌 선택, Haiku는 가장 빠른 모델입니다.",
-    "sidebar__promotion_dialog__content_item3__title": "Google 문서의 컨텍스트 창",
-    "sidebar__promotion_dialog__content_item3__description": "이제 Google 문서에서 원하는 텍스트를 선택하여 글쓰기를 완벽하게 할 수 있습니다 - 글쓰기 개선, 맞춤법 및 문법 수정, 텍스트 단축/확장, 언어 간소화, 다른 말로 바꾸기, 어조 변경 등!",
+    "sidebar__promotion_dialog__content_item3__title": "Google 문서 및 Microsoft Word에서의 컨텍스트 창",
+    "sidebar__promotion_dialog__content_item3__description": "이제 Google 문서 또는 Microsoft Word에서 원하는 텍스트를 선택하여 글쓰기를 완벽하게 할 수 있습니다 - 글쓰기 개선, 맞춤법 및 문법 수정, 텍스트 축소/확장, 언어 단순화, 다른 말로 바꾸기, 어조 변경 등이 가능합니다!",
     "sidebar__promotion_dialog__content_item4__title": "즉시 메시지 응답",
     "sidebar__promotion_dialog__content_item4__description": "AI가 WhatsApp, Discord 및 Slack에서 클릭 한 번으로 개인화된 메시지 응답을 초 단위로 생성해줍니다.",
     "sidebar__promotion_dialog__content_item5__title": "AI 예술과 이미지 생성",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "구글의 최신 및 가장 고급 모델인 Gemini-1.5입니다. 더 빠른 속도, 획기적인 1백만 토큰 컨텍스트 창, 향상된 안전 기능 및 텍스트, 코드, 이미지, 오디오, 비디오 처리를 위한 고급 기능을 제공합니다.",
     "immersive_chat__chat_history__restore_button__title": "채팅 복원",
     "immersive_chat__chat_history__restore_modal__title": "로컬 버전으로 모든 채팅, 검색 및 아트 기록을 복원하시겠습니까? 한 번 진행하면 취소할 수 없습니다.",
-    "immersive_chat__chat_history__restore_modal__description": "복원 후의 채팅, 검색 및 아트 변환:",
+    "immersive_chat__chat_history__restore_modal__description": "복원할 채팅 및 검색 및 아트 대화:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "예, 복원",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "취소"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "취소",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "복원된 대화 1개",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}개의 대화 복원됨"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Próbáld ki a Google legújabb és legfejlettebb modelljét. Gyorsabb sebességet, 1M tokenes kontextusablakot, fejlett modalitásokat és javított biztonsági funkciókat kínál.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` látással",
     "sidebar__promotion_dialog__content_item2__description": "Hozzáférhetsz az Anthropic következő generációs modelleivel egy helyen a MaxAI-ban: Opus, a legintelligensebb választás; Sonnet, a legkiegyensúlyozottabb választás; és Haiku, a leggyorsabb modell.",
-    "sidebar__promotion_dialog__content_item3__title": "Kontextusablak a Google Dokumentumban",
-    "sidebar__promotion_dialog__content_item3__description": "Mostantól kiválaszthatod bármely szöveget a Google Dokumentumban, hogy tökéletesítsd az írásod - Javítsd az írást, helyesírást és nyelvtant, rövidíts vagy hosszabbíts meg bármilyen szöveget, egyszerűsítsd a nyelvezetet, parafrázd, változtasd meg a hangnemet, és még sok mást!",
+    "sidebar__promotion_dialog__content_item3__title": "Kontextus ablak a Google Dokumentumban és a Microsoft Wordben",
+    "sidebar__promotion_dialog__content_item3__description": "Most már kiválaszthat bármilyen szöveget a Google Dokumentumban vagy a Microsoft Wordben, hogy tökéletesítse az írását - Javítsa a helyesírást és a nyelvtant, rövidítse/hosszabbítsa a szöveget, egyszerűsítse a nyelvezetet, parafrázisáljon, változtassa meg a hangnemet, és még sok mást!",
     "sidebar__promotion_dialog__content_item4__title": "Azonnali üzenetválasz",
     "sidebar__promotion_dialog__content_item4__description": "Engedd, hogy az AI személyre szabott üzenetválaszokat generáljon neked másodpercek alatt egyetlen kattintással a WhatsApp, Discord és Slack alkalmazásokban.",
     "sidebar__promotion_dialog__content_item5__title": "AI művészet és képek létrehozása",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fejlett biztonsági funkciókat és haladó képességeket kínál a szöveg-, kód-, kép-, hang- és videofeldolgozás területén.",
     "immersive_chat__chat_history__restore_button__title": "Chatok helyreállítása",
     "immersive_chat__chat_history__restore_modal__title": "Biztosan helyre szeretnéd állítani az összes Chat, Keresés és Művészeti előzményt a helyi verzióra? Kérlek vedd figyelembe, hogy miután folytatod, a művelet nem vonható vissza.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Keresés & Művészeti átalakítások helyreállítása után:",
+    "immersive_chat__chat_history__restore_modal__description": "Visszaállítandó csevegési és keresési beszélgetések:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Igen, helyreállítás",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Mégse",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 beszélgetés visszaállítva",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} beszélgetés visszaállítva"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Prøv Googles nyeste og mest avancerede model. Den tilbyder hurtigere hastighed, en kontekstvindue på 1M token, forbedrede modaliteter og forbedrede sikkerhedsfunktioner.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` med vision",
     "sidebar__promotion_dialog__content_item2__description": "Få adgang til Anthropics næste generations modeller, samlet ét sted i MaxAI: Opus, den mest intelligente mulighed; Sonnet, det mest afbalancerede valg; og Haiku, den hurtigste model.",
-    "sidebar__promotion_dialog__content_item3__title": "Kontekstvindue på Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Du kan nu vælge enhver tekst på Google Doc for at forbedre din skrivning - Forbedr skrivning, ret stavefejl og grammatik, gør enhver tekst kortere/længere, forenkl sprog, parafrasér, ændr tone og mere!",
+    "sidebar__promotion_dialog__content_item3__title": "Kontekstvindue på Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Du kan nu markere enhver tekst på Google Doc eller Microsoft Word for at forbedre din skrivning - Forbedr skrivning, ret stavefejl og grammatik, gør en tekst kortere/længere, forenkler sprog, omskrivning, ændrer tone og mere!",
     "sidebar__promotion_dialog__content_item4__title": "Svar på øjeblikkelig besked",
     "sidebar__promotion_dialog__content_item4__description": "Lad AI generere personlige besked-svar til dig på sekunder med bare et klik på WhatsApp, Discord og Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Skab AI-kunst og billeder",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avancerede model. Den tilbyder hurtigere hastighed, et gennembrud med 1M token kontekstvindue, forbedret sikkerhed og avancerede funktioner inden for tekst, kode, billede, lyd og video behandling.",
     "immersive_chat__chat_history__restore_button__title": "Gendan chats",
     "immersive_chat__chat_history__restore_modal__title": "Er du sikker på, at du vil gendanne al din Chat, Søgning og Kunst historik til den lokale version? Bemærk venligst, at handlingen ikke kan fortrydes, når du har fortsat.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat & Søgning & Kunst konverteringer efter gendannelse:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat & Søg & Kunst samtaler der skal genoprettes:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, gendan",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuller"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuller",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 samtale genoprettet",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} samtaler genoprettet"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "尝试谷歌最新和最先进的模型。它提供更快的速度，1M令牌上下文窗口，改进的模态性和增强的安全功能。",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` 具备视觉功能",
     "sidebar__promotion_dialog__content_item2__description": "在MaxAI中访问Anthropic的下一代模型：Opus，最智能的选择；Sonnet，最平衡的选择；以及Haiku，最快的模型。",
-    "sidebar__promotion_dialog__content_item3__title": "Google Doc 上的上下文窗口",
-    "sidebar__promotion_dialog__content_item3__description": "您现在可以选择Google Doc上的任何文本来完善您的写作 - 改善写作，修正拼写和语法错误，使任何文本变短/长，简化语言，改写，改变语气等！",
+    "sidebar__promotion_dialog__content_item3__title": "Google Doc和Microsoft Word上的上下文窗口",
+    "sidebar__promotion_dialog__content_item3__description": "您现在可以选择Google Doc或Microsoft Word上的任何文本来完善您的写作 - 改进写作，修正拼写和语法错误，使文本变短/长，简化语言，改写，改变语气等！",
     "sidebar__promotion_dialog__content_item4__title": "即时消息回复",
     "sidebar__promotion_dialog__content_item4__description": "让AI在WhatsApp、Discord和Slack上点击一次即可为您生成个性化的消息回复。",
     "sidebar__promotion_dialog__content_item5__title": "创作AI艺术和图像",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "谷歌最新和最先进的模型。它提供更快的速度，突破性的1M令牌上下文窗口，增强的安全性以及在文本、代码、图像、音频和视频处理方面的高级功能。",
     "immersive_chat__chat_history__restore_button__title": "恢复聊天记录",
     "immersive_chat__chat_history__restore_modal__title": "确定要将所有的聊天、搜索和艺术历史记录恢复到本地版本吗？请注意，一旦您继续操作，将无法撤销此操作。",
-    "immersive_chat__chat_history__restore_modal__description": "恢复后的聊天、搜索和艺术转换：",
+    "immersive_chat__chat_history__restore_modal__description": "待恢复的聊天、搜索和艺术对话：",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "是的，恢复",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "取消",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "已恢复 1 个对话",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "已恢复 {{CONVERSATION_COUNT}} 个对话"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

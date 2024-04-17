@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "جرب أحدث وأكثر النماذج تقدمًا من Google. يوفر سرعة أسرع ، نافذة سياق بطاقة 1 مليون ، تحسين الوضعيات ، وميزات أمان محسنة.",
     "sidebar__promotion_dialog__content_item2__title": "`كلود-3` مع الرؤية",
     "sidebar__promotion_dialog__content_item2__description": "الوصول إلى نماذج الجيل التالي من Anthropic ، كلها في مكان واحد في MaxAI: Opus ، الخيار الأكثر ذكاءً ؛ Sonnet ، الخيار الأكثر توازنًا ؛ و Haiku ، أسرع نموذج.",
-    "sidebar__promotion_dialog__content_item3__title": "نافذة السياق على Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "يمكنك الآن تحديد أي نص على Google Doc لتحسين كتابتك - تحسين الكتابة ، إصلاح الإملاء والقواعد النحوية ، جعل أي نص أقصر / أطول ، تبسيط اللغة ، إعادة صياغة ، تغيير النغمة ، وأكثر!",
+    "sidebar__promotion_dialog__content_item3__title": "نافذة السياق على Google Doc و Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "يمكنك الآن تحديد أي نص في Google Doc أو Microsoft Word لتحسين كتابتك - تحسين الكتابة، إصلاح الإملاء والقواعد النحوية، جعل أي نص أقصر / أطول، تبسيط اللغة، إعادة صياغة، تغيير النبرة، وأكثر!",
     "sidebar__promotion_dialog__content_item4__title": "الرد الفوري على الرسائل",
     "sidebar__promotion_dialog__content_item4__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع نقرة واحدة فقط على WhatsApp و Discord و Slack.",
     "sidebar__promotion_dialog__content_item5__title": "إنشاء فن وصور AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "أحدث وأكثر النماذج تقدمًا من Google. يوفر سرعة أسرع ، نافذة سياق بطاقة 1 مليون مترابعة ، سلامة محسنة ، وقدرات متقدمة في معالجة النص والشفرة والصور والصوت والفيديو.",
     "immersive_chat__chat_history__restore_button__title": "استعادة المحادثات",
     "immersive_chat__chat_history__restore_modal__title": "هل أنت متأكد أنك تريد استعادة جميع سجلات المحادثات والبحث والفن إلى النسخة المحلية؟ يرجى ملاحظة أنه بمجرد المتابعة، لا يمكن التراجع عن الإجراء.",
-    "immersive_chat__chat_history__restore_modal__description": "تحويلات المحادثات والبحث والفن بعد الاستعادة:",
+    "immersive_chat__chat_history__restore_modal__description": "سيتم استعادة محادثات الدردشة والبحث والفن:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "نعم، استعادة",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "إلغاء"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "إلغاء",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "تم استعادة محادثة واحدة",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "تم استعادة {{CONVERSATION_COUNT}} محادثة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -114,6 +114,9 @@ const useClientChat = () => {
             return
           }
         }
+      } else if (question.text.trim() === '') {
+        // 如果没有文本 && 没有附件
+        return
       }
       question = mergeWithObject([
         question,

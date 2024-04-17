@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Subukan ang pinakabagong at pinakasusi model ng Google. Nag-aalok ito ng mas mabilis na bilis, 1M token context window, pinahusay na mga modalidad, at pinabuting mga tampok sa kaligtasan.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` na may paningin",
     "sidebar__promotion_dialog__content_item2__description": "Ma-access ang mga susunod na henerasyon ng mga modelo ng Anthropic, lahat sa isang lugar sa MaxAI: Opus, ang pinakamatalinong pagpipilian; Sonnet, ang pinakabalanseng pagpipilian; at Haiku, ang pinakamabilis na modelo.",
-    "sidebar__promotion_dialog__content_item3__title": "Context window sa Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Maaari mo nang piliin ang anumang teksto sa Google Doc upang mapaganda ang iyong pagsusulat - Mapabuti ang pagsusulat, ayusin ang spelling at grammar, gawing maikli o mahaba ang anumang teksto, pahinahin ang wika, palitan ang paraan ng pagsasalita, at iba pa!",
+    "sidebar__promotion_dialog__content_item3__title": "Context window sa Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Maaari mo nang piliin ang anumang teksto sa Google Doc o Microsoft Word upang mapaganda ang iyong pagsusulat - Mapabuti ang pagsusulat, ayusin ang pagbaybay at gramatika, gawing mas maikli/o mahaba ang anumang teksto, pahingahin ang wika, palitan ang tono, at iba pa!",
     "sidebar__promotion_dialog__content_item4__title": "Agaran na tugon sa mensahe",
     "sidebar__promotion_dialog__content_item4__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa mensahe para sa iyo sa loob ng ilang segundo sa pamamagitan ng isang pag-click lamang sa WhatsApp, Discord, at Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Lumikha ng sining at mga imahe ng AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Ang pinakabagong at pinakasusi model ng Google. Nag-aalok ito ng mas mabilis na bilis, isang breakthrough 1M token context window, pinabuting kaligtasan, at advanced na kakayahan sa text, code, image, audio, at video processing.",
     "immersive_chat__chat_history__restore_button__title": "Ibalik ang mga chat",
     "immersive_chat__chat_history__restore_modal__title": "Sigurado ka bang ibabalik mo ang lahat ng iyong Kasaysayan ng Chat, Paghahanap, at Sining sa lokal na bersyon? Paki-tandaan na kapag nagpatuloy ka, hindi na ito maaaring bawiin.",
-    "immersive_chat__chat_history__restore_modal__description": "Mga pag-uusap & Paghahanap & Mga konbersyon ng Sining matapos ibalik:",
+    "immersive_chat__chat_history__restore_modal__description": "Mga Usapang Chat & Paghahanap & Sining na maaring ibalik:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Oo, ibalik",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Kanselahin"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Kanselahin",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 usapan na ibinalik",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} mga usapan ang ibinalik"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

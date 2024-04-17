@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Vyskúšajte najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, kontextové okno s 1 miliónom tokenov, vylepšené modalitáty a pokročilé bezpečnostné funkcie.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` s videním",
     "sidebar__promotion_dialog__content_item2__description": "Získajte prístup k nasledujúcej generácii modelov od Anthropic, všetko na jednom mieste v MaxAI: Opus, najinteligentnejšia voľba; Sonnet, najvyváženejší výber; a Haiku, najrýchlejší model.",
-    "sidebar__promotion_dialog__content_item3__title": "Kontextové okno v Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Teraz môžete vybrať akýkoľvek text v Google Doc a zdokonaliť svoje písanie - zlepšiť písanie, opraviť pravopis a gramatiku, skrátiť/naťahovať text, zjednodušiť jazyk, parafrázovať, zmeniť tón a ďalšie!",
+    "sidebar__promotion_dialog__content_item3__title": "Kontextové okno na Google Doc a Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Teraz môžete vybrať akýkoľvek text na Google Doc alebo Microsoft Word, aby ste zdokonalili svoje písanie - Vylepšite písanie, opravte pravopis a gramatiku, skráťte/ predĺžte akýkoľvek text, zjednodušte jazyk, parafrázujte, zmeňte tón a viac!",
     "sidebar__promotion_dialog__content_item4__title": "Okamžitá odpoveď na správu",
     "sidebar__promotion_dialog__content_item4__description": "Nechajte AI generovať personalizované odpovede na správy za pár sekúnd jediným kliknutím na WhatsApp, Discord a Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Vytvárajte umelecké diela a obrázky s pomocou AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, prelomové kontextové okno s 1 miliónom tokenov, vylepšenú bezpečnosť a pokročilé schopnosti v spracovaní textu, kódu, obrázkov, zvuku a videa.",
     "immersive_chat__chat_history__restore_button__title": "Obnoviť chaty",
     "immersive_chat__chat_history__restore_modal__title": "Ste si istý, že chcete obnoviť všetky svoje Chat, Vyhľadávanie a Umenie histórie do lokálnej verzie? Prosím, majte na pamäti, že ak pokračujete, akciu nie je možné vrátiť späť.",
-    "immersive_chat__chat_history__restore_modal__description": "Konverzie chatov, vyhľadávania a umenia po obnove:",
+    "immersive_chat__chat_history__restore_modal__description": "Konverzácie chatu, vyhľadávanie a umenie na obnovenie:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Áno, obnoviť",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Zrušiť"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Zrušiť",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovená 1 konverzácia",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovených {{CONVERSATION_COUNT}} konverzácií"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल ट्राय करें। इसमें तेज़ स्पीड, 1M टोकन संदर्भ विंडो, सुधारित मोडालिटीज़, और बेहतर सुरक्षा सुविधाएं हैं।",
     "sidebar__promotion_dialog__content_item2__title": "`क्लोड-3` विजन के साथ",
     "sidebar__promotion_dialog__content_item2__description": "एंथ्रोपिक के अगली पीढ़ी के मॉडलों तक पहुंचें, सभी एक ही स्थान में MaxAI में: ओपस, सबसे बुद्धिमान विकल्प; सोनेट, सबसे संतुलित विकल्प; और हाइकू, सबसे तेज़ मॉडल।",
-    "sidebar__promotion_dialog__content_item3__title": "Google डॉक पर संदर्भ विंडो",
-    "sidebar__promotion_dialog__content_item3__description": "अब आप Google डॉक पर किसी भी पाठ का चयन करके अपने लेखन को सुधार सकते हैं - लेखन को सुधारें, वर्तनी और व्याकरण को ठीक करें, किसी भी पाठ को छोटा / लंबा करें, भाषा को सरल बनाएं, पराम्परिक बनाएं, ध्वनि बदलें, और बहुत कुछ!",
+    "sidebar__promotion_dialog__content_item3__title": "Google Doc और Microsoft Word पर संदर्भ विंडो",
+    "sidebar__promotion_dialog__content_item3__description": "अब आप Google Doc या Microsoft Word पर किसी भी पाठ का चयन करके अपनी लेखन को सुधार सकते हैं - लेखन में सुधार करें, वर्तनी और व्याकरण को ठीक करें, किसी भी पाठ को छोटा / बड़ा करें, भाषा को सरल बनाएं, परामर्श दें, ध्वनि बदलें, और बहुत कुछ!",
     "sidebar__promotion_dialog__content_item4__title": "तत्काल संदेश जवाब",
     "sidebar__promotion_dialog__content_item4__description": "AI द्वारा व्हाट्सएप, डिस्कॉर्ड, और स्लैक पर क्लिक करके केवल कुछ सेकंड में आपके लिए व्यक्तिगत संदेश का निर्माण करने दें।",
     "sidebar__promotion_dialog__content_item5__title": "AI कला और छवियों को बनाएँ",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।",
     "immersive_chat__chat_history__restore_button__title": "चैट बहाल करें",
     "immersive_chat__chat_history__restore_modal__title": "क्या आप सुनिश्चित हैं कि आप सभी चैट, खोज और कला इतिहास को स्थानीय संस्करण में बहाल करना चाहते हैं? कृपया ध्यान दें कि एक बार प्रक्रिया शुरू करने के बाद, कार्रवाई को पूर्ववत नहीं किया जा सकता है।",
-    "immersive_chat__chat_history__restore_modal__description": "बहाली के बाद चैट और खोज और कला परिवर्तन:",
+    "immersive_chat__chat_history__restore_modal__description": "बातचीत और खोज और कला संवाद पुनर्स्थापित होने के लिए:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "हाँ, बहाल करें",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "रद्द करें",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 संवाद पुनर्स्थापित",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} संवाद पुनर्स्थापित"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

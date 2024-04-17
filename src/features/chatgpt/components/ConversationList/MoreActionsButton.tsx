@@ -14,6 +14,7 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { clientForceRemoveConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
@@ -33,6 +34,7 @@ const MoreActionsButton: FC<{
     onDelete,
   } = props
   const { resetConversation } = useClientConversation()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const { t } = useTranslation(['client'])
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -80,6 +82,7 @@ const MoreActionsButton: FC<{
         title={t('client:immersive_chat__more_actions_button__title')}
       >
         <IconButton
+          disabled={smoothConversationLoading}
           onClick={(event: MouseEvent<HTMLElement>) => {
             event.preventDefault()
             event.stopPropagation()

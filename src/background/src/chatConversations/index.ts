@@ -163,7 +163,7 @@ class ConversationDB {
             // 同步会话到后端
             // addOrUpdateDBConversation(conversation).then().catch()
             // TODO: 年前先不同步到后端,但如果是分享的chat，还是需要同步
-            if (conversation.share?.shareId && conversation.isDelete) {
+            if (conversation.share?.shareId) {
               addOrUpdateDBConversation(conversation).then().catch()
             }
           }

@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Google'ın en yeni ve en gelişmiş modelini deneyin. Daha hızlı hız, 1M token bağlam penceresi, geliştirilmiş modaliteler ve gelişmiş güvenlik özellikleri sunar.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` ile vizyon",
     "sidebar__promotion_dialog__content_item2__description": "Anthropic'in bir arada bulunan sonraki nesil modellerine MaxAI'de erişin: En zeki seçenek Opus; En dengeli seçenek Sonnet; ve En hızlı model Haiku.",
-    "sidebar__promotion_dialog__content_item3__title": "Google Dokümanı'nda Bağlam Penceresi",
-    "sidebar__promotion_dialog__content_item3__description": "Artık yazınızı mükemmelleştirmek için Google Dokümanı'ndaki herhangi bir metni seçebilirsiniz - Yazma becerilerini geliştirin, yazım ve dilbilgisi hatalarını düzeltin, metni kısaltın/uzatın, dilinizi basitleştirin, yeniden ifade edin, tonu değiştirin ve daha fazlasını yapın!",
+    "sidebar__promotion_dialog__content_item3__title": "Google Doc ve Microsoft Word'deki Bağlam Penceresi",
+    "sidebar__promotion_dialog__content_item3__description": "Artık yazınızı mükemmelleştirmek için Google Doc veya Microsoft Word'de herhangi bir metni seçebilirsiniz - Yazma becerilerini geliştirin, yazım ve dilbilgisi hatalarını düzeltin, metni kısaltın/uzatın, dilinizi basitleştirin, yeniden ifade edin, tonu değiştirin ve daha fazlasını yapın!",
     "sidebar__promotion_dialog__content_item4__title": "Anlık mesaj yanıtı",
     "sidebar__promotion_dialog__content_item4__description": "AI, WhatsApp, Discord ve Slack'te sadece bir tıklama ile kişiselleştirilmiş mesaj yanıtları oluşturmanıza yardımcı olur.",
     "sidebar__promotion_dialog__content_item5__title": "AI sanatı ve görüntüleri oluşturun",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar.",
     "immersive_chat__chat_history__restore_button__title": "Sohbetleri Geri Yükle",
     "immersive_chat__chat_history__restore_modal__title": "Tüm Sohbet, Arama ve Sanat geçmişinizi yerel sürüme geri yüklemek istediğinizden emin misiniz? Lütfen devam ettiğinizde işlem geri alınamaz.",
-    "immersive_chat__chat_history__restore_modal__description": "Geri yükleme sonrası Sohbet & Arama & Sanat dönüşümleri:",
+    "immersive_chat__chat_history__restore_modal__description": "Geri yüklenmesi gereken Sohbet & Arama & Sanat konuşmaları:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Evet, geri yükle",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "İptal"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "İptal",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 konuşma geri yüklendi",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} konuşma geri yüklendi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

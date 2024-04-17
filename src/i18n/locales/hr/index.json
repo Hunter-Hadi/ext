@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Isprobajte najnoviji i najnapredniji model tvrtke Google. Nudi bržu brzinu, prozor konteksta od 1M tokena, poboljšane modalnosti i napredne sigurnosne značajke.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` s vizijom",
     "sidebar__promotion_dialog__content_item2__description": "Pristupite sljedećoj generaciji modela tvrtke Anthropic, sve na jednom mjestu u MaxAI: Opus, najinteligentnija opcija; Sonnet, najbalansiraniji izbor; i Haiku, najbrži model.",
-    "sidebar__promotion_dialog__content_item3__title": "Prozor konteksta na Google Doc-u",
-    "sidebar__promotion_dialog__content_item3__description": "Sada možete odabrati bilo koji tekst na Google Doc-u kako biste usavršili svoje pisanje - poboljšajte pisanje, ispravite pravopis i gramatiku, skratite/produžite tekst, pojednostavite jezik, parafrazirajte, promijenite ton i još mnogo toga!",
+    "sidebar__promotion_dialog__content_item3__title": "Prozor s kontekstom na Google Docu i Microsoft Wordu",
+    "sidebar__promotion_dialog__content_item3__description": "Sada možete odabrati bilo koji tekst na Google Docu ili Microsoft Wordu kako biste usavršili svoje pisanje - poboljšajte pisanje, ispravite pravopis i gramatiku, skratite/produžite tekst, pojednostavnite jezik, parafrazirajte, promijenite ton i još mnogo toga!",
     "sidebar__promotion_dialog__content_item4__title": "Odgovor na trenutnu poruku",
     "sidebar__promotion_dialog__content_item4__description": "Neka umjetna inteligencija generira personalizirane odgovore na poruke za vas u sekundi s jednim klikom na WhatsApp, Discord i Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Stvaranje umjetnosti i slika pomoću AI-a",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model tvrtke Google. Nudi bržu brzinu, probojni prozor konteksta od 1M tokena, poboljšanu sigurnost i napredne mogućnosti obrade teksta, koda, slika, zvuka i videozapisa.",
     "immersive_chat__chat_history__restore_button__title": "Vrati razgovore",
     "immersive_chat__chat_history__restore_modal__title": "Jeste li sigurni da želite vratiti sve svoje povijesti razgovora, pretraživanja i umjetnosti na lokalnu verziju? Imajte na umu da jednom kada nastavite, radnju ne možete poništiti.",
-    "immersive_chat__chat_history__restore_modal__description": "Razgovori i pretvorbe pretraživanja i umjetnosti nakon vraćanja:",
+    "immersive_chat__chat_history__restore_modal__description": "Razgovori u chatu, pretraživanje i umjetnički razgovori koji će biti obnovljeni:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, vrati",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Odustani"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Odustani",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Obnovljen je 1 razgovor",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Obnovljeno je {{CONVERSATION_COUNT}} razgovora"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

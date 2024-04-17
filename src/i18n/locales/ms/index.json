@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Cuba model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks 1 juta token, modality yang diperbaiki, dan ciri keselamatan yang ditingkatkan.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` dengan visi",
     "sidebar__promotion_dialog__content_item2__description": "Akses model generasi seterusnya Anthropic, semuanya dalam satu tempat di MaxAI: Opus, pilihan yang paling pintar; Sonnet, pilihan yang paling seimbang; dan Haiku, model yang paling pantas.",
-    "sidebar__promotion_dialog__content_item3__title": "Tetingkap konteks pada Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Anda kini boleh memilih teks apa pun di Google Doc untuk menyempurnakan penulisan anda - Tingkatkan penulisan, betulkan ejaan & tatabahasa, buat teks menjadi lebih pendek/panjang, ringkaskan bahasa, parafrase, ubah nada, dan banyak lagi!",
+    "sidebar__promotion_dialog__content_item3__title": "Tetingkap konteks pada Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Anda kini boleh memilih teks apa pun pada Google Doc atau Microsoft Word untuk menyempurnakan penulisan anda - Tingkatkan penulisan, betulkan ejaan & tatabahasa, memendekkan/memperpanjangkan teks, memudahkan bahasa, mengubah ringan nada, dan banyak lagi!",
     "sidebar__promotion_dialog__content_item4__title": "Balasan mesej segera",
     "sidebar__promotion_dialog__content_item4__description": "Biarkan AI menghasilkan balasan mesej yang dipersonalisasi untuk anda dalam beberapa saat dengan hanya satu klik di WhatsApp, Discord, dan Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Buat seni dan gambar AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks 1 juta token yang terobosan, keselamatan yang ditingkatkan, dan kemampuan canggih dalam pemprosesan teks, kod, imej, audio, dan video.",
     "immersive_chat__chat_history__restore_button__title": "Pulihkan perbualan",
     "immersive_chat__chat_history__restore_modal__title": "Adakah anda pasti ingin memulihkan semua Perbualan, Carian, dan Sejarah Seni ke versi tempatan? Sila ambil perhatian bahawa tindakan ini tidak dapat dibatalkan setelah anda meneruskan.",
-    "immersive_chat__chat_history__restore_modal__description": "Perbualan & Carian & Penukaran Seni selepas pemulihan:",
+    "immersive_chat__chat_history__restore_modal__description": "Perbualan Chat & Carian & Seni yang akan dipulihkan:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ya, pulihkan",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Batal",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 perbualan dipulihkan",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} perbualan dipulihkan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

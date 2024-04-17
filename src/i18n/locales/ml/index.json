@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "ഗൂഗിളിന്റെ പുതിയതും അത്യാധുനികവുമായ മോഡൽ ആണ് `Gemini-1.5`. ഇത് വേഗത്തിൽ നടക്കുന്നു, 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോ, മോഡാലിറ്റികൾ മൊത്തത്തിലുള്ളവ, മറ്റുള്ളവരുമായി സുരക്ഷിതമായ സാധ്യതകൾ നൽകുന്നു.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` സഹായത്തോടെ",
     "sidebar__promotion_dialog__content_item2__description": "ഒരു സ്ഥലത്ത് Anthropic-ന്റെ അടിസ്ഥാനമായ പുതിയതും അടിസ്ഥാനമായ മോഡലുകൾ എല്ലാം ലഭ്യമാക്കുന്ന MaxAI: Opus, ഏറ്റവും പ്രതിസന്ധിയായ ഓപ്ഷൻ; Sonnet, ഏറ്റവും സമതുല്യമായ തിരഞ്ഞെടുപ്പ്; ഹൈകു, ഏറ്റവും വേഗത്തിൽ നടക്കുന്ന മോഡൽ.",
-    "sidebar__promotion_dialog__content_item3__title": "Google Doc-ലെ കൺടെക്സ്റ്റ് വിൻഡോ",
-    "sidebar__promotion_dialog__content_item3__description": "നിങ്ങൾ ഇപ്പോൾ Google Doc-ലെ ഏതെങ്കിലും ടെക്സ്റ്റ് തിരഞ്ഞെടുക്കാൻ കഴിയുന്നു - എഴുത്ത് മോശമാക്കൽ, അക്ഷരവും വ്യാകരണവും ശുദ്ധീകരിക്കൽ, ഏതെങ്കിലും ടെക്സ്റ്റ് ചെറിയ/വലുതാക്കൽ, ഭാഷ സഹജീകരിക്കൽ, പരിഭാഷ ചെയ്യൽ, ടോൺ മാറ്റൽ, മറ്റുള്ള സാധ്യതകൾ!",
+    "sidebar__promotion_dialog__content_item3__title": "ഗൂഗിൾ ഡോക്ക് ആന്റ് മൈക്രോസോഫ്റ്റ് വേർഡിൽ കൺടെക്സ്റ്റ് വിൻഡോ",
+    "sidebar__promotion_dialog__content_item3__description": "നിങ്ങൾ ഇപ്പോൾ ഗൂഗിൾ ഡോക്ക് അല്ലെങ്കിൽ മൈക്രോസോഫ്റ്റ് വേർഡിൽ ഏതെങ്കിലും ടെക്സ്റ്റ് തിരഞ്ഞെടുക്കാൻ കഴിയും - എഴുത്ത് മെച്ചപ്പെടുത്തുക, വാചകം ശുദ്ധിക്കുക, വാചകം ചെറിയ/വലുതാക്കുക, ഭാഷ സരളീകരിക്കുക, പരിഭാഷ ചെയ്യുക, ടോൺ മാറ്റുക, എന്നിവയും!",
     "sidebar__promotion_dialog__content_item4__title": "ഇൻസ്റ്റന്റ് മെസ്സേജ് പ്രതികരണം",
     "sidebar__promotion_dialog__content_item4__description": "ഒരു ക്ലിക്ക് വേഗത്തിൽ AI-യുടെ സഹായത്തോടെ വ്യക്തിപരമായ മെസ്സേജ് പ്രതികരണങ്ങൾ ഉണ്ടാക്കുക WhatsApp, Discord, അനുബന്ധ ചാനലുകളിൽ.",
     "sidebar__promotion_dialog__content_item5__title": "Buat seni dan gambar AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ഗൂഗിളിന്റെ പുതിയതും അത്യാധുനികവുമായ മോഡൽ ആണ് `Gemini-1.5 Pro`. ഇത് വേഗത്തിൽ നടക്കുന്നു, 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോ, മുന്നേറ്റത്തെ സുരക്ഷ, അടിസ്ഥാനമായി ഉള്ള സാധ്യതകൾ എന്നിവ നൽകുന്നു - ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ശബ്ദം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങിൽ അടുത്തകാലത്ത്.",
     "immersive_chat__chat_history__restore_button__title": "ചാറ്റുകൾ പുനഃസ്ഥാപിക്കുക",
     "immersive_chat__chat_history__restore_modal__title": "എല്ലാ ചാറ്റുകളും, തിരയൽകൂട്ടങ്ങളും, കലയർച്ചകളും സ്ഥാനിക പതിപ്പിലേക്ക് പുനഃസ്ഥാപിക്കാൻ താൽപ്പര്യപ്പെടുന്നുണ്ടോ? മുന്നോട്ട് പോകുന്നതിനുശേഷം, നടപ്പിലാക്കാൻ കഴിയില്ലെന്ന് അവഗണിക്കുക.",
-    "immersive_chat__chat_history__restore_modal__description": "പുനഃസ്ഥാപനത്തിന് ശേഷം ചാറ്റുകൾ, തിരയൽകൂട്ടങ്ങൾ, കലയർച്ചകൾ:",
+    "immersive_chat__chat_history__restore_modal__description": "പുനരുദ്ധരിക്കേണ്ട ചാറ്റ് & തിരയൽ & കലാ സംഭാഷണങ്ങൾ:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "അതെ, പുനഃസ്ഥാപിക്കുക",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "റദ്ദാക്കുക"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "റദ്ദാക്കുക",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 സംഭാഷണം പുനരുദ്ധരിച്ചു",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} സംഭാഷണങ്ങൾ പുനരുദ്ധരിച്ചു"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

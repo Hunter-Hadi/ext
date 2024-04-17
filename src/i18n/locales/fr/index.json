@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Essayez le modèle le plus récent et le plus avancé de Google. Il offre une vitesse plus rapide, une fenêtre contextuelle de 1 million de jetons, des modalités améliorées et des fonctionnalités de sécurité renforcées.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` avec vision",
     "sidebar__promotion_dialog__content_item2__description": "Accédez aux modèles de nouvelle génération d'Anthropic, tous réunis en un seul endroit dans MaxAI : Opus, l'option la plus intelligente ; Sonnet, le choix le plus équilibré ; et Haiku, le modèle le plus rapide.",
-    "sidebar__promotion_dialog__content_item3__title": "Fenêtre contextuelle sur Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Vous pouvez maintenant sélectionner n'importe quel texte sur Google Doc pour perfectionner votre écriture - Améliorez l'écriture, corrigez l'orthographe et la grammaire, raccourcissez/allongez n'importe quel texte, simplifiez le langage, paraphrasez, changez de ton, et bien plus encore !",
+    "sidebar__promotion_dialog__content_item3__title": "Fenêtre contextuelle sur Google Doc et Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Vous pouvez maintenant sélectionner n'importe quel texte sur Google Doc ou Microsoft Word pour améliorer votre écriture - Améliorez l'écriture, corrigez l'orthographe et la grammaire, raccourcissez/allongez le texte, simplifiez le langage, paraphrasez, changez le ton, et plus encore!",
     "sidebar__promotion_dialog__content_item4__title": "Réponse instantanée aux messages",
     "sidebar__promotion_dialog__content_item4__description": "Laissez l'IA générer des réponses personnalisées à vos messages en quelques secondes en un seul clic sur WhatsApp, Discord et Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Créez de l'art et des images IA",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Le modèle le plus récent et le plus avancé de Google. Il offre une vitesse plus rapide, une fenêtre contextuelle de 1 million de jetons révolutionnaire, une sécurité renforcée et des capacités avancées dans le traitement du texte, du code, de l'image, de l'audio et de la vidéo.",
     "immersive_chat__chat_history__restore_button__title": "Restaurer les discussions",
     "immersive_chat__chat_history__restore_modal__title": "Êtes-vous sûr de vouloir restaurer toutes vos discussions, recherches et historiques d'art dans la version locale ? Veuillez noter que cette action est irréversible.",
-    "immersive_chat__chat_history__restore_modal__description": "Conversions de discussions, recherches et art après la restauration :",
+    "immersive_chat__chat_history__restore_modal__description": "Conversations de chat, de recherche et d'art à restaurer :",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Oui, restaurer",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuler"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annuler",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversation restaurée",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversations restaurées"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

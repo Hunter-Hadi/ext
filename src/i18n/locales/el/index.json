@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Δοκιμάστε το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένες λειτουργίες και ενισχυμένες δυνατότητες ασφαλείας.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` με όραση",
     "sidebar__promotion_dialog__content_item2__description": "Αποκτήστε τα μοντέλα της Anthropic της επόμενης γενιάς, όλα σε ένα μέρος στο MaxAI: Opus, η πιο έξυπνη επιλογή· Sonnet, η πιο ισορροπημένη επιλογή· και Haiku, το γρηγορότερο μοντέλο.",
-    "sidebar__promotion_dialog__content_item3__title": "Παράθυρο περιβάλλοντος στο Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Μπορείτε τώρα να επιλέξετε οποιοδήποτε κείμενο στο Google Doc για να βελτιώσετε τη γραφή σας - Βελτιώστε τη γραφή, διορθώστε την ορθογραφία και τη γραμματική, κάντε το κείμενο πιο σύντομο/μακρύ, απλοποιήστε τη γλώσσα, παραφράστε, αλλάξτε τον τόνο και άλλα!",
+    "sidebar__promotion_dialog__content_item3__title": "Παράθυρο περιβάλλοντος στο Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Τώρα μπορείτε να επιλέξετε οποιοδήποτε κείμενο στο Google Doc ή το Microsoft Word για να βελτιώσετε τη γραφή σας - Βελτιώστε τη γραφή, διορθώστε την ορθογραφία και τη γραμματική, κάντε το κείμενο πιο σύντομο/μακρύτερο, απλοποιήστε τη γλώσσα, παραφράστε, αλλάξτε τόνο και πολλά άλλα!",
     "sidebar__promotion_dialog__content_item4__title": "Άμεση απάντηση σε μηνύματα",
     "sidebar__promotion_dialog__content_item4__description": "Αφήστε την τεχνητή νοημοσύνη να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ σε WhatsApp, Discord και Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Δημιουργήστε AI τέχνη και εικόνες",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, ένα επαναστατικό παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
     "immersive_chat__chat_history__restore_button__title": "Επαναφορά συνομιλιών",
     "immersive_chat__chat_history__restore_modal__title": "Είστε βέβαιος ότι θέλετε να επαναφέρετε όλο το ιστορικό συνομιλιών, αναζήτησης και τέχνης στην τοπική έκδοση; Σημειώστε ότι μόλις προχωρήσετε, η ενέργεια δεν μπορεί να αναιρεθεί.",
-    "immersive_chat__chat_history__restore_modal__description": "Συνομιλίες & Αναζήτηση & Μετατροπές τέχνης μετά την επαναφορά:",
+    "immersive_chat__chat_history__restore_modal__description": "Συνομιλίες & Αναζήτηση & Συζητήσεις τέχνης προς αποκατάσταση:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ναι, επαναφορά",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Ακύρωση",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 συνομιλία αποκαταστάθηκε",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} συνομιλίες αποκαταστάθηκαν"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

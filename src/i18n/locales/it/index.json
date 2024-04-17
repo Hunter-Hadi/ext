@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Prova il modello più recente e avanzato di Google. Offre una velocità più veloce, una finestra di contesto di 1M token, modalità migliorate e funzionalità di sicurezza avanzate.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` con visione",
     "sidebar__promotion_dialog__content_item2__description": "Accedi ai modelli di prossima generazione di Anthropic, tutti in un unico posto su MaxAI: Opus, l'opzione più intelligente; Sonnet, la scelta più equilibrata; e Haiku, il modello più veloce.",
-    "sidebar__promotion_dialog__content_item3__title": "Finestra di contesto su Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Ora puoi selezionare qualsiasi testo su Google Doc per perfezionare la tua scrittura - Migliora la scrittura, correggi errori di ortografia e grammatica, rendi il testo più corto/più lungo, semplifica il linguaggio, parafrasa, cambia tono e altro ancora!",
+    "sidebar__promotion_dialog__content_item3__title": "Finestra di contesto su Google Doc e Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Ora puoi selezionare qualsiasi testo su Google Doc o Microsoft Word per perfezionare la tua scrittura - Migliora la scrittura, correggi l'ortografia e la grammatica, rendi il testo più breve/più lungo, semplifica il linguaggio, parafrasa, cambia tono e altro ancora!",
     "sidebar__promotion_dialog__content_item4__title": "Risposta istantanea ai messaggi",
     "sidebar__promotion_dialog__content_item4__description": "Lascia che l'IA generi risposte personalizzate ai messaggi in pochi secondi con un solo clic su WhatsApp, Discord e Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crea arte e immagini AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Il modello più recente e avanzato di Google. Offre una velocità più veloce, una finestra di contesto di 1M token, sicurezza avanzata e funzionalità avanzate per l'elaborazione di testi, codici, immagini, audio e video.",
     "immersive_chat__chat_history__restore_button__title": "Ripristina chat",
     "immersive_chat__chat_history__restore_modal__title": "Sei sicuro di voler ripristinare tutta la tua cronologia Chat, Ricerca e Arte alla versione locale? Nota che una volta proceduto, l'azione non può essere annullata.",
-    "immersive_chat__chat_history__restore_modal__description": "Conversioni Chat & Ricerca & Arte dopo il ripristino:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat e conversazioni di ricerca e arte da ripristinare:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Sì, ripristina",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annulla"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Annulla",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversazione ripristinata",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversazioni ripristinate"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

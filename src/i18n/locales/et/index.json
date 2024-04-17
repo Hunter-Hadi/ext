@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Proovi Google'i uusimat ja kõige arenenumat mudelit. See pakub kiiremat kiirust, 1M märgi kontekstaknaid, parendatud modaliteete ja täiustatud turvafunktsioone.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` nägemisega",
     "sidebar__promotion_dialog__content_item2__description": "Pääse ligi Anthropicu järgmise põlvkonna mudelitele, kõik ühes kohas MaxAI-s: Opus, kõige intelligentsem valik; Sonnet, kõige tasakaalustatum valik; ja Haiku, kõige kiirem mudel.",
-    "sidebar__promotion_dialog__content_item3__title": "Kontekstiaken Google Doc-is",
-    "sidebar__promotion_dialog__content_item3__description": "Nüüd saate valida mis tahes teksti Google Doc-is, et täiustada oma kirjutamist - parandage kirjutamist, parandage õigekirja ja grammatikat, lühendage/pikendage teksti, lihtsustage keelt, parafraseerige, muutke tooni ja palju muud!",
+    "sidebar__promotion_dialog__content_item3__title": "Kontekstaken Google Docis ja Microsoft Wordis",
+    "sidebar__promotion_dialog__content_item3__description": "Nüüd saate valida teksti Google Docis või Microsoft Wordis, et täiustada oma kirjutamist - Parandage kirjutamist, parandage õigekirja ja grammatikat, lühendage/pikendage teksti, lihtsustage keelt, parafraseerige, muutke tooni ja palju muud!",
     "sidebar__promotion_dialog__content_item4__title": "Kohest sõnumivastust",
     "sidebar__promotion_dialog__content_item4__description": "Las AI genereerib teile isikupärastatud sõnumivastused vaid mõne sekundiga, klõpsates ainult üks kord WhatsAppis, Discordis ja Slackis.",
     "sidebar__promotion_dialog__content_item5__title": "Loo AI kunsti ja pilte",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'i uusim ja kõige arenenum mudel. See pakub kiiremat kiirust, läbimurret 1M märgi kontekstakendes, täiustatud turvalisust ning edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
     "immersive_chat__chat_history__restore_button__title": "Taasta vestlused",
     "immersive_chat__chat_history__restore_modal__title": "Kas olete kindel, et soovite kõik oma vestluste, otsingute ja kunstiajaloo taastada kohalikku versiooni? Pange tähele, et pärast jätkamist ei saa toimingut tagasi võtta.",
-    "immersive_chat__chat_history__restore_modal__description": "Vestlus- ja otsingukonversioonid pärast taastamist:",
+    "immersive_chat__chat_history__restore_modal__description": "Vestlused, otsingud ja kunstvestlused taastamiseks:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Jah, taasta",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Tühista"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Tühista",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 vestlus taastatud",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} vestlust taastatud"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

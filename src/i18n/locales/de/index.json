@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Probieren Sie das neueste und fortschrittlichste Modell von Google aus. Es bietet eine schnellere Geschwindigkeit, ein Kontextfenster von 1 Million Token, verbesserte Modalitäten und erweiterte Sicherheitsfunktionen.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` mit Vision",
     "sidebar__promotion_dialog__content_item2__description": "Greifen Sie auf die nächste Generation der Modelle von Anthropic zu, alles an einem Ort in MaxAI: Opus, die intelligenteste Option; Sonnet, die ausgewogenste Wahl; und Haiku, das schnellste Modell.",
-    "sidebar__promotion_dialog__content_item3__title": "Kontextfenster in Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Sie können jetzt beliebigen Text in Google Doc auswählen, um Ihr Schreiben zu perfektionieren - Verbessern Sie das Schreiben, korrigieren Sie Rechtschreibung und Grammatik, verkürzen/verlängern Sie beliebigen Text, vereinfachen Sie die Sprache, paraphrasieren Sie, ändern Sie den Ton und vieles mehr!",
+    "sidebar__promotion_dialog__content_item3__title": "Kontextfenster in Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Sie können jetzt beliebigen Text in Google Doc oder Microsoft Word auswählen, um Ihr Schreiben zu verbessern - Schreibweise verbessern, Rechtschreibung und Grammatik korrigieren, Text kürzen/verlängern, Sprache vereinfachen, umschreiben, Ton ändern und vieles mehr!",
     "sidebar__promotion_dialog__content_item4__title": "Sofortige Nachrichtenantwort",
     "sidebar__promotion_dialog__content_item4__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie generieren - mit nur einem Klick auf WhatsApp, Discord und Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Künstliche Intelligenz-Kunst und Bilder erstellen",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Das neueste und fortschrittlichste Modell von Google. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Fähigkeiten in den Bereichen Text-, Code-, Bild-, Audio- und Videobearbeitung.",
     "immersive_chat__chat_history__restore_button__title": "Chats wiederherstellen",
     "immersive_chat__chat_history__restore_modal__title": "Möchten Sie wirklich alle Ihre Chat-, Such- und Kunstverlaufsinformationen zur lokalen Version wiederherstellen? Bitte beachten Sie, dass diese Aktion nicht rückgängig gemacht werden kann.",
-    "immersive_chat__chat_history__restore_modal__description": "Chat-, Such- und Kunstkonversationen nach der Wiederherstellung:",
+    "immersive_chat__chat_history__restore_modal__description": "Chat- und Such- sowie Kunstunterhaltungen, die wiederhergestellt werden sollen:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Ja, wiederherstellen",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Abbrechen",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 Unterhaltung wiederhergestellt",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} Unterhaltungen wiederhergestellt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

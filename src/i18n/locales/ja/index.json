@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Google の最新かつ最も高度なモデルを試してみてください。より高速な処理、1M トークンのコンテキストウィンドウ、改良されたモダリティ、そして強化された安全機能を提供します。",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` のビジョン",
     "sidebar__promotion_dialog__content_item2__description": "Anthropic の次世代モデルにアクセスしましょう。MaxAI で一括管理できます。Opus は最も知能が高く、Sonnet は最もバランスが取れており、Haiku は最速のモデルです。",
-    "sidebar__promotion_dialog__content_item3__title": "Google ドキュメント上のコンテキストウィンドウ",
-    "sidebar__promotion_dialog__content_item3__description": "Google ドキュメント上の任意のテキストを選択して、文章を完璧にすることができます。文章の改善、スペルや文法の修正、テキストの短縮/延長、言語の簡素化、言い換え、トーンの変更などが可能です。",
+    "sidebar__promotion_dialog__content_item3__title": "GoogleドキュメントとMicrosoft Word上のコンテキストウィンドウ",
+    "sidebar__promotion_dialog__content_item3__description": "GoogleドキュメントやMicrosoft Word上で任意のテキストを選択して、文章を完璧にすることができます - 文章の改善、スペルや文法の修正、テキストの短縮/延長、言語の簡素化、言い換え、トーンの変更などが可能です！",
     "sidebar__promotion_dialog__content_item4__title": "インスタントメッセージの返信",
     "sidebar__promotion_dialog__content_item4__description": "AI が WhatsApp、Discord、Slack 上で個別のメッセージ返信を生成し、わずか数秒で提供します。",
     "sidebar__promotion_dialog__content_item5__title": "AIアートと画像の作成",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google の最新かつ最も高度なモデルです。より高速な処理、画期的な 1M トークンのコンテキストウィンドウ、強化された安全性、およびテキスト、コード、画像、音声、ビデオ処理における高度な機能を提供します。",
     "immersive_chat__chat_history__restore_button__title": "チャットを復元",
     "immersive_chat__chat_history__restore_modal__title": "すべてのチャット、検索、アートの履歴をローカルバージョンに復元しますか？続行すると、この操作は元に戻せません。",
-    "immersive_chat__chat_history__restore_modal__description": "復元後のチャット＆検索＆アートの変換：",
+    "immersive_chat__chat_history__restore_modal__description": "復元されるチャット＆検索＆アートの会話：",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "はい、復元",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "キャンセル"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "キャンセル",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1つの会話が復元されました",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}個の会話が復元されました"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

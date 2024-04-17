@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Încercați cel mai nou și avansat model de la Google. Oferă o viteză mai rapidă, fereastră de context de 1M de tokeni, modalități îmbunătățite și funcționalități de siguranță sporite.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` cu viziune",
     "sidebar__promotion_dialog__content_item2__description": "Accesați modelele de ultimă generație ale Anthropic, toate într-un singur loc în MaxAI: Opus, cea mai inteligentă opțiune; Sonnet, cea mai echilibrată alegere; și Haiku, cel mai rapid model.",
-    "sidebar__promotion_dialog__content_item3__title": "Fereastră de context pe Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Acum puteți selecta orice text pe Google Doc pentru a vă perfecționa scrierea - îmbunătățiți scrierea, corectați greșelile de ortografie și gramatică, scurtați / lungiți orice text, simplificați limbajul, parafrasați, schimbați tonul și multe altele!",
+    "sidebar__promotion_dialog__content_item3__title": "Fereastră de context pe Google Doc și Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Acum puteți selecta orice text pe Google Doc sau Microsoft Word pentru a vă îmbunătăți scrierea - Îmbunătățiți scrierea, corectați greșelile de ortografie și gramatică, faceți textul mai scurt/mai lung, simplificați limbajul, reformulați, schimbați tonul și multe altele!",
     "sidebar__promotion_dialog__content_item4__title": "Răspuns instant la mesaje",
     "sidebar__promotion_dialog__content_item4__description": "Permiteți IA să genereze răspunsuri personalizate la mesaje în câteva secunde, cu doar un clic pe WhatsApp, Discord și Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Creați artă și imagini AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Cel mai nou și avansat model de la Google. Oferă o viteză mai rapidă, o fereastră de context de 1M de tokeni, siguranță sporită și capabilități avansate în procesarea textului, codului, imaginilor, audio și video.",
     "immersive_chat__chat_history__restore_button__title": "Restaurează conversațiile",
     "immersive_chat__chat_history__restore_modal__title": "Sigur doriți să restaurați toate conversațiile, căutările și istoricul de artă la versiunea locală? Vă rugăm să rețineți că odată ce continuați, acțiunea nu poate fi anulată.",
-    "immersive_chat__chat_history__restore_modal__description": "Conversii chat & căutare & artă după restaurare:",
+    "immersive_chat__chat_history__restore_modal__description": "Conversații de chat și căutare și conversații artistice care vor fi restaurate:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Da, restaurează",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Anulează"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Anulează",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 conversație restaurată",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} conversații restaurate"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

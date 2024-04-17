@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "مدل جدیدترین و پیشرفته ترین گوگل را امتحان کنید. سرعت بالاتر، پنجره متن حاکم بر 1 میلیون توکن، بهبود مدالیت ها و ویژگی های ایمنی پیشرفته را ارائه می دهد.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` با دید",
     "sidebar__promotion_dialog__content_item2__description": "به مدل های نسل بعدی Anthropic در یک مکان دسترسی پیدا کنید: Opus، هوشمندترین گزینه؛ Sonnet، تعادل بین ترین انتخاب؛ و Haiku، سریعترین مدل.",
-    "sidebar__promotion_dialog__content_item3__title": "پنجره متن در Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "اکنون می توانید هر متنی را در Google Doc انتخاب کنید تا نوشتار خود را بهبود بخشید - بهبود نوشتار، اصلاح املایی و دستور زبان، کوتاه/بلند کردن هر متن، ساده سازی زبان، تغییر پارافراز، تغییر تن و ...",
+    "sidebar__promotion_dialog__content_item3__title": "پنجره متنی در Google Doc و Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "اکنون می‌توانید هر متنی را در Google Doc یا Microsoft Word انتخاب کنید تا نوشتار خود را بهبود دهید - بهبود نوشتار، اصلاح املایی و دستور زبان، کوتاه‌تر/بلندتر کردن هر متن، ساده‌سازی زبان، بازگو کردن، تغییر تن و بسیاری از قابلیت‌های دیگر!",
     "sidebar__promotion_dialog__content_item4__title": "پاسخ پیام فوری",
     "sidebar__promotion_dialog__content_item4__description": "با یک کلیک در WhatsApp، Discord و Slack، به همراهی هوش مصنوعی پاسخ های شخصی سازی شده را در عرض چند ثانیه بسازید.",
     "sidebar__promotion_dialog__content_item5__title": "ایجاد هنر و تصاویر هوش مصنوعی",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "مدل جدیدترین و پیشرفته ترین گوگل. سرعت بالاتر، پنجره متن حاکم بر 1 میلیون توکن، ایمنی پیشرفته و قابلیت های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدئو را ارائه می دهد.",
     "immersive_chat__chat_history__restore_button__title": "بازیابی چت‌ها",
     "immersive_chat__chat_history__restore_modal__title": "آیا مطمئن هستید که میخواهید تمامی تاریخچه چت، جستجو و آثار خود را به نسخه محلی بازیابی کنید؟ لطفا توجه داشته باشید که پس از اقدام، عملیات قابل بازگشت نخواهد بود.",
-    "immersive_chat__chat_history__restore_modal__description": "تبدیلات چت و جستجو و آثار پس از بازیابی:",
+    "immersive_chat__chat_history__restore_modal__description": "بازیابی گفت و گوهای چت، جستجو و هنر:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "بله، بازیابی کن",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "لغو"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "لغو",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 گفت و گو بازیابی شد",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} گفت و گو بازیابی شد"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Попробуйте новейшую и самую передовую модель от Google. Она предлагает более быструю скорость, контекстное окно из 1 миллиона токенов, улучшенные модальности и расширенные функции безопасности.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` с видением",
     "sidebar__promotion_dialog__content_item2__description": "Получите доступ к следующему поколению моделей Anthropic, все в одном месте в MaxAI: Opus - самый интеллектуальный вариант; Sonnet - самый сбалансированный выбор; и Haiku - самая быстрая модель.",
-    "sidebar__promotion_dialog__content_item3__title": "Контекстное окно на Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Теперь вы можете выбирать любой текст на Google Doc, чтобы улучшить свое письмо - улучшайте письменность, исправляйте орфографию и грамматику, делайте текст короче/длиннее, упрощайте язык, перефразируйте, меняйте тональность и многое другое!",
+    "sidebar__promotion_dialog__content_item3__title": "Контекстное окно на Google Doc и Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Теперь вы можете выбрать любой текст на Google Doc или Microsoft Word, чтобы улучшить свое письмо - Улучшайте письменность, исправляйте орфографию и грамматику, делайте текст короче/длиннее, упрощайте язык, перефразируйте, меняйте тон и многое другое!",
     "sidebar__promotion_dialog__content_item4__title": "Мгновенный ответ в сообщениях",
     "sidebar__promotion_dialog__content_item4__description": "Позвольте ИИ создавать персонализированные ответы на сообщения за считанные секунды всего одним нажатием кнопки в WhatsApp, Discord и Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Создание искусства и изображений с помощью ИИ",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Новейшая и самая передовая модель от Google. Она предлагает более быструю скорость, прорывное контекстное окно из 1 миллиона токенов, улучшенную безопасность и расширенные возможности в области обработки текста, кода, изображений, аудио и видео.",
     "immersive_chat__chat_history__restore_button__title": "Восстановить чаты",
     "immersive_chat__chat_history__restore_modal__title": "Вы уверены, что хотите восстановить всю историю Чата, Поиска и Искусства в локальной версии? Обратите внимание, что после выполнения этого действия его нельзя будет отменить.",
-    "immersive_chat__chat_history__restore_modal__description": "Конверсии Чата, Поиска и Искусства после восстановления:",
+    "immersive_chat__chat_history__restore_modal__description": "Чат и поиск. Восстановить сохраненные разговоры:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Да, восстановить",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Отмена"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Отмена",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Восстановлен 1 разговор",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Восстановлено {{CONVERSATION_COUNT}} разговоров"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

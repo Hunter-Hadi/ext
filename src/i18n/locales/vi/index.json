@@ -619,8 +619,8 @@
     "sidebar__promotion_dialog__content_item1__description": "Hãy thử mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ, các modalities được cải thiện và tính năng an toàn nâng cao.",
     "sidebar__promotion_dialog__content_item2__title": "`Claude-3` với tầm nhìn",
     "sidebar__promotion_dialog__content_item2__description": "Truy cập vào các mô hình thế hệ tiếp theo của Anthropic, tất cả trong một nơi duy nhất trên MaxAI: Opus, lựa chọn thông minh nhất; Sonnet, lựa chọn cân bằng nhất; và Haiku, mô hình nhanh nhất.",
-    "sidebar__promotion_dialog__content_item3__title": "Cửa sổ ngữ cảnh trên Google Doc",
-    "sidebar__promotion_dialog__content_item3__description": "Bây giờ bạn có thể chọn bất kỳ văn bản nào trên Google Doc để hoàn thiện viết của bạn - Cải thiện viết, sửa chính tả và ngữ pháp, làm cho bất kỳ văn bản nào ngắn hơn/dài hơn, đơn giản hóa ngôn ngữ, diễn đạt lại, thay đổi ngữ điệu và nhiều hơn nữa!",
+    "sidebar__promotion_dialog__content_item3__title": "Cửa sổ ngữ cảnh trên Google Doc & Microsoft Word",
+    "sidebar__promotion_dialog__content_item3__description": "Bây giờ bạn có thể chọn bất kỳ đoạn văn bản nào trên Google Doc hoặc Microsoft Word để hoàn thiện viết của bạn - Cải thiện viết, sửa lỗi chính tả và ngữ pháp, làm ngắn/giãn văn bản, đơn giản hóa ngôn ngữ, diễn đạt lại, thay đổi ngữ điệu và nhiều hơn nữa!",
     "sidebar__promotion_dialog__content_item4__title": "Trả lời tin nhắn tức thì",
     "sidebar__promotion_dialog__content_item4__description": "Hãy để trí tuệ nhân tạo tạo ra các câu trả lời tin nhắn cá nhân cho bạn chỉ trong vài giây với một cú nhấp chuột duy nhất trên WhatsApp, Discord và Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Tạo nghệ thuật và hình ảnh AI",
@@ -685,9 +685,11 @@
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ đột phá, tính an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
     "immersive_chat__chat_history__restore_button__title": "Khôi phục cuộc trò chuyện",
     "immersive_chat__chat_history__restore_modal__title": "Bạn có chắc chắn muốn khôi phục toàn bộ Lịch sử Trò chuyện, Tìm kiếm và Nghệ thuật của bạn vào phiên bản cục bộ không? Vui lòng lưu ý rằng sau khi tiến hành, hành động này không thể hoàn tác.",
-    "immersive_chat__chat_history__restore_modal__description": "Cuộc trò chuyện & Tìm kiếm & Chuyển đổi Nghệ thuật sau khi khôi phục:",
+    "immersive_chat__chat_history__restore_modal__description": "Các cuộc trò chuyện & Tìm kiếm & Cuộc trò chuyện nghệ thuật để khôi phục:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Có, khôi phục",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Hủy"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "Hủy",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "Đã khôi phục 1 cuộc trò chuyện",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Đã khôi phục {{CONVERSATION_COUNT}} cuộc trò chuyện"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

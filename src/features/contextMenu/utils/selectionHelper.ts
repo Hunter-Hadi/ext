@@ -1456,6 +1456,18 @@ export const replaceWithClipboard = async (
           doc.activeElement,
           doc.hasFocus(),
         )
+      } else if (isOfficeWordEditorFrame() && isOfficeWordEditing(editableElement)) {
+        // office docs下用一下方式粘贴
+        // 如果用paste会粘贴样式，insertText会有一些其他问题
+        const clipboardData = new DataTransfer()
+        clipboardData.setData('text/plain', pastedText)
+        editableElement?.dispatchEvent(
+          new ClipboardEvent('paste', {
+            clipboardData,
+            bubbles: true,
+            cancelable: true,
+          }),
+        )
       } else {
         doc.execCommand('paste', false, '')
         console.log(

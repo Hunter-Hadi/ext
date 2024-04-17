@@ -49,7 +49,10 @@
     "ai_screenshot": "AI 截圖",
     "release_notes": "發行說明",
     "web_translation": "翻譯此頁面",
-    "show_original_text": "顯示原文"
+    "show_original_text": "顯示原文",
+    "upgrade": "升級",
+    "unlimited": "無限制",
+    "cancel_anytime": "隨時取消"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "繼續",
     "sidebar__button__insert": "插入",
     "sidebar__button__replace": "替換",
-    "sidebar__button__upgrade_to_pro": "升級至專業版",
     "sidebar__button__retry": "重試",
     "sidebar__button__set_up_shortcut": "設置快捷方式",
     "sidebar__speed_dial__one_click_prompts__button": "一鍵提示",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "隨時。",
     "temp__rebrand__is_now": "現在是",
     "permission__pricing_hook__button__upgrade_to_pro": "升級至專業版",
-    "permission__pricing_hook__daily_limit__title": "升級以獲得無限使用",
-    "permission__pricing_hook__daily_limit__description1": "您已達到所有AI提供者的當前每日使用上限。\n您可以立即升級到專業版以獲得無限使用，或稍後再試。",
+    "permission__pricing_hook__daily_limit__title": "解鎖無限次數的{{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI的GPT-4，經過速度和效率優化，擅長於實時應用，需要創造力和高級推理能力，具有更快的響應時間和一致的輸出。",
     "permission__pricing_hook__custom_prompt__title": "升級以添加無限自定義提示",
     "permission__pricing_hook__custom_prompt__description": "在工作時，添加您自己的提示以加快重複任務的速度。",
     "permission__pricing_hook__custom_prompt_group__title": "升級以添加無限自定義提示組",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "重新命名",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 是 Google 的下一代模型，提供了增強的性能、高效的 MoE 架構，以及長篇內容理解的突破，支持多達 1 百萬個詞彙的窗口，實現了在文本、代碼、圖像、音頻和視頻處理方面的先進功能。",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升級以獲取具有視覺功能的gemini-1.5-pro",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google 最新且最先進的模型。它提供更快的速度、突破性的 1M 標記上下文窗口、增強的安全性以及跨文本、代碼、圖像、音頻和視頻處理的高級功能。",
+    "sidebar__button__upgrade_to_plan": "升級至{{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "使用快速 AI 模型：",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "使用高級 AI 模型：",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "使用創建 AI 藝術和圖像 AI 模型："
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI 截圖",
     "sidebar_tour__step__5__feature_5__title": "一鍵提示",
     "sidebar_tour__step__5__feature_6__title": "使用提示"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "快速文本",
+    "category__advanced_text": "高級文本",
+    "category__image_generate": "圖像",
+    "role_label": "當前計劃：{{ROLE}}",
+    "queries": "查詢",
+    "reset_on_date": "重置於 {{DATE}}"
   }
 }

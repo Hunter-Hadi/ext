@@ -49,7 +49,10 @@
     "ai_screenshot": "Capture d'écran IA",
     "release_notes": "Notes de version",
     "web_translation": "Traduire cette page",
-    "show_original_text": "Afficher le texte original"
+    "show_original_text": "Afficher le texte original",
+    "upgrade": "Mettre à niveau",
+    "unlimited": "Illimité",
+    "cancel_anytime": "Annuler à tout moment"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Continuer",
     "sidebar__button__insert": "Insérer",
     "sidebar__button__replace": "Remplacer",
-    "sidebar__button__upgrade_to_pro": "Passer à la version Pro",
     "sidebar__button__retry": "Réessayer",
     "sidebar__button__set_up_shortcut": "Configurer un raccourci",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts en un clic",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "à tout moment.",
     "temp__rebrand__is_now": "est maintenant",
     "permission__pricing_hook__button__upgrade_to_pro": "Passer à la version Pro",
-    "permission__pricing_hook__daily_limit__title": "Mise à niveau pour une utilisation illimitée",
-    "permission__pricing_hook__daily_limit__description1": "Vous avez atteint la limite quotidienne actuelle d'utilisation pour tous les fournisseurs d'IA.\nVous pouvez passer à la version Pro dès maintenant pour une utilisation illimitée, ou réessayer ultérieurement.",
+    "permission__pricing_hook__daily_limit__title": "Débloquez un nombre illimité de fois {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 d'OpenAI, optimisé pour la vitesse et l'efficacité, excelle dans les applications en temps réel nécessitant de la créativité et un raisonnement avancé avec des temps de réponse améliorés et une sortie cohérente.",
     "permission__pricing_hook__custom_prompt__title": "Passer à la version Pro pour ajouter des invites personnalisées illimitées",
     "permission__pricing_hook__custom_prompt__description": "Ajoutez vos propres invites pour accélérer les tâches répétitives pendant que vous travaillez.",
     "permission__pricing_hook__custom_prompt_group__title": "Passer à la version Pro pour ajouter des groupes d'invites personnalisées illimités",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Renommer",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 est le modèle de nouvelle génération de Google offrant des performances améliorées, une architecture MoE efficace et une avancée dans la compréhension du contexte étendu avec des fenêtres de jetons allant jusqu'à 1 million, permettant des fonctionnalités avancées dans le traitement de texte, de code, d'image, de son et de vidéo.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Mise à niveau pour accéder à gemini-1.5-pro avec vision",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Le modèle le plus récent et le plus avancé de Google. Il offre une vitesse plus rapide, une fenêtre contextuelle de 1 million de jetons révolutionnaire, une sécurité renforcée et des capacités avancées dans le traitement du texte, du code, de l'image, de l'audio et de la vidéo."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Le modèle le plus récent et le plus avancé de Google. Il offre une vitesse plus rapide, une fenêtre contextuelle de 1 million de jetons révolutionnaire, une sécurité renforcée et des capacités avancées dans le traitement du texte, du code, de l'image, de l'audio et de la vidéo.",
+    "sidebar__button__upgrade_to_plan": "Passer à {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Accès aux modèles d'IA rapides :",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Accès aux modèles d'IA avancés :",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Accès à la création d'art et d'images avec des modèles d'IA :"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Capture d'écran de l'IA",
     "sidebar_tour__step__5__feature_5__title": "Suggestions en 1 clic",
     "sidebar_tour__step__5__feature_6__title": "Utiliser une suggestion"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Texte rapide",
+    "category__advanced_text": "Texte avancé",
+    "category__image_generate": "Image",
+    "role_label": "Plan actuel : {{ROLE}}",
+    "queries": "Requêtes",
+    "reset_on_date": "Réinitialisation le {{DATE}}"
   }
 }

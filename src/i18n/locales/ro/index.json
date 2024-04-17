@@ -49,7 +49,10 @@
     "ai_screenshot": "Captură AI",
     "release_notes": "Note de lansare",
     "web_translation": "Tradu această pagină",
-    "show_original_text": "Afișează textul original"
+    "show_original_text": "Afișează textul original",
+    "upgrade": "Upgrade",
+    "unlimited": "Nelimitat",
+    "cancel_anytime": "Anulează oricând"
   },
   "settings": {
     "left_menu__me": "Eu și MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Continuați",
     "sidebar__button__insert": "Inserați",
     "sidebar__button__replace": "Înlocuiți",
-    "sidebar__button__upgrade_to_pro": "Upgradează la Pro",
     "sidebar__button__retry": "Reîncercați",
     "sidebar__button__set_up_shortcut": "Configurați o comandă rapidă",
     "sidebar__speed_dial__one_click_prompts__button": "Prompturi cu un singur clic",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "oricând.",
     "temp__rebrand__is_now": "este acum",
     "permission__pricing_hook__button__upgrade_to_pro": "Upgradează la Pro",
-    "permission__pricing_hook__daily_limit__title": "Upgrade pentru utilizare nelimitată",
-    "permission__pricing_hook__daily_limit__description1": "Ați atins limita de utilizare zilnică curentă pentru toți furnizorii de AI.\nPuteți face upgrade la versiunea Pro acum pentru utilizare nelimitată sau încercați mai târziu.",
+    "permission__pricing_hook__daily_limit__title": "Deblochează nelimitat de multe ori {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 de la OpenAI, optimizat pentru viteză și eficiență, se remarcă în aplicațiile în timp real care necesită creativitate și raționament avansat, cu timpi de răspuns îmbunătățiți și rezultate constante.",
     "permission__pricing_hook__custom_prompt__title": "Upgrade pentru a adăuga prompt-uri personalizate nelimitate",
     "permission__pricing_hook__custom_prompt__description": "Adăugați propriile prompt-uri pentru a accelera sarcinile repetitive pe măsură ce lucrați.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade pentru a adăuga grupuri de prompt-uri personalizate nelimitate",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Redenumire",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 este modelul de ultimă generație al Google care oferă performanțe îmbunătățite, o arhitectură MoE eficientă și o inovație în înțelegerea contextului lung cu ferestre de până la 1 milion de tokeni, permițând capacități avansate în procesarea textului, codului, imaginilor, audio și video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgradează pentru a accesa gemini-1.5-pro cu viziune",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Cel mai nou și avansat model de la Google. Oferă o viteză mai rapidă, o fereastră de context de 1M de tokeni, siguranță sporită și capabilități avansate în procesarea textului, codului, imaginilor, audio și video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Cel mai nou și avansat model de la Google. Oferă o viteză mai rapidă, o fereastră de context de 1M de tokeni, siguranță sporită și capabilități avansate în procesarea textului, codului, imaginilor, audio și video.",
+    "sidebar__button__upgrade_to_plan": "Upgradează la {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Acces la modele AI rapide:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Acces la modele AI avansate:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Acces pentru crearea de artă și imagini AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Captură de ecran AI",
     "sidebar_tour__step__5__feature_5__title": "Sugestii cu un clic",
     "sidebar_tour__step__5__feature_6__title": "Utilizați sugestia"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Text rapid",
+    "category__advanced_text": "Text avansat",
+    "category__image_generate": "Imagine",
+    "role_label": "Planul curent: {{ROLE}}",
+    "queries": "Interogări",
+    "reset_on_date": "Resetare la data de {{DATE}}"
   }
 }

@@ -49,7 +49,10 @@
     "ai_screenshot": "AI-näyttökuva",
     "release_notes": "Julkaisutiedot",
     "web_translation": "Käännä tämä sivu",
-    "show_original_text": "Näytä alkuperäinen teksti"
+    "show_original_text": "Näytä alkuperäinen teksti",
+    "upgrade": "Päivitä",
+    "unlimited": "Rajaton",
+    "cancel_anytime": "Peruuta milloin tahansa"
   },
   "settings": {
     "left_menu__me": "Minä ja MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Jatka",
     "sidebar__button__insert": "Lisää",
     "sidebar__button__replace": "Korvaa",
-    "sidebar__button__upgrade_to_pro": "Päivitä Pro-tilaan",
     "sidebar__button__retry": "Yritä uudelleen",
     "sidebar__button__set_up_shortcut": "Määritä pikanäppäin",
     "sidebar__speed_dial__one_click_prompts__button": "1 napsautus",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "milloin tahansa.",
     "temp__rebrand__is_now": "on nyt",
     "permission__pricing_hook__button__upgrade_to_pro": "Päivitä Pro-tilaan",
-    "permission__pricing_hook__daily_limit__title": "Päivittääksesi rajattoman käytön",
-    "permission__pricing_hook__daily_limit__description1": "Olet saavuttanut nykyisen päivittäisen käyttörajan kaikille AI-palveluntarjoajille.\nVoit päivittää Pro-tilaukseen rajattoman käytön tai yrittää myöhemmin uudelleen.",
+    "permission__pricing_hook__daily_limit__title": "Avaa rajattomasti kertoja {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI:n GPT-4, joka on optimoitu nopeuteen ja tehokkuuteen, loistaa reaaliaikaisissa sovelluksissa, jotka vaativat luovuutta ja kehittyneitä päättelytaitoja parannetuilla vasteajoilla ja tasaisella tulosteella.",
     "permission__pricing_hook__custom_prompt__title": "Päivitä lisätäksesi rajoittamattomia mukautettuja ohjeita",
     "permission__pricing_hook__custom_prompt__description": "Lisää omia kehotteita nopeuttaaksesi toistuvia tehtäviä työskennellessäsi.",
     "permission__pricing_hook__custom_prompt_group__title": "Päivitä lisätäksesi rajoittamattomia mukautettuja ohjeryhmiä",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Nimeä uudelleen",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 on Googlen seuraavan sukupolven malli, joka tarjoaa parannetun suorituskyvyn, tehokkaan MoE-arkkitehtuurin ja läpimurron pitkän kontekstin ymmärtämisessä jopa 1 miljoonan merkin ikkunoilla, mahdollistaen kehittyneitä toimintoja teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Päivitä pääsy gemini-1.5-prohon näön avulla",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googlen uusin ja kehittynein malli. Se tarjoaa nopeampaa suorituskykyä, läpimurron 1M sanan kontekstiruudun, lisääntyneen turvallisuuden ja edistyneet ominaisuudet teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googlen uusin ja kehittynein malli. Se tarjoaa nopeampaa suorituskykyä, läpimurron 1M sanan kontekstiruudun, lisääntyneen turvallisuuden ja edistyneet ominaisuudet teksti-, koodi-, kuva-, ääni- ja videokäsittelyssä.",
+    "sidebar__button__upgrade_to_plan": "Päivitä {{PLAN}}:iin",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Pääsy nopeisiin AI-malleihin:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Pääsy kehittyneisiin AI-malleihin:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Pääsy luoda AI-taidetta ja kuvia AI-malleilla:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tekoälynäyttökuva",
     "sidebar_tour__step__5__feature_5__title": "1-klikkausvihjeet",
     "sidebar_tour__step__5__feature_6__title": "Käytä vihjettä"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Nopea teksti",
+    "category__advanced_text": "Kehittynyt teksti",
+    "category__image_generate": "Kuva",
+    "role_label": "Nykyinen suunnitelma: {{ROLE}}",
+    "queries": "Kyselyt",
+    "reset_on_date": "Nollaa päivämäärään {{DATE}}"
   }
 }

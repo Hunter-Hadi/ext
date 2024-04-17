@@ -49,7 +49,10 @@
     "ai_screenshot": "AI знімок екрану",
     "release_notes": "Примітки до випуску",
     "web_translation": "Перекласти цю сторінку",
-    "show_original_text": "Показати оригінальний текст"
+    "show_original_text": "Показати оригінальний текст",
+    "upgrade": "Оновити",
+    "unlimited": "Необмежено",
+    "cancel_anytime": "Скасувати в будь-який час"
   },
   "settings": {
     "left_menu__me": "Я і MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Продовжити",
     "sidebar__button__insert": "Вставити",
     "sidebar__button__replace": "Замінити",
-    "sidebar__button__upgrade_to_pro": "Оновити до Pro",
     "sidebar__button__retry": "Повторити спробу",
     "sidebar__button__set_up_shortcut": "Налаштувати ярлик",
     "sidebar__speed_dial__one_click_prompts__button": "1-клік пропозиції",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "в будь-який час.",
     "temp__rebrand__is_now": "тепер",
     "permission__pricing_hook__button__upgrade_to_pro": "Оновити до Pro",
-    "permission__pricing_hook__daily_limit__title": "Оновіть для необмеженого використання",
-    "permission__pricing_hook__daily_limit__description1": "Ви досягли поточного щоденного обмеження використання для всіх постачальників ШІ.\nВи можете оновити до Про зараз для необмеженого використання або спробувати пізніше.",
+    "permission__pricing_hook__daily_limit__title": "Розблокуйте необмежену кількість разів {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 від OpenAI, оптимізований для швидкості та ефективності, відрізняється в реальному часі застосунками, що вимагають творчості та високого рівня мислення з покращеними часами відповіді та стабільним результатом.",
     "permission__pricing_hook__custom_prompt__title": "Оновіть, щоб додати необмежені власні підказки",
     "permission__pricing_hook__custom_prompt__description": "Додайте свої підказки, щоб прискорити повторювані завдання під час роботи.",
     "permission__pricing_hook__custom_prompt_group__title": "Оновіть, щоб додати необмежені групи власних підказок",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Перейменувати",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 - це наступне покоління моделі від Google, яке пропонує покращену продуктивність, ефективну архітектуру MoE та прорив у розумінні довгих контекстів з використанням вікон до 1 мільйона токенів, що дозволяє розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Оновіться, щоб отримати доступ до gemini-1.5-pro з візією",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Найновіша та найпродуктивніша модель від Google. Вона пропонує швидкість, проривне контекстне вікно з 1 млн токенів, покращену безпеку та розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Найновіша та найпродуктивніша модель від Google. Вона пропонує швидкість, проривне контекстне вікно з 1 млн токенів, покращену безпеку та розширені можливості у текстовому, кодовому, зображеннєвому, аудіо- та відеообробці.",
+    "sidebar__button__upgrade_to_plan": "Оновити до {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Доступ до швидких моделей ШІ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Доступ до розширених моделей ШІ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Доступ до створення мистецтва та зображень за допомогою моделей ШІ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Скріншот штучного інтелекту",
     "sidebar_tour__step__5__feature_5__title": "Підказки за 1 кліком",
     "sidebar_tour__step__5__feature_6__title": "Використовуйте підказку"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Швидкий текст",
+    "category__advanced_text": "Розширений текст",
+    "category__image_generate": "Зображення",
+    "role_label": "Поточний план: {{ROLE}}",
+    "queries": "Запити",
+    "reset_on_date": "Скидається {{DATE}}"
   }
 }

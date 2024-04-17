@@ -52,7 +52,7 @@
     "show_original_text": "Show original text",
     "upgrade": "Upgrade",
     "unlimited": "Unlimited",
-    "cancel_anytime":"Cancel anytime"
+    "cancel_anytime": "Cancel anytime"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -795,7 +795,7 @@
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
   },
-  "quota_usage_card" :{
+  "quota_usage_card": {
     "category__fast_text": "Fast text",
     "category__advanced_text": "Advanced text",
     "category__image_generate": "Image",

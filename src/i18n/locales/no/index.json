@@ -49,7 +49,10 @@
     "ai_screenshot": "AI skjermbilde",
     "release_notes": "Utgivelsesnotater",
     "web_translation": "Oversett denne siden",
-    "show_original_text": "Vis originaltekst"
+    "show_original_text": "Vis originaltekst",
+    "upgrade": "Oppgrader",
+    "unlimited": "Ubegrenset",
+    "cancel_anytime": "Kanseller når som helst"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Fortsett",
     "sidebar__button__insert": "Sett inn",
     "sidebar__button__replace": "Erstatt",
-    "sidebar__button__upgrade_to_pro": "Oppgrader til Pro",
     "sidebar__button__retry": "Prøv igjen",
     "sidebar__button__set_up_shortcut": "Sett opp snarvei",
     "sidebar__speed_dial__one_click_prompts__button": "1-klikk-prompter",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "når som helst.",
     "temp__rebrand__is_now": "er nå",
     "permission__pricing_hook__button__upgrade_to_pro": "Oppgrader til Pro",
-    "permission__pricing_hook__daily_limit__title": "Oppgrader for ubegrenset bruk",
-    "permission__pricing_hook__daily_limit__description1": "Du har nådd den gjeldende daglige bruksbegrensningen for alle AI-leverandører.\nDu kan oppgradere til Pro nå for ubegrenset bruk, eller prøve igjen senere.",
+    "permission__pricing_hook__daily_limit__title": "Lås opp ubegrenset antall ganger med {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, optimalisert for hastighet og effektivitet, utmerker seg i sanntidsprogrammer som krever kreativitet og avansert resonnering med forbedrede responstider og jevn output.",
     "permission__pricing_hook__custom_prompt__title": "Oppgrader for å legge til ubegrensede egendefinerte prompter",
     "permission__pricing_hook__custom_prompt__description": "Legg til egne påminnelser for å øke hastigheten på gjentakende oppgaver mens du jobber.",
     "permission__pricing_hook__custom_prompt_group__title": "Oppgrader for å legge til ubegrensede egendefinerte promptgrupper",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Endre navn",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 er Googles neste generasjonsmodell som tilbyr forbedret ytelse, en effektiv MoE-arkitektur og et gjennombrudd innen langtekstforståelse med opptil 1 million tokensvinduer, noe som muliggjør avanserte funksjoner innen tekst-, kode-, bilde-, lyd- og videobehandling.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Oppgrader for å få tilgang til gemini-1.5-pro med visjon",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avanserte modell. Den tilbyr raskere hastighet, et gjennombrudd med 1M tokens kontekstvindu, forbedret sikkerhet og avanserte funksjoner innen tekst, kode, bilde, lyd og videobehandling."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avanserte modell. Den tilbyr raskere hastighet, et gjennombrudd med 1M tokens kontekstvindu, forbedret sikkerhet og avanserte funksjoner innen tekst, kode, bilde, lyd og videobehandling.",
+    "sidebar__button__upgrade_to_plan": "Oppgrader til {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Tilgang til raske AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Tilgang til avanserte AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Tilgang til å lage AI-kunst og bilder med AI-modeller:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI-skjermbilde",
     "sidebar_tour__step__5__feature_5__title": "1-klikks forslag",
     "sidebar_tour__step__5__feature_6__title": "Bruk forslag"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Rask tekst",
+    "category__advanced_text": "Avansert tekst",
+    "category__image_generate": "Bilde",
+    "role_label": "Gjeldende plan: {{ROLE}}",
+    "queries": "Forespørsler",
+    "reset_on_date": "Nullstill på {{DATE}}"
   }
 }

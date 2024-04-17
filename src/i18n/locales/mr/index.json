@@ -49,7 +49,10 @@
     "ai_screenshot": "AI स्क्रीनशॉट",
     "release_notes": "रिलीज नोट्स",
     "web_translation": "या पृष्ठाचे भाषांतर करा",
-    "show_original_text": "मूळ मजकूर दाखवा"
+    "show_original_text": "मूळ मजकूर दाखवा",
+    "upgrade": "अपग्रेड करा",
+    "unlimited": "अमर्यादित",
+    "cancel_anytime": "कोणतेही वेळेस रद्द करा"
   },
   "settings": {
     "left_menu__me": "माझं आणि MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "सुरू ठेवा",
     "sidebar__button__insert": "समाविष्ट करा",
     "sidebar__button__replace": "बदला",
-    "sidebar__button__upgrade_to_pro": "प्रोच्या वर्गात अपग्रेड करा",
     "sidebar__button__retry": "पुन्हा प्रयत्न करा",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करा",
     "sidebar__speed_dial__one_click_prompts__button": "1-क्लिक प्रॉम्प्ट",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "कभी भी।",
     "temp__rebrand__is_now": "अब है",
     "permission__pricing_hook__button__upgrade_to_pro": "प्रोच्या वर्गात अपग्रेड करा",
-    "permission__pricing_hook__daily_limit__title": "असीमित वापरसाठी सुधारित करा",
-    "permission__pricing_hook__daily_limit__description1": "तुम्ही सर्व AI प्रदात्यांच्या सध्याच्या दैनंदिन वापराच्या मर्यादेत पोहोचला आहे.\nतुम्ही असीमित वापरसाठी आत्तापर्यंत प्रोच्या अपग्रेडसाठी प्रयत्न करू शकता, किंवा नंतर पुन्हा प्रयत्न करा.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} ची अमर्यादित वेळा उघडा",
+    "permission__pricing_hook__daily_limit__description1": "स्पीड आणि प्रभावशीलतेसाठी अपग्रेड केलेले OpenAI चे GPT-4, सुंदरता आणि प्रगतीशीलतेच्या अभ्यासकांसाठी उत्कृष्ट आहे ज्यामुळे त्वरित प्रतिसाद वेळा आणि संयमित प्रदर्शन मिळवते.",
     "permission__pricing_hook__custom_prompt__title": "असीमित स्वतंत्र प्रॉम्प्ट जोडण्यासाठी अपग्रेड करा",
     "permission__pricing_hook__custom_prompt__description": "आपल्या काम करतांना दोहळे कार्यांची गतिविधी वाढवण्यासाठी आपल्या स्वतंत्र प्रॉम्प्टस जोडा.",
     "permission__pricing_hook__custom_prompt_group__title": "असीमित स्वतंत्र प्रॉम्प्ट ग्रुप जोडण्यासाठी अपग्रेड करा",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "नाव बदला",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 गूगलच्या पुढील प्रकाराचे मॉडेल आहे, ज्यामध्ये सुधारित क्षमता, एक कार्यक्षम MoE वापरणारे आर्किटेक्चर, आणि लांबी-संदर्भ समजणार्‍या 1 मिलियन टोकन विंडोज़सह एक उद्घाटन आहे, ज्यामुळे मजबूत क्षमता असलेल्या मजकूरांच्या, कोडच्या, प्रतिमेच्या, आवाजाच्या आणि व्हिडिओच्या प्रक्रियांच्या विकसित क्षमतांसाठी.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "दृष्टीसह जेमिनी-1.5-प्रोला प्रवेश करण्यासाठी अपग्रेड करा",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleचे नवीनतम आणि सर्वोच्च मॉडेल प्रयत्न करा. ती जलद गती, एक अद्वितीय 1M टोकन संदर्भ विंडो, वाढवलेली सुरक्षा, आणि पाठ, कोड, छायाचित्र, ऑडिओ, आणि व्हिडिओ प्रसंस्करणांच्या विकसित क्षमतांसह उन्नत क्षमता देते."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleचे नवीनतम आणि सर्वोच्च मॉडेल प्रयत्न करा. ती जलद गती, एक अद्वितीय 1M टोकन संदर्भ विंडो, वाढवलेली सुरक्षा, आणि पाठ, कोड, छायाचित्र, ऑडिओ, आणि व्हिडिओ प्रसंस्करणांच्या विकसित क्षमतांसह उन्नत क्षमता देते.",
+    "sidebar__button__upgrade_to_plan": "योजनेत अपग्रेड करा {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "फास्ट AI मॉडेल्सचा प्रवेश:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "उन्नत AI मॉडेल्सचा प्रवेश:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI कला आणि छायाचित्रे तयार करण्याचा प्रवेश:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI स्क्रीनशॉट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
     "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट वापरा"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "फास्ट टेक्स्ट",
+    "category__advanced_text": "उन्नत टेक्स्ट",
+    "category__image_generate": "छायाचित्र",
+    "role_label": "वर्तमान योजना: {{ROLE}}",
+    "queries": "क्वेरी",
+    "reset_on_date": "{{DATE}} वर पुनर्स्थापित करा"
   }
 }

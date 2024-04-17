@@ -49,7 +49,10 @@
     "ai_screenshot": "AIスクリーンショット",
     "release_notes": "リリースノート",
     "web_translation": "このページを翻訳する",
-    "show_original_text": "元のテキストを表示"
+    "show_original_text": "元のテキストを表示",
+    "upgrade": "アップグレード",
+    "unlimited": "無制限",
+    "cancel_anytime": "いつでもキャンセル"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "続行",
     "sidebar__button__insert": "挿入",
     "sidebar__button__replace": "置換",
-    "sidebar__button__upgrade_to_pro": "プロにアップグレード",
     "sidebar__button__retry": "再試行",
     "sidebar__button__set_up_shortcut": "ショートカットの設定",
     "sidebar__speed_dial__one_click_prompts__button": "1クリックプロンプト",
@@ -382,8 +384,8 @@
     "provider__bing_web_app__conversation_style__precise__title": "正確",
     "provider__bing_web_app__conversation_style__precise__description": "会話をクリアして、簡潔で明快なチャットを開始します。",
     "permission__pricing_hook__button__upgrade_to_pro": "プロにアップグレード",
-    "permission__pricing_hook__daily_limit__title": "無制限利用のためにアップグレード",
-    "permission__pricing_hook__daily_limit__description1": "すべてのAIプロバイダーの現在の日次使用制限に達しました。\n無制限利用のために今すぐProにアップグレードするか、後で再試行してください。",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}}の無制限解除",
+    "permission__pricing_hook__daily_limit__description1": "OpenAIのGPT-4は、高速かつ効率的に最適化されており、リアルタイムのクリエイティビティと高度な推論を必要とするアプリケーションで優れた応答時間と一貫した出力を提供します。",
     "permission__pricing_hook__custom_prompt__title": "無制限のカスタムプロンプトを追加するためにアップグレード",
     "permission__pricing_hook__custom_prompt__description": "作業中の繰り返しタスクを迅速化するために、独自のプロンプトを追加してください。",
     "permission__pricing_hook__custom_prompt_group__title": "無制限のカスタムプロンプトグループを追加するためにアップグレード",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "名前変更",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5は、高性能なモデルであり、効率的なMoEアーキテクチャを提供し、最大100万トークンウィンドウによる長文脈理解の突破を実現しており、テキスト、コード、画像、音声、ビデオ処理などの高度な機能を可能にします。",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ジェミニ-1.5-proを利用するためにアップグレード",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google の最新かつ最も高度なモデルです。より高速な処理、画期的な 1M トークンのコンテキストウィンドウ、強化された安全性、およびテキスト、コード、画像、音声、ビデオ処理における高度な機能を提供します。"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google の最新かつ最も高度なモデルです。より高速な処理、画期的な 1M トークンのコンテキストウィンドウ、強化された安全性、およびテキスト、コード、画像、音声、ビデオ処理における高度な機能を提供します。",
+    "sidebar__button__upgrade_to_plan": "プランにアップグレード",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "高速AIモデルへのアクセス：",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "高度なAIモデルへのアクセス：",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AIアート＆画像AIモデルの作成へのアクセス："
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AIスクリーンショット",
     "sidebar_tour__step__5__feature_5__title": "1クリックプロンプト",
     "sidebar_tour__step__5__feature_6__title": "プロンプトの使用"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "高速テキスト",
+    "category__advanced_text": "高度なテキスト",
+    "category__image_generate": "画像",
+    "role_label": "現在のプラン：{{ROLE}}",
+    "queries": "クエリ",
+    "reset_on_date": "{{DATE}}にリセット"
   }
 }

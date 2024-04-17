@@ -49,7 +49,10 @@
     "ai_screenshot": "AI-screenshot",
     "release_notes": "Release-opmerkingen",
     "web_translation": "Vertaal deze pagina",
-    "show_original_text": "Toon oorspronkelijke tekst"
+    "show_original_text": "Toon oorspronkelijke tekst",
+    "upgrade": "Upgrade",
+    "unlimited": "Onbeperkt",
+    "cancel_anytime": "Altijd annuleren"
   },
   "settings": {
     "left_menu__me": "Ik en MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Doorgaan",
     "sidebar__button__insert": "Invoegen",
     "sidebar__button__replace": "Vervangen",
-    "sidebar__button__upgrade_to_pro": "Upgrade naar Pro",
     "sidebar__button__retry": "Opnieuw proberen",
     "sidebar__button__set_up_shortcut": "Snelkoppeling instellen",
     "sidebar__speed_dial__one_click_prompts__button": "1-klik prompts",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "wanneer je maar wilt.",
     "temp__rebrand__is_now": "is nu",
     "permission__pricing_hook__button__upgrade_to_pro": "Upgrade naar Pro",
-    "permission__pricing_hook__daily_limit__title": "Upgrade voor onbeperkt gebruik",
-    "permission__pricing_hook__daily_limit__description1": "Je hebt de huidige dagelijkse gebruikslimiet bereikt voor alle AI-providers.\nJe kunt nu upgraden naar Pro voor onbeperkt gebruik, of later opnieuw proberen.",
+    "permission__pricing_hook__daily_limit__title": "Ontgrendel onbeperkte keren van {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, geoptimaliseerd voor snelheid en efficiëntie, blinkt uit in realtime toepassingen die creativiteit en geavanceerd redeneren vereisen met verbeterde responstijden en consistente output.",
     "permission__pricing_hook__custom_prompt__title": "Upgrade om onbeperkte aangepaste prompts toe te voegen",
     "permission__pricing_hook__custom_prompt__description": "Voeg uw eigen prompts toe om repetitieve taken te versnellen terwijl u werkt.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade om onbeperkte aangepaste promptgroepen toe te voegen",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Hernoemen",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 is het volgende generatie model van Google dat verbeterde prestaties biedt, een efficiënte MoE architectuur en een doorbraak in het begrijpen van lange context met vensters tot 1 miljoen tokens, waardoor geavanceerde mogelijkheden worden geboden voor tekst-, code-, afbeeldings-, audio- en videobewerking.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade om toegang te krijgen tot gemini-1.5-pro met visie",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Het nieuwste en meest geavanceerde model van Google. Het biedt snellere snelheid, een baanbrekend contextvenster van 1M tokens, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videoverwerking."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Het nieuwste en meest geavanceerde model van Google. Het biedt snellere snelheid, een baanbrekend contextvenster van 1M tokens, verbeterde veiligheid en geavanceerde mogelijkheden op het gebied van tekst, code, afbeelding, audio en videoverwerking.",
+    "sidebar__button__upgrade_to_plan": "Upgrade naar {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Toegang tot snelle AI-modellen:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Toegang tot geavanceerde AI-modellen:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Toegang tot het maken van AI-kunst en afbeeldingen:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI-screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
     "sidebar_tour__step__5__feature_6__title": "Gebruik prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Snelle tekst",
+    "category__advanced_text": "Geavanceerde tekst",
+    "category__image_generate": "Afbeelding",
+    "role_label": "Huidig plan: {{ROLE}}",
+    "queries": "Vragen",
+    "reset_on_date": "Reset op {{DATE}}"
   }
 }

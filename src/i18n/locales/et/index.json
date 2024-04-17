@@ -49,7 +49,10 @@
     "ai_screenshot": "AI ekraanipilt",
     "release_notes": "Väljalaske märkused",
     "web_translation": "Tõlgi see leht",
-    "show_original_text": "Näita algset teksti"
+    "show_original_text": "Näita algset teksti",
+    "upgrade": "Täiusta",
+    "unlimited": "Piiramatu",
+    "cancel_anytime": "Tühista igal ajal"
   },
   "settings": {
     "left_menu__me": "Minu ja MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Jätka",
     "sidebar__button__insert": "Sisesta",
     "sidebar__button__replace": "Asenda",
-    "sidebar__button__upgrade_to_pro": "Tõsta Pro tasemele",
     "sidebar__button__retry": "Proovi uuesti",
     "sidebar__button__set_up_shortcut": "Seadista otsetee",
     "sidebar__speed_dial__one_click_prompts__button": "1-kliki vihjed",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "igal ajal.",
     "temp__rebrand__is_now": "on nüüd",
     "permission__pricing_hook__button__upgrade_to_pro": "Tõsta Pro tasemele",
-    "permission__pricing_hook__daily_limit__title": "Täiendage piiramatu kasutamise jaoks",
-    "permission__pricing_hook__daily_limit__description1": "Olete jõudnud kõigi AI-pakkujate praeguse päevase kasutuspiiranguni.\nSaate nüüd täiendada Pro versioonile piiramatu kasutamise jaoks või proovida hiljem uuesti.",
+    "permission__pricing_hook__daily_limit__title": "Avage piiramatu arv kordi {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI GPT-4, mis on optimeeritud kiiruse ja tõhususe jaoks, sobib suurepäraselt reaalajas rakendusteks, mis nõuavad loovust ja arenenud mõtlemist koos parema reageerimisajaga ja järjepideva väljundiga.",
     "permission__pricing_hook__custom_prompt__title": "Lisage piiramatu hulk kohandatud kiirklahve, tõstes tasemele Pro",
     "permission__pricing_hook__custom_prompt__description": "Lisage oma kohandatud vihjed, et kiirendada korduvaid ülesandeid töötamise ajal.",
     "permission__pricing_hook__custom_prompt_group__title": "Lisage piiramatu hulk kohandatud kiirklahvigruppe, tõstes tasemele Pro",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Nimeta ümber",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 on Google'i järgmise põlvkonna mudel, mis pakub paremat jõudlust, tõhusat MoE arhitektuuri ja läbimurret pikas kontekstis mõistmises kuni 1 miljoni märgiakna abil, võimaldades edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Täiusta juurdepääsuks gemini-1.5-pro'le nägemisega",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'i uusim ja kõige arenenum mudel. See pakub kiiremat kiirust, läbimurret 1M märgi kontekstakendes, täiustatud turvalisust ning edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'i uusim ja kõige arenenum mudel. See pakub kiiremat kiirust, läbimurret 1M märgi kontekstakendes, täiustatud turvalisust ning edasijõudnud võimeid teksti, koodi, pildi, heli ja video töötlemisel.",
+    "sidebar__button__upgrade_to_plan": "Tõsta tasemele {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Juurdepääs kiiretele AI mudelitele:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Juurdepääs edasijõudnud AI mudelitele:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Juurdepääs AI kunsti ja piltide loomisele:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tehisintellekti ekraanipilt",
     "sidebar_tour__step__5__feature_5__title": "1-kliki vihjed",
     "sidebar_tour__step__5__feature_6__title": "Kasuta vihjet"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Kiire tekst",
+    "category__advanced_text": "Edasijõudnud tekst",
+    "category__image_generate": "Pilt",
+    "role_label": "Praegune plaan: {{ROLE}}",
+    "queries": "Päringud",
+    "reset_on_date": "Lähtestamine {{DATE}}"
   }
 }

@@ -49,7 +49,10 @@
     "ai_screenshot": "AI سکرین شاٹ",
     "release_notes": "ریلیز نوٹس",
     "web_translation": "اس صفحے کو ترجمہ کریں",
-    "show_original_text": "اصل متن دکھائیں"
+    "show_original_text": "اصل متن دکھائیں",
+    "upgrade": "ترقی کریں",
+    "unlimited": "بے حد",
+    "cancel_anytime": "کسی بھی وقت منسوخ کریں"
   },
   "settings": {
     "left_menu__me": "میں اور میکس اے آئی",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "جاری رکھیں",
     "sidebar__button__insert": "درج کریں",
     "sidebar__button__replace": "تبدیل کریں",
-    "sidebar__button__upgrade_to_pro": "پرو میں اپگریڈ کریں",
     "sidebar__button__retry": "دوبارہ کوشش کریں",
     "sidebar__button__set_up_shortcut": "شارٹکٹ تشکیل دیں",
     "sidebar__speed_dial__one_click_prompts__button": "1-کلک پرامپٹس",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "کسی بھی وقت۔",
     "temp__rebrand__is_now": "اب",
     "permission__pricing_hook__button__upgrade_to_pro": "پرو میں اپگریڈ کریں",
-    "permission__pricing_hook__daily_limit__title": "لامحدود استعمال کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__daily_limit__description1": "آپ نے تمام AI پرووائیڈرز کے لئے موجودہ روزانہ استعمال کی حد تک پہنچ گئی ہے۔\nآپ لامحدود استعمال کے لئے فوری طور پر پرو میں اپگریڈ کرسکتے ہیں، یا بعد میں دوبارہ کوشش کریں۔",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} کی بے حد تعداد کو آزاد کریں",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI کا GPT-4، رفتار اور کارآمدی کے لئے تجویز شدہ، خلاقیت اور پیشرفتہ تحقیق کو ضرورتمند حقیقتی وقت کے استعمال کے ساتھ ساتھ جواب دینے میں بہترین ہے۔",
     "permission__pricing_hook__custom_prompt__title": "غیر محدود کسٹم پرومپٹس شامل کرنے کے لئے اپگریڈ کریں",
     "permission__pricing_hook__custom_prompt__description": "اپنے کام کو تیز کرنے کے لئے اپنے خود کے پرومپٹس شامل کریں جب آپ تکراری کاموں کو کرتے ہیں۔",
     "permission__pricing_hook__custom_prompt_group__title": "غیر محدود کسٹم پرومپٹ گروپس شامل کرنے کے لئے اپگریڈ کریں",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "تبدیل نام",
     "provider__gemini__model__gemini_1_5_pro__description": "جمنی 1.5 گوگل کا اگلے جنریشن ماڈل ہے جو بہتر کارکردگی، ایک مؤثر MoE ایکیٹیکچر اور لمبے کنٹیکسٹ سمجھنے میں ایک تقریباً ناقابل یقین کامیابی حاصل کرتا ہے جس میں 1 ملین ٹوکن ونڈوز کی صلاحیت شامل ہے، جو متن، کوڈ، تصویر، آڈیو اور ویڈیو پروسیسنگ میں ترقی یافتہ صلاحیتوں کو ممکن بناتی ہے.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "جیمنی-1.5 پرو کو دیکھنے کے لئے اپگریڈ کریں",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔ یہ تیز رفتار، ایک بریکتھرو 1M ٹوکن کنٹیکسٹ ونڈو، بہترین سلامتی، اور متن، کوڈ، تصویر، آڈیو، اور ویڈیو پروسیسنگ میں ایڈوانس کپیبلٹیز پیش کرتا ہے۔"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "گوگل کا تازہ ترین اور ترقی یافتہ ماڈل۔ یہ تیز رفتار، ایک بریکتھرو 1M ٹوکن کنٹیکسٹ ونڈو، بہترین سلامتی، اور متن، کوڈ، تصویر، آڈیو، اور ویڈیو پروسیسنگ میں ایڈوانس کپیبلٹیز پیش کرتا ہے۔",
+    "sidebar__button__upgrade_to_plan": "پلان میں اپگریڈ کریں {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "تیز AI ماڈل تک رسائی:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "اعلی AI ماڈل تک رسائی:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI آرٹ اور تصاویر کے ماڈل تشکیل کرنے کی رسائی:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI سکرین شاٹ",
     "sidebar_tour__step__5__feature_5__title": "1-کلک پرومپٹس",
     "sidebar_tour__step__5__feature_6__title": "پرومپٹ استعمال کریں"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "تیز متن",
+    "category__advanced_text": "اعلی متن",
+    "category__image_generate": "تصویر",
+    "role_label": "موجودہ منصوبہ: {{ROLE}}",
+    "queries": "سوالات",
+    "reset_on_date": "{{DATE}} کو ری سیٹ ہوگا"
   }
 }

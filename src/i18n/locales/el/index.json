@@ -49,7 +49,10 @@
     "ai_screenshot": "Στιγμιότυπο AI",
     "release_notes": "Σημειώσεις έκδοσης",
     "web_translation": "Μεταφράστε αυτήν τη σελίδα",
-    "show_original_text": "Εμφάνιση αρχικού κειμένου"
+    "show_original_text": "Εμφάνιση αρχικού κειμένου",
+    "upgrade": "Αναβάθμιση",
+    "unlimited": "Απεριόριστο",
+    "cancel_anytime": "Ακύρωση οποιαδήποτε στιγμή"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Συνέχεια",
     "sidebar__button__insert": "Εισαγωγή",
     "sidebar__button__replace": "Αντικατάσταση",
-    "sidebar__button__upgrade_to_pro": "Αναβάθμιση σε Pro",
     "sidebar__button__retry": "Επανάληψη",
     "sidebar__button__set_up_shortcut": "Ρύθμιση συντόμευσης",
     "sidebar__speed_dial__one_click_prompts__button": "1-κλικ προτροπές",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "οποιαδήποτε στιγμή.",
     "temp__rebrand__is_now": "είναι τώρα",
     "permission__pricing_hook__button__upgrade_to_pro": "Αναβάθμιση σε Pro",
-    "permission__pricing_hook__daily_limit__title": "Αναβαθμίστε για απεριόριστη χρήση",
-    "permission__pricing_hook__daily_limit__description1": "Έχετε φτάσει τον τρέχοντα ημερήσιο περιορισμό χρήσης για όλους τους AI Providers.\nΜπορείτε να αναβαθμίσετε σε Pro τώρα για απεριόριστη χρήση, ή να δοκιμάσετε ξανά αργότερα.",
+    "permission__pricing_hook__daily_limit__title": "Ξεκλείδωμα απεριόριστων φορών του {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "Το GPT-4 της OpenAI, βελτιστοποιημένο για ταχύτητα και αποδοτικότητα, ξεχωρίζει σε εφαρμογές πραγματικού χρόνου που απαιτούν δημιουργικότητα και προηγμένη σκέψη με βελτιωμένους χρόνους απόκρισης και συνεπή έξοδο.",
     "permission__pricing_hook__custom_prompt__title": "Αναβάθμιση για προσθήκη απεριόριστων προσαρμοσμένων προτροπών",
     "permission__pricing_hook__custom_prompt__description": "Προσθέστε τις δικές σας υποδείξεις για να επιταχύνετε τις επαναλαμβανόμενες εργασίες καθώς εργάζεστε.",
     "permission__pricing_hook__custom_prompt_group__title": "Αναβάθμιση για προσθήκη απεριόριστων ομάδων προσαρμοσμένων προτροπών",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Μετονομασία",
     "provider__gemini__model__gemini_1_5_pro__description": "Το Gemini 1.5 είναι το μοντέλο επόμενης γενιάς της Google που προσφέρει βελτιωμένη απόδοση, μια αποδοτική αρχιτεκτονική MoE και μια καινοτομία στην κατανόηση μεγάλου πλαισίου με έως και 1 εκατομμύριο διακριτά τεκμήρια, επιτρέποντας προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Αναβάθμιση για πρόσβαση στο gemini-1.5-pro με όραση",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, ένα επαναστατικό παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Το νεότερο και πιο προηγμένο μοντέλο της Google. Προσφέρει γρηγορότερη ταχύτητα, ένα επαναστατικό παράθυρο περιβάλλοντος 1 εκατομμυρίου λέξεων, βελτιωμένη ασφάλεια και προηγμένες δυνατότητες σε κείμενο, κώδικα, εικόνα, ήχο και επεξεργασία βίντεο.",
+    "sidebar__button__upgrade_to_plan": "Αναβάθμιση σε {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Πρόσβαση σε γρήγορα μοντέλα AI:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Πρόσβαση σε προηγμένα μοντέλα AI:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Πρόσβαση για δημιουργία τέχνης και εικόνων με μοντέλα AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Στιγμιότυπο Τεχνητής Νοημοσύνης",
     "sidebar_tour__step__5__feature_5__title": "1-κλικ προτροπές",
     "sidebar_tour__step__5__feature_6__title": "Χρήση προτροπής"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Γρήγορο κείμενο",
+    "category__advanced_text": "Προηγμένο κείμενο",
+    "category__image_generate": "Εικόνα",
+    "role_label": "Τρέχον πλάνο: {{ROLE}}",
+    "queries": "Ερωτήματα",
+    "reset_on_date": "Επαναφορά στις {{DATE}}"
   }
 }

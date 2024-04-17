@@ -49,7 +49,10 @@
     "ai_screenshot": "Captura d'AI",
     "release_notes": "Notes de la versió",
     "web_translation": "Tradueix aquesta pàgina",
-    "show_original_text": "Mostra el text original"
+    "show_original_text": "Mostra el text original",
+    "upgrade": "Millora",
+    "unlimited": "Il·limitat",
+    "cancel_anytime": "Cancel·la en qualsevol moment"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Continua",
     "sidebar__button__insert": "Insereix",
     "sidebar__button__replace": "Reemplaça",
-    "sidebar__button__upgrade_to_pro": "Millora a Pro",
     "sidebar__button__retry": "Torna-ho a intentar",
     "sidebar__button__set_up_shortcut": "Configura un drecera",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts d'un clic",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "en qualsevol moment.",
     "temp__rebrand__is_now": "ara és",
     "permission__pricing_hook__button__upgrade_to_pro": "Millora a Pro",
-    "permission__pricing_hook__daily_limit__title": "Millora per a un ús il·limitat",
-    "permission__pricing_hook__daily_limit__description1": "Has arribat al límit diari actual per a tots els proveïdors d'IA.\nPots millorar a Pro ara mateix per a un ús il·limitat, o tornar-ho a intentar més tard.",
+    "permission__pricing_hook__daily_limit__title": "Desbloqueja un nombre il·limitat de vegades {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "El GPT-4 d'OpenAI, optimitzat per a la velocitat i l'eficiència, destaca en aplicacions en temps real que requereixen creativitat i raonament avançat amb temps de resposta millorats i sortida consistent.",
     "permission__pricing_hook__custom_prompt__title": "Millora per afegir suggeriments personalitzats il·limitats",
     "permission__pricing_hook__custom_prompt__description": "Afegiu les vostres pròpies indicacions per agilitzar tasques repetitives mentre treballeu.",
     "permission__pricing_hook__custom_prompt_group__title": "Millora per afegir grups de suggeriments personalitzats il·limitats",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Canvia el nom",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 és el model de nova generació de Google que ofereix un rendiment millorat, una arquitectura MoE eficient i una avançada comprensió de context llarg amb finestres de fins a 1 milió de tokens, permetent capacitats avançades en el processament de text, codi, imatge, àudio i vídeo.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Actualitza per accedir a gemini-1.5-pro amb visió",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El model més nou i avançat de Google. Ofereix una velocitat més ràpida, una finestra de context de 1M de tokens, seguretat millorada i capacitats avançades en el processament de text, codi, imatge, àudio i vídeo."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "El model més nou i avançat de Google. Ofereix una velocitat més ràpida, una finestra de context de 1M de tokens, seguretat millorada i capacitats avançades en el processament de text, codi, imatge, àudio i vídeo.",
+    "sidebar__button__upgrade_to_plan": "Millora a {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Accés a models d'IA ràpids:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Accés a models d'IA avançats:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Accés per crear art i imatges amb models d'IA:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Captura de pantalla d'IA",
     "sidebar_tour__step__5__feature_5__title": "Suggeriments amb 1 clic",
     "sidebar_tour__step__5__feature_6__title": "Utilitza el suggeriment"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Text ràpid",
+    "category__advanced_text": "Text avançat",
+    "category__image_generate": "Imatge",
+    "role_label": "Pla actual: {{ROLE}}",
+    "queries": "Consultes",
+    "reset_on_date": "Reinicia el {{DATE}}"
   }
 }

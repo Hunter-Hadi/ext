@@ -49,7 +49,10 @@
     "ai_screenshot": "AI స్క్రీన్‌షాట్",
     "release_notes": "విడుదల మంచిపత్రాలు",
     "web_translation": "ఈ పేజీని అనువదించండి",
-    "show_original_text": "మూల పఠనం చూపించు"
+    "show_original_text": "మూల పఠనం చూపించు",
+    "upgrade": "అప్గ్రేడ్",
+    "unlimited": "అమితంగా",
+    "cancel_anytime": "ఏ సమయంలో రద్దు చేయండి"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "కొనసాగండి",
     "sidebar__button__insert": "చేర్చండి",
     "sidebar__button__replace": "మార్చండి",
-    "sidebar__button__upgrade_to_pro": "ప్రొ కు అప్గ్రేడ్ చేయండి",
     "sidebar__button__retry": "మళ్ళీ ప్రయత్నించండి",
     "sidebar__button__set_up_shortcut": "షార్ట్‌కట్ సెట్ అప్ చేయండి",
     "sidebar__speed_dial__one_click_prompts__button": "ఒక నొక్కిన ప్రాంప్టులు",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "ఏపీలు మార్చవచ్చు.",
     "temp__rebrand__is_now": "ఇప్పుడు",
     "permission__pricing_hook__button__upgrade_to_pro": "ప్రొ కు అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__daily_limit__title": "అనివార్య ఉపయోగం కొరకు అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__daily_limit__description1": "మీరు ప్రస్తుత రోజువారీ ఉపయోగ పరిమితిని చేరుకున్నారు AI ప్రొవైడర్ల కోసం.\nమీరు అనివార్య ఉపయోగం కోసం ప్రొ కొనండి, లేదా తరువాత మళ్ళీ ప్రయత్నించండి.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} యొక్క అనంత సమయాన్ని అందించండి",
+    "permission__pricing_hook__daily_limit__description1": "స్పీడ్ మరియు ధైర్యంతో ఆపెన్‌ఐ యొక్క GPT-4, సమయంలో ఉన్నప్పుడు సృజనాత్మకత మరియు ఆధునిక విచారణతో ప్రభుత్వం ప్రదర్శించడంలో అత్యుత్తమ ప్రదర్శనను కలిగి ఉంటుంది.",
     "permission__pricing_hook__custom_prompt__title": "అప్గ్రేడ్ చేయడానికి అనివార్యమైన కస్టమ్ ప్రాంప్ట్‌లను జోడించండి",
     "permission__pricing_hook__custom_prompt__description": "పనితీరు చేయడానికి మీ స్వంత ప్రాంప్ట్‌లను జోడించండి.",
     "permission__pricing_hook__custom_prompt_group__title": "అనివార్యమైన కస్టమ్ ప్రాంప్ట్ గ్రూప్‌లను జోడించడానికి అప్గ్రేడ్ చేయండి",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "పేరు మార్చు",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 గూగుల్ యొక్క తదుపరి మోడల్, పెర్ఫార్మన్స్ ను అభ్యంతరపరచేసే, ఒక ఎఫిషియంట్ MoE ఆర్కిటెక్చర్, మీలియన్ టోకెన్ విండోలతో దీర్ఘ-సందర్భ అర్థం అర్ధం చేసే బ్రేక్త్రూ నిర్ణయం కలిగి ఉంది, టెక్స్ట్, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్ లో అభివృద్ధి సాధ్యతలను మరియు ఉన్నత సామర్థ్యాలను అందిస్తుంది.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "జెమిని-1.5-ప్రొ కనుగొనడానికి అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google యొక్క కొత్తగా మరియు అత్యంత ఉన్నత మోడల్. ఇది త్వరిత వేగం, ఒక ప్రవర్తనాత్మకత కంటెక్స్ట్ విండో, మెరుగైన భద్రత, మరియు పాఠ్యం, కోడ్, చిత్రం, ఆడియో, మరియు వీడియో ప్రాసెసింగ్‌లలో అధ్వాన్య సాధనాలను అందిస్తుంది.",
+    "sidebar__button__upgrade_to_plan": "ప్రాణం మార్చడానికి {{PLAN}} కు అప్గ్రేడ్ చేయండి",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "త్వరగతంగా AI మోడల్స్‌కు ప్రవేశం:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "ఆధ్వాన్స్డ్ AI మోడల్స్‌కు ప్రవేశం:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI కళాకారత్వం & చిత్రాల మోడల్స్‌ను సృష్టించడానికి ప్రవేశం:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI స్క్రీన్‌షాట్",
     "sidebar_tour__step__5__feature_5__title": "1-క్లిక్ ప్రాంప్ట్‌లు",
     "sidebar_tour__step__5__feature_6__title": "ప్రాంప్ట్‌ను ఉపయోగించు"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "త్వరగత వచనం",
+    "category__advanced_text": "ఆధ్వాన్స్డ్ వచనం",
+    "category__image_generate": "చిత్రం",
+    "role_label": "ప్రస్తుత ప్లాన్: {{ROLE}}",
+    "queries": "ప్రశ్నలు",
+    "reset_on_date": "{{DATE}} న రీసెట్ అవుతుంది"
   }
 }

@@ -49,7 +49,10 @@
     "ai_screenshot": "AI snímka obrazovky",
     "release_notes": "Poznámky k vydaniu",
     "web_translation": "Preložiť túto stránku",
-    "show_original_text": "Zobraziť pôvodný text"
+    "show_original_text": "Zobraziť pôvodný text",
+    "upgrade": "Aktualizovať",
+    "unlimited": "Neobmedzené",
+    "cancel_anytime": "Zrušiť kedykoľvek"
   },
   "settings": {
     "left_menu__me": "Ja a MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Pokračovať",
     "sidebar__button__insert": "Vložiť",
     "sidebar__button__replace": "Nahradiť",
-    "sidebar__button__upgrade_to_pro": "Aktualizovať na Pro",
     "sidebar__button__retry": "Opakovať",
     "sidebar__button__set_up_shortcut": "Nastaviť skratku",
     "sidebar__speed_dial__one_click_prompts__button": "Jedno kliknutie na podnety",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "kedykoľvek.",
     "temp__rebrand__is_now": "teraz je",
     "permission__pricing_hook__button__upgrade_to_pro": "Aktualizovať na Pro",
-    "permission__pricing_hook__daily_limit__title": "Aktualizujte pre neobmedzené používanie",
-    "permission__pricing_hook__daily_limit__description1": "Dosiahli ste denný limit pre všetkých poskytovateľov AI.\nMôžete teraz aktualizovať na Pro verziu pre neobmedzené používanie alebo skúsiť neskôr znova.",
+    "permission__pricing_hook__daily_limit__title": "Odomknite neobmedzený počet {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI GPT-4, optimalizovaný pre rýchlosť a efektivitu, vyniká v reálnych aplikáciách vyžadujúcich kreativitu a pokročilé uvažovanie s vylepšenými časmi odpovedí a konzistentným výstupom.",
     "permission__pricing_hook__custom_prompt__title": "Vylepšite si účet a pridajte neobmedzené vlastné prompty",
     "permission__pricing_hook__custom_prompt__description": "Pridajte vlastné podnety na zrýchlenie opakujúcich sa úloh počas práce.",
     "permission__pricing_hook__custom_prompt_group__title": "Vylepšite si účet a pridajte neobmedzené skupiny vlastných promptov",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Premenovať",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je nasledujúci model od Googlu, ktorý ponúka vylepšený výkon, efektívnu architektúru MoE a prelomové porozumenie dlhého kontextu s oknami až do 1 milióna tokenov, čo umožňuje pokročilé schopnosti pri spracovaní textu, kódu, obrázkov, zvuku a videa.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Aktualizujte pre prístup k gemini-1.5-pro s videním",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, prelomové kontextové okno s 1 miliónom tokenov, vylepšenú bezpečnosť a pokročilé schopnosti v spracovaní textu, kódu, obrázkov, zvuku a videa."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovší a najpokročilejší model od Google. Ponúka rýchlejšiu rýchlosť, prelomové kontextové okno s 1 miliónom tokenov, vylepšenú bezpečnosť a pokročilé schopnosti v spracovaní textu, kódu, obrázkov, zvuku a videa.",
+    "sidebar__button__upgrade_to_plan": "Vylepšiť na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Prístup k rýchlym modelom AI:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Prístup k pokročilým modelom AI:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Prístup k vytváraniu umeleckých diel a obrázkov pomocou modelov AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Snímka obrazovky s AI",
     "sidebar_tour__step__5__feature_5__title": "1-kliknuté podnety",
     "sidebar_tour__step__5__feature_6__title": "Použiť podnet"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Rýchly text",
+    "category__advanced_text": "Pokročilý text",
+    "category__image_generate": "Obrázok",
+    "role_label": "Súčasný plán: {{ROLE}}",
+    "queries": "Dopyty",
+    "reset_on_date": "Resetovať dňa {{DATE}}"
   }
 }

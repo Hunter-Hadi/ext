@@ -49,7 +49,10 @@
     "ai_screenshot": "ภาพหน้าจอ AI",
     "release_notes": "บันทึกการอัปเดต",
     "web_translation": "แปลหน้านี้",
-    "show_original_text": "แสดงข้อความเดิม"
+    "show_original_text": "แสดงข้อความเดิม",
+    "upgrade": "อัพเกรด",
+    "unlimited": "ไม่จำกัด",
+    "cancel_anytime": "ยกเลิกได้ทุกเมื่อ"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "ดำเนินการต่อ",
     "sidebar__button__insert": "แทรก",
     "sidebar__button__replace": "แทนที่",
-    "sidebar__button__upgrade_to_pro": "อัปเกรดเป็น Pro",
     "sidebar__button__retry": "ลองใหม่",
     "sidebar__button__set_up_shortcut": "ตั้งค่าทางลัด",
     "sidebar__speed_dial__one_click_prompts__button": "คำแนะนำด้วยการคลิกเพียงครั้งเดียว",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "ได้ตลอดเวลา",
     "temp__rebrand__is_now": "เป็น",
     "permission__pricing_hook__button__upgrade_to_pro": "อัปเกรดเป็น Pro",
-    "permission__pricing_hook__daily_limit__title": "อัปเกรดเพื่อการใช้งานไม่จำกัด",
-    "permission__pricing_hook__daily_limit__description1": "คุณได้ถึงขีดจำกัดการใช้งานรายวันปัจจุบันสำหรับ AI Providers ทั้งหมด\nคุณสามารถอัปเกรดเป็น Pro เพื่อการใช้งานไม่จำกัด หรือลองอีกครั้งในภายหลัง",
+    "permission__pricing_hook__daily_limit__title": "ปลดล็อกการใช้งาน {{MODEL_NAME}} ไม่จำกัด",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 ของ OpenAI ถูกปรับแต่งให้มีความเร็วและประสิทธิภาพสูง เหมาะสำหรับการใช้งานแบบเรียลไทม์ที่ต้องการความคิดสร้างสรรค์และการตัดสินใจขั้นสูงด้วยเวลาการตอบสนองที่เร็วและผลลัพธ์ที่สม่ำเสมอ",
     "permission__pricing_hook__custom_prompt__title": "อัปเกรดเพื่อเพิ่มคำพูดที่กำหนดเองได้ไม่จำกัด",
     "permission__pricing_hook__custom_prompt__description": "เพิ่มคำพูดของคุณเองเพื่อให้งานที่ซ้ำซ้อนเร็วขึ้นเมื่อคุณทำงาน",
     "permission__pricing_hook__custom_prompt_group__title": "อัปเกรดเพื่อเพิ่มกลุ่มคำพูดที่กำหนดเองได้ไม่จำกัด",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "เปลี่ยนชื่อ",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 เป็นรุ่นที่มีประสิทธิภาพเพิ่มขึ้นของ Google ที่มีโครงสร้าง MoE ที่มีประสิทธิภาพและการเข้าใจความหมายในบริบทยาวได้ถึง 1 ล้านโทเค็น ทำให้สามารถใช้งานความสามารถขั้นสูงในการประมวลผลข้อความ โค้ด รูปภาพ เสียง และวิดีโอได้",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "อัปเกรดเพื่อเข้าถึง gemini-1.5-pro พร้อมวิสัยทัศน์",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "โมเดลล่าสุดและทันสมัยของ Google ซึ่งมีความเร็วสูงขึ้น, หน้าต่างความสัมพันธ์ของโทเค็น 1 ล้านตัวอักษร, ความปลอดภัยที่เพิ่มขึ้น, และความสามารถขั้นสูงในการประมวลผลข้อความ, โค้ด, ภาพ, เสียง, และวิดีโอ"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "โมเดลล่าสุดและทันสมัยของ Google ซึ่งมีความเร็วสูงขึ้น, หน้าต่างความสัมพันธ์ของโทเค็น 1 ล้านตัวอักษร, ความปลอดภัยที่เพิ่มขึ้น, และความสามารถขั้นสูงในการประมวลผลข้อความ, โค้ด, ภาพ, เสียง, และวิดีโอ",
+    "sidebar__button__upgrade_to_plan": "อัปเกรดเป็น {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "เข้าถึงโมเดล AI ที่เร็ว:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "เข้าถึงโมเดล AI ที่ล้ำสมัย:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "เข้าถึงการสร้างศิลปะและภาพ AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "ภาพหน้าจอ AI",
     "sidebar_tour__step__5__feature_5__title": "คำใบ้ด้วยคลิกเดียว",
     "sidebar_tour__step__5__feature_6__title": "ใช้คำใบ้"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ข้อความเร็ว",
+    "category__advanced_text": "ข้อความล้ำสมัย",
+    "category__image_generate": "ภาพ",
+    "role_label": "แผนปัจจุบัน: {{ROLE}}",
+    "queries": "คำถาม",
+    "reset_on_date": "รีเซ็ตเมื่อ {{DATE}}"
   }
 }

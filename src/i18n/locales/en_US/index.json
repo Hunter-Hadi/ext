@@ -49,7 +49,10 @@
     "ai_screenshot": "AI screenshot",
     "release_notes": "Release notes",
     "web_translation": "Translate this page",
-    "show_original_text": "Show original text"
+    "show_original_text": "Show original text",
+    "upgrade": "Upgrade",
+    "unlimited": "Unlimited",
+    "cancel_anytime": "Cancel anytime"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -258,7 +261,7 @@
     "sidebar__button__continue": "Continue",
     "sidebar__button__insert": "Insert",
     "sidebar__button__replace": "Replace",
-    "sidebar__button__upgrade_to_pro": "Upgrade to Pro",
+    "sidebar__button__upgrade_to_plan": "Upgrade to {{PLAN}}",
     "sidebar__button__retry": "Retry",
     "sidebar__button__set_up_shortcut": "Set up shortcut",
     "sidebar__speed_dial__chat_history__button": "Chat history",
@@ -468,8 +471,11 @@
     "pdf_ai_viewer__share_button__title": "Copy original PDF URL",
     "permission__pricing_hook__button__upgrade_to_pro": "Upgrade to Pro",
     "permission__pricing_hook__button__upgrade_to_elite": "Upgrade to Elite",
-    "permission__pricing_hook__daily_limit__title": "Upgrade for unlimited usage",
-    "permission__pricing_hook__daily_limit__description1": "You've reached the current daily usage cap for all AI Providers.\nYou can upgrade to Pro now for unlimited usage, or try again later.",
+    "permission__pricing_hook__daily_limit__title": "Unlock unlimited times of {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, optimized for speed and efficiency, excels in real-time applications requiring creativity and advanced reasoning with enhanced response times and consistent output.",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Access to fast AI models:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Access to advanced AI models:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Access to create AI art & images AI models:",
     "permission__pricing_hook__custom_prompt__title": "Upgrade to add unlimited custom prompts",
     "permission__pricing_hook__custom_prompt__description": "Add your own prompts to speed up repetitive tasks as you work.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade to add unlimited custom prompt groups",
@@ -788,6 +794,14 @@
     "sidebar_tour__step__5__feature_4__title": "AI screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
     "sidebar_tour__step__5__feature_6__title": "Use prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Fast text",
+    "category__advanced_text": "Advanced text",
+    "category__image_generate": "Image",
+    "role_label": "Current plan: {{ROLE}}",
+    "queries": "Queries",
+    "reset_on_date": "Reset on {{DATE}}"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

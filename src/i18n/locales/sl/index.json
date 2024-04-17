@@ -49,7 +49,10 @@
     "ai_screenshot": "AI posnetek zaslona",
     "release_notes": "Opombe o izdaji",
     "web_translation": "Prevedi to stran",
-    "show_original_text": "Pokaži izvirno besedilo"
+    "show_original_text": "Pokaži izvirno besedilo",
+    "upgrade": "Nadgradnja",
+    "unlimited": "Neomejeno",
+    "cancel_anytime": "Prekliči kadarkoli"
   },
   "settings": {
     "left_menu__me": "Jaz in MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Nadaljuj",
     "sidebar__button__insert": "Vstavi",
     "sidebar__button__replace": "Zamenjaj",
-    "sidebar__button__upgrade_to_pro": "Nadgradite na Pro",
     "sidebar__button__retry": "Poskusite znova",
     "sidebar__button__set_up_shortcut": "Nastavite bližnjico",
     "sidebar__speed_dial__one_click_prompts__button": "1-klikovna sporočila",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "kadarkoli.",
     "temp__rebrand__is_now": "je zdaj",
     "permission__pricing_hook__button__upgrade_to_pro": "Nadgradite na Pro",
-    "permission__pricing_hook__daily_limit__title": "Nadgradite za neomejeno uporabo",
-    "permission__pricing_hook__daily_limit__description1": "Dosegli ste dnevno omejitev uporabe za vse AI ponudnike.\nZdaj lahko nadgradite na Pro za neomejeno uporabo ali poskusite znova kasneje.",
+    "permission__pricing_hook__daily_limit__title": "Odklenite neomejeno število {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI-jev GPT-4, optimiziran za hitrost in učinkovitost, izstopa v realno-časovnih aplikacijah, ki zahtevajo ustvarjalnost in napredno sklepanje z izboljšanimi časi odziva in doslednim izhodom.",
     "permission__pricing_hook__custom_prompt__title": "Nadgradite za dodajanje neomejenih prilagojenih namigov",
     "permission__pricing_hook__custom_prompt__description": "Dodajte lastne opombe, da pospešite ponavljajoče se naloge med delom.",
     "permission__pricing_hook__custom_prompt_group__title": "Nadgradite za dodajanje neomejenih skupin prilagojenih namigov",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Preimenuj",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je naslednja generacija Googlovega modela, ki ponuja izboljšano zmogljivost, učinkovito arhitekturo MoE in preboj pri razumevanju dolgega konteksta z do 1 milijon okenskih žetonov, kar omogoča napredne funkcionalnosti pri obdelavi besedila, kode, slik, zvoka in videa.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadgradite za dostop do gemini-1.5-pro z vizijo",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovejši in najnaprednejši model Googla. Ponuja hitrejšo hitrost, prebojno okno konteksta s 1M žetoni, izboljšano varnost in napredne zmogljivosti pri obdelavi besedila, kode, slik, zvoka in videa."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnovejši in najnaprednejši model Googla. Ponuja hitrejšo hitrost, prebojno okno konteksta s 1M žetoni, izboljšano varnost in napredne zmogljivosti pri obdelavi besedila, kode, slik, zvoka in videa.",
+    "sidebar__button__upgrade_to_plan": "Nadgradite na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Dostop do hitrih AI modelov:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Dostop do naprednih AI modelov:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Dostop za ustvarjanje AI umetnosti in slik:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Posnetek zaslona AI",
     "sidebar_tour__step__5__feature_5__title": "1-klikni namigi",
     "sidebar_tour__step__5__feature_6__title": "Uporabite namig"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Hitro besedilo",
+    "category__advanced_text": "Napredno besedilo",
+    "category__image_generate": "Slika",
+    "role_label": "Trenutni načrt: {{ROLE}}",
+    "queries": "Poizvedbe",
+    "reset_on_date": "Ponastavi se {{DATE}}"
   }
 }

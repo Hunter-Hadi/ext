@@ -49,7 +49,10 @@
     "ai_screenshot": "AI സ്‌ക്രീൻഷോട്ട്",
     "release_notes": "പുറത്തിറക്കം വിവരങ്ങൾ",
     "web_translation": "ഈ പേജ് പരിഭാഷപ്പെടുത്തുക",
-    "show_original_text": "ഓരിജിനൽ ടെക്സ്റ്റ് കാണിക്കുക"
+    "show_original_text": "ഓരിജിനൽ ടെക്സ്റ്റ് കാണിക്കുക",
+    "upgrade": "അപ്‌ഗ്രേഡ്",
+    "unlimited": "അസാധാരണമായ",
+    "cancel_anytime": "ഏത് സമയത്തെയും റദ്ദാക്കുക"
   },
   "settings": {
     "left_menu__me": "ഞാൻ ഒരുമിക്കുക",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "തുടരുക",
     "sidebar__button__insert": "ചേർക്കുക",
     "sidebar__button__replace": "മാറ്റുക",
-    "sidebar__button__upgrade_to_pro": "പ്രോയിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക",
     "sidebar__button__retry": "വീണ്ടും ശ്രമിക്കുക",
     "sidebar__button__set_up_shortcut": "ഷോർട്ട്കട് സജ്ജമാക്കുക",
     "sidebar__speed_dial__one_click_prompts__button": "ഒരു ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "pada bila-bila masa.",
     "temp__rebrand__is_now": "kini",
     "permission__pricing_hook__button__upgrade_to_pro": "പ്രോയിലേക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__daily_limit__title": "അനവധി ഉപയോഗത്തിന് അപ്‌ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__daily_limit__description1": "എല്ലാ AI പ്രൊവൈഡറുകളുടെയും നിലവിലെ ദിവസ ഉപയോഗ കാപ്പ് എത്തിയിരിക്കുന്നു.\nഅപ്‌ഗ്രേഡ് ചെയ്യാന്‍ നിങ്ങള്‍ക്ക് പ്രൊ നിലവില്‍ ഉപയോഗത്തിന് അനവധി അവസരം ലഭ്യമാണ്, അല്ലെങ്കില്‍ പിന്നീട് ശ്രമിക്കുക.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} നേടുകയാണ് അപേക്ഷിക്കുന്നത് അനവധി സമയങ്ങൾ അൺലിമിറ്റഡ് ആക്കാൻ",
+    "permission__pricing_hook__daily_limit__description1": "സ്പീഡിനോടുകൂടി ഓപ്റ്റിമൈസ് ചെയ്ത GPT-4 എന്നത്, സൃജിക്കാനും ഉന്നതമായ തീരുമാനങ്ങൾ ആവശ്യപ്പെടുന്ന റിയൽ-ടൈം അപ്ലിക്കേഷനുകളിൽ ക്രിയാശീലതയും അടിസ്ഥാനമാക്കാൻ പരിശീലിച്ചത് ആണ്, ഉത്തരവാദിത്വവും നിലവിലുള്ള ഔട്ട്പുട്ട്.",
     "permission__pricing_hook__custom_prompt__title": "അനവധി ഉപയോഗ്യമായ ഉപയോക്തൃ പ്രോംപ്റ്റുകൾ ചേർക്കാൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
     "permission__pricing_hook__custom_prompt__description": "നിങ്ങളുടെ പ്രവർത്തനങ്ങൾ പൂർണ്ണമായും വേഗത്തിൽ ചെയ്യാൻ നിങ്ങളുടെ സ്വന്തമായ പ്രോംപ്റ്റുകൾ ചേർക്കുക.",
     "permission__pricing_hook__custom_prompt_group__title": "അനവധി ഉപയോക്തൃ പ്രോംപ്റ്റ് ഗ്രൂപ്പുകൾ ചേർക്കാൻ പ്രൊ ഉപഗ്രേഡ് ചെയ്യുക",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "പേര് മാറ്റുക",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 അടുത്ത പീഢനിലയാണ് Google-ന്റെ പുതിയ മോഡൽ, പെരുക്കമുള്ള പ്രകടനം, എഫിഷന്റ് MoE ആർക്കിറ്റെക്ച്ചർ, 1 മില്യൺ ടോക്കൺ വിൻഡോകൾക്കുള്ള ദീർഘസംബന്ധമായ പഠനത്തിനുള്ള ഒരു പരിഹാരം, ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങുകൾക്ക് ഉയർന്ന സാധ്യതകൾ നൽകുന്നു.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ജ്യോതി-1.5-പ്രോ സങ്കല്‍പ്പത്തിന് പ്രവേശനം നേടുക",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ഗൂഗിളിന്റെ പുതിയതും അത്യാധുനികവുമായ മോഡൽ ആണ് `Gemini-1.5 Pro`. ഇത് വേഗത്തിൽ നടക്കുന്നു, 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോ, മുന്നേറ്റത്തെ സുരക്ഷ, അടിസ്ഥാനമായി ഉള്ള സാധ്യതകൾ എന്നിവ നൽകുന്നു - ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ശബ്ദം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങിൽ അടുത്തകാലത്ത്."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ഗൂഗിളിന്റെ പുതിയതും അത്യാധുനികവുമായ മോഡൽ ആണ് `Gemini-1.5 Pro`. ഇത് വേഗത്തിൽ നടക്കുന്നു, 1M ടോക്കൺ കൺടെക്സ്റ്റ് വിൻഡോ, മുന്നേറ്റത്തെ സുരക്ഷ, അടിസ്ഥാനമായി ഉള്ള സാധ്യതകൾ എന്നിവ നൽകുന്നു - ടെക്സ്റ്റ്, കോഡ്, ചിത്രം, ശബ്ദം, ഓഡിയോ, വീഡിയോ പ്രോസസിങ്ങിൽ അടുത്തകാലത്ത്.",
+    "sidebar__button__upgrade_to_plan": "പ്ലാൻക്ക് അപ്‌ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "ഫാസ്റ്റ് AI മോഡലുകള്‍ ഉപയോഗിക്കാന്‍:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "അടിസ്ഥാന AI മോഡലുകള്‍ ഉപയോഗിക്കാന്‍:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI കലാവശങ്ങളും ചിത്രങ്ങളും സൃഷ്ടിക്കാന്‍ ഉപയോഗിക്കാന്‍:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI സ്ക്രീൻഷോട്ട്",
     "sidebar_tour__step__5__feature_5__title": "1-ക്ലിക്ക് പ്രോംപ്റ്റുകൾ",
     "sidebar_tour__step__5__feature_6__title": "പ്രോംപ്റ്റ് ഉപയോഗിക്കുക"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ഫാസ്റ്റ് ടെക്സ്റ്റ്",
+    "category__advanced_text": "അടിസ്ഥാന ടെക്സ്റ്റ്",
+    "category__image_generate": "ചിത്രം",
+    "role_label": "നിലവിലുള്ള പ്ലാന്‍: {{ROLE}}",
+    "queries": "ചോദ്യങ്ങള്‍",
+    "reset_on_date": "{{DATE}} ന്‍ മറുപടിയാക്കുക"
   }
 }

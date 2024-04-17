@@ -49,7 +49,10 @@
     "ai_screenshot": "AI স্ক্রিনশট",
     "release_notes": "রিলিজ নোট",
     "web_translation": "এই পৃষ্ঠাটি অনুবাদ করুন",
-    "show_original_text": "মূল পাঠ্য দেখান"
+    "show_original_text": "মূল পাঠ্য দেখান",
+    "upgrade": "আপগ্রেড করুন",
+    "unlimited": "সীমাহীন",
+    "cancel_anytime": "যে কোন সময় বাতিল করুন"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "চালিয়ে যান",
     "sidebar__button__insert": "প্রবেশ করান",
     "sidebar__button__replace": "প্রতিস্থাপন করুন",
-    "sidebar__button__upgrade_to_pro": "প্রো এড়ান",
     "sidebar__button__retry": "পুনরায় চেষ্টা করুন",
     "sidebar__button__set_up_shortcut": "শর্টকাট সেট করুন",
     "sidebar__speed_dial__one_click_prompts__button": "এক ক্লিক প্রম্পট",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "যে কোনও সময়।",
     "temp__rebrand__is_now": "এখন",
     "permission__pricing_hook__button__upgrade_to_pro": "প্রো এড়ান",
-    "permission__pricing_hook__daily_limit__title": "সীমাহীন ব্যবহারের জন্য আপগ্রেড করুন",
-    "permission__pricing_hook__daily_limit__description1": "আপনি সমস্ত AI প্রদানকারীদের জন্য বর্তমান দৈনিক ব্যবহার সীমা অর্জন করেছেন।\nআপনি সীমাহীন ব্যবহারের জন্য এখনই Pro-তে আপগ্রেড করতে পারেন, অথবা পরে আবার চেষ্টা করতে পারেন।",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} এর সীমাহীন বার খুলুন",
+    "permission__pricing_hook__daily_limit__description1": "স্পীড এবং দক্ষতা জন্য অপটিমাইজড, ওপেনএআই-এর GPT-4 ক্রিয়েটিভিটি এবং উন্নত বিচারের সাথে সম্পূর্ণ সময়ের প্রতিক্রিয়া এবং স্থিতিশীল আউটপুট প্রদান করে।",
     "permission__pricing_hook__custom_prompt__title": "অসীম কাস্টম প্রম্পট যোগ করতে আপগ্রেড করুন",
     "permission__pricing_hook__custom_prompt__description": "কাজ করতে সময় বাঁচাতে নিজের প্রম্পট যোগ করুন।",
     "permission__pricing_hook__custom_prompt_group__title": "অসীম কাস্টম প্রম্পট গ্রুপ যোগ করতে আপগ্রেড করুন",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "পুনঃনামকরণ",
     "provider__gemini__model__gemini_1_5_pro__description": "জেমিনি 1.5 হলো গুগলের পরবর্তী প্রজন্মের মডেল, যা উন্নত কর্মক্ষমতা, একটি দক্ষ মোই সংস্কারণ, এবং দীর্ঘ-সংক্ষেপ বোঝার জন্য এক মিলিয়ন টোকেন উইন্ডো সহ দীর্ঘ সংকেত বোঝার সাথে সুপারিশক্তি প্রদান করে, যা পাঠ্য, কোড, চিত্র, শব্দ এবং ভিডিও প্রসেসিং এর জন্য উন্নত সুযোগ সৃষ্টি করে।",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "গেমিনি-1.5-প্রো এর দৃষ্টিতে অ্যাক্সেস পেতে আপগ্রেড করুন",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "গুগলের সর্বনতম এবং সর্বাধিক উন্নত মডেল `জেমিনি-১.৫`। এটি দ্রুত গতি, একটি প্রচ্ছদ 1M টোকেন সংকেতপট, উন্নত নিরাপত্তা এবং পাঠ্য, কোড, ইমেজ, অডিও এবং ভিডিও প্রসেসিং সহ উন্নত সুবিধা প্রদান করে।"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "গুগলের সর্বনতম এবং সর্বাধিক উন্নত মডেল `জেমিনি-১.৫`। এটি দ্রুত গতি, একটি প্রচ্ছদ 1M টোকেন সংকেতপট, উন্নত নিরাপত্তা এবং পাঠ্য, কোড, ইমেজ, অডিও এবং ভিডিও প্রসেসিং সহ উন্নত সুবিধা প্রদান করে।",
+    "sidebar__button__upgrade_to_plan": "আপগ্রেড করুন {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "দ্রুত AI মডেলে অ্যাক্সেস:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "উন্নত AI মডেলে অ্যাক্সেস:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI শিল্প এবং চিত্র তৈরি করার জন্য অ্যাক্সেস:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "এইচআই স্ক্রিনশট",
     "sidebar_tour__step__5__feature_5__title": "1-ক্লিক প্রম্পট",
     "sidebar_tour__step__5__feature_6__title": "প্রম্পট ব্যবহার করুন"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "দ্রুত পাঠ্য",
+    "category__advanced_text": "উন্নত পাঠ্য",
+    "category__image_generate": "চিত্র",
+    "role_label": "বর্তমান পরিকল্পনা: {{ROLE}}",
+    "queries": "কুয়েরি",
+    "reset_on_date": "{{DATE}} তারিখে রিসেট হবে"
   }
 }

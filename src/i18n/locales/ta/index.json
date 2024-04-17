@@ -49,7 +49,10 @@
     "ai_screenshot": "AI ஸ்கிரீன்ஷாட்",
     "release_notes": "வெளியீட்டு குறிப்புகள்",
     "web_translation": "இந்த பக்கத்தை மொழிபெயர்க்கவும்",
-    "show_original_text": "மூல உரையைக் காட்டு"
+    "show_original_text": "மூல உரையைக் காட்டு",
+    "upgrade": "மேம்படுத்து",
+    "unlimited": "வரம்பற்றது",
+    "cancel_anytime": "எப்போதும் ரத்து செய்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "தொடர்க",
     "sidebar__button__insert": "செருகுக",
     "sidebar__button__replace": "மாற்றுக",
-    "sidebar__button__upgrade_to_pro": "ப்ரோ க்கு மேம்படுத்து",
     "sidebar__button__retry": "மீண்டும் முயற்சி செய்",
     "sidebar__button__set_up_shortcut": "குறுக்குவழியை அமைக்கவும்",
     "sidebar__speed_dial__one_click_prompts__button": "ஒரு கிளிக் புரோம்ப்டுகள்",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "எந்த நேரத்திலும்.",
     "temp__rebrand__is_now": "இப்போது உள்ளது",
     "permission__pricing_hook__button__upgrade_to_pro": "ப்ரோ க்கு மேம்படுத்து",
-    "permission__pricing_hook__daily_limit__title": "முழுமையான பயன்பாடுகளுக்கான மேம்படுத்தல்",
-    "permission__pricing_hook__daily_limit__description1": "அனைத்து AI வழங்குநர்களுக்கான தற்போதைய தினசரி பயன்பாட்டு வரம்பை நீங்கள் அடைவது.\nமுடிவாக முடித்து முடிக்க முடியும் அல்லது பிரோ பயன்பாட்டிற்கு மேம்படுத்தல் செய்யலாம்.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} ஐ முழுமையாக அனைத்து முறைகளும் திறந்துவிடுவதற்கு விடையாக்கவும்",
+    "permission__pricing_hook__daily_limit__description1": "சுவாரஸ்யமான மற்றும் மேம்படுத்தப்பட்ட பதில்களுடன் உள்ள உருவாக்கப்பட்ட கருவி GPT-4 ஐ மேம்படுத்தப்பட்டுள்ளது. இது முன்னேற்றம் செய்யும் நேரத்தில் சுவாரஸ்யமான மற்றும் மேம்படுத்தப்பட்ட பதில்களை தருகின்றது.",
     "permission__pricing_hook__custom_prompt__title": "எதுவும் குறிப்புகளை சேர்க்க பிரோ-க்கு மேம்படுத்துக",
     "permission__pricing_hook__custom_prompt__description": "வேலை செய்யும் போது மீண்டும் மீண்டும் நிரப்புகளை வேகமாக சேர்க்க உங்கள் தனிப்பட்ட விழிப்புணர்வைச் சேர்க்கவும்.",
     "permission__pricing_hook__custom_prompt_group__title": "எதுவும் குறிப்பு குழுக்களை சேர்க்க பிரோ-க்கு மேம்படுத்துக",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "மறுபெயரிடு",
     "provider__gemini__model__gemini_1_5_pro__description": "ஜெமினி 1.5 என்பது கூகிளின் அடுத்த தலைவர் மாதிரி மேம்படுத்தப்பட்ட செயல்பாடு, ஒரு பயன்பாட்டு MoE வடிவமைப்பு, மீதமுள்ள உருவாக்கம் மற்றும் 1 மில்லியன் டோக்கன் சாப்பிடும் சாப்பிட்டியல் செயல்பாடுகளுக்கு முன்னுரிமையான முறையில் நடவடிக்கைகளை அனுமதிக்கின்றது, உரை, குறியீடு, படம், ஒலி மற்றும் காணொளி செயல்பாடுகளின் மூலம் மேம்படுத்தப்படும் நன்மைகளை வழங்குகின்றது.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "கண்ணோட்டத்துடன் gemini-1.5-pro அணுகலை மேம்படுத்துக",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ன் புதியதும் மிகவும் முன்னேற்றமுள்ள மாதிரி. அதிக வேகத்தில், ஒரு புறக்கணிப்பு 1M டோக்கன் உள்ளடக்க சந்தர்ப்பங்கள், மேம்படுத்தப்பட்ட பாதுகாப்பு மற்றும் உயர்நிலை திறன்களை உடையது உரை, குறியீடு, படம், ஒலி, ஒலிப்படம் மற்றும் காட்சி செயலாக்கங்களில்."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ன் புதியதும் மிகவும் முன்னேற்றமுள்ள மாதிரி. அதிக வேகத்தில், ஒரு புறக்கணிப்பு 1M டோக்கன் உள்ளடக்க சந்தர்ப்பங்கள், மேம்படுத்தப்பட்ட பாதுகாப்பு மற்றும் உயர்நிலை திறன்களை உடையது உரை, குறியீடு, படம், ஒலி, ஒலிப்படம் மற்றும் காட்சி செயலாக்கங்களில்.",
+    "sidebar__button__upgrade_to_plan": "பிளான்க்கு மேம்படுத்தவும் {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "விரைவு ஐஏ மாதிரிகளுக்கு அணுகல்:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "மேம்பட்ட ஐஏ மாதிரிகளுக்கு அணுகல்:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "ஐயம் கலை & படங்கள் ஐய மாதிரிகளை உருவாக்க அணுகல்:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "ஐய் திரைப்படம்",
     "sidebar_tour__step__5__feature_5__title": "1-கிளிக் உதவிகள்",
     "sidebar_tour__step__5__feature_6__title": "உதவி பயன்படுத்து"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "விரைவு உரை",
+    "category__advanced_text": "மேம்பட்ட உரை",
+    "category__image_generate": "படம்",
+    "role_label": "தற்போதைய திட்டம்: {{ROLE}}",
+    "queries": "வினாக்கள்",
+    "reset_on_date": "{{DATE}} அன்று மீட்டெடு"
   }
 }

@@ -49,7 +49,10 @@
     "ai_screenshot": "Tangkapan skrin AI",
     "release_notes": "Catatan pelepasan",
     "web_translation": "Terjemahkan halaman ini",
-    "show_original_text": "Tunjukkan teks asal"
+    "show_original_text": "Tunjukkan teks asal",
+    "upgrade": "Naik taraf",
+    "unlimited": "Tidak terhad",
+    "cancel_anytime": "Batal pada bila-bila masa"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Teruskan",
     "sidebar__button__insert": "Sisip",
     "sidebar__button__replace": "Gantikan",
-    "sidebar__button__upgrade_to_pro": "Naik taraf ke Pro",
     "sidebar__button__retry": "Cuba semula",
     "sidebar__button__set_up_shortcut": "Tetapkan pintasan",
     "sidebar__speed_dial__one_click_prompts__button": "Petunjuk 1-klik",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "pada bila-bila masa.",
     "temp__rebrand__is_now": "kini",
     "permission__pricing_hook__button__upgrade_to_pro": "Naik taraf ke Pro",
-    "permission__pricing_hook__daily_limit__title": "Naik taraf untuk penggunaan tanpa had",
-    "permission__pricing_hook__daily_limit__description1": "Anda telah mencapai had penggunaan harian semasa untuk semua Pembekal AI.\nAnda boleh naik taraf ke Pro sekarang untuk penggunaan tanpa had, atau cuba lagi kemudian.",
+    "permission__pricing_hook__daily_limit__title": "Buka had tanpa had bagi {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 OpenAI, dioptimumkan untuk kelajuan dan kecekapan, cemerlang dalam aplikasi masa nyata yang memerlukan kreativiti dan penalaran lanjutan dengan masa tindak balas yang lebih pantas dan hasil yang konsisten.",
     "permission__pricing_hook__custom_prompt__title": "Naik taraf untuk menambah prompt khusus tanpa had",
     "permission__pricing_hook__custom_prompt__description": "Tambahkan prompt sendiri untuk mempercepat tugas berulang saat Anda bekerja.",
     "permission__pricing_hook__custom_prompt_group__title": "Naik taraf untuk menambah kumpulan prompt khusus tanpa had",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Namakan Semula",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 adalah model generasi seterusnya Google yang menawarkan prestasi yang ditingkatkan, senibina MoE yang cekap, dan terobosan dalam pemahaman konteks panjang dengan jendela token sehingga 1 juta, membolehkan keupayaan canggih dalam pemprosesan teks, kod, imej, audio, dan video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Naik taraf untuk mengakses gemini-1.5-pro dengan visi",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks 1 juta token yang terobosan, keselamatan yang ditingkatkan, dan kemampuan canggih dalam pemprosesan teks, kod, imej, audio, dan video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Model terbaru dan paling canggih dari Google. Ia menawarkan kelajuan yang lebih pantas, tetingkap konteks 1 juta token yang terobosan, keselamatan yang ditingkatkan, dan kemampuan canggih dalam pemprosesan teks, kod, imej, audio, dan video.",
+    "sidebar__button__upgrade_to_plan": "Naik taraf ke {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Akses kepada model AI pantas:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Akses kepada model AI lanjutan:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Akses untuk mencipta seni AI & model AI imej:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Tangkapan skrin AI",
     "sidebar_tour__step__5__feature_5__title": "Panduan 1-klik",
     "sidebar_tour__step__5__feature_6__title": "Gunakan panduan"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Teks pantas",
+    "category__advanced_text": "Teks lanjutan",
+    "category__image_generate": "Imej",
+    "role_label": "Pelan semasa: {{ROLE}}",
+    "queries": "Pertanyaan",
+    "reset_on_date": "Set semula pada {{DATE}}"
   }
 }

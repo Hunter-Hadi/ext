@@ -49,7 +49,10 @@
     "ai_screenshot": "Ảnh chụp màn hình AI",
     "release_notes": "Ghi chú phát hành",
     "web_translation": "Dịch trang này",
-    "show_original_text": "Hiển thị văn bản gốc"
+    "show_original_text": "Hiển thị văn bản gốc",
+    "upgrade": "Nâng cấp",
+    "unlimited": "Không giới hạn",
+    "cancel_anytime": "Hủy bất kỳ lúc nào"
   },
   "settings": {
     "left_menu__me": "Tôi và MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Tiếp tục",
     "sidebar__button__insert": "Chèn",
     "sidebar__button__replace": "Thay thế",
-    "sidebar__button__upgrade_to_pro": "Nâng cấp lên Pro",
     "sidebar__button__retry": "Thử lại",
     "sidebar__button__set_up_shortcut": "Thiết lập phím tắt",
     "sidebar__speed_dial__one_click_prompts__button": "Gợi ý 1 nhấp chuột",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "bất kỳ lúc nào.",
     "temp__rebrand__is_now": "hiện là",
     "permission__pricing_hook__button__upgrade_to_pro": "Nâng cấp lên Pro",
-    "permission__pricing_hook__daily_limit__title": "Nâng cấp để sử dụng không giới hạn",
-    "permission__pricing_hook__daily_limit__description1": "Bạn đã đạt đến giới hạn sử dụng hàng ngày hiện tại cho tất cả các Nhà cung cấp AI.\nBạn có thể nâng cấp lên phiên bản Pro ngay bây giờ để sử dụng không giới hạn, hoặc thử lại sau.",
+    "permission__pricing_hook__daily_limit__title": "Mở khóa không giới hạn lần sử dụng {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 của OpenAI, tối ưu hóa cho tốc độ và hiệu suất, xuất sắc trong các ứng dụng thời gian thực yêu cầu sự sáng tạo và tư duy nâng cao với thời gian phản hồi nhanh chóng và kết quả nhất quán.",
     "permission__pricing_hook__custom_prompt__title": "Nâng cấp để thêm gợi ý tùy chỉnh không giới hạn",
     "permission__pricing_hook__custom_prompt__description": "Thêm những lời nhắc riêng của bạn để tăng tốc các nhiệm vụ lặp đi lặp lại khi bạn làm việc.",
     "permission__pricing_hook__custom_prompt_group__title": "Nâng cấp để thêm nhóm gợi ý tùy chỉnh không giới hạn",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Đổi tên",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 là mô hình tiếp theo của Google mang lại hiệu suất tăng cường, kiến trúc MoE hiệu quả và đột phá trong việc hiểu ngữ cảnh dài với cửa sổ token lên đến 1 triệu, cho phép các khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nâng cấp để truy cập gemini-1.5-pro với tầm nhìn",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ đột phá, tính an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mẫu mới nhất và tiên tiến nhất của Google. Nó cung cấp tốc độ nhanh hơn, cửa sổ ngữ cảnh 1 triệu từ đột phá, tính an toàn nâng cao và khả năng tiên tiến trong xử lý văn bản, mã, hình ảnh, âm thanh và video.",
+    "sidebar__button__upgrade_to_plan": "Nâng cấp lên {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Truy cập vào mô hình trí tuệ nhân tạo nhanh:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Truy cập vào mô hình trí tuệ nhân tạo tiên tiến:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Truy cập vào mô hình trí tuệ nhân tạo tạo nghệ thuật và hình ảnh:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Ảnh chụp màn hình AI",
     "sidebar_tour__step__5__feature_5__title": "Gợi ý 1-click",
     "sidebar_tour__step__5__feature_6__title": "Sử dụng gợi ý"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Văn bản nhanh",
+    "category__advanced_text": "Văn bản tiên tiến",
+    "category__image_generate": "Hình ảnh",
+    "role_label": "Gói hiện tại: {{ROLE}}",
+    "queries": "Truy vấn",
+    "reset_on_date": "Đặt lại vào ngày {{DATE}}"
   }
 }

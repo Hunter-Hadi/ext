@@ -49,7 +49,10 @@
     "ai_screenshot": "Snímek obrazovky AI",
     "release_notes": "Poznámky k vydání",
     "web_translation": "Přeložit tuto stránku",
-    "show_original_text": "Zobrazit původní text"
+    "show_original_text": "Zobrazit původní text",
+    "upgrade": "Vylepšit",
+    "unlimited": "Neomezený",
+    "cancel_anytime": "Zrušit kdykoli"
   },
   "settings": {
     "left_menu__me": "Já a MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Pokračovat",
     "sidebar__button__insert": "Vložit",
     "sidebar__button__replace": "Nahradit",
-    "sidebar__button__upgrade_to_pro": "Upgrade na Pro",
     "sidebar__button__retry": "Opakovat",
     "sidebar__button__set_up_shortcut": "Nastavit zkratku",
     "sidebar__speed_dial__one_click_prompts__button": "Jedno kliknutí",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "kdykoli.",
     "temp__rebrand__is_now": "je nyní",
     "permission__pricing_hook__button__upgrade_to_pro": "Upgrade na Pro",
-    "permission__pricing_hook__daily_limit__title": "Upgradujte pro neomezené používání",
-    "permission__pricing_hook__daily_limit__description1": "Dosáhli jste současného denního limitu pro všechny poskytovatele AI.\nMůžete se nyní upgradovat na Pro verzi pro neomezené používání, nebo to zkuste později.",
+    "permission__pricing_hook__daily_limit__title": "Odemkněte neomezené množství {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 od OpenAI, optimalizovaný pro rychlost a efektivitu, vyniká v reálném čase aplikací vyžadujících kreativitu a pokročilé úsudky s vylepšenou odezvou a konzistentním výstupem.",
     "permission__pricing_hook__custom_prompt__title": "Upgradujte pro přidání neomezených vlastních promptů",
     "permission__pricing_hook__custom_prompt__description": "Přidejte vlastní upozornění, abyste zrychlili opakující se úkoly při práci.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgradujte pro přidání neomezených skupin vlastních promptů",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Přejmenovat",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je další generace modelu od Googlu nabízející vylepšený výkon, efektivní architekturu MoE a průlom ve schopnosti porozumět dlouhému kontextu s okny o délce až 1 milion tokenů, což umožňuje pokročilé funkce při zpracování textu, kódu, obrázků, zvuku a videa.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade pro přístup k gemini-1.5-pro s funkcí vidění",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Nejnovější a nejvyspělejší model od Googlu. Nabízí rychlejší rychlost, průlomové okno kontextu s 1 milionem tokenů, zvýšenou bezpečnost a pokročilé schopnosti v textovém, kódovém, obrazovém, zvukovém a video zpracování."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Nejnovější a nejvyspělejší model od Googlu. Nabízí rychlejší rychlost, průlomové okno kontextu s 1 milionem tokenů, zvýšenou bezpečnost a pokročilé schopnosti v textovém, kódovém, obrazovém, zvukovém a video zpracování.",
+    "sidebar__button__upgrade_to_plan": "Vylepšit na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Přístup k rychlým modelům AI:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Přístup k pokročilým modelům AI:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Přístup k tvorbě uměleckých děl a obrázků pomocí modelů AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Snímek obrazovky s AI",
     "sidebar_tour__step__5__feature_5__title": "1-kliknutí podněty",
     "sidebar_tour__step__5__feature_6__title": "Použít podnět"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Rychlý text",
+    "category__advanced_text": "Pokročilý text",
+    "category__image_generate": "Obrázek",
+    "role_label": "Aktuální plán: {{ROLE}}",
+    "queries": "Dotazy",
+    "reset_on_date": "Resetovat dne {{DATE}}"
   }
 }

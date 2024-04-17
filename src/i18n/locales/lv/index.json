@@ -49,7 +49,10 @@
     "ai_screenshot": "AI ekrānuzņēmums",
     "release_notes": "Izdevuma piezīmes",
     "web_translation": "Tulkot šo lapu",
-    "show_original_text": "Rādīt oriģinālo tekstu"
+    "show_original_text": "Rādīt oriģinālo tekstu",
+    "upgrade": "Jaunināt",
+    "unlimited": "Neierobežots",
+    "cancel_anytime": "Atcelt jebkurā laikā"
   },
   "settings": {
     "left_menu__me": "Es un MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Turpināt",
     "sidebar__button__insert": "Ievietot",
     "sidebar__button__replace": "Aizvietot",
-    "sidebar__button__upgrade_to_pro": "Jaunināt uz Pro",
     "sidebar__button__retry": "Mēģināt vēlreiz",
     "sidebar__button__set_up_shortcut": "Iestatīt saīsni",
     "sidebar__speed_dial__one_click_prompts__button": "Vienkārši pieskarieties",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "jebkurā laikā.",
     "temp__rebrand__is_now": "tagad ir",
     "permission__pricing_hook__button__upgrade_to_pro": "Jaunināt uz Pro",
-    "permission__pricing_hook__daily_limit__title": "Jauniniet, lai iegūtu neierobežotu lietošanu",
-    "permission__pricing_hook__daily_limit__description1": "Jūs esat sasniedzis pašreizējo dienas lietošanas limitu visiem AI pakalpojumu sniedzējiem.\nVarat jaunināt uz Pro tagad, lai iegūtu neierobežotu lietošanu vai mēģināt vēlāk.",
+    "permission__pricing_hook__daily_limit__title": "Atbloķējiet neierobežotu reižu skaitu {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI GPT-4, optimizēts ātrumam un efektivitātei, izceļas reāllaika lietojumprogrammās, kas prasa radošumu un augsti attīstītu loģisko domāšanu ar uzlabotiem atbildes laikiem un vienmērīgu rezultātu.",
     "permission__pricing_hook__custom_prompt__title": "Uzlabojiet, lai pievienotu neierobežotus pielāgotos norādījumus",
     "permission__pricing_hook__custom_prompt__description": "Pievienojiet savus norādes, lai paātrinātu atkārtojošas darbības, strādājot.",
     "permission__pricing_hook__custom_prompt_group__title": "Uzlabojiet, lai pievienotu neierobežotus pielāgotos norāžu grupas",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Pārdēvēt",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ir Google nākamās paaudzes modelis, kas piedāvā uzlabotu veiktspēju, efektīvu MoE arhitektūru un caurspīdīgu sapratni par ilgāku kontekstu ar līdz pat 1 miljonu simbolu logiem, ļaujot izmantot uzlabotas iespējas teksta, koda, attēlu, audio un video apstrādē.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Jauninājiet, lai piekļūtu gemini-1.5-pro ar redzi",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google jaunākais un visvarenākais modelis. Tas piedāvā ātrāku ātrumu, caurspīdīgu 1M simbolu konteksta logu, uzlabotu drošību un papildu iespējas teksta, koda, attēlu, audio un video apstrādē."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google jaunākais un visvarenākais modelis. Tas piedāvā ātrāku ātrumu, caurspīdīgu 1M simbolu konteksta logu, uzlabotu drošību un papildu iespējas teksta, koda, attēlu, audio un video apstrādē.",
+    "sidebar__button__upgrade_to_plan": "Jaunināt uz {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Piekļuve ātrajiem AI modeļiem:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Piekļuve uzlabotiem AI modeļiem:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Piekļuve AI mākslai un attēlu AI modeļiem:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ekrānuzņēmums",
     "sidebar_tour__step__5__feature_5__title": "1-klikšķa norādes",
     "sidebar_tour__step__5__feature_6__title": "Izmantojiet norādi"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Ātrs teksts",
+    "category__advanced_text": "Uzlabots teksts",
+    "category__image_generate": "Attēls",
+    "role_label": "Pašreizējais plāns: {{ROLE}}",
+    "queries": "Pieprasījumi",
+    "reset_on_date": "Atiestatīt {{DATE}}"
   }
 }

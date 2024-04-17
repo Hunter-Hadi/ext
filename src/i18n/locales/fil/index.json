@@ -49,7 +49,10 @@
     "ai_screenshot": "AI screenshot",
     "release_notes": "Mga release notes",
     "web_translation": "Isalin ang pahinang ito",
-    "show_original_text": "Ipakita ang orihinal na teksto"
+    "show_original_text": "Ipakita ang orihinal na teksto",
+    "upgrade": "Mag-upgrade",
+    "unlimited": "Walang limitasyon",
+    "cancel_anytime": "Bumalik sa anumang oras"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Magpatuloy",
     "sidebar__button__insert": "Isingit",
     "sidebar__button__replace": "Palitan",
-    "sidebar__button__upgrade_to_pro": "Mag-upgrade sa Pro",
     "sidebar__button__retry": "Subukan muli",
     "sidebar__button__set_up_shortcut": "Itakda ang shortcut",
     "sidebar__speed_dial__one_click_prompts__button": "Mga Prompt sa 1-click",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "anumang oras.",
     "temp__rebrand__is_now": "ay ngayon",
     "permission__pricing_hook__button__upgrade_to_pro": "Mag-upgrade sa Pro",
-    "permission__pricing_hook__daily_limit__title": "Mag-upgrade para sa walang limitasyong paggamit",
-    "permission__pricing_hook__daily_limit__description1": "Narating mo na ang kasalukuyang limitasyon sa araw-araw na paggamit para sa lahat ng AI Providers.\nPwede kang mag-upgrade sa Pro ngayon para sa walang limitasyong paggamit, o subukan muli mamaya.",
+    "permission__pricing_hook__daily_limit__title": "Buksan ang walang hanggang mga pagkakataon ng {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "Ang GPT-4 ng OpenAI, na na-optimize para sa bilis at kahusayan, ay magaling sa mga aplikasyong real-time na nangangailangan ng katalinuhan at advanced na pangangatwiran na may pinahusay na oras ng tugon at patuloy na output.",
     "permission__pricing_hook__custom_prompt__title": "Mag-upgrade upang magdagdag ng walang limitasyong custom prompts",
     "permission__pricing_hook__custom_prompt__description": "Magdagdag ng sariling mga prompt upang mapabilis ang mga paulit-ulit na gawain habang nagtatrabaho ka.",
     "permission__pricing_hook__custom_prompt_group__title": "Mag-upgrade upang magdagdag ng walang limitasyong custom prompt groups",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Palitan ang Pangalan",
     "provider__gemini__model__gemini_1_5_pro__description": "Ang Gemini 1.5 ay ang susunod na henerasyon ng modelo ng Google na nag-aalok ng pinahusay na performance, isang mabisang arkitektura ng MoE, at isang pag-usbong sa pang-unawa sa mahabang konteksto na may hanggang sa 1 milyong token na bintana, na nagbibigay-daan sa mga advanced na kakayahan sa pagsasaproseso ng teksto, code, imahe, tunog, at video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Mag-upgrade para ma-access ang gemini-1.5-pro na may vision",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Ang pinakabagong at pinakasusi model ng Google. Nag-aalok ito ng mas mabilis na bilis, isang breakthrough 1M token context window, pinabuting kaligtasan, at advanced na kakayahan sa text, code, image, audio, at video processing."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Ang pinakabagong at pinakasusi model ng Google. Nag-aalok ito ng mas mabilis na bilis, isang breakthrough 1M token context window, pinabuting kaligtasan, at advanced na kakayahan sa text, code, image, audio, at video processing.",
+    "sidebar__button__upgrade_to_plan": "Mag-upgrade sa {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Access sa mabilis na AI models:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Access sa advanced na AI models:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Access sa paglikha ng sining at mga imahe gamit ang AI models:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI screenshot",
     "sidebar_tour__step__5__feature_5__title": "1-click prompts",
     "sidebar_tour__step__5__feature_6__title": "Gamitin ang prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Mabilis na teksto",
+    "category__advanced_text": "Advanced na teksto",
+    "category__image_generate": "Imahe",
+    "role_label": "Kasalukuyang plano: {{ROLE}}",
+    "queries": "Mga Query",
+    "reset_on_date": "I-reset sa {{DATE}}"
   }
 }

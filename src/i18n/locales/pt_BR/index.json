@@ -49,7 +49,10 @@
     "ai_screenshot": "Captura de tela AI",
     "release_notes": "Notas de lançamento",
     "web_translation": "Traduzir esta página",
-    "show_original_text": "Mostrar texto original"
+    "show_original_text": "Mostrar texto original",
+    "upgrade": "Atualizar",
+    "unlimited": "Ilimitado",
+    "cancel_anytime": "Cancelar a qualquer momento"
   },
   "settings": {
     "left_menu__me": "Eu e MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Continuar",
     "sidebar__button__insert": "Inserir",
     "sidebar__button__replace": "Substituir",
-    "sidebar__button__upgrade_to_pro": "Atualizar para Pro",
     "sidebar__button__retry": "Tentar novamente",
     "sidebar__button__set_up_shortcut": "Configurar atalho",
     "sidebar__speed_dial__one_click_prompts__button": "Prompts de 1 clique",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "a qualquer momento.",
     "temp__rebrand__is_now": "agora é",
     "permission__pricing_hook__button__upgrade_to_pro": "Atualizar para Pro",
-    "permission__pricing_hook__daily_limit__title": "Atualize para uso ilimitado",
-    "permission__pricing_hook__daily_limit__description1": "Você atingiu o limite diário atual de uso para todos os Provedores de IA.\nVocê pode atualizar para a versão Pro agora para uso ilimitado ou tentar novamente mais tarde.",
+    "permission__pricing_hook__daily_limit__title": "Desbloqueie um número ilimitado de vezes o(a) {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "O GPT-4 da OpenAI, otimizado para velocidade e eficiência, se destaca em aplicações em tempo real que exigem criatividade e raciocínio avançado, com tempos de resposta aprimorados e saída consistente.",
     "permission__pricing_hook__custom_prompt__title": "Atualize para adicionar prompts personalizados ilimitados",
     "permission__pricing_hook__custom_prompt__description": "Adicione suas próprias mensagens para agilizar tarefas repetitivas enquanto você trabalha.",
     "permission__pricing_hook__custom_prompt_group__title": "Atualize para adicionar grupos de prompts personalizados ilimitados",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Renomear",
     "provider__gemini__model__gemini_1_5_pro__description": "O Gemini 1.5 é o modelo de próxima geração do Google que oferece desempenho aprimorado, uma arquitetura MoE eficiente e um avanço na compreensão de contexto longo com janelas de até 1 milhão de tokens, permitindo capacidades avançadas em processamento de texto, código, imagem, áudio e vídeo.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Atualize para acessar gemini-1.5-pro com visão",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "O modelo mais novo e avançado do Google. Ele oferece velocidade mais rápida, uma janela de contexto de 1 milhão de tokens inovadora, segurança aprimorada e recursos avançados em processamento de texto, código, imagem, áudio e vídeo."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "O modelo mais novo e avançado do Google. Ele oferece velocidade mais rápida, uma janela de contexto de 1 milhão de tokens inovadora, segurança aprimorada e recursos avançados em processamento de texto, código, imagem, áudio e vídeo.",
+    "sidebar__button__upgrade_to_plan": "Atualizar para {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Acesso a modelos de IA rápidos:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Acesso a modelos de IA avançados:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Acesso para criar arte e imagens com modelos de IA:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Captura de tela com IA",
     "sidebar_tour__step__5__feature_5__title": "Prompts de 1 clique",
     "sidebar_tour__step__5__feature_6__title": "Usar prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Texto rápido",
+    "category__advanced_text": "Texto avançado",
+    "category__image_generate": "Imagem",
+    "role_label": "Plano atual: {{ROLE}}",
+    "queries": "Consultas",
+    "reset_on_date": "Redefinir em {{DATE}}"
   }
 }

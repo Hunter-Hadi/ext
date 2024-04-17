@@ -46,7 +46,10 @@
     "ai_screenshot": "AI էկրանիկ",
     "release_notes": "Թողարկման նշումներ",
     "web_translation": "Թարգմանել այս էջը",
-    "show_original_text": "Ցուցադրել սկզբնական տեքստը"
+    "show_original_text": "Ցուցադրել սկզբնական տեքստը",
+    "upgrade": "Թարմացնել",
+    "unlimited": "Անսահմանափակ",
+    "cancel_anytime": "Չեղարկել ցուցադրման ժամանակ"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -255,7 +258,6 @@
     "sidebar__button__continue": "Շարունակել",
     "sidebar__button__insert": "Խմբագրել",
     "sidebar__button__replace": "Փոխարինել",
-    "sidebar__button__upgrade_to_pro": "Թարմացնել Pro-ին",
     "sidebar__button__retry": "Կրկին փորձել",
     "sidebar__button__set_up_shortcut": "Կազմաձևել ծանուցում",
     "sidebar__speed_dial__one_click_prompts__button": "1-կտավորիչ հրահանգներ",
@@ -386,8 +388,8 @@
     "popup__set_shortcut__description4": "ամենայնը:",
     "temp__rebrand__is_now": "հիմա",
     "permission__pricing_hook__button__upgrade_to_pro": "Լավագույնին բարձրացրեք",
-    "permission__pricing_hook__daily_limit__title": "Բարձրացրեք անսահմանափակ օգտագործումը",
-    "permission__pricing_hook__daily_limit__description1": "Դուք հասել եք ընթացիկ օրվա սահմանափակությանը բոլոր AI մատակարարների համար: \nԴուք կարող եք բարձրացնել դառնալ Pro-ի հիմանական օգտագործում, կամ կրկին փորձել:",
+    "permission__pricing_hook__daily_limit__title": "Բացեք {{MODEL_NAME}}-ի անսահմանափակ օրերը",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI-ի GPT-4-ը, որը բարձրացված է արագությամբ և արտադրականության համար, շատ լավագույնս է աշխատելու ժամանակակից հավաքածուի համար՝ ստացվում է արագ պատասխանատու ժամանակներում և հավասար արդյունքներով:",
     "permission__pricing_hook__custom_prompt__title": "Բարձրացրեք ավելին անսահմանափակ մատակարարական խորագրեր",
     "permission__pricing_hook__custom_prompt__description": "Ավելացրեք ձեր սեփական խորագրերը, որպեսզի արագաբանական աշխատանքները արագացնեք:",
     "permission__pricing_hook__custom_prompt_group__title": "Բարձրացրեք ավելին անսահմանափակ մատակարարական խորագրերի խմբեր",
@@ -678,7 +680,11 @@
     "immersive_chat__rename_chat__button__title": "Վերանվանել",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5-ը է Google-ի հաջորդական մոդելն է, որը առավելագույն արագությամբ, զեղչայնացված MoE ճարտարապետական շերտերով և երկարագույն համապատասխանատու պարտադիրության համար նորացված է երկարագույն հատկությունները տեքստի, ծածկագիրների, պատկերի, ձայնի և վիդեոի մշակման համար:",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Զեղչի մասին բարելավելումը gemini-1.5-pro-ին մատչելի դարձնելու համար",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ի նորացված և ամենակարևոր մոդելը: Այն առաջարկում է արագացում, հատկացված 1M տոկենային պարտադիրություն, բարելավված անվտանգություն և բարդացվածություններ տեքստի, ծածկագիր՝ պատկերագրությունից, ձայնից, տեսանյութից և վիդեոից հետո:"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google-ի նորացված և ամենակարևոր մոդելը: Այն առաջարկում է արագացում, հատկացված 1M տոկենային պարտադիրություն, բարելավված անվտանգություն և բարդացվածություններ տեքստի, ծածկագիր՝ պատկերագրությունից, ձայնից, տեսանյութից և վիդեոից հետո:",
+    "sidebar__button__upgrade_to_plan": "Թարմացնել {{PLAN}}-ին",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Մուտք արեցնել արագ AI մոդելների:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Մուտք արեցնել առաջադրանքային AI մոդելների:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Մուտք արեցնել ստեղծել AI արվեստի և պատկերների AI մոդելների:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI էկրանիկ",
     "sidebar_tour__step__5__feature_5__title": "1-կտավ",
     "sidebar_tour__step__5__feature_6__title": "Օգտագործել հուշում"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Արագ տեքստ",
+    "category__advanced_text": "Առաջադրանքային տեքստ",
+    "category__image_generate": "Պատկեր",
+    "role_label": "Ընթացիկ պլանը: {{ROLE}}",
+    "queries": "Հարցումներ",
+    "reset_on_date": "Վերականգնել {{DATE}}-ին"
   }
 }

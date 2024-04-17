@@ -49,7 +49,10 @@
     "ai_screenshot": "Picha ya AI",
     "release_notes": "Maelezo ya toleo",
     "web_translation": "Tafsiri ukurasa huu",
-    "show_original_text": "Onyesha maandishi ya awali"
+    "show_original_text": "Onyesha maandishi ya awali",
+    "upgrade": "Sasisha",
+    "unlimited": "Isiyokuwa na kikomo",
+    "cancel_anytime": "Ghairi wakati wowote"
   },
   "settings": {
     "left_menu__me": "Mimi na MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Endelea",
     "sidebar__button__insert": "Ingiza",
     "sidebar__button__replace": "Badilisha",
-    "sidebar__button__upgrade_to_pro": "Nenda Pro",
     "sidebar__button__retry": "Jaribu tena",
     "sidebar__button__set_up_shortcut": "Sanidi mkato",
     "sidebar__speed_dial__one_click_prompts__button": "Vidokezo vya kubofya 1",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "wakati wowote.",
     "temp__rebrand__is_now": "sasa ni",
     "permission__pricing_hook__button__upgrade_to_pro": "Nenda Pro",
-    "permission__pricing_hook__daily_limit__title": "Sasisha kwa matumizi yasiyokuwa na kikomo",
-    "permission__pricing_hook__daily_limit__description1": "Umefikia kiwango cha matumizi ya kila siku cha sasa kwa Watoa Huduma wote wa AI.\nUnaweza kusasisha kuwa Pro sasa kwa matumizi yasiyokuwa na kikomo, au jaribu tena baadaye.",
+    "permission__pricing_hook__daily_limit__title": "Fungua mara nyingi zaidi ya {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 ya OpenAI, iliyoboreshwa kwa kasi na ufanisi, inafanya vizuri katika programu za wakati halisi zinazohitaji ubunifu na hoja za juu na majibu yaliyoboreshwa na matokeo thabiti.",
     "permission__pricing_hook__custom_prompt__title": "Sasisha ili kuongeza maelekezo ya desturi yasiyokuwa na kikomo",
     "permission__pricing_hook__custom_prompt__description": "Ongeza maelezo yako mwenyewe ili kuongeza kasi ya kazi zinazorudiwa unapofanya kazi.",
     "permission__pricing_hook__custom_prompt_group__title": "Sasisha ili kuongeza vikundi vya maelekezo ya desturi yasiyokuwa na kikomo",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Badilisha Jina",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ni mfano wa kizazi kijacho wa Google unaoongeza utendaji ulioboreshwa, muundo wa MoE wenye ufanisi, na uvumbuzi katika uelewa wa muktadha mrefu na madirisha ya alama milioni 1, kuruhusu uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Sasisha ili kupata gemini-1.5-pro na uwezo wa kuona",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mfano mpya na wa kisasa zaidi wa Google. Inatoa kasi ya haraka, dirisha la muktadha lenye alama za 1M, usalama ulioboreshwa, na uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Mfano mpya na wa kisasa zaidi wa Google. Inatoa kasi ya haraka, dirisha la muktadha lenye alama za 1M, usalama ulioboreshwa, na uwezo wa juu katika usindikaji wa maandishi, nambari, picha, sauti, na video.",
+    "sidebar__button__upgrade_to_plan": "Nenda kwenye {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Upatikanaji wa mifano ya AI haraka:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Upatikanaji wa mifano ya AI ya juu:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Upatikanaji wa kuunda sanaa ya AI na mifano ya picha ya AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Picha ya AI",
     "sidebar_tour__step__5__feature_5__title": "Vidokezo vya 1-bonyeza",
     "sidebar_tour__step__5__feature_6__title": "Tumia onyo"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Maandishi haraka",
+    "category__advanced_text": "Maandishi ya juu",
+    "category__image_generate": "Picha",
+    "role_label": "Mpango wa sasa: {{ROLE}}",
+    "queries": "Maswali",
+    "reset_on_date": "Weka upya tarehe {{DATE}}"
   }
 }

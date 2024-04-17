@@ -49,7 +49,10 @@
     "ai_screenshot": "AI ekran görüntüsü",
     "release_notes": "Sürüm notları",
     "web_translation": "Bu sayfayı çevir",
-    "show_original_text": "Orijinal metni göster"
+    "show_original_text": "Orijinal metni göster",
+    "upgrade": "Yükselt",
+    "unlimited": "Sınırsız",
+    "cancel_anytime": "Her zaman iptal et"
   },
   "settings": {
     "left_menu__me": "Ben ve MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Devam et",
     "sidebar__button__insert": "Ekle",
     "sidebar__button__replace": "Değiştir",
-    "sidebar__button__upgrade_to_pro": "Pro'ya Yükselt",
     "sidebar__button__retry": "Tekrar dene",
     "sidebar__button__set_up_shortcut": "Kısayolu ayarla",
     "sidebar__speed_dial__one_click_prompts__button": "1 tıklama ipuçları",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "her zaman.",
     "temp__rebrand__is_now": "şimdi",
     "permission__pricing_hook__button__upgrade_to_pro": "Pro'ya Yükselt",
-    "permission__pricing_hook__daily_limit__title": "Sınırsız kullanım için yükseltin",
-    "permission__pricing_hook__daily_limit__description1": "Tüm AI Sağlayıcıları için günlük kullanım sınırına ulaştınız.\nSınırsız kullanım için şimdi Pro'ya yükseltebilir veya daha sonra tekrar deneyebilirsiniz.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} için sınırsız erişimi aç",
+    "permission__pricing_hook__daily_limit__description1": "Hız ve verimlilik için optimize edilmiş OpenAI GPT-4, gelişmiş yanıt süreleri ve tutarlı çıktı ile yaratıcılık ve ileri düzey mantık gerektiren gerçek zamanlı uygulamalarda mükemmel performans sergiler.",
     "permission__pricing_hook__custom_prompt__title": "Sınırsız özel ipucu eklemek için yükseltin",
     "permission__pricing_hook__custom_prompt__description": "Tekrarlayan görevleri hızlandırmak için kendi ipuçlarınızı ekleyin.",
     "permission__pricing_hook__custom_prompt_group__title": "Sınırsız özel ipucu grubu eklemek için yükseltin",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Yeniden Adlandır",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5, Google'ın gelişmiş performans sunan, verimli bir MoE mimarisi ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sağlayan, 1 milyon token pencereye kadar uzanan uzun bağlam anlama konusunda çığır açan bir sonraki nesil modelidir.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Gemini-1.5-Pro'ya erişmek için yükseltin",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Google'ın en yeni ve en gelişmiş modeli. Daha hızlı hız, çığır açan 1M token bağlam penceresi, gelişmiş güvenlik ve metin, kod, görüntü, ses ve video işleme alanlarında gelişmiş yetenekler sunar.",
+    "sidebar__button__upgrade_to_plan": "Planını {{PLAN}}'e yükselt",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Hızlı AI modellerine erişim:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Gelişmiş AI modellerine erişim:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI sanatı ve görüntüleri oluşturma AI modellerine erişim:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ekran görüntüsü",
     "sidebar_tour__step__5__feature_5__title": "1 tıklamayla ipuçları",
     "sidebar_tour__step__5__feature_6__title": "İpucu kullan"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Hızlı metin",
+    "category__advanced_text": "Gelişmiş metin",
+    "category__image_generate": "Görüntü",
+    "role_label": "Geçerli plan: {{ROLE}}",
+    "queries": "Sorgular",
+    "reset_on_date": "{{DATE}} tarihinde sıfırlanacak"
   }
 }

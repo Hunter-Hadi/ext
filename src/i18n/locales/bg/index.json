@@ -49,7 +49,10 @@
     "ai_screenshot": "AI снимка",
     "release_notes": "Забележки за версията",
     "web_translation": "Преведете тази страница",
-    "show_original_text": "Покажи оригиналния текст"
+    "show_original_text": "Покажи оригиналния текст",
+    "upgrade": "Надстройка",
+    "unlimited": "Неограничен",
+    "cancel_anytime": "Отказ по всяко време"
   },
   "settings": {
     "left_menu__me": "Аз и MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Продължи",
     "sidebar__button__insert": "Вмъкни",
     "sidebar__button__replace": "Замени",
-    "sidebar__button__upgrade_to_pro": "Надстройте до Про",
     "sidebar__button__retry": "Опитай отново",
     "sidebar__button__set_up_shortcut": "Настройка на прекия път",
     "sidebar__speed_dial__one_click_prompts__button": "1-клик подсказки",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "по всяко време.",
     "temp__rebrand__is_now": "е сега",
     "permission__pricing_hook__button__upgrade_to_pro": "Надстройте до Про",
-    "permission__pricing_hook__daily_limit__title": "Надстройка за неограничено използване",
-    "permission__pricing_hook__daily_limit__description1": "Достигнахте текущия дневен лимит за използване от всички AI доставчици.\nМожете да надстроите до Про сега за неограничено използване или да опитате по-късно.",
+    "permission__pricing_hook__daily_limit__title": "Отключете неограничен брой пъти на {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 на OpenAI, оптимизиран за скорост и ефективност, се отличава в реално време приложения, изискващи креативност и напреднало мислене с подобрено време за реакция и последователни резултати.",
     "permission__pricing_hook__custom_prompt__title": "Надстройка, за да добавите неограничен брой персонализирани подсказки",
     "permission__pricing_hook__custom_prompt__description": "Добавете собствени подсказки, за да ускорите повтарящи се задачи по време на работа.",
     "permission__pricing_hook__custom_prompt_group__title": "Надстройка, за да добавите неограничен брой групи с персонализирани подсказки",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Преименувай",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 е следващото поколение модел на Google, което предлага подобрена производителност, ефективна архитектура MoE и прорыв в разбирането на дълги контексти с до 1 милион токена, позволяващи напреднали възможности в текстова, кодова, изображения, аудио и видео обработка.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Надстройка за достъп до gemini-1.5-pro с визия",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Най-новият и най-развит модел на Google. Предлага по-бърза скорост, проривен контекстен прозорец от 1 милион токена, подобрена безопасност и разширени възможности в текстово, кодово, изображенско, аудио и видео обработване."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Най-новият и най-развит модел на Google. Предлага по-бърза скорост, проривен контекстен прозорец от 1 милион токена, подобрена безопасност и разширени възможности в текстово, кодово, изображенско, аудио и видео обработване.",
+    "sidebar__button__upgrade_to_plan": "Надстройте до {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Достъп до бързи AI модели:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Достъп до напреднали AI модели:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Достъп за създаване на AI изкуство и изображения:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI снимка",
     "sidebar_tour__step__5__feature_5__title": "1-клик подсказки",
     "sidebar_tour__step__5__feature_6__title": "Използване на подсказка"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Бърз текст",
+    "category__advanced_text": "Напреден текст",
+    "category__image_generate": "Изображение",
+    "role_label": "Текущ план: {{ROLE}}",
+    "queries": "Заявки",
+    "reset_on_date": "Нулиране на {{DATE}}"
   }
 }

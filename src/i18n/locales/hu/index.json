@@ -49,7 +49,10 @@
     "ai_screenshot": "AI képernyőkép",
     "release_notes": "Verzióinformációk",
     "web_translation": "Fordítsa le ezt az oldalt",
-    "show_original_text": "Eredeti szöveg megjelenítése"
+    "show_original_text": "Eredeti szöveg megjelenítése",
+    "upgrade": "Frissítés",
+    "unlimited": "Korlátlan",
+    "cancel_anytime": "Bármikor lemondható"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Folytatás",
     "sidebar__button__insert": "Beszúrás",
     "sidebar__button__replace": "Csere",
-    "sidebar__button__upgrade_to_pro": "Frissítés Pro változatra",
     "sidebar__button__retry": "Újra",
     "sidebar__button__set_up_shortcut": "Parancsikon beállítása",
     "sidebar__speed_dial__one_click_prompts__button": "1 kattintásos útmutatók",
@@ -381,8 +383,8 @@
     "popup__set_shortcut__description3": "bármikor megváltoztathatod.",
     "temp__rebrand__is_now": "mostantól",
     "permission__pricing_hook__button__upgrade_to_pro": "Frissítés Pro változatra",
-    "permission__pricing_hook__daily_limit__title": "Frissítés korlátlan használathoz",
-    "permission__pricing_hook__daily_limit__description1": "Elérted a jelenlegi napi használati korlátot az összes AI szolgáltatóhoz.\nMost frissíthetsz Pro változatra korlátlan használathoz, vagy később próbálkozhatsz újra.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} korlátlan feloldása",
+    "permission__pricing_hook__daily_limit__description1": "Az OpenAI GPT-4, amelyet a sebesség és hatékonyság optimalizálásával fejlesztettek ki, kiválóan alkalmas valós idejű alkalmazásokhoz, amelyek kreativitást és fejlett gondolkodást igényelnek, gyors válaszidővel és következetes kimenettel.",
     "permission__pricing_hook__custom_prompt__title": "Korlátlan egyedi felugró ablak hozzáadásához frissítés",
     "permission__pricing_hook__custom_prompt__description": "Addjon hozzá a saját figyelmeztetéseket, hogy felgyorsítsa az ismétlődő feladatokat, amiközben dolgozik.",
     "permission__pricing_hook__custom_prompt_group__title": "Korlátlan egyedi felugró ablak csoport hozzáadásához frissítés",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Átnevezés",
     "provider__gemini__model__gemini_1_5_pro__description": "A Gemini 1.5 a Google következő generációs modellje, amely javított teljesítményt, hatékony MoE architektúrát és áttörést jelent a hosszú kontextus megértésében akár 1 millió token ablakkal, lehetővé téve fejlett képességeket a szöveg-, kód-, kép-, hang- és videófeldolgozás területén.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Frissítés a gemini-1.5-prohoz látással",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fejlett biztonsági funkciókat és haladó képességeket kínál a szöveg-, kód-, kép-, hang- és videofeldolgozás területén."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "A Google legújabb és legfejlettebb modellje. Gyorsabb sebességet, áttörést jelentő 1M tokenes kontextusablakot, fejlett biztonsági funkciókat és haladó képességeket kínál a szöveg-, kód-, kép-, hang- és videofeldolgozás területén.",
+    "sidebar__button__upgrade_to_plan": "Frissítés a(z) {{PLAN}} verzióra",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Hozzáférés a gyors AI modellekhez:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Hozzáférés az előrehaladott AI modellekhez:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Hozzáférés az AI művészet és képek létrehozásához:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI képernyőkép",
     "sidebar_tour__step__5__feature_5__title": "1 kattintásos promptok",
     "sidebar_tour__step__5__feature_6__title": "Használjon promptot"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Gyors szöveg",
+    "category__advanced_text": "Előrehaladott szöveg",
+    "category__image_generate": "Kép",
+    "role_label": "Jelenlegi terv: {{ROLE}}",
+    "queries": "Lekérdezések",
+    "reset_on_date": "Visszaállítás ekkor: {{DATE}}"
   }
 }

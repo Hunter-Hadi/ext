@@ -49,7 +49,10 @@
     "ai_screenshot": "צילום מסך באמצעות AI",
     "release_notes": "הערות גרסה",
     "web_translation": "תרגם את הדף הזה",
-    "show_original_text": "הצג טקסט מקור"
+    "show_original_text": "הצג טקסט מקור",
+    "upgrade": "שדרג",
+    "unlimited": "ללא הגבלה",
+    "cancel_anytime": "בטל בכל עת"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "המשך",
     "sidebar__button__insert": "הכנס",
     "sidebar__button__replace": "החלף",
-    "sidebar__button__upgrade_to_pro": "שדרג לגרסה Pro",
     "sidebar__button__retry": "נסה שוב",
     "sidebar__button__set_up_shortcut": "הגדר קיצור דרך",
     "sidebar__speed_dial__one_click_prompts__button": "קליק אחד",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "בכל עת.",
     "temp__rebrand__is_now": "הוא כעת",
     "permission__pricing_hook__button__upgrade_to_pro": "שדרג לגרסה Pro",
-    "permission__pricing_hook__daily_limit__title": "שדרג לשימוש בלתי מוגבל",
-    "permission__pricing_hook__daily_limit__description1": "הגעת למגבלת השימוש היומית הנוכחית עבור כל ספקי האינטיליגנציה המלאכותית.\nתוכל לשדרג לגרסה Pro כעת לשימוש בלתי מוגבל, או לנסות שוב מאוחר יותר.",
+    "permission__pricing_hook__daily_limit__title": "פתח את האפשרויות הבלתי מוגבלות של {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 של OpenAI, מותאם למהירות ויעילות, מתקדם ביישומים בזמן אמת הדורשים יצירתיות והיסטוריה מתקדמת עם זמני תגובה משופרים ופלט עקבי.",
     "permission__pricing_hook__custom_prompt__title": "שדרג כדי להוסיף פרומפטים מותאמים אישית בלתי מוגבלים",
     "permission__pricing_hook__custom_prompt__description": "הוסף הזמנות משלך כדי להאיץ משימות חוזרות בעת עבודה.",
     "permission__pricing_hook__custom_prompt_group__title": "שדרג כדי להוסיף קבוצות פרומפטים מותאמים אישית בלתי מוגבלות",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "שנה שם",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 היא הדור הבא של Google המציע ביצועים משופרים, ארכיטקטורת MoE יעילה ושימוש בהבנה ארוכה-התקשורת עם חלונות של עד 1 מיליון טוקנים, המאפשרים יכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "שדרג כדי לקבל גימיני-1.5-פרו עם ראייה",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, בטיחות משופרת ויכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "הדגם החדש ביותר והמתקדם ביותר של Google. הוא מציע מהירות מוגברת, חלון קונטקסט של 1 מיליון טוקנים, בטיחות משופרת ויכולות מתקדמות בעיבוד טקסט, קוד, תמונה, שמע ווידאו.",
+    "sidebar__button__upgrade_to_plan": "שדרג ל{{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "גישה למודלי AI מהירים:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "גישה למודלי AI מתקדמים:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "גישה ליצירת אמנות AI ומודלים של תמונות:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "צילום מסך AI",
     "sidebar_tour__step__5__feature_5__title": "פרומטים בלחיצה אחת",
     "sidebar_tour__step__5__feature_6__title": "השתמש בפרומט"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "טקסט מהיר",
+    "category__advanced_text": "טקסט מתקדם",
+    "category__image_generate": "תמונה",
+    "role_label": "תוכנית נוכחית: {{ROLE}}",
+    "queries": "שאילתות",
+    "reset_on_date": "איפוס בתאריך {{DATE}}"
   }
 }

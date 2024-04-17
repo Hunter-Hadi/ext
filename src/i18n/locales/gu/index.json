@@ -49,7 +49,10 @@
     "ai_screenshot": "AI સ્ક્રીનશોટ",
     "release_notes": "રિલીઝ નોંધ",
     "web_translation": "આ પેજ અનુવાદ કરો",
-    "show_original_text": "ઓરિજિનલ ટેક્સ્ટ બતાવો"
+    "show_original_text": "ઓરિજિનલ ટેક્સ્ટ બતાવો",
+    "upgrade": "અપગ્રેડ",
+    "unlimited": "અમર્યાદિત",
+    "cancel_anytime": "કોઈપણ સમયે રદ કરો"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "ચાલુ રાખો",
     "sidebar__button__insert": "ઉમેરો",
     "sidebar__button__replace": "બદલો",
-    "sidebar__button__upgrade_to_pro": "પ્રો માટે અપગ્રેડ કરો",
     "sidebar__button__retry": "ફરીથી પ્રયાસ કરો",
     "sidebar__button__set_up_shortcut": "શૉર્ટકટ સેટ કરો",
     "sidebar__speed_dial__one_click_prompts__button": "1-ક્લિક પ્રોમ્પ્ટ્સ",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "કોઈપણ સમયે.",
     "temp__rebrand__is_now": "હવે છે",
     "permission__pricing_hook__button__upgrade_to_pro": "પ્રો માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__daily_limit__title": "અમર્યાદિત ઉપયોગ માટે અનલિમિટેડ વપરાશ માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__daily_limit__description1": "તમે બધા AI પ્રોવાઇડર્સ માટેની વર્તમાન દૈનિક વપરાશ કેપ પર પહોંચ્યા છે.\nતમે અનલિમિટેડ વપરાશ માટે હવે Pro માટે અપગ્રેડ કરી શકો છો, અથવા પછીથી ફરીથી પ્રયાસ કરો.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}}ની અસંખ્ય વખત ખોલો",
+    "permission__pricing_hook__daily_limit__description1": "સ્પીડ અને દક્ષતાથી ઓપનએઆઈનું GPT-4, રીઅલ-ટાઇમ એપ્લિકેશન્સમાં રચનાત્મકતા અને ઉન્નત તરીકે વચ્ચેથી સોચવાની જરૂર હોય તેવી માહિતી આપે છે.",
     "permission__pricing_hook__custom_prompt__title": "અપરિમિત કસ્ટમ પ્રોમ્પ્ટ્સ ઉમેરવા માટે અપગ્રેડ કરો",
     "permission__pricing_hook__custom_prompt__description": "કામ કરતાં સમય નિરંતર કાર્યોને ઝડપીથી પૂર્ણ કરવા માટે તમારા આપના પ્રોમ્પ્ટ્સ ઉમેરો.",
     "permission__pricing_hook__custom_prompt_group__title": "અપરિમિત કસ્ટમ પ્રોમ્પ્ટ ગ્રુપ્સ ઉમેરવા માટે અપગ્રેડ કરો",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "નામ બદલો",
     "provider__gemini__model__gemini_1_5_pro__description": "જેમિની 1.5 ગૂગલનો આગામી મોડલ છે જે પ્રદર્શનને સુધારે છે, એક અદ્યતન MoE આર્કિટેક્ચર છે અને લાંબા સંદર્ભ સમજણમાં એક પરાવર્તન છે જેથી 1 મિલિયન ટોકન વિંડોઝમાં લંબા સંદર્ભ સમજણની સાધનસામર્થ્ય મળે છે, જે ટેક્સ્ટ, કોડ, ઇમેજ, ઓડિયો અને વિડિઓ પ્રક્રિયાઓ પર આગળની સામર્થ્યો પૂરી કરે છે.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "જેમિની-1.5-પ્રો સાથે વિઝન એક્સેસ માટે અપગ્રેડ કરો",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleનું નવુંતમ અને સૌથી આગ્રહી મોડેલ. તે ઝડપી સ્પીડ, એક પરાવર્તનકારી 1M ટોકન સંદર્ભ વિંડો, સુધારેલી સુરક્ષા અને પાઠ, કોડ, છબી, આવાજ અને વિડિઓ પ્રક્રિયાઓમાં એડવાન્સ ક્ષમતાઓ પૂરી પાડે છે."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googleનું નવુંતમ અને સૌથી આગ્રહી મોડેલ. તે ઝડપી સ્પીડ, એક પરાવર્તનકારી 1M ટોકન સંદર્ભ વિંડો, સુધારેલી સુરક્ષા અને પાઠ, કોડ, છબી, આવાજ અને વિડિઓ પ્રક્રિયાઓમાં એડવાન્સ ક્ષમતાઓ પૂરી પાડે છે.",
+    "sidebar__button__upgrade_to_plan": "પ્લાન માટે અપગ્રેડ કરો {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "ઝડપી AI મોડેલોનું ઍક્સેસ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "એડવાન્સ એઆઈ મોડેલોનું ઍક્સેસ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI આર્ટ અને છબીઓ બનાવવાનું ઍક્સેસ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI સ્ક્રીનશોટ",
     "sidebar_tour__step__5__feature_5__title": "1-ક્લિક પ્રોમ્પ્ટ્સ",
     "sidebar_tour__step__5__feature_6__title": "પ્રોમ્પ્ટ ઉપયોગ કરો"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ઝડપી ટેક્સ્ટ",
+    "category__advanced_text": "એડવાન્સ ટેક્સ્ટ",
+    "category__image_generate": "છબી",
+    "role_label": "વર્તમાન પ્લાન: {{ROLE}}",
+    "queries": "પ્રશ્નો",
+    "reset_on_date": "{{DATE}} પર રીસેટ કરો"
   }
 }

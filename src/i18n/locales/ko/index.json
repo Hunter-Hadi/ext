@@ -49,7 +49,10 @@
     "ai_screenshot": "AI 스크린샷",
     "release_notes": "릴리즈 노트",
     "web_translation": "이 페이지 번역하기",
-    "show_original_text": "원본 텍스트 보기"
+    "show_original_text": "원본 텍스트 보기",
+    "upgrade": "업그레이드",
+    "unlimited": "무제한",
+    "cancel_anytime": "언제든지 취소"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "계속하기",
     "sidebar__button__insert": "삽입",
     "sidebar__button__replace": "교체",
-    "sidebar__button__upgrade_to_pro": "프로로 업그레이드",
     "sidebar__button__retry": "다시 시도",
     "sidebar__button__set_up_shortcut": "바로 가기 설정",
     "sidebar__speed_dial__one_click_prompts__button": "1-클릭 프롬프트",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "언제든지.",
     "temp__rebrand__is_now": "지금은",
     "permission__pricing_hook__button__upgrade_to_pro": "프로로 업그레이드",
-    "permission__pricing_hook__daily_limit__title": "무제한 사용을 위해 업그레이드하세요",
-    "permission__pricing_hook__daily_limit__description1": "모든 AI 제공업체에 대한 현재 일일 사용량 한도에 도달했습니다.\n무제한 사용을 위해 지금 Pro로 업그레이드하거나 나중에 다시 시도하세요.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}}의 무제한 이용 해제",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI의 GPT-4는 속도와 효율성을 최적화하여 실시간 응용 프로그램에서 창의력과 고급 추론을 필요로하는 작업에 뛰어나며, 반응 시간과 일관된 출력을 제공합니다.",
     "permission__pricing_hook__custom_prompt__title": "무제한 사용자 정의 프롬프트 추가를 위해 Pro로 업그레이드하세요",
     "permission__pricing_hook__custom_prompt__description": "작업하는 동안 반복적인 작업을 빠르게 수행하기 위해 자체 프롬프트를 추가하세요.",
     "permission__pricing_hook__custom_prompt_group__title": "무제한 사용자 정의 프롬프트 그룹 추가를 위해 Pro로 업그레이드하세요",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "이름 바꾸기",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5는 구글의 차세대 모델로, 향상된 성능, 효율적인 MoE 아키텍처, 최대 1백만 토큰 윈도우를 통한 긴 문맥 이해력의 돌파구를 제공하여 텍스트, 코드, 이미지, 오디오 및 비디오 처리를 위한 고급 기능을 가능하게 합니다.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "비전을 갖춘 gemini-1.5-pro에 액세스하려면 업그레이드하세요",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "구글의 최신 및 가장 고급 모델인 Gemini-1.5입니다. 더 빠른 속도, 획기적인 1백만 토큰 컨텍스트 창, 향상된 안전 기능 및 텍스트, 코드, 이미지, 오디오, 비디오 처리를 위한 고급 기능을 제공합니다."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "구글의 최신 및 가장 고급 모델인 Gemini-1.5입니다. 더 빠른 속도, 획기적인 1백만 토큰 컨텍스트 창, 향상된 안전 기능 및 텍스트, 코드, 이미지, 오디오, 비디오 처리를 위한 고급 기능을 제공합니다.",
+    "sidebar__button__upgrade_to_plan": "계획으로 업그레이드하기",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "빠른 AI 모델에 액세스:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "고급 AI 모델에 액세스:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI 예술 및 이미지 생성 AI 모델 생성에 액세스:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI 스크린샷",
     "sidebar_tour__step__5__feature_5__title": "1-클릭 프롬프트",
     "sidebar_tour__step__5__feature_6__title": "프롬프트 사용"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "빠른 텍스트",
+    "category__advanced_text": "고급 텍스트",
+    "category__image_generate": "이미지",
+    "role_label": "현재 요금제: {{ROLE}}",
+    "queries": "쿼리",
+    "reset_on_date": "{{DATE}}에 초기화"
   }
 }

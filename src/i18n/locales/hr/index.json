@@ -49,7 +49,10 @@
     "ai_screenshot": "AI snimak ekrana",
     "release_notes": "Bilješke o izdanju",
     "web_translation": "Prevedi ovu stranicu",
-    "show_original_text": "Prikaži izvorni tekst"
+    "show_original_text": "Prikaži izvorni tekst",
+    "upgrade": "Nadogradnja",
+    "unlimited": "Neograničeno",
+    "cancel_anytime": "Otkazivanje u bilo koje vrijeme"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Nastavi",
     "sidebar__button__insert": "Umetni",
     "sidebar__button__replace": "Zamijeni",
-    "sidebar__button__upgrade_to_pro": "Nadogradite na Pro",
     "sidebar__button__retry": "Pokušaj ponovno",
     "sidebar__button__set_up_shortcut": "Postavi prečac",
     "sidebar__speed_dial__one_click_prompts__button": "Jednostavni prijedlozi",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "u bilo kojem trenutku.",
     "temp__rebrand__is_now": "sada je",
     "permission__pricing_hook__button__upgrade_to_pro": "Nadogradite na Pro",
-    "permission__pricing_hook__daily_limit__title": "Nadogradite za neograničeno korištenje",
-    "permission__pricing_hook__daily_limit__description1": "Dosegli ste trenutno dnevno ograničenje korištenja za sve AI pružatelje.\nMožete nadograditi na Pro verziju za neograničeno korištenje ili pokušati kasnije.",
+    "permission__pricing_hook__daily_limit__title": "Otključajte neograničen broj puta {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI-jev GPT-4, optimiziran za brzinu i učinkovitost, izvrsno se snalazi u stvarnim aplikacijama koje zahtijevaju kreativnost i napredno zaključivanje s poboljšanim vremenom odgovora i dosljednim rezultatima.",
     "permission__pricing_hook__custom_prompt__title": "Nadogradite da biste dodali neograničene prilagođene upute",
     "permission__pricing_hook__custom_prompt__description": "Dodajte vlastite upute kako biste ubrzali ponavljajuće zadatke dok radite.",
     "permission__pricing_hook__custom_prompt_group__title": "Nadogradite da biste dodali neograničene grupe prilagođenih uputa",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Preimenuj",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 je Googleov model nove generacije koji nudi poboljšane performanse, učinkovitu MoE arhitekturu i napredak u razumijevanju dugog konteksta s prozorima do 1 milijun tokena, omogućujući napredne mogućnosti obrade teksta, koda, slika, zvuka i videozapisa.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Nadogradite za pristup gemini-1.5-pro s vizijom",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model tvrtke Google. Nudi bržu brzinu, probojni prozor konteksta od 1M tokena, poboljšanu sigurnost i napredne mogućnosti obrade teksta, koda, slika, zvuka i videozapisa."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnoviji i najnapredniji model tvrtke Google. Nudi bržu brzinu, probojni prozor konteksta od 1M tokena, poboljšanu sigurnost i napredne mogućnosti obrade teksta, koda, slika, zvuka i videozapisa.",
+    "sidebar__button__upgrade_to_plan": "Nadogradite na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Pristup brzim AI modelima:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Pristup naprednim AI modelima:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Pristup stvaranju AI umjetnosti i slika:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI snimka zaslona",
     "sidebar_tour__step__5__feature_5__title": "1-klik upute",
     "sidebar_tour__step__5__feature_6__title": "Koristite uputu"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Brzi tekst",
+    "category__advanced_text": "Napredni tekst",
+    "category__image_generate": "Slika",
+    "role_label": "Trenutni plan: {{ROLE}}",
+    "queries": "Upiti",
+    "reset_on_date": "Resetiranje {{DATE}}"
   }
 }

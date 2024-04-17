@@ -49,7 +49,10 @@
     "ai_screenshot": "KI-Screenshot",
     "release_notes": "Versionshinweise",
     "web_translation": "Diese Seite übersetzen",
-    "show_original_text": "Originaltext anzeigen"
+    "show_original_text": "Originaltext anzeigen",
+    "upgrade": "Upgrade",
+    "unlimited": "Unbegrenzt",
+    "cancel_anytime": "Jederzeit kündigen"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Weiter",
     "sidebar__button__insert": "Einfügen",
     "sidebar__button__replace": "Ersetzen",
-    "sidebar__button__upgrade_to_pro": "Auf Pro upgraden",
     "sidebar__button__retry": "Erneut versuchen",
     "sidebar__button__set_up_shortcut": "Verknüpfung einrichten",
     "sidebar__speed_dial__one_click_prompts__button": "1-Klick-Anfragen",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "jederzeit.",
     "temp__rebrand__is_now": "ist jetzt",
     "permission__pricing_hook__button__upgrade_to_pro": "Auf Pro upgraden",
-    "permission__pricing_hook__daily_limit__title": "Upgrade für unbegrenzte Nutzung",
-    "permission__pricing_hook__daily_limit__description1": "Sie haben das aktuelle tägliche Nutzungslimit für alle KI-Anbieter erreicht.\nSie können jetzt auf Pro upgraden, um unbegrenzte Nutzung zu erhalten, oder es später erneut versuchen.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} unbegrenzt freischalten",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, optimiert für Geschwindigkeit und Effizienz, brilliert in Echtzeit-Anwendungen, die Kreativität und fortgeschrittenes Denken erfordern, mit verbesserten Reaktionszeiten und konsistenter Ausgabe.",
     "permission__pricing_hook__custom_prompt__title": "Upgrade, um unbegrenzte benutzerdefinierte Prompts hinzuzufügen",
     "permission__pricing_hook__custom_prompt__description": "Fügen Sie eigene Aufforderungen hinzu, um wiederkehrende Aufgaben zu beschleunigen, während Sie arbeiten.",
     "permission__pricing_hook__custom_prompt_group__title": "Upgrade, um unbegrenzte benutzerdefinierte Prompt-Gruppen hinzuzufügen",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Umbenennen",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 ist Googles neuestes Modell, das eine verbesserte Leistung, eine effiziente MoE-Architektur und einen Durchbruch im Verständnis von langem Kontext mit bis zu 1 Million Token-Fenstern bietet und fortschrittliche Funktionen in den Bereichen Text, Code, Bild, Audio und Videoverarbeitung ermöglicht.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Upgrade, um auf gemini-1.5-pro mit Vision zuzugreifen",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Das neueste und fortschrittlichste Modell von Google. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Fähigkeiten in den Bereichen Text-, Code-, Bild-, Audio- und Videobearbeitung."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Das neueste und fortschrittlichste Modell von Google. Es bietet eine schnellere Geschwindigkeit, ein bahnbrechendes Kontextfenster von 1 Million Token, verbesserte Sicherheit und erweiterte Fähigkeiten in den Bereichen Text-, Code-, Bild-, Audio- und Videobearbeitung.",
+    "sidebar__button__upgrade_to_plan": "Auf {{PLAN}} upgraden",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Zugriff auf schnelle KI-Modelle:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Zugriff auf fortgeschrittene KI-Modelle:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Zugriff auf Erstellung von KI-Kunst und Bildern:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "KI-Bildschirmfoto",
     "sidebar_tour__step__5__feature_5__title": "1-Klick-Anregungen",
     "sidebar_tour__step__5__feature_6__title": "Verwenden Sie die Anregung"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Schneller Text",
+    "category__advanced_text": "Fortgeschrittener Text",
+    "category__image_generate": "Bild",
+    "role_label": "Aktueller Plan: {{ROLE}}",
+    "queries": "Abfragen",
+    "reset_on_date": "Zurücksetzen am {{DATE}}"
   }
 }

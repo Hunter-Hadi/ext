@@ -49,7 +49,10 @@
     "ai_screenshot": "AI ಸ್ಕ್ರೀನ್‌ಷಾಟ್",
     "release_notes": "ಬಿಡುಗಡೆ ನೋಟಿಗಳು",
     "web_translation": "ಈ ಪುಟವನ್ನು ಭಾಷಾಂತರಿಸಿ",
-    "show_original_text": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸು"
+    "show_original_text": "ಮೂಲ ಪಠ್ಯವನ್ನು ತೋರಿಸು",
+    "upgrade": "ಮೆಚ್ಚುಗೆ",
+    "unlimited": "ಅಸಂಖ್ಯ",
+    "cancel_anytime": "ಯಾವಾಗಲೂ ರದ್ದು ಮಾಡಿ"
   },
   "settings": {
     "left_menu__me": "ನಾನು ಮತ್ತು MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "ಮುಂದುವರಿಸಿ",
     "sidebar__button__insert": "ಸೇರಿಸಿ",
     "sidebar__button__replace": "ಬದಲಾಯಿಸಿ",
-    "sidebar__button__upgrade_to_pro": "ಪ್ರೊ ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "sidebar__button__retry": "ಮರುಪ್ರಯತ್ನಿಸಿ",
     "sidebar__button__set_up_shortcut": "ಶಾರ್ಟ್‌ಕಟ್ ಹೊಂದಿಸಿ",
     "sidebar__speed_dial__one_click_prompts__button": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "ಯಾವಾಗಲೂ.",
     "temp__rebrand__is_now": "ಈಗ",
     "permission__pricing_hook__button__upgrade_to_pro": "ಪ್ರೊ ಗೆ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__daily_limit__title": "ಅಮಿತ ಬಳಕೆಯ ಹಕ್ಕುಗಾಗಿ ಮೆಚ್ಚುಗೆ",
-    "permission__pricing_hook__daily_limit__description1": "ಎಲ್ಲಾ AI ಪ್ರೊವೈಡರ್‌ಗಳ ದಿನಂಪ್ರತಿ ಬಳಕೆ ಮಿತಿಗೆ ನೀವು ಸೇರಿದ್ದೀರಿ.\nಅಮಿತ ಬಳಕೆಗಾಗಿ ಪ್ರೊ ಗೆ ಮೆಚ್ಚುಗೆ ಮಾಡಿಕೊಳ್ಳಲು ಅಥವಾ ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} ಅನವರತ ಬಳಕೆಯನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
+    "permission__pricing_hook__daily_limit__description1": "ಸಂಗೀತ, ಚಿತ್ರಕಥೆ, ಕವನ, ನಾಟಕ, ಪದ್ಯ, ಹಾಡುಗಳು ಮತ್ತು ಇತರ ಸಾಹಿತ್ಯ ರಚನೆಗಳನ್ನು ರಚಿಸಲು ಸಹಾಯ ಮಾಡುವ ಸಾಧನವಾಗಿದೆ. ಈ ಸಾಧನವು ಸಂಪೂರ್ಣ ಸ್ವತಂತ್ರವಾಗಿ ಮತ್ತು ಸುಲಭವಾಗಿ ಬಳಸಲು ಅನುಮತಿಸಲ್ಪಡುತ್ತದೆ.",
     "permission__pricing_hook__custom_prompt__title": "ಅಪ್ರತಿಮ ಕಸ್ಟಮ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳನ್ನು ಸೇರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
     "permission__pricing_hook__custom_prompt__description": "ನೀವು ಕೆಲಸ ಮಾಡುತ್ತಿರುವಾಗ ಪುನರಾವರ್ತನೆಯಾಗುವ ಕೆಲಸಗಳನ್ನು ಹೆಚ್ಚಿಸಲು ನಿಮ್ಮ ತಾಳೆಯನ್ನು ಸೇರಿಸಿ.",
     "permission__pricing_hook__custom_prompt_group__title": "ಅಪ್ರತಿಮ ಕಸ್ಟಮ್ ಪ್ರಾಂಪ್ಟ್ ಗುಂಪುಗಳನ್ನು ಸೇರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "ಮರುಹೆಸರಿಸು",
     "provider__gemini__model__gemini_1_5_pro__description": "ಜೆಮಿನಿ 1.5 ಗೂಗಲ್ ನಿಯೋಜಿತ ಮಾದರಿಯ ಮೇಲ್ಮೆಗೆ, ಕುಶಲತೆಯ ಮೊದಲನೆಯ ಪೀಠಿಕೆಯ ಸಲುವಾಗಿ, ಹೆಚ್ಚಿನ ಕ್ರಿಯಾಶೀಲತೆ, ಅಧಿಕ ಪರಿಚಯ ಬಳಕೆದಾರರ ಅರಿವುಗಳು ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳ ಮೂಲಕ ಮುನ್ನಡೆಯುವ ಅಭಿವೃದ್ಧಿಯನ್ನು ನೀಡುತ್ತದೆ.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ವಿಜನ್ ಜೊತೆಗೆ ಜೆಮಿನಿ-1.5-ಪ್ರೊ ಅನುಸರಿಸಲು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ಗೂಗಲ್ ಯಾವುದೇ ಹೊಸತು ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಒಂದು ಪರಿಹಾರಕಾರಿ 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ, ಮೇಲ್ಮೈಯ ಸುರಕ್ಷತೆ ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಮುಂದಿನ ಸುಗಮತೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "ಗೂಗಲ್ ಯಾವುದೇ ಹೊಸತು ಮತ್ತು ಅತ್ಯುತ್ತಮ ಮಾದರಿ. ಇದು ಹೆಚ್ಚು ವೇಗ, ಒಂದು ಪರಿಹಾರಕಾರಿ 1M ಟೋಕನ್ ಸಂದರ್ಭ ವಿಂಡೋ, ಮೇಲ್ಮೈಯ ಸುರಕ್ಷತೆ ಮತ್ತು ಪಠ್ಯ, ಕೋಡ್, ಚಿತ್ರ, ಧ್ವನಿ, ಮತ್ತು ವೀಡಿಯೊ ಪ್ರಕ್ರಿಯೆಗಳಲ್ಲಿ ಮುಂದಿನ ಸುಗಮತೆಯನ್ನು ಒದಗಿಸುತ್ತದೆ.",
+    "sidebar__button__upgrade_to_plan": "ಪ್ಲಾನ್‌ಗೆ ಮೆರವಣಿಗೆ ಮಾಡಿ",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "ಹೊಸೆಯ AI ಮಾದರಿಗಳ ಪ್ರವೇಶ:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "ಮುನ್ನಡೆದ AI ಮಾದರಿಗಳ ಪ್ರವೇಶ:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸುವ ಪ್ರವೇಶ:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI ಸ್ಕ್ರೀನ್‌ಶಾಟ್",
     "sidebar_tour__step__5__feature_5__title": "1-ಕ್ಲಿಕ್ ಪ್ರಾಂಪ್ಟ್‌ಗಳು",
     "sidebar_tour__step__5__feature_6__title": "ಪ್ರಾಂಪ್ಟ್ ಬಳಸಿ"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "ಹೊಸೆಯ ಪಠ್ಯ",
+    "category__advanced_text": "ಮುನ್ನಡೆದ ಪಠ್ಯ",
+    "category__image_generate": "ಚಿತ್ರ",
+    "role_label": "ಪ್ರಸ್ತುತ ಯೋಜನೆ: {{ROLE}}",
+    "queries": "ಪ್ರಶ್ನೆಗಳು",
+    "reset_on_date": "{{DATE}} ರಂದು ಮರುಹೊಂದಿಸಲಾಗುವುದು"
   }
 }

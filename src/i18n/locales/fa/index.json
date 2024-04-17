@@ -49,7 +49,10 @@
     "ai_screenshot": "عکس‌برداری هوش مصنوعی",
     "release_notes": "یادداشت‌های نسخه",
     "web_translation": "ترجمه این صفحه",
-    "show_original_text": "نمایش متن اصلی"
+    "show_original_text": "نمایش متن اصلی",
+    "upgrade": "ارتقا",
+    "unlimited": "نامحدود",
+    "cancel_anytime": "هر زمان لغو کنید"
   },
   "settings": {
     "left_menu__me": "من و MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "ادامه",
     "sidebar__button__insert": "درج",
     "sidebar__button__replace": "جایگزینی",
-    "sidebar__button__upgrade_to_pro": "ارتقا به نسخه حرفه‌ای",
     "sidebar__button__retry": "تلاش مجدد",
     "sidebar__button__set_up_shortcut": "تنظیم میان‌بر",
     "sidebar__speed_dial__one_click_prompts__button": "پیشنهادهای 1 کلیک",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "هر زمان.",
     "temp__rebrand__is_now": "اکنون",
     "permission__pricing_hook__button__upgrade_to_pro": "ارتقا به نسخه حرفه‌ای",
-    "permission__pricing_hook__daily_limit__title": "ارتقا برای استفاده نامحدود",
-    "permission__pricing_hook__daily_limit__description1": "شما به سقف استفاده روزانه فعلی برای تمام ارائه دهندگان هوش مصنوعی رسیده‌اید.\nشما می‌توانید همین حالا به نسخه پرو ارتقا دهید و از استفاده نامحدود بهره‌مند شوید، یا بعداً دوباره امتحان کنید.",
+    "permission__pricing_hook__daily_limit__title": "باز کردن نامحدود بار {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 شرکت OpenAI، که برای سرعت و کارآیی بهینه شده است، در برنامه‌های زمان واقعی که نیاز به خلاقیت و استدلال پیشرفته با زمان پاسخ دهی بهبود یافته و خروجی پایدار دارند، عالی عمل می‌کند.",
     "permission__pricing_hook__custom_prompt__title": "ارتقا برای افزودن پیش‌نویس‌های سفارشی نامحدود",
     "permission__pricing_hook__custom_prompt__description": "با اضافه کردن راهنمایی های خود، وظایف تکراری را به سرعت انجام دهید.",
     "permission__pricing_hook__custom_prompt_group__title": "ارتقا برای افزودن گروه‌های پیش‌نویس سفارشی نامحدود",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "تغییر نام",
     "provider__gemini__model__gemini_1_5_pro__description": "جمینی 1.5 مدل نسل بعدی گوگل است که عملکرد بهبود یافته، معماری MoE کارآمد و پیشرفتی در درک متن با محیط تا 1 میلیون توکن را فراهم می کند و قابلیت های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدیو را فراهم می کند.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ارتقا برای دسترسی به gemini-1.5-pro با دید",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "مدل جدیدترین و پیشرفته ترین گوگل. سرعت بالاتر، پنجره متن حاکم بر 1 میلیون توکن، ایمنی پیشرفته و قابلیت های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدئو را ارائه می دهد."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "مدل جدیدترین و پیشرفته ترین گوگل. سرعت بالاتر، پنجره متن حاکم بر 1 میلیون توکن، ایمنی پیشرفته و قابلیت های پیشرفته در پردازش متن، کد، تصویر، صدا و ویدئو را ارائه می دهد.",
+    "sidebar__button__upgrade_to_plan": "ارتقا به {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "دسترسی به مدل‌های هوش مصنوعی سریع:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "دسترسی به مدل‌های هوش مصنوعی پیشرفته:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "دسترسی به ایجاد هنر و تصاویر با استفاده از مدل‌های هوش مصنوعی:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "عکس صفحه با ال",
     "sidebar_tour__step__5__feature_5__title": "پیشنهادهای 1 کلیکی",
     "sidebar_tour__step__5__feature_6__title": "استفاده از پیشنهاد"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "متن سریع",
+    "category__advanced_text": "متن پیشرفته",
+    "category__image_generate": "تصویر",
+    "role_label": "طرح فعلی: {{ROLE}}",
+    "queries": "پرس و جوها",
+    "reset_on_date": "بازنشانی در {{DATE}}"
   }
 }

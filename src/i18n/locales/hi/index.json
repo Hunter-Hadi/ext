@@ -49,7 +49,10 @@
     "ai_screenshot": "AI स्क्रीनशॉट",
     "release_notes": "रिलीज नोट्स",
     "web_translation": "इस पेज को अनुवाद करें",
-    "show_original_text": "मूल पाठ दिखाएं"
+    "show_original_text": "मूल पाठ दिखाएं",
+    "upgrade": "अपग्रेड करें",
+    "unlimited": "असीमित",
+    "cancel_anytime": "कभी भी रद्द करें"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "जारी रखें",
     "sidebar__button__insert": "सम्मिलित करें",
     "sidebar__button__replace": "प्रतिस्थापित करें",
-    "sidebar__button__upgrade_to_pro": "प्रो में अपग्रेड करें",
     "sidebar__button__retry": "पुनः प्रयास करें",
     "sidebar__button__set_up_shortcut": "शॉर्टकट सेट करें",
     "sidebar__speed_dial__one_click_prompts__button": "1-क्लिक प्रॉम्प्ट",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "कभी भी।",
     "temp__rebrand__is_now": "अब है",
     "permission__pricing_hook__button__upgrade_to_pro": "प्रो में अपग्रेड करें",
-    "permission__pricing_hook__daily_limit__title": "असीमित उपयोग के लिए अपग्रेड करें",
-    "permission__pricing_hook__daily_limit__description1": "आपने सभी AI प्रदाताओं के लिए मौजूदा दैनिक उपयोग सीमा तक पहुंच गए हैं।\nआप असीमित उपयोग के लिए अब प्रो में अपग्रेड कर सकते हैं, या बाद में फिर से कोशिश करें।",
+    "permission__pricing_hook__daily_limit__title": "{{MODEL_NAME}} की सीमा हटाएं",
+    "permission__pricing_hook__daily_limit__description1": "स्पीड और प्रभावशीलता के लिए अनुकूलित ओपनएआई का जीपीटी-4, जो सृजनशीलता और उन्नत तर्कसंगतता की आवश्यकता वाले रीयल-टाइम एप्लिकेशन में उत्कृष्टता दिखाता है और बेहतर प्रतिक्रिया समय और स्थिर आउटपुट प्रदान करता है।",
     "permission__pricing_hook__custom_prompt__title": "असीमित कस्टम प्रॉम्प्ट जोड़ने के लिए अपग्रेड करें",
     "permission__pricing_hook__custom_prompt__description": "अपने कार्य को तेज़ करने के लिए अपने खुद के प्रॉम्प्ट जोड़ें।",
     "permission__pricing_hook__custom_prompt_group__title": "असीमित कस्टम प्रॉम्प्ट समूह जोड़ने के लिए अपग्रेड करें",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "नाम बदलें",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 गूगल का अगली पीढ़ी मॉडल है जो सुधारित प्रदर्शन, एक कुशल MoE आर्किटेक्चर, और लंबे संदर्भ की समझ में एक ब्रेकथ्रू प्रदान करता है जिसमें 1 मिलियन टोकन विंडो के साथ उन्नत क्षमताएं होती हैं, पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए।",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "ज्योति के साथ जेमिनी-1.5-प्रो तक पहुंच के लिए अपग्रेड करें",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "गूगल का नवीनतम और सबसे उन्नत मॉडल। इसमें तेज़ स्पीड, एक अद्वितीय 1M टोकन संदर्भ विंडो, सुधारित सुरक्षा, और पाठ, कोड, छवि, ऑडियो, और वीडियो प्रसंस्करण के लिए उन्नत क्षमताएं हैं।",
+    "sidebar__button__upgrade_to_plan": "प्लान में अपग्रेड करें {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "तेज AI मॉडलों तक पहुंच:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "उन्नत AI मॉडलों तक पहुंच:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "AI कला और छवि AI मॉडल बनाने के लिए पहुंच:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI स्क्रीनशॉट",
     "sidebar_tour__step__5__feature_5__title": "1-क्लिक प्रॉम्प्ट",
     "sidebar_tour__step__5__feature_6__title": "प्रॉम्प्ट का उपयोग करें"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "तेज टेक्स्ट",
+    "category__advanced_text": "उन्नत टेक्स्ट",
+    "category__image_generate": "छवि",
+    "role_label": "वर्तमान योजना: {{ROLE}}",
+    "queries": "प्रश्न",
+    "reset_on_date": "{{DATE}} को रीसेट होगा"
   }
 }

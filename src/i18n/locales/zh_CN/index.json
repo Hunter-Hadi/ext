@@ -49,7 +49,10 @@
     "ai_screenshot": "AI截图",
     "release_notes": "发布说明",
     "web_translation": "翻译此页面",
-    "show_original_text": "显示原文"
+    "show_original_text": "显示原文",
+    "upgrade": "升级",
+    "unlimited": "无限制",
+    "cancel_anytime": "随时取消"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "继续",
     "sidebar__button__insert": "插入",
     "sidebar__button__replace": "替换",
-    "sidebar__button__upgrade_to_pro": "升级到专业版",
     "sidebar__button__retry": "重试",
     "sidebar__button__set_up_shortcut": "设置快捷方式",
     "sidebar__speed_dial__one_click_prompts__button": "一键提示",
@@ -382,8 +384,8 @@
     "provider__bing_web_app__conversation_style__precise__title": "精确",
     "provider__bing_web_app__conversation_style__precise__description": "清除您的对话，开始一次简明扼要的聊天。",
     "permission__pricing_hook__button__upgrade_to_pro": "升级到专业版",
-    "permission__pricing_hook__daily_limit__title": "升级以获得无限使用",
-    "permission__pricing_hook__daily_limit__description1": "您已达到所有AI提供商的当前每日使用上限。\n您可以立即升级到专业版以获得无限使用，或稍后再试。",
+    "permission__pricing_hook__daily_limit__title": "解锁无限次数的{{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI的GPT-4经过优化，速度和效率出色，在实时应用中表现出色，需要创造力和高级推理能力，并具有更快的响应时间和一致的输出。",
     "permission__pricing_hook__custom_prompt__title": "升级以添加无限自定义提示",
     "permission__pricing_hook__custom_prompt__description": "添加自定义提示以加快您的工作中的重复任务。",
     "permission__pricing_hook__custom_prompt_group__title": "升级以添加无限自定义提示组",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "重命名",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5是谷歌的下一代模型，提供了增强的性能、高效的MoE架构，并在长上下文理解方面取得突破，支持最多100万个标记窗口，实现了对文本、代码、图像、音频和视频处理的先进功能。",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "升级以访问具有视觉功能的gemini-1.5-pro",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "谷歌最新和最先进的模型。它提供更快的速度，突破性的1M令牌上下文窗口，增强的安全性以及在文本、代码、图像、音频和视频处理方面的高级功能。"
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "谷歌最新和最先进的模型。它提供更快的速度，突破性的1M令牌上下文窗口，增强的安全性以及在文本、代码、图像、音频和视频处理方面的高级功能。",
+    "sidebar__button__upgrade_to_plan": "升级到{{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "访问快速AI模型：",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "访问高级AI模型：",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "访问创建AI艺术和图像AI模型："
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI截图",
     "sidebar_tour__step__5__feature_5__title": "1键提示",
     "sidebar_tour__step__5__feature_6__title": "使用提示"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "快速文本",
+    "category__advanced_text": "高级文本",
+    "category__image_generate": "图像",
+    "role_label": "当前计划：{{ROLE}}",
+    "queries": "查询",
+    "reset_on_date": "重置于{{DATE}}"
   }
 }

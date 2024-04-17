@@ -49,7 +49,10 @@
     "ai_screenshot": "Zrzut ekranu AI",
     "release_notes": "Notatki wydania",
     "web_translation": "Przetłumacz tę stronę",
-    "show_original_text": "Pokaż oryginalny tekst"
+    "show_original_text": "Pokaż oryginalny tekst",
+    "upgrade": "Aktualizacja",
+    "unlimited": "Bez ograniczeń",
+    "cancel_anytime": "Anuluj w dowolnym momencie"
   },
   "settings": {
     "left_menu__me": "Ja i MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Kontynuuj",
     "sidebar__button__insert": "Wstaw",
     "sidebar__button__replace": "Zastąp",
-    "sidebar__button__upgrade_to_pro": "Uaktualnij do wersji Pro",
     "sidebar__button__retry": "Ponów",
     "sidebar__button__set_up_shortcut": "Skonfiguruj skrót",
     "sidebar__speed_dial__one_click_prompts__button": "Podpowiedzi jednym kliknięciem",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "w dowolnym momencie.",
     "temp__rebrand__is_now": "teraz jest",
     "permission__pricing_hook__button__upgrade_to_pro": "Uaktualnij do wersji Pro",
-    "permission__pricing_hook__daily_limit__title": "Zaktualizuj, aby uzyskać nieograniczone korzystanie",
-    "permission__pricing_hook__daily_limit__description1": "Osiągnąłeś dzienne ograniczenie dla wszystkich dostawców AI.\nMożesz teraz zaktualizować do wersji Pro, aby uzyskać nieograniczone korzystanie lub spróbować ponownie później.",
+    "permission__pricing_hook__daily_limit__title": "Odblokuj nieograniczoną ilość razy {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "GPT-4 OpenAI, zoptymalizowany pod kątem szybkości i wydajności, doskonale sprawdza się w aplikacjach czasu rzeczywistego, wymagających kreatywności i zaawansowanego rozumowania z poprawionym czasem reakcji i spójnym wynikiem.",
     "permission__pricing_hook__custom_prompt__title": "Przejdź na wersję Pro, aby dodać nielimitowane niestandardowe podpowiedzi",
     "permission__pricing_hook__custom_prompt__description": "Dodaj własne podpowiedzi, aby przyspieszyć powtarzalne zadania podczas pracy.",
     "permission__pricing_hook__custom_prompt_group__title": "Przejdź na wersję Pro, aby dodać nielimitowane grupy niestandardowych podpowiedzi",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Zmień nazwę",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 to nowoczesny model Google oferujący zwiększoną wydajność, efektywną architekturę MoE oraz przełom w rozumieniu długiego kontekstu dzięki oknom o długości do 1 miliona tokenów, umożliwiający zaawansowane możliwości przetwarzania tekstu, kodu, obrazów, dźwięku i wideo.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Uaktualnij, aby uzyskać dostęp do gemini-1.5-pro z wizją",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, przełomowe okno kontekstowe o pojemności 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości w zakresie przetwarzania tekstu, kodu, obrazu, dźwięku i wideo."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Najnowszy i najbardziej zaawansowany model Google. Oferuje szybszą prędkość, przełomowe okno kontekstowe o pojemności 1M tokenów, zwiększone bezpieczeństwo oraz zaawansowane możliwości w zakresie przetwarzania tekstu, kodu, obrazu, dźwięku i wideo.",
+    "sidebar__button__upgrade_to_plan": "Przejdź na {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Dostęp do szybkich modeli AI:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Dostęp do zaawansowanych modeli AI:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Dostęp do tworzenia sztuki i obrazów przy użyciu modeli AI:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "Zrzut ekranu AI",
     "sidebar_tour__step__5__feature_5__title": "Podpowiedzi jednym kliknięciem",
     "sidebar_tour__step__5__feature_6__title": "Użyj podpowiedzi"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Szybki tekst",
+    "category__advanced_text": "Zaawansowany tekst",
+    "category__image_generate": "Obraz",
+    "role_label": "Obecny plan: {{ROLE}}",
+    "queries": "Zapytania",
+    "reset_on_date": "Resetuje się {{DATE}}"
   }
 }

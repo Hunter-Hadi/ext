@@ -49,7 +49,10 @@
     "ai_screenshot": "AI skærmbillede",
     "release_notes": "Versionsnoter",
     "web_translation": "Oversæt denne side",
-    "show_original_text": "Vis original tekst"
+    "show_original_text": "Vis original tekst",
+    "upgrade": "Opgrader",
+    "unlimited": "Ubegrænset",
+    "cancel_anytime": "Annuller når som helst"
   },
   "settings": {
     "left_menu__me": "Mig og MaxAI",
@@ -257,7 +260,6 @@
     "sidebar__button__continue": "Fortsæt",
     "sidebar__button__insert": "Indsæt",
     "sidebar__button__replace": "Erstat",
-    "sidebar__button__upgrade_to_pro": "Opgrader til Pro",
     "sidebar__button__retry": "Prøv igen",
     "sidebar__button__set_up_shortcut": "Opsæt genvej",
     "sidebar__speed_dial__one_click_prompts__button": "1-klik prompts",
@@ -382,8 +384,8 @@
     "popup__set_shortcut__description4": "når som helst.",
     "temp__rebrand__is_now": "er nu",
     "permission__pricing_hook__button__upgrade_to_pro": "Opgrader til Pro",
-    "permission__pricing_hook__daily_limit__title": "Opgrader for ubegrænset brug",
-    "permission__pricing_hook__daily_limit__description1": "Du har nået den nuværende daglige brugsgrænse for alle AI-udbydere.\nDu kan opgradere til Pro nu for ubegrænset brug, eller prøve igen senere.",
+    "permission__pricing_hook__daily_limit__title": "Lås op for ubegrænset antal gange med {{MODEL_NAME}}",
+    "permission__pricing_hook__daily_limit__description1": "OpenAI's GPT-4, optimeret til hastighed og effektivitet, excellerer i realtidsapplikationer, der kræver kreativitet og avanceret logisk tænkning med forbedrede responstider og ensartet output.",
     "permission__pricing_hook__custom_prompt__title": "Opgrader for at tilføje ubegrænsede brugerdefinerede prompter",
     "permission__pricing_hook__custom_prompt__description": "Tilføj dine egne prompter for at fremskynde gentagne opgaver, mens du arbejder.",
     "permission__pricing_hook__custom_prompt_group__title": "Opgrader for at tilføje ubegrænsede brugerdefinerede promptgrupper",
@@ -681,7 +683,11 @@
     "immersive_chat__rename_chat__button__title": "Omdøb",
     "provider__gemini__model__gemini_1_5_pro__description": "Gemini 1.5 er Googles næste generations model, der tilbyder forbedret ydeevne, en effektiv MoE-arkitektur og et gennembrud inden for lang-kontekstforståelse med op til 1 million tokensvinduer, hvilket muliggør avancerede funktioner inden for tekst-, kode-, billede-, lyd- og videobehandling.",
     "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title": "Opgrader for at få adgang til gemini-1.5-pro med vision",
-    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avancerede model. Den tilbyder hurtigere hastighed, et gennembrud med 1M token kontekstvindue, forbedret sikkerhed og avancerede funktioner inden for tekst, kode, billede, lyd og video behandling."
+    "permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description": "Googles nyeste og mest avancerede model. Den tilbyder hurtigere hastighed, et gennembrud med 1M token kontekstvindue, forbedret sikkerhed og avancerede funktioner inden for tekst, kode, billede, lyd og video behandling.",
+    "sidebar__button__upgrade_to_plan": "Opgrader til {{PLAN}}",
+    "permission__pricing_hook__daily_limit__queries_card__fast_text__label": "Adgang til hurtige AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__advanced_text__label": "Adgang til avancerede AI-modeller:",
+    "permission__pricing_hook__daily_limit__queries_card__images_generate__label": "Adgang til at skabe AI-kunst og billeder:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -992,5 +998,13 @@
     "sidebar_tour__step__5__feature_4__title": "AI-skærmbillede",
     "sidebar_tour__step__5__feature_5__title": "1-klik prompts",
     "sidebar_tour__step__5__feature_6__title": "Brug prompt"
+  },
+  "quota_usage_card": {
+    "category__fast_text": "Hurtig tekst",
+    "category__advanced_text": "Avanceret tekst",
+    "category__image_generate": "Billede",
+    "role_label": "Nuværende plan: {{ROLE}}",
+    "queries": "Forespørgsler",
+    "reset_on_date": "Nulstil den {{DATE}}"
   }
 }

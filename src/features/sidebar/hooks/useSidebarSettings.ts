@@ -57,7 +57,7 @@ const useSidebarSettings = () => {
         clientConversationMap[
           appLocalStorage.sidebarSettings?.search?.conversationId || ''
         ],
-      Summary: clientConversationMap[getPageSummaryConversationId()],
+      Summary: clientConversationMap[getPageSummaryConversationId(sidebarPageState.pageUrl)],
       Art:
         clientConversationMap[
           appLocalStorage.sidebarSettings?.art?.conversationId || ''
@@ -71,6 +71,7 @@ const useSidebarSettings = () => {
     appLocalStorage.sidebarSettings?.chat?.conversationId,
     appLocalStorage.sidebarSettings?.search?.conversationId,
     appLocalStorage.sidebarSettings?.summary?.conversationId,
+    sidebarPageState.pageUrl,
   ])
   const sidebarConversationTypeMessageMap = useMemo(() => {
     return {
@@ -118,8 +119,17 @@ const useSidebarSettings = () => {
       }
     })
   }
+  const updateSidebarPageUrl = (pageUrl: string) => {
+    setSidebarPageSate(prev => {
+      if (pageUrl && prev.pageUrl !== pageUrl) {
+        return { ...prev, pageUrl }
+      }
+      return prev
+    })
+  }
   return {
     sidebarSettings: appLocalStorage.sidebarSettings,
+    sidebarPageState,
     currentSidebarConversationType,
     currentSidebarAIProvider,
     currentSidebarConversation,
@@ -129,6 +139,7 @@ const useSidebarSettings = () => {
     sidebarConversationTypeofConversationMap,
     updateSidebarSettings,
     updateSidebarConversationType,
+    updateSidebarPageUrl
   }
 }
 export default useSidebarSettings

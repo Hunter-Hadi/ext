@@ -37,11 +37,13 @@ export const ClientWritingMessageState = atom<{
 export const SidebarPageState = atom<{
   sidebarConversationType: ISidebarConversationType
   messageListPageNum: number
+  pageUrl: string
 }>({
   key: 'SidebarPageState',
   default: {
     sidebarConversationType: 'Chat',
     messageListPageNum: 1,
+    pageUrl: window.location.href
   },
 })
 /**

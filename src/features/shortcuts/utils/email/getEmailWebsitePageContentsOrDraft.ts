@@ -414,6 +414,8 @@ export const getEmailWebsitePageContentsOrDraft = async (
               ),
           )
 
+          let retrievedSuccess = false
+
           const retrieveEmailDataThenAdd = () => {
             const emailFullContentBox =
               emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
@@ -425,7 +427,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
                 emailFullContentBox.querySelectorAll<HTMLElement>(
                   'table span[email]',
                 )
-              if (gmailUsers.length > 0) {
+              if (gmailUsers.length > 0 && !retrievedSuccess) {
                 const [sender, ...receivers] = getGmailUsers(gmailUsers)
 
                 emailCorrespondence.addEmail({
@@ -441,10 +443,10 @@ export const getEmailWebsitePageContentsOrDraft = async (
                     ),
                   ),
                 })
-                return true
+                retrievedSuccess = true
               }
             }
-            return false
+            return retrievedSuccess
           }
 
           if (emailFullContentBoxExists) {
@@ -476,8 +478,11 @@ export const getEmailWebsitePageContentsOrDraft = async (
                 ?.click()
               // in case the dom is not updated
               setTimeout(() => {
-                observer.disconnect()
-                resolve()
+                if (!retrievedSuccess) {
+                  retrieveEmailDataThenAdd() // try the last time
+                  observer.disconnect()
+                  resolve()
+                }
               }, 2000)
             })
           }

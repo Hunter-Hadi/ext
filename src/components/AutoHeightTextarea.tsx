@@ -559,10 +559,6 @@ const AutoHeightTextarea: FC<{
             } else if (event.key === 'Enter') {
               event.preventDefault()
               const value = event.currentTarget.value
-              if (!value || !value.trim()) {
-                // value 没有值或者都是空格时不触发 ask
-                return
-              }
               onEnter &&
                 onEnter(value, {
                   includeHistory: !nextMessageIsActionRef.current,

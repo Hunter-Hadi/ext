@@ -1,5 +1,5 @@
 import Stack from '@mui/material/Stack'
-import React, { useEffect } from 'react'
+import React, { DragEventHandler, useEffect } from 'react'
 
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
@@ -32,12 +32,8 @@ const SidebarPage = () => {
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
-  const {
-    handleDragEnter,
-    handleDragOver,
-    handleDragLeave,
-    handleDrop,
-  } = useSidebarDropEvent()
+  const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
+    useSidebarDropEvent()
   useEffect(() => {
     pingDaemonProcess()
   }, [])
@@ -52,13 +48,14 @@ const SidebarPage = () => {
       <SidebarTour />
       <SidebarPromotionDialog />
       <Stack
+        component={'div'}
         position={'relative'}
         flex={1}
         width={0}
         onDragEnter={handleDragEnter}
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
+        onDrop={handleDrop as any as DragEventHandler<HTMLDivElement>}
       >
         {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
         <ChatGPTStatusWrapper />

@@ -355,6 +355,7 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
         } as IUserQuotaUsageInfo
       }
     }
+    return undefined
   } catch (e) {
     return undefined
   }

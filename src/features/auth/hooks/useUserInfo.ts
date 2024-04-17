@@ -55,6 +55,10 @@ const useUserInfo = () => {
     let name: IUserRoleType = userInfo?.role?.name || ('free' as IUserRoleType)
     const planName: IUserPlanNameType | undefined =
       userInfo?.role?.subscription_plan_name || userInfo?.subscription_plan_name
+
+    // 这里需要处理一下，因为有可能是 pro_team, elite_team 这种类型
+    name = name.includes('_') ? (name.split('_')[0] as IUserRoleType) : name
+
     let isNewUser = false
     if (userInfo?.chatgpt_expires_at) {
       // check is pro gift
@@ -103,6 +107,9 @@ const useUserInfo = () => {
     syncUserQuotaUsageInfo,
 
     isPayingUser,
+
+    // 是否是 team plan 的用户
+    isTeamPlanUser: !!userInfo?.group_id,
   }
 }
 export { useUserInfo }

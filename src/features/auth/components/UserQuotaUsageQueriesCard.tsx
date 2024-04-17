@@ -24,8 +24,12 @@ const IS_UNLIMITED_FLAG = 100000
 // 用户 quota 使用量 卡片
 const UserQuotaUsageQueriesCard = () => {
   const { t } = useTranslation()
-  const { userQuotaUsage, currentUserPlan, syncUserQuotaUsageInfo } =
-    useUserInfo()
+  const {
+    userQuotaUsage,
+    currentUserPlan,
+    isTeamPlanUser,
+    syncUserQuotaUsageInfo,
+  } = useUserInfo()
 
   // 只在第一次加载时, 同步用户的 quota 使用量信息
   useEffectOnce(() => {
@@ -60,7 +64,7 @@ const UserQuotaUsageQueriesCard = () => {
           <ListItemText
             primary={`${t('quota_usage_card:role_label', {
               ROLE: startCase(currentUserPlan.name),
-            })}`}
+            })} ${isTeamPlanUser ? `(${t('common:team_plan')})` : ''}`}
           />
           <Button
             component={'a'}

@@ -76,9 +76,12 @@ const useClientConversation = () => {
     currentSidebarConversationId,
     updateSidebarSettings,
     sidebarSettings,
+    sidebarPageState
   } = useSidebarSettings()
   const currentConversationIdRef = useRef(currentSidebarConversationId)
   const currentConversationTypeRef = useRef(currentSidebarConversationType)
+  const currentSidebarPageState = useRef(sidebarPageState)
+  currentSidebarPageState.current = sidebarPageState
   useEffect(() => {
     currentConversationIdRef.current = currentSidebarConversationId
   }, [currentSidebarConversationId])
@@ -139,7 +142,7 @@ const useClientConversation = () => {
         })
       }
     } else if (conversationType === 'Summary') {
-      conversationId = getPageSummaryConversationId()
+      conversationId = getPageSummaryConversationId(currentSidebarPageState.current.pageUrl)
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (conversationId && (await clientGetConversation(conversationId))) {
         return conversationId
@@ -255,7 +258,7 @@ const useClientConversation = () => {
     } else if (currentSidebarConversationType === 'Summary') {
       await clientChatConversationModifyChatMessages(
         'delete',
-        getPageSummaryConversationId(),
+        getPageSummaryConversationId(currentSidebarPageState.current.pageUrl),
         99999999,
         [],
       )

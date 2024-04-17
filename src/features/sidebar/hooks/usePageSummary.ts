@@ -37,6 +37,7 @@ const usePageSummary = () => {
     updateSidebarSettings,
     currentSidebarConversationId,
     currentSidebarConversationType,
+    updateSidebarPageUrl
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const updateClientWritingMessage = useSetRecoilState(
@@ -60,7 +61,9 @@ const usePageSummary = () => {
       }
       console.log('新版Conversation 创建pageSummary')
       console.log('simply createPageSummary')
-      const pageSummaryConversationId = getPageSummaryConversationId()
+      const pageUrl = window.location.href
+      updateSidebarPageUrl(pageUrl)
+      const pageSummaryConversationId = getPageSummaryConversationId(pageUrl)
       updateClientWritingMessage((prevState) => {
         return {
           ...prevState,

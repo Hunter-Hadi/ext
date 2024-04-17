@@ -42,6 +42,7 @@ export type IUseChatGPTUserInfo = {
   created_at: string
   roles: IUserRole[]
   subscription_plan_name: IUserPlanNameType
+  group_id?: string
 }
 
 export type IUserQuotaUsageInfo = {

@@ -154,10 +154,25 @@ const userInitUserInfo = (isInit = true) => {
           ...(result.data as IUserQuotaUsageInfo),
         })
         return true
+      } else {
+        setUserQuotaUsageInfo((prevState) => {
+          return {
+            ...prevState,
+            updateAt: Date.now(),
+            loading: false,
+          }
+        })
+        return false
       }
-      return false
     } catch (e) {
       log.error(e)
+      setUserQuotaUsageInfo((prevState) => {
+        return {
+          ...prevState,
+          updateAt: Date.now(),
+          loading: false,
+        }
+      })
       return false
     }
   }

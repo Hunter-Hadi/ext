@@ -114,6 +114,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
         >
           <Button
             disabled={disabled}
+            data-testid={'chat-file-upload-button'}
             sx={{
               minWidth: 'unset',
               p: 0,

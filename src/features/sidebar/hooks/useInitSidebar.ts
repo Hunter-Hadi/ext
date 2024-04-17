@@ -189,7 +189,11 @@ const useInitSidebar = () => {
           updateSidebarConversationType('Summary')
         })
       } else if (currentSidebarConversationTypeRef.current === 'Summary') {
-        updateSidebarConversationType('Chat')
+        // 页面变化了切换至Chat并停止当前对话
+        if (currentSidebarPageUrlRef.current !== pageUrl) {
+          updateSidebarConversationType('Chat')
+          stopGenerate()
+        }
       }
     }
   }, [pageUrl])

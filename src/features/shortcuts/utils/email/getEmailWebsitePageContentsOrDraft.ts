@@ -409,7 +409,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
               emailItemBox.querySelector<HTMLElement>('& > div:nth-child(2)'),
             )
 
-            const retrieveEmailDataThenAdd = (callback?: () => void) => {
+            const retrieveEmailDataThenAdd = () => {
               const gmailUsers = emailItemBox.querySelectorAll<HTMLElement>(
                 '& > div:nth-child(2) table span[email]',
               )
@@ -429,8 +429,9 @@ export const getEmailWebsitePageContentsOrDraft = async (
                     ),
                   ),
                 })
-                callback?.()
+                return true
               }
+              return false
             }
 
             if (emailFullContentBoxExists) {
@@ -445,28 +446,40 @@ export const getEmailWebsitePageContentsOrDraft = async (
               }
               await new Promise<void>((resolve) => {
                 let tryLimit = 0
-                const observer = new MutationObserver(() => {
-                  retrieveEmailDataThenAdd(() => {
-                    observer.disconnect()
-                    resolve()
-                  })
-                  if (++tryLimit === 30) {
-                    observer.disconnect()
-                    resolve()
-                  }
-                })
-                observer.observe(emailItemBox, {
-                  childList: true,
-                  subtree: true,
-                })
+                // const observer = new MutationObserver(() => {
+                //   tryLimit++
+                //   if (tryLimit === 30) {
+                //     observer.disconnect()
+                //     resolve()
+                //   } else if (retrieveEmailDataThenAdd()) {
+                //     observer.disconnect()
+                //     resolve()
+                //   }
+                // })
+                // observer.observe(emailItemBox, {
+                //   childList: true,
+                //   subtree: true,
+                // })
                 emailItemBox
                   .querySelector<HTMLElement>('& > div:nth-child(1)')
                   ?.click()
-                // in case the dom is not updated
-                setTimeout(() => {
-                  observer.disconnect()
-                  resolve()
-                }, 3000)
+                // // in case the dom is not updated
+                // setTimeout(() => {
+                //   observer.disconnect()
+                //   resolve()
+                // }, 2000)
+
+                let timer: ReturnType<typeof setTimeout> | null = null
+                const retrieveEmail = () => {
+                  if (retrieveEmailDataThenAdd() || tryLimit === 10) {
+                    clearInterval(timer!)
+                    resolve()
+                  }
+                  tryLimit++
+                }
+                retrieveEmail()
+                timer = setInterval(retrieveEmail, 500)
+                console.log('timer', timer)
               })
             }
 

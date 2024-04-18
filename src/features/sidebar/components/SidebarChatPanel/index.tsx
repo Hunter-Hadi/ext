@@ -12,6 +12,8 @@ import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/Si
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
+import DevContent from '@/components/DevContent'
+
 const Test = () => {
   const { clientConversation } = useClientConversation()
   return (
@@ -43,7 +45,9 @@ const SidebarChatPanel = () => {
   }, [createSearchWithAI])
   return (
     <>
-      <Test />
+      <DevContent>
+        <Test />
+      </DevContent>
       <ChatGPTStatusWrapper />
       <SidebarChatBox
         onSendMessage={async (question, options) => {

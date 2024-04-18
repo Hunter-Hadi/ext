@@ -10,6 +10,7 @@ import React from 'react'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 
 import {
   ISearchWithAIProviderType,
@@ -85,6 +86,10 @@ const AIResponseError: FC<IProps> = ({
   }, [provider])
 
   const textCover = useMemo(() => {
+    if (isPermissionCardSceneType(text)) {
+      return `You've reached the current monthly usage cap for fast text models. You can continue with the other models now, You can [upgrade to Elite](https://app.maxai.me/pricing) now for unlimited usage.`
+    }
+
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {
       if (providerOption.label === 'ChatGPT web app') {
         return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
@@ -128,7 +133,7 @@ const AIResponseError: FC<IProps> = ({
     }
     // 如果是inHouse的错误，直接显示错误信息
     return text
-  }, [text, provider, errorStatus])
+  }, [text, provider, errorStatus, providerOption.label])
 
   useEffect(() => {
     if (

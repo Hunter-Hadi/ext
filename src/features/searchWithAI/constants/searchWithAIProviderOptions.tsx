@@ -36,7 +36,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     isThirdParty: false,
 
     permission: {
-      allowedRoles: ['pro', 'elite'],
+      allowedRoles: ['pro', 'elite', 'basic'],
       sceneType: 'SEARCH_WITH_AI_CHATGPT',
     },
   },
@@ -46,7 +46,7 @@ const SearchWithAIProviderOptions: ISearchWithAIProviderOptionsType[] = [
     isThirdParty: false,
 
     permission: {
-      allowedRoles: ['pro', 'elite'],
+      allowedRoles: ['pro', 'elite', 'basic'],
       sceneType: 'SEARCH_WITH_AI_CLAUDE',
     },
   },

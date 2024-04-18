@@ -3,7 +3,6 @@ import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/Chat
 import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
 import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
 import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
-import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { createBackgroundMessageListener } from '@/background/utils'
@@ -153,7 +152,7 @@ class SearchWIthAIChatSystem {
       meta.AIModel = USE_CHAT_GPT_PLUS_MODELS[0].value
     }
     if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE) {
-      meta.AIModel = MAXAI_CLAUDE_MODELS[0].value
+      meta.AIModel = 'claude-3-haiku'
     }
     if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
       meta.AIModel = OPENAI_API_MODELS[0].value

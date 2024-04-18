@@ -17,15 +17,18 @@ const whatsAppGetDataFromQuotedMessage = (
     // if has testid, it means the reply target is not `me`
     // 24.04.10 update: the testid is not reliable
     // quotedMessage.querySelector<HTMLElement>('[testid="author"]')
-    const isOthersReply = quotedMessage.querySelector<HTMLElement>(
-      '[role]:has(+ div > .quoted-mention) > span:nth-child(1):not([aria-label])',
-    )
-    if (isOthersReply) {
-      user = isOthersReply?.innerText || ''
+    function isSpanElement(element: Element): element is HTMLSpanElement {
+      return element.tagName.toLocaleLowerCase() === 'span'
     }
-    content =
-      quotedMessage.querySelector<HTMLElement>('.quoted-mention')?.innerText ||
-      ''
+    const spanElements = Array.from(
+      quotedMessage.querySelectorAll('span[aria-label]'),
+    ).filter(isSpanElement)
+
+    if (spanElements.length >= 2) {
+      user = spanElements[0]?.innerText || ''
+      content = spanElements[1]?.innerText || ''
+      return { user, content }
+    }
   }
   return { user, content }
 }
@@ -142,21 +145,62 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
     )
 
     let replyMessageBoxIndex = -1
-
     if (channelTextArea) {
+      // 尝试寻找quote的消息
       if (quotedMention) {
         const quotedMessage = whatsAppGetDataFromQuotedMessage(
-          findParentEqualSelector('[aria-label]', quotedMention.parentElement!),
+          findParentEqualSelector(
+            'div[aria-label]',
+            quotedMention.parentElement!,
+          ),
         )
-        if (!quotedMessage.user) {
-          quotedMessage.user = configs.username
+        if (quotedMessage.content && quotedMessage.user) {
+          // user可能是一个用户或者You/你
+          replyMessageBoxIndex = chatMessages.findLastIndex((message) => {
+            // 因为获取到的message.content可能会用`…`，所以需要处理一下
+            if (
+              message.content.match(/…$/) &&
+              quotedMessage.content.length === message.content.length - 1
+            ) {
+              // 如果message被省略了，就用startsWith来判断
+              return (
+                message.user === quotedMessage.user &&
+                quotedMessage.content.startsWith(
+                  message.content.replace(/…$/, ''),
+                )
+              )
+            }
+            return (
+              message.user === quotedMessage.user &&
+              message.content === quotedMessage.content
+            )
+          })
+          // 如果找不到，就找最后一个自己的消息
+          if (replyMessageBoxIndex === -1) {
+            replyMessageBoxIndex = chatMessages.findLastIndex((message) => {
+              // 因为获取到的message.content可能会用`…`，所以需要处理一下
+              if (
+                message.content.match(/…$/) &&
+                quotedMessage.content.length === message.content.length - 1
+              ) {
+                // 如果message被省略了，就用startsWith来判断
+                return (
+                  configs.username === configs.username &&
+                  quotedMessage.content.startsWith(
+                    message.content.replace(/…$/, ''),
+                  )
+                )
+              }
+              return (
+                message.user === configs.username &&
+                message.content === quotedMessage.content
+              )
+            })
+          }
         }
-        replyMessageBoxIndex = chatMessages.findLastIndex(
-          (message) =>
-            message.user === quotedMessage.user &&
-            message.content === quotedMessage.content,
-        )
-      } else {
+      }
+      // 如果找不到，就找最后一个非自己的消息
+      if (replyMessageBoxIndex === -1) {
         replyMessageBoxIndex = chatMessages.findLastIndex(
           (message) => message.user !== configs.username,
         )

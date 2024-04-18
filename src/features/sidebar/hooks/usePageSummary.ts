@@ -46,7 +46,7 @@ const usePageSummary = () => {
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
-  const { currentUserPlan, isPayingUser } = useUserInfo()
+  const { isPayingUser } = useUserInfo()
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()

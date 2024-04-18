@@ -86,10 +86,22 @@ const clientAskMaxAIChatProvider = async (
     },
     taskId,
   )
+
+  let returnData = null
+  if (result.data?.text) {
+    returnData = result.data?.text
+  } else if (typeof result.data === 'object') {
+    returnData = result.data
+  } else if (result.data) {
+    returnData = result.data.toString()
+  } else {
+    returnData = result.data || ''
+  }
+
   return {
     success: true,
     error: '',
-    data: result.data?.text || result.data?.toString() || result.data || '',
+    data: returnData,
   }
 }
 export default clientAskMaxAIChatProvider

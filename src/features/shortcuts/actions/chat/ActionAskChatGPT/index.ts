@@ -453,15 +453,18 @@ export class ActionAskChatGPT extends Action {
                 errorMessage,
               )
             } else {
-              await clientConversationEngine.pushMessage({
-                type: 'system',
-                messageId: uuidV4(),
-                parentMessageId: this.question?.messageId,
-                text: errorMessage,
-                meta: {
-                  status: 'error',
-                },
-              } as ISystemChatMessage)
+              await clientConversationEngine.pushMessage(
+                {
+                  type: 'system',
+                  messageId: uuidV4(),
+                  parentMessageId: this.question?.messageId,
+                  text: errorMessage,
+                  meta: {
+                    status: 'error',
+                  },
+                } as ISystemChatMessage,
+                conversationId,
+              )
             }
           }
 

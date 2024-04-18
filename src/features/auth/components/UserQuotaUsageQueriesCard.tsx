@@ -29,12 +29,18 @@ const UserQuotaUsageQueriesCard = () => {
     currentUserPlan,
     isTeamPlanUser,
     syncUserQuotaUsageInfo,
+    isPayingUser,
   } = useUserInfo()
 
   // 只在第一次加载时, 同步用户的 quota 使用量信息
   useEffectOnce(() => {
     syncUserQuotaUsageInfo()
   })
+
+  // 不是付费用户不显示这个卡片
+  if (!isPayingUser) {
+    return null
+  }
 
   return (
     <Box>
@@ -66,17 +72,19 @@ const UserQuotaUsageQueriesCard = () => {
               ROLE: startCase(currentUserPlan.name),
             })} ${isTeamPlanUser ? `(${t('common:team_plan')})` : ''}`}
           />
-          <Button
-            component={'a'}
-            target={'_blank'}
-            href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
-            variant={'contained'}
-            sx={{
-              height: 44,
-            }}
-          >
-            {t('common:upgrade')}
-          </Button>
+          {currentUserPlan.name !== 'elite' && (
+            <Button
+              component={'a'}
+              target={'_blank'}
+              href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+              variant={'contained'}
+              sx={{
+                height: 44,
+              }}
+            >
+              {t('common:upgrade')}
+            </Button>
+          )}
         </ListItem>
         <Divider />
         <ListItem

@@ -6,7 +6,7 @@ import EmailCorrespondence, {
 } from '@/features/shortcuts/utils/email/EmailContext'
 import { removeEmailContentQuote } from '@/features/shortcuts/utils/email/removeEmailContentQuote'
 import { wait } from '@/utils'
-import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
+import { delayAndScrollToInputAssistantButton } from '@/utils/dataHelper/elementHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const emailWebsiteTrafficRankings = [
@@ -349,6 +349,7 @@ const outlookGetSingleEmailText = (originElement: HTMLElement | null) => {
   return ''
 }
 
+// optimize WIP: need to test and cover all the cases
 export const getEmailWebsitePageContentsOrDraft = async (
   inputAssistantButtonElementSelector: string,
 ): Promise<{ targetReplyEmailContext: string; emailContext: string }> => {
@@ -366,7 +367,6 @@ export const getEmailWebsitePageContentsOrDraft = async (
         )) as HTMLButtonElement)) ||
     null
   if (host === 'mail.google.com') {
-    debugger
     try {
       // 邮件列表容器
       const rootElement = document.querySelector(
@@ -381,11 +381,14 @@ export const getEmailWebsitePageContentsOrDraft = async (
             ?.match(emailRegex)?.[0] || ''
         const emailCorrespondence = new EmailCorrespondence(myEmailAddress)
         const expandEmailButton = rootElement.querySelector<HTMLButtonElement>(
-          'span[role="button"][aria-expanded][tabindex="-1"]',
+          'span[role="button"][aria-expanded][aria-label][tabindex]',
         )
         if (expandEmailButton) {
           expandEmailButton.click()
-          await wait(3000)
+          await delayAndScrollToInputAssistantButton(
+            3000,
+            inputAssistantButtonElement,
+          )
         }
         const subject =
           document.querySelector('h2[data-thread-perm-id]')?.textContent ||
@@ -404,16 +407,27 @@ export const getEmailWebsitePageContentsOrDraft = async (
             inputAssistantButtonElement,
           )
 
-          if (!isCurrentEmail) {
-            const emailFullContentBoxExists = Boolean(
-              emailItemBox.querySelector<HTMLElement>('& > div:nth-child(2)'),
-            )
+          const emailFullContentBoxExists = Boolean(
+            emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
+              emailItemBox.querySelector<HTMLElement>(
+                'div[data-legacy-message-id]',
+              ),
+          )
 
-            const retrieveEmailDataThenAdd = () => {
-              const gmailUsers = emailItemBox.querySelectorAll<HTMLElement>(
-                '& > div:nth-child(2) table span[email]',
+          let retrievedSuccess = false
+
+          const retrieveEmailDataThenAdd = () => {
+            const emailFullContentBox =
+              emailItemBox.querySelector<HTMLElement>('div[data-message-id]') ||
+              emailItemBox.querySelector<HTMLElement>(
+                'div[data-legacy-message-id]',
               )
-              if (gmailUsers.length > 0) {
+            if (emailFullContentBox) {
+              const gmailUsers =
+                emailFullContentBox.querySelectorAll<HTMLElement>(
+                  'table span[email]',
+                )
+              if (gmailUsers.length > 0 && !retrievedSuccess) {
                 const [sender, ...receivers] = getGmailUsers(gmailUsers)
 
                 emailCorrespondence.addEmail({
@@ -424,91 +438,62 @@ export const getEmailWebsitePageContentsOrDraft = async (
                     emailItemBox.querySelector('span[tabindex="-1"][alt]')
                       ?.textContent || '',
                   content: removeEmailContentQuote(
-                    emailItemBox.querySelector<HTMLElement>(
-                      '& > div:nth-child(2) div[id][jslog] > div[id]',
+                    emailFullContentBox.querySelector<HTMLElement>(
+                      'div[id][jslog] > div[id]',
                     ),
                   ),
                 })
-                return true
+                retrievedSuccess = true
               }
-              return false
             }
+            return retrievedSuccess
+          }
 
-            if (emailFullContentBoxExists) {
-              retrieveEmailDataThenAdd()
-            } else {
-              if (!temporarySpecialStyle) {
-                temporarySpecialStyle = document.createElement('style')
-                temporarySpecialStyle.innerHTML = `div[role="listitem"]>div>div>div>[id]>div:nth-child(1){display:flex!important;} div[role="listitem"]>div>div>div>[id]>div:nth-child(2){display:none!important;}`
-                document
-                  .getElementsByTagName('head')[0]
-                  .appendChild(temporarySpecialStyle)
-              }
-              await new Promise<void>((resolve) => {
-                let tryLimit = 0
-                // const observer = new MutationObserver(() => {
-                //   tryLimit++
-                //   if (tryLimit === 30) {
-                //     observer.disconnect()
-                //     resolve()
-                //   } else if (retrieveEmailDataThenAdd()) {
-                //     observer.disconnect()
-                //     resolve()
-                //   }
-                // })
-                // observer.observe(emailItemBox, {
-                //   childList: true,
-                //   subtree: true,
-                // })
-                emailItemBox
-                  .querySelector<HTMLElement>('& > div:nth-child(1)')
-                  ?.click()
-                // // in case the dom is not updated
-                // setTimeout(() => {
-                //   observer.disconnect()
-                //   resolve()
-                // }, 2000)
-
-                let timer: ReturnType<typeof setTimeout> | null = null
-                const retrieveEmail = () => {
-                  if (retrieveEmailDataThenAdd() || tryLimit === 10) {
-                    clearInterval(timer!)
-                    resolve()
-                  }
-                  tryLimit++
-                }
-                retrieveEmail()
-                timer = setInterval(retrieveEmail, 500)
-              })
-            }
-
-            if (!emailFullContentBoxExists) {
-              emailItemBox
-                .querySelector<HTMLElement>(
-                  '& > div:nth-child(2) [data-message-id] > div:nth-child(2) > div > table',
-                )
-                ?.click()
-            }
+          if (emailFullContentBoxExists) {
+            retrieveEmailDataThenAdd()
           } else {
-            const [sender, ...receivers] = getGmailUsers(
-              emailItemBox.querySelectorAll(
-                'div[data-message-id] table span[email]',
-              ),
-            )
-
-            emailCorrespondence.addEmail({
-              from: sender,
-              to: receivers,
-              subject,
-              date:
-                emailItemBox.querySelector('span[tabindex="-1"][alt]')
-                  ?.textContent || '',
-              content: removeEmailContentQuote(
-                emailItemBox.querySelector<HTMLElement>(
-                  'div[id][jslog] > div[id]',
-                ),
-              ),
+            // 为了获取到邮件内容，需要展开邮件，需要添加样式让用户感知不到展开的过程
+            if (!temporarySpecialStyle) {
+              temporarySpecialStyle = document.createElement('style')
+              temporarySpecialStyle.innerHTML = `div[role="listitem"]>div>div>div>[id]>div:nth-child(1){display:flex!important;} div[role="listitem"]>div>div>div>[id]>div:nth-child(2){display:none!important;}`
+              document
+                .getElementsByTagName('head')[0]
+                .appendChild(temporarySpecialStyle)
+            }
+            await new Promise<void>((resolve) => {
+              let tryLimit = 0
+              // 用 MutationObserver 来检测邮件内容是否加载完成
+              const observer = new MutationObserver(() => {
+                tryLimit++
+                if (retrieveEmailDataThenAdd() || tryLimit === 30) {
+                  observer.disconnect()
+                  resolve()
+                }
+              })
+              observer.observe(emailItemBox, {
+                childList: true,
+                subtree: true,
+              })
+              emailItemBox
+                .querySelector<HTMLElement>('& > div:nth-child(1)')
+                ?.click()
+              // in case the dom is not updated
+              setTimeout(() => {
+                if (!retrievedSuccess) {
+                  retrieveEmailDataThenAdd() // try the last time
+                  observer.disconnect()
+                  resolve()
+                }
+              }, 2000)
             })
+          }
+
+          if (!emailFullContentBoxExists) {
+            emailItemBox
+              .querySelector<HTMLElement>(
+                '& > div:nth-child(2) [data-message-id] > div:nth-child(2) > div > table',
+              )
+              ?.click()
           }
 
           //如果发现了inputAssistantButtonElement, 说明是在这个邮件上操作的, 就不用再找了
@@ -528,13 +513,120 @@ export const getEmailWebsitePageContentsOrDraft = async (
         }
       }
     } catch (err) {
+      // 如果 Gmail 新版逻辑报错了，走旧版的逻辑
       console.error(err)
+
+      // 邮件列表容器
+      const rootElement = document.querySelector(
+        'div[role="list"]',
+      ) as HTMLDivElement
+      // 点击展开
+      if (rootElement) {
+        const emailCorrespondence = new DeprecatedEmailCorrespondence()
+        const expandEmailButton = rootElement.querySelector(
+          'span[role="button"][aria-expanded][tabindex="-1"]',
+        ) as HTMLButtonElement
+        if (expandEmailButton) {
+          expandEmailButton.click()
+          await wait(3000)
+        }
+        const messageItems: Element[] = []
+        //如果发现了inputAssistantButtonElementSelector，就不用再找了
+        Array.from(rootElement.querySelectorAll('div[role="listitem"]')).find(
+          (messageItem) => {
+            if (
+              (messageItem as HTMLElement).contains(inputAssistantButtonElement)
+            ) {
+              messageItems.push(messageItem)
+              return true
+            }
+            messageItems.push(messageItem)
+            return false
+          },
+        )
+        // 寻找sender和receiver
+        for (let i = 0; i < messageItems.length; i++) {
+          if (
+            messageItems[i].querySelectorAll('table span[email]').length >= 2
+          ) {
+            // 因为展开的邮件才能看到Form和to
+            const emails = Array.from(
+              messageItems[i].querySelectorAll('table span[email]'),
+            )
+            let userEmail = ''
+            document
+              .querySelectorAll('a[aria-label][role="button"]')
+              .forEach((item) => {
+                //aria-label="Google アカウント: yang chen    (yangger666@gmail.com)"
+                if (item?.getAttribute('aria-label')?.includes('@gmail.com')) {
+                  userEmail =
+                    item?.getAttribute('aria-label')?.match(emailRegex)?.[0] ||
+                    ''
+                }
+              })
+            const from = emails.find(
+              (email) => email.getAttribute('email') === userEmail,
+            )
+            const to = emails.find(
+              (email) => email.getAttribute('email') !== userEmail,
+            )
+            emailCorrespondence.addSender({
+              email: from?.getAttribute('email') || '',
+              name: from?.getAttribute('name') || '',
+            })
+            emailCorrespondence.addReceiver({
+              email: to?.getAttribute('email') || '',
+              name: to?.getAttribute('name') || '',
+            })
+            break
+          }
+        }
+        const subject =
+          document.querySelector('h2[data-thread-perm-id]')?.textContent ||
+          document.title
+        messageItems.forEach((messageItem) => {
+          const currentMessage =
+            messageItem.querySelector('div[data-message-id]') ||
+            messageItem.querySelector('div[data-legacy-message-id]')
+          const date =
+            messageItem.querySelector('span[tabindex="-1"][alt]')
+              ?.textContent || ''
+          const currentMessageEmail =
+            messageItem
+              .querySelector('h3 span[email]')
+              ?.getAttribute('email') ||
+            messageItem.querySelector('span[email]')?.getAttribute('email')
+          if (currentMessageEmail) {
+            if (currentMessage) {
+              const content = removeEmailContentQuote(
+                messageItem.querySelector(
+                  'div[id][jslog] > div[id]',
+                ) as HTMLDivElement,
+              )
+              emailCorrespondence.addEmail(currentMessageEmail, {
+                content,
+                date,
+                subject,
+              })
+            } else {
+              const content =
+                messageItem.querySelector('div[role="gridcell"] span')
+                  ?.textContent || ''
+              emailCorrespondence.addEmail(currentMessageEmail, {
+                content,
+                date,
+                subject,
+              })
+            }
+          }
+        })
+        return emailCorrespondence.emailContext
+      }
     }
 
-    // if doesnt have receivers, it means it is performing `Summary` action
+    // if doesnt have emails, it means it is performing `Summary` action
     emailContextSelector = 'div[role="list"]'
   } else if (host === 'outlook.live.com') {
-    debugger
     // outlook 有3种回复邮件的UI: 列表框展开回复 | 邮件详情页回复 | 弹窗邮件详情页回复 | 弹窗邮件详情页回复新邮件
     // 1. 列表框展开回复判断条件:
     //    1.1 列表容器document.querySelector('div[data-app-section="ConversationContainer"]')存在
@@ -711,7 +803,7 @@ export const getEmailWebsitePageContentsOrDraft = async (
           return emailCorrespondence.emailContext
         }
 
-        // if doesnt have receivers, it means it is performing `Summary` action
+        // if doesnt have emails, it means it is performing `Summary` action
         emailContextSelector = 'div[data-app-section="ConversationContainer"]'
       }
 
@@ -750,6 +842,166 @@ export const getEmailWebsitePageContentsOrDraft = async (
         emailContextSelector = '#ReadingPaneContainerId'
       }
     } catch (e) {
+      emailContextSelector = 'div[data-app-section="ConversationContainer"]'
+    }
+
+    // 如果 Outlook 新版逻辑报错了，走旧版的逻辑
+    try {
+      const subject =
+        document.querySelector(
+          '#ReadingPaneContainerId div[role="heading"][aria-level="2"]',
+        )?.textContent || document.title
+
+      const expandMoreButton = document.querySelector(
+        'div[role="button"][aria-label="See more messages"]',
+      ) as HTMLButtonElement
+      expandMoreButton?.click()
+      // ======================== 1.列表框展开回复 ========================
+      // 邮件列表容器
+      const rootElement = document.querySelector(
+        'div[data-app-section="ConversationContainer"]',
+      ) as HTMLDivElement
+      if (rootElement && rootElement.contains(inputAssistantButtonElement)) {
+        const emailCorrespondence = new DeprecatedEmailCorrespondence()
+        const messageItems: Element[] = []
+        const totalMessageItems = Array.from(
+          rootElement.querySelectorAll('& > div > div'),
+        ) as HTMLElement[]
+        // 因为outlook可以修改邮件顺序，所以要先拿到邮件的date
+        const replyMessageDate =
+          totalMessageItems
+            .find((messageItem) =>
+              messageItem.contains(inputAssistantButtonElement),
+            )
+            ?.querySelector('div[data-testid="SentReceivedSavedTime"]')
+            ?.textContent || ''
+        // 插入时间比replyMessageDate小的message
+        totalMessageItems.forEach((messageItem) => {
+          const messageDate =
+            messageItem.querySelector(
+              'div[data-testid="SentReceivedSavedTime"]',
+            )?.textContent || ''
+          if (
+            new Date(messageDate).getTime() <=
+            new Date(replyMessageDate).getTime()
+          ) {
+            messageItems.push(messageItem)
+          }
+          const expandMessages = messageItem.querySelectorAll('& > div > div')
+          expandMessages.forEach((expandMessage) => fireClick(expandMessage))
+        })
+        const profileButton = document.querySelector(
+          '#meInitialsButton',
+        ) as HTMLButtonElement
+        while (!document.querySelector('#mectrl_currentAccount_primary')) {
+          profileButton.click()
+          await wait(2000)
+        }
+        const userName =
+          document.querySelector('#mectrl_currentAccount_primary')
+            ?.textContent || ''
+        const userEmail =
+          document.querySelector('#mectrl_currentAccount_secondary')
+            ?.textContent || ''
+        // 寻找sender和receiver
+        for (let i = 0; i < messageItems.length; i++) {
+          const emailEmailElements = Array.from(
+            messageItems[i].querySelectorAll('span[data-lpc-hover-target-id]'),
+          )
+          const receiverElement = messageItems[i].querySelector(
+            'div[data-testid="RecipientWell"]',
+          )
+          if (!receiverElement || emailEmailElements.length === 0) {
+            continue
+          }
+          const date =
+            messageItems[i].querySelector(
+              'div[data-testid="SentReceivedSavedTime"]',
+            )?.textContent || ''
+          const content = removeEmailContentQuote(
+            (messageItems[i].querySelector('#UniqueMessageBody') ||
+              messageItems[i].querySelector(
+                'div[role="document"]',
+              )) as HTMLDivElement,
+          )
+          // 因为outlook的html中，用户本身的邮件是不带邮件地址的，所以只能先判断有没有邮件，再判断是不是接受者
+          emailEmailElements.find((emailElement) => {
+            const emailElementContext = emailElement.textContent || ''
+            let email = emailElementContext.match(emailRegex)?.[0]
+            if (
+              !email &&
+              emailElementContext === emailCorrespondence.sender?.name
+            ) {
+              email = emailCorrespondence.sender.email
+            } else if (
+              !email &&
+              emailElementContext === emailCorrespondence.receiver?.name
+            ) {
+              email = emailCorrespondence.receiver.email
+            }
+            if (email) {
+              let isReceiver = false
+              if (receiverElement?.contains(emailElement)) {
+                isReceiver = true
+              }
+              const name = emailElementContext.replace(` <${email}>`, '')
+              if (name && email) {
+                // 如果没有设置sender和receiver，就设置
+                if (
+                  !emailCorrespondence.receiver ||
+                  !emailCorrespondence.sender
+                ) {
+                  if (isReceiver) {
+                    emailCorrespondence.addReceiver({
+                      name,
+                      email,
+                    })
+                    emailCorrespondence.addSender({
+                      name: userName,
+                      email: userEmail,
+                    })
+                  } else {
+                    emailCorrespondence.addSender({
+                      name,
+                      email,
+                    })
+                    emailCorrespondence.addReceiver({
+                      name: userName,
+                      email: userEmail,
+                    })
+                  }
+                }
+                if (isReceiver) {
+                  const theMessageSenderEmail =
+                    emailCorrespondence.sender?.email === email
+                      ? emailCorrespondence.receiver!.email
+                      : emailCorrespondence.sender!.email
+                  emailCorrespondence.addEmail(theMessageSenderEmail, {
+                    date,
+                    subject,
+                    content,
+                  })
+                } else {
+                  emailCorrespondence.addEmail(email, {
+                    date,
+                    subject,
+                    content,
+                  })
+                }
+                return true
+              }
+            }
+            return false
+          })
+        }
+        emailCorrespondence.sortEmails()
+        if (emailCorrespondence.emails.length > 0) {
+          return emailCorrespondence.emailContext
+        }
+        emailContextSelector = 'div[data-app-section="ConversationContainer"]'
+      }
+    } catch (err) {
+      console.error(err)
       emailContextSelector = 'div[data-app-section="ConversationContainer"]'
     }
   } else if (

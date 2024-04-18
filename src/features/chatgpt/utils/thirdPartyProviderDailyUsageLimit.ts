@@ -3,7 +3,7 @@ import utc from 'dayjs/plugin/utc'
 import Browser from 'webextension-polyfill'
 
 import {
-  checkPayingUser,
+  checkIsPayingUser,
   getChromeExtensionUserInfo,
 } from '@/features/auth/utils'
 dayjs.extend(utc)
@@ -51,7 +51,7 @@ export const logThirdPartyDailyUsage =
         data.hasReachedLimit = true
 
         const userInfo = await getChromeExtensionUserInfo(false)
-        if (checkPayingUser(userInfo)) {
+        if (checkIsPayingUser(userInfo?.role?.name)) {
           // 如果是付费用户，不限制使用次数
           data.hasReachedLimit = false
         }

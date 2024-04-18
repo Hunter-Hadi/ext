@@ -62,7 +62,10 @@ import {
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
 } from '@/constants'
 import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/features/activity/constants'
-import { getChromeExtensionUserInfo } from '@/features/auth/utils'
+import {
+  checkIsPayingUser,
+  getChromeExtensionUserInfo,
+} from '@/features/auth/utils'
 import {
   MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL,
   MAXAI_CHROME_EXTENSION_WWW_HOMEPAGE_URL,
@@ -169,8 +172,7 @@ const initChromeExtensionUpdated = async () => {
     )
     if (result?.roles && result?.subscription_plan_name) {
       const role = (
-        result.roles.find((role) => role.name === 'elite') ||
-        result.roles.find((role) => role.name === 'pro') || {
+        result.roles.find((role) => checkIsPayingUser(role.name)) || {
           name: 'free',
         }
       ).name
@@ -208,8 +210,7 @@ const initChromeExtensionUpdated = async () => {
     )
     if (result?.roles && result?.subscription_plan_name) {
       const role = (
-        result.roles.find((role) => role.name === 'elite') ||
-        result.roles.find((role) => role.name === 'pro') || {
+        result.roles.find((role) => checkIsPayingUser(role.name)) || {
           name: 'free',
         }
       ).name
@@ -235,15 +236,14 @@ const initChromeExtensionUpdated = async () => {
     const result = await getChromeExtensionUserInfo(false)
     if (result?.roles && result?.subscription_plan_name) {
       const role = (
-        result.roles.find((role) => role.name === 'elite') ||
-        result.roles.find((role) => role.name === 'pro') || {
+        result.roles.find((role) => checkIsPayingUser(role.name)) || {
           name: 'free',
         }
       ).name
       /**
-       * 只收集pro和elite的用户
+       * 只收集付费用户的数据
        */
-      if (role === 'pro' || role === 'elite') {
+      if (checkIsPayingUser(role)) {
         WebsiteContextManager.computeWebsiteContextStorageSize()
           .then((size) => {
             if (size > 0) {

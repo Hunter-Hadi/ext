@@ -23,7 +23,7 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
-  const { userInfo, currentUserPlan } = useUserInfo()
+  const { userInfo, currentUserPlan, isPayingUser } = useUserInfo()
 
   const [open, setOpen] = useState(false)
 
@@ -50,7 +50,7 @@ const SidebarPromotionDialog = () => {
     }
 
     // 不是免费用户不弹窗
-    if (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite') {
+    if (isPayingUser) {
       return
     }
 
@@ -86,7 +86,7 @@ const SidebarPromotionDialog = () => {
         setOpen(true)
       }, 1500)
     })
-  }, [browserAgent, userInfo, currentUserPlan])
+  }, [browserAgent, userInfo, isPayingUser])
 
   const promotionDescription = useMemo(() => {
     return [

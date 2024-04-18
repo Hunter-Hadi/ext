@@ -37,7 +37,7 @@ const usePageSummary = () => {
     updateSidebarSettings,
     currentSidebarConversationId,
     currentSidebarConversationType,
-    updateSidebarPageUrl
+    updateSidebarPageUrl,
   } = useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const updateClientWritingMessage = useSetRecoilState(
@@ -46,7 +46,7 @@ const usePageSummary = () => {
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
-  const { currentUserPlan } = useUserInfo()
+  const { currentUserPlan, isPayingUser } = useUserInfo()
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
@@ -126,10 +126,7 @@ const usePageSummary = () => {
             }
           })
           // 如果是免费用户
-          if (
-            currentUserPlan.name !== 'pro' &&
-            currentUserPlan.name !== 'elite'
-          ) {
+          if (!isPayingUser) {
             // 判断lifetimes free trial是否已经用完
             const summaryLifetimesQuota =
               Number(
@@ -155,10 +152,11 @@ const usePageSummary = () => {
             }
           }
           const nowCurrentPageSummaryKey = cloneDeep(currentPageSummaryKey)
-          const paramsPageSummaryTypeData = await getContextMenuActionsByPageSummaryType(
-            getPageSummaryType(),
-            nowCurrentPageSummaryKey[currentPageSummaryType],
-          )
+          const paramsPageSummaryTypeData =
+            await getContextMenuActionsByPageSummaryType(
+              getPageSummaryType(),
+              nowCurrentPageSummaryKey[currentPageSummaryType],
+            )
           if (paramsPageSummaryTypeData) {
             setCurrentPageSummaryKey((summaryKeys) => {
               return {

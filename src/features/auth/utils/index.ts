@@ -8,11 +8,13 @@ import {
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
   CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY,
 } from '@/constants'
+import { PAYING_USER_ROLE_NAME } from '@/features/auth/constants'
 import {
   IUseChatGPTUserInfo,
   IUserPlanNameType,
   IUserQuotaUsageInfo,
   IUserRole,
+  IUserRoleType,
 } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -175,14 +177,9 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             usage: result.data.usage,
           })
           let role =
-            result.data.roles.find(
-              (role: { name: string; exp_time: number }) =>
-                role.name === 'elite',
-            ) ||
-            result.data.roles.find(
-              (role: { name: string; exp_time: number }) => role.name === 'pro',
-            ) ||
-            result.data.roles[0]
+            result.data.roles.find((role: { name: string; exp_time: number }) =>
+              checkIsPayingUser(role?.name as IUserRoleType),
+            ) || result.data.roles[0]
           if (!role) {
             role = {
               name: 'free',
@@ -352,6 +349,7 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
           fastText: data.fast_text,
           advancedText: data.advanced_text,
           imageGenerate: data.image_generate,
+          nextRefreshTime: data.next_refresh_time,
         } as IUserQuotaUsageInfo
       }
     }
@@ -361,13 +359,8 @@ export const fetchUserQuotaUsageInfo = async (): Promise<
   }
 }
 
-export const checkPayingUser = (
-  currentUserInfo: IUseChatGPTUserInfo | null | undefined,
+export const checkIsPayingUser = (
+  userRoleName: IUserRoleType | null | undefined,
 ): boolean => {
-  const role = currentUserInfo?.role
-  return !!(
-    role?.name === 'pro' ||
-    role?.name === 'elite' ||
-    role?.name === 'basic'
-  )
+  return userRoleName ? PAYING_USER_ROLE_NAME.includes(userRoleName) : false
 }

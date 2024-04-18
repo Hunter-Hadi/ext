@@ -35,13 +35,10 @@ const useSearchWithAI = () => {
   const updateClientWritingMessage = useSetRecoilState(
     ClientWritingMessageState,
   )
-  const { currentUserPlan } = useUserInfo()
+  const { currentUserPlan, isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
-  const {
-    createConversation,
-    pushPricingHookMessage,
-    getConversation,
-  } = useClientConversation()
+  const { createConversation, pushPricingHookMessage, getConversation } =
+    useClientConversation()
   const isFetchingRef = useRef(false)
   const lastMessageIdRef = useRef('')
   const memoPrevQuestions = useMemo(() => {
@@ -100,7 +97,7 @@ const useSearchWithAI = () => {
         }
       })
       // 如果是免费用户
-      if (currentUserPlan.name !== 'pro' && currentUserPlan.name !== 'elite') {
+      if (!isPayingUser) {
         // 判断lifetimes free trial是否已经用完
         const searchLifetimesQuota =
           Number(
@@ -130,6 +127,7 @@ const useSearchWithAI = () => {
       console.log('创建Conversation失败', e)
     }
   }
+
   // 因为在regenerate的时候消息更更新不及时，所以需要一个ref确保历史记录是最新的
   const createSearchWithAIRef = useRef(createSearchWithAI)
   useEffect(() => {

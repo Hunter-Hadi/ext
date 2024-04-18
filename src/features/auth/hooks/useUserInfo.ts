@@ -5,7 +5,7 @@ import { useRecoilValue } from 'recoil'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
 import { IUserPlanNameType, IUserRoleType } from '@/features/auth/types'
-import { checkPayingUser } from '@/features/auth/utils'
+import { checkIsPayingUser } from '@/features/auth/utils'
 
 export type IUserCurrentPlan = {
   name: IUserRoleType
@@ -93,7 +93,10 @@ const useUserInfo = () => {
   }, [userInfo])
 
   // 是否是付费用户
-  const isPayingUser = useMemo(() => checkPayingUser(userInfo), [userInfo])
+  const isPayingUser = useMemo(
+    () => checkIsPayingUser(userInfo?.role?.name),
+    [userInfo],
+  )
 
   return {
     currentUserPlan,

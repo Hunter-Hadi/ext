@@ -23,7 +23,7 @@ export const AuthUserInfoState = atom<{
 })
 
 export const UserQuotaUsageState = atom<
-  IUserQuotaUsageInfo & { loading: boolean; updateAt: number }
+  IUserQuotaUsageInfo & { loading: boolean }
 >({
   key: 'UserQuotaUsageState',
   default: {
@@ -31,6 +31,6 @@ export const UserQuotaUsageState = atom<
     advancedText: 0,
     imageGenerate: 0,
     loading: false,
-    updateAt: Date.now(),
+    // nextRefreshTime: '',
   },
 })

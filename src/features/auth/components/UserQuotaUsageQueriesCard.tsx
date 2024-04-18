@@ -87,39 +87,43 @@ const UserQuotaUsageQueriesCard = () => {
         >
           <ListItemText primary={t('quota_usage_card:queries')} />
 
-          <ListItemText
-            sx={{
-              textAlign: 'right',
-            }}
-            primary={
-              <TextOnlyTooltip
-                placement={'top'}
-                title={dayjs(userQuotaUsage.updateAt).format(
-                  'YYYY-MM-DD HH:mm:ss',
-                )}
-              >
-                <Stack
-                  direction="row"
-                  alignItems="center"
-                  spacing={1}
-                  ml="auto"
-                  justifyContent={'flex-end'}
-                  width="max-content"
+          {userQuotaUsage.nextRefreshTime ? (
+            <ListItemText
+              sx={{
+                textAlign: 'right',
+              }}
+              primary={
+                <TextOnlyTooltip
+                  placement={'top'}
+                  title={dayjs
+                    .utc(userQuotaUsage.nextRefreshTime)
+                    .local()
+                    .format('YYYY-MM-DD HH:mm:ss')}
                 >
-                  {userQuotaUsage.loading ? (
-                    <CircularProgress size={16} />
-                  ) : null}
-                  <Typography fontSize={14} lineHeight={1.5}>
-                    {t('quota_usage_card:reset_on_date', {
-                      DATE: dayjs(userQuotaUsage.updateAt).format(
-                        'MMM D, YYYY',
-                      ),
-                    })}
-                  </Typography>
-                </Stack>
-              </TextOnlyTooltip>
-            }
-          />
+                  <Stack
+                    direction="row"
+                    alignItems="center"
+                    spacing={1}
+                    ml="auto"
+                    justifyContent={'flex-end'}
+                    width="max-content"
+                  >
+                    {userQuotaUsage.loading ? (
+                      <CircularProgress size={16} />
+                    ) : null}
+                    <Typography fontSize={14} lineHeight={1.5}>
+                      {t('quota_usage_card:reset_on_date', {
+                        DATE: dayjs
+                          .utc(userQuotaUsage.nextRefreshTime)
+                          .local()
+                          .format('MMM D, YYYY'),
+                      })}
+                    </Typography>
+                  </Stack>
+                </TextOnlyTooltip>
+              }
+            />
+          ) : null}
         </ListItem>
         <Divider />
         <ListItem>

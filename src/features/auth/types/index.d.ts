@@ -49,4 +49,6 @@ export type IUserQuotaUsageInfo = {
   fastText: number // GPT-3.5 & Claude-3-haiku & Gemini-Pro
   advancedText: number // GPT-4 & Claude-3-opus/sonnet
   imageGenerate: number // DALL·E 3
+
+  nextRefreshTime?: string // 用量刷新的时间 (utc)
 }

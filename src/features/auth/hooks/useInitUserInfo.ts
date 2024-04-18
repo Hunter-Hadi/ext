@@ -107,6 +107,9 @@ const useInitUserInfo = (isInit = true) => {
               } else if (newRole.name === 'pro') {
                 upgradeTextRef.current =
                   'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!'
+              } else if (newRole.name === 'basic') {
+                upgradeTextRef.current =
+                  'You have successfully upgraded to MaxAI Basic. Enjoy unlimited usage!'
               }
             }
             return {
@@ -150,7 +153,6 @@ const useInitUserInfo = (isInit = true) => {
       if (result && result.data) {
         setUserQuotaUsageInfo({
           loading: false,
-          updateAt: Date.now(),
           ...(result.data as IUserQuotaUsageInfo),
         })
         return true
@@ -169,7 +171,6 @@ const useInitUserInfo = (isInit = true) => {
       setUserQuotaUsageInfo((prevState) => {
         return {
           ...prevState,
-          updateAt: Date.now(),
           loading: false,
         }
       })

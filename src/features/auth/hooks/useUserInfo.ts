@@ -98,6 +98,8 @@ const useUserInfo = () => {
     [userInfo],
   )
 
+  const isFreeUser = useMemo(() => !isPayingUser, [isPayingUser])
+
   return {
     currentUserPlan,
     quotaLeftText,
@@ -110,6 +112,7 @@ const useUserInfo = () => {
     syncUserQuotaUsageInfo,
 
     isPayingUser,
+    isFreeUser,
 
     // 是否是 team plan 的用户
     isTeamPlanUser: !!userInfo?.group_id,

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { atom, useRecoilState } from 'recoil'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { atomFamily, useRecoilState } from 'recoil'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
@@ -11,25 +11,32 @@ import {
  * AI持续生成的草稿和用户选择的答案
  * @description - 因为AI的regenerate会删除消息，所以需要一个历史消息记录去让用户选择需要的AI response
  */
-const FloatingContextMenuDraftActiveIndexState = atom<number>({
+const FloatingContextMenuDraftActiveIndexState = atomFamily<number, string>({
   key: 'FloatingContextMenuDraftActiveIndexState',
   default: 0,
 })
 const useFloatingContextMenuDraft = () => {
-  const [activeMessageIndex, setActiveMessageIndex] = useRecoilState(
-    FloatingContextMenuDraftActiveIndexState,
-  )
   const {
     clientWritingMessage,
     clientConversationMessages,
     currentConversationId,
   } = useClientConversation()
-
+  const [activeMessageIndex, setActiveMessageIndex] = useRecoilState(
+    FloatingContextMenuDraftActiveIndexState(currentConversationId || ''),
+  )
   const [historyMessages, setHistoryMessages] = useState<IAIResponseMessage[]>(
     [],
   )
   const activeAIResponseMessage = historyMessages[activeMessageIndex]
-
+  useEffect(() => {
+    if (activeAIResponseMessage) {
+      floatingContextMenuDraftMessageIdRef.current =
+        activeAIResponseMessage.messageId
+    }
+  }, [activeAIResponseMessage])
+  const floatingContextMenuDraftMessageIdRef = useRef<string | null>(
+    activeAIResponseMessage?.messageId || null,
+  )
   const currentFloatingContextMenuDraft = useMemo(() => {
     const activeMessage = historyMessages[activeMessageIndex]
     let draft = ''
@@ -90,6 +97,7 @@ const useFloatingContextMenuDraft = () => {
 
   useEffect(() => {
     const newMessages = clientConversationMessages.filter(isAIMessage)
+    console.log('clientConversationMessages', clientConversationMessages)
     setHistoryMessages((prev) => {
       // 找得到messageId的更新，找不到的添加
       const newMessagesMap = newMessages.reduce((messageMap, message) => {
@@ -116,6 +124,11 @@ const useFloatingContextMenuDraft = () => {
     if (historyMessages.length === 0) {
       return
     }
+    console.log(
+      'clientConversationMessages historyMessages',
+      historyMessages.length,
+      historyMessages,
+    )
     setActiveMessageIndex(historyMessages.length - 1)
   }, [historyMessages])
 
@@ -123,6 +136,7 @@ const useFloatingContextMenuDraft = () => {
     resetFloatingContextMenuDraft()
   }, [currentConversationId])
   return {
+    floatingContextMenuDraftMessageIdRef,
     selectedDraftUserMessage,
     activeAIResponseMessage,
     historyMessages,

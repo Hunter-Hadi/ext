@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 
 const WritingMessageBoxPagination: FC = () => {
@@ -15,9 +16,12 @@ const WritingMessageBoxPagination: FC = () => {
     goToNextMessage,
     goToPreviousMessage,
   } = useFloatingContextMenuDraft()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   if (historyMessages.length < 2) {
     return null
   }
+  const isDisabledPrevious = activeMessageIndex === 0
+  const isDisabledNext = activeMessageIndex === historyMessages.length - 1
   return (
     <Stack
       flexShrink={0}
@@ -35,7 +39,7 @@ const WritingMessageBoxPagination: FC = () => {
       />
       <IconButton
         sx={{ width: '24px', height: '24px' }}
-        disabled={activeMessageIndex === 0}
+        disabled={smoothConversationLoading || isDisabledPrevious}
       >
         <NavigateBeforeOutlinedIcon
           onClick={goToPreviousMessage}
@@ -44,6 +48,7 @@ const WritingMessageBoxPagination: FC = () => {
             p: '2px',
             color: 'text.secondary',
             cursor: 'pointer',
+            opacity: isDisabledPrevious ? 0.4 : 1,
           }}
         />
       </IconButton>
@@ -57,7 +62,7 @@ const WritingMessageBoxPagination: FC = () => {
       </Typography>
       <IconButton
         sx={{ width: '24px', height: '24px' }}
-        disabled={activeMessageIndex === historyMessages.length - 1}
+        disabled={smoothConversationLoading || isDisabledNext}
       >
         <NavigateNextOutlinedIcon
           onClick={goToNextMessage}
@@ -66,6 +71,7 @@ const WritingMessageBoxPagination: FC = () => {
             p: '2px',
             color: 'text.secondary',
             cursor: 'pointer',
+            opacity: isDisabledNext ? 0.4 : 1,
           }}
         />
       </IconButton>

@@ -282,7 +282,7 @@ const DevConsole: FC<{
         )}
         <Stack width={200} flexShrink={0}>
           <pre>{Object.keys(clientConversationMap).join('\n')}</pre>
-          <DevShortcutsLog />
+          <DevShortcutsLog isSidebar={isSidebar} />
         </Stack>
       </Stack>
     </Stack>

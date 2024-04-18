@@ -69,7 +69,6 @@ const SidebarUserMessageContexts: FC<{
     >
       <MaxAIClickAwayListener
         onClickAway={() => {
-          debugger
           setOpen(false)
         }}
       >

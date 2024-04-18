@@ -423,11 +423,16 @@ export class ActionAskChatGPT extends Action {
               ],
             )
           }
+
           if (
             this.answer &&
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
             askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_ANSWER'
           ) {
+            if (outputMessageId) {
+              // 如果有outputMessageId,到这里就结束了
+              return
+            }
             // 如果没有AI response的消息Id，需要把stop的消息插入到对话中
             await clientConversationEngine.pushMessage(
               this.answer,

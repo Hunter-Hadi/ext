@@ -47,6 +47,7 @@ import {
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
+import { CONTEXT_MENU_DRAFT_TYPES } from '@/features/contextMenu/constants'
 import {
   useContextMenuList,
   useDraftContextMenuList,
@@ -118,7 +119,10 @@ const FloatingContextMenu: FC<{
   const [floatingDropdownMenu, setFloatingDropdownMenu] = useRecoilState(
     FloatingDropdownMenuState,
   )
-  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
+  const {
+    currentFloatingContextMenuDraft,
+    floatingContextMenuDraftMessageIdRef,
+  } = useFloatingContextMenuDraft()
   const { isLogin } = useAuthLogin()
   const [isSettingVariables, setIsSettingVariables] = useState(false)
 
@@ -532,7 +536,20 @@ const FloatingContextMenu: FC<{
         }
         lastRecordContextMenuRef.current = currentContextMenu
         const currentContextMenuId = currentContextMenu.id
-        const runActions = currentContextMenu.data.actions || []
+        const runActions: ISetActionsType = cloneDeep(
+          currentContextMenu.data.actions || [],
+        )
+        // 如果是[草稿-续写]菜单的动作, 需要加上当前focus的messageId, 配合CONTINUE_WRITING的Actions
+        if (
+          currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_WRITING
+        ) {
+          runActions.unshift({
+            type: 'RENDER_TEMPLATE',
+            parameters: {
+              template: floatingContextMenuDraftMessageIdRef.current || '',
+            },
+          })
+        }
         updateFloatingDropdownMenuSelectedItem(() => {
           return {
             selectedContextMenuId: null,

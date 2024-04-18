@@ -1,5 +1,4 @@
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
-
 /**
  * 基于Draft操作的上下文菜单ID集合
  */
@@ -63,26 +62,64 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
       editable: false,
       icon: 'DefaultIcon',
       actions: [
-        {
-          type: 'GET_LAST_AI_MESSAGE_ID',
-          parameters: {},
-        },
+        // 这里获取传进来的Active message id
         {
           type: 'SET_VARIABLE',
           parameters: {
-            Variable: {
-              key: 'LAST_AI_MESSAGE_ID',
-              value: '{{LAST_ACTION_OUTPUT}}',
-              isBuiltIn: true,
-              overwrite: true,
-              label: 'Last AI message ID',
-            },
+            VariableName: 'ACTIVE_MESSAGE_ID',
           },
         },
         {
-          type: 'RENDER_TEMPLATE',
+          type: 'SCRIPTS_CONDITIONAL',
           parameters: {
-            template: '{{SELECTED_TEXT}}\n{{POPUP_DRAFT}}',
+            WFCondition: 'Equals',
+            WFFormValues: {
+              Value: '',
+              WFSerializationType: 'WFDictionaryFieldValue',
+            },
+            // 如果Active message id为空，获取最后一条AI消息
+            WFConditionalIfTrueActions: [
+              {
+                type: 'MAXAI_GET_CHAT_MESSAGES',
+                parameters: {
+                  ActionChatMessageType: 'ai',
+                },
+              },
+              {
+                type: 'SCRIPTS_GET_ITEM_FROM_LIST',
+                parameters: {
+                  ActionGetItemFromListType: 'last',
+                },
+              },
+            ],
+            // 如果Active message id不为空，获取Active message id对应的消息
+            WFConditionalIfFalseActions: [
+              {
+                type: 'MAXAI_GET_CHAT_MESSAGES',
+                parameters: {
+                  ActionChatMessageType: 'ai',
+                },
+              },
+              {
+                type: 'SCRIPTS_GET_ITEM_FROM_LIST',
+                parameters: {
+                  ActionGetItemFromListType: 'matchEqual',
+                  ActionGetItemFromMatchKey: 'messageId',
+                  ActionGetItemFromMatchValue: '{{ACTIVE_MESSAGE_ID}}',
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: 'SCRIPTS_DICTIONARY',
+          parameters: {},
+        },
+        {
+          type: 'SCRIPTS_GET_DICTIONARY_VALUE',
+          parameters: {
+            ActionGetDictionaryKey: 'value',
+            ActionGetDictionaryValue: 'text',
           },
         },
         {
@@ -94,33 +131,37 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
         {
           type: 'SET_VARIABLE',
           parameters: {
-            Variable: {
-              key: `MAXAI_CONTINUE_WRITING_TEXT_DRAFT`,
-              value: `{{LAST_ACTION_OUTPUT}}`,
-              isBuiltIn: true,
-              overwrite: true,
-              label: 'Continue writing text draft',
+            VariableName: 'LAST_AI_MESSAGE_OUTPUT',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              messageId: '',
+              parentMessageId: undefined,
+              text: `{{LAST_AI_MESSAGE_OUTPUT}}`,
+              type: 'ai',
             },
           },
         },
         {
-          type: 'RENDER_TEMPLATE',
+          type: 'SET_VARIABLE',
           parameters: {
-            template:
-              "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{MAXAI_CONTINUE_WRITING_TEXT_DRAFT}}\n```",
+            VariableName: 'OUTPUT_MESSAGE_ID',
           },
         },
         {
           type: 'ASK_CHATGPT',
           parameters: {
-            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN',
-            template: '{{LAST_ACTION_OUTPUT}}',
             AskChatGPTActionQuestion: {
-              text: `{{LAST_ACTION_OUTPUT}}`,
+              text: "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{LAST_AI_MESSAGE_OUTPUT}}\n```",
               meta: {
-                outputMessageId: `{{LAST_AI_MESSAGE_ID}}`,
+                outputMessageId: `{{OUTPUT_MESSAGE_ID}}`,
               },
             },
+            AskChatGPTActionType: 'ASK_CHAT_GPT_HIDDEN_QUESTION',
           },
         },
       ],

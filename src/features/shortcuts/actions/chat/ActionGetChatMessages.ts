@@ -8,8 +8,13 @@ import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 
-export class ActionGetLastAIMessageId extends Action {
-  static type: ActionIdentifier = 'GET_LAST_AI_MESSAGE_ID'
+/**
+ * 获取当前会话的消息
+ * @description - 获取当前会话的消息
+ * @return messages:IChatMessage[] - 返回当前会话的消息
+ */
+export class ActionGetChatMessages extends Action {
+  static type: ActionIdentifier = 'MAXAI_GET_CHAT_MESSAGES'
   constructor(
     id: string,
     type: ActionIdentifier,
@@ -27,23 +32,18 @@ export class ActionGetLastAIMessageId extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
+      const messageType = this.parameters.ActionChatMessageType
       const { clientConversationEngine } = engine
       const conversation =
         await clientConversationEngine?.getCurrentConversation()
-      if (conversation) {
-        const history = conversation.messages
-        let lastAIMessageId = ''
-        for (let i = history.length - 1; i >= 0; i--) {
-          const message = history[i]
-          if (isAIMessage(message)) {
-            lastAIMessageId = message.messageId
-            this.log.info('Found last AI message', lastAIMessageId, message)
-            break
-          }
-        }
-        this.output = lastAIMessageId
+      if (conversation?.messages) {
+        this.output = messageType
+          ? conversation.messages.filter(
+              (message) => isAIMessage(message) && message.type === messageType,
+            )
+          : conversation.messages
       } else {
-        this.output = ''
+        this.output = []
       }
     } catch (e) {
       this.error = (e as any).toString()

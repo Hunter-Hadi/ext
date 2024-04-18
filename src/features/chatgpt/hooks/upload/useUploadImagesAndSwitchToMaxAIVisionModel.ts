@@ -56,7 +56,6 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         ].includes(clientConversation.meta.AIModel)
       ) {
         if (resolveRef.current) {
-          debugger
           resolveRef.current(true)
           resolveRef.current = undefined
         }
@@ -82,7 +81,6 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         resolveRef.current(true)
       }
       resolveRef.current = resolve
-      debugger
       if (clientConversation) {
         if (
           !clientConversation?.meta?.AIModel ||
@@ -110,12 +108,10 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         return
       }
       if (resolveRef.current) {
-        debugger
         resolveRef.current(true)
         resolveRef.current = undefined
       }
     })
-    debugger
     const existFilesCount = files?.length || 0
     const maxFiles = AIProviderConfig?.maxCount || 1
     const canUploadCount = maxFiles - existFilesCount

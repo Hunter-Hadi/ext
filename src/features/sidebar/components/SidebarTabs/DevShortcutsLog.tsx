@@ -9,7 +9,7 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { IAction } from '@/features/shortcuts/types/Action'
-const DevShortcutsLog: FC = () => {
+const DevShortcutsLog: FC<{ isSidebar?: boolean }> = ({ isSidebar }) => {
   const boxRef = useRef<HTMLDivElement>(null)
   const [runningActions, setRunningActions] = useState<IAction[]>([])
   const { shortCutsEngine } = useClientChat()
@@ -82,6 +82,7 @@ const DevShortcutsLog: FC = () => {
           sx={{ px: 1, alignItems: 'center' }}
         >
           <TextOnlyTooltip
+            floatingMenuTooltip={!isSidebar}
             placement={'right'}
             title={`[${action.type}]`}
             description={

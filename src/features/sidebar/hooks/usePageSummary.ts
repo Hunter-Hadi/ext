@@ -29,7 +29,8 @@ import {
 } from '@/features/sidebar/utils/pageSummaryHelper'
 
 const usePageSummary = () => {
-  const { updateSidebarSettings, updateSidebarSummaryConversationId } = useSidebarSettings()
+  const { updateSidebarSettings, updateSidebarSummaryConversationId } =
+    useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { updateClientConversationLoading } = useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(

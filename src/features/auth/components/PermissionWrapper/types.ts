@@ -823,7 +823,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   SEARCH_WITH_AI_CLAUDE: {
     videoUrl: 'https://www.youtube.com/embed/qwFVrq3Epcs',
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-instant-100k.png',
+      '/images/upgrade/claude-3-haiku.png',
     )}`,
     title: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__title'),

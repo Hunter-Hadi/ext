@@ -54,7 +54,8 @@
     "upgrade": "Upgrade",
     "unlimited": "Unlimited",
     "cancel_anytime": "Cancel anytime",
-    "team_plan": "Team plan"
+    "team_plan": "Team plan",
+    "manage_my_plan": "Manage my plan"
   },
   "settings": {
     "left_menu__me": "Me and MaxAI",
@@ -810,7 +811,11 @@
     "category__image_generate": "Image",
     "role_label": "Current plan: {{ROLE}}",
     "queries": "Queries",
-    "reset_on_date": "Reset on {{DATE}}"
+    "reset_on_date": "Reset on {{DATE}}",
+    "advanced_text__secondary__content": "High-speed advanced text queries: {{QUERIES}}",
+    "advanced_text__secondary__content__tooltip": "Ensure at least 1,500 high-speed advanced text queries each month. After reaching the limit, the speed and quality of the model may be reduced.",
+    "image_generate__secondary__content": "High-speed image queries: {{QUERIES}}",
+    "image_generate__secondary__content__tooltip": "Ensure at least 1,500 high-speed image queries each month. After reaching the limit, the speed and quality of the model may be reduced."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

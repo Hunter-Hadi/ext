@@ -382,7 +382,8 @@ export const ClientMessageInit = () => {
           break
         case 'Client_getUseChatGPTUserInfo':
           {
-            const userInfo = await getChromeExtensionUserInfo(false)
+            const { forceUpdate = false } = data
+            const userInfo = await getChromeExtensionUserInfo(forceUpdate)
             return {
               success: true,
               data: userInfo,

@@ -23,7 +23,7 @@ const useInitUserInfo = (isInit = true) => {
     useSidebarSettings()
   const needPushUpgradeMessage = useRef(false)
   const upgradeTextRef = useRef('')
-  const syncUserInfo = async () => {
+  const syncUserInfo = async (forceUpdate = false) => {
     try {
       setUserInfo((prevState) => {
         return {
@@ -33,7 +33,9 @@ const useInitUserInfo = (isInit = true) => {
       })
       const result = await port.postMessage({
         event: 'Client_getUseChatGPTUserInfo',
-        data: {},
+        data: {
+          forceUpdate,
+        },
       })
       if (result.success && result.data?.email) {
         setUserInfo({

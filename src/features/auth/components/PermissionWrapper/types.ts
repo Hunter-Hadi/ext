@@ -113,6 +113,7 @@ export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
     'MAXAI_ADVANCED_MODEL',
     'MAXAI_FAST_TEXT_MODEL',
     'MAXAI_IMAGE_MODEL',
+    'TOTAL_CHAT_DAILY_LIMIT',
   ]
   if (API_RESPONSE_USAGE_LIMIT_SCENE_TYPES.includes(sceneType)) {
     // 由于 不同模型的用量上限卡点的报错值 是后端直接返回的

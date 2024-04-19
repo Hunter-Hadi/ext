@@ -79,6 +79,7 @@ const InstantReplyCard: FC<IProps> = ({ ctaButtonClick, videoUrl }) => {
           lineHeight={1.4}
           fontWeight={700}
           color="primary.main"
+          mt={'0px !important'}
         >
           {t(
             'client:permission__pricing_hook__instant_reply__more_content_card__title',

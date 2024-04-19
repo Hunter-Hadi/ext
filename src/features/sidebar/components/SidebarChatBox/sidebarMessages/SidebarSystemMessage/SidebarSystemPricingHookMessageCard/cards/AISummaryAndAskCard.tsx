@@ -79,6 +79,7 @@ const AISummaryAndAskCard: FC<IProps> = ({ ctaButtonClick, videoUrl }) => {
           lineHeight={1.4}
           fontWeight={700}
           color="primary.main"
+          mt={'0px !important'}
         >
           {t(
             'client:permission__pricing_hook__ai_summary__more_content_card__title',

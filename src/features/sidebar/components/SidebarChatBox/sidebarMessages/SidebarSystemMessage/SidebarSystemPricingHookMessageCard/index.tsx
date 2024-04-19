@@ -1,5 +1,4 @@
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
-import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined'
 import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
@@ -117,81 +116,25 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   if (
     permissionSceneType === 'GMAIL_CONTEXT_MENU' ||
     permissionSceneType === 'GMAIL_DRAFT_BUTTON' ||
-    permissionSceneType === 'GMAIL_REPLY_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/fwaqJyTwefI`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'GMAIL_REPLY_BUTTON' ||
     permissionSceneType === 'OUTLOOK_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'OUTLOOK_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'OUTLOOK_REFINE_DRAFT_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/Y2yZ4wWQDno`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'OUTLOOK_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'TWITTER_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'TWITTER_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'TWITTER_REFINE_DRAFT_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/3UQaOm8sWVI`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'TWITTER_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'FACEBOOK_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'FACEBOOK_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'FACEBOOK_REFINE_DRAFT_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/zmNGKFyw3pU`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'FACEBOOK_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'LINKEDIN_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'LINKEDIN_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'LINKEDIN_REFINE_DRAFT_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/55IqqmQIBw0`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'LINKEDIN_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'YOUTUBE_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'YOUTUBE_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'YOUTUBE_REFINE_DRAFT_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/D4Acc0rpR3o`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'YOUTUBE_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'INSTAGRAM_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'INSTAGRAM_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'INSTAGRAM_REFINE_DRAFT_BUTTON'
-  ) {
-    return (
-      <InstantReplyCard
-        videoUrl={`https://www.youtube.com/embed/OnRPaGn_4Ds`}
-      />
-    )
-  }
-  if (
+    permissionSceneType === 'INSTAGRAM_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'REDDIT_COMPOSE_NEW_BUTTON' ||
     permissionSceneType === 'REDDIT_COMPOSE_REPLY_BUTTON' ||
     permissionSceneType === 'REDDIT_REFINE_DRAFT_BUTTON' ||
@@ -202,7 +145,11 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     permissionSceneType === 'WHATSAPP_COMPOSE_REPLY_BUTTON' ||
     permissionSceneType === 'WHATSAPP_REFINE_DRAFT_BUTTON'
   ) {
-    return <InstantReplyCard />
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/fwaqJyTwefI`}
+      />
+    )
   }
   // instant reply 卡点 end
 
@@ -217,7 +164,9 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
 
   // ai search 卡点
   if (permissionSceneType === 'SIDEBAR_SEARCH_WITH_AI') {
-    return <AISearchCard />
+    return (
+      <AISearchCard videoUrl={`https://www.youtube.com/embed/1uZuyqqySO0`} />
+    )
   }
 
   // default render
@@ -257,7 +206,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
       )}
 
       {/* play video */}
-      {permissionCard?.videoUrl ? (
+      {/* {permissionCard?.videoUrl ? (
         <Button
           size="small"
           variant="contained"
@@ -275,7 +224,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
         >
           {t('common:watch_video')}
         </Button>
-      ) : null}
+      ) : null} */}
 
       {/* cta button */}
       {chatSystemMessageType === 'needUpgrade' && (

@@ -229,7 +229,7 @@ const SidebarPromotionDialog = () => {
         {/* cta button */}
         <Box flexShrink={0}>
           <Button
-            variant="promotionContained"
+            variant="contained"
             fullWidth
             href={`https://app.maxai.me/pricing`}
             target={'_blank'}

@@ -1356,7 +1356,7 @@ const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
   ]
 
 const WritingAssistantButtonGroupConfigs: {
-  [key in WritingAssistantButtonGroupConfigHostType]?:
+  [key in WritingAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig
     | IInputAssistantButtonGroupConfig[]
 } = {

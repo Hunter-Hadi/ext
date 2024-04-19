@@ -228,7 +228,6 @@ export const showChatBox = () => {
       chatBoxElement.classList.remove('close')
       chatBoxElement.classList.add('open')
     }
-    debugger
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
     }, 300)

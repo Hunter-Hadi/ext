@@ -87,7 +87,7 @@ const AIResponseError: FC<IProps> = ({
 
   const textCover = useMemo(() => {
     if (isPermissionCardSceneType(text)) {
-      return `You've reached the current monthly usage cap for fast text models. You can continue with the other models now, You can [upgrade to Elite](https://app.maxai.me/pricing) now for unlimited usage.`
+      return `You've reached this month's limit for fast text queries. [Upgrade now](${APP_USE_CHAT_GPT_HOST}/pricing) for unlimited queries, or check back next month when the monthly queries are reset.`
     }
 
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {

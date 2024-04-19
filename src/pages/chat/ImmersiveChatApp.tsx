@@ -12,6 +12,7 @@ import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
@@ -99,6 +100,7 @@ const App: FC = () => {
           </AppSuspenseLoadingLayout>
         </BrowserVersionDetector>
       </Stack>
+      <GlobalVideoPopup />
     </Box>
   )
 }

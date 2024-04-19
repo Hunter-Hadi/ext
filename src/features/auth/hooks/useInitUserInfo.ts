@@ -105,13 +105,13 @@ const useInitUserInfo = (isInit = true) => {
               needPushUpgradeMessage.current = true
               if (newRole.name === 'elite') {
                 upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!'
+                  'You have successfully upgraded to MaxAI Elite.'
               } else if (newRole.name === 'pro') {
                 upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!'
+                  'You have successfully upgraded to MaxAI Pro.'
               } else if (newRole.name === 'basic') {
                 upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Basic. Enjoy unlimited usage!'
+                  'You have successfully upgraded to MaxAI Basic.'
               }
             }
             return {
@@ -195,10 +195,9 @@ const useInitUserInfo = (isInit = true) => {
       !listReverseFind(
         currentSidebarConversationMessages,
         (message) =>
-          message.text ===
-            'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!' ||
-          message.text ===
-            'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!',
+          message.text === 'You have successfully upgraded to MaxAI Elite.' ||
+          message.text === 'You have successfully upgraded to MaxAI Pro.' ||
+          message.text === 'You have successfully upgraded to MaxAI Basic.',
       )
     ) {
       clientChatConversationModifyChatMessages(

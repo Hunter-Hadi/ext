@@ -67,7 +67,7 @@ const AISearchCard: FC<IProps> = ({ ctaButtonClick, videoUrl }) => {
               borderTopRightRadius: 8,
               px: 2,
               py: '2px',
-              bgcolor: 'rgb(246 246 246)',
+              bgcolor: '#fff',
               boxShadow: '0px 0px 5px #8a8a8a',
             }}
           >

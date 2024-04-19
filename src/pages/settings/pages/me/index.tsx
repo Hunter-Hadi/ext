@@ -1,12 +1,8 @@
-import ChevronRightOutlinedIcon from '@mui/icons-material/ChevronRightOutlined'
 import Avatar from '@mui/material/Avatar'
 import Button from '@mui/material/Button'
-import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItem, { listItemClasses } from '@mui/material/ListItem'
-import ListItemButton, {
-  listItemButtonClasses,
-} from '@mui/material/ListItemButton'
+import { listItemButtonClasses } from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Stack from '@mui/material/Stack'
@@ -74,7 +70,7 @@ const SettingsMePage: FC = () => {
                 {t('common:log_out')}
               </Button>
             </ListItem>
-            <Divider />
+            {/* <Divider />
             <ListItemButton
               component={'a'}
               target={'_blank'}
@@ -86,7 +82,7 @@ const SettingsMePage: FC = () => {
                   fontSize: '24px',
                 }}
               />
-            </ListItemButton>
+            </ListItemButton> */}
           </List>
 
           <UserQuotaUsageQueriesCard />

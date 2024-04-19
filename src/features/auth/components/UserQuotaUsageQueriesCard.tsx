@@ -194,7 +194,7 @@ const UserQuotaUsageQueriesCard = () => {
               <ListItem>
                 <ListItemText
                   primary={t('quota_usage_card:category__advanced_text')}
-                  secondary={'GPT-4 & Claude-3-opus/sonnet'}
+                  secondary={'GPT-4 & Claude-3-opus/sonnet & Gemini-1.5-pro'}
                 />
 
                 <ListItemText

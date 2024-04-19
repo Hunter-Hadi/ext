@@ -2,6 +2,8 @@ import Stack from '@mui/material/Stack'
 import React, { DragEventHandler, useEffect } from 'react'
 
 import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
@@ -25,10 +27,12 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
 const SidebarPage = () => {
+  const { isFreeUser } = useUserInfo()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
-  const { clientWritingMessage, cleanConversation } = useClientConversation()
+  const { clientWritingMessage, cleanConversation, pushPricingHookMessage } =
+    useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { currentSidebarConversationMessages } = useSidebarSettings()
   const { startTextToImage } = useArtTextToImage()
@@ -65,6 +69,12 @@ const SidebarPage = () => {
               await createSearchWithAI(question, true)
             } else if (currentSidebarConversationType === 'Art') {
               await startTextToImage(question)
+            } else if (
+              currentSidebarConversationType === 'Summary' &&
+              isFreeUser
+            ) {
+              await pushPricingHookMessage('PAGE_SUMMARY')
+              authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
             } else {
               await askAIQuestion({
                 type: 'user',

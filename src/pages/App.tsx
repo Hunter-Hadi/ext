@@ -15,6 +15,7 @@ import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 import { AppState } from '@/store'
@@ -153,6 +154,7 @@ const App: FC = () => {
               </AppSuspenseLoadingLayout>
             </BrowserVersionDetector>
           </Stack>
+          <GlobalVideoPopup />
         </Box>
       </Resizable>
     </>

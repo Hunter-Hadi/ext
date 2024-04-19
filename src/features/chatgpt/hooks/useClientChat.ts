@@ -58,61 +58,80 @@ const useClientChat = () => {
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
-  const askAIQuestion = async (question: IAskAIQuestion) => {
+
+  // 获取attachments
+  const getAttachments = async (conversationId?: string) => {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    const attachments: IChatUploadFile[] =
+      (
+        await port.postMessage({
+          event: 'Client_chatGetFiles',
+          data: {
+            conversationId:
+              conversationId ||
+              currentConversationIdRef.current ||
+              shortCutsEngine!.conversationId,
+          },
+        })
+      )?.data || []
+    return attachments
+  }
+
+  const checkAttachments = async (files?: IChatUploadFile[]) => {
     // 1.在所有对话之前，确保先有conversationId
     const conversationId = shortCutsEngine!.conversationId
-    if (!question.meta?.attachments) {
-      // 获取attachments
-      const port = new ContentScriptConnectionV2({
-        runtime: 'client',
-      })
-      const attachments: IChatUploadFile[] =
-        (
-          await port.postMessage({
-            event: 'Client_chatGetFiles',
-            data: {
-              conversationId:
-                question.conversationId || currentConversationIdRef.current,
-            },
-          })
-        )?.data || []
-      if (attachments.length > 0) {
-        // 如果有文件类型的附件，需要计算文件内容tokens的长度
-        const extractText = attachments
-          .map((attachment) => attachment?.extractedContent || '')
-          .join('')
-        if (extractText) {
-          // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
-          const conversationMaxTokens =
-            (await getCurrentConversation())?.meta.maxTokens || 4096
-          const maxAttachmentTokens =
-            conversationMaxTokens -
-            calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
-          if (getTextTokens(extractText).length > maxAttachmentTokens) {
-            // 如果tokens长度超过限制
-            await clientChatConversationModifyChatMessages(
-              'add',
-              conversationId,
-              0,
-              [
-                {
-                  type: 'system',
-                  text: t(
-                    `client:provider__chatgpt__upload_file_error__too_long__text`,
-                  ),
-                  messageId: uuidV4(),
-                  conversationId,
-                  meta: {
-                    status: 'error',
-                  },
+    const attachments = files || (await getAttachments(conversationId))
+    if (attachments.length > 0) {
+      // 如果有文件类型的附件，需要计算文件内容tokens的长度
+      const extractText = attachments
+        .map((attachment) => attachment?.extractedContent || '')
+        .join('')
+      if (extractText) {
+        // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
+        const conversationMaxTokens =
+          (await getCurrentConversation())?.meta.maxTokens || 4096
+        const maxAttachmentTokens =
+          conversationMaxTokens -
+          calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
+        if (getTextTokens(extractText).length > maxAttachmentTokens) {
+          // 如果tokens长度超过限制
+          await clientChatConversationModifyChatMessages(
+            'add',
+            conversationId,
+            0,
+            [
+              {
+                type: 'system',
+                text: t(
+                  `client:provider__chatgpt__upload_file_error__too_long__text`,
+                ),
+                messageId: uuidV4(),
+                conversationId,
+                meta: {
+                  status: 'error',
                 },
-              ],
-            )
-            await aiProviderRemoveAllFiles()
-            getInputMediator('chatBoxInputMediator').updateInputValue('')
-            getInputMediator('floatingMenuInputMediator').updateInputValue('')
-            return
-          }
+              },
+            ],
+          )
+          // TODO 对于超出限制的文件需不需要删掉和清空输入框
+          await aiProviderRemoveAllFiles()
+          getInputMediator('chatBoxInputMediator').updateInputValue('')
+          getInputMediator('floatingMenuInputMediator').updateInputValue('')
+          return false
+        }
+      }
+    }
+    return true
+  }
+
+  const askAIQuestion = async (question: IAskAIQuestion) => {
+    if (!question.meta?.attachments) {
+      const attachments = await getAttachments(question.conversationId)
+      if (attachments.length > 0) {
+        if (!(await checkAttachments(attachments))) {
+          return
         }
       } else if (question.text.trim() === '') {
         // 如果没有文本 && 没有附件
@@ -395,6 +414,7 @@ const useClientChat = () => {
     regenerate,
     stopGenerate,
     continueChat,
+    checkAttachments,
     loading: smoothConversationLoading,
   }
 }

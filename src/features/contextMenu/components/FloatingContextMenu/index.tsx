@@ -102,8 +102,13 @@ const FloatingContextMenu: FC<{
   const { t } = useTranslation(['common', 'client'])
   const { palette } = useTheme()
   const { currentSelectionRef, hideRangy } = useRangy()
-  const { askAIWIthShortcuts, askAIQuestion, regenerate, stopGenerate } =
-    useClientChat()
+  const {
+    askAIWIthShortcuts,
+    askAIQuestion,
+    regenerate,
+    stopGenerate,
+    checkAttachments,
+  } = useClientChat()
   const {
     conversationStatus,
     currentConversationId,
@@ -635,28 +640,34 @@ const FloatingContextMenu: FC<{
       setInputValue('')
       const selectionElement = currentSelectionRef.current?.selectionElement
       if (lastRecordContextMenu) {
-        askAIWIthShortcuts(runActions, {
-          overwriteParameters: selectionElement?.selectionText
-            ? [
-                {
-                  key: 'SELECTED_TEXT',
-                  value: selectionElement.selectionText,
-                  label: 'Selected text',
-                  isBuiltIn: true,
-                  overwrite: true,
-                },
-              ]
-            : [],
-        })
-          .then(() => {
-            // done
-            const error = shortCutsEngine?.getNextAction()?.error || ''
-            if (error) {
-              console.log('[ContextMenu Module] error', error)
-              hideFloatingContextMenu()
-              // 如果出错了，则打开聊天框
-              showChatBox()
+        // 运行前需要检测文件
+        checkAttachments()
+          .then((status) => {
+            if (!status) {
+              return
             }
+            return askAIWIthShortcuts(runActions, {
+              overwriteParameters: selectionElement?.selectionText
+                ? [
+                    {
+                      key: 'SELECTED_TEXT',
+                      value: selectionElement.selectionText,
+                      label: 'Selected text',
+                      isBuiltIn: true,
+                      overwrite: true,
+                    },
+                  ]
+                : [],
+            }).then(() => {
+              // done
+              const error = shortCutsEngine?.getNextAction()?.error || ''
+              if (error) {
+                console.log('[ContextMenu Module] error', error)
+                hideFloatingContextMenu()
+                // 如果出错了，则打开聊天框
+                showChatBox()
+              }
+            })
           })
           .catch()
           .finally(() => {
@@ -665,7 +676,13 @@ const FloatingContextMenu: FC<{
           })
       }
     }
-  }, [actions, isLogin, askAIWIthShortcuts, currentConversationId])
+  }, [
+    actions,
+    isLogin,
+    checkAttachments,
+    askAIWIthShortcuts,
+    currentConversationId,
+  ])
   useEffect(() => {
     const updateInputValue = (value: string, data: any) => {
       console.log('[ContextMenu Module] updateInputValue', value)

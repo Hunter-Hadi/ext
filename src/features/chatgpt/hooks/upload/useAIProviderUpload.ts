@@ -188,7 +188,7 @@ const useAIProviderUpload = () => {
         },
       })
       console.log('useAIProviderUpload [Client_chatRemoveFiles]', result.data)
-      setFiles(result.data || [])
+      setFiles(Array.isArray(result.data) ? result.data : [])
       return result.success
     },
     [AIProviderConfig],
@@ -196,9 +196,11 @@ const useAIProviderUpload = () => {
   const aiProviderRemoveAllFiles = useCallback(async () => {
     const result = await port.postMessage({
       event: 'Client_chatClearFiles',
-      data: {},
+      data: {
+        conversationId: currentConversationId,
+      },
     })
-    setFiles(result.data || [])
+    setFiles(Array.isArray(result.data) ? result.data : [])
     return result.success
   }, [AIProviderConfig])
   const aiProviderUploadingTooltip = useMemo(() => {

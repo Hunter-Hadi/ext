@@ -8,12 +8,14 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import CustomMarkdown from '@/components/CustomMarkdown'
+import { isSystemMessageByStatus } from '@/features/chatgpt/utils/chatMessageUtils'
 import { useRangy } from '@/features/contextMenu'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
 } from '@/features/contextMenu/store'
+import { SidebarSystemMessage } from '@/features/sidebar/components/SidebarChatBox/sidebarMessages'
 import SidebarUserMessageContexts from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarUserMessage/SidebarUserMessageContexts'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
@@ -27,8 +29,11 @@ const WritingMessageBox: FC<{
   const [, setFloatingDropdownMenuSystemItems] = useRecoilState(
     FloatingDropdownMenuSystemItemsState,
   )
-  const { currentFloatingContextMenuDraft, selectedDraftUserMessage } =
-    useFloatingContextMenuDraft()
+  const {
+    currentFloatingContextMenuDraft,
+    selectedDraftUserMessage,
+    activeAIResponseMessage,
+  } = useFloatingContextMenuDraft()
   useEffect(() => {
     console.log(
       'AIInput currentFloatingContextMenuDraft: ',
@@ -102,6 +107,11 @@ const WritingMessageBox: FC<{
     }
     boxRef.current?.addEventListener('keydown', keydownHandler, true)
   }, [])
+
+  const isErrorMessage =
+    activeAIResponseMessage &&
+    isSystemMessageByStatus(activeAIResponseMessage, 'error')
+
   return (
     <Stack
       ref={containerRef}
@@ -149,6 +159,16 @@ const WritingMessageBox: FC<{
             },
           }}
           message={selectedDraftUserMessage}
+        />
+      )}
+      {isErrorMessage && (
+        <SidebarSystemMessage
+          message={activeAIResponseMessage}
+          sx={{
+            boxSizing: 'border-box',
+            my: 1,
+            gap: 0,
+          }}
         />
       )}
       <div
@@ -237,4 +257,5 @@ const ContextText: FC = () => {
     </Typography>
   )
 }
+
 export default WritingMessageBox

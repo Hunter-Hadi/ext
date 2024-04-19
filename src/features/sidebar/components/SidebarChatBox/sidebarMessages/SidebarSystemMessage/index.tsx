@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { usePermissionCard } from '@/features/auth'
 import { PermissionWrapperCardType } from '@/features/auth/components/PermissionWrapper/types'
 import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
@@ -42,8 +43,9 @@ const permissionCardToChatMessageText = (
 const BaseSidebarSystemMessage: FC<{
   message: ISystemChatMessage
   loading?: boolean
+  sx?: SxProps
 }> = (props) => {
-  const { message, loading } = props
+  const { message, loading, sx: propSx } = props
   const { isDarkMode } = useCustomTheme()
   const [solutionsShow, setSolutionsShow] = useState(false)
   const permissionSceneType =
@@ -110,9 +112,12 @@ const BaseSidebarSystemMessage: FC<{
       data-permission-scene-type={
         permissionSceneType ? permissionSceneType : undefined
       }
-      sx={{
-        ...memoSx,
-      }}
+      sx={
+        {
+          ...memoSx,
+          ...propSx,
+        } as SxProps
+      }
     >
       <Alert
         severity={message?.meta?.status || 'info'}
@@ -140,7 +145,9 @@ const BaseSidebarSystemMessage: FC<{
                 isDarkMode ? 'markdown-body-dark' : ''
               }`}
             >
-              <CustomMarkdown>{systemMessageText}</CustomMarkdown>
+              <AppSuspenseLoadingLayout>
+                <CustomMarkdown>{systemMessageText}</CustomMarkdown>
+              </AppSuspenseLoadingLayout>
             </div>
           </Stack>
 

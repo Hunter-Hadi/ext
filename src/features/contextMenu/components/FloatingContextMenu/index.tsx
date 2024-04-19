@@ -777,6 +777,11 @@ const FloatingContextMenu: FC<{
                         <AutoHeightTextarea
                           minLine={1}
                           stopPropagation
+                          // 在PDF页面下，AI返回内容loading由true变为false，input组件重新生成
+                          // 输入内容menuList为空数组后会出现input失去焦点的问题
+                          // 问题应该AutoHeightTextarea组件重新mount和DropdownMenu组件FloatingFocusManager unmount有关
+                          // 没排查出具体的原因，但是加入以下autoFocus就解决了
+                          autoFocus={floatingDropdownMenu.open}
                           onKeydownCapture={(event) => {
                             if (
                               floatingDropdownMenu.open &&

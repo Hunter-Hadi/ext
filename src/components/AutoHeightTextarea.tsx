@@ -172,6 +172,7 @@ const AutoHeightTextarea: FC<{
   debounceOnChange?: boolean
   expandNode?: React.ReactNode
   minLine?: number
+  autoFocus?: boolean
 }> = (props) => {
   const appState = useRecoilValue(AppState)
   const { currentSidebarConversationId, currentSidebarConversationType } =
@@ -194,6 +195,7 @@ const AutoHeightTextarea: FC<{
     expandNode,
     sx,
     minLine = 1,
+    autoFocus,
   } = props
   const textareaRef = useRef<null | HTMLTextAreaElement>(null)
   const onCompositionRef = useRef(false)
@@ -374,14 +376,16 @@ const AutoHeightTextarea: FC<{
       InputId === MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID &&
       isImmersiveChatRef.current
     ) {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         autoFocusWithAllWebsite(
           textareaRef.current!,
           ...computedChildrenHeight('appState'),
         )
       }, 100)
+      return () => clearTimeout(timer)
     }
   })
+
   return (
     <Box
       component={'div'}
@@ -623,6 +627,7 @@ const AutoHeightTextarea: FC<{
             )
             afterAutoFocusWithAllWebsite(event.currentTarget)
           }}
+          autoFocus={autoFocus}
         />
       </Stack>
       <Stack ref={childrenRef} width={'100%'}>

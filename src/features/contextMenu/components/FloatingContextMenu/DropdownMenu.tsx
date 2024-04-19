@@ -373,9 +373,10 @@ export const MenuComponent = React.forwardRef<
       customOpen ? referenceElementOpen : false,
     )
     useEffect(() => {
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         setIsOpen(referenceElementOpen)
       }, 1)
+      return () => clearTimeout(timer)
     }, [referenceElementOpen])
     const [activeIndex, setActiveIndex] = React.useState<number | null>(
       isFirstDeep ? 1 : null,

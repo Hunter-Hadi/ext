@@ -1507,11 +1507,11 @@ const chatAppPrompts: IContextMenuItem[] = [
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1585,11 +1585,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1662,11 +1662,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1739,11 +1739,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1816,11 +1816,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1893,11 +1893,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1970,11 +1970,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you can ignore any files URL but remain content, and analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -1994,7 +1994,7 @@ If the **user** in the message to be replied on above is the same as **my userna
 
 Your task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and the most importantly expressing your sadness reply to the message, don't use second person perspective but my perspective.
 
-Now you fully possess your tone and personality, write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.
+Now you fully possess your tone and personality, but remember you don't need to feel guilty for this user, just write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do. 
 
 Keep the reply as short as possible. Make the reply clear, easy to understand, and well put together. 
 
@@ -2047,11 +2047,11 @@ Output the answer without any additional context, explanation, or extra wording,
           parameters: {
             template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -2145,11 +2145,11 @@ Output the answer without any additional context, explanation, or extra wording,
                     modelKey: 'Sidebar',
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 
@@ -2248,11 +2248,11 @@ Now, write a reply to the chat message, by *writing a better version* of the fol
                     modelKey: 'Sidebar',
                     template: `Ignore all previous instructions. You're a highly skilled chat expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} chat messages in an appropriate manner. 
 
-Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply as first person perspective, which is me, my perspective.
+Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}. Ensure the reply is from first person perspective, which is me, my perspective.
 
-The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages.
+The following is the complete context of the chat messages delimited by <context></context>, including the information of chat server with my user information, and a series of chat messages. They are delimited by sixfold equal signs.
 
-The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
+Each message is delimited by triple equal signs. The structure of a single chat message is includes the sender's username, date sent, extra label(optional, if present, you must analyze what is it strongly related to the context and respond based on the result) and message content, you must differentiate my messages and other user's messages.
 
 ---
 

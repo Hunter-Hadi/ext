@@ -1,4 +1,6 @@
 import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
+import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined'
+import RocketLaunchIcon from '@mui/icons-material/RocketLaunch'
 import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
@@ -6,14 +8,21 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import {
+  isUsageLimitPermissionSceneType,
+  PermissionWrapperCardSceneType,
+} from '@/features/auth/components/PermissionWrapper/types'
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { usePermissionCardMap } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
-import DailyLimitUsageQueriesCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/DailyLimitUsageQueriesCard'
+import AdvancedModelCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/cards/AdvancedModelCard'
+import AISearchCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/cards/AISearchCard'
+import AISummaryAndAskCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/cards/AISummaryAndAskCard'
+import FastModelCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/cards/FastModelCard'
+import ImageModelCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/cards/ImageModelCard'
+import InstantReplyCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard/cards/InstantReplyCard'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
 
@@ -32,17 +41,6 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   const permissionCard = usePermissionCard(permissionSceneType)
   const permissionCardMap = usePermissionCardMap()
 
-  const { currentAIProviderModel } = useAIProviderModels()
-
-  const AIModelName = useMemo(() => {
-    // 针对 ai model name 的美化处理
-    if (currentAIProviderModel.includes('gpt-3.5')) {
-      return 'GPT-3.5'
-    }
-
-    return currentAIProviderModel.replace(/gpt/g, 'GPT')
-  }, [])
-
   const chatSystemMessageType =
     message.meta?.systemMessageType ||
     message.extra?.systemMessageType ||
@@ -60,9 +58,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     ) {
       return permissionCardMap[permissionSceneType].ctaButtonText
     }
-    return t('client:sidebar__button__upgrade_to_plan', {
-      PlAN: 'Elite',
-    })
+    return t('client:permission__pricing_hook__button__upgrade_now')
   }, [permissionCardMap, permissionSceneType, t])
 
   useEffect(() => {
@@ -72,9 +68,9 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     if (
       chatSystemMessageType === 'needUpgrade' &&
       isPayingUser &&
-      permissionSceneType !== 'TOTAL_CHAT_DAILY_LIMIT'
+      !isUsageLimitPermissionSceneType(permissionSceneType)
     ) {
-      // TODO: TOTAL_CHAT_DAILY_LIMIT 的 pricing hook 的出现，完全是后端控制的，需要想法判断 TOTAL_CHAT_DAILY_LIMIT 出现的时机是否正确
+      // TODO: 用量卡点 的 pricing hook 的出现，完全是后端控制的，需要想法判断 出现的时机是否正确
       clientSendMaxAINotification(
         'PRICING',
         `[Pricing] Pro show pricing card`,
@@ -89,40 +85,154 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
       )
     }
   }, [
+    userInfo,
     isPayingUser,
     currentUserPlan,
     chatSystemMessageType,
     permissionSceneType,
   ])
 
-  const renderTitle = () => {
-    if (permissionSceneType === 'TOTAL_CHAT_DAILY_LIMIT') {
-      // 由于 TOTAL_CHAT_DAILY_LIMIT 的 title 是动态的（需要显示当前model name）
-      // 所以这里单独渲染
-      return (
-        <Typography fontSize={22} fontWeight={700} lineHeight={1.4}>
-          {t('client:permission__pricing_hook__daily_limit__title', {
-            MODEL_NAME: AIModelName,
-          })}
-        </Typography>
-      )
-    }
+  // TODO: 临时方案 手动对 卡点进行分类，后续需要优化掉，删除弃用的卡点
 
-    return typeof permissionCard?.title === 'string' ? (
-      <Typography fontSize={22} fontWeight={700} lineHeight={1.4}>
-        {permissionCard?.title}
-      </Typography>
-    ) : (
-      permissionCard?.title
+  // 普通模型卡点
+  if (permissionSceneType === 'MAXAI_FAST_TEXT_MODEL') {
+    return <FastModelCard />
+  }
+
+  // 高级模型卡点
+  if (permissionSceneType === 'MAXAI_ADVANCED_MODEL') {
+    return <AdvancedModelCard />
+  }
+
+  // 图像模型卡点
+  if (
+    permissionSceneType === 'SIDEBAR_ART_AND_IMAGES' ||
+    permissionSceneType === 'MAXAI_IMAGE_MODEL' ||
+    permissionSceneType === 'TOTAL_CHAT_DAILY_LIMIT'
+  ) {
+    return <ImageModelCard />
+  }
+
+  // instant reply 卡点 start
+  if (
+    permissionSceneType === 'GMAIL_CONTEXT_MENU' ||
+    permissionSceneType === 'GMAIL_DRAFT_BUTTON' ||
+    permissionSceneType === 'GMAIL_REPLY_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/fwaqJyTwefI`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'OUTLOOK_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'OUTLOOK_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'OUTLOOK_REFINE_DRAFT_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/Y2yZ4wWQDno`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'TWITTER_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'TWITTER_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'TWITTER_REFINE_DRAFT_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/3UQaOm8sWVI`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'FACEBOOK_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'FACEBOOK_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'FACEBOOK_REFINE_DRAFT_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/zmNGKFyw3pU`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'LINKEDIN_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'LINKEDIN_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'LINKEDIN_REFINE_DRAFT_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/55IqqmQIBw0`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'YOUTUBE_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'YOUTUBE_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'YOUTUBE_REFINE_DRAFT_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/D4Acc0rpR3o`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'INSTAGRAM_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'INSTAGRAM_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'INSTAGRAM_REFINE_DRAFT_BUTTON'
+  ) {
+    return (
+      <InstantReplyCard
+        videoUrl={`https://www.youtube.com/embed/OnRPaGn_4Ds`}
+      />
+    )
+  }
+  if (
+    permissionSceneType === 'REDDIT_COMPOSE_NEW_BUTTON' ||
+    permissionSceneType === 'REDDIT_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'REDDIT_REFINE_DRAFT_BUTTON' ||
+    permissionSceneType === 'DISCORD_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'DISCORD_REFINE_DRAFT_BUTTON' ||
+    permissionSceneType === 'SLACK_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'SLACK_REFINE_DRAFT_BUTTON' ||
+    permissionSceneType === 'WHATSAPP_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'WHATSAPP_REFINE_DRAFT_BUTTON'
+  ) {
+    return <InstantReplyCard />
+  }
+  // instant reply 卡点 end
+
+  // ai summary & ask 卡点
+  if (permissionSceneType === 'PAGE_SUMMARY') {
+    return (
+      <AISummaryAndAskCard
+        videoUrl={`https://www.youtube.com/embed/72UM1jMaJhY`}
+      />
     )
   }
 
+  // ai search 卡点
+  if (permissionSceneType === 'SIDEBAR_SEARCH_WITH_AI') {
+    return <AISearchCard />
+  }
+
+  // default render
   return (
     <Stack spacing={1.5}>
       {permissionCard ? (
         <>
           {/* title */}
-          {renderTitle()}
+          {typeof permissionCard?.title === 'string' ? (
+            <Typography fontSize={22} fontWeight={700} lineHeight={1.4}>
+              {permissionCard?.title}
+            </Typography>
+          ) : (
+            permissionCard?.title
+          )}
           {/* image */}
           {permissionCard.imageUrl && (
             <img
@@ -146,11 +256,26 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
         </Stack>
       )}
 
-      {/* 如果是 每日限制的 sceneType === TOTAL_CHAT_DAILY_LIMIT */}
-      {/* 需要另外渲染一个卡片 */}
-      {permissionSceneType === 'TOTAL_CHAT_DAILY_LIMIT' && (
-        <DailyLimitUsageQueriesCard />
-      )}
+      {/* play video */}
+      {permissionCard?.videoUrl ? (
+        <Button
+          size="small"
+          variant="contained"
+          startIcon={<PlayCircleOutlinedIcon />}
+          sx={{
+            width: 'max-content',
+            px: 1,
+            py: 0.2,
+            fontSize: 14,
+            lineHeight: 1.5,
+          }}
+          onClick={() => {
+            alert('play video')
+          }}
+        >
+          {t('common:watch_video')}
+        </Button>
+      ) : null}
 
       {/* cta button */}
       {chatSystemMessageType === 'needUpgrade' && (
@@ -161,12 +286,13 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
               height: 48,
               fontSize: '16px',
               fontWeight: 500,
-              bgcolor: 'promotionColor.backgroundMain',
-              color: 'white',
-              '&:hover': {
-                bgcolor: '#b56407',
-              },
+              // bgcolor: 'promotionColor.backgroundMain',
+              // color: 'white',
+              // '&:hover': {
+              //   bgcolor: '#b56407',
+              // },
             }}
+            startIcon={<RocketLaunchIcon />}
             variant={'contained'}
             color={'primary'}
             target={'_blank'}
@@ -191,7 +317,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
             <CheckOutlinedIcon
               sx={{
                 fontSize: 20,
-                color: 'promotionColor.fontMain',
+                color: 'primary.main',
               }}
             />
             <Typography fontSize={14} color="text.secondary">

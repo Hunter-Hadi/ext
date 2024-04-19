@@ -16,6 +16,7 @@ import {
   MAXAI_SIDEBAR_ID,
   MAXAI_SIDEBAR_WRAPPER_ID,
 } from '@/features/common/constants'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
 import { isSupportWebComponent } from '@/utils/dataHelper/elementHelper'
 import {
   getCurrentDomainHost,
@@ -161,6 +162,7 @@ function mainAppRender() {
           <CacheProvider value={cache}>
             <AppThemeProvider shadowRootElement={shadowRootElement}>
               {isMaxAIImmersiveChatPage() ? <ImmersiveChatApp /> : <App />}
+              <GlobalVideoPopup />
             </AppThemeProvider>
           </CacheProvider>
         </QueryClientProvider>

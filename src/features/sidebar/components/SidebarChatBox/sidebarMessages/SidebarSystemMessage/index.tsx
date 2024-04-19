@@ -2,7 +2,7 @@ import Alert, { alertClasses } from '@mui/material/Alert'
 import Box from '@mui/material/Box'
 import Collapse from '@mui/material/Collapse'
 import Stack from '@mui/material/Stack'
-import { SxProps, Theme } from '@mui/material/styles'
+import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
 import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
@@ -73,13 +73,11 @@ const BaseSidebarSystemMessage: FC<{
       return {
         whiteSpace: 'pre-wrap',
         width: '100%',
-        p: 1,
+        p: 1.5,
         gap: 1,
         wordBreak: 'break-word',
         borderRadius: '8px',
-        border: '1px solid rgba(0, 0, 0, .1)',
-        bgcolor: (t: Theme) =>
-          t.palette.mode === 'dark' ? '#333' : 'background.default',
+        bgcolor: 'customColor.secondaryBackground',
         '& > div': {
           width: '100%',
           maxWidth: 450,

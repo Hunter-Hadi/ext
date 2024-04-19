@@ -469,13 +469,12 @@ export class ActionAskChatGPT extends Action {
           if (errorMessage) {
             // 如果报错信息是 PermissionCardSceneType，说明触发了付费卡点
             if (isPermissionCardSceneType(errorMessage)) {
-              const isUsageLimit = isUsageLimitPermissionSceneType(errorMessage)
+              const sceneType = errorMessage
+              const isUsageLimit = isUsageLimitPermissionSceneType(sceneType)
               // 需要判断是否是 model 用量上限的卡点
               if (isUsageLimit) {
                 // 触达 用量上限向用户展示提示信息
-                await clientConversationEngine.pushPricingHookMessage(
-                  'TOTAL_CHAT_DAILY_LIMIT',
-                )
+                await clientConversationEngine.pushPricingHookMessage(sceneType)
                 // 记录日志
                 authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
                 // 展示sidebar
@@ -489,7 +488,6 @@ export class ActionAskChatGPT extends Action {
                 this.error = 'TOTAL_CHAT_DAILY_LIMIT'
                 return
               }
-              const sceneType = errorMessage
               await clientConversationEngine.pushPricingHookMessage(sceneType)
             } else {
               await clientConversationEngine.pushMessage({

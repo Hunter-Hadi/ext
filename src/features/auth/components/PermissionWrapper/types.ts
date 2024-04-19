@@ -7,6 +7,9 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'TOTAL_CHAT_DAILY_LIMIT',
+  'MAXAI_FAST_TEXT_MODEL',
+  'MAXAI_ADVANCED_MODEL',
+  'MAXAI_IMAGE_MODEL',
   'CUSTOM_PROMPT',
   'PREFERRED_LANGUAGE',
   'PAGE_SUMMARY',
@@ -117,7 +120,6 @@ export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
   ]
   if (API_RESPONSE_USAGE_LIMIT_SCENE_TYPES.includes(sceneType)) {
     // 由于 不同模型的用量上限卡点的报错值 是后端直接返回的
-    // 需要前端统一成 TOTAL_CHAT_DAILY_LIMIT
     return true
   }
   return false
@@ -126,9 +128,6 @@ export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
 export const isPermissionCardSceneType = (
   sceneType: string,
 ): sceneType is PermissionWrapperCardSceneType => {
-  if (isUsageLimitPermissionSceneType(sceneType)) {
-    return true
-  }
   return Object.keys(PERMISSION_CARD_SETTINGS_TEMPLATE).includes(sceneType)
 }
 export const getPermissionCardSettingsBySceneType = (
@@ -145,6 +144,45 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
 } = {
   // 不同模型用量上限的 pricing hook
   TOTAL_CHAT_DAILY_LIMIT: {
+    // imageUrl: `${getChromeExtensionAssetsURL(
+    //   '/images/upgrade/unlimited-ai-requests.png',
+    // )}`,
+    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
+    description: (t) => {
+      return `${t(
+        'client:permission__pricing_hook__daily_limit__description1',
+      )}`
+    },
+    ctaButtonText: (t) =>
+      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+  },
+  MAXAI_FAST_TEXT_MODEL: {
+    // imageUrl: `${getChromeExtensionAssetsURL(
+    //   '/images/upgrade/unlimited-ai-requests.png',
+    // )}`,
+    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
+    description: (t) => {
+      return `${t(
+        'client:permission__pricing_hook__daily_limit__description1',
+      )}`
+    },
+    ctaButtonText: (t) =>
+      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+  },
+  MAXAI_ADVANCED_MODEL: {
+    // imageUrl: `${getChromeExtensionAssetsURL(
+    //   '/images/upgrade/unlimited-ai-requests.png',
+    // )}`,
+    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
+    description: (t) => {
+      return `${t(
+        'client:permission__pricing_hook__daily_limit__description1',
+      )}`
+    },
+    ctaButtonText: (t) =>
+      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+  },
+  MAXAI_IMAGE_MODEL: {
     // imageUrl: `${getChromeExtensionAssetsURL(
     //   '/images/upgrade/unlimited-ai-requests.png',
     // )}`,
@@ -908,7 +946,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Reddit dropdown button - refine draft
   REDDIT_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(
@@ -924,7 +962,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Discord cta button - compose reply
   DISCORD_COMPOSE_REPLY_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(
@@ -940,7 +978,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Discord dropdown button - refine draft
   DISCORD_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(
@@ -956,7 +994,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Slack cta button - compose reply
   SLACK_COMPOSE_REPLY_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(
@@ -972,7 +1010,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // Slack dropdown button - refine draft
   SLACK_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(
@@ -988,7 +1026,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // WhatsApp cta button - compose reply
   WHATSAPP_COMPOSE_REPLY_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(
@@ -1004,7 +1042,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   // WhatsApp dropdown button - refine draft
   WHATSAPP_REFINE_DRAFT_BUTTON: {
     imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
+      '/images/upgrade/ai-instant-reply.png',
     )}`,
     title: (t) =>
       t(

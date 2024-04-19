@@ -7,7 +7,6 @@ import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
 // import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { FloatingContextMenuOpenSidebarButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuOpenSidebarButton'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
@@ -157,7 +156,6 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
           </span>
         </Typography>
       </Button>
-      <FloatingContextMenuOpenSidebarButton />
     </Stack>
   )
 }

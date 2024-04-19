@@ -33,13 +33,18 @@ const MoreActionsButton: FC<{
     onRename,
     onDelete,
   } = props
-  const { resetConversation } = useClientConversation()
+  const {
+    resetConversation,
+    createConversation,
+    currentSidebarConversationType,
+  } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { t } = useTranslation(['client'])
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const moreActionsMenuOpen = Boolean(anchorEl)
   const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+  const isContextWindow = currentSidebarConversationType === 'ContextMenu'
 
   const deleteModalTitle = useMemo(() => {
     if (conversationType === 'Summary') {
@@ -168,13 +173,14 @@ const MoreActionsButton: FC<{
       </Menu>
 
       <Modal
+        disablePortal
         open={deleteModalOpen}
         onClose={(e: MouseEvent) => {
           e.stopPropagation()
           setDeleteModalOpen(false)
         }}
         sx={{
-          position: isInImmersiveChat ? 'fixed' : 'absolute',
+          position: isInImmersiveChat || isContextWindow ? 'fixed' : 'absolute',
         }}
         slotProps={{
           root: {
@@ -184,7 +190,8 @@ const MoreActionsButton: FC<{
           },
           backdrop: {
             sx: {
-              position: isInImmersiveChat ? 'fixed' : 'absolute',
+              position:
+                isInImmersiveChat || isContextWindow ? 'fixed' : 'absolute',
             },
           },
         }}
@@ -238,6 +245,9 @@ const MoreActionsButton: FC<{
                   await resetConversation()
                   await clientForceRemoveConversation(conversationId)
                   onDelete?.()
+                  if (isInImmersiveChat) {
+                    await createConversation()
+                  }
                 }}
                 sx={{
                   bgcolor: '#f44336!important',

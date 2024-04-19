@@ -124,6 +124,7 @@ const AppInit = () => {
   userInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
+  useInitRangy()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()
@@ -136,7 +137,6 @@ const AppInit = () => {
   })
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()
-  useInitRangy()
   return (
     <>
       <MaxAISubscriptionUpdate />

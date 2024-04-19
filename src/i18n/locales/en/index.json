@@ -582,10 +582,12 @@
     "immersive_chat__delete_all_summary__button__title": "Delete all summaries",
     "immersive_chat__delete_all_search__button__title": "Delete all searches",
     "immersive_chat__delete_all_art__button__title": "Delete all arts",
+    "immersive_chat__delete_all_context_menu__button__title": "Delete all context menus",
     "immersive_chat__delete_all_chat__title": "Clear your chat history - are you sure?",
     "immersive_chat__delete_all_summary__title": "Clear your summary history - are you sure?",
     "immersive_chat__delete_all_search__title": "Clear your search history - are you sure?",
     "immersive_chat__delete_all_art__title": "Clear your art history - are you sure?",
+    "immersive_chat__delete_all_context_menu__title": "Clear your context menus history - are you sure?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirm deletion",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel",
     "immersive_chat__delete_chat__button__title": "Delete chat",
@@ -689,7 +691,10 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Please wait until the video ad finishes playing and then try again.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Timestamped summary",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Unable to generate video without subtitles.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later.",
+    "context_window__chat_history__button__title": "Context menu history",
+    "context_window__chat_history__empty__title": "No context menu history available yet",
+    "context_window__chat_history__continue_in_chat__title": "Continue in chat"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",

@@ -72,3 +72,30 @@ export const clientUpdateChatConversation = async (
     return false
   }
 }
+
+/**
+ * Client复制Conversation
+ * @param conversationId
+ * @param updateConversationData
+ * @param syncConversationToDB
+ */
+export const clientDuplicateChatConversation = async (
+  conversationId: string,
+  updateConversationData: Partial<IChatConversation>,
+  syncConversationToDB: boolean,
+): Promise<IChatConversation | null> => {
+  try {
+    const port = new ContentScriptConnectionV2()
+    const result = await port.postMessage({
+      event: 'Client_duplicateConversation',
+      data: {
+        conversationId,
+        updateConversationData,
+        syncConversationToDB,
+      },
+    })
+    return result.success ? result.data : null
+  } catch (e) {
+    return null
+  }
+}

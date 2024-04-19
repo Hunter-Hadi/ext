@@ -12,12 +12,14 @@ import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import SidebarPage from '@/pages/sidebar'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
 const App: FC = () => {
   const { isShowActivityBanner } = useActivity()
+  const { currentSidebarConversationType } = useSidebarSettings()
   return (
     <Box
       component={'div'}
@@ -73,6 +75,7 @@ const App: FC = () => {
               >
                 <SidebarNav />
                 <ConversationList
+                  conversationType={currentSidebarConversationType}
                   sx={{
                     flex: 1,
                     width: 0,

@@ -1,3 +1,4 @@
+import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { backendApiReportPricingHooks } from '@/background/api'
@@ -476,7 +477,53 @@ export const ClientMessageInit = () => {
             }
           }
           break
-        case 'Client_updateConversation':
+        case 'Client_updateConversation': {
+          const {
+            conversationId,
+            updateConversationData,
+            syncConversationToDB,
+          } = data
+          const oldConversation =
+            await ConversationManager.conversationDB.getConversationById(
+              conversationId,
+            )
+
+          if (oldConversation) {
+            await ConversationManager.conversationDB.addOrUpdateConversation(
+              mergeWithObject([oldConversation, updateConversationData]),
+              {
+                syncConversationToDB: syncConversationToDB === true,
+                reason: 'Client_updateConversation',
+              },
+            )
+            const newConversationData =
+              await ConversationManager.getClientConversation(conversationId)
+            sender.tab?.id &&
+              (await Browser.tabs.sendMessage(sender.tab.id, {
+                event: 'Client_listenUpdateConversationMessages',
+                id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+                data: {
+                  conversation: newConversationData,
+                  conversationId,
+                },
+              }))
+            console.log(
+              '新版Conversation，更新conversation',
+              newConversationData,
+            )
+            return {
+              success: true,
+              data: newConversationData,
+              message: 'ok',
+            }
+          }
+          return {
+            success: false,
+            data: false,
+            message: 'ok',
+          }
+        }
+        case 'Client_duplicateConversation':
           {
             const {
               conversationId,
@@ -487,28 +534,35 @@ export const ClientMessageInit = () => {
               await ConversationManager.conversationDB.getConversationById(
                 conversationId,
               )
-
             if (oldConversation) {
+              if (!updateConversationData.id) {
+                // 如果没传入id，就生成一个新的id
+                updateConversationData.id = uuidV4()
+              }
               await ConversationManager.conversationDB.addOrUpdateConversation(
                 mergeWithObject([oldConversation, updateConversationData]),
                 {
                   syncConversationToDB: syncConversationToDB === true,
-                  reason: 'Client_updateConversation',
+                  reason: 'Client_duplicateConversation',
                 },
               )
               const newConversationData =
-                await ConversationManager.getClientConversation(conversationId)
-              sender.tab?.id &&
-                (await Browser.tabs.sendMessage(sender.tab.id, {
-                  event: 'Client_listenUpdateConversationMessages',
-                  id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
-                  data: {
-                    conversation: newConversationData,
-                    conversationId,
-                  },
-                }))
+                await ConversationManager.getClientConversation(
+                  updateConversationData.id,
+                )
+              if (newConversationData) {
+                sender.tab?.id &&
+                  (await Browser.tabs.sendMessage(sender.tab.id, {
+                    event: 'Client_listenUpdateConversationMessages',
+                    id: MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
+                    data: {
+                      conversation: newConversationData,
+                      conversationId: newConversationData.id,
+                    },
+                  }))
+              }
               console.log(
-                '新版Conversation，更新conversation',
+                '新版Conversation，复制conversation',
                 newConversationData,
               )
               return {

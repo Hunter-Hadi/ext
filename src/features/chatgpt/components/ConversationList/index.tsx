@@ -5,8 +5,15 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
 import Typography from '@mui/material/Typography'
+import React, {
+  FC,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useRecoilState } from 'recoil'
-import React, { FC, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { PaginationConversation } from '@/background/src/chatConversations'
@@ -22,33 +29,34 @@ import { IAIProviderModel } from '@/features/chatgpt/types'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { AppLocalStorageState } from '@/store'
 
 import MoreActionsButton from './MoreActionsButton'
 
 interface IProps {
-  sx?: SxProps
+  conversationType: ISidebarConversationType
   hideClearAllButton?: boolean
   divider?: boolean
   onSelectConversation?: (conversation: PaginationConversation) => void
   emptyFeedback?: React.ReactNode
+  sx?: SxProps
 }
 
-const ConversationList: FC<IProps> = ({
-  sx,
-  hideClearAllButton = false,
-  divider = false,
-  onSelectConversation,
-  emptyFeedback,
-}) => {
+const ConversationList: FC<IProps> = (props) => {
+  const {
+    conversationType,
+    sx,
+    hideClearAllButton = false,
+    divider = false,
+    onSelectConversation,
+    emptyFeedback,
+  } = props
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const {
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-    updateSidebarSettings,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+  const { currentConversationId, createConversation } = useClientConversation()
+  const { updateSidebarSettings, updateSidebarConversationType } =
+    useSidebarSettings()
   const { disposeBackgroundChatSystem } = useClientConversation()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { updateAIProviderModel } = useAIProviderModels()
@@ -82,9 +90,9 @@ const ConversationList: FC<IProps> = ({
 
   const filteredPaginationConversations = useMemo(() => {
     return paginationConversations.filter(
-      (conversation) => conversation.type === currentSidebarConversationType,
+      (conversation) => conversation.type === conversationType,
     )
-  }, [currentSidebarConversationType, paginationConversations])
+  }, [conversationType, paginationConversations])
 
   const renderEmptyFeedback = useCallback(() => {
     if (emptyFeedback) {
@@ -94,11 +102,16 @@ const ConversationList: FC<IProps> = ({
     return <></>
   }, [emptyFeedback])
 
-  const handleConversationRename = useCallback((conversation: PaginationConversation, index: number) => {
-    (async () => {
+  const handleConversationRename = useCallback(
+    async (conversation: PaginationConversation) => {
       setEditingConversationId('')
       if (editingConversationName.current !== conversation.name) {
-        console.log('testesteditingConversationName', editingConversationName.current, '|', conversation.name)
+        console.log(
+          'testesteditingConversationName',
+          editingConversationName.current,
+          '|',
+          conversation.name,
+        )
         await clientUpdateChatConversation(
           conversation.id,
           {
@@ -107,11 +120,12 @@ const ConversationList: FC<IProps> = ({
           false,
         )
         editingConversationName.current = ''
-        const conversations = await fetchPaginationConversations();
+        const conversations = await fetchPaginationConversations()
         setPaginationConversations(conversations)
       }
-    })()
-  }, [paginationConversations, editingConversationName.current])
+    },
+    [],
+  )
 
   useEffect(() => {
     let destroy = false
@@ -124,7 +138,7 @@ const ConversationList: FC<IProps> = ({
     return () => {
       destroy = true
     }
-  }, [currentSidebarConversationId, smoothConversationLoading])
+  }, [currentConversationId, smoothConversationLoading])
   useFocus(() => {
     fetchPaginationConversations().then((conversations) => {
       setPaginationConversations(conversations)
@@ -146,12 +160,17 @@ const ConversationList: FC<IProps> = ({
         }}
       >
         {filteredPaginationConversations.map((conversation, index) => {
-          const isSelected = conversation.id === currentSidebarConversationId
+          const isSelected = conversation.id === currentConversationId
           // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
           if (typeof conversation.lastMessage.text !== 'string') {
-            conversation.lastMessage.text = JSON.stringify(conversation.lastMessage.text)
+            conversation.lastMessage.text = JSON.stringify(
+              conversation.lastMessage.text,
+            )
           }
-          const conversationDisplaysText = conversation.name || conversation.lastMessage?.text || conversation.title
+          const conversationDisplaysText =
+            conversation.name ||
+            conversation.lastMessage?.text ||
+            conversation.title
           return (
             <Stack
               key={conversation.id}
@@ -224,21 +243,21 @@ const ConversationList: FC<IProps> = ({
                   cursor: 'pointer',
                   backgroundColor: 'background.paper',
                   borderRadius: '4px',
-                  ...((isSelected || editingConversationId === conversation.id)
+                  ...(isSelected || editingConversationId === conversation.id
                     ? {
-                      bgcolor: (theme) =>
-                        theme.palette.mode === 'dark'
-                          ? 'rgba(255, 255, 255, 0.16)'
-                          : 'rgba(144, 101, 176, 0.16)',
-                    }
-                    : {
-                      '&:hover': {
                         bgcolor: (theme) =>
                           theme.palette.mode === 'dark'
-                            ? 'rgba(255, 255, 255, 0.06)'
-                            : 'rgba(144, 101, 176, 0.06)',
-                      },
-                    }),
+                            ? 'rgba(255, 255, 255, 0.16)'
+                            : 'rgba(144, 101, 176, 0.16)',
+                      }
+                    : {
+                        '&:hover': {
+                          bgcolor: (theme) =>
+                            theme.palette.mode === 'dark'
+                              ? 'rgba(255, 255, 255, 0.06)'
+                              : 'rgba(144, 101, 176, 0.06)',
+                        },
+                      }),
                 }}
                 spacing={2}
               >
@@ -272,7 +291,7 @@ const ConversationList: FC<IProps> = ({
                       <Chip
                         sx={{
                           flexShrink: 0,
-                          width: '64px',
+                          width: 'unset',
                           fontSize: '12px',
                           padding: '0!important',
                           height: '16px!important',
@@ -280,12 +299,17 @@ const ConversationList: FC<IProps> = ({
                             padding: '0 6px',
                           },
                         }}
-                        label={conversation.type}
+                        label={
+                          conversation.type === 'ContextMenu'
+                            ? 'Context menu'
+                            : conversation.type
+                        }
                         size="small"
                       />
                       <Typography
                         noWrap
                         flex={1}
+                        textAlign={'left'}
                         width={0}
                         color={'text.secondary'}
                         fontSize={'12px'}
@@ -308,39 +332,44 @@ const ConversationList: FC<IProps> = ({
                     </Typography>
                   </Stack>
                   <Stack direction={'row'} alignItems={'center'}>
-                    {
-                      editingConversationId === conversation.id ? (
-                        <ClickAwayListener
-                          mouseEvent={'onMouseDown'}
-                          onClickAway={() => handleConversationRename(conversation, index)}
-                        >
-                          <TextField
-                            size={'small'}
-                            autoFocus
-                            defaultValue={conversation.name}
-                            onChange={(event) => {
-                              event.stopPropagation();
-                              editingConversationName.current = event.target.value.trim()
-                            }}
-                            onKeyDown={(event) => {
-                              event.stopPropagation();
-                              if (event.key === 'Enter') { handleConversationRename(conversation, index) }
-                            }}
-                            onPaste={(event) => {
-                              event.stopPropagation();
-                            }}
-                            sx={{
-                              width: '100%',
-                              mt: '1.5px',
-                              mb: '-5.625px',
-                              '& input': {
-                                p: '2px 2px 2px 4px',
-                                fontSize: '14px',
-                              }
-                            }}
-                          />
-                        </ClickAwayListener>
-                      ) : <>
+                    {editingConversationId === conversation.id ? (
+                      <ClickAwayListener
+                        mouseEvent={'onMouseDown'}
+                        onClickAway={() =>
+                          handleConversationRename(conversation)
+                        }
+                      >
+                        <TextField
+                          size={'small'}
+                          autoFocus
+                          defaultValue={conversation.name}
+                          onChange={(event) => {
+                            event.stopPropagation()
+                            editingConversationName.current =
+                              event.target.value.trim()
+                          }}
+                          onKeyDown={(event) => {
+                            event.stopPropagation()
+                            if (event.key === 'Enter') {
+                              handleConversationRename(conversation)
+                            }
+                          }}
+                          onPaste={(event) => {
+                            event.stopPropagation()
+                          }}
+                          sx={{
+                            width: '100%',
+                            mt: '1.5px',
+                            mb: '-5.625px',
+                            '& input': {
+                              p: '2px 2px 2px 4px',
+                              fontSize: '14px',
+                            },
+                          }}
+                        />
+                      </ClickAwayListener>
+                    ) : (
+                      <>
                         <Typography
                           color={'text.primary'}
                           fontSize={'14px'}
@@ -352,7 +381,8 @@ const ConversationList: FC<IProps> = ({
                         >
                           {conversationDisplaysText}
                         </Typography>
-                        {(isSelected || hoveringConversationId === conversation.id) && (
+                        {(isSelected ||
+                          hoveringConversationId === conversation.id) && (
                           <Stack
                             direction={'row'}
                             alignItems={'center'}
@@ -362,22 +392,23 @@ const ConversationList: FC<IProps> = ({
                           >
                             <MoreActionsButton
                               onRename={() => {
-                                editingConversationName.current = conversation.name
+                                editingConversationName.current =
+                                  conversation.name
                                 setEditingConversationId(conversation.id)
                               }}
-                              onDelete={() => {
-                                fetchPaginationConversations().then(
-                                  (conversations) => {
-                                    setPaginationConversations(conversations)
-                                    updateSidebarSettings({
-                                      chat: {
-                                        conversationId: '',
-                                      },
-                                    }).then(() => {
-                                      updateSidebarConversationType('Chat')
-                                    })
-                                  },
-                                )
+                              onDelete={async () => {
+                                const newConversations =
+                                  await fetchPaginationConversations()
+                                setPaginationConversations(newConversations)
+                                if (conversationType === 'ContextMenu') {
+                                  await createConversation('ContextMenu')
+                                } else {
+                                  await updateSidebarSettings({
+                                    [conversationType.toLowerCase()]: {
+                                      conversationId: '',
+                                    },
+                                  })
+                                }
                               }}
                               conversationType={conversation.type}
                               conversationId={conversation.id}
@@ -388,7 +419,7 @@ const ConversationList: FC<IProps> = ({
                           </Stack>
                         )}
                       </>
-                    }
+                    )}
                   </Stack>
                 </Stack>
               </Stack>
@@ -411,8 +442,7 @@ const ConversationList: FC<IProps> = ({
             onDelete={() => {
               fetchPaginationConversations().then((conversations) => {
                 setPaginationConversations(conversations)
-                const needCleanConversationType =
-                  currentSidebarConversationType.toLowerCase()
+                const needCleanConversationType = conversationType.toLowerCase()
                 updateSidebarSettings({
                   [needCleanConversationType]: {
                     conversationId: '',

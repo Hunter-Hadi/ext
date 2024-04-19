@@ -137,7 +137,7 @@ const useInitRangy = () => {
         if ((event as any).MAX_AI_IGNORE) {
           // 针对google doc或者其他页面的处理
           // 过滤对此元素事件的处理
-          return;
+          return
         }
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
@@ -613,13 +613,13 @@ const useInitRangy = () => {
           setTimeout(() => {
             // mock space keyup
             const keyupEvent = new KeyboardEvent('keyup', {
-                key: ' ',
-                code: 'Space',
-                location: 0,
-                bubbles: true,
-                cancelable: true,
-                shiftKey: false,
-              })
+              key: ' ',
+              code: 'Space',
+              location: 0,
+              bubbles: true,
+              cancelable: true,
+              shiftKey: false,
+            })
             ;(el || document.body).focus()
             ;(el || document.body).dispatchEvent(keyupEvent)
           }, 0)

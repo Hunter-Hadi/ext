@@ -1,5 +1,5 @@
 import merge from 'lodash-es/merge'
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
@@ -19,7 +19,11 @@ import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hoo
 import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IChatMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import {
+  clientChatConversationModifyChatMessages,
+  clientDuplicateChatConversation,
+} from '@/features/chatgpt/utils/clientChatConversation'
+import { useFloatingContextMenu } from '@/features/contextMenu'
 import {
   ClientWritingMessageStateFamily,
   SidebarPageState,
@@ -31,6 +35,7 @@ import {
   getPageSummaryType,
   IPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
+import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppLocalStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
 
@@ -46,6 +51,8 @@ const useSidebarSettings = () => {
   const [sidebarPageState, setSidebarPageSate] =
     useRecoilState(SidebarPageState)
   const { getAIProviderModelDetail } = useAIProviderModelsMap()
+  const { hideFloatingContextMenu } = useFloatingContextMenu()
+  const isDuplicatingRef = useRef(false)
   const currentSidebarConversationType =
     sidebarPageState.sidebarConversationType
   const currentSidebarAIProvider =
@@ -333,6 +340,37 @@ const useSidebarSettings = () => {
   const updateSidebarSummaryConversationId = (id?: string) => {
     setSidebarSummaryConversationId(id || getPageSummaryConversationId())
   }
+  const continueConversationInSidebar = async (
+    ...args: Parameters<typeof clientDuplicateChatConversation>
+  ) => {
+    if (isDuplicatingRef.current) {
+      return
+    }
+    isDuplicatingRef.current = true
+    const [conversationId, updateConversationData, syncConversationToDB] =
+      args as Parameters<typeof clientDuplicateChatConversation>
+    // 需要复制当前的conversation
+    const newConversation = await clientDuplicateChatConversation(
+      conversationId,
+      updateConversationData,
+      syncConversationToDB,
+    )
+    if (newConversation) {
+      if (['Chat', 'Search', 'Summary', 'Art'].includes(newConversation.type)) {
+        await updateSidebarSettings({
+          [newConversation.type.toLowerCase()]: {
+            conversationId: newConversation.id,
+          },
+        })
+        updateSidebarConversationType(
+          newConversation.type as ISidebarConversationType,
+        )
+      }
+    }
+    showChatBox()
+    hideFloatingContextMenu()
+    isDuplicatingRef.current = false
+  }
   return {
     createSidebarConversation,
     resetSidebarConversation,
@@ -348,7 +386,8 @@ const useSidebarSettings = () => {
     updateSidebarConversationType,
     sidebarChatConversationId,
     sidebarSummaryConversationId,
-    updateSidebarSummaryConversationId
+    updateSidebarSummaryConversationId,
+    continueConversationInSidebar,
   }
 }
 export default useSidebarSettings

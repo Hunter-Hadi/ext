@@ -114,9 +114,9 @@ const getOutlookButtonGroup = (
   const isDialog = Array.from(
     document.querySelectorAll('div[role="dialog"]'),
   ).find((modal) => modal.contains(keyElement))
-  const subject =
-    editPanelElement.querySelector<HTMLInputElement>('input[maxlength="255"]')
-      ?.value || ''
+  // const subject =
+  //   editPanelElement.querySelector<HTMLInputElement>('input[maxlength="255"]')
+  //     ?.value || ''
   // 1. 不在列表
   // 2. 没有toOrCC的用户
   // 3. 没有fwdMsg
@@ -363,7 +363,10 @@ const getSlackButtonGroup = (
 const getWhatsAppButtonGroup = (
   config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
-  const { keyElement, buttonGroupConfig } = config
+  const {
+    // keyElement
+    buttonGroupConfig,
+  } = config
   // if (
   //   keyElement?.matches(
   //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',

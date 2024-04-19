@@ -1,4 +1,7 @@
-import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import {
+  IContextMenuItem,
+  IContextMenuItemWithChildren,
+} from '@/features/contextMenu/types'
 /**
  * 基于Draft操作的上下文菜单ID集合
  */
@@ -12,6 +15,7 @@ export const CONTEXT_MENU_DRAFT_TYPES = {
   DISCARD: '82dc6fe3-da3d-437c-aa0e-268e4f602787',
   MAKE_LONGER: '2bd23d4b-6f6b-491c-a42f-f6c24a3b075d',
   MAKE_SHORTER: '44ea14bf-e81d-4e24-9627-b2ce9b1546dd',
+  CONTINUE_IN_CHAT: '9642aa63-4c26-4b5a-8109-e51c4a92df0b',
   COPY: '8fcccd1e-eb6e-419e-8c79-d8bc7c10e72c',
 }
 
@@ -141,6 +145,44 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
             ActionChatMessageConfig: {
               messageId: '',
               parentMessageId: undefined,
+              text: ``,
+              type: 'user',
+              meta: {
+                contexts: [
+                  {
+                    type: 'text',
+                    value: '{{LAST_AI_MESSAGE_OUTPUT}}',
+                    key: 'Draft',
+                  },
+                ],
+                contextMenu: {
+                  id: CONTEXT_MENU_DRAFT_TYPES.CONTINUE_WRITING,
+                  droppable: false,
+                  parent: '',
+                  text: 'Continue writing',
+                  data: {
+                    editable: false,
+                    type: 'shortcuts',
+                    actions: [],
+                  },
+                } as IContextMenuItem,
+              },
+            },
+          },
+        },
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            VariableName: 'USER_MESSAGE_ID',
+          },
+        },
+        {
+          type: 'CHAT_MESSAGE',
+          parameters: {
+            ActionChatMessageOperationType: 'add',
+            ActionChatMessageConfig: {
+              messageId: '',
+              parentMessageId: '{{USER_MESSAGE_ID}}',
               text: `{{LAST_AI_MESSAGE_OUTPUT}}`,
               type: 'ai',
             },
@@ -187,6 +229,18 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
     droppable: false,
     data: {
       icon: 'Replay',
+      type: 'shortcuts',
+      editable: false,
+    },
+    children: [],
+  },
+  {
+    id: CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT,
+    text: 'Continue in chat',
+    parent: 'root',
+    droppable: false,
+    data: {
+      icon: 'SidebarPanel',
       type: 'shortcuts',
       editable: false,
     },

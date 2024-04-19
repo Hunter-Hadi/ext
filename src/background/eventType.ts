@@ -42,6 +42,7 @@ export type IChromeExtensionClientSendEvent =
   | 'Client_modifyMessages'
   | 'Client_getLiteConversation'
   | 'Client_updateConversation'
+  | 'Client_duplicateConversation'
   | 'Client_openUrl'
   | 'Client_closeUrl'
   | 'Client_updateIcon'

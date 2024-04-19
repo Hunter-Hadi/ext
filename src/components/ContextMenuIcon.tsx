@@ -2,6 +2,7 @@ import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined'
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined'
 import ArrowDropDownOutlinedIcon from '@mui/icons-material/ArrowDropDownOutlined'
 import ArrowDropUpOutlinedIcon from '@mui/icons-material/ArrowDropUpOutlined'
+import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined'
 import AutoAwesomeOutlinedIcon from '@mui/icons-material/AutoAwesomeOutlined'
 import AutoFixHighOutlinedIcon from '@mui/icons-material/AutoFixHighOutlined'
 import AutorenewOutlinedIcon from '@mui/icons-material/AutorenewOutlined'
@@ -78,7 +79,6 @@ import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined'
 import TuneOutlinedIcon from '@mui/icons-material/TuneOutlined'
 import VisibilityOffOutlinedIcon from '@mui/icons-material/VisibilityOffOutlined'
 import WbSunnyOutlinedIcon from '@mui/icons-material/WbSunnyOutlined'
-import AttachmentOutlinedIcon from '@mui/icons-material/AttachmentOutlined'
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon'
@@ -175,6 +175,7 @@ export const CONTEXT_MENU_ICONS = [
   'SubjectOutlined',
   'KeyboardArrowDownIcon',
   'Attachment',
+  'SidebarPanel',
 ] as const
 export type IContextMenuIconKey = (typeof CONTEXT_MENU_ICONS)[number]
 const ContextMenuIcon: FC<{
@@ -489,6 +490,25 @@ const ContextMenuIcon: FC<{
       return <KeyboardArrowDownIcon sx={sxMemo} />
     case 'Attachment':
       return <AttachmentOutlinedIcon sx={sxMemo} />
+    case 'SidebarPanel':
+      return (
+        <SvgIcon {...props} sx={sxMemo}>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M21 3H3V21H21V3ZM14.5 5.5H5.5V18.5H14.5V5.5Z"
+              fill="currentColor"
+            />
+          </svg>
+        </SvgIcon>
+      )
     default:
       if (icon.toString().startsWith('http')) {
         return (

@@ -9,6 +9,7 @@ import {
 } from '@floating-ui/react'
 import SendIcon from '@mui/icons-material/Send'
 import CircularProgress from '@mui/material/CircularProgress'
+import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
 import Stack from '@mui/material/Stack'
 import { useTheme } from '@mui/material/styles'
@@ -40,10 +41,10 @@ import {
   MAXAI_FLOATING_CONTEXT_MENU_REFERENCE_ELEMENT_ID,
 } from '@/features/common/constants'
 import {
-  FloatingContextMenuOpenSidebarButton,
   FloatingContextMenuPopupSettingButton,
   FloatingContextMenuShortcutButtonGroup,
 } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
+import FloatingContextMenuChatHistoryButton from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuChatHistoryButton'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import WritingMessageBox from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBox'
 import WritingMessageBoxPagination from '@/features/contextMenu/components/FloatingContextMenu/WritingMessageBoxPagination'
@@ -82,6 +83,7 @@ import {
 import ActionSetVariablesModal from '@/features/shortcuts/components/ActionSetVariablesModal'
 import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppDBStorageState } from '@/store'
 import { getInputMediator } from '@/store/InputMediator'
@@ -117,6 +119,7 @@ const FloatingContextMenu: FC<{
     getConversation,
     resetConversation,
   } = useClientConversation()
+  const { continueConversationInSidebar } = useSidebarSettings()
   const currentHostRef = useRef(getCurrentDomainHost())
   const { clientWritingMessage } = useClientConversation()
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
@@ -563,6 +566,21 @@ const FloatingContextMenu: FC<{
           }
         })
 
+        if (
+          currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT
+        ) {
+          continueConversationInSidebar(
+            currentConversationIdRef.current,
+            {
+              type: 'Chat',
+            },
+            true,
+          )
+            .then()
+            .catch()
+          return
+        }
+
         if (runActions.length > 0) {
           setActions(runActions)
         } else {
@@ -903,6 +921,21 @@ const FloatingContextMenu: FC<{
                       ml={'auto'}
                       mr={0}
                     >
+                      <FloatingContextMenuPopupSettingButton />
+                      <Divider
+                        orientation="vertical"
+                        variant="middle"
+                        flexItem
+                        sx={{
+                          my: 0.5,
+                        }}
+                      />
+                      <FloatingContextMenuChatHistoryButton
+                        TooltipProps={{
+                          placement: safePlacement.contextMenuPlacement,
+                          floatingMenuTooltip: true,
+                        }}
+                      />
                       <TextOnlyTooltip
                         floatingMenuTooltip
                         title={t('client:floating_menu__button__send_to_ai')}
@@ -911,9 +944,9 @@ const FloatingContextMenu: FC<{
                       >
                         <IconButton
                           sx={{
-                            height: '24px',
-                            width: '24px',
-                            borderRadius: '4px',
+                            height: '28px',
+                            width: '28px',
+                            borderRadius: '8px',
                             flexShrink: 0,
                             alignSelf: 'end',
                             alignItems: 'center',
@@ -939,15 +972,6 @@ const FloatingContextMenu: FC<{
                           <SendIcon sx={{ color: '#fff', fontSize: 16 }} />
                         </IconButton>
                       </TextOnlyTooltip>
-                      <FloatingContextMenuPopupSettingButton
-                        sx={{ width: 24, height: 24, alignSelf: 'end' }}
-                      />
-                      <FloatingContextMenuOpenSidebarButton
-                        TooltipProps={{
-                          placement: safePlacement.contextMenuPlacement,
-                          floatingMenuTooltip: true,
-                        }}
-                      />
                     </Stack>
                   )}
                 </Stack>

@@ -254,6 +254,7 @@ const SidebarChatHistoryButton: FC<{
                     <Divider />
                     <Box height={0} flex={1} overflow="auto">
                       <ConversationList
+                        conversationType={currentSidebarConversationType}
                         hideClearAllButton
                         divider
                         onSelectConversation={() => {

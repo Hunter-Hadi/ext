@@ -61,6 +61,7 @@ const ClearAllChatButtonMoreActions: FC = () => {
         tooltipTitle={t('common:more')}
       />
       <Modal
+        disablePortal
         open={open}
         onClose={(e: React.MouseEvent) => {
           e.stopPropagation()

@@ -37,15 +37,15 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
     return {
       ...(isHover
         ? {
-          '& *': {
-            userSelect: 'text!important',
-          },
-        }
+            '& *': {
+              userSelect: 'text!important',
+            },
+          }
         : {
-          '& *': {
-            userSelect: 'none!important',
-          },
-        }),
+            '& *': {
+              userSelect: 'none!important',
+            },
+          }),
     }
   }, [isHover])
 
@@ -59,6 +59,7 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
         p: 1,
         color: 'text.primary',
         position: 'relative',
+        boxSizing: 'border-box',
         '& .chat-message--text': {
           textAlign: 'left',
           fontSize: '16px',

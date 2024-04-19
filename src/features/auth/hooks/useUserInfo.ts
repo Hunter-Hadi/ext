@@ -94,8 +94,8 @@ const useUserInfo = () => {
 
   // 是否是付费用户
   const isPayingUser = useMemo(
-    () => checkIsPayingUser(userInfo?.role?.name),
-    [userInfo],
+    () => checkIsPayingUser(currentUserPlan?.name),
+    [currentUserPlan],
   )
 
   const isFreeUser = useMemo(() => !isPayingUser, [isPayingUser])

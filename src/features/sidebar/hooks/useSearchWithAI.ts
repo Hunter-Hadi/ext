@@ -35,7 +35,7 @@ const useSearchWithAI = () => {
   const updateClientWritingMessage = useSetRecoilState(
     ClientWritingMessageState,
   )
-  const { currentUserPlan, isPayingUser } = useUserInfo()
+  const { isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
     useClientConversation()

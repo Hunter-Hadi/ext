@@ -67,6 +67,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   currentWebPageTitle = ''
   isUsageLimit = false
+  permissionSceneType = null
   // clientConversationEngine: IClientConversationEngine = null
   private currentMessageId?: string
   private transciptData: TranscriptResponse[] = []
@@ -188,15 +189,16 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       }
       if (
         this.isUsageLimit &&
+        this.permissionSceneType &&
         clientConversationEngine &&
         clientMessageChannelEngine
       ) {
         // 触达 用量上限向用户展示提示信息
         await clientConversationEngine.pushPricingHookMessage(
-          'TOTAL_CHAT_DAILY_LIMIT',
+          this.permissionSceneType,
         )
         // 记录日志
-        authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+        authEmitPricingHooksLog('show', this.permissionSceneType)
 
         // 触发用量上限时 更新 user subscription info
         await clientMessageChannelEngine.postMessage({
@@ -206,7 +208,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
 
         await stopActionMessageStatus({ engine })
 
-        this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+        this.error = this.permissionSceneType
         return
       }
     } catch (e) {
@@ -435,6 +437,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
         if (isPermissionCardSceneType(error.message)) {
           // 如果是 付费卡点的报错，则不重试, 并且立刻停止
           this.isUsageLimit = true
+          this.permissionSceneType = error.message
           return false
         }
         if (error.message === 'jsonError') {

@@ -1,15 +1,11 @@
 import { ChatAdapterInterface } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
-import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
-import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
 import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { createBackgroundMessageListener } from '@/background/utils'
 
-import { CHATGPT_3_5_MODEL_NAME } from '../../chatCore/chatgpt/constants'
 import {
   ISearchWithAIProviderType,
+  SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER,
   SEARCH_WITH_AI_PROVIDER_MAP,
 } from '../../constants'
 import {
@@ -146,28 +142,9 @@ class SearchWIthAIChatSystem {
     }
 
     // 传入写死的 model name
-    if (
-      this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS
-    ) {
-      meta.AIModel = USE_CHAT_GPT_PLUS_MODELS[0].value
-    }
-    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.MAXAI_CLAUDE) {
-      meta.AIModel = 'claude-3-haiku'
-    }
-    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
-      meta.AIModel = OPENAI_API_MODELS[0].value
-    }
-    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI) {
-      meta.AIModel = CHATGPT_3_5_MODEL_NAME
-    }
-    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.CLAUDE) {
-      meta.AIModel = CLAUDE_MODELS[0].value
-    }
-    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.BARD) {
-      meta.AIModel = BARD_MODELS[0].value
-    }
-    if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.BING) {
-      meta.AIModel = BING_MODELS[0].value
+    if (this.currentProvider) {
+      meta.AIModel =
+        SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[this.currentProvider]
     }
 
     return (

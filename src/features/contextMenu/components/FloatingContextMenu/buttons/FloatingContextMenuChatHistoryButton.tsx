@@ -201,15 +201,24 @@ const FloatingContextMenuChatHistoryButton: FC<{
   useEffect(() => {
     if (modalOpen) {
       // 为了方便esc
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         paperRef.current?.focus()
       }, 100)
+      // 禁止document.body的滚动
+      const before = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        clearTimeout(timer)
+        document.body.style.overflow = before
+      }
     }
   }, [modalOpen])
 
   useEffect(() => {
     if (!floatingDropdownMenuOpen) {
-      handleCloseModal()
+      setSelectedConversationId('')
+      setModalOpen(false)
+      setAnchorEl(null)
       return
     }
     const container = (getMaxAIFloatingContextMenuRootElement() ||
@@ -289,10 +298,31 @@ const FloatingContextMenuChatHistoryButton: FC<{
             <div data-testid={`maxai--context-window--chat-history--root`}>
               <Paper
                 tabIndex={-1}
+                onMouseDown={(event) => {
+                  event.stopPropagation()
+                }}
+                onMouseUp={(event) => {
+                  event.stopPropagation()
+                }}
+                onClick={(event) => {
+                  event.stopPropagation()
+                }}
                 onKeyDown={(event) => {
+                  event.stopPropagation()
+                }}
+                onKeyUp={(event) => {
                   if (modalOpen && event.key === 'Escape') {
                     handleCloseModal()
                   }
+                  event.stopPropagation()
+                }}
+                onWheel={(event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
+                }}
+                onTouchMove={(event) => {
+                  event.preventDefault()
+                  event.stopPropagation()
                 }}
                 ref={(ref) => {
                   if (ref) {

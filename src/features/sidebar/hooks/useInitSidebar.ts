@@ -13,7 +13,10 @@ import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { getPageSummaryConversationId, getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import {
+  getPageSummaryConversationId,
+  getPageSummaryType,
+} from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
@@ -133,7 +136,7 @@ const useInitSidebar = () => {
     if (
       currentSidebarConversationType === 'Chat' &&
       !sidebarChatConversationId &&
-      appState.open
+      (appState.open || isMaxAIImmersiveChatPage())
     ) {
       createConversation(currentSidebarConversationType).then().catch()
     }
@@ -181,7 +184,10 @@ const useInitSidebar = () => {
         return
       } else if (pageConversationTypeRef.current === 'Summary') {
         // 页面变化切换至Chat并停止当前对话
-        if (pageSummaryConversationIdRef.current !== getPageSummaryConversationId()) {
+        if (
+          pageSummaryConversationIdRef.current !==
+          getPageSummaryConversationId()
+        ) {
           updateSidebarConversationType('Chat')
           stopGenerate()
         }

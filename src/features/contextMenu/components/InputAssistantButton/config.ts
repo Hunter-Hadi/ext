@@ -1,4 +1,5 @@
 import { SxProps } from '@mui/material/styles'
+import { type TFunction } from 'i18next/index.v4'
 
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
@@ -22,6 +23,8 @@ export interface IInputAssistantButton {
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
   onSelectionEffect?: (observerData: IInputAssistantButtonObserverData) => any
+  displayText?: string | ((t: TFunction<['client']>) => string)
+  displayTextSx?: SxProps
 }
 export type IInputAssistantButtonKeyType =
   | 'composeNewButton'
@@ -164,12 +167,17 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
             // })
           }
         },
+        displayText: (t) =>
+          t('client:instant_reply_button__explicit__display_text'),
+        displayTextSx: {
+          ml: '8px',
+        },
       },
       appendPosition: 0,
       CTAButtonStyle: {
         borderRadius: '18px',
         iconSize: 18,
-        padding: '9px 27px',
+        padding: '7.5px 16px 7.5px 12px',
         borderWidth: '0',
       },
       InputAssistantBoxSx: {

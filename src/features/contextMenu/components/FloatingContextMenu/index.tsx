@@ -60,7 +60,9 @@ import {
   contextMenuToFavoriteContextMenu,
   FAVORITE_CONTEXT_MENU_GROUP_ID,
 } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
-import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
+import useFloatingContextMenuDraft, {
+  useFloatingContextMenuDraftHistoryChange,
+} from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import {
   FloatingDropdownMenuSelectedItemState,
   FloatingDropdownMenuState,
@@ -131,6 +133,7 @@ const FloatingContextMenu: FC<{
     currentFloatingContextMenuDraft,
     floatingContextMenuDraftMessageIdRef,
   } = useFloatingContextMenuDraft()
+  useFloatingContextMenuDraftHistoryChange()
   const { isLogin } = useAuthLogin()
   const [isSettingVariables, setIsSettingVariables] = useState(false)
 

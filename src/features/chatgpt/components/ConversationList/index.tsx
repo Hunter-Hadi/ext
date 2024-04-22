@@ -102,30 +102,23 @@ const ConversationList: FC<IProps> = (props) => {
     return <></>
   }, [emptyFeedback])
 
-  const handleConversationRename = useCallback(
-    async (conversation: PaginationConversation) => {
-      setEditingConversationId('')
-      if (editingConversationName.current !== conversation.name) {
-        console.log(
-          'testesteditingConversationName',
-          editingConversationName.current,
-          '|',
-          conversation.name,
-        )
-        await clientUpdateChatConversation(
-          conversation.id,
-          {
-            name: editingConversationName.current,
-          },
-          false,
-        )
-        editingConversationName.current = ''
-        const conversations = await fetchPaginationConversations()
-        setPaginationConversations(conversations)
-      }
-    },
-    [],
-  )
+  const handleConversationRename = async (
+    conversation: PaginationConversation,
+  ) => {
+    setEditingConversationId('')
+    if (editingConversationName.current !== conversation.name) {
+      await clientUpdateChatConversation(
+        conversation.id,
+        {
+          name: editingConversationName.current,
+        },
+        false,
+      )
+      editingConversationName.current = ''
+      const conversations = await fetchPaginationConversations()
+      setPaginationConversations(conversations)
+    }
+  }
 
   useEffect(() => {
     let destroy = false
@@ -340,6 +333,9 @@ const ConversationList: FC<IProps> = (props) => {
                         }
                       >
                         <TextField
+                          data-testid={
+                            'maxai--conversation--rename-chat--input'
+                          }
                           size={'small'}
                           autoFocus
                           defaultValue={conversation.name}
@@ -348,7 +344,7 @@ const ConversationList: FC<IProps> = (props) => {
                             editingConversationName.current =
                               event.target.value.trim()
                           }}
-                          onKeyDown={(event) => {
+                          onKeyDownCapture={(event) => {
                             event.stopPropagation()
                             if (event.key === 'Enter') {
                               handleConversationRename(conversation)
@@ -391,6 +387,8 @@ const ConversationList: FC<IProps> = (props) => {
                             gap={0.5}
                           >
                             <MoreActionsButton
+                              conversationAIProvider={conversation?.AIProvider}
+                              conversationAIModel={conversation?.AIModel}
                               onRename={() => {
                                 editingConversationName.current =
                                   conversation.name

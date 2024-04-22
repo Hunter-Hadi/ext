@@ -3,7 +3,6 @@ import Container from '@mui/material/Container'
 import IconButton from '@mui/material/IconButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
@@ -11,16 +10,22 @@ import Typography from '@mui/material/Typography'
 import React, { FC, memo, MouseEvent, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { IAIProviderType } from '@/background/provider/chat'
+import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import MaxAIMenu from '@/components/MaxAIMenu'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { clientForceRemoveConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { ISidebarConversationType } from '@/features/sidebar/types'
+import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const MoreActionsButton: FC<{
   conversationId: string
+  conversationAIProvider?: IAIProviderType
+  conversationAIModel?: string
   conversationDisplaysText: string
   conversationType: ISidebarConversationType
   onRename?: () => void
@@ -30,6 +35,8 @@ const MoreActionsButton: FC<{
     conversationDisplaysText,
     conversationType,
     conversationId,
+    conversationAIProvider,
+    conversationAIModel,
     onRename,
     onDelete,
   } = props
@@ -101,7 +108,14 @@ const MoreActionsButton: FC<{
         </IconButton>
       </TextOnlyTooltip>
 
-      <Menu
+      <MaxAIMenu
+        rootContainer={() => {
+          return isContextWindow
+            ? getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                'div[data-testid="maxai--context-window--chat-history--root"]',
+              ) || undefined
+            : undefined
+        }}
         anchorEl={anchorEl}
         id={`${conversationId}_MORE_ACTIONS_MENU`}
         open={moreActionsMenuOpen}
@@ -170,7 +184,7 @@ const MoreActionsButton: FC<{
             </Typography>
           </ListItemText>
         </MenuItem>
-      </Menu>
+      </MaxAIMenu>
 
       <Modal
         disablePortal
@@ -246,7 +260,21 @@ const MoreActionsButton: FC<{
                   await clientForceRemoveConversation(conversationId)
                   onDelete?.()
                   if (isInImmersiveChat) {
-                    await createConversation()
+                    if (conversationAIProvider && conversationAIModel) {
+                      await createConversation(
+                        conversationType,
+                        conversationAIProvider,
+                        conversationAIModel,
+                      )
+                    } else {
+                      await createConversation(
+                        conversationType,
+                        MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType]
+                          .AIProvider,
+                        MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType]
+                          .AIModel,
+                      )
+                    }
                   }
                 }}
                 sx={{

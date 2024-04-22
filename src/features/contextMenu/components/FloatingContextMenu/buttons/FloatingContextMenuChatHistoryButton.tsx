@@ -169,7 +169,11 @@ const FloatingContextMenuChatHistoryButton: FC<{
   }
 
   const handleCloseModal = () => {
-    setSelectedConversationId('')
+    if (selectedConversationId) {
+      // 只需要返回到列表
+      setSelectedConversationId('')
+      return
+    }
     setModalOpen(false)
     setAnchorEl(null)
   }

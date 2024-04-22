@@ -102,7 +102,11 @@ const ClearAllChatButton: FC<IProps> = (props) => {
       )}
 
       {variant === 'icon' && (
-        <TextOnlyTooltip placement={'top'} title={currentDeleteAllButtonTitle}>
+        <TextOnlyTooltip
+          floatingMenuTooltip={currentSidebarConversationType === 'ContextMenu'}
+          placement={'top'}
+          title={currentDeleteAllButtonTitle}
+        >
           <IconButton
             data-testid={testid}
             onClick={(e: React.MouseEvent) => {

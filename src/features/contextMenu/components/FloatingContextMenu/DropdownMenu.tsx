@@ -241,6 +241,14 @@ export const DropdownMenuItem = React.forwardRef<any, MenuItemProps>(
         onKeyDown={(event: any) => {
           floatingUiProps?.onKeyDown?.(event)
           if (event.code === 'Enter') {
+            // 是否在重命名状态
+            const renameInput =
+              getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                'div[data-testid="maxai--conversation--rename-chat--input"] input',
+              ) as HTMLInputElement
+            if (renameInput) {
+              return
+            }
             updateSelectedId((prevState) => {
               return {
                 ...prevState,

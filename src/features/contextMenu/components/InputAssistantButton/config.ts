@@ -266,9 +266,14 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
             replyButton?.click()
           }
         },
+        displayText: (t) =>
+          t('client:instant_reply_button__explicit__display_text'),
+        displayTextSx: {
+          ml: '6px',
+        },
       },
       CTAButtonStyle: {
-        padding: '6px 20px',
+        padding: '5.5px 12px',
         borderWidth: 0,
         borderRadius: '4px',
       },

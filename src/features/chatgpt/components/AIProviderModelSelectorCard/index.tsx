@@ -16,7 +16,7 @@ import {
   getModelOptionsForConversationType,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
-import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import AIProviderMainPartIcon from '@/features/chatgpt/components/icons/AIProviderMainPartIcon'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import useAIProviderModels, {
@@ -100,6 +100,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
           model.AIProvider,
         )
       })
+      .filter((model) => !model.hidden)
       .map((model) => {
         if (model.disabled !== true) {
           model.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
@@ -235,7 +236,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
               }}
             >
               <Stack alignItems={'center'} direction={'row'}>
-                <AIProviderIcon aiProviderType={AIModelOption.AIProvider} />
+                <AIModelIcons aiModelValue={AIModelOption.value} />
                 <Typography
                   fontSize={'14px'}
                   lineHeight={'20px'}

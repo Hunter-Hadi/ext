@@ -13,6 +13,7 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import { isShowChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
 import useChatBoxWidth from '@/hooks/useChatBoxWidth'
 import SidebarPage from '@/pages/sidebar'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
@@ -135,6 +136,7 @@ const App: FC = () => {
               </AppSuspenseLoadingLayout>
             </BrowserVersionDetector>
           </Stack>
+          <GlobalVideoPopup />
         </Box>
       </Resizable>
     </>

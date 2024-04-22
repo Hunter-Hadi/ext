@@ -278,6 +278,9 @@ const updateI18nJson = async (
     if (_.get(sourceJson, `maxai_tour.${key}`)) {
       return `maxai_tour.${key}`
     }
+    if (_.get(sourceJson, `quota_usage_card.${key}`)) {
+      return `quota_usage_card.${key}`
+    }
     return key
   })
   let needUpdateLanguages = i18nDirs

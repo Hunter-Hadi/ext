@@ -1,14 +1,28 @@
 /**
- * 后端只有:free,pro,elite
+ * 后端只有:free,basic,pro,elite
  * 前端通过不同的过期时间来区分: free, new_user, pro, pro_gift,elite
  */
-export type IUserRoleType = 'free' | 'new_user' | 'pro' | 'pro_gift' | 'elite'
+export type IUserRoleType =
+  | 'free'
+  | 'new_user'
+  | 'pro_gift'
+  | 'basic'
+  | 'pro'
+  | 'elite'
+
 export type IUserPlanNameType =
+  | 'BASIC_MONTHLY'
+  | 'BASIC_YEARLY'
+  | 'BASIC_TEAM_MONTHLY'
+  | 'BASIC_ONE_YEAR'
   | 'PRO_MONTHLY'
   | 'PRO_YEARLY'
+  | 'PRO_TEAM_MONTHLY'
+  | 'PRO_ONE_YEAR'
   | 'ELITE_MONTHLY'
   | 'ELITE_YEARLY'
-  | 'PRO_ONE_YEAR'
+  | 'ELITE_TEAM_MONTHLY'
+  | 'ELITE_ONE_YEAR'
   | 'UNKNOWN'
 // 这是手动算出来的数据结构，方便插件内用
 export type IUserRole = {
@@ -28,4 +42,13 @@ export type IUseChatGPTUserInfo = {
   created_at: string
   roles: IUserRole[]
   subscription_plan_name: IUserPlanNameType
+  group_id?: string
+}
+
+export type IUserQuotaUsageInfo = {
+  fastText: number // GPT-3.5 & Claude-3-haiku & Gemini-pro
+  advancedText: number // GPT-4 & Claude-3-opus/sonnet & Gemini-1.5-pro
+  imageGenerate: number // DALL·E 3
+
+  nextRefreshTime?: string // 用量刷新的时间 (utc)
 }

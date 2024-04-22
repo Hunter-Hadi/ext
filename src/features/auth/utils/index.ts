@@ -6,11 +6,15 @@ import Browser from 'webextension-polyfill'
 import {
   APP_USE_CHAT_GPT_API_HOST,
   CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY,
+  CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY,
 } from '@/constants'
+import { PAYING_USER_ROLE_NAME } from '@/features/auth/constants'
 import {
   IUseChatGPTUserInfo,
   IUserPlanNameType,
+  IUserQuotaUsageInfo,
   IUserRole,
+  IUserRoleType,
 } from '@/features/auth/types'
 import { setDailyUsageLimitData } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
@@ -95,6 +99,51 @@ export const getMaxAIChromeExtensionEmail = async (): Promise<string> => {
   }
   return ''
 }
+
+/**
+ * 获取用户 quota 使用量
+ */
+export const getMaxAIChromeExtensionUserQuotaUsage = async (
+  forceUpdate: boolean,
+): Promise<IUserQuotaUsageInfo | undefined> => {
+  try {
+    const cache = await Browser.storage.local.get(
+      CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY,
+    )
+    if (cache[CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY]) {
+      // 如果有缓存数据，根据 forceUpdate 判断需不需要重新fetch
+      // 或者直接返回缓存数据
+      let cacheData = cloneDeep(
+        cache[CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY],
+      )
+      let isUpdated = false
+      if (forceUpdate) {
+        cacheData = await fetchUserQuotaUsageInfo()
+        isUpdated = !!cacheData
+      }
+      if (isUpdated) {
+        await Browser.storage.local.set({
+          [CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY]: {
+            ...cache[CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY],
+            ...cacheData,
+          },
+        })
+      }
+      return cacheData
+    } else {
+      // 如果没有缓存数据，直接fetch
+      const quotaUsageResponseData = await fetchUserQuotaUsageInfo()
+      await Browser.storage.local.set({
+        [CHROME_EXTENSION_LOCAL_STORAGE_USER_QUOTA_USAGE_SAVE_KEY]:
+          quotaUsageResponseData,
+      })
+      return quotaUsageResponseData
+    }
+  } catch (error) {
+    return undefined
+  }
+}
+
 export const fetchUserSubscriptionInfo = async (): Promise<
   IUserRole | undefined
 > => {
@@ -128,14 +177,9 @@ export const fetchUserSubscriptionInfo = async (): Promise<
             usage: result.data.usage,
           })
           let role =
-            result.data.roles.find(
-              (role: { name: string; exp_time: number }) =>
-                role.name === 'elite',
-            ) ||
-            result.data.roles.find(
-              (role: { name: string; exp_time: number }) => role.name === 'pro',
-            ) ||
-            result.data.roles[0]
+            result.data.roles.find((role: { name: string; exp_time: number }) =>
+              checkIsPayingUser(role?.name as IUserRoleType),
+            ) || result.data.roles[0]
           if (!role) {
             role = {
               name: 'free',
@@ -278,4 +322,45 @@ export const fetchUserInfo = async (): Promise<
   } catch (e) {
     return undefined
   }
+}
+
+// 获取用户 各个模型的 quota 用量查询
+export const fetchUserQuotaUsageInfo = async (): Promise<
+  IUserQuotaUsageInfo | undefined
+> => {
+  try {
+    const token = await getMaxAIChromeExtensionAccessToken()
+    if (!token) {
+      return undefined
+    }
+    const response = await fetch(
+      `${APP_USE_CHAT_GPT_API_HOST}/user/get_user_quota_usage`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      },
+    )
+    if (response.ok) {
+      const result = await response.json()
+      if (result.status === 'OK' && result?.msg === 'success') {
+        const data = result.data
+        return {
+          fastText: data.fast_text,
+          advancedText: data.advanced_text,
+          imageGenerate: data.image_generate,
+          nextRefreshTime: data.next_refresh_time,
+        } as IUserQuotaUsageInfo
+      }
+    }
+    return undefined
+  } catch (e) {
+    return undefined
+  }
+}
+
+export const checkIsPayingUser = (
+  userRoleName: IUserRoleType | null | undefined,
+): boolean => {
+  return userRoleName ? PAYING_USER_ROLE_NAME.includes(userRoleName) : false
 }

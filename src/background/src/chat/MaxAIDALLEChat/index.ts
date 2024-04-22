@@ -17,6 +17,7 @@ import {
   APP_VERSION,
 } from '@/constants'
 import { MAXAI_IMAGE_GENERATE_MODELS } from '@/features/art/constant'
+import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { getMaxAIChromeExtensionAccessToken } from '@/features/auth/utils'
 import {
   IChatMessageExtraMetaType,
@@ -248,14 +249,26 @@ class MaxAIDALLEChat extends BaseChat {
             },
           })
         } else {
-          onMessage &&
-            onMessage({
-              done: true,
-              type: 'error',
-              error:
-                'Something went wrong, please try again. If this issue persists, contact us via email.',
-              data: { text: '', conversationId },
-            })
+          if (result.msg && isPermissionCardSceneType(result.msg)) {
+            onMessage &&
+              onMessage({
+                type: 'error',
+                error: result.msg,
+                done: true,
+                data: { text: '', conversationId },
+              })
+            return
+          } else {
+            onMessage &&
+              onMessage({
+                done: true,
+                type: 'error',
+                error:
+                  result?.detail ??
+                  'Something went wrong, please try again. If this issue persists, contact us via email.',
+                data: { text: '', conversationId },
+              })
+          }
         }
       }
     } catch (e) {

@@ -5,8 +5,10 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
+import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import HomeViewContentNav from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView/HomeViewContentNav'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 interface ISidebarHomeViewProps {
   sx?: SxProps
@@ -83,7 +85,12 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
           position="relative"
           sx={sx}
         >
-          <Stack justifyContent={'center'} alignItems={'center'}>
+          <Stack
+            justifyContent={'center'}
+            alignItems={'center'}
+            maxWidth={680}
+            width={'80%'}
+          >
             <ContextMenuIcon
               icon={'Art'}
               sx={{
@@ -109,6 +116,16 @@ const SidebarHomeView: FC<ISidebarHomeViewProps> = ({ sx }) => {
             >
               {t('client:home_view__art__description')}
             </Typography>
+            <ResponsiveImage
+              width={776}
+              height={358}
+              sx={{
+                mt: 1.5,
+              }}
+              src={`${getChromeExtensionAssetsURL(
+                '/images/art/art-vision.png',
+              )}`}
+            />
           </Stack>
         </Stack>
       )}

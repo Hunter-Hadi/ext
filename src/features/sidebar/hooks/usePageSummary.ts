@@ -37,7 +37,7 @@ const usePageSummary = () => {
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
-  const { currentUserPlan } = useUserInfo()
+  const { isPayingUser } = useUserInfo()
 
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
@@ -111,14 +111,11 @@ const usePageSummary = () => {
         }
       }
       try {
-        console.error('新版Conversation pageSummary开始创建')
+        console.log('新版Conversation pageSummary开始创建')
         // 进入loading
         await createConversation('Summary')
         // 如果是免费用户
-        if (
-          currentUserPlan.name !== 'pro' &&
-          currentUserPlan.name !== 'elite'
-        ) {
+        if (!isPayingUser) {
           // 判断lifetimes free trial是否已经用完
           const summaryLifetimesQuota =
             Number(

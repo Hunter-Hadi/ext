@@ -4,7 +4,7 @@ import { FC } from 'react'
 // import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
 import React from 'react'
 
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { useInitI18n } from '@/i18n/hooks'
 
@@ -32,7 +32,7 @@ const SearchWithAIContainer: FC<IProps> = ({
 
   console.log(`SearchWithAIContainer rootElement`, rootElement)
 
-  userInitUserInfo()
+  useInitUserInfo()
   useInitI18n()
 
   useSearchWithAISettingsInit()

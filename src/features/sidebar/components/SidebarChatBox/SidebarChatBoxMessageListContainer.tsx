@@ -1,14 +1,13 @@
 import Box from '@mui/material/Box'
 import { SxProps } from '@mui/material/styles'
 import throttle from 'lodash-es/throttle'
-import React, { FC, lazy, useEffect, useRef, useState } from 'react'
+import React, { FC, lazy, useEffect, useMemo, useRef, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useInterval from '@/features/common/hooks/useInterval'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getMaxAISidebarRootElement } from '@/utils'
 
 export const messageListContainerId = 'message-list-scroll-container'
@@ -39,7 +38,7 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
   const needScrollToBottomRef = useRef(true)
 
   const [messageItemIsReady, setMessageItemIsReady] = useState(false)
-  const { currentSidebarConversationType } = useSidebarSettings()
+  // const { currentSidebarConversationType } = useSidebarSettings()
 
   const { slicedMessageList, changePageNumber } = useMessageListPaginator(
     !!(messageItemIsReady && conversationId),
@@ -78,8 +77,19 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
     messageItemIsReady && handleScrollToBottom()
   }, [messageItemIsReady])
 
+  const lastMessageType = useMemo(() => {
+    if (slicedMessageList.length === 0) {
+      return ''
+    }
+    return slicedMessageList[slicedMessageList.length - 1].type
+  }, [slicedMessageList])
+
   // 当 loading 变化为 true 时，强制滚动到底部
   useEffect(() => {
+    // 临时解决方案，为了保证在 付费卡点出现 时能够正常滚动到底部
+    if (loading && lastMessageType === 'system') {
+      handleScrollToBottom(true)
+    }
     // 240401: 当用户输入信息后，此时 loading 为 true，writingMessage 为 null
     // 为了保证能正常滚动到底部，需要设置 needScrollToBottomRef 为 true
     // 在 writingMessage 更新后能够正常滚动到底部
@@ -101,7 +111,9 @@ const SidebarChatBoxMessageListContainer: FC<IProps> = (props) => {
         changePageNumber(1)
       }, 0)
     }
-  }, [loading, writingMessage, currentSidebarConversationType])
+  }, [loading, writingMessage, lastMessageType])
+
+  console.log(`slicedMessageList`, loading, lastMessageType)
 
   useEffect(() => {
     if (writingMessage) {

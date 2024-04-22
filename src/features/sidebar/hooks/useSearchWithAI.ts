@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
+import {useRecoilState, useSetRecoilState} from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -32,7 +32,7 @@ const useSearchWithAI = () => {
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
   const { updateClientConversationLoading, clientConversation } =
     useClientConversation()
-  const { currentUserPlan } = useUserInfo()
+  const { isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
     useClientConversation()
@@ -84,7 +84,7 @@ const useSearchWithAI = () => {
     try {
       console.log('新版Conversation search with AI 开始创建')
       // 如果是免费用户
-      if (currentUserPlan.name !== 'pro' && currentUserPlan.name !== 'elite') {
+      if (!isPayingUser) {
         // 判断lifetimes free trial是否已经用完
         const searchLifetimesQuota =
           Number(
@@ -115,6 +115,7 @@ const useSearchWithAI = () => {
       console.log('创建Conversation失败', e)
     }
   }
+
   // 因为在regenerate的时候消息更更新不及时，所以需要一个ref确保历史记录是最新的
   const createSearchWithAIRef = useRef(createSearchWithAI)
   useEffect(() => {

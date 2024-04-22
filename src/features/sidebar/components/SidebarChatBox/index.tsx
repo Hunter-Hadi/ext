@@ -162,8 +162,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           // 这么做条件渲染是为了，让点击事件在 isShowChatBoxHomeView 为 false 时，可以正常执行
           !isShowChatBoxHomeView
             ? {
-              display: 'none',
-            }
+                display: 'none',
+              }
             : null
         }
       />
@@ -189,9 +189,15 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         minHeight={170}
         spacing={1}
         flexShrink={0}
-      // bgcolor={'#fff'}
+        // bgcolor={'#fff'}
       >
-        <Stack maxWidth={isInImmersiveChat ? '768px' : 'initial'} p={1} width={'100%'} alignItems={'center'} justifyContent={'center'}>
+        <Stack
+          maxWidth={isInImmersiveChat ? '768px' : 'initial'}
+          p={1}
+          width={'100%'}
+          alignItems={'center'}
+          justifyContent={'center'}
+        >
           <Box
             sx={{ width: '100%' }}
             component={'div'}

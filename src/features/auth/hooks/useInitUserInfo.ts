@@ -1,9 +1,10 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import { useEffect, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
-import { AuthUserInfoState } from '@/features/auth/store'
+import { AuthUserInfoState, UserQuotaUsageState } from '@/features/auth/store'
+import { IUserQuotaUsageInfo } from '@/features/auth/types'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
@@ -15,13 +16,14 @@ import Log from '@/utils/Log'
 const port = new ContentScriptConnectionV2()
 const log = new Log('Features/Auth/UseChatGPTPlusChat')
 
-const userInitUserInfo = (isInit = true) => {
+const useInitUserInfo = (isInit = true) => {
   const [userInfo, setUserInfo] = useRecoilState(AuthUserInfoState)
+  const setUserQuotaUsageInfo = useSetRecoilState(UserQuotaUsageState)
   const { currentSidebarConversationMessages, currentSidebarConversationId } =
     useSidebarSettings()
   const needPushUpgradeMessage = useRef(false)
   const upgradeTextRef = useRef('')
-  const syncUserInfo = async () => {
+  const syncUserInfo = async (forceUpdate = false) => {
     try {
       setUserInfo((prevState) => {
         return {
@@ -31,7 +33,9 @@ const userInitUserInfo = (isInit = true) => {
       })
       const result = await port.postMessage({
         event: 'Client_getUseChatGPTUserInfo',
-        data: {},
+        data: {
+          forceUpdate,
+        },
       })
       if (result.success && result.data?.email) {
         setUserInfo({
@@ -101,10 +105,13 @@ const userInitUserInfo = (isInit = true) => {
               needPushUpgradeMessage.current = true
               if (newRole.name === 'elite') {
                 upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!'
+                  'You have successfully upgraded to MaxAI Elite.'
               } else if (newRole.name === 'pro') {
                 upgradeTextRef.current =
-                  'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!'
+                  'You have successfully upgraded to MaxAI Pro.'
+              } else if (newRole.name === 'basic') {
+                upgradeTextRef.current =
+                  'You have successfully upgraded to MaxAI Basic.'
               }
             }
             return {
@@ -130,6 +137,49 @@ const userInitUserInfo = (isInit = true) => {
       })
     }
   }
+
+  const syncUserQuotaUsageInfo = async () => {
+    try {
+      setUserQuotaUsageInfo((prevState) => {
+        return {
+          ...prevState,
+          loading: true,
+        }
+      })
+      const result = await port.postMessage({
+        event: 'Client_getMaxAIUserQuotaUsageInfo',
+        data: {
+          forceUpdate: true,
+        },
+      })
+      if (result && result.data) {
+        setUserQuotaUsageInfo({
+          loading: false,
+          ...(result.data as IUserQuotaUsageInfo),
+        })
+        return true
+      } else {
+        setUserQuotaUsageInfo((prevState) => {
+          return {
+            ...prevState,
+            updateAt: Date.now(),
+            loading: false,
+          }
+        })
+        return false
+      }
+    } catch (e) {
+      log.error(e)
+      setUserQuotaUsageInfo((prevState) => {
+        return {
+          ...prevState,
+          loading: false,
+        }
+      })
+      return false
+    }
+  }
+
   const isPushUpgradeMessageRef = useRef(false)
   useEffect(() => {
     if (
@@ -145,10 +195,9 @@ const userInitUserInfo = (isInit = true) => {
       !listReverseFind(
         currentSidebarConversationMessages,
         (message) =>
-          message.text ===
-            'You have successfully upgraded to MaxAI Elite. Enjoy unlimited usage!' ||
-          message.text ===
-            'You have successfully upgraded to MaxAI Pro. Enjoy enhanced productivity!',
+          message.text === 'You have successfully upgraded to MaxAI Elite.' ||
+          message.text === 'You have successfully upgraded to MaxAI Pro.' ||
+          message.text === 'You have successfully upgraded to MaxAI Basic.',
       )
     ) {
       clientChatConversationModifyChatMessages(
@@ -184,6 +233,7 @@ const userInitUserInfo = (isInit = true) => {
     userInfo,
     syncUserInfo,
     syncUserSubscriptionInfo,
+    syncUserQuotaUsageInfo,
   }
 }
-export default userInitUserInfo
+export default useInitUserInfo

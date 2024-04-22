@@ -9,12 +9,12 @@ import {
   AIProviderModelSelectorOption,
   ChatAIProviderModelSelectorOptions,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
+import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useRemoteAIProviderConfig from '@/features/chatgpt/hooks/useRemoteAIProviderConfig'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
 
-import AIProviderIcon from '../icons/AIProviderIcon'
 import AIProviderMainPartIcon from '../icons/AIProviderMainPartIcon'
 
 const ThirdPartyAIProviderRecommendations: FC = () => {
@@ -32,14 +32,16 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
       return !remoteAIProviderConfig.hiddenAIProviders.includes(
         model.AIProvider,
       )
-    }).map((model) => {
-      if (model.disabled !== true) {
-        model.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
-          model.AIProvider,
-        )
-      }
-      return model
     })
+      .filter((model) => !model.hidden)
+      .map((model) => {
+        if (model.disabled !== true) {
+          model.disabled = remoteAIProviderConfig.disabledAIProviders.includes(
+            model.AIProvider,
+          )
+        }
+        return model
+      })
   }, [remoteAIProviderConfig.hiddenAIProviders])
   const handleSelectRecommendationModel = async (
     AIProviderModelSelectorOption: AIProviderModelSelectorOption,
@@ -103,8 +105,8 @@ const ThirdPartyAIProviderRecommendations: FC = () => {
               variant="outlined"
               key={AIProviderModelSelectorOption.value}
               startIcon={
-                <AIProviderIcon
-                  aiProviderType={AIProviderModelSelectorOption.AIProvider}
+                <AIModelIcons
+                  aiModelValue={AIProviderModelSelectorOption.value}
                   size={24}
                 />
               }

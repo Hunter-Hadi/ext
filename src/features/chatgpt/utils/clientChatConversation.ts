@@ -1,11 +1,25 @@
 import { IChatConversation } from '@/background/src/chatConversations'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
+  IAIProviderModel,
   IAIResponseMessage,
   IChatMessage,
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
+import { IAIProviderType } from '@/background/provider/chat'
+import {
+  getChromeExtensionLocalStorage,
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
+import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
 
 /**
  * Client更新Conversation的信息
@@ -97,5 +111,92 @@ export const clientDuplicateChatConversation = async (
     return result.success ? result.data : null
   } catch (e) {
     return null
+  }
+}
+
+export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
+  currentAIProvider: IAIProviderType
+  currentModel: IAIProviderModel | null
+  currentModelValue: string
+  isThirdPartyProvider: boolean
+}> => {
+  const settings = await getChromeExtensionLocalStorage()
+  const currentAIProvider =
+    settings.sidebarSettings?.common?.currentAIProvider ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider
+  const currentModelValue =
+    settings.thirdProviderSettings?.[currentAIProvider]?.model ||
+    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel
+  let currentModel: IAIProviderModel | null = null
+  let isThirdPartyProvider = false
+  const findModelDetail = (models: IAIProviderModel[]) => {
+    currentModel =
+      models.find((model) => model.value === currentModelValue) || models[0]
+  }
+  switch (currentAIProvider) {
+    case 'MAXAI_GEMINI':
+      findModelDetail(MAXAI_GENMINI_MODELS)
+      isThirdPartyProvider = false
+      break
+    case 'MAXAI_CLAUDE':
+      findModelDetail(MAXAI_CLAUDE_MODELS)
+      isThirdPartyProvider = false
+      break
+    case 'USE_CHAT_GPT_PLUS':
+      findModelDetail(USE_CHAT_GPT_PLUS_MODELS)
+      isThirdPartyProvider = false
+      break
+    case 'CLAUDE':
+      findModelDetail(CLAUDE_MODELS)
+      isThirdPartyProvider = true
+      break
+    case 'BING':
+      findModelDetail(BING_MODELS)
+      isThirdPartyProvider = true
+      break
+    case 'BARD':
+      findModelDetail(BARD_MODELS)
+      isThirdPartyProvider = true
+      break
+    case 'OPENAI':
+      findModelDetail(
+        (settings.thirdProviderSettings?.OPENAI?.modelOptions || []).map(
+          (OpenAIModel) => {
+            return {
+              title: OpenAIModel.title,
+              value: OpenAIModel.slug,
+              titleTag:
+                OpenAIModel.tags?.find((tag) =>
+                  tag.toLowerCase().includes('beta'),
+                ) ||
+                OpenAIModel.tags?.find((tag) =>
+                  tag.toLowerCase().includes('mobile'),
+                ) ||
+                '',
+              maxTokens: OpenAIModel.max_tokens,
+              tags: OpenAIModel.tags || [],
+              description: (t) => '',
+            }
+          },
+        ),
+      )
+      isThirdPartyProvider = true
+      break
+    case 'OPENAI_API':
+      findModelDetail(OPENAI_API_MODELS)
+      isThirdPartyProvider = true
+      break
+    case 'POE':
+      findModelDetail(POE_MODELS)
+      isThirdPartyProvider = true
+      break
+    default:
+      findModelDetail(USE_CHAT_GPT_PLUS_MODELS)
+  }
+  return {
+    currentAIProvider,
+    currentModel,
+    currentModelValue,
+    isThirdPartyProvider,
   }
 }

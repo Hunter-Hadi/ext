@@ -1,6 +1,6 @@
-import { Divider } from '@mui/material'
 import Chip from '@mui/material/Chip'
 import ClickAwayListener from '@mui/material/ClickAwayListener'
+import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import TextField from '@mui/material/TextField'
@@ -18,7 +18,7 @@ import { useRecoilState } from 'recoil'
 import { IAIProviderType } from '@/background/provider/chat'
 import { PaginationConversation } from '@/background/src/chatConversations'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
-import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
+import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
@@ -102,23 +102,24 @@ const ConversationList: FC<IProps> = (props) => {
     return <></>
   }, [emptyFeedback])
 
-  const handleConversationRename = async (
-    conversation: PaginationConversation,
-  ) => {
-    setEditingConversationId('')
-    if (editingConversationName.current !== conversation.name) {
-      await clientUpdateChatConversation(
-        conversation.id,
-        {
-          name: editingConversationName.current,
-        },
-        false,
-      )
-      editingConversationName.current = ''
-      const conversations = await fetchPaginationConversations()
-      setPaginationConversations(conversations)
-    }
-  }
+  const handleConversationRename = useCallback(
+    async (conversation: PaginationConversation, index: number) => {
+      setEditingConversationId('')
+      if (editingConversationName.current !== conversation.name) {
+        await clientUpdateChatConversation(
+          conversation.id,
+          {
+            name: editingConversationName.current,
+          },
+          false,
+        )
+        editingConversationName.current = ''
+        const conversations = await fetchPaginationConversations()
+        setPaginationConversations(conversations)
+      }
+    },
+    [paginationConversations, editingConversationName.current],
+  )
 
   useEffect(() => {
     let destroy = false
@@ -254,19 +255,19 @@ const ConversationList: FC<IProps> = (props) => {
                 }}
                 spacing={2}
               >
-                <Stack
-                  width={'24px'}
-                  height={'24px'}
-                  alignItems={'center'}
-                  justifyContent={'center'}
-                >
-                  <AIProviderIcon
-                    size={24}
-                    aiProviderType={
-                      conversation!.AIProvider || 'USE_CHAT_GPT_PLUS'
-                    }
-                  />
-                </Stack>
+                {conversation.AIModel && (
+                  <Stack
+                    width={'24px'}
+                    height={'24px'}
+                    alignItems={'center'}
+                    justifyContent={'center'}
+                  >
+                    <AIModelIcons
+                      size={24}
+                      aiModelValue={conversation.AIModel}
+                    />
+                  </Stack>
+                )}
                 <Stack width={0} flex={1}>
                   <Stack
                     direction={'row'}
@@ -329,7 +330,7 @@ const ConversationList: FC<IProps> = (props) => {
                       <ClickAwayListener
                         mouseEvent={'onMouseDown'}
                         onClickAway={() =>
-                          handleConversationRename(conversation)
+                          handleConversationRename(conversation, index)
                         }
                       >
                         <TextField
@@ -347,7 +348,7 @@ const ConversationList: FC<IProps> = (props) => {
                           onKeyDownCapture={(event) => {
                             event.stopPropagation()
                             if (event.key === 'Enter') {
-                              handleConversationRename(conversation)
+                              handleConversationRename(conversation, index)
                             }
                           }}
                           onPaste={(event) => {

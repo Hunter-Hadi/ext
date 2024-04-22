@@ -6,6 +6,8 @@ import {
   SUMMARY__SLICED_TIMESTAMPED_SUMMARY__PROMPT_ID,
   SUMMARY__TIMESTAMPED_SUMMARY__PROMPT_ID,
 } from '@/constants'
+import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import clientAskMaxAIChatProvider from '@/features/chatgpt/utils/clientAskMaxAIChatProvider'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
@@ -64,6 +66,8 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
   errorMaxRequestOrder = 3 //接口异常情况请求最多次数记录
   viewLatestTranscriptData: TranscriptTimestampedParamType[] = []
   currentWebPageTitle = ''
+  isUsageLimit = false
+  // clientConversationEngine: IClientConversationEngine = null
   private currentMessageId?: string
   private transciptData: TranscriptResponse[] = []
   constructor(
@@ -80,7 +84,7 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      const { clientMessageChannelEngine } = engine
+      const { clientConversationEngine, clientMessageChannelEngine } = engine
       // TODO 需要重构,临时记录call-api
       if (clientMessageChannelEngine) {
         const recordContextMenuData =
@@ -182,6 +186,29 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           this.output = JSON.stringify([])
         }
       }
+      if (
+        this.isUsageLimit &&
+        clientConversationEngine &&
+        clientMessageChannelEngine
+      ) {
+        // 触达 用量上限向用户展示提示信息
+        await clientConversationEngine.pushPricingHookMessage(
+          'TOTAL_CHAT_DAILY_LIMIT',
+        )
+        // 记录日志
+        authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+
+        // 触发用量上限时 更新 user subscription info
+        await clientMessageChannelEngine.postMessage({
+          event: 'Client_updateUserSubscriptionInfo',
+          data: {},
+        })
+
+        await stopActionMessageStatus({ engine })
+
+        this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+        return
+      }
     } catch (e) {
       this.output = JSON.stringify([])
     }
@@ -256,7 +283,9 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           detectLanguageResult.data,
           index,
         ) //请求GPT返回json
-        if (this.isStopAction) return transcriptViewDataList
+        if (this.isStopAction || this.isUsageLimit) {
+          return transcriptViewDataList
+        }
         const endTime = Date.now() // 记录请求结束时间
         const requestDuration = endTime - startTime // 计算请求耗时
         if (transcriptList) {
@@ -385,9 +414,13 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           (id) => id !== currentAbortTaskId,
         )
         if (askData && askData.success && askData.data) {
-          //测试返回的tokens最多为213
+          // 测试返回的tokens最多为213
           // const gptReturnTokens = getTextTokens(askData.data || '').length
           // console.log('simply gpt return tokens', gptReturnTokens)
+          if (typeof askData.data !== 'string') {
+            // 如果返回的不是字符串，说明接口报错了，
+            throw new Error(askData.data.msg ?? 'jsonError')
+          }
           const transcriptData = this.getObjectFromString(askData.data)
           console.log('simply ok transcriptData', transcriptData)
           if (transcriptData) {
@@ -399,6 +432,11 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           throw new Error('requestError')
         }
       } catch (error: any) {
+        if (isPermissionCardSceneType(error.message)) {
+          // 如果是 付费卡点的报错，则不重试, 并且立刻停止
+          this.isUsageLimit = true
+          return false
+        }
         if (error.message === 'jsonError') {
           // 处理 jsonError
           retries++
@@ -744,6 +782,8 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
       ],
     )
   }
+
+  async updateSummaryYoutubeStatusToComplete() {}
 
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
     this.isStopAction = true

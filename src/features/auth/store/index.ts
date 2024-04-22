@@ -1,6 +1,6 @@
 import { atom } from 'recoil'
 
-import { IUseChatGPTUserInfo } from '@/features/auth/types'
+import { IUseChatGPTUserInfo, IUserQuotaUsageInfo } from '@/features/auth/types'
 
 export const AuthState = atom<{
   isLogin: boolean
@@ -19,5 +19,18 @@ export const AuthUserInfoState = atom<{
   default: {
     user: null,
     loading: false,
+  },
+})
+
+export const UserQuotaUsageState = atom<
+  IUserQuotaUsageInfo & { loading: boolean }
+>({
+  key: 'UserQuotaUsageState',
+  default: {
+    fastText: 0,
+    advancedText: 0,
+    imageGenerate: 0,
+    loading: false,
+    // nextRefreshTime: '',
   },
 })

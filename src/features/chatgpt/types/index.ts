@@ -229,6 +229,7 @@ export interface IAIProviderModel {
   value: string
   tags: string[]
   maxTokens: number
+  // modelCategory?: 'fastText' | 'advancedText' | 'imageGenerate'
   description: (t: TFunction<['common', 'client']>) => React.ReactNode
   poweredBy?: string
   disabled?: boolean

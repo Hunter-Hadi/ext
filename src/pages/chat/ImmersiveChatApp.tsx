@@ -14,6 +14,7 @@ import ConversationList from '@/features/chatgpt/components/ConversationList'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import SidebarPage from '@/pages/sidebar'
+import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
 
@@ -102,6 +103,7 @@ const App: FC = () => {
           </AppSuspenseLoadingLayout>
         </BrowserVersionDetector>
       </Stack>
+      <GlobalVideoPopup />
     </Box>
   )
 }

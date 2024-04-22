@@ -13,6 +13,8 @@ import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 import DevContent from '@/components/DevContent'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 
 const Test = () => {
   const { clientConversation } = useClientConversation()
@@ -24,6 +26,7 @@ const Test = () => {
 }
 
 const SidebarChatPanel = () => {
+  const { isFreeUser } = useUserInfo()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
@@ -31,6 +34,7 @@ const SidebarChatPanel = () => {
     clientWritingMessage,
     clientConversationMessages,
     resetConversation,
+    pushPricingHookMessage,
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading(500)
   const { startTextToImage } = useArtTextToImage()
@@ -55,6 +59,12 @@ const SidebarChatPanel = () => {
             await createSearchWithAI(question, true)
           } else if (currentSidebarConversationType === 'Art') {
             await startTextToImage(question)
+          } else if (
+            currentSidebarConversationType === 'Summary' &&
+            isFreeUser
+          ) {
+            await pushPricingHookMessage('PAGE_SUMMARY')
+            authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
           } else {
             await askAIQuestion({
               type: 'user',

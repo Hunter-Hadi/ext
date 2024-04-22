@@ -38,6 +38,24 @@ const CustomModal: FC<IProps> = ({
       {/* 添加 React.Fragment 为了解决 modal 内部元素 focus 无效的问题 */}
       {/* reference: https://stackoverflow.com/questions/53951479/react-material-ui-modal-causing-an-error-with-the-tabindex */}
       <>
+        {' '}
+        <Box sx={{ position: 'fixed', top: 16, left: 16 }}>
+          <IconButton
+            data-testid="maxai-custom-modal-close-btn"
+            onClick={() => {
+              onClose && onClose('closeBtn')
+            }}
+            sx={{
+              color: 'white',
+              bgcolor: '#616161',
+              '&:hover': {
+                bgcolor: '#7e7e7e',
+              },
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+        </Box>
         <Fade in={show}>
           <Paper
             id="mui-modal"
@@ -67,23 +85,6 @@ const CustomModal: FC<IProps> = ({
                 } as any),
             ]}
           >
-            <Box sx={{ position: 'fixed', top: 16, left: 16 }}>
-              <IconButton
-                data-testid="maxai-custom-modal-close-btn"
-                onClick={() => {
-                  onClose && onClose('closeBtn')
-                }}
-                sx={{
-                  color: 'white',
-                  bgcolor: '#616161',
-                  '&:hover': {
-                    bgcolor: '#7e7e7e',
-                  },
-                }}
-              >
-                <CloseIcon />
-              </IconButton>
-            </Box>
             {children}
           </Paper>
         </Fade>

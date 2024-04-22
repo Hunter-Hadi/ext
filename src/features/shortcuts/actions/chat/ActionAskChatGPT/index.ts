@@ -6,7 +6,10 @@ import {
   checkISThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import {
+  isPermissionCardSceneType,
+  isUsageLimitPermissionSceneType,
+} from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
 import {
@@ -18,7 +21,10 @@ import {
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isAIMessage } from '@/features/chatgpt/utils/chatMessageUtils'
 import { increaseChatGPTRequestCount } from '@/features/chatgpt/utils/chatRequestRecorder'
-import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import {
+  clientChatConversationModifyChatMessages,
+  clientGetCurrentClientAIProviderAndModel,
+} from '@/features/chatgpt/utils/clientChatConversation'
 import {
   IShortcutEngineExternalEngine,
   withLoadingDecorators,
@@ -235,7 +241,7 @@ export class ActionAskChatGPT extends Action {
         clientMessageChannelEngine &&
         shortcutsMessageChannelEngine
       ) {
-        // 判断是否触达dailyUsageLimited开始:
+        // 1. 记录 call api
         const fallbackId = {
           Chat: 'chat',
           Summary: 'summary_chat',
@@ -250,8 +256,12 @@ export class ActionAskChatGPT extends Action {
             contextMenu?.text || fallbackId
           }]-[${contextMenu?.id || fallbackId}]`,
         )
-        const { data: isDailyUsageLimit } =
-          await clientMessageChannelEngine.postMessage({
+        /**
+         * 前端不再依赖call_api来触发paywall付费卡点了
+         * call_api主要是用来做log记录的，让我们自己能看到、分析用户的使用情况
+         */
+        clientMessageChannelEngine
+          .postMessage({
             event: 'Client_logCallApiRequest',
             data: {
               name: contextMenu?.text || fallbackId,
@@ -259,19 +269,64 @@ export class ActionAskChatGPT extends Action {
               host: getCurrentDomainHost(),
             },
           })
-        if (isDailyUsageLimit) {
-          // 触达dailyUsageLimited，向用户展示提示信息
-          await clientConversationEngine.pushPricingHookMessage(
-            'TOTAL_CHAT_DAILY_LIMIT',
-          )
-          // 记录日志
-          authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
-          // 展示sidebar
-          showChatBox()
-          this.error = 'TOTAL_CHAT_DAILY_LIMIT'
-          return
+          .then()
+          .catch()
+        // const { data: isDailyUsageLimit } =
+        //   await clientMessageChannelEngine.postMessage({
+        //     event: 'Client_logCallApiRequest',
+        //     data: {
+        //       name: contextMenu?.text || fallbackId,
+        //       id: contextMenu?.id || fallbackId,
+        //       host: getCurrentDomainHost(),
+        //     },
+        //   })
+        // if (isDailyUsageLimit) {
+        //   // 触达dailyUsageLimited，向用户展示提示信息
+        //   await clientConversationEngine.pushPricingHookMessage(
+        //     'TOTAL_CHAT_DAILY_LIMIT',
+        //   )
+        //   // 记录日志
+        //   authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+        //   // 展示sidebar
+        //   showChatBox()
+        //   this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+        //   return
+        // }
+
+        // 2. 判断是否是第三方AI provider， 是的话需要判断是否已经达到每日使用上限
+        const { isThirdPartyProvider } =
+          await clientGetCurrentClientAIProviderAndModel()
+        if (isThirdPartyProvider) {
+          // 如果是第三方AI provider，需要判断是否已经达到每日使用上限
+          const { data: logThirdPartyResult } =
+            await clientMessageChannelEngine.postMessage({
+              event: 'Client_logThirdPartyDailyUsage',
+              data: {},
+            })
+
+          console.log(`logThirdPartyResult`, logThirdPartyResult)
+          if (logThirdPartyResult.hasReachedLimit) {
+            // 到达第三方provider的每日使用上限
+            // 触达 用量上限向用户展示提示信息
+            await clientConversationEngine.pushPricingHookMessage(
+              'TOTAL_CHAT_DAILY_LIMIT',
+            )
+            // 记录日志
+            authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+            // 展示sidebar
+            showChatBox()
+            // 触发用量上限时 更新 user subscription info
+            await clientMessageChannelEngine.postMessage({
+              event: 'Client_updateUserSubscriptionInfo',
+              data: {},
+            })
+
+            this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+            return
+          }
         }
-        // 插入用户消息
+
+        // 3. 插入用户消息
         if (
           askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN' &&
           askChatGPTType !== 'ASK_CHAT_GPT_HIDDEN_QUESTION'
@@ -283,7 +338,7 @@ export class ActionAskChatGPT extends Action {
             [this.question],
           )
         }
-        // 开始提问
+        // 4. 开始提问
         // 发消息之前记录总数
         await increaseChatGPTRequestCount('total')
         // 发消息之前记录prompt/chat
@@ -453,10 +508,28 @@ export class ActionAskChatGPT extends Action {
           }
 
           if (errorMessage) {
+            // 如果报错信息是 PermissionCardSceneType，说明触发了付费卡点
             if (isPermissionCardSceneType(errorMessage)) {
-              await clientConversationEngine.pushPricingHookMessage(
-                errorMessage,
-              )
+              const sceneType = errorMessage
+              const isUsageLimit = isUsageLimitPermissionSceneType(sceneType)
+              // 需要判断是否是 model 用量上限的卡点
+              if (isUsageLimit) {
+                // 触达 用量上限向用户展示提示信息
+                await clientConversationEngine.pushPricingHookMessage(sceneType)
+                // 记录日志
+                authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+                // 展示sidebar
+                showChatBox()
+                // 触发用量上限时 更新 user subscription info
+                await clientMessageChannelEngine.postMessage({
+                  event: 'Client_updateUserSubscriptionInfo',
+                  data: {},
+                })
+
+                this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+                return
+              }
+              await clientConversationEngine.pushPricingHookMessage(sceneType)
             } else {
               await clientConversationEngine.pushMessage(
                 {

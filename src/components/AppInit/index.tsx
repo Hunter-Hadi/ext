@@ -11,7 +11,7 @@ import {
 } from '@/components/AppInit/MaxAIPDFViewerInit'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
-import userInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
@@ -121,7 +121,7 @@ const AppInit = () => {
   useHideInHost()
   useClientMessageListenerForBackground()
   useAuthLogin()
-  userInitUserInfo()
+  useInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
   useInitRangy()

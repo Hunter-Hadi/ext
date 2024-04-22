@@ -1,3 +1,4 @@
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import CloseIcon from '@mui/icons-material/Close'
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
@@ -327,11 +328,15 @@ const FloatingContextMenuChatHistoryButton: FC<{
                       position="relative"
                     >
                       <IconButton onClick={handleCloseModal} size="small">
-                        <CloseIcon
-                          sx={{
-                            fontSize: '24px',
-                          }}
-                        />
+                        {selectedConversationId ? (
+                          <ArrowBackIcon />
+                        ) : (
+                          <CloseIcon
+                            sx={{
+                              fontSize: '24px',
+                            }}
+                          />
+                        )}
                       </IconButton>
                       <Typography
                         fontSize={16}
@@ -348,6 +353,10 @@ const FloatingContextMenuChatHistoryButton: FC<{
                         variant="icon"
                         sx={{
                           p: '5px',
+                          pointerEvents: selectedConversationId
+                            ? 'none'
+                            : 'auto',
+                          opacity: selectedConversationId ? 0 : 1,
                         }}
                         onDelete={async () => {
                           await createConversation('ContextMenu')

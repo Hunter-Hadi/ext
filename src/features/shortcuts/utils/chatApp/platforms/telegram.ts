@@ -6,6 +6,12 @@ import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const telegramUsernameMap = new Map<string, string>()
 
+// https://github.com/morethanwords/tweb/blob/53224468fe63fb2b024dc697a15f03679f11a93b/src/components/wrappers/messageForReply.ts#L114
+type ITelegramMediaType = 'Photo' | 'GIF' | 'Video' | 'Document'
+type ITelegramChatMessageData = IChatMessageData & {
+  mediaType?: ITelegramMediaType
+}
+
 const telegramGetDataFromQuotedMessage = (
   quotedMessage: HTMLElement | null,
 ) => {
@@ -105,20 +111,17 @@ const telegramGetMessageData = async (
             avatarBox.getAttribute('data-peer-id')!,
             username,
           )
-          // chatBox
-          //   ?.querySelector<HTMLElement>('button.sidebar-close-button')
-          //   ?.click()
-          // await wait(500)
         }
       }
     }
 
-    const messageData: IChatMessageData = {
+    const messageData: ITelegramChatMessageData = {
       user: username,
       datetime: '',
       content: '',
     }
 
+    // message content only contains sticker
     if (messageBox.matches('.sticker')) {
       messageData.extraLabel = `${username} sent a sticker`
       messageData.datetime =
@@ -137,53 +140,89 @@ const telegramGetMessageData = async (
         .querySelector<HTMLElement>('.message')
         ?.cloneNode(true) as HTMLElement
 
-      const timeInner = message?.querySelector('.time-inner')
-      messageData.datetime = timeInner?.getAttribute('title') || ''
-      timeInner?.parentElement?.remove()
+      if (message) {
+        const timeInner = message?.querySelector('.time-inner')
+        messageData.datetime = timeInner?.getAttribute('title') || ''
+        timeInner?.parentElement?.remove()
 
-      message.querySelector('reactions-element')?.remove()
+        message.querySelector('reactions-element')?.remove()
 
-      const replying = message?.querySelector<HTMLElement>('.reply')
-      const webpageQuote = message?.querySelector<HTMLElement>('.webpage-quote')
-      const mediaContainer = messageBox?.querySelector('.media-container')
-      const documentContainer = message?.querySelector('.document-container')
+        const replying = message?.querySelector<HTMLElement>('.reply')
+        const webpageQuote =
+          message?.querySelector<HTMLElement>('.webpage-quote')
+        const mediaContainer = messageBox?.querySelector('.media-container')
+        const documentContainer = message?.querySelector('.document-container')
 
-      // replying to quoted message
-      if (replying) {
-        const quotedMessage = telegramGetDataFromQuotedMessage(replying)
-        messageData.extraLabel = `${username} is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
-        replying.remove()
+        // replying to quoted message
+        if (replying) {
+          const quotedMessage = telegramGetDataFromQuotedMessage(replying)
+          messageData.extraLabel = `${username} is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
+          replying.remove()
+        }
+        // webpage quote
+        else if (webpageQuote) {
+          const webpage =
+            webpageQuote.querySelector<HTMLAnchorElement>('a.webpage-name')
+          const webpageTitle =
+            webpageQuote.querySelector<HTMLElement>('.webpage-title')
+              ?.innerText || ''
+          const webpageText =
+            webpageQuote.querySelector<HTMLElement>('.webpage-text')
+              ?.innerText || ''
+          messageData.extraLabel = `${username} sent a ${webpage?.innerText} webpage[${webpage?.href}]: ${webpageTitle}\n${webpageText}`
+          webpageQuote.remove()
+        }
+        // document
+        else if (documentContainer) {
+          const documentName =
+            documentContainer.querySelector('.document-name')?.textContent || ''
+          const documentMessage =
+            documentContainer.querySelector('.document-message')?.textContent ||
+            ''
+          messageData.mediaType = 'Document'
+          messageData.extraLabel = `${username} sent a document: ${documentName}[${documentContainer
+            .querySelector('[src]')
+            ?.getAttribute('src')}]`
+          messageData.content = `${documentName}${
+            documentMessage ? `, ${documentMessage}` : ''
+          }`
+          documentContainer.remove()
+        }
+        // media
+        else if (mediaContainer) {
+          const videoTime = mediaContainer.querySelector('.video-time')
+          if (videoTime) {
+            // Video
+            if (videoTime.querySelector('.video-time-icon')) {
+              messageData.mediaType = 'Video'
+            }
+            // GIF
+            else {
+              messageData.mediaType = 'GIF'
+            }
+          }
+          // Photo
+          else {
+            messageData.mediaType = 'Photo'
+          }
+
+          messageData.extraLabel = `${username} sent a ${
+            messageData.mediaType
+          }[${
+            mediaContainer.querySelector('[src]')?.getAttribute('src') || ''
+          }]`
+          messageData.content = messageData.mediaType
+        }
+
+        if (message.textContent!.length > 0) {
+          if (messageData.mediaType) {
+            messageData.content += ', '
+          }
+          messageData.content += message.textContent
+        }
+
+        message = null
       }
-      // webpage quote
-      else if (webpageQuote) {
-        const webpage =
-          webpageQuote.querySelector<HTMLAnchorElement>('a.webpage-name')
-        const webpageTitle =
-          webpageQuote.querySelector<HTMLElement>('.webpage-title')
-            ?.innerText || ''
-        const webpageText =
-          webpageQuote.querySelector<HTMLElement>('.webpage-text')?.innerText ||
-          ''
-        messageData.extraLabel = `${username} sent a webpage: ${webpage?.innerText}[${webpage?.href}]\n${webpageTitle}\n${webpageText}`
-        webpageQuote.remove()
-      }
-      // document
-      else if (documentContainer) {
-        messageData.extraLabel = `${username} sent a document: ${
-          documentContainer.querySelector('.document-name')?.textContent || ''
-        }[${documentContainer.querySelector('[src]')?.getAttribute('src')}]`
-        documentContainer.remove()
-      }
-      // media
-      else if (mediaContainer) {
-        messageData.extraLabel = `${username} sent media[${
-          mediaContainer.querySelector('[src]')?.getAttribute('src') || ''
-        }]`
-      }
-
-      messageData.content = message.textContent || ''
-
-      message = null
     }
 
     return messageData
@@ -208,7 +247,7 @@ const telegramGetChatMessagesFromNodeList = async (
     configs.chatroomName = `Chatting with ${chattingWith}`
   }
 
-  const messages: IChatMessageData[] = []
+  const messages: ITelegramChatMessageData[] = []
 
   // prevent the action of getting data from affecting the style and then being perceived by the user
   const currentChatBox = document.querySelector<HTMLElement>(
@@ -219,14 +258,14 @@ const telegramGetChatMessagesFromNodeList = async (
     'MAXAI__CHAT_BOX__SPEICIAL_STYLE',
   )
   const temporarySpecialStyle = document.createElement('style')
-  temporarySpecialStyle.innerHTML = `#bubble-contextmenu{display:none!important;}.chat-info .content,.chat-info:has(.content)+.chat-utils{opacity:1!important;}`
+  temporarySpecialStyle.innerHTML = `#bubble-contextmenu{display:none!important;}`
   // 如果一开始没有 topbarSearchContainer，就要添加样式使得其不可见
   let topbarSearchContainer = document.querySelector<HTMLElement>(
     '.topbar-search-container',
   )
   if (!topbarSearchContainer) {
     temporarySpecialStyle.innerHTML +=
-      '.topbar-search-container{opacity:0!important;}'
+      '.chat-info .content,.chat-info:has(.content)+.chat-utils{opacity:1!important;} .topbar-search-container{opacity:0!important;}'
   }
   document.getElementsByTagName('head')[0].appendChild(temporarySpecialStyle)
   for (const messageBox of messageBoxList) {
@@ -288,6 +327,9 @@ export const telegramGetChatMessages = async (
       '.settings-container.profile-container.active .sidebar-content .profile-content.is-me',
     ),
   )
+  let profileContainer = document.querySelector<HTMLElement>(
+    '.settings-container.profile-container.active',
+  )
   const temporarySpecialStyle: HTMLStyleElement =
     document.createElement('style')
   const activeTab = document.querySelector<HTMLElement>(
@@ -297,26 +339,62 @@ export const telegramGetChatMessages = async (
     const menuButton = document.querySelector<HTMLElement>(
       '.sidebar-header > .sidebar-header__btn-container button:not(.menu-open)',
     )
-    if (menuButton) {
-      activeTab?.classList.add('MAXAI__ACTIVE_TAB__SPEICIAL_STYLE')
-      temporarySpecialStyle.innerHTML = `.MAXAI__ACTIVE_TAB__SPEICIAL_STYLE{display:flex!important;transform:none!important;filter:none!important;} .sidebar-header>.sidebar-header__btn-container button>.btn-menu{display:none!important;} .settings-container.profile-container{display:none!important;}`
+    if (menuButton && activeTab) {
+      // add styles for not being perceived by the user
+      activeTab.classList.add('MAXAI__ACTIVE_TAB__SPEICIAL_STYLE')
+      temporarySpecialStyle.innerHTML = `.MAXAI__ACTIVE_TAB__SPEICIAL_STYLE{display:flex!important;transform:none!important;filter:none!important;} .sidebar-header>.sidebar-header__btn-container button>.btn-menu{display:none!important;} .settings-container.profile-container{display:none!important;transform:none!important;}`
       document
         .getElementsByTagName('head')[0]
         .appendChild(temporarySpecialStyle)
-      menuButton?.click()
-      await wait(500)
-      const jumpToSettingsButton = menuButton
-        ?.querySelectorAll<HTMLElement>('.btn-menu.was-open > .btn-menu-item')
-        .item(3)
-      if (jumpToSettingsButton) {
-        jumpToSettingsButton.click()
-        await wait(500)
-      }
+
+      await new Promise<void>((resolve) => {
+        let tryLimit = 0
+        let clickedJumpToSettings = false
+        // 用 MutationObserver 来检测 Menu 打开 -> 点击 Settings 跳转到 Settings 页面
+        const observer = new MutationObserver(() => {
+          tryLimit++
+          if (tryLimit === 20) {
+            observer.disconnect()
+            resolve()
+          }
+
+          if (clickedJumpToSettings) {
+            profileContainer = document.querySelector<HTMLElement>(
+              '.settings-container.profile-container.active',
+            )
+            if (profileContainer) {
+              observer.disconnect()
+              resolve()
+            }
+          } else {
+            const jumpToSettingsButton = menuButton
+              ?.querySelectorAll<HTMLElement>(
+                '.btn-menu.was-open > .btn-menu-item',
+              )
+              .item(3)
+            if (jumpToSettingsButton) {
+              jumpToSettingsButton.click()
+              clickedJumpToSettings = true
+            }
+          }
+        })
+        observer.observe(
+          document.querySelector(
+            '#column-left > .tabs-container',
+          ) as HTMLElement,
+          {
+            childList: true,
+            subtree: true,
+          },
+        )
+        menuButton?.click()
+        setTimeout(() => {
+          observer.disconnect()
+          resolve()
+        }, 2000)
+      })
     }
   }
-  const profileContainer = document.querySelector<HTMLElement>(
-    '.settings-container.profile-container.active',
-  )
   if (profileContainer) {
     configs.username =
       profileContainer.querySelector<HTMLElement>(
@@ -379,19 +457,24 @@ export const telegramGetChatMessages = async (
               }
               return isSameSticker
             } else if (quotedMessage.media) {
-              // 因为无法判断是文件还是图片，而且 full 和 thumb 的资源地址可能也不一样
-              // 所以只要是 media 类型，就资源地址和内容都比较一下
-              const quotedMediaMessageContent = quotedMessage.content.replace(
-                /^.+, /,
-                '',
-              )
-              if (quotedMessage.content.length > 100) {
-                quotedMediaMessageContent.replace(/\.\.\.$/, '')
+              // 因为无法判断 reply media 的类型，而且 full img 和 thumb img 的资源地址可能也不一样
+              if (message.mediaType === 'Document') {
+                // Document 的 thumb img 资源地址可能是一样的，所以比较 extraLabel 就可以
+                return message.extraLabel?.endsWith(quotedMessage.extraLabel!)
+              } else {
+                // Photo, GIF, Video 只能通过尝试比对资源地址和 message text 内容
+                const quotedMediaMessageContent = quotedMessage.content
+                const omitted = quotedMessage.content.length > 100
+                if (omitted) {
+                  quotedMediaMessageContent.replace(/\.\.\.$/, '')
+                }
+                return (
+                  message.extraLabel?.endsWith(quotedMessage.extraLabel!) ||
+                  (omitted
+                    ? message.content.startsWith(quotedMediaMessageContent)
+                    : message.content === quotedMediaMessageContent)
+                )
               }
-              return (
-                message.extraLabel?.endsWith(quotedMessage.extraLabel!) ||
-                message.content.startsWith(quotedMediaMessageContent)
-              )
             } else {
               // 100 text limit is from tweb(https://github.com/morethanwords/tweb/blob/b6486ad81d7523284affd4900bcd2663da079e4e/src/components/wrappers/messageForReply.ts#L275)
               return quotedMessage.content.length > 100

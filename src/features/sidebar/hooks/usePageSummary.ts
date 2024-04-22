@@ -32,7 +32,8 @@ const usePageSummary = () => {
   const { updateSidebarSettings, updateSidebarSummaryConversationId } =
     useSidebarSettings()
   const updateConversationMap = useSetRecoilState(ClientConversationMapState)
-  const { updateClientConversationLoading } = useClientConversation()
+  const { clientWritingMessage, updateClientConversationLoading } =
+    useClientConversation()
   const [currentPageSummaryKey, setCurrentPageSummaryKey] = useRecoilState(
     SidebarPageSummaryNavKeyState,
   )
@@ -41,8 +42,9 @@ const usePageSummary = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage } = useClientConversation()
   const isGeneratingPageSummaryRef = useRef(false)
-
   const lastMessageIdRef = useRef('')
+  const clientWritingMessageRef = useRef(clientWritingMessage)
+  clientWritingMessageRef.current = clientWritingMessage
 
   const createPageSummary = async () => {
     if (isGeneratingPageSummaryRef.current) {
@@ -53,6 +55,9 @@ const usePageSummary = () => {
     console.log('simply createPageSummary')
     const pageSummaryConversationId = getPageSummaryConversationId()
     updateSidebarSummaryConversationId(pageSummaryConversationId)
+
+    const writingLoading = clientWritingMessageRef.current.loading
+
     updateClientConversationLoading(true)
     if (pageSummaryConversationId) {
       // 看看有没有已经存在的conversation
@@ -70,6 +75,17 @@ const usePageSummary = () => {
         const aiMessage = pageSummaryConversation.messages?.find((message) =>
           isAIMessage(message),
         ) as IAIResponseMessage
+        if (writingLoading) {
+          updateClientConversationLoading(false)
+          updateConversationMap((prevState) => {
+            return {
+              ...prevState,
+              [pageSummaryConversation.id]: pageSummaryConversation,
+            }
+          })
+          isGeneratingPageSummaryRef.current = false
+          return
+        }
         if (
           aiMessage &&
           aiMessage?.originalMessage &&

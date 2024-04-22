@@ -5,7 +5,6 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import SidebarTabIcons from '@/features/sidebar/components/SidebarTabs/SidebarTabIcons'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
@@ -64,11 +63,8 @@ const SidebarTabs: FC = () => {
   const { t } = useTranslation(['common', 'client'])
   const { isDarkMode } = useCustomTheme()
 
-  const {
-    currentSidebarConversationType,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
-  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const { currentSidebarConversationType, updateSidebarConversationType } =
+    useSidebarSettings()
 
   // 在 immersive chat 页面, 有特殊的渲染逻辑
   const isInImmersiveChatPage = useMemo(() => isMaxAIImmersiveChatPage(), [])
@@ -109,7 +105,8 @@ const SidebarTabs: FC = () => {
     >
       {memoSidebarTabsData.map((item) => {
         const isActive = currentSidebarConversationType === item.value
-        const disabled = smoothConversationLoading
+        // context window分离后允许各个tab之间切换
+        const disabled = false // smoothConversationLoading
         const bgcolor = isActive
           ? isDarkMode
             ? 'rgba(44, 44, 44, 1)'

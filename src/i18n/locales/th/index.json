@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ใช่, กู้คืน",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ยกเลิก",
     "immersive_chat__chat_history__restore_modal__toast1__title": "กู้คืน 1 บทสนทนา",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "กู้คืน {{CONVERSATION_COUNT}} บทสนทนา"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "กู้คืน {{CONVERSATION_COUNT}} บทสนทนา",
+    "immersive_chat__delete_all_context_menu__button__title": "ลบเมนูบริบททั้งหมด",
+    "immersive_chat__delete_all_context_menu__title": "ล้างประวัติเมนูบริบทของคุณ - แน่ใจหรือไม่?",
+    "context_window__chat_history__button__title": "ประวัติเมนูบริบท",
+    "context_window__chat_history__empty__title": "ยังไม่มีประวัติเมนูบริบทที่ใช้ได้",
+    "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "เป็นมิตร",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ตรงไปตรงมา",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "มั่นใจ",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "สบายๆ"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "สบายๆ",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ดำเนินการต่อในแชท"
   },
   "prompt_editor": {
     "preset_variables__title": "ความสามารถ",

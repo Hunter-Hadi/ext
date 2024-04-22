@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "כן, שחזר",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "ביטול",
     "immersive_chat__chat_history__restore_modal__toast1__title": "שיחה אחת שוחזרה",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} שיחות שוחזרו"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} שיחות שוחזרו",
+    "immersive_chat__delete_all_context_menu__button__title": "מחק את כל תפריטי ההקשר",
+    "immersive_chat__delete_all_context_menu__title": "נקה את ההיסטוריה של תפריטי ההקשר - האם אתה בטוח?",
+    "context_window__chat_history__button__title": "היסטוריית תפריטי ההקשר",
+    "context_window__chat_history__empty__title": "אין עדיין היסטוריית תפריטי ההקשר זמינה",
+    "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "ידידותי",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ישר וברור",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "בטוח",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "פשוט"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "פשוט",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "המשך בצ'אט"
   },
   "prompt_editor": {
     "preset_variables__title": "יכולות",

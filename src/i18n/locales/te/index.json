@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "అవును, పునఃస్థాపించండి",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "రద్దు చేయండి",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 సంభాషణ పునరుద్ధరించబడింది",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} సంభాషణలు పునరుద్ధరించబడింది"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} సంభాషణలు పునరుద్ధరించబడింది",
+    "immersive_chat__delete_all_context_menu__button__title": "అన్ని కంటెక్స్ట్ మెనూలను తొలగించు",
+    "immersive_chat__delete_all_context_menu__title": "మీ కంటెక్స్ట్ మెనూల చరిత్రను తొలగించాలని మీరు ఖచ్చితంగా ఉంచారా?",
+    "context_window__chat_history__button__title": "కంటెక్స్ట్ మెనూ చరిత్ర",
+    "context_window__chat_history__empty__title": "ఇంకా ఏ కంటెక్స్ట్ మెనూ చరిత్ర లేదు",
+    "context_window__chat_history__continue_in_chat__title": "చాట్‌లో కొనసాగించు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "స్నేహితుడు",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "స్పష్టవాది",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ఆత్మవిశ్వాసం",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "క్యాజ్యువల్"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "క్యాజ్యువల్",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "చాట్‌లో కొనసాగించు"
   },
   "prompt_editor": {
     "preset_variables__title": "సామర్థ్యాలు",

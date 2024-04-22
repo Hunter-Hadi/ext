@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "جی ہاں، بحال کریں",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "منسوخ کریں",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 گفتگو بحال",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} گفتگو بحال"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} گفتگو بحال",
+    "immersive_chat__delete_all_context_menu__button__title": "تمام مواضع کے مینوز کو حذف کریں",
+    "immersive_chat__delete_all_context_menu__title": "آپ کے مواضع کے مینوز کی تاریخ صاف کریں - کیا آپ مطمئن ہیں؟",
+    "context_window__chat_history__button__title": "مواضع کے مینوز کی تاریخ",
+    "context_window__chat_history__empty__title": "ابھی تک کوئی مواضع کے مینوز کی تاریخ دستیاب نہیں ہے",
+    "context_window__chat_history__continue_in_chat__title": "چیٹ میں جاری رکھیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "دوستانہ",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "سیدھا سادہ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "پر اعتماد",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیر رسمی"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیر رسمی",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "چیٹ میں جاری رکھیں"
   },
   "prompt_editor": {
     "preset_variables__title": "صلاحیتوں",

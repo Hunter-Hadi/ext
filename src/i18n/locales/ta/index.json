@@ -687,7 +687,14 @@
     "immersive_chat__chat_history__restore_modal__title": "அனைத்து உங்கள் உரைகளையும், தேடல்களையும், கலை வரலாற்றையும் உள்ளீட்டின் பதிப்பிற்கு மீட்டமைக்க விரும்புகிறீர்களா? முன்னர் முடிக்கப்பட்டால், நடவடிக்கை மீண்டும் செய்ய முடியாது.",
     "immersive_chat__chat_history__restore_modal__description": "மீட்டமைப்பு பின்னர் உரைகள், தேடல்கள் மற்றும் கலை மாற்றங்கள்:",
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "ஆமாம், மீட்டமை",
-    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ரத்து செய்"
+    "immersive_chat__chat_history__restore_modal__cancel_button__title": "ரத்து செய்",
+    "immersive_chat__delete_all_context_menu__button__title": "அனைத்து சூழல் மெனுகளையும் நீக்கு",
+    "immersive_chat__delete_all_context_menu__title": "உங்கள் சூழல் மெனுகள் வரலாற்றை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
+    "immersive_chat__chat_history__restore_modal__toast1__title": "1 உரையாடல் மீட்டமைக்கப்பட்டது",
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} உரையாடல்கள் மீட்டமைக்கப்பட்டன",
+    "context_window__chat_history__button__title": "சூழல் மெனு வரலாறு",
+    "context_window__chat_history__empty__title": "இன்னும் சூழல் மெனு வரலாறு இல்லை",
+    "context_window__chat_history__continue_in_chat__title": "உரையில் தொடர்க"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",
@@ -891,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "நட்பாடுகள்",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "திரும்ப சொல்லுக",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ஆதரவாளர்",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "மாற்றமான"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "மாற்றமான",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "உரையில் தொடர்க"
   },
   "prompt_editor": {
     "preset_variables__title": "திறன்கள்",

@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "예, 복원",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "취소",
     "immersive_chat__chat_history__restore_modal__toast1__title": "복원된 대화 1개",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}개의 대화 복원됨"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}개의 대화 복원됨",
+    "immersive_chat__delete_all_context_menu__button__title": "모든 컨텍스트 메뉴 삭제",
+    "immersive_chat__delete_all_context_menu__title": "컨텍스트 메뉴 기록 모두 지우기 - 확실합니까?",
+    "context_window__chat_history__button__title": "컨텍스트 메뉴 기록",
+    "context_window__chat_history__empty__title": "아직 사용 가능한 컨텍스트 메뉴 기록이 없습니다",
+    "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "친근한",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "직설적인",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "자신감 있는",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "캐주얼한"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "캐주얼한",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "채팅에서 계속하기"
   },
   "prompt_editor": {
     "preset_variables__title": "기능",

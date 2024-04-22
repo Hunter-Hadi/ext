@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "はい、復元",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "キャンセル",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1つの会話が復元されました",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}個の会話が復元されました"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}}個の会話が復元されました",
+    "immersive_chat__delete_all_context_menu__button__title": "すべてのコンテキストメニューを削除",
+    "immersive_chat__delete_all_context_menu__title": "コンテキストメニューの履歴をクリアしますか？",
+    "context_window__chat_history__button__title": "コンテキストメニューの履歴",
+    "context_window__chat_history__empty__title": "まだ利用可能なコンテキストメニューの履歴はありません",
+    "context_window__chat_history__continue_in_chat__title": "チャットで続ける"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "フレンドリー",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "わかりやすい",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "自信あり",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "カジュアル"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "カジュアル",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "チャットで続ける"
   },
   "prompt_editor": {
     "preset_variables__title": "機能",

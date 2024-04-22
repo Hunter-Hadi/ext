@@ -686,7 +686,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Այո, վերականգնել",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Չեղարկել",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 համապատասխանեցում վերականգնվել է",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} համապատասխանեցումներ վերականգնվել են"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} համապատասխանեցումներ վերականգնվել են",
+    "immersive_chat__delete_all_context_menu__button__title": "Ջնջել բոլոր համերգային ընտրանքները",
+    "immersive_chat__delete_all_context_menu__title": "Մաքրեք ձեր համերգային ընտրանքների պատմությունը - վստահ եք?",
+    "context_window__chat_history__button__title": "Համերգային ընտրանքների պատմություն",
+    "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
+    "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",
@@ -890,7 +895,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Ընկերապես",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Գունապահ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Համբարձումային",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Անհատական"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Անհատական",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Շարունակեք խոսքի մեջ"
   },
   "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
   "name": "MaxAI.me: Օգտագործեք 1-Սեղմումով AI Բարելավելությունը",

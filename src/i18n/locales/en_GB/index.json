@@ -582,10 +582,12 @@
     "immersive_chat__delete_all_summary__button__title": "Delete all summaries",
     "immersive_chat__delete_all_search__button__title": "Delete all searches",
     "immersive_chat__delete_all_art__button__title": "Delete all arts",
+    "immersive_chat__delete_all_context_menu__button__title": "Delete all context menus",
     "immersive_chat__delete_all_chat__title": "Clear your chat history - are you sure?",
     "immersive_chat__delete_all_summary__title": "Clear your summary history - are you sure?",
     "immersive_chat__delete_all_search__title": "Clear your search history - are you sure?",
     "immersive_chat__delete_all_art__title": "Clear your art history - are you sure?",
+    "immersive_chat__delete_all_context_menu__title": "Clear your context menus history - are you sure?",
     "immersive_chat__delete_all_chat__button__delete__title": "Confirm deletion",
     "immersive_chat__delete_all_chat__button__cancel__title": "Cancel",
     "immersive_chat__delete_chat__button__title": "Delete chat",
@@ -689,7 +691,10 @@
     "sidebar__summary__nav__youtube_summary__transcript__current__advertising": "Please wait until the video ad finishes playing and then try again.",
     "sidebar__summary__nav__youtube_summary__tooltip__timestamped": "Timestamped summary",
     "sidebar__summary__nav__youtube_summary__not_have__transcript": "Unable to generate video without subtitles.",
-    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later."
+    "sidebar__summary__nav__youtube_summary__transcript_timestamped_error": "Oops! Something unexpected happened. Please try again later.",
+    "context_window__chat_history__button__title": "Context menu history",
+    "context_window__chat_history__empty__title": "No context menu history available yet",
+    "context_window__chat_history__continue_in_chat__title": "Continue in chat"
   },
   "prompt_editor": {
     "template__error__title": "Template is required",
@@ -999,6 +1004,7 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Friendly",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Straightforward",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Confident",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Casual"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Casual",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continue in chat"
   }
 }

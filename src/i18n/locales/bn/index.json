@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "হ্যাঁ, পুনরুদ্ধার করুন",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "বাতিল",
     "immersive_chat__chat_history__restore_modal__toast1__title": "1 কথোপকথন পুনরুদ্ধার করা হয়েছে",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} কথোপকথন পুনরুদ্ধার করা হয়েছে"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "{{CONVERSATION_COUNT}} কথোপকথন পুনরুদ্ধার করা হয়েছে",
+    "immersive_chat__delete_all_context_menu__button__title": "সমস্ত সংদর্শন মেনু মুছুন",
+    "immersive_chat__delete_all_context_menu__title": "আপনার সংদর্শন মেনু ইতিহাস পরিষ্কার করুন - আপনি কি নিশ্চিত?",
+    "context_window__chat_history__button__title": "সংদর্শন মেনু ইতিহাস",
+    "context_window__chat_history__empty__title": "এখনও কোন সংদর্শন মেনু ইতিহাস উপলব্ধ নেই",
+    "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "বন্ধুত্বপূর্ণ",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "সরাসরি",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "নিশ্চিত",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "অসম্ভ্রান্ত"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "অসম্ভ্রান্ত",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "চ্যাটে অবতরণ করুন"
   },
   "prompt_editor": {
     "preset_variables__title": "ক্ষমতা",

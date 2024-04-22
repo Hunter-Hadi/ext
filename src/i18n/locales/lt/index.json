@@ -689,7 +689,12 @@
     "immersive_chat__chat_history__restore_modal__confirm_button__title": "Taip, atkurti",
     "immersive_chat__chat_history__restore_modal__cancel_button__title": "Atšaukti",
     "immersive_chat__chat_history__restore_modal__toast1__title": "Atkurtas 1 pokalbis",
-    "immersive_chat__chat_history__restore_modal__toast2__title": "Atkurti {{CONVERSATION_COUNT}} pokalbiai"
+    "immersive_chat__chat_history__restore_modal__toast2__title": "Atkurti {{CONVERSATION_COUNT}} pokalbiai",
+    "immersive_chat__delete_all_context_menu__button__title": "Ištrinti visus kontekstinius meniu",
+    "immersive_chat__delete_all_context_menu__title": "Išvalyti kontekstinių meniu istoriją - ar tikrai?",
+    "context_window__chat_history__button__title": "Kontekstinio meniu istorija",
+    "context_window__chat_history__empty__title": "Dar nėra prieinama kontekstinio meniu istorija",
+    "context_window__chat_history__continue_in_chat__title": "Tęsti pokalbį"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",
@@ -893,7 +898,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Draugiškas",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Aiškus",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Pasitikintis",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Neformalus"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Neformalus",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Tęsti pokalbį"
   },
   "prompt_editor": {
     "preset_variables__title": "Galiai",

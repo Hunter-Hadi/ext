@@ -617,6 +617,7 @@
     "input_assistant_button__compose_new__tooltip": "Quick compose",
     "input_assistant_button__compose_reply__tooltip": "Instant reply",
     "input_assistant_button__refine_draft__tooltip": "Edit or review draft",
+    "instant_reply_button__explicit__display_text": "Instant reply",
     "youtube_summary_button__text": "Summarize",
     "social_media_summary_button__text": "Summarize",
     "immersive_chat__more_actions_button__title": "More",

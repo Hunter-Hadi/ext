@@ -11,6 +11,10 @@ import {
   slackGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/slack'
 import {
+  telegramGetChatMessages,
+  telegramGetDraftContent,
+} from '@/features/shortcuts/utils/chatApp/platforms/telegram'
+import {
   whatsAppGetChatMessages,
   whatsAppGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/whatsApp'
@@ -37,6 +41,9 @@ export const getChatMessagesContent = async (
     if (host === 'web.whatsapp.com') {
       return await whatsAppGetChatMessages(inputAssistantButton)
     }
+    if (host === 'web.telegram.org') {
+      return await telegramGetChatMessages(inputAssistantButton)
+    }
   }
   return ChatMessagesContext.emptyData
 }
@@ -58,6 +65,9 @@ export const getChatMessageDraftContent = async (
     }
     if (host === 'web.whatsapp.com') {
       return await whatsAppGetDraftContent(inputAssistantButton)
+    }
+    if (host === 'web.telegram.org') {
+      return await telegramGetDraftContent(inputAssistantButton)
     }
   }
   return ''

@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
-import { atomFamily, useRecoilState } from 'recoil'
+import { useEffect, useMemo, useRef } from 'react'
+import { atomFamily, useRecoilState, useSetRecoilState } from 'recoil'
 
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage, IUserChatMessage } from '@/features/chatgpt/types'
@@ -8,38 +8,78 @@ import {
   isSystemMessageByStatus,
   isUserMessage,
 } from '@/features/chatgpt/utils/chatMessageUtils'
+
 /**
  * AI持续生成的草稿和用户选择的答案
  * @description - 因为AI的regenerate会删除消息，所以需要一个历史消息记录去让用户选择需要的AI response
  */
-const FloatingContextMenuDraftActiveIndexState = atomFamily<number, string>({
-  key: 'FloatingContextMenuDraftActiveIndexState',
-  default: 0,
+const FloatingContextMenuDraftHistoryState = atomFamily<
+  { activeIndex: number; historyMessages: IAIResponseMessage[] },
+  string
+>({
+  key: 'FloatingContextMenuDraftHistoryState',
+  default: {
+    activeIndex: 0,
+    historyMessages: [],
+  },
 })
+
+/**
+ * 原先的historyMessages是每次调用useFloatingContextMenuDraft会创建一个新的state
+ * 导致了在多处使用useFloatingContextMenuDraft的时候historyMessages都是不同的
+ * useEffect里依赖history去更新activeMessageIndex，某些组件在重新mount的时候更新导致activeMessageIndex修改异常
+ *
+ * 这里拆出监听消息变化的函数
+ */
+const useFloatingContextMenuDraftHistoryChange = () => {
+  const { clientConversationMessages, currentConversationId } =
+    useClientConversation()
+  const setHistoryState = useSetRecoilState(
+    FloatingContextMenuDraftHistoryState(currentConversationId || ''),
+  )
+  useEffect(() => {
+    const newMessages = clientConversationMessages.filter(
+      (item) => isAIMessage(item) || isSystemMessageByStatus(item, 'error'),
+    ) as IAIResponseMessage[]
+    console.log('clientConversationMessages', clientConversationMessages)
+    setHistoryState((prev) => {
+      // 找得到messageId的更新，找不到的添加
+      const newMessagesMap = newMessages.reduce((messageMap, message) => {
+        messageMap[message.messageId] = message
+        return messageMap
+      }, {} as Record<string, IAIResponseMessage>)
+      const oldHistory = prev.historyMessages.map((message) => {
+        if (newMessagesMap[message.messageId]) {
+          return newMessagesMap[message.messageId]
+        }
+        return message
+      })
+      const newHistory = newMessages.filter(
+        (message) =>
+          !oldHistory.find(
+            (oldMessage) => oldMessage.messageId === message.messageId,
+          ),
+      )
+      const newHistoryMessages = [...oldHistory, ...newHistory]
+      return {
+        ...prev,
+        activeIndex: newHistoryMessages.length - 1,
+        historyMessages: newHistoryMessages,
+      }
+    })
+  }, [clientConversationMessages])
+}
+
 const useFloatingContextMenuDraft = () => {
   const {
     clientWritingMessage,
     clientConversationMessages,
     currentConversationId,
   } = useClientConversation()
-  const [activeMessageIndex, setActiveMessageIndex] = useRecoilState(
-    FloatingContextMenuDraftActiveIndexState(currentConversationId || ''),
+  const [historyState, setHistoryState] = useRecoilState(
+    FloatingContextMenuDraftHistoryState(currentConversationId || ''),
   )
-  const [historyMessages, setHistoryMessages] = useState<IAIResponseMessage[]>(
-    [],
-  )
-
-  /**
-   * 原先的historyMessages是每次调用这个hook会创建一个新的state
-   * 导致了在多处使用useFloatingContextMenuDraft的时候historyMessages都是不同的
-   * useEffect里依赖history去更新activeMessageIndex，每个hook里都会做处理导致activeMessageIndex修改异常
-   * 看下是改成以下这样，还是说context menu的history应该放在recoil里
-   */
-  // const historyMessages = useMemo(() => {
-  //   return clientConversationMessages.filter(
-  //     (item) => isAIMessage(item) || isSystemMessageByStatus(item, 'error'),
-  //   ) as IAIResponseMessage[]
-  // }, [clientConversationMessages])
+  const { activeIndex: activeMessageIndex, historyMessages } = historyState
 
   const activeAIResponseMessage = historyMessages[activeMessageIndex]
   useEffect(() => {
@@ -75,6 +115,7 @@ const useFloatingContextMenuDraft = () => {
     }
     return draft.replace(/\n{2,}/, '\n\n')
   }, [clientWritingMessage.writingMessage, historyMessages, activeMessageIndex])
+
   /**
    * 当前的draft对应的用户消息
    */
@@ -103,64 +144,27 @@ const useFloatingContextMenuDraft = () => {
     }
     return null
   }, [activeAIResponseMessage, clientConversationMessages])
+
   const goToNextMessage = () => {
-    setActiveMessageIndex((prev) => {
-      return prev + 1
-    })
+    setHistoryState((prev) => ({
+      ...prev,
+      activeIndex: prev.activeIndex + 1,
+    }))
   }
+
   const goToPreviousMessage = () => {
-    setActiveMessageIndex((prev) => {
-      return prev - 1
-    })
+    setHistoryState((prev) => ({
+      ...prev,
+      activeIndex: prev.activeIndex - 1,
+    }))
   }
 
   const resetFloatingContextMenuDraft = () => {
-    setHistoryMessages([])
-    setActiveMessageIndex(0)
-  }
-
-  useEffect(() => {
-    const newMessages = clientConversationMessages.filter(
-      (item) => isAIMessage(item) || isSystemMessageByStatus(item, 'error'),
-    ) as IAIResponseMessage[]
-    console.log('clientConversationMessages', clientConversationMessages)
-    setHistoryMessages((prev) => {
-      // 找得到messageId的更新，找不到的添加
-      const newMessagesMap = newMessages.reduce((messageMap, message) => {
-        messageMap[message.messageId] = message
-        return messageMap
-      }, {} as Record<string, IAIResponseMessage>)
-      const oldHistory = prev.map((message) => {
-        if (newMessagesMap[message.messageId]) {
-          return newMessagesMap[message.messageId]
-        }
-        return message
-      })
-      const newHistory = newMessages.filter(
-        (message) =>
-          !oldHistory.find(
-            (oldMessage) => oldMessage.messageId === message.messageId,
-          ),
-      )
-      return [...oldHistory, ...newHistory]
+    setHistoryState({
+      historyMessages: [],
+      activeIndex: 0,
     })
-  }, [clientConversationMessages])
-
-  useEffect(() => {
-    if (historyMessages.length === 0) {
-      return
-    }
-    console.log(
-      'clientConversationMessages historyMessages',
-      historyMessages.length,
-      historyMessages,
-    )
-    setActiveMessageIndex(historyMessages.length - 1)
-  }, [historyMessages])
-
-  useEffect(() => {
-    resetFloatingContextMenuDraft()
-  }, [currentConversationId])
+  }
 
   return {
     floatingContextMenuDraftMessageIdRef,
@@ -175,3 +179,4 @@ const useFloatingContextMenuDraft = () => {
   }
 }
 export default useFloatingContextMenuDraft
+export { useFloatingContextMenuDraftHistoryChange }

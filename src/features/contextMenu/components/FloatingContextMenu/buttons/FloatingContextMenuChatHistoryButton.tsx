@@ -25,12 +25,10 @@ import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientDuplicateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
 import { useFloatingContextMenu } from '@/features/contextMenu'
 import SidebarChatBoxMessageItem from '@/features/sidebar/components/SidebarChatBox/SidebarChatBoxMessageItem'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -38,12 +36,12 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
   conversationId?: string
   onDuplicateConversation?: (conversationId: string) => void
 }> = (props) => {
-  const { hideFloatingContextMenu } = useFloatingContextMenu()
   const { conversationId, onDuplicateConversation } = props
   const [conversation, setConversation] = useState<IChatConversation | null>(
     null,
   )
-  const { updateSidebarSettings } = useSidebarSettings()
+  const { t } = useTranslation(['client'])
+  const { continueConversationInSidebar } = useSidebarSettings()
   const ref = useRef<HTMLDivElement>(null)
   const [loading, setLoading] = useState(false)
   useEffect(() => {
@@ -124,24 +122,17 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
           variant={'contained'}
           color={'primary'}
           onClick={async () => {
-            await clientDuplicateChatConversation(
+            await continueConversationInSidebar(
               conversationId,
               {
                 type: 'Chat',
               },
               true,
             )
-            await updateSidebarSettings({
-              chat: {
-                conversationId,
-              },
-            })
-            showChatBox()
             onDuplicateConversation?.(conversationId)
-            hideFloatingContextMenu()
           }}
         >
-          {'Continue in Chat'}
+          {t('client:context_window__chat_history__continue_in_chat__title')}
         </Button>
       </Stack>
     </AppLoadingLayout>

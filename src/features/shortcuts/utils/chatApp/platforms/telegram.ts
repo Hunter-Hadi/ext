@@ -41,7 +41,7 @@ const telegramGetDataFromQuotedMessage = (
     const subtitle = quotedMessage.querySelector<HTMLElement>('.reply-subtitle')
     if (mediaSticker) {
       messageData.sticker = true
-      messageData.extraLabel = `${messageData.user} sent a sticker`
+      messageData.extraLabel = `this message sent a sticker`
     } else if (mediaContainer) {
       messageData.media = true
       messageData.extraLabel = `[${mediaContainer
@@ -123,7 +123,7 @@ const telegramGetMessageData = async (
 
     // message content only contains sticker
     if (messageBox.matches('.sticker')) {
-      messageData.extraLabel = `${username} sent a sticker`
+      messageData.extraLabel = `this message sent a sticker`
       messageData.datetime =
         messageBox
           .querySelector<HTMLElement>('.message .time-inner')
@@ -156,7 +156,7 @@ const telegramGetMessageData = async (
         // replying to quoted message
         if (replying) {
           const quotedMessage = telegramGetDataFromQuotedMessage(replying)
-          messageData.extraLabel = `${username} is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
+          messageData.extraLabel = `this message is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
           replying.remove()
         }
         // webpage quote
@@ -169,7 +169,7 @@ const telegramGetMessageData = async (
           const webpageText =
             webpageQuote.querySelector<HTMLElement>('.webpage-text')
               ?.innerText || ''
-          messageData.extraLabel = `${username} sent a ${webpage?.innerText} webpage[${webpage?.href}]: ${webpageTitle}\n${webpageText}`
+          messageData.extraLabel = `this message sent a ${webpage?.innerText} webpage[${webpage?.href}]: ${webpageTitle}\n${webpageText}`
           webpageQuote.remove()
         }
         // document
@@ -180,7 +180,7 @@ const telegramGetMessageData = async (
             documentContainer.querySelector('.document-message')?.textContent ||
             ''
           messageData.mediaType = 'Document'
-          messageData.extraLabel = `${username} sent a document: ${documentName}[${documentContainer
+          messageData.extraLabel = `this message sent a document: ${documentName}[${documentContainer
             .querySelector('[src]')
             ?.getAttribute('src')}]`
           messageData.content = `${documentName}${
@@ -206,7 +206,7 @@ const telegramGetMessageData = async (
             messageData.mediaType = 'Photo'
           }
 
-          messageData.extraLabel = `${username} sent a ${
+          messageData.extraLabel = `this message sent a ${
             messageData.mediaType
           }[${
             mediaContainer.querySelector('[src]')?.getAttribute('src') || ''

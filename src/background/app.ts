@@ -678,20 +678,26 @@ const initExternalMessageListener = () => {
 }
 
 const initChromeExtensionTabUrlChangeListener = () => {
-  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    pdfSnifferStartListener(tabId, changeInfo, tab)
-    // 页面的url变化后，要触发页面的特殊网页的element更新
-    if (tab.active && tab.id && tab.url) {
-      backgroundSendClientMessage(
-        tab.id,
-        'Client_updateSidebarChatBoxStyle',
-        {},
-      )
-        .then()
-        .catch()
-      backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
-        .then()
-        .catch()
-    }
-  })
+  Browser.tabs.onUpdated.addListener(
+    (tabId, changeInfo, tab) => {
+      pdfSnifferStartListener(tabId, changeInfo, tab)
+      // 页面的url变化后，要触发页面的特殊网页的element更新
+      if (tab.active && tab.id && tab.url) {
+        console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
+        backgroundSendClientMessage(
+          tab.id,
+          'Client_updateSidebarChatBoxStyle',
+          {},
+        )
+          .then()
+          .catch()
+        backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
+          .then()
+          .catch()
+      }
+    },
+    {
+      properties: ['url'],
+    },
+  )
 }

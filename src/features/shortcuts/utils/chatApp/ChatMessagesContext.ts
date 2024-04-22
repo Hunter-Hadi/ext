@@ -100,8 +100,8 @@ export default class ChatMessagesContext {
 **Chatroom Name:** ${chatroomName || 'N/A'}
 **My Username:** ${username || 'N/A'}
 
-==================
-${chatMessageListData.map((message) => message.text).join('\n\n')}
+======
+${chatMessageListData.map((message) => message.text).join('\n===\n')}
 `
 
     return {

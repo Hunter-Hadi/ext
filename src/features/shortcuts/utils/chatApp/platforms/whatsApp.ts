@@ -1,12 +1,22 @@
 import ChatMessagesContext, {
-  IChatMessageData,
+  type IChatMessageData,
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import {
   findParentEqualSelector,
   findSelectorParent,
 } from '@/utils/dataHelper/elementHelper'
 
+type IWhatsAppAttachmentType = 'Photo' | 'GIF' | 'Video' | 'Poll' | 'Document'
+type IWhatsAppChatMessageData = IChatMessageData & {
+  attachmentType?: IWhatsAppAttachmentType
+  attachmentURL?: string
+}
+
 const getDatetimeAndUserRegExp = /^\[(.*?)\] (.*?): $/
+const getBackgroundImageURLRegExp = [
+  /url\("?'?.*"?'?\)/g,
+  /"|'|url|\(|\)/g,
+] as const
 
 const whatsAppGetDataFromQuotedMessage = (
   quotedMessage: HTMLElement | null,
@@ -33,10 +43,18 @@ const whatsAppGetDataFromQuotedMessage = (
   return { user, content }
 }
 
-const whatsAppGetMessageData = (
+const whatsAppGetMessageData = async (
   messageBox: HTMLElement,
   myUsername: string,
 ) => {
+  debugger
+
+  const messageData: IWhatsAppChatMessageData = {
+    user: '',
+    datetime: '',
+    content: '',
+  }
+
   const message = messageBox.querySelector<HTMLElement>('[data-pre-plain-text]')
 
   if (message) {
@@ -47,33 +65,89 @@ const whatsAppGetMessageData = (
     if (match) {
       const [, datetime, username] = match
 
-      const messageData: IChatMessageData = {
-        user: username,
-        datetime,
-        content:
-          message.querySelector<HTMLElement>('.copyable-text')?.innerText || '',
-      }
-
-      const quotedMention =
-        message.querySelector<HTMLElement>('.quoted-mention')
-
-      if (quotedMention) {
-        const quotedMessage = whatsAppGetDataFromQuotedMessage(
-          findParentEqualSelector('[aria-label]', quotedMention.parentElement!),
-        )
-        messageData.extraLabel = `this message is replying to ${
-          quotedMessage.user || myUsername
-        }'s message: ${quotedMessage.content}`
-      }
+      messageData.user = username
+      messageData.datetime = datetime
+      messageData.content =
+        message.querySelector<HTMLElement>('.copyable-text')?.innerText || ''
 
       return messageData
     }
+  } else {
+    // // Document
+    // const documentIcon = message.querySelector<HTMLElement>(
+    //   '[class*="icon-doc-"]',
+    // )
+    // // Document
+    // if (documentIcon) {
+    //   messageData.attachmentType = 'Document'
+    //   messageData.extraLabel = `this message sent a document`
+    //   // maybe the document has thumb img
+    //   if (attachImage) {
+    //   }
+    // }
+  }
+
+  const attachImage = Array.from(
+    messageBox.querySelectorAll<HTMLElement>(
+      'img[src], [style*="background-image"]',
+    ),
+  ).at(-1)
+  const viewVotesButton = messageBox.querySelector<HTMLElement>(
+    'button[role="button"][tabindex][title="View votes"]',
+  )
+
+  // Photo | GIF | Video
+  if (attachImage) {
+    let attachImageURL = ''
+    if (attachImage?.matches('img[src]')) {
+      attachImageURL = attachImage.getAttribute('src') || ''
+    } else {
+      attachImageURL =
+        attachImage.style.backgroundImage
+          .match(getBackgroundImageURLRegExp[0])?.[0]
+          .replace(getBackgroundImageURLRegExp[1], '') || ''
+    }
+    if (attachImageURL) {
+      messageData.attachmentType = 'Photo'
+      if (messageBox.querySelector('[data-icon="video-pip"]')) {
+        messageData.attachmentType = 'Video'
+      } else if (messageBox.querySelector('[data-icon="media-gif"]')) {
+        messageData.attachmentType = 'GIF'
+      }
+      messageData.extraLabel = `this message sent a ${messageData.attachmentType}`
+      messageData.attachmentURL = attachImageURL
+      if (!messageData.content) {
+        messageData.content = String(messageData.attachmentType)
+      }
+    }
+  }
+  // Poll
+  else if (viewVotesButton) {
+    messageData.attachmentType = 'Poll'
+    messageData.extraLabel = `this message started a ${
+      findParentEqualSelector('[aria-label]', viewVotesButton, 4)?.getAttribute(
+        'aria-label',
+      ) || 'poll'
+    }`
+  }
+
+  const quotedMention = messageBox.querySelector<HTMLElement>('.quoted-mention')
+  if (quotedMention) {
+    const quotedMessage = whatsAppGetDataFromQuotedMessage(
+      findParentEqualSelector('[aria-label]', quotedMention.parentElement!),
+    )
+    if (messageData.extraLabel) {
+      messageData.extraLabel += '\n'
+    }
+    messageData.extraLabel += `this message is replying to ${
+      quotedMessage.user || myUsername
+    }'s message: ${quotedMessage.content}`
   }
 
   return null
 }
 
-const whatsAppGetChatMessagesFromNodeList = (
+const whatsAppGetChatMessagesFromNodeList = async (
   messageBoxList: HTMLElement[],
   configs: {
     serverName: string
@@ -81,15 +155,18 @@ const whatsAppGetChatMessagesFromNodeList = (
     username: string
   },
 ) => {
-  const messages: IChatMessageData[] = []
+  const messages: IWhatsAppChatMessageData[] = []
 
   for (const messageBox of messageBoxList) {
-    const messageData = whatsAppGetMessageData(messageBox, configs.username)
+    const messageData = await whatsAppGetMessageData(
+      messageBox,
+      configs.username,
+    )
 
     if (messageData) {
       if (
         !configs.username &&
-        messageBox.getAttribute('data-id')?.includes('true') // if includes 'true', it means this message was sent by `me`
+        messageBox.classList.contains('message-out') // if contains 'message-out', it means this message was sent by `me`
       ) {
         configs.username = messageData.user
         configs.serverName = `${messageData.user} in WhatsApp`
@@ -106,7 +183,10 @@ const whatsAppGetChatMessagesFromNodeList = (
   return messages
 }
 
-export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
+export const whatsAppGetChatMessages = async (
+  inputAssistantButton: HTMLElement,
+) => {
+  debugger
   const chatroomName =
     document.querySelector<HTMLElement>(
       '#main header > [title] + [role="button"] [aria-label]:not([title])',
@@ -124,12 +204,13 @@ export const whatsAppGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
   const chatMessagesNodeList = Array.from(
     chatMessagesPanel?.querySelectorAll<HTMLElement>(
-      '[role="row"] > [data-id]:has(> [class*="message"])',
+      // '[role="row"] > [data-id]:has(> [class*="message"]), [role="row"] > [data-id][class*="message"]',
+      '[role="row"] > [data-id] > [class*="message-"]',
     ) || [],
-  ).filter((node) => Boolean(node.querySelector('[data-pre-plain-text]')))
+  )
 
   if (chatMessagesNodeList.length) {
-    const chatMessages = whatsAppGetChatMessagesFromNodeList(
+    const chatMessages = await whatsAppGetChatMessagesFromNodeList(
       chatMessagesNodeList,
       configs,
     )

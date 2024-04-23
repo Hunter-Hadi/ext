@@ -111,6 +111,9 @@ const LanguageSelect: FC<LanguageSelectProps> = (props) => {
           setValue(newValue)
           onChange(newValue.value)
         }}
+        onKeyDown={(event) => {
+          event.stopPropagation()
+        }}
         filterOptions={filterOptions}
         renderInput={(params) => (
           <TextField

@@ -97,7 +97,7 @@ const ClearAllChatButton: FC<IProps> = (props) => {
               </Typography>
             </Stack>
           </Button>
-          <ClearAllChatButtonMoreActions />
+          <ClearAllChatButtonMoreActions disablePortal={isContextWindow} />
         </Box>
       )}
 

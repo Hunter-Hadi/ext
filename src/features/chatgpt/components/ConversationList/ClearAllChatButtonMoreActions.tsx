@@ -16,7 +16,9 @@ import { clientGetUserAllConversations } from '@/features/chatgpt/utils/chatConv
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import globalSnackbar from '@/utils/globalSnackbar'
 
-const ClearAllChatButtonMoreActions: FC = () => {
+const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
+  disablePortal,
+}) => {
   const { fetchPaginationConversations, setPaginationConversations } =
     usePaginationConversations()
   const { t } = useTranslation(['common', 'client'])
@@ -61,7 +63,7 @@ const ClearAllChatButtonMoreActions: FC = () => {
         tooltipTitle={t('common:more')}
       />
       <Modal
-        disablePortal
+        disablePortal={disablePortal}
         open={open}
         onClose={(e: React.MouseEvent) => {
           e.stopPropagation()

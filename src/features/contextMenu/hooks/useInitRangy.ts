@@ -578,9 +578,11 @@ const useInitRangy = () => {
               z-index: -1;
             `
             textarea.value = lastOutputRef.current
+            textarea.oncopy = event => event.stopPropagation()
             document.body.appendChild(textarea)
             textarea.select()
             document.execCommand('copy', false, '')
+            textarea.oncopy = null
             textarea.remove()
           } catch (e) {
             console.error(e)

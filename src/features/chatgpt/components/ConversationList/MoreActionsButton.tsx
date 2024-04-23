@@ -187,7 +187,7 @@ const MoreActionsButton: FC<{
       </MaxAIMenu>
 
       <Modal
-        disablePortal
+        disablePortal={isContextWindow}
         open={deleteModalOpen}
         onClose={(e: MouseEvent) => {
           e.stopPropagation()

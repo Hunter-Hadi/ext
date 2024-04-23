@@ -236,11 +236,15 @@ const whatsAppGetMessageData = async (
       )
       if (messageData.extraLabel) {
         messageData.extraLabel += '\n'
+      } else {
+        messageData.extraLabel = ''
       }
       messageData.extraLabel += `this message is replying to ${
         quotedMessage.user || configs.username
       }'s message: ${quotedMessage.content}`
     }
+
+    debugger
 
     return messageData
   } catch (err) {

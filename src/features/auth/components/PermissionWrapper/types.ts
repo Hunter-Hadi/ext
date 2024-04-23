@@ -6,10 +6,10 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
-  'TOTAL_CHAT_DAILY_LIMIT',
+  'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
   'MAXAI_FAST_TEXT_MODEL',
   'MAXAI_ADVANCED_MODEL',
-  'MAXAI_IMAGE_MODEL',
+  'MAXAI_IMAGE_GENERATE_MODEL',
   'CUSTOM_PROMPT',
   'PREFERRED_LANGUAGE',
   'PAGE_SUMMARY',
@@ -117,8 +117,8 @@ export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
   const API_RESPONSE_USAGE_LIMIT_SCENE_TYPES = [
     'MAXAI_ADVANCED_MODEL',
     'MAXAI_FAST_TEXT_MODEL',
-    'MAXAI_IMAGE_MODEL',
-    'TOTAL_CHAT_DAILY_LIMIT',
+    'MAXAI_IMAGE_GENERATE_MODEL',
+    'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
   ]
   if (API_RESPONSE_USAGE_LIMIT_SCENE_TYPES.includes(sceneType)) {
     // 由于 不同模型的用量上限卡点的报错值 是后端直接返回的
@@ -145,7 +145,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperI18nCardType
 } = {
   // 不同模型用量上限的 pricing hook
-  TOTAL_CHAT_DAILY_LIMIT: {
+  THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT: {
     // imageUrl: `${getChromeExtensionAssetsURL(
     //   '/images/upgrade/unlimited-ai-requests.png',
     // )}`,
@@ -184,7 +184,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
-  MAXAI_IMAGE_MODEL: {
+  MAXAI_IMAGE_GENERATE_MODEL: {
     // imageUrl: `${getChromeExtensionAssetsURL(
     //   '/images/upgrade/unlimited-ai-requests.png',
     // )}`,

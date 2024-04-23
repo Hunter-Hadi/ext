@@ -60,6 +60,12 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     return t('client:permission__pricing_hook__button__upgrade_now')
   }, [permissionCardMap, permissionSceneType, t])
 
+  const ctaButtonClick = () => {
+    if (chatSystemMessageType === 'needUpgrade' && permissionSceneType) {
+      authEmitPricingHooksLog('click', permissionSceneType)
+    }
+  }
+
   useEffect(() => {
     // 付费卡点如果对不符合当前角色的用户展示，则发送 lark bot 通知
     // 由于目前的 pricing 内容是 只要是 付费用户（basic、pro、elite）都可以使用所有功能、只有 不同模型 使用量的限制
@@ -93,23 +99,25 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
 
   // TODO: 临时方案 手动对 卡点进行分类，后续需要优化掉，删除弃用的卡点
 
-  // 普通模型卡点
-  if (permissionSceneType === 'MAXAI_FAST_TEXT_MODEL') {
-    return <FastModelCard />
+  // 普通模型卡点 / 第三方 provider 用量 卡点
+  if (
+    permissionSceneType === 'MAXAI_FAST_TEXT_MODEL' ||
+    permissionSceneType === 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT'
+  ) {
+    return <FastModelCard ctaButtonClick={ctaButtonClick} />
   }
 
   // 高级模型卡点
   if (permissionSceneType === 'MAXAI_ADVANCED_MODEL') {
-    return <AdvancedModelCard />
+    return <AdvancedModelCard ctaButtonClick={ctaButtonClick} />
   }
 
   // 图像模型卡点
   if (
     permissionSceneType === 'SIDEBAR_ART_AND_IMAGES' ||
-    permissionSceneType === 'MAXAI_IMAGE_MODEL' ||
-    permissionSceneType === 'TOTAL_CHAT_DAILY_LIMIT'
+    permissionSceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
   ) {
-    return <ImageModelCard />
+    return <ImageModelCard ctaButtonClick={ctaButtonClick} />
   }
 
   // instant reply 卡点 start
@@ -148,6 +156,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     return (
       <InstantReplyCard
         videoUrl={`https://www.youtube.com/embed/fwaqJyTwefI`}
+        ctaButtonClick={ctaButtonClick}
       />
     )
   }
@@ -158,6 +167,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     return (
       <AISummaryAndAskCard
         videoUrl={`https://www.youtube.com/embed/72UM1jMaJhY`}
+        ctaButtonClick={ctaButtonClick}
       />
     )
   }
@@ -165,7 +175,10 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   // ai search 卡点
   if (permissionSceneType === 'SIDEBAR_SEARCH_WITH_AI') {
     return (
-      <AISearchCard videoUrl={`https://www.youtube.com/embed/1uZuyqqySO0`} />
+      <AISearchCard
+        videoUrl={`https://www.youtube.com/embed/1uZuyqqySO0`}
+        ctaButtonClick={ctaButtonClick}
+      />
     )
   }
 

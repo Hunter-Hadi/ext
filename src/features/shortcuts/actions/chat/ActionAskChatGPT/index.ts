@@ -254,11 +254,6 @@ export class ActionAskChatGPT extends Action {
         if (AIOutputLanguage && MaxAIPromptActionConfig) {
           MaxAIPromptActionConfig.variables.forEach((variable) => {
             if (variable.VariableName === 'AI_RESPONSE_LANGUAGE') {
-              // 如果开启了自定义AI response language，那么就不需要检测语言或者使用用户设置的语言
-              if (isEnableAIResponseLanguage) {
-                variable.defaultValue = ''
-                return
-              }
               variable.defaultValue = AIOutputLanguage
             }
           })
@@ -281,6 +276,15 @@ export class ActionAskChatGPT extends Action {
               this.question.text += '\n\n' + additionalText
             }
           }
+        }
+      } else {
+        if (MaxAIPromptActionConfig) {
+          // 如果开启了自定义AI response language，那么就不需要检测语言或者使用用户设置的语言
+          MaxAIPromptActionConfig.variables.forEach((variable) => {
+            if (variable.VariableName === 'AI_RESPONSE_LANGUAGE') {
+              variable.defaultValue = ''
+            }
+          })
         }
       }
       // 如果用的是contextMenu，则直接使用contextMenu的名字

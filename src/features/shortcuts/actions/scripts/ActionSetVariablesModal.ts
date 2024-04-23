@@ -42,10 +42,36 @@ export class ActionSetVariablesModal extends Action {
         this.error = 'No config!'
         return
       }
+      const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
+      const MaxAIPromptActionConfig =
+        cloneConfig.MaxAIPromptActionConfig ||
+        this.parameters.MaxAIPromptActionConfig
+      if (MaxAIPromptActionConfig) {
+        if (MaxAIPromptActionConfig.promptId) {
+          cloneConfig.contextMenuId = MaxAIPromptActionConfig.promptId
+        }
+        if (MaxAIPromptActionConfig.promptName) {
+          cloneConfig.title = MaxAIPromptActionConfig.promptName
+        }
+        if (MaxAIPromptActionConfig.variables.length > 0) {
+          cloneConfig.variables = []
+          cloneConfig.systemVariables = []
+          MaxAIPromptActionConfig.variables.forEach((variable) => {
+            if (variable.systemVariable) {
+              cloneConfig.systemVariables.push(variable)
+            } else {
+              cloneConfig.variables.push(variable)
+            }
+          })
+        }
+        cloneConfig.MaxAIPromptActionConfig = MaxAIPromptActionConfig
+      }
+      if (!cloneConfig.modelKey) {
+        cloneConfig.modelKey = 'Sidebar'
+      }
       // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
       let needUserInput = false
       const shortCutsVariables = engine.shortcutsEngine?.getVariablesValue()
-      const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
       cloneConfig.variables.map((variable) => {
         if (
           variable.defaultValue &&
@@ -91,7 +117,7 @@ export class ActionSetVariablesModal extends Action {
         }
         return variable
       })
-      if (config.modelKey === 'Sidebar' && needUserInput) {
+      if (cloneConfig.modelKey === 'Sidebar' && needUserInput) {
         showChatBox()
         const root = getMaxAISidebarRootElement()
         root &&
@@ -103,7 +129,7 @@ export class ActionSetVariablesModal extends Action {
           ))
       }
       cloneConfig.template =
-        config.template || this.parameters?.compliedTemplate || ''
+        cloneConfig.template || this.parameters?.compliedTemplate || ''
       const result: ActionSetVariablesConfirmData =
         await OneShotCommunicator.send(
           'SetVariablesModal',

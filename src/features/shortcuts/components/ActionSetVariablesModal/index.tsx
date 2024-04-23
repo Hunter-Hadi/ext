@@ -32,9 +32,10 @@ import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
+import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 
 export interface ActionSetVariablesModalConfig {
-  modelKey: 'Sidebar' | 'FloatingContextMenu'
+  modelKey?: 'Sidebar' | 'FloatingContextMenu'
   variables: IActionSetVariable[]
   systemVariables: IActionSetVariable[]
   title: string
@@ -49,6 +50,7 @@ export interface ActionSetVariablesModalConfig {
   answerInsertMessageId?: string
   // askAI时额外的字段
   askChatGPTActionParameters?: ActionParameters
+  MaxAIPromptActionConfig?: MaxAIPromptActionConfig
 }
 export interface ActionSetVariablesConfirmData {
   data: {
@@ -188,7 +190,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     setShow(false)
     onClose?.()
     const runActions: ISetActionsType = []
-    if (config?.template) {
+    if (config?.template || config?.MaxAIPromptActionConfig) {
       const template = getValues()?.TEMPLATE || config?.template || ''
       const variableDetailMap: Record<string, IActionSetVariable> = {
         ...config?.variables?.reduce((prev, current) => {
@@ -207,6 +209,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       const shortcutsVariables: Record<string, IShortCutsParameter> = {}
       Object.keys(presetVariables).forEach((key) => {
         const variableDetail = variableDetailMap[key]
+        if (variableDetail.hidden) {
+          return
+        }
         if (variableDetail) {
           shortcutsVariables[key] = {
             key,
@@ -267,6 +272,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 },
               },
             },
+            MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
             ...currentParameters,
           },
         })
@@ -283,6 +289,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
                 outputMessageId: insertMessageId,
               },
             },
+            MaxAIPromptActionConfig: config.MaxAIPromptActionConfig,
             ...currentParameters,
           },
         })
@@ -322,10 +329,13 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       // 再添加用户自定义的变量
       .concat(currentVariables)
       .forEach((variable) => {
-        if (variable.valueType === 'Select' && !variable.hidden) {
+        if (variable.hidden) {
+          return
+        }
+        if (variable.valueType === 'Select') {
           selectTypeVariables.push(variable)
         }
-        if (variable.valueType === 'Text' && !variable.hidden) {
+        if (variable.valueType === 'Text') {
           textTypeVariables.push(variable)
           if (
             Object.prototype.hasOwnProperty.call(
@@ -497,6 +507,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     }
   }, [show, hide])
   if (!show || hide || Object.keys(form).length === 0) {
+    console.log(
+      'ActionSetVariablesModal not show or hide or form is empty',
+      show,
+      hide,
+      form,
+    )
     return null
   }
   return (
@@ -523,12 +539,12 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       onKeyPress={(event) => {
         event.stopPropagation()
       }}
-    // onKeyUpCapture={(event) => {
-    //   event.stopPropagation()
-    // }}
-    // onKeyUp={(event) => {
-    //   event.stopPropagation()
-    // }}
+      // onKeyUpCapture={(event) => {
+      //   event.stopPropagation()
+      // }}
+      // onKeyUp={(event) => {
+      //   event.stopPropagation()
+      // }}
     >
       {/*Header*/}
       <Stack
@@ -632,7 +648,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         {currentModalConfig.textTypeVariables.map((textTypeVariable, index) => {
           const width =
             (currentBreakpoint === 'lg' || currentBreakpoint === 'xl') &&
-              currentModalConfig.textTypeVariables.length > 1
+            currentModalConfig.textTypeVariables.length > 1
               ? 'calc(50% - 8px)'
               : '100%'
           const minHeight = currentModalConfig.minTextareaMaxRows * 23 + 17

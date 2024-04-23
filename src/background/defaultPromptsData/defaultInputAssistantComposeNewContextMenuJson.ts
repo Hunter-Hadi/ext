@@ -14,18 +14,10 @@ export default [
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
-              title: 'Compose with key points',
-              modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at composing all types of emails in an appropriate manner. Your task is to write a new email.
-
-Make the email clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email content.
-
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email like a real person would. 
-
-Now, write a new email, mentioning these points:
-{{KEY_POINTS}}`,
+            MaxAIPromptActionConfig: {
+              promptId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
+              promptName: 'Compose with key points',
+              promptActionType: 'chat_complete',
               variables: [
                 {
                   label: 'Key points',
@@ -33,30 +25,41 @@ Now, write a new email, mentioning these points:
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-              ],
-              systemVariables: [
                 {
+                  label: 'AI Response language',
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'AI Response language',
                 },
                 {
+                  label: 'Tone',
                   VariableName: 'AI_RESPONSE_TONE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Tone',
                 },
                 {
+                  label: 'Writing style',
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Writing style',
                 },
               ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'Text',
+                },
+              ],
+            },
+            SetVariablesModalConfig: {
+              contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
+              title: 'Compose with key points',
+              variables: [],
+              systemVariables: [],
             },
           },
         },
@@ -104,49 +107,59 @@ Now, write a new email, mentioning these points:
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: 'd833ef67-36fb-4228-8e04-4b6d7583a341',
-              title: 'Compose with key points',
-              modelKey: 'Sidebar',
-              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}} posting, adept at composing all types of {{CURRENT_WEBSITE_DOMAIN}} posts in an appropriate manner. Your task is to write a new post on {{CURRENT_WEBSITE_DOMAIN}}.
-
-Ensure that the post is in line with the widely observed length, style, inclusion or omission of emojis and hashtags, and format of the highest performing post on {{CURRENT_WEBSITE_DOMAIN}}.
-
-Write the post like a real person would. 
-
-Now, write a {{CURRENT_WEBSITE_DOMAIN}} post, mentioning these points:
-{{KEY_POINTS}}`,
+            MaxAIPromptActionConfig: {
+              promptId: '1cc8f601-27ac-474f-a70c-20ed1177711a',
+              promptName: 'Compose with key points',
+              promptActionType: 'chat_complete',
               variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
+                },
                 {
                   label: 'Key points',
                   VariableName: 'KEY_POINTS',
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-              ],
-              systemVariables: [
                 {
+                  label: 'AI Response language',
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'AI Response language',
                 },
                 {
+                  label: 'Tone',
                   VariableName: 'AI_RESPONSE_TONE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Tone',
                 },
                 {
+                  label: 'Writing style',
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Writing style',
                 },
               ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'Text',
+                },
+              ],
+            },
+            SetVariablesModalConfig: {
+              contextMenuId: '1cc8f601-27ac-474f-a70c-20ed1177711a',
+              title: 'Compose with key points',
+              variables: [],
+              systemVariables: [],
             },
           },
         },

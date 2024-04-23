@@ -5,6 +5,7 @@ import { wait } from '@/utils'
 import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const telegramUsernameMap = new Map<string, string>()
+const settingsButtonIcon = ''
 
 // https://github.com/morethanwords/tweb/blob/53224468fe63fb2b024dc697a15f03679f11a93b/src/components/wrappers/messageForReply.ts#L114
 type ITelegramMediaType = 'Photo' | 'GIF' | 'Video' | 'Document'
@@ -84,6 +85,7 @@ const telegramGetMessageData = async (
           // To get the message sender's username, should perform the following actions implicitly and not being perceived by the user
           // right click avatar -> open contextmenu -> click `Search` -> get the username -> click close button
           if (!username) {
+            debugger
             avatarBox.dispatchEvent(
               new MouseEvent('contextmenu', {
                 bubbles: true,
@@ -374,11 +376,11 @@ export const telegramGetChatMessages = async (
               resolve()
             }
           } else {
-            const jumpToSettingsButton = menuButton
-              ?.querySelectorAll<HTMLElement>(
-                '.btn-menu.was-open > .btn-menu-item',
-              )
-              .item(3)
+            const jumpToSettingsButton = Array.from(
+              menuButton?.querySelectorAll<HTMLElement>(
+                '.btn-menu.was-open > .btn-menu-item > .btn-menu-item-icon',
+              ),
+            ).find((icon) => icon.textContent === settingsButtonIcon)
             if (jumpToSettingsButton) {
               jumpToSettingsButton.click()
               clickedJumpToSettings = true
@@ -485,10 +487,15 @@ export const telegramGetChatMessages = async (
             } else {
               // 100 text limit is from tweb(https://github.com/morethanwords/tweb/blob/b6486ad81d7523284affd4900bcd2663da079e4e/src/components/wrappers/messageForReply.ts#L275)
               return quotedMessage.content.length > 100
-                ? message.content.startsWith(
-                    quotedMessage.content.replace(/\.\.\.$/, ''),
-                  )
-                : message.content === quotedMessage.content
+                ? message.content
+                    .replaceAll('\n', ' ')
+                    .startsWith(
+                      quotedMessage.content
+                        .replace(/\.\.\.$/, '')
+                        .replaceAll('\n', ' '),
+                    )
+                : message.content.replaceAll('\n', ' ') ===
+                    quotedMessage.content.replaceAll('\n', ' ')
             }
           }
           return false

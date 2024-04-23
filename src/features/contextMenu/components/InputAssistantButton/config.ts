@@ -1251,7 +1251,13 @@ const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
 const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
-      enable: true,
+      enable: (rootElement) => {
+        return (
+          document.querySelectorAll(
+            '#main [role="application"] [role="row"] > [data-id] .message-in',
+          ).length > 0
+        )
+      },
       rootSelectors: [
         'footer .copyable-area div:has(> .lexical-rich-text-input)',
       ],

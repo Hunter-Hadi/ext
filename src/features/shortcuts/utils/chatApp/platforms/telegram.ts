@@ -41,7 +41,7 @@ const telegramGetDataFromQuotedMessage = (
     const subtitle = quotedMessage.querySelector<HTMLElement>('.reply-subtitle')
     if (mediaSticker) {
       messageData.sticker = true
-      messageData.extraLabel = `${messageData.user} sent a sticker`
+      messageData.extraLabel = `this message sent a sticker`
     } else if (mediaContainer) {
       messageData.media = true
       messageData.extraLabel = `[${mediaContainer
@@ -57,175 +57,182 @@ const telegramGetMessageData = async (
   messageBox: HTMLElement,
   username: string,
 ) => {
-  if (messageBox) {
-    const nameBox = messageBox.querySelector<HTMLElement>(
-      '.bubble-content > .name[data-peer-id] .peer-title[data-peer-id]',
-    )
-    let userPeerId = ''
-
-    if (nameBox) {
-      username = nameBox?.textContent || ''
-      userPeerId = nameBox.getAttribute('data-peer-id')!
-      telegramUsernameMap.set(userPeerId, username)
-    }
-
-    // temp: need to optimize
-    if (!username) {
-      const avatarBox = findSelectorParent(
-        '.bubbles-group-avatar-container > .avatar[data-peer-id]',
-        messageBox,
-        1,
+  try {
+    if (messageBox) {
+      const nameBox = messageBox.querySelector<HTMLElement>(
+        '.bubble-content > .name[data-peer-id] .peer-title[data-peer-id]',
       )
-      if (avatarBox) {
-        userPeerId = avatarBox.getAttribute('data-peer-id')!
-        username = telegramUsernameMap.get(userPeerId) || ''
+      let userPeerId = ''
 
-        // To get the message sender's username, should perform the following actions implicitly and not being perceived by the user
-        // right click avatar -> open contextmenu -> click `Search` -> get the username -> click close button
-        if (!username) {
-          avatarBox.dispatchEvent(
-            new MouseEvent('contextmenu', {
-              bubbles: true,
-              cancelable: true,
-              button: 2,
-            }),
-          )
-          await wait(500)
-          const contextmenu = document.querySelector<HTMLElement>(
-            '#bubble-contextmenu.was-open',
-          )
-          if (contextmenu) {
-            const searchButton = contextmenu
-              .querySelectorAll<HTMLElement>('& > .btn-menu-item')
-              .item(2)
-            if (searchButton) {
-              searchButton.click()
-              await wait(500)
+      if (nameBox) {
+        username = nameBox?.textContent || ''
+        userPeerId = nameBox.getAttribute('data-peer-id')!
+        telegramUsernameMap.set(userPeerId, username)
+      }
+
+      // temp: need to optimize
+      if (!username) {
+        const avatarBox = findSelectorParent(
+          '.bubbles-group-avatar-container > .avatar[data-peer-id]',
+          messageBox,
+          1,
+        )
+        if (avatarBox) {
+          userPeerId = avatarBox.getAttribute('data-peer-id')!
+          username = telegramUsernameMap.get(userPeerId) || ''
+
+          // To get the message sender's username, should perform the following actions implicitly and not being perceived by the user
+          // right click avatar -> open contextmenu -> click `Search` -> get the username -> click close button
+          if (!username) {
+            avatarBox.dispatchEvent(
+              new MouseEvent('contextmenu', {
+                bubbles: true,
+                cancelable: true,
+                button: 2,
+              }),
+            )
+            await wait(500)
+            const contextmenu = document.querySelector<HTMLElement>(
+              '#bubble-contextmenu.was-open',
+            )
+            if (contextmenu) {
+              const searchButton = contextmenu
+                .querySelectorAll<HTMLElement>('& > .btn-menu-item')
+                .item(2)
+              if (searchButton) {
+                searchButton.click()
+                await wait(500)
+              }
             }
+            username =
+              document.querySelector<HTMLElement>(
+                `.topbar-search-container .selector-user .peer-title[data-peer-id="${userPeerId}"]`,
+              )?.innerText || 'Anonymous'
+            telegramUsernameMap.set(
+              avatarBox.getAttribute('data-peer-id')!,
+              username,
+            )
           }
-          username =
-            document.querySelector<HTMLElement>(
-              `.topbar-search-container .selector-user .peer-title[data-peer-id="${userPeerId}"]`,
-            )?.innerText || 'Anonymous'
-          telegramUsernameMap.set(
-            avatarBox.getAttribute('data-peer-id')!,
-            username,
+        }
+      }
+
+      const messageData: ITelegramChatMessageData = {
+        user: username,
+        datetime: '',
+        content: '',
+      }
+
+      // message content only contains sticker
+      if (messageBox.matches('.sticker')) {
+        messageData.extraLabel = `this message sent a sticker`
+        messageData.datetime =
+          messageBox
+            .querySelector<HTMLElement>('.message .time-inner')
+            ?.getAttribute('title') || ''
+        const emoji = messageBox
+          .querySelector('[data-sticker-emoji]')
+          ?.getAttribute('data-sticker-emoji')
+        if (emoji) {
+          messageData.extraLabel += `: ${emoji}`
+          messageData.content = emoji
+        }
+      } else {
+        let message: HTMLElement | null = messageBox
+          .querySelector<HTMLElement>('.message')
+          ?.cloneNode(true) as HTMLElement
+
+        if (message) {
+          const timeInner = message?.querySelector('.time-inner')
+          messageData.datetime = timeInner?.getAttribute('title') || ''
+          timeInner?.parentElement?.remove()
+
+          message.querySelector('reactions-element')?.remove()
+
+          const replying = message?.querySelector<HTMLElement>('.reply')
+          const webpageQuote =
+            message?.querySelector<HTMLElement>('.webpage-quote')
+          const mediaContainer = messageBox?.querySelector('.media-container')
+          const documentContainer = message?.querySelector(
+            '.document-container',
           )
-        }
-      }
-    }
 
-    const messageData: ITelegramChatMessageData = {
-      user: username,
-      datetime: '',
-      content: '',
-    }
-
-    // message content only contains sticker
-    if (messageBox.matches('.sticker')) {
-      messageData.extraLabel = `${username} sent a sticker`
-      messageData.datetime =
-        messageBox
-          .querySelector<HTMLElement>('.message .time-inner')
-          ?.getAttribute('title') || ''
-      const emoji = messageBox
-        .querySelector('[data-sticker-emoji]')
-        ?.getAttribute('data-sticker-emoji')
-      if (emoji) {
-        messageData.extraLabel += `: ${emoji}`
-        messageData.content = emoji
-      }
-    } else {
-      let message: HTMLElement | null = messageBox
-        .querySelector<HTMLElement>('.message')
-        ?.cloneNode(true) as HTMLElement
-
-      if (message) {
-        const timeInner = message?.querySelector('.time-inner')
-        messageData.datetime = timeInner?.getAttribute('title') || ''
-        timeInner?.parentElement?.remove()
-
-        message.querySelector('reactions-element')?.remove()
-
-        const replying = message?.querySelector<HTMLElement>('.reply')
-        const webpageQuote =
-          message?.querySelector<HTMLElement>('.webpage-quote')
-        const mediaContainer = messageBox?.querySelector('.media-container')
-        const documentContainer = message?.querySelector('.document-container')
-
-        // replying to quoted message
-        if (replying) {
-          const quotedMessage = telegramGetDataFromQuotedMessage(replying)
-          messageData.extraLabel = `${username} is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
-          replying.remove()
-        }
-        // webpage quote
-        else if (webpageQuote) {
-          const webpage =
-            webpageQuote.querySelector<HTMLAnchorElement>('a.webpage-name')
-          const webpageTitle =
-            webpageQuote.querySelector<HTMLElement>('.webpage-title')
-              ?.innerText || ''
-          const webpageText =
-            webpageQuote.querySelector<HTMLElement>('.webpage-text')
-              ?.innerText || ''
-          messageData.extraLabel = `${username} sent a ${webpage?.innerText} webpage[${webpage?.href}]: ${webpageTitle}\n${webpageText}`
-          webpageQuote.remove()
-        }
-        // document
-        else if (documentContainer) {
-          const documentName =
-            documentContainer.querySelector('.document-name')?.textContent || ''
-          const documentMessage =
-            documentContainer.querySelector('.document-message')?.textContent ||
-            ''
-          messageData.mediaType = 'Document'
-          messageData.extraLabel = `${username} sent a document: ${documentName}[${documentContainer
-            .querySelector('[src]')
-            ?.getAttribute('src')}]`
-          messageData.content = `${documentName}${
-            documentMessage ? `, ${documentMessage}` : ''
-          }`
-          documentContainer.remove()
-        }
-        // media
-        else if (mediaContainer) {
-          const videoTime = mediaContainer.querySelector('.video-time')
-          if (videoTime) {
-            // Video
-            if (videoTime.querySelector('.video-time-icon')) {
-              messageData.mediaType = 'Video'
+          // replying to quoted message
+          if (replying) {
+            const quotedMessage = telegramGetDataFromQuotedMessage(replying)
+            messageData.extraLabel = `this message is replying to ${quotedMessage.user}'s message: ${quotedMessage.content}`
+            replying.remove()
+          }
+          // webpage quote
+          else if (webpageQuote) {
+            const webpage =
+              webpageQuote.querySelector<HTMLAnchorElement>('a.webpage-name')
+            const webpageTitle =
+              webpageQuote.querySelector<HTMLElement>('.webpage-title')
+                ?.innerText || ''
+            const webpageText =
+              webpageQuote.querySelector<HTMLElement>('.webpage-text')
+                ?.innerText || ''
+            messageData.extraLabel = `this message sent a ${webpage?.innerText} webpage[${webpage?.href}]: ${webpageTitle}\n${webpageText}`
+            webpageQuote.remove()
+          }
+          // document
+          else if (documentContainer) {
+            const documentName =
+              documentContainer.querySelector('.document-name')?.textContent ||
+              ''
+            const documentMessage =
+              documentContainer.querySelector('.document-message')
+                ?.textContent || ''
+            messageData.mediaType = 'Document'
+            messageData.extraLabel = `this message sent a document: ${documentName}[${documentContainer
+              .querySelector('[src]')
+              ?.getAttribute('src')}]`
+            messageData.content = `${documentName}${
+              documentMessage ? `, ${documentMessage}` : ''
+            }`
+            documentContainer.remove()
+          }
+          // media
+          else if (mediaContainer) {
+            const videoTime = mediaContainer.querySelector('.video-time')
+            if (videoTime) {
+              // Video
+              if (videoTime.querySelector('.video-time-icon')) {
+                messageData.mediaType = 'Video'
+              }
+              // GIF
+              else {
+                messageData.mediaType = 'GIF'
+              }
             }
-            // GIF
+            // Photo
             else {
-              messageData.mediaType = 'GIF'
+              messageData.mediaType = 'Photo'
             }
-          }
-          // Photo
-          else {
-            messageData.mediaType = 'Photo'
+
+            messageData.extraLabel = `this message sent a ${
+              messageData.mediaType
+            }[${
+              mediaContainer.querySelector('[src]')?.getAttribute('src') || ''
+            }]`
+            messageData.content = messageData.mediaType
           }
 
-          messageData.extraLabel = `${username} sent a ${
-            messageData.mediaType
-          }[${
-            mediaContainer.querySelector('[src]')?.getAttribute('src') || ''
-          }]`
-          messageData.content = messageData.mediaType
+          if (message.textContent!.length > 0) {
+            if (messageData.mediaType) {
+              messageData.content += ', '
+            }
+            messageData.content += message.textContent
+          }
+
+          message = null
         }
-
-        if (message.textContent!.length > 0) {
-          if (messageData.mediaType) {
-            messageData.content += ', '
-          }
-          messageData.content += message.textContent
-        }
-
-        message = null
       }
-    }
 
-    return messageData
+      return messageData
+    }
+  } catch (err) {
+    console.error(err)
   }
   return null
 }

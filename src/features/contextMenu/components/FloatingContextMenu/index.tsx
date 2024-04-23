@@ -805,13 +805,15 @@ const FloatingContextMenu: FC<{
                 </DevContent>
               )}
               <WritingMessageBox />
-              <ActionSetVariablesModal
-                onClose={() => {
-                  setIsSettingVariables(false)
-                }}
-                onShow={() => setIsSettingVariables(true)}
-                modelKey={'FloatingContextMenu'}
-              />
+              {floatingDropdownMenu.open && (
+                <ActionSetVariablesModal
+                  onClose={() => {
+                    setIsSettingVariables(false)
+                  }}
+                  onShow={() => setIsSettingVariables(true)}
+                  modelKey={'FloatingContextMenu'}
+                />
+              )}
               <Stack width={'100%'} gap={0.5}>
                 <Stack direction={'row'} alignItems={'end'} gap={1}>
                   <Stack

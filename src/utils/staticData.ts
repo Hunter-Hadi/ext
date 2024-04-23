@@ -94,6 +94,14 @@ export const LANGUAGES_OPTIONS = [
     value: 'English',
   },
   {
+    label: 'English(UK)',
+    value: 'English(UK)',
+  },
+  {
+    label: 'English(US)',
+    value: 'English(US)',
+  },
+  {
     label: 'Español',
     value: 'Spanish',
   },

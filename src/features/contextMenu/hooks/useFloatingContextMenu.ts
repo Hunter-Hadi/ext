@@ -20,6 +20,7 @@ import {
 import { AppState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
 import Log from '@/utils/Log'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const log = new Log('ContextMenu/useFloatingContextMenu')
 
@@ -155,6 +156,10 @@ const useFloatingContextMenu = () => {
         rootRect: null,
         showModelSelector: false,
       })
+      // immersive page下显示的就是sidebar，不处理
+      if (isMaxAIImmersiveChatPage()) {
+        return
+      }
       if (isFloatingContextMenuOpen) {
         showChatBox()
         setAppState((prevState) => {

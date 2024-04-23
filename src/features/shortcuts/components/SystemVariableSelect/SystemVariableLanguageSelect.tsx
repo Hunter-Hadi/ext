@@ -140,6 +140,7 @@ const SystemVariableLanguageSelect: FC<SystemVariableSelectProps> = (props) => {
   )
   return (
     <Autocomplete
+      disablePortal
       componentsProps={{
         popper: {
           style: {

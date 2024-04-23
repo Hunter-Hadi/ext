@@ -23,7 +23,6 @@ import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 //   )?.value
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
-// <<<<<<< HEAD
 const SidebarChatPanel = React.lazy(
   () => import('@/features/sidebar/components/SidebarChatPanel'),
 )
@@ -64,7 +63,6 @@ const SidebarPage: FC<{
     }
   }, [currentSidebarConversationId, conversationStatus])
   return (
-    // <<<<<<< HEAD
     <ChatPanelContext.Provider value={sidebarContextValue}>
       <SidebarPageInit />
       {open && (

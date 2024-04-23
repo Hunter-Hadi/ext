@@ -350,7 +350,11 @@ const FloatingContextMenuChatHistoryButton: FC<{
                     >
                       <IconButton onClick={handleCloseModal} size="small">
                         {selectedConversationId ? (
-                          <ArrowBackIcon />
+                          <ArrowBackIcon
+                            sx={{
+                              fontSize: '24px',
+                            }}
+                          />
                         ) : (
                           <CloseIcon
                             sx={{

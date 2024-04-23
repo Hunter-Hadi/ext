@@ -17,6 +17,7 @@ import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingCont
 import FloatingMiniMenu from '@/features/contextMenu/components/FloatingMiniMenu'
 import InputAssistantButtonPortal from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonPortal'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import GoogleDocInject from '@/features/contextMenu/components/GoogleDocInject'
 
 const ContextMenuRoot: FC = () => {
   const { updateSidebarSettings } = useSidebarSettings()
@@ -79,10 +80,12 @@ const ContextMenuRoot: FC = () => {
         {(props) => {
           return (
             <>
+              {/*<AppThemeProvider shadowRootElement={props.rootContainer!}>*/}
               <FloatingContextMenu root={props.rootContainer} />
               <FloatingShortCutsTip />
               <FloatingMiniMenu />
               <GoogleDocInject />
+              {/*</AppThemeProvider>*/}
             </>
           )
         }}
@@ -93,5 +96,3 @@ const ContextMenuRoot: FC = () => {
 }
 
 export default ContextMenuRoot
-
-import GoogleDocInject from '@/features/contextMenu/components/GoogleDocInject'

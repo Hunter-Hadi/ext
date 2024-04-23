@@ -82,7 +82,7 @@ export class ActionAssignCustomPromptWebPageContentContextVariable extends Actio
               key: 'TARGET_CONTEXT',
               value: '{{EMAIL_CONTEXTS_OF_WEBPAGE_TARGET_EMAIL_CONTEXT}}',
               overwrite: true,
-              isBuiltIn: false,
+              isBuiltIn: true,
               label: 'Target context',
             }
           }
@@ -145,7 +145,7 @@ export class ActionAssignCustomPromptWebPageContentContextVariable extends Actio
               key: 'TARGET_CONTEXT',
               value: '{{SOCIAL_MEDIA_TARGET_POST_OR_COMMENT}}',
               overwrite: true,
-              isBuiltIn: false,
+              isBuiltIn: true,
               label: 'Target context',
             }
           }
@@ -210,7 +210,7 @@ export class ActionAssignCustomPromptWebPageContentContextVariable extends Actio
               value:
                 '{{MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT}}',
               overwrite: true,
-              isBuiltIn: false,
+              isBuiltIn: true,
               label: 'Target context',
             }
           }

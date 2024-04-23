@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Gemini ದ್ವಾರಾ ಶಕ್ತಿಯುತವಾದ AI ಬಳಸುವ ಅತ್ಯಂತ ವೇಗವಾದ ಮಾರ್ಗ. ನೀವು ಬೇಕಾದ ಒಂದು ಜನರೇಟಿವ್ AI ವಿಸ್ತರಣ ಮಾತ್ರ ಹೊಂದಿರುವುದು.",
-  "name": "MaxAI.me: ಯಾವುದೇ ಸ್ಥಳದಲ್ಲಿಯೂ AI ಬಳಸಲು 1-ಕ್ಲಿಕ್ ಆಯ್",
+  "description": "GPT-4, Claude 3, Gemini 1.5 ದ್ವಾರಾ ಯಾವುದೇ ಸ್ಥಳದಲ್ಲಿಯೂ 1-ಕ್ಲಿಕ್ ಏಐ ಬಳಸಿ. ನೀವು ಬೇಕಾದಷ್ಟು ಸೃಜನಾತ್ಮಕ ಏಐ ವಿಸ್ತರಣೆ.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ಲಾಗ್ ಔಟ್",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI ಪ್ರೊ ಹುಡುಕಾಟ",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "ಜಟಿಲ ಪ್ರಶ್ನೆಗಳಿಗೆ ದೀರ್ಘ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ಜೋಡಿಸಿ ಹುಡುಕಾಟ",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳ ಪಕ್ಷದಲ್ಲಿ AI ಉತ್ತರಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳ ಪಕ್ಷದಲ್ಲಿ AI ಉತ್ತರಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ",
+    "instant_reply_button__explicit__display_text": "ತಕ್ಷಣ ಉತ್ತರ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

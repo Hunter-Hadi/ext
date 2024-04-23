@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Χρησιμοποιήστε την τεχνητή νοημοσύνη με ένα κλικ οπουδήποτε",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-κλικ AI με την υποστήριξη του GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Αποσύνδεση",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Προχωρημένη αναζήτηση με την AI",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Λάβετε μακροσκελείς απαντήσεις σε πολύπλοκες ερωτήσεις",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Αναζήτηση με την AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Εμφάνιση απαντήσεων της AI δίπλα στα αποτελέσματα αναζήτησης"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Εμφάνιση απαντήσεων της AI δίπλα στα αποτελέσματα αναζήτησης",
+    "instant_reply_button__explicit__display_text": "Άμεση απάντηση"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

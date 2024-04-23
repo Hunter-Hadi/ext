@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Naudokite 1 paspaudimą AI bet kur",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Atsijungti",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI profesionali paieška",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Gaukite išsamius atsakymus į sudėtingus klausimus",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Ieškokite su AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Rodyti AI atsakymus šalia paieškos rezultatų"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Rodyti AI atsakymus šalia paieškos rezultatų",
+    "instant_reply_button__explicit__display_text": "Momentinis atsakymas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

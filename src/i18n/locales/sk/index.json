@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Použite 1-klikovú AI kdekoľvek",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-klikové AI poháňané GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odhlásiť sa",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Profesionálne vyhľadávanie pomocou AI",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Získajte dlhé odpovede na zložité otázky",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Vyhľadávanie s použitím AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Zobrazovať AI odpovede vedľa výsledkov vyhľadávania"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Zobrazovať AI odpovede vedľa výsledkov vyhľadávania",
+    "instant_reply_button__explicit__display_text": "Okamžitá odpoveď"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

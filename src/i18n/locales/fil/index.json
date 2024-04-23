@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Gamitin ang AI sa Isang Click Kahit Saan",
+  "description": "Gamitin ang AI saanman, pinapatakbo ng ChatGPT, Claude 3, Gemini 1.5, GPT-4. Ang tanging generative AI extension na kailangan mo.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Mag-log out",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI pro search",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Kumuha ng mahahabang mga sagot sa mga kumplikadong tanong",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Maghanap gamit ang AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ipakita ang mga sagot ng AI kasama ang mga resulta ng paghahanap"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ipakita ang mga sagot ng AI kasama ang mga resulta ng paghahanap",
+    "instant_reply_button__explicit__display_text": "Agad na tugon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

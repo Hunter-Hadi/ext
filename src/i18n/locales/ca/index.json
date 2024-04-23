@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Utilitza l'IA amb un sol clic en qualsevol lloc",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: IA en un clic impulsat per GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Tanca la sessió",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Cerca avançada d'IA",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Obtén respostes llargues a preguntes complexes",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Cerca amb IA",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Mostra les respostes de l'IA al costat dels resultats de cerca"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Mostra les respostes de l'IA al costat dels resultats de cerca",
+    "instant_reply_button__explicit__display_text": "Resposta instantània"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

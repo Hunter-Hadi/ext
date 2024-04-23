@@ -1,6 +1,6 @@
 {
-  "description": "ચેટજીપીટી, ક્લોડ, જેમિની દ્વારા સશક્ત થયેલ AI ઉપયોગ કરવાની સરળતમ રીત. તમારે જરૂર પડતી એકમાત્ર જેનરેટિવ AI એક્સ્ટેન્શન.",
-  "name": "MaxAI.me: ક્લિક વડે એનીવેર્યેર માટે AI ઉપયોગ કરો",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "લૉગ આઉટ",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI પ્રો શોધ",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "જટિલ પ્રશ્નોને લાંબા જવાબો મેળવો",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI સાથે શોધ કરો",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "શોધ પરિણામો પાસે AI જવાબો દર્શાવો"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "શોધ પરિણામો પાસે AI જવાબો દર્શાવો",
+    "instant_reply_button__explicit__display_text": "તત્કાલ જવાબ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

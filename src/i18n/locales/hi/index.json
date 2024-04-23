@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Gemini द्वारा संचालित AI का उपयोग करने का सबसे तेज़ तरीका। आपकी आवश्यकता के लिए केवल एक उत्पन्न AI एक्सटेंशन।",
-  "name": "MaxAI.me: कहीं भी 1-क्लिक AI का उपयोग करें",
+  "description": "GPT-4, Claude 3, Gemini 1.5 द्वारा प्रचुर्भूत 1-क्लिक AI को कहीं भी उपयोग करें। आपकी जरूरत का एकमात्र सृजनात्मक AI एक्सटेंशन।",
+  "name": "MaxAI.me: GPT-4, Claude 3, Gemini 1.5 द्वारा प्रचुर्भूत 1-क्लिक AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI प्रो खोज",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "जटिल प्रश्नों के लिए लंबे उत्तर प्राप्त करें",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI के साथ खोजें",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "खोज परिणामों के बगल में AI उत्तर प्रदर्शित करें"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "खोज परिणामों के बगल में AI उत्तर प्रदर्शित करें",
+    "instant_reply_button__explicit__display_text": "तत्काल जवाब"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

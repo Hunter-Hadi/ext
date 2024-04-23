@@ -1,6 +1,6 @@
 {
-  "description": "วิธีที่รวดเร็วที่สุดในการใช้งาน AI ที่มีพลังจาก ChatGPT, Claude, Gemini ทุกที่ ส่วนขยาย AI ที่คุณต้องการเท่านั้น",
-  "name": "MaxAI.me: ใช้ AI ด้วยคลิกเดียวทุกที่",
+  "description": "ใช้ 1-click AI ได้ทุกที่ พลังจาก ChatGPT, Claude 3, Gemini 1.5, GPT-4 เป็นส่วนขยาย AI ที่คุณต้องการเท่านั้น",
+  "name": "MaxAI.me: 1-click AI ที่มีพลังจาก GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ออกจากระบบ",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "ค้นหาขั้นสูงของ AI",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "รับคำตอบยาวสำหรับคำถามที่ซับซ้อน",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "ค้นหาด้วย AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "แสดงคำตอบของ AI ถัดจากผลการค้นหา"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "แสดงคำตอบของ AI ถัดจากผลการค้นหา",
+    "instant_reply_button__explicit__display_text": "ตอบกลับทันที"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

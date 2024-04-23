@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Используйте искусственный интеллект в один клик где угодно",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Выйти",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Профессиональный поиск с помощью ИИ",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Получайте длинные ответы на сложные вопросы",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Поиск с помощью ИИ",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Отображение ответов ИИ рядом с результатами поиска"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Отображение ответов ИИ рядом с результатами поиска",
+    "instant_reply_button__explicit__display_text": "Мгновенный ответ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

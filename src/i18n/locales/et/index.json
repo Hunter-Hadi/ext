@@ -1,6 +1,6 @@
 {
-  "description": "Kõige kiirem viis kasutada ChatGPT, Claude, Gemini poolt toetatud AI-d kõikjal. Ainuke generatiivse AI laiendus, mida vajate.",
-  "name": "MaxAI.me: Kasuta 1-klõpsuga AI-d kõikjal",
+  "description": "Kasuta 1-kliki AI-d kõikjal, toetatud ChatGPT, Claude 3, Gemini 1.5, GPT-4. Ainuke generatiivne AI laiendus, mida vajad.",
+  "name": "MaxAI.me: 1-kliki AI, mida toetab GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI prootsing",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Saa pikki vastuseid keerulistele küsimustele",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Otsi AI abil",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Kuva AI vastused otsingutulemuste kõrval"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Kuva AI vastused otsingutulemuste kõrval",
+    "instant_reply_button__explicit__display_text": "Kohe vastus"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

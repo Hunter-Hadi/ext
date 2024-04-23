@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: எங்கிருந்து ஐயை 1-கிளிக் செய்யுங்கள்",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "வெளியேறு",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI பொது தேடல்",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "சிறிய கேள்விகளுக்கு நீளமான பதில்களைப் பெறுங்கள்",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI உடன் தேடுக",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "தேடல் முடிவுகளுக்கு அடிப்படையில் AI பதில்களைக் காட்டு"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "தேடல் முடிவுகளுக்கு அடிப்படையில் AI பதில்களைக் காட்டு",
+    "instant_reply_button__explicit__display_text": "உடனாக பதில்"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

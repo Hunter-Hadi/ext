@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Gunakan AI 1-Klik di Mana Saja",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: Kekuatan AI 1-klik oleh GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Keluar",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Pencarian pro AI",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Dapatkan jawaban panjang untuk pertanyaan kompleks",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Cari dengan AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Tampilkan jawaban AI di samping hasil pencarian"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Tampilkan jawaban AI di samping hasil pencarian",
+    "instant_reply_button__explicit__display_text": "Balasan instan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

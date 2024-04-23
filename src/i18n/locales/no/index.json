@@ -1,6 +1,6 @@
 {
-  "description": "Den raskeste måten å bruke AI drevet av ChatGPT, Claude, Gemini hvor som helst. Den eneste generative AI-utvidelsen du trenger.",
-  "name": "MaxAI.me: Bruk 1-klikks AI hvor som helst",
+  "description": "Bruk 1-klikk AI hvor som helst, drevet av ChatGPT, Claude 3, Gemini 1.5, GPT-4. Den eneste generative AI-utvidelsen du trenger.",
+  "name": "MaxAI.me: 1-klikk AI drevet av GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logg ut",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI-prosøk",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Få lange svar på komplekse spørsmål",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Søk med AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Vis AI-svar ved siden av søkeresultatene"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Vis AI-svar ved siden av søkeresultatene",
+    "instant_reply_button__explicit__display_text": "Umiddelbar svar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

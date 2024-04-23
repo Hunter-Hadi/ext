@@ -1,6 +1,6 @@
 {
-  "description": "በChatGPT, Claude, Gemini ተጠቃሚ በማንኛውም አስተካክል AI ተጠቂዎችን በቀላሉ በተጨማሪ መሳሪያ የሚጠቅሙት. በእርስዎ የተጠቃሚ አስተካክል AI ትርጉም እንዴት እንደሚታይ ይጠቀሙት.",
-  "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም የእርስዎ በመጠቀም 1-Click",
+  "description": "በመጠቀም 1-click AI የሚጠቀሙትን የ ChatGPT, Claude 3, Gemini 1.5, GPT-4 ተጠቃሚዎች ያስተላልፉት ነው። የሚሰጥ የባህልን ማስታወቂያ እንዴት እንደሚጠቀሙ ይጠቀሙታል።",
+  "name": "MaxAI.me: 1-click AI በ GPT-4, Claude 3, Gemini 1.5 የሚሰጥ",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ውጣ",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI በሩህ የሚለውን ይፈጥሩ",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "በሩህ የሚለውን የተሳሳተ መልእክት ይፈጥሩ",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI በጥያቄዎች ይፈጥሩ",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "AI መልእክትን በጥያቄዎች ውስጥ ይመልከቱ"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "AI መልእክትን በጥያቄዎች ውስጥ ይመልከቱ",
+    "instant_reply_button__explicit__display_text": "የቀጥታ መልክት"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

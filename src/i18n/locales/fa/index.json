@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: استفاده از هوش مصنوعی با 1 کلیک در هر جایی",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: قدرت 1 کلیک AI توسط GPT-4، Claude 3، Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "خروج",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "جستجوی حرفه‌ای هوش مصنوعی",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "پاسخ‌های طولانی به سوالات پیچیده دریافت کنید",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "جستجو با هوش مصنوعی",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "پاسخ‌های هوش مصنوعی را در کنار نتایج جستجو نمایش دهید"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "پاسخ‌های هوش مصنوعی را در کنار نتایج جستجو نمایش دهید",
+    "instant_reply_button__explicit__display_text": "پاسخ فوری"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Koristite 1-klik AI bilo gdje",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-klik AI pokretan od strane GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odjava",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Pro pretraga s AI-om",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Dohvatite dugih odgovora na složena pitanja",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Pretražujte s AI-om",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Prikažite AI odgovore uz rezultate pretrage"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Prikažite AI odgovore uz rezultate pretrage",
+    "instant_reply_button__explicit__display_text": "Trenutni odgovor"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

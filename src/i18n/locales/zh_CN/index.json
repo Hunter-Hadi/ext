@@ -1,6 +1,6 @@
 {
-  "description": "使用ChatGPT、Claude和Gemini提供的AI技术，无论何时何地都能以最快的方式使用。您唯一需要的生成式AI扩展。",
-  "name": "MaxAI.me：随时随地使用1-Click AI",
+  "description": "在任何地方使用1点击AI，由ChatGPT、Claude 3、Gemini 1.5和GPT-4提供支持。您唯一需要的生成式AI扩展。",
+  "name": "MaxAI.me：1点击AI，由GPT-4、Claude 3和Gemini 1.5提供支持",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "退出",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI专业搜索",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "获取复杂问题的详细回答",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "与AI一起搜索",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "在搜索结果旁边显示AI答案"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "在搜索结果旁边显示AI答案",
+    "instant_reply_button__explicit__display_text": "即时回复"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

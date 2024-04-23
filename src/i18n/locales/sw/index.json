@@ -1,6 +1,6 @@
 {
-  "description": "Njia ya haraka zaidi ya kutumia AI inayotumiwa na ChatGPT, Claude, Gemini popote. Kipengele pekee cha AI kinachohitajika.",
-  "name": "MaxAI.me: Tumia AI kwa Bofya Moja Popote",
+  "description": "Tumia AI ya kubofya 1 mahali popote, inayotumiwa na ChatGPT, Claude 3, Gemini 1.5, GPT-4. Kipanuzi pekee cha AI kinachohitajika.",
+  "name": "MaxAI.me: AI ya kubofya 1 inayotumiwa na GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Toka",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "Utafutaji wa pro wa AI",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Pata majibu marefu kwa maswali magumu",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Tafuta na AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Onyesha majibu ya AI karibu na matokeo ya utafutaji"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Onyesha majibu ya AI karibu na matokeo ya utafutaji",
+    "instant_reply_button__explicit__display_text": "Jibu la haraka"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

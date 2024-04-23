@@ -1,6 +1,6 @@
 {
-  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה מלמדת שמופעלת על ידי ChatGPT, Claude, Gemini בכל מקום. התוסף היחיד שאתה צריך.",
-  "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת בכל מקום",
+  "description": "השתמש ב-AI בלחיצה אחת בכל מקום, מופעל על ידי ChatGPT, Claude 3, Gemini 1.5, GPT-4. התוסף היחיד שאתה צריך ליצירת AI יוצרת.",
+  "name": "MaxAI.me: הפעלת AI בלחיצה אחת עם GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "חיפוש מקצועי AI",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "קבל תשובות ארוכות לשאלות מורכבות",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "חיפוש עם AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "הצג תשובות AI ליד תוצאות החיפוש"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "הצג תשובות AI ליד תוצאות החיפוש",
+    "instant_reply_button__explicit__display_text": "תשובה מיידית"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

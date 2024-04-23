@@ -1,6 +1,6 @@
 {
-  "description": "どこでも利用できるChatGPT、Claude、Geminiによって強化されたAIを使用する最速の方法。必要なのはこの生成型AI拡張機能だけです。",
-  "name": "MaxAI.me：どこでも1クリックでAIを利用",
+  "description": "ChatGPT、Claude 3、Gemini 1.5によってパワーアップされた1クリックAIをどこでもご利用ください。必要なのはこの生成型AI拡張機能だけです。",
+  "name": "MaxAI.me：GPT-4、Claude 3、Gemini 1.5による1クリックAI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ログアウト",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AIプロサーチ",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "複雑な質問に対する長い回答を取得",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AIと一緒に検索",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "検索結果の隣にAIの回答を表示"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "検索結果の隣にAIの回答を表示",
+    "instant_reply_button__explicit__display_text": "インスタント返信"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

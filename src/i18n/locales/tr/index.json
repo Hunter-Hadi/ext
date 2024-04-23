@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Her Yerde 1 Tıkla AI Kullanın",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Çıkış yap",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI pro arama",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Karmaşık sorulara uzun cevaplar alın",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ile arama yapın",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Arama sonuçlarının yanında AI cevapları görüntüleyin"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Arama sonuçlarının yanında AI cevapları görüntüleyin",
+    "instant_reply_button__explicit__display_text": "Anında yanıt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

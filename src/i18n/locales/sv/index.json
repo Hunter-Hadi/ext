@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Använd AI med 1 klick var som helst",
+  "description": "Använd 1-klicks AI var som helst, drivet av ChatGPT, Claude 3, Gemini 1.5, GPT-4. Den enda generativa AI-tillägget du behöver.",
+  "name": "MaxAI.me: 1-klicks AI drivet av GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logga ut",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI-profsökning",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Få långa svar på komplexa frågor",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Sök med AI",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Visa AI-svar bredvid sökresultaten"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Visa AI-svar bredvid sökresultaten",
+    "instant_reply_button__explicit__display_text": "Omedelbar svar"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

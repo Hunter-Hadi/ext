@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Gemini द्वारा संचालित AI वापरण्याची सर्वात वेगवान पद्धत. आपल्याला आवश्यक असलेले केवळ उत्पन्न AI एक्सटेंशन.",
-  "name": "MaxAI.me: आव्हाने 1-क्लिक ए.आय. कुठेही वापरा",
+  "description": "GPT-4, Claude 3, Gemini 1.5 द्वारा संचालित 1-क्लिक AI कहींथले वापरा. आपल्याला आवश्यक असेलेले एकमेकांत्रित उत्पन्न AI विस्तार.",
+  "name": "MaxAI.me: GPT-4, Claude 3, Gemini 1.5 द्वारा संचालित 1-क्लिक AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट करा",
@@ -740,7 +740,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI प्रो शोध",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "संकटातील प्रश्नांसाठी लांबी उत्तरे मिळवा",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI सह शोधा",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "शोध निकालांपासून AI उत्तरे प्रदर्शित करा"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "शोध निकालांपासून AI उत्तरे प्रदर्शित करा",
+    "instant_reply_button__explicit__display_text": "तात्पुरता प्रतिसाद"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

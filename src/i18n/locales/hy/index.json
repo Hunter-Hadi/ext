@@ -737,7 +737,8 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__title": "AI պրո որոնում",
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Ստացեք երկարատեղային պատասխաններ դառնալու հարցերի համար",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Որոնեք AI-ի հետ",
-    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ցուցադրեք AI պատասխանները որոնման արդյունքների հետ"
+    "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ցուցադրեք AI պատասխանները որոնման արդյունքների հետ",
+    "instant_reply_button__explicit__display_text": "Հանգեցնել պատասխանը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",
@@ -943,8 +944,8 @@
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Համբարձումային",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Անհատական"
   },
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Օգտագործեք 1-Սեղմումով AI Բարելավելությունը",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "prompt_editor": {
     "preset_variables__title": "Հմուտ փոփոխականների վերնագիր",

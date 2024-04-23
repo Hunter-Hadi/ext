@@ -1,3 +1,9 @@
+export interface IChatServerInfo {
+  serverName: string
+  chatroomName: string
+  username: string
+}
+
 export interface IChatMessageData {
   content: string
   user: string
@@ -46,21 +52,11 @@ export const createChatMessageListData = (
 
 export default class ChatMessagesContext {
   chatMessages: IChatMessageData[] = []
-  config: {
-    serverName: string
-    chatroomName: string
-    username: string
-  }
+  config: IChatServerInfo
+  replyTargetMessage: [IChatMessageData] | null = null
   replyMessageIndex: number = -1
 
-  constructor(
-    chatMessages: IChatMessageData[],
-    config?: {
-      serverName: string
-      chatroomName: string
-      username: string
-    },
-  ) {
+  constructor(chatMessages: IChatMessageData[], config: IChatServerInfo) {
     const { serverName = '', chatroomName = '', username = '' } = config || {}
     this.chatMessages = chatMessages
     this.config = { serverName, chatroomName, username }
@@ -76,26 +72,52 @@ export default class ChatMessagesContext {
       MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT: '',
     }
   }
-  replyMessage(messageIndex: number) {
-    // this.replyMessageIndex = this.chatMessages.findIndex(
-    //   ({ date, content }) =>
-    //     message.date === date && message.content === content,
-    // )
-    this.replyMessageIndex = messageIndex
+  replyMessage(message: number | IChatMessageData) {
+    if (typeof message === 'number') {
+      this.replyMessageIndex = message
+      this.replyTargetMessage = null
+    } else {
+      this.replyTargetMessage = [message]
+    }
   }
   get data(): IChatMessagesContextData {
     const { serverName, chatroomName, username } = this.config
-    let replyMessageIndex =
-      this.chatMessages.length >= 8 ? 8 : this.chatMessages.length
-    const chatMessages = this.chatMessages.slice(-8)
 
-    replyMessageIndex =
-      this.replyMessageIndex - this.chatMessages.length + replyMessageIndex
-    const replyMessage = chatMessages.at(replyMessageIndex)
+    // 如果有强制要求回复的对象信息，优先回复这个对象，并把上下文内容设置为这个对象
+    if (this.replyTargetMessage) {
+      const [replyTargetMessageData] = createChatMessageListData(
+        this.replyTargetMessage,
+      )
+      const MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT = `[Chat Server Info]
+**Server Name:** ${serverName || 'N/A'}
+**Chatroom Name:** ${chatroomName || 'N/A'}
+**My Username:** ${username || 'N/A'}
 
-    const chatMessageListData = createChatMessageListData(chatMessages)
+======
+${replyTargetMessageData.text}
+`
+      return {
+        serverName,
+        chatroomName,
+        username,
+        replyMessage: this.replyTargetMessage[0],
+        chatMessages: this.replyTargetMessage,
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT:
+          replyTargetMessageData.text,
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+      }
+    } else {
+      let replyMessageIndex =
+        this.chatMessages.length >= 8 ? 8 : this.chatMessages.length
+      const chatMessages = this.chatMessages.slice(-8)
 
-    const MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT = `[Chat Server Info]
+      replyMessageIndex =
+        this.replyMessageIndex - this.chatMessages.length + replyMessageIndex
+      const replyMessage = chatMessages.at(replyMessageIndex)
+
+      const chatMessageListData = createChatMessageListData(chatMessages)
+
+      const MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT = `[Chat Server Info]
 **Server Name:** ${serverName || 'N/A'}
 **Chatroom Name:** ${chatroomName || 'N/A'}
 **My Username:** ${username || 'N/A'}
@@ -104,13 +126,14 @@ export default class ChatMessagesContext {
 ${chatMessageListData.map((message) => message.text).join('\n===\n')}
 `
 
-    return {
-      ...this.config,
-      replyMessage,
-      chatMessages,
-      MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT:
-        chatMessageListData.at(replyMessageIndex)?.text ?? '',
-      MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+      return {
+        ...this.config,
+        replyMessage,
+        chatMessages,
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT:
+          chatMessageListData.at(replyMessageIndex)?.text ?? '',
+        MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
+      }
     }
   }
 }

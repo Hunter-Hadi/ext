@@ -6,6 +6,7 @@ import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 const telegramUsernameMap = new Map<string, string>()
 const settingsButtonIcon = ''
+const callButtonIcon = ''
 
 // https://github.com/morethanwords/tweb/blob/53224468fe63fb2b024dc697a15f03679f11a93b/src/components/wrappers/messageForReply.ts#L114
 type ITelegramMediaType = 'Photo' | 'GIF' | 'Video' | 'Document'
@@ -129,7 +130,7 @@ const telegramGetMessageData = async (
       }
 
       // message content only contains sticker
-      if (messageBox.matches('.sticker')) {
+      if (messageBox.classList.contains('sticker')) {
         messageData.extraLabel = `this message sent a sticker`
         messageData.datetime =
           messageBox
@@ -251,13 +252,20 @@ const telegramGetChatMessagesFromNodeList = async (
     username: string
   },
 ) => {
-  // if the serverName is empty, it means it's a private chat,
+  // if the serverName is empty and it has call button, it means it's a private chat.
   // and the chatroomName is the username of the person being chatted with.
   let chattingWith = ''
   if (!configs.serverName) {
-    chattingWith = configs.chatroomName
     configs.serverName = `${configs.username} in Telegram`
-    configs.chatroomName = `Chatting with ${chattingWith}`
+    const callButton = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        '.chats-container > .chat.active .chat-utils .btn-icon:not(.hide) > .button-icon',
+      ),
+    ).find((icon) => icon.textContent === callButtonIcon)
+    if (callButton) {
+      chattingWith = configs.chatroomName
+      configs.chatroomName = `Chatting with ${chattingWith}`
+    }
   }
 
   const messages: ITelegramChatMessageData[] = []
@@ -284,7 +292,7 @@ const telegramGetChatMessagesFromNodeList = async (
   for (const messageBox of messageBoxList) {
     const messageData = await telegramGetMessageData(
       messageBox,
-      messageBox.matches('.is-out') ? configs.username : chattingWith,
+      messageBox.classList.contains('is-out') ? configs.username : chattingWith,
     )
 
     if (messageData) {

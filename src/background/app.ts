@@ -366,14 +366,14 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
-  // 因为没有折扣了，不弹了
-  // // 4.1.0这一版，对于free users弹出促销页面
-  // if (APP_VERSION === '4.1.0') {
-  //   setTimeout(
-  //     () => executeMaxAIUpdatedPromotion(),
-  //     (1 + Math.floor(Math.random() * 9)) * 1000,
-  //   )
-  // }
+  // 因为没有折扣了，不弹了 - 2024-04-23
+  // 4.1.0这一版，对于free users弹出促销页面
+  if (APP_VERSION === '4.0.0') {
+    setTimeout(
+      () => executeMaxAIUpdatedPromotion(),
+      (1 + Math.floor(Math.random() * 9)) * 1000,
+    )
+  }
 
   // 每次更新都重置一下 sidebar anniversary dialog
   await setChromeExtensionOnBoardingData(

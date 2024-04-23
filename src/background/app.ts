@@ -367,8 +367,8 @@ const initChromeExtensionUpdated = async () => {
     )
   }
 
-  // 3.2.1这一版，对于free users弹出促销页面
-  if (APP_VERSION === '3.2.1') {
+  // 4.1.0这一版，对于free users弹出促销页面
+  if (APP_VERSION === '4.1.0') {
     setTimeout(
       () => executeMaxAIUpdatedPromotion(),
       (1 + Math.floor(Math.random() * 9)) * 1000,

@@ -276,7 +276,7 @@ const AutoHeightTextarea: FC<{
     return () => {
       // do nothing
     }
-  }, [])
+  }, [InputId])
   useEffect(() => {
     nextMessageIsActionRef.current = false
     metaDataRef.current = {}

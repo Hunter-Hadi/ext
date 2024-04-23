@@ -12,7 +12,9 @@ import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
 
 type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 
-const FloatingContextMenuShortcutButtonGroup: FC = () => {
+const FloatingContextMenuShortcutButtonGroup: FC<{
+  onRegenerate?: () => void
+}> = ({ onRegenerate }) => {
   // const appState = useRecoilValue(AppState)
   const { clientWritingMessage } = useClientConversation()
   const needRegenerateRef = useRef(false)
@@ -35,6 +37,7 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
         needRegenerateRef.current = true
         console.log('handleShortCut regenerate: \t [startRegenerate: true]')
         await stopGenerate()
+        onRegenerate?.()
         await reGenerateRef.current()
       }
     },

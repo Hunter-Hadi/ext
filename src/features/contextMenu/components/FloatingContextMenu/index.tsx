@@ -721,6 +721,27 @@ const FloatingContextMenu: FC<{
     }
   }, [setInputValue])
   useClientConversationListener()
+
+  /**
+   * 由FloatingContextMenuShortcutButtonGroup触发的regenerate事件
+   * regenerate时由于INSERT_USER_INPUT会异步找input并且updateInputValue
+   * 这里暂时加入一个延迟，shortcut regenerate的时候把input id清空
+   * 这样input组件就不会去监听消息，避免shortcut regenerate的时候input里显示了CHAT_GPT_PROMPT_PREFIX
+   */
+  const [shortcutLoading, setShortcutLoading] = useState(false)
+  useEffect(() => {
+    if (!floatingDropdownMenu.open) {
+      setShortcutLoading(false)
+    } else if (shortcutLoading) {
+      const timer = setTimeout(() => {
+        setShortcutLoading(false)
+      }, 3500)
+      return () => {
+        clearTimeout(timer)
+      }
+    }
+  }, [shortcutLoading, floatingDropdownMenu.open])
+
   return (
     <FloatingPortal root={root}>
       <div
@@ -855,7 +876,11 @@ const FloatingContextMenu: FC<{
                               ? t('client:floating_menu__input__placeholder')
                               : ''
                           }
-                          InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
+                          InputId={
+                            shortcutLoading
+                              ? ''
+                              : MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID
+                          }
                           sx={{
                             border: 'none',
                             '& > div': {
@@ -886,7 +911,9 @@ const FloatingContextMenu: FC<{
                       </>
                     )}
                     {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
-                    <FloatingContextMenuShortcutButtonGroup />
+                    <FloatingContextMenuShortcutButtonGroup
+                      onRegenerate={() => setShortcutLoading(true)}
+                    />
                   </Stack>
                   <WritingMessageBoxPagination />
                 </Stack>

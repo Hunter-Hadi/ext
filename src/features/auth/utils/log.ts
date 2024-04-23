@@ -120,8 +120,7 @@ const permissionSceneTypeToLogType = async (
   // Image Model
   if (
     sceneType === 'SIDEBAR_ART_AND_IMAGES' ||
-    sceneType === 'MAXAI_IMAGE_MODEL' ||
-    sceneType === 'TOTAL_CHAT_DAILY_LIMIT' // 为了兼容api 返回错误的 SceneType
+    sceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
   ) {
     name = `IMAGE_MODEL(${currentModelName})`
     return name

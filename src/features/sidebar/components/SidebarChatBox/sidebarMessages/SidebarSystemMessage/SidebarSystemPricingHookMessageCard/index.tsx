@@ -115,8 +115,7 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   // 图像模型卡点
   if (
     permissionSceneType === 'SIDEBAR_ART_AND_IMAGES' ||
-    permissionSceneType === 'MAXAI_IMAGE_MODEL' ||
-    permissionSceneType === 'TOTAL_CHAT_DAILY_LIMIT'
+    permissionSceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
   ) {
     return <ImageModelCard ctaButtonClick={ctaButtonClick} />
   }

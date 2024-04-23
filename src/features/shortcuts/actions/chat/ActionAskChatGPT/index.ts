@@ -244,8 +244,20 @@ export class ActionAskChatGPT extends Action {
       // 所以要设置messageVisibleText
       if (isEnableAIResponseLanguage) {
         // this.question += await this.generateAdditionalText(params)
-        const { data: additionalText, addPosition } =
-          await generatePromptAdditionalText(params)
+        const {
+          data: additionalText,
+          addPosition,
+          AIOutputLanguage,
+        } = await generatePromptAdditionalText(params)
+        // 如果用户设置了Auto，前端之前会检测Context的语言，让AI以这个语言输出
+        // 现在要把检测到的语言给到MaxAIPromptActionConfig，也就是给到后端
+        if (AIOutputLanguage && MaxAIPromptActionConfig) {
+          MaxAIPromptActionConfig.variables.forEach((variable) => {
+            if (variable.VariableName === 'AI_RESPONSE_LANGUAGE') {
+              variable.defaultValue = AIOutputLanguage
+            }
+          })
+        }
         if (additionalText) {
           if (
             this.question.text.startsWith(

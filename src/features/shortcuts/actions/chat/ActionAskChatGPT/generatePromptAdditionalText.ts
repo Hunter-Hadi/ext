@@ -27,6 +27,7 @@ const generatePromptAdditionalText = async (
 ) => {
   const addPosition = 'end'
   let systemVariablesTemplate = ''
+  let AIOutputLanguage = ''
   // 根据CONTEXT和 是否为Auto会有四个场景:
   //  - Auto, 有CONTEXT -> 回复和CONTEXT相同的语言加在最后面
   //  - Auto, 没有CONTEXT -> 不处理
@@ -52,8 +53,10 @@ const generatePromptAdditionalText = async (
   // 如果是Auto，且有CONTEXT，那么就回复和CONTEXT相同的语言
   if (isAuto) {
     if (CONTEXT) {
-      const language = textGetLanguageName(CONTEXT)
-      systemVariablesTemplate = `Please write in ${language}`
+      AIOutputLanguage = textGetLanguageName(CONTEXT) || ''
+      if (AIOutputLanguage) {
+        systemVariablesTemplate = `Please write in ${AIOutputLanguage}`
+      }
     }
     // 没有SELECTED_TEXT, 不处理
   } else {
@@ -86,11 +89,13 @@ const generatePromptAdditionalText = async (
     return {
       data: '',
       addPosition,
+      AIOutputLanguage: AIOutputLanguage,
     }
   }
   return {
     data: result.data,
     addPosition,
+    AIOutputLanguage: AIOutputLanguage,
   }
 }
 export default generatePromptAdditionalText

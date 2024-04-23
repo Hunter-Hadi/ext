@@ -105,9 +105,10 @@ const permissionSceneTypeToLogType = async (
 
   // sidebar search
   if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
+    const searchModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search.AIModel
     name = 'SEARCH'
     const isProSearch = sidebarSettings?.search?.copilot ? 'Pro' : 'Default'
-    name += `(${isProSearch} ${currentModelName})`
+    name += `(${isProSearch} ${searchModel})`
     return name
   }
 
@@ -128,10 +129,11 @@ const permissionSceneTypeToLogType = async (
     sceneType === 'SIDEBAR_ART_AND_IMAGES' ||
     sceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
   ) {
+    const artModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art.AIModel
     const isPro = sidebarSettings?.art?.isEnabledConversationalMode
       ? 'Default'
       : 'Pro'
-    name = `IMAGE_MODEL(${isPro} ${currentModelName})`
+    name = `IMAGE_MODEL(${isPro} ${artModel})`
     return name
   }
 

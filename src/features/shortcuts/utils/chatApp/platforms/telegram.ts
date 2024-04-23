@@ -431,7 +431,7 @@ export const telegramGetChatMessages = async (
 
   const chatMessagesNodeList = Array.from(
     chatMessagesPanel?.querySelectorAll<HTMLElement>(
-      '.bubbles-date-group .bubbles-group .bubble[data-peer-id]',
+      '.bubbles-date-group .bubbles-group .bubble[data-peer-id]:is(.is-in, .is-out)',
     ) || [],
   )
 

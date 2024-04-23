@@ -135,7 +135,7 @@ const permissionSceneTypeToLogType = async (
     const thirdPartyProviderName = AIProviderOptions.find(
       (providerOption) => providerOption.value === currentProvider,
     )?.label
-    name = `FAST_TEXT_MODEL(${currentModelName} ${thirdPartyProviderName})`
+    name = `FAST_TEXT_MODEL(${thirdPartyProviderName} ${currentModelName})`
   }
 
   return name

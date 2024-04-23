@@ -90,6 +90,8 @@ const whatsAppGetDataFromQuotedMessage = (
         messageData.attachmentType = 'Poll'
       } else if (iconType === 'status-image') {
         messageData.attachmentType = 'Photo'
+      } else if (iconType === 'status-gif') {
+        messageData.attachmentType = 'GIF'
       }
 
       const attachImage = Array.from(
@@ -116,7 +118,6 @@ const whatsAppGetMessageData = async (
   messageBox: HTMLElement,
   configs: IChatServerInfo,
 ) => {
-  // debugger
   try {
     const messageData: IWhatsAppChatMessageData = {
       user: '',
@@ -216,10 +217,9 @@ const whatsAppGetMessageData = async (
         messageData.attachmentType = 'Photo'
         if (messageBox.querySelector('[data-icon="video-pip"]')) {
           messageData.attachmentType = 'Video'
+        } else if (messageBox.querySelector('[data-icon="media-gif"]')) {
+          messageData.attachmentType = 'GIF'
         }
-        // else if (messageBox.querySelector('[data-icon="media-gif"]')) {
-        //   messageData.attachmentType = 'GIF'
-        // }
         messageData.extraLabel = `this message sent a ${messageData.attachmentType}`
         messageData.attachmentURL = attachImageURL
         if (!messageData.content) {
@@ -261,7 +261,6 @@ const whatsAppGetChatMessagesFromNodeList = async (
 
     if (messageData) {
       if (messageBox.classList.contains('message-in') && !messageData.user) {
-        debugger
         // if the user is empty, it means this chatroom is a private chat
         if (!chattingWith) {
           chattingWith = configs.chatroomName
@@ -286,7 +285,6 @@ const whatsAppGetChatMessagesFromNodeList = async (
 export const whatsAppGetChatMessages = async (
   inputAssistantButton: HTMLElement,
 ) => {
-  debugger
   const chatroomName =
     document.querySelector<HTMLElement>(
       '#main header > [title] + [role="button"] [aria-label]:not([title])',
@@ -399,6 +397,9 @@ export const whatsAppGetChatMessages = async (
           }
         })
 
+        // 找不到 quoted message，有可能是：
+        // 1. 从 group 里 reply privately 转移过来的
+        // 2. 没被适配到的 quoted message
         if (replyMessageBoxIndex === -1) {
           replyMessageBoxIndex = Infinity
           replyPrivatelyQuotedMessage = {

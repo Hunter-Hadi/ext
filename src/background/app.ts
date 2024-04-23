@@ -317,18 +317,18 @@ const initChromeExtensionUpdated = async () => {
     }
   }
   /**
-   * @since 2024-04-16
-   * @description 3.2.1版本插件升级的时候针对free users弹出updated页面
+   * @since 2024-04-23
+   * @description 4.1.0版本插件升级的时候针对free users弹出updated页面
    */
   const executeMaxAIUpdatedPromotion = async () => {
     const onBoardingData = await getChromeExtensionOnBoardingData()
     // 如果已经弹窗过了，就不再弹窗
-    if (onBoardingData.ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK) {
+    if (onBoardingData.ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK) {
       return
     }
     const result = await getChromeExtensionUserInfo(true)
     await setChromeExtensionOnBoardingData(
-      'ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK',
+      'ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK',
       true,
     )
     const url = 'https://app.maxai.me/updated'

@@ -29,8 +29,10 @@ export type OnBoardingKeyType =
   | `ON_BOARDING_RECORD_INPUT_ASSISTANT_BUTTON_${WritingAssistantButtonGroupConfigHostType}_TIMES`
   // MaxAI 3.0版本OnBoarding
   | 'ON_BOARDING_MAXAI_3_0'
-  //MaxAI 3.2.1版本
+  // MaxAI 3.2.1版本
   | 'ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK'
+  // MaxAI 4.1.0版本
+  | 'ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK'
 
 export type OnBoardingMapType = {
   [key in OnBoardingKeyType]?: boolean | string | number
@@ -49,6 +51,7 @@ const getDefaultOnBoardingMap = (): OnBoardingMapType => {
     ON_BOARDING_1ST_ANNIVERSARY_2024_OPEN_LINK: false,
     ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG: false,
     ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK: false,
+    ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK: false,
     // 记录用户剩余的summary free trial times - 2次 - 2023-10-12 - @tdzhang
     // 关闭free trail - 2023-10-17 - @HuangSong
     ON_BOARDING_RECORD_SUMMARY_FREE_TRIAL_TIMES: 0,

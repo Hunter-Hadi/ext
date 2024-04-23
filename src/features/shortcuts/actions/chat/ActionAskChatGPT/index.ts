@@ -40,12 +40,24 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   chatGPTCommonErrorInterceptor,
+  // clientFetchAPI,
   clientFetchMaxAIAPI,
 } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+// import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
+// import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
+// import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+// import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
+// import { IContextMenuItem } from '@/features/contextMenu/types'
+//
+// const tempMergeJson: IContextMenuItem[] = []
+//   .concat(defaultContextMenuJson)
+//   .concat(defaultEditAssistantComposeReplyContextMenuJson)
+//   .concat(defaultInputAssistantComposeNewContextMenuJson)
+//   .concat(defaultInputAssistantRefineDraftContextMenuJson)
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'

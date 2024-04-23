@@ -121,40 +121,41 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
   }
 
   // instant reply 卡点 start
-  if (
-    permissionSceneType === 'GMAIL_CONTEXT_MENU' ||
-    permissionSceneType === 'GMAIL_DRAFT_BUTTON' ||
-    permissionSceneType === 'GMAIL_REPLY_BUTTON' ||
-    permissionSceneType === 'OUTLOOK_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'OUTLOOK_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'OUTLOOK_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'TWITTER_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'TWITTER_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'TWITTER_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'FACEBOOK_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'FACEBOOK_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'FACEBOOK_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'LINKEDIN_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'LINKEDIN_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'LINKEDIN_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'YOUTUBE_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'YOUTUBE_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'YOUTUBE_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'INSTAGRAM_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'INSTAGRAM_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'INSTAGRAM_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'REDDIT_COMPOSE_NEW_BUTTON' ||
-    permissionSceneType === 'REDDIT_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'REDDIT_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'DISCORD_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'DISCORD_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'SLACK_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'SLACK_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'WHATSAPP_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'WHATSAPP_REFINE_DRAFT_BUTTON' ||
-    permissionSceneType === 'TELEGRAM_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'TELEGRAM_REFINE_DRAFT_BUTTON'
-  ) {
+  const instantReplyPermissionSceneTypeList = [
+    'GMAIL_CONTEXT_MENU',
+    'GMAIL_DRAFT_BUTTON',
+    'GMAIL_REPLY_BUTTON',
+    'OUTLOOK_COMPOSE_NEW_BUTTON',
+    'OUTLOOK_COMPOSE_REPLY_BUTTON',
+    'OUTLOOK_REFINE_DRAFT_BUTTON',
+    'TWITTER_COMPOSE_NEW_BUTTON',
+    'TWITTER_COMPOSE_REPLY_BUTTON',
+    'TWITTER_REFINE_DRAFT_BUTTON',
+    'FACEBOOK_COMPOSE_NEW_BUTTON',
+    'FACEBOOK_COMPOSE_REPLY_BUTTON',
+    'FACEBOOK_REFINE_DRAFT_BUTTON',
+    'LINKEDIN_COMPOSE_NEW_BUTTON',
+    'LINKEDIN_COMPOSE_REPLY_BUTTON',
+    'LINKEDIN_REFINE_DRAFT_BUTTON',
+    'YOUTUBE_COMPOSE_NEW_BUTTON',
+    'YOUTUBE_COMPOSE_REPLY_BUTTON',
+    'YOUTUBE_REFINE_DRAFT_BUTTON',
+    'INSTAGRAM_COMPOSE_NEW_BUTTON',
+    'INSTAGRAM_COMPOSE_REPLY_BUTTON',
+    'INSTAGRAM_REFINE_DRAFT_BUTTON',
+    'REDDIT_COMPOSE_NEW_BUTTON',
+    'REDDIT_COMPOSE_REPLY_BUTTON',
+    'REDDIT_REFINE_DRAFT_BUTTON',
+    'DISCORD_COMPOSE_REPLY_BUTTON',
+    'DISCORD_REFINE_DRAFT_BUTTON',
+    'SLACK_COMPOSE_REPLY_BUTTON',
+    'SLACK_REFINE_DRAFT_BUTTON',
+    'WHATSAPP_COMPOSE_REPLY_BUTTON',
+    'WHATSAPP_REFINE_DRAFT_BUTTON',
+    'TELEGRAM_COMPOSE_REPLY_BUTTON',
+    'TELEGRAM_REFINE_DRAFT_BUTTON',
+  ]
+  if (instantReplyPermissionSceneTypeList.includes(permissionSceneType)) {
     return (
       <InstantReplyCard
         videoUrl={`https://www.youtube.com/embed/fwaqJyTwefI`}

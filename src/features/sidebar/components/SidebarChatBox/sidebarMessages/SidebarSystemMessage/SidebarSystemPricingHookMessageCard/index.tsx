@@ -151,7 +151,9 @@ const SidebarSystemPricingHookMessageCard: FC<IProps> = ({
     permissionSceneType === 'SLACK_COMPOSE_REPLY_BUTTON' ||
     permissionSceneType === 'SLACK_REFINE_DRAFT_BUTTON' ||
     permissionSceneType === 'WHATSAPP_COMPOSE_REPLY_BUTTON' ||
-    permissionSceneType === 'WHATSAPP_REFINE_DRAFT_BUTTON'
+    permissionSceneType === 'WHATSAPP_REFINE_DRAFT_BUTTON' ||
+    permissionSceneType === 'TELEGRAM_COMPOSE_REPLY_BUTTON' ||
+    permissionSceneType === 'TELEGRAM_REFINE_DRAFT_BUTTON'
   ) {
     return (
       <InstantReplyCard

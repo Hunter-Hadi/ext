@@ -84,36 +84,40 @@ const telegramGetMessageData = async (
 
           // To get the message sender's username, should perform the following actions implicitly and not being perceived by the user
           // right click avatar -> open contextmenu -> click `Search` -> get the username -> click close button
+          // 24.04.23 update: the above method is not working because the contextmenu is not opening -> [https://github.com/morethanwords/tweb/commit/0eb3ef36b6ec81a891139564059ccee4b8c3ef8b#diff-26b3883bdd0053bad134a65d5dc94c352819cfa5680a9af442899036ef41ad45]
           if (!username) {
-            debugger
-            avatarBox.dispatchEvent(
-              new MouseEvent('contextmenu', {
-                bubbles: true,
-                cancelable: true,
-                button: 2,
-              }),
-            )
-            await wait(500)
-            const contextmenu = document.querySelector<HTMLElement>(
-              '#bubble-contextmenu.was-open',
-            )
-            if (contextmenu) {
-              const searchButton = contextmenu
-                .querySelectorAll<HTMLElement>('& > .btn-menu-item')
-                .item(2)
-              if (searchButton) {
-                searchButton.click()
-                await wait(500)
-              }
-            }
-            username =
-              document.querySelector<HTMLElement>(
-                `.topbar-search-container .selector-user .peer-title[data-peer-id="${userPeerId}"]`,
-              )?.innerText || 'Anonymous'
-            telegramUsernameMap.set(
-              avatarBox.getAttribute('data-peer-id')!,
-              username,
-            )
+            // avatarBox.dispatchEvent(
+            //   new MouseEvent('contextmenu', {
+            //     bubbles: true,
+            //     cancelable: true,
+            //     button: 2,
+            //   }),
+            // )
+            // await wait(500)
+            // const contextmenu = document.querySelector<HTMLElement>(
+            //   '#bubble-contextmenu.was-open',
+            // )
+            // if (contextmenu) {
+            //   const searchButton = contextmenu
+            //     .querySelectorAll<HTMLElement>('& > .btn-menu-item')
+            //     .item(2)
+            //   if (searchButton) {
+            //     searchButton.click()
+            //     await wait(500)
+            //   }
+            // }
+            // username =
+            //   document.querySelector<HTMLElement>(
+            //     `.topbar-search-container .selector-user .peer-title[data-peer-id="${userPeerId}"]`,
+            //   )?.innerText || 'Anonymous'
+            // telegramUsernameMap.set(
+            //   avatarBox.getAttribute('data-peer-id')!,
+            //   username,
+            // )
+
+            // Temporary solution: use the avatar inner text as the username
+            // if reply this message, it could get the wrong target message
+            username = avatarBox.innerText || 'Anonymous'
           }
         }
       }

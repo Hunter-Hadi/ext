@@ -460,6 +460,7 @@ export const telegramGetChatMessages = async (
       chatTextArea,
       3,
     )
+    let replyPrivatelyQuotedMessage: ITelegramChatMessageData | null = null
     let replyMessageBoxIndex = -1
 
     if (chatTextArea) {
@@ -512,6 +513,18 @@ export const telegramGetChatMessages = async (
           }
           return false
         })
+
+        // 找不到 quoted message，有可能是：
+        // 1. 在聊天记录里面被虚拟列表刷走了
+        // 2. 没获取到正确的 username 的 message
+        // 3. 没被适配到的 quoted message
+        if (replyMessageBoxIndex === -1) {
+          replyMessageBoxIndex = Infinity
+          replyPrivatelyQuotedMessage = {
+            ...quotedMessage,
+            datetime: '',
+          }
+        }
       } else {
         replyMessageBoxIndex = chatMessages.findLastIndex(
           (message) => message.user !== configs.username,
@@ -520,14 +533,25 @@ export const telegramGetChatMessages = async (
     }
 
     if (chatMessages.length) {
-      const chatMessagesContext = new ChatMessagesContext(
-        replyMessageBoxIndex !== -1
-          ? chatMessages.slice(0, replyMessageBoxIndex + 1)
-          : chatMessages,
-        configs,
-      )
-      chatMessagesContext.replyMessage(replyMessageBoxIndex)
-      return chatMessagesContext.data
+      if (replyMessageBoxIndex === Infinity) {
+        if (replyPrivatelyQuotedMessage) {
+          const chatMessagesContext = new ChatMessagesContext(
+            chatMessages,
+            configs,
+          )
+          chatMessagesContext.replyMessage(replyPrivatelyQuotedMessage)
+          return chatMessagesContext.data
+        }
+      } else {
+        const chatMessagesContext = new ChatMessagesContext(
+          replyMessageBoxIndex !== -1
+            ? chatMessages.slice(0, replyMessageBoxIndex + 1)
+            : chatMessages,
+          configs,
+        )
+        chatMessagesContext.replyMessage(replyMessageBoxIndex)
+        return chatMessagesContext.data
+      }
     }
   }
 

@@ -6,6 +6,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 
 /**
  * 将 PermissionWrapperCardSceneType 根据不同场景和配置转换成 logType
@@ -35,20 +36,23 @@ const permissionSceneTypeToLogType = async (
 
   // summary
   if (sceneType === 'PAGE_SUMMARY') {
+    // NOTE: 临时处理，后续需要优化
+    const summaryModel =
+      SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary.AIModel
     const pageSummaryType = getPageSummaryType()
     name = 'SUMMARY'
     switch (pageSummaryType) {
       case 'PDF_CRX_SUMMARY':
-        name += `(PDF ${currentModelName})`
+        name += `(PDF ${summaryModel})`
         break
       case 'PAGE_SUMMARY':
-        name += `(DEFAULT ${currentModelName})`
+        name += `(DEFAULT ${summaryModel})`
         break
       case 'YOUTUBE_VIDEO_SUMMARY':
-        name += `(YOUTUBE ${currentModelName})`
+        name += `(YOUTUBE ${summaryModel})`
         break
       case 'DEFAULT_EMAIL_SUMMARY':
-        name += `(EMAIL ${currentModelName})`
+        name += `(EMAIL ${summaryModel})`
         break
       default:
         break

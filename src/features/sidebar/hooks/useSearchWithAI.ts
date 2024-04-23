@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import {useRecoilState, useSetRecoilState} from 'recoil'
+import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,

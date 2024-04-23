@@ -207,11 +207,10 @@ const FloatingContextMenuChatHistoryButton: FC<{
         paperRef.current?.focus()
       }, 100)
       // 禁止document.body的滚动
-      const before = document.body.style.overflow
       document.body.style.overflow = 'hidden'
       return () => {
         clearTimeout(timer)
-        document.body.style.overflow = before
+        document.body.style.overflow = ''
       }
     }
   }, [modalOpen])

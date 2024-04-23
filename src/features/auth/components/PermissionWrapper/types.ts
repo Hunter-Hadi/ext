@@ -6,6 +6,7 @@ import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
+  'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
   'TOTAL_CHAT_DAILY_LIMIT',
   'MAXAI_FAST_TEXT_MODEL',
   'MAXAI_ADVANCED_MODEL',
@@ -143,6 +144,19 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   [key in PermissionWrapperCardSceneType]: PermissionWrapperI18nCardType
 } = {
   // 不同模型用量上限的 pricing hook
+  THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT: {
+    // imageUrl: `${getChromeExtensionAssetsURL(
+    //   '/images/upgrade/unlimited-ai-requests.png',
+    // )}`,
+    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
+    description: (t) => {
+      return `${t(
+        'client:permission__pricing_hook__daily_limit__description1',
+      )}`
+    },
+    ctaButtonText: (t) =>
+      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+  },
   TOTAL_CHAT_DAILY_LIMIT: {
     // imageUrl: `${getChromeExtensionAssetsURL(
     //   '/images/upgrade/unlimited-ai-requests.png',

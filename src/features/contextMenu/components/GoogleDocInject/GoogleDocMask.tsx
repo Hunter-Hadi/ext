@@ -217,36 +217,42 @@ const GoogleDocMask: FC = () => {
   /**
    * 模拟iframe触发context menu功能，此处添加监听处理各个insert事件
    */
-  useCreateClientMessageListener(async (event, data, sender): Promise<undefined> => {
-    if (event !== 'Client_listenUpdateIframeInput') return
-    if (data.id !== id) return
-    const { type, value } = data
-    switch (type) {
-      case 'INSERT_BELOW':
-        control?.insertBelowSelection(value)
-        break
-      case 'INSERT':
-        control?.replaceSelection(value)
-        break
-      case 'INSERT_ABOVE':
-        control?.insertAboveSelection(value)
-        break
-      case 'REPLACE_SELECTION':
-        control?.replaceSelection(value)
-        break
-    }
-  })
+  useCreateClientMessageListener(
+    async (event, data, sender): Promise<undefined> => {
+      if (event !== 'Client_listenUpdateIframeInput') return
+      if (data.id !== id) return
+      const { type, value } = data
+      switch (type) {
+        case 'INSERT_BELOW':
+          control?.insertBelowSelection(value)
+          break
+        case 'INSERT':
+          control?.replaceSelection(value)
+          break
+        case 'INSERT_ABOVE':
+          control?.insertAboveSelection(value)
+          break
+        case 'REPLACE_SELECTION':
+          control?.replaceSelection(value)
+          break
+      }
+    },
+  )
+
+  const opacity = isProduction ? 0 : 1
+  const zIndex = isProduction ? -1 : 9999
 
   return (
-    <div>
+    <div style={{ opacity }}>
       {selection?.layouts.map((item, i) => (
         <div
           ref={(e) => (selectionNodeRef.current[`${i}`] = e)}
           key={i}
           style={{
             position: 'absolute',
-            border: '1px solid red',
-            zIndex: isProduction ? 0 : 9999,
+            border: isProduction ? undefined : '1px solid red',
+            opacity,
+            zIndex,
             ...item,
           }}
         />
@@ -256,8 +262,9 @@ const GoogleDocMask: FC = () => {
           ref={caretNodeRef}
           style={{
             position: 'absolute',
-            border: '1px solid blue',
-            zIndex: isProduction ? 0 : 9999,
+            border: isProduction ? undefined : '1px solid blue',
+            opacity,
+            zIndex,
             ...caret.layout,
           }}
         />

@@ -6,10 +6,7 @@ import {
   checkISThirdPartyAIProvider,
   clientAskAIQuestion,
 } from '@/background/src/chat/util'
-import {
-  isPermissionCardSceneType,
-  isUsageLimitPermissionSceneType,
-} from '@/features/auth/components/PermissionWrapper/types'
+import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import { getAIProviderChatFiles } from '@/features/chatgpt'
 import {
@@ -271,27 +268,6 @@ export class ActionAskChatGPT extends Action {
           })
           .then()
           .catch()
-        // const { data: isDailyUsageLimit } =
-        //   await clientMessageChannelEngine.postMessage({
-        //     event: 'Client_logCallApiRequest',
-        //     data: {
-        //       name: contextMenu?.text || fallbackId,
-        //       id: contextMenu?.id || fallbackId,
-        //       host: getCurrentDomainHost(),
-        //     },
-        //   })
-        // if (isDailyUsageLimit) {
-        //   // 触达dailyUsageLimited，向用户展示提示信息
-        //   await clientConversationEngine.pushPricingHookMessage(
-        //     'TOTAL_CHAT_DAILY_LIMIT',
-        //   )
-        //   // 记录日志
-        //   authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
-        //   // 展示sidebar
-        //   showChatBox()
-        //   this.error = 'TOTAL_CHAT_DAILY_LIMIT'
-        //   return
-        // }
 
         // 2. 判断是否是第三方AI provider， 是的话需要判断是否已经达到每日使用上限
         const { isThirdPartyProvider } =
@@ -309,10 +285,14 @@ export class ActionAskChatGPT extends Action {
             // 到达第三方provider的每日使用上限
             // 触达 用量上限向用户展示提示信息
             await clientConversationEngine.pushPricingHookMessage(
-              'TOTAL_CHAT_DAILY_LIMIT',
+              'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
             )
             // 记录日志
-            authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
+            // 第三方 webapp 模型，用 MAXAI_FAST_TEXT_MODEL 记录
+            authEmitPricingHooksLog(
+              'show',
+              'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
+            )
             // 展示sidebar
             showChatBox()
             // 触发用量上限时 更新 user subscription info
@@ -321,7 +301,7 @@ export class ActionAskChatGPT extends Action {
               data: {},
             })
 
-            this.error = 'TOTAL_CHAT_DAILY_LIMIT'
+            this.error = 'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT'
             return
           }
         }
@@ -511,25 +491,19 @@ export class ActionAskChatGPT extends Action {
             // 如果报错信息是 PermissionCardSceneType，说明触发了付费卡点
             if (isPermissionCardSceneType(errorMessage)) {
               const sceneType = errorMessage
-              const isUsageLimit = isUsageLimitPermissionSceneType(sceneType)
-              // 需要判断是否是 model 用量上限的卡点
-              if (isUsageLimit) {
-                // 触达 用量上限向用户展示提示信息
-                await clientConversationEngine.pushPricingHookMessage(sceneType)
-                // 记录日志
-                authEmitPricingHooksLog('show', 'TOTAL_CHAT_DAILY_LIMIT')
-                // 展示sidebar
-                showChatBox()
-                // 触发用量上限时 更新 user subscription info
-                await clientMessageChannelEngine.postMessage({
-                  event: 'Client_updateUserSubscriptionInfo',
-                  data: {},
-                })
-
-                this.error = 'TOTAL_CHAT_DAILY_LIMIT'
-                return
-              }
+              // 触达 用量上限向用户展示提示信息
               await clientConversationEngine.pushPricingHookMessage(sceneType)
+              // 记录日志
+              authEmitPricingHooksLog('show', sceneType)
+              // 展示sidebar
+              showChatBox()
+              // 触发用量上限时 更新 user subscription info
+              await clientMessageChannelEngine.postMessage({
+                event: 'Client_updateUserSubscriptionInfo',
+                data: {},
+              })
+              this.error = sceneType
+              return
             } else {
               await clientConversationEngine.pushMessage(
                 {

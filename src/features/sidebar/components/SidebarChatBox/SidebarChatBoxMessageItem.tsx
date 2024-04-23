@@ -24,10 +24,11 @@ interface IProps {
   order: number
   className?: string
   loading?: boolean
+  container?: HTMLElement
 }
 
 const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
-  const { message, className, loading, order } = props
+  const { message, className, loading, order, container } = props
   const { isDarkMode } = useCustomTheme()
   useChatMessageExpiredFileUpdater(message)
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
@@ -122,7 +123,11 @@ const SidebarChatBoxMessageItem: FC<IProps> = (props) => {
           />
         )}
         {isUserMessage(message) && (
-          <SidebarUserMessage message={message} order={order} />
+          <SidebarUserMessage
+            message={message}
+            order={order}
+            container={container}
+          />
         )}
       </AppSuspenseLoadingLayout>
     </Stack>

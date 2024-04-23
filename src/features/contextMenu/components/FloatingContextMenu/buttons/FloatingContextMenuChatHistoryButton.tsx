@@ -35,8 +35,9 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 const FloatingContextMenuChatHistoryMessageList: FC<{
   conversationId?: string
   onDuplicateConversation?: (conversationId: string) => void
+  container?: HTMLElement
 }> = (props) => {
-  const { conversationId, onDuplicateConversation } = props
+  const { conversationId, onDuplicateConversation, container } = props
   const [conversation, setConversation] = useState<IChatConversation | null>(
     null,
   )
@@ -107,6 +108,7 @@ const FloatingContextMenuChatHistoryMessageList: FC<{
                 message={message}
                 loading={loading}
                 order={index + 1}
+                container={container}
               />
             )
           })}
@@ -393,6 +395,7 @@ const FloatingContextMenuChatHistoryButton: FC<{
                     <FloatingContextMenuChatHistoryMessageList
                       conversationId={selectedConversationId}
                       onDuplicateConversation={handleCloseModal}
+                      container={container}
                     />
                     <Box
                       height={0}
@@ -456,4 +459,5 @@ const FloatingContextMenuChatHistoryButton: FC<{
     </>
   )
 }
+
 export default FloatingContextMenuChatHistoryButton

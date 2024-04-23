@@ -99,17 +99,6 @@ function mainAppRender() {
   document.head.appendChild(fontLink)
 
   console.log('init client')
-  const contextMenu = document.createElement(
-    supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
-  )
-  contextMenu.id = MAXAI_CONTEXT_MENU_ID
-  if (
-    getCurrentDomainHost() === 'youtube.com' ||
-    getCurrentDomainHost() === 'studio.youtube.com'
-  ) {
-    contextMenu.contentEditable = 'true'
-  }
-  document.body.appendChild(contextMenu)
   const container = document.createElement(
     supportWebComponent ? 'use-chat-gpt-ai' : 'div',
   )
@@ -117,6 +106,17 @@ function mainAppRender() {
   container.style.display = 'none'
   container.setAttribute('data-version', APP_VERSION)
   document.body.appendChild(container)
+  const contextMenu = document.createElement(
+      supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
+  )
+  contextMenu.id = MAXAI_CONTEXT_MENU_ID
+  if (
+      getCurrentDomainHost() === 'youtube.com' ||
+      getCurrentDomainHost() === 'studio.youtube.com'
+  ) {
+    contextMenu.contentEditable = 'true'
+  }
+  document.body.appendChild(contextMenu)
   const shadowContainer = container.attachShadow({ mode: 'open' })
   const emotionRoot = document.createElement('style')
   const shadowRootElement = document.createElement('div')

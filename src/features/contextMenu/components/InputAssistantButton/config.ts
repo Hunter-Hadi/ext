@@ -1379,31 +1379,41 @@ const MessengerWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupCon
   [
     {
       enable: (rootElement) => {
-        return true
+        return Array.from(
+          document.querySelectorAll(
+            '[role="main"] [role="grid"][aria-label] div[class]:has(+ [role="gridcell"]) [data-scope="messages_table"][role] [role] > [role] + [role="none"]',
+          ),
+        ).some(
+          (gridCellsBox) =>
+            getComputedStyle(gridCellsBox).flexDirection === 'row',
+        )
       },
-      rootSelectors: ['.input-message-container'],
+      rootSelectors: [
+        '[role="main"] [role="group"][aria-label] [id] + div div:has(div > [role="textbox"][contenteditable][aria-label][data-lexical-editor])',
+      ],
       rootParentDeep: 0,
       rootWrapperTagName: 'div',
       rootWrapperStyle: 'align-self: flex-end;',
+      appendPosition: 1,
       composeReplyButton: {
         tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'MESSENGER_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
-          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
-          const inputAssistantButton =
-            InputAssistantButtonElementRouteMap.get(
-              inputAssistantButtonSelector,
-            ) ||
-            document.querySelector<HTMLButtonElement>(
-              inputAssistantButtonSelector,
-            )
-          if (inputAssistantButton) {
-            findSelectorParent(
-              '[data-qa="message_input"]',
-              inputAssistantButton as HTMLElement,
-            )?.click()
-          }
+          // const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          // const inputAssistantButton =
+          //   InputAssistantButtonElementRouteMap.get(
+          //     inputAssistantButtonSelector,
+          //   ) ||
+          //   document.querySelector<HTMLButtonElement>(
+          //     inputAssistantButtonSelector,
+          //   )
+          // if (inputAssistantButton) {
+          //   findSelectorParent(
+          //     '[data-qa="message_input"]',
+          //     inputAssistantButton as HTMLElement,
+          //   )?.click()
+          // }
         },
       },
       refineDraftButton: {
@@ -1412,18 +1422,18 @@ const MessengerWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupCon
         permissionWrapperCardSceneType: 'MESSENGER_REFINE_DRAFT_BUTTON',
       },
       CTAButtonStyle: {
-        padding: '5px 6px',
-        iconSize: 14,
+        padding: '4px 6px',
+        iconSize: 12,
         borderRadius: '16px 0 0 16px',
       },
       DropdownButtonStyle: {
         borderRadius: '0 16px 16px 0',
-        padding: '2px 0',
+        padding: '1px 0',
+        iconSize: 18,
       },
       InputAssistantBoxSx: {
         borderRadius: '16px',
-        marginInline: '.125rem',
-        marginBlock: '10px',
+        margin: '8px 16px 8px -6px',
       },
     } as IInputAssistantButtonGroupConfig,
   ]

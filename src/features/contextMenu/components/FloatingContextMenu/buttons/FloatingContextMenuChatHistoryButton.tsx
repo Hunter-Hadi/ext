@@ -207,10 +207,16 @@ const FloatingContextMenuChatHistoryButton: FC<{
         paperRef.current?.focus()
       }, 100)
       // 禁止document.body的滚动
-      document.body.style.overflow = 'hidden'
+      // 在onWheel里去阻止冒泡并不能完全解决，因为有滚动穿透的问题，这里先判断更改body的overflow
+      if (document.body.clientHeight !== window.innerHeight) {
+        document.body.style.overflow = 'hidden'
+        return () => {
+          clearTimeout(timer)
+          document.body.style.overflow = ''
+        }
+      }
       return () => {
         clearTimeout(timer)
-        document.body.style.overflow = ''
       }
     }
   }, [modalOpen])

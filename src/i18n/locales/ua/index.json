@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Використовуйте штучний інтелект з одним кліком будь-де",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Вийти",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Контекстне вікно на Google Doc та Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Тепер ви можете виділити будь-який текст на Google Doc або Microsoft Word, щоб вдосконалити своє письмо - поліпшуйте написання, виправляйте орфографію та граматику, скорочуйте / збільшуйте текст, спрощуйте мову, перефразуйте, змінюйте тон і багато іншого!",
     "sidebar__promotion_dialog__content_item4__title": "Миттєва відповідь у повідомленнях",
-    "sidebar__promotion_dialog__content_item4__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді на повідомлення за кілька секунд одним кліком у WhatsApp, Discord та Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Дозвольте штучний інтелект створювати персоналізовані відповіді на повідомлення за кілька секунд одним кліком у WhatsApp, Discord, Telegram та Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Створюйте мистецтво та зображення штучного інтелекту",
     "sidebar__promotion_dialog__content_item5__description": "Швидко перетворюйте свої бачення на захоплюючі зображення. Просто, потужно, трансформуюче.",
     "sidebar__promotion_dialog__cta_button": "Оновити зараз - Розблокуйте всі функції",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Отримуйте довгі відповіді на складні питання",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Пошук з ШІ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Відображайте відповіді ШІ поруч з результатами пошуку",
+    "instant_reply_button__explicit__display_text": "Миттєва відповідь",
     "immersive_chat__delete_all_context_menu__button__title": "Видалити всі контекстні меню",
     "immersive_chat__delete_all_context_menu__title": "Очистити історію вашого контекстного меню - ви впевнені?",
     "context_window__chat_history__button__title": "Історія контекстного меню",

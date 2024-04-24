@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: எங்கிருந்து ஐயை 1-கிளிக் செய்யுங்கள்",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "வெளியேறு",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google ஆவணங்களில் உள்ள உரையை மாற்றுவதன் மூலம் சூழல் சாளரத்தை அடையலாம்",
     "sidebar__promotion_dialog__content_item3__description": "இப்போது Google ஆவணங்களில் எந்த உரையையும் தேர்ந்தெடுக்கலாம் மற்றும் உங்கள் எழுத்தை மேம்படுத்தலாம் - எழுத்தாளராக்கல், தப்புத்தன்மை மற்றும் இழுத்தம் மூலம் எந்த உரையையும் முக்கியமாக்கலாம், எளிதாக்குதல், மொழியை எளியப்படுத்தல், மீள்வருத்தல், ஒன்றைச் சுருக்கமாக்குதல் மற்றும் மேலும் பல!",
     "sidebar__promotion_dialog__content_item4__title": "உடனடியாக செய்தி பதில்",
-    "sidebar__promotion_dialog__content_item4__description": "ஒரு கிளிக்கில் AI உங்களுக்கு தனிப்பட்ட செய்தி பதில்களை உருவாக்க அனுமதிக்கின்றது WhatsApp, Discord, மற்றும் Slack-ல்.",
+    "sidebar__promotion_dialog__content_item4__description": "ஒரு கிளியெட் முறையில் வாட்ஸ்அப், டிஸ்கார்ட், டெலிகிராம் மற்றும் ஸ்லாக் இல் நீங்கள் தனிப்பட்ட செய்தி பதில்களை ஐஏ உருவாக்குகிறது.",
     "sidebar__promotion_dialog__content_item5__title": "ஐயாவியாக AI கலை மற்றும் படங்களை உருவாக்கு",
     "sidebar__promotion_dialog__content_item5__description": "உங்கள் கண்ணே மிகுந்த படங்களாக மாற்ற வேகமாக உருவாக்குவது. எளிமையான, சக்திவாய்ந்த, மாற்றுத்திறனானது.",
     "sidebar__promotion_dialog__cta_button": "இப்போது மேம்படுத்துவதற்கான அனைத்து அம்சங்களையும் விடுவிக்கவும்",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "சிறிய கேள்விகளுக்கு நீளமான பதில்களைப் பெறுங்கள்",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI உடன் தேடுக",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "தேடல் முடிவுகளுக்கு அடிப்படையில் AI பதில்களைக் காட்டு",
+    "instant_reply_button__explicit__display_text": "உடனாக பதில்",
     "immersive_chat__delete_all_context_menu__button__title": "அனைத்து சூழல் மெனுகளையும் நீக்கு",
     "immersive_chat__delete_all_context_menu__title": "உங்கள் சூழல் மெனுகள் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
     "context_window__chat_history__button__title": "சூழல் மெனு வரலாறு",

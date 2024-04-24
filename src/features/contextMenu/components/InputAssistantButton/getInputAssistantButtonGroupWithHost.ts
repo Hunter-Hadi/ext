@@ -60,6 +60,9 @@ const checkHostUsingButtonKeys = (
     case 'web.whatsapp.com':
       return getWhatsAppButtonGroup(config)
 
+    case 'web.telegram.org':
+      return getTelegramButtonGroup(config)
+
     default:
       return [
         config.buttonGroupConfig.composeReplyButton,
@@ -367,6 +370,23 @@ const getWhatsAppButtonGroup = (
     // keyElement
     buttonGroupConfig,
   } = config
+  // if (
+  //   keyElement?.matches(
+  //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
+  //   )
+  // ) {
+  //   return [buttonGroupConfig.composeReplyButton]
+  // }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getTelegramButtonGroup = (
+  config: getWritingAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
   // if (
   //   keyElement?.matches(
   //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',

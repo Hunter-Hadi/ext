@@ -1,6 +1,6 @@
 {
-  "description": "הדרך המהירה ביותר להשתמש באינטיליגנציה מלמדת שמופעלת על ידי ChatGPT, Claude, Gemini בכל מקום. התוסף היחיד שאתה צריך.",
-  "name": "MaxAI.me: השתמש באינטיליגנציה מלאה בלחיצה אחת בכל מקום",
+  "description": "השתמש ב-AI בלחיצה אחת בכל מקום, מופעל על ידי ChatGPT, Claude 3, Gemini 1.5, GPT-4. התוסף היחיד שאתה צריך ליצירת AI יוצרת.",
+  "name": "MaxAI.me: הפעלת AI בלחיצה אחת עם GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "התנתק",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "חלון הקשר ב-Google Doc ו-Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "עכשיו תוכל לבחור טקסט ב-Google Doc או Microsoft Word כדי לשפר את הכתיבה שלך - לשפר את הכתיבה, לתקן איות ודקדוק, לקצר או להאריך טקסט, לפשט שפה, לפרפרז, לשנות גוון ועוד!",
     "sidebar__promotion_dialog__content_item4__title": "תשובה מיידית להודעות",
-    "sidebar__promotion_dialog__content_item4__description": "תן למערכת AI ליצור תשובות מותאמות אישית עבורך בשניות עם לחיצה אחת ב-WhatsApp, Discord ו-Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "תן לבינה מלאכותית ליצור תשובות אישיות בשניות עם לחיצה אחת ב-WhatsApp, Discord, Telegram ו-Slack.",
     "sidebar__promotion_dialog__content_item5__title": "יצירת אמנות ותמונות באמצעות AI",
     "sidebar__promotion_dialog__content_item5__description": "הפיכת חזונותיך לתמונות מרהיבות במהירות. פשוט, עוצמתי, מהפכני.",
     "sidebar__promotion_dialog__cta_button": "שדרג עכשיו - הפעל את כל התכונות",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "קבל תשובות ארוכות לשאלות מורכבות",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "חיפוש עם AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "הצג תשובות AI ליד תוצאות החיפוש",
+    "instant_reply_button__explicit__display_text": "תשובה מיידית",
     "immersive_chat__delete_all_context_menu__button__title": "מחק את כל תפריטי ההקשר",
     "immersive_chat__delete_all_context_menu__title": "נקה את ההיסטוריה של תפריטי ההקשר - האם אתה בטוח?",
     "context_window__chat_history__button__title": "היסטוריית תפריטי ההקשר",

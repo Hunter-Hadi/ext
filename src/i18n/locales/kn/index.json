@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Gemini ದ್ವಾರಾ ಶಕ್ತಿಯುತವಾದ AI ಬಳಸುವ ಅತ್ಯಂತ ವೇಗವಾದ ಮಾರ್ಗ. ನೀವು ಬೇಕಾದ ಒಂದು ಜನರೇಟಿವ್ AI ವಿಸ್ತರಣ ಮಾತ್ರ ಹೊಂದಿರುವುದು.",
-  "name": "MaxAI.me: ಯಾವುದೇ ಸ್ಥಳದಲ್ಲಿಯೂ AI ಬಳಸಲು 1-ಕ್ಲಿಕ್ ಆಯ್",
+  "description": "GPT-4, Claude 3, Gemini 1.5 ದ್ವಾರಾ ಯಾವುದೇ ಸ್ಥಳದಲ್ಲಿಯೂ 1-ಕ್ಲಿಕ್ ಏಐ ಬಳಸಿ. ನೀವು ಬೇಕಾದಷ್ಟು ಸೃಜನಾತ್ಮಕ ಏಐ ವಿಸ್ತರಣೆ.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ಲಾಗ್ ಔಟ್",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google Doc ಮತ್ತು Microsoft Word ನಲ್ಲಿ ಸಂದರ್ಭ ವಿಂಡೋ",
     "sidebar__promotion_dialog__content_item3__description": "ಈಗ ನೀವು Google Doc ಅಥವಾ Microsoft Word ನಲ್ಲಿ ಯಾವುದೇ ಪಠ್ಯವನ್ನು ಆಯ್ಕೆ ಮಾಡಬಹುದು - ಬರೆಯುವುದನ್ನು ಮೇಲ್ಮಟ್ಟಕ್ಕೆ ತಂದುಕೊಳ್ಳಿ, ವರ್ತನೆಯನ್ನು ಸರಳಗೊಳಿಸಿ, ವಾಕ್ಯಗಳನ್ನು ಸಣ್ಣಗೊಳಿಸಿ/ದೊಡ್ಡಗೊಳಿಸಿ, ಭಾಷೆಯನ್ನು ಸರಳೀಕರಿಸಿ, ಪದಗಳನ್ನು ಬದಲಾಯಿಸಿ, ಧ್ವನಿಯನ್ನು ಬದಲಾಯಿಸಿ ಮತ್ತು ಇನ್ನಷ್ಟು!",
     "sidebar__promotion_dialog__content_item4__title": "ತಕ್ಷಣ ಸಂದೇಶ ಉತ್ತರ",
-    "sidebar__promotion_dialog__content_item4__description": "ಒಂದು ಕ್ಲಿಕ್‌ನಲ್ಲಿ AI ನಿಮಗೆ ವ್ಹಾಟ್ಸ್‌ಅಪ್, ಡಿಸ್‌ಕಾರ್ಡ್ ಮತ್ತು ಸ್ಲ್ಯಾಕ್‌ನಲ್ಲಿ ವ್ಯಕ್ತಿಗತ ಸಂದೇಶ ಉತ್ತರಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
+    "sidebar__promotion_dialog__content_item4__description": "ಒಂದು ಕ್ಲಿಕ್‌ನಲ್ಲಿ AI ವ್ಯಕ್ತಿಗಳಿಗೆ ವ್ಹಾಟ್ಸ್‌ಅಪ್, ಡಿಸ್ಕಾರ್ಡ್, ಟೆಲಿಗ್ರಾಮ್ ಮತ್ತು ಸ್ಲ್ಯಾಕ್‌ನಲ್ಲಿ ವೈಯಕ್ತಿಕ ಸಂದೇಶ ಪ್ರತಿಕ್ರಿಯೆಗಳನ್ನು ರಚಿಸಲು ಅನುಮತಿಸಿ.",
     "sidebar__promotion_dialog__content_item5__title": "AI ಕಲಾ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ರಚಿಸಿ",
     "sidebar__promotion_dialog__content_item5__description": "ನಿಮ್ಮ ದೃಷ್ಟಿಗಳನ್ನು ಅದ್ಭುತವಾದ ಚಿತ್ರಗಳಾಗಿ ಬದಲಾಯಿಸಲು ಹೊಸದಾಗಿ ತೀವ್ರವಾಗಿ ಮಾಡಿ. ಸರಳ, ಶಕ್ತಿಶಾಲಿ, ಬದಲಾವಣೆಯನ್ನು ತಂದುಕೊಳ್ಳಿ.",
     "sidebar__promotion_dialog__cta_button": "ಈಗ ಮೆಚ್ಚುಗೆಡಿಸಿ - ಎಲ್ಲ ವೈಶಿಷ್ಟ್ಯಗಳನ್ನು ಅನ್ಲಾಕ್ ಮಾಡಿ",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "ಜಟಿಲ ಪ್ರಶ್ನೆಗಳಿಗೆ ದೀರ್ಘ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ಜೋಡಿಸಿ ಹುಡುಕಾಟ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳ ಪಕ್ಷದಲ್ಲಿ AI ಉತ್ತರಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ",
+    "instant_reply_button__explicit__display_text": "ತಕ್ಷಣ ಉತ್ತರ",
     "immersive_chat__delete_all_context_menu__button__title": "ಎಲ್ಲಾ ಸಂದರ್ಭ ಮೆನುಗಳನ್ನು ಅಳಿಸಿ",
     "immersive_chat__delete_all_context_menu__title": "ನಿಮ್ಮ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವನ್ನು ತೆಗೆದುಹಾಕಿ - ಖಚಿತವಾಗಿ?",
     "context_window__chat_history__button__title": "ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸ",

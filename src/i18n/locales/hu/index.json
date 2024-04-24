@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Használja az AI-t egyetlen kattintással bárhol",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kijelentkezés",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontextus ablak a Google Dokumentumban és a Microsoft Wordben",
     "sidebar__promotion_dialog__content_item3__description": "Most már kiválaszthat bármilyen szöveget a Google Dokumentumban vagy a Microsoft Wordben, hogy tökéletesítse az írását - Javítsa a helyesírást és a nyelvtant, rövidítse/hosszabbítsa a szöveget, egyszerűsítse a nyelvezetet, parafrázisáljon, változtassa meg a hangnemet, és még sok mást!",
     "sidebar__promotion_dialog__content_item4__title": "Azonnali üzenetválasz",
-    "sidebar__promotion_dialog__content_item4__description": "Engedd, hogy az AI személyre szabott üzenetválaszokat generáljon neked másodpercek alatt egyetlen kattintással a WhatsApp, Discord és Slack alkalmazásokban.",
+    "sidebar__promotion_dialog__content_item4__description": "Engedje, hogy az AI személyre szabott üzeneteket generáljon Önnek másodpercek alatt egyetlen kattintással a WhatsApp, Discord, Telegram és Slack alkalmazásokban.",
     "sidebar__promotion_dialog__content_item5__title": "AI művészet és képek létrehozása",
     "sidebar__promotion_dialog__content_item5__description": "Gyorsan alakítsa át elképzeléseit lenyűgöző képekké. Egyszerű, erőteljes, átalakító.",
     "sidebar__promotion_dialog__cta_button": "Frissítés most - Minden funkció feloldása",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Hosszú válaszok komplex kérdésekre",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Keresés AI-val",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Az AI válaszok megjelenítése a keresési eredmények mellett",
+    "instant_reply_button__explicit__display_text": "Azonnali válasz",
     "immersive_chat__delete_all_context_menu__button__title": "Összes kontextusmenü törlése",
     "immersive_chat__delete_all_context_menu__title": "Törölje a kontextusmenü előzményeit - biztos benne?",
     "context_window__chat_history__button__title": "Kontextusmenü előzmények",

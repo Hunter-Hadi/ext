@@ -40,6 +40,8 @@ export default [
                   label: 'The domain of the current website',
                   VariableName: 'CURRENT_WEBSITE_DOMAIN',
                   valueType: 'Text',
+                  systemVariable: true,
+                  hidden: true,
                 },
                 {
                   label: 'The text selected by the user',
@@ -47,19 +49,22 @@ export default [
                   valueType: 'Text',
                 },
                 {
-                  label: 'The language preference',
+                  label: 'AI Response language',
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   valueType: 'Text',
+                  systemVariable: true,
                 },
                 {
-                  label: 'The writing style preference',
+                  label: 'Tone',
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   valueType: 'Text',
+                  systemVariable: true,
                 },
                 {
-                  label: 'The writing tone preference',
+                  label: 'Writing style',
                   VariableName: 'AI_RESPONSE_TONE',
                   valueType: 'Text',
+                  systemVariable: true,
                 },
               ],
               output: [
@@ -91,22 +96,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '2822ad40-9f2c-4db8-961b-50636218edc7',
+              promptName: 'Love',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -128,22 +163,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, grateful, and delighted reply to the message/post that responds 'thank you' for whatever the message/post is about. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '4d59573b-7e84-4fb0-8d55-582bd4a5c948',
+              promptName: 'Thanks',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -165,22 +230,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '6325c4b4-5b4c-457b-849a-eacdcb37edfb',
+              promptName: 'Care',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -202,22 +297,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny reply to the message/post joking about it. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '32dd4492-4ec4-44a9-ba53-32223bf385fe',
+              promptName: 'Joke',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -239,22 +364,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '5bb90f56-7cae-4662-9d59-dd2c6ff941ec',
+              promptName: 'Wow',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -276,22 +431,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'c4f861da-75ee-4afb-86a7-de234c0c2309',
+              promptName: 'Sad',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -313,22 +498,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '31e2d82e-5176-43a5-af28-33b873f27496',
+              promptName: 'Dislike',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -353,12 +568,10 @@ export default [
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: '32f31576-0ab8-4fc8-966d-426970abede6',
-              title: 'Reply with key points',
-
-              template:
-                "Ignore all previous instructions. You're a highly skilled messaging expert, adept at responding to all types of chat messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a chat message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{CONTEXT}}\n``` \n\nInclude the following aspects in the reply:\n{{KEY_POINTS}}",
+            MaxAIPromptActionConfig: {
+              promptId: '32f31576-0ab8-4fc8-966d-426970abede6',
+              promptName: 'Reply with key points',
+              promptActionType: 'chat_complete',
               variables: [
                 {
                   label: 'Context',
@@ -373,30 +586,49 @@ export default [
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-              ],
-              systemVariables: [
                 {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                  defaultValue: '',
+                },
+                {
+                  label: 'AI Response language',
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'AI Response language',
                 },
                 {
+                  label: 'Tone',
                   VariableName: 'AI_RESPONSE_TONE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Tone',
                 },
                 {
+                  label: 'Writing style',
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Writing style',
                 },
               ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
+            SetVariablesModalConfig: {
+              title: 'Reply with key points',
+              contextMenuId: '32f31576-0ab8-4fc8-966d-426970abede6',
+              variables: [],
+              systemVariables: [],
             },
           },
         },
@@ -419,22 +651,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'yes' to whatever the recipient is asking for in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'a261c7e0-1a4f-485f-a9e0-9998c45cd08c',
+              promptName: 'Yes',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -456,22 +718,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'no' to whatever the recipient is asking for in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '5b4fb377-411b-497b-89d8-045603632f08',
+              promptName: 'No',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -493,22 +785,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'thank you', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '8a12f88f-9216-4e92-ad41-b4f55c4cfc2b',
+              promptName: 'Thanks',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -530,22 +852,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'sorry', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'f20dcaf5-5133-4046-b129-174f49d0d16c',
+              promptName: 'Sorry',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -567,22 +919,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an email reply which responds 'provide more information and details', without confirming or denying whatever the recipient is asking for, in a polite, friendly, professional, and proper way. \n\nSpecify the additional information you ask for, presenting it in a clear format.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 100 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '016adb2d-794e-41ae-9da7-b80a2fc146ca',
+              promptName: 'More info',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -604,22 +986,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is an email message on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny email reply joking about the email message, without confirming or denying whatever the recipient is asking for.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nDo not include email subject, just output the reply message. Ensure the reply's word count is no more than 50 words.\n\nOutput the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '379124bc-8db4-4b62-b453-cd8e8ab3523e',
+              promptName: 'Joke',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -641,22 +1053,52 @@ export default [
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write a follow-up email message to the following text delimited by triple backticks, which is the last email I sent to the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a concise follow-up email message to ask for a response in a polite, friendly, professional, and proper way. Make the content sincere, persuasive, and appealing. Also, mention any important numbers and details, if any, from previous emails that are helpful for clarification and making the follow-up compelling.\n\nMake the follow-up clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your follow-up.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the follow-up like a real person would. Keep your tone balanced, not too casual or too formal, to match what the follow-up is meant to do.\n\nDo not include email subject, just output the follow-up message. Ensure the follow-up's word count is no more than 100 words.\n\nOutput the follow-up without additional context, explanation, or extra wording, just the follow-up itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '370bca5c-6e3e-4daa-96ac-070ffe8af179',
+              promptName: 'Follow-up',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -681,29 +1123,18 @@ export default [
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: '0815c986-5bd2-49a7-a62f-eeb2c49907da',
-              title: 'Reply with key points',
-
-              template: `Ignore all previous instructions. You're a highly skilled email expert, adept at responding to all types of email messages in an appropriate manner. Your task is to write an email reply to the following text delimited by triple backticks, which is the last email you received from the recipient earlier on {{CURRENT_WEBSITE_DOMAIN}}.
-
-Text:
-\`\`\`
-{{CONTEXT}}
-\`\`\`
-
-Your task requires you to write a concise email reply in a polite, friendly, professional, and proper way.
-
-Make the email reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the email message and the purpose of your email reply.
-
-Choose simple words and phrases. Avoid ones that are too hard or confusing. Write the email reply like a real person would. Keep your tone balanced, not too casual or too formal, to match what the email reply is meant to do.
-
-Do not include email subject, just output the email reply message.
-
-Output the email reply without additional context, explanation, or extra wording, just the email reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-
-Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
+            MaxAIPromptActionConfig: {
+              promptId: '0815c986-5bd2-49a7-a62f-eeb2c49907da',
+              promptName: 'Reply with key points',
+              promptActionType: 'chat_complete',
               variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
                 {
                   label: 'Email context',
                   VariableName: 'CONTEXT',
@@ -717,30 +1148,41 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-              ],
-              systemVariables: [
                 {
+                  label: 'AI Response language',
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'AI Response language',
                 },
                 {
+                  label: 'Tone',
                   VariableName: 'AI_RESPONSE_TONE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Tone',
                 },
                 {
+                  label: 'Writing style',
                   VariableName: 'AI_RESPONSE_WRITING_STYLE',
                   defaultValue: 'Default',
                   valueType: 'Select',
                   systemVariable: true,
-                  label: 'Writing style',
                 },
               ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
+            SetVariablesModalConfig: {
+              contextMenuId: '0815c986-5bd2-49a7-a62f-eeb2c49907da',
+              title: 'Reply with key points',
+              variables: [],
+              systemVariables: [],
             },
           },
         },
@@ -804,22 +1246,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an agreeable, approving, affirming, positive, supportive, confirming, endorsing, acknowledging, understanding, simple recognition, and liking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '4f3d7b3b-62e5-4e88-bd79-01efd7ef0bd0',
+              promptName: 'Like',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -841,22 +1313,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, passionate, warm, fond, admiring, adoring, caring, supportive, joyful, grateful, delighted, enamored, and loving reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '8294f143-2727-4de6-9065-12358f87a7bd',
+              promptName: 'Love',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -878,22 +1380,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an affectionate, grateful, and delighted reply to the message/post that responds 'thank you' for whatever the message/post is about. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '3e4d313f-8a15-48b2-beb9-1f05f93b4d4f',
+              promptName: 'Thanks',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -915,22 +1447,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a compassionate, empathetic, sympathetic, considerate, supportive, understanding, comforting, consoling, reassuring, concerned, nurturing, and caring reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '176a963c-849e-4cd7-8bf3-84e4531f0cc0',
+              promptName: 'Care',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -952,22 +1514,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a humorous, entertaining, playful, and funny reply to the message/post joking about it. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '0486d1dc-b6bd-4c9b-a861-660e1f87f621',
+              promptName: 'Joke',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -989,22 +1581,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an astonished, amazed, awestruck, shocked, startled, impressed, intrigued, dumbfounded, bewildered, flabbergasted, taken-aback, and surprised reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '93c3fd09-315d-447d-bbdf-052a78511f39',
+              promptName: 'Wow',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1026,22 +1648,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write an unhappy, sorrowful, mournful, grieving, despondent, melancholic, lamenting, hurt, pained, empathetic, downcast, disappointed, depressed, and sad reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'c4ed94fc-d8cc-4633-b563-4a94582ab58c',
+              promptName: 'Sad',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1063,22 +1715,52 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You're a highly skilled social media expert, adept at responding to all types of social media messages and posts in an appropriate manner. Your task is to write a reply to the following text delimited by triple backticks, which is a social media message or post on {{CURRENT_WEBSITE_DOMAIN}}.\n\nYour task requires you to write a disagreeing, disapproving, rejecting, negative, critical, dissenting, disappointing, unsupportive, refusing, disfavoring, opposing, negating, and disliking reply to the message/post. Keep the reply as short as possible.\n\nMake the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the message/post and the purpose of your reply.\n\nChoose simple words and phrases. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the reply is meant to do.\n\nEnsure the reply's word count is no more than 50 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'd426af1d-4055-4ada-b359-648b9ada81e7',
+              promptName: 'Dislike',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1103,30 +1785,18 @@ Now, write the email reply, mentioning these points:\n{{KEY_POINTS}}`,
         {
           type: 'SET_VARIABLES_MODAL',
           parameters: {
-            SetVariablesModalConfig: {
-              contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
-              title: 'Reply with key points',
-
-              template: `Ignore all previous instructions. You're a highly skilled social media expert, specialized in {{CURRENT_WEBSITE_DOMAIN}}, adept at responding to all types of {{CURRENT_WEBSITE_DOMAIN}} posts and messages in an appropriate manner. 
-
-Your task is to write a reply to the following post/comment on {{CURRENT_WEBSITE_DOMAIN}}, delimited by triple backticks.
-
-Post/comment:
-\`\`\` 
-{{CONTEXT}}
-\`\`\` 
-
-Make the reply clear, easy to understand, and well put together. Choose the most suitable punctuation marks, selecting the best tone and style based on the topic of the post/comment and the purpose of your reply.
-
-Choose simple words and phrases. Avoid ones that are too hard or confusing.
-
-Do not use hashtags. Write the reply like a real person would. 
-
-Output the reply without additional context, explanation, or extra wording, just the reply itself. Don't use any punctuation, especially no quotes or backticks, around the text.
-
-Now, write a concise reply to the post/comment above by *writing a better version* of the following points:
-{{KEY_POINTS}}`,
+            MaxAIPromptActionConfig: {
+              promptId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+              promptName: 'Reply with key points',
+              promptActionType: 'chat_complete',
               variables: [
+                {
+                  label: 'The domain of the current website',
+                  VariableName: 'CURRENT_WEBSITE_DOMAIN',
+                  valueType: 'text',
+                  systemVariable: true,
+                  hidden: true,
+                },
                 {
                   label: 'Context',
                   VariableName: 'CONTEXT',
@@ -1140,8 +1810,6 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                   valueType: 'Text',
                   placeholder: 'Enter key points',
                 },
-              ],
-              systemVariables: [
                 {
                   VariableName: 'AI_RESPONSE_LANGUAGE',
                   defaultValue: 'English',
@@ -1164,6 +1832,19 @@ Now, write a concise reply to the post/comment above by *writing a better versio
                   label: 'Writing style',
                 },
               ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
+            SetVariablesModalConfig: {
+              contextMenuId: '6e14fd11-a06e-40b3-97d5-3fc0515288b0',
+              title: 'Reply with key points',
+              variables: [],
+              systemVariables: [],
             },
           },
         },
@@ -1262,22 +1943,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
           },
         },
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are the original author of the unfinished text delimited by triple backticks. Your task is to continue writing the following unfinished text delimited by triple backticks.\n\nYour task requires you to pick up where the text is left off, making sure to maintain the same tone, writing style, structure, intended audience, and direction of the unfinished text. Continue the writing in a manner consistent with how the original author would have written.\n\nOnly write no more than 100 words.\n\nOutput the answer without additional context, explanation, or extra wording, just the continued text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{MAXAI_CONTINUE_WRITING_TEXT_DRAFT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'c0f7a642-9e34-4b1f-a2ee-1c4c5e93fa23',
+              promptName: 'Continue writing',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The draft text for continuation in MaxAI',
+                  VariableName: 'MAXAI_CONTINUE_WRITING_TEXT_DRAFT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1305,23 +2009,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into English.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'b517f321-5533-41e5-8ed0-64eb6aa4b7bd',
+              promptName: 'English',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1343,23 +2070,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Chinese (Simplified).\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'e5a30298-52e9-431d-89d8-6f5431c236c9',
+              promptName: 'Chinese (Simplified)',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1376,23 +2126,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Chinese (Traditional).\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '0cb5746c-b879-4ac4-86fb-49f366c81542',
+              promptName: 'Chinese (Traditional)',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1419,23 +2192,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Portuguese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '481f6d4a-9045-4cd0-b5e7-1eec6822bed3',
+              promptName: 'Portuguese',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1457,23 +2253,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Spanish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '1aabb1d3-f1af-4e81-aab9-fe4d16630cc3',
+              promptName: 'Spanish',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1495,23 +2314,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into French.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'ad6cebdb-c5ab-4db5-8776-95d6381b90de',
+              promptName: 'French',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1533,23 +2375,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Korean.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '6de2edc2-019f-4a6c-9051-a15aa11338a0',
+              promptName: 'Korean',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1571,23 +2436,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Vietnamese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '24766e7e-a419-4992-aaaf-786a37a0e111',
+              promptName: 'Vietnamese',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1609,23 +2497,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Japanese.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '2a753c24-a5cb-496a-a34b-1037e366e690',
+              promptName: 'Japanese',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1647,23 +2558,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Russian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '3aca0447-12a5-4453-b4b2-64e45f16598a',
+              promptName: 'Russian',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1685,23 +2619,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into German.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '8b6f4e3f-7669-44a8-a020-fb88c5c9d592',
+              promptName: 'German',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1718,23 +2675,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Turkish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'fee4c3e1-8970-436a-a535-e6085f283973',
+              promptName: 'Turkish',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1761,23 +2741,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Italian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'd1484846-cba5-4b2b-9fef-0a2d0f4b15b7',
+              promptName: 'Italian',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1799,23 +2802,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Dutch.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '96248543-4145-4b5c-b4eb-e6398695a24e',
+              promptName: 'Dutch',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1832,23 +2858,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Polish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'f8a45478-0da3-4c34-8306-b922b68fab5b',
+              promptName: 'Polish',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1870,23 +2919,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Arabic.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'c78b028f-ae08-4c3b-830b-c71bc03ead25',
+              promptName: 'Arabic',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1908,23 +2980,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Hebrew.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'e361913f-b0af-443f-8122-1affa88478be',
+              promptName: 'Hebrew',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1951,23 +3046,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Indonesian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'd4051326-c55b-4611-944a-3457ff0a8ed7',
+              promptName: 'Indonesian',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -1984,23 +3102,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Danish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'bf0da9ac-63d5-40f1-a5c5-63f1468ec13c',
+              promptName: 'Danish',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2022,23 +3163,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Swedish.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '9b1b232b-c036-4131-bd6c-c2e5e690c4ea',
+              promptName: 'Swedish',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2065,23 +3229,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Filipino.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '0d6cce80-546b-4b09-8fe5-f84f195d9d2e',
+              promptName: 'Filipino',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2103,23 +3290,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Norwegian.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '2628ad04-86f3-4306-a8bf-5c6a4e7cfbc6',
+              promptName: 'Norwegian',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2141,23 +3351,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Suomi.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: '8f877635-6585-4de0-9a7d-812a2e987ab2',
+              promptName: 'Suomi',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2179,23 +3412,46 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are proficient in every language, possessing superior translation skills, enabling you to translate from any language to another seamlessly as a native speaker. Your task is to translate the following text, delimited by triple backticks, into Czech.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs.\n\nIf the original text is in the same language as the target language, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
             isEnabledDetectAIResponseLanguage: false,
+            MaxAIPromptActionConfig: {
+              promptId: 'bc8e3fbc-13ab-4150-b748-93c1bd60969d',
+              promptName: 'Czech',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2217,22 +3473,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              'Ignore all previous instructions. You are a highly proficient researcher that can read and write properly and fluently, and can extract all important information from any text. Your task is to summarize and extract all key takeaways of the following text delimited by triple backticks in all relevant aspects. \n\nOutput a summary and a list of key takeaways respectively. The summary should be a one-liner in at most 100 words. The key takeaways should be in up to seven bulletpoints, the fewer the better.\n\nUse the following format:\n### Summary\n<summary of the text>\n\n### Key Takeaways\n<list of key takeaways>\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '7b26a25c-e869-4832-b5bb-b19685f5c3a5',
+              promptName: 'Summarize',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2273,22 +3552,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a knowledgeable real human that understands everything. Your task is to explain the following text delimited by triple backticks in a very easy-to-understand way. \n\n I want you to pretend to explain the text to a middle school student who has no background knowledge or professional knowledge about the text. You need to output the highest quality explanation possible, including examples and analogies if necessary or helpful.\n\nChoose simple words and phrases to explain. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal.\n\nMake the explanation concise, and keep it under 200 words if possible.\n\nOutput the answer without extra wording, just the explanation itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '1444ae1f-dbb1-4136-8898-98431ee3a1bb',
+              promptName: 'Explain this',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2311,22 +3613,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              'Ignore all previous instructions. You are a highly proficient researcher that can thoroughly understand any text and distill all crucial tasks embedded within it. Your task is to carefully review the following text delimited by triple backticks and extract all action items from it for the reader.\n\nIdentify only the action items that need the reader to take action, and exclude action items requiring action from anyone other than the reader.\n\nOutput the action items in bulletpoints, and pick a good matching emoji for every bullet point.\n\nUse the following format:\n### Action Items\n<list of action items>\n\nText:\n```\n{{SELECTED_TEXT}}\n```',
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'bd4f9e5a-f9d4-4d1c-aab8-43f951739ab0',
+              promptName: 'Find action items',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2380,22 +3705,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to rewrite the following text, delimited by triple backticks, in a professional and formal tone.\n\nThe desired tone should be both professional and formal. To clarify:\n- 'Professional' means the language should exude confidence, precision, and clarity, while being devoid of any emotional or casual undertones.\n- 'Formal' means utilizing standard language, avoiding colloquialisms or slang, and maintaining a structured and cohesive flow.\n\nChoose the appropriate degree of professionalism and formality in your tone to align with the subject and goal of the text.\n\nWrite the text like a real person would. Keep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the rewritten text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '202a7ddd-bea5-46b3-b32c-a0300c7ac1ee',
+              promptName: 'Professional',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2417,22 +3765,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to rewrite the following text, delimited by triple backticks, in a friendly and approachable tone.\n\nThe desired tone should be both friendly and approachable. To clarify:\n- 'Friendly' means the tone should convey warmth, like you're speaking to a friend. It should be inviting, kind, and free from formal or harsh language. It should make the reader feel welcome and understood.\n- 'Approachable' means the language should be simple and easy to understand. It shouldn't intimidate or alienate the reader, but rather make them feel welcome and encouraged to engage further.\n\nChoose the appropriate degree of friendliness and approachability in your tone to align with the subject and goal of the text.\n\nWrite the text like a real person would. Keep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the rewritten text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '61404250-a6af-41e2-8b9a-4d6fcfefdb95',
+              promptName: 'Friendly',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2454,22 +3825,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to rewrite the following text, delimited by triple backticks, in a straightforward and direct tone.\n\nThe desired tone should be both straightforward and direct. To clarify:\n- 'Straightforward' means ensuring that the meaning of the text is easily understood. Use simple language, clear structures, and avoid jargon or complex sentences.\n- 'Direct' means using clear and simple language that goes straight to the point without any unnecessary embellishments.\n\nChoose the appropriate degree of straightforwardness and directness in your tone to align with the subject and goal of the text.\n\nWrite the text like a real person would. Keep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the rewritten text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'ce02e42f-e341-4b94-8bbc-095122507bd2',
+              promptName: 'Straightforward',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2491,22 +3885,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to rewrite the following text, delimited by triple backticks, in a confident and firm tone.\n\nThe desired tone should be both confident and firm. To clarify:\n- 'Confident' means displaying certainty, full of assurance, and a clear understanding without any hesitation or doubt. Use clear and direct language.\n- 'Firm' means strongly and unwaveringly standing by the message, showcasing decisiveness without being aggressive.\n\nChoose the appropriate degree of confidence and firmness in your tone to align with the subject and goal of the text.\n\nWrite the text like a real person would. Keep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the rewritten text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '3c3edab4-4125-43ac-89c0-ca95cda06d34',
+              promptName: 'Confident',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2528,22 +3945,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to rewrite the following text, delimited by triple backticks, in a casual and informal tone.\n\nThe desired tone should be both casual and informal. To clarify:\n- 'Casual' means writing as if you're talking to a friend or someone of the same age in a light-hearted, relaxed, and easy-going tone. Feel free to use contractions, colloquialisms, and idioms.\n- 'Informal' means using everyday and conversational language. Avoid complex structures and technical terms or jargon unless it's widely understood. Shorten sentences where possible.\n\nChoose the appropriate degree of casualness and informality in your tone to align with the subject and goal of the text.\n\nWrite the text like a real person would. Keep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the rewritten text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: 'df5768a8-448d-4070-afa1-5307838ed965',
+              promptName: 'Casual',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2565,22 +4005,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to write a better version of the following text delimited by triple backticks.\n\nYour task means making the text clearer, easier to understand, and well put together, by correcting grammar, spelling, choosing the most suitable punctuation marks, selecting the best tone and style based on the topic and purpose of the text.\n\nChoose simple words and phrases to improve the text. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do. If a word, phrase, or part of the text is already clear and effective, leave it as it is, unchanged.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the improved text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '4e54395c-5e8b-4bbd-a309-b6057a4737d3',
+              promptName: 'Improve writing',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2603,22 +4066,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a highly proficient writer that can read and write properly and fluently. Your task is to proofread and correct the spelling and grammar mistakes of the following text delimited by triple backticks.\n\nMake as few changes as possible. Only correct any spelling or grammar mistakes if the original text has spelling or grammar mistakes. Do not make any writing improvements.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nIf the original text has no spelling or grammar mistakes, simply repeat the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the corrected text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '496d1369-941d-49a5-a9ce-68eadd7601de',
+              promptName: 'Fix spelling & grammar',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2641,22 +4127,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to write a shorter version of the following text delimited by triple backticks.\n\nYour task means making the text shorter, and keeping the text clear, easy to understand, and well put together.\n\nChoose simple words and phrases to write the text. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do.\n\nKeep the meaning the same, if possible. Ensure the re-written text's word count is no more than half the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the shortened text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '547b5b2d-4f7b-4b39-8fdc-524a31659238',
+              promptName: 'Make shorter',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2679,22 +4188,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to write a longer version of the following text delimited by triple backticks.\n\nYour task means making the text longer, and keeping the text clear, easy to understand, and well put together.\n\nChoose simple words and phrases to write the text. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do.\n\nKeep the meaning the same if possible. Ensure the rewritten text's word count is more than twice the original text but no more than 4 times the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the lengthened text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '1f0b58d6-10cb-4e60-bbc9-10912ca6301c',
+              promptName: 'Make longer',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2735,22 +4267,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to write a simplified and easier-to-understand version of the following text delimited by triple backticks.\n\nYour task means using clear and concise language that is easy for the intended audience to understand. This involves avoiding overly complex sentence structures, technical jargon, or obscure vocabulary, and using familiar words and straightforward expressions. The goal is to make the text more accessible to a wider audience, ensuring that the message is communicated effectively without causing confusion or misunderstanding. Simplifying language can be particularly important when writing for a general audience or when trying to convey complex information or ideas in a more approachable way. It is essential for you to strike a balance between simplifying language and maintaining the tone and voice of the text, so that it remains engaging and informative while being easy to read and understand.\n\nChoose simple words and phrases to write the text. Avoid ones that are too hard or confusing. Write the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do. If a word, phrase, or part of the text is already clear and effective, leave it as it is, unchanged.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the simplified text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '3ca990dc-b70b-49b5-abfa-eb1dc8e5f271',
+              promptName: 'Simplify language',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],
@@ -2773,22 +4328,45 @@ Now, write a concise reply to the post/comment above by *writing a better versio
       type: 'shortcuts',
       actions: [
         {
-          type: 'RENDER_TEMPLATE',
-          parameters: {
-            template:
-              "Ignore all previous instructions. You are a real human that can read and write properly and fluently. Your task is to write a re-worded version of the following text delimited by triple backticks.\n\nYour task means conveying the same meaning using different words and sentence structures. Avoiding plagiarism, improving the flow and readability of the text, and ensuring that the re-written content is unique and original.\n\nWrite the text like a real person would. Keep your tone balanced, not too casual or too formal, to match what the text is meant to do.\n\nKeep the meaning the same. If possible, retain the structure of the paragraphs. Ensure the re-written text's word count is near to the original text.\n\nOutput the answer without additional context, explanation, or extra wording, just the paraphrased text itself. Don't use any punctuation, especially no quotes or backticks, around the text.\n\nText:\n```\n{{SELECTED_TEXT}}\n```",
-          },
-        },
-        {
-          type: 'INSERT_USER_INPUT',
-          parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
-          },
-        },
-        {
           type: 'ASK_CHATGPT',
           parameters: {
-            template: '{{LAST_ACTION_OUTPUT}}',
+            MaxAIPromptActionConfig: {
+              promptId: '84060107-e962-412b-afa2-f8134e593320',
+              promptName: 'Paraphrase',
+              promptActionType: 'chat_complete',
+              variables: [
+                {
+                  label: 'The text selected by the user',
+                  VariableName: 'SELECTED_TEXT',
+                  valueType: 'text',
+                },
+                {
+                  label: 'AI Response language',
+                  VariableName: 'AI_RESPONSE_LANGUAGE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Tone',
+                  VariableName: 'AI_RESPONSE_WRITING_STYLE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+                {
+                  label: 'Writing style',
+                  VariableName: 'AI_RESPONSE_TONE',
+                  valueType: 'text',
+                  systemVariable: true,
+                },
+              ],
+              output: [
+                {
+                  label: 'The completion string from the LLM',
+                  VariableName: 'ChatComplete',
+                  valueType: 'text',
+                },
+              ],
+            },
           },
         },
       ],

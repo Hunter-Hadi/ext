@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Izmantojiet 1-Click AI jebkur",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Izrakstīties",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Konteksta logs Google Dokumentos un Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Tagad jūs varat izvēlēties jebkuru tekstu Google Dokumentos vai Microsoft Word, lai pilnveidotu savu rakstīšanu - uzlabotu rakstīšanu, labotu pareizrakstību un gramatiku, padarītu tekstu īsāku/garāku, vienkāršotu valodu, parafrāzētu, mainītu toni un vēl daudz ko citu!",
     "sidebar__promotion_dialog__content_item4__title": "Tūlītēja ziņojumu atbilde",
-    "sidebar__promotion_dialog__content_item4__description": "Ļaujiet AI ģenerēt personalizētas ziņojumu atbildes jums sekundēs ar vienu klikšķi WhatsApp, Discord un Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Ļaujiet AI ģenerēt personalizētas ziņu atbildes jums sekundēs ar vienu klikšķi uz WhatsApp, Discord, Telegram un Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Radīt AI mākslu un attēlus",
     "sidebar__promotion_dialog__content_item5__description": "Ātri pārvērtiet savas redzes par apburošiem attēliem. Vienkārši, spēcīgi, pārveidojoši.",
     "sidebar__promotion_dialog__cta_button": "Jaunināt tagad - Atbloķējiet visas funkcijas",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Iegūstiet garas atbildes uz sarežģītiem jautājumiem",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Meklēšana ar AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Rādīt AI atbildes blakus meklēšanas rezultātiem",
+    "instant_reply_button__explicit__display_text": "Tūlītēja atbilde",
     "immersive_chat__delete_all_context_menu__button__title": "Dzēst visus konteksta izvēlnes",
     "immersive_chat__delete_all_context_menu__title": "Notīrīt jūsu konteksta izvēlnes vēsturi - vai esat pārliecināts?",
     "context_window__chat_history__button__title": "Konteksta izvēlnes vēsture",

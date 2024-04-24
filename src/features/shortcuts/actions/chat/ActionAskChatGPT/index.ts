@@ -38,12 +38,24 @@ import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import {
   chatGPTCommonErrorInterceptor,
+  // clientFetchAPI,
   clientFetchMaxAIAPI,
 } from '@/features/shortcuts/utils'
 import getContextMenuNamePrefixWithHost from '@/features/shortcuts/utils/getContextMenuNamePrefixWithHost'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
+// import defaultContextMenuJson from '@/background/defaultPromptsData/defaultContextMenuJson'
+// import defaultEditAssistantComposeReplyContextMenuJson from '@/background/defaultPromptsData/defaultEditAssistantComposeReplyContextMenuJson'
+// import defaultInputAssistantComposeNewContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantComposeNewContextMenuJson'
+// import defaultInputAssistantRefineDraftContextMenuJson from '@/background/defaultPromptsData/defaultInputAssistantRefineDraftContextMenuJson'
+// import { IContextMenuItem } from '@/features/contextMenu/types'
+//
+// const tempMergeJson: IContextMenuItem[] = []
+//   .concat(defaultContextMenuJson)
+//   .concat(defaultEditAssistantComposeReplyContextMenuJson)
+//   .concat(defaultInputAssistantComposeNewContextMenuJson)
+//   .concat(defaultInputAssistantRefineDraftContextMenuJson)
 
 export class ActionAskChatGPT extends Action {
   static type: ActionIdentifier = 'ASK_CHATGPT'
@@ -89,6 +101,10 @@ export class ActionAskChatGPT extends Action {
       )
       const messageId =
         this.parameters.AskChatGPTActionQuestion?.messageId || uuidV4()
+      // 设置请求的Prompt action
+      const MaxAIPromptActionConfig =
+        this.parameters.MaxAIPromptActionConfig ||
+        this.question?.meta?.MaxAIPromptActionConfig
       this.question = {
         type: 'user',
         ...this.parameters.AskChatGPTActionQuestion,
@@ -137,10 +153,6 @@ export class ActionAskChatGPT extends Action {
           this.question.text,
         )
       }
-      // 设置请求的Prompt
-      const MaxAIPromptActionConfig =
-        this.parameters.MaxAIPromptActionConfig ||
-        this.question?.meta?.MaxAIPromptActionConfig
       // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider
       if (MaxAIPromptActionConfig) {
         // 更新variables和output的值
@@ -191,6 +203,35 @@ export class ActionAskChatGPT extends Action {
                   params,
                 )
               ).data
+              // NOTE: 本地测试用，不要提交
+              // let parent3: IContextMenuItem | undefined = tempMergeJson.find(
+              //   (item) => item.id === MaxAIPromptActionConfig.promptId,
+              // )
+              // let parent2: IContextMenuItem | undefined = parent3
+              //   ? tempMergeJson.find((item) => item.id === parent3?.parent)
+              //   : undefined
+              // let parent1: IContextMenuItem | undefined = parent2
+              //   ? tempMergeJson.find((item) => item.id === parent2?.parent)
+              //   : undefined
+              // clientFetchAPI('http://localhost:3030/log', {
+              //   method: 'POST',
+              //   headers: {
+              //     'Content-Type': 'application/json',
+              //   },
+              //   body: JSON.stringify({
+              //     parent1: parent1?.text || '',
+              //     parent2: parent2?.text || '',
+              //     parent3: parent3?.text || '',
+              //     promptId: MaxAIPromptActionConfig.promptId,
+              //     promptName: MaxAIPromptActionConfig.promptName,
+              //     promptActionType: MaxAIPromptActionConfig.promptActionType,
+              //     variables: MaxAIPromptActionConfig.variables,
+              //     output: MaxAIPromptActionConfig.output,
+              //     prompt: this.question.text,
+              //   }),
+              // })
+              //   .then()
+              //   .catch()
             }
           }
         }
@@ -201,8 +242,20 @@ export class ActionAskChatGPT extends Action {
       // 所以要设置messageVisibleText
       if (isEnableAIResponseLanguage) {
         // this.question += await this.generateAdditionalText(params)
-        const { data: additionalText, addPosition } =
-          await generatePromptAdditionalText(params)
+        const {
+          data: additionalText,
+          addPosition,
+          AIOutputLanguage,
+        } = await generatePromptAdditionalText(params)
+        // 如果用户设置了Auto，前端之前会检测Context的语言，让AI以这个语言输出
+        // 现在要把检测到的语言给到MaxAIPromptActionConfig，也就是给到后端
+        if (AIOutputLanguage && MaxAIPromptActionConfig) {
+          MaxAIPromptActionConfig.variables.forEach((variable) => {
+            if (variable.VariableName === 'AI_RESPONSE_LANGUAGE') {
+              variable.defaultValue = AIOutputLanguage
+            }
+          })
+        }
         if (additionalText) {
           if (
             this.question.text.startsWith(
@@ -221,6 +274,15 @@ export class ActionAskChatGPT extends Action {
               this.question.text += '\n\n' + additionalText
             }
           }
+        }
+      } else {
+        if (MaxAIPromptActionConfig) {
+          // 如果开启了自定义AI response language，那么就不需要检测语言或者使用用户设置的语言
+          MaxAIPromptActionConfig.variables.forEach((variable) => {
+            if (variable.VariableName === 'AI_RESPONSE_LANGUAGE') {
+              variable.defaultValue = ''
+            }
+          })
         }
       }
       // 如果用的是contextMenu，则直接使用contextMenu的名字

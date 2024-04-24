@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Verwenden Sie KI mit nur einem Klick überall",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-Klick KI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Abmelden",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontextfenster in Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Sie können jetzt beliebigen Text in Google Doc oder Microsoft Word auswählen, um Ihr Schreiben zu verbessern - Schreibweise verbessern, Rechtschreibung und Grammatik korrigieren, Text kürzen/verlängern, Sprache vereinfachen, umschreiben, Ton ändern und vieles mehr!",
     "sidebar__promotion_dialog__content_item4__title": "Sofortige Nachrichtenantwort",
-    "sidebar__promotion_dialog__content_item4__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie generieren - mit nur einem Klick auf WhatsApp, Discord und Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Lassen Sie KI personalisierte Nachrichtenantworten für Sie in Sekundenschnelle generieren - mit nur einem Klick auf WhatsApp, Discord, Telegram und Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Künstliche Intelligenz-Kunst und Bilder erstellen",
     "sidebar__promotion_dialog__content_item5__description": "Verwandeln Sie Ihre Visionen schnell in atemberaubende Bilder. Einfach, leistungsstark, transformierend.",
     "sidebar__promotion_dialog__cta_button": "Jetzt upgraden - Alle Funktionen freischalten",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Erhalte ausführliche Antworten auf komplexe Fragen",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Suche mit KI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Zeige KI-Antworten neben den Suchergebnissen an",
+    "instant_reply_button__explicit__display_text": "Sofortige Antwort",
     "immersive_chat__delete_all_context_menu__button__title": "Alle Kontextmenüs löschen",
     "immersive_chat__delete_all_context_menu__title": "Löschen Sie Ihren Verlauf der Kontextmenüs - Sind Sie sicher?",
     "context_window__chat_history__button__title": "Kontextmenü-Verlauf",

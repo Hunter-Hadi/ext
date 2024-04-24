@@ -6,6 +6,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
+import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 
 /**
  * 将 PermissionWrapperCardSceneType 根据不同场景和配置转换成 logType
@@ -14,22 +15,44 @@ const permissionSceneTypeToLogType = async (
   sceneType: PermissionWrapperCardSceneType,
 ): Promise<string> => {
   let name: string = sceneType
+
+  // search with ai maxai_claude
+  if (sceneType === 'SEARCH_WITH_AI_CLAUDE') {
+    return `SEARCH_WITH_AI(${SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER['MAXAI_CLAUDE']})`
+  }
+  // search with ai chatgpt
+  if (sceneType === 'SEARCH_WITH_AI_CHATGPT') {
+    return `SEARCH_WITH_AI(${SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER['USE_CHAT_GPT_PLUS']})`
+  }
+
+  const { sidebarSettings, thirdProviderSettings } =
+    await getChromeExtensionLocalStorage()
+
+  const currentProvider = sidebarSettings?.common?.currentAIProvider || ''
+  const currentModelName =
+    currentProvider && thirdProviderSettings
+      ? thirdProviderSettings[currentProvider]?.model ?? ''
+      : ''
+
   // summary
   if (sceneType === 'PAGE_SUMMARY') {
+    // NOTE: 临时处理，后续需要优化
+    const summaryModel =
+      SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary.AIModel
     const pageSummaryType = getPageSummaryType()
     name = 'SUMMARY'
     switch (pageSummaryType) {
       case 'PDF_CRX_SUMMARY':
-        name += '(PDF)'
+        name += `(PDF ${summaryModel})`
         break
       case 'PAGE_SUMMARY':
-        name += '(DEFAULT)'
+        name += `(DEFAULT ${summaryModel})`
         break
       case 'YOUTUBE_VIDEO_SUMMARY':
-        name += '(YOUTUBE)'
+        name += `(YOUTUBE ${summaryModel})`
         break
       case 'DEFAULT_EMAIL_SUMMARY':
-        name += '(EMAIL)'
+        name += `(EMAIL ${summaryModel})`
         break
       default:
         break
@@ -45,13 +68,13 @@ const permissionSceneTypeToLogType = async (
   ) {
     switch (sceneType) {
       case 'GMAIL_CONTEXT_MENU':
-        name = 'INSTANT_REPLY(REFINE)'
+        name = `INSTANT_REPLY(Refine ${currentModelName})`
         break
       case 'GMAIL_DRAFT_BUTTON':
-        name = 'INSTANT_REPLY(COMPOSE)'
+        name = `INSTANT_REPLY(Compose ${currentModelName})`
         break
       case 'GMAIL_REPLY_BUTTON':
-        name = 'INSTANT_REPLY(REPLY)'
+        name = `INSTANT_REPLY(Reply ${currentModelName})`
         break
       default:
         break
@@ -60,7 +83,6 @@ const permissionSceneTypeToLogType = async (
   }
   // instant reply
   // 判断是否是 instant reply 付费卡点
-
   if (
     sceneType.includes('REFINE_DRAFT_BUTTON') ||
     sceneType.includes('COMPOSE_NEW_BUTTON') ||
@@ -68,42 +90,27 @@ const permissionSceneTypeToLogType = async (
   ) {
     name = 'INSTANT_REPLY'
     if (sceneType.includes('COMPOSE_REPLY_BUTTON')) {
-      name += '(REPLY)'
+      name += `(Reply ${currentModelName})`
       return name
     }
     if (sceneType.includes('REFINE_DRAFT_BUTTON')) {
-      name += '(REFINE)'
+      name += `(Refine ${currentModelName})`
       return name
     }
     if (sceneType.includes('COMPOSE_NEW_BUTTON')) {
-      name += '(COMPOSE)'
+      name += `(Compose ${currentModelName})`
       return name
     }
   }
 
-  // search with ai maxai_claude
-  if (sceneType === 'SEARCH_WITH_AI_CLAUDE') {
-    return `SEARCH_WITH_AI(${SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER['MAXAI_CLAUDE']})`
-  }
-  // search with ai chatgpt
-  if (sceneType === 'SEARCH_WITH_AI_CHATGPT') {
-    return `SEARCH_WITH_AI(${SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER['USE_CHAT_GPT_PLUS']})`
-  }
-
-  const { sidebarSettings, thirdProviderSettings } =
-    await getChromeExtensionLocalStorage()
-
   // sidebar search
   if (sceneType === 'SIDEBAR_SEARCH_WITH_AI') {
+    const searchModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search.AIModel
     name = 'SEARCH'
-    name += sidebarSettings?.search?.copilot ? '(PRO)' : '(QUICK)'
+    const isProSearch = sidebarSettings?.search?.copilot ? 'Pro' : 'Default'
+    name += `(${isProSearch} ${searchModel})`
     return name
   }
-  const currentProvider = sidebarSettings?.common?.currentAIProvider || ''
-  const currentModelName =
-    currentProvider && thirdProviderSettings
-      ? thirdProviderSettings[currentProvider]?.model ?? ''
-      : ''
 
   // Fast Text Model
   if (sceneType === 'MAXAI_FAST_TEXT_MODEL') {
@@ -120,10 +127,13 @@ const permissionSceneTypeToLogType = async (
   // Image Model
   if (
     sceneType === 'SIDEBAR_ART_AND_IMAGES' ||
-    sceneType === 'MAXAI_IMAGE_MODEL' ||
-    sceneType === 'TOTAL_CHAT_DAILY_LIMIT' // 为了兼容api 返回错误的 SceneType
+    sceneType === 'MAXAI_IMAGE_GENERATE_MODEL'
   ) {
-    name = `IMAGE_MODEL(${currentModelName})`
+    const artModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art.AIModel
+    const isPro = sidebarSettings?.art?.isEnabledConversationalMode
+      ? 'Default'
+      : 'Pro'
+    name = `IMAGE_MODEL(${isPro} ${artModel})`
     return name
   }
 
@@ -131,7 +141,7 @@ const permissionSceneTypeToLogType = async (
     const thirdPartyProviderName = AIProviderOptions.find(
       (providerOption) => providerOption.value === currentProvider,
     )?.label
-    name = `FAST_TEXT_MODEL(${currentModelName} ${thirdPartyProviderName})`
+    name = `FAST_TEXT_MODEL(${thirdPartyProviderName} ${currentModelName})`
   }
 
   return name

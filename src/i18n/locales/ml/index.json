@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Use 1-Click AI Anywhere",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ലോഗ് ഔട്ട്",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "ഗൂഗിൾ ഡോക്ക് ആന്റ് മൈക്രോസോഫ്റ്റ് വേർഡിൽ കൺടെക്സ്റ്റ് വിൻഡോ",
     "sidebar__promotion_dialog__content_item3__description": "നിങ്ങൾ ഇപ്പോൾ ഗൂഗിൾ ഡോക്ക് അല്ലെങ്കിൽ മൈക്രോസോഫ്റ്റ് വേർഡിൽ ഏതെങ്കിലും ടെക്സ്റ്റ് തിരഞ്ഞെടുക്കാൻ കഴിയും - എഴുത്ത് മെച്ചപ്പെടുത്തുക, വാചകം ശുദ്ധിക്കുക, വാചകം ചെറിയ/വലുതാക്കുക, ഭാഷ സരളീകരിക്കുക, പരിഭാഷ ചെയ്യുക, ടോൺ മാറ്റുക, എന്നിവയും!",
     "sidebar__promotion_dialog__content_item4__title": "ഇൻസ്റ്റന്റ് മെസ്സേജ് പ്രതികരണം",
-    "sidebar__promotion_dialog__content_item4__description": "ഒരു ക്ലിക്ക് വേഗത്തിൽ AI-യുടെ സഹായത്തോടെ വ്യക്തിപരമായ മെസ്സേജ് പ്രതികരണങ്ങൾ ഉണ്ടാക്കുക WhatsApp, Discord, അനുബന്ധ ചാനലുകളിൽ.",
+    "sidebar__promotion_dialog__content_item4__description": "ഒരു ക്ലിക്ക് മാത്രം വഴി എന്നിട്ട് AI നിർമിച്ച പ്രത്യേകിച്ചുള്ള സന്ദേശ ഉത്തരങ്ങൾ വാട്സ്ആപ്പ്, ഡിസ്കോർഡ്, ടെലിഗ്രാം, സ്ലാക്ക് എന്നിവിടെ സെക്കൻഡ്‌സിൽ ജനറേറ്റ് ചെയ്യുക.",
     "sidebar__promotion_dialog__content_item5__title": "Buat seni dan gambar AI",
     "sidebar__promotion_dialog__content_item5__description": "Ubah visi Anda menjadi gambar yang menakjubkan dengan cepat. Sederhana, kuat, dan transformatif.",
     "sidebar__promotion_dialog__cta_button": "ഇപ്പോൾ അപ്‌ഗ്രേഡ് ചെയ്യുക - എല്ലാ സവിശേഷതകളും അൺലോക്ക് ചെയ്യുക",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "പ്രശ്നങ്ങളുടെ ദീർഘഉത്തരങ്ങൾ നേടുക",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ഉപയോഗിച്ച് തിരയുക",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "തിരയുകയും തിരയുന്ന ഫലങ്ങൾക്ക് AI ഉത്തരങ്ങൾ പ്രദർശിപ്പിക്കുക",
+    "instant_reply_button__explicit__display_text": "തുടരുക",
     "immersive_chat__delete_all_context_menu__button__title": "എല്ലാ കോണ്‍ടെക്സ്റ്റ് മെനുകളും ഇല്ലാതാക്കുക",
     "immersive_chat__delete_all_context_menu__title": "നിങ്ങളുടെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം മായ്‌ക്കാന്‍ - ഉറപ്പാണോ?",
     "context_window__chat_history__button__title": "കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം",

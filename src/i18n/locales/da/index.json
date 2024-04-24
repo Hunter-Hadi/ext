@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Brug 1-klik AI Overalt",
+  "description": "Brug 1-klik AI overalt, drevet af ChatGPT, Claude 3, Gemini 1.5, GPT-4. Den eneste generative AI-udvidelse, du har brug for.",
+  "name": "MaxAI.me: 1-klik AI drevet af GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log ud",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontekstvindue på Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Du kan nu markere enhver tekst på Google Doc eller Microsoft Word for at forbedre din skrivning - Forbedr skrivning, ret stavefejl og grammatik, gør en tekst kortere/længere, forenkler sprog, omskrivning, ændrer tone og mere!",
     "sidebar__promotion_dialog__content_item4__title": "Svar på øjeblikkelig besked",
-    "sidebar__promotion_dialog__content_item4__description": "Lad AI generere personlige besked-svar til dig på sekunder med bare et klik på WhatsApp, Discord og Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Lad AI generere personlige beskedbesvarelser for dig på få sekunder med bare et klik på WhatsApp, Discord, Telegram og Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Skab AI-kunst og billeder",
     "sidebar__promotion_dialog__content_item5__description": "Omdan hurtigt dine visioner til fantastiske billeder. Enkelt, kraftfuldt, transformerende.",
     "sidebar__promotion_dialog__cta_button": "Opgrader nu - Lås op for alle funktioner",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Få lange svar på komplekse spørgsmål",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Søg med AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Vis AI-svar ved siden af søgeresultaterne",
+    "instant_reply_button__explicit__display_text": "Øjeblikkelig svar",
     "immersive_chat__delete_all_context_menu__button__title": "Slet alle kontekstmenuer",
     "immersive_chat__delete_all_context_menu__title": "Ryd din kontekstmenuhistorik - er du sikker?",
     "context_window__chat_history__button__title": "Kontekstmenuhistorik",

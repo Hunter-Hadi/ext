@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Utilitza l'IA amb un sol clic en qualsevol lloc",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: IA en un clic impulsat per GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Tanca la sessió",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Finestra de context a Google Doc i Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Ara pots seleccionar qualsevol text a Google Doc o Microsoft Word per millorar la teva escriptura: millora l'escriptura, corregeix ortografia i gramàtica, fes que el text sigui més curt/llarg, simplifica el llenguatge, parafraseja, canvia el to i molt més!",
     "sidebar__promotion_dialog__content_item4__title": "Resposta instantània a missatges",
-    "sidebar__promotion_dialog__content_item4__description": "Deixa que l'IA generi respostes de missatges personalitzades per a tu en segons amb només un clic a WhatsApp, Discord i Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Deixa que l'IA generi respostes de missatges personalitzades per a tu en segons amb només un clic a WhatsApp, Discord, Telegram i Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crea art i imatges d'IA",
     "sidebar__promotion_dialog__content_item5__description": "Converteix ràpidament les teves visions en imatges impressionants. Senzill, potent, transformador.",
     "sidebar__promotion_dialog__cta_button": "Millora ara - Desbloqueja totes les funcionalitats",
@@ -741,8 +741,9 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Obtén respostes llargues a preguntes complexes",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Cerca amb IA",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Mostra les respostes de l'IA al costat dels resultats de cerca",
+    "instant_reply_button__explicit__display_text": "Resposta instantània",
     "immersive_chat__delete_all_context_menu__button__title": "Eliminar tots els menús de context",
-    "immersive_chat__delete_all_context_menu__title": "Neteja l'historial dels teus menús de context - n'estàs segur?",
+    "immersive_chat__delete_all_context_menu__title": "Esborra l'historial dels teus menús de context - n'estàs segur?",
     "context_window__chat_history__button__title": "Historial del menú de context",
     "context_window__chat_history__empty__title": "Encara no hi ha cap historial de menú de context disponible",
     "context_window__chat_history__continue_in_chat__title": "Continua al xat"

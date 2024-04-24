@@ -290,18 +290,18 @@ const initChromeExtensionUpdated = async () => {
     }
   }
   /**
-   * @since 2024-04-16
-   * @description 3.2.1版本插件升级的时候针对free users弹出updated页面
+   * @since 2024-04-23
+   * @description 4.1.0版本插件升级的时候针对free users弹出updated页面
    */
   const executeMaxAIUpdatedPromotion = async () => {
     const onBoardingData = await getChromeExtensionOnBoardingData()
     // 如果已经弹窗过了，就不再弹窗
-    if (onBoardingData.ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK) {
+    if (onBoardingData.ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK) {
       return
     }
     const result = await getChromeExtensionUserInfo(true)
     await setChromeExtensionOnBoardingData(
-      'ON_BOARDING_EXTENSION_VERSION_3_2_1_UPDATE_OPEN_LINK',
+      'ON_BOARDING_EXTENSION_VERSION_4_1_0_UPDATE_OPEN_LINK',
       true,
     )
     const url = 'https://app.maxai.me/updated'
@@ -339,9 +339,9 @@ const initChromeExtensionUpdated = async () => {
       (1 + Math.floor(Math.random() * 9)) * 1000,
     )
   }
-
-  // 3.2.1这一版，对于free users弹出促销页面
-  if (APP_VERSION === '3.2.1') {
+  // 因为没有折扣了，不弹了 - 2024-04-23
+  // 4.1.0这一版，对于free users弹出促销页面
+  if (APP_VERSION === '4.0.0') {
     setTimeout(
       () => executeMaxAIUpdatedPromotion(),
       (1 + Math.floor(Math.random() * 9)) * 1000,
@@ -610,20 +610,26 @@ const initExternalMessageListener = () => {
 }
 
 const initChromeExtensionTabUrlChangeListener = () => {
-  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-    pdfSnifferStartListener(tabId, changeInfo, tab)
-    // 页面的url变化后，要触发页面的特殊网页的element更新
-    if (tab.active && tab.id && tab.url) {
-      backgroundSendClientMessage(
-        tab.id,
-        'Client_updateSidebarChatBoxStyle',
-        {},
-      )
-        .then()
-        .catch()
-      backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
-        .then()
-        .catch()
-    }
-  })
+  Browser.tabs.onUpdated.addListener(
+    (tabId, changeInfo, tab) => {
+      pdfSnifferStartListener(tabId, changeInfo, tab)
+      // 页面的url变化后，要触发页面的特殊网页的element更新
+      if (tab.active && tab.id && tab.url) {
+        console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
+        backgroundSendClientMessage(
+          tab.id,
+          'Client_updateSidebarChatBoxStyle',
+          {},
+        )
+          .then()
+          .catch()
+        backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
+          .then()
+          .catch()
+      }
+    },
+    {
+      properties: ['url'],
+    },
+  )
 }

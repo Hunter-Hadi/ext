@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Gunakan AI 1-Klik di Mana Saja",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: Kekuatan AI 1-klik oleh GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Keluar",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Jendela Konteks pada Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Anda sekarang dapat memilih teks apa pun di Google Doc atau Microsoft Word untuk menyempurnakan tulisan Anda - Tingkatkan penulisan, perbaiki ejaan & tata bahasa, mempersingkat/memperpanjang teks, menyederhanakan bahasa, menguraikan, mengubah nada, dan banyak lagi!",
     "sidebar__promotion_dialog__content_item4__title": "Balasan pesan instan",
-    "sidebar__promotion_dialog__content_item4__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan sekali klik di WhatsApp, Discord, dan Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Biarkan AI menghasilkan balasan pesan yang dipersonalisasi untuk Anda dalam hitungan detik dengan hanya satu klik di WhatsApp, Discord, Telegram, dan Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Buat seni dan gambar AI",
     "sidebar__promotion_dialog__content_item5__description": "Ubah visi Anda menjadi gambar yang menakjubkan dengan cepat. Sederhana, kuat, dan transformatif.",
     "sidebar__promotion_dialog__cta_button": "Tingkatkan sekarang - Buka semua fitur",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Dapatkan jawaban panjang untuk pertanyaan yang kompleks",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Cari dengan AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Tampilkan jawaban AI di samping hasil pencarian",
+    "instant_reply_button__explicit__display_text": "Balasan instan",
     "immersive_chat__delete_all_context_menu__button__title": "Hapus semua menu konteks",
     "immersive_chat__delete_all_context_menu__title": "Bersihkan riwayat menu konteks Anda - apakah Anda yakin?",
     "context_window__chat_history__button__title": "Riwayat menu konteks",

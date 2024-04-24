@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Используйте искусственный интеллект в один клик где угодно",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Выйти",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Контекстное окно на Google Doc и Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Теперь вы можете выбрать любой текст на Google Doc или Microsoft Word, чтобы улучшить свое письмо - Улучшайте письменность, исправляйте орфографию и грамматику, делайте текст короче/длиннее, упрощайте язык, перефразируйте, меняйте тон и многое другое!",
     "sidebar__promotion_dialog__content_item4__title": "Мгновенный ответ в сообщениях",
-    "sidebar__promotion_dialog__content_item4__description": "Позвольте ИИ создавать персонализированные ответы на сообщения за считанные секунды всего одним нажатием кнопки в WhatsApp, Discord и Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Позвольте ИИ генерировать персонализированные ответы на сообщения за секунды всего одним нажатием кнопки в WhatsApp, Discord, Telegram и Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Создание искусства и изображений с помощью ИИ",
     "sidebar__promotion_dialog__content_item5__description": "Быстро превращайте свои видения в потрясающие изображения. Просто, мощно, трансформирующе.",
     "sidebar__promotion_dialog__cta_button": "Обновить сейчас - Разблокировать все функции",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Получайте длинные ответы на сложные вопросы",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Поиск с помощью ИИ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Отображение ответов ИИ рядом с результатами поиска",
+    "instant_reply_button__explicit__display_text": "Мгновенный ответ",
     "immersive_chat__delete_all_context_menu__button__title": "Удалить все контекстные меню",
     "immersive_chat__delete_all_context_menu__title": "Очистить историю ваших контекстных меню - вы уверены?",
     "context_window__chat_history__button__title": "История контекстного меню",

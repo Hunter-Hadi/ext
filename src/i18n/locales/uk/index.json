@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: کہیں بھی 1-کلک AI استعمال کریں",
+  "description": "ChatGPT، Claude 3، Gemini 1.5، GPT-4 کے ذریعہ کہیں بھی 1-click AI استعمال کریں۔ صرف ایک جنریٹو AI توسیع جو آپ کو درکار ہے۔",
+  "name": "MaxAI.me: GPT-4، Claude 3، Gemini 1.5 کے ذریعہ قابلِ استعمال AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "لاگ آؤٹ کریں",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google Doc اور Microsoft Word پر کنٹیکسٹ ونڈو",
     "sidebar__promotion_dialog__content_item3__description": "آپ اب Google Doc یا Microsoft Word پر کسی بھی متن کو منتخب کر سکتے ہیں تاکہ آپ اپنی تحریر کو بہتر بنا سکیں - تحریر میں ترتیب، املا، گرامر درست کریں، متن کو مختصر/طویل کریں، زبان کو آسان بنائیں، پیرافریز کریں، طنز تبدیل کریں، اور مزید!",
     "sidebar__promotion_dialog__content_item4__title": "فوری پیغام جواب",
-    "sidebar__promotion_dialog__content_item4__description": "AI کو صرف ایک کلک پر WhatsApp، Discord، اور Slack پر آپ کے لئے شخصیت پر مبنی پیغام جوابات تیار کروائیں۔",
+    "sidebar__promotion_dialog__content_item4__description": "صرف ایک کلک پر AI سے شخصیت پسندیدہ پیغام جوابات کو WhatsApp، Discord، Telegram، اور Slack میں سیکنڈوں میں تیار کروائیں۔",
     "sidebar__promotion_dialog__content_item5__title": "AI آرٹ اور تصاویر بنائیں",
     "sidebar__promotion_dialog__content_item5__description": "اپنی تصاویر کو جلدی سے شگافوں میں تبدیل کریں۔ آسان، طاقتور، تحولیہ۔",
     "sidebar__promotion_dialog__cta_button": "ابھی اپ گریڈ کریں - تمام خصوصیات کھولیں",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "پیچیدہ سوالات کے لئے لمبے جوابات حاصل کریں",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI کے ساتھ تلاش کریں",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "تلاش کے نتائج کے پاس AI جوابات دکھائیں",
+    "instant_reply_button__explicit__display_text": "فوری جواب",
     "immersive_chat__delete_all_context_menu__button__title": "تمام مواضع کے مینوز کو حذف کریں",
     "immersive_chat__delete_all_context_menu__title": "آپ کے مواضع کے مینوز کی تاریخ صاف کریں - کیا آپ مطمئن ہیں؟",
     "context_window__chat_history__button__title": "مواضع کے مینوز کی تاریخ",

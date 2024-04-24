@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Gebruik AI met 1 klik overal",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-klik AI aangedreven door GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Uitloggen",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Context venster op Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "U kunt nu elke tekst selecteren op Google Doc of Microsoft Word om uw schrijven te perfectioneren - Verbeter het schrijven, corrigeer spelling en grammatica, maak een tekst korter/langer, vereenvoudig de taal, parafraseer, verander de toon en meer!",
     "sidebar__promotion_dialog__content_item4__title": "Directe berichtreactie",
-    "sidebar__promotion_dialog__content_item4__description": "Laat AI gepersonaliseerde berichtreacties voor u genereren in seconden met slechts één klik op WhatsApp, Discord en Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Laat AI gepersonaliseerde berichtantwoorden voor je genereren in enkele seconden met slechts één klik op WhatsApp, Discord, Telegram en Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Creëer AI-kunst en afbeeldingen",
     "sidebar__promotion_dialog__content_item5__description": "Verander je visies snel in verbluffende afbeeldingen. Eenvoudig, krachtig, transformerend.",
     "sidebar__promotion_dialog__cta_button": "Upgrade nu - Ontgrendel alle functies",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Krijg uitgebreide antwoorden op complexe vragen",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Zoeken met AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Toon AI-antwoorden naast zoekresultaten",
+    "instant_reply_button__explicit__display_text": "Direct antwoord",
     "immersive_chat__delete_all_context_menu__button__title": "Verwijder alle contextmenu's",
     "immersive_chat__delete_all_context_menu__title": "Wis je geschiedenis van contextmenu's - weet je het zeker?",
     "context_window__chat_history__button__title": "Geschiedenis van contextmenu",

@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Use 1-Click AI Anywhere",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Log out",
@@ -617,6 +617,7 @@
     "input_assistant_button__compose_new__tooltip": "Quick compose",
     "input_assistant_button__compose_reply__tooltip": "Instant reply",
     "input_assistant_button__refine_draft__tooltip": "Edit or review draft",
+    "instant_reply_button__explicit__display_text": "Instant reply",
     "youtube_summary_button__text": "Summarize",
     "social_media_summary_button__text": "Summarize",
     "immersive_chat__more_actions_button__title": "More",
@@ -716,7 +717,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Context window on Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "You can now select any text on Google Doc or Microsoft Word to perfect your writing - Improve writing, fix spelling & grammar, make any text shorter/longer, simplify language, paraphrase, change tone, and more!",
     "sidebar__promotion_dialog__content_item4__title": "Instant message reply",
-    "sidebar__promotion_dialog__content_item4__description": "Let AI generate personalized message replies for you in seconds with just one click on WhatsApp, Discord, and Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Let AI generate personalized message replies for you in seconds with just one click on WhatsApp, Discord, Telegram, and Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Create AI art and images",
     "sidebar__promotion_dialog__content_item5__description": "Rapidly turn your visions into stunning images. Simple, powerful, transformative.",
     "sidebar__promotion_dialog__content_item6__title": "Messaging writing assistant",

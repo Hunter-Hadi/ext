@@ -1,6 +1,6 @@
 {
-  "description": "Cel mai rapid mod de a utiliza AI alimentat de ChatGPT, Claude, Gemini oriunde. Singura extensie AI generativă de care ai nevoie.",
-  "name": "MaxAI.me: Utilizați AI cu un singur clic oriunde",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Deconectare",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Fereastră de context pe Google Doc și Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Acum puteți selecta orice text pe Google Doc sau Microsoft Word pentru a vă îmbunătăți scrierea - Îmbunătățiți scrierea, corectați greșelile de ortografie și gramatică, faceți textul mai scurt/mai lung, simplificați limbajul, reformulați, schimbați tonul și multe altele!",
     "sidebar__promotion_dialog__content_item4__title": "Răspuns instant la mesaje",
-    "sidebar__promotion_dialog__content_item4__description": "Permiteți IA să genereze răspunsuri personalizate la mesaje în câteva secunde, cu doar un clic pe WhatsApp, Discord și Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Permiteți IA să genereze răspunsuri personalizate pentru mesaje în câteva secunde, cu doar un clic pe WhatsApp, Discord, Telegram și Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Creați artă și imagini AI",
     "sidebar__promotion_dialog__content_item5__description": "Transformați rapid viziunile în imagini uimitoare. Simplu, puternic, transformativ.",
     "sidebar__promotion_dialog__cta_button": "Upgradează acum - Deblochează toate funcțiile",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Obține răspunsuri lungi la întrebări complexe",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Caută cu AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Afișează răspunsurile AI lângă rezultatele căutării",
+    "instant_reply_button__explicit__display_text": "Răspuns instant",
     "immersive_chat__delete_all_context_menu__button__title": "Ștergeți toate meniurile contextuale",
     "immersive_chat__delete_all_context_menu__title": "Ștergeți istoricul meniurilor contextuale - sunteți sigur?",
     "context_window__chat_history__button__title": "Istoric meniu contextual",

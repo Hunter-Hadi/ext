@@ -57,9 +57,7 @@ const discordGetChatMessageContentAndDate = (
   return { datetime, messageContent: content }
 }
 
-const discordGetChatMessagesFromNodeList = (
-  messageBoxList: HTMLElement[],
-): IChatMessageData[] => {
+const discordGetChatMessagesFromNodeList = (messageBoxList: HTMLElement[]) => {
   const messages: IChatMessageData[] = []
   let username = ''
   for (const messageBox of messageBoxList) {

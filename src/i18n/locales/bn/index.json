@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: কোথাও এখানে 1-ক্লিক এইআই ব্যবহার করুন",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "লগ আউট",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "গুগল ডক এবং মাইক্রোসফট ওয়ার্ডে সংদর্শন উইন্ডো",
     "sidebar__promotion_dialog__content_item3__description": "আপনি এখন গুগল ডক বা মাইক্রোসফট ওয়ার্ডে যেকোনো পাঠ্য নির্বাচন করতে পারেন যাতে আপনার লেখা সম্পূর্ণ হয় - লেখা উন্নত করুন, বানান ও ব্যাকরণ ঠিক করুন, যেকোনো পাঠ্যকে ছোট/বড় করুন, ভাষা সহজ করুন, প্যারাফ্রেজ করুন, টোন পরিবর্তন করুন এবং আরো অনেক কিছু!",
     "sidebar__promotion_dialog__content_item4__title": "তাৎক্ষণিক মেসেজ উত্তর",
-    "sidebar__promotion_dialog__content_item4__description": "এক ক্লিকে এই সেকেন্ডে এআই আপনার জন্য ব্যক্তিগত মেসেজ উত্তর তৈরি করবে WhatsApp, Discord এবং Slack এ।",
+    "sidebar__promotion_dialog__content_item4__description": "এক ক্লিকে সেকেন্ডেই আপনার জন্য ব্যক্তিগত বার্তা উত্পন্ন করতে এইচটিএমএল, ডিসকর্ড, টেলিগ্রাম এবং স্ল্যাকে এই এআই ব্যবহার করুন।",
     "sidebar__promotion_dialog__content_item5__title": "আই আর্ট এবং চিত্র তৈরি করুন",
     "sidebar__promotion_dialog__content_item5__description": "আপনার ভাবনাগুলি দ্রুত অসাধারণ চিত্রে পরিণত করুন। সহজ, শক্তিশালী, পরিবর্তনশীল।",
     "sidebar__promotion_dialog__cta_button": "এখন আপগ্রেড করুন - সমস্ত বৈশিষ্ট্য আনলক করুন",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "জটিল প্রশ্নের জন্য দীর্ঘ উত্তর পান",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "আই দ্বারা অনুসন্ধান করুন",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "অনুসন্ধান ফলাফলের পাশে আই উত্তর প্রদর্শন করুন",
+    "instant_reply_button__explicit__display_text": "তাৎক্ষণিক উত্তর",
     "immersive_chat__delete_all_context_menu__button__title": "সমস্ত সংদর্শন মেনু মুছুন",
     "immersive_chat__delete_all_context_menu__title": "আপনার সংদর্শন মেনু ইতিহাস সাফ করুন - আপনি কি নিশ্চিত?",
     "context_window__chat_history__button__title": "সংদর্শন মেনু ইতিহাস",

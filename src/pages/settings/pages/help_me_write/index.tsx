@@ -9,6 +9,7 @@ import FeatureLinkedInAssistantCard from '@/pages/settings/pages/help_me_write/F
 import FeatureOutlookAssistantCard from '@/pages/settings/pages/help_me_write/FeatureOutlookAssistantCard'
 import FeatureRedditAssistantCard from '@/pages/settings/pages/help_me_write/FeatureRedditAssistantCard'
 import FeatureSlackAssistantCard from '@/pages/settings/pages/help_me_write/FeatureSlackAssistantCard'
+import FeatureTelegramAssistantCard from '@/pages/settings/pages/help_me_write/FeatureTelegramAssistantCard'
 import FeatureTwitterAssistantCard from '@/pages/settings/pages/help_me_write/FeatureTwitterAssistantCard'
 import FeatureWhatsAppAssistantCard from '@/pages/settings/pages/help_me_write/FeatureWhatsAppAssistantCard'
 import FeatureYouTubeAssistantCard from '@/pages/settings/pages/help_me_write/FeatureYouTubeAssistantCard'
@@ -27,6 +28,7 @@ const SettingsHelpMeWritePage: FC = () => {
       <FeatureWhatsAppAssistantCard />
       <FeatureSlackAssistantCard />
       <FeatureDiscordAssistantCard />
+      <FeatureTelegramAssistantCard />
     </Stack>
   )
 }

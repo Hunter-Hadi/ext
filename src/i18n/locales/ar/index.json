@@ -1,6 +1,6 @@
 {
-  "description": "أسرع طريقة لاستخدام الذكاء الاصطناعي المدعوم بـ ChatGPT، Claude، Gemini في أي مكان. الامتداد الوحيد للذكاء الاصطناعي الذي تحتاجه.",
-  "name": "MaxAI.me: استخدم الذكاء الاصطناعي بنقرة واحدة في أي مكان",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "تسجيل الخروج",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "نافذة السياق على Google Doc و Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "يمكنك الآن تحديد أي نص في Google Doc أو Microsoft Word لتحسين كتابتك - تحسين الكتابة، إصلاح الإملاء والقواعد النحوية، جعل أي نص أقصر / أطول، تبسيط اللغة، إعادة صياغة، تغيير النبرة، وأكثر!",
     "sidebar__promotion_dialog__content_item4__title": "الرد الفوري على الرسائل",
-    "sidebar__promotion_dialog__content_item4__description": "اسمح للذكاء الاصطناعي بإنشاء ردود رسائل شخصية لك في ثوانٍ مع نقرة واحدة فقط على WhatsApp و Discord و Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "دع الذكاء الاصطناعي يولد ردود رسائل شخصية لك في ثوانٍ مع وجود خيار واحد فقط على WhatsApp و Discord و Telegram و Slack.",
     "sidebar__promotion_dialog__content_item5__title": "إنشاء فن وصور AI",
     "sidebar__promotion_dialog__content_item5__description": "تحويل رؤيتك بسرعة إلى صور مذهلة. بسيطة، قوية، محولة.",
     "sidebar__promotion_dialog__cta_button": "قم بالترقية الآن - فتح جميع الميزات",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "الحصول على إجابات طويلة للأسئلة المعقدة",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "البحث باستخدام الذكاء الاصطناعي",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "عرض إجابات الذكاء الاصطناعي بجانب نتائج البحث",
+    "instant_reply_button__explicit__display_text": "الرد الفوري",
     "immersive_chat__delete_all_context_menu__button__title": "حذف جميع قوائم السياق",
     "immersive_chat__delete_all_context_menu__title": "مسح سجل قوائم السياق الخاص بك - هل أنت متأكد؟",
     "context_window__chat_history__button__title": "سجل قوائم السياق",

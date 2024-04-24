@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Her Yerde 1 Tıkla AI Kullanın",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Çıkış yap",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google Doc ve Microsoft Word'deki Bağlam Penceresi",
     "sidebar__promotion_dialog__content_item3__description": "Artık yazınızı mükemmelleştirmek için Google Doc veya Microsoft Word'de herhangi bir metni seçebilirsiniz - Yazma becerilerini geliştirin, yazım ve dilbilgisi hatalarını düzeltin, metni kısaltın/uzatın, dilinizi basitleştirin, yeniden ifade edin, tonu değiştirin ve daha fazlasını yapın!",
     "sidebar__promotion_dialog__content_item4__title": "Anlık mesaj yanıtı",
-    "sidebar__promotion_dialog__content_item4__description": "AI, WhatsApp, Discord ve Slack'te sadece bir tıklama ile kişiselleştirilmiş mesaj yanıtları oluşturmanıza yardımcı olur.",
+    "sidebar__promotion_dialog__content_item4__description": "Yapay zeka ile saniyeler içinde WhatsApp, Discord, Telegram ve Slack üzerinde sadece bir tıklama ile kişiselleştirilmiş mesaj yanıtları oluşturun.",
     "sidebar__promotion_dialog__content_item5__title": "AI sanatı ve görüntüleri oluşturun",
     "sidebar__promotion_dialog__content_item5__description": "Vizyonlarınızı hızla etkileyici görüntülere dönüştürün. Basit, güçlü, dönüştürücü.",
     "sidebar__promotion_dialog__cta_button": "Şimdi yükselt - Tüm özellikleri açın",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Karmaşık sorulara uzun cevaplar alın",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ile arama yapın",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Arama sonuçlarının yanında AI cevapları görüntüleyin",
+    "instant_reply_button__explicit__display_text": "Anında yanıt",
     "immersive_chat__delete_all_context_menu__button__title": "Tüm bağlamlı menüleri sil",
     "immersive_chat__delete_all_context_menu__title": "Bağlamlı menü geçmişinizi temizleyin - emin misiniz?",
     "context_window__chat_history__button__title": "Bağlamlı menü geçmişi",

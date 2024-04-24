@@ -1,6 +1,6 @@
 {
-  "description": "Kõige kiirem viis kasutada ChatGPT, Claude, Gemini poolt toetatud AI-d kõikjal. Ainuke generatiivse AI laiendus, mida vajate.",
-  "name": "MaxAI.me: Kasuta 1-klõpsuga AI-d kõikjal",
+  "description": "Kasuta 1-kliki AI-d kõikjal, toetatud ChatGPT, Claude 3, Gemini 1.5, GPT-4. Ainuke generatiivne AI laiendus, mida vajad.",
+  "name": "MaxAI.me: 1-kliki AI, mida toetab GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Logi välja",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontekstaken Google Docis ja Microsoft Wordis",
     "sidebar__promotion_dialog__content_item3__description": "Nüüd saate valida teksti Google Docis või Microsoft Wordis, et täiustada oma kirjutamist - Parandage kirjutamist, parandage õigekirja ja grammatikat, lühendage/pikendage teksti, lihtsustage keelt, parafraseerige, muutke tooni ja palju muud!",
     "sidebar__promotion_dialog__content_item4__title": "Kohest sõnumivastust",
-    "sidebar__promotion_dialog__content_item4__description": "Las AI genereerib teile isikupärastatud sõnumivastused vaid mõne sekundiga, klõpsates ainult üks kord WhatsAppis, Discordis ja Slackis.",
+    "sidebar__promotion_dialog__content_item4__description": "Lase AI-l genereerida isikupärastatud sõnumivastused vaid ühe klõpsuga WhatsAppis, Discordis, Telegramis ja Slackis.",
     "sidebar__promotion_dialog__content_item5__title": "Loo AI kunsti ja pilte",
     "sidebar__promotion_dialog__content_item5__description": "Muuda oma visioonid kiiresti hämmastavateks piltideks. Lihtne, võimas, muutlik.",
     "sidebar__promotion_dialog__cta_button": "Täiusta kohe - Ava kõik funktsioonid",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Saa pikki vastuseid keerulistele küsimustele",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Otsi AI abil",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Kuva AI vastused otsingutulemuste kõrval",
+    "instant_reply_button__explicit__display_text": "Kohe vastus",
     "immersive_chat__delete_all_context_menu__button__title": "Kustuta kõik kontekstimenüüd",
     "immersive_chat__delete_all_context_menu__title": "Kustuta oma kontekstimenüüde ajalugu - oled sa kindel?",
     "context_window__chat_history__button__title": "Kontekstimenüü ajalugu",

@@ -153,7 +153,9 @@ const InputAssistantButtonContextMenu: FC<
             ].includes(data?.type) &&
             data?.status === 'complete'
           ) {
-            onSelectionEffect()
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
+            onSelectionEffect() // 这里会报错只是因为 ts 定义错了，实际使用不会报错，未来可能会根据定义再扩展这个 function
           }
         }
         shortCutsEngine?.addListener(onSelectionEffectListener)

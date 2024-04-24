@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Gamitin ang AI sa Isang Click Kahit Saan",
+  "description": "Gamitin ang AI saanman, pinapatakbo ng ChatGPT, Claude 3, Gemini 1.5, GPT-4. Ang tanging generative AI extension na kailangan mo.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Mag-log out",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Context window sa Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Maaari mo nang piliin ang anumang teksto sa Google Doc o Microsoft Word upang mapaganda ang iyong pagsusulat - Mapabuti ang pagsusulat, ayusin ang pagbaybay at gramatika, gawing mas maikli/o mahaba ang anumang teksto, pahingahin ang wika, palitan ang tono, at iba pa!",
     "sidebar__promotion_dialog__content_item4__title": "Agaran na tugon sa mensahe",
-    "sidebar__promotion_dialog__content_item4__description": "Pabayaan ang AI na lumikha ng mga personalisadong tugon sa mensahe para sa iyo sa loob ng ilang segundo sa pamamagitan ng isang pag-click lamang sa WhatsApp, Discord, at Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Pabayaan ang AI na lumikha ng mga personalisadong mensahe na tugon para sa iyo sa loob ng ilang segundo gamit ang isang click lamang sa WhatsApp, Discord, Telegram, at Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Lumikha ng sining at mga imahe ng AI",
     "sidebar__promotion_dialog__content_item5__description": "Agaran na gawing kahanga-hanga ang iyong mga pangitain. Simple, malakas, transformative.",
     "sidebar__promotion_dialog__cta_button": "Mag-upgrade ngayon - Buksan ang lahat ng mga tampok",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Kumuha ng mahahabang mga sagot sa mga kumplikadong tanong",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Maghanap gamit ang AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ipakita ang mga sagot ng AI kasama ang mga resulta ng paghahanap",
+    "instant_reply_button__explicit__display_text": "Agad na tugon",
     "immersive_chat__delete_all_context_menu__button__title": "Burahin ang lahat ng mga menu ng konteksto",
     "immersive_chat__delete_all_context_menu__title": "Burahin ang kasaysayan ng iyong mga menu ng konteksto - sigurado ka ba?",
     "context_window__chat_history__button__title": "Kasaysayan ng menu ng konteksto",

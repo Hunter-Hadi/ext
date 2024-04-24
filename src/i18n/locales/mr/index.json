@@ -1,6 +1,6 @@
 {
-  "description": "ChatGPT, Claude, Gemini द्वारा संचालित AI वापरण्याची सर्वात वेगवान पद्धत. आपल्याला आवश्यक असलेले केवळ उत्पन्न AI एक्सटेंशन.",
-  "name": "MaxAI.me: आव्हाने 1-क्लिक ए.आय. कुठेही वापरा",
+  "description": "GPT-4, Claude 3, Gemini 1.5 द्वारा संचालित 1-क्लिक AI कहींथले वापरा. आपल्याला आवश्यक असेलेले एकमेकांत्रित उत्पन्न AI विस्तार.",
+  "name": "MaxAI.me: GPT-4, Claude 3, Gemini 1.5 द्वारा संचालित 1-क्लिक AI",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "लॉग आउट करा",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google Doc आणि Microsoft Word वर संदर्भ विंडो",
     "sidebar__promotion_dialog__content_item3__description": "तुम्ही आता Google Doc किंवा Microsoft Word वर कोणताही मजकूर निवडून तुमचे लेखन सुधारणे, शब्दसंग्रह आणि व्याकरण सुधारणे, कोणतेही मजकूर लहान/मोठे करणे, भाषा सोपवणे, परावर्तन करणे, टोन बदलणे इत्यादी करू शकता!",
     "sidebar__promotion_dialog__content_item4__title": "तात्पुरता संदेश उत्पन्न करा",
-    "sidebar__promotion_dialog__content_item4__description": "एक क्लिकवर व्हाट्सएप, डिस्कॉर्ड, आणि स्लॅकवर AI व्यक्तिगत संदेश उत्पन्न करण्यासाठी AI वापरा.",
+    "sidebar__promotion_dialog__content_item4__description": "एक क्लिकवर एक सेकंदात आपल्या व्हॉट्सअ‍ॅप, डिस्कॉर्ड, टेलिग्राम आणि स्लॅकवर वैयक्तिकृत संदेश उत्पन्न करण्यासाठी AI चे वापर करा.",
     "sidebar__promotion_dialog__content_item5__title": "AI कला आणि छायाचित्रे तयार करा",
     "sidebar__promotion_dialog__content_item5__description": "तुमच्या दृष्टींचे आश्चर्यजनक छायाचित्रे झटपट तयार करा. सोपे, शक्तिशाली, परिवर्तकारी.",
     "sidebar__promotion_dialog__cta_button": "आता अपग्रेड करा - सर्व सुविधांची लॉक खोला",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "संकटातील प्रश्नांसाठी लांबी उत्तरे मिळवा",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI सह शोधा",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "शोध निकालांपासून AI उत्तरे प्रदर्शित करा",
+    "instant_reply_button__explicit__display_text": "तात्पुरता प्रतिसाद",
     "immersive_chat__delete_all_context_menu__button__title": "सर्व संदर्भ मेनू काढा",
     "immersive_chat__delete_all_context_menu__title": "तुमचे संदर्भ मेनू इतिहास साफ करा - तुम्ही खरंपणे यक्क करता?",
     "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",

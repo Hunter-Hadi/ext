@@ -155,8 +155,8 @@ class MaxAIClaudeChat extends BaseChat {
         options.meta.MaxAIPromptActionConfig.variables.reduce<
           Record<string, string>
         >((variableMap, variable) => {
-          if (variable.VariableName && variable.defaultValue) {
-            variableMap[variable.VariableName] = variable.defaultValue
+          if (variable.VariableName) {
+            variableMap[variable.VariableName] = variable.defaultValue || ''
           }
           return variableMap
         }, {})

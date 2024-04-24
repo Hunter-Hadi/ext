@@ -1,6 +1,6 @@
 {
-  "description": "በChatGPT, Claude, Gemini ተጠቃሚ በማንኛውም አስተካክል AI ተጠቂዎችን በቀላሉ በተጨማሪ መሳሪያ የሚጠቅሙት. በእርስዎ የተጠቃሚ አስተካክል AI ትርጉም እንዴት እንደሚታይ ይጠቀሙት.",
-  "name": "MaxAI.me: የአስተዳደር አጠቃላይ AI በማንኛውም የእርስዎ በመጠቀም 1-Click",
+  "description": "በመጠቀም 1-click AI የሚጠቀሙትን የ ChatGPT, Claude 3, Gemini 1.5, GPT-4 ተጠቃሚዎች ያስተላልፉት ነው። የሚሰጥ የባህልን ማስታወቂያ እንዴት እንደሚጠቀሙ ይጠቀሙታል።",
+  "name": "MaxAI.me: 1-click AI በ GPT-4, Claude 3, Gemini 1.5 የሚሰጥ",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ውጣ",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "የ Google Doc & Microsoft Word ስሌቶች አማርኛ",
     "sidebar__promotion_dialog__content_item3__description": "ከላይ የ Google Doc ወይም Microsoft Word ስሌቶች ለመጻፍ ቃላት ይምረጡ - የጽሁፍ መጻፍ, ስፒልንጥር እና ጥሩ/ጥራት የሚሰራ, በቀላሉ በቀላሉ የተቀበለውን ቋንቋ የሚተላለፍ, በቀላሉ በቀላሉ የሚታወቅ ቋንቋ, በቀላሉ በቀላሉ የሚታወቅ በርካታ እና ተጨማሪ የሚሰራ!",
     "sidebar__promotion_dialog__content_item4__title": "የተሳሳተ መልዕክት መልእክት",
-    "sidebar__promotion_dialog__content_item4__description": "የAI የተሳሳተ መልዕክትን ለማስፈፅም የሚያስችል መልእክትን በአንድ ከኳት በWhatsApp, Discord, እና Slack ለመምረጥ ይጠቀሙ።",
+    "sidebar__promotion_dialog__content_item4__description": "በአይነት ከሚገኙ AI መልእክቶች የሚገባውን መልዕክት ያሳውቁን በሳንቲም, ዲስክሪዩስ, ቴለጂም, እና ስላክ ውስጥ እንዲሁም በአድማስቆሮች የሚገባውን መልዕክት በሚገባ አድራሻ አንድ ጊዜ ያገኛሉ።",
     "sidebar__promotion_dialog__content_item5__title": "የአስር ስጦታዎችን እና ምስሎችን ፍራፍሬ ማስተላለፍ",
     "sidebar__promotion_dialog__content_item5__description": "በቀላሉ የሚገኘውን የአስር ስጦታዎችን ለመቀየር በአንድ ከንቲባ የሚገኘውን የማስተላለፍ ማስተላለፍ።",
     "sidebar__promotion_dialog__cta_button": "አድርግ አሁን - ሁሉንም ማንነት ያግኙ",
@@ -741,11 +741,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "በሩህ የሚለውን የተሳሳተ መልእክት ይፈጥሩ",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI በጥያቄዎች ይፈጥሩ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "AI መልእክትን በጥያቄዎች ውስጥ ይመልከቱ",
-    "immersive_chat__delete_all_context_menu__button__title": "ሁሉንም የሚጠቀሙ ድርጊቶችን አጥፋ",
-    "immersive_chat__delete_all_context_menu__title": "የሚጠቀሙ ድርጊቶች ታይቷል - እርግጠኛ ነህ?",
-    "context_window__chat_history__button__title": "የድርጊት ማሰሻ ታሪክ",
-    "context_window__chat_history__empty__title": "የድርጊት ማሰሻ ታሪክ የለም",
-    "context_window__chat_history__continue_in_chat__title": "በድርጊት በመጫን ይግቡ"
+    "instant_reply_button__explicit__display_text": "የቀጥታ መልክት",
+    "immersive_chat__delete_all_context_menu__button__title": "ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት",
+    "immersive_chat__delete_all_context_menu__title": "የሚገባበት ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት - እርግጠኛ ነህ?",
+    "context_window__chat_history__button__title": "የመግቢያ ማናቸውንም ስርጭት",
+    "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
+    "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",
@@ -950,7 +951,7 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "በቀለ ቅንጅት",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "በቀለ ማስታወቂያ",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "በቀለ የግል ቅንጅት",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "በድርጊት በመጫን ይግቡ"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል"
   },
   "prompt_editor": {
     "preset_variables__title": "እውቀት",

@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Käytä 1-Click AI missä tahansa",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Kirjaudu ulos",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google Docin ja Microsoft Wordin kontekstiruutu",
     "sidebar__promotion_dialog__content_item3__description": "Voit nyt valita minkä tahansa tekstin Google Docissa tai Microsoft Wordissa täydellistääksesi kirjoittamistasi - Paranna kirjoitustasi, korjaa oikeinkirjoitus- ja kielioppivirheet, lyhennä/pidennä tekstiä, yksinkertaista kieltä, uudelleenmuotoile, muuta sävyä ja paljon muuta!",
     "sidebar__promotion_dialog__content_item4__title": "Välitön viestivastaus",
-    "sidebar__promotion_dialog__content_item4__description": "Anna tekoälyn luoda sinulle henkilökohtaisia viestivastauksia sekunneissa yhdellä napsautuksella WhatsAppissa, Discordissa ja Slackissa.",
+    "sidebar__promotion_dialog__content_item4__description": "Anna tekoälyn luoda sinulle henkilökohtaisia viestivastauksia sekunneissa yhdellä napsautuksella WhatsAppissa, Discordissa, Telegramissa ja Slackissa.",
     "sidebar__promotion_dialog__content_item5__title": "Luo tekoälytaidetta ja kuvia",
     "sidebar__promotion_dialog__content_item5__description": "Muunna visiosi upeiksi kuviksi nopeasti. Yksinkertaista, voimakasta, muuntautumiskykyistä.",
     "sidebar__promotion_dialog__cta_button": "Päivitä nyt - Avaa kaikki ominaisuudet",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Saat pitkiä vastauksia monimutkaisiin kysymyksiin",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Hae tekoälyn avulla",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Näytä tekoälyvastaukset hakutulosten vieressä",
+    "instant_reply_button__explicit__display_text": "Välitön vastaus",
     "immersive_chat__delete_all_context_menu__button__title": "Poista kaikki kontekstivalikot",
     "immersive_chat__delete_all_context_menu__title": "Tyhjennä kontekstivalikoiden historia - oletko varma?",
     "context_window__chat_history__button__title": "Kontekstivalikon historia",

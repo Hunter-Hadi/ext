@@ -1,6 +1,6 @@
 {
-  "description": "วิธีที่รวดเร็วที่สุดในการใช้งาน AI ที่มีพลังจาก ChatGPT, Claude, Gemini ทุกที่ ส่วนขยาย AI ที่คุณต้องการเท่านั้น",
-  "name": "MaxAI.me: ใช้ AI ด้วยคลิกเดียวทุกที่",
+  "description": "ใช้ 1-click AI ได้ทุกที่ พลังจาก ChatGPT, Claude 3, Gemini 1.5, GPT-4 เป็นส่วนขยาย AI ที่คุณต้องการเท่านั้น",
+  "name": "MaxAI.me: 1-click AI ที่มีพลังจาก GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "ออกจากระบบ",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "หน้าต่างบริบทบน Google Doc และ Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "คุณสามารถเลือกข้อความใดๆ บน Google Doc หรือ Microsoft Word เพื่อปรับปรุงการเขียนของคุณ - ปรับปรุงการเขียน แก้ไขการสะกดคำและไวยากรณ์ ทำให้ข้อความสั้น/ยาว ทำให้ภาษาง่ายขึ้น พาเราเข้าใจง่ายขึ้น แปลเปลี่ยนลักษณะเสียง และอื่นๆ อีกมากมาย!",
     "sidebar__promotion_dialog__content_item4__title": "ตอบกลับข้อความทันที",
-    "sidebar__promotion_dialog__content_item4__description": "ให้ AI สร้างข้อความตอบกลับส่วนตัวให้คุณในไม่กี่วินาทีด้วยแค่คลิกเดียวบน WhatsApp, Discord, และ Slack",
+    "sidebar__promotion_dialog__content_item4__description": "ให้ AI สร้างข้อความตอบกลับที่ปรับแต่งสำหรับคุณในไม่กี่วินาทีด้วยการคลิกเพียงครั้งเดียวบน WhatsApp, Discord, Telegram, และ Slack",
     "sidebar__promotion_dialog__content_item5__title": "สร้างศิลปะและภาพ AI",
     "sidebar__promotion_dialog__content_item5__description": "แปลงวิสัยทัศน์ของคุณให้กลายเป็นภาพที่น่าตื่นตาตื่นใจอย่างรวดเร็ว ง่าย และมีประสิทธิผล",
     "sidebar__promotion_dialog__cta_button": "อัปเกรดตอนนี้ - เปิดใช้งานคุณสมบัติทั้งหมด",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "รับคำตอบยาวสำหรับคำถามที่ซับซ้อน",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "ค้นหาด้วย AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "แสดงคำตอบของ AI ถัดจากผลการค้นหา",
+    "instant_reply_button__explicit__display_text": "ตอบกลับทันที",
     "immersive_chat__delete_all_context_menu__button__title": "ลบเมนูบริบททั้งหมด",
     "immersive_chat__delete_all_context_menu__title": "ล้างประวัติเมนูบริบทของคุณ - แน่ใจหรือไม่?",
     "context_window__chat_history__button__title": "ประวัติเมนูบริบท",

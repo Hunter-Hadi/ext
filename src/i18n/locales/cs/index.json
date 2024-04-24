@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Použijte umělou inteligenci kdekoli jedním kliknutím",
+  "description": "Použijte 1-klikové AI kdekoli, poháněné ChatGPT, Claude 3, Gemini 1.5, GPT-4. Jediné generativní rozšíření AI, které potřebujete.",
+  "name": "MaxAI.me: 1-klikové AI poháněné GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odhlásit se",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontextové okno na Google Doc a Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Nyní můžete vybrat libovolný text na Google Doc nebo Microsoft Word, abyste zlepšili své psaní - Vylepšete psaní, opravte pravopis a gramatiku, zkracujte prodlužujte text, zjednodušujte jazyk, parafrázujte, změňte tón a mnohem více!",
     "sidebar__promotion_dialog__content_item4__title": "Odpověď na okamžitou zprávu",
-    "sidebar__promotion_dialog__content_item4__description": "Nechejte umělou inteligenci generovat personalizované odpovědi na zprávy za vteřinu jedním kliknutím na WhatsApp, Discord a Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Nechejte AI generovat personalizované odpovědi na zprávy za vteřiny jedním kliknutím na WhatsApp, Discord, Telegram a Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Vytvářejte umění a obrázky pomocí AI",
     "sidebar__promotion_dialog__content_item5__description": "Rychle proměňte své vize v ohromující obrázky. Jednoduché, výkonné, transformační.",
     "sidebar__promotion_dialog__cta_button": "Nyní upgradujte - Odblokovat všechny funkce",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Získejte dlouhé odpovědi na složité otázky",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Hledejte s pomocí AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Zobrazte odpovědi AI vedle výsledků vyhledávání",
+    "instant_reply_button__explicit__display_text": "Okamžitá odpověď",
     "immersive_chat__delete_all_context_menu__button__title": "Smazat všechny kontextové nabídky",
     "immersive_chat__delete_all_context_menu__title": "Vymazat historii vašich kontextových nabídek - jste si jisti?",
     "context_window__chat_history__button__title": "Historie kontextových nabídek",

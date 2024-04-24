@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Χρησιμοποιήστε την τεχνητή νοημοσύνη με ένα κλικ οπουδήποτε",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-κλικ AI με την υποστήριξη του GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Αποσύνδεση",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Παράθυρο περιβάλλοντος στο Google Doc & Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Τώρα μπορείτε να επιλέξετε οποιοδήποτε κείμενο στο Google Doc ή το Microsoft Word για να βελτιώσετε τη γραφή σας - Βελτιώστε τη γραφή, διορθώστε την ορθογραφία και τη γραμματική, κάντε το κείμενο πιο σύντομο/μακρύτερο, απλοποιήστε τη γλώσσα, παραφράστε, αλλάξτε τόνο και πολλά άλλα!",
     "sidebar__promotion_dialog__content_item4__title": "Άμεση απάντηση σε μηνύματα",
-    "sidebar__promotion_dialog__content_item4__description": "Αφήστε την τεχνητή νοημοσύνη να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ σε WhatsApp, Discord και Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Αφήστε την τεχνητή νοημοσύνη να δημιουργήσει εξατομικευμένες απαντήσεις μηνυμάτων για εσάς σε δευτερόλεπτα με ένα μόνο κλικ σε WhatsApp, Discord, Telegram και Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Δημιουργήστε AI τέχνη και εικόνες",
     "sidebar__promotion_dialog__content_item5__description": "Μετατρέψτε γρήγορα τις εικόνες σας σε εκπληκτικά έργα τέχνης. Απλό, ισχυρό, μεταμορφωτικό.",
     "sidebar__promotion_dialog__cta_button": "Αναβάθμιση τώρα - Ξεκλειδώστε όλες τις λειτουργίες",
@@ -741,11 +741,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Λάβετε μακροσκελείς απαντήσεις σε πολύπλοκες ερωτήσεις",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Αναζήτηση με την AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Εμφάνιση απαντήσεων της AI δίπλα στα αποτελέσματα αναζήτησης",
+    "instant_reply_button__explicit__display_text": "Άμεση απάντηση",
     "immersive_chat__delete_all_context_menu__button__title": "Διαγραφή όλων των μενού περιβάλλοντος",
     "immersive_chat__delete_all_context_menu__title": "Καθαρίστε το ιστορικό των μενού περιβάλλοντος - είστε σίγουροι;",
     "context_window__chat_history__button__title": "Ιστορικό μενού περιβάλλοντος",
     "context_window__chat_history__empty__title": "Δεν υπάρχει ακόμα διαθέσιμο ιστορικό μενού περιβάλλοντος",
-    "context_window__chat_history__continue_in_chat__title": "Συνεχίστε στη συνομιλία"
+    "context_window__chat_history__continue_in_chat__title": "Συνέχεια στη συνομιλία"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",
@@ -950,7 +951,7 @@
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Απλός",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Σίγουρος",
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Ανεπίσημο",
-    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Συνεχίστε στη συνομιλία"
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Συνέχεια στη συνομιλία"
   },
   "prompt_editor": {
     "preset_variables__title": "Δυνατότητες",

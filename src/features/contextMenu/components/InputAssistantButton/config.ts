@@ -1,4 +1,5 @@
 import { SxProps } from '@mui/material/styles'
+import { type TFunction } from 'i18next/index.v4'
 
 import { IChromeExtensionButtonSettingKey } from '@/background/utils'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
@@ -22,6 +23,8 @@ export interface IInputAssistantButton {
   CTAButtonStyle?: InputAssistantButtonStyle
   DropdownButtonStyle?: InputAssistantButtonStyle
   onSelectionEffect?: (observerData: IInputAssistantButtonObserverData) => any
+  displayText?: string | ((t: TFunction<['client']>) => string)
+  displayTextSx?: SxProps
 }
 export type IInputAssistantButtonKeyType =
   | 'composeNewButton'
@@ -83,6 +86,7 @@ export const ChatAppWebsites = [
   'web.whatsapp.com',
   'app.slack.com',
   'discord.com',
+  'web.telegram.org',
 ] as const
 
 export type EmailWebsitesType = (typeof EmailWebsites)[number]
@@ -163,12 +167,17 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
             // })
           }
         },
+        displayText: (t) =>
+          t('client:instant_reply_button__explicit__display_text'),
+        displayTextSx: {
+          ml: '8px',
+        },
       },
       appendPosition: 0,
       CTAButtonStyle: {
         borderRadius: '18px',
         iconSize: 18,
-        padding: '9px 27px',
+        padding: '7.5px 16px 7.5px 12px',
         borderWidth: '0',
       },
       InputAssistantBoxSx: {
@@ -257,9 +266,14 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
             replyButton?.click()
           }
         },
+        displayText: (t) =>
+          t('client:instant_reply_button__explicit__display_text'),
+        displayTextSx: {
+          ml: '6px',
+        },
       },
       CTAButtonStyle: {
-        padding: '6px 20px',
+        padding: '5.5px 12px',
         borderWidth: 0,
         borderRadius: '4px',
       },
@@ -1237,7 +1251,13 @@ const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
 const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
-      enable: true,
+      enable: (rootElement) => {
+        return (
+          document.querySelectorAll(
+            '#main [role="application"] [role="row"] > [data-id] .message-in',
+          ).length > 0
+        )
+      },
       rootSelectors: [
         'footer .copyable-area div:has(> .lexical-rich-text-input)',
       ],
@@ -1269,7 +1289,7 @@ const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
       refineDraftButton: {
         tooltip: 'client:input_assistant_button__refine_draft__tooltip',
         buttonKey: 'inputAssistantRefineDraftButton',
-        permissionWrapperCardSceneType: 'SLACK_REFINE_DRAFT_BUTTON',
+        permissionWrapperCardSceneType: 'WHATSAPP_REFINE_DRAFT_BUTTON',
       },
       CTAButtonStyle: {
         padding: '5px 6px',
@@ -1294,8 +1314,68 @@ const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
     // }
   ]
 
+const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: (rootElement) => {
+        return Boolean(
+          findParentEqualSelector(
+            '.chats-container > .chat',
+            rootElement,
+          )?.querySelector(
+            '.bubbles .scrollable > .bubbles-inner .bubbles-date-group .bubbles-group .bubble[data-peer-id].is-in',
+          ),
+        )
+      },
+      rootSelectors: ['.input-message-container'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'align-self: flex-end;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'TELEGRAM_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[data-qa="message_input"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'TELEGRAM_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '5px 6px',
+        iconSize: 14,
+        borderRadius: '16px 0 0 16px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 16px 16px 0',
+        padding: '2px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '16px',
+        marginInline: '.125rem',
+        marginBlock: '10px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
 const WritingAssistantButtonGroupConfigs: {
-  [key in WritingAssistantButtonGroupConfigHostType]?:
+  [key in WritingAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig
     | IInputAssistantButtonGroupConfig[]
 } = {
@@ -1417,6 +1497,7 @@ const WritingAssistantButtonGroupConfigs: {
   'web.whatsapp.com': WhatsAppWritingAssistantButtonGroupConfigs,
   'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
   'discord.com': DiscordWritingAssistantButtonGroupConfigs,
+  'web.telegram.org': TelegramWritingAssistantButtonGroupConfigs,
 }
 
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(

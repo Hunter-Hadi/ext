@@ -1,6 +1,6 @@
 {
-  "description": "使用ChatGPT、Claude和Gemini提供的AI技术，无论何时何地都能以最快的方式使用。您唯一需要的生成式AI扩展。",
-  "name": "MaxAI.me：随时随地使用1-Click AI",
+  "description": "在任何地方使用1点击AI，由ChatGPT、Claude 3、Gemini 1.5和GPT-4提供支持。您唯一需要的生成式AI扩展。",
+  "name": "MaxAI.me：1点击AI，由GPT-4、Claude 3和Gemini 1.5提供支持",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "退出",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Google Doc和Microsoft Word上的上下文窗口",
     "sidebar__promotion_dialog__content_item3__description": "您现在可以选择Google Doc或Microsoft Word上的任何文本来完善您的写作 - 改进写作，修正拼写和语法错误，使文本变短/长，简化语言，改写，改变语气等！",
     "sidebar__promotion_dialog__content_item4__title": "即时消息回复",
-    "sidebar__promotion_dialog__content_item4__description": "让AI在WhatsApp、Discord和Slack上点击一次即可为您生成个性化的消息回复。",
+    "sidebar__promotion_dialog__content_item4__description": "让AI在WhatsApp、Discord、Telegram和Slack上，通过一键生成个性化消息回复，仅需几秒钟。",
     "sidebar__promotion_dialog__content_item5__title": "创作AI艺术和图像",
     "sidebar__promotion_dialog__content_item5__description": "将您的想象迅速转化为令人惊叹的图像。简单、强大、变革性。",
     "sidebar__promotion_dialog__cta_button": "立即升级 - 解锁所有功能",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "获取复杂问题的详细回答",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "与AI一起搜索",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "在搜索结果旁边显示AI答案",
+    "instant_reply_button__explicit__display_text": "即时回复",
     "immersive_chat__delete_all_context_menu__button__title": "删除所有上下文菜单",
     "immersive_chat__delete_all_context_menu__title": "清除您的上下文菜单历史记录 - 您确定吗？",
     "context_window__chat_history__button__title": "上下文菜单历史记录",

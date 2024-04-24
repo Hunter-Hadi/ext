@@ -7,10 +7,9 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
-  'TOTAL_CHAT_DAILY_LIMIT',
   'MAXAI_FAST_TEXT_MODEL',
   'MAXAI_ADVANCED_MODEL',
-  'MAXAI_IMAGE_MODEL',
+  'MAXAI_IMAGE_GENERATE_MODEL',
   'CUSTOM_PROMPT',
   'PREFERRED_LANGUAGE',
   'PAGE_SUMMARY',
@@ -45,6 +44,8 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'SLACK_REFINE_DRAFT_BUTTON',
   'WHATSAPP_COMPOSE_REPLY_BUTTON',
   'WHATSAPP_REFINE_DRAFT_BUTTON',
+  'TELEGRAM_COMPOSE_REPLY_BUTTON',
+  'TELEGRAM_REFINE_DRAFT_BUTTON',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SIDEBAR_SEARCH_WITH_AI',
@@ -116,8 +117,8 @@ export const isUsageLimitPermissionSceneType = (sceneType: string): boolean => {
   const API_RESPONSE_USAGE_LIMIT_SCENE_TYPES = [
     'MAXAI_ADVANCED_MODEL',
     'MAXAI_FAST_TEXT_MODEL',
-    'MAXAI_IMAGE_MODEL',
-    'TOTAL_CHAT_DAILY_LIMIT',
+    'MAXAI_IMAGE_GENERATE_MODEL',
+    'THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT',
   ]
   if (API_RESPONSE_USAGE_LIMIT_SCENE_TYPES.includes(sceneType)) {
     // 由于 不同模型的用量上限卡点的报错值 是后端直接返回的
@@ -157,19 +158,6 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
-  TOTAL_CHAT_DAILY_LIMIT: {
-    // imageUrl: `${getChromeExtensionAssetsURL(
-    //   '/images/upgrade/unlimited-ai-requests.png',
-    // )}`,
-    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
-    description: (t) => {
-      return `${t(
-        'client:permission__pricing_hook__daily_limit__description1',
-      )}`
-    },
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
   MAXAI_FAST_TEXT_MODEL: {
     // imageUrl: `${getChromeExtensionAssetsURL(
     //   '/images/upgrade/unlimited-ai-requests.png',
@@ -196,7 +184,7 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
     ctaButtonText: (t) =>
       t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
-  MAXAI_IMAGE_MODEL: {
+  MAXAI_IMAGE_GENERATE_MODEL: {
     // imageUrl: `${getChromeExtensionAssetsURL(
     //   '/images/upgrade/unlimited-ai-requests.png',
     // )}`,
@@ -1068,5 +1056,37 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       ),
     ctaButtonText: (t) =>
       t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+  },
+  // Telegram cta button - compose reply
+  TELEGRAM_COMPOSE_REPLY_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-chat-app-website.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+  },
+  // Telegram dropdown button - refine draft
+  TELEGRAM_REFINE_DRAFT_BUTTON: {
+    imageUrl: `${getChromeExtensionAssetsURL(
+      '/images/upgrade/input-assistant-chat-app-website.png',
+    )}`,
+    title: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
+      ),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_to_pro'),
   },
 }

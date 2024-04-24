@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Uporabite umetno inteligenco s samo enim klikom kjerkoli",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-klik AI, ki ga poganjajo GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Odjava",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontekstno okno na Google Doc in Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Zdaj lahko izberete katero koli besedilo na Google Doc ali Microsoft Word, da izboljšate svoje pisanje - Izpopolnite pisanje, popravite črkovanje in slovnico, skrajšajte/podaljšajte besedilo, poenostavite jezik, parafrazirajte, spremenite ton in še več!",
     "sidebar__promotion_dialog__content_item4__title": "Odgovor na takojšnje sporočilo",
-    "sidebar__promotion_dialog__content_item4__description": "Naj AI v nekaj sekundah za vas ustvari personalizirane odgovore na sporočila s samo enim klikom na WhatsApp, Discord in Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Dovoli AI, da v nekaj sekundah generira personalizirane odgovore na sporočila z enim klikom na WhatsApp, Discord, Telegram in Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Ustvarjanje umetnosti in slik z AI",
     "sidebar__promotion_dialog__content_item5__description": "Hitro pretvorite svoje vizije v osupljive slike. Preprosto, močno, preoblikovalno.",
     "sidebar__promotion_dialog__cta_button": "Nadgradite zdaj - Odklenite vse funkcije",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Dobite dolge odgovore na kompleksna vprašanja",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Iskanje z AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Prikaži AI odgovore poleg rezultatov iskanja",
+    "instant_reply_button__explicit__display_text": "Takojšen odgovor",
     "immersive_chat__delete_all_context_menu__button__title": "Izbriši vse menije z vsebino",
     "immersive_chat__delete_all_context_menu__title": "Počisti zgodovino menijev - ste prepričani?",
     "context_window__chat_history__button__title": "Zgodovina menijev",

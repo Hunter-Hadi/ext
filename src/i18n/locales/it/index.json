@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Utilizza l'IA con un solo clic ovunque",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: IA con un clic potenziata da GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Esci",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Finestra di contesto su Google Doc e Microsoft Word",
     "sidebar__promotion_dialog__content_item3__description": "Ora puoi selezionare qualsiasi testo su Google Doc o Microsoft Word per perfezionare la tua scrittura - Migliora la scrittura, correggi l'ortografia e la grammatica, rendi il testo più breve/più lungo, semplifica il linguaggio, parafrasa, cambia tono e altro ancora!",
     "sidebar__promotion_dialog__content_item4__title": "Risposta istantanea ai messaggi",
-    "sidebar__promotion_dialog__content_item4__description": "Lascia che l'IA generi risposte personalizzate ai messaggi in pochi secondi con un solo clic su WhatsApp, Discord e Slack.",
+    "sidebar__promotion_dialog__content_item4__description": "Lascia che l'IA generi risposte personalizzate per te in pochi secondi con un solo clic su WhatsApp, Discord, Telegram e Slack.",
     "sidebar__promotion_dialog__content_item5__title": "Crea arte e immagini AI",
     "sidebar__promotion_dialog__content_item5__description": "Trasforma rapidamente le tue visioni in immagini sbalorditive. Semplice, potente, trasformativo.",
     "sidebar__promotion_dialog__cta_button": "Aggiorna ora - Sblocca tutte le funzionalità",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Ottieni risposte lunghe a domande complesse",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Ricerca con AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Mostra le risposte dell'IA accanto ai risultati di ricerca",
+    "instant_reply_button__explicit__display_text": "Risposta immediata",
     "immersive_chat__delete_all_context_menu__button__title": "Elimina tutti i menu contestuali",
     "immersive_chat__delete_all_context_menu__title": "Cancella la cronologia dei tuoi menu contestuali - sei sicuro?",
     "context_window__chat_history__button__title": "Cronologia menu contestuali",

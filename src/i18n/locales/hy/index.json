@@ -624,7 +624,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Համատեքստային պատուհան Google Doc-ում և Microsoft Word-ում",
     "sidebar__promotion_dialog__content_item3__description": "Դուք կարող եք ընտրել ցանկացած տեքստ Google Doc-ում կամ Microsoft Word-ում, որպեսզի ձեզանից լավագույն՝ բարելավել գրականությունը, որպեսզի ճշգրիտել տառատեսակը և լեզվը, կամացանկացած տեքստ կարճաժամկետային/երկարաժամկետային դարձնել, պարզագույներեն՝ համատեքստը վերաբարձրացնել, թաքցնել տոնը և այլն!",
     "sidebar__promotion_dialog__content_item4__title": "Անմիջապես նամակատառ պատասխան",
-    "sidebar__promotion_dialog__content_item4__description": "Թույլատրեք AI-ին գեներացնել ձեր անձնական նամակատառերը մի քանի վայրում, միայն մեկ կտտացողությամբ WhatsApp-ում, Discord-ում և Slack-ում:",
+    "sidebar__promotion_dialog__content_item4__description": "Թույլատրեք AI-ին գեներացնել Ձեր համար անհատական նամակները վարժեցնելու համար միայն մեկ սեկունդով WhatsApp, Discord, Telegram և Slack-ում:",
     "sidebar__promotion_dialog__content_item5__title": "Ստեղծել AI արվեստ և պատկերներ",
     "sidebar__promotion_dialog__content_item5__description": "Արագությամբ վերադարձնեք ձեր տեսարժան պատկերները հոդվածներին: Պարզ, արագ, փոքրաթաթերթային:",
     "sidebar__promotion_dialog__cta_button": "Թարմացնել հիմա - Բացահայտեք բոլոր հատկությունները",
@@ -738,6 +738,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Ստացեք երկարատեղային պատասխաններ դառնալու հարցերի համար",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Որոնեք AI-ի հետ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ցուցադրեք AI պատասխանները որոնման արդյունքների հետ",
+    "instant_reply_button__explicit__display_text": "Հանգեցնել պատասխանը",
     "immersive_chat__delete_all_context_menu__button__title": "Ջնջել բոլոր համերգային ընտրանքները",
     "immersive_chat__delete_all_context_menu__title": "Մաքրեք ձեր համերգային ընտրանքների պատմությունը - վստահ եք?",
     "context_window__chat_history__button__title": "Համերգային ընտրանքների պատմություն",
@@ -949,8 +950,8 @@
     "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Անհատական",
     "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Շարունակեք խոսքի մեջ"
   },
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Օգտագործեք 1-Սեղմումով AI Բարելավելությունը",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "prompt_editor": {
     "preset_variables__title": "Հմուտ փոփոխականների վերնագիր",

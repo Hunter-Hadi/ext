@@ -1,6 +1,6 @@
 {
-  "description": "The fastest way to use AI powered by ChatGPT, Claude, Gemini anywhere. The only generative AI extension you need.",
-  "name": "MaxAI.me: Naudokite 1 paspaudimą AI bet kur",
+  "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
+  "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",
   "shortName": "MaxAI.me",
   "common": {
     "log_out": "Atsijungti",
@@ -627,7 +627,7 @@
     "sidebar__promotion_dialog__content_item3__title": "Kontekstinis langas „Google Doc“ ir „Microsoft Word“",
     "sidebar__promotion_dialog__content_item3__description": "Dabar galite pasirinkti bet kurį tekstą „Google Doc“ arba „Microsoft Word“, kad tobulintumėte savo rašymą - Gerinkite rašymą, ištaisykite rašybą ir gramatiką, sutrumpinkite/ar pratęskite tekstą, supaprastinkite kalbą, parafrasuokite, pakeiskite toną ir dar daugiau!",
     "sidebar__promotion_dialog__content_item4__title": "Momentinės žinutės atsakymas",
-    "sidebar__promotion_dialog__content_item4__description": "Leiskite dirbti sukuria asmeniškus žinučių atsakymus per kelias sekundes vienu paspaudimu „WhatsApp“, „Discord“ ir „Slack“.",
+    "sidebar__promotion_dialog__content_item4__description": "Leiskite dirbti su Jums kartu ir generuoti asmeniškus žinučių atsakymus per kelias sekundes vienu paspaudimu WhatsApp, Discord, Telegram ir Slack programose.",
     "sidebar__promotion_dialog__content_item5__title": "Kurkite AI meną ir paveikslus",
     "sidebar__promotion_dialog__content_item5__description": "Greitai paverčia savo vizijas nuostabiais paveikslais. Paprasta, galinga, transformuojanti.",
     "sidebar__promotion_dialog__cta_button": "Dabar atnaujinkite - Atrakinkite visas funkcijas",
@@ -741,6 +741,7 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Gaukite išsamius atsakymus į sudėtingus klausimus",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Ieškokite su AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Rodyti AI atsakymus šalia paieškos rezultatų",
+    "instant_reply_button__explicit__display_text": "Momentinis atsakymas",
     "immersive_chat__delete_all_context_menu__button__title": "Ištrinti visus kontekstinius meniu",
     "immersive_chat__delete_all_context_menu__title": "Išvalyti kontekstinių meniu istoriją - ar tikrai?",
     "context_window__chat_history__button__title": "Kontekstinio meniu istorija",

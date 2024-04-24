@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import { SxProps } from '@mui/material/styles'
+import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -301,6 +302,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                           }}
                         />
                       )}
+                      {
+                        buttonGroup[0].displayText && (
+                          <Typography component={'span'} fontSize={'14px'} sx={buttonGroup[0].displayTextSx}>
+                            {typeof buttonGroup[0].displayText === 'function' ? buttonGroup[0].displayText(t) : buttonGroup[0].displayText}
+                          </Typography>
+                        )
+                      }
                     </Button>
                     <Box
                       position={'absolute'}

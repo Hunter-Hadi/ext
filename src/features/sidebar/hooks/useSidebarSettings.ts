@@ -189,6 +189,7 @@ const useSidebarSettings = () => {
     conversationType: ISidebarConversationType,
     AIProvider?: IAIProviderType,
     AIModel?: string,
+    updateSetting = true,
   ): Promise<string> => {
     let conversationId: string = ''
     if (!AIProvider || !AIModel) {
@@ -225,21 +226,25 @@ const useSidebarSettings = () => {
       })
       if (result.success) {
         conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          chat: {
-            conversationId,
-          },
-        })
+        if (updateSetting) {
+          await updateSidebarSettings({
+            chat: {
+              conversationId,
+            },
+          })
+        }
       }
     } else if (conversationType === 'Summary') {
       conversationId = getPageSummaryConversationId()
       // 如果已经存在了，并且有AI消息，那么就不用创建了
       if (conversationId && (await clientGetConversation(conversationId))) {
-        await updateSidebarSettings({
-          summary: {
-            conversationId,
-          },
-        })
+        if (updateSetting) {
+          await updateSidebarSettings({
+            summary: {
+              conversationId,
+            },
+          })
+        }
         setSidebarSummaryConversationId(conversationId)
         return conversationId
       }
@@ -288,11 +293,13 @@ const useSidebarSettings = () => {
       })
       if (result.success) {
         conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          search: {
-            conversationId,
-          },
-        })
+        if (updateSetting) {
+          await updateSidebarSettings({
+            search: {
+              conversationId,
+            },
+          })
+        }
       }
     } else if (conversationType === 'Art') {
       // 创建一个新的conversation
@@ -308,11 +315,13 @@ const useSidebarSettings = () => {
       })
       if (result.success) {
         conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          art: {
-            conversationId,
-          },
-        })
+        if (updateSetting) {
+          await updateSidebarSettings({
+            art: {
+              conversationId,
+            },
+          })
+        }
       }
     } else if (conversationType === 'ContextMenu') {
       const baseMetaConfig: Partial<IChatConversationMeta> = {

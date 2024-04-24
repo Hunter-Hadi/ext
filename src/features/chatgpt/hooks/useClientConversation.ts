@@ -70,6 +70,7 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
 const useClientConversation = () => {
   const {
     conversationId: currentConversationId,
+    updateConversationId,
     createConversation,
     conversationStatus,
     updateConversationStatus,
@@ -254,6 +255,7 @@ const useClientConversation = () => {
     disposeBackgroundChatSystem,
     updateConversation,
     currentConversationId,
+    updateConversationId,
     clientConversation,
     currentConversationIdRef,
     currentSidebarConversationType,

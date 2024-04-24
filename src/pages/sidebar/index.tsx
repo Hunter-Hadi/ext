@@ -1,20 +1,15 @@
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC } from 'react'
 
-import { ConversationStatusType } from '@/background/provider/chat'
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import {
-  ChatPanelContext,
-  ChatPanelContextValue,
-} from '@/features/chatgpt/store/ChatPanelContext'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
+import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 
 // const getDefaultValue = () => {
@@ -40,30 +35,18 @@ const SidebarPageInit: FC = () => {
 const SidebarPage: FC<{
   isImmersiveChat?: boolean
   open?: boolean
+  disableContextProvider?: boolean
 }> = (props) => {
-  const { isImmersiveChat, open = false } = props
+  const { isImmersiveChat, open = false, disableContextProvider } = props
   const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useSidebarDropEvent()
-  const {
-    currentSidebarConversationId,
-    createSidebarConversation,
-    resetSidebarConversation,
-  } = useSidebarSettings()
-  const [conversationStatus, setConversationStatus] =
-    useState<ConversationStatusType>('success')
-  const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
-    return {
-      conversationStatus,
-      updateConversationStatus: (newStatus: ConversationStatusType) => {
-        setConversationStatus(newStatus)
-      },
-      conversationId: currentSidebarConversationId,
-      createConversation: createSidebarConversation,
-      resetConversation: resetSidebarConversation,
-    }
-  }, [currentSidebarConversationId, conversationStatus])
+
+  const ContextProvider = disableContextProvider
+    ? React.Fragment
+    : SidebarContextProvider
+
   return (
-    <ChatPanelContext.Provider value={sidebarContextValue}>
+    <ContextProvider isImmersiveChat={isImmersiveChat}>
       <SidebarPageInit />
       {open && (
         <Stack
@@ -110,7 +93,7 @@ const SidebarPage: FC<{
           )}
         </Stack>
       )}
-    </ChatPanelContext.Provider>
+    </ContextProvider>
   )
 }
 export default SidebarPage

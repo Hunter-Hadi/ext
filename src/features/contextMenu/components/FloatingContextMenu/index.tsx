@@ -369,6 +369,7 @@ const FloatingContextMenu: FC<{
         setAppDBStorage(settings)
       })
     } else {
+      setIsSettingVariables(false)
       const textareaEl =
         getMaxAIFloatingContextMenuRootElement()?.querySelector(
           `#${MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}`,
@@ -810,6 +811,10 @@ const FloatingContextMenu: FC<{
                 <ActionSetVariablesModal
                   onClose={() => {
                     setIsSettingVariables(false)
+                    setFloatingDropdownMenu((prev) => ({
+                      ...prev,
+                      open: false,
+                    }))
                   }}
                   onShow={() => setIsSettingVariables(true)}
                   modelKey={'FloatingContextMenu'}

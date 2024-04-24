@@ -129,7 +129,6 @@ const AppInit = () => {
   useInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
-  useInitRangy()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()

@@ -63,6 +63,9 @@ const checkHostUsingButtonKeys = (
     case 'web.telegram.org':
       return getTelegramButtonGroup(config)
 
+    case 'messenger.com':
+      return getMessengerButtonGroup(config)
+
     default:
       return [
         config.buttonGroupConfig.composeReplyButton,
@@ -367,13 +370,6 @@ const getWhatsAppButtonGroup = (
   config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  // if (
-  //   keyElement?.matches(
-  //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
-  //   )
-  // ) {
-  //   return [buttonGroupConfig.composeReplyButton]
-  // }
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,
@@ -384,13 +380,16 @@ const getTelegramButtonGroup = (
   config: getWritingAssistantButtonGroupWithHostConfig,
 ): IInputAssistantButton[] => {
   const { keyElement, buttonGroupConfig } = config
-  // if (
-  //   keyElement?.matches(
-  //     '[data-qa="message-actions"]:has(> [data-qa="start_thread"][aria-keyshortcuts="t"])',
-  //   )
-  // ) {
-  //   return [buttonGroupConfig.composeReplyButton]
-  // }
+  return [
+    buttonGroupConfig.composeReplyButton,
+    buttonGroupConfig.refineDraftButton,
+  ]
+}
+
+const getMessengerButtonGroup = (
+  config: getWritingAssistantButtonGroupWithHostConfig,
+): IInputAssistantButton[] => {
+  const { keyElement, buttonGroupConfig } = config
   return [
     buttonGroupConfig.composeReplyButton,
     buttonGroupConfig.refineDraftButton,

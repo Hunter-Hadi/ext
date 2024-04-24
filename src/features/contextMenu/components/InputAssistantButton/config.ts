@@ -87,6 +87,7 @@ export const ChatAppWebsites = [
   'app.slack.com',
   'discord.com',
   'web.telegram.org',
+  'messenger.com',
 ] as const
 
 export type EmailWebsitesType = (typeof EmailWebsites)[number]
@@ -1374,6 +1375,59 @@ const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
     } as IInputAssistantButtonGroupConfig,
   ]
 
+const MessengerWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: (rootElement) => {
+        return true
+      },
+      rootSelectors: ['.input-message-container'],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'align-self: flex-end;',
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'MESSENGER_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          const inputAssistantButton =
+            InputAssistantButtonElementRouteMap.get(
+              inputAssistantButtonSelector,
+            ) ||
+            document.querySelector<HTMLButtonElement>(
+              inputAssistantButtonSelector,
+            )
+          if (inputAssistantButton) {
+            findSelectorParent(
+              '[data-qa="message_input"]',
+              inputAssistantButton as HTMLElement,
+            )?.click()
+          }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'MESSENGER_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '5px 6px',
+        iconSize: 14,
+        borderRadius: '16px 0 0 16px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 16px 16px 0',
+        padding: '2px 0',
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '16px',
+        marginInline: '.125rem',
+        marginBlock: '10px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
 const WritingAssistantButtonGroupConfigs: {
   [key in WritingAssistantButtonGroupConfigHostType]:
     | IInputAssistantButtonGroupConfig
@@ -1498,6 +1552,7 @@ const WritingAssistantButtonGroupConfigs: {
   'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
   'discord.com': DiscordWritingAssistantButtonGroupConfigs,
   'web.telegram.org': TelegramWritingAssistantButtonGroupConfigs,
+  'messenger.com': MessengerWritingAssistantButtonGroupConfigs,
 }
 
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(

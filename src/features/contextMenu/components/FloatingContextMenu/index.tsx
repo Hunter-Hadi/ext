@@ -570,7 +570,8 @@ const FloatingContextMenu: FC<{
         })
 
         if (
-          currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT
+          currentContextMenu.id === CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT &&
+          currentConversationIdRef.current
         ) {
           continueConversationInSidebar(
             currentConversationIdRef.current,

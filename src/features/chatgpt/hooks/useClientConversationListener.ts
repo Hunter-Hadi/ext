@@ -312,9 +312,8 @@ export const useClientConversationListener = () => {
     ) {
       return
     }
-    let autoArchiveTime =
+    const autoArchiveTime =
       appDBStorage.userSettings?.sidebar?.autoArchive?.[clientConversation.type]
-    autoArchiveTime = 60 * 1000
     if (autoArchiveTime && isNumber(autoArchiveTime)) {
       const archiveTime =
         new Date(clientConversation.updated_at).getTime() + autoArchiveTime
@@ -327,7 +326,7 @@ export const useClientConversationListener = () => {
             60
           ).toFixed(2)}]分钟`,
         )
-        const text = getMaxAISidebarRootElement()?.querySelector(
+        const text = getMaxAISidebarRootElement()?.querySelector?.(
           '#auto-archive',
         ) as any as HTMLParagraphElement
         if (text) {
@@ -345,7 +344,7 @@ export const useClientConversationListener = () => {
             isCreatingConversationRef.current = false
           })
       } else {
-        const text = getMaxAISidebarRootElement()?.querySelector(
+        const text = getMaxAISidebarRootElement()?.querySelector?.(
           '#auto-archive',
         ) as any as HTMLParagraphElement
         if (text) {

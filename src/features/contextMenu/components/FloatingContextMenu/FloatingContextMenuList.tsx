@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import React, { FC, forwardRef, useCallback, useMemo } from 'react'
+import { Simulate } from 'react-dom/test-utils'
 import { useTranslation } from 'react-i18next'
 
 import {
@@ -8,8 +9,10 @@ import {
   DropdownMenuItem,
   MenuProps,
 } from '@/features/contextMenu/components/FloatingContextMenu/DropdownMenu'
+import { SPECIAL_NEED_DIVIDER_KEYS } from '@/features/contextMenu/constants'
 import { FAVORITE_CONTEXT_MENU_GROUP_ID } from '@/features/contextMenu/hooks/useFavoriteContextMenuList'
 import { IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import contextMenu = Simulate.contextMenu
 // import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 
 // eslint-disable-next-line react/display-name
@@ -81,6 +84,30 @@ const RenderDropdownItem = forwardRef<
   )
 })
 
+const ContextMenuDivider: FC<{
+  contextMenuId: string
+}> = (props) => {
+  const { contextMenuId } = props
+  return (
+    <Box
+      data-testid={`max-ai-context-menu-divider`}
+      key={contextMenuId + '_group_spector'}
+      aria-disabled={true}
+      onClick={(event: any) => {
+        event.stopPropagation()
+        event.preventDefault()
+      }}
+      component={'div'}
+      sx={{
+        pointerEvents: 'none',
+        borderTop: '1px solid',
+        borderColor: 'customColor.borderColor',
+        my: 1,
+      }}
+    />
+  )
+}
+
 const FloatingContextMenuList: FC<
   Omit<MenuProps, 'label'> & {
     menuList: IContextMenuItemWithChildren[]
@@ -113,23 +140,7 @@ const FloatingContextMenuList: FC<
       if (menuItem.data.type === 'group') {
         if (index > 0) {
           // spector
-          nodeList.push(
-            <Box
-              key={menuItem.id + '_group_spector'}
-              aria-disabled={true}
-              onClick={(event: any) => {
-                event.stopPropagation()
-                event.preventDefault()
-              }}
-              component={'div'}
-              sx={{
-                pointerEvents: 'none',
-                borderTop: '1px solid',
-                borderColor: 'customColor.borderColor',
-                my: 1,
-              }}
-            />,
-          )
+          nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
         }
         nodeList.push(
           <Box
@@ -168,6 +179,17 @@ const FloatingContextMenuList: FC<
           </Box>,
         )
         menuItem.children.forEach((childMenuItem, index) => {
+          console.log(
+            `SPECIAL_NEED_DIVIDER_KEYS`,
+            SPECIAL_NEED_DIVIDER_KEYS,
+            childMenuItem.id,
+            childMenuItem.text,
+          )
+          if (SPECIAL_NEED_DIVIDER_KEYS.includes(childMenuItem.id)) {
+            nodeList.push(
+              <ContextMenuDivider contextMenuId={childMenuItem.id} />,
+            )
+          }
           nodeList.push(
             <RenderDropdownItem
               menuWidth={menuWidth}
@@ -181,26 +203,23 @@ const FloatingContextMenuList: FC<
             />,
           )
         })
-        if (index === 0 && menuItem.id === FAVORITE_CONTEXT_MENU_GROUP_ID && menuList[index + 1].data.type === 'shortcuts') {
-          nodeList.push(
-            <Box
-              key={menuItem.id + '_group_spector'}
-              aria-disabled={true}
-              onClick={(event: any) => {
-                event.stopPropagation()
-                event.preventDefault()
-              }}
-              component={'div'}
-              sx={{
-                pointerEvents: 'none',
-                borderTop: '1px solid',
-                borderColor: 'customColor.borderColor',
-                my: 1,
-              }}
-            />,
-          )
+        if (
+          index === 0 &&
+          menuItem.id === FAVORITE_CONTEXT_MENU_GROUP_ID &&
+          menuList[index + 1].data.type === 'shortcuts'
+        ) {
+          nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
         }
       } else {
+        console.log(
+          `SPECIAL_NEED_DIVIDER_KEYS`,
+          SPECIAL_NEED_DIVIDER_KEYS,
+          menuItem.id,
+          menuItem.text,
+        )
+        if (SPECIAL_NEED_DIVIDER_KEYS.includes(menuItem.id)) {
+          nodeList.push(<ContextMenuDivider contextMenuId={menuItem.id} />)
+        }
         nodeList.push(
           <RenderDropdownItem
             menuWidth={menuWidth}

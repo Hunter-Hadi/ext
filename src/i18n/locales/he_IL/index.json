@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "תשובה מיידית ב-HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "תשובה מיידית ב-Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "תשובה מיידית ב-Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "תשובה מיידית ב-Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "תשובה מיידית ב-Google Chat",
+    "left_menu__sidebar": "סרגל צד",
+    "feature_card__sidebar__field__auto_archive__title": "ארכיב אוטומטי: נקה במידה ונדרש",
+    "feature_card__sidebar__field__auto_archive__button__title": "ארכוב צ'אט לאחר",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מבצעים ארכיב אוטומטי של צ'אטים שבלתי פעילים בתדירות שתבחר. זה יעניק לך התחלה חדשה וישמור על סרגל הצד שלך מסודר."
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",

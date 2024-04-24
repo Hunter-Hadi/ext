@@ -249,7 +249,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot-ի անմիջապես պատասխանել",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram-ի անմիջապես պատասխանել",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams-ի անմիջապես պատասխանել",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat-ի անմիջապես պատասխանել"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat-ի անմիջապես պատասխանել",
+    "left_menu__sidebar": "Մենյուի սաղմոն",
+    "feature_card__sidebar__field__auto_archive__title": "Ինքնահատկացված արխիվացում: Մաքրեք ընթացիկը",
+    "feature_card__sidebar__field__auto_archive__button__title": "Արխիվացնել խոսակցությունը հետևյալում",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-ում, մենք ավտոմարտահրաշալի արխիվացնում ենք անհանգստանալով խոսակցությունը ընտրած պահին։ Այսպիսով, դուք կսկսեք նորից և կպահպանեք ձեր մոտավորությունը մաքրված։"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",

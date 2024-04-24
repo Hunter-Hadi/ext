@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Resposta instantânea do HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Resposta instantânea do Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Resposta instantânea do Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Resposta instantânea do Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Resposta instantânea do Google Chat",
+    "left_menu__sidebar": "Barra lateral",
+    "feature_card__sidebar__field__auto_archive__title": "Auto arquivo: Limpe à medida que avança",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arquivar chat após",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência da sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",

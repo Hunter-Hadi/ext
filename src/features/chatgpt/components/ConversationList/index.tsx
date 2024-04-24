@@ -181,11 +181,22 @@ const ConversationList: FC<IProps> = (props) => {
                     return
                   }
                   let disposeBackgroundChatSystemConversationId = undefined
+                  if (conversation.id) {
+                    // 因为现在有Auto archive功能，所以点击的时候需要更新时间
+                    await clientUpdateChatConversation(
+                      conversation.id,
+                      {
+                        updated_at: new Date().toISOString(),
+                      },
+                      true,
+                    )
+                  }
                   if (conversation.type === 'Summary') {
                     // do nothing
                   } else if (conversation.type === 'Chat') {
                     disposeBackgroundChatSystemConversationId =
                       appLocalStorage.sidebarSettings?.chat?.conversationId
+
                     await updateSidebarSettings({
                       chat: {
                         conversationId: conversation.id,

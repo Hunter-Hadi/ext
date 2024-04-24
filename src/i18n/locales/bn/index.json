@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot তাৎক্ষণিক উত্তর",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram তাৎক্ষণিক উত্তর",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams তাৎক্ষণিক উত্তর",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat তাৎক্ষণিক উত্তর"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat তাৎক্ষণিক উত্তর",
+    "left_menu__sidebar": "সাইডবার",
+    "feature_card__sidebar__field__auto_archive__title": "অটো আর্কাইভ: চলাচলের সাথে পরিষ্কার করুন",
+    "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-তে, আমরা আপনার পছন্দের ক্যাডেন্সে আইডেল চ্যাটগুলি অটোমেটিকভাবে আর্কাইভ করি। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাজানো রাখে।"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

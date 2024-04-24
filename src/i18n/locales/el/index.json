@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Άμεση απάντηση HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Άμεση απάντηση Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Άμεση απάντηση Microsoft teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Άμεση απάντηση Google chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Άμεση απάντηση Google chat",
+    "left_menu__sidebar": "Πλευρική γραμμή",
+    "feature_card__sidebar__field__auto_archive__title": "Αυτόματη αρχειοθέτηση: Καθαρίστε καθώς προχωράτε",
+    "feature_card__sidebar__field__auto_archive__button__title": "Αρχειοθέτηση συνομιλίας μετά από",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αρχειοθετούμε αυτόματα τις αδρές συνομιλίες με τη συχνότητα της επιλογής σας. Αυτό σας δίνει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική γραμμή σας τακτοποιημένη."
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

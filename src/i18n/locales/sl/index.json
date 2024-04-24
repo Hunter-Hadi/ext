@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot takojšen odgovor",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram takojšen odgovor",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams takojšen odgovor",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google klepet takojšen odgovor"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google klepet takojšen odgovor",
+    "left_menu__sidebar": "Stranska vrstica",
+    "feature_card__sidebar__field__auto_archive__title": "Samodejno arhiviranje: Čiščenje med uporabo",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj klepet po",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI samodejno arhiviramo neaktivne klepete v izbranem časovnem intervalu. To vam omogoča svež začetek in ohranja urejenost stranske vrstice."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",

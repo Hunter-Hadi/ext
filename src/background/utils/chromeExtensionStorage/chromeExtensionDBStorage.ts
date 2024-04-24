@@ -51,6 +51,13 @@ export const defaultChromeExtensionDBStorage =
           outlook: true,
           youtube: true,
         },
+        sidebar: {
+          autoArchive: {
+            Art: 10 * 60 * 1000,
+            Chat: 10 * 60 * 1000,
+            Search: 10 * 60 * 1000,
+          },
+        },
       },
       buttonSettings: {
         inputAssistantComposeReplyButton: {

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Okamžitá odpověď v HubSpotu",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Okamžitá odpověď na Telegramu",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Okamžitá odpověď v Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Okamžitá odpověď v Google Chatu"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Okamžitá odpověď v Google Chatu",
+    "left_menu__sidebar": "Boční panel",
+    "feature_card__sidebar__field__auto_archive__title": "Automatické archivování: Čistěte postupně",
+    "feature_card__sidebar__field__auto_archive__button__title": "Archivovat chat po",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podle vašeho výběru. Tím získáte čistý start a udržujete si pořádek v bočním panelu."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zavřít postranní panel",

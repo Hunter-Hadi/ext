@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot tūlītējā atbilde",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram tūlītējā atbilde",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams tūlītējā atbilde",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat tūlītējā atbilde"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat tūlītējā atbilde",
+    "left_menu__sidebar": "Sānjosla",
+    "feature_card__sidebar__field__auto_archive__title": "Automātiska arhivēšana: Tīrīt, kad izmanto",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arhivēt tērzēšanu pēc",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvo tērzēšanu pēc jūsu izvēles biežuma. Tas ļauj jums sākt no jauna un uztur jūsu sānjoslu kārtīgu."
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

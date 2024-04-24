@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Jibu la haraka kwenye HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Jibu la haraka kwenye Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Jibu la haraka kwenye Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Jibu la haraka kwenye Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Jibu la haraka kwenye Google Chat",
+    "left_menu__sidebar": "Upau wa kando",
+    "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
+    "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi."
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

@@ -68,6 +68,9 @@ const SettingsSearchWithAIPage = lazy(
 const SettingsDevTestPrompt = React.lazy(
   () => import('@/pages/settings/pages/dev_test_prompt'),
 )
+const SettingsSidebarPage = React.lazy(
+  () => import('@/pages/settings/pages/sidebar'),
+)
 
 const SettingsApp: FC = () => {
   const { loaded, isLogin } = useAuthLogin()
@@ -213,6 +216,7 @@ const SettingsApp: FC = () => {
                       {route === '/openai-api-key' && (
                         <SettingsOpenaiAPIKeyPage />
                       )}
+                      {route === '/sidebar' && <SettingsSidebarPage />}
                       {route === '/shortcut' && <SettingsShortcutPage />}
                       {route === '/appearance' && <SettingsAppearancePage />}
                       {route === '/mini-menu' && <SettingsMiniMenuPage />}

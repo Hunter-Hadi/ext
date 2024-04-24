@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot即时回复",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram即时回复",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams即时回复",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat即时回复"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat即时回复",
+    "left_menu__sidebar": "侧边栏",
+    "feature_card__sidebar__field__auto_archive__title": "自动归档：随时清理",
+    "feature_card__sidebar__field__auto_archive__button__title": "聊天后归档",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我们会根据您选择的频率自动归档闲置的聊天。这样可以让您重新开始，并保持侧边栏整洁。"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",

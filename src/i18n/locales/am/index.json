@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot በቀላል መልእክት",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram በቀላል መልእክት",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams በቀላል መልእክት",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat በቀላል መልእክት"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat በቀላል መልእክት",
+    "left_menu__sidebar": "ስልክ ገጽ",
+    "feature_card__sidebar__field__auto_archive__title": "የበሽታውን መጠቀም: በሽታውን በመስጠት ማስተካከያ",
+    "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ስልክ የበሽታውን በመስጠት ማስተካከያ የሚያስችል በሽታውን በመስጠት ማስተካከያ ይጠቀሙ። ይህን ለማድረግ እንዴት ማሳየት እንደሚችል ይጠቀሙ።"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot Sofortantwort",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram Sofortantwort",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams Sofortantwort",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat Sofortantwort"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat Sofortantwort",
+    "left_menu__sidebar": "Seitenleiste",
+    "feature_card__sidebar__field__auto_archive__title": "Auto-Archivierung: Aufräumen während der Nutzung",
+    "feature_card__sidebar__field__auto_archive__button__title": "Chat archivieren nach",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir im Leerlauf automatisch Chats in dem von Ihnen gewählten Rhythmus. Dies gibt Ihnen einen frischen Start und hält Ihre Seitenleiste ordentlich."
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",

@@ -4,6 +4,7 @@ import { AI_PROVIDER_MAP } from '@/constants'
 import { IArtTextToImageMetadata } from '@/features/art/types'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import URLSearchEngine from '@/features/shortcuts/types/IOS_WF/URLSearchEngine'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { SummaryParamsPromptType } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 
 export type IChromeExtensionButtonSettingKey =
@@ -107,6 +108,11 @@ export interface IChromeExtensionDBStorage {
     pageTranslation?: {
       sourceLanguage?: string
       targetLanguage?: string
+    }
+    sidebar?: {
+      autoArchive?: {
+        [key in ISidebarConversationType]?: number
+      }
     }
   }
   buttonSettings?: {

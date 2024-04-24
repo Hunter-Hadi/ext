@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { AI_MODEL_SERVICE_TEXTS_MAP } from '@/features/auth/constants'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { numberWithCommas } from '@/utils/dataHelper/numberHelper'
@@ -175,7 +176,7 @@ const UserQuotaUsageQueriesCard = () => {
               <ListItem>
                 <ListItemText
                   primary={t('quota_usage_card:category__fast_text')}
-                  secondary={'GPT-3.5 & Claude-3-haiku & Gemini-pro'}
+                  secondary={AI_MODEL_SERVICE_TEXTS_MAP['fastText']}
                 />
 
                 <ListItemText
@@ -194,7 +195,7 @@ const UserQuotaUsageQueriesCard = () => {
               <ListItem>
                 <ListItemText
                   primary={t('quota_usage_card:category__advanced_text')}
-                  secondary={'GPT-4 & Claude-3-opus/sonnet & Gemini-1.5-pro'}
+                  secondary={AI_MODEL_SERVICE_TEXTS_MAP['advancedText']}
                 />
 
                 <ListItemText
@@ -253,7 +254,7 @@ const UserQuotaUsageQueriesCard = () => {
               <ListItem>
                 <ListItemText
                   primary={t('quota_usage_card:category__image_generate')}
-                  secondary={'DALL·E 3'}
+                  secondary={AI_MODEL_SERVICE_TEXTS_MAP['imageGenerate']}
                 />
 
                 <ListItemText

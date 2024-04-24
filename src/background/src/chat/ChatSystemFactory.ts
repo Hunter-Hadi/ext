@@ -334,6 +334,18 @@ export default class ChatSystemFactory {
 
           case 'Client_chatUploadFilesChange': {
             const { files } = data
+            // 如果没提问直接上传文件, 则需要先切换adapter
+            if (!currentChatSystem.currentAdapter) {
+              const conversation =
+                await ConversationManager.conversationDB.getConversationById(
+                  currentChatSystem.conversationId,
+                )
+              if (conversation) {
+                await currentChatSystem.switchAdapterWithConversation(
+                  conversation,
+                )
+              }
+            }
             await currentChatSystem.updateFiles(files)
             await currentChatSystem.updateClientFiles()
             return {

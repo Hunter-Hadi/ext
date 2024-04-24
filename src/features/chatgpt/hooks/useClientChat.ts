@@ -94,7 +94,9 @@ const useClientChat = () => {
         const maxAttachmentTokens =
           conversationMaxTokens -
           calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
-        if (getTextTokens(extractText).length > maxAttachmentTokens) {
+        const attachmentsTextTokens = getTextTokens(extractText).length
+        debugger
+        if (attachmentsTextTokens > maxAttachmentTokens) {
           // 如果tokens长度超过限制
           await clientChatConversationModifyChatMessages(
             'add',

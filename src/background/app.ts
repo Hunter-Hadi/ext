@@ -9,7 +9,6 @@ export type {
   IOpenAIChatListenTaskEvent,
   IOpenAIChatSendEvent,
 } from './eventType'
-
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import ConversationManager from '@/background/src/chatConversations'
@@ -48,7 +47,6 @@ import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChann
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
-
 /**
  * background.js 入口
  *
@@ -75,7 +73,9 @@ export const startChromeExtensionBackground = () => {
     // hot reload
     developmentHotReload()
   } catch (e) {
-    //
+    // NOTE: 这个debugger是为了方便调试告诉开发者，如果有问题，可以在这里打断点
+    // eslint-disable-next-line no-debugger
+    debugger
   }
 }
 
@@ -610,26 +610,21 @@ const initExternalMessageListener = () => {
 }
 
 const initChromeExtensionTabUrlChangeListener = () => {
-  Browser.tabs.onUpdated.addListener(
-    (tabId, changeInfo, tab) => {
-      pdfSnifferStartListener(tabId, changeInfo, tab)
-      // 页面的url变化后，要触发页面的特殊网页的element更新
-      if (tab.active && tab.id && tab.url) {
-        console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
-        backgroundSendClientMessage(
-          tab.id,
-          'Client_updateSidebarChatBoxStyle',
-          {},
-        )
-          .then()
-          .catch()
-        backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
-          .then()
-          .catch()
-      }
-    },
-    {
-      properties: ['url'],
-    },
-  )
+  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    pdfSnifferStartListener(tabId, changeInfo, tab)
+    // 页面的url变化后，要触发页面的特殊网页的element更新
+    if (tab.active && tab.id && tab.url) {
+      console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
+      backgroundSendClientMessage(
+        tab.id,
+        'Client_updateSidebarChatBoxStyle',
+        {},
+      )
+        .then()
+        .catch()
+      backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
+        .then()
+        .catch()
+    }
+  })
 }

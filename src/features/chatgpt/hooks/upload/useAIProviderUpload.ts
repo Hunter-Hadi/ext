@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
@@ -13,6 +13,7 @@ import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
 /**
  * AI Provider的上传文件处理
@@ -20,6 +21,11 @@ import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
 const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
+
+export type MaxAIAddOrUpdateUploadFile = (
+  fileId: string,
+  updateFileData: Partial<IChatUploadFile>,
+) => Promise<void>
 
 const useAIProviderUpload = () => {
   const { currentConversationId } = useClientConversation()
@@ -54,6 +60,55 @@ const useAIProviderUpload = () => {
       }
     })
   }
+  const filesRef = useRef(files)
+  useEffect(() => {
+    filesRef.current = files
+  }, [files])
+  const addOrUpdateUploadFile = useCallback<MaxAIAddOrUpdateUploadFile>(
+    async (fileId: string, updateFileData: Partial<IChatUploadFile>) => {
+      let isFindUpdateFile = false
+      const newFiles = filesRef.current.map((item) => {
+        if (item.id === fileId) {
+          isFindUpdateFile = true
+          console.log(
+            'useAIProviderUpload [addOrUpdateUploadFile] updated',
+            updateFileData,
+          )
+          return mergeWithObject([item, updateFileData])
+        }
+        return item
+      })
+      if (!isFindUpdateFile && updateFileData.id) {
+        console.log(
+          'useAIProviderUpload [addOrUpdateUploadFile] added',
+          updateFileData,
+        )
+        newFiles.push(updateFileData as IChatUploadFile)
+        await port.postMessage({
+          event: 'Client_chatUploadFiles',
+          data: {
+            conversationId: currentConversationId,
+            files: [updateFileData as IChatUploadFile],
+          },
+        })
+        return
+      }
+      setClientUploadedState((prevState) => {
+        return {
+          ...prevState,
+          files: newFiles,
+        }
+      })
+      await port.postMessage({
+        event: 'Client_chatUploadFilesChange',
+        data: {
+          conversationId: currentConversationId,
+          files: newFiles,
+        },
+      })
+    },
+    [currentConversationId],
+  )
 
   // 上传文件
   const aiProviderUploadFiles = useCallback(
@@ -218,6 +273,7 @@ const useAIProviderUpload = () => {
     aiProviderUploadFiles,
     aiProviderRemoveFiles,
     aiProviderRemoveAllFiles,
+    addOrUpdateUploadFile,
     files,
   }
 }

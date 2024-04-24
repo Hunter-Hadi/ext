@@ -7,7 +7,6 @@ import React, { FC, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IOptionType } from '@/components/select/BaseSelect'
-import PermissionWrapper from '@/features/auth/components/PermissionWrapper'
 import { LANGUAGE_CODE_MAP } from '@/i18n/types'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -102,87 +101,87 @@ const LanguageCodeSelect: FC<LanguageCodeSelectProps> = (props) => {
   }, [open])
 
   return (
-    <PermissionWrapper
-      sceneType={'PREFERRED_LANGUAGE'}
-      // TODO 暂时不锁，因为language code没有统一的标准，无法让pricing hooks的card 单独i18n, 2023-08-03
-      allowedRoles={['basic', 'elite', 'pro', 'pro_gift', 'new_user', 'free']}
-      onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
-        if (newValue.value !== defaultLanguageCodeOption.value) {
-          // 重置回默认语言
-          setValue(defaultLanguageCodeOption)
-          onChange(defaultLanguageCodeOption.value as string)
-        }
-        return {
-          success: false,
-        }
+    // <PermissionWrapper
+    //   sceneType={'PREFERRED_LANGUAGE'}
+    //   // TODO 暂时不锁，因为language code没有统一的标准，无法让pricing hooks的card 单独i18n, 2023-08-03
+    //   allowedRoles={['basic', 'elite', 'pro', 'pro_gift', 'new_user', 'free']}
+    //   onPermission={async (currentPlan, cardSettings, [event, newValue]) => {
+    //     if (newValue.value !== defaultLanguageCodeOption.value) {
+    //       // 重置回默认语言
+    //       setValue(defaultLanguageCodeOption)
+    //       onChange(defaultLanguageCodeOption.value as string)
+    //     }
+    //     return {
+    //       success: false,
+    //     }
+    //   }}
+    //   TooltipProps={{
+    //     placement: 'right',
+    //   }}
+    //   BoxProps={{
+    //     sx: {
+    //       maxWidth: 'fit-content',
+    //     },
+    //   }}
+    // >
+    <Autocomplete
+      open={open}
+      onOpen={() => {
+        setOpen(true)
       }}
-      TooltipProps={{
-        placement: 'right',
+      onClose={() => {
+        setOpen(false)
       }}
-      BoxProps={{
-        sx: {
-          maxWidth: 'fit-content',
+      noOptionsText={t('common:no_options')}
+      disableClearable
+      value={value}
+      size={'small'}
+      sx={{
+        width: 160,
+        [`.${inputLabelClasses.root}`]: {
+          fontSize: (sx as CSSObject)?.fontSize ?? 16,
+        },
+        [`.${inputBaseClasses.root}`]: {
+          fontSize: (sx as CSSObject)?.fontSize ?? 16,
+        },
+        [`.${inputBaseClasses.root} fieldset > legend`]: {
+          fontSize: 14,
+        },
+        ...sx,
+      }}
+      slotProps={{
+        paper: {
+          sx: {
+            fontSize: (sx as CSSObject)?.fontSize ?? 16,
+          },
+        },
+        popper: {
+          sx: {
+            zIndex: 2147483648,
+          },
         },
       }}
-    >
-      <Autocomplete
-        open={open}
-        onOpen={() => {
-          setOpen(true)
-        }}
-        onClose={() => {
-          setOpen(false)
-        }}
-        noOptionsText={t('common:no_options')}
-        disableClearable
-        value={value}
-        size={'small'}
-        sx={{
-          width: 160,
-          [`.${inputLabelClasses.root}`]: {
-            fontSize: (sx as CSSObject)?.fontSize ?? 16,
-          },
-          [`.${inputBaseClasses.root}`]: {
-            fontSize: (sx as CSSObject)?.fontSize ?? 16,
-          },
-          [`.${inputBaseClasses.root} fieldset > legend`]: {
-            fontSize: 14,
-          },
-          ...sx,
-        }}
-        slotProps={{
-          paper: {
-            sx: {
-              fontSize: (sx as CSSObject)?.fontSize ?? 16,
-            },
-          },
-          popper: {
-            sx: {
-              zIndex: 2147483648,
-            },
-          },
-        }}
-        autoHighlight
-        getOptionLabel={(option) => option.label}
-        options={options}
-        onChange={(event: any, newValue) => {
-          event.stopPropagation()
-          setValue(newValue)
-          onChange(newValue.value)
-        }}
-        filterOptions={filterOptions}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            label={label}
-            inputProps={{
-              ...params.inputProps,
-              autoComplete: 'new-password', // disable autocomplete and autofill
-            }}
-          />
-        )}
-      />
-    </PermissionWrapper>
+      autoHighlight
+      getOptionLabel={(option) => option.label}
+      options={options}
+      onChange={(event: any, newValue) => {
+        event.stopPropagation()
+        setValue(newValue)
+        onChange(newValue.value)
+      }}
+      filterOptions={filterOptions}
+      renderInput={(params) => (
+        <TextField
+          {...params}
+          label={label}
+          inputProps={{
+            ...params.inputProps,
+            autoComplete: 'new-password', // disable autocomplete and autofill
+          }}
+        />
+      )}
+    />
+    // </PermissionWrapper>
   )
 }
 

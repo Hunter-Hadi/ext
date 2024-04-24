@@ -3,6 +3,7 @@ import { TFunction } from 'i18next'
 import React from 'react'
 
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { IPermissionPricingHookCardType } from '@/features/auth/components/PermissionPricingHookCard/types'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
@@ -10,10 +11,7 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'MAXAI_FAST_TEXT_MODEL',
   'MAXAI_ADVANCED_MODEL',
   'MAXAI_IMAGE_GENERATE_MODEL',
-  'CUSTOM_PROMPT',
-  'PREFERRED_LANGUAGE',
   'PAGE_SUMMARY',
-  'CUSTOM_PROMPT_GROUP',
   'GMAIL_DRAFT_BUTTON',
   'GMAIL_REPLY_BUTTON',
   'GMAIL_CONTEXT_MENU',
@@ -58,23 +56,26 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
    *
    * 以下都是已被弃用的 sceneType
    */
-  'AI_RESPONSE_LANGUAGE',
-  'CHATGPT_STABLE_MODE',
-  'MAXAI_CHATGPT_TEMPERATURE',
-  'PDF_AI_VIEWER',
-  'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
-  'MAXAI_PAID_MODEL_CLAUDE_V2',
-  'MAXAI_PAID_MODEL_CLAUDE_V2_1',
-  'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
-  'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
-  'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
-  'MAXAI_PAID_MODEL_GEMINI_PRO',
-  'MAXAI_PAID_MODEL_GEMINI_1_5_PRO',
-  'MAXAI_PAID_MODEL_GPT3_5',
-  'MAXAI_PAID_MODEL_GPT3_5_16K',
-  'MAXAI_PAID_MODEL_GPT4',
-  'MAXAI_PAID_MODEL_GPT4_TURBO',
-  'MAXAI_PAID_MODEL_GPT4_VISION',
+  // 'CUSTOM_PROMPT_GROUP',
+  // 'PREFERRED_LANGUAGE',
+  // 'CUSTOM_PROMPT',
+  // 'AI_RESPONSE_LANGUAGE',
+  // 'CHATGPT_STABLE_MODE',
+  // 'MAXAI_CHATGPT_TEMPERATURE',
+  // 'PDF_AI_VIEWER',
+  // 'MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1',
+  // 'MAXAI_PAID_MODEL_CLAUDE_V2',
+  // 'MAXAI_PAID_MODEL_CLAUDE_V2_1',
+  // 'MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU',
+  // 'MAXAI_PAID_MODEL_CLAUDE_V3_SONNET',
+  // 'MAXAI_PAID_MODEL_CLAUDE_V3_OPUS',
+  // 'MAXAI_PAID_MODEL_GEMINI_PRO',
+  // 'MAXAI_PAID_MODEL_GEMINI_1_5_PRO',
+  // 'MAXAI_PAID_MODEL_GPT3_5',
+  // 'MAXAI_PAID_MODEL_GPT3_5_16K',
+  // 'MAXAI_PAID_MODEL_GPT4',
+  // 'MAXAI_PAID_MODEL_GPT4_TURBO',
+  // 'MAXAI_PAID_MODEL_GPT4_VISION',
 ] as const
 
 export type PermissionWrapperCardSceneType =
@@ -82,21 +83,29 @@ export type PermissionWrapperCardSceneType =
 
 export type PermissionWrapperCardType = {
   sceneType: PermissionWrapperCardSceneType
+  pricingHookCardType?: IPermissionPricingHookCardType // pricing hook card 渲染类型的声明
   imageUrl?: string
   videoUrl?: string
   title: React.ReactNode
   description: React.ReactNode
-  ctaButtonText: React.ReactNode
+  ctaButtonText?: React.ReactNode
   ctaButtonLink?: string
   ctaButtonOnClick?: (event: React.MouseEvent) => void
 }
 
 export type PermissionWrapperI18nCardType = {
+  pricingHookCardType?: IPermissionPricingHookCardType // pricing hook card 渲染类型的声明
   imageUrl?: string
   videoUrl?: string
-  title: (t: TFunction<['common', 'client']>) => React.ReactNode
-  description: (t: TFunction<['common', 'client']>) => React.ReactNode
-  ctaButtonText: (t: TFunction<['common', 'client']>) => React.ReactNode
+  title: (
+    t: TFunction<['common', 'client']>,
+    isFreeUser?: boolean,
+  ) => React.ReactNode
+  description: (
+    t: TFunction<['common', 'client']>,
+    isFreeUser?: boolean,
+  ) => React.ReactNode
+  ctaButtonText?: (t: TFunction<['common', 'client']>) => React.ReactNode
   ctaButtonLink?: string
   ctaButtonOnClick?: (event: React.MouseEvent) => void
 }
@@ -146,722 +155,228 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
 } = {
   // 不同模型用量上限的 pricing hook
   THIRD_PARTY_PROVIDER_CHAT_DAILY_LIMIT: {
-    // imageUrl: `${getChromeExtensionAssetsURL(
-    //   '/images/upgrade/unlimited-ai-requests.png',
-    // )}`,
-    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
-    description: (t) => {
+    pricingHookCardType: 'FAST_TEXT_MODEL',
+    title: (t) => t('client:permission__pricing_hook__fast_text_usage__title'),
+    description: (t, isFreeUser) => {
       return `${t(
-        'client:permission__pricing_hook__daily_limit__description1',
+        isFreeUser
+          ? 'client:permission__pricing_hook__fast_text_usage__description__for_free'
+          : 'client:permission__pricing_hook__fast_text_usage__description__for_paying',
       )}`
     },
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
   MAXAI_FAST_TEXT_MODEL: {
-    // imageUrl: `${getChromeExtensionAssetsURL(
-    //   '/images/upgrade/unlimited-ai-requests.png',
-    // )}`,
-    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
-    description: (t) => {
+    pricingHookCardType: 'FAST_TEXT_MODEL',
+    title: (t) => t('client:permission__pricing_hook__fast_text_usage__title'),
+    description: (t, isFreeUser) => {
       return `${t(
-        'client:permission__pricing_hook__daily_limit__description1',
+        isFreeUser
+          ? 'client:permission__pricing_hook__fast_text_usage__description__for_free'
+          : 'client:permission__pricing_hook__fast_text_usage__description__for_paying',
       )}`
     },
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
   MAXAI_ADVANCED_MODEL: {
-    // imageUrl: `${getChromeExtensionAssetsURL(
-    //   '/images/upgrade/unlimited-ai-requests.png',
-    // )}`,
-    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
-    description: (t) => {
+    pricingHookCardType: 'ADVANCED_MODEL',
+    title: (t) =>
+      t('client:permission__pricing_hook__advanced_text_usage__title'),
+    description: (t, isFreeUser) => {
       return `${t(
-        'client:permission__pricing_hook__daily_limit__description1',
+        isFreeUser
+          ? 'client:permission__pricing_hook__advanced_text_usage__description__for_free'
+          : 'client:permission__pricing_hook__advanced_text_usage__description__for_paying',
       )}`
     },
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
   MAXAI_IMAGE_GENERATE_MODEL: {
-    // imageUrl: `${getChromeExtensionAssetsURL(
-    //   '/images/upgrade/unlimited-ai-requests.png',
-    // )}`,
-    title: (t) => t('client:permission__pricing_hook__daily_limit__title'),
-    description: (t) => {
+    pricingHookCardType: 'IMAGE_MODEL',
+    title: (t) => t('client:permission__pricing_hook__image_usage__title'),
+    description: (t, isFreeUser) => {
       return `${t(
-        'client:permission__pricing_hook__daily_limit__description1',
+        isFreeUser
+          ? 'client:permission__pricing_hook__image_usage__description__for_free'
+          : 'client:permission__pricing_hook__image_usage__description__for_paying',
       )}`
     },
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // 自定义prompt
-  CUSTOM_PROMPT: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/custom-prompt.png',
-    )}`,
-    title: (t) => t('client:permission__pricing_hook__custom_prompt__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__custom_prompt__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // 自定义prompt
-  CUSTOM_PROMPT_GROUP: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/custom-prompt-group.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__custom_prompt_group__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__custom_prompt_group__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // Gmail cta button - compose new
-  GMAIL_DRAFT_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_new__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // Gmail cta button - compose reply
-  GMAIL_REPLY_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // Gmail dropdown button - refine draft
-  GMAIL_CONTEXT_MENU: {
-    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // AI response language
-  // @deprecated
-  AI_RESPONSE_LANGUAGE: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-response-language.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__ai_response_language__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__ai_response_language__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // ChatGPT Stable mode
-  // @deprecated
-  CHATGPT_STABLE_MODE: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/chatgpt-stable-mode.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__chatgpt_stable_mode__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__chatgpt_stable_mode__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // pdf ai viewer
-  // @deprecated
-  PDF_AI_VIEWER: {
-    imageUrl: `${getChromeExtensionAssetsURL('/images/upgrade/pdf.png')}`,
-    videoUrl: `https://www.youtube.com/embed/eYO5Dh6Ruic`,
-    title: (t) => t('client:permission__pricing_hook__pdf_ai_viewer__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__pdf_ai_viewer__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // Preferred language
-  PREFERRED_LANGUAGE: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/preferred-language.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__preferred_language__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__preferred_language__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - temperature
-  // @deprecated
-  MAXAI_CHATGPT_TEMPERATURE: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-temperature.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__max_ai_temperature__title'),
-    description: (t) =>
-      t('client:permission__pricing_hook__max_ai_temperature__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - gpt3.5 16k
-  // @deprecated
-  MAXAI_PAID_MODEL_GPT3_5_16K: {
-    videoUrl: `https://www.youtube.com/embed/QA4gxm3xtLE`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt3-5-16k.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt3_5_16k__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - gpt4
-  // @deprecated
-  MAXAI_PAID_MODEL_GPT4: {
-    videoUrl: 'https://www.youtube.com/embed/mAi1D9cbGos',
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt4.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__max_ai_paid_model__gpt4__title'),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt4__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - gpt4-turbo
-  // @deprecated
-  MAXAI_PAID_MODEL_GPT4_TURBO: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt4.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__max_ai_paid_model__gpt4__title'),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt4__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - gpt4V
-  // @deprecated
-  MAXAI_PAID_MODEL_GPT4_VISION: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt4-vision.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt4_vision__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt4_vision__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - gpt3.5
-  MAXAI_PAID_MODEL_GPT3_5: {
-    videoUrl: 'https://www.youtube.com/embed/zgq2DKlwEYk',
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gpt3-5.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__max_ai_paid_model__gpt3_5__title'),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gpt3_5__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
   // page summary
   PAGE_SUMMARY: {
-    videoUrl: 'https://www.youtube.com/embed/72UM1jMaJhY',
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/page-summary.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__page_summary__title',
-      ),
+    pricingHookCardType: 'AI_SUMMARY',
+    videoUrl: `https://www.youtube.com/embed/72UM1jMaJhY`,
+    title: (t) => t('client:permission__pricing_hook__ai_summary__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__page_summary__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__ai_summary__description'),
   },
-  // MAX AI - paid model - calude - instant-v1-100k
-  // @deprecated
-  MAXAI_PAID_MODEL_CLAUDE_INSTANT_V1: {
-    videoUrl: 'https://www.youtube.com/embed/qwFVrq3Epcs',
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-instant-100k.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_instant_v1__title',
-      ),
+  // Gmail cta button - compose new
+  GMAIL_DRAFT_BUTTON: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_instant_v1__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
-  // MAX AI - paid model - calude - instant-v2
-  // @deprecated
-  MAXAI_PAID_MODEL_CLAUDE_V2: {
-    videoUrl: 'https://www.youtube.com/embed/3hHrqmIU284',
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-2-100k.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__max_ai_paid_model__claude_v2__title'),
+  // Gmail cta button - compose reply
+  GMAIL_REPLY_BUTTON: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v2__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
-  // MAX AI - paid model - calude - instant-v2-1
-  // @deprecated
-  MAXAI_PAID_MODEL_CLAUDE_V2_1: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-2.1-200k.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v2_1__title',
-      ),
+  // Gmail dropdown button - refine draft
+  GMAIL_CONTEXT_MENU: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v2_1__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - calude - 3 haiku
-  // @deprecated
-  MAXAI_PAID_MODEL_CLAUDE_V3_HAIKU: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-3-haiku.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_haiku__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - calude - 3 sonnet
-  // @deprecated
-  MAXAI_PAID_MODEL_CLAUDE_V3_SONNET: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-3-sonnet.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_sonnet__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // MAX AI - paid model - calude - 3 opus
-  // @deprecated
-  MAXAI_PAID_MODEL_CLAUDE_V3_OPUS: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/claude-3-opus.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_opus__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__claude_v3_opus__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // @deprecated
-  MAXAI_PAID_MODEL_GEMINI_PRO: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gemini-pro.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gemini_pro__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gemini_pro__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
-  },
-  // @deprecated
-  MAXAI_PAID_MODEL_GEMINI_1_5_PRO: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/max-ai-paid-model-gemini-1-5-pro.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__title',
-      ),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__gemini_1_5_pro__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Outlook cta button - compose new
   OUTLOOK_COMPOSE_NEW_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/Y2yZ4wWQDno`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Outlook cta button - compose reply
   OUTLOOK_COMPOSE_REPLY_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/Y2yZ4wWQDno`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Outlook dropdown button - refine draft
   OUTLOOK_REFINE_DRAFT_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/Y2yZ4wWQDno`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__email__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Twitter cta button - compose new
   TWITTER_COMPOSE_NEW_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/3UQaOm8sWVI`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Twitter cta button - compose reply
   TWITTER_COMPOSE_REPLY_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/3UQaOm8sWVI`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Twitter dropdown button - refine draft
   TWITTER_REFINE_DRAFT_BUTTON: {
-    videoUrl: `https://www.youtube.com/embed/3UQaOm8sWVI`,
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // linkedin cta button - compose new
   LINKEDIN_COMPOSE_NEW_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // linkedin cta button - compose reply
   LINKEDIN_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // linkedin dropdown button - refine draft
   LINKEDIN_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Facebook cta button - compose new
   FACEBOOK_COMPOSE_NEW_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Facebook cta button - compose reply
   FACEBOOK_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Facebook dropdown button - refine draft
   FACEBOOK_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // YouTube cta button - compose new
   YOUTUBE_COMPOSE_NEW_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // YouTube cta button - compose reply
   YOUTUBE_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // YouTube dropdown button - refine draft
   YOUTUBE_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Instagram cta button - compose new
   INSTAGRAM_COMPOSE_NEW_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Instagram cta button - compose reply
   INSTAGRAM_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Instagram dropdown button - refine draft
   INSTAGRAM_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Search with AI - Claude
   SEARCH_WITH_AI_CLAUDE: {
-    videoUrl: 'https://www.youtube.com/embed/qwFVrq3Epcs',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/claude-3-haiku.png',
     )}`,
@@ -869,12 +384,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__search_with_ai_claude__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
   // Search with AI - ChatGPt
   SEARCH_WITH_AI_CHATGPT: {
-    videoUrl: 'https://www.youtube.com/embed/zgq2DKlwEYk',
     imageUrl: `${getChromeExtensionAssetsURL(
       '/images/upgrade/max-ai-paid-model-gpt3-5.png',
     )}`,
@@ -882,211 +394,111 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
   },
   SIDEBAR_SEARCH_WITH_AI: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/search-with-ai.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__search_with_ai__title',
-      ),
+    pricingHookCardType: 'AI_SEARCH',
+    videoUrl: `https://www.youtube.com/embed/1uZuyqqySO0`,
+    title: (t) => t('client:permission__pricing_hook__ai_search__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__search_with_ai__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__ai_search__description'),
   },
   SIDEBAR_ART_AND_IMAGES: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/maxai-art-and-images.png',
-    )}`,
-    title: (t) =>
-      t('client:permission__pricing_hook__max_ai_paid_model__maxai_art__title'),
-    description: (t) =>
-      t(
-        'client:permission__pricing_hook__max_ai_paid_model__maxai_art__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+    pricingHookCardType: 'IMAGE_MODEL',
+    title: (t) => t('client:permission__pricing_hook__image_usage__title'),
+    description: (t, isFreeUser) => {
+      return `${t(
+        isFreeUser
+          ? 'client:permission__pricing_hook__image_usage__description__for_free'
+          : 'client:permission__pricing_hook__image_usage__description__for_paying',
+      )}`
+    },
   },
   // Reddit cta button - compose new
   REDDIT_COMPOSE_NEW_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_new__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Reddit cta button - compose reply
   REDDIT_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Reddit dropdown button - refine draft
   REDDIT_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__social_media__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Discord cta button - compose reply
   DISCORD_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Discord dropdown button - refine draft
   DISCORD_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Slack cta button - compose reply
   SLACK_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Slack dropdown button - refine draft
   SLACK_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // WhatsApp cta button - compose reply
   WHATSAPP_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // WhatsApp dropdown button - refine draft
   WHATSAPP_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/ai-instant-reply.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:sidebar__button__upgrade_to_plan', { PLAN: 'Elite' }),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Telegram cta button - compose reply
   TELEGRAM_COMPOSE_REPLY_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__compose_reply__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
   // Telegram dropdown button - refine draft
   TELEGRAM_REFINE_DRAFT_BUTTON: {
-    imageUrl: `${getChromeExtensionAssetsURL(
-      '/images/upgrade/input-assistant-chat-app-website.png',
-    )}`,
-    title: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__title',
-      ),
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
     description: (t) =>
-      t(
-        'client:permission__pricing_hook__input_assistant_button__chat_app__refine_draft__description',
-      ),
-    ctaButtonText: (t) =>
-      t('client:permission__pricing_hook__button__upgrade_to_pro'),
+      t('client:permission__pricing_hook__instant_reply__description'),
   },
 }

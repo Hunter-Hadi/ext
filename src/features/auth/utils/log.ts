@@ -4,9 +4,9 @@ import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensi
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
+import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
-import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 
 /**
  * 将 PermissionWrapperCardSceneType 根据不同场景和配置转换成 logType

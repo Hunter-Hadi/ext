@@ -6,11 +6,11 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxSystemTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarChatBoxSystemTools'
-import SidebarSystemPricingHookMessageCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
@@ -122,7 +122,7 @@ const BaseSidebarSystemMessage: FC<{
     >
       {isPricingHooksCard && permissionSceneType ? (
         // pricing hook 渲染器
-        <SidebarSystemPricingHookMessageCard
+        <PermissionPricingHookCard
           permissionSceneType={permissionSceneType}
           message={message}
         />

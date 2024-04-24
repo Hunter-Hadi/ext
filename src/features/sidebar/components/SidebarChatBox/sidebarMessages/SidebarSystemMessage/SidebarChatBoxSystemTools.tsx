@@ -36,53 +36,8 @@ const SidebarChatBoxSystemTools: FC<{
     message.meta?.status || message.extra?.status || 'success'
   const { currentAIProviderDetail } = useAIProviderModels()
 
-  // Pro show pricing card 移到 SidebarSystemPricingHookMessageCard 组件了
-  // useEffect(() => {
-  //   if (
-  //     chatSystemMessageType === 'needUpgrade' &&
-  //     (currentUserPlan.name === 'pro' || currentUserPlan.name === 'elite')
-  //   ) {
-  //     clientSendMaxAINotification(
-  //       'PRICING',
-  //       `[Pricing] Pro show pricing card`,
-  //       JSON.stringify({
-  //         user: userInfo,
-  //         plan: currentUserPlan,
-  //       }),
-  //       {
-  //         uuid: '7a04bc02-6155-4253-bcdb-ade3db6de492',
-  //       },
-  //     )
-  //   }
-  // }, [currentUserPlan.name, chatSystemMessageType])
-
   return (
     <Stack direction={'row'} alignItems={'center'} flexWrap={'wrap'} gap={1}>
-      {/* Upgrade button 移到 SidebarSystemPricingHookMessageCard 组件渲染了 */}
-      {/* {chatSystemMessageType === 'needUpgrade' && (
-        <Button
-          fullWidth
-          sx={{
-            height: 48,
-            fontSize: '16px',
-            fontWeight: 500,
-          }}
-          variant={'contained'}
-          color={'primary'}
-          target={'_blank'}
-          href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
-          onClick={(event) => {
-            if (
-              chatSystemMessageType === 'needUpgrade' &&
-              permissionSceneType
-            ) {
-              authEmitPricingHooksLog('click', permissionSceneType)
-            }
-          }}
-        >
-          {upgradeCardText}
-        </Button>
-      )} */}
       {chatSystemMessageStatus === 'error' &&
         currentAIProviderDetail?.thirdParty && (
           <Button

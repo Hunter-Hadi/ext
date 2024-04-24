@@ -31,6 +31,7 @@ import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { AppLocalStorageState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import MoreActionsButton from './MoreActionsButton'
 
@@ -416,7 +417,7 @@ const ConversationList: FC<IProps> = (props) => {
                                 setPaginationConversations(newConversations)
                                 if (conversationType === 'ContextMenu') {
                                   await createConversation('ContextMenu')
-                                } else {
+                                } else if (!isMaxAIImmersiveChatPage()) {
                                   await updateSidebarSettings({
                                     [conversationType.toLowerCase()]: {
                                       conversationId: '',

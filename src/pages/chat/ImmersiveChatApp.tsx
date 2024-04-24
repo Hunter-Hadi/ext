@@ -11,13 +11,13 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import BrowserVersionDetector from '@/components/BrowserVersionDetector'
 import useActivity from '@/features/auth/hooks/useActivity'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
+import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import GlobalVideoPopup from '@/features/video_popup/components/GlobalVideoPopup'
 import SidebarPage from '@/pages/sidebar'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 import SidebarTopBar from '@/pages/sidebarLayouts/SidebarTopBar'
-import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 
 const App: FC = () => {
   const { isShowActivityBanner } = useActivity()

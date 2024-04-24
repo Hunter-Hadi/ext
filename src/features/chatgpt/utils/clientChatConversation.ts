@@ -1,4 +1,17 @@
+import { IAIProviderType } from '@/background/provider/chat'
+import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
+import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
+import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
+import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
+import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
+import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
+import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
+import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
+import {
+  getChromeExtensionLocalStorage,
+  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
+} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import {
   IAIProviderModel,
@@ -7,19 +20,7 @@ import {
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
-import { IAIProviderType } from '@/background/provider/chat'
-import {
-  getChromeExtensionLocalStorage,
-  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
-import { MAXAI_GENMINI_MODELS } from '@/background/src/chat/MaxAIGeminiChat/types'
-import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
-import { USE_CHAT_GPT_PLUS_MODELS } from '@/background/src/chat/UseChatGPTChat/types'
-import { CLAUDE_MODELS } from '@/background/src/chat/ClaudeWebappChat/claude/types'
-import { BING_MODELS } from '@/background/src/chat/BingChat/bing/types'
-import { BARD_MODELS } from '@/background/src/chat/BardChat/types'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
-import { POE_MODELS } from '@/background/src/chat/PoeChat/type'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 
 /**
  * Client更新Conversation的信息
@@ -121,12 +122,23 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   isThirdPartyProvider: boolean
 }> => {
   const settings = await getChromeExtensionLocalStorage()
-  const currentAIProvider =
-    settings.sidebarSettings?.common?.currentAIProvider ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider
-  const currentModelValue =
-    settings.thirdProviderSettings?.[currentAIProvider]?.model ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel
+  const currentChatConversationId =
+    settings.sidebarSettings?.chat?.conversationId
+
+  // set default
+  let currentAIProvider = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider
+  let currentModelValue = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel
+
+  if (currentChatConversationId) {
+    const currentChatConversation = await clientGetConversation(
+      currentChatConversationId,
+    )
+    currentAIProvider =
+      currentChatConversation?.meta.AIProvider || currentAIProvider
+    currentModelValue =
+      currentChatConversation?.meta.AIModel || currentModelValue
+  }
+
   let currentModel: IAIProviderModel | null = null
   let isThirdPartyProvider = false
   const findModelDetail = (models: IAIProviderModel[]) => {

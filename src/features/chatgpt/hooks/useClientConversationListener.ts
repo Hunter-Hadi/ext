@@ -337,7 +337,11 @@ export const useClientConversationListener = () => {
         if (!isCreatingConversationRef.current) {
           isCreatingConversationRef.current = true
         }
-        createConversation(clientConversation.type)
+        createConversation(
+          clientConversation.type,
+          clientConversation.meta.AIProvider,
+          clientConversation.meta.AIModel,
+        )
           .then()
           .catch()
           .finally(() => {

@@ -26,27 +26,27 @@ const FloatingContextMenuShortcutButtonGroup: FC<{
     return false
   }, [clientWritingMessage.loading, currentFloatingContextMenuDraft])
   const { stopGenerate, regenerate } = useClientChat()
+  const reGenerateRef = useRef(regenerate)
+  const stopGenerateRef = useRef(stopGenerate)
+  reGenerateRef.current = regenerate
+  stopGenerateRef.current = stopGenerate
   const handleShortCut = useCallback(
     async (key: FloatingContextMenuShortcutKey) => {
       // console.log('handleShortCut', key)
       if (key === 's') {
         needRegenerateRef.current = false
-        await stopGenerate()
+        await stopGenerateRef.current()
       }
       if (key === 'r') {
         needRegenerateRef.current = true
         console.log('handleShortCut regenerate: \t [startRegenerate: true]')
-        await stopGenerate()
+        await stopGenerateRef.current()
         onRegenerate?.()
         await reGenerateRef.current()
       }
     },
-    [stopGenerate],
+    [],
   )
-  const reGenerateRef = useRef(regenerate)
-  useEffect(() => {
-    reGenerateRef.current = regenerate
-  }, [regenerate])
   useEffect(() => {
     if (!isGenerating) {
       return

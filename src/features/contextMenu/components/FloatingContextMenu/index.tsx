@@ -729,20 +729,23 @@ const FloatingContextMenu: FC<{
    * regenerate时由于INSERT_USER_INPUT会异步找input并且updateInputValue
    * 这里暂时加入一个延迟，shortcut regenerate的时候把input id清空
    * 这样input组件就不会去监听消息，避免shortcut regenerate的时候input里显示了CHAT_GPT_PROMPT_PREFIX
+   *
+   * @since - 2024-04-25 现在没有用到INSERT_USER_INPUT这个action了，先注释掉
    */
-  const [shortcutLoading, setShortcutLoading] = useState(false)
-  useEffect(() => {
-    if (!floatingDropdownMenu.open) {
-      setShortcutLoading(false)
-    } else if (shortcutLoading) {
-      const timer = setTimeout(() => {
-        setShortcutLoading(false)
-      }, 3500)
-      return () => {
-        clearTimeout(timer)
-      }
-    }
-  }, [shortcutLoading, floatingDropdownMenu.open])
+  // const [shortcutLoading, setShortcutLoading] = useState(false)
+  // const inputId = shortcutLoading ? '' : MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID
+  // useEffect(() => {
+  //   if (!floatingDropdownMenu.open) {
+  //     setShortcutLoading(false)
+  //   } else if (shortcutLoading) {
+  //     const timer = setTimeout(() => {
+  //       setShortcutLoading(false)
+  //     }, 3500)
+  //     return () => {
+  //       clearTimeout(timer)
+  //     }
+  //   }
+  // }, [shortcutLoading, floatingDropdownMenu.open])
 
   return (
     <FloatingPortal root={root}>
@@ -884,11 +887,7 @@ const FloatingContextMenu: FC<{
                               ? t('client:floating_menu__input__placeholder')
                               : ''
                           }
-                          InputId={
-                            shortcutLoading
-                              ? ''
-                              : MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID
-                          }
+                          InputId={MAXAI_FLOATING_CONTEXT_MENU_INPUT_ID}
                           sx={{
                             border: 'none',
                             '& > div': {
@@ -919,9 +918,7 @@ const FloatingContextMenu: FC<{
                       </>
                     )}
                     {/*运行中的时候可用的快捷键 不放到loading里是因为effect需要持续运行*/}
-                    <FloatingContextMenuShortcutButtonGroup
-                      onRegenerate={() => setShortcutLoading(true)}
-                    />
+                    <FloatingContextMenuShortcutButtonGroup />
                   </Stack>
                   <WritingMessageBoxPagination />
                 </Stack>

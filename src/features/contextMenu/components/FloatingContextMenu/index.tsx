@@ -99,6 +99,41 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
+const detectHasContextWindowDraftActions: ISetActionsType = [
+  {
+    type: 'RENDER_TEMPLATE',
+    parameters: {
+      template: '{{POPUP_DRAFT}}',
+    },
+  },
+  {
+    type: 'SCRIPTS_CONDITIONAL',
+    parameters: {
+      WFCondition: 'Equals',
+      WFFormValues: {
+        Value: '',
+        WFSerializationType: 'WFDictionaryFieldValue',
+      },
+      WFConditionalIfTrueActions: [],
+      WFConditionalIfFalseActions: [
+        // 说明有草稿, 加到variables中
+        {
+          type: 'SET_VARIABLE',
+          parameters: {
+            Variable: {
+              value: '{{POPUP_DRAFT}}',
+              label: 'Draft',
+              key: 'POPUP_DRAFT',
+              overwrite: true,
+              isBuiltIn: false,
+            },
+          },
+        },
+      ],
+    },
+  },
+]
+
 const FloatingContextMenu: FC<{
   root: any
 }> = (props) => {
@@ -459,18 +494,22 @@ const FloatingContextMenu: FC<{
           }
         } else {
           // 5.
-          currentDraft = '{{SELECTED_TEXT}}'
+          currentDraft = '{{SELECTED_TEXT}}\n{{POPUP_DRAFT}}'
         }
       }
       let template = `${inputValue}`
       if (currentDraft) {
         template += `:\n"""\n${currentDraft}\n"""`
       }
-
-      await askAIQuestion({
-        type: 'user',
-        text: template,
-      })
+      await askAIQuestion(
+        {
+          type: 'user',
+          text: template,
+        },
+        {
+          beforeActions: detectHasContextWindowDraftActions,
+        },
+      )
     }
   }
   const regenerateRef = useRef(regenerate)

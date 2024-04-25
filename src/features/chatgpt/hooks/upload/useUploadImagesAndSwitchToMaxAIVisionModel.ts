@@ -100,7 +100,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
           return
         }
       } else {
-        await createConversation('Chat', 'USE_CHAT_GPT_PLUS', 'claude-3-haiku')
+        await createConversation('Chat', 'MAXAI_CLAUDE', 'claude-3-haiku')
         return
       }
       if (resolveRef.current) {

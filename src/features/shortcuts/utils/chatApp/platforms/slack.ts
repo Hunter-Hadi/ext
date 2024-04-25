@@ -105,8 +105,9 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
     '[class$="sidebar_header__title"]',
   )?.innerText
   const currentChannel = document.querySelector<HTMLElement>(
-    '[class$="p-channel_sidebar__channel--selected"]',
+    '[class$="p-channel_sidebar__channel--selected"] .p-channel_sidebar__name > span',
   )
+  // if the current channel is direct message, the channel section is beneath the direct message section
   const isDirectMessage =
     currentChannel &&
     document

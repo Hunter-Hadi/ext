@@ -1177,7 +1177,17 @@ const DiscordWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
 const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
-      enable: true,
+      enable: (rootElement) => {
+        const chatMessagesNodeList = Array.from(
+          findSelectorParent(
+            '[data-qa="slack_kit_list"][role="list"]',
+            rootElement,
+          )?.querySelectorAll<HTMLElement>('[data-qa="message_container"]') ||
+            [],
+        )
+
+        return chatMessagesNodeList.length > 0
+      },
       rootSelectors: [
         '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
       ],

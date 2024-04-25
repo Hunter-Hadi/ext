@@ -32,14 +32,33 @@ const SidebarPageInit: FC = () => {
   return <></>
 }
 
+const SidebarDragWrapper: FC<{
+  children: React.ReactNode
+}> = ({ children }) => {
+  const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
+    useSidebarDropEvent()
+  return (
+    <Stack
+      component={'div'}
+      position={'relative'}
+      flex={1}
+      width={0}
+      onDragEnter={handleDragEnter}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop as any}
+    >
+      {children}
+    </Stack>
+  )
+}
+
 const SidebarPage: FC<{
   isImmersiveChat?: boolean
   open?: boolean
   disableContextProvider?: boolean
 }> = (props) => {
   const { isImmersiveChat, open = false, disableContextProvider } = props
-  const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
-    useSidebarDropEvent()
 
   const ContextProvider = disableContextProvider
     ? React.Fragment
@@ -58,21 +77,12 @@ const SidebarPage: FC<{
         >
           <SidebarTour />
           <SidebarPromotionDialog />
-          <Stack
-            component={'div'}
-            position={'relative'}
-            flex={1}
-            width={0}
-            onDragEnter={handleDragEnter}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop as any}
-          >
+          <SidebarDragWrapper>
             {!isImmersiveChat && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>
               <SidebarChatPanel />
             </AppSuspenseLoadingLayout>
-          </Stack>
+          </SidebarDragWrapper>
           {!isImmersiveChat && <SidebarNav />}
           {!open && (
             <>

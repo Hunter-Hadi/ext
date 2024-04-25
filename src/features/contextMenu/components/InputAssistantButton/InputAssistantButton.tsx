@@ -237,6 +237,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          shadowRoot={shadowRoot}
           onSelectionEffect={
             buttonGroup[0]?.onSelectionEffect &&
             (() => buttonGroup[0].onSelectionEffect!(observerData))
@@ -338,6 +339,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[1].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          shadowRoot={shadowRoot}
           disabled={smoothConversationLoading}
         >
           <Box>

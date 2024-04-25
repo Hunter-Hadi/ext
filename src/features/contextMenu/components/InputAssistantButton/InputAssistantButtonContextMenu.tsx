@@ -39,6 +39,7 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
   rootId: string
+  shadowRoot: ShadowRoot
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
@@ -53,6 +54,7 @@ const InputAssistantButtonContextMenu: FC<
     children,
     rootId,
     root,
+    shadowRoot,
     permissionWrapperCardSceneType,
     disabled,
     onSelectionEffect,
@@ -162,13 +164,12 @@ const InputAssistantButtonContextMenu: FC<
       }
       isRunningRef.current = true
       setClickContextMenu(null)
-      const buttonElement = document.querySelector(
+      const buttonElement = (document.querySelector(
         `[maxai-input-assistant-button-id="${rootId}"]`,
-      ) as HTMLElement
+      ) || shadowRoot?.host) as HTMLElement
       if (buttonElement) {
         showFloatingContextMenuWithElement(buttonElement, '', true)
       }
-      debugger
       runContextMenuRef
         .current(clickContextMenu)
         .then()

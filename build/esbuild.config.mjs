@@ -121,9 +121,19 @@ async function esbuildConfig() {
         copyWithFolder: true,
       }),
       copyStaticFilesPlugin({
-        source: ['src/lib/pdfjs'],
-        target: `${buildDir}/assets`,
-        copyWithFolder: true,
+        source: ['src/lib/pdfjs/build/pdf.mjs'],
+        target: `${buildDir}/assets/pdfjs/build/pdf.mjs`,
+        copyWithFolder: false,
+      }),
+      copyStaticFilesPlugin({
+        source: ['src/lib/pdfjs/build/pdf.worker.mjs'],
+        target: `${buildDir}/assets/pdfjs/build/pdf.worker.mjs`,
+        copyWithFolder: false,
+      }),
+      copyStaticFilesPlugin({
+        source: ['src/lib/pdfjs/LICENSE'],
+        target: `${buildDir}/assets/pdfjs`,
+        copyWithFolder: false,
       }),
       copyStaticFilesPlugin({
         source: ['src/assets/USE_CHAT_GPT_AI'],

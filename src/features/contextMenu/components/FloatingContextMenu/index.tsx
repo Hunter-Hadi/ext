@@ -856,10 +856,6 @@ const FloatingContextMenu: FC<{
                 <ActionSetVariablesModal
                   onClose={() => {
                     setIsSettingVariables(false)
-                    setFloatingDropdownMenu((prev) => ({
-                      ...prev,
-                      open: false,
-                    }))
                   }}
                   onShow={() => setIsSettingVariables(true)}
                   modelKey={'FloatingContextMenu'}

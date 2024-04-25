@@ -708,19 +708,22 @@ const FloatingContextMenu: FC<{
             if (!status) {
               return
             }
-            return askAIWIthShortcuts(runActions, {
-              overwriteParameters: selectionElement?.selectionText
-                ? [
-                    {
-                      key: 'SELECTED_TEXT',
-                      value: selectionElement.selectionText,
-                      label: 'Selected text',
-                      isBuiltIn: true,
-                      overwrite: true,
-                    },
-                  ]
-                : [],
-            }).then(() => {
+            return askAIWIthShortcuts(
+              detectHasContextWindowDraftActions.concat(runActions),
+              {
+                overwriteParameters: selectionElement?.selectionText
+                  ? [
+                      {
+                        key: 'SELECTED_TEXT',
+                        value: selectionElement.selectionText,
+                        label: 'Selected text',
+                        isBuiltIn: true,
+                        overwrite: true,
+                      },
+                    ]
+                  : [],
+              },
+            ).then(() => {
               // done
               const error = shortCutsEngine?.getNextAction()?.error || ''
               if (error) {

@@ -185,7 +185,6 @@ const useClientChat = () => {
       isOpenSidebarChatBox?: boolean
     },
   ) => {
-    debugger
     const {
       overwriteParameters = [],
       isSaveLastRunShortcuts = true,

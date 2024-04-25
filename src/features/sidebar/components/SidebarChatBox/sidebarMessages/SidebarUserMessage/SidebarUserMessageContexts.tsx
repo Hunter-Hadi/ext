@@ -10,6 +10,7 @@ import React, { FC, Fragment, useMemo, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
+import LargeTextBox from '@/components/LargeTextBox'
 import LazyLoadImage from '@/components/LazyLoadImage'
 import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { IUserChatMessage } from '@/features/chatgpt/types'
@@ -149,11 +150,12 @@ const SidebarUserMessageContexts: FC<{
                             />
                             {`Formatting may be inconsistent from source.`}
                           </Typography>
-                          <Stack
-                            flex={1}
+                          <LargeTextBox
+                            text={extractedContent}
                             sx={{
                               mt: 1,
-                              overflowY: 'auto',
+                            }}
+                            fontSx={{
                               whiteSpace: 'pre-wrap',
                               wordBreak: 'break-word',
                               fontSize: '14px',
@@ -161,9 +163,7 @@ const SidebarUserMessageContexts: FC<{
                               textAlign: 'left',
                               lineHeight: '20px',
                             }}
-                          >
-                            {extractedContent}
-                          </Stack>
+                          />
                         </Stack>
                       )
                     }

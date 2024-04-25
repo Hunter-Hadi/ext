@@ -21,6 +21,7 @@ import React, {
   useState,
 } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
 import Browser from 'webextension-polyfill'
 
 import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
@@ -33,6 +34,7 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import useInterval from '@/features/common/hooks/useInterval'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { AppDBStorageState } from '@/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
 import {
   getOriginalFileURL,
@@ -48,6 +50,7 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
   const isAccessPermissionRef = useRef(false)
+  const { userSettings } = useRecoilValue(AppDBStorageState)
   useEffectOnce(() => {
     if (isMaxAIPDFPage()) {
       Browser.extension.isAllowedFileSchemeAccess().then((result) => {
@@ -120,10 +123,14 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
     } else {
       const file = event.dataTransfer?.files?.[0]
       if (file && file.type.includes('pdf')) {
-        event.stopPropagation()
-        event.preventDefault()
-        await handleUploadPDF(file)
-        // window.close()
+        if (userSettings?.pdf?.enabled) {
+          // 用浏览器的默认事件打开 pdf 文件，会被 pdfSnifferStartListener 代理成 maxai 的 pdf viewer
+          window.close()
+        } else {
+          event.stopPropagation()
+          event.preventDefault()
+          await handleUploadPDF(file)
+        }
       }
     }
 
@@ -161,6 +168,9 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   )
 
   const handleUploadPDF = async (file: File) => {
+    if (uploadLoading) {
+      return
+    }
     setUploadLoading(true)
     const result = await maxAIFileUpload(file, {
       useCase: 'multimodal',

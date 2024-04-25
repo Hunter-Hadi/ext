@@ -22,6 +22,7 @@
     },
     {
       "matches": [
+        "http://localhost:3000/*",
         "https://main.d3bohqvl407i44.amplifyapp.com/*",
         "https://test.d3kf9o74pc4m0c.amplifyapp.com/*"
       ],

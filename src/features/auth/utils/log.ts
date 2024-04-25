@@ -6,6 +6,7 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER } from '@/features/searchWithAI/constants'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 
@@ -182,7 +183,11 @@ export const authEmitPricingHooksLog = debounce(
   ) => {
     try {
       const logType = await permissionSceneTypeToLogType(sceneType)
-
+      const type = action === 'show' ? 'paywall_show' : 'paywall_clicked'
+      mixpanelTrack(type, {
+        logType,
+        sceneType,
+      })
       const port = new ContentScriptConnectionV2()
       await port.postMessage({
         event: 'Client_emitPricingHooks',

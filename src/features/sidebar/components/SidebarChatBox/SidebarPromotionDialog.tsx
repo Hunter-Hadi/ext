@@ -84,6 +84,7 @@ const SidebarPromotionDialog = () => {
         )
 
         setOpen(true)
+        mixpanelTrack('update_modal_showed')
       }, 1500)
     })
   }, [browserAgent, userInfo, isPayingUser])
@@ -238,7 +239,10 @@ const SidebarPromotionDialog = () => {
               px: 2,
               py: 1.5,
             }}
-            onClick={handleClose}
+            onClick={() => {
+              mixpanelTrack('update_modal_clicked')
+              handleClose()
+            }}
           >
             {t('sidebar__promotion_dialog__cta_button')}
           </Button>

@@ -338,7 +338,7 @@ export const ClientMessageInit = () => {
         case 'Client_updateUseChatGPTAuthInfo':
           {
             const prevToken = await getMaxAIChromeExtensionAccessToken()
-            const { accessToken, refreshToken, userInfo } = data
+            const { accessToken, refreshToken, userInfo, clientUserId } = data
             log.info(
               'Client_updateUseChatGPTAuthInfo',
               accessToken,
@@ -353,6 +353,7 @@ export const ClientMessageInit = () => {
                 [CHROME_EXTENSION_LOCAL_STORAGE_APP_USECHATGPTAI_SAVE_KEY]: {
                   accessToken,
                   refreshToken,
+                  clientUserId,
                   userInfo,
                   userData:
                     cache[

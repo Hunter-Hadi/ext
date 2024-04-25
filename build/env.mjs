@@ -28,7 +28,6 @@ const getArgs = () => {
 
 const node_env = String(process.env.NODE_ENV || 'development')
 
-
 const isProduction = node_env === 'production'
 
 const HostConfig = {
@@ -48,6 +47,15 @@ const HostConfig = {
     appProjectAPIHost: 'https://api.maxai.me',
   },
 }
+
+const MixPanelProjectIdConfig = {
+  development: '-',
+  test: 'dc4e4b13d1d423a76e0e10ea377e2949', // zztest
+  production: '56ac2c299c42140f6d81dec2a4ea9a3c',
+}
+
+const MIXPANEL_PROJECT_ID = MixPanelProjectIdConfig[node_env]
+
 console.log(`Running in ${node_env} mode`)
 console.log(`config:\n`, HostConfig[node_env])
 
@@ -66,6 +74,7 @@ const env = {
   APP_USE_CHAT_GPT_HOST,
   APP_USE_CHAT_GPT_API_HOST,
   APP_NAME,
+  MIXPANEL_PROJECT_ID,
 }
 const getReplaceEnv = () => {
   const pkg = JSON.parse(

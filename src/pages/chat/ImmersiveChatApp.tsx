@@ -50,11 +50,11 @@ const App: FC = () => {
       >
         <AppInit />
         <Announcement />
-        <SidebarTopBar />
-        <ChatBoxHeader showConversationList />
-        <BrowserVersionDetector>
-          <AppSuspenseLoadingLayout>
-            <SidebarContextProvider isImmersiveChat>
+        <SidebarContextProvider isImmersiveChat>
+          <SidebarTopBar />
+          <ChatBoxHeader showConversationList />
+          <BrowserVersionDetector>
+            <AppSuspenseLoadingLayout>
               <Stack flexDirection={'row'} flex={1} height={0}>
                 <Stack
                   direction={'row'}
@@ -102,9 +102,9 @@ const App: FC = () => {
                   <SidebarPage isImmersiveChat open disableContextProvider />
                 </Stack>
               </Stack>
-            </SidebarContextProvider>
-          </AppSuspenseLoadingLayout>
-        </BrowserVersionDetector>
+            </AppSuspenseLoadingLayout>
+          </BrowserVersionDetector>
+        </SidebarContextProvider>
       </Stack>
       <GlobalVideoPopup />
     </Box>

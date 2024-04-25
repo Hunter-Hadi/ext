@@ -146,7 +146,7 @@ const AppInit = () => {
       <MaxAISubscriptionUpdate />
       <MAXAIPDFAIViewerErrorAlert />
       <MaxAIPDFAIViewerTopBarButtonGroup />
-      {!isMaxAIImmersiveChatPage() && <ContextMenuInit />}
+      <ContextMenuInit />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
     </>

@@ -182,11 +182,7 @@ const InputAssistantButtonContextMenu: FC<
           // onSelectionEffect && onSelectionEffect();
         })
     }
-    return () => {
-      if (onSelectionEffectListener) {
-        shortCutsEngine?.removeListener(onSelectionEffectListener)
-      }
-    }
+    return () => {}
   }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {

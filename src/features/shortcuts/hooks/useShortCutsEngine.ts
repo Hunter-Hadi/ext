@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { useAuthLogin } from '@/features/auth'
@@ -29,6 +29,10 @@ const useShortCutsEngine = () => {
   const shortCutsEngine = ShortCutsEngineFactory.getShortCutsEngine(
     currentConversationId || '',
   )
+  const shortCutsEngineRef = useRef(shortCutsEngine)
+  useEffect(() => {
+    shortCutsEngineRef.current = shortCutsEngine
+  }, [shortCutsEngine])
   const clientConversationEngine = useClientConversation()
   const setShortCuts = (actions: ISetActionsType) => {
     if (!shortCutsEngine) {
@@ -155,6 +159,7 @@ const useShortCutsEngine = () => {
   return {
     getParams,
     shortCutsEngine,
+    shortCutsEngineRef,
     runShortCuts,
     setShortCuts,
     loading:

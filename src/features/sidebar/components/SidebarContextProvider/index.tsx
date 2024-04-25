@@ -1,5 +1,4 @@
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
 
 import { ConversationStatusType } from '@/background/provider/chat'
 import {
@@ -8,27 +7,14 @@ import {
 } from '@/features/chatgpt/store/ChatPanelContext'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { getInputMediator } from '@/store/InputMediator'
 
-/**
- * SidebarContextProvider组件
- * 拆分出来提供给immersive chat app和side bar里使用
- *
- * @param props
- * @constructor
- */
-const SidebarContextProvider: FC<{
-  isImmersiveChat?: boolean
-  children: React.ReactNode
-}> = (props) => {
-  const { isImmersiveChat, children } = props
+const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
+  const { children } = props
   const {
     currentSidebarConversationId,
     currentSidebarConversationType,
     createSidebarConversation,
-    resetSidebarConversation,
-    updateSidebarSettings,
     sidebarSettings,
   } = useSidebarSettings()
   const [conversationStatus, setConversationStatus] =
@@ -61,9 +47,6 @@ const SidebarContextProvider: FC<{
     currentSidebarConversationId,
     immersiveSettings,
   ])
-  const [immersiveWritingMessage, setImmersiveWritingMessage] = useRecoilState(
-    ClientWritingMessageStateFamily(immersiveConversationId || ''),
-  )
 
   // 初始化时sidebarSettings为空，同步数据后更新至immersiveSettings
   useEffect(() => {
@@ -76,9 +59,7 @@ const SidebarContextProvider: FC<{
     /**
      * 区分immersive chat和sidebar里的状态
      */
-    const conversationId = isImmersiveChat
-      ? immersiveConversationId
-      : currentSidebarConversationId
+    const conversationId = immersiveConversationId
 
     /**
      * 修改conversation id
@@ -98,20 +79,12 @@ const SidebarContextProvider: FC<{
           Art: 'art',
         }
         if (map[sidebarConversationTypeRef.current]) {
-          if (isImmersiveChat) {
-            return setImmersiveSettings((prev) => ({
-              ...prev,
-              [map[sidebarConversationTypeRef.current]]: {
-                conversationId: newId,
-              },
-            }))
-          } else {
-            return updateSidebarSettings({
-              [map[sidebarConversationTypeRef.current]]: {
-                conversationId: newId,
-              },
-            })
-          }
+          return setImmersiveSettings((prev) => ({
+            ...prev,
+            [map[sidebarConversationTypeRef.current]]: {
+              conversationId: newId,
+            },
+          }))
         }
       }
 
@@ -120,16 +93,17 @@ const SidebarContextProvider: FC<{
      * immersive chat里创建conversation时不能影响到sidebar里
      * 所以这里加入了一个updateSetting的参数
      */
-    const createConversation: ChatPanelContextValue['createConversation'] =
-      isImmersiveChat
-        ? (conversationType, AIProvider, AIModel) =>
-            createSidebarConversation(
-              conversationType,
-              AIProvider,
-              AIModel,
-              false,
-            ).then((newId) => updateConversationId(newId).then(() => newId))
-        : createSidebarConversation
+    const createConversation: ChatPanelContextValue['createConversation'] = (
+      conversationType,
+      AIProvider,
+      AIModel,
+    ) =>
+      createSidebarConversation(
+        conversationType,
+        AIProvider,
+        AIModel,
+        false,
+      ).then((newId) => updateConversationId(newId).then(() => newId))
 
     /**
      * 清除conversation
@@ -137,31 +111,22 @@ const SidebarContextProvider: FC<{
      * 这里重新写了一个方法，主要是useSidebarSettings里修改的是sidebar的clientWritingMessage
      */
     const resetConversation: ChatPanelContextValue['resetConversation'] =
-      isImmersiveChat
-        ? async () => {
-            if (immersiveWritingMessage.loading) {
-              return
-            }
-            getInputMediator('floatingMenuInputMediator').updateInputValue('')
-            getInputMediator('chatBoxInputMediator').updateInputValue('')
-            const currentConversation = conversationId
-              ? await clientGetConversation(conversationId)
-              : null
-            if (currentConversation) {
-              await createConversation(
-                currentConversation.type,
-                currentConversation.meta.AIProvider!,
-                currentConversation.meta.AIModel!,
-              )
-            } else {
-              await createConversation(sidebarConversationTypeRef.current)
-            }
-            setImmersiveWritingMessage({
-              writingMessage: null,
-              loading: false,
-            })
-          }
-        : resetSidebarConversation
+      async () => {
+        getInputMediator('floatingMenuInputMediator').updateInputValue('')
+        getInputMediator('chatBoxInputMediator').updateInputValue('')
+        const currentConversation = conversationId
+          ? await clientGetConversation(conversationId)
+          : null
+        if (currentConversation) {
+          await createConversation(
+            currentConversation.type,
+            currentConversation.meta.AIProvider!,
+            currentConversation.meta.AIModel!,
+          )
+        } else {
+          await createConversation(sidebarConversationTypeRef.current)
+        }
+      }
 
     return {
       conversationStatus,
@@ -173,18 +138,86 @@ const SidebarContextProvider: FC<{
       createConversation,
       resetConversation,
     }
-  }, [
-    currentSidebarConversationId,
-    conversationStatus,
-    isImmersiveChat,
-    immersiveConversationId,
-  ])
+  }, [immersiveConversationId, conversationStatus])
 
   return (
     <ChatPanelContext.Provider value={sidebarContextValue}>
       {children}
     </ChatPanelContext.Provider>
   )
+}
+
+const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
+  const { children } = props
+  const {
+    currentSidebarConversationId,
+    currentSidebarConversationType,
+    createSidebarConversation,
+    resetSidebarConversation,
+    updateSidebarSettings,
+    sidebarSettings,
+  } = useSidebarSettings()
+  const [conversationStatus, setConversationStatus] =
+    useState<ConversationStatusType>('success')
+
+  const sidebarConversationTypeRef = useRef(currentSidebarConversationType)
+  sidebarConversationTypeRef.current = currentSidebarConversationType
+
+  const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
+    return {
+      conversationStatus,
+      updateConversationStatus: (newStatus: ConversationStatusType) => {
+        setConversationStatus(newStatus)
+      },
+      conversationId: currentSidebarConversationId,
+      updateConversationId: async (newId) => {
+        const map: Record<
+          string,
+          keyof Exclude<typeof sidebarSettings, undefined>
+        > = {
+          Chat: 'chat',
+          Summary: 'summary',
+          Search: 'search',
+          Art: 'art',
+        }
+        if (map[sidebarConversationTypeRef.current]) {
+          return updateSidebarSettings({
+            [map[sidebarConversationTypeRef.current]]: {
+              conversationId: newId,
+            },
+          })
+        }
+      },
+      createConversation: createSidebarConversation,
+      resetConversation: resetSidebarConversation,
+    }
+  }, [currentSidebarConversationId, conversationStatus])
+
+  return (
+    <ChatPanelContext.Provider value={sidebarContextValue}>
+      {children}
+    </ChatPanelContext.Provider>
+  )
+}
+
+/**
+ * SidebarContextProvider组件
+ * 拆分出来提供给immersive chat app和side bar里使用
+ *
+ * @param props
+ * @constructor
+ */
+const SidebarContextProvider: FC<{
+  isImmersiveChat?: boolean
+  children: React.ReactNode
+}> = (props) => {
+  const { isImmersiveChat, children } = props
+
+  if (isImmersiveChat) {
+    return <SidebarImmersiveProvider>{children}</SidebarImmersiveProvider>
+  }
+
+  return <SidebarAppProvider>{children}</SidebarAppProvider>
 }
 
 export default SidebarContextProvider

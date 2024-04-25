@@ -14,8 +14,8 @@ import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { WWW_PROJECT_HOST } from '@/constants'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import globalSnackbar from '@/utils/globalSnackbar'
+import { useClientConversation  } from "@/features/chatgpt/hooks/useClientConversation";
 
 const createShareLink = (shareId: string) => {
   return `${WWW_PROJECT_HOST}/share?id=${shareId}`
@@ -23,12 +23,12 @@ const createShareLink = (shareId: string) => {
 
 const ShareButtonGroup: FC = () => {
   const { t } = useTranslation(['client'])
-  const { currentSidebarConversation } = useSidebarSettings()
+  const { clientConversation } = useClientConversation()
   const [isUploadingConversation, setIsUploadingConversation] = useState(false)
   const [buttonLoading, setButtonLoading] = useState(false)
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const isShareable = currentSidebarConversation?.share?.enabled === true
-  const shareId = currentSidebarConversation?.share?.shareId
+  const isShareable = clientConversation?.share?.enabled === true
+  const shareId = clientConversation?.share?.shareId
   const handleOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
@@ -38,10 +38,10 @@ const ShareButtonGroup: FC = () => {
   const switchShareType = async (
     shareType: IChatConversationShareConfig['shareType'],
   ) => {
-    if (!currentSidebarConversation?.id) {
+    if (!clientConversation?.id) {
       return
     }
-    if (currentSidebarConversation.share?.shareType === shareType) {
+    if (clientConversation.share?.shareType === shareType) {
       return
     }
     try {
@@ -53,12 +53,12 @@ const ShareButtonGroup: FC = () => {
           id?: string
         }
       }>('/conversation/share_conversation', {
-        id: currentSidebarConversation.id,
+        id: clientConversation.id,
         share_enabled: enabled,
       })
       if (shareConfig?.data?.status === 'OK') {
         await clientUpdateChatConversation(
-          currentSidebarConversation.id,
+          clientConversation.id,
           {
             share: {
               enabled,
@@ -123,7 +123,7 @@ const ShareButtonGroup: FC = () => {
       try {
         setIsUploadingConversation(true)
         const needUploadConversation: any = cloneDeep(
-          currentSidebarConversation,
+          clientConversation,
         )
         const needUploadMessages = cloneDeep(needUploadConversation.messages)
         // 消息是分开存的, 需要删除
@@ -221,7 +221,7 @@ const ShareButtonGroup: FC = () => {
       currentTarget: event.currentTarget || fallbackTarget,
     } as any)
   }
-  if (!currentSidebarConversation?.messages.length) {
+  if (!clientConversation?.messages.length) {
     return null
   }
   return (

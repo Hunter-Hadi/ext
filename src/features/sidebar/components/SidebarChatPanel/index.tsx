@@ -38,6 +38,7 @@ const SidebarChatPanel = () => {
   const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
   const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
   const {
+    currentConversationId,
     clientWritingMessage,
     clientConversationMessages,
     resetConversation,
@@ -61,6 +62,8 @@ const SidebarChatPanel = () => {
       </DevContent>
       <ChatGPTStatusWrapper />
       <SidebarChatBox
+        conversationId={currentConversationId}
+        conversationType={currentSidebarConversationType}
         onSendMessage={async (question, options) => {
           if (currentSidebarConversationType === 'Search') {
             await createSearchWithAI(question, true)

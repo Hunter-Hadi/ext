@@ -30,6 +30,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderUploadFiles,
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
+    addOrUpdateUploadFile,
   } = useAIProviderUpload()
   const { conversationStatus } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -65,6 +66,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       waitExtractTextFiles.map(async (waitExtractTextFile) => {
         const extractedResult = await FileExtractor.extractFile(
           waitExtractTextFile,
+          addOrUpdateUploadFile,
         )
         if (extractedResult.success) {
           extractedTextFiles.push(extractedResult.chatUploadFile)
@@ -78,7 +80,7 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
       maxFileSize,
     )
 
-    await aiProviderUploadFiles(extractedTextFiles.concat(newUploadFiles))
+    await aiProviderUploadFiles(newUploadFiles)
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''

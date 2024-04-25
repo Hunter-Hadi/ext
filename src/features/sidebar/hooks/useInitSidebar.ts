@@ -40,7 +40,7 @@ const useInitSidebar = () => {
     updateSidebarConversationType,
     updateSidebarSummaryConversationId,
   } = useSidebarSettings()
-  const { currentConversationIdRef, createConversation } =
+  const { currentConversationIdRef, createConversation, resetConversation } =
     useClientConversation()
   const { stopGenerate } = useClientChat()
   const { updateAIProviderModel } = useAIProviderModels()
@@ -216,6 +216,12 @@ const useInitSidebar = () => {
           if (conversation) {
             console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')
             console.log('新版Conversation refocus更新', conversation.messages)
+            if (conversation.isDelete) {
+              if (isMaxAIImmersiveChatPage()) {
+                // immersive chat page下先在这里触发reset
+                resetConversation()
+              }
+            }
             updateConversationMap((prevState) => {
               return {
                 ...prevState,

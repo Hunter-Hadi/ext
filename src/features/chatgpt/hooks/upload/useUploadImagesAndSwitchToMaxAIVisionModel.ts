@@ -94,17 +94,13 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         ) {
           await createConversation(
             clientConversation.type,
-            'USE_CHAT_GPT_PLUS',
-            MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            'MAXAI_CLAUDE',
+            'claude-3-haiku',
           )
           return
         }
       } else {
-        await createConversation(
-          'Chat',
-          'USE_CHAT_GPT_PLUS',
-          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-        )
+        await createConversation('Chat', 'MAXAI_CLAUDE', 'claude-3-haiku')
         return
       }
       if (resolveRef.current) {

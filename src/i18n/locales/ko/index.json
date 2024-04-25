@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot 즉각적인 답장",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram 즉각적인 답장",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams 즉각적인 답장",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat 즉각적인 답장"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat 즉각적인 답장",
+    "left_menu__sidebar": "사이드바",
+    "feature_card__sidebar__field__auto_archive__title": "자동 아카이브: 사용 중 정리",
+    "feature_card__sidebar__field__auto_archive__button__title": "채팅 아카이브하기",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI에서는 선택한 주기로 대화를 자동으로 아카이브합니다. 이를 통해 새로운 시작을 할 수 있고 사이드바를 깔끔하게 유지할 수 있습니다."
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",

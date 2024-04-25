@@ -1,9 +1,11 @@
 import { v4 as uuidV4 } from 'uuid'
 
 import { checkFileNameIsImage } from '@/background/utils/uplpadFileProcessHelper'
+import { MaxAIAddOrUpdateUploadFile } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { IChatUploadFile } from '@/features/chatgpt/types'
+import SpecialTypeFileExtractor from '@/features/sidebar/utils/FileExtractor/SpecialTypeFileExtractor'
 import globalSnackbar from '@/utils/globalSnackbar'
-interface FileInfo {
+export interface FileExtractorResult {
   success: boolean
   error?: string
   chatUploadFile: IChatUploadFile
@@ -11,7 +13,7 @@ interface FileInfo {
 
 class FileExtractor {
   private static supportedFileTypes = [
-    // '.pdf',
+    '.pdf',
     // '.doc',
     // '.docx',
     // '.rtf',
@@ -99,8 +101,12 @@ class FileExtractor {
     return result
   }
 
-  public static extractFile(file: File | null): Promise<FileInfo> {
-    return new Promise((resolve, reject) => {
+  public static extractFile(
+    file: File | null,
+    maxAIAddOrUpdateFile: MaxAIAddOrUpdateUploadFile,
+  ): Promise<FileExtractorResult> {
+    // eslint-disable-next-line no-async-promise-executor
+    return new Promise(async (resolve, reject) => {
       if (!file) {
         resolve({
           success: false,
@@ -114,8 +120,14 @@ class FileExtractor {
         })
         return
       }
-      // 获取文件名的后缀
+      if (SpecialTypeFileExtractor.isSpecialTypeFile(file)) {
+        SpecialTypeFileExtractor.extractFile(file, maxAIAddOrUpdateFile).then(
+          resolve,
+        )
+        return
+      }
       if (!this.canExtractTextFromFileName(file.name)) {
+        // 获取文件名的后缀
         resolve({
           success: false,
           error: `You may not upload files of the following format: (${file.type}). Try again using a different file format.`,
@@ -129,11 +141,32 @@ class FileExtractor {
         return
       }
 
+      const fileId = uuidV4()
       const reader = new FileReader()
-
+      await maxAIAddOrUpdateFile(fileId, {
+        id: fileId,
+        fileName: file.name,
+        fileSize: file.size,
+        fileType: file.type,
+        uploadStatus: 'uploading',
+        uploadProgress: 0,
+        icon: 'file',
+      })
+      reader.onprogress = (event) => {
+        if (event.lengthComputable) {
+          const progress = (event.loaded / event.total) * 100
+          maxAIAddOrUpdateFile(fileId, {
+            uploadProgress: progress,
+          })
+        }
+      }
       reader.onload = () => {
         if (typeof reader.result !== 'string') {
           // 读取文件失败
+          maxAIAddOrUpdateFile(fileId, {
+            uploadStatus: 'error',
+            uploadProgress: 0,
+          })
           resolve({
             success: false,
             error: `You may not upload files of the following format: (${file.type}). Try again using a different file format.`,
@@ -147,7 +180,13 @@ class FileExtractor {
           return
         }
         const blobUrl = URL.createObjectURL(file)
-        const fileId = uuidV4()
+        maxAIAddOrUpdateFile(fileId, {
+          uploadStatus: 'success',
+          uploadProgress: 100,
+          uploadedUrl: blobUrl,
+          extractedContent: reader.result,
+          uploadedFileId: fileId,
+        })
         resolve({
           success: true,
           error: '',

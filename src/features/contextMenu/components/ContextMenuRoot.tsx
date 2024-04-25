@@ -15,9 +15,9 @@ import { MAXAI_CONTEXT_MENU_ID } from '@/features/common/constants'
 import { FloatingContextMenu } from '@/features/contextMenu/components/FloatingContextMenu'
 import FloatingShortCutsTip from '@/features/contextMenu/components/FloatingContextMenu/FloatingShortCutsTip'
 import FloatingMiniMenu from '@/features/contextMenu/components/FloatingMiniMenu'
+import GoogleDocInject from '@/features/contextMenu/components/GoogleDocInject'
 import InputAssistantButtonPortal from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonPortal'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import GoogleDocInject from '@/features/contextMenu/components/GoogleDocInject'
 
 const ContextMenuRoot: FC = () => {
   const { updateSidebarSettings } = useSidebarSettings()
@@ -29,6 +29,9 @@ const ContextMenuRoot: FC = () => {
     return {
       conversationStatus: conversationStatus,
       updateConversationStatus: updateConversationStatus,
+      updateConversationId: async () => {
+        setConversationId('')
+      },
       createConversation: async (conversationType, AIProvider, AIModel) => {
         if (!AIProvider || !AIModel) {
           // 说明要用默认的或者用户最后选择的
@@ -85,12 +88,12 @@ const ContextMenuRoot: FC = () => {
               <FloatingShortCutsTip />
               <FloatingMiniMenu />
               <GoogleDocInject />
+              <InputAssistantButtonPortal />
               {/*</AppThemeProvider>*/}
             </>
           )
         }}
       </CustomPortal>
-      <InputAssistantButtonPortal />
     </ChatPanelContext.Provider>
   )
 }

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "ہب سپاٹ فوری جواب",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "ٹیلیگرام فوری جواب",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "مائیکروسافٹ ٹیمز فوری جواب",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "گوگل چیٹ فوری جواب"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "گوگل چیٹ فوری جواب",
+    "left_menu__sidebar": "سائڈبار",
+    "feature_card__sidebar__field__auto_archive__title": "خودکار آرکائیو: جب بھی صفائی کریں",
+    "feature_card__sidebar__field__auto_archive__button__title": "چیٹ آرکائیو کریں بعد میں",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں، ہم آپ کی پسندیدہ تناسب کے ساتھ خودکار طور پر بیکار چیٹ آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کی سائڈبار کو صاف رکھتا ہے۔"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

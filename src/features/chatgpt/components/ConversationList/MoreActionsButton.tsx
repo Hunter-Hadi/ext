@@ -11,7 +11,6 @@ import React, { FC, memo, MouseEvent, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import MaxAIMenu from '@/components/MaxAIMenu'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
@@ -35,14 +34,11 @@ const MoreActionsButton: FC<{
     conversationDisplaysText,
     conversationType,
     conversationId,
-    conversationAIProvider,
-    conversationAIModel,
     onRename,
     onDelete,
   } = props
   const {
     resetConversation,
-    createConversation,
     currentSidebarConversationType,
   } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
@@ -259,23 +255,24 @@ const MoreActionsButton: FC<{
                   await resetConversation()
                   await clientForceRemoveConversation(conversationId)
                   onDelete?.()
-                  if (isInImmersiveChat) {
-                    if (conversationAIProvider && conversationAIModel) {
-                      await createConversation(
-                        conversationType,
-                        conversationAIProvider,
-                        conversationAIModel,
-                      )
-                    } else {
-                      await createConversation(
-                        conversationType,
-                        MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType]
-                          .AIProvider,
-                        MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType]
-                          .AIModel,
-                      )
-                    }
-                  }
+                  // resetConversation里已经做了处理先注释掉下面的代码防止重复创建
+                  // if (isInImmersiveChat) {
+                  //   if (conversationAIProvider && conversationAIModel) {
+                  //     await createConversation(
+                  //       conversationType,
+                  //       conversationAIProvider,
+                  //       conversationAIModel,
+                  //     )
+                  //   } else {
+                  //     await createConversation(
+                  //       conversationType,
+                  //       MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType]
+                  //         .AIProvider,
+                  //       MAXAI_DEFAULT_AI_PROVIDER_CONFIG[conversationType]
+                  //         .AIModel,
+                  //     )
+                  //   }
+                  // }
                 }}
                 sx={{
                   bgcolor: '#f44336!important',

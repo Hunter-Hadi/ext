@@ -29,19 +29,21 @@ import SidebarChatBoxMessageListContainer from '@/features/sidebar/components/Si
 import SidebarHomeView from '@/features/sidebar/components/SidebarChatBox/SidebarHomeView'
 import SidebarHeader from '@/features/sidebar/components/SidebarHeader'
 import DevConsole from '@/features/sidebar/components/SidebarTabs/DevConsole'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
 import {
   clientRestartChromeExtension,
   getMaxAISidebarRootElement,
 } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 interface IGmailChatBoxProps {
   sx?: SxProps
   onReGenerate?: () => void
   onStopGenerate?: () => void
   onReset?: () => void
+  conversationId?: string
+  conversationType?: ISidebarConversationType
   messages: IChatMessage[]
   writingMessage: IChatMessage | null
   onSendMessage?: (text: string, options: IUserChatMessageExtraType) => void
@@ -55,6 +57,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
     onReGenerate,
     onStopGenerate,
     onSendMessage,
+    conversationId,
+    conversationType,
     writingMessage,
     messages,
     onReset,
@@ -63,12 +67,10 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   const [isSettingVariables, setIsSettingVariables] = useState(false)
   const { t } = useTranslation(['common', 'client'])
   const [isShowContinueButton, setIsShowContinueButton] = useState(false)
-  const { currentSidebarConversationType, currentSidebarConversationId } =
-    useSidebarSettings()
   const isInImmersiveChat = isMaxAIImmersiveChatPage()
 
   const textareaPlaceholder = useMemo(() => {
-    if (currentSidebarConversationType === 'Summary') {
+    if (conversationType === 'Summary') {
       const pageSummaryType = getPageSummaryType()
       switch (pageSummaryType) {
         case 'PAGE_SUMMARY':
@@ -83,14 +85,14 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
           return t('client:sidebar__input__summary__page_placeholder')
       }
     }
-    if (currentSidebarConversationType === 'Search') {
+    if (conversationType === 'Search') {
       return t('client:sidebar__input__search__placeholder')
     }
-    if (currentSidebarConversationType === 'Art') {
+    if (conversationType === 'Art') {
       return t('client:sidebar__input__art__placeholder')
     }
     return t('client:sidebar__input__chat__placeholder')
-  }, [currentSidebarConversationType, t])
+  }, [conversationType, t])
   const shortcutsActionBtnSxMemo = useMemo(() => {
     return {
       borderRadius: 2,
@@ -106,7 +108,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
   }, [])
 
   const tempIsShowRegenerate = useMemo(() => {
-    if (currentSidebarConversationType === 'Chat' && messages.length > 0) {
+    if (conversationType === 'Chat' && messages.length > 0) {
       const lastMessage = messages[messages.length - 1]
       if (lastMessage && lastMessage.type === 'ai') {
         const AIMessage = lastMessage as IAIResponseMessage
@@ -116,15 +118,15 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
       }
     }
     return true
-  }, [messages, currentSidebarConversationType])
+  }, [messages, conversationType])
 
   const isShowChatBoxHomeView = useMemo(() => {
     return (
       messages.length <= 0 &&
       !writingMessage &&
-      currentSidebarConversationType !== 'Summary'
+      conversationType !== 'Summary'
     )
-  }, [messages, writingMessage, currentSidebarConversationType])
+  }, [messages, writingMessage, conversationType])
 
   const handleSendMessage = useCallback(
     (value: string, options: IUserChatMessageExtraType) => {
@@ -168,9 +170,9 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
         }
       />
 
-      {currentSidebarConversationId && messages.length > 0 ? (
+      {conversationId && messages.length > 0 ? (
         <SidebarChatBoxMessageListContainer
-          conversationId={currentSidebarConversationId}
+          conversationId={conversationId}
           loading={loading}
           messages={messages}
           writingMessage={writingMessage}
@@ -250,8 +252,8 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
                   {t('client:sidebar__button__regenerate')}
                 </Button>
                 {isShowContinueButton &&
-                  currentSidebarConversationType !== 'Search' &&
-                  currentSidebarConversationType !== 'Art' && (
+                  conversationType !== 'Search' &&
+                  conversationType !== 'Art' && (
                     <Button
                       disableElevation
                       startIcon={<ContextMenuIcon icon={'FastForward'} />}
@@ -308,7 +310,7 @@ const SidebarChatBox: FC<IGmailChatBoxProps> = (props) => {
             stopPropagation
             loading={loading}
             expandNode={
-              currentSidebarConversationType === 'Chat' ? (
+              conversationType === 'Chat' ? (
                 <ChatIconFileUpload direction={'column'} size={'small'} />
               ) : null
             }

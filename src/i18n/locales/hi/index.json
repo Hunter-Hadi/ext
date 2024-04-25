@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot तत्काल उत्तर",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram तत्काल उत्तर",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams तत्काल उत्तर",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat तत्काल उत्तर"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat तत्काल उत्तर",
+    "left_menu__sidebar": "साइडबार",
+    "feature_card__sidebar__field__auto_archive__title": "ऑटो आर्काइव: जब जाएं तब साफ करें",
+    "feature_card__sidebar__field__auto_archive__button__title": "चैट को आर्काइव करें बाद में",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI में, हम आपकी पसंद के अनुसार खाली चैट को ऑटो आर्काइव करते हैं। इससे आपको एक नयी शुरुआत मिलती है और आपका साइडबार साफ रहता है।"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",

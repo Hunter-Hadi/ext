@@ -56,6 +56,7 @@ const useSidebarDropEvent = () => {
   const handleDrop = async (event: DragEvent) => {
     const { items } = event.dataTransfer || {}
     if (!items || !items.length) {
+      setIsSidebarDragOver(false)
       return
     }
     const files = Array.from(items)
@@ -102,11 +103,10 @@ const useSidebarDropEvent = () => {
         // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
       } else if (isContainMaxAIModelUploadFile(files)) {
         event.preventDefault()
+        setIsSidebarDragOver(false)
         await uploadFilesToMaxAIModel(files)
       }
     }
-
-    setIsSidebarDragOver(false)
   }
 
   return {

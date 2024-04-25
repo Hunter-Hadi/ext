@@ -1,8 +1,10 @@
 // hooks/useClientChatGPTFiles.ts
+import { HTMLParagraphElement } from 'linkedom'
 import cloneDeep from 'lodash-es/cloneDeep'
 import isArray from 'lodash-es/isArray'
+import isNumber from 'lodash-es/isNumber'
 import { useCallback, useEffect, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useRecoilState, useRecoilValue } from 'recoil'
 
 import { IChromeExtensionClientListenEvent } from '@/background/eventType'
 import { useCreateClientMessageListener } from '@/background/utils'
@@ -17,6 +19,8 @@ import { IChatUploadFile, ISystemChatMessage } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
+import { AppDBStorageState } from '@/store'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 const port = new ContentScriptConnectionV2({
@@ -28,18 +32,22 @@ const port = new ContentScriptConnectionV2({
  * - 监听客户端聊天事件
  * - 监听客户端聊天文件上传事件
  * - 监听客户端聊天状态更新事件
+ * - 自动归档
  */
 export const useClientConversationListener = () => {
   const [, setClientConversationMap] = useRecoilState(
     ClientConversationMapState,
   )
+  const appDBStorage = useRecoilValue(AppDBStorageState)
   const { files, aiProviderRemoveFiles } = useAIProviderUpload()
   const { currentAIProvider } = useAIProviderModels()
   const {
+    createConversation,
     updateConversationStatus,
     currentConversationId,
     clientConversationMessages,
     currentConversationIdRef,
+    clientConversation,
   } = useClientConversation()
   const updateConversationStatusRef = useRef(updateConversationStatus)
   useEffect(() => {
@@ -295,6 +303,69 @@ export const useClientConversationListener = () => {
     }
     return () => {}
   }, [currentConversationId])
+  const isCreatingConversationRef = useRef(false)
+  useEffect(() => {
+    if (
+      !clientConversation ||
+      clientConversation.messages.length === 0 ||
+      isCreatingConversationRef.current
+    ) {
+      return
+    }
+    const autoArchiveTime =
+      appDBStorage.userSettings?.sidebar?.autoArchive?.[clientConversation.type]
+    if (autoArchiveTime && isNumber(autoArchiveTime)) {
+      const archiveTime =
+        new Date(clientConversation.updated_at).getTime() + autoArchiveTime
+      const now = Date.now()
+      if (now > archiveTime) {
+        console.log(
+          `自动归档时间[触发][${clientConversation.type}], 超过[${(
+            (now - archiveTime) /
+            1000 /
+            60
+          ).toFixed(2)}]分钟`,
+        )
+        const text = getMaxAISidebarRootElement()?.querySelector?.(
+          '#auto-archive',
+        ) as any as HTMLParagraphElement
+        if (text) {
+          text.textContent = `自动归档时间[触发][${
+            clientConversation.type
+          }], 超过[${((now - archiveTime) / 1000 / 60).toFixed(2)}]分钟`
+        }
+        if (!isCreatingConversationRef.current) {
+          isCreatingConversationRef.current = true
+        }
+        createConversation(
+          clientConversation.type,
+          clientConversation.meta.AIProvider,
+          clientConversation.meta.AIModel,
+        )
+          .then()
+          .catch()
+          .finally(() => {
+            isCreatingConversationRef.current = false
+          })
+      } else {
+        const text = getMaxAISidebarRootElement()?.querySelector?.(
+          '#auto-archive',
+        ) as any as HTMLParagraphElement
+        if (text) {
+          text.textContent = `自动归档时间[未触发][${
+            clientConversation.type
+          }], 还剩[${((archiveTime - now) / 1000 / 60).toFixed(2)}]分钟`
+        }
+        console.log(
+          `自动归档时间[未触发][${clientConversation.type}], 还剩[${(
+            (archiveTime - now) /
+            1000 /
+            60
+          ).toFixed(2)}]分钟`,
+        )
+      }
+    }
+  }, [clientConversation, appDBStorage.userSettings?.sidebar?.autoArchive])
 }
 
 export default useClientConversationListener

@@ -1,5 +1,7 @@
 // 基于 chatgpt 3.5 的 token 限制
-import cl100k_base from 'gpt-tokenizer/esm/encoding/cl100k_base'
+import cl100k_base, {
+  EndOfPrompt,
+} from 'gpt-tokenizer/esm/encoding/cl100k_base'
 
 import { isMaxAIPage } from '@/utils/dataHelper/websiteHelper'
 import { executeWebWorkerTask } from '@/utils/webWorkerClient'
@@ -79,7 +81,9 @@ const mergeArrays = <T>(...arrays: T[][]): T[] => {
 // TODO getTextTokens最好放在worker线程里执行，大文件耗时堵塞明显
 export const getTextTokens = (text: string) => {
   try {
-    const tokens = cl100k_base.encode(text)
+    const tokens = cl100k_base.encode(text, {
+      allowedSpecial: new Set<string>([EndOfPrompt]),
+    })
     return tokens || []
   } catch (error) {
     console.error('getTextTokens encode error', error)

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Réponse instantanée HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Réponse instantanée Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Réponse instantanée Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Réponse instantanée Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Réponse instantanée Google Chat",
+    "left_menu__sidebar": "Barre latérale",
+    "feature_card__sidebar__field__auto_archive__title": "Archivage automatique : Nettoyez au fur et à mesure",
+    "feature_card__sidebar__field__auto_archive__button__title": "Archiver la discussion après",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dans MaxAI, nous archivons automatiquement les discussions inactives selon la cadence de votre choix. Cela vous permet de repartir sur de bonnes bases et de garder votre barre latérale bien rangée."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",

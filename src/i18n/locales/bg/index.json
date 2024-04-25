@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Мигновен отговор в HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Мигновен отговор в Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Мигновен отговор в Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Мигновен отговор в Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Мигновен отговор в Google Chat",
+    "left_menu__sidebar": "Странична лента",
+    "feature_card__sidebar__field__auto_archive__title": "Автоматично архивиране: Почистете докато работите",
+    "feature_card__sidebar__field__auto_archive__button__title": "Архивирайте чата след",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI, ние автоматично архивираме неактивни чатове според избраната от вас честота. Това ви дава свеж старт и поддържа страничната лента подредена."
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",

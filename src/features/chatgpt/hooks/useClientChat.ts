@@ -94,7 +94,8 @@ const useClientChat = () => {
         const maxAttachmentTokens =
           conversationMaxTokens -
           calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
-        if (getTextTokens(extractText).length > maxAttachmentTokens) {
+        const attachmentsTextTokens = getTextTokens(extractText).length
+        if (attachmentsTextTokens > maxAttachmentTokens) {
           // 如果tokens长度超过限制
           await clientChatConversationModifyChatMessages(
             'add',
@@ -124,7 +125,14 @@ const useClientChat = () => {
     return true
   }
 
-  const askAIQuestion = async (question: IAskAIQuestion) => {
+  const askAIQuestion = async (
+    question: IAskAIQuestion,
+    options?: {
+      beforeActions?: ISetActionsType
+      afterActions?: ISetActionsType
+    },
+  ) => {
+    const { beforeActions = [], afterActions = [] } = options || {}
     if (!question.meta?.attachments) {
       const attachments = await getAttachments(question.conversationId)
       if (attachments.length > 0) {
@@ -149,6 +157,7 @@ const useClientChat = () => {
       question.meta.includeHistory = false
     }
     await askAIWIthShortcuts([
+      ...beforeActions,
       {
         type: 'ASK_CHATGPT',
         parameters: {
@@ -156,6 +165,7 @@ const useClientChat = () => {
           isEnabledDetectAIResponseLanguage: false,
         },
       },
+      ...afterActions,
     ])
   }
 

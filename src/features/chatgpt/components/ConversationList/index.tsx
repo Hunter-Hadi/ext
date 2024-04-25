@@ -31,6 +31,7 @@ import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { AppLocalStorageState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import MoreActionsButton from './MoreActionsButton'
 
@@ -54,7 +55,8 @@ const ConversationList: FC<IProps> = (props) => {
   } = props
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { currentConversationId, createConversation } = useClientConversation()
+  const { currentConversationId, createConversation, updateConversationId } =
+    useClientConversation()
   const { updateSidebarSettings, updateSidebarConversationType } =
     useSidebarSettings()
   const { disposeBackgroundChatSystem } = useClientConversation()
@@ -181,34 +183,48 @@ const ConversationList: FC<IProps> = (props) => {
                     return
                   }
                   let disposeBackgroundChatSystemConversationId = undefined
+                  if (conversation.id) {
+                    // 因为现在有Auto archive功能，所以点击的时候需要更新时间
+                    await clientUpdateChatConversation(
+                      conversation.id,
+                      {
+                        updated_at: new Date().toISOString(),
+                      },
+                      true,
+                    )
+                  }
                   if (conversation.type === 'Summary') {
                     // do nothing
                   } else if (conversation.type === 'Chat') {
                     disposeBackgroundChatSystemConversationId =
                       appLocalStorage.sidebarSettings?.chat?.conversationId
-                    await updateSidebarSettings({
-                      chat: {
-                        conversationId: conversation.id,
-                      },
-                    })
+
+                    // await updateSidebarSettings({
+                    //   chat: {
+                    //     conversationId: conversation.id,
+                    //   },
+                    // })
+                    await updateConversationId(conversation.id)
                     updateSidebarConversationType(conversation.type)
                   } else if (conversation.type === 'Search') {
                     disposeBackgroundChatSystemConversationId =
                       appLocalStorage.sidebarSettings?.search?.conversationId
-                    await updateSidebarSettings({
-                      search: {
-                        conversationId: conversation.id,
-                      },
-                    })
+                    // await updateSidebarSettings({
+                    //   search: {
+                    //     conversationId: conversation.id,
+                    //   },
+                    // })
+                    await updateConversationId(conversation.id)
                     updateSidebarConversationType(conversation.type)
                   } else if (conversation.type === 'Art') {
                     disposeBackgroundChatSystemConversationId =
                       appLocalStorage.sidebarSettings?.art?.conversationId
-                    await updateSidebarSettings({
-                      art: {
-                        conversationId: conversation.id,
-                      },
-                    })
+                    // await updateSidebarSettings({
+                    //   art: {
+                    //     conversationId: conversation.id,
+                    //   },
+                    // })
+                    await updateConversationId(conversation.id)
                     updateSidebarConversationType(conversation.type)
                   }
                   if (conversation.AIModel && conversation.AIProvider) {
@@ -401,7 +417,7 @@ const ConversationList: FC<IProps> = (props) => {
                                 setPaginationConversations(newConversations)
                                 if (conversationType === 'ContextMenu') {
                                   await createConversation('ContextMenu')
-                                } else {
+                                } else if (!isMaxAIImmersiveChatPage()) {
                                   await updateSidebarSettings({
                                     [conversationType.toLowerCase()]: {
                                       conversationId: '',

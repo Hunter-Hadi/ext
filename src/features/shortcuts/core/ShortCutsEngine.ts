@@ -231,13 +231,14 @@ class ShortCutsEngine implements IShortcutEngine {
     parameters: IShortCutsParameter[]
     engine: IShortcutEngineExternalEngine
   }) {
-    this.updatedAt = new Date()
+    const updatedAt = new Date()
+    this.updatedAt = updatedAt
     try {
       const { engine, parameters } = params || {}
       if (this.status === 'idle' || this.status === 'stop') {
         this.status = 'running'
         this.emit('status', this)
-        while (this.status === 'running') {
+        while (this.status === 'running' && this.updatedAt === updatedAt) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           if (this.status === 'stop') {
@@ -277,6 +278,17 @@ class ShortCutsEngine implements IShortcutEngine {
               currentAction,
               currentAction.status,
             )
+            /**
+             * 执行当前action的时候，这时候触发stop，然后重新执行了新的actions
+             * 这里action执行完毕时，这时候engine已经在运行新的actions了，应该抛弃所有操作，否则会造成一些难以排查的意外现象
+             * 比如正在执行ASK_GPT的时候stopGenerate在regenerate
+             * ASK_GPT的action完毕后会进入到下面的setVariable({ key: 'LAST_ACTION_OUTPUT' })，影响新任务的执行
+             *
+             * 这里加入一个updatedAt的判断，如果执行了新的actions时不做任何处理
+             */
+            if (this.updatedAt !== updatedAt) {
+              return
+            }
             if (currentAction.error) {
               console.log('ShortCutEngine.run: error', currentAction.error)
               this.status = 'stop'

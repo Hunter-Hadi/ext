@@ -1,10 +1,11 @@
 import dayjs from 'dayjs'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { PaginationConversation } from '@/background/src/chatConversations'
 import { PaginationConversationsState } from '@/features/chatgpt/store'
 import { clientGetAllPaginationConversations } from '@/features/chatgpt/utils/chatConversationUtils'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const usePaginationConversations = () => {
   const [loading, setLoading] = useState(false)
@@ -52,10 +53,40 @@ const usePaginationConversations = () => {
     })
   }
 
+  const updatePaginationConversations = useCallback(
+    (newConversations: PaginationConversation[]) => {
+      if (isMaxAIImmersiveChatPage()) {
+        // immersive chat里不去更改位置
+        setPaginationConversations((prevConversations) => {
+          const conversationsMap: Record<string, PaginationConversation> = {}
+          const addConversations: PaginationConversation[] = []
+          const mergeConversations: PaginationConversation[] = []
+          newConversations.forEach((item) => {
+            conversationsMap[item.id] = item
+          })
+          prevConversations.forEach((item) => {
+            if (conversationsMap[item.id]) {
+              mergeConversations.push(conversationsMap[item.id])
+              delete conversationsMap[item.id]
+            }
+          })
+          Object.keys(conversationsMap).forEach((id) => {
+            const item = newConversations.find((item) => item.id === id)
+            if (item) addConversations.push(item)
+          })
+          return [...addConversations, ...mergeConversations]
+        })
+      } else {
+        setPaginationConversations(newConversations)
+      }
+    },
+    [setPaginationConversations],
+  )
+
   return {
     loading,
     paginationConversations,
-    setPaginationConversations,
+    setPaginationConversations: updatePaginationConversations,
     fetchPaginationConversations,
   }
 }

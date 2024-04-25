@@ -21,6 +21,7 @@ export interface ChatPanelContextValue {
    * 当前Chat面板的会话 ID
    */
   conversationId?: string
+  updateConversationId: (id: string) => Promise<void>
   createConversation: ChatPanelCreateConversationFunction
   resetConversation: () => Promise<void>
   conversationStatus: ConversationStatusType
@@ -29,6 +30,7 @@ export interface ChatPanelContextValue {
 
 const ChatPanelContext = createContext<ChatPanelContextValue>({
   conversationId: undefined,
+  updateConversationId: () => Promise.resolve(),
   createConversation: () => Promise.resolve(''),
   resetConversation: () => Promise.resolve(),
   conversationStatus: 'success',

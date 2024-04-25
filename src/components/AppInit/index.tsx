@@ -117,6 +117,11 @@ const MaxAISubscriptionUpdate = () => {
   return null
 }
 
+const ContextMenuInit = () => {
+  useInitRangy()
+  return <ContextMenuRoot />
+}
+
 const AppInit = () => {
   useHideInHost()
   useClientMessageListenerForBackground()
@@ -124,7 +129,6 @@ const AppInit = () => {
   useInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
-  useInitRangy()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()
@@ -142,7 +146,7 @@ const AppInit = () => {
       <MaxAISubscriptionUpdate />
       <MAXAIPDFAIViewerErrorAlert />
       <MaxAIPDFAIViewerTopBarButtonGroup />
-      <ContextMenuRoot />
+      <ContextMenuInit />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
     </>

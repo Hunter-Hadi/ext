@@ -148,9 +148,21 @@ export class ActionAskChatGPT extends Action {
         this.question.meta.includeHistory = false
       }
       if (!contexts) {
+        let questionPrompt = this.question.text
+        if (
+          MaxAIPromptActionConfig &&
+          MaxAIPromptActionConfig.variables.length > 0
+        ) {
+          questionPrompt = MaxAIPromptActionConfig.variables
+            .map((variable) => `{{${variable.VariableName}}}`)
+            .join('\n')
+          questionPrompt =
+            ((await this.parseTemplate(questionPrompt, params))
+              .data as string) || this.question.text
+        }
         this.question.meta.contexts = generateUserMessageContexts(
           engine.shortcutsEngine?.getVariables() || {},
-          this.question.text,
+          questionPrompt,
         )
       }
       // 发消息之前判断是不是MaxAI prompt action, 如果是的话判断是不是third party AI provider

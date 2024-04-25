@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot mabilis na tugon",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram mabilis na tugon",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams mabilis na tugon",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat mabilis na tugon"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat mabilis na tugon",
+    "left_menu__sidebar": "Sidebar",
+    "feature_card__sidebar__field__auto_archive__title": "Auto archive: Linisin habang ginagamit",
+    "feature_card__sidebar__field__auto_archive__button__title": "I-archive ang usapan pagkatapos",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang hindi aktibong usapan sa pinili mong panahon. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar."
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

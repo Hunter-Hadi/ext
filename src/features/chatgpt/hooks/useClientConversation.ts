@@ -5,6 +5,7 @@ import { v4 as uuidV4 } from 'uuid'
 import { IAIProviderType } from '@/background/provider/chat'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
 import { IChatConversation } from '@/background/src/chatConversations'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { ClientConversationMapState } from '@/features/chatgpt/store'
@@ -70,6 +71,7 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
 const useClientConversation = () => {
   const {
     conversationId: currentConversationId,
+    updateConversationId,
     createConversation,
     conversationStatus,
     updateConversationStatus,
@@ -176,10 +178,19 @@ const useClientConversation = () => {
   const pushPricingHookMessage = async (
     permissionSceneType: PermissionWrapperCardSceneType,
   ) => {
-    if (currentConversationIdRef.current) {
+    let addToConversationId = currentConversationIdRef.current
+    if (currentSidebarConversationType === 'ContextMenu') {
+      //需要插入到Sidebar中
+      const chatConversationId = (await getChromeExtensionLocalStorage())
+        .sidebarSettings?.chat?.conversationId
+      if (chatConversationId) {
+        addToConversationId = chatConversationId
+      }
+    }
+    if (addToConversationId) {
       await clientChatConversationModifyChatMessages(
         'add',
-        currentConversationIdRef.current,
+        addToConversationId,
         0,
         [
           {
@@ -254,6 +265,7 @@ const useClientConversation = () => {
     disposeBackgroundChatSystem,
     updateConversation,
     currentConversationId,
+    updateConversationId,
     clientConversation,
     currentConversationIdRef,
     currentSidebarConversationType,

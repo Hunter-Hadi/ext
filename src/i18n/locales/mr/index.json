@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot तात्पुरता प्रतिसाद",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram तात्पुरता प्रतिसाद",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams तात्पुरता प्रतिसाद",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat तात्पुरता प्रतिसाद"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat तात्पुरता प्रतिसाद",
+    "left_menu__sidebar": "साइडबार",
+    "feature_card__sidebar__field__auto_archive__title": "स्वयंसचित्रीकरण: जेव्हा जाऊन टाकता तेव्हा स्वच्छ करा",
+    "feature_card__sidebar__field__auto_archive__button__title": "चॅट आर्काइव करा नंतर",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या गतीनुसार आपल्या खालील चॅट आपोआप आर्काइव करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुस्थित ठेवते."
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

@@ -22,6 +22,11 @@ export const settingsPageRouterList: Array<{
     divider: true,
   },
   {
+    route: '/sidebar',
+    label: 'left_menu__sidebar',
+    divider: false,
+  },
+  {
     route: '/shortcut',
     label: 'left_menu__shortcut',
     divider: false,

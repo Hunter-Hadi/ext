@@ -18,6 +18,22 @@ export const CONTEXT_MENU_DRAFT_TYPES = {
   CONTINUE_IN_CHAT: '9642aa63-4c26-4b5a-8109-e51c4a92df0b',
   COPY: '8fcccd1e-eb6e-419e-8c79-d8bc7c10e72c',
 }
+/**
+ * 特殊需求的分隔符的contextMenu ID集合
+ * [ContextMenu] Replace selection
+ * [ContextMenu] Insert below
+ * [ContextMenu] Copy
+ * [ContextMenu] Continue writing
+ * [Divider] --
+ * [ContextMenu] Continue in Chat
+ * [Divider] --
+ * [ContextMenu] Try again
+ * [ContextMenu] Discard
+ */
+export const SPECIAL_NEED_DIVIDER_KEYS = [
+  CONTEXT_MENU_DRAFT_TYPES.CONTINUE_IN_CHAT,
+  CONTEXT_MENU_DRAFT_TYPES.TRY_AGAIN,
+]
 
 export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
   {
@@ -53,6 +69,18 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
       type: 'shortcuts',
       editable: false,
       icon: 'NoteDown',
+    },
+    children: [],
+  },
+  {
+    id: CONTEXT_MENU_DRAFT_TYPES.COPY,
+    text: 'Copy',
+    parent: 'root',
+    droppable: false,
+    data: {
+      type: 'shortcuts',
+      editable: false,
+      icon: 'Copy',
     },
     children: [],
   },
@@ -207,18 +235,6 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
           },
         },
       ],
-    },
-    children: [],
-  },
-  {
-    id: CONTEXT_MENU_DRAFT_TYPES.COPY,
-    text: 'Copy',
-    parent: 'root',
-    droppable: false,
-    data: {
-      type: 'shortcuts',
-      editable: false,
-      icon: 'Copy',
     },
     children: [],
   },

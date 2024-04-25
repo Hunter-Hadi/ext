@@ -1,6 +1,6 @@
 import ChatMessagesContext, {
-  type IChatServerInfo,
   type IChatMessageData,
+  type IChatServerInfo,
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import { wait } from '@/utils'
 import {
@@ -243,8 +243,6 @@ const whatsAppGetMessageData = async (
         quotedMessage.user || configs.username
       }'s message: ${quotedMessage.content}`
     }
-
-    debugger
 
     return messageData
   } catch (err) {

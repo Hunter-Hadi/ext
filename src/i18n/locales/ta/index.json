@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot உடனாக பதில்",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram உடனாக பதில்",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams உடனாக பதில்",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat உடனாக பதில்"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat உடனாக பதில்",
+    "left_menu__sidebar": "பக்கம் பட்டி",
+    "feature_card__sidebar__field__auto_archive__title": "தானியங்கி பதிவு: நீங்கள் செல்லும்போது சுத்தமாக்குங்கள்",
+    "feature_card__sidebar__field__auto_archive__button__title": "அழிக்கப்பட்ட அரசியல் உரையாடலை",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-இல், நீங்கள் தேர்ந்தெடுத்த அளவிற்கு ஏற்றுமதி நேரத்தில் செயலற்ற உரையாடலை தானியங்கி அழிக்கின்றோம். இது உங்களுக்கு புதிய தொடக்கம் வழங்குகிறது மற்றும் உங்கள் பக்கம் அழகாக வைக்கிறது."
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",

@@ -32,13 +32,13 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
   rootId: string
+  shadowRoot: ShadowRoot
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
@@ -53,18 +53,19 @@ const InputAssistantButtonContextMenu: FC<
     children,
     rootId,
     root,
+    shadowRoot,
     permissionWrapperCardSceneType,
     disabled,
     onSelectionEffect,
   } = props
-  const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
+  const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
+    useFloatingContextMenu()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType, updateSidebarConversationType } =
-    useSidebarSettings()
+  const { currentSidebarConversationType } = useClientConversation()
   const { currentUserPlan } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
-  const { createConversation, pushPricingHookMessage } = useClientConversation()
+  const { pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { askAIWIthShortcuts } = useClientChat()
@@ -95,8 +96,8 @@ const InputAssistantButtonContextMenu: FC<
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
-            await createConversation('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
+            hideFloatingContextMenu()
             return
           }
         }
@@ -139,7 +140,7 @@ const InputAssistantButtonContextMenu: FC<
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
-      sidebarSettingsTypeRef.current === 'Chat'
+      sidebarSettingsTypeRef.current === 'ContextMenu'
     ) {
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
@@ -162,9 +163,9 @@ const InputAssistantButtonContextMenu: FC<
       }
       isRunningRef.current = true
       setClickContextMenu(null)
-      const buttonElement = document.querySelector(
+      const buttonElement = (document.querySelector(
         `[maxai-input-assistant-button-id="${rootId}"]`,
-      ) as HTMLElement
+      ) || shadowRoot?.host) as HTMLElement
       if (buttonElement) {
         showFloatingContextMenuWithElement(buttonElement, '', true)
       }
@@ -177,16 +178,13 @@ const InputAssistantButtonContextMenu: FC<
 
           if (onSelectionEffectListener) {
             shortCutsEngine?.removeListener(onSelectionEffectListener)
+            shortCutsEngine?.setActions([])
           }
           // temporary support onSelectionEffect
           // onSelectionEffect && onSelectionEffect();
         })
     }
-    return () => {
-      if (onSelectionEffectListener) {
-        shortCutsEngine?.removeListener(onSelectionEffectListener)
-      }
-    }
+    return () => {}
   }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
@@ -225,7 +223,6 @@ const InputAssistantButtonContextMenu: FC<
         // customOpen={disabled}
         // referenceElementOpen={!disabled}
         onClickContextMenu={async (contextMenu) => {
-          updateSidebarConversationType('Chat')
           setClickContextMenu(contextMenu)
         }}
         onClickReferenceElement={() => {

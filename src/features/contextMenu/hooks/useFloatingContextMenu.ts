@@ -19,8 +19,8 @@ import {
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppState } from '@/store'
 import { getMaxAISidebarRootElement } from '@/utils'
-import Log from '@/utils/Log'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/useFloatingContextMenu')
 

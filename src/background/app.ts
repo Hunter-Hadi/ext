@@ -9,7 +9,6 @@ export type {
   IOpenAIChatListenTaskEvent,
   IOpenAIChatSendEvent,
 } from './eventType'
-
 import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import ConversationManager from '@/background/src/chatConversations'
@@ -48,7 +47,6 @@ import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChann
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
-
 /**
  * background.js 入口
  *
@@ -75,7 +73,9 @@ export const startChromeExtensionBackground = () => {
     // hot reload
     developmentHotReload()
   } catch (e) {
-    //
+    // NOTE: 这个debugger是为了方便调试告诉开发者，如果有问题，可以在这里打断点
+    // eslint-disable-next-line no-debugger
+    debugger
   }
 }
 

@@ -1,20 +1,15 @@
 import Stack from '@mui/material/Stack'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC } from 'react'
 
-import { ConversationStatusType } from '@/background/provider/chat'
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
-import {
-  ChatPanelContext,
-  ChatPanelContextValue,
-} from '@/features/chatgpt/store/ChatPanelContext'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
+import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
 import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
 
 // const getDefaultValue = () => {
@@ -37,33 +32,40 @@ const SidebarPageInit: FC = () => {
   return <></>
 }
 
+const SidebarDragWrapper: FC<{
+  children: React.ReactNode
+}> = ({ children }) => {
+  const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
+    useSidebarDropEvent()
+  return (
+    <Stack
+      component={'div'}
+      position={'relative'}
+      flex={1}
+      width={0}
+      onDragEnter={handleDragEnter}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop as any}
+    >
+      {children}
+    </Stack>
+  )
+}
+
 const SidebarPage: FC<{
   isImmersiveChat?: boolean
   open?: boolean
+  disableContextProvider?: boolean
 }> = (props) => {
-  const { isImmersiveChat, open = false } = props
-  const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
-    useSidebarDropEvent()
-  const {
-    currentSidebarConversationId,
-    createSidebarConversation,
-    resetSidebarConversation,
-  } = useSidebarSettings()
-  const [conversationStatus, setConversationStatus] =
-    useState<ConversationStatusType>('success')
-  const sidebarContextValue = useMemo<ChatPanelContextValue>(() => {
-    return {
-      conversationStatus,
-      updateConversationStatus: (newStatus: ConversationStatusType) => {
-        setConversationStatus(newStatus)
-      },
-      conversationId: currentSidebarConversationId,
-      createConversation: createSidebarConversation,
-      resetConversation: resetSidebarConversation,
-    }
-  }, [currentSidebarConversationId, conversationStatus])
+  const { isImmersiveChat, open = false, disableContextProvider } = props
+
+  const ContextProvider = disableContextProvider
+    ? React.Fragment
+    : SidebarContextProvider
+
   return (
-    <ChatPanelContext.Provider value={sidebarContextValue}>
+    <ContextProvider isImmersiveChat={isImmersiveChat}>
       <SidebarPageInit />
       {open && (
         <Stack
@@ -75,21 +77,12 @@ const SidebarPage: FC<{
         >
           <SidebarTour />
           <SidebarPromotionDialog />
-          <Stack
-            component={'div'}
-            position={'relative'}
-            flex={1}
-            width={0}
-            onDragEnter={handleDragEnter}
-            onDragOver={handleDragOver}
-            onDragLeave={handleDragLeave}
-            onDrop={handleDrop as any}
-          >
+          <SidebarDragWrapper>
             {!isImmersiveChat && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>
               <SidebarChatPanel />
             </AppSuspenseLoadingLayout>
-          </Stack>
+          </SidebarDragWrapper>
           {!isImmersiveChat && <SidebarNav />}
           {!open && (
             <>
@@ -110,7 +103,7 @@ const SidebarPage: FC<{
           )}
         </Stack>
       )}
-    </ChatPanelContext.Provider>
+    </ContextProvider>
   )
 }
 export default SidebarPage

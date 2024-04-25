@@ -142,6 +142,10 @@ const useFloatingContextMenuDraft = () => {
         return message as IUserChatMessage
       }
     }
+    console.log(
+      'useFloatingContextMenuDraftHistoryChange',
+      clientConversationMessages,
+    )
     return null
   }, [activeAIResponseMessage, clientConversationMessages])
 

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Balasan instan HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Balasan instan Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Balasan instan Microsoft teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Balasan instan Google chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Balasan instan Google chat",
+    "left_menu__sidebar": "Sidebar",
+    "feature_card__sidebar__field__auto_archive__title": "Arsip otomatis: Bersihkan saat Anda pergi",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arsip obrolan setelah",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Di MaxAI, kami secara otomatis mengarsipkan obrolan yang tidak aktif sesuai dengan pilihan Anda. Ini memberi Anda awal yang segar dan menjaga sidebar Anda rapi."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

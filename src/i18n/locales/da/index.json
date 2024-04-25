@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot øjeblikkeligt svar",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram øjeblikkeligt svar",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams øjeblikkeligt svar",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat øjeblikkeligt svar"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat øjeblikkeligt svar",
+    "left_menu__sidebar": "Sidebar",
+    "feature_card__sidebar__field__auto_archive__title": "Autoarkiv: Rens mens du går",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arkiver chat efter",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive chats i det tempo, du vælger. Dette giver dig en frisk start og holder din sidebar ryddelig."
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpotin välitön vastaus",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegramin välitön vastaus",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teamsin välitön vastaus",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chatin välitön vastaus"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chatin välitön vastaus",
+    "left_menu__sidebar": "Sivupalkki",
+    "feature_card__sidebar__field__auto_archive__title": "Automaattinen arkistointi: Puhdista sitä mukaa",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arkistoi keskustelu",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti käyttämättömät keskustelut valitsemallasi taajuudella. Tämä antaa sinulle raikkaan alun ja pitää sivupalkin siistinä."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

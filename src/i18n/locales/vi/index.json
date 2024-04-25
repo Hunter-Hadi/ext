@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Trả lời tức thì HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Trả lời tức thì Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Trả lời tức thì Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Trả lời tức thì Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Trả lời tức thì Google Chat",
+    "left_menu__sidebar": "Thanh bên",
+    "feature_card__sidebar__field__auto_archive__title": "Tự động lưu trữ: Dọn dẹp khi sử dụng",
+    "feature_card__sidebar__field__auto_archive__button__title": "Lưu trữ cuộc trò chuyện sau",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Trong MaxAI, chúng tôi tự động lưu trữ cuộc trò chuyện không hoạt động theo tần suất mà bạn chọn. Điều này giúp bạn có một khởi đầu mới và giữ cho thanh bên của bạn gọn gàng."
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",

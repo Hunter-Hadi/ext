@@ -71,7 +71,6 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     id: rootId,
     config: buttonConfig,
     buttonGroup, // 按钮组
-    renderRootElement: root,
     shadowRootElement: shadowRoot,
   } = observerData
   const {
@@ -238,6 +237,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          shadowRoot={shadowRoot}
           onSelectionEffect={
             buttonGroup[0]?.onSelectionEffect &&
             (() => buttonGroup[0].onSelectionEffect!(observerData))
@@ -251,7 +251,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               PopperProps={{
                 container: contextMenuContainer as HTMLElement,
               }}
-              title={t(buttonGroup[0].tooltip as any)}
+              title={
+                buttonGroup[0]?.tooltip ? t(buttonGroup[0].tooltip as any) : ''
+              }
             >
               <div
                 style={{
@@ -302,13 +304,17 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                           }}
                         />
                       )}
-                      {
-                        buttonGroup[0].displayText && (
-                          <Typography component={'span'} fontSize={'14px'} sx={buttonGroup[0].displayTextSx}>
-                            {typeof buttonGroup[0].displayText === 'function' ? buttonGroup[0].displayText(t) : buttonGroup[0].displayText}
-                          </Typography>
-                        )
-                      }
+                      {buttonGroup[0].displayText && (
+                        <Typography
+                          component={'span'}
+                          fontSize={'14px'}
+                          sx={buttonGroup[0].displayTextSx}
+                        >
+                          {typeof buttonGroup[0].displayText === 'function'
+                            ? buttonGroup[0].displayText(t)
+                            : buttonGroup[0].displayText}
+                        </Typography>
+                      )}
                     </Button>
                     <Box
                       position={'absolute'}
@@ -333,6 +339,7 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[1].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          shadowRoot={shadowRoot}
           disabled={smoothConversationLoading}
         >
           <Box>
@@ -342,7 +349,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               PopperProps={{
                 container: contextMenuContainer as HTMLElement,
               }}
-              title={t(buttonGroup[1].tooltip as any)}
+              title={
+                buttonGroup[1]?.tooltip ? t(buttonGroup[1].tooltip as any) : ''
+              }
             >
               <div
                 style={{

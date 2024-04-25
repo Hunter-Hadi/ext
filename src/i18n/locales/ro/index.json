@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Răspuns instant HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Răspuns instant Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Răspuns instant Microsoft teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Răspuns instant Google chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Răspuns instant Google chat",
+    "left_menu__sidebar": "Bară laterală",
+    "feature_card__sidebar__field__auto_archive__title": "Arhivare automată: Curățați pe măsură ce mergeți",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arhivați conversația după",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "În MaxAI, arhivăm automat conversațiile inactive la frecvența aleasă de dvs. Aceasta vă oferă un nou început și menține bara laterală ordonată."
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

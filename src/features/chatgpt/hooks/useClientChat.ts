@@ -127,12 +127,12 @@ const useClientChat = () => {
 
   const askAIQuestion = async (
     question: IAskAIQuestion,
-    options: {
+    options?: {
       beforeActions?: ISetActionsType
       afterActions?: ISetActionsType
     },
   ) => {
-    const { beforeActions = [], afterActions = [] } = options
+    const { beforeActions = [], afterActions = [] } = options || {}
     if (!question.meta?.attachments) {
       const attachments = await getAttachments(question.conversationId)
       if (attachments.length > 0) {
@@ -185,6 +185,7 @@ const useClientChat = () => {
       isOpenSidebarChatBox?: boolean
     },
   ) => {
+    debugger
     const {
       overwriteParameters = [],
       isSaveLastRunShortcuts = true,

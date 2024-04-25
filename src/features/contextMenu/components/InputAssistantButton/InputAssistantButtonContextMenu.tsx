@@ -57,14 +57,14 @@ const InputAssistantButtonContextMenu: FC<
     disabled,
     onSelectionEffect,
   } = props
-  const { showFloatingContextMenuWithElement } = useFloatingContextMenu()
+  const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
+    useFloatingContextMenu()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType, updateSidebarConversationType } =
-    useSidebarSettings()
+  const { currentSidebarConversationType } = useSidebarSettings()
   const { currentUserPlan } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
-  const { createConversation, pushPricingHookMessage } = useClientConversation()
+  const { pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const { askAIWIthShortcuts } = useClientChat()
@@ -95,8 +95,8 @@ const InputAssistantButtonContextMenu: FC<
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
-            await createConversation('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
+            hideFloatingContextMenu()
             return
           }
         }
@@ -168,6 +168,7 @@ const InputAssistantButtonContextMenu: FC<
       if (buttonElement) {
         showFloatingContextMenuWithElement(buttonElement, '', true)
       }
+      debugger
       runContextMenuRef
         .current(clickContextMenu)
         .then()
@@ -177,6 +178,7 @@ const InputAssistantButtonContextMenu: FC<
 
           if (onSelectionEffectListener) {
             shortCutsEngine?.removeListener(onSelectionEffectListener)
+            shortCutsEngine?.setActions([])
           }
           // temporary support onSelectionEffect
           // onSelectionEffect && onSelectionEffect();
@@ -221,7 +223,6 @@ const InputAssistantButtonContextMenu: FC<
         // customOpen={disabled}
         // referenceElementOpen={!disabled}
         onClickContextMenu={async (contextMenu) => {
-          updateSidebarConversationType('Chat')
           setClickContextMenu(contextMenu)
         }}
         onClickReferenceElement={() => {

@@ -29,11 +29,11 @@ import SystemVariableSelect from '@/features/shortcuts/components/SystemVariable
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
-import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 
 export interface ActionSetVariablesModalConfig {
   modelKey?: 'Sidebar' | 'FloatingContextMenu'

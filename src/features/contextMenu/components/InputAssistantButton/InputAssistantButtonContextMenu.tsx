@@ -32,7 +32,6 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -63,7 +62,7 @@ const InputAssistantButtonContextMenu: FC<
     useFloatingContextMenu()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType } = useSidebarSettings()
+  const { currentSidebarConversationType } = useClientConversation()
   const { currentUserPlan } = useUserInfo()
   const { shortCutsEngine } = useShortCutsEngine()
   const { pushPricingHookMessage } = useClientConversation()
@@ -141,7 +140,7 @@ const InputAssistantButtonContextMenu: FC<
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
-      sidebarSettingsTypeRef.current === 'Chat'
+      sidebarSettingsTypeRef.current === 'ContextMenu'
     ) {
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {

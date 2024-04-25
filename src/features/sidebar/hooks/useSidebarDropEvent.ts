@@ -8,6 +8,10 @@ const IsSidebarDragOverAtom = atom({
   key: 'SidebarDragOverAtom',
   default: false,
 })
+// const InSidebarPDFUploadLoadingAtom = atom({
+//   key: 'InSidebarPDFUploadLoadingAtom',
+//   default: false,
+// })
 
 const useSidebarDropEvent = () => {
   const { isContainMaxAIModelUploadFile, uploadFilesToMaxAIModel } =
@@ -16,6 +20,8 @@ const useSidebarDropEvent = () => {
   const [isSidebarDragOver, setIsSidebarDragOver] = useRecoilState(
     IsSidebarDragOverAtom,
   )
+  // const [inSidebarPDFUploadLoading, setInSidebarPDFUploadLoading] =
+  //   useRecoilState(InSidebarPDFUploadLoadingAtom)
 
   const handleDragEnter = useCallback((event: any) => {
     event.preventDefault()
@@ -58,7 +64,40 @@ const useSidebarDropEvent = () => {
     if (files.length > 0) {
       const isPDF = files[0]?.type.includes('pdf')
       if (isPDF) {
+        // TODO: 这里临时先这样处理，现在会出现的情况时，关闭了 settings pdf viewer 时，拖拽 pdf 到 sidebar 中 不会触发 maxai 的 pdf viewer
+        // 正在做法应该是，不管 settings pdf viewer 开没开，这里都应该上传pdf 到api，然后返回一个url，然后打开这个url
+
+        // const file = files[0]
         event.stopPropagation()
+        // event.preventDefault()
+        // try {
+        //   setInSidebarPDFUploadLoading(true)
+        //   const controller = new AbortController()
+        //   const signal = controller.signal
+        //   const result = await maxAIFileUpload(file, {
+        //     useCase: 'multimodal',
+        //     signal,
+        //   })
+        //   if (result.success && result.file_url) {
+        //     chromeExtensionClientOpenPage({
+        //       key: 'pdf_viewer',
+        //       query: `?pdfUrl=${encodeURIComponent(
+        //         result.file_url,
+        //       )}&newTab=true`,
+        //     })
+        //   }
+        // } catch (error) {
+        //   // do nothing
+        //   globalSnackbar.error('Failed to upload pdf, please try again later', {
+        //     anchorOrigin: {
+        //       vertical: 'top',
+        //       horizontal: 'right',
+        //     },
+        //   })
+        // } finally {
+        //   setInSidebarPDFUploadLoading(false)
+        // }
+
         // do nothing
         // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
       } else if (isContainMaxAIModelUploadFile(files)) {
@@ -71,6 +110,7 @@ const useSidebarDropEvent = () => {
   }
 
   return {
+    // inSidebarPDFUploadLoading,
     isSidebarDragOver,
     setIsSidebarDragOver,
     handleDragEnter,

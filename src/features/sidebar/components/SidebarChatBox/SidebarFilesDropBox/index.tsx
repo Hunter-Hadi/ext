@@ -1,6 +1,8 @@
 import ImageOutlinedIcon from '@mui/icons-material/ImageOutlined'
-import { Fade, SvgIcon, Typography } from '@mui/material'
+import Fade from '@mui/material/Fade'
 import Stack from '@mui/material/Stack'
+import SvgIcon from '@mui/material/SvgIcon'
+import Typography from '@mui/material/Typography'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -46,6 +48,13 @@ const SidebarFilesDropBox = () => {
             }
           }}
         >
+          {/* <AppLoadingLayout
+            loading={inSidebarPDFUploadLoading}
+            loadingText={t('common:uploading')}
+            sx={{
+              height: 'max-content',
+            }}
+          > */}
           <Stack
             direction={'row'}
             spacing={0.5}
@@ -67,6 +76,17 @@ const SidebarFilesDropBox = () => {
           >
             {t('client:home_view_content_nav__drop_pdf_and_image_here')}
           </Typography>
+          {/* </AppLoadingLayout>
+          {inSidebarPDFUploadLoading && (
+            <Button
+              variant="normalOutlined"
+              onClick={() => {
+                abortUpload && abortUpload()
+              }}
+            >
+              Stop upload
+            </Button>
+          )} */}
         </Stack>
       </Stack>
     </Fade>

@@ -39,9 +39,10 @@ export const openPDFViewer = async (
   url: string,
   newTab = false,
 ) => {
-  const settings = await getChromeExtensionDBStorage()
   const file = encodeURIComponent(url)
-  if (settings.userSettings?.pdf?.enabled || !file) {
+  // 由于在 sidebar home view 中可以点击 Chat with pdf 按钮直接进入到 pdf viewer 页面，所以这里不需要判断是否开启 pdf viewer
+  // 并且 file === '' 时也可以进入，因为这时候是打开一个空白的 pdf viewer ui
+  if (file || file === '') {
     const redirectUrl = Browser.runtime.getURL(
       `/pages/pdf/web/viewer.html?file=${file}`,
     )
@@ -61,37 +62,44 @@ export const openPDFViewer = async (
 
 export const pdfSnifferStartListener: Parameters<
   typeof Browser.tabs.onUpdated.addListener
->[0] = (tabId, changeInfo, tab) => {
-  const fetchingMap = new Map<string, 'fetching' | 'validPDF' | 'invalidPDF'>()
-  if (tab.active) {
-    const url = tab.url || tab.pendingUrl
-    // 如果是本地文件,并且是.pdf，直接打开
-    if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
-      if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
-        openPDFViewer(tabId, url).then().catch()
-      }
-    }
-    // 如果是网络文件，检测是否是pdf
-    if (url?.endsWith('.pdf') || url?.endsWith('.PDF')) {
-      if (url?.startsWith('http://') || url?.startsWith('https://')) {
-        if (!fetchingMap.has(url)) {
-          fetchingMap.set(url, 'fetching')
-          // 获取文件类型
-          fetch(url, { method: 'HEAD' })
-            .then(function (response) {
-              const contentType = response.headers.get('content-type')
-              if (contentType === 'application/pdf') {
-                fetchingMap.set(url, 'validPDF')
-                openPDFViewer(tabId, url).then().catch()
-              } else {
-                fetchingMap.set(url, 'invalidPDF')
-              }
-            })
-            .catch(function (error) {
-              fetchingMap.delete(url)
-            })
-        } else if (fetchingMap.get(url) === 'validPDF') {
+>[0] = async (tabId, changeInfo, tab) => {
+  const settings = await getChromeExtensionDBStorage()
+  // 如果开启了 settings pdf viewer, 才会触发 pdf url 的监听和重定向
+  if (settings.userSettings?.pdf?.enabled) {
+    const fetchingMap = new Map<
+      string,
+      'fetching' | 'validPDF' | 'invalidPDF'
+    >()
+    if (tab.active) {
+      const url = tab.url || tab.pendingUrl
+      // 如果是本地文件,并且是.pdf，直接打开
+      if (url?.startsWith('file://') || url?.startsWith('ftp://')) {
+        if (url.endsWith('.pdf') || url.endsWith('.PDF')) {
           openPDFViewer(tabId, url).then().catch()
+        }
+      }
+      // 如果是网络文件，检测是否是pdf
+      if (url?.endsWith('.pdf') || url?.endsWith('.PDF')) {
+        if (url?.startsWith('http://') || url?.startsWith('https://')) {
+          if (!fetchingMap.has(url)) {
+            fetchingMap.set(url, 'fetching')
+            // 获取文件类型
+            fetch(url, { method: 'HEAD' })
+              .then(function (response) {
+                const contentType = response.headers.get('content-type')
+                if (contentType === 'application/pdf') {
+                  fetchingMap.set(url, 'validPDF')
+                  openPDFViewer(tabId, url).then().catch()
+                } else {
+                  fetchingMap.set(url, 'invalidPDF')
+                }
+              })
+              .catch(function (error) {
+                fetchingMap.delete(url)
+              })
+          } else if (fetchingMap.get(url) === 'validPDF') {
+            openPDFViewer(tabId, url).then().catch()
+          }
         }
       }
     }

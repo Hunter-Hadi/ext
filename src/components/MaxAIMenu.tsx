@@ -1,6 +1,10 @@
 import Menu, { MenuProps } from '@mui/material/Menu'
-import React, { FC, useMemo, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 
+import {
+  isShowChatBox,
+  showChatBox,
+} from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getMaxAIFloatingContextMenuRootElement } from '@/utils'
 
 type rootContainer = HTMLElement | (() => HTMLElement | undefined)
@@ -11,6 +15,7 @@ const MaxAIMenu: FC<
 > = (props) => {
   const [menuElement, setMenuElement] = useState<HTMLElement | null>(null)
   const {
+    open,
     anchorEl,
     transformOrigin,
     anchorOrigin,
@@ -77,10 +82,22 @@ const MaxAIMenu: FC<
     menuElement,
     container,
   ])
+  // 因为html的 width会影响到mui modal的显示，所以这里需要设置为100%
+  const [currentOpen, setCurrentOpen] = useState(false)
+  useEffect(() => {
+    if (open) {
+      document.documentElement.style.width = '100%'
+    }
+    setCurrentOpen(open)
+    return () => {
+      isShowChatBox() && showChatBox()
+    }
+  }, [open])
   return (
     <Menu
-      {...rest}
+      open={currentOpen}
       {...memoMenuProps}
+      {...rest}
       component={'div'}
       MenuListProps={{
         ...rest.MenuListProps,

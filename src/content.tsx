@@ -107,12 +107,12 @@ function mainAppRender() {
   container.setAttribute('data-version', APP_VERSION)
   document.body.appendChild(container)
   const contextMenu = document.createElement(
-      supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
+    supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
   )
   contextMenu.id = MAXAI_CONTEXT_MENU_ID
   if (
-      getCurrentDomainHost() === 'youtube.com' ||
-      getCurrentDomainHost() === 'studio.youtube.com'
+    getCurrentDomainHost() === 'youtube.com' ||
+    getCurrentDomainHost() === 'studio.youtube.com'
   ) {
     contextMenu.contentEditable = 'true'
   }

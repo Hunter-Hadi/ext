@@ -47,7 +47,7 @@ export const mixpanelTrack = async (
     const paramsCover = { ...params }
     const userInfo = await getChromeExtensionUserInfo(false)
     if (userInfo?.role?.name) {
-      paramsCover['role'] = userInfo.role.name
+      paramsCover.currentRole = userInfo.role.name
     }
 
     mixpanel.track(eventName, paramsCover)

@@ -18,12 +18,13 @@ import { ON_BOARDING_1ST_ANNIVERSARY_2024_SIDEBAR_DIALOG_CACHE_KEY } from '@/fea
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import ResponsiveImage from '@/features/common/components/ResponsiveImage'
 import useBrowserAgent from '@/features/common/hooks/useBrowserAgent'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const SidebarPromotionDialog = () => {
   const { t } = useTranslation(['client'])
   const { browserAgent } = useBrowserAgent()
-  const { userInfo, currentUserPlan, isPayingUser } = useUserInfo()
+  const { userInfo, isPayingUser } = useUserInfo()
 
   const [open, setOpen] = useState(false)
 

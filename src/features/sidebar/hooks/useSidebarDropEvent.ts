@@ -54,9 +54,9 @@ const useSidebarDropEvent = () => {
   }, [])
 
   const handleDrop = async (event: DragEvent) => {
+    setIsSidebarDragOver(false)
     const { items } = event.dataTransfer || {}
     if (!items || !items.length) {
-      setIsSidebarDragOver(false)
       return
     }
     const files = Array.from(items)
@@ -65,7 +65,6 @@ const useSidebarDropEvent = () => {
     if (files.length > 0) {
       const isPDF = files[0]?.type.includes('pdf')
       if (isPDF) {
-        setIsSidebarDragOver(false)
         // TODO: 这里临时先这样处理，现在会出现的情况时，关闭了 settings pdf viewer 时，拖拽 pdf 到 sidebar 中 不会触发 maxai 的 pdf viewer
         // 正在做法应该是，不管 settings pdf viewer 开没开，这里都应该上传pdf 到api，然后返回一个url，然后打开这个url
 
@@ -104,7 +103,6 @@ const useSidebarDropEvent = () => {
         // 用浏览器的默认打开文件行为来打开 pdf 文件，然后 插件会代理 pdf 文件预览 转为 maxai pdf viewer
       } else if (isContainMaxAIModelUploadFile(files)) {
         event.preventDefault()
-        setIsSidebarDragOver(false)
         await uploadFilesToMaxAIModel(files)
       }
     }

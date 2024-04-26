@@ -12,9 +12,9 @@ import { useTranslation } from 'react-i18next'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ClearAllChatButtonMoreActions from '@/features/chatgpt/components/ConversationList/ClearAllChatButtonMoreActions'
-import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientRemoveConversationsByType } from '@/features/chatgpt/utils/chatConversationUtils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
+import useSidebarSettings from "@/features/sidebar/hooks/useSidebarSettings";
 
 interface IProps {
   variant?: 'icon' | 'buttonText'
@@ -27,7 +27,8 @@ const ClearAllChatButton: FC<IProps> = (props) => {
   const { onDelete, variant = 'buttonText', sx } = props
   const { t } = useTranslation(['client', 'common'])
   const [open, setOpen] = React.useState(false)
-  const { currentSidebarConversationType } = useClientConversation()
+  // const { currentSidebarConversationType } = useClientConversation()
+  const { currentSidebarConversationType } = useSidebarSettings()
   const isContextWindow = currentSidebarConversationType === 'ContextMenu'
   const currentDeleteAllButtonTitle = useMemo(() => {
     if (currentSidebarConversationType === 'Summary') {

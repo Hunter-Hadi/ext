@@ -280,6 +280,7 @@ const ConversationList: FC<IProps> = (props) => {
                   >
                     <AIModelIcons
                       size={24}
+                      aiProvider={conversation.AIProvider}
                       aiModelValue={conversation.AIModel}
                     />
                   </Stack>

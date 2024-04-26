@@ -299,7 +299,10 @@ export const isRectChange = (rect1: IRangyRect, rect2: IRangyRect) => {
  * @param compare
  * @param target
  */
-export const calculateRectLayout = (compare: IRangyRect, target: IRangyRect) => {
+export const calculateRectLayout = (
+  compare: IRangyRect,
+  target: IRangyRect,
+) => {
   const offsetX = target.left - compare.left
   const offsetY = target.top - compare.top
   return {
@@ -349,7 +352,6 @@ export const mergeRects = (rects: IRangyRect[]) => {
   rect.height = Math.abs(rect.bottom - rect.top)
   return rect
 }
-
 
 // 1. 基于queryText生成queryWords
 // 2. 过滤掉不符合queryWords的节点
@@ -460,7 +462,6 @@ export const FloatingContextMenuMiddleware = [
     padding: 16,
   }),
   offset((params) => {
-    // console.log('[ContextMenu Module]: [offset]', params)
     if (params.placement.indexOf('bottom') > -1) {
       const boundary = {
         left: 0,
@@ -479,9 +480,13 @@ export const FloatingContextMenuMiddleware = [
           boundary,
         )
       ) {
-        return (
+        const offset =
           params.rects.reference.y - params.y - params.rects.floating.height - 8
-        )
+        if (params.y + offset < 0) {
+          // 超出屏幕
+          return -params.y + 8
+        }
+        return offset
       }
       return 8
     } else {

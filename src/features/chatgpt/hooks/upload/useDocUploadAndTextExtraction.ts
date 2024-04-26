@@ -7,7 +7,6 @@ import useAIProviderUpload, {
 } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import FileExtractor from '@/features/sidebar/utils/FileExtractor'
-import globalSnackbar from '@/utils/globalSnackbar'
 
 const useDocUploadAndTextExtraction = () => {
   const { addOrUpdateUploadFile, getCanUploadFiles } = useAIProviderUpload()
@@ -57,24 +56,16 @@ const useDocUploadAndTextExtraction = () => {
           fileId,
         )
         if (extractedResult.success) {
-          debugger
           await addOrUpdateUploadFileRef.current(fileId, {
             ...extractedResult.chatUploadFile,
             uploadStatus: 'success',
             uploadProgress: 100,
           })
         } else if (extractedResult.error) {
-          debugger
           await addOrUpdateUploadFileRef.current(fileId, {
             uploadStatus: 'error',
             uploadProgress: 0,
             uploadErrorMessage: extractedResult.error,
-          })
-          globalSnackbar.error(extractedResult.error, {
-            anchorOrigin: {
-              vertical: 'top',
-              horizontal: 'right',
-            },
           })
         }
       }

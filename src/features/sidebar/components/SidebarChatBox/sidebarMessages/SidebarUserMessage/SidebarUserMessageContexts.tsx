@@ -50,7 +50,7 @@ const SidebarUserMessageContexts: FC<{
   }, [message.meta?.attachments])
   const contexts = message.meta?.contexts
   const renderShortContent = useMemo(() => {
-    return contexts?.[0]?.value?.slice(0, 500) || ''
+    return contexts?.[0]?.value?.slice(0, 500).trim() || ''
   }, [contexts])
   if (!attachments.length && !contexts?.length) {
     return null

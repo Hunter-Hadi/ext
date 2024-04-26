@@ -1,13 +1,12 @@
 import { ChatAdapterInterface } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
-import { OPENAI_API_MODELS } from '@/background/src/chat/OpenAIApiChat'
 import { createBackgroundMessageListener } from '@/background/utils'
-
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER,
   SEARCH_WITH_AI_PROVIDER_MAP,
-} from '../../constants'
+} from '@/features/searchWithAI/constants'
+
 import {
   getSearchWithAISettings,
   setSearchWithAISettings,
@@ -17,6 +16,7 @@ import { initProviderChatAdapters } from '../utils'
 
 class SearchWIthAIChatSystem {
   currentProvider?: ISearchWithAIProviderType
+  currentAIModel?: string
   private adapters: {
     [key in ISearchWithAIProviderType]?: ChatAdapterInterface
   } = {}
@@ -107,7 +107,10 @@ class SearchWIthAIChatSystem {
   ) => {
     if (this.currentProvider === SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API) {
       question.meta = {
-        model: OPENAI_API_MODELS[0].value,
+        model:
+          SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[
+            SEARCH_WITH_AI_PROVIDER_MAP.OPENAI_API
+          ],
         temperature: 1,
       }
     }
@@ -146,6 +149,8 @@ class SearchWIthAIChatSystem {
       meta.AIModel =
         SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[this.currentProvider]
     }
+
+    this.currentAIModel = meta.AIModel
 
     return (
       (await this.currentAdapter?.createConversation({

@@ -31,24 +31,27 @@ export class ActionGetYoutubeSocialMediaTranscripts extends Action {
     engine: IShortcutEngineExternalEngine,
   ) {
     try {
-      const { clientMessageChannelEngine } = engine
+      const { clientMessageChannelEngine, clientConversationEngine } = engine
       // TODO 需要重构,临时记录call-api
       if (clientMessageChannelEngine) {
         const recordContextMenuData =
           SummaryContextMenuOverwriteMap['YOUTUBE_VIDEO_SUMMARY']?.[
             'transcript'
           ]
-        await clientMessageChannelEngine
-          .postMessage({
-            event: 'Client_logCallApiRequest',
-            data: {
-              name: recordContextMenuData?.text || 'UNKNOWN',
-              id: recordContextMenuData?.id || 'UNKNOWN',
-              host: getCurrentDomainHost(),
-            },
-          })
-          .then()
-          .catch()
+        if (clientConversationEngine?.currentConversationId) {
+          await clientMessageChannelEngine
+            .postMessage({
+              event: 'Client_logCallApiRequest',
+              data: {
+                name: recordContextMenuData?.text || 'UNKNOWN',
+                id: recordContextMenuData?.id || 'UNKNOWN',
+                host: getCurrentDomainHost(),
+                conversationId: clientConversationEngine?.currentConversationId,
+              },
+            })
+            .then()
+            .catch()
+        }
       }
       if (this.isStopAction) return
       const transcripts = await this.getYoutubeTranscript()

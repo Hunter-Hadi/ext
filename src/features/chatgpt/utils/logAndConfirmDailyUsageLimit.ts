@@ -4,7 +4,7 @@ import utc from 'dayjs/plugin/utc'
 import Browser from 'webextension-polyfill'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import ConversationManager from '@/background/src/chatConversations'
 import { APP_USE_CHAT_GPT_API_HOST, APP_VERSION } from '@/constants'
 import { fetchUserSubscriptionInfo } from '@/features/auth/utils'
 import {
@@ -26,17 +26,30 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
   id: string
   name: string
   host: string
-  provider?: IAIProviderType
+  conversationId: string
+  aiProvider?: IAIProviderType
+  aiModel?: string
 }): Promise<void> => {
   // 不再需要去判断 has_reached_limit，因为前端不再依赖call_api来触发paywall付费卡点 - 2024-04-17 - @huangsong
   console.log('[CALL_API] promptDetail', promptDetail)
   const logApiAndConfirmIsLimited = async () => {
     try {
-      const appLocalStorage = await getChromeExtensionLocalStorage()
-      const provider =
-        promptDetail.provider ||
-        appLocalStorage.sidebarSettings?.common?.currentAIProvider ||
-        'UNKNOWN_PROVIDER'
+      // 根据 conversationId 获取正确的 provider 和 model
+      let aiProvider = promptDetail.aiProvider
+      let aiModel = promptDetail.aiModel
+
+      const conversation = await ConversationManager.getClientConversation(
+        promptDetail.conversationId,
+      )
+      if (conversation) {
+        if (conversation.meta.AIProvider) {
+          aiProvider = conversation.meta.AIProvider
+        }
+        if (conversation.meta.AIModel) {
+          aiModel = conversation.meta.AIModel
+        }
+      }
+
       const beautyQueryMap: {
         [key in IAIProviderType]: string
       } = {
@@ -55,7 +68,8 @@ export const logAndConfirmDailyUsageLimit = async (promptDetail: {
       const UAInfo = await backgroundGetBrowserUAInfo()
       const info_object = {
         ai_provider:
-          beautyQueryMap[provider as IAIProviderType] || 'UNKNOWN_PROVIDER',
+          beautyQueryMap[aiProvider as IAIProviderType] || 'UNKNOWN_PROVIDER',
+        ai_model: aiModel || 'UNKNOWN_MODEL',
         domain: promptDetail.host,
         prompt_id: promptDetail.id,
         prompt_name: promptDetail.name,

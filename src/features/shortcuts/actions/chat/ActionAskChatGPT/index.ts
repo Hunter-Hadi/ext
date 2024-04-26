@@ -338,6 +338,7 @@ export class ActionAskChatGPT extends Action {
               name: contextMenu?.text || fallbackId,
               id: contextMenu?.id || fallbackId,
               host: getCurrentDomainHost(),
+              conversationId: clientConversationEngine.currentConversationId,
             },
           })
           .then()

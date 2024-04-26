@@ -1,4 +1,5 @@
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
+import { mixpanelIdentify } from '@/features/mixpanel/utils'
 import Log from '@/utils/Log'
 const log = new Log('ContentScript/CheckIsLogin')
 
@@ -31,6 +32,13 @@ const syncIsLogin = async () => {
   const refreshToken = window.localStorage.getItem(
     localStoreKeyPrefix + '.refreshToken',
   )
+
+  // 从网页中获取 client user id （客户端生成的 user id）
+  const clientUserId = window.localStorage.getItem('CLIENT_USER_ID')
+  if (clientUserId) {
+    mixpanelIdentify('identify', clientUserId)
+  }
+
   if (refreshToken) {
     const userInfo = parseJwt(refreshToken)
     const exp = userInfo.exp
@@ -42,6 +50,7 @@ const syncIsLogin = async () => {
           accessToken,
           refreshToken,
           userInfo,
+          clientUserId,
         },
       })
     }

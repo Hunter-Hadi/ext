@@ -89,7 +89,7 @@ const initChromeExtensionInstalled = () => {
       // 重置插件引导数据
       await resetChromeExtensionOnBoardingData()
       await Browser.tabs.create({
-        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/get-started',
+        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/extension/installed',
       })
     } else {
       await initChromeExtensionUpdated()

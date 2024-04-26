@@ -1,4 +1,5 @@
-import { Button, ButtonGroup } from '@mui/material'
+import { ButtonGroup } from '@mui/material'
+import Button from '@mui/material/Button'
 import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useSetRecoilState } from 'recoil'
@@ -8,6 +9,9 @@ import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
+import {
+  useContextMenuList,
+} from '@/features/contextMenu'
 import { SidebarPageSummaryNavKeyState } from '@/features/sidebar/store'
 import {
   allSummaryNavList,
@@ -19,6 +23,9 @@ import {
   summaryGetPromptObject,
   SummaryParamsPromptType,
 } from '@/features/sidebar/utils/pageSummaryNavPrompt'
+
+import SidebarNavCustomPromptButton from './SidebarNavCustomPromptButton'
+
 interface IProps {
   message: IAIResponseMessage
   loading: boolean
@@ -31,6 +38,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   >(undefined)
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
+  const { contextMenuList } = useContextMenuList('textSelectPopupButton', '', false)
   const updateCurrentPageSummaryKey = useSetRecoilState(
     SidebarPageSummaryNavKeyState,
   )
@@ -118,6 +126,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
           </Button>
         </TextOnlyTooltip>
       ))}
+      <SidebarNavCustomPromptButton menuList={contextMenuList} />
     </ButtonGroup>
   )
 }

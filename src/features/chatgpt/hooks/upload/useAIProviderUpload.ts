@@ -13,7 +13,9 @@ import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import globalSnackbar from '@/utils/globalSnackbar'
 
 /**
  * AI Provider的上传文件处理
@@ -26,6 +28,7 @@ export type MaxAIAddOrUpdateUploadFile = (
   fileId: string,
   updateFileData: Partial<IChatUploadFile>,
 ) => Promise<void>
+export const DEFAULT_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 // 5MB
 
 const useAIProviderUpload = () => {
   const { currentConversationId } = useClientConversation()
@@ -50,6 +53,65 @@ const useAIProviderUpload = () => {
         files: operate === 'add' ? preSate.files.concat(files) : files,
       }
     })
+  }
+
+  /**
+   * 过滤超出大小限制的文件
+   * @param needUploadFiles 需要上传的文件
+   * @param options 配置项
+   * @param options.showErrorAlert 是否显示错误提示
+   * @returns 可以上传的文件
+   */
+  const getCanUploadFiles = async (
+    needUploadFiles: File[],
+    options?: {
+      showErrorAlert?: boolean
+    },
+  ) => {
+    const { showErrorAlert = true } = options || {}
+    const { maxCount = 1, maxFileSize = DEFAULT_UPLOAD_MAX_SIZE } =
+      AIProviderConfig || {}
+    const existFilesCount = files?.length || 0
+    const errorFileNames: string[] = []
+    // 过滤超出大小限制的文件, 只取前maxCount个
+    const canUploadFiles: File[] = needUploadFiles
+      .filter((file) => {
+        if (file.size < maxFileSize) {
+          return true
+        }
+        errorFileNames.push(file.name)
+        return false
+      })
+      .slice(0, maxCount)
+    // 如果有超出大小限制的文件，并且showErrorAlert为true，则弹出提示
+    if (errorFileNames.length > 0 && showErrorAlert) {
+      globalSnackbar.error(
+        `Upload failed: ${errorFileNames.join(
+          ',',
+        )} exceeds the ${filesizeFormatter(
+          maxFileSize,
+          2,
+        )} limit. Please select a smaller file.`,
+        {
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'right',
+          },
+        },
+      )
+    }
+
+    // 只取可以上传的文件
+    const needUploadFilesCount = canUploadFiles.length
+    // 先计算可以上传的文件数量
+    const canUploadCount = maxCount - existFilesCount
+    // 如果需要上传的文件数量大于可以上传的文件数量，则删除已存在的文件
+    if (needUploadFilesCount > canUploadCount) {
+      // 删除已存在的文件, 从第一个开始删除
+      const needDeleteCount = needUploadFilesCount - canUploadCount
+      await aiProviderRemoveFiles(files.slice(0, needDeleteCount))
+    }
+    return canUploadFiles
   }
 
   const updateBlurDelayRef = (flag: boolean) => {
@@ -274,6 +336,7 @@ const useAIProviderUpload = () => {
     aiProviderRemoveFiles,
     aiProviderRemoveAllFiles,
     addOrUpdateUploadFile,
+    getCanUploadFiles,
     files,
   }
 }

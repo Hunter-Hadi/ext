@@ -1,4 +1,3 @@
-import { v4 as uuidV4 } from 'uuid'
 import Browser from 'webextension-polyfill'
 
 import { MaxAIAddOrUpdateUploadFile } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
@@ -31,9 +30,24 @@ class SpecialTypeFileExtractor {
   async extractFile(
     file: File,
     maxAIAddOrUpdateFile: MaxAIAddOrUpdateUploadFile,
+    fileId: string,
   ): Promise<FileExtractorResult> {
+    const handleUploadError = (error: string) => {
+      return {
+        success: false,
+        error,
+        chatUploadFile: {
+          id: '',
+          fileName: file?.name || '',
+          fileSize: file?.size || 0,
+          fileType: file?.type || '',
+        },
+      }
+    }
     try {
-      const fileId = uuidV4()
+      if (!file) {
+        return handleUploadError('No file to extract')
+      }
       const blobUrl = URL.createObjectURL(file)
       if (this.getSpecialTypeFile(file) === 'pdf') {
         // 初始化pdfjs
@@ -57,15 +71,6 @@ class SpecialTypeFileExtractor {
             }
           })
         }
-        maxAIAddOrUpdateFile(fileId, {
-          id: fileId,
-          fileName: file.name,
-          fileSize: file.size,
-          fileType: file.type || 'text/plain',
-          uploadStatus: 'uploading',
-          uploadProgress: 0,
-          icon: 'file',
-        })
         const PDFContent = await new Promise<string>((resolve) => {
           if (this.pdfInstance) {
             this.pdfInstance
@@ -117,11 +122,6 @@ class SpecialTypeFileExtractor {
           }
         })
         if (PDFContent) {
-          await maxAIAddOrUpdateFile(fileId, {
-            uploadStatus: 'success',
-            uploadProgress: 100,
-            extractedContent: PDFContent,
-          })
           return {
             success: true,
             error: '',
@@ -140,24 +140,21 @@ class SpecialTypeFileExtractor {
             },
           }
         } else {
-          await maxAIAddOrUpdateFile(fileId, {
-            uploadStatus: 'error',
-            uploadProgress: 0,
-          })
+          return handleUploadError('Failed to extract PDF content')
         }
       }
+      return handleUploadError(
+        `You may not upload files of the following format: (${
+          '.' + file.name.split('.').pop()
+        }). Try again using a different file format.`,
+      )
     } catch (e) {
       console.error(`SpecialTypeFileExtractor error: \t`, e)
-    }
-    return {
-      success: false,
-      error: 'No file to extract',
-      chatUploadFile: {
-        id: '',
-        fileName: '',
-        fileSize: 0,
-        fileType: '',
-      },
+      return handleUploadError(
+        `You may not upload files of the following format: (${
+          '.' + file.name.split('.').pop()
+        }). Try again using a different file format.`,
+      )
     }
   }
 }

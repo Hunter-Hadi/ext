@@ -97,6 +97,6 @@ type ActionIdentifier =
   | 'SCRIPTS_CONDITIONAL'
 
 // `1webgpt action identifiers
-type WebGPTActionIdentifier = ' `WEBGPT_SEARCH_RESULTS_EXPAND'
+type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
 
 export default ActionIdentifier

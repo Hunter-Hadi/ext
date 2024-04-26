@@ -3,6 +3,7 @@ import cl100k_base, {
   EndOfPrompt,
 } from 'gpt-tokenizer/esm/encoding/cl100k_base'
 
+import { numberToTokensText } from '@/utils/dataHelper/numberHelper'
 import { isMaxAIPage } from '@/utils/dataHelper/websiteHelper'
 import { executeWebWorkerTask } from '@/utils/webWorkerClient'
 
@@ -90,6 +91,72 @@ export const getTextTokens = (text: string) => {
     return []
   }
 }
+
+/**
+ * 获取 text 的 token 值
+ * @param text
+ * @param options
+ * @param options.tokenLimit - 超过限制的token数量
+ */
+export const getTextTokensWithRequestIdle = (
+  text: string,
+  options: {
+    tokenLimit?: number
+  } = {},
+) => {
+  const { tokenLimit = -1 } = options
+  return new Promise<{
+    tokens: number
+    isLimit: boolean
+  }>((resolve) => {
+    let totalTokens = 0
+    let index = 0
+    const textOfChunks: string[] = []
+    const CHUNKS_SIZE = 20000
+    for (let i = 0; i < text.length; i += CHUNKS_SIZE) {
+      textOfChunks.push(text.slice(i, i + CHUNKS_SIZE))
+    }
+    const totalChunks = textOfChunks.length
+    console.log('getTextTokensWithRequestIdle textOfChunks count', totalChunks)
+
+    const tokenizeChunk = (chunk: string) => {
+      const tokens = getTextTokens(chunk)
+      console.log(
+        `getTextTokensWithRequestIdle progress [${(
+          ((index + 1) / totalChunks) *
+          100
+        ).toFixed(2)}%] tokens ${numberToTokensText(totalTokens)}`,
+      )
+      totalTokens += tokens.length
+      if (tokenLimit > 0 && totalTokens > tokenLimit) {
+        // 清空剩余的textOfChunks, 提前结束
+        textOfChunks.splice(0, textOfChunks.length)
+        resolve({
+          tokens: totalTokens,
+          isLimit: true,
+        })
+      }
+    }
+
+    const processChunks = (deadline: IdleDeadline) => {
+      while (deadline.timeRemaining() > 0 && textOfChunks.length > 0) {
+        tokenizeChunk(textOfChunks.shift() as string)
+        index++
+      }
+
+      if (textOfChunks.length > 0) {
+        requestIdleCallback(processChunks)
+      } else {
+        resolve({
+          tokens: totalTokens,
+          isLimit: false,
+        })
+      }
+    }
+    requestIdleCallback(processChunks, { timeout: 200 })
+  })
+}
+
 /**
  * 获取 text 的 token 值
  * 因为web worker有启动时间，短文本不如直接用上面的getTextTokens

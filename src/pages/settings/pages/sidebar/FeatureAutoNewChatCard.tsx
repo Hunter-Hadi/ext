@@ -77,9 +77,9 @@ const FeatureAutoNewChatCard: FC = () => {
                   ...userSettings?.sidebar,
                   autoArchive: {
                     // TODO 先暂时这样写，这三个板块共享一个设置 - @huangsong - 2024-04-23
-                    Chat: value,
-                    Art: value,
-                    Search: value,
+                    Chat: Number(value),
+                    Art: Number(value),
+                    Search: Number(value),
                   },
                 },
               })

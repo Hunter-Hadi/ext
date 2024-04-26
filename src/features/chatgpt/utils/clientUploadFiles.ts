@@ -5,14 +5,8 @@ import {
   file2base64,
 } from '@/background/utils/uplpadFileProcessHelper'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 
-export const DEFAULT_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 // 5MB
-
-export const formatClientUploadFiles = (
-  filesArray: File[],
-  maxFileSize = DEFAULT_UPLOAD_MAX_SIZE,
-) => {
+export const formatClientUploadFiles = (filesArray: File[]) => {
   return Promise.all(
     filesArray.map(async (file) => {
       const isImageFile = checkFileTypeIsImage(file)
@@ -36,16 +30,6 @@ export const formatClientUploadFiles = (
         uploadProgress: 0,
         icon,
       } as IChatUploadFile
-      // check file size
-      if (maxFileSize > 0 && uploadFile.fileSize > maxFileSize) {
-        uploadFile.uploadStatus = 'error'
-        uploadFile.uploadErrorMessage = `Upload failed: ${
-          uploadFile.fileName
-        } exceeds the ${filesizeFormatter(
-          maxFileSize,
-          2,
-        )} limit. Please select a smaller file.`
-      }
       return uploadFile
     }),
   )

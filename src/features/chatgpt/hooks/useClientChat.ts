@@ -22,7 +22,7 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import {
   calculateMaxHistoryQuestionResponseTokens,
-  getTextTokens,
+  getTextTokensWithRequestIdle,
 } from '@/features/shortcuts/utils/tokenizer'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
@@ -53,6 +53,7 @@ const useClientChat = () => {
     showConversationLoading,
     updateConversation,
     getCurrentConversation,
+    updateClientConversationLoading,
   } = useClientConversation()
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
@@ -94,8 +95,11 @@ const useClientChat = () => {
         const maxAttachmentTokens =
           conversationMaxTokens -
           calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
-        const attachmentsTextTokens = getTextTokens(extractText).length
-        if (attachmentsTextTokens > maxAttachmentTokens) {
+        const { isLimit: attachmentIsLimit } =
+          await getTextTokensWithRequestIdle(extractText, {
+            tokenLimit: maxAttachmentTokens,
+          })
+        if (attachmentIsLimit) {
           // 如果tokens长度超过限制
           await clientChatConversationModifyChatMessages(
             'add',
@@ -132,15 +136,18 @@ const useClientChat = () => {
       afterActions?: ISetActionsType
     },
   ) => {
+    await updateClientConversationLoading(true)
     const { beforeActions = [], afterActions = [] } = options || {}
     if (!question.meta?.attachments) {
       const attachments = await getAttachments(question.conversationId)
       if (attachments.length > 0) {
         if (!(await checkAttachments(attachments))) {
+          await updateClientConversationLoading(false)
           return
         }
       } else if (question.text.trim() === '') {
         // 如果没有文本 && 没有附件
+        await updateClientConversationLoading(false)
         return
       }
       question = mergeWithObject([
@@ -229,6 +236,7 @@ const useClientChat = () => {
           // 如果当前AIModel有权限限制
           // 则提示用户付费
           await pushPricingHookMessage(currentModelDetail.permission.sceneType)
+          await updateClientConversationLoading(false)
           return
         }
       }
@@ -243,6 +251,7 @@ const useClientChat = () => {
       // 4. 保存最后一次运行的shortcuts
       await saveLastRunShortcuts(conversationId, actions, overwriteParameters)
     }
+    await updateClientConversationLoading(false)
     // 5. 运行shortcuts
     setShortCuts(actions)
     await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)

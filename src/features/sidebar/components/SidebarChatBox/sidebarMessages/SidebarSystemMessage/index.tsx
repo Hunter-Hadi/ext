@@ -115,6 +115,7 @@ const BaseSidebarSystemMessage: FC<{
       }
       sx={
         {
+          boxSizing: 'border-box',
           ...memoSx,
           ...propSx,
         } as SxProps

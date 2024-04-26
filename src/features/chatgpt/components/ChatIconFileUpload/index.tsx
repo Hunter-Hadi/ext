@@ -31,55 +31,48 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
     addOrUpdateUploadFile,
+    getCanUploadFiles,
   } = useAIProviderUpload()
   const { conversationStatus } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
-  const maxFileSize = AIProviderConfig?.maxFileSize
+
   const isMaxFiles = useMemo(() => {
     return files.length >= (AIProviderConfig?.maxCount || 1)
   }, [files])
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const existFilesCount = files?.length || 0
-    const canUploadCount = maxFiles - existFilesCount
     const selectedUploadFiles = e.target.files
-    if (!selectedUploadFiles || canUploadCount === 0) {
+    if (!selectedUploadFiles) {
       return
     }
-    let filesArray: File[] = Array.from(selectedUploadFiles)
-    filesArray = filesArray.slice(0, canUploadCount)
-    if (filesArray.length === 0) {
+    let canUploadFiles: File[] = await getCanUploadFiles(
+      Array.from(selectedUploadFiles),
+    )
+    if (canUploadFiles.length === 0) {
       return
     }
     const waitExtractTextFiles: File[] = []
-    const extractedTextFiles: IChatUploadFile[] = []
-    filesArray = filesArray.filter((file) => {
+    canUploadFiles = canUploadFiles.filter((file) => {
       if (FileExtractor.canExtractTextFromFileName(file.name)) {
         waitExtractTextFiles.push(file)
         return false
       }
       return checkFileTypeIsImage(file)
     })
-    await Promise.all(
+    Promise.all(
       waitExtractTextFiles.map(async (waitExtractTextFile) => {
-        const extractedResult = await FileExtractor.extractFile(
+        await FileExtractor.extractFile(
           waitExtractTextFile,
           addOrUpdateUploadFile,
         )
-        if (extractedResult.success) {
-          extractedTextFiles.push(extractedResult.chatUploadFile)
-        }
       }),
     )
-
+      .then()
+      .catch()
     // upload
-    const newUploadFiles = await formatClientUploadFiles(
-      filesArray,
-      maxFileSize,
-    )
-
+    const newUploadFiles = await formatClientUploadFiles(canUploadFiles)
     await aiProviderUploadFiles(newUploadFiles)
     // clear input
     if (inputRef.current) {

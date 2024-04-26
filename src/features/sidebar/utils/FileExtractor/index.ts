@@ -1,5 +1,3 @@
-import { v4 as uuidV4 } from 'uuid'
-
 import { checkFileNameIsImage } from '@/background/utils/uplpadFileProcessHelper'
 import { MaxAIAddOrUpdateUploadFile } from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { IChatUploadFile } from '@/features/chatgpt/types'
@@ -104,54 +102,44 @@ class FileExtractor {
   public static extractFile(
     file: File | null,
     maxAIAddOrUpdateFile: MaxAIAddOrUpdateUploadFile,
+    fileId: string,
   ): Promise<FileExtractorResult> {
     // eslint-disable-next-line no-async-promise-executor
-    return new Promise(async (resolve, reject) => {
-      if (!file) {
+    return new Promise(async (resolve) => {
+      const handleUploadError = (error: string) => {
         resolve({
           success: false,
-          error: 'No file to extract',
+          error,
           chatUploadFile: {
             id: '',
-            fileName: '',
-            fileSize: 0,
-            fileType: '',
+            fileName: file?.name || '',
+            fileSize: file?.size || 0,
+            fileType: file?.type || '',
           },
         })
+      }
+      if (!file) {
+        handleUploadError('No file to extract')
         return
       }
       if (SpecialTypeFileExtractor.isSpecialTypeFile(file)) {
-        SpecialTypeFileExtractor.extractFile(file, maxAIAddOrUpdateFile).then(
-          resolve,
-        )
+        SpecialTypeFileExtractor.extractFile(
+          file,
+          maxAIAddOrUpdateFile,
+          fileId,
+        ).then(resolve)
         return
       }
       if (!this.canExtractTextFromFileName(file.name)) {
         // 获取文件名的后缀
-        resolve({
-          success: false,
-          error: `You may not upload files of the following format: (${file.type}). Try again using a different file format.`,
-          chatUploadFile: {
-            id: '',
-            fileName: file.name,
-            fileSize: file.size,
-            fileType: file.type,
-          },
-        })
+        handleUploadError(
+          `You may not upload files of the following format: (${
+            '.' + file.name.split('.').pop()
+          }). Try again using a different file format.`,
+        )
         return
       }
-
-      const fileId = uuidV4()
       const reader = new FileReader()
-      await maxAIAddOrUpdateFile(fileId, {
-        id: fileId,
-        fileName: file.name,
-        fileSize: file.size,
-        fileType: file.type,
-        uploadStatus: 'uploading',
-        uploadProgress: 0,
-        icon: 'file',
-      })
       reader.onprogress = (event) => {
         if (event.lengthComputable) {
           const progress = (event.loaded / event.total) * 100
@@ -163,30 +151,14 @@ class FileExtractor {
       reader.onload = () => {
         if (typeof reader.result !== 'string') {
           // 读取文件失败
-          maxAIAddOrUpdateFile(fileId, {
-            uploadStatus: 'error',
-            uploadProgress: 0,
-          })
-          resolve({
-            success: false,
-            error: `You may not upload files of the following format: (${file.type}). Try again using a different file format.`,
-            chatUploadFile: {
-              id: '',
-              fileName: file.name,
-              fileSize: file.size,
-              fileType: file.type,
-            },
-          })
+          handleUploadError(
+            `You may not upload files of the following format: (${
+              '.' + file.name.split('.').pop()
+            }). Try again using a different file format.`,
+          )
           return
         }
         const blobUrl = URL.createObjectURL(file)
-        maxAIAddOrUpdateFile(fileId, {
-          uploadStatus: 'success',
-          uploadProgress: 100,
-          uploadedUrl: blobUrl,
-          extractedContent: reader.result,
-          uploadedFileId: fileId,
-        })
         resolve({
           success: true,
           error: '',
@@ -207,18 +179,8 @@ class FileExtractor {
       }
 
       reader.onerror = () => {
-        resolve({
-          success: false,
-          error: 'Error reading file',
-          chatUploadFile: {
-            id: '',
-            fileName: file.name,
-            fileSize: file.size,
-            fileType: file.type,
-          },
-        })
+        handleUploadError('Failed to read file')
       }
-
       reader.readAsText(file)
     })
   }

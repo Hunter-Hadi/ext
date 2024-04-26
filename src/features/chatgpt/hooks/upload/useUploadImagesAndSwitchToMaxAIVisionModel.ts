@@ -8,12 +8,7 @@ import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFi
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
-  const {
-    files,
-    AIProviderConfig,
-    aiProviderUploadFiles,
-    aiProviderRemoveFiles,
-  } = useAIProviderUpload()
+  const { aiProviderUploadFiles, getCanUploadFiles } = useAIProviderUpload()
   const { createConversation, clientConversation } = useClientConversation()
   const { updateSidebarConversationType } = useSidebarSettings()
   const { currentAIProvider, currentAIProviderModel } = useAIProviderModels()
@@ -108,17 +103,9 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
         resolveRef.current = undefined
       }
     })
-    const existFilesCount = files?.length || 0
-    const maxFiles = AIProviderConfig?.maxCount || 1
-    const canUploadCount = maxFiles - existFilesCount
-    if (canUploadCount === 0) {
-      await aiProviderRemoveFiles(files.slice(0, imageFiles.length))
-    }
+    const canUploadFiles = await getCanUploadFiles(imageFiles)
     await aiProviderUploadFilesRef.current(
-      await formatClientUploadFiles(
-        imageFiles.slice(0, maxFiles),
-        AIProviderConfig?.maxFileSize,
-      ),
+      await formatClientUploadFiles(canUploadFiles),
     )
   }
   const isMaxAIVisionModel = useMemo(() => {

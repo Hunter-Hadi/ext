@@ -32,6 +32,7 @@ import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -60,6 +61,7 @@ const InputAssistantButtonContextMenu: FC<
   } = props
   const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
     useFloatingContextMenu()
+  const { updateSidebarConversationType } = useSidebarSettings()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
   const { currentSidebarConversationType } = useClientConversation()
@@ -96,6 +98,7 @@ const InputAssistantButtonContextMenu: FC<
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
+            updateSidebarConversationType('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
             hideFloatingContextMenu()
             return

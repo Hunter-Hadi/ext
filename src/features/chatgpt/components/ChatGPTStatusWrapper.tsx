@@ -226,7 +226,7 @@ const ChatGPTStatusWrapper: FC = () => {
                 sx={{ width: '100%' }}
                 onClick={() => {
                   mixpanelTrack('sign_up_started', {
-                    method: 'google',
+                    signUpMethod: 'google',
                   })
                 }}
               >
@@ -269,7 +269,7 @@ const ChatGPTStatusWrapper: FC = () => {
                 sx={{ width: '100%' }}
                 onClick={() => {
                   mixpanelTrack('sign_up_started', {
-                    method: 'email',
+                    signUpMethod: 'email',
                   })
                 }}
               >

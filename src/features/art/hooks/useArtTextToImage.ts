@@ -25,11 +25,14 @@ import { AppLocalStorageState } from '@/store'
 const useArtTextToImage = () => {
   const { askAIWIthShortcuts } = useClientChat()
   const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { pushPricingHookMessage, createConversation, getConversation } =
-    useClientConversation()
+  const {
+    pushPricingHookMessage,
+    currentSidebarConversationType,
+    createConversation,
+    getConversation,
+  } = useClientConversation()
   const {
     sidebarSettings,
-    currentSidebarConversationType,
     updateSidebarConversationType,
     currentSidebarConversationMessages,
   } = useSidebarSettings()

@@ -46,6 +46,7 @@ const useClientChat = () => {
   const { aiProviderRemoveAllFiles } = useAIProviderUpload()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const runShortCutsRef = useRef(runShortCuts)
+  const setShortCutsRef = useRef(setShortCuts)
   const {
     currentConversationIdRef,
     pushPricingHookMessage,
@@ -58,7 +59,9 @@ const useClientChat = () => {
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
-
+  useEffect(() => {
+    setShortCutsRef.current = setShortCuts
+  }, [setShortCuts])
   // 获取attachments
   const getAttachments = async (conversationId?: string) => {
     const port = new ContentScriptConnectionV2({
@@ -253,7 +256,7 @@ const useClientChat = () => {
     }
     await updateClientConversationLoading(false)
     // 5. 运行shortcuts
-    setShortCuts(actions)
+    setShortCutsRef.current(actions)
     await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
   }
   /**

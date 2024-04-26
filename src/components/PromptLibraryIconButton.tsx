@@ -13,6 +13,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { useRangy } from '@/features/contextMenu'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
@@ -36,6 +37,7 @@ const PromptLibraryIconButton: FC<{
     selectedPromptLibraryCard,
     cancelSelectPromptLibraryCard,
   } = usePromptLibrary()
+  const { hideRangy } = useRangy()
   const { askAIWIthShortcuts, shortCutsEngine } = useClientChat()
   const { updateSidebarConversationType } = useSidebarSettings()
   const { isOpenPromptLibraryEditForm } = usePromptActions()
@@ -48,6 +50,7 @@ const PromptLibraryIconButton: FC<{
   const handleClick =
     (newPlacement: PopperPlacementType) =>
     (event: React.MouseEvent<HTMLButtonElement>) => {
+      hideRangy(true)
       const containerElement = (getMaxAISidebarRootElement()?.querySelector(
         '#maxAISidebarChatBox',
       ) || document.body) as HTMLDivElement

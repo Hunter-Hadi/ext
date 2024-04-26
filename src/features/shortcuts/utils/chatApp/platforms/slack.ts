@@ -189,7 +189,7 @@ export const slackGetChatMessages = (inputAssistantButton: HTMLElement) => {
           : chatMessages,
         {
           serverName: serverName || '',
-          chatroomName: chatroomName || '',
+          chatroomName,
           username: username || '',
         },
       )

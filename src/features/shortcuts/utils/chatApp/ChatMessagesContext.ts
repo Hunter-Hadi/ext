@@ -53,8 +53,8 @@ export const createChatMessageListData = (
 export default class ChatMessagesContext {
   chatMessages: IChatMessageData[] = []
   config: IChatServerInfo
-  replyTargetMessage: [IChatMessageData] | null = null
-  replyMessageIndex: number = -1
+  replyUnfoundTargetMessage: [IChatMessageData] | null = null
+  replyMessageIndex: number = -1 // 要回复的对象索引，-Infinity 代表回复空消息
 
   constructor(chatMessages: IChatMessageData[], config: IChatServerInfo) {
     const { serverName = '', chatroomName = '', username = '' } = config || {}
@@ -75,18 +75,18 @@ export default class ChatMessagesContext {
   replyMessage(message: number | IChatMessageData) {
     if (typeof message === 'number') {
       this.replyMessageIndex = message
-      this.replyTargetMessage = null
+      this.replyUnfoundTargetMessage = null
     } else {
-      this.replyTargetMessage = [message]
+      this.replyUnfoundTargetMessage = [message]
     }
   }
   get data(): IChatMessagesContextData {
     const { serverName, chatroomName, username } = this.config
 
     // 如果有强制要求回复的对象信息，优先回复这个对象，并把上下文内容设置为这个对象
-    if (this.replyTargetMessage) {
+    if (this.replyUnfoundTargetMessage) {
       const [replyTargetMessageData] = createChatMessageListData(
-        this.replyTargetMessage,
+        this.replyUnfoundTargetMessage,
       )
       const MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT = `[Chat Server Info]
 **Server Name:** ${serverName || 'N/A'}
@@ -100,19 +100,21 @@ ${replyTargetMessageData.text}
         serverName,
         chatroomName,
         username,
-        replyMessage: this.replyTargetMessage[0],
-        chatMessages: this.replyTargetMessage,
+        replyMessage: this.replyUnfoundTargetMessage[0],
+        chatMessages: this.replyUnfoundTargetMessage,
         MAXAI__CHAT_APP_WRITING_ASSISTANT_REPLY_TARGET_CONTENT:
           replyTargetMessageData.text,
         MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
       }
     } else {
+      debugger
       let replyMessageIndex =
         this.chatMessages.length >= 8 ? 8 : this.chatMessages.length
       const chatMessages = this.chatMessages.slice(-8)
 
       replyMessageIndex =
         this.replyMessageIndex - this.chatMessages.length + replyMessageIndex
+
       const replyMessage = chatMessages.at(replyMessageIndex)
 
       const chatMessageListData = createChatMessageListData(chatMessages)

@@ -48,7 +48,9 @@ const getUsernameFromProfilePanel = async (
         'div[tabindex]:has(button[title]) span.selectable-text.copyable-text[aria-label]',
       )?.textContent || ''
     if (needBack) {
-      profilePanel.querySelector<HTMLElement>('[data-icon="back"]')?.click()
+      profilePanel
+        .querySelector<HTMLElement>('[role="button"]:has(> [data-icon="back"])')
+        ?.click()
       await wait(500)
     }
   }
@@ -300,6 +302,7 @@ export const whatsAppGetChatMessages = async (
   const sidePanelTab = document.querySelector(
     '.two > div > div > span > div[tabindex]',
   )
+  debugger
   // 如果有打开的 side panel 且是 profile panel，就直接获取用户的 username
   if (sidePanelTab) {
     const isProfilePanel = sidePanelTab.matches(

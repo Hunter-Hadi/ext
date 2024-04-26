@@ -80,7 +80,7 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     }
     const currentConversationType = clientConversation?.type
     if (
-      !currentConversationType ||
+      currentConversationType &&
       !['Chat', 'ContextMenu'].includes(currentConversationType)
     ) {
       await new Promise((resolve) => {

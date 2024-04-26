@@ -105,7 +105,8 @@ const useFloatingContextMenuDraft = () => {
       // 如果当前正在输入的消息是当前激活的消息，那么需要合并
       if (
         clientWritingMessage.writingMessage.messageId ===
-        activeMessage?.messageId
+          activeMessage?.messageId &&
+        clientWritingMessage.loading // 加上loading，否则会有短暂的重复添加消息导致contextmenu高度闪烁
       ) {
         draft = draft + '\n\n' + clientWritingMessage.writingMessage.text
       } else {
@@ -114,7 +115,12 @@ const useFloatingContextMenuDraft = () => {
       }
     }
     return draft.replace(/\n{2,}/, '\n\n')
-  }, [clientWritingMessage.writingMessage, historyMessages, activeMessageIndex])
+  }, [
+    clientWritingMessage.writingMessage,
+    clientWritingMessage.loading,
+    historyMessages,
+    activeMessageIndex,
+  ])
 
   /**
    * 当前的draft对应的用户消息

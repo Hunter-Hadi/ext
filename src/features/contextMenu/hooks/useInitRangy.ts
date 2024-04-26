@@ -47,6 +47,7 @@ import { AppDBStorageState } from '@/store'
 import Log from '@/utils/Log'
 
 import { useRangy } from './useRangy'
+import {isMaxAIImmersiveChatPage} from "@/utils/dataHelper/websiteHelper";
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -133,6 +134,10 @@ const useInitRangy = () => {
             removeAllRange()
             return
           }
+        }
+        if (isMaxAIImmersiveChatPage()) {
+          // immersive chat页面不处理
+          return
         }
         if ((event as any).MAX_AI_IGNORE) {
           // 针对google doc或者其他页面的处理
@@ -578,7 +583,7 @@ const useInitRangy = () => {
               z-index: -1;
             `
             textarea.value = lastOutputRef.current
-            textarea.oncopy = event => event.stopPropagation()
+            textarea.oncopy = (event) => event.stopPropagation()
             document.body.appendChild(textarea)
             textarea.select()
             document.execCommand('copy', false, '')

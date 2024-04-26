@@ -1,14 +1,12 @@
 import { useEffect, useRef } from 'react'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
+import { useRecoilValue } from 'recoil'
 
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { ClientConversationMapState } from '@/features/chatgpt/store'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { useFocus } from '@/features/common/hooks/useFocus'
 import usePageUrlChange from '@/features/common/hooks/usePageUrlChange'
 import usePageSummary from '@/features/sidebar/hooks/usePageSummary'
 import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
@@ -18,7 +16,6 @@ import {
   getPageSummaryType,
 } from '@/features/sidebar/utils/pageSummaryHelper'
 import { AppState } from '@/store'
-import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 /**
  * 这里存放着不同的Tab类型的特殊行为：例如summary在url变化后要改回chat
@@ -28,7 +25,7 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
  * @file src/features/sidebar/components/SidebarTabs/index.tsx - Sidebar的菜单要切换到Chat
  *
  */
-const useInitSidebar = () => {
+const useInitWebPageSidebar = () => {
   const appState = useRecoilValue(AppState)
   const { createPageSummary, resetPageSummary } = usePageSummary()
   const { pageUrl, startListen } = usePageUrlChange()
@@ -40,11 +37,9 @@ const useInitSidebar = () => {
     updateSidebarConversationType,
     updateSidebarSummaryConversationId,
   } = useSidebarSettings()
-  const { currentConversationIdRef, createConversation, resetConversation } =
-    useClientConversation()
+  const { createConversation } = useClientConversation()
   const { stopGenerate } = useClientChat()
   const { updateAIProviderModel } = useAIProviderModels()
-  const updateConversationMap = useSetRecoilState(ClientConversationMapState)
   const { continueInSearchWithAI } = useSearchWithAI()
   const pageConversationTypeRef = useRef(currentSidebarConversationType)
   pageConversationTypeRef.current = currentSidebarConversationType
@@ -57,10 +52,7 @@ const useInitSidebar = () => {
     if (isUpdatingConversationRef.current) {
       return
     }
-    if (
-      currentSidebarConversationType &&
-      (appState.open || isMaxAIImmersiveChatPage())
-    ) {
+    if (currentSidebarConversationType && appState.open) {
       const handleUpdateConversationType = async () => {
         const switchSidebarConversation = async (conversationId?: string) => {
           if (!conversationId) {
@@ -136,7 +128,7 @@ const useInitSidebar = () => {
     if (
       currentSidebarConversationType === 'Chat' &&
       !sidebarChatConversationId &&
-      (appState.open || isMaxAIImmersiveChatPage())
+      appState.open
     ) {
       createConversation(currentSidebarConversationType).then().catch()
     }
@@ -207,35 +199,35 @@ const useInitSidebar = () => {
       window.removeEventListener('MaxAIContinueSearchWithAI', listener)
     }
   }, [])
-  // focus的时候更新消息
-  useFocus(() => {
-    if (currentConversationIdRef.current) {
-      const start = new Date().getTime()
-      clientGetConversation(currentConversationIdRef.current).then(
-        (conversation) => {
-          if (conversation) {
-            console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')
-            console.log('新版Conversation refocus更新', conversation.messages)
-            if (conversation.isDelete) {
-              if (isMaxAIImmersiveChatPage()) {
-                // immersive chat page下先在这里触发reset
-                resetConversation()
-              }
-            }
-            updateConversationMap((prevState) => {
-              return {
-                ...prevState,
-                [conversation.id]: conversation,
-              }
-            })
-          }
-        },
-      )
-    }
-  })
+  // // focus的时候更新消息
+  // useFocus(() => {
+  //   if (currentConversationIdRef.current) {
+  //     const start = new Date().getTime()
+  //     clientGetConversation(currentConversationIdRef.current).then(
+  //       (conversation) => {
+  //         if (conversation) {
+  //           console.log('UsingUsingUsing', new Date().getTime() - start, 'ms')
+  //           console.log('新版Conversation refocus更新', conversation.messages)
+  //           if (conversation.isDelete) {
+  //             if (isMaxAIImmersiveChatPage()) {
+  //               // immersive chat page下先在这里触发reset
+  //               resetConversation()
+  //             }
+  //           }
+  //           updateConversationMap((prevState) => {
+  //             return {
+  //               ...prevState,
+  //               [conversation.id]: conversation,
+  //             }
+  //           })
+  //         }
+  //       },
+  //     )
+  //   }
+  // })
   useEffectOnce(() => {
     startListen()
   })
 }
 
-export default useInitSidebar
+export default useInitWebPageSidebar

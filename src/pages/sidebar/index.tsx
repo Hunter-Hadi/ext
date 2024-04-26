@@ -1,16 +1,19 @@
 import Stack from '@mui/material/Stack'
-import React, { FC } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
 import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
-import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
+import useInitWebPageSidebar from '@/features/sidebar/hooks/useInitWebPageSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 // const getDefaultValue = () => {
 //   const autoFocusInputValue = (
@@ -26,8 +29,32 @@ const SidebarChatPanel = React.lazy(
  * 一些自定义/监听需要在没渲染前就初始化的操作
  * @constructor
  */
+const WebPageSidebarInit: FC = () => {
+  useInitWebPageSidebar()
+  return <></>
+}
+const ImmersiveChatPageSidebarInit: FC = () => {
+  const { createConversation, currentConversationIdRef } =
+    useClientConversation()
+  const { currentSidebarConversationType } = useSidebarSettings()
+  const isCreatingRef = useRef(false)
+  useEffect(() => {
+    if (
+      currentSidebarConversationType &&
+      !currentConversationIdRef.current &&
+      !isCreatingRef.current
+    ) {
+      createConversation(currentSidebarConversationType)
+        .then()
+        .catch()
+        .finally(() => {
+          isCreatingRef.current = false
+        })
+    }
+  }, [currentSidebarConversationType])
+  return <></>
+}
 const SidebarPageInit: FC = () => {
-  useInitSidebar()
   useInitWebPageMessageChannel()
   return <></>
 }
@@ -54,19 +81,20 @@ const SidebarDragWrapper: FC<{
 }
 
 const SidebarPage: FC<{
-  isImmersiveChat?: boolean
   open?: boolean
   disableContextProvider?: boolean
 }> = (props) => {
-  const { isImmersiveChat, open = false, disableContextProvider } = props
-
+  const { open = false, disableContextProvider } = props
+  const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
   const ContextProvider = disableContextProvider
     ? React.Fragment
     : SidebarContextProvider
 
   return (
-    <ContextProvider isImmersiveChat={isImmersiveChat}>
+    <ContextProvider>
       <SidebarPageInit />
+      {!isImmersiveChatRef.current && <WebPageSidebarInit />}
+      {isImmersiveChatRef.current && <ImmersiveChatPageSidebarInit />}
       {open && (
         <Stack
           flex={1}
@@ -78,12 +106,12 @@ const SidebarPage: FC<{
           <SidebarTour />
           <SidebarPromotionDialog />
           <SidebarDragWrapper>
-            {!isImmersiveChat && <ChatBoxHeader />}
+            {!isImmersiveChatRef.current && <ChatBoxHeader />}
             <AppSuspenseLoadingLayout>
               <SidebarChatPanel />
             </AppSuspenseLoadingLayout>
           </SidebarDragWrapper>
-          {!isImmersiveChat && <SidebarNav />}
+          {!isImmersiveChatRef.current && <SidebarNav />}
           {!open && (
             <>
               {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}

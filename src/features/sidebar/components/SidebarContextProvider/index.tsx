@@ -7,7 +7,9 @@ import {
 } from '@/features/chatgpt/store/ChatPanelContext'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 import { getInputMediator } from '@/store/InputMediator'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   const { children } = props
@@ -24,7 +26,6 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
   const [immersiveSettings, setImmersiveSettings] = useState(sidebarSettings)
   const sidebarConversationTypeRef = useRef(currentSidebarConversationType)
   sidebarConversationTypeRef.current = currentSidebarConversationType
-
   const immersiveConversationId = useMemo(() => {
     let currentId = currentSidebarConversationId
     switch (currentSidebarConversationType) {
@@ -65,10 +66,14 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
      * 修改conversation id
      * 目前这个方法只有在ConversationList里有调用
      * 根据当前conversationType去修改settings里的记录
-     * @param newId
+     * @param newConversationId
+     * @param conversationType
      */
     const updateConversationId: ChatPanelContextValue['updateConversationId'] =
-      async (newId) => {
+      async (
+        newConversationId,
+        conversationType?: ISidebarConversationType,
+      ) => {
         const map: Record<
           string,
           keyof Exclude<typeof sidebarSettings, undefined>
@@ -78,11 +83,11 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
           Search: 'search',
           Art: 'art',
         }
-        if (map[sidebarConversationTypeRef.current]) {
+        if (map[conversationType || sidebarConversationTypeRef.current]) {
           return setImmersiveSettings((prev) => ({
             ...prev,
             [map[sidebarConversationTypeRef.current]]: {
-              conversationId: newId,
+              conversationId: newConversationId,
             },
           }))
         }
@@ -93,17 +98,17 @@ const SidebarImmersiveProvider: FC<{ children: React.ReactNode }> = (props) => {
      * immersive chat里创建conversation时不能影响到sidebar里
      * 所以这里加入了一个updateSetting的参数
      */
-    const createConversation: ChatPanelContextValue['createConversation'] = (
-      conversationType,
-      AIProvider,
-      AIModel,
-    ) =>
-      createSidebarConversation(
-        conversationType,
-        AIProvider,
-        AIModel,
-        false,
-      ).then((newId) => updateConversationId(newId).then(() => newId))
+    const createConversation: ChatPanelContextValue['createConversation'] =
+      async (conversationType, AIProvider, AIModel) => {
+        const conversationId = await createSidebarConversation(
+          conversationType,
+          AIProvider,
+          AIModel,
+          false,
+        )
+        await updateConversationId(conversationId, conversationType)
+        return conversationId
+      }
 
     /**
      * 清除conversation
@@ -208,12 +213,11 @@ const SidebarAppProvider: FC<{ children: React.ReactNode }> = (props) => {
  * @constructor
  */
 const SidebarContextProvider: FC<{
-  isImmersiveChat?: boolean
   children: React.ReactNode
 }> = (props) => {
-  const { isImmersiveChat, children } = props
-
-  if (isImmersiveChat) {
+  const { children } = props
+  const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
+  if (isImmersiveChatRef.current) {
     return <SidebarImmersiveProvider>{children}</SidebarImmersiveProvider>
   }
 

@@ -569,7 +569,7 @@ export class ActionAskChatGPT extends Action {
               // 触达 用量上限向用户展示提示信息
               await clientConversationEngine.pushPricingHookMessage(sceneType)
               // 记录日志
-              authEmitPricingHooksLog('show', sceneType)
+              authEmitPricingHooksLog('show', sceneType, conversationId)
               // 展示sidebar
               showChatBox()
               // 触发用量上限时 更新 user subscription info

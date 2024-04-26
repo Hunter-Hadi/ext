@@ -17,7 +17,6 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
-import { useInitMixPanel } from '@/features/mixpanel/utils'
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
@@ -124,7 +123,6 @@ const ContextMenuInit = () => {
 }
 
 const AppInit = () => {
-  useInitMixPanel()
   useHideInHost()
   useClientMessageListenerForBackground()
   useAuthLogin()

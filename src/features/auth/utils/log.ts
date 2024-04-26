@@ -15,6 +15,7 @@ import { getPageSummaryType } from '@/features/sidebar/utils/pageSummaryHelper'
  */
 const permissionSceneTypeToLogType = async (
   sceneType: PermissionWrapperCardSceneType,
+  sourceConversationId?: string,
 ): Promise<string> => {
   let name: string = sceneType
 
@@ -100,7 +101,8 @@ const permissionSceneTypeToLogType = async (
     return name
   }
 
-  const currentChatConversationId = sidebarSettings?.chat?.conversationId || ''
+  const currentChatConversationId =
+    sourceConversationId || sidebarSettings?.chat?.conversationId || ''
   let chatModel = SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Chat.AIModel
   if (currentChatConversationId) {
     const currentChatConversation = await clientGetConversation(
@@ -180,10 +182,14 @@ export const authEmitPricingHooksLog = debounce(
   async (
     action: 'show' | 'click',
     sceneType: PermissionWrapperCardSceneType,
+    conversationId?: string,
   ) => {
     try {
-      const logType = await permissionSceneTypeToLogType(sceneType)
-      const type = action === 'show' ? 'paywall_show' : 'paywall_clicked'
+      const logType = await permissionSceneTypeToLogType(
+        sceneType,
+        conversationId,
+      )
+      const type = action === 'show' ? 'paywall_showed' : 'paywall_clicked'
       mixpanelTrack(type, {
         logType,
         sceneType,

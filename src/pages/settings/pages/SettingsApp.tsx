@@ -5,6 +5,7 @@ import React, { type FC, lazy, useEffect, useRef, useState } from 'react'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import { useInitMixPanel } from '@/features/mixpanel/utils'
 import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import PageHelp from '@/pages/settings/components/pageHelp'
@@ -120,6 +121,7 @@ const SettingsApp: FC = () => {
     }
   }, [route, isLogin])
   useClientMessageListenerForBackground()
+  useInitMixPanel()
   return (
     <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
       <Stack height={'100vh'}>

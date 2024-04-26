@@ -16,6 +16,7 @@ import {
 import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
 import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/client'
@@ -30,6 +31,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
   message,
 }) => {
   const { t } = useTranslation()
+  const { currentConversationIdRef } = useClientConversation()
   const { currentUserPlan, userInfo, isPayingUser } = useUserInfo()
   const permissionCard = usePermissionCard(permissionSceneType)
 
@@ -57,7 +59,11 @@ const PermissionPricingHookCard: FC<IProps> = ({
   }, [permissionCard?.ctaButtonLink])
 
   const ctaButtonClick = (e: React.MouseEvent) => {
-    authEmitPricingHooksLog('click', permissionSceneType)
+    authEmitPricingHooksLog(
+      'click',
+      permissionSceneType,
+      currentConversationIdRef.current,
+    )
 
     permissionCard?.ctaButtonOnClick && permissionCard?.ctaButtonOnClick(e)
   }

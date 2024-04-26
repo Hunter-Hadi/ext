@@ -20,7 +20,7 @@ const initMixPanel = () => {
   }
   mixpanel.init(MIXPANEL_PROJECT_ID, {
     debug: isProduction ? false : true,
-    track_pageview: true,
+    track_pageview: false,
     persistence: 'localStorage',
   })
 }

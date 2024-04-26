@@ -4,6 +4,7 @@ import React, { FC, useEffect, useRef } from 'react'
 import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { useInitMixPanel } from '@/features/mixpanel/utils'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
@@ -55,6 +56,7 @@ const ImmersiveChatPageSidebarInit: FC = () => {
   return <></>
 }
 const SidebarPageInit: FC = () => {
+  useInitMixPanel()
   useInitWebPageMessageChannel()
   return <></>
 }

@@ -187,7 +187,6 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       question,
       webAccessPrompt,
     )
-
     if (cacheData) {
       setStatus('success')
       updateConversation({

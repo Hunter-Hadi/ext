@@ -29,7 +29,18 @@ const messengerGetMessageContent = (messageContentBox: HTMLElement | null) => {
       if (node.nodeType === Node.TEXT_NODE) {
         messageContent += node.textContent
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        messageContent += messengerGetEmoji(node as HTMLElement)
+        if (
+          (node as HTMLElement).tagName === 'IMG' ||
+          (node as HTMLElement).querySelector('img')
+        ) {
+          messageContent += messengerGetEmoji(node as HTMLElement)
+        } else if ((node as HTMLElement).tagName === 'B') {
+          messageContent += `*${node.textContent}*`
+        } else if ((node as HTMLElement).tagName === 'I') {
+          messageContent += `_${node.textContent}_`
+        } else if ((node as HTMLElement).tagName === 'S') {
+          messageContent += `~${node.textContent}~`
+        }
       }
     })
   }
@@ -238,6 +249,7 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
     if (chatTextArea) {
       if (quotedMention) {
+        debugger
         // eslint-disable-next-line prefer-const
         let [quotedMessageUserBox, quotedMessageContentBox] = Array.from(
           quotedMention.querySelectorAll<HTMLElement>('span[dir]'),

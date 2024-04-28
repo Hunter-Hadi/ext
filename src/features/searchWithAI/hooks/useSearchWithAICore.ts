@@ -202,7 +202,11 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       setIsUseCache(false)
     }
     console.log(currentUserPlan)
-    if (!isPayingUser && (await getFreeUserIsHighTrafficPrompt())) {
+    if (
+      !isPayingUser &&
+      searchWithAISettings.aiProvider === 'MAXAI_FREE' &&
+      (await getFreeUserIsHighTrafficPrompt())
+    ) {
       setStatus('error')
       mixpanelTrack('paywall_showed', {
         logType: `SEARCH_WITH_AI_HIGH_TRAFFIC(Free)`,

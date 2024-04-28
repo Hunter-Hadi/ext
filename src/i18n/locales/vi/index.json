@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Xóa lịch sử menu ngữ cảnh của bạn - bạn có chắc chắn không?",
     "context_window__chat_history__button__title": "Lịch sử menu ngữ cảnh",
     "context_window__chat_history__empty__title": "Chưa có lịch sử menu ngữ cảnh nào",
-    "context_window__chat_history__continue_in_chat__title": "Tiếp tục trong cuộc trò chuyện"
+    "context_window__chat_history__continue_in_chat__title": "Tiếp tục trong cuộc trò chuyện",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nâng cấp để tìm kiếm với Trí tuệ Nhân tạo",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Do lưu lượng truy cập cao, vui lòng thử lại sau hoặc nâng cấp ngay để truy cập ổn định vào tất cả các mô hình Trí tuệ Nhân tạo cao cấp."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

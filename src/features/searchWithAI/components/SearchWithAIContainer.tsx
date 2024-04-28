@@ -5,6 +5,7 @@ import { FC } from 'react'
 import React from 'react'
 
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 import { useInitI18n } from '@/i18n/hooks'
 
@@ -29,8 +30,9 @@ const SearchWithAIContainer: FC<IProps> = ({
     colorSchema: isDarkMode ? 'dark' : 'light',
     shadowRootElement: rootElement,
   })
+  const { loading } = useUserInfo()
 
-  console.log(`SearchWithAIContainer rootElement`, rootElement)
+  console.log(`SearchWithAIContainer rootElement`, rootElement, loading)
 
   useInitUserInfo()
   useInitI18n()
@@ -43,11 +45,13 @@ const SearchWithAIContainer: FC<IProps> = ({
 
   return (
     <ThemeProvider theme={customTheme}>
-      <AISearchContentCard
-        question={question}
-        isDarkMode={isDarkMode}
-        siteName={siteName}
-      />
+      {!loading && (
+        <AISearchContentCard
+          question={question}
+          isDarkMode={isDarkMode}
+          siteName={siteName}
+        />
+      )}
     </ThemeProvider>
   )
 }

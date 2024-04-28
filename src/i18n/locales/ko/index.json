@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "컨텍스트 메뉴 기록 모두 지우기 - 확실합니까?",
     "context_window__chat_history__button__title": "컨텍스트 메뉴 기록",
     "context_window__chat_history__empty__title": "아직 사용 가능한 컨텍스트 메뉴 기록이 없습니다",
-    "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기"
+    "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI로 검색 업그레이드",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "고트래픽으로 인해 나중에 다시 시도하거나 지금 업그레이드하여 모든 프리미엄 AI 모델에 안정적인 액세스를 즐기세요."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

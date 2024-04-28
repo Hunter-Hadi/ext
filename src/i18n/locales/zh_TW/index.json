@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "清除您的上下文選單歷史記錄 - 您確定嗎？",
     "context_window__chat_history__button__title": "上下文選單歷史記錄",
     "context_window__chat_history__empty__title": "目前尚無上下文選單歷史記錄",
-    "context_window__chat_history__continue_in_chat__title": "繼續聊天"
+    "context_window__chat_history__continue_in_chat__title": "繼續聊天",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "升級至使用 AI 搜尋",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "由於流量過大，請稍後再試，或立即升級以享受穩定訪問所有高級 AI 模型的權限。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

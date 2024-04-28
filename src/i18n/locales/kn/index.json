@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "ನಿಮ್ಮ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವನ್ನು ತೆಗೆದುಹಾಕಿ - ಖಚಿತವಾಗಿ?",
     "context_window__chat_history__button__title": "ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸ",
     "context_window__chat_history__empty__title": "ಇನ್ನೂ ಯಾವ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವೂ ಲಭ್ಯವಿಲ್ಲ",
-    "context_window__chat_history__continue_in_chat__title": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ"
+    "context_window__chat_history__continue_in_chat__title": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ಜೊತೆ ಹುಡುಕಾಟವನ್ನು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ಹೆಚ್ಚು ಟ್ರಾಫಿಕ್ ಕಾರಣದಿಂದ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಪ್ರೀಮಿಯಂ AI ಮಾದರಿಗಳಿಗೆ ಸ್ಥಿರ ಪ್ರವೇಶವನ್ನು ಆನಂದಿಸಲು ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Burahin ang kasaysayan ng iyong mga menu ng konteksto - sigurado ka ba?",
     "context_window__chat_history__button__title": "Kasaysayan ng menu ng konteksto",
     "context_window__chat_history__empty__title": "Walang available na kasaysayan ng menu ng konteksto pa",
-    "context_window__chat_history__continue_in_chat__title": "Magpatuloy sa chat"
+    "context_window__chat_history__continue_in_chat__title": "Magpatuloy sa chat",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Mag-upgrade para sa paghahanap gamit ang AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang masiyahan sa matatag na access sa lahat ng premium na AI models."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

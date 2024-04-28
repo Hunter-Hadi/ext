@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "ล้างประวัติเมนูบริบทของคุณ - แน่ใจหรือไม่?",
     "context_window__chat_history__button__title": "ประวัติเมนูบริบท",
     "context_window__chat_history__empty__title": "ยังไม่มีประวัติเมนูบริบทที่ใช้ได้",
-    "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท"
+    "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "อัปเกรดเพื่อค้นหาด้วย AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "เนื่องจากมีการรับส่งข้อมูลที่สูง โปรดลองอีกครั้งในภายหลัง หรืออัปเกรดเดี๋ยวนี้เพื่อเพลิดเพลินกับการเข้าถึงแบบเสถียรไปยังโมเดล AI พรีเมียมทั้งหมด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Wis je geschiedenis van contextmenu's - weet je het zeker?",
     "context_window__chat_history__button__title": "Geschiedenis van contextmenu",
     "context_window__chat_history__empty__title": "Nog geen geschiedenis van contextmenu beschikbaar",
-    "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat"
+    "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade naar zoeken met AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vanwege hoge verkeersdrukte, probeer het later opnieuw of upgrade nu om stabiele toegang tot alle premium AI-modellen te krijgen."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

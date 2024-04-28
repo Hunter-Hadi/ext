@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Počisti zgodovino menijev - ste prepričani?",
     "context_window__chat_history__button__title": "Zgodovina menijev",
     "context_window__chat_history__empty__title": "Zaenkrat ni na voljo nobene zgodovine menijev",
-    "context_window__chat_history__continue_in_chat__title": "Nadaljuj v klepet"
+    "context_window__chat_history__continue_in_chat__title": "Nadaljuj v klepet",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nadgradite na iskanje z AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zaradi visokega prometa poskusite znova kasneje ali nadgradite zdaj, da uživate v stabilnem dostopu do vseh premium modelov AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

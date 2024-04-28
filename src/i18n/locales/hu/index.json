@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Törölje a kontextusmenü előzményeit - biztos benne?",
     "context_window__chat_history__button__title": "Kontextusmenü előzmények",
     "context_window__chat_history__empty__title": "Még nincs elérhető kontextusmenü előzmény",
-    "context_window__chat_history__continue_in_chat__title": "Folytatás a csevegésben"
+    "context_window__chat_history__continue_in_chat__title": "Folytatás a csevegésben",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Frissítés az AI-vel történő kereséshez",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Magas forgalom miatt kérjük, próbálkozzon később, vagy frissítse most a stabil hozzáférést az összes prémium AI modellhez."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

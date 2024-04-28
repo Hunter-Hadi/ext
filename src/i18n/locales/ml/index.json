@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "നിങ്ങളുടെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം മായ്‌ക്കാന്‍ - ഉറപ്പാണോ?",
     "context_window__chat_history__button__title": "കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം",
     "context_window__chat_history__empty__title": "ഇതുവരെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം ലഭ്യമല്ല",
-    "context_window__chat_history__continue_in_chat__title": "ചാറ്റില്‍ തുടരുക"
+    "context_window__chat_history__continue_in_chat__title": "ചാറ്റില്‍ തുടരുക",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "എയ്ഡ് ഇന്റെലിജൻസ് ഉപയോഗിച്ച് തിരയൽ അപ്ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ഉയരമായ ട്രാഫിക്കിനാൽ, ദയവായി ശേഷം വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ പ്രീമിയം AI മോഡലുകൾക്ക് സ്ഥിരമായ ആക്സസ് ആനന്ദിക്കുകയായി ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

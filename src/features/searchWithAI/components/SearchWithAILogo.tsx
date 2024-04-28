@@ -1,14 +1,20 @@
+import Link from '@mui/material/Link'
 import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import SvgIcon from '@mui/material/SvgIcon'
 import Typography from '@mui/material/Typography'
 import React, { FC } from 'react'
 
+import { APP_USE_CHAT_GPT_HOST } from '@/constants'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
+
 import { SEARCH_WITH_AI_APP_NAME, SEARCH_WITH_AI_LOGO_ID } from '../constants'
 
-const SearchWithAILogo = () => {
+const SearchWithAILogo: FC = () => {
+  const { isPayingUser } = useUserInfo()
+
   const nameMap = {
-    maxai: 'Search with MaxAI',
+    maxai: isPayingUser ? 'Search with MaxAI' : 'MaxAI',
     webchatgpt: 'WebChatGPT',
   }
 
@@ -33,6 +39,39 @@ const SearchWithAILogo = () => {
       >
         {nameMap[SEARCH_WITH_AI_APP_NAME]}
       </Typography>
+      {!isPayingUser && (
+        <Link
+          href={`${APP_USE_CHAT_GPT_HOST}/pricing`}
+          target={'_blank'}
+          underline={'none'}
+        >
+          <Stack
+            direction={'row'}
+            alignItems={'center'}
+            component={'div'}
+            sx={{
+              borderRadius: '4px',
+              bgcolor: (t) =>
+                t.palette.mode === 'dark'
+                  ? 'rgba(178, 115, 255, 0.16)'
+                  : 'rgba(118, 1, 211, 0.08)',
+              fontSize: '12px',
+              fontWeight: 700,
+              py: '2px',
+              px: '4px',
+              color: 'text.primary',
+              '&:hover': {
+                bgcolor: (t) =>
+                  t.palette.mode === 'dark'
+                    ? 'rgba(178, 115, 255, 0.24)'
+                    : 'rgba(118, 1, 211, 0.12)',
+              },
+            }}
+          >
+            <span>{'Upgrade'}</span>
+          </Stack>
+        </Link>
+      )}
     </Stack>
   )
 }
@@ -83,7 +122,6 @@ const LogoIcon: FC<{ sx?: SxProps }> = (props) => {
               />
               <mask
                 id="mask0_5391_39565"
-                mask-type="alpha"
                 maskUnits="userSpaceOnUse"
                 x="1"
                 y="2"
@@ -159,7 +197,6 @@ const LogoIcon: FC<{ sx?: SxProps }> = (props) => {
               </g>
               <mask
                 id="mask1_5391_39565"
-                mask-type="alpha"
                 maskUnits="userSpaceOnUse"
                 x="0"
                 y="1"

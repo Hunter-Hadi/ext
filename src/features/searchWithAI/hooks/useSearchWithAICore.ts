@@ -3,13 +3,16 @@ import random from 'lodash-es/random'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
+import Browser from 'webextension-polyfill'
 
 import {
   DEFAULT_AI_OUTPUT_LANGUAGE_ID,
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 import {
   ISearchWithAIProviderType,
   SEARCH_WITH_AI_APP_NAME,
@@ -53,7 +56,66 @@ const PROVIDER_TIMEOUT_DURATION: Record<ISearchWithAIProviderType, number> = {
   BARD: 20000,
 }
 
+// 显示Free用户每隔n次调用Search with AI时，提示m次高流量
+const FREE_USER_HIGH_TRAFFIC_SAVE_KEY = 'FREE_USER_HIGH_TRAFFIC_PROMPT'
+const FREE_USER_HIGH_TRAFFIC_PROMPT_INTERVAL = [2, 3, 4]
+const FREE_USER_HIGH_TRAFFIC_PROMPT_TIMES = [1, 2]
+/**
+ * 重置Free用户高流量提示
+ */
+const resetFreeUserHighTrafficPrompt = async () => {
+  const interval =
+    FREE_USER_HIGH_TRAFFIC_PROMPT_INTERVAL[
+      random(0, FREE_USER_HIGH_TRAFFIC_PROMPT_INTERVAL.length - 1)
+    ]
+  const times =
+    FREE_USER_HIGH_TRAFFIC_PROMPT_TIMES[
+      random(0, FREE_USER_HIGH_TRAFFIC_PROMPT_TIMES.length - 1)
+    ]
+  await Browser.storage.local.set({
+    [FREE_USER_HIGH_TRAFFIC_SAVE_KEY]: {
+      interval,
+      times,
+    },
+  })
+}
+/**
+ * 获取Free用户是否需要提示高流量
+ */
+const getFreeUserIsHighTrafficPrompt = async () => {
+  const data = await Browser.storage.local.get(FREE_USER_HIGH_TRAFFIC_SAVE_KEY)
+  if (!data[FREE_USER_HIGH_TRAFFIC_SAVE_KEY]) {
+    await resetFreeUserHighTrafficPrompt()
+    return false
+  }
+  const { interval, times } = data[FREE_USER_HIGH_TRAFFIC_SAVE_KEY]
+  // 如果interval为0，则代表进入下一个周期
+  if (interval === 0) {
+    await resetFreeUserHighTrafficPrompt()
+    // 如果times为0，则代表不需要提示高流量,返回false
+    return times > 0
+  } else {
+    // 此时interval不为0，说明这个周期还没结束
+    if (times > 0) {
+      // 如果times大于0，说明还需要提示高流量
+      const isHighTraffic = Math.random() > 0.5
+      await Browser.storage.local.set({
+        [FREE_USER_HIGH_TRAFFIC_SAVE_KEY]: {
+          interval: interval - 1,
+          times: isHighTraffic ? times - 1 : times,
+        },
+      })
+      return isHighTraffic
+    } else {
+      // 如果times为0，说明不需要提示高流量
+      return false
+    }
+  }
+}
+
 const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
+  const { isPayingUser, currentUserPlan } = useUserInfo()
+
   const [status, setStatus] = useState<IAIForSearchStatus>('idle')
   const loadingRef = useRef(false)
 
@@ -132,6 +194,21 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
     } else {
       setIsUseCache(false)
     }
+    console.log(currentUserPlan)
+    if (!isPayingUser && (await getFreeUserIsHighTrafficPrompt())) {
+      setStatus('error')
+      mixpanelTrack('paywall_showed', {
+        logType: `SEARCH_WITH_AI_HIGH_TRAFFIC(Free)`,
+        sceneType: 'SEARCH_WITH_AI_HIGH_TRAFFIC',
+      })
+      updateConversation({
+        loading: false,
+        errorMessage: 'SEARCH_WITH_AI_HIGH_TRAFFIC',
+        writingMessage: '',
+      })
+      return
+    }
+
     // 0.确认语言
     let userSelectedLanguage =
       (await clientGetLiteChromeExtensionDBStorage()).userSettings?.language ||

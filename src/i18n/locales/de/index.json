@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Löschen Sie Ihren Verlauf der Kontextmenüs - Sind Sie sicher?",
     "context_window__chat_history__button__title": "Kontextmenü-Verlauf",
     "context_window__chat_history__empty__title": "Kein Kontextmenü-Verlauf verfügbar",
-    "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen"
+    "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade auf die Suche mit KI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

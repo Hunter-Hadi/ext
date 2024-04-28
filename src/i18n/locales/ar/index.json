@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "مسح سجل قوائم السياق الخاص بك - هل أنت متأكد؟",
     "context_window__chat_history__button__title": "سجل قوائم السياق",
     "context_window__chat_history__empty__title": "لا توجد سجلات لقوائم السياق حتى الآن",
-    "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة"
+    "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ترقية للبحث بالذكاء الاصطناعي",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول مستقر إلى جميع نماذج الذكاء الاصطناعي المتميزة."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

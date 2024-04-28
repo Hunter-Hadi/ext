@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "अपने संदर्भ मेनू इतिहास को साफ़ करें - क्या आपको यकीन है?",
     "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",
     "context_window__chat_history__empty__title": "अभी तक कोई संदर्भ मेनू इतिहास उपलब्ध नहीं है",
-    "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें"
+    "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI के साथ खोज करें में अपग्रेड करें",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रैफिक के कारण, कृपया बाद में पुनः प्रयास करें, या सभी प्रीमियम AI मॉडलों का स्थिर पहुँच का आनंद लेने के लिए अभी अपग्रेड करें।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

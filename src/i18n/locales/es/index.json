@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Borrar el historial de tus menús contextuales, ¿estás seguro?",
     "context_window__chat_history__button__title": "Historial de menús contextuales",
     "context_window__chat_history__empty__title": "Aún no hay historial de menús contextuales disponible",
-    "context_window__chat_history__continue_in_chat__title": "Continuar en el chat"
+    "context_window__chat_history__continue_in_chat__title": "Continuar en el chat",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Actualiza para buscar con IA",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Debido al alto tráfico, por favor intenta de nuevo más tarde, o actualiza ahora para disfrutar de acceso estable a todos los modelos de IA premium."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

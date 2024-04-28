@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Vymazať históriu kontextových menu - ste si istý?",
     "context_window__chat_history__button__title": "História kontextových menu",
     "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
-    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate"
+    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Vylepšite vyhľadávanie s umelou inteligenciou",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vzhľadom na vysokú premávku, skúste to prosím neskôr alebo teraz aktualizujte, aby ste mali stabilný prístup ku všetkým prémiovým modelom AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

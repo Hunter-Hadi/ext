@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "コンテキストメニューの履歴をクリアしますか？",
     "context_window__chat_history__button__title": "コンテキストメニューの履歴",
     "context_window__chat_history__empty__title": "まだ利用可能なコンテキストメニューの履歴はありません",
-    "context_window__chat_history__continue_in_chat__title": "チャットで続ける"
+    "context_window__chat_history__continue_in_chat__title": "チャットで続ける",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AIで検索するにはアップグレードしてください",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "高いトラフィックのため、後でもう一度お試しください。または今すぐアップグレードして、すべてのプレミアムAIモデルへの安定したアクセスをお楽しみください。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Rensa din historik för kontextmenyer - är du säker?",
     "context_window__chat_history__button__title": "Historik för kontextmenyer",
     "context_window__chat_history__empty__title": "Ingen tillgänglig historik för kontextmenyer ännu",
-    "context_window__chat_history__continue_in_chat__title": "Fortsätt i chatt"
+    "context_window__chat_history__continue_in_chat__title": "Fortsätt i chatt",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Uppgradera till sökning med AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund av hög trafik, försök igen senare eller uppgradera nu för att få stabil åtkomst till alla premium AI-modeller."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

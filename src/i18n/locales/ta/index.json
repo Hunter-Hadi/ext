@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "உங்கள் சூழல் மெனுகள் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
     "context_window__chat_history__button__title": "சூழல் மெனு வரலாறு",
     "context_window__chat_history__empty__title": "இன்னும் சூழல் மெனு வரலாறு இல்லை",
-    "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க"
+    "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ஐயுடன் தேடுக",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "அதிக வண்டி மாற்றம் காரணமாக, பின்னர் மீண்டும் முயற்சிக்கவும் அல்லது அனைத்து பிரீமியம் ஐயில் மாதிரி அணுகல்களுக்கு நிலையான அணுகலை ஆரம்பிக்க இப்போது மேம்படுத்தவும்."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

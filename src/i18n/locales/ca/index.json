@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Esborra l'historial dels teus menús de context - n'estàs segur?",
     "context_window__chat_history__button__title": "Historial del menú de context",
     "context_window__chat_history__empty__title": "Encara no hi ha cap historial de menú de context disponible",
-    "context_window__chat_history__continue_in_chat__title": "Continua al xat"
+    "context_window__chat_history__continue_in_chat__title": "Continua al xat",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Millora a la cerca amb IA",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torneu-ho a provar més tard o millora ara per gaudir d'un accés estable a tots els models d'IA premium."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

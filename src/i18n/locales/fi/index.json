@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Tyhjennä kontekstivalikoiden historia - oletko varma?",
     "context_window__chat_history__button__title": "Kontekstivalikon historia",
     "context_window__chat_history__empty__title": "Ei vielä saatavilla olevaa kontekstivalikon historiaa",
-    "context_window__chat_history__continue_in_chat__title": "Jatka keskustelua"
+    "context_window__chat_history__continue_in_chat__title": "Jatka keskustelua",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Päivitä haku tekoälyllä",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Korkean liikenteen vuoksi yritä myöhemmin uudelleen tai päivitä nyt, jotta voit käyttää kaikkia premium-tason tekoälymalleja vakaiden yhteyksien avulla."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Wyczyść historię twoich menu kontekstowych - na pewno?",
     "context_window__chat_history__button__title": "Historia menu kontekstowego",
     "context_window__chat_history__empty__title": "Brak dostępnej historii menu kontekstowego",
-    "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie"
+    "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Uaktualnij do wyszukiwania z AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Ze względu na duży ruch, spróbuj ponownie później lub teraz uaktualnij, aby korzystać ze stabilnego dostępu do wszystkich premium modeli AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

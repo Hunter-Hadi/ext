@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Изчистете историята на вашите контекстни менюта - сигурни ли сте?",
     "context_window__chat_history__button__title": "История на контекстните менюта",
     "context_window__chat_history__empty__title": "Все още няма налична история на контекстните менюта",
-    "context_window__chat_history__continue_in_chat__title": "Продължи в чата"
+    "context_window__chat_history__continue_in_chat__title": "Продължи в чата",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Надстройка за търсене с изкуствен интелект",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Поради голямото количество трафик, моля опитайте отново по-късно или надстройте сега, за да се насладите на стабилен достъп до всички премиум модели на изкуствения интелект."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",

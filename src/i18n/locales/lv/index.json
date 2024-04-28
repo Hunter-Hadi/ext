@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Notīrīt jūsu konteksta izvēlnes vēsturi - vai esat pārliecināts?",
     "context_window__chat_history__button__title": "Konteksta izvēlnes vēsture",
     "context_window__chat_history__empty__title": "Vēl nav pieejama konteksta izvēlnes vēsture",
-    "context_window__chat_history__continue_in_chat__title": "Turpināt čatā"
+    "context_window__chat_history__continue_in_chat__title": "Turpināt čatā",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Jauniniet, lai meklētu ar AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Lielā satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

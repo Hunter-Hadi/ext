@@ -747,7 +747,9 @@
     "immersive_chat__delete_all_context_menu__title": "Մաքրեք ձեր համերգային ընտրանքների պատմությունը - վստահ եք?",
     "context_window__chat_history__button__title": "Համերգային ընտրանքների պատմություն",
     "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
-    "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ"
+    "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Խառնեք AI-ով որոնումը",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Համակարգիչի բարձր բեռնատարության պատճառով, խնդրում ենք փորձել նորից հետո, կամ բարձրացնել հիմա ՝ որոնումը անմիջապես հասանելի դառնալու համար բոլոր պրեմիում AI մոդելներին։"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

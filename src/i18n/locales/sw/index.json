@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Ondoa historia yako ya menyu za muktadha - una uhakika?",
     "context_window__chat_history__button__title": "Historia ya menyu ya muktadha",
     "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
-    "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo"
+    "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Sasisha ili kutafuta na AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au sasisha sasa ili kufurahia upatikanaji thabiti wa mifano yote ya AI ya hali ya juu."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

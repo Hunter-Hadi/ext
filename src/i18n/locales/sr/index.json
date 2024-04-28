@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Obriši istoriju tvojih kontekstualnih menija - da li si siguran?",
     "context_window__chat_history__button__title": "Istorija kontekstualnih menija",
     "context_window__chat_history__empty__title": "Još uvek nema dostupne istorije kontekstualnih menija",
-    "context_window__chat_history__continue_in_chat__title": "Nastavi u četu"
+    "context_window__chat_history__continue_in_chat__title": "Nastavi u četu",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nadogradite na pretragu sa veštačkom inteligencijom",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog broja korisnika, molimo pokušajte ponovo kasnije ili nadogradite sada kako biste uživali u stabilnom pristupu svim premium AI modelima."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

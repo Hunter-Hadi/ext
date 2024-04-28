@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "የሚገባበት ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት - እርግጠኛ ነህ?",
     "context_window__chat_history__button__title": "የመግቢያ ማናቸውንም ስርጭት",
     "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
-    "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል"
+    "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "የማስፈለገያ እይታ ወደ AI ይዘት ይጠቀሙ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማስተላለፍ የተለያዩ አገልግሎቶችን የሚያስተላልፉ ለመሆኑ፣ እባክዎ ሌሎች የፕሮሞች AI ሞዴሎችን ይጠቀሙ ወደዚህ ይግዛቸው።"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "پاک کردن تاریخچه منوهای متنی شما - آیا مطمئن هستید؟",
     "context_window__chat_history__button__title": "تاریخچه منوی متنی",
     "context_window__chat_history__empty__title": "هنوز تاریخچه منوی متنی موجود نیست",
-    "context_window__chat_history__continue_in_chat__title": "ادامه در چت"
+    "context_window__chat_history__continue_in_chat__title": "ادامه در چت",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ارتقا به جستجو با هوش مصنوعی",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "به دلیل ترافیک بالا، لطفاً بعداً دوباره امتحان کنید یا همین الان ارتقا دهید تا به دسترسی پایدار به تمام مدل‌های پریمیوم هوش مصنوعی بپردازید."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

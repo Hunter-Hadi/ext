@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "আপনার সংদর্শন মেনু ইতিহাস সাফ করুন - আপনি কি নিশ্চিত?",
     "context_window__chat_history__button__title": "সংদর্শন মেনু ইতিহাস",
     "context_window__chat_history__empty__title": "এখনও কোন সংদর্শন মেনু ইতিহাস উপলব্ধ নেই",
-    "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন"
+    "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "এইচ ট্রাফিকের সাথে এইআই দিয়ে অনুসন্ধান আপগ্রেড করুন",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "উচ্চ ট্রাফিকের কারণে, অনুগ্রহ করে পরে আবার চেষ্টা করুন বা সমস্ত প্রিমিয়াম এআই মডেলের স্থিতিশীল অ্যাক্সেস উপভোগ করতে এখনই আপগ্রেড করুন।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

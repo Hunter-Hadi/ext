@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Очистить историю ваших контекстных меню - вы уверены?",
     "context_window__chat_history__button__title": "История контекстного меню",
     "context_window__chat_history__empty__title": "Пока нет доступной истории контекстного меню",
-    "context_window__chat_history__continue_in_chat__title": "Продолжить в чате"
+    "context_window__chat_history__continue_in_chat__title": "Продолжить в чате",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Обновите для поиска с ИИ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Из-за высокой нагрузки, попробуйте еще раз позже или обновите сейчас, чтобы насладиться стабильным доступом ко всем премиум моделям ИИ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

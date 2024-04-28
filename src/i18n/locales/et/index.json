@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Kustuta oma kontekstimenüüde ajalugu - oled sa kindel?",
     "context_window__chat_history__button__title": "Kontekstimenüü ajalugu",
     "context_window__chat_history__empty__title": "Kontekstimenüü ajalugu pole veel saadaval",
-    "context_window__chat_history__continue_in_chat__title": "Jätka vestlust"
+    "context_window__chat_history__continue_in_chat__title": "Jätka vestlust",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Tõsta otsing AI-ga tasemele",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Suure liikluse tõttu palun proovige hiljem uuesti või uuendage kohe, et nautida stabiilset juurdepääsu kõigile esmaklassilistele AI mudelitele."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

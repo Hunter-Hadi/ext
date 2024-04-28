@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Ștergeți istoricul meniurilor contextuale - sunteți sigur?",
     "context_window__chat_history__button__title": "Istoric meniu contextual",
     "context_window__chat_history__empty__title": "Nu există încă istoric al meniului contextual",
-    "context_window__chat_history__continue_in_chat__title": "Continuați în chat"
+    "context_window__chat_history__continue_in_chat__title": "Continuați în chat",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgradează pentru căutare cu AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Datorită traficului intens, vă rugăm să încercați din nou mai târziu sau faceți upgrade acum pentru a avea acces stabil la toate modelele premium de AI."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

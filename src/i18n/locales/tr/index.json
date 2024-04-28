@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Bağlamlı menü geçmişinizi temizleyin - emin misiniz?",
     "context_window__chat_history__button__title": "Bağlamlı menü geçmişi",
     "context_window__chat_history__empty__title": "Henüz kullanılabilir bir bağlamlı menü geçmişi yok",
-    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et"
+    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ile arama yapmaya yükseltin",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Yoğun trafiğe bağlı olarak, lütfen daha sonra tekrar deneyin veya şimdi yükselterek tüm premium AI modellerine istikrarlı erişimin keyfini çıkarın."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

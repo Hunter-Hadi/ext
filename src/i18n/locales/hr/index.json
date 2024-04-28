@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Obriši povijest svojih izbornika konteksta - jesi li siguran?",
     "context_window__chat_history__button__title": "Povijest izbornika konteksta",
     "context_window__chat_history__empty__title": "Još nema dostupne povijesti izbornika konteksta",
-    "context_window__chat_history__continue_in_chat__title": "Nastavi u chatu"
+    "context_window__chat_history__continue_in_chat__title": "Nastavi u chatu",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nadogradite na pretragu s AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog prometa, molimo pokušajte ponovno kasnije ili nadogradite sada kako biste uživali u stabilnom pristupu svim premium AI modelima."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

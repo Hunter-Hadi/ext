@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Bersihkan riwayat menu konteks Anda - apakah Anda yakin?",
     "context_window__chat_history__button__title": "Riwayat menu konteks",
     "context_window__chat_history__empty__title": "Belum ada riwayat menu konteks yang tersedia",
-    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat"
+    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Tingkatkan ke pencarian dengan AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Karena lalu lintas yang tinggi, silakan coba lagi nanti, atau tingkatkan sekarang untuk menikmati akses stabil ke semua model AI premium."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

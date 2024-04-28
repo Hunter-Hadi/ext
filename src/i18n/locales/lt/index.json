@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Išvalyti kontekstinių meniu istoriją - ar tikrai?",
     "context_window__chat_history__button__title": "Kontekstinio meniu istorija",
     "context_window__chat_history__empty__title": "Dar nėra prieinama kontekstinio meniu istorija",
-    "context_window__chat_history__continue_in_chat__title": "Tęsti pokalbį"
+    "context_window__chat_history__continue_in_chat__title": "Tęsti pokalbį",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naujinti paiešką su dirbtine intelektu",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium dirbtinio intelekto modeliais."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -750,7 +750,9 @@
     "immersive_chat__delete_all_context_menu__title": "Очистити історію вашого контекстного меню - ви впевнені?",
     "context_window__chat_history__button__title": "Історія контекстного меню",
     "context_window__chat_history__empty__title": "Ще немає доступної історії контекстного меню",
-    "context_window__chat_history__continue_in_chat__title": "Продовжити у чаті"
+    "context_window__chat_history__continue_in_chat__title": "Продовжити у чаті",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Оновіть для пошуку з штучним інтелектом",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Через великий трафік, спробуйте ще раз пізніше або оновіться зараз, щоб насолоджуватися стабільним доступом до всіх преміум моделей ШІ."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

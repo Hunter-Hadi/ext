@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Fájl feltöltése JPEG, PNG, WEBP formátumban",
     "provider__bard_web_app__model__what_it_can_do__description": "Következtetés, többnyelvű fordítás, kódolás és még sok más.",
     "provider__claude_web_app__title": "Claude web alkalmazás",
-    "provider__claude_web_app__short_description": "100K kontextusablak. Csevegés több dokumentummal.",
+    "provider__claude_web_app__short_description": "200K kontextusablak. Csevegés több dokumentummal.",
     "provider__claude_web_app__auth_description": "Használd a saját Claude fiókodat az bővítmény működtetéséhez.",
     "provider__claude_web_app__auth_button_text": "Bejelentkezés a Claude web alkalmazásba",
     "provider__claude_web_app__upload__accept_tooltip": "Fájlok hozzáadása (legfeljebb 5, 10 MB mindegyik). Elfogadott formátumok: pdf, txt, csv stb.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Törölje a kontextusmenü előzményeit - biztos benne?",
     "context_window__chat_history__button__title": "Kontextusmenü előzmények",
     "context_window__chat_history__empty__title": "Még nincs elérhető kontextusmenü előzmény",
-    "context_window__chat_history__continue_in_chat__title": "Folytatás a csevegésben"
+    "context_window__chat_history__continue_in_chat__title": "Folytatás a csevegésben",
+    "provider__claude_web_app__model__claude_3_200k__description": "Kiváló teljesítmény olyan feladatok esetén, amelyek bonyolult gondolkodást igényelnek. Claude 3 az Anthropic legjobb ajánlata."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

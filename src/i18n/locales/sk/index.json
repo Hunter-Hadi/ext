@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Nahrajte súbor JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Rozumovanie, viacjazyčný preklad, programovanie a ďalšie.",
     "provider__claude_web_app__title": "Aplikácia Claude",
-    "provider__claude_web_app__short_description": "100K kontextové okno. Chatujte s viacerými dokumentmi.",
+    "provider__claude_web_app__short_description": "200K kontextové okno. Chatujte s viacerými dokumentmi.",
     "provider__claude_web_app__auth_description": "Použite svoj vlastný účet Claude na napájanie rozšírenia.",
     "provider__claude_web_app__auth_button_text": "Prihlásiť sa do aplikácie Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Pridať súbory (max. 5, každý do 10 MB). Súborový formát: pdf, txt, csv atď.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Vymazať históriu kontextových menu - ste si istý?",
     "context_window__chat_history__button__title": "História kontextových menu",
     "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
-    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate"
+    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate",
+    "provider__claude_web_app__model__claude_3_200k__description": "Vynikajúce výkony pri úlohách, ktoré vyžadujú zložité uvažovanie. Claude 3 je najlepšia ponuka od Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

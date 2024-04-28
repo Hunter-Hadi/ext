@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "העלה קובץ JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "שיקול, תרגום מרובה שפות, קידוד ועוד.",
     "provider__claude_web_app__title": "אפליקציית האינטרנט של Claude",
-    "provider__claude_web_app__short_description": "חלון קשר בגודל 100K. צ'אט עם מסמכים מרובים.",
+    "provider__claude_web_app__short_description": "חלון קשר בגודל 200K. צ'אט עם מסמכים מרובים.",
     "provider__claude_web_app__auth_description": "השתמש בחשבון ה-Claude שלך כדי להפעיל את ההרחבה.",
     "provider__claude_web_app__auth_button_text": "התחבר לאפליקציית האינטרנט של Claude",
     "provider__claude_web_app__upload__accept_tooltip": "הוסף קבצים (5 מרבי, 10MB לכל קובץ). מקבל pdf, txt, csv ועוד.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "נקה את ההיסטוריה של תפריטי ההקשר - האם אתה בטוח?",
     "context_window__chat_history__button__title": "היסטוריית תפריטי ההקשר",
     "context_window__chat_history__empty__title": "אין עדיין היסטוריית תפריטי ההקשר זמינה",
-    "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט"
+    "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט",
+    "provider__claude_web_app__model__claude_3_200k__description": "ביצועים יוצאי דופן במשימות הדורשות שיקול מורכב. Claude 3 הוא ההצעה המובילה של Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

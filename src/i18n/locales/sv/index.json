@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Ladda upp fil JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Resonerar, flerspråkig översättning, kodning och mer.",
     "provider__claude_web_app__title": "Claude webbapp",
-    "provider__claude_web_app__short_description": "100K kontextfönster. Chatta med flera dokument.",
+    "provider__claude_web_app__short_description": "200K kontextfönster. Chatta med flera dokument.",
     "provider__claude_web_app__auth_description": "Använd ditt eget Claude-konto för att driva förlängningen.",
     "provider__claude_web_app__auth_button_text": "Logga in på Claude webbapp",
     "provider__claude_web_app__upload__accept_tooltip": "Lägg till filer (max 5, 10 MB vardera). Accepterar pdf, txt, csv, etc.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Rensa din historik för kontextmenyer - är du säker?",
     "context_window__chat_history__button__title": "Historik för kontextmenyer",
     "context_window__chat_history__empty__title": "Ingen tillgänglig historik för kontextmenyer ännu",
-    "context_window__chat_history__continue_in_chat__title": "Fortsätt i chatt"
+    "context_window__chat_history__continue_in_chat__title": "Fortsätt i chatt",
+    "provider__claude_web_app__model__claude_3_200k__description": "Överlägsen prestanda på uppgifter som kräver komplex resonemang. Claude 3 är Anthropics bästa erbjudande."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

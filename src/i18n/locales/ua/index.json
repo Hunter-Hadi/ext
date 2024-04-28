@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Завантажити файл JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Міркування, багатомовний переклад, програмування та інше.",
     "provider__claude_web_app__title": "Веб-додаток Claude",
-    "provider__claude_web_app__short_description": "100K вікно контексту. Чат з кількома документами.",
+    "provider__claude_web_app__short_description": "200K вікно контексту. Чат з кількома документами.",
     "provider__claude_web_app__auth_description": "Використовуйте свій власний обліковий запис Claude для розширення.",
     "provider__claude_web_app__auth_button_text": "Увійти до веб-додатка Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Додати файли (максимум 5, по 10 МБ кожен). Приймаються pdf, txt, csv тощо.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Очистити історію вашого контекстного меню - ви впевнені?",
     "context_window__chat_history__button__title": "Історія контекстного меню",
     "context_window__chat_history__empty__title": "Ще немає доступної історії контекстного меню",
-    "context_window__chat_history__continue_in_chat__title": "Продовжити у чаті"
+    "context_window__chat_history__continue_in_chat__title": "Продовжити у чаті",
+    "provider__claude_web_app__model__claude_3_200k__description": "Перевершена продуктивність на завданнях, які вимагають складного мислення. Клод 3 - це найкраща пропозиція від Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

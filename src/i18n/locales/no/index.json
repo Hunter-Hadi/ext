@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Last opp fil JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Resonnement, flerspråklig oversettelse, koding og mer.",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K kontekstvindu. Chat med flere dokumenter.",
+    "provider__claude_web_app__short_description": "200K kontekstvindu. Chat med flere dokumenter.",
     "provider__claude_web_app__auth_description": "Bruk din egen Claude-konto for å drive utvidelsen.",
     "provider__claude_web_app__auth_button_text": "Logg inn på Claude web app",
     "provider__claude_web_app__upload__accept_tooltip": "Legg til filer (maks 5, 10 MB hver). Aksepterer pdf, txt, csv osv.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Tøm historikken for kontekstmenyer - er du sikker?",
     "context_window__chat_history__button__title": "Kontekstmenyhistorikk",
     "context_window__chat_history__empty__title": "Ingen tilgjengelig kontekstmenyhistorikk ennå",
-    "context_window__chat_history__continue_in_chat__title": "Fortsett i chat"
+    "context_window__chat_history__continue_in_chat__title": "Fortsett i chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Overlegen ytelse på oppgaver som krever kompleks resonnement. Claude 3 er Anthropics beste tilbud."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

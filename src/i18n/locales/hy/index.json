@@ -330,7 +330,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Վերբեռնեք ֆայլ JPEG, PNG, WEBP ձևաչափով",
     "provider__bard_web_app__model__what_it_can_do__description": "Թեստավորում, բազմլեզվական թարգմանություն, ծրագրավորում և այլն:",
     "provider__claude_web_app__title": "Claude վեբ հավելված",
-    "provider__claude_web_app__short_description": "100K հատկապատումի պատուհան: խոսեք միայնակ փաստաթղթերով:",
+    "provider__claude_web_app__short_description": "200K պարամետրի պատուհան: Զրուցարանում խոսել մի քանի փաստաթղթերով:",
     "provider__claude_web_app__auth_description": "Օգտագործեք ձեր սեփական Claude հաշիվը համարի ընթացքում հավելվածը զարգացնելու համար:",
     "provider__claude_web_app__auth_button_text": "Մուտք Claude վեբ հավելված",
     "provider__claude_web_app__upload__accept_tooltip": "Ավելացրեք ֆայլեր (5 առավելագույնը, 10MB յուրաքանչյուր): Ընդունում է pdf, txt, csv և այլն:",
@@ -747,7 +747,8 @@
     "immersive_chat__delete_all_context_menu__title": "Մաքրեք ձեր համերգային ընտրանքների պատմությունը - վստահ եք?",
     "context_window__chat_history__button__title": "Համերգային ընտրանքների պատմություն",
     "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
-    "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ"
+    "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ",
+    "provider__claude_web_app__model__claude_3_200k__description": "Շատ լավագույն արդյունավետություն պահանջող առանձին գործիքների համար: Claude 3-ը Anthropic-ի ամենալավագույն առաջարկն է:"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

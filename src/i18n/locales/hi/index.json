@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "फ़ाइल अपलोड करें JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "तर्क, बहुभाषी अनुवाद, कोडिंग, और अधिक।",
     "provider__claude_web_app__title": "Claude वेब ऐप",
-    "provider__claude_web_app__short_description": "100K संदर्भ विंडो। कई दस्तावेज़ों के साथ चैट करें।",
+    "provider__claude_web_app__short_description": "200K संदर्भ विंडो। कई दस्तावेज़ों के साथ चैट करें।",
     "provider__claude_web_app__auth_description": "एक्सटेंशन को संचालित करने के लिए अपने Claude खाते का उपयोग करें।",
     "provider__claude_web_app__auth_button_text": "Claude वेब ऐप में लॉग इन करें",
     "provider__claude_web_app__upload__accept_tooltip": "फ़ाइलें जोड़ें (5 अधिकतम, प्रत्येक 10MB)। pdf, txt, csv, आदि स्वीकार करता है।",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "अपने संदर्भ मेनू इतिहास को साफ़ करें - क्या आपको यकीन है?",
     "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",
     "context_window__chat_history__empty__title": "अभी तक कोई संदर्भ मेनू इतिहास उपलब्ध नहीं है",
-    "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें"
+    "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें",
+    "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्क की आवश्यकता वाले कार्यों पर उत्कृष्ट प्रदर्शन। Claude 3 Anthropic की सर्वोत्तम पेशकश है।"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Prześlij plik JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Rozumowanie, wielojęzyczne tłumaczenie, kodowanie i wiele więcej.",
     "provider__claude_web_app__title": "Aplikacja internetowa Claude",
-    "provider__claude_web_app__short_description": "Okno kontekstowe 100K. Czat z wieloma dokumentami.",
+    "provider__claude_web_app__short_description": "Okno kontekstu 200K. Czat z wieloma dokumentami.",
     "provider__claude_web_app__auth_description": "Użyj swojego własnego konta Claude, aby zasilać rozszerzenie.",
     "provider__claude_web_app__auth_button_text": "Zaloguj się do aplikacji internetowej Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Dodaj pliki (maks. 5, każdy o rozmiarze 10 MB). Akceptuje pdf, txt, csv itp.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Wyczyść historię twoich menu kontekstowych - na pewno?",
     "context_window__chat_history__button__title": "Historia menu kontekstowego",
     "context_window__chat_history__empty__title": "Brak dostępnej historii menu kontekstowego",
-    "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie"
+    "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie",
+    "provider__claude_web_app__model__claude_3_200k__description": "Najwyższa wydajność w zadaniach wymagających złożonego rozumowania. Claude 3 to najlepsza oferta od Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

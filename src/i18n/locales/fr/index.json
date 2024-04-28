@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Télécharger un fichier JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Raisonnement, traduction multilingue, codage et plus encore.",
     "provider__claude_web_app__title": "Application web Claude",
-    "provider__claude_web_app__short_description": "Fenêtre contextuelle de 100K. Discutez avec plusieurs documents.",
+    "provider__claude_web_app__short_description": "Fenêtre contextuelle de 200K. Discutez avec plusieurs documents.",
     "provider__claude_web_app__auth_description": "Utilisez votre propre compte Claude pour alimenter l'extension.",
     "provider__claude_web_app__auth_button_text": "Connectez-vous à l'application web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Ajouter des fichiers (5 max, 10 Mo chacun). Accepte les pdf, txt, csv, etc.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Effacer l'historique de vos menus contextuels - êtes-vous sûr ?",
     "context_window__chat_history__button__title": "Historique des menus contextuels",
     "context_window__chat_history__empty__title": "Aucun historique de menus contextuels disponible pour le moment",
-    "context_window__chat_history__continue_in_chat__title": "Continuer dans le chat"
+    "context_window__chat_history__continue_in_chat__title": "Continuer dans le chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Des performances supérieures sur les tâches nécessitant un raisonnement complexe. Claude 3 est la meilleure offre d'Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

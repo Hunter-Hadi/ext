@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Pakia faili JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Hoja za mantiki, tafsiri nyingi lugha, uandishi wa nambari, na zaidi.",
     "provider__claude_web_app__title": "Programu ya wavuti ya Claude",
-    "provider__claude_web_app__short_description": "Dirisha la muktadha lenye nafasi ya 100K. Ongea na hati nyingi.",
+    "provider__claude_web_app__short_description": "Dirisha la muktadha wa 200K. Ongea na hati nyingi.",
     "provider__claude_web_app__auth_description": "Tumia akaunti yako ya Claude kuwezesha upanuzi.",
     "provider__claude_web_app__auth_button_text": "Ingia kwenye programu ya wavuti ya Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Ongeza faili (5 kiwango cha juu, 10MB kila moja). Inakubali pdf, txt, csv, nk.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Ondoa historia yako ya menyu za muktadha - una uhakika?",
     "context_window__chat_history__button__title": "Historia ya menyu ya muktadha",
     "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
-    "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo"
+    "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo",
+    "provider__claude_web_app__model__claude_3_200k__description": "Utendaji bora kwenye majukumu yanayohitaji mawazo magumu. Claude 3 ni huduma bora kabisa ya Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

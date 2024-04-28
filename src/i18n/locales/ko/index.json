@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "JPEG, PNG, WEBP 파일 업로드",
     "provider__bard_web_app__model__what_it_can_do__description": "추론, 다국어 번역, 코딩 등",
     "provider__claude_web_app__title": "Claude 웹 앱",
-    "provider__claude_web_app__short_description": "100K 컨텍스트 창. 여러 문서와 대화하세요.",
+    "provider__claude_web_app__short_description": "200K 컨텍스트 창. 여러 문서와 채팅하세요.",
     "provider__claude_web_app__auth_description": "확장 기능을 사용하려면 자체 Claude 계정을 사용하세요.",
     "provider__claude_web_app__auth_button_text": "Claude 웹 앱에 로그인",
     "provider__claude_web_app__upload__accept_tooltip": "파일 추가 (최대 5개, 각각 10MB). pdf, txt, csv 등 지원됩니다.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "컨텍스트 메뉴 기록 모두 지우기 - 확실합니까?",
     "context_window__chat_history__button__title": "컨텍스트 메뉴 기록",
     "context_window__chat_history__empty__title": "아직 사용 가능한 컨텍스트 메뉴 기록이 없습니다",
-    "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기"
+    "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기",
+    "provider__claude_web_app__model__claude_3_200k__description": "복잡한 추론을 필요로하는 작업에서 우수한 성능을 발휘합니다. Claude 3은 Anthropic의 최고 수준의 제품입니다."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

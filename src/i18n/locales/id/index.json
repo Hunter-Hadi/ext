@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Unggah file JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan multibahasa, pemrograman, dan lainnya.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
-    "provider__claude_web_app__short_description": "Jendela konteks 100K. Chat dengan beberapa dokumen.",
+    "provider__claude_web_app__short_description": "Jendela konteks 200K. Chat dengan beberapa dokumen.",
     "provider__claude_web_app__auth_description": "Gunakan akun Claude Anda sendiri untuk mengaktifkan ekstensi ini.",
     "provider__claude_web_app__auth_button_text": "Masuk ke aplikasi web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Tambahkan file (maksimal 5, masing-masing 10MB). Menerima pdf, txt, csv, dll.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Bersihkan riwayat menu konteks Anda - apakah Anda yakin?",
     "context_window__chat_history__button__title": "Riwayat menu konteks",
     "context_window__chat_history__empty__title": "Belum ada riwayat menu konteks yang tersedia",
-    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat"
+    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Kinerja unggul pada tugas-tugas yang membutuhkan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

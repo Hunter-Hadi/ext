@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Загрузите файл JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Рассуждение, многоязычный перевод, кодирование и многое другое.",
     "provider__claude_web_app__title": "Веб-приложение Claude",
-    "provider__claude_web_app__short_description": "Окно контекста 100K. Чат с несколькими документами.",
+    "provider__claude_web_app__short_description": "Окно контекста 200K. Чат с несколькими документами.",
     "provider__claude_web_app__auth_description": "Используйте свою учетную запись Claude для работы с расширением.",
     "provider__claude_web_app__auth_button_text": "Войти в веб-приложение Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Добавьте файлы (максимум 5, по 10 МБ каждый). Принимает pdf, txt, csv и т. д.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Очистить историю ваших контекстных меню - вы уверены?",
     "context_window__chat_history__button__title": "История контекстного меню",
     "context_window__chat_history__empty__title": "Пока нет доступной истории контекстного меню",
-    "context_window__chat_history__continue_in_chat__title": "Продолжить в чате"
+    "context_window__chat_history__continue_in_chat__title": "Продолжить в чате",
+    "provider__claude_web_app__model__claude_3_200k__description": "Превосходная производительность при выполнении задач, требующих сложного мышления. Claude 3 - это лучшее предложение от Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

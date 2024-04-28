@@ -321,7 +321,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "JPEG、PNG、WEBP ファイルをアップロード",
     "provider__bard_web_app__model__what_it_can_do__description": "推論、多言語翻訳、コーディングなど。",
     "provider__claude_web_app__title": "Claude ウェブアプリ",
-    "provider__claude_web_app__short_description": "100Kコンテキストウィンドウ。複数のドキュメントでチャット。",
+    "provider__claude_web_app__short_description": "200K コンテキストウィンドウ。複数のドキュメントとチャット。",
     "provider__claude_web_app__auth_description": "拡張機能をパワーアップするために、独自のClaudeアカウントを使用します。",
     "provider__claude_web_app__auth_button_text": "Claude Webアプリにログイン",
     "provider__claude_web_app__upload__accept_tooltip": "ファイルを追加（最大5つ、各10MB）。pdf、txt、csvなどを受け付けます。",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "コンテキストメニューの履歴をクリアしますか？",
     "context_window__chat_history__button__title": "コンテキストメニューの履歴",
     "context_window__chat_history__empty__title": "まだ利用可能なコンテキストメニューの履歴はありません",
-    "context_window__chat_history__continue_in_chat__title": "チャットで続ける"
+    "context_window__chat_history__continue_in_chat__title": "チャットで続ける",
+    "provider__claude_web_app__model__claude_3_200k__description": "複雑な推論を必要とするタスクにおいて優れたパフォーマンスを発揮します。Claude 3はAnthropicの最高クラスの提供です。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

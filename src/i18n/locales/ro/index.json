@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Încărcați fișier JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Raționament, traducere multilingvă, programare și altele.",
     "provider__claude_web_app__title": "Aplicație web Claude",
-    "provider__claude_web_app__short_description": "Fereastră de context de 100K. Conversați cu mai multe documente.",
+    "provider__claude_web_app__short_description": "Fereastră de context de 200K. Conversați cu mai multe documente.",
     "provider__claude_web_app__auth_description": "Utilizați propriul cont Claude pentru a alimenta extensia.",
     "provider__claude_web_app__auth_button_text": "Conectați-vă la aplicația web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Adăugați fișiere (maxim 5, fiecare de 10 MB). Acceptă pdf, txt, csv, etc.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Ștergeți istoricul meniurilor contextuale - sunteți sigur?",
     "context_window__chat_history__button__title": "Istoric meniu contextual",
     "context_window__chat_history__empty__title": "Nu există încă istoric al meniului contextual",
-    "context_window__chat_history__continue_in_chat__title": "Continuați în chat"
+    "context_window__chat_history__continue_in_chat__title": "Continuați în chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Performanță superioară la sarcinile care necesită raționament complex. Claude 3 este cea mai bună ofertă a Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

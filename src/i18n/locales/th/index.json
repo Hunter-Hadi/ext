@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "อัปโหลดไฟล์ JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "การแสดงเหตุผล, การแปลภาษาหลากหลายภาษา, การเขียนโค้ด และอื่นๆ",
     "provider__claude_web_app__title": "แอปเว็บ Claude",
-    "provider__claude_web_app__short_description": "หน้าต่างความสัมพันธ์ 100K แชทกับเอกสารหลายรายการ",
+    "provider__claude_web_app__short_description": "หน้าต่างความสัมพันธ์ 200K คำ. สนทนากับเอกสารหลายรายการ",
     "provider__claude_web_app__auth_description": "ใช้บัญชี Claude ของคุณเพื่อให้กำลังขับเคลื่อนส่วนขยายนี้",
     "provider__claude_web_app__auth_button_text": "เข้าสู่ระบบแอปเว็บ Claude",
     "provider__claude_web_app__upload__accept_tooltip": "เพิ่มไฟล์ (สูงสุด 5 ไฟล์, 10MB ต่อไฟล์) รองรับ pdf, txt, csv เป็นต้น",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "ล้างประวัติเมนูบริบทของคุณ - แน่ใจหรือไม่?",
     "context_window__chat_history__button__title": "ประวัติเมนูบริบท",
     "context_window__chat_history__empty__title": "ยังไม่มีประวัติเมนูบริบทที่ใช้ได้",
-    "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท"
+    "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท",
+    "provider__claude_web_app__model__claude_3_200k__description": "ประสิทธิภาพที่เหนือกว่าในงานที่ต้องการความคิดที่ซับซ้อน โมเดล Claude 3 เป็นผลิตภัณฑ์ที่ดีที่สุดของ Anthropic"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

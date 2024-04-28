@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "கோப்பை பதிவேற்று JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "காரணம், பல மொழி மொழிபெயர்ப்பு, குறியீடு, மற்றும் பல வேலைகள்.",
     "provider__claude_web_app__title": "கிளோட் வலைத்தளம்",
-    "provider__claude_web_app__short_description": "100K உருப்படிகள் சார்ந்த சந்தா. பல ஆவணங்களுடன் உரையாடுவது.",
+    "provider__claude_web_app__short_description": "200K சூழ்நிலை சாளரம். பல ஆவணங்களுடன் உரையாடல்.",
     "provider__claude_web_app__auth_description": "நீங்கள் உங்கள் சொந்த கிளோட் கணக்கை பயன்படுத்தி நீங்கள் நீட்டிப்புகளை அதிகரிக்கலாம்.",
     "provider__claude_web_app__auth_button_text": "கிளோட் வலைத்தளத்தில் உள்நுழைக",
     "provider__claude_web_app__upload__accept_tooltip": "கோப்புகளைச் சேர்க்கவும் (முதல் 5, 10MB ஒவ்வொன்று). பிடிஎஃப், டெக்ஸ்ட், சிஎஸ்வி போன்றவைகளை ஏற்கனவே ஏற்கனவே ஏதேனும் ஒரு கோப்பில் உள்ளனவேயாக விடலாம்.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "உங்கள் சூழல் மெனுகள் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
     "context_window__chat_history__button__title": "சூழல் மெனு வரலாறு",
     "context_window__chat_history__empty__title": "இன்னும் சூழல் மெனு வரலாறு இல்லை",
-    "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க"
+    "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க",
+    "provider__claude_web_app__model__claude_3_200k__description": "சிறந்த பெரும்பாலான பொருள் மனம் தேவைப்படும் பணிகளுக்கு உயர்வான செயல்பாடு. கிளோட் 3 அந்த்ராபிக் சிறந்த பொருள் மனமாக உள்ளது."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

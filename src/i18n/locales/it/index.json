@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Carica file JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Ragionamento, traduzione multilingue, codifica e altro ancora.",
     "provider__claude_web_app__title": "App web Claude",
-    "provider__claude_web_app__short_description": "Finestra di contesto da 100K. Chat con documenti multipli.",
+    "provider__claude_web_app__short_description": "Finestra di contesto di 200K. Chatta con documenti multipli.",
     "provider__claude_web_app__auth_description": "Utilizza il tuo account Claude per alimentare l'estensione.",
     "provider__claude_web_app__auth_button_text": "Accedi all'app web di Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Aggiungi file (5 max, 10MB ciascuno). Accetta pdf, txt, csv, ecc.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Cancella la cronologia dei tuoi menu contestuali - sei sicuro?",
     "context_window__chat_history__button__title": "Cronologia menu contestuali",
     "context_window__chat_history__empty__title": "Nessuna cronologia dei menu contestuali disponibile al momento",
-    "context_window__chat_history__continue_in_chat__title": "Continua in chat"
+    "context_window__chat_history__continue_in_chat__title": "Continua in chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Prestazioni superiori per compiti che richiedono ragionamento complesso. Claude 3 è la migliore offerta di Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poesia...",

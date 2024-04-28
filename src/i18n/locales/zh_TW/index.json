@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "上傳檔案 JPEG、PNG、WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "推理、多語言翻譯、編碼等功能。",
     "provider__claude_web_app__title": "Claude 網頁應用程式",
-    "provider__claude_web_app__short_description": "100K 上下文視窗。與多個文件進行聊天。",
+    "provider__claude_web_app__short_description": "200K 上下文視窗。與多個文件進行聊天。",
     "provider__claude_web_app__auth_description": "使用您自己的 Claude 帳戶來提供擴展功能。",
     "provider__claude_web_app__auth_button_text": "登入 Claude 網頁應用程式",
     "provider__claude_web_app__upload__accept_tooltip": "添加檔案（最多 5 個，每個 10MB）。接受 pdf、txt、csv 等格式。",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "清除您的上下文選單歷史記錄 - 您確定嗎？",
     "context_window__chat_history__button__title": "上下文選單歷史記錄",
     "context_window__chat_history__empty__title": "目前尚無上下文選單歷史記錄",
-    "context_window__chat_history__continue_in_chat__title": "繼續聊天"
+    "context_window__chat_history__continue_in_chat__title": "繼續聊天",
+    "provider__claude_web_app__model__claude_3_200k__description": "在需要複雜推理的任務上表現卓越。Claude 3 是Anthropic提供的最佳選擇。"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

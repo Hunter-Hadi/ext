@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Naložite datoteko JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Sklepanje, večjezično prevajanje, kodiranje in še več.",
     "provider__claude_web_app__title": "Claude web aplikacija",
-    "provider__claude_web_app__short_description": "100K kontekstno okno. Klepetajte z več dokumenti.",
+    "provider__claude_web_app__short_description": "Okno konteksta 200K. Klepetajte z več dokumenti.",
     "provider__claude_web_app__auth_description": "Uporabite svoj Claude račun za napajanje razširitve.",
     "provider__claude_web_app__auth_button_text": "Prijavite se v Claude web aplikacijo",
     "provider__claude_web_app__upload__accept_tooltip": "Dodajte datoteke (največ 5, vsaka do 10 MB). Sprejema pdf, txt, csv itd.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Počisti zgodovino menijev - ste prepričani?",
     "context_window__chat_history__button__title": "Zgodovina menijev",
     "context_window__chat_history__empty__title": "Zaenkrat ni na voljo nobene zgodovine menijev",
-    "context_window__chat_history__continue_in_chat__title": "Nadaljuj v klepet"
+    "context_window__chat_history__continue_in_chat__title": "Nadaljuj v klepet",
+    "provider__claude_web_app__model__claude_3_200k__description": "Odlična zmogljivost pri nalogah, ki zahtevajo kompleksno sklepanje. Claude 3 je najboljša ponudba podjetja Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

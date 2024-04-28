@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Datei hochladen (JPEG, PNG, WEBP)",
     "provider__bard_web_app__model__what_it_can_do__description": "Begründung, mehrsprachige Übersetzung, Codierung und mehr.",
     "provider__claude_web_app__title": "Claude Web-App",
-    "provider__claude_web_app__short_description": "100K Kontextfenster. Chatten mit mehreren Dokumenten.",
+    "provider__claude_web_app__short_description": "200K Kontextfenster. Chatten Sie mit mehreren Dokumenten.",
     "provider__claude_web_app__auth_description": "Verwenden Sie Ihr eigenes Claude-Konto, um die Erweiterung zu aktivieren.",
     "provider__claude_web_app__auth_button_text": "Bei Claude Web-App anmelden",
     "provider__claude_web_app__upload__accept_tooltip": "Dateien hinzufügen (max. 5, je 10 MB). Akzeptiert PDF, TXT, CSV usw.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Löschen Sie Ihren Verlauf der Kontextmenüs - Sind Sie sicher?",
     "context_window__chat_history__button__title": "Kontextmenü-Verlauf",
     "context_window__chat_history__empty__title": "Kein Kontextmenü-Verlauf verfügbar",
-    "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen"
+    "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen",
+    "provider__claude_web_app__model__claude_3_200k__description": "Überragende Leistung bei Aufgaben, die komplexe Denkfähigkeiten erfordern. Claude 3 ist das Spitzenprodukt von Anthropic."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

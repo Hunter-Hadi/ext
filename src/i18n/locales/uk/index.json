@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "فائل اپ لوڈ کریں JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "تحقیق، بہاشمی ترجمہ، کوڈنگ، اور مزید۔",
     "provider__claude_web_app__title": "کلوڈ ویب ایپ",
-    "provider__claude_web_app__short_description": "100K سیاق و سباق ونڈو۔ متعدد دستاویزات کے ساتھ چیٹ کریں۔",
+    "provider__claude_web_app__short_description": "200K کنٹیکسٹ ونڈو۔ متعدد دستاویزات کے ساتھ چیٹ کریں۔",
     "provider__claude_web_app__auth_description": "ایکسٹینشن کو چلانے کے لئے اپنا خود کا کلوڈ اکاؤنٹ استعمال کریں۔",
     "provider__claude_web_app__auth_button_text": "کلوڈ ویب ایپ میں لاگ ان کریں",
     "provider__claude_web_app__upload__accept_tooltip": "فائلیں شامل کریں (5 تک، 10MB ہر ایک)۔ پی ڈی ایف، ٹیکسٹ، سی ایس وی، وغیرہ قبول کرتا ہے۔",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "آپ کے مواضع کے مینوز کی تاریخ صاف کریں - کیا آپ مطمئن ہیں؟",
     "context_window__chat_history__button__title": "مواضع کے مینوز کی تاریخ",
     "context_window__chat_history__empty__title": "ابھی تک کوئی مواضع کے مینوز کی تاریخ دستیاب نہیں ہے",
-    "context_window__chat_history__continue_in_chat__title": "چیٹ میں جاری رکھیں"
+    "context_window__chat_history__continue_in_chat__title": "چیٹ میں جاری رکھیں",
+    "provider__claude_web_app__model__claude_3_200k__description": "مشکل ماندگاری کو طلب کرنے والے کاموں پر بہترین کارکردگی۔ کلوڈ 3 اینتھروپک کی بہترین پیشکش ہے۔"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

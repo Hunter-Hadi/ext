@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "JPEG, PNG, WEBP dosyası yükleyin",
     "provider__bard_web_app__model__what_it_can_do__description": "Akıl yürütme, çok dilli çeviri, kodlama ve daha fazlası.",
     "provider__claude_web_app__title": "Claude web uygulaması",
-    "provider__claude_web_app__short_description": "100K bağlam penceresi. Birden çok belgeyle sohbet edin.",
+    "provider__claude_web_app__short_description": "200K bağlam penceresi. Birden çok belgeyle sohbet edin.",
     "provider__claude_web_app__auth_description": "Uzantıyı çalıştırmak için kendi Claude hesabınızı kullanın.",
     "provider__claude_web_app__auth_button_text": "Claude web uygulamasına giriş yapın",
     "provider__claude_web_app__upload__accept_tooltip": "Dosya ekle (maksimum 5, her biri 10MB). pdf, txt, csv vb. kabul eder.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Bağlamlı menü geçmişinizi temizleyin - emin misiniz?",
     "context_window__chat_history__button__title": "Bağlamlı menü geçmişi",
     "context_window__chat_history__empty__title": "Henüz kullanılabilir bir bağlamlı menü geçmişi yok",
-    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et"
+    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et",
+    "provider__claude_web_app__model__claude_3_200k__description": "Karmaşık akıl yürütme gerektiren görevlerde üstün performans. Claude 3, Anthropic'in en iyi sınıf çözümüdür."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

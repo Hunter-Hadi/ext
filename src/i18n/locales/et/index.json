@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Laadi üles fail JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Järeldamine, mitmekeelne tõlge, programmeerimine ja palju muud.",
     "provider__claude_web_app__title": "Claude veebirakendus",
-    "provider__claude_web_app__short_description": "100K kontekstaken. Vestle mitme dokumendiga.",
+    "provider__claude_web_app__short_description": "200K kontekstaken. Vestluse pidamine mitme dokumendiga.",
     "provider__claude_web_app__auth_description": "Kasuta oma Claude'i kontot laienduse toiteks.",
     "provider__claude_web_app__auth_button_text": "Logi sisse Claude veebirakendusse",
     "provider__claude_web_app__upload__accept_tooltip": "Lisa faile (maksimaalselt 5, igaüks 10MB). Võtab vastu pdf, txt, csv jne.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "Kustuta oma kontekstimenüüde ajalugu - oled sa kindel?",
     "context_window__chat_history__button__title": "Kontekstimenüü ajalugu",
     "context_window__chat_history__empty__title": "Kontekstimenüü ajalugu pole veel saadaval",
-    "context_window__chat_history__continue_in_chat__title": "Jätka vestlust"
+    "context_window__chat_history__continue_in_chat__title": "Jätka vestlust",
+    "provider__claude_web_app__model__claude_3_200k__description": "Ülim jõudlus ülesannetes, mis nõuavad keerulist mõtlemist. Claude 3 on Anthropicu parim pakkumine."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",

@@ -332,7 +332,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Muat naik fail JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan pelbagai bahasa, pengaturcaraan, dan banyak lagi.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
-    "provider__claude_web_app__short_description": "Jendela konteks 100K. Berbual dengan beberapa dokumen.",
+    "provider__claude_web_app__short_description": "200K സംദേശം ജാലകങ്ങളുമായി ചാറ്റ് ചെയ്യുക.",
     "provider__claude_web_app__auth_description": "Gunakan akaun Claude anda sendiri untuk memperkuat sambungan ini.",
     "provider__claude_web_app__auth_button_text": "Log masuk ke aplikasi web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Tambah fail (5 maksimum, 10MB setiap satu). Terima pdf, txt, csv, dll.",
@@ -750,7 +750,8 @@
     "immersive_chat__delete_all_context_menu__title": "നിങ്ങളുടെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം മായ്‌ക്കാന്‍ - ഉറപ്പാണോ?",
     "context_window__chat_history__button__title": "കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം",
     "context_window__chat_history__empty__title": "ഇതുവരെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം ലഭ്യമല്ല",
-    "context_window__chat_history__continue_in_chat__title": "ചാറ്റില്‍ തുടരുക"
+    "context_window__chat_history__continue_in_chat__title": "ചാറ്റില്‍ തുടരുക",
+    "provider__claude_web_app__model__claude_3_200k__description": "പ്രത്യേകിച്ച് ജടിലമായ ചിന്താശകലങ്ങളെ ആവശ്യപ്പെടുന്ന ടാസ്കുകളിൽ ഉന്നത പ്രകടനം. Claude 3 Anthropic-ന്റെ അത്യാധുനികമായ ഓഫറിങ്ങാണ്."
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

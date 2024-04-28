@@ -29,7 +29,26 @@ const messengerGetMessageContent = (messageContentBox: HTMLElement | null) => {
       if (node.nodeType === Node.TEXT_NODE) {
         messageContent += node.textContent
       } else if (node.nodeType === Node.ELEMENT_NODE) {
-        messageContent += messengerGetEmoji(node as HTMLElement)
+        if (
+          (node as HTMLElement).tagName === 'IMG' ||
+          (node as HTMLElement).querySelector('img')
+        ) {
+          messageContent += messengerGetEmoji(node as HTMLElement)
+        } else if ((node as HTMLElement).tagName === 'B') {
+          messageContent += `*${node.textContent}*`
+        } else if ((node as HTMLElement).tagName === 'I') {
+          messageContent += `_${node.textContent}_`
+        } else if ((node as HTMLElement).tagName === 'S') {
+          messageContent += `~${node.textContent}~`
+        } else if ((node as HTMLElement).tagName === 'BLOCKQUOTE') {
+          messageContent += `>${node.textContent}`
+        } else if ((node as HTMLElement).tagName === 'CODE') {
+          messageContent += `\`${node.textContent}\``
+        } else if ((node as HTMLElement).querySelector('code')) {
+          messageContent += `\`\`\`${node.textContent}\`\`\``
+        } else {
+          messageContent += node.textContent
+        }
       }
     })
   }
@@ -252,19 +271,34 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
           }
           const quotedMessageContent = messengerGetMessageContent(
             quotedMessageContentBox,
-          ).replace(/…$/, '')
+          )
+            .replace(/…$/, '')
+            .replace(/^>\s/, '>')
+            .replaceAll('\n', ' ')
           replyMessageBoxIndex = chatMessages.findLastIndex((message) => {
             // because a quoted message with attached media can't be exactly matched, so just ignore it
-            if (message.mediaType) {
+            if (message.mediaType || message.user !== quotedMessageUser) {
               return false
             }
 
-            return (
-              message.user === quotedMessageUser &&
-              (message.content.length === quotedMessageContent.length
-                ? message.content === quotedMessageContent
-                : message.content.startsWith(quotedMessageContent))
-            )
+            let result = false
+
+            if (message.content.length === quotedMessageContent.length) {
+              result ||= message.content === quotedMessageContent
+            } else {
+              result ||= message.content.startsWith(quotedMessageContent)
+            }
+
+            if (
+              message.content.startsWith('```') &&
+              quotedMessageContent.startsWith('```')
+            ) {
+              result ||= message.content.includes(
+                quotedMessageContent.replace(/```\w+/, '').trimStart(),
+              )
+            }
+
+            return result
           })
           if (replyMessageBoxIndex === -1) {
             replyMessageBoxIndex = Infinity

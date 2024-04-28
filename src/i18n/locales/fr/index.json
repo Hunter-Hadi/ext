@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Barre latérale",
     "feature_card__sidebar__field__auto_archive__title": "Archivage automatique : Nettoyez au fur et à mesure",
     "feature_card__sidebar__field__auto_archive__button__title": "Archiver la discussion après",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dans MaxAI, nous archivons automatiquement les discussions inactives à la cadence de votre choix. Cela vous permet de repartir sur de bonnes bases et de garder votre barre latérale bien rangée.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dans MaxAI, nous archivons automatiquement les discussions inactives selon la cadence de votre choix. Cela vous permet de repartir sur de bonnes bases et de garder votre barre latérale bien rangée.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Réponse instantanée de Messenger"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Télécharger un fichier JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Raisonnement, traduction multilingue, codage et plus encore.",
     "provider__claude_web_app__title": "Application web Claude",
-    "provider__claude_web_app__short_description": "Fenêtre contextuelle de 100K. Discutez avec plusieurs documents.",
+    "provider__claude_web_app__short_description": "Fenêtre contextuelle de 200K. Discutez avec plusieurs documents.",
     "provider__claude_web_app__auth_description": "Utilisez votre propre compte Claude pour alimenter l'extension.",
     "provider__claude_web_app__auth_button_text": "Connectez-vous à l'application web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Ajouter des fichiers (5 max, 10 Mo chacun). Accepte les pdf, txt, csv, etc.",
@@ -752,8 +752,9 @@
     "context_window__chat_history__button__title": "Historique des menus contextuels",
     "context_window__chat_history__empty__title": "Aucun historique de menus contextuels disponible pour le moment",
     "context_window__chat_history__continue_in_chat__title": "Continuer dans le chat",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Mise à niveau pour la recherche avec l'IA",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "En raison du trafic élevé, veuillez réessayer ultérieurement ou effectuer une mise à niveau dès maintenant pour profiter d'un accès stable à tous les modèles IA premium.",
+    "provider__claude_web_app__model__claude_3_200k__description": "Des performances supérieures sur les tâches nécessitant un raisonnement complexe. Claude 3 est la meilleure offre d'Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Passer à la recherche avec l'IA",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "En raison d'un trafic élevé, veuillez réessayer ultérieurement ou passez dès maintenant à une version premium pour accéder en toute stabilité à tous les modèles d'IA.",
     "sidebar__conversation__message__context_triggered_content_review": "Contexte effacé pour contourner la modération"
   },
   "prompt": {

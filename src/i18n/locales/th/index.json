@@ -256,8 +256,8 @@
     "left_menu__sidebar": "แถบด้านข้าง",
     "feature_card__sidebar__field__auto_archive__title": "อัตโนมัติเก็บถาวร: ทำความสะอาดในขณะใช้งาน",
     "feature_card__sidebar__field__auto_archive__button__title": "เก็บถาวรแชทหลังจาก",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "ใน MaxAI เราจะทำการเก็บถาวรแชทที่ไม่มีการใช้งานอยู่โดยอัตโนมัติตามความถี่ที่คุณเลือก ซึ่งจะช่วยให้คุณได้เริ่มต้นใหม่และรักษาระเบียบเรียบร้อยในแถบด้านข้างของคุณ",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "การตอบกลับทันทีของ Messenger"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ใน MaxAI เราจะเก็บถาวรแชทที่ไม่ได้ใช้งานอยู่ตามความถี่ที่คุณเลือก ซึ่งจะช่วยให้คุณเริ่มต้นใหม่และรักษาระเบียบเรียบร้อยในแถบด้านข้างของคุณ",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ตอบกลับทันทีของ Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "อัปโหลดไฟล์ JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "การแสดงเหตุผล, การแปลภาษาหลากหลายภาษา, การเขียนโค้ด และอื่นๆ",
     "provider__claude_web_app__title": "แอปเว็บ Claude",
-    "provider__claude_web_app__short_description": "หน้าต่างความสัมพันธ์ 100K แชทกับเอกสารหลายรายการ",
+    "provider__claude_web_app__short_description": "หน้าต่างความสัมพันธ์ 200K คำ. สนทนากับเอกสารหลายรายการ",
     "provider__claude_web_app__auth_description": "ใช้บัญชี Claude ของคุณเพื่อให้กำลังขับเคลื่อนส่วนขยายนี้",
     "provider__claude_web_app__auth_button_text": "เข้าสู่ระบบแอปเว็บ Claude",
     "provider__claude_web_app__upload__accept_tooltip": "เพิ่มไฟล์ (สูงสุด 5 ไฟล์, 10MB ต่อไฟล์) รองรับ pdf, txt, csv เป็นต้น",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "ประวัติเมนูบริบท",
     "context_window__chat_history__empty__title": "ยังไม่มีประวัติเมนูบริบทที่ใช้ได้",
     "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท",
+    "provider__claude_web_app__model__claude_3_200k__description": "ประสิทธิภาพที่เหนือกว่าในงานที่ต้องการความคิดที่ซับซ้อน โมเดล Claude 3 เป็นผลิตภัณฑ์ที่ดีที่สุดของ Anthropic",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "อัปเกรดเพื่อค้นหาด้วย AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "เนื่องจากมีการรับส่งข้อมูลที่สูง โปรดลองอีกครั้งในภายหลัง หรืออัปเกรดเดี๋ยวนี้เพื่อเพลิดเพลินกับการเข้าถึงแบบเสถียรไปยังโมเดล AI พรีเมียมทั้งหมด",
-    "sidebar__conversation__message__context_triggered_content_review": "ล้างเนื้อหาที่เกิดจากบริบทเพื่อข้ามการตรวจสอบ"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "เนื่องจากมีการรับส่งข้อมูลสูง โปรดลองอีกครั้งในภายหลัง หรืออัปเกรดเดี๋ยวนี้เพื่อเพลิดเพลินกับการเข้าถึงแบบพรีเมียมของโมเดล AI ทั้งหมด",
+    "sidebar__conversation__message__context_triggered_content_review": "ล้างบริบทเพื่อผ่านการตรวจสอบ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

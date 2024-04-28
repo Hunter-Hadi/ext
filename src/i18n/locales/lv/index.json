@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Sānjosla",
     "feature_card__sidebar__field__auto_archive__title": "Automātiska arhivēšana: Tīrīt, kad izmanto",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhivēt tērzēšanu pēc",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvas sarunas pēc jūsu izvēles ritma. Tas nodrošina svaigu sākumu un uztur jūsu sānu joslu kārtīgu.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvo tērzēšanu pēc jūsu izvēles biežuma. Tas ļauj jums sākt no jauna un uztur jūsu sānjoslu kārtīgu.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Ātrā atbilde Messengerī"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Augšupielādēt failu JPEG, PNG, WEBP formātā",
     "provider__bard_web_app__model__what_it_can_do__description": "Loģika, daudzvalodu tulkošana, programmēšana un vairāk.",
     "provider__claude_web_app__title": "Claude web lietotne",
-    "provider__claude_web_app__short_description": "100K konteksta logs. Sarunājieties ar vairākiem dokumentiem.",
+    "provider__claude_web_app__short_description": "200K konteksta logs. Sarunājieties ar vairākiem dokumentiem.",
     "provider__claude_web_app__auth_description": "Izmantojiet savu Claude kontu, lai nodrošinātu paplašinājumu.",
     "provider__claude_web_app__auth_button_text": "Pierakstieties Claude web lietotnē",
     "provider__claude_web_app__upload__accept_tooltip": "Pievienojiet failus (maks. 5, katrs 10 MB). Pieņem pdf, txt, csv u.c.",
@@ -752,8 +752,9 @@
     "context_window__chat_history__button__title": "Konteksta izvēlnes vēsture",
     "context_window__chat_history__empty__title": "Vēl nav pieejama konteksta izvēlnes vēsture",
     "context_window__chat_history__continue_in_chat__title": "Turpināt čatā",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Jauniniet, lai meklētu ar AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Lielā satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem.",
+    "provider__claude_web_app__model__claude_3_200k__description": "Izcila veiktspēja uzdevumos, kas prasa sarežģītu domāšanu. Claude 3 ir Anthropic labākais piedāvājums.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Jaunināt, izmantojot AI meklēšanu",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Augsta satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem.",
     "sidebar__conversation__message__context_triggered_content_review": "Konteksts notīrīts, lai izvairītos no moderēšanas"
   },
   "prompt": {

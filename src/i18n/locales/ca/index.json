@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Barra lateral",
     "feature_card__sidebar__field__auto_archive__title": "Autoarxivat: Neteja a mesura que avances",
     "feature_card__sidebar__field__auto_archive__button__title": "Arxiva el xat després de",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, automàticament arxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté el vostre panell lateral ordenat.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, autoarxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté la barra lateral ordenada.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantània de Messenger"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Carrega fitxers JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Raonament, traducció multilingüe, codificació i més.",
     "provider__claude_web_app__title": "Aplicació web Claude",
-    "provider__claude_web_app__short_description": "Finestra de context de 100K. Xateja amb diversos documents.",
+    "provider__claude_web_app__short_description": "Finestra de context de 200K. Xateja amb diversos documents.",
     "provider__claude_web_app__auth_description": "Utilitza el teu propi compte de Claude per alimentar l'extensió.",
     "provider__claude_web_app__auth_button_text": "Inicia sessió a l'aplicació web de Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Afegeix fitxers (màxim 5, 10MB cadascun). Accepta pdf, txt, csv, etc.",
@@ -752,8 +752,9 @@
     "context_window__chat_history__button__title": "Historial del menú de context",
     "context_window__chat_history__empty__title": "Encara no hi ha cap historial de menú de context disponible",
     "context_window__chat_history__continue_in_chat__title": "Continua al xat",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Millora a la cerca amb IA",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torneu-ho a provar més tard o millora ara per gaudir d'un accés estable a tots els models d'IA premium.",
+    "provider__claude_web_app__model__claude_3_200k__description": "Rendiment superior en tasques que requereixen raonament complex. Claude 3 és la millor opció d'Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Actualitza a cerca amb IA",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torna-ho a provar més tard o actualitza ara per gaudir d'accés estable a tots els models d'IA premium.",
     "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació"
   },
   "prompt": {

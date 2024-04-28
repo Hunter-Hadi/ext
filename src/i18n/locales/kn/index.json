@@ -256,8 +256,8 @@
     "left_menu__sidebar": "ಸೈಡ್‌ಬಾರ್",
     "feature_card__sidebar__field__auto_archive__title": "ಸ್ವಯಂ ಆರ್ಕೈವ್: ನೀವು ಹೋಗುವವರೆಗೆ ಸ್ವಚ್ಛಗೊಳಿಸಿ",
     "feature_card__sidebar__field__auto_archive__button__title": "ಚಾಟ್ ಆರ್ಕೈವ್ ಮುಂದುವರೆಸಿ",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-ನಲ್ಲಿ, ನೀವು ಆಯ್ದ ಕಾಡು ಚಾಟ್‌ಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತೇವೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಉಳಿಸುತ್ತದೆ.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ಮೆಸೆಂಜರ್ ತಕ್ಷಣ ಪ್ರತಿಗೆ"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI ನಲ್ಲಿ, ನೀವು ಆರ್ಕೈವ್ ಮಾಡಲು ನಿಮ್ಮ ಆಯ್ಕೆಯ ಪ್ರಮಾಣದಲ್ಲಿ ಅಡ್ಲ್ ಚಾಟ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತದೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ಮೆಸೆಂಜರ್ ತಕ್ಷಣ ಪ್ರತಿಗ್ರಹ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "ಫೈಲ್ ಅಪ್ಲೋಡ್ ಮಾಡಿ JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "ಯುಕ್ತಿ, ಬಹುಭಾಷಾ ಅನುವಾದ, ಕೋಡಿಂಗ್ ಮತ್ತು ಇತರೆ.",
     "provider__claude_web_app__title": "ಕ್ಲೋಡ್ ವೆಬ್ ಆ್ಯಪ್",
-    "provider__claude_web_app__short_description": "100K ಸಂದರ್ಭ ವಿಂಡೋ. ಹಲವು ಆವೃತ್ತಿಗಳೊಂದಿಗೆ ಚಾಟ್ ಮಾಡಿ.",
+    "provider__claude_web_app__short_description": "200K ಸಂದರ್ಭ ವಿಂಡೋ. ಹಲವು ಆವರಣಗಳೊಂದಿಗೆ ಚಾಟ್ ಮಾಡಿ.",
     "provider__claude_web_app__auth_description": "ನಿಮ್ಮ ಸ್ವಂತ ಕ್ಲೋಡ್ ಖಾತೆಯನ್ನು ಉಪಯೋಗಿಸಿ ಈ ವಿಸ್ತರಣೆಗೆ ಶಕ್ತಿ ನೀಡಿ.",
     "provider__claude_web_app__auth_button_text": "ಕ್ಲೋಡ್ ವೆಬ್ ಆ್ಯಪ್ ಲಾಗಿನ್ ಮಾಡಿ",
     "provider__claude_web_app__upload__accept_tooltip": "ಫೈಲ್ಗಳನ್ನು ಸೇರಿಸಿ (5 ಗಟ್ಟಿಯಷ್ಟು, 10MB ಪ್ರತಿಯೊಂದು). pdf, txt, csv ಹಾಗೂ ಇತರೆ ಅನುಮೋದಿಸುತ್ತದೆ.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸ",
     "context_window__chat_history__empty__title": "ಇನ್ನೂ ಯಾವ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವೂ ಲಭ್ಯವಿಲ್ಲ",
     "context_window__chat_history__continue_in_chat__title": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ಜೊತೆ ಹುಡುಕಾಟವನ್ನು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ಹೆಚ್ಚು ಟ್ರಾಫಿಕ್ ಕಾರಣದಿಂದ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಪ್ರೀಮಿಯಂ AI ಮಾದರಿಗಳಿಗೆ ಸ್ಥಿರ ಪ್ರವೇಶವನ್ನು ಆನಂದಿಸಲು ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
-    "sidebar__conversation__message__context_triggered_content_review": "ಮಾದರಿಗೆ ಅತೀತವಾಗಿ ಪರಿಶೀಲನೆ ಮುಕ್ತಗೊಳಿಸಲಾಗಿದೆ"
+    "provider__claude_web_app__model__claude_3_200k__description": "ಜಟಿಲ ತರ್ಕದ ಕೆಲಸಗಳನ್ನು ಅಗತ್ಯವಾದ ಉತ್ತಮ ಪ್ರದರ್ಶನ. Claude 3 ಅಂತರ್ಭೂತಿಯ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ನೊಂದಿಗೆ ಹುಡುಕಾಟವನ್ನು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ಉಚ್ಚ ಟ್ರಾಫಿಕ್ ಕಾರಣದಿಂದ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಪ್ರೀಮಿಯಂ AI ಮಾದರಿಗಳಿಗೆ ಸ್ಥಿರ ಪ್ರವೇಶವನ್ನು ಆನಂದಿಸಲು ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
+    "sidebar__conversation__message__context_triggered_content_review": "ಸಂದರ್ಭ ಮಾಧ್ಯಮವನ್ನು ಮೀರಿಸಲು ಸರಿಹೊಂದಿಸಲಾಗಿದೆ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",

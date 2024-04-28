@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Upload fil JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Ræsonnement, flersproget oversættelse, kodning og mere.",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K kontekstvindue. Chat med flere dokumenter.",
+    "provider__claude_web_app__short_description": "200K kontekstvindue. Chat med flere dokumenter.",
     "provider__claude_web_app__auth_description": "Brug din egen Claude-konto til at drive udvidelsen.",
     "provider__claude_web_app__auth_button_text": "Log ind på Claude web app",
     "provider__claude_web_app__upload__accept_tooltip": "Tilføj filer (maks. 5, hver på 10 MB). Accepterer pdf, txt, csv osv.",
@@ -752,6 +752,7 @@
     "context_window__chat_history__button__title": "Kontekstmenuhistorik",
     "context_window__chat_history__empty__title": "Ingen kontekstmenuhistorik tilgængelig endnu",
     "context_window__chat_history__continue_in_chat__title": "Fortsæt i chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Overlegen præstation på opgaver, der kræver kompleks tænkning. Claude 3 er Anthropics bedste tilbud.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Opgrader til søgning med AI",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund af høj trafik, prøv venligst igen senere, eller opgrader nu for at få stabil adgang til alle premium AI-modeller.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for at omgå moderation"

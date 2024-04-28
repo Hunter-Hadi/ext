@@ -256,7 +256,7 @@
     "left_menu__sidebar": "साइडबार",
     "feature_card__sidebar__field__auto_archive__title": "स्वयंसचित्रीकरण: जेव्हा जाऊन टाकता तेव्हा स्वच्छ करा",
     "feature_card__sidebar__field__auto_archive__button__title": "चॅट आर्काइव करा नंतर",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या अनुसार आपल्या खालील चॅट स्वयंपाक करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुसज्जित ठेवते.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या गतीनुसार आपल्या खालील चॅट आपोआप आर्काइव करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुस्थित ठेवते.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "मेसेंजर त्वरित प्रतिसाद"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "फ़ाइल अपलोड करें JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "तर्क, बहुभाषी अनुवाद, कोडिंग, और अधिक।",
     "provider__claude_web_app__title": "Claude वेब ऐप",
-    "provider__claude_web_app__short_description": "100K संदर्भ विंडो। कई दस्तावेज़ों के साथ चैट करें।",
+    "provider__claude_web_app__short_description": "200K संदर्भ विंडो. कई दस्तावेजांसह चॅट करा.",
     "provider__claude_web_app__auth_description": "एक्सटेंशन को संचालित करने के लिए अपना Claude खाता उपयोग करें।",
     "provider__claude_web_app__auth_button_text": "Claude वेब ऐप में लॉग इन करें",
     "provider__claude_web_app__upload__accept_tooltip": "फ़ाइलें जोड़ें (5 अधिकतम, प्रत्येक 10MB)। pdf, txt, csv, आदि स्वीकार करता है।",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",
     "context_window__chat_history__empty__title": "अद्याप उपलब्ध नाही कोणताही संदर्भ मेनू इतिहास",
     "context_window__chat_history__continue_in_chat__title": "चॅटमध्ये सुरू ठेवा",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI सह शोधाची अपग्रेड करा",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रॅफिकमुळे, कृपया नंतर पुन्हा प्रयत्न करा किंवा सर्व प्रीमियम AI मॉडेल्सचा स्थिर प्रवेशासाठी आत्तापर्यंत अपग्रेड करा.",
-    "sidebar__conversation__message__context_triggered_content_review": "मध्यस्थता अनदेखी करण्यासाठी संदर्भ साफ केला"
+    "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्कांसाठी आवश्यक कार्यांवर उत्कृष्ट प्रदर्शन. Claude 3 हे Anthropic चा सर्वोत्कृष्ट प्रस्ताव आहे.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI सह शोधाचे अपग्रेड करा",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रॅफिक कारणे, कृपया नंतर पुन्हा प्रयत्न करा किंवा सर्व प्रीमियम AI मॉडेल्सचे स्थिर प्रवेशासाठी आत्तापर्यंत अपग्रेड करा.",
+    "sidebar__conversation__message__context_triggered_content_review": "संदर्भ संदेशांचे मोडरेशन वगळण्यासाठी साफ केले गेले"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

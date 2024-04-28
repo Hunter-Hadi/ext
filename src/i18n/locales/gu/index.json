@@ -253,7 +253,11 @@
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram તત્કાલ જવાબ",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams તત્કાલ જવાબ",
     "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat તત્કાલ જવાબ",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI માં, અમે તમારી પસંદગીના કેડન્સ પર આઈડલ ચેટને આપોઆપ આર્કાઇવ કરીએ છીએ. આ તમને એક નવી શરૂઆત આપે છે અને તમારી સાઇડબાર સુથરી રાખે છે."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI માં, અમે તમારી પસંદગીના કેડન્સ પર આઈડલ ચેટને આપોઆપ આર્કાઇવ કરીએ છીએ. આ તમને એક નવી શરૂઆત આપે છે અને તમારી સાઇડબાર સુથરી રાખે છે.",
+    "left_menu__sidebar": "સાઇડબાર",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "મેસેન્જર તત્કાલ જવાબ",
+    "feature_card__sidebar__field__auto_archive__title": "આપો આર્કાઇવ: ચાલી જાઓ અને સાફ કરો",
+    "feature_card__sidebar__field__auto_archive__button__title": "ચેટ આર્કાઇવ કરો પછી"
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",
@@ -329,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "ફાઇલ અપલોડ કરો JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "તાર્કિક, બહુભાષી અનુવાદ, કોડિંગ અને વધુ.",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K સંદર્ભ વિંડો. એકથી વધુ દસ્તાવેજો સાથે ચેટ કરો.",
+    "provider__claude_web_app__short_description": "200K સંદર્ભ વિંડો. અનેક દસ્તાવેજો સાથે ચેટ કરો.",
     "provider__claude_web_app__auth_description": "એક્સ્ટેન્શનને ચાલાવવા માટે તમારા પોતાના Claude એકાઉન્ટનો ઉપયોગ કરો.",
     "provider__claude_web_app__auth_button_text": "Claude web app માં લોગ ઇન કરો",
     "provider__claude_web_app__upload__accept_tooltip": "ફાઇલો ઉમેરો (5 મેક્સ, 10MB પ્રત્યે). pdf, txt, csv આપેલ છે.",
@@ -742,7 +746,16 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "જટિલ પ્રશ્નોને લાંબા જવાબો મેળવો",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI સાથે શોધ કરો",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "શોધ પરિણામો પાસે AI જવાબો દર્શાવો",
-    "instant_reply_button__explicit__display_text": "તત્કાલ જવાબ"
+    "instant_reply_button__explicit__display_text": "તત્કાલ જવાબ",
+    "immersive_chat__delete_all_context_menu__button__title": "બધા સંદર્ભ મેનૂ કાઢી નાખો",
+    "immersive_chat__delete_all_context_menu__title": "તમારા સંદર્ભ મેનૂનો ઈતિહાસ સાફ કરો - શું તમે ખાતરી છો?",
+    "context_window__chat_history__button__title": "સંદર્ભ મેનૂનો ઈતિહાસ",
+    "context_window__chat_history__empty__title": "હજુ સુધી કોઈ સંદર્ભ મેનૂનો ઈતિહાસ ઉપલબ્ધ નથી",
+    "context_window__chat_history__continue_in_chat__title": "ચેટમાં ચાલુ રાખો",
+    "provider__claude_web_app__model__claude_3_200k__description": "જેટલું જટિલ તાસ્ક માટે શ્રેષ્ઠ પ્રદર્શન. Claude 2 એ Anthropic ની શ્રેષ્ઠ ઓફરિંગ છે",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "એઆઈ સાથે શોધવા માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ઉચ્ચ ટ્રેફિક કારણે, કૃપા કરીને પછી થોડીવાર પ્રયાસ કરો અથવા હવે અનુભવો માટે સ્થિર પ્રીમિયમ એઆઈ મોડલ્સનો ઉપયોગ કરવા માટે અપગ્રેડ કરો.",
+    "sidebar__conversation__message__context_triggered_content_review": "સંદર્ભ મોદરેશન પર છોડવા માટે સાફ કર્યું"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",
@@ -946,7 +959,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "મિત્રતાપૂર્ણ",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "સીધીસાધી",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "આત્મવિશ્વાસી",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "આરામદાયક"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "આરામદાયક",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ચેટમાં ચાલો રહેવું"
   },
   "prompt_editor": {
     "preset_variables__title": "ક્ષમતાઓ",

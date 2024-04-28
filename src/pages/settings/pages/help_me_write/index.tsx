@@ -13,6 +13,7 @@ import FeatureTelegramAssistantCard from '@/pages/settings/pages/help_me_write/F
 import FeatureTwitterAssistantCard from '@/pages/settings/pages/help_me_write/FeatureTwitterAssistantCard'
 import FeatureWhatsAppAssistantCard from '@/pages/settings/pages/help_me_write/FeatureWhatsAppAssistantCard'
 import FeatureYouTubeAssistantCard from '@/pages/settings/pages/help_me_write/FeatureYouTubeAssistantCard'
+import FeatureMessengerAssistantCard from '@/pages/settings/pages/help_me_write/FeatureMessengerAssistantCard'
 
 const SettingsHelpMeWritePage: FC = () => {
   return (
@@ -29,6 +30,7 @@ const SettingsHelpMeWritePage: FC = () => {
       <FeatureSlackAssistantCard />
       <FeatureDiscordAssistantCard />
       <FeatureTelegramAssistantCard />
+      <FeatureMessengerAssistantCard />
     </Stack>
   )
 }

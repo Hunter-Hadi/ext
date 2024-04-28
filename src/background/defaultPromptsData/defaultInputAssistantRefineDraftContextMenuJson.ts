@@ -1,3 +1,8 @@
+import {
+  EmailWebsites,
+  SocialMediaWebsites,
+  ChatAppWebsites,
+} from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 
 const socialMediaPrompts = [
@@ -897,15 +902,7 @@ const socialMediaPrompts = [
     data: {
       editable: false,
       visibility: {
-        whitelist: [
-          'twitter.com',
-          'linkedin.com',
-          'facebook.com',
-          'youtube.com',
-          'studio.youtube.com',
-          'instagram.com',
-          'reddit.com',
-        ],
+        whitelist: [...SocialMediaWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },
@@ -1813,12 +1810,7 @@ const emailPrompts = [
     data: {
       editable: false,
       visibility: {
-        whitelist: [
-          'outlook.live.com',
-          'outlook.office365.com',
-          'mail.google.com',
-          'outlook.office.com',
-        ],
+        whitelist: [...EmailWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },
@@ -1838,12 +1830,7 @@ const chatAppPrompts: IContextMenuItem[] = [
     data: {
       editable: false,
       visibility: {
-        whitelist: [
-          'discord.com',
-          'app.slack.com',
-          'web.whatsapp.com',
-          'web.telegram.org',
-        ],
+        whitelist: [...ChatAppWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },

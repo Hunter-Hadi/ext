@@ -42,6 +42,7 @@ export const defaultChromeExtensionDBStorage =
           whatsApp: true,
           hubspot: true,
           telegram: true,
+          messenger: true,
           googleChat: true,
           microsoftTeams: true,
         },

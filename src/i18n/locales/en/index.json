@@ -237,6 +237,7 @@
     "feature_card__help_me_write__field__whats_app_instant_reply_button__title": "WhatsApp instant reply",
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot instant reply",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram instant reply",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger instant reply",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams instant reply",
     "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat instant reply",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Clean as you go",

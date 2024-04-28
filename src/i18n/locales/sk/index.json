@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Bočný panel",
     "feature_card__sidebar__field__auto_archive__title": "Automatické archivovanie: Čistota počas práce",
     "feature_card__sidebar__field__auto_archive__button__title": "Archivovať chat po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Toto vám poskytuje čerstvý štart a udržuje vašu bočnú lištu upratanú."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Toto vám poskytuje čerstvý štart a udržuje vašu bočnú lištu upratanú.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Okamžitá odpoveď na Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
     "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Vylepšite vyhľadávanie s umelou inteligenciou",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vzhľadom na vysokú premávku, skúste to prosím neskôr alebo teraz aktualizujte, aby ste mali stabilný prístup ku všetkým prémiovým modelom AI."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vzhľadom na vysokú premávku, skúste to prosím neskôr alebo teraz aktualizujte, aby ste mali stabilný prístup ku všetkým prémiovým modelom AI.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext vymazaný pre obchádzanie moderácie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

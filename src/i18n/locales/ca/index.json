@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Barra lateral",
     "feature_card__sidebar__field__auto_archive__title": "Autoarxivat: Neteja a mesura que avances",
     "feature_card__sidebar__field__auto_archive__button__title": "Arxiva el xat després de",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, automàticament arxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté el vostre panell lateral ordenat."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, automàticament arxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté el vostre panell lateral ordenat.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantània de Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Encara no hi ha cap historial de menú de context disponible",
     "context_window__chat_history__continue_in_chat__title": "Continua al xat",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Millora a la cerca amb IA",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torneu-ho a provar més tard o millora ara per gaudir d'un accés estable a tots els models d'IA premium."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torneu-ho a provar més tard o millora ara per gaudir d'un accés estable a tots els models d'IA premium.",
+    "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

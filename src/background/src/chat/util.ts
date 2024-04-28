@@ -560,6 +560,40 @@ export const processAskAIParameters = async (
     }
   }
 }
+
+/**
+ * 预处理保存的消息
+ * @param message
+ */
+export const processPreSaveChatMessage = async (message: IChatMessage) => {
+  if (isAIMessage(message)) {
+    // 触发安全限制的消息
+    const content = formatAIMessageContent(message)
+    if (
+      true ||
+      content.includes(
+        `\\u2060\\u200c\\u200d\\u200b\\u2060\\u200c\\u200d\\u200b`,
+      )
+    ) {
+      if (!message.originalMessage) {
+        message.originalMessage = {
+          content: {
+            text: content,
+            contentType: 'text',
+          },
+        }
+      }
+      if (!message.originalMessage.metadata) {
+        message.originalMessage.metadata = {}
+      }
+      message.originalMessage.metadata.isTriggeredContentReview = true
+      message.originalMessage.metadata.includeHistory = false
+      message.originalMessage.metadata.isComplete = true
+    }
+  }
+  return message
+}
+
 /**
  * 判断是否是第三方的AI provider
  * @param AIProvider

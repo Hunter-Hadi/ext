@@ -256,7 +256,8 @@
     "left_menu__sidebar": "साइडबार",
     "feature_card__sidebar__field__auto_archive__title": "ऑटो आर्काइव: जब जाएं तब साफ करें",
     "feature_card__sidebar__field__auto_archive__button__title": "चैट को आर्काइव करें बाद में",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI में, हम आपकी पसंद के अनुसार आईडल चैट को स्वचालित रूप से आर्काइव करते हैं। यह आपको एक ताजगी शुरुआत देता है और आपके साइडबार को साफ-सुथरा रखता है।"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI में, हम आपकी पसंद के अनुसार आईडल चैट को स्वचालित रूप से आर्काइव करते हैं। यह आपको एक ताजगी शुरुआत देता है और आपके साइडबार को साफ-सुथरा रखता है।",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "मैसेंजर तत्काल जवाब"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "अभी तक कोई संदर्भ मेनू इतिहास उपलब्ध नहीं है",
     "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI के साथ खोज करें में अपग्रेड करें",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रैफिक के कारण, कृपया बाद में पुनः प्रयास करें, या सभी प्रीमियम AI मॉडलों का स्थिर पहुँच का आनंद लेने के लिए अभी अपग्रेड करें।"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रैफिक के कारण, कृपया बाद में पुनः प्रयास करें, या सभी प्रीमियम AI मॉडलों का स्थिर पहुँच का आनंद लेने के लिए अभी अपग्रेड करें।",
+    "sidebar__conversation__message__context_triggered_content_review": "मध्यस्थता को छोड़कर संदेश समीक्षा के लिए साफ किया गया"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

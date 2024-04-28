@@ -256,7 +256,8 @@
     "left_menu__sidebar": "الشريط الجانبي",
     "feature_card__sidebar__field__auto_archive__title": "الأرشفة التلقائية: نظّف أثناء استخدامك",
     "feature_card__sidebar__field__auto_archive__button__title": "أرشفة المحادثة بعد",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة الدردشة الخاملة تلقائيًا بالتواتر الذي تختاره. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة الدردشة الخاملة تلقائيًا بالتواتر الذي تختاره. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "الرد الفوري على المراسلة"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "لا توجد سجلات لقوائم السياق حتى الآن",
     "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ترقية للبحث بالذكاء الاصطناعي",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول مستقر إلى جميع نماذج الذكاء الاصطناعي المتميزة."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول مستقر إلى جميع نماذج الذكاء الاصطناعي المتميزة.",
+    "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز التعديل"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

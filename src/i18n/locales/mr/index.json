@@ -256,7 +256,8 @@
     "left_menu__sidebar": "साइडबार",
     "feature_card__sidebar__field__auto_archive__title": "स्वयंसचित्रीकरण: जेव्हा जाऊन टाकता तेव्हा स्वच्छ करा",
     "feature_card__sidebar__field__auto_archive__button__title": "चॅट आर्काइव करा नंतर",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या अनुसार आपल्या खालील चॅट स्वयंपाक करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुसज्जित ठेवते."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या अनुसार आपल्या खालील चॅट स्वयंपाक करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुसज्जित ठेवते.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "मेसेंजर त्वरित प्रतिसाद"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "अद्याप उपलब्ध नाही कोणताही संदर्भ मेनू इतिहास",
     "context_window__chat_history__continue_in_chat__title": "चॅटमध्ये सुरू ठेवा",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI सह शोधाची अपग्रेड करा",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रॅफिकमुळे, कृपया नंतर पुन्हा प्रयत्न करा किंवा सर्व प्रीमियम AI मॉडेल्सचा स्थिर प्रवेशासाठी आत्तापर्यंत अपग्रेड करा."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रॅफिकमुळे, कृपया नंतर पुन्हा प्रयत्न करा किंवा सर्व प्रीमियम AI मॉडेल्सचा स्थिर प्रवेशासाठी आत्तापर्यंत अपग्रेड करा.",
+    "sidebar__conversation__message__context_triggered_content_review": "मध्यस्थता अनदेखी करण्यासाठी संदर्भ साफ केला"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

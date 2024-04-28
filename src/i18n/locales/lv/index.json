@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Sānjosla",
     "feature_card__sidebar__field__auto_archive__title": "Automātiska arhivēšana: Tīrīt, kad izmanto",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhivēt tērzēšanu pēc",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvas sarunas pēc jūsu izvēles ritma. Tas nodrošina svaigu sākumu un uztur jūsu sānu joslu kārtīgu."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvas sarunas pēc jūsu izvēles ritma. Tas nodrošina svaigu sākumu un uztur jūsu sānu joslu kārtīgu.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Ātrā atbilde Messengerī"
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Vēl nav pieejama konteksta izvēlnes vēsture",
     "context_window__chat_history__continue_in_chat__title": "Turpināt čatā",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Jauniniet, lai meklētu ar AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Lielā satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Lielā satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem.",
+    "sidebar__conversation__message__context_triggered_content_review": "Konteksts notīrīts, lai izvairītos no moderēšanas"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dzejolis...",

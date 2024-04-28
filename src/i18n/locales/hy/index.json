@@ -253,7 +253,8 @@
     "left_menu__sidebar": "Մենյուի սաղմոն",
     "feature_card__sidebar__field__auto_archive__title": "Ինքնահատկացված արխիվացում: Մաքրեք ընթացիկը",
     "feature_card__sidebar__field__auto_archive__button__title": "Արխիվացնել խոսակցությունը հետևյալում",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Մեքենայում MaxAI-ի միջոցով, մենք ավտոմատացնում ենք անհատական խորհրդատված խումբները ըստ Ձեր ընտրած պահանջատեղենի. Այսպիսին դուք կսկսեք նորից և կպահեք ձեր կողմից կողմանալի էջը:"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Մեքենայում MaxAI-ի միջոցով, մենք ավտոմատացնում ենք անհատական խորհրդատված խումբները ըստ Ձեր ընտրած պահանջատեղենի. Այսպիսին դուք կսկսեք նորից և կպահեք ձեր կողմից կողմանալի էջը:",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Մեսենջերի անմիջական պատասխան"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",
@@ -749,7 +750,8 @@
     "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
     "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Խառնեք AI-ով որոնումը",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Համակարգիչի բարձր բեռնատարության պատճառով, խնդրում ենք փորձել նորից հետո, կամ բարձրացնել հիմա ՝ որոնումը անմիջապես հասանելի դառնալու համար բոլոր պրեմիում AI մոդելներին։"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Համակարգիչի բարձր բեռնատարության պատճառով, խնդրում ենք փորձել նորից հետո, կամ բարձրացնել հիմա ՝ որոնումը անմիջապես հասանելի դառնալու համար բոլոր պրեմիում AI մոդելներին։",
+    "sidebar__conversation__message__context_triggered_content_review": "Կոնտեքստը մաքրված է, անթույլատրելու մատչելիությունը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

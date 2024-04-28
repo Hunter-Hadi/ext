@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Боковая панель",
     "feature_card__sidebar__field__auto_archive__title": "Автоархивация: Очищайте по мере использования",
     "feature_card__sidebar__field__auto_archive__button__title": "Архивировать чат после",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI мы автоматически архивируем неактивные чаты в выбранном вами режиме. Это дает вам свежий старт и поддерживает порядок на боковой панели."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI мы автоматически архивируем неактивные чаты в выбранном вами режиме. Это дает вам свежий старт и поддерживает порядок на боковой панели.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Мгновенный ответ в Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрыть боковую панель",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Пока нет доступной истории контекстного меню",
     "context_window__chat_history__continue_in_chat__title": "Продолжить в чате",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Обновите для поиска с ИИ",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Из-за высокой нагрузки, попробуйте еще раз позже или обновите сейчас, чтобы насладиться стабильным доступом ко всем премиум моделям ИИ."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Из-за высокой нагрузки, попробуйте еще раз позже или обновите сейчас, чтобы насладиться стабильным доступом ко всем премиум моделям ИИ.",
+    "sidebar__conversation__message__context_triggered_content_review": "Контекст очищен для обхода модерации"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

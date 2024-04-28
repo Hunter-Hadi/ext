@@ -256,7 +256,8 @@
     "left_menu__sidebar": "ስልክ ገጽ",
     "feature_card__sidebar__field__auto_archive__title": "የበሽታውን መጠቀም: በሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ላይ, እኛ ለማስተካከል የሚጠቀሙ የተሳሳተ ውይይትን በማስተካከል ለመስጠት የሚያስችል የሚሆን የምስል ማስታወቂያ ነው። ይህን በማስተካከል አዲስ ጀምሮ ይጀምራል እና የሚስትሩትን ማስታወቂያ ይጠቀሙበታል።"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ላይ, እኛ ለማስተካከል የሚጠቀሙ የተሳሳተ ውይይትን በማስተካከል ለመስጠት የሚያስችል የሚሆን የምስል ማስታወቂያ ነው። ይህን በማስተካከል አዲስ ጀምሮ ይጀምራል እና የሚስትሩትን ማስታወቂያ ይጠቀሙበታል።",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "የመልእክት በቀላሉ መልእክት"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
     "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "የማስፈለገያ እይታ ወደ AI ይዘት ይጠቀሙ",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማስተላለፍ የተለያዩ አገልግሎቶችን የሚያስተላልፉ ለመሆኑ፣ እባክዎ ሌሎች የፕሮሞች AI ሞዴሎችን ይጠቀሙ ወደዚህ ይግዛቸው።"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማስተላለፍ የተለያዩ አገልግሎቶችን የሚያስተላልፉ ለመሆኑ፣ እባክዎ ሌሎች የፕሮሞች AI ሞዴሎችን ይጠቀሙ ወደዚህ ይግዛቸው።",
+    "sidebar__conversation__message__context_triggered_content_review": "የተሳሳተ የመልእክት ማጣሪያ ለማጣሪያ ማስተካከያ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

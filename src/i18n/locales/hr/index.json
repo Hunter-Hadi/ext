@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Bočna traka",
     "feature_card__sidebar__field__auto_archive__title": "Auto arhiviranje: Čistite dok idete",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj razgovor nakon",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u automatski arhiviramo neaktivne razgovore prema vašem odabiru. To vam pruža svježi početak i održava urednost bočne trake."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u automatski arhiviramo neaktivne razgovore prema vašem odabiru. To vam pruža svježi početak i održava urednost bočne trake.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Odgovor u trenu na Messengeru"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Još nema dostupne povijesti izbornika konteksta",
     "context_window__chat_history__continue_in_chat__title": "Nastavi u chatu",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nadogradite na pretragu s AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog prometa, molimo pokušajte ponovno kasnije ili nadogradite sada kako biste uživali u stabilnom pristupu svim premium AI modelima."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog prometa, molimo pokušajte ponovno kasnije ili nadogradite sada kako biste uživali u stabilnom pristupu svim premium AI modelima.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst očišćen za zaobilaženje moderacije"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pjesma...",

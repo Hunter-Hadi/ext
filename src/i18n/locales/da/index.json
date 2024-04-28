@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Sidebar",
     "feature_card__sidebar__field__auto_archive__title": "Autoarkiv: Rens mens du går",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkiver chat efter",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive chats i det tempo, du vælger. Dette giver dig en frisk start og holder din sidebar ryddelig."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive chats i det tempo, du vælger. Dette giver dig en frisk start og holder din sidebar ryddelig.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger øjeblikkelig svar"
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Ingen kontekstmenuhistorik tilgængelig endnu",
     "context_window__chat_history__continue_in_chat__title": "Fortsæt i chat",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Opgrader til søgning med AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund af høj trafik, prøv venligst igen senere, eller opgrader nu for at få stabil adgang til alle premium AI-modeller."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund af høj trafik, prøv venligst igen senere, eller opgrader nu for at få stabil adgang til alle premium AI-modeller.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for at omgå moderation"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",

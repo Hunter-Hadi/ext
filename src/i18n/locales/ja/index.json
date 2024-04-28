@@ -256,7 +256,8 @@
     "left_menu__sidebar": "サイドバー",
     "feature_card__sidebar__field__auto_archive__title": "自動アーカイブ：使いながらクリーンに",
     "feature_card__sidebar__field__auto_archive__button__title": "チャットをアーカイブする",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIでは、選択した頻度でアイドルなチャットを自動的にアーカイブします。これにより、新たなスタートが可能になり、サイドバーが整理されます。"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIでは、選択した頻度でアイドルなチャットを自動的にアーカイブします。これにより、新たなスタートが可能になり、サイドバーが整理されます。",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "メッセンジャー即時返信"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "まだ利用可能なコンテキストメニューの履歴はありません",
     "context_window__chat_history__continue_in_chat__title": "チャットで続ける",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AIで検索するにはアップグレードしてください",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "高いトラフィックのため、後でもう一度お試しください。または今すぐアップグレードして、すべてのプレミアムAIモデルへの安定したアクセスをお楽しみください。"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "高いトラフィックのため、後でもう一度お試しください。または今すぐアップグレードして、すべてのプレミアムAIモデルへの安定したアクセスをお楽しみください。",
+    "sidebar__conversation__message__context_triggered_content_review": "モデレーションをバイパスするためにコンテキストがクリアされました"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

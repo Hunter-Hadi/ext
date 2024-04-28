@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Barra lateral",
     "feature_card__sidebar__field__auto_archive__title": "Auto arquivo: Limpe à medida que avança",
     "feature_card__sidebar__field__auto_archive__button__title": "Arquivar chat após",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência da sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência da sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantânea do Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Ainda não há histórico de menus de contexto disponível",
     "context_window__chat_history__continue_in_chat__title": "Continuar no chat",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Atualize para pesquisar com IA",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Devido ao alto tráfego, por favor tente novamente mais tarde ou faça a atualização agora para desfrutar de acesso estável a todos os modelos premium de IA."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Devido ao alto tráfego, por favor tente novamente mais tarde ou faça a atualização agora para desfrutar de acesso estável a todos os modelos premium de IA.",
+    "sidebar__conversation__message__context_triggered_content_review": "Contexto limpo para contornar a moderação"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Бічна панель",
     "feature_card__sidebar__field__auto_archive__title": "Автоматичне архівування: Прибирайте по ходу",
     "feature_card__sidebar__field__auto_archive__button__title": "Архівувати чат після",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "У MaxAI ми автоматично архівуємо бездіяльний чат з обраною вами періодичністю. Це дає вам свіжий початок і підтримує порядок у бічній панелі."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "У MaxAI ми автоматично архівуємо бездіяльний чат з обраною вами періодичністю. Це дає вам свіжий початок і підтримує порядок у бічній панелі.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Миттєва відповідь у Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Ще немає доступної історії контекстного меню",
     "context_window__chat_history__continue_in_chat__title": "Продовжити у чаті",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Оновіть для пошуку з штучним інтелектом",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Через великий трафік, спробуйте ще раз пізніше або оновіться зараз, щоб насолоджуватися стабільним доступом до всіх преміум моделей ШІ."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Через великий трафік, спробуйте ще раз пізніше або оновіться зараз, щоб насолоджуватися стабільним доступом до всіх преміум моделей ШІ.",
+    "sidebar__conversation__message__context_triggered_content_review": "Контекст очищено для обходу модерації"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Вірш...",

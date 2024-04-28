@@ -256,7 +256,8 @@
     "left_menu__sidebar": "نوار کناری",
     "feature_card__sidebar__field__auto_archive__title": "بایگانی خودکار: همراه با پاکسازی",
     "feature_card__sidebar__field__auto_archive__button__title": "چت را بعد از",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI ، ما گفتگوهای بیکار را به صورت خودکار در فاصله زمانی انتخاب شده توسط شما بایگانی می کنیم. این به شما شروعی تازه می دهد و نوار کناری شما را تمیز نگه می دارد."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI ، ما گفتگوهای بیکار را به صورت خودکار در فاصله زمانی انتخاب شده توسط شما بایگانی می کنیم. این به شما شروعی تازه می دهد و نوار کناری شما را تمیز نگه می دارد.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "پاسخ فوری مسنجر"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "هنوز تاریخچه منوی متنی موجود نیست",
     "context_window__chat_history__continue_in_chat__title": "ادامه در چت",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ارتقا به جستجو با هوش مصنوعی",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "به دلیل ترافیک بالا، لطفاً بعداً دوباره امتحان کنید یا همین الان ارتقا دهید تا به دسترسی پایدار به تمام مدل‌های پریمیوم هوش مصنوعی بپردازید."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "به دلیل ترافیک بالا، لطفاً بعداً دوباره امتحان کنید یا همین الان ارتقا دهید تا به دسترسی پایدار به تمام مدل‌های پریمیوم هوش مصنوعی بپردازید.",
+    "sidebar__conversation__message__context_triggered_content_review": "حذف متن کنتکست برای عبور از مدیریت"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

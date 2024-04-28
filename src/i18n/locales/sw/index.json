@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Upau wa kando",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
     "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi mazungumzo yasiyo na shughuli kiotomatiki kulingana na wakati unaopendelea. Hii inakupa mwanzo mpya na kuweka upande wa kushoto safi."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi mazungumzo yasiyo na shughuli kiotomatiki kulingana na wakati unaopendelea. Hii inakupa mwanzo mpya na kuweka upande wa kushoto safi.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo kwa Papo la Mtumaji"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
     "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Sasisha ili kutafuta na AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au sasisha sasa ili kufurahia upatikanaji thabiti wa mifano yote ya AI ya hali ya juu."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au sasisha sasa ili kufurahia upatikanaji thabiti wa mifano yote ya AI ya hali ya juu.",
+    "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",

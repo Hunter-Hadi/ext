@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Sidebar",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Linisin habang ginagamit",
     "feature_card__sidebar__field__auto_archive__button__title": "I-archive ang usapan pagkatapos",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang mga idle chat sa napiling cadence. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang mga idle chat sa napiling cadence. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger instant reply"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Walang available na kasaysayan ng menu ng konteksto pa",
     "context_window__chat_history__continue_in_chat__title": "Magpatuloy sa chat",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Mag-upgrade para sa paghahanap gamit ang AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang masiyahan sa matatag na access sa lahat ng premium na AI models."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang masiyahan sa matatag na access sa lahat ng premium na AI models.",
+    "sidebar__conversation__message__context_triggered_content_review": "Nalinis ang konteksto upang maiwasan ang moderasyon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

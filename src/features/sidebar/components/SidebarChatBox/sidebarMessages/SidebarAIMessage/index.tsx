@@ -40,6 +40,11 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { t } = useTranslation(['client'])
   const { message, isDarkMode, liteMode = false, loading = false } = props
 
+  const isIncludeHistory =
+    message.originalMessage?.metadata?.includeHistory === false
+  const isTriggeredContentReview =
+    message.originalMessage?.metadata?.isTriggeredContentReview === true
+
   const isRichAIMessage = message.originalMessage !== undefined && !liteMode
   const isSummaryMessage = useMemo(
     () => message.originalMessage?.metadata?.shareType === 'summary',
@@ -117,14 +122,13 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
 
   return (
     <Box component={'div'} className={'chat-message--AI'}>
-      {message.originalMessage?.metadata?.includeHistory === false &&
-        props.order !== 1 && (
-          <Divider sx={{ mb: 2 }}>
-            <Typography color={'text.secondary'} fontSize={'12px'}>
-              {t('client:sidebar__conversation__message__context_cleared')}
-            </Typography>
-          </Divider>
-        )}
+      {!isIncludeHistory && !isTriggeredContentReview && props.order !== 1 && (
+        <Divider sx={{ mb: 2 }}>
+          <Typography color={'text.secondary'} fontSize={'12px'}>
+            {t('client:sidebar__conversation__message__context_cleared')}
+          </Typography>
+        </Divider>
+      )}
       <Stack className={'chat-message--text'} sx={{ ...memoSx }}>
         {isSummaryMessage && (
           <SwitchSummaryActionNav message={message} loading={coverLoading} />
@@ -278,6 +282,15 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
           <Box height={'26px'} />
         )}
       </Stack>
+      {isTriggeredContentReview &&
+        renderData.messageIsComplete &&
+        props.order !== 1 && (
+          <Divider sx={{ mt: 2 }}>
+            <Typography color={'text.secondary'} fontSize={'12px'}>
+              {t('client:sidebar__conversation__message__context_cleared')}
+            </Typography>
+          </Divider>
+        )}
     </Box>
   )
 }

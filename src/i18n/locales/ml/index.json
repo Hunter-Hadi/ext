@@ -256,7 +256,8 @@
     "left_menu__sidebar": "സൈഡ്ബാർ",
     "feature_card__sidebar__field__auto_archive__title": "ഓട്ടോ ആർക്കൈവ്: പോകുന്നതിനും ശുദ്ധമായി",
     "feature_card__sidebar__field__auto_archive__button__title": "ചാറ്റ് ആർക്കൈവ് ചെയ്യുക",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "മാക്സ്‌എയിയിൽ, നിങ്ങൾക്ക് തിരിച്ചുവരുന്ന ചാറ്റുകൾ നിങ്ങളുടെ തിരഞ്ഞെടുപ്പിലുള്ള കാദൻസ് പ്രകാരം ഓട്ടോ ആർക്കൈവ് ചെയ്യുന്നു. ഇത് നിങ്ങളുടെ സൈഡ്ബാർ ശുകൾ പുതിയതായി വിടുകയും ചെയ്യുന്നു."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "മാക്സ്‌എയിയിൽ, നിങ്ങൾക്ക് തിരിച്ചുവരുന്ന ചാറ്റുകൾ നിങ്ങളുടെ തിരഞ്ഞെടുപ്പിലുള്ള കാദൻസ് പ്രകാരം ഓട്ടോ ആർക്കൈവ് ചെയ്യുന്നു. ഇത് നിങ്ങളുടെ സൈഡ്ബാർ ശുകൾ പുതിയതായി വിടുകയും ചെയ്യുന്നു.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "മെസ്സേഞ്ചർ ഇൻസ്റ്റന്റ് പ്രതികരണം"
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "ഇതുവരെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം ലഭ്യമല്ല",
     "context_window__chat_history__continue_in_chat__title": "ചാറ്റില്‍ തുടരുക",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "എയ്ഡ് ഇന്റെലിജൻസ് ഉപയോഗിച്ച് തിരയൽ അപ്ഗ്രേഡ് ചെയ്യുക",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ഉയരമായ ട്രാഫിക്കിനാൽ, ദയവായി ശേഷം വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ പ്രീമിയം AI മോഡലുകൾക്ക് സ്ഥിരമായ ആക്സസ് ആനന്ദിക്കുകയായി ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ഉയരമായ ട്രാഫിക്കിനാൽ, ദയവായി ശേഷം വീണ്ടും ശ്രമിക്കുക, അല്ലെങ്കിൽ പ്രീമിയം AI മോഡലുകൾക്ക് സ്ഥിരമായ ആക്സസ് ആനന്ദിക്കുകയായി ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക.",
+    "sidebar__conversation__message__context_triggered_content_review": "മോഡറേഷൻ അവസാനിപ്പിച്ചതായി കണ്ടെത്തിയ കണ്ടെത്തലുകൾ പരിഹരിച്ചു"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "കവിത...",

@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Šoninė juosta",
     "feature_card__sidebar__field__auto_archive__title": "Automatinis archyvavimas: Valykite, kai naudojatės",
     "feature_card__sidebar__field__auto_archive__button__title": "Archyvuoti pokalbį po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'e automatiškai archyvuojame neaktyvius pokalbius pasirinktu dažniu. Tai suteikia jums naują pradžią ir išlaiko šoninę juostą tvarkingą."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'e automatiškai archyvuojame neaktyvius pokalbius pasirinktu dažniu. Tai suteikia jums naują pradžią ir išlaiko šoninę juostą tvarkingą.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Pranešimo akimirksniu atsakyti"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Dar nėra prieinama kontekstinio meniu istorija",
     "context_window__chat_history__continue_in_chat__title": "Tęsti pokalbį",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naujinti paiešką su dirbtine intelektu",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium dirbtinio intelekto modeliais."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium dirbtinio intelekto modeliais.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, kad būtų galima apeiti moderavimą"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

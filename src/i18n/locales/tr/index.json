@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Kenar Çubuğu",
     "feature_card__sidebar__field__auto_archive__title": "Otomatik arşivleme: Giderken temizleyin",
     "feature_card__sidebar__field__auto_archive__button__title": "Sohbeti arşivle",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, boş sohbetleri istediğiniz sıklıkta otomatik olarak arşivleriz. Bu size yeni bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, boş sohbetleri istediğiniz sıklıkta otomatik olarak arşivleriz. Bu size yeni bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Anında Yanıtla"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Henüz kullanılabilir bir bağlamlı menü geçmişi yok",
     "context_window__chat_history__continue_in_chat__title": "Sohbete devam et",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ile arama yapmaya yükseltin",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Yoğun trafiğe bağlı olarak, lütfen daha sonra tekrar deneyin veya şimdi yükselterek tüm premium AI modellerine istikrarlı erişimin keyfini çıkarın."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Yoğun trafiğe bağlı olarak, lütfen daha sonra tekrar deneyin veya şimdi yükselterek tüm premium AI modellerine istikrarlı erişimin keyfini çıkarın.",
+    "sidebar__conversation__message__context_triggered_content_review": "Moderasyonu atlamak için bağlam temizlendi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

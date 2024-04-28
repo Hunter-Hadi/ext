@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Πλευρική γραμμή",
     "feature_card__sidebar__field__auto_archive__title": "Αυτόματη αρχειοθέτηση: Καθαρίστε καθώς προχωράτε",
     "feature_card__sidebar__field__auto_archive__button__title": "Αρχειοθέτηση συνομιλίας μετά από",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αυτόματα αρχειοθετούμε την αδράνεια συνομιλίας με το ρυθμό της επιλογής σας. Αυτό σας προσφέρει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική σας γραμμή τακτοποιημένη."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αυτόματα αρχειοθετούμε την αδράνεια συνομιλίας με το ρυθμό της επιλογής σας. Αυτό σας προσφέρει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική σας γραμμή τακτοποιημένη.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Άμεση απάντηση Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Δεν υπάρχει ακόμα διαθέσιμο ιστορικό μενού περιβάλλοντος",
     "context_window__chat_history__continue_in_chat__title": "Συνέχεια στη συνομιλία",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Αναβάθμιση για αναζήτηση με ΤΝ",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Λόγω υψηλής κίνησης, παρακαλούμε δοκιμάστε ξανά αργότερα ή αναβαθμίστε τώρα για να απολαύσετε σταθερή πρόσβαση σε όλα τα προηγμένα μοντέλα ΤΝ."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Λόγω υψηλής κίνησης, παρακαλούμε δοκιμάστε ξανά αργότερα ή αναβαθμίστε τώρα για να απολαύσετε σταθερή πρόσβαση σε όλα τα προηγμένα μοντέλα ΤΝ.",
+    "sidebar__conversation__message__context_triggered_content_review": "Καθαρισμός περιβάλλοντος για παράκαμψη της μετριότητας"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

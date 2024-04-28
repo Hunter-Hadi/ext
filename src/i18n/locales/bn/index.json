@@ -256,7 +256,8 @@
     "left_menu__sidebar": "সাইডবার",
     "feature_card__sidebar__field__auto_archive__title": "অটো আর্কাইভ: চলাচলের সাথে পরিষ্কার করুন",
     "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "ম্যাক্সএআইতে, আপনি নিজের পছন্দ অনুযায়ী বিলম্বিত চ্যাটগুলি স্বয়ংক্রিয়ভাবে আর্কাইভ করতে পারেন। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাফল্যের সাথে রাখে।"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ম্যাক্সএআইতে, আপনি নিজের পছন্দ অনুযায়ী বিলম্বিত চ্যাটগুলি স্বয়ংক্রিয়ভাবে আর্কাইভ করতে পারেন। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাফল্যের সাথে রাখে।",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "মেসেঞ্জার তাৎক্ষণিক উত্তর"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "এখনও কোন সংদর্শন মেনু ইতিহাস উপলব্ধ নেই",
     "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "এইচ ট্রাফিকের সাথে এইআই দিয়ে অনুসন্ধান আপগ্রেড করুন",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "উচ্চ ট্রাফিকের কারণে, অনুগ্রহ করে পরে আবার চেষ্টা করুন বা সমস্ত প্রিমিয়াম এআই মডেলের স্থিতিশীল অ্যাক্সেস উপভোগ করতে এখনই আপগ্রেড করুন।"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "উচ্চ ট্রাফিকের কারণে, অনুগ্রহ করে পরে আবার চেষ্টা করুন বা সমস্ত প্রিমিয়াম এআই মডেলের স্থিতিশীল অ্যাক্সেস উপভোগ করতে এখনই আপগ্রেড করুন।",
+    "sidebar__conversation__message__context_triggered_content_review": "মধ্যস্থতা পর্যালোচনা অবগতি দেওয়ার জন্য সংশ্লিষ্টতা মুছে ফেলা হয়েছে"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

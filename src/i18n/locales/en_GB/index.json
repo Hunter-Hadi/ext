@@ -731,6 +731,7 @@
     "sidebar__promotion_dialog__content_item6__description": "Let AI generate personalized message replies for you in seconds with just one click on Discord.",
     "sidebar__promotion_dialog__cta_button": "Upgrade now - Unlock all features",
     "sidebar__conversation__message__context_cleared": "Context cleared",
+    "sidebar__conversation__message__context_triggered_content_review": "Context cleared to bypass moderation",
     "translation_advanced__title": "Translation settings",
     "translation_advanced__source_lang_select__label": "Source language",
     "translation_advanced__target_lang_select__label": "Target language",

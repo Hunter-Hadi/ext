@@ -256,7 +256,8 @@
     "left_menu__sidebar": "பக்கம் பட்டி",
     "feature_card__sidebar__field__auto_archive__title": "தானியங்கி பதிவு: நீங்கள் செல்லும்போது சுத்தமாக்குங்கள்",
     "feature_card__sidebar__field__auto_archive__button__title": "அழிக்கப்பட்ட அரசியல் உரையாடலை",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "மேலும் அறிவிப்பு"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "மேலும் அறிவிப்பு",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "துவக்க உதவி எனக்கு எழுத மெசஞ்சர் உடனாக பதில்"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "இன்னும் சூழல் மெனு வரலாறு இல்லை",
     "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ஐயுடன் தேடுக",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "அதிக வண்டி மாற்றம் காரணமாக, பின்னர் மீண்டும் முயற்சிக்கவும் அல்லது அனைத்து பிரீமியம் ஐயில் மாதிரி அணுகல்களுக்கு நிலையான அணுகலை ஆரம்பிக்க இப்போது மேம்படுத்தவும்."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "அதிக வண்டி மாற்றம் காரணமாக, பின்னர் மீண்டும் முயற்சிக்கவும் அல்லது அனைத்து பிரீமியம் ஐயில் மாதிரி அணுகல்களுக்கு நிலையான அணுகலை ஆரம்பிக்க இப்போது மேம்படுத்தவும்.",
+    "sidebar__conversation__message__context_triggered_content_review": "மின்னஞ்சல் மின்னணு அனுமதியை விட உள்ளடக்கம் அழிக்கப்பட்டது"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

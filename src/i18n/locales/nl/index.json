@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Zijbalk",
     "feature_card__sidebar__field__auto_archive__title": "Automatisch archiveren: Schoon terwijl je gaat",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archiveren na",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chats op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chats op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Direct antwoord van Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Nog geen geschiedenis van contextmenu beschikbaar",
     "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade naar zoeken met AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vanwege hoge verkeersdrukte, probeer het later opnieuw of upgrade nu om stabiele toegang tot alle premium AI-modellen te krijgen."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vanwege hoge verkeersdrukte, probeer het later opnieuw of upgrade nu om stabiele toegang tot alle premium AI-modellen te krijgen.",
+    "sidebar__conversation__message__context_triggered_content_review": "Context gewist om moderatie te omzeilen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

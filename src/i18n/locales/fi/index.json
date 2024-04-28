@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Sivupalkki",
     "feature_card__sidebar__field__auto_archive__title": "Automaattinen arkistointi: Puhdista sitä mukaa",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkistoi keskustelu",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti passiivisen keskustelun valitsemallasi taajuudella. Tämä antaa sinulle uuden alun ja pitää sivupalkkisi siistinä."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti passiivisen keskustelun valitsemallasi taajuudella. Tämä antaa sinulle uuden alun ja pitää sivupalkkisi siistinä.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messengerin pikavastaus"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Ei vielä saatavilla olevaa kontekstivalikon historiaa",
     "context_window__chat_history__continue_in_chat__title": "Jatka keskustelua",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Päivitä haku tekoälyllä",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Korkean liikenteen vuoksi yritä myöhemmin uudelleen tai päivitä nyt, jotta voit käyttää kaikkia premium-tason tekoälymalleja vakaiden yhteyksien avulla."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Korkean liikenteen vuoksi yritä myöhemmin uudelleen tai päivitä nyt, jotta voit käyttää kaikkia premium-tason tekoälymalleja vakaiden yhteyksien avulla.",
+    "sidebar__conversation__message__context_triggered_content_review": "Konteksti tyhjennetty ohittaaksesi moderoinnin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

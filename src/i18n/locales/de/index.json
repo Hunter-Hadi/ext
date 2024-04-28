@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Seitenleiste",
     "feature_card__sidebar__field__auto_archive__title": "Auto-Archivierung: Aufräumen während der Nutzung",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archivieren nach",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir automatisch Chatverläufe, die nicht genutzt werden, in dem von Ihnen gewählten Rhythmus. Dadurch erhalten Sie einen frischen Start und behalten Ihre Seitenleiste aufgeräumt."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir automatisch Chatverläufe, die nicht genutzt werden, in dem von Ihnen gewählten Rhythmus. Dadurch erhalten Sie einen frischen Start und behalten Ihre Seitenleiste aufgeräumt.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Sofortige Antwort im Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Kein Kontextmenü-Verlauf verfügbar",
     "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade auf die Suche mit KI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um Moderation zu umgehen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

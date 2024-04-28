@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Stranska vrstica",
     "feature_card__sidebar__field__auto_archive__title": "Samodejno arhiviranje: Čiščenje med uporabo",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj klepet po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI samodejno arhiviramo neaktivne klepete v izbranem časovnem intervalu. To vam omogoča svež začetek in ohranja urejenost stranske vrstice."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI samodejno arhiviramo neaktivne klepete v izbranem časovnem intervalu. To vam omogoča svež začetek in ohranja urejenost stranske vrstice.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Odgovor v trenutku"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zapri stransko vrstico",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Zaenkrat ni na voljo nobene zgodovine menijev",
     "context_window__chat_history__continue_in_chat__title": "Nadaljuj v klepet",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nadgradite na iskanje z AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zaradi visokega prometa poskusite znova kasneje ali nadgradite zdaj, da uživate v stabilnem dostopu do vseh premium modelov AI."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zaradi visokega prometa poskusite znova kasneje ali nadgradite zdaj, da uživate v stabilnem dostopu do vseh premium modelov AI.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst izbrisan za obvoz moderacije"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesem...",

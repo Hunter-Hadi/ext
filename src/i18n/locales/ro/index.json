@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Bară laterală",
     "feature_card__sidebar__field__auto_archive__title": "Arhivare automată: Curățați pe măsură ce mergeți",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhivați conversația după",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "În MaxAI, arhivăm automat conversațiile inactive la frecvența aleasă de tine. Aceasta îți oferă un nou început și menține ordinea în bara laterală."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "În MaxAI, arhivăm automat conversațiile inactive la frecvența aleasă de tine. Aceasta îți oferă un nou început și menține ordinea în bara laterală.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Răspuns instant Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Nu există încă istoric al meniului contextual",
     "context_window__chat_history__continue_in_chat__title": "Continuați în chat",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgradează pentru căutare cu AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Datorită traficului intens, vă rugăm să încercați din nou mai târziu sau faceți upgrade acum pentru a avea acces stabil la toate modelele premium de AI."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Datorită traficului intens, vă rugăm să încercați din nou mai târziu sau faceți upgrade acum pentru a avea acces stabil la toate modelele premium de AI.",
+    "sidebar__conversation__message__context_triggered_content_review": "Context eliminat pentru a evita moderarea"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poem...",

@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Pasek boczny",
     "feature_card__sidebar__field__auto_archive__title": "Automatyczne archiwizowanie: Czyść na bieżąco",
     "feature_card__sidebar__field__auto_archive__button__title": "Archiwizuj czat po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "W MaxAI automatycznie archiwizujemy bezczynny czat w wybranym przez Ciebie tempie. To daje Ci świeży start i utrzymuje porządek na bocznym panelu."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "W MaxAI automatycznie archiwizujemy bezczynny czat w wybranym przez Ciebie tempie. To daje Ci świeży start i utrzymuje porządek na bocznym panelu.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Odpowiedź natychmiastowa na Messengerze"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Brak dostępnej historii menu kontekstowego",
     "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Uaktualnij do wyszukiwania z AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Ze względu na duży ruch, spróbuj ponownie później lub teraz uaktualnij, aby korzystać ze stabilnego dostępu do wszystkich premium modeli AI."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Ze względu na duży ruch, spróbuj ponownie później lub teraz uaktualnij, aby korzystać ze stabilnego dostępu do wszystkich premium modeli AI.",
+    "sidebar__conversation__message__context_triggered_content_review": "Usunięto kontekst w celu pominięcia moderacji"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",

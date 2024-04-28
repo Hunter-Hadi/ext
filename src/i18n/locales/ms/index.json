@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Bar sisi",
     "feature_card__sidebar__field__auto_archive__title": "Arkib automatik: Bersihkan seiring perjalanan",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkib sembang selepas",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami secara automatik mengarkibkan perbualan yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga sidebar anda kemas."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami secara automatik mengarkibkan perbualan yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga sidebar anda kemas.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Balasan segera Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "Tiada sejarah menu konteks yang tersedia lagi",
     "context_window__chat_history__continue_in_chat__title": "Teruskan dalam perbualan",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naik taraf untuk mencari dengan AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kerana trafik yang tinggi, sila cuba lagi nanti, atau naik taraf sekarang untuk menikmati akses stabil kepada semua model AI premium."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kerana trafik yang tinggi, sila cuba lagi nanti, atau naik taraf sekarang untuk menikmati akses stabil kepada semua model AI premium.",
+    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk mengelakkan moderasi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

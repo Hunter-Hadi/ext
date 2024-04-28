@@ -256,7 +256,8 @@
     "left_menu__sidebar": "سائڈبار",
     "feature_card__sidebar__field__auto_archive__title": "خودکار آرکائیو: جب بھی صفائی کریں",
     "feature_card__sidebar__field__auto_archive__button__title": "چیٹ آرکائیو کریں بعد میں",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں ہم آپ کی مرضی کے مطابق خاموش چیٹ کو خود بخود آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کے سائڈبار کو صاف ستھرا رکھتا ہے۔"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں ہم آپ کی مرضی کے مطابق خاموش چیٹ کو خود بخود آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کے سائڈبار کو صاف ستھرا رکھتا ہے۔",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "فوری جواب میسنجر"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "ابھی تک کوئی مواضع کے مینوز کی تاریخ دستیاب نہیں ہے",
     "context_window__chat_history__continue_in_chat__title": "چیٹ میں جاری رکھیں",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI کے ساتھ تلاش کو اپ گریڈ کریں",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "بلند روانگی کی وجہ سے، براہ کرم بعد میں دوبارہ کوشش کریں یا اب اپ گریڈ کریں تاکہ آپ پریمیم AI ماڈلز کا مستحکم رسائی کا لطف اٹھا سکیں۔"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "بلند روانگی کی وجہ سے، براہ کرم بعد میں دوبارہ کوشش کریں یا اب اپ گریڈ کریں تاکہ آپ پریمیم AI ماڈلز کا مستحکم رسائی کا لطف اٹھا سکیں۔",
+    "sidebar__conversation__message__context_triggered_content_review": "محتوا کو نظر سے گزارش کرنے کے لئے سیاق و سباق ختم کیا گیا"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",

@@ -256,7 +256,8 @@
     "left_menu__sidebar": "సైడ్‌బార్",
     "feature_card__sidebar__field__auto_archive__title": "ఆటో ఆర్కైవ్: మీరు పోగొట్టేందుకు శుభ్రంగా ఉంచండి",
     "feature_card__sidebar__field__auto_archive__button__title": "చాట్‌ను ఆర్కైవ్ చేయండి",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు మీ ఆకట్టుని తగ్గించడానికి మీ ప్రాధాన్యత సమయంలో ఆటో ఆర్కైవ్ చేస్తాము. ఇది మీకు తాజా ప్రారంభం ఇవ్వడం మరియు మీ సైడ్‌బార్ శుభ్రంగా ఉంచుకోవడం కోసం ఉంటుంది."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు మీ ఆకట్టుని తగ్గించడానికి మీ ప్రాధాన్యత సమయంలో ఆటో ఆర్కైవ్ చేస్తాము. ఇది మీకు తాజా ప్రారంభం ఇవ్వడం మరియు మీ సైడ్‌బార్ శుభ్రంగా ఉంచుకోవడం కోసం ఉంటుంది.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "మెసేంజర్ తక్షణ సమాధానం"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -752,7 +753,8 @@
     "context_window__chat_history__empty__title": "ఇంకా ఏ కంటెక్స్ట్ మెనూ చరిత్ర లేదు",
     "context_window__chat_history__continue_in_chat__title": "చాట్‌లో కొనసాగించు",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ఏఐతో శోధన నిర్వహించడానికి అప్గ్రేడ్ చేయండి",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ఉన్న అతి ఎక్కువ ట్రాఫిక్ కారణంగా, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి లేదా ప్రీమియం ఏఐ మోడల్స్‌కు స్థిరమైన ప్రవేశాన్ని ఆనందించడానికి ఇప్పుడు అప్గ్రేడ్ చేయండి."
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ఉన్న అతి ఎక్కువ ట్రాఫిక్ కారణంగా, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి లేదా ప్రీమియం ఏఐ మోడల్స్‌కు స్థిరమైన ప్రవేశాన్ని ఆనందించడానికి ఇప్పుడు అప్గ్రేడ్ చేయండి.",
+    "sidebar__conversation__message__context_triggered_content_review": "మాదిరిపోయిన విషయం మీద నిర్బంధన చేయడానికి సందర్భం తొలగించబడింది"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

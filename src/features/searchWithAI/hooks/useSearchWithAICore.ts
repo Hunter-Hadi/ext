@@ -93,6 +93,13 @@ const getFreeUserIsHighTrafficPrompt = async () => {
   if (interval <= 0) {
     if (times <= 1) {
       await resetFreeUserHighTrafficPrompt()
+    } else {
+      await Browser.storage.local.set({
+        [FREE_USER_HIGH_TRAFFIC_SAVE_KEY]: {
+          interval: interval,
+          times: times - 1,
+        },
+      })
     }
     // 如果times为0，则代表不需要提示高流量,返回false
     return times > 0
@@ -207,6 +214,7 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
       searchWithAISettings.aiProvider === 'MAXAI_FREE' &&
       (await getFreeUserIsHighTrafficPrompt())
     ) {
+      loadingRef.current = false
       setStatus('error')
       mixpanelTrack('paywall_showed', {
         logType: `SEARCH_WITH_AI_HIGH_TRAFFIC(Free)`,

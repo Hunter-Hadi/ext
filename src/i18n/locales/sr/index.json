@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot brza poruka",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram brza poruka",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams brza poruka",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat brza poruka"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat brza poruka",
+    "left_menu__sidebar": "Bočna traka",
+    "feature_card__sidebar__field__auto_archive__title": "Automatsko arhiviranje: Čistite dok radite",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj čet posle",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u, automatski arhiviramo neaktivne četove prema vašem izboru. Ovo vam pruža svež početak i održava vašu bočnu traku urednom."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Dobijte detaljne odgovore na kompleksna pitanja",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Pretražujte sa AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Prikažite AI odgovore pored rezultata pretrage",
-    "instant_reply_button__explicit__display_text": "Trenutni odgovor"
+    "instant_reply_button__explicit__display_text": "Trenutni odgovor",
+    "immersive_chat__delete_all_context_menu__button__title": "Obriši sve kontekstualne menije",
+    "immersive_chat__delete_all_context_menu__title": "Obriši istoriju tvojih kontekstualnih menija - da li si siguran?",
+    "context_window__chat_history__button__title": "Istorija kontekstualnih menija",
+    "context_window__chat_history__empty__title": "Još uvek nema dostupne istorije kontekstualnih menija",
+    "context_window__chat_history__continue_in_chat__title": "Nastavi u četu"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Prijateljski",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direktan",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Samouveren",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Opušteno"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Opušteno",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Nastavi u četu"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogućnosti",

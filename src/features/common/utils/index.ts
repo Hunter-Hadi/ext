@@ -1,16 +1,5 @@
 import size from 'lodash-es/size'
 
-import {
-  MAXAI_SIDEBAR_ID,
-  MAXAI_SIDEBAR_WRAPPER_ID,
-} from '@/features/common/constants'
-
-export const getMaxAISidebarRootElement = (): HTMLElement | undefined => {
-  return document
-    .querySelector(`#${MAXAI_SIDEBAR_ID}`)
-    ?.shadowRoot?.querySelector(`#${MAXAI_SIDEBAR_WRAPPER_ID}`) as HTMLElement
-}
-
 /**
  * 判断是否有数据
  *

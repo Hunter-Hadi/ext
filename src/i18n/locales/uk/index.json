@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "ہب سپاٹ فوری جواب",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "ٹیلیگرام فوری جواب",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "مائیکروسافٹ ٹیمز فوری جواب",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "گوگل چیٹ فوری جواب"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "گوگل چیٹ فوری جواب",
+    "left_menu__sidebar": "سائڈبار",
+    "feature_card__sidebar__field__auto_archive__title": "خودکار آرکائیو: جب بھی صفائی کریں",
+    "feature_card__sidebar__field__auto_archive__button__title": "چیٹ آرکائیو کریں بعد میں",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں، ہم آپ کی پسندیدہ تناسب کے ساتھ خودکار طور پر بیکار چیٹ آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کی سائڈبار کو صاف رکھتا ہے۔"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "پیچیدہ سوالات کے لئے لمبے جوابات حاصل کریں",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI کے ساتھ تلاش کریں",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "تلاش کے نتائج کے پاس AI جوابات دکھائیں",
-    "instant_reply_button__explicit__display_text": "فوری جواب"
+    "instant_reply_button__explicit__display_text": "فوری جواب",
+    "immersive_chat__delete_all_context_menu__button__title": "تمام مواضع کے مینوز کو حذف کریں",
+    "immersive_chat__delete_all_context_menu__title": "آپ کے مواضع کے مینوز کی تاریخ صاف کریں - کیا آپ مطمئن ہیں؟",
+    "context_window__chat_history__button__title": "مواضع کے مینوز کی تاریخ",
+    "context_window__chat_history__empty__title": "ابھی تک کوئی مواضع کے مینوز کی تاریخ دستیاب نہیں ہے",
+    "context_window__chat_history__continue_in_chat__title": "چیٹ میں جاری رکھیں"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "کاوش...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "دوستانہ",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "سیدھا سادہ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "پر اعتماد",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیر رسمی"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیر رسمی",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "چیٹ میں جاری رکھیں"
   },
   "prompt_editor": {
     "preset_variables__title": "صلاحیتوں",

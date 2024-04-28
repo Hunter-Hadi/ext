@@ -6,7 +6,7 @@ import React, { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 interface IProps {
   sx?: SxProps

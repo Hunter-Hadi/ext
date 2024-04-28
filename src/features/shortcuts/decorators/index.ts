@@ -31,7 +31,7 @@ export const shortcutsRenderTemplate = (
         while (parts.length) {
           const prop: string = parts.shift()!
           if (Object.prototype.hasOwnProperty.call(val, prop)) {
-            val = val[prop]
+            val = typeof val[prop] === 'string' ? val[prop] : String(val[prop])
           } else {
             val = ''
             break
@@ -142,9 +142,8 @@ export function pushOutputToChat(
       const actionInstance: Action = this as any
       const value = await oldFunc.apply(this, args)
       // NOTE: Action还没有对外暴露，所以不能显示Action的名称和类型
-      const {
-        clientConversationEngine,
-      } = engine as IShortcutEngineExternalEngine
+      const { clientConversationEngine } =
+        engine as IShortcutEngineExternalEngine
       const conversationId =
         clientConversationEngine?.currentConversationIdRef.current
       if (conversationId) {
@@ -191,9 +190,13 @@ export function withLoadingDecorators() {
     const oldFunc = descriptor.value
     descriptor.value = async function (...args: any[]) {
       const [, engine] = args
-      ;(engine as IShortcutEngineExternalEngine)?.clientConversationEngine?.showConversationLoading()
+      ;(
+        engine as IShortcutEngineExternalEngine
+      )?.clientConversationEngine?.showConversationLoading()
       const value = await oldFunc.apply(this, args)
-      ;(engine as IShortcutEngineExternalEngine)?.clientConversationEngine?.hideConversationLoading()
+      ;(
+        engine as IShortcutEngineExternalEngine
+      )?.clientConversationEngine?.hideConversationLoading()
       return value
     }
   }
@@ -245,7 +248,8 @@ export function completeLastAIMessageOnStop() {
       const { clientConversationEngine } = params?.engine || {}
       // 结束最后一条AI message
       if (clientConversationEngine?.currentConversationIdRef.current) {
-        const currentConversation = await clientConversationEngine.getCurrentConversation()
+        const currentConversation =
+          await clientConversationEngine.getCurrentConversation()
         if (currentConversation) {
           const lastMessage =
             currentConversation.messages[
@@ -301,7 +305,8 @@ export function completeLastAIMessageOnError() {
           (engine as IShortcutEngineExternalEngine) || {}
         // 结束最后一条AI message
         if (clientConversationEngine?.currentConversationIdRef.current) {
-          const currentConversation = await clientConversationEngine.getCurrentConversation()
+          const currentConversation =
+            await clientConversationEngine.getCurrentConversation()
           if (currentConversation) {
             const lastMessage =
               currentConversation.messages[

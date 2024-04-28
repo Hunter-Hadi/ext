@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Jibu la haraka kwenye HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Jibu la haraka kwenye Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Jibu la haraka kwenye Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Jibu la haraka kwenye Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Jibu la haraka kwenye Google Chat",
+    "left_menu__sidebar": "Upau wa kando",
+    "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
+    "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi."
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Pata majibu marefu kwa maswali magumu",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Tafuta na AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Onyesha majibu ya AI karibu na matokeo ya utafutaji",
-    "instant_reply_button__explicit__display_text": "Jibu la haraka"
+    "instant_reply_button__explicit__display_text": "Jibu la haraka",
+    "immersive_chat__delete_all_context_menu__button__title": "Futa menyu zote za muktadha",
+    "immersive_chat__delete_all_context_menu__title": "Ondoa historia yako ya menyu za muktadha - una uhakika?",
+    "context_window__chat_history__button__title": "Historia ya menyu ya muktadha",
+    "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
+    "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Shairi...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Rafiki",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Moja kwa moja",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Thabiti",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Kawaida"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Kawaida",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Endelea katika mazungumzo"
   },
   "prompt_editor": {
     "preset_variables__title": "Uwezo",

@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import SidebarCopyButton from '@/features/sidebar/components/SidebarChatBox/SidebarCopyButton'
@@ -16,6 +17,7 @@ const SidebarAIMessageTools: FC<{
   message: IAIResponseMessage
 }> = (props) => {
   const { message } = props
+  const { currentSidebarConversationType } = useClientConversation()
   const { t } = useTranslation(['common'])
   const [isCoping, setIsCoping] = useState(false)
   const messageContentType =
@@ -74,7 +76,7 @@ const SidebarAIMessageTools: FC<{
                               )
                               resolve(false)
                             })
-                            .finally(() => { })
+                            .finally(() => {})
                         } else {
                           resolve(false)
                         }
@@ -107,19 +109,20 @@ const SidebarAIMessageTools: FC<{
         <SidebarAIMessageAttachmentsDownloadButton message={message} />
       )}
       {messageContentType === 'text' && <SidebarCopyButton message={message} />}
-      {messageContentType === 'text' && (
-        <FloatingInputButton
-          className={'max-ai__actions__button--use-max-ai'}
-          iconButton
-          onBeforeShowContextMenu={() => {
-            return {
-              template: memoCopyText,
-              target: gmailChatBoxAiToolsRef.current
-                ?.parentElement as HTMLElement,
-            }
-          }}
-        />
-      )}
+      {messageContentType === 'text' &&
+        currentSidebarConversationType !== 'ContextMenu' && (
+          <FloatingInputButton
+            className={'max-ai__actions__button--use-max-ai'}
+            iconButton
+            onBeforeShowContextMenu={() => {
+              return {
+                template: memoCopyText,
+                target: gmailChatBoxAiToolsRef.current
+                  ?.parentElement as HTMLElement,
+              }
+            }}
+          />
+        )}
     </Stack>
   )
 }

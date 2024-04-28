@@ -52,6 +52,13 @@ export const defaultChromeExtensionDBStorage =
           outlook: true,
           youtube: true,
         },
+        sidebar: {
+          autoArchive: {
+            Art: 10 * 60 * 1000,
+            Chat: 10 * 60 * 1000,
+            Search: 10 * 60 * 1000,
+          },
+        },
       },
       buttonSettings: {
         inputAssistantComposeReplyButton: {
@@ -186,7 +193,6 @@ export const getChromeExtensionDBStorage =
             buttonSettings: currentButtonContentMenuSettings,
           },
         ]) as IChromeExtensionDBStorage
-        console.log('mergedSettings', mergedSettings)
         // 废弃字段处理
         // 1. 去掉selectionButtonVisible字段控制 - v2.0.2 - 20230710
         if (

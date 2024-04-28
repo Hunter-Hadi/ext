@@ -117,7 +117,11 @@ export const ArtAIProviderModelSelectorOptions: AIProviderModelSelectorOption[] 
     },
   ]
 
-export const getAIProviderModelSelectorOptions = (
+/**
+ * 基于不同的会话类型，获取AIProviderModelSelectorOptions
+ * @param conversationType
+ */
+export const getModelOptionsForConversationType = (
   conversationType: ISidebarConversationType,
 ) => {
   switch (conversationType) {
@@ -129,5 +133,13 @@ export const getAIProviderModelSelectorOptions = (
       return []
     case 'Art':
       return ArtAIProviderModelSelectorOptions
+    case 'FAQ':
+      return []
+    case 'Memo':
+      return []
+    case 'ContextMenu':
+      return ChatAIProviderModelSelectorOptions
+    default:
+      return []
   }
 }

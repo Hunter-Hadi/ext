@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Szybka odpowiedź HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Szybka odpowiedź Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Szybka odpowiedź Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Szybka odpowiedź Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Szybka odpowiedź Google Chat",
+    "left_menu__sidebar": "Pasek boczny",
+    "feature_card__sidebar__field__auto_archive__title": "Automatyczne archiwizowanie: Czyść na bieżąco",
+    "feature_card__sidebar__field__auto_archive__button__title": "Archiwizuj czat po",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "W MaxAI automatycznie archiwizujemy bezczynne rozmowy według wybranej częstotliwości. Dzięki temu masz świeży start i utrzymujesz porządek na pasku bocznym."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zamknij pasek boczny",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Otrzymuj długie odpowiedzi na skomplikowane pytania",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Wyszukuj z AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Wyświetlaj odpowiedzi AI obok wyników wyszukiwania",
-    "instant_reply_button__explicit__display_text": "Odpowiedź natychmiastowa"
+    "instant_reply_button__explicit__display_text": "Odpowiedź natychmiastowa",
+    "immersive_chat__delete_all_context_menu__button__title": "Usuń wszystkie menu kontekstowe",
+    "immersive_chat__delete_all_context_menu__title": "Wyczyść historię twoich menu kontekstowych - na pewno?",
+    "context_window__chat_history__button__title": "Historia menu kontekstowego",
+    "context_window__chat_history__empty__title": "Brak dostępnej historii menu kontekstowego",
+    "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Wiersz...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Przyjazny",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Prosty",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Pewny siebie",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Luźny"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Luźny",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Kontynuuj w czacie"
   },
   "prompt_editor": {
     "preset_variables__title": "Możliwości",

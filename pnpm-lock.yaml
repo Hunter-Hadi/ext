@@ -38,6 +38,9 @@ dependencies:
   '@tanstack/react-query':
     specifier: ^5.8.4
     version: 5.28.9(react@18.2.0)
+  '@types/mixpanel-browser':
+    specifier: ^2.49.0
+    version: 2.49.0
   ace-builds:
     specifier: ^1.15.3
     version: 1.32.8
@@ -98,6 +101,9 @@ dependencies:
   md5:
     specifier: ^2.3.0
     version: 2.3.0
+  mixpanel-browser:
+    specifier: ^2.49.0
+    version: 2.49.0
   mkdirp:
     specifier: ^3.0.0
     version: 3.0.1
@@ -155,6 +161,9 @@ dependencies:
   react-scroll:
     specifier: ^1.8.9
     version: 1.9.0(react-dom@18.2.0)(react@18.2.0)
+  react-window:
+    specifier: ^1.8.10
+    version: 1.8.10(react-dom@18.2.0)(react@18.2.0)
   recoil:
     specifier: ^0.7.6
     version: 0.7.7(react-dom@18.2.0)(react@18.2.0)
@@ -259,6 +268,9 @@ devDependencies:
   '@types/react-scroll':
     specifier: ^1.8.7
     version: 1.8.10
+  '@types/react-window':
+    specifier: ^1.8.8
+    version: 1.8.8
   '@types/sanitize-html':
     specifier: ^2.9.3
     version: 2.11.0
@@ -2838,6 +2850,10 @@ packages:
       '@types/unist': 2.0.10
     dev: false
 
+  /@types/mixpanel-browser@2.49.0:
+    resolution: {integrity: sha512-StmgUnS58d44DmIAEX9Kk8qwisAYCl6E2qulIjYyHXUPuJCPOuyUMTTKBp+aU2F2do+kxAzCxiBtsB4fnBT9Fg==}
+    dev: false
+
   /@types/ms@0.7.34:
     resolution: {integrity: sha512-nG96G3Wp6acyAgJqGasjODb+acrI7KltPiRxzHPXnP3NgI28bpQDRv53olbqGXbfcgF5aiiHmO3xpwEpS5Ld9g==}
     dev: false
@@ -2885,6 +2901,12 @@ packages:
     dependencies:
       '@types/react': 18.2.72
     dev: false
+
+  /@types/react-window@1.8.8:
+    resolution: {integrity: sha512-8Ls660bHR1AUA2kuRvVG9D/4XpRC6wjAaPT9dil7Ckc76eP9TKWZwwmgfq8Q1LANX3QNDnoU4Zp48A3w+zK69Q==}
+    dependencies:
+      '@types/react': 18.2.72
+    dev: true
 
   /@types/react@18.2.72:
     resolution: {integrity: sha512-/e7GWxGzXQF7OJAua7UAYqYi/4VpXEfbGtmYQcAQwP3SjjjAXfybTf/JK5S+SaetB/ChXl8Y2g1hCsj7jDXxcg==}
@@ -6273,6 +6295,10 @@ packages:
       '@types/mdast': 3.0.15
     dev: false
 
+  /memoize-one@5.2.1:
+    resolution: {integrity: sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==}
+    dev: false
+
   /merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
@@ -6608,6 +6634,10 @@ packages:
     resolution: {integrity: sha512-jYofLM5Dam9279rdkWzqHozUo4ybjdZmCsDHePy5V/PbBcVMiSZR97gmAy45aqi8CK1lG2ECd356FU86avfwUQ==}
     engines: {node: '>=16 || 14 >=14.17'}
     dev: true
+
+  /mixpanel-browser@2.49.0:
+    resolution: {integrity: sha512-RZJCO7XXuuHBAWG5fd9Mavz994M7v7W3Qiaq8NzmN631pa4BQ0vNZQtRFqKcCCOBn4xqOZbX2GkuC7ZkQoL4cQ==}
+    dev: false
 
   /mkdirp@3.0.1:
     resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
@@ -7472,6 +7502,19 @@ packages:
       react-dom: '>=16.13'
     dependencies:
       debounce: 1.2.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
+  /react-window@1.8.10(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Y0Cx+dnU6NLa5/EvoHukUD0BklJ8qITCtVEPY1C/nL8wwoZ0b5aEw8Ff1dOVHw7fCzMt55XfJDd8S8W8LCaUCg==}
+    engines: {node: '>8.0.0'}
+    peerDependencies:
+      react: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^15.0.0 || ^16.0.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@babel/runtime': 7.24.1
+      memoize-one: 5.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
     dev: false

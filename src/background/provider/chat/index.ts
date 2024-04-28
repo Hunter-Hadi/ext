@@ -2,8 +2,8 @@ export { BardChatProvider } from './BardChatProvider'
 export { BingChatProvider } from './BingChatProvider'
 export type {
   ChatAdapterInterface,
-  ChatStatus,
   ChatSystemInterface,
+  ConversationStatusType,
   IAIProviderType,
 } from './ChatAdapter'
 export { ChatAdapter } from './ChatAdapter'

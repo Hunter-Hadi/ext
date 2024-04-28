@@ -4,8 +4,8 @@ import { useSetRecoilState } from 'recoil'
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { useAuthLogin } from '@/features/auth'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { useInitChatGPTClient } from '@/features/chatgpt'
 import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateListener'
+import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import { AppDBStorageState, AppLocalStorageState } from '@/store'
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 
@@ -40,7 +40,7 @@ const AppSettingsInit = () => {
   return <></>
 }
 const MinimumAppInit: FC = () => {
-  useInitChatGPTClient()
+  useClientMessageListenerForBackground()
   useAuthLogin()
   useInitUserInfo()
   return (

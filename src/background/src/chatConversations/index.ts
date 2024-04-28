@@ -1,3 +1,4 @@
+import dayjs from 'dayjs'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
@@ -322,10 +323,14 @@ class ConversationDB {
     const allConversations = await this.getAllConversations()
     const waitDeleteConversations: IChatConversation[] =
       allConversations.filter((conversation) => {
+        // 1. 没有消息
+        // 2. 不是当前对话类型
+        // 3. 不是当前对话ID
+        // 4. 时间超过24小时
         return (
           conversation.messages.length === 0 &&
-          conversation.type === filterConversationType &&
-          conversation.id !== filterConversationId
+          conversation.type !== filterConversationType &&
+          dayjs().diff(dayjs(new Date(conversation.updated_at)), 'hours') > 24
         )
       })
     await Promise.all(

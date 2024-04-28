@@ -31,22 +31,22 @@ class BardChat extends BaseChat {
   async checkAuth() {
     this.active = true
     if (this.token) {
-      await this.updateClientStatus('success')
+      await this.updateStatus('success')
     } else {
-      await this.updateClientStatus('needAuth')
+      await this.updateStatus('needAuth')
     }
   }
   async auth() {
     this.active = true
     if (!(await this.syncBardToken())) {
       // need Auth
-      await this.updateClientStatus('needAuth')
+      await this.updateStatus('needAuth')
       await Browser.tabs.create({
         url: 'https://gemini.google.com/',
         active: true,
       })
     } else {
-      await this.updateClientStatus('success')
+      await this.updateStatus('success')
     }
   }
   async askChatGPT(
@@ -90,7 +90,7 @@ class BardChat extends BaseChat {
         // need Auth
       }
       this.status = 'needAuth'
-      await this.updateClientStatus(this.status)
+      await this.updateStatus(this.status)
       onMessage?.({
         type: 'error',
         done: true,
@@ -286,7 +286,7 @@ class BardChat extends BaseChat {
   }
   async destroy() {
     await this.clearFiles()
-    await this.updateClientStatus('needAuth')
+    await this.updateStatus('needAuth')
     this.active = false
   }
 }

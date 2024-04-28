@@ -1,6 +1,11 @@
 import React from 'react'
 
-export const settingsPageRouterList = [
+export const settingsPageRouterList: Array<{
+  route: string
+  label: string
+  divider: boolean
+  devOnly?: boolean
+}> = [
   {
     route: '/me',
     label: 'left_menu__me',
@@ -15,6 +20,11 @@ export const settingsPageRouterList = [
     route: '/openai-api-key',
     label: 'left_menu__openai_api_key',
     divider: true,
+  },
+  {
+    route: '/sidebar',
+    label: 'left_menu__sidebar',
+    divider: false,
   },
   {
     route: '/shortcut',
@@ -61,7 +71,13 @@ export const settingsPageRouterList = [
     label: 'left_menu__help',
     divider: false,
   },
-] as const
+  {
+    route: '/dev-test-prompt',
+    label: 'Test prompt',
+    divider: false,
+    devOnly: true,
+  },
+]
 
 export type ISettingsRouteType =
   | (typeof settingsPageRouterList)[number]['route']

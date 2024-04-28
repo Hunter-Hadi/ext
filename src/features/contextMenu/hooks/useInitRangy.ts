@@ -14,7 +14,6 @@ import {
 } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import {
-  FloatingContextMenuDraftState,
   FloatingDropdownMenuLastFocusRangeState,
   FloatingDropdownMenuState,
   FloatingDropdownMenuSystemItemsState,
@@ -48,6 +47,7 @@ import { AppDBStorageState } from '@/store'
 import Log from '@/utils/Log'
 
 import { useRangy } from './useRangy'
+import {isMaxAIImmersiveChatPage} from "@/utils/dataHelper/websiteHelper";
 
 initRangyPosition(rangyLib)
 initRangySaveRestore(rangyLib)
@@ -73,19 +73,14 @@ const useInitRangy = () => {
     FloatingDropdownMenuState,
   )
   const { currentSidebarConversationMessages } = useSidebarSettings()
-  const [, setFloatingContextMenuDraft] = useRecoilState(
-    FloatingContextMenuDraftState,
-  )
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,
   )
   // 绑定点击或者按键的placeholder事件
   useBindRichTextEditorLineTextPlaceholder()
-  const [
-    floatingDropdownMenuSystemItems,
-    setFloatingDropdownMenuSystemItems,
-  ] = useRecoilState(FloatingDropdownMenuSystemItemsState)
+  const [floatingDropdownMenuSystemItems, setFloatingDropdownMenuSystemItems] =
+    useRecoilState(FloatingDropdownMenuSystemItemsState)
   const targetElementRef = useRef<HTMLElement | null>(null)
   const selectionElementRef = useRef<
     ISelectionElement | IVirtualIframeSelectionElement | null
@@ -140,10 +135,14 @@ const useInitRangy = () => {
             return
           }
         }
+        if (isMaxAIImmersiveChatPage()) {
+          // immersive chat页面不处理
+          return
+        }
         if ((event as any).MAX_AI_IGNORE) {
           // 针对google doc或者其他页面的处理
           // 过滤对此元素事件的处理
-          return;
+          return
         }
         let activeElement: HTMLElement | null = event.target as HTMLElement
         const isMouseEvent = event instanceof MouseEvent
@@ -261,7 +260,8 @@ const useInitRangy = () => {
     saveHighlightedRangeAndShowContextMenu,
   )
   useEffect(() => {
-    saveHighlightedRangeAndShowContextMenuRef.current = saveHighlightedRangeAndShowContextMenu
+    saveHighlightedRangeAndShowContextMenuRef.current =
+      saveHighlightedRangeAndShowContextMenu
   }, [saveHighlightedRangeAndShowContextMenu])
 
   const stopIframeSandBoxListenerRef = useRef<() => void>(() => {
@@ -279,37 +279,37 @@ const useInitRangy = () => {
     )
     const mouseDownListener = (event: MouseEvent) => {
       stopIframeSandBoxListenerRef.current()
-      stopIframeSandBoxListenerRef.current = createSandboxIframeClickAndKeydownEvent(
-        (virtualIframeSelectionElement) => {
-          //  如果既不是可编辑元素，也没有选中的文本，不处理
-          if (!virtualIframeSelectionElement.selectionText) {
-            // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
-            hideRangy()
-            if (!virtualIframeSelectionElement.isEditableElement) {
-              selectionElementRef.current = null
-              return
+      stopIframeSandBoxListenerRef.current =
+        createSandboxIframeClickAndKeydownEvent(
+          (virtualIframeSelectionElement) => {
+            //  如果既不是可编辑元素，也没有选中的文本，不处理
+            if (!virtualIframeSelectionElement.selectionText) {
+              // 因为触发了iframe的点击，页面本身的元素肯定失焦了，所以隐藏
+              hideRangy()
+              if (!virtualIframeSelectionElement.isEditableElement) {
+                selectionElementRef.current = null
+                return
+              }
             }
-          }
-          // AIInputLog.info('set editable element', virtualTarget)
-          selectionElementRef.current = virtualIframeSelectionElement
-          // show floating button
-          if (virtualIframeSelectionElement.selectionText) {
-            if (virtualIframeSelectionElement.eventType === 'mouseup') {
-              mouseUpListener({
-                target: null,
-              } as any)
-            } else {
-              keyupListener({
-                target: null,
-              } as any)
+            // AIInputLog.info('set editable element', virtualTarget)
+            selectionElementRef.current = virtualIframeSelectionElement
+            // show floating button
+            if (virtualIframeSelectionElement.selectionText) {
+              if (virtualIframeSelectionElement.eventType === 'mouseup') {
+                mouseUpListener({
+                  target: null,
+                } as any)
+              } else {
+                keyupListener({
+                  target: null,
+                } as any)
+              }
             }
-          }
-        },
-      )
+          },
+        )
       const mouseTarget = event.target as HTMLElement
-      const { isEditableElement, editableElement } = getEditableElement(
-        mouseTarget,
-      )
+      const { isEditableElement, editableElement } =
+        getEditableElement(mouseTarget)
       if (isEditableElement && editableElement) {
         if (targetElementRef.current?.isSameNode(editableElement)) {
           return
@@ -429,9 +429,8 @@ const useInitRangy = () => {
           // 例如: linkedin的消息输入框
           if (!selectionElementRef.current) {
             const element = getSelectionBoundaryElement()
-            const { editableElement, isEditableElement } = getEditableElement(
-              element,
-            )
+            const { editableElement, isEditableElement } =
+              getEditableElement(element)
             if (isEditableElement && editableElement) {
               selectionElementRef.current = createSelectionElement(
                 editableElement,
@@ -564,9 +563,6 @@ const useInitRangy = () => {
             }
           }
           console.log('AIInput TRY_AGAIN', lastAIMessageId)
-          setFloatingContextMenuDraft({
-            lastAIMessageId,
-          })
         }
         break
       case 'COPY':
@@ -587,9 +583,11 @@ const useInitRangy = () => {
               z-index: -1;
             `
             textarea.value = lastOutputRef.current
+            textarea.oncopy = (event) => event.stopPropagation()
             document.body.appendChild(textarea)
             textarea.select()
             document.execCommand('copy', false, '')
+            textarea.oncopy = null
             textarea.remove()
           } catch (e) {
             console.error(e)
@@ -622,13 +620,13 @@ const useInitRangy = () => {
           setTimeout(() => {
             // mock space keyup
             const keyupEvent = new KeyboardEvent('keyup', {
-                key: ' ',
-                code: 'Space',
-                location: 0,
-                bubbles: true,
-                cancelable: true,
-                shiftKey: false,
-              })
+              key: ' ',
+              code: 'Space',
+              location: 0,
+              bubbles: true,
+              cancelable: true,
+              shiftKey: false,
+            })
             ;(el || document.body).focus()
             ;(el || document.body).dispatchEvent(keyupEvent)
           }, 0)

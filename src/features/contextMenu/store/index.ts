@@ -93,19 +93,9 @@ export const FloatingDropdownMenuSelectedItemState = atom<{
 export const FloatingDropdownMenuItemsSelector = selector<string[]>({
   key: 'FloatingDropdownMenuItemsSelector',
   get: ({ get }) => {
-    const hoverIdMap = get(FloatingDropdownMenuSelectedItemState)
-      .hoverContextMenuIdMap
+    const hoverIdMap = get(
+      FloatingDropdownMenuSelectedItemState,
+    ).hoverContextMenuIdMap
     return Object.values(hoverIdMap).filter((id) => id)
-  },
-})
-/**
- * AI草稿状态
- */
-export const FloatingContextMenuDraftState = atom<{
-  lastAIMessageId: string
-}>({
-  key: 'FloatingContextMenuDraftState',
-  default: {
-    lastAIMessageId: '',
   },
 })

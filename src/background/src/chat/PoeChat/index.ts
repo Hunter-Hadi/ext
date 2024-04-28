@@ -19,7 +19,7 @@ class PoeChat extends BaseChat {
   }
   async auth() {
     this.active = true
-    await this.updateClientStatus('success')
+    await this.updateStatus('success')
   }
   async askChatGPT(
     question: string,

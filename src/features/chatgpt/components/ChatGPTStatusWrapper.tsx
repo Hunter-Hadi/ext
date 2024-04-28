@@ -17,51 +17,52 @@ import { AuthState } from '@/features/auth/store'
 import ChatGPTRefreshPageTips from '@/features/chatgpt/components/ChatGPTRefreshPageTips'
 import AIProviderIcon from '@/features/chatgpt/components/icons/AIProviderIcon'
 import ThirdPartAIProviderConfirmDialog from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog'
-import {
-  ChatGPTClientState,
-  ThirdPartyAIProviderConfirmDialogState,
-} from '@/features/chatgpt/store'
-import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import { useFocus } from '@/features/common/hooks/useFocus'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
+import { clientGetConversationStatus } from '@/features/chatgpt/utils'
 import { usePrevious } from '@/features/common/hooks/usePrevious'
+import { mixpanelTrack } from '@/features/mixpanel/utils'
 import { AppDBStorageState } from '@/store'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 // import { IChatGPTProviderType } from '@/background/provider/chat'
 
 const ChatGPTStatusWrapper: FC = () => {
+  const { currentConversationId } = useClientConversation()
   const [authLogin] = useRecoilState(AuthState)
   const setAppDBStorage = useSetRecoilState(AppDBStorageState)
-  const [chatGPTClientState, setChatGPTClientState] = useRecoilState(
-    ChatGPTClientState,
-  )
-  const { status } = chatGPTClientState
-  const prevStatus = usePrevious(status)
+  const { conversationStatus, updateConversationStatus } =
+    useClientConversation()
+  const prevStatus = usePrevious(conversationStatus)
 
   const { open: providerConfirmDialogOpen } = useRecoilValue(
     ThirdPartyAIProviderConfirmDialogState,
   )
 
   useEffect(() => {
-    if (prevStatus !== status && status === 'success') {
+    if (prevStatus !== conversationStatus && conversationStatus === 'success') {
       // get latest settings
       console.log('get latest settings')
       getLiteChromeExtensionDBStorage().then(setAppDBStorage)
     }
-  }, [status, prevStatus])
+  }, [conversationStatus, prevStatus])
 
-  useFocus(() => {
-    console.log('gmain chatgpt onFocus')
-    pingDaemonProcess().then((res) => {
-      console.log('gmain chatgpt onFocus: pingDaemonProcess', res)
-      // 如果没有连接上，就需要重新加载
-      if (!res) {
-        setChatGPTClientState((s) => ({
-          ...s,
-          status: 'needReload',
-        }))
+  useEffect(() => {
+    const onFocused = () => {
+      if (!currentConversationId) {
+        return
       }
-    })
-  })
+      clientGetConversationStatus(currentConversationId).then((res) => {
+        // 如果没有连接上，就需要重新加载
+        if (!res.success) {
+          updateConversationStatus('needReload')
+        }
+      })
+    }
+    window.addEventListener('focus', onFocused)
+    return () => {
+      window.removeEventListener('focus', onFocused)
+    }
+  }, [currentConversationId])
   const memoMaskSx = useMemo(() => {
     return {
       position: 'absolute',
@@ -95,7 +96,7 @@ const ChatGPTStatusWrapper: FC = () => {
     return null
   }, [memoMaskSx])
 
-  if (status === 'needReload') {
+  if (conversationStatus === 'needReload') {
     return (
       <Box sx={memoMaskSx}>
         <Stack spacing={2} width={'calc(100% - 16px)'}>
@@ -223,6 +224,11 @@ const ChatGPTStatusWrapper: FC = () => {
                 href={APP_USE_CHAT_GPT_HOST + '/login?auto=true'}
                 target={'_blank'}
                 sx={{ width: '100%' }}
+                onClick={() => {
+                  mixpanelTrack('sign_up_started', {
+                    signUpMethod: 'google',
+                  })
+                }}
               >
                 <Button
                   fullWidth
@@ -261,6 +267,11 @@ const ChatGPTStatusWrapper: FC = () => {
                 href={APP_USE_CHAT_GPT_HOST + '/login-email'}
                 target={'_blank'}
                 sx={{ width: '100%' }}
+                onClick={() => {
+                  mixpanelTrack('sign_up_started', {
+                    signUpMethod: 'email',
+                  })
+                }}
               >
                 <Button
                   fullWidth
@@ -293,9 +304,9 @@ const ChatGPTStatusWrapper: FC = () => {
     )
   }
   if (
-    status === 'needAuth' ||
-    status === 'loading' ||
-    status === 'complete' ||
+    conversationStatus === 'needAuth' ||
+    conversationStatus === 'loading' ||
+    conversationStatus === 'complete' ||
     providerConfirmDialogOpen
   ) {
     return (

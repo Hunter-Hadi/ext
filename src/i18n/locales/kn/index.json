@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot ತಕ್ಷಣ ಉತ್ತರ",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram ತಕ್ಷಣ ಉತ್ತರ",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams ತಕ್ಷಣ ಉತ್ತರ",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat ತಕ್ಷಣ ಉತ್ತರ"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat ತಕ್ಷಣ ಉತ್ತರ",
+    "left_menu__sidebar": "ಸೈಡ್‌ಬಾರ್",
+    "feature_card__sidebar__field__auto_archive__title": "ಸ್ವಯಂ ಆರ್ಕೈವ್: ನೀವು ಹೋಗುವವರೆಗೆ ಸ್ವಚ್ಛಗೊಳಿಸಿ",
+    "feature_card__sidebar__field__auto_archive__button__title": "ಚಾಟ್ ಆರ್ಕೈವ್ ಮುಂದುವರೆಸಿ",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI ನಲ್ಲಿ, ನೀವು ಆರ್ಕೈವ್ ಮಾಡಲು ನಿಮ್ಮ ಆಯ್ಕೆಯ ಪ್ರಮಾಣದಲ್ಲಿ ಅಡ್ಲ್ ಚಾಟ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತದೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಕಾಪಾಡುತ್ತದೆ."
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "ಜಟಿಲ ಪ್ರಶ್ನೆಗಳಿಗೆ ದೀರ್ಘ ಉತ್ತರಗಳನ್ನು ಪಡೆಯಿರಿ",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ಜೋಡಿಸಿ ಹುಡುಕಾಟ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "ಹುಡುಕಾಟ ಫಲಿತಾಂಶಗಳ ಪಕ್ಷದಲ್ಲಿ AI ಉತ್ತರಗಳನ್ನು ಪ್ರದರ್ಶಿಸಿ",
-    "instant_reply_button__explicit__display_text": "ತಕ್ಷಣ ಉತ್ತರ"
+    "instant_reply_button__explicit__display_text": "ತಕ್ಷಣ ಉತ್ತರ",
+    "immersive_chat__delete_all_context_menu__button__title": "ಎಲ್ಲಾ ಸಂದರ್ಭ ಮೆನುಗಳನ್ನು ಅಳಿಸಿ",
+    "immersive_chat__delete_all_context_menu__title": "ನಿಮ್ಮ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವನ್ನು ತೆಗೆದುಹಾಕಿ - ಖಚಿತವಾಗಿ?",
+    "context_window__chat_history__button__title": "ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸ",
+    "context_window__chat_history__empty__title": "ಇನ್ನೂ ಯಾವ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವೂ ಲಭ್ಯವಿಲ್ಲ",
+    "context_window__chat_history__continue_in_chat__title": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "ಕವನ...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "ಸ್ನೇಹಿತ",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ಸ್ಪಷ್ಟ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "ನಂಬಿಕೆಯುಳ್ಳ",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "ಸಾಮಾನ್ಯ"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "ಸಾಮಾನ್ಯ",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ"
   },
   "prompt_editor": {
     "preset_variables__title": "ಸಾಮರ್ಥ್ಯಗಳು",

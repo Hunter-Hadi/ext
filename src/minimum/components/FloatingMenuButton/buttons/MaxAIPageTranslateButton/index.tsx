@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next'
 import { useRecoilState } from 'recoil'
 
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { useUserInfo } from '@/features/chatgpt'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import PageTranslator from '@/features/pageTranslator/core'
 import { pageTranslationEnableAtom } from '@/features/pageTranslator/store'
@@ -51,10 +51,10 @@ const MaxAIPageTranslateButton: FC<IMaxAIPageTranslateButtonProps> = ({
   const firstLoading = useRef(true)
   const pageTranslatorRef = useRef(PageTranslator)
 
-  const showAdvancedButton = useMemo(() => isHover || advancedOpen, [
-    isHover,
-    advancedOpen,
-  ])
+  const showAdvancedButton = useMemo(
+    () => isHover || advancedOpen,
+    [isHover, advancedOpen],
+  )
 
   const isLogin = useMemo(() => !!userInfo, [userInfo])
 

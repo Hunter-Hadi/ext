@@ -4,25 +4,17 @@ import { MAXAI_CHATGPT_MODEL_GPT_4_TURBO } from '@/background/src/chat/UseChatGP
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/types'
 
 const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
-  const {
-    files,
-    AIProviderConfig,
-    aiProviderUploadFiles,
-    aiProviderRemoveFiles,
-  } = useAIProviderUpload()
-  const { createConversation } = useClientConversation()
-  const {
-    updateSidebarConversationType,
-    currentSidebarConversationType,
-    sidebarSettings,
-  } = useSidebarSettings()
-  const { updateAIProviderModel, currentAIProvider, currentAIProviderModel } =
-    useAIProviderModels()
+  const { aiProviderUploadFiles, getCanUploadFiles } = useAIProviderUpload()
+  const { currentConversationIdRef, createConversation, clientConversation } =
+    useClientConversation()
+  const { updateSidebarConversationType } = useSidebarSettings()
+  const { currentAIProvider, currentAIProviderModel } = useAIProviderModels()
 
   // 由于 执行 updateAIProviderModel 会导致 aiProviderUploadFiles 更新，
   // 但是 aiProviderUploadFiles 会被缓存，所以这里使用 ref 来获取最新的 aiProviderUploadFiles
@@ -31,57 +23,123 @@ const useUploadImagesAndSwitchToMaxAIVisionModel = () => {
     aiProviderUploadFilesRef.current = aiProviderUploadFiles
   }, [aiProviderUploadFiles])
 
+  const createConversationResolveRef = useRef<(value: unknown) => void>()
+  const updateConversationTypeResolveRef =
+    useRef<(type: ISidebarConversationType) => void>()
+  useEffect(() => {
+    if (clientConversation?.id) {
+      console.log(
+        'clientConversation?.id',
+        clientConversation?.id,
+        clientConversation?.meta.AIModel,
+        createConversationResolveRef.current,
+        clientConversation.type === 'Chat' &&
+          clientConversation?.meta?.AIModel &&
+          [
+            MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            'claude-3-sonnet',
+            'claude-3-opus',
+            'claude-3-haiku',
+            'gemini-pro',
+          ].includes(clientConversation.meta.AIModel),
+      )
+      if (
+        (clientConversation.type === 'Chat' ||
+          clientConversation.type === 'ContextMenu') &&
+        clientConversation?.meta?.AIModel &&
+        [
+          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+          'claude-3-sonnet',
+          'claude-3-opus',
+          'claude-3-haiku',
+          'gemini-pro',
+        ].includes(clientConversation.meta.AIModel)
+      ) {
+        if (createConversationResolveRef.current) {
+          createConversationResolveRef.current(true)
+          createConversationResolveRef.current = undefined
+        }
+      }
+    }
+  }, [clientConversation?.id])
+  useEffect(() => {
+    if (clientConversation?.type) {
+      if (updateConversationTypeResolveRef.current) {
+        updateConversationTypeResolveRef.current(
+          clientConversation.type as ISidebarConversationType,
+        )
+        updateConversationTypeResolveRef.current = undefined
+      }
+    }
+  }, [clientConversation?.type])
   const uploadImagesAndSwitchToMaxAIVisionModel = async (
     imageFiles: File[],
   ) => {
     if (imageFiles.length === 0) {
       return
     }
-    if (currentSidebarConversationType !== 'Chat') {
-      await updateSidebarConversationType('Chat')
+    const currentConversationType = clientConversation?.type
+    if (
+      currentConversationType &&
+      !['Chat', 'ContextMenu'].includes(currentConversationType)
+    ) {
+      await new Promise((resolve) => {
+        updateConversationTypeResolveRef.current = (
+          type: ISidebarConversationType,
+        ) => {
+          if (type === 'Chat') {
+            resolve(true)
+          }
+        }
+        updateSidebarConversationType('Chat')
+      })
     }
-    if (sidebarSettings?.chat?.conversationId) {
-      const conversation = await clientGetConversation(
-        sidebarSettings.chat.conversationId,
-      )
-      if (
-        !conversation?.meta?.AIModel ||
-        ![
-          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-          'claude-3-sonnet',
-          'claude-3-opus',
-          'claude-3-haiku',
-          'gemini-pro',
-          'gemini-1.5-pro',
-        ].includes(conversation?.meta?.AIModel)
-      ) {
-        await updateAIProviderModel(
-          'USE_CHAT_GPT_PLUS',
-          MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-        )
-        await createConversation('Chat')
+    // eslint-disable-next-line no-async-promise-executor
+    await new Promise(async (resolve) => {
+      if (createConversationResolveRef.current) {
+        createConversationResolveRef.current(true)
       }
-    } else {
-      await updateAIProviderModel(
-        'USE_CHAT_GPT_PLUS',
-        MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
-      )
-      await createConversation('Chat')
-    }
-    const existFilesCount = files?.length || 0
-    const maxFiles = AIProviderConfig?.maxCount || 1
-    const canUploadCount = maxFiles - existFilesCount
-    if (canUploadCount === 0) {
-      await aiProviderRemoveFiles(files.slice(0, imageFiles.length))
-    }
+      createConversationResolveRef.current = resolve
+      const conversation = currentConversationIdRef.current
+        ? await clientGetConversation(currentConversationIdRef.current)
+        : undefined
+      if (conversation && conversation.type === 'Chat') {
+        if (
+          !conversation?.meta?.AIModel ||
+          ![
+            MAXAI_CHATGPT_MODEL_GPT_4_TURBO,
+            'claude-3-sonnet',
+            'claude-3-opus',
+            'claude-3-haiku',
+            'gemini-pro',
+          ].includes(conversation?.meta?.AIModel)
+        ) {
+          await createConversation(
+            conversation.type,
+            'MAXAI_CLAUDE',
+            'claude-3-haiku',
+          )
+          return
+        } else {
+          if (createConversationResolveRef.current) {
+            createConversationResolveRef.current(true)
+            createConversationResolveRef.current = undefined
+          }
+        }
+      } else {
+        await createConversation('Chat', 'MAXAI_CLAUDE', 'claude-3-haiku')
+        return
+      }
+    })
+    const canUploadFiles = await getCanUploadFiles(imageFiles)
     await aiProviderUploadFilesRef.current(
-      await formatClientUploadFiles(
-        imageFiles.slice(0, maxFiles),
-        AIProviderConfig?.maxFileSize,
-      ),
+      await formatClientUploadFiles(canUploadFiles),
     )
   }
   const isMaxAIVisionModel = useMemo(() => {
+    if (!currentAIProviderModel) {
+      return false
+    }
     if (
       currentAIProvider === 'USE_CHAT_GPT_PLUS' &&
       currentAIProviderModel === MAXAI_CHATGPT_MODEL_GPT_4_TURBO

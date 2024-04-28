@@ -5,21 +5,22 @@ import React, { FC, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import ConversationList from '@/features/chatgpt/components/ConversationList/index'
+import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 const ConversationListDrawerButton: FC = () => {
+  const { currentSidebarConversationType } = useSidebarSettings()
   const [drawerOpen, setDrawerOpen] = useState(false)
-  const toggleDrawer = (open: boolean) => (
-    event: React.KeyboardEvent | React.MouseEvent,
-  ) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' ||
-        (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return
+      }
+      setDrawerOpen(open)
     }
-    setDrawerOpen(open)
-  }
   return (
     <>
       <IconButton
@@ -77,6 +78,7 @@ const ConversationListDrawerButton: FC = () => {
             </IconButton>
           )}
           <ConversationList
+            conversationType={currentSidebarConversationType}
             sx={{
               width: '100%',
               boxSizing: 'border-box',

@@ -2,51 +2,51 @@ import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import React, { FC, useCallback, useEffect, useMemo, useRef } from 'react'
-import { useRecoilValue } from 'recoil'
 
 // import { AppState } from '@/store'
 // import { hideChatBox, isShowChatBox, showChatBox } from '@/utils'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
-import { FloatingContextMenuOpenSidebarButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuOpenSidebarButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import { isFloatingContextMenuVisible } from '@/features/contextMenu/utils'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 type FloatingContextMenuShortcutKey = 's' | 'r' | 'o' | 'c'
 
-const FloatingContextMenuShortcutButtonGroup: FC = () => {
+const FloatingContextMenuShortcutButtonGroup: FC<{
+  onRegenerate?: () => void
+}> = ({ onRegenerate }) => {
   // const appState = useRecoilValue(AppState)
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
+  const { clientWritingMessage } = useClientConversation()
   const needRegenerateRef = useRef(false)
+  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const isGenerating = useMemo(() => {
-    if (
-      clientWritingMessage.loading &&
-      clientWritingMessage.writingMessage?.text
-    ) {
+    if (clientWritingMessage.loading && currentFloatingContextMenuDraft) {
       return true
     }
     return false
-  }, [clientWritingMessage.loading, clientWritingMessage.writingMessage])
+  }, [clientWritingMessage.loading, currentFloatingContextMenuDraft])
   const { stopGenerate, regenerate } = useClientChat()
+  const reGenerateRef = useRef(regenerate)
+  const stopGenerateRef = useRef(stopGenerate)
+  reGenerateRef.current = regenerate
+  stopGenerateRef.current = stopGenerate
   const handleShortCut = useCallback(
     async (key: FloatingContextMenuShortcutKey) => {
       // console.log('handleShortCut', key)
       if (key === 's') {
         needRegenerateRef.current = false
-        await stopGenerate()
+        await stopGenerateRef.current()
       }
       if (key === 'r') {
         needRegenerateRef.current = true
         console.log('handleShortCut regenerate: \t [startRegenerate: true]')
-        await stopGenerate()
+        await stopGenerateRef.current()
+        onRegenerate?.()
         await reGenerateRef.current()
       }
     },
-    [stopGenerate],
+    [],
   )
-  const reGenerateRef = useRef(regenerate)
-  useEffect(() => {
-    reGenerateRef.current = regenerate
-  }, [regenerate])
   useEffect(() => {
     if (!isGenerating) {
       return
@@ -159,7 +159,6 @@ const FloatingContextMenuShortcutButtonGroup: FC = () => {
           </span>
         </Typography>
       </Button>
-      <FloatingContextMenuOpenSidebarButton />
     </Stack>
   )
 }

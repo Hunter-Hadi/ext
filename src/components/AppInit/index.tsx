@@ -4,18 +4,15 @@ import { useSetRecoilState } from 'recoil'
 
 import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import initClientProxyWebsocket from '@/background/utils/clientProxyWebsocket/client'
-import ClientChatGPTFilesFocusInit from '@/components/AppInit/ClientChatGPTFilesFocusInit'
 import {
   detectBrowserDefaultPDFViewer,
   MAXAIPDFAIViewerErrorAlert,
   MaxAIPDFAIViewerTopBarButtonGroup,
 } from '@/components/AppInit/MaxAIPDFViewerInit'
-import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import { useAuthLogin } from '@/features/auth'
 import useInitUserInfo from '@/features/auth/hooks/useInitUserInfo'
-import { useInitChatGPTClient, useUserInfo } from '@/features/chatgpt'
-import useInitClientConversationMap from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import ContextMenuRoot from '@/features/contextMenu/components/ContextMenuRoot'
 import useInitRangy from '@/features/contextMenu/hooks/useInitRangy'
@@ -23,7 +20,7 @@ import useThemeUpdateListener from '@/features/contextMenu/hooks/useThemeUpdateL
 import useInitOneClickShareButton from '@/features/referral/hooks/useInitOneClickShareButton'
 import useInjectShortCutsRunTime from '@/features/shortcuts/hooks/useInjectShortCutsRunTime'
 import { ShortcutMessageClientInit } from '@/features/shortcuts/messageChannel/client'
-import useInitSidebar from '@/features/sidebar/hooks/useInitSidebar'
+import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { useInitI18n } from '@/i18n/hooks'
 import useHideInHost from '@/minimum/hooks/useHideInHost'
@@ -120,16 +117,18 @@ const MaxAISubscriptionUpdate = () => {
   return null
 }
 
+const ContextMenuInit = () => {
+  useInitRangy()
+  return <ContextMenuRoot />
+}
+
 const AppInit = () => {
   useHideInHost()
-  useInitChatGPTClient()
+  useClientMessageListenerForBackground()
   useAuthLogin()
   useInitUserInfo()
   useInitI18n()
   useInjectShortCutsRunTime()
-  useInitWebPageMessageChannel()
-  useInitClientConversationMap()
-  useInitSidebar()
   useEffectOnce(() => {
     if (isMaxAIImmersiveChatPage()) {
       showChatBox()
@@ -142,16 +141,14 @@ const AppInit = () => {
   })
   // 初始化one-click referral, https://app.maxai.me/referral
   useInitOneClickShareButton()
-  useInitRangy()
   return (
     <>
       <MaxAISubscriptionUpdate />
       <MAXAIPDFAIViewerErrorAlert />
       <MaxAIPDFAIViewerTopBarButtonGroup />
-      <ContextMenuRoot />
+      <ContextMenuInit />
       <AppSettingsInit />
       <UseChatGPTWebPageJumpToShortCuts />
-      <ClientChatGPTFilesFocusInit />
     </>
   )
 }

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "الرد الفوري في HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "الرد الفوري في Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "الرد الفوري في Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "الرد الفوري في Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "الرد الفوري في Google Chat",
+    "left_menu__sidebar": "الشريط الجانبي",
+    "feature_card__sidebar__field__auto_archive__title": "الأرشفة التلقائية: نظّف أثناء استخدامك",
+    "feature_card__sidebar__field__auto_archive__button__title": "أرشفة المحادثة بعد",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة المحادثات الخاملة تلقائيًا بتواتر اختيارك. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك."
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "الحصول على إجابات طويلة للأسئلة المعقدة",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "البحث باستخدام الذكاء الاصطناعي",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "عرض إجابات الذكاء الاصطناعي بجانب نتائج البحث",
-    "instant_reply_button__explicit__display_text": "الرد الفوري"
+    "instant_reply_button__explicit__display_text": "الرد الفوري",
+    "immersive_chat__delete_all_context_menu__button__title": "حذف جميع قوائم السياق",
+    "immersive_chat__delete_all_context_menu__title": "مسح سجل قوائم السياق الخاص بك - هل أنت متأكد؟",
+    "context_window__chat_history__button__title": "سجل قوائم السياق",
+    "context_window__chat_history__empty__title": "لا توجد سجلات لقوائم السياق حتى الآن",
+    "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "ودود",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "مباشر",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "واثق",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "عادي"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "عادي",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "المتابعة في الدردشة"
   },
   "prompt_editor": {
     "preset_variables__title": "القدرات",

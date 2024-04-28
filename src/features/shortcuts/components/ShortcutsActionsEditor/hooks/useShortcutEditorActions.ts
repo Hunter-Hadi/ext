@@ -429,7 +429,7 @@ const useShortcutEditorActions = () => {
             template,
             contextMenuId: uuidV4(),
             title: title,
-            modelKey: 'Sidebar',
+
             variables: modalVariables,
             systemVariables,
             actions: specialActions,

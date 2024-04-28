@@ -1,6 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import {
   IShortcutEngineExternalEngine,
@@ -15,6 +14,7 @@ import Action from '@/features/shortcuts/core/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { getMaxAISidebarRootElement } from '@/utils'
 // import { pushOutputToChat } from '@/features/shortcuts/decorators'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
 
@@ -42,7 +42,19 @@ export class ActionSetVariablesModal extends Action {
         this.error = 'No config!'
         return
       }
+      // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
+      let needUserInput = false
+      const shortCutsVariables = engine.shortcutsEngine?.getVariablesValue()
       const cloneConfig = cloneDeep(config) as ActionSetVariablesModalConfig
+      const conversation = engine.clientConversationEngine?.clientConversation
+      if (conversation) {
+        // 基于type更新config的modelKey
+        if (conversation.type === 'Chat') {
+          cloneConfig.modelKey = 'Sidebar'
+        } else if (conversation.type === 'ContextMenu') {
+          cloneConfig.modelKey = 'FloatingContextMenu'
+        }
+      }
       const MaxAIPromptActionConfig =
         cloneConfig.MaxAIPromptActionConfig ||
         this.parameters.MaxAIPromptActionConfig
@@ -69,9 +81,6 @@ export class ActionSetVariablesModal extends Action {
       if (!cloneConfig.modelKey) {
         cloneConfig.modelKey = 'Sidebar'
       }
-      // 是否需要用户输入内容，如果需要的话，那就需要打开sidebar
-      let needUserInput = false
-      const shortCutsVariables = engine.shortcutsEngine?.getVariablesValue()
       cloneConfig.variables.map((variable) => {
         if (
           variable.defaultValue &&

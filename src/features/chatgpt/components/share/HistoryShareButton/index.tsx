@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { formatMessagesToLiteHistory } from '@/features/sidebar/utils/chatMessagesHelper'
 
@@ -13,10 +13,8 @@ const HistoryShareButton: FC<{
 }> = (props) => {
   const { needSystemOrThirdMessage = false } = props
   const { t } = useTranslation(['common', 'client'])
-  const {
-    currentSidebarConversationId,
-    currentSidebarConversationMessages,
-  } = useSidebarSettings()
+  const { currentSidebarConversationId, currentSidebarConversationMessages } =
+    useSidebarSettings()
   // 有效的消息
   const validMessage = currentSidebarConversationMessages.filter((item) => {
     if (needSystemOrThirdMessage) {

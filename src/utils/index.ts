@@ -13,6 +13,7 @@ import {
   MAXAI_CONTEXT_MENU_PORTAL_ID,
   MAXAI_MINIMIZE_CONTAINER_ID,
   MAXAI_SIDEBAR_ID,
+  MAXAI_SIDEBAR_WRAPPER_ID,
 } from '@/features/common/constants'
 
 export const numberWithCommas = (number: number, digits = 2) => {
@@ -20,27 +21,36 @@ export const numberWithCommas = (number: number, digits = 2) => {
     .toFixed(digits)
     .replace(/\B(?=(\d{3})+(?!\d))/g, ',')
 }
-export const getAppActiveElement = (): HTMLElement | null => {
+export const getMaxAISidebarActiveElement = (): HTMLElement | null => {
   const element = document.querySelector(`#${MAXAI_SIDEBAR_ID}`)?.shadowRoot
     ?.activeElement as HTMLDivElement
   if (element === undefined) return null
   return element
 }
-
-export const getFloatingContextMenuActiveElement = (): HTMLElement | null => {
-  const element = document.querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
-    ?.shadowRoot?.activeElement as HTMLDivElement
+export const getMaxAISidebarRootElement = (): HTMLElement | null => {
+  const element = document
+    .querySelector(`#${MAXAI_SIDEBAR_ID}`)
+    ?.shadowRoot?.querySelector(`#${MAXAI_SIDEBAR_WRAPPER_ID}`) as HTMLElement
   if (element === undefined) return null
   return element
 }
-export const getAppContextMenuRootElement = (): HTMLDivElement | null => {
-  const portals =
-    document
-      .querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
-      ?.shadowRoot?.querySelectorAll(`#${MAXAI_CONTEXT_MENU_PORTAL_ID}`) || []
-  const portal = Array.from(portals).find((portal) => portal.innerHTML !== '')
-  return portal as HTMLDivElement
-}
+
+export const getMaxAIFloatingContextMenuActiveElement =
+  (): HTMLElement | null => {
+    const element = document.querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
+      ?.shadowRoot?.activeElement as HTMLDivElement
+    if (element === undefined) return null
+    return element
+  }
+export const getMaxAIFloatingContextMenuRootElement =
+  (): HTMLDivElement | null => {
+    const portals =
+      document
+        .querySelector(`#${MAXAI_CONTEXT_MENU_ID}`)
+        ?.shadowRoot?.querySelectorAll(`#${MAXAI_CONTEXT_MENU_PORTAL_ID}`) || []
+    const portal = Array.from(portals).find((portal) => portal.innerHTML !== '')
+    return portal as HTMLDivElement
+  }
 
 export const getAppMinimizeContainerElement = (): HTMLDivElement | null => {
   return document

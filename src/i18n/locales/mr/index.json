@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot तात्पुरता प्रतिसाद",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram तात्पुरता प्रतिसाद",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams तात्पुरता प्रतिसाद",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat तात्पुरता प्रतिसाद"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat तात्पुरता प्रतिसाद",
+    "left_menu__sidebar": "साइडबार",
+    "feature_card__sidebar__field__auto_archive__title": "स्वयंसचित्रीकरण: जेव्हा जाऊन टाकता तेव्हा स्वच्छ करा",
+    "feature_card__sidebar__field__auto_archive__button__title": "चॅट आर्काइव करा नंतर",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या गतीनुसार आपल्या खालील चॅट आपोआप आर्काइव करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुस्थित ठेवते."
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "संकटातील प्रश्नांसाठी लांबी उत्तरे मिळवा",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI सह शोधा",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "शोध निकालांपासून AI उत्तरे प्रदर्शित करा",
-    "instant_reply_button__explicit__display_text": "तात्पुरता प्रतिसाद"
+    "instant_reply_button__explicit__display_text": "तात्पुरता प्रतिसाद",
+    "immersive_chat__delete_all_context_menu__button__title": "सर्व संदर्भ मेनू काढा",
+    "immersive_chat__delete_all_context_menu__title": "तुमचे संदर्भ मेनू इतिहास साफ करा - तुम्ही खरंपणे यक्क करता?",
+    "context_window__chat_history__button__title": "संदर्भ मेनू इतिहास",
+    "context_window__chat_history__empty__title": "अद्याप उपलब्ध नाही कोणताही संदर्भ मेनू इतिहास",
+    "context_window__chat_history__continue_in_chat__title": "चॅटमध्ये सुरू ठेवा"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "मैत्रीपूर्ण",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "स्पष्ट",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "निश्चित",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "आकस्मिक"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "आकस्मिक",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "चॅटमध्ये सुरू ठेवा"
   },
   "prompt_editor": {
     "preset_variables__title": "क्षमता",

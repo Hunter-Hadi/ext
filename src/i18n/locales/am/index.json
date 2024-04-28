@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot በቀላል መልእክት",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram በቀላል መልእክት",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams በቀላል መልእክት",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat በቀላል መልእክት"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat በቀላል መልእክት",
+    "left_menu__sidebar": "ስልክ ገጽ",
+    "feature_card__sidebar__field__auto_archive__title": "የበሽታውን መጠቀም: በሽታውን በመስጠት ማስተካከያ",
+    "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ስልክ የበሽታውን በመስጠት ማስተካከያ የሚያስችል በሽታውን በመስጠት ማስተካከያ ይጠቀሙ። ይህን ለማድረግ እንዴት ማሳየት እንደሚችል ይጠቀሙ።"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "በሩህ የሚለውን የተሳሳተ መልእክት ይፈጥሩ",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI በጥያቄዎች ይፈጥሩ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "AI መልእክትን በጥያቄዎች ውስጥ ይመልከቱ",
-    "instant_reply_button__explicit__display_text": "የቀጥታ መልክት"
+    "instant_reply_button__explicit__display_text": "የቀጥታ መልክት",
+    "immersive_chat__delete_all_context_menu__button__title": "ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት",
+    "immersive_chat__delete_all_context_menu__title": "የሚገባበት ሁሉንም የመግቢያ ማናቸውንም ስርጭት ማጥፋት - እርግጠኛ ነህ?",
+    "context_window__chat_history__button__title": "የመግቢያ ማናቸውንም ስርጭት",
+    "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
+    "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "መልካም",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "በቀለ ቅንጅት",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "በቀለ ማስታወቂያ",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "በቀለ የግል ቅንጅት"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "በቀለ የግል ቅንጅት",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል"
   },
   "prompt_editor": {
     "preset_variables__title": "እውቀት",

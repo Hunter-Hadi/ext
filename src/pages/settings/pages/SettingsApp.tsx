@@ -5,6 +5,8 @@ import React, { type FC, lazy, useEffect, useRef, useState } from 'react'
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useAuthLogin } from '@/features/auth'
 import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import { useInitMixPanel } from '@/features/mixpanel/utils'
+import useClientMessageListenerForBackground from '@/features/sidebar/hooks/useClientMessageListenerForBackground'
 import OptionsLeftMenu from '@/pages/settings/components/OptionsLeftMenu'
 import PageHelp from '@/pages/settings/components/pageHelp'
 import SyncSettingCheckerWrapper from '@/pages/settings/components/SyncSettingCheckerWrapper'
@@ -64,6 +66,13 @@ const SettingsPerksPage = lazy(() => import('@/pages/settings/pages/perks'))
 const SettingsSearchWithAIPage = lazy(
   () => import('@/pages/settings/pages/search_with_ai'),
 )
+const SettingsDevTestPrompt = React.lazy(
+  () => import('@/pages/settings/pages/dev_test_prompt'),
+)
+const SettingsSidebarPage = React.lazy(
+  () => import('@/pages/settings/pages/sidebar'),
+)
+
 const SettingsApp: FC = () => {
   const { loaded, isLogin } = useAuthLogin()
   const onceScrollRef = useRef(false)
@@ -111,6 +120,8 @@ const SettingsApp: FC = () => {
       // do nothing
     }
   }, [route, isLogin])
+  useClientMessageListenerForBackground()
+  useInitMixPanel()
   return (
     <SettingsPageRouteContext.Provider value={{ route, setRoute }}>
       <Stack height={'100vh'}>
@@ -207,6 +218,7 @@ const SettingsApp: FC = () => {
                       {route === '/openai-api-key' && (
                         <SettingsOpenaiAPIKeyPage />
                       )}
+                      {route === '/sidebar' && <SettingsSidebarPage />}
                       {route === '/shortcut' && <SettingsShortcutPage />}
                       {route === '/appearance' && <SettingsAppearancePage />}
                       {route === '/mini-menu' && <SettingsMiniMenuPage />}
@@ -220,6 +232,9 @@ const SettingsApp: FC = () => {
                       {route === '/perks' && <SettingsPerksPage />}
                       {route === '/search-with-ai' && (
                         <SettingsSearchWithAIPage />
+                      )}
+                      {route === '/dev-test-prompt' && (
+                        <SettingsDevTestPrompt />
                       )}
                     </Stack>
                   </Stack>

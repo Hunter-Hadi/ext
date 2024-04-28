@@ -11,17 +11,16 @@ import {
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
 } from '@/utils'
 
 /**
  * 初始化和网页的通信，用来运行网页发送的shortcuts或者打开特定的网页
  */
 const useInitWebPageMessageChannel = () => {
-  const {
-    updateSidebarConversationType,
-    currentSidebarConversationType,
-  } = useSidebarSettings()
+  const { updateSidebarConversationType, currentSidebarConversationType } =
+    useSidebarSettings()
   const [waitRunActionsConfig, setWaitRunActionsConfig] = useState<{
     taskId: string
     actions: ISetActionsType
@@ -31,7 +30,7 @@ const useInitWebPageMessageChannel = () => {
     taskId: '',
     actions: [],
   })
-  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
+  const { askAIWIthShortcuts, shortCutsEngine } = useClientChat()
   const isRunningActionsRef = useRef(false)
   const responseDataToPage = (
     taskId: string,
@@ -55,14 +54,13 @@ const useInitWebPageMessageChannel = () => {
     if (
       waitRunActionsConfig.taskId &&
       currentSidebarConversationType === 'Chat' &&
-      !isRunningActionsRef.current
+      !isRunningActionsRef.current &&
+      shortCutsEngine?.conversationId
     ) {
       isRunningActionsRef.current = true
-      askAIWIthShortcuts(waitRunActionsConfig.actions, {
-        isOpenSidebarChatBox: true
-      })
+      askAIWIthShortcuts(waitRunActionsConfig.actions)
         .then((result) => {
-          console.log(shortCutsEngineRef)
+          console.log(shortCutsEngine)
           responseDataToPage(
             waitRunActionsConfig.taskId,
             waitRunActionsConfig.origin,
@@ -93,7 +91,12 @@ const useInitWebPageMessageChannel = () => {
           isRunningActionsRef.current = false
         })
     }
-  }, [currentSidebarConversationType, waitRunActionsConfig, askAIWIthShortcuts])
+  }, [
+    currentSidebarConversationType,
+    waitRunActionsConfig,
+    askAIWIthShortcuts,
+    shortCutsEngine,
+  ])
 
   useEffect(() => {
     const listener = async (event: MessageEvent) => {
@@ -140,9 +143,13 @@ const useInitWebPageMessageChannel = () => {
             return
           }
           case 'CLOSE_SIDEBAR': {
-            const closeModalButton = getAppContextMenuRootElement()?.querySelector(
-              '.max-ai__action__set_variables_modal button[data-test-id="close-modal-button"]',
-            ) as HTMLButtonElement
+            const closeModalButton =
+              (getMaxAISidebarRootElement()?.querySelector(
+                '.max-ai__action__set_variables_modal button[data-testid="close-modal-button"]',
+              ) as HTMLButtonElement) ||
+              (getMaxAIFloatingContextMenuRootElement()?.querySelector(
+                '.max-ai__action__set_variables_modal button[data-testid="close-modal-button"]',
+              ) as HTMLButtonElement)
             if (closeModalButton) {
               closeModalButton.click()
             }

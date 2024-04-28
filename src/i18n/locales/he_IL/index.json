@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "תשובה מיידית ב-HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "תשובה מיידית ב-Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "תשובה מיידית ב-Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "תשובה מיידית ב-Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "תשובה מיידית ב-Google Chat",
+    "left_menu__sidebar": "סרגל צד",
+    "feature_card__sidebar__field__auto_archive__title": "ארכיב אוטומטי: נקה במידה ונדרש",
+    "feature_card__sidebar__field__auto_archive__button__title": "ארכוב צ'אט לאחר",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מבצעים ארכיב אוטומטי של צ'אטים שבלתי פעילים בתדירות שתבחר. זה יעניק לך התחלה חדשה וישמור על סרגל הצד שלך מסודר."
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור סרגל צד",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "קבל תשובות ארוכות לשאלות מורכבות",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "חיפוש עם AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "הצג תשובות AI ליד תוצאות החיפוש",
-    "instant_reply_button__explicit__display_text": "תשובה מיידית"
+    "instant_reply_button__explicit__display_text": "תשובה מיידית",
+    "immersive_chat__delete_all_context_menu__button__title": "מחק את כל תפריטי ההקשר",
+    "immersive_chat__delete_all_context_menu__title": "נקה את ההיסטוריה של תפריטי ההקשר - האם אתה בטוח?",
+    "context_window__chat_history__button__title": "היסטוריית תפריטי ההקשר",
+    "context_window__chat_history__empty__title": "אין עדיין היסטוריית תפריטי ההקשר זמינה",
+    "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "ידידותי",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ישר",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "בטוח",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "פורמלי"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "פורמלי",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "המשך בצ'אט"
   },
   "prompt_editor": {
     "preset_variables__title": "יכולות",

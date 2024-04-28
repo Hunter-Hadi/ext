@@ -2,7 +2,7 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useRef, useState } from 'react'
 
-import { getMaxAISidebarRootElement } from '../features/common/utils'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 const IconDropdown: FC<{
   children: React.ReactNode
@@ -24,8 +24,8 @@ const IconDropdown: FC<{
     // 计算基于icon位置的dropdown位置的中心点
     const iconEl = iconRef.current
     if (!iconEl) return
-    const rootElementX = getMaxAISidebarRootElement()?.getBoundingClientRect()
-      ?.x
+    const rootElementX =
+      getMaxAISidebarRootElement()?.getBoundingClientRect()?.x
     const iconElementX = iconEl?.getBoundingClientRect()?.x
     if (rootElementX && iconElementX) {
       left = -(iconElementX - rootElementX)

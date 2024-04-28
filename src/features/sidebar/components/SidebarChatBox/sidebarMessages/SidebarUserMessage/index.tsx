@@ -15,9 +15,10 @@ import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesH
 const BaseSidebarUserMessage: FC<{
   message: IUserChatMessage
   order?: number
+  container?: HTMLElement
 }> = (props) => {
   const { t } = useTranslation(['client'])
-  const { message, order } = props
+  const { message, order, container } = props
   const memoSx = useMemo(() => {
     return {
       whiteSpace: 'pre-wrap',
@@ -45,8 +46,6 @@ const BaseSidebarUserMessage: FC<{
     return !message.meta?.includeHistory && order !== 1
   }, [message, order])
 
-  // console.log('测试性能SidebarUserMessage', 'rerender')
-
   return (
     <Box component={'div'} className={'chat-message--user'}>
       {showDivider && (
@@ -56,7 +55,7 @@ const BaseSidebarUserMessage: FC<{
           </Typography>
         </Divider>
       )}
-      <SidebarUserMessageContexts message={message} />
+      <SidebarUserMessageContexts message={message} container={container} />
       <Stack
         className={'chat-message--text'}
         sx={{

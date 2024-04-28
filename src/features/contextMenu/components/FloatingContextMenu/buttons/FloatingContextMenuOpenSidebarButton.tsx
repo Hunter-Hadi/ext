@@ -16,6 +16,11 @@ import {
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import useCommands from '@/hooks/useCommands'
 
+/**
+ * @deprecated - 移动到draft context menu里去了 - 2024-04-19 @chenyang
+ * @param props
+ * @constructor
+ */
 const FloatingContextMenuOpenSidebarButton: FC<{
   sx?: SxProps
   TooltipProps?: Omit<TextOnlyTooltipProps, 'title' | 'children'>
@@ -33,12 +38,13 @@ const FloatingContextMenuOpenSidebarButton: FC<{
     >
       <Button
         sx={{
-          ml: '0px!important',
-          height: '24px',
-          flexShrink: 0,
-          alignSelf: 'end',
+          width: '28px',
+          height: '28px',
+          color: 'inherit',
           minWidth: 'unset',
-          padding: '6px 5px',
+          borderRadius: '8px',
+          border: '1px solid',
+          borderColor: 'customColor.borderColor',
         }}
         className={'max-ai__actions__button--toggle-sidebar'}
         variant="text"

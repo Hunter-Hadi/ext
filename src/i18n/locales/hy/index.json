@@ -249,7 +249,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot-ի անմիջապես պատասխանել",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram-ի անմիջապես պատասխանել",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams-ի անմիջապես պատասխանել",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat-ի անմիջապես պատասխանել"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat-ի անմիջապես պատասխանել",
+    "left_menu__sidebar": "Մենյուի սաղմոն",
+    "feature_card__sidebar__field__auto_archive__title": "Ինքնահատկացված արխիվացում: Մաքրեք ընթացիկը",
+    "feature_card__sidebar__field__auto_archive__button__title": "Արխիվացնել խոսակցությունը հետևյալում",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-ում, մենք ավտոմարտահրաշալի արխիվացնում ենք անհանգստանալով խոսակցությունը ընտրած պահին։ Այսպիսով, դուք կսկսեք նորից և կպահպանեք ձեր մոտավորությունը մաքրված։"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",
@@ -738,7 +742,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Ստացեք երկարատեղային պատասխաններ դառնալու հարցերի համար",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Որոնեք AI-ի հետ",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Ցուցադրեք AI պատասխանները որոնման արդյունքների հետ",
-    "instant_reply_button__explicit__display_text": "Հանգեցնել պատասխանը"
+    "instant_reply_button__explicit__display_text": "Հանգեցնել պատասխանը",
+    "immersive_chat__delete_all_context_menu__button__title": "Ջնջել բոլոր համերգային ընտրանքները",
+    "immersive_chat__delete_all_context_menu__title": "Մաքրեք ձեր համերգային ընտրանքների պատմությունը - վստահ եք?",
+    "context_window__chat_history__button__title": "Համերգային ընտրանքների պատմություն",
+    "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
+    "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",
@@ -942,7 +951,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Ընկերապես",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Գունապահ",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Համբարձումային",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Անհատական"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Անհատական",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Շարունակեք խոսքի մեջ"
   },
   "description": "Use 1-click AI anywhere, powered by ChatGPT, Claude 3, Gemini 1.5, GPT-4. The only generative AI extension you need.",
   "name": "MaxAI.me: 1-click AI powered by GPT-4, Claude 3, Gemini 1.5",

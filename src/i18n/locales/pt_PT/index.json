@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Resposta instantânea do HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Resposta instantânea do Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Resposta instantânea do Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Resposta instantânea do Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Resposta instantânea do Google Chat",
+    "left_menu__sidebar": "Barra lateral",
+    "feature_card__sidebar__field__auto_archive__title": "Auto arquivo: Limpe à medida que avança",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arquivar chat após",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência da sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Obtenha respostas longas para perguntas complexas",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Pesquise com IA",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Exiba respostas de IA ao lado dos resultados da pesquisa",
-    "instant_reply_button__explicit__display_text": "Resposta instantânea"
+    "instant_reply_button__explicit__display_text": "Resposta instantânea",
+    "immersive_chat__delete_all_context_menu__button__title": "Apagar todos os menus de contexto",
+    "immersive_chat__delete_all_context_menu__title": "Limpar o histórico dos seus menus de contexto - tem a certeza?",
+    "context_window__chat_history__button__title": "Histórico do menu de contexto",
+    "context_window__chat_history__empty__title": "Ainda não há histórico de menus de contexto disponível",
+    "context_window__chat_history__continue_in_chat__title": "Continuar no chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Amigável",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direto",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Confiante",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informal"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informal",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Continuar no chat"
   },
   "prompt_editor": {
     "preset_variables__title": "Funcionalidades",

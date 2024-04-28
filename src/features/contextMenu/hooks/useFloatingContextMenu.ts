@@ -2,7 +2,6 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import { useCallback, useMemo } from 'react'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { FloatingDropdownMenuState } from '@/features/contextMenu/store'
 import { IVirtualIframeSelectionElement } from '@/features/contextMenu/types'
@@ -19,6 +18,8 @@ import {
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { AppState } from '@/store'
+import { getMaxAISidebarRootElement } from '@/utils'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import Log from '@/utils/Log'
 
 const log = new Log('ContextMenu/useFloatingContextMenu')
@@ -47,22 +48,23 @@ const useFloatingContextMenu = () => {
     (
       element?: IVirtualIframeSelectionElement,
       overwriteSelectionElement?: Partial<IVirtualIframeSelectionElement>,
-      isCommandInsert?: boolean,
+      openFloatingContextMenu?: boolean,
     ) => {
-      let virtualSelectionElement:
-        | IVirtualIframeSelectionElement
-        | undefined = element
+      let virtualSelectionElement: IVirtualIframeSelectionElement | undefined =
+        element
       /**
        * floating menu 展开逻辑:
        * 1. 如果当前在editable element中，展开
        * 2. 如果当前有选中的文本，展开
-       * 3. 如果都不符合，展开chat box
+       * 3. 如果openFloatingContextMenu为true，展开
+       * 4. 如果都不符合，展开chat box
        */
       if (
         !isFloatingContextMenuVisible() &&
         virtualSelectionElement &&
         (virtualSelectionElement?.selectionText ||
-          virtualSelectionElement?.isEditableElement)
+          virtualSelectionElement?.isEditableElement ||
+          openFloatingContextMenu)
       ) {
         log.info('open', virtualSelectionElement)
         // 1. 如果是可编辑元素，设置marker和获取实际的selection text
@@ -112,7 +114,7 @@ const useFloatingContextMenu = () => {
           (!virtualSelectionElement?.isEditableElement &&
             virtualSelectionElement.selectionText) ||
           virtualSelectionElement?.editableElementSelectionText ||
-          isCommandInsert
+          openFloatingContextMenu
         ) {
           saveCurrentSelection({
             selectionText:
@@ -154,6 +156,10 @@ const useFloatingContextMenu = () => {
         rootRect: null,
         showModelSelector: false,
       })
+      // immersive page下显示的就是sidebar，不处理
+      if (isMaxAIImmersiveChatPage()) {
+        return
+      }
       if (isFloatingContextMenuOpen) {
         showChatBox()
         setAppState((prevState) => {
@@ -189,6 +195,7 @@ const useFloatingContextMenu = () => {
   const showFloatingContextMenuWithElement = (
     element: HTMLElement,
     text: string,
+    openFloatingContextMenu?: boolean,
   ) => {
     const rect = cloneRect(element.getBoundingClientRect())
     const virtualSelection = {
@@ -202,6 +209,8 @@ const useFloatingContextMenu = () => {
     }
     showFloatingContextMenuWithVirtualElement(
       virtualSelection as IVirtualIframeSelectionElement,
+      {},
+      openFloatingContextMenu,
     )
   }
   const showFloatingContextMenu = () => {

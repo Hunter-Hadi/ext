@@ -6,6 +6,7 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { isProduction } from '@/constants'
 import {
   SettingsPageRouteContext,
   settingsPageRouterList,
@@ -20,6 +21,9 @@ const OptionsLeftMenu: FC<{
   return (
     <List component="nav" sx={{ py: 2, ...sx }}>
       {settingsPageRouterList.map((menuItem) => {
+        if (menuItem.devOnly && isProduction) {
+          return null
+        }
         return (
           <React.Fragment key={menuItem.route}>
             <ListItemButton

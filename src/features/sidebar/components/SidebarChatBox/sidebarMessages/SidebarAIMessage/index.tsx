@@ -101,6 +101,7 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
       width: '100%',
       p: 1,
       gap: 1,
+      boxSizing: 'border-box',
       wordBreak: 'break-word',
       borderRadius: '8px',
       borderBottomLeftRadius: 0,

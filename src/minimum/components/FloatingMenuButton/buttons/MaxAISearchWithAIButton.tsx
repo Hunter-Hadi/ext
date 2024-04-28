@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 const MaxAISummarizeMiniButton = () => {
   const { t } = useTranslation(['common', 'client'])

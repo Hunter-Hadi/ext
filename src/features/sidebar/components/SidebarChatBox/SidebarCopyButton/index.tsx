@@ -13,6 +13,7 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { IAIResponseMessage } from '@/features/chatgpt/types'
 import {
   formatAIMessageContent,
@@ -36,6 +37,14 @@ const SidebarCopyButton: FC<{
   const [delayIsHover, setDelayIsHover] = useState(false)
   const [copyButtonKey, setCopyButtonKey] = useState('')
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(null)
+  const { currentConversationTypeRef } = useClientConversation()
+  const [anchorPosition, setAnchorPosition] = useState<
+    | {
+        top: number
+        left: number
+      }
+    | undefined
+  >(undefined)
   // 防止误触
   const mouseHoverTimer = useRef<ReturnType<typeof setTimeout>>()
   // 复制文本
@@ -77,7 +86,7 @@ const SidebarCopyButton: FC<{
       setDelayIsHover(false)
       clearTimeout(copySuccessTimer.current)
       setCopyButtonKey('')
-      return () => { }
+      return () => {}
     }
   }, [isHover])
   return (
@@ -91,6 +100,17 @@ const SidebarCopyButton: FC<{
         }}
         onMouseEnter={(event) => {
           setAnchorEl(event.currentTarget)
+          if (
+            event.currentTarget &&
+            currentConversationTypeRef.current === 'ContextMenu'
+          ) {
+            // NOTE:这个计算比较复杂，也许有更好的方法
+            setAnchorPosition({
+              // 80是popover的高度，26是button的高度
+              top: event.currentTarget.getBoundingClientRect().top - (80 - 34),
+              left: 8, // 8是popover的padding
+            })
+          }
           mouseHoverTimer.current = setTimeout(() => {
             setIsHover(true)
           }, 100)
@@ -112,7 +132,10 @@ const SidebarCopyButton: FC<{
         </Stack>
       </Button>
       <Popover
+        disablePortal
         disableScrollLock
+        anchorReference={anchorPosition ? 'anchorPosition' : 'anchorEl'}
+        anchorPosition={anchorPosition}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',

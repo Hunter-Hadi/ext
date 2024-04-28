@@ -19,6 +19,7 @@ import { isProduction } from '@/constants'
 import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProviderModelSelectorButton'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
+import { IShortcutEngineListenerType } from '@/features/shortcuts'
 import {
   getSetVariablesModalSelectCache,
   setVariablesModalSelectCache,
@@ -28,11 +29,11 @@ import SystemVariableSelect from '@/features/shortcuts/components/SystemVariable
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import { IAction, ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionParameters from '@/features/shortcuts/types/ActionParameters'
+import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import OneShotCommunicator from '@/utils/OneShotCommunicator'
-import { MaxAIPromptActionConfig } from '@/features/shortcuts/types/Extra/MaxAIPromptActionConfig'
 
 export interface ActionSetVariablesModalConfig {
   modelKey?: 'Sidebar' | 'FloatingContextMenu'
@@ -62,6 +63,7 @@ export interface ActionSetVariablesConfirmData {
 interface ActionSetVariablesModalProps
   extends Partial<ActionSetVariablesModalConfig> {
   modelKey: 'Sidebar' | 'FloatingContextMenu'
+  showModelSelector?: boolean
   onShow?: () => void
   onClose?: () => void
   onConfirm?: (data: ActionSetVariablesConfirmData) => void
@@ -78,8 +80,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
     actions,
     answerInsertMessageId,
     askChatGPTActionParameters,
+    showModelSelector = false,
   } = props
-  const { askAIWIthShortcuts, loading, shortCutsEngineRef } = useClientChat()
+  const { askAIWIthShortcuts, loading, shortCutsEngine } = useClientChat()
   const { currentSidebarConversationType } = useSidebarSettings()
   const { t } = useTranslation(['common', 'client'])
   const [show, setShow] = useState(false)
@@ -297,7 +300,7 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       await askAIWIthShortcuts(runActions)
         .then(() => {
           // done
-          const error = shortCutsEngineRef.current?.getNextAction()?.error || ''
+          const error = shortCutsEngine?.getNextAction()?.error || ''
           if (error) {
             // 如果出错了，则打开聊天框
             showChatBox()
@@ -449,27 +452,34 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
       })
     })
   })
-  const runActionsRef = useRef(validateFormAndRunActions)
+  const validateFormAndRunActionsRef = useRef(validateFormAndRunActions)
   useEffect(() => {
-    runActionsRef.current = validateFormAndRunActions
+    validateFormAndRunActionsRef.current = validateFormAndRunActions
   }, [validateFormAndRunActions])
-  useEffectOnce(() => {
-    shortCutsEngineRef.current?.addListener((event, shortcutEngine) => {
+  useEffect(() => {
+    const shortcutsEngineListener: IShortcutEngineListenerType = (
+      event,
+      shortcutEngine,
+    ) => {
       if (event === 'status') {
-        if (shortcutEngine.status === 'complete') {
-          if (
-            shortcutEngine.actions &&
-            shortcutEngine.actions.find(
-              (action: IAction) => action.type === 'SET_VARIABLES_MODAL',
-            )
-          ) {
-            // 确保在SET_VARIABLES_MODAL之后再运行
-            runActionsRef.current(true).then().catch()
-          }
+        if (
+          shortcutEngine.actions &&
+          shortcutEngine.actions.find(
+            (action: IAction) => action.type === 'SET_VARIABLES_MODAL',
+          )
+        ) {
+          // 确保在SET_VARIABLES_MODAL之后再运行
+          validateFormAndRunActionsRef.current(true).then().catch()
         }
       }
-    })
-  })
+    }
+    if (shortCutsEngine) {
+      shortCutsEngine.addListener(shortcutsEngineListener)
+      return () => {
+        shortCutsEngine.removeListener(shortcutsEngineListener)
+      }
+    }
+  }, [shortCutsEngine])
   useEffect(() => {
     if (currentSidebarConversationType === 'Chat') {
       setHide(false)
@@ -702,8 +712,9 @@ const ActionSetVariablesModal: FC<ActionSetVariablesModalProps> = (props) => {
         gap={1}
         flexShrink={0}
       >
-        <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
-
+        {showModelSelector && (
+          <AIProviderModelSelectorButton sidebarConversationType={'Chat'} />
+        )}
         <Button
           sx={{
             height: '32px',

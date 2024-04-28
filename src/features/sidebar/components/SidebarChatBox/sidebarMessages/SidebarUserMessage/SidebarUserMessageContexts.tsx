@@ -1,17 +1,18 @@
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import Chip from '@mui/material/Chip'
-import ClickAwayListener from '@mui/material/ClickAwayListener'
 import Divider from '@mui/material/Divider'
 import Stack from '@mui/material/Stack'
-import { styled } from '@mui/material/styles'
+import { styled, SxProps } from '@mui/material/styles'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, Fragment, useMemo, useState } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
+import LargeTextBox from '@/components/LargeTextBox'
 import LazyLoadImage from '@/components/LazyLoadImage'
+import MaxAIClickAwayListener from '@/components/MaxAIClickAwayListener'
 import { IUserChatMessage } from '@/features/chatgpt/types'
 import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
@@ -37,10 +38,11 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
  */
 const SidebarUserMessageContexts: FC<{
   message: IUserChatMessage
+  sx?: SxProps
+  container?: HTMLElement
 }> = (props) => {
-  const { message } = props
+  const { message, sx, container } = props
   const [open, setOpen] = useState(false)
-
   const attachments = useMemo(() => {
     return (message.meta?.attachments || []).filter(
       (attachment) => attachment.uploadStatus === 'success',
@@ -48,7 +50,7 @@ const SidebarUserMessageContexts: FC<{
   }, [message.meta?.attachments])
   const contexts = message.meta?.contexts
   const renderShortContent = useMemo(() => {
-    return contexts?.[0]?.value?.slice(0, 500) || ''
+    return contexts?.[0]?.value?.slice(0, 500).trim() || ''
   }, [contexts])
   if (!attachments.length && !contexts?.length) {
     return null
@@ -58,15 +60,28 @@ const SidebarUserMessageContexts: FC<{
   )
 
   return (
-    <div>
-      <ClickAwayListener
+    <Stack
+      direction={'row'}
+      justifyContent={'end'}
+      component={'div'}
+      sx={{
+        ...sx,
+      }}
+    >
+      <MaxAIClickAwayListener
         onClickAway={() => {
           setOpen(false)
         }}
       >
-        <div>
+        <Stack direction={'row'} maxWidth={'calc(100% - 16px)'}>
           <LightTooltip
             open={open}
+            PopperProps={{
+              container,
+              style: {
+                zIndex: 2147483647,
+              },
+            }}
             title={
               <Stack
                 py={0.5}
@@ -135,11 +150,12 @@ const SidebarUserMessageContexts: FC<{
                             />
                             {`Formatting may be inconsistent from source.`}
                           </Typography>
-                          <Stack
-                            flex={1}
+                          <LargeTextBox
+                            text={extractedContent}
                             sx={{
                               mt: 1,
-                              overflowY: 'auto',
+                            }}
+                            fontSx={{
                               whiteSpace: 'pre-wrap',
                               wordBreak: 'break-word',
                               fontSize: '14px',
@@ -147,9 +163,7 @@ const SidebarUserMessageContexts: FC<{
                               textAlign: 'left',
                               lineHeight: '20px',
                             }}
-                          >
-                            {extractedContent}
-                          </Stack>
+                          />
                         </Stack>
                       )
                     }
@@ -230,19 +244,19 @@ const SidebarUserMessageContexts: FC<{
             onClose={() => setOpen(false)}
           >
             <Stack
-              onClick={() => setOpen(true)}
+              onClick={() => {
+                setOpen(true)
+              }}
               gap={1}
               sx={{
                 borderRadius: '8px',
                 width: 'max-content',
-                maxWidth: 'calc(100% - 16px)',
                 bgcolor: (t) =>
                   t.palette.mode === 'dark' ? '#393743' : '#F6F2F9',
                 borderLeft: '4px solid #9065B0',
                 cursor: 'pointer',
               }}
               p={1}
-              ml={'auto'}
             >
               <Stack
                 width={'100%'}
@@ -251,6 +265,7 @@ const SidebarUserMessageContexts: FC<{
                 flexDirection={'row'}
                 gap={1}
                 alignItems={'flex-end'}
+                justifyContent={'flex-end'}
               >
                 {/*// 主要展示的内容，如果有附件则展示附件，如果有上下文则展示上下文*/}
                 {attachments.length > 0 && (
@@ -286,7 +301,9 @@ const SidebarUserMessageContexts: FC<{
                 )}
                 {attachments.length === 0 && (
                   <Typography
+                    data-testid={'user-message-short-contexts'}
                     sx={{
+                      textAlign: 'left',
                       color: (t: any) =>
                         t.palette.mode === 'dark'
                           ? 'rgba(255, 255, 255, 0.38)'
@@ -393,9 +410,9 @@ const SidebarUserMessageContexts: FC<{
               )}
             </Stack>
           </LightTooltip>
-        </div>
-      </ClickAwayListener>
-    </div>
+        </Stack>
+      </MaxAIClickAwayListener>
+    </Stack>
   )
 }
 

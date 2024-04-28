@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import {
   IMaxAIChatGPTBackendAPIType,
@@ -10,10 +10,7 @@ import {
   MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
-import {
-  backgroundSendAllClientMessage,
-  chromeExtensionLogout,
-} from '@/background/utils'
+import { chromeExtensionLogout } from '@/background/utils'
 import {
   APP_USE_CHAT_GPT_API_HOST,
   APP_USE_CHAT_GPT_HOST,
@@ -31,7 +28,7 @@ import Log from '@/utils/Log'
 const log = new Log('Background/Chat/MaxAIDALLEChat')
 
 class MaxAIDALLEChat extends BaseChat {
-  status: ChatStatus = 'success'
+  status: ConversationStatusType = 'success'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
@@ -44,7 +41,7 @@ class MaxAIDALLEChat extends BaseChat {
   async preAuth() {
     this.active = true
     this.status = 'success'
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
     // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
@@ -58,7 +55,7 @@ class MaxAIDALLEChat extends BaseChat {
         url: APP_USE_CHAT_GPT_HOST,
       })
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
   private async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
@@ -69,7 +66,7 @@ class MaxAIDALLEChat extends BaseChat {
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
 
   /**
@@ -289,7 +286,7 @@ class MaxAIDALLEChat extends BaseChat {
       log.info('user token expired')
       this.status = 'needAuth'
       await chromeExtensionLogout()
-      await this.updateClientStatus()
+      await this.updateClientConversationChatStatus()
     }
   }
   async abortTask(taskId: string) {
@@ -308,14 +305,6 @@ class MaxAIDALLEChat extends BaseChat {
   }
   private async getToken() {
     return await getMaxAIChromeExtensionAccessToken()
-  }
-  async updateClientStatus() {
-    if (this.active) {
-      console.log('Client_AuthAIProvider updateClientStatus', this.status)
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
   }
 }
 export { MaxAIDALLEChat }

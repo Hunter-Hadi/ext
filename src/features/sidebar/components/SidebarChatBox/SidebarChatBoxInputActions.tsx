@@ -14,7 +14,6 @@ import AIProviderModelSelectorButton from '@/features/chatgpt/components/AIProvi
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IUserChatMessageExtraType } from '@/features/chatgpt/types'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { FloatingInputButton } from '@/features/contextMenu/components/FloatingContextMenu/FloatingInputButton'
 import ArtConversationalModeToggle from '@/features/sidebar/components/SidebarChatBox/art_components/ArtConversationalModeToggle'
 import SearchWithAICopilotToggle from '@/features/sidebar/components/SidebarChatBox/search_with_ai_components/SearchWithAICopilotToggle'
@@ -22,6 +21,7 @@ import SidebarChatHistoryButton from '@/features/sidebar/components/SidebarChatB
 import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { getInputMediator } from '@/store/InputMediator'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const SidebarChatBoxInputActions: FC<{
@@ -179,7 +179,7 @@ const SidebarChatBoxInputActions: FC<{
               sx={actionsBtnColorSxMemo}
               onBeforeShowContextMenu={() => {
                 return {
-                  template: inputValue || ' ',
+                  template: inputValue || '',
                   target:
                     getMaxAISidebarRootElement()?.querySelector(
                       `#${MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID}`,

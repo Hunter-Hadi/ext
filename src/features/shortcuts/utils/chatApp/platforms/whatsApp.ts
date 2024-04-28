@@ -1,6 +1,6 @@
 import ChatMessagesContext, {
-  type IChatServerInfo,
   type IChatMessageData,
+  type IChatServerInfo,
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
 import { wait } from '@/utils'
 import {
@@ -48,7 +48,9 @@ const getUsernameFromProfilePanel = async (
         'div[tabindex]:has(button[title]) span.selectable-text.copyable-text[aria-label]',
       )?.textContent || ''
     if (needBack) {
-      profilePanel.querySelector<HTMLElement>('[data-icon="back"]')?.click()
+      profilePanel
+        .querySelector<HTMLElement>('[role="button"]:has(> [data-icon="back"])')
+        ?.click()
       await wait(500)
     }
   }
@@ -243,8 +245,6 @@ const whatsAppGetMessageData = async (
         quotedMessage.user || configs.username
       }'s message: ${quotedMessage.content}`
     }
-
-    debugger
 
     return messageData
   } catch (err) {

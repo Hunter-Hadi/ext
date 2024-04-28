@@ -13,6 +13,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { PaginationConversation } from '@/background/src/chatConversations'
@@ -21,37 +22,44 @@ import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import useAIProviderModels, {
   useAIProviderModelsMap,
 } from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { IAIProviderModel } from '@/features/chatgpt/types'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { ISidebarConversationType } from '@/features/sidebar/types'
+import { AppLocalStorageState } from '@/store'
+import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 import MoreActionsButton from './MoreActionsButton'
 
 interface IProps {
-  sx?: SxProps
+  conversationType: ISidebarConversationType
   hideClearAllButton?: boolean
   divider?: boolean
   onSelectConversation?: (conversation: PaginationConversation) => void
   emptyFeedback?: React.ReactNode
+  sx?: SxProps
 }
 
-const ConversationList: FC<IProps> = ({
-  sx,
-  hideClearAllButton = false,
-  divider = false,
-  onSelectConversation,
-  emptyFeedback,
-}) => {
-  const { smoothConversationLoading } = useSmoothConversationLoading()
+const ConversationList: FC<IProps> = (props) => {
   const {
-    currentSidebarConversationId,
-    currentSidebarConversationType,
-    updateSidebarSettings,
-    updateSidebarConversationType,
-  } = useSidebarSettings()
+    conversationType,
+    sx,
+    hideClearAllButton = false,
+    divider = false,
+    onSelectConversation,
+    emptyFeedback,
+  } = props
+  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
+  const { currentConversationId, createConversation, updateConversationId } =
+    useClientConversation()
+  const { updateSidebarSettings, updateSidebarConversationType } =
+    useSidebarSettings()
+  const { disposeBackgroundChatSystem } = useClientConversation()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { updateAIProviderModel } = useAIProviderModels()
   const {
@@ -84,9 +92,9 @@ const ConversationList: FC<IProps> = ({
 
   const filteredPaginationConversations = useMemo(() => {
     return paginationConversations.filter(
-      (conversation) => conversation.type === currentSidebarConversationType,
+      (conversation) => conversation.type === conversationType,
     )
-  }, [currentSidebarConversationType, paginationConversations])
+  }, [conversationType, paginationConversations])
 
   const renderEmptyFeedback = useCallback(() => {
     if (emptyFeedback) {
@@ -126,7 +134,7 @@ const ConversationList: FC<IProps> = ({
     return () => {
       destroy = true
     }
-  }, [currentSidebarConversationId, smoothConversationLoading])
+  }, [currentConversationId, smoothConversationLoading])
   useFocus(() => {
     fetchPaginationConversations().then((conversations) => {
       setPaginationConversations(conversations)
@@ -148,7 +156,7 @@ const ConversationList: FC<IProps> = ({
         }}
       >
         {filteredPaginationConversations.map((conversation, index) => {
-          const isSelected = conversation.id === currentSidebarConversationId
+          const isSelected = conversation.id === currentConversationId
           // NOTE: 之前发现这里会有不是string的情况，但是没找到原因，这里的代码为了安全性还是留着.
           if (typeof conversation.lastMessage.text !== 'string') {
             conversation.lastMessage.text = JSON.stringify(
@@ -174,28 +182,49 @@ const ConversationList: FC<IProps> = ({
                   if (smoothConversationLoading) {
                     return
                   }
+                  let disposeBackgroundChatSystemConversationId = undefined
+                  if (conversation.id) {
+                    // 因为现在有Auto archive功能，所以点击的时候需要更新时间
+                    await clientUpdateChatConversation(
+                      conversation.id,
+                      {
+                        updated_at: new Date().toISOString(),
+                      },
+                      true,
+                    )
+                  }
                   if (conversation.type === 'Summary') {
                     // do nothing
                   } else if (conversation.type === 'Chat') {
-                    await updateSidebarSettings({
-                      chat: {
-                        conversationId: conversation.id,
-                      },
-                    })
+                    disposeBackgroundChatSystemConversationId =
+                      appLocalStorage.sidebarSettings?.chat?.conversationId
+
+                    // await updateSidebarSettings({
+                    //   chat: {
+                    //     conversationId: conversation.id,
+                    //   },
+                    // })
+                    await updateConversationId(conversation.id)
                     updateSidebarConversationType(conversation.type)
                   } else if (conversation.type === 'Search') {
-                    await updateSidebarSettings({
-                      search: {
-                        conversationId: conversation.id,
-                      },
-                    })
+                    disposeBackgroundChatSystemConversationId =
+                      appLocalStorage.sidebarSettings?.search?.conversationId
+                    // await updateSidebarSettings({
+                    //   search: {
+                    //     conversationId: conversation.id,
+                    //   },
+                    // })
+                    await updateConversationId(conversation.id)
                     updateSidebarConversationType(conversation.type)
                   } else if (conversation.type === 'Art') {
-                    await updateSidebarSettings({
-                      art: {
-                        conversationId: conversation.id,
-                      },
-                    })
+                    disposeBackgroundChatSystemConversationId =
+                      appLocalStorage.sidebarSettings?.art?.conversationId
+                    // await updateSidebarSettings({
+                    //   art: {
+                    //     conversationId: conversation.id,
+                    //   },
+                    // })
+                    await updateConversationId(conversation.id)
                     updateSidebarConversationType(conversation.type)
                   }
                   if (conversation.AIModel && conversation.AIProvider) {
@@ -203,6 +232,14 @@ const ConversationList: FC<IProps> = ({
                       conversation.AIProvider,
                       conversation.AIModel,
                     )
+                  }
+                  // 异步释放Background Conversation
+                  if (disposeBackgroundChatSystemConversationId) {
+                    disposeBackgroundChatSystem(
+                      appLocalStorage.sidebarSettings?.chat?.conversationId,
+                    )
+                      .then()
+                      .catch()
                   }
                   onSelectConversation?.(conversation)
                 }}
@@ -243,6 +280,7 @@ const ConversationList: FC<IProps> = ({
                   >
                     <AIModelIcons
                       size={24}
+                      aiProvider={conversation.AIProvider}
                       aiModelValue={conversation.AIModel}
                     />
                   </Stack>
@@ -264,7 +302,7 @@ const ConversationList: FC<IProps> = ({
                       <Chip
                         sx={{
                           flexShrink: 0,
-                          width: '64px',
+                          width: 'unset',
                           fontSize: '12px',
                           padding: '0!important',
                           height: '16px!important',
@@ -272,12 +310,17 @@ const ConversationList: FC<IProps> = ({
                             padding: '0 6px',
                           },
                         }}
-                        label={conversation.type}
+                        label={
+                          conversation.type === 'ContextMenu'
+                            ? 'Context menu'
+                            : conversation.type
+                        }
                         size="small"
                       />
                       <Typography
                         noWrap
                         flex={1}
+                        textAlign={'left'}
                         width={0}
                         color={'text.secondary'}
                         fontSize={'12px'}
@@ -308,6 +351,9 @@ const ConversationList: FC<IProps> = ({
                         }
                       >
                         <TextField
+                          data-testid={
+                            'maxai--conversation--rename-chat--input'
+                          }
                           size={'small'}
                           autoFocus
                           defaultValue={conversation.name}
@@ -316,7 +362,7 @@ const ConversationList: FC<IProps> = ({
                             editingConversationName.current =
                               event.target.value.trim()
                           }}
-                          onKeyDown={(event) => {
+                          onKeyDownCapture={(event) => {
                             event.stopPropagation()
                             if (event.key === 'Enter') {
                               handleConversationRename(conversation, index)
@@ -359,24 +405,26 @@ const ConversationList: FC<IProps> = ({
                             gap={0.5}
                           >
                             <MoreActionsButton
+                              conversationAIProvider={conversation?.AIProvider}
+                              conversationAIModel={conversation?.AIModel}
                               onRename={() => {
                                 editingConversationName.current =
                                   conversation.name
                                 setEditingConversationId(conversation.id)
                               }}
-                              onDelete={() => {
-                                fetchPaginationConversations().then(
-                                  (conversations) => {
-                                    setPaginationConversations(conversations)
-                                    updateSidebarSettings({
-                                      chat: {
-                                        conversationId: '',
-                                      },
-                                    }).then(() => {
-                                      updateSidebarConversationType('Chat')
-                                    })
-                                  },
-                                )
+                              onDelete={async () => {
+                                const newConversations =
+                                  await fetchPaginationConversations()
+                                setPaginationConversations(newConversations)
+                                if (conversationType === 'ContextMenu') {
+                                  await createConversation('ContextMenu')
+                                } else if (!isMaxAIImmersiveChatPage()) {
+                                  await updateSidebarSettings({
+                                    [conversationType.toLowerCase()]: {
+                                      conversationId: '',
+                                    },
+                                  })
+                                }
                               }}
                               conversationType={conversation.type}
                               conversationId={conversation.id}
@@ -410,8 +458,7 @@ const ConversationList: FC<IProps> = ({
             onDelete={() => {
               fetchPaginationConversations().then((conversations) => {
                 setPaginationConversations(conversations)
-                const needCleanConversationType =
-                  currentSidebarConversationType.toLowerCase()
+                const needCleanConversationType = conversationType.toLowerCase()
                 updateSidebarSettings({
                   [needCleanConversationType]: {
                     conversationId: '',

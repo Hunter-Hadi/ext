@@ -1,24 +1,10 @@
-import { atom } from 'recoil'
+import { atom, atomFamily } from 'recoil'
 
-import { ChatStatus } from '@/background/provider/chat'
 import {
   IChatConversation,
   PaginationConversation,
 } from '@/background/src/chatConversations'
 import { IChatUploadFile } from '@/features/chatgpt/types'
-
-export const ChatGPTClientState = atom<{
-  loaded: boolean
-  status: ChatStatus
-  aborts: Array<() => void>
-}>({
-  key: 'ChatGPTClientState',
-  default: {
-    loaded: false,
-    status: 'success',
-    aborts: [],
-  },
-})
 
 export const ClientConversationMapState = atom<{
   [key: string]: IChatConversation
@@ -36,10 +22,13 @@ export const ThirdPartyAIProviderConfirmDialogState = atom<{
   },
 })
 
-export const ClientUploadedFilesState = atom<{
-  blurDelay: boolean
-  files: IChatUploadFile[]
-}>({
+export const ClientUploadedFilesState = atomFamily<
+  {
+    blurDelay: boolean
+    files: IChatUploadFile[]
+  },
+  string
+>({
   key: 'ClientUploadedFilesState',
   default: {
     files: [],

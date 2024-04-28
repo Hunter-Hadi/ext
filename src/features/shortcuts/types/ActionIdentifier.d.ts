@@ -68,8 +68,6 @@ type ActionIdentifier =
   | 'CLOSE_URLS'
   // 操作页面元素
   | 'OPERATION_ELEMENT'
-  // if条件
-  | 'SCRIPTS_CONDITIONAL'
   // 聊天文件太长上传
   | 'ANALYZE_CHAT_FILE'
   // 创建网站内容
@@ -82,10 +80,23 @@ type ActionIdentifier =
   | 'MAXAI_SUMMARY_LOG'
   //MaxAI 处理内置的变量
   | 'MAXAI_PROCESS_BUILT_IN_PARAMETERS'
+  // 获取消息
+  | 'MAXAI_GET_CHAT_MESSAGES'
   // 分配 System Prompt 应获取 (Email | Social Media | Chat App website) 页面上下文变量
   | 'ASSIGN_CUSTOM_PROMPT_WEB_PAGE_CONTENT_CONTEXT_VARIABLE'
+  // =========[Scripts]=========
+  // 传递指定的键值对列表到下一个动作作为字典
+  | 'SCRIPTS_DICTIONARY'
+  // 从传递给操作的字典中获取指定键的值。
+  | 'SCRIPTS_GET_DICTIONARY_VALUE'
+  // 在传递给操作的字典中设置值。
+  | 'SCRIPTS_SET_DICTIONARY_VALUE'
+  // 从列表中获取指定索引的值。
+  | 'SCRIPTS_GET_ITEM_FROM_LIST'
+  // if条件
+  | 'SCRIPTS_CONDITIONAL'
 
-// webgpt action identifiers
+// `1webgpt action identifiers
 type WebGPTActionIdentifier = 'WEBGPT_SEARCH_RESULTS_EXPAND'
 
 export default ActionIdentifier

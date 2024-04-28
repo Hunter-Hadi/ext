@@ -9,34 +9,7 @@ export type {
   IOpenAIChatListenTaskEvent,
   IOpenAIChatSendEvent,
 } from './eventType'
-import {
-  BardChatProvider,
-  BingChatProvider,
-  ChatAdapter,
-  ClaudeChatProvider,
-  MaxAIClaudeChatProvider,
-  MaxAIDALLEChatProvider,
-  MaxAIFreeChatProvider,
-  OpenAIApiChatProvider,
-  OpenAIChatProvider,
-  PoeChatProvider,
-  UseChatGPTPlusChatProvider,
-} from '@/background/provider/chat'
-import { MaxAIGeminiChatProvider } from '@/background/provider/chat/MaxAIGeminiChatProvider'
-import {
-  BardChat,
-  BingChat,
-  ChatSystem,
-  ClaudeWebappChat,
-  MaxAIClaudeChat,
-  MaxAIDALLEChat,
-  MaxAIFreeChat,
-  MaxAIGeminiChat,
-  OpenAIApiChat,
-  OpenAIChat,
-  PoeChat,
-  UseChatGPTPlusChat,
-} from '@/background/src/chat'
+import ChatSystemFactory from '@/background/src/chat/ChatSystemFactory'
 import { updateRemoteAIProviderConfigAsync } from '@/background/src/chat/OpenAIChat/utils'
 import ConversationManager from '@/background/src/chatConversations'
 import { ClientMessageInit } from '@/background/src/client'
@@ -56,7 +29,6 @@ import {
   isSettingsLastModifiedEqual,
 } from '@/background/utils/syncSettings'
 import {
-  AI_PROVIDER_MAP,
   APP_VERSION,
   isProduction,
   MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID,
@@ -75,7 +47,6 @@ import { ShortcutMessageBackgroundInit } from '@/features/shortcuts/messageChann
 import WebsiteContextManager from '@/features/websiteContext/background'
 import { updateContextMenuSearchTextStore } from '@/pages/settings/utils'
 import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/background'
-
 /**
  * background.js 入口
  *
@@ -102,7 +73,9 @@ export const startChromeExtensionBackground = () => {
     // hot reload
     developmentHotReload()
   } catch (e) {
-    //
+    // NOTE: 这个debugger是为了方便调试告诉开发者，如果有问题，可以在这里打断点
+    // eslint-disable-next-line no-debugger
+    debugger
   }
 }
 
@@ -116,7 +89,7 @@ const initChromeExtensionInstalled = () => {
       // 重置插件引导数据
       await resetChromeExtensionOnBoardingData()
       await Browser.tabs.create({
-        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/get-started',
+        url: MAXAI_CHROME_EXTENSION_APP_HOMEPAGE_URL + '/extension/installed',
       })
     } else {
       await initChromeExtensionUpdated()
@@ -393,6 +366,7 @@ const initChromeExtensionUpdated = async () => {
  * 插件消息通信初始化
  */
 const initChromeExtensionMessage = () => {
+  new ChatSystemFactory()
   ClientMessageInit()
   ShortcutMessageBackgroundInit()
   Browser.runtime.onMessage.addListener(
@@ -420,48 +394,6 @@ const initChromeExtensionMessage = () => {
       }
     },
   )
-  const chatSystem = new ChatSystem()
-  const openAIChatAdapter = new ChatAdapter(
-    new OpenAIChatProvider(new OpenAIChat()),
-  )
-  const useChatGPTPlusAdapter = new ChatAdapter(
-    new UseChatGPTPlusChatProvider(new UseChatGPTPlusChat()),
-  )
-  const newOpenAIApiChatAdapter = new ChatAdapter(
-    new OpenAIApiChatProvider(new OpenAIApiChat()),
-  )
-  const bardChatAdapter = new ChatAdapter(new BardChatProvider(new BardChat()))
-  const bingChatAdapter = new ChatAdapter(new BingChatProvider(new BingChat()))
-  const poeChatAdapter = new ChatAdapter(new PoeChatProvider(new PoeChat()))
-  const claudeChatAdapter = new ChatAdapter(
-    new ClaudeChatProvider(new ClaudeWebappChat()),
-  )
-  const maxAIClaudeAdapter = new ChatAdapter(
-    new MaxAIClaudeChatProvider(new MaxAIClaudeChat()),
-  )
-  const maxAIGeminiAdapter = new ChatAdapter(
-    new MaxAIGeminiChatProvider(new MaxAIGeminiChat()),
-  )
-  const maxAIArtAdapter = new ChatAdapter(
-    new MaxAIDALLEChatProvider(new MaxAIDALLEChat()),
-  )
-  const maxAiFreeAdapter = new ChatAdapter(
-    new MaxAIFreeChatProvider(new MaxAIFreeChat()),
-  )
-  chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI, openAIChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.OPENAI_API, newOpenAIApiChatAdapter)
-  chatSystem.addAdapter(
-    AI_PROVIDER_MAP.USE_CHAT_GPT_PLUS,
-    useChatGPTPlusAdapter,
-  )
-  chatSystem.addAdapter(AI_PROVIDER_MAP.BING, bingChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.BARD, bardChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.POE, poeChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.CLAUDE, claudeChatAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_CLAUDE, maxAIClaudeAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_FREE, maxAiFreeAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_GEMINI, maxAIGeminiAdapter)
-  chatSystem.addAdapter(AI_PROVIDER_MAP.MAXAI_DALLE, maxAIArtAdapter)
   // search with AI
   SearchWithAIMessageInit()
 }
@@ -678,12 +610,14 @@ const initExternalMessageListener = () => {
 }
 
 const initChromeExtensionTabUrlChangeListener = () => {
-  Browser.tabs.onUpdated.addListener(
-    (tabId, changeInfo, tab) => {
-      pdfSnifferStartListener(tabId, changeInfo, tab)
-      // 页面的url变化后，要触发页面的特殊网页的element更新
-      if (tab.active && tab.id && tab.url) {
-        console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
+  let lastTabUrl = ''
+  Browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    pdfSnifferStartListener(tabId, changeInfo, tab)
+    // 页面的url变化后，要触发页面的特殊网页的element更新
+    if (tab.active && tab.id && tab.url) {
+      console.log(`initChromeExtensionTabUrlChangeListener [${tab.url}]`, tab)
+      if (lastTabUrl !== tab.url) {
+        lastTabUrl = tab.url
         backgroundSendClientMessage(
           tab.id,
           'Client_updateSidebarChatBoxStyle',
@@ -691,13 +625,10 @@ const initChromeExtensionTabUrlChangeListener = () => {
         )
           .then()
           .catch()
-        backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
-          .then()
-          .catch()
       }
-    },
-    {
-      properties: ['url'],
-    },
-  )
+      backgroundSendClientMessage(tab.id, 'Client_listenTabUrlUpdate', {})
+        .then()
+        .catch()
+    }
+  })
 }

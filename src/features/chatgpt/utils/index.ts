@@ -5,23 +5,36 @@ import {
   IChromeExtensionClientSendEvent,
   IOpenAIChatSendEvent,
 } from '@/background/eventType'
-import { IAIProviderType } from '@/background/provider/chat'
+import {
+  ConversationStatusType,
+  IAIProviderType,
+} from '@/background/provider/chat'
 import { MAXAI_CHROME_EXTENSION_POST_MESSAGE_ID } from '@/constants'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ISearchWithAISendEvent } from '@/features/searchWithAI/background/eventType'
 import { IShortCutsSendEvent } from '@/features/shortcuts/messageChannel/eventType'
 import { wait } from '@/utils'
 
-export const pingDaemonProcess = async () => {
+export const clientGetConversationStatus = async (
+  conversationId: string,
+): Promise<{
+  success: boolean
+  status: ConversationStatusType
+}> => {
   const port = new ContentScriptConnectionV2()
   const result = await port.postMessage({
     event: 'Client_checkChatGPTStatus',
-    data: {},
+    data: {
+      conversationId,
+    },
   })
-  return result.success
+  return {
+    success: result.success,
+    status: result.data.status || 'success',
+  }
 }
 
-export const pingUntilLogin = () => {
+export const pingUntilLogin = (conversationId: string) => {
   const port = new ContentScriptConnectionV2()
   return new Promise<boolean>((resolve) => {
     console.log('start pingUntilLogin')
@@ -29,7 +42,9 @@ export const pingUntilLogin = () => {
     const checkStatus = async () => {
       const result = await port.postMessage({
         event: 'Client_checkChatGPTStatus',
-        data: {},
+        data: {
+          conversationId,
+        },
       })
       if (result.success) {
         if (result?.data?.status !== 'success') {
@@ -57,7 +72,6 @@ export class ContentScriptConnectionV2 {
       runtime?: 'client' | 'daemon_process' | 'shortcut'
     } = {},
   ) {
-    console.log('[ContentScriptConnectionV2]: init')
     // 初始化运行环境
     this.runtime = options.runtime || 'client'
   }
@@ -101,13 +115,15 @@ export class ContentScriptConnectionV2 {
   }
 }
 
-export const getAIProviderChatFiles = async (): Promise<IChatUploadFile[]> => {
+export const getAIProviderChatFiles = async (
+  conversationId: string,
+): Promise<IChatUploadFile[]> => {
   const port = new ContentScriptConnectionV2({
     runtime: 'client',
   })
   const data = await port.postMessage({
     event: 'Client_chatGetFiles',
-    data: {},
+    data: { conversationId },
   })
   if (data.success) {
     return data.data.map((file: IChatUploadFile) => {
@@ -134,25 +150,4 @@ export const isThirdPartyAIProvider = (provider: IAIProviderType) => {
     'BING',
   ]
   return thirdPartyAIProvider.includes(provider)
-}
-
-// 客户端切换 AI provider 并且 auth 的方法
-export const clientSwitchAndAuthAIProvider = async (
-  provider: IAIProviderType,
-) => {
-  const port = new ContentScriptConnectionV2()
-  await port.postMessage({
-    event: 'Client_switchAIProvider',
-    data: {
-      provider,
-    },
-  })
-  const result = await port.postMessage({
-    event: 'Client_AuthAIProvider',
-    data: {
-      provider,
-    },
-  })
-
-  return result.success
 }

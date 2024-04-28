@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot即时回复",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram即时回复",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams即时回复",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat即时回复"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat即时回复",
+    "left_menu__sidebar": "侧边栏",
+    "feature_card__sidebar__field__auto_archive__title": "自动归档：随时清理",
+    "feature_card__sidebar__field__auto_archive__button__title": "聊天后归档",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我们会根据您选择的频率自动归档闲置的聊天。这样可以让您重新开始，并保持侧边栏整洁。"
   },
   "client": {
     "sidebar__button__close_sidebar": "关闭侧边栏",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "获取复杂问题的详细回答",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "与AI一起搜索",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "在搜索结果旁边显示AI答案",
-    "instant_reply_button__explicit__display_text": "即时回复"
+    "instant_reply_button__explicit__display_text": "即时回复",
+    "immersive_chat__delete_all_context_menu__button__title": "删除所有上下文菜单",
+    "immersive_chat__delete_all_context_menu__title": "清除您的上下文菜单历史记录 - 您确定吗？",
+    "context_window__chat_history__button__title": "上下文菜单历史记录",
+    "context_window__chat_history__empty__title": "暂无可用的上下文菜单历史记录",
+    "context_window__chat_history__continue_in_chat__title": "继续聊天"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "友好",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "直接了当",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "自信",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "随意"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "随意",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "继续聊天"
   },
   "prompt_editor": {
     "preset_variables__title": "功能",

@@ -5,9 +5,9 @@ import { useTranslation } from 'react-i18next'
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import DynamicComponent from '@/components/DynamicComponent'
 import useFindElement from '@/features/common/hooks/useFindElement'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import { ISidebarConversationType } from '@/features/sidebar/types'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 const MAXAI_YOUTUBE_SUMMARY_BUTTON = 'max-ai-youtube-summary-button'
 const YouTubeSummaryButton: FC = () => {

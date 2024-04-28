@@ -19,8 +19,8 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import ConversationList from '@/features/chatgpt/components/ConversationList'
 import ClearAllChatButton from '@/features/chatgpt/components/ConversationList/ClearAllChatButton'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
@@ -254,6 +254,7 @@ const SidebarChatHistoryButton: FC<{
                     <Divider />
                     <Box height={0} flex={1} overflow="auto">
                       <ConversationList
+                        conversationType={currentSidebarConversationType}
                         hideClearAllButton
                         divider
                         onSelectConversation={() => {

@@ -1,7 +1,7 @@
 import Browser from 'webextension-polyfill'
 
 import { IOpenAIChatListenTaskEvent } from '@/background/eventType'
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import { IChatGPTAskQuestionFunctionType } from '@/background/provider/chat/ChatAdapter'
 import BaseChat from '@/background/src/chat/BaseChat'
 import ChatGPTSocketManager from '@/background/src/chat/OpenAIChat/socket'
@@ -27,7 +27,7 @@ import Log from '@/utils/Log'
 const log = new Log('ChatGPT/OpenAIChat')
 
 class OpenAIChat extends BaseChat {
-  status: ChatStatus = 'needAuth'
+  status: ConversationStatusType = 'needAuth'
   private cacheLastTimeChatGPTProxyInstance?: Browser.Tabs.Tab
   private chatGPTProxyInstance?: Browser.Tabs.Tab
   private lastActiveTabId?: number
@@ -78,7 +78,7 @@ class OpenAIChat extends BaseChat {
               log.info('OpenAIDaemonProcess_setDaemonProcess')
               this.chatGPTProxyInstance = sender.tab
               this.status = 'success'
-              await this.updateClientStatus()
+              await this.updateClientConversationChatStatus()
               this.listenDaemonProcessTab()
               if (this.lastActiveTabId && this.lastActiveTabId > 0) {
                 await backgroundSendClientMessage(
@@ -131,7 +131,7 @@ class OpenAIChat extends BaseChat {
             log.info('OpenAIDaemonProcess_daemonProcessSessionExpired')
             this.status = 'needAuth'
             if (!this.active) break
-            await this.updateClientStatus()
+            await this.updateClientConversationChatStatus()
             // active sender tab
             if (sender.tab) {
               const { tab } = sender
@@ -202,13 +202,13 @@ class OpenAIChat extends BaseChat {
     } else {
       this.status = 'needAuth'
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
   async auth(authTabId: number) {
     this.lastActiveTabId = authTabId
     this.active = true
     this.status = 'loading'
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
     if (!this.chatGPTProxyInstance) {
       if (
         this.cacheLastTimeChatGPTProxyInstance &&
@@ -242,7 +242,7 @@ class OpenAIChat extends BaseChat {
 
       this.status = 'complete'
       this.listenDaemonProcessTab()
-      await this.updateClientStatus()
+      await this.updateClientConversationChatStatus()
       this.cacheLastTimeChatGPTProxyInstance = this.chatGPTProxyInstance
       this.keepAlive()
     }
@@ -314,8 +314,8 @@ class OpenAIChat extends BaseChat {
             } as any
           })
           this.chatFiles = []
-          console.log('Client_chatUploadFilesChange', this.chatFiles)
           backgroundSendAllClientMessage('Client_listenUploadFilesChange', {
+            conversationId: this.conversation?.id,
             files: this.chatFiles,
           })
         }
@@ -476,13 +476,6 @@ class OpenAIChat extends BaseChat {
       message: 'daemon process not exist',
     }
   }
-  async updateClientStatus() {
-    if (this.active) {
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
-  }
   // 守护进程定时发送心跳
   async keepAlive(): Promise<void> {
     if (this.chatGPTProxyInstance) {
@@ -528,7 +521,7 @@ class OpenAIChat extends BaseChat {
       this.chatGPTProxyInstance = undefined
       this.cacheLastTimeChatGPTProxyInstance = undefined
       this.status = 'needAuth'
-      await this.updateClientStatus()
+      await this.updateClientConversationChatStatus()
     }
   }
   async tabUpdateListener(
@@ -545,7 +538,7 @@ class OpenAIChat extends BaseChat {
         this.cacheLastTimeChatGPTProxyInstance = this.chatGPTProxyInstance
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'
-        await this.updateClientStatus()
+        await this.updateClientConversationChatStatus()
       }
       // 守护进程 tab 更新时，如果 active 中就正常更新状态
       // 如果不是 active 就直接关闭守护进程
@@ -556,14 +549,14 @@ class OpenAIChat extends BaseChat {
         ) {
           log.info('守护进程url状态更新', changeInfo.status)
           this.status = changeInfo.status
-          await this.updateClientStatus()
+          await this.updateClientConversationChatStatus()
           await this.pingAwaitSuccess()
         }
       } else {
         this.cacheLastTimeChatGPTProxyInstance = this.chatGPTProxyInstance
         this.chatGPTProxyInstance = undefined
         this.status = 'needAuth'
-        await this.updateClientStatus()
+        await this.updateClientConversationChatStatus()
       }
     }
   }
@@ -587,7 +580,7 @@ class OpenAIChat extends BaseChat {
             if (result && result.success) {
               log.info('ping await success')
               this.status = 'success'
-              this.updateClientStatus()
+              this.updateClientConversationChatStatus()
               isOk = true
             }
           })

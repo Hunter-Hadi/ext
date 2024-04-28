@@ -41,6 +41,8 @@ const clientAskMaxAIChatProvider = async (
         name: prompt_name,
         id: prompt_id,
         host,
+        aiProvider,
+        aiModel: model,
       },
     })
     .then()

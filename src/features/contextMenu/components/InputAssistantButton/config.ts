@@ -16,7 +16,7 @@ import {
 } from './InputAssistantButtonManager'
 
 export interface IInputAssistantButton {
-  tooltip: I18nextKeysType
+  tooltip?: I18nextKeysType
   buttonKey: IChromeExtensionButtonSettingKey
   permissionWrapperCardSceneType: PermissionWrapperCardSceneType
   InputAssistantBoxSx?: SxProps
@@ -142,7 +142,6 @@ const GmailWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
       rootWrapperTagName: 'div',
       rootWrapperStyle: 'order: 1;',
       composeReplyButton: {
-        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'GMAIL_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {
@@ -241,7 +240,6 @@ const OutlookWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
       rootWrapperTagName: 'div',
       appendPosition: 0,
       composeReplyButton: {
-        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
         buttonKey: 'inputAssistantComposeReplyButton',
         permissionWrapperCardSceneType: 'OUTLOOK_COMPOSE_REPLY_BUTTON',
         onSelectionEffect: ({ id: buttonId }) => {

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpoti kohe vastus",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegrami kohe vastus",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teamsi kohe vastus",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chati kohe vastus"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chati kohe vastus",
+    "left_menu__sidebar": "Külgriba",
+    "feature_card__sidebar__field__auto_archive__title": "Automaatne arhiveerimine: Puhasta, kui lähed",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arhiveeri vestlus pärast",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-s arhiveerime jõudeoleva vestluse teie valitud sagedusega. See annab teile värskendava alguse ja hoiab külgriba korras."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Saa pikki vastuseid keerulistele küsimustele",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Otsi AI abil",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Kuva AI vastused otsingutulemuste kõrval",
-    "instant_reply_button__explicit__display_text": "Kohe vastus"
+    "instant_reply_button__explicit__display_text": "Kohe vastus",
+    "immersive_chat__delete_all_context_menu__button__title": "Kustuta kõik kontekstimenüüd",
+    "immersive_chat__delete_all_context_menu__title": "Kustuta oma kontekstimenüüde ajalugu - oled sa kindel?",
+    "context_window__chat_history__button__title": "Kontekstimenüü ajalugu",
+    "context_window__chat_history__empty__title": "Kontekstimenüü ajalugu pole veel saadaval",
+    "context_window__chat_history__continue_in_chat__title": "Jätka vestlust"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Luuletus...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Sõbralik",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Otsekohene",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Enesekindel",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Vabaajalik"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Vabaajalik",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Jätka vestlust"
   },
   "prompt_editor": {
     "preset_variables__title": "Võimed",

@@ -52,7 +52,7 @@ const FloatingInputButton: FC<{
         target = result.target || target
         template = result.template || template
       }
-      showFloatingContextMenuWithElement(target, template)
+      showFloatingContextMenuWithElement(target, template, true)
     }
   }
   if (NO_SUPPORT_HOST.includes(getCurrentDomainHost())) {

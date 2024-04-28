@@ -14,42 +14,60 @@ import {
   GeminiIcon,
   MaxAIFreeIcon,
 } from '@/components/CustomIcon'
+import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
+import { isThirdPartyAIProvider } from '@/features/chatgpt'
+import { IAIProviderType } from '@/background/provider/chat'
 
 export interface AIProviderIconProps {
+  aiProvider?: IAIProviderType
   aiModelValue: string
   size?: number
   sx?: SxProps
 }
 const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
-  const { aiModelValue, size = 20, sx } = props
-  return (
-    <>
-      {aiModelValue === MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO && (
+  const { aiProvider, aiModelValue, size = 20, sx } = props
+
+  if (aiProvider && isThirdPartyAIProvider(aiProvider)) {
+    return (
+      <ThirdPartyAIProviderIcon
+        sx={{
+          ...sx,
+          fontSize: size,
+        }}
+      />
+    )
+  }
+
+  switch (aiModelValue) {
+    case MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO:
+      return (
         <ChatGPTIcon
           sx={{
             ...sx,
             fontSize: size,
           }}
         />
-      )}
-      {aiModelValue === MAXAI_CHATGPT_MODEL_GPT_4_TURBO && (
+      )
+    case MAXAI_CHATGPT_MODEL_GPT_4_TURBO:
+      return (
         <ChatGPT4Icon
           sx={{
             ...sx,
             fontSize: size,
           }}
         />
-      )}
-      {aiModelValue === 'gpt-4' && (
+      )
+    case 'gpt-4':
+      return (
         <ChatGPT4Icon
           sx={{
             ...sx,
             fontSize: size,
           }}
         />
-      )}
-
-      {aiModelValue === 'claude-3-opus' && (
+      )
+    case 'claude-3-opus':
+      return (
         <SvgIcon
           sx={{
             ...sx,
@@ -73,8 +91,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
             />
           </svg>
         </SvgIcon>
-      )}
-      {aiModelValue === 'claude-3-sonnet' && (
+      )
+    case 'claude-3-sonnet':
+      return (
         <ClaudeIcon
           sx={{
             ...sx,
@@ -83,8 +102,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
           }}
         />
-      )}
-      {aiModelValue === 'claude-3-haiku' && (
+      )
+    case 'claude-3-haiku':
+      return (
         <SvgIcon
           sx={{
             ...sx,
@@ -108,8 +128,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
             />
           </svg>
         </SvgIcon>
-      )}
-      {aiModelValue === 'gemini-1.5-pro' && (
+      )
+    case 'gemini-1.5-pro':
+      return (
         <GeminiIcon
           sx={{
             ...sx,
@@ -118,8 +139,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
           }}
         />
-      )}
-      {aiModelValue === 'gemini-pro' && (
+      )
+    case 'gemini-pro':
+      return (
         <SvgIcon
           sx={{
             ...sx,
@@ -193,8 +215,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
             </defs>
           </svg>
         </SvgIcon>
-      )}
-      {aiModelValue === 'dall-e-3' && (
+      )
+    case 'dall-e-3':
+      return (
         <DALLEIcon
           sx={{
             ...sx,
@@ -203,10 +226,11 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
           }}
         />
-      )}
-      {aiModelValue === 'mistral-7b-instruct' ||
-      aiModelValue === 'openchat-7b' ||
-      aiModelValue === 'mythomist-7b' ? (
+      )
+    case 'mistral-7b-instruct':
+    case 'openchat-7b':
+    case 'mythomist-7b':
+      return (
         <MaxAIFreeIcon
           sx={{
             ...sx,
@@ -215,8 +239,9 @@ const AIProviderIcon: FC<AIProviderIconProps> = (props) => {
               t.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,1)',
           }}
         />
-      ) : null}
-    </>
-  )
+      )
+  }
+
+  return null
 }
 export default AIProviderIcon

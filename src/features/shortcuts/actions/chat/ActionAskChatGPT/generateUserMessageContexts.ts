@@ -15,11 +15,14 @@ const generateUserMessageContexts = (
   )
   customVariables.forEach((key) => {
     const value = shortCutsParameters[key]?.value
-    if (typeof value === 'string' && !contextMap.has(key)) {
+    if (
+      (typeof value === 'string' || typeof value === 'number') &&
+      !contextMap.has(key)
+    ) {
       contextMap.set(key, {
         type: 'text',
         key: shortCutsParameters[key].label || key,
-        value,
+        value: String(value),
       })
     }
   })

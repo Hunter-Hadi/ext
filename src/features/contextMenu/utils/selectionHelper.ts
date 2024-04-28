@@ -487,7 +487,7 @@ export const getEditableElementSelectionText = (
                 .trim()
             } else if (host === 'word-edit.officeapps.live.com') {
               // 先重置一下，保留换行
-              partOfStartToCaretText = partOfStartToCaret.toString();
+              partOfStartToCaretText = partOfStartToCaret.toString()
               // 获取当前可编辑元素的内容
               partOfStartToCaret.selectNodeContents(editableElement)
               partOfStartToCaret.setEnd(range.endContainer, range.endOffset)
@@ -1365,7 +1365,11 @@ export const replaceWithClipboard = async (
         await navigator.clipboard.writeText(pastedText)
       }
 
-      if (isOfficeWordEditorFrame() && isOfficeWordEditing(editableElement) && getOfficeWordSelectedElements().length) {
+      if (
+        isOfficeWordEditorFrame() &&
+        isOfficeWordEditing(editableElement) &&
+        getOfficeWordSelectedElements().length
+      ) {
         // Microsoft Office docs下如果已有选区调用removeAllRanges和addRange无效
         // 只有先点击一次清除选中后，调用removeAllRange和addRange才有效
         // 但是每次修改选区后，dom节点会变换成新的节点，导致先前获取的range里的节点都丢失了
@@ -1375,21 +1379,25 @@ export const replaceWithClipboard = async (
         // selectOfficeWordRange(restoreRange)
 
         if (type === 'INSERT' || type === 'INSERT_BELOW') {
-          editableElement?.dispatchEvent(new KeyboardEvent('keydown', {
-            code: 'ArrowRight',
-            key: 'ArrowRight',
-            keyCode: 39,
-            bubbles: true,
-            repeat: false,
-          }))
+          editableElement?.dispatchEvent(
+            new KeyboardEvent('keydown', {
+              code: 'ArrowRight',
+              key: 'ArrowRight',
+              keyCode: 39,
+              bubbles: true,
+              repeat: false,
+            }),
+          )
         } else if (type === 'INSERT_ABOVE') {
-          editableElement?.dispatchEvent(new KeyboardEvent('keydown', {
-            code: 'ArrowLeft',
-            key: 'ArrowLeft',
-            keyCode: 37,
-            bubbles: true,
-            repeat: false,
-          }))
+          editableElement?.dispatchEvent(
+            new KeyboardEvent('keydown', {
+              code: 'ArrowLeft',
+              key: 'ArrowLeft',
+              keyCode: 37,
+              bubbles: true,
+              repeat: false,
+            }),
+          )
         } else {
           finallySelection.removeAllRanges()
           finallySelection.addRange(originalRange)
@@ -1407,6 +1415,9 @@ export const replaceWithClipboard = async (
       if (currentHost === 'evernote.com') {
         // 如果在 evernote.com 上，则不需要 delay
         // nothing
+      } else if (currentHost === 'discord.com') {
+        // 在 discord.com上
+        await wait(100)
       } else {
         await wait(0)
       }
@@ -1456,7 +1467,10 @@ export const replaceWithClipboard = async (
           doc.activeElement,
           doc.hasFocus(),
         )
-      } else if (isOfficeWordEditorFrame() && isOfficeWordEditing(editableElement)) {
+      } else if (
+        isOfficeWordEditorFrame() &&
+        isOfficeWordEditing(editableElement)
+      ) {
         // office docs下用一下方式粘贴
         // 如果用paste会粘贴样式，insertText会有一些其他问题
         const clipboardData = new DataTransfer()

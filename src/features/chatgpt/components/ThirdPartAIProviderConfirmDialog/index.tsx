@@ -14,11 +14,9 @@ import { useRecoilState } from 'recoil'
 import { MAXAI_DEFAULT_AI_PROVIDER_CONFIG } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { CHROME_EXTENSION_MAIL_TO } from '@/constants'
 import ThirdPartyAIProviderModelSelectorCard from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderModelSelectorCard'
-import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useThirdAIProviderModels from '@/features/chatgpt/hooks/useThirdAIProviderModels'
 import { ThirdPartyAIProviderConfirmDialogState } from '@/features/chatgpt/store'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 
 import ThirdPartyAIProviderRecommendations from './ThirdPartyAIProviderRecommendations'
 
@@ -33,25 +31,18 @@ const ThirdPartAIProviderConfirmDialog: FC<
   const [dialogState, setDialogState] = useRecoilState(
     ThirdPartyAIProviderConfirmDialogState,
   )
-  const { sidebarSettings } = useSidebarSettings()
   const { isSelectedThirdAIProvider } = useThirdAIProviderModels()
-  const { updateAIProviderModel } = useAIProviderModels()
   const { createConversation } = useClientConversation()
   const { open } = dialogState
 
   const handleClose = async () => {
     // 如果点击了关闭按钮， 并且当前选中的已经是第三方AI provider， 则切换回默认的AI provider和AI model
-    // 重新登陆之后，如果当前选中的AIProvider是默认的AIProvider， 则创建一个新的对话
-    if (
-      isSelectedThirdAIProvider ||
-      sidebarSettings?.common?.currentAIProvider ===
-        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
-    ) {
-      await updateAIProviderModel(
-        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider,
-        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel,
+    if (isSelectedThirdAIProvider) {
+      await createConversation(
+        'Chat',
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider,
+        MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel,
       )
-      await createConversation()
     }
     setDialogState({
       open: false,

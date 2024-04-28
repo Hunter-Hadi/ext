@@ -9,7 +9,6 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useRecoilValue } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -22,20 +21,25 @@ import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
 import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { useContextMenuList } from '@/features/contextMenu'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
+import {
+  useContextMenuList,
+  useFloatingContextMenu,
+} from '@/features/contextMenu'
 import FloatingContextMenuList from '@/features/contextMenu/components/FloatingContextMenu/FloatingContextMenuList'
 import { type IInputAssistantButton } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
 import { type IShortcutEngineListenerType } from '@/features/shortcuts'
+import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import { showChatBox } from '@/features/sidebar/utils/sidebarChatBoxHelper'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 interface InputAssistantButtonContextMenuProps {
   root: HTMLElement
   rootId: string
+  shadowRoot: ShadowRoot
   buttonKey: IChromeExtensionButtonSettingKey
   children: React.ReactNode
   permissionWrapperCardSceneType?: PermissionWrapperCardSceneType
@@ -50,19 +54,23 @@ const InputAssistantButtonContextMenu: FC<
     children,
     rootId,
     root,
+    shadowRoot,
     permissionWrapperCardSceneType,
     disabled,
     onSelectionEffect,
   } = props
+  const { showFloatingContextMenuWithElement, hideFloatingContextMenu } =
+    useFloatingContextMenu()
+  const { updateSidebarConversationType } = useSidebarSettings()
   const [clickContextMenu, setClickContextMenu] =
     useState<IContextMenuItem | null>(null)
-  const { currentSidebarConversationType, updateSidebarConversationType } =
-    useSidebarSettings()
+  const { currentSidebarConversationType } = useClientConversation()
   const { currentUserPlan } = useUserInfo()
-  const { createConversation, pushPricingHookMessage } = useClientConversation()
+  const { shortCutsEngine } = useShortCutsEngine()
+  const { pushPricingHookMessage } = useClientConversation()
   const { contextMenuList } = useContextMenuList(buttonKey, '', false)
-  const { loading } = useRecoilValue(ClientWritingMessageState)
-  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
+  const { askAIWIthShortcuts } = useClientChat()
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const hasPermission = useMemo(() => {
     if (permissionWrapperCardSceneType && currentUserPlan.name === 'free') {
@@ -72,7 +80,7 @@ const InputAssistantButtonContextMenu: FC<
   }, [permissionWrapperCardSceneType, currentUserPlan])
   const runContextMenu = useCallback(
     async (contextMenu: IContextMenuItem) => {
-      if (!loading && contextMenu.data.actions) {
+      if (!smoothConversationLoading && contextMenu.data.actions) {
         // 每个网站5次免费InputAssistantButton的机会
         const onBoardingData = await getChromeExtensionOnBoardingData()
         const key =
@@ -90,8 +98,9 @@ const InputAssistantButtonContextMenu: FC<
             // 如果没有免费试用次数, 则显示付费卡片
             showChatBox()
             authEmitPricingHooksLog('show', permissionWrapperCardSceneType)
-            await createConversation()
+            updateSidebarConversationType('Chat')
             await pushPricingHookMessage(permissionWrapperCardSceneType)
+            hideFloatingContextMenu()
             return
           }
         }
@@ -108,14 +117,12 @@ const InputAssistantButtonContextMenu: FC<
             },
           },
         })
-        await askAIWIthShortcuts(actions, {
-          isOpenSidebarChatBox: true,
-        })
+        await askAIWIthShortcuts(actions)
       }
     },
     [
       askAIWIthShortcuts,
-      loading,
+      smoothConversationLoading,
       hasPermission,
       permissionWrapperCardSceneType,
     ],
@@ -131,13 +138,13 @@ const InputAssistantButtonContextMenu: FC<
   }, [currentSidebarConversationType])
 
   useEffect(() => {
+    let onSelectionEffectListener: IShortcutEngineListenerType | null = null
     if (
       !isRunningRef.current &&
       clickContextMenu &&
       runContextMenuRef.current &&
-      sidebarSettingsTypeRef.current === 'Chat'
+      sidebarSettingsTypeRef.current === 'ContextMenu'
     ) {
-      let onSelectionEffectListener: IShortcutEngineListenerType | null = null
       if (onSelectionEffect) {
         onSelectionEffectListener = (event, data) => {
           if (
@@ -155,10 +162,16 @@ const InputAssistantButtonContextMenu: FC<
             onSelectionEffect() // 这里会报错只是因为 ts 定义错了，实际使用不会报错，未来可能会根据定义再扩展这个 function
           }
         }
-        shortCutsEngineRef.current?.addListener(onSelectionEffectListener)
+        shortCutsEngine?.addListener(onSelectionEffectListener)
       }
       isRunningRef.current = true
       setClickContextMenu(null)
+      const buttonElement = (document.querySelector(
+        `[maxai-input-assistant-button-id="${rootId}"]`,
+      ) || shadowRoot?.host) as HTMLElement
+      if (buttonElement) {
+        showFloatingContextMenuWithElement(buttonElement, '', true)
+      }
       runContextMenuRef
         .current(clickContextMenu)
         .then()
@@ -167,15 +180,15 @@ const InputAssistantButtonContextMenu: FC<
           isRunningRef.current = false
 
           if (onSelectionEffectListener) {
-            shortCutsEngineRef.current?.removeListener(
-              onSelectionEffectListener,
-            )
+            shortCutsEngine?.removeListener(onSelectionEffectListener)
+            shortCutsEngine?.setActions([])
           }
           // temporary support onSelectionEffect
           // onSelectionEffect && onSelectionEffect();
         })
     }
-  }, [clickContextMenu])
+    return () => {}
+  }, [clickContextMenu, shortCutsEngine])
   useEffect(() => {
     if (root && rootId && !emotionCacheRef.current) {
       const emotionRoot = document.createElement('style')
@@ -213,16 +226,17 @@ const InputAssistantButtonContextMenu: FC<
         // customOpen={disabled}
         // referenceElementOpen={!disabled}
         onClickContextMenu={async (contextMenu) => {
-          updateSidebarConversationType('Chat')
           setClickContextMenu(contextMenu)
         }}
         onClickReferenceElement={() => {
           // TODO
         }}
-        {...(disabled ? {
-          customOpen: true,
-          referenceElementOpen: false,
-        } : {})}
+        {...(disabled
+          ? {
+              customOpen: true,
+              referenceElementOpen: false,
+            }
+          : {})}
       />
     </CacheProvider>
   )

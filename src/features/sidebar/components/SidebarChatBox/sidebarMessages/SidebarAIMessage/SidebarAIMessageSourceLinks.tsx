@@ -64,7 +64,7 @@ const SidebarAIMessageCopilotStep: FC<{
       ) : (
         <>
           {currentRenderSourceLinks.map((source, index) => (
-            <Grid item xs={itemWidth} key={source.title}>
+            <Grid item xs={itemWidth} key={index}>
               <Card variant="outlined">
                 <Link href={source.url} target={'_blank'} underline="none">
                   <Stack p={1} spacing={0.5}>

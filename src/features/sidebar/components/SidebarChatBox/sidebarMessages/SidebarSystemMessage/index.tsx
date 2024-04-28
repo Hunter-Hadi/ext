@@ -5,11 +5,12 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import React, { FC, useMemo, useState } from 'react'
 
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
+import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
 import ThirdPartyAIProviderErrorSolution from '@/features/chatgpt/components/ThirdPartAIProviderConfirmDialog/ThirdPartyAIProviderErrorSolution'
 import { ISystemChatMessage } from '@/features/chatgpt/types'
 import messageWithErrorBoundary from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/messageWithErrorBoundary'
 import SidebarChatBoxSystemTools from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarChatBoxSystemTools'
-import SidebarSystemPricingHookMessageCard from '@/features/sidebar/components/SidebarChatBox/sidebarMessages/SidebarSystemMessage/SidebarSystemPricingHookMessageCard'
 import { formatChatMessageContent } from '@/features/sidebar/utils/chatMessagesHelper'
 import { useCustomTheme } from '@/hooks/useCustomTheme'
 
@@ -41,8 +42,9 @@ const CustomMarkdown = React.lazy(() => import('@/components/CustomMarkdown'))
 const BaseSidebarSystemMessage: FC<{
   message: ISystemChatMessage
   loading?: boolean
+  sx?: SxProps
 }> = (props) => {
-  const { message, loading } = props
+  const { message, loading, sx: propSx } = props
   const { isDarkMode } = useCustomTheme()
   const [solutionsShow, setSolutionsShow] = useState(false)
   const permissionSceneType =
@@ -111,13 +113,17 @@ const BaseSidebarSystemMessage: FC<{
       data-permission-scene-type={
         permissionSceneType ? permissionSceneType : undefined
       }
-      sx={{
-        ...memoSx,
-      }}
+      sx={
+        {
+          boxSizing: 'border-box',
+          ...memoSx,
+          ...propSx,
+        } as SxProps
+      }
     >
       {isPricingHooksCard && permissionSceneType ? (
         // pricing hook 渲染器
-        <SidebarSystemPricingHookMessageCard
+        <PermissionPricingHookCard
           permissionSceneType={permissionSceneType}
           message={message}
         />
@@ -154,7 +160,9 @@ const BaseSidebarSystemMessage: FC<{
                     isDarkMode ? 'markdown-body-dark' : ''
                   }`}
                 >
-                  <CustomMarkdown>{systemMessageText}</CustomMarkdown>
+                  <AppSuspenseLoadingLayout>
+                    <CustomMarkdown>{systemMessageText}</CustomMarkdown>
+                  </AppSuspenseLoadingLayout>
                 </div>
               </Stack>
 

@@ -1921,7 +1921,7 @@ export default [
         {
           type: 'RENDER_TEMPLATE',
           parameters: {
-            template: '{{SELECTED_TEXT}}\n{{POPUP_DRAFT}}',
+            template: '{{SELECTED_TEXT}}',
           },
         },
         {

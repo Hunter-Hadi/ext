@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot 즉각적인 답장",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram 즉각적인 답장",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams 즉각적인 답장",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat 즉각적인 답장"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat 즉각적인 답장",
+    "left_menu__sidebar": "사이드바",
+    "feature_card__sidebar__field__auto_archive__title": "자동 아카이브: 사용 중 정리",
+    "feature_card__sidebar__field__auto_archive__button__title": "채팅 아카이브하기",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI에서는 선택한 주기로 대화를 자동으로 아카이브합니다. 이를 통해 새로운 시작을 할 수 있고 사이드바를 깔끔하게 유지할 수 있습니다."
   },
   "client": {
     "sidebar__button__close_sidebar": "사이드바 닫기",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "복잡한 질문에 대한 긴 답변 받기",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI와 함께 검색",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "검색 결과 옆에 AI 답변 표시",
-    "instant_reply_button__explicit__display_text": "즉시 응답"
+    "instant_reply_button__explicit__display_text": "즉시 응답",
+    "immersive_chat__delete_all_context_menu__button__title": "모든 컨텍스트 메뉴 삭제",
+    "immersive_chat__delete_all_context_menu__title": "컨텍스트 메뉴 기록 모두 지우기 - 확실합니까?",
+    "context_window__chat_history__button__title": "컨텍스트 메뉴 기록",
+    "context_window__chat_history__empty__title": "아직 사용 가능한 컨텍스트 메뉴 기록이 없습니다",
+    "context_window__chat_history__continue_in_chat__title": "채팅에서 계속하기"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "친근한",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "직설적인",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "자신감 있는",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "캐주얼한"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "캐주얼한",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "채팅에서 계속하기"
   },
   "prompt_editor": {
     "preset_variables__title": "기능",

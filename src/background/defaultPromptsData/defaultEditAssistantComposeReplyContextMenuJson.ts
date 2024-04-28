@@ -2234,6 +2234,12 @@ const chatAppPrompts: IContextMenuItem[] = [
       type: 'shortcuts',
       actions: [
         {
+          type: 'GET_CHAT_MESSAGES_CONTENT_OF_WEBPAGE',
+          parameters: {
+            isVariableMiddleOutEnabled: true,
+          },
+        },
+        {
           type: 'ASK_CHATGPT',
           parameters: {
             MaxAIPromptActionConfig: {

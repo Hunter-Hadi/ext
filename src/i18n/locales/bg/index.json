@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Мигновен отговор в HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Мигновен отговор в Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Мигновен отговор в Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Мигновен отговор в Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Мигновен отговор в Google Chat",
+    "left_menu__sidebar": "Странична лента",
+    "feature_card__sidebar__field__auto_archive__title": "Автоматично архивиране: Почистете докато работите",
+    "feature_card__sidebar__field__auto_archive__button__title": "Архивирайте чата след",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI, ние автоматично архивираме неактивни чатове според избраната от вас честота. Това ви дава свеж старт и поддържа страничната лента подредена."
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Получавайте дълги отговори на сложни въпроси",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Търсете с AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Показвайте AI отговори до резултатите от търсенето",
-    "instant_reply_button__explicit__display_text": "Мигновен отговор"
+    "instant_reply_button__explicit__display_text": "Мигновен отговор",
+    "immersive_chat__delete_all_context_menu__button__title": "Изтрий всички контекстни менюта",
+    "immersive_chat__delete_all_context_menu__title": "Изчистете историята на вашите контекстни менюта - сигурни ли сте?",
+    "context_window__chat_history__button__title": "История на контекстните менюта",
+    "context_window__chat_history__empty__title": "Все още няма налична история на контекстните менюта",
+    "context_window__chat_history__continue_in_chat__title": "Продължи в чата"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Поем...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Приятелски",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Ясен",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Уверен",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Неофициален"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Неофициален",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Продължи в чата"
   },
   "prompt_editor": {
     "preset_variables__title": "Възможности",

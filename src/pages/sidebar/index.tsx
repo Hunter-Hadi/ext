@@ -1,20 +1,16 @@
 import Stack from '@mui/material/Stack'
-import React, { DragEventHandler, useEffect } from 'react'
+import React, { FC, useEffect, useRef } from 'react'
 
-import useArtTextToImage from '@/features/art/hooks/useArtTextToImage'
-import { useUserInfo } from '@/features/auth/hooks/useUserInfo'
-import { authEmitPricingHooksLog } from '@/features/auth/utils/log'
-import { ChatGPTStatusWrapper } from '@/features/chatgpt/components/ChatGPTStatusWrapper'
-import useClientChat from '@/features/chatgpt/hooks/useClientChat'
+import useInitWebPageMessageChannel from '@/components/AppInit/useInitWebPageMessageChannel'
+import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { pingDaemonProcess } from '@/features/chatgpt/utils'
-import SidebarChatBox from '@/features/sidebar/components/SidebarChatBox'
-import SidebarFilesDropBox from '@/features/sidebar/components/SidebarChatBox/SidebarFilesDropBox'
+import { useInitMixPanel } from '@/features/mixpanel/utils'
 import SidebarPromotionDialog from '@/features/sidebar/components/SidebarChatBox/SidebarPromotionDialog'
+import SidebarScreenshotButton from '@/features/sidebar/components/SidebarChatBox/SidebarScreenshortButton'
 import SidebarTour from '@/features/sidebar/components/SidebarChatBox/SidebarTour'
+import SidebarContextProvider from '@/features/sidebar/components/SidebarContextProvider'
 import SidebarNav from '@/features/sidebar/components/SidebarNav'
-import useSearchWithAI from '@/features/sidebar/hooks/useSearchWithAI'
+import useInitWebPageSidebar from '@/features/sidebar/hooks/useInitWebPageSidebar'
 import useSidebarDropEvent from '@/features/sidebar/hooks/useSidebarDropEvent'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import ChatBoxHeader from '@/pages/sidebarLayouts/ChatBoxHeader'
@@ -26,83 +22,118 @@ import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 //   )?.value
 //   return autoFocusInputValue || 'Enter ChatGPT prompt...'
 // }
-const SidebarPage = () => {
-  const { isFreeUser } = useUserInfo()
-  const { currentSidebarConversationType } = useSidebarSettings()
-  const { createSearchWithAI, regenerateSearchWithAI } = useSearchWithAI()
-  const { askAIQuestion, regenerate, stopGenerate } = useClientChat()
-  const { clientWritingMessage, cleanConversation, pushPricingHookMessage } =
+const SidebarChatPanel = React.lazy(
+  () => import('@/features/sidebar/components/SidebarChatPanel'),
+)
+
+/**
+ * 一些自定义/监听需要在没渲染前就初始化的操作
+ * @constructor
+ */
+const WebPageSidebarInit: FC = () => {
+  useInitWebPageSidebar()
+  return <></>
+}
+const ImmersiveChatPageSidebarInit: FC = () => {
+  const { createConversation, currentConversationIdRef } =
     useClientConversation()
-  const { smoothConversationLoading } = useSmoothConversationLoading(500)
-  const { currentSidebarConversationMessages } = useSidebarSettings()
-  const { startTextToImage } = useArtTextToImage()
+  const { currentSidebarConversationType } = useSidebarSettings()
+  const isCreatingRef = useRef(false)
+  useEffect(() => {
+    if (
+      currentSidebarConversationType &&
+      !currentConversationIdRef.current &&
+      !isCreatingRef.current
+    ) {
+      createConversation(currentSidebarConversationType)
+        .then()
+        .catch()
+        .finally(() => {
+          isCreatingRef.current = false
+        })
+    }
+  }, [currentSidebarConversationType])
+  return <></>
+}
+const SidebarPageInit: FC = () => {
+  useInitMixPanel()
+  useInitWebPageMessageChannel()
+  return <></>
+}
+
+const SidebarDragWrapper: FC<{
+  children: React.ReactNode
+}> = ({ children }) => {
   const { handleDragEnter, handleDragOver, handleDragLeave, handleDrop } =
     useSidebarDropEvent()
-  useEffect(() => {
-    pingDaemonProcess()
-  }, [])
   return (
     <Stack
-      flex={1}
-      height={0}
+      component={'div'}
       position={'relative'}
-      direction="row"
-      id={'MaxAISidebarContainer'}
+      flex={1}
+      width={0}
+      onDragEnter={handleDragEnter}
+      onDragOver={handleDragOver}
+      onDragLeave={handleDragLeave}
+      onDrop={handleDrop as any}
     >
-      <SidebarTour />
-      <SidebarPromotionDialog />
-      <Stack
-        component={'div'}
-        position={'relative'}
-        flex={1}
-        width={0}
-        onDragEnter={handleDragEnter}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop as any as DragEventHandler<HTMLDivElement>}
-      >
-        {!isMaxAIImmersiveChatPage() && <ChatBoxHeader />}
-        <ChatGPTStatusWrapper />
-        <SidebarChatBox
-          onSendMessage={async (question, options) => {
-            if (currentSidebarConversationType === 'Search') {
-              await createSearchWithAI(question, true)
-            } else if (currentSidebarConversationType === 'Art') {
-              await startTextToImage(question)
-            } else if (
-              currentSidebarConversationType === 'Summary' &&
-              isFreeUser
-            ) {
-              await pushPricingHookMessage('PAGE_SUMMARY')
-              authEmitPricingHooksLog('show', 'PAGE_SUMMARY')
-            } else {
-              await askAIQuestion({
-                type: 'user',
-                text: question,
-                meta: {
-                  ...options,
-                },
-              })
-            }
-          }}
-          writingMessage={clientWritingMessage.writingMessage}
-          messages={currentSidebarConversationMessages}
-          loading={smoothConversationLoading}
-          onReGenerate={async () => {
-            if (currentSidebarConversationType === 'Search') {
-              await regenerateSearchWithAI()
-              return
-            }
-            await regenerate()
-          }}
-          onStopGenerate={stopGenerate}
-          onReset={cleanConversation}
-        />
-
-        <SidebarFilesDropBox />
-      </Stack>
-      {!isMaxAIImmersiveChatPage() && <SidebarNav />}
+      {children}
     </Stack>
+  )
+}
+
+const SidebarPage: FC<{
+  open?: boolean
+  disableContextProvider?: boolean
+}> = (props) => {
+  const { open = false, disableContextProvider } = props
+  const isImmersiveChatRef = useRef(isMaxAIImmersiveChatPage())
+  const ContextProvider = disableContextProvider
+    ? React.Fragment
+    : SidebarContextProvider
+  console.log(
+    'SidebarPage disableContextProvider',
+    disableContextProvider,
+    open,
+  )
+  return (
+    <ContextProvider>
+      <SidebarPageInit />
+      {!isImmersiveChatRef.current && <WebPageSidebarInit />}
+      {isImmersiveChatRef.current && <ImmersiveChatPageSidebarInit />}
+      {open && (
+        <Stack
+          flex={1}
+          height={0}
+          position={'relative'}
+          direction="row"
+          id={'MaxAISidebarContainer'}
+        >
+          <SidebarTour />
+          <SidebarPromotionDialog />
+          <SidebarDragWrapper>
+            {!isImmersiveChatRef.current && <ChatBoxHeader />}
+            <AppSuspenseLoadingLayout>
+              <SidebarChatPanel />
+            </AppSuspenseLoadingLayout>
+          </SidebarDragWrapper>
+          {!isImmersiveChatRef.current && <SidebarNav />}
+        </Stack>
+      )}
+      {/*// 为了在Sidebar没有渲染的时候能执行shortcuts*/}
+      {/* 在 click MaxAIScreenshotMiniButton 时 通过找到下面这个隐藏的 SidebarScreenshotButton 组件触发 click 事件，来实现截图  */}
+      <SidebarScreenshotButton
+        enabled={!open}
+        sx={{
+          position: 'absolute',
+          visibility: 'hidden',
+          width: 0,
+          height: 0,
+          opacity: 0,
+        }}
+      />
+      {/*<ActionSetVariablesModal modelKey={'Sidebar'} />*/}
+    </ContextProvider>
   )
 }
 export default SidebarPage

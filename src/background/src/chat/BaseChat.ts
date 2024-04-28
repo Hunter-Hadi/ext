@@ -1,4 +1,4 @@
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import ConversationManager, {
   IChatConversation,
 } from '@/background/src/chatConversations'
@@ -10,7 +10,7 @@ class BaseChat {
   conversation: IChatConversation | undefined
   chatFiles: IChatUploadFile[]
   log: Log
-  status: ChatStatus = 'needAuth'
+  status: ConversationStatusType = 'needAuth'
   active = false
   taskList: {
     [key in string]: any
@@ -21,10 +21,10 @@ class BaseChat {
   }
   async auth(tabId: number) {
     this.active = true
-    await this.updateClientStatus('success')
+    await this.updateStatus('success')
   }
   async destroy() {
-    await this.updateClientStatus('needAuth')
+    await this.updateStatus('needAuth')
     this.active = false
   }
   async createConversation(newConversation?: Partial<IChatConversation>) {
@@ -53,14 +53,12 @@ class BaseChat {
     }
     this.conversation = undefined
   }
-  async updateClientStatus(status: ChatStatus) {
+  async updateStatus(status: ConversationStatusType) {
     if (this.active) {
       this.status = status
       this.log.info('updateStatus', this.status)
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
     }
+    await this.updateClientConversationChatStatus()
   }
   async abortTask(taskId: string) {
     if (this.taskList[taskId]) {
@@ -117,6 +115,14 @@ class BaseChat {
   }
   async getUploadFileToken() {
     return null as any
+  }
+  async updateClientConversationChatStatus() {
+    if (this.active && this.conversation?.id) {
+      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
+        status: this.status,
+        conversationId: this.conversation.id,
+      })
+    }
   }
 }
 export default BaseChat

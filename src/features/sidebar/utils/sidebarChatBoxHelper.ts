@@ -2,7 +2,6 @@
 import debounce from 'lodash-es/debounce'
 
 import { CHROME_EXTENSION_USER_SETTINGS_DEFAULT_CHAT_BOX_WIDTH } from '@/constants'
-import { pingDaemonProcess } from '@/features/chatgpt'
 import { MAXAI_SIDEBAR_ID } from '@/features/common/constants'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
@@ -233,7 +232,6 @@ export const showChatBox = () => {
     }, 300)
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'))
-      pingDaemonProcess()
     }, 1000)
   }
 }

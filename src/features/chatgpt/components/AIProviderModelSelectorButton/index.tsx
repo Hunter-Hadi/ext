@@ -18,12 +18,16 @@ import { ChatAIProviderModelSelectorOptions } from '@/features/chatgpt/component
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
 import ThirdPartyAIProviderIcon from '@/features/chatgpt/components/icons/ThirdPartyAIProviderIcon'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
-import { SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG } from '@/features/chatgpt/hooks/useClientConversation'
+import {
+  SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG,
+  useClientConversation,
+} from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import { getAppContextMenuRootElement } from '@/utils'
+import {
+  getMaxAIFloatingContextMenuRootElement,
+  getMaxAISidebarRootElement,
+} from '@/utils'
 
 const AIProviderModelSelectorButton: FC<{
   disabled?: boolean
@@ -40,18 +44,16 @@ const AIProviderModelSelectorButton: FC<{
     sidebarConversationType,
     disabled,
   } = props
+  const { clientConversation } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const [isHoverButton, setIsHoverButton] = useState(false)
-  const { sidebarConversationTypeofConversationMap } = useSidebarSettings()
   // 当前sidebarConversationType的AI provider
   const currentChatAIProvider =
-    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
-      .AIProvider ||
+    clientConversation?.meta.AIProvider ||
     SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIProvider
   // 当前sidebarConversationType的AI model
   const currentChatModel =
-    sidebarConversationTypeofConversationMap[sidebarConversationType]?.meta
-      .AIModel ||
+    clientConversation?.meta.AIModel ||
     SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const currentModelDetail = useMemo(() => {
@@ -137,7 +139,7 @@ const AIProviderModelSelectorButton: FC<{
     const mouseEventHandler = (event: MouseEvent) => {
       const aiProviderCard =
         size === 'small'
-          ? (getAppContextMenuRootElement()?.querySelector(
+          ? (getMaxAIFloatingContextMenuRootElement()?.querySelector(
               '#MaxAIProviderSelectorCard',
             ) as HTMLElement)
           : (getMaxAISidebarRootElement()?.querySelector(
@@ -250,7 +252,7 @@ const AIProviderModelSelectorButton: FC<{
         modifiers={AIModelPopperModifiers}
         container={
           size === 'small'
-            ? getAppContextMenuRootElement()
+            ? getMaxAIFloatingContextMenuRootElement()
             : getMaxAISidebarRootElement()
         }
       >

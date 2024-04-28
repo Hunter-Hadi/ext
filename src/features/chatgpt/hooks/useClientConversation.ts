@@ -1,50 +1,37 @@
-import merge from 'lodash-es/merge'
-import { useEffect, useRef } from 'react'
-import { useRecoilState } from 'recoil'
+import { useEffect, useMemo, useRef } from 'react'
+import { useRecoilState, useRecoilValue } from 'recoil'
 import { v4 as uuidV4 } from 'uuid'
 
 import { IAIProviderType } from '@/background/provider/chat'
-import { openAIAPISystemPromptGenerator } from '@/background/src/chat/OpenAIApiChat/types'
 import { MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO } from '@/background/src/chat/UseChatGPTChat/types'
-import {
-  IChatConversation,
-  IChatConversationMeta,
-} from '@/background/src/chatConversations'
-import {
-  getChromeExtensionLocalStorage,
-  MAXAI_DEFAULT_AI_PROVIDER_CONFIG,
-} from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
+import { IChatConversation } from '@/background/src/chatConversations'
+import { getChromeExtensionLocalStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionLocalStorage'
 import { PermissionWrapperCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
-import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
+import { ClientConversationMapState } from '@/features/chatgpt/store'
+import { useChatPanelContext } from '@/features/chatgpt/store/ChatPanelContext'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import {
   clientChatConversationModifyChatMessages,
   clientUpdateChatConversation,
 } from '@/features/chatgpt/utils/clientChatConversation'
 import { PAGE_SUMMARY_MAX_TOKENS } from '@/features/shortcuts/constants'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
+import { ClientWritingMessageStateFamily } from '@/features/sidebar/store'
 import { ISidebarConversationType } from '@/features/sidebar/types'
-import {
-  getPageSummaryConversationId,
-  getPageSummaryType,
-  IPageSummaryType,
-} from '@/features/sidebar/utils/pageSummaryHelper'
-import { getInputMediator } from '@/store/InputMediator'
 
 export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
   [key in ISidebarConversationType]: {
     AIProvider: IAIProviderType
     AIModel: string
     maxTokens: number
+    hidden?: boolean
   }
 } = {
   Chat: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
     AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
-    maxTokens: 4096,
+    maxTokens: 16384,
   },
   Summary: {
     AIProvider: 'USE_CHAT_GPT_PLUS',
@@ -61,264 +48,69 @@ export const SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG: {
     AIModel: 'dall-e-3',
     maxTokens: 16384,
   },
+  Memo: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 4096,
+    hidden: true,
+  },
+  FAQ: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 16384,
+    hidden: true,
+  },
+  ContextMenu: {
+    AIProvider: 'USE_CHAT_GPT_PLUS',
+    AIModel: MAXAI_CHATGPT_MODEL_GPT_3_5_TURBO,
+    maxTokens: 16384,
+    hidden: true,
+  },
 }
 
-const port = new ContentScriptConnectionV2({
-  runtime: 'client',
-})
 const useClientConversation = () => {
-  const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
-    ClientWritingMessageState,
-  )
-  const { getAIProviderModelDetail } = useAIProviderModelsMap()
   const {
-    currentSidebarConversationType,
-    currentSidebarConversationId,
-    updateSidebarSettings,
-    sidebarSettings,
-    sidebarPageState
-  } = useSidebarSettings()
-  const currentConversationIdRef = useRef(currentSidebarConversationId)
-  const currentConversationTypeRef = useRef(currentSidebarConversationType)
-  const currentSidebarPageState = useRef(sidebarPageState)
-  currentSidebarPageState.current = sidebarPageState
+    conversationId: currentConversationId,
+    updateConversationId,
+    createConversation,
+    conversationStatus,
+    updateConversationStatus,
+    resetConversation,
+  } = useChatPanelContext()
+  const clientConversationMap = useRecoilValue(ClientConversationMapState)
+  const clientConversation: IChatConversation | undefined =
+    currentConversationId
+      ? clientConversationMap[currentConversationId]
+      : undefined
+  const [clientWritingMessage, setClientWritingMessage] = useRecoilState(
+    ClientWritingMessageStateFamily(currentConversationId || ''),
+  )
+  const currentSidebarConversationType = clientConversation?.type || 'Chat'
+  const currentConversationIdRef = useRef(currentConversationId)
+  const currentConversationTypeRef = useRef(clientConversation?.type)
   useEffect(() => {
-    currentConversationIdRef.current = currentSidebarConversationId
-  }, [currentSidebarConversationId])
+    currentConversationIdRef.current = currentConversationId
+  }, [currentConversationId])
   useEffect(() => {
-    currentConversationTypeRef.current = currentSidebarConversationType
+    currentConversationTypeRef.current = clientConversation?.type
   }, [currentConversationTypeRef])
-  const createConversation = async (
-    overwriteConversationType?: ISidebarConversationType,
-  ): Promise<string> => {
-    let conversationId: string = ''
-    // 因为从外部打开sidebar的时候conversationId和type都是有延迟的，所以直接从localStorage拿
-    const conversationType =
-      overwriteConversationType || currentSidebarConversationType
-    if (conversationType === 'Chat') {
-      const appLocalStorage = await getChromeExtensionLocalStorage()
-      // 获取当前AIProvider
-      let currentAIProvider = appLocalStorage.sidebarSettings?.common
-        ?.currentAIProvider as IAIProviderType
-      // 如果是MAXAI_DALLE，那么就用默认的AIProvider
-      if (currentAIProvider === 'MAXAI_DALLE') {
-        currentAIProvider = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
-      }
-      // 获取当前AIProvider的model
-      const currentModel =
-        appLocalStorage.thirdProviderSettings?.[currentAIProvider]?.model || ''
-      // 获取当前AIProvider的model的maxTokens
-      console.log('新版Conversation ', currentAIProvider, currentModel)
-      const baseMetaConfig: Partial<IChatConversationMeta> = {
-        AIProvider: currentAIProvider,
-        AIModel: currentModel,
-        maxTokens:
-          getAIProviderModelDetail(currentAIProvider, currentModel)
-            ?.maxTokens || 4096,
-      }
-      // 如果是OPENAI_API，那么就加上systemPrompt
-      if (currentAIProvider === 'OPENAI_API') {
-        baseMetaConfig.systemPrompt =
-          openAIAPISystemPromptGenerator(currentModel)
-      }
-      // 创建一个新的conversation
-      const result = await port.postMessage({
-        event: 'Client_createChatGPTConversation',
-        data: {
-          initConversationData: {
-            type: 'Chat',
-            name: '',
-            title: 'Ask AI anything',
-            meta: baseMetaConfig,
-          } as Partial<IChatConversation>,
-        },
-      })
-      if (result.success) {
-        conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          chat: {
-            conversationId,
-          },
-        })
-      }
-    } else if (conversationType === 'Summary') {
-      conversationId = getPageSummaryConversationId(currentSidebarPageState.current.pageUrl)
-      // 如果已经存在了，并且有AI消息，那么就不用创建了
-      if (conversationId && (await clientGetConversation(conversationId))) {
-        return conversationId
-      }
-      const conversationTitleMap: {
-        [key in IPageSummaryType]: string
-      } = {
-        PAGE_SUMMARY: 'Summarize & ask on page',
-        DEFAULT_EMAIL_SUMMARY: 'Summarize & ask on email',
-        PDF_CRX_SUMMARY: 'Summarize & ask on PDF',
-        YOUTUBE_VIDEO_SUMMARY: 'Summarize & ask on video',
-      }
-      const pageSummaryType = getPageSummaryType()
-      // 如果没有，那么就创建一个
-      await port.postMessage({
-        event: 'Client_createChatGPTConversation',
-        data: {
-          initConversationData: {
-            id: conversationId,
-            type: 'Summary',
-            name: '',
-            title: conversationTitleMap[pageSummaryType],
-            meta: merge({
-              ...SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Summary,
-              pageSummaryType,
-              //               pageSummaryId: pageSummaryData.pageSummaryId,
-              //               pageSummaryType: pageSummaryData.pageSummaryType,
-              //               systemPrompt: `The following text delimited by triple backticks is the context text:
-              // \`\`\`
-              // ${pageSummaryData.pageSummaryContent}
-              // \`\`\``,
-            }),
-          } as Partial<IChatConversation>,
-        },
-      })
-      await updateSidebarSettings({
-        summary: {
-          conversationId,
-        },
-      })
-    } else if (conversationType === 'Search') {
-      // 创建一个新的conversation
-      const result = await port.postMessage({
-        event: 'Client_createChatGPTConversation',
-        data: {
-          initConversationData: {
-            type: 'Search',
-            name: '',
-            title: 'AI-powered search',
-            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Search),
-          } as Partial<IChatConversation>,
-        },
-      })
-      if (result.success) {
-        conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          search: {
-            conversationId,
-          },
-        })
-      }
-    } else if (conversationType === 'Art') {
-      // 创建一个新的conversation
-      const result = await port.postMessage({
-        event: 'Client_createChatGPTConversation',
-        data: {
-          initConversationData: {
-            type: 'Art',
-            name: '',
-            title: 'AI-powered image generate',
-            meta: merge(SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG.Art),
-          } as Partial<IChatConversation>,
-        },
-      })
-      if (result.success) {
-        conversationId = result.data.conversationId
-        await updateSidebarSettings({
-          art: {
-            conversationId,
-          },
-        })
-      }
-    }
-    return conversationId
-  }
 
-  const cleanConversation = async () => {
-    if (clientWritingMessage.loading) {
-      return
+  const clientConversationMessages = useMemo(() => {
+    if (currentConversationId) {
+      return clientConversationMap[currentConversationId]?.messages || []
     }
-    console.log(
-      '新版Conversation 清除conversation',
-      currentSidebarConversationType,
-      currentConversationIdRef.current,
-    )
-    getInputMediator('floatingMenuInputMediator').updateInputValue('')
-    getInputMediator('chatBoxInputMediator').updateInputValue('')
-    if (currentSidebarConversationType === 'Chat') {
-      if (sidebarSettings?.chat?.conversationId) {
-        if (
-          (await clientGetConversation(sidebarSettings?.chat?.conversationId))
-            ?.messages.length === 0
-        ) {
-          // 如果已经是空的了，那么就不用清除了
-          return
-        }
-      }
-      await updateSidebarSettings({
-        chat: {
-          conversationId: await createConversation('Chat'),
-        },
-      })
-    } else if (currentSidebarConversationType === 'Summary') {
-      await clientChatConversationModifyChatMessages(
-        'delete',
-        getPageSummaryConversationId(currentSidebarPageState.current.pageUrl),
-        99999999,
-        [],
-      )
-      // 清除pageSummary的conversationId
-      await updateSidebarSettings({
-        summary: {
-          conversationId: '',
-        },
-      })
-    } else if (currentSidebarConversationType === 'Search') {
-      if (sidebarSettings?.search?.conversationId) {
-        if (
-          (await clientGetConversation(sidebarSettings?.search?.conversationId))
-            ?.messages.length === 0
-        ) {
-          // 如果已经是空的了，那么就不用清除了
-          return
-        }
-      }
-      // 清除search的conversationId
-      await updateSidebarSettings({
-        search: {
-          conversationId: await createConversation('Search'),
-        },
-      })
-    } else if (currentSidebarConversationType === 'Art') {
-      if (sidebarSettings?.art?.conversationId) {
-        if (
-          (await clientGetConversation(sidebarSettings?.art?.conversationId))
-            ?.messages.length === 0
-        ) {
-          // 如果已经是空的了，那么就不用清除了
-          return
-        }
-      }
-      // 清除search的conversationId
-      await updateSidebarSettings({
-        art: {
-          conversationId: await createConversation('Art'),
-        },
-      })
-    }
-    setClientWritingMessage({
-      writingMessage: null,
-      loading: false,
+    return []
+  }, [currentConversationId, clientConversationMap])
+  const disposeBackgroundChatSystem = async (conversationId?: string) => {
+    const port = new ContentScriptConnectionV2()
+    // 复原background conversation
+    const result = await port.postMessage({
+      event: 'Client_disposeChatSystem',
+      data: {
+        conversationId: conversationId || currentConversationId,
+      },
     })
-  }
-  const switchConversation = async (conversationId: string) => {
-    if (conversationId && currentConversationIdRef.current !== conversationId) {
-      const port = new ContentScriptConnectionV2()
-      // 复原background conversation
-      const result = await port.postMessage({
-        event: 'Client_changeConversation',
-        data: {
-          conversationId: conversationId,
-        },
-      })
-      return result.success
-    }
-    return true
+    return result.success
   }
   const updateConversation = async (
     conversation: Partial<IChatConversation>,
@@ -386,10 +178,19 @@ const useClientConversation = () => {
   const pushPricingHookMessage = async (
     permissionSceneType: PermissionWrapperCardSceneType,
   ) => {
-    if (currentConversationIdRef.current) {
+    let addToConversationId = currentConversationIdRef.current
+    if (currentSidebarConversationType === 'ContextMenu') {
+      //需要插入到Sidebar中
+      const chatConversationId = (await getChromeExtensionLocalStorage())
+        .sidebarSettings?.chat?.conversationId
+      if (chatConversationId) {
+        addToConversationId = chatConversationId
+      }
+    }
+    if (addToConversationId) {
       await clientChatConversationModifyChatMessages(
         'add',
-        currentConversationIdRef.current,
+        addToConversationId,
         0,
         [
           {
@@ -419,6 +220,19 @@ const useClientConversation = () => {
     })
   }
   /**
+   * 更新当前conversation的loading
+   * @param loading
+   */
+  const updateClientConversationLoading = (loading: boolean) => {
+    setClientWritingMessage((prevState) => {
+      return {
+        ...prevState,
+        loading,
+      }
+    })
+  }
+
+  /**
    * 获取当前conversation
    */
   const getCurrentConversation = async () => {
@@ -428,13 +242,31 @@ const useClientConversation = () => {
     }
     return null
   }
+
+  const authAIProvider = async () => {
+    const port = new ContentScriptConnectionV2()
+    const result = await port.postMessage({
+      event: 'Client_AuthAIProvider',
+      data: {
+        conversationId: currentConversationId,
+      },
+    })
+    return result.success
+  }
+
   return {
+    conversationStatus,
+    updateConversationStatus,
+    clientConversationMessages,
+    authAIProvider,
     clientWritingMessage,
-    cleanConversation,
+    resetConversation,
     createConversation,
-    switchConversation,
+    disposeBackgroundChatSystem,
     updateConversation,
-    currentSidebarConversationId,
+    currentConversationId,
+    updateConversationId,
+    clientConversation,
     currentConversationIdRef,
     currentSidebarConversationType,
     currentConversationTypeRef,
@@ -445,6 +277,7 @@ const useClientConversation = () => {
     deleteMessage,
     updateMessage,
     updateClientWritingMessage,
+    updateClientConversationLoading,
     getConversation: clientGetConversation,
     getCurrentConversation,
   }

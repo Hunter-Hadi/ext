@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot direct antwoord",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram direct antwoord",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams direct antwoord",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat direct antwoord"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat direct antwoord",
+    "left_menu__sidebar": "Zijbalk",
+    "feature_card__sidebar__field__auto_archive__title": "Automatisch archiveren: Schoon terwijl je gaat",
+    "feature_card__sidebar__field__auto_archive__button__title": "Chat archiveren na",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chatberichten op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Krijg uitgebreide antwoorden op complexe vragen",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Zoeken met AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Toon AI-antwoorden naast zoekresultaten",
-    "instant_reply_button__explicit__display_text": "Direct antwoord"
+    "instant_reply_button__explicit__display_text": "Direct antwoord",
+    "immersive_chat__delete_all_context_menu__button__title": "Verwijder alle contextmenu's",
+    "immersive_chat__delete_all_context_menu__title": "Wis je geschiedenis van contextmenu's - weet je het zeker?",
+    "context_window__chat_history__button__title": "Geschiedenis van contextmenu",
+    "context_window__chat_history__empty__title": "Nog geen geschiedenis van contextmenu beschikbaar",
+    "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Vriendelijk",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Duidelijk",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Zelfverzekerd",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informeel"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Informeel",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Doorgaan in chat"
   },
   "prompt_editor": {
     "preset_variables__title": "Mogelijkheden",

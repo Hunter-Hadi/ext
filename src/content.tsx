@@ -99,6 +99,13 @@ function mainAppRender() {
   document.head.appendChild(fontLink)
 
   console.log('init client')
+  const container = document.createElement(
+    supportWebComponent ? 'use-chat-gpt-ai' : 'div',
+  )
+  container.id = MAXAI_SIDEBAR_ID
+  container.style.display = 'none'
+  container.setAttribute('data-version', APP_VERSION)
+  document.body.appendChild(container)
   const contextMenu = document.createElement(
     supportWebComponent ? 'use-chat-gpt-ai-content-menu' : 'div',
   )
@@ -110,13 +117,6 @@ function mainAppRender() {
     contextMenu.contentEditable = 'true'
   }
   document.body.appendChild(contextMenu)
-  const container = document.createElement(
-    supportWebComponent ? 'use-chat-gpt-ai' : 'div',
-  )
-  container.id = MAXAI_SIDEBAR_ID
-  container.style.display = 'none'
-  container.setAttribute('data-version', APP_VERSION)
-  document.body.appendChild(container)
   const shadowContainer = container.attachShadow({ mode: 'open' })
   const emotionRoot = document.createElement('style')
   const shadowRootElement = document.createElement('div')

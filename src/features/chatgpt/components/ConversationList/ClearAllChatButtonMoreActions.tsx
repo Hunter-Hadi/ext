@@ -11,12 +11,14 @@ import { useTranslation } from 'react-i18next'
 import { IChatConversation } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DropdownIconButton from '@/components/DropdownIconButton'
-import { clientGetUserAllConversations } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
+import { clientGetUserAllConversations } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import globalSnackbar from '@/utils/globalSnackbar'
 
-const ClearAllChatButtonMoreActions: FC = () => {
+const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
+  disablePortal,
+}) => {
   const { fetchPaginationConversations, setPaginationConversations } =
     usePaginationConversations()
   const { t } = useTranslation(['common', 'client'])
@@ -61,6 +63,7 @@ const ClearAllChatButtonMoreActions: FC = () => {
         tooltipTitle={t('common:more')}
       />
       <Modal
+        disablePortal={disablePortal}
         open={open}
         onClose={(e: React.MouseEvent) => {
           e.stopPropagation()

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot okamžitá odpoveď",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram okamžitá odpoveď",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams okamžitá odpoveď",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat okamžitá odpoveď"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat okamžitá odpoveď",
+    "left_menu__sidebar": "Bočný panel",
+    "feature_card__sidebar__field__auto_archive__title": "Automatické archivovanie: Čistota počas práce",
+    "feature_card__sidebar__field__auto_archive__button__title": "Archivovať chat po",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Týmto získate čerstvý štart a udržujete svoj bočný panel uprataný."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Získajte dlhé odpovede na zložité otázky",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Vyhľadávanie s použitím AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Zobrazovať AI odpovede vedľa výsledkov vyhľadávania",
-    "instant_reply_button__explicit__display_text": "Okamžitá odpoveď"
+    "instant_reply_button__explicit__display_text": "Okamžitá odpoveď",
+    "immersive_chat__delete_all_context_menu__button__title": "Vymazať všetky kontextové menu",
+    "immersive_chat__delete_all_context_menu__title": "Vymazať históriu kontextových menu - ste si istý?",
+    "context_window__chat_history__button__title": "História kontextových menu",
+    "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
+    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Priateľský",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Priamočiary",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Sebavedomý",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Neformálny"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Neformálny",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Pokračovať v chate"
   },
   "prompt_editor": {
     "preset_variables__title": "Schopnosti",

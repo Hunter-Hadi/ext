@@ -8,12 +8,11 @@ import React, { FC, useEffect, useRef, useState } from 'react'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
-import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { IAction } from '@/features/shortcuts/types/Action'
-const DevShortcutsLog: FC = () => {
+const DevShortcutsLog: FC<{ isSidebar?: boolean }> = ({ isSidebar }) => {
   const boxRef = useRef<HTMLDivElement>(null)
   const [runningActions, setRunningActions] = useState<IAction[]>([])
-  const { shortCutsEngineRef } = useClientChat()
+  const { shortCutsEngine } = useClientChat()
   const scrollToBottom = debounce(() => {
     if (boxRef.current) {
       const loadingAction = boxRef.current?.querySelector(
@@ -36,14 +35,14 @@ const DevShortcutsLog: FC = () => {
       }
     }
   }, 200)
-  useEffectOnce(() => {
-    shortCutsEngineRef.current?.addListener(() => {
-      if (shortCutsEngineRef.current?.actions) {
-        setRunningActions(shortCutsEngineRef.current?.actions)
+  useEffect(() => {
+    shortCutsEngine?.addListener(() => {
+      if (shortCutsEngine?.actions) {
+        setRunningActions(shortCutsEngine?.actions)
       }
       scrollToBottom()
     })
-  })
+  }, [shortCutsEngine])
   useEffect(() => {
     scrollToBottom()
   }, [runningActions])
@@ -83,6 +82,7 @@ const DevShortcutsLog: FC = () => {
           sx={{ px: 1, alignItems: 'center' }}
         >
           <TextOnlyTooltip
+            floatingMenuTooltip={!isSidebar}
             placement={'right'}
             title={`[${action.type}]`}
             description={

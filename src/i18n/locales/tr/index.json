@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot anında yanıt",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram anında yanıt",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams anında yanıt",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat anında yanıt"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat anında yanıt",
+    "left_menu__sidebar": "Kenar Çubuğu",
+    "feature_card__sidebar__field__auto_archive__title": "Otomatik arşivleme: Giderken temizleyin",
+    "feature_card__sidebar__field__auto_archive__button__title": "Sohbeti arşivle",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, istediğiniz sıklıkta boşta kalan sohbetleri otomatik olarak arşivliyoruz. Bu size taze bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar."
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Karmaşık sorulara uzun cevaplar alın",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AI ile arama yapın",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Arama sonuçlarının yanında AI cevapları görüntüleyin",
-    "instant_reply_button__explicit__display_text": "Anında yanıt"
+    "instant_reply_button__explicit__display_text": "Anında yanıt",
+    "immersive_chat__delete_all_context_menu__button__title": "Tüm bağlamlı menüleri sil",
+    "immersive_chat__delete_all_context_menu__title": "Bağlamlı menü geçmişinizi temizleyin - emin misiniz?",
+    "context_window__chat_history__button__title": "Bağlamlı menü geçmişi",
+    "context_window__chat_history__empty__title": "Henüz kullanılabilir bir bağlamlı menü geçmişi yok",
+    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Arkadaşça",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Doğrudan",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Güvenli",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Sıradan"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Sıradan",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Sohbete devam et"
   },
   "prompt_editor": {
     "preset_variables__title": "Yetenekler",

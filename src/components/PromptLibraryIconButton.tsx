@@ -13,7 +13,7 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useClientChat from '@/features/chatgpt/hooks/useClientChat'
 import { MAXAI_PROMPT_LIBRARY_ICON_BUTTON_ROOT_ID } from '@/features/common/constants'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
+import { useRangy } from '@/features/contextMenu'
 import { intervalFindHtmlElement } from '@/features/contextMenu/utils/runEmbedShortCuts'
 import PromptLibrary from '@/features/prompt_library/components/PromptLibrary'
 import usePromptActions from '@/features/prompt_library/hooks/usePromptActions'
@@ -21,6 +21,7 @@ import usePromptLibrary from '@/features/prompt_library/hooks/usePromptLibrary'
 import { IPromptListType } from '@/features/prompt_library/types'
 import { promptLibraryCardDetailDataToActions } from '@/features/shortcuts/utils/promptInterpreter'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { isMaxAIImmersiveChatPage } from '@/utils/dataHelper/websiteHelper'
 
 const PromptLibraryIconButton: FC<{
@@ -36,7 +37,8 @@ const PromptLibraryIconButton: FC<{
     selectedPromptLibraryCard,
     cancelSelectPromptLibraryCard,
   } = usePromptLibrary()
-  const { askAIWIthShortcuts, shortCutsEngineRef } = useClientChat()
+  const { hideRangy } = useRangy()
+  const { askAIWIthShortcuts, shortCutsEngine } = useClientChat()
   const { updateSidebarConversationType } = useSidebarSettings()
   const { isOpenPromptLibraryEditForm } = usePromptActions()
   // 因为有keepMounted，所以需要这个来控制点击一次才能渲染
@@ -48,6 +50,7 @@ const PromptLibraryIconButton: FC<{
   const handleClick =
     (newPlacement: PopperPlacementType) =>
     (event: React.MouseEvent<HTMLButtonElement>) => {
+      hideRangy(true)
       const containerElement = (getMaxAISidebarRootElement()?.querySelector(
         '#maxAISidebarChatBox',
       ) || document.body) as HTMLDivElement
@@ -130,11 +133,7 @@ const PromptLibraryIconButton: FC<{
       const actions = promptLibraryCardDetailDataToActions(
         selectedPromptLibraryCard,
       )
-      if (
-        actions &&
-        shortCutsEngineRef.current?.status &&
-        ['idle', 'stop'].includes(shortCutsEngineRef.current?.status)
-      ) {
+      if (actions && shortCutsEngine?.status === 'idle') {
         updateSidebarConversationType('Chat')
         cancelSelectPromptLibraryCard()
         askAIWIthShortcuts(actions).then().catch()

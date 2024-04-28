@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil'
 
 import { IAIProviderType } from '@/background/provider/chat'
 import { AI_PROVIDER_MAP } from '@/constants'
+import { clientGetConversationStatus } from '@/features/chatgpt'
 import AIProviderOptions from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderOptions'
 import useAIProviderModels, {
   useAIProviderModelsMap,
@@ -24,10 +25,11 @@ const useThirdAIProviderModels = () => {
     ThirdPartyAIProviderConfirmDialogState,
   )
   const { hideFloatingContextMenu } = useFloatingContextMenu()
-  const { currentAIProvider, updateAIProviderModel } = useAIProviderModels()
+  const { currentAIProvider } = useAIProviderModels()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const { sidebarSettings, updateSidebarSettings } = useSidebarSettings()
-  const { createConversation } = useClientConversation()
+  const { createConversation, updateConversationStatus } =
+    useClientConversation()
   // 当前设置的第三方的AIProvider
   const currentThirdAIProvider =
     sidebarSettings?.chat?.thirdAIProvider || AI_PROVIDER_MAP.OPENAI
@@ -54,14 +56,19 @@ const useThirdAIProviderModels = () => {
     AIProvider: IAIProviderType,
     model: string,
   ) => {
-    await updateAIProviderModel(AIProvider, model)
     await updateSidebarSettings({
       chat: {
         thirdAIProvider: AIProvider,
         thirdAIProviderModel: model,
       },
     })
-    await createConversation('Chat')
+    const conversationId = await createConversation('Chat', AIProvider, model)
+    const { status, success } = await clientGetConversationStatus(
+      conversationId,
+    )
+    if (success) {
+      updateConversationStatus(status)
+    }
   }
   /**
    * 设置当前的Model为第三方AIProvider的model

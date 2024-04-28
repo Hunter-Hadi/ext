@@ -48,7 +48,7 @@ const SidebarAIMessageCopilotStep: FC<{
             flexWrap={'wrap'}
           >
             {tags.map((tag, index) => (
-              <Card key={tag} variant="outlined" sx={{ px: 1 }}>
+              <Card key={tag + index} variant="outlined" sx={{ px: 1 }}>
                 <TextOnlyTooltip title={tag}>
                   <Typography
                     noWrap

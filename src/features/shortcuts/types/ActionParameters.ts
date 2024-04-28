@@ -214,6 +214,26 @@ interface ActionParameters {
   SOCIAL_MEDIA_TARGET_POST_OR_COMMENTS?: ICommentData[] | undefined
   // 后端调用Action需要的参数
   MaxAIPromptActionConfig?: MaxAIPromptActionConfig
+  // dictionary
+  ActionDictionary?: Record<string, any>
+  ActionGetDictionaryKey?: 'value' | 'allKeys' | 'allValues'
+  ActionGetDictionaryValue?: string
+  ActionSetDictionaryKey?: string
+  ActionSetDictionaryValue?: any
+  // list
+  ActionGetItemFromListType?:
+    | 'first'
+    | 'last'
+    | 'random'
+    | 'index'
+    | 'range'
+    | 'matchEqual'
+    | 'matchContains'
+  ActionGetItemFromListIndex?: number
+  ActionGetItemFromListRangeStart?: number
+  ActionGetItemFromListRangeEnd?: number
+  ActionGetItemFromMatchKey?: string
+  ActionGetItemFromMatchValue?: any
 }
 
 export default ActionParameters

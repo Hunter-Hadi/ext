@@ -20,6 +20,7 @@ import {
   ISystemChatMessage,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 
 /**
  * Client更新Conversation的信息
@@ -88,8 +89,32 @@ export const clientUpdateChatConversation = async (
 }
 
 /**
- * 获取客户端目前使用的AIProvider和Model
+ * Client复制Conversation
+ * @param conversationId
+ * @param updateConversationData
+ * @param syncConversationToDB
  */
+export const clientDuplicateChatConversation = async (
+  conversationId: string,
+  updateConversationData: Partial<IChatConversation>,
+  syncConversationToDB: boolean,
+): Promise<IChatConversation | null> => {
+  try {
+    const port = new ContentScriptConnectionV2()
+    const result = await port.postMessage({
+      event: 'Client_duplicateConversation',
+      data: {
+        conversationId,
+        updateConversationData,
+        syncConversationToDB,
+      },
+    })
+    return result.success ? result.data : null
+  } catch (e) {
+    return null
+  }
+}
+
 export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   currentAIProvider: IAIProviderType
   currentModel: IAIProviderModel | null
@@ -97,12 +122,23 @@ export const clientGetCurrentClientAIProviderAndModel = async (): Promise<{
   isThirdPartyProvider: boolean
 }> => {
   const settings = await getChromeExtensionLocalStorage()
-  const currentAIProvider =
-    settings.sidebarSettings?.common?.currentAIProvider ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIProvider
-  const currentModelValue =
-    settings.thirdProviderSettings?.[currentAIProvider]?.model ||
-    MAXAI_DEFAULT_AI_PROVIDER_CONFIG.AIModel
+  const currentChatConversationId =
+    settings.sidebarSettings?.chat?.conversationId
+
+  // set default
+  let currentAIProvider = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIProvider
+  let currentModelValue = MAXAI_DEFAULT_AI_PROVIDER_CONFIG.Chat.AIModel
+
+  if (currentChatConversationId) {
+    const currentChatConversation = await clientGetConversation(
+      currentChatConversationId,
+    )
+    currentAIProvider =
+      currentChatConversation?.meta.AIProvider || currentAIProvider
+    currentModelValue =
+      currentChatConversation?.meta.AIModel || currentModelValue
+  }
+
   let currentModel: IAIProviderModel | null = null
   let isThirdPartyProvider = false
   const findModelDetail = (models: IAIProviderModel[]) => {

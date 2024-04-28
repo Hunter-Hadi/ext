@@ -11,14 +11,18 @@ import {
   ActionCreateWebsiteContext,
   ActionDate,
   ActionDateFormat,
+  ActionDictionary,
   ActionFetchActions,
   ActionGetChatMessageDraftOfWebPage,
+  ActionGetChatMessages,
   ActionGetChatMessagesContentOfWebPage,
   ActionGetContentsOfSearchEngine,
   ActionGetContentsOfURL,
   ActionGetContentsOfWebPage,
+  ActionGetDictionaryValue,
   ActionGetEmailContentsOfWebPage,
   ActionGetEmailDraftOfWebPage,
+  ActionGetItemFromList,
   ActionGetPDFContentsOfCRX,
   ActionGetReadabilityContentsOfWebPage,
   ActionGetSocialMediaPostContentOfWebPage,
@@ -30,6 +34,7 @@ import {
   ActionOperationElement,
   ActionRenderChatGPTPrompt,
   ActionRenderTemplate,
+  ActionSetDictionaryValue,
   ActionSetVariable,
   ActionSetVariableMap,
   ActionSetVariablesModal,
@@ -73,6 +78,7 @@ const ActionClassMap = {
   [ActionAskChatGPT.type]: ActionAskChatGPT,
   [ActionAnalyzeChatFile.type]: ActionAnalyzeChatFile,
   [ActionChatMessage.type]: ActionChatMessage,
+  [ActionGetChatMessages.type]: ActionGetChatMessages,
   // scripts
   [ActionInsertUserInput.type]: ActionInsertUserInput,
   [ActionSetVariable.type]: ActionSetVariable,
@@ -80,6 +86,10 @@ const ActionClassMap = {
   [ActionConditional.type]: ActionConditional,
   [ActionSetVariablesModal.type]: ActionSetVariablesModal,
   [ActionSetVariableMap.type]: ActionSetVariableMap,
+  [ActionDictionary.type]: ActionDictionary,
+  [ActionGetDictionaryValue.type]: ActionGetDictionaryValue,
+  [ActionSetDictionaryValue.type]: ActionSetDictionaryValue,
+  [ActionGetItemFromList.type]: ActionGetItemFromList,
   // web
   [ActionURL.type]: ActionURL,
   [ActionGetContentsOfWebPage.type]: ActionGetContentsOfWebPage,
@@ -121,13 +131,17 @@ const ActionClassMap = {
 }
 
 class ShortCutsEngine implements IShortcutEngine {
+  conversationId: string
+  createdAt = new Date()
+  updatedAt = new Date()
   status: IShortcutEngine['status'] = 'idle'
   variables = new Map<string, IShortCutsParameter>()
   stepIndex = -1
   actions: IShortcutEngine['actions'] = []
   listeners: IShortcutEngine['listeners'] = []
-  constructor() {
-    console.log('ShortCutEngine.constructor')
+  constructor(conversationId: string) {
+    this.conversationId = conversationId
+    console.log('ShortCutEngine.constructor', conversationId)
   }
 
   setActions(
@@ -217,12 +231,14 @@ class ShortCutsEngine implements IShortcutEngine {
     parameters: IShortCutsParameter[]
     engine: IShortcutEngineExternalEngine
   }) {
+    const updatedAt = new Date()
+    this.updatedAt = updatedAt
     try {
       const { engine, parameters } = params || {}
       if (this.status === 'idle' || this.status === 'stop') {
         this.status = 'running'
         this.emit('status', this)
-        while (this.status === 'running') {
+        while (this.status === 'running' && this.updatedAt === updatedAt) {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
           if (this.status === 'stop') {
@@ -262,6 +278,17 @@ class ShortCutsEngine implements IShortcutEngine {
               currentAction,
               currentAction.status,
             )
+            /**
+             * 执行当前action的时候，这时候触发stop，然后重新执行了新的actions
+             * 这里action执行完毕时，这时候engine已经在运行新的actions了，应该抛弃所有操作，否则会造成一些难以排查的意外现象
+             * 比如正在执行ASK_GPT的时候stopGenerate在regenerate
+             * ASK_GPT的action完毕后会进入到下面的setVariable({ key: 'LAST_ACTION_OUTPUT' })，影响新任务的执行
+             *
+             * 这里加入一个updatedAt的判断，如果执行了新的actions时不做任何处理
+             */
+            if (this.updatedAt !== updatedAt) {
+              return
+            }
             if (currentAction.error) {
               console.log('ShortCutEngine.run: error', currentAction.error)
               this.status = 'stop'
@@ -304,7 +331,7 @@ class ShortCutsEngine implements IShortcutEngine {
 
   async stop(params: { engine: IShortcutEngineExternalEngine }) {
     this.status = 'stop'
-    console.log('ShortCutEngine.stop', this.getCurrentAction()?.stop)
+    console.log('ShortCutEngine.stop')
     await this.getCurrentAction()?.stop(params)
   }
 
@@ -385,4 +412,33 @@ class ShortCutsEngine implements IShortcutEngine {
     })
   }
 }
-export default ShortCutsEngine
+export default class ShortCutsEngineFactory {
+  static shortCutsEngineMap: Map<string, ShortCutsEngine> = new Map()
+  static getShortCutsEngine(conversationId: string) {
+    ShortCutsEngineFactory.removeUnnecessaryShortcutsEngine()
+    if (ShortCutsEngineFactory.shortCutsEngineMap.has(conversationId)) {
+      return (
+        ShortCutsEngineFactory.shortCutsEngineMap.get(conversationId) || null
+      )
+    }
+    const shortCutsEngine = new ShortCutsEngine(conversationId)
+    ShortCutsEngineFactory.shortCutsEngineMap.set(
+      conversationId,
+      shortCutsEngine,
+    )
+    console.log(
+      'ShortCutsEngineFactory.create',
+      ShortCutsEngineFactory.shortCutsEngineMap,
+    )
+    return shortCutsEngine
+  }
+  // 释放5分钟没有使用的引擎
+  static removeUnnecessaryShortcutsEngine() {
+    const now = new Date()
+    ShortCutsEngineFactory.shortCutsEngineMap.forEach((engine, key) => {
+      if (now.getTime() - engine.updatedAt.getTime() > 1000 * 60 * 5) {
+        ShortCutsEngineFactory.shortCutsEngineMap.delete(key)
+      }
+    })
+  }
+}

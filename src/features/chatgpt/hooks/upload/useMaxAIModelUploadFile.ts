@@ -1,4 +1,5 @@
 import { checkFileTypeIsImage } from '@/background/utils/uplpadFileProcessHelper'
+import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import useDocUploadAndTextExtraction from '@/features/chatgpt/hooks/upload/useDocUploadAndTextExtraction'
 import useUploadImagesAndSwitchToMaxAIVisionModel from '@/features/chatgpt/hooks/upload/useUploadImagesAndSwitchToMaxAIVisionModel'
 import FileExtractor from '@/features/sidebar/utils/FileExtractor'
@@ -7,10 +8,8 @@ const useMaxAIModelUploadFile = () => {
   const { uploadImagesAndSwitchToMaxAIVisionModel } =
     useUploadImagesAndSwitchToMaxAIVisionModel()
   const { uploadDocAndTextExtraction } = useDocUploadAndTextExtraction()
-  const isContainMaxAIModelUploadFile = (
-    uploadFiles: File[],
-    showError = false,
-  ) => {
+  const { getCanUploadFiles } = useAIProviderUpload()
+  const isContainMaxAIModelUploadFile = (uploadFiles: File[]) => {
     return (
       uploadFiles &&
       uploadFiles.filter(
@@ -23,18 +22,19 @@ const useMaxAIModelUploadFile = () => {
   const uploadFilesToMaxAIModel = async (uploadFiles: File[]) => {
     const uploadImages: File[] = []
     const uploadDocs: File[] = []
-    if (!uploadFiles || uploadFiles.length === 0) {
+    const canUploadFiles = await getCanUploadFiles(uploadFiles)
+    if (!canUploadFiles || canUploadFiles.length === 0) {
       return
     }
-    uploadFiles.forEach((uploadFile) => {
+    canUploadFiles.forEach((uploadFile) => {
       if (checkFileTypeIsImage(uploadFile)) {
         uploadImages.push(uploadFile)
       } else if (FileExtractor.canExtractTextFromFileName(uploadFile.name)) {
         uploadDocs.push(uploadFile)
       }
     })
-    await uploadDocAndTextExtraction(uploadDocs)
     await uploadImagesAndSwitchToMaxAIVisionModel(uploadImages)
+    await uploadDocAndTextExtraction(uploadDocs)
   }
   return {
     isContainMaxAIModelUploadFile,

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot øjeblikkeligt svar",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram øjeblikkeligt svar",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teams øjeblikkeligt svar",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat øjeblikkeligt svar"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chat øjeblikkeligt svar",
+    "left_menu__sidebar": "Sidebar",
+    "feature_card__sidebar__field__auto_archive__title": "Autoarkiv: Rens mens du går",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arkiver chat efter",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive chats i det tempo, du vælger. Dette giver dig en frisk start og holder din sidebar ryddelig."
   },
   "client": {
     "sidebar__button__close_sidebar": "Luk sidebar",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Få lange svar på komplekse spørgsmål",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Søg med AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Vis AI-svar ved siden af søgeresultaterne",
-    "instant_reply_button__explicit__display_text": "Øjeblikkelig svar"
+    "instant_reply_button__explicit__display_text": "Øjeblikkelig svar",
+    "immersive_chat__delete_all_context_menu__button__title": "Slet alle kontekstmenuer",
+    "immersive_chat__delete_all_context_menu__title": "Ryd din kontekstmenuhistorik - er du sikker?",
+    "context_window__chat_history__button__title": "Kontekstmenuhistorik",
+    "context_window__chat_history__empty__title": "Ingen kontekstmenuhistorik tilgængelig endnu",
+    "context_window__chat_history__continue_in_chat__title": "Fortsæt i chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Digt...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Venlig",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Direkte",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Selvsikker",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Afslappet"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Afslappet",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Fortsæt i chat"
   },
   "prompt_editor": {
     "preset_variables__title": "Funktioner",

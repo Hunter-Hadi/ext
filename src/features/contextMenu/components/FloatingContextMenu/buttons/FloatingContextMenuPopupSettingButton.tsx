@@ -13,7 +13,7 @@ import {
 import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediator'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
+  getMaxAIFloatingContextMenuRootElement,
 } from '@/utils'
 
 const FloatingContextMenuPopupSettingButton: FC<{
@@ -27,7 +27,7 @@ const FloatingContextMenuPopupSettingButton: FC<{
     if (root) {
       return
     }
-    const rootEl = getAppContextMenuRootElement()
+    const rootEl = getMaxAIFloatingContextMenuRootElement()
     if (rootEl) {
       setRoot(rootEl)
     }
@@ -56,16 +56,19 @@ const FloatingContextMenuPopupSettingButton: FC<{
                 size={'small'}
                 variant={'text'}
                 sx={{
-                  width: 32,
-                  height: 32,
+                  width: '28px',
+                  height: '28px',
                   color: 'inherit',
                   minWidth: 'unset',
+                  borderRadius: '8px',
+                  border: '1px solid',
+                  borderColor: 'customColor.borderColor',
                   ...sx,
                 }}
               >
                 <ContextMenuIcon
                   icon={'More'}
-                  sx={{ color: 'text.primary', fontSize: 16 }}
+                  sx={{ color: 'text.primary', fontSize: '16px' }}
                 />
               </Button>
             </Box>

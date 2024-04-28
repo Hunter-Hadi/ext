@@ -10,7 +10,7 @@ import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/clien
 
 const useAutoTwitterReferral = () => {
   const { userInfo } = useUserInfo()
-  const { askAIWIthShortcuts, shortCutsEngineRef, loading } = useClientChat()
+  const { askAIWIthShortcuts, shortCutsEngine, loading } = useClientChat()
 
   const autoTwitterReferral = useCallback(async () => {
     if (!loading) {
@@ -54,7 +54,7 @@ const useAutoTwitterReferral = () => {
           }
         }
       }
-      shortCutsEngineRef.current?.addListener(listener)
+      shortCutsEngine?.addListener(listener)
       await askAIWIthShortcuts([
         {
           type: 'OPEN_URLS',
@@ -193,7 +193,7 @@ const useAutoTwitterReferral = () => {
           },
         },
       ])
-      shortCutsEngineRef.current?.removeListener(listener)
+      shortCutsEngine?.removeListener(listener)
       return true
     }
     return false

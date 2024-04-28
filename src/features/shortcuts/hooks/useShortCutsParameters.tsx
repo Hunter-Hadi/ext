@@ -7,12 +7,12 @@ import {
   DEFAULT_AI_OUTPUT_LANGUAGE_VALUE,
 } from '@/constants'
 import { MAXAI_SIDEBAR_CHAT_BOX_INPUT_ID } from '@/features/common/constants'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useFloatingContextMenuDraft from '@/features/contextMenu/hooks/useFloatingContextMenuDraft'
 import { useRangy } from '@/features/contextMenu/hooks/useRangy'
 import { IShortcutEngineBuiltInVariableType } from '@/features/shortcuts/types'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { AppDBStorageState, AppState } from '@/store'
+import { getMaxAISidebarRootElement } from '@/utils'
 import { listReverseFind } from '@/utils/dataHelper/arrayHelper'
 
 export interface IShortCutsParameter {
@@ -28,7 +28,7 @@ const useShortCutsParameters = () => {
   const { currentSelection } = useRangy()
   const { currentSidebarConversationMessages } = useSidebarSettings()
 
-  const floatingContextMenuDraftText = useFloatingContextMenuDraft()
+  const { currentFloatingContextMenuDraft } = useFloatingContextMenuDraft()
   const appDBStorage = useRecoilValue(AppDBStorageState)
   return useCallback(() => {
     const GMAIL_DRAFT_CONTEXT =
@@ -80,7 +80,7 @@ const useShortCutsParameters = () => {
         typeof window !== 'undefined' ? window.location.href : '',
       CURRENT_WEBPAGE_TITLE:
         typeof window !== 'undefined' ? document.title : '',
-      POPUP_DRAFT: floatingContextMenuDraftText || '',
+      POPUP_DRAFT: currentFloatingContextMenuDraft || '',
     }
     const parameters: IShortCutsParameter[] = []
     Object.keys(builtInParameters).forEach((key) => {
@@ -104,7 +104,7 @@ const useShortCutsParameters = () => {
     appState.env,
     currentSelection,
     appDBStorage.userSettings,
-    floatingContextMenuDraftText,
+    currentFloatingContextMenuDraft,
   ])
 }
 export { useShortCutsParameters }

@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot তাৎক্ষণিক উত্তর",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram তাৎক্ষণিক উত্তর",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams তাৎক্ষণিক উত্তর",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat তাৎক্ষণিক উত্তর"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat তাৎক্ষণিক উত্তর",
+    "left_menu__sidebar": "সাইডবার",
+    "feature_card__sidebar__field__auto_archive__title": "অটো আর্কাইভ: চলাচলের সাথে পরিষ্কার করুন",
+    "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-তে, আমরা আপনার পছন্দের ক্যাডেন্সে আইডেল চ্যাটগুলি অটোমেটিকভাবে আর্কাইভ করি। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাজানো রাখে।"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "জটিল প্রশ্নের জন্য দীর্ঘ উত্তর পান",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "আই দ্বারা অনুসন্ধান করুন",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "অনুসন্ধান ফলাফলের পাশে আই উত্তর প্রদর্শন করুন",
-    "instant_reply_button__explicit__display_text": "তাৎক্ষণিক উত্তর"
+    "instant_reply_button__explicit__display_text": "তাৎক্ষণিক উত্তর",
+    "immersive_chat__delete_all_context_menu__button__title": "সমস্ত সংদর্শন মেনু মুছুন",
+    "immersive_chat__delete_all_context_menu__title": "আপনার সংদর্শন মেনু ইতিহাস সাফ করুন - আপনি কি নিশ্চিত?",
+    "context_window__chat_history__button__title": "সংদর্শন মেনু ইতিহাস",
+    "context_window__chat_history__empty__title": "এখনও কোন সংদর্শন মেনু ইতিহাস উপলব্ধ নেই",
+    "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "বন্ধুত্বপূর্ণ",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "সরাসরি",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "নিশ্চিত",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "অসম্ভ্রান্ত"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "অসম্ভ্রান্ত",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "চ্যাটে অবতরণ করুন"
   },
   "prompt_editor": {
     "preset_variables__title": "ক্ষমতা",

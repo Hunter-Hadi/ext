@@ -10,9 +10,10 @@ import { useChromeExtensionButtonSettingsWithVisibility } from '@/background/uti
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TooltipButton from '@/components/TooltipButton'
 import { isProduction } from '@/constants'
-import FavoriteContextMenuGroup from '@/features/contextMenu/components/FavoriteContextMenuGroup'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { FloatingContextMenuMiniMenuMoreButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons'
 import { FloatingContextMenuMiniMenuSearchWithAIButton } from '@/features/contextMenu/components/FloatingContextMenu/buttons/FloatingContextMenuMiniMenuSearchWithAIButton'
+import FavoriteContextMenuGroup from '@/features/contextMenu/components/FloatingMiniMenu/FavoriteContextMenuGroup'
 import { useRangy } from '@/features/contextMenu/hooks'
 import { useFloatingContextMenu } from '@/features/contextMenu/hooks/useFloatingContextMenu'
 import {
@@ -30,7 +31,6 @@ import {
   removeAllRange,
   removeAllSelectionMarker,
 } from '@/features/contextMenu/utils/selectionHelper'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 import useCommands from '@/hooks/useCommands'
 
 const FloatingMiniMenu: FC<{
@@ -44,7 +44,7 @@ const FloatingMiniMenu: FC<{
   const updateSelectedId = useSetRecoilState(
     FloatingDropdownMenuSelectedItemState,
   )
-  const clientWritingMessage = useRecoilValue(ClientWritingMessageState)
+  const { clientWritingMessage } = useClientConversation()
   // 保存打开floatingMenu前最后的选区
   const setFloatingDropdownMenuLastFocusRange = useSetRecoilState(
     FloatingDropdownMenuLastFocusRangeState,

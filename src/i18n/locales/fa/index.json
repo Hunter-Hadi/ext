@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "پاسخ فوری HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "پاسخ فوری Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "پاسخ فوری Microsoft Teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "پاسخ فوری Google Chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "پاسخ فوری Google Chat",
+    "left_menu__sidebar": "نوار کناری",
+    "feature_card__sidebar__field__auto_archive__title": "بایگانی خودکار: همراه با پاکسازی",
+    "feature_card__sidebar__field__auto_archive__button__title": "چت را بعد از",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI، ما چت‌های غیرفعال را به صورت خودکار بایگانی می‌کنیم. این به شما شروعی تازه می‌دهد و نوار کناری شما را تمیز نگه می‌دارد."
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "پاسخ‌های طولانی به سوالات پیچیده دریافت کنید",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "جستجو با هوش مصنوعی",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "پاسخ‌های هوش مصنوعی را در کنار نتایج جستجو نمایش دهید",
-    "instant_reply_button__explicit__display_text": "پاسخ فوری"
+    "instant_reply_button__explicit__display_text": "پاسخ فوری",
+    "immersive_chat__delete_all_context_menu__button__title": "حذف تمام منوهای متنی",
+    "immersive_chat__delete_all_context_menu__title": "پاک کردن تاریخچه منوهای متنی شما - آیا مطمئن هستید؟",
+    "context_window__chat_history__button__title": "تاریخچه منوی متنی",
+    "context_window__chat_history__empty__title": "هنوز تاریخچه منوی متنی موجود نیست",
+    "context_window__chat_history__continue_in_chat__title": "ادامه در چت"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "دوستانه",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "ساده و روشن",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "مطمئن",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیررسمی"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "غیررسمی",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "ادامه در چت"
   },
   "prompt_editor": {
     "preset_variables__title": "قابلیت‌ها",

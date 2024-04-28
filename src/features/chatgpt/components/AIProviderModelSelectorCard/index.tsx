@@ -13,7 +13,7 @@ import AIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProvi
 import {
   AIProviderModelSelectorOption,
   ChatAIProviderModelSelectorOptions,
-  getAIProviderModelSelectorOptions,
+  getModelOptionsForConversationType,
 } from '@/features/chatgpt/components/AIProviderModelSelectorCard/AIProviderModelSelectorOptions'
 import ThirdPartyAIProviderModelSelectorDetail from '@/features/chatgpt/components/AIProviderModelSelectorCard/ThirdPartyAIProviderModelSelectorDetail'
 import AIModelIcons from '@/features/chatgpt/components/icons/AIModelIcons'
@@ -93,7 +93,7 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
       .AIModel ||
     SIDEBAR_CONVERSATION_TYPE_DEFAULT_CONFIG[sidebarConversationType].AIModel
   const currentSidebarConversationTypeModels = useMemo(() => {
-    return getAIProviderModelSelectorOptions(sidebarConversationType)
+    return getModelOptionsForConversationType(sidebarConversationType)
       .filter((model) => {
         // 过滤掉被隐藏的AI模型
         return !remoteAIProviderConfig.hiddenAIProviders.includes(
@@ -228,7 +228,11 @@ const AIModelSelectorCard: FC<AIModelSelectorCardProps> = (props) => {
                   AIModelOption.AIProvider,
                   AIModelOption.value,
                 )
-                await createConversation(sidebarConversationType)
+                await createConversation(
+                  sidebarConversationType,
+                  AIModelOption.AIProvider,
+                  AIModelOption.value,
+                )
               }}
             >
               <Stack alignItems={'center'} direction={'row'}>

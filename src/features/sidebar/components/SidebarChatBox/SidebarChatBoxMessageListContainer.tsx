@@ -7,8 +7,8 @@ import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import { IAIResponseMessage, IChatMessage } from '@/features/chatgpt/types'
 import { useFocus } from '@/features/common/hooks/useFocus'
 import useInterval from '@/features/common/hooks/useInterval'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import useMessageListPaginator from '@/features/sidebar/hooks/useMessageListPaginator'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 export const messageListContainerId = 'message-list-scroll-container'
 

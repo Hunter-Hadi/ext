@@ -10,7 +10,7 @@ import { clientSendMaxAINotification } from '@/utils/sendMaxAINotification/clien
 
 const useAutoFacebookReferral = () => {
   const { userInfo } = useUserInfo()
-  const { askAIWIthShortcuts, shortCutsEngineRef, loading } = useClientChat()
+  const { askAIWIthShortcuts, shortCutsEngine, loading } = useClientChat()
   const autoFacebookReferral = useCallback(async () => {
     if (!loading) {
       const postText = ReferralConfig.inviteLink(userInfo?.referral_code || '')
@@ -49,7 +49,7 @@ const useAutoFacebookReferral = () => {
           }
         }
       }
-      shortCutsEngineRef.current?.addListener(listener)
+      shortCutsEngine?.addListener(listener)
       await askAIWIthShortcuts([
         {
           type: 'OPEN_URLS',
@@ -163,7 +163,7 @@ const useAutoFacebookReferral = () => {
           },
         },
       ])
-      shortCutsEngineRef.current?.removeListener(listener)
+      shortCutsEngine?.removeListener(listener)
       return true
     }
     return false

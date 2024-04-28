@@ -1,7 +1,6 @@
 import Button from '@mui/material/Button'
 import React, { FC, useMemo, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import { checkFileTypeIsImage } from '@/background/utils/uplpadFileProcessHelper'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
@@ -10,8 +9,8 @@ import ChatIconFileList, {
   ChatIconFileListProps,
 } from '@/features/chatgpt/components/ChatIconFileUpload/ChatIconFileList'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
-import { ChatGPTClientState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { formatClientUploadFiles } from '@/features/chatgpt/utils/clientUploadFiles'
 import FileExtractor from '@/features/sidebar/utils/FileExtractor'
@@ -31,55 +30,50 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
     aiProviderUploadFiles,
     aiProviderRemoveFiles,
     aiProviderUploadingTooltip,
+    addOrUpdateUploadFile,
+    getCanUploadFiles,
   } = useAIProviderUpload()
-  const clientState = useRecoilValue(ChatGPTClientState)
+  const { conversationStatus } = useClientConversation()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const inputRef = useRef<HTMLInputElement>(null)
   const maxFiles = AIProviderConfig?.maxCount || 1
-  const maxFileSize = AIProviderConfig?.maxFileSize
+
   const isMaxFiles = useMemo(() => {
     return files.length >= (AIProviderConfig?.maxCount || 1)
   }, [files])
 
   const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const existFilesCount = files?.length || 0
-    const canUploadCount = maxFiles - existFilesCount
     const selectedUploadFiles = e.target.files
-    if (!selectedUploadFiles || canUploadCount === 0) {
+    if (!selectedUploadFiles) {
       return
     }
-    let filesArray: File[] = Array.from(selectedUploadFiles)
-    filesArray = filesArray.slice(0, canUploadCount)
-    if (filesArray.length === 0) {
+    let canUploadFiles: File[] = await getCanUploadFiles(
+      Array.from(selectedUploadFiles),
+    )
+    if (canUploadFiles.length === 0) {
       return
     }
     const waitExtractTextFiles: File[] = []
-    const extractedTextFiles: IChatUploadFile[] = []
-    filesArray = filesArray.filter((file) => {
+    canUploadFiles = canUploadFiles.filter((file) => {
       if (FileExtractor.canExtractTextFromFileName(file.name)) {
         waitExtractTextFiles.push(file)
         return false
       }
       return checkFileTypeIsImage(file)
     })
-    await Promise.all(
+    Promise.all(
       waitExtractTextFiles.map(async (waitExtractTextFile) => {
-        const extractedResult = await FileExtractor.extractFile(
+        await FileExtractor.extractFile(
           waitExtractTextFile,
+          addOrUpdateUploadFile,
         )
-        if (extractedResult.success) {
-          extractedTextFiles.push(extractedResult.chatUploadFile)
-        }
       }),
     )
-
+      .then()
+      .catch()
     // upload
-    const newUploadFiles = await formatClientUploadFiles(
-      filesArray,
-      maxFileSize,
-    )
-
-    await aiProviderUploadFiles(extractedTextFiles.concat(newUploadFiles))
+    const newUploadFiles = await formatClientUploadFiles(canUploadFiles)
+    await aiProviderUploadFiles(newUploadFiles)
     // clear input
     if (inputRef.current) {
       inputRef.current.value = ''
@@ -87,9 +81,15 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
   }
   if (
     !AIProviderConfig ||
-    clientState.status !== 'success' ||
+    conversationStatus !== 'success' ||
     smoothConversationLoading
   ) {
+    console.log(
+      `ChatIconFileUpload:`,
+      AIProviderConfig,
+      conversationStatus,
+      smoothConversationLoading,
+    )
     return <></>
   }
   return (
@@ -131,8 +131,9 @@ const ChatIconFileUpload: FC<IChatIconFileItemProps> = (props) => {
             }}
           >
             <ContextMenuIcon
-              icon={'AddCircle'}
+              icon={'Attachment'}
               sx={{
+                transform: 'rotate(-45deg)',
                 color: 'inherit',
               }}
             />

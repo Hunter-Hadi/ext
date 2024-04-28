@@ -8,7 +8,6 @@ import Tooltip from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
 import React, { FC, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import {
   BING_CONVERSATION_STYLES,
@@ -19,9 +18,9 @@ import {
   setAIProviderSettings,
 } from '@/background/src/chat/util'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import { useFocus } from '@/features/common/hooks/useFocus'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 const ArrowDropDownIconCustom = () => {
   return (
@@ -39,10 +38,8 @@ const ArrowDropDownIconCustom = () => {
 
 const BingConversationStyleSelector: FC = () => {
   const { t } = useTranslation(['common', 'client'])
-  const { cleanConversation } = useClientConversation()
-  const { loading: chatGPTConversationLoading } = useRecoilValue(
-    ClientWritingMessageState,
-  )
+  const { resetConversation } = useClientConversation()
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const [bingConversationStyle, setBingConversationStyle] = useState(
     BingConversationStyle.Balanced,
   )
@@ -78,7 +75,7 @@ const BingConversationStyleSelector: FC = () => {
         </span>
       </InputLabel>
       <Select
-        disabled={chatGPTConversationLoading}
+        disabled={smoothConversationLoading}
         MenuProps={{
           elevation: 0,
           anchorOrigin: {
@@ -115,7 +112,7 @@ const BingConversationStyleSelector: FC = () => {
             await setAIProviderSettings('BING', {
               conversationStyle: event.target.value as BingConversationStyle,
             })
-            await cleanConversation()
+            await resetConversation()
             setBingConversationStyle(
               event.target.value as BingConversationStyle,
             )

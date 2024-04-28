@@ -26,6 +26,17 @@ export const numberFormatter = (number: number, digits = 1) => {
         item.symbol
     : '0'
 }
+
+// 4096 -> 4K
+// 100000 -> 1,000K
+// 1000000 -> 10,000K
+export const numberToTokensText = (number: number) => {
+  if (number < 1000) {
+    return number
+  }
+  return numberWithCommas(Math.floor(number / 1000)) + 'K'
+}
+
 export const filesizeFormatter = (size: number, digits = 1) => {
   const lookup = [
     { value: 1, symbol: 'B' },

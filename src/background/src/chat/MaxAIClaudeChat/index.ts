@@ -1,7 +1,7 @@
 import cloneDeep from 'lodash-es/cloneDeep'
 import Browser from 'webextension-polyfill'
 
-import { ChatStatus } from '@/background/provider/chat'
+import { ConversationStatusType } from '@/background/provider/chat'
 import BaseChat from '@/background/src/chat/BaseChat'
 import { MAXAI_CLAUDE_MODELS } from '@/background/src/chat/MaxAIClaudeChat/types'
 import {
@@ -10,10 +10,7 @@ import {
   IMaxAIRequestHistoryMessage,
 } from '@/background/src/chat/UseChatGPTChat/types'
 import { getAIProviderSettings } from '@/background/src/chat/util'
-import {
-  backgroundSendAllClientMessage,
-  chromeExtensionLogout,
-} from '@/background/utils'
+import { chromeExtensionLogout } from '@/background/utils'
 import {
   AI_PROVIDER_MAP,
   APP_USE_CHAT_GPT_API_HOST,
@@ -30,7 +27,7 @@ import { backgroundSendMaxAINotification } from '@/utils/sendMaxAINotification/b
 const log = new Log('Background/Chat/MaxAIClaudeChat')
 
 class MaxAIClaudeChat extends BaseChat {
-  status: ChatStatus = 'success'
+  status: ConversationStatusType = 'success'
   private lastActiveTabId?: number
   private token?: string
   constructor() {
@@ -43,7 +40,7 @@ class MaxAIClaudeChat extends BaseChat {
   async preAuth() {
     this.active = true
     this.status = 'success'
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
     // await this.checkTokenAndUpdateStatus()
   }
   async auth(authTabId: number) {
@@ -57,7 +54,7 @@ class MaxAIClaudeChat extends BaseChat {
         url: APP_USE_CHAT_GPT_HOST,
       })
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
   private async checkTokenAndUpdateStatus() {
     const prevStatus = this.status
@@ -68,7 +65,7 @@ class MaxAIClaudeChat extends BaseChat {
       // 本来要切回去chat页面,流程改了，不需要这个变量来切换了
       this.lastActiveTabId = undefined
     }
-    await this.updateClientStatus()
+    await this.updateClientConversationChatStatus()
   }
 
   /**
@@ -303,7 +300,7 @@ class MaxAIClaudeChat extends BaseChat {
       log.info('user token expired')
       this.status = 'needAuth'
       await chromeExtensionLogout()
-      await this.updateClientStatus()
+      await this.updateClientConversationChatStatus()
     }
   }
   async abortTask(taskId: string) {
@@ -322,14 +319,6 @@ class MaxAIClaudeChat extends BaseChat {
   }
   private async getToken() {
     return await getMaxAIChromeExtensionAccessToken()
-  }
-  async updateClientStatus() {
-    if (this.active) {
-      console.log('Client_AuthAIProvider updateClientStatus', this.status)
-      await backgroundSendAllClientMessage('Client_ChatGPTStatusUpdate', {
-        status: this.status,
-      })
-    }
   }
 }
 export { MaxAIClaudeChat }

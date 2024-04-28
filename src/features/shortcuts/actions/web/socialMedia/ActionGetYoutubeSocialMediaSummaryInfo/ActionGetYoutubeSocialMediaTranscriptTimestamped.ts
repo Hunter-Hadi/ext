@@ -92,17 +92,20 @@ export class ActionGetYoutubeSocialMediaTranscriptTimestamped extends Action {
           SummaryContextMenuOverwriteMap['YOUTUBE_VIDEO_SUMMARY']?.[
             'timestamped'
           ]
-        await clientMessageChannelEngine
-          .postMessage({
-            event: 'Client_logCallApiRequest',
-            data: {
-              name: recordContextMenuData?.text || 'UNKNOWN',
-              id: recordContextMenuData?.id || 'UNKNOWN',
-              host: getCurrentDomainHost(),
-            },
-          })
-          .then()
-          .catch()
+        if (clientConversationEngine?.currentConversationId) {
+          await clientMessageChannelEngine
+            .postMessage({
+              event: 'Client_logCallApiRequest',
+              data: {
+                name: recordContextMenuData?.text || 'UNKNOWN',
+                id: recordContextMenuData?.id || 'UNKNOWN',
+                host: getCurrentDomainHost(),
+                conversationId: clientConversationEngine.currentConversationId,
+              },
+            })
+            .then()
+            .catch()
+        }
       }
       this.output = JSON.stringify([]) //设置初始值，翻译return 异常数据导致视图渲染错误
       if (this.isStopAction) return

@@ -27,7 +27,7 @@ import FavoriteMediatorFactory from '@/features/contextMenu/store/FavoriteMediat
 import HowToFindSettings from '@/pages/settings/components/HowToFindSettings'
 import {
   chromeExtensionClientOpenPage,
-  getAppContextMenuRootElement,
+  getMaxAIFloatingContextMenuRootElement,
 } from '@/utils'
 
 const FloatingContextMenuMiniMenuMoreButton: FC<{
@@ -38,10 +38,8 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
   const { t } = useTranslation(['common', 'client'])
   const [loading, setLoading] = useState(true)
   const setContextMenuSettings = useSetRecoilState(ContextMenuSettingsState)
-  const {
-    updateButtonSettingsWithDomain,
-    toggleButtonSettings,
-  } = useChromeExtensionButtonSettings()
+  const { updateButtonSettingsWithDomain, toggleButtonSettings } =
+    useChromeExtensionButtonSettings()
   const { hideRangy } = useRangy()
   const [, setFloatingDropdownMenu] = useRecoilState(FloatingDropdownMenuState)
   const [root, setRoot] = useState<null | HTMLElement>(null)
@@ -50,7 +48,7 @@ const FloatingContextMenuMiniMenuMoreButton: FC<{
     if (root) {
       return
     }
-    const rootEl = getAppContextMenuRootElement()
+    const rootEl = getMaxAIFloatingContextMenuRootElement()
     if (rootEl) {
       setRoot(rootEl)
     }

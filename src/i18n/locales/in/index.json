@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "Balasan instan HubSpot",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Balasan instan Telegram",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Balasan instan Microsoft teams",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Balasan instan Google chat"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Balasan instan Google chat",
+    "left_menu__sidebar": "Sidebar",
+    "feature_card__sidebar__field__auto_archive__title": "Arsip otomatis: Bersihkan saat Anda pergi",
+    "feature_card__sidebar__field__auto_archive__button__title": "Arsip obrolan setelah",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Di MaxAI, kami secara otomatis mengarsipkan obrolan yang tidak aktif sesuai dengan pilihan Anda. Ini memberi Anda awal yang segar dan menjaga sidebar Anda rapi."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "Dapatkan jawaban panjang untuk pertanyaan kompleks",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "Cari dengan AI",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "Tampilkan jawaban AI di samping hasil pencarian",
-    "instant_reply_button__explicit__display_text": "Balasan instan"
+    "instant_reply_button__explicit__display_text": "Balasan instan",
+    "immersive_chat__delete_all_context_menu__button__title": "Hapus semua menu konteks",
+    "immersive_chat__delete_all_context_menu__title": "Bersihkan riwayat menu konteks Anda - apakah Anda yakin?",
+    "context_window__chat_history__button__title": "Riwayat menu konteks",
+    "context_window__chat_history__empty__title": "Belum ada riwayat menu konteks yang tersedia",
+    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "Ramah",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "Langsung",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "Penuh keyakinan",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Kasual"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "Kasual",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "Lanjutkan di chat"
   },
   "prompt_editor": {
     "preset_variables__title": "Kemampuan",

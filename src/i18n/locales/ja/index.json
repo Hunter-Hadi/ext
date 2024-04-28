@@ -252,7 +252,11 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpotのインスタント返信",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegramのインスタント返信",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft Teamsのインスタント返信",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chatのインスタント返信"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google Chatのインスタント返信",
+    "left_menu__sidebar": "サイドバー",
+    "feature_card__sidebar__field__auto_archive__title": "自動アーカイブ：使いながらクリーンに",
+    "feature_card__sidebar__field__auto_archive__button__title": "チャットをアーカイブする",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIでは、選択した頻度でアイドルなチャットを自動的にアーカイブします。これにより、新たなスタートが切れてサイドバーが整理されます。"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",
@@ -741,7 +745,12 @@
     "permission__pricing_hook__ai_search__more_content_card__item2__description": "複雑な質問に対する長い回答を取得",
     "permission__pricing_hook__ai_search__more_content_card__item3__title": "AIと一緒に検索",
     "permission__pricing_hook__ai_search__more_content_card__item3__description": "検索結果の隣にAIの回答を表示",
-    "instant_reply_button__explicit__display_text": "インスタント返信"
+    "instant_reply_button__explicit__display_text": "インスタント返信",
+    "immersive_chat__delete_all_context_menu__button__title": "すべてのコンテキストメニューを削除",
+    "immersive_chat__delete_all_context_menu__title": "コンテキストメニューの履歴をクリアしますか？",
+    "context_window__chat_history__button__title": "コンテキストメニューの履歴",
+    "context_window__chat_history__empty__title": "まだ利用可能なコンテキストメニューの履歴はありません",
+    "context_window__chat_history__continue_in_chat__title": "チャットで続ける"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",
@@ -945,7 +954,8 @@
     "19fab05d-02df-46bb-a0f4-38ee37c1a63f": "フレンドリー",
     "82c62432-4f36-4604-95a6-352d7c39f68e": "わかりやすい",
     "37a76900-1d0f-44e5-8ef9-6fbfa5b57fb7": "自信あり",
-    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "カジュアル"
+    "78ca6afd-1d5a-4c50-b925-c4ff5277243b": "カジュアル",
+    "9642aa63-4c26-4b5a-8109-e51c4a92df0b": "チャットで続ける"
   },
   "prompt_editor": {
     "preset_variables__title": "機能",

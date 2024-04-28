@@ -10,10 +10,21 @@ import { styled } from '@mui/material/styles'
 import Switch from '@mui/material/Switch'
 import Tooltip, { tooltipClasses, TooltipProps } from '@mui/material/Tooltip'
 import Typography from '@mui/material/Typography'
-import React, { type ChangeEvent, type FC, type MouseEvent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  type ChangeEvent,
+  type FC,
+  type MouseEvent,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { useTranslation } from 'react-i18next'
+import { useRecoilValue } from 'recoil'
 import Browser from 'webextension-polyfill'
 
+import { getChromeExtensionDBStorage } from '@/background/utils/chromeExtensionStorage/chromeExtensionDBStorage'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { UseChatGptIcon } from '@/components/CustomIcon'
@@ -23,8 +34,13 @@ import useEffectOnce from '@/features/common/hooks/useEffectOnce'
 import useFindElement from '@/features/common/hooks/useFindElement'
 import useInterval from '@/features/common/hooks/useInterval'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { AppDBStorageState } from '@/store'
 import { chromeExtensionClientOpenPage } from '@/utils'
-import { getOriginalFileURL, handleMaxAIPDFViewerResize, isMaxAIPDFPage } from '@/utils/dataHelper/websiteHelper'
+import {
+  getOriginalFileURL,
+  handleMaxAIPDFViewerResize,
+  isMaxAIPDFPage,
+} from '@/utils/dataHelper/websiteHelper'
 import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 const MAXAIPDFAIViewerErrorAlert: FC = () => {
@@ -34,13 +50,15 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
   const [rootElement, setRootElement] = useState<HTMLElement | null>(null)
   const [isDragOver, setIsDragOver] = useState(false)
   const isAccessPermissionRef = useRef(false)
+  const { userSettings } = useRecoilValue(AppDBStorageState)
   useEffectOnce(() => {
     if (isMaxAIPDFPage()) {
       Browser.extension.isAllowedFileSchemeAccess().then((result) => {
         isAccessPermissionRef.current = result
       })
       // Use MaxAI event to cover the native event
-      const nativeFileInput = document.querySelector<HTMLInputElement>('#fileInput');
+      const nativeFileInput =
+        document.querySelector<HTMLInputElement>('#fileInput')
       if (nativeFileInput) {
         const handleNativeDrop = (e: CustomEvent<{ files: FileList }>) => {
           const file = e.detail.files?.[0]
@@ -48,15 +66,19 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
             handleUploadPDF(file)
           }
         }
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         nativeFileInput.addEventListener('nativedrop', handleNativeDrop)
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        nativeFileInput.addEventListener('change', handleUploadFile);
+        nativeFileInput.addEventListener('change', handleUploadFile)
         return () => {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          nativeFileInput.removeEventListener('change', handleUploadFile);
+          nativeFileInput.removeEventListener('change', handleUploadFile)
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-ignore
-          nativeFileInput.removeEventListener('nativedrop', handleNativeDrop);
+          nativeFileInput.removeEventListener('nativedrop', handleNativeDrop)
         }
       }
     }
@@ -101,7 +123,14 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
     } else {
       const file = event.dataTransfer?.files?.[0]
       if (file && file.type.includes('pdf')) {
-        window.close()
+        if (userSettings?.pdf?.enabled) {
+          // 用浏览器的默认事件打开 pdf 文件，会被 pdfSnifferStartListener 代理成 maxai 的 pdf viewer
+          window.close()
+        } else {
+          event.stopPropagation()
+          event.preventDefault()
+          await handleUploadPDF(file)
+        }
       }
     }
 
@@ -124,18 +153,24 @@ const MAXAIPDFAIViewerErrorAlert: FC = () => {
     // }
   }
 
-  const handleUploadFile = useCallback((event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files && event.target.files.length > 0) {
-      const file = event.target.files?.[0]
-      if (file) {
-        handleUploadPDF(file)
-        // reset
-        event.target.value = ''
+  const handleUploadFile = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      if (event.target.files && event.target.files.length > 0) {
+        const file = event.target.files?.[0]
+        if (file) {
+          handleUploadPDF(file)
+          // reset
+          event.target.value = ''
+        }
       }
-    }
-  }, [])
+    },
+    [],
+  )
 
   const handleUploadPDF = async (file: File) => {
+    if (uploadLoading) {
+      return
+    }
     setUploadLoading(true)
     const result = await maxAIFileUpload(file, {
       useCase: 'multimodal',
@@ -322,10 +357,12 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
   const { t } = useTranslation(['common', 'client'])
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const [selectedIndex, setSelectedIndex] = useState(0)
-  const open = useMemo(() => Boolean(anchorEl), [anchorEl]);
+  const open = useMemo(() => Boolean(anchorEl), [anchorEl])
   const handleOpenDefaultViewer = async () => {
     // 获取pdfjs当前doc的文件路径
-    const unit8Array = await (window as any)?.PDFViewerApplication?.pdfDocument?.getData()
+    const unit8Array = await (
+      window as any
+    )?.PDFViewerApplication?.pdfDocument?.getData()
     if (unit8Array) {
       const file = new File([unit8Array], 'pdf', {
         type: 'application/pdf',
@@ -382,7 +419,6 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
           {t('client:pdf_ai_viewer__once_default_button__title')}
         </MenuItem>
         <LightTooltip
-          placeholder={'right'}
           PopperProps={{
             sx: {
               zIndex: 99999999,
@@ -455,70 +491,75 @@ const MaxAIPDFAIViewerSwitchToDefaultButton: FC<{
 
 const MaxAIPDFAIViewerShareButton: FC = () => {
   const { element } = useFindElement('#toolbarViewerRight')
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(false)
 
-  const shareURL = useMemo(() => getOriginalFileURL(window.location.search), [window.location.search]);
+  const shareURL = useMemo(
+    () => getOriginalFileURL(window.location.search),
+    [window.location.search],
+  )
 
   useEffect(() => {
     if (shareURL.includes('http')) {
-      setTimeout(() => setShow(true), 1500);
+      setTimeout(() => setShow(true), 1500)
     }
-  }, [shareURL]);
+  }, [shareURL])
 
-  if (!show) return null;
+  if (!show) return null
 
-  return <>
-    <DynamicComponent
-      rootContainer={element}
-      customElementName={'max-ai-pdf-share-button-separator'}
-    >
-      <Box
-        sx={{
-          mx: 1,
-          my: 0.75,
-          width: '1px',
-          height: 20,
-          backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        }}
-        component="div"
-      />
-    </DynamicComponent>
-    <DynamicComponent
-      rootContainer={element}
-      customElementName={'max-ai-pdf-share-button'}
-    >
-      <CopyTooltipIconButton
-        copyText={shareURL}
-        copyToClipboardTooltip={
-          'client:pdf_ai_viewer__share_button__title'
-        }
-        icon={<ContextMenuIcon icon={'Link'} />}
-        sx={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: '8px',
-          minWidth: 'unset',
-          backgroundColor: '#666667',
-          color: '#FFFFFF',
-          mt: 0.375,
-          order: 0,
-          fontSize: 24,
-        }}
-        TooltipProps={{
-          placement: 'bottom',
-          arrow: true,
-        }}
-        PopperProps={{
-          disablePortal: true,
-          sx: {
-            whiteSpace: 'nowrap'
+  return (
+    <>
+      <DynamicComponent
+        rootContainer={element}
+        customElementName={'max-ai-pdf-share-button-separator'}
+      >
+        <Box
+          sx={{
+            mx: 1,
+            my: 0.75,
+            width: '1px',
+            height: 20,
+            backgroundColor: 'rgba(0, 0, 0, 0.3)',
+          }}
+          component="div"
+        />
+      </DynamicComponent>
+      <DynamicComponent
+        rootContainer={element}
+        customElementName={'max-ai-pdf-share-button'}
+      >
+        <CopyTooltipIconButton
+          copyText={shareURL}
+          copyToClipboardTooltip={'client:pdf_ai_viewer__share_button__title'}
+          icon={<ContextMenuIcon icon={'Link'} />}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderRadius: '8px',
+            minWidth: 'unset',
+            backgroundColor: '#666667',
+            color: '#FFFFFF',
+            mt: 0.375,
+            order: 0,
+            fontSize: 24,
+          }}
+          TooltipProps={{
+            placement: 'bottom',
+            arrow: true,
+          }}
+          PopperProps={
+            {
+              disablePortal: true,
+              sx: {
+                whiteSpace: 'nowrap',
+              },
+            } as any
           }
-        } as any}
-        size="small"
-      />
-    </DynamicComponent>
-  </>
+          size="small"
+        />
+      </DynamicComponent>
+    </>
+  )
 }
 
 const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
@@ -544,10 +585,10 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
   })
   useEffectOnce(() => {
     // 如果浏览器不兼容 CSS @container 用JS动画代替
-    if (!CSS.supports("container-type", "inline-size")) {
-      const handleResize = () => handleMaxAIPDFViewerResize();
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+    if (!CSS.supports('container-type', 'inline-size')) {
+      const handleResize = () => handleMaxAIPDFViewerResize()
+      window.addEventListener('resize', handleResize)
+      return () => window.removeEventListener('resize', handleResize)
     }
   })
   const boxRef = useRef<HTMLDivElement>(null)
@@ -561,7 +602,9 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
         customElementName={'maxai-pdf-ai-viewer-top-bar-button-group'}
       >
         <Stack direction={'row'} alignItems={'center'} gap={1} ref={boxRef}>
-          <MaxAIPDFAIViewerSwitchToDefaultButton rootElement={boxRef.current!} />
+          <MaxAIPDFAIViewerSwitchToDefaultButton
+            rootElement={boxRef.current!}
+          />
           {!isAccessPermission && (
             <LightTooltip
               PopperProps={{
@@ -636,9 +679,12 @@ const MaxAIPDFAIViewerTopBarButtonGroup: FC = () => {
   )
 }
 
-const detectBrowserDefaultPDFViewer = () => {
-  // 判断是不是chrome自带的pdf viewer
+const detectBrowserDefaultPDFViewer = async () => {
+  // 判断是不是chrome自带的pdf viewer,
+  // 并且 user setting 的 pdf viewer 时enabled 才自动打开 maxai 的 pdf
+  const settings = await getChromeExtensionDBStorage()
   if (
+    settings.userSettings?.pdf?.enabled &&
     document.querySelector('embed[name][type="application/pdf"][internalid]')
   ) {
     chromeExtensionClientOpenPage({

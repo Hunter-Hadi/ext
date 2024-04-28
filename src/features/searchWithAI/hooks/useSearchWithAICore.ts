@@ -10,6 +10,12 @@ import {
 } from '@/constants'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import { chromeExtensionArkoseTokenGenerator } from '@/features/chatgpt/core/chromeExtensionArkoseTokenGenerator'
+import {
+  ISearchWithAIProviderType,
+  SEARCH_WITH_AI_APP_NAME,
+  SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER,
+  SEARCH_WITH_AI_PROMPT,
+} from '@/features/searchWithAI/constants'
 import { IAIForSearchStatus } from '@/features/searchWithAI/types'
 import { setSearchWithAISettings } from '@/features/searchWithAI/utils/searchWithAISettings'
 import generatePromptAdditionalText from '@/features/shortcuts/actions/chat/ActionAskChatGPT/generatePromptAdditionalText'
@@ -21,11 +27,6 @@ import {
 import clientGetLiteChromeExtensionDBStorage from '@/utils/clientGetLiteChromeExtensionDBStorage'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
-import {
-  ISearchWithAIProviderType,
-  SEARCH_WITH_AI_APP_NAME,
-  SEARCH_WITH_AI_PROMPT,
-} from '../constants'
 import {
   AutoTriggerAskEnableAtom,
   ISearchWithAIConversationType,
@@ -219,8 +220,13 @@ const useSearchWithAICore = (question: string, siteName: ISearchPageKey) => {
         data: {
           name: 'SEARCH_WITH_AI',
           id: 'SEARCH_WITH_AI',
-          provider: searchWithAISettings.aiProvider,
+          conversationId,
           host: getCurrentDomainHost(),
+          aiProvide: searchWithAISettings.aiProvider,
+          aiModel:
+            SEARCH_WITH_AI_DEFAULT_MODEL_BY_PROVIDER[
+              searchWithAISettings.aiProvider
+            ],
         },
       })
     }

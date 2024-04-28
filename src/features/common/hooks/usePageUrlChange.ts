@@ -1,7 +1,9 @@
 import { useRef, useState } from 'react'
 
 export const usePageUrlChange = () => {
-  const [pageUrl, setPageUrl] = useState(window.location.href)
+  const [pageUrl, setPageUrl] = useState(() => {
+    return window.location.href
+  })
   const timerRef = useRef<any>(null)
   const pageUrlRef = useRef(pageUrl)
   pageUrlRef.current = pageUrl
@@ -15,7 +17,7 @@ export const usePageUrlChange = () => {
         return
       } else {
         console.log('usePageUrlChange 检测更新url', url)
-        setPageUrl(url) 
+        setPageUrl(url)
       }
     }, 1000)
   }

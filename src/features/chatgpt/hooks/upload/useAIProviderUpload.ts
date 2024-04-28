@@ -1,5 +1,5 @@
 import cloneDeep from 'lodash-es/cloneDeep'
-import { useCallback, useMemo } from 'react'
+import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { useRecoilState } from 'recoil'
 
 import { bingCompressedImageDataAsync } from '@/background/src/chat/BingChat/bing/utils'
@@ -8,10 +8,14 @@ import {
   serializeUploadFile,
 } from '@/background/utils/uplpadFileProcessHelper'
 import useAIProviderModels from '@/features/chatgpt/hooks/useAIProviderModels'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { ClientUploadedFilesState } from '@/features/chatgpt/store'
 import { IChatUploadFile } from '@/features/chatgpt/types'
 import { ContentScriptConnectionV2 } from '@/features/chatgpt/utils'
 import { maxAIFileUpload } from '@/features/shortcuts/utils/MaxAIFileUpload'
+import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
+import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
+import globalSnackbar from '@/utils/globalSnackbar'
 
 /**
  * AI Provider的上传文件处理
@@ -20,9 +24,16 @@ const port = new ContentScriptConnectionV2({
   runtime: 'client',
 })
 
+export type MaxAIAddOrUpdateUploadFile = (
+  fileId: string,
+  updateFileData: Partial<IChatUploadFile>,
+) => Promise<void>
+export const DEFAULT_UPLOAD_MAX_SIZE = 5 * 1024 * 1024 // 5MB
+
 const useAIProviderUpload = () => {
+  const { currentConversationId } = useClientConversation()
   const [clientUploadedState, setClientUploadedState] = useRecoilState(
-    ClientUploadedFilesState,
+    ClientUploadedFilesState(currentConversationId || ''),
   )
   const { files } = clientUploadedState
 
@@ -44,6 +55,65 @@ const useAIProviderUpload = () => {
     })
   }
 
+  /**
+   * 过滤超出大小限制的文件
+   * @param needUploadFiles 需要上传的文件
+   * @param options 配置项
+   * @param options.showErrorAlert 是否显示错误提示
+   * @returns 可以上传的文件
+   */
+  const getCanUploadFiles = async (
+    needUploadFiles: File[],
+    options?: {
+      showErrorAlert?: boolean
+    },
+  ) => {
+    const { showErrorAlert = true } = options || {}
+    const { maxCount = 1, maxFileSize = DEFAULT_UPLOAD_MAX_SIZE } =
+      AIProviderConfig || {}
+    const existFilesCount = files?.length || 0
+    const errorFileNames: string[] = []
+    // 过滤超出大小限制的文件, 只取前maxCount个
+    const canUploadFiles: File[] = needUploadFiles
+      .filter((file) => {
+        if (file.size < maxFileSize) {
+          return true
+        }
+        errorFileNames.push(file.name)
+        return false
+      })
+      .slice(0, maxCount)
+    // 如果有超出大小限制的文件，并且showErrorAlert为true，则弹出提示
+    if (errorFileNames.length > 0 && showErrorAlert) {
+      globalSnackbar.error(
+        `Upload failed: ${errorFileNames.join(
+          ',',
+        )} exceeds the ${filesizeFormatter(
+          maxFileSize,
+          2,
+        )} limit. Please select a smaller file.`,
+        {
+          anchorOrigin: {
+            vertical: 'top',
+            horizontal: 'right',
+          },
+        },
+      )
+    }
+
+    // 只取可以上传的文件
+    const needUploadFilesCount = canUploadFiles.length
+    // 先计算可以上传的文件数量
+    const canUploadCount = maxCount - existFilesCount
+    // 如果需要上传的文件数量大于可以上传的文件数量，则删除已存在的文件
+    if (needUploadFilesCount > canUploadCount) {
+      // 删除已存在的文件, 从第一个开始删除
+      const needDeleteCount = needUploadFilesCount - canUploadCount
+      await aiProviderRemoveFiles(files.slice(0, needDeleteCount))
+    }
+    return canUploadFiles
+  }
+
   const updateBlurDelayRef = (flag: boolean) => {
     setClientUploadedState((preSate) => {
       return {
@@ -52,6 +122,55 @@ const useAIProviderUpload = () => {
       }
     })
   }
+  const filesRef = useRef(files)
+  useEffect(() => {
+    filesRef.current = files
+  }, [files])
+  const addOrUpdateUploadFile = useCallback<MaxAIAddOrUpdateUploadFile>(
+    async (fileId: string, updateFileData: Partial<IChatUploadFile>) => {
+      let isFindUpdateFile = false
+      const newFiles = filesRef.current.map((item) => {
+        if (item.id === fileId) {
+          isFindUpdateFile = true
+          console.log(
+            'useAIProviderUpload [addOrUpdateUploadFile] updated',
+            updateFileData,
+          )
+          return mergeWithObject([item, updateFileData])
+        }
+        return item
+      })
+      if (!isFindUpdateFile && updateFileData.id) {
+        console.log(
+          'useAIProviderUpload [addOrUpdateUploadFile] added',
+          updateFileData,
+        )
+        newFiles.push(updateFileData as IChatUploadFile)
+        await port.postMessage({
+          event: 'Client_chatUploadFiles',
+          data: {
+            conversationId: currentConversationId,
+            files: [updateFileData as IChatUploadFile],
+          },
+        })
+        return
+      }
+      setClientUploadedState((prevState) => {
+        return {
+          ...prevState,
+          files: newFiles,
+        }
+      })
+      await port.postMessage({
+        event: 'Client_chatUploadFilesChange',
+        data: {
+          conversationId: currentConversationId,
+          files: newFiles,
+        },
+      })
+    },
+    [currentConversationId],
+  )
 
   // 上传文件
   const aiProviderUploadFiles = useCallback(
@@ -59,7 +178,9 @@ const useAIProviderUpload = () => {
       // 获取上传令牌
       // const { data: aiProviderUploadFileToken } = await port.postMessage({
       //   event: 'Client_chatGetUploadFileToken',
-      //   data: {},
+      //   data: {
+      //     conversationId: currentConversationId
+      //   },
       // })
       updateBlurDelayRef(true)
       const uploadingFiles = cloneDeep(newUploadFiles).map((item) => {
@@ -73,6 +194,7 @@ const useAIProviderUpload = () => {
         event: 'Client_chatUploadFiles',
         data: {
           files: uploadingFiles,
+          conversationId: currentConversationId,
         },
       })
       setFiles(uploadingFiles, 'add')
@@ -99,6 +221,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFilesChange',
               data: {
+                conversationId: currentConversationId,
                 files: newFiles,
               },
             })
@@ -139,6 +262,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFilesChange',
               data: {
+                conversationId: currentConversationId,
                 files: newFiles,
               },
             })
@@ -158,6 +282,7 @@ const useAIProviderUpload = () => {
             await port.postMessage({
               event: 'Client_chatUploadFilesChange',
               data: {
+                conversationId: currentConversationId,
                 files: newFiles,
               },
             })
@@ -168,18 +293,19 @@ const useAIProviderUpload = () => {
         updateBlurDelayRef(false)
       }, 1000)
     },
-    [AIProviderConfig, currentAIProvider],
+    [AIProviderConfig, currentAIProvider, currentConversationId],
   )
   const aiProviderRemoveFiles = useCallback(
     async (files: IChatUploadFile[]) => {
       const result = await port.postMessage({
         event: 'Client_chatRemoveFiles',
         data: {
+          conversationId: currentConversationId,
           files,
         },
       })
       console.log('useAIProviderUpload [Client_chatRemoveFiles]', result.data)
-      setFiles(result.data || [])
+      setFiles(Array.isArray(result.data) ? result.data : [])
       return result.success
     },
     [AIProviderConfig],
@@ -187,9 +313,11 @@ const useAIProviderUpload = () => {
   const aiProviderRemoveAllFiles = useCallback(async () => {
     const result = await port.postMessage({
       event: 'Client_chatClearFiles',
-      data: {},
+      data: {
+        conversationId: currentConversationId,
+      },
     })
-    setFiles(result.data || [])
+    setFiles(Array.isArray(result.data) ? result.data : [])
     return result.success
   }, [AIProviderConfig])
   const aiProviderUploadingTooltip = useMemo(() => {
@@ -207,6 +335,8 @@ const useAIProviderUpload = () => {
     aiProviderUploadFiles,
     aiProviderRemoveFiles,
     aiProviderRemoveAllFiles,
+    addOrUpdateUploadFile,
+    getCanUploadFiles,
     files,
   }
 }

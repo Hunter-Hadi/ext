@@ -8,13 +8,13 @@ import { ContentScriptConnectionV2 } from '@/features/chatgpt'
 import useAIProviderUpload from '@/features/chatgpt/hooks/upload/useAIProviderUpload'
 import { useAIProviderModelsMap } from '@/features/chatgpt/hooks/useAIProviderModels'
 import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
-import { clientGetConversation } from '@/features/chatgpt/hooks/useInitClientConversationMap'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import {
   IAIProviderModel,
   IChatUploadFile,
   IUserChatMessage,
 } from '@/features/chatgpt/types'
+import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
 import { clientChatConversationModifyChatMessages } from '@/features/chatgpt/utils/clientChatConversation'
 import { useShortCutsEngine } from '@/features/shortcuts/hooks/useShortCutsEngine'
 import { IShortCutsParameter } from '@/features/shortcuts/hooks/useShortCutsParameters'
@@ -22,7 +22,7 @@ import { ISetActionsType } from '@/features/shortcuts/types/Action'
 import ActionIdentifier from '@/features/shortcuts/types/ActionIdentifier'
 import {
   calculateMaxHistoryQuestionResponseTokens,
-  getTextTokens,
+  getTextTokensWithRequestIdle,
 } from '@/features/shortcuts/utils/tokenizer'
 import { getInputMediator } from '@/store/InputMediator'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
@@ -37,7 +37,7 @@ const useClientChat = () => {
   const { currentUserPlan } = useUserInfo()
   const { smoothConversationLoading } = useSmoothConversationLoading()
   const {
-    shortCutsEngineRef,
+    shortCutsEngine,
     setShortCuts,
     runShortCuts,
     stopShortCuts,
@@ -46,79 +46,111 @@ const useClientChat = () => {
   const { aiProviderRemoveAllFiles } = useAIProviderUpload()
   const { AI_PROVIDER_MODEL_MAP } = useAIProviderModelsMap()
   const runShortCutsRef = useRef(runShortCuts)
+  const setShortCutsRef = useRef(setShortCuts)
   const {
     currentConversationIdRef,
-    createConversation,
     pushPricingHookMessage,
     hideConversationLoading,
     showConversationLoading,
     updateConversation,
     getCurrentConversation,
-    getConversation,
+    updateClientConversationLoading,
   } = useClientConversation()
   useEffect(() => {
     runShortCutsRef.current = runShortCuts
   }, [runShortCuts])
-  const askAIQuestion = async (question: IAskAIQuestion) => {
+  useEffect(() => {
+    setShortCutsRef.current = setShortCuts
+  }, [setShortCuts])
+  // 获取attachments
+  const getAttachments = async (conversationId?: string) => {
+    const port = new ContentScriptConnectionV2({
+      runtime: 'client',
+    })
+    const attachments: IChatUploadFile[] =
+      (
+        await port.postMessage({
+          event: 'Client_chatGetFiles',
+          data: {
+            conversationId:
+              conversationId ||
+              currentConversationIdRef.current ||
+              shortCutsEngine!.conversationId,
+          },
+        })
+      )?.data || []
+    return attachments
+  }
+
+  const checkAttachments = async (files?: IChatUploadFile[]) => {
     // 1.在所有对话之前，确保先有conversationId
-    let conversationId = currentConversationIdRef.current
-    if (conversationId && (await getConversation(conversationId))?.id) {
-      // 如果有conversationId && 如果conversationId存在
-    } else {
-      conversationId = await createConversation()
-    }
-    if (!question.meta?.attachments) {
-      // 获取attachments
-      const port = new ContentScriptConnectionV2({
-        runtime: 'client',
-      })
-      const attachments: IChatUploadFile[] =
-        (
-          await port.postMessage({
-            event: 'Client_chatGetFiles',
-            data: {},
+    const conversationId = shortCutsEngine!.conversationId
+    const attachments = files || (await getAttachments(conversationId))
+    if (attachments.length > 0) {
+      // 如果有文件类型的附件，需要计算文件内容tokens的长度
+      const extractText = attachments
+        .map((attachment) => attachment?.extractedContent || '')
+        .join('')
+      if (extractText) {
+        // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
+        const conversationMaxTokens =
+          (await getCurrentConversation())?.meta.maxTokens || 4096
+        const maxAttachmentTokens =
+          conversationMaxTokens -
+          calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
+        const { isLimit: attachmentIsLimit } =
+          await getTextTokensWithRequestIdle(extractText, {
+            tokenLimit: maxAttachmentTokens,
           })
-        )?.data || []
-      if (attachments.length > 0) {
-        // 如果有文件类型的附件，需要计算文件内容tokens的长度
-        const extractText = attachments
-          .map((attachment) => attachment?.extractedContent || '')
-          .join('')
-        if (extractText) {
-          // 因为我们没有对attachment的extractedContent进行限制，所以这里需要计算tokens的长度
-          const conversationMaxTokens =
-            (await getCurrentConversation())?.meta.maxTokens || 4096
-          const maxAttachmentTokens =
-            conversationMaxTokens -
-            calculateMaxHistoryQuestionResponseTokens(conversationMaxTokens)
-          if (getTextTokens(extractText).length > maxAttachmentTokens) {
-            // 如果tokens长度超过限制
-            await clientChatConversationModifyChatMessages(
-              'add',
-              conversationId,
-              0,
-              [
-                {
-                  type: 'system',
-                  text: t(
-                    `client:provider__chatgpt__upload_file_error__too_long__text`,
-                  ),
-                  messageId: uuidV4(),
-                  conversationId,
-                  meta: {
-                    status: 'error',
-                  },
+        if (attachmentIsLimit) {
+          // 如果tokens长度超过限制
+          await clientChatConversationModifyChatMessages(
+            'add',
+            conversationId,
+            0,
+            [
+              {
+                type: 'system',
+                text: t(
+                  `client:provider__chatgpt__upload_file_error__too_long__text`,
+                ),
+                messageId: uuidV4(),
+                conversationId,
+                meta: {
+                  status: 'error',
                 },
-              ],
-            )
-            await aiProviderRemoveAllFiles()
-            getInputMediator('chatBoxInputMediator').updateInputValue('')
-            getInputMediator('floatingMenuInputMediator').updateInputValue('')
-            return
-          }
+              },
+            ],
+          )
+          await aiProviderRemoveAllFiles()
+          getInputMediator('chatBoxInputMediator').updateInputValue('')
+          getInputMediator('floatingMenuInputMediator').updateInputValue('')
+          return false
+        }
+      }
+    }
+    return true
+  }
+
+  const askAIQuestion = async (
+    question: IAskAIQuestion,
+    options?: {
+      beforeActions?: ISetActionsType
+      afterActions?: ISetActionsType
+    },
+  ) => {
+    await updateClientConversationLoading(true)
+    const { beforeActions = [], afterActions = [] } = options || {}
+    if (!question.meta?.attachments) {
+      const attachments = await getAttachments(question.conversationId)
+      if (attachments.length > 0) {
+        if (!(await checkAttachments(attachments))) {
+          await updateClientConversationLoading(false)
+          return
         }
       } else if (question.text.trim() === '') {
         // 如果没有文本 && 没有附件
+        await updateClientConversationLoading(false)
         return
       }
       question = mergeWithObject([
@@ -135,6 +167,7 @@ const useClientChat = () => {
       question.meta.includeHistory = false
     }
     await askAIWIthShortcuts([
+      ...beforeActions,
       {
         type: 'ASK_CHATGPT',
         parameters: {
@@ -142,8 +175,10 @@ const useClientChat = () => {
           isEnabledDetectAIResponseLanguage: false,
         },
       },
+      ...afterActions,
     ])
   }
+
   /**
    * 问AI问题
    * @param actions
@@ -166,12 +201,7 @@ const useClientChat = () => {
       isOpenSidebarChatBox = false,
     } = options || {}
     // 1.在所有对话之前，确保先有conversationId
-    let conversationId = currentConversationIdRef.current
-    if (conversationId && (await getConversation(conversationId))?.id) {
-      // 如果有conversationId && 如果conversationId存在
-    } else {
-      conversationId = await createConversation()
-    }
+    const conversationId = shortCutsEngine!.conversationId
     // // 2.付费卡点判断
     // // PDF付费卡点
     // if (
@@ -209,6 +239,7 @@ const useClientChat = () => {
           // 如果当前AIModel有权限限制
           // 则提示用户付费
           await pushPricingHookMessage(currentModelDetail.permission.sceneType)
+          await updateClientConversationLoading(false)
           return
         }
       }
@@ -223,8 +254,9 @@ const useClientChat = () => {
       // 4. 保存最后一次运行的shortcuts
       await saveLastRunShortcuts(conversationId, actions, overwriteParameters)
     }
+    await updateClientConversationLoading(false)
     // 5. 运行shortcuts
-    setShortCuts(actions)
+    setShortCutsRef.current(actions)
     await runShortCutsRef.current(isOpenSidebarChatBox, overwriteParameters)
   }
   /**
@@ -396,12 +428,13 @@ const useClientChat = () => {
   }
 
   return {
-    shortCutsEngineRef,
+    shortCutsEngine,
     askAIQuestion,
     askAIWIthShortcuts,
     regenerate,
     stopGenerate,
     continueChat,
+    checkAttachments,
     loading: smoothConversationLoading,
   }
 }

@@ -67,6 +67,7 @@ const SystemVariableToneSelect: FC<toneSelectProps> = (props) => {
   )
   return (
     <Autocomplete
+      disablePortal
       componentsProps={{
         popper: {
           style: {
@@ -79,6 +80,13 @@ const SystemVariableToneSelect: FC<toneSelectProps> = (props) => {
       value={value}
       size={'small'}
       sx={{ width: 160, ...sx }}
+      slotProps={{
+        paper: {
+          sx: {
+            fontSize: 16,
+          },
+        },
+      }}
       autoHighlight
       getOptionLabel={(option) => option.label}
       options={TONE_OPTIONS}

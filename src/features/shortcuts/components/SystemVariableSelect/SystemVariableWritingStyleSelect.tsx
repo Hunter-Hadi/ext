@@ -59,6 +59,7 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
   )
   return (
     <Autocomplete
+      disablePortal
       componentsProps={{
         popper: {
           style: {
@@ -71,6 +72,13 @@ const SystemVariableWritingStyleSelect: FC<SystemVariableSelectProps> = (
       value={value}
       size={'small'}
       sx={{ width: 160, ...sx }}
+      slotProps={{
+        paper: {
+          sx: {
+            fontSize: 16,
+          },
+        },
+      }}
       autoHighlight
       getOptionLabel={(option) => option.label}
       options={WRITING_STYLES_OPTIONS}

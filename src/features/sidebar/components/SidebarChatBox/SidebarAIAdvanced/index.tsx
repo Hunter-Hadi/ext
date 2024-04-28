@@ -7,12 +7,12 @@ import { SxProps } from '@mui/material/styles'
 import React, { FC } from 'react'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
-import { getMaxAISidebarRootElement } from '@/features/common/utils'
 import ArtAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/ArtAdvanced'
 import ChatAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/ChatAdvanced'
-import SummaryAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SummaryAdvanced'
 import SearchAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SearchAdvanced'
+import SummaryAdvanced from '@/features/sidebar/components/SidebarChatBox/SidebarAIAdvanced/SummaryAdvanced'
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
+import { getMaxAISidebarRootElement } from '@/utils'
 
 /**
  * AI设置
@@ -82,9 +82,10 @@ const SidebarAIAdvanced: FC<{
       >
         <ClickAwayListener
           onClickAway={(event) => {
-            const MaxAIAIAdvancedCard = getMaxAISidebarRootElement()?.querySelector(
-              '#MaxAIAIAdvancedCard',
-            ) as HTMLElement
+            const MaxAIAIAdvancedCard =
+              getMaxAISidebarRootElement()?.querySelector(
+                '#MaxAIAIAdvancedCard',
+              ) as HTMLElement
             if (MaxAIAIAdvancedCard) {
               const rect = MaxAIAIAdvancedCard.getBoundingClientRect()
               const x = (event as MouseEvent).clientX

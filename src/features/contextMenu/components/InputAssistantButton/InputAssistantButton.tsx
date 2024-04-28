@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography'
 import cloneDeep from 'lodash-es/cloneDeep'
 import React, { FC, useEffect, useMemo, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useRecoilValue } from 'recoil'
 
 import {
   ContextMenuIcon,
@@ -17,9 +16,9 @@ import {
 import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { isProduction } from '@/constants'
+import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { MAXAI_MINIMIZE_CONTAINER_ID } from '@/features/common/constants'
 import InputAssistantButtonContextMenu from '@/features/contextMenu/components/InputAssistantButton/InputAssistantButtonContextMenu'
-import { ClientWritingMessageState } from '@/features/sidebar/store'
 
 import { type IInputAssistantButtonObserverData } from './InputAssistantButtonManager'
 
@@ -67,30 +66,23 @@ interface InputAssistantButtonProps {
   observerData: IInputAssistantButtonObserverData
 }
 const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
-  const {
-    observerData,
-    placement,
-  } = props
+  const { observerData, placement } = props
   const {
     id: rootId,
     config: buttonConfig,
-    buttonGroup,// 按钮组
-    renderRootElement: root,
+    buttonGroup, // 按钮组
     shadowRootElement: shadowRoot,
-  } = observerData;
+  } = observerData
   const {
-    InputAssistantBoxSx,// 按钮容器样式
-    DropdownButtonStyle,// 按钮样式
-    CTAButtonStyle,// 按钮样式
-  } = buttonConfig;
+    InputAssistantBoxSx, // 按钮容器样式
+    DropdownButtonStyle, // 按钮样式
+    CTAButtonStyle, // 按钮样式
+  } = buttonConfig
   const emotionCacheRef = useRef<EmotionCache | null>(null)
   const { t } = useTranslation(['client'])
-  const [
-    contextMenuContainer,
-    setContextMenuContainer,
-  ] = useState<HTMLElement | null>(null)
-  const { loading } = useRecoilValue(ClientWritingMessageState)
-  // const testloading = true
+  const [contextMenuContainer, setContextMenuContainer] =
+    useState<HTMLElement | null>(null)
+  const { smoothConversationLoading } = useSmoothConversationLoading()
   const [isCTAHover, setIsCTAHover] = useState(false)
   const [isBoxHover, setIsBoxHover] = useState(false)
   const memoButtonSx = useMemo<{
@@ -103,14 +95,17 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
     let dropdownButtonSx = {}
     buttonGroup.forEach((button) => {
       if (button.CTAButtonStyle) {
-        cloneCTAButtonStyle = Object.assign(cloneCTAButtonStyle, {
+        cloneCTAButtonStyle = Object.assign(cloneCTAButtonStyle || {}, {
           ...button.CTAButtonStyle,
         })
       }
       if (button.DropdownButtonStyle) {
-        cloneDropdownButtonStyle = Object.assign(cloneDropdownButtonStyle, {
-          ...button.DropdownButtonStyle,
-        })
+        cloneDropdownButtonStyle = Object.assign(
+          cloneDropdownButtonStyle || {},
+          {
+            ...button.DropdownButtonStyle,
+          },
+        )
       }
     })
     if (ctaButtonSx) {
@@ -242,11 +237,12 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[0].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
+          shadowRoot={shadowRoot}
           onSelectionEffect={
             buttonGroup[0]?.onSelectionEffect &&
             (() => buttonGroup[0].onSelectionEffect!(observerData))
           }
-          disabled={loading}
+          disabled={smoothConversationLoading}
         >
           <Box style={{ width: '100%', height: 'inherit' }} component="div">
             <TextOnlyTooltip
@@ -255,7 +251,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               PopperProps={{
                 container: contextMenuContainer as HTMLElement,
               }}
-              title={t(buttonGroup[0].tooltip as any)}
+              title={
+                buttonGroup[0]?.tooltip ? t(buttonGroup[0].tooltip as any) : ''
+              }
             >
               <div
                 style={{
@@ -285,10 +283,10 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     <Button
                       id={`maxAIInputAssistantCtaButton${rootId}`}
                       data-testid={'maxai-input-assistant-cta-button'}
-                      disabled={loading}
+                      disabled={smoothConversationLoading}
                       sx={memoButtonSx.ctaButtonSx}
                     >
-                      {loading ? (
+                      {smoothConversationLoading ? (
                         <CircularProgress
                           size={
                             (memoButtonSx.ctaButtonSx as any)?.iconSize || 16
@@ -306,13 +304,17 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                           }}
                         />
                       )}
-                      {
-                        buttonGroup[0].displayText && (
-                          <Typography component={'span'} fontSize={'14px'} sx={buttonGroup[0].displayTextSx}>
-                            {typeof buttonGroup[0].displayText === 'function' ? buttonGroup[0].displayText(t) : buttonGroup[0].displayText}
-                          </Typography>
-                        )
-                      }
+                      {buttonGroup[0].displayText && (
+                        <Typography
+                          component={'span'}
+                          fontSize={'14px'}
+                          sx={buttonGroup[0].displayTextSx}
+                        >
+                          {typeof buttonGroup[0].displayText === 'function'
+                            ? buttonGroup[0].displayText(t)
+                            : buttonGroup[0].displayText}
+                        </Typography>
+                      )}
                     </Button>
                     <Box
                       position={'absolute'}
@@ -337,7 +339,8 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
             buttonGroup[1].permissionWrapperCardSceneType
           }
           root={contextMenuContainer as HTMLElement}
-          disabled={loading}
+          shadowRoot={shadowRoot}
+          disabled={smoothConversationLoading}
         >
           <Box>
             <TextOnlyTooltip
@@ -346,7 +349,9 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
               PopperProps={{
                 container: contextMenuContainer as HTMLElement,
               }}
-              title={t(buttonGroup[1].tooltip as any)}
+              title={
+                buttonGroup[1]?.tooltip ? t(buttonGroup[1].tooltip as any) : ''
+              }
             >
               <div
                 style={{
@@ -362,15 +367,16 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                       position={'absolute'}
                       top={`-${DropdownButtonStyle?.transparentHeight || 0}px`}
                       width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />
                     <Button
                       id={`maxAIInputAssistantDropdownButton${rootId}`}
                       data-testid={'maxai-input-assistant-dropdown-button'}
-                      disabled={loading}
+                      disabled={smoothConversationLoading}
                       sx={memoButtonSx.dropdownButtonSx}
                     >
                       <ContextMenuIcon
@@ -383,11 +389,13 @@ const InputAssistantButton: FC<InputAssistantButtonProps> = (props) => {
                     </Button>
                     <Box
                       position={'absolute'}
-                      bottom={`-${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      bottom={`-${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       width={'100%'}
-                      height={`${DropdownButtonStyle?.transparentHeight || 0
-                        }px`}
+                      height={`${
+                        DropdownButtonStyle?.transparentHeight || 0
+                      }px`}
                       bgcolor={isProduction ? 'transparent' : 'red'}
                       zIndex={2000001}
                     />

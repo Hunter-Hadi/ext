@@ -1,8 +1,8 @@
 import ChatMessagesContext, {
-  IChatMessageData,
+  type IChatMessageData,
 } from '@/features/shortcuts/utils/chatApp/ChatMessagesContext'
-import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 import { findLongestCommonSubstring } from '@/features/shortcuts/utils/chatApp/utils'
+import { findSelectorParent } from '@/utils/dataHelper/elementHelper'
 
 type IMessengerMediaType = 'Image' | 'GIF' | 'Video' | 'Document' | 'Sticker'
 type IMessengerChatMessageData = IChatMessageData & {
@@ -238,6 +238,7 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
     if (chatTextArea) {
       if (quotedMention) {
+        // eslint-disable-next-line prefer-const
         let [quotedMessageUserBox, quotedMessageContentBox] = Array.from(
           quotedMention.querySelectorAll<HTMLElement>('span[dir]'),
         )

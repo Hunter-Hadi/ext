@@ -14,7 +14,7 @@ const SearchWithAILogo: FC = () => {
   const { isPayingUser } = useUserInfo()
 
   const nameMap = {
-    maxai: isPayingUser ? 'Search with MaxAI' : 'MaxAI',
+    maxai: 'MaxAI',
     webchatgpt: 'WebChatGPT',
   }
 

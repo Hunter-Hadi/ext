@@ -1176,15 +1176,16 @@ const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[
   [
     {
       enable: (rootElement) => {
-        const chatMessagesNodeList = Array.from(
-          findSelectorParent(
-            '[data-qa="slack_kit_list"][role="list"]',
-            rootElement,
-          )?.querySelectorAll<HTMLElement>('[data-qa="message_container"]') ||
-            [],
-        )
+        // const chatMessagesNodeList = Array.from(
+        //   findSelectorParent(
+        //     '[data-qa="slack_kit_list"][role="list"]',
+        //     rootElement,
+        //   )?.querySelectorAll<HTMLElement>('[data-qa="message_container"]') ||
+        //     [],
+        // )
 
-        return chatMessagesNodeList.length > 0
+        // return chatMessagesNodeList.length > 0
+        return true
       },
       rootSelectors: [
         '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
@@ -1261,11 +1262,12 @@ const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
   [
     {
       enable: (rootElement) => {
-        return (
-          document.querySelectorAll(
-            '#main [role="application"] [role="row"] > [data-id] .message-in',
-          ).length > 0
-        )
+        // return (
+        //   document.querySelectorAll(
+        //     '#main [role="application"] [role="row"] > [data-id] .message-in',
+        //   ).length > 0
+        // )
+        return true
       },
       rootSelectors: [
         'footer .copyable-area div:has(> .lexical-rich-text-input)',
@@ -1327,14 +1329,15 @@ const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
   [
     {
       enable: (rootElement) => {
-        return Boolean(
-          findParentEqualSelector(
-            '.chats-container > .chat',
-            rootElement,
-          )?.querySelector(
-            '.bubbles .scrollable > .bubbles-inner .bubbles-date-group .bubbles-group .bubble[data-peer-id].is-in',
-          ),
-        )
+        // return Boolean(
+        //   findParentEqualSelector(
+        //     '.chats-container > .chat',
+        //     rootElement,
+        //   )?.querySelector(
+        //     '.bubbles .scrollable > .bubbles-inner .bubbles-date-group .bubbles-group .bubble[data-peer-id].is-in',
+        //   ),
+        // )
+        return true
       },
       rootSelectors: ['.input-message-container'],
       rootParentDeep: 0,
@@ -1387,14 +1390,15 @@ const MessengerWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupCon
   [
     {
       enable: (rootElement) => {
-        return Array.from(
-          document.querySelectorAll(
-            '[role="main"] [role="grid"][aria-label] div[class]:has(+ [role="gridcell"]) [data-scope="messages_table"][role] [role] > [role] + [role="none"]',
-          ),
-        ).some(
-          (gridCellsBox) =>
-            getComputedStyle(gridCellsBox).flexDirection === 'row',
-        )
+        // return Array.from(
+        //   document.querySelectorAll(
+        //     '[role="main"] [role="grid"][aria-label] div[class]:has(+ [role="gridcell"]) [data-scope="messages_table"][role] [role] > [role] + [role="none"]',
+        //   ),
+        // ).some(
+        //   (gridCellsBox) =>
+        //     getComputedStyle(gridCellsBox).flexDirection === 'row',
+        // )
+        return true
       },
       rootSelectors: [
         '[role="main"] [role="group"][aria-label] [id] + div div:has(div > [role="textbox"][contenteditable][aria-label][data-lexical-editor])',

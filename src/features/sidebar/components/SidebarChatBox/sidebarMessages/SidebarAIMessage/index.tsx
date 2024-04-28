@@ -36,11 +36,12 @@ interface IProps {
   liteMode?: boolean
   loading?: boolean
 }
+
 const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const { t } = useTranslation(['client'])
   const { message, isDarkMode, liteMode = false, loading = false } = props
 
-  const isIncludeHistory =
+  const isContextCleared =
     message.originalMessage?.metadata?.includeHistory === false
   const isTriggeredContentReview =
     message.originalMessage?.metadata?.isTriggeredContentReview === true
@@ -119,10 +120,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
   const isWaitFirstAIResponseText = useMemo(() => {
     return !renderData.answer
   }, [renderData.answer])
-
   return (
     <Box component={'div'} className={'chat-message--AI'}>
-      {!isIncludeHistory && !isTriggeredContentReview && props.order !== 1 && (
+      {isContextCleared && !isTriggeredContentReview && props.order !== 1 && (
         <Divider sx={{ mb: 2 }}>
           <Typography color={'text.secondary'} fontSize={'12px'}>
             {t('client:sidebar__conversation__message__context_cleared')}

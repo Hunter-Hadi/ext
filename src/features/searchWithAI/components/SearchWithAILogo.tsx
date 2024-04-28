@@ -33,7 +33,7 @@ const SearchWithAILogo: FC = () => {
       />
       <Typography
         component="h6"
-        fontSize={'13px'}
+        fontSize={'16px'}
         fontWeight={800}
         color="inherit"
       >

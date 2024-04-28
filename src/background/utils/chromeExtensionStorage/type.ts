@@ -8,10 +8,14 @@ import { ISidebarConversationType } from '@/features/sidebar/types'
 import { SummaryParamsPromptType } from '@/features/sidebar/utils/pageSummaryNavPrompt'
 
 export type IChromeExtensionButtonSettingKey =
+  // Context menu
+  | 'textSelectPopupButton'
+  // Instant reply
   | 'inputAssistantComposeReplyButton'
   | 'inputAssistantComposeNewButton'
   | 'inputAssistantRefineDraftButton'
-  | 'textSelectPopupButton'
+  // Summary
+  | 'sidebarSummaryButton'
 
 export type IChatGPTModelType = {
   slug: string

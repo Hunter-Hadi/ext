@@ -3,6 +3,7 @@ import cloneDeep from 'lodash-es/cloneDeep'
 import groupBy from 'lodash-es/groupBy'
 import React, {
   type FC,
+  memo,
   useCallback,
   useEffect,
   useMemo,
@@ -37,9 +38,8 @@ import SettingPromptsMenuPanel, {
 import SettingPromptsViewSource from '@/pages/settings/pages/prompts/components/SettingPromptsMenuPanel/components/SettingPromptsViewSource'
 import SettingPromptsPositionSwitch from '@/pages/settings/pages/prompts/components/SettingPromptsPositionSwitch'
 import SettingPromptsUpdater from '@/pages/settings/pages/prompts/components/SettingPromptsUpdater'
+import ContextMenuMockTextarea from "@/pages/settings/pages/prompts/SettingPromptsContextMenuCard/ContextMenuMockTextarea"
 import { SettingPromptsEditButtonKeyAtom } from '@/pages/settings/pages/prompts/store'
-
-import ContextMenuMockTextarea from './ContextMenuMockTextarea'
 
 const saveTreeData = async (
   key: IChromeExtensionButtonSettingKey,
@@ -65,9 +65,9 @@ const saveTreeData = async (
   }
 }
 
-const buttonSettingKeys = new Set(['textSelectPopupButton'])
+const buttonSettingKeys = new Set(['sidebarSummaryButton'])
 
-const SettingPromptsContextMenuCard: FC = () => {
+const SettingPrompsSummaryCard: FC = () => {
   const [editButtonKey, setEditButtonKey] = useRecoilState(
     SettingPromptsEditButtonKeyAtom,
   )
@@ -345,4 +345,4 @@ const SettingPromptsContextMenuCard: FC = () => {
   )
 }
 
-export default SettingPromptsContextMenuCard
+export default memo(SettingPrompsSummaryCard)

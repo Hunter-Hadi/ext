@@ -308,17 +308,20 @@ class FavoriteMediatorFactory {
     IChromeExtensionButtonSettingKey,
     FavoriteMediator
   > = {
-    textSelectPopupButton: new FavoriteMediator('textSelectPopupButton'),
-    inputAssistantComposeNewButton: new FavoriteMediator(
-      'inputAssistantComposeNewButton',
-    ),
-    inputAssistantComposeReplyButton: new FavoriteMediator(
-      'inputAssistantComposeReplyButton',
-    ),
-    inputAssistantRefineDraftButton: new FavoriteMediator(
-      'inputAssistantRefineDraftButton',
-    ),
-  }
+      textSelectPopupButton: new FavoriteMediator('textSelectPopupButton'),
+      inputAssistantComposeNewButton: new FavoriteMediator(
+        'inputAssistantComposeNewButton',
+      ),
+      inputAssistantComposeReplyButton: new FavoriteMediator(
+        'inputAssistantComposeReplyButton',
+      ),
+      inputAssistantRefineDraftButton: new FavoriteMediator(
+        'inputAssistantRefineDraftButton',
+      ),
+      sidebarSummaryButton: new FavoriteMediator(
+        'sidebarSummaryButton',
+      ),
+    }
   public static getMediator(
     mediatorName: IChromeExtensionButtonSettingKey,
   ): FavoriteMediator {

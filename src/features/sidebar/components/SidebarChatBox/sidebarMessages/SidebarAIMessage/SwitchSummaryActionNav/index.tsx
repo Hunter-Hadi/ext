@@ -38,7 +38,7 @@ export const SwitchSummaryActionNav: FC<IProps> = ({ message, loading }) => {
   >(undefined)
   const { askAIWIthShortcuts } = useClientChat()
   const summaryType = useMemo(() => getPageSummaryType(), [])
-  const { contextMenuList } = useContextMenuList('textSelectPopupButton', '', false)
+  const { contextMenuList } = useContextMenuList('sidebarSummaryButton', '', false)
   const updateCurrentPageSummaryKey = useSetRecoilState(
     SidebarPageSummaryNavKeyState,
   )

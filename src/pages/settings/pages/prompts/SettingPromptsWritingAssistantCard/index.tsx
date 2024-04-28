@@ -37,6 +37,12 @@ import { getChromeExtensionAssetsURL } from '@/utils/imageHelper'
 
 import InputAssistantButtonExhibit from './InputAssistantButtonExhibit'
 
+const buttonSettingKeys = new Set([
+  'inputAssistantComposeReplyButton',
+  'inputAssistantRefineDraftButton',
+  'inputAssistantComposeNewButton',
+])
+
 const SettingPromptsWritingAssistantCard: FC = () => {
   const { syncLocalToServer } = useSyncSettingsChecker()
   const { t } = useTranslation(['settings'])
@@ -184,14 +190,8 @@ const SettingPromptsWritingAssistantCard: FC = () => {
   }
 
   useEffect(() => {
-    if (
-      ![
-        'inputAssistantComposeReplyButton',
-        'inputAssistantRefineDraftButton',
-        'inputAssistantComposeNewButton',
-      ].includes(editButtonKey!)
-    ) {
-      setEditButtonKey('inputAssistantComposeReplyButton')
+    if (!buttonSettingKeys.has(editButtonKey!)) {
+      setEditButtonKey(buttonSettingKeys.values().next().value)
     }
     return () => setEditButtonKey(null)
   }, [])
@@ -309,7 +309,7 @@ const SettingPromptsWritingAssistantCard: FC = () => {
         <Stack
           height={0}
           flex={1}
-          // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
+        // sx={{ border: '1px solid rgba(0, 0, 0, 0.08)' }}
         >
           <Stack height={'100%'}>
             <DevContent>

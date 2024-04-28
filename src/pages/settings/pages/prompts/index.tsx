@@ -17,6 +17,7 @@ import SettingPromptsPageHeader, {
   type SettingPromptsPageHeaderTabKey,
 } from './components/SettingPromptsPageHeader'
 import SettingPromptsContextMenuCard from './SettingPromptsContextMenuCard'
+import SettingPromptsSummaryCard from './SettingPromptsSummaryCard'
 import SettingPromptsWritingAssistantCard from './SettingPromptsWritingAssistantCard'
 
 const SettingsPromptPageCardLayout = styled(({ ...props }: StackProps) => (
@@ -40,10 +41,10 @@ const SettingsPromptsPage: FC = () => {
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search)
     switch (searchParams.get('tab')) {
-      case 'writing-assistant':
-        setActiveTab('WRITING_ASSISTANT')
+      case 'instant-reply':
+        setActiveTab('INSTANT_REPLY')
         break
-      // case 'summary': setActiveTab('SUMMARY'); break;
+      case 'summary': setActiveTab('SUMMARY'); break;
       // case 'search': setActiveTab('SEARCH'); break;
       case 'context-menu':
       default:
@@ -96,8 +97,11 @@ const SettingsPromptsPage: FC = () => {
       />
       <SettingsPromptPageCardLayout>
         {activeTab === 'CONTEXT_MENU' && <SettingPromptsContextMenuCard />}
-        {activeTab === 'WRITING_ASSISTANT' && (
+        {activeTab === 'INSTANT_REPLY' && (
           <SettingPromptsWritingAssistantCard />
+        )}
+        {activeTab === 'SUMMARY' && (
+          <SettingPromptsSummaryCard />
         )}
       </SettingsPromptPageCardLayout>
     </SettingsFeatureCardLayout>

@@ -1,13 +1,15 @@
+import AddOutlinedIcon from '@mui/icons-material/AddOutlined'
 import Button from '@mui/material/Button'
 import CircularProgress from '@mui/material/CircularProgress'
 import Divider from '@mui/material/Divider';
-import ListItemIcon from '@mui/material/ListItemIcon'
+import ListItemIcon, { type ListItemIconProps } from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
 import Stack from '@mui/material/Stack'
+import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography'
-import React, { type FC, memo, type ReactNode, useCallback, useMemo, useRef, useState } from 'react'
+import React, { type ComponentProps, type FC, memo, type ReactNode, useCallback, useRef, useState } from 'react'
 
 import {
   ContextMenuIcon,
@@ -20,6 +22,26 @@ import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
 interface ISidebarNavCustomPromptButtonProps {
   menuList: IContextMenuItemWithChildren[]
 }
+
+const CustomPromptMenuListIcon = styled(({ children, ...props }: ListItemIconProps) => (
+  <ListItemIcon {...props}>
+    {children}
+  </ListItemIcon>
+))(({ theme }) => ({
+  minWidth: '20px!important',
+  color: theme.palette.primary.main,
+  fontSize: '16px',
+  marginRight: '8px'
+}))
+
+const CustomPromptMenuListItem = styled(({ children, ...props }: ComponentProps<typeof MenuItem>) => (
+  <MenuItem {...props}>
+    {children}
+  </MenuItem>
+))(({ theme }) => ({
+  padding: '12px 8px',
+  borderRadius: '6px',
+}))
 
 const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (props) => {
   const {
@@ -34,24 +56,21 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
   const menuEnterRef = useRef(false)
 
   const SidebarNavCustomPromptMenuItem = useCallback(({ menuItem }: { menuItem: IContextMenuItemWithChildren }) => {
-    return <MenuItem
+    return <CustomPromptMenuListItem
       onClick={(event) => {
         event.stopPropagation()
         // onRename?.()
         // handleClose(event)
       }}
-      sx={{
-        borderRadius: '6px',
-      }}
     >
       {menuItem?.data?.icon && (
-        <ListItemIcon>
+        <CustomPromptMenuListIcon>
           <ContextMenuIcon
             size={16}
             icon={menuItem.data.icon}
-            sx={{ color: 'primary.main', flexShrink: 0 }}
+            sx={{ flexShrink: 0 }}
           />
-        </ListItemIcon>
+        </CustomPromptMenuListIcon>
       )}
 
       <ListItemText sx={{ fontSize: '14px', color: 'text.primary', textAlign: 'left' }}>
@@ -65,10 +84,10 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
           {menuItem.text}
         </Typography>
       </ListItemText>
-    </MenuItem>
+    </CustomPromptMenuListItem>
   }, [])
 
-  const RenderCustomPromptMenuList = useMemo(() => {
+  const RenderCustomPromptMenuList = useCallback((menuList: IContextMenuItemWithChildren[]) => {
     const nodeList: ReactNode[] = []
     menuList.forEach((menuItem) => {
       if (menuItem.data.type === 'group') {
@@ -84,16 +103,14 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
           </Divider>
         )
 
-        menuItem.children.forEach((childMenuItem) => {
-          nodeList.push(<SidebarNavCustomPromptMenuItem menuItem={childMenuItem} />)
-        })
+        nodeList.push(...RenderCustomPromptMenuList(menuItem.children))
       } else {
         nodeList.push(<SidebarNavCustomPromptMenuItem menuItem={menuItem} />)
       }
     })
 
     return nodeList
-  }, [menuList])
+  }, [])
 
 
   return <>
@@ -120,7 +137,7 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         }}
         sx={{
           px: '12px',
-          zIndex: 2147483620
+          zIndex: 1201
         }}
       >
         <Stack direction={'row'} alignItems={'center'}>
@@ -155,19 +172,25 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
 
     <Menu
       sx={{
-        zIndex: 2147483619,
+        zIndex: 1200,
       }}
       anchorEl={anchorEl}
       // id={`${conversationId}_MORE_ACTIONS_MENU`}
       open={open}
       slotProps={{
         paper: {
+          square: false,
           elevation: 0,
           sx: {
-            overflow: 'visible',
+            width: '270px',
+            maxHeight: '320px',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
-            px: '6px',
-            py: '4px',
+            p: '4px',
+            mt: '3px',
+            borderRadius: '8px',
+            '& > ul': {
+              py: 0,
+            }
           },
           onMouseEnter: (event) => {
             event.stopPropagation()
@@ -188,7 +211,34 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
         horizontal: 'left',
       }}
     >
-      {RenderCustomPromptMenuList}
+      {...RenderCustomPromptMenuList(menuList)}
+      {menuList.length > 0 && <Divider sx={{ my: '2px' }} />}
+      <CustomPromptMenuListItem
+        onClick={(event) => {
+          event.stopPropagation()
+          // onRename?.()
+          // handleClose(event)
+        }}
+        sx={{
+          borderRadius: '6px',
+        }}
+      >
+        <CustomPromptMenuListIcon>
+          <AddOutlinedIcon sx={{ fontSize: 'inherit', flexShrink: 0 }} />
+        </CustomPromptMenuListIcon>
+
+        <ListItemText sx={{ fontSize: '14px', color: 'text.primary', textAlign: 'left' }}>
+          <Typography
+            sx={{
+              fontSize: '14px',
+              color: 'text.primary',
+            }}
+            component={'span'}
+          >
+            Add my own prompt
+          </Typography>
+        </ListItemText>
+      </CustomPromptMenuListItem>
     </Menu>
   </>
 }

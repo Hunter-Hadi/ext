@@ -289,12 +289,29 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
             }
 
             if (
-              message.content.startsWith('```') &&
-              quotedMessageContent.startsWith('```')
+              message.content.includes('```') &&
+              quotedMessageContent.includes('```')
             ) {
-              result ||= message.content.includes(
-                quotedMessageContent.replace(/```\w+/, '').trimStart(),
-              )
+              const codeBlockSyntaxIndexOf = message.content.indexOf('```')
+              const [messageContentPart1 = '', messageContentPart2 = ''] = [
+                message.content.slice(0, codeBlockSyntaxIndexOf),
+                message.content.slice(codeBlockSyntaxIndexOf + 3),
+              ]
+              const [
+                quotedMessageContentPart1 = '',
+                quotedMessageContentPart2 = '',
+              ] = quotedMessageContent.split(/```\w+/)
+              let matched = false
+              if (messageContentPart1 && quotedMessageContentPart1) {
+                matched = messageContentPart1 === quotedMessageContentPart1
+              }
+
+              if (matched && messageContentPart2 && quotedMessageContentPart2) {
+                matched = messageContentPart2.includes(
+                  quotedMessageContentPart2,
+                )
+              }
+              result ||= matched
             }
 
             return result

@@ -107,7 +107,6 @@ ${replyTargetMessageData.text}
         MAXAI__CHAT_APP_WRITING_ASSISTANT_CHAT_MESSAGES_CONTEXT,
       }
     } else {
-      debugger
       let replyMessageIndex =
         this.chatMessages.length >= 8 ? 8 : this.chatMessages.length
       const chatMessages = this.chatMessages.slice(-8)

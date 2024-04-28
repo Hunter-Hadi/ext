@@ -1,9 +1,10 @@
 import {
+  ChatAppWebsites,
   EmailWebsites,
   SocialMediaWebsites,
-  ChatAppWebsites,
 } from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+
 // 社交媒体
 const socialMediaPrompts = [
   {

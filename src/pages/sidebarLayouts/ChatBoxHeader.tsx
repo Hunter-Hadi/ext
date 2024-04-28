@@ -10,7 +10,8 @@ import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
 import AuthUserRoleIconDropdown from '@/features/auth/components/AuthUserRoleIconDropdown'
 import ConversationListDrawerButton from '@/features/chatgpt/components/ConversationList/ConversationListDrawerButton'
-import HistoryShareButton from '@/features/chatgpt/components/share/HistoryShareButton'
+import AutoSyncConversation from '@/features/chatgpt/components/share/AutoSyncConversation'
+import HistoryTextDownloadButton from '@/features/chatgpt/components/share/HistoryShareButton'
 import ShareButtonGroup from '@/features/chatgpt/components/share/ShareButtonGroup'
 import useCurrentBreakpoint from '@/features/sidebar/hooks/useCurrentBreakpoint'
 import useCommands from '@/hooks/useCommands'
@@ -117,7 +118,8 @@ const ChatBoxHeader: FC<{
             </Link>
           </Typography>
         )}
-        <HistoryShareButton />
+        <AutoSyncConversation />
+        <HistoryTextDownloadButton />
         <ShareButtonGroup />
       </Stack>
     </Stack>

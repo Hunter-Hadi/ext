@@ -8,7 +8,7 @@ import { clientGetConversation } from '@/features/chatgpt/utils/chatConversation
 import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { formatMessagesToLiteHistory } from '@/features/sidebar/utils/chatMessagesHelper'
 
-const HistoryShareButton: FC<{
+const HistoryTextDownloadButton: FC<{
   needSystemOrThirdMessage?: boolean
 }> = (props) => {
   const { needSystemOrThirdMessage = false } = props
@@ -59,4 +59,4 @@ const HistoryShareButton: FC<{
     </TooltipIconButton>
   )
 }
-export default HistoryShareButton
+export default HistoryTextDownloadButton

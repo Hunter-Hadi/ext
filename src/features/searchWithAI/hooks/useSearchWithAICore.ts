@@ -90,8 +90,10 @@ const getFreeUserIsHighTrafficPrompt = async () => {
   }
   const { interval, times } = data[FREE_USER_HIGH_TRAFFIC_SAVE_KEY]
   // 如果interval为0，则代表进入下一个周期
-  if (interval === 0) {
-    await resetFreeUserHighTrafficPrompt()
+  if (interval <= 0) {
+    if (times <= 1) {
+      await resetFreeUserHighTrafficPrompt()
+    }
     // 如果times为0，则代表不需要提示高流量,返回false
     return times > 0
   } else {
@@ -108,6 +110,12 @@ const getFreeUserIsHighTrafficPrompt = async () => {
       return isHighTraffic
     } else {
       // 如果times为0，说明不需要提示高流量
+      await Browser.storage.local.set({
+        [FREE_USER_HIGH_TRAFFIC_SAVE_KEY]: {
+          interval: interval - 1,
+          times,
+        },
+      })
       return false
     }
   }

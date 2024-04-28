@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Barra lateral",
     "feature_card__sidebar__field__auto_archive__title": "Auto arquivar: Limpe à medida que avança",
     "feature_card__sidebar__field__auto_archive__button__title": "Arquivar chat após",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência de sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o bate-papo ocioso na frequência de sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",

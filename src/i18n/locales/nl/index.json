@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Zijbalk",
     "feature_card__sidebar__field__auto_archive__title": "Automatisch archiveren: Schoon terwijl je gaat",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archiveren na",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chatberichten op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chats op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",

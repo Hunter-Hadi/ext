@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Sidefelt",
     "feature_card__sidebar__field__auto_archive__title": "Autoarkivering: Rens mens du går",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkiver samtale etter",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive samtaler i det tempoet du velger. Dette gir deg en frisk start og holder sidefeltet ryddig."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive samtaler i det tempoet du velger. Dette gir deg en frisk start og holder sidepanelet ryddig."
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",

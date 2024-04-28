@@ -256,7 +256,7 @@
     "left_menu__sidebar": "סרגל צד",
     "feature_card__sidebar__field__auto_archive__title": "ארכיב אוטומטי: נקה במידה ונדרש",
     "feature_card__sidebar__field__auto_archive__button__title": "ארכוב צ'אט לאחר",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מבצעים ארכיב אוטומטי של צ'אטים שבלתי פעילים בתדירות שתבחר. זה יעניק לך התחלה חדשה וישמור על סרגל הצד שלך מסודר."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מארכיבים באופן אוטומטי שיחות ריקות בתדירות שתבחר. זה נותן לך התחלה חדשה ושומר על הסרגל הצדי שלך מסודר."
   },
   "client": {
     "sidebar__button__close_sidebar": "סגור את הסרגל הצדי",

@@ -256,7 +256,7 @@
     "left_menu__sidebar": "साइडबार",
     "feature_card__sidebar__field__auto_archive__title": "ऑटो आर्काइव: जब जाएं तब साफ करें",
     "feature_card__sidebar__field__auto_archive__button__title": "चैट को आर्काइव करें बाद में",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI में, हम आपकी पसंद के अनुसार खाली चैट को ऑटो आर्काइव करते हैं। इससे आपको एक नयी शुरुआत मिलती है और आपका साइडबार साफ रहता है।"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI में, हम आपकी पसंद के अनुसार आईडल चैट को स्वचालित रूप से आर्काइव करते हैं। यह आपको एक ताजगी शुरुआत देता है और आपके साइडबार को साफ-सुथरा रखता है।"
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करें",

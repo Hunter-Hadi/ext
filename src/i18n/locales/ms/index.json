@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Bar sisi",
     "feature_card__sidebar__field__auto_archive__title": "Arkib automatik: Bersihkan seiring perjalanan",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkib sembang selepas",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami Arkib automatik sembang yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga bar sisi anda kemas."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami secara automatik mengarkibkan perbualan yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga sidebar anda kemas."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",

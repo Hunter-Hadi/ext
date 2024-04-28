@@ -256,7 +256,7 @@
     "left_menu__sidebar": "แถบด้านข้าง",
     "feature_card__sidebar__field__auto_archive__title": "อัตโนมัติเก็บถาวร: ทำความสะอาดในขณะใช้งาน",
     "feature_card__sidebar__field__auto_archive__button__title": "เก็บถาวรแชทหลังจาก",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "ใน MaxAI เราจะเก็บถาวรแชทที่ไม่ได้ใช้งานอยู่ตามความถี่ที่คุณเลือก ซึ่งจะช่วยให้คุณเริ่มต้นใหม่และรักษาระเบียบเรียบร้อยในแถบด้านข้างของคุณ"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ใน MaxAI เราจะทำการเก็บถาวรแชทที่ไม่มีการใช้งานอยู่โดยอัตโนมัติตามความถี่ที่คุณเลือก ซึ่งจะช่วยให้คุณได้เริ่มต้นใหม่และรักษาระเบียบเรียบร้อยในแถบด้านข้างของคุณ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",

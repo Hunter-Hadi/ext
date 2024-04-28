@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Külgriba",
     "feature_card__sidebar__field__auto_archive__title": "Automaatne arhiveerimine: Puhasta, kui lähed",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiveeri vestlus pärast",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-s arhiveerime jõudeoleva vestluse teie valitud sagedusega. See annab teile värskendava alguse ja hoiab külgriba korras."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-s arhiveerime automaatselt jõudeolevad vestlused teie valitud sagedusega. See annab teile värskendava alguse ja hoiab küljeriba korras."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulge külgriba",

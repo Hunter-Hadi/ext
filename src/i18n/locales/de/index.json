@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Seitenleiste",
     "feature_card__sidebar__field__auto_archive__title": "Auto-Archivierung: Aufräumen während der Nutzung",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archivieren nach",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir im Leerlauf automatisch Chats in dem von Ihnen gewählten Rhythmus. Dies gibt Ihnen einen frischen Start und hält Ihre Seitenleiste ordentlich."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir automatisch Chatverläufe, die nicht genutzt werden, in dem von Ihnen gewählten Rhythmus. Dadurch erhalten Sie einen frischen Start und behalten Ihre Seitenleiste aufgeräumt."
   },
   "client": {
     "sidebar__button__close_sidebar": "Seitenleiste schließen",

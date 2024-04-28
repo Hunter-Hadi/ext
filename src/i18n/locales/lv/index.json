@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Sānjosla",
     "feature_card__sidebar__field__auto_archive__title": "Automātiska arhivēšana: Tīrīt, kad izmanto",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhivēt tērzēšanu pēc",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvo tērzēšanu pēc jūsu izvēles biežuma. Tas ļauj jums sākt no jauna un uztur jūsu sānjoslu kārtīgu."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI automātiski arhivē neaktīvas sarunas pēc jūsu izvēles ritma. Tas nodrošina svaigu sākumu un uztur jūsu sānu joslu kārtīgu."
   },
   "client": {
     "sidebar__button__close_sidebar": "Aizvērt sānjoslu",

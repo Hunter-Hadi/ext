@@ -256,7 +256,7 @@
     "left_menu__sidebar": "সাইডবার",
     "feature_card__sidebar__field__auto_archive__title": "অটো আর্কাইভ: চলাচলের সাথে পরিষ্কার করুন",
     "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-তে, আমরা আপনার পছন্দের ক্যাডেন্সে আইডেল চ্যাটগুলি অটোমেটিকভাবে আর্কাইভ করি। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাজানো রাখে।"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ম্যাক্সএআইতে, আপনি নিজের পছন্দ অনুযায়ী বিলম্বিত চ্যাটগুলি স্বয়ংক্রিয়ভাবে আর্কাইভ করতে পারেন। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাফল্যের সাথে রাখে।"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",

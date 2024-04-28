@@ -256,7 +256,7 @@
     "left_menu__sidebar": "ಸೈಡ್‌ಬಾರ್",
     "feature_card__sidebar__field__auto_archive__title": "ಸ್ವಯಂ ಆರ್ಕೈವ್: ನೀವು ಹೋಗುವವರೆಗೆ ಸ್ವಚ್ಛಗೊಳಿಸಿ",
     "feature_card__sidebar__field__auto_archive__button__title": "ಚಾಟ್ ಆರ್ಕೈವ್ ಮುಂದುವರೆಸಿ",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI ನಲ್ಲಿ, ನೀವು ಆರ್ಕೈವ್ ಮಾಡಲು ನಿಮ್ಮ ಆಯ್ಕೆಯ ಪ್ರಮಾಣದಲ್ಲಿ ಅಡ್ಲ್ ಚಾಟ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತದೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಕಾಪಾಡುತ್ತದೆ."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-ನಲ್ಲಿ, ನೀವು ಆಯ್ದ ಕಾಡು ಚಾಟ್‌ಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತೇವೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಉಳಿಸುತ್ತದೆ."
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",

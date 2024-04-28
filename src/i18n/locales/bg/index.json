@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Странична лента",
     "feature_card__sidebar__field__auto_archive__title": "Автоматично архивиране: Почистете докато работите",
     "feature_card__sidebar__field__auto_archive__button__title": "Архивирайте чата след",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI, ние автоматично архивираме неактивни чатове според избраната от вас честота. Това ви дава свеж старт и поддържа страничната лента подредена."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "В MaxAI автоматично архивираме неактивни чатове според избраната от вас честота. Това ви дава ново начало и поддържа вашата странична лента подредена."
   },
   "client": {
     "sidebar__button__close_sidebar": "Затвори страничната лента",

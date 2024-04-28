@@ -256,7 +256,7 @@
     "left_menu__sidebar": "側邊欄",
     "feature_card__sidebar__field__auto_archive__title": "自動封存：隨時保持整潔",
     "feature_card__sidebar__field__auto_archive__button__title": "封存聊天後",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我們根據您的選擇節奏自動封存閒置聊天。這讓您重新開始並保持側邊欄整潔。"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我們會根據您選擇的節奏自動將閒置聊天存檔。這將為您提供一個全新的開始，並保持側邊欄整潔。"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",

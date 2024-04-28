@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Sidofält",
     "feature_card__sidebar__field__auto_archive__title": "Autoarkivering: Rensa allt eftersom",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkivera chatt efter",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverar vi automatiskt inaktiva chattar i den takt du väljer. Det ger dig en fräsch start och håller din sidofält snygg."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverar vi automatiskt inaktiva chattar i den takt du väljer. Det ger dig en nystart och håller din sidofält snygg."
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",

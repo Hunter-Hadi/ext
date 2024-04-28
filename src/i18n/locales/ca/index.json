@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Barra lateral",
     "feature_card__sidebar__field__auto_archive__title": "Autoarxivat: Neteja a mesura que avances",
     "feature_card__sidebar__field__auto_archive__button__title": "Arxiva el xat després de",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, autoarxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté la barra lateral ordenada."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI, automàticament arxivem els xats inactius a la cadència que trieu. Això us dóna un nou començament i manté el vostre panell lateral ordenat."
   },
   "client": {
     "sidebar__button__close_sidebar": "Tanca la barra lateral",

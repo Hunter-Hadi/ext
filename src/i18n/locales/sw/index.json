@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Upau wa kando",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
     "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi mazungumzo yasiyo na shughuli kiotomatiki kulingana na wakati unaopendelea. Hii inakupa mwanzo mpya na kuweka upande wa kushoto safi."
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",

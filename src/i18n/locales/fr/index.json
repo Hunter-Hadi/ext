@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Barre latérale",
     "feature_card__sidebar__field__auto_archive__title": "Archivage automatique : Nettoyez au fur et à mesure",
     "feature_card__sidebar__field__auto_archive__button__title": "Archiver la discussion après",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dans MaxAI, nous archivons automatiquement les discussions inactives selon la cadence de votre choix. Cela vous permet de repartir sur de bonnes bases et de garder votre barre latérale bien rangée."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dans MaxAI, nous archivons automatiquement les discussions inactives à la cadence de votre choix. Cela vous permet de repartir sur de bonnes bases et de garder votre barre latérale bien rangée."
   },
   "client": {
     "sidebar__button__close_sidebar": "Fermer la barre latérale",

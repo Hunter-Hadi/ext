@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Бічна панель",
     "feature_card__sidebar__field__auto_archive__title": "Автоматичне архівування: Прибирайте по ходу",
     "feature_card__sidebar__field__auto_archive__button__title": "Архівувати чат після",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "У MaxAI ми автоматично архівуємо неактивний чат з обраною вами періодичністю. Це дає вам свіжий старт і допомагає підтримувати порядок у бічній панелі."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "У MaxAI ми автоматично архівуємо бездіяльний чат з обраною вами періодичністю. Це дає вам свіжий початок і підтримує порядок у бічній панелі."
   },
   "client": {
     "sidebar__button__close_sidebar": "Закрити бічну панель",

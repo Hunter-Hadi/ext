@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Kenar Çubuğu",
     "feature_card__sidebar__field__auto_archive__title": "Otomatik arşivleme: Giderken temizleyin",
     "feature_card__sidebar__field__auto_archive__button__title": "Sohbeti arşivle",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, istediğiniz sıklıkta boşta kalan sohbetleri otomatik olarak arşivliyoruz. Bu size taze bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, boş sohbetleri istediğiniz sıklıkta otomatik olarak arşivleriz. Bu size yeni bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar."
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",

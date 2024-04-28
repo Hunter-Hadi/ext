@@ -256,7 +256,7 @@
     "left_menu__sidebar": "സൈഡ്ബാർ",
     "feature_card__sidebar__field__auto_archive__title": "ഓട്ടോ ആർക്കൈവ്: പോകുന്നതിനും ശുദ്ധമായി",
     "feature_card__sidebar__field__auto_archive__button__title": "ചാറ്റ് ആർക്കൈവ് ചെയ്യുക",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-യിൽ, നിങ്ങൾക്ക് തിരികെ ഉള്ള ചാറ്റുകൾ നിലവിലെ അവസ്ഥയിൽ ഓട്ടോ ആർക്കൈവ് ചെയ്യുന്നു. ഇത് നിങ്ങളുടെ സൈഡ്ബാർ ശുകർത്തപ്പെടുത്തുന്നുവെന്ന് ഉറപ്പാക്കുന്നു."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "മാക്സ്‌എയിയിൽ, നിങ്ങൾക്ക് തിരിച്ചുവരുന്ന ചാറ്റുകൾ നിങ്ങളുടെ തിരഞ്ഞെടുപ്പിലുള്ള കാദൻസ് പ്രകാരം ഓട്ടോ ആർക്കൈവ് ചെയ്യുന്നു. ഇത് നിങ്ങളുടെ സൈഡ്ബാർ ശുകൾ പുതിയതായി വിടുകയും ചെയ്യുന്നു."
   },
   "client": {
     "sidebar__button__close_sidebar": "സൈഡ്ബാർ അടയ്ക്കുക",

@@ -256,7 +256,7 @@
     "left_menu__sidebar": "سائڈبار",
     "feature_card__sidebar__field__auto_archive__title": "خودکار آرکائیو: جب بھی صفائی کریں",
     "feature_card__sidebar__field__auto_archive__button__title": "چیٹ آرکائیو کریں بعد میں",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں، ہم آپ کی پسندیدہ تناسب کے ساتھ خودکار طور پر بیکار چیٹ آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کی سائڈبار کو صاف رکھتا ہے۔"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "میکس اے آئی میں ہم آپ کی مرضی کے مطابق خاموش چیٹ کو خود بخود آرکائیو کرتے ہیں۔ یہ آپ کو نئی شروعات فراہم کرتا ہے اور آپ کے سائڈبار کو صاف ستھرا رکھتا ہے۔"
   },
   "client": {
     "sidebar__button__close_sidebar": "سائڈبار بند کریں",

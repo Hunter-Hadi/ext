@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Sivupalkki",
     "feature_card__sidebar__field__auto_archive__title": "Automaattinen arkistointi: Puhdista sitä mukaa",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkistoi keskustelu",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti käyttämättömät keskustelut valitsemallasi taajuudella. Tämä antaa sinulle raikkaan alun ja pitää sivupalkin siistinä."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti passiivisen keskustelun valitsemallasi taajuudella. Tämä antaa sinulle uuden alun ja pitää sivupalkkisi siistinä."
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",

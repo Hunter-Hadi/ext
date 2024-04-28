@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Sidebar",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Linisin habang ginagamit",
     "feature_card__sidebar__field__auto_archive__button__title": "I-archive ang usapan pagkatapos",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang hindi aktibong usapan sa pinili mong panahon. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang mga idle chat sa napiling cadence. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar."
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",

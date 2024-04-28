@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Šoninė juosta",
     "feature_card__sidebar__field__auto_archive__title": "Automatinis archyvavimas: Valykite, kai naudojatės",
     "feature_card__sidebar__field__auto_archive__button__title": "Archyvuoti pokalbį po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI programoje automatiškai archyvuojame neaktyvius pokalbius pagal jūsų pasirinktą dažnį. Tai suteikia jums švarų pradžią ir tvarkingą šoninę juostą."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'e automatiškai archyvuojame neaktyvius pokalbius pasirinktu dažniu. Tai suteikia jums naują pradžią ir išlaiko šoninę juostą tvarkingą."
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",

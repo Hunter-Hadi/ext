@@ -253,7 +253,7 @@
     "left_menu__sidebar": "Մենյուի սաղմոն",
     "feature_card__sidebar__field__auto_archive__title": "Ինքնահատկացված արխիվացում: Մաքրեք ընթացիկը",
     "feature_card__sidebar__field__auto_archive__button__title": "Արխիվացնել խոսակցությունը հետևյալում",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-ում, մենք ավտոմարտահրաշալի արխիվացնում ենք անհանգստանալով խոսակցությունը ընտրած պահին։ Այսպիսով, դուք կսկսեք նորից և կպահպանեք ձեր մոտավորությունը մաքրված։"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Մեքենայում MaxAI-ի միջոցով, մենք ավտոմատացնում ենք անհատական խորհրդատված խումբները ըստ Ձեր ընտրած պահանջատեղենի. Այսպիսին դուք կսկսեք նորից և կպահեք ձեր կողմից կողմանալի էջը:"
   },
   "client": {
     "sidebar__button__close_sidebar": "Փակել սայդբար",

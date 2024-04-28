@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Bočna traka",
     "feature_card__sidebar__field__auto_archive__title": "Auto arhiviranje: Čistite dok idete",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj razgovor nakon",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u automatski arhiviramo neaktivne razgovore prema vašem izboru. Ovo vam pruža svježi početak i održava vašu bočnu traku urednom."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u automatski arhiviramo neaktivne razgovore prema vašem odabiru. To vam pruža svježi početak i održava urednost bočne trake."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",

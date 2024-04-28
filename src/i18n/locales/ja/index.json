@@ -256,7 +256,7 @@
     "left_menu__sidebar": "サイドバー",
     "feature_card__sidebar__field__auto_archive__title": "自動アーカイブ：使いながらクリーンに",
     "feature_card__sidebar__field__auto_archive__button__title": "チャットをアーカイブする",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIでは、選択した頻度でアイドルなチャットを自動的にアーカイブします。これにより、新たなスタートが切れてサイドバーが整理されます。"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIでは、選択した頻度でアイドルなチャットを自動的にアーカイブします。これにより、新たなスタートが可能になり、サイドバーが整理されます。"
   },
   "client": {
     "sidebar__button__close_sidebar": "サイドバーを閉じる",

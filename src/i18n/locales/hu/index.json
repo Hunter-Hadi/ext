@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Oldalsáv",
     "feature_card__sidebar__field__auto_archive__title": "Automatikus archiválás: Tisztítsa, ahogy halad",
     "feature_card__sidebar__field__auto_archive__button__title": "Csevegés archiválása után",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI-ban automatikusan archiváljuk az üresjáratú beszélgetéseket a választott időközönként. Ez lehetővé teszi, hogy frissen kezdjen és rendezett maradjon az oldalsáv."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI-ban automatikusan archiváljuk az üres csevegéseket a választott időközönként. Ez lehetővé teszi, hogy friss kezdést kapj és rendben tartsd az oldalsávot."
   },
   "client": {
     "sidebar__button__close_sidebar": "Oldalsáv bezárása",

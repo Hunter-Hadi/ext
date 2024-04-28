@@ -256,7 +256,7 @@
     "left_menu__sidebar": "సైడ్‌బార్",
     "feature_card__sidebar__field__auto_archive__title": "ఆటో ఆర్కైవ్: మీరు పోగొట్టేందుకు శుభ్రంగా ఉంచండి",
     "feature_card__sidebar__field__auto_archive__button__title": "చాట్‌ను ఆర్కైవ్ చేయండి",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు తప్పక ఎంపిక చేసే కాదని ఆటో ఆర్కైవ్ చేస్తాం. ఇది మీకు తాజా ప్రారంభం అందిస్తుంది మరియు మీ సైడ్‌బార్‌ను శుభ్రంగా ఉంచేది."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు మీ ఆకట్టుని తగ్గించడానికి మీ ప్రాధాన్యత సమయంలో ఆటో ఆర్కైవ్ చేస్తాము. ఇది మీకు తాజా ప్రారంభం ఇవ్వడం మరియు మీ సైడ్‌బార్ శుభ్రంగా ఉంచుకోవడం కోసం ఉంటుంది."
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",

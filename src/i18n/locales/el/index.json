@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Πλευρική γραμμή",
     "feature_card__sidebar__field__auto_archive__title": "Αυτόματη αρχειοθέτηση: Καθαρίστε καθώς προχωράτε",
     "feature_card__sidebar__field__auto_archive__button__title": "Αρχειοθέτηση συνομιλίας μετά από",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αρχειοθετούμε αυτόματα τις αδρές συνομιλίες με τη συχνότητα της επιλογής σας. Αυτό σας δίνει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική γραμμή σας τακτοποιημένη."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αυτόματα αρχειοθετούμε την αδράνεια συνομιλίας με το ρυθμό της επιλογής σας. Αυτό σας προσφέρει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική σας γραμμή τακτοποιημένη."
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",

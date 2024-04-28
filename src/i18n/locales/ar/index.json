@@ -256,7 +256,7 @@
     "left_menu__sidebar": "الشريط الجانبي",
     "feature_card__sidebar__field__auto_archive__title": "الأرشفة التلقائية: نظّف أثناء استخدامك",
     "feature_card__sidebar__field__auto_archive__button__title": "أرشفة المحادثة بعد",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة المحادثات الخاملة تلقائيًا بتواتر اختيارك. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة الدردشة الخاملة تلقائيًا بالتواتر الذي تختاره. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك."
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",

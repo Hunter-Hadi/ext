@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Bară laterală",
     "feature_card__sidebar__field__auto_archive__title": "Arhivare automată: Curățați pe măsură ce mergeți",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhivați conversația după",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "În MaxAI, arhivăm automat conversațiile inactive la frecvența aleasă de dvs. Aceasta vă oferă un nou început și menține bara laterală ordonată."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "În MaxAI, arhivăm automat conversațiile inactive la frecvența aleasă de tine. Aceasta îți oferă un nou început și menține ordinea în bara laterală."
   },
   "client": {
     "sidebar__button__close_sidebar": "Închideți bara laterală",

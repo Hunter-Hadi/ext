@@ -256,7 +256,7 @@
     "left_menu__sidebar": "نوار کناری",
     "feature_card__sidebar__field__auto_archive__title": "بایگانی خودکار: همراه با پاکسازی",
     "feature_card__sidebar__field__auto_archive__button__title": "چت را بعد از",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI، ما چت‌های غیرفعال را به صورت خودکار بایگانی می‌کنیم. این به شما شروعی تازه می‌دهد و نوار کناری شما را تمیز نگه می‌دارد."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI ، ما گفتگوهای بیکار را به صورت خودکار در فاصله زمانی انتخاب شده توسط شما بایگانی می کنیم. این به شما شروعی تازه می دهد و نوار کناری شما را تمیز نگه می دارد."
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",

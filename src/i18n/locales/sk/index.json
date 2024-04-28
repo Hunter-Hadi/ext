@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Bočný panel",
     "feature_card__sidebar__field__auto_archive__title": "Automatické archivovanie: Čistota počas práce",
     "feature_card__sidebar__field__auto_archive__button__title": "Archivovať chat po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Týmto získate čerstvý štart a udržujete svoj bočný panel uprataný."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Toto vám poskytuje čerstvý štart a udržuje vašu bočnú lištu upratanú."
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",

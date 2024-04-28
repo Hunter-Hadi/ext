@@ -256,7 +256,7 @@
     "left_menu__sidebar": "साइडबार",
     "feature_card__sidebar__field__auto_archive__title": "स्वयंसचित्रीकरण: जेव्हा जाऊन टाकता तेव्हा स्वच्छ करा",
     "feature_card__sidebar__field__auto_archive__button__title": "चॅट आर्काइव करा नंतर",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या गतीनुसार आपल्या खालील चॅट आपोआप आर्काइव करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुस्थित ठेवते."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI मध्ये, आपल्या पसंतीच्या अनुसार आपल्या खालील चॅट स्वयंपाक करतो. हे आपल्याला एक नवीन प्रारंभ देते आणि आपल्या साइडबारला सुसज्जित ठेवते."
   },
   "client": {
     "sidebar__button__close_sidebar": "साइडबार बंद करा",

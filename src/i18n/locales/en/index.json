@@ -242,7 +242,7 @@
     "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat instant reply",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Clean as you go",
     "feature_card__sidebar__field__auto_archive__button__title": "Archive chat after",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI, we Auto archive idle chat at the cadence of your choice. This gives you a fresh start and keeps your sidebar tidy.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI, we auto archive idle chat at the cadence of your choice. This gives you a fresh start and keeps your sidebar tidy.",
     "visibility_card__black_list_title": "Disabled sites",
     "visibility_card__black_list_description": "List of websites that have the mini menu hidden when selecting text.",
     "visibility_card__white_list_title": "Enabled sites",

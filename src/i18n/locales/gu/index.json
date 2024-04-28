@@ -252,7 +252,8 @@
     "feature_card__help_me_write__field__hubspot_instant_reply_button__title": "HubSpot તત્કાલ જવાબ",
     "feature_card__help_me_write__field__telegram_instant_reply_button__title": "Telegram તત્કાલ જવાબ",
     "feature_card__help_me_write__field__microsoft_teams_instant_reply_button__title": "Microsoft teams તત્કાલ જવાબ",
-    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat તત્કાલ જવાબ"
+    "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat તત્કાલ જવાબ",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI માં, અમે તમારી પસંદગીના કેડન્સ પર આઈડલ ચેટને આપોઆપ આર્કાઇવ કરીએ છીએ. આ તમને એક નવી શરૂઆત આપે છે અને તમારી સાઇડબાર સુથરી રાખે છે."
   },
   "client": {
     "sidebar__button__close_sidebar": "સાઇડબાર બંધ કરો",

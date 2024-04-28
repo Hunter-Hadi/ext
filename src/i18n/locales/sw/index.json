@@ -256,8 +256,8 @@
     "left_menu__sidebar": "Upau wa kando",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
     "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi mazungumzo yasiyo na shughuli kiotomatiki kulingana na wakati unaopendelea. Hii inakupa mwanzo mpya na kuweka upande wa kushoto safi.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo kwa Papo la Mtumaji"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo hapo kwenye Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Pakia faili JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Hoja za mantiki, tafsiri nyingi lugha, uandishi wa nambari, na zaidi.",
     "provider__claude_web_app__title": "Programu ya wavuti ya Claude",
-    "provider__claude_web_app__short_description": "Dirisha la muktadha lenye nafasi ya 100K. Ongea na hati nyingi.",
+    "provider__claude_web_app__short_description": "Dirisha la muktadha wa 200K. Ongea na hati nyingi.",
     "provider__claude_web_app__auth_description": "Tumia akaunti yako ya Claude kuwezesha upanuzi.",
     "provider__claude_web_app__auth_button_text": "Ingia kwenye programu ya wavuti ya Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Ongeza faili (5 kiwango cha juu, 10MB kila moja). Inakubali pdf, txt, csv, nk.",
@@ -752,8 +752,9 @@
     "context_window__chat_history__button__title": "Historia ya menyu ya muktadha",
     "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
     "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Sasisha ili kutafuta na AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au sasisha sasa ili kufurahia upatikanaji thabiti wa mifano yote ya AI ya hali ya juu.",
+    "provider__claude_web_app__model__claude_3_200k__description": "Utendaji bora kwenye majukumu yanayohitaji mawazo magumu. Claude 3 ni huduma bora kabisa ya Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nenda kwenye utaftaji na AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au nenda sasa kuboresha ili uweze kupata ufikiaji thabiti wa mifano yote ya AI ya hali ya juu.",
     "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi"
   },
   "prompt": {

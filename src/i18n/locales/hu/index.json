@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Oldalsáv",
     "feature_card__sidebar__field__auto_archive__title": "Automatikus archiválás: Tisztítsa, ahogy halad",
     "feature_card__sidebar__field__auto_archive__button__title": "Csevegés archiválása után",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI-ban automatikusan archiváljuk az üres csevegéseket a választott időközönként. Ez lehetővé teszi, hogy friss kezdést kapj és rendben tartsd az oldalsávot.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "A MaxAI-ban automatikusan archiváljuk az üresjáratú beszélgetéseket a választott időközönként. Ez lehetővé teszi, hogy frissen kezdjen és rendezett maradjon az oldalsáv.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Azonnali válasz a Messengerben"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Fájl feltöltése JPEG, PNG, WEBP formátumban",
     "provider__bard_web_app__model__what_it_can_do__description": "Következtetés, többnyelvű fordítás, kódolás és még sok más.",
     "provider__claude_web_app__title": "Claude web alkalmazás",
-    "provider__claude_web_app__short_description": "100K kontextusablak. Csevegés több dokumentummal.",
+    "provider__claude_web_app__short_description": "200K kontextusablak. Csevegés több dokumentummal.",
     "provider__claude_web_app__auth_description": "Használd a saját Claude fiókodat az bővítmény működtetéséhez.",
     "provider__claude_web_app__auth_button_text": "Bejelentkezés a Claude web alkalmazásba",
     "provider__claude_web_app__upload__accept_tooltip": "Fájlok hozzáadása (legfeljebb 5, 10 MB mindegyik). Elfogadott formátumok: pdf, txt, csv stb.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "Kontextusmenü előzmények",
     "context_window__chat_history__empty__title": "Még nincs elérhető kontextusmenü előzmény",
     "context_window__chat_history__continue_in_chat__title": "Folytatás a csevegésben",
+    "provider__claude_web_app__model__claude_3_200k__description": "Kiváló teljesítmény olyan feladatok esetén, amelyek bonyolult gondolkodást igényelnek. Claude 3 az Anthropic legjobb ajánlata.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Frissítés az AI-vel történő kereséshez",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Magas forgalom miatt kérjük, próbálkozzon később, vagy frissítse most a stabil hozzáférést az összes prémium AI modellhez.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció kikerülése érdekében"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Magas forgalom miatt kérjük, próbálja újra később, vagy frissítse most, hogy stabil hozzáférést kapjon az összes prémium AI modellhez.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció elkerülése érdekében"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

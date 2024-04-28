@@ -256,8 +256,8 @@
     "left_menu__sidebar": "ስልክ ገጽ",
     "feature_card__sidebar__field__auto_archive__title": "የበሽታውን መጠቀም: በሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ላይ, እኛ ለማስተካከል የሚጠቀሙ የተሳሳተ ውይይትን በማስተካከል ለመስጠት የሚያስችል የሚሆን የምስል ማስታወቂያ ነው። ይህን በማስተካከል አዲስ ጀምሮ ይጀምራል እና የሚስትሩትን ማስታወቂያ ይጠቀሙበታል።",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "የመልእክት በቀላሉ መልእክት"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ስልክ የበሽታውን በመስጠት ማስተካከያ የሚያስችል በሽታውን በመስጠት ማስተካከያ ይጠቀሙ። ይህን ለማድረግ እንዴት ማሳየት እንደሚችል ይጠቀሙ።",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "መልእክት የተጠቀሰው መልእክት"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "ፋይል JPEG, PNG, WEBP ይጠቀሙ",
     "provider__bard_web_app__model__what_it_can_do__description": "ማስተካከያ, በብልህናም ተርጓሚ, ኮድንግ, እና ተጨማሪ የሆነ እናት።",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K የመጠቀሚያ ወንድም ዋና የሆነ የአካውንት ወንድም እናት።",
+    "provider__claude_web_app__short_description": "200K የማስታወቂያ ውንጥል የሚያስቀምጥ. በተለያዩ ሰነዶች ላይ የተዘጋጀ የድረገጽ.",
     "provider__claude_web_app__auth_description": "እርስዎን የአስተዳደር አካውንት ለመጠቀም Claude አካውንት ይጠቀሙ።",
     "provider__claude_web_app__auth_button_text": "በ Claude web app የሚሞቱትን ይቀጥሉ",
     "provider__claude_web_app__upload__accept_tooltip": "ፋይልዎን ጨምሩ (5 በላይ, 10MB በመጠቀም)። pdf, txt, csv, እና እዚህ የሚጠቀሙትን ይጠቀሙ",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "የመግቢያ ማናቸውንም ስርጭት",
     "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
     "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "የማስፈለገያ እይታ ወደ AI ይዘት ይጠቀሙ",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማስተላለፍ የተለያዩ አገልግሎቶችን የሚያስተላልፉ ለመሆኑ፣ እባክዎ ሌሎች የፕሮሞች AI ሞዴሎችን ይጠቀሙ ወደዚህ ይግዛቸው።",
-    "sidebar__conversation__message__context_triggered_content_review": "የተሳሳተ የመልእክት ማጣሪያ ለማጣሪያ ማስተካከያ"
+    "provider__claude_web_app__model__claude_3_200k__description": "የተሻለ እንቅስቃሴ ከማጥፋት የሚችል አስተዳደር በማስተማር የአንትሪፒክ የብልጥነት ምልክት ነው። Claude 3 አንትሪፒክ የብልጥነት ምልክት ነው።",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "የማይጠቅምሽ AI የማይገባሽ ይዘት ይደርስ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማይገባሽ የማይጠቅምሽ AI ሞዴሎች ላይ ማስታወሻዎችን ይቀላቀሉ። ወደ የሚገባሽ የማይጠቅምሽ AI ሞዴሎች ሂደት ይደርስ ይመልከቱ።",
+    "sidebar__conversation__message__context_triggered_content_review": "የተጠቀሰው መልእክት በማስታወሻ የሚገባውን ይጠቀሙ"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "የግሩ መጽሐፍ...",

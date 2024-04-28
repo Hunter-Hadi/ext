@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Seitenleiste",
     "feature_card__sidebar__field__auto_archive__title": "Auto-Archivierung: Aufräumen während der Nutzung",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archivieren nach",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir automatisch Chatverläufe, die nicht genutzt werden, in dem von Ihnen gewählten Rhythmus. Dadurch erhalten Sie einen frischen Start und behalten Ihre Seitenleiste aufgeräumt.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archivieren wir im Leerlauf automatisch Chats in dem von Ihnen gewählten Rhythmus. Dies gibt Ihnen einen frischen Start und hält Ihre Seitenleiste ordentlich.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Sofortige Antwort im Messenger"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Datei hochladen (JPEG, PNG, WEBP)",
     "provider__bard_web_app__model__what_it_can_do__description": "Begründung, mehrsprachige Übersetzung, Codierung und mehr.",
     "provider__claude_web_app__title": "Claude Web-App",
-    "provider__claude_web_app__short_description": "100K Kontextfenster. Chatten mit mehreren Dokumenten.",
+    "provider__claude_web_app__short_description": "200K Kontextfenster. Chatten Sie mit mehreren Dokumenten.",
     "provider__claude_web_app__auth_description": "Verwenden Sie Ihr eigenes Claude-Konto, um die Erweiterung zu aktivieren.",
     "provider__claude_web_app__auth_button_text": "Bei Claude Web-App anmelden",
     "provider__claude_web_app__upload__accept_tooltip": "Dateien hinzufügen (max. 5, je 10 MB). Akzeptiert PDF, TXT, CSV usw.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "Kontextmenü-Verlauf",
     "context_window__chat_history__empty__title": "Kein Kontextmenü-Verlauf verfügbar",
     "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade auf die Suche mit KI",
+    "provider__claude_web_app__model__claude_3_200k__description": "Überragende Leistung bei Aufgaben, die komplexe Denkfähigkeiten erfordern. Claude 3 ist das Spitzenprodukt von Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade auf Suche mit KI",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um Moderation zu umgehen"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um die Moderation zu umgehen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

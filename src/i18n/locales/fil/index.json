@@ -256,8 +256,8 @@
     "left_menu__sidebar": "Sidebar",
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Linisin habang ginagamit",
     "feature_card__sidebar__field__auto_archive__button__title": "I-archive ang usapan pagkatapos",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang mga idle chat sa napiling cadence. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger instant reply"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang hindi aktibong usapan sa pinili mong panahon. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Tumugon agad sa Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "I-upload ang file JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Pag-iisip, multilingual na pagsasalin, pagko-code, at higit pa.",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K na bintana ng konteksto. Makipag-chat sa maraming dokumento.",
+    "provider__claude_web_app__short_description": "200K bintana ng konteksto. Makipag-chat sa maraming dokumento.",
     "provider__claude_web_app__auth_description": "Gamitin ang iyong sariling Claude account upang patakbuhin ang extension.",
     "provider__claude_web_app__auth_button_text": "Mag-log in sa Claude web app",
     "provider__claude_web_app__upload__accept_tooltip": "Magdagdag ng mga file (5 max, 10MB bawat isa). Tinatanggap ang pdf, txt, csv, atbp.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "Kasaysayan ng menu ng konteksto",
     "context_window__chat_history__empty__title": "Walang available na kasaysayan ng menu ng konteksto pa",
     "context_window__chat_history__continue_in_chat__title": "Magpatuloy sa chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Higit na magaling sa mga gawain na nangangailangan ng kumplikadong pag-iisip. Ang Claude 3 ay pinakamahusay na alok ng Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Mag-upgrade para sa paghahanap gamit ang AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang masiyahan sa matatag na access sa lahat ng premium na AI models.",
-    "sidebar__conversation__message__context_triggered_content_review": "Nalinis ang konteksto upang maiwasan ang moderasyon"
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang magkaroon ng matatag na access sa lahat ng premium na AI models.",
+    "sidebar__conversation__message__context_triggered_content_review": "Inalis ang konteksto upang maiwasan ang pagsusuri"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

@@ -256,7 +256,7 @@
     "left_menu__sidebar": "סרגל צד",
     "feature_card__sidebar__field__auto_archive__title": "ארכיב אוטומטי: נקה במידה ונדרש",
     "feature_card__sidebar__field__auto_archive__button__title": "ארכוב צ'אט לאחר",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מארכיבים באופן אוטומטי שיחות ריקות בתדירות שתבחר. זה נותן לך התחלה חדשה ושומר על סרגל הצד שלך מסודר.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "ב-MaxAI, אנחנו מבצעים ארכיב אוטומטי של צ'אטים שבלתי פעילים בתדירות שתבחר. זה יעניק לך התחלה חדשה וישמור על סרגל הצד שלך מסודר.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "תשובה מיידית במסנג'ר"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "העלה קובץ JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "שיקול, תרגום מרובה שפות, קידוד ועוד.",
     "provider__claude_web_app__title": "אפליקציית האינטרנט של Claude",
-    "provider__claude_web_app__short_description": "חלון קשר בגודל 100K. צ'אט עם מסמכים מרובים.",
+    "provider__claude_web_app__short_description": "חלון קשר בגודל 200K. צ'אט עם מסמכים מרובים.",
     "provider__claude_web_app__auth_description": "השתמש בחשבון ה-Claude שלך כדי להפעיל את ההרחבה.",
     "provider__claude_web_app__auth_button_text": "התחבר לאפליקציית האינטרנט של Claude",
     "provider__claude_web_app__upload__accept_tooltip": "הוסף קבצים (5 מרבי, 10MB לכל קובץ). מקבל pdf, txt, csv ועוד.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "היסטוריית תפריטי ההקשר",
     "context_window__chat_history__empty__title": "אין עדיין היסטוריית תפריטי ההקשר זמינה",
     "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט",
+    "provider__claude_web_app__model__claude_3_200k__description": "ביצועים יוצאי דופן במשימות הדורשות שיקול מורכב. Claude 3 הוא ההצעה המובילה של Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "שדרג לחיפוש עם AI",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "בשל תעבורה גבוהה, אנא נסה שוב מאוחר יותר או שדרג כעת כדי ליהנות מגישה יציבה לכל הדגמים המתקדמים של AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "הקשר נוקה לעבור את המודרציה"
+    "sidebar__conversation__message__context_triggered_content_review": "התוכן נמחק כדי לעקוף את המודרציה"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

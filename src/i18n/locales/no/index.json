@@ -256,8 +256,8 @@
     "left_menu__sidebar": "Sidefelt",
     "feature_card__sidebar__field__auto_archive__title": "Autoarkivering: Rens mens du går",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkiver samtale etter",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive samtaler i det tempoet du velger. Dette gir deg en frisk start og holder sidepanelet ryddig.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Melding umiddelbart svar"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverer vi automatisk inaktive samtaler i det tempoet du velger. Dette gir deg en frisk start og holder sidefeltet ryddig.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Meldingsøyeblikkelig svar"
   },
   "client": {
     "sidebar__button__close_sidebar": "Lukk sidepanelet",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Last opp fil JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Resonnement, flerspråklig oversettelse, koding og mer.",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K kontekstvindu. Chat med flere dokumenter.",
+    "provider__claude_web_app__short_description": "200K kontekstvindu. Chat med flere dokumenter.",
     "provider__claude_web_app__auth_description": "Bruk din egen Claude-konto for å drive utvidelsen.",
     "provider__claude_web_app__auth_button_text": "Logg inn på Claude web app",
     "provider__claude_web_app__upload__accept_tooltip": "Legg til filer (maks 5, 10 MB hver). Aksepterer pdf, txt, csv osv.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "Kontekstmenyhistorikk",
     "context_window__chat_history__empty__title": "Ingen tilgjengelig kontekstmenyhistorikk ennå",
     "context_window__chat_history__continue_in_chat__title": "Fortsett i chat",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Oppgrader for å søke med AI",
+    "provider__claude_web_app__model__claude_3_200k__description": "Overlegen ytelse på oppgaver som krever kompleks resonnement. Claude 3 er Anthropics beste tilbud.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Oppgrader til søk med AI",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grunn av høy trafikk, prøv igjen senere eller oppgrader nå for å få stabil tilgang til alle premium AI-modeller.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst fjernet for å omgå moderering"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for å omgå moderering"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

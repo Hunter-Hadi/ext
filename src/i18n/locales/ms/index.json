@@ -256,7 +256,7 @@
     "left_menu__sidebar": "Bar sisi",
     "feature_card__sidebar__field__auto_archive__title": "Arkib automatik: Bersihkan seiring perjalanan",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkib sembang selepas",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami secara automatik mengarkibkan perbualan yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga sidebar anda kemas.",
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Dalam MaxAI, kami Arkib automatik sembang yang tidak aktif pada kadar pilihan anda. Ini memberikan anda permulaan baru dan menjaga bar sisi anda kemas.",
     "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Balasan segera Messenger"
   },
   "client": {
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Muat naik fail JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan pelbagai bahasa, pengaturcaraan, dan banyak lagi.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
-    "provider__claude_web_app__short_description": "Jendela konteks 100K. Berbual dengan beberapa dokumen.",
+    "provider__claude_web_app__short_description": "Jendela konteks 200K. Berbual dengan pelbagai dokumen.",
     "provider__claude_web_app__auth_description": "Gunakan akaun Claude anda sendiri untuk membolehkan sambungan.",
     "provider__claude_web_app__auth_button_text": "Log masuk ke aplikasi web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Tambah fail (5 maksimum, 10MB setiap satu). Terima pdf, txt, csv, dan lain-lain.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "Sejarah menu konteks",
     "context_window__chat_history__empty__title": "Tiada sejarah menu konteks yang tersedia lagi",
     "context_window__chat_history__continue_in_chat__title": "Teruskan dalam perbualan",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naik taraf untuk mencari dengan AI",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kerana trafik yang tinggi, sila cuba lagi nanti, atau naik taraf sekarang untuk menikmati akses stabil kepada semua model AI premium.",
-    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk mengelakkan moderasi"
+    "provider__claude_web_app__model__claude_3_200k__description": "Prestasi unggul dalam tugas yang memerlukan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naik taraf kepada carian dengan AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kerana trafik yang tinggi, sila cuba lagi nanti, atau naik taraf sekarang untuk menikmati akses stabil ke semua model AI premium.",
+    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk mengelakkan penyeliaan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

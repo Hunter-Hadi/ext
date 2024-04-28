@@ -256,8 +256,8 @@
     "left_menu__sidebar": "Šoninė juosta",
     "feature_card__sidebar__field__auto_archive__title": "Automatinis archyvavimas: Valykite, kai naudojatės",
     "feature_card__sidebar__field__auto_archive__button__title": "Archyvuoti pokalbį po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'e automatiškai archyvuojame neaktyvius pokalbius pasirinktu dažniu. Tai suteikia jums naują pradžią ir išlaiko šoninę juostą tvarkingą.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Pranešimo akimirksniu atsakyti"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI programoje automatiškai archyvuojame neaktyvius pokalbius pagal jūsų pasirinktą dažnį. Tai suteikia jums švarų pradžią ir tvarkingą šoninę juostą.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Pranešimų akimirksniu atsakyti"
   },
   "client": {
     "sidebar__button__close_sidebar": "Uždaryti šoninę juostą",
@@ -333,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Įkelkite failą JPEG, PNG, WEBP formatu",
     "provider__bard_web_app__model__what_it_can_do__description": "Mąstymas, daugiakalbė vertimas, kodavimas ir kt.",
     "provider__claude_web_app__title": "Claude web programėlė",
-    "provider__claude_web_app__short_description": "100 tūkst. konteksto langas. Bendravimas su keliais dokumentais.",
+    "provider__claude_web_app__short_description": "200K konteksto langas. Pokalbis su keliais dokumentais.",
     "provider__claude_web_app__auth_description": "Naudokite savo „Claude“ paskyrą, kad galėtumėte naudoti plėtinį.",
     "provider__claude_web_app__auth_button_text": "Prisijunkite prie Claude web programėlės",
     "provider__claude_web_app__upload__accept_tooltip": "Pridėti failus (maks. 5, kiekvienas iki 10 MB). Priima pdf, txt, csv ir kt.",
@@ -752,9 +752,10 @@
     "context_window__chat_history__button__title": "Kontekstinio meniu istorija",
     "context_window__chat_history__empty__title": "Dar nėra prieinama kontekstinio meniu istorija",
     "context_window__chat_history__continue_in_chat__title": "Tęsti pokalbį",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naujinti paiešką su dirbtine intelektu",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium dirbtinio intelekto modeliais.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, kad būtų galima apeiti moderavimą"
+    "provider__claude_web_app__model__claude_3_200k__description": "Puikus pasirodymas užduotims, kurios reikalauja sudėtingo mąstymo. Claude 3 yra Anthropic geriausias pasiūlymas.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Atnaujinti, naudojant AI paiešką",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dėl didelio srauto, prašome bandyti vėliau arba dabar atnaujinti, kad galėtumėte stabiliai naudotis visais premium AI modeliais.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekstas išvalytas, praleidžiant moderavimą"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -30,10 +30,10 @@ export const BING_CONVERSATION_STYLES: Array<{
 
 export const BING_MODELS: IAIProviderModel[] = [
   {
-    title: 'gpt-4',
+    title: 'Copilot',
     titleTag: '',
-    value: 'gpt-4',
-    maxTokens: 8192,
+    value: 'gpt-4', // 'gpt-4-turbo',
+    maxTokens: 128000,
     tags: [],
     poweredBy: 'Microsoft',
     description: (t) =>

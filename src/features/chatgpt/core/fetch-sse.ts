@@ -50,6 +50,9 @@ export const fetchSSE = async (
         if (
           event.data.includes(
             `\\u200b\\u200d\\u200c\\u2060\\u200b\\u200d\\u200c\\u2060`,
+          ) ||
+          event.data.includes(
+            `\u200b\u200d\u200c\u2060\u200b\u200d\u200c\u2060`,
           )
         ) {
           let splitErrorText: string = ''

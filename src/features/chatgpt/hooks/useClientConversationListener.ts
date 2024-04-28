@@ -32,7 +32,7 @@ const port = new ContentScriptConnectionV2({
  * - 监听客户端聊天事件
  * - 监听客户端聊天文件上传事件
  * - 监听客户端聊天状态更新事件
- * - 自动归档
+ * - 自动归档 - v4.2.0 - 2024-04
  */
 export const useClientConversationListener = () => {
   const [, setClientConversationMap] = useRecoilState(
@@ -303,6 +303,7 @@ export const useClientConversationListener = () => {
     }
     return () => {}
   }, [currentConversationId])
+  // 自动归档
   const isCreatingConversationRef = useRef(false)
   useEffect(() => {
     if (

@@ -527,10 +527,18 @@ export const ClientMessageInit = () => {
             updateConversationData,
             syncConversationToDB,
           } = data
-          const oldConversation =
+          let oldConversation =
             await ConversationManager.conversationDB.getConversationById(
               conversationId,
             )
+          if (
+            !oldConversation &&
+            updateConversationData.id &&
+            updateConversationData.messages &&
+            updateConversationData.messages.length > 0
+          ) {
+            oldConversation = updateConversationData
+          }
 
           if (oldConversation) {
             await ConversationManager.conversationDB.addOrUpdateConversation(

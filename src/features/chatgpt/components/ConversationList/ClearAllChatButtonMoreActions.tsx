@@ -5,39 +5,66 @@ import Container from '@mui/material/Container'
 import Modal from '@mui/material/Modal'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { IChatConversation } from '@/background/src/chatConversations'
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import DropdownIconButton from '@/components/DropdownIconButton'
-import usePaginationConversations from '@/features/chatgpt/hooks/usePaginationConversations'
+import useSyncConversation from '@/features/chatgpt/hooks/useSyncConversation'
 import { clientGetUserAllConversations } from '@/features/chatgpt/utils/chatConversationUtils'
-import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
-import globalSnackbar from '@/utils/globalSnackbar'
+import AppLoadingLayout from '@/features/common/components/AppLoadingLayout'
+import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 
 const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
   disablePortal,
 }) => {
-  const { fetchPaginationConversations, setPaginationConversations } =
-    usePaginationConversations()
+  const {
+    syncConversationsByIds,
+    conversationSyncGlobalState,
+    conversationSyncState,
+  } = useSyncConversation()
   const { t } = useTranslation(['common', 'client'])
   const [open, setOpen] = useState(false)
-  const [deletedConversations, setDeletedConversations] = useState<
-    IChatConversation[]
-  >([])
   const [loading, setLoading] = useState(false)
+  const [isSyncing, setIsSyncing] = useState(false)
+  const [localConversationIds, setLocalConversationIds] = useState<string[]>([])
+  const [dbConversationIds, setDbConversationIds] = useState<string[]>([])
+  const totalConversationIds = useMemo<string[]>(() => {
+    return [...new Set([...localConversationIds, ...dbConversationIds])]
+  }, [localConversationIds, dbConversationIds])
   const handleOpen = async () => {
     const userAllConversations = await clientGetUserAllConversations()
-    setDeletedConversations(
+    setLocalConversationIds(
       // 过滤出已删除且消息数量大于0的会话
-      userAllConversations.filter(
-        (conversation) =>
-          conversation.isDelete && conversation.messages.length > 0,
-      ),
+      userAllConversations
+        .filter((conversation) => conversation.messages.length > 0)
+        .map((conversation) => conversation.id),
     )
     setOpen(true)
   }
+  useEffect(() => {
+    if (open) {
+      setLoading(true)
+      clientFetchMaxAIAPI<{
+        status: string
+        data: IChatConversation[]
+      }>(`/conversation/get_conversations_basic`, {
+        page_size: 100,
+      })
+        .then((result) => {
+          if (result.data?.status === 'OK') {
+            setDbConversationIds(
+              result.data.data.map((conversation) => conversation.id),
+            )
+          }
+        })
+        .catch()
+        .finally(() => {
+          setLoading(false)
+        })
+    }
+  }, [open])
   return (
     <>
       <DropdownIconButton
@@ -107,63 +134,82 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
             >
               {t('client:immersive_chat__chat_history__restore_modal__title')}
             </Typography>
-            <Typography
-              fontSize={'16px'}
-              fontWeight={500}
-              lineHeight={'24px'}
-              color={'text.primary'}
-            >
-              {`${t(
-                'client:immersive_chat__chat_history__restore_modal__description',
-              )} ${deletedConversations.length}`}
-            </Typography>
+            {conversationSyncGlobalState.syncStatus === 'idle' && (
+              <AppLoadingLayout loading={loading}>
+                <Typography
+                  fontSize={'16px'}
+                  fontWeight={500}
+                  lineHeight={'24px'}
+                  color={'text.primary'}
+                >
+                  {`${t(
+                    'client:immersive_chat__chat_history__restore_modal__description',
+                  )} ${totalConversationIds.length}`}
+                </Typography>
+              </AppLoadingLayout>
+            )}
+            {conversationSyncGlobalState.syncStatus !== 'idle' && (
+              <Stack direction={'row'} alignItems={'center'}>
+                {`[${conversationSyncGlobalState.syncStep}/${conversationSyncGlobalState.syncTotalConversationCount}] conversation messages [${conversationSyncState.autoSyncSuccessCount}/${conversationSyncState.autoSyncTotalCount}] [${conversationSyncState.autoSyncStatus}] Syncing, please wait...`}
+              </Stack>
+            )}
             <Stack direction={'row'} spacing={1} justifyContent={'end'}>
               <LoadingButton
-                disabled={deletedConversations.length === 0}
-                loading={loading}
+                disabled={totalConversationIds.length === 0}
+                loading={conversationSyncState.autoSyncStatus === 'uploading'}
                 variant={'outlined'}
                 onClick={async () => {
-                  setLoading(true)
-                  let successCount = 0
-                  for (const deletedConversation of deletedConversations) {
-                    try {
-                      await clientUpdateChatConversation(
-                        deletedConversation.id,
-                        {
-                          ...deletedConversation,
-                          isDelete: false,
-                        },
-                        true,
-                      )
-                      successCount++
-                    } catch (e) {
-                      console.error(e)
-                    }
+                  try {
+                    setIsSyncing(true)
+                    const result = await syncConversationsByIds(
+                      totalConversationIds,
+                    )
+                    debugger
+                  } catch (e) {
+                    console.error(e)
+                  } finally {
+                    setIsSyncing(false)
+                    setOpen(false)
                   }
-                  const newConversations = await fetchPaginationConversations()
-                  setPaginationConversations(newConversations)
-                  globalSnackbar.success(
-                    successCount > 1
-                      ? t(
-                          'client:immersive_chat__chat_history__restore_modal__toast2__title',
-                          {
-                            CONVERSATION_COUNT: successCount,
-                          },
-                        )
-                      : t(
-                          'client:immersive_chat__chat_history__restore_modal__toast1__title',
-                        ),
-                    {
-                      autoHideDuration: 3000,
-                      // 居中显示
-                      anchorOrigin: {
-                        vertical: 'top',
-                        horizontal: 'center',
-                      },
-                    },
-                  )
-                  setLoading(false)
-                  setOpen(false)
+                  return
+                  // let successCount = 0
+                  // for (const deletedConversation of deletedConversations) {
+                  //   try {
+                  //     await clientUpdateChatConversation(
+                  //       deletedConversation.id,
+                  //       {
+                  //         ...deletedConversation,
+                  //         isDelete: false,
+                  //       },
+                  //       true,
+                  //     )
+                  //     successCount++
+                  //   } catch (e) {
+                  //     console.error(e)
+                  //   }
+                  // }
+                  // const newConversations = await fetchPaginationConversations()
+                  // setPaginationConversations(newConversations)
+                  // globalSnackbar.success(
+                  //   successCount > 1
+                  //     ? t(
+                  //         'client:immersive_chat__chat_history__restore_modal__toast2__title',
+                  //         {
+                  //           CONVERSATION_COUNT: successCount,
+                  //         },
+                  //       )
+                  //     : t(
+                  //         'client:immersive_chat__chat_history__restore_modal__toast1__title',
+                  //       ),
+                  //   {
+                  //     autoHideDuration: 3000,
+                  //     // 居中显示
+                  //     anchorOrigin: {
+                  //       vertical: 'top',
+                  //       horizontal: 'center',
+                  //     },
+                  //   },
+                  // )
                 }}
               >
                 {t(

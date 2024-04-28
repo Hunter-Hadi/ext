@@ -161,11 +161,7 @@ class ConversationDB {
         transaction.oncomplete = () => {
           if (syncConversationToDB) {
             // 同步会话到后端
-            // addOrUpdateDBConversation(conversation).then().catch()
-            // TODO: 年前先不同步到后端,但如果是分享的chat，还是需要同步
-            if (conversation.share?.shareId) {
-              addOrUpdateDBConversation(conversation).then().catch()
-            }
+            addOrUpdateDBConversation(conversation).then().catch()
           }
           resolve() // 操作成功完成，解析 Promise
         }
@@ -348,7 +344,6 @@ export default class ConversationManager {
     'conversations',
   )
   static async createConversation(newConversation: Partial<IChatConversation>) {
-    let now = new Date().getTime()
     const defaultConversation: IChatConversation = {
       authorId: await getMaxAIChromeExtensionUserId(),
       id: uuidV4(),
@@ -378,25 +373,9 @@ export default class ConversationManager {
       )
       .then()
       .catch()
-    let syncConversationToDB = true
-    console.log(
-      `[DB_Conversation] using time1: ${new Date().getTime() - now}ms`,
-    )
-    now = new Date().getTime()
-    if (await this.conversationDB.getConversationById(saveConversation.id)) {
-      syncConversationToDB = false
-    }
-    console.log(
-      `[DB_Conversation] using time2: ${new Date().getTime() - now}ms`,
-    )
-    now = new Date().getTime()
     await this.conversationDB.addOrUpdateConversation(saveConversation, {
-      syncConversationToDB: syncConversationToDB,
-      reason: 'createConversation',
+      syncConversationToDB: false,
     })
-    console.log(
-      `[DB_Conversation] using time3: ${new Date().getTime() - now}ms`,
-    )
     // 异步清除无用的对话
     // this.conversationDB.removeUnnecessaryConversations().then().catch()
     return saveConversation as IChatConversation

@@ -60,6 +60,18 @@ export const defaultChromeExtensionDBStorage =
         },
       },
       buttonSettings: {
+        // Context menu
+        textSelectPopupButton: {
+          visibility: {
+            isWhitelistMode: false,
+            whitelist: [],
+            blacklist: [],
+          },
+          contextMenu: [],
+          contextMenuPosition: 'start',
+        },
+
+        // Instant reply
         inputAssistantComposeReplyButton: {
           visibility: {
             isWhitelistMode: false,
@@ -87,7 +99,9 @@ export const defaultChromeExtensionDBStorage =
           contextMenu: [],
           contextMenuPosition: 'start',
         },
-        textSelectPopupButton: {
+
+        // Summary
+        sidebarSummaryButton: {
           visibility: {
             isWhitelistMode: false,
             whitelist: [],
@@ -169,6 +183,7 @@ export const getChromeExtensionDBStorage =
           inputAssistantComposeReplyButton: {},
           inputAssistantComposeNewButton: {},
           inputAssistantRefineDraftButton: {},
+          sidebarSummaryButton: {},
         }
         Object.keys(currentButtonContentMenuSettings).forEach((buttonKey) => {
           if (buttonMap.has(buttonKey)) {

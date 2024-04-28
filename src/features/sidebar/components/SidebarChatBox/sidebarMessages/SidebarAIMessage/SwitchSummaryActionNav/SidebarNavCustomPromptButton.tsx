@@ -10,6 +10,7 @@ import Stack from '@mui/material/Stack'
 import { styled } from '@mui/material/styles';
 import Typography from '@mui/material/Typography'
 import React, { type ComponentProps, type FC, memo, type ReactNode, useCallback, useRef, useState } from 'react'
+import Browser from 'webextension-polyfill'
 
 import {
   ContextMenuIcon,
@@ -18,6 +19,7 @@ import { UseChatGptIcon } from '@/components/CustomIcon'
 import TextOnlyTooltip from '@/components/TextOnlyTooltip'
 import useSmoothConversationLoading from '@/features/chatgpt/hooks/useSmoothConversationLoading'
 import { type IContextMenuItemWithChildren } from '@/features/contextMenu/types'
+import { chromeExtensionClientOpenPage } from '@/utils'
 
 interface ISidebarNavCustomPromptButtonProps {
   menuList: IContextMenuItemWithChildren[]
@@ -38,8 +40,8 @@ const CustomPromptMenuListItem = styled(({ children, ...props }: ComponentProps<
   <MenuItem {...props}>
     {children}
   </MenuItem>
-))(({ theme }) => ({
-  padding: '12px 8px',
+))(() => ({
+  padding: '5px 8px',
   borderRadius: '6px',
 }))
 
@@ -216,8 +218,11 @@ const SidebarNavCustomPromptButton: FC<ISidebarNavCustomPromptButtonProps> = (pr
       <CustomPromptMenuListItem
         onClick={(event) => {
           event.stopPropagation()
-          // onRename?.()
-          // handleClose(event)
+          chromeExtensionClientOpenPage({
+            key: 'options',
+            url: Browser.runtime.getURL(`/pages/settings/index.html`),
+            query: `#/my-own-prompts?tab=summary`,
+          })
         }}
         sx={{
           borderRadius: '6px',

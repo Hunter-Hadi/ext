@@ -301,14 +301,11 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
                 quotedMessageContentPart1 = '',
                 quotedMessageContentPart2 = '',
               ] = quotedMessageContent.split(/```\w+/)
-              let matched = false
-              if (messageContentPart1 && quotedMessageContentPart1) {
-                matched = messageContentPart1 === quotedMessageContentPart1
-              }
+              let matched = messageContentPart1 === quotedMessageContentPart1
 
               if (matched && messageContentPart2 && quotedMessageContentPart2) {
                 matched = messageContentPart2.includes(
-                  quotedMessageContentPart2,
+                  quotedMessageContentPart2.trimStart(),
                 )
               }
               result ||= matched

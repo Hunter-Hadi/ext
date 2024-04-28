@@ -622,10 +622,7 @@ async function fixManifestTooLongName() {
 
 async function main() {
   await updateDefaultJson(true)
-  const keys = [
-      'feature_card__help_me_write__field__messenger_instant_reply_button__title',
-      'permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title'
-  ]
+  const keys = []
   const retryLanguageCodes = []
   await updateKeys(keys, keys.length > 0, retryLanguageCodes)
   await fixManifestTooLongName()

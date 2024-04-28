@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Nog geen geschiedenis van contextmenu beschikbaar",
     "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Superieure prestaties bij taken die complex redeneren vereisen. Claude 3 is het beste aanbod van Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade naar zoeken met AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI is momenteel vol",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vanwege het hoge verkeer, probeer het later opnieuw of upgrade nu om stabiele toegang tot alle premium AI-modellen te krijgen.",
     "sidebar__conversation__message__context_triggered_content_review": "Context gewist om moderatie te omzeilen"
   },

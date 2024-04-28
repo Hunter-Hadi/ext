@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "የበሽታውን መጠቀም: በሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__title": "የበሽታውን በመስጠት ማስተካከያ",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "በ MaxAI ስልክ የበሽታውን በመስጠት ማስተካከያ የሚያስችል በሽታውን በመስጠት ማስተካከያ ይጠቀሙ። ይህን ለማድረግ እንዴት ማሳየት እንደሚችል ይጠቀሙ።",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "መልእክት የተጠቀሰው መልእክት"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "መልእክት የሚጠቀሙበት መልእክት"
   },
   "client": {
     "sidebar__button__close_sidebar": "ማውጫ ዝርዝርን ዝጋ",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "የመግቢያ ማናቸውንም ስርጭት የለም",
     "context_window__chat_history__continue_in_chat__title": "በመግቢያ ማጥፊያ ውስጥ ተጨማሪ ይሆናል",
     "provider__claude_web_app__model__claude_3_200k__description": "የተሻለ እንቅስቃሴ ከማጥፋት የሚችል አስተዳደር በማስተማር የአንትሪፒክ የብልጥነት ምልክት ነው። Claude 3 አንትሪፒክ የብልጥነት ምልክት ነው።",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "የማይጠቅምሽ AI የማይገባሽ ይዘት ይደርስ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI አሁን ማጥፋት ያለው ነው",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "በማይገባሽ የማይጠቅምሽ AI ሞዴሎች ላይ ማስታወሻዎችን ይቀላቀሉ። ወደ የሚገባሽ የማይጠቅምሽ AI ሞዴሎች ሂደት ይደርስ ይመልከቱ።",
     "sidebar__conversation__message__context_triggered_content_review": "የተጠቀሰው መልእክት በማስታወሻ የሚገባውን ይጠቀሙ"
   },

@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Encara no hi ha cap historial de menú de context disponible",
     "context_window__chat_history__continue_in_chat__title": "Continua al xat",
     "provider__claude_web_app__model__claude_3_200k__description": "Rendiment superior en tasques que requereixen raonament complex. Claude 3 és la millor opció d'Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Actualitza a cerca amb IA",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI està a plena capacitat ara mateix",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torna-ho a provar més tard o actualitza ara per gaudir d'accés estable a tots els models d'IA premium.",
     "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació"
   },

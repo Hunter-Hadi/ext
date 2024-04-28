@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Vēl nav pieejama konteksta izvēlnes vēsture",
     "context_window__chat_history__continue_in_chat__title": "Turpināt čatā",
     "provider__claude_web_app__model__claude_3_200k__description": "Izcila veiktspēja uzdevumos, kas prasa sarežģītu domāšanu. Claude 3 ir Anthropic labākais piedāvājums.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Jaunināt, izmantojot AI meklēšanu",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI pašlaik ir pilnībā aizņemts",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Augsta satiksmes dēļ, lūdzu, mēģiniet vēlāk vai jauniniet tagad, lai baudītu stabilu piekļuvi visiem premium AI modeļiem.",
     "sidebar__conversation__message__context_triggered_content_review": "Konteksts notīrīts, lai izvairītos no moderēšanas"
   },

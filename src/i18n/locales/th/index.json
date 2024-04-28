@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "อัตโนมัติเก็บถาวร: ทำความสะอาดในขณะใช้งาน",
     "feature_card__sidebar__field__auto_archive__button__title": "เก็บถาวรแชทหลังจาก",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "ใน MaxAI เราจะเก็บถาวรแชทที่ไม่ได้ใช้งานอยู่ตามความถี่ที่คุณเลือก ซึ่งจะช่วยให้คุณเริ่มต้นใหม่และรักษาระเบียบเรียบร้อยในแถบด้านข้างของคุณ",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ตอบกลับทันทีของ Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "การตอบกลับทันทีของ Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "ปิดแถบข้าง",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "ยังไม่มีประวัติเมนูบริบทที่ใช้ได้",
     "context_window__chat_history__continue_in_chat__title": "ดำเนินการต่อในแชท",
     "provider__claude_web_app__model__claude_3_200k__description": "ประสิทธิภาพที่เหนือกว่าในงานที่ต้องการความคิดที่ซับซ้อน โมเดล Claude 3 เป็นผลิตภัณฑ์ที่ดีที่สุดของ Anthropic",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "อัปเกรดเพื่อค้นหาด้วย AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI เต็มพื้นที่ใช้งานในขณะนี้",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "เนื่องจากมีการรับส่งข้อมูลสูง โปรดลองอีกครั้งในภายหลัง หรืออัปเกรดเดี๋ยวนี้เพื่อเพลิดเพลินกับการเข้าถึงแบบพรีเมียมของโมเดล AI ทั้งหมด",
     "sidebar__conversation__message__context_triggered_content_review": "ล้างบริบทเพื่อผ่านการตรวจสอบ"
   },

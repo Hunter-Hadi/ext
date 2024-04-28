@@ -255,7 +255,7 @@
     "feature_card__help_me_write__field__google_chat_instant_reply_button__title": "Google chat તત્કાલ જવાબ",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI માં, અમે તમારી પસંદગીના કેડન્સ પર આઈડલ ચેટને આપોઆપ આર્કાઇવ કરીએ છીએ. આ તમને એક નવી શરૂઆત આપે છે અને તમારી સાઇડબાર સુથરી રાખે છે.",
     "left_menu__sidebar": "સાઇડબાર",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "મેસેન્જર તત્કાલ જવાબ",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "મેસેન્જર તક જવાબ",
     "feature_card__sidebar__field__auto_archive__title": "આપો આર્કાઇવ: ચાલી જાઓ અને સાફ કરો",
     "feature_card__sidebar__field__auto_archive__button__title": "ચેટ આર્કાઇવ કરો પછી"
   },
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "હજુ સુધી કોઈ સંદર્ભ મેનૂનો ઈતિહાસ ઉપલબ્ધ નથી",
     "context_window__chat_history__continue_in_chat__title": "ચેટમાં ચાલુ રાખો",
     "provider__claude_web_app__model__claude_3_200k__description": "જેટલું જટિલ તાસ્ક માટે શ્રેષ્ઠ પ્રદર્શન. Claude 2 એ Anthropic ની શ્રેષ્ઠ ઓફરિંગ છે",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "એઆઈ સાથે શોધવા માટે અપગ્રેડ કરો",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "હાલમાં FreeAI ક્ષમતામાં છે",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ઉચ્ચ ટ્રેફિક કારણે, કૃપા કરીને પછી થોડીવાર પ્રયાસ કરો અથવા હવે અનુભવો માટે સ્થિર પ્રીમિયમ એઆઈ મોડલ્સનો ઉપયોગ કરવા માટે અપગ્રેડ કરો.",
     "sidebar__conversation__message__context_triggered_content_review": "સંદર્ભ મોદરેશન પર છોડવા માટે સાફ કર્યું"
   },

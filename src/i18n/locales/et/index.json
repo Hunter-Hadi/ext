@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Kontekstimenüü ajalugu pole veel saadaval",
     "context_window__chat_history__continue_in_chat__title": "Jätka vestlust",
     "provider__claude_web_app__model__claude_3_200k__description": "Ülim jõudlus ülesannetes, mis nõuavad keerulist mõtlemist. Claude 3 on Anthropicu parim pakkumine.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Uuenda otsingut tehisintellektiga",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI on hetkel täis",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Suure liikluse tõttu proovi hiljem uuesti või uuenda kohe, et nautida stabiilset juurdepääsu kõigile tasulisele tehisintellekti mudelitele.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontekst kustutatud modereerimise vältimiseks"
   },

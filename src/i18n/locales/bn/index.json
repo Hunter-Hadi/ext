@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "অটো আর্কাইভ: চলাচলের সাথে পরিষ্কার করুন",
     "feature_card__sidebar__field__auto_archive__button__title": "চ্যাট আর্কাইভ করুন পরে",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-তে, আমরা আপনার পছন্দের ক্যাডেন্সে আইডেল চ্যাটগুলি অটোমেটিকভাবে আর্কাইভ করি। এটি আপনাকে একটি নতুন শুরু দেয় এবং আপনার সাইডবারটি সাজানো রাখে।",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "মেসেঞ্জার দ্রুত উত্তর"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "মেসেঞ্জার তাৎক্ষণিক উত্তর"
   },
   "client": {
     "sidebar__button__close_sidebar": "সাইডবার বন্ধ করুন",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "এখনও কোন সংদর্শন মেনু ইতিহাস উপলব্ধ নেই",
     "context_window__chat_history__continue_in_chat__title": "চ্যাটে অবতরণ করুন",
     "provider__claude_web_app__model__claude_3_200k__description": "জটিল বিচারের কাজগুলির জন্য উত্কৃষ্ট পারফরম্যান্স। Claude 3 এনথ্রোপিকের সেরা অফারিং।",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "এইচটি ট্রাফিকের সাথে অ্যাক্সেস খুব বেশি হলে আপগ্রেড করুন",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ফ্রি এআই এখন পূর্ণ হয়েছে",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "বেশি ট্রাফিকের কারণে, দয়া করে পরে আবার চেষ্টা করুন অথবা এখনই আপগ্রেড করে সমস্ত প্রিমিয়াম AI মডেলের স্থিতিশীল অ্যাক্সেস উপভোগ করুন।",
     "sidebar__conversation__message__context_triggered_content_review": "মধ্যস্থতা পর্যালোচনা অবগতি দেওয়ার জন্য সংদর্শিত সামগ্রী পরিষ্কার করা হয়েছে"
   },

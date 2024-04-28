@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Safisha unavyokwenda",
     "feature_card__sidebar__field__auto_archive__button__title": "Hifadhi gumzo baada ya",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Katika MaxAI, tunahifadhi gumzo lisilo na shughuli kwa kasi unayopendelea. Hii inakupa mwanzo mpya na kuweka upau wako safi.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo hapo kwenye Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Jibu la Papo kwa Papo la Mtumaji"
   },
   "client": {
     "sidebar__button__close_sidebar": "Funga upau wa pembeni",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Hakuna historia ya menyu ya muktadha inapatikana bado",
     "context_window__chat_history__continue_in_chat__title": "Endelea katika mazungumzo",
     "provider__claude_web_app__model__claude_3_200k__description": "Utendaji bora kwenye majukumu yanayohitaji mawazo magumu. Claude 3 ni huduma bora kabisa ya Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nenda kwenye utaftaji na AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI imefikia uwezo wake sasa",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kutokana na trafiki kubwa, tafadhali jaribu tena baadaye, au nenda sasa kuboresha ili uweze kupata ufikiaji thabiti wa mifano yote ya AI ya hali ya juu.",
     "sidebar__conversation__message__context_triggered_content_review": "Muktadha umefutwa ili kuepuka ukaguzi"
   },

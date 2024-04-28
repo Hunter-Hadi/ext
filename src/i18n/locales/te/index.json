@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "ఇంకా ఏ కంటెక్స్ట్ మెనూ చరిత్ర లేదు",
     "context_window__chat_history__continue_in_chat__title": "చాట్‌లో కొనసాగించు",
     "provider__claude_web_app__model__claude_3_200k__description": "కంప్లెక్స్ రీజనింగ్ అవసరమైన టాస్కులపై అత్యుత్తమ పనిచేసే పనితీరు. క్లాడ్ 3 అంత్రోపిక్ యొక్క ఉత్తమ ఆఫరింగ్ ఉంది.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI తో శోధన నుండి అప్గ్రేడ్ చేయండి",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ప్రస్తుతం పూర్తిగా భరించబడింది",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ఉన్న ట్రాఫిక్ ఎక్కువగా ఉంది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి లేదా ప్రీమియం AI మోడల్స్‌కు స్థిరమైన ప్రవేశం ఆనందించడానికి ఇప్పుడు అప్గ్రేడ్ చేయండి.",
     "sidebar__conversation__message__context_triggered_content_review": "మార్గం నిర్వహణ తరచుగా తీసుకోవడానికి కంటెంట్ సమీక్షను తీసుకోబడింది"
   },

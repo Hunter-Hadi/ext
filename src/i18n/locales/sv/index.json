@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "Autoarkivering: Rensa allt eftersom",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkivera chatt efter",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "I MaxAI arkiverar vi automatiskt inaktiva chattar i den takt du väljer. Det ger dig en fräsch start och håller din sidofält snygg.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Svar direkt i Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Snabbt svar i Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Stäng sidofältet",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Ingen tillgänglig historik för kontextmenyer ännu",
     "context_window__chat_history__continue_in_chat__title": "Fortsätt i chatt",
     "provider__claude_web_app__model__claude_3_200k__description": "Överlägsen prestanda på uppgifter som kräver komplex resonemang. Claude 3 är Anthropics bästa erbjudande.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Uppgradera till sökning med AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI är fullbelastat just nu",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund av hög trafik, försök igen senare eller uppgradera nu för att få stabil åtkomst till alla premium AI-modeller.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontext rensad för att passera moderering"
   },

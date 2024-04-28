@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Još nema dostupne povijesti izbornika konteksta",
     "context_window__chat_history__continue_in_chat__title": "Nastavi u chatu",
     "provider__claude_web_app__model__claude_3_200k__description": "Izvrsna izvedba na zadacima koji zahtijevaju složeno zaključivanje. Claude 3 je najbolja ponuda tvrtke Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nadogradite na pretragu s AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je trenutno popunjen",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog prometa, molimo pokušajte ponovno kasnije ili nadogradite sada kako biste uživali u stabilnom pristupu svim premium AI modelima.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontekst očišćen za zaobilaženje moderacije"
   },

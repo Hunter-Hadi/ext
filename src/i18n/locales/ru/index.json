@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Пока нет доступной истории контекстного меню",
     "context_window__chat_history__continue_in_chat__title": "Продолжить в чате",
     "provider__claude_web_app__model__claude_3_200k__description": "Превосходная производительность при выполнении задач, требующих сложного мышления. Claude 3 - это лучшее предложение от Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Обновите для поиска с помощью искусственного интеллекта",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI сейчас загружен",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Из-за высокой нагрузки, пожалуйста, попробуйте еще раз позже или обновите сейчас, чтобы насладиться стабильным доступом ко всем премиум моделям искусственного интеллекта.",
     "sidebar__conversation__message__context_triggered_content_review": "Контекст очищен для обхода модерации"
   },

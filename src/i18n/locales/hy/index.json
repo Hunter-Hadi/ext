@@ -750,7 +750,7 @@
     "context_window__chat_history__empty__title": "Դեռևս չկան համերգային ընտրանքների պատմություններ",
     "context_window__chat_history__continue_in_chat__title": "Շարունակեք խոսքի մեջ",
     "provider__claude_web_app__model__claude_3_200k__description": "Շատ լավագույն արդյունավետություն պահանջող առանձին գործիքների համար: Claude 3-ը Anthropic-ի ամենալավագույն առաջարկն է:",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Թարմացնել AI-ով որոնումը",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI-ն այժմ լրացված է",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Հեռավոր այցելուների շահագործության պատճառով, խնդրում ենք փորձել նորից հետո, կամ թարմացնելու համար բարելավելավորված AI մոդելների բոլոր առաջադրանքները հասանելի դառնալու համար:",
     "sidebar__conversation__message__context_triggered_content_review": "Կոնտեքստը մաքրված է, որպեսզի անթերի կանգառից խուսափելու"
   },

@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "अभी तक कोई संदर्भ मेनू इतिहास उपलब्ध नहीं है",
     "context_window__chat_history__continue_in_chat__title": "चैट में जारी रखें",
     "provider__claude_web_app__model__claude_3_200k__description": "जटिल तर्क की आवश्यकता वाले कार्यों पर उत्कृष्ट प्रदर्शन। Claude 3 Anthropic की सर्वोत्तम पेशकश है।",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI के साथ खोज को अपग्रेड करें",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "फ्रीएआई अभी क्षमता में है",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "उच्च ट्रैफिक के कारण, कृपया बाद में पुनः प्रयास करें, या सभी प्रीमियम AI मॉडलों का स्थिर पहुँच का आनंद लेने के लिए अभी अपग्रेड करें।",
     "sidebar__conversation__message__context_triggered_content_review": "माध्यमिकता को छोड़कर संदर्भ हटा दिया गया"
   },

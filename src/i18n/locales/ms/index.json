@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Tiada sejarah menu konteks yang tersedia lagi",
     "context_window__chat_history__continue_in_chat__title": "Teruskan dalam perbualan",
     "provider__claude_web_app__model__claude_3_200k__description": "Prestasi unggul dalam tugas yang memerlukan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Naik taraf kepada carian dengan AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI penuh pada masa ini",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Kerana trafik yang tinggi, sila cuba lagi nanti, atau naik taraf sekarang untuk menikmati akses stabil ke semua model AI premium.",
     "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk mengelakkan penyeliaan"
   },

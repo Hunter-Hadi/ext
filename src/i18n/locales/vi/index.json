@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Chưa có lịch sử menu ngữ cảnh nào",
     "context_window__chat_history__continue_in_chat__title": "Tiếp tục trong cuộc trò chuyện",
     "provider__claude_web_app__model__claude_3_200k__description": "Hiệu suất vượt trội trong các nhiệm vụ đòi hỏi tư duy phức tạp. Claude 3 là sản phẩm hàng đầu của Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Nâng cấp để tìm kiếm với AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI hiện đang quá tải",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Do lưu lượng cao, vui lòng thử lại sau hoặc nâng cấp ngay để truy cập ổn định vào tất cả các mô hình AI cao cấp.",
     "sidebar__conversation__message__context_triggered_content_review": "Xóa bỏ ngữ cảnh để bỏ qua kiểm duyệt"
   },

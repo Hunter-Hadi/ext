@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Ei vielä saatavilla olevaa kontekstivalikon historiaa",
     "context_window__chat_history__continue_in_chat__title": "Jatka keskustelua",
     "provider__claude_web_app__model__claude_3_200k__description": "Erinomainen suorituskyky monimutkaista päättelyä vaativissa tehtävissä. Claude 3 on Anthropicin paras tarjous.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Päivitä haku tekoälyllä",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI on tällä hetkellä täynnä",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Suuren liikenteen vuoksi, yritä myöhemmin uudelleen tai päivitä nyt nauttiaksesi vakaasta pääsystä kaikkiin premium-tekoälymalleihin.",
     "sidebar__conversation__message__context_triggered_content_review": "Konteksti tyhjennetty ohittaaksesi moderoinnin"
   },

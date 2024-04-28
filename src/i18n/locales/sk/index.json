@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
     "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate",
     "provider__claude_web_app__model__claude_3_200k__description": "Vynikajúce výkony pri úlohách, ktoré vyžadujú zložité uvažovanie. Claude 3 je najlepšia ponuka od Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Vylepšiť na vyhľadávanie s umelou inteligenciou",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je momentálne obsadené",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vzhľadom na vysokú premávku, skúste to prosím neskôr alebo teraz upgradujte a vychutnajte si stabilný prístup ku všetkým prémiovým modelom AI.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontext vymazaný pre obchádzanie moderácie"
   },

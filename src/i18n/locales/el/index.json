@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Δεν υπάρχει ακόμα διαθέσιμο ιστορικό μενού περιβάλλοντος",
     "context_window__chat_history__continue_in_chat__title": "Συνέχεια στη συνομιλία",
     "provider__claude_web_app__model__claude_3_200k__description": "Ανώτερη απόδοση σε εργασίες που απαιτούν πολύπλοκη σκέψη. Ο Claude 3 είναι η κορυφαία προσφορά της Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Αναβάθμιση για αναζήτηση με Τεχνητή Νοημοσύνη",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Το FreeAI είναι σε πλήρη χωρητικότητα αυτή τη στιγμή",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Λόγω υψηλής κίνησης, παρακαλούμε δοκιμάστε ξανά αργότερα ή αναβαθμίστε τώρα για να απολαύσετε σταθερή πρόσβαση σε όλα τα προηγμένα μοντέλα Τεχνητής Νοημοσύνης.",
     "sidebar__conversation__message__context_triggered_content_review": "Ο περιβάλλον εκκαθάρισης για παράκαμψη της μετριότητας"
   },

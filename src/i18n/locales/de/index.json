@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Kein Kontextmenü-Verlauf verfügbar",
     "context_window__chat_history__continue_in_chat__title": "Im Chat fortsetzen",
     "provider__claude_web_app__model__claude_3_200k__description": "Überragende Leistung bei Aufgaben, die komplexe Denkfähigkeiten erfordern. Claude 3 ist das Spitzenprodukt von Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgrade auf Suche mit KI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ist derzeit ausgelastet",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um die Moderation zu umgehen"
   },

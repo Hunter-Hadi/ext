@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "ಸ್ವಯಂ ಆರ್ಕೈವ್: ನೀವು ಹೋಗುವವರೆಗೆ ಸ್ವಚ್ಛಗೊಳಿಸಿ",
     "feature_card__sidebar__field__auto_archive__button__title": "ಚಾಟ್ ಆರ್ಕೈವ್ ಮುಂದುವರೆಸಿ",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI ನಲ್ಲಿ, ನೀವು ಆರ್ಕೈವ್ ಮಾಡಲು ನಿಮ್ಮ ಆಯ್ಕೆಯ ಪ್ರಮಾಣದಲ್ಲಿ ಅಡ್ಲ್ ಚಾಟ್ ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆರ್ಕೈವ್ ಮಾಡುತ್ತದೆ. ಇದು ನಿಮಗೆ ಹೊಸ ಪ್ರಾರಂಭ ಮತ್ತು ನಿಮ್ಮ ಸೈಡ್‌ಬಾರ್ ಒಳ್ಳೆಯದನ್ನು ಕಾಪಾಡುತ್ತದೆ.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ಮೆಸೆಂಜರ್ ತಕ್ಷಣ ಪ್ರತಿಗ್ರಹ"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "ಮೆಸೆಂಜರ್ ತಕ್ಷಣ ಪ್ರತಿಕ್ರಿಯೆ"
   },
   "client": {
     "sidebar__button__close_sidebar": "ಸೈಡ್‌ಬಾರ್ ಮುಚ್ಚಿ",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "ಇನ್ನೂ ಯಾವ ಸಂದರ್ಭ ಮೆನು ಇತಿಹಾಸವೂ ಲಭ್ಯವಿಲ್ಲ",
     "context_window__chat_history__continue_in_chat__title": "ಚಾಟ್‌ನಲ್ಲಿ ಮುಂದುವರೆಯಿರಿ",
     "provider__claude_web_app__model__claude_3_200k__description": "ಜಟಿಲ ತರ್ಕದ ಕೆಲಸಗಳನ್ನು ಅಗತ್ಯವಾದ ಉತ್ತಮ ಪ್ರದರ್ಶನ. Claude 3 ಅಂತರ್ಭೂತಿಯ ಅತ್ಯುತ್ತಮ ಆಯ್ಕೆ.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ನೊಂದಿಗೆ ಹುಡುಕಾಟವನ್ನು ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ಈಗ ಫ್ರೀಎಯ್‌ಐ ಪೂರ್ಣತೆಯಲ್ಲಿದೆ",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ಉಚ್ಚ ಟ್ರಾಫಿಕ್ ಕಾರಣದಿಂದ, ದಯವಿಟ್ಟು ನಂತರ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ ಅಥವಾ ಎಲ್ಲಾ ಪ್ರೀಮಿಯಂ AI ಮಾದರಿಗಳಿಗೆ ಸ್ಥಿರ ಪ್ರವೇಶವನ್ನು ಆನಂದಿಸಲು ಈಗ ಅಪ್ಗ್ರೇಡ್ ಮಾಡಿ.",
     "sidebar__conversation__message__context_triggered_content_review": "ಸಂದರ್ಭ ಮಾಧ್ಯಮವನ್ನು ಮೀರಿಸಲು ಸರಿಹೊಂದಿಸಲಾಗಿದೆ"
   },

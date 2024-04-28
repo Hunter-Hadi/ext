@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "אין עדיין היסטוריית תפריטי ההקשר זמינה",
     "context_window__chat_history__continue_in_chat__title": "המשך בצ'אט",
     "provider__claude_web_app__model__claude_3_200k__description": "ביצועים יוצאי דופן במשימות הדורשות שיקול מורכב. Claude 3 הוא ההצעה המובילה של Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "שדרג לחיפוש עם AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI כרגע במלוא קיבולתו",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "בשל תעבורה גבוהה, אנא נסה שוב מאוחר יותר או שדרג כעת כדי ליהנות מגישה יציבה לכל הדגמים המתקדמים של AI.",
     "sidebar__conversation__message__context_triggered_content_review": "התוכן נמחק כדי לעקוף את המודרציה"
   },

@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Ingen kontekstmenuhistorik tilgængelig endnu",
     "context_window__chat_history__continue_in_chat__title": "Fortsæt i chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Overlegen præstation på opgaver, der kræver kompleks tænkning. Claude 3 er Anthropics bedste tilbud.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Opgrader til søgning med AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI er i øjeblikket fuldt booket",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund af høj trafik, prøv venligst igen senere, eller opgrader nu for at få stabil adgang til alle premium AI-modeller.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for at omgå moderation"
   },

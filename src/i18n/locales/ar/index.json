@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "الأرشفة التلقائية: نظّف أثناء استخدامك",
     "feature_card__sidebar__field__auto_archive__button__title": "أرشفة المحادثة بعد",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة المحادثات الخاملة تلقائيًا بتواتر اختيارك. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "رد فوري على الماسنجر"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "الرد الفوري على الماسنجر"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "لا توجد سجلات لقوائم السياق حتى الآن",
     "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة",
     "provider__claude_web_app__model__claude_3_200k__description": "أداء متفوق في المهام التي تتطلب تفكيرًا معقدًا. كلاود 3 هو أفضل ما تقدمه Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ترقية للبحث بالذكاء الاصطناعي",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI مشغول حاليًا",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول ثابت إلى جميع نماذج الذكاء الاصطناعي المتميزة.",
     "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز المراجعة"
   },

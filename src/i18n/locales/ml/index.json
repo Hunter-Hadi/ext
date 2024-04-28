@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "ഇതുവരെ കോണ്‍ടെക്സ്റ്റ് മെനു ചരിത്രം ലഭ്യമല്ല",
     "context_window__chat_history__continue_in_chat__title": "ചാറ്റില്‍ തുടരുക",
     "provider__claude_web_app__model__claude_3_200k__description": "പ്രത്യേകിച്ച് ജടിലമായ ചിന്താശകലങ്ങളെ ആവശ്യപ്പെടുന്ന ടാസ്കുകളിൽ ഉന്നത പ്രകടനം. Claude 3 Anthropic-ന്റെ അത്യാധുനികമായ ഓഫറിങ്ങാണ്.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "AI ഉപയോഗിച്ച് തിരയൽ അപ്ഗ്രേഡ് ചെയ്യുക",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ഇപ്പോൾ പൂർണ്ണമായി ഉപയോഗിക്കാൻ കഴിയുന്നില്ല",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ഉയരമായ ട്രാഫിക്ക് കാരണം, ദയവായി ശേഷം വീണ്ടും ശ്രമിക്കുക അല്ലെങ്കിൽ എല്ലാ പ്രീമിയം AI മോഡലുകളും സ്ഥിരമായ ആക്സസ് ആനന്ദിക്കാൻ ഇപ്പോൾ അപ്ഗ്രേഡ് ചെയ്യുക.",
     "sidebar__conversation__message__context_triggered_content_review": "മോഡറേഷൻ വിട്ട് പാരാമീറ്റർ അനാവശ്യമാക്കി"
   },

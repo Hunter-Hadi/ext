@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Все още няма налична история на контекстните менюта",
     "context_window__chat_history__continue_in_chat__title": "Продължи в чата",
     "provider__claude_web_app__model__claude_3_200k__description": "Изключителна производителност при задачи, изискващи сложно мислене. Клод 3 е най-доброто предложение на Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Надстройка за търсене с изкуствен интелект",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI е на капацитет в момента",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Поради голям трафик, моля опитайте отново по-късно или надстройте сега, за да се насладите на стабилен достъп до всички премиум модели на изкуствения интелект.",
     "sidebar__conversation__message__context_triggered_content_review": "Контекстът е изчистен за обхождане на модерацията"
   },

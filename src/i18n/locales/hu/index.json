@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Még nincs elérhető kontextusmenü előzmény",
     "context_window__chat_history__continue_in_chat__title": "Folytatás a csevegésben",
     "provider__claude_web_app__model__claude_3_200k__description": "Kiváló teljesítmény olyan feladatok esetén, amelyek bonyolult gondolkodást igényelnek. Claude 3 az Anthropic legjobb ajánlata.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Frissítés az AI-vel történő kereséshez",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "A FreeAI jelenleg telített",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Magas forgalom miatt kérjük, próbálja újra később, vagy frissítse most, hogy stabil hozzáférést kapjon az összes prémium AI modellhez.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció elkerülése érdekében"
   },

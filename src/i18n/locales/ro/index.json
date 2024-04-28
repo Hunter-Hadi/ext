@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Nu există încă istoric al meniului contextual",
     "context_window__chat_history__continue_in_chat__title": "Continuați în chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Performanță superioară la sarcinile care necesită raționament complex. Claude 3 este cea mai bună ofertă a Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Upgradează pentru căutare cu AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI este la capacitate maximă în acest moment",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Datorită traficului ridicat, vă rugăm să încercați din nou mai târziu sau faceți upgrade acum pentru a avea acces stabil la toate modelele premium de AI.",
     "sidebar__conversation__message__context_triggered_content_review": "Contextul a fost șters pentru a trece de moderare"
   },

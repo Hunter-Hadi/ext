@@ -257,7 +257,7 @@
     "feature_card__sidebar__field__auto_archive__title": "Auto archive: Linisin habang ginagamit",
     "feature_card__sidebar__field__auto_archive__button__title": "I-archive ang usapan pagkatapos",
     "feature_card__sidebar__field__auto_archive__button__tooltip": "Sa MaxAI, awtomatikong ina-archive namin ang hindi aktibong usapan sa pinili mong panahon. Ito ay nagbibigay sa iyo ng sariwang simula at nagpapanatili ng kaayusan sa iyong sidebar.",
-    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Tumugon agad sa Messenger"
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Tumugon Agad sa Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Isara ang sidebar",
@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Walang available na kasaysayan ng menu ng konteksto pa",
     "context_window__chat_history__continue_in_chat__title": "Magpatuloy sa chat",
     "provider__claude_web_app__model__claude_3_200k__description": "Higit na magaling sa mga gawain na nangangailangan ng kumplikadong pag-iisip. Ang Claude 3 ay pinakamahusay na alok ng Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Mag-upgrade para sa paghahanap gamit ang AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Ang FreeAI ay puno na ngayon",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang magkaroon ng matatag na access sa lahat ng premium na AI models.",
     "sidebar__conversation__message__context_triggered_content_review": "Inalis ang konteksto upang maiwasan ang pagsusuri"
   },

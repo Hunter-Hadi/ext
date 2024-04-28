@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "هنوز تاریخچه منوی متنی موجود نیست",
     "context_window__chat_history__continue_in_chat__title": "ادامه در چت",
     "provider__claude_web_app__model__claude_3_200k__description": "عملکرد برتر در وظایفی که نیاز به استدلال پیچیده دارند. کلود 3 بهترین ارائه Anthropic است.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ارتقا به جستجو با هوش مصنوعی",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI در حال حاضر پر است",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "به دلیل ترافیک بالا، لطفاً بعداً دوباره امتحان کنید یا همین الان ارتقا دهید تا به دسترسی پایدار به همه مدل‌های پریمیوم هوش مصنوعی دست پیدا کنید.",
     "sidebar__conversation__message__context_triggered_content_review": "محتوای مرتبط برای عبور از مدیریت حذف شد"
   },

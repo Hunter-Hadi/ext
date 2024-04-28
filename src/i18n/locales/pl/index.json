@@ -753,7 +753,7 @@
     "context_window__chat_history__empty__title": "Brak dostępnej historii menu kontekstowego",
     "context_window__chat_history__continue_in_chat__title": "Kontynuuj w czacie",
     "provider__claude_web_app__model__claude_3_200k__description": "Najwyższa wydajność w zadaniach wymagających złożonego rozumowania. Claude 3 to najlepsza oferta od Anthropic.",
-    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Uaktualnij do wyszukiwania z AI",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI jest obecnie w pełni wykorzystane",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Ze względu na duży ruch, spróbuj ponownie później lub teraz uaktualnij, aby korzystać ze stabilnego dostępu do wszystkich premium modeli AI.",
     "sidebar__conversation__message__context_triggered_content_review": "Kontekst wyczyszczony, aby ominąć moderację"
   },

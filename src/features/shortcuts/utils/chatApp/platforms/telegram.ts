@@ -460,7 +460,7 @@ export const telegramGetChatMessages = async (
       chatTextArea,
       3,
     )
-    let replyPrivatelyQuotedMessage: ITelegramChatMessageData | null = null
+    let replyUnfoundQuotedMessage: ITelegramChatMessageData | null = null
     let replyMessageBoxIndex = -1
 
     if (chatTextArea) {
@@ -520,7 +520,7 @@ export const telegramGetChatMessages = async (
         // 3. 没被适配到的 quoted message
         if (replyMessageBoxIndex === -1) {
           replyMessageBoxIndex = Infinity
-          replyPrivatelyQuotedMessage = {
+          replyUnfoundQuotedMessage = {
             ...quotedMessage,
             datetime: '',
           }
@@ -534,12 +534,12 @@ export const telegramGetChatMessages = async (
 
     if (chatMessages.length) {
       if (replyMessageBoxIndex === Infinity) {
-        if (replyPrivatelyQuotedMessage) {
+        if (replyUnfoundQuotedMessage) {
           const chatMessagesContext = new ChatMessagesContext(
             chatMessages,
             configs,
           )
-          chatMessagesContext.replyMessage(replyPrivatelyQuotedMessage)
+          chatMessagesContext.replyMessage(replyUnfoundQuotedMessage)
           return chatMessagesContext.data
         }
       } else {

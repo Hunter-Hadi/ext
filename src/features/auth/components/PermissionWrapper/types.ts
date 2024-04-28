@@ -44,6 +44,8 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'WHATSAPP_REFINE_DRAFT_BUTTON',
   'TELEGRAM_COMPOSE_REPLY_BUTTON',
   'TELEGRAM_REFINE_DRAFT_BUTTON',
+  'MESSENGER_COMPOSE_REPLY_BUTTON',
+  'MESSENGER_REFINE_DRAFT_BUTTON',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
   'SEARCH_WITH_AI_HIGH_TRAFFIC',
@@ -513,6 +515,22 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Telegram dropdown button - refine draft
   TELEGRAM_REFINE_DRAFT_BUTTON: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
+  },
+  // Messenger cta button - compose reply
+  MESSENGER_COMPOSE_REPLY_BUTTON: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
+  },
+  // Messenger dropdown button - refine draft
+  MESSENGER_REFINE_DRAFT_BUTTON: {
     pricingHookCardType: 'INSTANT_REPLY',
     videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),

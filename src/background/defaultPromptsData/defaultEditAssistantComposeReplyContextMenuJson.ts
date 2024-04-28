@@ -1,4 +1,10 @@
+import {
+  ChatAppWebsites,
+  EmailWebsites,
+  SocialMediaWebsites,
+} from '@/features/contextMenu/components/InputAssistantButton/config'
 import { IContextMenuItem } from '@/features/contextMenu/types'
+
 // 社交媒体
 const socialMediaPrompts = [
   {
@@ -821,15 +827,7 @@ const socialMediaPrompts = [
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: [
-          'twitter.com',
-          'linkedin.com',
-          'facebook.com',
-          'youtube.com',
-          'studio.youtube.com',
-          'instagram.com',
-          'reddit.com',
-        ],
+        whitelist: [...SocialMediaWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },
@@ -1676,12 +1674,7 @@ const emailPrompts = [
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: [
-          'outlook.live.com',
-          'outlook.office365.com',
-          'outlook.office.com',
-          'mail.google.com',
-        ],
+        whitelist: [...EmailWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },
@@ -1702,12 +1695,7 @@ const chatAppPrompts: IContextMenuItem[] = [
       type: 'group',
       actions: [],
       visibility: {
-        whitelist: [
-          'discord.com',
-          'app.slack.com',
-          'web.whatsapp.com',
-          'web.telegram.org',
-        ],
+        whitelist: [...ChatAppWebsites],
         blacklist: [],
         isWhitelistMode: true,
       },

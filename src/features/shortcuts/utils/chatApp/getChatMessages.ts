@@ -18,6 +18,10 @@ import {
   whatsAppGetChatMessages,
   whatsAppGetDraftContent,
 } from '@/features/shortcuts/utils/chatApp/platforms/whatsApp'
+import {
+  messengerGetChatMessages,
+  messengerGetDraftContent,
+} from '@/features/shortcuts/utils/chatApp/platforms/messenger'
 import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 
 export const getChatMessagesContent = async (
@@ -44,6 +48,9 @@ export const getChatMessagesContent = async (
     if (host === 'web.telegram.org') {
       return await telegramGetChatMessages(inputAssistantButton)
     }
+    if (host === 'messenger.com') {
+      return await messengerGetChatMessages(inputAssistantButton)
+    }
   }
   return ChatMessagesContext.emptyData
 }
@@ -68,6 +75,9 @@ export const getChatMessageDraftContent = async (
     }
     if (host === 'web.telegram.org') {
       return await telegramGetDraftContent(inputAssistantButton)
+    }
+    if (host === 'messenger.com') {
+      return await messengerGetDraftContent(inputAssistantButton)
     }
   }
   return ''

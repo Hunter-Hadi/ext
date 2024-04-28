@@ -40,6 +40,14 @@ const messengerGetMessageContent = (messageContentBox: HTMLElement | null) => {
           messageContent += `_${node.textContent}_`
         } else if ((node as HTMLElement).tagName === 'S') {
           messageContent += `~${node.textContent}~`
+        } else if ((node as HTMLElement).tagName === 'BLOCKQUOTE') {
+          messageContent += `>${node.textContent}`
+        } else if ((node as HTMLElement).tagName === 'CODE') {
+          messageContent += `\`${node.textContent}\``
+        } else if ((node as HTMLElement).querySelector('code')) {
+          messageContent += `\`\`\`${node.textContent}\`\`\``
+        } else {
+          messageContent += node.textContent
         }
       }
     })
@@ -249,7 +257,6 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
 
     if (chatTextArea) {
       if (quotedMention) {
-        debugger
         // eslint-disable-next-line prefer-const
         let [quotedMessageUserBox, quotedMessageContentBox] = Array.from(
           quotedMention.querySelectorAll<HTMLElement>('span[dir]'),
@@ -264,19 +271,34 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
           }
           const quotedMessageContent = messengerGetMessageContent(
             quotedMessageContentBox,
-          ).replace(/…$/, '')
+          )
+            .replace(/…$/, '')
+            .replace(/^>\s/, '>')
+            .replaceAll('\n', ' ')
           replyMessageBoxIndex = chatMessages.findLastIndex((message) => {
             // because a quoted message with attached media can't be exactly matched, so just ignore it
-            if (message.mediaType) {
+            if (message.mediaType || message.user !== quotedMessageUser) {
               return false
             }
 
-            return (
-              message.user === quotedMessageUser &&
-              (message.content.length === quotedMessageContent.length
-                ? message.content === quotedMessageContent
-                : message.content.startsWith(quotedMessageContent))
-            )
+            let result = false
+
+            if (message.content.length === quotedMessageContent.length) {
+              result ||= message.content === quotedMessageContent
+            } else {
+              result ||= message.content.startsWith(quotedMessageContent)
+            }
+
+            if (
+              message.content.startsWith('```') &&
+              quotedMessageContent.startsWith('```')
+            ) {
+              result ||= message.content.includes(
+                quotedMessageContent.replace(/```\w+/, '').trimStart(),
+              )
+            }
+
+            return result
           })
           if (replyMessageBoxIndex === -1) {
             replyMessageBoxIndex = Infinity

@@ -12,10 +12,10 @@ import { IChatConversationShareConfig } from '@/background/src/chatConversations
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import CopyTooltipIconButton from '@/components/CopyTooltipIconButton'
 import { WWW_PROJECT_HOST } from '@/constants'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientUpdateChatConversation } from '@/features/chatgpt/utils/clientChatConversation'
 import { clientFetchMaxAIAPI } from '@/features/shortcuts/utils'
 import globalSnackbar from '@/utils/globalSnackbar'
-import { useClientConversation  } from "@/features/chatgpt/hooks/useClientConversation";
 
 const createShareLink = (shareId: string) => {
   return `${WWW_PROJECT_HOST}/share?id=${shareId}`
@@ -66,7 +66,7 @@ const ShareButtonGroup: FC = () => {
               shareType,
             },
           },
-          false,
+          true,
         )
       } else {
         globalSnackbar.error(
@@ -122,9 +122,7 @@ const ShareButtonGroup: FC = () => {
       // 上传会话和消息
       try {
         setIsUploadingConversation(true)
-        const needUploadConversation: any = cloneDeep(
-          clientConversation,
-        )
+        const needUploadConversation: any = cloneDeep(clientConversation)
         const needUploadMessages = cloneDeep(needUploadConversation.messages)
         // 消息是分开存的, 需要删除
         delete needUploadConversation.messages

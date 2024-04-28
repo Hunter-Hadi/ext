@@ -6,6 +6,7 @@ import { IChromeExtensionClientSendEvent } from '@/background/eventType'
 import {
   createDaemonProcessTab,
   getWindowIdOfChatGPTTab,
+  processPreSaveChatMessage,
 } from '@/background/src/chat/util'
 import ConversationManager from '@/background/src/chatConversations'
 import backgroundCommandHandler from '@/background/src/client/backgroundCommandHandler'
@@ -36,6 +37,7 @@ import {
   getMaxAIChromeExtensionUserId,
   getMaxAIChromeExtensionUserQuotaUsage,
 } from '@/features/auth/utils'
+import { IChatMessage } from '@/features/chatgpt/types'
 import { logAndConfirmDailyUsageLimit } from '@/features/chatgpt/utils/logAndConfirmDailyUsageLimit'
 import { logThirdPartyDailyUsage } from '@/features/chatgpt/utils/thirdPartyProviderDailyUsageLimit'
 import WebsiteContextManager, {
@@ -633,9 +635,14 @@ export const ClientMessageInit = () => {
                   message: 'ok',
                 }
               }
+              const processedMessages = await Promise.all(
+                newMessages.map(async (message: IChatMessage) => {
+                  return await processPreSaveChatMessage(message)
+                }),
+              )
               success = await ConversationManager.pushMessages(
                 conversationId,
-                newMessages,
+                processedMessages,
               )
             } else if (action === 'delete') {
               success = await ConversationManager.deleteMessages(

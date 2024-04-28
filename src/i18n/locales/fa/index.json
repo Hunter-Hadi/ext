@@ -256,7 +256,8 @@
     "left_menu__sidebar": "نوار کناری",
     "feature_card__sidebar__field__auto_archive__title": "بایگانی خودکار: همراه با پاکسازی",
     "feature_card__sidebar__field__auto_archive__button__title": "چت را بعد از",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI، ما چت‌های غیرفعال را به صورت خودکار بایگانی می‌کنیم. این به شما شروعی تازه می‌دهد و نوار کناری شما را تمیز نگه می‌دارد."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "در MaxAI، ما چت‌های غیرفعال را به صورت خودکار بایگانی می‌کنیم. این به شما شروعی تازه می‌دهد و نوار کناری شما را تمیز نگه می‌دارد.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "پاسخ فوری مسنجر"
   },
   "client": {
     "sidebar__button__close_sidebar": "بستن نوار کناری",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "آپلود فایل JPEG، PNG، WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "استدلال، ترجمه چند زبانه، کدنویسی و غیره.",
     "provider__claude_web_app__title": "برنامه وب کلود",
-    "provider__claude_web_app__short_description": "پنجره متنی 100K. چت با چندین سند.",
+    "provider__claude_web_app__short_description": "پنجره متنی ۲۰۰ هزار کلمه. چت با چند سند.",
     "provider__claude_web_app__auth_description": "از حساب کاربری کلود خود برای قدرت دادن به افزونه استفاده کنید.",
     "provider__claude_web_app__auth_button_text": "ورود به برنامه وب کلود",
     "provider__claude_web_app__upload__accept_tooltip": "افزودن فایل (حداکثر 5، هر کدام 10 مگابایت). پذیرش pdf، txt، csv و غیره.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "پاک کردن تاریخچه منوهای متنی شما - آیا مطمئن هستید؟",
     "context_window__chat_history__button__title": "تاریخچه منوی متنی",
     "context_window__chat_history__empty__title": "هنوز تاریخچه منوی متنی موجود نیست",
-    "context_window__chat_history__continue_in_chat__title": "ادامه در چت"
+    "context_window__chat_history__continue_in_chat__title": "ادامه در چت",
+    "provider__claude_web_app__model__claude_3_200k__description": "عملکرد برتر در وظایفی که نیاز به استدلال پیچیده دارند. کلود 3 بهترین ارائه Anthropic است.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI در حال حاضر پر است",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "به دلیل ترافیک بالا، لطفاً بعداً دوباره امتحان کنید یا همین الان ارتقا دهید تا به دسترسی پایدار به همه مدل‌های پریمیوم هوش مصنوعی دست پیدا کنید.",
+    "sidebar__conversation__message__context_triggered_content_review": "محتوای مرتبط برای عبور از مدیریت حذف شد"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "شعر...",

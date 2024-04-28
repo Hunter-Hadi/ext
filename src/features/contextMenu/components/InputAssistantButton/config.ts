@@ -87,6 +87,7 @@ export const ChatAppWebsites = [
   'app.slack.com',
   'discord.com',
   'web.telegram.org',
+  'messenger.com',
 ] as const
 
 export type EmailWebsitesType = (typeof EmailWebsites)[number]
@@ -1174,7 +1175,18 @@ const DiscordWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfi
 const SlackWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
   [
     {
-      enable: true,
+      enable: (rootElement) => {
+        // const chatMessagesNodeList = Array.from(
+        //   findSelectorParent(
+        //     '[data-qa="slack_kit_list"][role="list"]',
+        //     rootElement,
+        //   )?.querySelectorAll<HTMLElement>('[data-qa="message_container"]') ||
+        //     [],
+        // )
+
+        // return chatMessagesNodeList.length > 0
+        return true
+      },
       rootSelectors: [
         '.c-wysiwyg_container__footer[role="toolbar"] .c-wysiwyg_container__suffix',
       ],
@@ -1250,11 +1262,12 @@ const WhatsAppWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
   [
     {
       enable: (rootElement) => {
-        return (
-          document.querySelectorAll(
-            '#main [role="application"] [role="row"] > [data-id] .message-in',
-          ).length > 0
-        )
+        // return (
+        //   document.querySelectorAll(
+        //     '#main [role="application"] [role="row"] > [data-id] .message-in',
+        //   ).length > 0
+        // )
+        return true
       },
       rootSelectors: [
         'footer .copyable-area div:has(> .lexical-rich-text-input)',
@@ -1316,14 +1329,15 @@ const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
   [
     {
       enable: (rootElement) => {
-        return Boolean(
-          findParentEqualSelector(
-            '.chats-container > .chat',
-            rootElement,
-          )?.querySelector(
-            '.bubbles .scrollable > .bubbles-inner .bubbles-date-group .bubbles-group .bubble[data-peer-id].is-in',
-          ),
-        )
+        // return Boolean(
+        //   findParentEqualSelector(
+        //     '.chats-container > .chat',
+        //     rootElement,
+        //   )?.querySelector(
+        //     '.bubbles .scrollable > .bubbles-inner .bubbles-date-group .bubbles-group .bubble[data-peer-id].is-in',
+        //   ),
+        // )
+        return true
       },
       rootSelectors: ['.input-message-container'],
       rootParentDeep: 0,
@@ -1368,6 +1382,70 @@ const TelegramWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConf
         borderRadius: '16px',
         marginInline: '.125rem',
         marginBlock: '10px',
+      },
+    } as IInputAssistantButtonGroupConfig,
+  ]
+
+const MessengerWritingAssistantButtonGroupConfigs: IInputAssistantButtonGroupConfig[] =
+  [
+    {
+      enable: (rootElement) => {
+        // return Array.from(
+        //   document.querySelectorAll(
+        //     '[role="main"] [role="grid"][aria-label] div[class]:has(+ [role="gridcell"]) [data-scope="messages_table"][role] [role] > [role] + [role="none"]',
+        //   ),
+        // ).some(
+        //   (gridCellsBox) =>
+        //     getComputedStyle(gridCellsBox).flexDirection === 'row',
+        // )
+        return true
+      },
+      rootSelectors: [
+        '[role="main"] [role="group"][aria-label] [id] + div div:has(div > [role="textbox"][contenteditable][aria-label][data-lexical-editor])',
+      ],
+      rootParentDeep: 0,
+      rootWrapperTagName: 'div',
+      rootWrapperStyle: 'align-self: flex-end;',
+      appendPosition: 1,
+      composeReplyButton: {
+        tooltip: 'client:input_assistant_button__compose_reply__tooltip',
+        buttonKey: 'inputAssistantComposeReplyButton',
+        permissionWrapperCardSceneType: 'MESSENGER_COMPOSE_REPLY_BUTTON',
+        onSelectionEffect: ({ id: buttonId }) => {
+          // const inputAssistantButtonSelector = `[maxai-input-assistant-button-id="${buttonId}"]`
+          // const inputAssistantButton =
+          //   InputAssistantButtonElementRouteMap.get(
+          //     inputAssistantButtonSelector,
+          //   ) ||
+          //   document.querySelector<HTMLButtonElement>(
+          //     inputAssistantButtonSelector,
+          //   )
+          // if (inputAssistantButton) {
+          //   findSelectorParent(
+          //     '[data-qa="message_input"]',
+          //     inputAssistantButton as HTMLElement,
+          //   )?.click()
+          // }
+        },
+      },
+      refineDraftButton: {
+        tooltip: 'client:input_assistant_button__refine_draft__tooltip',
+        buttonKey: 'inputAssistantRefineDraftButton',
+        permissionWrapperCardSceneType: 'MESSENGER_REFINE_DRAFT_BUTTON',
+      },
+      CTAButtonStyle: {
+        padding: '4px 6px',
+        iconSize: 12,
+        borderRadius: '16px 0 0 16px',
+      },
+      DropdownButtonStyle: {
+        borderRadius: '0 16px 16px 0',
+        padding: '1px 0',
+        iconSize: 18,
+      },
+      InputAssistantBoxSx: {
+        borderRadius: '16px',
+        margin: '8px 16px 8px -6px',
       },
     } as IInputAssistantButtonGroupConfig,
   ]
@@ -1496,6 +1574,7 @@ const WritingAssistantButtonGroupConfigs: {
   'app.slack.com': SlackWritingAssistantButtonGroupConfigs,
   'discord.com': DiscordWritingAssistantButtonGroupConfigs,
   'web.telegram.org': TelegramWritingAssistantButtonGroupConfigs,
+  'messenger.com': MessengerWritingAssistantButtonGroupConfigs,
 }
 
 export const InputAssistantButtonGroupConfigHostKeys = Object.keys(

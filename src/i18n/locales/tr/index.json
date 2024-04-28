@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Kenar Çubuğu",
     "feature_card__sidebar__field__auto_archive__title": "Otomatik arşivleme: Giderken temizleyin",
     "feature_card__sidebar__field__auto_archive__button__title": "Sohbeti arşivle",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, istediğiniz sıklıkta boşta kalan sohbetleri otomatik olarak arşivliyoruz. Bu size taze bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI'de, istediğiniz sıklıkta boşta kalan sohbetleri otomatik olarak arşivliyoruz. Bu size taze bir başlangıç sağlar ve kenar çubuğunuzu düzenli tutar.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Anında Yanıtla"
   },
   "client": {
     "sidebar__button__close_sidebar": "Kenar çubuğunu kapat",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "JPEG, PNG, WEBP dosyası yükleyin",
     "provider__bard_web_app__model__what_it_can_do__description": "Akıl yürütme, çok dilli çeviri, kodlama ve daha fazlası.",
     "provider__claude_web_app__title": "Claude web uygulaması",
-    "provider__claude_web_app__short_description": "100K bağlam penceresi. Birden çok belgeyle sohbet edin.",
+    "provider__claude_web_app__short_description": "200K bağlam penceresi. Birden çok belgeyle sohbet edin.",
     "provider__claude_web_app__auth_description": "Uzantıyı çalıştırmak için kendi Claude hesabınızı kullanın.",
     "provider__claude_web_app__auth_button_text": "Claude web uygulamasına giriş yapın",
     "provider__claude_web_app__upload__accept_tooltip": "Dosya ekle (maksimum 5, her biri 10MB). pdf, txt, csv vb. kabul eder.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Bağlamlı menü geçmişinizi temizleyin - emin misiniz?",
     "context_window__chat_history__button__title": "Bağlamlı menü geçmişi",
     "context_window__chat_history__empty__title": "Henüz kullanılabilir bir bağlamlı menü geçmişi yok",
-    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et"
+    "context_window__chat_history__continue_in_chat__title": "Sohbete devam et",
+    "provider__claude_web_app__model__claude_3_200k__description": "Karmaşık akıl yürütme gerektiren görevlerde üstün performans. Claude 3, Anthropic'in en iyi sınıf çözümüdür.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI şu anda kapasite dolu",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Yoğun trafiğe bağlı olarak, lütfen daha sonra tekrar deneyin veya tüm premium AI modellerine istikrarlı erişim için şimdi yükseltme yapın.",
+    "sidebar__conversation__message__context_triggered_content_review": "Moderasyonu atlamak için bağlam temizlendi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Şiir...",

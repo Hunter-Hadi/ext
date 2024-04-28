@@ -103,7 +103,9 @@ function mainAppRender() {
     supportWebComponent ? 'use-chat-gpt-ai' : 'div',
   )
   container.id = MAXAI_SIDEBAR_ID
-  container.style.display = 'none'
+  // 这一句在lastpass这个插件里会把该容器下的所有input组件的display也改成none，改为class
+  // container.style.display = 'none'
+  container.classList.add('close')
   container.setAttribute('data-version', APP_VERSION)
   document.body.appendChild(container)
   const contextMenu = document.createElement(

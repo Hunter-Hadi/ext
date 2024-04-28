@@ -256,7 +256,8 @@
     "left_menu__sidebar": "సైడ్‌బార్",
     "feature_card__sidebar__field__auto_archive__title": "ఆటో ఆర్కైవ్: మీరు పోగొట్టేందుకు శుభ్రంగా ఉంచండి",
     "feature_card__sidebar__field__auto_archive__button__title": "చాట్‌ను ఆర్కైవ్ చేయండి",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు తప్పక ఎంపిక చేసే కాదని ఆటో ఆర్కైవ్ చేస్తాం. ఇది మీకు తాజా ప్రారంభం అందిస్తుంది మరియు మీ సైడ్‌బార్‌ను శుభ్రంగా ఉంచేది."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAIలో, మీరు తప్పక ఎంపిక చేసే కాదని ఆటో ఆర్కైవ్ చేస్తాం. ఇది మీకు తాజా ప్రారంభం అందిస్తుంది మరియు మీ సైడ్‌బార్‌ను శుభ్రంగా ఉంచేది.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "మెసేంజర్ తక్షణ సమాధానం"
   },
   "client": {
     "sidebar__button__close_sidebar": "సైడ్‌బార్‌ను మూసివేయండి",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "ఫైల్‌ను అప్‌లోడ్ చేయండి JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "ఆకలితో, బహుభాషా అనువాదం, కోడింగ్, మరియు మరొకటికి ఎంచుకోవచ్చు.",
     "provider__claude_web_app__title": "క్లోడ్ వెబ్ యాప్",
-    "provider__claude_web_app__short_description": "100K కంటెక్స్ట్ విండో. మరుపు పత్రాలతో చాట్ చేయండి.",
+    "provider__claude_web_app__short_description": "200K సందర్భ విండో. మరుకువే పత్రాలతో చాట్ చేయండి.",
     "provider__claude_web_app__auth_description": "మీ స్వంత క్లోడ్ ఖాతాను ఉపయోగించి పొందండి.",
     "provider__claude_web_app__auth_button_text": "క్లోడ్ వెబ్ యాప్‌లో లాగిన్ అవ్వండి",
     "provider__claude_web_app__upload__accept_tooltip": "ఫైళ్ళను జోడించండి (5 గరిష్ఠం, 10MB ఒకటి). pdf, txt, csv మరియు ఇతరాలను స్వీకరించేందుకు.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "మీ కంటెక్స్ట్ మెనూల చరిత్రను తొలగించాలని మీరు ఖచ్చితంగా ఉంచారా?",
     "context_window__chat_history__button__title": "కంటెక్స్ట్ మెనూ చరిత్ర",
     "context_window__chat_history__empty__title": "ఇంకా ఏ కంటెక్స్ట్ మెనూ చరిత్ర లేదు",
-    "context_window__chat_history__continue_in_chat__title": "చాట్‌లో కొనసాగించు"
+    "context_window__chat_history__continue_in_chat__title": "చాట్‌లో కొనసాగించు",
+    "provider__claude_web_app__model__claude_3_200k__description": "కంప్లెక్స్ రీజనింగ్ అవసరమైన టాస్కులపై అత్యుత్తమ పనిచేసే పనితీరు. క్లాడ్ 3 అంత్రోపిక్ యొక్క ఉత్తమ ఆఫరింగ్ ఉంది.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ప్రస్తుతం పూర్తిగా భరించబడింది",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ఉన్న ట్రాఫిక్ ఎక్కువగా ఉంది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి లేదా ప్రీమియం AI మోడల్స్‌కు స్థిరమైన ప్రవేశం ఆనందించడానికి ఇప్పుడు అప్గ్రేడ్ చేయండి.",
+    "sidebar__conversation__message__context_triggered_content_review": "మార్గం నిర్వహణ తరచుగా తీసుకోవడానికి కంటెంట్ సమీక్షను తీసుకోబడింది"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

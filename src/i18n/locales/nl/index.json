@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Zijbalk",
     "feature_card__sidebar__field__auto_archive__title": "Automatisch archiveren: Schoon terwijl je gaat",
     "feature_card__sidebar__field__auto_archive__button__title": "Chat archiveren na",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chatberichten op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "In MaxAI archiveren we automatisch inactieve chatberichten op het door jou gekozen moment. Dit geeft je een frisse start en houdt je zijbalk netjes.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Direct antwoord in Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zijbalk sluiten",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Upload bestand JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Redenering, meertalige vertaling, codering en meer.",
     "provider__claude_web_app__title": "Claude web app",
-    "provider__claude_web_app__short_description": "100K contextvenster. Chat met meerdere documenten.",
+    "provider__claude_web_app__short_description": "200K context venster. Chat met meerdere documenten.",
     "provider__claude_web_app__auth_description": "Gebruik je eigen Claude-account om de extensie te activeren.",
     "provider__claude_web_app__auth_button_text": "Inloggen op Claude web app",
     "provider__claude_web_app__upload__accept_tooltip": "Bestanden toevoegen (maximaal 5, elk 10 MB). Accepteert pdf, txt, csv, enz.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Wis je geschiedenis van contextmenu's - weet je het zeker?",
     "context_window__chat_history__button__title": "Geschiedenis van contextmenu",
     "context_window__chat_history__empty__title": "Nog geen geschiedenis van contextmenu beschikbaar",
-    "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat"
+    "context_window__chat_history__continue_in_chat__title": "Doorgaan in chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Superieure prestaties bij taken die complex redeneren vereisen. Claude 3 is het beste aanbod van Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI is momenteel vol",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vanwege het hoge verkeer, probeer het later opnieuw of upgrade nu om stabiele toegang tot alle premium AI-modellen te krijgen.",
+    "sidebar__conversation__message__context_triggered_content_review": "Context gewist om moderatie te omzeilen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

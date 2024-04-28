@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Barra lateral",
     "feature_card__sidebar__field__auto_archive__title": "Auto arquivo: Limpe à medida que avança",
     "feature_card__sidebar__field__auto_archive__button__title": "Arquivar chat após",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência da sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "No MaxAI, arquivamos automaticamente o chat inativo na cadência da sua escolha. Isso lhe dá um novo começo e mantém sua barra lateral organizada.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Resposta instantânea do Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Fechar barra lateral",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Enviar arquivo JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Raciocínio, tradução multilíngue, codificação e muito mais.",
     "provider__claude_web_app__title": "Aplicativo web Claude",
-    "provider__claude_web_app__short_description": "Janela de contexto de 100 mil. Converse com vários documentos.",
+    "provider__claude_web_app__short_description": "Janela de contexto de 200K. Conversar com vários documentos.",
     "provider__claude_web_app__auth_description": "Use sua própria conta Claude para alimentar a extensão.",
     "provider__claude_web_app__auth_button_text": "Fazer login no aplicativo web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Adicionar arquivos (máx. 5, 10 MB cada). Aceita pdf, txt, csv, etc.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Limpar o histórico dos seus menus de contexto - tem a certeza?",
     "context_window__chat_history__button__title": "Histórico do menu de contexto",
     "context_window__chat_history__empty__title": "Ainda não há histórico de menus de contexto disponível",
-    "context_window__chat_history__continue_in_chat__title": "Continuar no chat"
+    "context_window__chat_history__continue_in_chat__title": "Continuar no chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Desempenho superior em tarefas que exigem raciocínio complexo. Claude 3 é a melhor oferta da Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "O FreeAI está no limite de capacidade agora",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Devido ao alto tráfego, por favor tente novamente mais tarde ou atualize agora para desfrutar de acesso estável a todos os modelos premium de IA.",
+    "sidebar__conversation__message__context_triggered_content_review": "Contexto limpo para ignorar moderação"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

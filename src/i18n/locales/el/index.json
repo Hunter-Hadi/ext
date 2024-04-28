@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Πλευρική γραμμή",
     "feature_card__sidebar__field__auto_archive__title": "Αυτόματη αρχειοθέτηση: Καθαρίστε καθώς προχωράτε",
     "feature_card__sidebar__field__auto_archive__button__title": "Αρχειοθέτηση συνομιλίας μετά από",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αρχειοθετούμε αυτόματα τις αδρές συνομιλίες με τη συχνότητα της επιλογής σας. Αυτό σας δίνει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική γραμμή σας τακτοποιημένη."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Στο MaxAI, αρχειοθετούμε αυτόματα τις αδρές συνομιλίες με τη συχνότητα της επιλογής σας. Αυτό σας δίνει ένα φρέσκο ξεκίνημα και διατηρεί την πλευρική γραμμή σας τακτοποιημένη.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Άμεση απάντηση στο Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Κλείσιμο πλευρικής γραμμής",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Μεταφόρτωση αρχείου JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Λογική, πολύγλωσση μετάφραση, κωδικοποίηση και άλλα.",
     "provider__claude_web_app__title": "Εφαρμογή Claude",
-    "provider__claude_web_app__short_description": "Παράθυρο περιβάλλοντος 100K. Συνομιλία με πολλά έγγραφα.",
+    "provider__claude_web_app__short_description": "Παράθυρο περιβάλλοντος 200K. Συνομιλήστε με πολλά έγγραφα.",
     "provider__claude_web_app__auth_description": "Χρησιμοποιήστε τον δικό σας λογαριασμό Claude για να ενεργοποιήσετε την επέκταση.",
     "provider__claude_web_app__auth_button_text": "Συνδεθείτε στην εφαρμογή Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Προσθήκη αρχείων (έως 5, μέγεθος 10MB το καθένα). Δέχεται pdf, txt, csv, κ.λπ.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Καθαρίστε το ιστορικό των μενού περιβάλλοντος - είστε σίγουροι;",
     "context_window__chat_history__button__title": "Ιστορικό μενού περιβάλλοντος",
     "context_window__chat_history__empty__title": "Δεν υπάρχει ακόμα διαθέσιμο ιστορικό μενού περιβάλλοντος",
-    "context_window__chat_history__continue_in_chat__title": "Συνέχεια στη συνομιλία"
+    "context_window__chat_history__continue_in_chat__title": "Συνέχεια στη συνομιλία",
+    "provider__claude_web_app__model__claude_3_200k__description": "Ανώτερη απόδοση σε εργασίες που απαιτούν πολύπλοκη σκέψη. Ο Claude 3 είναι η κορυφαία προσφορά της Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Το FreeAI είναι σε πλήρη χωρητικότητα αυτή τη στιγμή",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Λόγω υψηλής κίνησης, παρακαλούμε δοκιμάστε ξανά αργότερα ή αναβαθμίστε τώρα για να απολαύσετε σταθερή πρόσβαση σε όλα τα προηγμένα μοντέλα Τεχνητής Νοημοσύνης.",
+    "sidebar__conversation__message__context_triggered_content_review": "Ο περιβάλλον εκκαθάρισης για παράκαμψη της μετριότητας"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

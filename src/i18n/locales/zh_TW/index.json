@@ -256,7 +256,8 @@
     "left_menu__sidebar": "側邊欄",
     "feature_card__sidebar__field__auto_archive__title": "自動封存：隨時保持整潔",
     "feature_card__sidebar__field__auto_archive__button__title": "封存聊天後",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我們根據您的選擇節奏自動封存閒置聊天。這讓您重新開始並保持側邊欄整潔。"
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "在MaxAI中，我們根據您的選擇節奏自動封存閒置聊天。這讓您重新開始並保持側邊欄整潔。",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messenger 即時回覆"
   },
   "client": {
     "sidebar__button__close_sidebar": "關閉側邊欄",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "上傳檔案 JPEG、PNG、WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "推理、多語言翻譯、編碼等功能。",
     "provider__claude_web_app__title": "Claude 網頁應用程式",
-    "provider__claude_web_app__short_description": "100K 上下文視窗。與多個文件進行聊天。",
+    "provider__claude_web_app__short_description": "200K 上下文視窗。與多個文件進行聊天。",
     "provider__claude_web_app__auth_description": "使用您自己的 Claude 帳戶來提供擴展功能。",
     "provider__claude_web_app__auth_button_text": "登入 Claude 網頁應用程式",
     "provider__claude_web_app__upload__accept_tooltip": "添加檔案（最多 5 個，每個 10MB）。接受 pdf、txt、csv 等格式。",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "清除您的上下文選單歷史記錄 - 您確定嗎？",
     "context_window__chat_history__button__title": "上下文選單歷史記錄",
     "context_window__chat_history__empty__title": "目前尚無上下文選單歷史記錄",
-    "context_window__chat_history__continue_in_chat__title": "繼續聊天"
+    "context_window__chat_history__continue_in_chat__title": "繼續聊天",
+    "provider__claude_web_app__model__claude_3_200k__description": "在需要複雜推理的任務上表現卓越。Claude 3 是Anthropic提供的最佳選擇。",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "免費AI現在已滿",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "由於流量過大，請稍後再試，或立即升級以享受穩定訪問所有高級 AI 模型的權限。",
+    "sidebar__conversation__message__context_triggered_content_review": "清除上下文以繞過審核"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

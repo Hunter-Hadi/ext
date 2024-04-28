@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Sidebar",
     "feature_card__sidebar__field__auto_archive__title": "Arsip otomatis: Bersihkan saat Anda pergi",
     "feature_card__sidebar__field__auto_archive__button__title": "Arsip obrolan setelah",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Di MaxAI, kami secara otomatis mengarsipkan obrolan yang tidak aktif sesuai dengan pilihan Anda. Ini memberi Anda awal yang segar dan menjaga sidebar Anda rapi."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Di MaxAI, kami secara otomatis mengarsipkan obrolan yang tidak aktif sesuai dengan pilihan Anda. Ini memberi Anda awal yang segar dan menjaga sidebar Anda rapi.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Balasan instan Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Tutup sidebar",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Unggah file JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Penalaran, terjemahan multibahasa, pemrograman, dan lainnya.",
     "provider__claude_web_app__title": "Aplikasi web Claude",
-    "provider__claude_web_app__short_description": "Jendela konteks 100K. Chat dengan beberapa dokumen.",
+    "provider__claude_web_app__short_description": "Jendela konteks 200K. Chat dengan beberapa dokumen.",
     "provider__claude_web_app__auth_description": "Gunakan akun Claude Anda sendiri untuk mengaktifkan ekstensi ini.",
     "provider__claude_web_app__auth_button_text": "Masuk ke aplikasi web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Tambahkan file (maksimal 5, masing-masing 10MB). Menerima pdf, txt, csv, dll.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Bersihkan riwayat menu konteks Anda - apakah Anda yakin?",
     "context_window__chat_history__button__title": "Riwayat menu konteks",
     "context_window__chat_history__empty__title": "Belum ada riwayat menu konteks yang tersedia",
-    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat"
+    "context_window__chat_history__continue_in_chat__title": "Lanjutkan di chat",
+    "provider__claude_web_app__model__claude_3_200k__description": "Kinerja unggul pada tugas-tugas yang membutuhkan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI sedang penuh kapasitas saat ini",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Karena lalu lintas tinggi, harap coba lagi nanti, atau tingkatkan sekarang untuk menikmati akses stabil ke semua model AI premium.",
+    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk melewati moderasi"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

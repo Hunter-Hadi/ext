@@ -194,6 +194,7 @@ export const CONTEXT_MENU_DRAFT_LIST: IContextMenuItemWithChildren[] = [
                     actions: [],
                   },
                 } as IContextMenuItem,
+                includeHistory: false,
               },
             },
           },

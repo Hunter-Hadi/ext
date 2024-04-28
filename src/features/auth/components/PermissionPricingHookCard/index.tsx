@@ -111,6 +111,7 @@ const PermissionPricingHookCard: FC<IProps> = ({
               <AutoAwesomeIcon
                 sx={{
                   color: 'primary.main',
+                  fontSize: '24px',
                 }}
               />
               <Typography fontSize={20} fontWeight={700} lineHeight={1.4}>

@@ -13,15 +13,13 @@ const port = new ContentScriptConnectionV2({
 
 const useSearchWithProvider = () => {
   const [loading, setLoading] = useRecoilState(SearchWithAIProviderLoadingAtom)
+  const { searchWithAISettings, setSearchWithAISettings } =
+    useSearchWithAISettings()
 
-  const {
-    searchWithAISettings,
-    setSearchWithAISettings,
-  } = useSearchWithAISettings()
-
-  const currentProvider = useMemo(() => searchWithAISettings.aiProvider, [
-    searchWithAISettings.aiProvider,
-  ])
+  const currentProvider = useMemo(
+    () => searchWithAISettings.aiProvider,
+    [searchWithAISettings.aiProvider],
+  )
 
   const switchProvider = useCallback(
     async (provider: ISearchWithAIProviderType) => {
@@ -43,7 +41,7 @@ const useSearchWithProvider = () => {
   return {
     provider: currentProvider,
     updateChatGPTProvider: switchProvider,
-    loading,
+    loading: loading,
   }
 }
 

@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Thanh bên",
     "feature_card__sidebar__field__auto_archive__title": "Tự động lưu trữ: Dọn dẹp khi sử dụng",
     "feature_card__sidebar__field__auto_archive__button__title": "Lưu trữ cuộc trò chuyện sau",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "Trong MaxAI, chúng tôi tự động lưu trữ cuộc trò chuyện không hoạt động theo tần suất mà bạn chọn. Điều này giúp bạn có một khởi đầu mới và giữ cho thanh bên của bạn gọn gàng."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "Trong MaxAI, chúng tôi tự động lưu trữ cuộc trò chuyện không hoạt động theo tần suất mà bạn chọn. Điều này giúp bạn có một khởi đầu mới và giữ cho thanh bên của bạn gọn gàng.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Trả lời tức thì trên Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Đóng thanh bên",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Tải lên tệp JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Luận lý, dịch đa ngôn ngữ, mã hóa và nhiều hơn nữa.",
     "provider__claude_web_app__title": "Ứng dụng web Claude",
-    "provider__claude_web_app__short_description": "Cửa sổ ngữ cảnh 100K. Trò chuyện với nhiều tài liệu.",
+    "provider__claude_web_app__short_description": "Cửa sổ ngữ cảnh 200K. Trò chuyện với nhiều tài liệu.",
     "provider__claude_web_app__auth_description": "Sử dụng tài khoản Claude của bạn để cung cấp sức mạnh cho tiện ích.",
     "provider__claude_web_app__auth_button_text": "Đăng nhập vào ứng dụng web Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Thêm tệp (tối đa 5, mỗi tệp 10MB). Chấp nhận pdf, txt, csv, v.v.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Xóa lịch sử menu ngữ cảnh của bạn - bạn có chắc chắn không?",
     "context_window__chat_history__button__title": "Lịch sử menu ngữ cảnh",
     "context_window__chat_history__empty__title": "Chưa có lịch sử menu ngữ cảnh nào",
-    "context_window__chat_history__continue_in_chat__title": "Tiếp tục trong cuộc trò chuyện"
+    "context_window__chat_history__continue_in_chat__title": "Tiếp tục trong cuộc trò chuyện",
+    "provider__claude_web_app__model__claude_3_200k__description": "Hiệu suất vượt trội trong các nhiệm vụ đòi hỏi tư duy phức tạp. Claude 3 là sản phẩm hàng đầu của Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI hiện đang quá tải",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Do lưu lượng cao, vui lòng thử lại sau hoặc nâng cấp ngay để truy cập ổn định vào tất cả các mô hình AI cao cấp.",
+    "sidebar__conversation__message__context_triggered_content_review": "Xóa bỏ ngữ cảnh để bỏ qua kiểm duyệt"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Bài thơ...",

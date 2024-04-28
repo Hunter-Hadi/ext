@@ -6,11 +6,14 @@ import Stack from '@mui/material/Stack'
 import { SxProps } from '@mui/material/styles'
 import { FC, useEffect, useMemo, useState } from 'react'
 import React from 'react'
+import { v4 as uuidV4 } from 'uuid'
 
 import AppSuspenseLoadingLayout from '@/components/AppSuspenseLoadingLayout'
 import CustomMarkdown from '@/components/CustomMarkdown'
 import { APP_USE_CHAT_GPT_HOST } from '@/constants'
-import { isPermissionCardSceneType } from '@/features/auth/components/PermissionWrapper/types'
+import PermissionPricingHookCard from '@/features/auth/components/PermissionPricingHookCard'
+import { usePermissionCard } from '@/features/auth/hooks/usePermissionCard'
+import { ISystemChatMessage } from '@/features/chatgpt/types'
 
 import {
   ISearchWithAIProviderType,
@@ -33,6 +36,22 @@ const AIResponseError: FC<IProps> = ({
   handleAsk,
 }) => {
   const text = message || 'Something went wrong. Please try again.'
+  const permissionCard = usePermissionCard(message)
+  const pricingHookMessage = useMemo(() => {
+    if (permissionCard) {
+      const systemMessage: ISystemChatMessage = {
+        type: 'system',
+        text: `You've reached this month's limit for fast text queries.`,
+        messageId: uuidV4(),
+        meta: {
+          permissionSceneType: permissionCard.sceneType,
+          systemMessageType: 'needUpgrade',
+        },
+      }
+      return systemMessage
+    }
+    return null
+  }, [message, permissionCard])
 
   const [errorStatus, setErrorStatus] = useState<'UNAUTHORIZED' | 'TRY_AGAIN'>()
 
@@ -86,10 +105,6 @@ const AIResponseError: FC<IProps> = ({
   }, [provider])
 
   const textCover = useMemo(() => {
-    if (isPermissionCardSceneType(text)) {
-      return `You've reached this month's limit for fast text queries. [Upgrade now](${APP_USE_CHAT_GPT_HOST}/pricing) for unlimited queries, or check back next month when the monthly queries are reset.`
-    }
-
     if (text === 'UNAUTHORIZED' || text === 'CLOUDFLARE') {
       if (providerOption.label === 'ChatGPT web app') {
         return `Please log into [Chat.openai.com](https://chat.openai.com) and try again.`
@@ -211,6 +226,35 @@ const AIResponseError: FC<IProps> = ({
     )
   }, [errorStatus, provider, authLink])
 
+  if (pricingHookMessage && pricingHookMessage.meta.permissionSceneType) {
+    return (
+      <Stack
+        sx={{
+          whiteSpace: 'pre-wrap',
+          width: '100%',
+          p: 1.5,
+          gap: 1,
+          wordBreak: 'break-word',
+          borderRadius: '8px',
+          bgcolor: 'customColor.secondaryBackground',
+          boxSizing: 'border-box',
+          '& > div': {
+            width: '100%',
+            mx: 'auto!important',
+            padding: 0,
+            '& svg + p': {
+              fontSize: '16px',
+            },
+          },
+        }}
+      >
+        <PermissionPricingHookCard
+          permissionSceneType={pricingHookMessage.meta.permissionSceneType}
+          message={pricingHookMessage}
+        />
+      </Stack>
+    )
+  }
   return (
     <Stack spacing={2}>
       <Box className="search-with-ai--text" sx={sxCache}>

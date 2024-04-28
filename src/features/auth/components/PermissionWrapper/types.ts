@@ -44,8 +44,11 @@ export const PERMISSION_WRAPPER_CARD_SCENE_TYPE_LIST = [
   'WHATSAPP_REFINE_DRAFT_BUTTON',
   'TELEGRAM_COMPOSE_REPLY_BUTTON',
   'TELEGRAM_REFINE_DRAFT_BUTTON',
+  'MESSENGER_COMPOSE_REPLY_BUTTON',
+  'MESSENGER_REFINE_DRAFT_BUTTON',
   'SEARCH_WITH_AI_CLAUDE',
   'SEARCH_WITH_AI_CHATGPT',
+  'SEARCH_WITH_AI_HIGH_TRAFFIC',
   'SIDEBAR_SEARCH_WITH_AI',
   'SIDEBAR_ART_AND_IMAGES',
 
@@ -384,6 +387,9 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__search_with_ai_claude__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_claude__description'),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_now'),
+    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
   },
   // Search with AI - ChatGPt
   SEARCH_WITH_AI_CHATGPT: {
@@ -394,6 +400,20 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
       t('client:permission__pricing_hook__search_with_ai_chatgpt__title'),
     description: (t) =>
       t('client:permission__pricing_hook__search_with_ai_chatgpt__description'),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_now'),
+    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
+  },
+  SEARCH_WITH_AI_HIGH_TRAFFIC: {
+    title: (t) =>
+      t('client:permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title'),
+    description: (t) =>
+      t(
+        'client:permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description',
+      ),
+    ctaButtonText: (t) =>
+      t('client:permission__pricing_hook__button__upgrade_now'),
+    ctaButtonLink: `${APP_USE_CHAT_GPT_HOST}/pricing`,
   },
   SIDEBAR_SEARCH_WITH_AI: {
     pricingHookCardType: 'AI_SEARCH',
@@ -495,6 +515,22 @@ export const PERMISSION_CARD_SETTINGS_TEMPLATE: {
   },
   // Telegram dropdown button - refine draft
   TELEGRAM_REFINE_DRAFT_BUTTON: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
+  },
+  // Messenger cta button - compose reply
+  MESSENGER_COMPOSE_REPLY_BUTTON: {
+    pricingHookCardType: 'INSTANT_REPLY',
+    videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
+    title: (t) => t('client:permission__pricing_hook__instant_reply__title'),
+    description: (t) =>
+      t('client:permission__pricing_hook__instant_reply__description'),
+  },
+  // Messenger dropdown button - refine draft
+  MESSENGER_REFINE_DRAFT_BUTTON: {
     pricingHookCardType: 'INSTANT_REPLY',
     videoUrl: `https://www.youtube.com/embed/fwaqJyTwefI`,
     title: (t) => t('client:permission__pricing_hook__instant_reply__title'),

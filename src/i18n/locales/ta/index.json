@@ -256,7 +256,8 @@
     "left_menu__sidebar": "பக்கம் பட்டி",
     "feature_card__sidebar__field__auto_archive__title": "தானியங்கி பதிவு: நீங்கள் செல்லும்போது சுத்தமாக்குங்கள்",
     "feature_card__sidebar__field__auto_archive__button__title": "அழிக்கப்பட்ட அரசியல் உரையாடலை",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-இல், நீங்கள் தேர்ந்தெடுத்த அளவிற்கு ஏற்றுமதி நேரத்தில் செயலற்ற உரையாடலை தானியங்கி அழிக்கின்றோம். இது உங்களுக்கு புதிய தொடக்கம் வழங்குகிறது மற்றும் உங்கள் பக்கம் அழகாக வைக்கிறது."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI-இல், நீங்கள் தேர்ந்தெடுத்த அளவிற்கு ஏற்றுமதி நேரத்தில் செயலற்ற உரையாடலை தானியங்கி அழிக்கின்றோம். இது உங்களுக்கு புதிய தொடக்கம் வழங்குகிறது மற்றும் உங்கள் பக்கம் அழகாக வைக்கிறது.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "துவக்க செய்தி உதவி"
   },
   "client": {
     "sidebar__button__close_sidebar": "சாய்வுப்பட்டியை மூடு",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "கோப்பை பதிவேற்று JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "காரணம், பல மொழி மொழிபெயர்ப்பு, குறியீடு, மற்றும் பல வேலைகள்.",
     "provider__claude_web_app__title": "கிளோட் வலைத்தளம்",
-    "provider__claude_web_app__short_description": "100K உருப்படிகள் சார்ந்த சந்தா. பல ஆவணங்களுடன் உரையாடுவது.",
+    "provider__claude_web_app__short_description": "200K சூழ்நிலை சாளரம். பல ஆவணங்களுடன் உரையாடல்.",
     "provider__claude_web_app__auth_description": "நீங்கள் உங்கள் சொந்த கிளோட் கணக்கை பயன்படுத்தி நீங்கள் நீட்டிப்புகளை அதிகரிக்கலாம்.",
     "provider__claude_web_app__auth_button_text": "கிளோட் வலைத்தளத்தில் உள்நுழைக",
     "provider__claude_web_app__upload__accept_tooltip": "கோப்புகளைச் சேர்க்கவும் (முதல் 5, 10MB ஒவ்வொன்று). பிடிஎஃப், டெக்ஸ்ட், சிஎஸ்வி போன்றவைகளை ஏற்கனவே ஏற்கனவே ஏதேனும் ஒரு கோப்பில் உள்ளனவேயாக விடலாம்.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "உங்கள் சூழல் மெனுகள் வரலாறை அழிக்க - நீங்கள் உறுதிப்படுத்துகிறீர்களா?",
     "context_window__chat_history__button__title": "சூழல் மெனு வரலாறு",
     "context_window__chat_history__empty__title": "இன்னும் சூழல் மெனு வரலாறு இல்லை",
-    "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க"
+    "context_window__chat_history__continue_in_chat__title": "அடுத்து உரையில் தொடர்க",
+    "provider__claude_web_app__model__claude_3_200k__description": "சிறந்த பெரும்பாலான பொருள் மனம் தேவைப்படும் பணிகளுக்கு உயர்வான செயல்பாடு. கிளோட் 3 அந்த்ராபிக் சிறந்த பொருள் மனமாக உள்ளது.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI தற்போது மிகப் பொருட்பட்டியில் உள்ளது",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "அதிக செயல்முறையில் மிகப்பெரிய வண்டிகள் உள்ளன, தயவுசெய்து பின்னர் மீண்டும் முயற்சிக்கவும் அல்லது அனைத்து பிரீமியம் AI மாதிரிகளுக்கு நிலையான அணுகலை ஆராய்ச்சி செய்ய இப்போது மேம்படுத்தவும்.",
+    "sidebar__conversation__message__context_triggered_content_review": "மின்னஞ்சல் மீட்டமைப்புக்கு அதிகாரம் வழங்கப்பட்டது"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

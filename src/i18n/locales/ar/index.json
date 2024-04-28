@@ -256,7 +256,8 @@
     "left_menu__sidebar": "الشريط الجانبي",
     "feature_card__sidebar__field__auto_archive__title": "الأرشفة التلقائية: نظّف أثناء استخدامك",
     "feature_card__sidebar__field__auto_archive__button__title": "أرشفة المحادثة بعد",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة المحادثات الخاملة تلقائيًا بتواتر اختيارك. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "في MaxAI، نقوم بأرشفة المحادثات الخاملة تلقائيًا بتواتر اختيارك. هذا يمنحك بداية جديدة ويحافظ على نظافة الشريط الجانبي الخاص بك.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "الرد الفوري على الماسنجر"
   },
   "client": {
     "sidebar__button__close_sidebar": "إغلاق الشريط الجانبي",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "تحميل ملف JPEG، PNG، WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "الاستدلال والترجمة متعددة اللغات والبرمجة والمزيد.",
     "provider__claude_web_app__title": "تطبيق Claude على الويب",
-    "provider__claude_web_app__short_description": "نافذة سياق بحجم 100 ألف. دردشة مع وثائق متعددة.",
+    "provider__claude_web_app__short_description": "نافذة سياقية بحجم 200 ألف. دردشة مع وثائق متعددة.",
     "provider__claude_web_app__auth_description": "استخدم حساب Claude الخاص بك لتشغيل الامتداد.",
     "provider__claude_web_app__auth_button_text": "تسجيل الدخول إلى تطبيق Claude على الويب",
     "provider__claude_web_app__upload__accept_tooltip": "إضافة ملفات (5 كحد أقصى، 10 ميجابايت لكل منها). يقبل pdf و txt و csv وما إلى ذلك.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "مسح سجل قوائم السياق الخاص بك - هل أنت متأكد؟",
     "context_window__chat_history__button__title": "سجل قوائم السياق",
     "context_window__chat_history__empty__title": "لا توجد سجلات لقوائم السياق حتى الآن",
-    "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة"
+    "context_window__chat_history__continue_in_chat__title": "المتابعة في الدردشة",
+    "provider__claude_web_app__model__claude_3_200k__description": "أداء متفوق في المهام التي تتطلب تفكيرًا معقدًا. كلاود 3 هو أفضل ما تقدمه Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI مشغول حاليًا",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول ثابت إلى جميع نماذج الذكاء الاصطناعي المتميزة.",
+    "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز المراجعة"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Sivupalkki",
     "feature_card__sidebar__field__auto_archive__title": "Automaattinen arkistointi: Puhdista sitä mukaa",
     "feature_card__sidebar__field__auto_archive__button__title": "Arkistoi keskustelu",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti käyttämättömät keskustelut valitsemallasi taajuudella. Tämä antaa sinulle raikkaan alun ja pitää sivupalkin siistinä."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "MaxAI:ssa arkistoimme automaattisesti käyttämättömät keskustelut valitsemallasi taajuudella. Tämä antaa sinulle raikkaan alun ja pitää sivupalkin siistinä.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Messengerin pikavastaus"
   },
   "client": {
     "sidebar__button__close_sidebar": "Sulje sivupalkki",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Lataa tiedosto JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Päättelyä, monikielistä kääntämistä, koodausta ja paljon muuta.",
     "provider__claude_web_app__title": "Claude web-sovellus",
-    "provider__claude_web_app__short_description": "100K kontekstiruutu. Keskustele useiden asiakirjojen kanssa.",
+    "provider__claude_web_app__short_description": "200K kontekstiruutu. Chattaa useiden asiakirjojen kanssa.",
     "provider__claude_web_app__auth_description": "Käytä omaa Claude-tiliäsi laajennuksen voimana.",
     "provider__claude_web_app__auth_button_text": "Kirjaudu sisään Claude web-sovellukseen",
     "provider__claude_web_app__upload__accept_tooltip": "Lisää tiedostoja (enintään 5, enintään 10 Mt kukin). Hyväksyy pdf-, txt-, csv-tiedostot jne.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Tyhjennä kontekstivalikoiden historia - oletko varma?",
     "context_window__chat_history__button__title": "Kontekstivalikon historia",
     "context_window__chat_history__empty__title": "Ei vielä saatavilla olevaa kontekstivalikon historiaa",
-    "context_window__chat_history__continue_in_chat__title": "Jatka keskustelua"
+    "context_window__chat_history__continue_in_chat__title": "Jatka keskustelua",
+    "provider__claude_web_app__model__claude_3_200k__description": "Erinomainen suorituskyky monimutkaista päättelyä vaativissa tehtävissä. Claude 3 on Anthropicin paras tarjous.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI on tällä hetkellä täynnä",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Suuren liikenteen vuoksi, yritä myöhemmin uudelleen tai päivitä nyt nauttiaksesi vakaasta pääsystä kaikkiin premium-tekoälymalleihin.",
+    "sidebar__conversation__message__context_triggered_content_review": "Konteksti tyhjennetty ohittaaksesi moderoinnin"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Runo...",

@@ -133,6 +133,8 @@ export interface IAIResponseOriginalMessage {
   metadata?: {
     // 附件
     attachments?: IChatUploadFile[]
+    // 是否触发了内容审核
+    isTriggeredContentReview?: boolean
     includeHistory?: boolean
     isComplete?: boolean
     finish?: {

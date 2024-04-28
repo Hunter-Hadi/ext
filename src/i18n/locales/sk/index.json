@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Bočný panel",
     "feature_card__sidebar__field__auto_archive__title": "Automatické archivovanie: Čistota počas práce",
     "feature_card__sidebar__field__auto_archive__button__title": "Archivovať chat po",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Týmto získate čerstvý štart a udržujete svoj bočný panel uprataný."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "V MaxAI automaticky archivujeme nečinný chat podľa vášho výberu. Týmto získate čerstvý štart a udržujete svoj bočný panel uprataný.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Okamžitá odpoveď na Messenger"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvoriť bočný panel",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Nahrajte súbor JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Rozumovanie, viacjazyčný preklad, programovanie a ďalšie.",
     "provider__claude_web_app__title": "Aplikácia Claude",
-    "provider__claude_web_app__short_description": "100K kontextové okno. Chatujte s viacerými dokumentmi.",
+    "provider__claude_web_app__short_description": "200K kontextové okno. Chatujte s viacerými dokumentmi.",
     "provider__claude_web_app__auth_description": "Použite svoj vlastný účet Claude na napájanie rozšírenia.",
     "provider__claude_web_app__auth_button_text": "Prihlásiť sa do aplikácie Claude",
     "provider__claude_web_app__upload__accept_tooltip": "Pridať súbory (max. 5, každý do 10 MB). Súborový formát: pdf, txt, csv atď.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Vymazať históriu kontextových menu - ste si istý?",
     "context_window__chat_history__button__title": "História kontextových menu",
     "context_window__chat_history__empty__title": "Zatiaľ nie je k dispozícii žiadna história kontextových menu",
-    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate"
+    "context_window__chat_history__continue_in_chat__title": "Pokračovať v chate",
+    "provider__claude_web_app__model__claude_3_200k__description": "Vynikajúce výkony pri úlohách, ktoré vyžadujú zložité uvažovanie. Claude 3 je najlepšia ponuka od Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je momentálne obsadené",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Vzhľadom na vysokú premávku, skúste to prosím neskôr alebo teraz upgradujte a vychutnajte si stabilný prístup ku všetkým prémiovým modelom AI.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext vymazaný pre obchádzanie moderácie"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Báseň...",

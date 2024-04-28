@@ -256,7 +256,8 @@
     "left_menu__sidebar": "Bočna traka",
     "feature_card__sidebar__field__auto_archive__title": "Automatsko arhiviranje: Čistite dok radite",
     "feature_card__sidebar__field__auto_archive__button__title": "Arhiviraj čet posle",
-    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u, automatski arhiviramo neaktivne četove prema vašem izboru. Ovo vam pruža svež početak i održava vašu bočnu traku urednom."
+    "feature_card__sidebar__field__auto_archive__button__tooltip": "U MaxAI-u, automatski arhiviramo neaktivne četove prema vašem izboru. Ovo vam pruža svež početak i održava vašu bočnu traku urednom.",
+    "feature_card__help_me_write__field__messenger_instant_reply_button__title": "Brza poruka na Messengeru"
   },
   "client": {
     "sidebar__button__close_sidebar": "Zatvori bočnu traku",
@@ -332,7 +333,7 @@
     "provider__bard_web_app__upload__accept_tooltip": "Otpremite fajl JPEG, PNG, WEBP",
     "provider__bard_web_app__model__what_it_can_do__description": "Razmišljanje, višejezički prevod, kodiranje i još mnogo toga.",
     "provider__claude_web_app__title": "Claude web aplikacija",
-    "provider__claude_web_app__short_description": "Prozor konteksta od 100K. Ćaskanje sa više dokumenata.",
+    "provider__claude_web_app__short_description": "Prozor od 200K konteksta. Ćaskanje sa više dokumenata.",
     "provider__claude_web_app__auth_description": "Koristite svoj Claude nalog za napajanje proširenja.",
     "provider__claude_web_app__auth_button_text": "Prijavite se na Claude web aplikaciju",
     "provider__claude_web_app__upload__accept_tooltip": "Dodajte fajlove (maksimalno 5, svaki do 10MB). Prihvata pdf, txt, csv itd.",
@@ -750,7 +751,11 @@
     "immersive_chat__delete_all_context_menu__title": "Obriši istoriju tvojih kontekstualnih menija - da li si siguran?",
     "context_window__chat_history__button__title": "Istorija kontekstualnih menija",
     "context_window__chat_history__empty__title": "Još uvek nema dostupne istorije kontekstualnih menija",
-    "context_window__chat_history__continue_in_chat__title": "Nastavi u četu"
+    "context_window__chat_history__continue_in_chat__title": "Nastavi u četu",
+    "provider__claude_web_app__model__claude_3_200k__description": "Superiorna izvedba na zadacima koji zahtevaju kompleksno zaključivanje. Claude 3 je najbolja ponuda kompanije Anthropic.",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI je trenutno zauzet",
+    "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Zbog velikog broja korisnika, molimo pokušajte ponovo kasnije ili nadogradite sada kako biste imali stabilan pristup svim premium AI modelima.",
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst očišćen da bi se zaobišla moderacija"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Pesma...",

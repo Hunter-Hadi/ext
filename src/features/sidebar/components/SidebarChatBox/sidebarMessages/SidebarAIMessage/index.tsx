@@ -287,7 +287,9 @@ const BaseSidebarAIMessage: FC<IProps> = (props) => {
         props.order !== 1 && (
           <Divider sx={{ mt: 2 }}>
             <Typography color={'text.secondary'} fontSize={'12px'}>
-              {t('client:sidebar__conversation__message__context_cleared')}
+              {t(
+                'client:sidebar__conversation__message__context_triggered_content_review',
+              )}
             </Typography>
           </Divider>
         )}

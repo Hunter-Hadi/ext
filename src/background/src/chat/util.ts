@@ -570,7 +570,6 @@ export const processPreSaveChatMessage = async (message: IChatMessage) => {
     // 触发安全限制的消息
     const content = formatAIMessageContent(message)
     if (
-      true ||
       content.includes(
         `\\u2060\\u200c\\u200d\\u200b\\u2060\\u200c\\u200d\\u200b`,
       )

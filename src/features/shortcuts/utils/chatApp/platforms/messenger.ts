@@ -273,8 +273,7 @@ export const messengerGetChatMessages = (inputAssistantButton: HTMLElement) => {
             quotedMessageContentBox,
           )
             .replace(/…$/, '')
-            .replace(/^>\s/, '>')
-            .replaceAll('\n', ' ')
+            .replace(/>\s/, '>')
           replyMessageBoxIndex = chatMessages.findLastIndex((message) => {
             // because a quoted message with attached media can't be exactly matched, so just ignore it
             if (message.mediaType || message.user !== quotedMessageUser) {

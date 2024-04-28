@@ -99,40 +99,46 @@ import { getCurrentDomainHost } from '@/utils/dataHelper/websiteHelper'
 const EMPTY_ARRAY: IContextMenuItemWithChildren[] = []
 const isProduction = String(process.env.NODE_ENV) === 'production'
 
-const detectHasContextWindowDraftActions: ISetActionsType = [
-  {
-    type: 'RENDER_TEMPLATE',
-    parameters: {
-      template: '{{POPUP_DRAFT}}',
-    },
-  },
-  {
-    type: 'SCRIPTS_CONDITIONAL',
-    parameters: {
-      WFCondition: 'Equals',
-      WFFormValues: {
-        Value: '',
-        WFSerializationType: 'WFDictionaryFieldValue',
+/**
+ * 获取popup draft作为contexts
+ */
+const getDetectHasContextWindowDraftActions: () => ISetActionsType = () => {
+  const actions: ISetActionsType = [
+    {
+      type: 'RENDER_TEMPLATE',
+      parameters: {
+        template: '{{POPUP_DRAFT}}',
       },
-      WFConditionalIfTrueActions: [],
-      WFConditionalIfFalseActions: [
-        // 说明有草稿, 加到variables中
-        {
-          type: 'SET_VARIABLE',
-          parameters: {
-            Variable: {
-              value: '{{POPUP_DRAFT}}',
-              label: 'Draft',
-              key: 'POPUP_DRAFT',
-              overwrite: true,
-              isBuiltIn: false,
+    },
+    {
+      type: 'SCRIPTS_CONDITIONAL',
+      parameters: {
+        WFCondition: 'Equals',
+        WFFormValues: {
+          Value: '',
+          WFSerializationType: 'WFDictionaryFieldValue',
+        },
+        WFConditionalIfTrueActions: [],
+        WFConditionalIfFalseActions: [
+          // 说明有草稿, 加到variables中
+          {
+            type: 'SET_VARIABLE',
+            parameters: {
+              Variable: {
+                value: '{{POPUP_DRAFT}}',
+                label: 'Draft',
+                key: 'POPUP_DRAFT',
+                overwrite: true,
+                isBuiltIn: false,
+              },
             },
           },
-        },
-      ],
+        ],
+      },
     },
-  },
-]
+  ]
+  return actions
+}
 
 const FloatingContextMenu: FC<{
   root: any
@@ -505,9 +511,12 @@ const FloatingContextMenu: FC<{
         {
           type: 'user',
           text: template,
+          meta: {
+            includeHistory: true,
+          },
         },
         {
-          beforeActions: detectHasContextWindowDraftActions,
+          beforeActions: getDetectHasContextWindowDraftActions(),
         },
       )
     }
@@ -709,7 +718,7 @@ const FloatingContextMenu: FC<{
               return
             }
             return askAIWIthShortcuts(
-              detectHasContextWindowDraftActions.concat(runActions),
+              getDetectHasContextWindowDraftActions().concat(runActions),
               {
                 overwriteParameters: selectionElement?.selectionText
                   ? [

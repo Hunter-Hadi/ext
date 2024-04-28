@@ -37,7 +37,11 @@ import {
   calculateMaxResponseTokens,
   getTextTokens,
 } from '@/features/shortcuts/utils/tokenizer'
-import { safeGetAttachmentExtractedContent } from '@/features/sidebar/utils/chatMessagesHelper'
+import {
+  formatAIMessageContent,
+  formatUserMessageContent,
+  safeGetAttachmentExtractedContent,
+} from '@/features/sidebar/utils/chatMessagesHelper'
 import { filesizeFormatter } from '@/utils/dataHelper/numberHelper'
 import { mergeWithObject } from '@/utils/dataHelper/objectHelper'
 
@@ -458,7 +462,7 @@ export const processAskAIParameters = async (
     for (let i = conversation.messages.length - 1; i >= 0; i--) {
       const message = conversation.messages[i]
       // 如果是ai回复，那么标记开始
-      if (message.type === 'ai' && message.text) {
+      if (isAIMessage(message) && formatAIMessageContent(message)) {
         if (endIndex === null) {
           endIndex = i
         }
@@ -473,7 +477,11 @@ export const processAskAIParameters = async (
         }
       }
       // 如果是用户消息，从非includeHistory的消息开始
-      if (message.type === 'user' && message.text && startIndex === null) {
+      if (
+        isUserMessage(message) &&
+        formatUserMessageContent(message) &&
+        startIndex === null
+      ) {
         if ((message as IUserChatMessage)?.meta?.includeHistory === false) {
           startIndex = i
         }

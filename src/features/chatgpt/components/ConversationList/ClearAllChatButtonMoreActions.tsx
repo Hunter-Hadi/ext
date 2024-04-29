@@ -72,8 +72,13 @@ const ClearAllChatButtonMoreActions: FC<{ disablePortal?: boolean }> = ({
           isDelete: false,
         })
         if (result.data?.status === 'OK') {
+          const remoteConversations = (result.data.data || []).filter(
+            (conversation) => {
+              return conversation.isDelete !== true
+            },
+          )
           dbConversationIds = dbConversationIds.concat(
-            result.data.data.map((conversation) => conversation.id),
+            remoteConversations.map((conversation) => conversation.id),
           )
           total = result.data.total_page
           if (page < total) {

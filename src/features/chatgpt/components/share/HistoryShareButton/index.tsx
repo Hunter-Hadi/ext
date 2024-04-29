@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 
 import { ContextMenuIcon } from '@/components/ContextMenuIcon'
 import TooltipIconButton from '@/components/TooltipIconButton'
+import { useClientConversation } from '@/features/chatgpt/hooks/useClientConversation'
 import { clientGetConversation } from '@/features/chatgpt/utils/chatConversationUtils'
-import useSidebarSettings from '@/features/sidebar/hooks/useSidebarSettings'
 import { formatMessagesToLiteHistory } from '@/features/sidebar/utils/chatMessagesHelper'
 
 const HistoryTextDownloadButton: FC<{
@@ -13,25 +13,23 @@ const HistoryTextDownloadButton: FC<{
 }> = (props) => {
   const { needSystemOrThirdMessage = false } = props
   const { t } = useTranslation(['common', 'client'])
-  const { currentSidebarConversationId, currentSidebarConversationMessages } =
-    useSidebarSettings()
+  const { currentConversationId, clientConversationMessages } =
+    useClientConversation()
   // 有效的消息
-  const validMessage = currentSidebarConversationMessages.filter((item) => {
+  const validMessage = clientConversationMessages.filter((item) => {
     if (needSystemOrThirdMessage) {
       return true
     }
     return item.type !== 'system' && item.type !== 'third'
   })
-  if (validMessage.length === 0 || !currentSidebarConversationId) {
+  if (validMessage.length === 0 || !currentConversationId) {
     return null
   }
   return (
     <TooltipIconButton
       title={t('client:sidebar__share__share_button__tooltip')}
       onClick={async () => {
-        const conversation = await clientGetConversation(
-          currentSidebarConversationId,
-        )
+        const conversation = await clientGetConversation(currentConversationId)
         if (conversation?.title) {
           const needDownloadText = await formatMessagesToLiteHistory(
             conversation,

@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useRecoilState } from 'recoil'
 
 import {
   getChromeExtensionOnBoardingData,
@@ -20,7 +19,6 @@ import {
   isShowChatBox,
   showChatBox,
 } from '@/features/sidebar/utils/sidebarChatBoxHelper'
-import { AppLocalStorageState } from '@/store'
 
 const useSearchWithAI = () => {
   const {
@@ -29,9 +27,11 @@ const useSearchWithAI = () => {
     currentSidebarConversationMessages,
     updateSidebarConversationType,
   } = useSidebarSettings()
-  const [appLocalStorage] = useRecoilState(AppLocalStorageState)
-  const { updateClientConversationLoading, clientConversation } =
-    useClientConversation()
+  const {
+    currentConversationId,
+    updateClientConversationLoading,
+    clientConversation,
+  } = useClientConversation()
   const { isPayingUser } = useUserInfo()
   const { askAIWIthShortcuts } = useClientChat()
   const { createConversation, pushPricingHookMessage, getConversation } =
@@ -70,10 +70,8 @@ const useSearchWithAI = () => {
     // 进入loading
     updateClientConversationLoading(true)
     if (
-      appLocalStorage.sidebarSettings?.search?.conversationId &&
-      (await getConversation(
-        appLocalStorage.sidebarSettings?.search?.conversationId,
-      ))
+      currentConversationId &&
+      (await getConversation(currentConversationId))
     ) {
       // conversation存在
     } else {

@@ -56,7 +56,8 @@
     "cancel_anytime": "Bumalik sa anumang oras",
     "team_plan": "Plano ng Team",
     "manage_my_plan": "Pamahalaan ang aking plano",
-    "watch_video": "Panoorin ang video"
+    "watch_video": "Panoorin ang video",
+    "input_content": "Laman ng Input"
   },
   "settings": {
     "left_menu__me": "Ako at MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Higit na magaling sa mga gawain na nangangailangan ng kumplikadong pag-iisip. Ang Claude 3 ay pinakamahusay na alok ng Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Ang FreeAI ay puno na ngayon",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Dahil sa mataas na trapiko, subukan muli mamaya, o mag-upgrade ngayon upang magkaroon ng matatag na access sa lahat ng premium na AI models.",
-    "sidebar__conversation__message__context_triggered_content_review": "Inalis ang konteksto upang maiwasan ang pagsusuri"
+    "sidebar__conversation__message__context_triggered_content_review": "Inalis ang konteksto upang maiwasan ang pagsusuri",
+    "sidebar__nav__concat_us__checkbox_title": "Payagan ang pagkolekta ng impormasyon sa error"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Tula...",

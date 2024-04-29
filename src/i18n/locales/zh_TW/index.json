@@ -56,7 +56,8 @@
     "cancel_anytime": "隨時取消",
     "team_plan": "團隊方案",
     "manage_my_plan": "管理我的方案",
-    "watch_video": "觀看影片"
+    "watch_video": "觀看影片",
+    "input_content": "輸入內容"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "在需要複雜推理的任務上表現卓越。Claude 3 是Anthropic提供的最佳選擇。",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "免費AI現在已滿",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "由於流量過大，請稍後再試，或立即升級以享受穩定訪問所有高級 AI 模型的權限。",
-    "sidebar__conversation__message__context_triggered_content_review": "清除上下文以繞過審核"
+    "sidebar__conversation__message__context_triggered_content_review": "清除上下文以繞過審核",
+    "sidebar__nav__concat_us__checkbox_title": "允許錯誤資訊收集"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -56,7 +56,8 @@
     "cancel_anytime": "Отменить в любое время",
     "team_plan": "План для команды",
     "manage_my_plan": "Управление моим планом",
-    "watch_video": "Смотреть видео"
+    "watch_video": "Смотреть видео",
+    "input_content": "Вводите содержимое"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Превосходная производительность при выполнении задач, требующих сложного мышления. Claude 3 - это лучшее предложение от Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI сейчас загружен",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Из-за высокой нагрузки, пожалуйста, попробуйте еще раз позже или обновите сейчас, чтобы насладиться стабильным доступом ко всем премиум моделям искусственного интеллекта.",
-    "sidebar__conversation__message__context_triggered_content_review": "Контекст очищен для обхода модерации"
+    "sidebar__conversation__message__context_triggered_content_review": "Контекст очищен для обхода модерации",
+    "sidebar__nav__concat_us__checkbox_title": "Разрешить сбор информации об ошибках"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

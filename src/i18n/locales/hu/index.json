@@ -56,7 +56,8 @@
     "cancel_anytime": "Bármikor lemondható",
     "team_plan": "Csapat terv",
     "manage_my_plan": "Tervem kezelése",
-    "watch_video": "Videó megtekintése"
+    "watch_video": "Videó megtekintése",
+    "input_content": "Bemeneti tartalom"
   },
   "settings": {
     "left_menu__me": "Én és MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Kiváló teljesítmény olyan feladatok esetén, amelyek bonyolult gondolkodást igényelnek. Claude 3 az Anthropic legjobb ajánlata.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "A FreeAI jelenleg telített",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Magas forgalom miatt kérjük, próbálja újra később, vagy frissítse most, hogy stabil hozzáférést kapjon az összes prémium AI modellhez.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció elkerülése érdekében"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontextus törölve a moderáció elkerülése érdekében",
+    "sidebar__nav__concat_us__checkbox_title": "Hiba információk gyűjtésének engedélyezése"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Vers...",

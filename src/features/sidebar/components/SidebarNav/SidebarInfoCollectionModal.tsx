@@ -20,7 +20,7 @@ interface IProps {
 const SidebarInfoCollectionModal: FC<IProps> = (props) => {
   const { open, type, onClose, onConfirm } = props
 
-  const { t } = useTranslation(['settings', 'common'])
+  const { t } = useTranslation(['common', 'client'])
 
   const [content, setContent] = useState('')
   const [checked, setChecked] = useState(true)
@@ -65,7 +65,7 @@ const SidebarInfoCollectionModal: FC<IProps> = (props) => {
       >
         <Stack spacing={1} mt={1}>
           <TextField
-            label="Input content"
+            label={t('common:input_content')}
             multiline
             rows={4}
             value={content}
@@ -77,7 +77,7 @@ const SidebarInfoCollectionModal: FC<IProps> = (props) => {
               checked={checked}
               onChange={(_, newChecked) => setChecked(newChecked)}
             />
-            <Typography>Allow error information collection</Typography>
+            <Typography>{t('client:sidebar__nav__concat_us__checkbox_title')}</Typography>
           </Stack>
           <Stack direction={'row'} spacing={1} justifyContent={'end'}>
             <Button variant={'outlined'} onClick={handleCancel}>

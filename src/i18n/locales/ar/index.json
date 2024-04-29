@@ -56,7 +56,8 @@
     "cancel_anytime": "إلغاء في أي وقت",
     "team_plan": "خطة الفريق",
     "manage_my_plan": "إدارة خطتي",
-    "watch_video": "شاهد الفيديو"
+    "watch_video": "شاهد الفيديو",
+    "input_content": "محتوى الإدخال"
   },
   "settings": {
     "left_menu__me": "أنا و MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "أداء متفوق في المهام التي تتطلب تفكيرًا معقدًا. كلاود 3 هو أفضل ما تقدمه Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI مشغول حاليًا",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "نظرًا لارتفاع حركة المرور، يُرجى المحاولة مرة أخرى في وقت لاحق، أو قم بالترقية الآن للاستمتاع بوصول ثابت إلى جميع نماذج الذكاء الاصطناعي المتميزة.",
-    "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز المراجعة"
+    "sidebar__conversation__message__context_triggered_content_review": "تم مسح السياق لتجاوز المراجعة",
+    "sidebar__nav__concat_us__checkbox_title": "السماح بجمع معلومات الأخطاء"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "قصيدة...",

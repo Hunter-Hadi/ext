@@ -56,7 +56,8 @@
     "cancel_anytime": "Jederzeit kündigen",
     "team_plan": "Team-Plan",
     "manage_my_plan": "Meinen Plan verwalten",
-    "watch_video": "Video ansehen"
+    "watch_video": "Video ansehen",
+    "input_content": "Eingabeinhalt"
   },
   "settings": {
     "left_menu__me": "Ich und MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Überragende Leistung bei Aufgaben, die komplexe Denkfähigkeiten erfordern. Claude 3 ist das Spitzenprodukt von Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ist derzeit ausgelastet",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Aufgrund des hohen Verkehrsaufkommens versuchen Sie es bitte später erneut oder aktualisieren Sie jetzt, um stabilen Zugriff auf alle Premium-KI-Modelle zu erhalten.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um die Moderation zu umgehen"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext gelöscht, um die Moderation zu umgehen",
+    "sidebar__nav__concat_us__checkbox_title": "Fehlerinformationssammlung zulassen"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Gedicht...",

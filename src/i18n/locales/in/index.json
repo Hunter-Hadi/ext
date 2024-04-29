@@ -56,7 +56,8 @@
     "cancel_anytime": "Batal kapan saja",
     "team_plan": "Paket Tim",
     "manage_my_plan": "Kelola paket saya",
-    "watch_video": "Tonton video"
+    "watch_video": "Tonton video",
+    "input_content": "Konten masukan"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Kinerja unggul pada tugas-tugas yang membutuhkan pemikiran kompleks. Claude 3 adalah penawaran terbaik dari Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI sedang penuh kapasitas saat ini",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Karena lalu lintas tinggi, harap coba lagi nanti, atau tingkatkan sekarang untuk menikmati akses stabil ke semua model AI premium.",
-    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk melewati moderasi"
+    "sidebar__conversation__message__context_triggered_content_review": "Konteks dibersihkan untuk melewati moderasi",
+    "sidebar__nav__concat_us__checkbox_title": "Izinkan pengumpulan informasi kesalahan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

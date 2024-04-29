@@ -56,7 +56,8 @@
     "cancel_anytime": "언제든지 취소",
     "team_plan": "팀 플랜",
     "manage_my_plan": "내 플랜 관리",
-    "watch_video": "동영상 시청"
+    "watch_video": "동영상 시청",
+    "input_content": "입력 내용"
   },
   "settings": {
     "left_menu__me": "나와 MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "복잡한 추론을 필요로하는 작업에서 우수한 성능을 발휘합니다. Claude 3은 Anthropic의 최고 수준의 제품입니다.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI는 현재 용량이 가득 찼습니다",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "고 트래픽으로 인해 나중에 다시 시도하거나 모든 프리미엄 AI 모델에 안정적인 액세스를 즐기기 위해 지금 업그레이드하세요.",
-    "sidebar__conversation__message__context_triggered_content_review": "컨텍스트가 우회 심사를 위해 지워졌습니다."
+    "sidebar__conversation__message__context_triggered_content_review": "컨텍스트가 우회 심사를 위해 지워졌습니다.",
+    "sidebar__nav__concat_us__checkbox_title": "오류 정보 수집 허용"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "시",

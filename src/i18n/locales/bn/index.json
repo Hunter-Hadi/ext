@@ -56,7 +56,8 @@
     "cancel_anytime": "যে কোন সময় বাতিল করুন",
     "team_plan": "দলের পরিকল্পনা",
     "manage_my_plan": "আমার পরিকল্পনা পরিচালনা করুন",
-    "watch_video": "ভিডিও দেখুন"
+    "watch_video": "ভিডিও দেখুন",
+    "input_content": "ইনপুট কন্টেন্ট"
   },
   "settings": {
     "left_menu__me": "আমি এবং MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "জটিল বিচারের কাজগুলির জন্য উত্কৃষ্ট পারফরম্যান্স। Claude 3 এনথ্রোপিকের সেরা অফারিং।",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "ফ্রি এআই এখন পূর্ণ হয়েছে",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "বেশি ট্রাফিকের কারণে, দয়া করে পরে আবার চেষ্টা করুন অথবা এখনই আপগ্রেড করে সমস্ত প্রিমিয়াম AI মডেলের স্থিতিশীল অ্যাক্সেস উপভোগ করুন।",
-    "sidebar__conversation__message__context_triggered_content_review": "মধ্যস্থতা পর্যালোচনা অবগতি দেওয়ার জন্য সংদর্শিত সামগ্রী পরিষ্কার করা হয়েছে"
+    "sidebar__conversation__message__context_triggered_content_review": "মধ্যস্থতা পর্যালোচনা অবগতি দেওয়ার জন্য সংদর্শিত সামগ্রী পরিষ্কার করা হয়েছে",
+    "sidebar__nav__concat_us__checkbox_title": "ত্রুটি তথ্য সংগ্রহ অনুমতি দিন"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "কবিতা...",

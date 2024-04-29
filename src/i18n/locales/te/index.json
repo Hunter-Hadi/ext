@@ -56,7 +56,8 @@
     "cancel_anytime": "ఏటీమ్ రద్దు చేయండి",
     "team_plan": "టీమ్ ప్లాన్",
     "manage_my_plan": "నా ప్లాన్ నిర్వహించండి",
-    "watch_video": "వీడియో చూడండి"
+    "watch_video": "వీడియో చూడండి",
+    "input_content": "ఇన్పుట్ కంటెంట్"
   },
   "settings": {
     "left_menu__me": "నాకు మరియు MaxAI కోసం",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "కంప్లెక్స్ రీజనింగ్ అవసరమైన టాస్కులపై అత్యుత్తమ పనిచేసే పనితీరు. క్లాడ్ 3 అంత్రోపిక్ యొక్క ఉత్తమ ఆఫరింగ్ ఉంది.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI ప్రస్తుతం పూర్తిగా భరించబడింది",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ఉన్న ట్రాఫిక్ ఎక్కువగా ఉంది, దయచేసి తరువాత మళ్లీ ప్రయత్నించండి లేదా ప్రీమియం AI మోడల్స్‌కు స్థిరమైన ప్రవేశం ఆనందించడానికి ఇప్పుడు అప్గ్రేడ్ చేయండి.",
-    "sidebar__conversation__message__context_triggered_content_review": "మార్గం నిర్వహణ తరచుగా తీసుకోవడానికి కంటెంట్ సమీక్షను తీసుకోబడింది"
+    "sidebar__conversation__message__context_triggered_content_review": "మార్గం నిర్వహణ తరచుగా తీసుకోవడానికి కంటెంట్ సమీక్షను తీసుకోబడింది",
+    "sidebar__nav__concat_us__checkbox_title": "లోపాల సమాచారం సేకరణ అనుమతించు"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "కవిత...",

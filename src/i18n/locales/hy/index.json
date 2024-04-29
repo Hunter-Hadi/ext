@@ -53,7 +53,8 @@
     "cancel_anytime": "Չեղարկել ցուցադրման ժամանակ",
     "team_plan": "Թիմային պլան",
     "manage_my_plan": "Կառավարել իմ պլանը",
-    "watch_video": "Տեսնել տեսանյութը"
+    "watch_video": "Տեսնել տեսանյութը",
+    "input_content": "Մուտքագրեք բովանդակության պարամետրերը"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -752,7 +753,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Շատ լավագույն արդյունավետություն պահանջող առանձին գործիքների համար: Claude 3-ը Anthropic-ի ամենալավագույն առաջարկն է:",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI-ն այժմ լրացված է",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Հեռավոր այցելուների շահագործության պատճառով, խնդրում ենք փորձել նորից հետո, կամ թարմացնելու համար բարելավելավորված AI մոդելների բոլոր առաջադրանքները հասանելի դառնալու համար:",
-    "sidebar__conversation__message__context_triggered_content_review": "Կոնտեքստը մաքրված է, որպեսզի անթերի կանգառից խուսափելու"
+    "sidebar__conversation__message__context_triggered_content_review": "Կոնտեքստը մաքրված է, որպեսզի անթերի կանգառից խուսափելու",
+    "sidebar__nav__concat_us__checkbox_title": "Թույլատրել սխալի տեղադրման տեղեկանալը"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

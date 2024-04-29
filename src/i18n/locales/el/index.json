@@ -56,7 +56,8 @@
     "cancel_anytime": "Ακύρωση οποιαδήποτε στιγμή",
     "team_plan": "Σχέδιο ομάδας",
     "manage_my_plan": "Διαχείριση του σχεδίου μου",
-    "watch_video": "Παρακολούθηση βίντεο"
+    "watch_video": "Παρακολούθηση βίντεο",
+    "input_content": "Περιεχόμενο εισόδου"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Ανώτερη απόδοση σε εργασίες που απαιτούν πολύπλοκη σκέψη. Ο Claude 3 είναι η κορυφαία προσφορά της Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "Το FreeAI είναι σε πλήρη χωρητικότητα αυτή τη στιγμή",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "Λόγω υψηλής κίνησης, παρακαλούμε δοκιμάστε ξανά αργότερα ή αναβαθμίστε τώρα για να απολαύσετε σταθερή πρόσβαση σε όλα τα προηγμένα μοντέλα Τεχνητής Νοημοσύνης.",
-    "sidebar__conversation__message__context_triggered_content_review": "Ο περιβάλλον εκκαθάρισης για παράκαμψη της μετριότητας"
+    "sidebar__conversation__message__context_triggered_content_review": "Ο περιβάλλον εκκαθάρισης για παράκαμψη της μετριότητας",
+    "sidebar__nav__concat_us__checkbox_title": "Επιτρέψτε τη συλλογή πληροφοριών σφάλματος"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

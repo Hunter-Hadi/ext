@@ -56,7 +56,8 @@
     "cancel_anytime": "Avbryt när som helst",
     "team_plan": "Teamplan",
     "manage_my_plan": "Hantera mitt plan",
-    "watch_video": "Titta på video"
+    "watch_video": "Titta på video",
+    "input_content": "Innehåll för inmatning"
   },
   "settings": {
     "left_menu__me": "Jag och MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Överlägsen prestanda på uppgifter som kräver komplex resonemang. Claude 3 är Anthropics bästa erbjudande.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI är fullbelastat just nu",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grund av hög trafik, försök igen senare eller uppgradera nu för att få stabil åtkomst till alla premium AI-modeller.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontext rensad för att passera moderering"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontext rensad för att passera moderering",
+    "sidebar__nav__concat_us__checkbox_title": "Tillåt insamling av felinformation"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

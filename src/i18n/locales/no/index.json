@@ -56,7 +56,8 @@
     "cancel_anytime": "Kanseller når som helst",
     "team_plan": "Teamplan",
     "manage_my_plan": "Administrer planen min",
-    "watch_video": "Se video"
+    "watch_video": "Se video",
+    "input_content": "Innhold for inndata"
   },
   "settings": {
     "left_menu__me": "Meg og MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Overlegen ytelse på oppgaver som krever kompleks resonnement. Claude 3 er Anthropics beste tilbud.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI er fullt for øyeblikket",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "På grunn av høy trafikk, prøv igjen senere eller oppgrader nå for å få stabil tilgang til alle premium AI-modeller.",
-    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for å omgå moderering"
+    "sidebar__conversation__message__context_triggered_content_review": "Kontekst ryddet for å omgå moderering",
+    "sidebar__nav__concat_us__checkbox_title": "Tillat innsamling av feilinformasjon"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Dikt...",

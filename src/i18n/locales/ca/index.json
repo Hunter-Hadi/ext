@@ -56,7 +56,8 @@
     "cancel_anytime": "Cancel·la en qualsevol moment",
     "team_plan": "Pla d'equip",
     "manage_my_plan": "Gestiona el meu pla",
-    "watch_video": "Veure vídeo"
+    "watch_video": "Veure vídeo",
+    "input_content": "Contingut d'entrada"
   },
   "settings": {
     "left_menu__me": "Jo i MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "Rendiment superior en tasques que requereixen raonament complex. Claude 3 és la millor opció d'Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI està a plena capacitat ara mateix",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "A causa del trànsit elevat, si us plau, torna-ho a provar més tard o actualitza ara per gaudir d'accés estable a tots els models d'IA premium.",
-    "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació"
+    "sidebar__conversation__message__context_triggered_content_review": "Context netejat per evitar moderació",
+    "sidebar__nav__concat_us__checkbox_title": "Permetre la recopilació d'informació d'errors"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poema...",

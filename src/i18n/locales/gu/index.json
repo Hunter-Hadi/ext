@@ -56,7 +56,8 @@
     "cancel_anytime": "કોઈપણ સમયે રદ કરો",
     "team_plan": "ટીમ પ્લાન",
     "manage_my_plan": "મારી યોજના સંચાલિત કરો",
-    "watch_video": "વિડિઓ જુઓ"
+    "watch_video": "વિડિઓ જુઓ",
+    "input_content": "ઇનપુટ સામગ્રી"
   },
   "settings": {
     "left_menu__me": "હું અને MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "જેટલું જટિલ તાસ્ક માટે શ્રેષ્ઠ પ્રદર્શન. Claude 2 એ Anthropic ની શ્રેષ્ઠ ઓફરિંગ છે",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "હાલમાં FreeAI ક્ષમતામાં છે",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "ઉચ્ચ ટ્રેફિક કારણે, કૃપા કરીને પછી થોડીવાર પ્રયાસ કરો અથવા હવે અનુભવો માટે સ્થિર પ્રીમિયમ એઆઈ મોડલ્સનો ઉપયોગ કરવા માટે અપગ્રેડ કરો.",
-    "sidebar__conversation__message__context_triggered_content_review": "સંદર્ભ મોદરેશન પર છોડવા માટે સાફ કર્યું"
+    "sidebar__conversation__message__context_triggered_content_review": "સંદર્ભ મોદરેશન પર છોડવા માટે સાફ કર્યું",
+    "sidebar__nav__concat_us__checkbox_title": "ભૂલ માહિતી સંગ્રહણ મંજૂર કરો"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "કવિતા...",

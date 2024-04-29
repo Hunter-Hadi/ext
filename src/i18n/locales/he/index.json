@@ -56,7 +56,8 @@
     "cancel_anytime": "בטל בכל עת",
     "team_plan": "תוכנית צוות",
     "manage_my_plan": "ניהול התוכנית שלי",
-    "watch_video": "צפה בסרטון"
+    "watch_video": "צפה בסרטון",
+    "input_content": "תוכן קלט"
   },
   "settings": {
     "left_menu__me": "אני ו-MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "ביצועים יוצאי דופן במשימות הדורשות שיקול מורכב. Claude 3 הוא ההצעה המובילה של Anthropic.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI כרגע במלוא קיבולתו",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "בשל תעבורה גבוהה, אנא נסה שוב מאוחר יותר או שדרג כעת כדי ליהנות מגישה יציבה לכל הדגמים המתקדמים של AI.",
-    "sidebar__conversation__message__context_triggered_content_review": "הקשר נוקה לעבור את המודרציה"
+    "sidebar__conversation__message__context_triggered_content_review": "הקשר נוקה לעבור את המודרציה",
+    "sidebar__nav__concat_us__checkbox_title": "אפשר איסוף מידע על שגיאות"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "שיר...",

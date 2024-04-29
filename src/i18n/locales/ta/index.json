@@ -56,7 +56,8 @@
     "cancel_anytime": "எப்போதும் ரத்து செய்",
     "team_plan": "குழு திட்டம்",
     "manage_my_plan": "என் திட்டத்தை நிர்வகிக்கவும்",
-    "watch_video": "வீடியோ பாருங்கள்"
+    "watch_video": "வீடியோ பாருங்கள்",
+    "input_content": "உள்ளீடு உள்ளிட்டல்"
   },
   "settings": {
     "left_menu__me": "என்னுடைய மற்றும் MaxAI",
@@ -755,7 +756,8 @@
     "provider__claude_web_app__model__claude_3_200k__description": "சிறந்த பெரும்பாலான பொருள் மனம் தேவைப்படும் பணிகளுக்கு உயர்வான செயல்பாடு. கிளோட் 3 அந்த்ராபிக் சிறந்த பொருள் மனமாக உள்ளது.",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__title": "FreeAI தற்போது மிகப் பொருட்பட்டியில் உள்ளது",
     "permission__pricing_hook__SEARCH_WITH_AI_HIGH_TRAFFIC__description": "அதிக செயல்முறையில் மிகப்பெரிய வண்டிகள் உள்ளன, தயவுசெய்து பின்னர் மீண்டும் முயற்சிக்கவும் அல்லது அனைத்து பிரீமியம் AI மாதிரிகளுக்கு நிலையான அணுகலை ஆராய்ச்சி செய்ய இப்போது மேம்படுத்தவும்.",
-    "sidebar__conversation__message__context_triggered_content_review": "மின்னஞ்சல் மீட்டமைப்புக்கு அதிகாரம் வழங்கப்பட்டது"
+    "sidebar__conversation__message__context_triggered_content_review": "மின்னஞ்சல் மீட்டமைப்புக்கு அதிகாரம் வழங்கப்பட்டது",
+    "sidebar__nav__concat_us__checkbox_title": "பிழை தகவல் சேகரிப்புக்கு அனுமதி வழங்குக"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "கவிதை...",

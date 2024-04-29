@@ -56,7 +56,8 @@
     "cancel_anytime": "Отменить в любое время",
     "team_plan": "План для команды",
     "manage_my_plan": "Управление моим планом",
-    "watch_video": "Смотреть видео"
+    "watch_video": "Смотреть видео",
+    "input_content": "Вводите содержимое"
   },
   "settings": {
     "left_menu__me": "Я и MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Восстановление разговоров, пожалуйста, подождите...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Примечание: Во время процесса восстановления сохраните текущую страницу открытой, чтобы избежать потери ваших разговоров.",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Восстановленные разговоры: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Восстановленные сообщения: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Восстановленные сообщения: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Беседы успешно восстановлены.",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Не удалось восстановить беседы. Пожалуйста, попробуйте еще раз.",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Закрыть",
+    "sidebar__nav__concat_us__checkbox_title": "Разрешить сбор информации об ошибках"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Стихотворение...",

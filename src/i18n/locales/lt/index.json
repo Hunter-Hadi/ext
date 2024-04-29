@@ -56,7 +56,8 @@
     "cancel_anytime": "Atšaukti bet kada",
     "team_plan": "Komandos planas",
     "manage_my_plan": "Valdyti mano planą",
-    "watch_video": "Žiūrėti vaizdo įrašą"
+    "watch_video": "Žiūrėti vaizdo įrašą",
+    "input_content": "Įvesties turinys"
   },
   "settings": {
     "left_menu__me": "Aš ir MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Atkuriamos konversacijos, prašome palaukti...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Pastaba: Norint išvengti pokalbių praradimo, palikite šią puslapio versiją atidarytą atkūrimo proceso metu.",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Atkurtos konversacijos: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Atkurti pranešimai: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Atkurti pranešimai: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Pokalbiai sėkmingai atkurti.",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Nepavyko atkurti pokalbių. Bandykite dar kartą.",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Uždaryti",
+    "sidebar__nav__concat_us__checkbox_title": "Leisti rinkti klaidos informaciją"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Eilėraštis...",

@@ -56,7 +56,8 @@
     "cancel_anytime": "ยกเลิกได้ทุกเมื่อ",
     "team_plan": "แผนทีม",
     "manage_my_plan": "จัดการแผนของฉัน",
-    "watch_video": "ดูวิดีโอ"
+    "watch_video": "ดูวิดีโอ",
+    "input_content": "เนื้อหาที่ป้อน"
   },
   "settings": {
     "left_menu__me": "ฉันและ MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "กำลังกู้คืนการสนทนา โปรดรอสักครู่...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "หมายเหตุ: ให้เปิดหน้าเว็บปัจจุบันในระหว่างกระบวนการกู้คืนเพื่อหลีกเลี่ยงการสูญเสียการสนทนาของคุณ",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "สนทนาที่กู้คืน: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "ข้อความที่กู้คืน: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "ข้อความที่กู้คืน: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] การสนทนาถูกกู้คืนสำเร็จ",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] การสนทนาไม่สามารถกู้คืนได้ โปรดลองอีกครั้ง",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "ปิด",
+    "sidebar__nav__concat_us__checkbox_title": "อนุญาตให้เก็บข้อมูลข้อผิดพลาด"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "บทกวี...",

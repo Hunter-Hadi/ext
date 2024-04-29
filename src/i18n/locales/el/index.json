@@ -56,7 +56,8 @@
     "cancel_anytime": "Ακύρωση οποιαδήποτε στιγμή",
     "team_plan": "Σχέδιο ομάδας",
     "manage_my_plan": "Διαχείριση του σχεδίου μου",
-    "watch_video": "Παρακολούθηση βίντεο"
+    "watch_video": "Παρακολούθηση βίντεο",
+    "input_content": "Περιεχόμενο εισαγωγής"
   },
   "settings": {
     "left_menu__me": "Εγώ και το MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Γίνεται αποκατάσταση συνομιλιών, παρακαλώ περιμένετε...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Σημείωση: Διατηρήστε την τρέχουσα σελίδα ανοιχτή κατά τη διάρκεια της διαδικασίας αποκατάστασης για να αποφύγετε την απώλεια των συνομιλιών σας.",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Αποκαταστάθηκαν συνομιλίες: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Αποκαταστάθηκαν μηνύματα: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Αποκαταστάθηκαν μηνύματα: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Οι συνομιλίες αποκαταστάθηκαν με επιτυχία.",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Αποτυχία αποκατάστασης των συνομιλιών. Παρακαλώ δοκιμάστε ξανά.",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Κλείσιμο",
+    "sidebar__nav__concat_us__checkbox_title": "Επιτρέπεται η συλλογή πληροφοριών σφάλματος"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Ποίημα...",

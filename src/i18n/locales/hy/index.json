@@ -53,7 +53,8 @@
     "cancel_anytime": "Չեղարկել ցուցադրման ժամանակ",
     "team_plan": "Թիմային պլան",
     "manage_my_plan": "Կառավարել իմ պլանը",
-    "watch_video": "Տեսնել տեսանյութը"
+    "watch_video": "Տեսնել տեսանյութը",
+    "input_content": "Մուտքագրեք բովանդակությունը"
   },
   "settings": {
     "left_menu__me": "Ես և MaxAI",
@@ -756,7 +757,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Զրուցարանների վերականգնումը, խնդրում ենք սպասել...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Նշում՝ խնդրում ենք պահպանել ընթացիկ էջը վերականգնման ընթացքում, որպեսզի չկորցնեք ձեր զրուցարանները:",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Վերականգնված զրուցարաններ՝ [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Վերականգնված նամակներ՝ [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Վերականգնված նամակներ՝ [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Բիզնեսային խոսերը հաջողությամբ վերականգնվեցին:",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Բիզնեսային խոսերը վերականգնելու ընթացքում ձախողվեցին: Խնդրում ենք փորձել նորից:",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Փակել",
+    "sidebar__nav__concat_us__checkbox_title": "Թույլատրել սխալի տեղադրման տեղեկատվության համաձայնագիր"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Պոեմ...",

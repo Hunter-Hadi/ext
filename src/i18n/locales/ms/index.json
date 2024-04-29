@@ -56,7 +56,8 @@
     "cancel_anytime": "Batal pada bila-bila masa",
     "team_plan": "Pelan pasukan",
     "manage_my_plan": "Uruskan pelan saya",
-    "watch_video": "Tonton video"
+    "watch_video": "Tonton video",
+    "input_content": "Kandungan Input"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Sedang mengembalikan perbualan, sila tunggu...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Nota: Pastikan halaman semasa dibuka semasa proses pemulihan untuk mengelakkan kehilangan perbualan anda.",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Perbualan yang dikembalikan: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Mesej yang dikembalikan: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Mesej yang dikembalikan: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Perbualan berjaya dipulihkan.",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Perbualan gagal dipulihkan. Sila cuba lagi.",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Tutup",
+    "sidebar__nav__concat_us__checkbox_title": "Benarkan pengumpulan maklumat ralat"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",

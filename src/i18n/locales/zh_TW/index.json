@@ -56,7 +56,8 @@
     "cancel_anytime": "隨時取消",
     "team_plan": "團隊方案",
     "manage_my_plan": "管理我的方案",
-    "watch_video": "觀看影片"
+    "watch_video": "觀看影片",
+    "input_content": "輸入內容"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "正在還原對話，請稍候...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "註：在還原過程中保持當前頁面開啟，以避免丟失對話。",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "已還原對話：[{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "已還原訊息：[{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "已還原訊息：[{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] 對話成功還原。",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] 對話無法還原。請重試。",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "關閉",
+    "sidebar__nav__concat_us__checkbox_title": "允許收集錯誤資訊"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

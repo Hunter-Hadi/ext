@@ -56,7 +56,8 @@
     "cancel_anytime": "随时取消",
     "team_plan": "团队计划",
     "manage_my_plan": "管理我的计划",
-    "watch_video": "观看视频"
+    "watch_video": "观看视频",
+    "input_content": "输入内容"
   },
   "settings": {
     "left_menu__me": "我和MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "正在恢复对话，请稍候...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "注意：在恢复过程中，请保持当前页面打开，以避免丢失对话。",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "已恢复对话：[{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "已恢复消息：[{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "已恢复消息：[{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "成功恢复[{{COUNT}}]个对话。",
+    "immersive_chat__chat_history__restore_modal__error__title": "无法恢复[{{COUNT}}]个对话。请重试。",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "关闭",
+    "sidebar__nav__concat_us__checkbox_title": "允许收集错误信息"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "诗...",

@@ -56,7 +56,8 @@
     "cancel_anytime": "いつでもキャンセル",
     "team_plan": "チームプラン",
     "manage_my_plan": "プランを管理する",
-    "watch_video": "ビデオを見る"
+    "watch_video": "ビデオを見る",
+    "input_content": "入力内容"
   },
   "settings": {
     "left_menu__me": "私とMaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "会話を復元中です。お待ちください...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "注意：会話が失われないように、復元プロセス中は現在のページを開いたままにしてください。",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "復元された会話：[{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "復元されたメッセージ：[{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "復元されたメッセージ：[{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] 会話が正常に復元されました。",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] 会話の復元に失敗しました。もう一度お試しください。",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "閉じる",
+    "sidebar__nav__concat_us__checkbox_title": "エラー情報の収集を許可する"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "詩...",

@@ -56,7 +56,8 @@
     "cancel_anytime": "Annuler à tout moment",
     "team_plan": "Plan d'équipe",
     "manage_my_plan": "Gérer mon plan",
-    "watch_video": "Regarder la vidéo"
+    "watch_video": "Regarder la vidéo",
+    "input_content": "Contenu de l'entrée"
   },
   "settings": {
     "left_menu__me": "Moi et MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Restauration des conversations, veuillez patienter...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Remarque : Gardez la page actuelle ouverte pendant le processus de restauration pour éviter de perdre vos conversations.",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Conversations restaurées : [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Messages restaurés : [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Messages restaurés : [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Conversations restaurées avec succès.",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Échec de la restauration des conversations. Veuillez réessayer.",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Fermer",
+    "sidebar__nav__concat_us__checkbox_title": "Autoriser la collecte d'informations sur les erreurs"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Poème...",

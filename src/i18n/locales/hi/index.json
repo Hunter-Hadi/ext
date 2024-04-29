@@ -56,7 +56,8 @@
     "cancel_anytime": "कभी भी रद्द करें",
     "team_plan": "टीम प्लान",
     "manage_my_plan": "मेरी योजना का प्रबंधन करें",
-    "watch_video": "वीडियो देखें"
+    "watch_video": "वीडियो देखें",
+    "input_content": "इनपुट सामग्री"
   },
   "settings": {
     "left_menu__me": "मैं और MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "वार्तालाप पुनर्स्थापित हो रही है, कृपया प्रतीक्षा करें...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "नोट: अपनी बातचीत को खोने से बचने के लिए पुनर्स्थापना प्रक्रिया के दौरान वर्तमान पृष्ठ को खोले रखें।",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "वार्तालाप पुनर्स्थापित हुई है: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "संदेश पुनर्स्थापित हुए हैं: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "संदेश पुनर्स्थापित हुए हैं: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] बातचीत सफलतापूर्वक पुनर्स्थापित की गई।",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] बातचीत पुनर्स्थापित करने में विफल हुई। कृपया पुन: प्रयास करें।",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "बंद करें",
+    "sidebar__nav__concat_us__checkbox_title": "त्रुटि जानकारी संग्रह की अनुमति दें"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "कविता...",

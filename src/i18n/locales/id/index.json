@@ -56,7 +56,8 @@
     "cancel_anytime": "Batal kapan saja",
     "team_plan": "Paket Tim",
     "manage_my_plan": "Kelola paket saya",
-    "watch_video": "Tonton video"
+    "watch_video": "Tonton video",
+    "input_content": "Konten Input"
   },
   "settings": {
     "left_menu__me": "Saya dan MaxAI",
@@ -759,7 +760,11 @@
     "immersive_chat__chat_history__restore_modal__uploading__title": "Mengembalikan percakapan, harap tunggu...",
     "immersive_chat__chat_history__restore_modal__uploading__description1": "Catatan: Tetap buka halaman saat ini selama proses pengembalian untuk menghindari kehilangan percakapan Anda.",
     "immersive_chat__chat_history__restore_modal__uploading__description2": "Percakapan yang dikembalikan: [{{STEP}}/{{TOTAL}}]",
-    "immersive_chat__chat_history__restore_modal__uploading__description3": "Pesan yang dikembalikan: [{{STEP}}/{{TOTAL}}]"
+    "immersive_chat__chat_history__restore_modal__uploading__description3": "Pesan yang dikembalikan: [{{STEP}}/{{TOTAL}}]",
+    "immersive_chat__chat_history__restore_modal__success__title": "[{{COUNT}}] Percakapan berhasil dipulihkan.",
+    "immersive_chat__chat_history__restore_modal__error__title": "[{{COUNT}}] Percakapan gagal dipulihkan. Silakan coba lagi.",
+    "immersive_chat__chat_history__restore_modal__close_button__title": "Tutup",
+    "sidebar__nav__concat_us__checkbox_title": "Izinkan pengumpulan informasi kesalahan"
   },
   "prompt": {
     "d0176963-2376-4dd8-acfc-95af778195b9": "Puisi...",
